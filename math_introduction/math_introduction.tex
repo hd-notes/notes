@@ -1,0 +1,234 @@
+% Created 2016-09-26 Mo 23:50
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{siunitx}
+\usepackage{fontspec}
+\newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+\author{Robin Heinemann}
+\date{\today}
+\title{Mathematischer Vorkurs}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Messwert und Maßeinheit}
+\label{sec-1}
+Zu jeder phys. Größe gehören \uline{Messwert} und \uline{Maßeinheit}, d.h. Zahlewert $$\cdot$$ Einheit
+
+\subsection{Beispiel}
+\label{sec-1-1}
+Geschw. $$v = \si{\kilo\meter\per\second}$$
+
+\subsection{Bezeichungen}
+\label{sec-1-2}
+\begin{center}
+\begin{tabular}{ll}
+Abkürzung & Bedeutung\\
+\hline
+t & time\\
+m & mass\\
+v & velocity\\
+a & acceleration\\
+F & Force\\
+E & Energy\\
+T & Temperature\\
+p & momentum\\
+I & electric current\\
+V & potential\\
+\end{tabular}
+\end{center}
+
+Wenn das lateinische  Alphabet nicht ausreicht: griechische Buchstaben
+$$\alpha, \beta, \gamma, \delta, \Delta, \Gamma, \epsilon, \zeta, \eta, \Theta, \kappa, \lambda, \mu, \nu, \Xi, \pi, \rho, \sigma, \tau, \phi, \chi, \psi, \omega, \Omega$$
+
+\subsection{Maßeinheiten}
+\label{sec-1-3}
+Maßeinheiten werden über Maßstäbe definiert.
+
+\subsubsection{Bespiel:}
+\label{sec-1-3-1}
+\SI{1}{\meter} = Strecke, die das Licht in $$\frac{1}{299792458}\si{\second}$$ zurücklegt.
+
+\subsubsection{SI-Einheiten}
+\label{sec-1-3-2}
+Internationaler Standart (außer die bösen Amerikaner :D)
+
+\begin{center}
+\begin{tabular}{lll}
+Größe & Einheit & Symbol\\
+\hline
+Länge & Meter & \si{\meter}\\
+Zeit & Sekunden & \si{\second}\\
+Masse & Kilogramm & \si{\kilogram}\\
+elektrischer Strom & Ampere & \si{\ampere}\\
+Temperatur & Kelvin & \si{\kelvin}\\
+Lichstärke & Candela & \si{\candela}\\
+ebener Winkel & Radiant & \si{\radian}\\
+Raumwinkel & Steradiant & \si{\steradian}\\
+Stoffmenge & Mol & \si{\mol}\\
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+\item Radiant
+\label{sec-1-3-2-1}
+Kreisumfang $$U = 2\pi r$$
+Bogenmaß $$b = \phi r$$
+
+Umrechung in Winkelgrad
+$$\SI{2\pi}{\radian} \estimates \SI{360}{\degree}$$
+
+$$\frac{Winkel in Radiant}{2\pi} = \frac{Winkel in Grad}{360}$$
+
+\item Steradiant
+\label{sec-1-3-2-2}
+$$\Omega = \frac{A}{r^2}$$
+
+\item Abgeleitete Einheiten
+\label{sec-1-3-2-3}
+\begin{center}
+\begin{tabular}{llll}
+Gröpe & Einheit & Symbol & Equivalent\\
+\hline
+Frequenz & Hertz & \si{\hertz} & \si{1\per\second}\\
+Kraft & Newton & \si{\newton} & \si{\kilogram\meter\per\square\second}\\
+Energie & Joule & \si{\joule} & \si{\newton\meter}\\
+Leistung & Watt & \si{\watt} & \si{\joule\per\second}\\
+Druck & Pascal & \si{\pascal} & \si{\newton\per\square\meter}\\
+elektrischer Ladung & Coulomb & \si{\coulomb} & \si{\ampere\second}\\
+elektrisches Potenzal & Volt & \si{\volt} & \si{\joule\per\coulomb}\\
+elektrischer Wiederstand & Ohm & \si{\ohm} & \si{\volt\per\ampere}\\
+Kapazität & Farad & \si{\farad} & \si{\coulomb\per\newton}\\
+magn. Fluss & Weber & \si{\weber} & \si{\volt\per\second}\\
+\end{tabular}
+\end{center}
+
+\item Prefix / Größenordungen
+\label{sec-1-3-2-4}
+\begin{center}
+\begin{tabular}{lrl}
+Prefix & $\log$\{10\} & Abkürzung\\
+\hline
+Dezi & -1 & d\\
+Zenti & -2 & c\\
+Milli & -3 & m\\
+Mikro & -6 & $\mu$\\
+Nano & -9 & n\\
+Piko & -12 & p\\
+Femto & -15 & f\\
+Atto & -18 & a\\
+Zepta & -21 & z\\
+Yokto & -24 & y\\
+Deka & 1 & D\\
+Hekto & 2 & h\\
+Kilo & 3 & k\\
+Mega & 6 & M\\
+Giga & 9 & G\\
+Tera & 12 & T\\
+Peta & 15 & P\\
+Exa & 18 & E\\
+Zetta & 21 & Z\\
+Yotta & 24 & Y\\
+\end{tabular}
+\end{center}
+\end{enumerate}
+
+\section{Zeichen und Zahlen}
+\label{sec-2}
+\begin{center}
+\begin{tabular}{ll}
+Zeichen & Bedeutung\\
+\hline
++ & plus\\
+$\cdot$ & mal\\
+= & gleich\\
+< & ist kleiner als\\
+> & ist größer als\\
+$\angle$ & Windel zwischen\\
+- & minus\\
+$\neq$ & ungleich\\
+$\le$ & kleiner gleich\\
+$\ge$ & größer gleich\\
+$\simeq$ & ungefähr gleich\\
+\textpm{} & plus oder minus\\
+$\perp$ & steht senkrecht auf\\
+$\equiv$ & ist identisch gleich\\
+$\ll$ & ist klein gegen\\
+$\gg$ & ist groß gegen\\
+$\infty$ & größer als jede Zahl\\
+$\to$ $\infty$ & eine Größe wächst über alle Grenzen $\backslash$ Limes\\
+$\sum$ & Summe\\
+\end{tabular}
+\end{center}
+
+\subsection{Summenzeichn}
+\label{sec-2-1}
+\subsubsection{Beispiel}
+\label{sec-2-1-1}
+\begin{itemize}
+\item $$\sum_{n=1}^3a_n=a_1 + a_2 + a_3$$
+\item Summe der ersten $m$ natürlischen Zahlen
+$$\sum_{n=1}^{m}n = 1 + 2 + \ldots + (m -1) + m = \frac{m (m + 1)}{2}$$
+\item Summe der ersten $m$ Quadrate der natürlichen Zahlen
+$$\sum_{n=1}^m n^2 = 1 + 4 + \ldots + (m-1)^2 + m^2 = \frac{m(m+1)(2m+1)}{6}$$
+\item Summe der ersten $m$ Potenzen einer Zahl ($q \neq 1$)
+$$\sum_{n=0}^m q^n = 1+q+\dots+q^{m-1}+q^m = \frac{1 - q^{m + 1}}{1-q}$$
+sog. \emph{geometrische Summe}
+\begin{itemize}
+\item Beweis
+$$s_m = 1 + \ldots + q^m$$
+$$q s_m = q + \ldots + q^{m+1}$$
+$$s_m - q s_m = s_m(1-q) = 1-q^{m+1}$$
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Rechenregeln}
+\label{sec-2-1-2}
+\begin{itemize}
+\item $$\sum_{k=m}^n a_k = \sum_{j=m}^n a_j$$
+\item $$c\sum_{k=m}^n a_k = \sum_{k=m}^n c a_k$$
+\item $$\sum_{k=m}^n a_k \pm \sum_{j=m}{n} b_k = \sum_{k=m}^n (a_k \pm b_k)$$
+\item $$\sum_{k=m}^n a_k + \sum_{k=n+1}^p a_k = \sum_{k=m}^{p} a_k$$
+\item $$\sum_{k=m}^n a_k = \sum_{k=m+p}^{n+p} a_{k-p} = \sum_{k=m-p}^{n-p} a_{k+p}$$
+\item $$(\sum_{i=1}^n a_i)(\sum_{j=1}^m b_j) = \sum_{i=1}^n \sum_{j=1}^m a_i b_j = \sum_{j=1}^m \sum_{i=1}^n a_i b_j$$
+      falls $$n=m$$ $$\sum_{i,j=1}^n a_i b_j$$
+\end{itemize}
+
+\subsection{Produktzeichen}
+\label{sec-2-2}
+\subsubsection{Beispiel}
+\label{sec-2-2-1}
+$$\prod_{n=1}^3 a_n = a_1 a_2 a_3$$
+
+\subsection{Fakultätszeichen}
+\label{sec-2-3}
+$$m! = 1 \cdot 2 \cdot \ldots \cdot (m-1) \cdot m = \prod_{n=1}^m n$$
+
+\section{misc}
+\label{sec-3}
+mathe für physiker vs. analysis
+klasuren gebündelt
+auslandssemester
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}
