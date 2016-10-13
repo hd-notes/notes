@@ -1,15 +1,22 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Mathematischer Vorkurs
-#+STARTUP: latexpreview
 #+LATEX_HEADER: \usepackage{siunitx}
 #+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
 #+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
+# #+LATEX_HEADER: \usepackage{enumitem}
+# #+LATEX_HEADER: \renewcommand\labelenumi{\left(\roman*\right)}
 
 * Messwert und Maßeinheit
-  Zu jeder phys. Größe gehören _Messwert_ und _Maßeinheit_, d.h. Zahlewert $$\cdot$$ Einheit
+  Zu jeder phys. Größe gehören _Messwert_ und _Maßeinheit_, d.h. Zahlewert $\cdot$ Einheit
 
 ** Beispiel
-   Geschw. $$v = \si{\kilo\meter\per\second}$$
+   Geschw. $v = \si{\kilo\meter\per\second}$
 
 ** Bezeichungen
    | Abkürzung | Bedeutung        |
@@ -26,13 +33,13 @@
    | V         | potential        |
 
    Wenn das lateinische  Alphabet nicht ausreicht: griechische Buchstaben
-   $$\alpha, \beta, \gamma, \delta, \Delta, \Gamma, \epsilon, \zeta, \eta, \Theta, \kappa, \lambda, \mu, \nu, \Xi, \pi, \rho, \sigma, \tau, \phi, \chi, \psi, \omega, \Omega$$
+   \[\alpha, \beta, \gamma, \delta, \Delta, \Gamma, \epsilon, \zeta, \eta, \Theta, \kappa, \lambda, \mu, \nu, \Xi, \pi, \rho, \sigma, \tau, \phi, \chi, \psi, \omega, \Omega\]
 
 ** Maßeinheiten
    Maßeinheiten werden über Maßstäbe definiert.
 
 *** Bespiel:
-	\SI{1}{\meter} = Strecke, die das Licht in $$\frac{1}{299792458}\si{\second}$$ zurücklegt.
+	\SI{1}{\meter} = Strecke, die das Licht in $\frac{1}{299792458}\si{\second}$ zurücklegt.
 
 *** SI-Einheiten
 	Internationaler Standart (außer die bösen Amerikaner :D)
@@ -41,7 +48,7 @@
     |--------------------+------------+-----------------|
     | Länge              | Meter      | \si{\meter}     |
     | Zeit               | Sekunden   | \si{\second}    |
-    | Masse              | Kilogramm  | \si{\kilogram} |
+    | Masse              | Kilogramm  | \si{\kilogram}  |
     | elektrischer Strom | Ampere     | \si{\ampere}    |
     | Temperatur         | Kelvin     | \si{\kelvin}    |
     | Lichstärke         | Candela    | \si{\candela}   |
@@ -50,111 +57,636 @@
     | Stoffmenge         | Mol        | \si{\mol}       |
 
 **** Radiant
-	 Kreisumfang $$U = 2\pi r$$
-	 Bogenmaß $$b = \phi r$$
+	 Kreisumfang $U = 2\pi r$
+	 Bogenmaß $b = \phi r$
 
 	 Umrechung in Winkelgrad
-	 $$\SI{2\pi}{\radian} \estimates \SI{360}{\degree}$$
+	 \[\SI{2\pi}{\radian} \estimates \SI{360}{\degree}\]
 
-	 $$\frac{Winkel in Radiant}{2\pi} = \frac{Winkel in Grad}{360}$$
+	 \[\frac{Winkel in Radiant}{2\pi} = \frac{Winkel in Grad}{360}\]
 
 **** Steradiant
-	 $$\Omega = \frac{A}{r^2}$$
+	 \[\Omega = \frac{A}{r^2}\]
 
 **** Abgeleitete Einheiten
-     | Gröpe                    | Einheit | Symbol        | Equivalent                               |
-     |--------------------------+---------+---------------+------------------------------------------|
-     | Frequenz                 | Hertz   | \si{\hertz}   | \si{1\per\second}                        |
+     | Gröpe                    | Einheit | Symbol        | Equivalent                             |
+     |--------------------------+---------+---------------+----------------------------------------|
+     | Frequenz                 | Hertz   | \si{\hertz}   | \si{1\per\second}                      |
      | Kraft                    | Newton  | \si{\newton}  | \si{\kilogram\meter\per\square\second} |
-     | Energie                  | Joule   | \si{\joule}   | \si{\newton\meter}                       |
-     | Leistung                 | Watt    | \si{\watt}    | \si{\joule\per\second}                   |
-     | Druck                    | Pascal  | \si{\pascal}  | \si{\newton\per\square\meter}            |
-     | elektrischer Ladung      | Coulomb | \si{\coulomb} | \si{\ampere\second}                      |
-     | elektrisches Potenzal    | Volt    | \si{\volt}    | \si{\joule\per\coulomb}                  |
-     | elektrischer Wiederstand | Ohm     | \si{\ohm}     | \si{\volt\per\ampere}                    |
-     | Kapazität                | Farad   | \si{\farad}   | \si{\coulomb\per\newton}                 |
-     | magn. Fluss              | Weber   | \si{\weber}   | \si{\volt\per\second}                    |
+     | Energie                  | Joule   | \si{\joule}   | \si{\newton\meter}                     |
+     | Leistung                 | Watt    | \si{\watt}    | \si{\joule\per\second}                 |
+     | Druck                    | Pascal  | \si{\pascal}  | \si{\newton\per\square\meter}          |
+     | elektrischer Ladung      | Coulomb | \si{\coulomb} | \si{\ampere\second}                    |
+     | elektrisches Potenzal    | Volt    | \si{\volt}    | \si{\joule\per\coulomb}                |
+     | elektrischer Wiederstand | Ohm     | \si{\ohm}     | \si{\volt\per\ampere}                  |
+     | Kapazität                | Farad   | \si{\farad}   | \si{\coulomb\per\newton}               |
+     | magn. Fluss              | Weber   | \si{\weber}   | \si{\volt\per\second}                  |
 
 **** Prefix / Größenordungen
-     | Prefix | \log{10} | Abkürzung |
-     |--------+----------+-----------|
-     | Dezi   |       -1 | d         |
-     | Zenti  |       -2 | c         |
-     | Milli  |       -3 | m         |
-     | Mikro  |       -6 | \mu       |
-     | Nano   |       -9 | n         |
-     | Piko   |      -12 | p         |
-     | Femto  |      -15 | f         |
-     | Atto   |      -18 | a         |
-     | Zepta  |      -21 | z         |
-     | Yokto  |      -24 | y         |
-     | Deka   |        1 | D         |
-     | Hekto  |        2 | h         |
-     | Kilo   |        3 | k         |
-     | Mega   |        6 | M         |
-     | Giga   |        9 | G         |
-     | Tera   |       12 | T         |
-     | Peta   |       15 | P         |
-     | Exa    |       18 | E         |
-     | Zetta  |       21 | Z         |
-     | Yotta  |       24 | Y         |
+     | Prefix | \log{10} | Abkürzung  |
+     |--------+----------+------------|
+     | Dezi   |       -1 | d          |
+     | Zenti  |       -2 | c          |
+     | Milli  |       -3 | m          |
+     | Mikro  |       -6 | \mu        |
+     | Nano   |       -9 | n          |
+     | Piko   |      -12 | p          |
+     | Femto  |      -15 | f          |
+     | Atto   |      -18 | a          |
+     | Zepta  |      -21 | z          |
+     | Yokto  |      -24 | y          |
+     | Deka   |        1 | D          |
+     | Hekto  |        2 | h          |
+     | Kilo   |        3 | k          |
+     | Mega   |        6 | \si{\mega} |
+     | Giga   |        9 | G          |
+     | Tera   |       12 | T          |
+     | Peta   |       15 | P          |
+     | Exa    |       18 | E          |
+     | Zetta  |       21 | Z          |
+     | Yotta  |       24 | Y          |
+** Natürliches Einheitensystem der Teilchenphysik
+*** Grundlage
+	\[\SI{2.9979e8}{\meter\per\second}\]
+	\[\si{\planckbar} = \frac{h}{2\pi} = \SI{6.5822e-22}{\MeV\second}\]
+	betrachte $\frac{\si{\planckbar} c}{\si{\MeV\meter}}=\num{197.33e-15}$
+*** natürliches Einheitensystem
+	$h = c = 1$
+	In diesem Fall ist $\si{1\per\mega\electronvolt} = \SI{197.44}{\femto\meter}
+	In diesem Einheitensystem ist die Einheit von $[Energie] = [Masse] = [L\ddot{a}nge]^-1 = [Zeit]^-1$
+
+** Endliche Messgenauigkeit
+   z.B. Plancksches Wirkungsquantum
+   \[\si{\planckbar} = \SI{1.05457168(18)e-34}{\joule\second}\]
+   Das bedeutet, dass der Wert von $\si{\planckbar}$ mit einer Wahrscheinlichkeit von $\SI{68}{\percent}$ zwischen den beiden Schranken liegt \[\SI{1.05457150e-34}{\joule\second} \leq \si{\planckbar} \leq \SI{1.05457186e-34}{\joule\second}\]
 
 * Zeichen und Zahlen
-  | Zeichen    | Bedeutung                                   |
-  |------------+---------------------------------------------|
-  | +          | plus                                        |
-  | \cdot      | mal                                         |
-  | =          | gleich                                      |
-  | <          | ist kleiner als                             |
-  | >          | ist größer als                              |
-  | \angle     | Windel zwischen                             |
-  | -          | minus                                       |
-  | /          | geteilt                                     |
-  | \neq       | ungleich                                    |
-  | \leq       | kleiner gleich                              |
-  | \geq       | größer gleich                               |
-  | \simeq     | ungefähr gleich                             |
-  | \pm        | plus oder minus                             |
-  | \perp      | steht senkrecht auf                         |
-  | \equiv     | ist identisch gleich                        |
-  | \ll        | ist klein gegen                             |
-  | \gg        | ist groß gegen                              |
-  | \infty     | größer als jede Zahl                        |
-  | \to \infty | eine Größe wächst über alle Grenzen \ Limes |
-  | \sum       | Summe                                       |
+** Symbole
+   | Zeichen       | Bedeutung                                    |
+   |---------------+----------------------------------------------|
+   | $+$           | plus                                         |
+   | $\cdot$       | mal                                          |
+   | $=$           | gleich                                       |
+   | $<$           | ist kleiner als                              |
+   | $>$           | ist größer als                               |
+   | $\angle$      | Windel zwischen                              |
+   | $-$           | minus                                        |
+   | $/$           | geteilt                                      |
+   | $\neq$        | ungleich                                     |
+   | $\leq$        | kleiner gleich                               |
+   | $\geq$        | größer gleich                                |
+   | $\simeq$      | ungefähr gleich                              |
+   | $\pm$         | plus oder minus                              |
+   | $\perp$       | steht senkrecht auf                          |
+   | $\equiv$      | ist identisch gleich                         |
+   | $\ll$         | ist klein gegen                              |
+   | $\gg$         | ist groß gegen                               |
+   | $\infty$      | größer als jede Zahl                         |
+   | $\to \infty$  | eine Größe wächst über alle Grenzen \ Limes  |
+   | $\sum$        | Summe                                        |
+   | $\in$         | Element von                                  |
+   | $\subseteq$   | ist Untermenge von oder gleich               |
+   | $\cup$        | Vereiningungsmenge                           |
+   | $\exists$     | es existiert ein                             |
+   | $\Rightarrow$ | daraus folgt, ist hinreichende Bedingung für |
+   | $\Leftarrow$  | gilt wenn, ist notwendige Bedingung für      |
+   | $\exists!$    | es existiert genau ein                       |
+   | $\notin$      | kein Element von                             |
+   | $:=$          | ist definiert durch                          |
+   | $\emptyset$   | Nullmenge                                    |
+   | $\Forall$     | für alle                                     |
 
-** Summenzeichn
+*** Summenzeichn
+**** Beispiel
+   	 1. \[\sum_{n=1}^3a_n=a_1 + a_2 + a_3\]
+   	 2. Summe der ersten $m$ natürlichen Zahlen
+       	\[\sum_{n=1}^{m}n = 1 + 2 + \ldots + \left(m -1\right) + m = \frac{m (m + 1)}{2}\]
+   	 3. Summe der ersten $m$ Quadrate der natürlichen Zahlen
+       	\[\sum_{n=1}^m n^2 = 1 + 4 + \ldots + \left(m-1\right)^2 + m^2 = \frac{m(m+1)(2m+1)}{6}\]
+   	 4. Summe der ersten $m$ Potenzen einer Zahl ($q \neq 1$)
+       	\[\sum_{n=0}^m q^n = 1+q+\dots+q^{m-1}+q^m = \frac{1 - q^{m + 1}}{1-q}\]
+       	sog. /geometrische Summe/
+	   	- Beweis
+	   	  \[s_m = 1 + \ldots + q^m\]
+	   	  \[q s_m = q + \ldots + q^{m+1}\]
+	   	  \[s_m - q s_m = s_m\left(1-q\right) = 1-q^{m+1}\]
+
+**** Rechenregeln
+	 1. \[\sum_{k=m}^n a_k = \sum_{j=m}^n a_j\]
+	 2. \[c\sum_{k=m}^n a_k = \sum_{k=m}^n c a_k\]
+	 3. \[\sum_{k=m}^n a_k \pm \sum_{j=m}{n} b_k = \sum_{k=m}^n \left(a_k \pm b_k\right)\]
+	 4. \[\sum_{k=m}^n a_k + \sum_{k=n+1}^p a_k = \sum_{k=m}^{p} a_k\]
+	 5. \[\sum_{k=m}^n a_k = \sum_{k=m+p}^{n+p} a_{k-p} = \sum_{k=m-p}^{n-p} a_{k+p}\]
+	 6. \[\left(\sum_{i=1}^n a_i\right)(\sum_{j=1}^m b_j) = \sum_{i=1}^n \sum_{j=1}^m a_i b_j = \sum_{j=1}^m \sum_{i=1}^n a_i b_j\]
+	   	falls $n=m$ \[\sum_{i,j=1}^n a_i b_j\]
+
+*** Produktzeichen
+**** Beispiel
+	 \[\prod_{n=1}^3 a_n = a_1 a_2 a_3\]
+
+*** Fakultätszeichen
+   	\[m! = 1 \cdot 2 \cdot \ldots \cdot \left(m-1\right) \cdot m = \prod_{n=1}^m n\]
+	\[0! = 1\]
+
+** Zahlen
+   Erinnerung
+   natürliche Zahlen $\mathbb{N}={1,2,3,\ldots}$
+   ganze Zahlen $\mathbb{Z}=\mathbb{N} \cup {0} \cup {-a\mid a \in \mathbb{N}}$
+   rationale Zahlen $\mathbb{Q}=\mathbb{Z}\cup {\frac{b}{a} \mid a \in \mathbb{Z} \setminus \{0\} \and b \in \mathbb{Z}}$
+   reelle Zahlen $\mathbb{R} = \mathbb{Q} \cup \text{unendliche Dezimalbrüche}$
+   Die reellen Zahlen lassen sich umkehrbar eindeutig auf die Zahlengerade abbilden, dh.h jedem Punkt entspricht genau eine reelle Zahl und umgekehrt
+*** Reechengesetze für reelle Zahlen
+**** Addition
+	 - Assoziativität $(a+b) + c = a + (b + c)$
+	 - Kommutativität $a + b = b + a$
+	 - neutrales Element $a + 0 = a$
+	 - Existenz des Negatives $a + x = b$ hat immer genau eine Lösung: $x = b - a$ für $0 - a$ schreibe wir $-a$
+**** Multiplikation:
+	 - Assoziativität $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+	 - Kommutativität $a \cdot b = b \cdot a$
+	 - neutrales Element $a \cdot 1 = a$
+	 - Inverses $a \cdot x = b$ hat für jedes $a \neq a$ genau eine Lösung $x = \frac{b}{a} \text{für} \frac{1}{a}$ schreiben wir $a^-1$
+	 - Distributivgesetz $a \cdot (b + c) = a\cdot b + a\cdot c$
+**** Ordung der reellen Zahlen
+	 Die kleiner-Beziehung $a<b$, oder auch $b > a$ hat folgende Eigenschaften:
+	 - Trichotomie Es gilt immer genau eine Beziehung
+	   $a < b$, $a = b$ $a > b$
+	 - Transitivität Aus $a < b$ und $b < c$ folgt $a < c$
+**** Beispiele, Folgerungen
+***** Rechenregen für Potenzen
+	  $b^n := b\cdot b \cdot \ldots \cdot b$ $n\in \mathbb{N}$ Faktoren
+	  \[b^0 := 1\]
+	  \[b^-n = \frac{1}{b^n}\]
+	  \[b^n \cdot b^m = b^{n+m}\]
+	  \[(b^n)^m = b^{n\cdot m}\]
+	  \[(a\cdot b)^n = a^n \cdot b^n\]
+**** Betrag einer reellen Zahl
+	 \[\abs{a} := \begin{cases} a & a \leq 0 \\ -a & a > 0 \end{cases} \]
+***** Eigenschaften
+	  \[\abs{a} \geq 0 \Forall a\in\mathbb{R}\]
+	  \[\abs{a} = 0\] nur für $a = 0$
+	  \[\abs{a + b} \leq \abs{a} + \abs{b}\] Dreieckungleichung
+*** Satz des Pythagoras
+	\[a^2 + b^2 = c^2\]
+*** binomische Formeln:
+	\[(a\pm b)^2 = a^2 \pm 2 a b + b^2\]
+	\[(a+b)(a-b) = a^2 - b^2\]
+	Allgemein:
+	\[(a \pm b)^n = \sum_{k=0}^n{\frac{n!}{k!(n-k)!}a^{n-k}(\pm)^k}\] (Klammer) Binominial koeffizienten
+	\[\binom{n}{k} := \frac{n!}{k!(n-k)!}a^{n-k}\]
+
+*** Pascalsches Dreieck
+	\begin{center}
+	$n = 0$ 1
+	$n = 1$ 1 1
+	$n = 2$ 1 2 1
+	$n = 3$ 1 3 3 1
+	$n = 4$ 1 4 6 4 1
+	$n = 5$ 1 5 10 10 5 1
+	\end{center}
+
+*** Beweisprinzip der Vollständingen Induktion
+**** Beispiel
+	 Für alle $n \in \mathbb{N}$ soll die Summe der ersten $n$ Quadratzahlen beiesen werden
+	 \[A(n) := \sum_{k=1}^n{k^1} = 1^2 + 2^2 + \ldots + n^2 = \frac{1}{6}n(n+1)(2n+1)\]
+	 1. Induktionsanfang $A(1) = 1$ \checkmark
+	 2. Induktonsschritt Falls $A(k)$ richtig ist, wird gezeigt, dass auch $A(k+1)$ richtig ist
+		\[A(k+1) = \underbrace{1^2 + 2^2 + \ldots + k^2}_{A(n)} + (k+1)^2 = \frac{1}{6}k(k+1)(2k+1)+(k+1)^2\]
+		\[=\frac{1}{6}(k+1)(k(2k+1)+6(k+1))\]
+		\[=\frac{1}{6}(k+1)(k+2)(2k+3)\]
+		\[=\frac{1}{6}(k+1)(k+2)(2(k+1)+1)\]
+
+*** Quadratische Ergänzung
+	\[x^2 + a x + b = 0\]
+	\[x_{1,2}=-\frac{a}{2}\pm \sqrt{\frac{a^2}{4}-b}\]
+
+* Folgen und Reihen
+** Folge
+*** Definition
+	Vorschrift, die jeder natürlichen Zahl $n$ eine reelle Zahl $a_n$ zuweist.
+	\[(a_n)_{n\in \mathbb{N}}\]
+*** Beispiele
+	- die natürlichen Zahlen selbst \[n_{n\in \mathbb{N}} = (1, 2, 3, \ldots)\]
+	- alternierende Folge \[((-1)^{n+1})_{n\in \mathbb{N}} = (1, -1, 1, -1, \ldots)\]
+	- harmonische Folge \[(\frac{1}{n})_{n\in \mathbb{N}} = (1, \frac{1}{2}, \frac{1}{3}, \ldots)\]
+	- inverse Fakultäten \[(\frac{1}{n!})_{n\in \mathbb{N}}= (1, \frac{1}{2}, \frac{1}{6}, \ldots)\]
+	- Folge echter Brüche \[(\frac{n}{n + 1})_{n\in \mathbb{N}} = (\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \ldots)\]
+	- geometrische Folge \[(q^n)_{n\in \mathbb{N}} = (q, q^2,q^3, \ldots)\]
+	  charakteristische Eigenschaft der geometrischen Folge $\frac{a_{n+1}}{a_n} = q$ q heißt Quotient der Folge
+	  allgemeines Bildungsgesetz $a_n = a_1 q^{n-1}$
+	- Folge der Ungeraden Zahlen (arithmetische Folge) \[(1+(n-1)*2)_{n\in \mathbb{N}} = (1, 3, 5, 7, \ldots)\]
+	  $a_{n+1} - a_n = d$ $d$ heißt Differenz der Folge
+	  allgemeines Bildungsgesetz $a_n = a_1 + (n - 1) d$
+	- "zusammengesetzte Folgen" (hier Exponentialfolge) \[((1 + \frac{1}{n})^n)_{n\in \mathbb{N}} = (2, \frac{3}{2}^2, \frac{4}{3}^2, \ldots)\]
+*** Frage
+	Kann man etwas über das Verhalten von $(a_n)_{n\in \mathbb{N}}$ für $n \to \infty$ aussagen, ohne tatsächlich "die Reise ins Unendliche" anzutreten"
+*** Beschränktheit
+	Eine Folge heißt _nach oben beschänkt_, wenn es eine obere Schranke B für die Flieder der Folge gibt: $a_n \leq B$, d.h. $\exists B: a_n \leq B \Forall n \in \mathbb{N}$
+	Nach unten beschränkt: $\exists A: A \geq a_n \Forall n\in\mathbb{N}$
+*** Monotonie
+	- Eine Folge heißt _monoton steigend_, wenn aufeinanderfolgende Glieder mit wachsender Nummer immer größer werden: $a_n \leq a_{n+1} \Forall n\in\mathbb{N}$
+	- _streng monoton steigend_ $a_n < a_{n+1} \Forall n\in\mathbb{N}$
+	- _monoton fallend_ $a_n \geq a_{n+1} \Forall n\in\mathbb{N}$
+	- _streng monoton fallend_ $a_n > a_{n+1} \Forall n\in\mathbb{N}$
+*** Konvergenz
+	Eine Folge $(a_n)_{n\in\mathbb{N}}$ _konvergiert_ gegen a oder hat den _Grenzwert_ a, wenn es zu jedem $\epsilon > 0$ ein $N(\epsilon)\in\mathbb{N}$ gibt mit $\abs{a-a_n} < \epsilon \Forall n > N(\epsilon)$
+	Wir schreiben $\lim_{n\to\infty}a_n = a$
+**** Beispiel
+	 - $\lim_{n\to\infty}\frac{1}{n} = 0$
+	 - $\lim_{n\to\infty}(1-\frac{1}{\sqrt{n}}) = 1$
+**** Grenzwertfreie Konvergenzkriterien
+	 - jede monoton wachsend, nach oben beschränkte Folge ist konvergent, entsprechend ist jede monoton fallende, nach unten beschränkte Folge konvergent
+	 - Cauchy-Kriterium: Eine Folge (a_n)_{n\in\mathbb{N}} konvergiert genau dann, wenn es zu jedem $\epsilon > 0$ ein  $N(\epsilon)\in\mathbb{N}$ gibt, so dass \[\abs{a_n - a_m} < \epsilon\Forall n,m > N(\epsilon)\]
+***** Für harmonische Folge $(\frac{1}{n})_{n\in\mathbb{N}}$
+	  \[\abs{a_n - a_m} = \abs{\frac{1}{n} - \frac{1}{m}} = \abs{\frac{m-n}{m n}} < \abs{\frac{m}{m n}} = \frac{1}{n} < \epsilon \text{für} n > N(\epsilon) = \frac{1}{\epsilon}\]
+** Reihen (unendliche Reihen)
+   Sei $(a_n)_{n\in\mathbb{N}}$ eine Folge reeller Zahlen, Die Folge \[s_n := \sum_{k=1}^n a_k, n\in\mathbb{N}\] der Partialsumme heißt (unendliche) Reihe und wird oft mit $\sum_{k=1}^\infty a_k$ bezeichnet
+   Konvergiert die Folge (s_n)_{n\in\mathbb{N}}, so wird ihr Grenzwert ebenfalls mit $\sum_{k=1}^\infty a_k$ bezeichnet
+*** Bemerkung
+	Ergebnisse für Folgen gelten auch für Reihen
+*** Rechenregeln für konvergente Reihen
+	Seien $\sum_{k=1}^\infty a_k$ und $\sum_{k=1}^\infty b_k$ zwei konvergente Reihen und $\lambda\in\mathbb{R}$, dann sind auch die Reihen \[\sum_{k=1}^\infty a_k + b_k, \sum_{k=1}^\infty a_k - b_k, \sum_{k=1}^\infty \lambda a_k\] konvergent und es gilt
+	\[\sum_{k=1}^\infty(a_k \pm b_k) = \sum_{k=1}^\infty a_k \pm \sum_{k=1}^\infty b_k\]
+	\[\sum_{k=1}^\infty \lambda a_k = \lambda \sum_{k=1}^\infty a_k\]
+**** Bemerkung
+	 Für das Produkt zweier undendlicher Reihen gilt i.A. keine so einfache Formel
 *** Beispiel
-   	- $$\sum_{n=1}^3a_n=a_1 + a_2 + a_3$$
-   	- Summe der ersten $m$ natürlischen Zahlen
-      $$\sum_{n=1}^{m}n = 1 + 2 + \ldots + (m -1) + m = \frac{m (m + 1)}{2}$$
-   	- Summe der ersten $m$ Quadrate der natürlichen Zahlen
-      $$\sum_{n=1}^m n^2 = 1 + 4 + \ldots + (m-1)^2 + m^2 = \frac{m(m+1)(2m+1)}{6}$$
-   	- Summe der ersten $m$ Potenzen einer Zahl ($q \neq 1$)
-      $$\sum_{n=0}^m q^n = 1+q+\dots+q^{m-1}+q^m = \frac{1 - q^{m + 1}}{1-q}$$
-      sog. /geometrische Summe/
-	  - Beweis
-	   	$$s_m = 1 + \ldots + q^m$$
-	   	$$q s_m = q + \ldots + q^{m+1}$$
-	   	$$s_m - q s_m = s_m(1-q) = 1-q^{m+1}$$
+	geometrische Reihe \[\sum_{n=0}^\infty q^n = \lim_{m\to\infty}(\sum_{n=0}^m q^n) = \lim_{m\to\infty}\frac{1-q^{m+1}{1-q}} = \frac{1}{1-q} \text{für} q < 1, q\neq 0\]
+*** Absolute Konvergenz
+	Eine Reihe \[\sum_{k=1}^\infty a_k\] heißt absolut konvergent, wenn die Reihe \[\sum_{k=1}^\infty\abs{a_k}\] konvergiert. Absolute konvergente Reihen können ohne Änderung der Grenzwertes umgeordnet werden, d.h. jede ihrer Umordunen konvergiert wieder und zwar immer gegen den gleichen Grenzwert.
+* TODO what was done after this? (Funktionen? (only?))
+* Funktionen
+** Normal-Hyperbel
+   \[y=\frac{1}{x}\quad D_f=\mathbb{R}\setminus\{0\}\quad W_f=\mathbb{R}\setminus\{0\}\]
+*** Physik-Beispiel
+	- Boyle-Mariettsches Gesetz
+	- Druck $p$ eines idealen Gases in einem Volumen $V$ bei konstanter Temperatur und Gasmenge: $p = \frac{\text{cons}}{V}$
+** kubische Parabel
+   \[y=a x^3\]
+*** Physik-Beispiel
+	\[V=\frac{4}{3}\pi r^3\]
+*** Verallgemeinerung
+	\[y=a x^n\quad n\in\mathbb{N}\]
+** $y=a x^{-2}$
+*** Physik-Beispiel
+	Coulomb Gesetz der Elektrostatik \[F=\frac{1}{4\pi\epsilon}\frac{q_1 q_2}{r^2}\]
+** Symmetrieeigenschaften der Potenzfunktionen
+   \[y=f(x)=x^n\]
+   - gerade n: f ist symmetrisch, d.h. $f(-x) = f(x)$
+   - ungerade n: f ist antisymmetrisch, d.h. $f(-x) = -f(x)$
+** Potenzfunktionen als "Bausteine" in susammengesetzten Funktionen
+   Polynom m-ten Grades \[y=P_m(x) = a_0 + a_1 x + \ldots + a_m x^m = \sum_{k=0}^m a_k x^k\]
+** Rationale Funktionen
+   \[y=\frac{P_m(x)}{Q_n(x)}\quad D_f = \{x\in\mathbb{R}\mid Q_n(x)\neq 0\}\]
+   $P_m(x)$ Polynom m-ten Grades, $Q_n(x)$ n-ten Grades
+*** Beispiel
+	\[f(x) = \frac{1}{x^2 + 1}\]
+	"Lorentz-Verteilung beschreibt die Linienbreite einer Spektrallinie"
+** Trigonometrische Funktionen
+   \[\sin{\alpha} = \frac{a}{c} = \cos{\beta}\]
+   \[\cos{\alpha} = \frac{b}{c} = \sin{\beta}\]
+   \[\tan{\alpha} = \frac{a}{b}=\frac{\sin{\alpha}}{\cos{\alpha}} = \cot{\beta} = \frac{1}{\cot{\alpha}}\]
+   \[\cot{\alpha} = \frac{b}{a}=\frac{\cos{\alpha}}{\sin{\alpha}} = \tan{\beta} = \frac{1}{\tan{\alpha}}\]
+   \[\cos{\alpha}^2 + \sin{\alpha}^2 = 1\]
 
+   | $\alpha$           | $\sin{\alpha}$       | $\cos{\alpha}$       | $\tan{\alpha}$       |
+   |--------------------+----------------------+----------------------+----------------------|
+   | $0$                | $0$                  | $1$                  | $0$                  |
+   | $\SI{30}{\degree}$ | $\frac{1}{2}$        | $\frac{\sqrt{3}}{2}$ | $\frac{1}{\sqrt{3}}$ |
+   | $\SI{45}{\degree}$ | $\frac{\sqrt{2}}{2}$ | $\frac{\sqrt{2}}{2}$ | $1$                  |
+   | $\SI{60}{\degree}$ | $\frac{\sqrt{3}}{2}$ | $\frac{1}{2}$        | $\sqrt{3}$           |
+   | $\SI{90}{\degree}$ | $1$                  | $0$                  | $\to\infty$          |
+*** TODO Table Formula?
+*** TODO Veranschaulichung am Einheitskreis
+	$\sin{\alpha} = y$
+	Periodische Werweiterung auf $\alpha < 0,~\alpha>\frac{\pi}{2}$
+	Periodische Funktion: \[\sin{x + 2\pi} = \sin{x}\quad\text{Periode: }2\pi\]
+	\[\cos{x + 2\pi} = \cos{x}\quad\text{Periode: }2\pi\]
+**** Beispiel
+	 \[\sin{x + \pi} = -\sin{x}\]
+	 \[\cos{x + \pi} = -\cos{x}\]
+	 \[\cos{x} = \sin{\frac{\pi}{2}-x}\]
+**** TODO Graphik
+*** Tangens/Cotangens
+	\[\tan{x} = \frac{\sin{x}}{\cos{x}}\]
+**** TODO Graphik
+*** Additionstheoreme
+	\[\sin{\alpha\pm\beta} = \sin{\alpha}\cos{\beta}\pm\cos{\alpha}\sin{\beta}\]
+	\[\cos{\alpha\pm\beta} = \cos{\alpha}\cos{\beta}\pm\sin{\alpha}\sin{\beta}\]
+	\[\sin{2\alpha} = 2\sin{\alpha}\cos{\alpha}\]
+	\[\cos{2\alpha} = \cos{\alpha}^2 - \sin{\alpha}^2=1 - 2\sin{\alpha}^2 = 2\cos{\alpha}^2 - 1\]
+** Exponentialfunktionen
+   \[y=f(x)=b^x\quad b>0,~x\in\mathbb{R}\]
 *** Rechenregeln
-	- $$\sum_{k=m}^n a_k = \sum_{j=m}^n a_j$$
-	- $$c\sum_{k=m}^n a_k = \sum_{k=m}^n c a_k$$
-	- $$\sum_{k=m}^n a_k \pm \sum_{j=m}{n} b_k = \sum_{k=m}^n (a_k \pm b_k)$$
-	- $$\sum_{k=m}^n a_k + \sum_{k=n+1}^p a_k = \sum_{k=m}^{p} a_k$$
-	- $$\sum_{k=m}^n a_k = \sum_{k=m+p}^{n+p} a_{k-p} = \sum_{k=m-p}^{n-p} a_{k+p}$$
-	- $$(\sum_{i=1}^n a_i)(\sum_{j=1}^m b_j) = \sum_{i=1}^n \sum_{j=1}^m a_i b_j = \sum_{j=1}^m \sum_{i=1}^n a_i b_j$$
-	  falls $$n=m$$ $$\sum_{i,j=1}^n a_i b_j$$
-
-** Produktzeichen
+	\[b^x b^y = b^{x+y}\quad \left(b^x\right)^y = b^{xy}\]
+	natürliche Exponentialfunktion mit Zahl $e$ als Basis
+	\[y=f(x)=e^x=\sum_{k=0}^\infty \frac{x^k}{k!}\]
+	#+BEGIN_SRC gnuplot :exports results :file exp.eps
+set xrange [-3:3]
+set yrange [-0.1:3]
+set yzeroaxis
+set zeroaxis
+plot exp(x), exp(-x)
+	#+END_SRC
+*** Beispiel radioaktiver Zerfall
+	\[N(t) = N(0)e^\frac{-t}{\tau}\]
+** Cosinus hyperbolicus
+   \[y=\cosh{x}:=\frac{1}{2}\left(e^x + e^{-x}\right)\]
+** Sinus hyperbolicus
+   \[y=\sinh{x}:=\frac{1}{2}\left(e^x - e^{-x}\right)\]
+   Es gilt:
+   \[\cosh^2{x} - \sinh^2{x}=1\]
+** Tangens hyperbolicus
+   \[y=\tanh{x}:=\frac{\sinh{x}}{\cosh{x}}=\frac{e^x - e^{-x}}{e^x + e^{-x}}\]
+** Cotangens hyperbolicus
+   \[y=\coth{x}:=\frac{1}{\tanh{x}}=\frac{e^x + e^{-x}}{e^x - e^{-x}}\]
+** Wurzelfunktion
+   Umkehrfunktion der Potenzfunktionen \[y=f(x)=x^n\quad n\in\mathbb{Z}\]
+   Wurzelfunktion: \[y=f(x)=\sqrt[n]{x} = x^\frac{1}{n}\]
+   n gerade: vor der Umkehrung ist die Einschränkung des Definitionsbereiches auf $x\geq 0$ notwendig
 *** Beispiel
-	$$\prod_{n=1}^3 a_n = a_1 a_2 a_3$$
+	\[y=f(x)=x^2 + 1\quad x\geq 0\]
+	Umkehrfunktion: \[y=\sqrt{x-1}\]
+* Funktionen mit Ecken und Sprüngen
+** Betragsfunktion
+   \[y=\abs{x}:=\begin{cases}x& x \geq 0\\ -x& x < 0\end{cases}\]
+** Heaviside-Stufenfunktion
+   \[y=\Theta(x):=\begin{cases}1&x>0\\0&x<0\\\frac{1}{2}&x=0\end{cases}\]
+*** TODO Graphik
+*** Beispiel
+	\[y=\Theta(x)\Theta(-x+a)\]
+    *TODO* Graphik
+** "symmetrischer Kasten" der Breite $2a$ und der Höhe $\frac{1}{2a}$ (Dirak Delta Funktion)
+   \[\Theta_a (x):=\frac{\Theta(x+a)\Theta(-x+a)}{2a}\]
+   \[\lim_{a\to 0}\Theta_a=\text{"(Dirak) $\delta$-Funktion"}\]
+*** TODO Graphik
+* Verkettung von Funktionen
+  Seinen \[f:D_f \to \mathbb{R}\] \[g:D_g\to\mathbb{R}\] mit $w_g \subseteq D_f$, dann ist die Funktion $f\circ g: D_g\to\mathbb{R}$ definiert durch \[(f\circ g)(x):=f(g(x))\quad\Forall x\in D_g\]
+**  Beispiel
+	\[z = g(x) = 1+x^2\quad W_g: z\geq 1\]
+	\[y=f(z)=\frac{1}{z}\quad D_f=\mathbb{R}\setminus\{0\}\]
+	also $W_g\subset D_f$, sodass \[(f\circ g)(x)=f(g(x)) = \frac{1}{g(x)}= \frac{1}{1+x^2}\]
+** Spiegelsymmetrie (Siegelung an der y-Achse, d.h. $x\to -x$)
+   Eine Funktion $f(x)$ heißt
+   - gerade(symmetrisch) wenn $f(-x) = f(x)$
+   - ungerade (antisymmetrisch) wenn $f(-x) = -f(x)$
+*** Beispiel
+**** gerade Funktionen
+	 - $f(x) = x^{2n}\quad n\in\mathbb{N}$
+	 - $f(x) = \cos{x}$
+	 - $f(x) = \abs{x}$
+**** ungerade Funktionen
+	 - $f(x) = x^{2n + 1}$
+	 - $f(x)=\frac{1}{x}$
+	 - $f(x)=\sin(x)$
+**** keins von beidem
+	 - $f(x) = s x + c$
+*** Zerlegung
 
-** Fakultätszeichen
-   $$m! = 1 \cdot 2 \cdot \ldots \cdot (m-1) \cdot m = \prod_{n=1}^m n$$
-
+	*Jede Funktion lässt sich in einen geraden und ungeraden Anteil zerlegen*
+	- gerader Anteil: \[f_+(x)=\frac{1}{2}\left(f(x) + f(-x)\right)=f_+(-x)\]
+	- ungerader Anteil: \[f_-(x)=\frac{1}{2}\left(f(x)-f(-x)\right)=-f_-(-x)\]
+	- check: \[f_+(x) + f_-(x)=f(x)\quad\checkmark\]
+* Eigenschaften von Funktionen
+** Beschränktheit
+   $f$ heißt nach oben beschränkt im Intervall $[a,b]$, wenn es eine obere Schranke gibt, d.h. \[\exists B\in\mathbb{R}: f(x)\leq B\Forall x\in [a,b]\]
+   analog: nach unten beschränkt \[\exists A\in\mathbb{R}: f(x)\geq A\Forall x\in [a,b]\]
+*** Beispiel
+	$f(x) = x^2$ durch $A=0$ nach unten beschränkt\\
+	$f(x) = \Theta(x)$ $B=1$, $A=0$
+** Monotonie
+   Eine Funktion $f:D_f\to\mathbb{R}$ heißt monoton steigend im Intervall $[a,b] \subseteq D_f$, wenn aus $x_1,x_2\in [a,b]$ mit $x_1<x_2$ stets folgt $f(x_1) \leq f(x_2)$
+   Gilt sogar $f(x_1) < f(x_2)$ so heißt $f$ streng monoton steigend im Intervall $[a,b]$
+   Analog heißt $f$ monoton (streng monoton) fallend, wenn stets folgt $f(x_1) \geq f(x_2)$ ($f(x_1) > f(x_2)$)
+*** Beispiel
+	$f(x) = x^3\quad$ streng monoton steigend
+* Umkehrfunktionen
+  Sei $f : D_f\to W_f$ eineindeutig(bijektiv), dann kann man die Gleichung $y=f(x)$ eindeutig nach $x$ auflösen \[x=f^{-1}(y):=g(y)\quad\quad D_g = W_f,\quad W_g = D_f\] \[f^{-1}=g:W_f\to D_f\]
+  Die ursprüngliche Abbildung $y=f(x)$ und die Umkehrabbildung $x=f^{-1}(y)=g(y)$ heben sich in ihrer Wirkung auf \[f^{-1}(f(x))= x\]
+** Graph der Umkehrfunktion
+   1. Gegebenfalls Einschränktung von $D_f$, sodass eine bijektive Funktion vorliegt
+   2. Auflösen der Gleichung $y=f(x)\Rightarrow x=f^-1(y)$
+   3. Umbennenung der Variablen: die unabhängige Variable $y$ wird wieder $x$ genannt, die abhängige wieder $y$: $y=f^{-1}(x)
+*** Beispiel $y=x^2$
+	1. Einschränktung $D_f$ auf $x\geq 0$
+	2. $y=x^2, x\geq 0 \Leftrightarrow x = \sqrt{y}$
+	3. Umbenennung: $y=\sqrt{x} = x^\frac{1}{2}$
+*** Graphisch
+	Spiegelung an $y=x$
+* what after this?
+* Integral und Differenzialrechnung
+  \[\\int_a^b f(x)\mathrm{d}x=F(b) - F(a)\]
+  Haupsatz:
+  \[F'(x) = \frac{\mathrm{d}F(x)}{\mathrm{d}x} = f(x)\]
+  | $F(x)=\int f(x)\mathrm{d}x$ | f(x)        | Bemerkungen               |
+  |-----------------------------+-------------+---------------------------|
+  | const                       | 0           |                           |
+  | $x^r$                       | $r x^{r-1}$ | $r\in\mathbb{R}$          |
+  | $\frac{x^{r+1}}{r+1}$       | $x^r$       | $-1 \neq  r\in\mathbb{R}$ |
+** Die Kunst des Integrierens
+   \[\int_1^e \frac{1}{x}\mathrm{d}x = \ln{x}\mid_1^e = \ln{e} - \ln{1} = 1\]
+   \[\int_0^{\frac{\pi}{2}} cos(t)\mathrm{d}t=\sin{t}\mid_0^{\frac{\pi}{2}} = \sin{\frac{\pi}{2}} - \sin{0} = 1\]
+   \[\int_a^b\frac{1}{1+x^2}\mathrm{d}x = \arctan{x}\mid_a^b\]
+** Ableiten über Umkehrfunktion
+   \[\frac{\mathrm{d}f^-1(x)}{\mathrm{d}x}=\frac{1}{f'(f^-1(x))}\]
+** Integrationsregeln
+*** Lineare Zerlegung
+	\[\int_{a_1}^{a_2} c f(x) + b g(x)\mathrm{d}x = c\int_{a_1}^{a_2}f(x)\mathrm{d}x + b\int_{a_1}^{a_2}g(x)\mathrm{d}x\]
+**** Beispiel
+	 \[F=\int_0^1 \sqrt{x} - x^2\mathrm{d}x = \int_0^1 \sqrt{x}\mathrm{d}x - \int_0^1 x^2\mathrm{d}x = \frac{2}{3}x^\frac{3}{2}\mid_0^1 - \frac{1}{3}x^3\mid_0^1 = \frac{1}{3}\]
+	 \[\int_0^1 (1-x^2)^2\mathrm{d}x = \int_0^1 1-2x^2 + x^4\mathrm{d}x = \int_0^1 1\mathrm{d}x - 2\int_0^1 x^2\mathrm{d}x + \int_0^1 x^4\mathrm{d}x = \frac{8}{15}\]
+*** Substitutionsregel
+	\[\int_a^b f(g(x))g'(x)\mathrm{d}x=\int_{g(a)}^{g(b)}f(y)\mathrm{d}y\]
+	merke: $\frac{\mathrm{g(x)}}{\mathrm{d}x} \mathrm{d}x = g'(x)\mathrm{d}x = \mathrm{d}y$
+	\[y=g(x),\quad\frac{\mathrm{d}y}{\mathrm{d}x}=g'(x),\quad\mathrm{d}y = g'(x)\mathrm{d}x\]
+**** Beweis
+	 $F$ sei die Stammfunktion zu $f$, $F' = f$
+	 \[(F(g(t)))' = F'(g(t))g'(t) = f(g(t))g'(t)\]
+	 \[\int_a^b f(g(t))g'(t)\mathrm{d}t = F(g(t))\mid_a^b=F(g(b)) - F(g(a)) = F(x)\mid_{g(a)}^{g(b)} = \int_{g(a)}^{g(b)}f(y)\mathrm{d}y\]
+**** Beispiel
+	 - \[\int_1^5\sqrt{2x+1}\mathrm{d}x = \int_1^9\sqrt{y}\frac{1}{2}\mathrm{d}y=\frac{26}{3}\]
+	   \[y=2x-1\quad y'=g'(x) =\frac{\mathrm{d}y}{\mathrm{d}x} = g'(x) = 2 \Rightarrow \mathrm{d}y = 2\mathrm{d}x \Rightarrow \frac{1}{2}\mathrm{d}y = \mathrm{d}x\]
+	 - \[\int_0^b t e^{-\alpha t^2}\mathrm{d}t = -\frac{1}{2\alpha}\int_0^{-\alpha b^2} e^y\mathrm{d}y = -\frac{1}{2\alpha}(e^{-\alpha b^2} - 1)\]
+	   \[y=g(t)=-\alpha ^2 \Rightarrow \frac{\mathrm{d}y}{\mathrm{d}t}=-2\alpha t \Rightarrow \mathrm{d}y=-2\alpha t \mathrm{d}t \Rightarrow \mathrm{d}t = -\frac{1}{2\alpha t}\mathrm{d}y\]
+	 - \[\int_0^T \cos{\omega t}\mathrm{d}t = \frac{1}{\omega}\int_0^{\omega T}\mathrm{d}y\]
+	 - \[\int_a^b \frac{g'(x)}{g(x)}\mathrm{d}x = \int_{g(a)}^{g(b)}\frac{1}{y}\mathrm{d}y=\ln{\abs{y}}\mid_{g(a)}^{g(b)}\]
+	 - \[\int \frac{\mathrm{d}x}{ax\pm b} = \frac{1}{a}\ln{\abs{ax\pm b}} + c\]
+	 - \[\int_a^b g^n(x)g'(x)\mathrm{d}x = \int_{g(a)}^{g(b)} y^n\mathrm{d}y\]
+*** Partielle Integration
+	\[\int_a^b f'(x)g(x)\mathrm{d}x = f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x\]
+**** Beweis
+	 \[F(x)=f(x)g(x)\Rightarrow F'(x) = f'(x)g(x) + f(x)g'(x)\]
+	 \[\int_a^b F'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
+	 \[f(x)g(x)\mid_a^b = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
+	 \[f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x\]
+**** Beispiel
+	 - \[\int_a^b x\ln{x}\mathrm{d}x = \frac{1}{2}x^2\ln(x)\mid_a^b - \int_a^b \frac{1}{2}x^2 \frac{1}{x}\mathrm{d}x = \frac{1}{2}x^2\ln(x)\mid_a^b - \frac{1}{2}\int_a^b x\mathrm{d}x\]
+	 - \[\int 1\ln{x}\mathrm{d}x = x\ln{x} - \int x\frac{1}{x}\mathrm{d}x = x\ln{x} - \int 1\mathrm{d}x = x\ln{x}-x+c=x(\ln{x}-1)+c\]
+	 - \[\int x\sin{x}\mathrm{d}x=-x\cos{x} + \int cos{x}\mathrm{d}x = -x\cos{x}+\sin{x}\]
+**** Kreisfläche
+	 \[y=f(x)=\sqrt{1-x^2}\]
+	 \[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\Rightarrow \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
+	 \[x=\sin{t} \Rightarrow t = \arcsin{x},\quad \frac{\mathrm{x}}{\mathrm{d}t} = \cos{t},\quad \mathrm{d}x = \cos{t}\mathrm{d}t\]
+	 \[\int \cos{t}\cos{t} = \sin{t}\cos{t} + \int sin^2{t}\mathrm{d}t = \sin{t}\cos{t} + \int 1 - cos^2{t}\mathrm{d}t = \frac{\sin{t}\cos{t} + t}{2}\]
+***** In Polarkoordinaten
+	  \[y=\sin{t}\]
+	  \[x=\cos{t}\]
+	  \[\mathrm{d}x = \sin{t}\mathrm{d}t\]
+	  \[\mathrm{d}A = y\mathrm{d}x = \sin^2{t}\mathrm{d}t\]
+	  \[A = \int_0^\pi \sin^2{t} = \frac{\pi}{2}\]
+***** Zerlegung
+	  \[\mathrm{d}A = 2\pi r \mathrm{d}r\]
+	  \[\int \mathrm{d}A = \int_0^R 2\pi r\mathrm{d}r=2\pi\frac{1}{2}r^2\mid_0^R = \pi R^2\]
+*** Weitere Integrationstricks
+**** Partialbruchzerlegung
+	 $\Rightarrow$ Integration rationaler Funktionen
+	 \[\int_a^b\frac{\mathrm{d}}{1-x^2} \text{ mit } \{-1,1\}\not\in [a,b] \]
+	 \[1-x^2 = (1-x)(1+x)\]
+	 \[\frac{1}{1-x^2} = \frac{\alpha}{1-x} + \frac{\beta}{1+x} = \frac{\alpha(1+x)+\beta{1-x}}{(1-x)(1+x)} = \frac{\alpha + \beta + x(\alpha - \beta)}{1-x^2} \Rightarrow \alpha = \beta \frac{1}{2}\]
+	 \[\int_a^b \frac{\mathrm{d}x}{1-x^2} = \frac{1}{2}(\int_a^b\frac{1}{1+x} + \int_a^b\frac{1}{1+x})\]
+** Uneigentliche Integrale
+*** Undedliches Integralintervall
+**** Definition
+	 Sei $f:[a,\infty)\rightarrow\mathbb{R}$ eine Funktion, die über jedem Intervall $[a,R),~a<R<\infty$ (Riemann-)integrierbar ist. Falls der Grenzwert $\lim_{R\to\infty}\int_a^R f(x)\mathrm{d}x$ existiert setzt man \[\int_a^\infty f(x)\mathrm{d}x=\lim_{R\to\infty}\int_a^R f(x)\mathrm{d}x\]
+**** Beispiel
+	 \[\int_1^\infty\frac{\mathrm{d}x}{x^s}=\begin{cases}\frac{1}{s-1}&s>1\\ \infty & s\leq 1\end{cases}\]
+** Cauchy Hauptwert
+   \[P\int_{-\infty}^\infty f(x)\mathrm{d}x := \lim_{c\to\infty}\int_{-c}^c f(x)\mathrm{d}x\]
+   P := "principal Value"
+   \[\int_{-\infty}^\infty x^{2n-1}\mathrm{d}x = \lim_{a\to\infty}\int_{-a}^c x^{2n-1}\mathrm{d}x + \lim_{b\to\infty}\int_c^b x^{2n-1}\mathrm{d}x = \infty\]
+   \[P\int_{-\infty}^\infty x^{2n-1}\mathrm{d}x = \lim_{c\to\infty}\int_{-c}^c x^{2n-1}\mathrm{d}x = \lim_{c\to\infty}(\frac{1}{2\pi}(\underbrace{c^{2n}-(-c)^{2n}}_{=0})) = 0\]
+*** Unbeschränkter Integrand
+	Situation: Integrand wird an einer Stelle $x_0 \in [a,b] unbeschränkt
+**** Definition
+	 Sei $f:(a,b] \to \mathbb{R}$ eine Fnunkion, die über jedem Teilintervall $[a+\eta, b],~0<\eta<b-a$ (Riemann-)integrierbar ist.
+	 Falls der Grenzwert $\lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x$ existiert, heipßt das Integral $\int_a^b f(x)\mathrm{d}x$ konvergent
+	 \[\int_a^b f(x)\mathrm{d}x = \lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x\]
+**** Beispiel
+	 \[\int_0^b \frac{1}{x^{1-\epsilon}}\mathrm{d}x = \lim_{\eta\to 0} \int_\eta^b \frac{1}{x^{1-\epsilon}}\mathrm{d}x = \lim_{\eta\to 0} \frac{1}{\epsilon}(b^\epsilon - \eta^\epsilon) = \frac{1}{\eta}b^\epsilon\]
+**** Principal value
+	 \[P\int_a^b f(x)\mathrm{d}x = \lim_{\eta\to 0} \int_a^{x_0 - \eta} f(x)\mathrm{d}x + \int_{x_0+\eta}^b f(x)\mathrm{d}x\]
+** Integralfunktionen
+   \[\ln{x} = \int_1^x \frac{\mathrm{d}x}{x}\]
+   \[\arctan{x} = \int_0^y \frac{\mathrm{d}x}{1+x^2}\]
+   \[erf(x) = \frac{2}{\sqrt{\pi}}\int_0^y e^{-x^2}\mathrm{d}x\]
+   Elliptisches Integral
+** Gamma-Funktion
+*** Definition
+	\[\Gamma(x):=\int_0^\infty t^{x-1}e^{-t}\mathrm{d}t\]
+	Satz: Es gilt $\Gamma(1) = 1,~\Gamma(m+1) = m! \Forall n\in\mathbb{N},~x\Gamma(x) = \Gamma(x+1)$
+	\[\Gamma(1)=\int_0^\infty e^{-t}\mathrm{d}t=-e^{-t}\mid_0^\infty = 1\]
+	\[\Gamma(x+1) = \int_\epsilon^R t^x e^{-t}\mathrm{d}t = \underbrace{t^x e^{-t}\mid_\epsilon^R}_{R\to\infty t} + x\int_epsilon^R t^{x-1}e^{-t}\mathrm{d}t\]
+	\[f(t) = -e^{-t} \Leftarrow f'(t)=e^{-t}\]
+	\[g(t) = t^x \Rightarrow xt^{t-1} = g'(t)\]
+* Vektoren
+** $\mathbb{R}^3$
+*** Orthonormal
+	Länge eins, senkrecht aufeinander und sie bilden eine Basis, also jeder Vektor hat genau eine Darstellung: \[\vec{a} = a_1 \vec{e_1} + a_2 \vec{e_2} + a_3 \vec{e_3} = \sum_{k=1}^3 a_k \vec{e_k}a = \underbrace{a_k e_k}_{\text{Einsteinsche Summenkonvention}}\]
+** Skalarprodukt und Kronecker-Symbol
+*** Motivation: mechanische Arbeit
+*** Definition
+	\[<\vec{a},\vec{b}> = \vec{a}\cdot\vec{b} := \abs{\vec{a}}\abs{\vec{b}}\cos{\angle (\vec{a},\vec{b})}\]
+*** Spezialfälle
+	\[\vec{a}\|\vec{b}\Rightarrow \vec{a}\cdot\vec{b}=\abs{\vec{a}}\abs{\vec{b}}\]
+	$\vec{a}$ und $\vec{b}$ antiparallel:
+	\[\vec{a}\cdot\vec{b}=-\abs{\vec{a}}\abs{\vec{b}}\]
+	\[\vec{a}\bot\vec{b}\Rightarrow\vec{a}\cdot\vec{b}=0\]
+*** Betrag:
+	\[<\vec{a},\vec{b}>=\abs{\vec{a}}^2=a^2\]
+*** Eigenschaften
+	- Kommutativgesetz
+	  \[<\vec{a},\vec{b}>=<\vec{b},\vec{a}>\]
+	- Homogenität
+	  \[<\lambda\vec{a},\vec{b}>=\lambda<\vec{a},\vec{b}>=<\vec{a},\lambda\vec{b}>\]
+	- Distributivgesetz
+	  \[<\vec{a}+\vec{b},\vec{c}>=<\vec{a},\vec{c}>+<\vec{b},\vec{c}>\]
+	  \[<\vec{a},\vec{b}+\vec{c}>=<\vec{a},\vec{b}>+<\vec{a},\vec{c}>\]
+	- \[<\vec{a},\vec{a}\geq 0 \quad <\vec{a},\vec{a}>=0\Leftrightarrow\vec{a}=0\]
+*** Orthonormalbasis der kartesischen Koordinatensystem
+	Basisvecktoren $\vec{e_k}, k=1,2,4$
+	Orthogonalität $<\vec{e_k},\vec{e_l}> = 0\quad l\neq k$
+	Für $k=l:~<\vec{e_k},\vec{e_k}>=\cos{0}=1$
+	Orthonormalität
+*** Kronecker Symbol
+	\[\delta_{kl}:=\begin{cases}1&k=l\\0&k\neq l\end{cases}\]
+	Entspricht Komponenten der Einheitsmatrix
+	Symmetrie gegen Vertauschung der Indizes $\delta_{kl}=\delta{lk}
+	Spur: $\delta_{kk} = \underbrace{\sum_{k=1}^3 \delta_{kk}=3}_{\text{Einsteinsche Summenkonvention}}$
+*** Komponentendarstellung des Skalarprodukts
+	\[\vec{a}=\sum_{k=1}^3 a_k \vec{e_k}=\underbrace{a_k \vec{e_k}}_{\text{Einsteinsche Summenkonvention}}\]
+	\[\vec{b}=\sum_{k=1}^3 b_k \vec{e_k}=\underbrace{b_k \vec{e_k}}_{\text{Einsteinsche Summenkonvention}}\]
+	\[<\vec{a},\vec{b}>=(\sum_{k=1}^3 a_k\vec{e_k})\cdot (\sum_{k=1}^3 b_k\vec{e_k}) = \sum_{k,l=1}^3 a_k b_k \underbrace{<\vec{e_k},\vec{e_l}>}_{=\delta{kl}} = \sum_{k=1}^3 a_k b_k\]
+* Matrizen
+** Determinante
+   $\det A = \sum_{\sigma \in S_n} \left(\operatorname{sgn}(\sigma) \prod_{i=1}^n a_{i, \sigma(i)}\right)$
+   Summe über alle Permutationen von $S_n$, Vorzeichen der Permutation ist positiv, wenn eine gerade Anzahl an Vertauschungen notwendig ist, und entsprechend negativ bei einer ungeraden Anzahl.
+** Homogenes Gleichungssystem
+   \[A\vec{x}=0\quad\begin{matrix}
+   a_{11} & a_{12} & a_{13} \\
+   a_{21} & a_{22} & a_{23} \\
+   a_{31} & a_{32} & a_{33} \\
+   \end{matrix}\begin{matrix}
+   x_1\\
+   x_2\\
+   x_3\\
+   \end{matrix}\]
+   \[
+   x_1 \underbrace{ \begin{matrix} a_{11} \\ a_{21} \\ a_{31} \end{matrix}}_{\vec{a_1}} +
+   x_2 \underbrace{ \begin{matrix} a_{12} \\ a_{22} \\ a_{32} \end{matrix}}_{\vec{a_2}} +
+   x_3 \underbrace{ \begin{matrix} a_{13} \\ a_{23} \\ a_{33} \end{matrix}}_{\vec{a_3}}
+   = \begin{matrix} 0 \\ 0 \\ 0\end{matrix}
+   \]
+   sind $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear unabhängig, dann gibt es nur die Lösung $x_1=x_2=x_3=0$
+   Nichttriviale Lösung nur wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear abhängig $\Rightarrow \lambda,\mu\in\mathbb{R}$, sodass z.B. $\vec{a_1} = \lambda\vec{a_2} + \mu\vec{a_3}$
+   Wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear unabhängig, dann $\det A = 0$.
+** Levi Civita Symbol
+   \begin{equation}
+   \varepsilon_{ijk \dots} =
+   \begin{cases}
+   +1, & \mbox{falls }(i,j,k,\dots) \mbox{ eine gerade Permutation von } (1,2,3,\dots) \mbox{ ist,} \\
+   -1, & \mbox{falls }(i,j,k,\dots) \mbox{ eine ungerade Permutation von } (1,2,3,\dots) \mbox{ ist,} \\
+   0,  & \mbox{wenn mindestens zwei Indizes gleich sind.}
+   \end{cases}
+   \end{equation}
+   \begin{equation}
+   \varepsilon_{i_1\dots i_n} =
+   \prod_{1\le p<q\le n} \frac{i_p-i_q}{p-q}
+   \end{equation}
+   \begin{equation}
+   \varepsilon_{k,l,m}=\delta_{k1}(\delta_{l2}\delta_{m3} - \delta_{l3}\delta_{m2}) + \delta_{k2}(\delta_{l3}\delta_{m1} - \delta_{l1}\delta_{m3}) + \delta_{k3}(\delta_{l1}\delta_{m2} - \delta_{l2}\delta_{m1})
+   \end{equation}
+** Vektorprodukt / Kreuzprodukt
+   \begin{equation}
+   \vec{a}\times\vec{b}
+   =
+   \begin{pmatrix}a_1 \\ a_2 \\ a_3\end{pmatrix}
+   \times
+   \begin{pmatrix}b_1 \\ b_2 \\ b_3 \end{pmatrix}
+   =
+   \begin{pmatrix}
+   a_2b_3 - a_3b_2 \\
+   a_3b_1 - a_1b_3 \\
+   a_1b_2 - a_2b_1
+   \end{pmatrix}
+   \end{equation}
+#   \begin{equation}
+   \begin{align}
+   \vec a \times \vec b &=\det \begin{pmatrix}\vec e_1 & a_1 & b_1 \\ \vec e_2 & a_2 & b_2 \\ \vec e_3 & a_3 & b_3\end{pmatrix}\\
+   &= \vec e_1 \begin{vmatrix} a_2 & b_2 \\ a_3 & b_3 \end{vmatrix}
+ - \vec e_2 \begin{vmatrix} a_1 & b_1 \\ a_3 & b_3 \end{vmatrix}
+ + \vec e_3 \begin{vmatrix} a_1 & b_1 \\ a_2 & b_2 \end{vmatrix} \\
+ &= (a_2 \,b_3 - a_3 \, b_2) \, \vec e_1 + (a_3 \, b_1 - a_1 \, b_3) \, \vec e_2 + (a_1 \, b_2 - \, a_2 \, b_1) \, \vec e_3 \,,
+ \end{align}
+#   \end{equation}
+ \[\vec{a}\times\vec{b} = \sum_{i,j,k=1}^3 \varepsilon_{ijk} a_i b_j \vec e_k = \varepsilon_{ijk}a_i b_j \vec{e_k}\]
+** Spatprodukt
+   \[\abs{(\vec{a}\cross\vec{b})\vec{c}} = \text{Volument einees Spats}\]
+   \[(\vec{a}\vec{b}\ve¢{c})=(\vec{a}\times\vec{b})\vec{c}=(\vec{c}\times\vec{a})\vec{b}=(\vec{b}\times\vec{c})\vec{a}=-(\vec{b}\times\vec{a})\vec{c}\]
+** Geschachteltes Vektorprodukt
+   \[\vec{a}(\vec{b}\times\vec{v})=(\vec{a}\ve¢{c})\vec{b}-(\vec{a}\vec{b})\vec{c}=\vec{b}(\vec{a}\vec{c})-\vec{c}(\vec{a}\vec{b})\]
+*** Beweis
+	\[\vec{a}=(\vec{b}\times\vec{c})=\vec{a}\times(\varepsilon_{ijk}b_i c_j \vec{e_k})=\varepsilon_{pqm}a_p\varepsilon_{ijk}b_i c_j \vec{e_m}\]
 * misc
-  mathe für physiker vs. analysis
-  klasuren gebündelt
-  auslandssemester
+  - mathe für physiker vs. analysis
+  - klasuren gebündelt
+  - auslandssemester
