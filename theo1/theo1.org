@@ -1,0 +1,181 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Theoretische Physik (Hebecker)
+#+LATEX_HEADER: \usepackage{siunitx}
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
+#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+
+Einleitung: \\
+- Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
+-
+* Kinematik des Massenpunktes
+  Massenpunkt / Punktmasse - (selbstevidente) Abstraktion
+  Kinematik: Bescheibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
+** Kinematik der Massenpunktes in _einer_ Dimension
+*** Graphik
+   - Ort: $x$
+   - zu Zeit $t:~x(t)$
+   - Geschwindigketi: $v(t) \equiv \frac{\mathrm{d}x(t)}{\mathrm{d}t} \equiv \dot{x}(t)$
+   - Beschleunigung: $a(t) \equiv \dot{v}(t) = \ddot{x}(t)$
+   - Beispiel: $x(t) \equiv x_0 + v_0 t + \frac{a_0}{2},~t^2,~v(t) = v_0 + a_0 t,~a(t) = a_0$
+   - Umgekehrt: Integration, z.B. von Geschwindigkeit zu Trajektorie: Anfangsposition muss gegeben sein, z.B. $x(t_0) \equiv x_0$
+	 \[x(T)=x_0 + \int_{t_0}^{t}v(t)\mathrm{d}t\]
+	 Man prüft leicht $\dot{x}(t) = v(t)$
+	 - Es gibt keine andere Funktion $\tilde{x}(t)$ mit $\dot{\tilde{x}}(t) = v(t)$ und $\tilde{x}(t_0) = x_0$
+     Analog: Von Beschleunigung zur Geschwindigkeit, und dann weiter zur Trajektorie
+*** Üben dieser Logik an unserem Beispiel
+	Gegeben: $a(t) = a_0,~t_0=0,v_0,x_0$ \\
+	\[\Rightarrow~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
+	\[x(t) = x_0 + \int_0^t (v_0 + a_0 t')\mathrm{d}t' = x_0 + v_0 t + \frac{a_0}{2}t^2\]
+** Grundbegriffe der Differenzial und Integralrechung
+*** Funktion
+	\[f: \mathbb{R} \rightarrow \mathbb{R},~x \mapsto f(x)\]
+*** Differentiation oder Ableitung
+	\[\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}\]
+	$\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwaches $\Delta f\equiv f(x + \Delta x) - f(x)$.
+	- Aus $\Delta f = f'(x)\Delta(x) + O(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
+	- Anwendung auf die Identitätabbildung: $x \mapsto x \Rightarrow \mathrm{d}x = \Delta x$
+	  \[\Rightarrow \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
+	  Dies ist eigentlich nur eine Schreibweise für $f'(x)$, _aber_ nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwertdefinition)
+    - $f'(x)$ wieder Funktion $\Rightarrow$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
+	- Praxis
+	  \[(f\cdot g)' = f' g + g' f~\text{(Produkt/Leibnizregel)}\]
+	  \[(f \circ g)'(x) = f'(g(x))g'(x)~\text{(Kettenregel)}\]
+	  \[(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}~\text{(Ableitung der Inversen Funktion)}\]
+	  - Begründung (nur zum letzen Punkt)
+		\[(f^{-1})'(x) = \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}y}{\mathrm{d}(f(y))} = \frac{\mathrm{d}y}{f'(y)\mathrm{d}y} = \frac{1}{f'(f^{-1}(x))}\]
+	  - Schöne Beispiele
+		\[(x^x)' = (e^{\ln{x^x}})' = (e^{x\ln{x}})' = e^{x\ln{x}}(\ln{x} + 1) = x^x(\ln{x} + 1)\]
+		\[\arctan'(x) \equiv (\tan^{-1}(x)) = \frac{1}{\tan^{-1}(y)}~\text{wobei $y = \tan^{-1}(x)$}\]
+		Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}} + \sin{y}(\frac{1}{\cos{y}})' = 1 + \sin{y}(-\frac{1}{\cos^2{y}})(-\sin{y}) = 1 + \tan^2{y} = 1 + x^2 \\ \Rightarrow \arctan'(x) = \frac{1}{1 + x^2}\]
+	- Verknüpfung \[f\circ g: x\mapsto f(g(x))\]
+	- Inverse \[f^{-1} : x=f(y)\mapsto y\]
+	- Grenzwerte:
+	  - nützliche Regel: l'Hôpital ("$\frac{0}{0}$") \\
+	    Falls $\lim_{x\to x_0} f,g = 0$ und $\lim_{x\to x_0} \frac{f'}{g'}$ existiert, so gilt $\lim_{x\to x_0}\frac{f}{g} = \lim_{x\to x_0} \frac{f'}{g'}$
+	  - weitere nützliche Regel \[\lim \frac{\text{Beschränkt}}{\text{Unbeschränkt und monoton wachsend}} = 0\]
+		- Beispiel: \[\lim_{y\to 0} \frac{\sin{\frac{1}{y}}}{\frac{1}{y}}\]
+	  - Kürzen unter $\lim$
+		- Beispiel: \[\lim_{x\to\infty} \frac{x}{2x + \sqrt{x}} = \lim_{x\to\infty}\frac{1}{2+\frac{1}{\sqrt{x}}} = \frac{1}{2}\]
+*** Integrieren
+**** Fundamentalsatz der Analysis
+	 \[\int^y f(x)\mathrm{d}x = F(y) \& F'(y) = f(y)\]
+	 \[\int f(x)\mathrm{d}x = F(x) + C\]
+	 \[\int_a^b f(x)\mathrm{d}x = F(b) - F(a)\]
+	 ($\to$ saubere Definition über Riemansches Integral)
+**** Praxis
+***** Partielle Integration
+	  \[\int^y f(x)g'(x)\mathrm{d}x = f(y)g(y) - \int^y f'(x)g(x)\mathrm{d}x\]
+***** Substitution
+	  Unter Annahme einer invertierbaren Funktion $x: y\mapsto x(y)$
+	  \[\int f(x)\mathrm{d}x = \int f(x)\frac{\mathrm{d}x}{\mathrm{d}y}\mathrm{d}y = \int f(x(y)) x'(y)\mathrm{d}y\]
+	  Andere Formulierung: \[\int_a^b f(g(x))g'(x)\mathrm{d}x = \int_{g(a)}^{g(b)}f(y)\mathrm{d}y\]
+	  Substitution $y=g(x)$
+***** Klassiker
+	  \[\int \ln{x}\mathrm{d}x = \int \ln{x}1\mathrm{d}x = \ln{x}x - \int \frac{1}{x}x\mathrm{d}x = x(\ln{x} - 1)\]
+	  \[\int x e^{x^2}\mathrm{d}x = \int e^{x^2}\frac{1}{2}\mathrm{d}(x^2) = \frac{1}{2}\int e^y \mathrm{d}y = \frac{1}{2}e^y = \frac{1}{2}e^{x^2}\]
+** Kinematik in mehreren Dimensionen
+*** Zweidimensionale Bewegung
+	Zweidimensional $\rightarrow$ Bewegung in der Ebene. Trajektorie: $x(t),y(t)$
+**** Bespiel
+	 \[x(t) = v_0 t \sin{\omega t}\]
+	 \[y(t) = v_0 t \cos{\omega t}\]
+***** TODO Skizze der Trajektorie (Bahnkurve)
+***** Raumkurve
+	  Menge aller Punkte $\{x,y\}, die das Teilchen durchläuft
+***** TODO Skizze Nichtriviale Darstellung _nur_ im Raum (Raumkurve)
+*** Dreidimensionale Bewegung
+	Die Darstellung der Tranjektorie istr erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
+	Formal keim Problem: Trajektorie ist
+	- \[x(t),y(t),z(t)\]
+	- \[x^1(t),x^2(t),x^3(t)\]
+	- \[\{x^i(t)\},i=1,2,3\]
+
+	Dementsprechend:
+	\[v^i(t) = \dot{x}^i(t); a^i(t) = \dot{v}^i(t); i=1,2,3\]
+** Vektorräume
+   Eine Menge $V$ heißt Vektorraum, wenn auf ihr zwei Abbildungen
+   - die Addition ($+$)
+   - die Multiplikation mit reellen Zahlen ($*$)
+   definiert sind.
+
+   \[x : V\times V \rightarrow V\]
+   \[\text{Multiplikation}: \mathbb{R}\times V \rightarrow V\]
+   $V\times V$ - Produktmenge $\equiv$ Menge aller Paare
+   so dass gilt:
+   \[v + (w + u) = (v + w) + u\quad u,v,w\in V\tag*{Assoziativität}\]
+   \[v+w = w+v\tag*{Kommutativität}\]
+   \[\exists 0 \in V: v + 0 = v \Forall v\in V\tag*{Null}\]
+   \[\alpha(v+w) = \alpha v + \alpha w \tag*{Distributvität}\]
+   \[(\alpha + \beta)v = \alpha v + \beta v \quad \alpha,\beta \in \mathbb{R}\tag*{Distributivität}\]
+   \[\alpha(\beta v) = (\alpha\beta) v\tag*{Assoziativität der Multiplikation}\]
+   \[1 v = v \tag*{Multiplikation mit Eins}\]
+*** Einfachstes Beispiel
+	$V\equiv \mathbb{R}$ (mit der gewöhnlichen Addition und Multiplikation und mit $0\in\mathbb{R}$ als Vektorraumnull)
+*** Unser Haupt-Beispiel
+	Zahlentupel aus n-Zahlen:
+	\[V\equiv \mathbb{R}^n = \{(x^1,x^2,\ldots,x^n), x^i \in\mathbb{R}\}\]
+	Notation:
+	\[\vec{x} = \begin{pmatrix} x^1& x^2 & \ldots & x^n)\end{pmatrix}, \vec{y} = \begin{pmatrix} y^1 & \ldots y^n \end{pmatrix}\]
+	Man definiert:
+	\[\vec{x} + \vec{y} \equiv (x^1 + y^1, x^2 + y^2, \ldots, x^n + y^n)\]
+	\[\vec{0} \equiv (0,\ldots,0)\]
+	\[\alpha \vec{x} \equiv (\alpha x^1, \ldots, \alpha x^n)\]
+**** TODO (Maybe) Skizze 3D Vektor
+	 $\rightarrow$ übliche Darstellung durch "Pfeile"
+** Kinematik in $d>1$
+   Trajektorie ist Abbildung: $\mathbb{R} \to \mathbb{R}^3, t\to \vec{x}(t) ) (x^1(t),x^1(t),x^3(t))$
+   \[\vec{v} = \dot{\vec{x}}(t), \vec{a(t)} = \dot{\vec{v}}(t) = \ddot{\vec{x}}(t)\]
+   Setzt allgemeine Definition der Ableitun voraus:
+   \[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \Rightarrow \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
+*** Beispiel für 3-dimensionale Trajketorie
+	Schraubenbahn:
+	\[\vec{x}t = (R\cos{\omega t},R\sin{\omega t}, v_0 t)\]
+	\[\vec{v} = (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)\]
+	\[\vec{a} = (-R\omega^2\cos{\omega t}, -R\omega^2\sin{\omega t}, 0)\]
+**** TODO Skizze (Raumkurve)
+	 *Kommentar:* \\
+	 $\vec{x},\vec{v},\vec{a}$ leben in verschiedenen Vektorräumen!
+	 allein schon wegen $[x] = \si{\meter}$, $[v] = \si{\meter\per\second}$ \\
+	 Wir können wie in $d=1$ von $\vec{a}$ zu $\vec{v}$ zu $\vec{x}$ gelangen!
+	 \[\vec{v}(t) = \vec{v_0} + \int_{t_0}^{t} \mathrm{d}t' \vec{a}(t') = (v_0^1 + \int_{t_0}^t \mathrm{d}t' a^1(t'), v_0^2 + \int_{t_0}^t \mathrm{d}t' a^2(t'), v_0^3 + \int_{t_0}^t \mathrm{d}t' a^2(t'))\]
+**** Üben:
+	 Schraubenbahn; $t_0 = 0$, $\vec{x_0} = \left(R, 0, 0), v_0 = (0, R\omega, v_0\right)$
+	 Es folgt:
+	 \begin{align}
+	 &\vec{v}(t) ) (0, R\omega, v_0) + \int_0^t \mathrm{d}t' ( -R\omega^2)(\cos{\omega t', \sin{\omega t'}, 0})\\
+	 =& (0, R\omega, v_0) + (-R\omega^2)(\frac{1}{\omega}\sin{\omega t'}, -\frac{1}{\omega}\cos{\omega t'}, 0)\mid_0^t\\
+	 =& (0, R\omega, v_0) - R\omega (\sin{\omega t}, -\cos{\omega t}, 0) - (0, -1, 0)\\
+	 =& (-R\omega\sin{\omega t}, R\omega + R\omega\cos{\omega t} - R\omega, v_0)\\
+	 =& (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)
+	 \end{align}
+**** Bemerkung
+	 Man kann Integrale über Vektoren auch durch Riemansche Summen definieren:
+	 \[\int_{t_0}^t \vec{v}(t')\mathrm{d}t' = \lim_{n\to\infty} (v(t_0)\Delta t + \vec{v}(t_0 + \Delta t)\Delta t + \ldots + \vec{v}(t - \Delta t)\Delta t)\]
+	 mit $\Delta t = \frac{t - t_0}{N}$
+** Skalarprodukt
+   Führt von Vektoren wieder zu nicht-vektoriellen (Skalaren) Größen.
+*** Symmetrische Bilinearform
+	Abbildung von $V\times V \to \mathbb{R},~(v,w) \mapsto v\cdot w$ mit den Eigenschaften
+	- $v\cdot w = w\cdot v$
+	- $(\alpha u + \beta v) \cdot w = \alpha u\cdot w + \beta v\cdot w$
+    Sie heißt positiv-semidefinit, falls  $v\cdot v\geq 0$, \\
+    Sie heißt positiv-definit, falls  $v\cdot v = 0 \Rightarrow v = 0$
+	Hier : Skalarprodukt $\equiv$ positiv definite symmetrische Bilinearform
+*** Norm (Länge) eines Vektors
+	\[\abs{v} = \sqrt{v\cdot v} = \sqrt{v^2}\]
+	$\mathbb{R}^n$: Wir definieren \[\vec{x}\cdot\vec{y} = x^1y^1 + \ldots + x^n y^n \equiv \sum_{i=1}^n x^iy^i \equiv \underbrace{x^i y^i}_{\text{Einsteinsche Summenkonvention}}\]
+	\[\abs{\ve¢{x}} = \sqrt{(x^1)^2 + \ldots + (x^n)^2}\]
+	Wichtig: oben euklidiesches Skalarprodukt! Anderes Skalarprodukt auf $\mathbb{R}^2: \vec{x}\cdot\vec{y} = 7x^1 y^2 + x^2y^2$
+	anderes Beispiel:
+	\[\vec{x}\cdot\vec{y} \equiv x^1y^1 - x^2y^2\]
+	symmetrische Bilinearform, _nicht_ positiv, semidefinit!
+	Frage: \\
+	Beispiel für Bilinearform die positiv-semidefinit ist, aber _nicht positiv definit_

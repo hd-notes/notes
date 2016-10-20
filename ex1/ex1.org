@@ -1,0 +1,130 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Experimentalphysik (H.-C. Schulz-Coulon)
+#+LATEX_HEADER: \usepackage{siunitx}
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
+#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+
+* Begrüßung ist langweilig
+* Begrüßung2 ist auch langweilig
+* Moodle
+  Passwort: F=ma
+* Klausur
+  11.02.2017 (9 Uhr)
+  60% Übungspunkte
+* Bücher
+  | Buch                                       | Bemerkung |
+  |--------------------------------------------+-----------|
+  | Heintze; Lehrbuch zur Experimentalphysik I |           |
+  | Haliday, Resnick, Walker; Physik           |           |
+  | Tipler, Allen; Physik                      |           |
+  | Demtröder; Experimentalphysik I            |           |
+  | Bergman                                    |           |
+
+  online...
+* Einleitung
+** Eigenschaften der Physik
+   Physik ist _nicht_ axiomatisch!
+   - Nicht alle Gesetze der Natur sind bekannt.
+   - Die bekannten Naturgesezte sind _nicht_ unumstößlich
+   - unfertig
+   - empirisch
+   - quantitativ
+   - experimentell
+   - überprüfbar
+   - braucht Mathematik
+   - Gefühl für Größenordnungen und rationale Zusammenhänge
+*** Beispiel
+	Fermi-Probleme:
+	- Anzahl der Klabirstimmer in Chicago?
+	- Anzahl der Autos in einem 10km Stau?
+	- Anzahl von Fischen im Ozean
+
+** Maßeinheiten
+   Internationales Einheitensystem (SI)
+*** Basisgrößen
+	| Größe | Einheit   | Symbol         |
+	|-------+-----------+----------------|
+	| Länge | Meter     | $\si{\meter}$  |
+	| Masse | Kilogramm | $\si{\kg}$     |
+	| Zeit  | Sekunden  | $\si{\second}$ |
+**** Meter
+	 Strecke, die das Lich im Cakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
+**** Sekunde
+	 Das $\SI{9192631770}{}$-fache  der Periodendauder der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
+**** Kilogramm
+	 Das Kilogramm ist die Einheit der Masse, es ist gleich der Masse des internationalen Kilogrammprototyps (ist scheiße).
+***** Avogadroprojekt
+	  \[N_A = \frac{M V n}{m}\]
+	  $N_A$: Avogardokonstante ($N_A = \SI{6.0221415e23}{}$)
+*** Weitere Größen
+	| Größe       | Einheit | Symbol          |
+	|-------------+---------+-----------------|
+	| Strom       | Ampere  | $\si{\ampere}$  |
+	| Temperatur  | Kelvin  | $\si{\kelvin}$  |
+	| Lichtstärke | Candla  | $\si{\candela}$ |
+
+* Mechanik
+  Kinematik: Beschreibung der Bewegung
+  Dynamik: Ursache der Berwegung
+
+** Kinematik des Massenpunktes
+*** Eindimensionale Bewegung
+**** TODO Skizze 1
+	$x_1,t_1 \longrightarrow x_2, t_2$
+	Geschwindigkeit
+	\[v = \frac{\text{Weg}}{\text{Zeit}} = \frac{x_2 - x_1}{t_2 - t_1} = \frac{\Delta x}{\Delta t}\quad [v] = \si{\meter\per\second}~\text{abgeleitete Größe}\]
+**** Momentangeschwindigkeit
+	 \[v := \lim_{\Delta t\to 0} \frac{\Delta{x}}{\Delta t} = \frac{\mathrm{d}x}{\mathrm{d}t} = \dot{x}\]
+**** Beschleunigung
+	 \[a := \lim_{\Delta t\to 0} \frac{\Delta{v}}{\Delta{t}} = \frac{\mathrm{d}v}{\mathrm{d}t} = \frac{\mathrm{d}^2x}{\mathrm{d}t^2} = \ddot{x}\quad [a]=\si{\meter\per\second\squared}\]
+**** Freier Fall
+	 $a = \text{const.}$ (Behauptung)
+	 \[a=\ddot{x} = \text{const} = \dot{v}\]
+	 $\rightarrow§ Integration: \[v(t) = \int_0^t a\mathrm{d}t + v_0 = a t + v_0\]
+	 \[x(t) = x_0 + \int_0^t v(t)\mathrm{d}t = x_0 + \int_0^t (a t + v_0)\mathrm{d}t = \frac{1}{2}a t^2 + v_0 t + x_0\]
+	 Bei unserem Fallturm
+	 \[x(t) = \frac{1}{2}a t^2 \rightarrow a = \frac{2 x}{t^2}\]
+     | $x[\si{\meter}]$ | $t[\si{\milli\second}]$ | $\frac{2x}{t^2}[\si{\meter\per\square\second}]$ |
+     |------------------+-------------------------+-------------------------------------------------|
+     |             0.45 |                   304.1 |                                       9.7321696 |
+     |              0.9 |                   429.4 |                                       9.7622163 |
+     |             1.35 |                   525.5 |                                       9.7772861 |
+     |             1.80 |                   606.8 |                                       9.7771293 |
+	 #+TBLFM: $3=(2 * $1) / (($2 / 1000)^2)
+	 \[x(t) = \frac{1}{2} g t^2,~g=\SI{9.81}{\meter\per\square\second}\]
+	 Die Erdbeschleunigung $g$ ist für alle Körper gleich (Naturgesetz).
+*** Bewegung im Raum
+**** TODO Skizze 2
+	Ortsvektor:
+	\[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} = {\begin{pmatrix} x(t) & y(t) & z(t)\end{pmatrix}}^\intercal\]
+	Durschnittsgeschwindigkeit
+	\[\frac{\vec{\Delta r_{12}}}{\Delta t} = \frac{\vec{r_2} - \vec{r_1}}{\Delta t} = \vec{v_D}\]
+	\[\vec{v}(t) = \frac{\mathrm{d}\vec{r}}{\mathrm{d}t} = \dot{\vec{r}}(t) = {\begin{pmatrix}\dot{x}(t) & \dot{y}(t) & \dot{z}(t)\end{pmatrix}}^\intercal = {\begin{pmatrix} v_x & v_y & v_z\end{pmatrix}}^\intercal\]
+	\[\vec{a}(t) = \frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = \dot{\vec{v}}(t) = \ddot{\vec{r}}(t) = {\begin{pmatrix} \ddot{x} & \ddot{y} & \ddot{z}\end{pmatrix}}^\intercal = {\begin{pmatrix} a_x & a_y & a_z \end{pmatrix}}^\intercal\]
+	$\rightarrow$ Superpositionsprinzip: \\
+	Kinematik kann für jede einzelne (Orts)komponente einzeln betrachtet werden.
+
+	\[\vec{a_0} = \text{const}\]
+	\[\vec{r}(t) = \vec{r_0} + \vec{v_0}(t-t_0) + \frac{1}{2}\vec{a}(t^2-t_0^2) = \begin{pmatrix} x_0 + v_{x,0}(t-t_0) + \frac{1}{2} a_{x,0}(t^2-t_0^2) \\ y_0 + v_{y,0}(t-t_0) + \frac{1}{2} a_{y,0}(t^2-t_0^2) \\ z_0 + v_{z,0}(t-t_0) + \frac{1}{2} a_{z,0}(t^2-t_0^2) \end{pmatrix}\]
+**** Horizontaler Wurf
+**** TODO Skizze 3
+	 \[t_0 = 0\]
+	 \[\vec{a_0} =  {\begin{pmatrix} 0 & 0 & -g \end{pmatrix}}^\intercal\]
+	 \[\vec{v_0} =  {\begin{pmatrix} v_{x,0} & 0 & 0 \end{pmatrix}}^\intercal\]
+	 \[\vec{x_0} =  {\begin{pmatrix} 0 & 0 & 0 \end{pmatrix}}^\intercal\]
+	 \[\vec{r}(t) =  {\begin{pmatrix} v_{x,0}t & 0 & \frac{1}{2}gt^2 \end{pmatrix}}^\intercal\]
+
+**** Schiefer Wurf
+	 \[\vec{a_0} = \colvec{0;0;-g}\]
+	 \[\vec{v_0} = \colvec{v_{x,0};0;v_{z,0}}\]
+	 \[\vec{r_0} = \colvec{0;0;z_0}\]
+	 \[r(t) = \colvec{v_{x,0}t;0;-\frac{1}{2}gt^2 + v_{z,0}t + z_0}\]
+	 \[z(x) = -\frac{1}{2}\frac{g}{v_{x,0}^2}x^2 + \frac{v_{z,0}}{v_{x,0}}x + z_0\]

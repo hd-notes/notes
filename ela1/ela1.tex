@@ -1,0 +1,455 @@
+% Created 2016-10-20 Do 11:20
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{siunitx}
+\usepackage{fontspec}
+\sisetup{load-configurations = abbrevations}
+\newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclareMathOperator{\Exists}{\exists}
+\DeclareMathOperator{\Forall}{\forall}
+\def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+\def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\author{Robin Heinemann}
+\date{\today}
+\title{Lineare Algebra (Vogel)}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Einleitung}
+\label{sec-1}
+Übungsblätter/Lösungen:
+jew. Donnerstag / folgender Donnerstag
+Abgabe Donnerstag 9:30
+50\% der Übungsblätter
+\subsection{Plenarübung}
+\label{sec-1-1}
+Aufgeteilt
+\subsection{Moodle}
+\label{sec-1-2}
+Passwort: vektorraumhomomorphismus
+\subsection{Klausur}
+\label{sec-1-3}
+24.02.2017
+\section{Grundlagen}
+\label{sec-2}
+\subsection{Naive Aussagenlogik}
+\label{sec-2-1}
+naive Logik: wir vewenden die sprachliche Vorstellung ($\neq$ mathematische Logik: eigne Vorlesung)
+Eine Aussage ist ein festehender Satz, dem genau einer der Wahrheitswerte "wahr" oder "falsch" zugeordnet werden kann.
+Aus einfachen Aussagen kann man durch logische Verknüpfungen kompliziertere Aussagen bilden.
+Angabe der Wahrheitswertes der zusammengesetzten Aussage erfolgt duch Wahrheitstafeln (liefern den Wahrheitswert der zusammengesetzten Aussage, aus dem Wahrheitswert der einzelnen Aussagen).
+Im folgenden seien $A$ und $B$ Aussagen.
+\begin{itemize}
+\item Negation (NICHT-Verknüpfung)
+\begin{itemize}
+\item Symbol: \$$\neg{}$
+\item Wahrheitstafel:
+\begin{center}
+\begin{tabular}{ll}
+$A$ & $\neg A$\\
+\hline
+w & f\\
+f & w\\
+\end{tabular}
+\end{center}
+\item Beispiel: $A$: 7 ist eine Primzahl (w)
+$\neg A$: 7 ist keine Primzahl (f)
+\end{itemize}
+
+\item Konjunktion (UND-Verknüpfung)
+\begin{itemize}
+\item Symbol $\wedge$
+\item Wahrheitstafel:
+\begin{center}
+\begin{tabular}{lll}
+$A$ & $B$ & $A\wedge B$\\
+\hline
+w & w & w\\
+w & f & f\\
+f & w & f\\
+f & f & f\\
+\end{tabular}
+\end{center}
+\end{itemize}
+
+\item Disjunktion (ODER-Verknüpfung)
+\begin{itemize}
+\item Symbol: $\vee$
+\item Wahrheitstafel:
+\begin{center}
+\begin{tabular}{lll}
+$A$ & $B$ & $A\vee B$\\
+\hline
+w & w & w\\
+w & f & w\\
+f & w & w\\
+f & f & f\\
+\end{tabular}
+\end{center}
+\item exklusives oder: $(A\vee B) \wedge (\neg(A\wedge B))$
+\end{itemize}
+\item Beispiel $A$: 7 ist eine Primzahl (w), $B$: 5 ist gerade (f)
+\begin{itemize}
+\item $A\wedge B$ 7 ist eine Primzahl und 5 ist gerade (f)
+\item $A\vee B$ 7 ist eine Primzahl oder 5 ist gerade (w)
+\end{itemize}
+
+\item Implikation (WENN-DANN-Verknüpfung)
+\begin{itemize}
+\item Symbol: $\Rightarrow$
+\item Wahrheitstafel:
+\begin{center}
+\begin{tabular}{lll}
+$A$ & $B$ & $A\Rightarrow B$\\
+w & w & w\\
+w & f & f\\
+f & w & w\\
+f & f & w\\
+\end{tabular}
+\end{center}
+\item Sprechweise: $A$ impliziert $B$, aus $A$ folgt $B$, $A$ ist eine hinreichende Bedingung für $B$ (ist $A\Rightarrow B$ wahr, dann folgt aus $A$ wahr, $B$ ist wahr), $B$ ist eine notwendige Bedingung für $A$ (ist $A\Rightarrow B$ wahr, dann kann $A$ nur dann wahr sein, wenn Aussage $B$ wahr ist)
+\item Beispiel Es seinen $m,n\in\mathbb{N}$
+\begin{itemize}
+\item $A$: m ist gerade
+\item $B$: $mn$ ist gerade
+\item Dann gilt $\Forall m,n \in\mathbb{N}~A\Rightarrow B~\text{wahr}$ \\
+         Fallunterscheidung:
+\begin{itemize}
+\item $m$ gerade, $n$ gerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
+\item $m$ gerade, $n$ ungerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
+\item $m$ ungerade, $n$ gerade, dann ist $A$ falsch, $B$ wahr, d.h. $A\Rightarrow B$ wahr
+\item $m$ ungerade, $n$ ungerade, dann ist $A$ falsch, $B$ falsh, d.h. $A\Rightarrow B$ wahr
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item Äquivalenz (GENAU-DANN-WENN-Verknüpfung)
+\begin{itemize}
+\item Symbol $\Leftrightarrow$
+\item Wahrheitstafel:
+\begin{center}
+\begin{tabular}{lll}
+$A$ & $B$ & $A\Leftrightarrow$ B\\
+\hline
+w & w & w\\
+w & f & f\\
+f & w & f\\
+f & f & w\\
+\end{tabular}
+\end{center}
+\item Sprechweise: $A$ gilt genau dann, wenn $B$ gilt, $A$ ist hinreichend und notwendig für $B$ \\
+       Die Aussagen $A\Leftrightarrow B$ und $(A\Rightarrow B)\wedge (B\Rightarrow A)$ sind gleichbedeutend:
+\begin{center}
+\begin{tabular}{llllll}
+$A$ & $B$ & $A\Leftrightarrow B$ & $A\Rightarrow B$ & $B\Rightarrow A$ & $(A\Rightarrow B)\wedge (B\Rightarrow A)$\\
+\hline
+w & w & w & w & w & w\\
+w & f & f & f & w & f\\
+f & w & f & w & f & f\\
+f & w & f & w & f & f\\
+f & f & w & w & w & w\\
+\end{tabular}
+\end{center}
+\item Beispiel: Es sei $n$ eine ganze Zahl \\
+       $A:~n-2>1$ \\
+       $B:~n>3$ \\
+       $\Forall n\in\mathbb{N}~\text{gilt}~A\Leftrightarrow B$
+       $C:~n>0$ \\
+       $D:~n^2>0$ \\
+       Für $n=-1$ ist die Äquivalenz $C\Leftrightarrow$ falsch ($C$ falsch, $D$ wahr) \\
+       Für alle ganzen Zahlen $n$ gilt zumindest die Implikation $C\Rightarrow D$
+\end{itemize}
+\end{itemize}
+\subsection{Beweis}
+\label{sec-2-2}
+Mathematische Sätze, Bemerkungen, Folgerungen, etc. sind meistens in Form wahrer Implikationen formuliert
+\subsubsection{beweisen}
+\label{sec-2-2-1}
+Begründen warum diese Implikation wahr ist
+\subsubsection{Beweismethoden for diese Implikation $A\Rightarrow B$}
+\label{sec-2-2-2}
+\begin{itemize}
+\item direkter Beweis ($A\Rightarrow B$)
+\item Beweis durch Kontraposition ($\neq B \Rightarrow \neg A$)
+\item Widerspruchbeweis ($\neg (A\wedge \neg B)$)
+\end{itemize}
+Diese sind äquivalent zueinander
+\begin{center}
+\begin{tabular}{lllllll}
+$A$ & $B$ & $\neg A$ & $\neg B$ & $A\Rightarrow B$ & $\neg B \Rightarrow \neg A$ & $\neg (A \wedge \neg B)$\\
+\hline
+w & w & f & f & w & w & w\\
+w & f & f & w & f & f & f\\
+f & w & w & f & w & w & w\\
+f & f & w & w & w & w & w\\
+\end{tabular}
+\end{center}
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-2-2-1}
+$m,n$ natürliche Zahlen \\
+     \[A:~m^2 < n^2\]
+\[B:~m < n\]
+Wir wollen zeigen, dass $A\Rightarrow B$ für alle natürlichen Zahlen $m,n$ wahr ist
+\begin{itemize}
+\item direkter Beweis: \\
+       \[A:~m^2 < n^2 \Rightarrow 0 < n^2 - m^2 \Rightarrow 0 < (n-m)\underbrace{(n+m)}_{>0} \Rightarrow 0 < n-m \Rightarrow m<n\]
+\item Beweis durch Kontraposition: \\
+       \[\neg B:~m \geq n \Rightarrow m^2\geq n m \wedge m n \geq n^2 \Rightarrow m^2 \geq n^2 \Rightarrow \neg A\]
+\item Beweis durch Widerspruch: \\
+       \[A\wedge \neg B \Rightarrow m^2 < n^2 \wedge n\leq m \Rightarrow m^2 < n^2 \wedge m n \leq m^2 \wedge n^2 \leq m n \Rightarrow m n \leq m^2 < n^2 \leq m n\]
+       Wiederspruch
+\end{itemize}
+\end{enumerate}
+\subsection{Existenz- und Allquantor}
+\label{sec-2-3}
+\subsubsection{Existenzquantor}
+\label{sec-2-3-1}
+\$A(x) Aussage, die von Variable x abhängt \\
+    $\exists x:~A(x)$ ist gleichbedeutend mit "Es existiert ein x, für das $A(x)$ wahr ist" (hierbei ist "existiert ein x" im Sinne von "existiert mindestens ein x" zu verstehen) \\
+    Beispiel:
+\[\exists n\in\mathbb{N}:~n>5\quad\text{(w)}\]
+$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist" $\backslash$
+\subsubsection{Allquantor}
+\label{sec-2-3-2}
+$\Forall x:~A(x)$ ist gleichbedeutend mit "Für alle x ist A(x) wahr"
+Beispiel:
+\[\Forall n\in\mathbb{N}: 4n~\text{ist gerade}\]
+\subsubsection{Negation von Existenz- und Allquantor}
+\label{sec-2-3-3}
+\[\neg(\exists x:~A(x)) \Leftrightarrow \Forall x:~\neg A(x)\]
+\[\neg(\Forall x:~A(x)) \Leftrightarrow \exists x:~\neg A(x)\]
+\subsubsection{Spezielle Beweistechniken für Existenz und Allaussagen}
+\label{sec-2-3-4}
+\begin{itemize}
+\item Angabe eines Beispiel, um zu zeigen, dass deine Existenzaussage wahr ist. \\
+      Beispiel:
+\[\exists n\in\mathbb{N}:~n>5 \text{ist wahr, denn für $n = 7$ ist die Aussage $n > 5$ wahr}\]
+\item Angabe eines Gegenbeispiel, um zu zeigen, dass eine Allausage falsch ist. \\
+      Beispiel:
+\[\Forall n\in\mathbb{N}:~n\leq 5 \text{ist flasch, dann für $n=7$ ist die Aussage $n\leq 5$ falsch}\]
+\end{itemize}
+\subsection{Naive Mengenlehre}
+\label{sec-2-4}
+Mengenbegriff nach Cantor: \\
+   Eine Menge ist eine Zusammenfassung von bestimmten, wohlunterschiedenen Objekten userer Anschauung oder useres Denkens (die Elemente genannt werden) zu einem Ganzen
+
+\subsubsection{Schreibweise}
+\label{sec-2-4-1}
+\begin{itemize}
+\item $x\in M$, falls $x$ ein Element von $M$ ist
+\item $x\not\in M$, falls $x$ kein Element von $M$ ist
+\item $M=N$, falls $M$ und $N$ die gleichen Elemente besitzen, $M\subseteq N \wedge N\subseteq M$
+\end{itemize}
+
+\subsubsection{Angabe von Mengen}
+\label{sec-2-4-2}
+\begin{itemize}
+\item Reihenfolge ist unrelevant (\$\{1,2,3\}=\{1,3,2\})
+\item Elemente sind wohlunterschieden $\{1,2,2\} = \{1,2\}$
+\item Auflisten der Elemente $M=\{a,b,c,\ldots\}$
+\item Beschreibung der Elemente durch Eigenschaften: $M=\{x\mid E(x)\}$ \\
+     (Elemente x, für die E(x) wahr)
+\begin{itemize}
+\item Beispiel:
+\[\{2,4,6,8\} = \{x\mid x\in\mathbb{N}, x~\text{gerade}, 1 < x < 10\}\]
+\end{itemize}
+\end{itemize}
+\subsubsection{leere Menge}
+\label{sec-2-4-3}
+Die leere Menge $\emptyset$ enthält keine Elemente
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-4-3-1}
+\[\{x\mid x\in\mathbb{N}, x < -5\} = \emptyset\]
+\end{enumerate}
+
+\subsubsection{Zahlenbereiche}
+\label{sec-2-4-4}
+Menge der natürlichen Zahlen:
+\[\mathbb{N} := \{1,2,3,\ldots\}\]
+
+Menge der natürlichen Zahlen mit Null:
+\[\mathbb{N}_0 := \{0, 1,2,3,\ldots\}\]
+
+Menge der Ganzen Zahlen:
+\[\mathbb{Z} := \{0,1,-1,2,-2\}\]
+
+Menge der rationalen Zahlen:
+\[\mathbb{Q} := \{\frac{m}{n} \mid m\in\mathbb{Z}, n\in\mathbb{N}\}\]
+
+Menge der reellen Zahlen: $\mathbb{R}$
+
+\subsubsection{Teilmenge}
+\label{sec-2-4-5}
+$A,B$ seien Mengen. \\
+    $A$ heißt Teilmenge von $B~(A\subseteq B) \xLeftrightarrow{\text{Def.}} \Forall x\in A: x\in B$
+$A$ heißt echte Teilmenge von $B~(A\subset B) \xLeftrightarrow{\text{Def.}} A\subseteq B \wedge A\neq B$
+\begin{enumerate}
+\item Anmerkung
+\label{sec-2-4-5-1}
+Offenbar gilt für Mengen $A,B$:
+\[A=B \Leftrightarrow A\subseteq B \wedge B\subseteq A\]
+$\emptyset$ ist Teilmenge jeder Menge
+
+\item Beipspiel
+\label{sec-2-4-5-2}
+\[\mathbb{N}\subset\mathbb{N}_0\subset\mathbb{Z}\subset\mathbb{Q}\]
+\end{enumerate}
+
+\subsubsection{Durschnitt}
+\label{sec-2-4-6}
+\[A \cap B := \{x\mid x\in A \wedge x\in B\}\]
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-4-6-1}
+\[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\cap B = \{3,7\}\]
+\end{enumerate}
+
+\subsubsection{Vereinigung}
+\label{sec-2-4-7}
+\[A\cup B := \{x\mid x\in A \vee x\in B\}\]
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-4-7-1}
+\[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\cup B = \{2,3,4,5,6,7\}\]
+\end{enumerate}
+
+\subsubsection{Differenz}
+\label{sec-2-4-8}
+\[A\setminus B := \{x\mid x\in A \wedge x\not\in B\}\]
+Im Fall $B\subseteq A$ nennt man $A\setminus B$ auch das Komplement von $B$ in $A$ und schreibt $\mathcal{c}_A(B) = A\setminus B$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-4-8-1}
+\[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\setminus B = \{2,5\}\]
+\end{enumerate}
+\subsubsection{Bemerkung zu Vereinigung und Durschnitt}
+\label{sec-2-4-9}
+$A,B$ seien zwei Mengen. Dann gilt \[A\cap (B\cup C) = (A\cap B) \cup (A\cap C)\]
+\begin{enumerate}
+\item Beweis
+\label{sec-2-4-9-1}
+\[A\cap(B\cup C) \subseteq (A\cap B) \cup (A\cap C)\]
+\[A\cap(B\cup C) \supseteq (A\cap B) \cup (A\cap C)\]
+"$\subseteq$" Sei $x\in A \cap (B\cup C)$. Dann ist $x\in A \wedge x\in B\cup C$
+\begin{itemize}
+\item 1. Fall: $x\in A \wedge x\in B$
+       \[\Rightarrow x\in A\cap B \Rightarrow x \in (A\cap B) \cup (A\cap C)\]
+\item 2. Fall $x\in A \wedge x\in C$
+       \[\Rightarrow x\in A\cap C \Rightarrow x\in (A\cap B)\cup(A\cap C)\]
+\end{itemize}
+Damit ist "$\subseteq$" gezeigt.
+"$\supseteq$" Sei \$x$\in$ (A$\cap$ B) $\cup$ (A$\cap$ C)
+\[\Rightarrow x\in A\cap B \vee x\in A\cap C \\ \Rightarrow (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \Rightarrow x\in A \wedge (x\in B\vee x\in C) \\ \Rightarrow x\in A \wedge x\in B\cup C \\ \Rightarrow x\in A\cap (B\cup C)\]
+Damit ist "$\supseteq$" gezeigt.
+\end{enumerate}
+\subsubsection{Bemerkung zu Äquivalenz von Mengen}
+\label{sec-2-4-10}
+Seien $A,B$ Mengen, dann sind äquivalent:
+\begin{enumerate}
+\item $A\cup B = B$
+\item $A\subseteq B$
+\end{enumerate}
+\begin{enumerate}
+\item Beweis
+\label{sec-2-4-10-1}
+Wir zeigen 1) $\Rightarrow$ 2) und 2) $\Rightarrow$ 1.
+\[1) \Rightarrow 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \Rightarrow x\in A \wedge x \in B \Rightarrow x\in A\cup B = B\]
+\[2) \Rightarrow 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
+"$\subseteq$": Sei $x\in A\cup B \Rightarrow x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
+"$\supseteq$": $B\subseteq A\cup B$ klar
+\end{enumerate}
+\subsubsection{Kartesisches Produkt}
+\label{sec-2-4-11}
+Seien $A,B$ Mengen
+\[A\times B := \{(a,b)\mid a\in A, b\in B\}\]
+heipt das kartesische Produkt von $A$ und $B$. Hierbei ist $(a,b) = (a',b') \xLeftrightarrow{\text{Def}} a = a' \wedge b = b'$ a = a' $\wedge$ b = b'\$
+
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-4-11-1}
+\begin{itemize}
+\item \[\{1,2\}\times \{1,3,4\} = \{(1,1),(1,3),(1,4),(2,1),(2,3),(2,4)\}\]
+\item \[\mathbb{R}\times\mathbb{R}=\{(x,y)|mid x,y \in \mathbb{R}\} = \mathbb{R}^2\]
+\end{itemize}
+\end{enumerate}
+\subsubsection{Potenzmenge}
+\label{sec-2-4-12}
+$A$ sei eine Menge
+\[\mathcal{P} (A) := \{M\mid M\subseteq A\}\]
+heißt die Potenzmenge von $A$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-4-12-1}
+\[\mathcal{P} (\{1,2,3\}) =  \{\emptyset, \{1\}, \{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\{1,2,3,4\}\}\]
+\end{enumerate}
+\subsubsection{Kardinalität}
+\label{sec-2-4-13}
+$M$ sei eine Menge. Wir setzen
+\[\abs{M} := \begin{cases} n & \text{falls $M$ eine endliche Menge ist und $n$ Elemente enthält} \\ \infty & \text{falls $M$ nicht endlich ist} \end{cases}\]
+$\abs{M}$ heißt Kardinalität von A
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-4-13-1}
+\begin{itemize}
+\item $\abs{\{7,11,16\}} = 3$
+\item $\abs{\mathbb{N}} = \infty$
+\end{itemize}
+\end{enumerate}
+\subsubsection{Bemerkung zu natürlichen Zahlen}
+\label{sec-2-4-14}
+Für die natürlichen Zahlen gilt das Induktionsaxiom
+Ist $M\subseteq N$ eine Teilmenge, für die gilt:
+\[1\in M \wedge \Forall n\in M : n\in M \Rightarrow n+1 \in M\]
+dann ist $M = \mathbb{N}$
+\subsubsection{Prinzip der vollständigen Induktion}
+\label{sec-2-4-15}
+Für jedes $n\in \mathbb{N}$ sei eine Aussage $A(n)$ gegeben. Die Aussagen $A(N)$ gelten für alle $n\in\mathbb{N}$, wenn man folgendes zeigen kann: \\
+\begin{itemize}
+\item (IA) $A(1)$ ist wahr
+\item (IS) Für jedes $n\in\mathbb{N}$ gilt: $A(n) \Rightarrow A(n+1)$
+\end{itemize}
+Der Schritt (IA) heißt Induktionsanfang, die Implikation $A(n) \Rightarrow A(n+1)$ heißt Induktionsschritt
+\begin{enumerate}
+\item Beweis
+\label{sec-2-4-15-1}
+Setze $M := \{n\in \mathbb{N}\mid A(n)~\text{ist wahr}\}$
+Wegen (IA) ist $1\in M$, wegen (IS) gilt: \$n$\in$ M $\Rightarrow$ n+1 $\in$ M\$\\
+     Nach Induktionsaxiom folgt $M = \mathbb{N}$, das heißt $A(n)$ ist wahr für alle $n\in \mathbb{N}$
+\item Beispiel
+\label{sec-2-4-15-2}
+Für $n\in\mathbb{N}$ sei $A(n)$ die Aussage: $1+\ldots + n = \frac{n(n+1)}{2}$
+Wir zeigen: $A(n)$ ist wahr für alle $n\in \mathbb{N}$, und zwar durch vollständige Induktion
+\begin{itemize}
+\item (IA) $A(1)$ ist wahr, denn $1 = \frac{1(1+1)}{2}$
+\item (IS) zu zeigen: $A(n) \Rightarrow A(n+1)$ \\
+       Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\Rightarrow 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
+\end{itemize}
+\end{enumerate}
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}

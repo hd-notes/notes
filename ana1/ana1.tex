@@ -1,0 +1,142 @@
+% Created 2016-10-19 Mi 10:48
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{siunitx}%
+\usepackage{fontspec}%
+\sisetup{load-configurations = abbrevations}%
+\newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+\usepackage{mathtools}%
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclareMathOperator{\Exists}{\exists}%
+\DeclareMathOperator{\Forall}{\forall}%
+\author{Robin Heinemann}
+\date{\today}
+\title{Analysis I (Marciniak-Czochra)}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Einleitung}
+\label{sec-1}
+Webseite www.biostruct.uni-heidelberg.de/Analysis1.php
+Klausurzulassung: 50\%
+Klausur 18.2.2017 9-12Uhr
+\section{Mengen und Zahlen}
+\label{sec-2}
+\subsection{Logische Regeln und Zeichen}
+\label{sec-2-1}
+\subsubsection{Quantoren}
+\label{sec-2-1-1}
+\begin{center}
+\begin{tabular}{ll}
+$\Forall x$ & für alle $x$\\
+$\exists x$ & es gibt (mindestens) ein $x$\\
+$\exists! x$ & es gibt genau ein $x$\\
+\end{tabular}
+\end{center}
+\subsubsection{Hinreichend und Notwendig}
+\label{sec-2-1-2}
+\begin{itemize}
+\item $A\Rightarrow B$: wenn $A$ gilt, gilt auch $B$, $A$ ist \textbf{hinreichend} für $B$, daraus folgt: $B$ ist \textbf{notwendig} für $A$, Ungültigkeit von $B$ impliziert die Ungültigkeit von $A$ ($\neg B \Rightarrow \neg A$)
+\item $A \Leftrightarrow B$: $A$ gilt, genau dann, wenn $B$ gilt
+\end{itemize}
+\subsubsection{Beweistypen}
+\label{sec-2-1-3}
+\begin{enumerate}
+\item Direkter Schluss
+\label{sec-2-1-3-1}
+$A\Rightarrow B$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-1-3-1-1}
+$m$ gerade Zahl $\Rightarrow$ $m^2$ gerade Zahl
+\begin{enumerate}
+\item Beweis
+\label{sec-2-1-3-1-1-1}
+$m$ gerade $\Rightarrow \exists n\in\mathbb{N}~\text{sodass}~m = 2n \Rightarrow m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
+\end{enumerate}
+\end{enumerate}
+\item Beweis der Transponerten (der Kontraposition)
+\label{sec-2-1-3-2}
+Zum Beweis $A\Rightarrow B$ zeigt man $\neg B\Rightarrow \neg A~(A\Rightarrow B)\Leftrightarrow (\neg B) \Rightarrow (\neg A)$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-1-3-2-1}
+Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\Rightarrow m~\text{gerade}$
+\begin{enumerate}
+\item Beweis
+\label{sec-2-1-3-2-1-1}
+Wir zeigen: $m$ ist ungerade $\Rightarrow m^2$ ungerade
+\[\exists n\in\mathbb{N}:~m=2n+1\Rightarrow m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\Rightarrow m^2~\text{ungerade} \square\]
+\end{enumerate}
+\end{enumerate}
+\item Indirekter Schluss ( Beweis durch Wiederspruch)
+\label{sec-2-1-3-3}
+Man nimmt an, dass $A\Rightarrow B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\Rightarrow \neg C$, also ein Wiederspruch
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-1-3-3-1}
+$\not\exists q\in\mathbb{Q}: a^2 = 2$
+\begin{enumerate}
+\item Beweis
+\label{sec-2-1-3-3-1-1}
+Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
+$\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
+Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeight)}~\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
+Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Summenzeichen und Produktzeichen}
+\label{sec-2-1-4}
+\begin{enumerate}
+\item Summenzeichen
+\label{sec-2-1-4-1}
+Wir definieren für $m > 0$ \[\sum_{k=m}^m a_k := a_m + \ldots + a_n\] falls $n\geq m$
+\[\sum_{k=m}^n a_k := 0\] falls $n < m$ (sogennante leere Summe)
+\item Produktzeichen
+\label{sec-2-1-4-2}
+\[\prod_{k=m}^n a_k := \begin{cases} a_m \cdot ... \cdot a_n & \text{falls}~n\geq m\\ 1 & \text{falls}~n<m~\text{(sog. leeres Produkt)}\end{cases}\]
+\end{enumerate}
+\subsection{Mengen}
+\label{sec-2-2}
+\subsubsection{Definition}
+\label{sec-2-2-1}
+(Georg cantor 1885) Unger einer \uline{Menge} verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
+$M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeht, ab gilt
+\begin{itemize}
+\item $x\in M$ (x Element von M)
+\item x \textlnot{}$\in$ M (x kein Element von M)
+\end{itemize}
+\[M = \{x_1, x_2, \ldots, x_n\}\]
+\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \Leftrightarrow A(x)\]
+\subsubsection{Mengenrelationen}
+\label{sec-2-2-2}
+\begin{itemize}
+\item Mengeninklusion $A\subset M$ ($A$ ist eine Teilmenge von $M$)
+\[\Forall x: (x\in A \Rightarrow x\in M)\], zum Beispiel $\mathbb{N} \subset \mathbb{Z}$
+\end{itemize}
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}

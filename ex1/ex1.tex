@@ -1,0 +1,214 @@
+% Created 2016-10-19 Mi 13:29
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{siunitx}
+\usepackage{fontspec}
+\sisetup{load-configurations = abbrevations}
+\newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclareMathOperator{\Exists}{\exists}
+\DeclareMathOperator{\Forall}{\forall}
+\def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+\def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\author{Robin Heinemann}
+\date{\today}
+\title{Experimentalphysik (H.-C. Schulz-Coulon)}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Begrüßung ist langweilig}
+\label{sec-1}
+\section{Begrüßung2 ist auch langweilig}
+\label{sec-2}
+\section{Moodle}
+\label{sec-3}
+Passwort: F=ma
+\section{Klausur}
+\label{sec-4}
+11.02.2017 (9 Uhr)
+60\% Übungspunkte
+\section{Bücher}
+\label{sec-5}
+\begin{center}
+\begin{tabular}{ll}
+Buch & Bemerkung\\
+\hline
+Heintze; Lehrbuch zur Experimentalphysik I & \\
+Haliday, Resnick, Walker; Physik & \\
+Tipler, Allen; Physik & \\
+Demtröder; Experimentalphysik I & \\
+Bergman & \\
+\end{tabular}
+\end{center}
+
+online\ldots{}
+\section{Einleitung}
+\label{sec-6}
+\subsection{Eigenschaften der Physik}
+\label{sec-6-1}
+Physik ist \uline{nicht} axiomatisch!
+\begin{itemize}
+\item Nicht alle Gesetze der Natur sind bekannt.
+\item Die bekannten Naturgesezte sind \uline{nicht} unumstößlich
+\item unfertig
+\item empirisch
+\item quantitativ
+\item experimentell
+\item überprüfbar
+\item braucht Mathematik
+\item Gefühl für Größenordnungen und rationale Zusammenhänge
+\end{itemize}
+\subsubsection{Beispiel}
+\label{sec-6-1-1}
+Fermi-Probleme:
+\begin{itemize}
+\item Anzahl der Klabirstimmer in Chicago?
+\item Anzahl der Autos in einem 10km Stau?
+\item Anzahl von Fischen im Ozean
+\end{itemize}
+
+\subsection{Maßeinheiten}
+\label{sec-6-2}
+Internationales Einheitensystem (SI)
+\subsubsection{Basisgrößen}
+\label{sec-6-2-1}
+\begin{center}
+\begin{tabular}{lll}
+Größe & Einheit & Symbol\\
+\hline
+Länge & Meter & $\si{\meter}$\\
+Masse & Kilogramm & $\si{\kg}$\\
+Zeit & Sekunden & $\si{\second}$\\
+\end{tabular}
+\end{center}
+\begin{enumerate}
+\item Meter
+\label{sec-6-2-1-1}
+Strecke, die das Lich im Cakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
+\item Sekunde
+\label{sec-6-2-1-2}
+Das $\SI{9192631770}{}$-fache  der Periodendauder der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
+\item Kilogramm
+\label{sec-6-2-1-3}
+Das Kilogramm ist die Einheit der Masse, es ist gleich der Masse des internationalen Kilogrammprototyps (ist scheiße).
+\begin{enumerate}
+\item Avogadroprojekt
+\label{sec-6-2-1-3-1}
+\[N_A = \frac{M V n}{m}\]
+$N_A$: Avogardokonstante ($N_A = \SI{6.0221415e23}{}$)
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Weitere Größen}
+\label{sec-6-2-2}
+\begin{center}
+\begin{tabular}{lll}
+Größe & Einheit & Symbol\\
+\hline
+Strom & Ampere & $\si{\ampere}$\\
+Temperatur & Kelvin & $\si{\kelvin}$\\
+Lichtstärke & Candla & $\si{\candela}$\\
+\end{tabular}
+\end{center}
+
+\section{Mechanik}
+\label{sec-7}
+Kinematik: Beschreibung der Bewegung
+Dynamik: Ursache der Berwegung
+
+\subsection{Kinematik des Massenpunktes}
+\label{sec-7-1}
+\subsubsection{Eindimensionale Bewegung}
+\label{sec-7-1-1}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze 1
+\label{sec-7-1-1-1}
+$x_1,t_1 \longrightarrow x_2, t_2$
+Geschwindigkeit
+\[v = \frac{\text{Weg}}{\text{Zeit}} = \frac{x_2 - x_1}{t_2 - t_1} = \frac{\Delta x}{\Delta t}\quad [v] = \si{\meter\per\second}~\text{abgeleitete Größe}\]
+\item Momentangeschwindigkeit
+\label{sec-7-1-1-2}
+\[v := \lim_{\Delta t\to 0} \frac{\Delta{x}}{\Delta t} = \frac{\mathrm{d}x}{\mathrm{d}t} = \dot{x}\]
+\item Beschleunigung
+\label{sec-7-1-1-3}
+\[a := \lim_{\Delta t\to 0} \frac{\Delta{v}}{\Delta{t}} = \frac{\mathrm{d}v}{\mathrm{d}t} = \frac{\mathrm{d}^2x}{\mathrm{d}t^2} = \ddot{x}\quad [a]=\si{\meter\per\second\squared}\]
+\item Freier Fall
+\label{sec-7-1-1-4}
+$a = \text{const.}$ (Behauptung)
+\[a=\ddot{x} = \text{const} = \dot{v}\]
+\$$\rightarrow$§ Integration: \[v(t) = \int_0^t a\mathrm{d}t + v_0 = a t + v_0\]
+\[x(t) = x_0 + \int_0^t v(t)\mathrm{d}t = x_0 + \int_0^t (a t + v_0)\mathrm{d}t = \frac{1}{2}a t^2 + v_0 t + x_0\]
+Bei unserem Fallturm
+\[x(t) = \frac{1}{2}a t^2 \rightarrow a = \frac{2 x}{t^2}\]
+\begin{center}
+\begin{tabular}{rrr}
+$x[\si{\meter}]$ & $t[\si{\milli\second}]$ & $\frac{2x}{t^2}[\si{\meter\per\square\second}]$\\
+\hline
+0.45 & 304.1 & 9.7321696\\
+0.9 & 429.4 & 9.7622163\\
+1.35 & 525.5 & 9.7772861\\
+1.80 & 606.8 & 9.7771293\\
+\end{tabular}
+\end{center}
+\[x(t) = \frac{1}{2} g t^2,~g=\SI{9.81}{\meter\per\square\second}\]
+Die Erdbeschleunigung $g$ ist für alle Körper gleich (Naturgesetz).
+\end{enumerate}
+\subsubsection{Bewegung im Raum}
+\label{sec-7-1-2}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze 2
+\label{sec-7-1-2-1}
+Ortsvektor:
+\[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} = {\begin{pmatrix} x(t) & y(t) & z(t)\end{pmatrix}}^\intercal\]
+Durschnittsgeschwindigkeit
+\[\frac{\vec{\Delta r_{12}}}{\Delta t} = \frac{\vec{r_2} - \vec{r_1}}{\Delta t} = \vec{v_D}\]
+\[\vec{v}(t) = \frac{\mathrm{d}\vec{r}}{\mathrm{d}t} = \dot{\vec{r}}(t) = {\begin{pmatrix}\dot{x}(t) & \dot{y}(t) & \dot{z}(t)\end{pmatrix}}^\intercal = {\begin{pmatrix} v_x & v_y & v_z\end{pmatrix}}^\intercal\]
+\[\vec{a}(t) = \frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = \dot{\vec{v}}(t) = \ddot{\vec{r}}(t) = {\begin{pmatrix} \ddot{x} & \ddot{y} & \ddot{z}\end{pmatrix}}^\intercal = {\begin{pmatrix} a_x & a_y & a_z \end{pmatrix}}^\intercal\]
+$\rightarrow$ Superpositionsprinzip: \\
+    Kinematik kann für jede einzelne (Orts)komponente einzeln betrachtet werden.
+
+\[\vec{a_0} = \text{const}\]
+\[\vec{r}(t) = \vec{r_0} + \vec{v_0}(t-t_0) + \frac{1}{2}\vec{a}(t^2-t_0^2) = \begin{pmatrix} x_0 + v_{x,0}(t-t_0) + \frac{1}{2} a_{x,0}(t^2-t_0^2) \\ y_0 + v_{y,0}(t-t_0) + \frac{1}{2} a_{y,0}(t^2-t_0^2) \\ z_0 + v_{z,0}(t-t_0) + \frac{1}{2} a_{z,0}(t^2-t_0^2) \end{pmatrix}\]
+\item Horizontaler Wurf
+\label{sec-7-1-2-2}
+\item {\bfseries\sffamily TODO} Skizze 3
+\label{sec-7-1-2-3}
+\[t_0 = 0\]
+\[\vec{a_0} =  {\begin{pmatrix} 0 & 0 & -g \end{pmatrix}}^\intercal\]
+\[\vec{v_0} =  {\begin{pmatrix} v_{x,0} & 0 & 0 \end{pmatrix}}^\intercal\]
+\[\vec{x_0} =  {\begin{pmatrix} 0 & 0 & 0 \end{pmatrix}}^\intercal\]
+\[\vec{r}(t) =  {\begin{pmatrix} v_{x,0}t & 0 & \frac{1}{2}gt^2 \end{pmatrix}}^\intercal\]
+
+\item Schiefer Wurf
+\label{sec-7-1-2-4}
+\[\vec{a_0} = \colvec{0;0;-g}\]
+\[\vec{v_0} = \colvec{v_{x,0};0;v_{z,0}}\]
+\[\vec{r_0} = \colvec{0;0;z_0}\]
+\[r(t) = \colvec{v_{x,0}t;0;-\frac{1}{2}gt^2 + v_{z,0}t + z_0}\]
+\[z(x) = -\frac{1}{2}\frac{g}{v_{x,0}^2}x^2 + \frac{v_{z,0}}{v_{x,0}}x + z_0\]
+\end{enumerate}
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}

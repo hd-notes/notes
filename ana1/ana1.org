@@ -1,0 +1,73 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Analysis I (Marciniak-Czochra)
+#+LATEX_HEADER: \usepackage{siunitx}%
+#+LATEX_HEADER: \usepackage{fontspec}%
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}%
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+#+LATEX_HEADER: \usepackage{mathtools}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}%
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}%
+#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+
+* Einleitung
+  Webseite www.biostruct.uni-heidelberg.de/Analysis1.php
+  Klausurzulassung: 50%
+  Klausur 18.2.2017 9-12Uhr
+* Mengen und Zahlen
+** Logische Regeln und Zeichen
+*** Quantoren
+    | $\Forall x$  | für alle $x$                 |
+    | $\exists x$  | es gibt (mindestens) ein $x$ |
+    | $\exists! x$ | es gibt genau ein $x$        |
+*** Hinreichend und Notwendig
+	- $A\Rightarrow B$: wenn $A$ gilt, gilt auch $B$, $A$ ist *hinreichend* für $B$, daraus folgt: $B$ ist *notwendig* für $A$, Ungültigkeit von $B$ impliziert die Ungültigkeit von $A$ ($\neg B \Rightarrow \neg A$)
+	- $A \Leftrightarrow B$: $A$ gilt, genau dann, wenn $B$ gilt
+*** Beweistypen
+**** Direkter Schluss
+	 $A\Rightarrow B$
+***** Beispiel
+	  $m$ gerade Zahl $\Rightarrow$ $m^2$ gerade Zahl
+****** Beweis
+	   $m$ gerade $\Rightarrow \exists n\in\mathbb{N}~\text{sodass}~m = 2n \Rightarrow m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
+**** Beweis der Transponerten (der Kontraposition)
+	 Zum Beweis $A\Rightarrow B$ zeigt man $\neg B\Rightarrow \neg A~(A\Rightarrow B)\Leftrightarrow (\neg B) \Rightarrow (\neg A)$
+***** Beispiel
+	  Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\Rightarrow m~\text{gerade}$
+****** Beweis
+	   Wir zeigen: $m$ ist ungerade $\Rightarrow m^2$ ungerade
+	   \[\exists n\in\mathbb{N}:~m=2n+1\Rightarrow m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\Rightarrow m^2~\text{ungerade} \square\]
+**** Indirekter Schluss ( Beweis durch Wiederspruch)
+	 Man nimmt an, dass $A\Rightarrow B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\Rightarrow \neg C$, also ein Wiederspruch
+***** Beispiel
+	  $\not\exists q\in\mathbb{Q}: a^2 = 2$
+****** Beweis
+	   Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
+	   $\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
+	   Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeight)}~\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
+	   Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
+*** Summenzeichen und Produktzeichen
+**** Summenzeichen
+	 Wir definieren für $m > 0$ \[\sum_{k=m}^m a_k := a_m + \ldots + a_n\] falls $n\geq m$
+	 \[\sum_{k=m}^n a_k := 0\] falls $n < m$ (sogennante leere Summe)
+**** Produktzeichen
+	 \[\prod_{k=m}^n a_k := \begin{cases} a_m \cdot ... \cdot a_n & \text{falls}~n\geq m\\ 1 & \text{falls}~n<m~\text{(sog. leeres Produkt)}\end{cases}\]
+** Mengen
+*** Definition
+	(Georg cantor 1885) Unger einer _Menge_ verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
+	$M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeht, ab gilt
+	- $x\in M$ (x Element von M)
+	- x \not\in M (x kein Element von M)
+	\[M = \{x_1, x_2, \ldots, x_n\}\]
+	\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \Leftrightarrow A(x)\]
+*** Mengenrelationen
+	- Mengeninklusion $A\subset M$ ($A$ ist eine Teilmenge von $M$)
+	  \[\Forall x: (x\in A \Rightarrow x\in M)\], zum Beispiel $\mathbb{N} \subset \mathbb{Z}$
+	- \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
+	- \[A \strictsubset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
+	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beipsiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
+	- Durchschnitt \[A\cup B := \{x\mid x\in A \wedge x\in B\}\]
+	- Vereinigung \[A\cap B := \{x \mid x\in A \vee x\in B\}\]
+	- Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch B^c)}\]

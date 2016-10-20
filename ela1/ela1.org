@@ -1,0 +1,288 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Lineare Algebra (Vogel)
+#+LATEX_HEADER: \usepackage{siunitx}
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
+#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+
+* Einleitung
+  # Passwort für Downloads (Webseite Prof. Gade): GRUNDVORLESUNG
+  Übungsblätter/Lösungen:
+  jew. Donnerstag / folgender Donnerstag
+  Abgabe Donnerstag 9:30
+  50% der Übungsblätter
+** Plenarübung
+   Aufgeteilt
+** Moodle
+   Passwort: vektorraumhomomorphismus
+** Klausur
+   24.02.2017
+* Grundlagen
+** Naive Aussagenlogik
+   naive Logik: wir vewenden die sprachliche Vorstellung ($\neq$ mathematische Logik: eigne Vorlesung)
+   Eine Aussage ist ein festehender Satz, dem genau einer der Wahrheitswerte "wahr" oder "falsch" zugeordnet werden kann.
+   Aus einfachen Aussagen kann man durch logische Verknüpfungen kompliziertere Aussagen bilden.
+   Angabe der Wahrheitswertes der zusammengesetzten Aussage erfolgt duch Wahrheitstafeln (liefern den Wahrheitswert der zusammengesetzten Aussage, aus dem Wahrheitswert der einzelnen Aussagen).
+   Im folgenden seien $A$ und $B$ Aussagen.
+   - Negation (NICHT-Verknüpfung)
+	 - Symbol: $\neg
+     - Wahrheitstafel:
+       | $A$ | $\neg A$ |
+       |-----+----------|
+       | w   | f        |
+       | f   | w        |
+	 - Beispiel: $A$: 7 ist eine Primzahl (w)
+	   $\neg A$: 7 ist keine Primzahl (f)
+
+   - Konjunktion (UND-Verknüpfung)
+	 - Symbol $\wedge$
+	 - Wahrheitstafel:
+       | $A$ | $B$ | $A\wedge B$ |
+       |-----+-----+-------------|
+       | w   | w   | w           |
+       | w   | f   | f           |
+       | f   | w   | f           |
+       | f   | f   | f           |
+
+   - Disjunktion (ODER-Verknüpfung)
+	 - Symbol: $\vee$
+	 - Wahrheitstafel:
+       | $A$ | $B$ | $A\vee B$ |
+       |-----+-----+-----------|
+       | w   | w   | w         |
+       | w   | f   | w         |
+       | f   | w   | w         |
+       | f   | f   | f         |
+	 - exklusives oder: $(A\vee B) \wedge (\neg(A\wedge B))$
+   - Beispiel $A$: 7 ist eine Primzahl (w), $B$: 5 ist gerade (f)
+	 - $A\wedge B$ 7 ist eine Primzahl und 5 ist gerade (f)
+	 - $A\vee B$ 7 ist eine Primzahl oder 5 ist gerade (w)
+
+   - Implikation (WENN-DANN-Verknüpfung)
+	 - Symbol: $\Rightarrow$
+	 - Wahrheitstafel:
+       | $A$ | $B$ | $A\Rightarrow B$ |
+       | w   | w   | w                |
+       | w   | f   | f                |
+       | f   | w   | w                |
+       | f   | f   | w                |
+	 - Sprechweise: $A$ impliziert $B$, aus $A$ folgt $B$, $A$ ist eine hinreichende Bedingung für $B$ (ist $A\Rightarrow B$ wahr, dann folgt aus $A$ wahr, $B$ ist wahr), $B$ ist eine notwendige Bedingung für $A$ (ist $A\Rightarrow B$ wahr, dann kann $A$ nur dann wahr sein, wenn Aussage $B$ wahr ist)
+	 - Beispiel Es seinen $m,n\in\mathbb{N}$
+	   - $A$: m ist gerade
+	   - $B$: $mn$ ist gerade
+	   - Dann gilt $\Forall m,n \in\mathbb{N}~A\Rightarrow B~\text{wahr}$ \\
+		 Fallunterscheidung:
+		 - $m$ gerade, $n$ gerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
+		 - $m$ gerade, $n$ ungerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
+		 - $m$ ungerade, $n$ gerade, dann ist $A$ falsch, $B$ wahr, d.h. $A\Rightarrow B$ wahr
+		 - $m$ ungerade, $n$ ungerade, dann ist $A$ falsch, $B$ falsh, d.h. $A\Rightarrow B$ wahr
+   - Äquivalenz (GENAU-DANN-WENN-Verknüpfung)
+	 - Symbol $\Leftrightarrow$
+	 - Wahrheitstafel:
+       | $A$ | $B$ | $A\Leftrightarrow$ B |
+       |-----+-----+----------------------|
+       | w   | w   | w                    |
+       | w   | f   | f                    |
+       | f   | w   | f                    |
+       | f   | f   | w                    |
+	 - Sprechweise: $A$ gilt genau dann, wenn $B$ gilt, $A$ ist hinreichend und notwendig für $B$ \\
+	   Die Aussagen $A\Leftrightarrow B$ und $(A\Rightarrow B)\wedge (B\Rightarrow A)$ sind gleichbedeutend:
+       | $A$ | $B$ | $A\Leftrightarrow B$ | $A\Rightarrow B$ | $B\Rightarrow A$ | $(A\Rightarrow B)\wedge (B\Rightarrow A)$ |
+       |-----+-----+----------------------+------------------+------------------+-------------------------------------------|
+       | w   | w   | w                    | w                | w                | w                                         |
+       | w   | f   | f                    | f                | w                | f                                         |
+       | f   | w   | f                    | w                | f                | f                                         |
+       | f   | w   | f                    | w                | f                | f                                         |
+       | f   | f   | w                    | w                | w                | w                                         |
+	 - Beispiel: Es sei $n$ eine ganze Zahl \\
+	   $A:~n-2>1$ \\
+	   $B:~n>3$ \\
+	   $\Forall n\in\mathbb{N}~\text{gilt}~A\Leftrightarrow B$
+	   $C:~n>0$ \\
+	   $D:~n^2>0$ \\
+	   Für $n=-1$ ist die Äquivalenz $C\Leftrightarrow$ falsch ($C$ falsch, $D$ wahr) \\
+	   Für alle ganzen Zahlen $n$ gilt zumindest die Implikation $C\Rightarrow D$
+** Beweis
+   Mathematische Sätze, Bemerkungen, Folgerungen, etc. sind meistens in Form wahrer Implikationen formuliert
+*** beweisen
+	Begründen warum diese Implikation wahr ist
+*** Beweismethoden for diese Implikation $A\Rightarrow B$
+	- direkter Beweis ($A\Rightarrow B$)
+	- Beweis durch Kontraposition ($\neq B \Rightarrow \neg A$)
+	- Widerspruchbeweis ($\neg (A\wedge \neg B)$)
+    Diese sind äquivalent zueinander
+    | $A$ | $B$ | $\neg A$ | $\neg B$ | $A\Rightarrow B$ | $\neg B \Rightarrow \neg A$ | $\neg (A \wedge \neg B)$ |
+    |-----+-----+----------+----------+------------------+-----------------------------+--------------------------|
+    | w   | w   | f        | f        | w                | w                           | w                        |
+    | w   | f   | f        | w        | f                | f                           | f                        |
+    | f   | w   | w        | f        | w                | w                           | w                        |
+    | f   | f   | w        | w        | w                | w                           | w                        |
+**** Beispiel
+	 $m,n$ natürliche Zahlen \\
+	 \[A:~m^2 < n^2\]
+	 \[B:~m < n\]
+	 Wir wollen zeigen, dass $A\Rightarrow B$ für alle natürlichen Zahlen $m,n$ wahr ist
+	 - direkter Beweis: \\
+	   \[A:~m^2 < n^2 \Rightarrow 0 < n^2 - m^2 \Rightarrow 0 < (n-m)\underbrace{(n+m)}_{>0} \Rightarrow 0 < n-m \Rightarrow m<n\]
+	 - Beweis durch Kontraposition: \\
+	   \[\neg B:~m \geq n \Rightarrow m^2\geq n m \wedge m n \geq n^2 \Rightarrow m^2 \geq n^2 \Rightarrow \neg A\]
+	 - Beweis durch Widerspruch: \\
+	   \[A\wedge \neg B \Rightarrow m^2 < n^2 \wedge n\leq m \Rightarrow m^2 < n^2 \wedge m n \leq m^2 \wedge n^2 \leq m n \Rightarrow m n \leq m^2 < n^2 \leq m n\]
+	   Wiederspruch
+** Existenz- und Allquantor
+*** Existenzquantor
+	$A(x) Aussage, die von Variable x abhängt \\
+	$\exists x:~A(x)$ ist gleichbedeutend mit "Es existiert ein x, für das $A(x)$ wahr ist" (hierbei ist "existiert ein x" im Sinne von "existiert mindestens ein x" zu verstehen) \\
+	Beispiel:
+	\[\exists n\in\mathbb{N}:~n>5\quad\text{(w)}\]
+	$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist" \
+*** Allquantor
+	$\Forall x:~A(x)$ ist gleichbedeutend mit "Für alle x ist A(x) wahr"
+	Beispiel:
+	\[\Forall n\in\mathbb{N}: 4n~\text{ist gerade}\]
+*** Negation von Existenz- und Allquantor
+	\[\neg(\exists x:~A(x)) \Leftrightarrow \Forall x:~\neg A(x)\]
+	\[\neg(\Forall x:~A(x)) \Leftrightarrow \exists x:~\neg A(x)\]
+*** Spezielle Beweistechniken für Existenz und Allaussagen
+	- Angabe eines Beispiel, um zu zeigen, dass deine Existenzaussage wahr ist. \\
+	  Beispiel:
+	  \[\exists n\in\mathbb{N}:~n>5 \text{ist wahr, denn für $n = 7$ ist die Aussage $n > 5$ wahr}\]
+	- Angabe eines Gegenbeispiel, um zu zeigen, dass eine Allausage falsch ist. \\
+	  Beispiel:
+	  \[\Forall n\in\mathbb{N}:~n\leq 5 \text{ist flasch, dann für $n=7$ ist die Aussage $n\leq 5$ falsch}\]
+** Naive Mengenlehre
+   Mengenbegriff nach Cantor: \\
+   Eine Menge ist eine Zusammenfassung von bestimmten, wohlunterschiedenen Objekten userer Anschauung oder useres Denkens (die Elemente genannt werden) zu einem Ganzen
+
+*** Schreibweise
+   - $x\in M$, falls $x$ ein Element von $M$ ist
+   - $x\not\in M$, falls $x$ kein Element von $M$ ist
+   - $M=N$, falls $M$ und $N$ die gleichen Elemente besitzen, $M\subseteq N \wedge N\subseteq M$
+
+***  Angabe von Mengen
+   - Reihenfolge ist unrelevant ($\{1,2,3\}=\{1,3,2\})
+   - Elemente sind wohlunterschieden $\{1,2,2\} = \{1,2\}$
+   - Auflisten der Elemente $M=\{a,b,c,\ldots\}$
+   - Beschreibung der Elemente durch Eigenschaften: $M=\{x\mid E(x)\}$ \\
+	 (Elemente x, für die E(x) wahr)
+	 - Beispiel:
+	   \[\{2,4,6,8\} = \{x\mid x\in\mathbb{N}, x~\text{gerade}, 1 < x < 10\}\]
+*** leere Menge
+	Die leere Menge $\emptyset$ enthält keine Elemente
+**** Beispiel
+	 \[\{x\mid x\in\mathbb{N}, x < -5\} = \emptyset\]
+
+*** Zahlenbereiche
+	Menge der natürlichen Zahlen:
+	\[\mathbb{N} := \{1,2,3,\ldots\}\]
+
+	Menge der natürlichen Zahlen mit Null:
+	\[\mathbb{N}_0 := \{0, 1,2,3,\ldots\}\]
+
+	Menge der Ganzen Zahlen:
+	\[\mathbb{Z} := \{0,1,-1,2,-2\}\]
+
+	Menge der rationalen Zahlen:
+	\[\mathbb{Q} := \{\frac{m}{n} \mid m\in\mathbb{Z}, n\in\mathbb{N}\}\]
+
+	Menge der reellen Zahlen: $\mathbb{R}$
+
+*** Teilmenge
+	$A,B$ seien Mengen. \\
+	$A$ heißt Teilmenge von $B~(A\subseteq B) \xLeftrightarrow{\text{Def.}} \Forall x\in A: x\in B$
+	$A$ heißt echte Teilmenge von $B~(A\subset B) \xLeftrightarrow{\text{Def.}} A\subseteq B \wedge A\neq B$
+**** Anmerkung
+	 Offenbar gilt für Mengen $A,B$:
+	 \[A=B \Leftrightarrow A\subseteq B \wedge B\subseteq A\]
+	 $\emptyset$ ist Teilmenge jeder Menge
+
+**** Beipspiel
+	 \[\mathbb{N}\subset\mathbb{N}_0\subset\mathbb{Z}\subset\mathbb{Q}\]
+
+*** Durschnitt
+	\[A \cap B := \{x\mid x\in A \wedge x\in B\}\]
+**** Beispiel
+	 \[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\cap B = \{3,7\}\]
+
+*** Vereinigung
+	\[A\cup B := \{x\mid x\in A \vee x\in B\}\]
+**** Beispiel
+	 \[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\cup B = \{2,3,4,5,6,7\}\]
+
+*** Differenz
+	\[A\setminus B := \{x\mid x\in A \wedge x\not\in B\}\]
+	Im Fall $B\subseteq A$ nennt man $A\setminus B$ auch das Komplement von $B$ in $A$ und schreibt $\mathcal{c}_A(B) = A\setminus B$
+**** Beispiel
+	 \[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\setminus B = \{2,5\}\]
+*** Bemerkung zu Vereinigung und Durschnitt
+	$A,B$ seien zwei Mengen. Dann gilt \[A\cap (B\cup C) = (A\cap B) \cup (A\cap C)\]
+**** Beweis
+	 \[A\cap(B\cup C) \subseteq (A\cap B) \cup (A\cap C)\]
+	 \[A\cap(B\cup C) \supseteq (A\cap B) \cup (A\cap C)\]
+	 "$\subseteq$" Sei $x\in A \cap (B\cup C)$. Dann ist $x\in A \wedge x\in B\cup C$
+	 - 1. Fall: $x\in A \wedge x\in B$
+	   \[\Rightarrow x\in A\cap B \Rightarrow x \in (A\cap B) \cup (A\cap C)\]
+	 - 2. Fall $x\in A \wedge x\in C$
+	   \[\Rightarrow x\in A\cap C \Rightarrow x\in (A\cap B)\cup(A\cap C)\]
+	 Damit ist "$\subseteq$" gezeigt.
+	 "$\supseteq$" Sei $x\in (A\cap B) \cup (A\cap C)
+	 \[\Rightarrow x\in A\cap B \vee x\in A\cap C \\ \Rightarrow (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \Rightarrow x\in A \wedge (x\in B\vee x\in C) \\ \Rightarrow x\in A \wedge x\in B\cup C \\ \Rightarrow x\in A\cap (B\cup C)\]
+	 Damit ist "$\supseteq$" gezeigt.
+*** Bemerkung zu Äquivalenz von Mengen
+	Seien $A,B$ Mengen, dann sind äquivalent:
+	1) $A\cup B = B$
+	2) $A\subseteq B$
+**** Beweis
+	 Wir zeigen 1) $\Rightarrow$ 2) und 2) $\Rightarrow$ 1.
+	 \[1) \Rightarrow 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \Rightarrow x\in A \wedge x \in B \Rightarrow x\in A\cup B = B\]
+	 \[2) \Rightarrow 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
+	 "$\subseteq$": Sei $x\in A\cup B \Rightarrow x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
+	 "$\supseteq$": $B\subseteq A\cup B$ klar
+*** Kartesisches Produkt
+	Seien $A,B$ Mengen
+	\[A\times B := \{(a,b)\mid a\in A, b\in B\}\]
+	heipt das kartesische Produkt von $A$ und $B$. Hierbei ist $(a,b) = (a',b') \xLeftrightarrow{\text{Def}} a = a' \wedge b = b'$ a = a' \wedge b = b'$
+
+**** Beispiel
+	 - \[\{1,2\}\times \{1,3,4\} = \{(1,1),(1,3),(1,4),(2,1),(2,3),(2,4)\}\]
+	 - \[\mathbb{R}\times\mathbb{R}=\{(x,y)|mid x,y \in \mathbb{R}\} = \mathbb{R}^2\]
+*** Potenzmenge
+	$A$ sei eine Menge
+	\[\mathcal{P} (A) := \{M\mid M\subseteq A\}\]
+	heißt die Potenzmenge von $A$
+**** Beispiel
+	 \[\mathcal{P} (\{1,2,3\}) =  \{\emptyset, \{1\}, \{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\{1,2,3,4\}\}\]
+*** Kardinalität
+	$M$ sei eine Menge. Wir setzen
+	\[\abs{M} := \begin{cases} n & \text{falls $M$ eine endliche Menge ist und $n$ Elemente enthält} \\ \infty & \text{falls $M$ nicht endlich ist} \end{cases}\]
+	$\abs{M}$ heißt Kardinalität von A
+**** Beispiel
+	 - $\abs{\{7,11,16\}} = 3$
+	 - $\abs{\mathbb{N}} = \infty$
+*** Bemerkung zu natürlichen Zahlen
+	Für die natürlichen Zahlen gilt das Induktionsaxiom
+	Ist $M\subseteq N$ eine Teilmenge, für die gilt:
+	\[1\in M \wedge \Forall n\in M : n\in M \Rightarrow n+1 \in M\]
+	dann ist $M = \mathbb{N}$
+*** Prinzip der vollständigen Induktion
+	Für jedes $n\in \mathbb{N}$ sei eine Aussage $A(n)$ gegeben. Die Aussagen $A(N)$ gelten für alle $n\in\mathbb{N}$, wenn man folgendes zeigen kann: \\
+	- (IA) $A(1)$ ist wahr
+	- (IS) Für jedes $n\in\mathbb{N}$ gilt: $A(n) \Rightarrow A(n+1)$
+    Der Schritt (IA) heißt Induktionsanfang, die Implikation $A(n) \Rightarrow A(n+1)$ heißt Induktionsschritt
+**** Beweis
+	 Setze $M := \{n\in \mathbb{N}\mid A(n)~\text{ist wahr}\}$
+	 Wegen (IA) ist $1\in M$, wegen (IS) gilt: $n\in M \Rightarrow n+1 \in M$ \\
+	 Nach Induktionsaxiom folgt $M = \mathbb{N}$, das heißt $A(n)$ ist wahr für alle $n\in \mathbb{N}$
+**** Beispiel
+	 Für $n\in\mathbb{N}$ sei $A(n)$ die Aussage: $1+\ldots + n = \frac{n(n+1)}{2}$
+	 Wir zeigen: $A(n)$ ist wahr für alle $n\in \mathbb{N}$, und zwar durch vollständige Induktion
+	 - (IA) $A(1)$ ist wahr, denn $1 = \frac{1(1+1)}{2}$
+	 - (IS) zu zeigen: $A(n) \Rightarrow A(n+1)$ \\
+	   Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\Rightarrow 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
