@@ -12,3 +12,12 @@
 *.run.xml
 *.fdb_latexmk
 *.fls
+
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
