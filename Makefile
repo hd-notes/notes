@@ -7,7 +7,7 @@ clean_files = $(tex_files:.tex=.does_not_exist)
 	latexmk -cd -c -xelatex $<	
 
 %.pdf: %.tex
-	latexmk -cd -xelatex $<
+	latexmk -cd --shell-escape -xelatex $<
 	latexmk -cd -c -xelatex $<	
 
 all: $(pdf_files)

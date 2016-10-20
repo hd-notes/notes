@@ -1,0 +1,100 @@
+% Created 2016-10-20 Do 14:34
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{siunitx}%
+\usepackage{fontspec}%
+\sisetup{load-configurations = abbrevations}%
+\newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+\usepackage{mathtools}%
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclareMathOperator{\Exists}{\exists}%
+\DeclareMathOperator{\Forall}{\forall}%
+\def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+\def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\usepackage{minted}
+\usemintedstyle{perldoc}
+\author{Robin Heinemann}
+\date{\today}
+\title{Einführung in die Anwendungsorientierte Informatik (Köthe)}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Klausur 09.02.2016}
+\label{sec-1}
+
+\section{Was ist Informatik?}
+\label{sec-2}
+"Kunst" Aufgaben mit Computerprogrammen zu lösen.
+\subsection{Teilgebiete}
+\label{sec-2-1}
+\subsubsection{theoretische Informatik}
+\label{sec-2-1-1}
+\begin{itemize}
+\item Berechenbarkeit: Welche Probleme kann man mit Informatik lösen und welche prinzipiell nicht?
+\item Komplexität: Welche Probleme kann man effizient lösen?
+\item Korrektheit: Wie beweist man, dass das Ergebnis richtig ist? \\
+      Echtzeit: Dass das richtige Ergebnis rechtzeitig vorliegt.
+\item verteilte Systeme: Wie sichert man, dass verteilte Systeme korrekt kommunizieren?
+\end{itemize}
+\subsubsection{technische Informatik}
+\label{sec-2-1-2}
+\begin{itemize}
+\item Auf welcher Hardware kann man Programme ausführen, wie baut man dies Hardware?
+\item CPU, GPU, RAM, HD, Display, Printer, Networks
+\end{itemize}
+\subsubsection{praktische Informatik}
+\label{sec-2-1-3}
+\begin{itemize}
+\item Wie entwickelt man Software?
+\item Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?
+\item Algorithmen und Datenstrukturen: Wie baut man komplexe Programme aus einfachen Grundbausteinen?
+\item Softwaretechnik: Wie organisiert man sehr große Projekte?\hfill ISW
+\item Kernanwendung der Informatik
+\end{itemize}
+
+\subsubsection{angewante Informatik}
+\label{sec-2-1-4}
+\begin{itemize}
+\item Wie löst man Probleme aus einem anderem Gebiet mit Programmen?
+\item Informationstechnik
+\begin{itemize}
+\item Buchhandlung, e-commerce, Logistik
+\end{itemize}
+\item Web programming
+\item scientific computing für Physik, Biologie
+\item Medizininformatik
+\begin{itemize}
+\item bildgebende Verfahren
+\item digitale Patientenakte
+\end{itemize}
+\item computer linguistik
+\begin{itemize}
+\item Sprachverstehen, automatische Übersetzung
+\end{itemize}
+\item Unterhaltung: Spiele, special effect im Film
+\end{itemize}
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}
