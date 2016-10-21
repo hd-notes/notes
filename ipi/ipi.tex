@@ -1,4 +1,4 @@
-% Created 2016-10-20 Do 14:34
+% Created 2016-10-20 Do 14:55
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -50,7 +50,7 @@
 "Kunst" Aufgaben mit Computerprogrammen zu lösen.
 \subsection{Teilgebiete}
 \label{sec-2-1}
-\subsubsection{theoretische Informatik}
+\subsubsection{theoretische Informatik (\textbf{ITH})}
 \label{sec-2-1-1}
 \begin{itemize}
 \item Berechenbarkeit: Welche Probleme kann man mit Informatik lösen und welche prinzipiell nicht?
@@ -59,7 +59,7 @@
       Echtzeit: Dass das richtige Ergebnis rechtzeitig vorliegt.
 \item verteilte Systeme: Wie sichert man, dass verteilte Systeme korrekt kommunizieren?
 \end{itemize}
-\subsubsection{technische Informatik}
+\subsubsection{technische Informatik (\textbf{ITE})}
 \label{sec-2-1-2}
 \begin{itemize}
 \item Auf welcher Hardware kann man Programme ausführen, wie baut man dies Hardware?
@@ -69,12 +69,18 @@
 \label{sec-2-1-3}
 \begin{itemize}
 \item Wie entwickelt man Software?
-\item Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?
-\item Algorithmen und Datenstrukturen: Wie baut man komplexe Programme aus einfachen Grundbausteinen?
-\item Softwaretechnik: Wie organisiert man sehr große Projekte?\hfill ISW
-\item Kernanwendung der Informatik
+\item Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?\hfill \textbf{IPI}, \textbf{IPK}
+\item Algorithmen und Datenstrukturen: Wie baut man komplexe Programme aus einfachen Grundbausteinen?\hfill \textbf{IAL}
+\item Softwaretechnik: Wie organisiert man sehr große Projekte?\hfill \textbf{ISW}
+\item Kernanwendung der Informatik: Betriebsysteme, Netzwerke, Parallelisierung\hfill \textbf{IBN}
+\begin{itemize}
+\item Datenbanksysteme\hfill \textbf{IDB1}
+\item Graphik, Graphische Benutzerschnittstellen\hfill \textbf{ICG1}
+\item Bild- und Datenanalyse
+\item maschinelles Lernen
+\item künstliche Intelligenz
 \end{itemize}
-
+\end{itemize}
 \subsubsection{angewante Informatik}
 \label{sec-2-1-4}
 \begin{itemize}
@@ -96,5 +102,15 @@
 \end{itemize}
 \item Unterhaltung: Spiele, special effect im Film
 \end{itemize}
+\section{Wie unterscheidet sich Informatik von anderen Disziplinen?}
+\label{sec-3}
+\subsection{Mathematik}
+\label{sec-3-1}
+Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$
+Informatik: Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann.
+Quadratwurzel: $y = \sqrt{x} \Leftrightarrow y \geq 0 \wedge y^2 = x (\Rightarrow > 0)$
+Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
+iteratives Verfahren: Initial Guess $y^{(0)} = 1$
+schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

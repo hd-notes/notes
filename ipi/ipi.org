@@ -62,3 +62,12 @@
 ** Mathematik
    Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$
    Informatik: Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann.
+   Quadratwurzel: $y = \sqrt{x} \Leftrightarrow y \geq 0 \wedge y^2 = x (\Rightarrow x > 0)$
+   Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
+   iteratives Verfahren: Initial Guess $y^{(0)} = 1$
+   schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
+   | x | y |
+   |---+---|
+   | 9 | 1 |
+   | 9 |  |
+   #+TBLFM: $2=(@) / 2
