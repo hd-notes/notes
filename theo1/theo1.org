@@ -172,7 +172,7 @@ Einleitung: \\
 *** Norm (Länge) eines Vektors
 	\[\abs{v} = \sqrt{v\cdot v} = \sqrt{v^2}\]
 	$\mathbb{R}^n$: Wir definieren \[\vec{x}\cdot\vec{y} = x^1y^1 + \ldots + x^n y^n \equiv \sum_{i=1}^n x^iy^i \equiv \underbrace{x^i y^i}_{\text{Einsteinsche Summenkonvention}}\]
-	\[\abs{\ve¢{x}} = \sqrt{(x^1)^2 + \ldots + (x^n)^2}\]
+	\[\abs{\vec{x}} = \sqrt{(x^1)^2 + \ldots + (x^n)^2}\]
 	Wichtig: oben euklidiesches Skalarprodukt! Anderes Skalarprodukt auf $\mathbb{R}^2: \vec{x}\cdot\vec{y} = 7x^1 y^2 + x^2y^2$
 	anderes Beispiel:
 	\[\vec{x}\cdot\vec{y} \equiv x^1y^1 - x^2y^2\]

@@ -63,11 +63,85 @@
 	\[M = \{x_1, x_2, \ldots, x_n\}\]
 	\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \Leftrightarrow A(x)\]
 *** Mengenrelationen
-	- Mengeninklusion $A\subset M$ ($A$ ist eine Teilmenge von $M$)
-	  \[\Forall x: (x\in A \Rightarrow x\in M)\], zum Beispiel $\mathbb{N} \subset \mathbb{Z}$
+	- Mengeninklusion $A\subseteq M$ ($A$ ist eine Teilmenge von $M$)
+	  \[\Forall x: (x\in A \Rightarrow x\in M)\], zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
 	- \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
-	- \[A \strictsubset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
+	- \[A \subset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
 	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beipsiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
 	- Durchschnitt \[A\cup B := \{x\mid x\in A \wedge x\in B\}\]
 	- Vereinigung \[A\cap B := \{x \mid x\in A \vee x\in B\}\]
-	- Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch B^c)}\]
+	- Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch $B^c$)}\]
+*** Potenzmenge
+	Potenzmenge $A$
+	\[\mathcal{P}(A) := \{B\mid B\subseteq A\}\]
+	Alle Teilmengen von $A$
+**** Beispiel
+	 \[\mathcal{P}(\{1,2\}) = \{1\}, \{2\}, \{1,2\}, \emptyset\]
+*** Familien von Mengen
+	Sei $I$ eine Indexmenge, $I \subseteq \mathbb{N}, (A_i)_{i\in I}$ eine Familie von Mengen $A$
+**** Durchschnitt von $A$
+	 \[\cap_{i\in I} = \{x\mid \Forall_{i\in I} x\in A_i\}\]
+**** Vereinigung
+	 \[\cup_{i\in I} = \{x\mid\exists i\in I: x\in A_i\}\]
+*** Rechenregeln
+	$A,B,C,D$ seien Mengen
+	- $\emptyset \subseteq A$
+	- $A\subseteq A$ \hfill Reflexivität
+	- $A\subseteq B, B\subseteq C \Rightarrow A\subseteq C$ \hfill Transitivität
+	- $A\cap B = B\cap A$ \\ $A\cup B = B\cup A$ \hfill Kommutativität
+	- $(A\cap B)\cap C = A\cap (B\cap C)$ \\ $(A\cup B) \cup C = A\cup (B\cup C)$ \hfill Assoziativität
+	- $A\cap (B\cup C) =(A\cap B) \cup (A\cap C)$ \\ $A\cup (B\cap C) =(A\cup B) \cap (A\cup C)$
+	- Eigenschaften der Komplementbildung: \\
+	  Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
+	  - Beweis:
+		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B) \Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\n D\setminus(A\cup B)~\square\]
+      - Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
+*** geordneter Tupel
+   	Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \Leftrightarrow x_1 = y_1, \ldots, x_n = y_n\]
+   	Beachte:
+   	\[\{x_1, \ldots, x_n\} = \{y_i,\ldots,y_n\}\not\implies x_1 = y_1, \ldots, x_n = y_n\]
+*** Kartesisches Produkt
+	Seien \[A_1\times A_2\times \ldots \times A_n = \{(x_1,x_2,\ldots,x_n)\mid x_j \in A_j j\in\mathbb{N}, j \leq n\}\]
+**** Beispiel
+	 - \[\mathbb{Z}^2 = \mathbb{Z}\times \mathbb{Z}\]
+	 - $R^n$ m-dimensionaler Raum von reellen Zahlen
+*** Äquivalenzrelation
+	Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren Elementen (Bezeichnung: $a\tilde b$), sodass
+	- Für jede zwei $a,b\in A$ gilt entweder $a\tilde b \vee a\not\tilde b$
+	- $a\tilde a$ \hfill Reflexivität
+	- $a\tilde b \Rightarrow b\tilde a$ \hfill Symmetrie
+	- $a\tilde b, b\tilde c \Rightarrow a\tilde c$\hfill Transitivität
+    Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:)\{b\in A\mid b\tilde a\}
+** Relationen und Abbildungen
+*** Relationen
+	Unter einer *Relation* verstehen wir eine Teilmenge $R\subseteq X\tims Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das *Bild* von $x$ unter $R$
+	\[R(X) := \{y\in Y | mid (x,y) \in R\}\]
+	und *Definitionsbereiche von $R$ (bezüglich $X$)
+	\[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
+*** Graph der Abbildung
+	$R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \Leftrightarrow D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
+	also enthält $R(X)$ genau ein Element. \\
+	$X$ heißt Definitionsbereich von $f$ \\
+	$Y$ heißt Werte- oder Bildbereich von $f$ (Bild) \\
+	$x\in X$ heißt Argument \\
+	$f(x)\in Y$ heißt Wert von $f$ an der Stelle x
+**** Beispiel
+	 $f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f = \{(x,y)\in\mathbb{R^2}, y=x^2\}$
+***** Bemerkung
+	  \[M^{*}(x) = \{(x,y)\in\mathbb{R}^2;x=y^2\} = \{(x,y)\in\mathbb{R}^2: x \geq 0, y=\sqrt{x} \vee y = -\sqrt{x}\}\]
+	  Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x) = \{\sqrt{x},-\sqrt{x}, x\geq 0\}\}
+	  $f$ heißt
+	  - surjektiv, wenn gilt $f(X) = Y$
+	  - injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
+	  - bijektiv, wenn $f$ surjektiv und injectiv ist
+*** Umkehrabbildung
+	Sei die Abbildung $f: X\rightarrow Y$ bijektiv. Dann definieren wir die Umkehrabbildung $f^{-1}:Y\rightarrow X$ durch $y\rightarrow x\in X$, eindeutig bestimmt durch $y = f(x)$
+**** Bemerkung
+	 \[(x,y) \in~\text{Graph }f\Leftrightarrow (y,x)\in~\text{Graph }f^{-1}\]
+*** Komposition
+	Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
+*** Identitäts Abbildung
+	Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\rightarrow A, durch x\rightarrow x\]
+**** Beispiel
+	 - \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
+	 - Seien $X,Y$ Mengen, $M\subseteq X\timesY, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
