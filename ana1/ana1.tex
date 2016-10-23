@@ -1,4 +1,4 @@
-% Created 2016-10-21 Fr 13:56
+% Created 2016-10-23 So 16:04
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -178,10 +178,10 @@ $A,B,C,D$ seien Mengen
 \item $(A\cap B)\cap C = A\cap (B\cap C)$ \\ $(A\cup B) \cup C = A\cup (B\cup C)$ \hfill Assoziativität
 \item $A\cap (B\cup C) =(A\cap B) \cup (A\cap C)$ \\ $A\cup (B\cap C) =(A\cup B) \cap (A\cup C)$
 \item Eigenschaften der Komplementbildung: \\
-      Seien $A,B \subseteq D (C_D A: = D\setminux A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
+      Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
 \begin{itemize}
 \item Beweis:
-\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B) \Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\n D\setminux(A\cup B)~\square\]
+\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B) \Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
 \item Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
 \end{itemize}
 \end{itemize}
@@ -210,12 +210,12 @@ Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren El
 \item $a\tilde b \Rightarrow b\tilde a$ \hfill Symmetrie
 \item \$a\textasciitilde{} b, b\textasciitilde{} c $\Rightarrow$ a\textasciitilde{} c\$\hfill Transitivität
 \end{itemize}
-Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: \$[a]:)\{b$\in$ A\mid b\textasciitilde{} a\}
+Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\tilde a\}$
 \subsection{Relationen und Abbildungen}
 \label{sec-2-3}
 \subsubsection{Relationen}
 \label{sec-2-3-1}
-Unter einer \textbf{Relation} verstehen wir eine Teilmenge $R\subseteq X\tims Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das \textbf{Bild} von $x$ unter $R$
+Unter einer \textbf{Relation} verstehen wir eine Teilmenge $R\subseteq X\times Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das \textbf{Bild} von $x$ unter $R$
 \[R(X) := \{y\in Y | mid (x,y) \in R\}\]
 und *Definitionsbereiche von $R$ (bezüglich $X$)
 \[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
@@ -235,7 +235,7 @@ $f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f
 \item Bemerkung
 \label{sec-2-3-2-1-1}
 \[M^{*}(x) = \{(x,y)\in\mathbb{R}^2;x=y^2\} = \{(x,y)\in\mathbb{R}^2: x \geq 0, y=\sqrt{x} \vee y = -\sqrt{x}\}\]
-Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn \$M$^{\text{ *}}$(x) = \{\sqrt{x},-\sqrt{x}, x$\ge$ 0\}\}
+Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x) = \{\sqrt{x},-\sqrt{x}, x\geq 0\}$
 $f$ heißt
 \begin{itemize}
 \item surjektiv, wenn gilt $f(X) = Y$
@@ -257,13 +257,13 @@ Sei die Abbildung $f: X\rightarrow Y$ bijektiv. Dann definieren wir die Umkehrab
 Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
 \subsubsection{Identitäts Abbildung}
 \label{sec-2-3-5}
-Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\rightarrow A, durch x\rightarrow x\]
+Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\rightarrow A,~\text{durch}~x\rightarrow x\]
 \begin{enumerate}
 \item Beispiel
 \label{sec-2-3-5-1}
 \begin{itemize}
 \item \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
-\item Seien $X,Y$ Mengen, $M\subseteq X\timesY, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
+\item Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
 \end{itemize}
 \end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)

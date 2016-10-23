@@ -94,7 +94,7 @@
 	- Eigenschaften der Komplementbildung: \\
 	  Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
 	  - Beweis:
-		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B) \Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\n D\setminus(A\cup B)~\square\]
+		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B) \Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
       - Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
 *** geordneter Tupel
    	Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \Leftrightarrow x_1 = y_1, \ldots, x_n = y_n\]
@@ -111,10 +111,10 @@
 	- $a\tilde a$ \hfill Reflexivität
 	- $a\tilde b \Rightarrow b\tilde a$ \hfill Symmetrie
 	- $a\tilde b, b\tilde c \Rightarrow a\tilde c$\hfill Transitivität
-    Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:)\{b\in A\mid b\tilde a\}
+    Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\tilde a\}$
 ** Relationen und Abbildungen
 *** Relationen
-	Unter einer *Relation* verstehen wir eine Teilmenge $R\subseteq X\tims Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das *Bild* von $x$ unter $R$
+	Unter einer *Relation* verstehen wir eine Teilmenge $R\subseteq X\times Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das *Bild* von $x$ unter $R$
 	\[R(X) := \{y\in Y | mid (x,y) \in R\}\]
 	und *Definitionsbereiche von $R$ (bezüglich $X$)
 	\[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
@@ -129,7 +129,7 @@
 	 $f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f = \{(x,y)\in\mathbb{R^2}, y=x^2\}$
 ***** Bemerkung
 	  \[M^{*}(x) = \{(x,y)\in\mathbb{R}^2;x=y^2\} = \{(x,y)\in\mathbb{R}^2: x \geq 0, y=\sqrt{x} \vee y = -\sqrt{x}\}\]
-	  Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x) = \{\sqrt{x},-\sqrt{x}, x\geq 0\}\}
+	  Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x) = \{\sqrt{x},-\sqrt{x}, x\geq 0\}$
 	  $f$ heißt
 	  - surjektiv, wenn gilt $f(X) = Y$
 	  - injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
@@ -141,7 +141,7 @@
 *** Komposition
 	Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
 *** Identitäts Abbildung
-	Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\rightarrow A, durch x\rightarrow x\]
+	Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\rightarrow A,~\text{durch}~x\rightarrow x\]
 **** Beispiel
 	 - \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
-	 - Seien $X,Y$ Mengen, $M\subseteq X\timesY, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
+	 - Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
