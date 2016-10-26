@@ -1,4 +1,4 @@
-% Created 2016-10-23 So 16:04
+% Created 2016-10-26 Mi 10:06
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -264,6 +264,83 @@ Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\ri
 \begin{itemize}
 \item \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
 \item Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
+\end{itemize}
+\end{enumerate}
+\subsubsection{Homomorphe Abbildungen}
+\label{sec-2-3-6}
+Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel AAddition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
+Eine bijektive Homomorphie heißt Isomorphisumus, beziehungsweise $X\approx Y$ (äquivalent, isomorph)
+\subsection{Natürliche Zahlen}
+\label{sec-2-4}
+$\mathbb{N} = \{1,2,3,\ldots\},~\mathbb{N}_0 := \mathbb{N}\cup \{0\}$
+\subsubsection{Peanosche Axiomensystem der natürlichen Zahlen}
+\label{sec-2-4-1}
+\begin{enumerate}
+\item Die Zahl $1$ ist eine natürliche Zahl $1\in\mathbb{N}$
+\item Zu jeder natürlichen Zahl $n$, gibt es genau einen "Nachfolger" $n' (=: n+1)$
+\item Die Zahl 1 ist kein Nachfolger einer natürlichen Zahl
+\item $n' = m' \Rightarrow n = m$
+\item Enthält eine Teilmenge  $M \subseteq \mathbb{N}$ die Zahl $1$ und von jedem $n\in m$ auch den Nachfolger $n'$ ist $M = \mathbb{N}$
+\end{enumerate}
+Bemerkung: \\
+    Mit Hilfe der Axiome lassen sich auf $\mathbb{N}$ Addition ($+$), Multiplikation ($\cdot$) und Ordung ($\leq$) einführen.
+Wir definieren: \\
+    $1' = 2, 2' = 3, \ldots$
+$n + 1 := m'$
+$n + m' := (n+m)';~n\cdot m' := n m + n$
+Man kann zeigen, dass jede Menge, welche die Peano Axiome erfüllt isomorph bezüglich Multiplikation und Addition zu $\mathbb{N}$ ist
+Wir definieren $n < m \Leftrightarrow \exists x\in \mathbb{N}: x + m = m$
+\subsubsection{Vollständige Induktion}
+\label{sec-2-4-2}
+\begin{enumerate}
+\item Induktionsprinzip
+\label{sec-2-4-2-1}
+Es seien die folgende Schritte vollzogen:
+\begin{enumerate}
+\item Induktionsverankerung (Induktionsanfang): Die Aussage $A(1)$ gilt
+\item Induktionsschluss: Ist für ein $n\in\mathbb{N}~A(n)$ gültig, so folgt auch die Gültigkeit von $A(n+1)$
+\end{enumerate}
+Dann sind alle Aussagen $A(n),n\in\mathbb{N}$ gültig.
+\item Beweis:
+\label{sec-2-4-2-2}
+Wir definieren die Tailmenge $M\subseteq\mathbb{N},~M:=\{n\in \mathbb{N}\mid A(N)~\text{ist gültig}\}$
+Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\Rightarrow n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
+\item Beispiel 1
+\label{sec-2-4-2-3}
+Zu Beweisen: \[\Forall n\in\mathbb{N} \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6}\]
+\begin{enumerate}
+\item Beweis
+\label{sec-2-4-2-3-1}
+\begin{enumerate}
+\item Induktionsverankerung: $1^2 = \frac{1}{6}\cdot 1\cdot 2\cdot 3$
+\item Annahme: $A(n)$ gültig für $n\in\mathbb{N}: \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$ \\
+         Zu zeigen $A(n + 1): 1^2 + \ldots + (n+1)^2 = \frac{1}{6} (n+1)(n+2)(2n+3)$
+         \[1^2 + \ldots + n^2 + (n+1)^2 = \frac{1}{2} n(n+1)(2n+1) + (n+1)^2 = (n+1)(\frac{1}{3}n^2 + \frac{1}{6}n + n + 1)\]
+         \[= \frac{1}{6}(n+1)(2n^2+7n+6) = \frac{1}{6}(n+1)(2n+3)(n+2)\hfill\square\]
+\end{enumerate}
+\end{enumerate}
+\item Beispiel 2
+\label{sec-2-4-2-4}
+Definition von Potenzen
+\[x^0 := 1\]
+\[\Forall n\in\mathbb{N} x^n := x^{n - 1}x\]
+(iterative (rekursive) Definition) \\
+     Auf $\mathbb{N}$ sind diese elementaren Operationene erklärt:
+\begin{itemize}
+\item Addition $a+b$
+\item Multiplikation $a\cdot b$
+\item (unter gewissen Vorraussetzungen):
+\begin{itemize}
+\item Subtraktion $a-b$
+\item Division $\frac{a}{b}$
+\end{itemize}
+\end{itemize}
+$\mathbb{N} ist bezüglich "$-\$" oder "$/$" nicht vollständig, das heißt $n+x = m$ ist nicht lösbar in $\mathbb{N}$
+Erweiterungen:
+\begin{itemize}
+\item Ganze Zahlen $\mathbb{Z}:=\{0; \pm, n\in\mathbb{N}\}$ \\
+       Negative Zahl $(-n)$ ist definiert duch $n+(-n) = 0$
+\item Rationale Zahlen
 \end{itemize}
 \end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)

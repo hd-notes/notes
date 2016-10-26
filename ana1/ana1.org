@@ -146,15 +146,54 @@
 	 - \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
 	 - Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
 *** Homomorphe Abbildungen
-	Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel AAddition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forallx_1,x_2 \int X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
+	Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel AAddition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
 	Eine bijektive Homomorphie heißt Isomorphisumus, beziehungsweise $X\approx Y$ (äquivalent, isomorph)
 ** Natürliche Zahlen
-   $\mathbb{N} = \{1,2,3,\ldots\},~\mathbb{N}_0 := \mathbb{N}\cup \{0\}
+   $\mathbb{N} = \{1,2,3,\ldots\},~\mathbb{N}_0 := \mathbb{N}\cup \{0\}$
 *** Peanosche Axiomensystem der natürlichen Zahlen
 	1. Die Zahl $1$ ist eine natürliche Zahl $1\in\mathbb{N}$
 	2. Zu jeder natürlichen Zahl $n$, gibt es genau einen "Nachfolger" $n' (=: n+1)$
 	3. Die Zahl 1 ist kein Nachfolger einer natürlichen Zahl
 	4. $n' = m' \Rightarrow n = m$
 	5. Enthält eine Teilmenge  $M \subseteq \mathbb{N}$ die Zahl $1$ und von jedem $n\in m$ auch den Nachfolger $n'$ ist $M = \mathbb{N}$
-**** Bemerkung
-	 Mit Hilfe der Axiome lassen sich auf $\mathbb{N}$ Addition ($+$), Multiplikation ($\cdot$) und Ordung ($\leq$) einführen.
+	Bemerkung: \\
+	Mit Hilfe der Axiome lassen sich auf $\mathbb{N}$ Addition ($+$), Multiplikation ($\cdot$) und Ordung ($\leq$) einführen.
+	Wir definieren: \\
+	$1' = 2, 2' = 3, \ldots$
+	$n + 1 := m'$
+	$n + m' := (n+m)';~n\cdot m' := n m + n$
+	Man kann zeigen, dass jede Menge, welche die Peano Axiome erfüllt isomorph bezüglich Multiplikation und Addition zu $\mathbb{N}$ ist
+	Wir definieren $n < m \Leftrightarrow \exists x\in \mathbb{N}: x + m = m$
+*** Vollständige Induktion
+**** Induktionsprinzip
+	 Es seien die folgende Schritte vollzogen:
+	 1. Induktionsverankerung (Induktionsanfang): Die Aussage $A(1)$ gilt
+	 2. Induktionsschluss: Ist für ein $n\in\mathbb{N}~A(n)$ gültig, so folgt auch die Gültigkeit von $A(n+1)$
+     Dann sind alle Aussagen $A(n),n\in\mathbb{N}$ gültig.
+**** Beweis:
+	 Wir definieren die Tailmenge $M\subseteq\mathbb{N},~M:=\{n\in \mathbb{N}\mid A(N)~\text{ist gültig}\}$
+	 Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\Rightarrow n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
+**** Beispiel 1
+	 Zu Beweisen: \[\Forall n\in\mathbb{N} \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6}\]
+***** Beweis
+	  1. Induktionsverankerung: $1^2 = \frac{1}{6}\cdot 1\cdot 2\cdot 3$
+	  2. Annahme: $A(n)$ gültig für $n\in\mathbb{N}: \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$ \\
+		 Zu zeigen $A(n + 1): 1^2 + \ldots + (n+1)^2 = \frac{1}{6} (n+1)(n+2)(2n+3)$
+		 \[1^2 + \ldots + n^2 + (n+1)^2 = \frac{1}{2} n(n+1)(2n+1) + (n+1)^2 = (n+1)(\frac{1}{3}n^2 + \frac{1}{6}n + n + 1)\]
+		 \[= \frac{1}{6}(n+1)(2n^2+7n+6) = \frac{1}{6}(n+1)(2n+3)(n+2)\hfill\square\]
+**** Beispiel 2
+	 Definition von Potenzen
+	 \[x^0 := 1\]
+	 \[\Forall n\in\mathbb{N} x^n := x^{n - 1}x\]
+	 (iterative (rekursive) Definition) \\
+	 Auf $\mathbb{N}$ sind diese elementaren Operationene erklärt:
+	 - Addition $a+b$
+	 - Multiplikation $a\cdot b$
+	 - (unter gewissen Vorraussetzungen):
+	   - Subtraktion $a-b$
+	   - Division $\frac{a}{b}$
+     $\mathbb{N}$ ist bezüglich "$-$" oder "$/$" nicht vollständig, das heißt $n+x = m$ ist nicht lösbar in $\mathbb{N}$
+	 Erweiterungen:
+	 - Ganze Zahlen $\mathbb{Z}:=\{0; \pm, n\in\mathbb{N}\}$ \\
+	   Negative Zahl $(-n)$ ist definiert duch $n+(-n) = 0$
+	 - Rationale Zahlen $\mathbb{Q}~(b x = y)$
