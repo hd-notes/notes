@@ -145,3 +145,16 @@
 **** Beispiel
 	 - \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
 	 - Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
+*** Homomorphe Abbildungen
+	Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel AAddition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forallx_1,x_2 \int X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
+	Eine bijektive Homomorphie heißt Isomorphisumus, beziehungsweise $X\approx Y$ (äquivalent, isomorph)
+** Natürliche Zahlen
+   $\mathbb{N} = \{1,2,3,\ldots\},~\mathbb{N}_0 := \mathbb{N}\cup \{0\}
+*** Peanosche Axiomensystem der natürlichen Zahlen
+	1. Die Zahl $1$ ist eine natürliche Zahl $1\in\mathbb{N}$
+	2. Zu jeder natürlichen Zahl $n$, gibt es genau einen "Nachfolger" $n' (=: n+1)$
+	3. Die Zahl 1 ist kein Nachfolger einer natürlichen Zahl
+	4. $n' = m' \Rightarrow n = m$
+	5. Enthält eine Teilmenge  $M \subseteq \mathbb{N}$ die Zahl $1$ und von jedem $n\in m$ auch den Nachfolger $n'$ ist $M = \mathbb{N}$
+**** Bemerkung
+	 Mit Hilfe der Axiome lassen sich auf $\mathbb{N}$ Addition ($+$), Multiplikation ($\cdot$) und Ordung ($\leq$) einführen.

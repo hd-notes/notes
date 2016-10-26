@@ -1,4 +1,4 @@
-% Created 2016-10-21 Fr 13:53
+% Created 2016-10-25 Di 14:54
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -28,6 +28,7 @@
 \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
 \usepackage{minted}
+\usepackage{makecell}
 \usemintedstyle{perldoc}
 \author{Robin Heinemann}
 \date{\today}
@@ -112,13 +113,87 @@ Quadratwurzel: $y = \sqrt{x} \Leftrightarrow y \geq 0 \wedge y^2 = x (\Rightarro
 Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
 iteratives Verfahren: Initial Guess $y^{(0)} = 1$
 schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
+\section{Informatik}
+\label{sec-4}
+Lösugswege, genauer Algorithmen
+\subsection{Algorithmus}
+\label{sec-4-1}
+\textbf{schematische} Vorgehensweise mit der jedes Problem einer bestimmten \textbf{Klasse} mit \textbf{endliche} vielen \textbf{elementaren} Schritten / Operationen gelöst werden kann
+\begin{itemize}
+\item schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\Rightarrow$ Computer)
+\item alle Probleme einer Klasse: zum Beispiel: die Wurzel aus jeder beliebigen nicht-negativen Zahl, und nicht nur $\sqrt{11}$
+\item endliche viele Schritte: man kommt nach endlicher Zeit zur Lösung
+\item elementare Schrite / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
+\end{itemize}
+\subsection{Daten}
+\label{sec-4-2}
+Daten sind Symbole,
+\begin{itemize}
+\item die Entitäten und Eigenschaften der realen Welt im Computer representieren.
+\item die interne Zwischenergebnisse eines Algorithmus aufbewahren
+\end{itemize}
+$\Rightarrow$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebniss).
+Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch"
+\subsubsection{Beispiele für Symbole}
+\label{sec-4-2-1}
+\begin{itemize}
+\item Zahlen
+\item Buchstaben
+\item Icons
+\item Verkehrszeichen
+\end{itemize}
+aber: heutige Computer verstehen nur Binärzahlen $\Rightarrow$ alles andere muss man übersetzen
+Eingansdaten: "Ereignisse":
+\begin{itemize}
+\item Symbol von Festplatte lesen oder per Netzwerk empfangen
+\item Benutzerinteraktion (Taste, Maus, \ldots{})
+\item Sensor übermittelt Meßergebnis, Stoppuhr läuft ab
+\end{itemize}
+Ausgangsdaten: "Aktionen":
+\begin{itemize}
+\item Symbole auf Festplatte schreiben, per Netzwerk senden
+\item Benutzeranzeige (Display, Drucker, Ton)
+\item Stoppuhr starten
+\item Roboteraktion ausführen (zum Beispiel Bremsassistent)
+\end{itemize}
+Interne Daten:
+\begin{itemize}
+\item Symbole im Hauptspeicher oder auf Festplatte
+\item Stoppuhr starten / Timeout
+\end{itemize}
+\subsection{Einfachster Computer}
+\label{sec-4-3}
+endliche Automaten (endliche Zustandsautomaten)
+\begin{itemize}
+\item befinden sich zu jedem Zeitpunkt in einem bestimmten Zustand aus einer vordefinierten endlichen Zustandsmenge
+\item äußere Ereignisse können Zustandsänderungen bewirken und Aktionen auslösen
+\end{itemize}
+\subsubsection{{\bfseries\sffamily TODO} Graphische Darstellung}
+\label{sec-4-3-1}
+graphische Darstellung: Zustände = Kreise, Zustandsübergänge: Pfeile
+\subsubsection{{\bfseries\sffamily TODO} Darstellung durch Übergangstabellen}
+\label{sec-4-3-2}
+Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
 \begin{center}
-\begin{tabular}{rr}
-x & y\\
+\begin{tabular}{llll}
+Zustände $\backslash$ Ereignisse & Knopf drücken & Timeout & Timeout(Variante)\\
 \hline
-9 & 1\\
-9 & \\
+aus & $\Rightarrow$\{halb\} \\ \{4 LEDs an\} & \% & ($\Rightarrow$\{aus\},\{nichts\})\\
+halb & ($\Rightarrow$\{voll\},\{8 LEDs an\}) & \% & ($\Rightarrow$\{aus\},\{nichts\})\\
+voll & ($\Rightarrow$\{blinken an\},\{Timer starten\}) & \% & ($\Rightarrow$\{aus\},\{nichts\})\\
+blinken an & ($\Rightarrow$\{aus\},\{Alle LEDs aus, Timer stoppen\}) & ($\Rightarrow$\{blinken aus\},\{alle LEDs aus, Timer starten\}) & ($\Rightarrow$\{blinken aus\},\{8 LEDs aus\})\\
+blinken aus & ($\Rightarrow$\{aus\},\{Alle LEDs aus, Timer stoppen\}) & ($\Rightarrow$\{blinken an\},\{alle LEDs an, Timer starten\}) & ($\Rightarrow$\{blinken an\},\{8 LEDs an\})\\
 \end{tabular}
 \end{center}
+
+Variante: Timer läuft immer (Signal alle 0.3s) $\Rightarrow$ Timout ignorieren im Zustand "aus", "halb", "voll"
+\subsubsection{Beispiel 2:}
+\label{sec-4-3-3}
+\begin{align}
+&1~0~1~1~0~1~0 &= 2 + 8 + 16 + 74 &= 90_{\text{dez}} \\
++&0~1~1~1~0~0~1 &= 1 + 8 + 16 + 32 &= 57_{\text{dez}} \\
+\hline
+1~&0~0~1~0~0~1~1 &= 1 + 2 + 16 + 128 &= 147_{\text{dez}}\checkmark
+\end{align}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

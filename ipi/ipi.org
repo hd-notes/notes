@@ -12,6 +12,7 @@
 #+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
 #+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage{makecell}
 # #+LATEX_HEADER: \usemintedstyle{tango}
 #+LATEX_HEADER: \usemintedstyle{perldoc}
 
@@ -66,8 +67,77 @@
    Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
    iteratives Verfahren: Initial Guess $y^{(0)} = 1$
    schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
-   | x | y |
-   |---+---|
-   | 9 | 1 |
-   | 9 |  |
-   #+TBLFM: $2=(@) / 2
+* Informatik
+  Lösugswege, genauer Algorithmen
+** Algorithmus
+   *schematische* Vorgehensweise mit der jedes Problem einer bestimmten *Klasse* mit *endliche* vielen *elementaren* Schritten / Operationen gelöst werden kann
+   - schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\Rightarrow$ Computer)
+   - alle Probleme einer Klasse: zum Beispiel: die Wurzel aus jeder beliebigen nicht-negativen Zahl, und nicht nur $\sqrt{11}$
+   - endliche viele Schritte: man kommt nach endlicher Zeit zur Lösung
+   - elementare Schrite / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
+** Daten
+   Daten sind Symbole,
+   - die Entitäten und Eigenschaften der realen Welt im Computer representieren.
+   - die interne Zwischenergebnisse eines Algorithmus aufbewahren
+   $\Rightarrow$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebniss).
+   Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch"
+*** Beispiele für Symbole
+	- Zahlen
+	- Buchstaben
+	- Icons
+	- Verkehrszeichen
+    aber: heutige Computer verstehen nur Binärzahlen $\Rightarrow$ alles andere muss man übersetzen
+	Eingansdaten: "Ereignisse":
+	- Symbol von Festplatte lesen oder per Netzwerk empfangen
+	- Benutzerinteraktion (Taste, Maus, ...)
+	- Sensor übermittelt Meßergebnis, Stoppuhr läuft ab
+    Ausgangsdaten: "Aktionen":
+	- Symbole auf Festplatte schreiben, per Netzwerk senden
+	- Benutzeranzeige (Display, Drucker, Ton)
+	- Stoppuhr starten
+	- Roboteraktion ausführen (zum Beispiel Bremsassistent)
+	Interne Daten:
+	- Symbole im Hauptspeicher oder auf Festplatte
+	- Stoppuhr starten / Timeout
+** Einfachster Computer
+   endliche Automaten (endliche Zustandsautomaten)
+   - befinden sich zu jedem Zeitpunkt in einem bestimmten Zustand aus einer vordefinierten endlichen Zustandsmenge
+   - äußere Ereignisse können Zustandsänderungen bewirken und Aktionen auslösen
+*** TODO Graphische Darstellung
+	graphische Darstellung: Zustände = Kreise, Zustandsübergänge: Pfeile
+*** TODO Darstellung durch Übergangstabellen
+	Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
+    | Zustände \ Ereignisse | Knopf drücken                                     | Timeout                                                   | Timeout(Variante)                       |
+    |-----------------------+---------------------------------------------------+-----------------------------------------------------------+-----------------------------------------|
+    | aus                   | \Rightarrow{halb} \\ {4 LEDs an}                 | %                                                         | (\Rightarrow{aus},{nichts})             |
+    | halb                  | (\Rightarrow{voll},{8 LEDs an})                   | %                                                         | (\Rightarrow{aus},{nichts})             |
+    | voll                  | (\Rightarrow{blinken an},{Timer starten})         | %                                                         | (\Rightarrow{aus},{nichts})             |
+    | blinken an            | (\Rightarrow{aus},{Alle LEDs aus, Timer stoppen}) | (\Rightarrow{blinken aus},{alle LEDs aus, Timer starten}) | (\Rightarrow{blinken aus},{8 LEDs aus}) |
+    | blinken aus           | (\Rightarrow{aus},{Alle LEDs aus, Timer stoppen}) | (\Rightarrow{blinken an},{alle LEDs an, Timer starten})   | (\Rightarrow{blinken an},{8 LEDs an})   |
+
+	Variante: Timer läuft immer (Signal alle 0.3s) \Rightarrow Timout ignorieren im Zustand "aus", "halb", "voll"
+*** Beispiel 2:
+	\begin{align}
+	&1~0~1~1~0~1~0 &= 2 + 8 + 16 + 74 &= 90_{\text{dez}} \\
+	+&0~1~1~1~0~0~1 &= 1 + 8 + 16 + 32 &= 57_{\text{dez}} \\
+	\hline
+	1~&0~0~1~0~0~1~1 &= 1 + 2 + 16 + 128 &= 147_{\text{dez}}\checkmark
+	\end{align}
+**** Implementation mit Endlichen Automaten
+	 Prinzipen:
+	 - wir lesen die Eingangsdaten von rechts nach links
+	 - Beide Zahlen gleich lang (sonst mit 0en auffüllen)
+	 - Ergebnis wird von rechts nach link ausgegeben
+**** TODO Skizze der Automaten
+     | Zustand   | Ereignis    | Ausgeben |
+     |-----------+-------------+----------|
+     | start     | (0,1)       | "1"      |
+     | start     | (1,0)       | "1"      |
+     | start     | (0,0)       | "0"      |
+     | start     | (1,1)       | "0"      |
+     | carry = 1 | (1,1)       | "1"      |
+     | carry = 1 | (0,1)       | "0"      |
+     | carry = 1 | (1.0)       | "0"      |
+     | carry = 1 | $\emptyset$ | "1"      |
+	 *Wichtig:* In jedem Zustand muss für *alle möglichen* Ereignisse eine Aktion und Folgezustand definiert werden.
+	 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also ein "Bug"

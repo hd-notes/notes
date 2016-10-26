@@ -286,3 +286,110 @@
 	 - (IA) $A(1)$ ist wahr, denn $1 = \frac{1(1+1)}{2}$
 	 - (IS) zu zeigen: $A(n) \Rightarrow A(n+1)$ \\
 	   Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\Rightarrow 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
+** Relationen
+*** Definiton
+	Eine Relation auf $M$ ist eine Teilmenge $R\subseteq M\times M$
+	Wir schreiben $a\tilde b \xLeftrightarrow{\text{Def}} (a,b) \in R$ ("a steht in Relation zu b")
+
+	- anschaulich: eine Relation auf $M$ stellt eine "Beziehung" zwischen den Elementen von $M$ her.
+	- Für $a,b \in M$ gilt entweder $a\tilde b$ oder $a\not\tilde b$, denn: entweder ist $(a,b) \in R$ oder $(a,b)\not\in R$
+**** Anmerkung
+	 Aufgrund der obigen Notation spricht man in der Regel von Relation "$\tilde$" auf $M$ als von der Relation $R \subseteq M\times M$
+**** Beispiel
+	 $M = \{1,2,3\}. Durch $R = \{(1,1), (1,2), (3,3) \subseteq M\times M\} ist eine Relation auf $M$ gegeben. Es gilt dann: $1\tilde 1, 1\tilde 2, 3\tilde 3$ (aber zum Beispiel: $1\not\tilde 3, 2\not\tilde 1, 2\not\tilde 2$)
+
+*** Eigenschaften von Relationen
+	$M$ Menge, $\tilde$ Relation auf $M$ \\
+	$\tilde$ heißt:
+	- reflexiv $\xLeftrightarrow{\text{Def}}$ für alle $a\in M$ gilt $a\tilde a$
+	- symmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\tilde b \Rightarrow b\tilde a$
+	- antisymmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b \in M$ gilt: $a\tilde b \wedge b\tilde a \Rightarrow a = b$
+	- transitiv $\xLeftrightarrow{\text{Def}}$ für alle $a,b,c\in M$ gilt: $a\tilde b \wedge b\tilde v \Rightarrow a\tilde c$
+	- total $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\tilde b \vee b\tilde a$
+**** Beispiel
+	 Sei $M$ die Menge der Studierenden in der LA1-Vorlesung
+	 1. Für $a,b \in M$ sei $a\tilde b \xLeftrightarrow{\text{Def}}$ $a$ hat den selben Vornamen wie $b$ \\
+		$\tilde$ reflexiv, symmetrisch, nicht antisymmetrisch, transitiv, nicht total
+	 2. Für $a,b \in M$ sei $a\tilde b \xLeftrightarrow{\text{Def}}$ Martrikelnummer von $a$ ist kleiner gleich als die Martrikelnummer von $b$ \\
+		$\tilde$ ist reflexiv, nicht symmetrisch, antisymmetrisch, transitiv, total
+	 3. Für $a,b \in M$ sei $a\tilde b \xLeftrightarrow{\text{Def}}$ $a$ sitzt auf dem Platz recht von $b$ \\
+		$\tilde$ ist nicht reflexiv, nicht symmetrisch, nicht antisymmetrisch, nicht transitiv, nicht total
+*** Halbordnung / Totalordung
+	$\tilde$ heißt
+    - Halbordnung auf $M\xLeftrightarrow{\text{Def}}~\tilde$ ist reflexiv, antisymmetrisch und transitiv
+	- Totalordung auf $M\xLeftrightarrow{\text{Def}}~\tilde$ ist eine Halbordnung und $\tilde$ ist total
+    In diesen Fällen sagt man auch: Das Tupel $(M,\tilde)$ ist eine halbgeordnete, beziehungsweise totalgeordnete Menge.
+**** Beispiel
+	 1. $\leq$ auf $\mathbb{N}$ ist eine Totalordung
+	 2. Sei $M = \mathcal{P}(\{1,2,3\}). $\subseteq$ ist auf $M$ eine Halbordung, aber keine Totalordung (es ist zum Beispiel weder $\{1\} \subseteq \{3\}$ noch $\{3\}\subseteq \{\})
+**** Anmerkung
+	 Wegen der Analogie zur $\leq$ auf $\matbb{N}$ bezeichnen wir Halbordnungen in der Regel mit $\leq$
+*** Größtes / kleistes Element
+	$(M, \leq)$ halbgeordnete Menge, $a\in M$ \\
+	$a$ heißt ein
+	- größtes Element von $M\xLeftrightarrow{\text{Def}}$ Für alle $x\in M$ gilt $x\leq a$
+	- kleinstes Element von $M\xLeftrightarrow{\text{Def}}$ Für alle $x\in M$ gilt $a\leq x$
+**** Bemerkung
+	 $(M,\leq)$ halbgeordnete Menge \\
+	 Dann gilt: Existiert in $M$ ein größtes (beziehungsweise kleinstes) Element, so ist dieses eindeutig bestimmt
+***** Beweis
+	  Es seien $a,b\in M$ größte Elemente von $M$ \\
+	  $\Rightarrow x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
+	  Außerdem: $x \leq b für alle $x\in M$, also auch $a\leq b$ \\
+	  $\xRightarrow{\text{Antisymmetrie}} a = b$ \\
+	  Analog für kleinstes Element
+***** Anmerkung
+	  Dies sagt nichts darüber aus, ob ein größtes (beziehungsweise kleinstes) Element in $M$ überhaupt existiert.
+**** Beispiel
+	 1. In $(\mathbb{N},\leq)$ ist 1 das kleinste Element, ein größtes Element gibt es nicht
+	 2. $(\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}, \subseteq) ist eine halbgeordnete Menge ohne kleinstes beziehungsweise größtes Element
+*** maximales / minimales Element
+	$(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
+	$a$ heißt ein
+    - maximales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $a\leq x \Rightarrow a = x$
+    - minmales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $x\leq a \Rightarrow a = x$
+**** Beispiel
+     In $(\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}, \subseteq)$ sind $\{1,2\},\{1,3\},\{2,3\}$ maximale Elemente und $\{1\},\{2\},\{3\}$ sind minimale Elemente.
+**** Bemerkung
+	 $(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
+	 Dann gilt: Ist $a$ ein größtes (beziehungsweise kleinstes) Element von $M$, dann ist $a$ ein maximales (beziehungsweise minimales) Element von $M$.
+***** Beweis
+	  Sei $a$ ein größtes Element von $M$. \\
+	  zu zeigen ist: Für alle $x\in M$ gilt $a\leq x \Rightarrow a = x$
+	  Sei $x\in M$ mit $a\leq x$. Da $a$ größtes Element von $M$ ist, gilt auch $x\leq a$ \\
+	  $\xLeftrightarrow{\text{Antisymmetrie}} a = x$ \\
+	  Analog für kleinstes Element.
+*** Äquivalenzrelation
+	$M$ Menge, $\tilde$ auf $M$ \\
+	$\tilde$ heißt Äquivalenzrelation $\xLeftrightarrow{\text{Def}}~\tilde$ ist reflexiv, symmetrisch und transitiv.
+	In dem Fll sagen wir für $a\tilde b$ auch $a$ ist äquivalent zu $b$. Für $a\in M$ heißt $[a]:=\{b\in M \mid b\tilde a\} heißt die Äquivalentklasse von $a$.
+	Elemente aus $[a]$ nennt man Vertreter oder Repräsentanten von $a$
+**** Beispiel
+	 $M$ Menge aller Bürgerinnen und Bürger Deutschlands. \\
+	 Wir definieren für $a,b\in M$ $a\tilde b \xLeftrightarrow{\text{Def}} a$ und $b$ sind im selben Jahr geboren. \\
+	 $\tilde$ ist ein Äquivalenzrelation. \\
+	 Jerôme Boateng wrude 1988 geboren. $[\text{Jerôme Boateng}] = \{b\in M\mid b~\text{ist im selben Jarh geboren wei Jerôme Boateng}\} = \{b\in M\mid b~\text{wurde 1988 geboren}\}
+	 Weitere Vertreter von $[\text{Jerôme Boateng}]$ sind zum Beispiel Mesut Özil, Mats Hummels.
+	 Es ist $[\text{Jerôme Boateng}] = [\text{Mesut Özil}] = [\text{Mats Hummels}]$.
+	 Man sieht in diesem Beispiel: Die Menge $M$ zerfällt komplett in verschiedene Äquivalentzklassen:
+	 - Jeder Bürger / jede Bürgerinn Detuschalnds ist in genau einer Äquivalenzklasse enthalten
+	 - Jede zwei Äquivalentklasse sind endweder gleich oder disjunkt (haben leeren Durchschnitt)
+**** Bemerkung
+	 $M$ Menge, $\tilde$ Äquivalenzrelation auf $M$ \\
+	 Dann gilt:
+	 1. Jedes Element von $M$ liegt in genau einer Äquivalenzklasse
+	 2. Je zwei Äquivalenzklassen sind entweder gleich oder disjunkt
+     Man sagt auch: Die Äquivalenzklassen bezüglich "$\tilde$" bilden eine *Partition* von $M$.
+***** Beweis
+	  1. Sei $a\in M$ \\
+		 zu zeigen: Es gibt genau eine Äquivalenzklassen, in der $a$ liegt
+		 1. Es gibt eine Äquivalenzklasse, in der $a$ liegt, denn $a\in [a], denn $a\tilde a$
+		 2. Ist $a\in[b] und a\in[c], dann ist [b]=[c] (d.h. $a$ liegt in höchstens einer Äquivalenzklasse) \\
+			denn: Seien $b,c\in M$ mit $a\in[b]$ und $a\in[c]$
+			$\Rightarrow a\tilde b$ und $a\tilde c \xRightarrow_{\text{Symmetrie}} b\tilde a und a\tilde c \xRightarrow_{\text{Transitivität}} b\tilde c
+			Behautptung $[b] =[c]$
+			denn: "$\subseteq$" Sei $x\in [b] \Rightarrow x\tilde b \xRightarrow_{Transitivität}^{b\tilde c} x\tilde c \Rightarrow x\in [c]
+			denn: "$\supseteq$" Sei $x\in [c] \Rightarrow x\tilde c \xRightarrow_{Transitivität}^{c\tilde b} x\tilde b \Rightarrow x\in [b]
+	  2. Sind $b,c\in M$ mit $[b] \cap [c] \neq \emptyset$, dann existiert ein $a\in [b]\cap [c], und es folgt wie in 2.: \\
+		 $[b] = [c]$
+		 Fpr $b,c\in M$ gilt also entweder $[b]\cap[c] =\emptyset$ oder $[b] = [c]$

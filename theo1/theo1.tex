@@ -1,4 +1,4 @@
-% Created 2016-10-21 Fr 13:57
+% Created 2016-10-25 Di 13:03
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -23,10 +23,19 @@
 \usepackage{mathtools}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
 \DeclareMathOperator{\Exists}{\exists}
 \DeclareMathOperator{\Forall}{\forall}
-\def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
-\def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
+\def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\renewcommand{\v}[1]{\vec{#1}}
 \author{Robin Heinemann}
 \date{\today}
 \title{Theoretische Physik (Hebecker)}
@@ -42,8 +51,9 @@
 Einleitung: \\
 \begin{itemize}
 \item Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
-\item 
+\item Bartelman skripte
 \end{itemize}
+
 \section{Kinematik des Massenpunktes}
 \label{sec-1}
 Massenpunkt / Punktmasse - (selbstevidente) Abstraktion
@@ -253,6 +263,7 @@ mit $\Delta t = \frac{t - t_0}{N}$
 Führt von Vektoren wieder zu nicht-vektoriellen (Skalaren) Größen.
 \subsubsection{Symmetrische Bilinearform}
 \label{sec-1-6-1}
+$f(\alpha x + \beta y) = \alpha f(x) + \beta f(y)$ "linear"
 Abbildung von $V\times V \to \mathbb{R},~(v,w) \mapsto v\cdot w$ mit den Eigenschaften
 \begin{itemize}
 \item $v\cdot w = w\cdot v$
@@ -272,5 +283,85 @@ anderes Beispiel:
 symmetrische Bilinearform, \uline{nicht} positiv, semidefinit!
 Frage: \\
     Beispiel für Bilinearform die positiv-semidefinit ist, aber \uline{nicht positiv definit}
+\[\v x \v y = x^1 y^1\]
+\subsection{Abstand zwischen Raumpunkten}
+\label{sec-1-7}
+Der anschauliche Abstand zweichen Raumpunkten $\v x,\v y$:
+\[\abs{\v x - \v y} = \sqrt{(\v x - \v y)(\v x - \v y)} = \sqrt{(\v x - \v y)^2} = \sqrt{\sum_{i=1}^3 (x^i - y^i)^2} = \sqrt{(x^i - y^i)(x^i - y^i)}\]
+\[=\sqrt{{\v x}^2 + {\v y}^2 - 2\v x \v y} = \sqrt{\abs{\v x}^2 +  \abs{\v y}^2 - 2\abs{\v x}\abs{\v y}}\cos{\theta}\]
+Haben benutzt: $\v x\cdot \v y = \abs{\v x}\abs{\v y}\cos{\theta}$
+\subsubsection{Spezialfall}
+\label{sec-1-7-1}
+\[\v x = (x^1, 0, 0), \v y = (y^1, y^2, 0)\]
+\[\v x \cdot \v y = x^1 \cdot y^1; \cos{\theta} = \frac{y^1}{\abs{\v y}}; \abs{\v x} = x^1\]
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze
+\label{sec-1-7-1-1}
+\[\Rightarrow \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
+Dass dies für beliebige Vektoren gilt, wird später klar werden.
+\end{enumerate}
+\subsubsection{Infinisetimaler Abstand}
+\label{sec-1-7-2}
+Speziell wird der infinitesimale Abstand wichtig sein:
+\[\d\v x = (\d x^1, \d x^2,\d x^3)\]
+\[\d\v x = (\f{\d x^1}{\d t}\d t, \f{\d x^2}{\d t}\d t, \f{\d x^3}{\d t}\d t) = (v^1\d t, v^2\d t, v^3\d t) = (v^1, v^2, v^3)\d t = \v v \d t,~\text{oder:}~\v v = \f{\d\v x}{\d t}\]
+($\d \v x~\text{analog zu}~\d f$ vorher); \\
+    $\d {\v x}^2 = \abs{\d \v x}^2 = \abs{\v v}^2 \d t^2$ \\ $\abs{\d x} = \abs{\v v}\d t$.
+\subsection{Bogenlänge und begleitendes Dreibein}
+\label{sec-1-8}
+$\abs{d\v x}$ entlang $\v x(t)$ aufaddieren $\rightarrow$ Bogenlänge.
+\[s(t) = \int_{t_0}^t \abs{\d \v x} = \int_{t_0}^t \d t' \abs{\f{\d \v x}{\d t'}} = \int_{t_0}^t\d t'\sqrt{\dot{\v x}(t')^2} = \int_{t_0}^t \sqrt{\v v(t')^2}\]
+Infinitesimale Version: \[\f{\d s(t)}{\d t} = \abs{\f{\d\v x}{\d t}} = \abs{\v v}\]
+Man kann (im Prinzip) $s(t) = s$ nach $t$ auflösen.
+\[\Rightarrow t = t(s) \Rightarrow \underbrace{\v x(s)}_{\text{Parametrisierung der Trajektorie durch die Weglänge $s$}} \equiv \v x(t(s))\]
+Nützlich, zum Beispiel für die Definition des Tangentenvektors:
+\[\v T(s) = \f{\d\v x(s)}{\d s}\]
+Es gilt \[\v T\parallel \v v; \abs{\v T} = \abs{\f{\v v \d t}{\abs{\v v}\d t}} = 1 \Rightarrow \v T \cdot \v T = 1\]
+Ableiten nach $s$:
+\[0 = \f{\d}{\d s}(1) = \f{\d \v T}{\d s}(\v T \cdot\v T) = \f{\d \v T}{\d s}\cdot \v T + \v T\cdot \f{\d\v T}{\d s} = 2\v T \cdot \f{\d \v T}{\d s}\]
+Nutze \[\v T\cdot \v T = T^i T^i\]
+$\Rightarrow$ Ableitung des Tangentenvektors ist ortogonal zum Tangentenvektor.
+Krümmungsradius der Bahn: \[\rho \equiv \f{1}{\abs{\f{\d \v T}{\d s}}}\]
+Normalenvektor: \[\v N = \f{\f{\d \v T}{\d s}}{\abs{\f{\d \v T}{\d s}}} = \rho \f{\d \v T}{\d s}\]
+\subsubsection{Beispiel in d=2}
+\label{sec-1-8-1}
+\[\v x(t) = R(\cos{\omega t}, \sin{\omega t})\]
+\[\v v(t) = R\omega (-\sin(\omega t), \cos{\omega t})\]
+\[\abs{\v v} = \sqrt{(R\omega)^2 (\sin^2{\omega}+\cos^2{\omega t})} = R\omega\]
+\[s(t) = \int_{t_0 = 0}^t \d t' \abs{\v v} = R\omega t;~t(x) = = \f{s}{R\omega}\]
+\[\Rightarrow \v x(s) = R(\cos{\f{s}{R}}, \sin{\f{s}{R}}), \v T = \f{\d\v x}{\d s} = (-\sin{\f{s}{R}},\cos{\f{s}{R}})\]
+\[\f{\d\v T}{\d s} = -\f{1}{R}(\cos{\f{s}{R}}, \sin{\f{s}{R}}) \Rightarrow \rho = R;~\v N = -(\cos{\f{s}{R}}, \sin{\f{s}{R}})\]
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze
+\label{sec-1-8-1-1}
+\end{enumerate}
+\subsection{Vektorprodukt}
+\label{sec-1-9}
+\[V\times V \mapsto V;~(\v a, \v b) \mapsto \v c = \v a\times \v b\]
+mit  \[c^i = (\v a \times \v b)^i \equiv \sum_{i,k=1}^3 \epsilon^{ijk}a^jb^k = \epsilon^{ijk}a^jb^k\]
+dabei:
+\begin{itemize}
+\item $\epsilon^{123} = \epsilon^{231} = \epsilon^{321} = 1$
+\item $\epsilon^{213} = \epsilon^{132} = \epsilon^{321} = -1$
+\item sonst 0 (\$$\epsilon$$^{\text{ijk}}$ = 0, falls zwei Indizes gleich)
+\end{itemize}
+Alternativ:
+\begin{itemize}
+\item \[\abs{\v c} = \abs{\v a}\abs{\v b}\abs{\sin{\theta}}\]
+\item Richtung von $\v c$ definiert durch $\v c \perp \v a \wedge \v c \perp \v c$
+\item Vorzeichen von $\v c$ ist so, dass $\v a, \v b, \v c$ ein "Rechtssystem" bilden
+\end{itemize}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze
+\label{sec-1-9-0-1}
+\end{enumerate}
+\subsection{Binormalenvektor}
+\label{sec-1-10}
+\[\b B = \v T\times\v N\]
+$\v T, \v N, \v B$ heißen "begleitendes Dreibein" und bilden ein Rechtssystem. alle haben Länge 1
+\(\v T, \v N\) spannen die "Smiegeebene" auf
+\subsubsection{Zur Information}
+\label{sec-1-10-1}
+\[\f{\d\v T}{\d s} = \frac{1}{\rho}\v N;~\f{\d \v B}{\d s} = -\f{1}{\rho}\v B;~\f{\d\v N}{\d s}=\f{1}{\rho}\v B - \f{1}{\rho}\v T\]
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

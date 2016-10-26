@@ -1,4 +1,4 @@
-% Created 2016-10-21 Fr 13:54
+% Created 2016-10-24 Mo 13:04
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -25,8 +25,11 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 \DeclareMathOperator{\Exists}{\exists}
 \DeclareMathOperator{\Forall}{\forall}
-\def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
-\def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
+\def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\renewcommand{\v}[1]{\vec{#1}}
 \author{Robin Heinemann}
 \date{\today}
 \title{Experimentalphysik (H.-C. Schulz-Coulon)}
@@ -204,11 +207,125 @@ $\rightarrow$ Superpositionsprinzip: \\
 
 \item Schiefer Wurf
 \label{sec-7-1-2-4}
-\[\vec{a_0} = \colvec{0;0;-g}\]
-\[\vec{v_0} = \colvec{v_{x,0};0;v_{z,0}}\]
-\[\vec{r_0} = \colvec{0;0;z_0}\]
-\[r(t) = \colvec{v_{x,0}t;0;-\frac{1}{2}gt^2 + v_{z,0}t + z_0}\]
+\[\vec{a_0} = \cvec{0;0;-g}\]
+\[\vec{v_0} = \cvec{v_{x,0};0;v_{z,0}}\]
+\[\vec{r_0} = \cvec{0;0;z_0}\]
+\[r(t) = \cvec{v_{x,0}t;0;-\frac{1}{2}gt^2 + v_{z,0}t + z_0}\]
 \[z(x) = -\frac{1}{2}\frac{g}{v_{x,0}^2}x^2 + \frac{v_{z,0}}{v_{x,0}}x + z_0\]
+
+\item Nachtrag
+\label{sec-7-1-2-5}
+\[a = \dot{v}\]
+\[\int_0^t \dot{v}\d t' = \int_0^ta\d t'\]
+\[v\mid_0^t = at'\mid_0^t\]
+\[v(t) - \underbrace{v(0)}_{v_0} = at\]
+\[v(t) = at + v_0\]
+analog:
+\[x(t) = \frac{1}{2}at^2 + v_0 t + x_0\]
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze Wurfparabel
+\label{sec-7-1-2-5-1}
+\[\tan{\varphi} = \frac{v_{z,0}}{v_{x,0}}\]
+\[v_0^2 = v_{x,0}^2 + v_{z,0}^2\]
+Scheitel:
+\[Z'(x_s) = 0\]
+\[x_s = \frac{v_0^2}{2g}\sin{2\varphi}\]
+Wurfweite:
+\[Z(x_w) = 0\]
+\[x_w = \frac{v_0^2}{2g}\sin{2\varphi}(1 + \sqrt{1 + \frac{2gz_0}{v_0^2\sin^2{\varphi}}})\]
+Optimaler Winkel: $\varphi_{opt}, x_w$ max.
+\[z_0 = 0\Rightarrow \sin{2\varphi} = 1 \rightarrow \varphi = \SI{45}{\degree}\]
+\[z_0 \neq 0\Rightarrow \sin{\varphi_{opt}} = (2 + \frac{2gz_0}{v_0^2})^{-\frac{1}{2}}\]
+\end{enumerate}
+\item Gleichförmige Kreisbewegung
+\label{sec-7-1-2-6}
+\[\vec{r}(t) = \cvec{x(t);y(t)} = \cvec{R\cos{\varphi}; R\sin{\varphi}}\]
+mit $\varphi = \varphi(t)$
+\[\vec{v}(t) = \cvec{\dot{x};\dot{y}} = \cvec{-R\dot{\varphi}\sin{\varphi};R\dot{\varphi}\cos{\varphi}}\]
+Gleichförmige Kreisbewegung: $\dot{\varphi} = \text{const}$
+Definition Winkelgeschwindigkeit:
+\[\omega = \frac{\d \varphi}{\d t} = \dot{\varphi}\quad[w] = \si{\radian\per\second} = \si{1\per\second}\]
+Für $\omega = \text{const.}$:
+\[\vec{r} = R\cvec{\cos{\varphi};\sin{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
+\[\vec{v} = R\omega\cvec{-\sin{\varphi};\cos{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
+\[\vec{v} \perp \vec{r} \Leftrightarrow \vec{v}\cdot\vec{r} = 0\]
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze Kreisbewegung
+\label{sec-7-1-2-6-1}
+\item Mitbewegtes Koordinatensystem
+\label{sec-7-1-2-6-2}
+\[\vec{r}(t) = R\vec{e_R} \quad \vec{e_R} = \cvec{\cos{\varphi (t)};\sin{\varphi (t)}}\]
+\[\vec{v}(t) = R\omega \vec{e_t} \quad \vec{e_t} = \cvec{-\sin{\varphi (t)}; \cos{\varphi (t)}}\]
+\[\vec{t} \neq~\text{const das heißt}~\vec{a}(t)\neq 0\]
+Kreisbeschleunigung
+\[\vec{a}(t) = \cvec{\ddot{x}(t);\ddot{y}(t)} = \cvec{-R\omega^2\cos{\varphi};-R\omega^2\sin{\varphi}} = -R\omega^2\vec{e_R} \Rightarrow \vec{a}  \parallel \vec{r}\]
+\[\abs{\vec{a}(t)} = R\omega^2 = \frac{v^2}{R} \neq 0\]
+Zentripetalbeschleunigung
+Zeigt in Richtung des Ursprungs.
+\[\vec{a}_{zp} = -R\omega^2\vec{e_R}\]
+\item Allgemein
+\label{sec-7-1-2-6-3}
+\[\vec{\omega}\]
+Räumliche Lage der  Bewegungsebene
+\[\vec{v} = \v{w}\times  \v r \quad v = \omega r\]
+\[\v a = \v w \times \v v\]
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze omega
+\label{sec-7-1-2-6-3-1}
+\end{enumerate}
+\end{enumerate}
+\item Allgemeine Krummlinige Bewegung
+\label{sec-7-1-2-7}
+\[\v v = v \v{e_t}\]
+\[\v a = \dot{\v v} = \frac{\d (v\v{e_t})}{\d t} = \frac{\d v}{\d t}\v{e_t} + v\frac{\d v{e_t}}{\d t}\]
+\[\v{e_t} = \cos{\rho}\v{e_x} + \sin{\rho}\v{e_y}\]
+\[\v{e_n} = -\sin{\rho}\v{e_x} + \cos{\rho}\v{e_y}\]
+\[\frac{\d \v{e_t}}{\d t} = \dot\rho -\sin{\rho}\v{e_x} + \cos{\rho}\v{e_y} = \dot\rho \v{e_n}\]
+\[\v a = \dot v \v{e_t} + \frac{v^2}{\rho}\v{e_n}\]
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze
+\label{sec-7-1-2-7-1}
+\end{enumerate}
+\item Relativbewegung
+\label{sec-7-1-2-8}
+\begin{itemize}
+\item $S$-Laborsystem
+\item $S'$-Bewegtes System
+\item $\v u = (u, 0, 0) = \text{const}$ Geschwindigkeit von S' im System S
+\item Punkt $P=(x,y,z)$ in $S$
+\item Punkt $P'=(x',y',z')$ in $S'$
+\item Zeitpunkt $t = 0: \quad S=S', P=P'$
+\end{itemize}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze Bewegtes Bezugssystem
+\label{sec-7-1-2-8-1}
+\item Galilei-Transformation
+\label{sec-7-1-2-8-2}
+\begin{enumerate}
+\item Eindimensional
+\label{sec-7-1-2-8-2-1}
+\[x' = x - ut\]
+\[y' = y\]
+\[z' = z\]
+\[v' = v - u\]
+\[t' = t\]
+\item Dreidimensional
+\label{sec-7-1-2-8-2-2}
+\[\v r' = \v r - \v u t\]
+\[\v v' = \v v - \v u\]
+\[\v a' = \v a\]
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\subsection{Newtonsche Dynamik}
+\label{sec-7-2}
+Warum bewegen sich Körper?\\
+   Newton 1686: Ursache von Bewegungsänderungen sind Kräfte.
+Newtonsche Gesetze (Axiome)
+\begin{enumerate}
+\item Jeder Körper verharrt im Zustand der Ruhe oder der gleichförmigen Bewegung, sofern er nicht durch Kräfte gezwungen wird diesen Bewegungszustand zu verlassen
+\item Die Änderung einer Bewegung wird durch Einwirken einer Kraft verursacht. Sie geschieht in Richtung der Kraft und ist proportional zu Größe der Kraft
+\item Übt ein Körper $1$ auf einen Körper $2$ die Kraft $F_{12}$, so reagiert Körper $2$ auf den Körper $1$ mit der Gegenkraft $F_{21}$ und es gilt \$F$_{\text{21}}$ = -F$_{\text{12}}$ (actio = reactio)
 \end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

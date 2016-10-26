@@ -14,6 +14,6 @@ all: $(pdf_files)
 
 .PHONY: clean clobber
 clean: $(clean_files)
-	find . -name '*.pdf' -delete
+	find . -mindepth 2 -maxdepth 2 -name '*.pdf' -delete
 
 clobber: $(clean_files)
