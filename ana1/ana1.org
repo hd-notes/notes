@@ -46,7 +46,7 @@
 ****** Beweis
 	   Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
 	   $\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
-	   Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeight)}~\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
+	   Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeight)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
 	   Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
 *** Summenzeichen und Produktzeichen
 **** Summenzeichen
@@ -94,7 +94,7 @@
 	- Eigenschaften der Komplementbildung: \\
 	  Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
 	  - Beweis:
-		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B) \Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
+		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
       - Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
 *** geordneter Tupel
    	Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \Leftrightarrow x_1 = y_1, \ldots, x_n = y_n\]
@@ -197,3 +197,51 @@
 	 - Ganze Zahlen $\mathbb{Z}:=\{0; \pm, n\in\mathbb{N}\}$ \\
 	   Negative Zahl $(-n)$ ist definiert duch $n+(-n) = 0$
 	 - Rationale Zahlen $\mathbb{Q}~(b x = y)$
+     Man sagt, dass $(\mathbb{Q},+,\cdot)$ einen Körper bildet.
+*** Definition Körper
+	$\mathbb{K}$ sei eine Menge auf der Addition und Multiplikation sei. $\mathbb{K}$ heißt ein Körper, wenn die folgende Axiome erfüllt sind:
+	- Addition: $(\mathbb{K}, +)$ ist eine kummutative Gruppe, das heißt $\Forall a,b,c\in \mathbb{K}$:
+	  1. \((a+b)+c = a+(b+c)\) \hfill Assoziativität
+	  2. \(a+b = b+a\) \hfill Kommutativität
+	  3. \(\exists! 0\in\mathbb{K}:a+0 = a\)\hfill Existenz des Nullelement
+	  4. \(\exists x\in\mathbb{K}: a+x = 0\)\hfill Existstenz des Nagativen
+	- Multiplikation: $(\mathbb{K}\setminus\{0\},\cdot)$ ist eine kommutative Gruppte, das heißt $\Forall a,b,c\in\mathbb{K}$
+	  1. \((a\cdot b)\cdot c = a\cdot(b\cdot c)\)\hfill Assozativität
+	  2. \(a\cdot b = b\cdot a\)\hfill Kummutativität
+	  3. \(\exists!1\in\mathbb{K}:a\cdot 1 = a\)\hfill Existenz des Einselement
+	  4. Für \(a\neq 0, \exists! y\in\mathbb{K}:a\cdot y = 1\)\hfill Inverse
+	- Verträglichkeit
+	  1. \(a\cdot (b + c) = (a\cdot b)+ (a\cdot c)\)\hfill Distributivität
+**** Satz
+	 $(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \Leftrightarrow\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
+	 dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ in folgendem Sinne verträglich:
+	 - \(a\leq b\Rightarrow a+c \leq b + c\)
+	 - \(0\leq a\wedge 0\leq b \Rightarrow 0\leq a\cdot b\)
+**** Bemerkung
+	 \[\{a\in\mathbb{Q}: a = \frac{r}{s},r\in\mathbb{N}_0,s\in\mathbb{N}\} =: \mathbb{Q}_+ (\mathbb{Q}_{\geq 0})\]
+** Abzählbarkeit
+*** Abzählbarkeit von Mengen
+	Sei $A$ eine Menge\\
+	- $A$ heißt endlich mit $\abs{A} = n$ Elementen ist äquivalent zu
+	  \[\abs{A} = \begin{cases} A = \emptyset &(n = 0) \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
+	- $A$ heißt abzählbar undendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
+	- $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
+*** Beispiel
+	$\mathbb{Z}$ ist abzählbar unendlich
+**** Beweis
+	 Die Abbildung $f:\mathbb{Z}\to\mathbb{N}$
+	 \[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & 2 < 0\end{cases}\]
+	 - Surjektivität: zu zeigen $f(\mathbb{Z}) = \mathbb{N}$ \\
+	   Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
+	   Man unterscheide:
+	   - n gerade \rightarrow Wähle $z=\frac{n}{2}$
+	   - n ungerade \rightarrow $z=-\frac{n + 1}{2}$
+     - Injektivität: Sei $z_1,z_2 \in\mathbb{Z}$ und $f(z_1) = f(z_2)$ \\
+	   ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade *Wiederspruch*.
+	   Falls
+       - $z_1,z-2 \geq 0 \Rightarrow 2z_1 = f(z_1) = f(z_2) = 2z_2 \Rightarrow z_1 = z_2$
+       - $z_1,z-2 < 0 \Rightarrow -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \Rightarrow z_1 = z_2 \hfill\square$
+*** Beispiel
+	- $\mathbb{N}^2 = \mathbb{N}\times\mathbb{N}$ abzählbar unendlich
+	- $\mathbb{Q}$ abzählbar unendlich
+	- $\mathbb{R}$ überabzählbar

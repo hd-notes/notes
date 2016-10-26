@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
 #+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
-#+LATEX_HEADER: \newcommand{\f}[2]{\frac{#1}{#2}}
+#+LATEX_HEADER: \newcommand{\f}[2]{{\frac{#1}{#2}}}
 #+LATEX_HEADER: \renewcommand{\v}[1]{\vec{#1}}
 
 * Begrüßung ist langweilig
@@ -214,3 +214,66 @@
    1. Jeder Körper verharrt im Zustand der Ruhe oder der gleichförmigen Bewegung, sofern er nicht durch Kräfte gezwungen wird diesen Bewegungszustand zu verlassen
    2. Die Änderung einer Bewegung wird durch Einwirken einer Kraft verursacht. Sie geschieht in Richtung der Kraft und ist proportional zu Größe der Kraft
    3. Übt ein Körper $1$ auf einen Körper $2$ die Kraft $F_{12}$, so reagiert Körper $2$ auf den Körper $1$ mit der Gegenkraft $F_{21}$ und es gilt $F_{21} = -F_{12}$ (actio = reactio)
+*** Kraft und Impuls
+	\[\v F = \cvec{F_x;F_y;F_z}\]
+	Superpositions von Kräften (Zusatz zu den Newtonschen Gesetzen (Korollar)):
+	\[\v{F}_{\text{ges}} = \sum_{i = 1}^n \v{F_i}\]
+***** TODO Skizze Addition von Kräften
+***** Grundkräfte der Natur
+	  - Elektromagnetische Kraft
+	  - Starke Draft
+	  - Schwache Kraft
+	  - Gravitation
+**** Impuls
+	 \[\v P = m\v v\quad [\v P] = \si{\kg\meter\per\second}\]
+**** Kraft
+	 \[\v F = \f{\d\v P}{\d t} = \dot{\v P} = \f{\d}{\d t}(m\v v)\]
+	 $m = \text{const.}$:
+	 \[\v F = m \f{\d\v v}{\d t} = m\dot{\v v} = m\ddot{\v x} = m\v a\]
+**** Grundgesetz der Dynamik
+	 \[\v F = \dot{\v P}~\text{beziehungsweise}~\v F = m\v a\]
+***** Trägheitsprinzip (Impulserhaltung)
+	  \[\v P = m\v v = \text{const},~\v P = 0~\text{für}~\v F = 0\]
+**** Expermiment
+	 \[\v F_G = \underbrace{m\v g}_{Kraft} = \underbrace{(m + M)}_{Trägheit}\v a = m_{\text{ges}}\v a\]
+	 \[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{text{ges}}}g\]
+***** Erwartung:
+	  $a\tilde {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s = \f{1}{2} a\Delta t^2$
+***** Messung:
+     | $m[\si{\gram}]$ | $M[\si{\gram}]$ | $m_{\text{ges}}[\si{\gram}]$ | $\f{m_{\text{ges}}}{m}$ | $\Delta s[\si{\mm}]$ | $\Delta t [\si{\second}]$ | $a[\si{meter\per\second}]$ |
+     |-----------------+-----------------+------------------------------+-------------------------+----------------------+---------------------------+----------------------------|
+     |              10 |             470 |                          480 |                      48 |                  800 |                      2.75 |                 0.21157025 |
+     |              40 |             440 |                          480 |                      12 |                  800 |                      1.40 |                 0.81632653 |
+     |              10 |            1910 |                         1920 |                     192 |                  800 |                      5.55 |                0.051943836 |
+     |              40 |            1880 |                         1920 |                      48 |                  800 |                      2.79 |                 0.20554721 |
+	 #+TBLFM: $3=$1+$2::$4=$3 / $1::$7=(2 * ($5 / 1000)) / ($6 * $6)
+***** TODO Skizze
+**** Trägheitsprinzip - "revisited"
+	  *Definition*: Ein Bezugssystem in dem das Trägheitsprinzip gilt nennt man ein Inatialsystem. \\
+
+	  In einem beschleunigten Bezugsystem gilt das Trägheitsprinzip _nicht_. Beschleunigte Systeme $\neq$ Inatialsysteme.
+	  Das Trägheitsprinzip ist Galilei-invariant.
+
+***** TODO Skizze whatever
+*****  Trägheitsprinzip: [moderne Formulierung]:
+	   Es gibt Inatialsysteme, das heißt Koordinatensysteme  in denen ein Kräftefreier Körper im Zustand der Ruhe oder der gradlinig gleichförmigen Bewegung verbleibt.
+
+**** Actio gleich Reactio
+	 \[\underbrace{\v{F_{12}}}_{\text{Kraft}} = \underbrace{-\v{F_{21}}}_{\text{Gegenkraft}}\]
+***** TODO Skizze von Körpern
+***** TODO (Skizze) Expermiment
+****** Erwartung:
+	   \[v_1 = v_2 \rightarrow a_1 = a_2 \rightarrow F_1 = F_2~\checkmark\]
+	   Nichttrivialer Fall: \\
+	   Kraftstoß: \\
+	   Magnetische Kraft: $F_{\text{mag}} \tilde {\f{1}{r^2}}$
+	   \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
+	   \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
+***** Expermiment 2
+	  \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \Rightarrow \f{m_2}{m_1} \approx 1.5\]
+	  \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
+	  \[a\tilde v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
+	  \[1 = \f{F_1}{F_2} \Rightarrow F_1 = F_2\]
+***** Beispiele
+	  - Kraft und Gegenkraft (TODO Skizze)
+	  - Flaschenzug, Seilkräfte (TODO Skizze)
