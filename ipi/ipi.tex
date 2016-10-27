@@ -1,4 +1,4 @@
-% Created 2016-10-25 Di 14:54
+% Created 2016-10-27 Do 14:38
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,6 +30,8 @@
 \usepackage{minted}
 \usepackage{makecell}
 \usemintedstyle{perldoc}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
 \author{Robin Heinemann}
 \date{\today}
 \title{Einführung in die Anwendungsorientierte Informatik (Köthe)}
@@ -195,5 +197,104 @@ Variante: Timer läuft immer (Signal alle 0.3s) $\Rightarrow$ Timout ignorieren 
 \hline
 1~&0~0~1~0~0~1~1 &= 1 + 2 + 16 + 128 &= 147_{\text{dez}}\checkmark
 \end{align}
+\begin{enumerate}
+\item Implementation mit Endlichen Automaten
+\label{sec-4-3-3-1}
+Prinzipen:
+\begin{itemize}
+\item wir lesen die Eingangsdaten von rechts nach links
+\item Beide Zahlen gleich lang (sonst mit 0en auffüllen)
+\item Ergebnis wird von rechts nach link ausgegeben
+\end{itemize}
+\item {\bfseries\sffamily TODO} Skizze der Automaten
+\label{sec-4-3-3-2}
+\begin{center}
+\begin{tabular}{lll}
+Zustand & Ereignis & Ausgeben\\
+\hline
+start & (0,1) & "1"\\
+start & (1,0) & "1"\\
+start & (0,0) & "0"\\
+start & (1,1) & "0"\\
+carry = 1 & (1,1) & "1"\\
+carry = 1 & (0,1) & "0"\\
+carry = 1 & (1.0) & "0"\\
+carry = 1 & $\emptyset$ & "1"\\
+\end{tabular}
+\end{center}
+\textbf{Wichtig:} In jedem Zustand muss für \textbf{alle möglichen} Ereignisse eine Aktion und Folgezustand definiert werden.
+Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also ein "Bug"
+Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\Rightarrow$ Übergang nach "Fehler", Aktion: ausgeben einer Fehlermeldung
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze Fehlermeldung
+\label{sec-4-3-3-2-1}
+Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
+\begin{itemize}
+\item Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächnis")
+\item Automat kann nicht beliebig weit zählen, sondern nur bis zu einer vorgegebenen Grenze
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
+\node[initial,state] (0) {"0"};
+\node[state] (1) [right of=0] {"1"};
+\node[state] (2) [right of=1]{"2"};
+\node[state] (3) [right of=2]{"3"};
+\node[accepting,state] [below of=1] (end) {"stop"};
+\path (0) edge [loop above] node {"0"} (0)
+(0) edge node {"x"} (1)
+(0) edge node {$\emptyset$} (end)
+(1) edge [loop above] node {"0"} (1)
+(1) edge node {"x"} (2)
+(1) edge node {$\emptyset$} (end)
+(2) edge [loop above] node {"0"} (2)
+(2) edge node {"x"} (3)
+(2) edge node {$\emptyset$} (end)
+(3) edge [loop above] node {"$0\wedge x$"} (3)
+(3) edge node {"x"} (3)
+(3) edge node {$\emptyset$} (end);
+\end{tikzpicture}
+\end{center}
+Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
+Spendiert man zusätzlichen Specher, geht mehr:
+\begin{itemize}
+\item Automat mit Stak-Speicher (Stapel oder Keller) $\Rightarrow$ Kellerautomat (Kontextfreie Sprachen)
+\item Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles auführen, was man intuitiv für berechenbar hält
+\end{itemize}
+Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
+Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
+Frage: Gibt es einen universellen Algorithms für alle berechenbare Probleme?
+Betrache formale Algorithmusbeschribung als Teil der Eingabe des universellen Algorithmus.
+\end{enumerate}
+\end{enumerate}
+\section{Substitutionsmodell (funktionale Programmierung)}
+\label{sec-5}
+\begin{itemize}
+\item einfaches Modell für arithmetische Berechnung "Taschenrechner"
+\item Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißten "Literale"
+\item elementare Funktionen: haben eine oder mehere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
+\begin{itemize}
+\item add(1,2) $\rightarrow$ 3, mul(2,3) $\rightarrow$ 6, analog sub(), div(), mod()
+\end{itemize}
+\item Funktionsaufrufe können verschachtelt werden, das heißt Argumente kann Ergebnis einer anderen Funktion sein
+\begin{itemize}
+\item mul(add(1,2),sub(5,3)) $\rightarrow$ 6
+\end{itemize}
+\end{itemize}
+\subsection{Substitutionsmodell}
+\label{sec-5-1}
+Man kann einen Funktionsaufruf, deessen Argument vekannt ist (das heißt Zahlen sind) durch den Wert des Ergebnisses ersetzen ("substituieren"). Geschachtelte Ausdrücke lassen sich so von innen nach außen auswerten.
+\[mul(add(1,2),sub(5,3))\]
+\[mul(3,sub(5,3))\]
+\[mul(3,2)\]
+\[6\]
+\begin{itemize}
+\item Die arithmetischen Operationene add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
+\item Die meisten Programmiersprachen bieten außerdem algebraische Funktionen wie: sqrt(), sin(), cos(), log()
+\begin{itemize}
+\item sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibilothek"
+\end{itemize}
+\item in C++: mathematisches Modul des Standardbibilothek: "cmath"
+\item Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "\%"
+\end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

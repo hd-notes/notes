@@ -1,4 +1,4 @@
-% Created 2016-10-25 Di 13:03
+% Created 2016-10-27 Do 12:39
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -362,6 +362,83 @@ $\v T, \v N, \v B$ heißen "begleitendes Dreibein" und bilden ein Rechtssystem. 
 \(\v T, \v N\) spannen die "Smiegeebene" auf
 \subsubsection{Zur Information}
 \label{sec-1-10-1}
-\[\f{\d\v T}{\d s} = \frac{1}{\rho}\v N;~\f{\d \v B}{\d s} = -\f{1}{\rho}\v B;~\f{\d\v N}{\d s}=\f{1}{\rho}\v B - \f{1}{\rho}\v T\]
+\[\f{\d\v T}{\d s} = \frac{1}{\rho}\v N;~\f{\d \v B}{\d s} = -\f{1}{\sigma}\v B;~\f{\d\v N}{\d s}=\f{1}{\sigma}\v B - \f{1}{\rho}\v T\]
+$\sigma$ definiert die Torsion.
+\section{Grundbegriffe der Newtonsche Mechanik}
+\label{sec-2}
+\subsection{Newtonsche Axiome}
+\label{sec-2-1}
+Dynamik: Ursachen der Bewegungsänderung $\rightarrow$ Kräfte: $\v F = (F^1,F^2,F^3)$
+\begin{enumerate}
+\item Es existierten Inertialsysteme (Koordinatensysteme in denen eine Punktmasse an der keine Kraft wirkt) nicht oder sich geradlinig gleichförmig bewegt: $\ddot{\v x} = 0$
+\item In solchen Systemen gilt: $\v F = m\ddot{\v x}$
+\item Für Kräfte zwischen zwei Massenpunkten gilt:
+\[\v{F}_12 = -\v{F}_21\]
+\end{enumerate}
+
+\$2.\$ definiert die \textbf{träge} Masse
+Die entscheidene physikalische Aussage von \$2.\$ ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
+Alternative Diskussionen der obigen Axiomatik:
+\begin{itemize}
+\item zum Beispiel Kapitel 1.2 von Jose/Saletan (mit \$2.\$ Definition der Kraft)
+\end{itemize}
+\subsection{Trajektorie}
+\label{sec-2-2}
+Vorhersagen erfordern: $\v F \rightarrow \text{Trajektorie}$. Genauer: Sei $\v F(\v x,t)$ gegeben. Berechne $\v x(t)$ !
+\subsection{Differentialgleichungen}
+\label{sec-2-3}
+hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
+\subsubsection{1. Ordung}
+\label{sec-2-3-1}
+Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung ($\Rightarrow$ nur 1. Ableitung):
+\[y'(x) = f(x,y)\]
+\begin{enumerate}
+\item Lösung
+\label{sec-2-3-1-1}
+Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
+\end{enumerate}
+\subsubsection{Anfangswertproblem}
+\label{sec-2-3-2}
+Gegeben durch:
+\begin{enumerate}
+\item Dgl.: $y' = f(x,y)$
+\item Anfangsbedingung $(x_0;y_0) \in \mathbb{R}^2$
+\end{enumerate}
+Gesucht: Funktion $y(x)$ mit (für $x\in I, x_0 \in I$:
+\begin{enumerate}
+\item $y'(x) = f(x,y(x))$
+\item $y(x_0) = y_0$
+\end{enumerate}
+\subsubsection{partielle Ableitung}
+\label{sec-2-3-3}
+Wir betrachten ab sofort auch Funktionen mehrerer Variablen: $f:\mathbb{R}\times\mathbb{R}\to\mathbb{R},(x,y)\mapsto f(x,y)$
+Partielle Ableitung: \[\f{\partial f(x,y)}{\partial y} \equiv \lim_{\Delta y \to 0} \f{f(x,y + \Delta y) - f(x,y)}{\Delta y}\]
+Rechenregeln: Wie bei normalen Ableitung, nur mit $x$ fest.
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-3-3-1}
+\[f(x,y,z) \equiv x^2 + y z\]
+\[\f{\partial f}{\partial x} = 2x\]
+\[\f{\partial f}{\partial y} = z\]
+\[\f{\partial f}{\partial z} = y\]
+\end{enumerate}
+\subsubsection{Existenz und Eindeutigkeit}
+\label{sec-2-3-4}
+\ldots{} viele Theoreme über Existenz und Eindeutigkeit (Peano und Picand / Lindelöf)
+Insbesondere sind Existenz und Eindeutigkeit gesichert falls:
+\[f(x,y) \wedge \f{\partial f(x,y)}{\partial y}\]
+stetig sind.
+\begin{enumerate}
+\item "Begründung"
+\label{sec-2-3-4-1}
+Zeichne an jedem Punkt $(x,y)$ einen Vektor $(1,f(x,y))$ ein.
+\[\f{\d y(x)}{\d x} = y'(x) = f(x,y(x)) = \f{(x,y(x))}{1}\]
+\item Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)
+\label{sec-2-3-4-2}
+Steigung der gesuchten Funktion bei $x_0$ ist bekannt als $f(x_0, y_0)$
+$\Rightarrow$ kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
+Kenne Steigung bei $x_0 \Delta x: f(x_0 + \Delta x, y_0 + \Delta x f(x_0,y_0))$
+$\Rightarrow$ Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. ($\Rightarrow$ perfekt für Numerik)
+\end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

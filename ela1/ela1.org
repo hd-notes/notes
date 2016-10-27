@@ -392,4 +392,111 @@
 			denn: "$\supseteq$" Sei $x\in [c] \Rightarrow x\tilde c \xRightarrow_{Transitivität}^{c\tilde b} x\tilde b \Rightarrow x\in [b]
 	  2. Sind $b,c\in M$ mit $[b] \cap [c] \neq \emptyset$, dann existiert ein $a\in [b]\cap [c], und es folgt wie in 2.: \\
 		 $[b] = [c]$
-		 Fpr $b,c\in M$ gilt also entweder $[b]\cap[c] =\emptyset$ oder $[b] = [c]$
+		 Für $b,c\in M$ gilt also entweder $[b]\cap[c] =\emptyset$ oder $[b] = [c]\hfill\square$
+**** Faktormenge
+	 $M$ Menge, $\tilde$ Äquivalenzrelation auf $M$
+	 $M/\tilde := \{[a]|a\in M\}$ (Menge der Äquivalenzklassen) heißt die Faktormenge (Quotientenmenge) von $M$ nach $\tilde$
+***** Beispiel
+	  \[M= \{1,2,3,-1,-2,-3\}\]
+	  Für $a,b,c \in M$ setzen wir $a\tilde b \xLeftrightarrow{\text{Def.}} \abs{x} = \abs{b}$
+	  Das ist eine Äquivalenzrelation auf $M$
+	  Es ist $[1] = \{1,-1\},[2]=\{2,-2\},[3]=\{3,-3\}
+	  Somit: $M/tilde := \{[1],[2],[3]\} = \{\{1,-1\},\{2,-2\},\{3,-3\}\}
+***** Anmerkung
+	  Der Übergang zur Äquivalenzklassen soll (für eine jeweils gegebene Relation) irrelevante Informationen abstreifen.
+** Abbildungen
+    *naive Definition*: \\
+	Eine Abbildung $f$ von $M$ nach $N$ ist eine Vorschrift, die jedem $n\in M$ genau ein Element aus $N$ zuordnet, dieses wird mit $f(n)$ bezeichnet.
+	*Notation*: \\
+	\[f:M\to N,m\mapsto f(m)\]
+
+	Zwei Abbildungen $f,g:M\to N$ sind gleich, wenn gilt $\Forall n\in M:f(n) = g(n)$
+	$M$ heißt die Definitionsmenge von $f$, $N$ heißt die Zielmenge von $f$
+*** Definition
+	Eine Abbildung $f$ von $M$ nach $N$ ist ein Tupel $(M,N,G_f)$, wobei $G_f$ eine Teilmenge von $M\times N$ mit der Eigenschaft ist, dass für jedes Element $m\in M$ genau ein Element $n\in N$ mit $(m,n) \in G_f$ existiert.
+	(für dieses Element $n$ schreiben wir auch $f(m)$). $G_f$ heißt der Graph von $f$.
+*** Beispiel
+	1. $f:\mathbb{R}\to\mathbb{R}, x\mapsto x^2$
+	2. $f:\mathbb{R}\to\mathbb{R}^2,x\mapsto (x,x+1)$
+	3. $M$ Menge, $id_M: M\to M,m\mapsto m$ heißt Identität (identische Abbildung) auf $M$
+	4. $I$,$M$ Mengen: Eine über $I$ indizierte Familie von Elementen von $M$ ist eine Abbildung: \\
+	   $m:I\to M,i\mapsto m(i) =: m_i$. Wir schreiben für die Familie auch kurz $(m_i)_{i\in I}$. $I$ heißt Indexmenge der Familie.
+	5. Spezialfall von 4.: $I = \mathbb{N},M = \mathbb{R}:~((m_i)_{i\in\mathbb{N}})$ nennt man auch Folge reeler Zahlen.
+*** Anmerkung über den Begriff der Familie
+	Über den Begriff der Familie lassen sich diverse Konstruktionen aus der naiven Mengenlehre verallgemeinern.
+	Ist $(M_i)_{i\in I}$ eine Familie von Mengen, dann ist:
+	\[\cup_{i\in I} M_i:=\{x\mid\exists i\in I: x\in M_i\}\]
+	\[\cap_{i\in I}M_i := \{x\mid\Forall i\in I: x\in M_i\}\]
+	\[\prod_{i\in I}M_i := \{(x_i)_{i\in I}\mid \Forall i\in I: x_i \in M\}\]
+*** Bild
+	$m,N$ Mengen, $f:M\to n$ Abbildung. \\
+	Sind $m\in M,n\in N$ mit $n = f(m)$ dann nennen wir $n$ ein *Bild* von $m$ unter $f$ und wir nennen $m$ ein *Urbild* von $n$ unter $f$.
+**** Anmerkung
+	 In obiger Situation ist das Bild von $m$ unter $f$ eindeutig bestimmt (nach der Definition einer Abbildung)
+	 Urbilder sind im allgemeinen nicht eindeutig bestimmt, und im Allgemeinen besitzt nicht jedes Element aus $N$ ein Urbild.
+**** Beispiel
+	 $f:\mathbb{R}\to\matbb{R},x\mapsto x^2$, dann ist $4=f(2) = f(-2)$, das heißt $2$ und $-2$ sind Urbilder von $4$, das Element $-5$ hat kein Urbild unter $f$, denn es existiert kein $x\in\mathbb{R}$ mit $x^2 = -5$
+**** Definition
+	 $M, N$ Mengen, $f:M\to N$ Abbildung, $A\subseteq M, B\subseteq N$ \\
+	 $f(A) := \{f(a)\mid a\in A\} \subseteq N$ heißt das Bild von $A$ unter $f$. \\
+	 $f^-1(B) := \{m\in M\mid f(m) \in B\} \subseteq M$ heißt das Urbild von $B$ unter $f$
+***** Beispiel
+	  \[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2\]
+	  \[f(\{1,2,3\}) = \{1,4,9\}\]
+	  \[f^-1(\{4,-5\}) = \{2,-2\}\]
+	  \[f^-1(\{4\}) = \{2,-2\}\]
+	  \[f^-1(\{-5\}) = \emptyset\]
+	  \[f(\mathbb{R}) = {x^2\mid x\in \mathbb{R}} = \{x\in\mathbb{R}\mid x\geq 0\} =:\mathbb{R}_{\geq 0}\]
+*** Restriktion
+	$M,N$ Mengen, $f:M\to N$ Abbildung, $A\subseteq M$
+	\[f\mid_A:A\to N, m\mapsto f(m)\]
+	heißt die Restriktion von $f$ auf $A$.
+	Ist $B\subseteq N$ mit $f(A) \subseteq B$, dann setzen wir
+	\[f\mid_A^B: A\to B,m\mapsto f(m)\]
+	Ist $f(M) \subseteq B$ dann setzen wir:
+	\[f\mid^B := f\mid_M^B,M\to B, m\mapsto f(m)\]
+*** Komposition
+	$L,M,N$ Mengen, $f:L\to M,g:M\to N$ Abbildung \\
+	\[g\circ f: L\to N, x\mapsto(g\circ f)(x):=g(f(x))\]
+	heißt die Komposition (Hintereinanderausführung) von $f$ und $g$
+**** Beispiel
+	 \[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2, g:\mathbb{R}\to\mathbb{R}:x\mapsto x + 1\]
+	 \[\Rightarrow g\circ f:\mathbb{R}\to\mathbb{R},x\mapsto g(f(x)) = g(x^2) = x^2 + 1\]
+**** Assoziativität
+	 $L,M,N,P$ Mengen, $f:L\to M, g:M\to N,h:n\to p$ \\
+	 Dann gilt
+	 \[h\circ (g\circ f) = (h\circ g)\circ f\]
+	 das heißt die Verknüpfung von Abbildungen ist assoziativ.
+***** Beweis
+	  Für $x\in L ist$ \\
+	  \[(h\circ (g\circ f)) = h((g\circ f)(x)) = h(g(f(x))) = (h\circ g)(f(x)) = ((h\circ g)\circ f)(x)\hfill\square\]
+*** Eigenschaften von Abbildungen
+	$M,N$ Mengen, $f:M\to N$ Abbildung
+**** Injektivität
+	 $f$ heißt injektiv: \[\xLeftrightarrow{\text{Def}} \Forall m_1,m_2\in M: f(m_1) = f(m_2) \Rightarrow m_1 = m_2 \Leftrightarrow \Forall m_1,m_2\in M: m_1\neq m_2 \Rightarrow f(m_1)\neq f(m_2)\]
+**** Surjektivität
+	 $f$ heißt sujektiv:
+	 \[\xLeftrightarrow{\text{Def}} \Forall n\in M :\exists m\in M: f(m) = n \Leftrightarrow f(M) = N\]
+**** Bijektivität
+	 $f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjektiv
+**** Beispiel
+	 1. $f:\mathbb{R}\to\mathbb{R},x\mapsto x^2$ ist:
+		- nicht injektiv, denn $f(2) = f(-2)$, aber $2\neq -2$
+		- nicht surjektiv, denn es existier kein $m\in\mathbb{R}$ mit $f(m) = -1$
+		- nicht bijektiv
+	 2. $f:\mathbb{R}_{\geq 0} \to \mathbb{R}, x\mapsto x^2$ ist:
+		- injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2
+		- nicht surjektiv, denn es existier kein $m\in\mathbb{R}_{\geq 0}$ mit $f(m) = -1$
+		- nicht bijektiv
+	 3. $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist:
+		- injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2
+		- surjektiv, denn für $m\in\mathbb{R}_{\geq 0} ist $f(\sqrt{m}) = (\sqrt{m})^2 = m$
+		- bijektiv
+**** Bemerkung
+	 $M,N$ Mengen, $f:M\to N, g:n\to M$ mit $g\circ f = id_M$
+	 Dann ist $f$ injektiv und $g$ surjektiv.
+***** Beweis
+	  1. $f$ ist injektiv, denn: \\
+		 Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \Rightarrow g(f(m_1)) = g(f(m_2)) \Rightarrow (g\circ f)(m_1) = (g\circ f)(m_2) \Rightarrow id_m(m_1) = id_M(m_2)\Rightarrow m_1 = m_2$
+	  2. $g$ ist surjektiv, denn: \\
+		 Sei $m\in M$ Dann ist $m=id_M(m) = (g\circ f)(m) = g(f(m))$

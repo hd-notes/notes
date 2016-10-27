@@ -200,8 +200,8 @@ Einleitung: \\
 	\[\v x = (x^1, 0, 0), \v y = (y^1, y^2, 0)\]
 	\[\v x \cdot \v y = x^1 \cdot y^1; \cos{\theta} = \frac{y^1}{\abs{\v y}}; \abs{\v x} = x^1\]
 **** TODO Skizze
-	\[\Rightarrow \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
-	Dass dies für beliebige Vektoren gilt, wird später klar werden.
+	 \[\Rightarrow \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
+	 Dass dies für beliebige Vektoren gilt, wird später klar werden.
 *** Infinisetimaler Abstand
 	Speziell wird der infinitesimale Abstand wichtig sein:
 	\[\d\v x = (\d x^1, \d x^2,\d x^3)\]
@@ -250,3 +250,79 @@ Einleitung: \\
 *** Zur Information
 	\[\f{\d\v T}{\d s} = \frac{1}{\rho}\v N;~\f{\d \v B}{\d s} = -\f{1}{\sigma}\v B;~\f{\d\v N}{\d s}=\f{1}{\sigma}\v B - \f{1}{\rho}\v T\]
 	$\sigma$ definiert die Torsion.
+* Grundbegriffe der Newtonsche Mechanik
+** Newtonsche Axiome
+   Dynamik: Ursachen der Bewegungsänderung \rightarrow Kräfte: $\v F = (F^1,F^2,F^3)$
+   1. Es existierten Inertialsysteme (Koordinatensysteme in denen eine Punktmasse an der keine Kraft wirkt) nicht oder sich geradlinig gleichförmig bewegt: $\ddot{\v x} = 0$
+   2. In solchen Systemen gilt: $\v F = m\ddot{\v x}$
+   3. Für Kräfte zwischen zwei Massenpunkten gilt:
+	  \[\v{F}_12 = -\v{F}_21\]
+
+   $2.$ definiert die *träge* Masse
+   Die entscheidene physikalische Aussage von $2.$ ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
+   Alternative Diskussionen der obigen Axiomatik:
+   - zum Beispiel Kapitel 1.2 von Jose/Saletan (mit $2.$ Definition der Kraft)
+** Trajektorie
+   Vorhersagen erfordern: $\v F \rightarrow \text{Trajektorie}$. Genauer: Sei $\v F(\v x,t)$ gegeben. Berechne $\v x(t)$ !
+** Differentialgleichungen
+   hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
+*** 1. Ordung
+	Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung (\Rightarrow nur 1. Ableitung):
+	\[y'(x) = f(x,y)\]
+**** Lösung
+	 Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
+*** Anfangswertproblem
+	Gegeben durch:
+	1) Dgl.: $y' = f(x,y)$
+	2) Anfangsbedingung $(x_0;y_0) \in \mathbb{R}^2$
+	Gesucht: Funktion $y(x)$ mit (für $x\in I, x_0 \in I$:
+	1) $y'(x) = f(x,y(x))$
+	2) $y(x_0) = y_0$
+*** partielle Ableitung
+	Wir betrachten ab sofort auch Funktionen mehrerer Variablen: $f:\mathbb{R}\times\mathbb{R}\to\mathbb{R},(x,y)\mapsto f(x,y)$
+	Partielle Ableitung: \[\f{\partial f(x,y)}{\partial y} \equiv \lim_{\Delta y \to 0} \f{f(x,y + \Delta y) - f(x,y)}{\Delta y}\]
+	Rechenregeln: Wie bei normalen Ableitung, nur mit $x$ fest.
+**** Beispiel
+	 \[f(x,y,z) \equiv x^2 + y z\]
+	 \[\f{\partial f}{\partial x} = 2x\]
+	 \[\f{\partial f}{\partial y} = z\]
+	 \[\f{\partial f}{\partial z} = y\]
+*** Existenz und Eindeutigkeit
+    ... viele Theoreme über Existenz und Eindeutigkeit (Peano und Picand / Lindelöf)
+	Insbesondere sind Existenz und Eindeutigkeit gesichert falls:
+	\[f(x,y) \wedge \f{\partial f(x,y)}{\partial y}\]
+	stetig sind.
+**** "Begründung"
+	 Zeichne an jedem Punkt $(x,y)$ einen Vektor $(1,f(x,y))$ ein.
+	 \[\f{\d y(x)}{\d x} = y'(x) = f(x,y(x)) = \f{(x,y(x))}{1}\]
+**** Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)
+	 Steigung der gesuchten Funktion bei $x_0$ ist bekannt als $f(x_0, y_0)$
+	 \Rightarrow kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
+	 Kenne Steigung bei $x_0 \Delta x: f(x_0 + \Delta x, y_0 + \Delta x f(x_0,y_0))$
+	 \Rightarrow Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. (\Rightarrow perfekt für Numerik)
+*** Beispiele
+	1. \[y'(x) = f(x,y), f(x,y) = 3\]
+	   \[y'(x) = 3 \Rightarrow y(x) = \int 3\d x = 3 x + c\]
+       Das ist schon die allgemeine Lösung der Dgl.
+	   Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich duch Bestimmen der Konstanten lösen:
+	   \[y(x) = 3 x + c \Rightarrow 1 = 3(-1) + c \Rightarrow c = 4 \Rightarrow y(x) = 3x + 4\]
+*** Seperation der Variablen
+	Seperation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
+**** Beispiel
+	\[f(x,y) = \f{x}{y} \Rightarrow y'(x) = \f{x}{y(x)}\]
+	\[\f{\d x}{\d x} = \f{x}{y} \Rightarrow y\d y = x\d x\]
+	Variablen sind getrennt, kann einfach Integrieren
+	\[\int y\d y = \int x\d x \Rightarrow \f{y^2}{2} = \f{x^2}{2} + c \Rightarrow y = \pm \sqrt{x^2 + 2c}\]
+***** Lösen allgemeines Anfangswertproblem
+	  allgemeines Anfangswertproblem mit Anfangsbedingung $(x_0,y_0)$
+	  \[y_0^2 = x_0^2 + 2c \Rightarrow 2c = y_0^2 - x_0^2 \Rightarrow y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
+****** TODO Skizze
+*** System von Dgl
+	(fast) alles oben gesagte funktioniert auch für Systeme gewöhnlicher Dgl. 1. Ordnung:
+	\[\f{\d y^1(x)}{\d x} = f^1(x,y^1,\ldots,y^n)\]
+	\[\f{\d y^n(x)}{\d x} = f^n(x,y^n,\ldots,y^n)\]
+	Vektorschreibweise:
+	\[\f{\d \v y}{\d x} = \v f(x,\v y)\]
+	Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
+	\[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
+	Anfangsbedingungen: $(x_0,\v{y}_0)$

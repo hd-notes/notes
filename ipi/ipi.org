@@ -15,6 +15,8 @@
 #+LATEX_HEADER: \usepackage{makecell}
 # #+LATEX_HEADER: \usemintedstyle{tango}
 #+LATEX_HEADER: \usemintedstyle{perldoc}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{arrows,automata}
 
 # #+BEGIN_SRC cpp
 # for(int i = 0; i < 5) {
@@ -141,3 +143,71 @@
      | carry = 1 | $\emptyset$ | "1"      |
 	 *Wichtig:* In jedem Zustand muss für *alle möglichen* Ereignisse eine Aktion und Folgezustand definiert werden.
 	 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also ein "Bug"
+	 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" \Rightarrow Übergang nach "Fehler", Aktion: ausgeben einer Fehlermeldung
+***** TODO Skizze Fehlermeldung
+	  Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
+	  - Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächnis")
+	  - Automat kann nicht beliebig weit zählen, sondern nur bis zu einer vorgegebenen Grenze
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
+\node[initial,state] (0) {"0"};
+\node[state] (1) [right of=0] {"1"};
+\node[state] (2) [right of=1]{"2"};
+\node[state] (3) [right of=2]{"3"};
+\node[accepting,state] [below of=1] (end) {"stop"};
+\path (0) edge [loop above] node {"0"} (0)
+(0) edge node {"x"} (1)
+(0) edge node {$\emptyset$} (end)
+(1) edge [loop above] node {"0"} (1)
+(1) edge node {"x"} (2)
+(1) edge node {$\emptyset$} (end)
+(2) edge [loop above] node {"0"} (2)
+(2) edge node {"x"} (3)
+(2) edge node {$\emptyset$} (end)
+(3) edge [loop above] node {"$0\vee x$"} (3)
+(3) edge node {"x"} (3)
+(3) edge node {$\emptyset$} (end);
+\end{tikzpicture}
+\end{center}
+      Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
+	  Spendiert man zusätzlichen Specher, geht mehr:
+	  - Automat mit Stak-Speicher (Stapel oder Keller) \Rightarrow Kellerautomat (Kontextfreie Sprachen)
+	  - Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles auführen, was man intuitiv für berechenbar hält
+      Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
+	  Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
+	  Frage: Gibt es einen universellen Algorithms für alle berechenbare Probleme?
+	  Betrache formale Algorithmusbeschribung als Teil der Eingabe des universellen Algorithmus.
+* Substitutionsmodell (funktionale Programmierung)
+  - einfaches Modell für arithmetische Berechnung "Taschenrechner"
+  - Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißten "Literale"
+  - elementare Funktionen: haben eine oder mehere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
+	- add(1,2) \rightarrow 3, mul(2,3) \rightarrow 6, analog sub(), div(), mod()
+  - Funktionsaufrufe können verschachtelt werden, das heißt Argumente kann Ergebnis einer anderen Funktion sein
+	- mul(add(1,2),sub(5,3)) \rightarrow 6
+** Substitutionsmodell
+   Man kann einen Funktionsaufruf, deessen Argument vekannt ist (das heißt Zahlen sind) durch den Wert des Ergebnisses ersetzen ("substituieren"). Geschachtelte Ausdrücke lassen sich so von innen nach außen auswerten.
+   \[mul(add(1,2),sub(5,3))\]
+   \[mul(3,sub(5,3))\]
+   \[mul(3,2)\]
+   \[6\]
+   - Die arithmetischen Operationene add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
+   - Die meisten Programmiersprachen bieten außerdem algebraische Funktionen wie: sqrt(), sin(), cos(), log()
+	 - sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibilothek"
+   - in C++: mathematisches Modul des Standardbibilothek: "cmath"
+   - Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "%"
+   - mul(add(1,2),sub(5,3)) \Leftrightarrow ((1+2)*(5-3))
+	 - oft besser, unter anderem weil man Klammer weglassen darf
+	   1. "Punkt vor Strichrechnung" 3+4*5 \Leftrightarrow 3+(4*5), mul, div, mod binden stärker als add,sub
+	   2. Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
+		  1+2+3-4+5 \Leftrightarrow ((((1+2)+3)-4)+5)
+	   3. äußere Klammer kann man weglassen (1+2)\Leftrightarrow 1+2
+   - Computer wandeln Infix zuerst in Prefix Notation um
+	 1. weggelassene Klammer weider einfüger
+	 2. Operatorensymbol durch Funktionsnamen ersetzen und an Prefix-Position verschieben
+		\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
+		\[(((1 + 2) + ((3 * 4) / (1 + 5))) - 2)\]
+		\[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+		\[sub(add(3,div(12,6)), 2)\]
+		\[sub(add(3,2), 2)\]
+		\[sub(5, 2)\]
+		\[2\]
