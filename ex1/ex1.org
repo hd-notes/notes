@@ -238,7 +238,7 @@
 	 \[\v F_G = \underbrace{m\v g}_{Kraft} = \underbrace{(m + M)}_{Trägheit}\v a = m_{\text{ges}}\v a\]
 	 \[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{text{ges}}}g\]
 ***** Erwartung:
-	  $a\tilde {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s = \f{1}{2} a\Delta t^2$
+	  $a\sim {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s = \f{1}{2} a\Delta t^2$
 ***** Messung:
      | $m[\si{\gram}]$ | $M[\si{\gram}]$ | $m_{\text{ges}}[\si{\gram}]$ | $\f{m_{\text{ges}}}{m}$ | $\Delta s[\si{\mm}]$ | $\Delta t [\si{\second}]$ | $a[\si{meter\per\second}]$ |
      |-----------------+-----------------+------------------------------+-------------------------+----------------------+---------------------------+----------------------------|
@@ -266,13 +266,13 @@
 	   \[v_1 = v_2 \rightarrow a_1 = a_2 \rightarrow F_1 = F_2~\checkmark\]
 	   Nichttrivialer Fall: \\
 	   Kraftstoß: \\
-	   Magnetische Kraft: $F_{\text{mag}} \tilde {\f{1}{r^2}}$
+	   Magnetische Kraft: $F_{\text{mag}} \sim {\f{1}{r^2}}$
 	   \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
 	   \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
 ***** Expermiment 2
 	  \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \Rightarrow \f{m_2}{m_1} \approx 1.5\]
 	  \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
-	  \[a\tilde v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
+	  \[a\sim v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
 	  \[1 = \f{F_1}{F_2} \Rightarrow F_1 = F_2\]
 ***** Beispiele
 	  - Kraft und Gegenkraft (TODO Skizze)

@@ -106,12 +106,12 @@
 	 - \[\mathbb{Z}^2 = \mathbb{Z}\times \mathbb{Z}\]
 	 - $R^n$ m-dimensionaler Raum von reellen Zahlen
 *** Äquivalenzrelation
-	Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren Elementen (Bezeichnung: $a\tilde b$), sodass
-	- Für jede zwei $a,b\in A$ gilt entweder $a\tilde b \vee a\not\tilde b$
-	- $a\tilde a$ \hfill Reflexivität
-	- $a\tilde b \Rightarrow b\tilde a$ \hfill Symmetrie
-	- $a\tilde b, b\tilde c \Rightarrow a\tilde c$\hfill Transitivität
-    Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\tilde a\}$
+	Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren Elementen (Bezeichnung: $a \sim b$), sodass
+	- Für jede zwei $a,b\in A$ gilt entweder $a\sim b \vee a\not\sim b$
+	- $a\sim a$ \hfill Reflexivität
+	- $a\sim b \Rightarrow b\sim a$ \hfill Symmetrie
+	- $a \sim b, b \sim c \Rightarrow a \sim c$ \hfill Transitivität
+    Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\sim a\}$
 ** Relationen und Abbildungen
 *** Relationen
 	Unter einer *Relation* verstehen wir eine Teilmenge $R\subseteq X\times Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das *Bild* von $x$ unter $R$

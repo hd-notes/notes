@@ -1,4 +1,4 @@
-% Created 2016-10-21 Fr 13:54
+% Created 2016-10-28 Fr 11:12
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -450,6 +450,334 @@ Wir zeigen: $A(n)$ ist wahr für alle $n\in \mathbb{N}$, und zwar durch vollstä
 \item (IS) zu zeigen: $A(n) \Rightarrow A(n+1)$ \\
        Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\Rightarrow 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
 \end{itemize}
+\end{enumerate}
+\subsection{Relationen}
+\label{sec-2-5}
+\subsubsection{Definiton}
+\label{sec-2-5-1}
+Eine Relation auf $M$ ist eine Teilmenge $R\subseteq M\times M$
+Wir schreiben $a\sim b \xLeftrightarrow{\text{Def}} (a,b) \in R$ ("a steht in Relation zu b")
+
+\begin{itemize}
+\item anschaulich: eine Relation auf $M$ stellt eine "Beziehung" zwischen den Elementen von $M$ her.
+\item Für $a,b \in M$ gilt entweder $a\sim b$ oder $a\not\sim b$, denn: entweder ist $(a,b) \in R$ oder $(a,b)\not\in R$
+\end{itemize}
+\begin{enumerate}
+\item Anmerkung
+\label{sec-2-5-1-1}
+Aufgrund der obigen Notation spricht man in der Regel von Relation "\$$\sim$" auf $M$ als von der Relation $R \subseteq M\times M$
+\item Beispiel
+\label{sec-2-5-1-2}
+\$M = \{1,2,3\}. Durch $R = \{(1,1), (1,2), (3,3) \subseteq M\times M\}$ ist eine Relation auf $M$ gegeben. Es gilt dann: $1\sim 1, 1\sim 2, 3\sim 3$ (aber zum Beispiel: $1\not\sim 3, 2\not\sim 1, 2\not\sim 2$)
+\end{enumerate}
+
+\subsubsection{Eigenschaften von Relationen}
+\label{sec-2-5-2}
+$M$ Menge, $\sim$ Relation auf $M$ \\
+    $\sim$ heißt:
+\begin{itemize}
+\item reflexiv $\xLeftrightarrow{\text{Def}}$ für alle $a\in M$ gilt $a\sim a$
+\item symmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \Rightarrow b\sim a$
+\item antisymmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b \in M$ gilt: $a\sim b \wedge b\sim a \Rightarrow a = b$
+\item transitiv $\xLeftrightarrow{\text{Def}}$ für alle $a,b,c\in M$ gilt: $a\sim b \wedge b\sim v \Rightarrow a\sim c$
+\item total $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \vee b\sim a$
+\end{itemize}
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-5-2-1}
+Sei $M$ die Menge der Studierenden in der LA1-Vorlesung
+\begin{enumerate}
+\item Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ $a$ hat den selben Vornamen wie $b$ \\
+        $\sim$ reflexiv, symmetrisch, nicht antisymmetrisch, transitiv, nicht total
+\item Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ Martrikelnummer von $a$ ist kleiner gleich als die Martrikelnummer von $b$ \\
+        $\sim$ ist reflexiv, nicht symmetrisch, antisymmetrisch, transitiv, total
+\item Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ $a$ sitzt auf dem Platz recht von $b$ \\
+        $\sim$ ist nicht reflexiv, nicht symmetrisch, nicht antisymmetrisch, nicht transitiv, nicht total
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Halbordnung / Totalordung}
+\label{sec-2-5-3}
+$\sim$ heißt
+\begin{itemize}
+\item Halbordnung auf $M\xLeftrightarrow{\text{Def}}~\sim$ ist reflexiv, antisymmetrisch und transitiv
+\item Totalordung auf $M\xLeftrightarrow{\text{Def}}~\sim$ ist eine Halbordnung und $\sim$ ist total
+\end{itemize}
+In diesen Fällen sagt man auch: Das Tupel $(M,\sim)$ ist eine halbgeordnete, beziehungsweise totalgeordnete Menge.
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-5-3-1}
+\begin{enumerate}
+\item $\leq$ auf $\mathbb{N}$ ist eine Totalordung
+\item Sei $M = \mathcal{P}(\{1,2,3\})$. $\subseteq$ ist auf $M$ eine Halbordung, aber keine Totalordung (es ist zum Beispiel weder $\{1\} \subseteq \{3\}$ noch $\{3\}\subseteq \{\}$)
+\end{enumerate}
+\item Anmerkung
+\label{sec-2-5-3-2}
+Wegen der Analogie zur $\leq$ auf $\mathbb{N}$ bezeichnen wir Halbordnungen in der Regel mit $\leq$
+\end{enumerate}
+\subsubsection{Größtes / kleistes Element}
+\label{sec-2-5-4}
+$(M, \leq)$ halbgeordnete Menge, $a\in M$ \\
+    $a$ heißt ein
+\begin{itemize}
+\item größtes Element von $M\xLeftrightarrow{\text{Def}}$ Für alle $x\in M$ gilt $x\leq a$
+\item kleinstes Element von $M\xLeftrightarrow{\text{Def}}$ Für alle $x\in M$ gilt $a\leq x$
+\end{itemize}
+\begin{enumerate}
+\item Bemerkung
+\label{sec-2-5-4-1}
+$(M,\leq)$ halbgeordnete Menge \\
+     Dann gilt: Existiert in $M$ ein größtes (beziehungsweise kleinstes) Element, so ist dieses eindeutig bestimmt
+\begin{enumerate}
+\item Beweis
+\label{sec-2-5-4-1-1}
+Es seien $a,b\in M$ größte Elemente von $M$ \\
+      $\Rightarrow x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
+      Außerdem: \$x $\le$ b für alle $x\in M$, also auch $a\leq b$ \\
+      $\xRightarrow{\text{Antisymmetrie}} a = b$ \\
+      Analog für kleinstes Element
+\item Anmerkung
+\label{sec-2-5-4-1-2}
+Dies sagt nichts darüber aus, ob ein größtes (beziehungsweise kleinstes) Element in $M$ überhaupt existiert.
+\end{enumerate}
+\item Beispiel
+\label{sec-2-5-4-2}
+\begin{enumerate}
+\item In $(\mathbb{N},\leq)$ ist 1 das kleinste Element, ein größtes Element gibt es nicht
+\item $(\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}, \subseteq)$ ist eine halbgeordnete Menge ohne kleinstes beziehungsweise größtes Element
+\end{enumerate}
+\end{enumerate}
+\subsubsection{maximales / minimales Element}
+\label{sec-2-5-5}
+$(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
+    $a$ heißt ein
+\begin{itemize}
+\item maximales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $a\leq x \Rightarrow a = x$
+\item minmales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $x\leq a \Rightarrow a = x$
+\end{itemize}
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-5-5-1}
+In $(\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}, \subseteq)$ sind $\{1,2\},\{1,3\},\{2,3\}$ maximale Elemente und $\{1\},\{2\},\{3\}$ sind minimale Elemente.
+\item Bemerkung
+\label{sec-2-5-5-2}
+$(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
+     Dann gilt: Ist $a$ ein größtes (beziehungsweise kleinstes) Element von $M$, dann ist $a$ ein maximales (beziehungsweise minimales) Element von $M$.
+\begin{enumerate}
+\item Beweis
+\label{sec-2-5-5-2-1}
+Sei $a$ ein größtes Element von $M$. \\
+      zu zeigen ist: Für alle $x\in M$ gilt $a\leq x \Rightarrow a = x$
+Sei $x\in M$ mit $a\leq x$. Da $a$ größtes Element von $M$ ist, gilt auch $x\leq a$ \\
+      $\xLeftrightarrow{\text{Antisymmetrie}} a = x$ \\
+      Analog für kleinstes Element.
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Äquivalenzrelation}
+\label{sec-2-5-6}
+$M$ Menge, $\sim$ auf $M$ \\
+    $\sim$ heißt Äquivalenzrelation $\xLeftrightarrow{\text{Def}}~\sim$ ist reflexiv, symmetrisch und transitiv.
+In dem Fll sagen wir für $a\sim b$ auch $a$ ist äquivalent zu $b$. Für $a\in M$ heißt $[a]:=\{b\in M \mid b\sim a\}$ heißt die Äquivalentklasse von $a$.
+Elemente aus $[a]$ nennt man Vertreter oder Repräsentanten von $a$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-5-6-1}
+$M$ Menge aller Bürgerinnen und Bürger Deutschlands. \\
+     Wir definieren für $a,b\in M$ $a\sim b \xLeftrightarrow{\text{Def}} a$ und $b$ sind im selben Jahr geboren. \\
+     $\sim$ ist ein Äquivalenzrelation. \\
+     Jerôme Boateng wrude 1988 geboren. $[\text{Jerôme Boateng}] = \{b\in M\mid b~\text{ist im selben Jarh geboren wei Jerôme Boateng}\} = \{b\in M\mid b~\text{wurde 1988 geboren}\}$
+Weitere Vertreter von $[\text{Jerôme Boateng}]$ sind zum Beispiel Mesut Özil, Mats Hummels.
+Es ist $[\text{Jerôme Boateng}] = [\text{Mesut Özil}] = [\text{Mats Hummels}]$.
+Man sieht in diesem Beispiel: Die Menge $M$ zerfällt komplett in verschiedene Äquivalentzklassen:
+\begin{itemize}
+\item Jeder Bürger / jede Bürgerinn Detuschalnds ist in genau einer Äquivalenzklasse enthalten
+\item Jede zwei Äquivalentklasse sind endweder gleich oder disjunkt (haben leeren Durchschnitt)
+\end{itemize}
+\item Bemerkung
+\label{sec-2-5-6-2}
+$M$ Menge, $\sim$ Äquivalenzrelation auf $M$ \\
+     Dann gilt:
+\begin{enumerate}
+\item Jedes Element von $M$ liegt in genau einer Äquivalenzklasse
+\item Je zwei Äquivalenzklassen sind entweder gleich oder disjunkt
+\end{enumerate}
+Man sagt auch: Die Äquivalenzklassen bezüglich "$\sim$" bilden eine \textbf{Partition} von $M$.
+\begin{enumerate}
+\item Beweis
+\label{sec-2-5-6-2-1}
+\begin{enumerate}
+\item Sei $a\in M$ \\
+         zu zeigen: Es gibt genau eine Äquivalenzklassen, in der $a$ liegt
+\begin{enumerate}
+\item Es gibt eine Äquivalenzklasse, in der $a$ liegt, denn \$a$\in$ [a], denn $a\sim a$
+\item Ist \$a$\in$[b] und a$\in$[c], dann ist [b]=[c] (d.h. $a$ liegt in höchstens einer Äquivalenzklasse) \\
+            denn: Seien $b,c\in M$ mit $a\in[b]$ und $a\in[c]$
+            $\Rightarrow a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a und a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
+            Behautptung $[b] =[c]$
+            denn: "$\subseteq$" Sei $x\in [b] \Rightarrow x\sim b \xRightarrow{Transitivität}^{b\sim c} x\sim c \Rightarrow x\in [c]$
+            denn: "$\supseteq$" Sei $x\in [c] \Rightarrow x\sim c \xRightarrow{Transitivität}^{c\sim b} x\sim b \Rightarrow x\in [b]$
+\end{enumerate}
+\item Sind $b,c\in M$ mit $[b] \cap [c] \neq \emptyset$, dann existiert ein \$a$\in$ [b]$\cap$ [c], und es folgt wie in 2.: \\
+         $[b] = [c]$
+         Für $b,c\in M$ gilt also entweder $[b]\cap[c] =\emptyset$ oder $[b] = [c]\hfill\square$
+\end{enumerate}
+\end{enumerate}
+\item Faktormenge
+\label{sec-2-5-6-3}
+$M$ Menge, $\sim$ Äquivalenzrelation auf $M$
+$M/\sim := \{[a]|a\in M\}$ (Menge der Äquivalenzklassen) heißt die Faktormenge (Quotientenmenge) von $M$ nach $\sim$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-5-6-3-1}
+\[M= \{1,2,3,-1,-2,-3\}\]
+Für $a,b,c \in M$ setzen wir $a\sim b \xLeftrightarrow{\text{Def.}} \abs{x} = \abs{b}$
+Das ist eine Äquivalenzrelation auf $M$
+Es ist \$\footnote{DEFINITION NOT FOUND.} = \{1,-1\},\footnote{DEFINITION NOT FOUND.}=\{2,-2\},\footnote{DEFINITION NOT FOUND.}=\{3,-3\}
+Somit: \$M/sim := \{\footnotemark[1]{},\footnotemark[2]{},\footnotemark[3]{}\} = \{\{1,-1\},\{2,-2\},\{3,-3\}\}
+\item Anmerkung
+\label{sec-2-5-6-3-2}
+Der Übergang zur Äquivalenzklassen soll (für eine jeweils gegebene Relation) irrelevante Informationen abstreifen.
+\end{enumerate}
+\end{enumerate}
+\subsection{Abbildungen}
+\label{sec-2-6}
+\textbf{naive Definition}: \\
+    Eine Abbildung $f$ von $M$ nach $N$ ist eine Vorschrift, die jedem $n\in M$ genau ein Element aus $N$ zuordnet, dieses wird mit $f(n)$ bezeichnet.
+\textbf{Notation}: \\
+    \[f:M\to N,m\mapsto f(m)\]
+
+Zwei Abbildungen $f,g:M\to N$ sind gleich, wenn gilt $\Forall n\in M:f(n) = g(n)$
+$M$ heißt die Definitionsmenge von $f$, $N$ heißt die Zielmenge von $f$
+\subsubsection{Definition}
+\label{sec-2-6-1}
+Eine Abbildung $f$ von $M$ nach $N$ ist ein Tupel $(M,N,G_f)$, wobei $G_f$ eine Teilmenge von $M\times N$ mit der Eigenschaft ist, dass für jedes Element $m\in M$ genau ein Element $n\in N$ mit $(m,n) \in G_f$ existiert.
+(für dieses Element $n$ schreiben wir auch $f(m)$). $G_f$ heißt der Graph von $f$.
+\subsubsection{Beispiel}
+\label{sec-2-6-2}
+\begin{enumerate}
+\item $f:\mathbb{R}\to\mathbb{R}, x\mapsto x^2$
+\item $f:\mathbb{R}\to\mathbb{R}^2,x\mapsto (x,x+1)$
+\item $M$ Menge, $id_M: M\to M,m\mapsto m$ heißt Identität (identische Abbildung) auf $M$
+\item $I$,$M$ Mengen: Eine über $I$ indizierte Familie von Elementen von $M$ ist eine Abbildung: \\
+       $m:I\to M,i\mapsto m(i) =: m_i$. Wir schreiben für die Familie auch kurz $(m_i)_{i\in I}$. $I$ heißt Indexmenge der Familie.
+\item Spezialfall von 4.: $I = \mathbb{N},M = \mathbb{R}:~((m_i)_{i\in\mathbb{N}})$ nennt man auch Folge reeler Zahlen.
+\end{enumerate}
+\subsubsection{Anmerkung über den Begriff der Familie}
+\label{sec-2-6-3}
+Über den Begriff der Familie lassen sich diverse Konstruktionen aus der naiven Mengenlehre verallgemeinern.
+Ist $(M_i)_{i\in I}$ eine Familie von Mengen, dann ist:
+\[\cup_{i\in I} M_i:=\{x\mid\exists i\in I: x\in M_i\}\]
+\[\cap_{i\in I}M_i := \{x\mid\Forall i\in I: x\in M_i\}\]
+\[\prod_{i\in I}M_i := \{(x_i)_{i\in I}\mid \Forall i\in I: x_i \in M\}\]
+\subsubsection{Bild}
+\label{sec-2-6-4}
+$m,N$ Mengen, $f:M\to n$ Abbildung. \\
+    Sind $m\in M,n\in N$ mit $n = f(m)$ dann nennen wir $n$ ein \textbf{Bild} von $m$ unter $f$ und wir nennen $m$ ein \textbf{Urbild} von $n$ unter $f$.
+\begin{enumerate}
+\item Anmerkung
+\label{sec-2-6-4-1}
+In obiger Situation ist das Bild von $m$ unter $f$ eindeutig bestimmt (nach der Definition einer Abbildung)
+Urbilder sind im allgemeinen nicht eindeutig bestimmt, und im Allgemeinen besitzt nicht jedes Element aus $N$ ein Urbild.
+\item Beispiel
+\label{sec-2-6-4-2}
+$f:\mathbb{R}\to\mathbb{R},x\mapsto x^2$, dann ist $4=f(2) = f(-2)$, das heißt $2$ und $-2$ sind Urbilder von $4$, das Element $-5$ hat kein Urbild unter $f$, denn es existiert kein $x\in\mathbb{R}$ mit $x^2 = -5$
+\item Definition
+\label{sec-2-6-4-3}
+$M, N$ Mengen, $f:M\to N$ Abbildung, $A\subseteq M, B\subseteq N$ \\
+     $f(A) := \{f(a)\mid a\in A\} \subseteq N$ heißt das Bild von $A$ unter $f$. \\
+     $f^-1(B) := \{m\in M\mid f(m) \in B\} \subseteq M$ heißt das Urbild von $B$ unter $f$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-6-4-3-1}
+\[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2\]
+\[f(\{1,2,3\}) = \{1,4,9\}\]
+\[f^-1(\{4,-5\}) = \{2,-2\}\]
+\[f^-1(\{4\}) = \{2,-2\}\]
+\[f^-1(\{-5\}) = \emptyset\]
+\[f(\mathbb{R}) = {x^2\mid x\in \mathbb{R}} = \{x\in\mathbb{R}\mid x\geq 0\} =:\mathbb{R}_{\geq 0}\]
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Restriktion}
+\label{sec-2-6-5}
+$M,N$ Mengen, $f:M\to N$ Abbildung, $A\subseteq M$
+\[f\mid_A:A\to N, m\mapsto f(m)\]
+heißt die Restriktion von $f$ auf $A$.
+Ist $B\subseteq N$ mit $f(A) \subseteq B$, dann setzen wir
+\[f\mid_A^B: A\to B,m\mapsto f(m)\]
+Ist $f(M) \subseteq B$ dann setzen wir:
+\[f\mid^B := f\mid_M^B,M\to B, m\mapsto f(m)\]
+\subsubsection{Komposition}
+\label{sec-2-6-6}
+$L,M,N$ Mengen, $f:L\to M,g:M\to N$ Abbildung \\
+    \[g\circ f: L\to N, x\mapsto(g\circ f)(x):=g(f(x))\]
+heißt die Komposition (Hintereinanderausführung) von $f$ und $g$
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-6-6-1}
+\[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2, g:\mathbb{R}\to\mathbb{R}:x\mapsto x + 1\]
+\[\Rightarrow g\circ f:\mathbb{R}\to\mathbb{R},x\mapsto g(f(x)) = g(x^2) = x^2 + 1\]
+\item Assoziativität
+\label{sec-2-6-6-2}
+$L,M,N,P$ Mengen, $f:L\to M, g:M\to N,h:n\to p$ \\
+     Dann gilt
+\[h\circ (g\circ f) = (h\circ g)\circ f\]
+das heißt die Verknüpfung von Abbildungen ist assoziativ.
+\begin{enumerate}
+\item Beweis
+\label{sec-2-6-6-2-1}
+Für $x\in L ist$ \\
+      \[(h\circ (g\circ f)) = h((g\circ f)(x)) = h(g(f(x))) = (h\circ g)(f(x)) = ((h\circ g)\circ f)(x)\hfill\square\]
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Eigenschaften von Abbildungen}
+\label{sec-2-6-7}
+$M,N$ Mengen, $f:M\to N$ Abbildung
+\begin{enumerate}
+\item Injektivität
+\label{sec-2-6-7-1}
+$f$ heißt injektiv: \[\xLeftrightarrow{\text{Def}} \Forall m_1,m_2\in M: f(m_1) = f(m_2) \Rightarrow m_1 = m_2 \Leftrightarrow \Forall m_1,m_2\in M: m_1\neq m_2 \Rightarrow f(m_1)\neq f(m_2)\]
+\item Surjektivität
+\label{sec-2-6-7-2}
+$f$ heißt sujektiv:
+\[\xLeftrightarrow{\text{Def}} \Forall n\in M :\exists m\in M: f(m) = n \Leftrightarrow f(M) = N\]
+\item Bijektivität
+\label{sec-2-6-7-3}
+$f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjektiv
+\item Beispiel
+\label{sec-2-6-7-4}
+\begin{enumerate}
+\item $f:\mathbb{R}\to\mathbb{R},x\mapsto x^2$ ist:
+\begin{itemize}
+\item nicht injektiv, denn $f(2) = f(-2)$, aber $2\neq -2$
+\item nicht surjektiv, denn es existier kein $m\in\mathbb{R}$ mit $f(m) = -1$
+\item nicht bijektiv
+\end{itemize}
+\item $f:\mathbb{R}_{\geq 0} \to \mathbb{R}, x\mapsto x^2$ ist:
+\begin{itemize}
+\item injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
+\item nicht surjektiv, denn es existier kein $m\in\mathbb{R}_{\geq 0}$ mit $f(m) = -1$
+\item nicht bijektiv
+\end{itemize}
+\item $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist:
+\begin{itemize}
+\item injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
+\item surjektiv, denn für $m\in\mathbb{R}_{\geq 0}$ ist $f(\sqrt{m}) = (\sqrt{m})^2 = m$
+\item bijektiv
+\end{itemize}
+\end{enumerate}
+\item Bemerkung
+\label{sec-2-6-7-5}
+$M,N$ Mengen, $f:M\to N, g:n\to M$ mit $g\circ f = id_M$
+Dann ist $f$ injektiv und $g$ surjektiv.
+\begin{enumerate}
+\item Beweis
+\label{sec-2-6-7-5-1}
+\begin{enumerate}
+\item $f$ ist injektiv, denn: \\
+         Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \Rightarrow g(f(m_1)) = g(f(m_2)) \Rightarrow (g\circ f)(m_1) = (g\circ f)(m_2) \Rightarrow id_m(m_1) = id_M(m_2)\Rightarrow m_1 = m_2$
+\item $g$ ist surjektiv, denn: \\
+         Sei $m\in M$ Dann ist $m=id_M(m) = (g\circ f)(m) = g(f(m))$
+\end{enumerate}
+\end{enumerate}
 \end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
