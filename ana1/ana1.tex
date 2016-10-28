@@ -1,4 +1,4 @@
-% Created 2016-10-28 Fr 11:01
+% Created 2016-10-28 Fr 12:01
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -27,6 +27,13 @@
 \DeclareMathOperator{\Forall}{\forall}%
 \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\usepackage{xparse}% http://ctan.org/pkg/xparse
+\NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+\overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+}
+\NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+\underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+}
 \author{Robin Heinemann}
 \date{\today}
 \title{Analysis I (Marciniak-Czochra)}
@@ -142,8 +149,8 @@ $M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeh
 \item \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
 \item \[A \subset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
 \item \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beipsiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
-\item Durchschnitt \[A\cup B := \{x\mid x\in A \wedge x\in B\}\]
-\item Vereinigung \[A\cap B := \{x \mid x\in A \vee x\in B\}\]
+\item Durchschnitt \[A\cap B := \{x\mid x\in A \wedge x\in B\}\]
+\item Vereinigung \[A\cup B := \{x \mid x\in A \vee x\in B\}\]
 \item Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch $B^c$)}\]
 \end{itemize}
 \subsubsection{Potenzmenge}
@@ -154,7 +161,7 @@ Alle Teilmengen von $A$
 \begin{enumerate}
 \item Beispiel
 \label{sec-2-2-3-1}
-\[\mathcal{P}(\{1,2\}) = \{1\}, \{2\}, \{1,2\}, \emptyset\]
+\[\mathcal{P}(\{1,2\}) = \{\{1\}, \{2\}, \{1,2\}, \emptyset\}\]
 \end{enumerate}
 \subsubsection{Familien von Mengen}
 \label{sec-2-2-4}
@@ -181,7 +188,7 @@ $A,B,C,D$ seien Mengen
       Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
 \begin{itemize}
 \item Beweis:
-\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
+\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\Leftrightarrow (x\in D\wedge x\not\in A) \vee (x\in D \wedge x\not\in B)\] \[\Leftrightarrow (x\in D\setminus A) \vee (x\in D\setminus B) \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
 \item Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
 \end{itemize}
 \end{itemize}
@@ -198,7 +205,7 @@ Seien \[A_1\times A_2\times \ldots \times A_n = \{(x_1,x_2,\ldots,x_n)\mid x_j \
 \label{sec-2-2-7-1}
 \begin{itemize}
 \item \[\mathbb{Z}^2 = \mathbb{Z}\times \mathbb{Z}\]
-\item $R^n$ m-dimensionaler Raum von reellen Zahlen
+\item $R^n$ n-dimensionaler Raum von reellen Zahlen
 \end{itemize}
 \end{enumerate}
 \subsubsection{Äquivalenzrelation}
@@ -216,13 +223,13 @@ Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in soge
 \subsubsection{Relationen}
 \label{sec-2-3-1}
 Unter einer \textbf{Relation} verstehen wir eine Teilmenge $R\subseteq X\times Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das \textbf{Bild} von $x$ unter $R$
-\[R(X) := \{y\in Y | mid (x,y) \in R\}\]
+\[R(X) := \{y\in Y \mid (x,y) \in R\}\]
 und *Definitionsbereiche von $R$ (bezüglich $X$)
 \[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
 \subsubsection{Graph der Abbildung}
 \label{sec-2-3-2}
 $R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \Leftrightarrow D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
-also enthält $R(X)$ genau ein Element. \\
+also enthält $R(x)$ genau ein Element. \\
     $X$ heißt Definitionsbereich von $f$ \\
     $Y$ heißt Werte- oder Bildbereich von $f$ (Bild) \\
     $x\in X$ heißt Argument \\
@@ -230,7 +237,7 @@ also enthält $R(X)$ genau ein Element. \\
 \begin{enumerate}
 \item Beispiel
 \label{sec-2-3-2-1}
-$f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f = \{(x,y)\in\mathbb{R^2}, y=x^2\}$
+$f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f = \{(x,y)\in\mathbb{R}^2, y=x^2\}$
 \begin{enumerate}
 \item Bemerkung
 \label{sec-2-3-2-1-1}
@@ -257,7 +264,7 @@ Sei die Abbildung $f: X\rightarrow Y$ bijektiv. Dann definieren wir die Umkehrab
 Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
 \subsubsection{Identitäts Abbildung}
 \label{sec-2-3-5}
-Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\rightarrow A,~\text{durch}~x\rightarrow x\]
+Für jede Menge $X$ definieren wir die identische Abbildung \[I_d(A) = I_A: A\rightarrow A,~\text{durch}~x\rightarrow x\]
 \begin{enumerate}
 \item Beispiel
 \label{sec-2-3-5-1}
@@ -391,24 +398,25 @@ Sei $A$ eine Menge\\
 \item $A$ heißt abzählbar undendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
 \item $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
 \end{itemize}
-\subsubsection{Beispiel}
-\label{sec-2-5-2}
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-5-1-1}
 $\mathbb{Z}$ ist abzählbar unendlich
 \begin{enumerate}
 \item Beweis
-\label{sec-2-5-2-1}
+\label{sec-2-5-1-1-1}
 Die Abbildung $f:\mathbb{Z}\to\mathbb{N}$
 \[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & 2 < 0\end{cases}\]
 \begin{itemize}
 \item Surjektivität: zu zeigen $f(\mathbb{Z}) = \mathbb{N}$ \\
-       Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
+           Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
 Man unterscheide:
 \begin{itemize}
 \item n gerade $\rightarrow$ Wähle $z=\frac{n}{2}$
 \item n ungerade $\rightarrow$ $z=-\frac{n + 1}{2}$
 \end{itemize}
 \item Injektivität: Sei $z_1,z_2 \in\mathbb{Z}$ und $f(z_1) = f(z_2)$ \\
-       ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade \textbf{Wiederspruch}.
+           ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade \textbf{Wiederspruch}.
 Falls
 \begin{itemize}
 \item $z_1,z-2 \geq 0 \Rightarrow 2z_1 = f(z_1) = f(z_2) = 2z_2 \Rightarrow z_1 = z_2$
@@ -416,12 +424,82 @@ Falls
 \end{itemize}
 \end{itemize}
 \end{enumerate}
-\subsubsection{Beispiel}
-\label{sec-2-5-3}
+\item Beispiel
+\label{sec-2-5-1-2}
 \begin{itemize}
 \item $\mathbb{N}^2 = \mathbb{N}\times\mathbb{N}$ abzählbar unendlich
 \item $\mathbb{Q}$ abzählbar unendlich
 \item $\mathbb{R}$ überabzählbar
 \end{itemize}
+\item Abzählbarkeit von $\mathbb{N}\times\mathbb{N}$
+\label{sec-2-5-1-3}
+\[(1,1) \to (1,2) \to (2,1) \to (2,2) \to (1,3) \to (2,3) \to (3,2) \to (3,1)\]
+\item Korollar 1.30
+\label{sec-2-5-1-4}
+$M_1,M_2,\ldots,M_n$ abzählbar $\Rightarrow M_1 \times \ldots \times M_n$ abzählbar.
+\begin{enumerate}
+\item Beweis
+\label{sec-2-5-1-4-1}
+Durch vollständige Induktion $M_1\times(M_2\times\ldots \times M_n)\approx \mathbb{N}\times\mathbb{N}\approx\mathbb{N}$
+\end{enumerate}
+\item Satz
+\label{sec-2-5-1-5}
+Die Menge aller Folgen $f:\mathbb{N}\to\{0,1\}$ ist überabzählbar. (Zum Beispiel: $1,0,0,0,\ldots, \underarrow[1]{\text{k-te Stelle}},\ldots,0,\ldots$)
+\begin{enumerate}
+\item Beweis
+\label{sec-2-5-1-5-1}
+$M$ ist unendlich, denn die Folgen $f_k:0,,\ldots,0,1,0,\ldots$ sind parrweise verschieden. Angenommen $M$ wäre abzählbar. Sei $f_1,f_2, \ldots$ eine Abzählung mit $f_k = ({z_{kn}}_{n\in \mathbb{N}})$.
+\[\begin{matrix}1 & 0 & 0 & \ldots \\ 0 & 1 & \ldots \\ 0 & 0 & 0 & \ldots \\ 1 & 1 & 1 & 1 & \ldots \end{matrix}\]
+$f:0 0 1 0$ Man setze \$f=(z$_{\text{n}}$)$_{\text{n}\in\mathbb{N}}$ mit \[z_n := \begin{cases} 1 & z_{nn} = 0 \\ 0 & z_{nn} = 1\end{cases}\]
+Dann $f\in M$, aber $f\neq f_k \Forall k\in\mathbb{N}$. Also ist $M$ nicht abzählbar. ("Cantorsche Diagonalverfahren").
+\end{enumerate}
+\end{enumerate}
+\subsection{Ordnung}
+\label{sec-2-6}
+\subsubsection{Definition}
+\label{sec-2-6-1}
+Sei $A$ eine Menge. Relation $R\subseteq A\times A$ heißt Teilordnung (Halbordnung) auf $A$, wenn $\Forall y,x,z\in A$ gilt:
+\begin{enumerate}
+\item $x\leq x$ \hfill (Reflexivität)
+\item $x\leq y \wedge y\leq x \Rightarrow x = y$ \hfill (Symmetrie)
+\item $x\leq y \wedge y\leq z \Rightarrow x\leq z$ \hfill (Transitivität)
+\end{enumerate}
+Wenn außerdem noch $\Forall x,y\in A$ gilt:
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item $x\leq y \vee y\leq x$ \hfill (Vergleichbarkeit je zweier Elemente)
+\end{enumerate}
+so heißt $R$ (totale) Ordung auf $A$. \$(A,$\le$) heißt teilweise beziehungsweise (total) geordnete Menge.
+\begin{enumerate}
+\item Beispiel
+\label{sec-2-6-1-1}
+\begin{enumerate}
+\item $(\mathbb{Q},\leq)$ mit der üblichen Ordnung ist eine total geordnete Menge
+\item Wir definieren auf der Potenzmenge $\mathcal{P}(A)$ einer Menge $A$ eine Teilordnung "$\leq$": \[B\leq C \Leftrightarrow B \subseteq C\Forall B,C\in \mathcal{P}(A)\] \\
+        \textbf{Beweis}: 1. - 3. sind trivial, 4. geht nicht (keine Totalordung). Wähle $B,C\in \mathcal{P}(a), B,C\neq \emptyset, B\cap C = \emptyset$. Dann gilt weder $B\subseteq C$ noch $C\subseteq B\hfill\square$
+\item Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \Leftrightarrow \Forall x\in A: f(x) \leq g(x)$ \\
+        (1.) - (3.) trivial, 4. gilt nicht. Falls $A$ mehr als ein Element hat, gibt es eine Funktion, die nicht miteinander verglichen werden können.
+\end{enumerate}
+\end{enumerate}
+\subsection{Maximum und Minimum einer Menge}
+\label{sec-2-7}
+\subsubsection{Definition}
+\label{sec-2-7-1}
+Sei $(A,\leq)$ eine teilweise geordnete Menge, $a\in A$ \\
+    Maximum:
+\[a = \max A \Leftrightarrow \Forall x\in A: x\leq a\]
+Minimum:
+\[a = \max A \Leftrightarrow \Forall x\in A: a\leq x\]
+\subsubsection{Bemerkung}
+\label{sec-2-7-2}
+Durch die Aussagen ist $a$ eindeutig bestimmt, denn seien:
+\[a_1,a_2\in A:\Forall x\in A \begin{cases}x\leq a_1 \\ x\leq a_2 \end{cases} \Rightarrow \begin{cases} a_2 \leq a_1 \\ a_1 \leq a_2 \end{cases} \xRightarrow{\text{Symmetrie}} a_1 = a_2 \]
+\subsection{Schranken}
+\label{sec-2-8}
+Sei $(A,\leq)$ eine (total geordnete) Menge, $B\subseteq A$
+\begin{enumerate}
+\item $S\in A$ heißt obere Schrange zu $B \Leftrightarrow \Forall x\in B: x\leq S$
+\item $S\in A$ heißt untere Schrange zu $B \Leftrightarrow \Forall x\in B: S\leq x$
+\end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

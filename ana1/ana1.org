@@ -11,6 +11,13 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}%
 #+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
+#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+#+LATEX_HEADER: }
 
 * Einleitung
   Webseite www.biostruct.uni-heidelberg.de/Analysis1.php
@@ -68,15 +75,15 @@
 	- \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
 	- \[A \subset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
 	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beipsiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
-	- Durchschnitt \[A\cup B := \{x\mid x\in A \wedge x\in B\}\]
-	- Vereinigung \[A\cap B := \{x \mid x\in A \vee x\in B\}\]
+	- Durchschnitt \[A\cap B := \{x\mid x\in A \wedge x\in B\}\]
+	- Vereinigung \[A\cup B := \{x \mid x\in A \vee x\in B\}\]
 	- Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch $B^c$)}\]
 *** Potenzmenge
 	Potenzmenge $A$
 	\[\mathcal{P}(A) := \{B\mid B\subseteq A\}\]
 	Alle Teilmengen von $A$
 **** Beispiel
-	 \[\mathcal{P}(\{1,2\}) = \{1\}, \{2\}, \{1,2\}, \emptyset\]
+	 \[\mathcal{P}(\{1,2\}) = \{\{1\}, \{2\}, \{1,2\}, \emptyset\}\]
 *** Familien von Mengen
 	Sei $I$ eine Indexmenge, $I \subseteq \mathbb{N}, (A_i)_{i\in I}$ eine Familie von Mengen $A$
 **** Durchschnitt von $A$
@@ -94,7 +101,7 @@
 	- Eigenschaften der Komplementbildung: \\
 	  Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
 	  - Beweis:
-		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\Leftrightarrow (c\in D\wedge x\not\in A) \cup x\in D \wedge x\not\in B\] \[\Leftrightarrow x\in D\setminus A \cup x\in D\setminus B \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
+		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\Leftrightarrow (x\in D\wedge x\not\in A) \vee (x\in D \wedge x\not\in B)\] \[\Leftrightarrow (x\in D\setminus A) \vee (x\in D\setminus B) \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
       - Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
 *** geordneter Tupel
    	Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \Leftrightarrow x_1 = y_1, \ldots, x_n = y_n\]
@@ -104,7 +111,7 @@
 	Seien \[A_1\times A_2\times \ldots \times A_n = \{(x_1,x_2,\ldots,x_n)\mid x_j \in A_j j\in\mathbb{N}, j \leq n\}\]
 **** Beispiel
 	 - \[\mathbb{Z}^2 = \mathbb{Z}\times \mathbb{Z}\]
-	 - $R^n$ m-dimensionaler Raum von reellen Zahlen
+	 - $R^n$ n-dimensionaler Raum von reellen Zahlen
 *** Äquivalenzrelation
 	Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren Elementen (Bezeichnung: $a \sim b$), sodass
 	- Für jede zwei $a,b\in A$ gilt entweder $a\sim b \vee a\not\sim b$
@@ -115,18 +122,18 @@
 ** Relationen und Abbildungen
 *** Relationen
 	Unter einer *Relation* verstehen wir eine Teilmenge $R\subseteq X\times Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das *Bild* von $x$ unter $R$
-	\[R(X) := \{y\in Y | mid (x,y) \in R\}\]
+	\[R(X) := \{y\in Y \mid (x,y) \in R\}\]
 	und *Definitionsbereiche von $R$ (bezüglich $X$)
 	\[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
 *** Graph der Abbildung
 	$R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \Leftrightarrow D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
-	also enthält $R(X)$ genau ein Element. \\
+	also enthält $R(x)$ genau ein Element. \\
 	$X$ heißt Definitionsbereich von $f$ \\
 	$Y$ heißt Werte- oder Bildbereich von $f$ (Bild) \\
 	$x\in X$ heißt Argument \\
 	$f(x)\in Y$ heißt Wert von $f$ an der Stelle x
 **** Beispiel
-	 $f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f = \{(x,y)\in\mathbb{R^2}, y=x^2\}$
+	 $f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f = \{(x,y)\in\mathbb{R}^2, y=x^2\}$
 ***** Bemerkung
 	  \[M^{*}(x) = \{(x,y)\in\mathbb{R}^2;x=y^2\} = \{(x,y)\in\mathbb{R}^2: x \geq 0, y=\sqrt{x} \vee y = -\sqrt{x}\}\]
 	  Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x) = \{\sqrt{x},-\sqrt{x}, x\geq 0\}$
@@ -141,7 +148,7 @@
 *** Komposition
 	Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
 *** Identitäts Abbildung
-	Für jede Menge $X$ definieren wir dei identische Abbildung \[I_d(A) = I_A: A\rightarrow A,~\text{durch}~x\rightarrow x\]
+	Für jede Menge $X$ definieren wir die identische Abbildung \[I_d(A) = I_A: A\rightarrow A,~\text{durch}~x\rightarrow x\]
 **** Beispiel
 	 - \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
 	 - Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
@@ -226,22 +233,64 @@
 	  \[\abs{A} = \begin{cases} A = \emptyset &(n = 0) \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
 	- $A$ heißt abzählbar undendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
 	- $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
-*** Beispiel
-	$\mathbb{Z}$ ist abzählbar unendlich
-**** Beweis
-	 Die Abbildung $f:\mathbb{Z}\to\mathbb{N}$
-	 \[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & 2 < 0\end{cases}\]
-	 - Surjektivität: zu zeigen $f(\mathbb{Z}) = \mathbb{N}$ \\
-	   Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
-	   Man unterscheide:
-	   - n gerade \rightarrow Wähle $z=\frac{n}{2}$
-	   - n ungerade \rightarrow $z=-\frac{n + 1}{2}$
-     - Injektivität: Sei $z_1,z_2 \in\mathbb{Z}$ und $f(z_1) = f(z_2)$ \\
-	   ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade *Wiederspruch*.
-	   Falls
-       - $z_1,z-2 \geq 0 \Rightarrow 2z_1 = f(z_1) = f(z_2) = 2z_2 \Rightarrow z_1 = z_2$
-       - $z_1,z-2 < 0 \Rightarrow -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \Rightarrow z_1 = z_2 \hfill\square$
-*** Beispiel
-	- $\mathbb{N}^2 = \mathbb{N}\times\mathbb{N}$ abzählbar unendlich
-	- $\mathbb{Q}$ abzählbar unendlich
-	- $\mathbb{R}$ überabzählbar
+**** Beispiel
+	 $\mathbb{Z}$ ist abzählbar unendlich
+***** Beweis
+	  Die Abbildung $f:\mathbb{Z}\to\mathbb{N}$
+	  \[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & 2 < 0\end{cases}\]
+	  - Surjektivität: zu zeigen $f(\mathbb{Z}) = \mathbb{N}$ \\
+	   	Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
+	   	Man unterscheide:
+	   	- n gerade \rightarrow Wähle $z=\frac{n}{2}$
+	   	- n ungerade \rightarrow $z=-\frac{n + 1}{2}$
+      - Injektivität: Sei $z_1,z_2 \in\mathbb{Z}$ und $f(z_1) = f(z_2)$ \\
+	   	ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade *Wiederspruch*.
+	   	Falls
+       	- $z_1,z-2 \geq 0 \Rightarrow 2z_1 = f(z_1) = f(z_2) = 2z_2 \Rightarrow z_1 = z_2$
+       	- $z_1,z-2 < 0 \Rightarrow -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \Rightarrow z_1 = z_2 \hfill\square$
+**** Beispiel
+	 - $\mathbb{N}^2 = \mathbb{N}\times\mathbb{N}$ abzählbar unendlich
+	 - $\mathbb{Q}$ abzählbar unendlich
+	 - $\mathbb{R}$ überabzählbar
+**** Abzählbarkeit von $\mathbb{N}\times\mathbb{N}$
+	 \[(1,1) \to (1,2) \to (2,1) \to (2,2) \to (1,3) \to (2,3) \to (3,2) \to (3,1)\]
+**** Korollar 1.30
+	 $M_1,M_2,\ldots,M_n$ abzählbar $\Rightarrow M_1 \times \ldots \times M_n$ abzählbar.
+***** Beweis
+	  Durch vollständige Induktion $M_1\times(M_2\times\ldots \times M_n)\approx \mathbb{N}\times\mathbb{N}\approx\mathbb{N}$
+**** Satz
+	 Die Menge aller Folgen $f:\mathbb{N}\to\{0,1\}$ ist überabzählbar. (Zum Beispiel: $1,0,0,0,\ldots, \underarrow[1]{\text{k-te Stelle}},\ldots,0,\ldots$)
+***** Beweis
+	  $M$ ist unendlich, denn die Folgen $f_k:0,,\ldots,0,1,0,\ldots$ sind parrweise verschieden. Angenommen $M$ wäre abzählbar. Sei $f_1,f_2, \ldots$ eine Abzählung mit $f_k = ({z_{kn}}_{n\in \mathbb{N}})$.
+	  \[\begin{matrix}1 & 0 & 0 & \ldots \\ 0 & 1 & \ldots \\ 0 & 0 & 0 & \ldots \\ 1 & 1 & 1 & 1 & \ldots \end{matrix}\]
+	  $f:0 0 1 0$ Man setze $f=(z_n)_{n\in\mathbb{N}} mit \[z_n := \begin{cases} 1 & z_{nn} = 0 \\ 0 & z_{nn} = 1\end{cases}\]
+	  Dann $f\in M$, aber $f\neq f_k \Forall k\in\mathbb{N}$. Also ist $M$ nicht abzählbar. ("Cantorsche Diagonalverfahren").
+** Ordnung
+*** Definition
+   Sei $A$ eine Menge. Relation $R\subseteq A\times A$ heißt Teilordnung (Halbordnung) auf $A$, wenn $\Forall y,x,z\in A$ gilt:
+   1. $x\leq x$ \hfill (Reflexivität)
+   2. $x\leq y \wedge y\leq x \Rightarrow x = y$ \hfill (Symmetrie)
+   3. $x\leq y \wedge y\leq z \Rightarrow x\leq z$ \hfill (Transitivität)
+   Wenn außerdem noch $\Forall x,y\in A$ gilt:
+   4. [@4] $x\leq y \vee y\leq x$ \hfill (Vergleichbarkeit je zweier Elemente)
+   so heißt $R$ (totale) Ordung auf $A$. $(A,\leq) heißt teilweise beziehungsweise (total) geordnete Menge.
+**** Beispiel
+	 1. $(\mathbb{Q},\leq)$ mit der üblichen Ordnung ist eine total geordnete Menge
+	 2. Wir definieren auf der Potenzmenge $\mathcal{P}(A)$ einer Menge $A$ eine Teilordnung "$\leq$": \[B\leq C \Leftrightarrow B \subseteq C\Forall B,C\in \mathcal{P}(A)\] \\
+		*Beweis*: 1. - 3. sind trivial, 4. geht nicht (keine Totalordung). Wähle $B,C\in \mathcal{P}(a), B,C\neq \emptyset, B\cap C = \emptyset$. Dann gilt weder $B\subseteq C$ noch $C\subseteq B\hfill\square$
+	 3. Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \Leftrightarrow \Forall x\in A: f(x) \leq g(x)$ \\
+		(1.) - (3.) trivial, 4. gilt nicht. Falls $A$ mehr als ein Element hat, gibt es eine Funktion, die nicht miteinander verglichen werden können.
+** Maximum und Minimum einer Menge
+*** Definition
+	Sei $(A,\leq)$ eine teilweise geordnete Menge, $a\in A$ \\
+	Maximum:
+	\[a = \max A \Leftrightarrow \Forall x\in A: x\leq a\]
+	Minimum:
+	\[a = \max A \Leftrightarrow \Forall x\in A: a\leq x\]
+*** Bemerkung
+	Durch die Aussagen ist $a$ eindeutig bestimmt, denn seien:
+	\[a_1,a_2\in A:\Forall x\in A \begin{cases}x\leq a_1 \\ x\leq a_2 \end{cases} \Rightarrow \begin{cases} a_2 \leq a_1 \\ a_1 \leq a_2 \end{cases} \xRightarrow{\text{Symmetrie}} a_1 = a_2 \]
+** Schranken
+   Sei $(A,\leq)$ eine (total geordnete) Menge, $B\subseteq A$
+   1. $S\in A$ heißt obere Schrange zu $B \Leftrightarrow \Forall x\in B: x\leq S$
+   1. $S\in A$ heißt untere Schrange zu $B \Leftrightarrow \Forall x\in B: S\leq x$
