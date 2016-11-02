@@ -1,0 +1,23 @@
+\begin{tikzpicture}[auto,node distance=8cm, semithick, text width=2.5cm, align=center, sloped]
+\node[initial,state] (idle) {idle};
+\node[state] (1€) [above right of=idle] {1€ bezahlt};
+\node[state] (2€) [below right of=1€] {2€ bezahlt};
+\node[state] (mk) [below left of=2€]{Münzkassette überprüfen};
+\node[state] (ab) [below of=idle]{Außer Betrieb};
+\path
+(idle) edge [loop above] node [above] {Münze $\neq 1€ \vee 2€$} node [below] {Münze wieder auswerfen} (idle)
+       edge [loop below] node {Abbrechen gedrückt} (idle)
+       edge node [above] {1€ eingeworfen} (1€)
+       edge [bend left] node {2€ eingeworfen} (2€)
+(1€)   edge node [above] {1€ eingeworfen} (2€)
+       edge [loop above] node [above] {Münze $\neq 1€ \vee 2€$} node [below] {Münze wieder auswerfen} (1€)
+       edge node [above] {2€ eingeworfen} node [below] {Fahrkarte drucken} (mk)
+       edge [bend right] node [above] {Abbrechen gedrückt} node [below] {1€ auswerfen} (idle)
+(2€)   edge node [above] {1€ eingeworfen} node [below] {Fahrkarte drucken}(mk)
+       edge [loop above] node [above] {Münze $\neq 1€ \vee 2€$} node [below] {Münze wieder auswerfen} (2€)
+       edge [loop left=120] node [above] {2€ eingeworfen} node [below] {2€ auswerfen} (2€)
+       edge [bend left] node [above] {Abbrechen gedrückt} node [below] {2€ auswerfen} (idle)
+(mk)   edge node [above] {Münzkassette voll} (ab)
+       edge node [above] {Münzkassette nicht voll} (idle)
+(ab)   edge [loop below] node [above] {Münze eingeworfen} node [below] {Münze wieder auswerfen, Meldung "Außer Betrieb" anzeigen} (ab);
+\end{tikzpicture}

@@ -1,4 +1,4 @@
-% Created 2016-10-28 Fr 11:05
+% Created 2016-11-02 Mi 12:11
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,6 +30,8 @@
 \renewcommand{\d}{\mathrm{d}}
 \newcommand{\f}[2]{{\frac{#1}{#2}}}
 \renewcommand{\v}[1]{\vec{#1}}
+\usepackage{tikz}
+\usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings}
 \author{Robin Heinemann}
 \date{\today}
 \title{Experimentalphysik (H.-C. Schulz-Coulon)}
@@ -42,6 +44,52 @@
 \maketitle
 \tableofcontents
 
+\begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}]
+\tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
+\tikzstyle{damper}=[thick,decoration={markings,
+  mark connection node=dmp,
+  mark=at position 0.5 with
+  {
+    \node (dmp) [thick,inner sep=0pt,transform shape,rotate=-90,minimum width=15pt,minimum height=3pt,draw=none] {};
+    \draw [thick] ($(dmp.north east)+(2pt,0)$) -- (dmp.south east) -- (dmp.south west) -- ($(dmp.north west)+(2pt,0)$);
+    \draw [thick] ($(dmp.north)+(0,-5pt)$) -- ($(dmp.north)+(0,5pt)$);
+  }
+}, decorate]
+\tikzstyle{ground}=[fill,pattern=north east lines,draw=none,minimum width=0.75cm,minimum height=0.3cm]
+
+
+\node (M) [minimum width=3.5cm,minimum height=2cm] {mass, $m$};
+
+\node (ground1) at (M.south) [ground,yshift=-1.5cm,xshift=-1.25cm,anchor=north] {};
+\draw (ground1.north west) -- (ground1.north east);
+\draw [spring] (ground1.north) -- ($(M.south east)!(ground1.north)!(M.south west)$);
+
+\node (ground2) at (M.south) [ground,yshift=-1.5cm,anchor=north] {};
+\draw (ground2.north west) -- (ground2.north east);
+\draw [damper] (ground2.north) -- ($(M.south east)!(ground2.north)!(M.south west)$);
+
+\node (ground3) at (M.south) [ground,yshift=-1.5cm,xshift=1.25cm,anchor=north] {};
+\draw (ground3.north west) -- (ground3.north east);
+\draw [spring] (ground3.north) -- ($(M.south east)!(ground3.north)!(M.south west)$);
+
+\draw [-latex,ultra thick] (M.north) ++(0,0.2cm) -- +(0,1cm);
+
+\begin{scope}[xshift=7cm]
+\node (M) [minimum width=1cm, minimum height=2.5cm] {$m$};
+
+\node (ground) [ground,anchor=north,yshift=-0.25cm,minimum width=1.5cm] at (M.south) {};
+\draw (ground.north east) -- (ground.north west);
+\draw [thick] (M.south west) ++ (0.2cm,-0.125cm) circle (0.125cm)  (M.south east) ++ (-0.2cm,-0.125cm) circle (0.125cm);
+
+\node (wall) [ground, rotate=-90, minimum width=3cm,yshift=-3cm] {};
+\draw (wall.north east) -- (wall.north west);
+
+\draw [spring] (wall.170) -- ($(M.north west)!(wall.170)!(M.south west)$);
+\draw [damper] (wall.10) -- ($(M.north west)!(wall.10)!(M.south west)$);
+
+\draw [-latex,ultra thick] (M.east) ++ (0.2cm,0) -- +(1cm,0);
+\end{scope}
+\end{tikzpicture}
 
 \section{Begrüßung ist langweilig}
 \label{sec-1}
@@ -429,5 +477,90 @@ Nichttrivialer Fall: \\
 \end{itemize}
 \end{enumerate}
 \end{enumerate}
+
+\subsection{{\bfseries\sffamily TODO} Montag}
+\label{sec-7-3}
+\subsubsection{Normalkraft}
+\label{sec-7-3-1}
+\begin{enumerate}
+\item (Skizze) Normalkraft $\v{F}_N$ = Kraft senktrecht zur Kontaktfläche. Wird kompensiert duchr $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
+\end{enumerate}
+\subsubsection{Schiefe Ebene}
+\label{sec-7-3-2}
+\begin{itemize}
+\item Gewichtskraft: $\v{F}_G = m\v g$
+\item Normalkraft: $\v{F}_N = m g\cos{\alpha} \v{e}_y$
+\item Hangabtriebskraft: $\v{F}_H = m g\sin{\alpha} \v{e}_x$
+\end{itemize}
+Bewegungsgleichung
+\[F_H = m\ddot{x} \rightarrow x_x = g\sin{\alpha} =\text{const.}\]
+\subsubsection{Reibungskräfte}
+\label{sec-7-3-3}
+\begin{itemize}
+\item im täglichen Leben über all präsent
+\item spielt eine wichtige Rolle Technik
+\end{itemize}
+$\rightarrow$ Tribologie = Reibungslehre
+\begin{itemize}
+\item Reibung hängt stark von der Oberfläche ab
+\end{itemize}
+\begin{enumerate}
+\item Experiment: Bewegung einer Masse
+\label{sec-7-3-3-1}
+\begin{itemize}
+\item Gewicht ruhte: $\v{F}_Z = - \v{F}_R \to a = 0, v = 0$
+\item Gewicht setzt sich in Bewegung: $\abs{\v{F}_Z} > \abs{\v{F}_R} \to a > 0,v$ steigt an
+\item Gewicht gleitet: $\v{F}_Z = - \v{R}_R \to a = 0, v =~\text{const.}~\neq 0$ mit $\v v =~\text{const}~$
+\end{itemize}
+Reibugskraft nimmt ab, sobald das Gewicht bewegt wir.
+\begin{itemize}
+\item Haftreibung $F_H$ \\
+       Schwellenwert für Zugkraft um Körper zu bewegen
+\item Gleitreibung $F_G$ \\
+       Reibungskreaft bei bewegtem Körper
+\end{itemize}
+
+\begin{tikzpicture}
+
+% horizontal axis
+\draw[->] (0,0) -- (6,0) node[anchor=north] {$F_Z$};
+
+% vertical axis
+\draw[->] (0,0) -- (0,4) node[anchor=east] {$F_R$};
+
+% Us
+\draw[thick] (0,0) -- (2,2) -- (2,1) -- (6,1);
+\draw (1,0.25) node {$F_R = F_Z$}; %label
+
+\draw[thick,dashed] (0,2) -- (2,2);
+\draw (0.85,2.25) node {$F_H$}; %label
+
+\draw[thick,dashed] (0,1) -- (2,1);
+\draw (0.85,1.25) node {$F_G$}; %label
+
+\draw (4,1.25) node {$F_R =~\text{const}$};
+\draw (4, 0.75) node {Beschleunigung};
+
+\end{tikzpicture}
+
+\item Experiment: Tribologische Messung
+\label{sec-7-3-3-2}
+Messung der Zugkraft bei der sich der Holzblock nach kleiner Störung in Richtung Rolle bewegt: $F_R = F_Z$
+\begin{enumerate}
+\item Beobachtung
+\label{sec-7-3-3-2-1}
+\begin{itemize}
+\item $F_R$ hängt nicht von der Oberfläche ab.
+\item $F_R$ hängt von dem Gewicht des Blocks ab
+\item $F_R$ ist Materialbhängig
+\end{itemize}
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Tribologische Reibungslehre}
+\label{sec-7-3-4}
+\[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
+\[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
+\[\mu_H > \mu_G\]
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

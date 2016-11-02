@@ -226,7 +226,7 @@ Einleitung: \\
 *** Beispiel in d=2
 	\[\v x(t) = R(\cos{\omega t}, \sin{\omega t})\]
 	\[\v v(t) = R\omega (-\sin(\omega t), \cos{\omega t})\]
-	\[\abs{\v v} = \sqrt{(R\omega)^2 (\sin^2{\omega}+\cos^2{\omega t})} = R\omega\]
+	\[\abs{\v v} = \sqrt{(R\omega)^2 (\sin^2{\omega t}+\cos^2{\omega t})} = R\omega\]
 	\[s(t) = \int_{t_0 = 0}^t \d t' \abs{\v v} = R\omega t;~t(x) = = \f{s}{R\omega}\]
 	\[\Rightarrow \v x(s) = R(\cos{\f{s}{R}}, \sin{\f{s}{R}}), \v T = \f{\d\v x}{\d s} = (-\sin{\f{s}{R}},\cos{\f{s}{R}})\]
 	\[\f{\d\v T}{\d s} = -\f{1}{R}(\cos{\f{s}{R}}, \sin{\f{s}{R}}) \Rightarrow \rho = R;~\v N = -(\cos{\f{s}{R}}, \sin{\f{s}{R}})\]

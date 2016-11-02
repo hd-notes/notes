@@ -1,4 +1,4 @@
-% Created 2016-10-28 Fr 12:01
+% Created 2016-11-02 Mi 12:11
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -25,6 +25,7 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 \DeclareMathOperator{\Exists}{\exists}%
 \DeclareMathOperator{\Forall}{\forall}%
+\DeclareMathOperator{\sgn}{sgn}
 \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
 \usepackage{xparse}% http://ctan.org/pkg/xparse
@@ -34,6 +35,11 @@
 \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
 \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 }
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+\makeatletter
+\newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
+\newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
+\makeatother
 \author{Robin Heinemann}
 \date{\today}
 \title{Analysis I (Marciniak-Czochra)}
@@ -275,7 +281,7 @@ Für jede Menge $X$ definieren wir die identische Abbildung \[I_d(A) = I_A: A\ri
 \end{enumerate}
 \subsubsection{Homomorphe Abbildungen}
 \label{sec-2-3-6}
-Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel AAddition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
+Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel Addition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
 Eine bijektive Homomorphie heißt Isomorphisumus, beziehungsweise $X\approx Y$ (äquivalent, isomorph)
 \subsection{Natürliche Zahlen}
 \label{sec-2-4}
@@ -378,7 +384,7 @@ $\mathbb{K}$ sei eine Menge auf der Addition und Multiplikation sei. $\mathbb{K}
 \item Satz
 \label{sec-2-4-3-1}
 $(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \Leftrightarrow\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
-dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ in folgendem Sinne verträglich:
+dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ in folgendem Sinne verträglich (Axiom M0):
 \begin{itemize}
 \item \(a\leq b\Rightarrow a+c \leq b + c\)
 \item \(0\leq a\wedge 0\leq b \Rightarrow 0\leq a\cdot b\)
@@ -406,7 +412,7 @@ $\mathbb{Z}$ ist abzählbar unendlich
 \item Beweis
 \label{sec-2-5-1-1-1}
 Die Abbildung $f:\mathbb{Z}\to\mathbb{N}$
-\[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & 2 < 0\end{cases}\]
+\[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & x < 0\end{cases}\]
 \begin{itemize}
 \item Surjektivität: zu zeigen $f(\mathbb{Z}) = \mathbb{N}$ \\
            Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
@@ -450,7 +456,7 @@ Die Menge aller Folgen $f:\mathbb{N}\to\{0,1\}$ ist überabzählbar. (Zum Beispi
 \label{sec-2-5-1-5-1}
 $M$ ist unendlich, denn die Folgen $f_k:0,,\ldots,0,1,0,\ldots$ sind parrweise verschieden. Angenommen $M$ wäre abzählbar. Sei $f_1,f_2, \ldots$ eine Abzählung mit $f_k = ({z_{kn}}_{n\in \mathbb{N}})$.
 \[\begin{matrix}1 & 0 & 0 & \ldots \\ 0 & 1 & \ldots \\ 0 & 0 & 0 & \ldots \\ 1 & 1 & 1 & 1 & \ldots \end{matrix}\]
-$f:0 0 1 0$ Man setze \$f=(z$_{\text{n}}$)$_{\text{n}\in\mathbb{N}}$ mit \[z_n := \begin{cases} 1 & z_{nn} = 0 \\ 0 & z_{nn} = 1\end{cases}\]
+$f:0 0 1 0$ Man setze $f=(z_n)_{n\in\mathbb{N}}$ mit \[z_n := \begin{cases} 1 & z_{nn} = 0 \\ 0 & z_{nn} = 1\end{cases}\]
 Dann $f\in M$, aber $f\neq f_k \Forall k\in\mathbb{N}$. Also ist $M$ nicht abzählbar. ("Cantorsche Diagonalverfahren").
 \end{enumerate}
 \end{enumerate}
@@ -498,8 +504,221 @@ Durch die Aussagen ist $a$ eindeutig bestimmt, denn seien:
 \label{sec-2-8}
 Sei $(A,\leq)$ eine (total geordnete) Menge, $B\subseteq A$
 \begin{enumerate}
-\item $S\in A$ heißt obere Schrange zu $B \Leftrightarrow \Forall x\in B: x\leq S$
-\item $S\in A$ heißt untere Schrange zu $B \Leftrightarrow \Forall x\in B: S\leq x$
+\item $S\in A$ heißt obere Schranke zu $B \Leftrightarrow \Forall x\in B: x\leq S$ \\
+      $S\in A$ heißt untere Schranke zu $B \Leftrightarrow \Forall x\in B: S\leq x$
+\item $\bar{S}(B):= \{S\in A \mid S~\text{S ist untere Schranke zu}~B\}$ \\
+      $\ubar{S}(B):= \{S\in A \mid S~\text{S ist obere Schranke zu}~B\}$
+\item Existiert $g:=\min \ubar{S}(B)$ beziehungsweise $g:=\max \bar{S}$ so sagen wir: \\
+      $g = \sup B$ (kleinste obere Schranke, \uline{supremum}, obere "Grenze" von $B$ in $A$)
+$g = \inf B$ (größte obere Schranke, \uline{infimum}, untere "Grenze" von $B$ in $A$)
+\end{enumerate}
+\subsubsection{Bemerkung}
+\label{sec-2-8-1}
+\begin{enumerate}
+\item Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nah Definition.
+\[s\in \ubar{S}(B) \Rightarrow \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
+Ebeso gilt: $\exists\min B = \ubar{b} \Rightarrow \inf B = \ubar{b}$
+\end{enumerate}
+\subsubsection{Beispiel}
+\label{sec-2-8-2}
+\begin{enumerate}
+\item $B = \{\frac{1}{n}\mid n\in\mathbb{N}\}, A = \mathbb{R},~(1, \frac{1}{2},\ldots)$
+\begin{itemize}
+\item Es gilt $1\in B, \Forall n\in\mathbb{N}$ gilt $\frac{1}{n} \leq 1$, daher folgt $\max B = \sup B = 1$
+\item Sei $s\leq 0$, dann gilt $\Forall n\in\mathbb{N}: s\leq \frac{1}{n}$, also $s\in \bar{S}(B)$ \\
+         Sei $s > 0 \Rightarrow s > \frac{1}{n} \Leftrightarrow n > \frac{1}{s}$, also $s\not\in\bar{S}(B)$ \\
+         Es folgt $\bar{S}(B) = \{x\in\mathbb{R}\mid s\leq 0\}$ insbesondere $0\in\bar{S}(B)$ \\
+         Ferner gilt $\Forall s\in \bar{S}(B):s\leq 0 \Rightarrow \ubar{0} = \max \bar{S}(B) = \inf B$
+\end{itemize}
+\item $A = \mathbb{Q}, B = \{x\in\mathbb{Q} : 0 \leq x \wedge x^2 \leq 2\}$. Es gilt $0 = \min B = \inf B$, aber $\sup B$ existiert nicht in $\mathbb{Q}$
+\end{enumerate}
+\subsection{Reelle Zahlen}
+\label{sec-2-9}
+$x^2 = 2$ hat keine Lösungen in $\mathbb{Q}$. Allerdings können wir $\sqrt{2}$ "beliebig gut" durch $y\in \mathbb{Q}$ approximieren, das heißt $\Forall \varepsilon > 0\exists y\in\mathbb{Q}:2 - \varepsilon \leq y^2 \leq 2 + \varepsilon$
+Das motiviert die folgende Vorstellung:
+\begin{enumerate}
+\item $\mathbb{Q}$ ist "unvollständig"
+\item $\mathbb{Q}$ ist "dicht" in $\mathbb{R}$
+\end{enumerate}
+\subsubsection{Vollständigkeitsaxiom (Archimedes)}
+\label{sec-2-9-1}
+Jede nach oben (unten) beschränkte Teilmenge hat ein Supremum oder Infimum.
+\subsubsection{Axiomatischer Standpunkt}
+\label{sec-2-9-2}
+Es gibt eine Menge $\mathbb{R}$ (genannt Menge der reellen Zahlen) mit Addition, Multiplikation, Ordung, die die Definition eines Körper und das Vollständigkeitsaxiom erfüllt und $(\mathbb{R},+,\cdot)$ mit "$\leq$" eine Ordung bildet.
+\subsubsection{Bemerkung}
+\label{sec-2-9-3}
+\begin{enumerate}
+\item Bis auf Isomorphie gibt es höchstens ein solches $\mathbb{R}$, das heißt $\tilde{\mathbb{R}}$ ein weiteres System der reellen Zahlen ist, dann $\exists$ bijektive Abbildung $f:\mathbb{R}\to\tilde{\mathbb{R}}$ die bezüglich Additoin, Multiplikation, Ordung eine Homomorphie ist.
+\[\Forall x,y\in \mathbb{R}:\]
+\[f(x+y) = f(x) + f(y)\]
+\[f(x y) = f(x) f(y)\]
+\[x\leq y \Rightarrow f(x) \leq f(y)\]
+\item $\mathbb{N}$ (und damit auch $\mathbb{Z},\mathbb{Q}$) lassen sich durch injektive Homomorphismus $g:\mathbb{N}\to\mathbb{R}$ in $\mathbb{R}$ einbetten
+\[g(\tilde{0}_{\in\mathbb{N}}) = 0_{\in\mathbb{R}}\]
+\[g(\tilde{n}_{\in\mathbb{N}} + 1) = g(n_{\in\mathbb{R}}) + 1\]
+\[g(1_{\in\mathbb{N}}) = 1_{\in\mathbb{R}}\]
+\end{enumerate}
+\subsubsection{Konstruktiver Standpunkt}
+\label{sec-2-9-4}
+Wir können $\mathbb{R}$ ausgehend von $\mathbb{Q}$ konstruieren.
+\begin{enumerate}
+\item Methode der Abschnitte
+\label{sec-2-9-4-1}
+Jede reelle Zahl wird charakterisiert durch ein "rechts offenes, unbeschränktes Interval", dessen "rechte Grenze" die Zahl erstellt.
+\[\mathbb{R}:=\{A\subseteq \mathbb{Q}\begin{cases}A\neq\emptyset \\ x\in A, y\leq x\Rightarrow y\in A \\ \Forall x\in A\exists y\in A, x<y\end{cases}\]
+\item Mehtode der Cauchy-Folgen
+\label{sec-2-9-4-2}
+Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalenter "Cauchy Folgen" aus $\mathbb{Q}$ (später)
+\end{enumerate}
+\subsubsection{Definition 1.37}
+\label{sec-2-9-5}
+\begin{itemize}
+\item \[x\in \mathbb{R}~\text{heißt}~\begin{cases}\text{positiv} & 0 < x \\ \text{nichtnegativ} & 0\leq x \\ \text{negativ} & x < 0 \\ \text{nichtpositiv} x\geq 0 \end{cases}\]
+\item Die Betragsfunktion $\abs \cdot:\mathbb{R} \to \mathbb{R}$ wird definiert durch $\abs{x} = \max \{x,-x\} = \begin{cases} x & x \geq 0 \\ -x & x < 0\end{cases}$
+\item Die Vorzeichen- oder Signumfunktion \[\sgn:\mathbb{R}\to\mathbb{R},\sgn{x} = \begin{cases}\frac{x}{\abs{x}} & x \neq 0 \\ 0 & x = 0\end{cases} = \begin{cases} 1 & x > 0 \\ -1 & x < 0 \\ 0 & x = 0\end{cases}\]
+\end{itemize}
+\subsubsection{Satz 1.38}
+\label{sec-2-9-6}
+\begin{enumerate}
+\item $\abs{x y} = \abs{x} \abs{y}$
+\item $\abs{x + y} \leq \abs{x} + \abs{y}$ \\
+       \textbf{Beweis:} \\
+\begin{align}
+\abs{x + y}^2 &= (x+y)^2 = x^2 + 2x y + y^2 = \abs{x}^2 + 2xy + \abs{y}^2 \\
+&\leq \abs{x}^2 + 2\abs{x y} + \abs{y}^2 = \abs{x}^2 + 2\abs{x}\abs{y} + \abs{y^2} \\
+&= (\abs{x} + \abs{y})^2 \Rightarrow \abs{x + y} \leq \abs{\abs{x} + \abs{y}} = \abs{x} + \abs{y} \tag{$\square$}
+\end{align}
+\item $\abs{x + y} = \abs{x} + \abs{y} \Leftrightarrow x y \geq 0$
+\end{enumerate}
+\subsubsection{Satz 1.39}
+\label{sec-2-9-7}
+\begin{enumerate}
+\item $\abs{\abs{x} - \abs{y}} \leq \abs{x - y}$ \\
+       \textbf{Beweis:} \\
+\begin{align}
+\abs{x} &= \abs{x - y + y} \leq \abs{x - y} + \abs{y} \Rightarrow \abs{x} - \abs{y} \leq \abs{x - y} \\
+\abs{y} &= \abs{y - x + x} \leq \abs{y - x} + \abs{x} \Rightarrow \abs{y} - \abs{x} \leq \abs{x - y} \\
+\abs{\abs{x} - \abs{y}} &= \max \{\abs{x} - \abs{y},\abs{y} - \abs{x}\} \leq \abs{x - y} \tag{$\square$}
+\end{align}
+\item \[\abs{x - y} \leq \varepsilon \Leftrightarrow \begin{cases} x - \varepsilon \leq y \leq x + \varepsilon \\ y - \varepsilon \leq x \leq y + \varepsilon \end{cases}\]
+       \textbf{Beweis:} \\
+\begin{align}
+\abs{x - y} = \max\{x - y , y - x\} \leq \varepsilon \Leftrightarrow \begin{cases} x - y \leq \varepsilon \\ y - x \leq \varepsilon\end{cases} \Leftrightarrow \begin{cases} x \leq y + \varepsilon \\ y - x \leq \varepsilon \end{cases} \Leftrightarrow y - \varepsilon \leq x \leq y + \varepsilon
+\end{align}
+Vertausche $x$ und $y$ $\Rightarrow$ $x - \varepsilon \leq x + \varepsilon \hfill \square$
+\end{enumerate}
+\subsubsection{Definition 1.40}
+\label{sec-2-9-8}
+Sei $a,b\in\mathbb{R},a\leq b$
+\begin{itemize}
+\item $[a,b]:=\{x\in\mathbb{R}: a\leq x \leq b\}$ \hfill abgeschlossenes Intervall
+\item $(a,b):= \{x\in\mathbb{R}: a < x < b\} = ]a,b[$ \hfill offenes Intervall
+\item $[a,b) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
+\item $(a,b]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
+\item $\varepsilon > 0, I_\varepsilon (x) := (x -\varepsilon,x + \varepsilon) = \{y\in\mathbb{R}:\abs{x - y} < \varepsilon = B_\varepsilon (x) (\text{Kugel})\}$
+\end{itemize}
+\subsubsection{Lemma 1.41}
+\label{sec-2-9-9}
+Es gilt $y\in I_\varepsilon (x) \Rightarrow \exists \delta > 0: I_\delta (y) \subseteq I_\varepsilon (x)$
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-9-1}
+Sei $y\in I_\varepsilon (x) \Rightarrow \abs{x - y}  < \varepsilon \Leftrightarrow \varepsilon - \abs{x - y} > 0$
+Wähle $0 < \delta < \varepsilon - \abs{x - y}$. Es ist nun zu zeigen $I_\delta (y) \subseteq I_\varepsilon (x)$, das heißt
+$z\in I_\delta(y) \Rightarrow z\in I_\varepsilon(x)$. Es gilt
+\begin{align}
+&z\in I_\delta (y) \Rightarrow \abs{z - y}  <\delta \\
+\Rightarrow &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \varepsilon \\
+\Rightarrow &z\in I_\varepsilon (x) \tag{$\square$}
+\end{align}
+\end{enumerate}
+\subsubsection{Definition 1.42}
+\label{sec-2-9-10}
+$A,B$ seien geordnete Mengen, $f:A\to B$ heißt:
+\begin{itemize}
+\item monoton $\begin{cases} \text{wachsed} & x \leq y \Rightarrow f(x) \leq f(y)  \\ \text{fallend} & x \leq y \Rightarrow  f(x) \leq f(y) \end{cases}$
+\item streng monoton $\begin{cases} \text{wachsend} & x < y \Rightarrow f(x) < f(y) \\ \text{fallend} & x < y \Rightarrow f(x) > f(y) \end{cases}$
+\end{itemize}
+\begin{enumerate}
+\item Beispiel 1.43
+\label{sec-2-9-10-1}
+$\mathbb{R}_+\setminus \{0\} \to \mathbb{R}_+\setminus\{0\}, x\mapsto x^n$ ist streng monoton wachsend $\Forall n\in\mathbb{N}$
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-10-1-1}
+Induktion + Axiom M0 $\hfill\square$
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Lemma 1.44}
+\label{sec-2-9-11}
+Sei $M,N \subseteq \mathbb{R}, f:M\to N$ streng monoton und bijektiv. Dann ist $f^{-1}$ streng monoton.
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-11-1}
+Wir betrachten den Fall $f$ streng monoton wachsend. Seien \$y$_{\text{1}}$,y$_{\text{2}}$ $\in$ N, y$_{\text{1}}$ < y$_{\text{2}}$,x$_{\text{1}}$ = f$^{\text{-1}}$(y$_{\text{1}}$), x$_{\text{2}}$ = f$^{\text{-1}}$(y$_{\text{2}}$). \\
+     Behauptung $x_1 < x_2$ (sonst wäre \$x$_{\text{1}}$ $\ge$ x$_{\text{2}}$). \\
+     Falls $x_1 > x_2 \xRightarrow{\text{streng monoton}} f(x_2) > f(x_2)$ \textbf{Widerspruch} zu $y_1 < y_2$ \\
+     Falls $x_1 = x_2 \Rightarrow y_1 = y_2$ \textbf{Widerspruch} zur Annahme $y_1 < y_2 \hfill \square$
+\end{enumerate}
+\subsubsection{Definition 1.45 Produktzeichen}
+\label{sec-2-9-12}
+Für $a\in\mathbb{R},n\in\mathbb{N}$ definieren wir $a^n := \prod_{j=1}^n a$ und für $a\in\mathbb{R}\setminus\{0\},n\in\mathbb{N}$ $a^{-n} := \frac{1}{a^n}$.
+\subsubsection{Satz 1.46}
+\label{sec-2-9-13}
+Es gilt $\Forall a,b\in\mathbb{R}$ (beziehungsweise $\mathbb{R}\setminus \{0\}$),$n,m\in\mathbb{N}_0$ (beziehungsweise $\mathbb{Z}$)
+\begin{enumerate}
+\item $a^n a^m = a^{n+m}$
+\item $(a^n)^m$ = a$^{\text{n m}}$\$
+\item $(ab)^m = a^m b^m$
+\end{enumerate}
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-13-1}
+Zunächst f+r $n,m\in\mathbb{N}_0$ durch Indukton nach $n$, dann für $n,m\in\mathbb{Z}$ (mit Hilfe der Definition von $a^{-n}$)
+\end{enumerate}
+\subsubsection{Definition 1.47}
+\label{sec-2-9-14}
+Sei $n,k\in\mathbb{N}_0$ \[\binom{n}{k}:=\prod_{j=1}^k \frac{n -j + 1}{j}\]
+\subsubsection{Lemma 1.48}
+\label{sec-2-9-15}
+Sei $k,n\in\mathbb{N}_0$
+\begin{enumerate}
+\item $\binom{n}{k} = 0$ für $k > n$ \\
+       $\binom{n}{k} = \frac{n!}{k!(n -k)!} = \binom{n}{n - k}$ für $k\leq n$
+\item $\binom{n}{k} = \binom{n - 1}{k - 1} + \binom{n - 1}{k}$ für $1 \leq k \leq n$
+\end{enumerate}
+\subsubsection{Satz 1.49}
+\label{sec-2-9-16}
+$\Forall n\in\mathbb{N}_0,\Forall x,y\in\mathbb{R}$ gilt
+\[(x + y)^n = \sum_{j = 0}^n \binom{n}{j}x^{n - j}y^j\]
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-16-1}
+Induktion:
+\begin{itemize}
+\item Induktionsanfang: $n = 0,(x+y)^0 = 1,\binom{0}{j}x^0y^0 = 1$ nach Definition
+\item Induktionsschritt $n \to n + 1:$
+\begin{align}
+&(x + y)^{n + 1} = (x +y)(x+y)^n \\
+\xRightarrow{\text{Induktonsvoraussetung}} &(x + y)\sum_{j = 0}^n \binom{n}{j}x^{n - j} y^j \\
+= &\sum_{j=0}^n \binom{n}{j}x^{n - j + 1}y^j + \sum_{j = 0}^n \binom{n}{j} x^{n - j} y^{j + 1} \\
+= &\binom{n}{0}x^{n + 1} + \sum_{j = 1}^n \binom{n}{j}x^{n + 1 - j}y^j + \underbrace{\sum_{i = 1}^n \binom{n}{i - 1} x^{n - i + 1} y^i}_{\text{Substitution $i:= j + 1$}} + \binom{n}{n}y^{n + 1} \\
+= &x^{n + 1} + \sum_{j = 1}^n \underbrace{(\binom{n}{j} + \binom{n}{j - 1})}_{\binom{n + 1}{j}\text{nach Lemma 1.48}} x^{n + 1 - j} y^j + y^{n + 1} \\
+= &\sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag{$\square$}
+\end{align}
+\end{itemize}
+\end{enumerate}
+\subsubsection{Folgerung 1.50}
+\label{sec-2-9-17}
+\begin{enumerate}
+\item $\sum_{j = 0}^n \binom{n}{j} = 2^n$
+\item $\sum_{j = 0}^n \binom{n}{j} (-1)^j = \begin{cases}0 & n \neq 0 \\ 1 & n = 0\end{cases}$
+\end{enumerate}
+\begin{enumerate}
+\item Beweis:
+\label{sec-2-9-17-1}
+Setze in Binomische Formel $x = 1, y = 1$ beziehungsweise $y = -1 \hfill\square$
 \end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

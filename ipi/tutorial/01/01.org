@@ -1,0 +1,168 @@
+#+LANGUAGE: de
+#+OPTIONS: toc:nil
+#+AUTHOR: Robin Heinemann
+#+TITLE: Einführung in die Anwendungsorientierte Informatik - Übung 1
+#+LaTeX_CLASS: org-article
+#+LaTeX_CLASS_OPTIONS: [koma,a4paper,10pt]
+#+LATEX_HEADER: \usepackage[bottom=3cm,top=3cm]{geometry}
+#+LATEX_HEADER: \usepackage[ngerman]{babel}%
+#+LATEX_HEADER: \usepackage{siunitx}%
+#+LATEX_HEADER: \usepackage{fontspec}%
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}%
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+#+LATEX_HEADER: \usepackage{mathtools}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}%
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}%
+#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage{makecell}
+# #+LATEX_HEADER: \usemintedstyle{tango}
+#+LATEX_HEADER: \usemintedstyle{perldoc}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{arrows,automata}
+#+LATEX_HEADER: \usepackage{tikzscale}
+#+LATEX_HEADER: \usepackage{filecontents}
+#+LATEX_HEADER: \usepackage{rotating}
+#+LATEX_HEADER: \usepackage{pdflscape}
+#+LATEX_HEADER: \usepackage{adjustbox}
+
+* Aufabe 1
+  notwendige Zustände:
+  - idle
+  - 1€ bezahlt
+  - 2€ bezahlt
+  - Außer Betrieb
+  - Münzkassette überprüfen
+  notwendige Eregnisse:
+  - 1€ eingeworfen
+  - 2€ eingeworfen
+  - Münze $\neq 1€ \vee 2€$
+  - Abbrechen gedrückt
+  - Münzkassette voll
+  - Münzkassette nicht voll
+  notwendige Aktionen
+  - Münze auswerfen
+  - Fahrkarte drucken
+  - Meldung "`Außer Betrieb"' anzeigen
+# \node[accepting,state] [below of=1] (end) {"stop"};
+# \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=8cm, semithick, text width=2.5cm, align=center, inner sep=0pt, scale=\tikzscale, sloped]
+
+
+\begin{figure}[H]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[->,>=stealth',auto,node distance=8cm, semithick, text width=2.5cm, align=center, sloped]
+\node[initial,state] (idle) {idle};
+\node[state] (1€) [above right of=idle] {1€ bezahlt};
+\node[state] (2€) [below right of=1€] {2€ bezahlt};
+\node[state] (mk) [below left of=2€]{Münzkassette überprüfen};
+\node[state] (ab) [below of=idle]{Außer Betrieb};
+\path
+(idle) edge [loop above] node [above] {Münze $\neq 1€ \vee 2€$} node [below] {Münze wieder auswerfen} (idle)
+       edge [loop below] node {Abbrechen gedrückt} (idle)
+       edge node [above] {1€ eingeworfen} (1€)
+       edge [bend left] node {2€ eingeworfen} (2€)
+(1€)   edge node [above] {1€ eingeworfen} (2€)
+       edge [loop above] node [above] {Münze $\neq 1€ \vee 2€$} node [below] {Münze wieder auswerfen} (1€)
+       edge node [above] {2€ eingeworfen} node [below] {Fahrkarte drucken} (mk)
+       edge [bend right] node [above] {Abbrechen gedrückt} node [below] {1€ auswerfen} (idle)
+(2€)   edge node [above] {1€ eingeworfen} node [below] {Fahrkarte drucken}(mk)
+       edge [loop above] node [above] {Münze $\neq 1€ \vee 2€$} node [below] {Münze wieder auswerfen} (2€)
+       edge [loop left=120] node [above] {2€ eingeworfen} node [below] {2€ auswerfen} (2€)
+       edge [bend left] node [above] {Abbrechen gedrückt} node [below] {2€ auswerfen} (idle)
+(mk)   edge node [above] {Münzkassette voll} (ab)
+       edge node [above] {Münzkassette nicht voll} (idle)
+(ab)   edge [loop below] node [above] {Münze eingeworfen} node [below] {Münze wieder auswerfen, Meldung "`Außer Betrieb"' anzeigen} (ab);
+\end{tikzpicture}
+}%
+\end{figure}
+
+\begin{sidewaysfigure}
+* Aufgabe 2a
+#+ATTR_LATEX: :align |p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|
+| Zustand \ Ereignis | Buch trifft ein                                                  | Buch wird ausgeliehen                                        | Buch wird zurückgegeben                              | Timeout                                                                          | schlechter Zustand                                                     | guter Zustand                                    |
+|--------------------+------------------------------------------------------------------+--------------------------------------------------------------+------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+--------------------------------------------------|
+| Grundzustand       | Katalogisieren, Timer starten 8 Wochen, \Rightarrow {ausleihbar} | %                                                            | %                                                    | %                                                                                | %                                                                      | %                                                |
+| ausleihbar         | %                                                                | Timer reset, Timer starten 4 Wochen, \Rightarrow {verliehen} | %                                                    | \Rightarrow {Buch überprüfen}                                                    | %                                                                      | %                                                |
+| Buch überprüfen    | %                                                                | %                                                            | %                                                    | %                                                                                | Buch aus Katalog streichen, Buch wegwerfen, \Rightarrow {Grundzustand} | Timer starten 8 Wochen, \Rightarrow {ausleihbar} |
+| verliehen          | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {verliehen}   | Timer reset, \Rightarrow {ausleihbar}                | erste Mahnung versenden, Timer auf 2 Wochen, \Rightarrow {erste Mahnung}         | %                                                                      | %                                                |
+| erste Mahnung      | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {verliehen}   | Timer reset, 5€ einfordern, \Rightarrow {ausleihbar} | zweite Mahnung versenden, Timer auf 1 Woche, \Rightarrow {zweite Mahnung}        | %                                                                      | %                                                |
+| zweite Mahnung     | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {verliehen}   | 20€ einfordern, \Rightarrow {ausleihbar}             | Buch aus Katalog streichen, Rechtsanwalt einschalten, \Rightarrow {Grundzustand} | %                                                                      | %                                                |
+\end{sidewaysfigure}
+
+#+BEGIN_LATEX
+\begin{sidewaysfigure}
+#+END_LATEX
+* Aufgabe 2b
+#+BEGIN_LATEX
+\begin{adjustbox}{width=\textwidth}
+#+END_LATEX
+#+ATTR_LATEX: :align |p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}| :center nil
+| Zustand \ Ereignis           | Buch trifft ein                                                  | Buch wird ausgeliehen                                                         | Buch wird zurückgegeben                                                           | Timeout                                                                               | schlechter Zustand                                                     | guter Zustand                                    | Buch wird vorbestellt                                   |
+|------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+------------------------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------|
+| Grundzustand                 | Katalogisieren, Timer starten 8 Wochen, \Rightarrow {ausleihbar} | %                                                                             | %                                                                                 | %                                                                                     | %                                                                      | %                                                | %                                                       |
+| ausleihbar                   | %                                                                | Timer reset, Timer starten 4 Wochen, \Rightarrow {verliehen}                  | %                                                                                 | \Rightarrow {Buch überprüfen}                                                         | %                                                                      | %                                                | %                                                       |
+| Buch überprüfen              | %                                                                | %                                                                             | %                                                                                 | %                                                                                     | Buch aus Katalog streichen, Buch wegwerfen, \Rightarrow {Grundzustand} | Timer starten 8 Wochen, \Rightarrow {ausleihbar} | %                                                       |
+| verliehen                    | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {verliehen}                    | Timer reset, \Rightarrow {ausleihbar}                                             | erste Mahnung versenden, Timer auf 2 Wochen, \Rightarrow {erste Mahnung}              | %                                                                      | %                                                | Buch vorbestelen, \Rightarrow {verliehen (vorbestellt)} |
+| erste Mahnung                | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {erste Mahnung}                | Timer reset, 5€ einfordern, \Rightarrow {ausleihbar}                              | zweite Mahnung versenden, Timer auf 1 Woche, \Rightarrow {zweite Mahnung}             | %                                                                      | %                                                | Buch vorbestelen, \Rightarrow {verliehen (vorbestellt)} |
+| zweite Mahnung               | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {zweite Mahnung}               | 20€ einfordern, \Rightarrow {ausleihbar}                                          | Buch aus Katalog streichen, Rechtsanwalt einschalten, \Rightarrow {Grundzustand}      | %                                                                      | %                                                | Buch vorbestelen, \Rightarrow {verliehen (vorbestellt)} |
+| verliehen (vorbestellt)      | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {verliehen (vorbestellt)}      | Timer 4 Wochen, Vorbesteller informieren, \Rightarrow {verliehen}                 | erste Mahnung versenden, Timer auf 2 Wochen, \Rightarrow {erste Mahnung (verliehen)}  | %                                                                      | %                                                | %                                                       |
+| erste Mahnung (vorbestellt)  | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {erste Mahnung (vorbestellt)}  | Timer 4 Wochen, Vorbesteller informieren, 5€ einfordern, \Rightarrow {verliehen}  | zweite Mahnung versenden, Timer auf 1 Woche, \Rightarrow {zweite Mahnung (verliehen)} | %                                                                      | %                                                | %                                                       |
+| zweite Mahnung (vorbestellt) | %                                                                | Fehlermeldung "Buch ist verliehen" \Rightarrow {zweite Mahnung (vorbestellt)} | Timer 4 Wochen, Vorbesteller informieren, 20€ einfordern, \Rightarrow {verliehen} | Buch aus Katalog streichen, Rechtsanwalt einschalten, \Rightarrow {Grundzustand}      | %                                                                      | %                                                | %                                                       |
+#+BEGIN_LATEX
+\end{adjustbox}
+\end{sidewaysfigure}
+#+END_LATEX
+\pagebreak
+** Warteliste
+Ein endlicher Automat kann keine beliebig große Warteliste implementieren, denn für jeden Eintrag wäre (mindestens) ein weiterer Zustand nötig. Außerdem gäbe es Probleme einer Position in der Warteliste einen Namen zuzuordnen und somit den richtigen Vorbesteller zu informieren.
+* Aufgabe 3
+** Teilaufgabe a
+*** A \to B
+  | Zustand \ Ereignis | Fahrzeug bei C       | C frei                     |
+  |--------------------+----------------------+----------------------------|
+  | heranfahren        | \Rightarrow {warten} | \Rightarrow {weiterfahren} |
+  | warten             | \Rightarrow {warten} | \Rightarrow {weiterfahren} |
+  | weiterfahren       | %                    | %                          |
+** Teilaufgabe b
+*** B \to A
+  | Zustand \ Ereignis | Fahrzeug bei C             | C frei                     |
+  |--------------------+----------------------------+----------------------------|
+  | heranfahren        | \Rightarrow {weiterfahren} | \Rightarrow {weiterfahren} |
+  | weiterfahren       | %                          | %                          |
+
+*** A \to C
+  | Zustand \ Ereignis | Fahrzeug bei C             | C frei                     |
+  |--------------------+----------------------------+----------------------------|
+  | heranfahren        | \Rightarrow {weiterfahren} | \Rightarrow {weiterfahren} |
+  | weiterfahren       | %                          | %                          |
+
+*** C \to A
+  | Zustand \ Ereignis | Fahrzeug bei B       | C frei                     |
+  |--------------------+----------------------+----------------------------|
+  | heranfahren        | \Rightarrow {warten} | \Rightarrow {weiterfahren} |
+  | warten             | \Rightarrow {warten} | \Rightarrow {weiterfahren} |
+  | weiterfahren       | %                    | %                          |
+
+*** B \to C
+  | Zustand \ Ereignis | Fahrzeug bei A       | A frei                     |
+  |--------------------+----------------------+----------------------------|
+  | heranfahren        | \Rightarrow {warten} | \Rightarrow {weiterfahren} |
+  | warten             | \Rightarrow {warten} | \Rightarrow {weiterfahren} |
+  | weiterfahren       | %                    | %                          |
+
+*** C \to B
+  | Zustand \ Ereignis | Fahrzeug bei B       | B frei                     |
+  |--------------------+----------------------+----------------------------|
+  | heranfahren        | \Rightarrow {warten} | \Rightarrow {weiterfahren} |
+  | weiterfahren       | %                    | %                          |
+** Teilaufgabe c
+   Ein \textit{deadlock} würde zum Beispiel bei folgenden Bedingungen entstehen:
+   - C \to A
+   - A \to B
+   - B \to C
+   Die könnte im echten Straßenverkehr entstehen, wenn gleichzeitig drei Fahrzeuge, jeweils eins von jeder Seite der Kreuzung, an die Kreuzung heranfahren und entsprechend der Bedinungen abbiegen.

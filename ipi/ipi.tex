@@ -1,4 +1,4 @@
-% Created 2016-10-27 Do 14:38
+% Created 2016-11-02 Mi 12:11
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -249,7 +249,7 @@ Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angi
 (2) edge [loop above] node {"0"} (2)
 (2) edge node {"x"} (3)
 (2) edge node {$\emptyset$} (end)
-(3) edge [loop above] node {"$0\wedge x$"} (3)
+(3) edge [loop above] node {"$0\vee x$"} (3)
 (3) edge node {"x"} (3)
 (3) edge node {$\emptyset$} (end);
 \end{tikzpicture}
@@ -295,6 +295,28 @@ Man kann einen Funktionsaufruf, deessen Argument vekannt ist (das heißt Zahlen 
 \end{itemize}
 \item in C++: mathematisches Modul des Standardbibilothek: "cmath"
 \item Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "\%"
+\item mul(add(1,2),sub(5,3)) $\Leftrightarrow$ ((1+2)*(5-3))
+\begin{itemize}
+\item oft besser, unter anderem weil man Klammer weglassen darf
+\begin{enumerate}
+\item "Punkt vor Strichrechnung" 3+4*5 $\Leftrightarrow$ 3+(4*5), mul, div, mod binden stärker als add,sub
+\item Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
+          1+2+3-4+5 $\Leftrightarrow$ ((((1+2)+3)-4)+5)
+\item äußere Klammer kann man weglassen (1+2)$\Leftrightarrow$ 1+2
+\end{enumerate}
+\end{itemize}
+\item Computer wandeln Infix zuerst in Prefix Notation um
+\begin{enumerate}
+\item weggelassene Klammer weider einfüger
+\item Operatorensymbol durch Funktionsnamen ersetzen und an Prefix-Position verschieben
+\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
+\[(((1 + 2) + ((3 * 4) / (1 + 5))) - 2)\]
+\[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+\[sub(add(3,div(12,6)), 2)\]
+\[sub(add(3,2), 2)\]
+\[sub(5, 2)\]
+\[2\]
+\end{enumerate}
 \end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
