@@ -1,4 +1,4 @@
-% Created 2016-11-02 Mi 12:11
+% Created 2016-11-04 Fr 11:40
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -36,6 +36,7 @@
 \renewcommand{\d}{\mathrm{d}}
 \newcommand{\f}[2]{\frac{#1}{#2}}
 \renewcommand{\v}[1]{\vec{#1}}
+\usepackage{pgfplots}
 \author{Robin Heinemann}
 \date{\today}
 \title{Theoretische Physik (Hebecker)}
@@ -479,6 +480,108 @@ Vektorschreibweise:
 \[\f{\d \v y}{\d x} = \v f(x,\v y)\]
 Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
 \[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
-Anfangsbedingungen: $(x_0,\v{y}_0)$
+Anfangsbedingungen: $(x_0,\v{y}_0)$ $\rightarrow$ $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung $\Rightarrow$ allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
+\subsubsection{Systeme von $n$ gewöhnlicher Dgl. p-ter Ordnung}
+\label{sec-2-3-8}
+\[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
+Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
+\begin{enumerate}
+\item Tatsache
+\label{sec-2-3-8-1}
+Systeme von Dgl können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
+Wir illustieren dies am Beispiel mit $p = 2$
+\item Beispiel
+\label{sec-2-3-8-2}
+\[\v{y}''(x) = \v{f}(x,\v{y},\v{y}')\]
+Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
+\begin{equation}
+\begin{cases}
+\v{z}'(x) &= \v{f}(x,\v{y},\v{z}) \\
+\v{y}'(x) &= \v z \tag{$\equiv g(x,\v y, \v z)$}
+\end{cases}
+\end{equation}
+Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
+Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
+     $\Rightarrow$ System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
+\end{enumerate}
+\subsubsection{Erste physikalische Beipiele}
+\label{sec-2-3-9}
+\begin{enumerate}
+\item Punktmasse
+\label{sec-2-3-9-1}
+3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
+$\Rightarrow$ 6 Dgl 1. Ordung:
+\begin{equation}
+\begin{cases}
+\dot{\v v} &= \f{1}{m}\v F(t,\v x,\v v) \\
+\dot{\v x} &= \v v
+\end{cases}
+\end{equation}
+
+In vielen Fällen: (zeitunabhängiges) Kraftfeld $\v F(\v x)$ ("Vektorfeld").
+\begin{enumerate}
+\item Darstellung in $d = 2$ (Skizze Vektorfeld).
+\label{sec-2-3-9-1-1}
+wichtig: doppelte Makierung der Achsen
+\item Einfachster Fall ($d = 1$)
+\label{sec-2-3-9-1-2}
+betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
+\begin{equation}
+\begin{cases}
+\dot v &= \frac{F(x,v)}{m} \\
+\dot x = v
+\end{cases}
+\end{equation}
+\[\cvec{v ; x} = \cvec{\frac{F(x,v)}{m} ; v}\]
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Darstellung im Phasenraum
+\label{sec-2-3-9-1-2-1}
+Analyse im Phasenraum passt perfekt zur früheren allgemeinen Analyse von Dgl 1. Ordnung
+Analog in $d = 3$: Vektorfeld: $(\f{\v F}{m}, \v v)$, Phasenraum $(\v x, \v v)$ oder $(\v x, \v p)$ ist 6-dimensional
+\end{enumerate}
+\item Harmonischer Oszilator ($d = 1$)
+\label{sec-2-3-9-1-3}
+$F(x) = -k x$
+\begin{equation}
+\begin{cases}
+\dot v &= -x \\
+\dot x &= v
+\end{cases}
+\end{equation}
+\begin{tikzpicture}
+\begin{axis}[title={Phasenraum des Harmonischen Oszilators},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
+\addplot3[blue,quiver={u={y},v={-x},scale arrows=0.3},-stealth,samples=15] {y-x};
+\end{axis}
+\end{tikzpicture}
+\item Freier Fall mit Luftwiederstand
+\label{sec-2-3-9-1-4}
+Aufgabe: Bestime zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
+      Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
+\[F=m\ddot x \Rightarrow m g - c \dot{x}^2 = m\ddot x \Rightarrow \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
+Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
+\begin{align}
+\frac{\d v}{\d t} &= g - \frac{c}{m}v^2 \\
+\d t &= \frac{\d v}{g - \frac{c}{m}v^2}
+\end{align}
+Konstanten und Dimensionen
+\[[g] = \si{\meter\per\second\squared};[\frac{c}{m}] = \si{\newton\per\kilo\gram\per\meter\squared\second\squared}\]
+Kann leicht Konstanten der Dimension Zeit und Geschwindigkeit bilden:
+\[\hat{t} = \sqrt{\frac{m}{g c}},\hat{v} = \sqrt{\frac{g m}{c}}\]
+Benutze jetzt die dimensionslosen Variablen $t' = \frac{t}{\hat{t}},v'=\frac{v}{\hat{v}}$
+\[\Rightarrow \d t' = \frac{d v'}{1 - v^{2\prime}} = \frac{\d v'}{2}(\frac{1}{1 + v'} + \frac{1}{1 - v'})\]
+\[2t' = \ln{1 + v'} - \ln{1 - v'} + c\]
+$v' = 0$ bei $t' = 0 \Rightarrow c = 0$
+Auflösen nach $v'$: \[e^{2t'} = \frac{1 + v'}{1 - v'} \Rightarrow \ldots\]
+\[\Rightarrow v' = 1 - \frac{2}{e^{2t'} + 1} \Rightarrow v = \hat{v}(1 - \frac{2}{e^{\frac{2t}{\hat{t}}}} + 1)\]
+$\Rightarrow$ $\hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
+
+Zugabe: einfache physikalische Argumente für die Größe von $c$:
+\begin{enumerate}
+\item $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
+         $\Rightarrow c \sim \rho_L A$
+\item Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -17,6 +17,7 @@
 #+LATEX_HEADER: \usemintedstyle{perldoc}
 #+LATEX_HEADER: \usepackage{tikz}
 #+LATEX_HEADER: \usetikzlibrary{arrows,automata}
+#+LATEX_HEADER: \usepackage{tikz-qtree}
 
 # #+BEGIN_SRC cpp
 # for(int i = 0; i < 5) {
@@ -211,3 +212,30 @@
 		\[sub(add(3,2), 2)\]
 		\[sub(5, 2)\]
 		\[2\]
+** Bäume
+   - bestehen aus Knoten unmd Kanten (Kreise und Pfeile)
+   - Kanten verbinden Knoten mit ihren Kind-knoten
+   - jeder Koten (außer der Wurzel) hat genau ein Elternteil ("parent node")
+   - Knoten ohne Kinder heißen Blätter ("leaves / leaf node")
+   - Teilbaum
+	 - wähle beliebigen Knoten
+	 - entferne temporärdessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Tailbaum des Orginalbaumes)
+   - trivialer Teilbaum hat nur einen Knoten
+   - Tiefe: Abstand eines Knotens von der Wurzel (Anzahl der Kanten zwischen Knoten und Wurzel)
+	 - Tiefe des Baums: maximale Tiefe eines Knoten
+*** Beispiel
+	\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
+	\[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+	\begin{center}
+	\Tree [ .sub [ .add [ .add 1 2 ] [ .div [ .mul 3 4 ] [ .add 1 5 ] ] ] 2 ]
+	\end{center}
+** Prefixnotation aus dem Baum rekonstruieren
+   1. <<algstart>> Wenn die Wurzel ein Baltt ist: Drucke die Zahl
+   2. sonst:
+	  - Drucke Funktionsnamen
+	  - Drucke "("
+	  - Wiederhole den Algorithmus ab [[algstart]] für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
+	  - Drucke ","
+	  - Wiederhole den Algorithmus ab [[algstart]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
+	  - Drucke ")"
+	\Rightarrow \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]

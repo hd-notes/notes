@@ -440,3 +440,33 @@
 	2. $\sum_{j = 0}^n \binom{n}{j} (-1)^j = \begin{cases}0 & n \neq 0 \\ 1 & n = 0\end{cases}$
 **** Beweis:
 	 Setze in Binomische Formel $x = 1, y = 1$ beziehungsweise $y = -1 \hfill\square$
+*** Lemma 1.51
+	Sei $m\inR$ nach oben (beziehungsweise nach unten) beschränkt \\
+	Dann gilt
+	1. $s = \sup M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: s - \varepsilon < x (\geq s)$
+	2. $l=\inf M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: (l \leq) x < l + \varepsilon
+**** Beweis
+	 Wir beweisen 1. \\
+	 $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \varepsilon$ von $M$ $\Leftrightarrow$
+	 nicht $\Forall \varepsilon > 0\exists x\in M: x > s - \varepsilon \hfill \square$
+*** Lemma 1.52
+	$\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
+**** Beweis
+	 sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \varepsilon= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \fra¢{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
+	 \Rightarrow $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
+*** Lemma 1.53 (Bernoullische Ungleichung)
+	\[\Forall x\in [-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
+**** Beweis
+	 Beweis durch Induktion:
+	 - *IA*: $n = 0$ klar
+	 - *IS*:
+	   \begin{align}
+	   n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
+	   &\geq (1 + n x) (1 + x) = 1 + nx^2 + (n + 1) x \\
+	   &\geq 1 + (n + 1) x\text{da $x^2 \geq 0$} \tag{\square}
+	   \end{align}
+*** Folgerung 1.54
+	1. Sei $y\in(1,\infty)$. Dann gilt $\Forall c > 0 \exists n_0 \in \mathbb{N},\Forall n\geq n_0 y^n \in (c,\infty)$ ("Konvergenz" von $y^n$ gegen 0)
+	2. Sei $y \in (-1,1)$. Dann gilt $\Forall \varepsilon > 0\exists n_0 \in \mathbb{N}\Foralln\geq n_0:y^n \in I_\varepsilon (0)$ ("Konvergenz" $y^n$ gegen 0)
+**** Beweis
+	 Für $x = y - 1 > 0$ gilt

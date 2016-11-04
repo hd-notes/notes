@@ -1,4 +1,4 @@
-% Created 2016-11-02 Mi 12:11
+% Created 2016-11-04 Fr 11:20
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -562,5 +562,55 @@ Messung der Zugkraft bei der sich der Holzblock nach kleiner Störung in Richtun
 \[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
 \[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
 \[\mu_H > \mu_G\]
+\subsubsection{Mikroskopisches Modell}
+\label{sec-7-3-5}
+Verantwortlich sind elektrische Kröfte zwischen Atomen und Molekülen der beieinanderliegenden Oberflächen: Van-der-Waals-Kräfte
+\begin{itemize}
+\item Stärke ergibt sich aus effektivem Kontakt.
+\end{itemize}
+Relative mikroskopische Reibungsfläche: $\sum \frac{a_i}{A} \sim \frac{F_N}{A} \leftarrow~\text{Druck}$
+\begin{itemize}
+\item $a_1$ = effektive Kontaktfläche eines Einzelatoms
+\end{itemize}
+Also: \[F_R \sim \sum \frac{a_i}{A} \sim F_N\]
+\begin{itemize}
+\item Haftreibung: Verzahnung der Oberflächen mit minimalen Abstand
+\item Gleitreibung: Minimaler Abstand wird aufgrund der Bewegung nicht erreicht
+\end{itemize}
+\subsubsection{Schiefe Ebene: Messung der Reibungskraft (Skizze)}
+\label{sec-7-3-6}
+Kräftegleichgewicht: $F_H = F_R$
+\[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
+Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R = \tan{\alpha}$
+\[\alpha = \SI{15}{\degree} \rightarrow \tan{\alpha} = 0.27,\mu_G = 0.27\]
+\subsubsection{Zentripetalkraft}
+\label{sec-7-3-7}
+\[\v a_{Zp} = \v \omega \times(\v\omega\times\v r)\quad \v{F}_{Zp} = m\v\omega\times(\v\omega\times\v r)\]
+\[a_{Zp} = \omega^2 r = \frac{v^2}{r}\quad F_{Zp} = m\omega^2 r = m \frac{v^2}{r}\]
+\begin{enumerate}
+\item Beispiel 1 Rotierendes Pendel
+\label{sec-7-3-7-1}
+\[\v{F}_{Zp} := \v{F}_G + \v{F}_Z\]
+\[F_G = m g = F_Z \cos{\theta}\]
+\[F_{Zp} = F_Z \sin{\theta}\]
+\[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
+\[a_{Zp} = \omega^2 r \Rightarrow: \omega \sqrt{\frac{g}{\tan{\theta}}}\]
+\begin{itemize}
+\item $\theta$ steigt mit $\omega$ an
+\item $\theta(\omega)$ ist unabhängig von Masse
+\end{itemize}
+\item Beispiel 2 Geostationärer Satellit
+\label{sec-7-3-7-2}
+Zetripetal = Gravitationskraft \\
+     \[m\omega^2 R = G\frac{m M_E}{R^2}\]
+Geostationär: $\omega = \frac{2\pi}{\SI{24}{\hour}} = \frac{2\pi}{24\cdot\SI{3600}{\second}} = \SI{7.27e-5}{\per\second}$
+\[R^3 = \frac{G M_E}{\omega^2} \rightarrow R = \SI{42312}{\kilo\meter}\]
+Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}\]
+\begin{itemize}
+\item $G = \SI{6.67e-11}{\meter\cubed\per\kilo\gram\second\squared}$
+\item $M_E = \SI{6e24}{\kilo\gram}$
+\item $R_E = \SI{6373}{\kilo\meter}$
+\end{itemize}
+\end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

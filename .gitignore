@@ -12,6 +12,7 @@
 *.run.xml
 *.fdb_latexmk
 *.fls
+*.ora~
 
 \#*\#
 /.emacs.desktop

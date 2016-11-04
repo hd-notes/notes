@@ -385,3 +385,36 @@
 	\[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
 	\[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
 	\[\mu_H > \mu_G\]
+*** Mikroskopisches Modell
+	Verantwortlich sind elektrische Kröfte zwischen Atomen und Molekülen der beieinanderliegenden Oberflächen: Van-der-Waals-Kräfte
+	- Stärke ergibt sich aus effektivem Kontakt.
+	Relative mikroskopische Reibungsfläche: $\sum \frac{a_i}{A} \sim \frac{F_N}{A} \leftarrow~\text{Druck}$
+	- $a_1$ = effektive Kontaktfläche eines Einzelatoms
+	Also: \[F_R \sim \sum \frac{a_i}{A} \sim F_N\]
+	- Haftreibung: Verzahnung der Oberflächen mit minimalen Abstand
+	- Gleitreibung: Minimaler Abstand wird aufgrund der Bewegung nicht erreicht
+*** Schiefe Ebene: Messung der Reibungskraft (Skizze)
+	Kräftegleichgewicht: $F_H = F_R$
+	\[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
+	Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R = \tan{\alpha}$
+	\[\alpha = \SI{15}{\degree} \rightarrow \tan{\alpha} = 0.27,\mu_G = 0.27\]
+*** Zentripetalkraft
+	\[\v a_{Zp} = \v \omega \times(\v\omega\times\v r)\quad \v{F}_{Zp} = m\v\omega\times(\v\omega\times\v r)\]
+	\[a_{Zp} = \omega^2 r = \frac{v^2}{r}\quad F_{Zp} = m\omega^2 r = m \frac{v^2}{r}\]
+**** Beispiel 1 Rotierendes Pendel
+	 \[\v{F}_{Zp} := \v{F}_G + \v{F}_Z\]
+	 \[F_G = m g = F_Z \cos{\theta}\]
+	 \[F_{Zp} = F_Z \sin{\theta}\]
+	 \[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
+	 \[a_{Zp} = \omega^2 r \Rightarrow: \omega \sqrt{\frac{g}{\tan{\theta}}}\]
+	 - $\theta$ steigt mit $\omega$ an
+	 - $\theta(\omega)$ ist unabhängig von Masse
+**** Beispiel 2 Geostationärer Satellit
+	 Zetripetal = Gravitationskraft \\
+	 \[m\omega^2 R = G\frac{m M_E}{R^2}\]
+	 Geostationär: $\omega = \frac{2\pi}{\SI{24}{\hour}} = \frac{2\pi}{24\cdot\SI{3600}{\second}} = \SI{7.27e-5}{\per\second}$
+	 \[R^3 = \frac{G M_E}{\omega^2} \rightarrow R = \SI{42312}{\kilo\meter}\]
+	 Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}\]
+	 - $G = \SI{6.67e-11}{\meter\cubed\per\kilo\gram\second\squared}$
+	 - $M_E = \SI{6e24}{\kilo\gram}$
+	 - $R_E = \SI{6373}{\kilo\meter}$

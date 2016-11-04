@@ -1,4 +1,4 @@
-% Created 2016-11-02 Mi 12:11
+% Created 2016-11-04 Fr 11:16
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -764,7 +764,7 @@ $f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjekt
 \item bijektiv
 \end{itemize}
 \end{enumerate}
-\item Bemerkung
+\item Bemerkung 4.12
 \label{sec-2-6-7-5}
 $M,N$ Mengen, $f:M\to N, g:n\to M$ mit $g\circ f = id_M$
 Dann ist $f$ injektiv und $g$ surjektiv.
@@ -776,6 +776,206 @@ Dann ist $f$ injektiv und $g$ surjektiv.
          Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \Rightarrow g(f(m_1)) = g(f(m_2)) \Rightarrow (g\circ f)(m_1) = (g\circ f)(m_2) \Rightarrow id_m(m_1) = id_M(m_2)\Rightarrow m_1 = m_2$
 \item $g$ ist surjektiv, denn: \\
          Sei $m\in M$ Dann ist $m=id_M(m) = (g\circ f)(m) = g(f(m))$
+\end{enumerate}
+\end{enumerate}
+\item Bemerkung
+\label{sec-2-6-7-6}
+Sei $f:M\to N$, $N,M$ Mengen
+Dann sind äquivalent:
+\begin{enumerate}
+\item $f$ ist bijektiv
+\item Zu jedem $n\in N$ gibt es genau ein $m\in M$ mit $f(m) = n$
+\item Es gibt genau eine Abbildung $g:N\to M$ mit $g\circ f = id_M$ und $f\circ g = id_N$
+\end{enumerate}
+In diesem Fall bezeichnen wir die Abbildung $g:N\to M$ aus 3. mit $f^{-1}$ und nennen $f^{-1}$ die Umkehrabbildung von $f$. Sie ist gegeben durch
+\[f^{-1} : N\to M, n\mapsto~\text{Das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$}\]
+\begin{enumerate}
+\item Beweis
+\label{sec-2-6-7-6-1}
+Statt 1. $\Leftrightarrow$ 2. und 2. $\Leftrightarrow$ 3. zeigen 1. $\Rightarrow$ 2. $\Rightarrow$ 3. $\Rightarrow$ 1.
+\begin{itemize}
+\item 1. $\Rightarrow$ 2. Sei $f$ bijektiv \\
+        zz: Ist $n\in N$, dann existiert genau ein $m\in M$ mit $f(m) = n$ \\
+\begin{itemize}
+\item Existenz folg aus Surjektivität von $f$
+\item Eindeutigkeit: Seien \$m$_{\text{1}}$,m$_{\text{2}}$ $\in$ M  mit \(f(m_1) = n, f(m_2) = n \Rightarrow f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
+\end{itemize}
+\item 2. $\Rightarrow$ 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
+        zz: Ex existert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
+\begin{itemize}
+\item Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig bestimmte Element $m\in M$ mit $f(m) = n$}\) \\
+          Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~text{das heißt}~ g\circ f = id_M\]
+          und für $n\in N$ ist $(f\circ g)(n) = f(g(n)) = n$ also $f\circ g = id_N$
+\item Eindeutigkeit: Es seinen $g_1,g_2:N\to M$ mit $g_i \circ f = id_M, f\circ g_i = id_N$ für $i = 1,2$ \\
+          \[\Rightarrow g_1 = g_1 \circ id_N = g_1 \circ (f\circ g_2) = (g_1 \circ f) \circ g_2 = id_M \circ g_2 = g_2\]
+\end{itemize}
+\item 3. $\Rightarrow$ 1. Wegen 3. existier $g:N\to M$ mit $g\circ f = id_M,f\circ g = id_N$ \\
+        \[\xRightarrow{[[Bemerkung 4.12]]} f~\text{injektiv}~,f~\text{surjektiv}~\Rightarrow f~\text{bijektiv}\Rightarrow~\text{1.}\]
+\end{itemize}
+\item Anmerkung
+\label{sec-2-6-7-6-2}
+\begin{itemize}
+\item Bitte stets aufpassen, ob mit $f^{-1}$ die Unmkerhabbildung (falls existent) oder das Bilden der Urbildmenge gemeint ist.
+\item Im Beweis von 3. $\Rightarrow$ 1. haben wir die Eindeutigkeit von $g$ garnicht verwendet, das heißt wir haben sogar gezeigt: \\
+        $f$ bijektiv $\Leftrightarrow$ 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = id_N$ und $f\circ f = id_M$ Soch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
+\end{itemize}
+\item Beispiel
+\label{sec-2-6-7-6-3}
+Im Beispiel vorher haben wir gesehen $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist bijektiv.
+Die Umkehrabbildung ist gegeben durch $f^{-1}:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto \sqrt{x}$
+\end{enumerate}
+\item Bemerkung
+\label{sec-2-6-7-7}
+$M,N$ Mengen, $f:M\to N$ Dann gilt:
+\begin{enumerate}
+\item $f$ injektiv $\Leftrightarrow$ Es existiert $g:N\to M$ mit $g\circ f = id_M$ \\
+        \textbf{Beweis:}
+\begin{itemize}
+\item "$\Leftarrow$" folgt aus \ref{sec-2-6-7-5}
+\item "$\Rightarrow$" Sei $f$ injektiv. Sein $x$ ein beliebiges Element aus $M$
+          Wir definieren \[g:N\to M,n\mapsto \begin{cases} x & n\not\in f(M) \\ \text{das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$} & n\in f(M) \end{cases}\]
+          Für alle $m\in M$ ist dann $(g\circ f)(m) = g(f(m)) = m$ das geißt $g\circ f = id_M$
+\end{itemize}
+\item $f$ surjektiv $\Leftrightarrow$ Es existiert $g:N\to M$ mit $f\circ g = id_N$ \\
+        \textbf{Beweis:}
+\begin{itemize}
+\item "$\Leftarrow$" folgt aus \ref{sec-2-6-7-5}
+\item "$\Rightarrow$" Sei $f$ surjektiv. Für jedes Element $n\in N$ wählen wir ein Element $\tilde n\in f^{-1}(\{n\}) \neq \emptyset$ und sehen
+$g:N\to M,n\mapsto \tilde n$. Dann ist $(f\circ g)(n) = f(g(n)) = n$ für alle $n\in N$ und das heißt $f\circ g = id_N \hfill\square$
+\end{itemize}
+\end{enumerate}
+\begin{enumerate}
+\item Anmerkung
+\label{sec-2-6-7-7-1}
+Das wir stets einen Auswahlprozess wie im Beweis von 2. "$\Rightarrow$" vornehmen können ist ein Axiom der Mengenlehre (erkennen wir als gültig an, ist jedoch nicht beweisbar), das \textbf{Auswahlaxiom}: \\
+      Ist $I$ eine Indexmenge und $(A_i)_{i\in I}$ eine Familie von nichtleeren Mengen, dann gibt es eine Abbildung $\gamma:I\to \bigcup_{i\in I} A_i$ mit $\gamma (i) \in A_i$ für alle $i\in I$ (im obigen Beweis ist $I = N,A_n = f^{-1}(\{n\})$ für $n\in N$)
+\end{enumerate}
+\item Bemerkung 4.16
+\label{sec-2-6-7-8}
+$L,M,N$ Mengen, $f:L\to M, g:M\to N$ \\
+     Dann gilt: $g,f$ beide injektiv (beziehungsweise surjektiv oder bijektiv) $\Rightarrow$ $g\circ f$ injektiv (beziehungsweise sujektiv oder bijektiv)
+\item Definition 4.17
+\label{sec-2-6-7-9}
+\item Bemerkung 4.19
+\label{sec-2-6-7-10}
+$M,N$ endliche Mengen mit $\abs{M} = \abs{N},f:M\to N$ Dann sind äquivalent:
+\begin{enumerate}
+\item $f$ ist injektiv
+\item $f$ ist surjektiv
+\item $f$ ist bijektiv
+\end{enumerate}
+\begin{enumerate}
+\item Beweis
+\label{sec-2-6-7-10-1}
+\begin{itemize}
+\item 1. $\Rightarrow$ 2. Sei $f$ injektiv $\Rightarrow$ $\abs{f(M)} = \abs{M} = \abs{N}$ wegen $f(M) \subseteq N$ folgt $f(M) = N$ $\Rightarrow$ $f$ surjektiv
+\item 2. $\Rightarrow$ 3. Sei $f$ sujektiv, das heißt $f(M) = N$ \\
+        Annahme: $f$ ist nicht bijektiv $\Rightarrow$ $f$ nicht injektiv $\Rightarrow$ $\exists m_1,m_2\in M: m_1\neq m_2 \wedge f(M_1) = f(m_2) \Rightarrow \abs{f(M)} < \abs{M} = \abs{N}$ Wiederspruch zu $f(M) = N$
+\item 3. $\Rightarrow$ 1. trivial
+\end{itemize}
+\end{enumerate}
+\end{enumerate}
+\section{Gruppen, Ringe, Körper}
+\label{sec-3}
+\subsection{Gruppe}
+\label{sec-3-1}
+\subsubsection{Verknüpfung}
+\label{sec-3-1-1}
+$M$ Menge, Eine Verknüpfung (inverse Verknüpfung) auf $M$ ist ein Abbildung \[*:M\times M \to M\]
+Anstelle von $*(a,b)$ schreiben wir $a * b$
+\begin{enumerate}
+\item Beispiel
+\label{sec-3-1-1-1}
+\begin{itemize}
+\item $+: \mathbb{R} \times \mathbb{R} \to \mathbb{R},(a,b) \mapsto a + b$
+\item $\cdot: \mathbb{R} \times \mathbb{R} \to \mathbb{R},(a,b) \mapsto a\cdot b$
+\end{itemize}
+sind Verknüpfungen
+\end{enumerate}
+\subsubsection{Monoid}
+\label{sec-3-1-2}
+Ein Monoid ist ein Tupel $(M,*)$, bestehend aus einer Menge $M$ und einer Verküpfung \\
+    $*:M\times M \to M$, welche folgende Bedingungen genügt:
+\begin{itemize}
+\item (M1) Die Verküpfung ist assoziativ, das heißt \[\Forall a,b,c\in M:(a*b)*c = a*(b*c) \]
+\item (M2) Ex existiert ein neutrales Element $e$ in $M$, das heißt \[\exists e\in M:\Forall a\in M e*a = a = a*e\]
+\end{itemize}
+\begin{enumerate}
+\item Beispiel
+\label{sec-3-1-2-1}
+\begin{itemize}
+\item $(\mathbb{N}_0,+), (\mathbb{Z},+)$ sind Monoide (neutrales Element: $0$)
+\item $(\mathbb{N},+)$ ist kein Monoid (ex existiert kein neutrales Element)
+\item $(\mathbb{N},\cdot),(\mathbb{Z},\cdot)$ sind Monoide (neutrales Element: $1$)
+\end{itemize}
+\item Bemerkung
+\label{sec-3-1-2-2}
+$(M,*)$ Monoid. Dann gibt es in $M$ genau ein neutrales Element.
+\begin{enumerate}
+\item Beweis
+\label{sec-3-1-2-2-1}
+\begin{itemize}
+\item Existenz: Es existert ein neutrales Element: folgt aus Definition eines Monoids
+\item Eindeutigkeit: Seien $e,\tilde e \in M$ neutrale Element \[\Rightarrow e = e * \tilde e = \tilde e\]
+\end{itemize}
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Inverses}
+\label{sec-3-1-3}
+$(M,*)$ Monoid mit neutralem Element $e$, $a\in M$
+Ein Element $b\in M$ heit Inverses zu $a \xLeftrightarrow{\text{Def}} a * b = e = b * a$
+\begin{enumerate}
+\item Beispiel
+\label{sec-3-1-3-1}
+\begin{itemize}
+\item In $(\mathbb{Z},+)$ ist $-2$ ein Inverses zu $2$ denn $2 + (-2) = 0 = (-2) + 2$
+\item In $(\mathbb{N}_0,+)$ existiert kein Inverses zu $2$, denn es existiert kein $n\in \mathbb{N}_0$ mit $n + n = 0 = n + 2$
+\item \label{invex} In $(\mathbb{Z},\cdot)$ existiert kein Inverses zu $2$, denn es existiert kein $n\in\mathbb{Z}$ mit $2\cdot n = 1 = n \cdot 2$
+\end{itemize}
+\item Bemerkung
+\label{sec-3-1-3-2}
+\label{beminv}
+$(M,*)$ Monid, $a\in M$ Dann gilt: besitzt $a$ ein Inverses, dann ist dieses eindeutig bestimmt.
+\begin{enumerate}
+\item Beweis
+\label{sec-3-1-3-2-1}
+Seinen $b,\tilde b$ Inversen zu $a$, sein $e\in M$ das neutrale Element
+\[\Rightarrow b = e * b = (\tilde b * a) * b = \tilde b * (a * b) = \tilde b\]
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Gruppe}
+\label{sec-3-1-4}
+Eine Gruppe ist ein Tupel $(G,*)$, bestehen aus einer Menge $G$ und einer Verknüpfung $*:G\times G \to G$, sodass gilt:
+\begin{itemize}
+\item (G1) $(G,*)$ ist ein Monoid
+\item (G2) Jedes Element aus $G$ besitzt ein Inverses
+\end{itemize}
+In diesem Fall schreiben wir $a'$ für das nach \ref{beminv} eindeutig bestimmte Inverse eines Elements $a\in G$
+\begin{enumerate}
+\item Beispiel
+\label{sec-3-1-4-1}
+\begin{itemize}
+\item $(\mathbb{Z},+)$ ist eine Gruppe, denn $(\mathbb{Z},+)$ ist ein Monoid und für $a\in\mathbb{Z}$ ist $-a$ das inverse Element: $a + (-a) = 0 = (-a) + a$
+\item $(\mathbb{Z},\cdot)$ ist keine Gruppe, denn das Element $2\in\mathbb{Z}$ hat kein Inverses (vergleiche \ref{invex}).
+\item $(\mathbb{Q}\setminus \{0\},\cdot)$ ist eine Gruppe denn es ist ein Monoid mit neutralem Element $1$ und für jedes Element $a\in\mathbb{Q}\setminus\{0\}$ existiert ein $b\in \mathbb{Q}\setminus \{0\}$ mit $a\cdot b = 1 = b\cdot a$, nämlich $b = \frac{1}{a}$
+\end{itemize}
+\item Bemerkung
+\label{sec-3-1-4-2}
+$(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
+\begin{enumerate}
+\item (Kürzungsregel) \[a*b = a*c \Rightarrow b = c\] \[a*c = b * c \Rightarrow a = b\]
+\item $a*b = e \Rightarrow b = a'$
+\item $(a')' = a$
+\item (Regel von Hemd und Jacke) $(a*b)' = b' * a'$
+\end{enumerate}
+\begin{enumerate}
+\item Beweis
+\label{sec-3-1-4-2-1}
+\begin{enumerate}
+\item Sei $a * b = a * c \Rightarrow a'*(a*b) = a'*(a*c) \Rightarrow (a'*a)*b=(a'*a)*c \Rightarrow e*b = e*c \Rightarrow b = c$
+\item aus 1. $a*b = c = a*a' \Rightarrow b = a'$
+\item Es ist $a*a' = e = a' * a$, das heißt $a$ ist Inverses zu $a' \Rightarrow (a')' = a$
+\item Es ist $(a*b)*(b'*a') = a*(b*b')*a' = a*a' = e \Rightarrow b' * a' \xRightarrow{\text{2.}} (a *b)'$
 \end{enumerate}
 \end{enumerate}
 \end{enumerate}

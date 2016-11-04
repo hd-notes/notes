@@ -1,4 +1,4 @@
-% Created 2016-11-02 Mi 12:11
+% Created 2016-11-04 Fr 11:10
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -32,6 +32,7 @@
 \usemintedstyle{perldoc}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
+\usepackage{tikz-qtree}
 \author{Robin Heinemann}
 \date{\today}
 \title{Einführung in die Anwendungsorientierte Informatik (Köthe)}
@@ -318,5 +319,45 @@ Man kann einen Funktionsaufruf, deessen Argument vekannt ist (das heißt Zahlen 
 \[2\]
 \end{enumerate}
 \end{itemize}
+\subsection{Bäume}
+\label{sec-5-2}
+\begin{itemize}
+\item bestehen aus Knoten unmd Kanten (Kreise und Pfeile)
+\item Kanten verbinden Knoten mit ihren Kind-knoten
+\item jeder Koten (außer der Wurzel) hat genau ein Elternteil ("parent node")
+\item Knoten ohne Kinder heißen Blätter ("leaves / leaf node")
+\item Teilbaum
+\begin{itemize}
+\item wähle beliebigen Knoten
+\item entferne temporärdessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Tailbaum des Orginalbaumes)
+\end{itemize}
+\item trivialer Teilbaum hat nur einen Knoten
+\item Tiefe: Abstand eines Knotens von der Wurzel (Anzahl der Kanten zwischen Knoten und Wurzel)
+\begin{itemize}
+\item Tiefe des Baums: maximale Tiefe eines Knoten
+\end{itemize}
+\end{itemize}
+\subsubsection{Beispiel}
+\label{sec-5-2-1}
+\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
+\[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+\begin{center}
+\Tree [ .sub [ .add [ .add 1 2 ] [ .div [ .mul 3 4 ] [ .add 1 5 ] ] ] 2 ]
+\end{center}
+\subsection{Prefixnotation aus dem Baum rekonstruieren}
+\label{sec-5-3}
+\begin{enumerate}
+\item \label{algstart} Wenn die Wurzel ein Baltt ist: Drucke die Zahl
+\item sonst:
+\begin{itemize}
+\item Drucke Funktionsnamen
+\item Drucke "("
+\item Wiederhole den Algorithmus ab \ref{algstart} für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
+\item Drucke ","
+\item Wiederhole den Algorithmus ab \ref{algstart} für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
+\item Drucke ")"
+\end{itemize}
+$\Rightarrow$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+\end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
