@@ -19,6 +19,7 @@
 #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
 #+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
 #+LATEX_HEADER: \newcommand{\f}[2]{\frac{#1}{#2}}
+#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
 #+LATEX_HEADER: \renewcommand{\v}[1]{\vec{#1}}
 #+LATEX_HEADER: \usepackage{pgfplots}
 
@@ -26,6 +27,21 @@ Einleitung: \\
 - Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
 - Bartelman skripte
 
+* Semesterüberblick
+  1. Newtonsche Mechanik
+  2. Lagrange / Hamilton Mechanik / Statistik / Kontinua
+  3. Elektrodynamik / Spezielle Relativitättheorie
+  4. Quatenmechanik
+  5. Thermodynamik / Quantenstatistik
+  6. Allgemeine Relativitättheorie / Kosmologie
+  7. Quatenfeldtheorie I (ggf. 5.)
+  8. Quatenfeldtheorie II (ggf. 6. \Leftarrow Stringtheorie / Teilchenphysik / Supersymmetrie)
+  9. Masterarbeit
+  10. Masterarbeit
+** Mathe
+   *wichtig:*
+   - Gruppentheorie
+   - Differientialgeometrie
 * Kinematik des Massenpunktes
   Massenpunkt / Punktmasse - (selbstevidente) Abstraktion
   Kinematik: Bescheibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
@@ -409,3 +425,59 @@ Einleitung: \\
 	  1. $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
 		 $\Rightarrow c \sim \rho_L A$
 	  2. Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
+** Taylorentwickung
+   Ohne Beschränkung der Allgemeinheit $x_0 = 0$. Untersuche Verhalten beliebiger glatter Funktionen $f(x)$ nahe $x = 0$
+   \begin{align}
+   f(x) &= f(0) + \int_0^x\d x' f'(x') \\
+   &= f(0) + f'(x')(x_ - x)\Big|_0^x - \int_0^x\d x' f''(x')(x'-x) \\
+   &= f(0) + f'(0)x - f''(x')\frac{(x' - x)}{2}\Big|_0^x + \int_0^x\d x' f'''(x')\frac{(x' - x)^2}{2} \\
+   &= f(0) + f'(x)x + f''(0)\frac{x^2}{2} + \ldots
+   \end{align}
+   Allgemein:
+   \[f(x) = f(0) + \sum_{n=1}^m f^{(n)}(0)\frac{x^n}{n!}+\overbrace{\int_0^x \d x' f^{(m+1)}(x')\frac{(x' - x)^m}{m!}}^{\text{Restglied}}\]
+   Falls das Restgliend für $n\to\infty$ verschwindet:
+   \[f(x) = f(0) + \sum_{n=1}^\infty f^{(n)}(0)\frac{x^n}{n!}\]
+   Analog:
+   Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}{n!}\]
+   1. Oft erste Terme = gute Näherung
+   2. Verallgemeinerung auf viele Variablen
+*** Interessantes "Gegenbeispiel"
+	\[f(x) \equiv \begin{cases} e^{-\frac{1}{x^2}} & x\neq 0 \\ 0 & x = 0 \end{cases}\]
+	Überzeugen sie sich, dass alle Ableitungen existieren, auch bei Null! \\
+	Sie Brauchen:
+	\[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
+	Die Ableitungen verschwinden sogar bei Null \Rightarrow Taylor-Reihe ist Null, keine gute Näherung
+** Harmonicher Oszillator
+   - eines der wichtigesten physikalischen Systeme
+   - beschreibt viele kompilziertere Systeme angenähert
+*** Eindimensionales System
+	$d = 1, F = F(x)$
+	\[F(x) = -\dd{}{x}v(x) = -v'(x)\]
+
+	Damit haben wir das *Potetial* (\rightarrow beschreibt die potentielle Energie des Massenpunktes) $v$ als Stammfunktion von $-F$ definiert
+	- Skizze
+	Massenpunkt kann nur ruhen, wo $F=0$ beziehungsweise $V'=0$. Genauer: Nur Minima (Maxima instabil). \\
+**** Ziel
+	Untersuchung der Bewegung in der Nähe von Minimal (also bei $x\approx x_0$ wobei $v'(x_0) = 0$ gelte) \\
+	$V(x)$ bei $x_0$, $V'(x_0) = 0, \abs{x - x_0}$ klein \\
+	\[\Rightarrow V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
+	\[\Rightarrow F(x) \simeq - V''(x_0)(x-x_0)\]
+	\[x-x_0\equiv y \Rightarrow \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
+	Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr großem Nutzen (viele Systeme)
+**** Lösung
+	 Newton \Rightarrow $m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
+	 \Rightarrow $\sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
+	 \Rightarrow $y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+	 (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
+**** Verallgemeinerungen
+	 - Reibungterm $\sim \dot{y}$
+	 - treibende Kraft $\sim f(t)$
+** Lineare Differentialgleichungen
+   allgemeine Form einer linearen Dgl. n-ter Ordnung:
+   \[y^{(n)} + f_{n -1}(x)y^{(n - 1)}(x) + \ldots + f_0(x)y(x) = f(x)\]
+   Das Wort linear bezieht sich nur auf $y$, nicht $x$ \\
+   Die Dgl. heißt homogen falls $f(x)\equiv 0$
+   Homogen von Grad $p$: Ersetzung $y\to\alpha y$ führt zu Vorfaktor $\alpha p$, hier $p = 1$
+   - wir hatten oben dem Fall $n = 2$ "mit konstanten Koeffizienten"
+   - noch einfacheres Beispiel: $n = 1, f\equiv 0$ (aber beliebige Koeffizienten)
+	 \[y' + a(x)y = 0\]

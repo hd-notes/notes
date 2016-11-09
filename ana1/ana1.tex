@@ -1,4 +1,4 @@
-% Created 2016-11-04 Fr 11:09
+% Created 2016-11-04 Fr 12:22
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -40,6 +40,11 @@
 \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
 \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
 \makeatother
+\begingroup
+\catcode`(\active \xdef({\left\string(}
+\catcode`)\active \xdef){\right\string)}
+\endgroup
+\mathcode`(="8000 \mathcode`)="8000
 \author{Robin Heinemann}
 \date{\today}
 \title{Analysis I (Marciniak-Czochra)}
@@ -719,6 +724,83 @@ Induktion:
 \item Beweis:
 \label{sec-2-9-17-1}
 Setze in Binomische Formel $x = 1, y = 1$ beziehungsweise $y = -1 \hfill\square$
+\end{enumerate}
+\subsubsection{Lemma 1.51}
+\label{sec-2-9-18}
+Sei $m\in R$ nach oben (beziehungsweise nach unten) beschränkt \\
+    Dann gilt
+\begin{enumerate}
+\item $s = \sup M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: s - \varepsilon < x (\geq s)$
+\item $l=\inf M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: (l \leq) x < l + \varepsilon$
+\end{enumerate}
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-18-1}
+Wir beweisen 1. \\
+     $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \varepsilon$ von $M$ $\Leftrightarrow$
+nicht $\Forall \varepsilon > 0\exists x\in M: x > s - \varepsilon \hfill \square$
+\end{enumerate}
+\subsubsection{Lemma 1.52}
+\label{sec-2-9-19}
+$\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-19-1}
+sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \varepsilon= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
+$\Rightarrow$ $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
+\end{enumerate}
+\subsubsection{Lemma 1.53 (Bernoullische Ungleichung)}
+\label{sec-2-9-20}
+\label{Lemma-1.53}
+\[\Forall x\in [-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-20-1}
+Beweis durch Induktion:
+\begin{itemize}
+\item \textbf{IA}: $n = 0$ klar
+\item \textbf{IS}:
+\begin{align}
+n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
+&\geq (1 + n x) (1 + x) = 1 + nx^2 + (n + 1) x \\
+&\geq 1 + (n + 1) x~\text{da $x^2 \geq 0$} \tag{\text{$\square$}}
+\end{align}
+\end{itemize}
+\end{enumerate}
+\subsubsection{Folgerung 1.54}
+\label{sec-2-9-21}
+\begin{enumerate}
+\item Sei $y\in(1,\infty)$. Dann gilt $\Forall c > 0 \exists n_0 \in \mathbb{N},\Forall n\geq n_0 y^n \in (c,\infty)$ ("Konvergenz" von $y^n$ gegen 0)
+\item Sei $y \in (-1,1)$. Dann gilt $\Forall \varepsilon > 0\exists n_0 \in \mathbb{N}\Forall n\geq n_0:y^n \in I_\varepsilon (0)$ ("Konvergenz" $y^n$ gegen 0)
+\end{enumerate}
+\begin{enumerate}
+\item Beweis
+\label{sec-2-9-21-1}
+\begin{enumerate}
+\item \label{1541} Für $x = y - 1 > 0$ gilt dann nach \ref{Lemma-1.53} \[\underbrace{(1 + x)^n}_y \geq 1 + n x \Rightarrow y^n > n x\]
+        Nach \ref{sec-2-9-19} existiert für $c > 0$ ein $n_0 \in \mathbb{N}$ mit $n_0 > \frac{c}{x} \Rightarrow$
+        \[\Forall n\geq n_0: y^n > n x \geq n_0 x \geq \frac{c}{x} x = c \Rightarrow \Forall n\geq n_0: y^n\in(c,\infty)\]
+\item Für  $x = \frac{1}{\abs{y}} > 1 \xRightarrow{\text{nach [[1541]] mit } c = \frac{1}{\varepsilon}}$
+        \[\Forall \varepsilon > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\varepsilon}\]
+        \[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\varepsilon} \Rightarrow \abs{y^n} < \varepsilon \hfill \square\]
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Satz 1.55 (Existenz der m-ten Wurzel)}
+\label{sec-2-9-22}
+\[\Forall m\in\mathbb{N}, a\in[a,\infty)~\text{gilt}~\exists ! x\in [0,\infty): x^m = a\]
+\begin{enumerate}
+\item Beweis (Skizze 1, 2)
+\label{sec-2-9-22-1}
+Wir geben ein Iterationsverfahren
+\[p_3 (x) = m\]
+\[a_3 x^3 + a_2 x^2 + a_1 x + a_0, a_3 > 0\]
+Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
+Diese approximieren wir nach dem \textbf{Newton Verfahren} \\
+     $x_0$ sodass $x_0^m - a \geq 0$
+\[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \Leftarrow \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
+\[x_{n+1} := \underbrace{x_n - \frac{f(x_n)}{f'(x_n)}}_{F(x_n)} = x_n - \frac{x_n^m - a}{m x_n^{m - 1}}\]
+\[= x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))\]
+Hoffnung: $x_n \to x^*$
 \end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

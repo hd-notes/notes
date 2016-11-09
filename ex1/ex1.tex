@@ -1,4 +1,4 @@
-% Created 2016-11-04 Fr 11:20
+% Created 2016-11-09 Mi 12:38
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -32,6 +32,14 @@
 \renewcommand{\v}[1]{\vec{#1}}
 \usepackage{tikz}
 \usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings}
+\usepackage{xparse}% http://ctan.org/pkg/xparse
+\NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+\overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+}
+\NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+\underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+}
+\usepackage{pgfplots}
 \author{Robin Heinemann}
 \date{\today}
 \title{Experimentalphysik (H.-C. Schulz-Coulon)}
@@ -47,13 +55,13 @@
 \begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}]
 \tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
 \tikzstyle{damper}=[thick,decoration={markings,
-  mark connection node=dmp,
-  mark=at position 0.5 with
-  {
-    \node (dmp) [thick,inner sep=0pt,transform shape,rotate=-90,minimum width=15pt,minimum height=3pt,draw=none] {};
-    \draw [thick] ($(dmp.north east)+(2pt,0)$) -- (dmp.south east) -- (dmp.south west) -- ($(dmp.north west)+(2pt,0)$);
-    \draw [thick] ($(dmp.north)+(0,-5pt)$) -- ($(dmp.north)+(0,5pt)$);
-  }
+mark connection node=dmp,
+mark=at position 0.5 with
+{
+\node (dmp) [thick,inner sep=0pt,transform shape,rotate=-90,minimum width=15pt,minimum height=3pt,draw=none] {};
+\draw [thick] ($(dmp.north east)+(2pt,0)$) -- (dmp.south east) -- (dmp.south west) -- ($(dmp.north west)+(2pt,0)$);
+\draw [thick] ($(dmp.north)+(0,-5pt)$) -- ($(dmp.north)+(0,5pt)$);
+}
 }, decorate]
 \tikzstyle{ground}=[fill,pattern=north east lines,draw=none,minimum width=0.75cm,minimum height=0.3cm]
 
@@ -612,5 +620,110 @@ Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}
 \item $R_E = \SI{6373}{\kilo\meter}$
 \end{itemize}
 \end{enumerate}
+\subsection{{\bfseries\sffamily TODO} Montag}
+\label{sec-7-4}
+\subsection{Energie}
+\label{sec-7-5}
+\begin{align}
+W &= \int_{\v{r_1}}^{\v{r_2}} \v F \d \v r \\
+&= E_{kin}(\v{r_2}) - E_{kin}(\v{r_1}) \\
+&= E_{pot}(\v{r_2}) - E_{pot}(\v{r_1})
+\end{align}
+Die unteren beiden Gleichungen gelten nur für konservative Kräfte
+\subsection{Leistung}
+\label{sec-7-6}
+\[P = \frac{\d W}{\d t} = \overarrow[\v F]{$\v F =~\text{const}$} \frac{\d \v r}{\d t} = \v F \v c\]
+\[[P] = \si{\newton\meter\per\second} = \si{\joule\per\second} = \si{\watt} = ~\text{Watt}\]
+\subsection{Konservative Kräfte}
+\label{sec-7-7}
+\begin{align}
+W_1 &= \int_{1~\text{Weg1}}^2 \v F\d \v r = E_{pot}(1) - E_{pot}(2) \\
+W_2 &= \int_{1~\text{Weg2}}^2 \v F\d \v r = E_{pot}(1) - E_{pot}(2) \\
+\end{align}
+Geschlossener Weg: $1\to 2\to 1$
+\[W=\oint_c \v F\d \v r = W_1 - W_2 = 0\]
+\subsubsection{Definition}
+\label{sec-7-7-1}
+Kräfte, für die die Arbeit unabhängig vom Weg ist nennt man konservativ
+Für konservative Kräfte gilt:
+\[W=\oint \v F\d \v s = 0\]
+\subsection{Kraftfelder und Potential}
+\label{sec-7-8}
+\[W = \int_{\v{r_1}}^{\v{r_2}}\v F\d \v r\]
+\subsubsection{Definition Kraftfeld}
+\label{sec-7-8-1}
+Eindeutige Zuordnung einer Kraft zu jedem Punkt im Raum:
+\[\v F = \v F(\v r) = \v F(x,y,z) = (F_x(x,y,z),F_y(x,y,z),F_z(x,y,z))\]
+\subsubsection{Beispiel}
+\label{sec-7-8-2}
+Gravitationskraft:
+\begin{align}
+\v F(\v r) &= -G\frac{m M}{r^2}\v e_r \\
+&= f(r) \v e_r
+\end{align}
+Kugelsymmetrisch, Zentralfeld
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze Vektorfeld
+\label{sec-7-8-2-1}
+\item {\bfseries\sffamily TODO} Skizze Feldlinien
+\label{sec-7-8-2-2}
+\end{enumerate}
+\subsubsection{Feldlinien:}
+\label{sec-7-8-3}
+\begin{itemize}
+\item Feldlinien sind immer tangential zur Kraftrichtung
+\item Feldliniendichte ist proportional zum Betrag der Karft
+\item Feldlinien schneiden sich nie
+\end{itemize}
+\subsubsection{konservative Kraftfelder}
+\label{sec-7-8-4}
+Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfelder
+Für konservative Kraftfelder gilt
+\[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
+\begin{itemize}
+\item $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+\end{itemize}
+\subsubsection{homogenes Kraftfeld}
+\label{sec-7-8-5}
+\[\v F(\v R) = (0,0,F_z)\]
+\begin{itemize}
+\item Weg 1: \[W_1 = \int_{\text{Weg1}}\v F\d \v R = \int_{z_1}^z F_z\d z = F_z(z_2 - z_1)\]
+\item Weg 2: \[W_2 = \int_{\text{Weg2}}\v F\d \v R = \int_{z_1}^z F_z\d z = F_z(z_2 - z_1)\]
+\end{itemize}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} Skizze
+\label{sec-7-8-5-1}
+\end{enumerate}
+\subsubsection{Zentralkraftfeld}
+\label{sec-7-8-6}
+\[\v F(\v r) = f(r)\v e_r\]
+\begin{align}
+W &= \oint\v F\d \v r \\
+&= \int_1^2 f(r)\d r + \int_2^3 \v F\d \v r + \int_3^4 f(r)\d r + \int_4^1 \v F\d \v r \\
+&= 0
+\end{align}
+\subsubsection{Gravitationsfeld}
+\label{sec-7-8-7}
+\begin{align}
+W_{AB} &= \int_A^B\v F\d \v R \\
+&= \int_A^B -G\frac{mM}{r^2}\v e_r\d\v r \\
+&= \int_A^B -G\frac{mM}{r^2}\d r \\
+&= \Big[G\frac{mM}{r + \xi}\Big]_{r_A}^{r_B}
+&= E_{pot}(A) - E_{pot}(B)
+\end{align}
+\[\Rightarrow E_{pot}(A) = -G\frac{mM}{r_A} + \xi\]
+\[\Rightarrow E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
+Potentielle Energie des Gravitationsfelder:
+\[E_{pot}^{grav} = -G\frac{mM}{r}\]
+\subsubsection{d = 1}
+\label{sec-7-8-8}
+\[E_{pot} = -\int F\d x\]
+\[\d E_{pot} = -F\d x\]
+\[-\frac{\d E_{pot}}{\d x} = F\]
+\subsubsection{d = 3}
+\label{sec-7-8-9}
+\[E_{pot} = -\int \v F\d\v r \rightarrow \v F = - "\frac{\d E_{pot}}{\d \v r}"\]
+Gesucht: Ableitung eines Vektors nach einem Skalar.
+Betrachte:\[\Delta E_{pot} = -\v F\Delta \v r = -(F_x \Delta x + F_y \Delta y + F_z \Delta z)\]
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -23,6 +23,7 @@
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
 #+LATEX_HEADER: \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
+#+LATEX_HEADER: \newcommand{\I}]{\imath}
 #+LATEX_HEADER: \makeatother
 
 * Einleitung
@@ -441,10 +442,10 @@
 **** Beweis:
 	 Setze in Binomische Formel $x = 1, y = 1$ beziehungsweise $y = -1 \hfill\square$
 *** Lemma 1.51
-	Sei $m\inR$ nach oben (beziehungsweise nach unten) beschränkt \\
+	Sei $m\in R$ nach oben (beziehungsweise nach unten) beschränkt \\
 	Dann gilt
 	1. $s = \sup M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: s - \varepsilon < x (\geq s)$
-	2. $l=\inf M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: (l \leq) x < l + \varepsilon
+	2. $l=\inf M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: (l \leq) x < l + \varepsilon$
 **** Beweis
 	 Wir beweisen 1. \\
 	 $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \varepsilon$ von $M$ $\Leftrightarrow$
@@ -452,9 +453,10 @@
 *** Lemma 1.52
 	$\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
 **** Beweis
-	 sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \varepsilon= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \fra¢{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
+	 sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \varepsilon= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
 	 \Rightarrow $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
 *** Lemma 1.53 (Bernoullische Ungleichung)
+	<<Lemma 1.53>>
 	\[\Forall x\in [-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
 **** Beweis
 	 Beweis durch Induktion:
@@ -463,10 +465,153 @@
 	   \begin{align}
 	   n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
 	   &\geq (1 + n x) (1 + x) = 1 + nx^2 + (n + 1) x \\
-	   &\geq 1 + (n + 1) x\text{da $x^2 \geq 0$} \tag{\square}
+	   &\geq 1 + (n + 1) x~\text{da $x^2 \geq 0$} \tag{\text{$\square$}}
 	   \end{align}
 *** Folgerung 1.54
 	1. Sei $y\in(1,\infty)$. Dann gilt $\Forall c > 0 \exists n_0 \in \mathbb{N},\Forall n\geq n_0 y^n \in (c,\infty)$ ("Konvergenz" von $y^n$ gegen 0)
-	2. Sei $y \in (-1,1)$. Dann gilt $\Forall \varepsilon > 0\exists n_0 \in \mathbb{N}\Foralln\geq n_0:y^n \in I_\varepsilon (0)$ ("Konvergenz" $y^n$ gegen 0)
+	2. Sei $y \in (-1,1)$. Dann gilt $\Forall \varepsilon > 0\exists n_0 \in \mathbb{N}\Forall n\geq n_0:y^n \in I_\varepsilon (0)$ ("Konvergenz" $y^n$ gegen 0)
 **** Beweis
-	 Für $x = y - 1 > 0$ gilt
+	 1. <<1541>> Für $x = y - 1 > 0$ gilt dann nach [[Lemma 1.53]] \[\underbrace{(1 + x)^n}_y \geq 1 + n x \Rightarrow y^n > n x\]
+		Nach [[Lemma 1.52]] existiert für $c > 0$ ein $n_0 \in \mathbb{N}$ mit $n_0 > \frac{c}{x} \Rightarrow$
+		\[\Forall n\geq n_0: y^n > n x \geq n_0 x \geq \frac{c}{x} x = c \Rightarrow \Forall n\geq n_0: y^n\in(c,\infty)\]
+	 2. Für  $x = \frac{1}{\abs{y}} > 1 \xRightarrow{\text{nach [[1541]] mit } c = \frac{1}{\varepsilon}}$
+		\[\Forall \varepsilon > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\varepsilon}\]
+		\[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\varepsilon} \Rightarrow \abs{y^n} < \varepsilon \hfill \square\]
+*** Satz 1.55 (Existenz der m-ten Wurzel)
+	\[\Forall m\in\mathbb{N}, a\in[a,\infty)~\text{gilt}~\exists ! x\in [0,\infty): x^m = a\]
+**** Beweis (Skizze 1, 2)
+	 Wir geben ein Iterationsverfahren
+	 \[p_3 (x) = m\]
+	 \[a_3 x^3 + a_2 x^2 + a_1 x + a_0, a_3 > 0\]
+	 Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
+	 Diese approximieren wir nach dem *Newton Verfahren* \\
+	 $x_0$ sodass $x_0^m - a \geq 0$
+	 \[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \Leftarrow \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
+	 \[x_{n+1} := \underbrace{x_n - \frac{f(x_n)}{f'(x_n)}}_{F(x_n)} = x_n - \frac{x_n^m - a}{m x_n^{m - 1}}\]
+	 \[= x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))\]
+	 Hoffnung: $x_n \to x^*$
+
+	 [[Skizze 3]]
+
+	 Sei $x_0^m > a$. Wir zeigen
+	 1. <<1.55.1>> $x_n > 0$
+	 2. <<1.55.2>> $x_n^m \geq a$
+	 3. $x_{n + 1} \leq x_n$
+	 *Beweis:*
+	 1. Induktion
+	 2. Induktion
+		- $n = 0, x_0^m \geq \Rightarrow x_0 > 0$, da $a > 0,x_0\geq 0$
+		- $n\to n + 1$ \[x_n > 0, x_n^m\geq a \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m})) \geq 0\]
+		  weil \[x_{n + 1}^n = \underbrace{x_n^m}_{\geq 0} (1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))^m \underbrace{\geq}_{\text{Bernoulli}} x_n^m(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))  = 0\]
+		  \Rightarrow $x_{n + 1} > 0$, da $a > 0$
+	 3. Nach [[1.55.2]]: \[x_n^m \geq a \Rightarrow 0 \leq 1 - \frac{1}{m}(1 - \frac{1}{x_n^m}) \leq 1\]
+		Nach [[1.55.1]]: \[x_m > 0 \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1-\frac{a}{x_n^m})) < x_n\]
+		Wegen [[1.55.1]] ist $M = \{x_n:n\in\mathbb{N}_0\}$ nach unten beschränkt \Rightarrow
+		\[x:= \inf M~\text{existiert}\]
+		Wir wollen zeigen, dass $x^m = a$. Es gilt \[x \leq x_{n + 1} = (1 - \frac{1}{m})x_n + \frac{1}{m}\frac{a}{x^{m -1}_n}\]
+		\[\leq (1 - \frac{1}{m})x_n + \frac{a}{m}\sup \{\frac{1}{x_n^{m - 1}\mid x\in\mathbb{N}_0}\} \]
+	 4. <<1.55.4>> Es gilt nach nach [[1.56.2]]
+		\[a\leq \inf \{x_n^m \mid n\in \mathbb{N}_0\} = (\inf \{x_n \mid n\in \mathbb{N}_0\})^m = x^m\]
+		und damit $x > 0$ \\
+		Ferner gilt
+		\[y = \sup \{\frac{1}{x_n^{m - 1}} \mid n\in\mathbb{N}_0\} = \inf \{x_n^{m - 1}\mid x \in \mathbb{N}_0\}^{-1}\]
+		mit [[Lemma 1.56]] \[= (\frac{1}{\inf\{x_n \mid n\in\mathbb{N}_0\}})^{m - 1} = \frac{1}{x^{m -1}} \Rightarrow a y\leq \frac{a}{x^{m - 1}}\]
+	 5. <<1.55.5>> Von oben wissen wir, dass $x \leq a y$
+		\[\Rightarrow x\leq a y  \leq \frac{a}{x^{m -1}} \Rightarrow x^m \leq a\]
+
+	 Aus [[1.55.4]] und [[1.55.5]] folgt $x^m = a\hfill\square$
+
+*** Lemma 1.56
+	1. Seien für $n\in \mathbb{N}_0:y_n > 0$ und $\inf \{x_n\mid x\in\mathbb{N}_0\} > 0$ \\
+	   Dann gilt \[\sup \{\frac{1}{y_n} \mid n\in \mathbb{N}_0\} = \frac{1}{\inf \{y_n \mid n\in\mathbb{N}_0\}}\]
+	2. <<1.56.2>> Seien für $n\in\mathbb{N}_0,y_n > 0, k\in\mathbb{N}_0$. Dann gilt:
+	   \[\inf \{y_n^k \mid n\in\mathbb{N}_0\} = (\inf \{y_n\mid n\in\mathbb{N}_0\})^k\]
+	(ohne Beweis)
+
+* Komplexe Zahlen
+   *Motivation:* $x^2 + 1 = 0$ nicht lösbar in $\mathbb{R}$ \\
+   Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
+   - <<KA>> (KA) $\{x_1,y_1\} + \{x_2,y_2\} = \{x_1 + x_2, y_2 + y_2\}$
+   - <<KM>> (KM) $\{x_1,y_1\} \cdot \{x_2,y_2\} = \{x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1\}
+** Komplexer Zahlkörper
+   1. Die Menge der Paare $z = \{x,y\} \in \mathbb{R}\times\mathbb{R}$ mit Addition [[KA]] und Multiplikation [[KM]] bildet den Körper $\mathbb{C}$ der *komplexen Zahlen* mit den neutralen Elementn $\{0,0\}$ und $\{1,0\}$
+   2. Die Gleichung $z^2 + \{1,0\} = \{0,0\}$ hat in $\mathbb{C}$ zwei Lösungen, welche mit $\I:= \{0,\pm 1\}$ bezeichnet werden
+   3. Der Körper $\mathbb{R}$ ist mit der Abbildung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ isomorph zu einem Unterkörper von $\mathbb{C}$
+*** Beweis
+	1. Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributibitätsgesetzes verifiziert man durch Nachrechenen. \\
+	   Neutrale Elemente: Wir lösen die Gleichung $a + z = \{0,0\}$ für beliebige gegebene $a\in\mathbb{C},a=\{a_1,a_2\}$
+	   \[\Rightarrow z = \{-a_1, -a_2\}\]
+	   \[a\cdot z = \{1,0\}\]
+	   \[z = \frac{1}{a}:=\{\frac{a_1}{a_1^2 + a_2^2},-\frac{a_2}{a_1^2 + a_2^2}\},~\text{weil}~a\cdot\frac{1}{a}\]
+	   \[\text{weil}~a\frac{1}{a}=\{a_1\frac{a_1}{a_1^2 + a_2^2} + \frac{a_2^2}{a_1^2 + a_2^2},\frac{a_1 a_2}{a_1^2 + a_2^2} - \frac{a_2 a_1}{a_1^2 + a_2^2}\}\]
+	2. $i:= \{0,1\}$ hat die Eigenschaft
+	   \[1 + \I^2 = \{1,0\} + \{0^2 - 1^2, 0\} = \{0,0\} \Rightarrow 1+\I^2 = 0\]
+	   Ähnlich $1 + (-\I)^2 = 0$
+	3. Die Zuordnung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ bildet $\mathbb{R}$ bijektiv auf eine Untermenge von $\mathbb{C}$ ab, welche bezüglich der komplexen Addition und Multiplikation wieder ein Körper ist $\hfill\square$
+** Notation
+   $z = \{x,y\} =: x + \I y,~x,y\in\mathbb{R}$
+   - $x$ ist Realteil $x = \Re{z}$
+   - $y$ ist Imaginärteil $x = \Im{z}$
+   \[z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) = \underbrace{x_1 + x_2}_{\Re (z_1 + z_2)} + \I\underbrace{(y_1 + y_2)}_{\Im (z_1 + z_2)}\]
+   \[z_1 z_2 = (x_1 + \I y_1)(x_1 + \I y_2) = x_1 x_2 + \I y_1 x_2 + \I y_2 x_1 + (\I y_1)(\I y_2) = \underbrace{x_1 x_2 - y_1 y_2}_{\Re (z_1 z_2)} + \I\underbrace{(x_1y_2 + y_1 x_2)}_{\Im (z_1,z_2)}\]
+** Graphische Darstellung
+  \begin{tikzpicture}
+  \begin{axis}[title={Phasenraum des Harmonischen Oszilators},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
+  \addplot3[blue,quiver={u={y},v={-x},scale arrows=0.3},-stealth,samples=15] {y-x};
+  \end{axis}
+  \end{tikzpicture}
+** Bemerkung
+   Die reellen Zahlen  sind durch $\Im z = 0$ charakterisiert.
+   \[z_1 = z_2 \Rightarrow x_1 + \I y_i = x_2 + \I y_2 \Leftrightarrow x_1 = x_2,y_1 = y_2\]
+** Korollar 1.59
+   Jede quadratische Gleichung
+   \[z^2+p z + q = 0,~p,q\in\mathbb{R}\]
+   besitzt in $\mathbb{C}$ genau zwei Lösungen
+   \[z_1,2 = \begin{cases} -\frac{1}{2}\pm \frac{1}{2}\sqrt{p^2 - 4q} & p^2 \geq 4q \\ -\frac{1}{2}\pm \I\frac{1}{2}\sqrt{\abs{p^2 - 4q}} & p^2 - 4q < 0 \end{cases} \]
+** Fundamentalsatz der Algebra
+   Jede algebraische Gleichung der Form \[z^n + \sum_{i = 0}^{n - 1} a_i z^i = 0\]
+   hat in $\mathbb{C}$ mindestens eine Lösung. Beweis \rightarrow Funktionstheorie
+** Betrag
+   Für komplese Zahlen lässt sich ein Absolutbetrag definieren
+   \[r = \abs{z} = \sqrt{x^2 + y^2}\]
+   Damit:
+   \begin{align}
+   x &= r\cos{\alpha}
+   y &= r\sin{\alpha}
+   z &= x + i y = r(\cos{alpha} + \I\sin{\alpha})
+   \end{algin}
+** Konjugation
+   Zu einem $z = x + \I y\im\mathbb{C}$ definieren wir eine konjugierte komplexe Zahl \[\bar z = x - \I y \im\mathbb{Z}\]
+   Dann gilt \[\abs{z}^2 = x^2 + y^2 = z\bar z\]
+   Aus der Definition:
+   - $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
+   - $\overline{z_1 * z_2} = \overline{z_1} * \overline{z_2}$
+   - $x = \frac{z + \bar z}{2}$
+   - $y = \frac{z - \bar z}{2\I}$
+* Folgen
+  Eine Folge von reellen Zahlen wird gegeben durch eine Abbildung \[\mathbb{N}_0 \to \mathbb{R},n\mapsto x_n\]
+  Wir bezeichnen die Folge auch mit $(x_n)_{n\in\mathbb{N}_0}$
+
+  Topologische Struktur auf Mengen.
+  - Abstände in $\mathbb{R}^1$ Betrag $\abs{x - y}$ $\xrightarrow{\text{Verallgemeinerung}}$ Norm / Metrik
+  - Umgebung in $\mathbb{R}^1$ $\varepsilon$-Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
+
+  Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder \mathbb{C})
+** Definition 2.1 Konverenz
+   Wir sagen, dass die Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) gegen den Grenzwert (oder Limes) $a\in\mathbb{K}$ konvergiert
+   \[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
+   wenn für beliebiges $\varepsilon > 0$ von einem $n_\varepsilon \in\mathbb{N} an gilt
+   \[\abs{a_n - a} < \varepsilon,n\geq n_\varepsilon\]
+   \[\Leftrightarrow \Forall\varepsilon > 0\exists n\varepsilon \in\mathbb{N}:\Forall n\geq n_\varepsilon a_n \in I_\varepsilon(a)\]
+** Folgerung 2.2
+   Sei $(a_n)_{n\in\mathbb{N}}$ eine monoton wachsende beziehungsweise fallende Folge reeller Zahlen $M=\{a_n\mid n\in\mathbb{N}\}$ und sei nach oben beziehungsweise unten beschränkt. Dann gilt \[a_n\to\sup M, a_n\to\inf M\]
+   Beweis \to Übungen
+** Definition 2.3 Cauchy Folgen
+   Eine Folge $(a_n)_{n\in\mathbb{N}}$ heißt Cauchy-Folge wenn:
+   \[\Forall\varepsilon > 0\exists n_\varepsilon \in\mathbb{N}\Forall n,m \geq n_\varepsilon: \abs{a_n - a_m} < \varepsilon \]
+   (Cauchy Kriterium)
+** Definition 2.4 Teilfolge
+   Eine Teilfolge einer gegebenen Folge $(a_n)_{n\in\mathbb{N}}$ ist eine Auswahl $(a_{n_k})_{k\in\mathbb{N}}$, wobei $a_{n_k}$ auch die Glieder von $(a_n)_{n\in\mathbb{N}}$ sind
+*** Beispiel 2.5
+	\[a_n = \frac{1}{m}\] ist eine Cauchy-Folge. Für ein $\varepsilon > 0$ wählen wir $n_\varepsilon$ so dass $n_\varepsilon > \frac{1}{\varepsilon}$. Für beliebiges $n\geq m > N$
+	\[\abs{a_m - a_n} = \abs{\frac{1}{m} - \frac{1}{n}} = \frac{n - m}{m n} \leq \frac{n}{m n} = \frac{1}{m} < \frac{1}{n_\varepsilon} < \varepsilon\hfill\square\]
