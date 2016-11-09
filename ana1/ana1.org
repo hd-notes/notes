@@ -59,7 +59,7 @@
 ****** Beweis
 	   Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
 	   $\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
-	   Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeight)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
+	   Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeigt)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
 	   Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
 *** Summenzeichen und Produktzeichen
 **** Summenzeichen
@@ -69,7 +69,7 @@
 	 \[\prod_{k=m}^n a_k := \begin{cases} a_m \cdot ... \cdot a_n & \text{falls}~n\geq m\\ 1 & \text{falls}~n<m~\text{(sog. leeres Produkt)}\end{cases}\]
 ** Mengen
 *** Definition
-	(Georg cantor 1885) Unger einer _Menge_ verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
+	(Georg cantor 1885) Unter einer _Menge_ verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
 	$M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeht, ab gilt
 	- $x\in M$ (x Element von M)
 	- x \not\in M (x kein Element von M)
@@ -77,10 +77,10 @@
 	\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \Leftrightarrow A(x)\]
 *** Mengenrelationen
 	- Mengeninklusion $A\subseteq M$ ($A$ ist eine Teilmenge von $M$)
-	  \[\Forall x: (x\in A \Rightarrow x\in M)\], zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
+	  \[\Forall x: (x\in A \Rightarrow x\in M)\] ,zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
 	- \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
 	- \[A \subset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
-	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beipsiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
+	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beispiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
 	- Durchschnitt \[A\cap B := \{x\mid x\in A \wedge x\in B\}\]
 	- Vereinigung \[A\cup B := \{x \mid x\in A \vee x\in B\}\]
 	- Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch $B^c$)}\]
@@ -237,7 +237,7 @@
 	Sei $A$ eine Menge\\
 	- $A$ heißt endlich mit $\abs{A} = n$ Elementen ist äquivalent zu
 	  \[\abs{A} = \begin{cases} A = \emptyset &(n = 0) \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
-	- $A$ heißt abzählbar undendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
+	- $A$ heißt abzählbar unendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
 	- $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
 **** Beispiel
 	 $\mathbb{Z}$ ist abzählbar unendlich
@@ -306,7 +306,7 @@
 	  $g = \sup B$ (kleinste obere Schranke, _supremum_, obere "Grenze" von $B$ in $A$)
 	  $g = \inf B$ (größte obere Schranke, _infimum_, untere "Grenze" von $B$ in $A$)
 *** Bemerkung
-	1. Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nah Definition.
+	1. Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nach Definition.
 	   \[s\in \ubar{S}(B) \Rightarrow \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
 	   Ebeso gilt: $\exists\min B = \ubar{b} \Rightarrow \inf B = \ubar{b}$
 *** Beispiel
@@ -344,7 +344,7 @@
 **** Mehtode der Cauchy-Folgen
 	 Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalenter "Cauchy Folgen" aus $\mathbb{Q}$ (später)
 *** Definition 1.37
-	- \[x\in \mathbb{R}~\text{heißt}~\begin{cases}\text{positiv} & 0 < x \\ \text{nichtnegativ} & 0\leq x \\ \text{negativ} & x < 0 \\ \text{nichtpositiv} x\geq 0 \end{cases}\]
+	- \[x\in \mathbb{R}~\text{heißt}~\begin{cases}\text{positiv} & 0 < x \\ \text{nichtnegativ} & 0\leq x \\ \text{negativ} & x < 0 \\ \text{nichtpositiv} & x\geq 0 \end{cases}\]
 	- Die Betragsfunktion $\abs \cdot:\mathbb{R} \to \mathbb{R}$ wird definiert durch $\abs{x} = \max \{x,-x\} = \begin{cases} x & x \geq 0 \\ -x & x < 0\end{cases}$
 	- Die Vorzeichen- oder Signumfunktion \[\sgn:\mathbb{R}\to\mathbb{R},\sgn{x} = \begin{cases}\frac{x}{\abs{x}} & x \neq 0 \\ 0 & x = 0\end{cases} = \begin{cases} 1 & x > 0 \\ -1 & x < 0 \\ 0 & x = 0\end{cases}\]
 *** Satz 1.38
