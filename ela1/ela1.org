@@ -69,6 +69,7 @@
 	 - Symbol: $\Rightarrow$
 	 - Wahrheitstafel:
        | $A$ | $B$ | $A\Rightarrow B$ |
+       |-----+-----+------------------|
        | w   | w   | w                |
        | w   | f   | f                |
        | f   | w   | w                |
@@ -142,7 +143,7 @@
 	$\exists x:~A(x)$ ist gleichbedeutend mit "Es existiert ein x, für das $A(x)$ wahr ist" (hierbei ist "existiert ein x" im Sinne von "existiert mindestens ein x" zu verstehen) \\
 	Beispiel:
 	\[\exists n\in\mathbb{N}:~n>5\quad\text{(w)}\]
-	$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist" \
+	$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist" 
 *** Allquantor
 	$\Forall x:~A(x)$ ist gleichbedeutend mit "Für alle x ist A(x) wahr"
 	Beispiel:
@@ -324,7 +325,7 @@
 	 2. Sei $M = \mathcal{P}(\{1,2,3\})$. $\subseteq$ ist auf $M$ eine Halbordung, aber keine Totalordung (es ist zum Beispiel weder $\{1\} \subseteq \{3\}$ noch $\{3\}\subseteq \{\}$)
 **** Anmerkung
 	 Wegen der Analogie zur $\leq$ auf $\mathbb{N}$ bezeichnen wir Halbordnungen in der Regel mit $\leq$
-*** Größtes / kleistes Element
+*** Größtes / kleinstes Element
 	$(M, \leq)$ halbgeordnete Menge, $a\in M$ \\
 	$a$ heißt ein
 	- größtes Element von $M\xLeftrightarrow{\text{Def}}$ Für alle $x\in M$ gilt $x\leq a$
@@ -335,7 +336,7 @@
 ***** Beweis
 	  Es seien $a,b\in M$ größte Elemente von $M$ \\
 	  $\Rightarrow x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
-	  Außerdem: $x \leq b für alle $x\in M$, also auch $a\leq b$ \\
+	  Außerdem: $x \leq b$ für alle $x\in M$, also auch $a\leq b$ \\
 	  $\xRightarrow{\text{Antisymmetrie}} a = b$ \\
 	  Analog für kleinstes Element
 ***** Anmerkung
@@ -368,12 +369,13 @@
 	 $M$ Menge aller Bürgerinnen und Bürger Deutschlands. \\
 	 Wir definieren für $a,b\in M$ $a\sim b \xLeftrightarrow{\text{Def}} a$ und $b$ sind im selben Jahr geboren. \\
 	 $\sim$ ist ein Äquivalenzrelation. \\
-	 Jerôme Boateng wrude 1988 geboren. $[\text{Jerôme Boateng}] = \{b\in M\mid b~\text{ist im selben Jarh geboren wei Jerôme Boateng}\} = \{b\in M\mid b~\text{wurde 1988 geboren}\}$
+	 Jerôme Boateng wurde 1988 geboren. \\
+	  $[\text{Jerôme Boateng}] = \{b\in M\mid b~\text{ist im selben Jahr geboren wie Jerôme Boateng}\} = \{b\in M\mid b~\text{wurde 1988 geboren}\}$
 	 Weitere Vertreter von $[\text{Jerôme Boateng}]$ sind zum Beispiel Mesut Özil, Mats Hummels.
 	 Es ist $[\text{Jerôme Boateng}] = [\text{Mesut Özil}] = [\text{Mats Hummels}]$.
 	 Man sieht in diesem Beispiel: Die Menge $M$ zerfällt komplett in verschiedene Äquivalentzklassen:
 	 - Jeder Bürger / jede Bürgerinn Detuschalnds ist in genau einer Äquivalenzklasse enthalten
-	 - Jede zwei Äquivalentklasse sind endweder gleich oder disjunkt (haben leeren Durchschnitt)
+	 - Jede zwei Äquivalentklasse sind entweder gleich oder disjunkt (haben leeren Durchschnitt)
 **** Bemerkung
 	 $M$ Menge, $\sim$ Äquivalenzrelation auf $M$ \\
 	 Dann gilt:
@@ -386,7 +388,7 @@
 		 1. Es gibt eine Äquivalenzklasse, in der $a$ liegt, denn $a\in [a], denn $a\sim a$
 		 2. Ist $a\in[b] und a\in[c], dann ist [b]=[c] (d.h. $a$ liegt in höchstens einer Äquivalenzklasse) \\
 			denn: Seien $b,c\in M$ mit $a\in[b]$ und $a\in[c]$
-			$\Rightarrow a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a und a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
+			$\Rightarrow a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a$ und $a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
 			Behautptung $[b] =[c]$
 			denn: "$\subseteq$" Sei $x\in [b] \Rightarrow x\sim b \xRightarrow{Transitivität}^{b\sim c} x\sim c \Rightarrow x\in [c]$
 			denn: "$\supseteq$" Sei $x\in [c] \Rightarrow x\sim c \xRightarrow{Transitivität}^{c\sim b} x\sim b \Rightarrow x\in [b]$
@@ -400,8 +402,8 @@
 	  \[M= \{1,2,3,-1,-2,-3\}\]
 	  Für $a,b,c \in M$ setzen wir $a\sim b \xLeftrightarrow{\text{Def.}} \abs{x} = \abs{b}$
 	  Das ist eine Äquivalenzrelation auf $M$
-	  Es ist $[1] = \{1,-1\},[2]=\{2,-2\},[3]=\{3,-3\}
-	  Somit: $M/sim := \{[1],[2],[3]\} = \{\{1,-1\},\{2,-2\},\{3,-3\}\}
+	  Es ist $[1] = \{1,-1\},[2]=\{2,-2\},[3]=\{3,-3\}$
+	  Somit: $M/sim := \{[1],[2],[3]\} = \{\{1,-1\},\{2,-2\},\{3,-3\}\}$
 ***** Anmerkung
 	  Der Übergang zur Äquivalenzklassen soll (für eine jeweils gegebene Relation) irrelevante Informationen abstreifen.
 ** Abbildungen
@@ -516,7 +518,8 @@
 		- Eindeutigkeit: Seien $m_1,m_2 \in M  mit \(f(m_1) = n, f(m_2) = n \Rightarrow f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
 	  - 2. \Rightarrow 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
 		zz: Ex existert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
-		- Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig bestimmte Element $m\in M$ mit $f(m) = n$}\) \\
+		- Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\ 
+		  bestimmte Element $m\in M$ mit $f(m) = n$}\) \\
 		  Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~text{das heißt}~ g\circ f = id_M\]
 		  und für $n\in N$ ist $(f\circ g)(n) = f(g(n)) = n$ also $f\circ g = id_N$
 		- Eindeutigkeit: Es seinen $g_1,g_2:N\to M$ mit $g_i \circ f = id_M, f\circ g_i = id_N$ für $i = 1,2$ \\
