@@ -108,7 +108,7 @@ mark=at position 0.5 with
    - Gefühl für Größenordnungen und rationale Zusammenhänge
 *** Beispiel
 	Fermi-Probleme:
-	- Anzahl der Klabirstimmer in Chicago?
+	- Anzahl der Klavierstimmer in Chicago?
 	- Anzahl der Autos in einem 10km Stau?
 	- Anzahl von Fischen im Ozean
 
@@ -121,7 +121,7 @@ mark=at position 0.5 with
 	| Masse | Kilogramm | $\si{\kg}$     |
 	| Zeit  | Sekunden  | $\si{\second}$ |
 **** Meter
-	 Strecke, die das Lich im Cakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
+	 Strecke, die das Licht im Vakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
 **** Sekunde
 	 Das $\SI{9192631770}{}$-fache  der Periodendauder der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
 **** Kilogramm
@@ -138,7 +138,7 @@ mark=at position 0.5 with
 
 * Mechanik
   Kinematik: Beschreibung der Bewegung
-  Dynamik: Ursache der Berwegung
+  Dynamik: Ursache der Bewegung
 
 ** Kinematik des Massenpunktes
 *** Eindimensionale Bewegung
@@ -153,7 +153,7 @@ mark=at position 0.5 with
 **** Freier Fall
 	 $a = \text{const.}$ (Behauptung)
 	 \[a=\ddot{x} = \text{const} = \dot{v}\]
-	 $\rightarrow§ Integration: \[v(t) = \int_0^t a\mathrm{d}t + v_0 = a t + v_0\]
+	 $\rightarrow$ Integration: \[v(t) = \int_0^t a\mathrm{d}t + v_0 = a t + v_0\]
 	 \[x(t) = x_0 + \int_0^t v(t)\mathrm{d}t = x_0 + \int_0^t (a t + v_0)\mathrm{d}t = \frac{1}{2}a t^2 + v_0 t + x_0\]
 	 Bei unserem Fallturm
 	 \[x(t) = \frac{1}{2}a t^2 \rightarrow a = \frac{2 x}{t^2}\]
@@ -296,7 +296,7 @@ mark=at position 0.5 with
 	 \[\v F = \dot{\v P}~\text{beziehungsweise}~\v F = m\v a\]
 ***** Trägheitsprinzip (Impulserhaltung)
 	  \[\v P = m\v v = \text{const},~\v P = 0~\text{für}~\v F = 0\]
-**** Expermiment
+**** Experiment
 	 \[\v F_G = \underbrace{m\v g}_{Kraft} = \underbrace{(m + M)}_{Trägheit}\v a = m_{\text{ges}}\v a\]
 	 \[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{text{ges}}}g\]
 ***** Erwartung:
@@ -341,11 +341,11 @@ mark=at position 0.5 with
 	  - Flaschenzug, Seilkräfte (TODO Skizze)
 * Verschiedene Kräfte und Kraftgesetze
 ** Gravitation (TODO Skizze)
-   Eperimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals cavendish)
+   Eperimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals Cavendish)
 *** Anziehungskraft zweier Massen
 	$m_1,m_2$ Massen, Newtonsches Gravitaitonsgesetz:
 	\[\v{F_G} = -G\frac{m_1 m_2}{r^2}\v{e_r}\]
-	mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}
+	mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}$
 *** Erdbeschleunigung
 	\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \Rightarrow g\approx \SI{9.81}{\meter\per\second\squared}\]
 	(mittleres $g$) \\
@@ -406,11 +406,11 @@ mark=at position 0.5 with
 	 - Gewicht ruhte: $\v{F}_Z = - \v{F}_R \to a = 0, v = 0$
 	 - Gewicht setzt sich in Bewegung: $\abs{\v{F}_Z} > \abs{\v{F}_R} \to a > 0,v$ steigt an
 	 - Gewicht gleitet: $\v{F}_Z = - \v{R}_R \to a = 0, v =~\text{const.}~\neq 0$ mit $\v v =~\text{const}~$
-	 Reibugskraft nimmt ab, sobald das Gewicht bewegt wir.
+	 Reibugskraft nimmt ab, sobald das Gewicht bewegt wird.
 	 - Haftreibung $F_H$ \\
 	   Schwellenwert für Zugkraft um Körper zu bewegen
 	 - Gleitreibung $F_G$ \\
-	   Reibungskreaft bei bewegtem Körper
+	   Reibungskraft bei bewegtem Körper
 
 \begin{tikzpicture}
 
@@ -453,7 +453,7 @@ mark=at position 0.5 with
    - $a_1$ = effektive Kontaktfläche eines Einzelatoms
    Also: \[F_R \sim \sum \frac{a_i}{A} \sim F_N\]
    - Haftreibung: Verzahnung der Oberflächen mit minimalen Abstand
-   - Gleitreibung: Minimaler Abstand wird aufgrund der Bewegung nicht erreicht
+   - Gleitreibung: Minimaler Abstand wird auf Grund der Bewegung nicht erreicht
 ** Schiefe Ebene: Messung der Reibungskraft (Skizze)
    Kräftegleichgewicht: $F_H = F_R$
    \[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
@@ -471,7 +471,7 @@ mark=at position 0.5 with
 	- $\theta$ steigt mit $\omega$ an
 	- $\theta(\omega)$ ist unabhängig von Masse
 *** Beispiel 2 Geostationärer Satellit
-	Zetripetal = Gravitationskraft \\
+	Zentripetal = Gravitationskraft \\
 	\[m\omega^2 R = G\frac{m M_E}{R^2}\]
 	Geostationär: $\omega = \frac{2\pi}{\SI{24}{\hour}} = \frac{2\pi}{24\cdot\SI{3600}{\second}} = \SI{7.27e-5}{\per\second}$
 	\[R^3 = \frac{G M_E}{\omega^2} \rightarrow R = \SI{42312}{\kilo\meter}\]
@@ -479,7 +479,7 @@ mark=at position 0.5 with
 	- $G = \SI{6.67e-11}{\meter\cubed\per\kilo\gram\second\squared}$
 	- $M_E = \SI{6e24}{\kilo\gram}$
 	- $R_E = \SI{6373}{\kilo\meter}$
-* Arbeit Energie Leistung
+* Arbeit, Energie, Leistung
 ** Arbeit
    \[\Delta W = \v F \v x = F_x \Delta x + F_y \Delta y + F_z \Delta z\]
    \[\d W = \lim_{\Delta r \to 0} \Delta W = \lim_{\Delta r \to 0} \v F\Delta \v r = \v F \d \v r \]
@@ -494,7 +494,7 @@ mark=at position 0.5 with
 	\[W = \int_{(0)}^{(1)} m g\d x + \int 0\d y + \int 0\d z = m g \Delta x \]
 *** Beispiel Kreisbahn (\Rightarrow Gravitation)
 	\[W = \int_A^B \v F\d \v r = 0\]
-** kinetische Energeie
+** kinetische Energie
    \[k = \frac{1}{2} g t^2\]
    \[v = g t\]
    \[v^2 = g^2 t^2\]
@@ -502,7 +502,7 @@ mark=at position 0.5 with
    \[W = \int_0^h F_G \d x = F_G\int_0^h\d x = F_G h = m g h = \frac{1}{2} m v^2\]
    - Kinetische Energie: $E_{kin}$
 	 \[E_{kin} = \frac{1}{2} mv^2\quad [E_{kin} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}]\]
-   - Die Zunahme (beziehungsweise Abnahme) der kinetischen Energe eines Körpers ist gleich der ihm zugeführten (beziehungsweise von ihm gelieferten) Arbeit (keine Reibung)
+   - Die Zunahme (beziehungsweise Abnahme) der kinetischen Energie eines Körpers ist gleich der ihm zugeführten (beziehungsweise der von ihm gelieferten) Arbeit (keine Reibung)
    \begin{align}
    W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = \int_{\v{r_1}}^{\v{r_2}} m\dd{\v v}{t}\d \v r = \int_{\v{v_1}}^{\v{v_2}} m\dd{\v r}{t}\d \v v\\
    &= \int_{\v{v_1}}^{\v{v_2}} m \v v \d \v r = \frac{1}{2}m v_2^2 - \frac{1}{2}m v_1^2
@@ -513,12 +513,12 @@ mark=at position 0.5 with
    \[F = k\xi\]
    \[W = \int_0^\xi k\xi'\d\xi' = \frac{1}{2}k\xi^2\]
 ** Bemerkung
-   Arbeit $W = \int_{\v{r_1}}^{\v{r_2}} \v F\d \v F$ gilt immer, Symbol fpr Linienintegral meist weggelassen.
+   Arbeit $W = \int_{\v{r_1}}^{\v{r_2}} \v F\d \v F$ gilt immer, Symbol für Linienintegral meist weggelassen.
    - kinetische Energie $E_{kin} = \frac{1}{2}mv^2$
    - potentielle Energie
 	 - $E_{pot} = \frac{1}{2}mx^2$ \hfill (Verformen)
 	 - $E_{pot} = m g h$ \hfill (Lage)
-** Umwandlung von Energi
+** Umwandlung von Energie
    \[\d E_{kin} = F\d x = -\d E_{pot}\]
    Gilt nur für konservative Kräfte!
    \begin{align}
@@ -549,7 +549,7 @@ mark=at position 0.5 with
    Geschlossener Weg: $1\to 2\to 1$
    \[W=\oint_c \v F\d \v r = W_1 - W_2 = 0\]
 *** Definition
-	Kräfte, für die die Arbeit unabhängig vom Weg ist nennt man konservativ
+	Kräfte, für die die Arbeit unabhängig vom Weg ist nennt man konservativ.
 	Für konservative Kräfte gilt:
 	\[W=\oint \v F\d \v s = 0\]
 ** Kraftfelder und Potential
@@ -614,7 +614,7 @@ mark=at position 0.5 with
 	 \end{align}
 	 Gilt nur für konservative Kräfte
 **** Gradient
-	 Der Gradient eines Skalarfeldes ist ein Vektorfeld, dass in jedem Punkt in dei Richtung des steilsten Anstiegs der skalaren Größe Zeit
+	 Der Gradient eines Skalarfeldes ist ein Vektorfeld, dass in jedem Punkt in die Richtung des steilsten Anstiegs der skalaren Größe zeigt.
 ***** Notation:
 	  \[\v F = -\grad E_{pot}\]
 	  \[\v F = - \v \nabla E_{pot}, \v \nabla = (\frac{\partial}{\partial x}, \frac{\partial}{\partial z}, \frac{\partial}{\partial z})\]

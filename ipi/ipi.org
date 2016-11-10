@@ -71,11 +71,13 @@
 	- Unterhaltung: Spiele, special effect im Film
 * Wie unterscheidet sich Informatik von anderen Disziplinen?
 ** Mathematik
-   Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$
-   Informatik: Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann.
-   Quadratwurzel: $y = \sqrt{x} \Leftrightarrow y \geq 0 \wedge y^2 = x (\Rightarrow x > 0)$
+   Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$ \\
+   Informatik: \\
+   Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann. \\
+   Quadratwurzel: $y = \sqrt{x} \Leftrightarrow y \geq 0 \wedge y^2 = x (\Rightarrow x > 0)$ \\
    Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
-   iteratives Verfahren: Initial Guess $y^{(0)} = 1$
+   iteratives Verfahren: \\ 
+   Initial Guess $y^{(0)} = 1$
    schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
 * Informatik
   Lösugswege, genauer Algorithmen
@@ -150,8 +152,9 @@
      | carry = 1 | (1.0)       | "0"      |
      | carry = 1 | $\emptyset$ | "1"      |
 	 *Wichtig:* In jedem Zustand muss für *alle möglichen* Ereignisse eine Aktion und Folgezustand definiert werden.
-	 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also ein "Bug"
-	 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" \Rightarrow Übergang nach "Fehler", Aktion: ausgeben einer Fehlermeldung
+	 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen "Bug".
+	 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" \Rightarrow Übergang nach "Fehler",
+	 Aktion: Ausgeben einer Fehlermeldung
 ***** TODO Skizze Fehlermeldung
 	  Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
 	  - Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächnis")
@@ -179,12 +182,12 @@
 \end{center}
       Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
 	  Spendiert man zusätzlichen Specher, geht mehr:
-	  - Automat mit Stak-Speicher (Stapel oder Keller) \Rightarrow Kellerautomat (Kontextfreie Sprachen)
+	  - Automat mit Stack-Speicher (Stapel oder Keller) \Rightarrow Kellerautomat (Kontextfreie Sprachen)
 	  - Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles auführen, was man intuitiv für berechenbar hält
       Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
 	  Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
 	  Frage: Gibt es einen universellen Algorithms für alle berechenbare Probleme?
-	  Betrache formale Algorithmusbeschribung als Teil der Eingabe des universellen Algorithmus.
+	  Betrache formale Algorithmusbeschreibung als Teil der Eingabe des universellen Algorithmus.
 * Substitutionsmodell (funktionale Programmierung)
   - einfaches Modell für arithmetische Berechnung "Taschenrechner"
   - Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißten "Literale"
@@ -193,7 +196,7 @@
   - Funktionsaufrufe können verschachtelt werden, das heißt Argumente kann Ergebnis einer anderen Funktion sein
 	- mul(add(1,2),sub(5,3)) \rightarrow 6
 ** Substitutionsmodell
-   Man kann einen Funktionsaufruf, deessen Argument vekannt ist (das heißt Zahlen sind) durch den Wert des Ergebnisses ersetzen ("substituieren"). Geschachtelte Ausdrücke lassen sich so von innen nach außen auswerten.
+   Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen sind) durch den Wert des Ergebnisses ersetzen ("substituieren"). Geschachtelte Ausdrücke lassen sich so von innen nach außen auswerten.
    \[mul(add(1,2),sub(5,3))\]
    \[mul(3,sub(5,3))\]
    \[mul(3,2)\]
@@ -205,12 +208,12 @@
    - Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "%"
    - mul(add(1,2),sub(5,3)) \Leftrightarrow ((1+2)*(5-3))
 	 - oft besser, unter anderem weil man Klammer weglassen darf
-	   1. "Punkt vor Strichrechnung" 3+4*5 \Leftrightarrow 3+(4*5), mul, div, mod binden stärker als add,sub
+	   1. "Punkt vor Strichrechnung" 3+4*5 \Leftrightarrow 3+(4*5), mul, div, mod binden stärker als add, sub
 	   2. Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
 		  1+2+3-4+5 \Leftrightarrow ((((1+2)+3)-4)+5)
 	   3. äußere Klammer kann man weglassen (1+2)\Leftrightarrow 1+2
    - Computer wandeln Infix zuerst in Prefix Notation um
-	 1. weggelassene Klammer weider einfüger
+	 1. weggelassene Klammer wieder einfügen
 	 2. Operatorensymbol durch Funktionsnamen ersetzen und an Prefix-Position verschieben
 		\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
 		\[(((1 + 2) + ((3 * 4) / (1 + 5))) - 2)\]
@@ -220,13 +223,13 @@
 		\[sub(5, 2)\]
 		\[2\]
 ** Bäume
-   - bestehen aus Knoten unmd Kanten (Kreise und Pfeile)
+   - bestehen aus Knoten und Kanten (Kreise und Pfeile)
    - Kanten verbinden Knoten mit ihren Kind-knoten
    - jeder Koten (außer der Wurzel) hat genau ein Elternteil ("parent node")
    - Knoten ohne Kinder heißen Blätter ("leaves / leaf node")
    - Teilbaum
 	 - wähle beliebigen Knoten
-	 - entferne temporärdessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Tailbaum des Orginalbaumes)
+	 - entferne temporär dessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Teilbaum des Orginalbaumes)
    - trivialer Teilbaum hat nur einen Knoten
    - Tiefe: Abstand eines Knotens von der Wurzel (Anzahl der Kanten zwischen Knoten und Wurzel)
 	 - Tiefe des Baums: maximale Tiefe eines Knoten
@@ -270,9 +273,9 @@
   - optimiert für die Hardware
   - Gegensatz: höhere Programmiersprachen (c++)
 	- optimiert für Programmierer
-  - Compiler oder Interpreter übersetzen Hoch- in Maschienensprache
-** Umwandlung in Maschienensprache
-  1. Eingaben und (Zwischen) Ergebnisse werden in Speicherzellen abgespeichert \Rightarrow jeder Knoten im Baum bekommt eine Speicherzelle
+  - Compiler oder Interpreter übersetzen Hoch- in Maschinensprache
+** Umwandlung in Maschinensprache
+  1. Eingaben und (Zwischen)-Ergebnisse werden in Speicherzellen abgespeichert \Rightarrow jeder Knoten im Baum bekommt eine Speicherzelle
   2. Speicherzellen für Eingaben initialisieren
 	 - Notation: SpZ \leftarrow Wert
   3. Rechenoperationen in Reihenfolge des Substitutionsmodell ausführen und in der jeweiligen Speicherzelle speichern
@@ -287,7 +290,7 @@
 	   | mul    | 4    |
 	   | div    | 5    |
 * Funktionale Programmierung
-  - bei Maschienensprache wreden Zweischeergebnisse in Speicherzellen abgelegt
+  - bei Maschienensprache werden Zwischenergebnisse in Speicherzellen abgelegt
   - das ist auch in der funktionalen Programmierung eine gute Idee
   - Speicherzellen werden duch Namen (vom Programmierer vergeben) unterschieden
 ** Beispiel
@@ -304,9 +307,9 @@
    \[x_1\leftarrow p + d\]
    \[x_2\leftarrow p - d\]
 ** Vorteile von Zwischenergebnissen
-   1. lesabrer
-   2. redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der initialisierung nicht mehr verändert werden
-   3. Speicherzellen und Namen sind nützlich um Argumente an Fuktionen zu übergeben \Rightarrow Definition eigener Funktionen
+   1. lesbarer
+   2. redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der Initialisierung nicht mehr verändert werden
+   3. Speicherzellen und Namen sind nützlich um Argumente an Funktionen zu übergeben \Rightarrow Definition eigener Funktionen
 	  #+BEGIN_SRC cpp
 	  function sq(x) {
 		 return x * x
@@ -338,8 +341,10 @@
    - eigene Funktionen in C++
 	 #+BEGIN_SRC cpp
 	 // Kommentar (auch /* */)
-	 type_ergebnis fname(type_arg1 name1, ...) { // Signatur / Funkitonskopf / Deklaration
-		 return ergebnis;                        /* Funktionskörper / Definition / Implementation */
+	 type_ergebnis fname(type_arg1 name1, ...) {
+	     // Signatur / Funkitonskopf / Deklaration
+		 return ergebnis;                      
+		 /* Funktionskörper / Definition / Implementation */
 	 }
 	 #+END_SRC
 	 - ganze Zahl quadrieren:
@@ -348,7 +353,7 @@
 		   return x*x;
 	   }
 	   #+END_SRC
-	 - reelle zahl quadrieren:
+	 - reelle Zahl quadrieren:
 	   #+BEGIN_SRC cpp
 	   double sq(double x) {
 		   return x*x;
