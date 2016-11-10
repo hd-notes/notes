@@ -25,6 +25,23 @@
 #+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
 #+LATEX_HEADER: \renewcommand{\v}[1]{\vec{#1}}
 #+LATEX_HEADER: \usepackage{pgfplots}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \theoremstyle{definition}
+#+LATEX_HEADER: \newtheorem{defn}{Definition}
+#+LATEX_HEADER: \theoremstyle{plain}
+#+LATEX_HEADER: \newtheorem{thm}{Satz}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \usepackage{etoolbox}
+#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
+#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
+#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \reneqcommand*{\proofname}{Beweis}
 
 Einleitung: \\
 - Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
@@ -179,13 +196,13 @@ Einleitung: \\
 **** Üben:
 	 Schraubenbahn; $t_0 = 0$, $\vec{x_0} = \left(R, 0, 0), v_0 = (0, R\omega, v_0\right)$
 	 Es folgt:
-	 \begin{align}
+	 \begin{align*}
 	 &\vec{v}(t) ) (0, R\omega, v_0) + \int_0^t \mathrm{d}t' ( -R\omega^2)(\cos{\omega t', \sin{\omega t'}, 0})\\
 	 =& (0, R\omega, v_0) + (-R\omega^2)(\frac{1}{\omega}\sin{\omega t'}, -\frac{1}{\omega}\cos{\omega t'}, 0)\mid_0^t\\
 	 =& (0, R\omega, v_0) - R\omega (\sin{\omega t}, -\cos{\omega t}, 0) - (0, -1, 0)\\
 	 =& (-R\omega\sin{\omega t}, R\omega + R\omega\cos{\omega t} - R\omega, v_0)\\
 	 =& (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)
-	 \end{align}
+	 \end{align*}
 **** Bemerkung
 	 Man kann Integrale über Vektoren auch durch Riemansche Summen definieren:
 	 \[\int_{t_0}^t \vec{v}(t')\mathrm{d}t' = \lim_{n\to\infty} (v(t_0)\Delta t + \vec{v}(t_0 + \Delta t)\Delta t + \ldots + \vec{v}(t - \Delta t)\Delta t)\]
@@ -253,11 +270,11 @@ Einleitung: \\
 **** TODO Skizze
 ** Vektorprodukt
    \[V\times V \mapsto V;~(\v a, \v b) \mapsto \v c = \v a\times \v b\]
-   mit  \[c^i = (\v a \times \v b)^i \equiv \sum_{i,k=1}^3 \epsilon^{ijk}a^jb^k = \epsilon^{ijk}a^jb^k\]
+   mit  \[c^i = (\v a \times \v b)^i \equiv \sum_{i,k=1}^3 \varepsilon^{ijk}a^jb^k = \varepsilon^{ijk}a^jb^k\]
    dabei:
-   - $\epsilon^{123} = \epsilon^{231} = \epsilon^{321} = 1$
-   - $\epsilon^{213} = \epsilon^{132} = \epsilon^{321} = -1$
-   - sonst 0 ($\epsilon^{ijk} = 0, falls zwei Indizes gleich)
+   - $\varepsilon^{123} = \varepsilon^{231} = \varepsilon^{321} = 1$
+   - $\varepsilon^{213} = \varepsilon^{132} = \varepsilon^{321} = -1$
+   - sonst 0 ($\varepsilon^{ijk} = 0, falls zwei Indizes gleich)
    Alternativ:
    - \[\abs{\v c} = \abs{\v a}\abs{\v b}\abs{\sin{\theta}}\]
    - Richtung von $\v c$ definiert durch $\v c \perp \v a \wedge \v c \perp \v c$
@@ -408,10 +425,10 @@ Einleitung: \\
 	  Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
 	  \[F=m\ddot x \Rightarrow m g - c \dot{x}^2 = m\ddot x \Rightarrow \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
 	  Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
-	  \begin{align}
+	  \begin{align*}
 	  \frac{\d v}{\d t} &= g - \frac{c}{m}v^2 \\
 	  \d t &= \frac{\d v}{g - \frac{c}{m}v^2}
-	  \end{align}
+	  \end{align*}
 	  Konstanten und Dimensionen
 	  \[[g] = \si{\meter\per\second\squared};[\frac{c}{m}] = \si{\newton\per\kilo\gram\per\meter\squared\second\squared}\]
 	  Kann leicht Konstanten der Dimension Zeit und Geschwindigkeit bilden:
@@ -430,12 +447,12 @@ Einleitung: \\
 	  2. Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
 ** Taylorentwickung
    Ohne Beschränkung der Allgemeinheit $x_0 = 0$. Untersuche Verhalten beliebiger glatter Funktionen $f(x)$ nahe $x = 0$
-   \begin{align}
+   \begin{align*}
    f(x) &= f(0) + \int_0^x\d x' f'(x') \\
    &= f(0) + f'(x')(x_ - x)\Big|_0^x - \int_0^x\d x' f''(x')(x'-x) \\
    &= f(0) + f'(0)x - f''(x')\frac{(x' - x)}{2}\Big|_0^x + \int_0^x\d x' f'''(x')\frac{(x' - x)^2}{2} \\
    &= f(0) + f'(x)x + f''(0)\frac{x^2}{2} + \ldots
-   \end{align}
+   \end{align*}
    Allgemein:
    \[f(x) = f(0) + \sum_{n=1}^m f^{(n)}(0)\frac{x^n}{n!}+\overbrace{\int_0^x \d x' f^{(m+1)}(x')\frac{(x' - x)^m}{m!}}^{\text{Restglied}}\]
    Falls das Restgliend für $n\to\infty$ verschwindet:
@@ -499,3 +516,102 @@ Einleitung: \\
 	   Beachte $A' = a$
 	   \[\Rightarrow c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
 	   \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
+	   $f(x')$ ist eine frei wählbare additive Konsante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
+*** Zusammenfassung / Verallgemeinerung auf $n > 1$
+	\begin{defn}[Linear Unabhängig]
+	Ein Satz von Funktionen $f_1(x),\ldots,f_n(x)$ heißt linear unabhängig, falls jede Linearkombination bei der nicht alle Koeffizienten Null sind auch nicht Null ist:
+	\[\alpha_1 f_1(x) +\ldots \alpha_n f_n(x)\equiv 0 \Rightarrow \alpha_1 = \ldots = \alpha_n = 0\]
+	(identisch zur linearen Unabhängigkeit von Vektoren)
+	\end{defn}
+**** Fakt
+	 Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-ter Ordnung, so kenn man die allgemeine Lösung:
+	 \[y_{hom}(x) = C_1 y_1(x) + \ldots + C_n y_n(x)\]
+	 Die allgeimeine Lösung ist stets von dieser Form.
+
+	 Wenn wir außerdem eine *partikuläre* Lösung der onhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
+	 \begin{align*}
+	 y(x) = y_{hom}(x) + y_{part}(x)
+	 \intertext{"Beweis" durch Einsetzen in}
+	 y^{(n)} + f_{n - 1}y^{(n - 1)} + \ldots + f_0 y = f
+	 \end{align*}
+*** Finden der partikulären Lösung
+	Auch bei $n > 1$: Variation der Konstanten (Funktioniert gut bei konstanten Koeffizienten)
+	Mächtigere Methoden: Überführen von System von linearen Dgl. 1. Ordnung (braucht Matrixrechnung)
+* Erhaltungssätze in Newtonscher Mechanik
+** Impulserhaltung
+   Systeme mit mehreren Massenpunkten $a,b\in\{1,\ldots, n\}$ \\
+   Trajektorien: $\v x_a(t), a=1,\ldots,n$ \\
+   \begin{thm}[Impulserhaltung]
+   Bei verschwindenen externen Kräften ($\v F_{ext} = 0$) gilt:
+   \[\v p \equiv \sum_a \v{P_a} \equiv \sum_a m_a\dot{\v{x_a}} =~\text{const}\]
+   \end{thm}
+   \begin{proof}
+   \begin{align*}
+   \dot{\v p} &= \sum_a m_a \ddot{\v{x_a}} \\
+   &= \sum_a \v{F_a} \\
+   &= \sum_a(\sum_{\substack{b \\ a\neq b}} \v{F_{ab}}) \\
+   &= \sum_{\substack{a,b \\ a\neq b}} \v{F_{ab}} \tag{Summe über alle Paare von $a,b$} \\
+   &= \sum_{a > b}\v{F_{ab}} + \sum{a < b} \v{F_{ab}} \\
+   &= \sum_{a > b}(\v{F_{ab}} + \v{F_{ba}})
+   &\underarrow[=]{3. Newtonsches Axiom} 0 \tag*{\qedhere}
+   \end{align*}
+   \end{proof}
+
+   mit äußeren Kräften:
+   \[\dot{\v p} = \sum_a \v F_{a,ext.} \equiv \v F_{ext}\]
+   Falls zum Beispiel die äußere Kraft nicht in $x^1$ -Richtung wirkt (F^1_{ext} = 0), so gilt immer nocht $p^1 = \text{const}$
+   (eigentlich drei Erhaltungssätze für $p^1, p^2,p^3, manchmal gelten nur einige davon)
+** Drehimpusherhaltung
+   Oft: Kräfte wirken parallel zur Verbindungslinie zweier Massenpunkte:
+   - Gravitationskraft
+   - Elektrostatitsche Kraft
+   - Modell der masselosen Stange (\rightarrow Modell für starre Körper!)
+   \begin{defn}[Drehimpuls]
+   \begin{align*}
+   \v L_a &\equiv \v x_a \times \v p_a \\
+   (\v L_a)^i &= \varepsilon^{ijk}x_a^j p_a^k
+   \end{align*}
+   \end{defn}
+   Falls $\v F_{a,ext} = 0$ und alle interen Kräfte wirken parallel zur Verbindungslinie der jeweiligen Punkte, dann gilt *Drehimplusherhaltung*
+   \begin{thm}[Drehimpulserhaltung]
+   \[\v L \equiv \sum_a \v L_a = \sum_a m_a \v x_a \times \dot{\v x}_a = \sum_a \v x_a \times \v p_a = ~\text{const}\]
+   \end{thm}
+   \begin{proof}
+   Nachrechnen:
+   \begin{align*}
+   \dot{\v L} &= \sum_a m_a (\dot{\v x}_a \times \dot{\v x}_a + \v x_a + \ddot{\v x}_a) \\
+   &= \sum_a \v x_a \times \v F_a \\
+   &= \sum_{a\neq b} \v x_a \times \v F_{ab} \tag{Summe über alle Paare von $a,b, a\neq b$} \\
+   &= \sum_{a > b}(\v x_a \times \v F_{ab} + \v x_b \times \v F_{ba}) \\
+   &= \sum_{a > b} (\v x_a - \v x_b)\times \v F_{ab} \\
+   \intertext{da $\v F_{ab} \parallel (\v x_a - \v x_b)$ per Annahme} \\
+   &= 0 \tag*{\qedhere}
+   \end{align*}
+   \end{proof}
+   Bei externen Kräften:
+   \[\dot{\v L} = \sum_a \v x_a \times \v F_{a,ext} \equiv \v M_{ext}\]
+   $M_{ext}$ ist das durch äußere Kräfte auf Punkt $a$ ausgeübte *Drehmoment*, allgemein (für einzelnen Punkt):
+   \[\v M = \v x \times \v F = \dot{\v L}\]
+
+   Wichtig: Drehimpulserhaltung gilt auch dann wenn alle äußeren Kräfte *Zentralkräfte* sind, Zentralkraft:
+   \[\v F_a \parallel \v x_a\]
+
+   Drehimpuls hängt vom Koordinatensystem ab.
+   \begin{remark}
+   $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
+   ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion an ursprung kein Vorzeichenänderung
+   \begin{proof}
+   \[\v a \to -\v a, \v b \to -\v b \Rightarrow \v a \times \v b \to + \v a \times \v b \qedhere\]
+   \end{proof}
+   \end{remark}
+** Konservative Kräfte und Energieerhaltung
+   \begin{defn}[Gradient]
+   Gradient von $V$:
+   \[\v\nabla \equiv \left(\frac{\parital V}{\partial x^1}, \frac{\parital V}{\partial x^2}, \frac{\parital V}{\partial x^3}\right)\]
+   $\v\nabla V$ ist gute Schreibweise, weil $\v\nabla$ ein vektorwertiger Differentialoperator ist:
+   \[\v\nabla = \left(\frac{\parital}{\partial x^1}, \frac{\parital}{\partial x^2}, \frac{\parital}{\partial x^3}\right)\]
+   \end{def}
+   \begin{defn}[konservatives Kraftfeld]
+   Ein zeitunabhängiges Kraftfeld $\v F(\v x)$ heißt \textbf{konservativ} falls es eine Funktion $V(\v x)$ ("Potential") gibt. dodass
+   \[\v F = -\v \nabla V\]
+   \end{defn}

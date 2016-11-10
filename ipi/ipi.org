@@ -32,7 +32,7 @@
 # }
 # #+END_SRC
 
-* Klausur 09.02.2016
+* Klausur 10.02.2016
 
 * Was ist Informatik?
   "Kunst" Aufgaben mit Computerprogrammen zu lösen.

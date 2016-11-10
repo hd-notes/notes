@@ -612,7 +612,7 @@
 	 - $(\mathbb{Z},+)$ ist eine Gruppe, denn $(\mathbb{Z},+)$ ist ein Monoid und für $a\in\mathbb{Z}$ ist $-a$ das inverse Element: $a + (-a) = 0 = (-a) + a$
 	 - $(\mathbb{Z},\cdot)$ ist keine Gruppe, denn das Element $2\in\mathbb{Z}$ hat kein Inverses (vergleiche [[invex]]).
 	 - $(\mathbb{Q}\setminus \{0\},\cdot)$ ist eine Gruppe denn es ist ein Monoid mit neutralem Element $1$ und für jedes Element $a\in\mathbb{Q}\setminus\{0\}$ existiert ein $b\in \mathbb{Q}\setminus \{0\}$ mit $a\cdot b = 1 = b\cdot a$, nämlich $b = \frac{1}{a}$
-**** Bemerkung
+**** Bemerkung 5.11
 	 $(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
 	 1. (Kürzungsregel) \[a*b = a*c \Rightarrow b = c\] \[a*c = b * c \Rightarrow a = b\]
 	 2. $a*b = e \Rightarrow b = a'$
@@ -721,7 +721,7 @@
 		   Seien $a,b\in\{0,\ldots,n - 1\}$ mit $\bar a = \bar b \Rightarrow a \equiv b(\mod n) \Rightarrow \exists q\in \mathbb{Z}: a - b = q n \Rightarrow \abs{a - b} = \abs{q} n$.
 		   - Wäre $q\neq 0$, dann $\abs{q} \geq 1$ wegen $q\in\mathbb{Z} \Rightarrow \abs{a - b} \geq n$ *Wiederspruch* zu $a,b\in\{0,\ldots,n - 1\}$ \\
 			 Also: $q = 0$ das heißt $a = b$
-**** TODO Beispiel
+**** Beispiel
 	 $n = 3: a\equiv b (\mod 3) \Leftrightarrow \exists q\in\mathbb{Z}: a - b = 3 q$ \\
 	 zum Beispiel: $11 \equiv 5(\mod 3)$, denn $11 - 5 = 6 = 2 \cdot 3$ \\
 	 zum Beispiel: $7 \not\equiv 2(\mod 3)$, denn $7 - 2 = 5$ und es gibt kein $q\in\mathbb{Z}$ mit $5 = 3 q$
@@ -730,7 +730,7 @@
 	 \[\bar 2 = \{a\in\mathbb{Z}\mid a \equiv 2 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 2 = 3q\} = 2 + 3\mathbb{Z} = \{\ldots,-4,-1,2,5,8,\ldots\}\]
 	 \[\bar 3 = \{a\in\mathbb{Z}\mid a \equiv 3 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 3 = 3q\} = \{a\in\mathbb{Z}\mid \exists q\in\mathbb{Z}:a=3(q + 1)\}3\mathbb{Z} = \bar 0\]
 	 \[\bar 4 = \bar 1,\bar 5 = \bar 2,\overline{-1} = \bar 2\]
-**** Bemerkung 5.19
+**** Bemerkung 5.18
 	 $n\in\mathbb{N}$ wir definieren eine Verküpfung (Addition) auf $\frac{\mathbb{Z}}{n\mathbb{Z}}$ wie folgt: \\
 	 Für $\bar a,\bar b \in\frac{\mathbb{Z}}{n\mathbb{Z}}$ setzen wir $\bar a + \bar b = \overline{a + b}$
 	 Dann gilt $(\frac{\mathbb{Z}}{n\mathbb{Z}},+)$ ist eine abelsche Gruppe
@@ -797,3 +797,164 @@
 		 \[\varphi^{-1}(c\oast d) = \varphi^{-1}(c)*\varphi^{-1}(d) \Forall c,d\in H\]
 		 Seien $c,d\in H$ Weil $\varphi$ bijektiv: $\exists a,b\in G:\varphi(a) = c,\varphi(b) =d$
 		 \[\Rightarrow \varphi^{-1}(c\oast d) = \varphi^{-1}(\varphi(a)*\varphi(b)) = \varphi^{-1}(\varphi(a*b)) = a*b = \varphi^{-1}(c)*\varphi^{-1}(d)\hfill\square\]
+** Ring
+   Ein Ring ist ein Tupel $(R,+,\cdot)$, bestehend aus einer Menge R und 2 Verknüpfungen:
+   - $+:R\times R \to R,(a,b)\mapsto a + b$ \hfill genannt Addition
+   - $\cdot:R\times R\to R, (a,b)\mapsto a\cdot b$ \hfill genannt Multiplikation
+   welche den folgenden Bedingungen genügen
+   - (R1) $(R,+)$ ist eine abelsche Gruppe
+   - (R2) $(R,\cdot)$ ist ein Monoid
+   - (R3) Es gelten die Distributivgeseze, das heisßt
+	 \[\Forall a,b,c\in R: a\cdot(a + b) = a\cdot b + a\cdot c, (a+b)\cdot c = a\cdot c + b\cdot c\]
+   Ein Ring heißt *kommutativ* $\xLeftrightarrow{\text{Def}}$ die Multiplikation ist kommutativ, das heißt $\Forall a,b\in R: a\cdot b = b\cdot a$
+*** Anmerkung
+	- ohne Klammerung gilt die Konvention "$\cdot$" vor "$+$", "$\cdot$" wird häufig weggelassen
+	- das neutrale Element bezüglich "$+$" bezeichnen wri mit $0_R$ (Nullelement), das neutrale Element bezüglich "$\cdot$" mit $1_R$ (Einselement). Das zu $a\in R$ bezüglich "$+$" inverse Element bezeichnen wir mit $-a$,
+	  für $a + (-b)$ schreben wir $a - b$. Existiert zu $a\in R$ ein Inverses bezüglich "$\cdot$", so bezeichnen wir diesses mit $a^{-1}$
+	- Wir schreiben häufig verkürzend "$R$ Ring" statt "$(R,+,\cdot)$ Ring"
+	- In der Literatur wird gelegentlich die Forderung der Existenz eines neutralen Elements bezüglich "$\cdot$" weggelassen, "unser" Ringbegriff entspricht dort dem Begriff "Ring mit Eins"
+*** Beispiel
+	1. $(\mathbb{Z},+,\cdot)$ ist ein kommutativer Ring
+	2. Nullring $(\{0\},+,\cdot)$ mit $0 + 0 = 0, 0\cdot 0 = 0$ ist ein kummutativer Ring \\
+	   (hier ist Nullelement = Einselement = 0). Wir bezeichnen den Nullring kurz mit $0$.
+*** Bemerkung 6.3
+	$R$ Ring. Dann gilt:
+	1. $0_R\cdot a = 0_R = a\cdot 0_R\Forall a\in R$
+	2. $a\cdot (-a) = - a b = (-a) \cdot b \Forall a,b\in R$
+	3. Ist $R\neq 0$, dann ist $1_R\neq 0_R$
+**** Beweis
+	 1. $0_R + 0_R\cdot a = 0_R\cdot a = (0_R + 0_R)\cdot a = 0_R\cdot a + 0_R\cdot \xRightarrow{\text{"kürzen s. [[Bemerkung 5.11]]"}} 0_R = 0_R \cdot a$, $a\cdot 0_R = 0_R$ analog
+	 2. $0_R = 0_R\cdot b = (a + (-a))\cdot b = a\cdot b + (-a) \cdot b \Rightarrow{\text{[[Bemerkung 5.11]]}} - a b = (-a)\cdot b$, $a\cdot(-b) 0 -a b$ analog
+	 3. Beweis durch Kontraposition: Sei $1_R = 0_R$
+		\[\Rightarrow \Forall a\in R: a = a\cdot 1_R = a\cdot 0_R = 0_R\]
+		das heißt $R = 0\hfill\square$
+*** Bemerkung 6.4
+	$n\in\mathbb{N}$ Für $\bar a, \bar b \in\frac{\mathbb{Z}}{n\mathbb{Z}}$ setzen wir $\bar a + \bar b := \overline{a + b}, \bar a\cdot \bar b := \overline{ab}$, dann ist $(\frac{\mathbb{Z}}{n\mathbb{Z}},+,\cdot)$ ein kommutativer Ring.
+
+	Wenn wir ab jetzt vom Ring $\frac{\mathbb{Z}}{n\mathbb{Z}}$ sprechen, dann meinen wir $(\frac{\mathbb{Z}}{n\mathbb{Z}},+,\cdot)$ mit den obigen Verknüpfungen
+**** Beweis
+	 1. Multiplikaiton ist wohldefiniert (das heißt "vertreterunabhängig", vergleiche [[Bemerkung 5.18]]) \\
+		Sei $a_1,a_2,b_1,b_2 \in\mathbb{Z}$ mit $\overline{a_1} = \overline{a_2},\overline{b_2} = \overline{b_2}$
+		\begin{align}
+		&\Rightarrow a_1 \equiv a_2 (\mod n), b_1\equiv b_2 (\mod n) \\
+		&\Rightarrow \exists q_1,q_2\in\mathbb{Z}:a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n \\
+		&\Rightarrow a_1 b_2 - a_2 b_2 = a_1(b_1 - b_2) + b_2 (a_1 - a_2) = a_q q_2 n + b_2 q_1 n = (a_1 q_2 + b_2 q_1) n \\
+		&\Rightarrow a_1 b_1 \equiv a_2 b_2 (\mod n) \\
+		&\Rightarrow \overline{a_1 b_1} = \overline{a_2 b_2}
+		\end{align}
+	 2. Multiplikation ist assoziativ, Für $a,b,c\in\mathbb{Z}$ ist
+		\[\bar a\cdot (\bar b\cdot \bar c) = \bar a \cdot \overline{a\cdot c} = \overline{a\cdot(b\cdot c)} = \overline{(a\cdot b)\cdot c} = \overline{a\cdot b} \cdot \bar c = (\bar a\cdot \bar b) \cdot \bar c\]
+	 3. Existenz eines Enselements: $\Forall a\in\mathbb{Z}:\bar 1 \cdot \bar a = \overline{1\cdot a} = \bar a = \bar a\cdot \bar 1$
+	 4. Multiplikation ist kommutativ:
+		\[\Forall a,b\in\mathbb{Z}:\bar a\cdot \bar b = \overline{a\cdot b} = \overline{b\cdot a} = \bar b \cdot \bar a\]
+	 5. $(\frac{\mathbb{Z}}{n\mathbb{Z}},+)$ ist abelsche Gruppe nach [[Bemerkung 5.18]]
+	 6. Distributivgesetz:
+		\begin{align}
+		\bar a\cdot (\bar b + \bar c) &= \bar a \cdot \overline{b + c} \\
+		&= \overline{a\cdot (b + c)} \\
+		&= \overline{a\cdot b + a\cdot c} \\
+		&= \overline{a\cdot b} + \overline{a\cdot c}
+		&= \bar a\cdot \bar b + \bar a \cdot\bar c
+		\end{align}
+		$(\bar a + \bar b)\cdot \bar c = \bar a\cdot \bar c + \bar b \cdot \bar c$ folgt wegen Kommutativität der Multiplikation
+**** Beispiel 6.5
+	 Verknüpfungstafeln für $\frac{\mathbb{Z}}{n\mathbb{Z}}$
+	 n = 3:
+	 | $+$      | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 |----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 | $\bar 1$ | $\bar 1$ | $\bar 2$ | $\bar 0$ |
+	 | $\bar 2$ | $\bar 2$ | $\bar 0$ | $\bar 1$ |
+	 
+	 | $\cdot$  | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 |----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 0$ | $\bar 0$ |
+	 | $\bar 1$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 | $\bar 2$ | $\bar 0$ | $\bar 2$ | $\bar 1$ |
+	 n = 4:
+	 | $+$      | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 |----------+----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 | $\bar 1$ | $\bar 1$ | $\bar 2$ | $\bar 3$ | $\bar 0$ |
+	 | $\bar 2$ | $\bar 2$ | $\bar 3$ | $\bar 0$ | $\bar 1$ |
+	 | $\bar 3$ | $\bar 3$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+
+	 | $\cdot$  | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 |----------+----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 0$ | $\bar 0$ | $\bar 0$ |
+	 | $\bar 1$ | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 | $\bar 2$ | $\bar 0$ | $\bar 2$ | $\bar 0$ | $\bar 2$ |
+	 | $\bar 3$ | $\bar 0$ | $\bar 3$ | $\bar 2$ | $\bar 1$ |
+
+	 In $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist $\bar 2 \cdot \bar 2 = \bar 0$, aber $\bar 2\neq \bar 0$.
+*** Integritätsbereich
+	<<Definition 6.6>>
+	ist ein kommuativer Ring $(R,+,\cdot)$ mit $R\neq 0$, in dem gilt:
+	\[\Forall a,b\in R: a\cdot b = 0_R \Rightarrow a = 0_R\vee b = 0_R\]
+	beziehungsweise äquivalent dazu:
+	\[a\neq 0_R \wedge b\neq 0_R \Rightarrow a\cdot b \neq 0_R\]
+**** Beispiel 6.7
+	 - $\frac{\mathbb{Z}}{3\mathbb{Z}}$ ist ein Integritätsbereich, $\frac{\mathbb{Z}}{4\mathbb{Z}}$ ist kein Integritätsbereich, denn $\bar 2\cdot \bar 2 = \bar 0$, aber $\bar 2 \neq \bar 0$
+**** Bemerkung 6.8
+	 $n\in\mathbb{N}$ Dann sind äquivalent
+	 1. <<6.8.1>> $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist ein Integritätsbereich
+	 2. <<6.8.2>> $n$ ist eine Primzahl
+***** Beweis
+	  [[6.8.1]] \Rightarrow [[6.8.2]] zeigen wir durch Kontraposition, das heißt $\neq$[[ 6.8.2]] \Rightarrow $\neq$ [[6.8.1]] \\
+	  Sei $n\in\mathbb{N}$ keine Primzahl. Falls $n = 1$ dann ist $\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0\}$ (Nullring), das heißt $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist kein Integritätsbereich. Seim im Folgenden $n > 1$ und keine Primzahl.
+	  \begin{align}
+	  &\Rightarrow \exists a,b\in\mathbb{N}:1\ <a,b<n \wedge n = a\cdot b \\
+	  &\Rightarrow \bar 0 = \bar n = \overline{a b} = \bar a \cdot \bar b
+	  \end{align}
+	  und es ist $bar a,\bar b\neq \bar 0$ \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integrationsbereich. \\
+	  [[6.8.2]] \Rightarrow [[6.8.1]]: Sein $n$ eine Primzahl \Rightarrow $n > 1$, insbesondere $\frac{\mathbb{Z}}{n\mathbb{Z}} \neq 0$. Seien $\bar a, \bar b \in \frac{\mathbb{Z}}{n\mathbb{Z}}$ mit $\bar a\cdot \bar b = \bar 0$
+	  \[\Rightarrow \exists q\in\mathbb{Z}:a b = q n\]
+	  Da $n$ Primzahl, kommt $n$ n der Primfaktorzerlengung von $a b$ als Primfaktor vor \\
+	  \Rightarrow $n$ kommt in der Primfaktorzerlegung von $a$ oder $b$ als Primfaktor vor \[\Rightarrow n\mid a \vee n\mid b \Rightarrow \bar a = \bar 0 \vee \bar b = \bar 0\]
+** Körper
+   <<Definition 6.9>>
+   Ein Körper ist ein kommutativer Ring $(K,+,\cdot)$, in dem gilt $K\neq 0$ und jedes Element $a\in K, a\neq 0$ besitzt ein Inverses in $K$ bezüglich "$\cdot$", das heißt: $\exists b\in K:a\cdot b = 1_K$. Wir setzen $K^\ast := K\setminus\{0\}
+*** Beispiel
+	1. $(\mathbb{R},+,\cdot),(\mathbb{Q},+,\cdot)$ sind Körper (mit den üblichen $+,\cdot$)
+	2. $\frac{\mathbb{Z}}{3\mathbb{Z}}$ ist ein Körper (betrachte Verknüpfungstafel)
+	3. $\frac{\mathbb{Z}}{4\mathbb{Z}}$ ist ein kein Körper: Das Element $\bar 2$ besitzt kein Inverses bezüglich "$\cdot$"
+*** Bemerkung 6.11
+	$K$ Körper, Dann gilt:
+	1. $0_K \neq 1_K$
+	2. <<6.11.2>> $K$ ist ein Integritätsbereich
+	3. $(K^\ast,\cdot)$ ist eine abelsche Gruppe mit neutralem Element $1_K$
+**** Beweis
+	 1. folgt aus [[Bemerkung 6.3]]
+	 2. $K\neq 0$ nach Definition. Seien $a,b\in K$ mit $a b = 0_K$. Falls $a\neq 0_K$ dann
+		\[b = 1_K \cdot b = (a^{-1} a)\cdot b = a^{-a}(a b) = a^{-1}\cdot 0_K = 0_K\]
+		Insebesondere gilt: $a = 0\vee b = 0$
+	 3. $K^\ast\times K^\ast \to K^\ast$ ist wohldefiniert nach [[6.11.2]] (aus $a,b\in K^\ast$ folgt $a b\in K^\ast$) \\
+		Da $(K,\cdot)$ abelscher Monoid mit neutralem Element $1_K$ ist auch $(K^\ast,\cdot)$ abelscher Monid mit neutralem Element $1_K$.
+		Nach [[Definition 6.9]] besitzt jedes Element $a\in K^\ast$ ein Inverses $b\in K$ mit $a b = 1_K$ Wegen $0_K \neq 1_K$ ist $b\neq 0_K$ (sonst $a b = a\cdot 0_K = 0_K \neq 1_K$), das heißt $b\in K^\ast\hfill\square$
+*** Bemerkung 6.12
+	$R$ Integritätsbereich, der nur endlich viele Elemente hat. Dann ist $R$ ein Körper.
+**** Beweis
+	 $R$ Integritätsbereich \Rightarrow $R\neq 0$ \\
+	 Noch zu zeigen: $a\in R\setminus\{0_R\} \Rightarrow \exists b\in R: a b = 1_R$
+	 Sei $a\in R\setminus\{0_R\}$. Wir betrachten die Abbildung $\varphi_a: R\to R,x\mapsto a x$
+	 1. Behauptung: $\varphi_a$ ist injektiv, denn:
+		\begin{align}
+		\intertext{Seien $x,y\in R$ mit}
+		\varphi_a(x) =\varphi_a(y) \Rightarrow a x = a y \Rightarrow a x + (-(a y)) = 0_R \\
+		\intertext{Mit [[Bemerkung 6.3]] folgt:}
+		\Rightarrow a x + a(-a) = -R \Rightarrow a(x - y) = 0_R  \\
+		\intertext{Aus $R$ Integrationsbereich und $a\neq 0$ folgt:}
+		x - y = 0 \Rightarrow x = y
+		\end{align}
+	 2. Da $R$ endlich ist und $\varphi_a$ inejktiv ist, ist $\varphi_a$ nach [[Bemerkung 4.19]] surjektiv
+		\[\Rightarrow  \exists b\in R: \varphi_a(b) = 1_R \Rightarrow a b = 1_R\]
+*** Folgerung 6.13
+	$n\in\mathbb{N}$ Dann sind äquivalent
+	1. <<6.13.1>> $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist ein Körper
+	2. <<6.13.2>> $n$ ist eine Primzahl
+**** Beweis
+	 [[6.13.1]] \Rightarrow [[6.13.2]] durch Kontraposition: $\neq$ [[6.13.2]] \Rightarrow [[6.13.1]] \\
+	 Sei $n$ keine Primzahl \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integritätsbereich \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Körper \\
+	 [[6.13.2]] \Rightarrow [[6.13.1]] Sei $n$ eine Primzahl \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Integritätsbereich, der nur endlich viele Elemente hat \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Körper
+**** Notation
+	 $p$ Primzahl. Man nennt $\mathbb{F}_P := \frac{\mathbb{Z}}{p\mathbb{Z}}$ auch den endlichen Körper mit $p$ Elemente

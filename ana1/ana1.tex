@@ -1,4 +1,4 @@
-% Created 2016-11-10 Do 03:34
+% Created 2016-11-10 Do 12:06
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -546,7 +546,7 @@ Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalente
 \begin{align}
 \abs{x + y}^2 &= (x+y)^2 = x^2 + 2x y + y^2 = \abs{x}^2 + 2xy + \abs{y}^2 \\
 &\leq \abs{x}^2 + 2\abs{x y} + \abs{y}^2 = \abs{x}^2 + 2\abs{x}\abs{y} + \abs{y^2} \\
-&= (\abs{x} + \abs{y})^2 \Rightarrow \abs{x + y} \leq \abs{\abs{x} + \abs{y}} = \abs{x} + \abs{y} \tag{$\square$}
+&= (\abs{x} + \abs{y})^2 \Rightarrow \abs{x + y} \leq \abs{\abs{x} + \abs{y}} = \abs{x} + \abs{y} \tag*{$\square$}
 \end{align}
 \item $\abs{x + y} = \abs{x} + \abs{y} \Leftrightarrow x y \geq 0$
 \end{enumerate}
@@ -558,7 +558,7 @@ Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalente
 \begin{align}
 \abs{x} &= \abs{x - y + y} \leq \abs{x - y} + \abs{y} \Rightarrow \abs{x} - \abs{y} \leq \abs{x - y} \\
 \abs{y} &= \abs{y - x + x} \leq \abs{y - x} + \abs{x} \Rightarrow \abs{y} - \abs{x} \leq \abs{x - y} \\
-\abs{\abs{x} - \abs{y}} &= \max \{\abs{x} - \abs{y},\abs{y} - \abs{x}\} \leq \abs{x - y} \tag{$\square$}
+\abs{\abs{x} - \abs{y}} &= \max \{\abs{x} - \abs{y},\abs{y} - \abs{x}\} \leq \abs{x - y} \tag*{$\square$}
 \end{align}
 \item \[\abs{x - y} \leq \varepsilon \Leftrightarrow \begin{cases} x - \varepsilon \leq y \leq x + \varepsilon \\ y - \varepsilon \leq x \leq y + \varepsilon \end{cases}\]
        \textbf{Beweis:} \\
@@ -588,7 +588,7 @@ $z\in I_\delta(y) \Rightarrow z\in I_\varepsilon(x)$. Es gilt
 \begin{align}
 &z\in I_\delta (y) \Rightarrow \abs{z - y}  <\delta \\
 \Rightarrow &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \varepsilon \\
-\Rightarrow &z\in I_\varepsilon (x) \tag{$\square$}
+\Rightarrow &z\in I_\varepsilon (x) \tag*{$\square$}
 \end{align}
 \subsubsection{Definition 1.42}
 \label{sec-2-9-10}
@@ -653,7 +653,7 @@ Induktion:
 = &\sum_{j=0}^n \binom{n}{j}x^{n - j + 1}y^j + \sum_{j = 0}^n \binom{n}{j} x^{n - j} y^{j + 1} \\
 = &\binom{n}{0}x^{n + 1} + \sum_{j = 1}^n \binom{n}{j}x^{n + 1 - j}y^j + \underbrace{\sum_{i = 1}^n \binom{n}{i - 1} x^{n - i + 1} y^i}_{\text{Substitution $i:= j + 1$}} + \binom{n}{n}y^{n + 1} \\
 = &x^{n + 1} + \sum_{j = 1}^n \underbrace{(\binom{n}{j} + \binom{n}{j - 1})}_{\binom{n + 1}{j}\text{nach Lemma 1.48}} x^{n + 1 - j} y^j + y^{n + 1} \\
-= &\sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag{$\square$}
+= &\sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag*{$\square$}
 \end{align}
 \end{itemize}
 \subsubsection{Folgerung 1.50}
@@ -698,7 +698,7 @@ Beweis durch Induktion:
 \begin{align}
 n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
 &\geq (1 + n x) (1 + x) = 1 + nx^2 + (n + 1) x \\
-&\geq 1 + (n + 1) x~\text{da $x^2 \geq 0$} \tag{\text{$\square$}}
+&\geq 1 + (n + 1) x~\text{da $x^2 \geq 0$} \tag*{$\square$}
 \end{align}
 \end{itemize}
 \subsubsection{Folgerung 1.54}
