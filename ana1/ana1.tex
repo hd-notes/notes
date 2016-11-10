@@ -1,4 +1,4 @@
-% Created 2016-11-10 Do 02:02
+% Created 2016-11-10 Do 03:34
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -114,7 +114,7 @@ $\not\exists q\in\mathbb{Q}: a^2 = 2$
 \label{sec-2-1-3-3-1-1}
 Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
 $\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
-Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeight)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
+Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeigt)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
 Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
 \end{enumerate}
 \subsubsection{Summenzeichen und Produktzeichen}
@@ -130,7 +130,7 @@ Wir definieren für $m > 0$ \[\sum_{k=m}^m a_k := a_m + \ldots + a_n\] falls $n\
 \label{sec-2-2}
 \subsubsection{Definition}
 \label{sec-2-2-1}
-(Georg cantor 1885) Unger einer \uline{Menge} verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
+(Georg cantor 1885) Unter einer \uline{Menge} verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
 $M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeht, ab gilt
 \begin{itemize}
 \item $x\in M$ (x Element von M)
@@ -142,10 +142,10 @@ $M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeh
 \label{sec-2-2-2}
 \begin{itemize}
 \item Mengeninklusion $A\subseteq M$ ($A$ ist eine Teilmenge von $M$)
-\[\Forall x: (x\in A \Rightarrow x\in M)\], zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
+\[\Forall x: (x\in A \Rightarrow x\in M)\] ,zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
 \item \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
 \item \[A \subset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
-\item \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beipsiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
+\item \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beispiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
 \item Durchschnitt \[A\cap B := \{x\mid x\in A \wedge x\in B\}\]
 \item Vereinigung \[A\cup B := \{x \mid x\in A \vee x\in B\}\]
 \item Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch $B^c$)}\]
@@ -372,7 +372,7 @@ Sei $A$ eine Menge\\
 \begin{itemize}
 \item $A$ heißt endlich mit $\abs{A} = n$ Elementen ist äquivalent zu
 \[\abs{A} = \begin{cases} A = \emptyset &(n = 0) \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
-\item $A$ heißt abzählbar undendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
+\item $A$ heißt abzählbar unendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
 \item $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
 \end{itemize}
 \paragraph{Beispiel}
@@ -476,7 +476,7 @@ $g = \inf B$ (größte obere Schranke, \uline{infimum}, untere "Grenze" von $B$ 
 \subsubsection{Bemerkung}
 \label{sec-2-8-1}
 \begin{enumerate}
-\item Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nah Definition.
+\item Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nach Definition.
 \[s\in \ubar{S}(B) \Rightarrow \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
 Ebeso gilt: $\exists\min B = \ubar{b} \Rightarrow \inf B = \ubar{b}$
 \end{enumerate}
@@ -533,7 +533,7 @@ Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalente
 \subsubsection{Definition 1.37}
 \label{sec-2-9-5}
 \begin{itemize}
-\item \[x\in \mathbb{R}~\text{heißt}~\begin{cases}\text{positiv} & 0 < x \\ \text{nichtnegativ} & 0\leq x \\ \text{negativ} & x < 0 \\ \text{nichtpositiv} x\geq 0 \end{cases}\]
+\item \[x\in \mathbb{R}~\text{heißt}~\begin{cases}\text{positiv} & 0 < x \\ \text{nichtnegativ} & 0\leq x \\ \text{negativ} & x < 0 \\ \text{nichtpositiv} & x\geq 0 \end{cases}\]
 \item Die Betragsfunktion $\abs \cdot:\mathbb{R} \to \mathbb{R}$ wird definiert durch $\abs{x} = \max \{x,-x\} = \begin{cases} x & x \geq 0 \\ -x & x < 0\end{cases}$
 \item Die Vorzeichen- oder Signumfunktion \[\sgn:\mathbb{R}\to\mathbb{R},\sgn{x} = \begin{cases}\frac{x}{\abs{x}} & x \neq 0 \\ 0 & x = 0\end{cases} = \begin{cases} 1 & x > 0 \\ -1 & x < 0 \\ 0 & x = 0\end{cases}\]
 \end{itemize}
