@@ -1,5 +1,8 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Einführung in die Anwendungsorientierte Informatik (Köthe)
+#+OPTIONS: H:6
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage{siunitx}%
 #+LATEX_HEADER: \usepackage{fontspec}%
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}%
@@ -18,6 +21,10 @@
 #+LATEX_HEADER: \usepackage{tikz}
 #+LATEX_HEADER: \usetikzlibrary{arrows,automata}
 #+LATEX_HEADER: \usepackage{tikz-qtree}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlistdepth{20}
+#+LATEX_HEADER: \renewlist{itemize}{itemize}{20}
+#+LATEX_HEADER: \setlist[itemize]{label=$\cdot$}
 
 # #+BEGIN_SRC cpp
 # for(int i = 0; i < 5) {
@@ -229,13 +236,172 @@
 	\begin{center}
 	\Tree [ .sub [ .add [ .add 1 2 ] [ .div [ .mul 3 4 ] [ .add 1 5 ] ] ] 2 ]
 	\end{center}
+** Rekursion
+   Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
 ** Prefixnotation aus dem Baum rekonstruieren
-   1. <<algstart>> Wenn die Wurzel ein Baltt ist: Drucke die Zahl
+   1. <<algstart1>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
    2. sonst:
 	  - Drucke Funktionsnamen
 	  - Drucke "("
-	  - Wiederhole den Algorithmus ab [[algstart]] für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
+	  - Wiederhole den Algorithmus ab [[algstart1]] für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
 	  - Drucke ","
-	  - Wiederhole den Algorithmus ab [[algstart]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
+	  - Wiederhole den Algorithmus ab [[algstart1]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
 	  - Drucke ")"
 	\Rightarrow \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+** Prefixnotation aus dem Baum rekonstruieren
+   1. <<algstart2>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
+   2. sonst:
+	  - Drucke Funktionsnamen
+	  - Drucke "("
+	  - Wiederhole den Algorithmus ab [[algstart2]] für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
+	  - Drucke Operatorsymbol
+	  - Wiederhole den Algorithmus ab [[algstart2]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
+	  - Drucke ")"
+	\Rightarrow \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+   \Rightarrow *inorder*
+** Berechnen des Werts mit Substitutionsmethode
+   1. <<algstart3>> Wenn Wurzel dein Blatt gib Zahl zurück
+   2. sonst:
+	  - Wiederhole den Algorithmus ab [[algstart3]] für das linkes Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "lhs"
+	  - Wiederhole den Algorithmus ab [[algstart3]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "rhs"
+	  - berechne funktionsname(lhs,rhs) und gebe das Ergebnis zurück
+   \Rightarrow *postorder*
+* Maschienensprachen
+  - optimiert für die Hardware
+  - Gegensatz: höhere Programmiersprachen (c++)
+	- optimiert für Programmierer
+  - Compiler oder Interpreter übersetzen Hoch- in Maschienensprache
+** Umwandlung in Maschienensprache
+  1. Eingaben und (Zwischen) Ergebnisse werden in Speicherzellen abgespeichert \Rightarrow jeder Knoten im Baum bekommt eine Speicherzelle
+  2. Speicherzellen für Eingaben initialisieren
+	 - Notation: SpZ \leftarrow Wert
+  3. Rechenoperationen in Reihenfolge des Substitutionsmodell ausführen und in der jeweiligen Speicherzelle speichern
+	 - Notation: SpZ-Ergebniss \leftarrow fname SpZArg1 SpZArg2
+  4. alles in Zahlencode umwandeln
+	 - Funktionsnamen:
+	   | Opcode | Wert |
+	   |--------+------|
+	   | init   | 1    |
+	   | add    | 2    |
+	   | sub    | 3    |
+	   | mul    | 4    |
+	   | div    | 5    |
+* Funktionale Programmierung
+  - bei Maschienensprache wreden Zweischeergebnisse in Speicherzellen abgelegt
+  - das ist auch in der funktionalen Programmierung eine gute Idee
+  - Speicherzellen werden duch Namen (vom Programmierer vergeben) unterschieden
+** Beispiel
+   Lösen einer quadratischen Gleichung:
+   \[ax^2 + bx + c = 0\]
+   \[x^2 - 2px + q = 0, p = -\frac{b}{2a},q=\frac{c}{d}\]
+   \[x_2 = p + \sqrt{p^2 - q},x_2 = p - \sqrt{p^2 - q}\]
+   ohne Zwischenergebnisse:
+   \[x_1 \leftarrow add(div(div(b,a),-2),sqrt(sub(mul(div(b,a),-2),div(div(b,a)-1)),div(c,a)))\]
+   mit Zwischenergebniss und Infix Notation
+   \[p\leftarrow b / c / -2~\text{oder}~p\leftarrow -0.5 * b / a\]
+   \[a\leftarrow c / a\]
+   \[d\leftarrow sqrt(p*p - q)\]
+   \[x_1\leftarrow p + d\]
+   \[x_2\leftarrow p - d\]
+** Vorteile von Zwischenergebnissen
+   1. lesabrer
+   2. redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der initialisierung nicht mehr verändert werden
+   3. Speicherzellen und Namen sind nützlich um Argumente an Fuktionen zu übergeben \Rightarrow Definition eigener Funktionen
+	  #+BEGIN_SRC cpp
+	  function sq(x) {
+		 return x * x
+	  }
+	  #+END_SRC
+	  \Rightarrow $d \leftarrow sqrt(sq(p) - q)$
+	  Speicherzelle mit Namen "x" für das Argument von $sq$
+** Funktionale Programmierung in c++
+   - in c++ hat jede Speicherzelle einen Typ (legt Größe und Bedeutung der Speicherzelle fest)
+	 - wichtige Typen
+	   | int         | ganze Zahlen  |
+	   | double      | reelle Zahlen |
+	   | std::string | Text          |
+	   int: $12,-3$ \\
+	   double: $-1.02,1.2e-4 = 1.2*10^{-4}$ \\
+	   std::string: "text"
+   - Initialisierung wird geschrieben als "typename spzname = Wert;"
+	 #+BEGIN_SRC cpp
+	 double a = ...;
+	 double b = ...;
+	 double c = ...;
+	 double p = -0.5 b / a;
+	 double q = c / a;
+	 double d = std::sqrt(p*p - q);
+	 double x1 = p + d;
+	 double x2 = p - d;
+	 std::cout << "x1: " << x1 << ", x2: " << x2 << std::endl;
+	 #+END_SRC
+   - eigene Funktionen in C++
+	 #+BEGIN_SRC cpp
+	 // Kommentar (auch /* */)
+	 type_ergebnis fname(type_arg1 name1, ...) { // Signatur / Funkitonskopf / Deklaration
+		 return ergebnis;                        /* Funktionskörper / Definition / Implementation */
+	 }
+	 #+END_SRC
+	 - ganze Zahl quadrieren:
+	   #+BEGIN_SRC cpp
+	   int sq(int x) {
+		   return x*x;
+	   }
+	   #+END_SRC
+	 - reelle zahl quadrieren:
+	   #+BEGIN_SRC cpp
+	   double sq(double x) {
+		   return x*x;
+	   }
+	   #+END_SRC
+	 - beide Varianten dürfen in c++ gleichzeitig definiert sein \Rightarrow "function overloading" \Rightarrow c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
+	   #+BEGIN_SRC cpp
+	   int x = 2;
+	   double y = 1.1
+	   int x2 = sq(x) // int Variante
+	   double y2 = sq(y) // double Variante
+	   #+END_SRC
+	 - jedes c++-Programm muss genau eine Funktion names "main" haben. Dort beginnt die Programmausführung.
+	   #+BEGIN_SRC cpp
+	   int main() {
+		   Code;
+		   return 0;
+	   }
+	   #+END_SRC
+	   - return aus der "main" Funktion ist optional
+	 - Regel von c++ für erlaubte Name
+	   - erstes Zeichen: Klein- oder Großbuchstaben des englischen Alphabets, oder "_"
+	   - optional: weitere Zeichen oder, "_" oder Ziffer 0-9
+	 - vordefinierte Funktionen:
+	   - eingebaute $\estimates$ immer vorhanden
+		 - Infix-Operatoren $+,-,*,/,\%$
+		 - Prefix-Operatoren $operator+,operator-,\ldots$
+	   - Funktion der Standardbibilothek $\estimates$ müssen "angefordert" werden
+		 - Namen beginnen mit "std::", "std::sin,..."
+		 - sind in Module geordnet, zum Beispiel
+		   - cmath \Rightarrow algebraische Funktion
+		   - complex \Rightarrow komplexe Zahlen
+		   - string \Rightarrow Zeichenkettenverarbeitung
+		 - um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) \rightarrow #include <name>
+		   #+BEGIN_SRC cpp
+		   #include <iostream>
+		   #include <string>
+		   int main() {
+			   std::cout << "Hello, world!" << std::endl;
+			   std::string out = "mein erstes Programm\n";
+			   std::cout << out;
+			   return 0;
+		   }
+		   #+END_SRC
+	 - overloading der arithmetischen Operationene
+	   - overloading genau wie bei $sq$
+		 - 3 * 4 \Rightarrow int Variante
+		 - 3.0 * 4.0 \Rightarrow double Variante
+		 - 3 * 4.0 \Rightarrow automatische Umwandliung in höheren Typ, hier "double" \Rightarrow wird als 3.0 * 4.0 ausgeführt
+	 - \Rightarrow Devision unterscheidet sich
+	   - Integer-Division: 12 / 5 = 2 (wird abgerundet)
+	   - Double-Division: 12.0 / 5.0 = 2.4
+	   - -12 / 5 = 2 (\Rightarrow truncated Division)
+	   - 12.0 / 5.0 = 2.4
+	   - Gegensatz (zum Beispiel in Python)
+		 - floor division \Rightarrow wird immer abgerundet \Rightarrow -12 / 4 = -2

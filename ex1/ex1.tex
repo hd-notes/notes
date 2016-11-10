@@ -1,5 +1,5 @@
-% Created 2016-11-09 Mi 12:38
-\documentclass[11pt]{article}
+% Created 2016-11-10 Do 03:32
+\documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -25,6 +25,7 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 \DeclareMathOperator{\Exists}{\exists}
 \DeclareMathOperator{\Forall}{\forall}
+\DeclareMathOperator{\grad}{grad}
 \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
 \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
 \renewcommand{\d}{\mathrm{d}}
@@ -40,6 +41,7 @@
 \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 }
 \usepackage{pgfplots}
+\newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
 \author{Robin Heinemann}
 \date{\today}
 \title{Experimentalphysik (H.-C. Schulz-Coulon)}
@@ -164,23 +166,19 @@ Masse & Kilogramm & $\si{\kg}$\\
 Zeit & Sekunden & $\si{\second}$\\
 \end{tabular}
 \end{center}
-\begin{enumerate}
-\item Meter
+\paragraph{Meter}
 \label{sec-6-2-1-1}
 Strecke, die das Lich im Cakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
-\item Sekunde
+\paragraph{Sekunde}
 \label{sec-6-2-1-2}
 Das $\SI{9192631770}{}$-fache  der Periodendauder der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
-\item Kilogramm
+\paragraph{Kilogramm}
 \label{sec-6-2-1-3}
 Das Kilogramm ist die Einheit der Masse, es ist gleich der Masse des internationalen Kilogrammprototyps (ist scheiße).
-\begin{enumerate}
-\item Avogadroprojekt
+\subparagraph{Avogadroprojekt}
 \label{sec-6-2-1-3-1}
 \[N_A = \frac{M V n}{m}\]
 $N_A$: Avogardokonstante ($N_A = \SI{6.0221415e23}{}$)
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Weitere Größen}
 \label{sec-6-2-2}
 \begin{center}
@@ -202,19 +200,18 @@ Dynamik: Ursache der Berwegung
 \label{sec-7-1}
 \subsubsection{Eindimensionale Bewegung}
 \label{sec-7-1-1}
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze 1
+\paragraph{{\bfseries\sffamily TODO} Skizze 1}
 \label{sec-7-1-1-1}
 $x_1,t_1 \longrightarrow x_2, t_2$
 Geschwindigkeit
 \[v = \frac{\text{Weg}}{\text{Zeit}} = \frac{x_2 - x_1}{t_2 - t_1} = \frac{\Delta x}{\Delta t}\quad [v] = \si{\meter\per\second}~\text{abgeleitete Größe}\]
-\item Momentangeschwindigkeit
+\paragraph{Momentangeschwindigkeit}
 \label{sec-7-1-1-2}
 \[v := \lim_{\Delta t\to 0} \frac{\Delta{x}}{\Delta t} = \frac{\mathrm{d}x}{\mathrm{d}t} = \dot{x}\]
-\item Beschleunigung
+\paragraph{Beschleunigung}
 \label{sec-7-1-1-3}
 \[a := \lim_{\Delta t\to 0} \frac{\Delta{v}}{\Delta{t}} = \frac{\mathrm{d}v}{\mathrm{d}t} = \frac{\mathrm{d}^2x}{\mathrm{d}t^2} = \ddot{x}\quad [a]=\si{\meter\per\second\squared}\]
-\item Freier Fall
+\paragraph{Freier Fall}
 \label{sec-7-1-1-4}
 $a = \text{const.}$ (Behauptung)
 \[a=\ddot{x} = \text{const} = \dot{v}\]
@@ -234,11 +231,9 @@ $x[\si{\meter}]$ & $t[\si{\milli\second}]$ & $\frac{2x}{t^2}[\si{\meter\per\squa
 \end{center}
 \[x(t) = \frac{1}{2} g t^2,~g=\SI{9.81}{\meter\per\square\second}\]
 Die Erdbeschleunigung $g$ ist für alle Körper gleich (Naturgesetz).
-\end{enumerate}
 \subsubsection{Bewegung im Raum}
 \label{sec-7-1-2}
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze 2
+\paragraph{{\bfseries\sffamily TODO} Skizze 2}
 \label{sec-7-1-2-1}
 Ortsvektor:
 \[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} = {\begin{pmatrix} x(t) & y(t) & z(t)\end{pmatrix}}^\intercal\]
@@ -251,9 +246,9 @@ $\rightarrow$ Superpositionsprinzip: \\
 
 \[\vec{a_0} = \text{const}\]
 \[\vec{r}(t) = \vec{r_0} + \vec{v_0}(t-t_0) + \frac{1}{2}\vec{a}(t^2-t_0^2) = \begin{pmatrix} x_0 + v_{x,0}(t-t_0) + \frac{1}{2} a_{x,0}(t^2-t_0^2) \\ y_0 + v_{y,0}(t-t_0) + \frac{1}{2} a_{y,0}(t^2-t_0^2) \\ z_0 + v_{z,0}(t-t_0) + \frac{1}{2} a_{z,0}(t^2-t_0^2) \end{pmatrix}\]
-\item Horizontaler Wurf
+\paragraph{Horizontaler Wurf}
 \label{sec-7-1-2-2}
-\item {\bfseries\sffamily TODO} Skizze 3
+\paragraph{{\bfseries\sffamily TODO} Skizze 3}
 \label{sec-7-1-2-3}
 \[t_0 = 0\]
 \[\vec{a_0} =  {\begin{pmatrix} 0 & 0 & -g \end{pmatrix}}^\intercal\]
@@ -261,7 +256,7 @@ $\rightarrow$ Superpositionsprinzip: \\
 \[\vec{x_0} =  {\begin{pmatrix} 0 & 0 & 0 \end{pmatrix}}^\intercal\]
 \[\vec{r}(t) =  {\begin{pmatrix} v_{x,0}t & 0 & \frac{1}{2}gt^2 \end{pmatrix}}^\intercal\]
 
-\item Schiefer Wurf
+\paragraph{Schiefer Wurf}
 \label{sec-7-1-2-4}
 \[\vec{a_0} = \cvec{0;0;-g}\]
 \[\vec{v_0} = \cvec{v_{x,0};0;v_{z,0}}\]
@@ -269,7 +264,7 @@ $\rightarrow$ Superpositionsprinzip: \\
 \[r(t) = \cvec{v_{x,0}t;0;-\frac{1}{2}gt^2 + v_{z,0}t + z_0}\]
 \[z(x) = -\frac{1}{2}\frac{g}{v_{x,0}^2}x^2 + \frac{v_{z,0}}{v_{x,0}}x + z_0\]
 
-\item Nachtrag
+\paragraph{Nachtrag}
 \label{sec-7-1-2-5}
 \[a = \dot{v}\]
 \[\int_0^t \dot{v}\d t' = \int_0^ta\d t'\]
@@ -278,8 +273,7 @@ $\rightarrow$ Superpositionsprinzip: \\
 \[v(t) = at + v_0\]
 analog:
 \[x(t) = \frac{1}{2}at^2 + v_0 t + x_0\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze Wurfparabel
+\subparagraph{{\bfseries\sffamily TODO} Skizze Wurfparabel}
 \label{sec-7-1-2-5-1}
 \[\tan{\varphi} = \frac{v_{z,0}}{v_{x,0}}\]
 \[v_0^2 = v_{x,0}^2 + v_{z,0}^2\]
@@ -292,8 +286,7 @@ Wurfweite:
 Optimaler Winkel: $\varphi_{opt}, x_w$ max.
 \[z_0 = 0\Rightarrow \sin{2\varphi} = 1 \rightarrow \varphi = \SI{45}{\degree}\]
 \[z_0 \neq 0\Rightarrow \sin{\varphi_{opt}} = (2 + \frac{2gz_0}{v_0^2})^{-\frac{1}{2}}\]
-\end{enumerate}
-\item Gleichförmige Kreisbewegung
+\paragraph{Gleichförmige Kreisbewegung}
 \label{sec-7-1-2-6}
 \[\vec{r}(t) = \cvec{x(t);y(t)} = \cvec{R\cos{\varphi}; R\sin{\varphi}}\]
 mit $\varphi = \varphi(t)$
@@ -305,10 +298,9 @@ Für $\omega = \text{const.}$:
 \[\vec{r} = R\cvec{\cos{\varphi};\sin{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
 \[\vec{v} = R\omega\cvec{-\sin{\varphi};\cos{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
 \[\vec{v} \perp \vec{r} \Leftrightarrow \vec{v}\cdot\vec{r} = 0\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze Kreisbewegung
+\subparagraph{{\bfseries\sffamily TODO} Skizze Kreisbewegung}
 \label{sec-7-1-2-6-1}
-\item Mitbewegtes Koordinatensystem
+\subparagraph{Mitbewegtes Koordinatensystem}
 \label{sec-7-1-2-6-2}
 \[\vec{r}(t) = R\vec{e_R} \quad \vec{e_R} = \cvec{\cos{\varphi (t)};\sin{\varphi (t)}}\]
 \[\vec{v}(t) = R\omega \vec{e_t} \quad \vec{e_t} = \cvec{-\sin{\varphi (t)}; \cos{\varphi (t)}}\]
@@ -319,7 +311,7 @@ Kreisbeschleunigung
 Zentripetalbeschleunigung
 Zeigt in Richtung des Ursprungs.
 \[\vec{a}_{zp} = -R\omega^2\vec{e_R}\]
-\item Allgemein
+\subparagraph{Allgemein}
 \label{sec-7-1-2-6-3}
 \[\vec{\omega}\]
 Räumliche Lage der  Bewegungsebene
@@ -329,8 +321,7 @@ Räumliche Lage der  Bewegungsebene
 \item {\bfseries\sffamily TODO} Skizze omega
 \label{sec-7-1-2-6-3-1}
 \end{enumerate}
-\end{enumerate}
-\item Allgemeine Krummlinige Bewegung
+\paragraph{Allgemeine Krummlinige Bewegung}
 \label{sec-7-1-2-7}
 \[\v v = v \v{e_t}\]
 \[\v a = \dot{\v v} = \frac{\d (v\v{e_t})}{\d t} = \frac{\d v}{\d t}\v{e_t} + v\frac{\d v{e_t}}{\d t}\]
@@ -338,11 +329,9 @@ Räumliche Lage der  Bewegungsebene
 \[\v{e_n} = -\sin{\rho}\v{e_x} + \cos{\rho}\v{e_y}\]
 \[\frac{\d \v{e_t}}{\d t} = \dot\rho -\sin{\rho}\v{e_x} + \cos{\rho}\v{e_y} = \dot\rho \v{e_n}\]
 \[\v a = \dot v \v{e_t} + \frac{v^2}{\rho}\v{e_n}\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze
+\subparagraph{{\bfseries\sffamily TODO} Skizze}
 \label{sec-7-1-2-7-1}
-\end{enumerate}
-\item Relativbewegung
+\paragraph{Relativbewegung}
 \label{sec-7-1-2-8}
 \begin{itemize}
 \item $S$-Laborsystem
@@ -352,10 +341,9 @@ Räumliche Lage der  Bewegungsebene
 \item Punkt $P'=(x',y',z')$ in $S'$
 \item Zeitpunkt $t = 0: \quad S=S', P=P'$
 \end{itemize}
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze Bewegtes Bezugssystem
+\subparagraph{{\bfseries\sffamily TODO} Skizze Bewegtes Bezugssystem}
 \label{sec-7-1-2-8-1}
-\item Galilei-Transformation
+\subparagraph{Galilei-Transformation}
 \label{sec-7-1-2-8-2}
 \begin{enumerate}
 \item Eindimensional
@@ -370,8 +358,6 @@ Räumliche Lage der  Bewegungsebene
 \[\v r' = \v r - \v u t\]
 \[\v v' = \v v - \v u\]
 \[\v a' = \v a\]
-\end{enumerate}
-\end{enumerate}
 \end{enumerate}
 \subsection{Newtonsche Dynamik}
 \label{sec-7-2}
@@ -388,10 +374,9 @@ Newtonsche Gesetze (Axiome)
 \[\v F = \cvec{F_x;F_y;F_z}\]
 Superpositions von Kräften (Zusatz zu den Newtonschen Gesetzen (Korollar)):
 \[\v{F}_{\text{ges}} = \sum_{i = 1}^n \v{F_i}\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze Addition von Kräften
+\subparagraph{{\bfseries\sffamily TODO} Skizze Addition von Kräften}
 \label{sec-7-2-1-0-1}
-\item Grundkräfte der Natur
+\subparagraph{Grundkräfte der Natur}
 \label{sec-7-2-1-0-2}
 \begin{itemize}
 \item Elektromagnetische Kraft
@@ -399,31 +384,28 @@ Superpositions von Kräften (Zusatz zu den Newtonschen Gesetzen (Korollar)):
 \item Schwache Kraft
 \item Gravitation
 \end{itemize}
-\item Impuls
+\paragraph{Impuls}
 \label{sec-7-2-1-1}
 \[\v P = m\v v\quad [\v P] = \si{\kg\meter\per\second}\]
-\item Kraft
+\paragraph{Kraft}
 \label{sec-7-2-1-2}
 \[\v F = \f{\d\v P}{\d t} = \dot{\v P} = \f{\d}{\d t}(m\v v)\]
 $m = \text{const.}$:
 \[\v F = m \f{\d\v v}{\d t} = m\dot{\v v} = m\ddot{\v x} = m\v a\]
-\item Grundgesetz der Dynamik
+\paragraph{Grundgesetz der Dynamik}
 \label{sec-7-2-1-3}
 \[\v F = \dot{\v P}~\text{beziehungsweise}~\v F = m\v a\]
-\begin{enumerate}
-\item Trägheitsprinzip (Impulserhaltung)
+\subparagraph{Trägheitsprinzip (Impulserhaltung)}
 \label{sec-7-2-1-3-1}
 \[\v P = m\v v = \text{const},~\v P = 0~\text{für}~\v F = 0\]
-\end{enumerate}
-\item Expermiment
+\paragraph{Expermiment}
 \label{sec-7-2-1-4}
 \[\v F_G = \underbrace{m\v g}_{Kraft} = \underbrace{(m + M)}_{Trägheit}\v a = m_{\text{ges}}\v a\]
 \[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{text{ges}}}g\]
-\begin{enumerate}
-\item Erwartung:
+\subparagraph{Erwartung:}
 \label{sec-7-2-1-4-1}
 $a\sim {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s = \f{1}{2} a\Delta t^2$
-\item Messung:
+\subparagraph{Messung:}
 \label{sec-7-2-1-4-2}
 \begin{center}
 \begin{tabular}{rrrrrrr}
@@ -435,31 +417,27 @@ $m[\si{\gram}]$ & $M[\si{\gram}]$ & $m_{\text{ges}}[\si{\gram}]$ & $\f{m_{\text{
 40 & 1880 & 1920 & 48 & 800 & 2.79 & 0.20554721\\
 \end{tabular}
 \end{center}
-\item {\bfseries\sffamily TODO} Skizze
+\subparagraph{{\bfseries\sffamily TODO} Skizze}
 \label{sec-7-2-1-4-3}
-\end{enumerate}
-\item Trägheitsprinzip - "revisited"
+\paragraph{Trägheitsprinzip - "revisited"}
 \label{sec-7-2-1-5}
 \textbf{Definition}: Ein Bezugssystem in dem das Trägheitsprinzip gilt nennt man ein Inatialsystem. \\
 
 In einem beschleunigten Bezugsystem gilt das Trägheitsprinzip \uline{nicht}. Beschleunigte Systeme $\neq$ Inatialsysteme.
 Das Trägheitsprinzip ist Galilei-invariant.
 
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze whatever
+\subparagraph{{\bfseries\sffamily TODO} Skizze whatever}
 \label{sec-7-2-1-5-1}
-\item Trägheitsprinzip: [moderne Formulierung]:
+\subparagraph{Trägheitsprinzip: [moderne Formulierung]:}
 \label{sec-7-2-1-5-2}
 Es gibt Inatialsysteme, das heißt Koordinatensysteme  in denen ein Kräftefreier Körper im Zustand der Ruhe oder der gradlinig gleichförmigen Bewegung verbleibt.
-\end{enumerate}
 
-\item Actio gleich Reactio
+\paragraph{Actio gleich Reactio}
 \label{sec-7-2-1-6}
 \[\underbrace{\v{F_{12}}}_{\text{Kraft}} = \underbrace{-\v{F_{21}}}_{\text{Gegenkraft}}\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze von Körpern
+\subparagraph{{\bfseries\sffamily TODO} Skizze von Körpern}
 \label{sec-7-2-1-6-1}
-\item {\bfseries\sffamily TODO} (Skizze) Expermiment
+\subparagraph{{\bfseries\sffamily TODO} (Skizze) Expermiment}
 \label{sec-7-2-1-6-2}
 \begin{enumerate}
 \item Erwartung:
@@ -471,30 +449,98 @@ Nichttrivialer Fall: \\
 \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
 \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
 \end{enumerate}
-\item Expermiment 2
+\subparagraph{Expermiment 2}
 \label{sec-7-2-1-6-3}
 \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \Rightarrow \f{m_2}{m_1} \approx 1.5\]
 \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
 \[a\sim v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
 \[1 = \f{F_1}{F_2} \Rightarrow F_1 = F_2\]
-\item Beispiele
+\subparagraph{Beispiele}
 \label{sec-7-2-1-6-4}
 \begin{itemize}
 \item Kraft und Gegenkraft (TODO Skizze)
 \item Flaschenzug, Seilkräfte (TODO Skizze)
 \end{itemize}
+\section{Verschiedene Kräfte und Kraftgesetze}
+\label{sec-8}
+\subsection{Gravitation (TODO Skizze)}
+\label{sec-8-1}
+Eperimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals cavendish)
+\subsubsection{Anziehungskraft zweier Massen}
+\label{sec-8-1-1}
+$m_1,m_2$ Massen, Newtonsches Gravitaitonsgesetz:
+\[\v{F_G} = -G\frac{m_1 m_2}{r^2}\v{e_r}\]
+mit \$G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}
+\subsubsection{Erdbeschleunigung}
+\label{sec-8-1-2}
+\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \Rightarrow g\approx \SI{9.81}{\meter\per\second\squared}\]
+(mittleres $g$) \\
+\paragraph{Abweichungen}
+\label{sec-8-1-2-1}
+\begin{itemize}
+\item kompilizierte Massenverteilung, Strukturen
+\item Abflachung der Erde
+\end{itemize}
+\paragraph{Messung von $g$}
+\label{sec-8-1-2-2}
+\begin{itemize}
+\item Gravimeter (Federgravimeter, Pendelgravimeter), relative Messung
+\item Absolutgravimeter (freier Fall, supraleitende Gravimeter)
+\end{itemize}
+\paragraph{Träge und schwere Masse}
+\label{sec-8-1-2-3}
+\[F= m_T a \rightarrow ~\text{träge Masse}\]
+\[F= m_S G\frac{M_E}{r_E^2} \rightarrow ~\text{schwere Masse}\]
+\paragraph{Äquivalenzprinzip}
+\label{sec-8-1-2-4}
+$m_S \sim \m_T$ beziehungsweise $m_S = m_T$
+\subsection{Federkraft}
+\label{sec-8-2}
+Hook'sches Gesetz
+\[F_x = F_x(\Delta x) = -k_F \Delta x\]
+Beliebige Auslenkungsfunktion ($F_x(\Delta x = x - x_0)$)
+\[F_x(x) = F_x(x_0) + \dd{F_x(x)}{x}(x-x_0) + \frac{1}{2}\frac{\d^2 f_x(x)}{\d x^2}(x - x_0) + \ldots\]
+$\rightarrow$ unabhängig von konkreter Zusammenhang $f_x(x)$ gilt kleine Änderungen
+\subsection{Maxwell'sches Rad}
+\label{sec-8-3}
+\subsubsection{Ruhezushand}
+\label{sec-8-3-1}
+Waage misst Gesamtmasse $M$ austariert
+\subsubsection{Frage}
+\label{sec-8-3-2}
+Was passiert, wenn sich das Rad bewegt??
+\subsubsection{Messung:}
+\label{sec-8-3-3}
+\begin{enumerate}
+\item Rad fixiert $\rightarrow$ $m = 0$
+\item Rad läuft $\rightarrow$ $\Delta m  = -0.7 g < 0$
 \end{enumerate}
+\subsubsection{Auswertung}
+\label{sec-8-3-4}
+Anwendung 3. Newtonsches Gesetz:
+$\v{F_1} + \v{F_2} = m\v a$ beziehungsweise $F_2 = - F_1 + m\v a$
+\begin{enumerate}
+\item $\v a = 0: \abs{\v{F_2}} = \abs{\v{F_1}} \rightarrow \abs{\v{F_2}} = 0, 0 m = 0$ (Waage)
+\item $\v a > 0: \abs{\v{F_2}} < \abs{\v{F_1}}$ $\rightarrow$ Waage mit $\abs{\v{F_2}} < m g~\Delta{m} < 0$
 \end{enumerate}
-
-\subsection{{\bfseries\sffamily TODO} Montag}
-\label{sec-7-3}
-\subsubsection{Normalkraft}
-\label{sec-7-3-1}
+\subsection{Rotierende Kette}
+\label{sec-8-4}
+Winkelelement $\Delta \alpha$. Radialkraft $\v{F_r}$ ist resultierende Kraft der vom abgeschnittenen Teil der Kette wirkende Kräfte $\v{F_1} + \v{F_2}$ \\
+   ($\v{F_G}$ vernachlässigbar klein bei hoher Umdrehung und somit großen $\abs{F_1},\abs{F_2}$) \\
+   Es gilt:
+\[\v a_zp = -\frac{v^2}{R}\v e_r\quad \v v = R\omega \v e_t\]
+\[\v{F_r} = \Delta m \v a_zp = -\Delta m \frac{v^2}{R}\v e_r\]
+\[\v{F_r} = \v{F_1} + \v{F_2}\]
+\[F_r \approx \Delta \alpha F = F\frac{\Delta L}{R}\]
+\[F = F_r \frac{R}{\Delta L} = \Delta m \frac{v^2}{R}\frac{R}{\Delta L} = \frac{m}{2\pi R}v^2\]
+Die Kraft $F = \frac{m}{2\pi R}v^2$ spannt die Kette.
+\subsection{Normalkraft}
+\label{sec-8-5}
 \begin{enumerate}
 \item (Skizze) Normalkraft $\v{F}_N$ = Kraft senktrecht zur Kontaktfläche. Wird kompensiert duchr $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
 \end{enumerate}
-\subsubsection{Schiefe Ebene}
-\label{sec-7-3-2}
+\subsection{Schiefe Ebene}
+\label{sec-8-6}
 \begin{itemize}
 \item Gewichtskraft: $\v{F}_G = m\v g$
 \item Normalkraft: $\v{F}_N = m g\cos{\alpha} \v{e}_y$
@@ -502,8 +548,8 @@ Nichttrivialer Fall: \\
 \end{itemize}
 Bewegungsgleichung
 \[F_H = m\ddot{x} \rightarrow x_x = g\sin{\alpha} =\text{const.}\]
-\subsubsection{Reibungskräfte}
-\label{sec-7-3-3}
+\subsection{Reibungskräfte}
+\label{sec-8-7}
 \begin{itemize}
 \item im täglichen Leben über all präsent
 \item spielt eine wichtige Rolle Technik
@@ -512,9 +558,8 @@ $\rightarrow$ Tribologie = Reibungslehre
 \begin{itemize}
 \item Reibung hängt stark von der Oberfläche ab
 \end{itemize}
-\begin{enumerate}
-\item Experiment: Bewegung einer Masse
-\label{sec-7-3-3-1}
+\subsubsection{Experiment: Bewegung einer Masse}
+\label{sec-8-7-1}
 \begin{itemize}
 \item Gewicht ruhte: $\v{F}_Z = - \v{F}_R \to a = 0, v = 0$
 \item Gewicht setzt sich in Bewegung: $\abs{\v{F}_Z} > \abs{\v{F}_R} \to a > 0,v$ steigt an
@@ -551,27 +596,24 @@ Reibugskraft nimmt ab, sobald das Gewicht bewegt wir.
 
 \end{tikzpicture}
 
-\item Experiment: Tribologische Messung
-\label{sec-7-3-3-2}
+\subsubsection{Experiment: Tribologische Messung}
+\label{sec-8-7-2}
 Messung der Zugkraft bei der sich der Holzblock nach kleiner Störung in Richtung Rolle bewegt: $F_R = F_Z$
-\begin{enumerate}
-\item Beobachtung
-\label{sec-7-3-3-2-1}
+\paragraph{Beobachtung}
+\label{sec-8-7-2-1}
 \begin{itemize}
 \item $F_R$ hängt nicht von der Oberfläche ab.
 \item $F_R$ hängt von dem Gewicht des Blocks ab
 \item $F_R$ ist Materialbhängig
 \end{itemize}
-\end{enumerate}
-\end{enumerate}
 
-\subsubsection{Tribologische Reibungslehre}
-\label{sec-7-3-4}
+\subsection{Tribologische Reibungslehre}
+\label{sec-8-8}
 \[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
 \[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
 \[\mu_H > \mu_G\]
-\subsubsection{Mikroskopisches Modell}
-\label{sec-7-3-5}
+\subsection{Mikroskopisches Modell}
+\label{sec-8-9}
 Verantwortlich sind elektrische Kröfte zwischen Atomen und Molekülen der beieinanderliegenden Oberflächen: Van-der-Waals-Kräfte
 \begin{itemize}
 \item Stärke ergibt sich aus effektivem Kontakt.
@@ -585,19 +627,18 @@ Also: \[F_R \sim \sum \frac{a_i}{A} \sim F_N\]
 \item Haftreibung: Verzahnung der Oberflächen mit minimalen Abstand
 \item Gleitreibung: Minimaler Abstand wird aufgrund der Bewegung nicht erreicht
 \end{itemize}
-\subsubsection{Schiefe Ebene: Messung der Reibungskraft (Skizze)}
-\label{sec-7-3-6}
+\subsection{Schiefe Ebene: Messung der Reibungskraft (Skizze)}
+\label{sec-8-10}
 Kräftegleichgewicht: $F_H = F_R$
 \[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
 Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R = \tan{\alpha}$
 \[\alpha = \SI{15}{\degree} \rightarrow \tan{\alpha} = 0.27,\mu_G = 0.27\]
-\subsubsection{Zentripetalkraft}
-\label{sec-7-3-7}
+\subsection{Zentripetalkraft}
+\label{sec-8-11}
 \[\v a_{Zp} = \v \omega \times(\v\omega\times\v r)\quad \v{F}_{Zp} = m\v\omega\times(\v\omega\times\v r)\]
 \[a_{Zp} = \omega^2 r = \frac{v^2}{r}\quad F_{Zp} = m\omega^2 r = m \frac{v^2}{r}\]
-\begin{enumerate}
-\item Beispiel 1 Rotierendes Pendel
-\label{sec-7-3-7-1}
+\subsubsection{Beispiel 1 Rotierendes Pendel}
+\label{sec-8-11-1}
 \[\v{F}_{Zp} := \v{F}_G + \v{F}_Z\]
 \[F_G = m g = F_Z \cos{\theta}\]
 \[F_{Zp} = F_Z \sin{\theta}\]
@@ -607,10 +648,10 @@ Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R 
 \item $\theta$ steigt mit $\omega$ an
 \item $\theta(\omega)$ ist unabhängig von Masse
 \end{itemize}
-\item Beispiel 2 Geostationärer Satellit
-\label{sec-7-3-7-2}
+\subsubsection{Beispiel 2 Geostationärer Satellit}
+\label{sec-8-11-2}
 Zetripetal = Gravitationskraft \\
-     \[m\omega^2 R = G\frac{m M_E}{R^2}\]
+    \[m\omega^2 R = G\frac{m M_E}{R^2}\]
 Geostationär: $\omega = \frac{2\pi}{\SI{24}{\hour}} = \frac{2\pi}{24\cdot\SI{3600}{\second}} = \SI{7.27e-5}{\per\second}$
 \[R^3 = \frac{G M_E}{\omega^2} \rightarrow R = \SI{42312}{\kilo\meter}\]
 Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}\]
@@ -619,11 +660,81 @@ Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}
 \item $M_E = \SI{6e24}{\kilo\gram}$
 \item $R_E = \SI{6373}{\kilo\meter}$
 \end{itemize}
+\section{Arbeit Energie Leistung}
+\label{sec-9}
+\subsection{Arbeit}
+\label{sec-9-1}
+\[\Delta W = \v F \v x = F_x \Delta x + F_y \Delta y + F_z \Delta z\]
+\[\d W = \lim_{\Delta r \to 0} \Delta W = \lim_{\Delta r \to 0} \v F\Delta \v r = \v F \d \v r \]
+\[= F_x\d x + F_y \d y + F_z \d z\]
+Gesamtarbeit für Verschiebung von $\v{r_1}$ nach $\v{r_2}$
+\[W = \int_{\v{r_1}}^{\v{r_2}}\v F \d \v r\]
+\[[W] = \si{\newton\meter} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}\]
+\[\int_{\v{r_1}}^{\v{r_2}}\v F \d \v r = \int_{r_1}^{r_2} F_x \d x + \int_{r_1}^{r_2} F_y \d y + \int_{r_1}^{r_2} F_z \d z = \int_{s_1 = 0}^{s_2} \v F(s)\dd{\v r}{s}\d s\]
+$\v r(s)$ parametrisiere Geschwindigkeit.
+\subsubsection{Beispiel}
+\label{sec-9-1-1}
+\[\v{r_1} = \cvec{0; 0; 0},\v{r_2} = \cvec{\Delta x ; 0; 0},\v F = \cvec{m g ; 0; 0},\d \v r = \cvec{\d x; \d y; \d z}\]
+\[W = \int_{(0)}^{(1)} m g\d x + \int 0\d y + \int 0\d z = m g \Delta x \]
+\subsubsection{Beispiel Kreisbahn ($\Rightarrow$ Gravitation)}
+\label{sec-9-1-2}
+\[W = \int_A^B \v F\d \v r = 0\]
+\subsection{kinetische Energeie}
+\label{sec-9-2}
+\[k = \frac{1}{2} g t^2\]
+\[v = g t\]
+\[v^2 = g^2 t^2\]
+\[v^2 = g h\]
+\[W = \int_0^h F_G \d x = F_G\int_0^h\d x = F_G h = m g h = \frac{1}{2} m v^2\]
+\begin{itemize}
+\item Kinetische Energie: $E_{kin}$
+     \[E_{kin} = \frac{1}{2} mv^2\quad [E_{kin} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}]\]
+\item Die Zunahme (beziehungsweise Abnahme) der kinetischen Energe eines Körpers ist gleich der ihm zugeführten (beziehungsweise von ihm gelieferten) Arbeit (keine Reibung)
+\end{itemize}
+\begin{align}
+W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = \int_{\v{r_1}}^{\v{r_2}} m\dd{\v v}{t}\d \v r = \int_{\v{v_1}}^{\v{v_2}} m\dd{\v r}{t}\d \v v\\
+&= \int_{\v{v_1}}^{\v{v_2}} m \v v \d \v r = \frac{1}{2}m v_2^2 - \frac{1}{2}m v_1^2
+\end{align}
+\subsection{Potentielle Energie}
+\label{sec-9-3}
+\[W = \int_h^0 F_g\d x = \int_h^0 - g m \d x = m g h = \frac{1}{2} m v^2\]
+\subsubsection{Ball als Feder am Auftreffpunkt}
+\label{sec-9-3-1}
+\[F = k\xi\]
+\[W = \int_0^\xi k\xi'\d\xi' = \frac{1}{2}k\xi^2\]
+\subsection{Bemerkung}
+\label{sec-9-4}
+Arbeit $W = \int_{\v{r_1}}^{\v{r_2}} \v F\d \v F$ gilt immer, Symbol fpr Linienintegral meist weggelassen.
+\begin{itemize}
+\item kinetische Energie $E_{kin} = \frac{1}{2}mv^2$
+\item potentielle Energie
+\begin{itemize}
+\item $E_{pot} = \frac{1}{2}mx^2$ \hfill (Verformen)
+\item $E_{pot} = m g h$ \hfill (Lage)
+\end{itemize}
+\end{itemize}
+\subsection{Umwandlung von Energi}
+\label{sec-9-5}
+\[\d E_{kin} = F\d x = -\d E_{pot}\]
+Gilt nur für konservative Kräfte!
+\begin{align}
+W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = \int_{E_1}^{E_2} \d E_{kin} = E_{kin}(\v{r_2}) - E_{kin}(\v{r_1}) \\
+W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = -\int_{E_1}^{E_2} \d E_{kin} = E_{pot}(\v{r_1}) - E_{pot}(\v{r_2})
+\end{align}
+\begin{enumerate}
+\item Für
+\begin{itemize}
+\item $W > 0$: $E_{kin}$ nimmt zu (Arbeit von System am Objekt verrichtet)
+\item $W < 0$: $E_{kin}$ nimmt ab
+\end{itemize}
+\item Für
+\begin{itemize}
+\item $W > 0$: $E_{pot}$ nimmt ab
+\item $W < 0$: $E_{pot}$ nimmt zu
+\end{itemize}
 \end{enumerate}
-\subsection{{\bfseries\sffamily TODO} Montag}
-\label{sec-7-4}
 \subsection{Energie}
-\label{sec-7-5}
+\label{sec-9-6}
 \begin{align}
 W &= \int_{\v{r_1}}^{\v{r_2}} \v F \d \v r \\
 &= E_{kin}(\v{r_2}) - E_{kin}(\v{r_1}) \\
@@ -631,11 +742,11 @@ W &= \int_{\v{r_1}}^{\v{r_2}} \v F \d \v r \\
 \end{align}
 Die unteren beiden Gleichungen gelten nur für konservative Kräfte
 \subsection{Leistung}
-\label{sec-7-6}
+\label{sec-9-7}
 \[P = \frac{\d W}{\d t} = \overarrow[\v F]{$\v F =~\text{const}$} \frac{\d \v r}{\d t} = \v F \v c\]
 \[[P] = \si{\newton\meter\per\second} = \si{\joule\per\second} = \si{\watt} = ~\text{Watt}\]
 \subsection{Konservative Kräfte}
-\label{sec-7-7}
+\label{sec-9-8}
 \begin{align}
 W_1 &= \int_{1~\text{Weg1}}^2 \v F\d \v r = E_{pot}(1) - E_{pot}(2) \\
 W_2 &= \int_{1~\text{Weg2}}^2 \v F\d \v r = E_{pot}(1) - E_{pot}(2) \\
@@ -643,67 +754,63 @@ W_2 &= \int_{1~\text{Weg2}}^2 \v F\d \v r = E_{pot}(1) - E_{pot}(2) \\
 Geschlossener Weg: $1\to 2\to 1$
 \[W=\oint_c \v F\d \v r = W_1 - W_2 = 0\]
 \subsubsection{Definition}
-\label{sec-7-7-1}
+\label{sec-9-8-1}
 Kräfte, für die die Arbeit unabhängig vom Weg ist nennt man konservativ
 Für konservative Kräfte gilt:
 \[W=\oint \v F\d \v s = 0\]
 \subsection{Kraftfelder und Potential}
-\label{sec-7-8}
+\label{sec-9-9}
 \[W = \int_{\v{r_1}}^{\v{r_2}}\v F\d \v r\]
 \subsubsection{Definition Kraftfeld}
-\label{sec-7-8-1}
+\label{sec-9-9-1}
 Eindeutige Zuordnung einer Kraft zu jedem Punkt im Raum:
 \[\v F = \v F(\v r) = \v F(x,y,z) = (F_x(x,y,z),F_y(x,y,z),F_z(x,y,z))\]
 \subsubsection{Beispiel}
-\label{sec-7-8-2}
+\label{sec-9-9-2}
 Gravitationskraft:
 \begin{align}
 \v F(\v r) &= -G\frac{m M}{r^2}\v e_r \\
 &= f(r) \v e_r
 \end{align}
 Kugelsymmetrisch, Zentralfeld
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze Vektorfeld
-\label{sec-7-8-2-1}
-\item {\bfseries\sffamily TODO} Skizze Feldlinien
-\label{sec-7-8-2-2}
-\end{enumerate}
+\paragraph{{\bfseries\sffamily TODO} Skizze Vektorfeld}
+\label{sec-9-9-2-1}
+\paragraph{{\bfseries\sffamily TODO} Skizze Feldlinien}
+\label{sec-9-9-2-2}
 \subsubsection{Feldlinien:}
-\label{sec-7-8-3}
+\label{sec-9-9-3}
 \begin{itemize}
 \item Feldlinien sind immer tangential zur Kraftrichtung
 \item Feldliniendichte ist proportional zum Betrag der Karft
 \item Feldlinien schneiden sich nie
 \end{itemize}
 \subsubsection{konservative Kraftfelder}
-\label{sec-7-8-4}
+\label{sec-9-9-4}
 Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfelder
 Für konservative Kraftfelder gilt
 \[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
 \begin{itemize}
 \item $E_{pot} = E_{pot}(x,y,z)$ Skalar!
 \end{itemize}
-\subsubsection{homogenes Kraftfeld}
-\label{sec-7-8-5}
+\paragraph{homogenes Kraftfeld}
+\label{sec-9-9-4-1}
 \[\v F(\v R) = (0,0,F_z)\]
 \begin{itemize}
 \item Weg 1: \[W_1 = \int_{\text{Weg1}}\v F\d \v R = \int_{z_1}^z F_z\d z = F_z(z_2 - z_1)\]
 \item Weg 2: \[W_2 = \int_{\text{Weg2}}\v F\d \v R = \int_{z_1}^z F_z\d z = F_z(z_2 - z_1)\]
 \end{itemize}
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze
-\label{sec-7-8-5-1}
-\end{enumerate}
-\subsubsection{Zentralkraftfeld}
-\label{sec-7-8-6}
+\subparagraph{{\bfseries\sffamily TODO} Skizze}
+\label{sec-9-9-4-1-1}
+\paragraph{Zentralkraftfeld}
+\label{sec-9-9-4-2}
 \[\v F(\v r) = f(r)\v e_r\]
 \begin{align}
 W &= \oint\v F\d \v r \\
 &= \int_1^2 f(r)\d r + \int_2^3 \v F\d \v r + \int_3^4 f(r)\d r + \int_4^1 \v F\d \v r \\
 &= 0
 \end{align}
-\subsubsection{Gravitationsfeld}
-\label{sec-7-8-7}
+\paragraph{Gravitationsfeld}
+\label{sec-9-9-4-3}
 \begin{align}
 W_{AB} &= \int_A^B\v F\d \v R \\
 &= \int_A^B -G\frac{mM}{r^2}\v e_r\d\v r \\
@@ -715,15 +822,42 @@ W_{AB} &= \int_A^B\v F\d \v R \\
 \[\Rightarrow E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
 Potentielle Energie des Gravitationsfelder:
 \[E_{pot}^{grav} = -G\frac{mM}{r}\]
-\subsubsection{d = 1}
-\label{sec-7-8-8}
+\paragraph{d = 1}
+\label{sec-9-9-4-4}
 \[E_{pot} = -\int F\d x\]
 \[\d E_{pot} = -F\d x\]
 \[-\frac{\d E_{pot}}{\d x} = F\]
-\subsubsection{d = 3}
-\label{sec-7-8-9}
+\paragraph{d = 3}
+\label{sec-9-9-4-5}
 \[E_{pot} = -\int \v F\d\v r \rightarrow \v F = - "\frac{\d E_{pot}}{\d \v r}"\]
 Gesucht: Ableitung eines Vektors nach einem Skalar.
 Betrachte:\[\Delta E_{pot} = -\v F\Delta \v r = -(F_x \Delta x + F_y \Delta y + F_z \Delta z)\]
+\[\Delta E_{pot} = \frac{\partial E_{pot}}{\partial x} \Delta x + \frac{\partial E_{pot}}{\partial y} \Delta y + \frac{\partial E_{pot}}{\partial z} \Delta z\]
+\begin{align}
+\v F(x,y,z) &= - (\frac{\partial E_{pot}}{\partial x} \Delta x , \frac{\partial E_{pot}}{\partial y} \Delta y , \frac{\partial E_{pot}}{\partial z} \Delta z) \\
+&= -\grad E_{pot}
+\end{align}
+Gilt nur für konservative Kräfte
+\paragraph{Gradient}
+\label{sec-9-9-4-6}
+Der Gradient eines Skalarfeldes ist ein Vektorfeld, dass in jedem Punkt in dei Richtung des steilsten Anstiegs der skalaren Größe Zeit
+\subparagraph{Notation:}
+\label{sec-9-9-4-6-1}
+\[\v F = -\grad E_{pot}\]
+\[\v F = - \v \nabla E_{pot}, \v \nabla = (\frac{\partial}{\partial x}, \frac{\partial}{\partial z}, \frac{\partial}{\partial z})\]
+\subsubsection{Potential und Gravitationsfeld}
+\label{sec-9-9-5}
+\begin{itemize}
+\item Gravitationskraft: \[\v F(\v r) = -G\frac{mM}{r^2}\v e_r\]
+\item Potentielle Energie: \[\v E_{pot}(\v r) = -G\frac{mM}{r}\]
+\end{itemize}
+Potential:
+\[\Phi(\v r) = \lim_{m \to 0} \frac{E_{pot}(\v r)}{m}\]
+\begin{itemize}
+\item Gravitationspotential: \[\Phi = -G\frac{M}{r}\]
+\item Gravitationsfeld: \[\v G = -G \frac{M}{r^2}\v e_r\]
+\item \[\v G = -\grad \Phi\]
+\item \[E_{pot} = m\Phi\]
+\end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -1,5 +1,5 @@
-% Created 2016-11-04 Fr 11:10
-\documentclass[11pt]{article}
+% Created 2016-11-10 Do 01:44
+\documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -33,6 +33,10 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 \usepackage{tikz-qtree}
+\usepackage{enumitem}
+\setlistdepth{20}
+\renewlist{itemize}{itemize}{20}
+\setlist[itemize]{label=$\cdot$}
 \author{Robin Heinemann}
 \date{\today}
 \title{Einführung in die Anwendungsorientierte Informatik (Köthe)}
@@ -198,8 +202,7 @@ Variante: Timer läuft immer (Signal alle 0.3s) $\Rightarrow$ Timout ignorieren 
 \hline
 1~&0~0~1~0~0~1~1 &= 1 + 2 + 16 + 128 &= 147_{\text{dez}}\checkmark
 \end{align}
-\begin{enumerate}
-\item Implementation mit Endlichen Automaten
+\paragraph{Implementation mit Endlichen Automaten}
 \label{sec-4-3-3-1}
 Prinzipen:
 \begin{itemize}
@@ -207,7 +210,7 @@ Prinzipen:
 \item Beide Zahlen gleich lang (sonst mit 0en auffüllen)
 \item Ergebnis wird von rechts nach link ausgegeben
 \end{itemize}
-\item {\bfseries\sffamily TODO} Skizze der Automaten
+\paragraph{{\bfseries\sffamily TODO} Skizze der Automaten}
 \label{sec-4-3-3-2}
 \begin{center}
 \begin{tabular}{lll}
@@ -226,8 +229,7 @@ carry = 1 & $\emptyset$ & "1"\\
 \textbf{Wichtig:} In jedem Zustand muss für \textbf{alle möglichen} Ereignisse eine Aktion und Folgezustand definiert werden.
 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also ein "Bug"
 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\Rightarrow$ Übergang nach "Fehler", Aktion: ausgeben einer Fehlermeldung
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze Fehlermeldung
+\subparagraph{{\bfseries\sffamily TODO} Skizze Fehlermeldung}
 \label{sec-4-3-3-2-1}
 Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
 \begin{itemize}
@@ -265,8 +267,6 @@ Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
 Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
 Frage: Gibt es einen universellen Algorithms für alle berechenbare Probleme?
 Betrache formale Algorithmusbeschribung als Teil der Eingabe des universellen Algorithmus.
-\end{enumerate}
-\end{enumerate}
 \section{Substitutionsmodell (funktionale Programmierung)}
 \label{sec-5}
 \begin{itemize}
@@ -344,20 +344,246 @@ Man kann einen Funktionsaufruf, deessen Argument vekannt ist (das heißt Zahlen 
 \begin{center}
 \Tree [ .sub [ .add [ .add 1 2 ] [ .div [ .mul 3 4 ] [ .add 1 5 ] ] ] 2 ]
 \end{center}
-\subsection{Prefixnotation aus dem Baum rekonstruieren}
+\subsection{Rekursion}
 \label{sec-5-3}
+Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
+\subsection{Prefixnotation aus dem Baum rekonstruieren}
+\label{sec-5-4}
 \begin{enumerate}
-\item \label{algstart} Wenn die Wurzel ein Baltt ist: Drucke die Zahl
+\item \label{algstart1} Wenn die Wurzel ein Blatt ist: Drucke die Zahl
 \item sonst:
 \begin{itemize}
 \item Drucke Funktionsnamen
 \item Drucke "("
-\item Wiederhole den Algorithmus ab \ref{algstart} für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
+\item Wiederhole den Algorithmus ab \ref{algstart1} für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
 \item Drucke ","
-\item Wiederhole den Algorithmus ab \ref{algstart} für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
+\item Wiederhole den Algorithmus ab \ref{algstart1} für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
 \item Drucke ")"
 \end{itemize}
 $\Rightarrow$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 \end{enumerate}
+\subsection{Prefixnotation aus dem Baum rekonstruieren}
+\label{sec-5-5}
+\begin{enumerate}
+\item \label{algstart2} Wenn die Wurzel ein Blatt ist: Drucke die Zahl
+\item sonst:
+\begin{itemize}
+\item Drucke Funktionsnamen
+\item Drucke "("
+\item Wiederhole den Algorithmus ab \ref{algstart2} für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
+\item Drucke Operatorsymbol
+\item Wiederhole den Algorithmus ab \ref{algstart2} für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
+\item Drucke ")"
+\end{itemize}
+$\Rightarrow$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+\end{enumerate}
+$\Rightarrow$ \textbf{inorder}
+\subsection{Berechnen des Werts mit Substitutionsmethode}
+\label{sec-5-6}
+\begin{enumerate}
+\item \label{algstart3} Wenn Wurzel dein Blatt gib Zahl zurück
+\item sonst:
+\begin{itemize}
+\item Wiederhole den Algorithmus ab \ref{algstart3} für das linkes Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "lhs"
+\item Wiederhole den Algorithmus ab \ref{algstart3} für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "rhs"
+\item berechne funktionsname(lhs,rhs) und gebe das Ergebnis zurück
+\end{itemize}
+\end{enumerate}
+$\Rightarrow$ \textbf{postorder}
+\section{Maschienensprachen}
+\label{sec-6}
+\begin{itemize}
+\item optimiert für die Hardware
+\item Gegensatz: höhere Programmiersprachen (c++)
+\begin{itemize}
+\item optimiert für Programmierer
+\end{itemize}
+\item Compiler oder Interpreter übersetzen Hoch- in Maschienensprache
+\end{itemize}
+\subsection{Umwandlung in Maschienensprache}
+\label{sec-6-1}
+\begin{enumerate}
+\item Eingaben und (Zwischen) Ergebnisse werden in Speicherzellen abgespeichert $\Rightarrow$ jeder Knoten im Baum bekommt eine Speicherzelle
+\item Speicherzellen für Eingaben initialisieren
+\begin{itemize}
+\item Notation: SpZ $\leftarrow$ Wert
+\end{itemize}
+\item Rechenoperationen in Reihenfolge des Substitutionsmodell ausführen und in der jeweiligen Speicherzelle speichern
+\begin{itemize}
+\item Notation: SpZ-Ergebniss $\leftarrow$ fname SpZArg1 SpZArg2
+\end{itemize}
+\item alles in Zahlencode umwandeln
+\begin{itemize}
+\item Funktionsnamen:
+\begin{center}
+\begin{tabular}{lr}
+Opcode & Wert\\
+\hline
+init & 1\\
+add & 2\\
+sub & 3\\
+mul & 4\\
+div & 5\\
+\end{tabular}
+\end{center}
+\end{itemize}
+\end{enumerate}
+\section{Funktionale Programmierung}
+\label{sec-7}
+\begin{itemize}
+\item bei Maschienensprache wreden Zweischeergebnisse in Speicherzellen abgelegt
+\item das ist auch in der funktionalen Programmierung eine gute Idee
+\item Speicherzellen werden duch Namen (vom Programmierer vergeben) unterschieden
+\end{itemize}
+\subsection{Beispiel}
+\label{sec-7-1}
+Lösen einer quadratischen Gleichung:
+\[ax^2 + bx + c = 0\]
+\[x^2 - 2px + q = 0, p = -\frac{b}{2a},q=\frac{c}{d}\]
+\[x_2 = p + \sqrt{p^2 - q},x_2 = p - \sqrt{p^2 - q}\]
+ohne Zwischenergebnisse:
+\[x_1 \leftarrow add(div(div(b,a),-2),sqrt(sub(mul(div(b,a),-2),div(div(b,a)-1)),div(c,a)))\]
+mit Zwischenergebniss und Infix Notation
+\[p\leftarrow b / c / -2~\text{oder}~p\leftarrow -0.5 * b / a\]
+\[a\leftarrow c / a\]
+\[d\leftarrow sqrt(p*p - q)\]
+\[x_1\leftarrow p + d\]
+\[x_2\leftarrow p - d\]
+\subsection{Vorteile von Zwischenergebnissen}
+\label{sec-7-2}
+\begin{enumerate}
+\item lesabrer
+\item redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der initialisierung nicht mehr verändert werden
+\item Speicherzellen und Namen sind nützlich um Argumente an Fuktionen zu übergeben $\Rightarrow$ Definition eigener Funktionen
+\begin{minted}[]{cpp}
+function sq(x) {
+   return x * x
+}
+\end{minted}
+$\Rightarrow$ $d \leftarrow sqrt(sq(p) - q)$
+Speicherzelle mit Namen "x" für das Argument von $sq$
+\end{enumerate}
+\subsection{Funktionale Programmierung in c++}
+\label{sec-7-3}
+\begin{itemize}
+\item in c++ hat jede Speicherzelle einen Typ (legt Größe und Bedeutung der Speicherzelle fest)
+\begin{itemize}
+\item wichtige Typen
+\begin{center}
+\begin{tabular}{ll}
+int & ganze Zahlen\\
+double & reelle Zahlen\\
+std::string & Text\\
+\end{tabular}
+\end{center}
+int: $12,-3$ \\
+       double: $-1.02,1.2e-4 = 1.2*10^{-4}$ \\
+       std::string: "text"
+\end{itemize}
+\item Initialisierung wird geschrieben als "typename spzname = Wert;"
+\begin{minted}[]{cpp}
+double a = ...;
+double b = ...;
+double c = ...;
+double p = -0.5 b / a;
+double q = c / a;
+double d = std::sqrt(p*p - q);
+double x1 = p + d;
+double x2 = p - d;
+std::cout << "x1: " << x1 << ", x2: " << x2 << std::endl;
+\end{minted}
+\item eigene Funktionen in C++
+\begin{minted}[]{cpp}
+// Kommentar (auch /* */)
+type_ergebnis fname(type_arg1 name1, ...) { // Signatur / Funkitonskopf / Deklaration
+	return ergebnis;                        /* Funktionskörper / Definition / Implementation */
+}
+\end{minted}
+\begin{itemize}
+\item ganze Zahl quadrieren:
+\begin{minted}[]{cpp}
+int sq(int x) {
+	return x*x;
+}
+\end{minted}
+\item reelle zahl quadrieren:
+\begin{minted}[]{cpp}
+double sq(double x) {
+	return x*x;
+}
+\end{minted}
+\item beide Varianten dürfen in c++ gleichzeitig definiert sein $\Rightarrow$ "function overloading" $\Rightarrow$ c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
+\begin{minted}[]{cpp}
+int x = 2;
+double y = 1.1
+int x2 = sq(x) // int Variante
+double y2 = sq(y) // double Variante
+\end{minted}
+\item jedes c++-Programm muss genau eine Funktion names "main" haben. Dort beginnt die Programmausführung.
+\begin{minted}[]{cpp}
+int main() {
+	Code;
+	return 0;
+}
+\end{minted}
+\begin{itemize}
+\item return aus der "main" Funktion ist optional
+\end{itemize}
+\item Regel von c++ für erlaubte Name
+\begin{itemize}
+\item erstes Zeichen: Klein- oder Großbuchstaben des englischen Alphabets, oder "\_"
+\item optional: weitere Zeichen oder, "\_" oder Ziffer 0-9
+\end{itemize}
+\item vordefinierte Funktionen:
+\begin{itemize}
+\item eingebaute $\estimates$ immer vorhanden
+\begin{itemize}
+\item Infix-Operatoren $+,-,*,/,\%$
+\item Prefix-Operatoren $operator+,operator-,\ldots$
+\end{itemize}
+\item Funktion der Standardbibilothek $\estimates$ müssen "angefordert" werden
+\begin{itemize}
+\item Namen beginnen mit "std::", "std::sin,\ldots{}"
+\item sind in Module geordnet, zum Beispiel
+\begin{itemize}
+\item cmath $\Rightarrow$ algebraische Funktion
+\item complex $\Rightarrow$ komplexe Zahlen
+\item string $\Rightarrow$ Zeichenkettenverarbeitung
+\end{itemize}
+\item um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ \#include <name>
+\begin{minted}[]{cpp}
+#include <iostream>
+#include <string>
+int main() {
+	std::cout << "Hello, world!" << std::endl;
+	std::string out = "mein erstes Programm\n";
+	std::cout << out;
+	return 0;
+}
+\end{minted}
+\end{itemize}
+\end{itemize}
+\item overloading der arithmetischen Operationene
+\begin{itemize}
+\item overloading genau wie bei $sq$
+\begin{itemize}
+\item 3 * 4 $\Rightarrow$ int Variante
+\item 3.0 * 4.0 $\Rightarrow$ double Variante
+\item 3 * 4.0 $\Rightarrow$ automatische Umwandliung in höheren Typ, hier "double" $\Rightarrow$ wird als 3.0 * 4.0 ausgeführt
+\end{itemize}
+\end{itemize}
+\item $\Rightarrow$ Devision unterscheidet sich
+\begin{itemize}
+\item Integer-Division: 12 / 5 = 2 (wird abgerundet)
+\item Double-Division: 12.0 / 5.0 = 2.4
+\item -12 / 5 = 2 ($\Rightarrow$ truncated Division)
+\item 12.0 / 5.0 = 2.4
+\item Gegensatz (zum Beispiel in Python)
+\begin{itemize}
+\item floor division $\Rightarrow$ wird immer abgerundet $\Rightarrow$ -12 / 4 = -2
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

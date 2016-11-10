@@ -1,5 +1,8 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Theoretische Physik (Hebecker)
+#+OPTIONS: H:6
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage{siunitx}
 #+LATEX_HEADER: \usepackage{fontspec}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
@@ -481,3 +484,18 @@ Einleitung: \\
    - wir hatten oben dem Fall $n = 2$ "mit konstanten Koeffizienten"
    - noch einfacheres Beispiel: $n = 1, f\equiv 0$ (aber beliebige Koeffizienten)
 	 \[y' + a(x)y = 0\]
+	 Das ist seperabel:
+	 \[\dd{y}{x} + a(x) y = 0\]
+	 \[\dd{y}{x} = -a(x) y\]
+	 \[\frac{\d y}{x} = -a(x) \d x\]
+	 \[\int\frac{\d y}{y} = - \int a(x)\d x\]
+	 \[\ln{y} - A(x) + c_1\]
+	 \[y = c e^{-A(x)}\]
+	 $A(x)$ sei eine beliebege aber fest gewählte Stammfunktion von $a$
+	 Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
+	 - Ansatz: $y = C(x)e^{-A(x)}$, Dgl. $y' + ay = f$
+	   \[(c e^{-A})' + a C e^{-A} = f\]
+	   \[c' e^{-A} - C A' e^{-A} + C a e^{-A} = f\]
+	   Beachte $A' = a$
+	   \[\Rightarrow c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
+	   \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]

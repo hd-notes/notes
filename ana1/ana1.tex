@@ -1,5 +1,5 @@
-% Created 2016-11-04 Fr 12:22
-\documentclass[11pt]{article}
+% Created 2016-11-10 Do 02:02
+\documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -40,11 +40,7 @@
 \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
 \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
 \makeatother
-\begingroup
-\catcode`(\active \xdef({\left\string(}
-\catcode`)\active \xdef){\right\string)}
-\endgroup
-\mathcode`(="8000 \mathcode`)="8000
+\newcommand{\I}{\ensuremath{\imath}}%
 \author{Robin Heinemann}
 \date{\today}
 \title{Analysis I (Marciniak-Czochra)}
@@ -84,12 +80,10 @@ $\exists! x$ & es gibt genau ein $x$\\
 \end{itemize}
 \subsubsection{Beweistypen}
 \label{sec-2-1-3}
-\begin{enumerate}
-\item Direkter Schluss
+\paragraph{Direkter Schluss}
 \label{sec-2-1-3-1}
 $A\Rightarrow B$
-\begin{enumerate}
-\item Beispiel
+\subparagraph{Beispiel}
 \label{sec-2-1-3-1-1}
 $m$ gerade Zahl $\Rightarrow$ $m^2$ gerade Zahl
 \begin{enumerate}
@@ -97,12 +91,10 @@ $m$ gerade Zahl $\Rightarrow$ $m^2$ gerade Zahl
 \label{sec-2-1-3-1-1-1}
 $m$ gerade $\Rightarrow \exists n\in\mathbb{N}~\text{sodass}~m = 2n \Rightarrow m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
 \end{enumerate}
-\end{enumerate}
-\item Beweis der Transponerten (der Kontraposition)
+\paragraph{Beweis der Transponerten (der Kontraposition)}
 \label{sec-2-1-3-2}
 Zum Beweis $A\Rightarrow B$ zeigt man $\neg B\Rightarrow \neg A~(A\Rightarrow B)\Leftrightarrow (\neg B) \Rightarrow (\neg A)$
-\begin{enumerate}
-\item Beispiel
+\subparagraph{Beispiel}
 \label{sec-2-1-3-2-1}
 Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\Rightarrow m~\text{gerade}$
 \begin{enumerate}
@@ -111,12 +103,10 @@ Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\Rightarrow m~\text{gerade}$
 Wir zeigen: $m$ ist ungerade $\Rightarrow m^2$ ungerade
 \[\exists n\in\mathbb{N}:~m=2n+1\Rightarrow m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\Rightarrow m^2~\text{ungerade} \square\]
 \end{enumerate}
-\end{enumerate}
-\item Indirekter Schluss ( Beweis durch Wiederspruch)
+\paragraph{Indirekter Schluss ( Beweis durch Wiederspruch)}
 \label{sec-2-1-3-3}
 Man nimmt an, dass $A\Rightarrow B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\Rightarrow \neg C$, also ein Wiederspruch
-\begin{enumerate}
-\item Beispiel
+\subparagraph{Beispiel}
 \label{sec-2-1-3-3-1}
 $\not\exists q\in\mathbb{Q}: a^2 = 2$
 \begin{enumerate}
@@ -127,19 +117,15 @@ $\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen so
 Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeight)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
 Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
 \end{enumerate}
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Summenzeichen und Produktzeichen}
 \label{sec-2-1-4}
-\begin{enumerate}
-\item Summenzeichen
+\paragraph{Summenzeichen}
 \label{sec-2-1-4-1}
 Wir definieren für $m > 0$ \[\sum_{k=m}^m a_k := a_m + \ldots + a_n\] falls $n\geq m$
 \[\sum_{k=m}^n a_k := 0\] falls $n < m$ (sogennante leere Summe)
-\item Produktzeichen
+\paragraph{Produktzeichen}
 \label{sec-2-1-4-2}
 \[\prod_{k=m}^n a_k := \begin{cases} a_m \cdot ... \cdot a_n & \text{falls}~n\geq m\\ 1 & \text{falls}~n<m~\text{(sog. leeres Produkt)}\end{cases}\]
-\end{enumerate}
 \subsection{Mengen}
 \label{sec-2-2}
 \subsubsection{Definition}
@@ -169,22 +155,18 @@ $M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeh
 Potenzmenge $A$
 \[\mathcal{P}(A) := \{B\mid B\subseteq A\}\]
 Alle Teilmengen von $A$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-2-3-1}
 \[\mathcal{P}(\{1,2\}) = \{\{1\}, \{2\}, \{1,2\}, \emptyset\}\]
-\end{enumerate}
 \subsubsection{Familien von Mengen}
 \label{sec-2-2-4}
 Sei $I$ eine Indexmenge, $I \subseteq \mathbb{N}, (A_i)_{i\in I}$ eine Familie von Mengen $A$
-\begin{enumerate}
-\item Durchschnitt von $A$
+\paragraph{Durchschnitt von $A$}
 \label{sec-2-2-4-1}
 \[\cap_{i\in I} = \{x\mid \Forall_{i\in I} x\in A_i\}\]
-\item Vereinigung
+\paragraph{Vereinigung}
 \label{sec-2-2-4-2}
 \[\cup_{i\in I} = \{x\mid\exists i\in I: x\in A_i\}\]
-\end{enumerate}
 \subsubsection{Rechenregeln}
 \label{sec-2-2-5}
 $A,B,C,D$ seien Mengen
@@ -211,14 +193,12 @@ Beachte:
 \subsubsection{Kartesisches Produkt}
 \label{sec-2-2-7}
 Seien \[A_1\times A_2\times \ldots \times A_n = \{(x_1,x_2,\ldots,x_n)\mid x_j \in A_j j\in\mathbb{N}, j \leq n\}\]
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-2-7-1}
 \begin{itemize}
 \item \[\mathbb{Z}^2 = \mathbb{Z}\times \mathbb{Z}\]
 \item $R^n$ n-dimensionaler Raum von reellen Zahlen
 \end{itemize}
-\end{enumerate}
 \subsubsection{Äquivalenzrelation}
 \label{sec-2-2-8}
 Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren Elementen (Bezeichnung: $a \sim b$), sodass
@@ -245,12 +225,10 @@ also enthält $R(x)$ genau ein Element. \\
     $Y$ heißt Werte- oder Bildbereich von $f$ (Bild) \\
     $x\in X$ heißt Argument \\
     $f(x)\in Y$ heißt Wert von $f$ an der Stelle x
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-3-2-1}
 $f: \mathbb{R}\rightarrow\mathbb{R}, x\rightarrow x^2$ dann ist der Graph von $f = \{(x,y)\in\mathbb{R}^2, y=x^2\}$
-\begin{enumerate}
-\item Bemerkung
+\subparagraph{Bemerkung}
 \label{sec-2-3-2-1-1}
 \[M^{*}(x) = \{(x,y)\in\mathbb{R}^2;x=y^2\} = \{(x,y)\in\mathbb{R}^2: x \geq 0, y=\sqrt{x} \vee y = -\sqrt{x}\}\]
 Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x) = \{\sqrt{x},-\sqrt{x}, x\geq 0\}$
@@ -260,30 +238,24 @@ $f$ heißt
 \item injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
 \item bijektiv, wenn $f$ surjektiv und injectiv ist
 \end{itemize}
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Umkehrabbildung}
 \label{sec-2-3-3}
 Sei die Abbildung $f: X\rightarrow Y$ bijektiv. Dann definieren wir die Umkehrabbildung $f^{-1}:Y\rightarrow X$ durch $y\rightarrow x\in X$, eindeutig bestimmt durch $y = f(x)$
-\begin{enumerate}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-3-3-1}
 \[(x,y) \in~\text{Graph }f\Leftrightarrow (y,x)\in~\text{Graph }f^{-1}\]
-\end{enumerate}
 \subsubsection{Komposition}
 \label{sec-2-3-4}
 Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
 \subsubsection{Identitäts Abbildung}
 \label{sec-2-3-5}
 Für jede Menge $X$ definieren wir die identische Abbildung \[I_d(A) = I_A: A\rightarrow A,~\text{durch}~x\rightarrow x\]
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-3-5-1}
 \begin{itemize}
 \item \[\{(x,y)\in\mathbb{R}^2\mid x^2 + y^2 = 1\} = S^1\] \[S^{n-1} := \{(x_1 \ldots x_n) \in \mathbb{R}^n; \sum_{i = 1}^n x_i^2 = 1\}\] $(n - 1)$ dimensionale sphere in $\mathbb{R}^n$
 \item Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
 \end{itemize}
-\end{enumerate}
 \subsubsection{Homomorphe Abbildungen}
 \label{sec-2-3-6}
 Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel Addition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
@@ -310,8 +282,7 @@ Man kann zeigen, dass jede Menge, welche die Peano Axiome erfüllt isomorph bez�
 Wir definieren $n < m \Leftrightarrow \exists x\in \mathbb{N}: x + m = m$
 \subsubsection{Vollständige Induktion}
 \label{sec-2-4-2}
-\begin{enumerate}
-\item Induktionsprinzip
+\paragraph{Induktionsprinzip}
 \label{sec-2-4-2-1}
 Es seien die folgende Schritte vollzogen:
 \begin{enumerate}
@@ -319,15 +290,14 @@ Es seien die folgende Schritte vollzogen:
 \item Induktionsschluss: Ist für ein $n\in\mathbb{N}~A(n)$ gültig, so folgt auch die Gültigkeit von $A(n+1)$
 \end{enumerate}
 Dann sind alle Aussagen $A(n),n\in\mathbb{N}$ gültig.
-\item Beweis:
+\paragraph{Beweis:}
 \label{sec-2-4-2-2}
 Wir definieren die Tailmenge $M\subseteq\mathbb{N},~M:=\{n\in \mathbb{N}\mid A(N)~\text{ist gültig}\}$
 Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\Rightarrow n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
-\item Beispiel 1
+\paragraph{Beispiel 1}
 \label{sec-2-4-2-3}
 Zu Beweisen: \[\Forall n\in\mathbb{N} \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6}\]
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-4-2-3-1}
 \begin{enumerate}
 \item Induktionsverankerung: $1^2 = \frac{1}{6}\cdot 1\cdot 2\cdot 3$
@@ -336,8 +306,7 @@ Zu Beweisen: \[\Forall n\in\mathbb{N} \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6
          \[1^2 + \ldots + n^2 + (n+1)^2 = \frac{1}{2} n(n+1)(2n+1) + (n+1)^2 = (n+1)(\frac{1}{3}n^2 + \frac{1}{6}n + n + 1)\]
          \[= \frac{1}{6}(n+1)(2n^2+7n+6) = \frac{1}{6}(n+1)(2n+3)(n+2)\hfill\square\]
 \end{enumerate}
-\end{enumerate}
-\item Beispiel 2
+\paragraph{Beispiel 2}
 \label{sec-2-4-2-4}
 Definition von Potenzen
 \[x^0 := 1\]
@@ -361,7 +330,6 @@ Erweiterungen:
 \item Rationale Zahlen $\mathbb{Q}~(b x = y)$
 \end{itemize}
 Man sagt, dass $(\mathbb{Q},+,\cdot)$ einen Körper bildet.
-\end{enumerate}
 \subsubsection{Definition Körper}
 \label{sec-2-4-3}
 $\mathbb{K}$ sei eine Menge auf der Addition und Multiplikation sei. $\mathbb{K}$ heißt ein Körper, wenn die folgende Axiome erfüllt sind:
@@ -385,8 +353,7 @@ $\mathbb{K}$ sei eine Menge auf der Addition und Multiplikation sei. $\mathbb{K}
 \item \(a\cdot (b + c) = (a\cdot b)+ (a\cdot c)\)\hfill Distributivität
 \end{enumerate}
 \end{itemize}
-\begin{enumerate}
-\item Satz
+\paragraph{Satz}
 \label{sec-2-4-3-1}
 $(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \Leftrightarrow\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
 dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ in folgendem Sinne verträglich (Axiom M0):
@@ -394,10 +361,9 @@ dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ 
 \item \(a\leq b\Rightarrow a+c \leq b + c\)
 \item \(0\leq a\wedge 0\leq b \Rightarrow 0\leq a\cdot b\)
 \end{itemize}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-4-3-2}
 \[\{a\in\mathbb{Q}: a = \frac{r}{s},r\in\mathbb{N}_0,s\in\mathbb{N}\} =: \mathbb{Q}_+ (\mathbb{Q}_{\geq 0})\]
-\end{enumerate}
 \subsection{Abzählbarkeit}
 \label{sec-2-5}
 \subsubsection{Abzählbarkeit von Mengen}
@@ -409,12 +375,10 @@ Sei $A$ eine Menge\\
 \item $A$ heißt abzählbar undendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
 \item $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
 \end{itemize}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-1-1}
 $\mathbb{Z}$ ist abzählbar unendlich
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-5-1-1-1}
 Die Abbildung $f:\mathbb{Z}\to\mathbb{N}$
 \[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & x < 0\end{cases}\]
@@ -434,37 +398,31 @@ Falls
 \item $z_1,z-2 < 0 \Rightarrow -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \Rightarrow z_1 = z_2 \hfill\square$
 \end{itemize}
 \end{itemize}
-\end{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-1-2}
 \begin{itemize}
 \item $\mathbb{N}^2 = \mathbb{N}\times\mathbb{N}$ abzählbar unendlich
 \item $\mathbb{Q}$ abzählbar unendlich
 \item $\mathbb{R}$ überabzählbar
 \end{itemize}
-\item Abzählbarkeit von $\mathbb{N}\times\mathbb{N}$
+\paragraph{Abzählbarkeit von $\mathbb{N}\times\mathbb{N}$}
 \label{sec-2-5-1-3}
 \[(1,1) \to (1,2) \to (2,1) \to (2,2) \to (1,3) \to (2,3) \to (3,2) \to (3,1)\]
-\item Korollar 1.30
+\paragraph{Korollar 1.30}
 \label{sec-2-5-1-4}
 $M_1,M_2,\ldots,M_n$ abzählbar $\Rightarrow M_1 \times \ldots \times M_n$ abzählbar.
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-5-1-4-1}
 Durch vollständige Induktion $M_1\times(M_2\times\ldots \times M_n)\approx \mathbb{N}\times\mathbb{N}\approx\mathbb{N}$
-\end{enumerate}
-\item Satz
+\paragraph{Satz}
 \label{sec-2-5-1-5}
 Die Menge aller Folgen $f:\mathbb{N}\to\{0,1\}$ ist überabzählbar. (Zum Beispiel: $1,0,0,0,\ldots, \underarrow[1]{\text{k-te Stelle}},\ldots,0,\ldots$)
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-5-1-5-1}
 $M$ ist unendlich, denn die Folgen $f_k:0,,\ldots,0,1,0,\ldots$ sind parrweise verschieden. Angenommen $M$ wäre abzählbar. Sei $f_1,f_2, \ldots$ eine Abzählung mit $f_k = ({z_{kn}}_{n\in \mathbb{N}})$.
 \[\begin{matrix}1 & 0 & 0 & \ldots \\ 0 & 1 & \ldots \\ 0 & 0 & 0 & \ldots \\ 1 & 1 & 1 & 1 & \ldots \end{matrix}\]
 $f:0 0 1 0$ Man setze $f=(z_n)_{n\in\mathbb{N}}$ mit \[z_n := \begin{cases} 1 & z_{nn} = 0 \\ 0 & z_{nn} = 1\end{cases}\]
 Dann $f\in M$, aber $f\neq f_k \Forall k\in\mathbb{N}$. Also ist $M$ nicht abzählbar. ("Cantorsche Diagonalverfahren").
-\end{enumerate}
-\end{enumerate}
 \subsection{Ordnung}
 \label{sec-2-6}
 \subsubsection{Definition}
@@ -481,8 +439,7 @@ Wenn außerdem noch $\Forall x,y\in A$ gilt:
 \item $x\leq y \vee y\leq x$ \hfill (Vergleichbarkeit je zweier Elemente)
 \end{enumerate}
 so heißt $R$ (totale) Ordung auf $A$. \$(A,$\le$) heißt teilweise beziehungsweise (total) geordnete Menge.
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-6-1-1}
 \begin{enumerate}
 \item $(\mathbb{Q},\leq)$ mit der üblichen Ordnung ist eine total geordnete Menge
@@ -490,7 +447,6 @@ so heißt $R$ (totale) Ordung auf $A$. \$(A,$\le$) heißt teilweise beziehungswe
         \textbf{Beweis}: 1. - 3. sind trivial, 4. geht nicht (keine Totalordung). Wähle $B,C\in \mathcal{P}(a), B,C\neq \emptyset, B\cap C = \emptyset$. Dann gilt weder $B\subseteq C$ noch $C\subseteq B\hfill\square$
 \item Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \Leftrightarrow \Forall x\in A: f(x) \leq g(x)$ \\
         (1.) - (3.) trivial, 4. gilt nicht. Falls $A$ mehr als ein Element hat, gibt es eine Funktion, die nicht miteinander verglichen werden können.
-\end{enumerate}
 \end{enumerate}
 \subsection{Maximum und Minimum einer Menge}
 \label{sec-2-7}
@@ -567,15 +523,13 @@ Es gibt eine Menge $\mathbb{R}$ (genannt Menge der reellen Zahlen) mit Addition,
 \subsubsection{Konstruktiver Standpunkt}
 \label{sec-2-9-4}
 Wir können $\mathbb{R}$ ausgehend von $\mathbb{Q}$ konstruieren.
-\begin{enumerate}
-\item Methode der Abschnitte
+\paragraph{Methode der Abschnitte}
 \label{sec-2-9-4-1}
 Jede reelle Zahl wird charakterisiert durch ein "rechts offenes, unbeschränktes Interval", dessen "rechte Grenze" die Zahl erstellt.
 \[\mathbb{R}:=\{A\subseteq \mathbb{Q}\begin{cases}A\neq\emptyset \\ x\in A, y\leq x\Rightarrow y\in A \\ \Forall x\in A\exists y\in A, x<y\end{cases}\]
-\item Mehtode der Cauchy-Folgen
+\paragraph{Mehtode der Cauchy-Folgen}
 \label{sec-2-9-4-2}
 Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalenter "Cauchy Folgen" aus $\mathbb{Q}$ (später)
-\end{enumerate}
 \subsubsection{Definition 1.37}
 \label{sec-2-9-5}
 \begin{itemize}
@@ -626,8 +580,7 @@ Sei $a,b\in\mathbb{R},a\leq b$
 \subsubsection{Lemma 1.41}
 \label{sec-2-9-9}
 Es gilt $y\in I_\varepsilon (x) \Rightarrow \exists \delta > 0: I_\delta (y) \subseteq I_\varepsilon (x)$
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-9-1}
 Sei $y\in I_\varepsilon (x) \Rightarrow \abs{x - y}  < \varepsilon \Leftrightarrow \varepsilon - \abs{x - y} > 0$
 Wähle $0 < \delta < \varepsilon - \abs{x - y}$. Es ist nun zu zeigen $I_\delta (y) \subseteq I_\varepsilon (x)$, das heißt
@@ -637,7 +590,6 @@ $z\in I_\delta(y) \Rightarrow z\in I_\varepsilon(x)$. Es gilt
 \Rightarrow &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \varepsilon \\
 \Rightarrow &z\in I_\varepsilon (x) \tag{$\square$}
 \end{align}
-\end{enumerate}
 \subsubsection{Definition 1.42}
 \label{sec-2-9-10}
 $A,B$ seien geordnete Mengen, $f:A\to B$ heißt:
@@ -645,27 +597,21 @@ $A,B$ seien geordnete Mengen, $f:A\to B$ heißt:
 \item monoton $\begin{cases} \text{wachsed} & x \leq y \Rightarrow f(x) \leq f(y)  \\ \text{fallend} & x \leq y \Rightarrow  f(x) \leq f(y) \end{cases}$
 \item streng monoton $\begin{cases} \text{wachsend} & x < y \Rightarrow f(x) < f(y) \\ \text{fallend} & x < y \Rightarrow f(x) > f(y) \end{cases}$
 \end{itemize}
-\begin{enumerate}
-\item Beispiel 1.43
+\paragraph{Beispiel 1.43}
 \label{sec-2-9-10-1}
 $\mathbb{R}_+\setminus \{0\} \to \mathbb{R}_+\setminus\{0\}, x\mapsto x^n$ ist streng monoton wachsend $\Forall n\in\mathbb{N}$
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-9-10-1-1}
 Induktion + Axiom M0 $\hfill\square$
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Lemma 1.44}
 \label{sec-2-9-11}
 Sei $M,N \subseteq \mathbb{R}, f:M\to N$ streng monoton und bijektiv. Dann ist $f^{-1}$ streng monoton.
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-11-1}
 Wir betrachten den Fall $f$ streng monoton wachsend. Seien \$y$_{\text{1}}$,y$_{\text{2}}$ $\in$ N, y$_{\text{1}}$ < y$_{\text{2}}$,x$_{\text{1}}$ = f$^{\text{-1}}$(y$_{\text{1}}$), x$_{\text{2}}$ = f$^{\text{-1}}$(y$_{\text{2}}$). \\
      Behauptung $x_1 < x_2$ (sonst wäre \$x$_{\text{1}}$ $\ge$ x$_{\text{2}}$). \\
      Falls $x_1 > x_2 \xRightarrow{\text{streng monoton}} f(x_2) > f(x_2)$ \textbf{Widerspruch} zu $y_1 < y_2$ \\
      Falls $x_1 = x_2 \Rightarrow y_1 = y_2$ \textbf{Widerspruch} zur Annahme $y_1 < y_2 \hfill \square$
-\end{enumerate}
 \subsubsection{Definition 1.45 Produktzeichen}
 \label{sec-2-9-12}
 Für $a\in\mathbb{R},n\in\mathbb{N}$ definieren wir $a^n := \prod_{j=1}^n a$ und für $a\in\mathbb{R}\setminus\{0\},n\in\mathbb{N}$ $a^{-n} := \frac{1}{a^n}$.
@@ -677,11 +623,9 @@ Es gilt $\Forall a,b\in\mathbb{R}$ (beziehungsweise $\mathbb{R}\setminus \{0\}$)
 \item $(a^n)^m$ = a$^{\text{n m}}$\$
 \item $(ab)^m = a^m b^m$
 \end{enumerate}
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-13-1}
 Zunächst f+r $n,m\in\mathbb{N}_0$ durch Indukton nach $n$, dann für $n,m\in\mathbb{Z}$ (mit Hilfe der Definition von $a^{-n}$)
-\end{enumerate}
 \subsubsection{Definition 1.47}
 \label{sec-2-9-14}
 Sei $n,k\in\mathbb{N}_0$ \[\binom{n}{k}:=\prod_{j=1}^k \frac{n -j + 1}{j}\]
@@ -697,8 +641,7 @@ Sei $k,n\in\mathbb{N}_0$
 \label{sec-2-9-16}
 $\Forall n\in\mathbb{N}_0,\Forall x,y\in\mathbb{R}$ gilt
 \[(x + y)^n = \sum_{j = 0}^n \binom{n}{j}x^{n - j}y^j\]
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-16-1}
 Induktion:
 \begin{itemize}
@@ -713,18 +656,15 @@ Induktion:
 = &\sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag{$\square$}
 \end{align}
 \end{itemize}
-\end{enumerate}
 \subsubsection{Folgerung 1.50}
 \label{sec-2-9-17}
 \begin{enumerate}
 \item $\sum_{j = 0}^n \binom{n}{j} = 2^n$
 \item $\sum_{j = 0}^n \binom{n}{j} (-1)^j = \begin{cases}0 & n \neq 0 \\ 1 & n = 0\end{cases}$
 \end{enumerate}
-\begin{enumerate}
-\item Beweis:
+\paragraph{Beweis:}
 \label{sec-2-9-17-1}
 Setze in Binomische Formel $x = 1, y = 1$ beziehungsweise $y = -1 \hfill\square$
-\end{enumerate}
 \subsubsection{Lemma 1.51}
 \label{sec-2-9-18}
 Sei $m\in R$ nach oben (beziehungsweise nach unten) beschränkt \\
@@ -733,28 +673,23 @@ Sei $m\in R$ nach oben (beziehungsweise nach unten) beschränkt \\
 \item $s = \sup M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: s - \varepsilon < x (\geq s)$
 \item $l=\inf M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: (l \leq) x < l + \varepsilon$
 \end{enumerate}
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-18-1}
 Wir beweisen 1. \\
      $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \varepsilon$ von $M$ $\Leftrightarrow$
 nicht $\Forall \varepsilon > 0\exists x\in M: x > s - \varepsilon \hfill \square$
-\end{enumerate}
 \subsubsection{Lemma 1.52}
 \label{sec-2-9-19}
 $\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-19-1}
 sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \varepsilon= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
 $\Rightarrow$ $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
-\end{enumerate}
 \subsubsection{Lemma 1.53 (Bernoullische Ungleichung)}
 \label{sec-2-9-20}
 \label{Lemma-1.53}
 \[\Forall x\in [-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-20-1}
 Beweis durch Induktion:
 \begin{itemize}
@@ -766,15 +701,13 @@ n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
 &\geq 1 + (n + 1) x~\text{da $x^2 \geq 0$} \tag{\text{$\square$}}
 \end{align}
 \end{itemize}
-\end{enumerate}
 \subsubsection{Folgerung 1.54}
 \label{sec-2-9-21}
 \begin{enumerate}
 \item Sei $y\in(1,\infty)$. Dann gilt $\Forall c > 0 \exists n_0 \in \mathbb{N},\Forall n\geq n_0 y^n \in (c,\infty)$ ("Konvergenz" von $y^n$ gegen 0)
 \item Sei $y \in (-1,1)$. Dann gilt $\Forall \varepsilon > 0\exists n_0 \in \mathbb{N}\Forall n\geq n_0:y^n \in I_\varepsilon (0)$ ("Konvergenz" $y^n$ gegen 0)
 \end{enumerate}
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-9-21-1}
 \begin{enumerate}
 \item \label{1541} Für $x = y - 1 > 0$ gilt dann nach \ref{Lemma-1.53} \[\underbrace{(1 + x)^n}_y \geq 1 + n x \Rightarrow y^n > n x\]
@@ -784,12 +717,10 @@ n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
         \[\Forall \varepsilon > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\varepsilon}\]
         \[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\varepsilon} \Rightarrow \abs{y^n} < \varepsilon \hfill \square\]
 \end{enumerate}
-\end{enumerate}
 \subsubsection{Satz 1.55 (Existenz der m-ten Wurzel)}
 \label{sec-2-9-22}
 \[\Forall m\in\mathbb{N}, a\in[a,\infty)~\text{gilt}~\exists ! x\in [0,\infty): x^m = a\]
-\begin{enumerate}
-\item Beweis (Skizze 1, 2)
+\paragraph{Beweis (Skizze 1, 2)}
 \label{sec-2-9-22-1}
 Wir geben ein Iterationsverfahren
 \[p_3 (x) = m\]
@@ -801,6 +732,162 @@ Diese approximieren wir nach dem \textbf{Newton Verfahren} \\
 \[x_{n+1} := \underbrace{x_n - \frac{f(x_n)}{f'(x_n)}}_{F(x_n)} = x_n - \frac{x_n^m - a}{m x_n^{m - 1}}\]
 \[= x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))\]
 Hoffnung: $x_n \to x^*$
+
+\texttt{Skizze 3}
+
+Sei $x_0^m > a$. Wir zeigen
+\begin{enumerate}
+\item \label{1.55.1} $x_n > 0$
+\item \label{1.55.2} $x_n^m \geq a$
+\item $x_{n + 1} \leq x_n$
 \end{enumerate}
+\textbf{Beweis:}
+\begin{enumerate}
+\item Induktion
+\item Induktion
+\begin{itemize}
+\item $n = 0, x_0^m \geq \Rightarrow x_0 > 0$, da $a > 0,x_0\geq 0$
+\item $n\to n + 1$ \[x_n > 0, x_n^m\geq a \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m})) \geq 0\]
+          weil \[x_{n + 1}^n = \underbrace{x_n^m}_{\geq 0} (1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))^m \underbrace{\geq}_{\text{Bernoulli}} x_n^m(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))  = 0\]
+          $\Rightarrow$ $x_{n + 1} > 0$, da $a > 0$
+\end{itemize}
+\item Nach \ref{1.55.2}: \[x_n^m \geq a \Rightarrow 0 \leq 1 - \frac{1}{m}(1 - \frac{1}{x_n^m}) \leq 1\]
+        Nach \ref{1.55.1}: \[x_m > 0 \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1-\frac{a}{x_n^m})) < x_n\]
+        Wegen \ref{1.55.1} ist $M = \{x_n:n\in\mathbb{N}_0\}$ nach unten beschränkt $\Rightarrow$
+        \[x:= \inf M~\text{existiert}\]
+        Wir wollen zeigen, dass $x^m = a$. Es gilt \[x \leq x_{n + 1} = (1 - \frac{1}{m})x_n + \frac{1}{m}\frac{a}{x^{m -1}_n}\]
+        \[\leq (1 - \frac{1}{m})x_n + \frac{a}{m}\sup \{\frac{1}{x_n^{m - 1}\mid x\in\mathbb{N}_0}\} \]
+\item \label{1.55.4} Es gilt nach nach \ref{1.56.2}
+\[a\leq \inf \{x_n^m \mid n\in \mathbb{N}_0\} = (\inf \{x_n \mid n\in \mathbb{N}_0\})^m = x^m\]
+und damit $x > 0$ \\
+        Ferner gilt
+\[y = \sup \{\frac{1}{x_n^{m - 1}} \mid n\in\mathbb{N}_0\} = \inf \{x_n^{m - 1}\mid x \in \mathbb{N}_0\}^{-1}\]
+mit \ref{sec-2-9-23} \[= (\frac{1}{\inf\{x_n \mid n\in\mathbb{N}_0\}})^{m - 1} = \frac{1}{x^{m -1}} \Rightarrow a y\leq \frac{a}{x^{m - 1}}\]
+\item \label{1.55.5} Von oben wissen wir, dass $x \leq a y$
+        \[\Rightarrow x\leq a y  \leq \frac{a}{x^{m -1}} \Rightarrow x^m \leq a\]
+\end{enumerate}
+
+Aus \ref{1.55.4} und \ref{1.55.5} folgt $x^m = a\hfill\square$
+
+\subsubsection{Lemma 1.56}
+\label{sec-2-9-23}
+\begin{enumerate}
+\item Seien für $n\in \mathbb{N}_0:y_n > 0$ und $\inf \{x_n\mid x\in\mathbb{N}_0\} > 0$ \\
+       Dann gilt \[\sup \{\frac{1}{y_n} \mid n\in \mathbb{N}_0\} = \frac{1}{\inf \{y_n \mid n\in\mathbb{N}_0\}}\]
+\item \label{1.56.2} Seien für $n\in\mathbb{N}_0,y_n > 0, k\in\mathbb{N}_0$. Dann gilt:
+\[\inf \{y_n^k \mid n\in\mathbb{N}_0\} = (\inf \{y_n\mid n\in\mathbb{N}_0\})^k\]
+\end{enumerate}
+(ohne Beweis)
+
+\section{Komplexe Zahlen}
+\label{sec-3}
+\textbf{Motivation:} $x^2 + 1 = 0$ nicht lösbar in $\mathbb{R}$ \\
+   Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
+\begin{itemize}
+\item \label{KA} (KA) $\{x_1,y_1\} + \{x_2,y_2\} = \{x_1 + x_2, y_2 + y_2\}$
+\item \label{KM} (KM) \$\{x$_{\text{1}}$,y$_{\text{1$\backslash$}}$\} $\cdot$ \{x$_{\text{2}}$,y$_{\text{2$\backslash$}}$\} = \{x$_{\text{1}}$ x$_{\text{2}}$ - y$_{\text{1}}$ y$_{\text{2}}$, x$_{\text{1}}$ y$_{\text{2}}$ + x$_{\text{2}}$ y$_{\text{1$\backslash$}}$\}
+\end{itemize}
+\subsection{Komplexer Zahlkörper}
+\label{sec-3-1}
+\begin{enumerate}
+\item Die Menge der Paare $z = \{x,y\} \in \mathbb{R}\times\mathbb{R}$ mit Addition \ref{KA} und Multiplikation \ref{KM} bildet den Körper $\mathbb{C}$ der \textbf{komplexen Zahlen} mit den neutralen Elementn $\{0,0\}$ und $\{1,0\}$
+\item Die Gleichung $z^2 + \{1,0\} = \{0,0\}$ hat in $\mathbb{C}$ zwei Lösungen, welche mit $\I:= \{0,\pm 1\}$ bezeichnet werden
+\item Der Körper $\mathbb{R}$ ist mit der Abbildung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ isomorph zu einem Unterkörper von $\mathbb{C}$
+\end{enumerate}
+\subsubsection{Beweis}
+\label{sec-3-1-1}
+\begin{enumerate}
+\item Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributibitätsgesetzes verifiziert man durch Nachrechenen. \\
+       Neutrale Elemente: Wir lösen die Gleichung $a + z = \{0,0\}$ für beliebige gegebene $a\in\mathbb{C},a=\{a_1,a_2\}$
+       \[\Rightarrow z = \{-a_1, -a_2\}\]
+       \[a\cdot z = \{1,0\}\]
+       \[z = \frac{1}{a}:=\{\frac{a_1}{a_1^2 + a_2^2},-\frac{a_2}{a_1^2 + a_2^2}\},~\text{weil}~a\cdot\frac{1}{a}\]
+       \[\text{weil}~a\frac{1}{a}=\{a_1\frac{a_1}{a_1^2 + a_2^2} + \frac{a_2^2}{a_1^2 + a_2^2},\frac{a_1 a_2}{a_1^2 + a_2^2} - \frac{a_2 a_1}{a_1^2 + a_2^2}\}\]
+\item $i:= \{0,1\}$ hat die Eigenschaft
+\[1 + \I^2 = \{1,0\} + \{0^2 - 1^2, 0\} = \{0,0\} \Rightarrow 1+\I^2 = 0\]
+Ähnlich $1 + (-\I)^2 = 0$
+\item Die Zuordnung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ bildet $\mathbb{R}$ bijektiv auf eine Untermenge von $\mathbb{C}$ ab, welche bezüglich der komplexen Addition und Multiplikation wieder ein Körper ist $\hfill\square$
+\end{enumerate}
+\subsection{Notation}
+\label{sec-3-2}
+$z = \{x,y\} =: x + \I y,~x,y\in\mathbb{R}$
+\begin{itemize}
+\item $x$ ist Realteil $x = \Re{z}$
+\item $y$ ist Imaginärteil $x = \Im{z}$
+\end{itemize}
+\[z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) = \underbrace{x_1 + x_2}_{\Re (z_1 + z_2)} + \I\underbrace{(y_1 + y_2)}_{\Im (z_1 + z_2)}\]
+\[z_1 z_2 = (x_1 + \I y_1)(x_1 + \I y_2) = x_1 x_2 + \I y_1 x_2 + \I y_2 x_1 + (\I y_1)(\I y_2) = \underbrace{x_1 x_2 - y_1 y_2}_{\Re (z_1 z_2)} + \I\underbrace{(x_1y_2 + y_1 x_2)}_{\Im (z_1,z_2)}\]
+\subsection{{\bfseries\sffamily TODO} Graphische Darstellung}
+\label{sec-3-3}
+\subsection{Bemerkung}
+\label{sec-3-4}
+Die reellen Zahlen  sind durch $\Im z = 0$ charakterisiert.
+\[z_1 = z_2 \Rightarrow x_1 + \I y_i = x_2 + \I y_2 \Leftrightarrow x_1 = x_2,y_1 = y_2\]
+\subsection{Korollar 1.59}
+\label{sec-3-5}
+Jede quadratische Gleichung
+\[z^2+p z + q = 0,~p,q\in\mathbb{R}\]
+besitzt in $\mathbb{C}$ genau zwei Lösungen
+\[z_1,2 = \begin{cases} -\frac{1}{2}\pm \frac{1}{2}\sqrt{p^2 - 4q} & p^2 \geq 4q \\ -\frac{1}{2}\pm \I\frac{1}{2}\sqrt{\abs{p^2 - 4q}} & p^2 - 4q < 0 \end{cases} \]
+\subsection{Fundamentalsatz der Algebra}
+\label{sec-3-6}
+Jede algebraische Gleichung der Form \[z^n + \sum_{i = 0}^{n - 1} a_i z^i = 0\]
+hat in $\mathbb{C}$ mindestens eine Lösung. Beweis $\rightarrow$ Funktionstheorie
+\subsection{Betrag}
+\label{sec-3-7}
+Für komplese Zahlen lässt sich ein Absolutbetrag definieren
+\[r = \abs{z} = \sqrt{x^2 + y^2}\]
+Damit:
+\begin{align}
+x &= r\cos{\alpha}
+y &= r\sin{\alpha}
+z &= x + \I y = r(\cos{alpha} + \I\sin{\alpha})
+\end{align}
+\subsection{Konjugation}
+\label{sec-3-8}
+Zu einem $z = x + \I y\in\mathbb{C}$ definieren wir eine konjugierte komplexe Zahl \[\bar z = x - \I y \in\mathbb{C}\]
+Dann gilt \[\abs{z}^2 = x^2 + y^2 = z\bar z\]
+Aus der Definition:
+\begin{itemize}
+\item $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
+\item $\overline{z_1 * z_2} = \overline{z_1} * \overline{z_2}$
+\item $x = \frac{z + \bar z}{2}$
+\item $y = \frac{z - \bar z}{2\I}$
+\end{itemize}
+\section{Folgen}
+\label{sec-4}
+Eine Folge von reellen Zahlen wird gegeben durch eine Abbildung \[\mathbb{N}_0 \to \mathbb{R},n\mapsto x_n\]
+Wir bezeichnen die Folge auch mit $(x_n)_{n\in\mathbb{N}_0}$
+
+Topologische Struktur auf Mengen.
+\begin{itemize}
+\item Abstände in $\mathbb{R}^1$ Betrag $\abs{x - y}$ $\xrightarrow{\text{Verallgemeinerung}}$ Norm / Metrik
+\item Umgebung in $\mathbb{R}^1$ $\varepsilon$-Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
+\end{itemize}
+
+Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder $\mathbb{C}$)
+\subsection{Definition 2.1 Konverenz}
+\label{sec-4-1}
+Wir sagen, dass die Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) gegen den Grenzwert (oder Limes) $a\in\mathbb{K}$ konvergiert
+\[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
+wenn für beliebiges $\varepsilon > 0$ von einem $n_\varepsilon \in\mathbb{N}$ an gilt
+\[\abs{a_n - a} < \varepsilon,n\geq n_\varepsilon\]
+\[\Leftrightarrow \Forall\varepsilon > 0\exists n\varepsilon \in\mathbb{N}:\Forall n\geq n_\varepsilon a_n \in I_\varepsilon(a)\]
+\subsection{Folgerung 2.2}
+\label{sec-4-2}
+Sei $(a_n)_{n\in\mathbb{N}}$ eine monoton wachsende beziehungsweise fallende Folge reeller Zahlen $M=\{a_n\mid n\in\mathbb{N}\}$ und sei nach oben beziehungsweise unten beschränkt. Dann gilt \[a_n\to\sup M, a_n\to\inf M\]
+Beweis $\to$ Übungen
+\subsection{Definition 2.3 Cauchy Folgen}
+\label{sec-4-3}
+Eine Folge $(a_n)_{n\in\mathbb{N}}$ heißt Cauchy-Folge wenn:
+\[\Forall\varepsilon > 0\exists n_\varepsilon \in\mathbb{N}\Forall n,m \geq n_\varepsilon: \abs{a_n - a_m} < \varepsilon \]
+(Cauchy Kriterium)
+\subsection{Definition 2.4 Teilfolge}
+\label{sec-4-4}
+Eine Teilfolge einer gegebenen Folge $(a_n)_{n\in\mathbb{N}}$ ist eine Auswahl $(a_{n_k})_{k\in\mathbb{N}}$, wobei $a_{n_k}$ auch die Glieder von $(a_n)_{n\in\mathbb{N}}$ sind
+\subsubsection{Beispiel 2.5}
+\label{sec-4-4-1}
+\[a_n = \frac{1}{m}\] ist eine Cauchy-Folge. Für ein $\varepsilon > 0$ wählen wir $n_\varepsilon$ so dass $n_\varepsilon > \frac{1}{\varepsilon}$. Für beliebiges $n\geq m > N$
+\[\abs{a_m - a_n} = \abs{\frac{1}{m} - \frac{1}{n}} = \frac{n - m}{m n} \leq \frac{n}{m n} = \frac{1}{m} < \frac{1}{n_\varepsilon} < \varepsilon\hfill\square\]
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

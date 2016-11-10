@@ -1,5 +1,5 @@
-% Created 2016-11-04 Fr 11:16
-\documentclass[11pt]{article}
+% Created 2016-11-10 Do 00:30
+\documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -27,6 +27,7 @@
 \DeclareMathOperator{\Forall}{\forall}
 \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\usepackage{stmaryrd}
 \author{Robin Heinemann}
 \date{\today}
 \title{Lineare Algebra (Vogel)}
@@ -208,8 +209,7 @@ f & w & w & f & w & w & w\\
 f & f & w & w & w & w & w\\
 \end{tabular}
 \end{center}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-2-2-1}
 $m,n$ natürliche Zahlen \\
      \[A:~m^2 < n^2\]
@@ -224,7 +224,6 @@ Wir wollen zeigen, dass $A\Rightarrow B$ für alle natürlichen Zahlen $m,n$ wah
        \[A\wedge \neg B \Rightarrow m^2 < n^2 \wedge n\leq m \Rightarrow m^2 < n^2 \wedge m n \leq m^2 \wedge n^2 \leq m n \Rightarrow m n \leq m^2 < n^2 \leq m n\]
        Wiederspruch
 \end{itemize}
-\end{enumerate}
 \subsection{Existenz- und Allquantor}
 \label{sec-2-3}
 \subsubsection{Existenzquantor}
@@ -282,11 +281,9 @@ Mengenbegriff nach Cantor: \\
 \subsubsection{leere Menge}
 \label{sec-2-4-3}
 Die leere Menge $\emptyset$ enthält keine Elemente
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-3-1}
 \[\{x\mid x\in\mathbb{N}, x < -5\} = \emptyset\]
-\end{enumerate}
 
 \subsubsection{Zahlenbereiche}
 \label{sec-2-4-4}
@@ -309,50 +306,41 @@ Menge der reellen Zahlen: $\mathbb{R}$
 $A,B$ seien Mengen. \\
     $A$ heißt Teilmenge von $B~(A\subseteq B) \xLeftrightarrow{\text{Def.}} \Forall x\in A: x\in B$
 $A$ heißt echte Teilmenge von $B~(A\subset B) \xLeftrightarrow{\text{Def.}} A\subseteq B \wedge A\neq B$
-\begin{enumerate}
-\item Anmerkung
+\paragraph{Anmerkung}
 \label{sec-2-4-5-1}
 Offenbar gilt für Mengen $A,B$:
 \[A=B \Leftrightarrow A\subseteq B \wedge B\subseteq A\]
 $\emptyset$ ist Teilmenge jeder Menge
 
-\item Beipspiel
+\paragraph{Beipspiel}
 \label{sec-2-4-5-2}
 \[\mathbb{N}\subset\mathbb{N}_0\subset\mathbb{Z}\subset\mathbb{Q}\]
-\end{enumerate}
 
 \subsubsection{Durschnitt}
 \label{sec-2-4-6}
 \[A \cap B := \{x\mid x\in A \wedge x\in B\}\]
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-6-1}
 \[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\cap B = \{3,7\}\]
-\end{enumerate}
 
 \subsubsection{Vereinigung}
 \label{sec-2-4-7}
 \[A\cup B := \{x\mid x\in A \vee x\in B\}\]
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-7-1}
 \[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\cup B = \{2,3,4,5,6,7\}\]
-\end{enumerate}
 
 \subsubsection{Differenz}
 \label{sec-2-4-8}
 \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\}\]
 Im Fall $B\subseteq A$ nennt man $A\setminus B$ auch das Komplement von $B$ in $A$ und schreibt $\mathcal{c}_A(B) = A\setminus B$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-8-1}
 \[A=\{2,3,5,7\}, B=\{3,4,6,7\}, A\setminus B = \{2,5\}\]
-\end{enumerate}
 \subsubsection{Bemerkung zu Vereinigung und Durschnitt}
 \label{sec-2-4-9}
 $A,B$ seien zwei Mengen. Dann gilt \[A\cap (B\cup C) = (A\cap B) \cup (A\cap C)\]
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-4-9-1}
 \[A\cap(B\cup C) \subseteq (A\cap B) \cup (A\cap C)\]
 \[A\cap(B\cup C) \supseteq (A\cap B) \cup (A\cap C)\]
@@ -367,7 +355,6 @@ Damit ist "$\subseteq$" gezeigt.
 "$\supseteq$" Sei \$x$\in$ (A$\cap$ B) $\cup$ (A$\cap$ C)
 \[\Rightarrow x\in A\cap B \vee x\in A\cap C \\ \Rightarrow (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \Rightarrow x\in A \wedge (x\in B\vee x\in C) \\ \Rightarrow x\in A \wedge x\in B\cup C \\ \Rightarrow x\in A\cap (B\cup C)\]
 Damit ist "$\supseteq$" gezeigt.
-\end{enumerate}
 \subsubsection{Bemerkung zu Äquivalenz von Mengen}
 \label{sec-2-4-10}
 Seien $A,B$ Mengen, dann sind äquivalent:
@@ -375,52 +362,44 @@ Seien $A,B$ Mengen, dann sind äquivalent:
 \item $A\cup B = B$
 \item $A\subseteq B$
 \end{enumerate}
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-4-10-1}
 Wir zeigen 1) $\Rightarrow$ 2) und 2) $\Rightarrow$ 1.
 \[1) \Rightarrow 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \Rightarrow x\in A \wedge x \in B \Rightarrow x\in A\cup B = B\]
 \[2) \Rightarrow 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
 "$\subseteq$": Sei $x\in A\cup B \Rightarrow x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
 "$\supseteq$": $B\subseteq A\cup B$ klar
-\end{enumerate}
 \subsubsection{Kartesisches Produkt}
 \label{sec-2-4-11}
 Seien $A,B$ Mengen
 \[A\times B := \{(a,b)\mid a\in A, b\in B\}\]
 heipt das kartesische Produkt von $A$ und $B$. Hierbei ist $(a,b) = (a',b') \xLeftrightarrow{\text{Def}} a = a' \wedge b = b'$ a = a' $\wedge$ b = b'\$
 
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-11-1}
 \begin{itemize}
 \item \[\{1,2\}\times \{1,3,4\} = \{(1,1),(1,3),(1,4),(2,1),(2,3),(2,4)\}\]
 \item \[\mathbb{R}\times\mathbb{R}=\{(x,y)|mid x,y \in \mathbb{R}\} = \mathbb{R}^2\]
 \end{itemize}
-\end{enumerate}
 \subsubsection{Potenzmenge}
 \label{sec-2-4-12}
 $A$ sei eine Menge
 \[\mathcal{P} (A) := \{M\mid M\subseteq A\}\]
 heißt die Potenzmenge von $A$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-12-1}
 \[\mathcal{P} (\{1,2,3\}) =  \{\emptyset, \{1\}, \{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\{1,2,3,4\}\}\]
-\end{enumerate}
 \subsubsection{Kardinalität}
 \label{sec-2-4-13}
 $M$ sei eine Menge. Wir setzen
 \[\abs{M} := \begin{cases} n & \text{falls $M$ eine endliche Menge ist und $n$ Elemente enthält} \\ \infty & \text{falls $M$ nicht endlich ist} \end{cases}\]
 $\abs{M}$ heißt Kardinalität von A
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-13-1}
 \begin{itemize}
 \item $\abs{\{7,11,16\}} = 3$
 \item $\abs{\mathbb{N}} = \infty$
 \end{itemize}
-\end{enumerate}
 \subsubsection{Bemerkung zu natürlichen Zahlen}
 \label{sec-2-4-14}
 Für die natürlichen Zahlen gilt das Induktionsaxiom
@@ -435,13 +414,12 @@ Für jedes $n\in \mathbb{N}$ sei eine Aussage $A(n)$ gegeben. Die Aussagen $A(N)
 \item (IS) Für jedes $n\in\mathbb{N}$ gilt: $A(n) \Rightarrow A(n+1)$
 \end{itemize}
 Der Schritt (IA) heißt Induktionsanfang, die Implikation $A(n) \Rightarrow A(n+1)$ heißt Induktionsschritt
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-2-4-15-1}
 Setze $M := \{n\in \mathbb{N}\mid A(n)~\text{ist wahr}\}$
 Wegen (IA) ist $1\in M$, wegen (IS) gilt: $n\in M \Rightarrow n+1 \in M$ \\
      Nach Induktionsaxiom folgt $M = \mathbb{N}$, das heißt $A(n)$ ist wahr für alle $n\in \mathbb{N}$
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-4-15-2}
 Für $n\in\mathbb{N}$ sei $A(n)$ die Aussage: $1+\ldots + n = \frac{n(n+1)}{2}$
 Wir zeigen: $A(n)$ ist wahr für alle $n\in \mathbb{N}$, und zwar durch vollständige Induktion
@@ -450,7 +428,6 @@ Wir zeigen: $A(n)$ ist wahr für alle $n\in \mathbb{N}$, und zwar durch vollstä
 \item (IS) zu zeigen: $A(n) \Rightarrow A(n+1)$ \\
        Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\Rightarrow 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
 \end{itemize}
-\end{enumerate}
 \subsection{Relationen}
 \label{sec-2-5}
 \subsubsection{Definiton}
@@ -462,14 +439,12 @@ Wir schreiben $a\sim b \xLeftrightarrow{\text{Def}} (a,b) \in R$ ("a steht in Re
 \item anschaulich: eine Relation auf $M$ stellt eine "Beziehung" zwischen den Elementen von $M$ her.
 \item Für $a,b \in M$ gilt entweder $a\sim b$ oder $a\not\sim b$, denn: entweder ist $(a,b) \in R$ oder $(a,b)\not\in R$
 \end{itemize}
-\begin{enumerate}
-\item Anmerkung
+\paragraph{Anmerkung}
 \label{sec-2-5-1-1}
 Aufgrund der obigen Notation spricht man in der Regel von Relation "\$$\sim$" auf $M$ als von der Relation $R \subseteq M\times M$
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-1-2}
 \$M = \{1,2,3\}. Durch $R = \{(1,1), (1,2), (3,3) \subseteq M\times M\}$ ist eine Relation auf $M$ gegeben. Es gilt dann: $1\sim 1, 1\sim 2, 3\sim 3$ (aber zum Beispiel: $1\not\sim 3, 2\not\sim 1, 2\not\sim 2$)
-\end{enumerate}
 
 \subsubsection{Eigenschaften von Relationen}
 \label{sec-2-5-2}
@@ -482,8 +457,7 @@ $M$ Menge, $\sim$ Relation auf $M$ \\
 \item transitiv $\xLeftrightarrow{\text{Def}}$ für alle $a,b,c\in M$ gilt: $a\sim b \wedge b\sim v \Rightarrow a\sim c$
 \item total $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \vee b\sim a$
 \end{itemize}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-2-1}
 Sei $M$ die Menge der Studierenden in der LA1-Vorlesung
 \begin{enumerate}
@@ -494,7 +468,6 @@ Sei $M$ die Menge der Studierenden in der LA1-Vorlesung
 \item Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ $a$ sitzt auf dem Platz recht von $b$ \\
         $\sim$ ist nicht reflexiv, nicht symmetrisch, nicht antisymmetrisch, nicht transitiv, nicht total
 \end{enumerate}
-\end{enumerate}
 \subsubsection{Halbordnung / Totalordung}
 \label{sec-2-5-3}
 $\sim$ heißt
@@ -503,17 +476,15 @@ $\sim$ heißt
 \item Totalordung auf $M\xLeftrightarrow{\text{Def}}~\sim$ ist eine Halbordnung und $\sim$ ist total
 \end{itemize}
 In diesen Fällen sagt man auch: Das Tupel $(M,\sim)$ ist eine halbgeordnete, beziehungsweise totalgeordnete Menge.
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-3-1}
 \begin{enumerate}
 \item $\leq$ auf $\mathbb{N}$ ist eine Totalordung
 \item Sei $M = \mathcal{P}(\{1,2,3\})$. $\subseteq$ ist auf $M$ eine Halbordung, aber keine Totalordung (es ist zum Beispiel weder $\{1\} \subseteq \{3\}$ noch $\{3\}\subseteq \{\}$)
 \end{enumerate}
-\item Anmerkung
+\paragraph{Anmerkung}
 \label{sec-2-5-3-2}
 Wegen der Analogie zur $\leq$ auf $\mathbb{N}$ bezeichnen wir Halbordnungen in der Regel mit $\leq$
-\end{enumerate}
 \subsubsection{Größtes / kleistes Element}
 \label{sec-2-5-4}
 $(M, \leq)$ halbgeordnete Menge, $a\in M$ \\
@@ -522,29 +493,25 @@ $(M, \leq)$ halbgeordnete Menge, $a\in M$ \\
 \item größtes Element von $M\xLeftrightarrow{\text{Def}}$ Für alle $x\in M$ gilt $x\leq a$
 \item kleinstes Element von $M\xLeftrightarrow{\text{Def}}$ Für alle $x\in M$ gilt $a\leq x$
 \end{itemize}
-\begin{enumerate}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-5-4-1}
 $(M,\leq)$ halbgeordnete Menge \\
      Dann gilt: Existiert in $M$ ein größtes (beziehungsweise kleinstes) Element, so ist dieses eindeutig bestimmt
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-5-4-1-1}
 Es seien $a,b\in M$ größte Elemente von $M$ \\
       $\Rightarrow x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
       Außerdem: \$x $\le$ b für alle $x\in M$, also auch $a\leq b$ \\
       $\xRightarrow{\text{Antisymmetrie}} a = b$ \\
       Analog für kleinstes Element
-\item Anmerkung
+\subparagraph{Anmerkung}
 \label{sec-2-5-4-1-2}
 Dies sagt nichts darüber aus, ob ein größtes (beziehungsweise kleinstes) Element in $M$ überhaupt existiert.
-\end{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-4-2}
 \begin{enumerate}
 \item In $(\mathbb{N},\leq)$ ist 1 das kleinste Element, ein größtes Element gibt es nicht
 \item $(\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}, \subseteq)$ ist eine halbgeordnete Menge ohne kleinstes beziehungsweise größtes Element
-\end{enumerate}
 \end{enumerate}
 \subsubsection{maximales / minimales Element}
 \label{sec-2-5-5}
@@ -554,32 +521,27 @@ $(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
 \item maximales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $a\leq x \Rightarrow a = x$
 \item minmales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $x\leq a \Rightarrow a = x$
 \end{itemize}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-5-1}
 In $(\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}, \subseteq)$ sind $\{1,2\},\{1,3\},\{2,3\}$ maximale Elemente und $\{1\},\{2\},\{3\}$ sind minimale Elemente.
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-5-5-2}
 $(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
      Dann gilt: Ist $a$ ein größtes (beziehungsweise kleinstes) Element von $M$, dann ist $a$ ein maximales (beziehungsweise minimales) Element von $M$.
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-5-5-2-1}
 Sei $a$ ein größtes Element von $M$. \\
       zu zeigen ist: Für alle $x\in M$ gilt $a\leq x \Rightarrow a = x$
 Sei $x\in M$ mit $a\leq x$. Da $a$ größtes Element von $M$ ist, gilt auch $x\leq a$ \\
       $\xLeftrightarrow{\text{Antisymmetrie}} a = x$ \\
       Analog für kleinstes Element.
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Äquivalenzrelation}
 \label{sec-2-5-6}
 $M$ Menge, $\sim$ auf $M$ \\
     $\sim$ heißt Äquivalenzrelation $\xLeftrightarrow{\text{Def}}~\sim$ ist reflexiv, symmetrisch und transitiv.
 In dem Fll sagen wir für $a\sim b$ auch $a$ ist äquivalent zu $b$. Für $a\in M$ heißt $[a]:=\{b\in M \mid b\sim a\}$ heißt die Äquivalentklasse von $a$.
 Elemente aus $[a]$ nennt man Vertreter oder Repräsentanten von $a$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-5-6-1}
 $M$ Menge aller Bürgerinnen und Bürger Deutschlands. \\
      Wir definieren für $a,b\in M$ $a\sim b \xLeftrightarrow{\text{Def}} a$ und $b$ sind im selben Jahr geboren. \\
@@ -592,7 +554,7 @@ Man sieht in diesem Beispiel: Die Menge $M$ zerfällt komplett in verschiedene �
 \item Jeder Bürger / jede Bürgerinn Detuschalnds ist in genau einer Äquivalenzklasse enthalten
 \item Jede zwei Äquivalentklasse sind endweder gleich oder disjunkt (haben leeren Durchschnitt)
 \end{itemize}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-5-6-2}
 $M$ Menge, $\sim$ Äquivalenzrelation auf $M$ \\
      Dann gilt:
@@ -601,8 +563,7 @@ $M$ Menge, $\sim$ Äquivalenzrelation auf $M$ \\
 \item Je zwei Äquivalenzklassen sind entweder gleich oder disjunkt
 \end{enumerate}
 Man sagt auch: Die Äquivalenzklassen bezüglich "$\sim$" bilden eine \textbf{Partition} von $M$.
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-5-6-2-1}
 \begin{enumerate}
 \item Sei $a\in M$ \\
@@ -620,24 +581,20 @@ Man sagt auch: Die Äquivalenzklassen bezüglich "$\sim$" bilden eine \textbf{Pa
          $[b] = [c]$
          Für $b,c\in M$ gilt also entweder $[b]\cap[c] =\emptyset$ oder $[b] = [c]\hfill\square$
 \end{enumerate}
-\end{enumerate}
-\item Faktormenge
+\paragraph{Faktormenge}
 \label{sec-2-5-6-3}
 $M$ Menge, $\sim$ Äquivalenzrelation auf $M$
 $M/\sim := \{[a]|a\in M\}$ (Menge der Äquivalenzklassen) heißt die Faktormenge (Quotientenmenge) von $M$ nach $\sim$
-\begin{enumerate}
-\item Beispiel
+\subparagraph{Beispiel}
 \label{sec-2-5-6-3-1}
 \[M= \{1,2,3,-1,-2,-3\}\]
 Für $a,b,c \in M$ setzen wir $a\sim b \xLeftrightarrow{\text{Def.}} \abs{x} = \abs{b}$
 Das ist eine Äquivalenzrelation auf $M$
 Es ist \$\footnote{DEFINITION NOT FOUND.} = \{1,-1\},\footnote{DEFINITION NOT FOUND.}=\{2,-2\},\footnote{DEFINITION NOT FOUND.}=\{3,-3\}
 Somit: \$M/sim := \{\footnotemark[1]{},\footnotemark[2]{},\footnotemark[3]{}\} = \{\{1,-1\},\{2,-2\},\{3,-3\}\}
-\item Anmerkung
+\subparagraph{Anmerkung}
 \label{sec-2-5-6-3-2}
 Der Übergang zur Äquivalenzklassen soll (für eine jeweils gegebene Relation) irrelevante Informationen abstreifen.
-\end{enumerate}
-\end{enumerate}
 \subsection{Abbildungen}
 \label{sec-2-6}
 \textbf{naive Definition}: \\
@@ -672,21 +629,19 @@ Ist $(M_i)_{i\in I}$ eine Familie von Mengen, dann ist:
 \label{sec-2-6-4}
 $m,N$ Mengen, $f:M\to n$ Abbildung. \\
     Sind $m\in M,n\in N$ mit $n = f(m)$ dann nennen wir $n$ ein \textbf{Bild} von $m$ unter $f$ und wir nennen $m$ ein \textbf{Urbild} von $n$ unter $f$.
-\begin{enumerate}
-\item Anmerkung
+\paragraph{Anmerkung}
 \label{sec-2-6-4-1}
 In obiger Situation ist das Bild von $m$ unter $f$ eindeutig bestimmt (nach der Definition einer Abbildung)
 Urbilder sind im allgemeinen nicht eindeutig bestimmt, und im Allgemeinen besitzt nicht jedes Element aus $N$ ein Urbild.
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-6-4-2}
 $f:\mathbb{R}\to\mathbb{R},x\mapsto x^2$, dann ist $4=f(2) = f(-2)$, das heißt $2$ und $-2$ sind Urbilder von $4$, das Element $-5$ hat kein Urbild unter $f$, denn es existiert kein $x\in\mathbb{R}$ mit $x^2 = -5$
-\item Definition
+\paragraph{Definition}
 \label{sec-2-6-4-3}
 $M, N$ Mengen, $f:M\to N$ Abbildung, $A\subseteq M, B\subseteq N$ \\
      $f(A) := \{f(a)\mid a\in A\} \subseteq N$ heißt das Bild von $A$ unter $f$. \\
      $f^-1(B) := \{m\in M\mid f(m) \in B\} \subseteq M$ heißt das Urbild von $B$ unter $f$
-\begin{enumerate}
-\item Beispiel
+\subparagraph{Beispiel}
 \label{sec-2-6-4-3-1}
 \[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2\]
 \[f(\{1,2,3\}) = \{1,4,9\}\]
@@ -694,8 +649,6 @@ $M, N$ Mengen, $f:M\to N$ Abbildung, $A\subseteq M, B\subseteq N$ \\
 \[f^-1(\{4\}) = \{2,-2\}\]
 \[f^-1(\{-5\}) = \emptyset\]
 \[f(\mathbb{R}) = {x^2\mid x\in \mathbb{R}} = \{x\in\mathbb{R}\mid x\geq 0\} =:\mathbb{R}_{\geq 0}\]
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Restriktion}
 \label{sec-2-6-5}
 $M,N$ Mengen, $f:M\to N$ Abbildung, $A\subseteq M$
@@ -710,39 +663,34 @@ Ist $f(M) \subseteq B$ dann setzen wir:
 $L,M,N$ Mengen, $f:L\to M,g:M\to N$ Abbildung \\
     \[g\circ f: L\to N, x\mapsto(g\circ f)(x):=g(f(x))\]
 heißt die Komposition (Hintereinanderausführung) von $f$ und $g$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-6-6-1}
 \[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2, g:\mathbb{R}\to\mathbb{R}:x\mapsto x + 1\]
 \[\Rightarrow g\circ f:\mathbb{R}\to\mathbb{R},x\mapsto g(f(x)) = g(x^2) = x^2 + 1\]
-\item Assoziativität
+\paragraph{Assoziativität}
 \label{sec-2-6-6-2}
 $L,M,N,P$ Mengen, $f:L\to M, g:M\to N,h:n\to p$ \\
      Dann gilt
 \[h\circ (g\circ f) = (h\circ g)\circ f\]
 das heißt die Verknüpfung von Abbildungen ist assoziativ.
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-6-6-2-1}
 Für $x\in L ist$ \\
       \[(h\circ (g\circ f)) = h((g\circ f)(x)) = h(g(f(x))) = (h\circ g)(f(x)) = ((h\circ g)\circ f)(x)\hfill\square\]
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Eigenschaften von Abbildungen}
 \label{sec-2-6-7}
 $M,N$ Mengen, $f:M\to N$ Abbildung
-\begin{enumerate}
-\item Injektivität
+\paragraph{Injektivität}
 \label{sec-2-6-7-1}
 $f$ heißt injektiv: \[\xLeftrightarrow{\text{Def}} \Forall m_1,m_2\in M: f(m_1) = f(m_2) \Rightarrow m_1 = m_2 \Leftrightarrow \Forall m_1,m_2\in M: m_1\neq m_2 \Rightarrow f(m_1)\neq f(m_2)\]
-\item Surjektivität
+\paragraph{Surjektivität}
 \label{sec-2-6-7-2}
 $f$ heißt sujektiv:
 \[\xLeftrightarrow{\text{Def}} \Forall n\in M :\exists m\in M: f(m) = n \Leftrightarrow f(M) = N\]
-\item Bijektivität
+\paragraph{Bijektivität}
 \label{sec-2-6-7-3}
 $f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjektiv
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-6-7-4}
 \begin{enumerate}
 \item $f:\mathbb{R}\to\mathbb{R},x\mapsto x^2$ ist:
@@ -764,12 +712,11 @@ $f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjekt
 \item bijektiv
 \end{itemize}
 \end{enumerate}
-\item Bemerkung 4.12
+\paragraph{Bemerkung 4.12}
 \label{sec-2-6-7-5}
 $M,N$ Mengen, $f:M\to N, g:n\to M$ mit $g\circ f = id_M$
 Dann ist $f$ injektiv und $g$ surjektiv.
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-6-7-5-1}
 \begin{enumerate}
 \item $f$ ist injektiv, denn: \\
@@ -777,8 +724,7 @@ Dann ist $f$ injektiv und $g$ surjektiv.
 \item $g$ ist surjektiv, denn: \\
          Sei $m\in M$ Dann ist $m=id_M(m) = (g\circ f)(m) = g(f(m))$
 \end{enumerate}
-\end{enumerate}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-6-7-6}
 Sei $f:M\to N$, $N,M$ Mengen
 Dann sind äquivalent:
@@ -789,8 +735,7 @@ Dann sind äquivalent:
 \end{enumerate}
 In diesem Fall bezeichnen wir die Abbildung $g:N\to M$ aus 3. mit $f^{-1}$ und nennen $f^{-1}$ die Umkehrabbildung von $f$. Sie ist gegeben durch
 \[f^{-1} : N\to M, n\mapsto~\text{Das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$}\]
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-6-7-6-1}
 Statt 1. $\Leftrightarrow$ 2. und 2. $\Leftrightarrow$ 3. zeigen 1. $\Rightarrow$ 2. $\Rightarrow$ 3. $\Rightarrow$ 1.
 \begin{itemize}
@@ -812,19 +757,18 @@ Statt 1. $\Leftrightarrow$ 2. und 2. $\Leftrightarrow$ 3. zeigen 1. $\Rightarrow
 \item 3. $\Rightarrow$ 1. Wegen 3. existier $g:N\to M$ mit $g\circ f = id_M,f\circ g = id_N$ \\
         \[\xRightarrow{[[Bemerkung 4.12]]} f~\text{injektiv}~,f~\text{surjektiv}~\Rightarrow f~\text{bijektiv}\Rightarrow~\text{1.}\]
 \end{itemize}
-\item Anmerkung
+\subparagraph{Anmerkung}
 \label{sec-2-6-7-6-2}
 \begin{itemize}
 \item Bitte stets aufpassen, ob mit $f^{-1}$ die Unmkerhabbildung (falls existent) oder das Bilden der Urbildmenge gemeint ist.
 \item Im Beweis von 3. $\Rightarrow$ 1. haben wir die Eindeutigkeit von $g$ garnicht verwendet, das heißt wir haben sogar gezeigt: \\
         $f$ bijektiv $\Leftrightarrow$ 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = id_N$ und $f\circ f = id_M$ Soch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
 \end{itemize}
-\item Beispiel
+\subparagraph{Beispiel}
 \label{sec-2-6-7-6-3}
 Im Beispiel vorher haben wir gesehen $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist bijektiv.
 Die Umkehrabbildung ist gegeben durch $f^{-1}:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto \sqrt{x}$
-\end{enumerate}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-6-7-7}
 $M,N$ Mengen, $f:M\to N$ Dann gilt:
 \begin{enumerate}
@@ -844,19 +788,17 @@ $M,N$ Mengen, $f:M\to N$ Dann gilt:
 $g:N\to M,n\mapsto \tilde n$. Dann ist $(f\circ g)(n) = f(g(n)) = n$ für alle $n\in N$ und das heißt $f\circ g = id_N \hfill\square$
 \end{itemize}
 \end{enumerate}
-\begin{enumerate}
-\item Anmerkung
+\subparagraph{Anmerkung}
 \label{sec-2-6-7-7-1}
 Das wir stets einen Auswahlprozess wie im Beweis von 2. "$\Rightarrow$" vornehmen können ist ein Axiom der Mengenlehre (erkennen wir als gültig an, ist jedoch nicht beweisbar), das \textbf{Auswahlaxiom}: \\
       Ist $I$ eine Indexmenge und $(A_i)_{i\in I}$ eine Familie von nichtleeren Mengen, dann gibt es eine Abbildung $\gamma:I\to \bigcup_{i\in I} A_i$ mit $\gamma (i) \in A_i$ für alle $i\in I$ (im obigen Beweis ist $I = N,A_n = f^{-1}(\{n\})$ für $n\in N$)
-\end{enumerate}
-\item Bemerkung 4.16
+\paragraph{Bemerkung 4.16}
 \label{sec-2-6-7-8}
 $L,M,N$ Mengen, $f:L\to M, g:M\to N$ \\
      Dann gilt: $g,f$ beide injektiv (beziehungsweise surjektiv oder bijektiv) $\Rightarrow$ $g\circ f$ injektiv (beziehungsweise sujektiv oder bijektiv)
-\item Definition 4.17
+\paragraph{Definition 4.17}
 \label{sec-2-6-7-9}
-\item Bemerkung 4.19
+\paragraph{Bemerkung 4.19}
 \label{sec-2-6-7-10}
 $M,N$ endliche Mengen mit $\abs{M} = \abs{N},f:M\to N$ Dann sind äquivalent:
 \begin{enumerate}
@@ -864,8 +806,7 @@ $M,N$ endliche Mengen mit $\abs{M} = \abs{N},f:M\to N$ Dann sind äquivalent:
 \item $f$ ist surjektiv
 \item $f$ ist bijektiv
 \end{enumerate}
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-2-6-7-10-1}
 \begin{itemize}
 \item 1. $\Rightarrow$ 2. Sei $f$ injektiv $\Rightarrow$ $\abs{f(M)} = \abs{M} = \abs{N}$ wegen $f(M) \subseteq N$ folgt $f(M) = N$ $\Rightarrow$ $f$ surjektiv
@@ -873,8 +814,6 @@ $M,N$ endliche Mengen mit $\abs{M} = \abs{N},f:M\to N$ Dann sind äquivalent:
         Annahme: $f$ ist nicht bijektiv $\Rightarrow$ $f$ nicht injektiv $\Rightarrow$ $\exists m_1,m_2\in M: m_1\neq m_2 \wedge f(M_1) = f(m_2) \Rightarrow \abs{f(M)} < \abs{M} = \abs{N}$ Wiederspruch zu $f(M) = N$
 \item 3. $\Rightarrow$ 1. trivial
 \end{itemize}
-\end{enumerate}
-\end{enumerate}
 \section{Gruppen, Ringe, Körper}
 \label{sec-3}
 \subsection{Gruppe}
@@ -883,15 +822,13 @@ $M,N$ endliche Mengen mit $\abs{M} = \abs{N},f:M\to N$ Dann sind äquivalent:
 \label{sec-3-1-1}
 $M$ Menge, Eine Verknüpfung (inverse Verknüpfung) auf $M$ ist ein Abbildung \[*:M\times M \to M\]
 Anstelle von $*(a,b)$ schreiben wir $a * b$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-1-1-1}
 \begin{itemize}
 \item $+: \mathbb{R} \times \mathbb{R} \to \mathbb{R},(a,b) \mapsto a + b$
 \item $\cdot: \mathbb{R} \times \mathbb{R} \to \mathbb{R},(a,b) \mapsto a\cdot b$
 \end{itemize}
 sind Verknüpfungen
-\end{enumerate}
 \subsubsection{Monoid}
 \label{sec-3-1-2}
 Ein Monoid ist ein Tupel $(M,*)$, bestehend aus einer Menge $M$ und einer Verküpfung \\
@@ -900,49 +837,41 @@ Ein Monoid ist ein Tupel $(M,*)$, bestehend aus einer Menge $M$ und einer Verkü
 \item (M1) Die Verküpfung ist assoziativ, das heißt \[\Forall a,b,c\in M:(a*b)*c = a*(b*c) \]
 \item (M2) Ex existiert ein neutrales Element $e$ in $M$, das heißt \[\exists e\in M:\Forall a\in M e*a = a = a*e\]
 \end{itemize}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-1-2-1}
 \begin{itemize}
 \item $(\mathbb{N}_0,+), (\mathbb{Z},+)$ sind Monoide (neutrales Element: $0$)
 \item $(\mathbb{N},+)$ ist kein Monoid (ex existiert kein neutrales Element)
 \item $(\mathbb{N},\cdot),(\mathbb{Z},\cdot)$ sind Monoide (neutrales Element: $1$)
 \end{itemize}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-3-1-2-2}
 $(M,*)$ Monoid. Dann gibt es in $M$ genau ein neutrales Element.
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-3-1-2-2-1}
 \begin{itemize}
 \item Existenz: Es existert ein neutrales Element: folgt aus Definition eines Monoids
 \item Eindeutigkeit: Seien $e,\tilde e \in M$ neutrale Element \[\Rightarrow e = e * \tilde e = \tilde e\]
 \end{itemize}
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Inverses}
 \label{sec-3-1-3}
 $(M,*)$ Monoid mit neutralem Element $e$, $a\in M$
 Ein Element $b\in M$ heit Inverses zu $a \xLeftrightarrow{\text{Def}} a * b = e = b * a$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-1-3-1}
 \begin{itemize}
 \item In $(\mathbb{Z},+)$ ist $-2$ ein Inverses zu $2$ denn $2 + (-2) = 0 = (-2) + 2$
 \item In $(\mathbb{N}_0,+)$ existiert kein Inverses zu $2$, denn es existiert kein $n\in \mathbb{N}_0$ mit $n + n = 0 = n + 2$
 \item \label{invex} In $(\mathbb{Z},\cdot)$ existiert kein Inverses zu $2$, denn es existiert kein $n\in\mathbb{Z}$ mit $2\cdot n = 1 = n \cdot 2$
 \end{itemize}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-3-1-3-2}
 \label{beminv}
 $(M,*)$ Monid, $a\in M$ Dann gilt: besitzt $a$ ein Inverses, dann ist dieses eindeutig bestimmt.
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-3-1-3-2-1}
 Seinen $b,\tilde b$ Inversen zu $a$, sein $e\in M$ das neutrale Element
 \[\Rightarrow b = e * b = (\tilde b * a) * b = \tilde b * (a * b) = \tilde b\]
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Gruppe}
 \label{sec-3-1-4}
 Eine Gruppe ist ein Tupel $(G,*)$, bestehen aus einer Menge $G$ und einer Verknüpfung $*:G\times G \to G$, sodass gilt:
@@ -951,15 +880,14 @@ Eine Gruppe ist ein Tupel $(G,*)$, bestehen aus einer Menge $G$ und einer Verkn�
 \item (G2) Jedes Element aus $G$ besitzt ein Inverses
 \end{itemize}
 In diesem Fall schreiben wir $a'$ für das nach \ref{beminv} eindeutig bestimmte Inverse eines Elements $a\in G$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-1-4-1}
 \begin{itemize}
 \item $(\mathbb{Z},+)$ ist eine Gruppe, denn $(\mathbb{Z},+)$ ist ein Monoid und für $a\in\mathbb{Z}$ ist $-a$ das inverse Element: $a + (-a) = 0 = (-a) + a$
 \item $(\mathbb{Z},\cdot)$ ist keine Gruppe, denn das Element $2\in\mathbb{Z}$ hat kein Inverses (vergleiche \ref{invex}).
 \item $(\mathbb{Q}\setminus \{0\},\cdot)$ ist eine Gruppe denn es ist ein Monoid mit neutralem Element $1$ und für jedes Element $a\in\mathbb{Q}\setminus\{0\}$ existiert ein $b\in \mathbb{Q}\setminus \{0\}$ mit $a\cdot b = 1 = b\cdot a$, nämlich $b = \frac{1}{a}$
 \end{itemize}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-3-1-4-2}
 $(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
 \begin{enumerate}
@@ -968,8 +896,7 @@ $(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
 \item $(a')' = a$
 \item (Regel von Hemd und Jacke) $(a*b)' = b' * a'$
 \end{enumerate}
-\begin{enumerate}
-\item Beweis
+\subparagraph{Beweis}
 \label{sec-3-1-4-2-1}
 \begin{enumerate}
 \item Sei $a * b = a * c \Rightarrow a'*(a*b) = a'*(a*c) \Rightarrow (a'*a)*b=(a'*a)*c \Rightarrow e*b = e*c \Rightarrow b = c$
@@ -977,7 +904,229 @@ $(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
 \item Es ist $a*a' = e = a' * a$, das heißt $a$ ist Inverses zu $a' \Rightarrow (a')' = a$
 \item Es ist $(a*b)*(b'*a') = a*(b*b')*a' = a*a' = e \Rightarrow b' * a' \xRightarrow{\text{2.}} (a *b)'$
 \end{enumerate}
+\subsubsection{Abelsche Gruppe}
+\label{sec-3-1-5}
+$(M,*)$ Monoid / Gruppe heißt kommutativ (abelsch)
+\[\xLeftrightarrow{\text{Def}} \Forall a,b\in M: a*b = b*a\]
+\paragraph{Beispiel}
+\label{sec-3-1-5-1}
+Alle bisher betrachteten Beispiele von Monoiden beziehungsweise Gruppen sind abelsch
+\paragraph{Bemerkung 5.14}
+\label{sec-3-1-5-2}
+$M$ Menge, Wir setzten $S(M):= \{f:M\to M | f~\text{bijektiv}\}$
+Dann ist $(S(M),\circ)$ eine Gruppen, die \textbf{symmetrische} Gruppe auf $M$
+\subparagraph{Beweis}
+\label{sec-3-1-5-2-1}
+\begin{enumerate}
+\item "\$\^{}" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus \ref{sec-2-6-7-10}
+\item "\$\^{}" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach \texttt{4.9}
+\item $id_M$ ist neutral: $id_M \in S(M)$ und $id_M\circ f = f = f\circ id_M \Forall f\in S(M)$
+\item Existenz von Inversen: $f\in S(M) \Rightarrow f$ bijektiv $\Rightarrow$ Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
+         für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "\$\^{}"
 \end{enumerate}
+\subsubsection{Permutationen}
+\label{sec-3-1-6}
+$n\in\mathbb{N}$
+\[S_n := S(\{1,\ldots,n\}) = \{\pi \{1,\ldots,n\} \to \{1,\ldots,n\} \mid \pi~\text{ist bijektiv}\}\]
+$(S_n,\circ)$ heißt die symmetrische Gruppe auf $n$ Ziffern, Elemente aus $S_n$ heißen Permutationen.
+Wir schreiben Permutationen $\pi \in S_n$ in der Form:
+\begin{equation}
+\pi =
+\begin{pmatrix}
+1 & 2 & \ldots & n \\
+\pi(1) & \pi(2) & \ldots & \pi(n)
+\end{pmatrix}
+\end{equation}
+\paragraph{Beispiel}
+\label{sec-3-1-6-1}
+In $S_3$ ist
+\begin{equation}
+\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 2 \\
+\end{pmatrix}
+\circ
+\begin{pmatrix}
+1 & 2 & 3 \\
+3 & 2 & 1 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 3 & 1 \\
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+\begin{pmatrix}
+1 & 2 & 3 \\
+3 & 2 & 1 \\
+\end{pmatrix}
+\circ
+\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 2 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 2 & 3 \\
+3 & 1 & 2 \\
+\end{pmatrix}
+\end{equation}
+das heißt $(S_3,\circ)$ ist nicht abelsch.
+\subsubsection{Restklassen}
+\label{sec-3-1-7}
+\paragraph{Motivation}
+\label{sec-3-1-7-1}
+Im täglischen Leben verwendet man zur Bestimmung von Uhrzeiten das Rechnen "modulo $24$", zum Beispiel 22Uhr + 7h = 5Uhr. Wir wollen dies mathematisch präzisieren und verallgemeinern
+\paragraph{Bemerkung 5.17}
+\label{sec-3-1-7-2}
+$n\in\mathbb{N}$. Dann ist durch \[a \sim b \xLeftrightarrow{\text{Def}} \Exists q\in\mathbb{Z}:a - b = q n\]
+eine Äquivalenzrelatioin auf $\mathbb{Z}$ gegeben.
+Anstelle von $a\sim b$ schreiben wir auch $a\equiv b(\mod n)$ ("$n$ ist kongruent $b$ modulo $n$")
+Die Äquivalenzklasse von $a\in \mathbb{Z}$ ist durch
+\[\bar a := \{b\in\mathbb{Z}\mid b\equiv a(\mod n)\} = a + n\mathbb{Z} := \{a + n q \mid q\in \mathbb{Z}\}\]
+gegeben und heißt die Restklasse von $a$ modulo $n$.
+Die Menge aller Restklassen modulo $n$ wird $\frac{\mathbb{Z}}{n\mathbb{Z}}$ bezeichnet ("$\mathbb{Z}$ modulo $n\mathbb{Z}$")
+Es ist: \[\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0, \bar 1, \ldots, \overline{n - 1}\}\]
+und die Restklassen $\bar 0, \ldots, \overline{n - 1}$ sind paarweise verschieden
+\subparagraph{Beweis}
+\label{sec-3-1-7-2-1}
+\begin{enumerate}
+\item "$\equiv$" ist eine Äquivalenzrelation, denn:
+\begin{itemize}
+\item "$\equiv$" ist reflexiv: Fpr $a\in\mathbb{Z}$ ist $a\equiv a(\mod n)$ denn $a - a = 0 = 0 n$
+\item "$\equiv$" ist symmetrisch: Seien $a,b\in\mathbb{Z}$ mit $a\equiv b(\mod n) \exists q\in\mathbb{Z}:a - b = q n$ \\
+           $\Rightarrow$ $b - a = (-q) n \Rightarrow b \equiv a(\mod n)$
+\item "$\equiv$" ist transitiv: Seien $a,b,c\in\mathbb{Z}$ mit $a\equiv b(\mod n), b\equiv c(\mod n)$
+\begin{itemize}
+\item $\Rightarrow$ $\exists q_1,q_2 \in\mathbb{Z}$ mit $a - b = q_1 n, b - c = q_2 n$
+\item $\Rightarrow$ $a - c = (a - b) + (b - c) = q_1 n + q_2 n = (q_1 + 1_2) n \Rightarrow a \equiv c(\mod n)$
+\end{itemize}
+\end{itemize}
+\item Die Äquivalenzklasse von $n\in\mathbb{Z}$ ist gegeben durch
+\[\{b\in\mathbb{Z} \mid b = a(\mod n)\}\]
+\[= \{b\in\mathbb{Z} \mid \exists q\in\mathbb{Z}:b - a = qn\}\]
+\[= \{b\in\mathbb{Z} \mid \exists q\in\mathbb{Z}:b = a + q n\}\]
+\[= a + n\mathbb{Z} \]
+\item \[\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0, \bar 1, \ldots, \overline{n - 1}\}\]
+         denn:
+\begin{itemize}
+\item Ist $a\in\mathbb{Z}$ beliebig, dann liefert Division mit Rest durch $n$: \\
+           Es gibt $q,r\in\mathbb{Z}$ mit $a = q n + r,0\leq r < n$
+           \[\Rightarrow a - r = q n \Rightarrow q \equiv r(\mod n) \Rightarrow \bar a = \bar r\]
+           Das heißt: Jede Restklasse ist von der Form $\bar r$ mit $r\in \{0,\ldots,n - 1\}$ \\
+\item Die Restklassen $\bar 0, \bar 1, \ldots, \overline{n - 1}$ sind paarweise verschieden denn: \\
+           Seien $a,b\in\{0,\ldots,n - 1\}$ mit $\bar a = \bar b \Rightarrow a \equiv b(\mod n) \Rightarrow \exists q\in \mathbb{Z}: a - b = q n \Rightarrow \abs{a - b} = \abs{q} n$.
+\begin{itemize}
+\item Wäre $q\neq 0$, dann $\abs{q} \geq 1$ wegen $q\in\mathbb{Z} \Rightarrow \abs{a - b} \geq n$ \textbf{Wiederspruch} zu $a,b\in\{0,\ldots,n - 1\}$ \\
+             Also: $q = 0$ das heißt $a = b$
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+\paragraph{{\bfseries\sffamily TODO} Beispiel}
+\label{sec-3-1-7-3}
+$n = 3: a\equiv b (\mod 3) \Leftrightarrow \exists q\in\mathbb{Z}: a - b = 3 q$ \\
+     zum Beispiel: $11 \equiv 5(\mod 3)$, denn $11 - 5 = 6 = 2 \cdot 3$ \\
+     zum Beispiel: $7 \not\equiv 2(\mod 3)$, denn $7 - 2 = 5$ und es gibt kein $q\in\mathbb{Z}$ mit $5 = 3 q$
+\[\bar 0 = \{a\in\mathbb{Z}\mid a \equiv 0 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a = 3q\} = 3\mathbb{Z} = \{\ldots,-6,-3,0,3,6,\ldots\}\]
+\[\bar 1 = \{a\in\mathbb{Z}\mid a \equiv 1 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 1 = 3q\} = 1 + 3\mathbb{Z} = \{\ldots,-5,-2,1,4,7,\ldots\}\]
+\[\bar 2 = \{a\in\mathbb{Z}\mid a \equiv 2 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 2 = 3q\} = 2 + 3\mathbb{Z} = \{\ldots,-4,-1,2,5,8,\ldots\}\]
+\[\bar 3 = \{a\in\mathbb{Z}\mid a \equiv 3 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 3 = 3q\} = \{a\in\mathbb{Z}\mid \exists q\in\mathbb{Z}:a=3(q + 1)\}3\mathbb{Z} = \bar 0\]
+\[\bar 4 = \bar 1,\bar 5 = \bar 2,\overline{-1} = \bar 2\]
+\paragraph{Bemerkung 5.19}
+\label{sec-3-1-7-4}
+$n\in\mathbb{N}$ wir definieren eine Verküpfung (Addition) auf $\frac{\mathbb{Z}}{n\mathbb{Z}}$ wie folgt: \\
+     Für $\bar a,\bar b \in\frac{\mathbb{Z}}{n\mathbb{Z}}$ setzen wir $\bar a + \bar b = \overline{a + b}$
+Dann gilt $(\frac{\mathbb{Z}}{n\mathbb{Z}},+)$ ist eine abelsche Gruppe
+\subparagraph{Beweis}
+\label{sec-3-1-7-4-1}
+\begin{enumerate}
+\item Die Verknüpfung ist wohldefiniert: \\ Problem: Die Addition verweendet Vertreter von Restklassen. Es ist zum Beispiel in $\frac{\mathbb{Z}}{n\mathbb{Z}}: \bar 3 + \bar 4 = \overline{3 + 4} = \bar 7 = \bar 2$, aber man könnte auch Rechnen:
+$\bar 3 + \bar 4 = \bar 8 + \bar 9 = \overline{8 + 9} = \overline{17} = \bar 2$ \\
+         Wir müssen nachweisen, dass die Wahl der Vertreter keinen Einfluss auf das Ergebnis hat, das heißt die Verknüfung ist "vertreter unahbhängig": \\
+         Seien $a_1,a_2 ,b_1,b_2 \in\mathbb{Z},\overline{a_1} = \overline{a_2},\overline{b_1} = \overline{b_2}$
+\begin{align}
+&\Rightarrow a_1 \equiv a_2(\mod n), b_1 \equiv b_2(\mod n) \\
+&\Rightarrow\exists q_1,q_2\in\mathbb{Z}: a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n n, b_1 - b_2 = q_2 n \\
+&\Rightarrow (a_1 + b_1) - (a_2 + b_2) = (a_1 - a_2)+ (b_1 - b_2) = q_1 n + q_2 n = (q_1 + q_2) n \\
+&\Rightarrow a_1 + b_ 1 \equiv a_2 + b_2 (\mod n) \\
+&\Rightarrow \overline{a_1 + b_1} = \overline{a_2 + b_2}
+\end{align}
+\item $(\frac{\mathbb{Z}}{n\mathbb{Z}})$ ist eine abelsche Gruppe:
+\begin{itemize}
+\item Assoziativgesetz: Für alle $a,b,c\in\mathbb{Z}$ ist
+\[(\bar a + \bar b) + \bar c = \overline{a + b} + \bar c = \overline{(a + b) + c} = \overline{a + (b + c)} = \bar a + \overline{b + c} = \bar a + (\bar b + \bar c)\]
+\item $\bar 0$ ist neutrales Element, denn $\Forall a\in\mathbb{Z}:\bar 0 + \bar a = \overline{0 + a} = \bar a = \bar a + \bar 0$
+\item Für $a\in\mathbb{Z}$ inst $\overline{-a}$ das inverse Element zu $\bar a$, denn $\bar a + \overline{-a} = \overline{a + (- a)} = \bar 0 = \overline{-a} + \bar a$
+\item Kommutativgesetz: $\Forall a,b\in\mathbb{Z}:\bar a + \bar b = \overline{a + b} = \overline{b + a} = \bar b + \bar a$
+\end{itemize}
+\end{enumerate}
+\subparagraph{Beispiel}
+\label{sec-3-1-7-4-2}
+Wir tragen die Ergebnisse der Verknüpfung "$+$" in einer Verknüpfungstafel zusamme:
+n = 3
+\begin{center}
+\begin{tabular}{llll}
+$+$ & $\bar 0$ & $\bar 1$ & $\bar 2$\\
+\hline
+$\bar 0$ & $\bar 0$ & $\bar 1$ & $\bar 2$\\
+$\bar 1$ & $\bar 1$ & $\bar 2$ & $\bar 0$\\
+$\bar 2$ & $\bar 2$ & $\bar 0$ & $\bar 1$\\
+\end{tabular}
+\end{center}
+
+n = 4
+\begin{center}
+\begin{tabular}{lllll}
+$+$ & $\bar 0$ & $\bar 1$ & $\bar 2$ & $\bar 3$\\
+\hline
+$\bar 0$ & $\bar 0$ & $\bar 1$ & $\bar 2$ & $\bar 3$\\
+$\bar 1$ & $\bar 1$ & $\bar 2$ & $\bar 3$ & $\bar 0$\\
+$\bar 2$ & $\bar 2$ & $\bar 3$ & $\bar 0$ & $\bar 1$\\
+$\bar 3$ & $\bar 3$ & $\bar 0$ & $\bar 1$ & $\bar 2$\\
+\end{tabular}
+\end{center}
+\subsubsection{Gruppenhomomorphismus}
+\label{sec-3-1-8}
+$(G,+),(H,\oast), \varphi : G \to H$ Abbildung \\
+    $\varphi$ heißt ein Gruppenhomomorphismus $\xLeftrightarrow{\text{Def}} \Forall a,b,c\in G: \varphi(a*b) = \varphi(a) \oast \varphi(b)$ \\
+    $\varphi$ heißt ein Gruppenisomorphismus $\xLeftrightarrow{\text{Def}} \varphi$ ist bijektiver Gruppenhomomorphismus
+\paragraph{Beispiel}
+\label{sec-3-1-8-1}
+\begin{enumerate}
+\item $\varphi:\mathbb{Z} \to \mathbb{Z}, a\mapsto 2 a$ ist Gruppenhomomorphismus von $(\mathbb{Z},+)$ nach $(\mathbb{Z},+)$ denn:
+\[\varphi( a+ b) = 2(a + b) = 2 a + 2 b = \varphi(a) + \varphi(b) \Forall a,b\in\mathbb{Z}\]
+$\varphi$ ist aber kein Gruppenisomorphismus, denn $\varphi$ ist nicht surjektiv $(1\not\in \varphi = \varphi{\mathbb{Z}})$
+\item $n\in\mathbb{N}$. Dann gilt $\varphi:\mathbb{Z}\to\frac{\mathbb{Z}}{n\mathbb{Z}},a\mapsto\bar a$ ist ein Gruppenhomomorphismus von $(\mathbb{Z},+)$ nach $(\frac{\mathbb{Z}}{n\mathbb{Z}}, +)$, denn
+\[\Forall a,b\in\mathbb{Z}:\varphi(a+b) = \overline{a + b} = \bar a + \bar b =\varphi(a) + \varphi(b)\]
+$\varphi$ ist kein Gruppenisomorphismus, denn $\varphi$ ist nicht injektiv ($\varphi(0) = \bar 0 = \bar n = \varphi(n)$, aber $0\neq n$)
+\item $\varphi:\mathbb{Z}\to\mathbb{Z},a\mapsto a + 1$ ist kein Gruppenhomomorphismus von $(\mathbb{Z},+)$ nach $(\mathbb{Z},+)$, denn
+\[\varphi(2 + 6) = \varphi(8) = 9,~\text{aber}~\varphi(2)+\varphi(6) = 3 + 7 = 10\]
+\item $\exp:\mathbb{R}\to\mathbb{R}_{\geq 0}, x\mapsto \exp{x} = e^x$ ist ein Gruppenisomorphismus von $(\mathbb{R},+)$ nach $(\mathbb{R}_{\geq 0},\cdot)$, denn:
+\begin{itemize}
+\item \[\exp(a + b) = \exp(a)\exp(b) \Forall a,b\in\mathbb{R}\]
+\item $exp$ ist bijektiv (vgl. Ana1 - Vorlesung)
+\end{itemize}
+\end{enumerate}
+\paragraph{Bemerkung 5.23}
+\label{sec-3-1-8-2}
+$(G,*),(H,\oast)$ Gruppen mit neutralen Elementen $e_G$ beziehungsweise $e_H,\varphi:G\to H$ Gruppenhomomorphismus. Dann gilt
+\begin{enumerate}
+\item $\varphi(e_G) = e_H$
+\item $\Forall a\in G:\varphi(a') = \varphi(a)'$ (Hierbei ist $'$ das Inverse)
+\item Ist $\varphi$ Gruppenisomorphismus, dann gilt $\varphi^{-1}:H\to G$ ebenfalls Gruppenisomorphismus
+\end{enumerate}
+$(G,*),(H,\oast)$ heißen isomorph $\xLeftrightarrow{\text{Def}}$ Ex existert ein Gruppenisomorphismus $\phi:G\to H$ Wir schreiben dann $(G,*) \cong (H,\oast)$
+\subparagraph{Beweis}
+\label{sec-3-1-8-2-1}
+\begin{enumerate}
+\item Es $e_H\oast \varphi(e_G) = \varphi(e_G) = \varphi(e_G*e_G) = \varphi(e_G) \oast(e_G) \Rightarrow e_H = \varphi(e_G)$
+\item Sei $a\in G$ Dann ist $e_H = \varphi(e_G) = \varphi(a*a') = \varphi(a)\oast(a') \Rightarrow \varphi(a') = \varphi(a)'$
+\item $\varphi^{-1}$ ist bijektiv, noch zu zeigen: $\varphi^{-1}$ ist ein Gruppehomomorphismus, das heißt
+\[\varphi^{-1}(c\oast d) = \varphi^{-1}(c)*\varphi^{-1}(d) \Forall c,d\in H\]
+Seien $c,d\in H$ Weil $\varphi$ bijektiv: $\exists a,b\in G:\varphi(a) = c,\varphi(b) =d$
+\[\Rightarrow \varphi^{-1}(c\oast d) = \varphi^{-1}(\varphi(a)*\varphi(b)) = \varphi^{-1}(\varphi(a*b)) = a*b = \varphi^{-1}(c)*\varphi^{-1}(d)\hfill\square\]
 \end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

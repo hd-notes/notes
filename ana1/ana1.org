@@ -1,5 +1,8 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Analysis I (Marciniak-Czochra)
+#+OPTIONS: H:6
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage{siunitx}%
 #+LATEX_HEADER: \usepackage{fontspec}%
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}%
@@ -23,8 +26,8 @@
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
 #+LATEX_HEADER: \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
-#+LATEX_HEADER: \newcommand{\I}]{\imath}
 #+LATEX_HEADER: \makeatother
+#+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 
 * Einleitung
   Webseite www.biostruct.uni-heidelberg.de/Analysis1.php
@@ -554,12 +557,7 @@
    - $y$ ist Imaginärteil $x = \Im{z}$
    \[z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) = \underbrace{x_1 + x_2}_{\Re (z_1 + z_2)} + \I\underbrace{(y_1 + y_2)}_{\Im (z_1 + z_2)}\]
    \[z_1 z_2 = (x_1 + \I y_1)(x_1 + \I y_2) = x_1 x_2 + \I y_1 x_2 + \I y_2 x_1 + (\I y_1)(\I y_2) = \underbrace{x_1 x_2 - y_1 y_2}_{\Re (z_1 z_2)} + \I\underbrace{(x_1y_2 + y_1 x_2)}_{\Im (z_1,z_2)}\]
-** Graphische Darstellung
-  \begin{tikzpicture}
-  \begin{axis}[title={Phasenraum des Harmonischen Oszilators},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
-  \addplot3[blue,quiver={u={y},v={-x},scale arrows=0.3},-stealth,samples=15] {y-x};
-  \end{axis}
-  \end{tikzpicture}
+** TODO Graphische Darstellung
 ** Bemerkung
    Die reellen Zahlen  sind durch $\Im z = 0$ charakterisiert.
    \[z_1 = z_2 \Rightarrow x_1 + \I y_i = x_2 + \I y_2 \Leftrightarrow x_1 = x_2,y_1 = y_2\]
@@ -578,10 +576,10 @@
    \begin{align}
    x &= r\cos{\alpha}
    y &= r\sin{\alpha}
-   z &= x + i y = r(\cos{alpha} + \I\sin{\alpha})
-   \end{algin}
+   z &= x + \I y = r(\cos{alpha} + \I\sin{\alpha})
+   \end{align}
 ** Konjugation
-   Zu einem $z = x + \I y\im\mathbb{C}$ definieren wir eine konjugierte komplexe Zahl \[\bar z = x - \I y \im\mathbb{Z}\]
+   Zu einem $z = x + \I y\in\mathbb{C}$ definieren wir eine konjugierte komplexe Zahl \[\bar z = x - \I y \in\mathbb{C}\]
    Dann gilt \[\abs{z}^2 = x^2 + y^2 = z\bar z\]
    Aus der Definition:
    - $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
@@ -596,11 +594,11 @@
   - Abstände in $\mathbb{R}^1$ Betrag $\abs{x - y}$ $\xrightarrow{\text{Verallgemeinerung}}$ Norm / Metrik
   - Umgebung in $\mathbb{R}^1$ $\varepsilon$-Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
 
-  Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder \mathbb{C})
+  Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder $\mathbb{C}$)
 ** Definition 2.1 Konverenz
    Wir sagen, dass die Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) gegen den Grenzwert (oder Limes) $a\in\mathbb{K}$ konvergiert
    \[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
-   wenn für beliebiges $\varepsilon > 0$ von einem $n_\varepsilon \in\mathbb{N} an gilt
+   wenn für beliebiges $\varepsilon > 0$ von einem $n_\varepsilon \in\mathbb{N}$ an gilt
    \[\abs{a_n - a} < \varepsilon,n\geq n_\varepsilon\]
    \[\Leftrightarrow \Forall\varepsilon > 0\exists n\varepsilon \in\mathbb{N}:\Forall n\geq n_\varepsilon a_n \in I_\varepsilon(a)\]
 ** Folgerung 2.2

@@ -1,5 +1,8 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Experimentalphysik (H.-C. Schulz-Coulon)
+#+OPTIONS: H:6
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage{siunitx}
 #+LATEX_HEADER: \usepackage{fontspec}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
@@ -9,6 +12,7 @@
 #+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 #+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
 #+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
+#+LATEX_HEADER: \DeclareMathOperator{\grad}{grad}
 #+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
 #+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
@@ -24,6 +28,7 @@
 #+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \usepackage{pgfplots}
+#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
 
 \begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}]
 \tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
@@ -334,22 +339,70 @@ mark=at position 0.5 with
 ***** Beispiele
 	  - Kraft und Gegenkraft (TODO Skizze)
 	  - Flaschenzug, Seilkräfte (TODO Skizze)
-
-** TODO Montag
-*** Normalkraft
-	1. (Skizze) Normalkraft $\v{F}_N$ = Kraft senktrecht zur Kontaktfläche. Wird kompensiert duchr $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
-*** Schiefe Ebene
-	- Gewichtskraft: $\v{F}_G = m\v g$
-	- Normalkraft: $\v{F}_N = m g\cos{\alpha} \v{e}_y$
-	- Hangabtriebskraft: $\v{F}_H = m g\sin{\alpha} \v{e}_x$
-	Bewegungsgleichung
-	\[F_H = m\ddot{x} \rightarrow x_x = g\sin{\alpha} =\text{const.}\]
-*** Reibungskräfte
-	- im täglichen Leben über all präsent
-	- spielt eine wichtige Rolle Technik
-	\rightarrow Tribologie = Reibungslehre
-	- Reibung hängt stark von der Oberfläche ab
-**** Experiment: Bewegung einer Masse
+* Verschiedene Kräfte und Kraftgesetze
+** Gravitation (TODO Skizze)
+   Eperimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals cavendish)
+*** Anziehungskraft zweier Massen
+	$m_1,m_2$ Massen, Newtonsches Gravitaitonsgesetz:
+	\[\v{F_G} = -G\frac{m_1 m_2}{r^2}\v{e_r}\]
+	mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}
+*** Erdbeschleunigung
+	\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \Rightarrow g\approx \SI{9.81}{\meter\per\second\squared}\]
+	(mittleres $g$) \\
+**** Abweichungen
+	 - kompilizierte Massenverteilung, Strukturen
+	 - Abflachung der Erde
+**** Messung von $g$
+	 - Gravimeter (Federgravimeter, Pendelgravimeter), relative Messung
+	 - Absolutgravimeter (freier Fall, supraleitende Gravimeter)
+**** Träge und schwere Masse
+	 \[F= m_T a \rightarrow ~\text{träge Masse}\]
+	 \[F= m_S G\frac{M_E}{r_E^2} \rightarrow ~\text{schwere Masse}\]
+**** Äquivalenzprinzip
+	 $m_S \sim \m_T$ beziehungsweise $m_S = m_T$
+** Federkraft
+   Hook'sches Gesetz
+   \[F_x = F_x(\Delta x) = -k_F \Delta x\]
+   Beliebige Auslenkungsfunktion ($F_x(\Delta x = x - x_0)$)
+   \[F_x(x) = F_x(x_0) + \dd{F_x(x)}{x}(x-x_0) + \frac{1}{2}\frac{\d^2 f_x(x)}{\d x^2}(x - x_0) + \ldots\]
+   \rightarrow unabhängig von konkreter Zusammenhang $f_x(x)$ gilt kleine Änderungen
+** Maxwell'sches Rad
+*** Ruhezushand
+	Waage misst Gesamtmasse $M$ austariert
+*** Frage
+	Was passiert, wenn sich das Rad bewegt??
+*** Messung:
+	1. Rad fixiert \rightarrow $m = 0$
+	2. Rad läuft \rightarrow $\Delta m  = -0.7 g < 0$
+*** Auswertung
+	Anwendung 3. Newtonsches Gesetz:
+	$\v{F_1} + \v{F_2} = m\v a$ beziehungsweise $F_2 = - F_1 + m\v a$
+	1. $\v a = 0: \abs{\v{F_2}} = \abs{\v{F_1}} \rightarrow \abs{\v{F_2}} = 0, 0 m = 0$ (Waage)
+	2. $\v a > 0: \abs{\v{F_2}} < \abs{\v{F_1}}$ \rightarrow Waage mit $\abs{\v{F_2}} < m g~\Delta{m} < 0$
+** Rotierende Kette
+   Winkelelement $\Delta \alpha$. Radialkraft $\v{F_r}$ ist resultierende Kraft der vom abgeschnittenen Teil der Kette wirkende Kräfte $\v{F_1} + \v{F_2}$ \\
+   ($\v{F_G}$ vernachlässigbar klein bei hoher Umdrehung und somit großen $\abs{F_1},\abs{F_2}$) \\
+   Es gilt:
+   \[\v a_zp = -\frac{v^2}{R}\v e_r\quad \v v = R\omega \v e_t\]
+   \[\v{F_r} = \Delta m \v a_zp = -\Delta m \frac{v^2}{R}\v e_r\]
+   \[\v{F_r} = \v{F_1} + \v{F_2}\]
+   \[F_r \approx \Delta \alpha F = F\frac{\Delta L}{R}\]
+   \[F = F_r \frac{R}{\Delta L} = \Delta m \frac{v^2}{R}\frac{R}{\Delta L} = \frac{m}{2\pi R}v^2\]
+   Die Kraft $F = \frac{m}{2\pi R}v^2$ spannt die Kette.
+** Normalkraft
+   1. (Skizze) Normalkraft $\v{F}_N$ = Kraft senktrecht zur Kontaktfläche. Wird kompensiert duchr $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
+** Schiefe Ebene
+   - Gewichtskraft: $\v{F}_G = m\v g$
+   - Normalkraft: $\v{F}_N = m g\cos{\alpha} \v{e}_y$
+   - Hangabtriebskraft: $\v{F}_H = m g\sin{\alpha} \v{e}_x$
+   Bewegungsgleichung
+   \[F_H = m\ddot{x} \rightarrow x_x = g\sin{\alpha} =\text{const.}\]
+** Reibungskräfte
+   - im täglichen Leben über all präsent
+   - spielt eine wichtige Rolle Technik
+   \rightarrow Tribologie = Reibungslehre
+   - Reibung hängt stark von der Oberfläche ab
+*** Experiment: Bewegung einer Masse
 	 - Gewicht ruhte: $\v{F}_Z = - \v{F}_R \to a = 0, v = 0$
 	 - Gewicht setzt sich in Bewegung: $\abs{\v{F}_Z} > \abs{\v{F}_R} \to a > 0,v$ steigt an
 	 - Gewicht gleitet: $\v{F}_Z = - \v{R}_R \to a = 0, v =~\text{const.}~\neq 0$ mit $\v v =~\text{const}~$
@@ -382,51 +435,102 @@ mark=at position 0.5 with
 
 \end{tikzpicture}
 
-**** Experiment: Tribologische Messung
-	 Messung der Zugkraft bei der sich der Holzblock nach kleiner Störung in Richtung Rolle bewegt: $F_R = F_Z$
-***** Beobachtung
-	  - $F_R$ hängt nicht von der Oberfläche ab.
-	  - $F_R$ hängt von dem Gewicht des Blocks ab
-	  - $F_R$ ist Materialbhängig
+*** Experiment: Tribologische Messung
+	Messung der Zugkraft bei der sich der Holzblock nach kleiner Störung in Richtung Rolle bewegt: $F_R = F_Z$
+**** Beobachtung
+	 - $F_R$ hängt nicht von der Oberfläche ab.
+	 - $F_R$ hängt von dem Gewicht des Blocks ab
+	 - $F_R$ ist Materialbhängig
 
-*** Tribologische Reibungslehre
-	\[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
-	\[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
-	\[\mu_H > \mu_G\]
-*** Mikroskopisches Modell
-	Verantwortlich sind elektrische Kröfte zwischen Atomen und Molekülen der beieinanderliegenden Oberflächen: Van-der-Waals-Kräfte
-	- Stärke ergibt sich aus effektivem Kontakt.
-	Relative mikroskopische Reibungsfläche: $\sum \frac{a_i}{A} \sim \frac{F_N}{A} \leftarrow~\text{Druck}$
-	- $a_1$ = effektive Kontaktfläche eines Einzelatoms
-	Also: \[F_R \sim \sum \frac{a_i}{A} \sim F_N\]
-	- Haftreibung: Verzahnung der Oberflächen mit minimalen Abstand
-	- Gleitreibung: Minimaler Abstand wird aufgrund der Bewegung nicht erreicht
-*** Schiefe Ebene: Messung der Reibungskraft (Skizze)
-	Kräftegleichgewicht: $F_H = F_R$
-	\[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
-	Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R = \tan{\alpha}$
-	\[\alpha = \SI{15}{\degree} \rightarrow \tan{\alpha} = 0.27,\mu_G = 0.27\]
-*** Zentripetalkraft
-	\[\v a_{Zp} = \v \omega \times(\v\omega\times\v r)\quad \v{F}_{Zp} = m\v\omega\times(\v\omega\times\v r)\]
-	\[a_{Zp} = \omega^2 r = \frac{v^2}{r}\quad F_{Zp} = m\omega^2 r = m \frac{v^2}{r}\]
-**** Beispiel 1 Rotierendes Pendel
-	 \[\v{F}_{Zp} := \v{F}_G + \v{F}_Z\]
-	 \[F_G = m g = F_Z \cos{\theta}\]
-	 \[F_{Zp} = F_Z \sin{\theta}\]
-	 \[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
-	 \[a_{Zp} = \omega^2 r \Rightarrow: \omega \sqrt{\frac{g}{\tan{\theta}}}\]
-	 - $\theta$ steigt mit $\omega$ an
-	 - $\theta(\omega)$ ist unabhängig von Masse
-**** Beispiel 2 Geostationärer Satellit
-	 Zetripetal = Gravitationskraft \\
-	 \[m\omega^2 R = G\frac{m M_E}{R^2}\]
-	 Geostationär: $\omega = \frac{2\pi}{\SI{24}{\hour}} = \frac{2\pi}{24\cdot\SI{3600}{\second}} = \SI{7.27e-5}{\per\second}$
-	 \[R^3 = \frac{G M_E}{\omega^2} \rightarrow R = \SI{42312}{\kilo\meter}\]
-	 Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}\]
-	 - $G = \SI{6.67e-11}{\meter\cubed\per\kilo\gram\second\squared}$
-	 - $M_E = \SI{6e24}{\kilo\gram}$
-	 - $R_E = \SI{6373}{\kilo\meter}$
-** TODO Montag
+** Tribologische Reibungslehre
+   \[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
+   \[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
+   \[\mu_H > \mu_G\]
+** Mikroskopisches Modell
+   Verantwortlich sind elektrische Kröfte zwischen Atomen und Molekülen der beieinanderliegenden Oberflächen: Van-der-Waals-Kräfte
+   - Stärke ergibt sich aus effektivem Kontakt.
+   Relative mikroskopische Reibungsfläche: $\sum \frac{a_i}{A} \sim \frac{F_N}{A} \leftarrow~\text{Druck}$
+   - $a_1$ = effektive Kontaktfläche eines Einzelatoms
+   Also: \[F_R \sim \sum \frac{a_i}{A} \sim F_N\]
+   - Haftreibung: Verzahnung der Oberflächen mit minimalen Abstand
+   - Gleitreibung: Minimaler Abstand wird aufgrund der Bewegung nicht erreicht
+** Schiefe Ebene: Messung der Reibungskraft (Skizze)
+   Kräftegleichgewicht: $F_H = F_R$
+   \[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
+   Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R = \tan{\alpha}$
+   \[\alpha = \SI{15}{\degree} \rightarrow \tan{\alpha} = 0.27,\mu_G = 0.27\]
+** Zentripetalkraft
+   \[\v a_{Zp} = \v \omega \times(\v\omega\times\v r)\quad \v{F}_{Zp} = m\v\omega\times(\v\omega\times\v r)\]
+   \[a_{Zp} = \omega^2 r = \frac{v^2}{r}\quad F_{Zp} = m\omega^2 r = m \frac{v^2}{r}\]
+*** Beispiel 1 Rotierendes Pendel
+	\[\v{F}_{Zp} := \v{F}_G + \v{F}_Z\]
+	\[F_G = m g = F_Z \cos{\theta}\]
+	\[F_{Zp} = F_Z \sin{\theta}\]
+	\[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
+	\[a_{Zp} = \omega^2 r \Rightarrow: \omega \sqrt{\frac{g}{\tan{\theta}}}\]
+	- $\theta$ steigt mit $\omega$ an
+	- $\theta(\omega)$ ist unabhängig von Masse
+*** Beispiel 2 Geostationärer Satellit
+	Zetripetal = Gravitationskraft \\
+	\[m\omega^2 R = G\frac{m M_E}{R^2}\]
+	Geostationär: $\omega = \frac{2\pi}{\SI{24}{\hour}} = \frac{2\pi}{24\cdot\SI{3600}{\second}} = \SI{7.27e-5}{\per\second}$
+	\[R^3 = \frac{G M_E}{\omega^2} \rightarrow R = \SI{42312}{\kilo\meter}\]
+	Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}\]
+	- $G = \SI{6.67e-11}{\meter\cubed\per\kilo\gram\second\squared}$
+	- $M_E = \SI{6e24}{\kilo\gram}$
+	- $R_E = \SI{6373}{\kilo\meter}$
+* Arbeit Energie Leistung
+** Arbeit
+   \[\Delta W = \v F \v x = F_x \Delta x + F_y \Delta y + F_z \Delta z\]
+   \[\d W = \lim_{\Delta r \to 0} \Delta W = \lim_{\Delta r \to 0} \v F\Delta \v r = \v F \d \v r \]
+   \[= F_x\d x + F_y \d y + F_z \d z\]
+   Gesamtarbeit für Verschiebung von $\v{r_1}$ nach $\v{r_2}$
+   \[W = \int_{\v{r_1}}^{\v{r_2}}\v F \d \v r\]
+   \[[W] = \si{\newton\meter} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}\]
+   \[\int_{\v{r_1}}^{\v{r_2}}\v F \d \v r = \int_{r_1}^{r_2} F_x \d x + \int_{r_1}^{r_2} F_y \d y + \int_{r_1}^{r_2} F_z \d z = \int_{s_1 = 0}^{s_2} \v F(s)\dd{\v r}{s}\d s\]
+   $\v r(s)$ parametrisiere Geschwindigkeit.
+*** Beispiel
+	\[\v{r_1} = \cvec{0; 0; 0},\v{r_2} = \cvec{\Delta x ; 0; 0},\v F = \cvec{m g ; 0; 0},\d \v r = \cvec{\d x; \d y; \d z}\]
+	\[W = \int_{(0)}^{(1)} m g\d x + \int 0\d y + \int 0\d z = m g \Delta x \]
+*** Beispiel Kreisbahn (\Rightarrow Gravitation)
+	\[W = \int_A^B \v F\d \v r = 0\]
+** kinetische Energeie
+   \[k = \frac{1}{2} g t^2\]
+   \[v = g t\]
+   \[v^2 = g^2 t^2\]
+   \[v^2 = g h\]
+   \[W = \int_0^h F_G \d x = F_G\int_0^h\d x = F_G h = m g h = \frac{1}{2} m v^2\]
+   - Kinetische Energie: $E_{kin}$
+	 \[E_{kin} = \frac{1}{2} mv^2\quad [E_{kin} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}]\]
+   - Die Zunahme (beziehungsweise Abnahme) der kinetischen Energe eines Körpers ist gleich der ihm zugeführten (beziehungsweise von ihm gelieferten) Arbeit (keine Reibung)
+   \begin{align}
+   W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = \int_{\v{r_1}}^{\v{r_2}} m\dd{\v v}{t}\d \v r = \int_{\v{v_1}}^{\v{v_2}} m\dd{\v r}{t}\d \v v\\
+   &= \int_{\v{v_1}}^{\v{v_2}} m \v v \d \v r = \frac{1}{2}m v_2^2 - \frac{1}{2}m v_1^2
+   \end{align}
+** Potentielle Energie
+   \[W = \int_h^0 F_g\d x = \int_h^0 - g m \d x = m g h = \frac{1}{2} m v^2\]
+*** Ball als Feder am Auftreffpunkt
+   \[F = k\xi\]
+   \[W = \int_0^\xi k\xi'\d\xi' = \frac{1}{2}k\xi^2\]
+** Bemerkung
+   Arbeit $W = \int_{\v{r_1}}^{\v{r_2}} \v F\d \v F$ gilt immer, Symbol fpr Linienintegral meist weggelassen.
+   - kinetische Energie $E_{kin} = \frac{1}{2}mv^2$
+   - potentielle Energie
+	 - $E_{pot} = \frac{1}{2}mx^2$ \hfill (Verformen)
+	 - $E_{pot} = m g h$ \hfill (Lage)
+** Umwandlung von Energi
+   \[\d E_{kin} = F\d x = -\d E_{pot}\]
+   Gilt nur für konservative Kräfte!
+   \begin{align}
+   W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = \int_{E_1}^{E_2} \d E_{kin} = E_{kin}(\v{r_2}) - E_{kin}(\v{r_1}) \\
+   W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = -\int_{E_1}^{E_2} \d E_{kin} = E_{pot}(\v{r_1}) - E_{pot}(\v{r_2})
+   \end{align}
+   1. Für
+	  - $W > 0$: $E_{kin}$ nimmt zu (Arbeit von System am Objekt verrichtet)
+	  - $W < 0$: $E_{kin}$ nimmt ab
+   2. Für
+	  - $W > 0$: $E_{pot}$ nimmt ab
+	  - $W < 0$: $E_{pot}$ nimmt zu
 ** Energie
    \begin{align}
    W &= \int_{\v{r_1}}^{\v{r_2}} \v F \d \v r \\
@@ -523,4 +627,3 @@ mark=at position 0.5 with
 	- Gravitationsfeld: \[\v G = -G \frac{M}{r^2}\v e_r\]
 	- \[\v G = -\grad \Phi\]
 	- \[E_{pot} = m\Phi\]
-	- \[\v F(\v r) = m\v G(\v r)\]

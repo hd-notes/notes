@@ -1,5 +1,5 @@
-% Created 2016-11-08 Di 11:58
-\documentclass[11pt]{article}
+% Created 2016-11-10 Do 01:54
+\documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -149,51 +149,43 @@ Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}
 \end{itemize}
 \subsubsection{Integrieren}
 \label{sec-2-2-3}
-\begin{enumerate}
-\item Fundamentalsatz der Analysis
+\paragraph{Fundamentalsatz der Analysis}
 \label{sec-2-2-3-1}
 \[\int^y f(x)\mathrm{d}x = F(y) \& F'(y) = f(y)\]
 \[\int f(x)\mathrm{d}x = F(x) + C\]
 \[\int_a^b f(x)\mathrm{d}x = F(b) - F(a)\]
 ($\to$ saubere Definition über Riemansches Integral)
-\item Praxis
+\paragraph{Praxis}
 \label{sec-2-2-3-2}
-\begin{enumerate}
-\item Partielle Integration
+\subparagraph{Partielle Integration}
 \label{sec-2-2-3-2-1}
 \[\int^y f(x)g'(x)\mathrm{d}x = f(y)g(y) - \int^y f'(x)g(x)\mathrm{d}x\]
-\item Substitution
+\subparagraph{Substitution}
 \label{sec-2-2-3-2-2}
 Unter Annahme einer invertierbaren Funktion $x: y\mapsto x(y)$
 \[\int f(x)\mathrm{d}x = \int f(x)\frac{\mathrm{d}x}{\mathrm{d}y}\mathrm{d}y = \int f(x(y)) x'(y)\mathrm{d}y\]
 Andere Formulierung: \[\int_a^b f(g(x))g'(x)\mathrm{d}x = \int_{g(a)}^{g(b)}f(y)\mathrm{d}y\]
 Substitution $y=g(x)$
-\item Klassiker
+\subparagraph{Klassiker}
 \label{sec-2-2-3-2-3}
 \[\int \ln{x}\mathrm{d}x = \int \ln{x}1\mathrm{d}x = \ln{x}x - \int \frac{1}{x}x\mathrm{d}x = x(\ln{x} - 1)\]
 \[\int x e^{x^2}\mathrm{d}x = \int e^{x^2}\frac{1}{2}\mathrm{d}(x^2) = \frac{1}{2}\int e^y \mathrm{d}y = \frac{1}{2}e^y = \frac{1}{2}e^{x^2}\]
-\end{enumerate}
-\end{enumerate}
 \subsection{Kinematik in mehreren Dimensionen}
 \label{sec-2-3}
 \subsubsection{Zweidimensionale Bewegung}
 \label{sec-2-3-1}
 Zweidimensional $\rightarrow$ Bewegung in der Ebene. Trajektorie: $x(t),y(t)$
-\begin{enumerate}
-\item Bespiel
+\paragraph{Bespiel}
 \label{sec-2-3-1-1}
 \[x(t) = v_0 t \sin{\omega t}\]
 \[y(t) = v_0 t \cos{\omega t}\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze der Trajektorie (Bahnkurve)
+\subparagraph{{\bfseries\sffamily TODO} Skizze der Trajektorie (Bahnkurve)}
 \label{sec-2-3-1-1-1}
-\item Raumkurve
+\subparagraph{Raumkurve}
 \label{sec-2-3-1-1-2}
 Menge aller Punkte \$\{x,y\}, die das Teilchen durchläuft
-\item {\bfseries\sffamily TODO} Skizze Nichtriviale Darstellung \underline{nur} im Raum (Raumkurve)
+\subparagraph{{\bfseries\sffamily TODO} Skizze Nichtriviale Darstellung \underline{nur} im Raum (Raumkurve)}
 \label{sec-2-3-1-1-3}
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Dreidimensionale Bewegung}
 \label{sec-2-3-2}
 Die Darstellung der Tranjektorie istr erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
@@ -239,11 +231,9 @@ Man definiert:
 \[\vec{x} + \vec{y} \equiv (x^1 + y^1, x^2 + y^2, \ldots, x^n + y^n)\]
 \[\vec{0} \equiv (0,\ldots,0)\]
 \[\alpha \vec{x} \equiv (\alpha x^1, \ldots, \alpha x^n)\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} (Maybe) Skizze 3D Vektor
+\paragraph{{\bfseries\sffamily TODO} (Maybe) Skizze 3D Vektor}
 \label{sec-2-4-2-1}
 $\rightarrow$ übliche Darstellung durch "Pfeile"
-\end{enumerate}
 \subsection{Kinematik in $d>1$}
 \label{sec-2-5}
 Trajektorie ist Abbildung: $\mathbb{R} \to \mathbb{R}^3, t\to \vec{x}(t) ) (x^1(t),x^1(t),x^3(t))$
@@ -256,15 +246,14 @@ Schraubenbahn:
 \[\vec{x}t = (R\cos{\omega t},R\sin{\omega t}, v_0 t)\]
 \[\vec{v} = (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)\]
 \[\vec{a} = (-R\omega^2\cos{\omega t}, -R\omega^2\sin{\omega t}, 0)\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze (Raumkurve)
+\paragraph{{\bfseries\sffamily TODO} Skizze (Raumkurve)}
 \label{sec-2-5-1-1}
 \textbf{Kommentar:} \\
      $\vec{x},\vec{v},\vec{a}$ leben in verschiedenen Vektorräumen!
 allein schon wegen $[x] = \si{\meter}$, $[v] = \si{\meter\per\second}$ \\
      Wir können wie in $d=1$ von $\vec{a}$ zu $\vec{v}$ zu $\vec{x}$ gelangen!
 \[\vec{v}(t) = \vec{v_0} + \int_{t_0}^{t} \mathrm{d}t' \vec{a}(t') = (v_0^1 + \int_{t_0}^t \mathrm{d}t' a^1(t'), v_0^2 + \int_{t_0}^t \mathrm{d}t' a^2(t'), v_0^3 + \int_{t_0}^t \mathrm{d}t' a^2(t'))\]
-\item Üben:
+\paragraph{Üben:}
 \label{sec-2-5-1-2}
 Schraubenbahn; $t_0 = 0$, $\vec{x_0} = \left(R, 0, 0), v_0 = (0, R\omega, v_0\right)$
 Es folgt:
@@ -275,12 +264,11 @@ Es folgt:
 =& (-R\omega\sin{\omega t}, R\omega + R\omega\cos{\omega t} - R\omega, v_0)\\
 =& (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)
 \end{align}
-\item Bemerkung
+\paragraph{Bemerkung}
 \label{sec-2-5-1-3}
 Man kann Integrale über Vektoren auch durch Riemansche Summen definieren:
 \[\int_{t_0}^t \vec{v}(t')\mathrm{d}t' = \lim_{n\to\infty} (v(t_0)\Delta t + \vec{v}(t_0 + \Delta t)\Delta t + \ldots + \vec{v}(t - \Delta t)\Delta t)\]
 mit $\Delta t = \frac{t - t_0}{N}$
-\end{enumerate}
 \subsection{Skalarprodukt}
 \label{sec-2-6}
 Führt von Vektoren wieder zu nicht-vektoriellen (Skalaren) Größen.
@@ -317,12 +305,10 @@ Haben benutzt: $\v x\cdot \v y = \abs{\v x}\abs{\v y}\cos{\theta}$
 \label{sec-2-7-1}
 \[\v x = (x^1, 0, 0), \v y = (y^1, y^2, 0)\]
 \[\v x \cdot \v y = x^1 \cdot y^1; \cos{\theta} = \frac{y^1}{\abs{\v y}}; \abs{\v x} = x^1\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze
+\paragraph{{\bfseries\sffamily TODO} Skizze}
 \label{sec-2-7-1-1}
 \[\Rightarrow \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
 Dass dies für beliebige Vektoren gilt, wird später klar werden.
-\end{enumerate}
 \subsubsection{Infinisetimaler Abstand}
 \label{sec-2-7-2}
 Speziell wird der infinitesimale Abstand wichtig sein:
@@ -354,10 +340,8 @@ Normalenvektor: \[\v N = \f{\f{\d \v T}{\d s}}{\abs{\f{\d \v T}{\d s}}} = \rho \
 \[s(t) = \int_{t_0 = 0}^t \d t' \abs{\v v} = R\omega t;~t(x) = = \f{s}{R\omega}\]
 \[\Rightarrow \v x(s) = R(\cos{\f{s}{R}}, \sin{\f{s}{R}}), \v T = \f{\d\v x}{\d s} = (-\sin{\f{s}{R}},\cos{\f{s}{R}})\]
 \[\f{\d\v T}{\d s} = -\f{1}{R}(\cos{\f{s}{R}}, \sin{\f{s}{R}}) \Rightarrow \rho = R;~\v N = -(\cos{\f{s}{R}}, \sin{\f{s}{R}})\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze
+\paragraph{{\bfseries\sffamily TODO} Skizze}
 \label{sec-2-8-1-1}
-\end{enumerate}
 \subsection{Vektorprodukt}
 \label{sec-2-9}
 \[V\times V \mapsto V;~(\v a, \v b) \mapsto \v c = \v a\times \v b\]
@@ -374,10 +358,8 @@ Alternativ:
 \item Richtung von $\v c$ definiert durch $\v c \perp \v a \wedge \v c \perp \v c$
 \item Vorzeichen von $\v c$ ist so, dass $\v a, \v b, \v c$ ein "Rechtssystem" bilden
 \end{itemize}
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Skizze
+\paragraph{{\bfseries\sffamily TODO} Skizze}
 \label{sec-2-9-0-1}
-\end{enumerate}
 \subsection{Binormalenvektor}
 \label{sec-2-10}
 \[\b B = \v T\times\v N\]
@@ -415,11 +397,9 @@ hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz 
 \label{sec-3-3-1}
 Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung ($\Rightarrow$ nur 1. Ableitung):
 \[y'(x) = f(x,y)\]
-\begin{enumerate}
-\item Lösung
+\paragraph{Lösung}
 \label{sec-3-3-1-1}
 Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
-\end{enumerate}
 \subsubsection{Anfangswertproblem}
 \label{sec-3-3-2}
 Gegeben durch:
@@ -437,32 +417,28 @@ Gesucht: Funktion $y(x)$ mit (für $x\in I, x_0 \in I$:
 Wir betrachten ab sofort auch Funktionen mehrerer Variablen: $f:\mathbb{R}\times\mathbb{R}\to\mathbb{R},(x,y)\mapsto f(x,y)$
 Partielle Ableitung: \[\f{\partial f(x,y)}{\partial y} \equiv \lim_{\Delta y \to 0} \f{f(x,y + \Delta y) - f(x,y)}{\Delta y}\]
 Rechenregeln: Wie bei normalen Ableitung, nur mit $x$ fest.
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-3-3-1}
 \[f(x,y,z) \equiv x^2 + y z\]
 \[\f{\partial f}{\partial x} = 2x\]
 \[\f{\partial f}{\partial y} = z\]
 \[\f{\partial f}{\partial z} = y\]
-\end{enumerate}
 \subsubsection{Existenz und Eindeutigkeit}
 \label{sec-3-3-4}
 \ldots{} viele Theoreme über Existenz und Eindeutigkeit (Peano und Picand / Lindelöf)
 Insbesondere sind Existenz und Eindeutigkeit gesichert falls:
 \[f(x,y) \wedge \f{\partial f(x,y)}{\partial y}\]
 stetig sind.
-\begin{enumerate}
-\item "Begründung"
+\paragraph{"Begründung"}
 \label{sec-3-3-4-1}
 Zeichne an jedem Punkt $(x,y)$ einen Vektor $(1,f(x,y))$ ein.
 \[\f{\d y(x)}{\d x} = y'(x) = f(x,y(x)) = \f{(x,y(x))}{1}\]
-\item Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)
+\paragraph{Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)}
 \label{sec-3-3-4-2}
 Steigung der gesuchten Funktion bei $x_0$ ist bekannt als $f(x_0, y_0)$
 $\Rightarrow$ kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
 Kenne Steigung bei $x_0 \Delta x: f(x_0 + \Delta x, y_0 + \Delta x f(x_0,y_0))$
 $\Rightarrow$ Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. ($\Rightarrow$ perfekt für Numerik)
-\end{enumerate}
 \subsubsection{Beispiele}
 \label{sec-3-3-5}
 \begin{enumerate}
@@ -475,23 +451,19 @@ Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich duch 
 \subsubsection{Seperation der Variablen}
 \label{sec-3-3-6}
 Seperation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-3-6-1}
 \[f(x,y) = \f{x}{y} \Rightarrow y'(x) = \f{x}{y(x)}\]
 \[\f{\d x}{\d x} = \f{x}{y} \Rightarrow y\d y = x\d x\]
 Variablen sind getrennt, kann einfach Integrieren
 \[\int y\d y = \int x\d x \Rightarrow \f{y^2}{2} = \f{x^2}{2} + c \Rightarrow y = \pm \sqrt{x^2 + 2c}\]
-\begin{enumerate}
-\item Lösen allgemeines Anfangswertproblem
+\subparagraph{Lösen allgemeines Anfangswertproblem}
 \label{sec-3-3-6-1-1}
 allgemeines Anfangswertproblem mit Anfangsbedingung $(x_0,y_0)$
 \[y_0^2 = x_0^2 + 2c \Rightarrow 2c = y_0^2 - x_0^2 \Rightarrow y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
 \begin{enumerate}
 \item {\bfseries\sffamily TODO} Skizze
 \label{sec-3-3-6-1-1-1}
-\end{enumerate}
-\end{enumerate}
 \end{enumerate}
 \subsubsection{System von Dgl}
 \label{sec-3-3-7}
@@ -507,12 +479,11 @@ Anfangsbedingungen: $(x_0,\v{y}_0)$ $\rightarrow$ $n+1$ Parameter. Einer davon e
 \label{sec-3-3-8}
 \[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
 Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
-\begin{enumerate}
-\item Tatsache
+\paragraph{Tatsache}
 \label{sec-3-3-8-1}
 Systeme von Dgl können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
 Wir illustieren dies am Beispiel mit $p = 2$
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-3-8-2}
 \[\v{y}''(x) = \v{f}(x,\v{y},\v{y}')\]
 Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
@@ -525,11 +496,9 @@ Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
 Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
      $\Rightarrow$ System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
-\end{enumerate}
 \subsubsection{Erste physikalische Beipiele}
 \label{sec-3-3-9}
-\begin{enumerate}
-\item Punktmasse
+\paragraph{Punktmasse}
 \label{sec-3-3-9-1}
 3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
 $\Rightarrow$ 6 Dgl 1. Ordung:
@@ -541,11 +510,10 @@ $\Rightarrow$ 6 Dgl 1. Ordung:
 \end{equation}
 
 In vielen Fällen: (zeitunabhängiges) Kraftfeld $\v F(\v x)$ ("Vektorfeld").
-\begin{enumerate}
-\item Darstellung in $d = 2$ (Skizze Vektorfeld).
+\subparagraph{Darstellung in $d = 2$ (Skizze Vektorfeld).}
 \label{sec-3-3-9-1-1}
 wichtig: doppelte Makierung der Achsen
-\item Einfachster Fall ($d = 1$)
+\subparagraph{Einfachster Fall ($d = 1$)}
 \label{sec-3-3-9-1-2}
 betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
 \begin{equation}
@@ -561,7 +529,7 @@ betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
 Analyse im Phasenraum passt perfekt zur früheren allgemeinen Analyse von Dgl 1. Ordnung
 Analog in $d = 3$: Vektorfeld: $(\f{\v F}{m}, \v v)$, Phasenraum $(\v x, \v v)$ oder $(\v x, \v p)$ ist 6-dimensional
 \end{enumerate}
-\item Harmonischer Oszilator ($d = 1$)
+\subparagraph{Harmonischer Oszilator ($d = 1$)}
 \label{sec-3-3-9-1-3}
 $F(x) = -k x$
 \begin{equation}
@@ -575,7 +543,7 @@ $F(x) = -k x$
 \addplot3[blue,quiver={u={y},v={-x},scale arrows=0.3},-stealth,samples=15] {y-x};
 \end{axis}
 \end{tikzpicture}
-\item Freier Fall mit Luftwiederstand
+\subparagraph{Freier Fall mit Luftwiederstand}
 \label{sec-3-3-9-1-4}
 Aufgabe: Bestime zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
       Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
@@ -603,8 +571,6 @@ Zugabe: einfache physikalische Argumente für die Größe von $c$:
          $\Rightarrow c \sim \rho_L A$
 \item Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
 \end{enumerate}
-\end{enumerate}
-\end{enumerate}
 \subsection{Taylorentwickung}
 \label{sec-3-4}
 Ohne Beschränkung der Allgemeinheit $x_0 = 0$. Untersuche Verhalten beliebiger glatter Funktionen $f(x)$ nahe $x = 0$
@@ -616,6 +582,21 @@ f(x) &= f(0) + \int_0^x\d x' f'(x') \\
 \end{align}
 Allgemein:
 \[f(x) = f(0) + \sum_{n=1}^m f^{(n)}(0)\frac{x^n}{n!}+\overbrace{\int_0^x \d x' f^{(m+1)}(x')\frac{(x' - x)^m}{m!}}^{\text{Restglied}}\]
+Falls das Restgliend für $n\to\infty$ verschwindet:
+\[f(x) = f(0) + \sum_{n=1}^\infty f^{(n)}(0)\frac{x^n}{n!}\]
+Analog:
+Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}{n!}\]
+\begin{enumerate}
+\item Oft erste Terme = gute Näherung
+\item Verallgemeinerung auf viele Variablen
+\end{enumerate}
+\subsubsection{Interessantes "Gegenbeispiel"}
+\label{sec-3-4-1}
+\[f(x) \equiv \begin{cases} e^{-\frac{1}{x^2}} & x\neq 0 \\ 0 & x = 0 \end{cases}\]
+Überzeugen sie sich, dass alle Ableitungen existieren, auch bei Null! \\
+    Sie Brauchen:
+\[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
+Die Ableitungen verschwinden sogar bei Null $\Rightarrow$ Taylor-Reihe ist Null, keine gute Näherung
 \subsection{Harmonicher Oszillator}
 \label{sec-3-5}
 \begin{itemize}
@@ -632,6 +613,54 @@ Damit haben wir das \textbf{Potetial} ($\rightarrow$ beschreibt die potentielle 
 \item Skizze
 \end{itemize}
 Massenpunkt kann nur ruhen, wo $F=0$ beziehungsweise $V'=0$. Genauer: Nur Minima (Maxima instabil). \\
-    \textbf{Ziel}: Untersuchung der eweung in der N\#he von Minimal (also bei $x\approx x_0$ wobei $v'(x_0) = 0$ gelte)
+\paragraph{Ziel}
+\label{sec-3-5-1-1}
+Untersuchung der Bewegung in der Nähe von Minimal (also bei $x\approx x_0$ wobei $v'(x_0) = 0$ gelte) \\
+    $V(x)$ bei $x_0$, $V'(x_0) = 0, \abs{x - x_0}$ klein \\
+    \[\Rightarrow V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
+\[\Rightarrow F(x) \simeq - V''(x_0)(x-x_0)\]
+\[x-x_0\equiv y \Rightarrow \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
+Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr großem Nutzen (viele Systeme)
+\paragraph{Lösung}
+\label{sec-3-5-1-2}
+Newton $\Rightarrow$ $m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
+     $\Rightarrow$ $\sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
+     $\Rightarrow$ $y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+     (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
+\paragraph{Verallgemeinerungen}
+\label{sec-3-5-1-3}
+\begin{itemize}
+\item Reibungterm $\sim \dot{y}$
+\item treibende Kraft $\sim f(t)$
+\end{itemize}
+\subsection{Lineare Differentialgleichungen}
+\label{sec-3-6}
+allgemeine Form einer linearen Dgl. n-ter Ordnung:
+\[y^{(n)} + f_{n -1}(x)y^{(n - 1)}(x) + \ldots + f_0(x)y(x) = f(x)\]
+Das Wort linear bezieht sich nur auf $y$, nicht $x$ \\
+   Die Dgl. heißt homogen falls $f(x)\equiv 0$
+Homogen von Grad $p$: Ersetzung $y\to\alpha y$ führt zu Vorfaktor $\alpha p$, hier $p = 1$
+\begin{itemize}
+\item wir hatten oben dem Fall $n = 2$ "mit konstanten Koeffizienten"
+\item noch einfacheres Beispiel: $n = 1, f\equiv 0$ (aber beliebige Koeffizienten)
+\[y' + a(x)y = 0\]
+Das ist seperabel:
+\[\dd{y}{x} + a(x) y = 0\]
+\[\dd{y}{x} = -a(x) y\]
+\[\frac{\d y}{x} = -a(x) \d x\]
+\[\int\frac{\d y}{y} = - \int a(x)\d x\]
+\[\ln{y} - A(x) + c_1\]
+\[y = c e^{-A(x)}\]
+$A(x)$ sei eine beliebege aber fest gewählte Stammfunktion von $a$
+Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
+\begin{itemize}
+\item Ansatz: $y = C(x)e^{-A(x)}$, Dgl. $y' + ay = f$
+       \[(c e^{-A})' + a C e^{-A} = f\]
+       \[c' e^{-A} - C A' e^{-A} + C a e^{-A} = f\]
+       Beachte $A' = a$
+       \[\Rightarrow c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
+       \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
+\end{itemize}
+\end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
