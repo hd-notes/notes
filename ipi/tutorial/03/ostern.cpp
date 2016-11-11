@@ -3,13 +3,7 @@
   ostern.cpp -- Berechnung des Datum von Ostern nach Gauß Algirithmus
 */
 
-#include <cassert>
-#include <cinttypes>
-#include <iostream>
-#include <string>
-
-using i32 = std::int32_t;
-using str = std::string;
+#include "common.h"
 
 str easter(i32 year) {
 	i32 a = year % 19;

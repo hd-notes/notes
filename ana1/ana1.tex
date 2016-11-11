@@ -1,4 +1,4 @@
-% Created 2016-11-10 Do 12:06
+% Created 2016-11-11 Fr 13:58
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -41,6 +41,21 @@
 \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
 \makeatother
 \newcommand{\I}{\ensuremath{\imath}}%
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\theoremstyle{plain}
+\newtheorem{thm}{Satz}
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}{Bemerkung}
+\theoremstyle{remark}
+\newtheorem{example}{Beispiel}
+\usepackage{etoolbox}
+\patchcmd{\thmhead}{(#3)}{#3}{}{}
+\renewcommand*{\proofname}{Beweis}
+\usepackage{wasysym}
 \author{Robin Heinemann}
 \date{\today}
 \title{Analysis I (Marciniak-Czochra)}
@@ -782,7 +797,7 @@ Aus \ref{1.55.4} und \ref{1.55.5} folgt $x^m = a\hfill\square$
 \section{Komplexe Zahlen}
 \label{sec-3}
 \textbf{Motivation:} $x^2 + 1 = 0$ nicht lösbar in $\mathbb{R}$ \\
-   Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
+  Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
 \begin{itemize}
 \item \label{KA} (KA) $\{x_1,y_1\} + \{x_2,y_2\} = \{x_1 + x_2, y_2 + y_2\}$
 \item \label{KM} (KM) \$\{x$_{\text{1}}$,y$_{\text{1$\backslash$}}$\} $\cdot$ \{x$_{\text{2}}$,y$_{\text{2$\backslash$}}$\} = \{x$_{\text{1}}$ x$_{\text{2}}$ - y$_{\text{1}}$ y$_{\text{2}}$, x$_{\text{1}}$ y$_{\text{2}}$ + x$_{\text{2}}$ y$_{\text{1$\backslash$}}$\}
@@ -885,9 +900,138 @@ Eine Folge $(a_n)_{n\in\mathbb{N}}$ heißt Cauchy-Folge wenn:
 \subsection{Definition 2.4 Teilfolge}
 \label{sec-4-4}
 Eine Teilfolge einer gegebenen Folge $(a_n)_{n\in\mathbb{N}}$ ist eine Auswahl $(a_{n_k})_{k\in\mathbb{N}}$, wobei $a_{n_k}$ auch die Glieder von $(a_n)_{n\in\mathbb{N}}$ sind
-\subsubsection{Beispiel 2.5}
-\label{sec-4-4-1}
+\begin{example}[Beispiel 2.5]
 \[a_n = \frac{1}{m}\] ist eine Cauchy-Folge. Für ein $\varepsilon > 0$ wählen wir $n_\varepsilon$ so dass $n_\varepsilon > \frac{1}{\varepsilon}$. Für beliebiges $n\geq m > N$
 \[\abs{a_m - a_n} = \abs{\frac{1}{m} - \frac{1}{n}} = \frac{n - m}{m n} \leq \frac{n}{m n} = \frac{1}{m} < \frac{1}{n_\varepsilon} < \varepsilon\hfill\square\]
+\end{example}
+\begin{thm}[Jede Cauchy-Folge ist beschränkt]
+\end{thm}
+\begin{proof}
+Sei $(a_n)_{n\in\mathbb{N}}$ eine Cauchy-Folge. Angenommen, die Folge ist nicht beschränkt. Dann gibt es eine Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$ mit
+\[\abs{a_{n_k}}\xrightarrow[k\to\infty]{} \infty\]
+Aus dieser Teilfolge kann man eine weitere Teilfolge
+\[(a_{n_{k_l}})_{l\in\mathbb{N}}\]
+extrahieren
+\[\abs{a_{n_{k_{i + 1}}}} > 2 \abs{a_{n_{k_l}}}\quad l\in\mathbb{N}\]
+Dann gilt
+\[\abs{a_{n_{k_{i + 1}}} - a_{n_{k_l}}} \geq \abs{a_{n_{k_{i + 1}}}} - \abs{a_{n_{k_l}}} > \abs{a_{n_{k_l}}}\xrightarrow[k\to\infty]{} \infty\]
+im Widerspruch zur Cauchy-Folgen Eigenschaft.
+\end{proof}
+\begin{thm}[Jede konvergente Folge ist Cauchy-Folge]
+\end{thm}
+\begin{proof}
+\begin{align*}
+a_n \xrightarrow[k\to\infty]{} a &\Rightarrow \Forall \varepsilon > 0 \exists n_\varepsilon \in\mathbb{N} \Forall n\geq n_\varepsilon: \abs{a - a_n} < \frac{\varepsilon}{2} \\
+&\Rightarrow \Forall n,m\in n_\varepsilon: \abs{a_n - a_m} \leq \abs{a_n - a} + \abs{a - a_m} <\frac{\varepsilon}{2} + \frac{\varepsilon}{2} \tag*{\qedhere}
+\end{align*}
+\end{proof}
+\begin{lemma}
+\label{lemma:one_limit}
+Sei $(a_n)_{n\in\mathbb{N}}$ eine Folge in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) welche gegen $a\in\mathbb{K}$ und $\tilde a \in \mathbb{K}$ konvergiert. Dann ist $a = \tilde a$.
+\end{lemma}
+\begin{proof}
+Beweis durch Wiederspruch. \\
+Falls $\abs{a - \tilde a} > 0$, dann
+\[\exists n_\varepsilon \in\mathbb{N}\Forall n\geq n_\varepsilon \varepsilon = \abs{a - \tilde a}, \abs{a_n - a} < \frac{\varepsilon}{2}\]
+und ein $m_\varepsilon$, sodass
+\[\abs{a_n - \tilde a < \frac{\varepsilon}{2}} \Forall n\geq m_\varepsilon\]
+Dann für $n \geq \max \{n_\varepsilon, m_\varepsilon\}$:
+\[\abs{a - \tilde a} \leq \abs{a - a_n} + \abs{a_n - \tilde a} < \varepsilon\text{\lightning}\]
+\textbf{Wiederspruch} $\Rightarrow a = \tilde a$
+\end{proof}
+\begin{remark}
+Die Mengen Abständen heißen *vollständig*, wenn jede Cauchy-Folge in $M$ konvergiert
+\end{remark}
+\begin{defn}[Häufungwert, Häufungspunkt]
+Ein $a\in\mathbb{K}$ heißt Häufungswert einer Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$, wenn es zu beliebigen $\varepsilon > 0$ unendlich viele Folgenelemente $a_n$ gibt mit $\abs{a - a_n} < \varepsilon$
+
+Ein $a\in\mathbb{K}$ heißt Häufungspunkt einer Teilmenge $M$ von $\mathbb{K}$, wenn $\Forall \varepsilon > 0$ existieren unendlich viele $x\in M$, sodass $\abs{a - x} < \varepsilon$
+\end{defn}
+\begin{example} \mbox{}
+\begin{enumerate}
+\item $a_n = (-1)^n, n\in\mathbb{N}$
+\begin{itemize}
+   \item divergente Folge
+   \item besitzt 2 Häufungswerte $a^{(1)} = 1, a^{(2)} = -1$
+\end{itemize}
+\item Wir nehmen $a_n \xrightarrow[n\to\infty]{} a, b_n \xrightarrow[n\to\infty]{} b$ und definieren eine neue Folge $c_n$ sodass
+   \begin{align*}
+   c_{2n} &:= b_n,n\in\mathbb{N} \\
+   c_{2n + 1} &:= a_n,n\in\mathbb{N}
+   \end{align*}
+   $(c_n)_{n\in\mathbb{N}}$ hat 2 Häufungswerte $a$ und $b$
+\end{enumerate}
+\end{example}
+\begin{remark}
+Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Haufungswert
+\end{remark}
+\begin{lemma}
+Sei $(a_n)_{n_\in\mathbb{N}}$ eine Cauchy-Folge in $\mathbb{K}$ und $a$ ein Häufungswert von $(a_n)_{n\in\mathbb{N}}$, dann konvergiert $a_n \xrightarrow[n\to\infty]{} a$
+\end{lemma}
+\begin{proof}
+Sei $\varepsilon > 0$ beliebig vorgegeben. Wir wählen $n_\varepsilon \in\mathbb{N}$ sodass
+\[\abs{a_n - a_m} < \frac{\varepsilon}{2}\Forall n,m > n_\varepsilon\hfill\text{ (aus Cauchy-Folge)}\]
+und $m_\varepsilon > n_\varepsilon$ mit
+\[\abs{a - a_{m_\varepsilon}} < \frac{\varepsilon}{2}\hfill\text{ (Häufungswert)}\]
+Dann folgt
+\[\Forall n > m_\varepsilon: \abs{a - a_n} \leq \abs{a - a_{m_\varepsilon}} + \abs{a_{m_\varepsilon} - a_n} < \varepsilon \Rightarrow a_n \xrightarrow[n\to\infty]{} a \qedhere\]
+\end{proof}
+\begin{thm}
+\label{thm:finite}
+$A$ abgeschlossen $\Leftrightarrow$ ($a$ Häufungspunkt von $A \Rightarrow a\in A$)
+$A$ abgeschlossen in M $\Leftrightarrow$ $M\setminus A =: CA$ offen
+\end{thm}
+\begin{proof}
+$(\Leftarrow)$: \\
+Sei jeder Häufungspunkt von $A$ in $A$
+$x\in CA (=\mathbb{R}\setminus A) \Rightarrow x$ kein Häufungspunkt von $A, x\not\in A$
+\[\Rightarrow \varepsilon: I_\varepsilon (x) \cap A = \emptyset \Rightarrow \exists \varepsilon > 0: I_\varepsilon \subseteq CA\]
+$\Rightarrow CA$ offen $\Rightarrow A$ abgeschlossen \\
+$(\Rightarrow)$: \\
+Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das heißt $x \in CA$, so gilt
+\[\exists \varepsilon > 0: I_\varepsilon \subseteq CA \Rightarrow I_\varepsilon (x) \cap A = \emptyset \text{lightning}\]
+\textbf{Wiederspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
+\end{proof}
+\begin{thm}[Satz von Bolzano Weierstrass]
+Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind äquivalent:
+\begin{enumerate}
+\item \label{bolzano:1} $A$ ist beschränkt abgeschlossen
+\item \label{bolzano:2} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ hat einen Häufungswert in $A$
+\item \label{bolzano:3} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ hesitzt eine in $A$ konvergente Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Wir zeigen \ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3} \\
+\ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2}: \\
+Sei $(a_{n_k})_{k\in\mathbb{N}}$ konvergente Teilfolge von $(a_n)_{n\in\mathbb{N}}$ und $a = \lim_{k\to\infty} a_{n_k}$
+$a$ ist auch der Häufungswert der Folge $(a_n)_{n\in\mathbb{N}}$ \\
+\ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1}: \\
+\begin{enumerate}
+\item Beschränktheit:
+Angenommen dies ist falsch. Dann
+\[\exists (a_n)_{n\in\mathbb{N}} \in A: \abs{a_n - a} \geq n \Forall n\in\mathbb{N}~(a\in A)\]
+Nach Voraussetzungen hat jede diese Folge einen Häufungspunkt $x\in A$ und es gilt
+\[\abs{x - a} \geq \abs{a_n - a} - \abs{a_n - x} \geq n - \abs{x - a_n}\]
+Dabei gilt $\abs{x - a_n} < 1$ für unendlich viele $n\in\mathbb{N}$ (aus Häufungswert)
+\[\Rightarrow \abs{x - a} \geq n - 1\]
+Für unendlich viele $n\in\mathbb{N}$ \lightning
+\item Abgeschlossenheit: Wir nutzen Satz \ref{thm:finite}
+Zu zeigen: wenn $a$ Häufungspunkt von $A \Rightarrow a\in A$
+Für
+\[I_{\frac{1}{n}}(a) = \{x\in\mathbb{R} \mid \abs{x - a} < \frac{1}{n}\}\]
+gilt
+\[I_{\frac{1}{n}}(a) \cap A \neq \emptyset \Rightarrow \exists a_n\in A: \abs{a_n - a} < \frac{1}{n}\]
+Die Folge $(a_{n_k})_{k\in\mathbb{N}} \to a$, da $\frac{1}{n}\to 0$
+Nach Voraussetzung hat $(a_n)_{n\in\mathbb{N}}$ einen Häufungswert $\tilde a \in A$. Wir zeigen $a = \tilde a$
+Sei $\varepsilon > 0$ beliebig.
+\begin{align*}
+&\exists n_\varepsilon\in\mathbb{N}: \abs{a - a_n} <\frac{\varepsilon}{2}\Forall n\geq n_\varepsilon \tag{\text{Aus }$a_n \to a$} \\
+&\exists m_\varepsilon\geq n_\varepsilon: \abs{\tilde a - a_{m_\varepsilon}} <\frac{\varepsilon}{2} \tag{\text{Aus Häufungswert}} \\
+&\Rightarrow \abs{a - \tilde a} \leq \abs{a - a_{m_\varepsilon}} + \abs{a_{m_\varepsilon}} < \varepsilon \\
+&\Rightarrow \abs{a - \tilde a} = 0 \\
+&\Rightarrow \tilde a = a \in A
+\end{align*}
+\end{enumerate}
+\end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

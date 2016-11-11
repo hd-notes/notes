@@ -1,4 +1,4 @@
-% Created 2016-11-10 Do 12:54
+% Created 2016-11-11 Fr 13:58
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -54,6 +54,7 @@
 \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
 \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 }
+\renewcommand*{\proofname}{Beweis}
 \author{Robin Heinemann}
 \date{\today}
 \title{Theoretische Physik (Hebecker)}
@@ -774,5 +775,17 @@ ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen we
 \[\v a \to -\v a, \v b \to -\v b \Rightarrow \v a \times \v b \to + \v a \times \v b \qedhere\]
 \end{proof}
 \end{remark}
+\subsection{Konservative Kräfte und Energieerhaltung}
+\label{sec-4-3}
+\begin{defn}[Gradient]
+Gradient von $V$:
+\[\v\nabla \equiv \left(\frac{\partial V}{\partial x^1}, \frac{\partial V}{\partial x^2}, \frac{\partial V}{\partial x^3}\right)\]
+$\v\nabla V$ ist gute Schreibweise, weil $\v\nabla$ ein vektorwertiger Differentialoperator ist:
+\[\v\nabla = \left(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3}\right)\]
+\end{defn}
+\begin{defn}[konservatives Kraftfeld]
+Ein zeitunabhängiges Kraftfeld $\v F(\v x)$ heißt \textbf{konservativ} falls es eine Funktion $V(\v x)$ ("Potential") gibt. dodass
+\[\v F = -\v \nabla V\]
+\end{defn}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

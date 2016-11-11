@@ -41,7 +41,7 @@
 #+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
 #+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 #+LATEX_HEADER: }
-#+LATEX_HEADER: \reneqcommand*{\proofname}{Beweis}
+#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 
 Einleitung: \\
 - Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
@@ -607,10 +607,10 @@ Einleitung: \\
 ** Konservative Kräfte und Energieerhaltung
    \begin{defn}[Gradient]
    Gradient von $V$:
-   \[\v\nabla \equiv \left(\frac{\parital V}{\partial x^1}, \frac{\parital V}{\partial x^2}, \frac{\parital V}{\partial x^3}\right)\]
+   \[\v\nabla \equiv \left(\frac{\partial V}{\partial x^1}, \frac{\partial V}{\partial x^2}, \frac{\partial V}{\partial x^3}\right)\]
    $\v\nabla V$ ist gute Schreibweise, weil $\v\nabla$ ein vektorwertiger Differentialoperator ist:
-   \[\v\nabla = \left(\frac{\parital}{\partial x^1}, \frac{\parital}{\partial x^2}, \frac{\parital}{\partial x^3}\right)\]
-   \end{def}
+   \[\v\nabla = \left(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3}\right)\]
+   \end{defn}
    \begin{defn}[konservatives Kraftfeld]
    Ein zeitunabhängiges Kraftfeld $\v F(\v x)$ heißt \textbf{konservativ} falls es eine Funktion $V(\v x)$ ("Potential") gibt. dodass
    \[\v F = -\v \nabla V\]
