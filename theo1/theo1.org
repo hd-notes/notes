@@ -71,9 +71,9 @@ Einleitung: \\
    - zu Zeit $t:~x(t)$
    - Geschwindigketi: $v(t) \equiv \frac{\mathrm{d}x(t)}{\mathrm{d}t} \equiv \dot{x}(t)$
    - Beschleunigung: $a(t) \equiv \dot{v}(t) = \ddot{x}(t)$
-   - Beispiel: $x(t) \equiv x_0 + v_0 t + \frac{a_0}{2},~t^2,~v(t) = v_0 + a_0 t,~a(t) = a_0$
+   - Beispiel: $x(t) \equiv x_0 + v_0 t + \frac{a_0}{2}t^2, ~v(t) = v_0 + a_0 t,~a(t) = a_0$
    - Umgekehrt: Integration, z.B. von Geschwindigkeit zu Trajektorie: Anfangsposition muss gegeben sein, z.B. $x(t_0) \equiv x_0$
-	 \[x(T)=x_0 + \int_{t_0}^{t}v(t)\mathrm{d}t\]
+	 \[x(t)=x_0 + \int_{t_0}^{t}v(t')\mathrm{d}t'\]
 	 Man prüft leicht $\dot{x}(t) = v(t)$
 	 - Es gibt keine andere Funktion $\tilde{x}(t)$ mit $\dot{\tilde{x}}(t) = v(t)$ und $\tilde{x}(t_0) = x_0$
      Analog: Von Beschleunigung zur Geschwindigkeit, und dann weiter zur Trajektorie
@@ -101,7 +101,8 @@ Einleitung: \\
 	  - Schöne Beispiele
 		\[(x^x)' = (e^{\ln{x^x}})' = (e^{x\ln{x}})' = e^{x\ln{x}}(\ln{x} + 1) = x^x(\ln{x} + 1)\]
 		\[\arctan'(x) \equiv (\tan^{-1}(x)) = \frac{1}{\tan^{-1}(y)}~\text{wobei $y = \tan^{-1}(x)$}\]
-		Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}} + \sin{y}(\frac{1}{\cos{y}})' = 1 + \sin{y}(-\frac{1}{\cos^2{y}})(-\sin{y}) = 1 + \tan^2{y} = 1 + x^2 \\ \Rightarrow \arctan'(x) = \frac{1}{1 + x^2}\]
+		Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}} + \sin{y}(\frac{1}{\cos{y}})' = 1 + \sin{y}(-\frac{1}{\cos^2{y}})(-\sin{y}) = \] \\
+		[\ 1 + \tan^2{y} = 1 + x^2 \\ \Rightarrow \arctan'(x) = \frac{1}{1 + x^2}\]
 	- Verknüpfung \[f\circ g: x\mapsto f(g(x))\]
 	- Inverse \[f^{-1} : x=f(y)\mapsto y\]
 	- Grenzwerte:
@@ -136,10 +137,10 @@ Einleitung: \\
 	 \[y(t) = v_0 t \cos{\omega t}\]
 ***** TODO Skizze der Trajektorie (Bahnkurve)
 ***** Raumkurve
-	  Menge aller Punkte $\{x,y\}, die das Teilchen durchläuft
+	  Menge aller Punkte $\{x,y\}$, die das Teilchen durchläuft
 ***** TODO Skizze Nichtriviale Darstellung _nur_ im Raum (Raumkurve)
 *** Dreidimensionale Bewegung
-	Die Darstellung der Tranjektorie istr erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
+	Die Darstellung der Tranjektorie ist erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
 	Formal keim Problem: Trajektorie ist
 	- \[x(t),y(t),z(t)\]
 	- \[x^1(t),x^2(t),x^3(t)\]
@@ -182,7 +183,7 @@ Einleitung: \\
    \[\vec{v} = \dot{\vec{x}}(t), \vec{a(t)} = \dot{\vec{v}}(t) = \ddot{\vec{x}}(t)\]
    Setzt allgemeine Definition der Ableitun voraus:
    \[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \Rightarrow \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
-*** Beispiel für 3-dimensionale Trajketorie
+*** Beispiel für 3-dimensionale Trajektorie
 	Schraubenbahn:
 	\[\vec{x}t = (R\cos{\omega t},R\sin{\omega t}, v_0 t)\]
 	\[\vec{v} = (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)\]
@@ -295,10 +296,10 @@ Einleitung: \\
    3. Für Kräfte zwischen zwei Massenpunkten gilt:
 	  \[\v{F}_12 = -\v{F}_21\]
 
-   $2.$ definiert die *träge* Masse
+   $2$ definiert die *träge* Masse
    Die entscheidene physikalische Aussage von $2.$ ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
    Alternative Diskussionen der obigen Axiomatik:
-   - zum Beispiel Kapitel 1.2 von Jose/Saletan (mit $2.$ Definition der Kraft)
+   - zum Beispiel Kapitel 1.2 von Jose/Saletan (mit $2$ Definition der Kraft)
 ** Trajektorie
    Vorhersagen erfordern: $\v F \rightarrow \text{Trajektorie}$. Genauer: Sei $\v F(\v x,t)$ gegeben. Berechne $\v x(t)$ !
 ** Differentialgleichungen
