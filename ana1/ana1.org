@@ -38,11 +38,27 @@
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
 #+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{example}{Beispiel}
+#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{conc}{Folgerung}
 #+LATEX_HEADER: \usepackage{etoolbox}
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 #+LATEX_HEADER: \usepackage{wasysym}
+#+LATEX_HEADER: \newcommand{\euler}{e}
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \def\resetMathstrut@{%
+#+LATEX_HEADER:   \setbox\z@\hbox{%
+#+LATEX_HEADER:     \mathchardef\@tempa\mathcode`\[\relax
+#+LATEX_HEADER:     \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+#+LATEX_HEADER:     \expandafter\@tempb\meaning\@tempa \relax
+#+LATEX_HEADER:   }%
+#+LATEX_HEADER:   \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+#+LATEX_HEADER: \makeatother
+#+LATEX_HEADER: \catcode`(=\active
+#+LATEX_HEADER: \catcode`)=\active
+#+LATEX_HEADER: \newcommand{(}{\ifmmode\left\string(\else\string(\fi}
+#+LATEX_HEADER: \newcommand{)}{\ifmmode\right\string)\else\string)\fi}
 
 * Einleitung
   Webseite www.biostruct.uni-heidelberg.de/Analysis1.php
@@ -255,7 +271,7 @@
 *** Abzählbarkeit von Mengen
 	Sei $A$ eine Menge\\
 	- $A$ heißt endlich mit $\abs{A} = n$ Elementen ist äquivalent zu
-	  \[\abs{A} = \begin{cases} A = \emptyset &(n = 0) \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
+	  \[\abs{A} = \begin{cases} A = \emptyset & n = 0 \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
 	- $A$ heißt abzählbar unendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
 	- $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
 **** Beispiel
@@ -394,8 +410,8 @@
 	Sei $a,b\in\mathbb{R},a\leq b$
 	- $[a,b]:=\{x\in\mathbb{R}: a\leq x \leq b\}$ \hfill abgeschlossenes Intervall
 	- $(a,b):= \{x\in\mathbb{R}: a < x < b\} = ]a,b[$ \hfill offenes Intervall
-	- $[a,b) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
-	- $(a,b]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
+	- $\left[a,b) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
+	- $(a,b\right]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
 	- $\varepsilon > 0, I_\varepsilon (x) := (x -\varepsilon,x + \varepsilon) = \{y\in\mathbb{R}:\abs{x - y} < \varepsilon = B_\varepsilon (x) (\text{Kugel})\}$
 *** Lemma 1.41
 	Es gilt $y\in I_\varepsilon (x) \Rightarrow \exists \delta > 0: I_\delta (y) \subseteq I_\varepsilon (x)$
@@ -446,14 +462,15 @@
 	 Induktion:
 	 - Induktionsanfang: $n = 0,(x+y)^0 = 1,\binom{0}{j}x^0y^0 = 1$ nach Definition
 	 - Induktionsschritt $n \to n + 1:$
-	   \begin{align}
-	   &(x + y)^{n + 1} = (x +y)(x+y)^n \\
-	   \xRightarrow{\text{Induktonsvoraussetung}} &(x + y)\sum_{j = 0}^n \binom{n}{j}x^{n - j} y^j \\
-	   = &\sum_{j=0}^n \binom{n}{j}x^{n - j + 1}y^j + \sum_{j = 0}^n \binom{n}{j} x^{n - j} y^{j + 1} \\
-	   = &\binom{n}{0}x^{n + 1} + \sum_{j = 1}^n \binom{n}{j}x^{n + 1 - j}y^j + \underbrace{\sum_{i = 1}^n \binom{n}{i - 1} x^{n - i + 1} y^i}_{\text{Substitution $i:= j + 1$}} + \binom{n}{n}y^{n + 1} \\
-	   = &x^{n + 1} + \sum_{j = 1}^n \underbrace{(\binom{n}{j} + \binom{n}{j - 1})}_{\binom{n + 1}{j}\text{nach Lemma 1.48}} x^{n + 1 - j} y^j + y^{n + 1} \\
-	   = &\sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag*{$\square$}
-	   \end{align}
+	   \begin{align*}
+	   \left\string(x + y\right\string)^{n + 1} &= (x +y)(x+y)^n \\
+	   \shortintertext{mit der Induktionsvoraussetzung}
+	   &=(x + y)\sum_{j = 0}^n \binom{n}{j}x^{n - j} y^j \\
+	   &= \sum_{j=0}^n \binom{n}{j}x^{n - j + 1}y^j + \sum_{j = 0}^n \binom{n}{j} x^{n - j} y^{j + 1} \\
+	   &= \binom{n}{0}x^{n + 1} + \sum_{j = 1}^n \binom{n}{j}x^{n + 1 - j}y^j + \underbrace{\sum_{i = 1}^n \binom{n}{i - 1} x^{n - i + 1} y^i}_{\text{Substitution $i:= j + 1$}} + \binom{n}{n}y^{n + 1} \\
+	   &= x^{n + 1} + \sum_{j = 1}^n \underbrace{(\binom{n}{j} + \binom{n}{j - 1})}_{\binom{n + 1}{j}\text{nach Lemma 1.48}} x^{n + 1 - j} y^j + y^{n + 1} \\
+	   &= \sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag*{$\square$}
+	   \end{align*}
 *** Folgerung 1.50
 	1. $\sum_{j = 0}^n \binom{n}{j} = 2^n$
 	2. $\sum_{j = 0}^n \binom{n}{j} (-1)^j = \begin{cases}0 & n \neq 0 \\ 1 & n = 0\end{cases}$
@@ -475,7 +492,7 @@
 	 \Rightarrow $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
 *** Lemma 1.53 (Bernoullische Ungleichung)
 	<<Lemma 1.53>>
-	\[\Forall x\in [-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
+	\[\Forall x\in \left[-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
 **** Beweis
 	 Beweis durch Induktion:
 	 - *IA*: $n = 0$ klar
@@ -496,12 +513,12 @@
 		\[\Forall \varepsilon > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\varepsilon}\]
 		\[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\varepsilon} \Rightarrow \abs{y^n} < \varepsilon \hfill \square\]
 *** Satz 1.55 (Existenz der m-ten Wurzel)
-	\[\Forall m\in\mathbb{N}, a\in[a,\infty)~\text{gilt}~\exists ! x\in [0,\infty): x^m = a\]
+	\[\Forall m\in\mathbb{N}, a\in\left[a,\infty)~\text{gilt}~\exists ! x\in\left[0,\infty): x^m = a\]
 **** Beweis (Skizze 1, 2)
 	 Wir geben ein Iterationsverfahren
 	 \[p_3 (x) = m\]
 	 \[a_3 x^3 + a_2 x^2 + a_1 x + a_0, a_3 > 0\]
-	 Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
+	 Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:\left[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
 	 Diese approximieren wir nach dem *Newton Verfahren* \\
 	 $x_0$ sodass $x_0^m - a \geq 0$
 	 \[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \Leftarrow \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
@@ -625,10 +642,10 @@
    (Cauchy Kriterium)
 ** Definition 2.4 Teilfolge
    Eine Teilfolge einer gegebenen Folge $(a_n)_{n\in\mathbb{N}}$ ist eine Auswahl $(a_{n_k})_{k\in\mathbb{N}}$, wobei $a_{n_k}$ auch die Glieder von $(a_n)_{n\in\mathbb{N}}$ sind
-   \begin{example}[Beispiel 2.5]
+   \begin{ex}[Beispiel 2.5]
    \[a_n = \frac{1}{m}\] ist eine Cauchy-Folge. Für ein $\varepsilon > 0$ wählen wir $n_\varepsilon$ so dass $n_\varepsilon > \frac{1}{\varepsilon}$. Für beliebiges $n\geq m > N$
    \[\abs{a_m - a_n} = \abs{\frac{1}{m} - \frac{1}{n}} = \frac{n - m}{m n} \leq \frac{n}{m n} = \frac{1}{m} < \frac{1}{n_\varepsilon} < \varepsilon\hfill\square\]
-   \end{example}
+   \end{ex}
    \begin{thm}[Jede Cauchy-Folge ist beschränkt]
    \end{thm}
    \begin{proof}
@@ -672,7 +689,7 @@
 
    Ein $a\in\mathbb{K}$ heißt Häufungspunkt einer Teilmenge $M$ von $\mathbb{K}$, wenn $\Forall \varepsilon > 0$ existieren unendlich viele $x\in M$, sodass $\abs{a - x} < \varepsilon$
    \end{defn}
-   \begin{example} \mbox{}
+   \begin{ex} \mbox{}
    \begin{enumerate}
    \item $a_n = (-1)^n, n\in\mathbb{N}$
    \begin{itemize}
@@ -686,11 +703,12 @@
 	  \end{align*}
 	  $(c_n)_{n\in\mathbb{N}}$ hat 2 Häufungswerte $a$ und $b$
    \end{enumerate}
-   \end{example}
+   \end{ex}
    \begin{remark}
    Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Haufungswert
    \end{remark}
-   \begin{lemma}
+   \begin{lemma}[2.11]
+   \label{lemma:cauchy_haufungswert}
    Sei $(a_n)_{n_\in\mathbb{N}}$ eine Cauchy-Folge in $\mathbb{K}$ und $a$ ein Häufungswert von $(a_n)_{n\in\mathbb{N}}$, dann konvergiert $a_n \xrightarrow[n\to\infty]{} a$
    \end{lemma}
    \begin{proof}
@@ -718,12 +736,13 @@
    \textbf{Wiederspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
    \end{proof}
    \begin{lemma}[2.14]
+   \label{lemma:monoton_in_r}
    Jede Folge $(a_n)_{n\in\mathbb{N}} \in \mathbb{R}$ besitzt eine monotone Teilfolge
    \end{lemma}
-   \begin{proof}
+   #+begin_proof latex
    Sei $B=\{n\in\mathbb{N}\mid \Forall k\geq n, a_n \geq a_k\}$
    - Fall 1: $B$ unendlich. Wir zählen $B\subseteq \mathbb{N}$ monoton wachsed \
-	 \begin{algin*}
+	 \begin{align*}
 	 n_0 &= \min{B} \\
 	 n_{k+1} &= \min\{n\in B, n > n_k\}
 	 \end{align*}
@@ -736,8 +755,12 @@
 	 \end{align*}
 	 Damit können wir definieren
 	 \[n_{k + 1} = \min\{k \geq n_k: a_{n_k} < a_k\}\]
-   \end{proof}
-
+	 und die Folge $(a_{n_k})_{k\in\mathbb{N}}$ ist monoton wachsed
+   #+end_proof
+   #+begin_ex latex
+   1. $a_n = (-1)^n (1 + \frac{1}{n + 1}),\quad B=\{2 n \mid n \in\mathbb{N}\}$ monoton fallend
+   2. $a_n = (-1)^n n, (a_{2k})_{k\in\mathbb{N}}$ ist monotone Teilfolge
+   #+end_ex
    \begin{thm}[Satz von Bolzano Weierstrass]
    Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind äquivalent:
    \begin{enumerate}
@@ -746,7 +769,7 @@
    \item \label{bolzano:3} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ hesitzt eine in $A$ konvergente Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$
    \end{enumerate}
    \end{thm}
-   \begin{proof}
+   #+begin_proof latex
    Wir zeigen \ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3} \\
    \ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2}: \\
    Sei $(a_{n_k})_{k\in\mathbb{N}}$ konvergente Teilfolge von $(a_n)_{n\in\mathbb{N}}$ und $a = \lim_{k\to\infty} a_{n_k}$
@@ -779,4 +802,97 @@
    \end{align*}
    \end{enumerate}
    \ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3}: \\
-   \end{proof}
+   Sei nun $(a_n)_{n\in\mathbb{N}}$ eine Folge in $A$, $(a_{n_k})_{k\in\mathbb{N}}$ eine monotone Teilfolge (nach \ref{lemma:monoton_in_r}), $(a_{n_k})$ ist beschränkt, da $A$ beschränkt ist $\Rightarrow (a_{n_k})$ ist konvergent ([[Folgerung 2.2]]) \\
+   Wir müssen zeigen, dass
+   \[a = \lim_{n\to\infty} a_{n_k} \in A\]
+   \begin{align*}
+   \intertext{Angenommen $a\not\in A \Rightarrow a \in \mathcal{C} A, \mathcal{C} A$ ist offen}
+   \Rightarrow \exists I_\varepsilon (a) \subseteq \mathcal{C}A \Rightarrow I_\varepsilon (a) \cap A = \emptyset \\
+   \shortintertext{Nun ist aber mit geeigneten $n_\varepsilon \in\mathbb{N}$}
+   \Forall n\geq n_\varepsilon: a_{n_k} \in I_\varepsilon (a): a_{n_k} \in A \Rightarrow a_{n_k} \in I_\varepsilon (a) \cap A~\lightning \tag*{\qedhere}
+   \end{align*}
+   #+end_proof
+   #+begin_remark latex
+   - Erweiterung zu $\mathbb{R}^n$ möglich
+   - Ein Raum heißt folgenkompakt, wenn jede beschränkte Folge eine konvergente Teilfolge hat
+	 - Nach B-W Satz ist $\mathbb{R} (\mathbb{R}^n)$ folgenkompakt
+   - In $\mathbb{R}$ alle Cauchy-Folgen konvergieren
+	 - Cauchy Folge in $\mathbb{R} \Rightarrow$ beschränkt und Wertemenge ist abgeschlossen $\xRightarrow{B-W Satz} (a_n)_{n\in\mathbb{N}}$ hat einen Häufungswert in $A \xRightarrow{\ref{lemma:cauchy_haufungswert}}$ konvergiert gegen $a\in A$
+   #+end_remark
+** Rechenregeln für Grenzwerte von Folgen
+   #+begin_thm latex
+   Seien $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen in $\mathbb{K} (\mathbb{R}~\text{oder}~\mathbb{C})$
+   \[b_0 \neq 0 \Forall n\in\mathbb{N}, \lim_{n\to\infty} b_n \neq 0\]
+   Dann gilt:
+   1. $\displaystyle \lim_{n\to\infty} (a_n + b_n) = \lim_{n\to\infty} a_n + \lim_{n\to\infty} b_n$
+   2. $\displaystyle \lim_{n\to\infty} (a_n b_n) = \lim_{n\to\infty} a_n \lim_{n\to\infty} b_n$
+   3. $\displaystyle \lim_{n\to\infty} (\frac{a_n}{b_n}) = \frac{\lim_{n\to\infty} a_n}{\lim_{n\to\infty} b_n}$
+   #+end_thm
+
+   #+ATTR_LATEX: :options [2.15]
+   #+begin_thm latex
+   Seien $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen in $\mathbb{R}$. Dann gilt
+   1. $\displaystyle a_n \leq b_n \Forall n\in\mathbb{N} \Rightarrow \lim_{n\to\infty} a_n \leq \lim_{n\to\infty} b_n$
+   2. $\displaystyle \abs{a_n} \leq b_n \Forall n\in\mathbb{N} \Rightarrow \abs*{\lim_{n\to\infty a_n}} \leq \lim b_n$
+   #+end_thm
+   #+begin_proof latex
+   1. Sei $\varepsilon > 0$ vorgegeben
+	  \begin{align*}
+	  \exists n_\varepsilon:\Forall n\geq n_\varepsilon: b_n \leq \lim_{k\to\infty} b_n + \frac{\varepsilon}{2} \\
+	  \shortintertext{und}
+	  \lim_{k\to\infty} a_k \leq a_n + \frac{\varepsilon}{2} \\
+	  &\Rightarrow \lim_{k\to\infty} a_k \leq a_n + \frac{\varepsilon}{2} \leq b_n + \frac{\varepsilon}{2} \leq \lim_{k\to\infty} b_k + \varepsilon \Forall \varepsilon > 0 \\
+	  &\Rightarrow \lim_{\k\to\infty} a_k \leq \lim_{k\to\infty} b_k
+	  \end{align*}
+   2. Wir wählen $a_n = \abs{a_n}$ und müssen noch zeigen
+	  \[\lim_{n\to\infty} \abs{a_n} = \abs{\lim_{n\to\infty}} a_n\tag{Übung}\]
+   #+end_proof
+** Geometrische Folge
+   Die geometrische Folge ist definiert durch
+   \[a_n = c q^n\]
+
+   #+ATTR_LATEX: :options [2.16]
+   #+begin_lemma latex
+   $\Forall q\in\mathbb{R},\abs{q} < 1$ konvergiert die geometrische Folge $a_n = c q^n$ gegen Null.
+   #+end_lemma
+   #+begin_proof latex
+   Sei $\varepsilon > 0$ gegeben. Nach Annahme ist $\abs{q} < 1 \Rightarrow \abs{q}^{-1} > 1$, somit $\abs{q}^{-1} = 1 + x$ für ein $x > 0$. \\
+   \begin{align*}
+   \intertext{Zu zeigen: $\abs{c q^n - 0} < \varepsilon$ für genug große $n$, das heißt}
+   c(\frac{1}{1+x})^n < \varepsilon \Leftrightarrow \frac{c}{\varepsilon} < (1 + x)^n \\
+   \intertext{Das Archimedische Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
+   n_0 > \frac{c}{x\varepsilon} - \frac{1}{x} = \frac{c - \varepsilon}{x\varepsilon} \\
+   \Forall n\geq n_0: \frac{c}{\varepsilon} = (\frac{c}{x\varepsilon} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
+   \intertext{daraus folgt aus der Bernoulli Ungleichung}
+   \frac{c}{\varepsilon} < (1 + x)^n \Rightarrow c q^n \to 0 \tag*{\qedhere}
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [2.17]
+   #+begin_conc latex
+   Die geometrische Reihe
+   \[S_n = 1 + q + q^2 + \ldots + q^n = \sum_{i = 0}^n q^i\]
+   konvergiert für $\abs{q} < 1$ und $\lim_{n\to\infty} S_n = \frac{1}{1 - q}$
+   #+end_conc
+   #+begin_proof latex
+   \begin{gather*}
+   \intertext{zu Beweisen mit Induktion}
+   \string(1 - q\string)\string(1 + q + q^2 + \ldots + q^n\string) = 1 + q^{n + 1} \\
+   \Rightarrow S_n - \frac{1}{1 - q} = \frac{1 - q^{n + 1} - 1}{1 - q} = -\frac{q^{n + 1}}{1 - q} \\
+   \abs{S_n - \frac{1}{1 - q}} = c\abs{q}^n < \varepsilon \Forall n\geq n_\varepsilon \\
+   \intertext{$c = \abs*{\frac{1}{1 - q}}$}
+   s_n \to \frac{1}{1 -q} \tag*{\qedhere}
+   \end{gather*}
+   #+end_proof
+   #+ATTR_LATEX: :options [2.18]
+   #+begin_ex latex
+   \mbox{}
+   1. $\displaystyle \lim_{n\to\infty} \frac{10^n}{n!} \leq \lim_{n\to\infty}cq^n$ mit $\abs{q} < 1$
+   2. $a_n = \sqrt{n}(\sqrt{n + 1} - \sqrt{n}) = \sqrt{n} \frac{n + 1 - 1}{\sqrt{n + 1} + \sqrt{n}} = \frac{\sqrt{n}}{\sqrt{n + 1}} + \sqrt{n} = \frac{1}{\sqrt{1 + 1_n} + 1} \xrightarrow{n \to \infty} \frac{1}{2}$
+   3. $a_n = \sqrt[m]{x}$, $x$ gegeben, $\xrightarrow{n\to\infty} 1$ \hfill Übungen
+   4. $a_n = \sqrt[n]{m}\xrightarrow{n\to\infty} 1$
+   5. $a_n = \sum_{i = 0}^{n} \frac{1}{i!}$
+	  - $(a_n)_{n\in\mathbb{N}}$ ist monoton wachsend
+	  - beschränkt: $a_n < 3 \Forall n\in\mathbb{N}$
+	  - $\Rightarrow (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogennante Zahl $\euler$
+   6. $(a_n)_{n\in\mathbb{N}}$ rekursiev definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
+   #+end_ex

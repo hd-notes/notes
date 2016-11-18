@@ -1,4 +1,4 @@
-% Created 2016-11-18 Fr 11:26
+% Created 2016-11-18 Fr 20:40
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -51,11 +51,27 @@
 \theoremstyle{remark}
 \newtheorem{remark}{Bemerkung}
 \theoremstyle{remark}
-\newtheorem{example}{Beispiel}
+\newtheorem{ex}{Beispiel}
+\theoremstyle{remark}
+\newtheorem{conc}{Folgerung}
 \usepackage{etoolbox}
 \patchcmd{\thmhead}{(#3)}{#3}{}{}
 \renewcommand*{\proofname}{Beweis}
 \usepackage{wasysym}
+\newcommand{\euler}{e}
+\makeatletter
+\def\resetMathstrut@{%
+\setbox\z@\hbox{%
+\mathchardef\@tempa\mathcode`\[\relax
+\def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+\expandafter\@tempb\meaning\@tempa \relax
+}%
+\ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+\makeatother
+\catcode`(=\active
+\catcode`)=\active
+\newcommand{(}{\ifmmode\left\string(\else\string(\fi}
+\newcommand{)}{\ifmmode\right\string)\else\string)\fi}
 \author{Robin Heinemann}
 \date{\today}
 \title{Analysis I (Marciniak-Czochra)}
@@ -386,7 +402,7 @@ dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ 
 Sei $A$ eine Menge\\
 \begin{itemize}
 \item $A$ heißt endlich mit $\abs{A} = n$ Elementen ist äquivalent zu
-\[\abs{A} = \begin{cases} A = \emptyset &(n = 0) \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
+\[\abs{A} = \begin{cases} A = \emptyset & n = 0 \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
 \item $A$ heißt abzählbar unendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
 \item $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
 \end{itemize}
@@ -588,8 +604,8 @@ Sei $a,b\in\mathbb{R},a\leq b$
 \begin{itemize}
 \item $[a,b]:=\{x\in\mathbb{R}: a\leq x \leq b\}$ \hfill abgeschlossenes Intervall
 \item $(a,b):= \{x\in\mathbb{R}: a < x < b\} = ]a,b[$ \hfill offenes Intervall
-\item $[a,b) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
-\item $(a,b]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
+\item $\left[a,b) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
+\item $(a,b\right]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
 \item $\varepsilon > 0, I_\varepsilon (x) := (x -\varepsilon,x + \varepsilon) = \{y\in\mathbb{R}:\abs{x - y} < \varepsilon = B_\varepsilon (x) (\text{Kugel})\}$
 \end{itemize}
 \subsubsection{Lemma 1.41}
@@ -662,14 +678,15 @@ Induktion:
 \begin{itemize}
 \item Induktionsanfang: $n = 0,(x+y)^0 = 1,\binom{0}{j}x^0y^0 = 1$ nach Definition
 \item Induktionsschritt $n \to n + 1:$
-\begin{align}
-&(x + y)^{n + 1} = (x +y)(x+y)^n \\
-\xRightarrow{\text{Induktonsvoraussetung}} &(x + y)\sum_{j = 0}^n \binom{n}{j}x^{n - j} y^j \\
-= &\sum_{j=0}^n \binom{n}{j}x^{n - j + 1}y^j + \sum_{j = 0}^n \binom{n}{j} x^{n - j} y^{j + 1} \\
-= &\binom{n}{0}x^{n + 1} + \sum_{j = 1}^n \binom{n}{j}x^{n + 1 - j}y^j + \underbrace{\sum_{i = 1}^n \binom{n}{i - 1} x^{n - i + 1} y^i}_{\text{Substitution $i:= j + 1$}} + \binom{n}{n}y^{n + 1} \\
-= &x^{n + 1} + \sum_{j = 1}^n \underbrace{(\binom{n}{j} + \binom{n}{j - 1})}_{\binom{n + 1}{j}\text{nach Lemma 1.48}} x^{n + 1 - j} y^j + y^{n + 1} \\
-= &\sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag*{$\square$}
-\end{align}
+\begin{align*}
+\left\string(x + y\right\string)^{n + 1} &= (x +y)(x+y)^n \\
+\shortintertext{mit der Induktionsvoraussetzung}
+&=(x + y)\sum_{j = 0}^n \binom{n}{j}x^{n - j} y^j \\
+&= \sum_{j=0}^n \binom{n}{j}x^{n - j + 1}y^j + \sum_{j = 0}^n \binom{n}{j} x^{n - j} y^{j + 1} \\
+&= \binom{n}{0}x^{n + 1} + \sum_{j = 1}^n \binom{n}{j}x^{n + 1 - j}y^j + \underbrace{\sum_{i = 1}^n \binom{n}{i - 1} x^{n - i + 1} y^i}_{\text{Substitution $i:= j + 1$}} + \binom{n}{n}y^{n + 1} \\
+&= x^{n + 1} + \sum_{j = 1}^n \underbrace{(\binom{n}{j} + \binom{n}{j - 1})}_{\binom{n + 1}{j}\text{nach Lemma 1.48}} x^{n + 1 - j} y^j + y^{n + 1} \\
+&= \sum{j = 0}^{n + 1} \binom{n + 1}{j}x^{n + 1 - j}y^j\tag*{$\square$}
+\end{align*}
 \end{itemize}
 \subsubsection{Folgerung 1.50}
 \label{sec-2-9-17}
@@ -703,7 +720,7 @@ $\Rightarrow$ $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
 \subsubsection{Lemma 1.53 (Bernoullische Ungleichung)}
 \label{sec-2-9-20}
 \label{Lemma-1.53}
-\[\Forall x\in [-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
+\[\Forall x\in \left[-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
 \paragraph{Beweis}
 \label{sec-2-9-20-1}
 Beweis durch Induktion:
@@ -734,13 +751,13 @@ n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
 \end{enumerate}
 \subsubsection{Satz 1.55 (Existenz der m-ten Wurzel)}
 \label{sec-2-9-22}
-\[\Forall m\in\mathbb{N}, a\in[a,\infty)~\text{gilt}~\exists ! x\in [0,\infty): x^m = a\]
+\[\Forall m\in\mathbb{N}, a\in\left[a,\infty)~\text{gilt}~\exists ! x\in\left[0,\infty): x^m = a\]
 \paragraph{Beweis (Skizze 1, 2)}
 \label{sec-2-9-22-1}
 Wir geben ein Iterationsverfahren
 \[p_3 (x) = m\]
 \[a_3 x^3 + a_2 x^2 + a_1 x + a_0, a_3 > 0\]
-Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
+Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:\left[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
 Diese approximieren wir nach dem \textbf{Newton Verfahren} \\
      $x_0$ sodass $x_0^m - a \geq 0$
 \[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \Leftarrow \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
@@ -900,10 +917,10 @@ Eine Folge $(a_n)_{n\in\mathbb{N}}$ heißt Cauchy-Folge wenn:
 \subsection{Definition 2.4 Teilfolge}
 \label{sec-4-4}
 Eine Teilfolge einer gegebenen Folge $(a_n)_{n\in\mathbb{N}}$ ist eine Auswahl $(a_{n_k})_{k\in\mathbb{N}}$, wobei $a_{n_k}$ auch die Glieder von $(a_n)_{n\in\mathbb{N}}$ sind
-\begin{example}[Beispiel 2.5]
+\begin{ex}[Beispiel 2.5]
 \[a_n = \frac{1}{m}\] ist eine Cauchy-Folge. Für ein $\varepsilon > 0$ wählen wir $n_\varepsilon$ so dass $n_\varepsilon > \frac{1}{\varepsilon}$. Für beliebiges $n\geq m > N$
 \[\abs{a_m - a_n} = \abs{\frac{1}{m} - \frac{1}{n}} = \frac{n - m}{m n} \leq \frac{n}{m n} = \frac{1}{m} < \frac{1}{n_\varepsilon} < \varepsilon\hfill\square\]
-\end{example}
+\end{ex}
 \begin{thm}[Jede Cauchy-Folge ist beschränkt]
 \end{thm}
 \begin{proof}
@@ -947,7 +964,7 @@ Ein $a\in\mathbb{K}$ heißt Häufungswert einer Folge $(a_n)_{n\in\mathbb{N}}$ i
 
 Ein $a\in\mathbb{K}$ heißt Häufungspunkt einer Teilmenge $M$ von $\mathbb{K}$, wenn $\Forall \varepsilon > 0$ existieren unendlich viele $x\in M$, sodass $\abs{a - x} < \varepsilon$
 \end{defn}
-\begin{example} \mbox{}
+\begin{ex} \mbox{}
 \begin{enumerate}
 \item $a_n = (-1)^n, n\in\mathbb{N}$
 \begin{itemize}
@@ -961,11 +978,12 @@ Ein $a\in\mathbb{K}$ heißt Häufungspunkt einer Teilmenge $M$ von $\mathbb{K}$,
    \end{align*}
    $(c_n)_{n\in\mathbb{N}}$ hat 2 Häufungswerte $a$ und $b$
 \end{enumerate}
-\end{example}
+\end{ex}
 \begin{remark}
 Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Haufungswert
 \end{remark}
-\begin{lemma}
+\begin{lemma}[2.11]
+\label{lemma:cauchy_haufungswert}
 Sei $(a_n)_{n_\in\mathbb{N}}$ eine Cauchy-Folge in $\mathbb{K}$ und $a$ ein Häufungswert von $(a_n)_{n\in\mathbb{N}}$, dann konvergiert $a_n \xrightarrow[n\to\infty]{} a$
 \end{lemma}
 \begin{proof}
@@ -993,13 +1011,35 @@ Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das hei�
 \textbf{Wiederspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
 \end{proof}
 \begin{lemma}[2.14]
+\label{lemma:monoton_in_r}
 Jede Folge $(a_n)_{n\in\mathbb{N}} \in \mathbb{R}$ besitzt eine monotone Teilfolge
 \end{lemma}
 \begin{proof}
 Sei $B=\{n\in\mathbb{N}\mid \Forall k\geq n, a_n \geq a_k\}$
-- Fall 1: $B$ unendlich. Wir zählen $B\subseteq \mathbb{N}$ monoton wachsed
+\begin{itemize}
+\item Fall 1: $B$ unendlich. Wir zählen $B\subseteq \mathbb{N}$ monoton wachsed $\backslash$
+\begin{align*}
+n_0 &= \min{B} \\
+n_{k+1} &= \min\{n\in B, n > n_k\}
+\end{align*}
+Dann ist die Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$ von $(a_n)_{n\in\mathbb{N}}$ monoton fallend
+\item Fall 2: $B$ ist endlich oder leer
+\begin{align*}
+\Rightarrow &\exists n_0 \in\mathbb{N}: \Forall n\geq n_0: n\not\in B \\
+\shortintertext{das heißt}
+\exists k\leq n: a_n < a_k
+\end{align*}
+Damit können wir definieren
+\[n_{k + 1} = \min\{k \geq n_k: a_{n_k} < a_k\}\]
+und die Folge $(a_{n_k})_{k\in\mathbb{N}}$ ist monoton wachsed
+\end{itemize}
 \end{proof}
-
+\begin{ex}
+\begin{enumerate}
+\item $a_n = (-1)^n (1 + \frac{1}{n + 1}),\quad B=\{2 n \mid n \in\mathbb{N}\}$ monoton fallend
+\item $a_n = (-1)^n n, (a_{2k})_{k\in\mathbb{N}}$ ist monotone Teilfolge
+\end{enumerate}
+\end{ex}
 \begin{thm}[Satz von Bolzano Weierstrass]
 Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind äquivalent:
 \begin{enumerate}
@@ -1010,10 +1050,10 @@ Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind ä
 \end{thm}
 \begin{proof}
 Wir zeigen \ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3} \\
-\ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2}: \\
-Sei $(a_{n_k})_{k\in\mathbb{N}}$ konvergente Teilfolge von $(a_n)_{n\in\mathbb{N}}$ und $a = \lim_{k\to\infty} a_{n_k}$
+   \ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2}: \\
+   Sei $(a_{n_k})_{k\in\mathbb{N}}$ konvergente Teilfolge von $(a_n)_{n\in\mathbb{N}}$ und $a = \lim_{k\to\infty} a_{n_k}$
 $a$ ist auch der Häufungswert der Folge $(a_n)_{n\in\mathbb{N}}$ \\
-\ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1}: \\
+   \ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1}: \\
 \begin{enumerate}
 \item Beschränktheit:
 Angenommen dies ist falsch. Dann
@@ -1041,6 +1081,113 @@ Sei $\varepsilon > 0$ beliebig.
 \end{align*}
 \end{enumerate}
 \ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3}: \\
+   Sei nun $(a_n)_{n\in\mathbb{N}}$ eine Folge in $A$, $(a_{n_k})_{k\in\mathbb{N}}$ eine monotone Teilfolge (nach \ref{lemma:monoton_in_r}), $(a_{n_k})$ ist beschränkt, da $A$ beschränkt ist $\Rightarrow (a_{n_k})$ ist konvergent (\ref{sec-4-2}) \\
+   Wir müssen zeigen, dass
+\[a = \lim_{n\to\infty} a_{n_k} \in A\]
+\begin{align*}
+\intertext{Angenommen $a\not\in A \Rightarrow a \in \mathcal{C} A, \mathcal{C} A$ ist offen}
+\Rightarrow \exists I_\varepsilon (a) \subseteq \mathcal{C}A \Rightarrow I_\varepsilon (a) \cap A = \emptyset \\
+\shortintertext{Nun ist aber mit geeigneten $n_\varepsilon \in\mathbb{N}$}
+\Forall n\geq n_\varepsilon: a_{n_k} \in I_\varepsilon (a): a_{n_k} \in A \Rightarrow a_{n_k} \in I_\varepsilon (a) \cap A~\lightning \tag*{\qedhere}
+\end{align*}
 \end{proof}
+\begin{remark}
+\begin{itemize}
+\item Erweiterung zu $\mathbb{R}^n$ möglich
+\item Ein Raum heißt folgenkompakt, wenn jede beschränkte Folge eine konvergente Teilfolge hat
+\begin{itemize}
+\item Nach B-W Satz ist $\mathbb{R} (\mathbb{R}^n)$ folgenkompakt
+\end{itemize}
+\item In $\mathbb{R}$ alle Cauchy-Folgen konvergieren
+\begin{itemize}
+\item Cauchy Folge in $\mathbb{R} \Rightarrow$ beschränkt und Wertemenge ist abgeschlossen $\xRightarrow{B-W Satz} (a_n)_{n\in\mathbb{N}}$ hat einen Häufungswert in $A \xRightarrow{\ref{lemma:cauchy_haufungswert}}$ konvergiert gegen $a\in A$
+\end{itemize}
+\end{itemize}
+\end{remark}
+\subsection{Rechenregeln für Grenzwerte von Folgen}
+\label{sec-4-5}
+\begin{thm}
+Seien $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen in $\mathbb{K} (\mathbb{R}~\text{oder}~\mathbb{C})$
+\[b_0 \neq 0 \Forall n\in\mathbb{N}, \lim_{n\to\infty} b_n \neq 0\]
+Dann gilt:
+\begin{enumerate}
+\item $\displaystyle \lim_{n\to\infty} (a_n + b_n) = \lim_{n\to\infty} a_n + \lim_{n\to\infty} b_n$
+\item $\displaystyle \lim_{n\to\infty} (a_n b_n) = \lim_{n\to\infty} a_n \lim_{n\to\infty} b_n$
+\item $\displaystyle \lim_{n\to\infty} (\frac{a_n}{b_n}) = \frac{\lim_{n\to\infty} a_n}{\lim_{n\to\infty} b_n}$
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[2.15]
+Seien $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen in $\mathbb{R}$. Dann gilt
+\begin{enumerate}
+\item $\displaystyle a_n \leq b_n \Forall n\in\mathbb{N} \Rightarrow \lim_{n\to\infty} a_n \leq \lim_{n\to\infty} b_n$
+\item $\displaystyle \abs{a_n} \leq b_n \Forall n\in\mathbb{N} \Rightarrow \abs*{\lim_{n\to\infty a_n}} \leq \lim b_n$
+\end{enumerate}
+\end{thm}
+\begin{proof}
+\begin{enumerate}
+\item Sei $\varepsilon > 0$ vorgegeben
+\begin{align*}
+\exists n_\varepsilon:\Forall n\geq n_\varepsilon: b_n \leq \lim_{k\to\infty} b_n + \frac{\varepsilon}{2} \\
+\shortintertext{und}
+\lim_{k\to\infty} a_k \leq a_n + \frac{\varepsilon}{2} \\
+&\Rightarrow \lim_{k\to\infty} a_k \leq a_n + \frac{\varepsilon}{2} \leq b_n + \frac{\varepsilon}{2} \leq \lim_{k\to\infty} b_k + \varepsilon \Forall \varepsilon > 0 \\
+&\Rightarrow \lim_{\k\to\infty} a_k \leq \lim_{k\to\infty} b_k
+\end{align*}
+\item Wir wählen $a_n = \abs{a_n}$ und müssen noch zeigen
+\[\lim_{n\to\infty} \abs{a_n} = \abs{\lim_{n\to\infty}} a_n\tag{Übung}\]
+\end{enumerate}
+\end{proof}
+\subsection{Geometrische Folge}
+\label{sec-4-6}
+Die geometrische Folge ist definiert durch
+\[a_n = c q^n\]
+
+\begin{lemma}[2.16]
+$\Forall q\in\mathbb{R},\abs{q} < 1$ konvergiert die geometrische Folge $a_n = c q^n$ gegen Null.
+\end{lemma}
+\begin{proof}
+Sei $\varepsilon > 0$ gegeben. Nach Annahme ist $\abs{q} < 1 \Rightarrow \abs{q}^{-1} > 1$, somit $\abs{q}^{-1} = 1 + x$ für ein $x > 0$. \\
+\begin{align*}
+\intertext{Zu zeigen: $\abs{c q^n - 0} < \varepsilon$ für genug große $n$, das heißt}
+c(\frac{1}{1+x})^n < \varepsilon \Leftrightarrow \frac{c}{\varepsilon} < (1 + x)^n \\
+\intertext{Das Archimedische Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
+n_0 > \frac{c}{x\varepsilon} - \frac{1}{x} = \frac{c - \varepsilon}{x\varepsilon} \\
+\Forall n\geq n_0: \frac{c}{\varepsilon} = (\frac{c}{x\varepsilon} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
+\intertext{daraus folgt aus der Bernoulli Ungleichung}
+\frac{c}{\varepsilon} < (1 + x)^n \Rightarrow c q^n \to 0 \tag*{\qedhere}
+\end{align*}
+\end{proof}
+\begin{conc}[2.17]
+Die geometrische Reihe
+\[S_n = 1 + q + q^2 + \ldots + q^n = \sum_{i = 0}^n q^i\]
+konvergiert für $\abs{q} < 1$ und $\lim_{n\to\infty} S_n = \frac{1}{1 - q}$
+\end{conc}
+\begin{proof}
+\begin{gather*}
+\intertext{zu Beweisen mit Induktion}
+\string(1 - q\string)\string(1 + q + q^2 + \ldots + q^n\string) = 1 + q^{n + 1} \\
+\Rightarrow S_n - \frac{1}{1 - q} = \frac{1 - q^{n + 1} - 1}{1 - q} = -\frac{q^{n + 1}}{1 - q} \\
+\abs{S_n - \frac{1}{1 - q}} = c\abs{q}^n < \varepsilon \Forall n\geq n_\varepsilon \\
+\intertext{$c = \abs*{\frac{1}{1 - q}}$}
+s_n \to \frac{1}{1 -q} \tag*{\qedhere}
+\end{gather*}
+\end{proof}
+\begin{ex}[2.18]
+\mbox{}
+\begin{enumerate}
+\item $\displaystyle \lim_{n\to\infty} \frac{10^n}{n!} \leq \lim_{n\to\infty}cq^n$ mit $\abs{q} < 1$
+\item $a_n = \sqrt{n}(\sqrt{n + 1} - \sqrt{n}) = \sqrt{n} \frac{n + 1 - 1}{\sqrt{n + 1} + \sqrt{n}} = \frac{\sqrt{n}}{\sqrt{n + 1}} + \sqrt{n} = \frac{1}{\sqrt{1 + 1_n} + 1} \xrightarrow{n \to \infty} \frac{1}{2}$
+\item $a_n = \sqrt[m]{x}$, $x$ gegeben, $\xrightarrow{n\to\infty} 1$ \hfill Übungen
+\item $a_n = \sqrt[n]{m}\xrightarrow{n\to\infty} 1$
+\item $a_n = \sum_{i = 0}^{n} \frac{1}{i!}$
+\begin{itemize}
+\item $(a_n)_{n\in\mathbb{N}}$ ist monoton wachsend
+\item beschränkt: $a_n < 3 \Forall n\in\mathbb{N}$
+\item $\Rightarrow (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogennante Zahl $\euler$
+\end{itemize}
+\item $(a_n)_{n\in\mathbb{N}}$ rekursiev definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
+\end{enumerate}
+\end{ex}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
