@@ -195,7 +195,7 @@
    rationale Zahlen $\mathbb{Q}=\mathbb{Z}\cup {\frac{b}{a} \mid a \in \mathbb{Z} \setminus \{0\} \and b \in \mathbb{Z}}$
    reelle Zahlen $\mathbb{R} = \mathbb{Q} \cup \text{unendliche Dezimalbrüche}$
    Die reellen Zahlen lassen sich umkehrbar eindeutig auf die Zahlengerade abbilden, dh.h jedem Punkt entspricht genau eine reelle Zahl und umgekehrt
-*** Reechengesetze für reelle Zahlen
+*** Rechengesetze für reelle Zahlen
 **** Addition
 	 - Assoziativität $(a+b) + c = a + (b + c)$
 	 - Kommutativität $a + b = b + a$
@@ -209,11 +209,11 @@
 	 - Distributivgesetz $a \cdot (b + c) = a\cdot b + a\cdot c$
 **** Ordung der reellen Zahlen
 	 Die kleiner-Beziehung $a<b$, oder auch $b > a$ hat folgende Eigenschaften:
-	 - Trichotomie Es gilt immer genau eine Beziehung
+	 - Trichotomie: Es gilt immer genau eine Beziehung
 	   $a < b$, $a = b$ $a > b$
-	 - Transitivität Aus $a < b$ und $b < c$ folgt $a < c$
+	 - Transitivität: Aus $a < b$ und $b < c$ folgt $a < c$
 **** Beispiele, Folgerungen
-***** Rechenregen für Potenzen
+***** Rechenregeln für Potenzen
 	  $b^n := b\cdot b \cdot \ldots \cdot b$ $n\in \mathbb{N}$ Faktoren
 	  \[b^0 := 1\]
 	  \[b^-n = \frac{1}{b^n}\]
@@ -237,12 +237,12 @@
 
 *** Pascalsches Dreieck
 	\begin{center}
-	$n = 0$ 1
-	$n = 1$ 1 1
-	$n = 2$ 1 2 1
-	$n = 3$ 1 3 3 1
-	$n = 4$ 1 4 6 4 1
-	$n = 5$ 1 5 10 10 5 1
+	$n = 0$ 1 \\
+	$n = 1$ 1 1 \\
+	$n = 2$ 1 2 1 \\
+	$n = 3$ 1 3 3 1 \\
+	$n = 4$ 1 4 6 4 1 \\
+	$n = 5$ 1 5 10 10 5 1 \\
 	\end{center}
 
 *** Beweisprinzip der Vollständingen Induktion
@@ -308,12 +308,12 @@
 	Seien $\sum_{k=1}^\infty a_k$ und $\sum_{k=1}^\infty b_k$ zwei konvergente Reihen und $\lambda\in\mathbb{R}$, dann sind auch die Reihen \[\sum_{k=1}^\infty a_k + b_k, \sum_{k=1}^\infty a_k - b_k, \sum_{k=1}^\infty \lambda a_k\] konvergent und es gilt
 	\[\sum_{k=1}^\infty(a_k \pm b_k) = \sum_{k=1}^\infty a_k \pm \sum_{k=1}^\infty b_k\]
 	\[\sum_{k=1}^\infty \lambda a_k = \lambda \sum_{k=1}^\infty a_k\]
-**** Bemerkung
-	 Für das Produkt zweier undendlicher Reihen gilt i.A. keine so einfache Formel
+**** Bemerkung: 
+	 Für das Produkt zweier unendlicher Reihen gilt i.A. keine so einfache Formel
 *** Beispiel
-	geometrische Reihe \[\sum_{n=0}^\infty q^n = \lim_{m\to\infty}(\sum_{n=0}^m q^n) = \lim_{m\to\infty}\frac{1-q^{m+1}{1-q}} = \frac{1}{1-q} \text{für} q < 1, q\neq 0\]
+	geometrische Reihe \[\sum_{n=0}^\infty q^n = \lim_{m\to\infty}(\sum_{n=0}^m q^n) = \lim_{m\to\infty}\frac{1-q^{m+1}{1-q} = \frac{1}{1-q} \text{für} q < 1, q\neq 0\]
 *** Absolute Konvergenz
-	Eine Reihe \[\sum_{k=1}^\infty a_k\] heißt absolut konvergent, wenn die Reihe \[\sum_{k=1}^\infty\abs{a_k}\] konvergiert. Absolute konvergente Reihen können ohne Änderung der Grenzwertes umgeordnet werden, d.h. jede ihrer Umordunen konvergiert wieder und zwar immer gegen den gleichen Grenzwert.
+	Eine Reihe \[\sum_{k=1}^\infty a_k\] heißt absolut konvergent, wenn die Reihe \[\sum_{k=1}^\infty\abs{a_k}\] konvergiert. Absolut konvergente Reihen können ohne Änderung der Grenzwertes umgeordnet werden, d.h. jede ihrer Umordungen konvergiert wieder und zwar immer gegen den gleichen Grenzwert.
 * TODO what was done after this? (Funktionen? (only?))
 * Funktionen
 ** Normal-Hyperbel
@@ -359,7 +359,7 @@
 *** TODO Table Formula?
 *** TODO Veranschaulichung am Einheitskreis
 	$\sin{\alpha} = y$
-	Periodische Werweiterung auf $\alpha < 0,~\alpha>\frac{\pi}{2}$
+	Periodische Erweiterung auf $\alpha < 0,~\alpha>\frac{\pi}{2}$ \\
 	Periodische Funktion: \[\sin{x + 2\pi} = \sin{x}\quad\text{Periode: }2\pi\]
 	\[\cos{x + 2\pi} = \cos{x}\quad\text{Periode: }2\pi\]
 **** Beispiel
@@ -475,7 +475,7 @@ plot exp(x), exp(-x)
 	Spiegelung an $y=x$
 * what after this?
 * Integral und Differenzialrechnung
-  \[\\int_a^b f(x)\mathrm{d}x=F(b) - F(a)\]
+  \[\int_a^b f(x)\mathrm{d}x=F(b) - F(a)\]
   Haupsatz:
   \[F'(x) = \frac{\mathrm{d}F(x)}{\mathrm{d}x} = f(x)\]
   | $F(x)=\int f(x)\mathrm{d}x$ | f(x)        | Bemerkungen               |
@@ -545,7 +545,7 @@ plot exp(x), exp(-x)
 	 \[\frac{1}{1-x^2} = \frac{\alpha}{1-x} + \frac{\beta}{1+x} = \frac{\alpha(1+x)+\beta{1-x}}{(1-x)(1+x)} = \frac{\alpha + \beta + x(\alpha - \beta)}{1-x^2} \Rightarrow \alpha = \beta \frac{1}{2}\]
 	 \[\int_a^b \frac{\mathrm{d}x}{1-x^2} = \frac{1}{2}(\int_a^b\frac{1}{1+x} + \int_a^b\frac{1}{1+x})\]
 ** Uneigentliche Integrale
-*** Undedliches Integralintervall
+*** Unendliches Integralintervall
 **** Definition
 	 Sei $f:[a,\infty)\rightarrow\mathbb{R}$ eine Funktion, die über jedem Intervall $[a,R),~a<R<\infty$ (Riemann-)integrierbar ist. Falls der Grenzwert $\lim_{R\to\infty}\int_a^R f(x)\mathrm{d}x$ existiert setzt man \[\int_a^\infty f(x)\mathrm{d}x=\lim_{R\to\infty}\int_a^R f(x)\mathrm{d}x\]
 **** Beispiel
@@ -556,7 +556,7 @@ plot exp(x), exp(-x)
    \[\int_{-\infty}^\infty x^{2n-1}\mathrm{d}x = \lim_{a\to\infty}\int_{-a}^c x^{2n-1}\mathrm{d}x + \lim_{b\to\infty}\int_c^b x^{2n-1}\mathrm{d}x = \infty\]
    \[P\int_{-\infty}^\infty x^{2n-1}\mathrm{d}x = \lim_{c\to\infty}\int_{-c}^c x^{2n-1}\mathrm{d}x = \lim_{c\to\infty}(\frac{1}{2\pi}(\underbrace{c^{2n}-(-c)^{2n}}_{=0})) = 0\]
 *** Unbeschränkter Integrand
-	Situation: Integrand wird an einer Stelle $x_0 \in [a,b] unbeschränkt
+	Situation: Integrand wird an einer Stelle $x_0 \in [a,b]$ unbeschränkt
 **** Definition
 	 Sei $f:(a,b] \to \mathbb{R}$ eine Fnunkion, die über jedem Teilintervall $[a+\eta, b],~0<\eta<b-a$ (Riemann-)integrierbar ist.
 	 Falls der Grenzwert $\lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x$ existiert, heipßt das Integral $\int_a^b f(x)\mathrm{d}x$ konvergent
@@ -575,7 +575,7 @@ plot exp(x), exp(-x)
 	\[\Gamma(x):=\int_0^\infty t^{x-1}e^{-t}\mathrm{d}t\]
 	Satz: Es gilt $\Gamma(1) = 1,~\Gamma(m+1) = m! \Forall n\in\mathbb{N},~x\Gamma(x) = \Gamma(x+1)$
 	\[\Gamma(1)=\int_0^\infty e^{-t}\mathrm{d}t=-e^{-t}\mid_0^\infty = 1\]
-	\[\Gamma(x+1) = \int_\epsilon^R t^x e^{-t}\mathrm{d}t = \underbrace{t^x e^{-t}\mid_\epsilon^R}_{R\to\infty t} + x\int_epsilon^R t^{x-1}e^{-t}\mathrm{d}t\]
+	\[\Gamma(x+1) = \int_\epsilon^R t^x e^{-t}\mathrm{d}t = \underbrace{t^x e^{-t}\mid_\epsilon^R}_{R\to\infty t} + x\int_\epsilon^R t^{x-1}e^{-t}\mathrm{d}t\]
 	\[f(t) = -e^{-t} \Leftarrow f'(t)=e^{-t}\]
 	\[g(t) = t^x \Rightarrow xt^{t-1} = g'(t)\]
 * Vektoren
@@ -601,11 +601,11 @@ plot exp(x), exp(-x)
 	- Distributivgesetz
 	  \[<\vec{a}+\vec{b},\vec{c}>=<\vec{a},\vec{c}>+<\vec{b},\vec{c}>\]
 	  \[<\vec{a},\vec{b}+\vec{c}>=<\vec{a},\vec{b}>+<\vec{a},\vec{c}>\]
-	- \[<\vec{a},\vec{a}\geq 0 \quad <\vec{a},\vec{a}>=0\Leftrightarrow\vec{a}=0\]
+	- \[<\vec{a},\vec{a}>\geq 0 \quad <\vec{a},\vec{a}>=0\Leftrightarrow\vec{a}=0\]
 *** Orthonormalbasis der kartesischen Koordinatensystem
 	Basisvecktoren $\vec{e_k}, k=1,2,4$
 	Orthogonalität $<\vec{e_k},\vec{e_l}> = 0\quad l\neq k$
-	Für $k=l:~<\vec{e_k},\vec{e_k}>=\cos{0}=1$
+	Für $k=l:~<\vec{e_k},\vec{e_k}>=\cos(0)=1$
 	Orthonormalität
 *** Kronecker Symbol
 	\[\delta_{kl}:=\begin{cases}1&k=l\\0&k\neq l\end{cases}\]
@@ -621,15 +621,15 @@ plot exp(x), exp(-x)
    $\det A = \sum_{\sigma \in S_n} \left(\operatorname{sgn}(\sigma) \prod_{i=1}^n a_{i, \sigma(i)}\right)$
    Summe über alle Permutationen von $S_n$, Vorzeichen der Permutation ist positiv, wenn eine gerade Anzahl an Vertauschungen notwendig ist, und entsprechend negativ bei einer ungeraden Anzahl.
 ** Homogenes Gleichungssystem
-   \[A\vec{x}=0\quad\begin{matrix}
+   \[A\vec{x}=0\quad \begin{pmatrix}
    a_{11} & a_{12} & a_{13} \\
    a_{21} & a_{22} & a_{23} \\
    a_{31} & a_{32} & a_{33} \\
-   \end{matrix}\begin{matrix}
+   \end{pmatrix}\begin{pmatrix}
    x_1\\
    x_2\\
    x_3\\
-   \end{matrix}\]
+   \end{pmatrix}\] 
    \[
    x_1 \underbrace{ \begin{matrix} a_{11} \\ a_{21} \\ a_{31} \end{matrix}}_{\vec{a_1}} +
    x_2 \underbrace{ \begin{matrix} a_{12} \\ a_{22} \\ a_{32} \end{matrix}}_{\vec{a_2}} +
@@ -688,5 +688,5 @@ plot exp(x), exp(-x)
 	\[\vec{a}=(\vec{b}\times\vec{c})=\vec{a}\times(\varepsilon_{ijk}b_i c_j \vec{e_k})=\varepsilon_{pqm}a_p\varepsilon_{ijk}b_i c_j \vec{e_m}\]
 * misc
   - mathe für physiker vs. analysis
-  - klasuren gebündelt
+  - klausuren gebündelt
   - auslandssemester
