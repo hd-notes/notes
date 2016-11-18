@@ -717,6 +717,27 @@
    \[\exists \varepsilon > 0: I_\varepsilon \subseteq CA \Rightarrow I_\varepsilon (x) \cap A = \emptyset \text{lightning}\]
    \textbf{Wiederspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
    \end{proof}
+   \begin{lemma}[2.14]
+   Jede Folge $(a_n)_{n\in\mathbb{N}} \in \mathbb{R}$ besitzt eine monotone Teilfolge
+   \end{lemma}
+   \begin{proof}
+   Sei $B=\{n\in\mathbb{N}\mid \Forall k\geq n, a_n \geq a_k\}$
+   - Fall 1: $B$ unendlich. Wir zählen $B\subseteq \mathbb{N}$ monoton wachsed \
+	 \begin{algin*}
+	 n_0 &= \min{B} \\
+	 n_{k+1} &= \min\{n\in B, n > n_k\}
+	 \end{align*}
+	 Dann ist die Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$ von $(a_n)_{n\in\mathbb{N}}$ monoton fallend
+   - Fall 2: $B$ ist endlich oder leer
+	 \begin{align*}
+	 \Rightarrow &\exists n_0 \in\mathbb{N}: \Forall n\geq n_0: n\not\in B \\
+	 \shortintertext{das heißt}
+	 \exists k\leq n: a_n < a_k
+	 \end{align*}
+	 Damit können wir definieren
+	 \[n_{k + 1} = \min\{k \geq n_k: a_{n_k} < a_k\}\]
+   \end{proof}
+
    \begin{thm}[Satz von Bolzano Weierstrass]
    Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind äquivalent:
    \begin{enumerate}
@@ -757,4 +778,5 @@
    &\Rightarrow \tilde a = a \in A
    \end{align*}
    \end{enumerate}
+   \ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3}: \\
    \end{proof}

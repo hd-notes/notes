@@ -8,28 +8,29 @@
 constexpr f64 pi = 3.14159265358979323;
 
 namespace ipi {
-	// Extrem schlechte implementation von floor, aber für die Aufgabe ausreichend
-	constexpr inline auto floor(const f64 x) -> f64 {
-		return x < ((int)x) ? ((int)x) - 1 : ((int)x);
+	// Extrem schlechte implementation von tquot, aber für die Aufgabe ausreichend
+	const inline auto tquot(const f64 x) noexcept -> f64 {
+		return (i32) x;
 	}
 
-	constexpr inline auto fmod(const f64 a, const f64 b) -> f64 {
-		return a - b * floor(a / b);
+	const inline auto fmod(const f64 a, const f64 b) -> f64 {
+		return a - b * tquot(a / b);
 	}
 
-	constexpr inline auto taylor_sin(const f64 x) noexcept -> f64 {
+	const inline auto taylor_sin(const f64 x) noexcept -> f64 {
 		return x - 0.16666666666666666666 * (x * x * x);
 	}
 
-	constexpr inline auto degrees_to_rad(const f64 x) noexcept -> f64 {
+	const inline auto degrees_to_rad(const f64 x) noexcept -> f64 {
 		return (x / 180) * pi;
 	}
 
-	constexpr inline auto pump_sin(const f64 s) noexcept -> f64 {
+	const inline auto pump_sin(const f64 s_) noexcept -> f64 {
+		f64 s = ipi::fmod(pi + s_, 2.0*pi) - pi;
 		return 3 * s - 4 * s * s * s;
 	}
 
-	constexpr inline auto my_sin(const f64 x) noexcept -> f64 {
+	const inline auto my_sin(const f64 x) noexcept -> f64 {
 		return (std::abs(x) <= degrees_to_rad(9)) ? taylor_sin(x)
 												  : pump_sin(my_sin(x / 3));
     }
@@ -107,16 +108,6 @@ int main() {
 				  << " | " << std::abs(std::sin(i) - my_sin(i)) << " |"
 				  << std::endl;
 	}
-
-	auto i = -1;
-	while(true) {
-		i += 1;
-		auto a = std::sin(degrees_to_rad(i));
-		auto b = taylor_sin(degrees_to_rad(i));
-
-		std::cout << i << ", " << a << ", " << b << ", " << std::abs(a - b)
-				  << std::endl;
-		if(std::abs(a - b) > 1e-6) break;
-	}
 	*/
 }
+*

@@ -1,4 +1,4 @@
-% Created 2016-11-11 Fr 13:59
+% Created 2016-11-18 Fr 11:31
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -25,9 +25,27 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 \DeclareMathOperator{\Exists}{\exists}
 \DeclareMathOperator{\Forall}{\forall}
+\DeclareMathOperator{\cha}{char}
 \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
 \usepackage{stmaryrd}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\theoremstyle{plain}
+\newtheorem{thm}{Satz}
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}{Bemerkung}
+\theoremstyle{remark}
+\newtheorem{conc}{Folgerung}
+\theoremstyle{remark}
+\newtheorem{ex}{Beispiel}
+\usepackage{etoolbox}
+\patchcmd{\thmhead}{(#3)}{#3}{}{}
+\renewcommand*{\proofname}{Beweis}
+\usepackage{wasysym}
 \author{Robin Heinemann}
 \date{\today}
 \title{Lineare Algebra (Vogel)}
@@ -548,7 +566,7 @@ $M$ Menge aller Bürgerinnen und Bürger Deutschlands. \\
      Wir definieren für $a,b\in M$ $a\sim b \xLeftrightarrow{\text{Def}} a$ und $b$ sind im selben Jahr geboren. \\
      $\sim$ ist ein Äquivalenzrelation. \\
      Jerôme Boateng wurde 1988 geboren. \\
-      $[\text{Jerôme Boateng}] = \{b\in M\mid b~\text{ist im selben Jahr geboren wie Jerôme Boateng}\} = \{b\in M\mid b~\text{wurde 1988 geboren}\}$
+     $[\text{Jerôme Boateng}] = \{b\in M\mid b~\text{ist im selben Jahr geboren wie Jerôme Boateng}\} = \{b\in M\mid b~\text{wurde 1988 geboren}\}$
 Weitere Vertreter von $[\text{Jerôme Boateng}]$ sind zum Beispiel Mesut Özil, Mats Hummels.
 Es ist $[\text{Jerôme Boateng}] = [\text{Mesut Özil}] = [\text{Mats Hummels}]$.
 Man sieht in diesem Beispiel: Die Menge $M$ zerfällt komplett in verschiedene Äquivalentzklassen:
@@ -600,9 +618,9 @@ Der Übergang zur Äquivalenzklassen soll (für eine jeweils gegebene Relation) 
 \subsection{Abbildungen}
 \label{sec-2-6}
 \textbf{naive Definition}: \\
-    Eine Abbildung $f$ von $M$ nach $N$ ist eine Vorschrift, die jedem $n\in M$ genau ein Element aus $N$ zuordnet, dieses wird mit $f(n)$ bezeichnet.
+   Eine Abbildung $f$ von $M$ nach $N$ ist eine Vorschrift, die jedem $n\in M$ genau ein Element aus $N$ zuordnet, dieses wird mit $f(n)$ bezeichnet.
 \textbf{Notation}: \\
-    \[f:M\to N,m\mapsto f(m)\]
+   \[f:M\to N,m\mapsto f(m)\]
 
 Zwei Abbildungen $f,g:M\to N$ sind gleich, wenn gilt $\Forall n\in M:f(n) = g(n)$
 $M$ heißt die Definitionsmenge von $f$, $N$ heißt die Zielmenge von $f$
@@ -1294,7 +1312,7 @@ Da $n$ Primzahl, kommt $n$ n der Primfaktorzerlengung von $a b$ als Primfaktor v
 \subsection{Körper}
 \label{sec-3-3}
 \label{Definition-6.9}
-Ein Körper ist ein kommutativer Ring $(K,+,\cdot)$, in dem gilt $K\neq 0$ und jedes Element $a\in K, a\neq 0$ besitzt ein Inverses in $K$ bezüglich "$\cdot$", das heißt: $\exists b\in K:a\cdot b = 1_K$. Wir setzen \$K$^{\ast}$ := K$\setminus$\{0\}
+Ein Körper ist ein kommutativer Ring $(K,+,\cdot)$, in dem gilt $K\neq 0$ und jedes Element $a\in K, a\neq 0$ besitzt ein Inverses in $K$ bezüglich "$\cdot$", das heißt: $\exists b\in K:a\cdot b = 1_K$. Wir setzen $K^\ast := K\setminus\{0\}$
 \subsubsection{Beispiel}
 \label{sec-3-3-1}
 \begin{enumerate}
@@ -1304,6 +1322,7 @@ Ein Körper ist ein kommutativer Ring $(K,+,\cdot)$, in dem gilt $K\neq 0$ und j
 \end{enumerate}
 \subsubsection{Bemerkung 6.11}
 \label{sec-3-3-2}
+\label{remark:integ_neutral}
 $K$ Körper, Dann gilt:
 \begin{enumerate}
 \item $0_K \neq 1_K$
@@ -1357,5 +1376,143 @@ $n\in\mathbb{N}$ Dann sind äquivalent
 \paragraph{Notation}
 \label{sec-3-3-4-2}
 $p$ Primzahl. Man nennt $\mathbb{F}_P := \frac{\mathbb{Z}}{p\mathbb{Z}}$ auch den endlichen Körper mit $p$ Elemente
+\subsubsection{Definition 6.14}
+\label{sec-3-3-5}
+$R$ Ring
+\[\cha(R):=\begin{cases} 0 & \sum_{k = 1}^n 1_R \neq 0 \Forall n\in\mathbb{N} \\ \min\{n\in\mathbb{N}\mid \sum_{k = 1}^n 1_R = 0_R\} & \text{sonst}\end{cases}\]
+heißt die Charakteristik von $R$
+\begin{ex} \mbox{}
+\begin{enumerate}
+\item $\cha(\mathbb{Z}) = \cha(\mathbb{Q}) = \cha(\mathbb{R}) = 0$
+\item $\cha(\frac{\mathbb{Z}}{n\mathbb{Z}}) = n$, denn $\sum_{k = 1}^n \bar 1 = \bar n = \bar 0$ und $\sum_{k = 1}^m \bar 1 = \bar m \neq \bar 0$ für $m\in\{1,\ldots,n - 1\}$
+\end{enumerate}
+\end{ex}
+\begin{remark}
+\label{remark:cha_prim}
+$R$ Integritätsbereich. Dann ist $\cha(R) = 0$ oder $\cha(R)$ ist eine Primzahl
+\end{remark}
+\begin{proof}
+Beweis durch Widerspruch. Annahme: $\cha(R) \neq 0$ und $\cha(R)$ ist keine Primzahl. \\
+Da $R$ Integritätsbereich ist ist $1_R \neq 0_R$ also $\cha(R) \neq 1$
+\begin{align*}
+&\Rightarrow \exists a,b\in\mathbb{N}, 1 < a,b < \cha(R): \cha(R) = a b \\
+&\Rightarrow 0_R = \sum_{k = 1}^{\cha(R)} 1_R = \sum_{k = 1}^a 1_R \cdot \sum_{k = 1}^b 1_R \\
+&\xRightarrow{R~\text{Integritätsbereich}} \sum_{k = 1}^a 1_R = 0_R \vee \sum_{k = 1}^b = 0_R \\
+&\Rightarrow \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R) \tag*{\qedhere}
+\end{align*}
+\end{proof}
+\begin{remark}
+$K$ Körper, dann ist $\cha(K) = 0$ oder $\cha(K)$ ist Primzahl.
+\end{remark}
+\begin{proof}
+Folgt aus \ref{remark:cha_prim} und \ref{remark:integ_neutral}
+\end{proof}
+\begin{ex}
+$p$ Primzahl, dann ist $\cha(\mathbb{F_p}) = p$
+\end{ex}
+\section{Polynome}
+\label{sec-4}
+\begin{defn}[7.1 Polynome]
+$K$ Körper, ein Polynom in der Varablen $t$ über $K$ ist ein Ausdruch der Form
+\[f = \sum_{k = 0}^n a_k t^k\]
+mit $n\in\mathbb{N}_0$ (das heißt insbesondere nur endliche Summanden), $a_0,\ldots,a_n \in K$ (fehlende $a = 0$, ebenso setzen wir $a_{k > n} = 0)$. Die $a_k$ heißen die Koeffizienten von $f$
+\[\deg(f) := \begin{cases}-\infty & f = 0 \\  \max\{k\in\mathbb{N}_0 \mid a_k \neq 0\} & f\neq 0\end{cases}\]
+heißt Grad von $f$. für $f\neq 0$ heißt $l(f) := a_{\deg(f)}$ heißt der Leitkoeffizient von $f$, $l(0) := 0$. $f$ heißt normiert $\xLeftrightarrow{\text{Def}} l(f) = 1$
+Hierbei sind zei Polynome $f = \sum_{k = 0}^n a_k t^k,g = \sum_{k =0}^m b_m t^k$ gleich ($f = g$) $\xLeftrightarrow{\text{Def}} \deg(f) = \deg(g) =: r$ und $a_r = b_r,\ldots,a_1 = b_1, a_0 = b_0$
+\end{defn}
+\begin{remark}
+Man kann das auch präzise macchen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
+\end{remark}
+\begin{ex}[7.2] \mbox{}
+\begin{enumerate}
+\item $f = \frac{3}{4}x^2 - 7 x + \frac{1}{2} \in \mathbb{Q}[x] \Rightarrow \deg(f) = 2, l(f) = \frac{3}{4}, f$ ist nicht normiert
+\item $f = x^5 - \frac{1}{3} x + \frac{2}{5} \in\mathbb{Q}[x] \Rightarrow \deg(f) = 5, l(f) = 1, f$ ist normiert
+\end{enumerate}
+\end{ex}
+\begin{remark}[7.3]
+$K$ Körper, $f,g \in K[t], f = \sum_{k = 0}^n a_k t^k, g = \sum_{k = 0}^m b_k t^k$. Wir setzen $r:= \max\{m,n\}$ und definieren
+\begin{align*}
+f + g &= (a_r + b_r)t^r + \ldots + (a_1 + b_1)t + (a_0 + b_0) \\
+f \cdot g &= c_{n + m} t^{n + m} + \ldots + c_1 t + c_0, c_k := \sum_{\substack{i,j \in\mathbb{N}_0 \\ i + j = k}} a_i b_j
+\end{align*}
+Mittels der Verknüpfung $+,\cdot$ wir die Menge aller Polynome über $K$ in der Variablen $t (=: K[t])$ zu einem kommutativen Ring, dem Polynomring über $K$ in der Variablen $t$
+\end{remark}
+\begin{proof}
+Man rechnet die Ringaxiome nach
+\end{proof}
+\begin{remark}[7.4]
+\label{remark:74}
+$K$ Körper, $f,g\in K[t]$, Dann gilt:
+\begin{enumerate}
+\item $\deg(f + g) \leq \max\{\deg(f),\deg(g)\}$
+\item $\deg(f g) = \deg(f) + \deg(g)$
+\end{enumerate}
+(Hierbei setzt man Formel für $n\in\mathbb{N}_0: -\infty < n, n + (-\infty) = -\infty = (-\infty) + n, (-\infty) + -(\infty) = -\infty)$
+\end{remark}
+\begin{proof}
+Falls $f = 0$ oder $g = 0$, dann sind 1. und 2. klar. Im Folgenden seien $f,g\neq 0$, etwa $f = \sum_{k = 0}^n a_k t^k, g = \sum_{k =0}^m b_k t^k$ mit $a_n, b_m \neq 0$ (insbesondere $\deg(f) = n, \deg(g) = m$)
+\begin{enumerate}
+\item Wir setzen $k:= \max\{m,n\}$
+\begin{align*}
+&\Rightarrow f + g = (a_k + b_k)t^k + \ldots + (a_1 + b_1)t + (a_0 + b_0) \\
+&\Rightarrow \deg(f + g) \leq k \tag{\text{beachte: Ex könnte $a_k + b_k = 0$ sein}}
+\end{align*}
+\item Es sei $f g = a_n b_m t^{n + m} + \ldots + a_0 b_0$ und es ist $a_n b_m \neq 0$ da $K$ als Körper ein Integritätsbereich ist $\Rightarrow \deg(f g) = n + m$
+\end{enumerate}
+\end{proof}
+\begin{conc}[7.5]
+$K$ Körper, dann ist $K[t]$ ein Integritätsbereich
+\end{conc}
+\begin{proof}
+$K[t] \neq 0$ klar (zum Beispiel $t\in\mathbb{t}$)
+Seien $f,g\in K[t], f,g\neq 0 \Rightarrow \deg(f),\deg(g) \geq 0 \Rightarrow \deg(f g) = \deg(f) + \deg(g) \geq 0 \Rightarrow f g \neq 0$
+\end{proof}
+\begin{remark}
+$K[t]$ ist kein Körper: Das Polynom $t\in K[t]$ besitzt kein Inverses bezüglich "$\cdot$", denn: \\
+  Wäre $f\in K[t]$ invers zu $t$, dann wäre $f t = 0 \Rightarrow \deg(1) = 0 \deg(f t) = \deg(f) + \deg(t) = \deg (f) + 1 \Rightarrow \deg(f) = -1 \lightning$
+\end{remark}
+
+\begin{thm}[7.6 Polynomdivision]
+$K$ Körper, $f,g\in K[t], g\neq 0$ \\
+  Dann existieren eindeutig bestimmte Polynome $q,r \in K[t]$, mit $f = q g + r$ und $\deg(r) < \deg(g)$
+\end{thm}
+
+\begin{ex}[7.7]
+$f = 3 t^3 + 5 t + 1, g = t^2 + 1 \in\mathbb{Q}[t]$
+\[(3 t^3 + 5 t + 1) : (t ^2 + 1) = 3 t\]
+Also $3 t^3 + 5t + 1 = 3^t (t^2 + 1) + 2 t + 1, q = 3 t, r = 2 t + 1$
+\end{ex}
+
+\begin{proof}
+\begin{enumerate}
+\item Existenz: \\
+     Falls $f = 0$, setzen wir $q := 0, r:= 0$ fertig. \\
+     Im Folgenden sei $f\neq 0$, das Polynom $g$ sei fixiert. Wir zeigen die Existenz von $q,r$ per Induktion nach $\deg(f) \in\mathbb{N}_0$ \\
+\begin{itemize}
+\item Induktionsanfang: (etwas unkonventionell, geht aber auch): $\deg(f) \in \{0,\ldots,\deg(g) - 1\}$ (das heißt $\deg(f) < \deg(g)$) \\
+       Setze $q:= 0, r:= g$, dann ist $f = q g + r, \deg(r) = \deg(f) < \deg(g)$.
+\item Induktionsschritt: Es sei $\deg(f) \geq \deg(g)$ und die Behauptung sei für alle Polynome aus $K[t]$ von Grad < $\deg(f)$ schon gezeigt. \\
+       Wir sezen $n:= \deg(f), m:=\deg(g)$ und schreiben:
+\[f = l(f)t^n + ~\text{Terme kleineren Grades}\]
+\[g = l(g) t^m + ~\text{Terme kleineren Grades}\]
+Es ist $f - \frac{l(f)}{l(g)}t^{n - m}g =$
+\[l(f) t^n + ~\text{Terme kleineren Grades} - \underbrace{\frac{l(f)}{l(g)} t^{n - m}l(g) t^m}_{l(f)t^n} + ~\text{Terme kleineren Grades}\]
+\[\Rightarrow \deg(f - \frac{l(f)}{l(g)}t^{n - m}) < n\]
+Nach Induktionsannahme gilt: Es existert $q_1,r_1 \in K[t]$ mit
+\[f - \frac{l(f)}{l(g)}t^{n -m}g = q_1 g + r_1, ~\text{mit}~\deg{r_1} < \deg(g)\]
+\[\rightarrow f = (q_1 + \frac{l(f)}{l(g)} t^{n - 1})g + r_1\]
+Setze $q:= q_1 + \frac{l(f)}{l(g)}t^{n - m}, r:= r_1$, dann ist $f = q g + r$ und $\deg(r) < \deg(g)$
+\end{itemize}
+\item Eindeutigkeit: Seien $q_1,q_2,r_1,r_2\in K[T]$ mit $f = q_1 g + r_1 + q_2 g + r_2$ und $\deg(r_1) < \deg(g), \deg(r_2) < \deg(g)$
+\begin{align*}
+&\Rightarrow (q_1 - q_2) g = r_2 - r_1 \\
+&\Rightarrow \deg(g_1 - q_2) + \deg(g) = \deg(r_1 - r_2)
+\end{align*}
+Falls $q_1 \neq q_2$, dann sind beide Seiten der Gleichung in $\mathbb{N}_0$ und es wäre
+\[\deg(g) \leq \deg(r_2 - r_1)\]
+Nach \ref{remark:74} ist $\deg(r_2 - r_1) \leq \max\{\deg(r_2),\deg(-r_1)\} < \deg(g) \lightning$
+Also $q_1 = q_2$, somit $r_2 - r_1 = \underbrace{q_1 - q_2}_{= 0} g = 0$, also $r_1 = r_2$
+\end{enumerate}
+\end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

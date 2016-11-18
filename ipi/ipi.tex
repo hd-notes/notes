@@ -1,4 +1,4 @@
-% Created 2016-11-11 Fr 13:59
+% Created 2016-11-18 Fr 11:29
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -555,7 +555,7 @@ int main() {
 \item complex $\Rightarrow$ komplexe Zahlen
 \item string $\Rightarrow$ Zeichenkettenverarbeitung
 \end{itemize}
-\item um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ \#include <name>
+\item um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ include <name>
 \begin{minted}[]{cpp}
 #include <iostream>
 #include <string>
@@ -587,6 +587,377 @@ int main() {
 \begin{itemize}
 \item floor division $\Rightarrow$ wird immer abgerundet $\Rightarrow$ -12 / 4 = -2
 \end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\section{Prozedurale Programmierung}
+\label{sec-8}
+\subsection{Von der Funktionalen zur prozeduralen Programmierung}
+\label{sec-8-1}
+\begin{itemize}
+\item Eigenschaften der Funktionalen Programmierung:
+\begin{itemize}
+\item alle Berechnungen durch Funktionsaufruf, Ergebnis ist Rückgabe
+\item Ergebnis hängt nur von den Werten der Funktionsargumente ab, nicht von externen Faktoren "referentielle Integrität"
+\item Speicherzellen für Zwischenergebnisse und Argumente können nach Initialisierung nicht geändert werden "write once"
+\item Möglichkeit rekusiver Funktionsaufrufe (jeder Aufruf bekommt eigene Speicherzellen)
+\begin{itemize}
+\item Vorteile
+\begin{itemize}
+\item natürliche Ausdrucksweise für arithmetische und algebraische Funktionaliät ("Taschenrechner")
+\item einfache Auswertung durch Substitutionsmodell $\rightarrow$ Auswertungsreihenfolge nach Post-Order
+\item mathematisch gut formalisierbar $\Rightarrow$ Korrektheitsbeweise, besonders bei Parallelverarbeitung
+\item Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakutlät, Baumtraversierung)
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item viele Probleme lassen sich anders natürlicher ausdrücken (z.B. Rekursion vs. Iteration)
+\item setzt unendlich viel Speicher voraus ($\Rightarrow$ Memory management notwendig $\Rightarrow$ später)
+\item Entitäten, die sich zeitlich verändern schwer zu modellieren
+\end{itemize}
+\item Korrolar: kann keine externen Resourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
+\begin{itemize}
+\item $\Rightarrow$ Multi-Paradigmen-Sprachen, zum Beispiel Kombination von Funktionaler Programmierung und prozeduraler Programmierung
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\subsection{Kennzeichen}
+\label{sec-8-2}
+\subsubsection{Prozeduren}
+\label{sec-8-2-1}
+\begin{itemize}
+\item Prozeduren: Funktionen, die nichts zurückgeben, haben nur Seiteneffekte
+\begin{itemize}
+\item Beispiel
+\begin{minted}[]{cpp}
+std::cout << "Hello\n"; // Infix
+operator<<(std::cout, "Hello\n"; // Prefix
+\end{minted}
+\item Prozeduren in c++
+\begin{enumerate}
+\item Funktion die "void" zurückgibt (Pseudotyp für "nichts")
+\begin{minted}[]{cpp}
+void foo(int x) {
+	return;
+}
+\end{minted}
+\item Returnwert ignorieren
+\end{enumerate}
+\end{itemize}
+\end{itemize}
+\subsubsection{Steuerung des Programmablaufs}
+\label{sec-8-2-2}
+\begin{itemize}
+\item Anweisungen zur Steuerung des Programmablaufs
+\begin{minted}[]{cpp}
+if(), else, while(), for()
+\end{minted}
+\begin{itemize}
+\item Funktional
+\begin{minted}[]{cpp}
+int abs(int x) {
+	return (x >= 0) ? x : -x;
+}
+\end{minted}
+\item Prozedural
+\begin{minted}[]{cpp}
+int abs(int x) {
+	if(x >= 0) {
+		return x;
+	} else {
+		return -x;
+	}
+
+	// oder
+	if(x >= 0) return x;
+	return -x;
+}
+\end{minted}
+\end{itemize}
+\end{itemize}
+\subsubsection{Veränderung von Speicherzellen}
+\label{sec-8-2-3}
+\begin{itemize}
+\item Zuweisung: Speicherzellen können nachträglich verändert werden ("read-write")
+\begin{itemize}
+\item prozedural:
+\begin{minted}[]{cpp}
+int foo(int x) {     // x = 3
+	int y = 2;
+	int z1 = x * y;  // z1 = 6
+	y = 5;
+	int z2 = z * y;  // z2 = 15
+	return z1 + z2;  // 21
+}
+\end{minted}
+\item funktional:
+\begin{minted}[]{cpp}
+int foo(int x) {     // x = 3
+	int y1 = 2;
+	int z1 = x * y;  // z1 = 6
+	int y2 = 5;
+	int z2 = z * y;  // z2 = 15
+	return z1 + z2;  // 21
+}
+\end{minted}
+\item Syntax
+\begin{minted}[]{cpp}
+name = neuer_wert;           // Zuweisung
+typ name = neuer_wert;       // Initialisierung
+typ const name = neuer_wert; // write once
+\end{minted}
+\item $\Rightarrow$ Folgen: mächtiger, aber ermöglicht völlig neue Bugs $\Rightarrow$ erhöhte Aufmerksamkeit beim Programmieren
+\begin{itemize}
+\item die Reihenfolge der Ausführung ist viel kritischer als beim Substitutionsmodell
+\item Programmierer muss immer ein mentales Bild des aktuellen Systemzustans haben
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\subsubsection{Schleifen}
+\label{sec-8-2-4}
+Der gleiche Code soll oft wiederholt werden
+\begin{minted}[]{cpp}
+while(bedingung) {
+	// code, wird ausgeführt solange Bedingung "true"
+}
+\end{minted}
+\begin{minted}[]{cpp}
+int counter = 0;
+while(counter < 3) {
+	std::cout << counter << std::endl;
+	counter++; // Kurzform für counter = counter + 1
+}
+\end{minted}
+\begin{center}
+\begin{tabular}{rlr}
+counter & Bedingung & Ausgabe\\
+\hline
+0 & true & 0\\
+1 & true & 1\\
+2 & true & 2\\
+3 & false & $\emptyset$\\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item in c++ beginnt Zählung meist mit $0$ ("zero based")
+\item vergisst man Inkrementierung $\Rightarrow$ Bedingung immer "true" $\Rightarrow$ Endlosschleife $\Rightarrow$ Bug
+\item drei äquivalente Schreibweisen für Inkrementierung:
+\begin{itemize}
+\item counter = counter + 1; // assignment $\estimates$ Zuweisung
+\item counter += 1;          // add-assignment $\estimates$ Abbkürzung
+\item ++counter;             // pre-increment
+\end{itemize}
+\end{itemize}
+\subsubsection{prozedurale Wurzelberechung}
+\label{sec-8-2-5}
+\paragraph{Ziel}
+\label{sec-8-2-5-1}
+\begin{minted}[]{cpp}
+double sqrt(double y);
+\end{minted}
+\paragraph{Methode}
+\label{sec-8-2-5-2}
+iterative Verbesserung mittel Newtonverfahren
+\begin{verbatim}
+initial_guess $x^{(0)}$ ("geraten"), t = 0
+while not_good_enough($x^{(t)}$):
+	update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update)
+	t = t + 1
+\end{verbatim}
+\subparagraph{Newtonverfahren}
+\label{sec-8-2-5-2-1}
+Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
+Taylorreihe von $f(x)$:, \$f(x + $\Delta$) $\approx$ f(x) + f'(x)$\Delta$ + \$ setze $x^\ast = x + \Delta$
+\[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \Rightarrow \Delta = - \frac{f(x)}{f'(x)}\]
+Iteratiosvorschrift:
+\[x^{(t + 1)} = x^{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
+Anwendung auf Wurzel: setze $f(x) = x^2 - y \Rightarrow$ mit $f(x^\ast) = 0$ gilt
+\[(x^\ast)^2 -y = 0 \quad (x^\ast)^2 = y \quad x^\ast = \sqrt{y}\quad f'(x) = 2x)\]
+Iterationsvorschrieft:
+\[x^{(t + 1)} = x^{(t)} - \frac{(x^{(t)^2}) - y}{2x^{(t)}} = \frac{x^{(t)^2} + y}{2x^{(t)}}\]
+\begin{minted}[]{cpp}
+double sqrt(double y) {
+  if(y < 0.0) {
+	  std::cout << "Wurzel aus negativer Zahl\n";
+	  return -1.0;
+	}
+	if(y == 0.0) return 0.0;
+
+	double x = y; // inital guess
+	double epsilon = 1e-15 * y;
+
+	while(abs(x * x - y) > epsilon) {
+		x = 0.5*(x + y / x);
+	}
+}
+\end{minted}
+\subsubsection{for-Schleife}
+\label{sec-8-2-6}
+\begin{minted}[]{cpp}
+int c = 0;
+while(c < 3) {
+	// unser code
+	c++; // vergisst man leicht
+}
+\end{minted}
+
+Bei der while Schleife kann man leicht vergessen $c$ zu inkrementieren, die for Schleife ist idiotensicher \\
+    Äquivalent zu der while Schleife oben ist:
+\begin{minted}[]{cpp}
+for(int c = 0; c < 3; c++) {
+	// unser code
+}
+\end{minted}
+
+Allgemeine Form:
+\begin{minted}[]{cpp}
+for(init; Bedingung; Inkrement) {
+	// unser code
+}
+\end{minted}
+\begin{itemize}
+\item Befehle, um Schleifen vorzeitig abzubrechen
+\begin{itemize}
+\item continue: Bricht aktuelle Iteration ab und springt zum Scleifenkpf
+\item break: bbricht ganz Schleife ab und springt hinter das Schleifenende
+\item return: beednet Funktion und auch die Schleife
+\end{itemize}
+\end{itemize}
+Beispiel: nur gerade Zahlen ausgeben
+\begin{minted}[]{cpp}
+for(int i = 0; i < 10; i++) if(c % 2 == 0) std::cout << c << std::endl;
+\end{minted}
+Variante mit continue:
+\begin{minted}[]{cpp}
+for(int i = 0; i < 10; i++) {
+	if(c % 2 != 0) continue;
+	std::cout << c << std::endl;
+}
+\end{minted}
+
+\begin{minted}[]{cpp}
+for(int i = 0; i < 10; i += 2) {
+	std::cout << c << std::endl;
+}
+\end{minted}
+\begin{minted}[]{cpp}
+double sqrt(double y) {
+	while(true) {
+		x = (x + y / 2) / 2.0;
+		if(abs(x * x - y) < epsilon) {
+			return x;
+		}
+	}
+}
+\end{minted}
+
+\section{Datentypen}
+\label{sec-9}
+\subsection{Basistypen}
+\label{sec-9-1}
+Bestandteil der Sprachsyntax und normalerweise direkt von der Hardware unterstützt (CPU)
+\begin{itemize}
+\item int, double, bool ($\Rightarrow$ später mehr)
+\end{itemize}
+\subsection{zusammengesetzte Typen}
+\label{sec-9-2}
+mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
+\begin{itemize}
+\item wie das geht $\Rightarrow$ später
+\item Standardtypen: in der C++ Standardbibilothek definiert, aktivire durch $\#include <module_name>$
+\begin{itemize}
+\item std::string, std::complex, etc.
+\end{itemize}
+\item externe Typen: aus anderer Bibilothek, die manzuvor herunterladen und installieren muss
+\item eigene Typen: vom Programmierer selbst implementiert $\Rightarrow$ später
+\end{itemize}
+Durch "objekt-orientierte Programmierung" ($\Rightarrow$ später) erreicht man, dass zusammengesetzte Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
+\begin{itemize}
+\item "Kapselung": die interne Struktur und Implementation ist für Benutzer unsichtbar
+\item Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
+\end{itemize}
+
+$\Rightarrow$ Punktsyntax: type$_{\text{name}}$ t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+\subsection{Zeichenketten-Strings:}
+\label{sec-9-3}
+zwei Datentypen in c++
+\begin{itemize}
+\item klassischer c-string: char[] ("charakter array") $\Rightarrow$ nicht gekapselt, umständlich
+\item c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
+\item string literale: "zeichekette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
+     Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale), müssen erst in c++ strings umgewandelt werden, das passiert mist automatisch
+\begin{itemize}
+\item \#include <string>
+\item Initialisierung:
+\begin{minted}[]{cpp}
+std::string s = "abcde";
+std::string s2 = s1;
+std::string leer = "";
+std::string leer(); // Abkürzung, default constructor
+\end{minted}
+\item Länge
+\begin{minted}[]{cpp}
+s.size();
+assert(s.size() == 5);
+assert(leer.size() == 0);
+s.empty() // Abkürzung für s.size() == 0
+\end{minted}
+\item Zuweisung
+\begin{minted}[]{cpp}
+s = "xy";
+s2 = leer;
+\end{minted}
+\item Addition
+Aneinanderkettung von String ("concatenate")
+\begin{minted}[]{cpp}
+std::string s3 = s + "ijh"; // "xyijh"
+s3 = "ghi" + s; // "ghixy"
+s3 = s + s; // "xyxy"
+// aber nicht!!
+s3 = "abc" + "def"; // Bug literale unterstütze + mit ganz anderer Bedeutung
+s3 = std::string("abc") + "def"; // Ok
+\end{minted}
+\item Add-Assignment: Abkürzung für Addition gefolt von Zuweisung
+\begin{minted}[]{cpp}
+s += "nmk"; // s = s + "nmk" => "xynmk"
+\end{minted}
+\item die Zeichen werden intern in einem C-Array gespeichert (Array = "Feld") \\
+       Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummerriert
+in c++: von $0$ beginnend $\estimates$ Index
+\begin{itemize}
+\item Indexoperator:
+\begin{minted}[]{cpp}
+s[index]; // gibt das Zeichen an Position "index" zurück
+\end{minted}
+Anwendung: jedes Zeichen einzeln ausgeben
+\begin{minted}[]{cpp}
+std::string s = "abcde";
+
+for(int i = 0; i < s.size(); i++) {
+	std::cout << s[i] << std::endl;
+}
+\end{minted}
+String umkehren
+\begin{minted}[]{cpp}
+int i = 0; // Anfang des Strings
+int k = s.size() - 1; // Ende des String
+while(i < k) {
+	char tmp = s[i];
+	s[i] = s[k];
+	s[k] = tmp;
+	i++; k--;
+}
+\end{minted}
+Variante 2: neuen String erzeugen
+\begin{minted}[]{cpp}
+std::string s = "abcde";
+std::string r = "";
+for(int i = s.size() - 1; i >= 0; i--) {
+	r += s[i];
+}
+\end{minted}
 \end{itemize}
 \end{itemize}
 \end{itemize}

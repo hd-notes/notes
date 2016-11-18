@@ -1,4 +1,4 @@
-% Created 2016-11-11 Fr 13:58
+% Created 2016-11-18 Fr 11:26
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -992,6 +992,14 @@ Sei $A$ abgeschlossen, also $CA$ offen, ist H채ufungspunkt $x\not\in A$ das hei�
 \[\exists \varepsilon > 0: I_\varepsilon \subseteq CA \Rightarrow I_\varepsilon (x) \cap A = \emptyset \text{lightning}\]
 \textbf{Wiederspruch} zur Definition von H채ufungspunkt $\Rightarrow$ jeder H채ufungspunk von $A$ ist in $A$
 \end{proof}
+\begin{lemma}[2.14]
+Jede Folge $(a_n)_{n\in\mathbb{N}} \in \mathbb{R}$ besitzt eine monotone Teilfolge
+\end{lemma}
+\begin{proof}
+Sei $B=\{n\in\mathbb{N}\mid \Forall k\geq n, a_n \geq a_k\}$
+- Fall 1: $B$ unendlich. Wir z채hlen $B\subseteq \mathbb{N}$ monoton wachsed
+\end{proof}
+
 \begin{thm}[Satz von Bolzano Weierstrass]
 Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind 채quivalent:
 \begin{enumerate}
@@ -1032,6 +1040,7 @@ Sei $\varepsilon > 0$ beliebig.
 &\Rightarrow \tilde a = a \in A
 \end{align*}
 \end{enumerate}
+\ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3}: \\
 \end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
