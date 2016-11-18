@@ -1,5 +1,5 @@
-% Created 2016-10-17 Mo 11:17
-\documentclass[11pt]{article}
+% Created 2016-11-18 Fr 20:44
+\documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -96,8 +96,7 @@ Stoffmenge & Mol & \si{\mol}\\
 \end{tabular}
 \end{center}
 
-\begin{enumerate}
-\item Radiant
+\paragraph{Radiant}
 \label{sec-1-3-2-1}
 Kreisumfang $U = 2\pi r$
 Bogenmaß $b = \phi r$
@@ -107,11 +106,11 @@ Umrechung in Winkelgrad
 
 \[\frac{Winkel in Radiant}{2\pi} = \frac{Winkel in Grad}{360}\]
 
-\item Steradiant
+\paragraph{Steradiant}
 \label{sec-1-3-2-2}
 \[\Omega = \frac{A}{r^2}\]
 
-\item Abgeleitete Einheiten
+\paragraph{Abgeleitete Einheiten}
 \label{sec-1-3-2-3}
 \begin{center}
 \begin{tabular}{llll}
@@ -130,7 +129,7 @@ magn. Fluss & Weber & \si{\weber} & \si{\volt\per\second}\\
 \end{tabular}
 \end{center}
 
-\item Prefix / Größenordungen
+\paragraph{Prefix / Größenordungen}
 \label{sec-1-3-2-4}
 \begin{center}
 \begin{tabular}{lrl}
@@ -158,7 +157,6 @@ Zetta & 21 & Z\\
 Yotta & 24 & Y\\
 \end{tabular}
 \end{center}
-\end{enumerate}
 \subsection{Natürliches Einheitensystem der Teilchenphysik}
 \label{sec-1-4}
 \subsubsection{Grundlage}
@@ -222,8 +220,7 @@ $\Forall$ & für alle\\
 
 \subsubsection{Summenzeichn}
 \label{sec-2-1-1}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-1-1-1}
 \begin{enumerate}
 \item \[\sum_{n=1}^3a_n=a_1 + a_2 + a_3\]
@@ -242,7 +239,7 @@ sog. \emph{geometrische Summe}
 \end{itemize}
 \end{enumerate}
 
-\item Rechenregeln
+\paragraph{Rechenregeln}
 \label{sec-2-1-1-2}
 \begin{enumerate}
 \item \[\sum_{k=m}^n a_k = \sum_{j=m}^n a_j\]
@@ -253,15 +250,12 @@ sog. \emph{geometrische Summe}
 \item \[\left(\sum_{i=1}^n a_i\right)(\sum_{j=1}^m b_j) = \sum_{i=1}^n \sum_{j=1}^m a_i b_j = \sum_{j=1}^m \sum_{i=1}^n a_i b_j\]
            falls $n=m$ \[\sum_{i,j=1}^n a_i b_j\]
 \end{enumerate}
-\end{enumerate}
 
 \subsubsection{Produktzeichen}
 \label{sec-2-1-2}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-1-2-1}
 \[\prod_{n=1}^3 a_n = a_1 a_2 a_3\]
-\end{enumerate}
 
 \subsubsection{Fakultätszeichen}
 \label{sec-2-1-3}
@@ -276,10 +270,9 @@ ganze Zahlen $\mathbb{Z}=\mathbb{N} \cup {0} \cup {-a\mid a \in \mathbb{N}}$
 rationale Zahlen $\mathbb{Q}=\mathbb{Z}\cup {\frac{b}{a} \mid a \in \mathbb{Z} \setminus \{0\} \and b \in \mathbb{Z}}$
 reelle Zahlen $\mathbb{R} = \mathbb{Q} \cup \text{unendliche Dezimalbrüche}$
 Die reellen Zahlen lassen sich umkehrbar eindeutig auf die Zahlengerade abbilden, dh.h jedem Punkt entspricht genau eine reelle Zahl und umgekehrt
-\subsubsection{Reechengesetze für reelle Zahlen}
+\subsubsection{Rechengesetze für reelle Zahlen}
 \label{sec-2-2-1}
-\begin{enumerate}
-\item Addition
+\paragraph{Addition}
 \label{sec-2-2-1-1}
 \begin{itemize}
 \item Assoziativität $(a+b) + c = a + (b + c)$
@@ -287,7 +280,7 @@ Die reellen Zahlen lassen sich umkehrbar eindeutig auf die Zahlengerade abbilden
 \item neutrales Element $a + 0 = a$
 \item Existenz des Negatives $a + x = b$ hat immer genau eine Lösung: $x = b - a$ für $0 - a$ schreibe wir $-a$
 \end{itemize}
-\item Multiplikation:
+\paragraph{Multiplikation:}
 \label{sec-2-2-1-2}
 \begin{itemize}
 \item Assoziativität $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
@@ -296,18 +289,17 @@ Die reellen Zahlen lassen sich umkehrbar eindeutig auf die Zahlengerade abbilden
 \item Inverses $a \cdot x = b$ hat für jedes $a \neq a$ genau eine Lösung $x = \frac{b}{a} \text{für} \frac{1}{a}$ schreiben wir $a^-1$
 \item Distributivgesetz $a \cdot (b + c) = a\cdot b + a\cdot c$
 \end{itemize}
-\item Ordung der reellen Zahlen
+\paragraph{Ordung der reellen Zahlen}
 \label{sec-2-2-1-3}
 Die kleiner-Beziehung $a<b$, oder auch $b > a$ hat folgende Eigenschaften:
 \begin{itemize}
-\item Trichotomie Es gilt immer genau eine Beziehung
+\item Trichotomie: Es gilt immer genau eine Beziehung
 $a < b$, $a = b$ $a > b$
-\item Transitivität Aus $a < b$ und $b < c$ folgt $a < c$
+\item Transitivität: Aus $a < b$ und $b < c$ folgt $a < c$
 \end{itemize}
-\item Beispiele, Folgerungen
+\paragraph{Beispiele, Folgerungen}
 \label{sec-2-2-1-4}
-\begin{enumerate}
-\item Rechenregen für Potenzen
+\subparagraph{Rechenregeln für Potenzen}
 \label{sec-2-2-1-4-1}
 $b^n := b\cdot b \cdot \ldots \cdot b$ $n\in \mathbb{N}$ Faktoren
 \[b^0 := 1\]
@@ -315,18 +307,14 @@ $b^n := b\cdot b \cdot \ldots \cdot b$ $n\in \mathbb{N}$ Faktoren
 \[b^n \cdot b^m = b^{n+m}\]
 \[(b^n)^m = b^{n\cdot m}\]
 \[(a\cdot b)^n = a^n \cdot b^n\]
-\end{enumerate}
-\item Betrag einer reellen Zahl
+\paragraph{Betrag einer reellen Zahl}
 \label{sec-2-2-1-5}
 \[\abs{a} := \begin{cases} a & a \leq 0 \\ -a & a > 0 \end{cases} \]
-\begin{enumerate}
-\item Eigenschaften
+\subparagraph{Eigenschaften}
 \label{sec-2-2-1-5-1}
 \[\abs{a} \geq 0 \Forall a\in\mathbb{R}\]
 \[\abs{a} = 0\] nur für $a = 0$
 \[\abs{a + b} \leq \abs{a} + \abs{b}\] Dreieckungleichung
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Satz des Pythagoras}
 \label{sec-2-2-2}
 \[a^2 + b^2 = c^2\]
@@ -341,18 +329,17 @@ Allgemein:
 \subsubsection{Pascalsches Dreieck}
 \label{sec-2-2-4}
 \begin{center}
-$n = 0$ 1
-$n = 1$ 1 1
-$n = 2$ 1 2 1
-$n = 3$ 1 3 3 1
-$n = 4$ 1 4 6 4 1
-$n = 5$ 1 5 10 10 5 1
+$n = 0$ 1 \\
+$n = 1$ 1 1 \\
+$n = 2$ 1 2 1 \\
+$n = 3$ 1 3 3 1 \\
+$n = 4$ 1 4 6 4 1 \\
+$n = 5$ 1 5 10 10 5 1 \\
 \end{center}
 
 \subsubsection{Beweisprinzip der Vollständingen Induktion}
 \label{sec-2-2-5}
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-2-2-5-1}
 Für alle $n \in \mathbb{N}$ soll die Summe der ersten $n$ Quadratzahlen beiesen werden
 \[A(n) := \sum_{k=1}^n{k^1} = 1^2 + 2^2 + \ldots + n^2 = \frac{1}{6}n(n+1)(2n+1)\]
@@ -363,7 +350,6 @@ Für alle $n \in \mathbb{N}$ soll die Summe der ersten $n$ Quadratzahlen beiesen
 \[=\frac{1}{6}(k+1)(k(2k+1)+6(k+1))\]
 \[=\frac{1}{6}(k+1)(k+2)(2k+3)\]
 \[=\frac{1}{6}(k+1)(k+2)(2(k+1)+1)\]
-\end{enumerate}
 \end{enumerate}
 
 \subsubsection{Quadratische Ergänzung}
@@ -414,25 +400,21 @@ Nach unten beschränkt: $\exists A: A \geq a_n \Forall n\in\mathbb{N}$
 \label{sec-3-1-6}
 Eine Folge $(a_n)_{n\in\mathbb{N}}$ \uline{konvergiert} gegen a oder hat den \uline{Grenzwert} a, wenn es zu jedem $\epsilon > 0$ ein $N(\epsilon)\in\mathbb{N}$ gibt mit $\abs{a-a_n} < \epsilon \Forall n > N(\epsilon)$
 Wir schreiben $\lim_{n\to\infty}a_n = a$
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-3-1-6-1}
 \begin{itemize}
 \item $\lim_{n\to\infty}\frac{1}{n} = 0$
 \item $\lim_{n\to\infty}(1-\frac{1}{\sqrt{n}}) = 1$
 \end{itemize}
-\item Grenzwertfreie Konvergenzkriterien
+\paragraph{Grenzwertfreie Konvergenzkriterien}
 \label{sec-3-1-6-2}
 \begin{itemize}
 \item jede monoton wachsend, nach oben beschränkte Folge ist konvergent, entsprechend ist jede monoton fallende, nach unten beschränkte Folge konvergent
 \item Cauchy-Kriterium: Eine Folge (a$_{\text{n}}$)$_{\text{n}\in\mathbb{N}}$ konvergiert genau dann, wenn es zu jedem $\epsilon > 0$ ein  $N(\epsilon)\in\mathbb{N}$ gibt, so dass \[\abs{a_n - a_m} < \epsilon\Forall n,m > N(\epsilon)\]
 \end{itemize}
-\begin{enumerate}
-\item Für harmonische Folge $(\frac{1}{n})_{n\in\mathbb{N}}$
+\subparagraph{Für harmonische Folge $(\frac{1}{n})_{n\in\mathbb{N}}$}
 \label{sec-3-1-6-2-1}
 \[\abs{a_n - a_m} = \abs{\frac{1}{n} - \frac{1}{m}} = \abs{\frac{m-n}{m n}} < \abs{\frac{m}{m n}} = \frac{1}{n} < \epsilon \text{für} n > N(\epsilon) = \frac{1}{\epsilon}\]
-\end{enumerate}
-\end{enumerate}
 \subsection{Reihen (unendliche Reihen)}
 \label{sec-3-2}
 Sei $(a_n)_{n\in\mathbb{N}}$ eine Folge reeller Zahlen, Die Folge \[s_n := \sum_{k=1}^n a_k, n\in\mathbb{N}\] der Partialsumme heißt (unendliche) Reihe und wird oft mit $\sum_{k=1}^\infty a_k$ bezeichnet
@@ -445,17 +427,15 @@ Ergebnisse für Folgen gelten auch für Reihen
 Seien $\sum_{k=1}^\infty a_k$ und $\sum_{k=1}^\infty b_k$ zwei konvergente Reihen und $\lambda\in\mathbb{R}$, dann sind auch die Reihen \[\sum_{k=1}^\infty a_k + b_k, \sum_{k=1}^\infty a_k - b_k, \sum_{k=1}^\infty \lambda a_k\] konvergent und es gilt
 \[\sum_{k=1}^\infty(a_k \pm b_k) = \sum_{k=1}^\infty a_k \pm \sum_{k=1}^\infty b_k\]
 \[\sum_{k=1}^\infty \lambda a_k = \lambda \sum_{k=1}^\infty a_k\]
-\begin{enumerate}
-\item Bemerkung
+\paragraph{Bemerkung:}
 \label{sec-3-2-2-1}
-Für das Produkt zweier undendlicher Reihen gilt i.A. keine so einfache Formel
-\end{enumerate}
+Für das Produkt zweier unendlicher Reihen gilt i.A. keine so einfache Formel
 \subsubsection{Beispiel}
 \label{sec-3-2-3}
-geometrische Reihe \[\sum_{n=0}^\infty q^n = \lim_{m\to\infty}(\sum_{n=0}^m q^n) = \lim_{m\to\infty}\frac{1-q^{m+1}{1-q}} = \frac{1}{1-q} \text{für} q < 1, q\neq 0\]
+geometrische Reihe \[\sum_{n=0}^\infty q^n = \lim_{m\to\infty}(\sum_{n=0}^m q^n) = \lim_{m\to\infty}\frac{1-q^{m+1}}{1-q} = \frac{1}{1-q} \text{für} q < 1, q\neq 0\]
 \subsubsection{Absolute Konvergenz}
 \label{sec-3-2-4}
-Eine Reihe \[\sum_{k=1}^\infty a_k\] heißt absolut konvergent, wenn die Reihe \[\sum_{k=1}^\infty\abs{a_k}\] konvergiert. Absolute konvergente Reihen können ohne Änderung der Grenzwertes umgeordnet werden, d.h. jede ihrer Umordunen konvergiert wieder und zwar immer gegen den gleichen Grenzwert.
+Eine Reihe \[\sum_{k=1}^\infty a_k\] heißt absolut konvergent, wenn die Reihe \[\sum_{k=1}^\infty\abs{a_k}\] konvergiert. Absolut konvergente Reihen können ohne Änderung der Grenzwertes umgeordnet werden, d.h. jede ihrer Umordungen konvergiert wieder und zwar immer gegen den gleichen Grenzwert.
 \section{{\bfseries\sffamily TODO} what was done after this? (Funktionen? (only?))}
 \label{sec-4}
 \section{Funktionen}
@@ -525,25 +505,21 @@ $\SI{90}{\degree}$ & $1$ & $0$ & $\to\infty$\\
 \subsubsection{{\bfseries\sffamily TODO} Veranschaulichung am Einheitskreis}
 \label{sec-5-7-2}
 $\sin{\alpha} = y$
-Periodische Werweiterung auf $\alpha < 0,~\alpha>\frac{\pi}{2}$
-Periodische Funktion: \[\sin{x + 2\pi} = \sin{x}\quad\text{Periode: }2\pi\]
+Periodische Erweiterung auf $\alpha < 0,~\alpha>\frac{\pi}{2}$ \\
+    Periodische Funktion: \[\sin{x + 2\pi} = \sin{x}\quad\text{Periode: }2\pi\]
 \[\cos{x + 2\pi} = \cos{x}\quad\text{Periode: }2\pi\]
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-5-7-2-1}
 \[\sin{x + \pi} = -\sin{x}\]
 \[\cos{x + \pi} = -\cos{x}\]
 \[\cos{x} = \sin{\frac{\pi}{2}-x}\]
-\item {\bfseries\sffamily TODO} Graphik
+\paragraph{{\bfseries\sffamily TODO} Graphik}
 \label{sec-5-7-2-2}
-\end{enumerate}
 \subsubsection{Tangens/Cotangens}
 \label{sec-5-7-3}
 \[\tan{x} = \frac{\sin{x}}{\cos{x}}\]
-\begin{enumerate}
-\item {\bfseries\sffamily TODO} Graphik
+\paragraph{{\bfseries\sffamily TODO} Graphik}
 \label{sec-5-7-3-1}
-\end{enumerate}
 \subsubsection{Additionstheoreme}
 \label{sec-5-7-4}
 \[\sin{\alpha\pm\beta} = \sin{\alpha}\cos{\beta}\pm\cos{\alpha}\sin{\beta}\]
@@ -621,27 +597,25 @@ Eine Funktion $f(x)$ heißt
 \end{itemize}
 \subsubsection{Beispiel}
 \label{sec-7-2-1}
-\begin{enumerate}
-\item gerade Funktionen
+\paragraph{gerade Funktionen}
 \label{sec-7-2-1-1}
 \begin{itemize}
 \item $f(x) = x^{2n}\quad n\in\mathbb{N}$
 \item $f(x) = \cos{x}$
 \item $f(x) = \abs{x}$
 \end{itemize}
-\item ungerade Funktionen
+\paragraph{ungerade Funktionen}
 \label{sec-7-2-1-2}
 \begin{itemize}
 \item $f(x) = x^{2n + 1}$
 \item $f(x)=\frac{1}{x}$
 \item $f(x)=\sin(x)$
 \end{itemize}
-\item keins von beidem
+\paragraph{keins von beidem}
 \label{sec-7-2-1-3}
 \begin{itemize}
 \item $f(x) = s x + c$
 \end{itemize}
-\end{enumerate}
 \subsubsection{Zerlegung}
 \label{sec-7-2-2}
 
@@ -694,7 +668,7 @@ Spiegelung an $y=x$
 \label{sec-10}
 \section{Integral und Differenzialrechnung}
 \label{sec-11}
-\[\\int_a^b f(x)\mathrm{d}x=F(b) - F(a)\]
+\[\int_a^b f(x)\mathrm{d}x=F(b) - F(a)\]
 Haupsatz:
 \[F'(x) = \frac{\mathrm{d}F(x)}{\mathrm{d}x} = f(x)\]
 \begin{center}
@@ -719,24 +693,21 @@ $\frac{x^{r+1}}{r+1}$ & $x^r$ & $-1 \neq  r\in\mathbb{R}$\\
 \subsubsection{Lineare Zerlegung}
 \label{sec-11-3-1}
 \[\int_{a_1}^{a_2} c f(x) + b g(x)\mathrm{d}x = c\int_{a_1}^{a_2}f(x)\mathrm{d}x + b\int_{a_1}^{a_2}g(x)\mathrm{d}x\]
-\begin{enumerate}
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-11-3-1-1}
 \[F=\int_0^1 \sqrt{x} - x^2\mathrm{d}x = \int_0^1 \sqrt{x}\mathrm{d}x - \int_0^1 x^2\mathrm{d}x = \frac{2}{3}x^\frac{3}{2}\mid_0^1 - \frac{1}{3}x^3\mid_0^1 = \frac{1}{3}\]
 \[\int_0^1 (1-x^2)^2\mathrm{d}x = \int_0^1 1-2x^2 + x^4\mathrm{d}x = \int_0^1 1\mathrm{d}x - 2\int_0^1 x^2\mathrm{d}x + \int_0^1 x^4\mathrm{d}x = \frac{8}{15}\]
-\end{enumerate}
 \subsubsection{Substitutionsregel}
 \label{sec-11-3-2}
 \[\int_a^b f(g(x))g'(x)\mathrm{d}x=\int_{g(a)}^{g(b)}f(y)\mathrm{d}y\]
 merke: $\frac{\mathrm{g(x)}}{\mathrm{d}x} \mathrm{d}x = g'(x)\mathrm{d}x = \mathrm{d}y$
 \[y=g(x),\quad\frac{\mathrm{d}y}{\mathrm{d}x}=g'(x),\quad\mathrm{d}y = g'(x)\mathrm{d}x\]
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-11-3-2-1}
 $F$ sei die Stammfunktion zu $f$, $F' = f$
 \[(F(g(t)))' = F'(g(t))g'(t) = f(g(t))g'(t)\]
 \[\int_a^b f(g(t))g'(t)\mathrm{d}t = F(g(t))\mid_a^b=F(g(b)) - F(g(a)) = F(x)\mid_{g(a)}^{g(b)} = \int_{g(a)}^{g(b)}f(y)\mathrm{d}y\]
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-11-3-2-2}
 \begin{itemize}
 \item \[\int_1^5\sqrt{2x+1}\mathrm{d}x = \int_1^9\sqrt{y}\frac{1}{2}\mathrm{d}y=\frac{26}{3}\]
@@ -748,67 +719,58 @@ $F$ sei die Stammfunktion zu $f$, $F' = f$
 \item \[\int \frac{\mathrm{d}x}{ax\pm b} = \frac{1}{a}\ln{\abs{ax\pm b}} + c\]
 \item \[\int_a^b g^n(x)g'(x)\mathrm{d}x = \int_{g(a)}^{g(b)} y^n\mathrm{d}y\]
 \end{itemize}
-\end{enumerate}
 \subsubsection{Partielle Integration}
 \label{sec-11-3-3}
 \[\int_a^b f'(x)g(x)\mathrm{d}x = f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x\]
-\begin{enumerate}
-\item Beweis
+\paragraph{Beweis}
 \label{sec-11-3-3-1}
 \[F(x)=f(x)g(x)\Rightarrow F'(x) = f'(x)g(x) + f(x)g'(x)\]
 \[\int_a^b F'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
 \[f(x)g(x)\mid_a^b = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
 \[f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x\]
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-11-3-3-2}
 \begin{itemize}
 \item \[\int_a^b x\ln{x}\mathrm{d}x = \frac{1}{2}x^2\ln(x)\mid_a^b - \int_a^b \frac{1}{2}x^2 \frac{1}{x}\mathrm{d}x = \frac{1}{2}x^2\ln(x)\mid_a^b - \frac{1}{2}\int_a^b x\mathrm{d}x\]
 \item \[\int 1\ln{x}\mathrm{d}x = x\ln{x} - \int x\frac{1}{x}\mathrm{d}x = x\ln{x} - \int 1\mathrm{d}x = x\ln{x}-x+c=x(\ln{x}-1)+c\]
 \item \[\int x\sin{x}\mathrm{d}x=-x\cos{x} + \int cos{x}\mathrm{d}x = -x\cos{x}+\sin{x}\]
 \end{itemize}
-\item Kreisfläche
+\paragraph{Kreisfläche}
 \label{sec-11-3-3-3}
 \[y=f(x)=\sqrt{1-x^2}\]
 \[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\Rightarrow \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
 \[x=\sin{t} \Rightarrow t = \arcsin{x},\quad \frac{\mathrm{x}}{\mathrm{d}t} = \cos{t},\quad \mathrm{d}x = \cos{t}\mathrm{d}t\]
 \[\int \cos{t}\cos{t} = \sin{t}\cos{t} + \int sin^2{t}\mathrm{d}t = \sin{t}\cos{t} + \int 1 - cos^2{t}\mathrm{d}t = \frac{\sin{t}\cos{t} + t}{2}\]
-\begin{enumerate}
-\item In Polarkoordinaten
+\subparagraph{In Polarkoordinaten}
 \label{sec-11-3-3-3-1}
 \[y=\sin{t}\]
 \[x=\cos{t}\]
 \[\mathrm{d}x = \sin{t}\mathrm{d}t\]
 \[\mathrm{d}A = y\mathrm{d}x = \sin^2{t}\mathrm{d}t\]
 \[A = \int_0^\pi \sin^2{t} = \frac{\pi}{2}\]
-\item Zerlegung
+\subparagraph{Zerlegung}
 \label{sec-11-3-3-3-2}
 \[\mathrm{d}A = 2\pi r \mathrm{d}r\]
 \[\int \mathrm{d}A = \int_0^R 2\pi r\mathrm{d}r=2\pi\frac{1}{2}r^2\mid_0^R = \pi R^2\]
-\end{enumerate}
-\end{enumerate}
 \subsubsection{Weitere Integrationstricks}
 \label{sec-11-3-4}
-\begin{enumerate}
-\item Partialbruchzerlegung
+\paragraph{Partialbruchzerlegung}
 \label{sec-11-3-4-1}
 $\Rightarrow$ Integration rationaler Funktionen
 \[\int_a^b\frac{\mathrm{d}}{1-x^2} \text{ mit } \{-1,1\}\not\in [a,b] \]
 \[1-x^2 = (1-x)(1+x)\]
 \[\frac{1}{1-x^2} = \frac{\alpha}{1-x} + \frac{\beta}{1+x} = \frac{\alpha(1+x)+\beta{1-x}}{(1-x)(1+x)} = \frac{\alpha + \beta + x(\alpha - \beta)}{1-x^2} \Rightarrow \alpha = \beta \frac{1}{2}\]
 \[\int_a^b \frac{\mathrm{d}x}{1-x^2} = \frac{1}{2}(\int_a^b\frac{1}{1+x} + \int_a^b\frac{1}{1+x})\]
-\end{enumerate}
 \subsection{Uneigentliche Integrale}
 \label{sec-11-4}
-\subsubsection{Undedliches Integralintervall}
+\subsubsection{Unendliches Integralintervall}
 \label{sec-11-4-1}
-\begin{enumerate}
-\item Definition
+\paragraph{Definition}
 \label{sec-11-4-1-1}
 Sei $f:[a,\infty)\rightarrow\mathbb{R}$ eine Funktion, die über jedem Intervall $[a,R),~a<R<\infty$ (Riemann-)integrierbar ist. Falls der Grenzwert $\lim_{R\to\infty}\int_a^R f(x)\mathrm{d}x$ existiert setzt man \[\int_a^\infty f(x)\mathrm{d}x=\lim_{R\to\infty}\int_a^R f(x)\mathrm{d}x\]
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-11-4-1-2}
 \[\int_1^\infty\frac{\mathrm{d}x}{x^s}=\begin{cases}\frac{1}{s-1}&s>1\\ \infty & s\leq 1\end{cases}\]
-\end{enumerate}
 \subsection{Cauchy Hauptwert}
 \label{sec-11-5}
 \[P\int_{-\infty}^\infty f(x)\mathrm{d}x := \lim_{c\to\infty}\int_{-c}^c f(x)\mathrm{d}x\]
@@ -817,20 +779,18 @@ P := "principal Value"
 \[P\int_{-\infty}^\infty x^{2n-1}\mathrm{d}x = \lim_{c\to\infty}\int_{-c}^c x^{2n-1}\mathrm{d}x = \lim_{c\to\infty}(\frac{1}{2\pi}(\underbrace{c^{2n}-(-c)^{2n}}_{=0})) = 0\]
 \subsubsection{Unbeschränkter Integrand}
 \label{sec-11-5-1}
-Situation: Integrand wird an einer Stelle \$x$_{\text{0}}$ $\in$ [a,b] unbeschränkt
-\begin{enumerate}
-\item Definition
+Situation: Integrand wird an einer Stelle $x_0 \in [a,b]$ unbeschränkt
+\paragraph{Definition}
 \label{sec-11-5-1-1}
 Sei $f:(a,b] \to \mathbb{R}$ eine Fnunkion, die über jedem Teilintervall $[a+\eta, b],~0<\eta<b-a$ (Riemann-)integrierbar ist.
 Falls der Grenzwert $\lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x$ existiert, heipßt das Integral $\int_a^b f(x)\mathrm{d}x$ konvergent
 \[\int_a^b f(x)\mathrm{d}x = \lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x\]
-\item Beispiel
+\paragraph{Beispiel}
 \label{sec-11-5-1-2}
 \[\int_0^b \frac{1}{x^{1-\epsilon}}\mathrm{d}x = \lim_{\eta\to 0} \int_\eta^b \frac{1}{x^{1-\epsilon}}\mathrm{d}x = \lim_{\eta\to 0} \frac{1}{\epsilon}(b^\epsilon - \eta^\epsilon) = \frac{1}{\eta}b^\epsilon\]
-\item Principal value
+\paragraph{Principal value}
 \label{sec-11-5-1-3}
 \[P\int_a^b f(x)\mathrm{d}x = \lim_{\eta\to 0} \int_a^{x_0 - \eta} f(x)\mathrm{d}x + \int_{x_0+\eta}^b f(x)\mathrm{d}x\]
-\end{enumerate}
 \subsection{Integralfunktionen}
 \label{sec-11-6}
 \[\ln{x} = \int_1^x \frac{\mathrm{d}x}{x}\]
@@ -844,7 +804,7 @@ Elliptisches Integral
 \[\Gamma(x):=\int_0^\infty t^{x-1}e^{-t}\mathrm{d}t\]
 Satz: Es gilt $\Gamma(1) = 1,~\Gamma(m+1) = m! \Forall n\in\mathbb{N},~x\Gamma(x) = \Gamma(x+1)$
 \[\Gamma(1)=\int_0^\infty e^{-t}\mathrm{d}t=-e^{-t}\mid_0^\infty = 1\]
-\[\Gamma(x+1) = \int_\epsilon^R t^x e^{-t}\mathrm{d}t = \underbrace{t^x e^{-t}\mid_\epsilon^R}_{R\to\infty t} + x\int_epsilon^R t^{x-1}e^{-t}\mathrm{d}t\]
+\[\Gamma(x+1) = \int_\epsilon^R t^x e^{-t}\mathrm{d}t = \underbrace{t^x e^{-t}\mid_\epsilon^R}_{R\to\infty t} + x\int_\epsilon^R t^{x-1}e^{-t}\mathrm{d}t\]
 \[f(t) = -e^{-t} \Leftarrow f'(t)=e^{-t}\]
 \[g(t) = t^x \Rightarrow xt^{t-1} = g'(t)\]
 \section{Vektoren}
@@ -880,13 +840,13 @@ $\vec{a}$ und $\vec{b}$ antiparallel:
 \item Distributivgesetz
 \[<\vec{a}+\vec{b},\vec{c}>=<\vec{a},\vec{c}>+<\vec{b},\vec{c}>\]
 \[<\vec{a},\vec{b}+\vec{c}>=<\vec{a},\vec{b}>+<\vec{a},\vec{c}>\]
-\item \[<\vec{a},\vec{a}\geq 0 \quad <\vec{a},\vec{a}>=0\Leftrightarrow\vec{a}=0\]
+\item \[<\vec{a},\vec{a}>\geq 0 \quad <\vec{a},\vec{a}>=0\Leftrightarrow\vec{a}=0\]
 \end{itemize}
 \subsubsection{Orthonormalbasis der kartesischen Koordinatensystem}
 \label{sec-12-2-6}
 Basisvecktoren $\vec{e_k}, k=1,2,4$
 Orthogonalität $<\vec{e_k},\vec{e_l}> = 0\quad l\neq k$
-Für $k=l:~<\vec{e_k},\vec{e_k}>=\cos{0}=1$
+Für $k=l:~<\vec{e_k},\vec{e_k}>=\cos(0)=1$
 Orthonormalität
 \subsubsection{Kronecker Symbol}
 \label{sec-12-2-7}
@@ -907,15 +867,15 @@ $\det A = \sum_{\sigma \in S_n} \left(\operatorname{sgn}(\sigma) \prod_{i=1}^n a
 Summe über alle Permutationen von $S_n$, Vorzeichen der Permutation ist positiv, wenn eine gerade Anzahl an Vertauschungen notwendig ist, und entsprechend negativ bei einer ungeraden Anzahl.
 \subsection{Homogenes Gleichungssystem}
 \label{sec-13-2}
-\[A\vec{x}=0\quad\begin{matrix}
+\[A\vec{x}=0\quad \begin{pmatrix}
    a_{11} & a_{12} & a_{13} \\
    a_{21} & a_{22} & a_{23} \\
    a_{31} & a_{32} & a_{33} \\
-   \end{matrix}\begin{matrix}
+   \end{pmatrix}\begin{pmatrix}
    x_1\\
    x_2\\
    x_3\\
-   \end{matrix}\]
+   \end{pmatrix}\] 
 \[
    x_1 \underbrace{ \begin{matrix} a_{11} \\ a_{21} \\ a_{31} \end{matrix}}_{\vec{a_1}} +
    x_2 \underbrace{ \begin{matrix} a_{12} \\ a_{22} \\ a_{32} \end{matrix}}_{\vec{a_2}} +
@@ -979,7 +939,7 @@ a_1b_2 - a_2b_1
 \label{sec-14}
 \begin{itemize}
 \item mathe für physiker vs. analysis
-\item klasuren gebündelt
+\item klausuren gebündelt
 \item auslandssemester
 \end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
