@@ -165,7 +165,7 @@
 	$\exists x:~A(x)$ ist gleichbedeutend mit "Es existiert ein x, für das $A(x)$ wahr ist" (hierbei ist "existiert ein x" im Sinne von "existiert mindestens ein x" zu verstehen) \\
 	Beispiel:
 	\[\exists n\in\mathbb{N}:~n>5\quad\text{(w)}\]
-	$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist" 
+	$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist"
 *** Allquantor
 	$\Forall x:~A(x)$ ist gleichbedeutend mit "Für alle x ist A(x) wahr"
 	Beispiel:
@@ -540,7 +540,7 @@
 		- Eindeutigkeit: Seien $m_1,m_2 \in M  mit \(f(m_1) = n, f(m_2) = n \Rightarrow f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
 	  - 2. \Rightarrow 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
 		zz: Ex existert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
-		- Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\ 
+		- Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\
 		  bestimmte Element $m\in M$ mit $f(m) = n$}\) \\
 		  Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~text{das heißt}~ g\circ f = id_M\]
 		  und für $n\in N$ ist $(f\circ g)(n) = f(g(n)) = n$ also $f\circ g = id_N$
@@ -827,10 +827,12 @@
    Ein Ring heißt *kommutativ* $\xLeftrightarrow{\text{Def}}$ die Multiplikation ist kommutativ, das heißt $\Forall a,b\in R: a\cdot b = b\cdot a$
 *** Anmerkung
 	- ohne Klammerung gilt die Konvention "$\cdot$" vor "$+$", "$\cdot$" wird häufig weggelassen
-	- das neutrale Element bezüglich "$+$" bezeichnen wri mit $0_R$ (Nullelement), das neutrale Element bezüglich "$\cdot$" mit $1_R$ (Einselement). Das zu $a\in R$ bezüglich "$+$" inverse Element bezeichnen wir mit $-a$,
+	- das neutrale Element bezüglich "$+$" bezeichnen wir mit $0_R$ (Nullelement), das neutrale Element bezüglich "$\cdot$" mit $1_R$ (Einselement).
+	  Das zu $a\in R$ bezüglich "$+$" inverse Element bezeichnen wir mit $-a$,
 	  für $a + (-b)$ schreben wir $a - b$. Existiert zu $a\in R$ ein Inverses bezüglich "$\cdot$", so bezeichnen wir diesses mit $a^{-1}$
 	- Wir schreiben häufig verkürzend "$R$ Ring" statt "$(R,+,\cdot)$ Ring"
-	- In der Literatur wird gelegentlich die Forderung der Existenz eines neutralen Elements bezüglich "$\cdot$" weggelassen, "unser" Ringbegriff entspricht dort dem Begriff "Ring mit Eins"
+	- In der Literatur wird gelegentlich die Forderung der Existenz eines neutralen Elements bezüglich "$\cdot$" weggelassen, "unser" Ringbegriff
+	   entspricht dort dem Begriff "Ring mit Eins"
 *** Beispiel
 	1. $(\mathbb{Z},+,\cdot)$ ist ein kommutativer Ring
 	2. Nullring $(\{0\},+,\cdot)$ mit $0 + 0 = 0, 0\cdot 0 = 0$ ist ein kummutativer Ring \\
@@ -883,7 +885,7 @@
 	 | $\bar 0$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
 	 | $\bar 1$ | $\bar 1$ | $\bar 2$ | $\bar 0$ |
 	 | $\bar 2$ | $\bar 2$ | $\bar 0$ | $\bar 1$ |
-	 
+
 	 | $\cdot$  | $\bar 0$ | $\bar 1$ | $\bar 2$ |
 	 |----------+----------+----------+----------|
 	 | $\bar 0$ | $\bar 0$ | $\bar 0$ | $\bar 0$ |
@@ -1020,7 +1022,7 @@
   Hierbei sind zei Polynome $f = \sum_{k = 0}^n a_k t^k,g = \sum_{k =0}^m b_m t^k$ gleich ($f = g$) $\xLeftrightarrow{\text{Def}} \deg(f) = \deg(g) =: r$ und $a_r = b_r,\ldots,a_1 = b_1, a_0 = b_0$
   \end{defn}
   \begin{remark}
-  Man kann das auch präzise macchen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
+  Man kann das auch präzise machen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
   \end{remark}
   \begin{ex}[7.2] \mbox{}
   \begin{enumerate}
