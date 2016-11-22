@@ -33,6 +33,13 @@
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 #+LATEX_HEADER: \usepackage{wasysym}
+#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
+#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+#+LATEX_HEADER: }
 
 * Einleitung
   # Passwort für Downloads (Webseite Prof. Gade): GRUNDVORLESUNG
@@ -1020,7 +1027,7 @@
   Hierbei sind zei Polynome $f = \sum_{k = 0}^n a_k t^k,g = \sum_{k =0}^m b_m t^k$ gleich ($f = g$) $\xLeftrightarrow{\text{Def}} \deg(f) = \deg(g) =: r$ und $a_r = b_r,\ldots,a_1 = b_1, a_0 = b_0$
   \end{defn}
   \begin{remark}
-  Man kann das auch präzise macchen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
+  Man kann das auch präzise machen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
   \end{remark}
   \begin{ex}[7.2] \mbox{}
   \begin{enumerate}
@@ -1071,6 +1078,7 @@
 
   #+ATTR_LATEX: :options [7.6 Polynomdivision]
   #+begin_thm latex
+  \label{thm:poly_div}
   $K$ Körper, $f,g\in K[t], g\neq 0$ \\
   Dann existieren eindeutig bestimmte Polynome $q,r \in K[t]$, mit $f = q g + r$ und $\deg(r) < \deg(g)$
   #+end_thm
@@ -1110,3 +1118,146 @@
 	 Nach \ref{remark:74} ist $\deg(r_2 - r_1) \leq \max\{\deg(r_2),\deg(-r_1)\} < \deg(g) \lightning$
 	 Also $q_1 = q_2$, somit $r_2 - r_1 = \underbrace{q_1 - q_2}_{= 0} g = 0$, also $r_1 = r_2$
   #+end_proof
+  #+ATTR_LATEX: :options [7.8, Nullstelle]
+  #+begin_defn latex
+  $\in K[t], f = a_n t^n + \ldots + a_1 t + a_0, \lambda \in K$ \\
+  Wir setzen $f(\lambda) := a_n \lambda^n + \ldots + a_1\lambda + a_0 \in K$
+  $\lambda$ heißt Nullstelle von $f \xLeftrightarrow{Def.} f(\lambda) = 0$
+  #+end_defn
+  #+ATTR_LATEX: :options [7.9]
+  #+begin_remark latex
+  \label{remark:79}
+  $K$ Körper, $f\in K[t], \lambda \in K$ Nullstelle von $f$. Dann gibt es in $K[t]$ ein eindeutig bestimmtes Polynom $q$ mit $f = (t - \lambda)q$.
+  Es ist $\deg(q) = \deg(f) - 1$
+  #+end_remark
+  #+begin_proof latex
+  *Existenz:* Nach \ref{thm:poly_div} existiert $q,r\in K[t]$ mit $f = (t - \lambda)q + r$ und $\deg(r) < \underbrace{\deg(t - \lambda)}_{= 1}$ \\
+  \Rightarrow $r$ ist konstantes Polynom und es gilt
+  \[0 = f(\lambda) = \underbrace{(\lambda - \lambda)}_{= 0} q + r(\lambda) = r(\lambda) \Rightarrow r = 0 \Rightarrow f = (t - \lambda) q\]
+  *Eindeutigkeit:* aus Eindeutigkeit aus \ref{thm:poly_div}
+  #+end_proof
+  #+begin_conc latex
+  $K$ Körper, $f\in K[t], f\neq 0, n:= \deg(f)$ \\
+  Dann besitzt $f$ in $K$ höchstens $n$ Nullstellen.
+  #+end_conc
+  #+begin_proof latex
+  per Induktion nach $n$
+  *Induktionsanfang:* $n = 0$ Ein konstantes Polynom $\neq 0$ besitzt keine Nullstellen. \\
+  *Induktionsschritt:* Es sein $n > 0$ und die Aussage sei für alle Polynome von Grad $< n$ schon gezeigt.
+  Falls $f$ keine Nullstelle besitzt, dann fertig.
+  Im Folgenden besitzte $f$ eine Nullstelle sei $\lambda \in K$ eine solche, daraus folgt mit \ref{label:79}
+  \[\exists q\in K[t]: f(t - \lambda)q, \deg{q} = n - 1\]
+  Ist $\varepsilon \neq \lambda$ eine weitere Nullstelle von $f$ dann ist
+  \[0 = f(\varepsilon) = \underbrace{\varepsilon - \lambda}_{\neq 0}q(\varepsilon)\]
+  Da $K$ als Körper ein Integritätsbereich ist folt: $q(\varepsilon) = 0$, das heißt $\varepsilon$ ist Nullstelle von $q$.
+  Nach Induktionsvorraussetzung hat $q$ höchstens $n-1$ Nullstellen \Rightarrow $f$ hat höchstens $n$ Nullstellen
+  #+end_proof
+  #+ATTR_LATEX: :options [7.11]
+  #+begin_defn latex
+  \label{dfn:zero}
+  $K$ Körper, $f\in K[t], f\neq 0,\lambda \in K$
+  \[\mu (f,\lambda) := \max\{e\in\mathbb{N}_0 \mid \Exists g\in K[t]: f = (t - \lambda)^e g\}\]
+  heißt die Vielfachheit der Nullstelle $\lambda$ von $f$.
+  #+end_defn
+  #+begin_remark latex
+  - Es ist $\mu(f,\lambda) = 0 \Leftrightarrow f(\lambda) \neq 0 \lambda$ keine Nullstelle von $f$ (denn: $f(\lambda) = 0 \Leftrightarrow \Exists q\in K[t]: f=(t - \lambda)q \Leftrightarrow \mu(f,\lambda) \neq 0$)
+  - Die Vielfachheit von $\lambda$ gibt an, wie oft der Linearfaktor $t - \lambda$ in $f$ vorkommt
+  - Sind $\lambda_1,\ldots,\lambda_m \in K$ sämtliche verschiedene Nullstellen von $f$ und es ist $e_i := \mu(f,\lambda_i),i = 1,\ldots,m$ dann existerit ein Polynom $g\in K[t]$ mit
+	\[f = (t - \lambda_1)^{e_1}\cdot\ldots\cdot(t-\lambda_m)^{e_m}g\]
+	und den Eigenschaften, dass $g$ in $K$ kein Nullstelle besitzt und, dass $\deg(g) = \deg(f) - (e_1 + \ldots + e_m)$.
+  - "bester Fall:" $\deg(g) = 0$ ("$f$ zerfällt in Linearfaktoren"):
+	Dann existert $a\in K\setminus\{0\}, \lambda_1,\ldots, \lambda_m \in k$ paarweise verschieden, $e_1,\ldots,e_n \in \mathbb{N}$  mit
+	\[f = a(t - \lambda_1)^{e_1}\cdot\ldots\cdot(t - \lambda_m)^{e_m}, e_1 + \ldots + e_m = \deg(f)\]
+	Alternative Darstellung:
+	\[f = a(t - \tilde\lambda_1) \cdot \ldots\cdot(t - \tilde\lambda_n), n = \deg(f), \tilde\lambda_1,\ldots\tilde\lambda_n~\text{nicht notwendig verschieden}\]
+  #+end_remark
+  #+ATTR_LATEX: :options [7.12 Fundamentalsatz der Algebra]
+  #+begin_thm latex
+  Jedes Polynom $f \in \mathbb{C}[t]$ mit $\deg(f) \geq 1$ besitzt eine Nullstelle.
+  #+end_thm
+  #+begin_proof latex
+  Zum Beispiel in Vorlesung Funktionentheorie 1, Algebra 1
+  #+end_proof
+  #+ATTR_LATEX: :options [7.13]
+  #+begin_conc latex
+  $f\in\mathbb{C}[t], f\neq 0$
+  Dann zerfällt $f$ in Linearfaktoren.
+  #+end_conc
+  #+begin_proof latex
+  *Induktionsanfang:* $n = 0 \Rightarrow f$ ist konstantes Polynom, fertig \\
+  *Induktionsscritt:* Sei $n\geq 1$ und die Assage sei für alle Polynome vom Grad $< n$ bereits bewiesen. Nach Fundamentalsatz der Algebra existiert eine Nullstelle $\lambda$ von $f$
+  \[\xRightarrow{\ref{remark:79}} \Exists g\in \mathbb{C}[t]: f = (t - \lambda)g, \deg(g) = n - 1 \]
+  Nach Induktionsannahme $\Exists a\in\mathbb{C},\lambda_1,\ldots,\lambda_{n - 1} \in \mathbb{C}$ (nicht notwendig verschieden)
+  \[g = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n-1})\]
+  Setze $\lambda_n := x \Rightarrow f = g(t - \lambda_n) = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n - 1})(t - \lambda_n)$
+  #+end_proof
+
+  #+ATTR_LATEX: :options [7.14]
+  #+begin_defn
+  $K$ Körper, $f\in K[t]$
+  $f$ induziert eine Abbildung $\tilde f: K\to K,\lambda\to f(\lambda)$, $\tilde f$ heißt die Polynomfunktion zum Polynom $f$
+  #+end_defn
+  #+ATTR_LATEX: :options [7.15]
+  #+begin_ex latex
+  \label{ex:715}
+  Es ist wichtig zwischen dem Polynom $f\in K[t]$ und der dazugehörigen Polynomfunktion $\tilde f: K\to K$ zu unterscheiden
+  Sei $f = t^2 + t \in \mathbb{F}_2 [t]$. Dann ist $f(\bar 0) = \bar 0^2 + \bar 0 = \bar 0, f(\bar 1) = \bar 1^2 + \bar 1 = \bar 0$
+  das heißt $\tilde f: \mathbb{F}_2 \to \mathbb{F}_2$ ist die Nullabbildung, aber $f$ ist nicht das Nullpolynom
+  #+end_ex
+  #+ATTR_LATEX: :options [7.16]
+  #+begin_remark latex
+  \label{remark:716}
+  $K$ Körper mit unendlich vielen Elementen. \\
+  Dann ist die Abbildung $\tilde : K[t]\to$ Abb$(K,K):=\{g:K\to K ~\text{Abbildung}\}, f\mapsto \tilde f$ injektiv, das heißt:
+  Ist $K$ unendlich und sind $f_1,f_2 \in K[t]$, dann gilt $f_1 = f_2 \Leftrightarrow \tilde f_1 = \tilde f_2$
+  #+end_remark
+  #+begin_proof latex
+  Es seien $f_1,f_2 \in K[t]$ mit $\tilde f_1 = \tilde f_2$ wir setzen $g:= f_1 - f_2$ \\
+  \Rightarrow Für alle $a\in K$ ist $g(a) = (f_1 - f_2)(a) = f_1(a) - f_2(a) = \tilde f_1(a) - \tilde f_2(a) = 0$
+  $\xRightarrow{K~\text{unendlich}}$ g hat unendlich viele Nullstellen, mit \ref{dfn:zero} folgt: $g = 0\Rightarrow f_1 = f_2$
+  #+end_proof
+  #+begin_remark latex
+  - Lässt man \ref{remark:716} die Vorraussetzung $K$ hat unendlich viele Elemente weg, wird die Aussage falsch, siehe Beispiel \ref{ex:715}
+  - Mit dem Wissen von \ref{ex:715} und \ref{remark:716} im Hintergrund bezeichnet man die vom Polynom $f$ induzierte Polynomfunktion mit $f$ anstelle von $\tilde f$
+  #+end_remark
+* Vektorräume
+  In diesem Kapitel sei $K$ stets ein Körper
+  #+ATTR_LATEX: :options [8.1]
+  #+begin_defn latex
+  Ein K-Vektorraum ist ein Tripel $(V,+,\cdot)$ bestehend aus
+  - einer Menge $V$
+  - einer Verknüpfung $+:V\times V \to V, (v,w)\mapsto v + w$ \hfill (Addition)
+  - und einer äußeren Verknüpfung $\cdot : K\times V \to V, (\lambda,v) \mapsto \lambda \cdot v$ \hfill (skalare Multiplikaiton)
+  Welche folgende Bedingungen genügen:
+  1. (V1) $(V,+)$ ist eine abelsche Gruppe
+  2. (V2) Die skalare Multiplikaiton ist in folgender Weise mit der anderen Verknüpfung (auf $V$ und $K$) verträglich:
+	 \begin{align*}
+	 \intertext{$\Forall \lambda,\mu \in K, v,w\in V$}
+	 (\lambda + \mu) \cdot v  &= \lambda \cdot v + \mu \cdot v \\
+	 \lambda \cdot (v + w) = \lambda \cdot v + \lambda \cdot w \\
+	 \lambda \cdot (\mu \cdot w) = (\lambda \cdot \mu) \cdot v \\
+	 1\cdot v = v
+	 \end{align*}
+  #+end_defn
+  #+begin_remark latex
+  - Es ist wichtig, zwischen Addition "$+$" und skalarer Multiplikation "$\cdot$" auf $V$ und Addition und Multiplikation in $K$ zu unterschieden:
+	In der Gleichung $(\lambda + \mu) \cdot v = \lambda \cdot v + \mu\cdot v$ sind die Verknüpfungen wie folgt zu verstehen:
+	\[(\lambda \qquad\underarrow[+]{Addition in $K$}\qquad \mu) \qquad \overarrow[\cdot]{skalare Multiplikation} \qquad v = \lambda \qquad \underarrow[\cdot]{skal. Mult.} \qquad v \overarrow[+]{Addition in $V$} \mu\qquad\underarrow[\cdot]{skal. Mult.} \qquad v\]
+  - Das neutrale Element bezüglich "$+$" auf $V$ bezeichnen wir mit $0_v$ (Nullvektor), das inverse zu $v\in V$ bezüglich "$+$" mit $-v$. Das Zeichen "$\cdot$" fpr die skalare Multiplikation lassen wir ab jetzt meistens weg und schreiben $\lambda v$ statt $\lambda\cdot v$ ($\Forall \lambda\in K, v\in V$)
+  - Wir schreiben meist verkürzend "V K-Vektorraum" (beziehungsweise: "V K-VR") anstelle von $(V,+,\cdot)$ K-Vektorraum.
+  #+end_remark
+  #+ATTR_LATEX: :options [8.2]
+  #+begin_ex latex
+  1. \[K^n := \{(x_1,\ldots,x_n) \mid x_1,\ldots,x_n \in K\}\]
+	 mit
+	 \[(x_1,\ldots,x_n) + (y_1,\ldots,y_n) := (x_1 + y_1,\ldots,x_n + y_n)\]
+	 \[\lambda\cdot(x_1,\ldots,x_1) := (\lambda x_1,\ldots,\lambda x_n)\]
+	 \[\lambda \in K, (x_1,\ldots,x_n),(y_1,\ldots,y_n)\in K^n\]
+	 ist ein K-Vektorraum, der sogenannte Standardvektorraum über $K$
+	 Die Axiome rechnet man nach, exemplarisch: sind $\lambda,\mu\in K, (x_1,\ldots,x_n)\in K^n$, dann ist
+	 \[(\lambda + \mu) \cdot (x-1,\ldots,x_n) = ((\lambda + \mu)x_1,\ldots,(\lambda + \mu)x_n)\]
+	 Mit dem Distributivgesetz in $K$ folgt:
+	 \[(\lambda x_1,\ldots,\lambda x_n) + (\mu x_1,\ldots,\mu x_n) = \lambda(x_1,\ldots,x_n) + \mu(x_1,\ldots,x_n)\]
+	 Der Nullvektor ist gegeben duch $0_{K^n} = (0,\ldots,0)$, für $x =(x_1,\ldots,x_n)$ ist $-x = (-x_1,\ldots,-x_n)$
+  2.
+  #+end_ex

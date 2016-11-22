@@ -1,4 +1,4 @@
-% Created 2016-11-18 Fr 20:42
+% Created 2016-11-22 Di 13:26
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -56,6 +56,7 @@
 \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 }
 \renewcommand*{\proofname}{Beweis}
+\newcommand{\I}{\ensuremath{\imath}}%
 \author{Robin Heinemann}
 \date{\today}
 \title{Theoretische Physik (Hebecker)}
@@ -940,5 +941,126 @@ Begründung:
 \end{align*}
 
 Bemerkung: Passend gewähltes $V_{ab}$ gibt das Modell der starren Stangen
+\subsection{Eindimensionale Bewegung}
+\label{sec-4-6}
+\[F(x) = m\ddot{x}\]
+\begin{itemize}
+\item mit Einsatz allgemein lösbar!
+\item Startpunkt: Jedes 1-dim. zeitunabhängiges Kraftfelt ist konservativ
+\begin{align*}
+E = \frac{m}{2}\dot{x}^2 + V(x) = ~\text{const} \\
+\intertext{(bis auf Vorzeichen)}
+\dot{x} = \sqrt{\frac{2}{m}(E-V(x))} \Rightarrow \d t = \frac{\d x}{\sqrt{\frac{2}{m}(E-V(x))}} \\
+t = \in \frac{\d x}{\sqrt{\frac{2}{m}}(E - V(x))}
+\intertext{Integral lösen, Integrationskonstante und Energie so bestimmen, das Anfangswertproblem gelöst}
+t = t(x) ~\text{auflösen}~ \Rightarrow x = x(t) \checkmark
+\intertext{viel einfacher als allgemeine Differentialgleichung 2. Ordnung}
+\end{align*}
+\end{itemize}
+\section{Harmonischer Oszillator in komplexen Zahlen}
+\label{sec-5}
+\subsection*{Motivation}
+   Harmonischer Oszillator mit Reibung:
+   \[\ddot{x} = -\omega^2 x - c \dot{x}\]
+   Exponentieller Ansatz:
+   \[x\sim e^{\alpha t} \Rightarrow \alpha^2 + \omega^2 + c\alpha = 0\]
+   gesucht: $\alpha$, Betrachte Genzfälle:
+\begin{enumerate}
+\item $\omega$ klein
+\[\Rightarrow \alpha^2 + c\alpha = 0 \Rightarrow \alpha = -c \Rightarrow x\sim e^{-c t}\]
+\item $\omega$ groß (beziehungsweise $c$ klein)
+\[\alpha^2 + \omega^2 \simeq 0\]
+nicht lösbar!
+\end{enumerate}
+Aber: wir wissen schon $\sin{\omega t}, \cos{\omega t}$ sind Lösungen.
+
+Falls jede gesuchte Gleichung lösbar $\Rightarrow$ Hoffnung auf elegante allgemeine Lösung
+
+\textbf{Speziell:} $\alpha^1 = -1$ (für $\omega = 1, c = 0$)
+\subsection{Komplexe Zahlen}
+\label{sec-5-1}
+\subsubsection{Ziel}
+\label{sec-5-1-1}
+reelle Zahlen so zu erweitern, dass $x^2 = - 1$ lösbar
+\subsubsection{Naive Definition}
+\label{sec-5-1-2}
+Definiere "Imaginäre Einheit" $x^2 = -1$ lösbar "$\I$", so dass $\I^2 = -1$
+Wollen addieren und Multiplizieren, deshalb erkläre komplexe Zahl $\mathbb{C}$ als:
+\[\mathbb{C} \ni z ) x + \I y, x,y\in\mathbb{R}\]
+Wir definieren außerdem:
+\begin{itemize}
+\item $z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) \equiv (x_1 + x_2) + \I(y_1 + y_2)$
+\item $z_1 \cdot z_2 = (x_1 + \I y_1) (x_2 + \I y_2) \equiv x_1 x_2 + x_1 \I y_2 + \I y_1 x_2 + \I y_1 \I y_2 \equiv (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)$
+\end{itemize}
+\subsubsection{präsizere Definition}
+\label{sec-5-1-3}
+\begin{defn}[Körper]
+Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen $("+","\cdot")$, so dass:
+\begin{itemize}
+\item $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$ \hfill (Assoziativität)
+\item $\alpha + \beta = \beta + \alpha$ \hfill (Kommutativität)
+\item $\Exists 0 \in K: \alpha + 0 = \alpha \Forall \alpha$ \hfill (Null)
+\item $\Forall \alpha \Exists (-\alpha) \in K: \alpha + (-\alpha) = 0$ \hfill (Additives Inverses)
+\item $(\alpha \cdot \beta) \cdot \gamma = \alpha \cdot (\beta \cdot \gamma)$ \hfill (Assoziativität der Mult.)
+\item $\alpha \cdot \beta = \beta \cdot \alpha$ \hfill (Kummutativität der Mult.)
+\item $\Exists 1 \in K: 1\cdot \alpha = \alpha \Forall \alpha$ \hfill (Eins)
+\item $\Forall \alpha \neq 0 \Exists \alpha^{-1} \in K: \alpha \cdot \alpha^{-1} = 1$ \hfill (Inverses der Mult.)
+\item $\alpha\cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma$ \hfill (Distributivität)
+\end{itemize}
+\end{defn}
+Wir kennen bereits:
+\begin{itemize}
+\item $K = \mathbb{Q}$ \hfill (rationale Zahlen)
+\item $K = \mathbb{R}$ \hfill (reelle Zahlen)
+\end{itemize}
+\begin{defn}[Komplexer Zahlenkörper]
+Komplexe Zahlen sind die Menge $\mathbb{C} = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ mit den Operationen
+\begin{itemize}
+\item $(x_1, y_1) + (x_2, y_2) \equiv (x_1 + x_2, y_1 + y_2)$
+\item $(x_1, y_1) \cdot (x_2, y_2) \equiv (x_1 \cdot x_2 - y_1 \cdot y_2, x_1 \cdot y_2 + x_2 \cdot y_1)$
+\end{itemize}
+Das ist äquivalent zu unserer "naiven Definition" $z = x + \I y$
+\end{defn}
+\textbf{Aufgabe:} Prüfen sie, dass die Axiome erfült sind! \\
+    Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
+\[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
+
+$\mathbb{C} = \mathbb{R}^2 \Rightarrow$ Darstellung durch Vektoren in Ebene liegt nahe.
+\begin{itemize}
+\item Addition: $\equiv$ Vektoraddition
+\item Multiplikatoin: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
+\item $\arg{z} = \phi$
+\item $\Re{z} = x$
+\item $\Im{z} = y$
+\item $\abs{z} = \sqrt{x^2 + y^2}$
+\end{itemize}
+
+Übliche Funktionen ($\exp, \ln, \sin, \cos$) können mittels ihrer in $\mathbb{R}$ bekannten Taylorreihe auf $\mathbb{C}$ übertragen werden \\
+    \textbf{Besonders wichtig:}
+\[e^z \equiv \sum_{n = 0}^\infty \frac{z^n}{n!}\]
+Brauchen $e^{z + w} = e^z \cdot e^w$ \\
+    Nachrechnen:
+\begin{align*}
+e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binomialkoeffizient}}}$} z^kw^{n - k}
+\intertext{englisch: "n choose k"}
+\intertext{durch Umschreiben der Summen erhält man:}
+&= \sum_{n = 0}^\infty \sum_{k = 0}^n \frac{n^k}{k!} \frac{w^{n -k}}{(n -k)!} \\
+&= \sum_{k = 0}^\infty \sum_{l = 0}^\infty \frac{z^k}{k!} \frac{w^l}{l!} = e^z e^w
+\end{align*}
+Insbesondere:
+\[e^z = e^{x + \I y} = \underbrace{e^x}_{\mathclap{\text{reelle Zahl}}} \overbrace{e^{\I y}}^{\mathclap{\text{komplexe Zahl e vom Betrag $1$}}}\]
+In der Tat:
+\begin{align*}
+e^{\I y} &= \sum_{n = 0}^\infty \frac{(\I y)^n}{n!} = \sum_{k = 0}^\infty \frac{\I y^{2 k}}{(2 k)!} + \sum_{k = 0}^\infty \frac{(\I y)^{2k + 1}}{(2 k + 1)!} \\
+&= \sum_{k = 0}^\infty \frac{(-1)^k y^{2k}}{(2 k)!} + \I \sum_{k = 0}^\infty \frac{(-1)^k y^{2k + 1}}{(2k + 1)!} \\
+&= \cos{y} + \I \sin{y}
+\end{align*}
+$\Rightarrow$ Eulersche Formel
+\[e^{\I \phi} = \cos{\phi} + \I \sin{\phi}\]
+\paragraph{Zusammenfassung:}
+\label{sec-5-1-3-1}
+\[w = e^z = e^x e^{\I y} = \abs{w}e^{i\arg{w}}\]
+\[\ln{w} = z = x + \I y = \ln{\abs{w}} + \I \arg{w}\]
+Problem: $\arg{w}$ und deshalb $\ln$ nicht eindeutig definiert
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

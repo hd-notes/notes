@@ -534,15 +534,13 @@
 	 #+END_SRC
 **** Methode
 	 iterative Verbesserung mittel Newtonverfahren
-	 #+begin_example
-	 initial_guess $x^{(0)}$ ("geraten"), t = 0
-	 while not_good_enough($x^{(t)}$):
-		 update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update)
-		 t = t + 1
-	 #+end_example
+	 initial_guess $x^{(0)}$ ("geraten"), t = 0 \\
+	 while not_good_enough($x^{(t)}$): \\
+		 update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
+		 t = t + 1 \\
 ***** Newtonverfahren
 	  Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
-	  Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta + $ setze $x^\ast = x + \Delta$
+	  Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta +$ setze $x^\ast = x + \Delta$
 	  \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \Rightarrow \Delta = - \frac{f(x)}{f'(x)}\]
 	  Iteratiosvorschrift:
 	  \[x^{(t + 1)} = x^{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
@@ -711,3 +709,88 @@
 			 r += s[i];
 		 }
 		 #+END_SRC
+* Umgebungsmodell
+  Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für die prozedurale Programmierung
+  - Regeln für Auswertung von Audrücken
+  - Regeln für automatische Speicherverwaltung
+	- Freigeben nicht mehr benötigter Speicherzellen, \Rightarrow bessere Approximation von "unendlich viel Speicher"
+  - Umgebung beginnt normalerweise bei "{" und endet bei "}" \\
+	Ausnahmen:
+	- $for$: Umgebung beginnt schon bei "for" \Rightarrow Laufvariable ist Teil der Umgebung
+	- Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf \Rightarrow Speicherzellen fpr Argumente und Ergebnis gehören zur Umgebung
+	- globale Umgebung außerhalb aller "{ }" klammern
+  - automatische Speiccherverwaltung
+	- Speicherzellen, die in einer Umgebung angelegt werde (initialisiert, deklariert) werde, am Ende der Umgebung in umgekehrter Reihenfolge freigegeben
+	- Computer fügt vor "}" automatisch die Notwendigen Befehle ein
+	- Speicherzellen in der globalen Umgebung werden am Programmende freigegeben
+	  #+BEGIN_SRC cpp
+	- int global = 1;
+	  int main() {
+		  int l = 2;
+		  {
+			  int m = 3
+		  } // <- m wird freigegeben
+	  } // <- l wird freigegeben
+	  // <- global wird freigegeben
+	  #+END_SRC
+  - Umgebungen können beliebig geschachtelt werden \Rightarrow alle Umgebungen bilden einen Baum, mit der globalen Umgebung als Wurzel
+  - Funktionen sind in der globalen Umgebung definiert
+	- Umgebung jeder Funktion sind Kindknoten der globalen Umgebung (Ausnahme: Namensräume \Rightarrow siehe unten) \\
+	  \Rightarrow Funktions Umgebung ist *nicht* in der Umgebung, wo die Funktion aufgerufen wird
+  - Jede Umgebung besitzt eine *Zuordungstabelle* für alle Speicherzellen, die in der Umgebung definiert wurden
+	| Name | Typ | aktueller Wert |
+	|------+-----+----------------|
+	| l    | int | 2              |
+  - jeder Name kann pro Umgebung nur einmal vorkommen
+  - Ausnahme Funktionsnamen können mehrmals vorkommen bei function overloading (nur c++)
+  - Alle Befehle werden relativ zur aktuellen Umgebung ausgeführt
+	- aktuell: Zuordungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
+	  Beispiel: $c = a * b;$ \\
+	  Regeln:
+	- wird der Name (nur $a, b, c$) in der aktuellen Zuordungstabelle gefunden
+	  1. Typprüfung \Rightarrow Fehlermeldung, wenn Typ und Operation nicht zusammenpassen
+	  2. andernfalls, setze aktuellen Wert aus Tabelle in Ausdruch ein (ähnlich Substitutionsmodell)
+	- wird Name nicht gefunden: suche in der Elternumgebung weiter
+	- wir der Name bis zur Wurzel (gloable Umgebung) nicht gefunden \Rightarrow Fehlermeldung
+	- \Rightarrow ist der Nme in mehreren Umgebungen vorhanden gild as zerst gefundene (Typ, Wert)
+  - \Rightarrow Programmierrer muss selbst darauf achten, ass
+	1. bei der Suche die gewünschte Spicherzelle gefunden wird \Rightarrow beutze "sprechende Namen"
+	2. der aktuelle Wert der richtig ist \Rightarrow beachte Reihenfolge der Befehle!
+  - Namensraum: spezielle Umgebungen in der globalen Umgebung (auch geschachtelt) mit einem Namen \\
+	Ziele:
+	- Gruppieren ovn Funktionalität in Module (zusätzlich zu Headern)
+	- verhinderung von Namenskollisionen
+
+	Beispiel: c++ Standardbibilothek:
+	#+BEGIN_SRC cpp
+	namespace std {
+	double sqrt(double x);
+	namespace chrono {
+	class system_clock;
+	}
+	}
+
+	// Benutzung mit Namespace-Prefix:
+	std::sqrt(80);
+	std::chrono::system_clock clock;
+	#+END_SRC
+	Besonderheit: mehrere Blöcke mit selbem Namensraum werden verschmolzen
+   Beispiel
+   #+BEGIN_SRC cpp
+   int p = 2;
+   int q = 3;
+
+   int foo(int p) {
+	   return p * q;
+   }
+
+   int main() {
+	   int k = p * q; // beides global => 6 = 2 * 3
+	   int p = 4; // lokales p verdeckt globales p
+	   int r = p * q; // p lokal, q global => 12 = 4 * 3
+	   int s = foo(p); // lokale p von main() wird zum lokalen p von foo() 12 = 4 * 3
+	   int t = foo(q); // globales q wird zum lokalen p von foo() 9 = 3 * 3
+	   int q = 5;
+	   int n = foo(g); // lokales q wird zum lokalen p von foo() 15 = 5 * 3
+   }
+   #+END_SRC

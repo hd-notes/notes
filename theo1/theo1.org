@@ -43,6 +43,7 @@
 #+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
+#+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 
 Einleitung: \\
 - Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
@@ -761,3 +762,105 @@ Einleitung: \\
    \end{align*}
 
    Bemerkung: Passend gewähltes $V_{ab}$ gibt das Modell der starren Stangen
+** Eindimensionale Bewegung
+   \[F(x) = m\ddot{x}\]
+   - mit Einsatz allgemein lösbar!
+   - Startpunkt: Jedes 1-dim. zeitunabhängiges Kraftfelt ist konservativ
+	 \begin{align*}
+	 E = \frac{m}{2}\dot{x}^2 + V(x) = ~\text{const} \\
+	 \intertext{(bis auf Vorzeichen)}
+	 \dot{x} = \sqrt{\frac{2}{m}(E-V(x))} \Rightarrow \d t = \frac{\d x}{\sqrt{\frac{2}{m}(E-V(x))}} \\
+	 t = \in \frac{\d x}{\sqrt{\frac{2}{m}}(E - V(x))}
+	 \intertext{Integral lösen, Integrationskonstante und Energie so bestimmen, das Anfangswertproblem gelöst}
+	 t = t(x) ~\text{auflösen}~ \Rightarrow x = x(t) \checkmark
+	 \intertext{viel einfacher als allgemeine Differentialgleichung 2. Ordnung}
+	 \end{align*}
+* Harmonischer Oszillator in komplexen Zahlen
+\subsection*{Motivation}
+   Harmonischer Oszillator mit Reibung:
+   \[\ddot{x} = -\omega^2 x - c \dot{x}\]
+   Exponentieller Ansatz:
+   \[x\sim e^{\alpha t} \Rightarrow \alpha^2 + \omega^2 + c\alpha = 0\]
+   gesucht: $\alpha$, Betrachte Genzfälle:
+  1. $\omega$ klein
+	 \[\Rightarrow \alpha^2 + c\alpha = 0 \Rightarrow \alpha = -c \Rightarrow x\sim e^{-c t}\]
+  2. $\omega$ groß (beziehungsweise $c$ klein)
+	 \[\alpha^2 + \omega^2 \simeq 0\]
+	 nicht lösbar!
+  Aber: wir wissen schon $\sin{\omega t}, \cos{\omega t}$ sind Lösungen.
+
+  Falls jede gesuchte Gleichung lösbar \Rightarrow Hoffnung auf elegante allgemeine Lösung
+
+  *Speziell:* $\alpha^1 = -1$ (für $\omega = 1, c = 0$)
+** Komplexe Zahlen
+*** Ziel
+	reelle Zahlen so zu erweitern, dass $x^2 = - 1$ lösbar
+*** Naive Definition
+	Definiere "Imaginäre Einheit" $x^2 = -1$ lösbar "$\I$", so dass $\I^2 = -1$
+	Wollen addieren und Multiplizieren, deshalb erkläre komplexe Zahl $\mathbb{C}$ als:
+	\[\mathbb{C} \ni z ) x + \I y, x,y\in\mathbb{R}\]
+	Wir definieren außerdem:
+   - $z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) \equiv (x_1 + x_2) + \I(y_1 + y_2)$
+   - $z_1 \cdot z_2 = (x_1 + \I y_1) (x_2 + \I y_2) \equiv x_1 x_2 + x_1 \I y_2 + \I y_1 x_2 + \I y_1 \I y_2 \equiv (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)$
+*** präsizere Definition
+	#+ATTR_LATEX: :options [Körper]
+	#+begin_defn latex
+	Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen $("+","\cdot")$, so dass:
+	- $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$ \hfill (Assoziativität)
+	- $\alpha + \beta = \beta + \alpha$ \hfill (Kommutativität)
+	- $\Exists 0 \in K: \alpha + 0 = \alpha \Forall \alpha$ \hfill (Null)
+	- $\Forall \alpha \Exists (-\alpha) \in K: \alpha + (-\alpha) = 0$ \hfill (Additives Inverses)
+	- $(\alpha \cdot \beta) \cdot \gamma = \alpha \cdot (\beta \cdot \gamma)$ \hfill (Assoziativität der Mult.)
+	- $\alpha \cdot \beta = \beta \cdot \alpha$ \hfill (Kummutativität der Mult.)
+	- $\Exists 1 \in K: 1\cdot \alpha = \alpha \Forall \alpha$ \hfill (Eins)
+	- $\Forall \alpha \neq 0 \Exists \alpha^{-1} \in K: \alpha \cdot \alpha^{-1} = 1$ \hfill (Inverses der Mult.)
+	- $\alpha\cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma$ \hfill (Distributivität)
+	#+end_defn
+	Wir kennen bereits:
+	- $K = \mathbb{Q}$ \hfill (rationale Zahlen)
+	- $K = \mathbb{R}$ \hfill (reelle Zahlen)
+	#+ATTR_LATEX: :options [Komplexer Zahlenkörper]
+	#+begin_defn latex
+	Komplexe Zahlen sind die Menge $\mathbb{C} = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ mit den Operationen
+	- $(x_1, y_1) + (x_2, y_2) \equiv (x_1 + x_2, y_1 + y_2)$
+	- $(x_1, y_1) \cdot (x_2, y_2) \equiv (x_1 \cdot x_2 - y_1 \cdot y_2, x_1 \cdot y_2 + x_2 \cdot y_1)$
+	Das ist äquivalent zu unserer "naiven Definition" $z = x + \I y$
+	#+end_defn
+	*Aufgabe:* Prüfen sie, dass die Axiome erfült sind! \\
+	Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
+	\[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
+
+	$\mathbb{C} = \mathbb{R}^2 \Rightarrow$ Darstellung durch Vektoren in Ebene liegt nahe.
+	- Addition: $\equiv$ Vektoraddition
+	- Multiplikatoin: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
+	- $\arg{z} = \phi$
+	- $\Re{z} = x$
+	- $\Im{z} = y$
+	- $\abs{z} = \sqrt{x^2 + y^2}$
+
+	Übliche Funktionen ($\exp, \ln, \sin, \cos$) können mittels ihrer in $\mathbb{R}$ bekannten Taylorreihe auf $\mathbb{C}$ übertragen werden \\
+	*Besonders wichtig:*
+	\[e^z \equiv \sum_{n = 0}^\infty \frac{z^n}{n!}\]
+	Brauchen $e^{z + w} = e^z \cdot e^w$ \\
+	Nachrechnen:
+	\begin{align*}
+	e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binomialkoeffizient}}}$} z^kw^{n - k}
+	\intertext{englisch: "n choose k"}
+	\intertext{durch Umschreiben der Summen erhält man:}
+	&= \sum_{n = 0}^\infty \sum_{k = 0}^n \frac{n^k}{k!} \frac{w^{n -k}}{(n -k)!} \\
+	&= \sum_{k = 0}^\infty \sum_{l = 0}^\infty \frac{z^k}{k!} \frac{w^l}{l!} = e^z e^w
+	\end{align*}
+	Insbesondere:
+	\[e^z = e^{x + \I y} = \underbrace{e^x}_{\mathclap{\text{reelle Zahl}}} \overbrace{e^{\I y}}^{\mathclap{\text{komplexe Zahl e vom Betrag $1$}}}\]
+	In der Tat:
+	\begin{align*}
+	e^{\I y} &= \sum_{n = 0}^\infty \frac{(\I y)^n}{n!} = \sum_{k = 0}^\infty \frac{\I y^{2 k}}{(2 k)!} + \sum_{k = 0}^\infty \frac{(\I y)^{2k + 1}}{(2 k + 1)!} \\
+	&= \sum_{k = 0}^\infty \frac{(-1)^k y^{2k}}{(2 k)!} + \I \sum_{k = 0}^\infty \frac{(-1)^k y^{2k + 1}}{(2k + 1)!} \\
+	&= \cos{y} + \I \sin{y}
+	\end{align*}
+	\Rightarrow Eulersche Formel
+	\[e^{\I \phi} = \cos{\phi} + \I \sin{\phi}\]
+**** Zusammenfassung:
+	\[w = e^z = e^x e^{\I y} = \abs{w}e^{i\arg{w}}\]
+	\[\ln{w} = z = x + \I y = \ln{\abs{w}} + \I \arg{w}\]
+	Problem: $\arg{w}$ und deshalb $\ln$ nicht eindeutig definiert
