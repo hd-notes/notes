@@ -1,4 +1,4 @@
-% Created 2016-11-18 Fr 20:40
+% Created 2016-11-23 Mi 00:19
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -817,7 +817,7 @@ Aus \ref{1.55.4} und \ref{1.55.5} folgt $x^m = a\hfill\square$
   Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
 \begin{itemize}
 \item \label{KA} (KA) $\{x_1,y_1\} + \{x_2,y_2\} = \{x_1 + x_2, y_2 + y_2\}$
-\item \label{KM} (KM) \$\{x$_{\text{1}}$,y$_{\text{1$\backslash$}}$\} $\cdot$ \{x$_{\text{2}}$,y$_{\text{2$\backslash$}}$\} = \{x$_{\text{1}}$ x$_{\text{2}}$ - y$_{\text{1}}$ y$_{\text{2}}$, x$_{\text{1}}$ y$_{\text{2}}$ + x$_{\text{2}}$ y$_{\text{1$\backslash$}}$\}
+\item \label{KM} (KM) $\{x_1,y_1\} \cdot \{x_2,y_2\} = \{x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1\}$
 \end{itemize}
 \subsection{Komplexer Zahlkörper}
 \label{sec-3-1}
@@ -860,7 +860,7 @@ Die reellen Zahlen  sind durch $\Im z = 0$ charakterisiert.
 Jede quadratische Gleichung
 \[z^2+p z + q = 0,~p,q\in\mathbb{R}\]
 besitzt in $\mathbb{C}$ genau zwei Lösungen
-\[z_1,2 = \begin{cases} -\frac{1}{2}\pm \frac{1}{2}\sqrt{p^2 - 4q} & p^2 \geq 4q \\ -\frac{1}{2}\pm \I\frac{1}{2}\sqrt{\abs{p^2 - 4q}} & p^2 - 4q < 0 \end{cases} \]
+\[z_{1,2} = \begin{cases} -\frac{1}{2}\pm \frac{1}{2}\sqrt{p^2 - 4q} & p^2 \geq 4q \\ -\frac{1}{2}\pm \I\frac{1}{2}\sqrt{\abs{p^2 - 4q}} & p^2 - 4q < 0 \end{cases} \]
 \subsection{Fundamentalsatz der Algebra}
 \label{sec-3-6}
 Jede algebraische Gleichung der Form \[z^n + \sum_{i = 0}^{n - 1} a_i z^i = 0\]
@@ -871,9 +871,9 @@ Für komplese Zahlen lässt sich ein Absolutbetrag definieren
 \[r = \abs{z} = \sqrt{x^2 + y^2}\]
 Damit:
 \begin{align}
-x &= r\cos{\alpha}
-y &= r\sin{\alpha}
-z &= x + \I y = r(\cos{alpha} + \I\sin{\alpha})
+x &=& r\cos{\alpha}
+y &=& r\sin{\alpha}
+z &=& x + \I y = r(\cos{\alpha} + \I\sin{\alpha})
 \end{align}
 \subsection{Konjugation}
 \label{sec-3-8}
@@ -947,14 +947,14 @@ a_n \xrightarrow[k\to\infty]{} a &\Rightarrow \Forall \varepsilon > 0 \exists n_
 Sei $(a_n)_{n\in\mathbb{N}}$ eine Folge in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) welche gegen $a\in\mathbb{K}$ und $\tilde a \in \mathbb{K}$ konvergiert. Dann ist $a = \tilde a$.
 \end{lemma}
 \begin{proof}
-Beweis durch Wiederspruch. \\
+Beweis durch Widerspruch. \\
 Falls $\abs{a - \tilde a} > 0$, dann
 \[\exists n_\varepsilon \in\mathbb{N}\Forall n\geq n_\varepsilon \varepsilon = \abs{a - \tilde a}, \abs{a_n - a} < \frac{\varepsilon}{2}\]
 und ein $m_\varepsilon$, sodass
 \[\abs{a_n - \tilde a < \frac{\varepsilon}{2}} \Forall n\geq m_\varepsilon\]
 Dann für $n \geq \max \{n_\varepsilon, m_\varepsilon\}$:
 \[\abs{a - \tilde a} \leq \abs{a - a_n} + \abs{a_n - \tilde a} < \varepsilon\text{\lightning}\]
-\textbf{Wiederspruch} $\Rightarrow a = \tilde a$
+\textbf{Widerspruch} $\Rightarrow a = \tilde a$
 \end{proof}
 \begin{remark}
 Die Mengen Abständen heißen *vollständig*, wenn jede Cauchy-Folge in $M$ konvergiert
@@ -1008,7 +1008,7 @@ $\Rightarrow CA$ offen $\Rightarrow A$ abgeschlossen \\
 $(\Rightarrow)$: \\
 Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das heißt $x \in CA$, so gilt
 \[\exists \varepsilon > 0: I_\varepsilon \subseteq CA \Rightarrow I_\varepsilon (x) \cap A = \emptyset \text{lightning}\]
-\textbf{Wiederspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
+\textbf{Widerspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
 \end{proof}
 \begin{lemma}[2.14]
 \label{lemma:monoton_in_r}

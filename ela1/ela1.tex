@@ -1,4 +1,4 @@
-% Created 2016-11-23 Mi 00:17
+% Created 2016-11-23 Mi 00:19
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -258,7 +258,7 @@ Wir wollen zeigen, dass $A\Rightarrow B$ für alle natürlichen Zahlen $m,n$ wah
     $\exists x:~A(x)$ ist gleichbedeutend mit "Es existiert ein x, für das $A(x)$ wahr ist" (hierbei ist "existiert ein x" im Sinne von "existiert mindestens ein x" zu verstehen) \\
     Beispiel:
 \[\exists n\in\mathbb{N}:~n>5\quad\text{(w)}\]
-$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist" 
+$\exists !x:~A(x)$ ist gleichbedeutend mit "Es existiert genau ein x, für dass $A(x)$ wahr ist"
 \subsubsection{Allquantor}
 \label{sec-2-3-2}
 $\Forall x:~A(x)$ ist gleichbedeutend mit "Für alle x ist A(x) wahr"
@@ -775,7 +775,7 @@ Statt 1. $\Leftrightarrow$ 2. und 2. $\Leftrightarrow$ 3. zeigen 1. $\Rightarrow
 \item 2. $\Rightarrow$ 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
         zz: Ex existert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
 \begin{itemize}
-\item Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\ 
+\item Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\
 		  bestimmte Element $m\in M$ mit $f(m) = n$}\) \\
 Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~text{das heißt}~ g\circ f = id_M\]
 und für $n\in N$ ist $(f\circ g)(n) = f(g(n)) = n$ also $f\circ g = id_N$
@@ -1175,10 +1175,12 @@ Ein Ring heißt \textbf{kommutativ} $\xLeftrightarrow{\text{Def}}$ die Multiplik
 \label{sec-3-2-1}
 \begin{itemize}
 \item ohne Klammerung gilt die Konvention "$\cdot$" vor "$+$", "$\cdot$" wird häufig weggelassen
-\item das neutrale Element bezüglich "$+$" bezeichnen wri mit $0_R$ (Nullelement), das neutrale Element bezüglich "$\cdot$" mit $1_R$ (Einselement). Das zu $a\in R$ bezüglich "$+$" inverse Element bezeichnen wir mit $-a$,
+\item das neutrale Element bezüglich "$+$" bezeichnen wir mit $0_R$ (Nullelement), das neutrale Element bezüglich "$\cdot$" mit $1_R$ (Einselement).
+Das zu $a\in R$ bezüglich "$+$" inverse Element bezeichnen wir mit $-a$,
 für $a + (-b)$ schreben wir $a - b$. Existiert zu $a\in R$ ein Inverses bezüglich "$\cdot$", so bezeichnen wir diesses mit $a^{-1}$
 \item Wir schreiben häufig verkürzend "$R$ Ring" statt "$(R,+,\cdot)$ Ring"
-\item In der Literatur wird gelegentlich die Forderung der Existenz eines neutralen Elements bezüglich "$\cdot$" weggelassen, "unser" Ringbegriff entspricht dort dem Begriff "Ring mit Eins"
+\item In der Literatur wird gelegentlich die Forderung der Existenz eines neutralen Elements bezüglich "$\cdot$" weggelassen, "unser" Ringbegriff
+entspricht dort dem Begriff "Ring mit Eins"
 \end{itemize}
 \subsubsection{Beispiel}
 \label{sec-3-2-2}
