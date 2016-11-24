@@ -1,4 +1,4 @@
-% Created 2016-11-24 Do 16:27
+% Created 2016-11-24 Do 18:33
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1304,8 +1304,8 @@ Eine Reihe \[\sum_{k = 1}^\infty a_k\] (\textbf{unendliche Summe}) konvergiert, 
 \end{ex}
 \begin{proof}[Beweis von 4.]
 \begin{align*}
-S_{2^{n + 1}} = \sum_{k = 1}^{2^{n + 1}} \frac{1}{k} = 1 + \frac{1}{2} + \sum_{j = 0}^n \sum_{k = 2^j + 1}^{2^{j + 1}} \frac{1}{k} \geq 1 + \frac{1}{2} + \sum_{j = 0}^{n}\underbrace{\sum_{k = 2^j +1}^{2^{j + 1}}}_{\mathclap{2^j~\text{Summanden}}} \frac{1}{2^{j + 1}} \\
-= 1+ \frac{1}{2} + \sum_{j = 1}^n 2^{j} \frac{1}{2^{j + 1}} = 1 + \frac{1}{2} + \sum_{j = 1}^{n} \frac{1}{2} = 1 + \frac{1}{n} + \frac{1}{2}n \xrightarrow{n\to\infty} \infty
+S_{2^{n + 1}} = \sum_{k = 1}^{2^{n + 1}} \frac{1}{k} = 1 + \frac{1}{2} + \sum_{j = 1}^n \sum_{k = 2^j + 1}^{2^{j + 1}} \frac{1}{k} \geq 1 + \frac{1}{2} + \sum_{j = 1}^{n}\underbrace{\sum_{k = 2^j +1}^{2^{j + 1}}}_{\mathclap{2^j~\text{Summanden}}} \frac{1}{2^{j + 1}} \\
+= 1+ \frac{1}{2} + \sum_{j = 1}^n 2^{j} \frac{1}{2^{j + 1}} = 1 + \frac{1}{2} + \sum_{j = 1}^{n} \frac{1}{2} = 1 + \frac{1}{2} + \frac{1}{2}n \xrightarrow{n\to\infty} \infty
 \end{align*}
 \end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)

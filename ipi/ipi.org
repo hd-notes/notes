@@ -940,5 +940,5 @@
 	   #+END_SRC
 	 - Elemente mischen:
 	   #+BEGIN_SRC cpp
-	   std::random_shuffle(v.begin(), v.end()); "in-place" mischen
+	   std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 	   #+END_SRC

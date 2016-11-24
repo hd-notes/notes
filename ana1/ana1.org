@@ -1003,7 +1003,7 @@
    #+ATTR_LATEX: :options [Beweis von 4.]
    #+begin_proof latex
    \begin{align*}
-   S_{2^{n + 1}} = \sum_{k = 1}^{2^{n + 1}} \frac{1}{k} = 1 + \frac{1}{2} + \sum_{j = 0}^n \sum_{k = 2^j + 1}^{2^{j + 1}} \frac{1}{k} \geq 1 + \frac{1}{2} + \sum_{j = 0}^{n}\underbrace{\sum_{k = 2^j +1}^{2^{j + 1}}}_{\mathclap{2^j~\text{Summanden}}} \frac{1}{2^{j + 1}} \\
-   = 1+ \frac{1}{2} + \sum_{j = 1}^n 2^{j} \frac{1}{2^{j + 1}} = 1 + \frac{1}{2} + \sum_{j = 1}^{n} \frac{1}{2} = 1 + \frac{1}{n} + \frac{1}{2}n \xrightarrow{n\to\infty} \infty
+   S_{2^{n + 1}} = \sum_{k = 1}^{2^{n + 1}} \frac{1}{k} = 1 + \frac{1}{2} + \sum_{j = 1}^n \sum_{k = 2^j + 1}^{2^{j + 1}} \frac{1}{k} \geq 1 + \frac{1}{2} + \sum_{j = 1}^{n}\underbrace{\sum_{k = 2^j +1}^{2^{j + 1}}}_{\mathclap{2^j~\text{Summanden}}} \frac{1}{2^{j + 1}} \\
+   = 1+ \frac{1}{2} + \sum_{j = 1}^n 2^{j} \frac{1}{2^{j + 1}} = 1 + \frac{1}{2} + \sum_{j = 1}^{n} \frac{1}{2} = 1 + \frac{1}{2} + \frac{1}{2}n \xrightarrow{n\to\infty} \infty
    \end{align*}
    #+end_proof
