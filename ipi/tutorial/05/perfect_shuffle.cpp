@@ -1,6 +1,7 @@
 /*
   Copyright (C) 2016 by Robin Heinemann. All Rights Reserved.
   perfect_shuffle.cpp -- Implementation of perfect suffle
+  Uses c++14
 */
 
 #include "common.h"

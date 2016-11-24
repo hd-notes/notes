@@ -1,6 +1,7 @@
 /*
   Copyright (C) 2016 by Robin Heinemann. All Rights Reserved.
   ordered_insert.cpp -- Insert ints read from cmdline ordered into a vector
+  Uses c++14
 */
 
 #include "common.h"
