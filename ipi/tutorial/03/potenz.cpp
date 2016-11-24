@@ -7,7 +7,6 @@
 
 constexpr inline auto sq(f64 x) noexcept -> f64 { return x * x; }
 
-
 /*
   Es wäre unsinnvoll nicht sq zu verwenden, wenn man nicht das
   Zwischenergebnis von power(x, i / 2) abspeichert, denn dann würde

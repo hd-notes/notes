@@ -896,3 +896,114 @@
 	  - $\Rightarrow (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogennante Zahl $\euler$
    6. $(a_n)_{n\in\mathbb{N}}$ rekursiev definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
    #+end_ex
+** Umgebung
+   #+ATTR_LATEX: :options [2.19]
+   #+begin_defn latex
+   $A\subseteq \mathbb{K}$ heißt Umgebung von $a\in\mathbb{K} \Leftrightarrow \Exists \varepsilon > 0 I_\varepsilon (a) \subseteq A$
+   #+end_defn
+   #+ATTR_LATEX: :options [2.20]
+   #+begin_conc latex
+   Aus der Definition folgt
+   1. Sei $U_i, i\in I$ Umgebung von $a$, so ist $\bigcup\limits_{i\in I}  U_i$ Umgebung von $a$
+   2. Sind $U_1,\ldots, U_n$ Umgebung von $a$, so ist auch $U_1 \cap \ldots U_n$ Umgebung von $a$
+   3. $\Forall$ Umgebung von $a: \Exists$ Umgebung von $a$, sodass $\Forall y\in V, U$ Umgebung von $y$ ist
+   #+end_conc
+   #+begin_proof latex
+   1. Für irgendein \[i_0 \in I \Exists \varepsilon > 0: I_\varepsilon (a) \subseteq U_{i_0} \subseteq \bigcup_{i \in I} U_i\]
+   2. Es gilt nach Voraussetzung $\varepsilon_1, \ldots \varepsilon_n > 0$ mit $I_{\varepsilon_i}(a) \subseteq U_i$ für $i = 1,\ldots,n$. Folglich gilt für $\varepsilon:= \min \{\varepsilon_1, \ldots, \varepsilon_n\} > 0,~I_\varepsilon(a) \subseteq U_i (\Forall i = 1,\ldots,n) \Rightarrow I_\varepsilon (a) \subseteq U_1 \cap \ldots U_n$
+   3. Nach Vorraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\varepsilon > 0$ mit $I_\varepsilon(a) \subseteq U$ \\
+	  $V:= I_{\frac{\varepsilon}{2}}(a) \subseteq U$ ist ebenfalls Umgebung von $a$ und $\Forall y\in V$ gilt
+	  \[I_{\frac{\varepsilon}{2}} \subseteq I_\varepsilon(x) \subseteq U,~\text{denn}~ \underbrace{\abs{y - z}}_{z\in I_{\frac{\varepsilon}{2}}} < \frac{\varepsilon}{2} \Rightarrow \abs{x - z} \leq \abs{x - y} + \abs{x - z} < \varepsilon\]
+   #+end_proof
+   #+ATTR_LATEX: :options [2.21]
+   #+begin_defn latex
+   \mbox{}
+   1. $A\subseteq \mathbb{K}$ ist offen $\Leftrightarrow \Forall a\in A$ ist $A$ die Umgebung von $a$ \\
+	  (in $\mathbb{R}\Forall a\in A \Exists \varepsilon > 0 I_\varepsilon (a) \subseteq A$)
+	  Für Intervalle $(a,b)$ haben wir schon gezeigt, dass sie offen sind
+   2. $A\subseteq \mathbb{K}$ heißt abgeschlossen $\Leftrightarrow C_\mathbb{K} A$ offen
+   3. Abschließung von $A$: \[\bar A := \{a \in \mathbb{K} \mid a \in A \vee a ~\text{Häufungspunk von}~A\}\]
+   4. Rand von $A$: \[\partial A:= \{a\in\mathbb{K}\mid \Forall ~\text{Umgebung $U$ von $a$}: A \cap U \neq \emptyset \wedge CA \cap U \neq \emptyset\}\]
+   #+end_defn
+   #+ATTR_LATEX: :options [2.22]
+   #+begin_ex latex
+   \begin{align*}
+   A&= (a,b\right] \\
+   \bar A &= [a,b] \\
+   \partial A &= \{ a,b \} \\
+   \Forall \varepsilon > 0 I_\varepsilon(a) \cap (a,b\right] \neq \emptyset \\
+   I_\varepsilon (a) \cap \mathbb{R} \setminus (a,b\right] \neq \emptyset
+   \end{align*}
+   Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\varepsilon-$Intervall um eine rationale Zahl gilbt es sowohl rationale als auch irrationale Zahlen
+   #+end_ex
+   #+begin_remark latex
+   \mbox{}
+   - Die Grenzwerte und Häufungswerte kann man auch in ganz \[\mathbb{R} \cup \{\infty\} \cup \{\infty\} =: \hat{\mathbb{R}}\]
+	 mit einer neuen Definition von Abstand: \[(x,y) := \abs{\xi(x) - \abs{\xi(y)}}\]
+	 \[\xi(x) := \begin{cases} \frac{\abs{x}}{1 + \abs{x}} & x\in\mathbb{R} \\ \pm 1 & x = \pm \infty \end{cases}\]
+   - $\hat{\mathbb{R}}$ ist folgenkompakt
+   - Algebraische Operationen in $\hat{\mathbb{R}}$
+	 \begin{align*}
+	 x + \infty &:= \infty + x := \infty \Forall x \in \mathbb{R} \cup \{\infty\} \\
+	 x - \infty &:= -\infty + x := -\infty \Forall x \in \mathbb{R} \cup \{-\infty\} \\
+	 x\cdot\infty &:= \infty \cdot x := \begin{cases} \infty & \Forall x\in\hat{\mathbb{R}}, x > 0 \\ -\infty & \Forall x\in\hat{\mathbb{R}},x < 0\end{cases} \\
+	 \frac{1}{\infty} = \frac{1}{-\infty} =: 0 \\
+	 \intertext{Sinnlos wäre:}
+	 \infty - \infty, 0\cdot \infty, 0\cdot (-\infty), \frac{\infty}{\infty}, \ldots
+	 \end{align*}
+   - Damit könne wir die Rechenregeln auch für Folgen in $\hat{\mathbb{R}}$ formulieren
+   - In $\hat{\mathbb{R}}$ hat jede Folge einen Häufungswert
+   #+end_remark
+   #+ATTR_LATEX: :options [2.23]
+   #+begin_defn latex
+   \label{defn:223}
+   Sei $(a_n)_{n\in\mathbb{N}}$ ein Folge von reellen Zahlen, $\emptyset \neq H\subseteq \hat{\mathbb{R}}$ die Menge der Häufungswerte von $(a_n)$ in $\hat{\mathbb{R}}$. \\
+   Dann sei:
+   \begin{align*}
+   \overline{\lim} a_n := \lim_{n\to\infty} \inf a_n := \inf H \tag{Limes inferior} \\
+   \underline{\lim} a_n := \lim_{n\to\infty} \sup a_n := \inf H \tag{Limes superior}
+   \end{align*}
+   #+end_defn
+   #+begin_remark latex
+   \mbox{}
+   1. Definition \ref{defn:223} kann man auch für $\mathbb{R}$ formulieren
+   2. \[a = \lim_{n\to\infty} \inf a_n \Leftrightarrow \Forall \varepsilon \begin{cases} \string(1\string) \{n \mid \abs{a - a_n} < \varepsilon\} ~\text{ist unendlich (weil $a$ Häufungswert ist)} \\ \string(2\string) \{n \mid a_n < a - \varepsilon\} ~\text{ist endlich ($a$ ist kleinste Häufungswert)}\end{cases}\]
+   #+end_remark
+   #+ATTR_LATEX: :options [2.24]
+   #+begin_ex latex
+   \begin{align*}
+   a_n = n + (-1)^n n \\
+   a_{2n + 1} = 0 \Forall n \Rightarrow 0 ~\text{ist Häufungswert} \\
+   a_{2n} = 4n \to \infty \Rightarrow \infty~\text{ist Häufungswert}
+   \intertext{also gilt}
+   \lim_{n\to\infty} \inf a_n = 0 \\
+   \lim_{n\to\infty} \sup a_n = \infty \\
+   \end{align*}
+   #+end_ex
+   #+begin_remark latex
+   \mbox{}
+   - $a_n \to a$ in $\displaystyle \hat{\mathbb{R}} \Leftrightarrow \lim_{n\to\infty} \inf a_n = a = \lim_{n\to\infty}\sup a_n$
+   - $\displaystyle \lim_{n\to\infty} \inf a_n + \lim_{n\to\infty}\inf b_n \leq \lim_{n\to\infty} \inf (a_n + b_n)$
+   - $\displaystyle \lim_{n\to\infty} \inf a_n \cdot \lim_{n\to\infty}\inf b_n \leq \lim_{n\to\infty} \inf (a_n \cdot b_n)$ für $a_n,b_n > 0$
+   - $\displaystyle \lim_{n\to\infty} \sup a_n + \lim_{n\to\infty}\sup b_n \geq \lim_{n\to\infty} (a_n + b_n)$ (zum Beispiel betrachte $a_n = n^2, b_n = \frac{1}{n}$)
+   #+end_remark
+** Undendliche Summen (Reigen)
+   #+ATTR_LATEX: :options [2.19]
+   #+begin_defn latex
+   Eine Reihe \[\sum_{k = 1}^\infty a_k\] (*unendliche Summe*) konvergiert, wenn die Folge ihrer *Partialsummen* konvergiert
+   \[s_n = \sum_{k = 1}^n\xrightarrow{n\to\infty} S_\infty < \infty\]
+   #+end_defn
+   #+begin_ex latex
+   \mbox{}
+   1. $\displaystyle \sum_{k = 1}^n k = \frac{n(n + 1)}{n}\xrightarrow{n\to\infty} \infty$
+   2. $\displaystyle S_n = \sum_{k = 1}^n (-1)^k = \begin{cases} -1 & n~\text{ungerade} \\ 0 & n~\text{gerade}\end{cases}$ S_n ($= -1, 0, -1, 0,\ldots$) konvergiert nicht
+   3. $\displaystyle S_n = \sum_{j = 0}^n z^j = \frac{1 - z^{n + 1}}{1 - z}$ Für $\abs{z} < 1$ konvergiert $\displaystyle S_n \to \frac{1}{1 - z} \Rightarrow \sum_{j = 0}^\infty z^j = \frac{1}{1 - z}$
+   4. Harmonische Reihe: Seien $\displaystyle S_n = \sum_{k = 1}^n \frac{1}{k}$, Behauptung $\displaystyle \lim_{n\to\infty} S_n = \infty$, also divergent
+   #+end_ex
+   #+ATTR_LATEX: :options [Beweis von 4.]
+   #+begin_proof latex
+   \begin{align*}
+   S_{2^{n + 1}} = \sum_{k = 1}^{2^{n + 1}} \frac{1}{k} = 1 + \frac{1}{2} + \sum_{j = 0}^n \sum_{k = 2^j + 1}^{2^{j + 1}} \frac{1}{k} \geq 1 + \frac{1}{2} + \sum_{j = 0}^{n}\underbrace{\sum_{k = 2^j +1}^{2^{j + 1}}}_{\mathclap{2^j~\text{Summanden}}} \frac{1}{2^{j + 1}} \\
+   = 1+ \frac{1}{2} + \sum_{j = 1}^n 2^{j} \frac{1}{2^{j + 1}} = 1 + \frac{1}{2} + \sum_{j = 1}^{n} \frac{1}{2} = 1 + \frac{1}{n} + \frac{1}{2}n \xrightarrow{n\to\infty} \infty
+   \end{align*}
+   #+end_proof

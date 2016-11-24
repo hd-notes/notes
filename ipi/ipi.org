@@ -794,3 +794,151 @@
 	   int n = foo(g); // lokales q wird zum lokalen p von foo() 15 = 5 * 3
    }
    #+END_SRC
+* Referenzen
+  sind neue (zusätzliche) Namen für vorhandene Speicherzellen
+   #+BEGIN_SRC cpp
+   int x = 3; // neue Variable x mit neuer Speicherzell
+   int & y = x; // Referenz: y ist neuer Name für x, beide haben die selbe Speicherzelle
+   y = 4; // Zuweisung an y, aber x ändert sich auch, das heißt x == 4
+   x = 5; // jetzt y == 5
+   int const & z = x; // read-only Referenz, das heißt z = 6 ist verboten
+   x = 6; // jetzt auch z == 6
+   #+END_SRC
+  Hauptanwendung:
+  - die Umgebung, wo eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
+  - häuftig möchte man Speicherzellen in beidel Umgebungen teilen \Rightarrow verwende Referenzen
+  - häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
+	- Durch pass-by-reference brauch man keine Kopie \Rightarrow typisch "const &", also read-only, keine Seiteneffekte
+	 #+BEGIN_SRC cpp
+	 int foo(int x) { // pass-by-value
+		 x += 3;
+		 return x;
+	 }
+
+	 int var(int & y) { // pass-by-reference
+		 y += 3; // Seiteneffekt der Funktion
+		 return y;
+	 }
+
+	 void baz(int & z) { // pass-by-reference
+		 z += 3;
+	 }
+
+	 int main() {
+		 int a = 3;
+		 std::cout << foo(a) << std::endl; // 5
+		 std::cout << a << std::endl; // 2
+		 std::cout << bar(a) << std::endl; // 5
+		 std::cout << a << std::endl; // 5
+		 baz(a);
+		 std::cout << a << std::endl; // 8
+	 }
+	 #+END_SRC
+	 in der funktionalen Programmierungt sind Seiteneffekte grundsätzlich verboten, mit Ausnahmen, zum Beispiel für Ein-/Ausgabe
+* Container-Datentypen
+  Dienen dazu, andere Daten aufzubewahren
+  - Art der Elemente:
+	- homogene Container: alle Elemente haben gleichen Type (typisch für c++)
+	- heterogene Container: Elemente könne verschiedene Typen haben (z.B. Python)
+  - nach Größen
+	- statische Container: feste Größe, zur Compilezeit bekannt
+	- dynamische Container: Größe zur Laufzeit veränderbar
+  - Arrays sind die wichtigsten Container, weil effizient auf Hardware abgebildet und einfach zu benutzen
+	- klassisch: Arrays sind statisch, zum Beispiel C-Arrays (hat c++ geerbt)
+	 #+BEGIN_SRC cpp
+	 int a[20];
+	 #+END_SRC
+	- modern: dynamische Arrays
+	  - Entdeckung einer effizienten Implementation
+	  - Kapselung durch objekt-orientierte Programmierung (sonst zu kompliziert)
+  - wir kennen bereits ein dynamisches Array: std::string ist Abbildung int (Index) \rightarrow char (Zeichen), mit $0 \leq~\text{index}~ < ~\text{s.size()}$
+	- wichtigste Funktion: s.size() (weil Größe dynamisch), s[4 ] Indexzugriff, s+="mehr" Zeichen anhängen
+  - wir wollen das selbe Verhalten für beliebige Elementtypen:
+	 #+BEGIN_SRC cpp
+	 #include <vector>
+
+	 //          Elementtyp    Größe  Initialwert der Elemente
+	 std::vector<double    > v(20   ,           0.0           );
+	 // analog
+	 std::vector<int>;
+	 std::vector<std::string>;
+	 #+END_SRC
+  - weitere Verallgemeinerung: Indextyp beliebig (man sagt dann "Schlüssel-Typ") "assoziatives Array"
+	- typische Fälle:
+	  - Index ist nicht im Bereich (0,size], zum Beispiel Matrikelnummern
+	  - Index ist string, zum Beispiel Name eines Studenten
+		#+BEGIN_SRC cpp
+		#include <map>
+		#include <unordered_map>
+
+		// Binärer Suchbaum
+		std::map;
+
+		// Hashtabelle, siehe Algorithmen und Datenstrukturen
+		std::unordered_map;
+
+		//       Schlüsseltyp  Elementtyp
+		std::map<int         , double> noten; noten[3121101] = 10;
+		std::map<std::string, double> noten; noten["krause"] = 10;
+		#+END_SRC
+	  - Indexoperationen wie beim Array
+	  - Elemente werden beim 1. Zugriff automatisch erzeugt (dynamisch)
+  - alle dynamischen und assoziativen Arrays unterstützen a.size() zum Abfragen der Grlße
+** std::vector
+   - Erzeugen:
+	 #+BEGIN_SRC cpp
+	 std::vector<double> v(20, 1.0);
+	 std::vector<double> v; // leeres Array
+	 std::vector<double> v = {1.0, -3.0, 2.2}; // "initializer list": Element für Anfangszustand
+	 #+END_SRC
+   - Größe:
+	 #+BEGIN_SRC cpp
+	 v.size();
+	 v.empty(); // => v.size() == 0
+	 #+END_SRC
+   - Größe ändern
+	 #+BEGIN_SRC cpp
+	 v.resize(neue_groesse, initialwert);
+	 // Dann:
+	 // Fall 1: neue_groesse < size(): Element ab Index "neue_groesse" gelöscht die andern bleiben
+	 // Fall 2: neue_groesse > size(): neue Elemente mit Initialwert am Ende anhängen, die anderen bleiben
+	 // Fall 3: neue_groesse == size(): nichts passiert
+
+	 v.push_back(neues_element); // ein neues Element am Ende anhängen (ähnlich string += "mehr")
+	 v.insert(v.begin() + index, neues_element); // neues element an Position "index" einfügen 0 <= index <= size()
+	 // Falls index == size(): am Ende anhängen, sonst: alte Elemente ab Index werden eine Position nach hinten verschoben (teuer)
+
+	 v.pop_back(); // letzes Element löschen (effizient)
+	 v.erase(v.begin() + index); // Element an Pos index löschen, alles dahinter eine Position verschieben (teuer)
+	 v.clear(); // alles löschen
+	 #+END_SRC
+   - Zugriff
+	 #+BEGIN_SRC cpp
+	 v[k]; // Element bei Index k
+	 v.at(k); // wie v[k], aber Fehlermeldung, wenn nicht 0 <= k < size() (zum Debuggen)
+	 #+END_SRC
+   - Funktionen für Container benutzen in c++ immer Iteratoren, damit sie für verschiedene Container funktionieren
+	 - Iterator-Range
+	   #+BEGIN_SRC cpp
+	   // erstes Element
+	   v.begin()
+
+	   // hinter letztem Element
+	   v.end()
+	   #+END_SRC
+	 - im Header <algorithm>
+	 - alle Elemente kopieren
+	   #+BEGIN_SRC cpp
+	   std::vector<double> source = {1.0, 2, 3, 4, 5};
+	   std::vector<double> target(source.size(), 0.0);
+	   std::copy(source.begin(), source.end(), target.begin());
+	   std::copy(source.begin() + 2, source.end() - 1, target.begin()); // nur index 2 .. size() - 1 kopieren
+	   #+END_SRC
+	 - Elemente sortieren
+	   #+BEGIN_SRC cpp
+	   std::sort(v.begin(), v.end()); // "in-place" sortieren
+	   #+END_SRC
+	 - Elemente mischen:
+	   #+BEGIN_SRC cpp
+	   std::random_shuffle(v.begin(), v.end()); "in-place" mischen
+	   #+END_SRC

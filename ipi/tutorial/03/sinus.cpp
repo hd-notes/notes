@@ -8,10 +8,9 @@
 constexpr f64 pi = 3.14159265358979323;
 
 namespace ipi {
-	// Extrem schlechte implementation von tquot, aber für die Aufgabe ausreichend
-	const inline auto tquot(const f64 x) noexcept -> f64 {
-		return (i32) x;
-	}
+	// Extrem schlechte implementation von tquot, aber für die Aufgabe
+	// ausreichend
+	const inline auto tquot(const f64 x) noexcept -> f64 { return (i32)x; }
 
 	const inline auto fmod(const f64 a, const f64 b) -> f64 {
 		return a - b * tquot(a / b);
@@ -26,7 +25,7 @@ namespace ipi {
 	}
 
 	const inline auto pump_sin(const f64 s_) noexcept -> f64 {
-		f64 s = ipi::fmod(pi + s_, 2.0*pi) - pi;
+		f64 s = ipi::fmod(pi + s_, 2.0 * pi) - pi;
 		return 3 * s - 4 * s * s * s;
 	}
 
@@ -96,18 +95,20 @@ Tabelle zur Abweichung vom verbesserten my_sin
 |           -315 |     0.707107 |      0.707107 |           6.89059e-07 |
 */
 
-int main() {
+int main(){
 	/*
 	for(auto j : {5, 10, 20, 45, 90, 135, 180, 225, 270, 315}) {
-		auto i = degrees_to_rad(j);
-		std::cout << "| " << j << " | " << std::sin(i) << " | " << my_sin(i)
-				  << " | " << std::abs(std::sin(i) - my_sin(i)) << " |"
-				  << std::endl;
-		i = degrees_to_rad(-j);
-		std::cout << "| " << -j << " | " << std::sin(i) << " | " << my_sin(i)
-				  << " | " << std::abs(std::sin(i) - my_sin(i)) << " |"
-				  << std::endl;
-	}
+			auto i = degrees_to_rad(j);
+			std::cout << "| " << j << " | " << std::sin(i) << " | " << my_sin(i)
+							  << " | " << std::abs(std::sin(i) - my_sin(i)) << "
+	|"
+							  << std::endl;
+			i = degrees_to_rad(-j);
+			std::cout << "| " << -j << " | " << std::sin(i) << " | " <<
+	my_sin(i)
+							  << " | " << std::abs(std::sin(i) - my_sin(i)) << "
+	|"
+							  << std::endl;
+    }
 	*/
-}
-*
+} *

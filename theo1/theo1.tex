@@ -1,4 +1,4 @@
-% Created 2016-11-22 Di 13:26
+% Created 2016-11-24 Do 12:43
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -56,7 +56,8 @@
 \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 }
 \renewcommand*{\proofname}{Beweis}
-\newcommand{\I}{\ensuremath{\imath}}%
+\newcommand{\I}{\ensuremath{i}}%
+\newcommand{\ubar}[1]{\underline{#1}}
 \author{Robin Heinemann}
 \date{\today}
 \title{Theoretische Physik (Hebecker)}
@@ -1057,10 +1058,80 @@ e^{\I y} &= \sum_{n = 0}^\infty \frac{(\I y)^n}{n!} = \sum_{k = 0}^\infty \frac{
 \end{align*}
 $\Rightarrow$ Eulersche Formel
 \[e^{\I \phi} = \cos{\phi} + \I \sin{\phi}\]
-\paragraph{Zusammenfassung:}
-\label{sec-5-1-3-1}
+\subsubsection{Zusammenfassung:}
+\label{sec-5-1-4}
+\[e^{\I\phi} = \cos{\phi} + \I \sin{\phi}\]
 \[w = e^z = e^x e^{\I y} = \abs{w}e^{i\arg{w}}\]
 \[\ln{w} = z = x + \I y = \ln{\abs{w}} + \I \arg{w}\]
-Problem: $\arg{w}$ und deshalb $\ln$ nicht eindeutig definiert
+Problem: $\arg{w}$ und deshalb $\ln$ nicht eindeutig definiert \\
+   Lösung: Definiere $\arg{w} \in (-\pi, \pi)$
+
+\subsubsection{Fundamentalsatz der Algebra}
+\label{sec-5-1-5}
+In $\mathbb{C}$ hat jedes Polynom
+\[P_n(z) = \sum_{i = 0}^n a_i z^i\]
+eine Nullstelle $z_0$
+
+In der Tat hat es sogar $n$ Nullstellen:
+\[P_n(z) = (z - z_0)\cdot \underbrace{P_{n - 1}(z)}_{\mathclap{\text{Hat wieder eine Nullstelle, usw.}}}\]
+
+(Man sagt: Körper $\mathbb{C}$ ist algebraisch abgeschlossen)
+\begin{itemize}
+\item Es gibt auf $\mathbb{C}$ wichtige Abbildung: "komplexe Konjugation"
+\[z \to z^\ast \estimates z\to \bar z\]
+Definiert durch:
+\[(x + \I y)^\ast = x - \I y, (\rho e^{\I \phi})^\ast = \rho e^{-\I \phi}\]
+also auch
+\[(z^\ast)^\ast = z\]
+\end{itemize}
+\subsubsection{Quaternionen}
+\label{sec-5-1-6}
+\[1,i \to 1,i,j,k, i^2 = j^2 = k^2 = -1\]
+\[ij = k, j i = -k, jk = i,\ldots\]
+\subsection{Anwendung auf harmonischen Oszillator}
+\label{sec-5-2}
+\begin{align*}
+\intertext{Erinnerung: pyhsikalisches Problem:}
+\ddot{x} + c \dot{x} + \omega^2 x = 0 \\
+\intertext{Fall $\frac{c}{2} > \omega$ (Kriechfall)}
+x=e^{\alpha t}, \alpha^2 + c\alpha + \omega^2 = 0 \\
+\alpha_{1,2} =-\frac{c}{2} \pm \sqrt{\frac{c^2}{4} - \omega^2} \\
+\intertext{$\Rightarrow$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
+\intertext{$\Rightarrow$ exponentielles Abfallverhalten, ohne Oszillationen}
+\intertext{Fall $\frac{c}{2} < \omega$ (Schwingfall), $\sqrt{-x} = \I \sqrt{x}$}
+\alpha_{1,2} = -\frac{c}{2}\pm \I\sqrt{\omega^2 - \frac{c^2}{4}} \equiv -\frac{c}{2} \pm \I \tilde\omega \\
+x_{1,2} = e^{-\frac{c}{2}t} e^{\pm \I \omega t} = e^{-\frac{c}{2}t} (\cos{\pm \tilde \omega t} + \I \sin{\pm\tilde\omega t}) \\
+x_{1,2} =  e^{-\frac{c}{2}t} (\cos{\tilde \omega t} \pm \I \sin{\tilde\omega t}) \\
+\intertext{Durch Linearkombination $\to$ 2 reelle Lösungen:}
+x_1 = e^{-\frac{c}{2}t}\cos{\tilde \omega t};\qquad x_2 = e^{-\frac{c}{2}t} \sin{\tilde\omega t}
+\intertext{$\Rightarrow$ allgemeine Lösung durch Linearkombination}
+\intertext{$\Rightarrow$ gedämpfte Schwingung}
+\intertext{Fall $\frac{c}{2} = \omega$ (aperiodischer Grenzfall)}
+\alpha_1 = \alpha_2
+\intertext{$\Rightarrow$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
+\intertext{Idee: Betrachte Schwingfall Lösungen für $\tilde \omega \to 0$}
+\intertext{Taylor:}
+\cos{x} = 1 + \O(x^2);\qquad \sin{x} = x + O(x^3) \\
+\Rightarrow x_1 = e^{-\frac{c}{2}t}; \qquad x_2 = e^{-\frac{c}{2}t} \tilde\omega t
+\intertext{$\Rightarrow$ Wieder asymptotische Annäherung an $0$ ohne Oszillation}
+\end{align*}
+\subsection{harmonischer Oszillator mit periodisch treibender Kraft}
+\label{sec-5-3}
+\begin{align*}
+\intertext{Inhomogene Dgl:}
+\ddot{x} + c \dot{x} + \omega^2 x = \frac{1}{m} F(t), F(t) = f e^{\I \ubar\omega t}  \\
+\intertext{Ansatz:}
+x(t) = A e^{\I \ubar \omega t} \\
+\Rightarrow (A (-\ubar\omega^2 + \I c \ubar\omega + \omega^2) - \frac{f}{m}) e^{\I \omega t = 0} \\
+A \equiv \abs{A}e^{\I \phi} = \frac{f}{m}\cdot\frac{1}{\omega^2 - \ubar\omega^2 + \I c \ubar \omega} \\
+\intertext{mit}
+\frac{1}{a + \I b} = \frac{a - \I b}{a - \I b} \frac{1}{a + \I b} = \frac{a - \I b}{a^2 - b^2} \\
+\intertext{und elementarer Algebra findet man den Realteil der Lösung:}
+\Re x(t) = \abs{A} \cos{\ubar \omega t + \phi} \\
+\abs{A} = \frac{\frac{f}{m}}{\sqrt{\omega^2 - \ubar \omega^2} + c^2 \ubar\omega^2}, \tan{\phi} = \frac{c\ubar\omega}{\ubar\omega^2 - \omega^2}
+\end{align*}
+Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der inhomogenen Gleichung die allgemeine Lösung der homogenen Gleichung addiert.
+
+Wichtig: Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\Rightarrow$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

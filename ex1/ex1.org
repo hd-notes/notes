@@ -627,3 +627,13 @@ mark=at position 0.5 with
 	- Gravitationsfeld: \[\v G = -G \frac{M}{r^2}\v e_r\]
 	- \[\v G = -\grad \Phi\]
 	- \[E_{pot} = m\Phi\]
+* Erhaltungssätze
+  \begin{align*}
+  \intertext{falls $\v F_{außen} =0}
+  \sum \v p_i &= \sum \v p'_i = \text{const}
+  \sum E_{kin,i} &= \sum E'_{kin,i} + Q
+  Q &= 0 \tag*{elastisch}
+  Q &> 0 \tag*{inelastisch}
+  Q &x 0 \tag*{superelastisch}
+  \end{align*}
+* Mechanik des starren Körper
