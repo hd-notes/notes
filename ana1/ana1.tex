@@ -1,4 +1,4 @@
-% Created 2016-11-24 Do 18:33
+% Created 2016-11-25 Fr 12:10
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -41,6 +41,7 @@
 \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
 \makeatother
 \newcommand{\I}{\ensuremath{\imath}}%
+\newcommand{\eps}{\ensuremath{\varepsilon}}%
 \usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
@@ -526,7 +527,7 @@ Ebeso gilt: $\exists\min B = \ubar{b} \Rightarrow \inf B = \ubar{b}$
 \end{enumerate}
 \subsection{Reelle Zahlen}
 \label{sec-2-9}
-$x^2 = 2$ hat keine Lösungen in $\mathbb{Q}$. Allerdings können wir $\sqrt{2}$ "beliebig gut" durch $y\in \mathbb{Q}$ approximieren, das heißt $\Forall \varepsilon > 0\exists y\in\mathbb{Q}:2 - \varepsilon \leq y^2 \leq 2 + \varepsilon$
+$x^2 = 2$ hat keine Lösungen in $\mathbb{Q}$. Allerdings können wir $\sqrt{2}$ "beliebig gut" durch $y\in \mathbb{Q}$ approximieren, das heißt $\Forall \eps > 0\exists y\in\mathbb{Q}:2 - \eps \leq y^2 \leq 2 + \eps$
 Das motiviert die folgende Vorstellung:
 \begin{enumerate}
 \item $\mathbb{Q}$ ist "unvollständig"
@@ -591,12 +592,12 @@ Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalente
 \abs{y} &= \abs{y - x + x} \leq \abs{y - x} + \abs{x} \Rightarrow \abs{y} - \abs{x} \leq \abs{x - y} \\
 \abs{\abs{x} - \abs{y}} &= \max \{\abs{x} - \abs{y},\abs{y} - \abs{x}\} \leq \abs{x - y} \tag*{$\square$}
 \end{align}
-\item \[\abs{x - y} \leq \varepsilon \Leftrightarrow \begin{cases} x - \varepsilon \leq y \leq x + \varepsilon \\ y - \varepsilon \leq x \leq y + \varepsilon \end{cases}\]
+\item \[\abs{x - y} \leq \eps \Leftrightarrow \begin{cases} x - \eps \leq y \leq x + \eps \\ y - \eps \leq x \leq y + \eps \end{cases}\]
        \textbf{Beweis:} \\
 \begin{align}
-\abs{x - y} = \max\{x - y , y - x\} \leq \varepsilon \Leftrightarrow \begin{cases} x - y \leq \varepsilon \\ y - x \leq \varepsilon\end{cases} \Leftrightarrow \begin{cases} x \leq y + \varepsilon \\ y - x \leq \varepsilon \end{cases} \Leftrightarrow y - \varepsilon \leq x \leq y + \varepsilon
+\abs{x - y} = \max\{x - y , y - x\} \leq \eps \Leftrightarrow \begin{cases} x - y \leq \eps \\ y - x \leq \eps\end{cases} \Leftrightarrow \begin{cases} x \leq y + \eps \\ y - x \leq \eps \end{cases} \Leftrightarrow y - \eps \leq x \leq y + \eps
 \end{align}
-Vertausche $x$ und $y$ $\Rightarrow$ $x - \varepsilon \leq x + \varepsilon \hfill \square$
+Vertausche $x$ und $y$ $\Rightarrow$ $x - \eps \leq x + \eps \hfill \square$
 \end{enumerate}
 \subsubsection{Definition 1.40}
 \label{sec-2-9-8}
@@ -606,20 +607,20 @@ Sei $a,b\in\mathbb{R},a\leq b$
 \item $(a,b):= \{x\in\mathbb{R}: a < x < b\} = ]a,b[$ \hfill offenes Intervall
 \item $\left[a,b) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
 \item $(a,b\right]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
-\item $\varepsilon > 0, I_\varepsilon (x) := (x -\varepsilon,x + \varepsilon) = \{y\in\mathbb{R}:\abs{x - y} < \varepsilon = B_\varepsilon (x) (\text{Kugel})\}$
+\item $\eps > 0, I_\eps (x) := (x -\eps,x + \eps) = \{y\in\mathbb{R}:\abs{x - y} < \eps = B_\eps (x) (\text{Kugel})\}$
 \end{itemize}
 \subsubsection{Lemma 1.41}
 \label{sec-2-9-9}
-Es gilt $y\in I_\varepsilon (x) \Rightarrow \exists \delta > 0: I_\delta (y) \subseteq I_\varepsilon (x)$
+Es gilt $y\in I_\eps (x) \Rightarrow \exists \delta > 0: I_\delta (y) \subseteq I_\eps (x)$
 \paragraph{Beweis}
 \label{sec-2-9-9-1}
-Sei $y\in I_\varepsilon (x) \Rightarrow \abs{x - y}  < \varepsilon \Leftrightarrow \varepsilon - \abs{x - y} > 0$
-Wähle $0 < \delta < \varepsilon - \abs{x - y}$. Es ist nun zu zeigen $I_\delta (y) \subseteq I_\varepsilon (x)$, das heißt
-$z\in I_\delta(y) \Rightarrow z\in I_\varepsilon(x)$. Es gilt
+Sei $y\in I_\eps (x) \Rightarrow \abs{x - y}  < \eps \Leftrightarrow \eps - \abs{x - y} > 0$
+Wähle $0 < \delta < \eps - \abs{x - y}$. Es ist nun zu zeigen $I_\delta (y) \subseteq I_\eps (x)$, das heißt
+$z\in I_\delta(y) \Rightarrow z\in I_\eps(x)$. Es gilt
 \begin{align}
 &z\in I_\delta (y) \Rightarrow \abs{z - y}  <\delta \\
-\Rightarrow &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \varepsilon \\
-\Rightarrow &z\in I_\varepsilon (x) \tag*{$\square$}
+\Rightarrow &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \eps \\
+\Rightarrow &z\in I_\eps (x) \tag*{$\square$}
 \end{align}
 \subsubsection{Definition 1.42}
 \label{sec-2-9-10}
@@ -702,20 +703,20 @@ Setze in Binomische Formel $x = 1, y = 1$ beziehungsweise $y = -1 \hfill\square$
 Sei $m\in R$ nach oben (beziehungsweise nach unten) beschränkt \\
     Dann gilt
 \begin{enumerate}
-\item $s = \sup M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: s - \varepsilon < x (\geq s)$
-\item $l=\inf M \Leftrightarrow \Forall \varepsilon > 0 \exists x\in M: (l \leq) x < l + \varepsilon$
+\item $s = \sup M \Leftrightarrow \Forall \eps > 0 \exists x\in M: s - \eps < x (\geq s)$
+\item $l=\inf M \Leftrightarrow \Forall \eps > 0 \exists x\in M: (l \leq) x < l + \eps$
 \end{enumerate}
 \paragraph{Beweis}
 \label{sec-2-9-18-1}
 Wir beweisen 1. \\
-     $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \varepsilon$ von $M$ $\Leftrightarrow$
-nicht $\Forall \varepsilon > 0\exists x\in M: x > s - \varepsilon \hfill \square$
+     $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \eps$ von $M$ $\Leftrightarrow$
+nicht $\Forall \eps > 0\exists x\in M: x > s - \eps \hfill \square$
 \subsubsection{Lemma 1.52}
 \label{sec-2-9-19}
 $\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
 \paragraph{Beweis}
 \label{sec-2-9-19-1}
-sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \varepsilon= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
+sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \eps= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
 $\Rightarrow$ $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
 \subsubsection{Lemma 1.53 (Bernoullische Ungleichung)}
 \label{sec-2-9-20}
@@ -737,7 +738,7 @@ n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
 \label{sec-2-9-21}
 \begin{enumerate}
 \item Sei $y\in(1,\infty)$. Dann gilt $\Forall c > 0 \exists n_0 \in \mathbb{N},\Forall n\geq n_0 y^n \in (c,\infty)$ ("Konvergenz" von $y^n$ gegen 0)
-\item Sei $y \in (-1,1)$. Dann gilt $\Forall \varepsilon > 0\exists n_0 \in \mathbb{N}\Forall n\geq n_0:y^n \in I_\varepsilon (0)$ ("Konvergenz" $y^n$ gegen 0)
+\item Sei $y \in (-1,1)$. Dann gilt $\Forall \eps > 0\exists n_0 \in \mathbb{N}\Forall n\geq n_0:y^n \in I_\eps (0)$ ("Konvergenz" $y^n$ gegen 0)
 \end{enumerate}
 \paragraph{Beweis}
 \label{sec-2-9-21-1}
@@ -745,9 +746,9 @@ n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
 \item \label{1541} Für $x = y - 1 > 0$ gilt dann nach \ref{Lemma-1.53} \[\underbrace{(1 + x)^n}_y \geq 1 + n x \Rightarrow y^n > n x\]
         Nach \ref{sec-2-9-19} existiert für $c > 0$ ein $n_0 \in \mathbb{N}$ mit $n_0 > \frac{c}{x} \Rightarrow$
         \[\Forall n\geq n_0: y^n > n x \geq n_0 x \geq \frac{c}{x} x = c \Rightarrow \Forall n\geq n_0: y^n\in(c,\infty)\]
-\item Für  $x = \frac{1}{\abs{y}} > 1 \xRightarrow{\text{nach [[1541]] mit } c = \frac{1}{\varepsilon}}$
-        \[\Forall \varepsilon > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\varepsilon}\]
-        \[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\varepsilon} \Rightarrow \abs{y^n} < \varepsilon \hfill \square\]
+\item Für  $x = \frac{1}{\abs{y}} > 1 \xRightarrow{\text{nach [[1541]] mit } c = \frac{1}{\eps}}$
+        \[\Forall \eps > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\eps}\]
+        \[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\eps} \Rightarrow \abs{y^n} < \eps \hfill \square\]
 \end{enumerate}
 \subsubsection{Satz 1.55 (Existenz der m-ten Wurzel)}
 \label{sec-2-9-22}
@@ -894,7 +895,7 @@ Wir bezeichnen die Folge auch mit $(x_n)_{n\in\mathbb{N}_0}$
 Topologische Struktur auf Mengen.
 \begin{itemize}
 \item Abstände in $\mathbb{R}^1$ Betrag $\abs{x - y}$ $\xrightarrow{\text{Verallgemeinerung}}$ Norm / Metrik
-\item Umgebung in $\mathbb{R}^1$ $\varepsilon$-Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
+\item Umgebung in $\mathbb{R}^1$ $\eps$-Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
 \end{itemize}
 
 Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder $\mathbb{C}$)
@@ -902,9 +903,9 @@ Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder $\mathbb{C}$
 \label{sec-4-1}
 Wir sagen, dass die Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) gegen den Grenzwert (oder Limes) $a\in\mathbb{K}$ konvergiert
 \[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
-wenn für beliebiges $\varepsilon > 0$ von einem $n_\varepsilon \in\mathbb{N}$ an gilt
-\[\abs{a_n - a} < \varepsilon,n\geq n_\varepsilon\]
-\[\Leftrightarrow \Forall\varepsilon > 0\exists n\varepsilon \in\mathbb{N}:\Forall n\geq n_\varepsilon a_n \in I_\varepsilon(a)\]
+wenn für beliebiges $\eps > 0$ von einem $n_\eps \in\mathbb{N}$ an gilt
+\[\abs{a_n - a} < \eps,n\geq n_\eps\]
+\[\Leftrightarrow \Forall\eps > 0\exists n\eps \in\mathbb{N}:\Forall n\geq n_\eps a_n \in I_\eps(a)\]
 \subsection{Folgerung 2.2}
 \label{sec-4-2}
 Sei $(a_n)_{n\in\mathbb{N}}$ eine monoton wachsende beziehungsweise fallende Folge reeller Zahlen $M=\{a_n\mid n\in\mathbb{N}\}$ und sei nach oben beziehungsweise unten beschränkt. Dann gilt \[a_n\to\sup M, a_n\to\inf M\]
@@ -912,14 +913,14 @@ Beweis $\to$ Übungen
 \subsection{Definition 2.3 Cauchy Folgen}
 \label{sec-4-3}
 Eine Folge $(a_n)_{n\in\mathbb{N}}$ heißt Cauchy-Folge wenn:
-\[\Forall\varepsilon > 0\exists n_\varepsilon \in\mathbb{N}\Forall n,m \geq n_\varepsilon: \abs{a_n - a_m} < \varepsilon \]
+\[\Forall\eps > 0\exists n_\eps \in\mathbb{N}\Forall n,m \geq n_\eps: \abs{a_n - a_m} < \eps \]
 (Cauchy Kriterium)
 \subsection{Definition 2.4 Teilfolge}
 \label{sec-4-4}
 Eine Teilfolge einer gegebenen Folge $(a_n)_{n\in\mathbb{N}}$ ist eine Auswahl $(a_{n_k})_{k\in\mathbb{N}}$, wobei $a_{n_k}$ auch die Glieder von $(a_n)_{n\in\mathbb{N}}$ sind
 \begin{ex}[Beispiel 2.5]
-\[a_n = \frac{1}{m}\] ist eine Cauchy-Folge. Für ein $\varepsilon > 0$ wählen wir $n_\varepsilon$ so dass $n_\varepsilon > \frac{1}{\varepsilon}$. Für beliebiges $n\geq m > N$
-\[\abs{a_m - a_n} = \abs{\frac{1}{m} - \frac{1}{n}} = \frac{n - m}{m n} \leq \frac{n}{m n} = \frac{1}{m} < \frac{1}{n_\varepsilon} < \varepsilon\hfill\square\]
+\[a_n = \frac{1}{m}\] ist eine Cauchy-Folge. Für ein $\eps > 0$ wählen wir $n_\eps$ so dass $n_\eps > \frac{1}{\eps}$. Für beliebiges $n\geq m > N$
+\[\abs{a_m - a_n} = \abs{\frac{1}{m} - \frac{1}{n}} = \frac{n - m}{m n} \leq \frac{n}{m n} = \frac{1}{m} < \frac{1}{n_\eps} < \eps\hfill\square\]
 \end{ex}
 \begin{thm}[Jede Cauchy-Folge ist beschränkt]
 \end{thm}
@@ -938,8 +939,8 @@ im Widerspruch zur Cauchy-Folgen Eigenschaft.
 \end{thm}
 \begin{proof}
 \begin{align*}
-a_n \xrightarrow[k\to\infty]{} a &\Rightarrow \Forall \varepsilon > 0 \exists n_\varepsilon \in\mathbb{N} \Forall n\geq n_\varepsilon: \abs{a - a_n} < \frac{\varepsilon}{2} \\
-&\Rightarrow \Forall n,m\in n_\varepsilon: \abs{a_n - a_m} \leq \abs{a_n - a} + \abs{a - a_m} <\frac{\varepsilon}{2} + \frac{\varepsilon}{2} \tag*{\qedhere}
+a_n \xrightarrow[k\to\infty]{} a &\Rightarrow \Forall \eps > 0 \exists n_\eps \in\mathbb{N} \Forall n\geq n_\eps: \abs{a - a_n} < \frac{\eps}{2} \\
+&\Rightarrow \Forall n,m\in n_\eps: \abs{a_n - a_m} \leq \abs{a_n - a} + \abs{a - a_m} <\frac{\eps}{2} + \frac{\eps}{2} \tag*{\qedhere}
 \end{align*}
 \end{proof}
 \begin{lemma}
@@ -949,20 +950,20 @@ Sei $(a_n)_{n\in\mathbb{N}}$ eine Folge in $\mathbb{K}$ ($\mathbb{R}$ oder $\mat
 \begin{proof}
 Beweis durch Widerspruch. \\
 Falls $\abs{a - \tilde a} > 0$, dann
-\[\exists n_\varepsilon \in\mathbb{N}\Forall n\geq n_\varepsilon \varepsilon = \abs{a - \tilde a}, \abs{a_n - a} < \frac{\varepsilon}{2}\]
-und ein $m_\varepsilon$, sodass
-\[\abs{a_n - \tilde a < \frac{\varepsilon}{2}} \Forall n\geq m_\varepsilon\]
-Dann für $n \geq \max \{n_\varepsilon, m_\varepsilon\}$:
-\[\abs{a - \tilde a} \leq \abs{a - a_n} + \abs{a_n - \tilde a} < \varepsilon\text{\lightning}\]
+\[\exists n_\eps \in\mathbb{N}\Forall n\geq n_\eps \eps = \abs{a - \tilde a}, \abs{a_n - a} < \frac{\eps}{2}\]
+und ein $m_\eps$, sodass
+\[\abs{a_n - \tilde a < \frac{\eps}{2}} \Forall n\geq m_\eps\]
+Dann für $n \geq \max \{n_\eps, m_\eps\}$:
+\[\abs{a - \tilde a} \leq \abs{a - a_n} + \abs{a_n - \tilde a} < \eps\text{\lightning}\]
 \textbf{Widerspruch} $\Rightarrow a = \tilde a$
 \end{proof}
 \begin{remark}
 Die Mengen Abständen heißen *vollständig*, wenn jede Cauchy-Folge in $M$ konvergiert
 \end{remark}
 \begin{defn}[Häufungwert, Häufungspunkt]
-Ein $a\in\mathbb{K}$ heißt Häufungswert einer Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$, wenn es zu beliebigen $\varepsilon > 0$ unendlich viele Folgenelemente $a_n$ gibt mit $\abs{a - a_n} < \varepsilon$
+Ein $a\in\mathbb{K}$ heißt Häufungswert einer Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$, wenn es zu beliebigen $\eps > 0$ unendlich viele Folgenelemente $a_n$ gibt mit $\abs{a - a_n} < \eps$
 
-Ein $a\in\mathbb{K}$ heißt Häufungspunkt einer Teilmenge $M$ von $\mathbb{K}$, wenn $\Forall \varepsilon > 0$ existieren unendlich viele $x\in M$, sodass $\abs{a - x} < \varepsilon$
+Ein $a\in\mathbb{K}$ heißt Häufungspunkt einer Teilmenge $M$ von $\mathbb{K}$, wenn $\Forall \eps > 0$ existieren unendlich viele $x\in M$, sodass $\abs{a - x} < \eps$
 \end{defn}
 \begin{ex} \mbox{}
 \begin{enumerate}
@@ -987,12 +988,12 @@ Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Haufungswert
 Sei $(a_n)_{n_\in\mathbb{N}}$ eine Cauchy-Folge in $\mathbb{K}$ und $a$ ein Häufungswert von $(a_n)_{n\in\mathbb{N}}$, dann konvergiert $a_n \xrightarrow[n\to\infty]{} a$
 \end{lemma}
 \begin{proof}
-Sei $\varepsilon > 0$ beliebig vorgegeben. Wir wählen $n_\varepsilon \in\mathbb{N}$ sodass
-\[\abs{a_n - a_m} < \frac{\varepsilon}{2}\Forall n,m > n_\varepsilon\hfill\text{ (aus Cauchy-Folge)}\]
-und $m_\varepsilon > n_\varepsilon$ mit
-\[\abs{a - a_{m_\varepsilon}} < \frac{\varepsilon}{2}\hfill\text{ (Häufungswert)}\]
+Sei $\eps > 0$ beliebig vorgegeben. Wir wählen $n_\eps \in\mathbb{N}$ sodass
+\[\abs{a_n - a_m} < \frac{\eps}{2}\Forall n,m > n_\eps\hfill\text{ (aus Cauchy-Folge)}\]
+und $m_\eps > n_\eps$ mit
+\[\abs{a - a_{m_\eps}} < \frac{\eps}{2}\hfill\text{ (Häufungswert)}\]
 Dann folgt
-\[\Forall n > m_\varepsilon: \abs{a - a_n} \leq \abs{a - a_{m_\varepsilon}} + \abs{a_{m_\varepsilon} - a_n} < \varepsilon \Rightarrow a_n \xrightarrow[n\to\infty]{} a \qedhere\]
+\[\Forall n > m_\eps: \abs{a - a_n} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps} - a_n} < \eps \Rightarrow a_n \xrightarrow[n\to\infty]{} a \qedhere\]
 \end{proof}
 \begin{thm}
 \label{thm:finite}
@@ -1003,11 +1004,11 @@ $A$ abgeschlossen in M $\Leftrightarrow$ $M\setminus A =: CA$ offen
 $(\Leftarrow)$: \\
 Sei jeder Häufungspunkt von $A$ in $A$
 $x\in CA (=\mathbb{R}\setminus A) \Rightarrow x$ kein Häufungspunkt von $A, x\not\in A$
-\[\Rightarrow \varepsilon: I_\varepsilon (x) \cap A = \emptyset \Rightarrow \exists \varepsilon > 0: I_\varepsilon \subseteq CA\]
+\[\Rightarrow \eps: I_\eps (x) \cap A = \emptyset \Rightarrow \exists \eps > 0: I_\eps \subseteq CA\]
 $\Rightarrow CA$ offen $\Rightarrow A$ abgeschlossen \\
 $(\Rightarrow)$: \\
 Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das heißt $x \in CA$, so gilt
-\[\exists \varepsilon > 0: I_\varepsilon \subseteq CA \Rightarrow I_\varepsilon (x) \cap A = \emptyset \text{lightning}\]
+\[\exists \eps > 0: I_\eps \subseteq CA \Rightarrow I_\eps (x) \cap A = \emptyset \text{lightning}\]
 \textbf{Widerspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
 \end{proof}
 \begin{lemma}[2.14]
@@ -1071,11 +1072,11 @@ gilt
 \[I_{\frac{1}{n}}(a) \cap A \neq \emptyset \Rightarrow \exists a_n\in A: \abs{a_n - a} < \frac{1}{n}\]
 Die Folge $(a_{n_k})_{k\in\mathbb{N}} \to a$, da $\frac{1}{n}\to 0$
 Nach Voraussetzung hat $(a_n)_{n\in\mathbb{N}}$ einen Häufungswert $\tilde a \in A$. Wir zeigen $a = \tilde a$
-Sei $\varepsilon > 0$ beliebig.
+Sei $\eps > 0$ beliebig.
 \begin{align*}
-&\exists n_\varepsilon\in\mathbb{N}: \abs{a - a_n} <\frac{\varepsilon}{2}\Forall n\geq n_\varepsilon \tag{\text{Aus }$a_n \to a$} \\
-&\exists m_\varepsilon\geq n_\varepsilon: \abs{\tilde a - a_{m_\varepsilon}} <\frac{\varepsilon}{2} \tag{\text{Aus Häufungswert}} \\
-&\Rightarrow \abs{a - \tilde a} \leq \abs{a - a_{m_\varepsilon}} + \abs{a_{m_\varepsilon}} < \varepsilon \\
+&\exists n_\eps\in\mathbb{N}: \abs{a - a_n} <\frac{\eps}{2}\Forall n\geq n_\eps \tag{\text{Aus }$a_n \to a$} \\
+&\exists m_\eps\geq n_\eps: \abs{\tilde a - a_{m_\eps}} <\frac{\eps}{2} \tag{\text{Aus Häufungswert}} \\
+&\Rightarrow \abs{a - \tilde a} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps}} < \eps \\
 &\Rightarrow \abs{a - \tilde a} = 0 \\
 &\Rightarrow \tilde a = a \in A
 \end{align*}
@@ -1086,9 +1087,9 @@ Sei $\varepsilon > 0$ beliebig.
 \[a = \lim_{n\to\infty} a_{n_k} \in A\]
 \begin{align*}
 \intertext{Angenommen $a\not\in A \Rightarrow a \in \mathcal{C} A, \mathcal{C} A$ ist offen}
-\Rightarrow \exists I_\varepsilon (a) \subseteq \mathcal{C}A \Rightarrow I_\varepsilon (a) \cap A = \emptyset \\
-\shortintertext{Nun ist aber mit geeigneten $n_\varepsilon \in\mathbb{N}$}
-\Forall n\geq n_\varepsilon: a_{n_k} \in I_\varepsilon (a): a_{n_k} \in A \Rightarrow a_{n_k} \in I_\varepsilon (a) \cap A~\lightning \tag*{\qedhere}
+\Rightarrow \exists I_\eps (a) \subseteq \mathcal{C}A \Rightarrow I_\eps (a) \cap A = \emptyset \\
+\shortintertext{Nun ist aber mit geeigneten $n_\eps \in\mathbb{N}$}
+\Forall n\geq n_\eps: a_{n_k} \in I_\eps (a): a_{n_k} \in A \Rightarrow a_{n_k} \in I_\eps (a) \cap A~\lightning \tag*{\qedhere}
 \end{align*}
 \end{proof}
 \begin{remark}
@@ -1126,12 +1127,12 @@ Seien $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen in $\m
 \end{thm}
 \begin{proof}
 \begin{enumerate}
-\item Sei $\varepsilon > 0$ vorgegeben
+\item Sei $\eps > 0$ vorgegeben
 \begin{align*}
-\exists n_\varepsilon:\Forall n\geq n_\varepsilon: b_n \leq \lim_{k\to\infty} b_n + \frac{\varepsilon}{2} \\
+\exists n_\eps:\Forall n\geq n_\eps: b_n \leq \lim_{k\to\infty} b_n + \frac{\eps}{2} \\
 \shortintertext{und}
-\lim_{k\to\infty} a_k \leq a_n + \frac{\varepsilon}{2} \\
-&\Rightarrow \lim_{k\to\infty} a_k \leq a_n + \frac{\varepsilon}{2} \leq b_n + \frac{\varepsilon}{2} \leq \lim_{k\to\infty} b_k + \varepsilon \Forall \varepsilon > 0 \\
+\lim_{k\to\infty} a_k \leq a_n + \frac{\eps}{2} \\
+&\Rightarrow \lim_{k\to\infty} a_k \leq a_n + \frac{\eps}{2} \leq b_n + \frac{\eps}{2} \leq \lim_{k\to\infty} b_k + \eps \Forall \eps > 0 \\
 &\Rightarrow \lim_{\k\to\infty} a_k \leq \lim_{k\to\infty} b_k
 \end{align*}
 \item Wir wählen $a_n = \abs{a_n}$ und müssen noch zeigen
@@ -1147,15 +1148,15 @@ Die geometrische Folge ist definiert durch
 $\Forall q\in\mathbb{R},\abs{q} < 1$ konvergiert die geometrische Folge $a_n = c q^n$ gegen Null.
 \end{lemma}
 \begin{proof}
-Sei $\varepsilon > 0$ gegeben. Nach Annahme ist $\abs{q} < 1 \Rightarrow \abs{q}^{-1} > 1$, somit $\abs{q}^{-1} = 1 + x$ für ein $x > 0$. \\
+Sei $\eps > 0$ gegeben. Nach Annahme ist $\abs{q} < 1 \Rightarrow \abs{q}^{-1} > 1$, somit $\abs{q}^{-1} = 1 + x$ für ein $x > 0$. \\
 \begin{align*}
-\intertext{Zu zeigen: $\abs{c q^n - 0} < \varepsilon$ für genug große $n$, das heißt}
-c(\frac{1}{1+x})^n < \varepsilon \Leftrightarrow \frac{c}{\varepsilon} < (1 + x)^n \\
+\intertext{Zu zeigen: $\abs{c q^n - 0} < \eps$ für genug große $n$, das heißt}
+c(\frac{1}{1+x})^n < \eps \Leftrightarrow \frac{c}{\eps} < (1 + x)^n \\
 \intertext{Das Archimedische Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
-n_0 > \frac{c}{x\varepsilon} - \frac{1}{x} = \frac{c - \varepsilon}{x\varepsilon} \\
-\Forall n\geq n_0: \frac{c}{\varepsilon} = (\frac{c}{x\varepsilon} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
+n_0 > \frac{c}{x\eps} - \frac{1}{x} = \frac{c - \eps}{x\eps} \\
+\Forall n\geq n_0: \frac{c}{\eps} = (\frac{c}{x\eps} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
 \intertext{daraus folgt aus der Bernoulli Ungleichung}
-\frac{c}{\varepsilon} < (1 + x)^n \Rightarrow c q^n \to 0 \tag*{\qedhere}
+\frac{c}{\eps} < (1 + x)^n \Rightarrow c q^n \to 0 \tag*{\qedhere}
 \end{align*}
 \end{proof}
 \begin{conc}[2.17]
@@ -1168,7 +1169,7 @@ konvergiert für $\abs{q} < 1$ und $\lim_{n\to\infty} S_n = \frac{1}{1 - q}$
 \intertext{zu Beweisen mit Induktion}
 \string(1 - q\string)\string(1 + q + q^2 + \ldots + q^n\string) = 1 + q^{n + 1} \\
 \Rightarrow S_n - \frac{1}{1 - q} = \frac{1 - q^{n + 1} - 1}{1 - q} = -\frac{q^{n + 1}}{1 - q} \\
-\abs{S_n - \frac{1}{1 - q}} = c\abs{q}^n < \varepsilon \Forall n\geq n_\varepsilon \\
+\abs{S_n - \frac{1}{1 - q}} = c\abs{q}^n < \eps \Forall n\geq n_\eps \\
 \intertext{$c = \abs*{\frac{1}{1 - q}}$}
 s_n \to \frac{1}{1 -q} \tag*{\qedhere}
 \end{gather*}
@@ -1192,7 +1193,7 @@ s_n \to \frac{1}{1 -q} \tag*{\qedhere}
 \subsection{Umgebung}
 \label{sec-4-7}
 \begin{defn}[2.19]
-$A\subseteq \mathbb{K}$ heißt Umgebung von $a\in\mathbb{K} \Leftrightarrow \Exists \varepsilon > 0 I_\varepsilon (a) \subseteq A$
+$A\subseteq \mathbb{K}$ heißt Umgebung von $a\in\mathbb{K} \Leftrightarrow \Exists \eps > 0 I_\eps (a) \subseteq A$
 \end{defn}
 \begin{conc}[2.20]
 Aus der Definition folgt
@@ -1204,18 +1205,18 @@ Aus der Definition folgt
 \end{conc}
 \begin{proof}
 \begin{enumerate}
-\item Für irgendein \[i_0 \in I \Exists \varepsilon > 0: I_\varepsilon (a) \subseteq U_{i_0} \subseteq \bigcup_{i \in I} U_i\]
-\item Es gilt nach Voraussetzung $\varepsilon_1, \ldots \varepsilon_n > 0$ mit $I_{\varepsilon_i}(a) \subseteq U_i$ für $i = 1,\ldots,n$. Folglich gilt für $\varepsilon:= \min \{\varepsilon_1, \ldots, \varepsilon_n\} > 0,~I_\varepsilon(a) \subseteq U_i (\Forall i = 1,\ldots,n) \Rightarrow I_\varepsilon (a) \subseteq U_1 \cap \ldots U_n$
-\item Nach Vorraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\varepsilon > 0$ mit $I_\varepsilon(a) \subseteq U$ \\
-      $V:= I_{\frac{\varepsilon}{2}}(a) \subseteq U$ ist ebenfalls Umgebung von $a$ und $\Forall y\in V$ gilt
-\[I_{\frac{\varepsilon}{2}} \subseteq I_\varepsilon(x) \subseteq U,~\text{denn}~ \underbrace{\abs{y - z}}_{z\in I_{\frac{\varepsilon}{2}}} < \frac{\varepsilon}{2} \Rightarrow \abs{x - z} \leq \abs{x - y} + \abs{x - z} < \varepsilon\]
+\item Für irgendein \[i_0 \in I \Exists \eps > 0: I_\eps (a) \subseteq U_{i_0} \subseteq \bigcup_{i \in I} U_i\]
+\item Es gilt nach Voraussetzung $\eps_1, \ldots \eps_n > 0$ mit $I_{\eps_i}(a) \subseteq U_i$ für $i = 1,\ldots,n$. Folglich gilt für $\eps:= \min \{\eps_1, \ldots, \eps_n\} > 0,~I_\eps(a) \subseteq U_i (\Forall i = 1,\ldots,n) \Rightarrow I_\eps (a) \subseteq U_1 \cap \ldots U_n$
+\item Nach Vorraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\eps > 0$ mit $I_\eps(a) \subseteq U$ \\
+      $V:= I_{\frac{\eps}{2}}(a) \subseteq U$ ist ebenfalls Umgebung von $a$ und $\Forall y\in V$ gilt
+\[I_{\frac{\eps}{2}} \subseteq I_\eps(x) \subseteq U,~\text{denn}~ \underbrace{\abs{y - z}}_{z\in I_{\frac{\eps}{2}}} < \frac{\eps}{2} \Rightarrow \abs{x - z} \leq \abs{x - y} + \abs{x - z} < \eps\]
 \end{enumerate}
 \end{proof}
 \begin{defn}[2.21]
 \mbox{}
 \begin{enumerate}
 \item $A\subseteq \mathbb{K}$ ist offen $\Leftrightarrow \Forall a\in A$ ist $A$ die Umgebung von $a$ \\
-      (in $\mathbb{R}\Forall a\in A \Exists \varepsilon > 0 I_\varepsilon (a) \subseteq A$)
+      (in $\mathbb{R}\Forall a\in A \Exists \eps > 0 I_\eps (a) \subseteq A$)
 Für Intervalle $(a,b)$ haben wir schon gezeigt, dass sie offen sind
 \item $A\subseteq \mathbb{K}$ heißt abgeschlossen $\Leftrightarrow C_\mathbb{K} A$ offen
 \item Abschließung von $A$: \[\bar A := \{a \in \mathbb{K} \mid a \in A \vee a ~\text{Häufungspunk von}~A\}\]
@@ -1227,10 +1228,10 @@ Für Intervalle $(a,b)$ haben wir schon gezeigt, dass sie offen sind
 A&= (a,b\right] \\
 \bar A &= [a,b] \\
 \partial A &= \{ a,b \} \\
-\Forall \varepsilon > 0 I_\varepsilon(a) \cap (a,b\right] \neq \emptyset \\
-I_\varepsilon (a) \cap \mathbb{R} \setminus (a,b\right] \neq \emptyset
+\Forall \eps > 0 I_\eps(a) \cap (a,b\right] \neq \emptyset \\
+I_\eps (a) \cap \mathbb{R} \setminus (a,b\right] \neq \emptyset
 \end{align*}
-Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem \$$\varepsilon$-\$Intervall um eine rationale Zahl gilbt es sowohl rationale als auch irrationale Zahlen
+Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem \$\eps-\$Intervall um eine rationale Zahl gilbt es sowohl rationale als auch irrationale Zahlen
 \end{ex}
 \begin{remark}
 \mbox{}
@@ -1265,7 +1266,7 @@ Sei $(a_n)_{n\in\mathbb{N}}$ ein Folge von reellen Zahlen, $\emptyset \neq H\sub
 \mbox{}
 \begin{enumerate}
 \item Definition \ref{defn:223} kann man auch für $\mathbb{R}$ formulieren
-\item \[a = \lim_{n\to\infty} \inf a_n \Leftrightarrow \Forall \varepsilon \begin{cases} \string(1\string) \{n \mid \abs{a - a_n} < \varepsilon\} ~\text{ist unendlich (weil $a$ Häufungswert ist)} \\ \string(2\string) \{n \mid a_n < a - \varepsilon\} ~\text{ist endlich ($a$ ist kleinste Häufungswert)}\end{cases}\]
+\item \[a = \lim_{n\to\infty} \inf a_n \Leftrightarrow \Forall \eps \begin{cases} \string(1\string) \{n \mid \abs{a - a_n} < \eps\} ~\text{ist unendlich (weil $a$ Häufungswert ist)} \\ \string(2\string) \{n \mid a_n < a - \eps\} ~\text{ist endlich ($a$ ist kleinste Häufungswert)}\end{cases}\]
 \end{enumerate}
 \end{remark}
 \begin{ex}[2.24]
@@ -1287,7 +1288,7 @@ a_{2n} = 4n \to \infty \Rightarrow \infty~\text{ist Häufungswert}
 \item $\displaystyle \lim_{n\to\infty} \sup a_n + \lim_{n\to\infty}\sup b_n \geq \lim_{n\to\infty} (a_n + b_n)$ (zum Beispiel betrachte $a_n = n^2, b_n = \frac{1}{n}$)
 \end{itemize}
 \end{remark}
-\subsection{Undendliche Summen (Reigen)}
+\subsection{Undendliche Summen (Reihen)}
 \label{sec-4-8}
 \begin{defn}[2.19]
 Eine Reihe \[\sum_{k = 1}^\infty a_k\] (\textbf{unendliche Summe}) konvergiert, wenn die Folge ihrer \textbf{Partialsummen} konvergiert
@@ -1307,6 +1308,72 @@ Eine Reihe \[\sum_{k = 1}^\infty a_k\] (\textbf{unendliche Summe}) konvergiert, 
 S_{2^{n + 1}} = \sum_{k = 1}^{2^{n + 1}} \frac{1}{k} = 1 + \frac{1}{2} + \sum_{j = 1}^n \sum_{k = 2^j + 1}^{2^{j + 1}} \frac{1}{k} \geq 1 + \frac{1}{2} + \sum_{j = 1}^{n}\underbrace{\sum_{k = 2^j +1}^{2^{j + 1}}}_{\mathclap{2^j~\text{Summanden}}} \frac{1}{2^{j + 1}} \\
 = 1+ \frac{1}{2} + \sum_{j = 1}^n 2^{j} \frac{1}{2^{j + 1}} = 1 + \frac{1}{2} + \sum_{j = 1}^{n} \frac{1}{2} = 1 + \frac{1}{2} + \frac{1}{2}n \xrightarrow{n\to\infty} \infty
 \end{align*}
+\end{proof}
+\begin{thm}
+Seien $\displaystyle \sum_{k = 0}^\infty a_k , \sum_{k = 0}^\infty b_k$ konvergente Reihen, $\alpha \in \mathbb{R}$, dann sind auch die Reihen
+\[\sum_{k = 0}^\infty (a_k + b_k), \sum_{k = 0}^\infty \alpha a_k\]
+konvergent und es gilt
+\[\sum_{k = 0}^\infty (a_k + b_k) = \sum_{k = 0}^\infty a_k + \sum_{k = 0}^\infty b_k, \sum_{k = 0}^\infty \alpha a_k = \alpha \sum_{k = 0}^\infty a_k\]
+\end{thm}
+\begin{proof}
+Aus den Rechenregeln für konvergente Folgen
+\end{proof}
+\subsubsection{Konvergenzkriterien}
+\label{sec-4-8-1}
+Cauchy Kriterium für Paritalsummen besagt, dass eine Reihe genau dann konvergent ist, wenn
+\[\Forall \eps > 0 \Exists n_\eps \in \mathbb{N}: \Forall n > m \geq n_\eps: \abs{s_n - s_m} = \abs{\sum_{k = m + 1}^n a_k} < \eps\]
+
+\begin{lemma}[2.28 Reihenkonvergenz]
+Eine Reihe $\displaystyle \sum_{k = 1}^\infty a_k$ kann nur dann knvergent sein, wenn ihre Partialsummen beschränkt sind und ihre Glieder eine Nullfolge bilden
+\end{lemma}
+\begin{proof}
+Sei $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k = \lim_{n \to \infty} s_n$. Dann gilt
+\[\lim_{n\to\infty} a_n = \lim_{n\to\infty} (s_n - s_{n - 1}) = \lim_{n\to\infty} s_n - \lim_{n\to\infty} s_{n - 1} = s_\infty - s_\infty = 0\]
+Die Beschränktheit der Paritalsummen folgt notwendig aus der Beschränktheit konvergenter Folgen.
+\end{proof}
+\begin{thm}[2.29]
+Sei $(a_k)_{k\in\mathbb{N}}$ eine Nullfolge. Dann $\displaystyle \sum_{k = 1}^\infty (a_k - a_{k + 1}) = a_1$
+\end{thm}
+\begin{proof}
+\[s_n = \sum_{k = 1}^n (a_k - a_{k + 1}) = \sum_{k = 1}^n a_k - \sum_{k = 2}^{n + 1} a_k = a_1 - a_{n + 1} \Rightarrow \abs{s_n - a_1} = \abs{a_{n + 1}} \xrightarrow{n\to\infty} 0\]
+\end{proof}
+\begin{ex}[2.30]
+\[\sum_{k = 1}^\infty \frac{1}{k(k + 1)} = \sum_{k = 1}^\infty (\underbrace{\frac{1}{k}}_{\mathclap{a_k}} - \underbrace{\frac{1}{k + 1}}_{\mathclap{a_{n + 1}}}) = a_1 = \frac{1}{2}\]
+\end{ex}
+\begin{defn}
+Eine Reihe $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k$ in $\mathbb{R}$ heißt alternierend, wenn ihre Elemente alternierende Vorzeichen haben, das heißt $a_n \cdot a_n + 1 \leq 0$
+\end{defn}
+\begin{thm}
+\begin{enumerate}
+\item Eine alternierende Reihe $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k$ ist konvergent, wenn die Absolutbeträge ihrer Glieder eine monoton fallende Nullfolge bilden
+\item Für die Reihenreste gilt dabei die Abschätzung
+\[\abs{\sum_{k = m}^\infty a_k} \leq \abs{a_m}\]
+\end{enumerate}
+\end{thm}
+\begin{proof}
+\begin{enumerate}
+\item Sei ohne Beschränkung der Allgemeinheit $a_1 > 0$. Dannist $a_{2n - 1} + a_{2 n} \geq 0, a_{2n} + a_{2n + 1} \geq 0$
+       Und folglich
+\begin{align*}
+s_{2n + 1} = a_1 + a_2 + a_3 + \ldots + a_{2 n} + a_{2 n + 1} \leq s_{2n - 1} \leq \ldots \leq s_3 \leq s_1 \\
+s_{2n} = (a_1) + (a_2 + a_4) + \ldots + (\underbrace{a_{2n - 1} + a_{2n}}_{\geq 0}) \geq s_{2n - 2} \geq \ldots \geq s_2 \\
+\intertext{Ferner gilt}
+s_{2n + 1} - s_{2 n} = a_{2n + 1} \geq 0
+\intertext{und somit}
+s_2 \leq \ldots \leq s_{2n} \leq s_{2n + 1} \leq \ldots \leq s_1
+\intertext{$(S_{2n})$ monoton wachsend, $s_{2n + 1}$ monoton fallend, beide beschränkt}
+\Rightarrow s_{2n} \xrightarrow{n\to\infty} s_\ast, \Rightarrow s_{2n + 1} \xrightarrow{n\to\infty} s^\ast \\
+s_{sn} \leq s_\ast \leq s^\ast \leq s_{2n + 1} \\
+\intertext{da $(a_n)$ Nullfolge}
+\abs{s_{2n + 1} - s_{2 n}} = \abs{a_{2n + 1}} \to 0 \\
+s_\ast = s^\ast = s_\infty
+\end{align*}
+\item Aus 1. folgt $m = 2n + 1$
+\[0 \leq s_\infty - s_{2n} = \sum_{k = 2n + 1}^\infty a_k = s_\infty - s_{2n + 1} + a_{2n + 1} \leq a_{2n + 1}\]
+und sonst
+\[\abs{\sum_{k = 2n + 1}^\infty a_k} \leq \abs{a_{2n + 1}}\]
+Ana log im Fall $m = 2n$
+\end{enumerate}
 \end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
