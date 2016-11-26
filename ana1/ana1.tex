@@ -1,4 +1,4 @@
-% Created 2016-11-25 Fr 12:10
+% Created 2016-11-25 Fr 18:03
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1340,10 +1340,10 @@ Sei $(a_k)_{k\in\mathbb{N}}$ eine Nullfolge. Dann $\displaystyle \sum_{k = 1}^\i
 \begin{ex}[2.30]
 \[\sum_{k = 1}^\infty \frac{1}{k(k + 1)} = \sum_{k = 1}^\infty (\underbrace{\frac{1}{k}}_{\mathclap{a_k}} - \underbrace{\frac{1}{k + 1}}_{\mathclap{a_{n + 1}}}) = a_1 = \frac{1}{2}\]
 \end{ex}
-\begin{defn}
+\begin{defn}[2.31]
 Eine Reihe $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k$ in $\mathbb{R}$ heißt alternierend, wenn ihre Elemente alternierende Vorzeichen haben, das heißt $a_n \cdot a_n + 1 \leq 0$
 \end{defn}
-\begin{thm}
+\begin{thm}[2.32]
 \begin{enumerate}
 \item Eine alternierende Reihe $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k$ ist konvergent, wenn die Absolutbeträge ihrer Glieder eine monoton fallende Nullfolge bilden
 \item Für die Reihenreste gilt dabei die Abschätzung
@@ -1375,5 +1375,61 @@ und sonst
 Ana log im Fall $m = 2n$
 \end{enumerate}
 \end{proof}
+\begin{ex}[2.33]
+\begin{enumerate}
+\item $\displaystyle s_\infty = \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \ldots$ konvergiert nach dem Leibnitz Kriterium
+\[\abs{\frac{(-1)^{k - 1}}{k}} = \frac{1}{k} \to 0~\text{monoton}\]
+\item Die Leibnitz Reihe $\displaystyle s_\infty =  \sum_{k = 0}^\infty \frac{(-1)^k}{2k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots$ konverget nach Leibnitz Kriterium
+\end{enumerate}
+\end{ex}
+\begin{remark}[Monotonie ist wichtig]
+\[\sum_{k = 1}^\infty a_k~\text{mit}~ a_{2k} := -\frac{1}{2^k}, a_{2k - 1}:= \frac{1}{k}\]
+ist divertent:
+\begin{itemize}
+\item $(1 - 1) + (1 - 1) + (1 - 1) + \ldots = 0$, aber
+\item $1 + (-1 + 1) + (-1 + 1) + \ldots = 1$
+\end{itemize}
+\end{remark}
+\begin{defn}[2.34]
+$\displaystyle \sum_{k = 1}^\infty a_k$ heißt absolut konvergent, genau dann wenn $\displaystyle \sum_{k = 1}^\infty \abs{a_k}$ konvergent ist
+\end{defn}
+\begin{thm}[2.35]
+Sei $\displaystyle \sum_{k = 1}^\infty \abs{a_k}$ konvergent in $\mathbb{R}$. Dann ist $\displaystyle \sum_{k = 1}^\infty a_k$ konvergent
+\end{thm}
+\begin{proof}
+Mit Cauchy Kriterium:
+\[\abs{\sum_{k = m}^n a_k} \leq \sum_{k = m}^n \abs{a_k} < \eps\]
+aus der Absolutkonverenz
+\end{proof}
+\begin{thm}[2.36 Umordnungssatz]
+Sei $\displaystyle \sum_{k = 1}^\infty a_k$ eine absolut konvergente Reihe in $\mathbb{R}$. Dann gilt
+für jede bijektive Abbildung $\tau: \mathbb{N} \to \mathbb{N}$
+\[\sum_{k = 1}^\infty a_{\tau(k)} = \sum_{k = 1}^\infty a_k\]
+\end{thm}
+\begin{proof}
+Ranacher für spezifische Umordung
+\end{proof}
+\begin{ex}[2.37]
+$\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k}$ konvergent (aber nicht absolut) \\
+    Behauptung: $\Exists$ Umordnung $\tau$, sodass $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{\tau(k) - 1}}{\tau(k)}$ divergiert
+Beachte
+\[\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{2\cdot 2^j - 1} \leq 2^{j - 1} \frac{1}{2^{j + 1}} = \frac{1}{4}\]
+$\Rightarrow$ Die Umordung
+\[1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + (\frac{1}{5} + \frac{1}{7}) - \frac{1}{6} + \underbrace{(\frac{1}{9} + \frac{1}{11} + \frac{1}{13} + \frac{1}{15})}_{\geq \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{8} + \ldots + \underbrace{(\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{1}{2^{j + 1} - 1})}_{> \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{2^k + 2}\]
+konvergiert nicht
+\end{ex}
+\begin{thm}[2.38 Cauchyprodukt für Reihen]
+Seien $\displaystyle \sum_{k = 1}^\infty a_k, \sum_{k = 1}^\infty b_k$ absolut konvergente Reihen (in $\mathbb{R}$ oder $\mathbb{C}$). Sei $\displaystyle c_m = \sum_{k = 1}^m a_k b_{m-k}$. Dann konvergiert
+\[\sum_{m = 1}^\infty = (\sum_{k = 1}^\infty a_k)(\sum_{k = 1}^\infty b_k)\]
+(ohne Beweis)
+\end{thm}
+\begin{thm}[2.39 Vergleichkriterium]
+Gegeben seien zwei Reihen $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k, \tilde s_\infty = \sum_{k = 1}^\infty \tilde a_k$
+\begin{enumerate}
+\item Gilt für fast alle $k \in \mathbb{N}$ mit einer Konstante $\alpha > 0\quad \abs{a_k} \leq \alpha \tilde a_k$ \\
+       (für fast alle $n\in\mathbb{N} :=$ Für alle $n\in\mathbb{N}$ außer endlich viele) \\
+       so ist $\tilde s_\infty$ eine *Majorante von $s_\infty$ und aus der absoluten Konvergenz von $\tilde s_\infty$ folgt auch die von $s_\infty$, absolute Divergenz von $s_\infty$ impliziert die absolute Divergenz von $\tilde s_\infty$
+\end{enumerate}
+\end{thm}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

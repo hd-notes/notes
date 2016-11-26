@@ -13,6 +13,9 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
 #+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
 #+LATEX_HEADER: \DeclareMathOperator{\cha}{char}
+#+LATEX_HEADER: \DeclareMathOperator{\Abb}{Abb}
+#+LATEX_HEADER: \DeclareMathOperator{\Lin}{Lin}
+#+LATEX_HEADER: \DeclareMathOperator{\Span}{span}
 #+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
 #+LATEX_HEADER: \usepackage{stmaryrd}
@@ -40,6 +43,7 @@
 #+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
 #+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 #+LATEX_HEADER: }
+#+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 
 * Einleitung
   # Passwort für Downloads (Webseite Prof. Gade): GRUNDVORLESUNG
@@ -1250,6 +1254,7 @@
   #+end_remark
   #+ATTR_LATEX: :options [8.2]
   #+begin_ex latex
+  \mbox{}
   1. \[K^n := \{(x_1,\ldots,x_n) \mid x_1,\ldots,x_n \in K\}\]
 	 mit
 	 \[(x_1,\ldots,x_n) + (y_1,\ldots,y_n) := (x_1 + y_1,\ldots,x_n + y_n)\]
@@ -1261,5 +1266,258 @@
 	 Mit dem Distributivgesetz in $K$ folgt:
 	 \[(\lambda x_1,\ldots,\lambda x_n) + (\mu x_1,\ldots,\mu x_n) = \lambda(x_1,\ldots,x_n) + \mu(x_1,\ldots,x_n)\]
 	 Der Nullvektor ist gegeben duch $0_{K^n} = (0,\ldots,0)$, für $x =(x_1,\ldots,x_n)$ ist $-x = (-x_1,\ldots,-x_n)$
-  2.
+  2. $\mathbb{C}$ ist ein $\mathbb{R}$-VK bezüglich
+	 - $+$ = übliche Addition auf $\mathbb{C}$
+	 - skalare Multiplikation $\cdot:\mathbb{R}\times\mathbb{C} \to \mathbb{C}, \lambda (a + \I b) := \lambda a + \I \lambda b$
+  3. $K[t]$ Polynomring über $K$ in der Variablen $t$ wird zum $K$-VR durch
+	 - $+$ = Addition von Polynomen
+	 - akalare Multiplikation, $\cdot: K\times K[t] \to K[t]: \lambda \cdot \sum_{k = 0}^n a_k t^k := \sum_{k = 0}^n \lambda a_k t^k
+  4. $M$ Menge, $\Abb(M,K):= \{f: M \to K~\text{Abbildung}\}$ wird zum $K$-Vektorraum durch die folgende Verknüpfungen:
+	 - Addition: Zu $f,g\in \Abb(M,K)$ wird $f + g: M \to K$ definiert über
+	   \[(f + g)(x) := f(x) + g(x), x\in M\]
+	 - skalare Multiplikation: Zu $\lambda \in K, f\in \Abb(M,K)$ wird $\lambda f: M \to K$ definiert über
+	   \[(\lambda f)(x) := \lambda f(x), x\in M\]
+	 ("punktweise Addition und skalare Multiplikation")
   #+end_ex
+  #+ATTR_LATEX: :options [8.3]
+  #+begin_remark latex
+  $V~K$-VR. Dann gilt:
+  1. $0_K \cdot v = 0_V \Forall v\in V$
+  2. $\lambda \cdot 0_V = 0_V \Forall \lambda\in K$
+  3. $\lambda v = 0_V \Rightarrow \lambda = 0_K \vee v = 0_V$
+  4. $(-1_K)\cdot v = -v \Forall v\in V$
+  #+end_remark
+  #+begin_proof latex
+  1. Sei $v \in V$
+	 \[\Rightarrow 0_V + 0_K \cdot v = 0_K \cdot v = (0_K + 0_K)\cdot v = 0_K\cdot v + 0_K \cdot v \Rightarrow 0_K \cdot v = 0_V\]
+  2. Sei $\lambda \in K$
+	 \[\Rightarrow \lambda \cdot 0_V + 0_V = \lambda \cdot 0_V = \lambda \cdot (0_V + 0_V) = \lambda\cdot 0_V + \lambda \cdot 0_V \Rightarrow \lambda \cdot 0_V = 0_V\]
+  3. Seien $\lambda \in K, v\in V, \lambda\cdot v = 0$. Falls $\lambda \neq 0_K:$
+	 \[v = 1_K \cdot v = (\lambda^{-1} \lambda)\cdot v = \lambda^{-1}\cdot \underbrace{(\lambda v)}_{= 0_V} = \lambda^{-1} \cdot 0_V = 0_V\]
+  4. Für $v\in V$ ist
+	 \[v + (-1_K) \cdot v = 1_K \cdot v + (-1_K)\cdot v = (1_K + (-1_K))\cdot v = 0_K \cdot v = 0_V \Rightarrow (-1_K)\cdot v = -v\]
+  #+end_proof
+  #+ATTR_LATEX: :options [8.4]
+  #+begin_defn latex
+  $V~K$-VR, $U\subseteq V$ \\
+  $U$ heißt Untervektorraum ($K$-Untervektorraum), kurz UVR von $V$ $\xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt
+  - (U1) $U\neq \emptyset$
+  - (U2) $v,w \in U \Rightarrow v + w \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich Addition)
+  - (U3) $v\in U, \lambda \in K \Rightarrow \lambda v \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich skalarer Multiplikation)
+  #+end_defn
+  #+ATTR_LATEX: :options [8.5]
+  #+begin_remark latex
+  $V~K$-VR, $U\subseteq V$ \\
+  Dann sind äquivalent
+  1. $U$ ist ein UVR von $V$
+  2. Addition und skalare Multiplikation auf $V$ induzieren durch Einschränkung auf $U$ Verknüpfung $+: U\times U\to U, \cdot:K\times U \to U$, und bezüglich dieser Verknüpfung ist $U$ ein $K$-VR
+  #+end_remark
+  #+begin_proof latex
+  (1.) \Rightarrow (2.): Sei $U$ ein UVR von $V$ \\
+  1. Die Verknüpfung $+:U\times U\to U, \cdot :K\times U \to U$ sind wohldefiniert wegen (U2), (U3)
+  2. (V1) gilt (das heißt $(U,+)$ ist eine abelsche Gruppe), denn:
+	 - Asooziativgesetz, Kommutativgesetz bezüglich "$+$" gelten, weil sie schon in $V$ gelten.
+	 - $0_V$ ist neutral bezüglich "$+$" und lieght in $U$, denn wegen $U \neq \emptyset$ existiert ein $u\in U$, wegen (U3) ist ann auch $\underbrace{0_K \cdot u}_{= 0_V} \in U$, also $0_V \in U$
+	 - $-u$ ist invers zu $u$ und liegt in $U$, denn: Mit $u \in U$ ist nach (U3) auch $(-1_K)\cdot u$ in $U$
+  3. (V2) gilt, da es schon in $V$ gilt
+  (2.) \Rightarrow (1.) Es gelte (2.) \\
+  - (U1): $U\neq \emptyset$, denn $U$ ist abelsche Gruppe bezüglich der eingeschränkten Addition
+  - (U2),(U3): folgt direkt aus der Wohldefiniertheit der Verknüpfung $+: U\times U \to Z, \cdot : K\times U \to U$
+  #+end_proof
+  #+begin_remark latex
+  - der Beweis von (1.) \Rightarrow (2.) hat gezeigt: Ist $U \subseteq V$ ein UVR, dann ist $0_V \in U$
+  - Ab jetzt lassen wir bei $0_V$ beziehungsweise $0_K$ meist die Indizes $V$ beziehungsweise $K$ weg und schreiben für beide kurz $0$.
+  #+end_remark
+  #+ATTR_LATEX: :options [8.6]
+  #+begin_ex latex
+  \mbox{}
+  1. $K = \mathbb{R}, V = \mathbb{R}^2$ \\
+	 Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 - 2 x_2 = 0\}$
+	 - (U1): $(0, 0) \in U$ also $U\neq \emptyset$
+	 - (U2): Es seien $(x_1, x_2) \in U, (y_1, y_2) \in U \Rightarrow x_1 - 2 x_2 = 0, y_1 - 2 y_2 = 0$
+	   \[\Rightarrow (x_1 + y_1) - 2(x_2 + y_2) = 0 \Rightarrow (x_1, x_2) + (y_1, y_2) = (x_1 + y_1, x_2 + y_2) \in U\]
+	 - (U3): Sei $(x_1, x_2) \in U, \lambda \in \mathbb{R} \Rightarrow x_1 - 2 x_2 = 0 \Rightarrow \lambda x_1 - 2\lambda x_2 = 0$
+	   \[(\lambda x_1, \lambda x_2) = \lambda (x_1, x_2) \in U\]
+	 Also: $U$ ist ein UVR von $V = \mathbb{R}^2$
+  2. $K = \mathbb{R}, V = \mathbb{R}$ \\
+	 Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 - 2 x_2 = 1\}$ \\
+	 Es ist $(0,0) ( = 0_V) \not\in U \Rightarrow U$ ist kein UVR von $V = \mathbb{R}^2$
+  3. $K = \mathbb{R}, V = \mathbb{R^2}$ \\
+	 Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 \geq 0 \wedge x_2 \geq 0\}$ \\
+	 $U$ ist kein UVR von $V$, denn: $(5,2) \in U$, aber $(-1)\cdot (5,2) = (-5, -2) \not\in U$
+  4. $V = K[t]$ \\
+	 Es sei $U = \{f \in K[t] \mid \deg f \leq 2\} = \{f\in K[t] \mid \Exists a_0, a_1, a_2 \in K: f = a_2 t^2 + a_1 t + a_0\}$
+	 - (U1): $0 \in U$, also $U \neq \emptyset$
+	 - (U2): Es seien $f,g \in U \Rightarrow \deg (f) \leq 2, \deg (g) \leq 2 \Rightarrow \deg(f + g) \leq 2 \Rightarrow f + g \in U$
+	 - (U3): Es sei $f \in U, \lambda \in K \Rightarrow \deg(f) \leq 2 \Rightarrow \deg(\lambda f) \leq 2 \Rightarrow \lambda f \in U$
+	 Also $U$ ist ein UVR von $V$
+  5. $V$ K-VR. Dann sind $\{0\}, V$ UVR von $V$ ("triviale UVR"), $\{0\}$ heißt Nullvektorraum (Nullraum)
+  #+end_ex
+  #+ATTR_LATEX: :options [8.7]
+  #+begin_remark latex
+  $V$ K-VR, $I$ Indexmenge, $(U_i)_{i\in I}$ Familie von UVR von $V$ (das heißt für jedes $i\in I$ ist ein UVR $U_i$ von $V$ gegeben)
+  Dann gilt:
+  \[U := \bigcap_{i \in I} U_i\]
+  ist ien UVR von $V$. Mit anderen Worten: der Durchschnitt von UVRen von $V$ ist wieder ein UVR von $V$
+  #+end_remark
+  #+begin_proof latex
+  1. (U1): $U \neq \emptyset$, denn $0 \in U_i \Forall i\in I$, also $0 \in U$
+  2. (U2): Seien $v,w \in U \Rightarrow \Forall i \in I: v\in U_i, w \in U_i \Rightarrow \Forall i\in I: v + w \in U_i \Rightarrow v + w \in U$
+  3. (U3): Sei $v \in U, \lambda \in K \Rightarrow \Forall i\in I: v\in U_i \Rightarrow \Forall i\in I: \lambda v \in U_i \Rightarrow \lambda v \in \bigcap_{i\in I} U_i = U$
+  #+end_proof
+  #+ATTR_LATEX: :options [8.8]
+  #+begin_ex latex
+  Die Vereinigung von UVR ist im Allgemeinen kein UVR, zum Beispiel $K = \mathbb{R}, V =\mathbb{R}^2$
+  - $U_1 = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 = x_2\}$
+  - $U_2 = \{(x_1, x_2) \in \mathbb{R}^2 \mid 2 x_1 = x_2\}$
+  Aber: $U_1 \cup U_2$ ist kein UVR von $\mathbb{R}^2$, denn
+  \[(1,1) \in U_1 \subseteq U_1 \cup U_2, (2, 4) \in U_2 \subseteq U_1 \cup U_2\]
+  aber: $(1, 1) + (2, 4) = (3, 5) \not\in U_1 \cup U_2$
+  #+end_ex
+  #+ATTR_LATEX: :options [8.9]
+  #+begin_defn latex
+  $V$ K-VR, $(v_1, \ldots, v_r)$ endliche Familie von Vektoren aus $V$
+  \[\Lin((v_1, \ldots, v_r)) := \{\alpha_1 v_1 + \ldots + \alpha_r v_r \mid \alpha_1, \ldots, \alpha_r \in K\}\]
+  heißt die Lineare Hülle (das Erzeugnis) der Familie $v_1, \ldots, v_r$ \\
+  $v \in V$ heißt Linearkombination von $v_1, \ldots, v_r$
+  \[\xLeftrightarrow{\text{Def}} v\in \Lin((v_1, \ldots, v_r)) \Leftrightarrow \Exists \alpha_1, \ldots \alpha_r \in K: v = \alpha_1 v_1 + \ldots + \alpha_r v_r\]
+  #+end_defn
+  #+begin_remark latex
+  Andere Notation für $\Lin: \Span(\ldots), <\ldots>$
+  #+end_remark
+  #+ATTR_LATEX: :options [8.10]
+  #+begin_ex latex
+  \mbox{}
+  1. $V = \mathbb{R}^3, K = \mathbb{R}$
+	 - $v \in V, v \neq 0 \Rightarrow \Lin((v)) = \{\alpha v \mid \alpha \mathbb{R}\}$ = Gerade durch $0$ und $v$
+	 - \[v,w \in V, v \neq 0 \Rightarrow \Lin((v,w)) = \{\alpha_1 v + \alpha_2 w \mid \alpha_1, \alpha_2 \in \mathbb{R}\} = \begin{cases} ~\text{Gerade durch $0$} & w \in \Lin((v)) \\ ~\text{Ebene durch $0,v,w$} & w\not\in \Lin((v)) \end{cases}\]
+  2. $V = K^n$ als K-VR \\
+	 \[e_i := (0, \ldots, 0, \underarrow[1]{i-te Stelle}, 0, \ldots, 0)\]
+	 \begin{align*}
+	 \Lin((e_1, \ldots, e_n)) &= \{\alpha_1 e_1 + \ldots \alpha_n e_n \mid \alpha_1, \ldots, \alpha_n \in K \} \\
+	 &= \{(\alpha_1, 0, \ldots, 0) + (0, \alpha_2, 0, \ldots, 0) + \ldots + (0, \ldots, 0, \alpha_n) \mid \alpha_1, \ldots, \alpha_n \in K\} \\
+	 &= \{(\alpha_1, \ldots, \alpha_n) \mid \alpha_1, \ldots, \alpha_n \in K\} \\
+	 &= K^n
+	 \end{align*}
+  #+end_ex
+  #+ATTR_LATEX: :options [8.11]
+  #+begin_defn latex
+  $V$ K-VR, $(v_i)_{i\in I}$ Familie von Vektoren aus $V$
+  \[\Lin((v_i)_{i \in I}) := \{\sum_{i\in I} \alpha_i v_i \mid \alpha_i \in K \Forall i\in I, \alpha_i = 0 ~\text{für fast alle $i\in I$}\}\]
+  heißt die lineare Hülle (das Erzeugnis) der Familie $(v_i)_{i \in I}$. Heibei bedeutet "$\alpha_i = 0$ für fast alle $i\in I$": Es gibt nur endlich viele $i\in I$ mit $\alpha_i \neq 0$,
+  das heißt die auftretenden Summen sind endliche Summen. Falls $I = \emptyset$ setzen wir $\Lin((v_i)_{i\in\emptyset}) := \{0\}$
+  #+end_defn
+  #+begin_remark latex
+  Ein Element $v \in V$ ist genau dann in $\Lin((v_i)_{i\in I})$ enthalten, wenn es eine endliche Teilmenge $\{i_1, \ldots, i_r\} \subseteq I$ und Elemente $\alpha_{i_1}, \ldots, \alpha_{i_r} \in K$ gibt mit
+  \[v = \alpha_{i_1} v_{i_1} + \ldots + \alpha_{i_r} v_{i_r}\]
+  Insbesondere ist mit $\Lin((v_i)_{i\in I}) = \bigcup_{J\subseteq I} \Lin((v_i)_{i\in J})$
+  #+end_remark
+  #+ATTR_LATEX: :options [8.12]
+  #+begin_ex latex
+  $V = K[t]$ als K-VR \\
+  Es ist \[\Lin((t^n)_{n\in\mathbb{N}_0}) = \{\sum_{i\in\mathbb{N}_0} \alpha_i t^i \mid \alpha_i \in K, \alpha_i = 0~\text{für fast alle $i\in \mathbb{N}_0$}\} = K[t]\]
+  #+end_ex
+  #+ATTR_LATEX: :options [8.13]
+  #+begin_remark latex
+  $V$ K-VR, $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. Dann gilt:
+  1. $\Lin((v_i)_{i\in I})$ ist ein UVR von $V$
+  2. Ist $U\subseteq V$ ein UVR mit $v_i \in U\Forall i\in I$, ann ist $\Lin((v_i)_{i\in I}) \subseteq U$
+	 das heißt $\Lin((v_i)_{i\in I})$ ist das bezüglich "$\subseteq$" kleinste Element der Menge derjenigen UVR von $V$ die alle $v_i, i\in I$ enthalten
+  3. \[\Lin((v_i)_{i\in I}) = \bigcap_{\mathclap{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}}} U\]
+  #+end_remark
+  #+begin_proof latex
+  Falls $I = \emptyset$, dann $\Lin((v_i)_{i\in I}) = \{0\}$, dann 1. klar, und jeder UVR $U$ von $V$ enthält alle $v_i, i\in \emptyset$, und enthält $\{0\} \Rightarrow$ 2. Außerdem
+  \[\bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U = \bigcap_{\text{$U$ UVR von $V$}} U = \{0\} = \Lin((v_i)_{i\in\emptyset})\]
+  es folgt 3. \\
+
+  Im Folgenden sie $I \neq \emptyset$. Wir setzen $W:= \Lin((v_i)_{i\in I})$
+  1.
+	 - (U1): Sei $i \in I$ (Existenz wegen $I \neq \emptyset$). Dann ist $0\cdot v_i = 0\in W$, insbesondere $W\neq\emptyset$
+	 - (U2): Es seinen $v,w \in W$
+	   \begin{align*}
+	   \Rightarrow \Exists r\in\mathbb{N}, \{i_1, \ldots, i_r\} \subseteq I, \alpha_{i_1}, \ldots, \alpha_{i_r} \in K,~\text{mit}~v = \alpha_{i_1} v_{i_1} + \ldots + \alpha_{i_r} v_{i_r} \\
+	   \intertext{sowie}
+	   s\in\mathbb{N}, \{j_1, \ldots, j_r\} \subseteq I, \beta_{j_1}, \ldots, \beta_{j_r} \in K,~\text{mit}~w = \beta_{j_1} v_{j_1} + \ldots + \beta_{j_r} v_{j_r} \\
+	   \Rightarrow v + w = \alpha_{i_1} v_{i_1} + \ldots + \alpha_{i_r} v_{i_r} + \beta_{j_1} v_{j_1} + \ldots + \beta_{j_s} v_{j_s} \in W
+	   \end{align*}
+	 - (U3): Für $\lambda \in K, v\in W$ wie bei (U2) ist
+	   \[\lambda v = \lambda \alpha_{i_1} v_{i_1} + \ldots + \lambda \alpha_{i_r} v_{i_r} \in W\]
+  2. Sei $U\subseteq V$ UVR mit $v_i \in U \Forall i\in I$ \\
+	 \Rightarrow Jedes Element der Form $\displaystyle \sum_{i \in I} \alpha_i v_i$ mit $\alpha_i \in K \Forall i\in I, \alpha_i = 0$ für fast alle $i\in I$, liegt
+	 in $U$. \Rightarrow $\Lin((v_i)_{i\in I}) = W \subseteq U$.
+  3. zu zeigen: \[\Lin((v_i)_{i \in I}) = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
+	 "$\subseteq$" Wegen 2. liegt $\Lin((v_i)_{i\in I})$ in jedem UVR $U$ von $V$, der alle $v_i, i\in I$ enthält
+	 \[\Rightarrow \Lin((v_i)_{i\in I} = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
+	 "$\supseteq$" Nach 1. ist $W = \Lin((v_i)_{i\in I}$ ist ein UVR von $V$ mit $v_i \in W \Forall i\in I$, das heißt $W$ ist einer der UVR, über die der obige Durchschnitt gebildet wird
+	 \[\Rightarrow \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U \subseteq W = \Lin((v_i)_{i\in I})\]
+  #+end_proof
+  *Notation*:
+  Ist $M\subseteq V$, dann setzen wir $\Lin(M) := \Lin((m)_{m \in M})$ (= kleinster UVR von $V$, der alle Elemente aus $M$ enthält)
+  Vorteil der Definition von $\Lin(\ldots)$ für Familien von Vektoren: Bei Familien ist es sinnvoll zu sagen, dass ein Vektor mehrfach vorkommt (im Gegensatz zu Mengen), darüber hinaus haben die Vektoren der Familie $(v_i)_{i \in I}$ im wichtigen Spezailfall $I = \{1,\ldots,n\}$,
+  Familie $(v_1, \ldots, v_n)$ eine natürliche Reigenfolge. Diese geht verloren, wenn man die Menge $\{v_1, \ldots, v_n\}$ betrachtet (zum Beispiel in $\mathbb{R}^2:\{e_1, e_2\} = \{e_2, e_1\}$, aber $(e_1, e_2) \neq (e_2, e_1)$)
+  #+ATTR_LATEX: :options [8.14]
+  #+begin_defn latex
+  $V$ K-VR, $(v_1, \ldots, v_r)$ endliche Familie von Vektoren aus $V$, $(v_1, \ldots, v_r)$ *linear unabhängig*
+  \[\xLeftrightarrow{\text{Def}} \lambda_1, \ldots, \lambda_r \in K, \lambda_1 v_1 + \ldots + \lambda_r v_r = 0 \Rightarrow \lambda_1 = \ldots = \lambda_r = 0\]
+  Mit anderen Worten: Der Nullvektor lässt sich nur auf triviale Weise aus der Familie $(v_1, \ldots, v_r)$ linear kombinieren. \\
+  $(v_i)_{i\in I}$ heißt *linear abhängig* $\xLeftrightarrow{\text{Def}} (v_1, \ldots, v_r)$ ist nicht linear unabhängig
+  \[\Leftrightarrow \Exists \lambda_1, \ldots, \lambda_r \in K: (\lambda_1, \ldots, \lambda_r) \neq (0, \ldots, 0) \wedge \lambda_1 v_1 + \ldots + \lambda_r v_r = 0\]
+  $(v_i)_{i\in I}$ Familie von Vektoren aus $V$ \\
+  $(v_i)_{i\in I}$ heißt linear unabhängig $\xLeftrightarrow{\text{Def}}$ Jede endliche Teilfamilie von $(v_i)_{i\in I}$ ist linear unabhängig, das heißt für jede endliche Teilmenge $J\subseteq I$ ist $(v_i)_{i\in I}$ linear unabhängig. \\
+  $(v_i)_{i\in I}$ heißt lenar abhängig $\xLeftrightarrow{\text{Def}}$ $(v_i)_{i\in I}$ ist nicht linear unabhängig \\
+  \Leftrightarrow $\Exists$ eine endliche Teilfamilie $(v_i)_{i\in J}$ von $(v_i)_{i \in I}$, die linear abhängig ist \\
+  \Leftrightarrow Es gibt eine endliche Teilmenge $J = \{i_1, \ldots, i_r\} \subseteq I, \lambda_{i_1},\ldots,\lambda_{i_r} \in K$ mit
+  \[(\lambda_{i_1}, \ldots, \lambda_{i_r}) \neq (0, \ldots, 0) \wedge \lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r} = 0\]
+  $M \subseteq V$ heißt linear (un-)ubhängig \Leftrightarrow $(m)_{m\in M}$ ist linear (un-)abhängig.
+  #+end_defn
+  #+begin_remark latex
+  - Man sagt häufig statt "$(v_1, \ldots, v_r)$ ist linear (un-)abhängig" auch "die Vektoren $v_1, \ldots, v_r$" sind linear (un-)abhängig."
+  - Konvention: $()$ ist linear unabhängig.
+  #+end_remark
+  #+ATTR_LATEX: :options [8.15]
+  #+begin_ex latex
+  \mbox{}
+  1. $V = K^n$ als K-VR \\
+	 Die Familie $(e_1, \ldots, e_n)$ (vgl 8.10) ist linear unabhängig, denn:
+	 Sind $\lambda_1, \ldots, \lambda_n \in K$ mit $\lambda_1 e_1 + \ldots + \lambda_n e_n = 0$, dann ist
+	 \[\underbrace{\underbrace{\lambda_1 (1, 0, \ldots, 0)}_{=(\lambda_1, 0, \ldots, 0)} + \underbrace{\lambda_2 (0, 1, 0, \ldots, 0)}_{= (0, \lambda_2, 0, \ldots, 0)} + \underbrace{\ldots + \lambda_n (0, \ldots, 0, 1)}_{=(0,\ldots,0,\lambda_n)}}_{= (\lambda_1, \ldots, \lambda_n)} = 0\]
+	 \Rightarrow $\lambda_1 = \lambda_2 = \ldots = \lambda_n = 0$
+  2. $K = \mathbb{R}, V = \mathbb{R}^2$ \\
+	 Die Familie $((1, -1), (0,2), (1,2))$ ist linearabhängig, denn:
+	 \[2\cdot(1,-1) + 3\cdot(0,2) - 2\cdot(1,2) = 0\]
+	 es gibt also eine nichttiviale Linearkombination der Null aus den Vektoren dieser Familie.
+  3. $V = K[t]$ als K-VR \\
+	 Die Familie $(t^n)_{n\in \mathbb{N}_0}$ ist linear unabhängig, denn: \\
+	 Sei $J = \{n_1, \ldots, n_r\} \subseteq \mathbb{N}_0$ eine endliche Teilmenge von $\mathbb{N}_0$, und sind $\lambda_{n_1}, \ldots, \lambda_{n_r} \in K$
+	 dann folgt aus
+	 \[\lambda_{n_1}t^{n_1} + \ldots + \lambda_{n_r} t^{n_r} = 0\]
+	 sofort: $\lambda_{n_1} = \ldots = \lambda_{n_r} = 0$ (vergleiche Definition von "$=$" von Polynomen)
+	 Also: Jede endliche Teilfamilie von $(t^n)_{n\in\mathbb{N}_0}$ ist linear unabhängig, also ist $(t^n)_{n\in\mathbb{N}_0}$ linear unabhängig.
+  #+end_ex
+  #+ATTR_LATEX: :options [8.16]
+  #+begin_remark latex
+  $V$ K-VR, $(v_i)_{i\in I}$ Familie von Vektoren aus $V$ \\
+  Dann sind äquivalent:
+  1. $(v_i)_{i \in I}$ ist linear unabhängig
+  2. Jeder Vektor $v \in \Lin((v_i)_{i\in I})$ lässt sich in eindeutiger Weise aus Vektoren deren Familie $(v_i)_{i\in I}$ linear kombinieren.
+  #+end_remark
+  #+begin_proof latex
+  1. \Rightarrow 2.: Sei $(v_i)_{i\in I}$ linear unabhängig, $v\in \Lin((v_i)_{i\in I}) \Rightarrow \Exists$ eine Familie $(\lambda_i)_{i\in I}$ von Elementen aus $K$ mit
+	 $\lambda_i = 0$ für fast alle $i\in I$, sodass
+	 \[v = \sum_{i=I} \lambda_i v_i\]
+	 (\Rightarrow Existenz einer Linearkombination) \\
+	 Es sei nun $(\mu_i)_{i\in I}$ eine weitere Familie von Elementen aus $K$ mit $\mu_i = 0$ für fast alle $i \in I$ sodass
+	 \[v = \sum_{i = I} \lambda_i v_i = \sum_{i\in I} \mu_i v_i\]
+	 Wir setzen $J:= \{i\in I \mid \lambda_i \neq 0\} \cup \{i \in I \mid \mu_i \neq 0\}$. Nach Konstruktion ist $J$ endlich, und es ist
+	 \[\underbrace{\sum_{i\in J} (\lambda_i - \mu_i) v_i}_{=\sum_{i\in I} (\lambda_i - \mu_i) v_i} = 0\]
+	 Da $(v_i)_{i\in I}$ linear unabhängig, ist die endliche Teilfamilie $(v_i)_{i\in J}$ linear unabhängig \Rightarrow $\lambda_i - \mu_i = 0 \Forall i\in J \Rightarrow \lambda_i = \mu_i \Forall i\in J$
+	 für $i\in J\setminus J$ ist ohnehin $\lambda_i = \mu_i = 0$
+	 \[\Rightarrow \lambda_i = \mu_i \Forall i\in I\]
+  2. \Rightarrow 1.: Wir setzen voraus, dass sich jeder Vektor $v\in\Lin((v_i)_{i\in I})$ eindeutig aus Vektoren der Familie $(v_i)_{i\in I}$ linear kombinieren lässt. \\
+	 zu zeigen: $(v_i)_{i\in I}$ ist linear unabhängig, das heißt jede endliche Teilfamilie $(v_i)_{i\in I}$ ist linear unabhängig denn:
+	 Sei $J \subseteq I$ endlich, und sei $(\lambda_i)_{i\in J}$ eine Familie von Elemente aus $K$ mit
+	 \[\sum_{i\in J}\lambda_i v_i = 0\]
+	 Da auch
+	 \[\sum_{i\in J} 0 \cdot \v_i = 0\]
+	 ist, folgt aus der vorrausgesetzen Eindeutigkeit der Linearkombination, dass $\lambda_i = 0 \Forall i\in J \Rightarrow (v_i)_{i\in J}$ ist linear unabhängig
+  #+end_proof

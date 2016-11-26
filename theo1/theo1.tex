@@ -1,4 +1,4 @@
-% Created 2016-11-24 Do 12:43
+% Created 2016-11-25 Fr 18:09
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1132,6 +1132,22 @@ A \equiv \abs{A}e^{\I \phi} = \frac{f}{m}\cdot\frac{1}{\omega^2 - \ubar\omega^2 
 \end{align*}
 Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der inhomogenen Gleichung die allgemeine Lösung der homogenen Gleichung addiert.
 
-Wichtig: Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\Rightarrow$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
+\textbf{Wichtig:} Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\Rightarrow$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
+\section{Symmetrie der Raumzeit}
+\label{sec-6}
+\subsection{Der Euklidische Raum}
+\label{sec-6-1}
+physikalischer Raum: $V = \mathbb{R}^3$ mit Skalarprodukt $\v x, \v y \to \v x \cdot \v y = x^i y^i$ \\
+   Unser Ziel:
+Symmetrien, also Abbildungen $R: V \to V, \v x \mapsto \v x'$, welche die Struktur des Raumes respektieren.
+Das heißt:
+\begin{align*}
+R(\alpha \v x + \beta \v x) &= \alpha R(\v x) + \beta R(\v y) \\
+R(\v x, \v y) \underarrow[\equiv]{Sagt nur: Zahlen trasformieren nicht} \v x  \v y = R(x)R(y)
+\end{align*}
+Zunächst nur Linearitätsbedingung (wird respektiert von allgemeinen linearen Transformationen)
+\[x^i \mapsto x^{\prime i} = R^{i j} x^j\]
+oder
+\[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix}\]
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
