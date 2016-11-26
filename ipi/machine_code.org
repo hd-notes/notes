@@ -1,0 +1,20 @@
+* Maschienensprachen
+  - optimiert für die Hardware
+  - Gegensatz: höhere Programmiersprachen (c++)
+	- optimiert für Programmierer
+  - Compiler oder Interpreter übersetzen Hoch- in Maschinensprache
+** Umwandlung in Maschinensprache
+  1. Eingaben und (Zwischen)-Ergebnisse werden in Speicherzellen abgespeichert \Rightarrow jeder Knoten im Baum bekommt eine Speicherzelle
+  2. Speicherzellen für Eingaben initialisieren
+	 - Notation: SpZ \leftarrow Wert
+  3. Rechenoperationen in Reihenfolge des Substitutionsmodell ausführen und in der jeweiligen Speicherzelle speichern
+	 - Notation: SpZ-Ergebniss \leftarrow fname SpZArg1 SpZArg2
+  4. alles in Zahlencode umwandeln
+	 - Funktionsnamen:
+	   | Opcode | Wert |
+	   |--------+------|
+	   | init   | 1    |
+	   | add    | 2    |
+	   | sub    | 3    |
+	   | mul    | 4    |
+	   | div    | 5    |

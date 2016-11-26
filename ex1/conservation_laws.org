@@ -1,0 +1,9 @@
+* Erhaltungssätze
+  \begin{align*}
+  \intertext{falls $\v F_{außen} =0$}
+  \sum \v p_i &= \sum \v p'_i = \text{const} \\
+  \sum E_{kin,i} &= \sum E'_{kin,i} + Q \\
+  Q &= 0 \tag*{elastisch} \\
+  Q &> 0 \tag*{inelastisch} \\
+  Q &x 0 \tag*{superelastisch} \\
+  \end{align*}

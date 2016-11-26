@@ -1,4 +1,4 @@
-% Created 2016-11-24 Do 18:33
+% Created 2016-11-27 So 00:26
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -50,16 +50,13 @@
 \tableofcontents
 
 
-\section{Klausur 10.02.2016}
-\label{sec-1}
-
 \section{Was ist Informatik?}
-\label{sec-2}
+\label{sec-1}
 "Kunst" Aufgaben mit Computerprogrammen zu lösen.
 \subsection{Teilgebiete}
-\label{sec-2-1}
+\label{sec-1-1}
 \subsubsection{theoretische Informatik (\textbf{ITH})}
-\label{sec-2-1-1}
+\label{sec-1-1-1}
 \begin{itemize}
 \item Berechenbarkeit: Welche Probleme kann man mit Informatik lösen und welche prinzipiell nicht?
 \item Komplexität: Welche Probleme kann man effizient lösen?
@@ -68,13 +65,13 @@
 \item verteilte Systeme: Wie sichert man, dass verteilte Systeme korrekt kommunizieren?
 \end{itemize}
 \subsubsection{technische Informatik (\textbf{ITE})}
-\label{sec-2-1-2}
+\label{sec-1-1-2}
 \begin{itemize}
 \item Auf welcher Hardware kann man Programme ausführen, wie baut man dies Hardware?
 \item CPU, GPU, RAM, HD, Display, Printer, Networks
 \end{itemize}
 \subsubsection{praktische Informatik}
-\label{sec-2-1-3}
+\label{sec-1-1-3}
 \begin{itemize}
 \item Wie entwickelt man Software?
 \item Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?\hfill \textbf{IPI}, \textbf{IPK}
@@ -90,7 +87,7 @@
 \end{itemize}
 \end{itemize}
 \subsubsection{angewante Informatik}
-\label{sec-2-1-4}
+\label{sec-1-1-4}
 \begin{itemize}
 \item Wie löst man Probleme aus einem anderem Gebiet mit Programmen?
 \item Informationstechnik
@@ -111,9 +108,9 @@
 \item Unterhaltung: Spiele, special effect im Film
 \end{itemize}
 \section{Wie unterscheidet sich Informatik von anderen Disziplinen?}
-\label{sec-3}
+\label{sec-2}
 \subsection{Mathematik}
-\label{sec-3-1}
+\label{sec-2-1}
 Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$ \\
    Informatik: \\
    Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann. \\
@@ -123,10 +120,10 @@ iteratives Verfahren: \\
    Initial Guess $y^{(0)} = 1$
 schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
 \section{Informatik}
-\label{sec-4}
+\label{sec-3}
 Lösugswege, genauer Algorithmen
 \subsection{Algorithmus}
-\label{sec-4-1}
+\label{sec-3-1}
 \textbf{schematische} Vorgehensweise mit der jedes Problem einer bestimmten \textbf{Klasse} mit \textbf{endliche} vielen \textbf{elementaren} Schritten / Operationen gelöst werden kann
 \begin{itemize}
 \item schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\Rightarrow$ Computer)
@@ -135,7 +132,7 @@ Lösugswege, genauer Algorithmen
 \item elementare Schrite / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
 \end{itemize}
 \subsection{Daten}
-\label{sec-4-2}
+\label{sec-3-2}
 Daten sind Symbole,
 \begin{itemize}
 \item die Entitäten und Eigenschaften der realen Welt im Computer representieren.
@@ -144,7 +141,7 @@ Daten sind Symbole,
 $\Rightarrow$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebniss).
 Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch"
 \subsubsection{Beispiele für Symbole}
-\label{sec-4-2-1}
+\label{sec-3-2-1}
 \begin{itemize}
 \item Zahlen
 \item Buchstaben
@@ -171,17 +168,17 @@ Interne Daten:
 \item Stoppuhr starten / Timeout
 \end{itemize}
 \subsection{Einfachster Computer}
-\label{sec-4-3}
+\label{sec-3-3}
 endliche Automaten (endliche Zustandsautomaten)
 \begin{itemize}
 \item befinden sich zu jedem Zeitpunkt in einem bestimmten Zustand aus einer vordefinierten endlichen Zustandsmenge
 \item äußere Ereignisse können Zustandsänderungen bewirken und Aktionen auslösen
 \end{itemize}
 \subsubsection{{\bfseries\sffamily TODO} Graphische Darstellung}
-\label{sec-4-3-1}
+\label{sec-3-3-1}
 graphische Darstellung: Zustände = Kreise, Zustandsübergänge: Pfeile
 \subsubsection{{\bfseries\sffamily TODO} Darstellung durch Übergangstabellen}
-\label{sec-4-3-2}
+\label{sec-3-3-2}
 Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
 \begin{center}
 \begin{tabular}{llll}
@@ -197,7 +194,7 @@ blinken aus & ($\Rightarrow$\{aus\},\{Alle LEDs aus, Timer stoppen\}) & ($\Right
 
 Variante: Timer läuft immer (Signal alle 0.3s) $\Rightarrow$ Timout ignorieren im Zustand "aus", "halb", "voll"
 \subsubsection{Beispiel 2:}
-\label{sec-4-3-3}
+\label{sec-3-3-3}
 \begin{align}
 &1~0~1~1~0~1~0 &= 2 + 8 + 16 + 74 &= 90_{\text{dez}} \\
 +&0~1~1~1~0~0~1 &= 1 + 8 + 16 + 32 &= 57_{\text{dez}} \\
@@ -205,7 +202,7 @@ Variante: Timer läuft immer (Signal alle 0.3s) $\Rightarrow$ Timout ignorieren 
 1~&0~0~1~0~0~1~1 &= 1 + 2 + 16 + 128 &= 147_{\text{dez}}\checkmark
 \end{align}
 \paragraph{Implementation mit Endlichen Automaten}
-\label{sec-4-3-3-1}
+\label{sec-3-3-3-1}
 Prinzipen:
 \begin{itemize}
 \item wir lesen die Eingangsdaten von rechts nach links
@@ -213,7 +210,7 @@ Prinzipen:
 \item Ergebnis wird von rechts nach link ausgegeben
 \end{itemize}
 \paragraph{{\bfseries\sffamily TODO} Skizze der Automaten}
-\label{sec-4-3-3-2}
+\label{sec-3-3-3-2}
 \begin{center}
 \begin{tabular}{lll}
 Zustand & Ereignis & Ausgeben\\
@@ -233,7 +230,167 @@ Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen 
 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\Rightarrow$ Übergang nach "Fehler",
 Aktion: Ausgeben einer Fehlermeldung
 \subparagraph{{\bfseries\sffamily TODO} Skizze Fehlermeldung}
-\label{sec-4-3-3-2-1}
+\label{sec-3-3-3-2-1}
+Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
+\begin{itemize}
+\item Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächnis")
+\item Automat kann nicht beliebig weit zählen, sondern nur bis zu einer vorgegebenen Grenze
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
+\node[initial,state] (0) {"0"};
+\node[state] (1) [right of=0] {"1"};
+\node[state] (2) [right of=1]{"2"};
+\node[state] (3) [right of=2]{"3"};
+\node[accepting,state] [below of=1] (end) {"stop"};
+\path (0) edge [loop above] node {"0"} (0)
+(0) edge node {"x"} (1)
+(0) edge node {$\emptyset$} (end)
+(1) edge [loop above] node {"0"} (1)
+(1) edge node {"x"} (2)
+(1) edge node {$\emptyset$} (end)
+(2) edge [loop above] node {"0"} (2)
+(2) edge node {"x"} (3)
+(2) edge node {$\emptyset$} (end)
+(3) edge [loop above] node {"$0\vee x$"} (3)
+(3) edge node {"x"} (3)
+(3) edge node {$\emptyset$} (end);
+\end{tikzpicture}
+\end{center}
+Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
+Spendiert man zusätzlichen Specher, geht mehr:
+\begin{itemize}
+\item Automat mit Stack-Speicher (Stapel oder Keller) $\Rightarrow$ Kellerautomat (Kontextfreie Sprachen)
+\item Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles auführen, was man intuitiv für berechenbar hält
+\end{itemize}
+Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
+Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
+Frage: Gibt es einen universellen Algorithms für alle berechenbare Probleme?
+Betrache formale Algorithmusbeschreibung als Teil der Eingabe des universellen Algorithmus.
+\section{Wie unterscheidet sich Informatik von anderen Disziplinen?}
+\label{sec-4}
+\subsection{Mathematik}
+\label{sec-4-1}
+Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$ \\
+   Informatik: \\
+   Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann. \\
+   Quadratwurzel: $y = \sqrt{x} \Leftrightarrow y \geq 0 \wedge y^2 = x (\Rightarrow x > 0)$ \\
+   Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
+iteratives Verfahren: \\
+   Initial Guess $y^{(0)} = 1$
+schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
+\section{Informatik}
+\label{sec-5}
+Lösugswege, genauer Algorithmen
+\subsection{Algorithmus}
+\label{sec-5-1}
+\textbf{schematische} Vorgehensweise mit der jedes Problem einer bestimmten \textbf{Klasse} mit \textbf{endliche} vielen \textbf{elementaren} Schritten / Operationen gelöst werden kann
+\begin{itemize}
+\item schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\Rightarrow$ Computer)
+\item alle Probleme einer Klasse: zum Beispiel: die Wurzel aus jeder beliebigen nicht-negativen Zahl, und nicht nur $\sqrt{11}$
+\item endliche viele Schritte: man kommt nach endlicher Zeit zur Lösung
+\item elementare Schrite / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
+\end{itemize}
+\subsection{Daten}
+\label{sec-5-2}
+Daten sind Symbole,
+\begin{itemize}
+\item die Entitäten und Eigenschaften der realen Welt im Computer representieren.
+\item die interne Zwischenergebnisse eines Algorithmus aufbewahren
+\end{itemize}
+$\Rightarrow$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebniss).
+Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch"
+\subsubsection{Beispiele für Symbole}
+\label{sec-5-2-1}
+\begin{itemize}
+\item Zahlen
+\item Buchstaben
+\item Icons
+\item Verkehrszeichen
+\end{itemize}
+aber: heutige Computer verstehen nur Binärzahlen $\Rightarrow$ alles andere muss man übersetzen
+Eingansdaten: "Ereignisse":
+\begin{itemize}
+\item Symbol von Festplatte lesen oder per Netzwerk empfangen
+\item Benutzerinteraktion (Taste, Maus, \ldots{})
+\item Sensor übermittelt Meßergebnis, Stoppuhr läuft ab
+\end{itemize}
+Ausgangsdaten: "Aktionen":
+\begin{itemize}
+\item Symbole auf Festplatte schreiben, per Netzwerk senden
+\item Benutzeranzeige (Display, Drucker, Ton)
+\item Stoppuhr starten
+\item Roboteraktion ausführen (zum Beispiel Bremsassistent)
+\end{itemize}
+Interne Daten:
+\begin{itemize}
+\item Symbole im Hauptspeicher oder auf Festplatte
+\item Stoppuhr starten / Timeout
+\end{itemize}
+\subsection{Einfachster Computer}
+\label{sec-5-3}
+endliche Automaten (endliche Zustandsautomaten)
+\begin{itemize}
+\item befinden sich zu jedem Zeitpunkt in einem bestimmten Zustand aus einer vordefinierten endlichen Zustandsmenge
+\item äußere Ereignisse können Zustandsänderungen bewirken und Aktionen auslösen
+\end{itemize}
+\subsubsection{{\bfseries\sffamily TODO} Graphische Darstellung}
+\label{sec-5-3-1}
+graphische Darstellung: Zustände = Kreise, Zustandsübergänge: Pfeile
+\subsubsection{{\bfseries\sffamily TODO} Darstellung durch Übergangstabellen}
+\label{sec-5-3-2}
+Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
+\begin{center}
+\begin{tabular}{llll}
+Zustände $\backslash$ Ereignisse & Knopf drücken & Timeout & Timeout(Variante)\\
+\hline
+aus & $\Rightarrow$\{halb\} \\ \{4 LEDs an\} & \% & ($\Rightarrow$\{aus\},\{nichts\})\\
+halb & ($\Rightarrow$\{voll\},\{8 LEDs an\}) & \% & ($\Rightarrow$\{aus\},\{nichts\})\\
+voll & ($\Rightarrow$\{blinken an\},\{Timer starten\}) & \% & ($\Rightarrow$\{aus\},\{nichts\})\\
+blinken an & ($\Rightarrow$\{aus\},\{Alle LEDs aus, Timer stoppen\}) & ($\Rightarrow$\{blinken aus\},\{alle LEDs aus, Timer starten\}) & ($\Rightarrow$\{blinken aus\},\{8 LEDs aus\})\\
+blinken aus & ($\Rightarrow$\{aus\},\{Alle LEDs aus, Timer stoppen\}) & ($\Rightarrow$\{blinken an\},\{alle LEDs an, Timer starten\}) & ($\Rightarrow$\{blinken an\},\{8 LEDs an\})\\
+\end{tabular}
+\end{center}
+
+Variante: Timer läuft immer (Signal alle 0.3s) $\Rightarrow$ Timout ignorieren im Zustand "aus", "halb", "voll"
+\subsubsection{Beispiel 2:}
+\label{sec-5-3-3}
+\begin{align}
+&1~0~1~1~0~1~0 &= 2 + 8 + 16 + 74 &= 90_{\text{dez}} \\
++&0~1~1~1~0~0~1 &= 1 + 8 + 16 + 32 &= 57_{\text{dez}} \\
+\hline
+1~&0~0~1~0~0~1~1 &= 1 + 2 + 16 + 128 &= 147_{\text{dez}}\checkmark
+\end{align}
+\paragraph{Implementation mit Endlichen Automaten}
+\label{sec-5-3-3-1}
+Prinzipen:
+\begin{itemize}
+\item wir lesen die Eingangsdaten von rechts nach links
+\item Beide Zahlen gleich lang (sonst mit 0en auffüllen)
+\item Ergebnis wird von rechts nach link ausgegeben
+\end{itemize}
+\paragraph{{\bfseries\sffamily TODO} Skizze der Automaten}
+\label{sec-5-3-3-2}
+\begin{center}
+\begin{tabular}{lll}
+Zustand & Ereignis & Ausgeben\\
+\hline
+start & (0,1) & "1"\\
+start & (1,0) & "1"\\
+start & (0,0) & "0"\\
+start & (1,1) & "0"\\
+carry = 1 & (1,1) & "1"\\
+carry = 1 & (0,1) & "0"\\
+carry = 1 & (1.0) & "0"\\
+carry = 1 & $\emptyset$ & "1"\\
+\end{tabular}
+\end{center}
+\textbf{Wichtig:} In jedem Zustand muss für \textbf{alle möglichen} Ereignisse eine Aktion und Folgezustand definiert werden.
+Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen "Bug".
+Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\Rightarrow$ Übergang nach "Fehler",
+Aktion: Ausgeben einer Fehlermeldung
+\subparagraph{{\bfseries\sffamily TODO} Skizze Fehlermeldung}
+\label{sec-5-3-3-2-1}
 Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
 \begin{itemize}
 \item Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächnis")
@@ -271,7 +428,7 @@ Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
 Frage: Gibt es einen universellen Algorithms für alle berechenbare Probleme?
 Betrache formale Algorithmusbeschreibung als Teil der Eingabe des universellen Algorithmus.
 \section{Substitutionsmodell (funktionale Programmierung)}
-\label{sec-5}
+\label{sec-6}
 \begin{itemize}
 \item einfaches Modell für arithmetische Berechnung "Taschenrechner"
 \item Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißten "Literale"
@@ -285,7 +442,7 @@ Betrache formale Algorithmusbeschreibung als Teil der Eingabe des universellen A
 \end{itemize}
 \end{itemize}
 \subsection{Substitutionsmodell}
-\label{sec-5-1}
+\label{sec-6-1}
 Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen sind) durch den Wert des Ergebnisses ersetzen ("substituieren"). Geschachtelte Ausdrücke lassen sich so von innen nach außen auswerten.
 \[mul(add(1,2),sub(5,3))\]
 \[mul(3,sub(5,3))\]
@@ -323,7 +480,7 @@ Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen s
 \end{enumerate}
 \end{itemize}
 \subsection{Bäume}
-\label{sec-5-2}
+\label{sec-6-2}
 \begin{itemize}
 \item bestehen aus Knoten und Kanten (Kreise und Pfeile)
 \item Kanten verbinden Knoten mit ihren Kind-knoten
@@ -341,17 +498,17 @@ Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen s
 \end{itemize}
 \end{itemize}
 \subsubsection{Beispiel}
-\label{sec-5-2-1}
+\label{sec-6-2-1}
 \[1 + 2 + 3 * 4 / (1 + 5) - 2\]
 \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 \begin{center}
 \Tree [ .sub [ .add [ .add 1 2 ] [ .div [ .mul 3 4 ] [ .add 1 5 ] ] ] 2 ]
 \end{center}
 \subsection{Rekursion}
-\label{sec-5-3}
+\label{sec-6-3}
 Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
 \subsection{Prefixnotation aus dem Baum rekonstruieren}
-\label{sec-5-4}
+\label{sec-6-4}
 \begin{enumerate}
 \item \label{algstart1} Wenn die Wurzel ein Blatt ist: Drucke die Zahl
 \item sonst:
@@ -366,7 +523,7 @@ Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
 $\Rightarrow$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 \end{enumerate}
 \subsection{Prefixnotation aus dem Baum rekonstruieren}
-\label{sec-5-5}
+\label{sec-6-5}
 \begin{enumerate}
 \item \label{algstart2} Wenn die Wurzel ein Blatt ist: Drucke die Zahl
 \item sonst:
@@ -382,7 +539,7 @@ $\Rightarrow$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 \end{enumerate}
 $\Rightarrow$ \textbf{inorder}
 \subsection{Berechnen des Werts mit Substitutionsmethode}
-\label{sec-5-6}
+\label{sec-6-6}
 \begin{enumerate}
 \item \label{algstart3} Wenn Wurzel dein Blatt gib Zahl zurück
 \item sonst:
@@ -394,7 +551,7 @@ $\Rightarrow$ \textbf{inorder}
 \end{enumerate}
 $\Rightarrow$ \textbf{postorder}
 \section{Maschienensprachen}
-\label{sec-6}
+\label{sec-7}
 \begin{itemize}
 \item optimiert für die Hardware
 \item Gegensatz: höhere Programmiersprachen (c++)
@@ -404,7 +561,7 @@ $\Rightarrow$ \textbf{postorder}
 \item Compiler oder Interpreter übersetzen Hoch- in Maschinensprache
 \end{itemize}
 \subsection{Umwandlung in Maschinensprache}
-\label{sec-6-1}
+\label{sec-7-1}
 \begin{enumerate}
 \item Eingaben und (Zwischen)-Ergebnisse werden in Speicherzellen abgespeichert $\Rightarrow$ jeder Knoten im Baum bekommt eine Speicherzelle
 \item Speicherzellen für Eingaben initialisieren
@@ -432,14 +589,14 @@ div & 5\\
 \end{itemize}
 \end{enumerate}
 \section{Funktionale Programmierung}
-\label{sec-7}
+\label{sec-8}
 \begin{itemize}
 \item bei Maschienensprache werden Zwischenergebnisse in Speicherzellen abgelegt
 \item das ist auch in der funktionalen Programmierung eine gute Idee
 \item Speicherzellen werden duch Namen (vom Programmierer vergeben) unterschieden
 \end{itemize}
 \subsection{Beispiel}
-\label{sec-7-1}
+\label{sec-8-1}
 Lösen einer quadratischen Gleichung:
 \[ax^2 + bx + c = 0\]
 \[x^2 - 2px + q = 0, p = -\frac{b}{2a},q=\frac{c}{d}\]
@@ -453,7 +610,7 @@ mit Zwischenergebniss und Infix Notation
 \[x_1\leftarrow p + d\]
 \[x_2\leftarrow p - d\]
 \subsection{Vorteile von Zwischenergebnissen}
-\label{sec-7-2}
+\label{sec-8-2}
 \begin{enumerate}
 \item lesbarer
 \item redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der Initialisierung nicht mehr verändert werden
@@ -467,7 +624,7 @@ $\Rightarrow$ $d \leftarrow sqrt(sq(p) - q)$
 Speicherzelle mit Namen "x" für das Argument von $sq$
 \end{enumerate}
 \subsection{Funktionale Programmierung in c++}
-\label{sec-7-3}
+\label{sec-8-3}
 \begin{itemize}
 \item in c++ hat jede Speicherzelle einen Typ (legt Größe und Bedeutung der Speicherzelle fest)
 \begin{itemize}
@@ -500,7 +657,7 @@ std::cout << "x1: " << x1 << ", x2: " << x2 << std::endl;
 // Kommentar (auch /* */)
 type_ergebnis fname(type_arg1 name1, ...) {
 	// Signatur / Funkitonskopf / Deklaration
-	return ergebnis;                      
+	return ergebnis;
 	/* Funktionskörper / Definition / Implementation */
 }
 \end{minted}
@@ -591,9 +748,9 @@ int main() {
 \end{itemize}
 \end{itemize}
 \section{Prozedurale Programmierung}
-\label{sec-8}
+\label{sec-9}
 \subsection{Von der Funktionalen zur prozeduralen Programmierung}
-\label{sec-8-1}
+\label{sec-9-1}
 \begin{itemize}
 \item Eigenschaften der Funktionalen Programmierung:
 \begin{itemize}
@@ -623,9 +780,9 @@ int main() {
 \end{itemize}
 \end{itemize}
 \subsection{Kennzeichen}
-\label{sec-8-2}
+\label{sec-9-2}
 \subsubsection{Prozeduren}
-\label{sec-8-2-1}
+\label{sec-9-2-1}
 \begin{itemize}
 \item Prozeduren: Funktionen, die nichts zurückgeben, haben nur Seiteneffekte
 \begin{itemize}
@@ -647,7 +804,7 @@ void foo(int x) {
 \end{itemize}
 \end{itemize}
 \subsubsection{Steuerung des Programmablaufs}
-\label{sec-8-2-2}
+\label{sec-9-2-2}
 \begin{itemize}
 \item Anweisungen zur Steuerung des Programmablaufs
 \begin{minted}[]{cpp}
@@ -677,7 +834,7 @@ int abs(int x) {
 \end{itemize}
 \end{itemize}
 \subsubsection{Veränderung von Speicherzellen}
-\label{sec-8-2-3}
+\label{sec-9-2-3}
 \begin{itemize}
 \item Zuweisung: Speicherzellen können nachträglich verändert werden ("read-write")
 \begin{itemize}
@@ -715,7 +872,7 @@ typ const name = neuer_wert; // write once
 \end{itemize}
 \end{itemize}
 \subsubsection{Schleifen}
-\label{sec-8-2-4}
+\label{sec-9-2-4}
 Der gleiche Code soll oft wiederholt werden
 \begin{minted}[]{cpp}
 while(bedingung) {
@@ -751,21 +908,21 @@ counter & Bedingung & Ausgabe\\
 \end{itemize}
 \end{itemize}
 \subsubsection{prozedurale Wurzelberechung}
-\label{sec-8-2-5}
+\label{sec-9-2-5}
 \paragraph{Ziel}
-\label{sec-8-2-5-1}
+\label{sec-9-2-5-1}
 \begin{minted}[]{cpp}
 double sqrt(double y);
 \end{minted}
 \paragraph{Methode}
-\label{sec-8-2-5-2}
+\label{sec-9-2-5-2}
 iterative Verbesserung mittel Newtonverfahren
 initial$_{\text{guess}}$ $x^{(0)}$ ("geraten"), t = 0 \\
      while not$_{\text{good}}$$_{\text{enough}}$($x^{(t)}$): \\
          update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
          t = t + 1 \\
 \subparagraph{Newtonverfahren}
-\label{sec-8-2-5-2-1}
+\label{sec-9-2-5-2-1}
 Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
 Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta +$ setze $x^\ast = x + \Delta$
 \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \Rightarrow \Delta = - \frac{f(x)}{f'(x)}\]
@@ -792,7 +949,7 @@ double sqrt(double y) {
 }
 \end{minted}
 \subsubsection{for-Schleife}
-\label{sec-8-2-6}
+\label{sec-9-2-6}
 \begin{minted}[]{cpp}
 int c = 0;
 while(c < 3) {
@@ -850,17 +1007,16 @@ double sqrt(double y) {
 	}
 }
 \end{minted}
-
 \section{Datentypen}
-\label{sec-9}
+\label{sec-10}
 \subsection{Basistypen}
-\label{sec-9-1}
+\label{sec-10-1}
 Bestandteil der Sprachsyntax und normalerweise direkt von der Hardware unterstützt (CPU)
 \begin{itemize}
 \item int, double, bool ($\Rightarrow$ später mehr)
 \end{itemize}
 \subsection{zusammengesetzte Typen}
-\label{sec-9-2}
+\label{sec-10-2}
 mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
 \begin{itemize}
 \item wie das geht $\Rightarrow$ später
@@ -879,7 +1035,7 @@ Durch "objekt-orientierte Programmierung" ($\Rightarrow$ später) erreicht man, 
 
 $\Rightarrow$ Punktsyntax: type$_{\text{name}}$ t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 \subsection{Zeichenketten-Strings:}
-\label{sec-9-3}
+\label{sec-10-3}
 zwei Datentypen in c++
 \begin{itemize}
 \item klassischer c-string: char[] ("charakter array") $\Rightarrow$ nicht gekapselt, umständlich
@@ -960,7 +1116,7 @@ for(int i = s.size() - 1; i >= 0; i--) {
 \end{itemize}
 \end{itemize}
 \section{Umgebungsmodell}
-\label{sec-10}
+\label{sec-11}
 Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für die prozedurale Programmierung
 \begin{itemize}
 \item Regeln für Auswertung von Audrücken
@@ -1067,7 +1223,7 @@ int main() {
 \end{minted}
 \end{itemize}
 \section{Referenzen}
-\label{sec-11}
+\label{sec-12}
 sind neue (zusätzliche) Namen für vorhandene Speicherzellen
 \begin{minted}[]{cpp}
 int x = 3; // neue Variable x mit neuer Speicherzell
@@ -1113,7 +1269,7 @@ in der funktionalen Programmierungt sind Seiteneffekte grundsätzlich verboten, 
 \end{itemize}
 \end{itemize}
 \section{Container-Datentypen}
-\label{sec-12}
+\label{sec-13}
 Dienen dazu, andere Daten aufzubewahren
 \begin{itemize}
 \item Art der Elemente:
@@ -1179,7 +1335,7 @@ std::map<std::string, double> noten; noten["krause"] = 10;
 \item alle dynamischen und assoziativen Arrays unterstützen a.size() zum Abfragen der Grlße
 \end{itemize}
 \subsection{std::vector}
-\label{sec-12-1}
+\label{sec-13-1}
 \begin{itemize}
 \item Erzeugen:
 \begin{minted}[]{cpp}
@@ -1237,7 +1393,7 @@ std::sort(v.begin(), v.end()); // "in-place" sortieren
 \end{minted}
 \item Elemente mischen:
 \begin{minted}[]{cpp}
-std::random_shuffle(v.begin(), v.end()); "in-place" mischen
+std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 \end{minted}
 \end{itemize}
 \end{itemize}

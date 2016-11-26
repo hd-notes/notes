@@ -1,0 +1,427 @@
+* Gruppen, Ringe, Körper
+** Gruppe
+*** Verknüpfung
+	$M$ Menge, Eine Verknüpfung (inverse Verknüpfung) auf $M$ ist ein Abbildung \[*:M\times M \to M\]
+	Anstelle von $*(a,b)$ schreiben wir $a * b$
+**** Beispiel
+	 - $+: \mathbb{R} \times \mathbb{R} \to \mathbb{R},(a,b) \mapsto a + b$
+	 - $\cdot: \mathbb{R} \times \mathbb{R} \to \mathbb{R},(a,b) \mapsto a\cdot b$
+	 sind Verknüpfungen
+*** Monoid
+	Ein Monoid ist ein Tupel $(M,*)$, bestehend aus einer Menge $M$ und einer Verküpfung \\
+	$*:M\times M \to M$, welche folgende Bedingungen genügt:
+	- (M1) Die Verküpfung ist assoziativ, das heißt \[\Forall a,b,c\in M:(a*b)*c = a*(b*c) \]
+	- (M2) Ex existiert ein neutrales Element $e$ in $M$, das heißt \[\exists e\in M:\Forall a\in M e*a = a = a*e\]
+**** Beispiel
+	 - $(\mathbb{N}_0,+), (\mathbb{Z},+)$ sind Monoide (neutrales Element: $0$)
+	 - $(\mathbb{N},+)$ ist kein Monoid (ex existiert kein neutrales Element)
+	 - $(\mathbb{N},\cdot),(\mathbb{Z},\cdot)$ sind Monoide (neutrales Element: $1$)
+**** Bemerkung
+	 $(M,*)$ Monoid. Dann gibt es in $M$ genau ein neutrales Element.
+***** Beweis
+	  - Existenz: Es existert ein neutrales Element: folgt aus Definition eines Monoids
+	  - Eindeutigkeit: Seien $e,\tilde e \in M$ neutrale Element \[\Rightarrow e = e * \tilde e = \tilde e\]
+*** Inverses
+	$(M,*)$ Monoid mit neutralem Element $e$, $a\in M$
+	Ein Element $b\in M$ heit Inverses zu $a \xLeftrightarrow{\text{Def}} a * b = e = b * a$
+**** Beispiel
+	 - In $(\mathbb{Z},+)$ ist $-2$ ein Inverses zu $2$ denn $2 + (-2) = 0 = (-2) + 2$
+	 - In $(\mathbb{N}_0,+)$ existiert kein Inverses zu $2$, denn es existiert kein $n\in \mathbb{N}_0$ mit $n + n = 0 = n + 2$
+	 - <<invex>> In $(\mathbb{Z},\cdot)$ existiert kein Inverses zu $2$, denn es existiert kein $n\in\mathbb{Z}$ mit $2\cdot n = 1 = n \cdot 2$
+**** Bemerkung
+	 <<beminv>>
+	 $(M,*)$ Monid, $a\in M$ Dann gilt: besitzt $a$ ein Inverses, dann ist dieses eindeutig bestimmt.
+***** Beweis
+	  Seinen $b,\tilde b$ Inversen zu $a$, sein $e\in M$ das neutrale Element
+	  \[\Rightarrow b = e * b = (\tilde b * a) * b = \tilde b * (a * b) = \tilde b\]
+*** Gruppe
+	Eine Gruppe ist ein Tupel $(G,*)$, bestehen aus einer Menge $G$ und einer Verknüpfung $*:G\times G \to G$, sodass gilt:
+	- (G1) $(G,*)$ ist ein Monoid
+	- (G2) Jedes Element aus $G$ besitzt ein Inverses
+	In diesem Fall schreiben wir $a'$ für das nach [[beminv]] eindeutig bestimmte Inverse eines Elements $a\in G$
+**** Beispiel
+	 - $(\mathbb{Z},+)$ ist eine Gruppe, denn $(\mathbb{Z},+)$ ist ein Monoid und für $a\in\mathbb{Z}$ ist $-a$ das inverse Element: $a + (-a) = 0 = (-a) + a$
+	 - $(\mathbb{Z},\cdot)$ ist keine Gruppe, denn das Element $2\in\mathbb{Z}$ hat kein Inverses (vergleiche [[invex]]).
+	 - $(\mathbb{Q}\setminus \{0\},\cdot)$ ist eine Gruppe denn es ist ein Monoid mit neutralem Element $1$ und für jedes Element $a\in\mathbb{Q}\setminus\{0\}$ existiert ein $b\in \mathbb{Q}\setminus \{0\}$ mit $a\cdot b = 1 = b\cdot a$, nämlich $b = \frac{1}{a}$
+**** Bemerkung 5.11
+	 $(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
+	 1. (Kürzungsregel) \[a*b = a*c \Rightarrow b = c\] \[a*c = b * c \Rightarrow a = b\]
+	 2. $a*b = e \Rightarrow b = a'$
+	 3. $(a')' = a$
+	 4. (Regel von Hemd und Jacke) $(a*b)' = b' * a'$
+***** Beweis
+	  1. Sei $a * b = a * c \Rightarrow a'*(a*b) = a'*(a*c) \Rightarrow (a'*a)*b=(a'*a)*c \Rightarrow e*b = e*c \Rightarrow b = c$
+	  2. aus 1. $a*b = c = a*a' \Rightarrow b = a'$
+	  3. Es ist $a*a' = e = a' * a$, das heißt $a$ ist Inverses zu $a' \Rightarrow (a')' = a$
+	  4. Es ist $(a*b)*(b'*a') = a*(b*b')*a' = a*a' = e \Rightarrow b' * a' \xRightarrow{\text{2.}} (a *b)'$
+*** Abelsche Gruppe
+	$(M,*)$ Monoid / Gruppe heißt kommutativ (abelsch)
+	\[\xLeftrightarrow{\text{Def}} \Forall a,b\in M: a*b = b*a\]
+**** Beispiel
+	 Alle bisher betrachteten Beispiele von Monoiden beziehungsweise Gruppen sind abelsch
+**** Bemerkung 5.14
+	 $M$ Menge, Wir setzten $S(M):= \{f:M\to M | f~\text{bijektiv}\}$
+	 Dann ist $(S(M),\circ)$ eine Gruppen, die *symmetrische* Gruppe auf $M$
+***** Beweis
+	  1. "$\circ" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus [[Bemerkung 4.19]]
+	  2. "$\circ" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach [[4.9]]
+	  3. $id_M$ ist neutral: $id_M \in S(M)$ und $id_M\circ f = f = f\circ id_M \Forall f\in S(M)$
+	  4. Existenz von Inversen: $f\in S(M) \Rightarrow f$ bijektiv \Rightarrow Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
+		 für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "$\circ"
+*** Permutationen
+	$n\in\mathbb{N}$
+	\[S_n := S(\{1,\ldots,n\}) = \{\pi \{1,\ldots,n\} \to \{1,\ldots,n\} \mid \pi~\text{ist bijektiv}\}\]
+	$(S_n,\circ)$ heißt die symmetrische Gruppe auf $n$ Ziffern, Elemente aus $S_n$ heißen Permutationen.
+	Wir schreiben Permutationen $\pi \in S_n$ in der Form:
+	\begin{equation}
+	\pi =
+	\begin{pmatrix}
+	1 & 2 & \ldots & n \\
+	\pi(1) & \pi(2) & \ldots & \pi(n)
+	\end{pmatrix}
+	\end{equation}
+**** Beispiel
+	 In $S_3$ ist
+	 \begin{equation}
+	 \begin{pmatrix}
+	 1 & 2 & 3 \\
+	 1 & 3 & 2 \\
+	 \end{pmatrix}
+	 \circ
+	 \begin{pmatrix}
+	 1 & 2 & 3 \\
+	 3 & 2 & 1 \\
+	 \end{pmatrix}
+	 =
+	 \begin{pmatrix}
+	 1 & 2 & 3 \\
+	 2 & 3 & 1 \\
+	 \end{pmatrix}
+	 \end{equation}
+
+	 \begin{equation}
+	 \begin{pmatrix}
+	 1 & 2 & 3 \\
+	 3 & 2 & 1 \\
+	 \end{pmatrix}
+	 \circ
+	 \begin{pmatrix}
+	 1 & 2 & 3 \\
+	 1 & 3 & 2 \\
+	 \end{pmatrix}
+	 =
+	 \begin{pmatrix}
+	 1 & 2 & 3 \\
+	 3 & 1 & 2 \\
+	 \end{pmatrix}
+	 \end{equation}
+	 das heißt $(S_3,\circ)$ ist nicht abelsch.
+*** Restklassen
+**** Motivation
+	 Im täglischen Leben verwendet man zur Bestimmung von Uhrzeiten das Rechnen "modulo $24$", zum Beispiel 22Uhr + 7h = 5Uhr. Wir wollen dies mathematisch präzisieren und verallgemeinern
+**** Bemerkung 5.17
+	 $n\in\mathbb{N}$. Dann ist durch \[a \sim b \xLeftrightarrow{\text{Def}} \Exists q\in\mathbb{Z}:a - b = q n\]
+	 eine Äquivalenzrelatioin auf $\mathbb{Z}$ gegeben.
+	 Anstelle von $a\sim b$ schreiben wir auch $a\equiv b(\mod n)$ ("$n$ ist kongruent $b$ modulo $n$")
+	 Die Äquivalenzklasse von $a\in \mathbb{Z}$ ist durch
+	 \[\bar a := \{b\in\mathbb{Z}\mid b\equiv a(\mod n)\} = a + n\mathbb{Z} := \{a + n q \mid q\in \mathbb{Z}\}\]
+	 gegeben und heißt die Restklasse von $a$ modulo $n$.
+	 Die Menge aller Restklassen modulo $n$ wird $\frac{\mathbb{Z}}{n\mathbb{Z}}$ bezeichnet ("$\mathbb{Z}$ modulo $n\mathbb{Z}$")
+	 Es ist: \[\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0, \bar 1, \ldots, \overline{n - 1}\}\]
+	 und die Restklassen $\bar 0, \ldots, \overline{n - 1}$ sind paarweise verschieden
+***** Beweis
+	  1. "$\equiv$" ist eine Äquivalenzrelation, denn:
+		 - "$\equiv$" ist reflexiv: Fpr $a\in\mathbb{Z}$ ist $a\equiv a(\mod n)$ denn $a - a = 0 = 0 n$
+		 - "$\equiv$" ist symmetrisch: Seien $a,b\in\mathbb{Z}$ mit $a\equiv b(\mod n) \exists q\in\mathbb{Z}:a - b = q n$ \\
+		   \Rightarrow $b - a = (-q) n \Rightarrow b \equiv a(\mod n)$
+		 - "$\equiv$" ist transitiv: Seien $a,b,c\in\mathbb{Z}$ mit $a\equiv b(\mod n), b\equiv c(\mod n)$
+		   - \Rightarrow $\exists q_1,q_2 \in\mathbb{Z}$ mit $a - b = q_1 n, b - c = q_2 n$
+		   - \Rightarrow $a - c = (a - b) + (b - c) = q_1 n + q_2 n = (q_1 + 1_2) n \Rightarrow a \equiv c(\mod n)$
+	  2. Die Äquivalenzklasse von $n\in\mathbb{Z}$ ist gegeben durch
+		 \[\{b\in\mathbb{Z} \mid b = a(\mod n)\}\]
+		 \[= \{b\in\mathbb{Z} \mid \exists q\in\mathbb{Z}:b - a = qn\}\]
+		 \[= \{b\in\mathbb{Z} \mid \exists q\in\mathbb{Z}:b = a + q n\}\]
+		 \[= a + n\mathbb{Z} \]
+	  3. \[\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0, \bar 1, \ldots, \overline{n - 1}\}\]
+		 denn:
+		 - Ist $a\in\mathbb{Z}$ beliebig, dann liefert Division mit Rest durch $n$: \\
+		   Es gibt $q,r\in\mathbb{Z}$ mit $a = q n + r,0\leq r < n$
+		   \[\Rightarrow a - r = q n \Rightarrow q \equiv r(\mod n) \Rightarrow \bar a = \bar r\]
+		   Das heißt: Jede Restklasse ist von der Form $\bar r$ mit $r\in \{0,\ldots,n - 1\}$ \\
+		 - Die Restklassen $\bar 0, \bar 1, \ldots, \overline{n - 1}$ sind paarweise verschieden denn: \\
+		   Seien $a,b\in\{0,\ldots,n - 1\}$ mit $\bar a = \bar b \Rightarrow a \equiv b(\mod n) \Rightarrow \exists q\in \mathbb{Z}: a - b = q n \Rightarrow \abs{a - b} = \abs{q} n$.
+		   - Wäre $q\neq 0$, dann $\abs{q} \geq 1$ wegen $q\in\mathbb{Z} \Rightarrow \abs{a - b} \geq n$ *Wiederspruch* zu $a,b\in\{0,\ldots,n - 1\}$ \\
+			 Also: $q = 0$ das heißt $a = b$
+**** Beispiel
+	 $n = 3: a\equiv b (\mod 3) \Leftrightarrow \exists q\in\mathbb{Z}: a - b = 3 q$ \\
+	 zum Beispiel: $11 \equiv 5(\mod 3)$, denn $11 - 5 = 6 = 2 \cdot 3$ \\
+	 zum Beispiel: $7 \not\equiv 2(\mod 3)$, denn $7 - 2 = 5$ und es gibt kein $q\in\mathbb{Z}$ mit $5 = 3 q$
+	 \[\bar 0 = \{a\in\mathbb{Z}\mid a \equiv 0 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a = 3q\} = 3\mathbb{Z} = \{\ldots,-6,-3,0,3,6,\ldots\}\]
+	 \[\bar 1 = \{a\in\mathbb{Z}\mid a \equiv 1 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 1 = 3q\} = 1 + 3\mathbb{Z} = \{\ldots,-5,-2,1,4,7,\ldots\}\]
+	 \[\bar 2 = \{a\in\mathbb{Z}\mid a \equiv 2 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 2 = 3q\} = 2 + 3\mathbb{Z} = \{\ldots,-4,-1,2,5,8,\ldots\}\]
+	 \[\bar 3 = \{a\in\mathbb{Z}\mid a \equiv 3 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a - 3 = 3q\} = \{a\in\mathbb{Z}\mid \exists q\in\mathbb{Z}:a=3(q + 1)\}3\mathbb{Z} = \bar 0\]
+	 \[\bar 4 = \bar 1,\bar 5 = \bar 2,\overline{-1} = \bar 2\]
+**** Bemerkung 5.18
+	 $n\in\mathbb{N}$ wir definieren eine Verküpfung (Addition) auf $\frac{\mathbb{Z}}{n\mathbb{Z}}$ wie folgt: \\
+	 Für $\bar a,\bar b \in\frac{\mathbb{Z}}{n\mathbb{Z}}$ setzen wir $\bar a + \bar b = \overline{a + b}$
+	 Dann gilt $(\frac{\mathbb{Z}}{n\mathbb{Z}},+)$ ist eine abelsche Gruppe
+***** Beweis
+	  1. Die Verknüpfung ist wohldefiniert: \\ Problem: Die Addition verweendet Vertreter von Restklassen. Es ist zum Beispiel in $\frac{\mathbb{Z}}{n\mathbb{Z}}: \bar 3 + \bar 4 = \overline{3 + 4} = \bar 7 = \bar 2$, aber man könnte auch Rechnen:
+		 $\bar 3 + \bar 4 = \bar 8 + \bar 9 = \overline{8 + 9} = \overline{17} = \bar 2$ \\
+		 Wir müssen nachweisen, dass die Wahl der Vertreter keinen Einfluss auf das Ergebnis hat, das heißt die Verknüfung ist "vertreter unahbhängig": \\
+		 Seien $a_1,a_2 ,b_1,b_2 \in\mathbb{Z},\overline{a_1} = \overline{a_2},\overline{b_1} = \overline{b_2}$
+		 \begin{align}
+		 &\Rightarrow a_1 \equiv a_2(\mod n), b_1 \equiv b_2(\mod n) \\
+		 &\Rightarrow\exists q_1,q_2\in\mathbb{Z}: a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n n, b_1 - b_2 = q_2 n \\
+		 &\Rightarrow (a_1 + b_1) - (a_2 + b_2) = (a_1 - a_2)+ (b_1 - b_2) = q_1 n + q_2 n = (q_1 + q_2) n \\
+		 &\Rightarrow a_1 + b_ 1 \equiv a_2 + b_2 (\mod n) \\
+		 &\Rightarrow \overline{a_1 + b_1} = \overline{a_2 + b_2}
+		 \end{align}
+	  3. $(\frac{\mathbb{Z}}{n\mathbb{Z}})$ ist eine abelsche Gruppe:
+		 - Assoziativgesetz: Für alle $a,b,c\in\mathbb{Z}$ ist
+		   \[(\bar a + \bar b) + \bar c = \overline{a + b} + \bar c = \overline{(a + b) + c} = \overline{a + (b + c)} = \bar a + \overline{b + c} = \bar a + (\bar b + \bar c)\]
+		 - $\bar 0$ ist neutrales Element, denn $\Forall a\in\mathbb{Z}:\bar 0 + \bar a = \overline{0 + a} = \bar a = \bar a + \bar 0$
+		 - Für $a\in\mathbb{Z}$ inst $\overline{-a}$ das inverse Element zu $\bar a$, denn $\bar a + \overline{-a} = \overline{a + (- a)} = \bar 0 = \overline{-a} + \bar a$
+		 - Kommutativgesetz: $\Forall a,b\in\mathbb{Z}:\bar a + \bar b = \overline{a + b} = \overline{b + a} = \bar b + \bar a$
+***** Beispiel
+	  Wir tragen die Ergebnisse der Verknüpfung "$+$" in einer Verknüpfungstafel zusamme:
+	  n = 3
+	  | $+$      | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	  |----------+----------+----------+----------|
+	  | $\bar 0$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	  | $\bar 1$ | $\bar 1$ | $\bar 2$ | $\bar 0$ |
+	  | $\bar 2$ | $\bar 2$ | $\bar 0$ | $\bar 1$ |
+
+	  n = 4
+	  | $+$      | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	  |----------+----------+----------+----------+----------|
+	  | $\bar 0$ | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	  | $\bar 1$ | $\bar 1$ | $\bar 2$ | $\bar 3$ | $\bar 0$ |
+	  | $\bar 2$ | $\bar 2$ | $\bar 3$ | $\bar 0$ | $\bar 1$ |
+	  | $\bar 3$ | $\bar 3$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+*** Gruppenhomomorphismus
+	$(G,+),(H,\oast), \varphi : G \to H$ Abbildung \\
+	$\varphi$ heißt ein Gruppenhomomorphismus $\xLeftrightarrow{\text{Def}} \Forall a,b,c\in G: \varphi(a*b) = \varphi(a) \oast \varphi(b)$ \\
+	$\varphi$ heißt ein Gruppenisomorphismus $\xLeftrightarrow{\text{Def}} \varphi$ ist bijektiver Gruppenhomomorphismus
+**** Beispiel
+	 1. $\varphi:\mathbb{Z} \to \mathbb{Z}, a\mapsto 2 a$ ist Gruppenhomomorphismus von $(\mathbb{Z},+)$ nach $(\mathbb{Z},+)$ denn:
+		\[\varphi( a+ b) = 2(a + b) = 2 a + 2 b = \varphi(a) + \varphi(b) \Forall a,b\in\mathbb{Z}\]
+		$\varphi$ ist aber kein Gruppenisomorphismus, denn $\varphi$ ist nicht surjektiv $(1\not\in \varphi = \varphi{\mathbb{Z}})$
+	 2. $n\in\mathbb{N}$. Dann gilt $\varphi:\mathbb{Z}\to\frac{\mathbb{Z}}{n\mathbb{Z}},a\mapsto\bar a$ ist ein Gruppenhomomorphismus von $(\mathbb{Z},+)$ nach $(\frac{\mathbb{Z}}{n\mathbb{Z}}, +)$, denn
+		\[\Forall a,b\in\mathbb{Z}:\varphi(a+b) = \overline{a + b} = \bar a + \bar b =\varphi(a) + \varphi(b)\]
+		$\varphi$ ist kein Gruppenisomorphismus, denn $\varphi$ ist nicht injektiv ($\varphi(0) = \bar 0 = \bar n = \varphi(n)$, aber $0\neq n$)
+	 3. $\varphi:\mathbb{Z}\to\mathbb{Z},a\mapsto a + 1$ ist kein Gruppenhomomorphismus von $(\mathbb{Z},+)$ nach $(\mathbb{Z},+)$, denn
+		\[\varphi(2 + 6) = \varphi(8) = 9,~\text{aber}~\varphi(2)+\varphi(6) = 3 + 7 = 10\]
+	 4. $\exp:\mathbb{R}\to\mathbb{R}_{\geq 0}, x\mapsto \exp{x} = e^x$ ist ein Gruppenisomorphismus von $(\mathbb{R},+)$ nach $(\mathbb{R}_{\geq 0},\cdot)$, denn:
+		- \[\exp(a + b) = \exp(a)\exp(b) \Forall a,b\in\mathbb{R}\]
+		- $exp$ ist bijektiv (vgl. Ana1 - Vorlesung)
+**** Bemerkung 5.23
+	 $(G,*),(H,\oast)$ Gruppen mit neutralen Elementen $e_G$ beziehungsweise $e_H,\varphi:G\to H$ Gruppenhomomorphismus. Dann gilt
+	 1. $\varphi(e_G) = e_H$
+	 2. $\Forall a\in G:\varphi(a') = \varphi(a)'$ (Hierbei ist $'$ das Inverse)
+	 3. Ist \varphi Gruppenisomorphismus, dann gilt $\varphi^{-1}:H\to G$ ebenfalls Gruppenisomorphismus
+	 $(G,*),(H,\oast)$ heißen isomorph $\xLeftrightarrow{\text{Def}}$ Ex existert ein Gruppenisomorphismus $\phi:G\to H$ Wir schreiben dann $(G,*) \cong (H,\oast)$
+***** Beweis
+	  1. Es $e_H\oast \varphi(e_G) = \varphi(e_G) = \varphi(e_G*e_G) = \varphi(e_G) \oast(e_G) \Rightarrow e_H = \varphi(e_G)$
+	  2. Sei $a\in G$ Dann ist $e_H = \varphi(e_G) = \varphi(a*a') = \varphi(a)\oast(a') \Rightarrow \varphi(a') = \varphi(a)'$
+	  3. $\varphi^{-1}$ ist bijektiv, noch zu zeigen: $\varphi^{-1}$ ist ein Gruppehomomorphismus, das heißt
+		 \[\varphi^{-1}(c\oast d) = \varphi^{-1}(c)*\varphi^{-1}(d) \Forall c,d\in H\]
+		 Seien $c,d\in H$ Weil $\varphi$ bijektiv: $\exists a,b\in G:\varphi(a) = c,\varphi(b) =d$
+		 \[\Rightarrow \varphi^{-1}(c\oast d) = \varphi^{-1}(\varphi(a)*\varphi(b)) = \varphi^{-1}(\varphi(a*b)) = a*b = \varphi^{-1}(c)*\varphi^{-1}(d)\hfill\square\]
+** Ring
+   Ein Ring ist ein Tupel $(R,+,\cdot)$, bestehend aus einer Menge R und 2 Verknüpfungen:
+   - $+:R\times R \to R,(a,b)\mapsto a + b$ \hfill genannt Addition
+   - $\cdot:R\times R\to R, (a,b)\mapsto a\cdot b$ \hfill genannt Multiplikation
+   welche den folgenden Bedingungen genügen
+   - (R1) $(R,+)$ ist eine abelsche Gruppe
+   - (R2) $(R,\cdot)$ ist ein Monoid
+   - (R3) Es gelten die Distributivgeseze, das heisßt
+	 \[\Forall a,b,c\in R: a\cdot(a + b) = a\cdot b + a\cdot c, (a+b)\cdot c = a\cdot c + b\cdot c\]
+   Ein Ring heißt *kommutativ* $\xLeftrightarrow{\text{Def}}$ die Multiplikation ist kommutativ, das heißt $\Forall a,b\in R: a\cdot b = b\cdot a$
+*** Anmerkung
+	- ohne Klammerung gilt die Konvention "$\cdot$" vor "$+$", "$\cdot$" wird häufig weggelassen
+	- das neutrale Element bezüglich "$+$" bezeichnen wir mit $0_R$ (Nullelement), das neutrale Element bezüglich "$\cdot$" mit $1_R$ (Einselement).
+	  Das zu $a\in R$ bezüglich "$+$" inverse Element bezeichnen wir mit $-a$,
+	  für $a + (-b)$ schreben wir $a - b$. Existiert zu $a\in R$ ein Inverses bezüglich "$\cdot$", so bezeichnen wir diesses mit $a^{-1}$
+	- Wir schreiben häufig verkürzend "$R$ Ring" statt "$(R,+,\cdot)$ Ring"
+	- In der Literatur wird gelegentlich die Forderung der Existenz eines neutralen Elements bezüglich "$\cdot$" weggelassen, "unser" Ringbegriff
+	   entspricht dort dem Begriff "Ring mit Eins"
+*** Beispiel
+	1. $(\mathbb{Z},+,\cdot)$ ist ein kommutativer Ring
+	2. Nullring $(\{0\},+,\cdot)$ mit $0 + 0 = 0, 0\cdot 0 = 0$ ist ein kummutativer Ring \\
+	   (hier ist Nullelement = Einselement = 0). Wir bezeichnen den Nullring kurz mit $0$.
+*** Bemerkung 6.3
+	$R$ Ring. Dann gilt:
+	1. $0_R\cdot a = 0_R = a\cdot 0_R\Forall a\in R$
+	2. $a\cdot (-a) = - a b = (-a) \cdot b \Forall a,b\in R$
+	3. Ist $R\neq 0$, dann ist $1_R\neq 0_R$
+**** Beweis
+	 1. $0_R + 0_R\cdot a = 0_R\cdot a = (0_R + 0_R)\cdot a = 0_R\cdot a + 0_R\cdot \xRightarrow{\text{"kürzen s. [[Bemerkung 5.11]]"}} 0_R = 0_R \cdot a$, $a\cdot 0_R = 0_R$ analog
+	 2. $0_R = 0_R\cdot b = (a + (-a))\cdot b = a\cdot b + (-a) \cdot b \Rightarrow{\text{[[Bemerkung 5.11]]}} - a b = (-a)\cdot b$, $a\cdot(-b) 0 -a b$ analog
+	 3. Beweis durch Kontraposition: Sei $1_R = 0_R$
+		\[\Rightarrow \Forall a\in R: a = a\cdot 1_R = a\cdot 0_R = 0_R\]
+		das heißt $R = 0\hfill\square$
+*** Bemerkung 6.4
+	$n\in\mathbb{N}$ Für $\bar a, \bar b \in\frac{\mathbb{Z}}{n\mathbb{Z}}$ setzen wir $\bar a + \bar b := \overline{a + b}, \bar a\cdot \bar b := \overline{ab}$, dann ist $(\frac{\mathbb{Z}}{n\mathbb{Z}},+,\cdot)$ ein kommutativer Ring.
+
+	Wenn wir ab jetzt vom Ring $\frac{\mathbb{Z}}{n\mathbb{Z}}$ sprechen, dann meinen wir $(\frac{\mathbb{Z}}{n\mathbb{Z}},+,\cdot)$ mit den obigen Verknüpfungen
+**** Beweis
+	 1. Multiplikaiton ist wohldefiniert (das heißt "vertreterunabhängig", vergleiche [[Bemerkung 5.18]]) \\
+		Sei $a_1,a_2,b_1,b_2 \in\mathbb{Z}$ mit $\overline{a_1} = \overline{a_2},\overline{b_2} = \overline{b_2}$
+		\begin{align}
+		&\Rightarrow a_1 \equiv a_2 (\mod n), b_1\equiv b_2 (\mod n) \\
+		&\Rightarrow \exists q_1,q_2\in\mathbb{Z}:a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n \\
+		&\Rightarrow a_1 b_2 - a_2 b_2 = a_1(b_1 - b_2) + b_2 (a_1 - a_2) = a_q q_2 n + b_2 q_1 n = (a_1 q_2 + b_2 q_1) n \\
+		&\Rightarrow a_1 b_1 \equiv a_2 b_2 (\mod n) \\
+		&\Rightarrow \overline{a_1 b_1} = \overline{a_2 b_2}
+		\end{align}
+	 2. Multiplikation ist assoziativ, Für $a,b,c\in\mathbb{Z}$ ist
+		\[\bar a\cdot (\bar b\cdot \bar c) = \bar a \cdot \overline{a\cdot c} = \overline{a\cdot(b\cdot c)} = \overline{(a\cdot b)\cdot c} = \overline{a\cdot b} \cdot \bar c = (\bar a\cdot \bar b) \cdot \bar c\]
+	 3. Existenz eines Enselements: $\Forall a\in\mathbb{Z}:\bar 1 \cdot \bar a = \overline{1\cdot a} = \bar a = \bar a\cdot \bar 1$
+	 4. Multiplikation ist kommutativ:
+		\[\Forall a,b\in\mathbb{Z}:\bar a\cdot \bar b = \overline{a\cdot b} = \overline{b\cdot a} = \bar b \cdot \bar a\]
+	 5. $(\frac{\mathbb{Z}}{n\mathbb{Z}},+)$ ist abelsche Gruppe nach [[Bemerkung 5.18]]
+	 6. Distributivgesetz:
+		\begin{align}
+		\bar a\cdot (\bar b + \bar c) &= \bar a \cdot \overline{b + c} \\
+		&= \overline{a\cdot (b + c)} \\
+		&= \overline{a\cdot b + a\cdot c} \\
+		&= \overline{a\cdot b} + \overline{a\cdot c}
+		&= \bar a\cdot \bar b + \bar a \cdot\bar c
+		\end{align}
+		$(\bar a + \bar b)\cdot \bar c = \bar a\cdot \bar c + \bar b \cdot \bar c$ folgt wegen Kommutativität der Multiplikation
+**** Beispiel 6.5
+	 Verknüpfungstafeln für $\frac{\mathbb{Z}}{n\mathbb{Z}}$
+	 n = 3:
+	 | $+$      | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 |----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 | $\bar 1$ | $\bar 1$ | $\bar 2$ | $\bar 0$ |
+	 | $\bar 2$ | $\bar 2$ | $\bar 0$ | $\bar 1$ |
+
+	 | $\cdot$  | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 |----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 0$ | $\bar 0$ |
+	 | $\bar 1$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+	 | $\bar 2$ | $\bar 0$ | $\bar 2$ | $\bar 1$ |
+	 n = 4:
+	 | $+$      | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 |----------+----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 | $\bar 1$ | $\bar 1$ | $\bar 2$ | $\bar 3$ | $\bar 0$ |
+	 | $\bar 2$ | $\bar 2$ | $\bar 3$ | $\bar 0$ | $\bar 1$ |
+	 | $\bar 3$ | $\bar 3$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
+
+	 | $\cdot$  | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 |----------+----------+----------+----------+----------|
+	 | $\bar 0$ | $\bar 0$ | $\bar 0$ | $\bar 0$ | $\bar 0$ |
+	 | $\bar 1$ | $\bar 0$ | $\bar 1$ | $\bar 2$ | $\bar 3$ |
+	 | $\bar 2$ | $\bar 0$ | $\bar 2$ | $\bar 0$ | $\bar 2$ |
+	 | $\bar 3$ | $\bar 0$ | $\bar 3$ | $\bar 2$ | $\bar 1$ |
+
+	 In $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist $\bar 2 \cdot \bar 2 = \bar 0$, aber $\bar 2\neq \bar 0$.
+*** Integritätsbereich
+	<<Definition 6.6>>
+	ist ein kommuativer Ring $(R,+,\cdot)$ mit $R\neq 0$, in dem gilt:
+	\[\Forall a,b\in R: a\cdot b = 0_R \Rightarrow a = 0_R\vee b = 0_R\]
+	beziehungsweise äquivalent dazu:
+	\[a\neq 0_R \wedge b\neq 0_R \Rightarrow a\cdot b \neq 0_R\]
+**** Beispiel 6.7
+	 - $\frac{\mathbb{Z}}{3\mathbb{Z}}$ ist ein Integritätsbereich, $\frac{\mathbb{Z}}{4\mathbb{Z}}$ ist kein Integritätsbereich, denn $\bar 2\cdot \bar 2 = \bar 0$, aber $\bar 2 \neq \bar 0$
+**** Bemerkung 6.8
+	 $n\in\mathbb{N}$ Dann sind äquivalent
+	 1. <<6.8.1>> $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist ein Integritätsbereich
+	 2. <<6.8.2>> $n$ ist eine Primzahl
+***** Beweis
+	  [[6.8.1]] \Rightarrow [[6.8.2]] zeigen wir durch Kontraposition, das heißt $\neq$[[ 6.8.2]] \Rightarrow $\neq$ [[6.8.1]] \\
+	  Sei $n\in\mathbb{N}$ keine Primzahl. Falls $n = 1$ dann ist $\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0\}$ (Nullring), das heißt $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist kein Integritätsbereich. Seim im Folgenden $n > 1$ und keine Primzahl.
+	  \begin{align}
+	  &\Rightarrow \exists a,b\in\mathbb{N}:1\ <a,b<n \wedge n = a\cdot b \\
+	  &\Rightarrow \bar 0 = \bar n = \overline{a b} = \bar a \cdot \bar b
+	  \end{align}
+	  und es ist $bar a,\bar b\neq \bar 0$ \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integrationsbereich. \\
+	  [[6.8.2]] \Rightarrow [[6.8.1]]: Sein $n$ eine Primzahl \Rightarrow $n > 1$, insbesondere $\frac{\mathbb{Z}}{n\mathbb{Z}} \neq 0$. Seien $\bar a, \bar b \in \frac{\mathbb{Z}}{n\mathbb{Z}}$ mit $\bar a\cdot \bar b = \bar 0$
+	  \[\Rightarrow \exists q\in\mathbb{Z}:a b = q n\]
+	  Da $n$ Primzahl, kommt $n$ n der Primfaktorzerlengung von $a b$ als Primfaktor vor \\
+	  \Rightarrow $n$ kommt in der Primfaktorzerlegung von $a$ oder $b$ als Primfaktor vor \[\Rightarrow n\mid a \vee n\mid b \Rightarrow \bar a = \bar 0 \vee \bar b = \bar 0\]
+** Körper
+   <<Definition 6.9>>
+   Ein Körper ist ein kommutativer Ring $(K,+,\cdot)$, in dem gilt $K\neq 0$ und jedes Element $a\in K, a\neq 0$ besitzt ein Inverses in $K$ bezüglich "$\cdot$", das heißt: $\exists b\in K:a\cdot b = 1_K$. Wir setzen $K^\ast := K\setminus\{0\}$
+*** Beispiel
+	1. $(\mathbb{R},+,\cdot),(\mathbb{Q},+,\cdot)$ sind Körper (mit den üblichen $+,\cdot$)
+	2. $\frac{\mathbb{Z}}{3\mathbb{Z}}$ ist ein Körper (betrachte Verknüpfungstafel)
+	3. $\frac{\mathbb{Z}}{4\mathbb{Z}}$ ist ein kein Körper: Das Element $\bar 2$ besitzt kein Inverses bezüglich "$\cdot$"
+*** Bemerkung 6.11
+	\label{remark:integ_neutral}
+	$K$ Körper, Dann gilt:
+	1. $0_K \neq 1_K$
+	2. <<6.11.2>> $K$ ist ein Integritätsbereich
+	3. $(K^\ast,\cdot)$ ist eine abelsche Gruppe mit neutralem Element $1_K$
+**** Beweis
+	 1. folgt aus [[Bemerkung 6.3]]
+	 2. $K\neq 0$ nach Definition. Seien $a,b\in K$ mit $a b = 0_K$. Falls $a\neq 0_K$ dann
+		\[b = 1_K \cdot b = (a^{-1} a)\cdot b = a^{-a}(a b) = a^{-1}\cdot 0_K = 0_K\]
+		Insebesondere gilt: $a = 0\vee b = 0$
+	 3. $K^\ast\times K^\ast \to K^\ast$ ist wohldefiniert nach [[6.11.2]] (aus $a,b\in K^\ast$ folgt $a b\in K^\ast$) \\
+		Da $(K,\cdot)$ abelscher Monoid mit neutralem Element $1_K$ ist auch $(K^\ast,\cdot)$ abelscher Monid mit neutralem Element $1_K$.
+		Nach [[Definition 6.9]] besitzt jedes Element $a\in K^\ast$ ein Inverses $b\in K$ mit $a b = 1_K$ Wegen $0_K \neq 1_K$ ist $b\neq 0_K$ (sonst $a b = a\cdot 0_K = 0_K \neq 1_K$), das heißt $b\in K^\ast\hfill\square$
+*** Bemerkung 6.12
+	$R$ Integritätsbereich, der nur endlich viele Elemente hat. Dann ist $R$ ein Körper.
+**** Beweis
+	 $R$ Integritätsbereich \Rightarrow $R\neq 0$ \\
+	 Noch zu zeigen: $a\in R\setminus\{0_R\} \Rightarrow \exists b\in R: a b = 1_R$
+	 Sei $a\in R\setminus\{0_R\}$. Wir betrachten die Abbildung $\varphi_a: R\to R,x\mapsto a x$
+	 1. Behauptung: $\varphi_a$ ist injektiv, denn:
+		\begin{align}
+		\intertext{Seien $x,y\in R$ mit}
+		\varphi_a(x) =\varphi_a(y) \Rightarrow a x = a y \Rightarrow a x + (-(a y)) = 0_R \\
+		\intertext{Mit [[Bemerkung 6.3]] folgt:}
+		\Rightarrow a x + a(-a) = -R \Rightarrow a(x - y) = 0_R  \\
+		\intertext{Aus $R$ Integrationsbereich und $a\neq 0$ folgt:}
+		x - y = 0 \Rightarrow x = y
+		\end{align}
+	 2. Da $R$ endlich ist und $\varphi_a$ inejktiv ist, ist $\varphi_a$ nach [[Bemerkung 4.19]] surjektiv
+		\[\Rightarrow  \exists b\in R: \varphi_a(b) = 1_R \Rightarrow a b = 1_R\]
+*** Folgerung 6.13
+	$n\in\mathbb{N}$ Dann sind äquivalent
+	1. <<6.13.1>> $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist ein Körper
+	2. <<6.13.2>> $n$ ist eine Primzahl
+**** Beweis
+	 [[6.13.1]] \Rightarrow [[6.13.2]] durch Kontraposition: $\neq$ [[6.13.2]] \Rightarrow [[6.13.1]] \\
+	 Sei $n$ keine Primzahl \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integritätsbereich \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Körper \\
+	 [[6.13.2]] \Rightarrow [[6.13.1]] Sei $n$ eine Primzahl \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Integritätsbereich, der nur endlich viele Elemente hat \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Körper
+**** Notation
+	 $p$ Primzahl. Man nennt $\mathbb{F}_P := \frac{\mathbb{Z}}{p\mathbb{Z}}$ auch den endlichen Körper mit $p$ Elemente
+*** Definition 6.14
+	$R$ Ring
+	\[\cha(R):=\begin{cases} 0 & \sum_{k = 1}^n 1_R \neq 0 \Forall n\in\mathbb{N} \\ \min\{n\in\mathbb{N}\mid \sum_{k = 1}^n 1_R = 0_R\} & \text{sonst}\end{cases}\]
+	heißt die Charakteristik von $R$
+	\begin{ex} \mbox{}
+	\begin{enumerate}
+	\item $\cha(\mathbb{Z}) = \cha(\mathbb{Q}) = \cha(\mathbb{R}) = 0$
+	\item $\cha(\frac{\mathbb{Z}}{n\mathbb{Z}}) = n$, denn $\sum_{k = 1}^n \bar 1 = \bar n = \bar 0$ und $\sum_{k = 1}^m \bar 1 = \bar m \neq \bar 0$ für $m\in\{1,\ldots,n - 1\}$
+	\end{enumerate}
+	\end{ex}
+	\begin{remark}
+	\label{remark:cha_prim}
+	$R$ Integritätsbereich. Dann ist $\cha(R) = 0$ oder $\cha(R)$ ist eine Primzahl
+	\end{remark}
+	\begin{proof}
+	Beweis durch Widerspruch. Annahme: $\cha(R) \neq 0$ und $\cha(R)$ ist keine Primzahl. \\
+	Da $R$ Integritätsbereich ist ist $1_R \neq 0_R$ also $\cha(R) \neq 1$
+	\begin{align*}
+	&\Rightarrow \exists a,b\in\mathbb{N}, 1 < a,b < \cha(R): \cha(R) = a b \\
+	&\Rightarrow 0_R = \sum_{k = 1}^{\cha(R)} 1_R = \sum_{k = 1}^a 1_R \cdot \sum_{k = 1}^b 1_R \\
+	&\xRightarrow{R~\text{Integritätsbereich}} \sum_{k = 1}^a 1_R = 0_R \vee \sum_{k = 1}^b = 0_R \\
+	&\Rightarrow \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R) \tag*{\qedhere}
+	\end{align*}
+	\end{proof}
+	\begin{remark}
+	$K$ Körper, dann ist $\cha(K) = 0$ oder $\cha(K)$ ist Primzahl.
+	\end{remark}
+	\begin{proof}
+	Folgt aus \ref{remark:cha_prim} und \ref{remark:integ_neutral}
+	\end{proof}
+	\begin{ex}
+	$p$ Primzahl, dann ist $\cha(\mathbb{F_p}) = p$
+	\end{ex}

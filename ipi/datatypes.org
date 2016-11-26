@@ -1,0 +1,90 @@
+* Datentypen
+** Basistypen
+   Bestandteil der Sprachsyntax und normalerweise direkt von der Hardware unterstützt (CPU)
+   - int, double, bool ($\Rightarrow$ später mehr)
+** zusammengesetzte Typen
+   mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
+   - wie das geht $\Rightarrow$ später
+   - Standardtypen: in der C++ Standardbibilothek definiert, aktivire durch $\#include <module_name>$
+	 - std::string, std::complex, etc.
+   - externe Typen: aus anderer Bibilothek, die manzuvor herunterladen und installieren muss
+   - eigene Typen: vom Programmierer selbst implementiert $\Rightarrow$ später
+   Durch "objekt-orientierte Programmierung" (\Rightarrow später) erreicht man, dass zusammengesetzte Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
+   - "Kapselung": die interne Struktur und Implementation ist für Benutzer unsichtbar
+   - Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
+
+   \Rightarrow Punktsyntax: type_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+** Zeichenketten-Strings:
+   zwei Datentypen in c++
+   - klassischer c-string: char[] ("charakter array") \Rightarrow nicht gekapselt, umständlich
+   - c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
+   - string literale: "zeichekette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
+	 Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale), müssen erst in c++ strings umgewandelt werden, das passiert mist automatisch
+	 - #include <string>
+	 - Initialisierung:
+	   #+BEGIN_SRC cpp
+	   std::string s = "abcde";
+	   std::string s2 = s1;
+	   std::string leer = "";
+	   std::string leer(); // Abkürzung, default constructor
+	   #+END_SRC
+	 - Länge
+	   #+BEGIN_SRC cpp
+	   s.size();
+	   assert(s.size() == 5);
+	   assert(leer.size() == 0);
+	   s.empty() // Abkürzung für s.size() == 0
+	   #+END_SRC
+	 - Zuweisung
+	   #+BEGIN_SRC cpp
+	   s = "xy";
+	   s2 = leer;
+	   #+END_SRC
+	 - Addition
+	   Aneinanderkettung von String ("concatenate")
+	   #+BEGIN_SRC cpp
+	   std::string s3 = s + "ijh"; // "xyijh"
+	   s3 = "ghi" + s; // "ghixy"
+	   s3 = s + s; // "xyxy"
+	   // aber nicht!!
+	   s3 = "abc" + "def"; // Bug literale unterstütze + mit ganz anderer Bedeutung
+	   s3 = std::string("abc") + "def"; // Ok
+	   #+END_SRC
+	 - Add-Assignment: Abkürzung für Addition gefolt von Zuweisung
+	   #+BEGIN_SRC cpp
+	   s += "nmk"; // s = s + "nmk" => "xynmk"
+	   #+END_SRC
+	 - die Zeichen werden intern in einem C-Array gespeichert (Array = "Feld") \\
+	   Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummerriert
+	   in c++: von $0$ beginnend $\estimates$ Index
+	   - Indexoperator:
+		 #+BEGIN_SRC cpp
+		 s[index]; // gibt das Zeichen an Position "index" zurück
+		 #+END_SRC
+		 Anwendung: jedes Zeichen einzeln ausgeben
+		 #+BEGIN_SRC cpp
+		 std::string s = "abcde";
+
+		 for(int i = 0; i < s.size(); i++) {
+			 std::cout << s[i] << std::endl;
+		 }
+		 #+END_SRC
+		 String umkehren
+		 #+BEGIN_SRC cpp
+		 int i = 0; // Anfang des Strings
+		 int k = s.size() - 1; // Ende des String
+		 while(i < k) {
+			 char tmp = s[i];
+			 s[i] = s[k];
+			 s[k] = tmp;
+			 i++; k--;
+		 }
+		 #+END_SRC
+		 Variante 2: neuen String erzeugen
+		 #+BEGIN_SRC cpp
+		 std::string s = "abcde";
+		 std::string r = "";
+		 for(int i = s.size() - 1; i >= 0; i--) {
+			 r += s[i];
+		 }
+		 #+END_SRC

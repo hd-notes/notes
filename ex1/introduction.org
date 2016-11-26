@@ -1,0 +1,41 @@
+* Einleitung
+** Eigenschaften der Physik
+   Physik ist _nicht_ axiomatisch!
+   - Nicht alle Gesetze der Natur sind bekannt.
+   - Die bekannten Naturgesezte sind _nicht_ unumstößlich
+   - unfertig
+   - empirisch
+   - quantitativ
+   - experimentell
+   - überprüfbar
+   - braucht Mathematik
+   - Gefühl für Größenordnungen und rationale Zusammenhänge
+*** Beispiel
+	Fermi-Probleme:
+	- Anzahl der Klavierstimmer in Chicago?
+	- Anzahl der Autos in einem 10km Stau?
+	- Anzahl von Fischen im Ozean
+
+** Maßeinheiten
+   Internationales Einheitensystem (SI)
+*** Basisgrößen
+	| Größe | Einheit   | Symbol         |
+	|-------+-----------+----------------|
+	| Länge | Meter     | $\si{\meter}$  |
+	| Masse | Kilogramm | $\si{\kg}$     |
+	| Zeit  | Sekunden  | $\si{\second}$ |
+**** Meter
+	 Strecke, die das Licht im Vakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
+**** Sekunde
+	 Das $\SI{9192631770}{}$-fache  der Periodendauder der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
+**** Kilogramm
+	 Das Kilogramm ist die Einheit der Masse, es ist gleich der Masse des internationalen Kilogrammprototyps (ist scheiße).
+***** Avogadroprojekt
+	  \[N_A = \frac{M V n}{m}\]
+	  $N_A$: Avogardokonstante ($N_A = \SI{6.0221415e23}{}$)
+*** Weitere Größen
+	| Größe       | Einheit | Symbol          |
+	|-------------+---------+-----------------|
+	| Strom       | Ampere  | $\si{\ampere}$  |
+	| Temperatur  | Kelvin  | $\si{\kelvin}$  |
+	| Lichtstärke | Candla  | $\si{\candela}$ |

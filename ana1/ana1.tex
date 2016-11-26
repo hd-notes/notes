@@ -1,4 +1,4 @@
-% Created 2016-11-25 Fr 18:03
+% Created 2016-11-27 So 00:11
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -416,14 +416,14 @@ Die Abbildung $f:\mathbb{Z}\to\mathbb{N}$
 \[z\mapsto \begin{cases} 2z & z\geq 0\\ -2z - 1 & x < 0\end{cases}\]
 \begin{itemize}
 \item Surjektivität: zu zeigen $f(\mathbb{Z}) = \mathbb{N}$ \\
-           Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
+        Offenbar $f(\mathbb{Z}) \subseteq \mathbb{N}$. Wir zeigen $\mathbb{N} \subseteq f(\mathbb{Z})$. Sei $n\in\mathbb{N}$, finde $z\in\mathbb{Z}$ mit $f(z) = n$.
 Man unterscheide:
 \begin{itemize}
 \item n gerade $\rightarrow$ Wähle $z=\frac{n}{2}$
 \item n ungerade $\rightarrow$ $z=-\frac{n + 1}{2}$
 \end{itemize}
 \item Injektivität: Sei $z_1,z_2 \in\mathbb{Z}$ und $f(z_1) = f(z_2)$ \\
-           ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade \textbf{Wiederspruch}.
+        ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade \textbf{Wiederspruch}.
 Falls
 \begin{itemize}
 \item $z_1,z-2 \geq 0 \Rightarrow 2z_1 = f(z_1) = f(z_2) = 2z_2 \Rightarrow z_1 = z_2$
@@ -811,7 +811,6 @@ Aus \ref{1.55.4} und \ref{1.55.5} folgt $x^m = a\hfill\square$
 \[\inf \{y_n^k \mid n\in\mathbb{N}_0\} = (\inf \{y_n\mid n\in\mathbb{N}_0\})^k\]
 \end{enumerate}
 (ohne Beweis)
-
 \section{Komplexe Zahlen}
 \label{sec-3}
 \textbf{Motivation:} $x^2 + 1 = 0$ nicht lösbar in $\mathbb{R}$ \\
@@ -1288,8 +1287,8 @@ a_{2n} = 4n \to \infty \Rightarrow \infty~\text{ist Häufungswert}
 \item $\displaystyle \lim_{n\to\infty} \sup a_n + \lim_{n\to\infty}\sup b_n \geq \lim_{n\to\infty} (a_n + b_n)$ (zum Beispiel betrachte $a_n = n^2, b_n = \frac{1}{n}$)
 \end{itemize}
 \end{remark}
-\subsection{Undendliche Summen (Reihen)}
-\label{sec-4-8}
+\section{Reihen (Unendliche Summen)}
+\label{sec-5}
 \begin{defn}[2.19]
 Eine Reihe \[\sum_{k = 1}^\infty a_k\] (\textbf{unendliche Summe}) konvergiert, wenn die Folge ihrer \textbf{Partialsummen} konvergiert
 \[s_n = \sum_{k = 1}^n\xrightarrow{n\to\infty} S_\infty < \infty\]
@@ -1318,8 +1317,8 @@ konvergent und es gilt
 \begin{proof}
 Aus den Rechenregeln für konvergente Folgen
 \end{proof}
-\subsubsection{Konvergenzkriterien}
-\label{sec-4-8-1}
+\subsection{Konvergenzkriterien}
+\label{sec-5-1}
 Cauchy Kriterium für Paritalsummen besagt, dass eine Reihe genau dann konvergent ist, wenn
 \[\Forall \eps > 0 \Exists n_\eps \in \mathbb{N}: \Forall n > m \geq n_\eps: \abs{s_n - s_m} = \abs{\sum_{k = m + 1}^n a_k} < \eps\]
 
@@ -1353,7 +1352,7 @@ Eine Reihe $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k$ in $\mathbb{R}$ he
 \begin{proof}
 \begin{enumerate}
 \item Sei ohne Beschränkung der Allgemeinheit $a_1 > 0$. Dannist $a_{2n - 1} + a_{2 n} \geq 0, a_{2n} + a_{2n + 1} \geq 0$
-       Und folglich
+      Und folglich
 \begin{align*}
 s_{2n + 1} = a_1 + a_2 + a_3 + \ldots + a_{2 n} + a_{2 n + 1} \leq s_{2n - 1} \leq \ldots \leq s_3 \leq s_1 \\
 s_{2n} = (a_1) + (a_2 + a_4) + \ldots + (\underbrace{a_{2n - 1} + a_{2n}}_{\geq 0}) \geq s_{2n - 2} \geq \ldots \geq s_2 \\
@@ -1411,7 +1410,7 @@ Ranacher für spezifische Umordung
 \end{proof}
 \begin{ex}[2.37]
 $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k}$ konvergent (aber nicht absolut) \\
-    Behauptung: $\Exists$ Umordnung $\tau$, sodass $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{\tau(k) - 1}}{\tau(k)}$ divergiert
+   Behauptung: $\Exists$ Umordnung $\tau$, sodass $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{\tau(k) - 1}}{\tau(k)}$ divergiert
 Beachte
 \[\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{2\cdot 2^j - 1} \leq 2^{j - 1} \frac{1}{2^{j + 1}} = \frac{1}{4}\]
 $\Rightarrow$ Die Umordung
@@ -1427,8 +1426,8 @@ Seien $\displaystyle \sum_{k = 1}^\infty a_k, \sum_{k = 1}^\infty b_k$ absolut k
 Gegeben seien zwei Reihen $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k, \tilde s_\infty = \sum_{k = 1}^\infty \tilde a_k$
 \begin{enumerate}
 \item Gilt für fast alle $k \in \mathbb{N}$ mit einer Konstante $\alpha > 0\quad \abs{a_k} \leq \alpha \tilde a_k$ \\
-       (für fast alle $n\in\mathbb{N} :=$ Für alle $n\in\mathbb{N}$ außer endlich viele) \\
-       so ist $\tilde s_\infty$ eine *Majorante von $s_\infty$ und aus der absoluten Konvergenz von $\tilde s_\infty$ folgt auch die von $s_\infty$, absolute Divergenz von $s_\infty$ impliziert die absolute Divergenz von $\tilde s_\infty$
+      (für fast alle $n\in\mathbb{N} :=$ Für alle $n\in\mathbb{N}$ außer endlich viele) \\
+      so ist $\tilde s_\infty$ eine \textbf{Majorante} von $s_\infty$ und aus der absoluten Konvergenz von $\tilde s_\infty$ folgt auch die von $s_\infty$, absolute Divergenz von $s_\infty$ impliziert die absolute Divergenz von $\tilde s_\infty$
 \end{enumerate}
 \end{thm}
 % Emacs 25.1.1 (Org mode 8.2.10)

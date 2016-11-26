@@ -1,0 +1,153 @@
+* Harmonischer Oszillator in komplexen Zahlen
+\subsection*{Motivation}
+   Harmonischer Oszillator mit Reibung:
+   \[\ddot{x} = -\omega^2 x - c \dot{x}\]
+   Exponentieller Ansatz:
+   \[x\sim e^{\alpha t} \Rightarrow \alpha^2 + \omega^2 + c\alpha = 0\]
+   gesucht: $\alpha$, Betrachte Genzfälle:
+  1. $\omega$ klein
+	 \[\Rightarrow \alpha^2 + c\alpha = 0 \Rightarrow \alpha = -c \Rightarrow x\sim e^{-c t}\]
+  2. $\omega$ groß (beziehungsweise $c$ klein)
+	 \[\alpha^2 + \omega^2 \simeq 0\]
+	 nicht lösbar!
+  Aber: wir wissen schon $\sin{\omega t}, \cos{\omega t}$ sind Lösungen.
+
+  Falls jede gesuchte Gleichung lösbar \Rightarrow Hoffnung auf elegante allgemeine Lösung
+
+  *Speziell:* $\alpha^1 = -1$ (für $\omega = 1, c = 0$)
+** Komplexe Zahlen
+*** Ziel
+	reelle Zahlen so zu erweitern, dass $x^2 = - 1$ lösbar
+*** Naive Definition
+	Definiere "Imaginäre Einheit" $x^2 = -1$ lösbar "$\I$", so dass $\I^2 = -1$
+	Wollen addieren und Multiplizieren, deshalb erkläre komplexe Zahl $\mathbb{C}$ als:
+	\[\mathbb{C} \ni z ) x + \I y, x,y\in\mathbb{R}\]
+	Wir definieren außerdem:
+   - $z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) \equiv (x_1 + x_2) + \I(y_1 + y_2)$
+   - $z_1 \cdot z_2 = (x_1 + \I y_1) (x_2 + \I y_2) \equiv x_1 x_2 + x_1 \I y_2 + \I y_1 x_2 + \I y_1 \I y_2 \equiv (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)$
+*** präsizere Definition
+	#+ATTR_LATEX: :options [Körper]
+	#+begin_defn latex
+	Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen $("+","\cdot")$, so dass:
+	- $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$ \hfill (Assoziativität)
+	- $\alpha + \beta = \beta + \alpha$ \hfill (Kommutativität)
+	- $\Exists 0 \in K: \alpha + 0 = \alpha \Forall \alpha$ \hfill (Null)
+	- $\Forall \alpha \Exists (-\alpha) \in K: \alpha + (-\alpha) = 0$ \hfill (Additives Inverses)
+	- $(\alpha \cdot \beta) \cdot \gamma = \alpha \cdot (\beta \cdot \gamma)$ \hfill (Assoziativität der Mult.)
+	- $\alpha \cdot \beta = \beta \cdot \alpha$ \hfill (Kummutativität der Mult.)
+	- $\Exists 1 \in K: 1\cdot \alpha = \alpha \Forall \alpha$ \hfill (Eins)
+	- $\Forall \alpha \neq 0 \Exists \alpha^{-1} \in K: \alpha \cdot \alpha^{-1} = 1$ \hfill (Inverses der Mult.)
+	- $\alpha\cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma$ \hfill (Distributivität)
+	#+end_defn
+	Wir kennen bereits:
+	- $K = \mathbb{Q}$ \hfill (rationale Zahlen)
+	- $K = \mathbb{R}$ \hfill (reelle Zahlen)
+	#+ATTR_LATEX: :options [Komplexer Zahlenkörper]
+	#+begin_defn latex
+	Komplexe Zahlen sind die Menge $\mathbb{C} = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ mit den Operationen
+	- $(x_1, y_1) + (x_2, y_2) \equiv (x_1 + x_2, y_1 + y_2)$
+	- $(x_1, y_1) \cdot (x_2, y_2) \equiv (x_1 \cdot x_2 - y_1 \cdot y_2, x_1 \cdot y_2 + x_2 \cdot y_1)$
+	Das ist äquivalent zu unserer "naiven Definition" $z = x + \I y$
+	#+end_defn
+	*Aufgabe:* Prüfen sie, dass die Axiome erfült sind! \\
+	Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
+	\[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
+
+	$\mathbb{C} = \mathbb{R}^2 \Rightarrow$ Darstellung durch Vektoren in Ebene liegt nahe.
+	- Addition: $\equiv$ Vektoraddition
+	- Multiplikatoin: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
+	- $\arg{z} = \phi$
+	- $\Re{z} = x$
+	- $\Im{z} = y$
+	- $\abs{z} = \sqrt{x^2 + y^2}$
+
+	Übliche Funktionen ($\exp, \ln, \sin, \cos$) können mittels ihrer in $\mathbb{R}$ bekannten Taylorreihe auf $\mathbb{C}$ übertragen werden \\
+	*Besonders wichtig:*
+	\[e^z \equiv \sum_{n = 0}^\infty \frac{z^n}{n!}\]
+	Brauchen $e^{z + w} = e^z \cdot e^w$ \\
+	Nachrechnen:
+	\begin{align*}
+	e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binomialkoeffizient}}}$} z^kw^{n - k}
+	\intertext{englisch: "n choose k"}
+	\intertext{durch Umschreiben der Summen erhält man:}
+	&= \sum_{n = 0}^\infty \sum_{k = 0}^n \frac{n^k}{k!} \frac{w^{n -k}}{(n -k)!} \\
+	&= \sum_{k = 0}^\infty \sum_{l = 0}^\infty \frac{z^k}{k!} \frac{w^l}{l!} = e^z e^w
+	\end{align*}
+	Insbesondere:
+	\[e^z = e^{x + \I y} = \underbrace{e^x}_{\mathclap{\text{reelle Zahl}}} \overbrace{e^{\I y}}^{\mathclap{\text{komplexe Zahl e vom Betrag $1$}}}\]
+	In der Tat:
+	\begin{align*}
+	e^{\I y} &= \sum_{n = 0}^\infty \frac{(\I y)^n}{n!} = \sum_{k = 0}^\infty \frac{\I y^{2 k}}{(2 k)!} + \sum_{k = 0}^\infty \frac{(\I y)^{2k + 1}}{(2 k + 1)!} \\
+	&= \sum_{k = 0}^\infty \frac{(-1)^k y^{2k}}{(2 k)!} + \I \sum_{k = 0}^\infty \frac{(-1)^k y^{2k + 1}}{(2k + 1)!} \\
+	&= \cos{y} + \I \sin{y}
+	\end{align*}
+	\Rightarrow Eulersche Formel
+	\[e^{\I \phi} = \cos{\phi} + \I \sin{\phi}\]
+*** Zusammenfassung:
+   \[e^{\I\phi} = \cos{\phi} + \I \sin{\phi}\]
+   \[w = e^z = e^x e^{\I y} = \abs{w}e^{i\arg{w}}\]
+   \[\ln{w} = z = x + \I y = \ln{\abs{w}} + \I \arg{w}\]
+   Problem: $\arg{w}$ und deshalb $\ln$ nicht eindeutig definiert \\
+   Lösung: Definiere $\arg{w} \in (-\pi, \pi)$
+
+*** Fundamentalsatz der Algebra
+	In $\mathbb{C}$ hat jedes Polynom
+	\[P_n(z) = \sum_{i = 0}^n a_i z^i\]
+	eine Nullstelle $z_0$
+
+	In der Tat hat es sogar $n$ Nullstellen:
+	\[P_n(z) = (z - z_0)\cdot \underbrace{P_{n - 1}(z)}_{\mathclap{\text{Hat wieder eine Nullstelle, usw.}}}\]
+
+	(Man sagt: Körper $\mathbb{C}$ ist algebraisch abgeschlossen)
+	- Es gibt auf $\mathbb{C}$ wichtige Abbildung: "komplexe Konjugation"
+	  \[z \to z^\ast \estimates z\to \bar z\]
+	  Definiert durch:
+	  \[(x + \I y)^\ast = x - \I y, (\rho e^{\I \phi})^\ast = \rho e^{-\I \phi}\]
+	  also auch
+	  \[(z^\ast)^\ast = z\]
+*** Quaternionen
+	\[1,i \to 1,i,j,k, i^2 = j^2 = k^2 = -1\]
+	\[ij = k, j i = -k, jk = i,\ldots\]
+** Anwendung auf harmonischen Oszillator
+   \begin{align*}
+   \intertext{Erinnerung: pyhsikalisches Problem:}
+   \ddot{x} + c \dot{x} + \omega^2 x = 0 \\
+   \intertext{Fall $\frac{c}{2} > \omega$ (Kriechfall)}
+   x=e^{\alpha t}, \alpha^2 + c\alpha + \omega^2 = 0 \\
+   \alpha_{1,2} =-\frac{c}{2} \pm \sqrt{\frac{c^2}{4} - \omega^2} \\
+   \intertext{$\Rightarrow$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
+   \intertext{$\Rightarrow$ exponentielles Abfallverhalten, ohne Oszillationen}
+   \intertext{Fall $\frac{c}{2} < \omega$ (Schwingfall), $\sqrt{-x} = \I \sqrt{x}$}
+   \alpha_{1,2} = -\frac{c}{2}\pm \I\sqrt{\omega^2 - \frac{c^2}{4}} \equiv -\frac{c}{2} \pm \I \tilde\omega \\
+   x_{1,2} = e^{-\frac{c}{2}t} e^{\pm \I \omega t} = e^{-\frac{c}{2}t} (\cos{\pm \tilde \omega t} + \I \sin{\pm\tilde\omega t}) \\
+   x_{1,2} =  e^{-\frac{c}{2}t} (\cos{\tilde \omega t} \pm \I \sin{\tilde\omega t}) \\
+   \intertext{Durch Linearkombination $\to$ 2 reelle Lösungen:}
+   x_1 = e^{-\frac{c}{2}t}\cos{\tilde \omega t};\qquad x_2 = e^{-\frac{c}{2}t} \sin{\tilde\omega t}
+   \intertext{$\Rightarrow$ allgemeine Lösung durch Linearkombination}
+   \intertext{$\Rightarrow$ gedämpfte Schwingung}
+   \intertext{Fall $\frac{c}{2} = \omega$ (aperiodischer Grenzfall)}
+   \alpha_1 = \alpha_2
+   \intertext{$\Rightarrow$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
+   \intertext{Idee: Betrachte Schwingfall Lösungen für $\tilde \omega \to 0$}
+   \intertext{Taylor:}
+   \cos{x} = 1 + \O(x^2);\qquad \sin{x} = x + O(x^3) \\
+   \Rightarrow x_1 = e^{-\frac{c}{2}t}; \qquad x_2 = e^{-\frac{c}{2}t} \tilde\omega t
+   \intertext{$\Rightarrow$ Wieder asymptotische Annäherung an $0$ ohne Oszillation}
+   \end{align*}
+** harmonischer Oszillator mit periodisch treibender Kraft
+   \begin{align*}
+   \intertext{Inhomogene Dgl:}
+   \ddot{x} + c \dot{x} + \omega^2 x = \frac{1}{m} F(t), F(t) = f e^{\I \ubar\omega t}  \\
+   \intertext{Ansatz:}
+   x(t) = A e^{\I \ubar \omega t} \\
+   \Rightarrow (A (-\ubar\omega^2 + \I c \ubar\omega + \omega^2) - \frac{f}{m}) e^{\I \omega t = 0} \\
+   A \equiv \abs{A}e^{\I \phi} = \frac{f}{m}\cdot\frac{1}{\omega^2 - \ubar\omega^2 + \I c \ubar \omega} \\
+   \intertext{mit}
+   \frac{1}{a + \I b} = \frac{a - \I b}{a - \I b} \frac{1}{a + \I b} = \frac{a - \I b}{a^2 - b^2} \\
+   \intertext{und elementarer Algebra findet man den Realteil der Lösung:}
+   \Re x(t) = \abs{A} \cos{\ubar \omega t + \phi} \\
+   \abs{A} = \frac{\frac{f}{m}}{\sqrt{\omega^2 - \ubar \omega^2} + c^2 \ubar\omega^2}, \tan{\phi} = \frac{c\ubar\omega}{\ubar\omega^2 - \omega^2}
+   \end{align*}
+   Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der inhomogenen Gleichung die allgemeine Lösung der homogenen Gleichung addiert.
+
+   *Wichtig:* Langzeitverhalten ist durch die partikuläre Lösung bestimmt \Rightarrow Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$

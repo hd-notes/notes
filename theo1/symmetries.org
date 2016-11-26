@@ -1,0 +1,14 @@
+* Symmetrie der Raumzeit
+** Der Euklidische Raum
+   physikalischer Raum: $V = \mathbb{R}^3$ mit Skalarprodukt $\v x, \v y \to \v x \cdot \v y = x^i y^i$ \\
+   Unser Ziel:
+   Symmetrien, also Abbildungen $R: V \to V, \v x \mapsto \v x'$, welche die Struktur des Raumes respektieren.
+   Das heißt:
+   \begin{align*}
+   R(\alpha \v x + \beta \v x) &= \alpha R(\v x) + \beta R(\v y) \\
+   R(\v x, \v y) \underarrow[\equiv]{Sagt nur: Zahlen transformieren nicht} \v x  \v y = R(x)R(y)
+   \end{align*}
+   Zunächst nur Linearitätsbedingung (wird respektiert von allgemeinen linearen Transformationen)
+   \[x^i \mapsto x^{\prime i} = R^{i j} x^j\]
+   oder
+   \[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix}\]

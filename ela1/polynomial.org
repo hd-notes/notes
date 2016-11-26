@@ -1,0 +1,203 @@
+* Polynome
+  \begin{defn}[7.1 Polynome]
+  $K$ Körper, ein Polynom in der Varablen $t$ über $K$ ist ein Ausdruch der Form
+  \[f = \sum_{k = 0}^n a_k t^k\]
+  mit $n\in\mathbb{N}_0$ (das heißt insbesondere nur endliche Summanden), $a_0,\ldots,a_n \in K$ (fehlende $a = 0$, ebenso setzen wir $a_{k > n} = 0)$. Die $a_k$ heißen die Koeffizienten von $f$
+  \[\deg(f) := \begin{cases}-\infty & f = 0 \\  \max\{k\in\mathbb{N}_0 \mid a_k \neq 0\} & f\neq 0\end{cases}\]
+  heißt Grad von $f$. für $f\neq 0$ heißt $l(f) := a_{\deg(f)}$ heißt der Leitkoeffizient von $f$, $l(0) := 0$. $f$ heißt normiert $\xLeftrightarrow{\text{Def}} l(f) = 1$
+  Hierbei sind zei Polynome $f = \sum_{k = 0}^n a_k t^k,g = \sum_{k =0}^m b_m t^k$ gleich ($f = g$) $\xLeftrightarrow{\text{Def}} \deg(f) = \deg(g) =: r$ und $a_r = b_r,\ldots,a_1 = b_1, a_0 = b_0$
+  \end{defn}
+  \begin{remark}
+  Man kann das auch präzise machen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
+  \end{remark}
+  \begin{ex}[7.2] \mbox{}
+  \begin{enumerate}
+  \item $f = \frac{3}{4}x^2 - 7 x + \frac{1}{2} \in \mathbb{Q}[x] \Rightarrow \deg(f) = 2, l(f) = \frac{3}{4}, f$ ist nicht normiert
+  \item $f = x^5 - \frac{1}{3} x + \frac{2}{5} \in\mathbb{Q}[x] \Rightarrow \deg(f) = 5, l(f) = 1, f$ ist normiert
+  \end{enumerate}
+  \end{ex}
+  \begin{remark}[7.3]
+  $K$ Körper, $f,g \in K[t], f = \sum_{k = 0}^n a_k t^k, g = \sum_{k = 0}^m b_k t^k$. Wir setzen $r:= \max\{m,n\}$ und definieren
+  \begin{align*}
+  f + g &= (a_r + b_r)t^r + \ldots + (a_1 + b_1)t + (a_0 + b_0) \\
+  f \cdot g &= c_{n + m} t^{n + m} + \ldots + c_1 t + c_0, c_k := \sum_{\substack{i,j \in\mathbb{N}_0 \\ i + j = k}} a_i b_j
+  \end{align*}
+  Mittels der Verknüpfung $+,\cdot$ wir die Menge aller Polynome über $K$ in der Variablen $t (=: K[t])$ zu einem kommutativen Ring, dem Polynomring über $K$ in der Variablen $t$
+  \end{remark}
+  \begin{proof}
+  Man rechnet die Ringaxiome nach
+  \end{proof}
+  #+ATTR_LATEX: :options [7.4]
+  #+BEGIN_REMARK latex
+  \label{remark:74}
+  $K$ Körper, $f,g\in K[t]$, Dann gilt:
+  1. $\deg(f + g) \leq \max\{\deg(f),\deg(g)\}$
+  2. $\deg(f g) = \deg(f) + \deg(g)$
+  (Hierbei setzt man Formel für $n\in\mathbb{N}_0: -\infty < n, n + (-\infty) = -\infty = (-\infty) + n, (-\infty) + -(\infty) = -\infty)$
+  #+END_REMARK
+  #+BEGIN_PROOF latex
+  Falls $f = 0$ oder $g = 0$, dann sind 1. und 2. klar. Im Folgenden seien $f,g\neq 0$, etwa $f = \sum_{k = 0}^n a_k t^k, g = \sum_{k =0}^m b_k t^k$ mit $a_n, b_m \neq 0$ (insbesondere $\deg(f) = n, \deg(g) = m$)
+  1. Wir setzen $k:= \max\{m,n\}$
+	 \begin{align*}
+	 &\Rightarrow f + g = (a_k + b_k)t^k + \ldots + (a_1 + b_1)t + (a_0 + b_0) \\
+	 &\Rightarrow \deg(f + g) \leq k \tag{\text{beachte: Ex könnte $a_k + b_k = 0$ sein}}
+	 \end{align*}
+  2. Es sei $f g = a_n b_m t^{n + m} + \ldots + a_0 b_0$ und es ist $a_n b_m \neq 0$ da $K$ als Körper ein Integritätsbereich ist $\Rightarrow \deg(f g) = n + m$
+  #+END_PROOF
+  #+ATTR_LATEX: :options [7.5]
+  #+BEGIN_CONC latex
+  $K$ Körper, dann ist $K[t]$ ein Integritätsbereich
+  #+END_CONC
+  #+BEGIN_PROOF latex
+  $K[t] \neq 0$ klar (zum Beispiel $t\in\mathbb{t}$)
+  Seien $f,g\in K[t], f,g\neq 0 \Rightarrow \deg(f),\deg(g) \geq 0 \Rightarrow \deg(f g) = \deg(f) + \deg(g) \geq 0 \Rightarrow f g \neq 0$
+  #+END_PROOF
+  #+begin_remark latex
+  $K[t]$ ist kein Körper: Das Polynom $t\in K[t]$ besitzt kein Inverses bezüglich "$\cdot$", denn: \\
+  Wäre $f\in K[t]$ invers zu $t$, dann wäre $f t = 0 \Rightarrow \deg(1) = 0 \deg(f t) = \deg(f) + \deg(t) = \deg (f) + 1 \Rightarrow \deg(f) = -1 \lightning$
+  #+end_remark
+
+  #+ATTR_LATEX: :options [7.6 Polynomdivision]
+  #+begin_thm latex
+  \label{thm:poly_div}
+  $K$ Körper, $f,g\in K[t], g\neq 0$ \\
+  Dann existieren eindeutig bestimmte Polynome $q,r \in K[t]$, mit $f = q g + r$ und $\deg(r) < \deg(g)$
+  #+end_thm
+
+  #+ATTR_LATEX: :options [7.7]
+  #+begin_ex latex
+  $f = 3 t^3 + 5 t + 1, g = t^2 + 1 \in\mathbb{Q}[t]$
+  \[(3 t^3 + 5 t + 1) : (t ^2 + 1) = 3 t\]
+  Also $3 t^3 + 5t + 1 = 3^t (t^2 + 1) + 2 t + 1, q = 3 t, r = 2 t + 1$
+  #+end_ex
+
+  #+ATTR_LATEX:
+  #+begin_proof latex
+  1. Existenz: \\
+	 Falls $f = 0$, setzen wir $q := 0, r:= 0$ fertig. \\
+	 Im Folgenden sei $f\neq 0$, das Polynom $g$ sei fixiert. Wir zeigen die Existenz von $q,r$ per Induktion nach $\deg(f) \in\mathbb{N}_0$ \\
+	 - Induktionsanfang: (etwas unkonventionell, geht aber auch): $\deg(f) \in \{0,\ldots,\deg(g) - 1\}$ (das heißt $\deg(f) < \deg(g)$) \\
+	   Setze $q:= 0, r:= g$, dann ist $f = q g + r, \deg(r) = \deg(f) < \deg(g)$.
+	 - Induktionsschritt: Es sei $\deg(f) \geq \deg(g)$ und die Behauptung sei für alle Polynome aus $K[t]$ von Grad < $\deg(f)$ schon gezeigt. \\
+	   Wir sezen $n:= \deg(f), m:=\deg(g)$ und schreiben:
+	   \[f = l(f)t^n + ~\text{Terme kleineren Grades}\]
+	   \[g = l(g) t^m + ~\text{Terme kleineren Grades}\]
+	   Es ist $f - \frac{l(f)}{l(g)}t^{n - m}g =$
+	   \[l(f) t^n + ~\text{Terme kleineren Grades} - \underbrace{\frac{l(f)}{l(g)} t^{n - m}l(g) t^m}_{l(f)t^n} + ~\text{Terme kleineren Grades}\]
+	   \[\Rightarrow \deg(f - \frac{l(f)}{l(g)}t^{n - m}) < n\]
+	   Nach Induktionsannahme gilt: Es existert $q_1,r_1 \in K[t]$ mit
+	   \[f - \frac{l(f)}{l(g)}t^{n -m}g = q_1 g + r_1, ~\text{mit}~\deg{r_1} < \deg(g)\]
+	   \[\rightarrow f = (q_1 + \frac{l(f)}{l(g)} t^{n - 1})g + r_1\]
+	   Setze $q:= q_1 + \frac{l(f)}{l(g)}t^{n - m}, r:= r_1$, dann ist $f = q g + r$ und $\deg(r) < \deg(g)$
+  2. Eindeutigkeit: Seien $q_1,q_2,r_1,r_2\in K[T]$ mit $f = q_1 g + r_1 + q_2 g + r_2$ und $\deg(r_1) < \deg(g), \deg(r_2) < \deg(g)$
+	 \begin{align*}
+	 &\Rightarrow (q_1 - q_2) g = r_2 - r_1 \\
+	 &\Rightarrow \deg(g_1 - q_2) + \deg(g) = \deg(r_1 - r_2)
+	 \end{align*}
+	 Falls $q_1 \neq q_2$, dann sind beide Seiten der Gleichung in $\mathbb{N}_0$ und es wäre
+	 \[\deg(g) \leq \deg(r_2 - r_1)\]
+	 Nach \ref{remark:74} ist $\deg(r_2 - r_1) \leq \max\{\deg(r_2),\deg(-r_1)\} < \deg(g) \lightning$
+	 Also $q_1 = q_2$, somit $r_2 - r_1 = \underbrace{q_1 - q_2}_{= 0} g = 0$, also $r_1 = r_2$
+  #+end_proof
+  #+ATTR_LATEX: :options [7.8, Nullstelle]
+  #+begin_defn latex
+  $\in K[t], f = a_n t^n + \ldots + a_1 t + a_0, \lambda \in K$ \\
+  Wir setzen $f(\lambda) := a_n \lambda^n + \ldots + a_1\lambda + a_0 \in K$
+  $\lambda$ heißt Nullstelle von $f \xLeftrightarrow{Def.} f(\lambda) = 0$
+  #+end_defn
+  #+ATTR_LATEX: :options [7.9]
+  #+begin_remark latex
+  \label{remark:79}
+  $K$ Körper, $f\in K[t], \lambda \in K$ Nullstelle von $f$. Dann gibt es in $K[t]$ ein eindeutig bestimmtes Polynom $q$ mit $f = (t - \lambda)q$.
+  Es ist $\deg(q) = \deg(f) - 1$
+  #+end_remark
+  #+begin_proof latex
+  *Existenz:* Nach \ref{thm:poly_div} existiert $q,r\in K[t]$ mit $f = (t - \lambda)q + r$ und $\deg(r) < \underbrace{\deg(t - \lambda)}_{= 1}$ \\
+  \Rightarrow $r$ ist konstantes Polynom und es gilt
+  \[0 = f(\lambda) = \underbrace{(\lambda - \lambda)}_{= 0} q + r(\lambda) = r(\lambda) \Rightarrow r = 0 \Rightarrow f = (t - \lambda) q\]
+  *Eindeutigkeit:* aus Eindeutigkeit aus \ref{thm:poly_div}
+  #+end_proof
+  #+begin_conc latex
+  $K$ Körper, $f\in K[t], f\neq 0, n:= \deg(f)$ \\
+  Dann besitzt $f$ in $K$ höchstens $n$ Nullstellen.
+  #+end_conc
+  #+begin_proof latex
+  per Induktion nach $n$
+  *Induktionsanfang:* $n = 0$ Ein konstantes Polynom $\neq 0$ besitzt keine Nullstellen. \\
+  *Induktionsschritt:* Es sein $n > 0$ und die Aussage sei für alle Polynome von Grad $< n$ schon gezeigt.
+  Falls $f$ keine Nullstelle besitzt, dann fertig.
+  Im Folgenden besitzte $f$ eine Nullstelle sei $\lambda \in K$ eine solche, daraus folgt mit \ref{label:79}
+  \[\exists q\in K[t]: f(t - \lambda)q, \deg{q} = n - 1\]
+  Ist $\varepsilon \neq \lambda$ eine weitere Nullstelle von $f$ dann ist
+  \[0 = f(\varepsilon) = \underbrace{\varepsilon - \lambda}_{\neq 0}q(\varepsilon)\]
+  Da $K$ als Körper ein Integritätsbereich ist folt: $q(\varepsilon) = 0$, das heißt $\varepsilon$ ist Nullstelle von $q$.
+  Nach Induktionsvorraussetzung hat $q$ höchstens $n-1$ Nullstellen \Rightarrow $f$ hat höchstens $n$ Nullstellen
+  #+end_proof
+  #+ATTR_LATEX: :options [7.11]
+  #+begin_defn latex
+  \label{dfn:zero}
+  $K$ Körper, $f\in K[t], f\neq 0,\lambda \in K$
+  \[\mu (f,\lambda) := \max\{e\in\mathbb{N}_0 \mid \Exists g\in K[t]: f = (t - \lambda)^e g\}\]
+  heißt die Vielfachheit der Nullstelle $\lambda$ von $f$.
+  #+end_defn
+  #+begin_remark latex
+  - Es ist $\mu(f,\lambda) = 0 \Leftrightarrow f(\lambda) \neq 0 \lambda$ keine Nullstelle von $f$ (denn: $f(\lambda) = 0 \Leftrightarrow \Exists q\in K[t]: f=(t - \lambda)q \Leftrightarrow \mu(f,\lambda) \neq 0$)
+  - Die Vielfachheit von $\lambda$ gibt an, wie oft der Linearfaktor $t - \lambda$ in $f$ vorkommt
+  - Sind $\lambda_1,\ldots,\lambda_m \in K$ sämtliche verschiedene Nullstellen von $f$ und es ist $e_i := \mu(f,\lambda_i),i = 1,\ldots,m$ dann existerit ein Polynom $g\in K[t]$ mit
+	\[f = (t - \lambda_1)^{e_1}\cdot\ldots\cdot(t-\lambda_m)^{e_m}g\]
+	und den Eigenschaften, dass $g$ in $K$ kein Nullstelle besitzt und, dass $\deg(g) = \deg(f) - (e_1 + \ldots + e_m)$.
+  - "bester Fall:" $\deg(g) = 0$ ("$f$ zerfällt in Linearfaktoren"):
+	Dann existert $a\in K\setminus\{0\}, \lambda_1,\ldots, \lambda_m \in k$ paarweise verschieden, $e_1,\ldots,e_n \in \mathbb{N}$  mit
+	\[f = a(t - \lambda_1)^{e_1}\cdot\ldots\cdot(t - \lambda_m)^{e_m}, e_1 + \ldots + e_m = \deg(f)\]
+	Alternative Darstellung:
+	\[f = a(t - \tilde\lambda_1) \cdot \ldots\cdot(t - \tilde\lambda_n), n = \deg(f), \tilde\lambda_1,\ldots\tilde\lambda_n~\text{nicht notwendig verschieden}\]
+  #+end_remark
+  #+ATTR_LATEX: :options [7.12 Fundamentalsatz der Algebra]
+  #+begin_thm latex
+  Jedes Polynom $f \in \mathbb{C}[t]$ mit $\deg(f) \geq 1$ besitzt eine Nullstelle.
+  #+end_thm
+  #+begin_proof latex
+  Zum Beispiel in Vorlesung Funktionentheorie 1, Algebra 1
+  #+end_proof
+  #+ATTR_LATEX: :options [7.13]
+  #+begin_conc latex
+  $f\in\mathbb{C}[t], f\neq 0$
+  Dann zerfällt $f$ in Linearfaktoren.
+  #+end_conc
+  #+begin_proof latex
+  *Induktionsanfang:* $n = 0 \Rightarrow f$ ist konstantes Polynom, fertig \\
+  *Induktionsscritt:* Sei $n\geq 1$ und die Assage sei für alle Polynome vom Grad $< n$ bereits bewiesen. Nach Fundamentalsatz der Algebra existiert eine Nullstelle $\lambda$ von $f$
+  \[\xRightarrow{\ref{remark:79}} \Exists g\in \mathbb{C}[t]: f = (t - \lambda)g, \deg(g) = n - 1 \]
+  Nach Induktionsannahme $\Exists a\in\mathbb{C},\lambda_1,\ldots,\lambda_{n - 1} \in \mathbb{C}$ (nicht notwendig verschieden)
+  \[g = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n-1})\]
+  Setze $\lambda_n := x \Rightarrow f = g(t - \lambda_n) = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n - 1})(t - \lambda_n)$
+  #+end_proof
+
+  #+ATTR_LATEX: :options [7.14]
+  #+begin_defn
+  $K$ Körper, $f\in K[t]$
+  $f$ induziert eine Abbildung $\tilde f: K\to K,\lambda\to f(\lambda)$, $\tilde f$ heißt die Polynomfunktion zum Polynom $f$
+  #+end_defn
+  #+ATTR_LATEX: :options [7.15]
+  #+begin_ex latex
+  \label{ex:715}
+  Es ist wichtig zwischen dem Polynom $f\in K[t]$ und der dazugehörigen Polynomfunktion $\tilde f: K\to K$ zu unterscheiden
+  Sei $f = t^2 + t \in \mathbb{F}_2 [t]$. Dann ist $f(\bar 0) = \bar 0^2 + \bar 0 = \bar 0, f(\bar 1) = \bar 1^2 + \bar 1 = \bar 0$
+  das heißt $\tilde f: \mathbb{F}_2 \to \mathbb{F}_2$ ist die Nullabbildung, aber $f$ ist nicht das Nullpolynom
+  #+end_ex
+  #+ATTR_LATEX: :options [7.16]
+  #+begin_remark latex
+  \label{remark:716}
+  $K$ Körper mit unendlich vielen Elementen. \\
+  Dann ist die Abbildung $\tilde : K[t]\to$ Abb$(K,K):=\{g:K\to K ~\text{Abbildung}\}, f\mapsto \tilde f$ injektiv, das heißt:
+  Ist $K$ unendlich und sind $f_1,f_2 \in K[t]$, dann gilt $f_1 = f_2 \Leftrightarrow \tilde f_1 = \tilde f_2$
+  #+end_remark
+  #+begin_proof latex
+  Es seien $f_1,f_2 \in K[t]$ mit $\tilde f_1 = \tilde f_2$ wir setzen $g:= f_1 - f_2$ \\
+  \Rightarrow Für alle $a\in K$ ist $g(a) = (f_1 - f_2)(a) = f_1(a) - f_2(a) = \tilde f_1(a) - \tilde f_2(a) = 0$
+  $\xRightarrow{K~\text{unendlich}}$ g hat unendlich viele Nullstellen, mit \ref{dfn:zero} folgt: $g = 0\Rightarrow f_1 = f_2$
+  #+end_proof
+  #+begin_remark latex
+  - Lässt man \ref{remark:716} die Vorraussetzung $K$ hat unendlich viele Elemente weg, wird die Aussage falsch, siehe Beispiel \ref{ex:715}
+  - Mit dem Wissen von \ref{ex:715} und \ref{remark:716} im Hintergrund bezeichnet man die vom Polynom $f$ induzierte Polynomfunktion mit $f$ anstelle von $\tilde f$
+  #+end_remark

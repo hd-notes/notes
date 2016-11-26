@@ -1,0 +1,250 @@
+* Grundbegriffe der Newtonsche Mechanik
+** Newtonsche Axiome
+   Dynamik: Ursachen der Bewegungsänderung \rightarrow Kräfte: $\v F = (F^1,F^2,F^3)$
+   1. Es existierten Inertialsysteme (Koordinatensysteme in denen eine Punktmasse an der keine Kraft wirkt) nicht oder sich geradlinig gleichförmig bewegt: $\ddot{\v x} = 0$
+   2. In solchen Systemen gilt: $\v F = m\ddot{\v x}$
+   3. Für Kräfte zwischen zwei Massenpunkten gilt:
+	  \[\v{F}_12 = -\v{F}_21\]
+
+   $2$ definiert die *träge* Masse
+   Die entscheidene physikalische Aussage von $2.$ ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
+   Alternative Diskussionen der obigen Axiomatik:
+   - zum Beispiel Kapitel 1.2 von Jose/Saletan (mit $2$ Definition der Kraft)
+** Trajektorie
+   Vorhersagen erfordern: $\v F \rightarrow \text{Trajektorie}$. Genauer: Sei $\v F(\v x,t)$ gegeben. Berechne $\v x(t)$ !
+** Differentialgleichungen
+   hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
+*** 1. Ordung
+	Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung (\Rightarrow nur 1. Ableitung):
+	\[y'(x) = f(x,y)\]
+**** Lösung
+	 Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
+*** Anfangswertproblem
+	Gegeben durch:
+	1) Dgl.: $y' = f(x,y)$
+	2) Anfangsbedingung $(x_0;y_0) \in \mathbb{R}^2$
+	Gesucht: Funktion $y(x)$ mit (für $x\in I, x_0 \in I$:
+	1) $y'(x) = f(x,y(x))$
+	2) $y(x_0) = y_0$
+*** partielle Ableitung
+	Wir betrachten ab sofort auch Funktionen mehrerer Variablen: $f:\mathbb{R}\times\mathbb{R}\to\mathbb{R},(x,y)\mapsto f(x,y)$
+	Partielle Ableitung: \[\f{\partial f(x,y)}{\partial y} \equiv \lim_{\Delta y \to 0} \f{f(x,y + \Delta y) - f(x,y)}{\Delta y}\]
+	Rechenregeln: Wie bei normalen Ableitung, nur mit $x$ fest.
+**** Beispiel
+	 \[f(x,y,z) \equiv x^2 + y z\]
+	 \[\f{\partial f}{\partial x} = 2x\]
+	 \[\f{\partial f}{\partial y} = z\]
+	 \[\f{\partial f}{\partial z} = y\]
+*** Existenz und Eindeutigkeit
+	... viele Theoreme über Existenz und Eindeutigkeit (Peano und Picand / Lindelöf)
+	Insbesondere sind Existenz und Eindeutigkeit gesichert falls:
+	\[f(x,y) \wedge \f{\partial f(x,y)}{\partial y}\]
+	stetig sind.
+**** "Begründung"
+	 Zeichne an jedem Punkt $(x,y)$ einen Vektor $(1,f(x,y))$ ein.
+	 \[\f{\d y(x)}{\d x} = y'(x) = f(x,y(x)) = \f{(x,y(x))}{1}\]
+**** Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)
+	 Steigung der gesuchten Funktion bei $x_0$ ist bekannt als $f(x_0, y_0)$
+	 \Rightarrow kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
+	 Kenne Steigung bei $x_0 \Delta x: f(x_0 + \Delta x, y_0 + \Delta x f(x_0,y_0))$
+	 \Rightarrow Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. (\Rightarrow perfekt für Numerik)
+*** Beispiele
+	1. \[y'(x) = f(x,y), f(x,y) = 3\]
+	   \[y'(x) = 3 \Rightarrow y(x) = \int 3\d x = 3 x + c\]
+	   Das ist schon die allgemeine Lösung der Dgl.
+	   Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich duch Bestimmen der Konstanten lösen:
+	   \[y(x) = 3 x + c \Rightarrow 1 = 3(-1) + c \Rightarrow c = 4 \Rightarrow y(x) = 3x + 4\]
+*** Seperation der Variablen
+	Seperation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
+**** Beispiel
+	 \[f(x,y) = \f{x}{y} \Rightarrow y'(x) = \f{x}{y(x)}\]
+	 \[\f{\d x}{\d x} = \f{x}{y} \Rightarrow y\d y = x\d x\]
+	 Variablen sind getrennt, kann einfach Integrieren
+	 \[\int y\d y = \int x\d x \Rightarrow \f{y^2}{2} = \f{x^2}{2} + c \Rightarrow y = \pm \sqrt{x^2 + 2c}\]
+***** Lösen allgemeines Anfangswertproblem
+	  allgemeines Anfangswertproblem mit Anfangsbedingung $(x_0,y_0)$
+	  \[y_0^2 = x_0^2 + 2c \Rightarrow 2c = y_0^2 - x_0^2 \Rightarrow y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
+****** TODO Skizze
+*** System von Dgl
+	(fast) alles oben gesagte funktioniert auch für Systeme gewöhnlicher Dgl. 1. Ordnung:
+	\[\f{\d y^1(x)}{\d x} = f^1(x,y^1,\ldots,y^n)\]
+	\[\f{\d y^n(x)}{\d x} = f^n(x,y^n,\ldots,y^n)\]
+	Vektorschreibweise:
+	\[\f{\d \v y}{\d x} = \v f(x,\v y)\]
+	Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
+	\[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
+	Anfangsbedingungen: $(x_0,\v{y}_0)$ \rightarrow $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung \Rightarrow allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
+*** Systeme von $n$ gewöhnlicher Dgl. p-ter Ordnung
+	\[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
+	Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
+**** Tatsache
+	 Systeme von Dgl können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
+	 Wir illustieren dies am Beispiel mit $p = 2$
+**** Beispiel
+	 \[\v{y}''(x) = \v{f}(x,\v{y},\v{y}')\]
+	 Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
+	 \begin{equation}
+	 \begin{cases}
+	 \v{z}'(x) &= \v{f}(x,\v{y},\v{z}) \\
+	 \v{y}'(x) &= \v z \tag{$\equiv g(x,\v y, \v z)$}
+	 \end{cases}
+	 \end{equation}
+	 Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
+	 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
+	 \Rightarrow System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
+*** Erste physikalische Beipiele
+**** Punktmasse
+	 3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
+	 \Rightarrow 6 Dgl 1. Ordung:
+	 \begin{equation}
+	 \begin{cases}
+	 \dot{\v v} &= \f{1}{m}\v F(t,\v x,\v v) \\
+	 \dot{\v x} &= \v v
+	 \end{cases}
+	 \end{equation}
+
+	 In vielen Fällen: (zeitunabhängiges) Kraftfeld $\v F(\v x)$ ("Vektorfeld").
+***** Darstellung in $d = 2$ (Skizze Vektorfeld).
+	  wichtig: doppelte Makierung der Achsen
+***** Einfachster Fall ($d = 1$)
+	  betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
+	  \begin{equation}
+	  \begin{cases}
+	  \dot v &= \frac{F(x,v)}{m} \\
+	  \dot x = v
+	  \end{cases}
+	  \end{equation}
+	  \[\cvec{v ; x} = \cvec{\frac{F(x,v)}{m} ; v}\]
+****** TODO Darstellung im Phasenraum
+	   Analyse im Phasenraum passt perfekt zur früheren allgemeinen Analyse von Dgl 1. Ordnung
+	   Analog in $d = 3$: Vektorfeld: $(\f{\v F}{m}, \v v)$, Phasenraum $(\v x, \v v)$ oder $(\v x, \v p)$ ist 6-dimensional
+***** Harmonischer Oszilator ($d = 1$)
+	  $F(x) = -k x$
+	  \begin{equation}
+	  \begin{cases}
+	  \dot v &= -x \\
+	  \dot x &= v
+	  \end{cases}
+	  \end{equation}
+	  \begin{tikzpicture}
+	  \begin{axis}[title={Phasenraum des Harmonischen Oszilators},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
+	  \addplot3[blue,quiver={u={y},v={-x},scale arrows=0.3},-stealth,samples=15] {y-x};
+	  \end{axis}
+	  \end{tikzpicture}
+***** Freier Fall mit Luftwiederstand
+	  Aufgabe: Bestime zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
+	  Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
+	  \[F=m\ddot x \Rightarrow m g - c \dot{x}^2 = m\ddot x \Rightarrow \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
+	  Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
+	  \begin{align*}
+	  \frac{\d v}{\d t} &= g - \frac{c}{m}v^2 \\
+	  \d t &= \frac{\d v}{g - \frac{c}{m}v^2}
+	  \end{align*}
+	  Konstanten und Dimensionen
+	  \[[g] = \si{\meter\per\second\squared};[\frac{c}{m}] = \si{\newton\per\kilo\gram\per\meter\squared\second\squared}\]
+	  Kann leicht Konstanten der Dimension Zeit und Geschwindigkeit bilden:
+	  \[\hat{t} = \sqrt{\frac{m}{g c}},\hat{v} = \sqrt{\frac{g m}{c}}\]
+	  Benutze jetzt die dimensionslosen Variablen $t' = \frac{t}{\hat{t}},v'=\frac{v}{\hat{v}}$
+	  \[\Rightarrow \d t' = \frac{d v'}{1 - v^{2\prime}} = \frac{\d v'}{2}(\frac{1}{1 + v'} + \frac{1}{1 - v'})\]
+	  \[2t' = \ln{1 + v'} - \ln{1 - v'} + c\]
+	  $v' = 0$ bei $t' = 0 \Rightarrow c = 0$
+	  Auflösen nach $v'$: \[e^{2t'} = \frac{1 + v'}{1 - v'} \Rightarrow \ldots\]
+	  \[\Rightarrow v' = 1 - \frac{2}{e^{2t'} + 1} \Rightarrow v = \hat{v}(1 - \frac{2}{e^{\frac{2t}{\hat{t}}}} + 1)\]
+	  \Rightarrow $\hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
+
+	  Zugabe: einfache physikalische Argumente für die Größe von $c$:
+	  1. $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
+		 $\Rightarrow c \sim \rho_L A$
+	  2. Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
+** Taylorentwickung
+   Ohne Beschränkung der Allgemeinheit $x_0 = 0$. Untersuche Verhalten beliebiger glatter Funktionen $f(x)$ nahe $x = 0$
+   \begin{align*}
+   f(x) &= f(0) + \int_0^x\d x' f'(x') \\
+   &= f(0) + f'(x')(x_ - x)\Big|_0^x - \int_0^x\d x' f''(x')(x'-x) \\
+   &= f(0) + f'(0)x - f''(x')\frac{(x' - x)}{2}\Big|_0^x + \int_0^x\d x' f'''(x')\frac{(x' - x)^2}{2} \\
+   &= f(0) + f'(x)x + f''(0)\frac{x^2}{2} + \ldots
+   \end{align*}
+   Allgemein:
+   \[f(x) = f(0) + \sum_{n=1}^m f^{(n)}(0)\frac{x^n}{n!}+\overbrace{\int_0^x \d x' f^{(m+1)}(x')\frac{(x' - x)^m}{m!}}^{\text{Restglied}}\]
+   Falls das Restgliend für $n\to\infty$ verschwindet:
+   \[f(x) = f(0) + \sum_{n=1}^\infty f^{(n)}(0)\frac{x^n}{n!}\]
+   Analog:
+   Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}{n!}\]
+   1. Oft erste Terme = gute Näherung
+   2. Verallgemeinerung auf viele Variablen
+*** Interessantes "Gegenbeispiel"
+	\[f(x) \equiv \begin{cases} e^{-\frac{1}{x^2}} & x\neq 0 \\ 0 & x = 0 \end{cases}\]
+	Überzeugen sie sich, dass alle Ableitungen existieren, auch bei Null! \\
+	Sie Brauchen:
+	\[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
+	Die Ableitungen verschwinden sogar bei Null \Rightarrow Taylor-Reihe ist Null, keine gute Näherung
+** Harmonicher Oszillator
+   - eines der wichtigesten physikalischen Systeme
+   - beschreibt viele kompilziertere Systeme angenähert
+*** Eindimensionales System
+	$d = 1, F = F(x)$
+	\[F(x) = -\dd{}{x}v(x) = -v'(x)\]
+
+	Damit haben wir das *Potetial* (\rightarrow beschreibt die potentielle Energie des Massenpunktes) $v$ als Stammfunktion von $-F$ definiert
+	- Skizze
+	Massenpunkt kann nur ruhen, wo $F=0$ beziehungsweise $V'=0$. Genauer: Nur Minima (Maxima instabil). \\
+**** Ziel
+	 Untersuchung der Bewegung in der Nähe von Minimal (also bei $x\approx x_0$ wobei $v'(x_0) = 0$ gelte) \\
+	 $V(x)$ bei $x_0$, $V'(x_0) = 0, \abs{x - x_0}$ klein \\
+	 \[\Rightarrow V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
+	 \[\Rightarrow F(x) \simeq - V''(x_0)(x-x_0)\]
+	 \[x-x_0\equiv y \Rightarrow \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
+	 Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr großem Nutzen (viele Systeme)
+**** Lösung
+	 Newton \Rightarrow $m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
+	 \Rightarrow $\sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
+	 \Rightarrow $y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+	 (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
+**** Verallgemeinerungen
+	 - Reibungterm $\sim \dot{y}$
+	 - treibende Kraft $\sim f(t)$
+** Lineare Differentialgleichungen
+   allgemeine Form einer linearen Dgl. n-ter Ordnung:
+   \[y^{(n)} + f_{n -1}(x)y^{(n - 1)}(x) + \ldots + f_0(x)y(x) = f(x)\]
+   Das Wort linear bezieht sich nur auf $y$, nicht $x$ \\
+   Die Dgl. heißt homogen falls $f(x)\equiv 0$
+   Homogen von Grad $p$: Ersetzung $y\to\alpha y$ führt zu Vorfaktor $\alpha p$, hier $p = 1$
+   - wir hatten oben dem Fall $n = 2$ "mit konstanten Koeffizienten"
+   - noch einfacheres Beispiel: $n = 1, f\equiv 0$ (aber beliebige Koeffizienten)
+	 \[y' + a(x)y = 0\]
+	 Das ist seperabel:
+	 \[\dd{y}{x} + a(x) y = 0\]
+	 \[\dd{y}{x} = -a(x) y\]
+	 \[\frac{\d y}{x} = -a(x) \d x\]
+	 \[\int\frac{\d y}{y} = - \int a(x)\d x\]
+	 \[\ln{y} - A(x) + c_1\]
+	 \[y = c e^{-A(x)}\]
+	 $A(x)$ sei eine beliebege aber fest gewählte Stammfunktion von $a$
+	 Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
+	 - Ansatz: $y = C(x)e^{-A(x)}$, Dgl. $y' + ay = f$
+	   \[(c e^{-A})' + a C e^{-A} = f\]
+	   \[c' e^{-A} - C A' e^{-A} + C a e^{-A} = f\]
+	   Beachte $A' = a$
+	   \[\Rightarrow c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
+	   \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
+	   $f(x')$ ist eine frei wählbare additive Konsante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
+*** Zusammenfassung / Verallgemeinerung auf $n > 1$
+	\begin{defn}[Linear Unabhängig]
+	Ein Satz von Funktionen $f_1(x),\ldots,f_n(x)$ heißt linear unabhängig, falls jede Linearkombination bei der nicht alle Koeffizienten Null sind auch nicht Null ist:
+	\[\alpha_1 f_1(x) +\ldots \alpha_n f_n(x)\equiv 0 \Rightarrow \alpha_1 = \ldots = \alpha_n = 0\]
+	(identisch zur linearen Unabhängigkeit von Vektoren)
+	\end{defn}
+**** Fakt
+	 Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-ter Ordnung, so kenn man die allgemeine Lösung:
+	 \[y_{hom}(x) = C_1 y_1(x) + \ldots + C_n y_n(x)\]
+	 Die allgeimeine Lösung ist stets von dieser Form.
+
+	 Wenn wir außerdem eine *partikuläre* Lösung der onhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
+	 \begin{align*}
+	 y(x) = y_{hom}(x) + y_{part}(x)
+	 \intertext{"Beweis" durch Einsetzen in}
+	 y^{(n)} + f_{n - 1}y^{(n - 1)} + \ldots + f_0 y = f
+	 \end{align*}
+*** Finden der partikulären Lösung
+	Auch bei $n > 1$: Variation der Konstanten (Funktioniert gut bei konstanten Koeffizienten)
+	Mächtigere Methoden: Überführen von System von linearen Dgl. 1. Ordnung (braucht Matrixrechnung)

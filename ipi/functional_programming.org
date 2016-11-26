@@ -1,0 +1,121 @@
+* Funktionale Programmierung
+  - bei Maschienensprache werden Zwischenergebnisse in Speicherzellen abgelegt
+  - das ist auch in der funktionalen Programmierung eine gute Idee
+  - Speicherzellen werden duch Namen (vom Programmierer vergeben) unterschieden
+** Beispiel
+   Lösen einer quadratischen Gleichung:
+   \[ax^2 + bx + c = 0\]
+   \[x^2 - 2px + q = 0, p = -\frac{b}{2a},q=\frac{c}{d}\]
+   \[x_2 = p + \sqrt{p^2 - q},x_2 = p - \sqrt{p^2 - q}\]
+   ohne Zwischenergebnisse:
+   \[x_1 \leftarrow add(div(div(b,a),-2),sqrt(sub(mul(div(b,a),-2),div(div(b,a)-1)),div(c,a)))\]
+   mit Zwischenergebniss und Infix Notation
+   \[p\leftarrow b / c / -2~\text{oder}~p\leftarrow -0.5 * b / a\]
+   \[a\leftarrow c / a\]
+   \[d\leftarrow sqrt(p*p - q)\]
+   \[x_1\leftarrow p + d\]
+   \[x_2\leftarrow p - d\]
+** Vorteile von Zwischenergebnissen
+   1. lesbarer
+   2. redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der Initialisierung nicht mehr verändert werden
+   3. Speicherzellen und Namen sind nützlich um Argumente an Funktionen zu übergeben \Rightarrow Definition eigener Funktionen
+	  #+BEGIN_SRC cpp
+	  function sq(x) {
+		 return x * x
+	  }
+	  #+END_SRC
+	  \Rightarrow $d \leftarrow sqrt(sq(p) - q)$
+	  Speicherzelle mit Namen "x" für das Argument von $sq$
+** Funktionale Programmierung in c++
+   - in c++ hat jede Speicherzelle einen Typ (legt Größe und Bedeutung der Speicherzelle fest)
+	 - wichtige Typen
+	   | int         | ganze Zahlen  |
+	   | double      | reelle Zahlen |
+	   | std::string | Text          |
+	   int: $12,-3$ \\
+	   double: $-1.02,1.2e-4 = 1.2*10^{-4}$ \\
+	   std::string: "text"
+   - Initialisierung wird geschrieben als "typename spzname = Wert;"
+	 #+BEGIN_SRC cpp
+	 double a = ...;
+	 double b = ...;
+	 double c = ...;
+	 double p = -0.5 b / a;
+	 double q = c / a;
+	 double d = std::sqrt(p*p - q);
+	 double x1 = p + d;
+	 double x2 = p - d;
+	 std::cout << "x1: " << x1 << ", x2: " << x2 << std::endl;
+	 #+END_SRC
+   - eigene Funktionen in C++
+	 #+BEGIN_SRC cpp
+	 // Kommentar (auch /* */)
+	 type_ergebnis fname(type_arg1 name1, ...) {
+		 // Signatur / Funkitonskopf / Deklaration
+		 return ergebnis;
+		 /* Funktionskörper / Definition / Implementation */
+	 }
+	 #+END_SRC
+	 - ganze Zahl quadrieren:
+	   #+BEGIN_SRC cpp
+	   int sq(int x) {
+		   return x*x;
+	   }
+	   #+END_SRC
+	 - reelle Zahl quadrieren:
+	   #+BEGIN_SRC cpp
+	   double sq(double x) {
+		   return x*x;
+	   }
+	   #+END_SRC
+	 - beide Varianten dürfen in c++ gleichzeitig definiert sein \Rightarrow "function overloading" \Rightarrow c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
+	   #+BEGIN_SRC cpp
+	   int x = 2;
+	   double y = 1.1
+	   int x2 = sq(x) // int Variante
+	   double y2 = sq(y) // double Variante
+	   #+END_SRC
+	 - jedes c++-Programm muss genau eine Funktion names "main" haben. Dort beginnt die Programmausführung.
+	   #+BEGIN_SRC cpp
+	   int main() {
+		   Code;
+		   return 0;
+	   }
+	   #+END_SRC
+	   - return aus der "main" Funktion ist optional
+	 - Regel von c++ für erlaubte Name
+	   - erstes Zeichen: Klein- oder Großbuchstaben des englischen Alphabets, oder "_"
+	   - optional: weitere Zeichen oder, "_" oder Ziffer 0-9
+	 - vordefinierte Funktionen:
+	   - eingebaute $\estimates$ immer vorhanden
+		 - Infix-Operatoren $+,-,*,/,\%$
+		 - Prefix-Operatoren $operator+,operator-,\ldots$
+	   - Funktion der Standardbibilothek $\estimates$ müssen "angefordert" werden
+		 - Namen beginnen mit "std::", "std::sin,..."
+		 - sind in Module geordnet, zum Beispiel
+		   - cmath \Rightarrow algebraische Funktion
+		   - complex \Rightarrow komplexe Zahlen
+		   - string \Rightarrow Zeichenkettenverarbeitung
+		 - um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ include <name>
+		   #+BEGIN_SRC cpp
+		   #include <iostream>
+		   #include <string>
+		   int main() {
+			   std::cout << "Hello, world!" << std::endl;
+			   std::string out = "mein erstes Programm\n";
+			   std::cout << out;
+			   return 0;
+		   }
+		   #+END_SRC
+	 - overloading der arithmetischen Operationene
+	   - overloading genau wie bei $sq$
+		 - 3 * 4 \Rightarrow int Variante
+		 - 3.0 * 4.0 \Rightarrow double Variante
+		 - 3 * 4.0 \Rightarrow automatische Umwandliung in höheren Typ, hier "double" \Rightarrow wird als 3.0 * 4.0 ausgeführt
+	 - \Rightarrow Devision unterscheidet sich
+	   - Integer-Division: 12 / 5 = 2 (wird abgerundet)
+	   - Double-Division: 12.0 / 5.0 = 2.4
+	   - -12 / 5 = 2 (\Rightarrow truncated Division)
+	   - 12.0 / 5.0 = 2.4
+	   - Gegensatz (zum Beispiel in Python)
+		 - floor division \Rightarrow wird immer abgerundet \Rightarrow -12 / 4 = -2

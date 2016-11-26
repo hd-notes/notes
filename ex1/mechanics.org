@@ -1,0 +1,203 @@
+* Mechanik
+  Kinematik: Beschreibung der Bewegung
+  Dynamik: Ursache der Bewegung
+
+** Kinematik des Massenpunktes
+*** Eindimensionale Bewegung
+**** TODO Skizze 1
+	$x_1,t_1 \longrightarrow x_2, t_2$
+	Geschwindigkeit
+	\[v = \frac{\text{Weg}}{\text{Zeit}} = \frac{x_2 - x_1}{t_2 - t_1} = \frac{\Delta x}{\Delta t}\quad [v] = \si{\meter\per\second}~\text{abgeleitete Größe}\]
+**** Momentangeschwindigkeit
+	 \[v := \lim_{\Delta t\to 0} \frac{\Delta{x}}{\Delta t} = \frac{\mathrm{d}x}{\mathrm{d}t} = \dot{x}\]
+**** Beschleunigung
+	 \[a := \lim_{\Delta t\to 0} \frac{\Delta{v}}{\Delta{t}} = \frac{\mathrm{d}v}{\mathrm{d}t} = \frac{\mathrm{d}^2x}{\mathrm{d}t^2} = \ddot{x}\quad [a]=\si{\meter\per\second\squared}\]
+**** Freier Fall
+	 $a = \text{const.}$ (Behauptung)
+	 \[a=\ddot{x} = \text{const} = \dot{v}\]
+	 $\rightarrow$ Integration: \[v(t) = \int_0^t a\mathrm{d}t + v_0 = a t + v_0\]
+	 \[x(t) = x_0 + \int_0^t v(t)\mathrm{d}t = x_0 + \int_0^t (a t + v_0)\mathrm{d}t = \frac{1}{2}a t^2 + v_0 t + x_0\]
+	 Bei unserem Fallturm
+	 \[x(t) = \frac{1}{2}a t^2 \rightarrow a = \frac{2 x}{t^2}\]
+	 | $x[\si{\meter}]$ | $t[\si{\milli\second}]$ | $\frac{2x}{t^2}[\si{\meter\per\square\second}]$ |
+	 |------------------+-------------------------+-------------------------------------------------|
+	 |             0.45 |                   304.1 |                                       9.7321696 |
+	 |              0.9 |                   429.4 |                                       9.7622163 |
+	 |             1.35 |                   525.5 |                                       9.7772861 |
+	 |             1.80 |                   606.8 |                                       9.7771293 |
+	 #+TBLFM: $3=(2 * $1) / (($2 / 1000)^2)
+	 \[x(t) = \frac{1}{2} g t^2,~g=\SI{9.81}{\meter\per\square\second}\]
+	 Die Erdbeschleunigung $g$ ist für alle Körper gleich (Naturgesetz).
+*** Bewegung im Raum
+**** TODO Skizze 2
+	Ortsvektor:
+	\[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} = {\begin{pmatrix} x(t) & y(t) & z(t)\end{pmatrix}}^\intercal\]
+	Durschnittsgeschwindigkeit
+	\[\frac{\vec{\Delta r_{12}}}{\Delta t} = \frac{\vec{r_2} - \vec{r_1}}{\Delta t} = \vec{v_D}\]
+	\[\vec{v}(t) = \frac{\mathrm{d}\vec{r}}{\mathrm{d}t} = \dot{\vec{r}}(t) = {\begin{pmatrix}\dot{x}(t) & \dot{y}(t) & \dot{z}(t)\end{pmatrix}}^\intercal = {\begin{pmatrix} v_x & v_y & v_z\end{pmatrix}}^\intercal\]
+	\[\vec{a}(t) = \frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = \dot{\vec{v}}(t) = \ddot{\vec{r}}(t) = {\begin{pmatrix} \ddot{x} & \ddot{y} & \ddot{z}\end{pmatrix}}^\intercal = {\begin{pmatrix} a_x & a_y & a_z \end{pmatrix}}^\intercal\]
+	$\rightarrow$ Superpositionsprinzip: \\
+	Kinematik kann für jede einzelne (Orts)komponente einzeln betrachtet werden.
+
+	\[\vec{a_0} = \text{const}\]
+	\[\vec{r}(t) = \vec{r_0} + \vec{v_0}(t-t_0) + \frac{1}{2}\vec{a}(t^2-t_0^2) = \begin{pmatrix} x_0 + v_{x,0}(t-t_0) + \frac{1}{2} a_{x,0}(t^2-t_0^2) \\ y_0 + v_{y,0}(t-t_0) + \frac{1}{2} a_{y,0}(t^2-t_0^2) \\ z_0 + v_{z,0}(t-t_0) + \frac{1}{2} a_{z,0}(t^2-t_0^2) \end{pmatrix}\]
+**** Horizontaler Wurf
+**** TODO Skizze 3
+	 \[t_0 = 0\]
+	 \[\vec{a_0} =  {\begin{pmatrix} 0 & 0 & -g \end{pmatrix}}^\intercal\]
+	 \[\vec{v_0} =  {\begin{pmatrix} v_{x,0} & 0 & 0 \end{pmatrix}}^\intercal\]
+	 \[\vec{x_0} =  {\begin{pmatrix} 0 & 0 & 0 \end{pmatrix}}^\intercal\]
+	 \[\vec{r}(t) =  {\begin{pmatrix} v_{x,0}t & 0 & \frac{1}{2}gt^2 \end{pmatrix}}^\intercal\]
+
+**** Schiefer Wurf
+	 \[\vec{a_0} = \cvec{0;0;-g}\]
+	 \[\vec{v_0} = \cvec{v_{x,0};0;v_{z,0}}\]
+	 \[\vec{r_0} = \cvec{0;0;z_0}\]
+	 \[r(t) = \cvec{v_{x,0}t;0;-\frac{1}{2}gt^2 + v_{z,0}t + z_0}\]
+	 \[z(x) = -\frac{1}{2}\frac{g}{v_{x,0}^2}x^2 + \frac{v_{z,0}}{v_{x,0}}x + z_0\]
+
+**** Nachtrag
+	 \[a = \dot{v}\]
+	 \[\int_0^t \dot{v}\d t' = \int_0^ta\d t'\]
+	 \[v\mid_0^t = at'\mid_0^t\]
+	 \[v(t) - \underbrace{v(0)}_{v_0} = at\]
+	 \[v(t) = at + v_0\]
+	 analog:
+	 \[x(t) = \frac{1}{2}at^2 + v_0 t + x_0\]
+***** TODO Skizze Wurfparabel
+	  \[\tan{\varphi} = \frac{v_{z,0}}{v_{x,0}}\]
+	  \[v_0^2 = v_{x,0}^2 + v_{z,0}^2\]
+	  Scheitel:
+	  \[Z'(x_s) = 0\]
+	  \[x_s = \frac{v_0^2}{2g}\sin{2\varphi}\]
+	  Wurfweite:
+	  \[Z(x_w) = 0\]
+	  \[x_w = \frac{v_0^2}{2g}\sin{2\varphi}(1 + \sqrt{1 + \frac{2gz_0}{v_0^2\sin^2{\varphi}}})\]
+	  Optimaler Winkel: $\varphi_{opt}, x_w$ max.
+	  \[z_0 = 0\Rightarrow \sin{2\varphi} = 1 \rightarrow \varphi = \SI{45}{\degree}\]
+	  \[z_0 \neq 0\Rightarrow \sin{\varphi_{opt}} = (2 + \frac{2gz_0}{v_0^2})^{-\frac{1}{2}}\]
+**** Gleichförmige Kreisbewegung
+	 \[\vec{r}(t) = \cvec{x(t);y(t)} = \cvec{R\cos{\varphi}; R\sin{\varphi}}\]
+	 mit $\varphi = \varphi(t)$
+	 \[\vec{v}(t) = \cvec{\dot{x};\dot{y}} = \cvec{-R\dot{\varphi}\sin{\varphi};R\dot{\varphi}\cos{\varphi}}\]
+	 Gleichförmige Kreisbewegung: $\dot{\varphi} = \text{const}$
+	 Definition Winkelgeschwindigkeit:
+	 \[\omega = \frac{\d \varphi}{\d t} = \dot{\varphi}\quad[w] = \si{\radian\per\second} = \si{1\per\second}\]
+	 Für $\omega = \text{const.}$:
+	 \[\vec{r} = R\cvec{\cos{\varphi};\sin{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
+	 \[\vec{v} = R\omega\cvec{-\sin{\varphi};\cos{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
+	 \[\vec{v} \perp \vec{r} \Leftrightarrow \vec{v}\cdot\vec{r} = 0\]
+***** TODO Skizze Kreisbewegung
+***** Mitbewegtes Koordinatensystem
+	  \[\vec{r}(t) = R\vec{e_R} \quad \vec{e_R} = \cvec{\cos{\varphi (t)};\sin{\varphi (t)}}\]
+	  \[\vec{v}(t) = R\omega \vec{e_t} \quad \vec{e_t} = \cvec{-\sin{\varphi (t)}; \cos{\varphi (t)}}\]
+	  \[\vec{t} \neq~\text{const das heißt}~\vec{a}(t)\neq 0\]
+	  Kreisbeschleunigung
+	  \[\vec{a}(t) = \cvec{\ddot{x}(t);\ddot{y}(t)} = \cvec{-R\omega^2\cos{\varphi};-R\omega^2\sin{\varphi}} = -R\omega^2\vec{e_R} \Rightarrow \vec{a}  \parallel \vec{r}\]
+	  \[\abs{\vec{a}(t)} = R\omega^2 = \frac{v^2}{R} \neq 0\]
+	  Zentripetalbeschleunigung
+	  Zeigt in Richtung des Ursprungs.
+	  \[\vec{a}_{zp} = -R\omega^2\vec{e_R}\]
+***** Allgemein
+	  \[\vec{\omega}\]
+	  Räumliche Lage der  Bewegungsebene
+	  \[\vec{v} = \v{w}\times  \v r \quad v = \omega r\]
+	  \[\v a = \v w \times \v v\]
+****** TODO Skizze omega
+**** Allgemeine Krummlinige Bewegung
+	 \[\v v = v \v{e_t}\]
+	 \[\v a = \dot{\v v} = \frac{\d (v\v{e_t})}{\d t} = \frac{\d v}{\d t}\v{e_t} + v\frac{\d v{e_t}}{\d t}\]
+	 \[\v{e_t} = \cos{\rho}\v{e_x} + \sin{\rho}\v{e_y}\]
+	 \[\v{e_n} = -\sin{\rho}\v{e_x} + \cos{\rho}\v{e_y}\]
+	 \[\frac{\d \v{e_t}}{\d t} = \dot\rho -\sin{\rho}\v{e_x} + \cos{\rho}\v{e_y} = \dot\rho \v{e_n}\]
+	 \[\v a = \dot v \v{e_t} + \frac{v^2}{\rho}\v{e_n}\]
+***** TODO Skizze
+**** Relativbewegung
+	 - $S$-Laborsystem
+	 - $S'$-Bewegtes System
+	 - $\v u = (u, 0, 0) = \text{const}$ Geschwindigkeit von S' im System S
+	 - Punkt $P=(x,y,z)$ in $S$
+	 - Punkt $P'=(x',y',z')$ in $S'$
+	 - Zeitpunkt $t = 0: \quad S=S', P=P'$
+***** TODO Skizze Bewegtes Bezugssystem
+***** Galilei-Transformation
+****** Eindimensional
+	   \[x' = x - ut\]
+	   \[y' = y\]
+	   \[z' = z\]
+	   \[v' = v - u\]
+	   \[t' = t\]
+****** Dreidimensional
+	   \[\v r' = \v r - \v u t\]
+	   \[\v v' = \v v - \v u\]
+	   \[\v a' = \v a\]
+** Newtonsche Dynamik
+   Warum bewegen sich Körper?\\
+   Newton 1686: Ursache von Bewegungsänderungen sind Kräfte.
+   Newtonsche Gesetze (Axiome)
+   1. Jeder Körper verharrt im Zustand der Ruhe oder der gleichförmigen Bewegung, sofern er nicht durch Kräfte gezwungen wird diesen Bewegungszustand zu verlassen
+   2. Die Änderung einer Bewegung wird durch Einwirken einer Kraft verursacht. Sie geschieht in Richtung der Kraft und ist proportional zu Größe der Kraft
+   3. Übt ein Körper $1$ auf einen Körper $2$ die Kraft $F_{12}$, so reagiert Körper $2$ auf den Körper $1$ mit der Gegenkraft $F_{21}$ und es gilt $F_{21} = -F_{12}$ (actio = reactio)
+*** Kraft und Impuls
+	\[\v F = \cvec{F_x;F_y;F_z}\]
+	Superpositions von Kräften (Zusatz zu den Newtonschen Gesetzen (Korollar)):
+	\[\v{F}_{\text{ges}} = \sum_{i = 1}^n \v{F_i}\]
+***** TODO Skizze Addition von Kräften
+***** Grundkräfte der Natur
+	  - Elektromagnetische Kraft
+	  - Starke Draft
+	  - Schwache Kraft
+	  - Gravitation
+**** Impuls
+	 \[\v P = m\v v\quad [\v P] = \si{\kg\meter\per\second}\]
+**** Kraft
+	 \[\v F = \f{\d\v P}{\d t} = \dot{\v P} = \f{\d}{\d t}(m\v v)\]
+	 $m = \text{const.}$:
+	 \[\v F = m \f{\d\v v}{\d t} = m\dot{\v v} = m\ddot{\v x} = m\v a\]
+**** Grundgesetz der Dynamik
+	 \[\v F = \dot{\v P}~\text{beziehungsweise}~\v F = m\v a\]
+***** Trägheitsprinzip (Impulserhaltung)
+	  \[\v P = m\v v = \text{const},~\v P = 0~\text{für}~\v F = 0\]
+**** Experiment
+	 \[\v F_G = \underbrace{m\v g}_{Kraft} = \underbrace{(m + M)}_{Trägheit}\v a = m_{\text{ges}}\v a\]
+	 \[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{text{ges}}}g\]
+***** Erwartung:
+	  $a\sim {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s = \f{1}{2} a\Delta t^2$
+***** Messung:
+	 | $m[\si{\gram}]$ | $M[\si{\gram}]$ | $m_{\text{ges}}[\si{\gram}]$ | $\f{m_{\text{ges}}}{m}$ | $\Delta s[\si{\mm}]$ | $\Delta t [\si{\second}]$ | $a[\si{meter\per\second}]$ |
+	 |-----------------+-----------------+------------------------------+-------------------------+----------------------+---------------------------+----------------------------|
+	 |              10 |             470 |                          480 |                      48 |                  800 |                      2.75 |                 0.21157025 |
+	 |              40 |             440 |                          480 |                      12 |                  800 |                      1.40 |                 0.81632653 |
+	 |              10 |            1910 |                         1920 |                     192 |                  800 |                      5.55 |                0.051943836 |
+	 |              40 |            1880 |                         1920 |                      48 |                  800 |                      2.79 |                 0.20554721 |
+	 #+TBLFM: $3=$1+$2::$4=$3 / $1::$7=(2 * ($5 / 1000)) / ($6 * $6)
+***** TODO Skizze
+**** Trägheitsprinzip - "revisited"
+	  *Definition*: Ein Bezugssystem in dem das Trägheitsprinzip gilt nennt man ein Inatialsystem. \\
+
+	  In einem beschleunigten Bezugsystem gilt das Trägheitsprinzip _nicht_. Beschleunigte Systeme $\neq$ Inatialsysteme.
+	  Das Trägheitsprinzip ist Galilei-invariant.
+
+***** TODO Skizze whatever
+*****  Trägheitsprinzip: [moderne Formulierung]:
+	   Es gibt Inatialsysteme, das heißt Koordinatensysteme  in denen ein Kräftefreier Körper im Zustand der Ruhe oder der gradlinig gleichförmigen Bewegung verbleibt.
+
+**** Actio gleich Reactio
+	 \[\underbrace{\v{F_{12}}}_{\text{Kraft}} = \underbrace{-\v{F_{21}}}_{\text{Gegenkraft}}\]
+***** TODO Skizze von Körpern
+***** TODO (Skizze) Expermiment
+****** Erwartung:
+	   \[v_1 = v_2 \rightarrow a_1 = a_2 \rightarrow F_1 = F_2~\checkmark\]
+	   Nichttrivialer Fall: \\
+	   Kraftstoß: \\
+	   Magnetische Kraft: $F_{\text{mag}} \sim {\f{1}{r^2}}$
+	   \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
+	   \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
+***** Expermiment 2
+	  \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \Rightarrow \f{m_2}{m_1} \approx 1.5\]
+	  \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
+	  \[a\sim v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
+	  \[1 = \f{F_1}{F_2} \Rightarrow F_1 = F_2\]
+***** Beispiele
+	  - Kraft und Gegenkraft (TODO Skizze)
+	  - Flaschenzug, Seilkräfte (TODO Skizze)

@@ -1,0 +1,55 @@
+* Komplexe Zahlen
+  *Motivation:* $x^2 + 1 = 0$ nicht lösbar in $\mathbb{R}$ \\
+  Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
+   - <<KA>> (KA) $\{x_1,y_1\} + \{x_2,y_2\} = \{x_1 + x_2, y_2 + y_2\}$
+   - <<KM>> (KM) $\{x_1,y_1\} \cdot \{x_2,y_2\} = \{x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1\}$
+** Komplexer Zahlkörper
+   1. Die Menge der Paare $z = \{x,y\} \in \mathbb{R}\times\mathbb{R}$ mit Addition [[KA]] und Multiplikation [[KM]] bildet den Körper $\mathbb{C}$ der *komplexen Zahlen* mit den neutralen Elementn $\{0,0\}$ und $\{1,0\}$
+   2. Die Gleichung $z^2 + \{1,0\} = \{0,0\}$ hat in $\mathbb{C}$ zwei Lösungen, welche mit $\I:= \{0,\pm 1\}$ bezeichnet werden
+   3. Der Körper $\mathbb{R}$ ist mit der Abbildung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ isomorph zu einem Unterkörper von $\mathbb{C}$
+*** Beweis
+	1. Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributibitätsgesetzes verifiziert man durch Nachrechenen. \\
+	   Neutrale Elemente: Wir lösen die Gleichung $a + z = \{0,0\}$ für beliebige gegebene $a\in\mathbb{C},a=\{a_1,a_2\}$
+	   \[\Rightarrow z = \{-a_1, -a_2\}\]
+	   \[a\cdot z = \{1,0\}\]
+	   \[z = \frac{1}{a}:=\{\frac{a_1}{a_1^2 + a_2^2},-\frac{a_2}{a_1^2 + a_2^2}\},~\text{weil}~a\cdot\frac{1}{a}\]
+	   \[\text{weil}~a\frac{1}{a}=\{a_1\frac{a_1}{a_1^2 + a_2^2} + \frac{a_2^2}{a_1^2 + a_2^2},\frac{a_1 a_2}{a_1^2 + a_2^2} - \frac{a_2 a_1}{a_1^2 + a_2^2}\}\]
+	2. $i:= \{0,1\}$ hat die Eigenschaft
+	   \[1 + \I^2 = \{1,0\} + \{0^2 - 1^2, 0\} = \{0,0\} \Rightarrow 1+\I^2 = 0\]
+	   Ähnlich $1 + (-\I)^2 = 0$
+	3. Die Zuordnung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ bildet $\mathbb{R}$ bijektiv auf eine Untermenge von $\mathbb{C}$ ab, welche bezüglich der komplexen Addition und Multiplikation wieder ein Körper ist $\hfill\square$
+** Notation
+   $z = \{x,y\} =: x + \I y,~x,y\in\mathbb{R}$
+   - $x$ ist Realteil $x = \Re{z}$
+   - $y$ ist Imaginärteil $x = \Im{z}$
+   \[z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) = \underbrace{x_1 + x_2}_{\Re (z_1 + z_2)} + \I\underbrace{(y_1 + y_2)}_{\Im (z_1 + z_2)}\]
+   \[z_1 z_2 = (x_1 + \I y_1)(x_1 + \I y_2) = x_1 x_2 + \I y_1 x_2 + \I y_2 x_1 + (\I y_1)(\I y_2) = \underbrace{x_1 x_2 - y_1 y_2}_{\Re (z_1 z_2)} + \I\underbrace{(x_1y_2 + y_1 x_2)}_{\Im (z_1,z_2)}\]
+** TODO Graphische Darstellung
+** Bemerkung
+   Die reellen Zahlen  sind durch $\Im z = 0$ charakterisiert.
+   \[z_1 = z_2 \Rightarrow x_1 + \I y_i = x_2 + \I y_2 \Leftrightarrow x_1 = x_2,y_1 = y_2\]
+** Korollar 1.59
+   Jede quadratische Gleichung
+   \[z^2+p z + q = 0,~p,q\in\mathbb{R}\]
+   besitzt in $\mathbb{C}$ genau zwei Lösungen
+   \[z_{1,2} = \begin{cases} -\frac{1}{2}\pm \frac{1}{2}\sqrt{p^2 - 4q} & p^2 \geq 4q \\ -\frac{1}{2}\pm \I\frac{1}{2}\sqrt{\abs{p^2 - 4q}} & p^2 - 4q < 0 \end{cases} \]
+** Fundamentalsatz der Algebra
+   Jede algebraische Gleichung der Form \[z^n + \sum_{i = 0}^{n - 1} a_i z^i = 0\]
+   hat in $\mathbb{C}$ mindestens eine Lösung. Beweis \rightarrow Funktionstheorie
+** Betrag
+   Für komplese Zahlen lässt sich ein Absolutbetrag definieren
+   \[r = \abs{z} = \sqrt{x^2 + y^2}\]
+   Damit:
+   \begin{align}
+   x &=& r\cos{\alpha}
+   y &=& r\sin{\alpha}
+   z &=& x + \I y = r(\cos{\alpha} + \I\sin{\alpha})
+   \end{align}
+** Konjugation
+   Zu einem $z = x + \I y\in\mathbb{C}$ definieren wir eine konjugierte komplexe Zahl \[\bar z = x - \I y \in\mathbb{C}\]
+   Dann gilt \[\abs{z}^2 = x^2 + y^2 = z\bar z\]
+   Aus der Definition:
+   - $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
+   - $\overline{z_1 * z_2} = \overline{z_1} * \overline{z_2}$
+   - $x = \frac{z + \bar z}{2}$
+   - $y = \frac{z - \bar z}{2\I}$

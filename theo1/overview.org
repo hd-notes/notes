@@ -1,0 +1,15 @@
+* Semesterüberblick
+  1. Newtonsche Mechanik
+  2. Lagrange / Hamilton Mechanik / Statistik / Kontinua
+  3. Elektrodynamik / Spezielle Relativitättheorie
+  4. Quatenmechanik
+  5. Thermodynamik / Quantenstatistik
+  6. Allgemeine Relativitättheorie / Kosmologie
+  7. Quatenfeldtheorie I (ggf. 5.)
+  8. Quatenfeldtheorie II (ggf. 6. \Leftarrow Stringtheorie / Teilchenphysik / Supersymmetrie)
+  9. Masterarbeit
+  10. Masterarbeit
+** Mathe
+   *wichtig:*
+   - Gruppentheorie
+   - Differientialgeometrie

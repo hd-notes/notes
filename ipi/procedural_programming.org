@@ -1,0 +1,208 @@
+* Prozedurale Programmierung
+** Von der Funktionalen zur prozeduralen Programmierung
+   - Eigenschaften der Funktionalen Programmierung:
+	 - alle Berechnungen durch Funktionsaufruf, Ergebnis ist Rückgabe
+	 - Ergebnis hängt nur von den Werten der Funktionsargumente ab, nicht von externen Faktoren "referentielle Integrität"
+	 - Speicherzellen für Zwischenergebnisse und Argumente können nach Initialisierung nicht geändert werden "write once"
+	 - Möglichkeit rekusiver Funktionsaufrufe (jeder Aufruf bekommt eigene Speicherzellen)
+	   - Vorteile
+		 - natürliche Ausdrucksweise für arithmetische und algebraische Funktionaliät ("Taschenrechner")
+		 - einfache Auswertung durch Substitutionsmodell \rightarrow Auswertungsreihenfolge nach Post-Order
+		 - mathematisch gut formalisierbar \Rightarrow Korrektheitsbeweise, besonders bei Parallelverarbeitung
+		 - Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakutlät, Baumtraversierung)
+	   - Nachteile
+		 - viele Probleme lassen sich anders natürlicher ausdrücken (z.B. Rekursion vs. Iteration)
+		 - setzt unendlich viel Speicher voraus (\Rightarrow Memory management notwendig \Rightarrow später)
+		 - Entitäten, die sich zeitlich verändern schwer zu modellieren
+	   - Korrolar: kann keine externen Resourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
+		 - \Rightarrow Multi-Paradigmen-Sprachen, zum Beispiel Kombination von Funktionaler Programmierung und prozeduraler Programmierung
+** Kennzeichen
+*** Prozeduren
+   - Prozeduren: Funktionen, die nichts zurückgeben, haben nur Seiteneffekte
+	 - Beispiel
+	   #+BEGIN_SRC cpp
+	   std::cout << "Hello\n"; // Infix
+	   operator<<(std::cout, "Hello\n"; // Prefix
+	   #+END_SRC
+	 - Prozeduren in c++
+	   1. Funktion die "void" zurückgibt (Pseudotyp für "nichts")
+		  #+BEGIN_SRC cpp
+		  void foo(int x) {
+			  return;
+		  }
+		  #+END_SRC
+	   2. Returnwert ignorieren
+*** Steuerung des Programmablaufs
+	 - Anweisungen zur Steuerung des Programmablaufs
+	   #+BEGIN_SRC cpp
+	   if(), else, while(), for()
+	   #+END_SRC
+	   - Funktional
+		 #+BEGIN_SRC cpp
+		 int abs(int x) {
+			 return (x >= 0) ? x : -x;
+		 }
+		 #+END_SRC
+	   - Prozedural
+		 #+BEGIN_SRC cpp
+		   int abs(int x) {
+			   if(x >= 0) {
+				   return x;
+			   } else {
+				   return -x;
+			   }
+
+			   // oder
+			   if(x >= 0) return x;
+			   return -x;
+		   }
+		 #+END_SRC
+*** Veränderung von Speicherzellen
+	 - Zuweisung: Speicherzellen können nachträglich verändert werden ("read-write")
+	   - prozedural:
+		 #+BEGIN_SRC cpp
+		 int foo(int x) {     // x = 3
+			 int y = 2;
+			 int z1 = x * y;  // z1 = 6
+			 y = 5;
+			 int z2 = z * y;  // z2 = 15
+			 return z1 + z2;  // 21
+		 }
+		 #+END_SRC
+	   - funktional:
+		 #+BEGIN_SRC cpp
+		 int foo(int x) {     // x = 3
+			 int y1 = 2;
+			 int z1 = x * y;  // z1 = 6
+			 int y2 = 5;
+			 int z2 = z * y;  // z2 = 15
+			 return z1 + z2;  // 21
+		 }
+		 #+END_SRC
+	   - Syntax
+		 #+BEGIN_SRC cpp
+		 name = neuer_wert;           // Zuweisung
+		 typ name = neuer_wert;       // Initialisierung
+		 typ const name = neuer_wert; // write once
+		 #+END_SRC
+	   - \Rightarrow Folgen: mächtiger, aber ermöglicht völlig neue Bugs \Rightarrow erhöhte Aufmerksamkeit beim Programmieren
+		 - die Reihenfolge der Ausführung ist viel kritischer als beim Substitutionsmodell
+		 - Programmierer muss immer ein mentales Bild des aktuellen Systemzustans haben
+*** Schleifen
+	Der gleiche Code soll oft wiederholt werden
+	#+BEGIN_SRC cpp
+	while(bedingung) {
+		// code, wird ausgeführt solange Bedingung "true"
+	}
+	#+END_SRC
+	#+BEGIN_SRC cpp
+	int counter = 0;
+	while(counter < 3) {
+		std::cout << counter << std::endl;
+		counter++; // Kurzform für counter = counter + 1
+	}
+	#+END_SRC
+	| counter | Bedingung |     Ausgabe |
+	|---------+-----------+-------------|
+	|       0 | true      |           0 |
+	|       1 | true      |           1 |
+	|       2 | true      |           2 |
+	|       3 | false     | $\emptyset$ |
+
+	- in c++ beginnt Zählung meist mit $0$ ("zero based")
+	- vergisst man Inkrementierung \Rightarrow Bedingung immer "true" \Rightarrow Endlosschleife \Rightarrow Bug
+	- drei äquivalente Schreibweisen für Inkrementierung:
+	  - counter = counter + 1; // assignment $\estimates$ Zuweisung
+	  - counter += 1;          // add-assignment $\estimates$ Abbkürzung
+	  - ++counter;             // pre-increment
+*** prozedurale Wurzelberechung
+**** Ziel
+	 #+BEGIN_SRC cpp
+	 double sqrt(double y);
+	 #+END_SRC
+**** Methode
+	 iterative Verbesserung mittel Newtonverfahren
+	 initial_guess $x^{(0)}$ ("geraten"), t = 0 \\
+	 while not_good_enough($x^{(t)}$): \\
+		 update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
+		 t = t + 1 \\
+***** Newtonverfahren
+	  Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
+	  Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta +$ setze $x^\ast = x + \Delta$
+	  \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \Rightarrow \Delta = - \frac{f(x)}{f'(x)}\]
+	  Iteratiosvorschrift:
+	  \[x^{(t + 1)} = x^{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
+	  Anwendung auf Wurzel: setze $f(x) = x^2 - y \Rightarrow$ mit $f(x^\ast) = 0$ gilt
+	  \[(x^\ast)^2 -y = 0 \quad (x^\ast)^2 = y \quad x^\ast = \sqrt{y}\quad f'(x) = 2x)\]
+	  Iterationsvorschrieft:
+	  \[x^{(t + 1)} = x^{(t)} - \frac{(x^{(t)^2}) - y}{2x^{(t)}} = \frac{x^{(t)^2} + y}{2x^{(t)}}\]
+	  #+BEGIN_SRC cpp
+		double sqrt(double y) {
+		  if(y < 0.0) {
+			  std::cout << "Wurzel aus negativer Zahl\n";
+			  return -1.0;
+			}
+			if(y == 0.0) return 0.0;
+
+			double x = y; // inital guess
+			double epsilon = 1e-15 * y;
+
+			while(abs(x * x - y) > epsilon) {
+				x = 0.5*(x + y / x);
+			}
+		}
+	  #+END_SRC
+*** for-Schleife
+	#+BEGIN_SRC cpp
+	int c = 0;
+	while(c < 3) {
+		// unser code
+		c++; // vergisst man leicht
+	}
+	#+END_SRC
+
+	Bei der while Schleife kann man leicht vergessen $c$ zu inkrementieren, die for Schleife ist idiotensicher \\
+	Äquivalent zu der while Schleife oben ist:
+	#+BEGIN_SRC cpp
+	for(int c = 0; c < 3; c++) {
+		// unser code
+	}
+	#+END_SRC
+
+	Allgemeine Form:
+	#+BEGIN_SRC cpp
+	for(init; Bedingung; Inkrement) {
+		// unser code
+	}
+	#+END_SRC
+	- Befehle, um Schleifen vorzeitig abzubrechen
+	  - continue: Bricht aktuelle Iteration ab und springt zum Scleifenkpf
+	  - break: bbricht ganz Schleife ab und springt hinter das Schleifenende
+	  - return: beednet Funktion und auch die Schleife
+	Beispiel: nur gerade Zahlen ausgeben
+	#+BEGIN_SRC cpp
+	for(int i = 0; i < 10; i++) if(c % 2 == 0) std::cout << c << std::endl;
+	#+END_SRC
+	Variante mit continue:
+	#+BEGIN_SRC cpp
+	for(int i = 0; i < 10; i++) {
+		if(c % 2 != 0) continue;
+		std::cout << c << std::endl;
+	}
+	#+END_SRC
+
+	#+BEGIN_SRC cpp
+	for(int i = 0; i < 10; i += 2) {
+		std::cout << c << std::endl;
+	}
+	#+END_SRC
+	#+BEGIN_SRC cpp
+	double sqrt(double y) {
+		while(true) {
+			x = (x + y / 2) / 2.0;
+			if(abs(x * x - y) < epsilon) {
+				return x;
+			}
+		}
+	}
+	#+END_SRC

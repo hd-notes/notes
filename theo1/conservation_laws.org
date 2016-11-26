@@ -1,0 +1,235 @@
+* Erhaltungssätze in Newtonscher Mechanik
+** Impulserhaltung
+   Systeme mit mehreren Massenpunkten $a,b\in\{1,\ldots, n\}$ \\
+   Trajektorien: $\v x_a(t), a=1,\ldots,n$ \\
+   \begin{thm}[Impulserhaltung]
+   Bei verschwindenen externen Kräften ($\v F_{ext} = 0$) gilt:
+   \[\v p \equiv \sum_a \v{P_a} \equiv \sum_a m_a\dot{\v{x_a}} =~\text{const}\]
+   \end{thm}
+   \begin{proof}
+   \begin{align*}
+   \dot{\v p} &= \sum_a m_a \ddot{\v{x_a}} \\
+   &= \sum_a \v{F_a} \\
+   &= \sum_a(\sum_{\substack{b \\ a\neq b}} \v{F_{ab}}) \\
+   &= \sum_{\substack{a,b \\ a\neq b}} \v{F_{ab}} \tag{Summe über alle Paare von $a,b$} \\
+   &= \sum_{a > b}\v{F_{ab}} + \sum{a < b} \v{F_{ab}} \\
+   &= \sum_{a > b}(\v{F_{ab}} + \v{F_{ba}})
+   &\underarrow[=]{3. Newtonsches Axiom} 0 \tag*{\qedhere}
+   \end{align*}
+   \end{proof}
+
+   mit äußeren Kräften:
+   \[\dot{\v p} = \sum_a \v F_{a,ext.} \equiv \v F_{ext}\]
+   Falls zum Beispiel die äußere Kraft nicht in $x^1$ -Richtung wirkt (F^1_{ext} = 0), so gilt immer nocht $p^1 = \text{const}$
+   (eigentlich drei Erhaltungssätze für $p^1, p^2,p^3, manchmal gelten nur einige davon)
+** Drehimpusherhaltung
+   Oft: Kräfte wirken parallel zur Verbindungslinie zweier Massenpunkte:
+   - Gravitationskraft
+   - Elektrostatitsche Kraft
+   - Modell der masselosen Stange (\rightarrow Modell für starre Körper!)
+   \begin{defn}[Drehimpuls]
+   \begin{align*}
+   \v L_a &\equiv \v x_a \times \v p_a \\
+   (\v L_a)^i &= \varepsilon^{ijk}x_a^j p_a^k
+   \end{align*}
+   \end{defn}
+   Falls $\v F_{a,ext} = 0$ und alle interen Kräfte wirken parallel zur Verbindungslinie der jeweiligen Punkte, dann gilt *Drehimplusherhaltung*
+   \begin{thm}[Drehimpulserhaltung]
+   \[\v L \equiv \sum_a \v L_a = \sum_a m_a \v x_a \times \dot{\v x}_a = \sum_a \v x_a \times \v p_a = ~\text{const}\]
+   \end{thm}
+   \begin{proof}
+   Nachrechnen:
+   \begin{align*}
+   \dot{\v L} &= \sum_a m_a (\dot{\v x}_a \times \dot{\v x}_a + \v x_a + \ddot{\v x}_a) \\
+   &= \sum_a \v x_a \times \v F_a \\
+   &= \sum_{a\neq b} \v x_a \times \v F_{ab} \tag{Summe über alle Paare von $a,b, a\neq b$} \\
+   &= \sum_{a > b}(\v x_a \times \v F_{ab} + \v x_b \times \v F_{ba}) \\
+   &= \sum_{a > b} (\v x_a - \v x_b)\times \v F_{ab} \\
+   \intertext{da $\v F_{ab} \parallel (\v x_a - \v x_b)$ per Annahme} \\
+   &= 0 \tag*{\qedhere}
+   \end{align*}
+   \end{proof}
+   Bei externen Kräften:
+   \[\dot{\v L} = \sum_a \v x_a \times \v F_{a,ext} \equiv \v M_{ext}\]
+   $M_{ext}$ ist das durch äußere Kräfte auf Punkt $a$ ausgeübte *Drehmoment*, allgemein (für einzelnen Punkt):
+   \[\v M = \v x \times \v F = \dot{\v L}\]
+
+   Wichtig: Drehimpulserhaltung gilt auch dann wenn alle äußeren Kräfte *Zentralkräfte* sind, Zentralkraft:
+   \[\v F_a \parallel \v x_a\]
+
+   Drehimpuls hängt vom Koordinatensystem ab.
+   \begin{remark}
+   $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
+   ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion an ursprung kein Vorzeichenänderung
+   \begin{proof}
+   \[\v a \to -\v a, \v b \to -\v b \Rightarrow \v a \times \v b \to + \v a \times \v b \qedhere\]
+   \end{proof}
+   \end{remark}
+** Konservative Kräfte und Energieerhaltung
+   \begin{defn}[Gradient]
+   Gradient von $V$:
+   \[\v\nabla \equiv \left(\frac{\partial V}{\partial x^1}, \frac{\partial V}{\partial x^2}, \frac{\partial V}{\partial x^3}\right)\]
+   $\frac{\partial}{\partial x}$ ist ein "Differentialoperator", also:
+   \[\frac{\partial}{\partial x}:f(x,y)\mapsto \frac{\partial f(x,y)}{\partial x}\]
+   Dementsprechen $\frac{\partial^2}{\partial x^2}$ ist ein "Differentialoperator" zweiter Ordung, also:
+   \[\frac{\partial^2}{\partial x^2}:f(x,y)\mapsto \frac{\partial^2 f(x,y)}{\partial x^2}\]
+   $\v\nabla V$ ist gute Schreibweise, weil $\v\nabla$ ein vektorwertiger Differentialoperator ist:
+   \[\v\nabla = \left(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3}\right)\]
+   \end{defn}
+   \begin{defn}[konservatives Kraftfeld]
+   Ein zeitunabhängiges Kraftfeld $\v F(\v x)$ heißt \textbf{konservativ} falls es eine Funktion $V(\v x)$ ("Potential") gibt. dodass
+   \[\v F = -\v \nabla V\]
+   \end{defn}
+*** Energieerhaltung
+	Für einen Massenpunkt in einem konservativen Kraftfeld gilt:
+	\[E = \underset{\text{kinetisch}}{T} + \underset{\text{potentielle Energie}}{V} = \frac{m}{2}\dot{\v x}(t)^2 + V(\v x(t)) = \text{const}\]
+**** Begründung
+	 \begin{align*}
+	 \dd{T}{t} &= \frac{m}{2}\dd{}{t}(\dot{x}^i\dot{x}^i) = \frac{m}{2}2 \dot{x}^i \ddot{x}^i = m\dot{\v x}\ddot{\v x} \\
+	 \dd{V}{t} &= \lim_{\Delta t \to 0} \frac{V(x^1 + \Delta x^1, x^2 + \Delta x^2, x^3 + \Delta x^3) - V(x^1, x^2, x^3)}{\Delta t} \\
+	 \intertext{mit $\Delta x = \dd{\v x}{t}\Delta t$} \\
+	 \intertext{Umschreiben des Zählers} \\
+	 &V(x^1 + \Delta x^1, x^2 + \Delta x^2, x^3 + \Delta x^3) - V(x^1, x^2 + \Delta x^2, x^3 + \Delta x^3) \\
+	 + &V(x^1, x^2 + \Delta x^2, x^3 + \Delta x^3) - V(x^1, x^2, x^3 + \Delta x^3) \\
+	 + &V(x^1, x^2, x^3 + \Delta x^3) - V(x^1, x^2, x^3) \\
+	 &\cong \frac{\partial V}{\partial x^1}(x^1,x^2 + \Delta x^2, x^3 + \Delta x^3)\Delta x^1 + \frac{\partial V}{\partial x^1}(x^1,x^2,x^3 + \Delta x^3) \Delta x^2 + \frac{\partial V}{\partial x^1} (\v x)\Delta x^3
+	 \intertext{Teilen durch $\Delta t$, Grenzwertbildung}
+	 \dd{V}{t} &= \frac{\partial V}{\partial x^i}(\v x(t))\dd{x^i}{t} \\
+	 \shortintertext{oder (allgemeine Rechenregel)}
+	 \d V &= \frac{\partial V}{\partial x^i} \d x^i
+	 \end{align*}
+	 Allgemeine Formulierung der Rechenregel: Sei $f:\mathbb{R}^n \to\mathbb{R} \wedge \v x: \mathbb{R}\to\mathbb{R}^n$
+	 Die Verknüpfung $f\circ \v x: \mathbb{R}\to \mathbb{R}$ ist eine Funktion. Für diese gilt:
+	 \begin{align}
+	 \underbrace{\d f}_{\mathclap{\text{totales Differential}}} &= \frac{\partial f}{\partial x^i}\d x^i = (\v\nabla f) \d \v x \\
+	 \shortintertext{oder totale Ableitung:} \\
+	 \dd{f}{t} &= \frac{\partial f}{\partial x^i} \frac{\d x^i}{\d t} \\
+	 \shortintertext{Unsere Anwendung} \\
+	 \dot{E} = m\dot{\v x} \ddot{\v x} + \frac{\partial V}{\partial x^i} \dot{x}^i = \v F \dot{\v x} + (\v\nabla V)\dot{\v x} = 0~\checkmark
+	 \end{align}
+	 \[V(x^1 + \Delta x^1, x^2 + \Delta x^2, x^3 + \Delta x^3) - V(x^1, x^2 + \Delta x^2, x^3 + \Delta x^3)\]
+	 Vergleiche:
+	 \[f(x + \Delta) - f(x) \cong f'(x)\Delta\]
+*** Kriterium für Konservativität
+	Für *einfach zusammenhängende Gebiete*[fn::Jede geschlossene Kurve kann auf Länge Null zusammengezogen werden] gilt:
+	\[\v F ~\text{ist konservativ}~ \Leftrightarrow \v\nabla\v F = 0\]
+**** Begründung
+	 \Rightarrow \\ \[\v F = -\v\nabla V \Rightarrow \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
+	 \begin{align*}
+	 (\v\nabla\times\v F)^i &= \varepsilon^{ijk} \frac{\partial}{\partial x^j} F^k = \varepsilon^{ijk}\partial^i F^k \\
+	 &= -\varepsilon^{ijk}\partial^j\partial^k V = -\frac{1}{2}(\varepsilon^{ijk} -\varepsilon^{ikj})\partial^j\partial^k V \\
+	 &= - \frac{1}{2}\varepsilon^{ijk}\partial^j \partial^k V + \frac{1}{2}\varepsilon^{ikj}\underbrace{\partial^k\partial^j}_{\mathclap{\text{habe benutzt}~\frac{\partial}{\partial x}\frac{\partial}{\partial y} = \frac{\partial}{\partial y}\frac{\partial}{\partial x}}} V \\
+	 &\underarrow[=]{$k \leftrightarrow j$} -\frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V + \frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V = 0
+	 \end{align*}
+	 \Leftarrow \\
+	 Wähle beliebiges festes $\v x_0$ im Gebiet. Definiere Potential als minus Arbeit am Massenpunkt $\rightarrow Abbildung$
+	 \begin{align*}
+	 V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
+	 \intertext{Linienintegral kann immer definiert werden, wenn Kurve durch Gebiet mit Vektorfeld verläuft}
+	 \d\v s &\equiv \d\v x(s) =(\dd{x^1}{\d x}, \dd{x^2}{\d x}, \dd{x^3}{\d x}) \d s \\
+	 \intertext{Also gilt:}
+	 \v F\d\v s &= \underbrace{F^i (\dd{x^i}{s})\d s}_{\mathclap{\text{Integrand im normalen Riemann Inegral}}} \\
+	 \intertext{Wähle beliebigen kleinen Vektor $\v l$ und berechne:}
+	 \v l \v F(\v x) &\cong -(-\int_{\v x}^{\v x + \v l} \d\v s \v F) \\
+	 &= -((-\int_{\v x_0}^{\v x + \v l} \d \v s \v F) - ( -\int_{\v x_0}^{\v x} \d\v s \v F)) \\
+	 &= -(V(\v x + \v l) -V(\v x)) \\
+	 &\cong - \frac{\partial V}{\partial x^i}l^i = -\v l(\v\nabla V) \\
+	 &\Rightarrow \v l(\v F + \v\nabla V) = 0 \\
+	 &\Rightarrow \v F + \v\nabla V = 0 \checkmark
+	 \end{align*}
+	 Lücke: Wegunabhängigketi der Definition von $V$: \\
+	 Wähle zwei unterschiedliche Wege ($L_1, L_2$):
+	 \begin{align*}
+	 \int_{L_1}\d\v s \v F - \int_{L_2}\d \v s \v F = \underarrow[\oint]{\text{Rand von } $\Sigma$} \d\v s\v F \\
+	 \intertext{Satz von Stokes}
+	 &= \int_{\Sigma}\v{d f}(\v\nabla \times\v F)
+	 \end{align*}
+	 \[(\rot \v F)^i = (\v\nabla \times \v F)^i = \varepsilon^{ijk}\frac{\partial}{\partial x^j} F^k\]
+	 zum Beispiel:
+	 \[(\v\nabla\times\v F)^1 = \frac{\partial F^3}{\partial x^2} - \frac{\partial F^2}{\partial x^3}\]
+	 \[\int_{L_2}\d \v s \v F - \int_{L_1}\d \v s\v F = \oint_{\partial \Sigma} \d\v s \v F \underarrow[=]{\text{"Stokes"}} \int_{\Sigma}\d\v f*(\v\nabla\times\v F) \overset{!}{=} 0\]
+** Satz von Stokes
+   #+ATTR_LATEX: :options [Satz von Stokes]
+   #+begin_defn latex
+   \[\oint \d \v s\v F = \int_{\Sigma} \d \v f (\v \nabla \times \v F)\]
+   #+end_defn
+   #+begin_proof latex
+   \begin{align*}
+   \oint \d\v s\v F &= \int_0^{\Delta x^1}\d s F^1(x,0) + \int_0^{\Delta x^2}\d s F^2(\Delta x^1, s) - \int_0^{\Delta x^1}\d s F^1(s, \Delta x^2) - \int_0^{\Delta x^2}\d s F^2(0,s) \\
+   &= \int_0^{\Delta x^1}\d s(F^1(s,0) - F^1(s,\Delta x^2)) + \int_0^{\Delta x^2}\d s(F^2(\Delta x^1, s) - F^2(0,s)) \\
+   &= \int_0^{\Delta x^1}\d s(\frac{\partial F^1}{\partial x^2})\Delta x^2 + \int_0^{\Delta x^2}\d s \frac{\partial F^2}{\partial x^1}\Delta x^1 + O(\Delta^3) \\
+   &= \Delta x^1 \Delta x^2(\frac{\partial F^2}{\partial x^1} - \frac{\partial F^1}{\partial x^2}) + O(\Delta^3) \\
+   &= \Delta x^1 \Delta x^2(\v\nabla \times \v F)^3 + O(\Delta^3) \\
+   &= \underbrace{\Delta x^1 \Delta x^2 \hat{e_3}}_{\mathclap{\Delta \v f = ~\text{Der dem kleinen Flächenelement zugeordnete Vektor}}} (\v\nabla \times \v F) \\
+   &\approx \Delta \v f(\v \nabla \times \v F)
+   \end{align*}
+   Allgemein steht $\Delta \v f$ oder $\d \v f$ für ein kleines oder infinitesimales Flächenelement, Länge $\estimates$ Größe der Fläche
+   Die Richtung des Vektors definiert *Orientierung* der Fläche (Zum Beispiel Oben = da, wo der Pfeil hinzeigt) \\
+   Randkurve: so definiert, dass man von oben gesehen linksherum (mathematisch positiver Drehsinn) läuft
+   1. Spezielle Lange in unsererer Rechung unwichtig
+   2. Übergang zu größeren Flächen durch Aufaddieren
+   Fläche $= N\Delta ^2 \Rightarrow N\sim \frac{1}{Delta^2}$
+   \begin{align*}
+   \sum_{\text{Rechtecke}} \oint\d \v s\v F = \sum_{\text{Rechtecke}} \int\d\v f(\v\nabla \times \v F) + \underarrow[N]{Zahl der Rechtecke = $O(\Delta)$} O(\Delta^3) \\
+   \shortintertext{weil sich nicht "innere Ränder wegheben"}
+   \oint\d \v s\v F = \sum_{\text{Rechtecke}} \int\d\v f(\v\nabla \times \v F) \\
+   \shortintertext{klar}
+   \oint\d \v s\v F = \int\d\v f(\v\nabla \times \v F) \\
+   \end{align*}
+   Glätten des Randes:
+   Zerlegung des Randes $\Delta \v s$ in kleine Rechtecke $\Delta \v s_1, \Delta \v s_2$
+   \begin{align*}
+   \Delta \v s &= \Delta \v s_1 + \Delta \v s_2 \\
+   \v F \Delta\v s &= \v F \Delta \v s_1 + \v F \Delta \v s_2 = \v F_1 \Delta \v s_1 + \v F_2 \Delta \v s_2 + O(\Delta x^2)
+   \end{align*}
+   $\v F, \v F_1, \v F_2$ jeweils am Mittelpunkt der Linienelemente
+   Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \Rightarrow$ Fehler $O(\Delta)$ \\
+   \Rightarrow Auch nach Summation bleibt Fehler von $O(\Delta)$
+
+   Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen")
+   #+end_proof
+
+   Für unsere Anwendung: wichtig, dass jede geschlossene Kurve inn einem einfach zusammenhängenden Gebiet, *Rand* ist.
+** Energieerhaltung für Systeme von Massenpunkten
+   Massenpunkte: $\v x_a, a = 1,\ldots, n$ \\
+   Kräfte: seien $\parallel$ zu $\v x_a - \v x_b$ ("Zentralkräfte") \\
+   Solche Kräfte kann man stets schreiben als:
+   \begin{align*}
+   \v F_{ab} = -\v\nabla_a V_{ab}(\abs{\v x_a - \v x_b}) \\
+   \shortintertext{mit:}
+   V_{ab} = V{ba}, \v\nabla_a = (\frac{\partial}{\partial x^1_a}, \frac{\partial}{\partial x^2_a}, \frac{\partial}{\partial x^3_a}) \\
+   \shortintertext{dazu:}
+   -\v\nabla_a V_{ab} (\abs{\v x_a - \v x_b}) &= (-\v\nabla_a \abs{\v x_a - \v x_b}) V_{ab}'(\abs{\v x_a - \v x_b}) \\
+   \shortintertext{Dies zeigt:}
+   &= -\v\nabla_a \sqrt{(\v x_a - \v x_b)^2} \\
+   &= \frac{\v x_a - \v x_b}{\abs{\v x_a - \v x_b}}
+   \end{align*}
+   Wir können passendes $V$ für jede Zentralkraft finden. Man berechnet einfach $V'$ und sucht die Stammfunktion.
+
+   Prüfe Konsistenz mit 3. Axiom:
+   \[\underbrace{-\v\nabla_a V_{ab}(\abs{\v x_a - \v x_b})}_{\v F_{ab}} = + \v\nabla_b V_{ab}(\abs{\v x_a - \v x_b}) = \underbrace{+ \v\nabla_b V_{ba}(\abs{\v x_b - \v x_a})}_{-\v F_{ba}}\]
+
+   In diesem System gilt Energieerhaltung:
+   \[E = \sum_a T_a + \frac{1}{2}\sum_{a\neq b} V_{ab} = \sum_a T_a + \sum_{a < b} V_{ab} = ~\text{const}\]
+
+   Begründung:
+   \begin{align*}
+   \dot{E} &= \sum_a \dot{\v x}_a \v F_a + \frac{1}{2}\sum_{a\neq b}((\v \nabla_a V_{ab})\dot{\v x}_a + (\v\nabla_b V_{ab})\dot{\v x}_b) \\
+   &= \sum_{a\neq b} \dot{\v x}_a \v F_{ab} + \frac{1}{2}\sum_{a\neq b} ( -\v F_{ab}\dot{\v x}_a - \underbrace{\v F_{ab} \dot{\v x}_b}_{\mathclap{\text{Umbennenung $a\leftrightarrow b$}}}) = 0 \\
+   (& = W - \frac{1}{2} W - \frac{1}{2} W)
+   \end{align*}
+
+   Bemerkung: Passend gewähltes $V_{ab}$ gibt das Modell der starren Stangen
+** Eindimensionale Bewegung
+   \[F(x) = m\ddot{x}\]
+   - mit Einsatz allgemein lösbar!
+   - Startpunkt: Jedes 1-dim. zeitunabhängiges Kraftfelt ist konservativ
+	 \begin{align*}
+	 E = \frac{m}{2}\dot{x}^2 + V(x) = ~\text{const} \\
+	 \intertext{(bis auf Vorzeichen)}
+	 \dot{x} = \sqrt{\frac{2}{m}(E-V(x))} \Rightarrow \d t = \frac{\d x}{\sqrt{\frac{2}{m}(E-V(x))}} \\
+	 t = \in \frac{\d x}{\sqrt{\frac{2}{m}}(E - V(x))}
+	 \intertext{Integral lösen, Integrationskonstante und Energie so bestimmen, das Anfangswertproblem gelöst}
+	 t = t(x) ~\text{auflösen}~ \Rightarrow x = x(t) \checkmark
+	 \intertext{viel einfacher als allgemeine Differentialgleichung 2. Ordnung}
+	 \end{align*}

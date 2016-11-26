@@ -1,0 +1,148 @@
+* Arbeit, Energie, Leistung
+** Arbeit
+   \[\Delta W = \v F \v x = F_x \Delta x + F_y \Delta y + F_z \Delta z\]
+   \[\d W = \lim_{\Delta r \to 0} \Delta W = \lim_{\Delta r \to 0} \v F\Delta \v r = \v F \d \v r \]
+   \[= F_x\d x + F_y \d y + F_z \d z\]
+   Gesamtarbeit für Verschiebung von $\v{r_1}$ nach $\v{r_2}$
+   \[W = \int_{\v{r_1}}^{\v{r_2}}\v F \d \v r\]
+   \[[W] = \si{\newton\meter} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}\]
+   \[\int_{\v{r_1}}^{\v{r_2}}\v F \d \v r = \int_{r_1}^{r_2} F_x \d x + \int_{r_1}^{r_2} F_y \d y + \int_{r_1}^{r_2} F_z \d z = \int_{s_1 = 0}^{s_2} \v F(s)\dd{\v r}{s}\d s\]
+   $\v r(s)$ parametrisiere Geschwindigkeit.
+*** Beispiel
+	\[\v{r_1} = \cvec{0; 0; 0},\v{r_2} = \cvec{\Delta x ; 0; 0},\v F = \cvec{m g ; 0; 0},\d \v r = \cvec{\d x; \d y; \d z}\]
+	\[W = \int_{(0)}^{(1)} m g\d x + \int 0\d y + \int 0\d z = m g \Delta x \]
+*** Beispiel Kreisbahn (\Rightarrow Gravitation)
+	\[W = \int_A^B \v F\d \v r = 0\]
+** kinetische Energie
+   \[k = \frac{1}{2} g t^2\]
+   \[v = g t\]
+   \[v^2 = g^2 t^2\]
+   \[v^2 = g h\]
+   \[W = \int_0^h F_G \d x = F_G\int_0^h\d x = F_G h = m g h = \frac{1}{2} m v^2\]
+   - Kinetische Energie: $E_{kin}$
+	 \[E_{kin} = \frac{1}{2} mv^2\quad [E_{kin} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}]\]
+   - Die Zunahme (beziehungsweise Abnahme) der kinetischen Energie eines Körpers ist gleich der ihm zugeführten (beziehungsweise der von ihm gelieferten) Arbeit (keine Reibung)
+   \begin{align}
+   W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = \int_{\v{r_1}}^{\v{r_2}} m\dd{\v v}{t}\d \v r = \int_{\v{v_1}}^{\v{v_2}} m\dd{\v r}{t}\d \v v\\
+   &= \int_{\v{v_1}}^{\v{v_2}} m \v v \d \v r = \frac{1}{2}m v_2^2 - \frac{1}{2}m v_1^2
+   \end{align}
+** Potentielle Energie
+   \[W = \int_h^0 F_g\d x = \int_h^0 - g m \d x = m g h = \frac{1}{2} m v^2\]
+*** Ball als Feder am Auftreffpunkt
+   \[F = k\xi\]
+   \[W = \int_0^\xi k\xi'\d\xi' = \frac{1}{2}k\xi^2\]
+** Bemerkung
+   Arbeit $W = \int_{\v{r_1}}^{\v{r_2}} \v F\d \v F$ gilt immer, Symbol für Linienintegral meist weggelassen.
+   - kinetische Energie $E_{kin} = \frac{1}{2}mv^2$
+   - potentielle Energie
+	 - $E_{pot} = \frac{1}{2}mx^2$ \hfill (Verformen)
+	 - $E_{pot} = m g h$ \hfill (Lage)
+** Umwandlung von Energie
+   \[\d E_{kin} = F\d x = -\d E_{pot}\]
+   Gilt nur für konservative Kräfte!
+   \begin{align}
+   W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = \int_{E_1}^{E_2} \d E_{kin} = E_{kin}(\v{r_2}) - E_{kin}(\v{r_1}) \\
+   W &= \int_{\v{r_1}}^{\v{r_2}} \v F\d \v r = -\int_{E_1}^{E_2} \d E_{kin} = E_{pot}(\v{r_1}) - E_{pot}(\v{r_2})
+   \end{align}
+   1. Für
+	  - $W > 0$: $E_{kin}$ nimmt zu (Arbeit von System am Objekt verrichtet)
+	  - $W < 0$: $E_{kin}$ nimmt ab
+   2. Für
+	  - $W > 0$: $E_{pot}$ nimmt ab
+	  - $W < 0$: $E_{pot}$ nimmt zu
+** Energie
+   \begin{align}
+   W &= \int_{\v{r_1}}^{\v{r_2}} \v F \d \v r \\
+   &= E_{kin}(\v{r_2}) - E_{kin}(\v{r_1}) \\
+   &= E_{pot}(\v{r_2}) - E_{pot}(\v{r_1})
+   \end{align}
+   Die unteren beiden Gleichungen gelten nur für konservative Kräfte
+** Leistung
+   \[P = \frac{\d W}{\d t} = \overarrow[\v F]{$\v F =~\text{const}$} \frac{\d \v r}{\d t} = \v F \v c\]
+   \[[P] = \si{\newton\meter\per\second} = \si{\joule\per\second} = \si{\watt} = ~\text{Watt}\]
+** Konservative Kräfte
+   \begin{align}
+   W_1 &= \int_{1~\text{Weg1}}^2 \v F\d \v r = E_{pot}(1) - E_{pot}(2) \\
+   W_2 &= \int_{1~\text{Weg2}}^2 \v F\d \v r = E_{pot}(1) - E_{pot}(2) \\
+   \end{align}
+   Geschlossener Weg: $1\to 2\to 1$
+   \[W=\oint_c \v F\d \v r = W_1 - W_2 = 0\]
+*** Definition
+	Kräfte, für die die Arbeit unabhängig vom Weg ist nennt man konservativ.
+	Für konservative Kräfte gilt:
+	\[W=\oint \v F\d \v s = 0\]
+** Kraftfelder und Potential
+   \[W = \int_{\v{r_1}}^{\v{r_2}}\v F\d \v r\]
+*** Definition Kraftfeld
+	Eindeutige Zuordnung einer Kraft zu jedem Punkt im Raum:
+	\[\v F = \v F(\v r) = \v F(x,y,z) = (F_x(x,y,z),F_y(x,y,z),F_z(x,y,z))\]
+*** Beispiel
+	Gravitationskraft:
+	\begin{align}
+	\v F(\v r) &= -G\frac{m M}{r^2}\v e_r \\
+	&= f(r) \v e_r
+	\end{align}
+	Kugelsymmetrisch, Zentralfeld
+**** TODO Skizze Vektorfeld
+**** TODO Skizze Feldlinien
+*** Feldlinien:
+	- Feldlinien sind immer tangential zur Kraftrichtung
+	- Feldliniendichte ist proportional zum Betrag der Karft
+	- Feldlinien schneiden sich nie
+*** konservative Kraftfelder
+	Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfelder
+	Für konservative Kraftfelder gilt
+	\[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
+	- $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+**** homogenes Kraftfeld
+	 \[\v F(\v R) = (0,0,F_z)\]
+	 - Weg 1: \[W_1 = \int_{\text{Weg1}}\v F\d \v R = \int_{z_1}^z F_z\d z = F_z(z_2 - z_1)\]
+	 - Weg 2: \[W_2 = \int_{\text{Weg2}}\v F\d \v R = \int_{z_1}^z F_z\d z = F_z(z_2 - z_1)\]
+***** TODO Skizze
+**** Zentralkraftfeld
+	 \[\v F(\v r) = f(r)\v e_r\]
+	 \begin{align}
+	 W &= \oint\v F\d \v r \\
+	 &= \int_1^2 f(r)\d r + \int_2^3 \v F\d \v r + \int_3^4 f(r)\d r + \int_4^1 \v F\d \v r \\
+	 &= 0
+	 \end{align}
+**** Gravitationsfeld
+	 \begin{align}
+	 W_{AB} &= \int_A^B\v F\d \v R \\
+	 &= \int_A^B -G\frac{mM}{r^2}\v e_r\d\v r \\
+	 &= \int_A^B -G\frac{mM}{r^2}\d r \\
+	 &= \Big[G\frac{mM}{r + \xi}\Big]_{r_A}^{r_B}
+	 &= E_{pot}(A) - E_{pot}(B)
+	 \end{align}
+	 \[\Rightarrow E_{pot}(A) = -G\frac{mM}{r_A} + \xi\]
+	 \[\Rightarrow E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
+	 Potentielle Energie des Gravitationsfelder:
+	 \[E_{pot}^{grav} = -G\frac{mM}{r}\]
+**** d = 1
+	 \[E_{pot} = -\int F\d x\]
+	 \[\d E_{pot} = -F\d x\]
+	 \[-\frac{\d E_{pot}}{\d x} = F\]
+**** d = 3
+	 \[E_{pot} = -\int \v F\d\v r \rightarrow \v F = - "\frac{\d E_{pot}}{\d \v r}"\]
+	 Gesucht: Ableitung eines Vektors nach einem Skalar.
+	 Betrachte:\[\Delta E_{pot} = -\v F\Delta \v r = -(F_x \Delta x + F_y \Delta y + F_z \Delta z)\]
+	 \[\Delta E_{pot} = \frac{\partial E_{pot}}{\partial x} \Delta x + \frac{\partial E_{pot}}{\partial y} \Delta y + \frac{\partial E_{pot}}{\partial z} \Delta z\]
+	 \begin{align}
+	 \v F(x,y,z) &= - (\frac{\partial E_{pot}}{\partial x} \Delta x , \frac{\partial E_{pot}}{\partial y} \Delta y , \frac{\partial E_{pot}}{\partial z} \Delta z) \\
+	 &= -\grad E_{pot}
+	 \end{align}
+	 Gilt nur für konservative Kräfte
+**** Gradient
+	 Der Gradient eines Skalarfeldes ist ein Vektorfeld, dass in jedem Punkt in die Richtung des steilsten Anstiegs der skalaren Größe zeigt.
+***** Notation:
+	  \[\v F = -\grad E_{pot}\]
+	  \[\v F = - \v \nabla E_{pot}, \v \nabla = (\frac{\partial}{\partial x}, \frac{\partial}{\partial z}, \frac{\partial}{\partial z})\]
+*** Potential und Gravitationsfeld
+	- Gravitationskraft: \[\v F(\v r) = -G\frac{mM}{r^2}\v e_r\]
+	- Potentielle Energie: \[\v E_{pot}(\v r) = -G\frac{mM}{r}\]
+	Potential:
+	\[\Phi(\v r) = \lim_{m \to 0} \frac{E_{pot}(\v r)}{m}\]
+	- Gravitationspotential: \[\Phi = -G\frac{M}{r}\]
+	- Gravitationsfeld: \[\v G = -G \frac{M}{r^2}\v e_r\]
+	- \[\v G = -\grad \Phi\]
+	- \[E_{pot} = m\Phi\]
