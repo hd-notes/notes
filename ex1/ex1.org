@@ -29,6 +29,22 @@
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \usepackage{pgfplots}
 #+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \theoremstyle{definition}
+#+LATEX_HEADER: \newtheorem{defn}{Definition}
+#+LATEX_HEADER: \theoremstyle{plain}
+#+LATEX_HEADER: \newtheorem{thm}{Satz}
+#+LATEX_HEADER: \theoremstyle{plain}
+#+LATEX_HEADER: \newtheorem{lemma}{Lemma}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{conc}{Folgerung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
+#+LATEX_HEADER: \usepackage{etoolbox}
+#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
+#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 
 \begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}]
 \tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
@@ -82,4 +98,6 @@ mark=at position 0.5 with
 #+INCLUDE: "/home/robin/study/lectures/ex1/forcelaws.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ex1/work_energy_power.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ex1/conservation_laws.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/ex1/system_mass_points.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/ex1/collisions.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ex1/ridid_body.org" :minlevel 1

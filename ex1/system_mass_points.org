@@ -1,0 +1,111 @@
+* Systeme von Massenpunkten
+  Bisher: Bewegung einzelner Massenpunkte. \\
+  Jetzt: Betrachte Systeme von Massenpunkten. \\
+  Man unterscheidet:
+  - Innere Kräfte: Kräfte, die zwischen den Massenpunkten eines Systems wirken.
+  - Äußere Kräfte: Kräfte, die von außen auf das System einwirken
+** Beschreibung eines Systems von Massenpunkten
+   $\v r_1$: Ortsvektor zum Massenpunkt $i$ \\
+   $m_i$: Masse des Massenpunktes $i$ \\
+   $[i = 1,\ldots, n]$ \\
+   Gesamtmasse:
+   \[M = \sum_{i = 1}^n m_i\]
+   #+ATTR_LATEX: :options [Schwerpunkt]
+   #+begin_defn latex
+   \begin{align*}
+   \v r_s = \frac{\sum m_i \v r_i}{\sum m_i} = \frac{1}{M} \sum_{i = 1}^n m_i \v r_i \\
+   \v r_s = \frac{1}{M} \int_v \v r\d m = \frac{1}{M} \int_v \v r \rho(\v r) \d V
+   \end{align*}
+   #+end_defn
+   #+ATTR_LATEX: :options [System zweier Massenpunkte]
+   #+begin_ex latex
+   \begin{align*}
+   \v r_s &= \frac{m_1 \v r_1 + m_2 \v r_2}{m_1 + m_2}\quad s_1, s_2 = ? \\
+   \v r_s &= \v r_1 + \lambda_s(\v r_1 - \v r_1) \\
+   &= (1 - \lambda_s) \v r_1 + \lambda_s \v r_2 \\
+   &= \underbrace{\frac{m_1}{m_1 + m_2}}_{= 1 - \lambda_s} \v r_1 +\underbrace{\frac{m_2}{m_1 + m_2}}_{= \lambda_s} \v r_2 \\
+   \Rightarrow S_1 = \frac{m_2}{m_1 + m_2}, S_2 = \frac{m_1}{m_1 + m_2} \wedge \frac{S_1}{S_2} = \frac{m_2}{m_2} \\
+   \end{align*}
+   Das heißt: Das Verhältnis $\frac{S_1}{S_2}$ ist umgekehrt proportional zum Massenverhältnis $\frac{m_1}{m_2}$.
+   #+end_ex
+   #+ATTR_LATEX: :options [Schwerpunkt Erde-Sonne]
+   #+begin_ex latex
+   \begin{align*}
+   M_E = \SI{6e21}{\kilo\gram}, M_S = \SI{2e30}{\kilo\gram} \\
+   X_S = \frac{M_E X_E + M_S 0}{M_E + M_S} = \SI{4.5e5}{\meter}
+   \intertext{Vergleich mit Sonnenradius $\SI{7e8}{\meter}$ Schwerpunkt praktisch im Sonenmittelpunkt}
+   \end{align*}
+   #+end_ex
+*** Bewegung des Schwerpunkts
+	Geschwindigkeit:
+	\[\v v_s = \dd{\v r_s}{t} = \frac{1}{M} \sum_{i = 1}^n m_1 \dd{\v r_i}{t} = \frac{1}{M} \sum_{i = 1}^n m_i \v v_i = \frac{1}{M}\sum_{i = 1}^n \v p_i\]
+	$\v p_i$: Impuls des einzelnen Massenpunktes
+	#+ATTR_LATEX: :options [Schwerpunktimpuls]
+	#+begin_defn latex
+	\[\v p_s = \sum_{i = 1}^{n}\v p_i = \sum_{i = 1}^{n} m_i \v v_i = M \v v_s\]
+	das heißt: Schwerpunktimpuls ergibt sich aus der Summe der Einzelimpulse
+	#+end_defn
+	Frage: Wie bewegt sich ein System von Massepunkten under Einfluß von Kräften? \\
+	Es gilt:
+	\[\dd{\v p_i} = \underarrow[\v F_i]{äußere Kraft} + \sum_{i\neq j}^{}\overarrow[\v F_{i j}]{innere Kraft}, \v F_{ij} = - \v F_{j i}\]
+	\Rightarrow: Änderung des Schwerpukntimpulses $\v p_s$:
+	\[ \dd{\v p_s}{t} = \sum_{i = 1}^{n}\dot{\v p_i} = \sum_{i = 1}^{n}\v F_i + \underbrace{ \sum_{i} \sum_{i\neq j} \v F_{ij}}_{= 0} = \sum_{i = 1}^{n} \v F_i\]
+	das heißt: die Impulsänderung des Schwerpunktes ergibt sich aus der Summe der äußeren Kräfte:
+	2. Newtonsches Gesetz für Systeme von Massenpunkten.
+	\[\dot{\v p_s} = M \v a_s = \sum_{i = 1}^{n}\v F_i\]
+	Hierbei: $\v a_s = \dot{\v v_s} = \frac{1}{M} \sum m_i \ddot{\v r_i} = \frac{1}{M} \sum m_i \v a_i$
+
+	#+ATTR_LATEX: :options [Allgemeiner Impulssatz]
+	#+begin_defn latex
+	Das Schwerpunkt eines beliebiges Systems ovn Massenpunkten $I$ bewegt sich so, als sei er ein Körper mit der Gesamtmasse $M = \sum m_i$
+	#+end_defn
+	#+ATTR_LATEX: :options [Abgeschlossenes System]
+	#+begin_defn latex
+	Ein abgeschlossenes System ist ein System auf das keine äußeren Kräfte einwirken, das heißt:
+	\[\sum F_i = 0\]
+	#+end_defn
+
+	Der Massenschwerpunkt eines abgeschlossenen Systems hat einen zeitlich konstanten Impuls, das heißt
+	\[\v p_s = \sum_{i = 1}^{n} \v p_i =~\text{const}~\]
+	(\Rightarrow Impulserhaltung!!)
+*** Raketenantrieb
+	das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
+	Beobachtung: Abstoßen einer Masse kann zum Antreib verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
+
+	Betrachte Rakete:
+	Impulssatz:
+	\begin{align*}
+	p(t) = p(t + \Delta t) \\
+	\intertext{Zeitpunkt $t$}
+	p(t) = (m + \Delta m) v \\
+	\intertext{Zeitpunkt $t + \Delta t$}
+	p(t + \Delta t) 0 m(v + \Delta v) + \Delta m(v - v_B) \\
+	\Rightarrow m v + \Delta v = m v + m \Delta v + \Delta m v - \Delta m v_B \\
+	m \Delta v - \Delta m v_B = 0
+	\intertext{Änderung Blickwinkel:}
+	m \Delta v + \Delta m v_b = 0 \\
+	\intertext{Wichtig: Masse $m$ und Massenänderung $\d m$ mässen sich auf gleiche Referenz beziehen. Damit folgt:}
+	\d v = - v_b \frac{\d m}{m} \\
+	\intertext{Integration:}
+	\int_{v_1}^{v_2}\d v = -v_B \int_{m_1}^{m_2} \frac{1}{m} \d m, m_1 > m_2, v_B = ~\text{const} \\
+	v_2 - v_1 = -v_B \cdot \big[\ln m\big]_{m_1}^{m_2} = v_B (\ln m_1 - \ln m_2) = v_B \ln{ \frac{m_1}{m_2}} > 0
+	\intertext{Wähle Anfangsbedingungen:}
+	v_1 = 0, m_1 0 m_0 = m(t = 0), m_2 = m(t) \\
+	\intertext{$\Rightarrow$ Raketengleichung für kräftefreie Rakete}
+	v(t) = v_B \ln \frac{m_0}{m(t)}
+	\end{align*}
+	das heißt: Die Endgeschwindkigkeit einer Rakete wird duch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
+
+	Für die nicht kräftefreie Rakete gilt:
+	\[m(t) \dd{\v v(t)}{t} = -\dd{m(t)}{t} \v v_B + \v F\]
+	Allgemeine Raketengleichung (ohne Herleitung)
+
+	#+begin_remark latex
+	Vorsicht bei der Anwendung des zweiten Newtonschen Gesetzen $\v F = \dot{\v p}$. Naiver Ansatz für kräftefreie Rakete:
+	\[\dd{m v}{t} = \dd{m}{t} v + m \dd{v}{t} = 0\]
+	Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksicht
+
+	Korrekter Ansatz:
+	\[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \Rightarrow m \dd{v}{t} + v_B \dd{m}{t} = 0\]
+	das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigketi verschwindet.
+	#+end_remark

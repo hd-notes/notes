@@ -1,4 +1,4 @@
-% Created 2016-11-27 So 00:26
+% Created 2016-11-29 Di 16:43
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1395,6 +1395,146 @@ std::sort(v.begin(), v.end()); // "in-place" sortieren
 \begin{minted}[]{cpp}
 std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 \end{minted}
+\end{itemize}
+\end{itemize}
+\subsubsection{Effizenz von push$_{\text{back}}$}
+\label{sec-13-1-1}
+Warum ist push$_{\text{back}}$() effizient? (bei std::vector)
+\begin{itemize}
+\item veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens vei Initialisierung, bekannt)
+\begin{itemize}
+\item sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
+\end{itemize}
+\item modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push$_{\text{back}}$())
+\begin{itemize}
+\item dies kann sehr effizient unterstützt werden $\Rightarrow$ dynamisches Array
+\end{itemize}
+\item std::vector verwaltet intern ein statisches Array der Größe "capacity", v.capacity() >= c.size()
+\begin{itemize}
+\item wird das interne Array zu klein $\Rightarrow$ wird automatisch auf ein doppelt so großes umgeschaltet
+\item ist das interne Array zu groß, bleiben unbenutzt Specherzellen als Reserve
+\end{itemize}
+\item Verhalten bei push$_{\text{back}}$():
+\begin{enumerate}
+\item nach REserve vorhanden: lege neues Element im eine unbenutze Speicherzelle $\Rightarrow$ billig
+\item keine Reserve
+\begin{enumerate}
+\item alloziiere neues statisches Array mit doppeler Kapazität
+\item kipiere die Daten aus altem ins neue Array
+\item gebe das alte Array frei
+\item gehe zum Anfang des Algorithmus, jetzt wieder Reserve vorhanden
+\end{enumerate}
+\end{enumerate}
+\item das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist
+\item Bespiel:
+\begin{minted}[]{cpp}
+std::vector<int> v;
+
+for(int i = 0; i < 32; i++) v.push_back(k);
+\end{minted}
+\begin{center}
+\begin{tabular}{rrrrrr}
+k & capacity vor push$_{\text{back}}$() & capacity nach push$_{\text{back}}$() & size() & Reserve & \#Umkopieren\\
+\hline
+0 & 0 & 1 & 1 & 0 & 0\\
+1 & 1 & 2 & 2 & 0 & 1\\
+\hline
+2 & 2 & 4 & 3 & 1 & 2\\
+3 & 4 & 4 & 4 & 0 & 2\\
+\hline
+4 & 4 & 8 & 5 & 3 & 4\\
+5-7 & 8 & 8 & 8 & 0 & 0\\
+\hline
+8 & 8 & 16 & 9 & 7 & 8\\
+9-15 & 16 & 16 & 16 & 0 & 0\\
+\hline
+16 & 16 & 32 & 17 & 15 & 16\\
+17-31 & 32 & 32 & 32 & 0 & 0\\
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item was kostet das:
+\begin{itemize}
+\item 32 Elemente einfügen = 32 Kopien extern $\Rightarrow$ intern
+\item aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern $\Rightarrow$ intern
+\item $\Rightarrow$ im Durchschnitt sind pro Einfügung 2 Kopien nötig
+\item $\Rightarrow$ dynamisches Array ist doppel so teuer sie das statische  $\Rightarrow$ immer noch sehr effizient
+\end{itemize}
+\end{itemize}
+\item relevante Funktionen von std::vector
+\begin{minted}[]{cpp}
+v.size() // aktuelle Zahl der Elemente
+v.capacity() // aktuelle Zahl Speicherzellen
+assert(v.capacity() - v.size() >= 0) // Reserve
+v.resize(new_size) // ändert immer v.size(), aber v.capacity() nur wenn < new_size
+v.reserve(new_capacity) // änder v.size() nicht, aber v.capacity() falls new_capacity >= size
+v.shrink_to_fit() // == v.reserve/v.size()) Reseve ist danach 0, wenn Endgröße erreicht
+\end{minted}
+\item wenn Reserve > size: capacity kann auch halbiert werden
+\item wichtige Container der c++ Standardbibilothek
+\item wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered$_{\text{map}}$
+\item std::set, std::unordered$_{\text{set}}$: Menge, jedes Element ist hächstens einmal enthalten zum Beispiel Duplikate
+\item std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push$_{\text{back}}$() und pop$_{\text{back}}$() bei std::vector
+\item std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
+\item std::deque ("double-ended queue") gleichzeitig stack und queue, puhs, pop$_{\text{front}}$(), pop$_{\text{back}}$()
+\item std::priority$_{\text{queue}}$, push() und pop() - Element mit höchster niedrigster Priorität (unser defined)
+\end{itemize}
+\section{Iteratoren}
+\label{sec-14}
+\begin{itemize}
+\item für Arrays lautet kanonische Schleife
+\begin{minted}[]{cpp}
+for(int i = 0; i != v.size(); i++) {
+	int current = v[i]; // lesen
+	v[i] = new_value; // schreiben
+}
+\end{minted}
+\item wir wollen eine so einfache Schleife für beliebige Container
+\begin{itemize}
+\item der Index-Zugriff v[] ist bei den meisten Container nicht effizient
+\item Iteratoren sind immer effizient $\Rightarrow$ es gibt sie in allen modernen Programmiersprachen, aber Details sehr unterschiedlich
+\item Analogie: Zeiger einer Ühr, Cursor in Textverarbeitung
+\begin{itemize}
+\item $\Rightarrow$ ein Iterator zeigt immer auf ein Element des Containers, oder auf Spezialwert "ungültiges Element"
+\end{itemize}
+\item in c++ unerstützt jeder Iterator 5 Grundoperationen
+\begin{enumerate}
+\item Iterator auf erstes Element erzeugen: auto iter = v.begin();
+\item Iterator auf "ungültiges Element" erzeugen: auto end = v.end();
+\item Vergleich iter1 \texttt{= iter2 (Zeigen auf gleiches Element), iter !} end: iter zeigt \textbf{nicht} auf ungültiges Element
+\item zum nächsten weitergehen: ++iter. Ergebnis ist v.end(), wenn man vorher beim letzten Element war
+\item auf Daten zugreifen: *iter ("Dereferenzierung") analog v[k]
+\end{enumerate}
+kanonische Schleife:
+\begin{minted}[]{cpp}
+for(auto iter = v.begin(); iter != v.end(); ++iter) {
+int current = *iter; // lesen
+*iter = new_value; // schreiben
+}
+// Abkürzung: range-based for loop
+for(auto & element : v) {
+int current = element; // lesen
+element  = new_vlaue; // schreiben
+}
+\end{minted}
+\end{itemize}
+\item Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
+\item "bidirectional iterators": unterstützen auch --iter, zum vorigen Element ((fast) alle Iteratoren in std)
+\item "random acces iterators": beliebige Sprünge "iter += 5; iter -= 3;"
+\item Besonderheit für assoziative Arrays (std::map, std::unordered$_{\text{map}}$)
+Schlüssel und Werte können beliebig gewählt werden
+\begin{itemize}
+\item $\Rightarrow$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
+\begin{minted}[]{cpp}
+(*iter).first; // Schlüssel
+(*iter).second; // Wert
+// Abkürzung
+iter->first;
+iter->second;
+\end{minted}
+\begin{itemize}
+\item bei std::map liefern die Iteratoren die Elemente in aufsteigneder Reihenfolge der Schlüssel
+\end{itemize}
 \end{itemize}
 \end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)

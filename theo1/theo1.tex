@@ -1,4 +1,4 @@
-% Created 2016-11-27 So 00:28
+% Created 2016-11-29 Di 16:43
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -31,6 +31,7 @@
 \makeatother
 \DeclareMathOperator{\Exists}{\exists}
 \DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Forall}{\forall}
 \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
 \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
@@ -46,6 +47,8 @@
 \newtheorem{thm}{Satz}
 \theoremstyle{remark}
 \newtheorem{remark}{Bemerkung}
+\theoremstyle{remark}
+\newtheorem{ex}{Beispiel}
 \usepackage{etoolbox}
 \patchcmd{\thmhead}{(#3)}{#3}{}{}
 \usepackage{xparse}% http://ctan.org/pkg/xparse
@@ -58,6 +61,7 @@
 \renewcommand*{\proofname}{Beweis}
 \newcommand{\I}{\ensuremath{i}}%
 \newcommand{\ubar}[1]{\underline{#1}}
+\newcommand{\eps}{\ensuremath{\varepsilon}}%
 \author{Robin Heinemann}
 \date{\today}
 \title{Theoretische Physik (Hebecker)}
@@ -1149,5 +1153,114 @@ Zunächst nur Linearitätsbedingung (wird respektiert von allgemeinen linearen T
 \[x^i \mapsto x^{\prime i} = R^{i j} x^j\]
 oder
 \[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix}\]
+
+Symmetrie: Lineare Transformation: $\v x \mapsto R(\v x)$ \\
+   konkret: $x^i \mapsto x^{\prime i} = R^{ij}x^j$
+\[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix} \cvec{x^1 ; \vdots ; x^n}\]
+Kurzschreibweise:
+\[x\mapsto x' = R x\]
+\begin{itemize}
+\item hier: Großbuchstaben = Matrizen
+\item Kleinbuchstaben = Vektoren
+\end{itemize}
+\begin{ex}[n = 2]
+\begin{align*}
+x^{\prime 1} &= R^{11} x^1 + R^{12}x^2 \\
+x^{\prime 2} &= R^{21} x^1 + R^{22}x^2 \\
+\end{align*}
+
+Ganz explizit
+\[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \Rightarrow \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
+Transformation der beiden Basisvektoren
+
+Jeder andere Vektor ($\cvec{\alpha; \beta}$) ist schreibbar als $\alpha \cvec{1; 0} + \beta \cvec{0 ; 1}$. Er transformiert demanch gemäß
+\[\cvec{\alpha; \beta} \mapsto \alpha \cvec{2 ; 1} + \beta \cvec{0 ; 1} = \cvec{2 \alpha ; \alpha + \beta}\]
+\end{ex}
+Wichig: Symmetrietransformationen müssen verknüpfbar sein: \\
+   Dazu: Betrachte zwei Transformationen:
+\begin{align*}
+R_1: x\mapsto R_1 x; R_2: x\mapsto R_2 x \\
+\intertext{zusammen:}
+R_1 \circ R_2:x\mapsto R_2 R_1 x \\
+\end{align*}
+Die Komponente $i$ des entstehenden Vektors ist:
+\[(R_2 R_1 x)^i = R_2^{ij}(R_1 x)^j = R_2^{ij}R_1^{jk}x^k\]
+Man kann die Abbildung $x\mapsto R_2 R_2 x$ auch "in einem Schritt" als Transformation durch die Produktmatrix $R_2 R_1$ realisieren:
+\[(R_2 R_1 x)^i = \underbrace{(R_2^{ij}R_1^{jk})}_{\mathclap{\text{Produktmatrix}}}x^k\]
+Die Produktmatrix ist $(R_2 R_1)^{ij} = R_2^{ij} R_1^{jk} \equiv R_3^{ik}$
+Hinweis zum expliziten Rechnen:
+\begin{align*}
+&\begin{pmatrix} R_1^{11} & R_1^{12} & R_1^{13} \\ R_1^{21} & R_1^{22} & R_1^{23} \\ R_1^{31} & R_1^{32} & R_1^{33}\end{pmatrix} \\
+\begin{pmatrix} R_2^{11} & R_2^{12} & R_2^{13} \\ R_2^{21} & R_2^{22} & R_2^{23} \\ R_2^{31} & R_2^{32} & R_2^{33}\end{pmatrix} &\begin{pmatrix} R_3^{11} & R_3^{12} & R_3^{13} \\ R_3^{21} & R_3^{22} & R_3^{23} \\ R_3^{31} & R_3^{32} & R_3^{33}\end{pmatrix} \\
+\end{align*}
+Für den Begriff der Symmetrie brauchen wir Invertierbarkeit. Wir nennen eine Transformation beziehungsweise die entsprechende Matrix $R$ invertierbar, falls es eine zweite Matrix $R^{-1}$ gibt, so dass
+\begin{align*}
+R^{-1} \circ R &= id \tag{Identitätsabbildung} \\
+(R^{-1})^{ij} R^{jk} &= \mathbb{1}^{ik} \equiv \delta^{ik}
+\end{align*}
+Um Invertierbarkeit festzustellen brauchen wir Determinante
+\subsection{Matrix, Determinante, Inverse Matrix}
+\label{sec-6-2}
+\begin{defn}[Permutation]
+Eine Permutation (Bez: $\sigma$) von $n$ Elementen ist eine umkehrbare Abbildung einer Menge von $n$ Elementen auf sich selbst: \\
+   Menge: $\{1, \ldots, n\}$, Abb: $\sigma: \{1, \ldots, n\} \to \{1, \ldots, n\}, i \mapsto \sigma{i}$ \\
+   oft nützlich: Man denke an die elementweise Anwendung von $\sigma$ auf $\{1, \ldots, n\}: \to \{\sigma(1),\ldots, \sigma(n)\}$ \\
+
+Eine Permutation heißt \textbf{gerade} $(\sgn(\sigma) = 1)$, falls sie sich aus geradzahlig vielen Vertauschungen von Nachbarn ergibt.
+Zum Beispiel ist $123\to 312$ das Produkt von $123\to 132$ und $123\to 213$:
+\[123\to 132 \to 312\]
+\end{defn}
+\begin{defn}[Levi-Cevita-Tensor]
+\[\eps^{\sigma(1) \ldots \sigma(n)} \equiv \sgn(\sigma)\]
+Insbesondere: $\eps^{12\ldots n} = 1$
+\end{defn}
+
+\begin{itemize}
+\item Eine $(n\times m)$- Matrix ist ein Schema $A^{ij}$ von Zahlen, die jeweils Eintrag $i$ in Zeile $i$ und Spalte $j$ bezeichnen.
+\item Man kann eine $(n\times m)$-Matrix mit einer $(m\times p)$-Matrix multiplizieren:
+\[(AB)^{ij} = \sum_{k = 1}^{m}A^{ik} B^{kj}\]
+das Ergebniss ist eine $(n\times p)$-Matrix
+\end{itemize}
+
+\begin{defn}[Determinante]
+Für quadratische ($(n\times n)$-Matrizen) definieren wir die \textbf{Determinante}:
+\[\det A = \frac{1}{n!} \underarrow[\eps]{n-dim. Levi-Civita-Symbol}^{i_1 \ldots i_n} A^{i_1 j_1} A^{i_2 j_2} \ldots A^{i_n j_n} \eps^{j_1 \ldots j_n} \]
+
+Damit erhält man: \\
+   Determinante einer $(1\times 1)$-Matrix: die Zahl selbst.
+
+Erstes nichttriviales Bespiel: $(2\times 2)$-Matrix
+\begin{align*}
+\det A &= \det \begin{pmatrix} A^{11} & A^{12} \\ A^{21} & A^{22}\end{pmatrix} = \frac{1}{2!} \eps^{ij} A^{ik} A^{jl} \eps^{kl} \\
+&= \frac{1}{2!}(\eps^{12}A^{11}A^{22}\eps^{12} + \eps^{12}A^{12}A^{21}\eps^{21} + \eps^{21}A^{21}A^{12}\eps^{12} + \eps^{21}A^{22}A^{11}\eps^{21}) \\
+&= \frac{1}{2} (A^{11} A^{22} + A^{12} A^{21} - A^{21}A^{12} + A^{22}A^{11}) = A^{11}A^{22} - A^{12}A^{21} \\
+\intertext{Man überlegt sich leicht:}
+\det A = \sum_{\sigma} \sgn{\sigma}A^{1\sigma(1)} A^{2\sigma(2)} \ldots A^{n\sigma(n)} \\
+\end{align*}
+Also: $n!$ Summanden, Jeder ist Produkt von je einem Element aus jeder Zeile und Spalte der Matrix. Vorzeichen ist Vorzeichen der Permutation (siehe unten)
+\end{defn}
+\begin{ex}[$(3\times 3)$-Matrix]
+Rechenschema:
+\begin{align*}
+A&=\begin{pmatrix} A^{11} & A^{12} & A^{13} & A^{11} & A^{12} \\ A^{21} & A^{22} & A^{23} & A^{21} & A^{22} \\ A^{31} & A^{32} & A^{33} & A^{31} & A^{32} \\ \end{pmatrix} \\
+\det A &= A^{11}A^{22}A^{33} + A^{12}A^{23}A^{31} + \ldots
+\end{align*}
+\end{ex}
+Betrachte nun den Ausdruck:
+\begin{align*}
+\eps^{i_1 i_2 \ldots i_n} A^{i_1 j_1} A^{i_2 j_2} \ldots A^{i_n j_n} = \eps^{i_1 i_2 \ldots} A^{i_2 j_2}A^{i_1 j_2} \ldots \\
+= \eps^{i_2 i_1\ldots } A^{i_2 j_2} A^{i_2 j_1}  \ldots = - \eps^{i_1 i_2 \ldots i_n} A^{i_1 j_2} A^{i_2 j_1} \ldots A^{i_n j_n}
+\intertext{Vorzeichenwechslung durch Vertauschen zweier Indizes, obiger Ausdruck ist "total antisymmentrisch"}
+\end{align*}
+
+Totale Antisymmetrie ist die definierende Eigenschaft von $\eps$. Sie bestimmt jeden Ausdrch mit $u$ Indizes bis auf Vorfaktor. Deshalb:
+\begin{align*}
+\eps^{i_1 \ldots i_n}A^{i_1 j_1} \ldots A^{i_n j_n} = c \eps^{j_1 \ldots j_n} \\
+\intertext{Multipliziere mit $\eps^{j_1 \ldots j_n}$:}
+n! \det A = c \eps^{j_1 \ldots j_n} \eps^{j_1 \ldots j_n} = c n! \\
+\intertext{$\Rightarrow$ alternative Formel für $\det A$:}
+e^{i_1 \ldots i_n} A^{i_1 j_1} \ldots A^{i_n j_n} = (\det A) \eps^{j_1 \ldots j_n}
+\end{align*}
+Zentraler Fakt: $A$ invertierbar $\Leftrightarrow \det A \neq 0$
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

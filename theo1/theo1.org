@@ -18,6 +18,7 @@
 #+LATEX_HEADER: \makeatother
 #+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
 #+LATEX_HEADER: \DeclareMathOperator{\rot}{rot}
+#+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
 #+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
 #+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
@@ -33,6 +34,8 @@
 #+LATEX_HEADER: \newtheorem{thm}{Satz}
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
 #+LATEX_HEADER: \usepackage{etoolbox}
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
@@ -47,6 +50,7 @@
 # #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 # #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\mathrm{i}}}%
 #+LATEX_HEADER: \newcommand{\ubar}[1]{\underline{#1}}
+#+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 
 Einleitung: \\
 - Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html

@@ -1,9 +1,58 @@
 * Erhaltungssätze
-  \begin{align*}
-  \intertext{falls $\v F_{außen} =0$}
-  \sum \v p_i &= \sum \v p'_i = \text{const} \\
-  \sum E_{kin,i} &= \sum E'_{kin,i} + Q \\
-  Q &= 0 \tag*{elastisch} \\
-  Q &> 0 \tag*{inelastisch} \\
-  Q &x 0 \tag*{superelastisch} \\
-  \end{align*}
+** Energieerhaltung
+   Für konservative Kräfte gilt:
+   \[\Delta E_{kin} = -\Delta E_{pot} = \int_1^2 \v F\d \v r\]
+   das heißt: die kinetische Energei ergibt sich allein aus der Potentialdifferenz und ist unabhängig vom durchlaufenen Weg.
+   \begin{align*}
+   E_{kin}(2) - E_{kin}(1) = E_{pot}(1) - E_{pot}(2) \\
+   E_{kin}(1) + E_{pot}(1) = E_{kin}(2) + E_{pot}(2) = \ldots =~\text{const} \\
+   \end{align*}
+*** Doppelbahn
+	\begin{align*}
+	E_{pot}(1) = m\cdot g\cdot h \\
+	E_{pot}(1) = E_{pot(2')} = 0 \\
+	\rightarrow \\
+	E_{kin}(2) = E_{kin}(2') = \frac{1}{2}m v^2 \\
+	\end{align*}
+	Bemerkung: Berechung von $v$ mit Newtonschen Gesetzen deutlich komplexer
+*** Energieerhaltungssatz der Newtonschen Mechanik
+	\[E_{pot} + E_{kin} = E_{ges} = ~\text{const}\]
+	$E_{ges}$ = mechanische Gesamtenergie \\
+	das heißt: In einem konservativen Kraftfeld ist due Summe aus potetieller und kinetischer Energie
+	eines Massenpunktes zu jeder Zeit konstant
+
+	Wichtig: gilt nur für konservative Kraftfelder (Beim Auftreten nicht-konservativer, dissipativer Kröfte wird
+	mechanische Energie in Wärme umgewandelt)
+*** Energiediagramme
+	Häufig: Potentielle Energie abhängig von Ort $x$ oder Abstand $r$ \\
+	Hilfreich: Diskussion mittel Energiediagramm
+**** Kugelbahn
+	- Abhängig von $E_{ges}$ kann sich die Kugel nur in bestimmten Bereichen aufhalten
+	- Gleichgewichtslagen: Kugel rught, es wirken keine Kräfte, das heißt
+	  \[F = -\dd{E_{pot}}{x} = 0, ~\text{bzw}~ \v F = -\grad E_{pot} = 0\]
+
+	Drei Fälle:
+	1. Stabiles bzw. Metastabiles Gleichgewicht: Potentialkurve hat ein Minimum
+	2. labiles Gleichgewicht: Potentialkurve hat ein Maximum
+	3. Indifferentes Gleichgeweicht: Flacher Verlauf der Potentialkurve
+**** Lennard-Jones-Potential
+	 Potienial zur Beschreibung von molekularen Bindugen
+	 \[E_{pot} = V_0 (\frac{r}{r_0})^{-12} - 2(\frac{r}{r_0})^{-6}\]
+	 (Dipol-Dipol-Wchselwirkung, Van-der-Waals Kräfte)
+**** Mechanischer Verstärker
+	 \[E_{pot}' = m g h = \underarrow[\rho]{Dichte} \overarrow[(a b c)]{Volumen} g h\]
+	 mit $h = \frac{1}{2}c$ \\
+	 Fallender Dominostein: $E_{pot}  \to E_{kin}$ \\
+	 Startposition: (Meta)stabiles Gleichgewicht \\
+	 das heißt: Dominosteine müssen über einen Potentialberg angehoben werden. Danach ist die kinetische Energie
+	 ausreichend, um den nächsten Stein über Potentialschwelle zu heben.
+	 Verstärkungsfaktor: \\
+	 Skalierung zwischen den Steinen: Alle Längen $\times \sqrt{2}$ \\
+	 Potentielle Energie für Stein $m$:
+	 \begin{align*}
+	 E_{pot} &= \rho(a^{(n)}b^{(n)}c^{(n)}) h^{(n)} g = (\sqrt{2})^4 E_{pot}^{(n-1)} \\
+	 E_{pot}^{(1)} &= m g h \\
+	 \Rightarrow E_pot^{(13)} &= 4^{12} E_{pot}^{(1)} \\
+	 \intertext{$\Rightarrow$ Verstärkungsfaktor $\approx \SI{1.7e7}{}$}
+	 \end{align*}
+

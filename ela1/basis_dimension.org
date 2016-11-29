@@ -1,0 +1,74 @@
+* Basis und Dimension
+  In diesem Abschnitt sei $V$ stets ein K-VR
+  #+ATTR_LATEX: :options [9.1]
+  #+begin_defn latex
+  $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. $(v_i)_{i\i I}$ heißt *Erzeugendessystem* (ES) von $V \xLeftrightarrow{Def} V = \Lin((v_i)_{i\in I})$ \\
+  $V$ heißt *endlich erzeugt* $\xLeftrightarrow{\text{Def}} V$ besitzt ein endliches Erzeugendessystem (das heißt es existiert eine endliche Familie $(v_1, \ldots, v_n)$ von Vektoren aus $V$ mit $V = \Lin((v_1, \ldots, v_n))$) \\
+  $(v_i)_{i\in I}$ heißt *Basis* von $V \xLeftrightarrow{\text{Def}} (v_i)_{i\in I}$ ist linear unabhängiges Erzeugendessystem von $V$ \\
+  Ist $\mathcal{B} = (v_1, \ldots, v_n)$ eine endliche Basis von $V$, dann heißt $n$ die *Länge* von $\mathcal{B}$
+  +end_defn
+  #+ATTR_LATEX: :options [9.2]
+  #+begin_ex latex
+  1. Die Familie $(e_1, \ldots, e_n)$ ist eine Basis des K_VR $K^n$, da $\Lin((e_1, \ldots, e_n)) = K^n$ (vergleiche 8.10.2) und somit $(e_1,\ldots, e_n)$ Erzeugendessystem des $K^n$, und $(e_1, \ldots, e_n)$ linear unabhängig nach 8.15.1.
+	 Die Länge der Basis ist $(e_1, \ldots, e_n)$ ist $n$. $(e_1, \ldots, e_n)$ heißt die kanonische Basis oder Standardbasis der $K^n$.
+  2. Die Familie $(t^n)_{n\in\mathbb{N}_0}$ ist eine Basis der K-VR $K[t]$, denn: $\Lin((t^n)_{n\in\mathbb{N}_0}) = K[t]$ nach 8.12, $(t^n)_{n\in\mathbb{N}_0}$ ist linear unabhängig nach 8.15.3
+  3. $((1, -1), (0,2), (1,2))$ ist ein Erzeugendessystem des $\mathbb{R}$-VR $\mathbb{R}^2$, denn für jedes $(x_1, x_2) \in \mathbb{R}^2$ ist $(x_1, x_2) = x_1(1, -1) + \frac{x_1 + x_2}{e}(0,2)\in \Lin((1,-1, (0,2), (1,2))$,
+	 $((1, -1), (0,2), (1,2))$ ist jedoch keine Basis des $\mathbb{R}$, da linear abhängig nach 8.15.2
+  4. Die leere Familie $()$ ist eine Basis des Nullraums $\{0\}$: vergleiche 8.11 und Annahme nach 8.14
+  #+end_ex
+  #+ATTR_LATEX: :options
+  #+begin_note latex
+  Jeder Vektorraum $V$ besitzt ein ES, denn es ist $V = \Lin((v)_{v \in V})$ \\
+  Spannende Frage: Besitzt jeder VR eine Basis? \\
+  Wir werden das zunächst für den Fall endlicher Vektorräqume untersuchen
+  #+end_note
+  #+ATTR_LATEX: :options [9.3]
+  #+begin_thm latex
+  $V \neq \{0\}, \mathcal{B} = (v_1, \ldots, v_n)$ endliche Familie von Vektoren aus $V$, dann sind äquivalent:
+  1. $\mathcal{B}$ ist eine Basis von $V$, das heißt eine linear unabhängiges ES von $V$
+  2. $\mathcal{B}$ ist ein unverkürzbares ES von $V$, das heißt $\mathcal{B}$ ist ein ES und für jedes $r\in\{1,\ldots,n\}$ ist $(v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n)$ kein ES von $V$ mehr.
+  3. Zu jedem $v\in V$ gibt es eindeutig bestimmte $\lambda_1, \ldots, \lambda_n \in K$ mit
+	 \[v = \lambda_1 v_1 + \ldots + \lambda_v v_n\]
+  4. $\mathcal{B}$ ist unverlängerbar linear unabhängig, das heißt $\mathcal{B}$ ist linear unabhängig und für jedes $v\in V$ ist die Familie $(v_1, \ldots, v_n, v)$ linear abhängig
+  #+end_thm
+  #+begin_proof latex
+  Wir zeigen 1. \Rightarrow 2. \Rightarrow 3. \Rightarrow 4. \Rightarrow 1. \\
+  1. \Rightarrow 2.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ eine Basis von $V \Rightarrow \mathcal{B}$ ist ES von $V$ \\
+	 Annahme: $\mathcal{B}$ ist verkürzbar, das heißt es gibt ein $r\in\{r, \ldots, n\}$, sodass $(v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n)$ immernoch ein ES von $V$
+	 \Rightarrow $v_r \in \Lin((v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n))$, das heißt
+	 \[\Exists \lambda_1, \ldots, \lambda_{r - 1}, \lambda_{r + 1}, \ldots, \lambda_n\in K: v_r = \lambda_1 v_1 + \ldots + \lambda_{r - 1} v_{r - 1} + (-1)v_r + \lambda_{r + 1} v_{r + 1} + \ldots + \lambda_n v_n\]
+	 \Rightarrow $\mathcal{B}$ linear abhängig $\lightning$ zu $\mathcal{B}$ Basis von $V$
+  2. \Rightarrow 1.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ ein unverkürzbares ES von $V$ \Rightarrow Für jedes $v\in V$ existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$
+	 Annahme: Es gibt $v\in V, \lambda_1, \ldots, \lambda_v v_n = \mu_1 v_1 + \ldots \mu_n v_n$
+	 \begin{align*}
+	 \Rightarrow (\lambda_i - \mu_i) v_i = (\mu_1 - \lambda_1)v_i + \ldots + (\mu_{i - 1} - \lambda_{i - 1})v_{i - 1} + (\mu_{i + 1} - \lambda_{i + 1}) v_{i + 1} + \ldots + (\mu_n - \lambda_n) v_n \\
+	 \Rightarrow v_1 = \frac{\mu_{1} - \lambda_{1}}{\lambda_{i} - \mu_{i}} v_1 + \ldots + \frac{\mu_{i - 1} - \lambda_{i - 1}}{\lambda_{i} - \mu_{i}} v_{i - 1} + \frac{\mu_{i + 1} - \lambda_{i + 1}}{\lambda_{i} - \mu_{i}} v_{i + 1} + \ldots + \frac{\mu_{n} - \lambda_{n}}{\lambda_{i} - \mu_{i}} v_n \\
+	 \end{align*}
+	 \Rightarrow Jeder UVR von $v_i$ der $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n$  enthält, enthält auch $v_i$ \\
+	 \Rightarrow $\Lin((v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n)) = \Lin((v_1, \ldots, v_n)) = v$ \\
+	 \Rightarrow $\mathcal{B}$ ist verkürzbar $\lightning$
+  3. \Rightarrow 4.: Wir setzte 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
+	 zu zeigen: $\mathcal{B}$ ist unverlängerbar linear unabhängig \\
+	 denn Insbesondere existiert für jedes $v\in \Lin((c_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \Rightarrow (v_1,\ldots, v_n)$ linear unabhängig.
+	 Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \Rightarrow (v_1, \ldots, v_n)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
+  4. \Rightarrow 1. Sei $\mathcal{B}$ unverlängerbar linear unabhängig
+	 zu zeigen: $\mathcal{B}$ ist Basis von $V$, das heißt es bleibt noch zu zeigen, dass $\mathcal{B}$ ein ES von $V$ ist \\
+	 Sei $v\in V \Rightarrow (v_1, \ldots, v_n, v)$ linear abhängig \Rightarrow $\Exists \lambda_1, \ldots, \lambda_n \in K, (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0): \lambda_1 v_1 + \ldots + \lambda_n v_n + \lambda v = 0$
+	 Es ist $\lambda \neq 0$, da sonst $(v_1, \ldots, v_n)$ linear abhängig
+	 \[\Rightarrow v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - -\frac{\lambda_n}{\lambda} v_n \in \Lin((v_1, \ldots, v_n))\]
+	 \Rightarrow $\mathcal{B}$ ist ES von $V$
+  #+end_proof
+  #+ATTR_LATEX: :options [9.4 Basiswahlsatz]
+  #+begin_conc latex
+  Besitzt $V$ ein endliches ES $(v_1, \ldots, v_n)$, dan kann man aus diesem eine Basis auswählen, das heißt es gibt eine Teilmenge $\{i_1, \ldots, i_r\} \subseteq \{1, \ldots, n\}$, sodass $(v_{i_0}, \ldots, v_{i_r})$ ein Basis von $V$ ist. Insbesondere bestitz jeder endlich erzeuge Vektorraum eine Basis
+  #+end_conc
+  #+begin_proof latex
+  Entferne aus dem ES $(v_1, \ldots, v_n)$ nacheinander solange Elemente, bis die resultierende Familie ein unverkürzbares ES und somit nach 8.3 eine Basis von $V$ ist.
+  #+end_proof
+  #+ATTR_LATEX: :options [9.5]
+  #+begin_conc latex
+  Jeder endlich erzeugte K-VR besitzt eine Basis von endlicher Länge. \\
+  Fragen:
+  - Ist jede Basis von $V$ von endlicher Länge?
+  - Sind je zwei endliche Basen von $V$ gleicher Länge
+  #+end_conc

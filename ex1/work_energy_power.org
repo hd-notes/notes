@@ -93,7 +93,9 @@
 	Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfelder
 	Für konservative Kraftfelder gilt
 	\[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
-	- $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+	- jedem ort im Raum kannein Skalar, die potentielle Energei zugeordnet werden \Rightarrow $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+	- wird bei der Verschiebung eines Körpers von Ort 1 nach Ort 2 Arbeit gegen eine konservative Kraft geleistet, so erhäht sich die potentielle einergei, das heißt $E_{pot}(2) > E_{pot}(1)$.
+	- Der Nullpunkt $E_{pot}(\v r)$ = 0$ der potentiellen Energie ist frei wählbar, da allein die Differenz der Potentiellen Energei an zwei Punkten relevant ist.
 **** homogenes Kraftfeld
 	 \[\v F(\v R) = (0,0,F_z)\]
 	 - Weg 1: \[W_1 = \int_{\text{Weg1}}\v F\d \v R = \int_{z_1}^z F_z\d z = F_z(z_2 - z_1)\]
@@ -119,15 +121,18 @@
 	 Potentielle Energie des Gravitationsfelder:
 	 \[E_{pot}^{grav} = -G\frac{mM}{r}\]
 **** d = 1
+	 Zusammenhang zwischen konservativen Kraftfeld und potentieller Energie:
 	 \[E_{pot} = -\int F\d x\]
 	 \[\d E_{pot} = -F\d x\]
 	 \[-\frac{\d E_{pot}}{\d x} = F\]
 **** d = 3
+	 Zusammenhang zwischen konservativen Kraftfeld und potentieller Energie:
 	 \[E_{pot} = -\int \v F\d\v r \rightarrow \v F = - "\frac{\d E_{pot}}{\d \v r}"\]
 	 Gesucht: Ableitung eines Vektors nach einem Skalar.
 	 Betrachte:\[\Delta E_{pot} = -\v F\Delta \v r = -(F_x \Delta x + F_y \Delta y + F_z \Delta z)\]
 	 \[\Delta E_{pot} = \frac{\partial E_{pot}}{\partial x} \Delta x + \frac{\partial E_{pot}}{\partial y} \Delta y + \frac{\partial E_{pot}}{\partial z} \Delta z\]
 	 \begin{align}
+	 Vergleich:
 	 \v F(x,y,z) &= - (\frac{\partial E_{pot}}{\partial x} \Delta x , \frac{\partial E_{pot}}{\partial y} \Delta y , \frac{\partial E_{pot}}{\partial z} \Delta z) \\
 	 &= -\grad E_{pot}
 	 \end{align}

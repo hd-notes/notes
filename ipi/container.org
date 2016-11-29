@@ -105,3 +105,64 @@
 	   #+BEGIN_SRC cpp
 	   std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 	   #+END_SRC
+*** Effizenz von push_back
+	Warum ist push_back() effizient? (bei std::vector)
+	- veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens vei Initialisierung, bekannt)
+	  - sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
+	- modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push_back())
+	  - dies kann sehr effizient unterstützt werden \Rightarrow dynamisches Array
+	- std::vector verwaltet intern ein statisches Array der Größe "capacity", v.capacity() >= c.size()
+	  - wird das interne Array zu klein \Rightarrow wird automatisch auf ein doppelt so großes umgeschaltet
+	  - ist das interne Array zu groß, bleiben unbenutzt Specherzellen als Reserve
+	- Verhalten bei push_back():
+	  1. nach REserve vorhanden: lege neues Element im eine unbenutze Speicherzelle \Rightarrow billig
+	  2. keine Reserve
+		 1. alloziiere neues statisches Array mit doppeler Kapazität
+		 2. kipiere die Daten aus altem ins neue Array
+		 3. gebe das alte Array frei
+		 4. gehe zum Anfang des Algorithmus, jetzt wieder Reserve vorhanden
+	- das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist
+	- Bespiel:
+	  #+BEGIN_SRC cpp
+	  std::vector<int> v;
+
+	  for(int i = 0; i < 32; i++) v.push_back(k);
+	  #+END_SRC
+	  |     k | capacity vor push_back() | capacity nach push_back() | size() | Reserve | #Umkopieren |
+	  |-------+--------------------------+---------------------------+--------+---------+-------------|
+	  |     0 |                        0 |                         1 |      1 |       0 |           0 |
+	  |     1 |                        1 |                         2 |      2 |       0 |           1 |
+	  |-------+--------------------------+---------------------------+--------+---------+-------------|
+	  |     2 |                        2 |                         4 |      3 |       1 |           2 |
+	  |     3 |                        4 |                         4 |      4 |       0 |           2 |
+	  |-------+--------------------------+---------------------------+--------+---------+-------------|
+	  |     4 |                        4 |                         8 |      5 |       3 |           4 |
+	  |   5-7 |                        8 |                         8 |      8 |       0 |           0 |
+	  |-------+--------------------------+---------------------------+--------+---------+-------------|
+	  |     8 |                        8 |                        16 |      9 |       7 |           8 |
+	  |  9-15 |                       16 |                        16 |     16 |       0 |           0 |
+	  |-------+--------------------------+---------------------------+--------+---------+-------------|
+	  |    16 |                       16 |                        32 |     17 |      15 |          16 |
+	  | 17-31 |                       32 |                        32 |     32 |       0 |           0 |
+	  - was kostet das:
+		- 32 Elemente einfügen = 32 Kopien extern \Rightarrow intern
+		- aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern \Rightarrow intern
+		- \Rightarrow im Durchschnitt sind pro Einfügung 2 Kopien nötig
+		- \Rightarrow dynamisches Array ist doppel so teuer sie das statische  \Rightarrow immer noch sehr effizient
+	- relevante Funktionen von std::vector
+	  #+BEGIN_SRC cpp
+	  v.size() // aktuelle Zahl der Elemente
+	  v.capacity() // aktuelle Zahl Speicherzellen
+	  assert(v.capacity() - v.size() >= 0) // Reserve
+	  v.resize(new_size) // ändert immer v.size(), aber v.capacity() nur wenn < new_size
+	  v.reserve(new_capacity) // änder v.size() nicht, aber v.capacity() falls new_capacity >= size
+	  v.shrink_to_fit() // == v.reserve/v.size()) Reseve ist danach 0, wenn Endgröße erreicht
+	  #+END_SRC
+	- wenn Reserve > size: capacity kann auch halbiert werden
+	- wichtige Container der c++ Standardbibilothek
+	- wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered_map
+	- std::set, std::unordered_set: Menge, jedes Element ist hächstens einmal enthalten zum Beispiel Duplikate
+	- std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push_back() und pop_back() bei std::vector
+	- std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
+	- std::deque ("double-ended queue") gleichzeitig stack und queue, puhs, pop_front(), pop_back()
+	- std::priority_queue, push() und pop() - Element mit höchster niedrigster Priorität (unser defined)

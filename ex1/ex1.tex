@@ -1,4 +1,4 @@
-% Created 2016-11-27 So 00:35
+% Created 2016-11-27 So 17:57
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -42,6 +42,22 @@
 }
 \usepackage{pgfplots}
 \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\theoremstyle{plain}
+\newtheorem{thm}{Satz}
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}{Bemerkung}
+\theoremstyle{remark}
+\newtheorem{conc}{Folgerung}
+\theoremstyle{remark}
+\newtheorem{ex}{Beispiel}
+\usepackage{etoolbox}
+\patchcmd{\thmhead}{(#3)}{#3}{}{}
+\renewcommand*{\proofname}{Beweis}
 \author{Robin Heinemann}
 \date{\today}
 \title{Experimentalphysik (H.-C. Schulz-Coulon)}
@@ -763,7 +779,9 @@ Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfe
 Für konservative Kraftfelder gilt
 \[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
 \begin{itemize}
-\item $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+\item jedem ort im Raum kannein Skalar, die potentielle Energei zugeordnet werden $\Rightarrow$ $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+\item wird bei der Verschiebung eines Körpers von Ort 1 nach Ort 2 Arbeit gegen eine konservative Kraft geleistet, so erhäht sich die potentielle einergei, das heißt $E_{pot}(2) > E_{pot}(1)$.
+\item Der Nullpunkt $E_{pot}(\v r)$ = 0\$ der potentiellen Energie ist frei wählbar, da allein die Differenz der Potentiellen Energei an zwei Punkten relevant ist.
 \end{itemize}
 \paragraph{homogenes Kraftfeld}
 \label{sec-4-9-4-1}
@@ -797,16 +815,19 @@ Potentielle Energie des Gravitationsfelder:
 \[E_{pot}^{grav} = -G\frac{mM}{r}\]
 \paragraph{d = 1}
 \label{sec-4-9-4-4}
+Zusammenhang zwischen konservativen Kraftfeld und potentieller Energie:
 \[E_{pot} = -\int F\d x\]
 \[\d E_{pot} = -F\d x\]
 \[-\frac{\d E_{pot}}{\d x} = F\]
 \paragraph{d = 3}
 \label{sec-4-9-4-5}
+Zusammenhang zwischen konservativen Kraftfeld und potentieller Energie:
 \[E_{pot} = -\int \v F\d\v r \rightarrow \v F = - "\frac{\d E_{pot}}{\d \v r}"\]
 Gesucht: Ableitung eines Vektors nach einem Skalar.
 Betrachte:\[\Delta E_{pot} = -\v F\Delta \v r = -(F_x \Delta x + F_y \Delta y + F_z \Delta z)\]
 \[\Delta E_{pot} = \frac{\partial E_{pot}}{\partial x} \Delta x + \frac{\partial E_{pot}}{\partial y} \Delta y + \frac{\partial E_{pot}}{\partial z} \Delta z\]
 \begin{align}
+Vergleich:
 \v F(x,y,z) &= - (\frac{\partial E_{pot}}{\partial x} \Delta x , \frac{\partial E_{pot}}{\partial y} \Delta y , \frac{\partial E_{pot}}{\partial z} \Delta z) \\
 &= -\grad E_{pot}
 \end{align}
@@ -834,8 +855,291 @@ Potential:
 \end{itemize}
 \section{Erhaltungssätze}
 \label{sec-5}
+\subsection{Energieerhaltung}
+\label{sec-5-1}
+Für konservative Kräfte gilt:
+\[\Delta E_{kin} = -\Delta E_{pot} = \int_1^2 \v F\d \v r\]
+das heißt: die kinetische Energei ergibt sich allein aus der Potentialdifferenz und ist unabhängig vom durchlaufenen Weg.
+\begin{align*}
+E_{kin}(2) - E_{kin}(1) = E_{pot}(1) - E_{pot}(2) \\
+E_{kin}(1) + E_{pot}(1) = E_{kin}(2) + E_{pot}(2) = \ldots =~\text{const} \\
+\end{align*}
+\subsubsection{Doppelbahn}
+\label{sec-5-1-1}
+\begin{align*}
+E_{pot}(1) = m\cdot g\cdot h \\
+E_{pot}(1) = E_{pot(2')} = 0 \\
+\rightarrow \\
+E_{kin}(2) = E_{kin}(2') = \frac{1}{2}m v^2 \\
+\end{align*}
+Bemerkung: Berechung von $v$ mit Newtonschen Gesetzen deutlich komplexer
+\subsubsection{Energieerhaltungssatz der Newtonschen Mechanik}
+\label{sec-5-1-2}
+\[E_{pot} + E_{kin} = E_{ges} = ~\text{const}\]
+$E_{ges}$ = mechanische Gesamtenergie \\
+    das heißt: In einem konservativen Kraftfeld ist due Summe aus potetieller und kinetischer Energie
+eines Massenpunktes zu jeder Zeit konstant
+
+Wichtig: gilt nur für konservative Kraftfelder (Beim Auftreten nicht-konservativer, dissipativer Kröfte wird
+mechanische Energie in Wärme umgewandelt)
+\subsubsection{Energiediagramme}
+\label{sec-5-1-3}
+Häufig: Potentielle Energie abhängig von Ort $x$ oder Abstand $r$ \\
+    Hilfreich: Diskussion mittel Energiediagramm
+\paragraph{Kugelbahn}
+\label{sec-5-1-3-1}
+\begin{itemize}
+\item Abhängig von $E_{ges}$ kann sich die Kugel nur in bestimmten Bereichen aufhalten
+\item Gleichgewichtslagen: Kugel rught, es wirken keine Kräfte, das heißt
+\[F = -\dd{E_{pot}}{x} = 0, ~\text{bzw}~ \v F = -\grad E_{pot} = 0\]
+\end{itemize}
+
+Drei Fälle:
+\begin{enumerate}
+\item Stabiles bzw. Metastabiles Gleichgewicht: Potentialkurve hat ein Minimum
+\item labiles Gleichgewicht: Potentialkurve hat ein Maximum
+\item Indifferentes Gleichgeweicht: Flacher Verlauf der Potentialkurve
+\end{enumerate}
+\paragraph{Lennard-Jones-Potential}
+\label{sec-5-1-3-2}
+Potienial zur Beschreibung von molekularen Bindugen
+\[E_{pot} = V_0 (\frac{r}{r_0})^{-12} - 2(\frac{r}{r_0})^{-6}\]
+(Dipol-Dipol-Wchselwirkung, Van-der-Waals Kräfte)
+\paragraph{Mechanischer Verstärker}
+\label{sec-5-1-3-3}
+\[E_{pot}' = m g h = \underarrow[\rho]{Dichte} \overarrow[(a b c)]{Volumen} g h\]
+mit $h = \frac{1}{2}c$ \\
+     Fallender Dominostein: $E_{pot}  \to E_{kin}$ \\
+     Startposition: (Meta)stabiles Gleichgewicht \\
+     das heißt: Dominosteine müssen über einen Potentialberg angehoben werden. Danach ist die kinetische Energie
+ausreichend, um den nächsten Stein über Potentialschwelle zu heben.
+Verstärkungsfaktor: \\
+     Skalierung zwischen den Steinen: Alle Längen $\times \sqrt{2}$ \\
+     Potentielle Energie für Stein $m$:
+\begin{align*}
+E_{pot} &= \rho(a^{(n)}b^{(n)}c^{(n)}) h^{(n)} g = (\sqrt{2})^4 E_{pot}^{(n-1)} \\
+E_{pot}^{(1)} &= m g h \\
+\Rightarrow E_pot^{(13)} &= 4^{12} E_{pot}^{(1)} \\
+\intertext{$\Rightarrow$ Verstärkungsfaktor $\approx \SI{1.7e7}{}$}
+\end{align*}
+\section{Systeme von Massenpunkten}
+\label{sec-6}
+Bisher: Bewegung einzelner Massenpunkte. \\
+  Jetzt: Betrachte Systeme von Massenpunkten. \\
+  Man unterscheidet:
+\begin{itemize}
+\item Innere Kräfte: Kräfte, die zwischen den Massenpunkten eines Systems wirken.
+\item Äußere Kräfte: Kräfte, die von außen auf das System einwirken
+\end{itemize}
+\subsection{Beschreibung eines Systems von Massenpunkten}
+\label{sec-6-1}
+$\v r_1$: Ortsvektor zum Massenpunkt $i$ \\
+   $m_i$: Masse des Massenpunktes $i$ \\
+   $[i = 1,\ldots, n]$ \\
+   Gesamtmasse:
+\[M = \sum_{i = 1}^n m_i\]
+\begin{defn}[Schwerpunkt]
+\begin{align*}
+\v r_s = \frac{\sum m_i \v r_i}{\sum m_i} = \frac{1}{M} \sum_{i = 1}^n m_i \v r_i \\
+\v r_s = \frac{1}{M} \int_v \v r\d m = \frac{1}{M} \int_v \v r \rho(\v r) \d V
+\end{align*}
+\end{defn}
+\begin{ex}[System zweier Massenpunkte]
+\begin{align*}
+\v r_s &= \frac{m_1 \v r_1 + m_2 \v r_2}{m_1 + m_2}\quad s_1, s_2 = ? \\
+\v r_s &= \v r_1 + \lambda_s(\v r_1 - \v r_1) \\
+&= (1 - \lambda_s) \v r_1 + \lambda_s \v r_2 \\
+&= \underbrace{\frac{m_1}{m_1 + m_2}}_{= 1 - \lambda_s} \v r_1 +\underbrace{\frac{m_2}{m_1 + m_2}}_{= \lambda_s} \v r_2 \\
+\Rightarrow S_1 = \frac{m_2}{m_1 + m_2}, S_2 = \frac{m_1}{m_1 + m_2} \wedge \frac{S_1}{S_2} = \frac{m_2}{m_2} \\
+\end{align*}
+Das heißt: Das Verhältnis $\frac{S_1}{S_2}$ ist umgekehrt proportional zum Massenverhältnis $\frac{m_1}{m_2}$.
+\end{ex}
+\begin{ex}[Schwerpunkt Erde-Sonne]
+\begin{align*}
+M_E = \SI{6e21}{\kilo\gram}, M_S = \SI{2e30}{\kilo\gram} \\
+X_S = \frac{M_E X_E + M_S 0}{M_E + M_S} = \SI{4.5e5}{\meter}
+\intertext{Vergleich mit Sonnenradius $\SI{7e8}{\meter}$ Schwerpunkt praktisch im Sonenmittelpunkt}
+\end{align*}
+\end{ex}
+\subsubsection{Bewegung des Schwerpunkts}
+\label{sec-6-1-1}
+Geschwindigkeit:
+\[\v v_s = \dd{\v r_s}{t} = \frac{1}{M} \sum_{i = 1}^n m_1 \dd{\v r_i}{t} = \frac{1}{M} \sum_{i = 1}^n m_i \v v_i = \frac{1}{M}\sum_{i = 1}^n \v p_i\]
+$\v p_i$: Impuls des einzelnen Massenpunktes
+\begin{defn}[Schwerpunktimpuls]
+\[\v p_s = \sum_{i = 1}^{n}\v p_i = \sum_{i = 1}^{n} m_i \v v_i = M \v v_s\]
+das heißt: Schwerpunktimpuls ergibt sich aus der Summe der Einzelimpulse
+\end{defn}
+Frage: Wie bewegt sich ein System von Massepunkten under Einfluß von Kräften? \\
+    Es gilt:
+\[\dd{\v p_i} = \underarrow[\v F_i]{äußere Kraft} + \sum_{i\neq j}^{}\overarrow[\v F_{i j}]{innere Kraft}, \v F_{ij} = - \v F_{j i}\]
+$\Rightarrow$: Änderung des Schwerpukntimpulses $\v p_s$:
+\[ \dd{\v p_s}{t} = \sum_{i = 1}^{n}\dot{\v p_i} = \sum_{i = 1}^{n}\v F_i + \underbrace{ \sum_{i} \sum_{i\neq j} \v F_{ij}}_{= 0} = \sum_{i = 1}^{n} \v F_i\]
+das heißt: die Impulsänderung des Schwerpunktes ergibt sich aus der Summe der äußeren Kräfte:
+\begin{enumerate}
+\item Newtonsches Gesetz für Systeme von Massenpunkten.
+\end{enumerate}
+\[\dot{\v p_s} = M \v a_s = \sum_{i = 1}^{n}\v F_i\]
+Hierbei: $\v a_s = \dot{\v v_s} = \frac{1}{M} \sum m_i \ddot{\v r_i} = \frac{1}{M} \sum m_i \v a_i$
+
+\begin{defn}[Allgemeiner Impulssatz]
+Das Schwerpunkt eines beliebiges Systems ovn Massenpunkten $I$ bewegt sich so, als sei er ein Körper mit der Gesamtmasse $M = \sum m_i$
+\end{defn}
+\begin{defn}[Abgeschlossenes System]
+Ein abgeschlossenes System ist ein System auf das keine äußeren Kräfte einwirken, das heißt:
+\[\sum F_i = 0\]
+\end{defn}
+
+Der Massenschwerpunkt eines abgeschlossenen Systems hat einen zeitlich konstanten Impuls, das heißt
+\[\v p_s = \sum_{i = 1}^{n} \v p_i =~\text{const}~\]
+($\Rightarrow$ Impulserhaltung!!)
+\subsubsection{Raketenantrieb}
+\label{sec-6-1-2}
+das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
+    Beobachtung: Abstoßen einer Masse kann zum Antreib verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
+
+Betrachte Rakete:
+Impulssatz:
+\begin{align*}
+p(t) = p(t + \Delta t) \\
+\intertext{Zeitpunkt $t$}
+p(t) = (m + \Delta m) v \\
+\intertext{Zeitpunkt $t + \Delta t$}
+p(t + \Delta t) 0 m(v + \Delta v) + \Delta m(v - v_B) \\
+\Rightarrow m v + \Delta v = m v + m \Delta v + \Delta m v - \Delta m v_B \\
+m \Delta v - \Delta m v_B = 0
+\intertext{Änderung Blickwinkel:}
+m \Delta v + \Delta m v_b = 0 \\
+\intertext{Wichtig: Masse $m$ und Massenänderung $\d m$ mässen sich auf gleiche Referenz beziehen. Damit folgt:}
+\d v = - v_b \frac{\d m}{m} \\
+\intertext{Integration:}
+\int_{v_1}^{v_2}\d v = -v_B \int_{m_1}^{m_2} \frac{1}{m} \d m, m_1 > m_2, v_B = ~\text{const} \\
+v_2 - v_1 = -v_B \cdot \big[\ln m\big]_{m_1}^{m_2} = v_B (\ln m_1 - \ln m_2) = v_B \ln{ \frac{m_1}{m_2}} > 0
+\intertext{Wähle Anfangsbedingungen:}
+v_1 = 0, m_1 0 m_0 = m(t = 0), m_2 = m(t) \\
+\intertext{$\Rightarrow$ Raketengleichung für kräftefreie Rakete}
+v(t) = v_B \ln \frac{m_0}{m(t)}
+\end{align*}
+das heißt: Die Endgeschwindkigkeit einer Rakete wird duch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
+
+Für die nicht kräftefreie Rakete gilt:
+\[m(t) \dd{\v v(t)}{t} = -\dd{m(t)}{t} \v v_B + \v F\]
+Allgemeine Raketengleichung (ohne Herleitung)
+
+\begin{remark}
+Vorsicht bei der Anwendung des zweiten Newtonschen Gesetzen $\v F = \dot{\v p}$. Naiver Ansatz für kräftefreie Rakete:
+\[\dd{m v}{t} = \dd{m}{t} v + m \dd{v}{t} = 0\]
+Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksicht
+
+Korrekter Ansatz:
+\[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \Rightarrow m \dd{v}{t} + v_B \dd{m}{t} = 0\]
+das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigketi verschwindet.
+\end{remark}
+\section{Stöße}
+\label{sec-7}
+Für ein abgeschlossenens System gilt: (keine äußere Kräfte) \\
+  Impulserhaltung:
+\[\sum_{i = 1}^{n} \v p_i = \sum_{i = 1}^{n} \v p_i'\]
+Energieerhaltung:
+\[\sum_{i = 1}^{n} E_i = \sum_{i = 1}^{n} E_i'\]
+\subsection{Kollinearer elatischer Stoß}
+\label{sec-7-1}
+Es gilt:
+\begin{align*}
+m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2' \\
+\frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 = \frac{1}{2} m_1 v_1^{\prime 2} + \frac{1}{2} m_2 v_2^{\prime 2} \\
+\intertext{$\Rightarrow$ Lösung (ohne Herleitung)}
+v_1' = \frac{v_1(m_1 - m_2) + 2m_2 v_2}{m_1 + m_2} \\
+v_2' = \frac{v_2(m_2 - m_1) + 2m_1 v_1}{m_1 + m_2}
+\end{align*}
+Geschwindigkeit nach Kollinearer elastisch Stoß
+Tipp zur Herleitung: Betrachte Bewegung relativ zur Schwerpunktsbewegung (siehe z.B. Demtröders)
+
+Hier Betrachtung von Spezialfällen. \\
+   Betrachtung von Spezialfällen ist immer wichtig! Hilft beim Verständnis physikalischer Zusammenhänge
+\begin{enumerate}
+\item $m_1 = m_2 = m, r_1 > 0, v_2 = 0$
+      \[v_1' = \frac{2 m v_2}{2 m} = v_2 = 0, v_2' = \frac{2m r_1}{2 m} = v_1\]
+\item $m_1 = m, m_2 = 2 m, v_1 > 0, v_2 > 0$
+\begin{align*}
+v_1' = \frac{v_1 (- m)}{3 m} = - \frac{1}{3}v_1 \\
+v_2' = \frac{2m v_1}{3 m} = \frac{2}{3}v_1 \\
+\end{align*}
+\item $m_1 = m, m_2 = 3m, v_1 = v > 0, v_2 = -v$
+\begin{align*}
+v_1' = \frac{v(m - 2m) - 2(3m) v}{4m} = \frac{v(-2m - 6m)}{4m} = -2v \\
+v_2' = \frac{-v(2m - m) + 2mv}{2m} = \frac{v(-2m + 2m)}{3m} = 0
+\end{align*}
+\item $m_1 = m, m_2 \to \infty, v_1 = v, v_2 = 0$
+\begin{align*}
+v_1' = \frac{v(-m_2)}{m_2} = -v \tag{da $m_1$ vernachlässigbar} \\
+v_2' = \frac{2 m_1 v}{m_2} = 0 \tag{da $m_1 \ll m_2$}
+\end{align*}
+\item $m_1 = m, m_2$ sehr groß!, $v_1 = 0, v_2 = v$
+      \[v_1' = \frac{2m_2 v}{m_2} = 2v,\quad v_2' = \frac{v m_2}{m_2} = v\]
+\end{enumerate}
+\subsection{Betrachtung im Schwerpunktsystem}
+\label{sec-7-2}
+Es gilt:
+\begin{align*}
+v_s = \frac{m_1 v_1 + m_2 v_2}{m_1 + m_2} \\
+\intertext{Geschwindigkeiten im Schwerpunktsystem:}
+v_1^\ast = v_1 - v_s = \frac{m_2 v_1 - m_2 v_2}{m_1 + m_2} \\
+v_2^\ast = v_2 - v_s = \frac{m_1 v_2 - m_1 v_1}{m_1 + m_2} \\
+\intertext{daraus folgt:}
+p_1^\ast = m_1 v_1^\ast = \frac{m_1 m_2}{m_1 + m_2} (v_1 - v_2) \\
+p_2^\ast = m_2 v_2^\ast = \frac{m_1 m_2}{m_1 + m_2} (v_2 - v_1) \\
+\intertext{Das heißt vor dem Stoß gilt:}
+p_1^\ast = -p_2^\ast
+E_{kin,1}^\ast = \frac{1}{2} m(v_1^\ast)^2 = \frac{(p_1^\ast)^2}{2m_1}
+E_{kin,2}^\ast = \frac{(p_2^\ast)^2}{2m_2}
+\intertext{nach dem Stoß:}
+\intertext{Impulserhaltung:}
+p_s^\ast = p_1^\ast + p_2^\ast = p_1^{*\prime} + p_2^{ *\prime} = 0 \rightarrow p_1^{*\prime} = -p_2^{*\prime} \\
+\intertext{Energieerhaltung:}
+E_{ges}^\ast = E_{kin,1}^\ast + E_{kin,2}^\ast = E_{kin,1}^{\ast\prime} + E_{kin,2}^{\ast\prime} \\
+\intertext{Außerdem:}
+p_1^{\ast\prime} = \frac{p_1^\ast (m_1 - m_2) + 2 m_1 p_2^\ast}{m_1 + m_2} = -p_1^\ast, p_2^{\ast\prime} = -p_2^{\ast}
+\intertext{daraus folgt:}
+E_{kin,1}^{\ast\prime} = E_{kin,1}^\ast \\
+E_{kin,2}^{\ast\prime} = E_{kin,2}^\ast \\
+\end{align*}
+Im Schwerpunktsystem findet bei elastischen Stößen keine Energieübertragung statt. Aber: Impulse werden ausgetauscht
+\subsubsection{Nicht-zentraler, elatischer Stoß im Schwerpunktsystem}
+\label{sec-7-2-1}
+\begin{align*}
+\v p_s^\ast = 0, \v p_1^\ast = -\v p_2^\ast \\
+\v p_s^{\ast\prime} = -\v p_2^{\ast\prime}, \abs{\v p_1^\ast = \abs{\v p_1^{\ast\prime}}} \\
+\end{align*}
+Im Schwerpunktsystem sind für ein abgeschlossenes System zweier Massepunkte ein- und auslaufende kollinear und vom Betrag her gleich
+\subsection{Inelastische Stöße}
+\label{sec-7-3}
+Betrachte $2$ Kugeln
+\begin{itemize}
+\item Massen: $m_1, m_2$
+\item Geschwindigkeit: $v_1 0 v, v_2 = 0$
+\item Impulserhaltung:
+\begin{align*}
+m_1 v &= (m_1 +  m_2) v' \\
+v' &= \frac{m}{m_1 + m_2} v
+\end{align*}
+\item Energiebilanz:
+\[E_{kin} = \frac{1}{2} m_1 v^2, E_{kin}' = \frac{1}{2} (m_1 + m_2) (\frac{m_1}{m_1 + m_2})^2 v^2 = \frac{1}{2} \frac{m_1^2}{m_1 + m_2}v^2 < E_{kin}\]
+Beim inelastischen Stoß geht mechanische Energei verloren, sie wird beim Stoß in andere Energieformen (zum Beispiel Wärme) umgewandelt. (siehe Thermodynamik)
+\end{itemize}
+Interessant:
+Betrachtung im Schwerpunktsystem.
+\begin{align*}
+m_1 v_1^\ast - m_2 v_2^\ast = (m_1 + m_2) v^{\ast\prime} \\
+\intertext{da $p_1^\ast = -p_2^\ast$}
+(m_1 + m_2) v^{\ast\prime} = 0 \\
+E_{kin}^{\ast\prime} = \frac{1}{2}(m_1 + m_2)(v^{\ast\prime})^2 = 0
+\end{align*}
+Im Schwerpunktsystem findet beim inelastischen Stoß eine vollständige Umwandlung der kinetischen Energie statt
+Allgemein:
 \begin{align*}
 \intertext{falls $\v F_{außen} =0$}
+E_{kin,1} + E_{kin,2} = E_{kin,1}' + E_{kin,2}' + Q
 \sum \v p_i &= \sum \v p'_i = \text{const} \\
 \sum E_{kin,i} &= \sum E'_{kin,i} + Q \\
 Q &= 0 \tag*{elastisch} \\
@@ -843,6 +1147,106 @@ Q &> 0 \tag*{inelastisch} \\
 Q &x 0 \tag*{superelastisch} \\
 \end{align*}
 \section{Mechanik des starren Körper}
-\label{sec-6}
+\label{sec-8}
+\begin{defn}[Starrer Körper]
+System von Massenpunkten mit festen, nicht veränderlichen Abständen. \\
+  Idealisierung!
+\end{defn}
+Es gilt:
+\begin{align*}
+\intertext{Volumen:}
+V = \lim_{\Delta V_i \to 0} \sum \Delta V_i = \int \d v
+\intertext{Masse:}
+M = \lim_{\Delta m_i \to 0} \sum \Delta m_i = \int \d m = \int \rho(\v r) \d V
+\intertext{Schwerpunkt:}
+\v r_s = \frac{1}{M}\int \v r \d m = \frac{1}{M} \int \v r \rho(\v r) \d V
+M = \int \rho \d V = \int \rho \d^3 r
+\end{align*}
+\begin{ex}[Quader]
+\begin{align*}
+\v r_s &= \frac{1}{M} \int \v r \rho(\v r) \d V \\
+&= \frac{1}{M} \int_{0}^{a}\int_{0}^{b}\int_{0}^{c}\cvec{x;y;z} \rho \d x \d y \d z \\
+\intertext{Integration für jede einzelne Ortskomponente:}
+x_s = \frac{1}{m} \int_{0}^{a}\int_{0}^{b}\int_{0}^{c} x \rho \d x \d y \d z = \frac{1}{M} \rho b c \int_{0}^{b} x\d x = \frac{1}{M}\rho a b c \frac{1}{2}a = \frac{1}{2}a \\
+y_s = \ldots = \frac{1}{2}b \\
+z_s = \ldots = \frac{1}{2}c \\
+\v r_s = \frac{1}{2} \cvec{a;b;v}
+\end{align*}
+\end{ex}
+\subsection{Bewegung des starren Körpers}
+\label{sec-8-1}
+Es gilt:
+\begin{align*}
+\v r_{si} = \v r_i - \v r_s \rightarrow \dd{\v r_{si}}{t} = \v v_{si} = \v v_i - \v v_s \\
+\intertext{Mit $\abs{\v r_{si}} =$ const beziehungsweise $\v r_{si}^2 = $ const (starrer Körper)}
+\dd{}{t}(\v r_{si}^2) = 2\v r_{si} \v v_{si} = 0 \rightarrow \v v_{si} \perp \v r_{si}
+\intertext{da $\v v_{si} \perp \v r_{si}$ gilt: Betrachte Bewegung in der von $\v v_{si},\v r_{si}$ aufgespannten Ebene $\rightarrow$ Kreisbewegung!, Das heißt:}
+\v v_{si} = \v \omega \times \v r_{si} \\
+\intertext{wobei im Allgemeinen $\v \omega$ zeitabhängig sein kann.}
+\intertext{Mit $\v v_{si} = \v v_i - \v v_s$ folgt:}
+\v v_i = \v v_s + (\v \omega \times \v r_{si})
+\end{align*}
+Achtung: $\v \omega = \v \omega(t)$ muss nicht raumfest sein.
+
+Die Bewegung eines starren Körpers lässt sich in eine Translationsbewegung und eine Rotation um den Schwerpunkt zerlegen
+\begin{itemize}
+\item 3 Translationsfreiheitsgrade
+\item 3 Rotationsfreiheitsgrade
+\end{itemize}
+\subsection{Drehmoment und Kräftepaare}
+\label{sec-8-2}
+Frage: Wie versetzt man einen Körper in Rotation? \\
+\begin{ex}[Balkenwaage]
+Beobachtung: Kraft mit Angriffspunkt im Abstand $l$, bewirkt Drehbewegung \\
+   Es gilt das Hebelgesetz:
+\[F_1 l_1 = F_2 l_2\]
+Hebelarm: Abstand zwischen Drehachse und Angriffspunkt der Kräfte $\v F_1, \v F_2$
+\end{ex}
+Beobachtung: \\
+   Kraft $\v F_\parallel$ parallel zum Hebelarm bewirkt keine Drehung, nur Kraft $\v F_\perp$ senkrecht zur Verbindungslinie zwischen Angriffspunkt und Drehachse führt zur Rotation. \\
+   Richtung von $\v F_\perp$ bestimmt Drehsinn
+
+\begin{defn}[Drehmoment]
+\[\v M := \v r \times \v F\]
+Gibt Drehsinn und Stärke der Kraftwirkung an.
+\[M = r F \sin(\angle (\v r, \v F))\]
+\end{defn}
+\subsubsection{Drehmoment und Schwerpunkt}
+\label{sec-8-2-1}
+Betrachte starren Körper aus zwei Massenpunkten plus masselose Verbindung
+\begin{align*}
+\v M_1 &= \v r_1 \times \v F_1 \\
+\v M_2 &= \v r_2 \times \v F_2 \\
+\v M_1 &= r_1 m_1 g \sin{\alpha_1} \v l_z \\
+\v M_2 &= - r_2 m_2 g \sin{\alpha_2} \v l_z \\
+&= -r_2 m_2 g \sin{\alpha_1} \v l_z \\
+\v M_{tot} &= \v M_1 + \v M_2 = (r_1 m_1 - r_2 m_2) g \sin{\alpha_1} \v l_z \\
+\intertext{vektoriell:}
+\v M_{tot} &= \v M_1 + \v M_2 = \v r_1 \times m_2 \v g + \v r_2 \times m_2 \v g = (\v r_1 m_1 + \v r_2 m_2) \times \v g \\
+\intertext{Beliebiger Körper:}
+\v M_{tot} &= \sum \v M_i = \sum m_i \v r_i \times \v g \\
+(\sum m_i \v r_i) \times \v g = m_{ges} \v r_s \times \v g = \v r_s \times \v F \\
+\end{align*}
+Das Gewicht eines starren Körpers greift immer im Schwerpunkt an.
+Bei Aufhängung eines Körpers im Schwerpunkt ist das resultierende Drehmoment auf Grund der Schwerkraft Null. Grund: Im Schwerpunkt gilt: $\v r_s = 0, \v M_{tot} = \v r_s \times \v F_s = 0$
+\subsubsection{Kräftepaare}
+\label{sec-8-2-2}
+Frage: Wirkung einer Kraft $\v F_1$ auf einen starren Körper. \\
+    Lösungsansatz: \\
+    Einführung der sich gegenseitig aufgebenden Kräfte $\v F_2$ und $\v F_3$ im Schwerpunkt $S$. Ändert nichts! \\
+    Zerlegung der Bewegung: \\
+    Translation durch Kraft $\v F_2$ mit Angriffspunkt $S$. \\
+    Rotation durch Kräftepaar $(\v F_1, \v F_3)$ mit $F_1 = F_3, \v M = \v r \times \v F_1$
+
+Die Wokrung aller Kräfte auf einen starren Körper lässt sich durch
+\begin{align*}
+\v F &= \sum \v F_i \tag{Gesamtkraft (Gesamtkraft)} \\
+\v M &= \sum F_{si} \times \v F_i = \sum M_i \tag{Gesamtdrehmoment (Rotation)}
+\end{align*}
+beschreiben. Dabei greift $\v F$ im Schwerpunkt an
+
+Wirkung von Kräftepaaren: Reine Rotation. Es gilt:
+
+\[\v M = \v r_1 \times \v F - \v r_2 \times \v F = (\v r_1 - \v r_2)\times \v F = \v r_{12} \times \v F\]
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -43,3 +43,4 @@
 #+INCLUDE: "/home/robin/study/lectures/ipi/stack_model.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/references.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/container.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/ipi/itertators.org" :minlevel 1

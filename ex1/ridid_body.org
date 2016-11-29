@@ -1,1 +1,99 @@
 * Mechanik des starren Körper
+  #+ATTR_LATEX: :options [Starrer Körper]
+  #+begin_defn latex
+  System von Massenpunkten mit festen, nicht veränderlichen Abständen. \\
+  Idealisierung!
+  #+end_defn
+  Es gilt:
+  \begin{align*}
+  \intertext{Volumen:}
+  V = \lim_{\Delta V_i \to 0} \sum \Delta V_i = \int \d v
+  \intertext{Masse:}
+  M = \lim_{\Delta m_i \to 0} \sum \Delta m_i = \int \d m = \int \rho(\v r) \d V
+  \intertext{Schwerpunkt:}
+  \v r_s = \frac{1}{M}\int \v r \d m = \frac{1}{M} \int \v r \rho(\v r) \d V
+  M = \int \rho \d V = \int \rho \d^3 r
+  \end{align*}
+  #+ATTR_LATEX: :options [Quader]
+  #+begin_ex latex
+  \begin{align*}
+  \v r_s &= \frac{1}{M} \int \v r \rho(\v r) \d V \\
+  &= \frac{1}{M} \int_{0}^{a}\int_{0}^{b}\int_{0}^{c}\cvec{x;y;z} \rho \d x \d y \d z \\
+  \intertext{Integration für jede einzelne Ortskomponente:}
+  x_s = \frac{1}{m} \int_{0}^{a}\int_{0}^{b}\int_{0}^{c} x \rho \d x \d y \d z = \frac{1}{M} \rho b c \int_{0}^{b} x\d x = \frac{1}{M}\rho a b c \frac{1}{2}a = \frac{1}{2}a \\
+  y_s = \ldots = \frac{1}{2}b \\
+  z_s = \ldots = \frac{1}{2}c \\
+  \v r_s = \frac{1}{2} \cvec{a;b;v}
+  \end{align*}
+  #+end_ex
+** Bewegung des starren Körpers
+   Es gilt:
+   \begin{align*}
+   \v r_{si} = \v r_i - \v r_s \rightarrow \dd{\v r_{si}}{t} = \v v_{si} = \v v_i - \v v_s \\
+   \intertext{Mit $\abs{\v r_{si}} =$ const beziehungsweise $\v r_{si}^2 = $ const (starrer Körper)}
+   \dd{}{t}(\v r_{si}^2) = 2\v r_{si} \v v_{si} = 0 \rightarrow \v v_{si} \perp \v r_{si}
+   \intertext{da $\v v_{si} \perp \v r_{si}$ gilt: Betrachte Bewegung in der von $\v v_{si},\v r_{si}$ aufgespannten Ebene $\rightarrow$ Kreisbewegung!, Das heißt:}
+   \v v_{si} = \v \omega \times \v r_{si} \\
+   \intertext{wobei im Allgemeinen $\v \omega$ zeitabhängig sein kann.}
+   \intertext{Mit $\v v_{si} = \v v_i - \v v_s$ folgt:}
+   \v v_i = \v v_s + (\v \omega \times \v r_{si})
+   \end{align*}
+   Achtung: $\v \omega = \v \omega(t)$ muss nicht raumfest sein.
+
+   Die Bewegung eines starren Körpers lässt sich in eine Translationsbewegung und eine Rotation um den Schwerpunkt zerlegen
+   - 3 Translationsfreiheitsgrade
+   - 3 Rotationsfreiheitsgrade
+** Drehmoment und Kräftepaare
+   Frage: Wie versetzt man einen Körper in Rotation? \\
+   #+ATTR_LATEX: :options [Balkenwaage]
+   #+begin_ex latex
+   Beobachtung: Kraft mit Angriffspunkt im Abstand $l$, bewirkt Drehbewegung \\
+   Es gilt das Hebelgesetz:
+   \[F_1 l_1 = F_2 l_2\]
+   Hebelarm: Abstand zwischen Drehachse und Angriffspunkt der Kräfte $\v F_1, \v F_2$
+   #+end_ex
+   Beobachtung: \\
+   Kraft $\v F_\parallel$ parallel zum Hebelarm bewirkt keine Drehung, nur Kraft $\v F_\perp$ senkrecht zur Verbindungslinie zwischen Angriffspunkt und Drehachse führt zur Rotation. \\
+   Richtung von $\v F_\perp$ bestimmt Drehsinn
+
+   #+ATTR_LATEX: :options [Drehmoment]
+   #+begin_defn latex
+   \[\v M := \v r \times \v F\]
+   Gibt Drehsinn und Stärke der Kraftwirkung an.
+   \[M = r F \sin(\angle (\v r, \v F))\]
+   #+end_defn
+*** Drehmoment und Schwerpunkt
+	Betrachte starren Körper aus zwei Massenpunkten plus masselose Verbindung
+	\begin{align*}
+	\v M_1 &= \v r_1 \times \v F_1 \\
+	\v M_2 &= \v r_2 \times \v F_2 \\
+	\v M_1 &= r_1 m_1 g \sin{\alpha_1} \v l_z \\
+	\v M_2 &= - r_2 m_2 g \sin{\alpha_2} \v l_z \\
+	&= -r_2 m_2 g \sin{\alpha_1} \v l_z \\
+	\v M_{tot} &= \v M_1 + \v M_2 = (r_1 m_1 - r_2 m_2) g \sin{\alpha_1} \v l_z \\
+	\intertext{vektoriell:}
+	\v M_{tot} &= \v M_1 + \v M_2 = \v r_1 \times m_2 \v g + \v r_2 \times m_2 \v g = (\v r_1 m_1 + \v r_2 m_2) \times \v g \\
+	\intertext{Beliebiger Körper:}
+	\v M_{tot} &= \sum \v M_i = \sum m_i \v r_i \times \v g \\
+	(\sum m_i \v r_i) \times \v g = m_{ges} \v r_s \times \v g = \v r_s \times \v F \\
+	\end{align*}
+	Das Gewicht eines starren Körpers greift immer im Schwerpunkt an.
+	Bei Aufhängung eines Körpers im Schwerpunkt ist das resultierende Drehmoment auf Grund der Schwerkraft Null. Grund: Im Schwerpunkt gilt: $\v r_s = 0, \v M_{tot} = \v r_s \times \v F_s = 0$
+*** Kräftepaare
+	Frage: Wirkung einer Kraft $\v F_1$ auf einen starren Körper. \\
+	Lösungsansatz: \\
+	Einführung der sich gegenseitig aufgebenden Kräfte $\v F_2$ und $\v F_3$ im Schwerpunkt $S$. Ändert nichts! \\
+	Zerlegung der Bewegung: \\
+	Translation durch Kraft $\v F_2$ mit Angriffspunkt $S$. \\
+	Rotation durch Kräftepaar $(\v F_1, \v F_3)$ mit $F_1 = F_3, \v M = \v r \times \v F_1$
+
+	Die Wokrung aller Kräfte auf einen starren Körper lässt sich durch
+	\begin{align*}
+	\v F &= \sum \v F_i \tag{Gesamtkraft (Gesamtkraft)} \\
+	\v M &= \sum F_{si} \times \v F_i = \sum M_i \tag{Gesamtdrehmoment (Rotation)}
+	\end{align*}
+	beschreiben. Dabei greift $\v F$ im Schwerpunkt an
+
+	Wirkung von Kräftepaaren: Reine Rotation. Es gilt:
+
+	\[\v M = \v r_1 \times \v F - \v r_2 \times \v F = (\v r_1 - \v r_2)\times \v F = \v r_{12} \times \v F\]

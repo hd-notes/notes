@@ -1,0 +1,102 @@
+* Stöße
+  Für ein abgeschlossenens System gilt: (keine äußere Kräfte) \\
+  Impulserhaltung:
+  \[\sum_{i = 1}^{n} \v p_i = \sum_{i = 1}^{n} \v p_i'\]
+  Energieerhaltung:
+  \[\sum_{i = 1}^{n} E_i = \sum_{i = 1}^{n} E_i'\]
+** Kollinearer elatischer Stoß
+   Es gilt:
+   \begin{align*}
+   m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2' \\
+   \frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 = \frac{1}{2} m_1 v_1^{\prime 2} + \frac{1}{2} m_2 v_2^{\prime 2} \\
+   \intertext{$\Rightarrow$ Lösung (ohne Herleitung)}
+   v_1' = \frac{v_1(m_1 - m_2) + 2m_2 v_2}{m_1 + m_2} \\
+   v_2' = \frac{v_2(m_2 - m_1) + 2m_1 v_1}{m_1 + m_2}
+   \end{align*}
+   Geschwindigkeit nach Kollinearer elastisch Stoß
+   Tipp zur Herleitung: Betrachte Bewegung relativ zur Schwerpunktsbewegung (siehe z.B. Demtröders)
+
+   Hier Betrachtung von Spezialfällen. \\
+   Betrachtung von Spezialfällen ist immer wichtig! Hilft beim Verständnis physikalischer Zusammenhänge
+   1. $m_1 = m_2 = m, r_1 > 0, v_2 = 0$
+	  \[v_1' = \frac{2 m v_2}{2 m} = v_2 = 0, v_2' = \frac{2m r_1}{2 m} = v_1\]
+   2. $m_1 = m, m_2 = 2 m, v_1 > 0, v_2 > 0$
+	  \begin{align*}
+	  v_1' = \frac{v_1 (- m)}{3 m} = - \frac{1}{3}v_1 \\
+	  v_2' = \frac{2m v_1}{3 m} = \frac{2}{3}v_1 \\
+	  \end{align*}
+   3. $m_1 = m, m_2 = 3m, v_1 = v > 0, v_2 = -v$
+	  \begin{align*}
+	  v_1' = \frac{v(m - 2m) - 2(3m) v}{4m} = \frac{v(-2m - 6m)}{4m} = -2v \\
+	  v_2' = \frac{-v(2m - m) + 2mv}{2m} = \frac{v(-2m + 2m)}{3m} = 0
+	  \end{align*}
+   4. $m_1 = m, m_2 \to \infty, v_1 = v, v_2 = 0$
+	  \begin{align*}
+	  v_1' = \frac{v(-m_2)}{m_2} = -v \tag{da $m_1$ vernachlässigbar} \\
+	  v_2' = \frac{2 m_1 v}{m_2} = 0 \tag{da $m_1 \ll m_2$}
+	  \end{align*}
+   5. $m_1 = m, m_2$ sehr groß!, $v_1 = 0, v_2 = v$
+	  \[v_1' = \frac{2m_2 v}{m_2} = 2v,\quad v_2' = \frac{v m_2}{m_2} = v\]
+** Betrachtung im Schwerpunktsystem
+   Es gilt:
+   \begin{align*}
+   v_s = \frac{m_1 v_1 + m_2 v_2}{m_1 + m_2} \\
+   \intertext{Geschwindigkeiten im Schwerpunktsystem:}
+   v_1^\ast = v_1 - v_s = \frac{m_2 v_1 - m_2 v_2}{m_1 + m_2} \\
+   v_2^\ast = v_2 - v_s = \frac{m_1 v_2 - m_1 v_1}{m_1 + m_2} \\
+   \intertext{daraus folgt:}
+   p_1^\ast = m_1 v_1^\ast = \frac{m_1 m_2}{m_1 + m_2} (v_1 - v_2) \\
+   p_2^\ast = m_2 v_2^\ast = \frac{m_1 m_2}{m_1 + m_2} (v_2 - v_1) \\
+   \intertext{Das heißt vor dem Stoß gilt:}
+   p_1^\ast = -p_2^\ast
+   E_{kin,1}^\ast = \frac{1}{2} m(v_1^\ast)^2 = \frac{(p_1^\ast)^2}{2m_1}
+   E_{kin,2}^\ast = \frac{(p_2^\ast)^2}{2m_2}
+   \intertext{nach dem Stoß:}
+   \intertext{Impulserhaltung:}
+   p_s^\ast = p_1^\ast + p_2^\ast = p_1^{*\prime} + p_2^{ *\prime} = 0 \rightarrow p_1^{*\prime} = -p_2^{*\prime} \\
+   \intertext{Energieerhaltung:}
+   E_{ges}^\ast = E_{kin,1}^\ast + E_{kin,2}^\ast = E_{kin,1}^{\ast\prime} + E_{kin,2}^{\ast\prime} \\
+   \intertext{Außerdem:}
+   p_1^{\ast\prime} = \frac{p_1^\ast (m_1 - m_2) + 2 m_1 p_2^\ast}{m_1 + m_2} = -p_1^\ast, p_2^{\ast\prime} = -p_2^{\ast}
+   \intertext{daraus folgt:}
+   E_{kin,1}^{\ast\prime} = E_{kin,1}^\ast \\
+   E_{kin,2}^{\ast\prime} = E_{kin,2}^\ast \\
+   \end{align*}
+   Im Schwerpunktsystem findet bei elastischen Stößen keine Energieübertragung statt. Aber: Impulse werden ausgetauscht
+*** Nicht-zentraler, elatischer Stoß im Schwerpunktsystem
+	\begin{align*}
+	\v p_s^\ast = 0, \v p_1^\ast = -\v p_2^\ast \\
+	\v p_s^{\ast\prime} = -\v p_2^{\ast\prime}, \abs{\v p_1^\ast = \abs{\v p_1^{\ast\prime}}} \\
+	\end{align*}
+	Im Schwerpunktsystem sind für ein abgeschlossenes System zweier Massepunkte ein- und auslaufende kollinear und vom Betrag her gleich
+** Inelastische Stöße
+   Betrachte $2$ Kugeln
+   - Massen: $m_1, m_2$
+   - Geschwindigkeit: $v_1 0 v, v_2 = 0$
+   - Impulserhaltung:
+	 \begin{align*}
+	 m_1 v &= (m_1 +  m_2) v' \\
+	 v' &= \frac{m}{m_1 + m_2} v
+	 \end{align*}
+   - Energiebilanz:
+	 \[E_{kin} = \frac{1}{2} m_1 v^2, E_{kin}' = \frac{1}{2} (m_1 + m_2) (\frac{m_1}{m_1 + m_2})^2 v^2 = \frac{1}{2} \frac{m_1^2}{m_1 + m_2}v^2 < E_{kin}\]
+	 Beim inelastischen Stoß geht mechanische Energei verloren, sie wird beim Stoß in andere Energieformen (zum Beispiel Wärme) umgewandelt. (siehe Thermodynamik)
+   Interessant:
+   Betrachtung im Schwerpunktsystem.
+   \begin{align*}
+   m_1 v_1^\ast - m_2 v_2^\ast = (m_1 + m_2) v^{\ast\prime} \\
+   \intertext{da $p_1^\ast = -p_2^\ast$}
+   (m_1 + m_2) v^{\ast\prime} = 0 \\
+   E_{kin}^{\ast\prime} = \frac{1}{2}(m_1 + m_2)(v^{\ast\prime})^2 = 0
+   \end{align*}
+   Im Schwerpunktsystem findet beim inelastischen Stoß eine vollständige Umwandlung der kinetischen Energie statt
+   Allgemein:
+   \begin{align*}
+   \intertext{falls $\v F_{außen} =0$}
+   E_{kin,1} + E_{kin,2} = E_{kin,1}' + E_{kin,2}' + Q
+   \sum \v p_i &= \sum \v p'_i = \text{const} \\
+   \sum E_{kin,i} &= \sum E'_{kin,i} + Q \\
+   Q &= 0 \tag*{elastisch} \\
+   Q &> 0 \tag*{inelastisch} \\
+   Q &x 0 \tag*{superelastisch} \\
+   \end{align*}

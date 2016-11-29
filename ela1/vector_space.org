@@ -293,3 +293,28 @@
 	 \[\sum_{i\in J} 0 \cdot \v_i = 0\]
 	 ist, folgt aus der vorrausgesetzen Eindeutigkeit der Linearkombination, dass $\lambda_i = 0 \Forall i\in J \Rightarrow (v_i)_{i\in J}$ ist linear unabhängig
   #+end_proof
+  #+ATTR_LATEX: :options [8.17]
+  #+begin_remark latex
+  Sei $V$ K-Vektorraum, Dann gilt:
+  1. Ist $v\in V$, dann gilt $(v)$ linear unabhängig $\Leftrightarrow v \neq 0$
+  2. Gehört der Nullvektor zu einer Familie, dann ist sie linear abhängig
+  3. Kommt der gleiche Vektor in einer Familie mehrfach vor so ist sie linear abhängig
+  4. Ist $r\geq 2$, so gilt: Die Familie $(v_1, \ldots, v_r)$ von Vektoren aus $V$ ist linear abhängig $\Leftrightarrow \Exists i \in \{1, \ldots, r\}: v_i$ Linearkombination von $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_r$
+  #+end_remark
+  #+begin_proof latex
+  1. "$\Rightarrow$" (Durch Kontraposition): Sei $v = 0$. Dann ist $1 v = 0$, das heißt $(v)$ ist linear abhängig
+	 "$\Leftarrow$" (Durch Kontraposition) Sei $(v)$ linear abhängig $\Rightarrow \Exists \lambda \in K \setminus \{0\}: \lambda v = 0 \Rightarrow v = 0$
+  2. Wegen $1 \cdot 0_v = 0_v$ existiert in diesem Fall eine nicht triviale Linearkombination der Null.
+  3. Sei $(v_i)_{i\in I}$ eine Familie, sodass $i_1, i_2 \in I$ existiert mit $i_1 \neq i_2$ und $v_{i_1} = v_{i_2}$ \Rightarrow $1 \cdot v_{i_1} + (-1) \cdot v_{i_2} = 0 \Rightarrow (v_i)_{i\in I}$ linear abhängig
+  4. Sei $r\geq 2, (v_1, \ldots, v_r)$ Familie von Vektoren aus $V$ \\
+	 "$\Rightarrow$" Sei $v_1, \ldots, v_r$ linear abhängig \Rightarrow $\Exists \lambda_1, \ldots, \lambda_r \in K: (\lambda_1, \ldots, \lambda_r) \neq (0, \ldots, 0) \wedge \lambda_1 v_1 + \ldots \lambda_r v_r = 0$
+	 Insbesondere existiert ein $i\in \{1, \ldots ,r\}$, mit $\lambda_i \neq 0$
+	 \[\Rightarrow v_i = -\frac{\lambda_1}{\lambda_i} v_1 - \ldots - \frac{\lambda_{i - 1}}{\lambda_i} v_{i - 1} - \frac{\lambda_{i + 1}}{\lambda_i} v_{i + 1} - \ldots - \frac{\lambda_{r}}{\lambda_i} v_{r}\]
+	 \begin{align*}
+	 \intertext{"$\Leftarrow$" Sei $i\in\{1,\ldots, r\}$, so dass}
+	 v_i = \lambda_1 v_1 + \ldots + \lambda_{i - 1} v_{i - 1} + \lambda_{i + 1} v_{i + 1} + \ldots + \lambda_{r} v_{r} \\
+	 \intertext{mit geeigneten $\lambda_j \in K$:}
+	 \Rightarrow \lambda_1 v_1 + \ldots + \lambda_{i - 1} v_{i - 1} + (-1) v_i + \lambda{i + 1} v_{i + 1} + \ldots + \lambda_r v_r = 0 \\
+	 \Rightarrow (v_1, \ldots, v_r) ~\text{linear abhängig} \\
+	 \end{align*}
+  #+end_proof

@@ -29,6 +29,8 @@
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
 #+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{note}{Anmerkung}
+#+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{conc}{Folgerung}
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{ex}{Beispiel}
@@ -50,3 +52,4 @@
 #+INCLUDE: "/home/robin/study/lectures/ela1/algebra.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ela1/polynomial.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ela1/vector_space.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/ela1/basis_dimension.org" :minlevel 1
