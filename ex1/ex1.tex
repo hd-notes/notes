@@ -1,4 +1,4 @@
-% Created 2016-11-27 So 17:57
+% Created 2016-11-30 Mi 17:45
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1238,7 +1238,7 @@ Frage: Wirkung einer Kraft $\v F_1$ auf einen starren Körper. \\
     Translation durch Kraft $\v F_2$ mit Angriffspunkt $S$. \\
     Rotation durch Kräftepaar $(\v F_1, \v F_3)$ mit $F_1 = F_3, \v M = \v r \times \v F_1$
 
-Die Wokrung aller Kräfte auf einen starren Körper lässt sich durch
+Die Wirkung aller Kräfte auf einen starren Körper lässt sich durch
 \begin{align*}
 \v F &= \sum \v F_i \tag{Gesamtkraft (Gesamtkraft)} \\
 \v M &= \sum F_{si} \times \v F_i = \sum M_i \tag{Gesamtdrehmoment (Rotation)}
@@ -1248,5 +1248,139 @@ beschreiben. Dabei greift $\v F$ im Schwerpunkt an
 Wirkung von Kräftepaaren: Reine Rotation. Es gilt:
 
 \[\v M = \v r_1 \times \v F - \v r_2 \times \v F = (\v r_1 - \v r_2)\times \v F = \v r_{12} \times \v F\]
+\subsection{Trägheitsmoment}
+\label{sec-8-3}
+\[I = \int r^2_\perp \d m = \Theta\]
+\[E_{rot} = \frac{1}{2} I \omega^2\]
+
+\subsection{steinersche Satz}
+\label{sec-8-4}
+Nochmal Stab:
+
+\begin{align*}
+I &= \int_0^L x^2 \rho A \d x \\
+&= \rho A \int_0^L x^2 \d x \\
+&= \frac{1}{3}\rho A L^2 \\
+\intertext{mit $m = \rho A L$}
+&= \frac{1}{3} m L^3
+\end{align*}
+
+
+Allgemein:
+\begin{align*}
+I &= \int r_\perp^2 \d m \\
+&= \int (r_{s,\perp} + R_\perp)^2 \d m \\
+&= \int \v r_{s,\perp}^2 \d m + \int \v R_{perp}^2 \d m + 2\int r_{s,\perp} R_{perp} \d m
+&= \underbrace{\v r_{s,\perp}^2 \int  \d m}_{ = r_{s,\perp}^2 m} + I_s +  2r_{s,\perp} \underbrace{\int R_{perp} \d m}_{ = 0}
+\end{align*}
+
+\begin{defn}[Steinersche Satz]
+\[I = I_s + r_{\perp,s}^2 m\]
+\end{defn}
+\begin{ex}[Dünner Stab]
+\begin{align*}
+I_A &= \frac{1}{12} m L^2 \\
+I_B  &= \frac{1}{3} m L^2 \\
+I_B &= I_A + (\frac{L}{2})^2 m = \frac{1}{3} m L^2 \\
+\end{align*}
+\end{ex}
+
+Trägheitsmomente sind additiv
+
+\[I = \int_v r_{\perp}^2 \d m = \int_{v_1} r_{\perp}^2 \d m + \int_{v_2} r_{\perp}^2 \d m\]
+
+\begin{center}
+\begin{tabular}{ll}
+Translation & Rotation\\
+\hline
+$\v r$ & $\v \phi$\\
+$\v v = \dot{\v r}$ & $\v \omega = \dot{\v \phi}$\\
+$\v a = \ddot{\v r}$ & $\v \alpha = \ddot{\v \phi} = \dot{\v \omega}$\\
+$\displaystyle E_{kin} = \frac{1}{2} m v^2$ & $\displaystyle E_{rot} = \frac{1}{2} I \omega^2$\\
+$F = m\v a$ & $\v M = I \v \alpha$\\
+\end{tabular}
+\end{center}
+
+Bei nicht ortsfester Rotationsachse:
+\[E_{rot} = \frac{1}{2} \v \omega^{T} \Theta \v \omega\]
+\[\v M = \Theta \v \alpha\]
+$\v \Theta$ ist ein Tensor
+
+\begin{align*}
+\v v_i &= \v \omega \times \v r_{\perp, i}, \v v_i = \omega r_{\perp,i} \\
+\v M &= \v r_{\perp,i} \times \v F_i \\
+M_i &= r_{\perp, i} F_{\perp, i} =  r_{\perp, i} m_i \dd{r_i}{t} \\
+&= r_{\perp,i}^2 m_i \dd{\omega}{t} \\
+M_{tot} &= \sum M_i \\
+M_{tot} &= \underbrace{\dd{\omega}{t}}_{\alpha} \underbrace{\sum r_{\perp,i}^2 mi}_{I} \\
+\intertext{Bewegungsgleichung für die Rotation um eine Raumfeste Achse}
+M = I \dot{\omega} = I \alpha
+\end{align*}
+
+\begin{ex}
+\begin{align*}
+M = I \alpha \\
+\v M = \v r \times \v F_G \\
+I = 2m R^2 \\
+\alpha = \frac{M}{I} = \dot{\omega} \\
+\omega = \alpha t + \omega_0 = \alpha t \\
+\phi = \frac{1}{2} \alpha t^2 + \omega_0 t + \phi 0 = \frac{1}{2} \alpha t^2 \\
+2\pi = \frac{1}{2} \alpha T^2 \\
+T^2 = \frac{4 \phi}{\alpha} = 4 \pi \frac{I}{M} \\
+\intertext{wir wollen berechnen}
+T_0^2 = 4\pi \frac{I_0}{M} = (\SI{1.72})^2 \si{\second\squared} \\
+T_1^2 = 4\pi \frac{I_0 + 2 m R^2}{M} = (\SI{5.9})^2 \si{\second\squared} \\
+T_2^2 = 4\pi \frac{I_0 + 2 m \frac{R^2}{4}}{M} = (\SI{3.3})^2 \si{\second\squared} \\
+T_1^2 - T_0^2 = \SI{32}{\second\squared} \\
+T_2^2 - T_0^2 = \SI{8}{\second\squared} \\
+\end{align*}
+\end{ex}
+\subsection{Drehimpuls}
+\label{sec-8-5}
+\begin{itemize}
+\item Translation: $\v F = m \v a, \v F = \dot{\v p}$
+\item Rotation: $\v M = I \v \alpha, \v M = \dot{\v L}$ $\rightarrow$ Drehimpuls
+\item Impuls: $p = mv$
+\item Drehimpuls: (Guess) $L = I \omega = m r^2 \frac{v}{r} = r m v = r p$
+\end{itemize}
+
+\begin{defn}[Drehimpuls]
+\[\v L = \v r \times \v p\]
+\end{defn}
+Wichtig: Allen bewegten Masenpunkten kann man bezüglich eines Referenzpunktes $0$ einen Drehimpuls zuordnen; der hängt vom Bezugspunkt ab.
+
+\[\dot{\v L} = \dd{}{t} (\v r \times \v p) = \underbrace{\dot{\v r} \times \v p}_{0} + \v r \times \dot{\v p} = \v r \times \v F = \v M\]
+
+Grundgleichung der Dynamik für Rotationsbewegungen:
+\[\v M = \dd{\v L}{t} = \dot{\v L}\]
+
+Drehimpulserhaltung:
+\[\v M = 0 \rightarrow \v L = ~\text{const}\]
+
+Drehimpuls für System von Massenpunkten
+\begin{align*}
+\v p_s = \sum \v p_i, \dot{\v p_s} = \sum \v F_i \\
+\v L = \sum \v L_i = \sum m_i (\v r_i \times \v v_i) \\
+\v L = \int \d \v L = \int (\v r \times \v r) \d m
+\dot{\v L} = \dd{}{t} \sum \v r_i \times \v p_i = \underbrace{\sum \dot{\v r_i} \times \v p_i}_{0} + \sum \v r_i \times \dot{\v p_i} = \sum \v M_i = \v M
+\end{align*}
+
+Für System von Massenpunkten:
+\begin{align*}
+\v M &= \sum \v r_i \times \v F_i = \dot{\v L} \\
+\v L &= 0 ~\text{für}~ \v M = 0
+\end{align*}
+
+Allgemeiner Zusammenhang:
+\begin{align*}
+\intertext{mit $\hat I$ als Tensor:}
+\v L &= \hat I \v \omega \\
+\v L &= \int \d \v L \\
+\d \v L &= \v r \times \d \v p = \v r \times \v v\d m \\
+&= \d m (\v r \times \v v) = \v r \times (\v \omega \times \v r)
+\intertext{mit $\v a \times (\v b \times \v c) = \v b (\v a \v c) - \v c (\v a \v b)$}
+&= \d m(r^2 \v \omega - \v r (\v \omega \v r)) \\
+\int \d \v L &= \v \omega \int r^2 \d m - \int \v r (\v \omega \v r) \d m
+\end{align*}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

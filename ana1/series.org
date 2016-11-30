@@ -203,5 +203,47 @@
    Wir setzen $\displaystyle s_n := \sum_{k = 1}^{n} a_k, \tilde s_n := \sum_{k = 0}^{n} 2^k a_{2^k}$ \\
    Für $n < 2^{k + 1}$
    \[S_n = a_1 + (a_2 + a_3) + \ldots + (a_{2^k} + \ldots + a_{k^{k + 1} - 1}) \leq a_1 + 2 a_2 + 4 a_4 + \ldots + 2^k a_{2^k} = \tilde s_n\]
-   \Rightarow Konvergenz von $\ilde s_k$ impliziert Konvergenz von $S_n$
+   \Rightarrow Konvergenz von $\tilde s_k$ impliziert Konvergenz von $S_n$
+
+   Falls die verdichtete Reihe divergent ist, so folgt aus der für $n \geq 2^{k + 1}$ gültigen Beziehung
+   \begin{align*}
+   s_n &\geq a_1 + a_2 + (a_3 + a_4) + (a_5 + \ldots + a_8) + \ldots + (a_{2^k + 1} + \ldots + a_{2^{k + 1}}) \\
+   &\geq a_1 + a_2 + 2 a_4 + 4 a_8 + \ldots + 2^k a_{2^{k + 1}} \geq \frac{1}{2} \tilde S_{k + 1}
+   \end{align*}
+   auch die Divergenz von $S_n$
    #+end_proof
+** Potenzreihe
+   \[S_\infty = \sum_{k = 0}^{\infty} c_k (x - x_0)^k\]
+   mit den Koeffizienten $c_k \in \mathbb{K}$, Zentrum $x_0 \in \mathbb{K}$ und Argument $x\in \mathbb{K}$
+   - Die geometrische Reihe ist ein Spezialfall der allgeminen Potenzreihe
+   - Unendlicher Dezimalbruch
+	 \[0, d_1, d_2, d_3, \ldots = \sum_{k = 1}^{\infty} d_k 10^{-k}, d_k \in \{0,1,\ldots, 9\}\]
+
+   #+ATTR_LATEX: :options [2.44 Potenzreihen]
+   #+begin_thm latex
+   Eine Potenzreihe $\displaystyle \sum_{k = 0}^{\infty} c_k (x - x_0)^k$ konvergiert absolut $\Forall x\in\mathbb{K}$ mit der Eigenschaft
+   \[\abs{x - x_0} < \rho := \frac{1}{\lim_{k \to \infty} \sup \sqrt[k]{\abs{c_k}}}\]
+   Für $\abs{x - x_0} >  \rho$ ist sie divergent
+   #+end_thm
+   #+begin_proof latex
+   Für $x\neq x_0$ gilt
+   \[\lim_{k\to\infty} \sup \sqrt[k]{\abs{c_k \abs{x - x_0}^k}} = \abs{x - x_0} \lim_{k\to\infty} \sup \sqrt[k]{\abs{c_k}} = \frac{\abs{x - x_0}}{\rho} = \begin{cases} < 1 & \abs{x - x_0} < \rho \\ > 1 & \abs{x - x_0} > \rho \end{cases} \]
+   #+end_proof
+   #+begin_remark latex
+   Falls $\rho = \infty$, konvergiert die Reihe $\Forall x\in \mathbb{K}$ \\
+   Falls $\rho = 0$, konvergiert die Reihe für kein $x\neq x_0$
+   - Die Konvergenzgrenze $\rho$ ist die größt mögliche und wird *Konvergenzradius* der Reihe bezeichent
+   - Für $\lim\sup \sqrt[k]{\abs{c_k}} = \infty$ konvergiert die Reihe für kein $x \neq x_0$ und wir setzen $\rho 0$
+   - Falls $\lim\sup \sqrt[k]{\abs{c_k}} = 0 \Rightarrow \rho = \infty$
+   #+end_remark
+** Exponentialreihe
+   \[\exp(x) := \sum_{k = 0}^{\infty} \frac{x^k}{k!}\] ist eine Potenzreihe.
+   Ihr Konvergenzradizs
+   \[\rho = \frac{1}{\lim_{n\to\infty}\sup \sqrt[n]{\abs{a_n}}} = \frac{1}{\lim_{n\to\infty} \sqrt[n]{\frac{1}{n!}}} = \lim_{n\to\infty} \sqrt[n]{n!} = \infty\]
+
+   #+ATTR_LATEX: :options [2.45]
+   #+begin_thm latex
+   Der Wert der $\exp$ Reihe für $x = 1$ ist die Eulersche Zahl $e$
+   \[\exp(1) = \sum_{k = 0}^{\infty} \frac{1}{k!} = \lim_{n\to\infty} (1 + \frac{1}{n})^n =: e\]
+   Diese ist irrational
+   #+end_thm
