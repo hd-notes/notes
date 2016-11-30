@@ -1,4 +1,4 @@
-% Created 2016-11-27 So 00:11
+% Created 2016-11-30 Mi 10:21
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -55,6 +55,8 @@
 \newtheorem{ex}{Beispiel}
 \theoremstyle{remark}
 \newtheorem{conc}{Folgerung}
+\theoremstyle{remark}
+\newtheorem{korollar}{Korollar}
 \usepackage{etoolbox}
 \patchcmd{\thmhead}{(#3)}{#3}{}{}
 \renewcommand*{\proofname}{Beweis}
@@ -1430,5 +1432,60 @@ Gegeben seien zwei Reihen $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k, \ti
       so ist $\tilde s_\infty$ eine \textbf{Majorante} von $s_\infty$ und aus der absoluten Konvergenz von $\tilde s_\infty$ folgt auch die von $s_\infty$, absolute Divergenz von $s_\infty$ impliziert die absolute Divergenz von $\tilde s_\infty$
 \end{enumerate}
 \end{thm}
+\begin{proof}
+ohne Beschränkung der Allgemeinheit nehmen wir an, dass die Vorraussetzungen $\Forall k \in \mathbb{N}$ gelten
+\begin{enumerate}
+\item Ist $\tilde s_\infty$ konvergent
+\[\Rightarrow \sum_{k = 1}^{n}\abs{a_k} \leq \alpha \sum_{k = 1}^{n} \abs{\tilde a_k} \leq \alpha \sum_{k = 1}^{\infty} \tilde a_k, \Forall n\in\mathbb{N}\]
+$\Rightarrow$ S$_{\text{n}}$ sind beschränkt, $S_\infty$ absolut konverent
+Umgekehrt folgt aus Divergenz von $\tilde S_\infty$ auch $\sum_{k = 1}^{\infty} \abs{a_k} \to \infty \Rightarrow \tilde S_\infty$ auch Divergent
+\item Aus Vorraussetzung
+\begin{align*}
+\abs{\frac{a_{k + 1}}{\tilde a_{k + 1}}} \leq \abs{\frac{a_{k + 1}}{a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} \leq \abs{\frac{\tilde a_{k + 1}}{\tilde a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} = \abs{\frac{a_k}{\tilde a_k}} \leq \ldots \leq \abs{\frac{a_1}{\tilde a_1}} =: \alpha
+\end{align*}
+$\Rightarrow$ $\abs{a_{k + 1}} \leq \alpha \abs{a_k}$. Aus 1. folgt die Aussage
+\end{enumerate}
+\end{proof}
+\begin{korollar}[2.34 Wurzelkriterium]
+Eine Reihe $\displaystyle \sum_{k = 1}^{\infty}a_k$ konvergiert absolut, wenn es ein $g\in (0,1)$ gibt, mit dem für f.a. (fast alle) $k\in \mathbb{n}$ gilt $\sqrt[k]{\abs{a_k}} \leq q \leq 1$,
+beziehungsweise $\lim_{k \to \infty} \sup \sqrt{\abs{a_k}} < 1$ \\
+   Wenn für unendlich viele $k \in \mathbb{N}$ gilt $\sqrt[k]{\abs{a_k}} > 1$, beziehungsweise $\abs{a_k} > 1$, so ist die Reihe absolut divergent.
+\end{korollar}
+\begin{proof}
+Nach Vorraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante fpr $s_\infty$
+\end{proof}
+\begin{korollar}[2.41 Quotientenkriterium]
+Eine Reihe $\displaystyle \sum_{k = 0}^{\infty} a_k$ konvergiert absolut, wenn es ein $q\in (0,1)$ gibt mit dem für f.a. $k\in\mathbb{N}$ gilt
+\[\abs{\frac{a_{k + 1}}{a_k}} \leq q < 1, ~\text{bzw.}~ \lim_{k\to\infty} \sup \abs{\frac{a_{k + 1}}{a_k}} < 1\]
+Wenn für fast alle $k\in\mathbb{N}$ gilt $\displaystyle \abs{\frac{a_{k + 1}}{a_k}} \geq 1$, so ist die Reihe absolut divergent
+\end{korollar}
+\begin{proof}
+Vergleich mit
+\[\tilde s_\infty \sum_{k = 1}^{\infty}q^k\]
+\end{proof}
+\begin{ex}[2.42]
+\mbox{}
+\begin{enumerate}
+\item $\displaystyle s_\infty \sum_{k = 1}^{\infty} \frac{z^k}{k!}, z\in\mathbb{C}$ \\
+      Qutientenkriterium: \[\abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{z^{k + 1}}{(k + 1)!} \frac{k!}{z^k}} = \abs{\frac{z}{k + 1}}\]
+      Sei $k \geq 2 \abs{z} \Rightarrow \abs{\frac{z}{k + 1}} \leq \frac{1}{2} \Rightarrow s_\infty$ absolut konvergent.
+\item $\displaystyle \sum_{k = 1}^{\infty} \frac{k!}{k^k}$
+      \[\abs{\frac{(k + 1)!}{(k + 1)^{k + 1}} \frac{k^k}{k!}} = \abs{\frac{k}{k + 1}}^k = \frac{1}{(1 + \frac{1}{k})^k} \leq \frac{1}{1 + k \frac{1}{k}} = \frac{1}{2}\]
+      $\Rightarrow s_\infty$ absolut konvergent
+\end{enumerate}
+\end{ex}
+\begin{remark}
+\begin{enumerate}
+\item Falls $q = 1$ $\Rightarrow$ die Kriterien geben keine Entscheidung, zum Beispiel:
+\begin{align*}
+\sum_{k = 1}^{\infty} \frac{1}{k} \vee \sum_{k = 1}^{\infty} \frac{1}{k^2} \\
+\abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{k}{k + 1}} \to 1 \\
+\abs{\frac{a_{k + 1}}{a_k}} = \frac{k^2}{(k + 1)^2} \to 1 \\
+\end{align*}
+\item Für die Divergenz ist es wichtig, dass $\Exists n_0 \Forall n\geq n_0 a_n > 0$, Wir nehmen
+\[a_n = \begin{cases} \frac{1}{n^2} & n = 2^k \\ 2(2^{-k})^2 & n - 1 = 2^k \\ 0\end{cases}\]
+$\sum a_n$ konvergiert, aber $\lim_{a_n \neq 0} \frac{a_{n + 1}}{a_n} = 2$
+\end{enumerate}
+\end{remark}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

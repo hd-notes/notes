@@ -42,6 +42,8 @@
 #+LATEX_HEADER: \newtheorem{ex}{Beispiel}
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{conc}{Folgerung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{korollar}{Korollar}
 #+LATEX_HEADER: \usepackage{etoolbox}
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}

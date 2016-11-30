@@ -142,3 +142,66 @@
 	  (für fast alle $n\in\mathbb{N} :=$ Für alle $n\in\mathbb{N}$ außer endlich viele) \\
 	  so ist $\tilde s_\infty$ eine *Majorante* von $s_\infty$ und aus der absoluten Konvergenz von $\tilde s_\infty$ folgt auch die von $s_\infty$, absolute Divergenz von $s_\infty$ impliziert die absolute Divergenz von $\tilde s_\infty$
    #+end_thm
+   #+begin_proof latex
+   ohne Beschränkung der Allgemeinheit nehmen wir an, dass die Vorraussetzungen $\Forall k \in \mathbb{N}$ gelten
+   1. Ist $\tilde s_\infty$ konvergent
+	  \[\Rightarrow \sum_{k = 1}^{n}\abs{a_k} \leq \alpha \sum_{k = 1}^{n} \abs{\tilde a_k} \leq \alpha \sum_{k = 1}^{\infty} \tilde a_k, \Forall n\in\mathbb{N}\]
+	  \Rightarrow S_n sind beschränkt, $S_\infty$ absolut konverent
+	  Umgekehrt folgt aus Divergenz von $\tilde S_\infty$ auch $\sum_{k = 1}^{\infty} \abs{a_k} \to \infty \Rightarrow \tilde S_\infty$ auch Divergent
+   2. Aus Vorraussetzung
+	  \begin{align*}
+	  \abs{\frac{a_{k + 1}}{\tilde a_{k + 1}}} \leq \abs{\frac{a_{k + 1}}{a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} \leq \abs{\frac{\tilde a_{k + 1}}{\tilde a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} = \abs{\frac{a_k}{\tilde a_k}} \leq \ldots \leq \abs{\frac{a_1}{\tilde a_1}} =: \alpha
+	  \end{align*}
+	  \Rightarrow $\abs{a_{k + 1}} \leq \alpha \abs{a_k}$. Aus 1. folgt die Aussage
+   #+end_proof
+   #+ATTR_LATEX: :options [2.34 Wurzelkriterium]
+   #+begin_korollar latex
+   Eine Reihe $\displaystyle \sum_{k = 1}^{\infty}a_k$ konvergiert absolut, wenn es ein $g\in (0,1)$ gibt, mit dem für f.a. (fast alle) $k\in \mathbb{n}$ gilt $\sqrt[k]{\abs{a_k}} \leq q \leq 1$,
+   beziehungsweise $\lim_{k \to \infty} \sup \sqrt{\abs{a_k}} < 1$ \\
+   Wenn für unendlich viele $k \in \mathbb{N}$ gilt $\sqrt[k]{\abs{a_k}} > 1$, beziehungsweise $\abs{a_k} > 1$, so ist die Reihe absolut divergent.
+   #+end_korollar
+   #+begin_proof latex
+   Nach Vorraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante fpr $s_\infty$
+   #+end_proof
+   #+ATTR_LATEX: :options [2.41 Quotientenkriterium]
+   #+begin_korollar latex
+   Eine Reihe $\displaystyle \sum_{k = 0}^{\infty} a_k$ konvergiert absolut, wenn es ein $q\in (0,1)$ gibt mit dem für f.a. $k\in\mathbb{N}$ gilt
+   \[\abs{\frac{a_{k + 1}}{a_k}} \leq q < 1, ~\text{bzw.}~ \lim_{k\to\infty} \sup \abs{\frac{a_{k + 1}}{a_k}} < 1\]
+   Wenn für fast alle $k\in\mathbb{N}$ gilt $\displaystyle \abs{\frac{a_{k + 1}}{a_k}} \geq 1$, so ist die Reihe absolut divergent
+   #+end_korollar
+   #+begin_proof latex
+   Vergleich mit
+   \[\tilde s_\infty \sum_{k = 1}^{\infty}q^k\]
+   #+end_proof
+   #+ATTR_LATEX: :options [2.42]
+   #+begin_ex latex
+   \mbox{}
+   1. $\displaystyle s_\infty \sum_{k = 1}^{\infty} \frac{z^k}{k!}, z\in\mathbb{C}$ \\
+	  Qutientenkriterium: \[\abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{z^{k + 1}}{(k + 1)!} \frac{k!}{z^k}} = \abs{\frac{z}{k + 1}}\]
+	  Sei $k \geq 2 \abs{z} \Rightarrow \abs{\frac{z}{k + 1}} \leq \frac{1}{2} \Rightarrow s_\infty$ absolut konvergent.
+   2. $\displaystyle \sum_{k = 1}^{\infty} \frac{k!}{k^k}$
+	  \[\abs{\frac{(k + 1)!}{(k + 1)^{k + 1}} \frac{k^k}{k!}} = \abs{\frac{k}{k + 1}}^k = \frac{1}{(1 + \frac{1}{k})^k} \leq \frac{1}{1 + k \frac{1}{k}} = \frac{1}{2}\]
+	  $\Rightarrow s_\infty$ absolut konvergent
+   #+end_ex
+   #+begin_remark latex
+   1. Falls $q = 1$ \Rightarrow die Kriterien geben keine Entscheidung, zum Beispiel:
+	  \begin{align*}
+	  \sum_{k = 1}^{\infty} \frac{1}{k} \vee \sum_{k = 1}^{\infty} \frac{1}{k^2} \\
+	  \abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{k}{k + 1}} \to 1 \\
+	  \abs{\frac{a_{k + 1}}{a_k}} = \frac{k^2}{(k + 1)^2} \to 1 \\
+	  \end{align*}
+   2. Für die Divergenz ist es wichtig, dass $\Exists n_0 \Forall n\geq n_0 a_n > 0$, Wir nehmen
+	  \[a_n = \begin{cases} \frac{1}{n^2} & n = 2^k \\ 2(2^{-k})^2 & n - 1 = 2^k \\ 0\end{cases}\]
+	  $\sum a_n$ konvergiert, aber $\lim_{a_n \neq 0} \frac{a_{n + 1}}{a_n} = 2$
+   #+end_remark
+   #+ATTR_LATEX: :options [2.43 Cauchy Verdichtungssatz]
+   #+begin_lemma latex
+   Eine Reihe $\displaystyle s_\infty = \sum_{k = 1}^{\infty} a_k$, mit $a_k \in \mathbb{R}_+$, die monoton fallende Nullfolge bilden hat dasselbe Konvergenzverhalten wie die verdichtete Reihe
+   \[\sum_{k = 0}^{\infty} 2^k a_{2^k} = a_1 + 2 a_2 + 4 a_4 + 8 a_8 + \ldots\]
+   #+end_lemma
+   #+begin_proof latex
+   Wir setzen $\displaystyle s_n := \sum_{k = 1}^{n} a_k, \tilde s_n := \sum_{k = 0}^{n} 2^k a_{2^k}$ \\
+   Für $n < 2^{k + 1}$
+   \[S_n = a_1 + (a_2 + a_3) + \ldots + (a_{2^k} + \ldots + a_{k^{k + 1} - 1}) \leq a_1 + 2 a_2 + 4 a_4 + \ldots + 2^k a_{2^k} = \tilde s_n\]
+   \Rightarow Konvergenz von $\ilde s_k$ impliziert Konvergenz von $S_n$
+   #+end_proof
