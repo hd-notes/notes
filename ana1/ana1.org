@@ -44,6 +44,8 @@
 #+LATEX_HEADER: \newtheorem{conc}{Folgerung}
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{korollar}{Korollar}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{note}{Anmerkung}
 #+LATEX_HEADER: \usepackage{etoolbox}
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
@@ -68,3 +70,4 @@
 #+INCLUDE: "/home/robin/study/lectures/ana1/complex_numbers.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ana1/sequence.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ana1/series.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/ana1/continous_functions.org" :minlevel 1

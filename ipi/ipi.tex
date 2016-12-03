@@ -1,4 +1,4 @@
-% Created 2016-11-29 Di 16:43
+% Created 2016-12-03 Sa 01:31
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1536,6 +1536,148 @@ iter->second;
 \item bei std::map liefern die Iteratoren die Elemente in aufsteigneder Reihenfolge der Schlüssel
 \end{itemize}
 \end{itemize}
+\item Die Funktion std::transform()
+\begin{itemize}
+\item wir hatten: std::copy()
+\begin{minted}[]{cpp}
+std::vector<double> source = {1, 2, 3, 4};
+std::vector<double> target(source.size());
+std::copy(source.begin(), source.end(), target.begin());
+\end{minted}
+\item std::transform:
+\begin{minted}[]{cpp}
+// nach Kleinbuchstaben konvertieren
+std::string source = "aAbCdE";
+std::string target = source;
+std::transform(source.begin(), source.end(), target.begin(), std::tolower); // Name einer Funktion, die ein einzelnes Element transformiert, t="aabcde"
+// die Daten quadrieren
+double sq(double x) { return x * x; }
+std::transform(source.begin(), source.end(), target.begin(), sq); // target == {1, 4, 9, 16}
+// das ist eine Abkürzung für eine Schleife
+auto src_begin = source.begin();
+auto src_end = source.end();
+auto tgt_begin = target.begin();
+
+for(; src_begin != src_end; src_begin++, tgt_begin++) {
+	*tgt_begin = sq(*src_begin);
+}
+\end{minted}
+\begin{itemize}
+\item Der Argumenttyp der Funktion muss mit dem source Elementtyp kompatibel sein. Der Returntyp der Funktion muss mit dem Target-Elementtyp kompatibel sein.
+\item Das letzte Argument von std::transform() muss ein Funktor sein (verhält sich wie eine Funktion), drei Varianten:
+\begin{enumerate}
+\item normale Funktion, z.B. sq. Aber: wenn Funktion für mehrere Argumenttypen überladen ist (overloading) (zum Beispiel, wenn es sq(double) und sq(int) gibt), muss der Programmierer dem Compiler sagen, welche Version gemeint ist $\Rightarrow$ für Fortgeschrittene ("functionpointer cast")
+\item Funktorobjekte $\Rightarrow$ objekt-orientierte Programmierung
+\item Definiere eine namenlose Funktion $\Rightarrow$ "Lambda-Funktion $\lambda$"
+\begin{itemize}
+\item statt $\lambda$ verwenden wir den Universalnamen []
+\begin{minted}[]{cpp}
+std::transform(source.begin(), source.end(), target.begin(), [](double x) { return x*x; }); // statt Funktionsname sq wie bei 1 steht hier die ganz Funktionsimplementation
+// Returntyp setzt Computer automatisch ein, wenn es nur einen return-Befehl gibt.
+\end{minted}
+\item Lambda-Funktionen können noch viel mehr $\Rightarrow$ für Fortgeschrittene
+\item std::transform() kann in-place arbeiten (das heißt source-Container überschreiben), wenn source und target gleich
+\begin{minted}[]{cpp}
+std::transform(source.begin(), source.end(), source.begin(), sq);
+\end{minted}
 \end{itemize}
+\end{enumerate}
+\item Die Funktion std::sort() zum in-place sortieren eines Arrays
+\begin{minted}[]{cpp}
+std::vector<double> v = {4, 2, 3, 5 ,1};
+std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
+\end{minted}
+\item std::sort ruft intern den $<$-Operator des Elementtyps auf, um Reihenfolge zu bestimmen
+\item die $<$-Operation muss eine totale Ordung der Elemente definieren:
+\begin{itemize}
+\item $a < b$ muss für beliebige $a,b$ ausführbar sein
+\item transitiv: $(a < b) \wedge (b < c) \Rightarrow (a < c)$
+\item anti-symmetrisch: $!(a < b) \wedge !(b < a) \Rightarrow a == b$
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section{Insertion Sort}
+\label{sec-15}
+schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compiler und CPU ab
+\begin{itemize}
+\item Idee von Insertion Sort:
+\begin{itemize}
+\item wie beim Aufnehmen und Ordnen eines Kartenblatts
+\item gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
+\item Einfügen des k-ten Elements an richtiger Stelle $\rightarrow$ Erzeuge Lücke an richtiger Positin duch verschieben von Elementen nach rechts
+\item Wiederholung für $k = 1, \ldots, N$
+\item Bespiel:
+\begin{center}
+\begin{tabular}{rrrrr}
+4 & 2 & 3 & 5 & 1\\
+\hline
+4 & \_ & 3 & 5 & 1\\
+\_ & 4 & 3 & 5 & 1\\
+2 & 4 & 3 & 5 & 1\\
+\hline
+2 & 4 & \_ & 5 & 1\\
+2 & \_ & 4 & 5 & 1\\
+2 & 3 & 4 & 5 & 1\\
+\hline
+2 & 3 & 4 & \_ & 1\\
+2 & 3 & 4 & 5 & 1\\
+\hline
+2 & 3 & 4 & 5 & \_\\
+\_ & 2 & 3 & 4 & 5\\
+1 & 2 & 3 & 4 & 5\\
+\end{tabular}
+\end{center}
+\begin{minted}[]{cpp}
+void insertion_sort(std::vector<double & v) {
+	for(int i = 0; i < v.size(); i++) {
+		double current = v[i];
+		int j = i; // Anfangsposition der Lücke
+		while(j > 0) {
+			if(v[j - 1] < current) { // -> if(cmp(a, b))
+				break; // j ist richtige Position der Lücke
+			}
+			v[j] = v[j - 1];
+			j--;
+		}
+		v[j] = current;
+	}
+}
+\end{minted}
+\item andere Sortierung: definiere Funktor cmp(a, b), der das gewüschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
+\item neue Sortierung am besten per Lambda-Funktion an std::sort übergeben
+\begin{minted}[]{cpp}
+std::sort(v.begin(), v.end()); // Standartsort mit "<"
+std::sort(v.begin(), v.end(), [](double a, double b) { return a < b; }); // Standardsortierung aufsteigen
+std::sort(v.begin(), v.end(), [](double a, double b) { return b < a; }); // absteigende Sortierung
+std::sort(v.begin(), v.end(), [](double a, double b) { return std::abs(a) < std::abs(b); }); // Normal nach Betrag; // Normal nach Betrag
+std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
+	std::transform(a.begin(), a.end(), a.begin(), std::tolower);
+	std::transform(b.begin(), b.end(), b.begin(), std::tolower);
+	return a < b;
+});
+\end{minted}
+\end{itemize}
+\end{itemize}
+\section{templates}
+\label{sec-16}
+insertion$_{\text{sort}}$ soll für beliebige Elementtypen funktionieren
+\begin{minted}[]{cpp}
+void insertion_sort(std::vector<double & v) {
+	for(int i = 0; i < v.size(); i++) {
+		double current = v[i];
+		int j = i; // Anfangsposition der Lücke
+		while(j > 0) {
+			if(v[j - 1] < current) { // -> if(cmp(a, b))
+				break; // j ist richtige Position der Lücke
+			}
+			v[j] = v[j - 1];
+			j--;
+		}
+		v[j] = current;
+	}
+}
+\end{minted}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

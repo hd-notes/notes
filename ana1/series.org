@@ -247,3 +247,80 @@
    \[\exp(1) = \sum_{k = 0}^{\infty} \frac{1}{k!} = \lim_{n\to\infty} (1 + \frac{1}{n})^n =: e\]
    Diese ist irrational
    #+end_thm
+   #+begin_proof latex
+   In Übung 6.2 gezeigt \[e = \lim_{n\to\infty} (1 + \frac{1}{n})^n\]
+   Angenommen $e = \frac{p}{q}, p,q\in\mathbb{N}, q > 1$. Betrachte Abschätzung, für die Restgliederdarstellung von $\euler$:
+   \begin{align*}
+   s_{n + m} - s_n &= (1 + \frac{1}{1!} + \ldots + \frac{1}{(m + n)!}) - (1 + \frac{1}{1!} + \ldots + \frac{1}{n!}) \\
+   &= \frac{1}{(n + 1)!} + \ldots + \frac{1}{(m + n)!} \\
+   &= \frac{1}{(n + 1)!}(1 + \frac{1}{n + 1} + \ldots + \frac{1}{(n + 1)^{m - 1}}) = \frac{1}{(n + 1)!} \sum_{k = 0}^{m - 1} \frac{1}{(n + 1)^k} \\
+   \intertext{für $x = \frac{1}{(n + 1)}$ erhält man}
+   &= \frac{1}{(n + 1)!} \frac{1 - x^m}{1 - x} \\
+   &\leq \frac{1}{(n + 1)!} \frac{1}{1 - x} = \frac{1}{(n + 1)!} \frac{n + 1}{n}
+   \end{align*}
+   Da dies für ale $m \in \mathbb{N}$, folgt
+   \[0 < e - s_n \leq \frac{1}{n! n} \Rightarrow 0 < e n! -s_n n! \leq \frac{1}{n}\]
+   Wähle $n = q > 1$, dann folgt $0 < p(q - 1)! - (q! + \ldots + 1!) \leq \frac{1}{1} < 1 \lightning$
+   #+end_proof
+   #+ATTR_LATEX: :options [2.46 Funktionalgleichung von $\exp(x)$]
+   #+begin_korollar latex
+   Für alle $x,y\in\mathbb{K}$ gilt $\exp(x + y) = \exp(x) \exp(y)$
+   #+end_korollar
+   #+begin_proof latex
+   Wir bilden das Cauchyprodukt der Reihen
+   \begin{align*}
+   \exp(x) &= \sum_{k \in \mathbb{N}_0}^\infty \underbrace{\frac{x^k}{k!}}_{ = a_k}, \exp(y) = \sum_{k \in \mathbb{N}_0}^\infty \underbrace{\frac{y^k}{k!}}_{ = b_k} \\
+   \intertext{Daraus folgt mit Satz 2.38}
+   \exp(x) \exp(y) &= \sum_{m = 0}^{\infty}c_m, c_m = \sum_{k = 0}^{m} a_k b_{m - k} = \sum_{k = 0}^{m} \frac{x^k}{k!} \frac{y^{m - k}}{(m - k)!} \\
+   &= \frac{1}{m!} \sum_{k = 0}^{m} \binom{m}{k} x^k y^{m - k} = \frac{1}{m!}(x + y)^m
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [2.47]
+   #+begin_korollar latex
+   Es gelten
+   1. $\Forall x \in \mathbb{K}: \exp(x) \neq 0 \wedge \exp(-x) = \frac{1}{\exp(x)}$
+   2. $\Forall x \in \mathbb{R}: \exp(x) > 0$
+   3. $\Forall x \in \mathbb{Z}: \exp(n) = e^n$
+   #+end_korollar
+   #+begin_proof latex
+   1. $\displaystyle \exp(x) \exp(-x) = \exp(x - x) = \exp(0) \sum_{k = 0}^{\infty} \frac{0^k}{k!} = \frac{0^0}{0!} = 1$, Da $\mathbb{K}$ Körper: $\exp(x) \neq 0$
+   2. Sei $x \geq 0$, dann ist
+	  \begin{align*}
+	  \exp(x) = \sum_{k = 0}^{\infty} \frac{x^k}{k!} \geq 1 > 0 \\
+	  \intertext{für $x < 0$ ist $-x > 0$, damit folgt}
+	  \exp(x) = \frac{1}{\exp(-x) > 0}
+	  \end{align*}
+   3. Sei $n \in\mathbb{N}_0$ Beweis per Induktion \\
+	  IA: $n = 0$, siehe 1.: $\exp(0) = 1 = e^0$ \\
+	  IV: Gelte $\exp(n) = e^n$ für ein $n \in \mathbb{N}_0$ \\
+	  IS: $n \to n + 1$:
+	  \[\exp(n + 1) = \exp(n) \exp(1) = e^n e^1 = e^{n + 1}\]
+	  Sei $n < 0$: $-n \in \mathbb{N}$
+	  \[\exp(n) = (\exp(-n))^{-1} = (e^{-n})^-1 = e^n\]
+   #+end_proof
+   #+ATTR_LATEX: :options [2.48]
+   #+begin_defn latex
+   Für $z \in \mathbb{K}$ definieren wir die sogennante Exponentialfunktion
+   \[e^z := \exp(z)\]
+   sowie die Sinus- und Cosinusfunktion
+   \[\sin(z) := \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k + 1}}{(2k + 1)!}, \cos(z) := \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k}}{(2k)!}\]
+   #+end_defn
+   #+begin_note latex
+   1. Analog zu Beispiel 2.42 zeigt man die absolute Konvergenz von $\sin, \cos$
+   2. Es gelten für $z \in\mathbb{Z}$
+	  \begin{align*}
+	  \sin(z) &= \frac{e^{\I z} - e^{-\I z}}{2i} \\
+	  \cos(z) &= \frac{e^{\I z} + e^{-\I z}}{2} \\
+	  \intertext{denn}
+	  e^{\I z} &= \sum_{n = 0}^{\infty} \frac{(\I z)^n}{n!} = \sum_{k = 0}^{\infty} \frac{(\I z)^{2k}}{(2k)!} + \sum_{k = 0}^{\infty} \frac{(\I z)^{2k + 1}}{(2k + 1)!} \\
+	  &= \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k}}{(2k)!} + \I \sum_{k = 0}^{\infty} \frac{(-1)^{k + 1}}{(2k + 1)!} = \cos(z) +  \I \sin(z) \\
+	  \end{align*}
+   3. $x\in\mathbb{R}$:
+	  \begin{align*}
+	  \intertext{Eulersche Formel}
+	  e^{\I x} = \cos(x) + \I \sin(x) \\
+	  \intertext{sowie}
+	  \cos(x) = \Re(e^{\I x}) \\
+	  \sin(x) = \Im(e^{\I x})
+	  \end{align*}
+   #+end_note

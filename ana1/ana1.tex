@@ -1,4 +1,4 @@
-% Created 2016-11-30 Mi 10:41
+% Created 2016-12-03 Sa 01:32
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -57,6 +57,8 @@
 \newtheorem{conc}{Folgerung}
 \theoremstyle{remark}
 \newtheorem{korollar}{Korollar}
+\theoremstyle{remark}
+\newtheorem{note}{Anmerkung}
 \usepackage{etoolbox}
 \patchcmd{\thmhead}{(#3)}{#3}{}{}
 \renewcommand*{\proofname}{Beweis}
@@ -1515,7 +1517,208 @@ mit den Koeffizienten $c_k \in \mathbb{K}$, Zentrum $x_0 \in \mathbb{K}$ und Arg
 \end{itemize}
 
 \begin{thm}[2.44 Potenzreihen]
-Eine Potenzreihe
+Eine Potenzreihe $\displaystyle \sum_{k = 0}^{\infty} c_k (x - x_0)^k$ konvergiert absolut $\Forall x\in\mathbb{K}$ mit der Eigenschaft
+\[\abs{x - x_0} < \rho := \frac{1}{\lim_{k \to \infty} \sup \sqrt[k]{\abs{c_k}}}\]
+Für $\abs{x - x_0} >  \rho$ ist sie divergent
 \end{thm}
+\begin{proof}
+Für $x\neq x_0$ gilt
+\[\lim_{k\to\infty} \sup \sqrt[k]{\abs{c_k \abs{x - x_0}^k}} = \abs{x - x_0} \lim_{k\to\infty} \sup \sqrt[k]{\abs{c_k}} = \frac{\abs{x - x_0}}{\rho} = \begin{cases} < 1 & \abs{x - x_0} < \rho \\ > 1 & \abs{x - x_0} > \rho \end{cases} \]
+\end{proof}
+\begin{remark}
+Falls $\rho = \infty$, konvergiert die Reihe $\Forall x\in \mathbb{K}$ \\
+   Falls $\rho = 0$, konvergiert die Reihe für kein $x\neq x_0$
+\begin{itemize}
+\item Die Konvergenzgrenze $\rho$ ist die größt mögliche und wird \textbf{Konvergenzradius} der Reihe bezeichent
+\item Für $\lim\sup \sqrt[k]{\abs{c_k}} = \infty$ konvergiert die Reihe für kein $x \neq x_0$ und wir setzen $\rho 0$
+\item Falls $\lim\sup \sqrt[k]{\abs{c_k}} = 0 \Rightarrow \rho = \infty$
+\end{itemize}
+\end{remark}
+\subsection{Exponentialreihe}
+\label{sec-5-3}
+\[\exp(x) := \sum_{k = 0}^{\infty} \frac{x^k}{k!}\] ist eine Potenzreihe.
+Ihr Konvergenzradizs
+\[\rho = \frac{1}{\lim_{n\to\infty}\sup \sqrt[n]{\abs{a_n}}} = \frac{1}{\lim_{n\to\infty} \sqrt[n]{\frac{1}{n!}}} = \lim_{n\to\infty} \sqrt[n]{n!} = \infty\]
+
+\begin{thm}[2.45]
+Der Wert der $\exp$ Reihe für $x = 1$ ist die Eulersche Zahl $e$
+\[\exp(1) = \sum_{k = 0}^{\infty} \frac{1}{k!} = \lim_{n\to\infty} (1 + \frac{1}{n})^n =: e\]
+Diese ist irrational
+\end{thm}
+\begin{proof}
+In Übung 6.2 gezeigt \[e = \lim_{n\to\infty} (1 + \frac{1}{n})^n\]
+Angenommen $e = \frac{p}{q}, p,q\in\mathbb{N}, q > 1$. Betrachte Abschätzung, für die Restgliederdarstellung von $\euler$:
+\begin{align*}
+s_{n + m} - s_n &= (1 + \frac{1}{1!} + \ldots + \frac{1}{(m + n)!}) - (1 + \frac{1}{1!} + \ldots + \frac{1}{n!}) \\
+&= \frac{1}{(n + 1)!} + \ldots + \frac{1}{(m + n)!} \\
+&= \frac{1}{(n + 1)!}(1 + \frac{1}{n + 1} + \ldots + \frac{1}{(n + 1)^{m - 1}}) = \frac{1}{(n + 1)!} \sum_{k = 0}^{m - 1} \frac{1}{(n + 1)^k} \\
+\intertext{für $x = \frac{1}{(n + 1)}$ erhält man}
+&= \frac{1}{(n + 1)!} \frac{1 - x^m}{1 - x} \\
+&\leq \frac{1}{(n + 1)!} \frac{1}{1 - x} = \frac{1}{(n + 1)!} \frac{n + 1}{n}
+\end{align*}
+Da dies für ale $m \in \mathbb{N}$, folgt
+\[0 < e - s_n \leq \frac{1}{n! n} \Rightarrow 0 < e n! -s_n n! \leq \frac{1}{n}\]
+Wähle $n = q > 1$, dann folgt $0 < p(q - 1)! - (q! + \ldots + 1!) \leq \frac{1}{1} < 1 \lightning$
+\end{proof}
+\begin{korollar}[2.46 Funktionalgleichung von $\exp(x)$]
+Für alle $x,y\in\mathbb{K}$ gilt $\exp(x + y) = \exp(x) \exp(y)$
+\end{korollar}
+\begin{proof}
+Wir bilden das Cauchyprodukt der Reihen
+\begin{align*}
+\exp(x) &= \sum_{k \in \mathbb{N}_0}^\infty \underbrace{\frac{x^k}{k!}}_{ = a_k}, \exp(y) = \sum_{k \in \mathbb{N}_0}^\infty \underbrace{\frac{y^k}{k!}}_{ = b_k} \\
+\intertext{Daraus folgt mit Satz 2.38}
+\exp(x) \exp(y) &= \sum_{m = 0}^{\infty}c_m, c_m = \sum_{k = 0}^{m} a_k b_{m - k} = \sum_{k = 0}^{m} \frac{x^k}{k!} \frac{y^{m - k}}{(m - k)!} \\
+&= \frac{1}{m!} \sum_{k = 0}^{m} \binom{m}{k} x^k y^{m - k} = \frac{1}{m!}(x + y)^m
+\end{align*}
+\end{proof}
+\begin{korollar}[2.47]
+Es gelten
+\begin{enumerate}
+\item $\Forall x \in \mathbb{K}: \exp(x) \neq 0 \wedge \exp(-x) = \frac{1}{\exp(x)}$
+\item $\Forall x \in \mathbb{R}: \exp(x) > 0$
+\item $\Forall x \in \mathbb{Z}: \exp(n) = e^n$
+\end{enumerate}
+\end{korollar}
+\begin{proof}
+\begin{enumerate}
+\item $\displaystyle \exp(x) \exp(-x) = \exp(x - x) = \exp(0) \sum_{k = 0}^{\infty} \frac{0^k}{k!} = \frac{0^0}{0!} = 1$, Da $\mathbb{K}$ Körper: $\exp(x) \neq 0$
+\item Sei $x \geq 0$, dann ist
+\begin{align*}
+\exp(x) = \sum_{k = 0}^{\infty} \frac{x^k}{k!} \geq 1 > 0 \\
+\intertext{für $x < 0$ ist $-x > 0$, damit folgt}
+\exp(x) = \frac{1}{\exp(-x) > 0}
+\end{align*}
+\item Sei $n \in\mathbb{N}_0$ Beweis per Induktion \\
+      IA: $n = 0$, siehe 1.: $\exp(0) = 1 = e^0$ \\
+      IV: Gelte $\exp(n) = e^n$ für ein $n \in \mathbb{N}_0$ \\
+      IS: $n \to n + 1$:
+\[\exp(n + 1) = \exp(n) \exp(1) = e^n e^1 = e^{n + 1}\]
+Sei $n < 0$: $-n \in \mathbb{N}$
+\[\exp(n) = (\exp(-n))^{-1} = (e^{-n})^-1 = e^n\]
+\end{enumerate}
+\end{proof}
+\begin{defn}[2.48]
+Für $z \in \mathbb{K}$ definieren wir die sogennante Exponentialfunktion
+\[e^z := \exp(z)\]
+sowie die Sinus- und Cosinusfunktion
+\[\sin(z) := \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k + 1}}{(2k + 1)!}, \cos(z) := \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k}}{(2k)!}\]
+\end{defn}
+\begin{note}
+\begin{enumerate}
+\item Analog zu Beispiel 2.42 zeigt man die absolute Konvergenz von $\sin, \cos$
+\item Es gelten für $z \in\mathbb{Z}$
+\begin{align*}
+\sin(z) &= \frac{e^{\I z} - e^{-\I z}}{2i} \\
+\cos(z) &= \frac{e^{\I z} + e^{-\I z}}{2} \\
+\intertext{denn}
+e^{\I z} &= \sum_{n = 0}^{\infty} \frac{(\I z)^n}{n!} = \sum_{k = 0}^{\infty} \frac{(\I z)^{2k}}{(2k)!} + \sum_{k = 0}^{\infty} \frac{(\I z)^{2k + 1}}{(2k + 1)!} \\
+&= \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k}}{(2k)!} + \I \sum_{k = 0}^{\infty} \frac{(-1)^{k + 1}}{(2k + 1)!} = \cos(z) +  \I \sin(z) \\
+\end{align*}
+\item $x\in\mathbb{R}$:
+\begin{align*}
+\intertext{Eulersche Formel}
+e^{\I x} = \cos(x) + \I \sin(x) \\
+\intertext{sowie}
+\cos(x) = \Re(e^{\I x}) \\
+\sin(x) = \Im(e^{\I x})
+\end{align*}
+\end{enumerate}
+\end{note}
+\section{Stetige Abbildungen}
+\label{sec-6}
+\subsection{Grenzwert einer Funktion, Stetigkeit}
+\label{sec-6-1}
+Wir betrachten die Funktion
+\[f:\mathbb{R}\setminus\{0\} \to \mathbb{R}, x\mapsto \frac{e^x - }{x} \]
+und wolllen diese auf ganz $\mathbb{R}$ fortsetzen, das heißt Wir suchen ein $\tilde f: \mathbb{R} \to \mathbb{R}$
+mit $\tilde f\mid \mathbb{R}\setminus \{0\} = f$ und einen Wert $\tilde f(0) \in \mathbb{R}$
+
+Allgemeiner überprüft man für Funktionen $f: D \subseteq \mathbb{K} \to \mathbb{K}$ die
+Fortsetzbarkeit auf den Abschluss $\bar D \subseteq \mathbb{K}$, wobei
+\begin{align*}
+\bar D &= \{x \in\mathbb{K} \mid x\in D \vee~\text{oder $x$ ist HP von D}\} \\
+&= \{x \in \mathbb{K} \mid \Exists (x_n)_{n\in\mathbb{N}} \subseteq D \wedge x = \lim_{n \to 0} x_n\}
+\end{align*}
+(analog zur Plenarübung)
+
+\begin{defn}[3.1]
+Eine Funktion $f: D\subseteq \mathbb{K} \to \mathbb{K}$ hat im Punkt $x_0 \in \bar D$ einen
+Grenzwert $a \in\mathbb{K}$, wenn alle Folgen $(x_n)_{n\int\mathbb{N}} \subseteq D$ gilt:
+\[x_n \to x_0 (n \to \infty) \Rightarrow f(x_n) \to a (n\to\infty)\]
+Wir schreiben kurz: $\lim_{x\to x_0} f(x) = a$
+\end{defn}
+\begin{remark}
+\begin{itemize}
+\item Falls der Grenzwert existiert, ist er eindeutig.
+\item Ist $T\subseteq D \subseteq \mathbb{R}, T\neq \emptyset, f: D\to\mathbb{R}, x_\in \bar T$, dann
+verstehen wir unter
+\[\lim_{\substack{x\to x_0 \\ x\in T}} f(x)\]
+den Grenzwert $\lim_{x\to x_0} f\mid T$, falls er existiert.
+\item Spezialfällte:
+\begin{align*}
+T_{>} := \{x\in D\mid x > x_0\}: f(x_0^{+}) := \lim_{\substack{x\to x_0 \\ x\in T_{>}}} f(x) = \lim_{x\to x_0^{+}} f(x) \tag{rechtsseitiger Grenwzwert} \\
+T_{<} := \{x\in D\mid x < x_0\}: f(x_0^{-}) := \lim_{\substack{x\to x_0 \\ x\in T_{<}}} f(x) = \lim_{x\to x_0^{-}} f(x) \tag{linksseitiger Grenwzwert}
+\end{align*}
+\item Existiert $\lim_{x\to x_0} f(x), x_0 \in \bar T \subseteq \bar D$, dann gilt
+\[\lim_{x\to x_0 \\ x\in T} f(x) = \lim_{x\to x_0}  f(x)\]
+\item Es gelten die üblichen Rechenregeln für Grenzwerte $(x,\cdot, :)$
+\end{itemize}
+\end{remark}
+\begin{ex}[3.2]
+\begin{enumerate}
+\item $f:\mathbb{R}\setminus\{0\}, x\mapsto \frac{x}{\abs{x}}$
+      \[\lim_{x\to 0^+} f(x) = 1 \wedge \lim_{x \to 0^-} f(x) = -1\]
+      Also existiert $\lim_{x\to 0} f(x)$ nicht
+\item $f:\mathbb{R}\setminus\{0\}, x\mapsto \frac{e^x - 1}{x}$ \\
+      Es gilt $\lim_{x\to 0} f(x) = 1$, denn für $\abs{x} \leq 1, x\neq 0$ gilt
+\[\abs{f(x) - 1} = \abs{\frac{e^x - 1 - x}{x}} = \abs{\sum_{k = 2}^{\infty} \frac{x^{k - 1}}{k!}} \leq \abs{x} \sum_{k = 2}^{\infty} \frac{\abs{x}^{k - 2}}{k!} \leq \abs{x} \sum_{k = 2}^{\infty} \frac{1}{k!} = \abs{x} \underbrace{(e - 2)}_{> 0}\]
+Für Nullfolgen $(x_n)_{n\in\mathbb{N}} \subseteq [-1, 1]\setminus \{0\}$ folgt $\lim_{n \to \infty} f(x_n) = 1$
+Das heißt $f$ besitzt eine Fortsetzung
+\[\tilde f: \mathbb{R} \to \mathbb{R}, x\mapsto \begin{cases} \frac{e^x - 1}{x} & x \neq 0 \\ 1 & x = 0\end{cases}\]
+\end{enumerate}
+\end{ex}
+\begin{defn}[3.3 Asymptotisches Verhalten]
+Sei $\emptyset \neq D \subseteq \mathbb{R}$ nach oben (nach unten) unbeschränkt.
+Die Funktion $f: D\to \mathbb{R}$ hat für $x \to + \infty (x \to -\infty)$ einen Grenzwert $a\in \mathbb{R}$, wenn gilt:
+\[\Forall \eps > 0 \Exists y\in \mathbb{R}: \abs{f(x) - a} < \eps \Forall x\in D, x > y (x < y)\]
+Schreibweise: $\lim_{x \to \infty}f(x) = a$, oder $\lim_{x\to -\infty} f(x) = a$
+
+Sei $x_0 \in \bar D$. Die FUnktion $f$ divergiert bestimmt gegen $+\infty (-\infty) :\Leftrightarrow \Forall K\in\mathbb{R}_{+} \Exists \delta > 0: f(x) > K (f(x) < -K) \Forall x\in I_\delta (x_0) \cap (D\setminus\{x_0\})$ \\
+   Schreibweise: $f(x) \to +\infty (f(x) \to -\infty)$ für $x\to x_0$
+\end{defn}
+\begin{ex}[3.4]
+\begin{enumerate}
+\item $f:\mathbb{R}\setminus\{1\}, x\mapsto \frac{1}{x - 1}$
+      \[\lim_{x\to\infty} \frac{1}{x} = 0 = \lim_{x\to -\infty} \frac{1}{x}\]
+      wir schreiben kurz $\lim_{\abs{x} \to \infty} \frac{1}{x} = 0$
+\item $\Forall k\in\mathbb{N}$ gilt
+\[\lim_{x\to\infty} \frac{x^k}{e^x} = 0 = \lim_{x\to -\infty} x^k e^x,~\text{denn}~ e^x = \exp(x) \geq \frac{x^{k + 1}}{(k + 1)!}, x\geq 0 \]
+\[\Rightarrow \frac{x^k}{e^x} \leq \frac{(k + 1)!}{x} \to 0 (x\to \infty)\]
+\[x^k e^x = \frac{(-1)^k \abs{x}^k}{e^{\abs{x}}}, x < 0\]
+\end{enumerate}
+\end{ex}
+\#+begin$_{\text{defn}}$ latex
+Eine Funktion $f:D \subseteq \mathbb{K} \to \mathbb{K}$ heißt stetig im Punkt $x_0 \in D$, wenn gilt:
+Für alle Folgen $x_n \to x_0 (n\to\infty) \Rightarrow f(x_n) \to f(x_0) (n \to \infty)$
+Andernfalls heißt sie unstetig in $x_0 \in D$.
+$f$ heißt stetig (auf ganz $D$), wenn sie in jedem $x_0 \in D$ stetig ist. (\emph{insert Symbolbild hier}) \\
+\begin{lemma}[3.5]
+\begin{enumerate}
+\item Ist $f: D\to \mathbb{K}$ stetig, dann ist auch $f\mid T$ statig, $T\subseteq D$
+\item Ist $f:D\to \mathbb{K}$ stetig, so auch $\Re(f):D\to\mathbb{R}$, $\Im(f): D\to \mathbb{R}$, $\abs{f}: D\to\mathbb{R}_+$ stetig (auf ganz $D$)
+\item Sind $f,g:D\to\mathbb{K}$ stetig, so auch $f + g, f\cdot g: D\to\mathbb{K}$
+\item Ist $f:D\to f(D)\subseteq \mathbb{K},g:f(D) \to \mathbb{K}$ stetig in $x_0$, beziehungsweise in $f(x_0) =: y_0$ so auch $f \circ f: D\to\mathbb{K}$ stetig in $x_0 \in D:$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item Siehe Bemerkung zu Grenzwerte
+\item Für $z = a + \I b$ gilt $\abs{\abs{a} - \abs{b}} \leq \abs{a - b}$ sowie $\abs{z}^2 = a^2 + b^2 \geq a^2 \geq b^2$
+\item Siehe Bemerkung zu Grenzwerte
+\item Sei $(x_n)_{n\in\mathbb{N}} \subseteq D$ mit $\lim_{n \to\infty} x_n = x_0$, dann folgt aus Stetigkeit von $f: \lim_{n\to\infty} f(x_n) = f(x_0)$ \\
+      $(g\circ f)(x_n) = g(f(x_n)) \rightarrow g(f(x_0)) = (g\circ f)(x_0) (n\to\infty)$
+\end{enumerate}
+\end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

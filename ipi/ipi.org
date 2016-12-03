@@ -44,3 +44,75 @@
 #+INCLUDE: "/home/robin/study/lectures/ipi/references.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/container.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/itertators.org" :minlevel 1
+
+* Insertion Sort
+  schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compiler und CPU ab
+  - Idee von Insertion Sort:
+	- wie beim Aufnehmen und Ordnen eines Kartenblatts
+	- gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
+	- Einfügen des k-ten Elements an richtiger Stelle \rightarrow Erzeuge Lücke an richtiger Positin duch verschieben von Elementen nach rechts
+	- Wiederholung für $k = 1, \ldots, N$
+	- Bespiel:
+	  | 4 | 2 | 3 | 5 | 1 |
+	  |---+---+---+---+---|
+	  | 4 | _ | 3 | 5 | 1 |
+	  | _ | 4 | 3 | 5 | 1 |
+	  | 2 | 4 | 3 | 5 | 1 |
+	  |---+---+---+---+---|
+	  | 2 | 4 | _ | 5 | 1 |
+	  | 2 | _ | 4 | 5 | 1 |
+	  | 2 | 3 | 4 | 5 | 1 |
+	  |---+---+---+---+---|
+	  | 2 | 3 | 4 | _ | 1 |
+	  | 2 | 3 | 4 | 5 | 1 |
+	  |---+---+---+---+---|
+	  | 2 | 3 | 4 | 5 | _ |
+	  | _ | 2 | 3 | 4 | 5 |
+	  | 1 | 2 | 3 | 4 | 5 |
+	  #+BEGIN_SRC cpp
+	  void insertion_sort(std::vector<double & v) {
+		  for(int i = 0; i < v.size(); i++) {
+			  double current = v[i];
+			  int j = i; // Anfangsposition der Lücke
+			  while(j > 0) {
+				  if(v[j - 1] < current) { // -> if(cmp(a, b))
+					  break; // j ist richtige Position der Lücke
+				  }
+				  v[j] = v[j - 1];
+				  j--;
+			  }
+			  v[j] = current;
+		  }
+	  }
+	  #+END_SRC
+	- andere Sortierung: definiere Funktor cmp(a, b), der das gewüschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
+	- neue Sortierung am besten per Lambda-Funktion an std::sort übergeben
+	  #+BEGIN_SRC cpp
+	  std::sort(v.begin(), v.end()); // Standartsort mit "<"
+	  std::sort(v.begin(), v.end(), [](double a, double b) { return a < b; }); // Standardsortierung aufsteigen
+	  std::sort(v.begin(), v.end(), [](double a, double b) { return b < a; }); // absteigende Sortierung
+	  std::sort(v.begin(), v.end(), [](double a, double b) { return std::abs(a) < std::abs(b); }); // Normal nach Betrag; // Normal nach Betrag
+	  std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
+		  std::transform(a.begin(), a.end(), a.begin(), std::tolower);
+		  std::transform(b.begin(), b.end(), b.begin(), std::tolower);
+		  return a < b;
+	  });
+	  #+END_SRC
+* templates
+  insertion_sort soll für beliebige Elementtypen funktionieren
+  #+BEGIN_SRC cpp
+	  void insertion_sort(std::vector<double & v) {
+		  for(int i = 0; i < v.size(); i++) {
+			  double current = v[i];
+			  int j = i; // Anfangsposition der Lücke
+			  while(j > 0) {
+				  if(v[j - 1] < current) { // -> if(cmp(a, b))
+					  break; // j ist richtige Position der Lücke
+				  }
+				  v[j] = v[j - 1];
+				  j--;
+			  }
+			  v[j] = current;
+		  }
+	  }
+  #+END_SRC

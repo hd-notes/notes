@@ -44,3 +44,53 @@
 	  iter->second;
 	  #+END_SRC
 	  - bei std::map liefern die Iteratoren die Elemente in aufsteigneder Reihenfolge der Schlüssel
+  - Die Funktion std::transform()
+	- wir hatten: std::copy()
+	  #+BEGIN_SRC cpp
+	  std::vector<double> source = {1, 2, 3, 4};
+	  std::vector<double> target(source.size());
+	  std::copy(source.begin(), source.end(), target.begin());
+	  #+END_SRC
+	- std::transform:
+	  #+BEGIN_SRC cpp
+	  // nach Kleinbuchstaben konvertieren
+	  std::string source = "aAbCdE";
+	  std::string target = source;
+	  std::transform(source.begin(), source.end(), target.begin(), std::tolower); // Name einer Funktion, die ein einzelnes Element transformiert, t="aabcde"
+	  // die Daten quadrieren
+	  double sq(double x) { return x * x; }
+	  std::transform(source.begin(), source.end(), target.begin(), sq); // target == {1, 4, 9, 16}
+	  // das ist eine Abkürzung für eine Schleife
+	  auto src_begin = source.begin();
+	  auto src_end = source.end();
+	  auto tgt_begin = target.begin();
+
+	  for(; src_begin != src_end; src_begin++, tgt_begin++) {
+		  *tgt_begin = sq(*src_begin);
+	  }
+	  #+END_SRC
+	  - Der Argumenttyp der Funktion muss mit dem source Elementtyp kompatibel sein. Der Returntyp der Funktion muss mit dem Target-Elementtyp kompatibel sein.
+	  - Das letzte Argument von std::transform() muss ein Funktor sein (verhält sich wie eine Funktion), drei Varianten:
+		1. normale Funktion, z.B. sq. Aber: wenn Funktion für mehrere Argumenttypen überladen ist (overloading) (zum Beispiel, wenn es sq(double) und sq(int) gibt), muss der Programmierer dem Compiler sagen, welche Version gemeint ist \Rightarrow für Fortgeschrittene ("functionpointer cast")
+		2. Funktorobjekte \Rightarrow objekt-orientierte Programmierung
+		3. Definiere eine namenlose Funktion \Rightarrow "Lambda-Funktion $\lambda$"
+		   - statt $\lambda$ verwenden wir den Universalnamen []
+			#+BEGIN_SRC cpp
+			std::transform(source.begin(), source.end(), target.begin(), [](double x) { return x*x; }); // statt Funktionsname sq wie bei 1 steht hier die ganz Funktionsimplementation
+			// Returntyp setzt Computer automatisch ein, wenn es nur einen return-Befehl gibt.
+			#+END_SRC
+		   - Lambda-Funktionen können noch viel mehr \Rightarrow für Fortgeschrittene
+		   - std::transform() kann in-place arbeiten (das heißt source-Container überschreiben), wenn source und target gleich
+			#+BEGIN_SRC cpp
+			std::transform(source.begin(), source.end(), source.begin(), sq);
+			#+END_SRC
+	  - Die Funktion std::sort() zum in-place sortieren eines Arrays
+		#+BEGIN_SRC cpp
+		std::vector<double> v = {4, 2, 3, 5 ,1};
+		std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
+		#+END_SRC
+	  - std::sort ruft intern den $<$-Operator des Elementtyps auf, um Reihenfolge zu bestimmen
+	  - die $<$-Operation muss eine totale Ordung der Elemente definieren:
+		- $a < b$ muss für beliebige $a,b$ ausführbar sein
+		- transitiv: $(a < b) \wedge (b < c) \Rightarrow (a < c)$
+		- anti-symmetrisch: $!(a < b) \wedge !(b < a) \Rightarrow a == b$

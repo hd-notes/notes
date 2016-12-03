@@ -1,4 +1,4 @@
-% Created 2016-11-29 Di 16:43
+% Created 2016-12-03 Sa 01:38
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1139,68 +1139,8 @@ Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der in
 \textbf{Wichtig:} Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\Rightarrow$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
 \section{Symmetrie der Raumzeit}
 \label{sec-6}
-\subsection{Der Euklidische Raum}
-\label{sec-6-1}
-physikalischer Raum: $V = \mathbb{R}^3$ mit Skalarprodukt $\v x, \v y \to \v x \cdot \v y = x^i y^i$ \\
-   Unser Ziel:
-Symmetrien, also Abbildungen $R: V \to V, \v x \mapsto \v x'$, welche die Struktur des Raumes respektieren.
-Das heißt:
-\begin{align*}
-R(\alpha \v x + \beta \v x) &= \alpha R(\v x) + \beta R(\v y) \\
-R(\v x, \v y) \underarrow[\equiv]{Sagt nur: Zahlen transformieren nicht} \v x  \v y = R(x)R(y)
-\end{align*}
-Zunächst nur Linearitätsbedingung (wird respektiert von allgemeinen linearen Transformationen)
-\[x^i \mapsto x^{\prime i} = R^{i j} x^j\]
-oder
-\[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix}\]
-
-Symmetrie: Lineare Transformation: $\v x \mapsto R(\v x)$ \\
-   konkret: $x^i \mapsto x^{\prime i} = R^{ij}x^j$
-\[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix} \cvec{x^1 ; \vdots ; x^n}\]
-Kurzschreibweise:
-\[x\mapsto x' = R x\]
-\begin{itemize}
-\item hier: Großbuchstaben = Matrizen
-\item Kleinbuchstaben = Vektoren
-\end{itemize}
-\begin{ex}[n = 2]
-\begin{align*}
-x^{\prime 1} &= R^{11} x^1 + R^{12}x^2 \\
-x^{\prime 2} &= R^{21} x^1 + R^{22}x^2 \\
-\end{align*}
-
-Ganz explizit
-\[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \Rightarrow \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
-Transformation der beiden Basisvektoren
-
-Jeder andere Vektor ($\cvec{\alpha; \beta}$) ist schreibbar als $\alpha \cvec{1; 0} + \beta \cvec{0 ; 1}$. Er transformiert demanch gemäß
-\[\cvec{\alpha; \beta} \mapsto \alpha \cvec{2 ; 1} + \beta \cvec{0 ; 1} = \cvec{2 \alpha ; \alpha + \beta}\]
-\end{ex}
-Wichig: Symmetrietransformationen müssen verknüpfbar sein: \\
-   Dazu: Betrachte zwei Transformationen:
-\begin{align*}
-R_1: x\mapsto R_1 x; R_2: x\mapsto R_2 x \\
-\intertext{zusammen:}
-R_1 \circ R_2:x\mapsto R_2 R_1 x \\
-\end{align*}
-Die Komponente $i$ des entstehenden Vektors ist:
-\[(R_2 R_1 x)^i = R_2^{ij}(R_1 x)^j = R_2^{ij}R_1^{jk}x^k\]
-Man kann die Abbildung $x\mapsto R_2 R_2 x$ auch "in einem Schritt" als Transformation durch die Produktmatrix $R_2 R_1$ realisieren:
-\[(R_2 R_1 x)^i = \underbrace{(R_2^{ij}R_1^{jk})}_{\mathclap{\text{Produktmatrix}}}x^k\]
-Die Produktmatrix ist $(R_2 R_1)^{ij} = R_2^{ij} R_1^{jk} \equiv R_3^{ik}$
-Hinweis zum expliziten Rechnen:
-\begin{align*}
-&\begin{pmatrix} R_1^{11} & R_1^{12} & R_1^{13} \\ R_1^{21} & R_1^{22} & R_1^{23} \\ R_1^{31} & R_1^{32} & R_1^{33}\end{pmatrix} \\
-\begin{pmatrix} R_2^{11} & R_2^{12} & R_2^{13} \\ R_2^{21} & R_2^{22} & R_2^{23} \\ R_2^{31} & R_2^{32} & R_2^{33}\end{pmatrix} &\begin{pmatrix} R_3^{11} & R_3^{12} & R_3^{13} \\ R_3^{21} & R_3^{22} & R_3^{23} \\ R_3^{31} & R_3^{32} & R_3^{33}\end{pmatrix} \\
-\end{align*}
-Für den Begriff der Symmetrie brauchen wir Invertierbarkeit. Wir nennen eine Transformation beziehungsweise die entsprechende Matrix $R$ invertierbar, falls es eine zweite Matrix $R^{-1}$ gibt, so dass
-\begin{align*}
-R^{-1} \circ R &= id \tag{Identitätsabbildung} \\
-(R^{-1})^{ij} R^{jk} &= \mathbb{1}^{ik} \equiv \delta^{ik}
-\end{align*}
-Um Invertierbarkeit festzustellen brauchen wir Determinante
 \subsection{Matrix, Determinante, Inverse Matrix}
-\label{sec-6-2}
+\label{sec-6-1}
 \begin{defn}[Permutation]
 Eine Permutation (Bez: $\sigma$) von $n$ Elementen ist eine umkehrbare Abbildung einer Menge von $n$ Elementen auf sich selbst: \\
    Menge: $\{1, \ldots, n\}$, Abb: $\sigma: \{1, \ldots, n\} \to \{1, \ldots, n\}, i \mapsto \sigma{i}$ \\
@@ -1262,5 +1202,174 @@ n! \det A = c \eps^{j_1 \ldots j_n} \eps^{j_1 \ldots j_n} = c n! \\
 e^{i_1 \ldots i_n} A^{i_1 j_1} \ldots A^{i_n j_n} = (\det A) \eps^{j_1 \ldots j_n}
 \end{align*}
 Zentraler Fakt: $A$ invertierbar $\Leftrightarrow \det A \neq 0$
+
+Inverse Matrix:
+\begin{align*}
+(A^{-1})^{ij} &= \frac{1}{(n - 1)! \det A} \eps^{j i_2 \ldots i_n} \eps^{i j_2 \ldots j_n} A^{i_2 j_2} \ldots A^{i_n j_n} \\
+\intertext{Prüfen:}
+(A^{-1})^{ij} A^{jk} &= \frac{1}{(n - 1)! \det A} \eps^{j i_2 \ldots i_n} \eps^{i j_2 \ldots j_n} A^{j k} A^{i_2 j_2} \ldots A^{i_n j_n} \\
+&= \frac{1}{(n - 1)! \det A} (\det A) \underbrace{\eps^{k j_2 \ldots j_n} \eps^{i j_2 \ldots j_n}}_{(n - 1)! \delta^{ik}} \\
+&= \delta^{ik} \checkmark
+\end{align*}
+
+Kommentar:
+\begin{align*}
+\frac{1}{(n - 1)!} \eps^{i i_2 \ldots i_n} \eps^{j j_2 \ldots j_n} A^{i_2 j_2} \ldots A^{i_n j_n} \\
+= (-1)^{i + j} \det(\underarrow[M]{Matrix der Cofaktoren}(i,j))
+\intertext{Matrix der Cofaktoren ergbit sich aus $A$ Streichen von Zeile $i$ und Spalte $j$}
+\end{align*}
+\subsection{Der Euklidische Raum}
+\label{sec-6-2}
+physikalischer Raum: $V = \mathbb{R}^3$ mit Skalarprodukt $\v x, \v y \to \v x \cdot \v y = x^i y^i$ \\
+   Unser Ziel:
+Symmetrien, also Abbildungen $R: V \to V, \v x \mapsto \v x'$, welche die Struktur des Raumes respektieren.
+Das heißt:
+\begin{align*}
+R(\alpha \v x + \beta \v x) &= \alpha R(\v x) + \beta R(\v y) \\
+R(\v x, \v y) \underarrow[\equiv]{Sagt nur: Zahlen transformieren nicht} \v x  \v y = R(x)R(y)
+\end{align*}
+Zunächst nur Linearitätsbedingung (wird respektiert von allgemeinen linearen Transformationen)
+\[x^i \mapsto x^{\prime i} = R^{i j} x^j\]
+oder
+\[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix}\]
+
+Symmetrie: Lineare Transformation: $\v x \mapsto R(\v x)$ \\
+   konkret: $x^i \mapsto x^{\prime i} = R^{ij}x^j$
+\[\cvec{x^1 ; \vdots ; x^n} \mapsto \cvec{x^{\prime 1} ; \vdots ; x^{\prime n}} = \begin{pmatrix} R^{11} & \ldots & R^{1n} \\ \vdots & & \vdots \\ R^{n 1} & \ldots & R^{nn}\end{pmatrix} \cvec{x^1 ; \vdots ; x^n}\]
+Kurzschreibweise:
+\[x\mapsto x' = R x\]
+\begin{itemize}
+\item hier: Großbuchstaben = Matrizen
+\item Kleinbuchstaben = Vektoren
+\end{itemize}
+\begin{ex}[n = 2]
+\begin{align*}
+x^{\prime 1} &= R^{11} x^1 + R^{12}x^2 \\
+x^{\prime 2} &= R^{21} x^1 + R^{22}x^2 \\
+\end{align*}
+
+Ganz explizit
+\[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \Rightarrow \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
+Transformation der beiden Basisvektoren
+
+Jeder andere Vektor ($\cvec{\alpha; \beta}$) ist schreibbar als $\alpha \cvec{1; 0} + \beta \cvec{0 ; 1}$. Er transformiert demanch gemäß
+\[\cvec{\alpha; \beta} \mapsto \alpha \cvec{2 ; 1} + \beta \cvec{0 ; 1} = \cvec{2 \alpha ; \alpha + \beta}\]
+\end{ex}
+Wichig: Symmetrietransformationen müssen verknüpfbar sein: \\
+   Dazu: Betrachte zwei Transformationen:
+\begin{align*}
+R_1: x\mapsto R_1 x; R_2: x\mapsto R_2 x \\
+\intertext{zusammen:}
+R_1 \circ R_2:x\mapsto R_2 R_1 x \\
+\end{align*}
+Die Komponente $i$ des entstehenden Vektors ist:
+\[(R_2 R_1 x)^i = R_2^{ij}(R_1 x)^j = R_2^{ij}R_1^{jk}x^k\]
+Man kann die Abbildung $x\mapsto R_2 R_2 x$ auch "in einem Schritt" als Transformation durch die Produktmatrix $R_2 R_1$ realisieren:
+\[(R_2 R_1 x)^i = \underbrace{(R_2^{ij}R_1^{jk})}_{\mathclap{\text{Produktmatrix}}}x^k\]
+Die Produktmatrix ist $(R_2 R_1)^{ij} = R_2^{ij} R_1^{jk} \equiv R_3^{ik}$
+Hinweis zum expliziten Rechnen:
+\begin{align*}
+&\begin{pmatrix} R_1^{11} & R_1^{12} & R_1^{13} \\ R_1^{21} & R_1^{22} & R_1^{23} \\ R_1^{31} & R_1^{32} & R_1^{33}\end{pmatrix} \\
+\begin{pmatrix} R_2^{11} & R_2^{12} & R_2^{13} \\ R_2^{21} & R_2^{22} & R_2^{23} \\ R_2^{31} & R_2^{32} & R_2^{33}\end{pmatrix} &\begin{pmatrix} R_3^{11} & R_3^{12} & R_3^{13} \\ R_3^{21} & R_3^{22} & R_3^{23} \\ R_3^{31} & R_3^{32} & R_3^{33}\end{pmatrix} \\
+\end{align*}
+Für den Begriff der Symmetrie brauchen wir Invertierbarkeit. Wir nennen eine Transformation beziehungsweise die entsprechende Matrix $R$ invertierbar, falls es eine zweite Matrix $R^{-1}$ gibt, so dass
+\begin{align*}
+R^{-1} \circ R &= id \tag{Identitätsabbildung} \\
+(R^{-1})^{ij} R^{jk} &= \mathbb{1}^{ik} \equiv \delta^{ik}
+\end{align*}
+
+Wäre Linearität die einzige wichtige Eigenschaft: dann wären die Symmetriefunktionen alle
+\[R \in \underarrow[GL]{Menge aller invertierbaren $n\times m$ Matrizen}(n)\]
+Wir brauchen zusätzlich:
+\[\v x \v y = R(\v x) R(\v y), R(x)^i = R^{ij} \times j\]
+Dazu wichtige Schreibweise
+\[(M^{T})^{ij} = M^{ji} \tag{T für Tansponiert}\]
+auch: $x = \cvec{x^i ; \ldots ; x^n}, x^{\v i} = (x^1 \ldots x^n)$
+Es gilt: $\v x \v y = x^{T} y = x^i y^i$ \\
+   es gilt weiterhin:
+\[R(\v x) R(\v y) = (Rx)^{T}(Ry) = (x^{T} T^{T})(Ry) = x^{T}R^t Ry\]
+
+\begin{align*}
+\intertext{Nebenrechnung}
+((AB)^{T})^{ij} = (AB)^{ji} = A^{jk} B^{jk} = B^{ki} B^{j k} = (B^{T})^{ik} (A^{tilde})^{kj} \\
+= (B^{T} A^{T})^{ij} \\
+\Rightarrow (AB)^{T} = B^T A^T \\
+\end{align*}
+
+Zie: $x^T R^T Ry = x T_y$ soll gelten für beliebige x,y. Dies gilt genau dann wenn $R^{T} R = \mathbb{1}$
+\[(R^{T})^{ik} R^{kj} = \delta^{ii}\]
+\[R^{ki} R^{kj} = \delta^{ii}\]
+\[R^{ik} R^{jk} = \delta^{ii}\]
+wenn $AB = \mathbb{1}$, so auch $B A = \mathbb{1}$
+
+
+Symmetrien des euklidischen Raums:
+$x \t R x$ mit $R^{T} T = \mathbb{1}$
+$R \in O(3) \subset ULU3$
+\subsection{Symmetriegruppe (M)}
+\label{sec-6-3}
+Symmetrien in Physik und Mathe $\rightarrow$ Gruppen \\
+   Bisher:
+\begin{itemize}
+\item Matrixgruppen
+\begin{itemize}
+\item $GL(n)$ - Symmetriegruppe des Vektorraums $\mathbb{R}^n$
+\item $O(n)$ - Symmetriegruppe des euklidischen Raumes
+\end{itemize}
+\end{itemize}
+
+Allgemeiner: Eine Gruppe ist eine Menge $G$ mit einer Binären Operation $G \times G \to G$ für die gilt:
+\begin{itemize}
+\item $(a \cdot b) \cdot c = a \cdot (b\cdot c)$
+\item $\Exists e \in G: a\cdot e = e\cdot a = a \Forall a$ ("Eins")
+\item $\Forall a\in G \Exists a^{-1} \in G: a\cdot a^{-1} = a^{-1} \cdot a = e$
+\end{itemize}
+
+Eine Gruppe heißt "abelsch" falls $a\cdot b = b\cdot a \Forall a,b$
+Beispiele dafür:
+\begin{itemize}
+\item $\mathbb{Q}\setminus \{0\}, \mathbb{R} \setminus \{0\}, \mathbb{C} \setminus \{0\}$
+\end{itemize}
+Falls sie statt "$\cdot$" die Operation "$+$" zur Gruppenoperation erklären, dann sind
+\begin{itemize}
+\item $\mathbb{Q}, \mathbb{R}, \mathbb{C}, \mathbb{Z}$
+\end{itemize}
+Gruppen mit $"+"$
+
+\begin{defn}[Körper]
+$K$ mit Operationen $+,\cdot$ ist ein Körper falls:
+\begin{itemize}
+\item $(K,+)$ ist abelsche Gruppe (Eins = 0)
+\item $(K\setminus\{0\}, \cdot)$ ist auch abelsche Gruppe
+\item Distributivität
+\end{itemize}
+\end{defn}
+
+$GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\Rightarrow$ $A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
+\[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
+
+$GL^+ (n)$ - orientierungserhaltende Untergrupppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
+   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal $\Rightarrow$ $A\cdot B$ orthogonal. Dazu:
+\[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
+
+Wichtige Untergrupe: Spezielle Orthogonale Transformationn $SO(n)$ \\
+   Diese Transformationen erfüllen: $\det(R) = 1$
+
+Dazu zwei Faken: $\det A^{T} = \det A, \det(AB) = (\det(A))(\det B)$
+Damit folgt aus $R^{T} R =\mathbb{1}$
+\[\det(R^{T} R) = \det(R^{T})(\det R) = (\det R)^2 = \det {\mathbb{R}} = 1, \det R = \pm 1\]
+$\equiv$ Matrizen in $O(n)$ mit $\det = 1$
+
+Speziell in $n = 3$ (3d-Raum) wird die Reflexion bezüglich y,z Ebene beschrieben durch:
+\begin{align*}
+R_x = \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \det R_x = -1
+\end{align*}
+Fakt: Jedes Element von $O(3)$ ist schreibbar als $R$ oder $R \cdot R_x$ mit $R \in SO(3)$, $SO(3)$ sind "echte" Drehungen.
+
+Überlegen Sie sich, dass $R\in SO(2)$ llgemein schreibbar ist als
+\[R = \begin{pmatrix} \cos{\phi} & -\sin{\phi} \\ \sin{\phi} & \cos{\phi}\end{pmatrix}\]
+Identifizieren sie $SO(2)$ mit folgender Menge
+\[\{z \in \mathbb{C} \mid \abs{z} = 1\}\]
+Die Gruppenoperation soll der komplexen Multiplikation entsprechen
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
