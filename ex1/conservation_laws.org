@@ -2,7 +2,7 @@
 ** Energieerhaltung
    Für konservative Kräfte gilt:
    \[\Delta E_{kin} = -\Delta E_{pot} = \int_1^2 \v F\d \v r\]
-   das heißt: die kinetische Energei ergibt sich allein aus der Potentialdifferenz und ist unabhängig vom durchlaufenen Weg.
+   das heißt: die kinetische Energie ergibt sich allein aus der Potentialdifferenz und ist unabhängig vom durchlaufenen Weg.
    \begin{align*}
    E_{kin}(2) - E_{kin}(1) = E_{pot}(1) - E_{pot}(2) \\
    E_{kin}(1) + E_{pot}(1) = E_{kin}(2) + E_{pot}(2) = \ldots =~\text{const} \\
@@ -28,7 +28,7 @@
 	Hilfreich: Diskussion mittel Energiediagramm
 **** Kugelbahn
 	- Abhängig von $E_{ges}$ kann sich die Kugel nur in bestimmten Bereichen aufhalten
-	- Gleichgewichtslagen: Kugel rught, es wirken keine Kräfte, das heißt
+	- Gleichgewichtslagen: Kugel ruht, es wirken keine Kräfte, das heißt
 	  \[F = -\dd{E_{pot}}{x} = 0, ~\text{bzw}~ \v F = -\grad E_{pot} = 0\]
 
 	Drei Fälle:

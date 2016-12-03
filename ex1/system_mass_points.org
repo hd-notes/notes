@@ -70,7 +70,7 @@
 	(\Rightarrow Impulserhaltung!!)
 *** Raketenantrieb
 	das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
-	Beobachtung: Abstoßen einer Masse kann zum Antreib verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
+	Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
 
 	Betrachte Rakete:
 	Impulssatz:
@@ -90,7 +90,7 @@
 	\int_{v_1}^{v_2}\d v = -v_B \int_{m_1}^{m_2} \frac{1}{m} \d m, m_1 > m_2, v_B = ~\text{const} \\
 	v_2 - v_1 = -v_B \cdot \big[\ln m\big]_{m_1}^{m_2} = v_B (\ln m_1 - \ln m_2) = v_B \ln{ \frac{m_1}{m_2}} > 0
 	\intertext{Wähle Anfangsbedingungen:}
-	v_1 = 0, m_1 0 m_0 = m(t = 0), m_2 = m(t) \\
+	v_1 = 0, m_1 = 0,  m_0 = m(t = 0), m_2 = m(t) \\
 	\intertext{$\Rightarrow$ Raketengleichung für kräftefreie Rakete}
 	v(t) = v_B \ln \frac{m_0}{m(t)}
 	\end{align*}
@@ -103,9 +103,9 @@
 	#+begin_remark latex
 	Vorsicht bei der Anwendung des zweiten Newtonschen Gesetzen $\v F = \dot{\v p}$. Naiver Ansatz für kräftefreie Rakete:
 	\[\dd{m v}{t} = \dd{m}{t} v + m \dd{v}{t} = 0\]
-	Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksicht
+	Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksichtigt
 
 	Korrekter Ansatz:
 	\[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \Rightarrow m \dd{v}{t} + v_B \dd{m}{t} = 0\]
-	das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigketi verschwindet.
+	das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigkeit verschwindet.
 	#+end_remark

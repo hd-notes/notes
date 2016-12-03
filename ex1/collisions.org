@@ -72,7 +72,7 @@
 ** Inelastische Stöße
    Betrachte $2$ Kugeln
    - Massen: $m_1, m_2$
-   - Geschwindigkeit: $v_1 0 v, v_2 = 0$
+   - Geschwindigkeit: $v_1 = v, v_2 = 0$
    - Impulserhaltung:
 	 \begin{align*}
 	 m_1 v &= (m_1 +  m_2) v' \\
@@ -80,7 +80,7 @@
 	 \end{align*}
    - Energiebilanz:
 	 \[E_{kin} = \frac{1}{2} m_1 v^2, E_{kin}' = \frac{1}{2} (m_1 + m_2) (\frac{m_1}{m_1 + m_2})^2 v^2 = \frac{1}{2} \frac{m_1^2}{m_1 + m_2}v^2 < E_{kin}\]
-	 Beim inelastischen Stoß geht mechanische Energei verloren, sie wird beim Stoß in andere Energieformen (zum Beispiel Wärme) umgewandelt. (siehe Thermodynamik)
+	 Beim inelastischen Stoß geht mechanische Energie verloren, sie wird beim Stoß in andere Energieformen (zum Beispiel Wärme) umgewandelt. (siehe Thermodynamik)
    Interessant:
    Betrachtung im Schwerpunktsystem.
    \begin{align*}
@@ -89,7 +89,7 @@
    (m_1 + m_2) v^{\ast\prime} = 0 \\
    E_{kin}^{\ast\prime} = \frac{1}{2}(m_1 + m_2)(v^{\ast\prime})^2 = 0
    \end{align*}
-   Im Schwerpunktsystem findet beim inelastischen Stoß eine vollständige Umwandlung der kinetischen Energie statt
+   Im Schwerpunktsystem findet beim inelastischen Stoß eine vollständige Umwandlung der kinetischen Energie statt. \\
    Allgemein:
    \begin{align*}
    \intertext{falls $\v F_{außen} =0$}
@@ -98,5 +98,5 @@
    \sum E_{kin,i} &= \sum E'_{kin,i} + Q \\
    Q &= 0 \tag*{elastisch} \\
    Q &> 0 \tag*{inelastisch} \\
-   Q &x 0 \tag*{superelastisch} \\
+   Q &< 0 \tag*{superelastisch} \\
    \end{align*}
