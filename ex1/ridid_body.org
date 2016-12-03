@@ -104,7 +104,7 @@
    \[I = \int r^2_\perp \d m = \Theta\]
    \[E_{rot} = \frac{1}{2} I \omega^2\]
 
-** steinersche Satz
+** Steinersche Satz
    Nochmal Stab:
 
    \begin{align*}

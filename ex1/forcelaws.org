@@ -126,7 +126,7 @@
 	\[F_G = m g = F_Z \cos{\theta}\]
 	\[F_{Zp} = F_Z \sin{\theta}\]
 	\[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
-	\[a_{Zp} = \omega^2 r \Rightarrow: \omega \sqrt{\frac{g}{\tan{\theta}}}\]
+	\[a_{Zp} = \omega^2 r \Rightarrow \omega = \sqrt{\frac{g}{\tan{\theta}}}\]
 	- $\theta$ steigt mit $\omega$ an
 	- $\theta(\omega)$ ist unabhängig von Masse
 *** Beispiel 2 Geostationärer Satellit
