@@ -16,7 +16,7 @@
 	  - Kapselung durch objekt-orientierte Programmierung (sonst zu kompliziert)
   - wir kennen bereits ein dynamisches Array: std::string ist Abbildung int (Index) \rightarrow char (Zeichen), mit $0 \leq~\text{index}~ < ~\text{s.size()}$
 	- wichtigste Funktion: s.size() (weil Größe dynamisch), s[4 ] Indexzugriff, s+="mehr" Zeichen anhängen
-  - wir wollen das selbe Verhalten für beliebige Elementtypen:
+  - wir wollen dasselbe Verhalten für beliebige Elementtypen:
 	 #+BEGIN_SRC cpp
 	 #include <vector>
 
@@ -105,22 +105,22 @@
 	   #+BEGIN_SRC cpp
 	   std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 	   #+END_SRC
-*** Effizenz von push_back
-	Warum ist push_back() effizient? (bei std::vector)
+*** Effizenz von push\_back
+	Warum ist push\_back() effizient? (bei std::vector)
 	- veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens vei Initialisierung, bekannt)
 	  - sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
 	- modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push_back())
 	  - dies kann sehr effizient unterstützt werden \Rightarrow dynamisches Array
 	- std::vector verwaltet intern ein statisches Array der Größe "capacity", v.capacity() >= c.size()
 	  - wird das interne Array zu klein \Rightarrow wird automatisch auf ein doppelt so großes umgeschaltet
-	  - ist das interne Array zu groß, bleiben unbenutzt Specherzellen als Reserve
-	- Verhalten bei push_back():
-	  1. nach REserve vorhanden: lege neues Element im eine unbenutze Speicherzelle \Rightarrow billig
+	  - ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve
+	- Verhalten bei push\_back():
+	  1. noch Reserve vorhanden: lege neues Element im eine unbenutze Speicherzelle \Rightarrow billig
 	  2. keine Reserve
 		 1. alloziiere neues statisches Array mit doppeler Kapazität
-		 2. kipiere die Daten aus altem ins neue Array
+		 2. kopiere die Daten aus dem altem in das neue Array
 		 3. gebe das alte Array frei
-		 4. gehe zum Anfang des Algorithmus, jetzt wieder Reserve vorhanden
+		 4. gehe zum Anfang des Algorithmus, jetzt ist wieder Reserve vorhanden
 	- das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist
 	- Bespiel:
 	  #+BEGIN_SRC cpp
@@ -148,7 +148,7 @@
 		- 32 Elemente einfügen = 32 Kopien extern \Rightarrow intern
 		- aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern \Rightarrow intern
 		- \Rightarrow im Durchschnitt sind pro Einfügung 2 Kopien nötig
-		- \Rightarrow dynamisches Array ist doppel so teuer sie das statische  \Rightarrow immer noch sehr effizient
+		- \Rightarrow dynamisches Array ist doppelt so teuer sie das statische  \Rightarrow immer noch sehr effizient
 	- relevante Funktionen von std::vector
 	  #+BEGIN_SRC cpp
 	  v.size() // aktuelle Zahl der Elemente
@@ -160,9 +160,9 @@
 	  #+END_SRC
 	- wenn Reserve > size: capacity kann auch halbiert werden
 	- wichtige Container der c++ Standardbibilothek
-	- wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered_map
-	- std::set, std::unordered_set: Menge, jedes Element ist hächstens einmal enthalten zum Beispiel Duplikate
+	- wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered\_map
+	- std::set, std::unordered\_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
 	- std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push_back() und pop_back() bei std::vector
 	- std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
-	- std::deque ("double-ended queue") gleichzeitig stack und queue, puhs, pop_front(), pop_back()
-	- std::priority_queue, push() und pop() - Element mit höchster niedrigster Priorität (unser defined)
+	- std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop\_front(), pop\_back()
+	- std::priority\_queue, push() und pop() - Element mit höchster niedrigster Priorität (user defined)

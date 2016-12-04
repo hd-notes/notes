@@ -50,7 +50,7 @@
   - Idee von Insertion Sort:
 	- wie beim Aufnehmen und Ordnen eines Kartenblatts
 	- gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
-	- Einfügen des k-ten Elements an richtiger Stelle \rightarrow Erzeuge Lücke an richtiger Positin duch verschieben von Elementen nach rechts
+	- Einfügen des k-ten Elements an richtiger Stelle \rightarrow Erzeuge Lücke an richtiger Position duch verschieben von Elementen nach rechts
 	- Wiederholung für $k = 1, \ldots, N$
 	- Bespiel:
 	  | 4 | 2 | 3 | 5 | 1 |
@@ -99,7 +99,7 @@
 	  });
 	  #+END_SRC
 * templates
-  insertion_sort soll für beliebige Elementtypen funktionieren
+  insertion\_sort soll für beliebige Elementtypen funktionieren
   #+BEGIN_SRC cpp
 	  void insertion_sort(std::vector<double & v) {
 		  for(int i = 0; i < v.size(); i++) {

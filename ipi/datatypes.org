@@ -5,21 +5,23 @@
 ** zusammengesetzte Typen
    mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
    - wie das geht $\Rightarrow$ später
-   - Standardtypen: in der C++ Standardbibilothek definiert, aktivire durch $\#include <module_name>$
+   - Standardtypen: in der C++ Standardbibilothek definiert, aktivieren durch $\#include <module\_name>$
 	 - std::string, std::complex, etc.
-   - externe Typen: aus anderer Bibilothek, die manzuvor herunterladen und installieren muss
+   - externe Typen: aus anderer Bibilothek, die man zuvor herunterladen und installieren muss
    - eigene Typen: vom Programmierer selbst implementiert $\Rightarrow$ später
-   Durch "objekt-orientierte Programmierung" (\Rightarrow später) erreicht man, dass zusammengesetzte Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
+   Durch "objekt-orientierte Programmierung" (\Rightarrow später) erreicht man, dass zusammengesetzte
+    Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
    - "Kapselung": die interne Struktur und Implementation ist für Benutzer unsichtbar
    - Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
 
-   \Rightarrow Punktsyntax: type_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+   \Rightarrow Punktsyntax: type\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 ** Zeichenketten-Strings:
    zwei Datentypen in c++
    - klassischer c-string: char[] ("charakter array") \Rightarrow nicht gekapselt, umständlich
    - c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
-   - string literale: "zeichekette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
-	 Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale), müssen erst in c++ strings umgewandelt werden, das passiert mist automatisch
+   - string literale: "zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
+	 Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale),
+	  müssen erst in c++ strings umgewandelt werden, das passiert meist automatisch
 	 - #include <string>
 	 - Initialisierung:
 	   #+BEGIN_SRC cpp
@@ -47,7 +49,7 @@
 	   s3 = "ghi" + s; // "ghixy"
 	   s3 = s + s; // "xyxy"
 	   // aber nicht!!
-	   s3 = "abc" + "def"; // Bug literale unterstütze + mit ganz anderer Bedeutung
+	   s3 = "abc" + "def"; // Bug Literale unterstützen + mit ganz anderer Bedeutung
 	   s3 = std::string("abc") + "def"; // Ok
 	   #+END_SRC
 	 - Add-Assignment: Abkürzung für Addition gefolt von Zuweisung
