@@ -9,11 +9,11 @@
 		 - natürliche Ausdrucksweise für arithmetische und algebraische Funktionaliät ("Taschenrechner")
 		 - einfache Auswertung durch Substitutionsmodell \rightarrow Auswertungsreihenfolge nach Post-Order
 		 - mathematisch gut formalisierbar \Rightarrow Korrektheitsbeweise, besonders bei Parallelverarbeitung
-		 - Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakutlät, Baumtraversierung)
+		 - Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakultät, Baumtraversierung)
 	   - Nachteile
 		 - viele Probleme lassen sich anders natürlicher ausdrücken (z.B. Rekursion vs. Iteration)
 		 - setzt unendlich viel Speicher voraus (\Rightarrow Memory management notwendig \Rightarrow später)
-		 - Entitäten, die sich zeitlich verändern schwer zu modellieren
+		 - Entitäten, die sich zeitlich verändern sind schwer zu modellieren
 	   - Korrolar: kann keine externen Resourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
 		 - \Rightarrow Multi-Paradigmen-Sprachen, zum Beispiel Kombination von Funktionaler Programmierung und prozeduraler Programmierung
 ** Kennzeichen
@@ -71,12 +71,12 @@
 		 #+END_SRC
 	   - funktional:
 		 #+BEGIN_SRC cpp
-		 int foo(int x) {     // x = 3
+		 int foo(int x) {      // x = 3
 			 int y1 = 2;
-			 int z1 = x * y;  // z1 = 6
+			 int z1 = x * y1;  // z1 = 6
 			 int y2 = 5;
-			 int z2 = z * y;  // z2 = 15
-			 return z1 + z2;  // 21
+			 int z2 = z1 * y2; // z2 = 15
+			 return z1 + z2;   // 21
 		 }
 		 #+END_SRC
 	   - Syntax
@@ -177,8 +177,8 @@
 	#+END_SRC
 	- Befehle, um Schleifen vorzeitig abzubrechen
 	  - continue: Bricht aktuelle Iteration ab und springt zum Scleifenkpf
-	  - break: bbricht ganz Schleife ab und springt hinter das Schleifenende
-	  - return: beednet Funktion und auch die Schleife
+	  - break: bricht die ganze Schleife ab und springt hinter das Schleifenende
+	  - return: beendet Funktion und auch die Schleife
 	Beispiel: nur gerade Zahlen ausgeben
 	#+BEGIN_SRC cpp
 	for(int i = 0; i < 10; i++) if(c % 2 == 0) std::cout << c << std::endl;

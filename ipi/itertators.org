@@ -1,5 +1,5 @@
 * Iteratoren
-  - für Arrays lautet kanonische Schleife
+  - für Arrays lautet die kanonische Schleife
 	#+BEGIN_SRC cpp
 	for(int i = 0; i != v.size(); i++) {
 		int current = v[i]; // lesen
@@ -9,12 +9,13 @@
   - wir wollen eine so einfache Schleife für beliebige Container
 	- der Index-Zugriff v[] ist bei den meisten Container nicht effizient
 	- Iteratoren sind immer effizient \Rightarrow es gibt sie in allen modernen Programmiersprachen, aber Details sehr unterschiedlich
-	- Analogie: Zeiger einer Ühr, Cursor in Textverarbeitung
+	- Analogie: Zeiger einer Uhr, Cursor in Textverarbeitung
 	  - \Rightarrow ein Iterator zeigt immer auf ein Element des Containers, oder auf Spezialwert "ungültiges Element"
 	- in c++ unerstützt jeder Iterator 5 Grundoperationen
 	  1. Iterator auf erstes Element erzeugen: auto iter = v.begin();
 	  2. Iterator auf "ungültiges Element" erzeugen: auto end = v.end();
-	  3. Vergleich iter1 == iter2 (Zeigen auf gleiches Element), iter != end: iter zeigt *nicht* auf ungültiges Element
+	  3. Vergleich $iter1 == iter2$ (Zeigen auf gleiches Element), $iter != end$: 
+	  iter zeigt *nicht* auf ungültiges Element
 	  4. zum nächsten weitergehen: ++iter. Ergebnis ist v.end(), wenn man vorher beim letzten Element war
 	  5. auf Daten zugreifen: *iter ("Dereferenzierung") analog v[k]
 
@@ -31,9 +32,9 @@
 	  }
 	  #+END_SRC
   - Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
-  - "bidirectional iterators": unterstützen auch --iter, zum vorigen Element ((fast) alle Iteratoren in std)
+  - "bidirectional iterators": unterstützen auch $--iter$, zum vorigen Element ((fast) alle Iteratoren in std)
   - "random acces iterators": beliebige Sprünge "iter += 5; iter -= 3;"
-  - Besonderheit für assoziative Arrays (std::map, std::unordered_map)
+  - Besonderheit für assoziative Arrays (std::map, std::unordered\_map)
 	Schlüssel und Werte können beliebig gewählt werden
 	- \Rightarrow das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
 	  #+BEGIN_SRC cpp
