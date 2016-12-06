@@ -60,7 +60,7 @@
    Drehimpuls hängt vom Koordinatensystem ab.
    \begin{remark}
    $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
-   ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion an ursprung kein Vorzeichenänderung
+   ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion am Ursprung kein Vorzeichenänderung
    \begin{proof}
    \[\v a \to -\v a, \v b \to -\v b \Rightarrow \v a \times \v b \to + \v a \times \v b \qedhere\]
    \end{proof}
@@ -137,7 +137,7 @@
 	 &\Rightarrow \v l(\v F + \v\nabla V) = 0 \\
 	 &\Rightarrow \v F + \v\nabla V = 0 \checkmark
 	 \end{align*}
-	 Lücke: Wegunabhängigketi der Definition von $V$: \\
+	 Lücke: Wegunabhängigkeit der Definition von $V$: \\
 	 Wähle zwei unterschiedliche Wege ($L_1, L_2$):
 	 \begin{align*}
 	 \int_{L_1}\d\v s \v F - \int_{L_2}\d \v s \v F = \underarrow[\oint]{\text{Rand von } $\Sigma$} \d\v s\v F \\
@@ -166,7 +166,7 @@
    Allgemein steht $\Delta \v f$ oder $\d \v f$ für ein kleines oder infinitesimales Flächenelement, Länge $\estimates$ Größe der Fläche
    Die Richtung des Vektors definiert *Orientierung* der Fläche (Zum Beispiel Oben = da, wo der Pfeil hinzeigt) \\
    Randkurve: so definiert, dass man von oben gesehen linksherum (mathematisch positiver Drehsinn) läuft
-   1. Spezielle Lange in unsererer Rechung unwichtig
+   1. Spezielle Lage in unsererer Rechung unwichtig
    2. Übergang zu größeren Flächen durch Aufaddieren
    Fläche $= N\Delta ^2 \Rightarrow N\sim \frac{1}{Delta^2}$
    \begin{align*}

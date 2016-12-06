@@ -6,7 +6,7 @@
    3. Für Kräfte zwischen zwei Massenpunkten gilt:
 	  \[\v{F}_12 = -\v{F}_21\]
 
-   $2$ definiert die *träge* Masse
+   2. definiert die *träge* Masse
    Die entscheidene physikalische Aussage von $2.$ ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
    Alternative Diskussionen der obigen Axiomatik:
    - zum Beispiel Kapitel 1.2 von Jose/Saletan (mit $2$ Definition der Kraft)
@@ -65,20 +65,20 @@
 	  allgemeines Anfangswertproblem mit Anfangsbedingung $(x_0,y_0)$
 	  \[y_0^2 = x_0^2 + 2c \Rightarrow 2c = y_0^2 - x_0^2 \Rightarrow y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
 ****** TODO Skizze
-*** System von Dgl
-	(fast) alles oben gesagte funktioniert auch für Systeme gewöhnlicher Dgl. 1. Ordnung:
+*** System von Dgl.
+	(Fast) alles oben gesagte funktioniert auch für Systeme gewöhnlicher Dgl. 1. Ordnung:
 	\[\f{\d y^1(x)}{\d x} = f^1(x,y^1,\ldots,y^n)\]
 	\[\f{\d y^n(x)}{\d x} = f^n(x,y^n,\ldots,y^n)\]
 	Vektorschreibweise:
 	\[\f{\d \v y}{\d x} = \v f(x,\v y)\]
 	Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
 	\[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
-	Anfangsbedingungen: $(x_0,\v{y}_0)$ \rightarrow $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung \Rightarrow allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
+	Anfangsbedingungen: $(x_0,\v{y}_0)$ \rightarrow $n+1$ Parameter. Einer davon entspricht der Verschiebung entlang ein und derselben Lösung \Rightarrow allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
 *** Systeme von $n$ gewöhnlicher Dgl. p-ter Ordnung
 	\[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
 	Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
 **** Tatsache
-	 Systeme von Dgl können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
+	 Systeme von Dgl. können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
 	 Wir illustieren dies am Beispiel mit $p = 2$
 **** Beispiel
 	 \[\v{y}''(x) = \v{f}(x,\v{y},\v{y}')\]
@@ -89,9 +89,9 @@
 	 \v{y}'(x) &= \v z \tag{$\equiv g(x,\v y, \v z)$}
 	 \end{cases}
 	 \end{equation}
-	 Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
+	 Ursprüngliche Form folgt duch Einsezten der 2. Gleichung in die Erste.
 	 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-	 \Rightarrow System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
+	 \Rightarrow System von $p$ Dgl 1. Ordung; allgemeine Lösung hat $p$ Parameter
 *** Erste physikalische Beipiele
 **** Punktmasse
 	 3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
@@ -111,7 +111,7 @@
 	  \begin{equation}
 	  \begin{cases}
 	  \dot v &= \frac{F(x,v)}{m} \\
-	  \dot x = v
+	  \dot x &= v
 	  \end{cases}
 	  \end{equation}
 	  \[\cvec{v ; x} = \cvec{\frac{F(x,v)}{m} ; v}\]
@@ -132,7 +132,7 @@
 	  \end{axis}
 	  \end{tikzpicture}
 ***** Freier Fall mit Luftwiederstand
-	  Aufgabe: Bestime zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
+	  Aufgabe: Bestimme die zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
 	  Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
 	  \[F=m\ddot x \Rightarrow m g - c \dot{x}^2 = m\ddot x \Rightarrow \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
 	  Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
@@ -239,7 +239,7 @@
 	 \[y_{hom}(x) = C_1 y_1(x) + \ldots + C_n y_n(x)\]
 	 Die allgeimeine Lösung ist stets von dieser Form.
 
-	 Wenn wir außerdem eine *partikuläre* Lösung der onhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
+	 Wenn wir außerdem eine *partikuläre* Lösung der inhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
 	 \begin{align*}
 	 y(x) = y_{hom}(x) + y_{part}(x)
 	 \intertext{"Beweis" durch Einsetzen in}

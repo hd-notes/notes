@@ -196,7 +196,7 @@
    \[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
 
    $GL^+ (n)$ - orientierungserhaltende Untergrupppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
-   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal \Rightarrow $A\cdot B$ orthogonal. Dazu:
+   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüfen dass $A,B$ orthogonoal \Rightarrow $A\cdot B$ orthogonal. Dazu:
    \[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
 
    Wichtige Untergrupe: Spezielle Orthogonale Transformationn $SO(n)$ \\
@@ -213,7 +213,7 @@
    \end{align*}
    Fakt: Jedes Element von $O(3)$ ist schreibbar als $R$ oder $R \cdot R_x$ mit $R \in SO(3)$, $SO(3)$ sind "echte" Drehungen.
 
-   Überlegen Sie sich, dass $R\in SO(2)$ llgemein schreibbar ist als
+   Überlegen Sie sich, dass $R\in SO(2)$ allgemein schreibbar ist als
    \[R = \begin{pmatrix} \cos{\phi} & -\sin{\phi} \\ \sin{\phi} & \cos{\phi}\end{pmatrix}\]
    Identifizieren sie $SO(2)$ mit folgender Menge
    \[\{z \in \mathbb{C} \mid \abs{z} = 1\}\]
