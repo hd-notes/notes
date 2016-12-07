@@ -114,14 +114,14 @@
 	Für *einfach zusammenhängende Gebiete*[fn::Jede geschlossene Kurve kann auf Länge Null zusammengezogen werden] gilt:
 	\[\v F ~\text{ist konservativ}~ \iff \v\nabla\v F = 0\]
 **** Begründung
-	 \implies \\ \[\v F = -\v\nabla V \implies \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
+	 $\implies$ \\ \[\v F = -\v\nabla V \implies \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
 	 \begin{align*}
 	 (\v\nabla\times\v F)^i &= \varepsilon^{ijk} \frac{\partial}{\partial x^j} F^k = \varepsilon^{ijk}\partial^i F^k \\
 	 &= -\varepsilon^{ijk}\partial^j\partial^k V = -\frac{1}{2}(\varepsilon^{ijk} -\varepsilon^{ikj})\partial^j\partial^k V \\
 	 &= - \frac{1}{2}\varepsilon^{ijk}\partial^j \partial^k V + \frac{1}{2}\varepsilon^{ikj}\underbrace{\partial^k\partial^j}_{\mathclap{\text{habe benutzt}~\frac{\partial}{\partial x}\frac{\partial}{\partial y} = \frac{\partial}{\partial y}\frac{\partial}{\partial x}}} V \\
 	 &\underarrow[=]{$k \leftrightarrow j$} -\frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V + \frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V = 0
 	 \end{align*}
-	 \impliedby \\
+	 $\impliedby$ \\
 	 Wähle beliebiges festes $\v x_0$ im Gebiet. Definiere Potential als minus Arbeit am Massenpunkt $\rightarrow Abbildung$
 	 \begin{align*}
 	 V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
@@ -184,7 +184,7 @@
    \end{align*}
    $\v F, \v F_1, \v F_2$ jeweils am Mittelpunkt der Linienelemente
    Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \implies$ Fehler $O(\Delta)$ \\
-   \implies Auch nach Summation bleibt Fehler von $O(\Delta)$
+   $\implies$ Auch nach Summation bleibt Fehler von $O(\Delta)$
 
    Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen")
    #+end_proof

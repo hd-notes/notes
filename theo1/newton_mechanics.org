@@ -15,7 +15,7 @@
 ** Differentialgleichungen
    hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
 *** 1. Ordung
-	Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung (\implies nur 1. Ableitung):
+	Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung ($\implies$ nur 1. Ableitung):
 	\[y'(x) = f(x,y)\]
 **** Lösung
 	 Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
@@ -45,9 +45,9 @@
 	 \[\f{\d y(x)}{\d x} = y'(x) = f(x,y(x)) = \f{(x,y(x))}{1}\]
 **** Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)
 	 Steigung der gesuchten Funktion bei $x_0$ ist bekannt als $f(x_0, y_0)$
-	 \implies kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
+	 $\implies$ kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
 	 Kenne Steigung bei $x_0 \Delta x: f(x_0 + \Delta x, y_0 + \Delta x f(x_0,y_0))$
-	 \implies Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. (\implies perfekt für Numerik)
+	 $\implies$ Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. ($\implies$ perfekt für Numerik)
 *** Beispiele
 	1. \[y'(x) = f(x,y), f(x,y) = 3\]
 	   \[y'(x) = 3 \implies y(x) = \int 3\d x = 3 x + c\]
@@ -73,7 +73,7 @@
 	\[\f{\d \v y}{\d x} = \v f(x,\v y)\]
 	Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
 	\[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
-	Anfangsbedingungen: $(x_0,\v{y}_0)$ \rightarrow $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung \implies allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
+	Anfangsbedingungen: $(x_0,\v{y}_0)$ \rightarrow $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung $\implies$ allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
 *** Systeme von $n$ gewöhnlicher Dgl. p-ter Ordnung
 	\[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
 	Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
@@ -91,11 +91,11 @@
 	 \end{equation}
 	 Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
 	 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-	 \implies System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
+	 $\implies$ System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
 *** Erste physikalische Beipiele
 **** Punktmasse
 	 3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
-	 \implies 6 Dgl 1. Ordung:
+	 $\implies$ 6 Dgl 1. Ordung:
 	 \begin{equation}
 	 \begin{cases}
 	 \dot{\v v} &= \f{1}{m}\v F(t,\v x,\v v) \\
@@ -150,7 +150,7 @@
 	  $v' = 0$ bei $t' = 0 \implies c = 0$
 	  Auflösen nach $v'$: \[e^{2t'} = \frac{1 + v'}{1 - v'} \implies \ldots\]
 	  \[\implies v' = 1 - \frac{2}{e^{2t'} + 1} \implies v = \hat{v}(1 - \frac{2}{e^{\frac{2t}{\hat{t}}}} + 1)\]
-	  \implies $\hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
+	  $\implies \hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
 
 	  Zugabe: einfache physikalische Argumente für die Größe von $c$:
 	  1. $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
@@ -177,7 +177,7 @@
 	Überzeugen sie sich, dass alle Ableitungen existieren, auch bei Null! \\
 	Sie Brauchen:
 	\[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
-	Die Ableitungen verschwinden sogar bei Null \implies Taylor-Reihe ist Null, keine gute Näherung
+	Die Ableitungen verschwinden sogar bei Null $\implies$ Taylor-Reihe ist Null, keine gute Näherung
 ** Harmonicher Oszillator
    - eines der wichtigesten physikalischen Systeme
    - beschreibt viele kompilziertere Systeme angenähert
@@ -196,9 +196,9 @@
 	 \[x-x_0\equiv y \implies \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
 	 Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr großem Nutzen (viele Systeme)
 **** Lösung
-	 Newton \implies $m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
-	 \implies $\sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
-	 \implies $y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+	 Newton $\implies m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
+	 $\implies \sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
+	 $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
 	 (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
 **** Verallgemeinerungen
 	 - Reibungterm $\sim \dot{y}$

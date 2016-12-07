@@ -192,11 +192,11 @@
    - Distributivität
    #+end_defn
 
-   $GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar \implies $A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
+   $GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\implies A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
    \[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
 
    $GL^+ (n)$ - orientierungserhaltende Untergrupppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
-   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal \implies $A\cdot B$ orthogonal. Dazu:
+   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal $\implies A\cdot B$ orthogonal. Dazu:
    \[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
 
    Wichtige Untergrupe: Spezielle Orthogonale Transformationn $SO(n)$ \\
@@ -283,7 +283,7 @@
 
    *Transformation von $\delta^{ij}$* \\
    \[\delta^{\prime ij} = R^{ik} R^{jl} \delta^{kl} = R^{ik} R^{jk} = \delta^{ij}\]
-   \implies $\delta^{ij}$ ist ein *invarianter Tensor* \\
+   $\implies \delta^{ij}$ ist ein *invarianter Tensor* \\
 
    weiteres Beispiel: (für $m = n$: Levi Civita-Tensor) \\
    Wir schreiben nur $m = n = 3$ Fall aus:
@@ -303,7 +303,7 @@
    Punkt $\v x \in \mathbb{R}^3 \xrightarrow{neu}$ Ereignisse $(t,\v x) \in \mathbb{R} \times \mathbb{R}^3$ \\
    Müssen abschaffen: $\v 0$ im Vektorraum. In der Tat: $\abs{\v x}, \abs{\v y}$ sind unphysikalisch, physikalisch ist nur $\abs{\v x - \v y}$, ebenso ist nur $t_1 - t_2$ pyhsikalisch
 
-   \implies Symmetrietransformationen:
+   $\implies$ Symmetrietransformationen:
    1. Rotationen: $(t,x) \mapsto (t,Rx), R \in O(3)$
    2. Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3$
    3. Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$

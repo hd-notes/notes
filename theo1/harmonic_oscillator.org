@@ -12,7 +12,7 @@
 	 nicht lösbar!
   Aber: wir wissen schon $\sin{\omega t}, \cos{\omega t}$ sind Lösungen.
 
-  Falls jede gesuchte Gleichung lösbar \implies Hoffnung auf elegante allgemeine Lösung
+  Falls jede gesuchte Gleichung lösbar $\implies$ Hoffnung auf elegante allgemeine Lösung
 
   *Speziell:* $\alpha^1 = -1$ (für $\omega = 1, c = 0$)
 ** Komplexe Zahlen
@@ -81,7 +81,7 @@
 	&= \sum_{k = 0}^\infty \frac{(-1)^k y^{2k}}{(2 k)!} + \I \sum_{k = 0}^\infty \frac{(-1)^k y^{2k + 1}}{(2k + 1)!} \\
 	&= \cos{y} + \I \sin{y}
 	\end{align*}
-	\implies Eulersche Formel
+	$\implies$ Eulersche Formel
 	\[e^{\I \phi} = \cos{\phi} + \I \sin{\phi}\]
 *** Zusammenfassung:
    \[e^{\I\phi} = \cos{\phi} + \I \sin{\phi}\]
@@ -150,4 +150,4 @@
    \end{align*}
    Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der inhomogenen Gleichung die allgemeine Lösung der homogenen Gleichung addiert.
 
-   *Wichtig:* Langzeitverhalten ist durch die partikuläre Lösung bestimmt \implies Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
+   *Wichtig:* Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\implies$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$

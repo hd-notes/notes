@@ -6,7 +6,7 @@
   5. Thermodynamik / Quantenstatistik
   6. Allgemeine Relativitättheorie / Kosmologie
   7. Quatenfeldtheorie I (ggf. 5.)
-  8. Quatenfeldtheorie II (ggf. 6. \impliedby Stringtheorie / Teilchenphysik / Supersymmetrie)
+  8. Quatenfeldtheorie II (ggf. 6. $\impliedby$ Stringtheorie / Teilchenphysik / Supersymmetrie)
   9. Masterarbeit
   10. Masterarbeit
 ** Mathe

@@ -16,12 +16,12 @@
 	 - sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibilothek"
    - in C++: mathematisches Modul des Standardbibilothek: "cmath"
    - Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "%"
-   - mul(add(1,2),sub(5,3)) \iff ((1+2)*(5-3))
+   - mul(add(1,2),sub(5,3)) $\iff$ ((1+2)*(5-3))
 	 - oft besser, unter anderem weil man Klammer weglassen darf
-	   1. "Punkt vor Strichrechnung" 3+4*5 \iff 3+(4*5), mul, div, mod binden stärker als add, sub
+	   1. "Punkt vor Strichrechnung" 3+4*5 $\iff$ 3+(4*5), mul, div, mod binden stärker als add, sub
 	   2. Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
-		  1+2+3-4+5 \iff ((((1+2)+3)-4)+5)
-	   3. äußere Klammer kann man weglassen (1+2)\iff 1+2
+		  1+2+3-4+5 $\iff$ ((((1+2)+3)-4)+5)
+	   3. äußere Klammer kann man weglassen (1+2)$\iff$ 1+2
    - Computer wandeln Infix zuerst in Prefix Notation um
 	 1. weggelassene Klammer wieder einfügen
 	 2. Operatorensymbol durch Funktionsnamen ersetzen und an Prefix-Position verschieben
@@ -60,7 +60,7 @@
 	  - Drucke ","
 	  - Wiederhole den Algorithmus ab [[algstart1]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
 	  - Drucke ")"
-	\implies \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+	$\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 ** Prefixnotation aus dem Baum rekonstruieren
    1. <<algstart2>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
    2. sonst:
@@ -70,12 +70,12 @@
 	  - Drucke Operatorsymbol
 	  - Wiederhole den Algorithmus ab [[algstart2]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
 	  - Drucke ")"
-	\implies \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
-   \implies *inorder*
+	$\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+   $\implies$ *inorder*
 ** Berechnen des Werts mit Substitutionsmethode
    1. <<algstart3>> Wenn Wurzel dein Blatt gib Zahl zurück
    2. sonst:
 	  - Wiederhole den Algorithmus ab [[algstart3]] für das linkes Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "lhs"
 	  - Wiederhole den Algorithmus ab [[algstart3]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "rhs"
 	  - berechne funktionsname(lhs,rhs) und gebe das Ergebnis zurück
-   \implies *postorder*
+   $\implies$ *postorder*

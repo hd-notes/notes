@@ -9,15 +9,15 @@
 	 - std::string, std::complex, etc.
    - externe Typen: aus anderer Bibilothek, die man zuvor herunterladen und installieren muss
    - eigene Typen: vom Programmierer selbst implementiert $\implies$ später
-   Durch "objekt-orientierte Programmierung" (\implies später) erreicht man, dass zusammengesetzte
+   Durch "objekt-orientierte Programmierung" ($\implies$ später) erreicht man, dass zusammengesetzte
     Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
    - "Kapselung": die interne Struktur und Implementation ist für Benutzer unsichtbar
    - Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
 
-   \implies Punktsyntax: type\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+   $\implies$ Punktsyntax: type\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 ** Zeichenketten-Strings:
    zwei Datentypen in c++
-   - klassischer c-string: char[] ("charakter array") \implies nicht gekapselt, umständlich
+   - klassischer c-string: char[] ("charakter array") $\implies$ nicht gekapselt, umständlich
    - c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
    - string literale: "zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
 	 Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale),

@@ -10,9 +10,9 @@
    #+END_SRC
   Hauptanwendung:
   - die Umgebung, in der eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
-  - häuftig möchte man Speicherzellen in beiden Umgebungen teilen \implies verwende Referenzen
+  - häuftig möchte man Speicherzellen in beiden Umgebungen teilen $\implies$ verwende Referenzen
   - häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
-	- Durch pass-by-reference brauch man keine Kopie \implies typisch "const &", also read-only, keine Seiteneffekte
+	- Durch pass-by-reference brauch man keine Kopie $\implies$ typisch "const &", also read-only, keine Seiteneffekte
 	 #+BEGIN_SRC cpp
 	 int foo(int x) { // pass-by-value
 		 x += 3;

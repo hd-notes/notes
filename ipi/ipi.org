@@ -34,7 +34,6 @@
 
 #+INCLUDE: "/home/robin/study/lectures/ipi/introduction.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/differences.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/differences.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/substitution_model.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/machine_code.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ipi/functional_programming.org" :minlevel 1
@@ -121,7 +120,7 @@
 	- erweitert funktionale und prozedurale und objekt-orientiere Programmierung
   - zwei Arten von Templates ("Schablone"):
 	1. Klassen-templates für Datenstrukturen, zum Beispiel Container sollen beliebige Elementtypen unterstützen
-	   - Implementation \implies später
+	   - Implementation $\implies$ später
 	   - Benutzung: Datenstrukturname gefolgt vom Elementtyp in Spizen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
 	2. Funktionen-Templates: es gab schon function overloadingg
 	   #+BEGIN_SRC cpp
@@ -158,7 +157,7 @@
 			 sq(3.0); // == sq<double>(3.0) == 9
 			 #+END_SRC
 		   - kombiniert man templates mit Overloading, wird die ausprogrammierte Variante vom Compiler bevorzugt.
-			 Komplizierte Fälle (Argument teilweise Template, teilweise hard_coded) \implies für Fortgeschrittene
+			 Komplizierte Fälle (Argument teilweise Template, teilweise hard_coded) $\implies$ für Fortgeschrittene
 		 - Beispiel 2: Funktion, die ein Array auf Konsole ausgibt, für beliebige Elementtypen
 		   #+BEGIN_SRC cpp
 		   template<typename ElementType>
@@ -232,5 +231,5 @@
 		   }
 		   // == std::is_sorted
 		   #+END_SRC
-		 - Bemerkung1: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, \implies Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
-		 - mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming \implies nur für Fortgeschrittene
+		 - Bemerkung1: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
+		 - mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene

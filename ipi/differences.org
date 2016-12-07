@@ -50,13 +50,13 @@
 	Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
 	| Zustände \ Ereignisse | Knopf drücken                                     | Timeout                                                   | Timeout(Variante)                       |
 	|-----------------------+---------------------------------------------------+-----------------------------------------------------------+-----------------------------------------|
-	| aus                   | \implies{halb} \\ {4 LEDs an}                 | %                                                         | (\implies{aus},{nichts})             |
-	| halb                  | (\implies{voll},{8 LEDs an})                   | %                                                         | (\implies{aus},{nichts})             |
-	| voll                  | (\implies{blinken an},{Timer starten})         | %                                                         | (\implies{aus},{nichts})             |
-	| blinken an            | (\implies{aus},{Alle LEDs aus, Timer stoppen}) | (\implies{blinken aus},{alle LEDs aus, Timer starten}) | (\implies{blinken aus},{8 LEDs aus}) |
-	| blinken aus           | (\implies{aus},{Alle LEDs aus, Timer stoppen}) | (\implies{blinken an},{alle LEDs an, Timer starten})   | (\implies{blinken an},{8 LEDs an})   |
+	| aus                   | $\implies$ {halb} \\ {4 LEDs an}                  | %                                                         | ($\implies$ {aus},{nichts})             |
+	| halb                  | ($\implies$ {voll},{8 LEDs an})                   | %                                                         | ($\implies$ {aus},{nichts})             |
+	| voll                  | ($\implies$ {blinken an},{Timer starten})         | %                                                         | ($\implies$ {aus},{nichts})             |
+	| blinken an            | ($\implies$ {aus},{Alle LEDs aus, Timer stoppen}) | ($\implies$ {blinken aus},{alle LEDs aus, Timer starten}) | ($\implies$ {blinken aus},{8 LEDs aus}) |
+	| blinken aus           | ($\implies$ {aus},{Alle LEDs aus, Timer stoppen}) | ($\implies$ {blinken an},{alle LEDs an, Timer starten})   | ($\implies$ {blinken an},{8 LEDs an})   |
 
-	Variante: Timer läuft immer (Signal alle 0.3s) \implies Timout ignorieren im Zustand "aus", "halb", "voll"
+	Variante: Timer läuft immer (Signal alle 0.3s) $\implies$ Timout ignorieren im Zustand "aus", "halb", "voll"
 *** Beispiel 2:
 	\begin{align}
 	&1~0~1~1~0~1~0 &= 2 + 8 + 16 + 74 &= 90_{\text{dez}} \\
@@ -82,7 +82,7 @@
 	 | carry = 1 | $\emptyset$ | "1"      |
 	 *Wichtig:* In jedem Zustand muss für *alle möglichen* Ereignisse eine Aktion und Folgezustand definiert werden.
 	 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen "Bug".
-	 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" \implies Übergang nach "Fehler",
+	 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\implies$ Übergang nach "Fehler",
 	 Aktion: Ausgeben einer Fehlermeldung
 ***** TODO Skizze Fehlermeldung
 	  Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
@@ -111,7 +111,7 @@
 \end{center}
 	  Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
 	  Spendiert man zusätzlichen Specher, geht mehr:
-	  - Automat mit Stack-Speicher (Stapel oder Keller) \implies Kellerautomat (Kontextfreie Sprachen)
+	  - Automat mit Stack-Speicher (Stapel oder Keller) $\implies$ Kellerautomat (Kontextfreie Sprachen)
 	  - Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles auführen, was man intuitiv für berechenbar hält
 	  Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
 	  Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)

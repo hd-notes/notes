@@ -1,4 +1,4 @@
-% Created 2016-12-07 Mi 02:02
+% Created 2016-12-07 Mi 19:25
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -90,7 +90,7 @@ Einleitung: \\
 \item Thermodynamik / Quantenstatistik
 \item Allgemeine Relativitättheorie / Kosmologie
 \item Quatenfeldtheorie I (ggf. 5.)
-\item Quatenfeldtheorie II (ggf. 6. $\Leftarrow$ Stringtheorie / Teilchenphysik / Supersymmetrie)
+\item Quatenfeldtheorie II (ggf. 6. $\impliedby$ Stringtheorie / Teilchenphysik / Supersymmetrie)
 \item Masterarbeit
 \item Masterarbeit
 \end{enumerate}
@@ -126,7 +126,7 @@ Analog: Von Beschleunigung zur Geschwindigkeit, und dann weiter zur Trajektorie
 \subsubsection{Üben dieser Logik an unserem Beispiel}
 \label{sec-2-1-2}
 Gegeben: $a(t) = a_0,~t_0=0,v_0,x_0$ \\
-    \[\Rightarrow~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
+    \[\implies~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
 \[x(t) = x_0 + \int_0^t (v_0 + a_0 t')\mathrm{d}t' = x_0 + v_0 t + \frac{a_0}{2}t^2\]
 \subsection{Grundbegriffe der Differenzial und Integralrechung}
 \label{sec-2-2}
@@ -139,10 +139,10 @@ Gegeben: $a(t) = a_0,~t_0=0,v_0,x_0$ \\
 $\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwaches $\Delta f\equiv f(x + \Delta x) - f(x)$.
 \begin{itemize}
 \item Aus $\Delta f = f'(x)\Delta(x) + O(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
-\item Anwendung auf die Identitätabbildung: $x \mapsto x \Rightarrow \mathrm{d}x = \Delta x$
-      \[\Rightarrow \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
+\item Anwendung auf die Identitätabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
+      \[\implies \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
       Dies ist eigentlich nur eine Schreibweise für $f'(x)$, \uline{aber} nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwertdefinition)
-\item $f'(x)$ wieder Funktion $\Rightarrow$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
+\item $f'(x)$ wieder Funktion $\implies$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
 \item Praxis
 \[(f\cdot g)' = f' g + g' f~\text{(Produkt/Leibnizregel)}\]
 \[(f \circ g)'(x) = f'(g(x))g'(x)~\text{(Kettenregel)}\]
@@ -154,7 +154,7 @@ $\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwaches $\Delta 
 \[(x^x)' = (e^{\ln{x^x}})' = (e^{x\ln{x}})' = e^{x\ln{x}}(\ln{x} + 1) = x^x(\ln{x} + 1)\]
 \[\arctan'(x) \equiv (\tan^{-1}(x)) = \frac{1}{\tan^{-1}(y)}~\text{wobei $y = \tan^{-1}(x)$}\]
 Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}} + \sin{y}(\frac{1}{\cos{y}})' = 1 + \sin{y}(-\frac{1}{\cos^2{y}})(-\sin{y}) = \] \\
-        \[ 1 + \tan^2{y} = 1 + x^2 \\ \Rightarrow \arctan'(x) = \frac{1}{1 + x^2}\]
+        \[ 1 + \tan^2{y} = 1 + x^2 \\ \implies \arctan'(x) = \frac{1}{1 + x^2}\]
 \end{itemize}
 \item Verknüpfung \[f\circ g: x\mapsto f(g(x))\]
 \item Inverse \[f^{-1} : x=f(y)\mapsto y\]
@@ -264,7 +264,7 @@ $\rightarrow$ übliche Darstellung durch "Pfeile"
 Trajektorie ist Abbildung: $\mathbb{R} \to \mathbb{R}^3, t\to \vec{x}(t) ) (x^1(t),x^1(t),x^3(t))$
 \[\vec{v} = \dot{\vec{x}}(t), \vec{a(t)} = \dot{\vec{v}}(t) = \ddot{\vec{x}}(t)\]
 Setzt allgemeine Definition der Ableitun voraus:
-\[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \Rightarrow \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
+\[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \implies \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
 \subsubsection{Beispiel für 3-dimensionale Trajektorie}
 \label{sec-2-5-1}
 Schraubenbahn:
@@ -306,7 +306,7 @@ Abbildung von $V\times V \to \mathbb{R},~(v,w) \mapsto v\cdot w$ mit den Eigensc
 \item $(\alpha u + \beta v) \cdot w = \alpha u\cdot w + \beta v\cdot w$
 \end{itemize}
 Sie heißt positiv-semidefinit, falls  $v\cdot v\geq 0$, \\
-    Sie heißt positiv-definit, falls  $v\cdot v = 0 \Rightarrow v = 0$
+    Sie heißt positiv-definit, falls  $v\cdot v = 0 \implies v = 0$
 Hier : Skalarprodukt $\equiv$ positiv definite symmetrische Bilinearform
 \subsubsection{Norm (Länge) eines Vektors}
 \label{sec-2-6-2}
@@ -332,7 +332,7 @@ Haben benutzt: $\v x\cdot \v y = \abs{\v x}\abs{\v y}\cos{\theta}$
 \[\v x \cdot \v y = x^1 \cdot y^1; \cos{\theta} = \frac{y^1}{\abs{\v y}}; \abs{\v x} = x^1\]
 \paragraph{{\bfseries\sffamily TODO} Skizze}
 \label{sec-2-7-1-1}
-\[\Rightarrow \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
+\[\implies \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
 Dass dies für beliebige Vektoren gilt, wird später klar werden.
 \subsubsection{Infinisetimaler Abstand}
 \label{sec-2-7-2}
@@ -347,14 +347,14 @@ $\abs{d\v x}$ entlang $\v x(t)$ aufaddieren $\rightarrow$ Bogenlänge.
 \[s(t) = \int_{t_0}^t \abs{\d \v x} = \int_{t_0}^t \d t' \abs{\f{\d \v x}{\d t'}} = \int_{t_0}^t\d t'\sqrt{\dot{\v x}(t')^2} = \int_{t_0}^t \sqrt{\v v(t')^2}\]
 Infinitesimale Version: \[\f{\d s(t)}{\d t} = \abs{\f{\d\v x}{\d t}} = \abs{\v v}\]
 Man kann (im Prinzip) $s(t) = s$ nach $t$ auflösen.
-\[\Rightarrow t = t(s) \Rightarrow \underbrace{\v x(s)}_{\text{Parametrisierung der Trajektorie durch die Weglänge $s$}} \equiv \v x(t(s))\]
+\[\implies t = t(s) \implies \underbrace{\v x(s)}_{\text{Parametrisierung der Trajektorie durch die Weglänge $s$}} \equiv \v x(t(s))\]
 Nützlich, zum Beispiel für die Definition des Tangentenvektors:
 \[\v T(s) = \f{\d\v x(s)}{\d s}\]
-Es gilt \[\v T\parallel \v v; \abs{\v T} = \abs{\f{\v v \d t}{\abs{\v v}\d t}} = 1 \Rightarrow \v T \cdot \v T = 1\]
+Es gilt \[\v T\parallel \v v; \abs{\v T} = \abs{\f{\v v \d t}{\abs{\v v}\d t}} = 1 \implies \v T \cdot \v T = 1\]
 Ableiten nach $s$:
 \[0 = \f{\d}{\d s}(1) = \f{\d \v T}{\d s}(\v T \cdot\v T) = \f{\d \v T}{\d s}\cdot \v T + \v T\cdot \f{\d\v T}{\d s} = 2\v T \cdot \f{\d \v T}{\d s}\]
 Nutze \[\v T\cdot \v T = T^i T^i\]
-$\Rightarrow$ Ableitung des Tangentenvektors ist ortogonal zum Tangentenvektor.
+$\implies$ Ableitung des Tangentenvektors ist ortogonal zum Tangentenvektor.
 Krümmungsradius der Bahn: \[\rho \equiv \f{1}{\abs{\f{\d \v T}{\d s}}}\]
 Normalenvektor: \[\v N = \f{\f{\d \v T}{\d s}}{\abs{\f{\d \v T}{\d s}}} = \rho \f{\d \v T}{\d s}\]
 \subsubsection{Beispiel in d=2}
@@ -363,8 +363,8 @@ Normalenvektor: \[\v N = \f{\f{\d \v T}{\d s}}{\abs{\f{\d \v T}{\d s}}} = \rho \
 \[\v v(t) = R\omega (-\sin(\omega t), \cos{\omega t})\]
 \[\abs{\v v} = \sqrt{(R\omega)^2 (\sin^2{\omega t}+\cos^2{\omega t})} = R\omega\]
 \[s(t) = \int_{t_0 = 0}^t \d t' \abs{\v v} = R\omega t;~t(x) = = \f{s}{R\omega}\]
-\[\Rightarrow \v x(s) = R(\cos{\f{s}{R}}, \sin{\f{s}{R}}), \v T = \f{\d\v x}{\d s} = (-\sin{\f{s}{R}},\cos{\f{s}{R}})\]
-\[\f{\d\v T}{\d s} = -\f{1}{R}(\cos{\f{s}{R}}, \sin{\f{s}{R}}) \Rightarrow \rho = R;~\v N = -(\cos{\f{s}{R}}, \sin{\f{s}{R}})\]
+\[\implies \v x(s) = R(\cos{\f{s}{R}}, \sin{\f{s}{R}}), \v T = \f{\d\v x}{\d s} = (-\sin{\f{s}{R}},\cos{\f{s}{R}})\]
+\[\f{\d\v T}{\d s} = -\f{1}{R}(\cos{\f{s}{R}}, \sin{\f{s}{R}}) \implies \rho = R;~\v N = -(\cos{\f{s}{R}}, \sin{\f{s}{R}})\]
 \paragraph{{\bfseries\sffamily TODO} Skizze}
 \label{sec-2-8-1-1}
 \subsection{Vektorprodukt}
@@ -420,7 +420,7 @@ Vorhersagen erfordern: $\v F \rightarrow \text{Trajektorie}$. Genauer: Sei $\v F
 hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
 \subsubsection{1. Ordung}
 \label{sec-3-3-1}
-Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung ($\Rightarrow$ nur 1. Ableitung):
+Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung ($\implies$ nur 1. Ableitung):
 \[y'(x) = f(x,y)\]
 \paragraph{Lösung}
 \label{sec-3-3-1-1}
@@ -461,31 +461,31 @@ Zeichne an jedem Punkt $(x,y)$ einen Vektor $(1,f(x,y))$ ein.
 \paragraph{Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)}
 \label{sec-3-3-4-2}
 Steigung der gesuchten Funktion bei $x_0$ ist bekannt als $f(x_0, y_0)$
-$\Rightarrow$ kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
+$\implies$ kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
 Kenne Steigung bei $x_0 \Delta x: f(x_0 + \Delta x, y_0 + \Delta x f(x_0,y_0))$
-$\Rightarrow$ Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. ($\Rightarrow$ perfekt für Numerik)
+$\implies$ Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. ($\implies$ perfekt für Numerik)
 \subsubsection{Beispiele}
 \label{sec-3-3-5}
 \begin{enumerate}
 \item \[y'(x) = f(x,y), f(x,y) = 3\]
-\[y'(x) = 3 \Rightarrow y(x) = \int 3\d x = 3 x + c\]
+\[y'(x) = 3 \implies y(x) = \int 3\d x = 3 x + c\]
 Das ist schon die allgemeine Lösung der Dgl.
 Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich duch Bestimmen der Konstanten lösen:
-\[y(x) = 3 x + c \Rightarrow 1 = 3(-1) + c \Rightarrow c = 4 \Rightarrow y(x) = 3x + 4\]
+\[y(x) = 3 x + c \implies 1 = 3(-1) + c \implies c = 4 \implies y(x) = 3x + 4\]
 \end{enumerate}
 \subsubsection{Seperation der Variablen}
 \label{sec-3-3-6}
 Seperation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
 \paragraph{Beispiel}
 \label{sec-3-3-6-1}
-\[f(x,y) = \f{x}{y} \Rightarrow y'(x) = \f{x}{y(x)}\]
-\[\f{\d x}{\d x} = \f{x}{y} \Rightarrow y\d y = x\d x\]
+\[f(x,y) = \f{x}{y} \implies y'(x) = \f{x}{y(x)}\]
+\[\f{\d x}{\d x} = \f{x}{y} \implies y\d y = x\d x\]
 Variablen sind getrennt, kann einfach Integrieren
-\[\int y\d y = \int x\d x \Rightarrow \f{y^2}{2} = \f{x^2}{2} + c \Rightarrow y = \pm \sqrt{x^2 + 2c}\]
+\[\int y\d y = \int x\d x \implies \f{y^2}{2} = \f{x^2}{2} + c \implies y = \pm \sqrt{x^2 + 2c}\]
 \subparagraph{Lösen allgemeines Anfangswertproblem}
 \label{sec-3-3-6-1-1}
 allgemeines Anfangswertproblem mit Anfangsbedingung $(x_0,y_0)$
-\[y_0^2 = x_0^2 + 2c \Rightarrow 2c = y_0^2 - x_0^2 \Rightarrow y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
+\[y_0^2 = x_0^2 + 2c \implies 2c = y_0^2 - x_0^2 \implies y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
 \begin{enumerate}
 \item {\bfseries\sffamily TODO} Skizze
 \label{sec-3-3-6-1-1-1}
@@ -499,7 +499,7 @@ Vektorschreibweise:
 \[\f{\d \v y}{\d x} = \v f(x,\v y)\]
 Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
 \[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
-Anfangsbedingungen: $(x_0,\v{y}_0)$ $\rightarrow$ $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung $\Rightarrow$ allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
+Anfangsbedingungen: $(x_0,\v{y}_0)$ $\rightarrow$ $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung $\implies$ allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
 \subsubsection{Systeme von $n$ gewöhnlicher Dgl. p-ter Ordnung}
 \label{sec-3-3-8}
 \[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
@@ -520,13 +520,13 @@ Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
 \end{equation}
 Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-     $\Rightarrow$ System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
+     $\implies$ System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
 \subsubsection{Erste physikalische Beipiele}
 \label{sec-3-3-9}
 \paragraph{Punktmasse}
 \label{sec-3-3-9-1}
 3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
-$\Rightarrow$ 6 Dgl 1. Ordung:
+$\implies$ 6 Dgl 1. Ordung:
 \begin{equation}
 \begin{cases}
 \dot{\v v} &= \f{1}{m}\v F(t,\v x,\v v) \\
@@ -572,7 +572,7 @@ $F(x) = -k x$
 \label{sec-3-3-9-1-4}
 Aufgabe: Bestime zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
       Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
-\[F=m\ddot x \Rightarrow m g - c \dot{x}^2 = m\ddot x \Rightarrow \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
+\[F=m\ddot x \implies m g - c \dot{x}^2 = m\ddot x \implies \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
 Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
 \begin{align*}
 \frac{\d v}{\d t} &= g - \frac{c}{m}v^2 \\
@@ -583,17 +583,17 @@ Konstanten und Dimensionen
 Kann leicht Konstanten der Dimension Zeit und Geschwindigkeit bilden:
 \[\hat{t} = \sqrt{\frac{m}{g c}},\hat{v} = \sqrt{\frac{g m}{c}}\]
 Benutze jetzt die dimensionslosen Variablen $t' = \frac{t}{\hat{t}},v'=\frac{v}{\hat{v}}$
-\[\Rightarrow \d t' = \frac{d v'}{1 - v^{2\prime}} = \frac{\d v'}{2}(\frac{1}{1 + v'} + \frac{1}{1 - v'})\]
+\[\implies \d t' = \frac{d v'}{1 - v^{2\prime}} = \frac{\d v'}{2}(\frac{1}{1 + v'} + \frac{1}{1 - v'})\]
 \[2t' = \ln{1 + v'} - \ln{1 - v'} + c\]
-$v' = 0$ bei $t' = 0 \Rightarrow c = 0$
-Auflösen nach $v'$: \[e^{2t'} = \frac{1 + v'}{1 - v'} \Rightarrow \ldots\]
-\[\Rightarrow v' = 1 - \frac{2}{e^{2t'} + 1} \Rightarrow v = \hat{v}(1 - \frac{2}{e^{\frac{2t}{\hat{t}}}} + 1)\]
-$\Rightarrow$ $\hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
+$v' = 0$ bei $t' = 0 \implies c = 0$
+Auflösen nach $v'$: \[e^{2t'} = \frac{1 + v'}{1 - v'} \implies \ldots\]
+\[\implies v' = 1 - \frac{2}{e^{2t'} + 1} \implies v = \hat{v}(1 - \frac{2}{e^{\frac{2t}{\hat{t}}}} + 1)\]
+$\implies \hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
 
 Zugabe: einfache physikalische Argumente für die Größe von $c$:
 \begin{enumerate}
 \item $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
-         $\Rightarrow c \sim \rho_L A$
+         $\implies c \sim \rho_L A$
 \item Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
 \end{enumerate}
 \subsection{Taylorentwickung}
@@ -621,7 +621,7 @@ Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}
 Überzeugen sie sich, dass alle Ableitungen existieren, auch bei Null! \\
     Sie Brauchen:
 \[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
-Die Ableitungen verschwinden sogar bei Null $\Rightarrow$ Taylor-Reihe ist Null, keine gute Näherung
+Die Ableitungen verschwinden sogar bei Null $\implies$ Taylor-Reihe ist Null, keine gute Näherung
 \subsection{Harmonicher Oszillator}
 \label{sec-3-5}
 \begin{itemize}
@@ -642,15 +642,15 @@ Massenpunkt kann nur ruhen, wo $F=0$ beziehungsweise $V'=0$. Genauer: Nur Minima
 \label{sec-3-5-1-1}
 Untersuchung der Bewegung in der Nähe von Minimal (also bei $x\approx x_0$ wobei $v'(x_0) = 0$ gelte) \\
      $V(x)$ bei $x_0$, $V'(x_0) = 0, \abs{x - x_0}$ klein \\
-     \[\Rightarrow V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
-\[\Rightarrow F(x) \simeq - V''(x_0)(x-x_0)\]
-\[x-x_0\equiv y \Rightarrow \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
+     \[\implies V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
+\[\implies F(x) \simeq - V''(x_0)(x-x_0)\]
+\[x-x_0\equiv y \implies \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
 Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr großem Nutzen (viele Systeme)
 \paragraph{Lösung}
 \label{sec-3-5-1-2}
-Newton $\Rightarrow$ $m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
-     $\Rightarrow$ $\sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
-     $\Rightarrow$ $y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+Newton $\implies m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
+     $\implies \sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
+     $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
      (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
 \paragraph{Verallgemeinerungen}
 \label{sec-3-5-1-3}
@@ -683,7 +683,7 @@ Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
        \[(c e^{-A})' + a C e^{-A} = f\]
        \[c' e^{-A} - C A' e^{-A} + C a e^{-A} = f\]
        Beachte $A' = a$
-       \[\Rightarrow c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
+       \[\implies c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
        \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
        $f(x')$ ist eine frei wählbare additive Konsante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
 \end{itemize}
@@ -692,7 +692,7 @@ Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
 \label{sec-3-6-1}
 \begin{defn}[Linear Unabhängig]
 Ein Satz von Funktionen $f_1(x),\ldots,f_n(x)$ heißt linear unabhängig, falls jede Linearkombination bei der nicht alle Koeffizienten Null sind auch nicht Null ist:
-\[\alpha_1 f_1(x) +\ldots \alpha_n f_n(x)\equiv 0 \Rightarrow \alpha_1 = \ldots = \alpha_n = 0\]
+\[\alpha_1 f_1(x) +\ldots \alpha_n f_n(x)\equiv 0 \implies \alpha_1 = \ldots = \alpha_n = 0\]
 (identisch zur linearen Unabhängigkeit von Vektoren)
 \end{defn}
 \paragraph{Fakt}
@@ -780,7 +780,7 @@ Drehimpuls hängt vom Koordinatensystem ab.
 $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
 ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion an ursprung kein Vorzeichenänderung
 \begin{proof}
-\[\v a \to -\v a, \v b \to -\v b \Rightarrow \v a \times \v b \to + \v a \times \v b \qedhere\]
+\[\v a \to -\v a, \v b \to -\v b \implies \v a \times \v b \to + \v a \times \v b \qedhere\]
 \end{proof}
 \end{remark}
 \subsection{Konservative Kräfte und Energieerhaltung}
@@ -834,17 +834,17 @@ Vergleiche:
 \subsubsection{Kriterium für Konservativität}
 \label{sec-4-3-2}
 Für *einfach zusammenhängende Gebiete*\footnote{Jede geschlossene Kurve kann auf Länge Null zusammengezogen werden} gilt:
-\[\v F ~\text{ist konservativ}~ \Leftrightarrow \v\nabla\v F = 0\]
+\[\v F ~\text{ist konservativ}~ \iff \v\nabla\v F = 0\]
 \paragraph{Begründung}
 \label{sec-4-3-2-1}
-$\Rightarrow$ \\ \[\v F = -\v\nabla V \Rightarrow \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
+$\implies$ \\ \[\v F = -\v\nabla V \implies \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
 \begin{align*}
 (\v\nabla\times\v F)^i &= \varepsilon^{ijk} \frac{\partial}{\partial x^j} F^k = \varepsilon^{ijk}\partial^i F^k \\
 &= -\varepsilon^{ijk}\partial^j\partial^k V = -\frac{1}{2}(\varepsilon^{ijk} -\varepsilon^{ikj})\partial^j\partial^k V \\
 &= - \frac{1}{2}\varepsilon^{ijk}\partial^j \partial^k V + \frac{1}{2}\varepsilon^{ikj}\underbrace{\partial^k\partial^j}_{\mathclap{\text{habe benutzt}~\frac{\partial}{\partial x}\frac{\partial}{\partial y} = \frac{\partial}{\partial y}\frac{\partial}{\partial x}}} V \\
 &\underarrow[=]{$k \leftrightarrow j$} -\frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V + \frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V = 0
 \end{align*}
-$\Leftarrow$ \\
+$\impliedby$ \\
      Wähle beliebiges festes $\v x_0$ im Gebiet. Definiere Potential als minus Arbeit am Massenpunkt $\rightarrow Abbildung$
 \begin{align*}
 V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
@@ -857,8 +857,8 @@ V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
 &= -((-\int_{\v x_0}^{\v x + \v l} \d \v s \v F) - ( -\int_{\v x_0}^{\v x} \d\v s \v F)) \\
 &= -(V(\v x + \v l) -V(\v x)) \\
 &\cong - \frac{\partial V}{\partial x^i}l^i = -\v l(\v\nabla V) \\
-&\Rightarrow \v l(\v F + \v\nabla V) = 0 \\
-&\Rightarrow \v F + \v\nabla V = 0 \checkmark
+&\implies \v l(\v F + \v\nabla V) = 0 \\
+&\implies \v F + \v\nabla V = 0 \checkmark
 \end{align*}
 Lücke: Wegunabhängigketi der Definition von $V$: \\
      Wähle zwei unterschiedliche Wege ($L_1, L_2$):
@@ -893,7 +893,7 @@ Die Richtung des Vektors definiert \textbf{Orientierung} der Fläche (Zum Beispi
 \item Spezielle Lange in unsererer Rechung unwichtig
 \item Übergang zu größeren Flächen durch Aufaddieren
 \end{enumerate}
-Fläche $= N\Delta ^2 \Rightarrow N\sim \frac{1}{Delta^2}$
+Fläche $= N\Delta ^2 \implies N\sim \frac{1}{Delta^2}$
 \begin{align*}
 \sum_{\text{Rechtecke}} \oint\d \v s\v F = \sum_{\text{Rechtecke}} \int\d\v f(\v\nabla \times \v F) + \underarrow[N]{Zahl der Rechtecke = $O(\Delta)$} O(\Delta^3) \\
 \shortintertext{weil sich nicht "innere Ränder wegheben"}
@@ -908,8 +908,8 @@ Zerlegung des Randes $\Delta \v s$ in kleine Rechtecke $\Delta \v s_1, \Delta \v
 \v F \Delta\v s &= \v F \Delta \v s_1 + \v F \Delta \v s_2 = \v F_1 \Delta \v s_1 + \v F_2 \Delta \v s_2 + O(\Delta x^2)
 \end{align*}
 $\v F, \v F_1, \v F_2$ jeweils am Mittelpunkt der Linienelemente
-Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \Rightarrow$ Fehler $O(\Delta)$ \\
-   $\Rightarrow$ Auch nach Summation bleibt Fehler von $O(\Delta)$
+Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \implies$ Fehler $O(\Delta)$ \\
+   $\implies$ Auch nach Summation bleibt Fehler von $O(\Delta)$
 
 Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen")
 \end{proof}
@@ -955,10 +955,10 @@ Bemerkung: Passend gewähltes $V_{ab}$ gibt das Modell der starren Stangen
 \begin{align*}
 E = \frac{m}{2}\dot{x}^2 + V(x) = ~\text{const} \\
 \intertext{(bis auf Vorzeichen)}
-\dot{x} = \sqrt{\frac{2}{m}(E-V(x))} \Rightarrow \d t = \frac{\d x}{\sqrt{\frac{2}{m}(E-V(x))}} \\
+\dot{x} = \sqrt{\frac{2}{m}(E-V(x))} \implies \d t = \frac{\d x}{\sqrt{\frac{2}{m}(E-V(x))}} \\
 t = \in \frac{\d x}{\sqrt{\frac{2}{m}}(E - V(x))}
 \intertext{Integral lösen, Integrationskonstante und Energie so bestimmen, das Anfangswertproblem gelöst}
-t = t(x) ~\text{auflösen}~ \Rightarrow x = x(t) \checkmark
+t = t(x) ~\text{auflösen}~ \implies x = x(t) \checkmark
 \intertext{viel einfacher als allgemeine Differentialgleichung 2. Ordnung}
 \end{align*}
 \end{itemize}
@@ -968,18 +968,18 @@ t = t(x) ~\text{auflösen}~ \Rightarrow x = x(t) \checkmark
    Harmonischer Oszillator mit Reibung:
    \[\ddot{x} = -\omega^2 x - c \dot{x}\]
    Exponentieller Ansatz:
-   \[x\sim e^{\alpha t} \Rightarrow \alpha^2 + \omega^2 + c\alpha = 0\]
+   \[x\sim e^{\alpha t} \implies \alpha^2 + \omega^2 + c\alpha = 0\]
    gesucht: $\alpha$, Betrachte Genzfälle:
 \begin{enumerate}
 \item $\omega$ klein
-\[\Rightarrow \alpha^2 + c\alpha = 0 \Rightarrow \alpha = -c \Rightarrow x\sim e^{-c t}\]
+\[\implies \alpha^2 + c\alpha = 0 \implies \alpha = -c \implies x\sim e^{-c t}\]
 \item $\omega$ groß (beziehungsweise $c$ klein)
 \[\alpha^2 + \omega^2 \simeq 0\]
 nicht lösbar!
 \end{enumerate}
 Aber: wir wissen schon $\sin{\omega t}, \cos{\omega t}$ sind Lösungen.
 
-Falls jede gesuchte Gleichung lösbar $\Rightarrow$ Hoffnung auf elegante allgemeine Lösung
+Falls jede gesuchte Gleichung lösbar $\implies$ Hoffnung auf elegante allgemeine Lösung
 
 \textbf{Speziell:} $\alpha^1 = -1$ (für $\omega = 1, c = 0$)
 \subsection{Komplexe Zahlen}
@@ -1030,7 +1030,7 @@ Das ist äquivalent zu unserer "naiven Definition" $z = x + \I y$
     Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
 \[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
 
-$\mathbb{C} = \mathbb{R}^2 \Rightarrow$ Darstellung durch Vektoren in Ebene liegt nahe.
+$\mathbb{C} = \mathbb{R}^2 \implies$ Darstellung durch Vektoren in Ebene liegt nahe.
 \begin{itemize}
 \item Addition: $\equiv$ Vektoraddition
 \item Multiplikatoin: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
@@ -1060,7 +1060,7 @@ e^{\I y} &= \sum_{n = 0}^\infty \frac{(\I y)^n}{n!} = \sum_{k = 0}^\infty \frac{
 &= \sum_{k = 0}^\infty \frac{(-1)^k y^{2k}}{(2 k)!} + \I \sum_{k = 0}^\infty \frac{(-1)^k y^{2k + 1}}{(2k + 1)!} \\
 &= \cos{y} + \I \sin{y}
 \end{align*}
-$\Rightarrow$ Eulersche Formel
+$\implies$ Eulersche Formel
 \[e^{\I \phi} = \cos{\phi} + \I \sin{\phi}\]
 \subsubsection{Zusammenfassung:}
 \label{sec-5-1-4}
@@ -1100,24 +1100,24 @@ also auch
 \intertext{Fall $\frac{c}{2} > \omega$ (Kriechfall)}
 x=e^{\alpha t}, \alpha^2 + c\alpha + \omega^2 = 0 \\
 \alpha_{1,2} =-\frac{c}{2} \pm \sqrt{\frac{c^2}{4} - \omega^2} \\
-\intertext{$\Rightarrow$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
-\intertext{$\Rightarrow$ exponentielles Abfallverhalten, ohne Oszillationen}
+\intertext{$\implies$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
+\intertext{$\implies$ exponentielles Abfallverhalten, ohne Oszillationen}
 \intertext{Fall $\frac{c}{2} < \omega$ (Schwingfall), $\sqrt{-x} = \I \sqrt{x}$}
 \alpha_{1,2} = -\frac{c}{2}\pm \I\sqrt{\omega^2 - \frac{c^2}{4}} \equiv -\frac{c}{2} \pm \I \tilde\omega \\
 x_{1,2} = e^{-\frac{c}{2}t} e^{\pm \I \omega t} = e^{-\frac{c}{2}t} (\cos{\pm \tilde \omega t} + \I \sin{\pm\tilde\omega t}) \\
 x_{1,2} =  e^{-\frac{c}{2}t} (\cos{\tilde \omega t} \pm \I \sin{\tilde\omega t}) \\
 \intertext{Durch Linearkombination $\to$ 2 reelle Lösungen:}
 x_1 = e^{-\frac{c}{2}t}\cos{\tilde \omega t};\qquad x_2 = e^{-\frac{c}{2}t} \sin{\tilde\omega t}
-\intertext{$\Rightarrow$ allgemeine Lösung durch Linearkombination}
-\intertext{$\Rightarrow$ gedämpfte Schwingung}
+\intertext{$\implies$ allgemeine Lösung durch Linearkombination}
+\intertext{$\implies$ gedämpfte Schwingung}
 \intertext{Fall $\frac{c}{2} = \omega$ (aperiodischer Grenzfall)}
 \alpha_1 = \alpha_2
-\intertext{$\Rightarrow$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
+\intertext{$\implies$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
 \intertext{Idee: Betrachte Schwingfall Lösungen für $\tilde \omega \to 0$}
 \intertext{Taylor:}
 \cos{x} = 1 + \O(x^2);\qquad \sin{x} = x + O(x^3) \\
-\Rightarrow x_1 = e^{-\frac{c}{2}t}; \qquad x_2 = e^{-\frac{c}{2}t} \tilde\omega t
-\intertext{$\Rightarrow$ Wieder asymptotische Annäherung an $0$ ohne Oszillation}
+\implies x_1 = e^{-\frac{c}{2}t}; \qquad x_2 = e^{-\frac{c}{2}t} \tilde\omega t
+\intertext{$\implies$ Wieder asymptotische Annäherung an $0$ ohne Oszillation}
 \end{align*}
 \subsection{harmonischer Oszillator mit periodisch treibender Kraft}
 \label{sec-5-3}
@@ -1126,7 +1126,7 @@ x_1 = e^{-\frac{c}{2}t}\cos{\tilde \omega t};\qquad x_2 = e^{-\frac{c}{2}t} \sin
 \ddot{x} + c \dot{x} + \omega^2 x = \frac{1}{m} F(t), F(t) = f e^{\I \ubar\omega t}  \\
 \intertext{Ansatz:}
 x(t) = A e^{\I \ubar \omega t} \\
-\Rightarrow (A (-\ubar\omega^2 + \I c \ubar\omega + \omega^2) - \frac{f}{m}) e^{\I \omega t = 0} \\
+\implies (A (-\ubar\omega^2 + \I c \ubar\omega + \omega^2) - \frac{f}{m}) e^{\I \omega t = 0} \\
 A \equiv \abs{A}e^{\I \phi} = \frac{f}{m}\cdot\frac{1}{\omega^2 - \ubar\omega^2 + \I c \ubar \omega} \\
 \intertext{mit}
 \frac{1}{a + \I b} = \frac{a - \I b}{a - \I b} \frac{1}{a + \I b} = \frac{a - \I b}{a^2 - b^2} \\
@@ -1136,7 +1136,7 @@ A \equiv \abs{A}e^{\I \phi} = \frac{f}{m}\cdot\frac{1}{\omega^2 - \ubar\omega^2 
 \end{align*}
 Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der inhomogenen Gleichung die allgemeine Lösung der homogenen Gleichung addiert.
 
-\textbf{Wichtig:} Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\Rightarrow$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
+\textbf{Wichtig:} Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\implies$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
 \section{Symmetrie der Raumzeit}
 \label{sec-6}
 \subsection{Matrix, Determinante, Inverse Matrix}
@@ -1198,10 +1198,10 @@ Totale Antisymmetrie ist die definierende Eigenschaft von $\eps$. Sie bestimmt j
 \eps^{i_1 \ldots i_n}A^{i_1 j_1} \ldots A^{i_n j_n} = c \eps^{j_1 \ldots j_n} \\
 \intertext{Multipliziere mit $\eps^{j_1 \ldots j_n}$:}
 n! \det A = c \eps^{j_1 \ldots j_n} \eps^{j_1 \ldots j_n} = c n! \\
-\intertext{$\Rightarrow$ alternative Formel für $\det A$:}
+\intertext{$\implies$ alternative Formel für $\det A$:}
 e^{i_1 \ldots i_n} A^{i_1 j_1} \ldots A^{i_n j_n} = (\det A) \eps^{j_1 \ldots j_n}
 \end{align*}
-Zentraler Fakt: $A$ invertierbar $\Leftrightarrow \det A \neq 0$
+Zentraler Fakt: $A$ invertierbar $\iff \det A \neq 0$
 
 Inverse Matrix:
 \begin{align*}
@@ -1249,7 +1249,7 @@ x^{\prime 2} &= R^{21} x^1 + R^{22}x^2 \\
 \end{align*}
 
 Ganz explizit
-\[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \Rightarrow \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
+\[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \implies \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
 Transformation der beiden Basisvektoren
 
 Jeder andere Vektor ($\cvec{\alpha; \beta}$) ist schreibbar als $\alpha \cvec{1; 0} + \beta \cvec{0 ; 1}$. Er transformiert demanch gemäß
@@ -1293,7 +1293,7 @@ Es gilt: $\v x \v y = x^{T} y = x^i y^i$ \\
 \intertext{Nebenrechnung}
 ((AB)^{T})^{ij} = (AB)^{ji} = A^{jk} B^{jk} = B^{ki} B^{j k} = (B^{T})^{ik} (A^{tilde})^{kj} \\
 = (B^{T} A^{T})^{ij} \\
-\Rightarrow (AB)^{T} = B^T A^T \\
+\implies (AB)^{T} = B^T A^T \\
 \end{align*}
 
 Zie: $x^T R^T Ry = x T_y$ soll gelten für beliebige x,y. Dies gilt genau dann wenn $R^{T} R = \mathbb{1}$
@@ -1345,11 +1345,11 @@ $K$ mit Operationen $+,\cdot$ ist ein Körper falls:
 \end{itemize}
 \end{defn}
 
-$GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\Rightarrow$ $A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
+$GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\implies A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
 \[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
 
 $GL^+ (n)$ - orientierungserhaltende Untergrupppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
-   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal $\Rightarrow$ $A\cdot B$ orthogonal. Dazu:
+   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal $\implies A\cdot B$ orthogonal. Dazu:
 \[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
 
 Wichtige Untergrupe: Spezielle Orthogonale Transformationn $SO(n)$ \\
@@ -1441,7 +1441,7 @@ $D(R)$ ist eine Darstellung von $O(n)$, die verschieden ist von der "definierend
 
 \textbf{Transformation von $\delta^{ij}$} \\
    \[\delta^{\prime ij} = R^{ik} R^{jl} \delta^{kl} = R^{ik} R^{jk} = \delta^{ij}\]
-$\Rightarrow$ $\delta^{ij}$ ist ein \textbf{invarianter Tensor} \\
+$\implies \delta^{ij}$ ist ein \textbf{invarianter Tensor} \\
 
 weiteres Beispiel: (für $m = n$: Levi Civita-Tensor) \\
    Wir schreiben nur $m = n = 3$ Fall aus:
@@ -1462,7 +1462,7 @@ $\v a \times \v v$ ist ein Pseudovektor:
    Punkt $\v x \in \mathbb{R}^3 \xrightarrow{neu}$ Ereignisse $(t,\v x) \in \mathbb{R} \times \mathbb{R}^3$ \\
    Müssen abschaffen: $\v 0$ im Vektorraum. In der Tat: $\abs{\v x}, \abs{\v y}$ sind unphysikalisch, physikalisch ist nur $\abs{\v x - \v y}$, ebenso ist nur $t_1 - t_2$ pyhsikalisch
 
-$\Rightarrow$ Symmetrietransformationen:
+$\implies$ Symmetrietransformationen:
 \begin{enumerate}
 \item Rotationen: $(t,x) \mapsto (t,Rx), R \in O(3)$
 \item Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3$
