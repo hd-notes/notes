@@ -12,13 +12,13 @@
    \[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
    wenn für beliebiges $\eps > 0$ von einem $n_\eps \in\mathbb{N}$ an gilt
    \[\abs{a_n - a} < \eps,n\geq n_\eps\]
-   \[\iff \Forall\eps > 0\exists n\eps \in\mathbb{N}:\Forall n\geq n_\eps a_n \in I_\eps(a)\]
+   \[\iff \Forall\eps > 0\exists n_\eps \in\mathbb{N}:\Forall n\geq n_\eps a_n \in I_\eps(a)\]
 ** Folgerung 2.2
    Sei $(a_n)_{n\in\mathbb{N}}$ eine monoton wachsende beziehungsweise fallende Folge reeller Zahlen $M=\{a_n\mid n\in\mathbb{N}\}$ und sei nach oben beziehungsweise unten beschränkt. Dann gilt \[a_n\to\sup M, a_n\to\inf M\]
    Beweis \to Übungen
 ** Definition 2.3 Cauchy Folgen
    Eine Folge $(a_n)_{n\in\mathbb{N}}$ heißt Cauchy-Folge wenn:
-   \[\Forall\eps > 0\exists n_\eps \in\mathbb{N}\Forall n,m \geq n_\eps: \abs{a_n - a_m} < \eps \]
+   \[\Forall\eps > 0 \exists n_\eps \in\mathbb{N}\Forall n,m \geq n_\eps: \abs{a_n - a_m} < \eps \]
    (Cauchy Kriterium)
 ** Definition 2.4 Teilfolge
    Eine Teilfolge einer gegebenen Folge $(a_n)_{n\in\mathbb{N}}$ ist eine Auswahl $(a_{n_k})_{k\in\mathbb{N}}$, wobei $a_{n_k}$ auch die Glieder von $(a_n)_{n\in\mathbb{N}}$ sind
@@ -121,7 +121,7 @@
    \end{lemma}
    #+begin_proof latex
    Sei $B=\{n\in\mathbb{N}\mid \Forall k\geq n, a_n \geq a_k\}$
-   - Fall 1: $B$ unendlich. Wir zählen $B\subseteq \mathbb{N}$ monoton wachsed \
+   - Fall 1: $B$ unendlich. Wir zählen $B\subseteq \mathbb{N}$ monoton wachsend \\
 	 \begin{align*}
 	 n_0 &= \min{B} \\
 	 n_{k+1} &= \min\{n\in B, n > n_k\}

@@ -1,4 +1,4 @@
-% Created 2016-12-07 Mi 19:25
+% Created 2016-12-07 Mi 19:33
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -105,7 +105,7 @@ Einleitung: \\
 \label{sec-2}
 Massenpunkt / Punktmasse - (selbstevidente) Abstraktion
 Kinematik: Bescheibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
-\subsection{Kinematik der Massenpunktes in \underline{einer} Dimension}
+\subsection{Kinematik der Massenpunktes in einer Dimension}
 \label{sec-2-1}
 \subsubsection{Graphik}
 \label{sec-2-1-1}
@@ -176,7 +176,7 @@ Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}
 \label{sec-2-2-3}
 \paragraph{Fundamentalsatz der Analysis}
 \label{sec-2-2-3-1}
-\[\int^y f(x)\mathrm{d}x = F(y) \& F'(y) = f(y)\]
+\[\int^y f(x)\mathrm{d}x = F(y) \&  F'(y) = f(y)\]
 \[\int f(x)\mathrm{d}x = F(x) + C\]
 \[\int_a^b f(x)\mathrm{d}x = F(b) - F(a)\]
 ($\to$ saubere Definition über Riemansches Integral)
@@ -375,7 +375,7 @@ dabei:
 \begin{itemize}
 \item $\varepsilon^{123} = \varepsilon^{231} = \varepsilon^{321} = 1$
 \item $\varepsilon^{213} = \varepsilon^{132} = \varepsilon^{321} = -1$
-\item sonst 0 (\$$\varepsilon$$^{\text{ijk}}$ = 0, falls zwei Indizes gleich)
+\item sonst 0 ($\varepsilon^{ijk} = 0$, falls zwei Indizes gleich)
 \end{itemize}
 Alternativ:
 \begin{itemize}
@@ -404,9 +404,9 @@ Dynamik: Ursachen der Bewegungsänderung $\rightarrow$ Kräfte: $\v F = (F^1,F^2
 \item In solchen Systemen gilt: $\v F = m\ddot{\v x}$
 \item Für Kräfte zwischen zwei Massenpunkten gilt:
 \[\v{F}_12 = -\v{F}_21\]
-\end{enumerate}
 
-$2$ definiert die \textbf{träge} Masse
+\item definiert die \textbf{träge} Masse
+\end{enumerate}
 Die entscheidene physikalische Aussage von \$2.\$ ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
 Alternative Diskussionen der obigen Axiomatik:
 \begin{itemize}
@@ -490,23 +490,23 @@ allgemeines Anfangswertproblem mit Anfangsbedingung $(x_0,y_0)$
 \item {\bfseries\sffamily TODO} Skizze
 \label{sec-3-3-6-1-1-1}
 \end{enumerate}
-\subsubsection{System von Dgl}
+\subsubsection{System von Dgl.}
 \label{sec-3-3-7}
-(fast) alles oben gesagte funktioniert auch für Systeme gewöhnlicher Dgl. 1. Ordnung:
+(Fast) alles oben gesagte funktioniert auch für Systeme gewöhnlicher Dgl. 1. Ordnung:
 \[\f{\d y^1(x)}{\d x} = f^1(x,y^1,\ldots,y^n)\]
 \[\f{\d y^n(x)}{\d x} = f^n(x,y^n,\ldots,y^n)\]
 Vektorschreibweise:
 \[\f{\d \v y}{\d x} = \v f(x,\v y)\]
 Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
 \[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
-Anfangsbedingungen: $(x_0,\v{y}_0)$ $\rightarrow$ $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung $\implies$ allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
+Anfangsbedingungen: $(x_0,\v{y}_0)$ $\rightarrow$ $n+1$ Parameter. Einer davon entspricht der Verschiebung entlang ein und derselben Lösung $\implies$ allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
 \subsubsection{Systeme von $n$ gewöhnlicher Dgl. p-ter Ordnung}
 \label{sec-3-3-8}
 \[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
 Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
 \paragraph{Tatsache}
 \label{sec-3-3-8-1}
-Systeme von Dgl können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
+Systeme von Dgl. können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
 Wir illustieren dies am Beispiel mit $p = 2$
 \paragraph{Beispiel}
 \label{sec-3-3-8-2}
@@ -518,9 +518,9 @@ Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
 \v{y}'(x) &= \v z \tag{$\equiv g(x,\v y, \v z)$}
 \end{cases}
 \end{equation}
-Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
+Ursprüngliche Form folgt duch Einsezten der 2. Gleichung in die Erste.
 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-     $\implies$ System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
+     $\implies$ System von $p$ Dgl 1. Ordung; allgemeine Lösung hat $p$ Parameter
 \subsubsection{Erste physikalische Beipiele}
 \label{sec-3-3-9}
 \paragraph{Punktmasse}
@@ -544,7 +544,7 @@ betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
 \begin{equation}
 \begin{cases}
 \dot v &= \frac{F(x,v)}{m} \\
-\dot x = v
+\dot x &= v
 \end{cases}
 \end{equation}
 \[\cvec{v ; x} = \cvec{\frac{F(x,v)}{m} ; v}\]
@@ -570,7 +570,7 @@ $F(x) = -k x$
 \end{tikzpicture}
 \subparagraph{Freier Fall mit Luftwiederstand}
 \label{sec-3-3-9-1-4}
-Aufgabe: Bestime zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
+Aufgabe: Bestimme die zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
       Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
 \[F=m\ddot x \implies m g - c \dot{x}^2 = m\ddot x \implies \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
 Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
@@ -701,7 +701,7 @@ Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-te
 \[y_{hom}(x) = C_1 y_1(x) + \ldots + C_n y_n(x)\]
 Die allgeimeine Lösung ist stets von dieser Form.
 
-Wenn wir außerdem eine \textbf{partikuläre} Lösung der onhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
+Wenn wir außerdem eine \textbf{partikuläre} Lösung der inhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
 \begin{align*}
 y(x) = y_{hom}(x) + y_{part}(x)
 \intertext{"Beweis" durch Einsetzen in}
@@ -778,7 +778,7 @@ Wichtig: Drehimpulserhaltung gilt auch dann wenn alle äußeren Kräfte \textbf{
 Drehimpuls hängt vom Koordinatensystem ab.
 \begin{remark}
 $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
-ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion an ursprung kein Vorzeichenänderung
+ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion am Ursprung kein Vorzeichenänderung
 \begin{proof}
 \[\v a \to -\v a, \v b \to -\v b \implies \v a \times \v b \to + \v a \times \v b \qedhere\]
 \end{proof}
@@ -860,7 +860,7 @@ V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
 &\implies \v l(\v F + \v\nabla V) = 0 \\
 &\implies \v F + \v\nabla V = 0 \checkmark
 \end{align*}
-Lücke: Wegunabhängigketi der Definition von $V$: \\
+Lücke: Wegunabhängigkeit der Definition von $V$: \\
      Wähle zwei unterschiedliche Wege ($L_1, L_2$):
 \begin{align*}
 \int_{L_1}\d\v s \v F - \int_{L_2}\d \v s \v F = \underarrow[\oint]{\text{Rand von } $\Sigma$} \d\v s\v F \\
@@ -890,7 +890,7 @@ Allgemein steht $\Delta \v f$ oder $\d \v f$ für ein kleines oder infinitesimal
 Die Richtung des Vektors definiert \textbf{Orientierung} der Fläche (Zum Beispiel Oben = da, wo der Pfeil hinzeigt) \\
    Randkurve: so definiert, dass man von oben gesehen linksherum (mathematisch positiver Drehsinn) läuft
 \begin{enumerate}
-\item Spezielle Lange in unsererer Rechung unwichtig
+\item Spezielle Lage in unsererer Rechung unwichtig
 \item Übergang zu größeren Flächen durch Aufaddieren
 \end{enumerate}
 Fläche $= N\Delta ^2 \implies N\sim \frac{1}{Delta^2}$
@@ -1349,7 +1349,7 @@ $GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\i
 \[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
 
 $GL^+ (n)$ - orientierungserhaltende Untergrupppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
-   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal $\implies A\cdot B$ orthogonal. Dazu:
+   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüfen dass $A,B$ orthogonoal $\implies A\cdot B$ orthogonal. Dazu:
 \[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
 
 Wichtige Untergrupe: Spezielle Orthogonale Transformationn $SO(n)$ \\
@@ -1366,7 +1366,7 @@ R_x = \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \det R
 \end{align*}
 Fakt: Jedes Element von $O(3)$ ist schreibbar als $R$ oder $R \cdot R_x$ mit $R \in SO(3)$, $SO(3)$ sind "echte" Drehungen.
 
-Überlegen Sie sich, dass $R\in SO(2)$ llgemein schreibbar ist als
+Überlegen Sie sich, dass $R\in SO(2)$ allgemein schreibbar ist als
 \[R = \begin{pmatrix} \cos{\phi} & -\sin{\phi} \\ \sin{\phi} & \cos{\phi}\end{pmatrix}\]
 Identifizieren sie $SO(2)$ mit folgender Menge
 \[\{z \in \mathbb{C} \mid \abs{z} = 1\}\]
