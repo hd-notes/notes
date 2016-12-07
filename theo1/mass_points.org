@@ -1,7 +1,7 @@
 * Kinematik des Massenpunktes
   Massenpunkt / Punktmasse - (selbstevidente) Abstraktion
   Kinematik: Bescheibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
-** Kinematik der Massenpunktes in _einer_ Dimension
+** Kinematik der Massenpunktes in einer Dimension
 *** Graphik
    - Ort: $x$
    - zu Zeit $t:~x(t)$
@@ -50,7 +50,7 @@
 		- Beispiel: \[\lim_{x\to\infty} \frac{x}{2x + \sqrt{x}} = \lim_{x\to\infty}\frac{1}{2+\frac{1}{\sqrt{x}}} = \frac{1}{2}\]
 *** Integrieren
 **** Fundamentalsatz der Analysis
-	 \[\int^y f(x)\mathrm{d}x = F(y) \& F'(y) = f(y)\]
+	 \[\int^y f(x)\mathrm{d}x = F(y) \&  F'(y) = f(y)\]
 	 \[\int f(x)\mathrm{d}x = F(x) + C\]
 	 \[\int_a^b f(x)\mathrm{d}x = F(b) - F(a)\]
 	 ($\to$ saubere Definition über Riemansches Integral)
@@ -211,7 +211,7 @@
    dabei:
    - $\varepsilon^{123} = \varepsilon^{231} = \varepsilon^{321} = 1$
    - $\varepsilon^{213} = \varepsilon^{132} = \varepsilon^{321} = -1$
-   - sonst 0 ($\varepsilon^{ijk} = 0, falls zwei Indizes gleich)
+   - sonst 0 ($\varepsilon^{ijk} = 0$, falls zwei Indizes gleich)
    Alternativ:
    - \[\abs{\v c} = \abs{\v a}\abs{\v b}\abs{\sin{\theta}}\]
    - Richtung von $\v c$ definiert durch $\v c \perp \v a \wedge \v c \perp \v c$

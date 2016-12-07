@@ -33,7 +33,7 @@
 
    #+ATTR_LATEX: :options [2.28 Reihenkonvergenz]
    #+begin_lemma latex
-   Eine Reihe $\displaystyle \sum_{k = 1}^\infty a_k$ kann nur dann knvergent sein, wenn ihre Partialsummen beschränkt sind und ihre Glieder eine Nullfolge bilden
+   Eine Reihe $\displaystyle \sum_{k = 1}^\infty a_k$ kann nur dann konvergent sein, wenn ihre Partialsummen beschränkt sind und ihre Glieder eine Nullfolge bilden
    #+end_lemma
    #+begin_proof latex
    Sei $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k = \lim_{n \to \infty} s_n$. Dann gilt
@@ -53,7 +53,7 @@
    #+end_ex
    #+ATTR_LATEX: :options [2.31]
    #+begin_defn latex
-   Eine Reihe $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k$ in $\mathbb{R}$ heißt alternierend, wenn ihre Elemente alternierende Vorzeichen haben, das heißt $a_n \cdot a_n + 1 \leq 0$
+   Eine Reihe $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k$ in $\mathbb{R}$ heißt alternierend, wenn ihre Elemente alternierende Vorzeichen haben, das heißt $a_n \cdot a_{n + 1} \leq 0$
    #+end_defn
    #+ATTR_LATEX: :options [2.32]
    #+begin_thm latex
@@ -62,7 +62,7 @@
 	  \[\abs{\sum_{k = m}^\infty a_k} \leq \abs{a_m}\]
    #+end_thm
    #+begin_proof latex
-   1. Sei ohne Beschränkung der Allgemeinheit $a_1 > 0$. Dannist $a_{2n - 1} + a_{2 n} \geq 0, a_{2n} + a_{2n + 1} \geq 0$
+   1. Sei ohne Beschränkung der Allgemeinheit $a_1 > 0$. Dann ist $a_{2n - 1} + a_{2 n} \geq 0, a_{2n} + a_{2n + 1} \geq 0$
 	  Und folglich
 	  \begin{align*}
 	  s_{2n + 1} = a_1 + a_2 + a_3 + \ldots + a_{2 n} + a_{2 n + 1} \leq s_{2n - 1} \leq \ldots \leq s_3 \leq s_1 \\
@@ -82,18 +82,18 @@
 	  \[0 \leq s_\infty - s_{2n} = \sum_{k = 2n + 1}^\infty a_k = s_\infty - s_{2n + 1} + a_{2n + 1} \leq a_{2n + 1}\]
 	  und sonst
 	  \[\abs{\sum_{k = 2n + 1}^\infty a_k} \leq \abs{a_{2n + 1}}\]
-	  Ana log im Fall $m = 2n$
+	  Analog im Fall $m = 2n$
    #+end_proof
    #+ATTR_LATEX: :options [2.33]
    #+begin_ex latex
    1. $\displaystyle s_\infty = \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \ldots$ konvergiert nach dem Leibnitz Kriterium
 	  \[\abs{\frac{(-1)^{k - 1}}{k}} = \frac{1}{k} \to 0~\text{monoton}\]
-   2. Die Leibnitz Reihe $\displaystyle s_\infty =  \sum_{k = 0}^\infty \frac{(-1)^k}{2k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots$ konverget nach Leibnitz Kriterium
+   2. Die Leibnitz Reihe $\displaystyle s_\infty =  \sum_{k = 0}^\infty \frac{(-1)^k}{2k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots$ konvergiert nach Leibnitz Kriterium
    #+end_ex
    #+ATTR_LATEX: :options [Monotonie ist wichtig]
    #+begin_remark latex
    \[\sum_{k = 1}^\infty a_k~\text{mit}~ a_{2k} := -\frac{1}{2^k}, a_{2k - 1}:= \frac{1}{k}\]
-   ist divertent:
+   ist divergent:
    - $(1 - 1) + (1 - 1) + (1 - 1) + \ldots = 0$, aber
    - $1 + (-1 + 1) + (-1 + 1) + \ldots = 1$
    #+end_remark
@@ -161,7 +161,7 @@
    Wenn für unendlich viele $k \in \mathbb{N}$ gilt $\sqrt[k]{\abs{a_k}} > 1$, beziehungsweise $\abs{a_k} > 1$, so ist die Reihe absolut divergent.
    #+end_korollar
    #+begin_proof latex
-   Nach Vorraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante fpr $s_\infty$
+   Nach Vorraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante für $s_\infty$
    #+end_proof
    #+ATTR_LATEX: :options [2.41 Quotientenkriterium]
    #+begin_korollar latex
@@ -177,7 +177,7 @@
    #+begin_ex latex
    \mbox{}
    1. $\displaystyle s_\infty \sum_{k = 1}^{\infty} \frac{z^k}{k!}, z\in\mathbb{C}$ \\
-	  Qutientenkriterium: \[\abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{z^{k + 1}}{(k + 1)!} \frac{k!}{z^k}} = \abs{\frac{z}{k + 1}}\]
+	  Quotientenkriterium: \[\abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{z^{k + 1}}{(k + 1)!} \frac{k!}{z^k}} = \abs{\frac{z}{k + 1}}\]
 	  Sei $k \geq 2 \abs{z} \implies \abs{\frac{z}{k + 1}} \leq \frac{1}{2} \implies s_\infty$ absolut konvergent.
    2. $\displaystyle \sum_{k = 1}^{\infty} \frac{k!}{k^k}$
 	  \[\abs{\frac{(k + 1)!}{(k + 1)^{k + 1}} \frac{k^k}{k!}} = \abs{\frac{k}{k + 1}}^k = \frac{1}{(1 + \frac{1}{k})^k} \leq \frac{1}{1 + k \frac{1}{k}} = \frac{1}{2}\]
@@ -258,69 +258,5 @@
    &= \frac{1}{(n + 1)!} \frac{1 - x^m}{1 - x} \\
    &\leq \frac{1}{(n + 1)!} \frac{1}{1 - x} = \frac{1}{(n + 1)!} \frac{n + 1}{n}
    \end{align*}
-   Da dies für ale $m \in \mathbb{N}$, folgt
+   Da dies für alle $m \in \mathbb{N}$, folgt
    \[0 < e - s_n \leq \frac{1}{n! n} \implies 0 < e n! -s_n n! \leq \frac{1}{n}\]
-   Wähle $n = q > 1$, dann folgt $0 < p(q - 1)! - (q! + \ldots + 1!) \leq \frac{1}{1} < 1 \lightning$
-   #+end_proof
-   #+ATTR_LATEX: :options [2.46 Funktionalgleichung von $\exp(x)$]
-   #+begin_korollar latex
-   Für alle $x,y\in\mathbb{K}$ gilt $\exp(x + y) = \exp(x) \exp(y)$
-   #+end_korollar
-   #+begin_proof latex
-   Wir bilden das Cauchyprodukt der Reihen
-   \begin{align*}
-   \exp(x) &= \sum_{k \in \mathbb{N}_0}^\infty \underbrace{\frac{x^k}{k!}}_{ = a_k}, \exp(y) = \sum_{k \in \mathbb{N}_0}^\infty \underbrace{\frac{y^k}{k!}}_{ = b_k} \\
-   \intertext{Daraus folgt mit Satz 2.38}
-   \exp(x) \exp(y) &= \sum_{m = 0}^{\infty}c_m, c_m = \sum_{k = 0}^{m} a_k b_{m - k} = \sum_{k = 0}^{m} \frac{x^k}{k!} \frac{y^{m - k}}{(m - k)!} \\
-   &= \frac{1}{m!} \sum_{k = 0}^{m} \binom{m}{k} x^k y^{m - k} = \frac{1}{m!}(x + y)^m
-   \end{align*}
-   #+end_proof
-   #+ATTR_LATEX: :options [2.47]
-   #+begin_korollar latex
-   Es gelten
-   1. $\Forall x \in \mathbb{K}: \exp(x) \neq 0 \wedge \exp(-x) = \frac{1}{\exp(x)}$
-   2. $\Forall x \in \mathbb{R}: \exp(x) > 0$
-   3. $\Forall x \in \mathbb{Z}: \exp(n) = e^n$
-   #+end_korollar
-   #+begin_proof latex
-   1. $\displaystyle \exp(x) \exp(-x) = \exp(x - x) = \exp(0) \sum_{k = 0}^{\infty} \frac{0^k}{k!} = \frac{0^0}{0!} = 1$, Da $\mathbb{K}$ Körper: $\exp(x) \neq 0$
-   2. Sei $x \geq 0$, dann ist
-	  \begin{align*}
-	  \exp(x) = \sum_{k = 0}^{\infty} \frac{x^k}{k!} \geq 1 > 0 \\
-	  \intertext{für $x < 0$ ist $-x > 0$, damit folgt}
-	  \exp(x) = \frac{1}{\exp(-x) > 0}
-	  \end{align*}
-   3. Sei $n \in\mathbb{N}_0$ Beweis per Induktion \\
-	  IA: $n = 0$, siehe 1.: $\exp(0) = 1 = e^0$ \\
-	  IV: Gelte $\exp(n) = e^n$ für ein $n \in \mathbb{N}_0$ \\
-	  IS: $n \to n + 1$:
-	  \[\exp(n + 1) = \exp(n) \exp(1) = e^n e^1 = e^{n + 1}\]
-	  Sei $n < 0$: $-n \in \mathbb{N}$
-	  \[\exp(n) = (\exp(-n))^{-1} = (e^{-n})^-1 = e^n\]
-   #+end_proof
-   #+ATTR_LATEX: :options [2.48]
-   #+begin_defn latex
-   Für $z \in \mathbb{K}$ definieren wir die sogennante Exponentialfunktion
-   \[e^z := \exp(z)\]
-   sowie die Sinus- und Cosinusfunktion
-   \[\sin(z) := \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k + 1}}{(2k + 1)!}, \cos(z) := \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k}}{(2k)!}\]
-   #+end_defn
-   #+begin_note latex
-   1. Analog zu Beispiel 2.42 zeigt man die absolute Konvergenz von $\sin, \cos$
-   2. Es gelten für $z \in\mathbb{Z}$
-	  \begin{align*}
-	  \sin(z) &= \frac{e^{\I z} - e^{-\I z}}{2i} \\
-	  \cos(z) &= \frac{e^{\I z} + e^{-\I z}}{2} \\
-	  \intertext{denn}
-	  e^{\I z} &= \sum_{n = 0}^{\infty} \frac{(\I z)^n}{n!} = \sum_{k = 0}^{\infty} \frac{(\I z)^{2k}}{(2k)!} + \sum_{k = 0}^{\infty} \frac{(\I z)^{2k + 1}}{(2k + 1)!} \\
-	  &= \sum_{k = 0}^{\infty} \frac{(-1)^k z^{2k}}{(2k)!} + \I \sum_{k = 0}^{\infty} \frac{(-1)^{k + 1}}{(2k + 1)!} = \cos(z) +  \I \sin(z) \\
-	  \end{align*}
-   3. $x\in\mathbb{R}$:
-	  \begin{align*}
-	  \intertext{Eulersche Formel}
-	  e^{\I x} = \cos(x) + \I \sin(x) \\
-	  \intertext{sowie}
-	  \cos(x) = \Re(e^{\I x}) \\
-	  \sin(x) = \Im(e^{\I x})
-	  \end{align*}
-   #+end_note

@@ -54,7 +54,7 @@
    \[\Forall \eps > 0 \Exists y\in \mathbb{R}: \abs{f(x) - a} < \eps \Forall x\in D, x > y (x < y)\]
    Schreibweise: $\lim_{x \to \infty}f(x) = a$, oder $\lim_{x\to -\infty} f(x) = a$
 
-   Sei $x_0 \in \bar D$. Die FUnktion $f$ divergiert bestimmt gegen $+\infty (-\infty) :\iff \Forall K\in\mathbb{R}_{+} \Exists \delta > 0: f(x) > K (f(x) < -K) \Forall x\in I_\delta (x_0) \cap (D\setminus\{x_0\})$ \\
+   Sei $x_0 \in \bar D$. Die Funktion $f$ divergiert bestimmt gegen $+\infty (-\infty) :\iff \Forall K\in\mathbb{R}_{+} \Exists \delta > 0: f(x) > K (f(x) < -K) \Forall x\in I_\delta (x_0) \cap (D\setminus\{x_0\})$ \\
    Schreibweise: $f(x) \to +\infty (f(x) \to -\infty)$ für $x\to x_0$
    #+end_defn
    #+ATTR_LATEX: :options [3.4]
@@ -73,6 +73,7 @@
    Für alle Folgen $x_n \to x_0 (n\to\infty) \implies f(x_n) \to f(x_0) (n \to \infty)$
    Andernfalls heißt sie unstetig in $x_0 \in D$.
    $f$ heißt stetig (auf ganz $D$), wenn sie in jedem $x_0 \in D$ stetig ist. (/insert Symbolbild hier/) \\
+   #+end_defn
    #+ATTR_LATEX: :options [3.5]
    #+begin_lemma latex
    1. Ist $f: D\to \mathbb{K}$ stetig, dann ist auch $f\mid T$ statig, $T\subseteq D$
