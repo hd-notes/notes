@@ -70,7 +70,7 @@
 	  | _ | 2 | 3 | 4 | 5 |
 	  | 1 | 2 | 3 | 4 | 5 |
 	  #+BEGIN_SRC cpp
-	  void insertion_sort(std::vector<double & v) {
+	  void insertion_sort(std::vector<double> & v) {
 		  for(int i = 0; i < v.size(); i++) {
 			  double current = v[i];
 			  int j = i; // Anfangsposition der Lücke
@@ -98,12 +98,13 @@
 		  return a < b;
 	  });
 	  #+END_SRC
-* templates
+* generische Programmierung
   insertion_sort soll für beliebige Elementtypen funktionieren
   #+BEGIN_SRC cpp
-	  void insertion_sort(std::vector<double & v) {
+	  template<typename T>
+	  void insertion_sort(std::vector<T> & v) {
 		  for(int i = 0; i < v.size(); i++) {
-			  double current = v[i];
+			  T current = v[i];
 			  int j = i; // Anfangsposition der Lücke
 			  while(j > 0) {
 				  if(v[j - 1] < current) { // -> if(cmp(a, b))
@@ -116,3 +117,120 @@
 		  }
 	  }
   #+END_SRC
+  - Ziel: benutze template-Mechanismus, damit *eine* Implementation für viele verschiedene Typen verwendbar ist
+	- erweitert funktionale und prozedurale und objekt-orientiere Programmierung
+  - zwei Arten von Templates ("Schablone"):
+	1. Klassen-templates für Datenstrukturen, zum Beispiel Container sollen beliebige Elementtypen unterstützen
+	   - Implementation \Rightarrow später
+	   - Benutzung: Datenstrukturname gefolgt vom Elementtyp in Spizen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
+	2. Funktionen-Templates: es gab schon function overloadingg
+	   #+BEGIN_SRC cpp
+	   int sq(int x) {
+		   return x * x;
+	   }
+
+	   double sq(double x) {
+		  return x * x;
+	   }
+
+	   // und so weiter für komplexe und rationale Zahlen...
+	   #+END_SRC
+	   - Nachteil
+		 - wenn die Implementationen gleich sind \rightarrow nutzlose Arbeit
+		 - Redundanz ist gefährlich: korrigiert man einen Bug wir leicht eine Variante vergessen
+	   - mit templates reicht eine Implementation
+		 #+BEGIN_SRC cpp
+		 template<typename T> // T: Platzhalter für beliebigen Typ, wird später durch einen tatsächlichen Typ ersetzt
+		 T sq(T x) {
+			 return x * x; // implizierte Anforderung an den Typ T, er muss Multiplikation unterstützen, sonst: Fehlermeldung
+		 }
+		 #+END_SRC
+		 - wie bei Substituieren von Variablen mit Werten, aber jetzt mit Typen
+		 - Benutzug:
+		   - Typen für die Platzhalter hinter dem Funktionsnamen in spitzen klammern
+			 #+BEGIN_SRC cpp
+			 sq<int>(2) == 4;
+			 sq<double>(3.0) == 9.0,
+			 #+END_SRC
+		   - meist kann man die Typangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
+			 #+BEGIN_SRC cpp
+			 sq(2); // == sq<int>(2) == 4
+			 sq(3.0); // == sq<double>(3.0) == 9
+			 #+END_SRC
+		   - kombiniert man templates mit Overloading, wird die ausprogrammierte Variante vom Compiler bevorzugt.
+			 Komplizierte Fälle (Argument teilweise Template, teilweise hard_coded) \Rightarrow für Fortgeschrittene
+		 - Beispiel 2: Funktion, die ein Array auf Konsole ausgibt, für beliebige Elementtypen
+		   #+BEGIN_SRC cpp
+		   template<typename ElementType>
+		   void print_vector(std::vector<ElementType> const & v) {
+			   std::cout << "{";
+			   if(v.size() > 0) {
+				   std::cout << " " << v[0];
+				   for(int i = 1; i < v.size(); i++) {
+					   std::cout << ", " << v[i];
+				   }
+			   }
+			   std::cout << " }";
+		   }
+		   #+END_SRC
+		 - Verallgemeinerung für beliebige Container mittel Iteratoren:
+		   #+BEGIN_SRC cpp
+		   std::list<int> l = {1, 2, 3};
+		   print_containter(l.begin(), l.end()); // "{1,2,3}"
+		   #+END_SRC
+		 - es genügen forward_interators
+		   #+BEGIN_SRC cpp
+		   Iterator iter2 = iter1; // Kopie erzeugen
+		   iter1++; // zum nächsten Element
+		   iter1 == iter2; // Zeigen sie auf das selbe Element?
+		   iter1 != end;
+		   *iter1; // Zugrif auf aktuelles Element
+
+		   template<typename Iterator>
+		   void print_container(Iterator begin, Iterator end) {
+			   std::cout << "{}";
+			   if(begin != end) { // Container nicht leer?
+				   std::cout << " " << *begin++;
+				   for(;begin != end; begin++) {
+					   std::cout << ", " << *begin;
+				   }
+			   std::cout << "}";
+		   }
+		   #+END_SRC
+		 - Bespiel 3: checken, ob Container sortiert ist
+		   #+BEGIN_SRC cpp
+		   template<typename E, typename CMP>
+		   bool check_sorted(std::vector<E> const & v, CMP less_than) {
+			   for(int i = 1; i < v.size(); i++) {
+				   if(less_than(v[k], v[k - 1])) { // statt v[k] < v[k - 1], ausnutzen der Transitivität
+					   return false;
+				   }
+			   }
+			   return true;
+		   }
+
+		   // Aufruf:
+		   std::vector<double> v = {1.0, 2.0, 3.0};
+		   check_sorted(v, [](double a, double b) { return a < b; } ); // == true
+
+		   check_sorted(v, [](double a, double b) { return a > b; } ); // == false
+
+		   // implementation für iteratoren
+		   template<typename Iterator, typename CMP>
+		   bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
+			   if(begin == end) {
+				   return true;
+			   }
+			   Iterator next = begin;
+			   ++next;
+			   for(; next != end; ++begin, ++next) {
+				   if(less_than(*next, *begin)) {
+					   return false;
+				   }
+			   }
+			   return true;
+		   }
+		   // == std::is_sorted
+		   #+END_SRC
+		 - Bemerkung1: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, \Rightarrow Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
+		 - mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming \Rightarrow nur für Fortgeschrittene

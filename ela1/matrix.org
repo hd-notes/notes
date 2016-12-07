@@ -1,0 +1,147 @@
+* DONE Matrizen
+  In diesem Abschnitt seinen $m,n,r\in\mathbb{N}$ \\
+  Frage: Gegeben sei ein UVR $U = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ Wie bestimmt man effizient die Basis von $U$?
+  #+ATTR_LATEX: :options [10.1]
+  #+begin_defn latex
+  Eine $m\times n$-Matrix mit Einträgen aus $K$ ist eine Familie $(a_{11}, \ldots, a_{1n}, a_{21}, \ldots, a_{2n}, \ldots, a_{m1}, \ldots, a_{mn})$
+  von $m n$ Elementen aus $K$, die wir in der Form
+  \[(a_{ij})_{\substack{1\leq i \leq m \\ 1 \leq j \leq n}} = \begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & & \vdots \\ a_{m 1} & \ldots & a_{mn} \end{pmatrix} \tag{kurz $(a_{ij})$ wenn $m,n$ klar sind}\]
+  schreiben. Die Menge aller $m\times n$ Matrizen mit Einträgen aus $K$ bezeichnen wir mit $M(m\times n, K)$.
+  Für $A = (a_{ij})$ wie oben heißen
+  \[a_i := (1_{i1} \ldots a_{in}), i = 1,\ldots, m\]
+  Die Zeilen der Matrix $A$. Im Folgenden fassen wir die Zeilen von $A$ als Elemente von $K^n$ auf: $a_i = (a_{i1}, \ldots, a_{in})$
+  \[\begin{pmatrix} a_{1j} \\ \vdots \\ a_{mj}\end{pmatrix} \in M(m\times 1, K), j = 1, \ldots, n\]
+  heißen die Spalten der Matrix $A$
+  #+end_defn
+  #+ATTR_LATEX: :options [10.2]
+  #+begin_remark latex
+  Es gilt:
+  1. $M(m\times n, K)$ ist bezüglich der Verknüpfungen
+	 \begin{align*}
+	 + &: M(m\times n, K) \times M(m\times n, K) \to M(m\times n, K), (a_{ij}) + (b_ij):= (a_{ij} + b_{ij}) \\
+	 \cdot &:K\times M(m\times n, K) \to M(m\times n, K), \lambda \cdot (a_{ij}):=(\lambda a_{ij})
+	 \end{align*}
+	 ein K_VR. Es ist $\dim_k M(m\times n, K) = m\cdot n$
+  2. Durch
+	 \[\cdot : M(m\times n, K) \times M(n\times r, K) \to M(m\times r, K)\]
+	 \[(a_{ij})_{\substack{1\leq i \leq m \\ 1\leq j\leq n}} \cdot (b_{jk})_{\substack{1\leq j \leq n \\ 1\leq k \leq r}} := (c_{ik})_{\substack{1\leq i \leq m \\ 1\leq k \leq r}}\]
+	 mit
+	 \[c_{ik} := \sum_{j = 1}^{n}a_{ij} b_{jk}\]
+	 ist die Multiplikation von Matrizen erklärt. Visualisierung:
+	 \begin{equation}
+	 \begin{pmatrix}
+	 \\
+	 a_{i1} & a_{i2} & \ldots & a_{in} \\
+	 \\
+	 \end{pmatrix}
+	 \cdot
+	 \begin{pmatrix}
+	 & b_{1k} & \\
+	 & \vdots & \\
+	 & b_{nk} & \\
+	 \end{pmatrix}
+	 =
+	 \begin{pmatrix}
+	 &  & \\
+	 & c_{ij} & \\
+	 &  & \\
+	 \end{pmatrix}
+	 \end{equation}
+	 Für diese gilt: Sind $A_1, A_2 \in M(m\times n, K), B_1, B_2 \in M(n\times r, K), C\in M(r\times s, K), \lambda \in K$, dann ist
+	 - $A(B_1 + B_2) = A\cdot B_1 + A \cdot B_2, (A_1 + A_2) B = A_1 B + A_2 B$
+	 - $A(\lambda B) = (\lambda A) B = \lambda (A B)$
+	 - $A(B C) = (AB) C$
+	 - $E_m \cdot A = A \cdot E_n = A$
+	 Hierbei ist für $l \in \mathbb{N}$
+	 \[E_l := \begin{pmatrix} 1 & & 0 \\ & \ddots & \\ 0 & & 1 \end{pmatrix} \in M(l\times l, K)\]
+	 die $l\times l$- Einheitsmatrix über $K$
+  3. $M(n\times n, K)$ ist bezüglich
+	 \[+,\cdot : M(n\times n, K) \times M(n\times n, K) \to M(n\times n, K)\]
+	 ("$+$" siehe 1., "$\cdot$" siehe 2.) \\
+	 ein Ring. (Einselement: $E_n$). Für $n > 1$ ist dieser Ring *nicht* kommutativ
+  #+end_remark
+  #+begin_proof latex
+  Nachrechnen \\
+  Zu $\dim M(m\times n, K) = m\cdot n$: Eine Basis von $M(m\times n, K)$ ist durch die Familie der Matrizen $E_{ij}, i = 1, \ldots, m, j = 1,\ldots, n$ gegeben, wobei $E_{ij}$ dijenige $m\times n$-Matrix mit Einträgen in $K$ bezeichen, die in der i-ten Zeile, j-ten Spalte eine Eins
+  und sonst nur Nullen stehen hat. \\
+  zu 3.: $M(n\times n, K)$ ist nicht kommutativ für $n > 1$:
+  \begin{align*}
+  &\sbox0{$\begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix}$}%
+  \sbox1{$\begin{matrix} 0 & 1 \\ 0 & 0 \end{matrix}$}%
+  \left(
+  \begin{array}{c|c}
+  \usebox{0}&\makebox[\wd0]{$0$} \\
+  \hline
+  \vphantom{\usebox{0}}\makebox[\wd0]{$0$}&\makebox[\wd0]{$0$}
+  \end{array}
+  \right)
+  \cdot
+  \left(
+  \begin{array}{c|c}
+  \usebox{1}&\makebox[\wd1]{$0$} \\
+  \hline
+  \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+  \end{array}
+  \right)
+  =
+  \left(
+  \begin{array}{c|c}
+  \usebox{1}&\makebox[\wd1]{$0$} \\
+  \hline
+  \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+  \end{array}
+  \right) \\
+  \neq&
+  \sbox0{$\begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix}$}%
+  \sbox1{$\begin{matrix} 0 & 1 \\ 0 & 0 \end{matrix}$}%
+  \sbox2{$\begin{matrix} 0 & 0 \\ 0 & 0 \end{matrix}$}%
+  \left(
+  \begin{array}{c|c}
+  \usebox{1}&\makebox[\wd1]{$0$} \\
+  \hline
+  \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+  \end{array}
+  \right)
+  \cdot
+  \left(
+  \begin{array}{c|c}
+  \usebox{0}&\makebox[\wd0]{$0$} \\
+  \hline
+  \vphantom{\usebox{0}}\makebox[\wd0]{$0$}&\makebox[\wd0]{$0$}
+  \end{array}
+  \right)
+  =
+  \left(
+  \begin{array}{c|c}
+  \usebox{2}&\makebox[\wd1]{$0$} \\
+  \hline
+  \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+  \end{array}
+  \right) \\
+  \end{align*}
+  #+end_proof
+  #+ATTR_LATEX: :options [10.3]
+  #+begin_defn latex
+  $A$ heißt invertierbar $\xLeftrightarrow{\text{Def}} \Exists B\in M(n\times n, K): AB = BA = E_n$
+  #+end_defn
+  #+ATTR_LATEX: :options [10.4]
+  #+begin_remark latex
+  Es gilt:
+  \[GL(n, K) := \{A\in M(n\times n, K) \mid A ~\text{ist invertierbar}\}\]
+  ist bezüglich der Matrizenmultiplikation eine Gruppe, die sogenannte allgemiene lineare Gruppe.
+  Das neutrale Element ist $E_n$, das zu $A\in GL(n,K)$ inverse Element bezeichnen wir mit $A^{-1}$.
+  #+end_remark
+  #+begin_proof latex
+  Wohldefiniertheit von "$\cdot$" auf $GL(n, K)$ \\
+  zu zeigen ist: $A_1, A_2 \in GL(n, K) \Rightarrow A_1 A_2 \in GL(n,K)$ \\
+  Dies gilt, denn:
+  \begin{align*}
+  A_1, A_2 \in GL(n, K) \Rightarrow \Exists B_1, B_2 \in M(n\times n, K): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
+  \Rightarrow (A_1 A_2) \cdot (B_2 B_1) = A_1(A_2 B_2) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
+  (B_2 B_1) \cdot (A_1 A_2) = B_2 (B_1 A_1) A_2 = B_2 E_n A_2 = B_2 A_2 = E_n
+  \end{align*}
+  das heißt $A_1 A_2 \in GL(n,K)$
+  - Assoziativiät: Vererbt sich von $M(n\times n, K)$
+  - neutrales Element: $E_n$
+  - Existenz von Inversen: Sei $A\in GL(n,K) \Rightarrow \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
+  #+end_proof

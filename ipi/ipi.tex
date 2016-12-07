@@ -1,4 +1,4 @@
-% Created 2016-12-03 Sa 01:31
+% Created 2016-12-07 Mi 02:08
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -615,7 +615,7 @@ mit Zwischenergebniss und Infix Notation
 \item lesbarer
 \item redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der Initialisierung nicht mehr verändert werden
 \item Speicherzellen und Namen sind nützlich um Argumente an Funktionen zu übergeben $\Rightarrow$ Definition eigener Funktionen
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 function sq(x) {
    return x * x
 }
@@ -641,7 +641,7 @@ int: $12,-3$ \\
        std::string: "text"
 \end{itemize}
 \item Initialisierung wird geschrieben als "typename spzname = Wert;"
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 double a = ...;
 double b = ...;
 double c = ...;
@@ -653,7 +653,7 @@ double x2 = p - d;
 std::cout << "x1: " << x1 << ", x2: " << x2 << std::endl;
 \end{minted}
 \item eigene Funktionen in C++
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 // Kommentar (auch /* */)
 type_ergebnis fname(type_arg1 name1, ...) {
 	// Signatur / Funkitonskopf / Deklaration
@@ -663,26 +663,26 @@ type_ergebnis fname(type_arg1 name1, ...) {
 \end{minted}
 \begin{itemize}
 \item ganze Zahl quadrieren:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int sq(int x) {
 	return x*x;
 }
 \end{minted}
 \item reelle Zahl quadrieren:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 double sq(double x) {
 	return x*x;
 }
 \end{minted}
 \item beide Varianten dürfen in c++ gleichzeitig definiert sein $\Rightarrow$ "function overloading" $\Rightarrow$ c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int x = 2;
 double y = 1.1
 int x2 = sq(x) // int Variante
 double y2 = sq(y) // double Variante
 \end{minted}
 \item jedes c++-Programm muss genau eine Funktion names "main" haben. Dort beginnt die Programmausführung.
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int main() {
 	Code;
 	return 0;
@@ -713,7 +713,7 @@ int main() {
 \item string $\Rightarrow$ Zeichenkettenverarbeitung
 \end{itemize}
 \item um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ include <name>
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 #include <iostream>
 #include <string>
 int main() {
@@ -787,14 +787,14 @@ int main() {
 \item Prozeduren: Funktionen, die nichts zurückgeben, haben nur Seiteneffekte
 \begin{itemize}
 \item Beispiel
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::cout << "Hello\n"; // Infix
 operator<<(std::cout, "Hello\n"; // Prefix
 \end{minted}
 \item Prozeduren in c++
 \begin{enumerate}
 \item Funktion die "void" zurückgibt (Pseudotyp für "nichts")
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 void foo(int x) {
 	return;
 }
@@ -807,18 +807,18 @@ void foo(int x) {
 \label{sec-9-2-2}
 \begin{itemize}
 \item Anweisungen zur Steuerung des Programmablaufs
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 if(), else, while(), for()
 \end{minted}
 \begin{itemize}
 \item Funktional
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int abs(int x) {
 	return (x >= 0) ? x : -x;
 }
 \end{minted}
 \item Prozedural
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int abs(int x) {
 	if(x >= 0) {
 		return x;
@@ -839,7 +839,7 @@ int abs(int x) {
 \item Zuweisung: Speicherzellen können nachträglich verändert werden ("read-write")
 \begin{itemize}
 \item prozedural:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int foo(int x) {     // x = 3
 	int y = 2;
 	int z1 = x * y;  // z1 = 6
@@ -849,7 +849,7 @@ int foo(int x) {     // x = 3
 }
 \end{minted}
 \item funktional:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int foo(int x) {     // x = 3
 	int y1 = 2;
 	int z1 = x * y;  // z1 = 6
@@ -859,7 +859,7 @@ int foo(int x) {     // x = 3
 }
 \end{minted}
 \item Syntax
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 name = neuer_wert;           // Zuweisung
 typ name = neuer_wert;       // Initialisierung
 typ const name = neuer_wert; // write once
@@ -874,12 +874,12 @@ typ const name = neuer_wert; // write once
 \subsubsection{Schleifen}
 \label{sec-9-2-4}
 Der gleiche Code soll oft wiederholt werden
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 while(bedingung) {
 	// code, wird ausgeführt solange Bedingung "true"
 }
 \end{minted}
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int counter = 0;
 while(counter < 3) {
 	std::cout << counter << std::endl;
@@ -911,7 +911,7 @@ counter & Bedingung & Ausgabe\\
 \label{sec-9-2-5}
 \paragraph{Ziel}
 \label{sec-9-2-5-1}
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 double sqrt(double y);
 \end{minted}
 \paragraph{Methode}
@@ -932,7 +932,7 @@ Anwendung auf Wurzel: setze $f(x) = x^2 - y \Rightarrow$ mit $f(x^\ast) = 0$ gil
 \[(x^\ast)^2 -y = 0 \quad (x^\ast)^2 = y \quad x^\ast = \sqrt{y}\quad f'(x) = 2x)\]
 Iterationsvorschrieft:
 \[x^{(t + 1)} = x^{(t)} - \frac{(x^{(t)^2}) - y}{2x^{(t)}} = \frac{x^{(t)^2} + y}{2x^{(t)}}\]
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 double sqrt(double y) {
   if(y < 0.0) {
 	  std::cout << "Wurzel aus negativer Zahl\n";
@@ -950,7 +950,7 @@ double sqrt(double y) {
 \end{minted}
 \subsubsection{for-Schleife}
 \label{sec-9-2-6}
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int c = 0;
 while(c < 3) {
 	// unser code
@@ -960,14 +960,14 @@ while(c < 3) {
 
 Bei der while Schleife kann man leicht vergessen $c$ zu inkrementieren, die for Schleife ist idiotensicher \\
     Äquivalent zu der while Schleife oben ist:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 for(int c = 0; c < 3; c++) {
 	// unser code
 }
 \end{minted}
 
 Allgemeine Form:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 for(init; Bedingung; Inkrement) {
 	// unser code
 }
@@ -981,23 +981,23 @@ for(init; Bedingung; Inkrement) {
 \end{itemize}
 \end{itemize}
 Beispiel: nur gerade Zahlen ausgeben
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 for(int i = 0; i < 10; i++) if(c % 2 == 0) std::cout << c << std::endl;
 \end{minted}
 Variante mit continue:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 for(int i = 0; i < 10; i++) {
 	if(c % 2 != 0) continue;
 	std::cout << c << std::endl;
 }
 \end{minted}
 
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 for(int i = 0; i < 10; i += 2) {
 	std::cout << c << std::endl;
 }
 \end{minted}
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 double sqrt(double y) {
 	while(true) {
 		x = (x + y / 2) / 2.0;
@@ -1045,27 +1045,27 @@ zwei Datentypen in c++
 \begin{itemize}
 \item \#include <string>
 \item Initialisierung:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::string s = "abcde";
 std::string s2 = s1;
 std::string leer = "";
 std::string leer(); // Abkürzung, default constructor
 \end{minted}
 \item Länge
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 s.size();
 assert(s.size() == 5);
 assert(leer.size() == 0);
 s.empty() // Abkürzung für s.size() == 0
 \end{minted}
 \item Zuweisung
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 s = "xy";
 s2 = leer;
 \end{minted}
 \item Addition
 Aneinanderkettung von String ("concatenate")
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::string s3 = s + "ijh"; // "xyijh"
 s3 = "ghi" + s; // "ghixy"
 s3 = s + s; // "xyxy"
@@ -1074,7 +1074,7 @@ s3 = "abc" + "def"; // Bug literale unterstütze + mit ganz anderer Bedeutung
 s3 = std::string("abc") + "def"; // Ok
 \end{minted}
 \item Add-Assignment: Abkürzung für Addition gefolt von Zuweisung
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 s += "nmk"; // s = s + "nmk" => "xynmk"
 \end{minted}
 \item die Zeichen werden intern in einem C-Array gespeichert (Array = "Feld") \\
@@ -1082,11 +1082,11 @@ s += "nmk"; // s = s + "nmk" => "xynmk"
 in c++: von $0$ beginnend $\estimates$ Index
 \begin{itemize}
 \item Indexoperator:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 s[index]; // gibt das Zeichen an Position "index" zurück
 \end{minted}
 Anwendung: jedes Zeichen einzeln ausgeben
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::string s = "abcde";
 
 for(int i = 0; i < s.size(); i++) {
@@ -1094,7 +1094,7 @@ for(int i = 0; i < s.size(); i++) {
 }
 \end{minted}
 String umkehren
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int i = 0; // Anfang des Strings
 int k = s.size() - 1; // Ende des String
 while(i < k) {
@@ -1105,7 +1105,7 @@ while(i < k) {
 }
 \end{minted}
 Variante 2: neuen String erzeugen
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::string s = "abcde";
 std::string r = "";
 for(int i = s.size() - 1; i >= 0; i--) {
@@ -1136,7 +1136,7 @@ Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für di
 \item Speicherzellen, die in einer Umgebung angelegt werde (initialisiert, deklariert) werde, am Ende der Umgebung in umgekehrter Reihenfolge freigegeben
 \item Computer fügt vor "\}" automatisch die Notwendigen Befehle ein
 \item Speicherzellen in der globalen Umgebung werden am Programmende freigegeben
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 - int global = 1;
   int main() {
 	  int l = 2;
@@ -1189,7 +1189,7 @@ l & int & 2\\
 \item verhinderung von Namenskollisionen
 \end{itemize}
 Beispiel: c++ Standardbibilothek:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 namespace std {
 double sqrt(double x);
 namespace chrono {
@@ -1203,7 +1203,7 @@ std::chrono::system_clock clock;
 \end{minted}
  Besonderheit: mehrere Blöcke mit selbem Namensraum werden verschmolzen
 Beispiel
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int p = 2;
 int q = 3;
 
@@ -1225,7 +1225,7 @@ int main() {
 \section{Referenzen}
 \label{sec-12}
 sind neue (zusätzliche) Namen für vorhandene Speicherzellen
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int x = 3; // neue Variable x mit neuer Speicherzell
 int & y = x; // Referenz: y ist neuer Name für x, beide haben die selbe Speicherzelle
 y = 4; // Zuweisung an y, aber x ändert sich auch, das heißt x == 4
@@ -1240,7 +1240,7 @@ Hauptanwendung:
 \item häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
 \begin{itemize}
 \item Durch pass-by-reference brauch man keine Kopie $\Rightarrow$ typisch "const \&", also read-only, keine Seiteneffekte
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int foo(int x) { // pass-by-value
 	x += 3;
 	return x;
@@ -1285,7 +1285,7 @@ Dienen dazu, andere Daten aufzubewahren
 \item Arrays sind die wichtigsten Container, weil effizient auf Hardware abgebildet und einfach zu benutzen
 \begin{itemize}
 \item klassisch: Arrays sind statisch, zum Beispiel C-Arrays (hat c++ geerbt)
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 int a[20];
 \end{minted}
 \item modern: dynamische Arrays
@@ -1299,7 +1299,7 @@ int a[20];
 \item wichtigste Funktion: s.size() (weil Größe dynamisch), s[4 ] Indexzugriff, s+="mehr" Zeichen anhängen
 \end{itemize}
 \item wir wollen das selbe Verhalten für beliebige Elementtypen:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 #include <vector>
 
 //          Elementtyp    Größe  Initialwert der Elemente
@@ -1314,7 +1314,7 @@ std::vector<std::string>;
 \begin{itemize}
 \item Index ist nicht im Bereich (0,size], zum Beispiel Matrikelnummern
 \item Index ist string, zum Beispiel Name eines Studenten
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 #include <map>
 #include <unordered_map>
 
@@ -1338,18 +1338,18 @@ std::map<std::string, double> noten; noten["krause"] = 10;
 \label{sec-13-1}
 \begin{itemize}
 \item Erzeugen:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::vector<double> v(20, 1.0);
 std::vector<double> v; // leeres Array
 std::vector<double> v = {1.0, -3.0, 2.2}; // "initializer list": Element für Anfangszustand
 \end{minted}
 \item Größe:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 v.size();
 v.empty(); // => v.size() == 0
 \end{minted}
 \item Größe ändern
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 v.resize(neue_groesse, initialwert);
 // Dann:
 // Fall 1: neue_groesse < size(): Element ab Index "neue_groesse" gelöscht die andern bleiben
@@ -1365,14 +1365,14 @@ v.erase(v.begin() + index); // Element an Pos index löschen, alles dahinter ein
 v.clear(); // alles löschen
 \end{minted}
 \item Zugriff
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 v[k]; // Element bei Index k
 v.at(k); // wie v[k], aber Fehlermeldung, wenn nicht 0 <= k < size() (zum Debuggen)
 \end{minted}
 \item Funktionen für Container benutzen in c++ immer Iteratoren, damit sie für verschiedene Container funktionieren
 \begin{itemize}
 \item Iterator-Range
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 // erstes Element
 v.begin()
 
@@ -1381,18 +1381,18 @@ v.end()
 \end{minted}
 \item im Header <algorithm>
 \item alle Elemente kopieren
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::vector<double> source = {1.0, 2, 3, 4, 5};
 std::vector<double> target(source.size(), 0.0);
 std::copy(source.begin(), source.end(), target.begin());
 std::copy(source.begin() + 2, source.end() - 1, target.begin()); // nur index 2 .. size() - 1 kopieren
 \end{minted}
 \item Elemente sortieren
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::sort(v.begin(), v.end()); // "in-place" sortieren
 \end{minted}
 \item Elemente mischen:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 \end{minted}
 \end{itemize}
@@ -1427,7 +1427,7 @@ Warum ist push$_{\text{back}}$() effizient? (bei std::vector)
 \end{enumerate}
 \item das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist
 \item Bespiel:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::vector<int> v;
 
 for(int i = 0; i < 32; i++) v.push_back(k);
@@ -1462,7 +1462,7 @@ k & capacity vor push$_{\text{back}}$() & capacity nach push$_{\text{back}}$() &
 \end{itemize}
 \end{itemize}
 \item relevante Funktionen von std::vector
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 v.size() // aktuelle Zahl der Elemente
 v.capacity() // aktuelle Zahl Speicherzellen
 assert(v.capacity() - v.size() >= 0) // Reserve
@@ -1483,7 +1483,7 @@ v.shrink_to_fit() // == v.reserve/v.size()) Reseve ist danach 0, wenn Endgröße
 \label{sec-14}
 \begin{itemize}
 \item für Arrays lautet kanonische Schleife
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 for(int i = 0; i != v.size(); i++) {
 	int current = v[i]; // lesen
 	v[i] = new_value; // schreiben
@@ -1506,7 +1506,7 @@ for(int i = 0; i != v.size(); i++) {
 \item auf Daten zugreifen: *iter ("Dereferenzierung") analog v[k]
 \end{enumerate}
 kanonische Schleife:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 for(auto iter = v.begin(); iter != v.end(); ++iter) {
 int current = *iter; // lesen
 *iter = new_value; // schreiben
@@ -1525,7 +1525,7 @@ element  = new_vlaue; // schreiben
 Schlüssel und Werte können beliebig gewählt werden
 \begin{itemize}
 \item $\Rightarrow$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 (*iter).first; // Schlüssel
 (*iter).second; // Wert
 // Abkürzung
@@ -1539,13 +1539,13 @@ iter->second;
 \item Die Funktion std::transform()
 \begin{itemize}
 \item wir hatten: std::copy()
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::vector<double> source = {1, 2, 3, 4};
 std::vector<double> target(source.size());
 std::copy(source.begin(), source.end(), target.begin());
 \end{minted}
 \item std::transform:
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 // nach Kleinbuchstaben konvertieren
 std::string source = "aAbCdE";
 std::string target = source;
@@ -1571,19 +1571,19 @@ for(; src_begin != src_end; src_begin++, tgt_begin++) {
 \item Definiere eine namenlose Funktion $\Rightarrow$ "Lambda-Funktion $\lambda$"
 \begin{itemize}
 \item statt $\lambda$ verwenden wir den Universalnamen []
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::transform(source.begin(), source.end(), target.begin(), [](double x) { return x*x; }); // statt Funktionsname sq wie bei 1 steht hier die ganz Funktionsimplementation
 // Returntyp setzt Computer automatisch ein, wenn es nur einen return-Befehl gibt.
 \end{minted}
 \item Lambda-Funktionen können noch viel mehr $\Rightarrow$ für Fortgeschrittene
 \item std::transform() kann in-place arbeiten (das heißt source-Container überschreiben), wenn source und target gleich
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::transform(source.begin(), source.end(), source.begin(), sq);
 \end{minted}
 \end{itemize}
 \end{enumerate}
 \item Die Funktion std::sort() zum in-place sortieren eines Arrays
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::vector<double> v = {4, 2, 3, 5 ,1};
 std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
 \end{minted}
@@ -1629,8 +1629,8 @@ schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compil
 1 & 2 & 3 & 4 & 5\\
 \end{tabular}
 \end{center}
-\begin{minted}[]{cpp}
-void insertion_sort(std::vector<double & v) {
+\begin{minted}[tabsize=4]{cpp}
+void insertion_sort(std::vector<double> & v) {
 	for(int i = 0; i < v.size(); i++) {
 		double current = v[i];
 		int j = i; // Anfangsposition der Lücke
@@ -1647,7 +1647,7 @@ void insertion_sort(std::vector<double & v) {
 \end{minted}
 \item andere Sortierung: definiere Funktor cmp(a, b), der das gewüschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
 \item neue Sortierung am besten per Lambda-Funktion an std::sort übergeben
-\begin{minted}[]{cpp}
+\begin{minted}[tabsize=4]{cpp}
 std::sort(v.begin(), v.end()); // Standartsort mit "<"
 std::sort(v.begin(), v.end(), [](double a, double b) { return a < b; }); // Standardsortierung aufsteigen
 std::sort(v.begin(), v.end(), [](double a, double b) { return b < a; }); // absteigende Sortierung
@@ -1660,13 +1660,14 @@ std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
 \end{minted}
 \end{itemize}
 \end{itemize}
-\section{templates}
+\section{generische Programmierung}
 \label{sec-16}
 insertion$_{\text{sort}}$ soll für beliebige Elementtypen funktionieren
-\begin{minted}[]{cpp}
-void insertion_sort(std::vector<double & v) {
+\begin{minted}[tabsize=4]{cpp}
+template<typename T>
+void insertion_sort(std::vector<T> & v) {
 	for(int i = 0; i < v.size(); i++) {
-		double current = v[i];
+		T current = v[i];
 		int j = i; // Anfangsposition der Lücke
 		while(j > 0) {
 			if(v[j - 1] < current) { // -> if(cmp(a, b))
@@ -1679,5 +1680,138 @@ void insertion_sort(std::vector<double & v) {
 	}
 }
 \end{minted}
+\begin{itemize}
+\item Ziel: benutze template-Mechanismus, damit \textbf{eine} Implementation für viele verschiedene Typen verwendbar ist
+\begin{itemize}
+\item erweitert funktionale und prozedurale und objekt-orientiere Programmierung
+\end{itemize}
+\item zwei Arten von Templates ("Schablone"):
+\begin{enumerate}
+\item Klassen-templates für Datenstrukturen, zum Beispiel Container sollen beliebige Elementtypen unterstützen
+\begin{itemize}
+\item Implementation $\Rightarrow$ später
+\item Benutzung: Datenstrukturname gefolgt vom Elementtyp in Spizen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
+\end{itemize}
+\item Funktionen-Templates: es gab schon function overloadingg
+\begin{minted}[tabsize=4]{cpp}
+int sq(int x) {
+	return x * x;
+}
+
+double sq(double x) {
+   return x * x;
+}
+
+// und so weiter für komplexe und rationale Zahlen...
+\end{minted}
+\begin{itemize}
+\item Nachteil
+\begin{itemize}
+\item wenn die Implementationen gleich sind $\rightarrow$ nutzlose Arbeit
+\item Redundanz ist gefährlich: korrigiert man einen Bug wir leicht eine Variante vergessen
+\end{itemize}
+\item mit templates reicht eine Implementation
+\begin{minted}[tabsize=4]{cpp}
+template<typename T> // T: Platzhalter für beliebigen Typ, wird später durch einen tatsächlichen Typ ersetzt
+T sq(T x) {
+	return x * x; // implizierte Anforderung an den Typ T, er muss Multiplikation unterstützen, sonst: Fehlermeldung
+}
+\end{minted}
+\begin{itemize}
+\item wie bei Substituieren von Variablen mit Werten, aber jetzt mit Typen
+\item Benutzug:
+\begin{itemize}
+\item Typen für die Platzhalter hinter dem Funktionsnamen in spitzen klammern
+\begin{minted}[tabsize=4]{cpp}
+sq<int>(2) == 4;
+sq<double>(3.0) == 9.0,
+\end{minted}
+\item meist kann man die Typangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
+\begin{minted}[tabsize=4]{cpp}
+sq(2); // == sq<int>(2) == 4
+sq(3.0); // == sq<double>(3.0) == 9
+\end{minted}
+\item kombiniert man templates mit Overloading, wird die ausprogrammierte Variante vom Compiler bevorzugt.
+Komplizierte Fälle (Argument teilweise Template, teilweise hard$_{\text{coded}}$) $\Rightarrow$ für Fortgeschrittene
+\end{itemize}
+\item Beispiel 2: Funktion, die ein Array auf Konsole ausgibt, für beliebige Elementtypen
+\begin{minted}[tabsize=4]{cpp}
+template<typename ElementType>
+void print_vector(std::vector<ElementType> const & v) {
+	std::cout << "{";
+	if(v.size() > 0) {
+		std::cout << " " << v[0];
+		for(int i = 1; i < v.size(); i++) {
+			std::cout << ", " << v[i];
+		}
+	}
+	std::cout << " }";
+}
+\end{minted}
+\item Verallgemeinerung für beliebige Container mittel Iteratoren:
+\begin{minted}[tabsize=4]{cpp}
+std::list<int> l = {1, 2, 3};
+print_containter(l.begin(), l.end()); // "{1,2,3}"
+\end{minted}
+\item es genügen forward$_{\text{interators}}$
+\begin{minted}[tabsize=4]{cpp}
+Iterator iter2 = iter1; // Kopie erzeugen
+iter1++; // zum nächsten Element
+iter1 == iter2; // Zeigen sie auf das selbe Element?
+iter1 != end;
+*iter1; // Zugrif auf aktuelles Element
+
+template<typename Iterator>
+void print_container(Iterator begin, Iterator end) {
+	std::cout << "{}";
+	if(begin != end) { // Container nicht leer?
+		std::cout << " " << *begin++;
+		for(;begin != end; begin++) {
+			std::cout << ", " << *begin;
+		}
+	std::cout << "}";
+}
+\end{minted}
+\item Bespiel 3: checken, ob Container sortiert ist
+\begin{minted}[tabsize=4]{cpp}
+template<typename E, typename CMP>
+bool check_sorted(std::vector<E> const & v, CMP less_than) {
+	for(int i = 1; i < v.size(); i++) {
+		if(less_than(v[k], v[k - 1])) { // statt v[k] < v[k - 1], ausnutzen der Transitivität
+			return false;
+		}
+	}
+	return true;
+}
+
+// Aufruf:
+std::vector<double> v = {1.0, 2.0, 3.0};
+check_sorted(v, [](double a, double b) { return a < b; } ); // == true
+
+check_sorted(v, [](double a, double b) { return a > b; } ); // == false
+
+// implementation für iteratoren
+template<typename Iterator, typename CMP>
+bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
+	if(begin == end) {
+		return true;
+	}
+	Iterator next = begin;
+	++next;
+	for(; next != end; ++begin, ++next) {
+		if(less_than(*next, *begin)) {
+			return false;
+		}
+	}
+	return true;
+}
+// == std::is_sorted
+\end{minted}
+\item Bemerkung1: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\Rightarrow$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
+\item mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\Rightarrow$ nur für Fortgeschrittene
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+\end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -114,7 +114,7 @@
   Falls $n - 1 = r$, dann wäre $\tilde{\mathcal{B}} = (w_1, \ldots, w_{n - 1})$ eine Basis von V $\lightning$ (zu 9.3, denn auch $(w_1, \ldots, w_n)$ linear unabhängig).
   Also $n - 1 < r$, das heißt $n \leq r$
 
-  Da $\tilde{\mathcal{B}}$ Basis von $V, \Exists \lambda_1, \ldots, \lambda_r \in K: w_n = \lambda_1 w_1 + \ldot, \lambda_{n - 1} w_{n - 1} \lambda_n w_n + \ldots + \lambda_r$ \\
+  Da $\tilde{\mathcal{B}}$ Basis von $V, \Exists \lambda_1, \ldots, \lambda_r \in K: w_n = \lambda_1 w_1 + \ldots, \lambda_{n - 1} w_{n - 1} \lambda_n w_n + \ldots + \lambda_r$ \\
   Falls $\lambda_n = \ldots = \lambda_r = 0$, dann $(w_1, \ldots, w_n)$ linear abhängig $\lightning$ \\
   Also existiert ein $k \in \{n, \ldots, r\}$ mit $\lambda_k \neq 0$ Nach umnummerieren von $v_n, \ldots, v_r$ kann man $\lambda_n \neq 0$ erreichen
   \[\Rightarrow \mathcal{B}^\ast := (w_1, \ldots, w_{n - 1}, w _n, v_{n + 1}, \ldots, v_r)\] ist eine Basis von $V$ (tausche $v_n$ gegen $w_n$)
@@ -134,7 +134,7 @@
   #+end_proof
   #+ATTR_LATEX: :options [9.9]
   #+begin_defn latex
-  \[\dim_k V := \begin{cases} r & ~\text{falls $V$ endlich erzeugt, $r$ Länge jeder Basis von $V$ \\ \infty & falls $V$ nicht endlich erzeugt}\end{cases}\]
+  \[\dim_k V := \begin{cases} r & ~\text{falls $V$ endlich erzeugt, $r$ Länge jeder Basis von $V$} \\ \infty & ~\text{falls $V$ nicht endlich erzeugt}\end{cases}\]
   heißt die Dimension von $V$ über $K$. Ist $\dim_k V\in\mathbb{N}_0$, dann heißt $V$ endlichdimensional über $K$.
   #+end_defn
   #+begin_note latex
@@ -172,7 +172,7 @@
 	 Sei $(u_1, \ldots, u_r)$ Basis von $U$. Wegen $U \subsetneq V$ ist $(u_1, \ldots, u_r)$ keine Basis von $V$ \Rightarrow $\Exists v\in V: (u_1, \ldots, u_r, v)$ linear unabhängig.
 	 $\Rightarrow$ es existiert $v \in V$, sodass $(u_1, \ldots, u_r, v)$ linear unabhänig \Rightarrow $r + 1 \leq \dim V = \dim U = r \lightning$
   #+end_proof
-  #+ATTR_LATEX: :options [Besisergänzungssatz]
+  #+ATTR_LATEX: :options [9.12 Besisergänzungssatz]
   #+begin_thm latex
   $V$ endlichdimensionaler K-VR, $(u_1, \ldots, u_n)$ linear unabhängige Famile von $V$ \\
   Dass existiert $u_{n + 1}, \ldots, u_r \in V, r = \sum V$, sodass $\mathcal{B} = (u_1, \ldots, u_n, u_{n + 1}, \ldots, u_r)$ eine Basis von $V$ ist (das heißt $(u_1, \ldots, u_n)$ kann zu einer Basis erhänzt werden)
@@ -180,4 +180,52 @@
   #+begin_proof latex
   Sei $(v_1, \ldots, v_r)$ eine Basis von $V$. Aus Austauschsatz folgt: Nach umnummerierung von $v_1, \ldots, v_r$ ist $(u_1, \ldots, u_n,  v_{n + 1}, \ldots, v_r)$ eine Basis von $B$ Setze $u_{n + 1} := v_{n + 1}, \ldots, u_r := v_r$
   #+end_proof
-  Ziel: Jeder VR besitzt eine Basis
+  #+ATTR_LATEX: :options [9.13 Zorsches Lemma]
+  #+begin_thm latex
+  Jede induktiv geordnete nichtleere Menge $(M, \leq)$ besitzt ein maximales Element.
+  Hierbei heißt eine halbgeordnete Menge $(m, \leq)$ *induktiv geordnet* $\xLeftrightarrow{\text{Def}}$ Jede Teilmenge $T\subseteq M$, für die $(T, \leq)$ totalgeordnet ist,
+  besitzt eine obere Schanke in $(M, \leq)$, das heißt $\Exists S\in M: t\leq S \Forall t\in T$
+  #+end_thm
+  #+begin_note latex
+  Das Zornsche Lemma ist äquivalent zum Auswahlaxiom
+  #+end_note
+  #+ATTR_LATEX: :options [9.14]
+  #+begin_defn latex
+  $(u_j)_{j\in J}$ linear unabhängige Familie in $V$. Dann kann $(u_j)_{j \in J}$ zu einer
+  Basis von $V$ ergänzt werden, das heißt $\Exists I: J\subseteq I, (v_i)_{i\in I}: v_j = u_j \Forall j\in J$, sodass $(v_i)_{i\in I}$  eine Basis von $V$ ist.
+  Insbesondere besitzt jeder K-VR eine Basis.
+  #+end_defn
+  #+begin_proof latex
+  1. Wir setzen $A:= \{uj \mid j \in J\}, M:= \{X \subseteq V \mid A\subseteq X \wedge X ~\text{ist linear unabhängig}\}$
+	 - $(M, \subseteq)$ ist eine halbgeordnete Menge
+	 - $(M \neq \emptyset)$, denn $A\in M$
+	 - $(m, \subseteq)$ ist induktiv geordnet, denn:
+	   Sei $T\subseteq M$, sodass $(T,\subseteq)$ totalgeordnet ist. \\
+	   zu zeigen: $T$ besitzt eine obere Schranke in $M$. \\
+	   Wir setzen $\displaystyle S:= \bigcup_{X\in T} X$, dann ist $X\subseteq S \Forall X\in T$.
+	   Noch zu zeigen: $S\in M$, das heißt $A\subseteq S$ und $S$ ist linear unabhängig
+	   - $A\subseteq S$ klar, denn $A\subseteq X\Forall X\in T$
+	   - $S$ ist linear unabhängig, das heißt jede endliche Teilfamilie von $(s)_{s\in S}$ inst linear unabhägig: \\
+		 Seien $s_1, \ldots, s_n \in S$ paarweise verschieden $\Rightarrow \Exists X_1, \ldots X_n \in T: s_i \in X_i, i = 1, \ldots, n$ \\
+		 Da $(T, \subseteq)$ totalgeordnet ist existiert ein $i\in \{1, \ldots, n\}$ mit $X_j \subseteq X_i$ für alle $j\in \{1,\ldots,n\} \Rightarrow s_1, \ldots, s_n \subseteq X_i \xRightarrow{X_i \in M} (x_1, \ldots, s_n)$ linear unabhängig.
+  2. Nach 1. können wir das Zornsche Lemma auf $(M,\subseteq)$ anwenden $\Rightarrow \Exists \max B \in M$ \\
+	 Behauptung: $(b)_{b\in B}$ ist eine Basis von $V$ mit $A\subseteq B$, denn: Da $(b)_{b\in B}$ linear unabhängig wegen $V\in M$, gilt zu Zeigen, dass $\Lin(B) = V)$ \\
+	 "$\subseteq$" klar \\
+	 "$\supseteq$"
+	 \begin{align*}
+	 \intertext{Sei $v \in V$. Falls $v\in B$, dann $v\in\Lin(B)$, falls $v = 0$, dann $v\in \Lin(B)$, im Folgenden sei $v\not\in B, v\neq 0$}
+	 \Rightarrow A \subseteq B \subsetneq B\cup \{v\} \\
+	 \intertext{Da $B$ Maximum von $(M,\subseteq)$ ist, ist $B \cup \{v\} \not \in M$, das heißt $B\cup \{v\}$ ist linear abhängig}
+	 \Rightarrow \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, (\lambda, \lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0), b_1, \ldots, b_n \in B: \\
+	 \lambda v + \lambda_1 b_1 + \ldots + \lambda_n b_n = 0 \\
+	 \intertext{Falls $n = 0$}
+	 \lambda v = 0 \xRightarrow{v \neq 0} \lambda = 0 \lightning \\
+	 \intertext{Also $n \geq 1$, Falls $\lambda = 0$}
+	 (b_1, \ldots, b_n) ~\text{linear abhängig} \lightning \\
+	 \intertext{Also $\lambda \neq 0$, somit:}
+	 v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - \frac{\lambda_n}{\lambda} b_n \in\Lin((b_1, \ldots, b_n)) \subseteq \Lin(B)
+	 \end{align*}
+  #+end_proof
+  #+begin_note latex
+  Der Satz "Jeder VR hat eine Basis" ist äquivalent zum Auswahlaxiom.
+  #+end_note

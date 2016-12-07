@@ -1,4 +1,4 @@
-% Created 2016-11-29 Di 16:53
+% Created 2016-12-07 Mi 02:02
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -59,6 +59,7 @@
 \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 }
 \newcommand{\I}{\ensuremath{\imath}}%
+\usepackage{stackengine}
 \author{Robin Heinemann}
 \date{\today}
 \title{Lineare Algebra (Vogel)}
@@ -1996,7 +1997,7 @@ v_i = \lambda_1 v_1 + \ldots + \lambda_{i - 1} v_{i - 1} + \lambda_{i + 1} v_{i 
 \section{Basis und Dimension}
 \label{sec-6}
 In diesem Abschnitt sei $V$ stets ein K-VR
-\#+begin$_{\text{defn}}$ latex
+\begin{defn}[9.1]
 $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. $(v_i)_{i\i I}$ heißt \textbf{Erzeugendessystem} (ES) von $V \xLeftrightarrow{Def} V = \Lin((v_i)_{i\in I})$ \\
   $V$ heißt \textbf{endlich erzeugt} $\xLeftrightarrow{\text{Def}} V$ besitzt ein endliches Erzeugendessystem (das heißt es existiert eine endliche Familie $(v_1, \ldots, v_n)$ von Vektoren aus $V$ mit $V = \Lin((v_1, \ldots, v_n))$) \\
   $(v_i)_{i\in I}$ heißt \textbf{Basis} von $V \xLeftrightarrow{\text{Def}} (v_i)_{i\in I}$ ist linear unabhängiges Erzeugendessystem von $V$ \\
@@ -2015,7 +2016,7 @@ $((1, -1), (0,2), (1,2))$ ist jedoch keine Basis des $\mathbb{R}$, da linear abh
 \begin{note}
 Jeder Vektorraum $V$ besitzt ein ES, denn es ist $V = \Lin((v)_{v \in V})$ \\
   Spannende Frage: Besitzt jeder VR eine Basis? \\
-  Wir werden das zunächst für den Fall endlicher Vektorräqume untersuchen
+  Wir werden das zunächst für den Fall endlich erzeugter Vektorräqume untersuchen
 \end{note}
 \begin{thm}[9.3]
 $V \neq \{0\}, \mathcal{B} = (v_1, \ldots, v_n)$ endliche Familie von Vektoren aus $V$, dann sind äquivalent:
@@ -2070,5 +2071,328 @@ Jeder endlich erzeugte K-VR besitzt eine Basis von endlicher Länge. \\
 \item Sind je zwei endliche Basen von $V$ gleicher Länge
 \end{itemize}
 \end{conc}
+\begin{thm}[9.6 Austauschlemma]
+$V$ endlich erzeugter K-VR, $\mathcal{B} = (v_1, \ldots, v_r)$ von $V,\lambda_1, \ldots,\lambda_r \in K,w = \lambda_1 v_1 + \ldots + \lambda_r v_r$. Dann gilt:
+Ist $k\in \{1,\ldots, r\}$ mit $\lambda_k \neq 0$, dann ist
+\[\mathcal{B}' = (v_1, \ldots, v_{k - 1}, w, v_{k + 1}, \ldots, v_r)\]
+ebenfalls eine Basis von $V$, das heißt man kann $v_k$ gegen $w$ austuaschen
+\end{thm}
+\begin{proof}
+Wir können ohne Einschränkung ("ohne Beschränkung der Allgemeinheit") annehmen, dass $k = 1$ ist (können wir duch Umsortieren erreichen). Gegeben ist $w = \lambda_1 v_1 + \ldots + \lambda_r v_r \in V$, mit $\lambda_1 \neq 0$
+zu zeigen ist, dass $\mathcal{B}' = (w, v_2, \ldots, v_r)$ ein Basis von $V$ ist.
+\begin{enumerate}
+\item $\mathcal{B}'$ ist ein ES von $V$ \\
+     Sei $v\in V \Rightarrow \Exists \mu_1, \ldots, \mu_r \in K: v = \mu_1 v_1 + \ldots + \mu_r v_r$ \\
+     Aus $w = \lambda_1 v_1 + \ldots + \lambda_r v_r$ folgt wegen $\lambda_1 \neq 0$:
+\begin{align*}
+v_1 = \frac{1}{\lambda_1} w - \frac{\lambda_2}{\lambda_1} v_2 - \ldots - \frac{\lambda_r}{\lambda_1} v \\
+v =\frac{\mu_1}{\lambda_1} w + (\mu_2 - \mu_1 \frac{\lambda_2}{\lambda_1}) v_2 + \ldots + (\mu_r - \mu_1 \frac{\lambda_r}{\lambda_1}) v_r \in \Lin ((w, v_2, \ldots, v_r))
+\end{align*}
+\item $\mathcal{B}'$ ist linear unabhängig, denn: \\
+\begin{align*}
+\intertext{Sei $\mu, \mu_2, \ldots, \mu_r \in K$ mit $\mu w + \mu_2 v_2 + \ldots + \mu_r v_r = 0$}
+\Rightarrow \mu(\lambda_1 v_1 + \ldots + \lambda_r v_r) + \mu_2 v_2 + \ldots + \mu_r v_r = 0 \\
+\Rightarrow \mu \lambda_1 v_1 + (\mu \lambda_2 + \mu_2) v_2 + \ldots + (\mu \lambda_r + \mu_r) v_r = 0 \\
+\Rightarrow \mu \lambda_1 = 0 \Rightarrow \mu = 0 \Rightarrow \mu_2 v_2 + \ldots + \mu_r v_r = 0 \Rightarrow \mu_2 = \ldots = \mu_r = 0
+\end{align*}
+\end{enumerate}
+\end{proof}
+\begin{thm}[Austauschsatz]
+$V$ endlich erzeugter K-VR, $(w_1, \ldots, w_n)$ linear unabhängige Familie in $V$. Dann gilt
+\begin{enumerate}
+\item Ist $\mathcal{B} = (v_1, \ldots, v_r)$ eine Basis von $V$, dann ist $r \geq n$
+\item Es giibt Indizes $i_1, \ldots, i_n \in \{1, \ldots, r\}$ derart, dass man aus der Basis $\mathcal{B} = (v_1, \ldots v_r)$ von $V$ nach Austausch von $v_{i_1}$ gegen $w_1$, $v_{i_2}$ gegen $w_2$, $\ldots$, $v_{i_n}$ gegen $w_n$ wieder eine Basis von $V$ erhält.
+Nummeriert man $\mathcal{B}$ so um, dass $i_1 = 1, i_2 = 2, \ldots, i_n = n$, bedeutet dies, dass $\mathcal{B}^\ast :=(w_1, \ldots, w_n, w_{n + 1}, \ldots, v_r)$ eine Basis von $V$ ist.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Wir zeigen 1. und 2. zusammen per Induktion nach $n$ \\
+  Induktionsanfang: $n = 0$: $(w_1, \ldots, w_n)$ leere Familie \\
+  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\Rightarrow n - 1 \leq r$ und nach Umnummerieren von $\mathcal{B}$ ist auch
+\[\tilde{\mathcal{B}} := (v_1, \ldots, w_{n - 1}, v_n, \ldots, v_r)\]
+eine Basis von $V$.
+
+Falls $n - 1 = r$, dann wäre $\tilde{\mathcal{B}} = (w_1, \ldots, w_{n - 1})$ eine Basis von V $\lightning$ (zu 9.3, denn auch $(w_1, \ldots, w_n)$ linear unabhängig).
+Also $n - 1 < r$, das heißt $n \leq r$
+
+Da $\tilde{\mathcal{B}}$ Basis von $V, \Exists \lambda_1, \ldots, \lambda_r \in K: w_n = \lambda_1 w_1 + \ldots, \lambda_{n - 1} w_{n - 1} \lambda_n w_n + \ldots + \lambda_r$ \\
+  Falls $\lambda_n = \ldots = \lambda_r = 0$, dann $(w_1, \ldots, w_n)$ linear abhängig $\lightning$ \\
+  Also existiert ein $k \in \{n, \ldots, r\}$ mit $\lambda_k \neq 0$ Nach umnummerieren von $v_n, \ldots, v_r$ kann man $\lambda_n \neq 0$ erreichen
+\[\Rightarrow \mathcal{B}^\ast := (w_1, \ldots, w_{n - 1}, w _n, v_{n + 1}, \ldots, v_r)\] ist eine Basis von $V$ (tausche $v_n$ gegen $w_n$)
+\end{proof}
+\begin{conc}[9.8]
+Es gilt:
+\begin{enumerate}
+\item Ist $V$ endlich erzeutgt, dann ist jede Basis von $V$ von endlicher Länge und je zwei Basen haben dieselbe Länge
+\item Ist $V$ nicht endlich erzeugt, dann existiert für $V$ keine Basis von endlicher Länge
+\end{enumerate}
+\end{conc}
+\begin{proof}
+\begin{enumerate}
+\item \begin{itemize}
+\item $V$ endlich erzeugt $\Rightarrow$ ex existiert eine endliche Basis $(v_1, \ldots, v_r)$ von $V$, sei $(w_i)_{i\in I}$ beliebige Basis von $V$. Falls $I$ unendlich, dann existiert $i_1, \ldots, i_{r + 1} \in I$, dosass $(w_{i_1} + \ldots + w_{i_{r + 1}})$
+        linear unabhängig $\Rightarrow$ $r + 1 \leq r \lightning$
+\item Sind $(v_1, \ldots, v_r), (w_1, \ldots, w_k)$ endliche Basen von $V$, dann folgt nach Austauschsatz $k \leq r$, sowie $r\leq k \Rightarrow r = k$
+\end{itemize}
+\item Besitzt $V$ eine Basis endlicher Länge, dann ist diese auch ein endliches ES, das heißt $V$ endlich erzeugt $\lightning$
+\end{enumerate}
+\end{proof}
+\#+begin$_{\text{defn}}$ latex
+\[\dim_k V := \begin{cases} r & ~\text{falls $V$ endlich erzeugt, $r$ Länge jeder Basis von $V$} \\ \infty & ~\text{falls $V$ nicht endlich erzeugt}\end{cases}\]
+heißt die Dimension von $V$ über $K$. Ist $\dim_k V\in\mathbb{N}_0$, dann heißt $V$ endlichdimensional über $K$.
+\end{defn}
+\begin{note}
+\begin{itemize}
+\item Der Dimensionsbegriff ist wohldefiniert nach 9.8
+\end{itemize}
+\end{note}
+\begin{ex}[9.10]
+\begin{enumerate}
+\item $V = K^n$ Die Standardbasis $(e_1, \ldots, e_n)$ von $K^n$ hat Länge von $n$, das heißt $\dim_k K^n = n$. Insbesondere hat jede Basis von $K^n$ die Länge $n$
+\item In $K[t]$ ist die Familie $(t^n)_{n\in\mathbb{N}_0}$ eine Basis unendlicher Länge. Wäre $K[t]$ endlichdimensional über $K$, dann wäre jede Basis von $K[t]$ als K-VR von endlicher Länge. Also $\dim_k K[t] = \infty$
+\item $\dim_\mathbb{C} \mathbb{C} = 1$, aber $\dim_\mathbb{R} \mathbb{C} = 2$, (denn: $(1,\I)$ inst eine Basis von $\mathbb{C}$ also $\mathbb{R}$-VR)
+\end{enumerate}
+\end{ex}
+\begin{note}
+\begin{itemize}
+\item Ist klar, welcher Körper gemeint ist schreibt man kurz $\dim V$ statt $\dim_K V$.
+\item Offenbar gilt $V$ endlich erzeugt $\Leftrightarrow$ $V$ endlichdimensional
+\end{itemize}
+\end{note}
+\begin{conc}[9.11]
+$V$ endlichdimensionaler K-VR, $U\subseteq V$ UVR von $V$ Dann gilt:
+\begin{enumerate}
+\item $U$ ist endlichdimensional
+\item $\dim_k U \leq \dim_K V$
+\item Es ist $U = V \Leftrightarrow \dim_k U = \dim_k V$
+\end{enumerate}
+\end{conc}
+\begin{proof}
+\begin{enumerate}
+\item Annahme: $U$ ist nicht endlichdimensional \\
+     Beweis: per Induktion nach $N$ \\
+     Induktionsanfang: $n = 1$: Da $n\neq \{0\}$ wegen $\dim_k U = \infty$ existiert $u_1 \in U \setminus \{0\}, (u_1)$ ist linear unabhängig
+Induktionsschritt: Sei $n > 1$, die Assage sei für $n - 1$ bewiesen. $\Rightarrow$ ex existiert linear unabhängige Familie $(u_1, \ldots, u_{n - 1})$.
+Falls $(u_1, \ldots, u_{n - 1}, u)$ linear abhängig für alle $u \in U$, dann wäre $(u_1, \ldots u_{n - 1})$ unverlängerbar linear abhängig und somit nach 9.3 eine Basis von $U~\lightning$ zu $U$ nicht endlichdimensional.
+Also existiert ein $u_1 \in U$ mit $(u_1, \ldots, u_n)$ linear unabhängig $\Rightarrow$ Behauptung
+Wir setzen $r:= \sum_K V$, dann existiert nach 1. eine lineare Familie $(u_1, \ldots, u_{r + 1})$ in $U$. Die Familie $(u_1, \ldots, u_{r + 1})$ ist auch eine linear unabhängige Famnile in $V \Rightarrow r + 1 \leq r ~ \lightning$ Das heißt $U$ ist endlich
+\item Annahme: $n := \dim_k U > \dim V$ \\
+     Sei $(u_1, \ldots, u_n)$ Basis von $U$, das heißt insbesondere ist die Familie $(u_1, \ldots, u_n)$ eine linear unabhängige Familie in $V$ $\Rightarrow$ $n \leq \sum_k V ~\lightning$
+\item "$\Rightarrow$" trivial \\
+     "$\Leftarrow$" Annahme: $U \subsetneq V$ \\
+     Sei $(u_1, \ldots, u_r)$ Basis von $U$. Wegen $U \subsetneq V$ ist $(u_1, \ldots, u_r)$ keine Basis von $V$ $\Rightarrow$ $\Exists v\in V: (u_1, \ldots, u_r, v)$ linear unabhängig.
+$\Rightarrow$ es existiert $v \in V$, sodass $(u_1, \ldots, u_r, v)$ linear unabhänig $\Rightarrow$ $r + 1 \leq \dim V = \dim U = r \lightning$
+\end{enumerate}
+\end{proof}
+\begin{thm}[9.12 Besisergänzungssatz]
+$V$ endlichdimensionaler K-VR, $(u_1, \ldots, u_n)$ linear unabhängige Famile von $V$ \\
+  Dass existiert $u_{n + 1}, \ldots, u_r \in V, r = \sum V$, sodass $\mathcal{B} = (u_1, \ldots, u_n, u_{n + 1}, \ldots, u_r)$ eine Basis von $V$ ist (das heißt $(u_1, \ldots, u_n)$ kann zu einer Basis erhänzt werden)
+\end{thm}
+\begin{proof}
+Sei $(v_1, \ldots, v_r)$ eine Basis von $V$. Aus Austauschsatz folgt: Nach umnummerierung von $v_1, \ldots, v_r$ ist $(u_1, \ldots, u_n,  v_{n + 1}, \ldots, v_r)$ eine Basis von $B$ Setze $u_{n + 1} := v_{n + 1}, \ldots, u_r := v_r$
+\end{proof}
+\begin{thm}[9.13 Zorsches Lemma]
+Jede induktiv geordnete nichtleere Menge $(M, \leq)$ besitzt ein maximales Element.
+Hierbei heißt eine halbgeordnete Menge $(m, \leq)$ \textbf{induktiv geordnet} $\xLeftrightarrow{\text{Def}}$ Jede Teilmenge $T\subseteq M$, für die $(T, \leq)$ totalgeordnet ist,
+besitzt eine obere Schanke in $(M, \leq)$, das heißt $\Exists S\in M: t\leq S \Forall t\in T$
+\end{thm}
+\begin{note}
+Das Zornsche Lemma ist äquivalent zum Auswahlaxiom
+\end{note}
+\begin{defn}[9.14]
+$(u_j)_{j\in J}$ linear unabhängige Familie in $V$. Dann kann $(u_j)_{j \in J}$ zu einer
+Basis von $V$ ergänzt werden, das heißt $\Exists I: J\subseteq I, (v_i)_{i\in I}: v_j = u_j \Forall j\in J$, sodass $(v_i)_{i\in I}$  eine Basis von $V$ ist.
+Insbesondere besitzt jeder K-VR eine Basis.
+\end{defn}
+\begin{proof}
+\begin{enumerate}
+\item Wir setzen $A:= \{uj \mid j \in J\}, M:= \{X \subseteq V \mid A\subseteq X \wedge X ~\text{ist linear unabhängig}\}$
+\begin{itemize}
+\item $(M, \subseteq)$ ist eine halbgeordnete Menge
+\item $(M \neq \emptyset)$, denn $A\in M$
+\item $(m, \subseteq)$ ist induktiv geordnet, denn:
+Sei $T\subseteq M$, sodass $(T,\subseteq)$ totalgeordnet ist. \\
+       zu zeigen: $T$ besitzt eine obere Schranke in $M$. \\
+       Wir setzen $\displaystyle S:= \bigcup_{X\in T} X$, dann ist $X\subseteq S \Forall X\in T$.
+Noch zu zeigen: $S\in M$, das heißt $A\subseteq S$ und $S$ ist linear unabhängig
+\begin{itemize}
+\item $A\subseteq S$ klar, denn $A\subseteq X\Forall X\in T$
+\item $S$ ist linear unabhängig, das heißt jede endliche Teilfamilie von $(s)_{s\in S}$ inst linear unabhägig: \\
+         Seien $s_1, \ldots, s_n \in S$ paarweise verschieden $\Rightarrow \Exists X_1, \ldots X_n \in T: s_i \in X_i, i = 1, \ldots, n$ \\
+         Da $(T, \subseteq)$ totalgeordnet ist existiert ein $i\in \{1, \ldots, n\}$ mit $X_j \subseteq X_i$ für alle $j\in \{1,\ldots,n\} \Rightarrow s_1, \ldots, s_n \subseteq X_i \xRightarrow{X_i \in M} (x_1, \ldots, s_n)$ linear unabhängig.
+\end{itemize}
+\end{itemize}
+\item Nach 1. können wir das Zornsche Lemma auf $(M,\subseteq)$ anwenden $\Rightarrow \Exists \max B \in M$ \\
+     Behauptung: $(b)_{b\in B}$ ist eine Basis von $V$ mit $A\subseteq B$, denn: Da $(b)_{b\in B}$ linear unabhängig wegen $V\in M$, gilt zu Zeigen, dass $\Lin(B) = V)$ \\
+     "$\subseteq$" klar \\
+     "$\supseteq$"
+\begin{align*}
+\intertext{Sei $v \in V$. Falls $v\in B$, dann $v\in\Lin(B)$, falls $v = 0$, dann $v\in \Lin(B)$, im Folgenden sei $v\not\in B, v\neq 0$}
+\Rightarrow A \subseteq B \subsetneq B\cup \{v\} \\
+\intertext{Da $B$ Maximum von $(M,\subseteq)$ ist, ist $B \cup \{v\} \not \in M$, das heißt $B\cup \{v\}$ ist linear abhängig}
+\Rightarrow \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, (\lambda, \lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0), b_1, \ldots, b_n \in B: \\
+\lambda v + \lambda_1 b_1 + \ldots + \lambda_n b_n = 0 \\
+\intertext{Falls $n = 0$}
+\lambda v = 0 \xRightarrow{v \neq 0} \lambda = 0 \lightning \\
+\intertext{Also $n \geq 1$, Falls $\lambda = 0$}
+(b_1, \ldots, b_n) ~\text{linear abhängig} \lightning \\
+\intertext{Also $\lambda \neq 0$, somit:}
+v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - \frac{\lambda_n}{\lambda} b_n \in\Lin((b_1, \ldots, b_n)) \subseteq \Lin(B)
+\end{align*}
+\end{enumerate}
+\end{proof}
+\begin{note}
+Der Satz "Jeder VR hat eine Basis" ist äquivalent zum Auswahlaxiom.
+\end{note}
+\section{{\bfseries\sffamily DONE} Matrizen}
+\label{sec-7}
+In diesem Abschnitt seinen $m,n,r\in\mathbb{N}$ \\
+  Frage: Gegeben sei ein UVR $U = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ Wie bestimmt man effizient die Basis von $U$?
+\begin{defn}[10.1]
+Eine $m\times n$-Matrix mit Einträgen aus $K$ ist eine Familie $(a_{11}, \ldots, a_{1n}, a_{21}, \ldots, a_{2n}, \ldots, a_{m1}, \ldots, a_{mn})$
+von $m n$ Elementen aus $K$, die wir in der Form
+\[(a_{ij})_{\substack{1\leq i \leq m \\ 1 \leq j \leq n}} = \begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & & \vdots \\ a_{m 1} & \ldots & a_{mn} \end{pmatrix} \tag{kurz $(a_{ij})$ wenn $m,n$ klar sind}\]
+schreiben. Die Menge aller $m\times n$ Matrizen mit Einträgen aus $K$ bezeichnen wir mit $M(m\times n, K)$.
+Für $A = (a_{ij})$ wie oben heißen
+\[a_i := (1_{i1} \ldots a_{in}), i = 1,\ldots, m\]
+Die Zeilen der Matrix $A$. Im Folgenden fassen wir die Zeilen von $A$ als Elemente von $K^n$ auf: $a_i = (a_{i1}, \ldots, a_{in})$
+\[\begin{pmatrix} a_{1j} \\ \vdots \\ a_{mj}\end{pmatrix} \in M(m\times 1, K), j = 1, \ldots, n\]
+heißen die Spalten der Matrix $A$
+\end{defn}
+\begin{remark}[10.2]
+Es gilt:
+\begin{enumerate}
+\item $M(m\times n, K)$ ist bezüglich der Verknüpfungen
+\begin{align*}
++ &: M(m\times n, K) \times M(m\times n, K) \to M(m\times n, K), (a_{ij}) + (b_ij):= (a_{ij} + b_{ij}) \\
+\cdot &:K\times M(m\times n, K) \to M(m\times n, K), \lambda \cdot (a_{ij}):=(\lambda a_{ij})
+\end{align*}
+ein K$_{\text{VR}}$. Es ist $\dim_k M(m\times n, K) = m\cdot n$
+\item Durch
+\[\cdot : M(m\times n, K) \times M(n\times r, K) \to M(m\times r, K)\]
+\[(a_{ij})_{\substack{1\leq i \leq m \\ 1\leq j\leq n}} \cdot (b_{jk})_{\substack{1\leq j \leq n \\ 1\leq k \leq r}} := (c_{ik})_{\substack{1\leq i \leq m \\ 1\leq k \leq r}}\]
+mit
+\[c_{ik} := \sum_{j = 1}^{n}a_{ij} b_{jk}\]
+ist die Multiplikation von Matrizen erklärt. Visualisierung:
+\begin{equation}
+\begin{pmatrix}
+\\
+a_{i1} & a_{i2} & \ldots & a_{in} \\
+\\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+& b_{1k} & \\
+& \vdots & \\
+& b_{nk} & \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+&  & \\
+& c_{ij} & \\
+&  & \\
+\end{pmatrix}
+\end{equation}
+Für diese gilt: Sind $A_1, A_2 \in M(m\times n, K), B_1, B_2 \in M(n\times r, K), C\in M(r\times s, K), \lambda \in K$, dann ist
+\begin{itemize}
+\item $A(B_1 + B_2) = A\cdot B_1 + A \cdot B_2, (A_1 + A_2) B = A_1 B + A_2 B$
+\item $A(\lambda B) = (\lambda A) B = \lambda (A B)$
+\item $A(B C) = (AB) C$
+\item $E_m \cdot A = A \cdot E_n = A$
+\end{itemize}
+Hierbei ist für $l \in \mathbb{N}$
+\[E_l := \begin{pmatrix} 1 & & 0 \\ & \ddots & \\ 0 & & 1 \end{pmatrix} \in M(l\times l, K)\]
+die $l\times l$- Einheitsmatrix über $K$
+\item $M(n\times n, K)$ ist bezüglich
+\[+,\cdot : M(n\times n, K) \times M(n\times n, K) \to M(n\times n, K)\]
+("$+$" siehe 1., "$\cdot$" siehe 2.) \\
+     ein Ring. (Einselement: $E_n$). Für $n > 1$ ist dieser Ring \textbf{nicht} kommutativ
+\end{enumerate}
+\end{remark}
+\begin{proof}
+Nachrechnen \\
+  Zu $\dim M(m\times n, K) = m\cdot n$: Eine Basis von $M(m\times n, K)$ ist durch die Familie der Matrizen $E_{ij}, i = 1, \ldots, m, j = 1,\ldots, n$ gegeben, wobei $E_{ij}$ dijenige $m\times n$-Matrix mit Einträgen in $K$ bezeichen, die in der i-ten Zeile, j-ten Spalte eine Eins
+und sonst nur Nullen stehen hat. \\
+  zu 3.: $M(n\times n, K)$ ist nicht kommutativ für $n > 1$:
+\begin{align*}
+&\sbox0{$\begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix}$}%
+\sbox1{$\begin{matrix} 0 & 1 \\ 0 & 0 \end{matrix}$}%
+\left(
+\begin{array}{c|c}
+\usebox{0}&\makebox[\wd0]{$0$} \\
+\hline
+\vphantom{\usebox{0}}\makebox[\wd0]{$0$}&\makebox[\wd0]{$0$}
+\end{array}
+\right)
+\cdot
+\left(
+\begin{array}{c|c}
+\usebox{1}&\makebox[\wd1]{$0$} \\
+\hline
+\vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c|c}
+\usebox{1}&\makebox[\wd1]{$0$} \\
+\hline
+\vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+\end{array}
+\right) \\
+\neq&
+\sbox0{$\begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix}$}%
+\sbox1{$\begin{matrix} 0 & 1 \\ 0 & 0 \end{matrix}$}%
+\sbox2{$\begin{matrix} 0 & 0 \\ 0 & 0 \end{matrix}$}%
+\left(
+\begin{array}{c|c}
+\usebox{1}&\makebox[\wd1]{$0$} \\
+\hline
+\vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+\end{array}
+\right)
+\cdot
+\left(
+\begin{array}{c|c}
+\usebox{0}&\makebox[\wd0]{$0$} \\
+\hline
+\vphantom{\usebox{0}}\makebox[\wd0]{$0$}&\makebox[\wd0]{$0$}
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c|c}
+\usebox{2}&\makebox[\wd1]{$0$} \\
+\hline
+\vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
+\end{array}
+\right) \\
+\end{align*}
+\end{proof}
+\begin{defn}[10.3]
+$A$ heißt invertierbar $\xLeftrightarrow{\text{Def}} \Exists B\in M(n\times n, K): AB = BA = E_n$
+\end{defn}
+\begin{remark}[10.4]
+Es gilt:
+\[GL(n, K) := \{A\in M(n\times n, K) \mid A ~\text{ist invertierbar}\}\]
+ist bezüglich der Matrizenmultiplikation eine Gruppe, die sogenannte allgemiene lineare Gruppe.
+Das neutrale Element ist $E_n$, das zu $A\in GL(n,K)$ inverse Element bezeichnen wir mit $A^{-1}$.
+\end{remark}
+\begin{proof}
+Wohldefiniertheit von "$\cdot$" auf $GL(n, K)$ \\
+  zu zeigen ist: $A_1, A_2 \in GL(n, K) \Rightarrow A_1 A_2 \in GL(n,K)$ \\
+  Dies gilt, denn:
+\begin{align*}
+A_1, A_2 \in GL(n, K) \Rightarrow \Exists B_1, B_2 \in M(n\times n, K): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
+\Rightarrow (A_1 A_2) \cdot (B_2 B_1) = A_1(A_2 B_2) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
+(B_2 B_1) \cdot (A_1 A_2) = B_2 (B_1 A_1) A_2 = B_2 E_n A_2 = B_2 A_2 = E_n
+\end{align*}
+das heißt $A_1 A_2 \in GL(n,K)$
+\begin{itemize}
+\item Assoziativiät: Vererbt sich von $M(n\times n, K)$
+\item neutrales Element: $E_n$
+\item Existenz von Inversen: Sei $A\in GL(n,K) \Rightarrow \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
+\end{itemize}
+\end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

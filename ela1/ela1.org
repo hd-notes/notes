@@ -46,6 +46,7 @@
 #+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
+#+LATEX_HEADER: \usepackage{stackengine}
 
 #+INCLUDE: "/home/robin/study/lectures/ela1/introduction.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ela1/basics.org" :minlevel 1
@@ -53,3 +54,4 @@
 #+INCLUDE: "/home/robin/study/lectures/ela1/polynomial.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ela1/vector_space.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ela1/basis_dimension.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/ela1/matrix.org" :minlevel 1
