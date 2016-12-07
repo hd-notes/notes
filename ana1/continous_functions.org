@@ -186,7 +186,7 @@
 		\[\abs{x - y} \to 0, ~\text{aber}~ \abs{f(x) - f(y)} = \abs{x^2 - y^2} = \abs{(x - y)(x + y)} = 2 + \frac{1}{n} \to 2\]
    2. Libschitz-Stetigkeit von $f(x) = x^2$ \\
 	  \[\abs{f(x) - f(y)} = \abs{(x - y)(x + y)} \leq L \abs{x y}\]
-	  wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A \imples L = 2A \imples$ Libschitz-Stetigkeit,
+	  wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A \implies L = 2A \implies$ Libschitz-Stetigkeit,
 	  aber wenn $D = R \implies$ gibt keine $L < \infty$
    3. Libschitz-Stetigkeit impliziert gleichmäßige Stetigkeit, aber nicht umgekehrt. Zum Beispiel: $f(x) = \sqrt{x}, x \in [0, A]$ ist gleichmäßig stetig nach Satz 3.13, aber nicht Libschitz-stetig in $0$.
 	  \begin{align*}
