@@ -1,0 +1,46 @@
+* Trägheitstensor, freie Rotation und Kreisel
+  Drehimpuls eines starren Körpers:
+  \[\v L = \v \omega \int r^2 \d m - \int \v r (\v \omega \v r) \d m\]
+  (Bezugspunkt wichtig!)
+  \begin{align*}
+  L_x &= \omega_x \int r^2 \d m - \int x (\omega_x + \omega_y y + \omega_z z) \d m \\
+  &= \omega_x \int (r^2 - x^2) \d m - \omega_y \int xy \d m - \omega_z \int xz \d m \\
+  &= I_{xx} \omega_x + I_{xy} \omega_y + I_{xz} \omega_z \\
+  L_y &= I_{yx} \omega_x + I_{yy} \omega_y + I_{yz} \omega_z \\
+  L_z &= I_{zx} \omega_x + I_{zy} \omega_y + I_{zz} \omega_z \\
+  \v L &= \underbrace{\begin{pmatrix}
+  I_{xx} & I_{xy} & I_{xz} \\
+  I_{yx} & I_{yy} & I_{yz} \\
+  I_{zx} & I_{zy} & I_{zz}
+  \end{pmatrix}}_{\text{Trägheitstensor}}
+  \begin{pmatrix}
+  \omega_x \\
+  \omega_y \\
+  \omega_z
+  \end{pmatrix}
+  \end{align*}
+  #+ATTR_LATEX: :options [Trägheitstensor]
+  #+begin_defn latex
+  \begin{align*}
+  \v L &= \hat I \v omega, \overarrow[\hat I]{Matrix} = I_{ij} \\
+  I_{xx} = \int (r^2 - x^2) \d m \quad I_{xy} = I_{yx} = -\int xy \dm \\
+  I_{yy} = \int (r^2 - y^2) \d m \quad I_{yz} = I_{zy} = -\int yz \dm \\
+  I_{zz} = \int (r^2 - z^2) \d m \quad I_{xz} = I_{zx} = -\int xz \dm
+  \end{align*}
+  Rotationsenergie:
+  \[E_{rot} = \frac{1}{2} \v \omega^{T} \hat I \v \omega\]
+  #+end_defn
+  Trägheitstensor $\hat I$ hängt von der Wahl des Koordinatensystems ab! \\
+  Geeignete Koordinatentransformation \rightarrow Diagonalisierung von $\hat I$. (Hauptachsentransformation)
+
+  Nach Hauptachsentransformation:
+  \[\hat I = \begin{pmatrix} I_a & 0 & 0 \\ 0 & I_b & 0 \\ 0 & 0 & I_c \end{pmatrix}\]
+  mit $I_a > I_b > I_c$. \\
+  Es folgt: Bei Rotation eines Körpers um eine der drei Hauptachsen sind Drehimpuls und Winkelgeschwindigkeit parallel.
+
+** Kreisel
+   Ein Kreisel ist ein rotierender starrer Körepr, der höchstens an einem Punkt aufgehängt ist. (Kompass, Sattelit, Geschoß) \\
+   Beschreibung der Kreiselbewegung mit 3 Achsen:
+   - Figurachse
+   - Momentane Drehachse, Richtung von $\v \omega$
+   - Drehimpulsachse

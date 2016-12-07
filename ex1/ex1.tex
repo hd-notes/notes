@@ -1,4 +1,4 @@
-% Created 2016-11-30 Mi 17:45
+% Created 2016-12-07 Mi 03:10
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -58,6 +58,7 @@
 \usepackage{etoolbox}
 \patchcmd{\thmhead}{(#3)}{#3}{}{}
 \renewcommand*{\proofname}{Beweis}
+\newcommand{\eps}{\ensuremath{\varepsilon}}%
 \author{Robin Heinemann}
 \date{\today}
 \title{Experimentalphysik (H.-C. Schulz-Coulon)}
@@ -632,7 +633,7 @@ Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R 
 \[F_G = m g = F_Z \cos{\theta}\]
 \[F_{Zp} = F_Z \sin{\theta}\]
 \[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
-\[a_{Zp} = \omega^2 r \Rightarrow: \omega \sqrt{\frac{g}{\tan{\theta}}}\]
+\[a_{Zp} = \omega^2 r \Rightarrow \omega = \sqrt{\frac{g}{\tan{\theta}}}\]
 \begin{itemize}
 \item $\theta$ steigt mit $\omega$ an
 \item $\theta(\omega)$ ist unabhängig von Masse
@@ -779,9 +780,9 @@ Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfe
 Für konservative Kraftfelder gilt
 \[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
 \begin{itemize}
-\item jedem ort im Raum kannein Skalar, die potentielle Energei zugeordnet werden $\Rightarrow$ $E_{pot} = E_{pot}(x,y,z)$ Skalar!
-\item wird bei der Verschiebung eines Körpers von Ort 1 nach Ort 2 Arbeit gegen eine konservative Kraft geleistet, so erhäht sich die potentielle einergei, das heißt $E_{pot}(2) > E_{pot}(1)$.
-\item Der Nullpunkt $E_{pot}(\v r)$ = 0\$ der potentiellen Energie ist frei wählbar, da allein die Differenz der Potentiellen Energei an zwei Punkten relevant ist.
+\item jedem Ort im Raum kann ein Skalar, die potentielle Energie zugeordnet werden $\Rightarrow$ $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+\item wird bei der Verschiebung eines Körpers von Ort 1 nach Ort 2 Arbeit gegen eine konservative Kraft geleistet, so erhöht sich die potentielle Energie, das heißt $E_{pot}(2) > E_{pot}(1)$.
+\item Der Nullpunkt $E_{pot}(\v r) = 0$ der potentiellen Energie ist frei wählbar, da allein die Differenz der potentiellen Energie an zwei Punkten relevant ist.
 \end{itemize}
 \paragraph{homogenes Kraftfeld}
 \label{sec-4-9-4-1}
@@ -859,7 +860,7 @@ Potential:
 \label{sec-5-1}
 Für konservative Kräfte gilt:
 \[\Delta E_{kin} = -\Delta E_{pot} = \int_1^2 \v F\d \v r\]
-das heißt: die kinetische Energei ergibt sich allein aus der Potentialdifferenz und ist unabhängig vom durchlaufenen Weg.
+das heißt: die kinetische Energie ergibt sich allein aus der Potentialdifferenz und ist unabhängig vom durchlaufenen Weg.
 \begin{align*}
 E_{kin}(2) - E_{kin}(1) = E_{pot}(1) - E_{pot}(2) \\
 E_{kin}(1) + E_{pot}(1) = E_{kin}(2) + E_{pot}(2) = \ldots =~\text{const} \\
@@ -890,7 +891,7 @@ Häufig: Potentielle Energie abhängig von Ort $x$ oder Abstand $r$ \\
 \label{sec-5-1-3-1}
 \begin{itemize}
 \item Abhängig von $E_{ges}$ kann sich die Kugel nur in bestimmten Bereichen aufhalten
-\item Gleichgewichtslagen: Kugel rught, es wirken keine Kräfte, das heißt
+\item Gleichgewichtslagen: Kugel ruht, es wirken keine Kräfte, das heißt
 \[F = -\dd{E_{pot}}{x} = 0, ~\text{bzw}~ \v F = -\grad E_{pot} = 0\]
 \end{itemize}
 
@@ -996,7 +997,7 @@ Der Massenschwerpunkt eines abgeschlossenen Systems hat einen zeitlich konstante
 \subsubsection{Raketenantrieb}
 \label{sec-6-1-2}
 das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
-    Beobachtung: Abstoßen einer Masse kann zum Antreib verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
+    Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
 
 Betrachte Rakete:
 Impulssatz:
@@ -1016,7 +1017,7 @@ m \Delta v + \Delta m v_b = 0 \\
 \int_{v_1}^{v_2}\d v = -v_B \int_{m_1}^{m_2} \frac{1}{m} \d m, m_1 > m_2, v_B = ~\text{const} \\
 v_2 - v_1 = -v_B \cdot \big[\ln m\big]_{m_1}^{m_2} = v_B (\ln m_1 - \ln m_2) = v_B \ln{ \frac{m_1}{m_2}} > 0
 \intertext{Wähle Anfangsbedingungen:}
-v_1 = 0, m_1 0 m_0 = m(t = 0), m_2 = m(t) \\
+v_1 = 0, m_1 = 0,  m_0 = m(t = 0), m_2 = m(t) \\
 \intertext{$\Rightarrow$ Raketengleichung für kräftefreie Rakete}
 v(t) = v_B \ln \frac{m_0}{m(t)}
 \end{align*}
@@ -1029,11 +1030,11 @@ Allgemeine Raketengleichung (ohne Herleitung)
 \begin{remark}
 Vorsicht bei der Anwendung des zweiten Newtonschen Gesetzen $\v F = \dot{\v p}$. Naiver Ansatz für kräftefreie Rakete:
 \[\dd{m v}{t} = \dd{m}{t} v + m \dd{v}{t} = 0\]
-Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksicht
+Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksichtigt
 
 Korrekter Ansatz:
 \[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \Rightarrow m \dd{v}{t} + v_B \dd{m}{t} = 0\]
-das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigketi verschwindet.
+das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigkeit verschwindet.
 \end{remark}
 \section{Stöße}
 \label{sec-7}
@@ -1117,7 +1118,7 @@ Im Schwerpunktsystem sind für ein abgeschlossenes System zweier Massepunkte ein
 Betrachte $2$ Kugeln
 \begin{itemize}
 \item Massen: $m_1, m_2$
-\item Geschwindigkeit: $v_1 0 v, v_2 = 0$
+\item Geschwindigkeit: $v_1 = v, v_2 = 0$
 \item Impulserhaltung:
 \begin{align*}
 m_1 v &= (m_1 +  m_2) v' \\
@@ -1125,7 +1126,7 @@ v' &= \frac{m}{m_1 + m_2} v
 \end{align*}
 \item Energiebilanz:
 \[E_{kin} = \frac{1}{2} m_1 v^2, E_{kin}' = \frac{1}{2} (m_1 + m_2) (\frac{m_1}{m_1 + m_2})^2 v^2 = \frac{1}{2} \frac{m_1^2}{m_1 + m_2}v^2 < E_{kin}\]
-Beim inelastischen Stoß geht mechanische Energei verloren, sie wird beim Stoß in andere Energieformen (zum Beispiel Wärme) umgewandelt. (siehe Thermodynamik)
+Beim inelastischen Stoß geht mechanische Energie verloren, sie wird beim Stoß in andere Energieformen (zum Beispiel Wärme) umgewandelt. (siehe Thermodynamik)
 \end{itemize}
 Interessant:
 Betrachtung im Schwerpunktsystem.
@@ -1135,8 +1136,8 @@ m_1 v_1^\ast - m_2 v_2^\ast = (m_1 + m_2) v^{\ast\prime} \\
 (m_1 + m_2) v^{\ast\prime} = 0 \\
 E_{kin}^{\ast\prime} = \frac{1}{2}(m_1 + m_2)(v^{\ast\prime})^2 = 0
 \end{align*}
-Im Schwerpunktsystem findet beim inelastischen Stoß eine vollständige Umwandlung der kinetischen Energie statt
-Allgemein:
+Im Schwerpunktsystem findet beim inelastischen Stoß eine vollständige Umwandlung der kinetischen Energie statt. \\
+   Allgemein:
 \begin{align*}
 \intertext{falls $\v F_{außen} =0$}
 E_{kin,1} + E_{kin,2} = E_{kin,1}' + E_{kin,2}' + Q
@@ -1144,7 +1145,7 @@ E_{kin,1} + E_{kin,2} = E_{kin,1}' + E_{kin,2}' + Q
 \sum E_{kin,i} &= \sum E'_{kin,i} + Q \\
 Q &= 0 \tag*{elastisch} \\
 Q &> 0 \tag*{inelastisch} \\
-Q &x 0 \tag*{superelastisch} \\
+Q &< 0 \tag*{superelastisch} \\
 \end{align*}
 \section{Mechanik des starren Körper}
 \label{sec-8}
@@ -1246,15 +1247,130 @@ Die Wirkung aller Kräfte auf einen starren Körper lässt sich durch
 beschreiben. Dabei greift $\v F$ im Schwerpunkt an
 
 Wirkung von Kräftepaaren: Reine Rotation. Es gilt:
-
 \[\v M = \v r_1 \times \v F - \v r_2 \times \v F = (\v r_1 - \v r_2)\times \v F = \v r_{12} \times \v F\]
-\subsection{Trägheitsmoment}
+Merke:
+Das Drehmoment eines Kräftepaares ist unabhängig vonm Bezugspunkt $0$ \\
+    Zwei Kräftepaare sind äquivalent, wenn sie das gleiche Drahmoment besitzen. Äqzivalente Kräftepaare können einander ersetzen.
+\subsection{Statisches Gleichgewicht}
 \label{sec-8-3}
-\[I = \int r^2_\perp \d m = \Theta\]
-\[E_{rot} = \frac{1}{2} I \omega^2\]
-
-\subsection{steinersche Satz}
+Statik:
+\[\v F = \sum \v F_i = 0, \v M = \sum \v M_i = 0\]
+das heißt keine Translation, keine Rotation
+\begin{ex}
+\mbox{}
+\begin{enumerate}
+\item Gleichgewicht eines starren Körpers in Schwerefeld \\
+     Frage: Wo muss $\v F$ angreifen um für statisches Gleichgewicht zu sorgen? \\
+     Kräfte:
+\begin{align*}
+sum \v F_i + \v F = 0 \\
+\v F = - \sum m_i \v g = - m_{ges} \v g \\
+\end{align*}
+Drehmomente:
+\begin{align*}
+\sum \v M_i + \v R \times \v F = 0 \\
+\sum \v r_i \times \v F_i + \v R \times \v F = \sum m_i (\v r_i \times \v g) + \v R \times \v F \\
+= (\sum m_i \v r_i) \times \v g - m_{ges} \v R \times \v G \\
+= m_{ges} (\v R \times \v g) = m_{ges} (\v r_s \times \v g)
+\end{align*}
+Lösung A: $\v R = \v r_s$, das heißt Untertützung im Schwerepunkt mit $\v F = - m{ges} \v g$ \\
+     Lösung B: $(\v R - \v f_s) \times \v g = 0$, das heißt $(\v R - \v r_s) \parallel \v g$, also Unterstützung oberhalb oder unterhalb des Schwerpunkts
+3 Möglichkeiten:
+\begin{itemize}
+\item $\v R$ über Schwerpunkt: stabiles Gleichgewicht
+\item $\v R$ unter SP: labiles Gleichgewicht
+\item $\v R$ in PS: indifferentes Gleichgewicht
+\end{itemize}
+\item Schiefer Turm \\
+      Drehmoment:
+\[F_g r = F_z r \rightarrow F_g = F_z\]
+Kräftegleichgewicht:
+\[F_g + F_z + F_s = 0 \rightarrow F_s = -2F_g\]
+\item Stehende Leiter \\
+      Kräftegleichgewicht:
+\[\v F_N = - \v F_G, \v F_N' = -\v F_R\]
+Drehmomente: \\
+      Bezugspunkt = unteres Leiterende (günstige Wahl!) \\
+      \[F_W h = F_g (\frac{1}{2} a)\]
+(vergleiche Übungsaufgabe)
+\end{enumerate}
+\end{ex}
+\subsection{Rotation und Trägheitsmoment}
 \label{sec-8-4}
+Bewegungsenergie eines starren Körpers setzt sich zusammen aus:
+\begin{itemize}
+\item kinetischer Energie der Schwerpunktsbewegung
+\item kinetische Energie aufgrund von Rotation
+\end{itemize}
+Experiment: Rollende Objekte $\rightarrow Form des Körpers wichtig!$ \\
+   Mathematisch:
+\begin{align*}
+E_{kin} &= \sum \frac{1}{2} m_i \v v_i^2 \tag{mit $\v v_i = \v v_s + \v v_{si}$} \\
+E_{kin} &= \frac{1}{2} \sum m_i (\v v_s^2 + 2\v v_s \v v_{si} + \v v_{si} + \v v_{si}^2) \\
+&= \frac{1}{2} \sum m_i \v v_s^2 + \v v_s \sum m_i \v v_{si} + \frac{1}{2} \sum m_i \v v_{si}^2 \\
+\end{align*}
+Die kinetische Energie zerlegt sich in die kinetische Energie des Schwerpunkts und Rotationsenergie, aus der kintischen Energie der Bewegung relativ zum Schwerpunkt
+
+Jetzt: Betrachte Rotation um raumfeste Achse: (Spezialfall: Achse durch Schwerpunkt) \\
+   Kinetische Energei des Massenstücks $\d m$:
+\begin{align*}
+\d E_{kin} &= \frac{1}{2} \d m \v v_i^2 = \frac{1}{2} \d m (\omega r_{\perp})^2 \\
+&= \frac{1}{2} \d m \omega^2 r_\perp^2 \\
+E_{rot} &= \int \d E_{kin} = \frac{1}{2} \int \omega^2 r_{\perp}^2 \d m = \frac{1}{2} \omega^2 \underbrace{\int r_\perp^2 \d m}_{\text{Trängheitsmoment}}
+\end{align*}
+
+
+\begin{defn}[Trägheitsmoment]
+Trägheitsmoment bezüglich einer raumfesten Achse
+\[I = \int r_{\perp}^2 \d m = \Theta^2 \d m = \Theta\]
+Diskret:
+\[\Theta = \sum r_{\perp,i}^2 m_i\]
+Dabei ist $r_\perp$ der Abstand zwischen dem Massenstück $\d m$  und der Drehachse.
+\end{defn}
+\begin{defn}[Rotationsenergie]
+Rotationsenergie eines starren Rotators (Rotation um raumfeste Achse)
+\[E_{rot} = \frac{1}{2} I \omega^2\]
+\end{defn}
+
+\subsection{Berechung von Trägheitsmomenten}
+\label{sec-8-5}
+Volumenintegral:
+\[I = \int r_\perp^2 \d m = \int r_{\perp}^2 \rho(\v r) \d V\]
+\begin{ex}
+\begin{enumerate}
+\item Stab (dünn)
+\begin{align*}
+I &= \int_{-\frac{L}{2}}^{\frac{L}{2}} x^2 \rho A \d x = \rho A \int_{-\frac{L}{2}}^{\frac{L}{2}} x^2 \d x \\
+&= \frac{1}{3} \rho A ((\frac{L}{2})^3 - (- \frac{L}{2})^3) \\
+&= \frac{1}{3} \rho A \frac{L^3}{4} = \frac{1}{12} \rho AL L^2 \\
+&= \frac{1}{12} m L^2
+\end{align*}
+\item Scheibe, Zylinder
+\begin{align*}
+\intertext{Zylinderkoordinaten:}
+x &= r \cos{\phi}, y = r\sin{\phi}, z = z \\
+\d V &= r\d \phi \d r \d z \\
+I &= \int_V \v r_\perp^2 \d m = \int_v r_\perp^2 \rho \d V \\
+\intertext{Zylinderkoordinaten, also $r_\perp = r$}
+&= \rho \int_v r^2 r \d r \d \phi \d z \\
+&= \rho \int_{0}^{R} \int_{0}^{2\pi}\int_{0}^{h} r^2 r \d r \d \phi \d z \\
+&= 2\pi \rho h \int_{0}^{R} r^3 \d r = 2 \pi \rho h \frac{1}{4} R^4 = \frac{1}{2} (\pi R^2 h) \rho R^2 = \frac{1}{2} m R^2 \\
+\end{align*}
+\item Dünner Hohlzylinder
+\begin{align*}
+I &= \rho \int_{R}^{R + d} \int_{0}^{2\pi} \int_{0}^{h} r^2 r \d r \d \phi \d z \\
+&= 2\pi \rho h \int_{R}^{R + d} r^3 \d r = 2\pi \rho h \frac{1}{4} \Big[ r^4 \Big]_R^{R + d} \\
+&= 2\pi \rho h \frac{1}{4} ((R + d)^4 - R^4) \\
+&= 2\pi \rho h \frac{1}{4} (R^4 + 4 R^3 d + \ldots - R^4) \\
+&\approx 2\pi \rho h R^3 d = (2 \pi Rdh \rho)R^2 = mR^2 \\
+\end{align*}
+\item Kugel
+\[I = \int r_{\perp}^2 \d m = \frac{2}{5} m R^2\]
+(ohne Beweis,  zur Übung\ldots{})
+\end{enumerate}
+\end{ex}
+\subsection{Steinersche Satz}
+\label{sec-8-6}
 Nochmal Stab:
 
 \begin{align*}
@@ -1336,7 +1452,7 @@ T_2^2 - T_0^2 = \SI{8}{\second\squared} \\
 \end{align*}
 \end{ex}
 \subsection{Drehimpuls}
-\label{sec-8-5}
+\label{sec-8-7}
 \begin{itemize}
 \item Translation: $\v F = m \v a, \v F = \dot{\v p}$
 \item Rotation: $\v M = I \v \alpha, \v M = \dot{\v L}$ $\rightarrow$ Drehimpuls
@@ -1382,5 +1498,135 @@ Allgemeiner Zusammenhang:
 &= \d m(r^2 \v \omega - \v r (\v \omega \v r)) \\
 \int \d \v L &= \v \omega \int r^2 \d m - \int \v r (\v \omega \v r) \d m
 \end{align*}
+
+\begin{ex}[Schief gestellte Hantel]
+Drehimplus:
+\[\v L = \v r_1 \times \v p_1 + \v r_2 \times \v p_2\]
+Drehimpulsvektor steht senkrecht auf Verbundingslinie zu $m_1$ und $m_2$.
+Aber: Winkelgeschwindigkeit $\v \omega$ zeigt in Richtung der Drehachse.
+\end{ex}
+\begin{ex}[Rotierende Scheibe mit Unwucht]
+Für Rad mit Masse $M$ gilt: (ohne Unwucht)
+\[\v L_1 = \int \d \v L~\text{parallel zu}~ \v \omega\]
+aus Symmetriegründen, $\v L = I \v \omega$
+Für das Rad plus Unwucht gilt:
+\[\v L = \v L_1 + \v L_2, \v L_2 = \v r \times \underarrow[\v p]{Drehimpul der Unwucht}\]
+das heißt: $\v L$ nicht parallel zu $\v \omega$, daraus folgt: Derhimpuls hat Komponente senkrecht
+zur Winkelgeschwindigkeit $\v \omega$, diese rotiert mit $\v \omega$
+\[\v M = \dot{\v L}\]
+das heißt auf Achse wirkt Drehmoment.
+\end{ex}
+\subsection{Trägheitstensor, freie Rotation und Kreisel}
+\label{sec-8-8}
+Drehimpuls eines starren Körpers:
+\[\v L = \v \omega \int r^2 \d m - \int \v r (\v \omega \v r) \d m\]
+(Bezugspunkt wichtig!)
+\begin{align*}
+L_x &= \omega_x \int r^2 \d m - \int x (\omega_x + \omega_y y + \omega_z z) \d m \\
+&= \omega_x \int (r^2 - x^2) \d m - \omega_y \int xy \d m - \omega_z \int xz \d m \\
+&= I_{xx} \omega_x + I_{xy} \omega_y + I_{xz} \omega_z \\
+L_y &= I_{yx} \omega_x + I_{yy} \omega_y + I_{yz} \omega_z \\
+L_z &= I_{zx} \omega_x + I_{zy} \omega_y + I_{zz} \omega_z \\
+\v L &= \underbrace{\begin{pmatrix}
+I_{xx} & I_{xy} & I_{xz} \\
+I_{yx} & I_{yy} & I_{yz} \\
+I_{zx} & I_{zy} & I_{zz}
+\end{pmatrix}}_{\text{Trägheitstensor}}
+\begin{pmatrix}
+\omega_x \\
+\omega_y \\
+\omega_z
+\end{pmatrix}
+\end{align*}
+\begin{defn}[Trägheitstensor]
+\begin{align*}
+\v L &= \hat I \v omega, \overarrow[\hat I]{Matrix} = I_{ij} \\
+I_{xx} = \int (r^2 - x^2) \d m \quad I_{xy} = I_{yx} = -\int xy \d m \\
+I_{yy} = \int (r^2 - y^2) \d m \quad I_{yz} = I_{zy} = -\int yz \d m \\
+I_{zz} = \int (r^2 - z^2) \d m \quad I_{xz} = I_{zx} = -\int xz \d m
+\end{align*}
+Rotationsenergie:
+\[E_{rot} = \frac{1}{2} \v \omega^{T} \hat I \v \omega\]
+\end{defn}
+Trägheitstensor $\hat I$ hängt von der Wahl des Koordinatensystems ab! \\
+   Geeignete Koordinatentransformation $\rightarrow$ Diagonalisierung von $\hat I$. (Hauptachsentransformation)
+
+Nach Hauptachsentransformation:
+\[\hat I = \begin{pmatrix} I_a & 0 & 0 \\ 0 & I_b & 0 \\ 0 & 0 & I_c \end{pmatrix}\]
+mit $I_a > I_b > I_c$. \\
+   Es folgt: Bei Rotation eines Körpers um eine der drei Hauptachsen sind Drehimpuls und Winkelgeschwindigkeit parallel.
+
+\subsubsection{Kreisel}
+\label{sec-8-8-1}
+Ein Kreisel ist ein rotierender starrer Körepr, der höchstens an einem Punkt aufgehängt ist. (Kompass, Sattelit, Geschoß) \\
+    Beschreibung der Kreiselbewegung mit 3 Achsen:
+\begin{itemize}
+\item Figurachse
+\item Momentane Drehachse, Richtung von $\v \omega$
+\item Drehimpulsachse
+\end{itemize}
+\section{Mechanik deformierbarer Körper}
+\label{sec-9}
+Starrer Körper: $\v r_i - \v r_j = ~\text{const}$, das heißt Abstand zwischen Massenpunkten konstant. \\
+  Wirklichkeint: Verformung bei Anwendung äußerer Kräfte.
+\subsection{Atomares Modell}
+\label{sec-9-1}
+Experiment: Alle Körper sind aus Atomen oder Molekülen aufgebaut.
+Beschreibung von Kräften zwischen Atomen und Molekülen durch Lennard-Jones-Potential. (Dipol-Dipol-Wechselwirkung, Van-der-Waals Kräfte) \\
+   Gleichgewichtsabstand: $r_0$ (\$E$_{\text{pot}}$ = \$ minimal)
+Für kleine Auslenkung gilt:
+\begin{align*}
+E_{pot} &= \frac{1}{2}k(r - r_0)^2 \\
+F &= -\dd{E_{pot}}{r} = -k(r - r_0) = -k Ar
+\end{align*}
+Federkraft!
+$\Rightarrow$
+\begin{itemize}
+\item Modell eines Festkörper: Federmodell. \\
+     Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energei klein gegen $E_{pot}(r_0)$.
+Atome können Gitterplätze nicht verlassen. Fernordung!
+\item Modell einer Flüssigkeit: Kugelmodell: \\
+     Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
+Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen $\Rightarrow$ flüssiger Zustand. Nahordung!
+\item Modell eines Gases: frei bewegliche Teilchen. \\
+     Mittlere kinetische Energei ist grob gegen Bindungsenergie, hohe Temperatur!
+\end{itemize}
+\subsection{Feste Körper.}
+\label{sec-9-2}
+\begin{itemize}
+\item Elastischer fester Körper $\rightarrow$ Formelastizität, Volumenelastitität aufgrund rücktreibender Kräfter (Hookscher Bereich)
+\item Plastisch feste Körper $\rightarrow$ Formänderungen verbleiben
+\end{itemize}
+Hier: Elastische Körper!
+Experimentell findet man:
+\begin{align*}
+\Delta f &\sim F \\
+\Delta L &\sim L, \Delta L \sim A^{-1} \\
+\Delta L &\sim L \frac{F}{A} = L r \tag{$r$: Zugspannung}
+\end{align*}
+\begin{defn}[Hooksches Gesetz:]
+\[\sigma = E \frac{\Delta L}{L} = E \eps\]
+\begin{itemize}
+\item $E:$ Elastizitätsmodul, E-Modul
+\item $\eps:$ Elongation, relative Längenänderung
+\item $\sigma:$ Zugspannung, $\sigma = \frac{F}{A}$
+\end{itemize}
+\end{defn}
+Auswertung Hooksches Gesetz:
+Material-Stahl, $D = \SI{0.3}{\milli\meter}, L = \SI{6}{\meter}, A = \SI{0.07}{\meter\squared}$
+\begin{align*}
+F &= \SI{1.2}{\kilo\pascal} = \SI{11.8}{\newton}, \Delta L = \SI{5}{\milli\meter}, \eps = \SI{8e-4}{} \rightarrow \sigma = \SI{168.6}{\newton\per\milli\meter\squared} \\
+F &= \SI{2.4}{\kilo\pascal} = \SI{13.5}{\newton}, \Delta L = \SI{10}{\milli\meter}, \eps = \SI{1.7e-3}{} \rightarrow \sigma = \SI{337.2}{\newton\per\milli\meter\squared}
+\Rightarrow E&= \frac{\sigma}{\eps} \SI{2e5}{\newton\per\milli\meter\squared} = \SI{200e9}{\newton\per\meter\squared}
+\end{align*}
+Einfaches Atomares Modell: Lineare Kette.
+Es gilt:
+\[L = n a, \Delta a \sim F, \Delta L \sim m \Delta a \sim n F\]
+Außerdem wegen \[L \sim m : \Delta L \sim L F \to F \sim \frac{\Delta L}{L}\]
+Für eine lineare Kette ist $\eps \frac{\Delta L}{L}$ tatsächlich proportional zur Kraft $F$. \\
+   Für $\eps \sim A^{-1}$ braucht man mehrere lineare Ketten parallel aneinander.
+
+Aber: Auch Wechselwirkung in transversaler Richtung! \\
+   $\rightarrow$ Querkontraktion $= \frac{\Delta D}{D}$
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -218,3 +218,92 @@
    Identifizieren sie $SO(2)$ mit folgender Menge
    \[\{z \in \mathbb{C} \mid \abs{z} = 1\}\]
    Die Gruppenoperation soll der komplexen Multiplikation entsprechen
+** Tensoren
+   Ein Tensor von Rang (oder Stufe) $m$ im n-dimensionalen Vektorraum $V = \mathbb{R}^n$ ist eine multilineare Abbildung:
+   \[t:\underbrace{V\times V\times \ldots \times V}_{m\text{-mal}} \to \mathbb{R}\]
+   Praktisch:
+   \[t: (\v x_{(1)}, \v x_{(2)}, \ldots, \v x_{(n)}) \mapsto t_{i_1 \ldots i_m} x_{(1)}^{i_1} \ldots x_{(m)}^{i_m} \]
+   #+begin_ex latex
+   - Euklidisches Skalarprodukt: $V\times V \to \mathbb{R}$
+	 \[\delta: (\v x, \v y) \mapsto \delta_{ij} x^i y^j \equiv \v x \cdot \v y \in \mathbb{R}\]
+   - Noch einfacher:
+	 \[t: V \to \mathbb{R}: t_i \v x \to t_i x^i \in \mathbb{R}\]
+	 Die Menge solcher linearen Abbildungen bildet auch einen n-dimensionalen Vektorraum, den sogenannten Dualraum $V^\ast$ (zu $V$)
+	 Notation: $\ubar t = \{t_1, \ldots, t_n\} \in V^\ast$ \\
+	 Erinnerung: $\v x = \{x^1, \ldots, x^n\} \in V$ \\
+	 Oben(Untenschreiben der Indizes macht die "natürliche Wirkung") von $\ubar t$ auf $\v x$ besonders deutlich: $t_i x^i \in \mathbb{R}$
+	 - oben: kontravariant
+	 - unten: kovariant ($\rightarrow$ Co-Vektor $\in V^\ast$)
+	 Für und: enorme Verienfachung: \\
+	 Wir haben immer euklidischen Raum und damit die besondere Rolle von $\delta_{ij}$ und die inversen Matrix $\delta^{ij}$
+	 \[\delta_{ij} \delta^{jk} = \delta_i^k = (\mathbb{1}_i^k)\]
+	 Dies erlaubt uns Indizes beliebig zu "heben" und zu "senken":
+	 \[t^i \equiv \delta^{ij} t_j, x_i \equiv \delta_{ij}x^j\]
+	 Damit können wir $V$ und $V^\ast$ identifizieren. Wir können auch alle Tensor Indizes beliebig oben oder unten schreiben.
+	 Wir werden zur Vereinfachung weiterhin schreiben
+	 \[\v x \v y = x^i y^i (~\text{eigentlich}~x^i y^j \delta_{ij})\]
+	 (Mehr zum Dualraum in Lineare Algebra)
+   #+end_ex
+   Für uns: Tensor der Stufe 1: ist Vektor
+   \[t: \v x \mapsto t^i x^i = \v t \v x \in \mathbb{R}\]
+   Wichtig für uns: Resultat von Anwendung eines Rang-1-Tensors auf Vektor ist invariant unter Drehungen:
+   \[x\mapsto Rx; t\mapsto Rt\]
+   \[x\mapsto x' = Rx, x^{ij} = R^{ij} x^j\]
+   Invarianz:
+   \[t^{T} x = t^{T} R^{T} R x\]
+   Betrachte einfaches, allgemeines Bespiel für Tensor der Stufe 2:
+   \begin{align*}
+   t\equiv U\otimes W \in V\otimes V \\
+   t:(\v x, \v y) \mapsto (u^i w^j) \cdot (x^i y^j) &= (\v u \cdot \v x) \cdot (\v w \cdot \v y) \\
+   \intertext{mit $t^{ij} \equiv u^i w^j$}
+   &= t^{ij} x^i y^j \\
+   \end{align*}
+   Grob gesagt: $V \otimes V$ ist die Menge aller Linearkombinationen von Elementen wie $U\otimes W$ \\
+   Transformation von $t^{ij} = u^i w^j$ unter Drehungen:
+   \[t^{ij} = u^i w^j \xrightarrow{R} R^{ik} u^k R^{jl} w^l = R^{ik} R^{jl} t^{kl}\]
+   Invarianz von $t(\v x, \v y):$
+   \begin{align*}
+   t(\v x, \v y) \to (R t) (R x, R y) &= (R^{ik} r^{jl} t^{kl}) (R^{ip} x^p) (R^{jq} y^q) \\
+   &= (R^{ik} R^{ip}) (R^{jl} R^{jq}) t^{kl} x^p y^q \\
+   &= \delta^{kp} \delta^{lq} t^{kl} x^p y^q \\
+   &= t^{kl} x^{k} y^{l} \\
+   &= t(\v x, \v y)
+   \end{align*}
+   Allgemeine Transformation eines Tensors unter Drehungen:
+   \[t \to t' = Rt, t^{\prime i_1 \ldots i_m} = R^{i_1 j_1} \ldots R^{i_m j_m} t^{j_1 \ldots j_m}\]
+   Invarianz von $t(\v u_{(1)}, \ldots, \v u_{(m)})$ folgt wie oben.
+
+   Fortgeschrittener Kommentar: Gruppe wirkt auf Vektoren aus $K \equiv$ Darstellung
+
+   Für unser Bespiel der Wirkung von $O(n)$ auf $\mathbb{R}^k$ war das "offensichtlich" mit Tensoren haben wir "nichttriviales Bespiel für Darstellung"
+   \[\underbrace{R\in O(n)}_{\text{Elemente $R^{ij}$}} \overset{\text{Darst.}}{\mapsto} D(R) \in \underbrace{n^2 \times n^2 \text{-Matrizen}}_{\text{Elemente}~D(R)^{ij,kl} = R^{ik}R^{jl}}\]
+   Dieses $D(R)$ wirkt wie oben beschrieben auf Tensoren:
+   \[t^{ij} \overset{D(R)}{\mapsto} D(R)^{ij,kl} t^{kl}\]
+   $D(R)$ ist eine Darstellung von $O(n)$, die verschieden ist von der "definierenden" Darstellung
+
+   *Transformation von $\delta^{ij}$* \\
+   \[\delta^{\prime ij} = R^{ik} R^{jl} \delta^{kl} = R^{ik} R^{jk} = \delta^{ij}\]
+   \Rightarrow $\delta^{ij}$ ist ein *invarianter Tensor* \\
+
+   weiteres Beispiel: (für $m = n$: Levi Civita-Tensor) \\
+   Wir schreiben nur $m = n = 3$ Fall aus:
+   \[\eps(\v x, \v y, \v z) = \eps^{ijk} x^i y^j z^k = x^i \eps^{ijk} y^j z^k = \v x(\v y \times \v z)\]
+   *Transformation:*
+   \[\eps^{\prime i_1 i_2 i_3} = R^{i_1 j_1} R^{i_2 j_2} R^{i_3 j_3} \eps^{j_1 j_2 j_3} = \eps^{i_1 i_2 i_3} \det(R) \underarrow[=]{$R\in SO(3)$} \eps^{i_1 i_2 i_3}\]
+
+   *Fakt:* Falls $t_1, t_2$ Tensoren vom Rang $m_1, m_2$ sind, so ist das folgende ein Tensor vom Rang $m_1 + m_2 - 2l_i$:
+   \[t_1^{i_1 \ldots i_l i_{l + 1} \ldots i_m} t_2^{i_1 \ldots i_l j_{l + 1} \ldots j_{m_2}} = t^{i_{l + 1} \ldots i_{m_1} j_{l + 1} \ldots j_{m_2}}\]
+
+   *Anwendungen:*
+   $\v a \times \v v$ ist ein Pseudovektor:
+   \[(\v a' \times \v b')^i \equiv \eps^{ijk} a^{\prime j} b^{\prime k} = \underarrow[\pm]{falls Spiegelung} \eps^{\prime ijk} a^{\prime j} b^{\prime k} = \pm R^{il} \eps^{ljk} a^j b^k = \pm R^{il} (\v a\times \v b)^l \]
+** Galilei-Transformationen
+   *Bisher:* $\mathbb{R}^3$ mit Symmetriegruppe $O(3)$ \\
+   *Jetzt:* Physikalische Raum Zeit: Zusätzlich: $t\in \mathbb{R}$ \\
+   Punkt $\v x \in \mathbb{R}^3 \xrightarrow{neu}$ Ereignisse $(t,\v x) \in \mathbb{R} \times \mathbb{R}^3$ \\
+   Müssen abschaffen: $\v 0$ im Vektorraum. In der Tat: $\abs{\v x}, \abs{\v y}$ sind unphysikalisch, physikalisch ist nur $\abs{\v x - \v y}$, ebenso ist nur $t_1 - t_2$ pyhsikalisch
+
+   \Rightarrow Symmetrietransformationen:
+   1. Rotationen: $(t,x) \mapsto (t,Rx), R \in O(3)$
+   2. Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3$
+   3. Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$
