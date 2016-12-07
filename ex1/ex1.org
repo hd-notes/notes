@@ -45,6 +45,7 @@
 #+LATEX_HEADER: \usepackage{etoolbox}
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
+#+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 
 \begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}]
 \tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
@@ -101,3 +102,4 @@ mark=at position 0.5 with
 #+INCLUDE: "/home/robin/study/lectures/ex1/system_mass_points.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ex1/collisions.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ex1/ridid_body.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/ex1/deformation.org" :minlevel 1

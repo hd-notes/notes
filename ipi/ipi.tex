@@ -1,4 +1,4 @@
-% Created 2016-12-07 Mi 02:08
+% Created 2016-12-07 Mi 02:19
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -764,13 +764,13 @@ int main() {
 \item natürliche Ausdrucksweise für arithmetische und algebraische Funktionaliät ("Taschenrechner")
 \item einfache Auswertung durch Substitutionsmodell $\rightarrow$ Auswertungsreihenfolge nach Post-Order
 \item mathematisch gut formalisierbar $\Rightarrow$ Korrektheitsbeweise, besonders bei Parallelverarbeitung
-\item Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakutlät, Baumtraversierung)
+\item Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakultät, Baumtraversierung)
 \end{itemize}
 \item Nachteile
 \begin{itemize}
 \item viele Probleme lassen sich anders natürlicher ausdrücken (z.B. Rekursion vs. Iteration)
 \item setzt unendlich viel Speicher voraus ($\Rightarrow$ Memory management notwendig $\Rightarrow$ später)
-\item Entitäten, die sich zeitlich verändern schwer zu modellieren
+\item Entitäten, die sich zeitlich verändern sind schwer zu modellieren
 \end{itemize}
 \item Korrolar: kann keine externen Resourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
 \begin{itemize}
@@ -850,12 +850,12 @@ int foo(int x) {     // x = 3
 \end{minted}
 \item funktional:
 \begin{minted}[tabsize=4]{cpp}
-int foo(int x) {     // x = 3
+int foo(int x) {      // x = 3
 	int y1 = 2;
-	int z1 = x * y;  // z1 = 6
+	int z1 = x * y1;  // z1 = 6
 	int y2 = 5;
-	int z2 = z * y;  // z2 = 15
-	return z1 + z2;  // 21
+	int z2 = z1 * y2; // z2 = 15
+	return z1 + z2;   // 21
 }
 \end{minted}
 \item Syntax
@@ -976,8 +976,8 @@ for(init; Bedingung; Inkrement) {
 \item Befehle, um Schleifen vorzeitig abzubrechen
 \begin{itemize}
 \item continue: Bricht aktuelle Iteration ab und springt zum Scleifenkpf
-\item break: bbricht ganz Schleife ab und springt hinter das Schleifenende
-\item return: beednet Funktion und auch die Schleife
+\item break: bricht die ganze Schleife ab und springt hinter das Schleifenende
+\item return: beendet Funktion und auch die Schleife
 \end{itemize}
 \end{itemize}
 Beispiel: nur gerade Zahlen ausgeben
@@ -1020,28 +1020,30 @@ Bestandteil der Sprachsyntax und normalerweise direkt von der Hardware unterstü
 mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
 \begin{itemize}
 \item wie das geht $\Rightarrow$ später
-\item Standardtypen: in der C++ Standardbibilothek definiert, aktivire durch $\#include <module_name>$
+\item Standardtypen: in der C++ Standardbibilothek definiert, aktivieren durch $\#include <module\_name>$
 \begin{itemize}
 \item std::string, std::complex, etc.
 \end{itemize}
-\item externe Typen: aus anderer Bibilothek, die manzuvor herunterladen und installieren muss
+\item externe Typen: aus anderer Bibilothek, die man zuvor herunterladen und installieren muss
 \item eigene Typen: vom Programmierer selbst implementiert $\Rightarrow$ später
 \end{itemize}
-Durch "objekt-orientierte Programmierung" ($\Rightarrow$ später) erreicht man, dass zusammengesetzte Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
+Durch "objekt-orientierte Programmierung" ($\Rightarrow$ später) erreicht man, dass zusammengesetzte
+ Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
 \begin{itemize}
 \item "Kapselung": die interne Struktur und Implementation ist für Benutzer unsichtbar
 \item Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
 \end{itemize}
 
-$\Rightarrow$ Punktsyntax: type$_{\text{name}}$ t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+$\Rightarrow$ Punktsyntax: type$\backslash$$_{\text{name}}$ t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 \subsection{Zeichenketten-Strings:}
 \label{sec-10-3}
 zwei Datentypen in c++
 \begin{itemize}
 \item klassischer c-string: char[] ("charakter array") $\Rightarrow$ nicht gekapselt, umständlich
 \item c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
-\item string literale: "zeichekette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
-     Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale), müssen erst in c++ strings umgewandelt werden, das passiert mist automatisch
+\item string literale: "zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
+     Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale),
+müssen erst in c++ strings umgewandelt werden, das passiert meist automatisch
 \begin{itemize}
 \item \#include <string>
 \item Initialisierung:
@@ -1070,7 +1072,7 @@ std::string s3 = s + "ijh"; // "xyijh"
 s3 = "ghi" + s; // "ghixy"
 s3 = s + s; // "xyxy"
 // aber nicht!!
-s3 = "abc" + "def"; // Bug literale unterstütze + mit ganz anderer Bedeutung
+s3 = "abc" + "def"; // Bug Literale unterstützen + mit ganz anderer Bedeutung
 s3 = std::string("abc") + "def"; // Ok
 \end{minted}
 \item Add-Assignment: Abkürzung für Addition gefolt von Zuweisung
@@ -1128,8 +1130,8 @@ Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für di
     Ausnahmen:
 \begin{itemize}
 \item $for$: Umgebung beginnt schon bei "for" $\Rightarrow$ Laufvariable ist Teil der Umgebung
-\item Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf $\Rightarrow$ Speicherzellen fpr Argumente und Ergebnis gehören zur Umgebung
-\item globale Umgebung außerhalb aller "\{ \}" klammern
+\item Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf $\Rightarrow$ Speicherzellen für Argumente und Ergebnis gehören zur Umgebung
+\item globale Umgebung außerhalb aller "\{ \}" Klammern
 \end{itemize}
 \item automatische Speiccherverwaltung
 \begin{itemize}
@@ -1174,19 +1176,19 @@ l & int & 2\\
 \item andernfalls, setze aktuellen Wert aus Tabelle in Ausdruch ein (ähnlich Substitutionsmodell)
 \end{enumerate}
 \item wird Name nicht gefunden: suche in der Elternumgebung weiter
-\item wir der Name bis zur Wurzel (gloable Umgebung) nicht gefunden $\Rightarrow$ Fehlermeldung
-\item $\Rightarrow$ ist der Nme in mehreren Umgebungen vorhanden gild as zerst gefundene (Typ, Wert)
+\item wird der Name bis zur Wurzel (gloable Umgebung) nicht gefunden $\Rightarrow$ Fehlermeldung
+\item $\Rightarrow$ ist der Name in mehreren Umgebungen vorhanden gilt der zuerst gefundene (Typ, Wert)
 \end{itemize}
-\item $\Rightarrow$ Programmierrer muss selbst darauf achten, ass
+\item $\Rightarrow$ Programmierrer muss selbst darauf achten, dass
 \begin{enumerate}
-\item bei der Suche die gewünschte Spicherzelle gefunden wird $\Rightarrow$ beutze "sprechende Namen"
+\item bei der Suche die gewünschte Spicherzelle gefunden wird $\Rightarrow$ benutze "sprechende Namen"
 \item der aktuelle Wert der richtig ist $\Rightarrow$ beachte Reihenfolge der Befehle!
 \end{enumerate}
 \item Namensraum: spezielle Umgebungen in der globalen Umgebung (auch geschachtelt) mit einem Namen \\
     Ziele:
 \begin{itemize}
-\item Gruppieren ovn Funktionalität in Module (zusätzlich zu Headern)
-\item verhinderung von Namenskollisionen
+\item Gruppieren von Funktionalität in Module (zusätzlich zu Headern)
+\item Verhinderung von Namenskollisionen
 \end{itemize}
 Beispiel: c++ Standardbibilothek:
 \begin{minted}[tabsize=4]{cpp}
@@ -1235,8 +1237,8 @@ x = 6; // jetzt auch z == 6
 \end{minted}
 Hauptanwendung:
 \begin{itemize}
-\item die Umgebung, wo eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
-\item häuftig möchte man Speicherzellen in beidel Umgebungen teilen $\Rightarrow$ verwende Referenzen
+\item die Umgebung, in der eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
+\item häuftig möchte man Speicherzellen in beiden Umgebungen teilen $\Rightarrow$ verwende Referenzen
 \item häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
 \begin{itemize}
 \item Durch pass-by-reference brauch man keine Kopie $\Rightarrow$ typisch "const \&", also read-only, keine Seiteneffekte
@@ -1246,7 +1248,7 @@ int foo(int x) { // pass-by-value
 	return x;
 }
 
-int var(int & y) { // pass-by-reference
+int bar(int & y) { // pass-by-reference
 	y += 3; // Seiteneffekt der Funktion
 	return y;
 }
@@ -1258,14 +1260,15 @@ void baz(int & z) { // pass-by-reference
 int main() {
 	int a = 3;
 	std::cout << foo(a) << std::endl; // 5
-	std::cout << a << std::endl; // 2
+	std::cout << a << std::endl; // 3
 	std::cout << bar(a) << std::endl; // 5
 	std::cout << a << std::endl; // 5
 	baz(a);
 	std::cout << a << std::endl; // 8
 }
 \end{minted}
-in der funktionalen Programmierungt sind Seiteneffekte grundsätzlich verboten, mit Ausnahmen, zum Beispiel für Ein-/Ausgabe
+in der funktionalen Programmierung sind Seiteneffekte grundsätzlich verboten, 
+mit Ausnahmen, zum Beispiel für Ein-/Ausgabe
 \end{itemize}
 \end{itemize}
 \section{Container-Datentypen}
@@ -1298,7 +1301,7 @@ int a[20];
 \begin{itemize}
 \item wichtigste Funktion: s.size() (weil Größe dynamisch), s[4 ] Indexzugriff, s+="mehr" Zeichen anhängen
 \end{itemize}
-\item wir wollen das selbe Verhalten für beliebige Elementtypen:
+\item wir wollen dasselbe Verhalten für beliebige Elementtypen:
 \begin{minted}[tabsize=4]{cpp}
 #include <vector>
 
@@ -1397,9 +1400,9 @@ std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 \end{minted}
 \end{itemize}
 \end{itemize}
-\subsubsection{Effizenz von push$_{\text{back}}$}
+\subsubsection{Effizenz von push$\backslash$$_{\text{back}}$}
 \label{sec-13-1-1}
-Warum ist push$_{\text{back}}$() effizient? (bei std::vector)
+Warum ist push$\backslash$$_{\text{back}}$() effizient? (bei std::vector)
 \begin{itemize}
 \item veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens vei Initialisierung, bekannt)
 \begin{itemize}
@@ -1412,17 +1415,17 @@ Warum ist push$_{\text{back}}$() effizient? (bei std::vector)
 \item std::vector verwaltet intern ein statisches Array der Größe "capacity", v.capacity() >= c.size()
 \begin{itemize}
 \item wird das interne Array zu klein $\Rightarrow$ wird automatisch auf ein doppelt so großes umgeschaltet
-\item ist das interne Array zu groß, bleiben unbenutzt Specherzellen als Reserve
+\item ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve
 \end{itemize}
-\item Verhalten bei push$_{\text{back}}$():
+\item Verhalten bei push$\backslash$$_{\text{back}}$():
 \begin{enumerate}
-\item nach REserve vorhanden: lege neues Element im eine unbenutze Speicherzelle $\Rightarrow$ billig
+\item noch Reserve vorhanden: lege neues Element im eine unbenutze Speicherzelle $\Rightarrow$ billig
 \item keine Reserve
 \begin{enumerate}
 \item alloziiere neues statisches Array mit doppeler Kapazität
-\item kipiere die Daten aus altem ins neue Array
+\item kopiere die Daten aus dem altem in das neue Array
 \item gebe das alte Array frei
-\item gehe zum Anfang des Algorithmus, jetzt wieder Reserve vorhanden
+\item gehe zum Anfang des Algorithmus, jetzt ist wieder Reserve vorhanden
 \end{enumerate}
 \end{enumerate}
 \item das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist
@@ -1458,7 +1461,7 @@ k & capacity vor push$_{\text{back}}$() & capacity nach push$_{\text{back}}$() &
 \item 32 Elemente einfügen = 32 Kopien extern $\Rightarrow$ intern
 \item aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern $\Rightarrow$ intern
 \item $\Rightarrow$ im Durchschnitt sind pro Einfügung 2 Kopien nötig
-\item $\Rightarrow$ dynamisches Array ist doppel so teuer sie das statische  $\Rightarrow$ immer noch sehr effizient
+\item $\Rightarrow$ dynamisches Array ist doppelt so teuer sie das statische  $\Rightarrow$ immer noch sehr effizient
 \end{itemize}
 \end{itemize}
 \item relevante Funktionen von std::vector
@@ -1472,17 +1475,17 @@ v.shrink_to_fit() // == v.reserve/v.size()) Reseve ist danach 0, wenn Endgröße
 \end{minted}
 \item wenn Reserve > size: capacity kann auch halbiert werden
 \item wichtige Container der c++ Standardbibilothek
-\item wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered$_{\text{map}}$
-\item std::set, std::unordered$_{\text{set}}$: Menge, jedes Element ist hächstens einmal enthalten zum Beispiel Duplikate
+\item wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered$\backslash$$_{\text{map}}$
+\item std::set, std::unordered$\backslash$$_{\text{set}}$: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
 \item std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push$_{\text{back}}$() und pop$_{\text{back}}$() bei std::vector
 \item std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
-\item std::deque ("double-ended queue") gleichzeitig stack und queue, puhs, pop$_{\text{front}}$(), pop$_{\text{back}}$()
-\item std::priority$_{\text{queue}}$, push() und pop() - Element mit höchster niedrigster Priorität (unser defined)
+\item std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop$\backslash$$_{\text{front}}$(), pop$\backslash$$_{\text{back}}$()
+\item std::priority$\backslash$$_{\text{queue}}$, push() und pop() - Element mit höchster niedrigster Priorität (user defined)
 \end{itemize}
 \section{Iteratoren}
 \label{sec-14}
 \begin{itemize}
-\item für Arrays lautet kanonische Schleife
+\item für Arrays lautet die kanonische Schleife
 \begin{minted}[tabsize=4]{cpp}
 for(int i = 0; i != v.size(); i++) {
 	int current = v[i]; // lesen
@@ -1493,7 +1496,7 @@ for(int i = 0; i != v.size(); i++) {
 \begin{itemize}
 \item der Index-Zugriff v[] ist bei den meisten Container nicht effizient
 \item Iteratoren sind immer effizient $\Rightarrow$ es gibt sie in allen modernen Programmiersprachen, aber Details sehr unterschiedlich
-\item Analogie: Zeiger einer Ühr, Cursor in Textverarbeitung
+\item Analogie: Zeiger einer Uhr, Cursor in Textverarbeitung
 \begin{itemize}
 \item $\Rightarrow$ ein Iterator zeigt immer auf ein Element des Containers, oder auf Spezialwert "ungültiges Element"
 \end{itemize}
@@ -1501,7 +1504,10 @@ for(int i = 0; i != v.size(); i++) {
 \begin{enumerate}
 \item Iterator auf erstes Element erzeugen: auto iter = v.begin();
 \item Iterator auf "ungültiges Element" erzeugen: auto end = v.end();
-\item Vergleich iter1 \texttt{= iter2 (Zeigen auf gleiches Element), iter !} end: iter zeigt \textbf{nicht} auf ungültiges Element
+\item Vergleich $iter1 == iter2$ (Zeigen auf gleiches Element), $iter != end$:
+\end{enumerate}
+iter zeigt \textbf{nicht} auf ungültiges Element
+\begin{enumerate}
 \item zum nächsten weitergehen: ++iter. Ergebnis ist v.end(), wenn man vorher beim letzten Element war
 \item auf Daten zugreifen: *iter ("Dereferenzierung") analog v[k]
 \end{enumerate}
@@ -1519,9 +1525,9 @@ element  = new_vlaue; // schreiben
 \end{minted}
 \end{itemize}
 \item Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
-\item "bidirectional iterators": unterstützen auch --iter, zum vorigen Element ((fast) alle Iteratoren in std)
+\item "bidirectional iterators": unterstützen auch $--iter$, zum vorigen Element ((fast) alle Iteratoren in std)
 \item "random acces iterators": beliebige Sprünge "iter += 5; iter -= 3;"
-\item Besonderheit für assoziative Arrays (std::map, std::unordered$_{\text{map}}$)
+\item Besonderheit für assoziative Arrays (std::map, std::unordered$\backslash$$_{\text{map}}$)
 Schlüssel und Werte können beliebig gewählt werden
 \begin{itemize}
 \item $\Rightarrow$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
@@ -1606,7 +1612,7 @@ schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compil
 \begin{itemize}
 \item wie beim Aufnehmen und Ordnen eines Kartenblatts
 \item gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
-\item Einfügen des k-ten Elements an richtiger Stelle $\rightarrow$ Erzeuge Lücke an richtiger Positin duch verschieben von Elementen nach rechts
+\item Einfügen des k-ten Elements an richtiger Stelle $\rightarrow$ Erzeuge Lücke an richtiger Position duch verschieben von Elementen nach rechts
 \item Wiederholung für $k = 1, \ldots, N$
 \item Bespiel:
 \begin{center}
@@ -1662,7 +1668,7 @@ std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
 \end{itemize}
 \section{generische Programmierung}
 \label{sec-16}
-insertion$_{\text{sort}}$ soll für beliebige Elementtypen funktionieren
+insertion$\backslash$$_{\text{sort}}$ soll für beliebige Elementtypen funktionieren
 \begin{minted}[tabsize=4]{cpp}
 template<typename T>
 void insertion_sort(std::vector<T> & v) {

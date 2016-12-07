@@ -1,0 +1,55 @@
+* Mechanik deformierbarer Körper
+  Starrer Körper: $\v r_i - \v r_j = ~\text{const}$, das heißt Abstand zwischen Massenpunkten konstant. \\
+  Wirklichkeint: Verformung bei Anwendung äußerer Kräfte.
+** Atomares Modell
+   Experiment: Alle Körper sind aus Atomen oder Molekülen aufgebaut.
+   Beschreibung von Kräften zwischen Atomen und Molekülen durch Lennard-Jones-Potential. (Dipol-Dipol-Wechselwirkung, Van-der-Waals Kräfte) \\
+   Gleichgewichtsabstand: $r_0$ ($E_{pot} = $ minimal)
+   Für kleine Auslenkung gilt:
+   \begin{align*}
+   E_{pot} &= \frac{1}{2}k(r - r_0)^2 \\
+   F &= -\dd{E_{pot}}{r} = -k(r - r_0) = -k Ar
+   \end{align*}
+   Federkraft!
+   \Rightarrow
+   - Modell eines Festkörper: Federmodell. \\
+	 Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energei klein gegen $E_{pot}(r_0)$.
+	 Atome können Gitterplätze nicht verlassen. Fernordung!
+   - Modell einer Flüssigkeit: Kugelmodell: \\
+	 Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
+	 Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen \Rightarrow flüssiger Zustand. Nahordung!
+   - Modell eines Gases: frei bewegliche Teilchen. \\
+	 Mittlere kinetische Energei ist grob gegen Bindungsenergie, hohe Temperatur!
+** Feste Körper.
+   - Elastischer fester Körper \rightarrow Formelastizität, Volumenelastitität aufgrund rücktreibender Kräfter (Hookscher Bereich)
+   - Plastisch feste Körper \rightarrow Formänderungen verbleiben
+   Hier: Elastische Körper!
+   Experimentell findet man:
+   \begin{align*}
+   \Delta f &\sim F \\
+   \Delta L &\sim L, \Delta L \sim A^{-1} \\
+   \Delta L &\sim L \frac{F}{A} = L r \tag{$r$: Zugspannung}
+   \end{align*}
+   #+ATTR_LATEX: :options [Hooksches Gesetz:]
+   #+begin_defn latex
+   \[\sigma = E \frac{\Delta L}{L} = E \eps\]
+   - $E:$ Elastizitätsmodul, E-Modul
+   - $\eps:$ Elongation, relative Längenänderung
+   - $\sigma:$ Zugspannung, $\sigma = \frac{F}{A}$
+   #+end_defn
+   Auswertung Hooksches Gesetz:
+   Material-Stahl, $D = \SI{0.3}{\milli\meter}, L = \SI{6}{\meter}, A = \SI{0.07}{\meter\squared}$
+   \begin{align*}
+   F &= \SI{1.2}{\kilo\pascal} = \SI{11.8}{\newton}, \Delta L = \SI{5}{\milli\meter}, \eps = \SI{8e-4}{} \rightarrow \sigma = \SI{168.6}{\newton\per\milli\meter\squared} \\
+   F &= \SI{2.4}{\kilo\pascal} = \SI{13.5}{\newton}, \Delta L = \SI{10}{\milli\meter}, \eps = \SI{1.7e-3}{} \rightarrow \sigma = \SI{337.2}{\newton\per\milli\meter\squared}
+   \Rightarrow E&= \frac{\sigma}{\eps} \SI{2e5}{\newton\per\milli\meter\squared} = \SI{200e9}{\newton\per\meter\squared}
+   \end{align*}
+   Einfaches Atomares Modell: Lineare Kette.
+   Es gilt:
+   \[L = n a, \Delta a \sim F, \Delta L \sim m \Delta a \sim n F\]
+   Außerdem wegen \[L \sim m : \Delta L \sim L F \to F \sim \frac{\Delta L}{L}\]
+   Für eine lineare Kette ist $\eps \frac{\Delta L}{L}$ tatsächlich proportional zur Kraft $F$. \\
+   Für $\eps \sim A^{-1}$ braucht man mehrere lineare Ketten parallel aneinander.
+
+   Aber: Auch Wechselwirkung in transversaler Richtung! \\
+   \rightarrow Querkontraktion $= \frac{\Delta D}{D}$

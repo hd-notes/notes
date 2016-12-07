@@ -9,8 +9,8 @@
    x = 6; // jetzt auch z == 6
    #+END_SRC
   Hauptanwendung:
-  - die Umgebung, wo eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
-  - häuftig möchte man Speicherzellen in beidel Umgebungen teilen \Rightarrow verwende Referenzen
+  - die Umgebung, in der eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
+  - häuftig möchte man Speicherzellen in beiden Umgebungen teilen \Rightarrow verwende Referenzen
   - häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
 	- Durch pass-by-reference brauch man keine Kopie \Rightarrow typisch "const &", also read-only, keine Seiteneffekte
 	 #+BEGIN_SRC cpp
@@ -19,7 +19,7 @@
 		 return x;
 	 }
 
-	 int var(int & y) { // pass-by-reference
+	 int bar(int & y) { // pass-by-reference
 		 y += 3; // Seiteneffekt der Funktion
 		 return y;
 	 }
@@ -31,11 +31,12 @@
 	 int main() {
 		 int a = 3;
 		 std::cout << foo(a) << std::endl; // 5
-		 std::cout << a << std::endl; // 2
+		 std::cout << a << std::endl; // 3
 		 std::cout << bar(a) << std::endl; // 5
 		 std::cout << a << std::endl; // 5
 		 baz(a);
 		 std::cout << a << std::endl; // 8
 	 }
 	 #+END_SRC
-	 in der funktionalen Programmierungt sind Seiteneffekte grundsätzlich verboten, mit Ausnahmen, zum Beispiel für Ein-/Ausgabe
+	 in der funktionalen Programmierung sind Seiteneffekte grundsätzlich verboten, 
+	 mit Ausnahmen, zum Beispiel für Ein-/Ausgabe
