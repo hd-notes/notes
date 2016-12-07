@@ -59,10 +59,10 @@
    \eps^{i_1 \ldots i_n}A^{i_1 j_1} \ldots A^{i_n j_n} = c \eps^{j_1 \ldots j_n} \\
    \intertext{Multipliziere mit $\eps^{j_1 \ldots j_n}$:}
    n! \det A = c \eps^{j_1 \ldots j_n} \eps^{j_1 \ldots j_n} = c n! \\
-   \intertext{$\Rightarrow$ alternative Formel für $\det A$:}
+   \intertext{$\implies$ alternative Formel für $\det A$:}
    e^{i_1 \ldots i_n} A^{i_1 j_1} \ldots A^{i_n j_n} = (\det A) \eps^{j_1 \ldots j_n}
    \end{align*}
-   Zentraler Fakt: $A$ invertierbar $\Leftrightarrow \det A \neq 0$
+   Zentraler Fakt: $A$ invertierbar $\iff \det A \neq 0$
 
    Inverse Matrix:
    \begin{align*}
@@ -108,7 +108,7 @@
    \end{align*}
 
    Ganz explizit
-   \[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \Rightarrow \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
+   \[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \implies \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
    Transformation der beiden Basisvektoren
 
    Jeder andere Vektor ($\cvec{\alpha; \beta}$) ist schreibbar als $\alpha \cvec{1; 0} + \beta \cvec{0 ; 1}$. Er transformiert demanch gemäß
@@ -152,7 +152,7 @@
    \intertext{Nebenrechnung}
    ((AB)^{T})^{ij} = (AB)^{ji} = A^{jk} B^{jk} = B^{ki} B^{j k} = (B^{T})^{ik} (A^{tilde})^{kj} \\
    = (B^{T} A^{T})^{ij} \\
-   \Rightarrow (AB)^{T} = B^T A^T \\
+   \implies (AB)^{T} = B^T A^T \\
    \end{align*}
 
    Zie: $x^T R^T Ry = x T_y$ soll gelten für beliebige x,y. Dies gilt genau dann wenn $R^{T} R = \mathbb{1}$
@@ -192,11 +192,11 @@
    - Distributivität
    #+end_defn
 
-   $GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar \Rightarrow $A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
+   $GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar \implies $A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
    \[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
 
    $GL^+ (n)$ - orientierungserhaltende Untergrupppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
-   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal \Rightarrow $A\cdot B$ orthogonal. Dazu:
+   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüffen dass $A,B$ orthogonoal \implies $A\cdot B$ orthogonal. Dazu:
    \[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
 
    Wichtige Untergrupe: Spezielle Orthogonale Transformationn $SO(n)$ \\
@@ -283,7 +283,7 @@
 
    *Transformation von $\delta^{ij}$* \\
    \[\delta^{\prime ij} = R^{ik} R^{jl} \delta^{kl} = R^{ik} R^{jk} = \delta^{ij}\]
-   \Rightarrow $\delta^{ij}$ ist ein *invarianter Tensor* \\
+   \implies $\delta^{ij}$ ist ein *invarianter Tensor* \\
 
    weiteres Beispiel: (für $m = n$: Levi Civita-Tensor) \\
    Wir schreiben nur $m = n = 3$ Fall aus:
@@ -303,7 +303,7 @@
    Punkt $\v x \in \mathbb{R}^3 \xrightarrow{neu}$ Ereignisse $(t,\v x) \in \mathbb{R} \times \mathbb{R}^3$ \\
    Müssen abschaffen: $\v 0$ im Vektorraum. In der Tat: $\abs{\v x}, \abs{\v y}$ sind unphysikalisch, physikalisch ist nur $\abs{\v x - \v y}$, ebenso ist nur $t_1 - t_2$ pyhsikalisch
 
-   \Rightarrow Symmetrietransformationen:
+   \implies Symmetrietransformationen:
    1. Rotationen: $(t,x) \mapsto (t,Rx), R \in O(3)$
    2. Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3$
    3. Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$

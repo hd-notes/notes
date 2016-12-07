@@ -133,15 +133,15 @@
   #+end_remark
   #+begin_proof latex
   Wohldefiniertheit von "$\cdot$" auf $GL(n, K)$ \\
-  zu zeigen ist: $A_1, A_2 \in GL(n, K) \Rightarrow A_1 A_2 \in GL(n,K)$ \\
+  zu zeigen ist: $A_1, A_2 \in GL(n, K) \implies A_1 A_2 \in GL(n,K)$ \\
   Dies gilt, denn:
   \begin{align*}
-  A_1, A_2 \in GL(n, K) \Rightarrow \Exists B_1, B_2 \in M(n\times n, K): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
-  \Rightarrow (A_1 A_2) \cdot (B_2 B_1) = A_1(A_2 B_2) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
+  A_1, A_2 \in GL(n, K) \implies \Exists B_1, B_2 \in M(n\times n, K): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
+  \implies (A_1 A_2) \cdot (B_2 B_1) = A_1(A_2 B_2) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
   (B_2 B_1) \cdot (A_1 A_2) = B_2 (B_1 A_1) A_2 = B_2 E_n A_2 = B_2 A_2 = E_n
   \end{align*}
   das heißt $A_1 A_2 \in GL(n,K)$
   - Assoziativiät: Vererbt sich von $M(n\times n, K)$
   - neutrales Element: $E_n$
-  - Existenz von Inversen: Sei $A\in GL(n,K) \Rightarrow \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
+  - Existenz von Inversen: Sei $A\in GL(n,K) \implies \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
   #+end_proof

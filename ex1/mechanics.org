@@ -74,8 +74,8 @@
 	  \[Z(x_w) = 0\]
 	  \[x_w = \frac{v_0^2}{2g}\sin{2\varphi}(1 + \sqrt{1 + \frac{2gz_0}{v_0^2\sin^2{\varphi}}})\]
 	  Optimaler Winkel: $\varphi_{opt}, x_w$ max.
-	  \[z_0 = 0\Rightarrow \sin{2\varphi} = 1 \rightarrow \varphi = \SI{45}{\degree}\]
-	  \[z_0 \neq 0\Rightarrow \sin{\varphi_{opt}} = (2 + \frac{2gz_0}{v_0^2})^{-\frac{1}{2}}\]
+	  \[z_0 = 0\implies \sin{2\varphi} = 1 \rightarrow \varphi = \SI{45}{\degree}\]
+	  \[z_0 \neq 0\implies \sin{\varphi_{opt}} = (2 + \frac{2gz_0}{v_0^2})^{-\frac{1}{2}}\]
 **** Gleichförmige Kreisbewegung
 	 \[\vec{r}(t) = \cvec{x(t);y(t)} = \cvec{R\cos{\varphi}; R\sin{\varphi}}\]
 	 mit $\varphi = \varphi(t)$
@@ -86,14 +86,14 @@
 	 Für $\omega = \text{const.}$:
 	 \[\vec{r} = R\cvec{\cos{\varphi};\sin{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
 	 \[\vec{v} = R\omega\cvec{-\sin{\varphi};\cos{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
-	 \[\vec{v} \perp \vec{r} \Leftrightarrow \vec{v}\cdot\vec{r} = 0\]
+	 \[\vec{v} \perp \vec{r} \iff \vec{v}\cdot\vec{r} = 0\]
 ***** TODO Skizze Kreisbewegung
 ***** Mitbewegtes Koordinatensystem
 	  \[\vec{r}(t) = R\vec{e_R} \quad \vec{e_R} = \cvec{\cos{\varphi (t)};\sin{\varphi (t)}}\]
 	  \[\vec{v}(t) = R\omega \vec{e_t} \quad \vec{e_t} = \cvec{-\sin{\varphi (t)}; \cos{\varphi (t)}}\]
 	  \[\vec{t} \neq~\text{const das heißt}~\vec{a}(t)\neq 0\]
 	  Kreisbeschleunigung
-	  \[\vec{a}(t) = \cvec{\ddot{x}(t);\ddot{y}(t)} = \cvec{-R\omega^2\cos{\varphi};-R\omega^2\sin{\varphi}} = -R\omega^2\vec{e_R} \Rightarrow \vec{a}  \parallel \vec{r}\]
+	  \[\vec{a}(t) = \cvec{\ddot{x}(t);\ddot{y}(t)} = \cvec{-R\omega^2\cos{\varphi};-R\omega^2\sin{\varphi}} = -R\omega^2\vec{e_R} \implies \vec{a}  \parallel \vec{r}\]
 	  \[\abs{\vec{a}(t)} = R\omega^2 = \frac{v^2}{R} \neq 0\]
 	  Zentripetalbeschleunigung
 	  Zeigt in Richtung des Ursprungs.
@@ -194,10 +194,10 @@
 	   \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
 	   \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
 ***** Expermiment 2
-	  \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \Rightarrow \f{m_2}{m_1} \approx 1.5\]
+	  \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \implies \f{m_2}{m_1} \approx 1.5\]
 	  \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
 	  \[a\sim v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
-	  \[1 = \f{F_1}{F_2} \Rightarrow F_1 = F_2\]
+	  \[1 = \f{F_1}{F_2} \implies F_1 = F_2\]
 ***** Beispiele
 	  - Kraft und Gegenkraft (TODO Skizze)
 	  - Flaschenzug, Seilkräfte (TODO Skizze)

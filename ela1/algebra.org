@@ -20,7 +20,7 @@
 	 $(M,*)$ Monoid. Dann gibt es in $M$ genau ein neutrales Element.
 ***** Beweis
 	  - Existenz: Es existert ein neutrales Element: folgt aus Definition eines Monoids
-	  - Eindeutigkeit: Seien $e,\tilde e \in M$ neutrale Element \[\Rightarrow e = e * \tilde e = \tilde e\]
+	  - Eindeutigkeit: Seien $e,\tilde e \in M$ neutrale Element \[\implies e = e * \tilde e = \tilde e\]
 *** Inverses
 	$(M,*)$ Monoid mit neutralem Element $e$, $a\in M$
 	Ein Element $b\in M$ heit Inverses zu $a \xLeftrightarrow{\text{Def}} a * b = e = b * a$
@@ -33,7 +33,7 @@
 	 $(M,*)$ Monid, $a\in M$ Dann gilt: besitzt $a$ ein Inverses, dann ist dieses eindeutig bestimmt.
 ***** Beweis
 	  Seinen $b,\tilde b$ Inversen zu $a$, sein $e\in M$ das neutrale Element
-	  \[\Rightarrow b = e * b = (\tilde b * a) * b = \tilde b * (a * b) = \tilde b\]
+	  \[\implies b = e * b = (\tilde b * a) * b = \tilde b * (a * b) = \tilde b\]
 *** Gruppe
 	Eine Gruppe ist ein Tupel $(G,*)$, bestehen aus einer Menge $G$ und einer Verknüpfung $*:G\times G \to G$, sodass gilt:
 	- (G1) $(G,*)$ ist ein Monoid
@@ -45,15 +45,15 @@
 	 - $(\mathbb{Q}\setminus \{0\},\cdot)$ ist eine Gruppe denn es ist ein Monoid mit neutralem Element $1$ und für jedes Element $a\in\mathbb{Q}\setminus\{0\}$ existiert ein $b\in \mathbb{Q}\setminus \{0\}$ mit $a\cdot b = 1 = b\cdot a$, nämlich $b = \frac{1}{a}$
 **** Bemerkung 5.11
 	 $(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
-	 1. (Kürzungsregel) \[a*b = a*c \Rightarrow b = c\] \[a*c = b * c \Rightarrow a = b\]
-	 2. $a*b = e \Rightarrow b = a'$
+	 1. (Kürzungsregel) \[a*b = a*c \implies b = c\] \[a*c = b * c \implies a = b\]
+	 2. $a*b = e \implies b = a'$
 	 3. $(a')' = a$
 	 4. (Regel von Hemd und Jacke) $(a*b)' = b' * a'$
 ***** Beweis
-	  1. Sei $a * b = a * c \Rightarrow a'*(a*b) = a'*(a*c) \Rightarrow (a'*a)*b=(a'*a)*c \Rightarrow e*b = e*c \Rightarrow b = c$
-	  2. aus 1. $a*b = c = a*a' \Rightarrow b = a'$
-	  3. Es ist $a*a' = e = a' * a$, das heißt $a$ ist Inverses zu $a' \Rightarrow (a')' = a$
-	  4. Es ist $(a*b)*(b'*a') = a*(b*b')*a' = a*a' = e \Rightarrow b' * a' \xRightarrow{\text{2.}} (a *b)'$
+	  1. Sei $a * b = a * c \implies a'*(a*b) = a'*(a*c) \implies (a'*a)*b=(a'*a)*c \implies e*b = e*c \implies b = c$
+	  2. aus 1. $a*b = c = a*a' \implies b = a'$
+	  3. Es ist $a*a' = e = a' * a$, das heißt $a$ ist Inverses zu $a' \implies (a')' = a$
+	  4. Es ist $(a*b)*(b'*a') = a*(b*b')*a' = a*a' = e \implies b' * a' \xRightarrow{\text{2.}} (a *b)'$
 *** Abelsche Gruppe
 	$(M,*)$ Monoid / Gruppe heißt kommutativ (abelsch)
 	\[\xLeftrightarrow{\text{Def}} \Forall a,b\in M: a*b = b*a\]
@@ -66,7 +66,7 @@
 	  1. "$\circ" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus [[Bemerkung 4.19]]
 	  2. "$\circ" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach [[4.9]]
 	  3. $id_M$ ist neutral: $id_M \in S(M)$ und $id_M\circ f = f = f\circ id_M \Forall f\in S(M)$
-	  4. Existenz von Inversen: $f\in S(M) \Rightarrow f$ bijektiv \Rightarrow Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
+	  4. Existenz von Inversen: $f\in S(M) \implies f$ bijektiv $\implies$ Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
 		 für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "$\circ"
 *** Permutationen
 	$n\in\mathbb{N}$
@@ -133,10 +133,10 @@
 	  1. "$\equiv$" ist eine Äquivalenzrelation, denn:
 		 - "$\equiv$" ist reflexiv: Fpr $a\in\mathbb{Z}$ ist $a\equiv a(\mod n)$ denn $a - a = 0 = 0 n$
 		 - "$\equiv$" ist symmetrisch: Seien $a,b\in\mathbb{Z}$ mit $a\equiv b(\mod n) \exists q\in\mathbb{Z}:a - b = q n$ \\
-		   \Rightarrow $b - a = (-q) n \Rightarrow b \equiv a(\mod n)$
+		   $\implies b - a = (-q) n \implies b \equiv a(\mod n)$
 		 - "$\equiv$" ist transitiv: Seien $a,b,c\in\mathbb{Z}$ mit $a\equiv b(\mod n), b\equiv c(\mod n)$
-		   - \Rightarrow $\exists q_1,q_2 \in\mathbb{Z}$ mit $a - b = q_1 n, b - c = q_2 n$
-		   - \Rightarrow $a - c = (a - b) + (b - c) = q_1 n + q_2 n = (q_1 + 1_2) n \Rightarrow a \equiv c(\mod n)$
+		   - $\implies \exists q_1,q_2 \in\mathbb{Z}$ mit $a - b = q_1 n, b - c = q_2 n$
+		   - $\implies a - c = (a - b) + (b - c) = q_1 n + q_2 n = (q_1 + 1_2) n \implies a \equiv c(\mod n)$
 	  2. Die Äquivalenzklasse von $n\in\mathbb{Z}$ ist gegeben durch
 		 \[\{b\in\mathbb{Z} \mid b = a(\mod n)\}\]
 		 \[= \{b\in\mathbb{Z} \mid \exists q\in\mathbb{Z}:b - a = qn\}\]
@@ -146,14 +146,14 @@
 		 denn:
 		 - Ist $a\in\mathbb{Z}$ beliebig, dann liefert Division mit Rest durch $n$: \\
 		   Es gibt $q,r\in\mathbb{Z}$ mit $a = q n + r,0\leq r < n$
-		   \[\Rightarrow a - r = q n \Rightarrow q \equiv r(\mod n) \Rightarrow \bar a = \bar r\]
+		   \[\implies a - r = q n \implies q \equiv r(\mod n) \implies \bar a = \bar r\]
 		   Das heißt: Jede Restklasse ist von der Form $\bar r$ mit $r\in \{0,\ldots,n - 1\}$ \\
 		 - Die Restklassen $\bar 0, \bar 1, \ldots, \overline{n - 1}$ sind paarweise verschieden denn: \\
-		   Seien $a,b\in\{0,\ldots,n - 1\}$ mit $\bar a = \bar b \Rightarrow a \equiv b(\mod n) \Rightarrow \exists q\in \mathbb{Z}: a - b = q n \Rightarrow \abs{a - b} = \abs{q} n$.
-		   - Wäre $q\neq 0$, dann $\abs{q} \geq 1$ wegen $q\in\mathbb{Z} \Rightarrow \abs{a - b} \geq n$ *Wiederspruch* zu $a,b\in\{0,\ldots,n - 1\}$ \\
+		   Seien $a,b\in\{0,\ldots,n - 1\}$ mit $\bar a = \bar b \implies a \equiv b(\mod n) \implies \exists q\in \mathbb{Z}: a - b = q n \implies \abs{a - b} = \abs{q} n$.
+		   - Wäre $q\neq 0$, dann $\abs{q} \geq 1$ wegen $q\in\mathbb{Z} \implies \abs{a - b} \geq n$ *Wiederspruch* zu $a,b\in\{0,\ldots,n - 1\}$ \\
 			 Also: $q = 0$ das heißt $a = b$
 **** Beispiel
-	 $n = 3: a\equiv b (\mod 3) \Leftrightarrow \exists q\in\mathbb{Z}: a - b = 3 q$ \\
+	 $n = 3: a\equiv b (\mod 3) \iff \exists q\in\mathbb{Z}: a - b = 3 q$ \\
 	 zum Beispiel: $11 \equiv 5(\mod 3)$, denn $11 - 5 = 6 = 2 \cdot 3$ \\
 	 zum Beispiel: $7 \not\equiv 2(\mod 3)$, denn $7 - 2 = 5$ und es gibt kein $q\in\mathbb{Z}$ mit $5 = 3 q$
 	 \[\bar 0 = \{a\in\mathbb{Z}\mid a \equiv 0 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a = 3q\} = 3\mathbb{Z} = \{\ldots,-6,-3,0,3,6,\ldots\}\]
@@ -171,11 +171,11 @@
 		 Wir müssen nachweisen, dass die Wahl der Vertreter keinen Einfluss auf das Ergebnis hat, das heißt die Verknüfung ist "vertreter unahbhängig": \\
 		 Seien $a_1,a_2 ,b_1,b_2 \in\mathbb{Z},\overline{a_1} = \overline{a_2},\overline{b_1} = \overline{b_2}$
 		 \begin{align}
-		 &\Rightarrow a_1 \equiv a_2(\mod n), b_1 \equiv b_2(\mod n) \\
-		 &\Rightarrow\exists q_1,q_2\in\mathbb{Z}: a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n n, b_1 - b_2 = q_2 n \\
-		 &\Rightarrow (a_1 + b_1) - (a_2 + b_2) = (a_1 - a_2)+ (b_1 - b_2) = q_1 n + q_2 n = (q_1 + q_2) n \\
-		 &\Rightarrow a_1 + b_ 1 \equiv a_2 + b_2 (\mod n) \\
-		 &\Rightarrow \overline{a_1 + b_1} = \overline{a_2 + b_2}
+		 &\implies a_1 \equiv a_2(\mod n), b_1 \equiv b_2(\mod n) \\
+		 &\implies\exists q_1,q_2\in\mathbb{Z}: a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n n, b_1 - b_2 = q_2 n \\
+		 &\implies (a_1 + b_1) - (a_2 + b_2) = (a_1 - a_2)+ (b_1 - b_2) = q_1 n + q_2 n = (q_1 + q_2) n \\
+		 &\implies a_1 + b_ 1 \equiv a_2 + b_2 (\mod n) \\
+		 &\implies \overline{a_1 + b_1} = \overline{a_2 + b_2}
 		 \end{align}
 	  3. $(\frac{\mathbb{Z}}{n\mathbb{Z}})$ ist eine abelsche Gruppe:
 		 - Assoziativgesetz: Für alle $a,b,c\in\mathbb{Z}$ ist
@@ -222,12 +222,12 @@
 	 3. Ist \varphi Gruppenisomorphismus, dann gilt $\varphi^{-1}:H\to G$ ebenfalls Gruppenisomorphismus
 	 $(G,*),(H,\oast)$ heißen isomorph $\xLeftrightarrow{\text{Def}}$ Ex existert ein Gruppenisomorphismus $\phi:G\to H$ Wir schreiben dann $(G,*) \cong (H,\oast)$
 ***** Beweis
-	  1. Es $e_H\oast \varphi(e_G) = \varphi(e_G) = \varphi(e_G*e_G) = \varphi(e_G) \oast(e_G) \Rightarrow e_H = \varphi(e_G)$
-	  2. Sei $a\in G$ Dann ist $e_H = \varphi(e_G) = \varphi(a*a') = \varphi(a)\oast(a') \Rightarrow \varphi(a') = \varphi(a)'$
+	  1. Es $e_H\oast \varphi(e_G) = \varphi(e_G) = \varphi(e_G*e_G) = \varphi(e_G) \oast(e_G) \implies e_H = \varphi(e_G)$
+	  2. Sei $a\in G$ Dann ist $e_H = \varphi(e_G) = \varphi(a*a') = \varphi(a)\oast(a') \implies \varphi(a') = \varphi(a)'$
 	  3. $\varphi^{-1}$ ist bijektiv, noch zu zeigen: $\varphi^{-1}$ ist ein Gruppehomomorphismus, das heißt
 		 \[\varphi^{-1}(c\oast d) = \varphi^{-1}(c)*\varphi^{-1}(d) \Forall c,d\in H\]
 		 Seien $c,d\in H$ Weil $\varphi$ bijektiv: $\exists a,b\in G:\varphi(a) = c,\varphi(b) =d$
-		 \[\Rightarrow \varphi^{-1}(c\oast d) = \varphi^{-1}(\varphi(a)*\varphi(b)) = \varphi^{-1}(\varphi(a*b)) = a*b = \varphi^{-1}(c)*\varphi^{-1}(d)\hfill\square\]
+		 \[\implies \varphi^{-1}(c\oast d) = \varphi^{-1}(\varphi(a)*\varphi(b)) = \varphi^{-1}(\varphi(a*b)) = a*b = \varphi^{-1}(c)*\varphi^{-1}(d)\hfill\square\]
 ** Ring
    Ein Ring ist ein Tupel $(R,+,\cdot)$, bestehend aus einer Menge R und 2 Verknüpfungen:
    - $+:R\times R \to R,(a,b)\mapsto a + b$ \hfill genannt Addition
@@ -257,9 +257,9 @@
 	3. Ist $R\neq 0$, dann ist $1_R\neq 0_R$
 **** Beweis
 	 1. $0_R + 0_R\cdot a = 0_R\cdot a = (0_R + 0_R)\cdot a = 0_R\cdot a + 0_R\cdot \xRightarrow{\text{"kürzen s. [[Bemerkung 5.11]]"}} 0_R = 0_R \cdot a$, $a\cdot 0_R = 0_R$ analog
-	 2. $0_R = 0_R\cdot b = (a + (-a))\cdot b = a\cdot b + (-a) \cdot b \Rightarrow{\text{[[Bemerkung 5.11]]}} - a b = (-a)\cdot b$, $a\cdot(-b) 0 -a b$ analog
+	 2. $0_R = 0_R\cdot b = (a + (-a))\cdot b = a\cdot b + (-a) \cdot b \implies{\text{[[Bemerkung 5.11]]}} - a b = (-a)\cdot b$, $a\cdot(-b) 0 -a b$ analog
 	 3. Beweis durch Kontraposition: Sei $1_R = 0_R$
-		\[\Rightarrow \Forall a\in R: a = a\cdot 1_R = a\cdot 0_R = 0_R\]
+		\[\implies \Forall a\in R: a = a\cdot 1_R = a\cdot 0_R = 0_R\]
 		das heißt $R = 0\hfill\square$
 *** Bemerkung 6.4
 	$n\in\mathbb{N}$ Für $\bar a, \bar b \in\frac{\mathbb{Z}}{n\mathbb{Z}}$ setzen wir $\bar a + \bar b := \overline{a + b}, \bar a\cdot \bar b := \overline{ab}$, dann ist $(\frac{\mathbb{Z}}{n\mathbb{Z}},+,\cdot)$ ein kommutativer Ring.
@@ -269,11 +269,11 @@
 	 1. Multiplikaiton ist wohldefiniert (das heißt "vertreterunabhängig", vergleiche [[Bemerkung 5.18]]) \\
 		Sei $a_1,a_2,b_1,b_2 \in\mathbb{Z}$ mit $\overline{a_1} = \overline{a_2},\overline{b_2} = \overline{b_2}$
 		\begin{align}
-		&\Rightarrow a_1 \equiv a_2 (\mod n), b_1\equiv b_2 (\mod n) \\
-		&\Rightarrow \exists q_1,q_2\in\mathbb{Z}:a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n \\
-		&\Rightarrow a_1 b_2 - a_2 b_2 = a_1(b_1 - b_2) + b_2 (a_1 - a_2) = a_q q_2 n + b_2 q_1 n = (a_1 q_2 + b_2 q_1) n \\
-		&\Rightarrow a_1 b_1 \equiv a_2 b_2 (\mod n) \\
-		&\Rightarrow \overline{a_1 b_1} = \overline{a_2 b_2}
+		&\implies a_1 \equiv a_2 (\mod n), b_1\equiv b_2 (\mod n) \\
+		&\implies \exists q_1,q_2\in\mathbb{Z}:a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n \\
+		&\implies a_1 b_2 - a_2 b_2 = a_1(b_1 - b_2) + b_2 (a_1 - a_2) = a_q q_2 n + b_2 q_1 n = (a_1 q_2 + b_2 q_1) n \\
+		&\implies a_1 b_1 \equiv a_2 b_2 (\mod n) \\
+		&\implies \overline{a_1 b_1} = \overline{a_2 b_2}
 		\end{align}
 	 2. Multiplikation ist assoziativ, Für $a,b,c\in\mathbb{Z}$ ist
 		\[\bar a\cdot (\bar b\cdot \bar c) = \bar a \cdot \overline{a\cdot c} = \overline{a\cdot(b\cdot c)} = \overline{(a\cdot b)\cdot c} = \overline{a\cdot b} \cdot \bar c = (\bar a\cdot \bar b) \cdot \bar c\]
@@ -323,9 +323,9 @@
 *** Integritätsbereich
 	<<Definition 6.6>>
 	ist ein kommuativer Ring $(R,+,\cdot)$ mit $R\neq 0$, in dem gilt:
-	\[\Forall a,b\in R: a\cdot b = 0_R \Rightarrow a = 0_R\vee b = 0_R\]
+	\[\Forall a,b\in R: a\cdot b = 0_R \implies a = 0_R\vee b = 0_R\]
 	beziehungsweise äquivalent dazu:
-	\[a\neq 0_R \wedge b\neq 0_R \Rightarrow a\cdot b \neq 0_R\]
+	\[a\neq 0_R \wedge b\neq 0_R \implies a\cdot b \neq 0_R\]
 **** Beispiel 6.7
 	 - $\frac{\mathbb{Z}}{3\mathbb{Z}}$ ist ein Integritätsbereich, $\frac{\mathbb{Z}}{4\mathbb{Z}}$ ist kein Integritätsbereich, denn $\bar 2\cdot \bar 2 = \bar 0$, aber $\bar 2 \neq \bar 0$
 **** Bemerkung 6.8
@@ -333,17 +333,17 @@
 	 1. <<6.8.1>> $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist ein Integritätsbereich
 	 2. <<6.8.2>> $n$ ist eine Primzahl
 ***** Beweis
-	  [[6.8.1]] \Rightarrow [[6.8.2]] zeigen wir durch Kontraposition, das heißt $\neq$[[ 6.8.2]] \Rightarrow $\neq$ [[6.8.1]] \\
+	  [[6.8.1]] $\implies [[6.8.2]]$ zeigen wir durch Kontraposition, das heißt $\neg$[[ 6.8.2]] $\implies$ \neg$ [[6.8.1]] \\
 	  Sei $n\in\mathbb{N}$ keine Primzahl. Falls $n = 1$ dann ist $\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0\}$ (Nullring), das heißt $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist kein Integritätsbereich. Seim im Folgenden $n > 1$ und keine Primzahl.
 	  \begin{align}
-	  &\Rightarrow \exists a,b\in\mathbb{N}:1\ <a,b<n \wedge n = a\cdot b \\
-	  &\Rightarrow \bar 0 = \bar n = \overline{a b} = \bar a \cdot \bar b
+	  &\implies \exists a,b\in\mathbb{N}:1\ <a,b<n \wedge n = a\cdot b \\
+	  &\implies \bar 0 = \bar n = \overline{a b} = \bar a \cdot \bar b
 	  \end{align}
-	  und es ist $bar a,\bar b\neq \bar 0$ \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integrationsbereich. \\
-	  [[6.8.2]] \Rightarrow [[6.8.1]]: Sein $n$ eine Primzahl \Rightarrow $n > 1$, insbesondere $\frac{\mathbb{Z}}{n\mathbb{Z}} \neq 0$. Seien $\bar a, \bar b \in \frac{\mathbb{Z}}{n\mathbb{Z}}$ mit $\bar a\cdot \bar b = \bar 0$
-	  \[\Rightarrow \exists q\in\mathbb{Z}:a b = q n\]
+	  und es ist $bar a,\bar b\neq \bar 0 \implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integrationsbereich. \\
+	  [[6.8.2]] $\implies$ [[6.8.1]]: Sein $n$ eine Primzahl $\implies n > 1$, insbesondere $\frac{\mathbb{Z}}{n\mathbb{Z}} \neq 0$. Seien $\bar a, \bar b \in \frac{\mathbb{Z}}{n\mathbb{Z}}$ mit $\bar a\cdot \bar b = \bar 0$
+	  \[\implies \exists q\in\mathbb{Z}:a b = q n\]
 	  Da $n$ Primzahl, kommt $n$ n der Primfaktorzerlengung von $a b$ als Primfaktor vor \\
-	  \Rightarrow $n$ kommt in der Primfaktorzerlegung von $a$ oder $b$ als Primfaktor vor \[\Rightarrow n\mid a \vee n\mid b \Rightarrow \bar a = \bar 0 \vee \bar b = \bar 0\]
+	  $\implies n$ kommt in der Primfaktorzerlegung von $a$ oder $b$ als Primfaktor vor \[\implies n\mid a \vee n\mid b \implies \bar a = \bar 0 \vee \bar b = \bar 0\]
 ** Körper
    <<Definition 6.9>>
    Ein Körper ist ein kommutativer Ring $(K,+,\cdot)$, in dem gilt $K\neq 0$ und jedes Element $a\in K, a\neq 0$ besitzt ein Inverses in $K$ bezüglich "$\cdot$", das heißt: $\exists b\in K:a\cdot b = 1_K$. Wir setzen $K^\ast := K\setminus\{0\}$
@@ -368,28 +368,28 @@
 *** Bemerkung 6.12
 	$R$ Integritätsbereich, der nur endlich viele Elemente hat. Dann ist $R$ ein Körper.
 **** Beweis
-	 $R$ Integritätsbereich \Rightarrow $R\neq 0$ \\
-	 Noch zu zeigen: $a\in R\setminus\{0_R\} \Rightarrow \exists b\in R: a b = 1_R$
+	 $R$ Integritätsbereich $\implies R\neq 0$ \\
+	 Noch zu zeigen: $a\in R\setminus\{0_R\} \implies \exists b\in R: a b = 1_R$
 	 Sei $a\in R\setminus\{0_R\}$. Wir betrachten die Abbildung $\varphi_a: R\to R,x\mapsto a x$
 	 1. Behauptung: $\varphi_a$ ist injektiv, denn:
 		\begin{align}
 		\intertext{Seien $x,y\in R$ mit}
-		\varphi_a(x) =\varphi_a(y) \Rightarrow a x = a y \Rightarrow a x + (-(a y)) = 0_R \\
+		\varphi_a(x) =\varphi_a(y) \implies a x = a y \implies a x + (-(a y)) = 0_R \\
 		\intertext{Mit [[Bemerkung 6.3]] folgt:}
-		\Rightarrow a x + a(-a) = -R \Rightarrow a(x - y) = 0_R  \\
+		\implies a x + a(-a) = -R \implies a(x - y) = 0_R  \\
 		\intertext{Aus $R$ Integrationsbereich und $a\neq 0$ folgt:}
-		x - y = 0 \Rightarrow x = y
+		x - y = 0 \implies x = y
 		\end{align}
 	 2. Da $R$ endlich ist und $\varphi_a$ inejktiv ist, ist $\varphi_a$ nach [[Bemerkung 4.19]] surjektiv
-		\[\Rightarrow  \exists b\in R: \varphi_a(b) = 1_R \Rightarrow a b = 1_R\]
+		\[\implies  \exists b\in R: \varphi_a(b) = 1_R \implies a b = 1_R\]
 *** Folgerung 6.13
 	$n\in\mathbb{N}$ Dann sind äquivalent
 	1. <<6.13.1>> $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist ein Körper
 	2. <<6.13.2>> $n$ ist eine Primzahl
 **** Beweis
-	 [[6.13.1]] \Rightarrow [[6.13.2]] durch Kontraposition: $\neq$ [[6.13.2]] \Rightarrow [[6.13.1]] \\
-	 Sei $n$ keine Primzahl \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integritätsbereich \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Körper \\
-	 [[6.13.2]] \Rightarrow [[6.13.1]] Sei $n$ eine Primzahl \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Integritätsbereich, der nur endlich viele Elemente hat \Rightarrow $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Körper
+	 [[6.13.1]] $\implies$ [[6.13.2]] durch Kontraposition: $\neq$ [[6.13.2]] $\implies \neg$ [[6.13.1]] \\
+	 Sei $n$ keine Primzahl $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integritätsbereich $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Körper \\
+	 [[6.13.2]] $\implies$ [[6.13.1]] Sei $n$ eine Primzahl $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ Integritätsbereich, der nur endlich viele Elemente hat $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ Körper
 **** Notation
 	 $p$ Primzahl. Man nennt $\mathbb{F}_P := \frac{\mathbb{Z}}{p\mathbb{Z}}$ auch den endlichen Körper mit $p$ Elemente
 *** Definition 6.14
@@ -410,10 +410,10 @@
 	Beweis durch Widerspruch. Annahme: $\cha(R) \neq 0$ und $\cha(R)$ ist keine Primzahl. \\
 	Da $R$ Integritätsbereich ist ist $1_R \neq 0_R$ also $\cha(R) \neq 1$
 	\begin{align*}
-	&\Rightarrow \exists a,b\in\mathbb{N}, 1 < a,b < \cha(R): \cha(R) = a b \\
-	&\Rightarrow 0_R = \sum_{k = 1}^{\cha(R)} 1_R = \sum_{k = 1}^a 1_R \cdot \sum_{k = 1}^b 1_R \\
+	&\implies \exists a,b\in\mathbb{N}, 1 < a,b < \cha(R): \cha(R) = a b \\
+	&\implies 0_R = \sum_{k = 1}^{\cha(R)} 1_R = \sum_{k = 1}^a 1_R \cdot \sum_{k = 1}^b 1_R \\
 	&\xRightarrow{R~\text{Integritätsbereich}} \sum_{k = 1}^a 1_R = 0_R \vee \sum_{k = 1}^b = 0_R \\
-	&\Rightarrow \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R) \tag*{\qedhere}
+	&\implies \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R) \tag*{\qedhere}
 	\end{align*}
 	\end{proof}
 	\begin{remark}

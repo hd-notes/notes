@@ -110,12 +110,12 @@
 	- veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens vei Initialisierung, bekannt)
 	  - sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
 	- modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push_back())
-	  - dies kann sehr effizient unterstützt werden \Rightarrow dynamisches Array
+	  - dies kann sehr effizient unterstützt werden \implies dynamisches Array
 	- std::vector verwaltet intern ein statisches Array der Größe "capacity", v.capacity() >= c.size()
-	  - wird das interne Array zu klein \Rightarrow wird automatisch auf ein doppelt so großes umgeschaltet
+	  - wird das interne Array zu klein \implies wird automatisch auf ein doppelt so großes umgeschaltet
 	  - ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve
 	- Verhalten bei push\_back():
-	  1. noch Reserve vorhanden: lege neues Element im eine unbenutze Speicherzelle \Rightarrow billig
+	  1. noch Reserve vorhanden: lege neues Element im eine unbenutze Speicherzelle \implies billig
 	  2. keine Reserve
 		 1. alloziiere neues statisches Array mit doppeler Kapazität
 		 2. kopiere die Daten aus dem altem in das neue Array
@@ -145,10 +145,10 @@
 	  |    16 |                       16 |                        32 |     17 |      15 |          16 |
 	  | 17-31 |                       32 |                        32 |     32 |       0 |           0 |
 	  - was kostet das:
-		- 32 Elemente einfügen = 32 Kopien extern \Rightarrow intern
-		- aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern \Rightarrow intern
-		- \Rightarrow im Durchschnitt sind pro Einfügung 2 Kopien nötig
-		- \Rightarrow dynamisches Array ist doppelt so teuer sie das statische  \Rightarrow immer noch sehr effizient
+		- 32 Elemente einfügen = 32 Kopien extern \implies intern
+		- aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern \implies intern
+		- \implies im Durchschnitt sind pro Einfügung 2 Kopien nötig
+		- \implies dynamisches Array ist doppelt so teuer sie das statische  \implies immer noch sehr effizient
 	- relevante Funktionen von std::vector
 	  #+BEGIN_SRC cpp
 	  v.size() // aktuelle Zahl der Elemente

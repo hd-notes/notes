@@ -10,12 +10,12 @@
 *** Beweis
 	1. Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributibitätsgesetzes verifiziert man durch Nachrechenen. \\
 	   Neutrale Elemente: Wir lösen die Gleichung $a + z = \{0,0\}$ für beliebige gegebene $a\in\mathbb{C},a=\{a_1,a_2\}$
-	   \[\Rightarrow z = \{-a_1, -a_2\}\]
+	   \[\implies z = \{-a_1, -a_2\}\]
 	   \[a\cdot z = \{1,0\}\]
 	   \[z = \frac{1}{a}:=\{\frac{a_1}{a_1^2 + a_2^2},-\frac{a_2}{a_1^2 + a_2^2}\},~\text{weil}~a\cdot\frac{1}{a}\]
 	   \[\text{weil}~a\frac{1}{a}=\{a_1\frac{a_1}{a_1^2 + a_2^2} + \frac{a_2^2}{a_1^2 + a_2^2},\frac{a_1 a_2}{a_1^2 + a_2^2} - \frac{a_2 a_1}{a_1^2 + a_2^2}\}\]
 	2. $i:= \{0,1\}$ hat die Eigenschaft
-	   \[1 + \I^2 = \{1,0\} + \{0^2 - 1^2, 0\} = \{0,0\} \Rightarrow 1+\I^2 = 0\]
+	   \[1 + \I^2 = \{1,0\} + \{0^2 - 1^2, 0\} = \{0,0\} \implies 1+\I^2 = 0\]
 	   Ähnlich $1 + (-\I)^2 = 0$
 	3. Die Zuordnung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ bildet $\mathbb{R}$ bijektiv auf eine Untermenge von $\mathbb{C}$ ab, welche bezüglich der komplexen Addition und Multiplikation wieder ein Körper ist $\hfill\square$
 ** Notation
@@ -27,7 +27,7 @@
 ** TODO Graphische Darstellung
 ** Bemerkung
    Die reellen Zahlen  sind durch $\Im z = 0$ charakterisiert.
-   \[z_1 = z_2 \Rightarrow x_1 + \I y_i = x_2 + \I y_2 \Leftrightarrow x_1 = x_2,y_1 = y_2\]
+   \[z_1 = z_2 \implies x_1 + \I y_i = x_2 + \I y_2 \iff x_1 = x_2,y_1 = y_2\]
 ** Korollar 1.59
    Jede quadratische Gleichung
    \[z^2+p z + q = 0,~p,q\in\mathbb{R}\]

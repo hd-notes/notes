@@ -62,7 +62,7 @@
    $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
    ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion an ursprung kein Vorzeichenänderung
    \begin{proof}
-   \[\v a \to -\v a, \v b \to -\v b \Rightarrow \v a \times \v b \to + \v a \times \v b \qedhere\]
+   \[\v a \to -\v a, \v b \to -\v b \implies \v a \times \v b \to + \v a \times \v b \qedhere\]
    \end{proof}
    \end{remark}
 ** Konservative Kräfte und Energieerhaltung
@@ -112,16 +112,16 @@
 	 \[f(x + \Delta) - f(x) \cong f'(x)\Delta\]
 *** Kriterium für Konservativität
 	Für *einfach zusammenhängende Gebiete*[fn::Jede geschlossene Kurve kann auf Länge Null zusammengezogen werden] gilt:
-	\[\v F ~\text{ist konservativ}~ \Leftrightarrow \v\nabla\v F = 0\]
+	\[\v F ~\text{ist konservativ}~ \iff \v\nabla\v F = 0\]
 **** Begründung
-	 \Rightarrow \\ \[\v F = -\v\nabla V \Rightarrow \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
+	 \implies \\ \[\v F = -\v\nabla V \implies \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
 	 \begin{align*}
 	 (\v\nabla\times\v F)^i &= \varepsilon^{ijk} \frac{\partial}{\partial x^j} F^k = \varepsilon^{ijk}\partial^i F^k \\
 	 &= -\varepsilon^{ijk}\partial^j\partial^k V = -\frac{1}{2}(\varepsilon^{ijk} -\varepsilon^{ikj})\partial^j\partial^k V \\
 	 &= - \frac{1}{2}\varepsilon^{ijk}\partial^j \partial^k V + \frac{1}{2}\varepsilon^{ikj}\underbrace{\partial^k\partial^j}_{\mathclap{\text{habe benutzt}~\frac{\partial}{\partial x}\frac{\partial}{\partial y} = \frac{\partial}{\partial y}\frac{\partial}{\partial x}}} V \\
 	 &\underarrow[=]{$k \leftrightarrow j$} -\frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V + \frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V = 0
 	 \end{align*}
-	 \Leftarrow \\
+	 \impliedby \\
 	 Wähle beliebiges festes $\v x_0$ im Gebiet. Definiere Potential als minus Arbeit am Massenpunkt $\rightarrow Abbildung$
 	 \begin{align*}
 	 V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
@@ -134,8 +134,8 @@
 	 &= -((-\int_{\v x_0}^{\v x + \v l} \d \v s \v F) - ( -\int_{\v x_0}^{\v x} \d\v s \v F)) \\
 	 &= -(V(\v x + \v l) -V(\v x)) \\
 	 &\cong - \frac{\partial V}{\partial x^i}l^i = -\v l(\v\nabla V) \\
-	 &\Rightarrow \v l(\v F + \v\nabla V) = 0 \\
-	 &\Rightarrow \v F + \v\nabla V = 0 \checkmark
+	 &\implies \v l(\v F + \v\nabla V) = 0 \\
+	 &\implies \v F + \v\nabla V = 0 \checkmark
 	 \end{align*}
 	 Lücke: Wegunabhängigketi der Definition von $V$: \\
 	 Wähle zwei unterschiedliche Wege ($L_1, L_2$):
@@ -168,7 +168,7 @@
    Randkurve: so definiert, dass man von oben gesehen linksherum (mathematisch positiver Drehsinn) läuft
    1. Spezielle Lange in unsererer Rechung unwichtig
    2. Übergang zu größeren Flächen durch Aufaddieren
-   Fläche $= N\Delta ^2 \Rightarrow N\sim \frac{1}{Delta^2}$
+   Fläche $= N\Delta ^2 \implies N\sim \frac{1}{Delta^2}$
    \begin{align*}
    \sum_{\text{Rechtecke}} \oint\d \v s\v F = \sum_{\text{Rechtecke}} \int\d\v f(\v\nabla \times \v F) + \underarrow[N]{Zahl der Rechtecke = $O(\Delta)$} O(\Delta^3) \\
    \shortintertext{weil sich nicht "innere Ränder wegheben"}
@@ -183,8 +183,8 @@
    \v F \Delta\v s &= \v F \Delta \v s_1 + \v F \Delta \v s_2 = \v F_1 \Delta \v s_1 + \v F_2 \Delta \v s_2 + O(\Delta x^2)
    \end{align*}
    $\v F, \v F_1, \v F_2$ jeweils am Mittelpunkt der Linienelemente
-   Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \Rightarrow$ Fehler $O(\Delta)$ \\
-   \Rightarrow Auch nach Summation bleibt Fehler von $O(\Delta)$
+   Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \implies$ Fehler $O(\Delta)$ \\
+   \implies Auch nach Summation bleibt Fehler von $O(\Delta)$
 
    Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen")
    #+end_proof
@@ -227,9 +227,9 @@
 	 \begin{align*}
 	 E = \frac{m}{2}\dot{x}^2 + V(x) = ~\text{const} \\
 	 \intertext{(bis auf Vorzeichen)}
-	 \dot{x} = \sqrt{\frac{2}{m}(E-V(x))} \Rightarrow \d t = \frac{\d x}{\sqrt{\frac{2}{m}(E-V(x))}} \\
+	 \dot{x} = \sqrt{\frac{2}{m}(E-V(x))} \implies \d t = \frac{\d x}{\sqrt{\frac{2}{m}(E-V(x))}} \\
 	 t = \in \frac{\d x}{\sqrt{\frac{2}{m}}(E - V(x))}
 	 \intertext{Integral lösen, Integrationskonstante und Energie so bestimmen, das Anfangswertproblem gelöst}
-	 t = t(x) ~\text{auflösen}~ \Rightarrow x = x(t) \checkmark
+	 t = t(x) ~\text{auflösen}~ \implies x = x(t) \checkmark
 	 \intertext{viel einfacher als allgemeine Differentialgleichung 2. Ordnung}
 	 \end{align*}

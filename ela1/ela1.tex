@@ -1,4 +1,4 @@
-% Created 2016-12-07 Mi 02:02
+% Created 2016-12-07 Mi 10:53
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -154,11 +154,11 @@ f & f & f\\
 
 \item Implikation (WENN-DANN-Verknüpfung)
 \begin{itemize}
-\item Symbol: $\Rightarrow$
+\item Symbol: $\implies$
 \item Wahrheitstafel:
 \begin{center}
 \begin{tabular}{lll}
-$A$ & $B$ & $A\Rightarrow B$\\
+$A$ & $B$ & $A\implies B$\\
 \hline
 w & w & w\\
 w & f & f\\
@@ -166,28 +166,28 @@ f & w & w\\
 f & f & w\\
 \end{tabular}
 \end{center}
-\item Sprechweise: $A$ impliziert $B$, aus $A$ folgt $B$, $A$ ist eine hinreichende Bedingung für $B$ (ist $A\Rightarrow B$ wahr, dann folgt aus $A$ wahr, $B$ ist wahr), $B$ ist eine notwendige Bedingung für $A$ (ist $A\Rightarrow B$ wahr, dann kann $A$ nur dann wahr sein, wenn Aussage $B$ wahr ist)
+\item Sprechweise: $A$ impliziert $B$, aus $A$ folgt $B$, $A$ ist eine hinreichende Bedingung für $B$ (ist $A\implies B$ wahr, dann folgt aus $A$ wahr, $B$ ist wahr), $B$ ist eine notwendige Bedingung für $A$ (ist $A\implies B$ wahr, dann kann $A$ nur dann wahr sein, wenn Aussage $B$ wahr ist)
 \item Beispiel Es seinen $m,n\in\mathbb{N}$
 \begin{itemize}
 \item $A$: m ist gerade
 \item $B$: $mn$ ist gerade
-\item Dann gilt $\Forall m,n \in\mathbb{N}~A\Rightarrow B~\text{wahr}$ \\
+\item Dann gilt $\Forall m,n \in\mathbb{N}~A\implies B~\text{wahr}$ \\
          Fallunterscheidung:
 \begin{itemize}
-\item $m$ gerade, $n$ gerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
-\item $m$ gerade, $n$ ungerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
-\item $m$ ungerade, $n$ gerade, dann ist $A$ falsch, $B$ wahr, d.h. $A\Rightarrow B$ wahr
-\item $m$ ungerade, $n$ ungerade, dann ist $A$ falsch, $B$ falsh, d.h. $A\Rightarrow B$ wahr
+\item $m$ gerade, $n$ gerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\implies B$ wahr
+\item $m$ gerade, $n$ ungerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\implies B$ wahr
+\item $m$ ungerade, $n$ gerade, dann ist $A$ falsch, $B$ wahr, d.h. $A\implies B$ wahr
+\item $m$ ungerade, $n$ ungerade, dann ist $A$ falsch, $B$ falsh, d.h. $A\implies B$ wahr
 \end{itemize}
 \end{itemize}
 \end{itemize}
 \item Äquivalenz (GENAU-DANN-WENN-Verknüpfung)
 \begin{itemize}
-\item Symbol $\Leftrightarrow$
+\item Symbol $\iff$
 \item Wahrheitstafel:
 \begin{center}
 \begin{tabular}{lll}
-$A$ & $B$ & $A\Leftrightarrow$ B\\
+$A$ & $B$ & $A\iff$ B\\
 \hline
 w & w & w\\
 w & f & f\\
@@ -196,10 +196,10 @@ f & f & w\\
 \end{tabular}
 \end{center}
 \item Sprechweise: $A$ gilt genau dann, wenn $B$ gilt, $A$ ist hinreichend und notwendig für $B$ \\
-       Die Aussagen $A\Leftrightarrow B$ und $(A\Rightarrow B)\wedge (B\Rightarrow A)$ sind gleichbedeutend:
+       Die Aussagen $A\iff B$ und $(A\implies B)\wedge (B\implies A)$ sind gleichbedeutend:
 \begin{center}
 \begin{tabular}{llllll}
-$A$ & $B$ & $A\Leftrightarrow B$ & $A\Rightarrow B$ & $B\Rightarrow A$ & $(A\Rightarrow B)\wedge (B\Rightarrow A)$\\
+$A$ & $B$ & $A\iff B$ & $A\implies B$ & $B\implies A$ & $(A\implies B)\wedge (B\implies A)$\\
 \hline
 w & w & w & w & w & w\\
 w & f & f & f & w & f\\
@@ -211,11 +211,11 @@ f & f & w & w & w & w\\
 \item Beispiel: Es sei $n$ eine ganze Zahl \\
        $A:~n-2>1$ \\
        $B:~n>3$ \\
-       $\Forall n\in\mathbb{N}~\text{gilt}~A\Leftrightarrow B$
+       $\Forall n\in\mathbb{N}~\text{gilt}~A\iff B$
        $C:~n>0$ \\
        $D:~n^2>0$ \\
-       Für $n=-1$ ist die Äquivalenz $C\Leftrightarrow$ falsch ($C$ falsch, $D$ wahr) \\
-       Für alle ganzen Zahlen $n$ gilt zumindest die Implikation $C\Rightarrow D$
+       Für $n=-1$ ist die Äquivalenz $C\iff$ falsch ($C$ falsch, $D$ wahr) \\
+       Für alle ganzen Zahlen $n$ gilt zumindest die Implikation $C\implies D$
 \end{itemize}
 \end{itemize}
 \subsection{Beweis}
@@ -224,17 +224,17 @@ Mathematische Sätze, Bemerkungen, Folgerungen, etc. sind meistens in Form wahre
 \subsubsection{beweisen}
 \label{sec-2-2-1}
 Begründen warum diese Implikation wahr ist
-\subsubsection{Beweismethoden for diese Implikation $A\Rightarrow B$}
+\subsubsection{Beweismethoden for diese Implikation $A\implies B$}
 \label{sec-2-2-2}
 \begin{itemize}
-\item direkter Beweis ($A\Rightarrow B$)
-\item Beweis durch Kontraposition ($\neq B \Rightarrow \neg A$)
+\item direkter Beweis ($A\implies B$)
+\item Beweis durch Kontraposition ($\neq B \implies \neg A$)
 \item Widerspruchbeweis ($\neg (A\wedge \neg B)$)
 \end{itemize}
 Diese sind äquivalent zueinander
 \begin{center}
 \begin{tabular}{lllllll}
-$A$ & $B$ & $\neg A$ & $\neg B$ & $A\Rightarrow B$ & $\neg B \Rightarrow \neg A$ & $\neg (A \wedge \neg B)$\\
+$A$ & $B$ & $\neg A$ & $\neg B$ & $A\implies B$ & $\neg B \implies \neg A$ & $\neg (A \wedge \neg B)$\\
 \hline
 w & w & f & f & w & w & w\\
 w & f & f & w & f & f & f\\
@@ -247,14 +247,14 @@ f & f & w & w & w & w & w\\
 $m,n$ natürliche Zahlen \\
      \[A:~m^2 < n^2\]
 \[B:~m < n\]
-Wir wollen zeigen, dass $A\Rightarrow B$ für alle natürlichen Zahlen $m,n$ wahr ist
+Wir wollen zeigen, dass $A\implies B$ für alle natürlichen Zahlen $m,n$ wahr ist
 \begin{itemize}
 \item direkter Beweis: \\
-       \[A:~m^2 < n^2 \Rightarrow 0 < n^2 - m^2 \Rightarrow 0 < (n-m)\underbrace{(n+m)}_{>0} \Rightarrow 0 < n-m \Rightarrow m<n\]
+       \[A:~m^2 < n^2 \implies 0 < n^2 - m^2 \implies 0 < (n-m)\underbrace{(n+m)}_{>0} \implies 0 < n-m \implies m<n\]
 \item Beweis durch Kontraposition: \\
-       \[\neg B:~m \geq n \Rightarrow m^2\geq n m \wedge m n \geq n^2 \Rightarrow m^2 \geq n^2 \Rightarrow \neg A\]
+       \[\neg B:~m \geq n \implies m^2\geq n m \wedge m n \geq n^2 \implies m^2 \geq n^2 \implies \neg A\]
 \item Beweis durch Widerspruch: \\
-       \[A\wedge \neg B \Rightarrow m^2 < n^2 \wedge n\leq m \Rightarrow m^2 < n^2 \wedge m n \leq m^2 \wedge n^2 \leq m n \Rightarrow m n \leq m^2 < n^2 \leq m n\]
+       \[A\wedge \neg B \implies m^2 < n^2 \wedge n\leq m \implies m^2 < n^2 \wedge m n \leq m^2 \wedge n^2 \leq m n \implies m n \leq m^2 < n^2 \leq m n\]
        Wiederspruch
 \end{itemize}
 \subsection{Existenz- und Allquantor}
@@ -273,8 +273,8 @@ Beispiel:
 \[\Forall n\in\mathbb{N}: 4n~\text{ist gerade}\]
 \subsubsection{Negation von Existenz- und Allquantor}
 \label{sec-2-3-3}
-\[\neg(\exists x:~A(x)) \Leftrightarrow \Forall x:~\neg A(x)\]
-\[\neg(\Forall x:~A(x)) \Leftrightarrow \exists x:~\neg A(x)\]
+\[\neg(\exists x:~A(x)) \iff \Forall x:~\neg A(x)\]
+\[\neg(\Forall x:~A(x)) \iff \exists x:~\neg A(x)\]
 \subsubsection{Spezielle Beweistechniken für Existenz und Allaussagen}
 \label{sec-2-3-4}
 \begin{itemize}
@@ -342,7 +342,7 @@ $A$ heißt echte Teilmenge von $B~(A\subset B) \xLeftrightarrow{\text{Def.}} A\s
 \paragraph{Anmerkung}
 \label{sec-2-4-5-1}
 Offenbar gilt für Mengen $A,B$:
-\[A=B \Leftrightarrow A\subseteq B \wedge B\subseteq A\]
+\[A=B \iff A\subseteq B \wedge B\subseteq A\]
 $\emptyset$ ist Teilmenge jeder Menge
 
 \paragraph{Beipspiel}
@@ -380,13 +380,13 @@ $A,B$ seien zwei Mengen. Dann gilt \[A\cap (B\cup C) = (A\cap B) \cup (A\cap C)\
 "$\subseteq$" Sei $x\in A \cap (B\cup C)$. Dann ist $x\in A \wedge x\in B\cup C$
 \begin{itemize}
 \item 1. Fall: $x\in A \wedge x\in B$
-       \[\Rightarrow x\in A\cap B \Rightarrow x \in (A\cap B) \cup (A\cap C)\]
+       \[\implies x\in A\cap B \implies x \in (A\cap B) \cup (A\cap C)\]
 \item 2. Fall $x\in A \wedge x\in C$
-       \[\Rightarrow x\in A\cap C \Rightarrow x\in (A\cap B)\cup(A\cap C)\]
+       \[\implies x\in A\cap C \implies x\in (A\cap B)\cup(A\cap C)\]
 \end{itemize}
 Damit ist "$\subseteq$" gezeigt.
 "$\supseteq$" Sei \$x$\in$ (A$\cap$ B) $\cup$ (A$\cap$ C)
-\[\Rightarrow x\in A\cap B \vee x\in A\cap C \\ \Rightarrow (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \Rightarrow x\in A \wedge (x\in B\vee x\in C) \\ \Rightarrow x\in A \wedge x\in B\cup C \\ \Rightarrow x\in A\cap (B\cup C)\]
+\[\implies x\in A\cap B \vee x\in A\cap C \\ \implies (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \implies x\in A \wedge (x\in B\vee x\in C) \\ \implies x\in A \wedge x\in B\cup C \\ \implies x\in A\cap (B\cup C)\]
 Damit ist "$\supseteq$" gezeigt.
 \subsubsection{Bemerkung zu Äquivalenz von Mengen}
 \label{sec-2-4-10}
@@ -397,10 +397,10 @@ Seien $A,B$ Mengen, dann sind äquivalent:
 \end{enumerate}
 \paragraph{Beweis}
 \label{sec-2-4-10-1}
-Wir zeigen 1) $\Rightarrow$ 2) und 2) $\Rightarrow$ 1.
-\[1) \Rightarrow 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \Rightarrow x\in A \wedge x \in B \Rightarrow x\in A\cup B = B\]
-\[2) \Rightarrow 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
-"$\subseteq$": Sei $x\in A\cup B \Rightarrow x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
+Wir zeigen 1) $\implies$ 2) und 2) $\implies$ 1.
+\[1) \implies 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \implies x\in A \wedge x \in B \implies x\in A\cup B = B\]
+\[2) \implies 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
+"$\subseteq$": Sei $x\in A\cup B \implies x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
 "$\supseteq$": $B\subseteq A\cup B$ klar
 \subsubsection{Kartesisches Produkt}
 \label{sec-2-4-11}
@@ -437,20 +437,20 @@ $\abs{M}$ heißt Kardinalität von A
 \label{sec-2-4-14}
 Für die natürlichen Zahlen gilt das Induktionsaxiom
 Ist $M\subseteq N$ eine Teilmenge, für die gilt:
-\[1\in M \wedge \Forall n\in M : n\in M \Rightarrow n+1 \in M\]
+\[1\in M \wedge \Forall n\in M : n\in M \implies n+1 \in M\]
 dann ist $M = \mathbb{N}$
 \subsubsection{Prinzip der vollständigen Induktion}
 \label{sec-2-4-15}
 Für jedes $n\in \mathbb{N}$ sei eine Aussage $A(n)$ gegeben. Die Aussagen $A(N)$ gelten für alle $n\in\mathbb{N}$, wenn man folgendes zeigen kann: \\
 \begin{itemize}
 \item (IA) $A(1)$ ist wahr
-\item (IS) Für jedes $n\in\mathbb{N}$ gilt: $A(n) \Rightarrow A(n+1)$
+\item (IS) Für jedes $n\in\mathbb{N}$ gilt: $A(n) \implies A(n+1)$
 \end{itemize}
-Der Schritt (IA) heißt Induktionsanfang, die Implikation $A(n) \Rightarrow A(n+1)$ heißt Induktionsschritt
+Der Schritt (IA) heißt Induktionsanfang, die Implikation $A(n) \implies A(n+1)$ heißt Induktionsschritt
 \paragraph{Beweis}
 \label{sec-2-4-15-1}
 Setze $M := \{n\in \mathbb{N}\mid A(n)~\text{ist wahr}\}$
-Wegen (IA) ist $1\in M$, wegen (IS) gilt: $n\in M \Rightarrow n+1 \in M$ \\
+Wegen (IA) ist $1\in M$, wegen (IS) gilt: $n\in M \implies n+1 \in M$ \\
      Nach Induktionsaxiom folgt $M = \mathbb{N}$, das heißt $A(n)$ ist wahr für alle $n\in \mathbb{N}$
 \paragraph{Beispiel}
 \label{sec-2-4-15-2}
@@ -458,8 +458,8 @@ Für $n\in\mathbb{N}$ sei $A(n)$ die Aussage: $1+\ldots + n = \frac{n(n+1)}{2}$
 Wir zeigen: $A(n)$ ist wahr für alle $n\in \mathbb{N}$, und zwar durch vollständige Induktion
 \begin{itemize}
 \item (IA) $A(1)$ ist wahr, denn $1 = \frac{1(1+1)}{2}$
-\item (IS) zu zeigen: $A(n) \Rightarrow A(n+1)$ \\
-       Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\Rightarrow 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
+\item (IS) zu zeigen: $A(n) \implies A(n+1)$ \\
+       Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\implies 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
 \end{itemize}
 \subsection{Relationen}
 \label{sec-2-5}
@@ -485,9 +485,9 @@ $M$ Menge, $\sim$ Relation auf $M$ \\
     $\sim$ heißt:
 \begin{itemize}
 \item reflexiv $\xLeftrightarrow{\text{Def}}$ für alle $a\in M$ gilt $a\sim a$
-\item symmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \Rightarrow b\sim a$
-\item antisymmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b \in M$ gilt: $a\sim b \wedge b\sim a \Rightarrow a = b$
-\item transitiv $\xLeftrightarrow{\text{Def}}$ für alle $a,b,c\in M$ gilt: $a\sim b \wedge b\sim v \Rightarrow a\sim c$
+\item symmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \implies b\sim a$
+\item antisymmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b \in M$ gilt: $a\sim b \wedge b\sim a \implies a = b$
+\item transitiv $\xLeftrightarrow{\text{Def}}$ für alle $a,b,c\in M$ gilt: $a\sim b \wedge b\sim v \implies a\sim c$
 \item total $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \vee b\sim a$
 \end{itemize}
 \paragraph{Beispiel}
@@ -533,7 +533,7 @@ $(M,\leq)$ halbgeordnete Menge \\
 \subparagraph{Beweis}
 \label{sec-2-5-4-1-1}
 Es seien $a,b\in M$ größte Elemente von $M$ \\
-      $\Rightarrow x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
+      $\implies x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
       Außerdem: $x \leq b$ für alle $x\in M$, also auch $a\leq b$ \\
       $\xRightarrow{\text{Antisymmetrie}} a = b$ \\
       Analog für kleinstes Element
@@ -551,8 +551,8 @@ Dies sagt nichts darüber aus, ob ein größtes (beziehungsweise kleinstes) Elem
 $(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
     $a$ heißt ein
 \begin{itemize}
-\item maximales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $a\leq x \Rightarrow a = x$
-\item minmales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $x\leq a \Rightarrow a = x$
+\item maximales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $a\leq x \implies a = x$
+\item minmales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $x\leq a \implies a = x$
 \end{itemize}
 \paragraph{Beispiel}
 \label{sec-2-5-5-1}
@@ -564,7 +564,7 @@ $(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
 \subparagraph{Beweis}
 \label{sec-2-5-5-2-1}
 Sei $a$ ein größtes Element von $M$. \\
-      zu zeigen ist: Für alle $x\in M$ gilt $a\leq x \Rightarrow a = x$
+      zu zeigen ist: Für alle $x\in M$ gilt $a\leq x \implies a = x$
 Sei $x\in M$ mit $a\leq x$. Da $a$ größtes Element von $M$ ist, gilt auch $x\leq a$ \\
       $\xLeftrightarrow{\text{Antisymmetrie}} a = x$ \\
       Analog für kleinstes Element.
@@ -606,10 +606,10 @@ Man sagt auch: Die Äquivalenzklassen bezüglich "$\sim$" bilden eine \textbf{Pa
 \item Es gibt eine Äquivalenzklasse, in der $a$ liegt, denn \$a$\in$ [a], denn $a\sim a$
 \item Ist \$a$\in$[b] und a$\in$[c], dann ist [b]=[c] (d.h. $a$ liegt in höchstens einer Äquivalenzklasse) \\
             denn: Seien $b,c\in M$ mit $a\in[b]$ und $a\in[c]$
-            $\Rightarrow a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a$ und $a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
+            $\implies a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a$ und $a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
             Behautptung $[b] =[c]$
-            denn: "$\subseteq$" Sei $x\in [b] \Rightarrow x\sim b \xRightarrow{Transitivität}^{b\sim c} x\sim c \Rightarrow x\in [c]$
-            denn: "$\supseteq$" Sei $x\in [c] \Rightarrow x\sim c \xRightarrow{Transitivität}^{c\sim b} x\sim b \Rightarrow x\in [b]$
+            denn: "$\subseteq$" Sei $x\in [b] \implies x\sim b \xRightarrow{Transitivität}^{b\sim c} x\sim c \implies x\in [c]$
+            denn: "$\supseteq$" Sei $x\in [c] \implies x\sim c \xRightarrow{Transitivität}^{c\sim b} x\sim b \implies x\in [b]$
 \end{enumerate}
 \item Sind $b,c\in M$ mit $[b] \cap [c] \neq \emptyset$, dann existiert ein \$a$\in$ [b]$\cap$ [c], und es folgt wie in 2.: \\
          $[b] = [c]$
@@ -700,7 +700,7 @@ heißt die Komposition (Hintereinanderausführung) von $f$ und $g$
 \paragraph{Beispiel}
 \label{sec-2-6-6-1}
 \[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2, g:\mathbb{R}\to\mathbb{R}:x\mapsto x + 1\]
-\[\Rightarrow g\circ f:\mathbb{R}\to\mathbb{R},x\mapsto g(f(x)) = g(x^2) = x^2 + 1\]
+\[\implies g\circ f:\mathbb{R}\to\mathbb{R},x\mapsto g(f(x)) = g(x^2) = x^2 + 1\]
 \paragraph{Assoziativität}
 \label{sec-2-6-6-2}
 $L,M,N,P$ Mengen, $f:L\to M, g:M\to N,h:n\to p$ \\
@@ -716,11 +716,11 @@ Für $x\in L ist$ \\
 $M,N$ Mengen, $f:M\to N$ Abbildung
 \paragraph{Injektivität}
 \label{sec-2-6-7-1}
-$f$ heißt injektiv: \[\xLeftrightarrow{\text{Def}} \Forall m_1,m_2\in M: f(m_1) = f(m_2) \Rightarrow m_1 = m_2 \Leftrightarrow \Forall m_1,m_2\in M: m_1\neq m_2 \Rightarrow f(m_1)\neq f(m_2)\]
+$f$ heißt injektiv: \[\xLeftrightarrow{\text{Def}} \Forall m_1,m_2\in M: f(m_1) = f(m_2) \implies m_1 = m_2 \iff \Forall m_1,m_2\in M: m_1\neq m_2 \implies f(m_1)\neq f(m_2)\]
 \paragraph{Surjektivität}
 \label{sec-2-6-7-2}
 $f$ heißt sujektiv:
-\[\xLeftrightarrow{\text{Def}} \Forall n\in M :\exists m\in M: f(m) = n \Leftrightarrow f(M) = N\]
+\[\xLeftrightarrow{\text{Def}} \Forall n\in M :\exists m\in M: f(m) = n \iff f(M) = N\]
 \paragraph{Bijektivität}
 \label{sec-2-6-7-3}
 $f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjektiv
@@ -735,13 +735,13 @@ $f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjekt
 \end{itemize}
 \item $f:\mathbb{R}_{\geq 0} \to \mathbb{R}, x\mapsto x^2$ ist:
 \begin{itemize}
-\item injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
+\item injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \implies m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
 \item nicht surjektiv, denn es existier kein $m\in\mathbb{R}_{\geq 0}$ mit $f(m) = -1$
 \item nicht bijektiv
 \end{itemize}
 \item $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist:
 \begin{itemize}
-\item injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
+\item injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \implies m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
 \item surjektiv, denn für $m\in\mathbb{R}_{\geq 0}$ ist $f(\sqrt{m}) = (\sqrt{m})^2 = m$
 \item bijektiv
 \end{itemize}
@@ -754,7 +754,7 @@ Dann ist $f$ injektiv und $g$ surjektiv.
 \label{sec-2-6-7-5-1}
 \begin{enumerate}
 \item $f$ ist injektiv, denn: \\
-         Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \Rightarrow g(f(m_1)) = g(f(m_2)) \Rightarrow (g\circ f)(m_1) = (g\circ f)(m_2) \Rightarrow id_m(m_1) = id_M(m_2)\Rightarrow m_1 = m_2$
+         Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \implies g(f(m_1)) = g(f(m_2)) \implies (g\circ f)(m_1) = (g\circ f)(m_2) \implies id_m(m_1) = id_M(m_2)\implies m_1 = m_2$
 \item $g$ ist surjektiv, denn: \\
          Sei $m\in M$ Dann ist $m=id_M(m) = (g\circ f)(m) = g(f(m))$
 \end{enumerate}
@@ -771,15 +771,15 @@ In diesem Fall bezeichnen wir die Abbildung $g:N\to M$ aus 3. mit $f^{-1}$ und n
 \[f^{-1} : N\to M, n\mapsto~\text{Das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$}\]
 \subparagraph{Beweis}
 \label{sec-2-6-7-6-1}
-Statt 1. $\Leftrightarrow$ 2. und 2. $\Leftrightarrow$ 3. zeigen 1. $\Rightarrow$ 2. $\Rightarrow$ 3. $\Rightarrow$ 1.
+Statt 1. $\iff$ 2. und 2. $\iff$ 3. zeigen 1. $\implies$ 2. $\implies$ 3. $\implies$ 1.
 \begin{itemize}
-\item 1. $\Rightarrow$ 2. Sei $f$ bijektiv \\
+\item 1. $\implies$ 2. Sei $f$ bijektiv \\
         zz: Ist $n\in N$, dann existiert genau ein $m\in M$ mit $f(m) = n$ \\
 \begin{itemize}
-\item Existenz folg aus Surjektivität von $f$
-\item Eindeutigkeit: Seien \$m$_{\text{1}}$,m$_{\text{2}}$ $\in$ M  mit \(f(m_1) = n, f(m_2) = n \Rightarrow f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
+\item Existenz folgt aus Surjektivität von $f$
+\item Eindeutigkeit: Seien \$m$_{\text{1}}$,m$_{\text{2}}$ $\in$ M  mit \(f(m_1) = n, f(m_2) = n \implies f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
 \end{itemize}
-\item 2. $\Rightarrow$ 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
+\item 2. $\implies$ 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
         zz: Ex existert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
 \begin{itemize}
 \item Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\
@@ -787,17 +787,17 @@ Statt 1. $\Leftrightarrow$ 2. und 2. $\Leftrightarrow$ 3. zeigen 1. $\Rightarrow
 Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~text{das heißt}~ g\circ f = id_M\]
 und für $n\in N$ ist $(f\circ g)(n) = f(g(n)) = n$ also $f\circ g = id_N$
 \item Eindeutigkeit: Es seinen $g_1,g_2:N\to M$ mit $g_i \circ f = id_M, f\circ g_i = id_N$ für $i = 1,2$ \\
-          \[\Rightarrow g_1 = g_1 \circ id_N = g_1 \circ (f\circ g_2) = (g_1 \circ f) \circ g_2 = id_M \circ g_2 = g_2\]
+          \[\implies g_1 = g_1 \circ id_N = g_1 \circ (f\circ g_2) = (g_1 \circ f) \circ g_2 = id_M \circ g_2 = g_2\]
 \end{itemize}
-\item 3. $\Rightarrow$ 1. Wegen 3. existier $g:N\to M$ mit $g\circ f = id_M,f\circ g = id_N$ \\
-        \[\xRightarrow{[[Bemerkung 4.12]]} f~\text{injektiv}~,f~\text{surjektiv}~\Rightarrow f~\text{bijektiv}\Rightarrow~\text{1.}\]
+\item 3. $\implies$ 1. Wegen 3. existier $g:N\to M$ mit $g\circ f = id_M,f\circ g = id_N$ \\
+        \[\xRightarrow{[[Bemerkung 4.12]]} f~\text{injektiv}~,f~\text{surjektiv}~\implies f~\text{bijektiv}\implies~\text{1.}\]
 \end{itemize}
 \subparagraph{Anmerkung}
 \label{sec-2-6-7-6-2}
 \begin{itemize}
 \item Bitte stets aufpassen, ob mit $f^{-1}$ die Unmkerhabbildung (falls existent) oder das Bilden der Urbildmenge gemeint ist.
-\item Im Beweis von 3. $\Rightarrow$ 1. haben wir die Eindeutigkeit von $g$ garnicht verwendet, das heißt wir haben sogar gezeigt: \\
-        $f$ bijektiv $\Leftrightarrow$ 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = id_N$ und $f\circ f = id_M$ Soch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
+\item Im Beweis von 3. $\implies$ 1. haben wir die Eindeutigkeit von $g$ garnicht verwendet, das heißt wir haben sogar gezeigt: \\
+        $f$ bijektiv $\iff$ 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = id_N$ und $f\circ f = id_M$ Soch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
 \end{itemize}
 \subparagraph{Beispiel}
 \label{sec-2-6-7-6-3}
@@ -807,30 +807,30 @@ Die Umkehrabbildung ist gegeben durch $f^{-1}:\mathbb{R}_{\geq 0} \to \mathbb{R}
 \label{sec-2-6-7-7}
 $M,N$ Mengen, $f:M\to N$ Dann gilt:
 \begin{enumerate}
-\item $f$ injektiv $\Leftrightarrow$ Es existiert $g:N\to M$ mit $g\circ f = id_M$ \\
+\item $f$ injektiv $\iff$ Es existiert $g:N\to M$ mit $g\circ f = id_M$ \\
         \textbf{Beweis:}
 \begin{itemize}
-\item "$\Leftarrow$" folgt aus \ref{sec-2-6-7-5}
-\item "$\Rightarrow$" Sei $f$ injektiv. Sein $x$ ein beliebiges Element aus $M$
+\item "$\impliedby$" folgt aus \ref{sec-2-6-7-5}
+\item "$\implies$" Sei $f$ injektiv. Sein $x$ ein beliebiges Element aus $M$
           Wir definieren \[g:N\to M,n\mapsto \begin{cases} x & n\not\in f(M) \\ \text{das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$} & n\in f(M) \end{cases}\]
           Für alle $m\in M$ ist dann $(g\circ f)(m) = g(f(m)) = m$ das geißt $g\circ f = id_M$
 \end{itemize}
-\item $f$ surjektiv $\Leftrightarrow$ Es existiert $g:N\to M$ mit $f\circ g = id_N$ \\
+\item $f$ surjektiv $\iff$ Es existiert $g:N\to M$ mit $f\circ g = id_N$ \\
         \textbf{Beweis:}
 \begin{itemize}
-\item "$\Leftarrow$" folgt aus \ref{sec-2-6-7-5}
-\item "$\Rightarrow$" Sei $f$ surjektiv. Für jedes Element $n\in N$ wählen wir ein Element $\tilde n\in f^{-1}(\{n\}) \neq \emptyset$ und sehen
+\item "$\impliedby$" folgt aus \ref{sec-2-6-7-5}
+\item "$\implies$" Sei $f$ surjektiv. Für jedes Element $n\in N$ wählen wir ein Element $\tilde n\in f^{-1}(\{n\}) \neq \emptyset$ und sehen
 $g:N\to M,n\mapsto \tilde n$. Dann ist $(f\circ g)(n) = f(g(n)) = n$ für alle $n\in N$ und das heißt $f\circ g = id_N \hfill\square$
 \end{itemize}
 \end{enumerate}
 \subparagraph{Anmerkung}
 \label{sec-2-6-7-7-1}
-Das wir stets einen Auswahlprozess wie im Beweis von 2. "$\Rightarrow$" vornehmen können ist ein Axiom der Mengenlehre (erkennen wir als gültig an, ist jedoch nicht beweisbar), das \textbf{Auswahlaxiom}: \\
+Das wir stets einen Auswahlprozess wie im Beweis von 2. "$\implies$" vornehmen können ist ein Axiom der Mengenlehre (erkennen wir als gültig an, ist jedoch nicht beweisbar), das \textbf{Auswahlaxiom}: \\
       Ist $I$ eine Indexmenge und $(A_i)_{i\in I}$ eine Familie von nichtleeren Mengen, dann gibt es eine Abbildung $\gamma:I\to \bigcup_{i\in I} A_i$ mit $\gamma (i) \in A_i$ für alle $i\in I$ (im obigen Beweis ist $I = N,A_n = f^{-1}(\{n\})$ für $n\in N$)
 \paragraph{Bemerkung 4.16}
 \label{sec-2-6-7-8}
 $L,M,N$ Mengen, $f:L\to M, g:M\to N$ \\
-     Dann gilt: $g,f$ beide injektiv (beziehungsweise surjektiv oder bijektiv) $\Rightarrow$ $g\circ f$ injektiv (beziehungsweise sujektiv oder bijektiv)
+     Dann gilt: $g,f$ beide injektiv (beziehungsweise surjektiv oder bijektiv) $\implies g\circ f$ injektiv (beziehungsweise sujektiv oder bijektiv)
 \paragraph{Definition 4.17}
 \label{sec-2-6-7-9}
 \paragraph{Bemerkung 4.19}
@@ -844,10 +844,10 @@ $M,N$ endliche Mengen mit $\abs{M} = \abs{N},f:M\to N$ Dann sind äquivalent:
 \subparagraph{Beweis}
 \label{sec-2-6-7-10-1}
 \begin{itemize}
-\item 1. $\Rightarrow$ 2. Sei $f$ injektiv $\Rightarrow$ $\abs{f(M)} = \abs{M} = \abs{N}$ wegen $f(M) \subseteq N$ folgt $f(M) = N$ $\Rightarrow$ $f$ surjektiv
-\item 2. $\Rightarrow$ 3. Sei $f$ sujektiv, das heißt $f(M) = N$ \\
-        Annahme: $f$ ist nicht bijektiv $\Rightarrow$ $f$ nicht injektiv $\Rightarrow$ $\exists m_1,m_2\in M: m_1\neq m_2 \wedge f(M_1) = f(m_2) \Rightarrow \abs{f(M)} < \abs{M} = \abs{N}$ Wiederspruch zu $f(M) = N$
-\item 3. $\Rightarrow$ 1. trivial
+\item 1. $\implies$ 2. Sei $f$ injektiv $\implies$ $\abs{f(M)} = \abs{M} = \abs{N}$ wegen $f(M) \subseteq N$ folgt $f(M) = N \implies f$ surjektiv
+\item 2. $\implies$ 3. Sei $f$ sujektiv, das heißt $f(M) = N$ \\
+        Annahme: $f$ ist nicht bijektiv $\implies f$ nicht injektiv $\implies \exists m_1,m_2\in M: m_1\neq m_2 \wedge f(M_1) = f(m_2) \implies \abs{f(M)} < \abs{M} = \abs{N}$ Wiederspruch zu $f(M) = N$
+\item 3. $\implies$ 1. trivial
 \end{itemize}
 \section{Gruppen, Ringe, Körper}
 \label{sec-3}
@@ -886,7 +886,7 @@ $(M,*)$ Monoid. Dann gibt es in $M$ genau ein neutrales Element.
 \label{sec-3-1-2-2-1}
 \begin{itemize}
 \item Existenz: Es existert ein neutrales Element: folgt aus Definition eines Monoids
-\item Eindeutigkeit: Seien $e,\tilde e \in M$ neutrale Element \[\Rightarrow e = e * \tilde e = \tilde e\]
+\item Eindeutigkeit: Seien $e,\tilde e \in M$ neutrale Element \[\implies e = e * \tilde e = \tilde e\]
 \end{itemize}
 \subsubsection{Inverses}
 \label{sec-3-1-3}
@@ -906,7 +906,7 @@ $(M,*)$ Monid, $a\in M$ Dann gilt: besitzt $a$ ein Inverses, dann ist dieses ein
 \subparagraph{Beweis}
 \label{sec-3-1-3-2-1}
 Seinen $b,\tilde b$ Inversen zu $a$, sein $e\in M$ das neutrale Element
-\[\Rightarrow b = e * b = (\tilde b * a) * b = \tilde b * (a * b) = \tilde b\]
+\[\implies b = e * b = (\tilde b * a) * b = \tilde b * (a * b) = \tilde b\]
 \subsubsection{Gruppe}
 \label{sec-3-1-4}
 Eine Gruppe ist ein Tupel $(G,*)$, bestehen aus einer Menge $G$ und einer Verknüpfung $*:G\times G \to G$, sodass gilt:
@@ -926,18 +926,18 @@ In diesem Fall schreiben wir $a'$ für das nach \ref{beminv} eindeutig bestimmte
 \label{sec-3-1-4-2}
 $(G,*)$ Gruppe mit neutralem Element $e,a,b,c \in G$. Dann gilt
 \begin{enumerate}
-\item (Kürzungsregel) \[a*b = a*c \Rightarrow b = c\] \[a*c = b * c \Rightarrow a = b\]
-\item $a*b = e \Rightarrow b = a'$
+\item (Kürzungsregel) \[a*b = a*c \implies b = c\] \[a*c = b * c \implies a = b\]
+\item $a*b = e \implies b = a'$
 \item $(a')' = a$
 \item (Regel von Hemd und Jacke) $(a*b)' = b' * a'$
 \end{enumerate}
 \subparagraph{Beweis}
 \label{sec-3-1-4-2-1}
 \begin{enumerate}
-\item Sei $a * b = a * c \Rightarrow a'*(a*b) = a'*(a*c) \Rightarrow (a'*a)*b=(a'*a)*c \Rightarrow e*b = e*c \Rightarrow b = c$
-\item aus 1. $a*b = c = a*a' \Rightarrow b = a'$
-\item Es ist $a*a' = e = a' * a$, das heißt $a$ ist Inverses zu $a' \Rightarrow (a')' = a$
-\item Es ist $(a*b)*(b'*a') = a*(b*b')*a' = a*a' = e \Rightarrow b' * a' \xRightarrow{\text{2.}} (a *b)'$
+\item Sei $a * b = a * c \implies a'*(a*b) = a'*(a*c) \implies (a'*a)*b=(a'*a)*c \implies e*b = e*c \implies b = c$
+\item aus 1. $a*b = c = a*a' \implies b = a'$
+\item Es ist $a*a' = e = a' * a$, das heißt $a$ ist Inverses zu $a' \implies (a')' = a$
+\item Es ist $(a*b)*(b'*a') = a*(b*b')*a' = a*a' = e \implies b' * a' \xRightarrow{\text{2.}} (a *b)'$
 \end{enumerate}
 \subsubsection{Abelsche Gruppe}
 \label{sec-3-1-5}
@@ -956,7 +956,7 @@ Dann ist $(S(M),\circ)$ eine Gruppen, die \textbf{symmetrische} Gruppe auf $M$
 \item "\$\^{}" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus \ref{sec-2-6-7-10}
 \item "\$\^{}" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach \texttt{4.9}
 \item $id_M$ ist neutral: $id_M \in S(M)$ und $id_M\circ f = f = f\circ id_M \Forall f\in S(M)$
-\item Existenz von Inversen: $f\in S(M) \Rightarrow f$ bijektiv $\Rightarrow$ Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
+\item Existenz von Inversen: $f\in S(M) \implies f$ bijektiv $\implies$ Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
          für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "\$\^{}"
 \end{enumerate}
 \subsubsection{Permutationen}
@@ -1032,11 +1032,11 @@ und die Restklassen $\bar 0, \ldots, \overline{n - 1}$ sind paarweise verschiede
 \begin{itemize}
 \item "$\equiv$" ist reflexiv: Fpr $a\in\mathbb{Z}$ ist $a\equiv a(\mod n)$ denn $a - a = 0 = 0 n$
 \item "$\equiv$" ist symmetrisch: Seien $a,b\in\mathbb{Z}$ mit $a\equiv b(\mod n) \exists q\in\mathbb{Z}:a - b = q n$ \\
-           $\Rightarrow$ $b - a = (-q) n \Rightarrow b \equiv a(\mod n)$
+           $\implies b - a = (-q) n \implies b \equiv a(\mod n)$
 \item "$\equiv$" ist transitiv: Seien $a,b,c\in\mathbb{Z}$ mit $a\equiv b(\mod n), b\equiv c(\mod n)$
 \begin{itemize}
-\item $\Rightarrow$ $\exists q_1,q_2 \in\mathbb{Z}$ mit $a - b = q_1 n, b - c = q_2 n$
-\item $\Rightarrow$ $a - c = (a - b) + (b - c) = q_1 n + q_2 n = (q_1 + 1_2) n \Rightarrow a \equiv c(\mod n)$
+\item $\implies \exists q_1,q_2 \in\mathbb{Z}$ mit $a - b = q_1 n, b - c = q_2 n$
+\item $\implies a - c = (a - b) + (b - c) = q_1 n + q_2 n = (q_1 + 1_2) n \implies a \equiv c(\mod n)$
 \end{itemize}
 \end{itemize}
 \item Die Äquivalenzklasse von $n\in\mathbb{Z}$ ist gegeben durch
@@ -1049,19 +1049,19 @@ und die Restklassen $\bar 0, \ldots, \overline{n - 1}$ sind paarweise verschiede
 \begin{itemize}
 \item Ist $a\in\mathbb{Z}$ beliebig, dann liefert Division mit Rest durch $n$: \\
            Es gibt $q,r\in\mathbb{Z}$ mit $a = q n + r,0\leq r < n$
-           \[\Rightarrow a - r = q n \Rightarrow q \equiv r(\mod n) \Rightarrow \bar a = \bar r\]
+           \[\implies a - r = q n \implies q \equiv r(\mod n) \implies \bar a = \bar r\]
            Das heißt: Jede Restklasse ist von der Form $\bar r$ mit $r\in \{0,\ldots,n - 1\}$ \\
 \item Die Restklassen $\bar 0, \bar 1, \ldots, \overline{n - 1}$ sind paarweise verschieden denn: \\
-           Seien $a,b\in\{0,\ldots,n - 1\}$ mit $\bar a = \bar b \Rightarrow a \equiv b(\mod n) \Rightarrow \exists q\in \mathbb{Z}: a - b = q n \Rightarrow \abs{a - b} = \abs{q} n$.
+           Seien $a,b\in\{0,\ldots,n - 1\}$ mit $\bar a = \bar b \implies a \equiv b(\mod n) \implies \exists q\in \mathbb{Z}: a - b = q n \implies \abs{a - b} = \abs{q} n$.
 \begin{itemize}
-\item Wäre $q\neq 0$, dann $\abs{q} \geq 1$ wegen $q\in\mathbb{Z} \Rightarrow \abs{a - b} \geq n$ \textbf{Wiederspruch} zu $a,b\in\{0,\ldots,n - 1\}$ \\
+\item Wäre $q\neq 0$, dann $\abs{q} \geq 1$ wegen $q\in\mathbb{Z} \implies \abs{a - b} \geq n$ \textbf{Wiederspruch} zu $a,b\in\{0,\ldots,n - 1\}$ \\
              Also: $q = 0$ das heißt $a = b$
 \end{itemize}
 \end{itemize}
 \end{enumerate}
 \paragraph{Beispiel}
 \label{sec-3-1-7-3}
-$n = 3: a\equiv b (\mod 3) \Leftrightarrow \exists q\in\mathbb{Z}: a - b = 3 q$ \\
+$n = 3: a\equiv b (\mod 3) \iff \exists q\in\mathbb{Z}: a - b = 3 q$ \\
      zum Beispiel: $11 \equiv 5(\mod 3)$, denn $11 - 5 = 6 = 2 \cdot 3$ \\
      zum Beispiel: $7 \not\equiv 2(\mod 3)$, denn $7 - 2 = 5$ und es gibt kein $q\in\mathbb{Z}$ mit $5 = 3 q$
 \[\bar 0 = \{a\in\mathbb{Z}\mid a \equiv 0 (\mod 3)\} = \{a\in\mathbb{Z} \mid  \exists q\in\mathbb{Z}: a = 3q\} = 3\mathbb{Z} = \{\ldots,-6,-3,0,3,6,\ldots\}\]
@@ -1082,11 +1082,11 @@ $\bar 3 + \bar 4 = \bar 8 + \bar 9 = \overline{8 + 9} = \overline{17} = \bar 2$ 
          Wir müssen nachweisen, dass die Wahl der Vertreter keinen Einfluss auf das Ergebnis hat, das heißt die Verknüfung ist "vertreter unahbhängig": \\
          Seien $a_1,a_2 ,b_1,b_2 \in\mathbb{Z},\overline{a_1} = \overline{a_2},\overline{b_1} = \overline{b_2}$
 \begin{align}
-&\Rightarrow a_1 \equiv a_2(\mod n), b_1 \equiv b_2(\mod n) \\
-&\Rightarrow\exists q_1,q_2\in\mathbb{Z}: a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n n, b_1 - b_2 = q_2 n \\
-&\Rightarrow (a_1 + b_1) - (a_2 + b_2) = (a_1 - a_2)+ (b_1 - b_2) = q_1 n + q_2 n = (q_1 + q_2) n \\
-&\Rightarrow a_1 + b_ 1 \equiv a_2 + b_2 (\mod n) \\
-&\Rightarrow \overline{a_1 + b_1} = \overline{a_2 + b_2}
+&\implies a_1 \equiv a_2(\mod n), b_1 \equiv b_2(\mod n) \\
+&\implies\exists q_1,q_2\in\mathbb{Z}: a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n n, b_1 - b_2 = q_2 n \\
+&\implies (a_1 + b_1) - (a_2 + b_2) = (a_1 - a_2)+ (b_1 - b_2) = q_1 n + q_2 n = (q_1 + q_2) n \\
+&\implies a_1 + b_ 1 \equiv a_2 + b_2 (\mod n) \\
+&\implies \overline{a_1 + b_1} = \overline{a_2 + b_2}
 \end{align}
 \item $(\frac{\mathbb{Z}}{n\mathbb{Z}})$ ist eine abelsche Gruppe:
 \begin{itemize}
@@ -1156,12 +1156,12 @@ $(G,*),(H,\oast)$ heißen isomorph $\xLeftrightarrow{\text{Def}}$ Ex existert ei
 \subparagraph{Beweis}
 \label{sec-3-1-8-2-1}
 \begin{enumerate}
-\item Es $e_H\oast \varphi(e_G) = \varphi(e_G) = \varphi(e_G*e_G) = \varphi(e_G) \oast(e_G) \Rightarrow e_H = \varphi(e_G)$
-\item Sei $a\in G$ Dann ist $e_H = \varphi(e_G) = \varphi(a*a') = \varphi(a)\oast(a') \Rightarrow \varphi(a') = \varphi(a)'$
+\item Es $e_H\oast \varphi(e_G) = \varphi(e_G) = \varphi(e_G*e_G) = \varphi(e_G) \oast(e_G) \implies e_H = \varphi(e_G)$
+\item Sei $a\in G$ Dann ist $e_H = \varphi(e_G) = \varphi(a*a') = \varphi(a)\oast(a') \implies \varphi(a') = \varphi(a)'$
 \item $\varphi^{-1}$ ist bijektiv, noch zu zeigen: $\varphi^{-1}$ ist ein Gruppehomomorphismus, das heißt
 \[\varphi^{-1}(c\oast d) = \varphi^{-1}(c)*\varphi^{-1}(d) \Forall c,d\in H\]
 Seien $c,d\in H$ Weil $\varphi$ bijektiv: $\exists a,b\in G:\varphi(a) = c,\varphi(b) =d$
-\[\Rightarrow \varphi^{-1}(c\oast d) = \varphi^{-1}(\varphi(a)*\varphi(b)) = \varphi^{-1}(\varphi(a*b)) = a*b = \varphi^{-1}(c)*\varphi^{-1}(d)\hfill\square\]
+\[\implies \varphi^{-1}(c\oast d) = \varphi^{-1}(\varphi(a)*\varphi(b)) = \varphi^{-1}(\varphi(a*b)) = a*b = \varphi^{-1}(c)*\varphi^{-1}(d)\hfill\square\]
 \end{enumerate}
 \subsection{Ring}
 \label{sec-3-2}
@@ -1208,9 +1208,9 @@ $R$ Ring. Dann gilt:
 \label{sec-3-2-3-1}
 \begin{enumerate}
 \item $0_R + 0_R\cdot a = 0_R\cdot a = (0_R + 0_R)\cdot a = 0_R\cdot a + 0_R\cdot \xRightarrow{\text{"kürzen s. [[Bemerkung 5.11]]"}} 0_R = 0_R \cdot a$, $a\cdot 0_R = 0_R$ analog
-\item $0_R = 0_R\cdot b = (a + (-a))\cdot b = a\cdot b + (-a) \cdot b \Rightarrow{\text{[[Bemerkung 5.11]]}} - a b = (-a)\cdot b$, $a\cdot(-b) 0 -a b$ analog
+\item $0_R = 0_R\cdot b = (a + (-a))\cdot b = a\cdot b + (-a) \cdot b \implies{\text{[[Bemerkung 5.11]]}} - a b = (-a)\cdot b$, $a\cdot(-b) 0 -a b$ analog
 \item Beweis durch Kontraposition: Sei $1_R = 0_R$
-        \[\Rightarrow \Forall a\in R: a = a\cdot 1_R = a\cdot 0_R = 0_R\]
+        \[\implies \Forall a\in R: a = a\cdot 1_R = a\cdot 0_R = 0_R\]
         das heißt $R = 0\hfill\square$
 \end{enumerate}
 \subsubsection{Bemerkung 6.4}
@@ -1224,11 +1224,11 @@ Wenn wir ab jetzt vom Ring $\frac{\mathbb{Z}}{n\mathbb{Z}}$ sprechen, dann meine
 \item Multiplikaiton ist wohldefiniert (das heißt "vertreterunabhängig", vergleiche \ref{sec-3-1-7-4}) \\
         Sei $a_1,a_2,b_1,b_2 \in\mathbb{Z}$ mit $\overline{a_1} = \overline{a_2},\overline{b_2} = \overline{b_2}$
 \begin{align}
-&\Rightarrow a_1 \equiv a_2 (\mod n), b_1\equiv b_2 (\mod n) \\
-&\Rightarrow \exists q_1,q_2\in\mathbb{Z}:a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n \\
-&\Rightarrow a_1 b_2 - a_2 b_2 = a_1(b_1 - b_2) + b_2 (a_1 - a_2) = a_q q_2 n + b_2 q_1 n = (a_1 q_2 + b_2 q_1) n \\
-&\Rightarrow a_1 b_1 \equiv a_2 b_2 (\mod n) \\
-&\Rightarrow \overline{a_1 b_1} = \overline{a_2 b_2}
+&\implies a_1 \equiv a_2 (\mod n), b_1\equiv b_2 (\mod n) \\
+&\implies \exists q_1,q_2\in\mathbb{Z}:a_1 - a_2 = q_1 n, b_1 - b_2 = q_2 n \\
+&\implies a_1 b_2 - a_2 b_2 = a_1(b_1 - b_2) + b_2 (a_1 - a_2) = a_q q_2 n + b_2 q_1 n = (a_1 q_2 + b_2 q_1) n \\
+&\implies a_1 b_1 \equiv a_2 b_2 (\mod n) \\
+&\implies \overline{a_1 b_1} = \overline{a_2 b_2}
 \end{align}
 \item Multiplikation ist assoziativ, Für $a,b,c\in\mathbb{Z}$ ist
 \[\bar a\cdot (\bar b\cdot \bar c) = \bar a \cdot \overline{a\cdot c} = \overline{a\cdot(b\cdot c)} = \overline{(a\cdot b)\cdot c} = \overline{a\cdot b} \cdot \bar c = (\bar a\cdot \bar b) \cdot \bar c\]
@@ -1297,9 +1297,9 @@ In $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist $\bar 2 \cdot \bar 2 = \bar 0$, aber $\b
 \label{sec-3-2-5}
 \label{Definition-6.6}
 ist ein kommuativer Ring $(R,+,\cdot)$ mit $R\neq 0$, in dem gilt:
-\[\Forall a,b\in R: a\cdot b = 0_R \Rightarrow a = 0_R\vee b = 0_R\]
+\[\Forall a,b\in R: a\cdot b = 0_R \implies a = 0_R\vee b = 0_R\]
 beziehungsweise äquivalent dazu:
-\[a\neq 0_R \wedge b\neq 0_R \Rightarrow a\cdot b \neq 0_R\]
+\[a\neq 0_R \wedge b\neq 0_R \implies a\cdot b \neq 0_R\]
 \paragraph{Beispiel 6.7}
 \label{sec-3-2-5-1}
 \begin{itemize}
@@ -1314,17 +1314,17 @@ $n\in\mathbb{N}$ Dann sind äquivalent
 \end{enumerate}
 \subparagraph{Beweis}
 \label{sec-3-2-5-2-1}
-\ref{6.8.1} $\Rightarrow$ \ref{6.8.2} zeigen wir durch Kontraposition, das heißt \$$\neq$\$\ref{6.8.2} $\Rightarrow$ $\neq$ \ref{6.8.1} \\
+\ref{6.8.1} $\implies [[6.8.2]]$ zeigen wir durch Kontraposition, das heißt \$$\neg{}$\$\ref{6.8.2} $\implies$ $\neg{}$\$ \ref{6.8.1} \\
       Sei $n\in\mathbb{N}$ keine Primzahl. Falls $n = 1$ dann ist $\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0\}$ (Nullring), das heißt $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist kein Integritätsbereich. Seim im Folgenden $n > 1$ und keine Primzahl.
 \begin{align}
-&\Rightarrow \exists a,b\in\mathbb{N}:1\ <a,b<n \wedge n = a\cdot b \\
-&\Rightarrow \bar 0 = \bar n = \overline{a b} = \bar a \cdot \bar b
+&\implies \exists a,b\in\mathbb{N}:1\ <a,b<n \wedge n = a\cdot b \\
+&\implies \bar 0 = \bar n = \overline{a b} = \bar a \cdot \bar b
 \end{align}
-und es ist $bar a,\bar b\neq \bar 0$ $\Rightarrow$ $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integrationsbereich. \\
-      \ref{6.8.2} $\Rightarrow$ \ref{6.8.1}: Sein $n$ eine Primzahl $\Rightarrow$ $n > 1$, insbesondere $\frac{\mathbb{Z}}{n\mathbb{Z}} \neq 0$. Seien $\bar a, \bar b \in \frac{\mathbb{Z}}{n\mathbb{Z}}$ mit $\bar a\cdot \bar b = \bar 0$
-\[\Rightarrow \exists q\in\mathbb{Z}:a b = q n\]
+und es ist $bar a,\bar b\neq \bar 0 \implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integrationsbereich. \\
+      \ref{6.8.2} $\implies$ \ref{6.8.1}: Sein $n$ eine Primzahl $\implies n > 1$, insbesondere $\frac{\mathbb{Z}}{n\mathbb{Z}} \neq 0$. Seien $\bar a, \bar b \in \frac{\mathbb{Z}}{n\mathbb{Z}}$ mit $\bar a\cdot \bar b = \bar 0$
+\[\implies \exists q\in\mathbb{Z}:a b = q n\]
 Da $n$ Primzahl, kommt $n$ n der Primfaktorzerlengung von $a b$ als Primfaktor vor \\
-      $\Rightarrow$ $n$ kommt in der Primfaktorzerlegung von $a$ oder $b$ als Primfaktor vor \[\Rightarrow n\mid a \vee n\mid b \Rightarrow \bar a = \bar 0 \vee \bar b = \bar 0\]
+      $\implies n$ kommt in der Primfaktorzerlegung von $a$ oder $b$ als Primfaktor vor \[\implies n\mid a \vee n\mid b \implies \bar a = \bar 0 \vee \bar b = \bar 0\]
 \subsection{Körper}
 \label{sec-3-3}
 \label{Definition-6.9}
@@ -1361,21 +1361,21 @@ Nach \ref{Definition-6.9} besitzt jedes Element $a\in K^\ast$ ein Inverses $b\in
 $R$ Integritätsbereich, der nur endlich viele Elemente hat. Dann ist $R$ ein Körper.
 \paragraph{Beweis}
 \label{sec-3-3-3-1}
-$R$ Integritätsbereich $\Rightarrow$ $R\neq 0$ \\
-     Noch zu zeigen: $a\in R\setminus\{0_R\} \Rightarrow \exists b\in R: a b = 1_R$
+$R$ Integritätsbereich $\implies R\neq 0$ \\
+     Noch zu zeigen: $a\in R\setminus\{0_R\} \implies \exists b\in R: a b = 1_R$
 Sei $a\in R\setminus\{0_R\}$. Wir betrachten die Abbildung $\varphi_a: R\to R,x\mapsto a x$
 \begin{enumerate}
 \item Behauptung: $\varphi_a$ ist injektiv, denn:
 \begin{align}
 \intertext{Seien $x,y\in R$ mit}
-\varphi_a(x) =\varphi_a(y) \Rightarrow a x = a y \Rightarrow a x + (-(a y)) = 0_R \\
+\varphi_a(x) =\varphi_a(y) \implies a x = a y \implies a x + (-(a y)) = 0_R \\
 \intertext{Mit [[Bemerkung 6.3]] folgt:}
-\Rightarrow a x + a(-a) = -R \Rightarrow a(x - y) = 0_R  \\
+\implies a x + a(-a) = -R \implies a(x - y) = 0_R  \\
 \intertext{Aus $R$ Integrationsbereich und $a\neq 0$ folgt:}
-x - y = 0 \Rightarrow x = y
+x - y = 0 \implies x = y
 \end{align}
 \item Da $R$ endlich ist und $\varphi_a$ inejktiv ist, ist $\varphi_a$ nach \ref{sec-2-6-7-10} surjektiv
-\[\Rightarrow  \exists b\in R: \varphi_a(b) = 1_R \Rightarrow a b = 1_R\]
+\[\implies  \exists b\in R: \varphi_a(b) = 1_R \implies a b = 1_R\]
 \end{enumerate}
 \subsubsection{Folgerung 6.13}
 \label{sec-3-3-4}
@@ -1386,9 +1386,9 @@ $n\in\mathbb{N}$ Dann sind äquivalent
 \end{enumerate}
 \paragraph{Beweis}
 \label{sec-3-3-4-1}
-\ref{6.13.1} $\Rightarrow$ \ref{6.13.2} durch Kontraposition: $\neq$ \ref{6.13.2} $\Rightarrow$ \ref{6.13.1} \\
-     Sei $n$ keine Primzahl $\Rightarrow$ $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integritätsbereich $\Rightarrow$ $\frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Körper \\
-     \ref{6.13.2} $\Rightarrow$ \ref{6.13.1} Sei $n$ eine Primzahl $\Rightarrow$ $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Integritätsbereich, der nur endlich viele Elemente hat $\Rightarrow$ $\frac{\mathbb{Z}}{n\mathbb{Z}}$ Körper
+\ref{6.13.1} $\implies$ \ref{6.13.2} durch Kontraposition: $\neq$ \ref{6.13.2} $\implies \neg$ \ref{6.13.1} \\
+     Sei $n$ keine Primzahl $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Integritätsbereich $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ kein Körper \\
+     \ref{6.13.2} $\implies$ \ref{6.13.1} Sei $n$ eine Primzahl $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ Integritätsbereich, der nur endlich viele Elemente hat $\implies \frac{\mathbb{Z}}{n\mathbb{Z}}$ Körper
 \paragraph{Notation}
 \label{sec-3-3-4-2}
 $p$ Primzahl. Man nennt $\mathbb{F}_P := \frac{\mathbb{Z}}{p\mathbb{Z}}$ auch den endlichen Körper mit $p$ Elemente
@@ -1411,10 +1411,10 @@ $R$ Integritätsbereich. Dann ist $\cha(R) = 0$ oder $\cha(R)$ ist eine Primzahl
 Beweis durch Widerspruch. Annahme: $\cha(R) \neq 0$ und $\cha(R)$ ist keine Primzahl. \\
 Da $R$ Integritätsbereich ist ist $1_R \neq 0_R$ also $\cha(R) \neq 1$
 \begin{align*}
-&\Rightarrow \exists a,b\in\mathbb{N}, 1 < a,b < \cha(R): \cha(R) = a b \\
-&\Rightarrow 0_R = \sum_{k = 1}^{\cha(R)} 1_R = \sum_{k = 1}^a 1_R \cdot \sum_{k = 1}^b 1_R \\
+&\implies \exists a,b\in\mathbb{N}, 1 < a,b < \cha(R): \cha(R) = a b \\
+&\implies 0_R = \sum_{k = 1}^{\cha(R)} 1_R = \sum_{k = 1}^a 1_R \cdot \sum_{k = 1}^b 1_R \\
 &\xRightarrow{R~\text{Integritätsbereich}} \sum_{k = 1}^a 1_R = 0_R \vee \sum_{k = 1}^b = 0_R \\
-&\Rightarrow \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R) \tag*{\qedhere}
+&\implies \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R) \tag*{\qedhere}
 \end{align*}
 \end{proof}
 \begin{remark}
@@ -1441,8 +1441,8 @@ Man kann das auch präzise machen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
 \end{remark}
 \begin{ex}[7.2] \mbox{}
 \begin{enumerate}
-\item $f = \frac{3}{4}x^2 - 7 x + \frac{1}{2} \in \mathbb{Q}[x] \Rightarrow \deg(f) = 2, l(f) = \frac{3}{4}, f$ ist nicht normiert
-\item $f = x^5 - \frac{1}{3} x + \frac{2}{5} \in\mathbb{Q}[x] \Rightarrow \deg(f) = 5, l(f) = 1, f$ ist normiert
+\item $f = \frac{3}{4}x^2 - 7 x + \frac{1}{2} \in \mathbb{Q}[x] \implies \deg(f) = 2, l(f) = \frac{3}{4}, f$ ist nicht normiert
+\item $f = x^5 - \frac{1}{3} x + \frac{2}{5} \in\mathbb{Q}[x] \implies \deg(f) = 5, l(f) = 1, f$ ist normiert
 \end{enumerate}
 \end{ex}
 \begin{remark}[7.3]
@@ -1470,10 +1470,10 @@ Falls $f = 0$ oder $g = 0$, dann sind 1. und 2. klar. Im Folgenden seien $f,g\ne
 \begin{enumerate}
 \item Wir setzen $k:= \max\{m,n\}$
 \begin{align*}
-&\Rightarrow f + g = (a_k + b_k)t^k + \ldots + (a_1 + b_1)t + (a_0 + b_0) \\
-&\Rightarrow \deg(f + g) \leq k \tag{\text{beachte: Ex könnte $a_k + b_k = 0$ sein}}
+&\implies f + g = (a_k + b_k)t^k + \ldots + (a_1 + b_1)t + (a_0 + b_0) \\
+&\implies \deg(f + g) \leq k \tag{\text{beachte: Ex könnte $a_k + b_k = 0$ sein}}
 \end{align*}
-\item Es sei $f g = a_n b_m t^{n + m} + \ldots + a_0 b_0$ und es ist $a_n b_m \neq 0$ da $K$ als Körper ein Integritätsbereich ist $\Rightarrow \deg(f g) = n + m$
+\item Es sei $f g = a_n b_m t^{n + m} + \ldots + a_0 b_0$ und es ist $a_n b_m \neq 0$ da $K$ als Körper ein Integritätsbereich ist $\implies \deg(f g) = n + m$
 \end{enumerate}
 \end{proof}
 \begin{conc}[7.5]
@@ -1481,11 +1481,11 @@ $K$ Körper, dann ist $K[t]$ ein Integritätsbereich
 \end{conc}
 \begin{proof}
 $K[t] \neq 0$ klar (zum Beispiel $t\in\mathbb{t}$)
-Seien $f,g\in K[t], f,g\neq 0 \Rightarrow \deg(f),\deg(g) \geq 0 \Rightarrow \deg(f g) = \deg(f) + \deg(g) \geq 0 \Rightarrow f g \neq 0$
+Seien $f,g\in K[t], f,g\neq 0 \implies \deg(f),\deg(g) \geq 0 \implies \deg(f g) = \deg(f) + \deg(g) \geq 0 \implies f g \neq 0$
 \end{proof}
 \begin{remark}
 $K[t]$ ist kein Körper: Das Polynom $t\in K[t]$ besitzt kein Inverses bezüglich "$\cdot$", denn: \\
-  Wäre $f\in K[t]$ invers zu $t$, dann wäre $f t = 0 \Rightarrow \deg(1) = 0 \deg(f t) = \deg(f) + \deg(t) = \deg (f) + 1 \Rightarrow \deg(f) = -1 \lightning$
+  Wäre $f\in K[t]$ invers zu $t$, dann wäre $f t = 0 \implies \deg(1) = 0 \deg(f t) = \deg(f) + \deg(t) = \deg (f) + 1 \implies \deg(f) = -1 \lightning$
 \end{remark}
 
 \begin{thm}[7.6 Polynomdivision]
@@ -1514,7 +1514,7 @@ Also $3 t^3 + 5t + 1 = 3^t (t^2 + 1) + 2 t + 1, q = 3 t, r = 2 t + 1$
 \[g = l(g) t^m + ~\text{Terme kleineren Grades}\]
 Es ist $f - \frac{l(f)}{l(g)}t^{n - m}g =$
 \[l(f) t^n + ~\text{Terme kleineren Grades} - \underbrace{\frac{l(f)}{l(g)} t^{n - m}l(g) t^m}_{l(f)t^n} + ~\text{Terme kleineren Grades}\]
-\[\Rightarrow \deg(f - \frac{l(f)}{l(g)}t^{n - m}) < n\]
+\[\implies \deg(f - \frac{l(f)}{l(g)}t^{n - m}) < n\]
 Nach Induktionsannahme gilt: Es existert $q_1,r_1 \in K[t]$ mit
 \[f - \frac{l(f)}{l(g)}t^{n -m}g = q_1 g + r_1, ~\text{mit}~\deg{r_1} < \deg(g)\]
 \[\rightarrow f = (q_1 + \frac{l(f)}{l(g)} t^{n - 1})g + r_1\]
@@ -1522,8 +1522,8 @@ Setze $q:= q_1 + \frac{l(f)}{l(g)}t^{n - m}, r:= r_1$, dann ist $f = q g + r$ un
 \end{itemize}
 \item Eindeutigkeit: Seien $q_1,q_2,r_1,r_2\in K[T]$ mit $f = q_1 g + r_1 + q_2 g + r_2$ und $\deg(r_1) < \deg(g), \deg(r_2) < \deg(g)$
 \begin{align*}
-&\Rightarrow (q_1 - q_2) g = r_2 - r_1 \\
-&\Rightarrow \deg(g_1 - q_2) + \deg(g) = \deg(r_1 - r_2)
+&\implies (q_1 - q_2) g = r_2 - r_1 \\
+&\implies \deg(g_1 - q_2) + \deg(g) = \deg(r_1 - r_2)
 \end{align*}
 Falls $q_1 \neq q_2$, dann sind beide Seiten der Gleichung in $\mathbb{N}_0$ und es wäre
 \[\deg(g) \leq \deg(r_2 - r_1)\]
@@ -1543,8 +1543,8 @@ Es ist $\deg(q) = \deg(f) - 1$
 \end{remark}
 \begin{proof}
 \textbf{Existenz:} Nach \ref{thm:poly_div} existiert $q,r\in K[t]$ mit $f = (t - \lambda)q + r$ und $\deg(r) < \underbrace{\deg(t - \lambda)}_{= 1}$ \\
-  $\Rightarrow$ $r$ ist konstantes Polynom und es gilt
-\[0 = f(\lambda) = \underbrace{(\lambda - \lambda)}_{= 0} q + r(\lambda) = r(\lambda) \Rightarrow r = 0 \Rightarrow f = (t - \lambda) q\]
+  $\implies r$ ist konstantes Polynom und es gilt
+\[0 = f(\lambda) = \underbrace{(\lambda - \lambda)}_{= 0} q + r(\lambda) = r(\lambda) \implies r = 0 \implies f = (t - \lambda) q\]
 \textbf{Eindeutigkeit:} aus Eindeutigkeit aus \ref{thm:poly_div}
 \end{proof}
 \begin{conc}
@@ -1561,7 +1561,7 @@ Im Folgenden besitzte $f$ eine Nullstelle sei $\lambda \in K$ eine solche, darau
 Ist $\varepsilon \neq \lambda$ eine weitere Nullstelle von $f$ dann ist
 \[0 = f(\varepsilon) = \underbrace{\varepsilon - \lambda}_{\neq 0}q(\varepsilon)\]
 Da $K$ als Körper ein Integritätsbereich ist folt: $q(\varepsilon) = 0$, das heißt $\varepsilon$ ist Nullstelle von $q$.
-Nach Induktionsvorraussetzung hat $q$ höchstens $n-1$ Nullstellen $\Rightarrow$ $f$ hat höchstens $n$ Nullstellen
+Nach Induktionsvorraussetzung hat $q$ höchstens $n-1$ Nullstellen $\implies f$ hat höchstens $n$ Nullstellen
 \end{proof}
 \begin{defn}[7.11]
 \label{dfn:zero}
@@ -1571,7 +1571,7 @@ heißt die Vielfachheit der Nullstelle $\lambda$ von $f$.
 \end{defn}
 \begin{remark}
 \begin{itemize}
-\item Es ist $\mu(f,\lambda) = 0 \Leftrightarrow f(\lambda) \neq 0 \lambda$ keine Nullstelle von $f$ (denn: $f(\lambda) = 0 \Leftrightarrow \Exists q\in K[t]: f=(t - \lambda)q \Leftrightarrow \mu(f,\lambda) \neq 0$)
+\item Es ist $\mu(f,\lambda) = 0 \iff f(\lambda) \neq 0 \lambda$ keine Nullstelle von $f$ (denn: $f(\lambda) = 0 \iff \Exists q\in K[t]: f=(t - \lambda)q \iff \mu(f,\lambda) \neq 0$)
 \item Die Vielfachheit von $\lambda$ gibt an, wie oft der Linearfaktor $t - \lambda$ in $f$ vorkommt
 \item Sind $\lambda_1,\ldots,\lambda_m \in K$ sämtliche verschiedene Nullstellen von $f$ und es ist $e_i := \mu(f,\lambda_i),i = 1,\ldots,m$ dann existerit ein Polynom $g\in K[t]$ mit
 \[f = (t - \lambda_1)^{e_1}\cdot\ldots\cdot(t-\lambda_m)^{e_m}g\]
@@ -1594,12 +1594,12 @@ $f\in\mathbb{C}[t], f\neq 0$
 Dann zerfällt $f$ in Linearfaktoren.
 \end{conc}
 \begin{proof}
-\textbf{Induktionsanfang:} $n = 0 \Rightarrow f$ ist konstantes Polynom, fertig \\
+\textbf{Induktionsanfang:} $n = 0 \implies f$ ist konstantes Polynom, fertig \\
   \textbf{Induktionsscritt:} Sei $n\geq 1$ und die Assage sei für alle Polynome vom Grad $< n$ bereits bewiesen. Nach Fundamentalsatz der Algebra existiert eine Nullstelle $\lambda$ von $f$
 \[\xRightarrow{\ref{remark:79}} \Exists g\in \mathbb{C}[t]: f = (t - \lambda)g, \deg(g) = n - 1 \]
 Nach Induktionsannahme $\Exists a\in\mathbb{C},\lambda_1,\ldots,\lambda_{n - 1} \in \mathbb{C}$ (nicht notwendig verschieden)
 \[g = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n-1})\]
-Setze $\lambda_n := x \Rightarrow f = g(t - \lambda_n) = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n - 1})(t - \lambda_n)$
+Setze $\lambda_n := x \implies f = g(t - \lambda_n) = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n - 1})(t - \lambda_n)$
 \end{proof}
 
 \begin{defn}[7.14]
@@ -1616,12 +1616,12 @@ das heißt $\tilde f: \mathbb{F}_2 \to \mathbb{F}_2$ ist die Nullabbildung, aber
 \label{remark:716}
 $K$ Körper mit unendlich vielen Elementen. \\
   Dann ist die Abbildung $\tilde : K[t]\to$ Abb$(K,K):=\{g:K\to K ~\text{Abbildung}\}, f\mapsto \tilde f$ injektiv, das heißt:
-Ist $K$ unendlich und sind $f_1,f_2 \in K[t]$, dann gilt $f_1 = f_2 \Leftrightarrow \tilde f_1 = \tilde f_2$
+Ist $K$ unendlich und sind $f_1,f_2 \in K[t]$, dann gilt $f_1 = f_2 \iff \tilde f_1 = \tilde f_2$
 \end{remark}
 \begin{proof}
 Es seien $f_1,f_2 \in K[t]$ mit $\tilde f_1 = \tilde f_2$ wir setzen $g:= f_1 - f_2$ \\
-  $\Rightarrow$ Für alle $a\in K$ ist $g(a) = (f_1 - f_2)(a) = f_1(a) - f_2(a) = \tilde f_1(a) - \tilde f_2(a) = 0$
-$\xRightarrow{K~\text{unendlich}}$ g hat unendlich viele Nullstellen, mit \ref{dfn:zero} folgt: $g = 0\Rightarrow f_1 = f_2$
+  $\implies$ Für alle $a\in K$ ist $g(a) = (f_1 - f_2)(a) = f_1(a) - f_2(a) = \tilde f_1(a) - \tilde f_2(a) = 0$
+$\xRightarrow{K~\text{unendlich}}$ g hat unendlich viele Nullstellen, mit \ref{dfn:zero} folgt: $g = 0\implies f_1 = f_2$
 \end{proof}
 \begin{remark}
 \begin{itemize}
@@ -1700,20 +1700,20 @@ $V~K$-VR. Dann gilt:
 \begin{enumerate}
 \item $0_K \cdot v = 0_V \Forall v\in V$
 \item $\lambda \cdot 0_V = 0_V \Forall \lambda\in K$
-\item $\lambda v = 0_V \Rightarrow \lambda = 0_K \vee v = 0_V$
+\item $\lambda v = 0_V \implies \lambda = 0_K \vee v = 0_V$
 \item $(-1_K)\cdot v = -v \Forall v\in V$
 \end{enumerate}
 \end{remark}
 \begin{proof}
 \begin{enumerate}
 \item Sei $v \in V$
-     \[\Rightarrow 0_V + 0_K \cdot v = 0_K \cdot v = (0_K + 0_K)\cdot v = 0_K\cdot v + 0_K \cdot v \Rightarrow 0_K \cdot v = 0_V\]
+     \[\implies 0_V + 0_K \cdot v = 0_K \cdot v = (0_K + 0_K)\cdot v = 0_K\cdot v + 0_K \cdot v \implies 0_K \cdot v = 0_V\]
 \item Sei $\lambda \in K$
-     \[\Rightarrow \lambda \cdot 0_V + 0_V = \lambda \cdot 0_V = \lambda \cdot (0_V + 0_V) = \lambda\cdot 0_V + \lambda \cdot 0_V \Rightarrow \lambda \cdot 0_V = 0_V\]
+     \[\implies \lambda \cdot 0_V + 0_V = \lambda \cdot 0_V = \lambda \cdot (0_V + 0_V) = \lambda\cdot 0_V + \lambda \cdot 0_V \implies \lambda \cdot 0_V = 0_V\]
 \item Seien $\lambda \in K, v\in V, \lambda\cdot v = 0$. Falls $\lambda \neq 0_K:$
      \[v = 1_K \cdot v = (\lambda^{-1} \lambda)\cdot v = \lambda^{-1}\cdot \underbrace{(\lambda v)}_{= 0_V} = \lambda^{-1} \cdot 0_V = 0_V\]
 \item Für $v\in V$ ist
-\[v + (-1_K) \cdot v = 1_K \cdot v + (-1_K)\cdot v = (1_K + (-1_K))\cdot v = 0_K \cdot v = 0_V \Rightarrow (-1_K)\cdot v = -v\]
+\[v + (-1_K) \cdot v = 1_K \cdot v + (-1_K)\cdot v = (1_K + (-1_K))\cdot v = 0_K \cdot v = 0_V \implies (-1_K)\cdot v = -v\]
 \end{enumerate}
 \end{proof}
 \begin{defn}[8.4]
@@ -1721,8 +1721,8 @@ $V~K$-VR, $U\subseteq V$ \\
   $U$ heißt Untervektorraum ($K$-Untervektorraum), kurz UVR von $V$ $\xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt
 \begin{itemize}
 \item (U1) $U\neq \emptyset$
-\item (U2) $v,w \in U \Rightarrow v + w \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich Addition)
-\item (U3) $v\in U, \lambda \in K \Rightarrow \lambda v \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich skalarer Multiplikation)
+\item (U2) $v,w \in U \implies v + w \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich Addition)
+\item (U3) $v\in U, \lambda \in K \implies \lambda v \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich skalarer Multiplikation)
 \end{itemize}
 \end{defn}
 \begin{remark}[8.5]
@@ -1734,7 +1734,7 @@ $V~K$-VR, $U\subseteq V$ \\
 \end{enumerate}
 \end{remark}
 \begin{proof}
-(1.) $\Rightarrow$ (2.): Sei $U$ ein UVR von $V$ \\
+(1.) $\implies$ (2.): Sei $U$ ein UVR von $V$ \\
 \begin{enumerate}
 \item Die Verknüpfung $+:U\times U\to U, \cdot :K\times U \to U$ sind wohldefiniert wegen (U2), (U3)
 \item (V1) gilt (das heißt $(U,+)$ ist eine abelsche Gruppe), denn:
@@ -1745,7 +1745,7 @@ $V~K$-VR, $U\subseteq V$ \\
 \end{itemize}
 \item (V2) gilt, da es schon in $V$ gilt
 \end{enumerate}
-(2.) $\Rightarrow$ (1.) Es gelte (2.) \\
+(2.) $\implies$ (1.) Es gelte (2.) \\
 \begin{itemize}
 \item (U1): $U\neq \emptyset$, denn $U$ ist abelsche Gruppe bezüglich der eingeschränkten Addition
 \item (U2),(U3): folgt direkt aus der Wohldefiniertheit der Verknüpfung $+: U\times U \to Z, \cdot : K\times U \to U$
@@ -1753,7 +1753,7 @@ $V~K$-VR, $U\subseteq V$ \\
 \end{proof}
 \begin{remark}
 \begin{itemize}
-\item der Beweis von (1.) $\Rightarrow$ (2.) hat gezeigt: Ist $U \subseteq V$ ein UVR, dann ist $0_V \in U$
+\item der Beweis von (1.) $\implies$ (2.) hat gezeigt: Ist $U \subseteq V$ ein UVR, dann ist $0_V \in U$
 \item Ab jetzt lassen wir bei $0_V$ beziehungsweise $0_K$ meist die Indizes $V$ beziehungsweise $K$ weg und schreiben für beide kurz $0$.
 \end{itemize}
 \end{remark}
@@ -1764,15 +1764,15 @@ $V~K$-VR, $U\subseteq V$ \\
      Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 - 2 x_2 = 0\}$
 \begin{itemize}
 \item (U1): $(0, 0) \in U$ also $U\neq \emptyset$
-\item (U2): Es seien $(x_1, x_2) \in U, (y_1, y_2) \in U \Rightarrow x_1 - 2 x_2 = 0, y_1 - 2 y_2 = 0$
-       \[\Rightarrow (x_1 + y_1) - 2(x_2 + y_2) = 0 \Rightarrow (x_1, x_2) + (y_1, y_2) = (x_1 + y_1, x_2 + y_2) \in U\]
-\item (U3): Sei $(x_1, x_2) \in U, \lambda \in \mathbb{R} \Rightarrow x_1 - 2 x_2 = 0 \Rightarrow \lambda x_1 - 2\lambda x_2 = 0$
+\item (U2): Es seien $(x_1, x_2) \in U, (y_1, y_2) \in U \implies x_1 - 2 x_2 = 0, y_1 - 2 y_2 = 0$
+       \[\implies (x_1 + y_1) - 2(x_2 + y_2) = 0 \implies (x_1, x_2) + (y_1, y_2) = (x_1 + y_1, x_2 + y_2) \in U\]
+\item (U3): Sei $(x_1, x_2) \in U, \lambda \in \mathbb{R} \implies x_1 - 2 x_2 = 0 \implies \lambda x_1 - 2\lambda x_2 = 0$
        \[(\lambda x_1, \lambda x_2) = \lambda (x_1, x_2) \in U\]
 \end{itemize}
 Also: $U$ ist ein UVR von $V = \mathbb{R}^2$
 \item $K = \mathbb{R}, V = \mathbb{R}$ \\
      Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 - 2 x_2 = 1\}$ \\
-     Es ist $(0,0) ( = 0_V) \not\in U \Rightarrow U$ ist kein UVR von $V = \mathbb{R}^2$
+     Es ist $(0,0) ( = 0_V) \not\in U \implies U$ ist kein UVR von $V = \mathbb{R}^2$
 \item $K = \mathbb{R}, V = \mathbb{R^2}$ \\
      Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 \geq 0 \wedge x_2 \geq 0\}$ \\
      $U$ ist kein UVR von $V$, denn: $(5,2) \in U$, aber $(-1)\cdot (5,2) = (-5, -2) \not\in U$
@@ -1780,8 +1780,8 @@ Also: $U$ ist ein UVR von $V = \mathbb{R}^2$
      Es sei $U = \{f \in K[t] \mid \deg f \leq 2\} = \{f\in K[t] \mid \Exists a_0, a_1, a_2 \in K: f = a_2 t^2 + a_1 t + a_0\}$
 \begin{itemize}
 \item (U1): $0 \in U$, also $U \neq \emptyset$
-\item (U2): Es seien $f,g \in U \Rightarrow \deg (f) \leq 2, \deg (g) \leq 2 \Rightarrow \deg(f + g) \leq 2 \Rightarrow f + g \in U$
-\item (U3): Es sei $f \in U, \lambda \in K \Rightarrow \deg(f) \leq 2 \Rightarrow \deg(\lambda f) \leq 2 \Rightarrow \lambda f \in U$
+\item (U2): Es seien $f,g \in U \implies \deg (f) \leq 2, \deg (g) \leq 2 \implies \deg(f + g) \leq 2 \implies f + g \in U$
+\item (U3): Es sei $f \in U, \lambda \in K \implies \deg(f) \leq 2 \implies \deg(\lambda f) \leq 2 \implies \lambda f \in U$
 \end{itemize}
 Also $U$ ist ein UVR von $V$
 \item $V$ K-VR. Dann sind $\{0\}, V$ UVR von $V$ ("triviale UVR"), $\{0\}$ heißt Nullvektorraum (Nullraum)
@@ -1796,8 +1796,8 @@ ist ien UVR von $V$. Mit anderen Worten: der Durchschnitt von UVRen von $V$ ist 
 \begin{proof}
 \begin{enumerate}
 \item (U1): $U \neq \emptyset$, denn $0 \in U_i \Forall i\in I$, also $0 \in U$
-\item (U2): Seien $v,w \in U \Rightarrow \Forall i \in I: v\in U_i, w \in U_i \Rightarrow \Forall i\in I: v + w \in U_i \Rightarrow v + w \in U$
-\item (U3): Sei $v \in U, \lambda \in K \Rightarrow \Forall i\in I: v\in U_i \Rightarrow \Forall i\in I: \lambda v \in U_i \Rightarrow \lambda v \in \bigcap_{i\in I} U_i = U$
+\item (U2): Seien $v,w \in U \implies \Forall i \in I: v\in U_i, w \in U_i \implies \Forall i\in I: v + w \in U_i \implies v + w \in U$
+\item (U3): Sei $v \in U, \lambda \in K \implies \Forall i\in I: v\in U_i \implies \Forall i\in I: \lambda v \in U_i \implies \lambda v \in \bigcap_{i\in I} U_i = U$
 \end{enumerate}
 \end{proof}
 \begin{ex}[8.8]
@@ -1815,7 +1815,7 @@ $V$ K-VR, $(v_1, \ldots, v_r)$ endliche Familie von Vektoren aus $V$
 \[\Lin((v_1, \ldots, v_r)) := \{\alpha_1 v_1 + \ldots + \alpha_r v_r \mid \alpha_1, \ldots, \alpha_r \in K\}\]
 heißt die Lineare Hülle (das Erzeugnis) der Familie $v_1, \ldots, v_r$ \\
   $v \in V$ heißt Linearkombination von $v_1, \ldots, v_r$
-\[\xLeftrightarrow{\text{Def}} v\in \Lin((v_1, \ldots, v_r)) \Leftrightarrow \Exists \alpha_1, \ldots \alpha_r \in K: v = \alpha_1 v_1 + \ldots + \alpha_r v_r\]
+\[\xLeftrightarrow{\text{Def}} v\in \Lin((v_1, \ldots, v_r)) \iff \Exists \alpha_1, \ldots \alpha_r \in K: v = \alpha_1 v_1 + \ldots + \alpha_r v_r\]
 \end{defn}
 \begin{remark}
 Andere Notation für $\Lin: \Span(\ldots), <\ldots>$
@@ -1825,8 +1825,8 @@ Andere Notation für $\Lin: \Span(\ldots), <\ldots>$
 \begin{enumerate}
 \item $V = \mathbb{R}^3, K = \mathbb{R}$
 \begin{itemize}
-\item $v \in V, v \neq 0 \Rightarrow \Lin((v)) = \{\alpha v \mid \alpha \mathbb{R}\}$ = Gerade durch $0$ und $v$
-\item \[v,w \in V, v \neq 0 \Rightarrow \Lin((v,w)) = \{\alpha_1 v + \alpha_2 w \mid \alpha_1, \alpha_2 \in \mathbb{R}\} = \begin{cases} ~\text{Gerade durch $0$} & w \in \Lin((v)) \\ ~\text{Ebene durch $0,v,w$} & w\not\in \Lin((v)) \end{cases}\]
+\item $v \in V, v \neq 0 \implies \Lin((v)) = \{\alpha v \mid \alpha \mathbb{R}\}$ = Gerade durch $0$ und $v$
+\item \[v,w \in V, v \neq 0 \implies \Lin((v,w)) = \{\alpha_1 v + \alpha_2 w \mid \alpha_1, \alpha_2 \in \mathbb{R}\} = \begin{cases} ~\text{Gerade durch $0$} & w \in \Lin((v)) \\ ~\text{Ebene durch $0,v,w$} & w\not\in \Lin((v)) \end{cases}\]
 \end{itemize}
 \item $V = K^n$ als K-VR \\
      \[e_i := (0, \ldots, 0, \underarrow[1]{i-te Stelle}, 0, \ldots, 0)\]
@@ -1863,7 +1863,7 @@ $V$ K-VR, $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. Dann gilt:
 \end{enumerate}
 \end{remark}
 \begin{proof}
-Falls $I = \emptyset$, dann $\Lin((v_i)_{i\in I}) = \{0\}$, dann 1. klar, und jeder UVR $U$ von $V$ enthält alle $v_i, i\in \emptyset$, und enthält $\{0\} \Rightarrow$ 2. Außerdem
+Falls $I = \emptyset$, dann $\Lin((v_i)_{i\in I}) = \{0\}$, dann 1. klar, und jeder UVR $U$ von $V$ enthält alle $v_i, i\in \emptyset$, und enthält $\{0\} \implies$ 2. Außerdem
 \[\bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U = \bigcap_{\text{$U$ UVR von $V$}} U = \{0\} = \Lin((v_i)_{i\in\emptyset})\]
 es folgt 3. \\
 
@@ -1873,22 +1873,22 @@ Im Folgenden sie $I \neq \emptyset$. Wir setzen $W:= \Lin((v_i)_{i\in I})$
 \item (U1): Sei $i \in I$ (Existenz wegen $I \neq \emptyset$). Dann ist $0\cdot v_i = 0\in W$, insbesondere $W\neq\emptyset$
 \item (U2): Es seinen $v,w \in W$
 \begin{align*}
-\Rightarrow \Exists r\in\mathbb{N}, \{i_1, \ldots, i_r\} \subseteq I, \alpha_{i_1}, \ldots, \alpha_{i_r} \in K,~\text{mit}~v = \alpha_{i_1} v_{i_1} + \ldots + \alpha_{i_r} v_{i_r} \\
+\implies \Exists r\in\mathbb{N}, \{i_1, \ldots, i_r\} \subseteq I, \alpha_{i_1}, \ldots, \alpha_{i_r} \in K,~\text{mit}~v = \alpha_{i_1} v_{i_1} + \ldots + \alpha_{i_r} v_{i_r} \\
 \intertext{sowie}
 s\in\mathbb{N}, \{j_1, \ldots, j_r\} \subseteq I, \beta_{j_1}, \ldots, \beta_{j_r} \in K,~\text{mit}~w = \beta_{j_1} v_{j_1} + \ldots + \beta_{j_r} v_{j_r} \\
-\Rightarrow v + w = \alpha_{i_1} v_{i_1} + \ldots + \alpha_{i_r} v_{i_r} + \beta_{j_1} v_{j_1} + \ldots + \beta_{j_s} v_{j_s} \in W
+\implies v + w = \alpha_{i_1} v_{i_1} + \ldots + \alpha_{i_r} v_{i_r} + \beta_{j_1} v_{j_1} + \ldots + \beta_{j_s} v_{j_s} \in W
 \end{align*}
 \item (U3): Für $\lambda \in K, v\in W$ wie bei (U2) ist
 \[\lambda v = \lambda \alpha_{i_1} v_{i_1} + \ldots + \lambda \alpha_{i_r} v_{i_r} \in W\]
 \end{itemize}
 \item Sei $U\subseteq V$ UVR mit $v_i \in U \Forall i\in I$ \\
-     $\Rightarrow$ Jedes Element der Form $\displaystyle \sum_{i \in I} \alpha_i v_i$ mit $\alpha_i \in K \Forall i\in I, \alpha_i = 0$ für fast alle $i\in I$, liegt
-in $U$. $\Rightarrow$ $\Lin((v_i)_{i\in I}) = W \subseteq U$.
+     $\implies$ Jedes Element der Form $\displaystyle \sum_{i \in I} \alpha_i v_i$ mit $\alpha_i \in K \Forall i\in I, \alpha_i = 0$ für fast alle $i\in I$, liegt
+in $U$. $\implies \Lin((v_i)_{i\in I}) = W \subseteq U$.
 \item zu zeigen: \[\Lin((v_i)_{i \in I}) = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
 "$\subseteq$" Wegen 2. liegt $\Lin((v_i)_{i\in I})$ in jedem UVR $U$ von $V$, der alle $v_i, i\in I$ enthält
-\[\Rightarrow \Lin((v_i)_{i\in I} = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
+\[\implies \Lin((v_i)_{i\in I} = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
 "$\supseteq$" Nach 1. ist $W = \Lin((v_i)_{i\in I}$ ist ein UVR von $V$ mit $v_i \in W \Forall i\in I$, das heißt $W$ ist einer der UVR, über die der obige Durchschnitt gebildet wird
-\[\Rightarrow \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U \subseteq W = \Lin((v_i)_{i\in I})\]
+\[\implies \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U \subseteq W = \Lin((v_i)_{i\in I})\]
 \end{enumerate}
 \end{proof}
 \textbf{Notation}:
@@ -1897,17 +1897,17 @@ Vorteil der Definition von $\Lin(\ldots)$ für Familien von Vektoren: Bei Famili
 Familie $(v_1, \ldots, v_n)$ eine natürliche Reigenfolge. Diese geht verloren, wenn man die Menge $\{v_1, \ldots, v_n\}$ betrachtet (zum Beispiel in $\mathbb{R}^2:\{e_1, e_2\} = \{e_2, e_1\}$, aber $(e_1, e_2) \neq (e_2, e_1)$)
 \begin{defn}[8.14]
 $V$ K-VR, $(v_1, \ldots, v_r)$ endliche Familie von Vektoren aus $V$, $(v_1, \ldots, v_r)$ \textbf{linear unabhängig}
-\[\xLeftrightarrow{\text{Def}} \lambda_1, \ldots, \lambda_r \in K, \lambda_1 v_1 + \ldots + \lambda_r v_r = 0 \Rightarrow \lambda_1 = \ldots = \lambda_r = 0\]
+\[\xLeftrightarrow{\text{Def}} \lambda_1, \ldots, \lambda_r \in K, \lambda_1 v_1 + \ldots + \lambda_r v_r = 0 \implies \lambda_1 = \ldots = \lambda_r = 0\]
 Mit anderen Worten: Der Nullvektor lässt sich nur auf triviale Weise aus der Familie $(v_1, \ldots, v_r)$ linear kombinieren. \\
   $(v_i)_{i\in I}$ heißt \textbf{linear abhängig} $\xLeftrightarrow{\text{Def}} (v_1, \ldots, v_r)$ ist nicht linear unabhängig
-\[\Leftrightarrow \Exists \lambda_1, \ldots, \lambda_r \in K: (\lambda_1, \ldots, \lambda_r) \neq (0, \ldots, 0) \wedge \lambda_1 v_1 + \ldots + \lambda_r v_r = 0\]
+\[\iff \Exists \lambda_1, \ldots, \lambda_r \in K: (\lambda_1, \ldots, \lambda_r) \neq (0, \ldots, 0) \wedge \lambda_1 v_1 + \ldots + \lambda_r v_r = 0\]
 $(v_i)_{i\in I}$ Familie von Vektoren aus $V$ \\
   $(v_i)_{i\in I}$ heißt linear unabhängig $\xLeftrightarrow{\text{Def}}$ Jede endliche Teilfamilie von $(v_i)_{i\in I}$ ist linear unabhängig, das heißt für jede endliche Teilmenge $J\subseteq I$ ist $(v_i)_{i\in I}$ linear unabhängig. \\
   $(v_i)_{i\in I}$ heißt lenar abhängig $\xLeftrightarrow{\text{Def}}$ $(v_i)_{i\in I}$ ist nicht linear unabhängig \\
-  $\Leftrightarrow$ $\Exists$ eine endliche Teilfamilie $(v_i)_{i\in J}$ von $(v_i)_{i \in I}$, die linear abhängig ist \\
-  $\Leftrightarrow$ Es gibt eine endliche Teilmenge $J = \{i_1, \ldots, i_r\} \subseteq I, \lambda_{i_1},\ldots,\lambda_{i_r} \in K$ mit
+  $\iff \Exists$ eine endliche Teilfamilie $(v_i)_{i\in J}$ von $(v_i)_{i \in I}$, die linear abhängig ist \\
+  $\iff$ Es gibt eine endliche Teilmenge $J = \{i_1, \ldots, i_r\} \subseteq I, \lambda_{i_1},\ldots,\lambda_{i_r} \in K$ mit
 \[(\lambda_{i_1}, \ldots, \lambda_{i_r}) \neq (0, \ldots, 0) \wedge \lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r} = 0\]
-$M \subseteq V$ heißt linear (un-)ubhängig $\Leftrightarrow$ $(m)_{m\in M}$ ist linear (un-)abhängig.
+$M \subseteq V$ heißt linear (un-)ubhängig $\iff (m)_{m\in M}$ ist linear (un-)abhängig.
 \end{defn}
 \begin{remark}
 \begin{itemize}
@@ -1922,7 +1922,7 @@ $M \subseteq V$ heißt linear (un-)ubhängig $\Leftrightarrow$ $(m)_{m\in M}$ is
      Die Familie $(e_1, \ldots, e_n)$ (vgl 8.10) ist linear unabhängig, denn:
 Sind $\lambda_1, \ldots, \lambda_n \in K$ mit $\lambda_1 e_1 + \ldots + \lambda_n e_n = 0$, dann ist
 \[\underbrace{\underbrace{\lambda_1 (1, 0, \ldots, 0)}_{=(\lambda_1, 0, \ldots, 0)} + \underbrace{\lambda_2 (0, 1, 0, \ldots, 0)}_{= (0, \lambda_2, 0, \ldots, 0)} + \underbrace{\ldots + \lambda_n (0, \ldots, 0, 1)}_{=(0,\ldots,0,\lambda_n)}}_{= (\lambda_1, \ldots, \lambda_n)} = 0\]
-$\Rightarrow$ $\lambda_1 = \lambda_2 = \ldots = \lambda_n = 0$
+$\implies \lambda_1 = \lambda_2 = \ldots = \lambda_n = 0$
 \item $K = \mathbb{R}, V = \mathbb{R}^2$ \\
      Die Familie $((1, -1), (0,2), (1,2))$ ist linearabhängig, denn:
 \[2\cdot(1,-1) + 3\cdot(0,2) - 2\cdot(1,2) = 0\]
@@ -1946,51 +1946,51 @@ $V$ K-VR, $(v_i)_{i\in I}$ Familie von Vektoren aus $V$ \\
 \end{remark}
 \begin{proof}
 \begin{enumerate}
-\item $\Rightarrow$ 2.: Sei $(v_i)_{i\in I}$ linear unabhängig, $v\in \Lin((v_i)_{i\in I}) \Rightarrow \Exists$ eine Familie $(\lambda_i)_{i\in I}$ von Elementen aus $K$ mit
+\item $\implies$ 2.: Sei $(v_i)_{i\in I}$ linear unabhängig, $v\in \Lin((v_i)_{i\in I}) \implies \Exists$ eine Familie $(\lambda_i)_{i\in I}$ von Elementen aus $K$ mit
 $\lambda_i = 0$ für fast alle $i\in I$, sodass
 \[v = \sum_{i=I} \lambda_i v_i\]
-($\Rightarrow$ Existenz einer Linearkombination) \\
+($\implies$ Existenz einer Linearkombination) \\
      Es sei nun $(\mu_i)_{i\in I}$ eine weitere Familie von Elementen aus $K$ mit $\mu_i = 0$ für fast alle $i \in I$ sodass
 \[v = \sum_{i = I} \lambda_i v_i = \sum_{i\in I} \mu_i v_i\]
 Wir setzen $J:= \{i\in I \mid \lambda_i \neq 0\} \cup \{i \in I \mid \mu_i \neq 0\}$. Nach Konstruktion ist $J$ endlich, und es ist
 \[\underbrace{\sum_{i\in J} (\lambda_i - \mu_i) v_i}_{=\sum_{i\in I} (\lambda_i - \mu_i) v_i} = 0\]
-Da $(v_i)_{i\in I}$ linear unabhängig, ist die endliche Teilfamilie $(v_i)_{i\in J}$ linear unabhängig $\Rightarrow$ $\lambda_i - \mu_i = 0 \Forall i\in J \Rightarrow \lambda_i = \mu_i \Forall i\in J$
+Da $(v_i)_{i\in I}$ linear unabhängig, ist die endliche Teilfamilie $(v_i)_{i\in J}$ linear unabhängig $\implies \lambda_i - \mu_i = 0 \Forall i\in J \implies \lambda_i = \mu_i \Forall i\in J$
 für $i\in J\setminus J$ ist ohnehin $\lambda_i = \mu_i = 0$
-\[\Rightarrow \lambda_i = \mu_i \Forall i\in I\]
-\item $\Rightarrow$ 1.: Wir setzen voraus, dass sich jeder Vektor $v\in\Lin((v_i)_{i\in I})$ eindeutig aus Vektoren der Familie $(v_i)_{i\in I}$ linear kombinieren lässt. \\
+\[\implies \lambda_i = \mu_i \Forall i\in I\]
+\item $\implies$ 1.: Wir setzen voraus, dass sich jeder Vektor $v\in\Lin((v_i)_{i\in I})$ eindeutig aus Vektoren der Familie $(v_i)_{i\in I}$ linear kombinieren lässt. \\
      zu zeigen: $(v_i)_{i\in I}$ ist linear unabhängig, das heißt jede endliche Teilfamilie $(v_i)_{i\in I}$ ist linear unabhängig denn:
 Sei $J \subseteq I$ endlich, und sei $(\lambda_i)_{i\in J}$ eine Familie von Elemente aus $K$ mit
 \[\sum_{i\in J}\lambda_i v_i = 0\]
 Da auch
 \[\sum_{i\in J} 0 \cdot \v_i = 0\]
-ist, folgt aus der vorrausgesetzen Eindeutigkeit der Linearkombination, dass $\lambda_i = 0 \Forall i\in J \Rightarrow (v_i)_{i\in J}$ ist linear unabhängig
+ist, folgt aus der vorrausgesetzen Eindeutigkeit der Linearkombination, dass $\lambda_i = 0 \Forall i\in J \implies (v_i)_{i\in J}$ ist linear unabhängig
 \end{enumerate}
 \end{proof}
 \begin{remark}[8.17]
 Sei $V$ K-Vektorraum, Dann gilt:
 \begin{enumerate}
-\item Ist $v\in V$, dann gilt $(v)$ linear unabhängig $\Leftrightarrow v \neq 0$
+\item Ist $v\in V$, dann gilt $(v)$ linear unabhängig $\iff v \neq 0$
 \item Gehört der Nullvektor zu einer Familie, dann ist sie linear abhängig
 \item Kommt der gleiche Vektor in einer Familie mehrfach vor so ist sie linear abhängig
-\item Ist $r\geq 2$, so gilt: Die Familie $(v_1, \ldots, v_r)$ von Vektoren aus $V$ ist linear abhängig $\Leftrightarrow \Exists i \in \{1, \ldots, r\}: v_i$ Linearkombination von $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_r$
+\item Ist $r\geq 2$, so gilt: Die Familie $(v_1, \ldots, v_r)$ von Vektoren aus $V$ ist linear abhängig $\iff \Exists i \in \{1, \ldots, r\}: v_i$ Linearkombination von $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_r$
 \end{enumerate}
 \end{remark}
 \begin{proof}
 \begin{enumerate}
-\item "$\Rightarrow$" (Durch Kontraposition): Sei $v = 0$. Dann ist $1 v = 0$, das heißt $(v)$ ist linear abhängig
-"$\Leftarrow$" (Durch Kontraposition) Sei $(v)$ linear abhängig $\Rightarrow \Exists \lambda \in K \setminus \{0\}: \lambda v = 0 \Rightarrow v = 0$
+\item "$\implies$" (Durch Kontraposition): Sei $v = 0$. Dann ist $1 v = 0$, das heißt $(v)$ ist linear abhängig
+"$\impliedby$" (Durch Kontraposition) Sei $(v)$ linear abhängig $\implies \Exists \lambda \in K \setminus \{0\}: \lambda v = 0 \implies v = 0$
 \item Wegen $1 \cdot 0_v = 0_v$ existiert in diesem Fall eine nicht triviale Linearkombination der Null.
-\item Sei $(v_i)_{i\in I}$ eine Familie, sodass $i_1, i_2 \in I$ existiert mit $i_1 \neq i_2$ und $v_{i_1} = v_{i_2}$ $\Rightarrow$ $1 \cdot v_{i_1} + (-1) \cdot v_{i_2} = 0 \Rightarrow (v_i)_{i\in I}$ linear abhängig
+\item Sei $(v_i)_{i\in I}$ eine Familie, sodass $i_1, i_2 \in I$ existiert mit $i_1 \neq i_2$ und $v_{i_1} = v_{i_2} \implies 1 \cdot v_{i_1} + (-1) \cdot v_{i_2} = 0 \implies (v_i)_{i\in I}$ linear abhängig
 \item Sei $r\geq 2, (v_1, \ldots, v_r)$ Familie von Vektoren aus $V$ \\
-     "$\Rightarrow$" Sei $v_1, \ldots, v_r$ linear abhängig $\Rightarrow$ $\Exists \lambda_1, \ldots, \lambda_r \in K: (\lambda_1, \ldots, \lambda_r) \neq (0, \ldots, 0) \wedge \lambda_1 v_1 + \ldots \lambda_r v_r = 0$
+     "$\implies$" Sei $v_1, \ldots, v_r$ linear abhängig $\implies \Exists \lambda_1, \ldots, \lambda_r \in K: (\lambda_1, \ldots, \lambda_r) \neq (0, \ldots, 0) \wedge \lambda_1 v_1 + \ldots \lambda_r v_r = 0$
      Insbesondere existiert ein $i\in \{1, \ldots ,r\}$, mit $\lambda_i \neq 0$
-     \[\Rightarrow v_i = -\frac{\lambda_1}{\lambda_i} v_1 - \ldots - \frac{\lambda_{i - 1}}{\lambda_i} v_{i - 1} - \frac{\lambda_{i + 1}}{\lambda_i} v_{i + 1} - \ldots - \frac{\lambda_{r}}{\lambda_i} v_{r}\]
+     \[\implies v_i = -\frac{\lambda_1}{\lambda_i} v_1 - \ldots - \frac{\lambda_{i - 1}}{\lambda_i} v_{i - 1} - \frac{\lambda_{i + 1}}{\lambda_i} v_{i + 1} - \ldots - \frac{\lambda_{r}}{\lambda_i} v_{r}\]
 \begin{align*}
-\intertext{"$\Leftarrow$" Sei $i\in\{1,\ldots, r\}$, so dass}
+\intertext{"$\impliedby$" Sei $i\in\{1,\ldots, r\}$, so dass}
 v_i = \lambda_1 v_1 + \ldots + \lambda_{i - 1} v_{i - 1} + \lambda_{i + 1} v_{i + 1} + \ldots + \lambda_{r} v_{r} \\
 \intertext{mit geeigneten $\lambda_j \in K$:}
-\Rightarrow \lambda_1 v_1 + \ldots + \lambda_{i - 1} v_{i - 1} + (-1) v_i + \lambda{i + 1} v_{i + 1} + \ldots + \lambda_r v_r = 0 \\
-\Rightarrow (v_1, \ldots, v_r) ~\text{linear abhängig} \\
+\implies \lambda_1 v_1 + \ldots + \lambda_{i - 1} v_{i - 1} + (-1) v_i + \lambda{i + 1} v_{i + 1} + \ldots + \lambda_r v_r = 0 \\
+\implies (v_1, \ldots, v_r) ~\text{linear abhängig} \\
 \end{align*}
 \end{enumerate}
 \end{proof}
@@ -2029,32 +2029,32 @@ $V \neq \{0\}, \mathcal{B} = (v_1, \ldots, v_n)$ endliche Familie von Vektoren a
 \end{enumerate}
 \end{thm}
 \begin{proof}
-Wir zeigen 1. $\Rightarrow$ 2. $\Rightarrow$ 3. $\Rightarrow$ 4. $\Rightarrow$ 1. \\
+Wir zeigen 1. $\implies$ 2. $\implies$ 3. $\implies$ 4. $\implies$ 1. \\
 \begin{enumerate}
-\item $\Rightarrow$ 2.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ eine Basis von $V \Rightarrow \mathcal{B}$ ist ES von $V$ \\
+\item $\implies$ 2.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ eine Basis von $V \implies \mathcal{B}$ ist ES von $V$ \\
      Annahme: $\mathcal{B}$ ist verkürzbar, das heißt es gibt ein $r\in\{r, \ldots, n\}$, sodass $(v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n)$ immernoch ein ES von $V$
-$\Rightarrow$ $v_r \in \Lin((v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n))$, das heißt
+$\implies$ $v_r \in \Lin((v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n))$, das heißt
 \[\Exists \lambda_1, \ldots, \lambda_{r - 1}, \lambda_{r + 1}, \ldots, \lambda_n\in K: v_r = \lambda_1 v_1 + \ldots + \lambda_{r - 1} v_{r - 1} + (-1)v_r + \lambda_{r + 1} v_{r + 1} + \ldots + \lambda_n v_n\]
-$\Rightarrow$ $\mathcal{B}$ linear abhängig $\lightning$ zu $\mathcal{B}$ Basis von $V$
-\item $\Rightarrow$ 1.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ ein unverkürzbares ES von $V$ $\Rightarrow$ Für jedes $v\in V$ existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$
+$\implies$ $\mathcal{B}$ linear abhängig $\lightning$ zu $\mathcal{B}$ Basis von $V$
+\item $\implies$ 1.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ ein unverkürzbares ES von $V$ $\implies$ Für jedes $v\in V$ existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$
      Annahme: Es gibt $v\in V, \lambda_1, \ldots, \lambda_v v_n = \mu_1 v_1 + \ldots \mu_n v_n$
 \begin{align*}
-\Rightarrow (\lambda_i - \mu_i) v_i = (\mu_1 - \lambda_1)v_i + \ldots + (\mu_{i - 1} - \lambda_{i - 1})v_{i - 1} + (\mu_{i + 1} - \lambda_{i + 1}) v_{i + 1} + \ldots + (\mu_n - \lambda_n) v_n \\
-\Rightarrow v_1 = \frac{\mu_{1} - \lambda_{1}}{\lambda_{i} - \mu_{i}} v_1 + \ldots + \frac{\mu_{i - 1} - \lambda_{i - 1}}{\lambda_{i} - \mu_{i}} v_{i - 1} + \frac{\mu_{i + 1} - \lambda_{i + 1}}{\lambda_{i} - \mu_{i}} v_{i + 1} + \ldots + \frac{\mu_{n} - \lambda_{n}}{\lambda_{i} - \mu_{i}} v_n \\
+\implies (\lambda_i - \mu_i) v_i = (\mu_1 - \lambda_1)v_i + \ldots + (\mu_{i - 1} - \lambda_{i - 1})v_{i - 1} + (\mu_{i + 1} - \lambda_{i + 1}) v_{i + 1} + \ldots + (\mu_n - \lambda_n) v_n \\
+\implies v_1 = \frac{\mu_{1} - \lambda_{1}}{\lambda_{i} - \mu_{i}} v_1 + \ldots + \frac{\mu_{i - 1} - \lambda_{i - 1}}{\lambda_{i} - \mu_{i}} v_{i - 1} + \frac{\mu_{i + 1} - \lambda_{i + 1}}{\lambda_{i} - \mu_{i}} v_{i + 1} + \ldots + \frac{\mu_{n} - \lambda_{n}}{\lambda_{i} - \mu_{i}} v_n \\
 \end{align*}
-$\Rightarrow$ Jeder UVR von $v_i$ der $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n$  enthält, enthält auch $v_i$ \\
-     $\Rightarrow$ $\Lin((v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n)) = \Lin((v_1, \ldots, v_n)) = v$ \\
-     $\Rightarrow$ $\mathcal{B}$ ist verkürzbar $\lightning$
-\item $\Rightarrow$ 4.: Wir setzte 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
+$\implies$ Jeder UVR von $v_i$ der $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n$  enthält, enthält auch $v_i$ \\
+     $\implies$ $\Lin((v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n)) = \Lin((v_1, \ldots, v_n)) = v$ \\
+     $\implies$ $\mathcal{B}$ ist verkürzbar $\lightning$
+\item $\implies$ 4.: Wir setzte 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
      zu zeigen: $\mathcal{B}$ ist unverlängerbar linear unabhängig \\
-     denn Insbesondere existiert für jedes $v\in \Lin((c_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \Rightarrow (v_1,\ldots, v_n)$ linear unabhängig.
-Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \Rightarrow (v_1, \ldots, v_n)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
-\item $\Rightarrow$ 1. Sei $\mathcal{B}$ unverlängerbar linear unabhängig
+     denn Insbesondere existiert für jedes $v\in \Lin((c_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1,\ldots, v_n)$ linear unabhängig.
+Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1, \ldots, v_n)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
+\item $\implies$ 1. Sei $\mathcal{B}$ unverlängerbar linear unabhängig
 zu zeigen: $\mathcal{B}$ ist Basis von $V$, das heißt es bleibt noch zu zeigen, dass $\mathcal{B}$ ein ES von $V$ ist \\
-     Sei $v\in V \Rightarrow (v_1, \ldots, v_n, v)$ linear abhängig $\Rightarrow$ $\Exists \lambda_1, \ldots, \lambda_n \in K, (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0): \lambda_1 v_1 + \ldots + \lambda_n v_n + \lambda v = 0$
+     Sei $v\in V \implies (v_1, \ldots, v_n, v)$ linear abhängig $\implies \Exists \lambda_1, \ldots, \lambda_n \in K, (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0): \lambda_1 v_1 + \ldots + \lambda_n v_n + \lambda v = 0$
 Es ist $\lambda \neq 0$, da sonst $(v_1, \ldots, v_n)$ linear abhängig
-\[\Rightarrow v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - -\frac{\lambda_n}{\lambda} v_n \in \Lin((v_1, \ldots, v_n))\]
-$\Rightarrow$ $\mathcal{B}$ ist ES von $V$
+\[\implies v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - -\frac{\lambda_n}{\lambda} v_n \in \Lin((v_1, \ldots, v_n))\]
+$\implies$ $\mathcal{B}$ ist ES von $V$
 \end{enumerate}
 \end{proof}
 \begin{conc}[9.4 Basiswahlsatz]
@@ -2082,7 +2082,7 @@ Wir können ohne Einschränkung ("ohne Beschränkung der Allgemeinheit") annehme
 zu zeigen ist, dass $\mathcal{B}' = (w, v_2, \ldots, v_r)$ ein Basis von $V$ ist.
 \begin{enumerate}
 \item $\mathcal{B}'$ ist ein ES von $V$ \\
-     Sei $v\in V \Rightarrow \Exists \mu_1, \ldots, \mu_r \in K: v = \mu_1 v_1 + \ldots + \mu_r v_r$ \\
+     Sei $v\in V \implies \Exists \mu_1, \ldots, \mu_r \in K: v = \mu_1 v_1 + \ldots + \mu_r v_r$ \\
      Aus $w = \lambda_1 v_1 + \ldots + \lambda_r v_r$ folgt wegen $\lambda_1 \neq 0$:
 \begin{align*}
 v_1 = \frac{1}{\lambda_1} w - \frac{\lambda_2}{\lambda_1} v_2 - \ldots - \frac{\lambda_r}{\lambda_1} v \\
@@ -2091,9 +2091,9 @@ v =\frac{\mu_1}{\lambda_1} w + (\mu_2 - \mu_1 \frac{\lambda_2}{\lambda_1}) v_2 +
 \item $\mathcal{B}'$ ist linear unabhängig, denn: \\
 \begin{align*}
 \intertext{Sei $\mu, \mu_2, \ldots, \mu_r \in K$ mit $\mu w + \mu_2 v_2 + \ldots + \mu_r v_r = 0$}
-\Rightarrow \mu(\lambda_1 v_1 + \ldots + \lambda_r v_r) + \mu_2 v_2 + \ldots + \mu_r v_r = 0 \\
-\Rightarrow \mu \lambda_1 v_1 + (\mu \lambda_2 + \mu_2) v_2 + \ldots + (\mu \lambda_r + \mu_r) v_r = 0 \\
-\Rightarrow \mu \lambda_1 = 0 \Rightarrow \mu = 0 \Rightarrow \mu_2 v_2 + \ldots + \mu_r v_r = 0 \Rightarrow \mu_2 = \ldots = \mu_r = 0
+\implies \mu(\lambda_1 v_1 + \ldots + \lambda_r v_r) + \mu_2 v_2 + \ldots + \mu_r v_r = 0 \\
+\implies \mu \lambda_1 v_1 + (\mu \lambda_2 + \mu_2) v_2 + \ldots + (\mu \lambda_r + \mu_r) v_r = 0 \\
+\implies \mu \lambda_1 = 0 \implies \mu = 0 \implies \mu_2 v_2 + \ldots + \mu_r v_r = 0 \implies \mu_2 = \ldots = \mu_r = 0
 \end{align*}
 \end{enumerate}
 \end{proof}
@@ -2108,7 +2108,7 @@ Nummeriert man $\mathcal{B}$ so um, dass $i_1 = 1, i_2 = 2, \ldots, i_n = n$, be
 \begin{proof}
 Wir zeigen 1. und 2. zusammen per Induktion nach $n$ \\
   Induktionsanfang: $n = 0$: $(w_1, \ldots, w_n)$ leere Familie \\
-  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\Rightarrow n - 1 \leq r$ und nach Umnummerieren von $\mathcal{B}$ ist auch
+  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\implies n - 1 \leq r$ und nach Umnummerieren von $\mathcal{B}$ ist auch
 \[\tilde{\mathcal{B}} := (v_1, \ldots, w_{n - 1}, v_n, \ldots, v_r)\]
 eine Basis von $V$.
 
@@ -2118,7 +2118,7 @@ Also $n - 1 < r$, das heißt $n \leq r$
 Da $\tilde{\mathcal{B}}$ Basis von $V, \Exists \lambda_1, \ldots, \lambda_r \in K: w_n = \lambda_1 w_1 + \ldots, \lambda_{n - 1} w_{n - 1} \lambda_n w_n + \ldots + \lambda_r$ \\
   Falls $\lambda_n = \ldots = \lambda_r = 0$, dann $(w_1, \ldots, w_n)$ linear abhängig $\lightning$ \\
   Also existiert ein $k \in \{n, \ldots, r\}$ mit $\lambda_k \neq 0$ Nach umnummerieren von $v_n, \ldots, v_r$ kann man $\lambda_n \neq 0$ erreichen
-\[\Rightarrow \mathcal{B}^\ast := (w_1, \ldots, w_{n - 1}, w _n, v_{n + 1}, \ldots, v_r)\] ist eine Basis von $V$ (tausche $v_n$ gegen $w_n$)
+\[\implies \mathcal{B}^\ast := (w_1, \ldots, w_{n - 1}, w _n, v_{n + 1}, \ldots, v_r)\] ist eine Basis von $V$ (tausche $v_n$ gegen $w_n$)
 \end{proof}
 \begin{conc}[9.8]
 Es gilt:
@@ -2130,9 +2130,9 @@ Es gilt:
 \begin{proof}
 \begin{enumerate}
 \item \begin{itemize}
-\item $V$ endlich erzeugt $\Rightarrow$ ex existiert eine endliche Basis $(v_1, \ldots, v_r)$ von $V$, sei $(w_i)_{i\in I}$ beliebige Basis von $V$. Falls $I$ unendlich, dann existiert $i_1, \ldots, i_{r + 1} \in I$, dosass $(w_{i_1} + \ldots + w_{i_{r + 1}})$
-        linear unabhängig $\Rightarrow$ $r + 1 \leq r \lightning$
-\item Sind $(v_1, \ldots, v_r), (w_1, \ldots, w_k)$ endliche Basen von $V$, dann folgt nach Austauschsatz $k \leq r$, sowie $r\leq k \Rightarrow r = k$
+\item $V$ endlich erzeugt $\implies$ ex existiert eine endliche Basis $(v_1, \ldots, v_r)$ von $V$, sei $(w_i)_{i\in I}$ beliebige Basis von $V$. Falls $I$ unendlich, dann existiert $i_1, \ldots, i_{r + 1} \in I$, dosass $(w_{i_1} + \ldots + w_{i_{r + 1}})$
+        linear unabhängig $\implies$ $r + 1 \leq r \lightning$
+\item Sind $(v_1, \ldots, v_r), (w_1, \ldots, w_k)$ endliche Basen von $V$, dann folgt nach Austauschsatz $k \leq r$, sowie $r\leq k \implies r = k$
 \end{itemize}
 \item Besitzt $V$ eine Basis endlicher Länge, dann ist diese auch ein endliches ES, das heißt $V$ endlich erzeugt $\lightning$
 \end{enumerate}
@@ -2156,7 +2156,7 @@ heißt die Dimension von $V$ über $K$. Ist $\dim_k V\in\mathbb{N}_0$, dann hei�
 \begin{note}
 \begin{itemize}
 \item Ist klar, welcher Körper gemeint ist schreibt man kurz $\dim V$ statt $\dim_K V$.
-\item Offenbar gilt $V$ endlich erzeugt $\Leftrightarrow$ $V$ endlichdimensional
+\item Offenbar gilt $V$ endlich erzeugt $\iff$ $V$ endlichdimensional
 \end{itemize}
 \end{note}
 \begin{conc}[9.11]
@@ -2164,7 +2164,7 @@ $V$ endlichdimensionaler K-VR, $U\subseteq V$ UVR von $V$ Dann gilt:
 \begin{enumerate}
 \item $U$ ist endlichdimensional
 \item $\dim_k U \leq \dim_K V$
-\item Es ist $U = V \Leftrightarrow \dim_k U = \dim_k V$
+\item Es ist $U = V \iff \dim_k U = \dim_k V$
 \end{enumerate}
 \end{conc}
 \begin{proof}
@@ -2172,16 +2172,16 @@ $V$ endlichdimensionaler K-VR, $U\subseteq V$ UVR von $V$ Dann gilt:
 \item Annahme: $U$ ist nicht endlichdimensional \\
      Beweis: per Induktion nach $N$ \\
      Induktionsanfang: $n = 1$: Da $n\neq \{0\}$ wegen $\dim_k U = \infty$ existiert $u_1 \in U \setminus \{0\}, (u_1)$ ist linear unabhängig
-Induktionsschritt: Sei $n > 1$, die Assage sei für $n - 1$ bewiesen. $\Rightarrow$ ex existiert linear unabhängige Familie $(u_1, \ldots, u_{n - 1})$.
+Induktionsschritt: Sei $n > 1$, die Assage sei für $n - 1$ bewiesen. $\implies$ ex existiert linear unabhängige Familie $(u_1, \ldots, u_{n - 1})$.
 Falls $(u_1, \ldots, u_{n - 1}, u)$ linear abhängig für alle $u \in U$, dann wäre $(u_1, \ldots u_{n - 1})$ unverlängerbar linear abhängig und somit nach 9.3 eine Basis von $U~\lightning$ zu $U$ nicht endlichdimensional.
-Also existiert ein $u_1 \in U$ mit $(u_1, \ldots, u_n)$ linear unabhängig $\Rightarrow$ Behauptung
-Wir setzen $r:= \sum_K V$, dann existiert nach 1. eine lineare Familie $(u_1, \ldots, u_{r + 1})$ in $U$. Die Familie $(u_1, \ldots, u_{r + 1})$ ist auch eine linear unabhängige Famnile in $V \Rightarrow r + 1 \leq r ~ \lightning$ Das heißt $U$ ist endlich
+Also existiert ein $u_1 \in U$ mit $(u_1, \ldots, u_n)$ linear unabhängig $\implies$ Behauptung
+Wir setzen $r:= \sum_K V$, dann existiert nach 1. eine lineare Familie $(u_1, \ldots, u_{r + 1})$ in $U$. Die Familie $(u_1, \ldots, u_{r + 1})$ ist auch eine linear unabhängige Famnile in $V \implies r + 1 \leq r ~ \lightning$ Das heißt $U$ ist endlich
 \item Annahme: $n := \dim_k U > \dim V$ \\
-     Sei $(u_1, \ldots, u_n)$ Basis von $U$, das heißt insbesondere ist die Familie $(u_1, \ldots, u_n)$ eine linear unabhängige Familie in $V$ $\Rightarrow$ $n \leq \sum_k V ~\lightning$
-\item "$\Rightarrow$" trivial \\
-     "$\Leftarrow$" Annahme: $U \subsetneq V$ \\
-     Sei $(u_1, \ldots, u_r)$ Basis von $U$. Wegen $U \subsetneq V$ ist $(u_1, \ldots, u_r)$ keine Basis von $V$ $\Rightarrow$ $\Exists v\in V: (u_1, \ldots, u_r, v)$ linear unabhängig.
-$\Rightarrow$ es existiert $v \in V$, sodass $(u_1, \ldots, u_r, v)$ linear unabhänig $\Rightarrow$ $r + 1 \leq \dim V = \dim U = r \lightning$
+     Sei $(u_1, \ldots, u_n)$ Basis von $U$, das heißt insbesondere ist die Familie $(u_1, \ldots, u_n)$ eine linear unabhängige Familie in $V$ $\implies$ $n \leq \sum_k V ~\lightning$
+\item "$\implies$" trivial \\
+     "$\impliedby$" Annahme: $U \subsetneq V$ \\
+     Sei $(u_1, \ldots, u_r)$ Basis von $U$. Wegen $U \subsetneq V$ ist $(u_1, \ldots, u_r)$ keine Basis von $V$ $\implies$ $\Exists v\in V: (u_1, \ldots, u_r, v)$ linear unabhängig.
+$\implies$ es existiert $v \in V$, sodass $(u_1, \ldots, u_r, v)$ linear unabhänig $\implies$ $r + 1 \leq \dim V = \dim U = r \lightning$
 \end{enumerate}
 \end{proof}
 \begin{thm}[9.12 Besisergänzungssatz]
@@ -2218,19 +2218,19 @@ Noch zu zeigen: $S\in M$, das heißt $A\subseteq S$ und $S$ ist linear unabhäng
 \begin{itemize}
 \item $A\subseteq S$ klar, denn $A\subseteq X\Forall X\in T$
 \item $S$ ist linear unabhängig, das heißt jede endliche Teilfamilie von $(s)_{s\in S}$ inst linear unabhägig: \\
-         Seien $s_1, \ldots, s_n \in S$ paarweise verschieden $\Rightarrow \Exists X_1, \ldots X_n \in T: s_i \in X_i, i = 1, \ldots, n$ \\
-         Da $(T, \subseteq)$ totalgeordnet ist existiert ein $i\in \{1, \ldots, n\}$ mit $X_j \subseteq X_i$ für alle $j\in \{1,\ldots,n\} \Rightarrow s_1, \ldots, s_n \subseteq X_i \xRightarrow{X_i \in M} (x_1, \ldots, s_n)$ linear unabhängig.
+         Seien $s_1, \ldots, s_n \in S$ paarweise verschieden $\implies \Exists X_1, \ldots X_n \in T: s_i \in X_i, i = 1, \ldots, n$ \\
+         Da $(T, \subseteq)$ totalgeordnet ist existiert ein $i\in \{1, \ldots, n\}$ mit $X_j \subseteq X_i$ für alle $j\in \{1,\ldots,n\} \implies s_1, \ldots, s_n \subseteq X_i \xRightarrow{X_i \in M} (x_1, \ldots, s_n)$ linear unabhängig.
 \end{itemize}
 \end{itemize}
-\item Nach 1. können wir das Zornsche Lemma auf $(M,\subseteq)$ anwenden $\Rightarrow \Exists \max B \in M$ \\
+\item Nach 1. können wir das Zornsche Lemma auf $(M,\subseteq)$ anwenden $\implies \Exists \max B \in M$ \\
      Behauptung: $(b)_{b\in B}$ ist eine Basis von $V$ mit $A\subseteq B$, denn: Da $(b)_{b\in B}$ linear unabhängig wegen $V\in M$, gilt zu Zeigen, dass $\Lin(B) = V)$ \\
      "$\subseteq$" klar \\
      "$\supseteq$"
 \begin{align*}
 \intertext{Sei $v \in V$. Falls $v\in B$, dann $v\in\Lin(B)$, falls $v = 0$, dann $v\in \Lin(B)$, im Folgenden sei $v\not\in B, v\neq 0$}
-\Rightarrow A \subseteq B \subsetneq B\cup \{v\} \\
+\implies A \subseteq B \subsetneq B\cup \{v\} \\
 \intertext{Da $B$ Maximum von $(M,\subseteq)$ ist, ist $B \cup \{v\} \not \in M$, das heißt $B\cup \{v\}$ ist linear abhängig}
-\Rightarrow \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, (\lambda, \lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0), b_1, \ldots, b_n \in B: \\
+\implies \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, (\lambda, \lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0), b_1, \ldots, b_n \in B: \\
 \lambda v + \lambda_1 b_1 + \ldots + \lambda_n b_n = 0 \\
 \intertext{Falls $n = 0$}
 \lambda v = 0 \xRightarrow{v \neq 0} \lambda = 0 \lightning \\
@@ -2380,18 +2380,18 @@ Das neutrale Element ist $E_n$, das zu $A\in GL(n,K)$ inverse Element bezeichnen
 \end{remark}
 \begin{proof}
 Wohldefiniertheit von "$\cdot$" auf $GL(n, K)$ \\
-  zu zeigen ist: $A_1, A_2 \in GL(n, K) \Rightarrow A_1 A_2 \in GL(n,K)$ \\
+  zu zeigen ist: $A_1, A_2 \in GL(n, K) \implies A_1 A_2 \in GL(n,K)$ \\
   Dies gilt, denn:
 \begin{align*}
-A_1, A_2 \in GL(n, K) \Rightarrow \Exists B_1, B_2 \in M(n\times n, K): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
-\Rightarrow (A_1 A_2) \cdot (B_2 B_1) = A_1(A_2 B_2) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
+A_1, A_2 \in GL(n, K) \implies \Exists B_1, B_2 \in M(n\times n, K): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
+\implies (A_1 A_2) \cdot (B_2 B_1) = A_1(A_2 B_2) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
 (B_2 B_1) \cdot (A_1 A_2) = B_2 (B_1 A_1) A_2 = B_2 E_n A_2 = B_2 A_2 = E_n
 \end{align*}
 das heißt $A_1 A_2 \in GL(n,K)$
 \begin{itemize}
 \item Assoziativiät: Vererbt sich von $M(n\times n, K)$
 \item neutrales Element: $E_n$
-\item Existenz von Inversen: Sei $A\in GL(n,K) \Rightarrow \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
+\item Existenz von Inversen: Sei $A\in GL(n,K) \implies \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
 \end{itemize}
 \end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)

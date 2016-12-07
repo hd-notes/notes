@@ -40,36 +40,36 @@
 	 - $A\vee B$ 7 ist eine Primzahl oder 5 ist gerade (w)
 
    - Implikation (WENN-DANN-Verknüpfung)
-	 - Symbol: $\Rightarrow$
+	 - Symbol: $\implies$
 	 - Wahrheitstafel:
-	   | $A$ | $B$ | $A\Rightarrow B$ |
+	   | $A$ | $B$ | $A\implies B$ |
 	   |-----+-----+------------------|
 	   | w   | w   | w                |
 	   | w   | f   | f                |
 	   | f   | w   | w                |
 	   | f   | f   | w                |
-	 - Sprechweise: $A$ impliziert $B$, aus $A$ folgt $B$, $A$ ist eine hinreichende Bedingung für $B$ (ist $A\Rightarrow B$ wahr, dann folgt aus $A$ wahr, $B$ ist wahr), $B$ ist eine notwendige Bedingung für $A$ (ist $A\Rightarrow B$ wahr, dann kann $A$ nur dann wahr sein, wenn Aussage $B$ wahr ist)
+	 - Sprechweise: $A$ impliziert $B$, aus $A$ folgt $B$, $A$ ist eine hinreichende Bedingung für $B$ (ist $A\implies B$ wahr, dann folgt aus $A$ wahr, $B$ ist wahr), $B$ ist eine notwendige Bedingung für $A$ (ist $A\implies B$ wahr, dann kann $A$ nur dann wahr sein, wenn Aussage $B$ wahr ist)
 	 - Beispiel Es seinen $m,n\in\mathbb{N}$
 	   - $A$: m ist gerade
 	   - $B$: $mn$ ist gerade
-	   - Dann gilt $\Forall m,n \in\mathbb{N}~A\Rightarrow B~\text{wahr}$ \\
+	   - Dann gilt $\Forall m,n \in\mathbb{N}~A\implies B~\text{wahr}$ \\
 		 Fallunterscheidung:
-		 - $m$ gerade, $n$ gerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
-		 - $m$ gerade, $n$ ungerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\Rightarrow B$ wahr
-		 - $m$ ungerade, $n$ gerade, dann ist $A$ falsch, $B$ wahr, d.h. $A\Rightarrow B$ wahr
-		 - $m$ ungerade, $n$ ungerade, dann ist $A$ falsch, $B$ falsh, d.h. $A\Rightarrow B$ wahr
+		 - $m$ gerade, $n$ gerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\implies B$ wahr
+		 - $m$ gerade, $n$ ungerade, dann ist $A$ wahr, $B$ wahr, d.h. $A\implies B$ wahr
+		 - $m$ ungerade, $n$ gerade, dann ist $A$ falsch, $B$ wahr, d.h. $A\implies B$ wahr
+		 - $m$ ungerade, $n$ ungerade, dann ist $A$ falsch, $B$ falsh, d.h. $A\implies B$ wahr
    - Äquivalenz (GENAU-DANN-WENN-Verknüpfung)
-	 - Symbol $\Leftrightarrow$
+	 - Symbol $\iff$
 	 - Wahrheitstafel:
-	   | $A$ | $B$ | $A\Leftrightarrow$ B |
+	   | $A$ | $B$ | $A\iff$ B |
 	   |-----+-----+----------------------|
 	   | w   | w   | w                    |
 	   | w   | f   | f                    |
 	   | f   | w   | f                    |
 	   | f   | f   | w                    |
 	 - Sprechweise: $A$ gilt genau dann, wenn $B$ gilt, $A$ ist hinreichend und notwendig für $B$ \\
-	   Die Aussagen $A\Leftrightarrow B$ und $(A\Rightarrow B)\wedge (B\Rightarrow A)$ sind gleichbedeutend:
-	   | $A$ | $B$ | $A\Leftrightarrow B$ | $A\Rightarrow B$ | $B\Rightarrow A$ | $(A\Rightarrow B)\wedge (B\Rightarrow A)$ |
+	   Die Aussagen $A\iff B$ und $(A\implies B)\wedge (B\implies A)$ sind gleichbedeutend:
+	   | $A$ | $B$ | $A\iff B$ | $A\implies B$ | $B\implies A$ | $(A\implies B)\wedge (B\implies A)$ |
 	   |-----+-----+----------------------+------------------+------------------+-------------------------------------------|
 	   | w   | w   | w                    | w                | w                | w                                         |
 	   | w   | f   | f                    | f                | w                | f                                         |
@@ -79,21 +79,21 @@
 	 - Beispiel: Es sei $n$ eine ganze Zahl \\
 	   $A:~n-2>1$ \\
 	   $B:~n>3$ \\
-	   $\Forall n\in\mathbb{N}~\text{gilt}~A\Leftrightarrow B$
+	   $\Forall n\in\mathbb{N}~\text{gilt}~A\iff B$
 	   $C:~n>0$ \\
 	   $D:~n^2>0$ \\
-	   Für $n=-1$ ist die Äquivalenz $C\Leftrightarrow$ falsch ($C$ falsch, $D$ wahr) \\
-	   Für alle ganzen Zahlen $n$ gilt zumindest die Implikation $C\Rightarrow D$
+	   Für $n=-1$ ist die Äquivalenz $C\iff$ falsch ($C$ falsch, $D$ wahr) \\
+	   Für alle ganzen Zahlen $n$ gilt zumindest die Implikation $C\implies D$
 ** Beweis
    Mathematische Sätze, Bemerkungen, Folgerungen, etc. sind meistens in Form wahrer Implikationen formuliert
 *** beweisen
 	Begründen warum diese Implikation wahr ist
-*** Beweismethoden for diese Implikation $A\Rightarrow B$
-	- direkter Beweis ($A\Rightarrow B$)
-	- Beweis durch Kontraposition ($\neq B \Rightarrow \neg A$)
+*** Beweismethoden for diese Implikation $A\implies B$
+	- direkter Beweis ($A\implies B$)
+	- Beweis durch Kontraposition ($\neq B \implies \neg A$)
 	- Widerspruchbeweis ($\neg (A\wedge \neg B)$)
 	Diese sind äquivalent zueinander
-	| $A$ | $B$ | $\neg A$ | $\neg B$ | $A\Rightarrow B$ | $\neg B \Rightarrow \neg A$ | $\neg (A \wedge \neg B)$ |
+	| $A$ | $B$ | $\neg A$ | $\neg B$ | $A\implies B$ | $\neg B \implies \neg A$ | $\neg (A \wedge \neg B)$ |
 	|-----+-----+----------+----------+------------------+-----------------------------+--------------------------|
 	| w   | w   | f        | f        | w                | w                           | w                        |
 	| w   | f   | f        | w        | f                | f                           | f                        |
@@ -103,13 +103,13 @@
 	 $m,n$ natürliche Zahlen \\
 	 \[A:~m^2 < n^2\]
 	 \[B:~m < n\]
-	 Wir wollen zeigen, dass $A\Rightarrow B$ für alle natürlichen Zahlen $m,n$ wahr ist
+	 Wir wollen zeigen, dass $A\implies B$ für alle natürlichen Zahlen $m,n$ wahr ist
 	 - direkter Beweis: \\
-	   \[A:~m^2 < n^2 \Rightarrow 0 < n^2 - m^2 \Rightarrow 0 < (n-m)\underbrace{(n+m)}_{>0} \Rightarrow 0 < n-m \Rightarrow m<n\]
+	   \[A:~m^2 < n^2 \implies 0 < n^2 - m^2 \implies 0 < (n-m)\underbrace{(n+m)}_{>0} \implies 0 < n-m \implies m<n\]
 	 - Beweis durch Kontraposition: \\
-	   \[\neg B:~m \geq n \Rightarrow m^2\geq n m \wedge m n \geq n^2 \Rightarrow m^2 \geq n^2 \Rightarrow \neg A\]
+	   \[\neg B:~m \geq n \implies m^2\geq n m \wedge m n \geq n^2 \implies m^2 \geq n^2 \implies \neg A\]
 	 - Beweis durch Widerspruch: \\
-	   \[A\wedge \neg B \Rightarrow m^2 < n^2 \wedge n\leq m \Rightarrow m^2 < n^2 \wedge m n \leq m^2 \wedge n^2 \leq m n \Rightarrow m n \leq m^2 < n^2 \leq m n\]
+	   \[A\wedge \neg B \implies m^2 < n^2 \wedge n\leq m \implies m^2 < n^2 \wedge m n \leq m^2 \wedge n^2 \leq m n \implies m n \leq m^2 < n^2 \leq m n\]
 	   Wiederspruch
 ** Existenz- und Allquantor
 *** Existenzquantor
@@ -123,8 +123,8 @@
 	Beispiel:
 	\[\Forall n\in\mathbb{N}: 4n~\text{ist gerade}\]
 *** Negation von Existenz- und Allquantor
-	\[\neg(\exists x:~A(x)) \Leftrightarrow \Forall x:~\neg A(x)\]
-	\[\neg(\Forall x:~A(x)) \Leftrightarrow \exists x:~\neg A(x)\]
+	\[\neg(\exists x:~A(x)) \iff \Forall x:~\neg A(x)\]
+	\[\neg(\Forall x:~A(x)) \iff \exists x:~\neg A(x)\]
 *** Spezielle Beweistechniken für Existenz und Allaussagen
 	- Angabe eines Beispiel, um zu zeigen, dass deine Existenzaussage wahr ist. \\
 	  Beispiel:
@@ -175,7 +175,7 @@
 	$A$ heißt echte Teilmenge von $B~(A\subset B) \xLeftrightarrow{\text{Def.}} A\subseteq B \wedge A\neq B$
 **** Anmerkung
 	 Offenbar gilt für Mengen $A,B$:
-	 \[A=B \Leftrightarrow A\subseteq B \wedge B\subseteq A\]
+	 \[A=B \iff A\subseteq B \wedge B\subseteq A\]
 	 $\emptyset$ ist Teilmenge jeder Menge
 
 **** Beipspiel
@@ -203,22 +203,22 @@
 	 \[A\cap(B\cup C) \supseteq (A\cap B) \cup (A\cap C)\]
 	 "$\subseteq$" Sei $x\in A \cap (B\cup C)$. Dann ist $x\in A \wedge x\in B\cup C$
 	 - 1. Fall: $x\in A \wedge x\in B$
-	   \[\Rightarrow x\in A\cap B \Rightarrow x \in (A\cap B) \cup (A\cap C)\]
+	   \[\implies x\in A\cap B \implies x \in (A\cap B) \cup (A\cap C)\]
 	 - 2. Fall $x\in A \wedge x\in C$
-	   \[\Rightarrow x\in A\cap C \Rightarrow x\in (A\cap B)\cup(A\cap C)\]
+	   \[\implies x\in A\cap C \implies x\in (A\cap B)\cup(A\cap C)\]
 	 Damit ist "$\subseteq$" gezeigt.
 	 "$\supseteq$" Sei $x\in (A\cap B) \cup (A\cap C)
-	 \[\Rightarrow x\in A\cap B \vee x\in A\cap C \\ \Rightarrow (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \Rightarrow x\in A \wedge (x\in B\vee x\in C) \\ \Rightarrow x\in A \wedge x\in B\cup C \\ \Rightarrow x\in A\cap (B\cup C)\]
+	 \[\implies x\in A\cap B \vee x\in A\cap C \\ \implies (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \implies x\in A \wedge (x\in B\vee x\in C) \\ \implies x\in A \wedge x\in B\cup C \\ \implies x\in A\cap (B\cup C)\]
 	 Damit ist "$\supseteq$" gezeigt.
 *** Bemerkung zu Äquivalenz von Mengen
 	Seien $A,B$ Mengen, dann sind äquivalent:
 	1) $A\cup B = B$
 	2) $A\subseteq B$
 **** Beweis
-	 Wir zeigen 1) $\Rightarrow$ 2) und 2) $\Rightarrow$ 1.
-	 \[1) \Rightarrow 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \Rightarrow x\in A \wedge x \in B \Rightarrow x\in A\cup B = B\]
-	 \[2) \Rightarrow 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
-	 "$\subseteq$": Sei $x\in A\cup B \Rightarrow x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
+	 Wir zeigen 1) $\implies$ 2) und 2) $\implies$ 1.
+	 \[1) \implies 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \implies x\in A \wedge x \in B \implies x\in A\cup B = B\]
+	 \[2) \implies 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
+	 "$\subseteq$": Sei $x\in A\cup B \implies x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
 	 "$\supseteq$": $B\subseteq A\cup B$ klar
 *** Kartesisches Produkt
 	Seien $A,B$ Mengen
@@ -244,23 +244,23 @@
 *** Bemerkung zu natürlichen Zahlen
 	Für die natürlichen Zahlen gilt das Induktionsaxiom
 	Ist $M\subseteq N$ eine Teilmenge, für die gilt:
-	\[1\in M \wedge \Forall n\in M : n\in M \Rightarrow n+1 \in M\]
+	\[1\in M \wedge \Forall n\in M : n\in M \implies n+1 \in M\]
 	dann ist $M = \mathbb{N}$
 *** Prinzip der vollständigen Induktion
 	Für jedes $n\in \mathbb{N}$ sei eine Aussage $A(n)$ gegeben. Die Aussagen $A(N)$ gelten für alle $n\in\mathbb{N}$, wenn man folgendes zeigen kann: \\
 	- (IA) $A(1)$ ist wahr
-	- (IS) Für jedes $n\in\mathbb{N}$ gilt: $A(n) \Rightarrow A(n+1)$
-	Der Schritt (IA) heißt Induktionsanfang, die Implikation $A(n) \Rightarrow A(n+1)$ heißt Induktionsschritt
+	- (IS) Für jedes $n\in\mathbb{N}$ gilt: $A(n) \implies A(n+1)$
+	Der Schritt (IA) heißt Induktionsanfang, die Implikation $A(n) \implies A(n+1)$ heißt Induktionsschritt
 **** Beweis
 	 Setze $M := \{n\in \mathbb{N}\mid A(n)~\text{ist wahr}\}$
-	 Wegen (IA) ist $1\in M$, wegen (IS) gilt: $n\in M \Rightarrow n+1 \in M$ \\
+	 Wegen (IA) ist $1\in M$, wegen (IS) gilt: $n\in M \implies n+1 \in M$ \\
 	 Nach Induktionsaxiom folgt $M = \mathbb{N}$, das heißt $A(n)$ ist wahr für alle $n\in \mathbb{N}$
 **** Beispiel
 	 Für $n\in\mathbb{N}$ sei $A(n)$ die Aussage: $1+\ldots + n = \frac{n(n+1)}{2}$
 	 Wir zeigen: $A(n)$ ist wahr für alle $n\in \mathbb{N}$, und zwar durch vollständige Induktion
 	 - (IA) $A(1)$ ist wahr, denn $1 = \frac{1(1+1)}{2}$
-	 - (IS) zu zeigen: $A(n) \Rightarrow A(n+1)$ \\
-	   Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\Rightarrow 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
+	 - (IS) zu zeigen: $A(n) \implies A(n+1)$ \\
+	   Es gelte $A(n)$, das heißt $1+\ldots+n = \frac{n(n+1)}{2}$ ist wahr \[\implies 1 + \ldots + n + (n + 1) = \frac{n(n+1)}{2} + (n+1) =  \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2} \square\]
 ** Relationen
 *** Definiton
 	Eine Relation auf $M$ ist eine Teilmenge $R\subseteq M\times M$
@@ -277,9 +277,9 @@
 	$M$ Menge, $\sim$ Relation auf $M$ \\
 	$\sim$ heißt:
 	- reflexiv $\xLeftrightarrow{\text{Def}}$ für alle $a\in M$ gilt $a\sim a$
-	- symmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \Rightarrow b\sim a$
-	- antisymmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b \in M$ gilt: $a\sim b \wedge b\sim a \Rightarrow a = b$
-	- transitiv $\xLeftrightarrow{\text{Def}}$ für alle $a,b,c\in M$ gilt: $a\sim b \wedge b\sim v \Rightarrow a\sim c$
+	- symmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \implies b\sim a$
+	- antisymmetrisch $\xLeftrightarrow{\text{Def}}$ für alle $a,b \in M$ gilt: $a\sim b \wedge b\sim a \implies a = b$
+	- transitiv $\xLeftrightarrow{\text{Def}}$ für alle $a,b,c\in M$ gilt: $a\sim b \wedge b\sim v \implies a\sim c$
 	- total $\xLeftrightarrow{\text{Def}}$ für alle $a,b\in M$ gilt: $a\sim b \vee b\sim a$
 **** Beispiel
 	 Sei $M$ die Menge der Studierenden in der LA1-Vorlesung
@@ -309,7 +309,7 @@
 	 Dann gilt: Existiert in $M$ ein größtes (beziehungsweise kleinstes) Element, so ist dieses eindeutig bestimmt
 ***** Beweis
 	  Es seien $a,b\in M$ größte Elemente von $M$ \\
-	  $\Rightarrow x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
+	  $\implies x\leq a$ für alle $x\in M$, also auch $b\leq a$ \\
 	  Außerdem: $x \leq b$ für alle $x\in M$, also auch $a\leq b$ \\
 	  $\xRightarrow{\text{Antisymmetrie}} a = b$ \\
 	  Analog für kleinstes Element
@@ -321,8 +321,8 @@
 *** maximales / minimales Element
 	$(M,\leq)$ halbgeordnete Menge, $a\in M$ \\
 	$a$ heißt ein
-	- maximales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $a\leq x \Rightarrow a = x$
-	- minmales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $x\leq a \Rightarrow a = x$
+	- maximales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $a\leq x \implies a = x$
+	- minmales Element von $M \xLeftrightarrow{\text{Def}}$ für alle $x\in M$ gilt: $x\leq a \implies a = x$
 **** Beispiel
 	 In $(\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}, \subseteq)$ sind $\{1,2\},\{1,3\},\{2,3\}$ maximale Elemente und $\{1\},\{2\},\{3\}$ sind minimale Elemente.
 **** Bemerkung
@@ -330,7 +330,7 @@
 	 Dann gilt: Ist $a$ ein größtes (beziehungsweise kleinstes) Element von $M$, dann ist $a$ ein maximales (beziehungsweise minimales) Element von $M$.
 ***** Beweis
 	  Sei $a$ ein größtes Element von $M$. \\
-	  zu zeigen ist: Für alle $x\in M$ gilt $a\leq x \Rightarrow a = x$
+	  zu zeigen ist: Für alle $x\in M$ gilt $a\leq x \implies a = x$
 	  Sei $x\in M$ mit $a\leq x$. Da $a$ größtes Element von $M$ ist, gilt auch $x\leq a$ \\
 	  $\xLeftrightarrow{\text{Antisymmetrie}} a = x$ \\
 	  Analog für kleinstes Element.
@@ -362,10 +362,10 @@
 		 1. Es gibt eine Äquivalenzklasse, in der $a$ liegt, denn $a\in [a], denn $a\sim a$
 		 2. Ist $a\in[b] und a\in[c], dann ist [b]=[c] (d.h. $a$ liegt in höchstens einer Äquivalenzklasse) \\
 			denn: Seien $b,c\in M$ mit $a\in[b]$ und $a\in[c]$
-			$\Rightarrow a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a$ und $a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
+			$\implies a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a$ und $a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
 			Behautptung $[b] =[c]$
-			denn: "$\subseteq$" Sei $x\in [b] \Rightarrow x\sim b \xRightarrow{Transitivität}^{b\sim c} x\sim c \Rightarrow x\in [c]$
-			denn: "$\supseteq$" Sei $x\in [c] \Rightarrow x\sim c \xRightarrow{Transitivität}^{c\sim b} x\sim b \Rightarrow x\in [b]$
+			denn: "$\subseteq$" Sei $x\in [b] \implies x\sim b \xRightarrow{Transitivität}^{b\sim c} x\sim c \implies x\in [c]$
+			denn: "$\supseteq$" Sei $x\in [c] \implies x\sim c \xRightarrow{Transitivität}^{c\sim b} x\sim b \implies x\in [b]$
 	  2. Sind $b,c\in M$ mit $[b] \cap [c] \neq \emptyset$, dann existiert ein $a\in [b]\cap [c], und es folgt wie in 2.: \\
 		 $[b] = [c]$
 		 Für $b,c\in M$ gilt also entweder $[b]\cap[c] =\emptyset$ oder $[b] = [c]\hfill\square$
@@ -437,7 +437,7 @@
 	heißt die Komposition (Hintereinanderausführung) von $f$ und $g$
 **** Beispiel
 	 \[f:\mathbb{R}\to\mathbb{R},x\mapsto x^2, g:\mathbb{R}\to\mathbb{R}:x\mapsto x + 1\]
-	 \[\Rightarrow g\circ f:\mathbb{R}\to\mathbb{R},x\mapsto g(f(x)) = g(x^2) = x^2 + 1\]
+	 \[\implies g\circ f:\mathbb{R}\to\mathbb{R},x\mapsto g(f(x)) = g(x^2) = x^2 + 1\]
 **** Assoziativität
 	 $L,M,N,P$ Mengen, $f:L\to M, g:M\to N,h:n\to p$ \\
 	 Dann gilt
@@ -449,10 +449,10 @@
 *** Eigenschaften von Abbildungen
 	$M,N$ Mengen, $f:M\to N$ Abbildung
 **** Injektivität
-	 $f$ heißt injektiv: \[\xLeftrightarrow{\text{Def}} \Forall m_1,m_2\in M: f(m_1) = f(m_2) \Rightarrow m_1 = m_2 \Leftrightarrow \Forall m_1,m_2\in M: m_1\neq m_2 \Rightarrow f(m_1)\neq f(m_2)\]
+	 $f$ heißt injektiv: \[\xLeftrightarrow{\text{Def}} \Forall m_1,m_2\in M: f(m_1) = f(m_2) \implies m_1 = m_2 \iff \Forall m_1,m_2\in M: m_1\neq m_2 \implies f(m_1)\neq f(m_2)\]
 **** Surjektivität
 	 $f$ heißt sujektiv:
-	 \[\xLeftrightarrow{\text{Def}} \Forall n\in M :\exists m\in M: f(m) = n \Leftrightarrow f(M) = N\]
+	 \[\xLeftrightarrow{\text{Def}} \Forall n\in M :\exists m\in M: f(m) = n \iff f(M) = N\]
 **** Bijektivität
 	 $f$ heißt bijektiv: $\xLeftrightarrow{\text{Def}}$ $f$ ist injektiv und surjektiv
 **** Beispiel
@@ -461,11 +461,11 @@
 		- nicht surjektiv, denn es existier kein $m\in\mathbb{R}$ mit $f(m) = -1$
 		- nicht bijektiv
 	 2. $f:\mathbb{R}_{\geq 0} \to \mathbb{R}, x\mapsto x^2$ ist:
-		- injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
+		- injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \implies m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
 		- nicht surjektiv, denn es existier kein $m\in\mathbb{R}_{\geq 0}$ mit $f(m) = -1$
 		- nicht bijektiv
 	 3. $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist:
-		- injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \Rightarrow m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
+		- injektiv, denn für $m_1,m_2 \in\mathbb{R}_{\geq 0}$ gilt: $f(m_1) = f(m_2) \implies m_1^2 = m_2^2 \xRightarrow{m_1,m_2 > 0} m_1 = m_2$
 		- surjektiv, denn für $m\in\mathbb{R}_{\geq 0}$ ist $f(\sqrt{m}) = (\sqrt{m})^2 = m$
 		- bijektiv
 **** Bemerkung 4.12
@@ -473,7 +473,7 @@
 	 Dann ist $f$ injektiv und $g$ surjektiv.
 ***** Beweis
 	  1. $f$ ist injektiv, denn: \\
-		 Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \Rightarrow g(f(m_1)) = g(f(m_2)) \Rightarrow (g\circ f)(m_1) = (g\circ f)(m_2) \Rightarrow id_m(m_1) = id_M(m_2)\Rightarrow m_1 = m_2$
+		 Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \implies g(f(m_1)) = g(f(m_2)) \implies (g\circ f)(m_1) = (g\circ f)(m_2) \implies id_m(m_1) = id_M(m_2)\implies m_1 = m_2$
 	  2. $g$ ist surjektiv, denn: \\
 		 Sei $m\in M$ Dann ist $m=id_M(m) = (g\circ f)(m) = g(f(m))$
 **** Bemerkung
@@ -485,47 +485,47 @@
 	 In diesem Fall bezeichnen wir die Abbildung $g:N\to M$ aus 3. mit $f^{-1}$ und nennen $f^{-1}$ die Umkehrabbildung von $f$. Sie ist gegeben durch
 	 \[f^{-1} : N\to M, n\mapsto~\text{Das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$}\]
 ***** Beweis
-	  Statt 1. \Leftrightarrow 2. und 2. \Leftrightarrow 3. zeigen 1. \Rightarrow 2. \Rightarrow 3. \Rightarrow 1.
-	  - 1. \Rightarrow 2. Sei $f$ bijektiv \\
+	  Statt 1. $\iff$ 2. und 2. $\iff$ 3. zeigen 1. $\implies$ 2. $\implies$ 3. $\implies$ 1.
+	  - 1. $\implies$ 2. Sei $f$ bijektiv \\
 		zz: Ist $n\in N$, dann existiert genau ein $m\in M$ mit $f(m) = n$ \\
-		- Existenz folg aus Surjektivität von $f$
-		- Eindeutigkeit: Seien $m_1,m_2 \in M  mit \(f(m_1) = n, f(m_2) = n \Rightarrow f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
-	  - 2. \Rightarrow 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
+		- Existenz folgt aus Surjektivität von $f$
+		- Eindeutigkeit: Seien $m_1,m_2 \in M  mit \(f(m_1) = n, f(m_2) = n \implies f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
+	  - 2. $\implies$ 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
 		zz: Ex existert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
 		- Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\
 		  bestimmte Element $m\in M$ mit $f(m) = n$}\) \\
 		  Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~text{das heißt}~ g\circ f = id_M\]
 		  und für $n\in N$ ist $(f\circ g)(n) = f(g(n)) = n$ also $f\circ g = id_N$
 		- Eindeutigkeit: Es seinen $g_1,g_2:N\to M$ mit $g_i \circ f = id_M, f\circ g_i = id_N$ für $i = 1,2$ \\
-		  \[\Rightarrow g_1 = g_1 \circ id_N = g_1 \circ (f\circ g_2) = (g_1 \circ f) \circ g_2 = id_M \circ g_2 = g_2\]
-	  - 3. \Rightarrow 1. Wegen 3. existier $g:N\to M$ mit $g\circ f = id_M,f\circ g = id_N$ \\
-		\[\xRightarrow{[[Bemerkung 4.12]]} f~\text{injektiv}~,f~\text{surjektiv}~\Rightarrow f~\text{bijektiv}\Rightarrow~\text{1.}\]
+		  \[\implies g_1 = g_1 \circ id_N = g_1 \circ (f\circ g_2) = (g_1 \circ f) \circ g_2 = id_M \circ g_2 = g_2\]
+	  - 3. $\implies$ 1. Wegen 3. existier $g:N\to M$ mit $g\circ f = id_M,f\circ g = id_N$ \\
+		\[\xRightarrow{[[Bemerkung 4.12]]} f~\text{injektiv}~,f~\text{surjektiv}~\implies f~\text{bijektiv}\implies~\text{1.}\]
 ***** Anmerkung
 	  - Bitte stets aufpassen, ob mit $f^{-1}$ die Unmkerhabbildung (falls existent) oder das Bilden der Urbildmenge gemeint ist.
-	  - Im Beweis von 3. \Rightarrow 1. haben wir die Eindeutigkeit von $g$ garnicht verwendet, das heißt wir haben sogar gezeigt: \\
-		$f$ bijektiv \Leftrightarrow 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = id_N$ und $f\circ f = id_M$ Soch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
+	  - Im Beweis von 3. $\implies$ 1. haben wir die Eindeutigkeit von $g$ garnicht verwendet, das heißt wir haben sogar gezeigt: \\
+		$f$ bijektiv $\iff$ 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = id_N$ und $f\circ f = id_M$ Soch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
 ***** Beispiel
 	  Im Beispiel vorher haben wir gesehen $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist bijektiv.
 	  Die Umkehrabbildung ist gegeben durch $f^{-1}:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto \sqrt{x}$
 **** Bemerkung
 	 $M,N$ Mengen, $f:M\to N$ Dann gilt:
-	 1. $f$ injektiv \Leftrightarrow Es existiert $g:N\to M$ mit $g\circ f = id_M$ \\
+	 1. $f$ injektiv $\iff$ Es existiert $g:N\to M$ mit $g\circ f = id_M$ \\
 		*Beweis:*
-		- "\Leftarrow" folgt aus [[Bemerkung 4.12]]
-		- "\Rightarrow" Sei $f$ injektiv. Sein $x$ ein beliebiges Element aus $M$
+		- "$\impliedby$" folgt aus [[Bemerkung 4.12]]
+		- "$\implies$" Sei $f$ injektiv. Sein $x$ ein beliebiges Element aus $M$
 		  Wir definieren \[g:N\to M,n\mapsto \begin{cases} x & n\not\in f(M) \\ \text{das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$} & n\in f(M) \end{cases}\]
 		  Für alle $m\in M$ ist dann $(g\circ f)(m) = g(f(m)) = m$ das geißt $g\circ f = id_M$
-	 2. $f$ surjektiv \Leftrightarrow Es existiert $g:N\to M$ mit $f\circ g = id_N$ \\
+	 2. $f$ surjektiv $\iff$ Es existiert $g:N\to M$ mit $f\circ g = id_N$ \\
 		*Beweis:*
-		- "\Leftarrow" folgt aus [[Bemerkung 4.12]]
-		- "\Rightarrow" Sei $f$ surjektiv. Für jedes Element $n\in N$ wählen wir ein Element $\tilde n\in f^{-1}(\{n\}) \neq \emptyset$ und sehen
+		- "$\impliedby$" folgt aus [[Bemerkung 4.12]]
+		- "$\implies$" Sei $f$ surjektiv. Für jedes Element $n\in N$ wählen wir ein Element $\tilde n\in f^{-1}(\{n\}) \neq \emptyset$ und sehen
 		  $g:N\to M,n\mapsto \tilde n$. Dann ist $(f\circ g)(n) = f(g(n)) = n$ für alle $n\in N$ und das heißt $f\circ g = id_N \hfill\square$
 ***** Anmerkung
-	  Das wir stets einen Auswahlprozess wie im Beweis von 2. "\Rightarrow" vornehmen können ist ein Axiom der Mengenlehre (erkennen wir als gültig an, ist jedoch nicht beweisbar), das *Auswahlaxiom*: \\
+	  Das wir stets einen Auswahlprozess wie im Beweis von 2. "$\implies$" vornehmen können ist ein Axiom der Mengenlehre (erkennen wir als gültig an, ist jedoch nicht beweisbar), das *Auswahlaxiom*: \\
 	  Ist $I$ eine Indexmenge und $(A_i)_{i\in I}$ eine Familie von nichtleeren Mengen, dann gibt es eine Abbildung $\gamma:I\to \bigcup_{i\in I} A_i$ mit $\gamma (i) \in A_i$ für alle $i\in I$ (im obigen Beweis ist $I = N,A_n = f^{-1}(\{n\})$ für $n\in N$)
 **** Bemerkung 4.16
 	 $L,M,N$ Mengen, $f:L\to M, g:M\to N$ \\
-	 Dann gilt: $g,f$ beide injektiv (beziehungsweise surjektiv oder bijektiv) \Rightarrow $g\circ f$ injektiv (beziehungsweise sujektiv oder bijektiv)
+	 Dann gilt: $g,f$ beide injektiv (beziehungsweise surjektiv oder bijektiv) $\implies g\circ f$ injektiv (beziehungsweise sujektiv oder bijektiv)
 **** Definition 4.17
 **** Bemerkung 4.19
 	 $M,N$ endliche Mengen mit $\abs{M} = \abs{N},f:M\to N$ Dann sind äquivalent:
@@ -533,7 +533,7 @@
 	 2. $f$ ist surjektiv
 	 3. $f$ ist bijektiv
 ***** Beweis
-	  - 1. \Rightarrow 2. Sei $f$ injektiv \Rightarrow $\abs{f(M)} = \abs{M} = \abs{N}$ wegen $f(M) \subseteq N$ folgt $f(M) = N$ \Rightarrow $f$ surjektiv
-	  - 2. \Rightarrow 3. Sei $f$ sujektiv, das heißt $f(M) = N$ \\
-		Annahme: $f$ ist nicht bijektiv \Rightarrow $f$ nicht injektiv \Rightarrow $\exists m_1,m_2\in M: m_1\neq m_2 \wedge f(M_1) = f(m_2) \Rightarrow \abs{f(M)} < \abs{M} = \abs{N}$ Wiederspruch zu $f(M) = N$
-	  - 3. \Rightarrow 1. trivial
+	  - 1. $\implies$ 2. Sei $f$ injektiv $\implies$ $\abs{f(M)} = \abs{M} = \abs{N}$ wegen $f(M) \subseteq N$ folgt $f(M) = N \implies f$ surjektiv
+	  - 2. $\implies$ 3. Sei $f$ sujektiv, das heißt $f(M) = N$ \\
+		Annahme: $f$ ist nicht bijektiv $\implies f$ nicht injektiv $\implies \exists m_1,m_2\in M: m_1\neq m_2 \wedge f(M_1) = f(m_2) \implies \abs{f(M)} < \abs{M} = \abs{N}$ Wiederspruch zu $f(M) = N$
+	  - 3. $\implies$ 1. trivial

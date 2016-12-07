@@ -15,7 +15,7 @@
 	 Analog: Von Beschleunigung zur Geschwindigkeit, und dann weiter zur Trajektorie
 *** Üben dieser Logik an unserem Beispiel
 	Gegeben: $a(t) = a_0,~t_0=0,v_0,x_0$ \\
-	\[\Rightarrow~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
+	\[\implies~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
 	\[x(t) = x_0 + \int_0^t (v_0 + a_0 t')\mathrm{d}t' = x_0 + v_0 t + \frac{a_0}{2}t^2\]
 ** Grundbegriffe der Differenzial und Integralrechung
 *** Funktion
@@ -24,10 +24,10 @@
 	\[\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}\]
 	$\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwaches $\Delta f\equiv f(x + \Delta x) - f(x)$.
 	- Aus $\Delta f = f'(x)\Delta(x) + O(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
-	- Anwendung auf die Identitätabbildung: $x \mapsto x \Rightarrow \mathrm{d}x = \Delta x$
-	  \[\Rightarrow \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
+	- Anwendung auf die Identitätabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
+	  \[\implies \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
 	  Dies ist eigentlich nur eine Schreibweise für $f'(x)$, _aber_ nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwertdefinition)
-	- $f'(x)$ wieder Funktion $\Rightarrow$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
+	- $f'(x)$ wieder Funktion $\implies$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
 	- Praxis
 	  \[(f\cdot g)' = f' g + g' f~\text{(Produkt/Leibnizregel)}\]
 	  \[(f \circ g)'(x) = f'(g(x))g'(x)~\text{(Kettenregel)}\]
@@ -38,7 +38,7 @@
 		\[(x^x)' = (e^{\ln{x^x}})' = (e^{x\ln{x}})' = e^{x\ln{x}}(\ln{x} + 1) = x^x(\ln{x} + 1)\]
 		\[\arctan'(x) \equiv (\tan^{-1}(x)) = \frac{1}{\tan^{-1}(y)}~\text{wobei $y = \tan^{-1}(x)$}\]
 		Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}} + \sin{y}(\frac{1}{\cos{y}})' = 1 + \sin{y}(-\frac{1}{\cos^2{y}})(-\sin{y}) = \] \\
-		\[ 1 + \tan^2{y} = 1 + x^2 \\ \Rightarrow \arctan'(x) = \frac{1}{1 + x^2}\]
+		\[ 1 + \tan^2{y} = 1 + x^2 \\ \implies \arctan'(x) = \frac{1}{1 + x^2}\]
 	- Verknüpfung \[f\circ g: x\mapsto f(g(x))\]
 	- Inverse \[f^{-1} : x=f(y)\mapsto y\]
 	- Grenzwerte:
@@ -118,7 +118,7 @@
    Trajektorie ist Abbildung: $\mathbb{R} \to \mathbb{R}^3, t\to \vec{x}(t) ) (x^1(t),x^1(t),x^3(t))$
    \[\vec{v} = \dot{\vec{x}}(t), \vec{a(t)} = \dot{\vec{v}}(t) = \ddot{\vec{x}}(t)\]
    Setzt allgemeine Definition der Ableitun voraus:
-   \[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \Rightarrow \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
+   \[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \implies \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
 *** Beispiel für 3-dimensionale Trajektorie
 	Schraubenbahn:
 	\[\vec{x}t = (R\cos{\omega t},R\sin{\omega t}, v_0 t)\]
@@ -152,7 +152,7 @@
 	- $v\cdot w = w\cdot v$
 	- $(\alpha u + \beta v) \cdot w = \alpha u\cdot w + \beta v\cdot w$
 	Sie heißt positiv-semidefinit, falls  $v\cdot v\geq 0$, \\
-	Sie heißt positiv-definit, falls  $v\cdot v = 0 \Rightarrow v = 0$
+	Sie heißt positiv-definit, falls  $v\cdot v = 0 \implies v = 0$
 	Hier : Skalarprodukt $\equiv$ positiv definite symmetrische Bilinearform
 *** Norm (Länge) eines Vektors
 	\[\abs{v} = \sqrt{v\cdot v} = \sqrt{v^2}\]
@@ -174,7 +174,7 @@
 	\[\v x = (x^1, 0, 0), \v y = (y^1, y^2, 0)\]
 	\[\v x \cdot \v y = x^1 \cdot y^1; \cos{\theta} = \frac{y^1}{\abs{\v y}}; \abs{\v x} = x^1\]
 **** TODO Skizze
-	 \[\Rightarrow \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
+	 \[\implies \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
 	 Dass dies für beliebige Vektoren gilt, wird später klar werden.
 *** Infinisetimaler Abstand
 	Speziell wird der infinitesimale Abstand wichtig sein:
@@ -187,14 +187,14 @@
    \[s(t) = \int_{t_0}^t \abs{\d \v x} = \int_{t_0}^t \d t' \abs{\f{\d \v x}{\d t'}} = \int_{t_0}^t\d t'\sqrt{\dot{\v x}(t')^2} = \int_{t_0}^t \sqrt{\v v(t')^2}\]
    Infinitesimale Version: \[\f{\d s(t)}{\d t} = \abs{\f{\d\v x}{\d t}} = \abs{\v v}\]
    Man kann (im Prinzip) $s(t) = s$ nach $t$ auflösen.
-   \[\Rightarrow t = t(s) \Rightarrow \underbrace{\v x(s)}_{\text{Parametrisierung der Trajektorie durch die Weglänge $s$}} \equiv \v x(t(s))\]
+   \[\implies t = t(s) \implies \underbrace{\v x(s)}_{\text{Parametrisierung der Trajektorie durch die Weglänge $s$}} \equiv \v x(t(s))\]
    Nützlich, zum Beispiel für die Definition des Tangentenvektors:
    \[\v T(s) = \f{\d\v x(s)}{\d s}\]
-   Es gilt \[\v T\parallel \v v; \abs{\v T} = \abs{\f{\v v \d t}{\abs{\v v}\d t}} = 1 \Rightarrow \v T \cdot \v T = 1\]
+   Es gilt \[\v T\parallel \v v; \abs{\v T} = \abs{\f{\v v \d t}{\abs{\v v}\d t}} = 1 \implies \v T \cdot \v T = 1\]
    Ableiten nach $s$:
    \[0 = \f{\d}{\d s}(1) = \f{\d \v T}{\d s}(\v T \cdot\v T) = \f{\d \v T}{\d s}\cdot \v T + \v T\cdot \f{\d\v T}{\d s} = 2\v T \cdot \f{\d \v T}{\d s}\]
    Nutze \[\v T\cdot \v T = T^i T^i\]
-   $\Rightarrow$ Ableitung des Tangentenvektors ist ortogonal zum Tangentenvektor.
+   $\implies$ Ableitung des Tangentenvektors ist ortogonal zum Tangentenvektor.
    Krümmungsradius der Bahn: \[\rho \equiv \f{1}{\abs{\f{\d \v T}{\d s}}}\]
    Normalenvektor: \[\v N = \f{\f{\d \v T}{\d s}}{\abs{\f{\d \v T}{\d s}}} = \rho \f{\d \v T}{\d s}\]
 *** Beispiel in d=2
@@ -202,8 +202,8 @@
 	\[\v v(t) = R\omega (-\sin(\omega t), \cos{\omega t})\]
 	\[\abs{\v v} = \sqrt{(R\omega)^2 (\sin^2{\omega t}+\cos^2{\omega t})} = R\omega\]
 	\[s(t) = \int_{t_0 = 0}^t \d t' \abs{\v v} = R\omega t;~t(x) = = \f{s}{R\omega}\]
-	\[\Rightarrow \v x(s) = R(\cos{\f{s}{R}}, \sin{\f{s}{R}}), \v T = \f{\d\v x}{\d s} = (-\sin{\f{s}{R}},\cos{\f{s}{R}})\]
-	\[\f{\d\v T}{\d s} = -\f{1}{R}(\cos{\f{s}{R}}, \sin{\f{s}{R}}) \Rightarrow \rho = R;~\v N = -(\cos{\f{s}{R}}, \sin{\f{s}{R}})\]
+	\[\implies \v x(s) = R(\cos{\f{s}{R}}, \sin{\f{s}{R}}), \v T = \f{\d\v x}{\d s} = (-\sin{\f{s}{R}},\cos{\f{s}{R}})\]
+	\[\f{\d\v T}{\d s} = -\f{1}{R}(\cos{\f{s}{R}}, \sin{\f{s}{R}}) \implies \rho = R;~\v N = -(\cos{\f{s}{R}}, \sin{\f{s}{R}})\]
 **** TODO Skizze
 ** Vektorprodukt
    \[V\times V \mapsto V;~(\v a, \v b) \mapsto \v c = \v a\times \v b\]

@@ -6,7 +6,7 @@
 	\[\v{F_G} = -G\frac{m_1 m_2}{r^2}\v{e_r}\]
 	mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}$
 *** Erdbeschleunigung
-	\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \Rightarrow g\approx \SI{9.81}{\meter\per\second\squared}\]
+	\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \implies g\approx \SI{9.81}{\meter\per\second\squared}\]
 	(mittleres $g$) \\
 **** Abweichungen
 	 - kompilizierte Massenverteilung, Strukturen
@@ -116,7 +116,7 @@
 ** Schiefe Ebene: Messung der Reibungskraft (Skizze)
    Kräftegleichgewicht: $F_H = F_R$
    \[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
-   Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R = \tan{\alpha}$
+   Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \implies \mu_R = \tan{\alpha}$
    \[\alpha = \SI{15}{\degree} \rightarrow \tan{\alpha} = 0.27,\mu_G = 0.27\]
 ** Zentripetalkraft
    \[\v a_{Zp} = \v \omega \times(\v\omega\times\v r)\quad \v{F}_{Zp} = m\v\omega\times(\v\omega\times\v r)\]
@@ -126,7 +126,7 @@
 	\[F_G = m g = F_Z \cos{\theta}\]
 	\[F_{Zp} = F_Z \sin{\theta}\]
 	\[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
-	\[a_{Zp} = \omega^2 r \Rightarrow \omega = \sqrt{\frac{g}{\tan{\theta}}}\]
+	\[a_{Zp} = \omega^2 r \implies \omega = \sqrt{\frac{g}{\tan{\theta}}}\]
 	- $\theta$ steigt mit $\omega$ an
 	- $\theta(\omega)$ ist unabhängig von Masse
 *** Beispiel 2 Geostationärer Satellit

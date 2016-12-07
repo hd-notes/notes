@@ -8,14 +8,14 @@
 	   - Vorteile
 		 - natürliche Ausdrucksweise für arithmetische und algebraische Funktionaliät ("Taschenrechner")
 		 - einfache Auswertung durch Substitutionsmodell \rightarrow Auswertungsreihenfolge nach Post-Order
-		 - mathematisch gut formalisierbar \Rightarrow Korrektheitsbeweise, besonders bei Parallelverarbeitung
+		 - mathematisch gut formalisierbar \implies Korrektheitsbeweise, besonders bei Parallelverarbeitung
 		 - Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakultät, Baumtraversierung)
 	   - Nachteile
 		 - viele Probleme lassen sich anders natürlicher ausdrücken (z.B. Rekursion vs. Iteration)
-		 - setzt unendlich viel Speicher voraus (\Rightarrow Memory management notwendig \Rightarrow später)
+		 - setzt unendlich viel Speicher voraus (\implies Memory management notwendig \implies später)
 		 - Entitäten, die sich zeitlich verändern sind schwer zu modellieren
 	   - Korrolar: kann keine externen Resourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
-		 - \Rightarrow Multi-Paradigmen-Sprachen, zum Beispiel Kombination von Funktionaler Programmierung und prozeduraler Programmierung
+		 - \implies Multi-Paradigmen-Sprachen, zum Beispiel Kombination von Funktionaler Programmierung und prozeduraler Programmierung
 ** Kennzeichen
 *** Prozeduren
    - Prozeduren: Funktionen, die nichts zurückgeben, haben nur Seiteneffekte
@@ -85,7 +85,7 @@
 		 typ name = neuer_wert;       // Initialisierung
 		 typ const name = neuer_wert; // write once
 		 #+END_SRC
-	   - \Rightarrow Folgen: mächtiger, aber ermöglicht völlig neue Bugs \Rightarrow erhöhte Aufmerksamkeit beim Programmieren
+	   - \implies Folgen: mächtiger, aber ermöglicht völlig neue Bugs \implies erhöhte Aufmerksamkeit beim Programmieren
 		 - die Reihenfolge der Ausführung ist viel kritischer als beim Substitutionsmodell
 		 - Programmierer muss immer ein mentales Bild des aktuellen Systemzustans haben
 *** Schleifen
@@ -110,7 +110,7 @@
 	|       3 | false     | $\emptyset$ |
 
 	- in c++ beginnt Zählung meist mit $0$ ("zero based")
-	- vergisst man Inkrementierung \Rightarrow Bedingung immer "true" \Rightarrow Endlosschleife \Rightarrow Bug
+	- vergisst man Inkrementierung \implies Bedingung immer "true" \implies Endlosschleife \implies Bug
 	- drei äquivalente Schreibweisen für Inkrementierung:
 	  - counter = counter + 1; // assignment $\estimates$ Zuweisung
 	  - counter += 1;          // add-assignment $\estimates$ Abbkürzung
@@ -129,10 +129,10 @@
 ***** Newtonverfahren
 	  Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
 	  Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta +$ setze $x^\ast = x + \Delta$
-	  \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \Rightarrow \Delta = - \frac{f(x)}{f'(x)}\]
+	  \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \implies \Delta = - \frac{f(x)}{f'(x)}\]
 	  Iteratiosvorschrift:
 	  \[x^{(t + 1)} = x^{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
-	  Anwendung auf Wurzel: setze $f(x) = x^2 - y \Rightarrow$ mit $f(x^\ast) = 0$ gilt
+	  Anwendung auf Wurzel: setze $f(x) = x^2 - y \implies$ mit $f(x^\ast) = 0$ gilt
 	  \[(x^\ast)^2 -y = 0 \quad (x^\ast)^2 = y \quad x^\ast = \sqrt{y}\quad f'(x) = 2x)\]
 	  Iterationsvorschrieft:
 	  \[x^{(t + 1)} = x^{(t)} - \frac{(x^{(t)^2}) - y}{2x^{(t)}} = \frac{x^{(t)^2} + y}{2x^{(t)}}\]

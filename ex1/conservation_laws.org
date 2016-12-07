@@ -52,7 +52,7 @@
 	 \begin{align*}
 	 E_{pot} &= \rho(a^{(n)}b^{(n)}c^{(n)}) h^{(n)} g = (\sqrt{2})^4 E_{pot}^{(n-1)} \\
 	 E_{pot}^{(1)} &= m g h \\
-	 \Rightarrow E_pot^{(13)} &= 4^{12} E_{pot}^{(1)} \\
-	 \intertext{$\Rightarrow$ Verstärkungsfaktor $\approx \SI{1.7e7}{}$}
+	 \implies E_pot^{(13)} &= 4^{12} E_{pot}^{(1)} \\
+	 \intertext{$\implies$ Verstärkungsfaktor $\approx \SI{1.7e7}{}$}
 	 \end{align*}
 

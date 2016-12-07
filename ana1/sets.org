@@ -5,31 +5,31 @@
 	| $\exists x$  | es gibt (mindestens) ein $x$ |
 	| $\exists! x$ | es gibt genau ein $x$        |
 *** Hinreichend und Notwendig
-	- $A\Rightarrow B$: wenn $A$ gilt, gilt auch $B$, $A$ ist *hinreichend* für $B$, daraus folgt: $B$ ist *notwendig* für $A$, Ungültigkeit von $B$ impliziert die Ungültigkeit von $A$ ($\neg B \Rightarrow \neg A$)
-	- $A \Leftrightarrow B$: $A$ gilt, genau dann, wenn $B$ gilt
+	- $A\implies B$: wenn $A$ gilt, gilt auch $B$, $A$ ist *hinreichend* für $B$, daraus folgt: $B$ ist *notwendig* für $A$, Ungültigkeit von $B$ impliziert die Ungültigkeit von $A$ ($\neg B \implies \neg A$)
+	- $A \iff B$: $A$ gilt, genau dann, wenn $B$ gilt
 *** Beweistypen
 **** Direkter Schluss
-	 $A\Rightarrow B$
+	 $A\implies B$
 ***** Beispiel
-	  $m$ gerade Zahl $\Rightarrow$ $m^2$ gerade Zahl
+	  $m$ gerade Zahl $\implies$ $m^2$ gerade Zahl
 ****** Beweis
-	   $m$ gerade $\Rightarrow \exists n\in\mathbb{N}~\text{sodass}~m = 2n \Rightarrow m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
+	   $m$ gerade $\implies \exists n\in\mathbb{N}~\text{sodass}~m = 2n \implies m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
 **** Beweis der Transponerten (der Kontraposition)
-	 Zum Beweis $A\Rightarrow B$ zeigt man $\neg B\Rightarrow \neg A~(A\Rightarrow B)\Leftrightarrow (\neg B) \Rightarrow (\neg A)$
+	 Zum Beweis $A\implies B$ zeigt man $\neg B\implies \neg A~(A\implies B)\iff (\neg B) \implies (\neg A)$
 ***** Beispiel
-	  Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\Rightarrow m~\text{gerade}$
+	  Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\implies m~\text{gerade}$
 ****** Beweis
-	   Wir zeigen: $m$ ist ungerade $\Rightarrow m^2$ ungerade
-	   \[\exists n\in\mathbb{N}:~m=2n+1\Rightarrow m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\Rightarrow m^2~\text{ungerade} \square\]
+	   Wir zeigen: $m$ ist ungerade $\implies m^2$ ungerade
+	   \[\exists n\in\mathbb{N}:~m=2n+1\implies m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\implies m^2~\text{ungerade} \square\]
 **** Indirekter Schluss ( Beweis durch Wiederspruch)
-	 Man nimmt an, dass $A\Rightarrow B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\Rightarrow \neg C$, also ein Wiederspruch
+	 Man nimmt an, dass $A\implies B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\implies \neg C$, also ein Wiederspruch
 ***** Beispiel
 	  $\not\exists q\in\mathbb{Q}: a^2 = 2$
 ****** Beweis
 	   Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
 	   $\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
-	   Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeigt)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
-	   Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
+	   Falls \[a^2=2\implies (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \implies b^2 = 2c^2 \implies b^2~\text{gerade}~\implies b~\text{ist gerade (schon gezeigt)}\] \[\implies\exists d\in\mathbb{N}~\text{sodass}~b=2d\implies b^2=4d^2\]
+	   Außerdem $b^2=2c^2\implies 2c^2=4d^2\implies c^2=2d^2\implies c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
 *** Summenzeichen und Produktzeichen
 **** Summenzeichen
 	 Wir definieren für $m > 0$ \[\sum_{k=m}^m a_k := a_m + \ldots + a_n\] falls $n\geq m$
@@ -43,12 +43,12 @@
 	- $x\in M$ (x Element von M)
 	- x \not\in M (x kein Element von M)
 	\[M = \{x_1, x_2, \ldots, x_n\}\]
-	\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \Leftrightarrow A(x)\]
+	\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \iff A(x)\]
 *** Mengenrelationen
 	- Mengeninklusion $A\subseteq M$ ($A$ ist eine Teilmenge von $M$)
-	  \[\Forall x: (x\in A \Rightarrow x\in M)\] ,zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
-	- \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
-	- \[A \subset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
+	  \[\Forall x: (x\in A \implies x\in M)\] ,zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
+	- \[A = B \iff \Forall x: (x\in A \iff x\in B)\]
+	- \[A \subset M~\text{(strikte Teilmenge)}~\iff A\subset M \wedge A \neq M\]
 	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beispiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
 	- Durchschnitt \[A\cap B := \{x\mid x\in A \wedge x\in B\}\]
 	- Vereinigung \[A\cup B := \{x \mid x\in A \vee x\in B\}\]
@@ -69,17 +69,17 @@
 	$A,B,C,D$ seien Mengen
 	- $\emptyset \subseteq A$
 	- $A\subseteq A$ \hfill Reflexivität
-	- $A\subseteq B, B\subseteq C \Rightarrow A\subseteq C$ \hfill Transitivität
+	- $A\subseteq B, B\subseteq C \implies A\subseteq C$ \hfill Transitivität
 	- $A\cap B = B\cap A$ \\ $A\cup B = B\cup A$ \hfill Kommutativität
 	- $(A\cap B)\cap C = A\cap (B\cap C)$ \\ $(A\cup B) \cup C = A\cup (B\cup C)$ \hfill Assoziativität
 	- $A\cap (B\cup C) =(A\cap B) \cup (A\cap C)$ \\ $A\cup (B\cap C) =(A\cup B) \cap (A\cup C)$
 	- Eigenschaften der Komplementbildung: \\
 	  Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
 	  - Beweis:
-		\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\Leftrightarrow (x\in D\wedge x\not\in A) \vee (x\in D \wedge x\not\in B)\] \[\Leftrightarrow (x\in D\setminus A) \vee (x\in D\setminus B) \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
+		\[x\in C_D(A\cap B) \iff x\in D \wedge (x\not\in (A\cap B)) \iff x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\iff (x\in D\wedge x\not\in A) \vee (x\in D \wedge x\not\in B)\] \[\iff (x\in D\setminus A) \vee (x\in D\setminus B) \iff x\in D\setminus(A\cup B)~\square\]
 	  - Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
 *** geordneter Tupel
-	Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \Leftrightarrow x_1 = y_1, \ldots, x_n = y_n\]
+	Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \iff x_1 = y_1, \ldots, x_n = y_n\]
 	Beachte:
 	\[\{x_1, \ldots, x_n\} = \{y_i,\ldots,y_n\}\not\implies x_1 = y_1, \ldots, x_n = y_n\]
 *** Kartesisches Produkt
@@ -91,8 +91,8 @@
 	Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren Elementen (Bezeichnung: $a \sim b$), sodass
 	- Für jede zwei $a,b\in A$ gilt entweder $a\sim b \vee a\not\sim b$
 	- $a\sim a$ \hfill Reflexivität
-	- $a\sim b \Rightarrow b\sim a$ \hfill Symmetrie
-	- $a \sim b, b \sim c \Rightarrow a \sim c$ \hfill Transitivität
+	- $a\sim b \implies b\sim a$ \hfill Symmetrie
+	- $a \sim b, b \sim c \implies a \sim c$ \hfill Transitivität
 	Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\sim a\}$
 ** Relationen und Abbildungen
 *** Relationen
@@ -101,7 +101,7 @@
 	und *Definitionsbereiche von $R$ (bezüglich $X$)
 	\[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
 *** Graph der Abbildung
-	$R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \Leftrightarrow D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
+	$R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \iff D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
 	also enthält $R(x)$ genau ein Element. \\
 	$X$ heißt Definitionsbereich von $f$ \\
 	$Y$ heißt Werte- oder Bildbereich von $f$ (Bild) \\
@@ -114,12 +114,12 @@
 	  Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x) = \{\sqrt{x},-\sqrt{x}, x\geq 0\}$
 	  $f$ heißt
 	  - surjektiv, wenn gilt $f(X) = Y$
-	  - injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
+	  - injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \implies x_1 = x_2$
 	  - bijektiv, wenn $f$ surjektiv und injectiv ist
 *** Umkehrabbildung
 	Sei die Abbildung $f: X\rightarrow Y$ bijektiv. Dann definieren wir die Umkehrabbildung $f^{-1}:Y\rightarrow X$ durch $y\rightarrow x\in X$, eindeutig bestimmt durch $y = f(x)$
 **** Bemerkung
-	 \[(x,y) \in~\text{Graph }f\Leftrightarrow (y,x)\in~\text{Graph }f^{-1}\]
+	 \[(x,y) \in~\text{Graph }f\iff (y,x)\in~\text{Graph }f^{-1}\]
 *** Komposition
 	Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
 *** Identitäts Abbildung
@@ -136,7 +136,7 @@
 	1. Die Zahl $1$ ist eine natürliche Zahl $1\in\mathbb{N}$
 	2. Zu jeder natürlichen Zahl $n$, gibt es genau einen "Nachfolger" $n' (=: n+1)$
 	3. Die Zahl 1 ist kein Nachfolger einer natürlichen Zahl
-	4. $n' = m' \Rightarrow n = m$
+	4. $n' = m' \implies n = m$
 	5. Enthält eine Teilmenge  $M \subseteq \mathbb{N}$ die Zahl $1$ und von jedem $n\in m$ auch den Nachfolger $n'$ ist $M = \mathbb{N}$
 	Bemerkung: \\
 	Mit Hilfe der Axiome lassen sich auf $\mathbb{N}$ Addition ($+$), Multiplikation ($\cdot$) und Ordung ($\leq$) einführen.
@@ -145,7 +145,7 @@
 	$n + 1 := m'$
 	$n + m' := (n+m)';~n\cdot m' := n m + n$
 	Man kann zeigen, dass jede Menge, welche die Peano Axiome erfüllt isomorph bezüglich Multiplikation und Addition zu $\mathbb{N}$ ist
-	Wir definieren $n < m \Leftrightarrow \exists x\in \mathbb{N}: x + m = m$
+	Wir definieren $n < m \iff \exists x\in \mathbb{N}: x + m = m$
 *** Vollständige Induktion
 **** Induktionsprinzip
 	 Es seien die folgende Schritte vollzogen:
@@ -154,7 +154,7 @@
 	 Dann sind alle Aussagen $A(n),n\in\mathbb{N}$ gültig.
 **** Beweis:
 	 Wir definieren die Tailmenge $M\subseteq\mathbb{N},~M:=\{n\in \mathbb{N}\mid A(N)~\text{ist gültig}\}$
-	 Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\Rightarrow n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
+	 Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\implies n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
 **** Beispiel 1
 	 Zu Beweisen: \[\Forall n\in\mathbb{N} \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6}\]
 ***** Beweis
@@ -195,10 +195,10 @@
 	- Verträglichkeit
 	  1. \(a\cdot (b + c) = (a\cdot b)+ (a\cdot c)\)\hfill Distributivität
 **** Satz
-	 $(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \Leftrightarrow\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
+	 $(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \iff\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
 	 dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ in folgendem Sinne verträglich (Axiom M0):
-	 - \(a\leq b\Rightarrow a+c \leq b + c\)
-	 - \(0\leq a\wedge 0\leq b \Rightarrow 0\leq a\cdot b\)
+	 - \(a\leq b\implies a+c \leq b + c\)
+	 - \(0\leq a\wedge 0\leq b \implies 0\leq a\cdot b\)
 **** Bemerkung
 	 \[\{a\in\mathbb{Q}: a = \frac{r}{s},r\in\mathbb{N}_0,s\in\mathbb{N}\} =: \mathbb{Q}_+ (\mathbb{Q}_{\geq 0})\]
 ** Abzählbarkeit
@@ -221,8 +221,8 @@
 	  - Injektivität: Sei $z_1,z_2 \in\mathbb{Z}$ und $f(z_1) = f(z_2)$ \\
 		ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade *Wiederspruch*.
 		Falls
-		- $z_1,z-2 \geq 0 \Rightarrow 2z_1 = f(z_1) = f(z_2) = 2z_2 \Rightarrow z_1 = z_2$
-		- $z_1,z-2 < 0 \Rightarrow -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \Rightarrow z_1 = z_2 \hfill\square$
+		- $z_1,z-2 \geq 0 \implies 2z_1 = f(z_1) = f(z_2) = 2z_2 \implies z_1 = z_2$
+		- $z_1,z-2 < 0 \implies -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \implies z_1 = z_2 \hfill\square$
 **** Beispiel
 	 - $\mathbb{N}^2 = \mathbb{N}\times\mathbb{N}$ abzählbar unendlich
 	 - $\mathbb{Q}$ abzählbar unendlich
@@ -230,7 +230,7 @@
 **** Abzählbarkeit von $\mathbb{N}\times\mathbb{N}$
 	 \[(1,1) \to (1,2) \to (2,1) \to (2,2) \to (1,3) \to (2,3) \to (3,2) \to (3,1)\]
 **** Korollar 1.30
-	 $M_1,M_2,\ldots,M_n$ abzählbar $\Rightarrow M_1 \times \ldots \times M_n$ abzählbar.
+	 $M_1,M_2,\ldots,M_n$ abzählbar $\implies M_1 \times \ldots \times M_n$ abzählbar.
 ***** Beweis
 	  Durch vollständige Induktion $M_1\times(M_2\times\ldots \times M_n)\approx \mathbb{N}\times\mathbb{N}\approx\mathbb{N}$
 **** Satz
@@ -244,31 +244,31 @@
 *** Definition
 	Sei $A$ eine Menge. Relation $R\subseteq A\times A$ heißt Teilordnung (Halbordnung) auf $A$, wenn $\Forall y,x,z\in A$ gilt:
    1. $x\leq x$ \hfill (Reflexivität)
-   2. $x\leq y \wedge y\leq x \Rightarrow x = y$ \hfill (Symmetrie)
-   3. $x\leq y \wedge y\leq z \Rightarrow x\leq z$ \hfill (Transitivität)
+   2. $x\leq y \wedge y\leq x \implies x = y$ \hfill (Symmetrie)
+   3. $x\leq y \wedge y\leq z \implies x\leq z$ \hfill (Transitivität)
    Wenn außerdem noch $\Forall x,y\in A$ gilt:
    4. [@4] $x\leq y \vee y\leq x$ \hfill (Vergleichbarkeit je zweier Elemente)
    so heißt $R$ (totale) Ordung auf $A$. $(A,\leq) heißt teilweise beziehungsweise (total) geordnete Menge.
 **** Beispiel
 	 1. $(\mathbb{Q},\leq)$ mit der üblichen Ordnung ist eine total geordnete Menge
-	 2. Wir definieren auf der Potenzmenge $\mathcal{P}(A)$ einer Menge $A$ eine Teilordnung "$\leq$": \[B\leq C \Leftrightarrow B \subseteq C\Forall B,C\in \mathcal{P}(A)\] \\
+	 2. Wir definieren auf der Potenzmenge $\mathcal{P}(A)$ einer Menge $A$ eine Teilordnung "$\leq$": \[B\leq C \iff B \subseteq C\Forall B,C\in \mathcal{P}(A)\] \\
 		*Beweis*: 1. - 3. sind trivial, 4. geht nicht (keine Totalordung). Wähle $B,C\in \mathcal{P}(a), B,C\neq \emptyset, B\cap C = \emptyset$. Dann gilt weder $B\subseteq C$ noch $C\subseteq B\hfill\square$
-	 3. Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \Leftrightarrow \Forall x\in A: f(x) \leq g(x)$ \\
+	 3. Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \iff \Forall x\in A: f(x) \leq g(x)$ \\
 		(1.) - (3.) trivial, 4. gilt nicht. Falls $A$ mehr als ein Element hat, gibt es eine Funktion, die nicht miteinander verglichen werden können.
 ** Maximum und Minimum einer Menge
 *** Definition
 	Sei $(A,\leq)$ eine teilweise geordnete Menge, $a\in A$ \\
 	Maximum:
-	\[a = \max A \Leftrightarrow \Forall x\in A: x\leq a\]
+	\[a = \max A \iff \Forall x\in A: x\leq a\]
 	Minimum:
-	\[a = \max A \Leftrightarrow \Forall x\in A: a\leq x\]
+	\[a = \max A \iff \Forall x\in A: a\leq x\]
 *** Bemerkung
 	Durch die Aussagen ist $a$ eindeutig bestimmt, denn seien:
-	\[a_1,a_2\in A:\Forall x\in A \begin{cases}x\leq a_1 \\ x\leq a_2 \end{cases} \Rightarrow \begin{cases} a_2 \leq a_1 \\ a_1 \leq a_2 \end{cases} \xRightarrow{\text{Symmetrie}} a_1 = a_2 \]
+	\[a_1,a_2\in A:\Forall x\in A \begin{cases}x\leq a_1 \\ x\leq a_2 \end{cases} \implies \begin{cases} a_2 \leq a_1 \\ a_1 \leq a_2 \end{cases} \xRightarrow{\text{Symmetrie}} a_1 = a_2 \]
 ** Schranken
    Sei $(A,\leq)$ eine (total geordnete) Menge, $B\subseteq A$
-   1. $S\in A$ heißt obere Schranke zu $B \Leftrightarrow \Forall x\in B: x\leq S$ \\
-	  $S\in A$ heißt untere Schranke zu $B \Leftrightarrow \Forall x\in B: S\leq x$
+   1. $S\in A$ heißt obere Schranke zu $B \iff \Forall x\in B: x\leq S$ \\
+	  $S\in A$ heißt untere Schranke zu $B \iff \Forall x\in B: S\leq x$
    2. $\bar{S}(B):= \{S\in A \mid S~\text{S ist untere Schranke zu}~B\}$ \\
 	  $\ubar{S}(B):= \{S\in A \mid S~\text{S ist obere Schranke zu}~B\}$
    3. Existiert $g:=\min \ubar{S}(B)$ beziehungsweise $g:=\max \bar{S}$ so sagen wir: \\
@@ -276,15 +276,15 @@
 	  $g = \inf B$ (größte obere Schranke, _infimum_, untere "Grenze" von $B$ in $A$)
 *** Bemerkung
 	1. Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nach Definition.
-	   \[s\in \ubar{S}(B) \Rightarrow \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
-	   Ebeso gilt: $\exists\min B = \ubar{b} \Rightarrow \inf B = \ubar{b}$
+	   \[s\in \ubar{S}(B) \implies \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
+	   Ebeso gilt: $\exists\min B = \ubar{b} \implies \inf B = \ubar{b}$
 *** Beispiel
 	1. $B = \{\frac{1}{n}\mid n\in\mathbb{N}\}, A = \mathbb{R},~(1, \frac{1}{2},\ldots)$
 	   - Es gilt $1\in B, \Forall n\in\mathbb{N}$ gilt $\frac{1}{n} \leq 1$, daher folgt $\max B = \sup B = 1$
 	   - Sei $s\leq 0$, dann gilt $\Forall n\in\mathbb{N}: s\leq \frac{1}{n}$, also $s\in \bar{S}(B)$ \\
-		 Sei $s > 0 \Rightarrow s > \frac{1}{n} \Leftrightarrow n > \frac{1}{s}$, also $s\not\in\bar{S}(B)$ \\
+		 Sei $s > 0 \implies s > \frac{1}{n} \iff n > \frac{1}{s}$, also $s\not\in\bar{S}(B)$ \\
 		 Es folgt $\bar{S}(B) = \{x\in\mathbb{R}\mid s\leq 0\}$ insbesondere $0\in\bar{S}(B)$ \\
-		 Ferner gilt $\Forall s\in \bar{S}(B):s\leq 0 \Rightarrow \ubar{0} = \max \bar{S}(B) = \inf B$
+		 Ferner gilt $\Forall s\in \bar{S}(B):s\leq 0 \implies \ubar{0} = \max \bar{S}(B) = \inf B$
 	2. $A = \mathbb{Q}, B = \{x\in\mathbb{Q} : 0 \leq x \wedge x^2 \leq 2\}$. Es gilt $0 = \min B = \inf B$, aber $\sup B$ existiert nicht in $\mathbb{Q}$
 ** Reelle Zahlen
    $x^2 = 2$ hat keine Lösungen in $\mathbb{Q}$. Allerdings können wir $\sqrt{2}$ "beliebig gut" durch $y\in \mathbb{Q}$ approximieren, das heißt $\Forall \eps > 0\exists y\in\mathbb{Q}:2 - \eps \leq y^2 \leq 2 + \eps$
@@ -300,7 +300,7 @@
 	   \[\Forall x,y\in \mathbb{R}:\]
 	   \[f(x+y) = f(x) + f(y)\]
 	   \[f(x y) = f(x) f(y)\]
-	   \[x\leq y \Rightarrow f(x) \leq f(y)\]
+	   \[x\leq y \implies f(x) \leq f(y)\]
 	2. $\mathbb{N}$ (und damit auch $\mathbb{Z},\mathbb{Q}$) lassen sich durch injektive Homomorphismus $g:\mathbb{N}\to\mathbb{R}$ in $\mathbb{R}$ einbetten
 	   \[g(\tilde{0}_{\in\mathbb{N}}) = 0_{\in\mathbb{R}}\]
 	   \[g(\tilde{n}_{\in\mathbb{N}} + 1) = g(n_{\in\mathbb{R}}) + 1\]
@@ -309,7 +309,7 @@
 	Wir können $\mathbb{R}$ ausgehend von $\mathbb{Q}$ konstruieren.
 **** Methode der Abschnitte
 	 Jede reelle Zahl wird charakterisiert durch ein "rechts offenes, unbeschränktes Interval", dessen "rechte Grenze" die Zahl erstellt.
-	 \[\mathbb{R}:=\{A\subseteq \mathbb{Q}\begin{cases}A\neq\emptyset \\ x\in A, y\leq x\Rightarrow y\in A \\ \Forall x\in A\exists y\in A, x<y\end{cases}\]
+	 \[\mathbb{R}:=\{A\subseteq \mathbb{Q}\begin{cases}A\neq\emptyset \\ x\in A, y\leq x\implies y\in A \\ \Forall x\in A\exists y\in A, x<y\end{cases}\]
 **** Mehtode der Cauchy-Folgen
 	 Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalenter "Cauchy Folgen" aus $\mathbb{Q}$ (später)
 *** Definition 1.37
@@ -323,23 +323,23 @@
 	   \begin{align}
 	   \abs{x + y}^2 &= (x+y)^2 = x^2 + 2x y + y^2 = \abs{x}^2 + 2xy + \abs{y}^2 \\
 	   &\leq \abs{x}^2 + 2\abs{x y} + \abs{y}^2 = \abs{x}^2 + 2\abs{x}\abs{y} + \abs{y^2} \\
-	   &= (\abs{x} + \abs{y})^2 \Rightarrow \abs{x + y} \leq \abs{\abs{x} + \abs{y}} = \abs{x} + \abs{y} \tag*{$\square$}
+	   &= (\abs{x} + \abs{y})^2 \implies \abs{x + y} \leq \abs{\abs{x} + \abs{y}} = \abs{x} + \abs{y} \tag*{$\square$}
 	   \end{align}
-	3. $\abs{x + y} = \abs{x} + \abs{y} \Leftrightarrow x y \geq 0$
+	3. $\abs{x + y} = \abs{x} + \abs{y} \iff x y \geq 0$
 *** Satz 1.39
 	1. $\abs{\abs{x} - \abs{y}} \leq \abs{x - y}$ \\
 	   *Beweis:* \\
 	   \begin{align}
-	   \abs{x} &= \abs{x - y + y} \leq \abs{x - y} + \abs{y} \Rightarrow \abs{x} - \abs{y} \leq \abs{x - y} \\
-	   \abs{y} &= \abs{y - x + x} \leq \abs{y - x} + \abs{x} \Rightarrow \abs{y} - \abs{x} \leq \abs{x - y} \\
+	   \abs{x} &= \abs{x - y + y} \leq \abs{x - y} + \abs{y} \implies \abs{x} - \abs{y} \leq \abs{x - y} \\
+	   \abs{y} &= \abs{y - x + x} \leq \abs{y - x} + \abs{x} \implies \abs{y} - \abs{x} \leq \abs{x - y} \\
 	   \abs{\abs{x} - \abs{y}} &= \max \{\abs{x} - \abs{y},\abs{y} - \abs{x}\} \leq \abs{x - y} \tag*{$\square$}
 	   \end{align}
-	2. \[\abs{x - y} \leq \eps \Leftrightarrow \begin{cases} x - \eps \leq y \leq x + \eps \\ y - \eps \leq x \leq y + \eps \end{cases}\]
+	2. \[\abs{x - y} \leq \eps \iff \begin{cases} x - \eps \leq y \leq x + \eps \\ y - \eps \leq x \leq y + \eps \end{cases}\]
 	   *Beweis:* \\
 	   \begin{align}
-	   \abs{x - y} = \max\{x - y , y - x\} \leq \eps \Leftrightarrow \begin{cases} x - y \leq \eps \\ y - x \leq \eps\end{cases} \Leftrightarrow \begin{cases} x \leq y + \eps \\ y - x \leq \eps \end{cases} \Leftrightarrow y - \eps \leq x \leq y + \eps
+	   \abs{x - y} = \max\{x - y , y - x\} \leq \eps \iff \begin{cases} x - y \leq \eps \\ y - x \leq \eps\end{cases} \iff \begin{cases} x \leq y + \eps \\ y - x \leq \eps \end{cases} \iff y - \eps \leq x \leq y + \eps
 	   \end{align}
-	   Vertausche $x$ und $y$ \Rightarrow $x - \eps \leq x + \eps \hfill \square$
+	   Vertausche $x$ und $y$ $\implies$ $x - \eps \leq x + \eps \hfill \square$
 *** Definition 1.40
 	Sei $a,b\in\mathbb{R},a\leq b$
 	- $[a,b]:=\{x\in\mathbb{R}: a\leq x \leq b\}$ \hfill abgeschlossenes Intervall
@@ -348,20 +348,20 @@
 	- $(a,b\right]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
 	- $\eps > 0, I_\eps (x) := (x -\eps,x + \eps) = \{y\in\mathbb{R}:\abs{x - y} < \eps = B_\eps (x) (\text{Kugel})\}$
 *** Lemma 1.41
-	Es gilt $y\in I_\eps (x) \Rightarrow \exists \delta > 0: I_\delta (y) \subseteq I_\eps (x)$
+	Es gilt $y\in I_\eps (x) \implies \exists \delta > 0: I_\delta (y) \subseteq I_\eps (x)$
 **** Beweis
-	 Sei $y\in I_\eps (x) \Rightarrow \abs{x - y}  < \eps \Leftrightarrow \eps - \abs{x - y} > 0$
+	 Sei $y\in I_\eps (x) \implies \abs{x - y}  < \eps \iff \eps - \abs{x - y} > 0$
 	 Wähle $0 < \delta < \eps - \abs{x - y}$. Es ist nun zu zeigen $I_\delta (y) \subseteq I_\eps (x)$, das heißt
-	 $z\in I_\delta(y) \Rightarrow z\in I_\eps(x)$. Es gilt
+	 $z\in I_\delta(y) \implies z\in I_\eps(x)$. Es gilt
 	 \begin{align}
-	 &z\in I_\delta (y) \Rightarrow \abs{z - y}  <\delta \\
-	 \Rightarrow &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \eps \\
-	 \Rightarrow &z\in I_\eps (x) \tag*{$\square$}
+	 &z\in I_\delta (y) \implies \abs{z - y}  <\delta \\
+	 \implies &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \eps \\
+	 \implies &z\in I_\eps (x) \tag*{$\square$}
 	 \end{align}
 *** Definition 1.42
 	$A,B$ seien geordnete Mengen, $f:A\to B$ heißt:
-	- monoton $\begin{cases} \text{wachsed} & x \leq y \Rightarrow f(x) \leq f(y)  \\ \text{fallend} & x \leq y \Rightarrow  f(x) \leq f(y) \end{cases}$
-	- streng monoton $\begin{cases} \text{wachsend} & x < y \Rightarrow f(x) < f(y) \\ \text{fallend} & x < y \Rightarrow f(x) > f(y) \end{cases}$
+	- monoton $\begin{cases} \text{wachsed} & x \leq y \implies f(x) \leq f(y)  \\ \text{fallend} & x \leq y \implies  f(x) \leq f(y) \end{cases}$
+	- streng monoton $\begin{cases} \text{wachsend} & x < y \implies f(x) < f(y) \\ \text{fallend} & x < y \implies f(x) > f(y) \end{cases}$
 **** Beispiel 1.43
 	 $\mathbb{R}_+\setminus \{0\} \to \mathbb{R}_+\setminus\{0\}, x\mapsto x^n$ ist streng monoton wachsend $\Forall n\in\mathbb{N}$
 ***** Beweis
@@ -372,7 +372,7 @@
 	 Wir betrachten den Fall $f$ streng monoton wachsend. Seien $y_1,y_2 \in N, y_1 < y_2,x_1 = f^{-1}(y_1), x_2 = f^{-1}(y_2). \\
 	 Behauptung $x_1 < x_2$ (sonst wäre $x_1 \geq x_2). \\
 	 Falls $x_1 > x_2 \xRightarrow{\text{streng monoton}} f(x_2) > f(x_2)$ *Widerspruch* zu $y_1 < y_2$ \\
-	 Falls $x_1 = x_2 \Rightarrow y_1 = y_2$ *Widerspruch* zur Annahme $y_1 < y_2 \hfill \square$
+	 Falls $x_1 = x_2 \implies y_1 = y_2$ *Widerspruch* zur Annahme $y_1 < y_2 \hfill \square$
 *** Definition 1.45 Produktzeichen
 	Für $a\in\mathbb{R},n\in\mathbb{N}$ definieren wir $a^n := \prod_{j=1}^n a$ und für $a\in\mathbb{R}\setminus\{0\},n\in\mathbb{N}$ $a^{-n} := \frac{1}{a^n}$.
 *** Satz 1.46
@@ -413,17 +413,17 @@
 *** Lemma 1.51
 	Sei $m\in R$ nach oben (beziehungsweise nach unten) beschränkt \\
 	Dann gilt
-	1. $s = \sup M \Leftrightarrow \Forall \eps > 0 \exists x\in M: s - \eps < x (\geq s)$
-	2. $l=\inf M \Leftrightarrow \Forall \eps > 0 \exists x\in M: (l \leq) x < l + \eps$
+	1. $s = \sup M \iff \Forall \eps > 0 \exists x\in M: s - \eps < x (\geq s)$
+	2. $l=\inf M \iff \Forall \eps > 0 \exists x\in M: (l \leq) x < l + \eps$
 **** Beweis
 	 Wir beweisen 1. \\
-	 $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \eps$ von $M$ $\Leftrightarrow$
+	 $s\neq \sup M\iff s$ ist nicht die kleinste obere Schranke von $m$ $\iff$ es gibt eine kleinere obere Schranke $s' = s - \eps$ von $M$ $\iff$
 	 nicht $\Forall \eps > 0\exists x\in M: x > s - \eps \hfill \square$
 *** Lemma 1.52
 	$\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
 **** Beweis
-	 sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \eps= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
-	 \Rightarrow $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
+	 sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \eps= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \implies m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
+	 $\implies x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
 *** Lemma 1.53 (Bernoullische Ungleichung)
 	<<Lemma 1.53>>
 	\[\Forall x\in \left[-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
@@ -440,12 +440,12 @@
 	1. Sei $y\in(1,\infty)$. Dann gilt $\Forall c > 0 \exists n_0 \in \mathbb{N},\Forall n\geq n_0 y^n \in (c,\infty)$ ("Konvergenz" von $y^n$ gegen 0)
 	2. Sei $y \in (-1,1)$. Dann gilt $\Forall \eps > 0\exists n_0 \in \mathbb{N}\Forall n\geq n_0:y^n \in I_\eps (0)$ ("Konvergenz" $y^n$ gegen 0)
 **** Beweis
-	 1. <<1541>> Für $x = y - 1 > 0$ gilt dann nach [[Lemma 1.53]] \[\underbrace{(1 + x)^n}_y \geq 1 + n x \Rightarrow y^n > n x\]
-		Nach [[Lemma 1.52]] existiert für $c > 0$ ein $n_0 \in \mathbb{N}$ mit $n_0 > \frac{c}{x} \Rightarrow$
-		\[\Forall n\geq n_0: y^n > n x \geq n_0 x \geq \frac{c}{x} x = c \Rightarrow \Forall n\geq n_0: y^n\in(c,\infty)\]
+	 1. <<1541>> Für $x = y - 1 > 0$ gilt dann nach [[Lemma 1.53]] \[\underbrace{(1 + x)^n}_y \geq 1 + n x \implies y^n > n x\]
+		Nach [[Lemma 1.52]] existiert für $c > 0$ ein $n_0 \in \mathbb{N}$ mit $n_0 > \frac{c}{x} \implies$
+		\[\Forall n\geq n_0: y^n > n x \geq n_0 x \geq \frac{c}{x} x = c \implies \Forall n\geq n_0: y^n\in(c,\infty)\]
 	 2. Für  $x = \frac{1}{\abs{y}} > 1 \xRightarrow{\text{nach [[1541]] mit } c = \frac{1}{\eps}}$
 		\[\Forall \eps > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\eps}\]
-		\[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\eps} \Rightarrow \abs{y^n} < \eps \hfill \square\]
+		\[\implies \frac{1}{\abs{y^n}} > \frac{1}{\eps} \implies \abs{y^n} < \eps \hfill \square\]
 *** Satz 1.55 (Existenz der m-ten Wurzel)
 	\[\Forall m\in\mathbb{N}, a\in\left[a,\infty)~\text{gilt}~\exists ! x\in\left[0,\infty): x^m = a\]
 **** Beweis (Skizze 1, 2)
@@ -455,7 +455,7 @@
 	 Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:\left[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
 	 Diese approximieren wir nach dem *Newton Verfahren* \\
 	 $x_0$ sodass $x_0^m - a \geq 0$
-	 \[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \Leftarrow \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
+	 \[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \impliedby \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
 	 \[x_{n+1} := \underbrace{x_n - \frac{f(x_n)}{f'(x_n)}}_{F(x_n)} = x_n - \frac{x_n^m - a}{m x_n^{m - 1}}\]
 	 \[= x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))\]
 	 Hoffnung: $x_n \to x^*$
@@ -469,13 +469,13 @@
 	 *Beweis:*
 	 1. Induktion
 	 2. Induktion
-		- $n = 0, x_0^m \geq \Rightarrow x_0 > 0$, da $a > 0,x_0\geq 0$
-		- $n\to n + 1$ \[x_n > 0, x_n^m\geq a \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m})) \geq 0\]
+		- $n = 0, x_0^m \geq \implies x_0 > 0$, da $a > 0,x_0\geq 0$
+		- $n\to n + 1$ \[x_n > 0, x_n^m\geq a \implies x_{n + 1} = x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m})) \geq 0\]
 		  weil \[x_{n + 1}^n = \underbrace{x_n^m}_{\geq 0} (1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))^m \underbrace{\geq}_{\text{Bernoulli}} x_n^m(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))  = 0\]
-		  \Rightarrow $x_{n + 1} > 0$, da $a > 0$
-	 3. Nach [[1.55.2]]: \[x_n^m \geq a \Rightarrow 0 \leq 1 - \frac{1}{m}(1 - \frac{1}{x_n^m}) \leq 1\]
-		Nach [[1.55.1]]: \[x_m > 0 \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1-\frac{a}{x_n^m})) < x_n\]
-		Wegen [[1.55.1]] ist $M = \{x_n:n\in\mathbb{N}_0\}$ nach unten beschränkt \Rightarrow
+		  $\implies x_{n + 1} > 0$, da $a > 0$
+	 3. Nach [[1.55.2]]: \[x_n^m \geq a \implies 0 \leq 1 - \frac{1}{m}(1 - \frac{1}{x_n^m}) \leq 1\]
+		Nach [[1.55.1]]: \[x_m > 0 \implies x_{n + 1} = x_n(1 - \frac{1}{m}(1-\frac{a}{x_n^m})) < x_n\]
+		Wegen [[1.55.1]] ist $M = \{x_n:n\in\mathbb{N}_0\}$ nach unten beschränkt $\implies$
 		\[x:= \inf M~\text{existiert}\]
 		Wir wollen zeigen, dass $x^m = a$. Es gilt \[x \leq x_{n + 1} = (1 - \frac{1}{m})x_n + \frac{1}{m}\frac{a}{x^{m -1}_n}\]
 		\[\leq (1 - \frac{1}{m})x_n + \frac{a}{m}\sup \{\frac{1}{x_n^{m - 1}\mid x\in\mathbb{N}_0}\} \]
@@ -484,9 +484,9 @@
 		und damit $x > 0$ \\
 		Ferner gilt
 		\[y = \sup \{\frac{1}{x_n^{m - 1}} \mid n\in\mathbb{N}_0\} = \inf \{x_n^{m - 1}\mid x \in \mathbb{N}_0\}^{-1}\]
-		mit [[Lemma 1.56]] \[= (\frac{1}{\inf\{x_n \mid n\in\mathbb{N}_0\}})^{m - 1} = \frac{1}{x^{m -1}} \Rightarrow a y\leq \frac{a}{x^{m - 1}}\]
+		mit [[Lemma 1.56]] \[= (\frac{1}{\inf\{x_n \mid n\in\mathbb{N}_0\}})^{m - 1} = \frac{1}{x^{m -1}} \implies a y\leq \frac{a}{x^{m - 1}}\]
 	 5. <<1.55.5>> Von oben wissen wir, dass $x \leq a y$
-		\[\Rightarrow x\leq a y  \leq \frac{a}{x^{m -1}} \Rightarrow x^m \leq a\]
+		\[\implies x\leq a y  \leq \frac{a}{x^{m -1}} \implies x^m \leq a\]
 
 	 Aus [[1.55.4]] und [[1.55.5]] folgt $x^m = a\hfill\square$
 

@@ -1,4 +1,4 @@
-% Created 2016-12-03 Sa 01:32
+% Created 2016-12-07 Mi 10:53
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -111,37 +111,37 @@ $\exists! x$ & es gibt genau ein $x$\\
 \subsubsection{Hinreichend und Notwendig}
 \label{sec-2-1-2}
 \begin{itemize}
-\item $A\Rightarrow B$: wenn $A$ gilt, gilt auch $B$, $A$ ist \textbf{hinreichend} für $B$, daraus folgt: $B$ ist \textbf{notwendig} für $A$, Ungültigkeit von $B$ impliziert die Ungültigkeit von $A$ ($\neg B \Rightarrow \neg A$)
-\item $A \Leftrightarrow B$: $A$ gilt, genau dann, wenn $B$ gilt
+\item $A\implies B$: wenn $A$ gilt, gilt auch $B$, $A$ ist \textbf{hinreichend} für $B$, daraus folgt: $B$ ist \textbf{notwendig} für $A$, Ungültigkeit von $B$ impliziert die Ungültigkeit von $A$ ($\neg B \implies \neg A$)
+\item $A \iff B$: $A$ gilt, genau dann, wenn $B$ gilt
 \end{itemize}
 \subsubsection{Beweistypen}
 \label{sec-2-1-3}
 \paragraph{Direkter Schluss}
 \label{sec-2-1-3-1}
-$A\Rightarrow B$
+$A\implies B$
 \subparagraph{Beispiel}
 \label{sec-2-1-3-1-1}
-$m$ gerade Zahl $\Rightarrow$ $m^2$ gerade Zahl
+$m$ gerade Zahl $\implies$ $m^2$ gerade Zahl
 \begin{enumerate}
 \item Beweis
 \label{sec-2-1-3-1-1-1}
-$m$ gerade $\Rightarrow \exists n\in\mathbb{N}~\text{sodass}~m = 2n \Rightarrow m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
+$m$ gerade $\implies \exists n\in\mathbb{N}~\text{sodass}~m = 2n \implies m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
 \end{enumerate}
 \paragraph{Beweis der Transponerten (der Kontraposition)}
 \label{sec-2-1-3-2}
-Zum Beweis $A\Rightarrow B$ zeigt man $\neg B\Rightarrow \neg A~(A\Rightarrow B)\Leftrightarrow (\neg B) \Rightarrow (\neg A)$
+Zum Beweis $A\implies B$ zeigt man $\neg B\implies \neg A~(A\implies B)\iff (\neg B) \implies (\neg A)$
 \subparagraph{Beispiel}
 \label{sec-2-1-3-2-1}
-Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\Rightarrow m~\text{gerade}$
+Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\implies m~\text{gerade}$
 \begin{enumerate}
 \item Beweis
 \label{sec-2-1-3-2-1-1}
-Wir zeigen: $m$ ist ungerade $\Rightarrow m^2$ ungerade
-\[\exists n\in\mathbb{N}:~m=2n+1\Rightarrow m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\Rightarrow m^2~\text{ungerade} \square\]
+Wir zeigen: $m$ ist ungerade $\implies m^2$ ungerade
+\[\exists n\in\mathbb{N}:~m=2n+1\implies m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\implies m^2~\text{ungerade} \square\]
 \end{enumerate}
 \paragraph{Indirekter Schluss ( Beweis durch Wiederspruch)}
 \label{sec-2-1-3-3}
-Man nimmt an, dass $A\Rightarrow B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\Rightarrow \neg C$, also ein Wiederspruch
+Man nimmt an, dass $A\implies B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\implies \neg C$, also ein Wiederspruch
 \subparagraph{Beispiel}
 \label{sec-2-1-3-3-1}
 $\not\exists q\in\mathbb{Q}: a^2 = 2$
@@ -150,8 +150,8 @@ $\not\exists q\in\mathbb{Q}: a^2 = 2$
 \label{sec-2-1-3-3-1-1}
 Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
 $\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
-Falls \[a^2=2\Rightarrow (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \Rightarrow b^2 = 2c^2 \Rightarrow b^2~\text{gerade}~\Rightarrow b~\text{ist gerade (schon gezeigt)}\] \[\Rightarrow\exists d\in\mathbb{N}~\text{sodass}~b=2d\Rightarrow b^2=4d^2\]
-Außerdem $b^2=2c^2\Rightarrow 2c^2=4d^2\Rightarrow c^2=2d^2\Rightarrow c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
+Falls \[a^2=2\implies (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \implies b^2 = 2c^2 \implies b^2~\text{gerade}~\implies b~\text{ist gerade (schon gezeigt)}\] \[\implies\exists d\in\mathbb{N}~\text{sodass}~b=2d\implies b^2=4d^2\]
+Außerdem $b^2=2c^2\implies 2c^2=4d^2\implies c^2=2d^2\implies c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
 \end{enumerate}
 \subsubsection{Summenzeichen und Produktzeichen}
 \label{sec-2-1-4}
@@ -173,14 +173,14 @@ $M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeh
 \item x \textlnot{}$\in$ M (x kein Element von M)
 \end{itemize}
 \[M = \{x_1, x_2, \ldots, x_n\}\]
-\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \Leftrightarrow A(x)\]
+\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \iff A(x)\]
 \subsubsection{Mengenrelationen}
 \label{sec-2-2-2}
 \begin{itemize}
 \item Mengeninklusion $A\subseteq M$ ($A$ ist eine Teilmenge von $M$)
-\[\Forall x: (x\in A \Rightarrow x\in M)\] ,zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
-\item \[A = B \Leftrightarrow \Forall x: (x\in A \Leftrightarrow x\in B)\]
-\item \[A \subset M~\text{(strikte Teilmenge)}~\Leftrightarrow A\subset M \wedge A \neq M\]
+\[\Forall x: (x\in A \implies x\in M)\] ,zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
+\item \[A = B \iff \Forall x: (x\in A \iff x\in B)\]
+\item \[A \subset M~\text{(strikte Teilmenge)}~\iff A\subset M \wedge A \neq M\]
 \item \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beispiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
 \item Durchschnitt \[A\cap B := \{x\mid x\in A \wedge x\in B\}\]
 \item Vereinigung \[A\cup B := \{x \mid x\in A \vee x\in B\}\]
@@ -209,7 +209,7 @@ $A,B,C,D$ seien Mengen
 \begin{itemize}
 \item $\emptyset \subseteq A$
 \item $A\subseteq A$ \hfill Reflexivität
-\item $A\subseteq B, B\subseteq C \Rightarrow A\subseteq C$ \hfill Transitivität
+\item $A\subseteq B, B\subseteq C \implies A\subseteq C$ \hfill Transitivität
 \item $A\cap B = B\cap A$ \\ $A\cup B = B\cup A$ \hfill Kommutativität
 \item $(A\cap B)\cap C = A\cap (B\cap C)$ \\ $(A\cup B) \cup C = A\cup (B\cup C)$ \hfill Assoziativität
 \item $A\cap (B\cup C) =(A\cap B) \cup (A\cap C)$ \\ $A\cup (B\cap C) =(A\cup B) \cap (A\cup C)$
@@ -217,13 +217,13 @@ $A,B,C,D$ seien Mengen
       Seien $A,B \subseteq D (C_D A: = D\setminus A)$, dann gilt \[C_D (C_D A) = A\] \[C_D(A\cap B) = C_D A \cup C_D B\] \[C_D(A\cup B) = C_D A \cap C_D B\]
 \begin{itemize}
 \item Beweis:
-\[x\in C_D(A\cap B) \Leftrightarrow x\in D \wedge (x\not\in (A\cap B)) \Leftrightarrow x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\Leftrightarrow (x\in D\wedge x\not\in A) \vee (x\in D \wedge x\not\in B)\] \[\Leftrightarrow (x\in D\setminus A) \vee (x\in D\setminus B) \Leftrightarrow x\in D\setminus(A\cup B)~\square\]
+\[x\in C_D(A\cap B) \iff x\in D \wedge (x\not\in (A\cap B)) \iff x\in D \wedge (x\not\in A \vee x\not\in B)\] \[\iff (x\in D\wedge x\not\in A) \vee (x\in D \wedge x\not\in B)\] \[\iff (x\in D\setminus A) \vee (x\in D\setminus B) \iff x\in D\setminus(A\cup B)~\square\]
 \item Bemerkung: Komplement kann man auch mit $A^c$ bezeichnen
 \end{itemize}
 \end{itemize}
 \subsubsection{geordneter Tupel}
 \label{sec-2-2-6}
-Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \Leftrightarrow x_1 = y_1, \ldots, x_n = y_n\]
+Sei $x_1, x_2, \ldots, x_n$ (nicht notwendig verschiedene) Objekte. Ein geordneter n-Tupel \[(x_1,x_2,\ldots,x_n) = (y_1,\ldots,y_n) \iff x_1 = y_1, \ldots, x_n = y_n\]
 Beachte:
 \[\{x_1, \ldots, x_n\} = \{y_i,\ldots,y_n\}\not\implies x_1 = y_1, \ldots, x_n = y_n\]
 \subsubsection{Kartesisches Produkt}
@@ -241,8 +241,8 @@ Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren El
 \begin{itemize}
 \item Für jede zwei $a,b\in A$ gilt entweder $a\sim b \vee a\not\sim b$
 \item $a\sim a$ \hfill Reflexivität
-\item $a\sim b \Rightarrow b\sim a$ \hfill Symmetrie
-\item $a \sim b, b \sim c \Rightarrow a \sim c$ \hfill Transitivität
+\item $a\sim b \implies b\sim a$ \hfill Symmetrie
+\item $a \sim b, b \sim c \implies a \sim c$ \hfill Transitivität
 \end{itemize}
 Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\sim a\}$
 \subsection{Relationen und Abbildungen}
@@ -255,7 +255,7 @@ und *Definitionsbereiche von $R$ (bezüglich $X$)
 \[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
 \subsubsection{Graph der Abbildung}
 \label{sec-2-3-2}
-$R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \Leftrightarrow D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
+$R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \iff D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
 also enthält $R(x)$ genau ein Element. \\
     $X$ heißt Definitionsbereich von $f$ \\
     $Y$ heißt Werte- oder Bildbereich von $f$ (Bild) \\
@@ -271,7 +271,7 @@ Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x)
 $f$ heißt
 \begin{itemize}
 \item surjektiv, wenn gilt $f(X) = Y$
-\item injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
+\item injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \implies x_1 = x_2$
 \item bijektiv, wenn $f$ surjektiv und injectiv ist
 \end{itemize}
 \subsubsection{Umkehrabbildung}
@@ -279,7 +279,7 @@ $f$ heißt
 Sei die Abbildung $f: X\rightarrow Y$ bijektiv. Dann definieren wir die Umkehrabbildung $f^{-1}:Y\rightarrow X$ durch $y\rightarrow x\in X$, eindeutig bestimmt durch $y = f(x)$
 \paragraph{Bemerkung}
 \label{sec-2-3-3-1}
-\[(x,y) \in~\text{Graph }f\Leftrightarrow (y,x)\in~\text{Graph }f^{-1}\]
+\[(x,y) \in~\text{Graph }f\iff (y,x)\in~\text{Graph }f^{-1}\]
 \subsubsection{Komposition}
 \label{sec-2-3-4}
 Seien $f:X\rightarrow Y, g:Y\rightarrow Z$ Abbildungen. Die Komposition von $g$ und $f$ \[g\circ f: X\rightarrow Z~\text{ist durch}~x\rightarrow g(f(x))~\text{definiert}\]
@@ -305,7 +305,7 @@ $\mathbb{N} = \{1,2,3,\ldots\},~\mathbb{N}_0 := \mathbb{N}\cup \{0\}$
 \item Die Zahl $1$ ist eine natürliche Zahl $1\in\mathbb{N}$
 \item Zu jeder natürlichen Zahl $n$, gibt es genau einen "Nachfolger" $n' (=: n+1)$
 \item Die Zahl 1 ist kein Nachfolger einer natürlichen Zahl
-\item $n' = m' \Rightarrow n = m$
+\item $n' = m' \implies n = m$
 \item Enthält eine Teilmenge  $M \subseteq \mathbb{N}$ die Zahl $1$ und von jedem $n\in m$ auch den Nachfolger $n'$ ist $M = \mathbb{N}$
 \end{enumerate}
 Bemerkung: \\
@@ -315,7 +315,7 @@ Wir definieren: \\
 $n + 1 := m'$
 $n + m' := (n+m)';~n\cdot m' := n m + n$
 Man kann zeigen, dass jede Menge, welche die Peano Axiome erfüllt isomorph bezüglich Multiplikation und Addition zu $\mathbb{N}$ ist
-Wir definieren $n < m \Leftrightarrow \exists x\in \mathbb{N}: x + m = m$
+Wir definieren $n < m \iff \exists x\in \mathbb{N}: x + m = m$
 \subsubsection{Vollständige Induktion}
 \label{sec-2-4-2}
 \paragraph{Induktionsprinzip}
@@ -329,7 +329,7 @@ Dann sind alle Aussagen $A(n),n\in\mathbb{N}$ gültig.
 \paragraph{Beweis:}
 \label{sec-2-4-2-2}
 Wir definieren die Tailmenge $M\subseteq\mathbb{N},~M:=\{n\in \mathbb{N}\mid A(N)~\text{ist gültig}\}$
-Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\Rightarrow n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
+Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\implies n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
 \paragraph{Beispiel 1}
 \label{sec-2-4-2-3}
 Zu Beweisen: \[\Forall n\in\mathbb{N} \sum_{i = 1}^n i^2 = \frac{n(n+1)(2n+1)}{6}\]
@@ -391,11 +391,11 @@ $\mathbb{K}$ sei eine Menge auf der Addition und Multiplikation sei. $\mathbb{K}
 \end{itemize}
 \paragraph{Satz}
 \label{sec-2-4-3-1}
-$(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \Leftrightarrow\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
+$(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \iff\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
 dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ in folgendem Sinne verträglich (Axiom M0):
 \begin{itemize}
-\item \(a\leq b\Rightarrow a+c \leq b + c\)
-\item \(0\leq a\wedge 0\leq b \Rightarrow 0\leq a\cdot b\)
+\item \(a\leq b\implies a+c \leq b + c\)
+\item \(0\leq a\wedge 0\leq b \implies 0\leq a\cdot b\)
 \end{itemize}
 \paragraph{Bemerkung}
 \label{sec-2-4-3-2}
@@ -430,8 +430,8 @@ Man unterscheide:
         ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade \textbf{Wiederspruch}.
 Falls
 \begin{itemize}
-\item $z_1,z-2 \geq 0 \Rightarrow 2z_1 = f(z_1) = f(z_2) = 2z_2 \Rightarrow z_1 = z_2$
-\item $z_1,z-2 < 0 \Rightarrow -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \Rightarrow z_1 = z_2 \hfill\square$
+\item $z_1,z-2 \geq 0 \implies 2z_1 = f(z_1) = f(z_2) = 2z_2 \implies z_1 = z_2$
+\item $z_1,z-2 < 0 \implies -2z_1 -1 = f(z_1) = f(z_2) = -2z_2-1 \implies z_1 = z_2 \hfill\square$
 \end{itemize}
 \end{itemize}
 \paragraph{Beispiel}
@@ -446,7 +446,7 @@ Falls
 \[(1,1) \to (1,2) \to (2,1) \to (2,2) \to (1,3) \to (2,3) \to (3,2) \to (3,1)\]
 \paragraph{Korollar 1.30}
 \label{sec-2-5-1-4}
-$M_1,M_2,\ldots,M_n$ abzählbar $\Rightarrow M_1 \times \ldots \times M_n$ abzählbar.
+$M_1,M_2,\ldots,M_n$ abzählbar $\implies M_1 \times \ldots \times M_n$ abzählbar.
 \subparagraph{Beweis}
 \label{sec-2-5-1-4-1}
 Durch vollständige Induktion $M_1\times(M_2\times\ldots \times M_n)\approx \mathbb{N}\times\mathbb{N}\approx\mathbb{N}$
@@ -466,8 +466,8 @@ Dann $f\in M$, aber $f\neq f_k \Forall k\in\mathbb{N}$. Also ist $M$ nicht abzä
 Sei $A$ eine Menge. Relation $R\subseteq A\times A$ heißt Teilordnung (Halbordnung) auf $A$, wenn $\Forall y,x,z\in A$ gilt:
 \begin{enumerate}
 \item $x\leq x$ \hfill (Reflexivität)
-\item $x\leq y \wedge y\leq x \Rightarrow x = y$ \hfill (Symmetrie)
-\item $x\leq y \wedge y\leq z \Rightarrow x\leq z$ \hfill (Transitivität)
+\item $x\leq y \wedge y\leq x \implies x = y$ \hfill (Symmetrie)
+\item $x\leq y \wedge y\leq z \implies x\leq z$ \hfill (Transitivität)
 \end{enumerate}
 Wenn außerdem noch $\Forall x,y\in A$ gilt:
 \begin{enumerate}
@@ -479,9 +479,9 @@ so heißt $R$ (totale) Ordung auf $A$. \$(A,$\le$) heißt teilweise beziehungswe
 \label{sec-2-6-1-1}
 \begin{enumerate}
 \item $(\mathbb{Q},\leq)$ mit der üblichen Ordnung ist eine total geordnete Menge
-\item Wir definieren auf der Potenzmenge $\mathcal{P}(A)$ einer Menge $A$ eine Teilordnung "$\leq$": \[B\leq C \Leftrightarrow B \subseteq C\Forall B,C\in \mathcal{P}(A)\] \\
+\item Wir definieren auf der Potenzmenge $\mathcal{P}(A)$ einer Menge $A$ eine Teilordnung "$\leq$": \[B\leq C \iff B \subseteq C\Forall B,C\in \mathcal{P}(A)\] \\
         \textbf{Beweis}: 1. - 3. sind trivial, 4. geht nicht (keine Totalordung). Wähle $B,C\in \mathcal{P}(a), B,C\neq \emptyset, B\cap C = \emptyset$. Dann gilt weder $B\subseteq C$ noch $C\subseteq B\hfill\square$
-\item Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \Leftrightarrow \Forall x\in A: f(x) \leq g(x)$ \\
+\item Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \iff \Forall x\in A: f(x) \leq g(x)$ \\
         (1.) - (3.) trivial, 4. gilt nicht. Falls $A$ mehr als ein Element hat, gibt es eine Funktion, die nicht miteinander verglichen werden können.
 \end{enumerate}
 \subsection{Maximum und Minimum einer Menge}
@@ -490,19 +490,19 @@ so heißt $R$ (totale) Ordung auf $A$. \$(A,$\le$) heißt teilweise beziehungswe
 \label{sec-2-7-1}
 Sei $(A,\leq)$ eine teilweise geordnete Menge, $a\in A$ \\
     Maximum:
-\[a = \max A \Leftrightarrow \Forall x\in A: x\leq a\]
+\[a = \max A \iff \Forall x\in A: x\leq a\]
 Minimum:
-\[a = \max A \Leftrightarrow \Forall x\in A: a\leq x\]
+\[a = \max A \iff \Forall x\in A: a\leq x\]
 \subsubsection{Bemerkung}
 \label{sec-2-7-2}
 Durch die Aussagen ist $a$ eindeutig bestimmt, denn seien:
-\[a_1,a_2\in A:\Forall x\in A \begin{cases}x\leq a_1 \\ x\leq a_2 \end{cases} \Rightarrow \begin{cases} a_2 \leq a_1 \\ a_1 \leq a_2 \end{cases} \xRightarrow{\text{Symmetrie}} a_1 = a_2 \]
+\[a_1,a_2\in A:\Forall x\in A \begin{cases}x\leq a_1 \\ x\leq a_2 \end{cases} \implies \begin{cases} a_2 \leq a_1 \\ a_1 \leq a_2 \end{cases} \xRightarrow{\text{Symmetrie}} a_1 = a_2 \]
 \subsection{Schranken}
 \label{sec-2-8}
 Sei $(A,\leq)$ eine (total geordnete) Menge, $B\subseteq A$
 \begin{enumerate}
-\item $S\in A$ heißt obere Schranke zu $B \Leftrightarrow \Forall x\in B: x\leq S$ \\
-      $S\in A$ heißt untere Schranke zu $B \Leftrightarrow \Forall x\in B: S\leq x$
+\item $S\in A$ heißt obere Schranke zu $B \iff \Forall x\in B: x\leq S$ \\
+      $S\in A$ heißt untere Schranke zu $B \iff \Forall x\in B: S\leq x$
 \item $\bar{S}(B):= \{S\in A \mid S~\text{S ist untere Schranke zu}~B\}$ \\
       $\ubar{S}(B):= \{S\in A \mid S~\text{S ist obere Schranke zu}~B\}$
 \item Existiert $g:=\min \ubar{S}(B)$ beziehungsweise $g:=\max \bar{S}$ so sagen wir: \\
@@ -513,8 +513,8 @@ $g = \inf B$ (größte obere Schranke, \uline{infimum}, untere "Grenze" von $B$ 
 \label{sec-2-8-1}
 \begin{enumerate}
 \item Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nach Definition.
-\[s\in \ubar{S}(B) \Rightarrow \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
-Ebeso gilt: $\exists\min B = \ubar{b} \Rightarrow \inf B = \ubar{b}$
+\[s\in \ubar{S}(B) \implies \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
+Ebeso gilt: $\exists\min B = \ubar{b} \implies \inf B = \ubar{b}$
 \end{enumerate}
 \subsubsection{Beispiel}
 \label{sec-2-8-2}
@@ -523,9 +523,9 @@ Ebeso gilt: $\exists\min B = \ubar{b} \Rightarrow \inf B = \ubar{b}$
 \begin{itemize}
 \item Es gilt $1\in B, \Forall n\in\mathbb{N}$ gilt $\frac{1}{n} \leq 1$, daher folgt $\max B = \sup B = 1$
 \item Sei $s\leq 0$, dann gilt $\Forall n\in\mathbb{N}: s\leq \frac{1}{n}$, also $s\in \bar{S}(B)$ \\
-         Sei $s > 0 \Rightarrow s > \frac{1}{n} \Leftrightarrow n > \frac{1}{s}$, also $s\not\in\bar{S}(B)$ \\
+         Sei $s > 0 \implies s > \frac{1}{n} \iff n > \frac{1}{s}$, also $s\not\in\bar{S}(B)$ \\
          Es folgt $\bar{S}(B) = \{x\in\mathbb{R}\mid s\leq 0\}$ insbesondere $0\in\bar{S}(B)$ \\
-         Ferner gilt $\Forall s\in \bar{S}(B):s\leq 0 \Rightarrow \ubar{0} = \max \bar{S}(B) = \inf B$
+         Ferner gilt $\Forall s\in \bar{S}(B):s\leq 0 \implies \ubar{0} = \max \bar{S}(B) = \inf B$
 \end{itemize}
 \item $A = \mathbb{Q}, B = \{x\in\mathbb{Q} : 0 \leq x \wedge x^2 \leq 2\}$. Es gilt $0 = \min B = \inf B$, aber $\sup B$ existiert nicht in $\mathbb{Q}$
 \end{enumerate}
@@ -550,7 +550,7 @@ Es gibt eine Menge $\mathbb{R}$ (genannt Menge der reellen Zahlen) mit Addition,
 \[\Forall x,y\in \mathbb{R}:\]
 \[f(x+y) = f(x) + f(y)\]
 \[f(x y) = f(x) f(y)\]
-\[x\leq y \Rightarrow f(x) \leq f(y)\]
+\[x\leq y \implies f(x) \leq f(y)\]
 \item $\mathbb{N}$ (und damit auch $\mathbb{Z},\mathbb{Q}$) lassen sich durch injektive Homomorphismus $g:\mathbb{N}\to\mathbb{R}$ in $\mathbb{R}$ einbetten
 \[g(\tilde{0}_{\in\mathbb{N}}) = 0_{\in\mathbb{R}}\]
 \[g(\tilde{n}_{\in\mathbb{N}} + 1) = g(n_{\in\mathbb{R}}) + 1\]
@@ -562,7 +562,7 @@ Wir können $\mathbb{R}$ ausgehend von $\mathbb{Q}$ konstruieren.
 \paragraph{Methode der Abschnitte}
 \label{sec-2-9-4-1}
 Jede reelle Zahl wird charakterisiert durch ein "rechts offenes, unbeschränktes Interval", dessen "rechte Grenze" die Zahl erstellt.
-\[\mathbb{R}:=\{A\subseteq \mathbb{Q}\begin{cases}A\neq\emptyset \\ x\in A, y\leq x\Rightarrow y\in A \\ \Forall x\in A\exists y\in A, x<y\end{cases}\]
+\[\mathbb{R}:=\{A\subseteq \mathbb{Q}\begin{cases}A\neq\emptyset \\ x\in A, y\leq x\implies y\in A \\ \Forall x\in A\exists y\in A, x<y\end{cases}\]
 \paragraph{Mehtode der Cauchy-Folgen}
 \label{sec-2-9-4-2}
 Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalenter "Cauchy Folgen" aus $\mathbb{Q}$ (später)
@@ -582,9 +582,9 @@ Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalente
 \begin{align}
 \abs{x + y}^2 &= (x+y)^2 = x^2 + 2x y + y^2 = \abs{x}^2 + 2xy + \abs{y}^2 \\
 &\leq \abs{x}^2 + 2\abs{x y} + \abs{y}^2 = \abs{x}^2 + 2\abs{x}\abs{y} + \abs{y^2} \\
-&= (\abs{x} + \abs{y})^2 \Rightarrow \abs{x + y} \leq \abs{\abs{x} + \abs{y}} = \abs{x} + \abs{y} \tag*{$\square$}
+&= (\abs{x} + \abs{y})^2 \implies \abs{x + y} \leq \abs{\abs{x} + \abs{y}} = \abs{x} + \abs{y} \tag*{$\square$}
 \end{align}
-\item $\abs{x + y} = \abs{x} + \abs{y} \Leftrightarrow x y \geq 0$
+\item $\abs{x + y} = \abs{x} + \abs{y} \iff x y \geq 0$
 \end{enumerate}
 \subsubsection{Satz 1.39}
 \label{sec-2-9-7}
@@ -592,16 +592,16 @@ Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalente
 \item $\abs{\abs{x} - \abs{y}} \leq \abs{x - y}$ \\
        \textbf{Beweis:} \\
 \begin{align}
-\abs{x} &= \abs{x - y + y} \leq \abs{x - y} + \abs{y} \Rightarrow \abs{x} - \abs{y} \leq \abs{x - y} \\
-\abs{y} &= \abs{y - x + x} \leq \abs{y - x} + \abs{x} \Rightarrow \abs{y} - \abs{x} \leq \abs{x - y} \\
+\abs{x} &= \abs{x - y + y} \leq \abs{x - y} + \abs{y} \implies \abs{x} - \abs{y} \leq \abs{x - y} \\
+\abs{y} &= \abs{y - x + x} \leq \abs{y - x} + \abs{x} \implies \abs{y} - \abs{x} \leq \abs{x - y} \\
 \abs{\abs{x} - \abs{y}} &= \max \{\abs{x} - \abs{y},\abs{y} - \abs{x}\} \leq \abs{x - y} \tag*{$\square$}
 \end{align}
-\item \[\abs{x - y} \leq \eps \Leftrightarrow \begin{cases} x - \eps \leq y \leq x + \eps \\ y - \eps \leq x \leq y + \eps \end{cases}\]
+\item \[\abs{x - y} \leq \eps \iff \begin{cases} x - \eps \leq y \leq x + \eps \\ y - \eps \leq x \leq y + \eps \end{cases}\]
        \textbf{Beweis:} \\
 \begin{align}
-\abs{x - y} = \max\{x - y , y - x\} \leq \eps \Leftrightarrow \begin{cases} x - y \leq \eps \\ y - x \leq \eps\end{cases} \Leftrightarrow \begin{cases} x \leq y + \eps \\ y - x \leq \eps \end{cases} \Leftrightarrow y - \eps \leq x \leq y + \eps
+\abs{x - y} = \max\{x - y , y - x\} \leq \eps \iff \begin{cases} x - y \leq \eps \\ y - x \leq \eps\end{cases} \iff \begin{cases} x \leq y + \eps \\ y - x \leq \eps \end{cases} \iff y - \eps \leq x \leq y + \eps
 \end{align}
-Vertausche $x$ und $y$ $\Rightarrow$ $x - \eps \leq x + \eps \hfill \square$
+Vertausche $x$ und $y$ $\implies$ $x - \eps \leq x + \eps \hfill \square$
 \end{enumerate}
 \subsubsection{Definition 1.40}
 \label{sec-2-9-8}
@@ -615,23 +615,23 @@ Sei $a,b\in\mathbb{R},a\leq b$
 \end{itemize}
 \subsubsection{Lemma 1.41}
 \label{sec-2-9-9}
-Es gilt $y\in I_\eps (x) \Rightarrow \exists \delta > 0: I_\delta (y) \subseteq I_\eps (x)$
+Es gilt $y\in I_\eps (x) \implies \exists \delta > 0: I_\delta (y) \subseteq I_\eps (x)$
 \paragraph{Beweis}
 \label{sec-2-9-9-1}
-Sei $y\in I_\eps (x) \Rightarrow \abs{x - y}  < \eps \Leftrightarrow \eps - \abs{x - y} > 0$
+Sei $y\in I_\eps (x) \implies \abs{x - y}  < \eps \iff \eps - \abs{x - y} > 0$
 Wähle $0 < \delta < \eps - \abs{x - y}$. Es ist nun zu zeigen $I_\delta (y) \subseteq I_\eps (x)$, das heißt
-$z\in I_\delta(y) \Rightarrow z\in I_\eps(x)$. Es gilt
+$z\in I_\delta(y) \implies z\in I_\eps(x)$. Es gilt
 \begin{align}
-&z\in I_\delta (y) \Rightarrow \abs{z - y}  <\delta \\
-\Rightarrow &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \eps \\
-\Rightarrow &z\in I_\eps (x) \tag*{$\square$}
+&z\in I_\delta (y) \implies \abs{z - y}  <\delta \\
+\implies &\abs{z - x} = \abs{z - y + y - x} \leq \abs{z - y} + \abs{y - x} \leq \delta + \abs{x - y} < \eps \\
+\implies &z\in I_\eps (x) \tag*{$\square$}
 \end{align}
 \subsubsection{Definition 1.42}
 \label{sec-2-9-10}
 $A,B$ seien geordnete Mengen, $f:A\to B$ heißt:
 \begin{itemize}
-\item monoton $\begin{cases} \text{wachsed} & x \leq y \Rightarrow f(x) \leq f(y)  \\ \text{fallend} & x \leq y \Rightarrow  f(x) \leq f(y) \end{cases}$
-\item streng monoton $\begin{cases} \text{wachsend} & x < y \Rightarrow f(x) < f(y) \\ \text{fallend} & x < y \Rightarrow f(x) > f(y) \end{cases}$
+\item monoton $\begin{cases} \text{wachsed} & x \leq y \implies f(x) \leq f(y)  \\ \text{fallend} & x \leq y \implies  f(x) \leq f(y) \end{cases}$
+\item streng monoton $\begin{cases} \text{wachsend} & x < y \implies f(x) < f(y) \\ \text{fallend} & x < y \implies f(x) > f(y) \end{cases}$
 \end{itemize}
 \paragraph{Beispiel 1.43}
 \label{sec-2-9-10-1}
@@ -647,7 +647,7 @@ Sei $M,N \subseteq \mathbb{R}, f:M\to N$ streng monoton und bijektiv. Dann ist $
 Wir betrachten den Fall $f$ streng monoton wachsend. Seien \$y$_{\text{1}}$,y$_{\text{2}}$ $\in$ N, y$_{\text{1}}$ < y$_{\text{2}}$,x$_{\text{1}}$ = f$^{\text{-1}}$(y$_{\text{1}}$), x$_{\text{2}}$ = f$^{\text{-1}}$(y$_{\text{2}}$). \\
      Behauptung $x_1 < x_2$ (sonst wäre \$x$_{\text{1}}$ $\ge$ x$_{\text{2}}$). \\
      Falls $x_1 > x_2 \xRightarrow{\text{streng monoton}} f(x_2) > f(x_2)$ \textbf{Widerspruch} zu $y_1 < y_2$ \\
-     Falls $x_1 = x_2 \Rightarrow y_1 = y_2$ \textbf{Widerspruch} zur Annahme $y_1 < y_2 \hfill \square$
+     Falls $x_1 = x_2 \implies y_1 = y_2$ \textbf{Widerspruch} zur Annahme $y_1 < y_2 \hfill \square$
 \subsubsection{Definition 1.45 Produktzeichen}
 \label{sec-2-9-12}
 Für $a\in\mathbb{R},n\in\mathbb{N}$ definieren wir $a^n := \prod_{j=1}^n a$ und für $a\in\mathbb{R}\setminus\{0\},n\in\mathbb{N}$ $a^{-n} := \frac{1}{a^n}$.
@@ -707,21 +707,21 @@ Setze in Binomische Formel $x = 1, y = 1$ beziehungsweise $y = -1 \hfill\square$
 Sei $m\in R$ nach oben (beziehungsweise nach unten) beschränkt \\
     Dann gilt
 \begin{enumerate}
-\item $s = \sup M \Leftrightarrow \Forall \eps > 0 \exists x\in M: s - \eps < x (\geq s)$
-\item $l=\inf M \Leftrightarrow \Forall \eps > 0 \exists x\in M: (l \leq) x < l + \eps$
+\item $s = \sup M \iff \Forall \eps > 0 \exists x\in M: s - \eps < x (\geq s)$
+\item $l=\inf M \iff \Forall \eps > 0 \exists x\in M: (l \leq) x < l + \eps$
 \end{enumerate}
 \paragraph{Beweis}
 \label{sec-2-9-18-1}
 Wir beweisen 1. \\
-     $s\neq \sup M\Leftrightarrow s$ ist nicht die kleinste obere Schranke von $m$ $\Leftrightarrow$ es gibt eine kleinere obere Schranke $s' = s - \eps$ von $M$ $\Leftrightarrow$
+     $s\neq \sup M\iff s$ ist nicht die kleinste obere Schranke von $m$ $\iff$ es gibt eine kleinere obere Schranke $s' = s - \eps$ von $M$ $\iff$
 nicht $\Forall \eps > 0\exists x\in M: x > s - \eps \hfill \square$
 \subsubsection{Lemma 1.52}
 \label{sec-2-9-19}
 $\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
 \paragraph{Beweis}
 \label{sec-2-9-19-1}
-sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \eps= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \Rightarrow m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
-$\Rightarrow$ $x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
+sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \eps= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \implies m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
+$\implies x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
 \subsubsection{Lemma 1.53 (Bernoullische Ungleichung)}
 \label{sec-2-9-20}
 \label{Lemma-1.53}
@@ -747,12 +747,12 @@ n\to n + 1: (1 + x)^{n + 1} &= (1 + x)^n(1 + x) \\
 \paragraph{Beweis}
 \label{sec-2-9-21-1}
 \begin{enumerate}
-\item \label{1541} Für $x = y - 1 > 0$ gilt dann nach \ref{Lemma-1.53} \[\underbrace{(1 + x)^n}_y \geq 1 + n x \Rightarrow y^n > n x\]
-        Nach \ref{sec-2-9-19} existiert für $c > 0$ ein $n_0 \in \mathbb{N}$ mit $n_0 > \frac{c}{x} \Rightarrow$
-        \[\Forall n\geq n_0: y^n > n x \geq n_0 x \geq \frac{c}{x} x = c \Rightarrow \Forall n\geq n_0: y^n\in(c,\infty)\]
+\item \label{1541} Für $x = y - 1 > 0$ gilt dann nach \ref{Lemma-1.53} \[\underbrace{(1 + x)^n}_y \geq 1 + n x \implies y^n > n x\]
+        Nach \ref{sec-2-9-19} existiert für $c > 0$ ein $n_0 \in \mathbb{N}$ mit $n_0 > \frac{c}{x} \implies$
+        \[\Forall n\geq n_0: y^n > n x \geq n_0 x \geq \frac{c}{x} x = c \implies \Forall n\geq n_0: y^n\in(c,\infty)\]
 \item Für  $x = \frac{1}{\abs{y}} > 1 \xRightarrow{\text{nach [[1541]] mit } c = \frac{1}{\eps}}$
         \[\Forall \eps > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\eps}\]
-        \[\Rightarrow \frac{1}{\abs{y^n}} > \frac{1}{\eps} \Rightarrow \abs{y^n} < \eps \hfill \square\]
+        \[\implies \frac{1}{\abs{y^n}} > \frac{1}{\eps} \implies \abs{y^n} < \eps \hfill \square\]
 \end{enumerate}
 \subsubsection{Satz 1.55 (Existenz der m-ten Wurzel)}
 \label{sec-2-9-22}
@@ -765,7 +765,7 @@ Wir geben ein Iterationsverfahren
 Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:\left[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
 Diese approximieren wir nach dem \textbf{Newton Verfahren} \\
      $x_0$ sodass $x_0^m - a \geq 0$
-\[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \Leftarrow \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
+\[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \impliedby \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]
 \[x_{n+1} := \underbrace{x_n - \frac{f(x_n)}{f'(x_n)}}_{F(x_n)} = x_n - \frac{x_n^m - a}{m x_n^{m - 1}}\]
 \[= x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))\]
 Hoffnung: $x_n \to x^*$
@@ -783,14 +783,14 @@ Sei $x_0^m > a$. Wir zeigen
 \item Induktion
 \item Induktion
 \begin{itemize}
-\item $n = 0, x_0^m \geq \Rightarrow x_0 > 0$, da $a > 0,x_0\geq 0$
-\item $n\to n + 1$ \[x_n > 0, x_n^m\geq a \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m})) \geq 0\]
+\item $n = 0, x_0^m \geq \implies x_0 > 0$, da $a > 0,x_0\geq 0$
+\item $n\to n + 1$ \[x_n > 0, x_n^m\geq a \implies x_{n + 1} = x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m})) \geq 0\]
           weil \[x_{n + 1}^n = \underbrace{x_n^m}_{\geq 0} (1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))^m \underbrace{\geq}_{\text{Bernoulli}} x_n^m(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))  = 0\]
-          $\Rightarrow$ $x_{n + 1} > 0$, da $a > 0$
+          $\implies x_{n + 1} > 0$, da $a > 0$
 \end{itemize}
-\item Nach \ref{1.55.2}: \[x_n^m \geq a \Rightarrow 0 \leq 1 - \frac{1}{m}(1 - \frac{1}{x_n^m}) \leq 1\]
-        Nach \ref{1.55.1}: \[x_m > 0 \Rightarrow x_{n + 1} = x_n(1 - \frac{1}{m}(1-\frac{a}{x_n^m})) < x_n\]
-        Wegen \ref{1.55.1} ist $M = \{x_n:n\in\mathbb{N}_0\}$ nach unten beschränkt $\Rightarrow$
+\item Nach \ref{1.55.2}: \[x_n^m \geq a \implies 0 \leq 1 - \frac{1}{m}(1 - \frac{1}{x_n^m}) \leq 1\]
+        Nach \ref{1.55.1}: \[x_m > 0 \implies x_{n + 1} = x_n(1 - \frac{1}{m}(1-\frac{a}{x_n^m})) < x_n\]
+        Wegen \ref{1.55.1} ist $M = \{x_n:n\in\mathbb{N}_0\}$ nach unten beschränkt $\implies$
         \[x:= \inf M~\text{existiert}\]
         Wir wollen zeigen, dass $x^m = a$. Es gilt \[x \leq x_{n + 1} = (1 - \frac{1}{m})x_n + \frac{1}{m}\frac{a}{x^{m -1}_n}\]
         \[\leq (1 - \frac{1}{m})x_n + \frac{a}{m}\sup \{\frac{1}{x_n^{m - 1}\mid x\in\mathbb{N}_0}\} \]
@@ -799,9 +799,9 @@ Sei $x_0^m > a$. Wir zeigen
 und damit $x > 0$ \\
         Ferner gilt
 \[y = \sup \{\frac{1}{x_n^{m - 1}} \mid n\in\mathbb{N}_0\} = \inf \{x_n^{m - 1}\mid x \in \mathbb{N}_0\}^{-1}\]
-mit \ref{sec-2-9-23} \[= (\frac{1}{\inf\{x_n \mid n\in\mathbb{N}_0\}})^{m - 1} = \frac{1}{x^{m -1}} \Rightarrow a y\leq \frac{a}{x^{m - 1}}\]
+mit \ref{sec-2-9-23} \[= (\frac{1}{\inf\{x_n \mid n\in\mathbb{N}_0\}})^{m - 1} = \frac{1}{x^{m -1}} \implies a y\leq \frac{a}{x^{m - 1}}\]
 \item \label{1.55.5} Von oben wissen wir, dass $x \leq a y$
-        \[\Rightarrow x\leq a y  \leq \frac{a}{x^{m -1}} \Rightarrow x^m \leq a\]
+        \[\implies x\leq a y  \leq \frac{a}{x^{m -1}} \implies x^m \leq a\]
 \end{enumerate}
 
 Aus \ref{1.55.4} und \ref{1.55.5} folgt $x^m = a\hfill\square$
@@ -835,12 +835,12 @@ Aus \ref{1.55.4} und \ref{1.55.5} folgt $x^m = a\hfill\square$
 \begin{enumerate}
 \item Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributibitätsgesetzes verifiziert man durch Nachrechenen. \\
        Neutrale Elemente: Wir lösen die Gleichung $a + z = \{0,0\}$ für beliebige gegebene $a\in\mathbb{C},a=\{a_1,a_2\}$
-       \[\Rightarrow z = \{-a_1, -a_2\}\]
+       \[\implies z = \{-a_1, -a_2\}\]
        \[a\cdot z = \{1,0\}\]
        \[z = \frac{1}{a}:=\{\frac{a_1}{a_1^2 + a_2^2},-\frac{a_2}{a_1^2 + a_2^2}\},~\text{weil}~a\cdot\frac{1}{a}\]
        \[\text{weil}~a\frac{1}{a}=\{a_1\frac{a_1}{a_1^2 + a_2^2} + \frac{a_2^2}{a_1^2 + a_2^2},\frac{a_1 a_2}{a_1^2 + a_2^2} - \frac{a_2 a_1}{a_1^2 + a_2^2}\}\]
 \item $i:= \{0,1\}$ hat die Eigenschaft
-\[1 + \I^2 = \{1,0\} + \{0^2 - 1^2, 0\} = \{0,0\} \Rightarrow 1+\I^2 = 0\]
+\[1 + \I^2 = \{1,0\} + \{0^2 - 1^2, 0\} = \{0,0\} \implies 1+\I^2 = 0\]
 Ähnlich $1 + (-\I)^2 = 0$
 \item Die Zuordnung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ bildet $\mathbb{R}$ bijektiv auf eine Untermenge von $\mathbb{C}$ ab, welche bezüglich der komplexen Addition und Multiplikation wieder ein Körper ist $\hfill\square$
 \end{enumerate}
@@ -858,7 +858,7 @@ $z = \{x,y\} =: x + \I y,~x,y\in\mathbb{R}$
 \subsection{Bemerkung}
 \label{sec-3-4}
 Die reellen Zahlen  sind durch $\Im z = 0$ charakterisiert.
-\[z_1 = z_2 \Rightarrow x_1 + \I y_i = x_2 + \I y_2 \Leftrightarrow x_1 = x_2,y_1 = y_2\]
+\[z_1 = z_2 \implies x_1 + \I y_i = x_2 + \I y_2 \iff x_1 = x_2,y_1 = y_2\]
 \subsection{Korollar 1.59}
 \label{sec-3-5}
 Jede quadratische Gleichung
@@ -908,7 +908,7 @@ Wir sagen, dass die Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$ ($\mathbb{R}$
 \[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
 wenn für beliebiges $\eps > 0$ von einem $n_\eps \in\mathbb{N}$ an gilt
 \[\abs{a_n - a} < \eps,n\geq n_\eps\]
-\[\Leftrightarrow \Forall\eps > 0\exists n\eps \in\mathbb{N}:\Forall n\geq n_\eps a_n \in I_\eps(a)\]
+\[\iff \Forall\eps > 0\exists n\eps \in\mathbb{N}:\Forall n\geq n_\eps a_n \in I_\eps(a)\]
 \subsection{Folgerung 2.2}
 \label{sec-4-2}
 Sei $(a_n)_{n\in\mathbb{N}}$ eine monoton wachsende beziehungsweise fallende Folge reeller Zahlen $M=\{a_n\mid n\in\mathbb{N}\}$ und sei nach oben beziehungsweise unten beschränkt. Dann gilt \[a_n\to\sup M, a_n\to\inf M\]
@@ -942,8 +942,8 @@ im Widerspruch zur Cauchy-Folgen Eigenschaft.
 \end{thm}
 \begin{proof}
 \begin{align*}
-a_n \xrightarrow[k\to\infty]{} a &\Rightarrow \Forall \eps > 0 \exists n_\eps \in\mathbb{N} \Forall n\geq n_\eps: \abs{a - a_n} < \frac{\eps}{2} \\
-&\Rightarrow \Forall n,m\in n_\eps: \abs{a_n - a_m} \leq \abs{a_n - a} + \abs{a - a_m} <\frac{\eps}{2} + \frac{\eps}{2} \tag*{\qedhere}
+a_n \xrightarrow[k\to\infty]{} a &\implies \Forall \eps > 0 \exists n_\eps \in\mathbb{N} \Forall n\geq n_\eps: \abs{a - a_n} < \frac{\eps}{2} \\
+&\implies \Forall n,m\in n_\eps: \abs{a_n - a_m} \leq \abs{a_n - a} + \abs{a - a_m} <\frac{\eps}{2} + \frac{\eps}{2} \tag*{\qedhere}
 \end{align*}
 \end{proof}
 \begin{lemma}
@@ -958,7 +958,7 @@ und ein $m_\eps$, sodass
 \[\abs{a_n - \tilde a < \frac{\eps}{2}} \Forall n\geq m_\eps\]
 Dann für $n \geq \max \{n_\eps, m_\eps\}$:
 \[\abs{a - \tilde a} \leq \abs{a - a_n} + \abs{a_n - \tilde a} < \eps\text{\lightning}\]
-\textbf{Widerspruch} $\Rightarrow a = \tilde a$
+\textbf{Widerspruch} $\implies a = \tilde a$
 \end{proof}
 \begin{remark}
 Die Mengen Abständen heißen *vollständig*, wenn jede Cauchy-Folge in $M$ konvergiert
@@ -996,23 +996,23 @@ Sei $\eps > 0$ beliebig vorgegeben. Wir wählen $n_\eps \in\mathbb{N}$ sodass
 und $m_\eps > n_\eps$ mit
 \[\abs{a - a_{m_\eps}} < \frac{\eps}{2}\hfill\text{ (Häufungswert)}\]
 Dann folgt
-\[\Forall n > m_\eps: \abs{a - a_n} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps} - a_n} < \eps \Rightarrow a_n \xrightarrow[n\to\infty]{} a \qedhere\]
+\[\Forall n > m_\eps: \abs{a - a_n} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps} - a_n} < \eps \implies a_n \xrightarrow[n\to\infty]{} a \qedhere\]
 \end{proof}
 \begin{thm}
 \label{thm:finite}
-$A$ abgeschlossen $\Leftrightarrow$ ($a$ Häufungspunkt von $A \Rightarrow a\in A$)
-$A$ abgeschlossen in M $\Leftrightarrow$ $M\setminus A =: CA$ offen
+$A$ abgeschlossen $\iff$ ($a$ Häufungspunkt von $A \implies a\in A$)
+$A$ abgeschlossen in M $\iff$ $M\setminus A =: CA$ offen
 \end{thm}
 \begin{proof}
-$(\Leftarrow)$: \\
+$(\impliedby)$: \\
 Sei jeder Häufungspunkt von $A$ in $A$
-$x\in CA (=\mathbb{R}\setminus A) \Rightarrow x$ kein Häufungspunkt von $A, x\not\in A$
-\[\Rightarrow \eps: I_\eps (x) \cap A = \emptyset \Rightarrow \exists \eps > 0: I_\eps \subseteq CA\]
-$\Rightarrow CA$ offen $\Rightarrow A$ abgeschlossen \\
-$(\Rightarrow)$: \\
+$x\in CA (=\mathbb{R}\setminus A) \implies x$ kein Häufungspunkt von $A, x\not\in A$
+\[\implies \eps: I_\eps (x) \cap A = \emptyset \implies \exists \eps > 0: I_\eps \subseteq CA\]
+$\implies CA$ offen $\implies A$ abgeschlossen \\
+$(\implies)$: \\
 Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das heißt $x \in CA$, so gilt
-\[\exists \eps > 0: I_\eps \subseteq CA \Rightarrow I_\eps (x) \cap A = \emptyset \text{lightning}\]
-\textbf{Widerspruch} zur Definition von Häufungspunkt $\Rightarrow$ jeder Häufungspunk von $A$ ist in $A$
+\[\exists \eps > 0: I_\eps \subseteq CA \implies I_\eps (x) \cap A = \emptyset \text{lightning}\]
+\textbf{Widerspruch} zur Definition von Häufungspunkt $\implies$ jeder Häufungspunk von $A$ ist in $A$
 \end{proof}
 \begin{lemma}[2.14]
 \label{lemma:monoton_in_r}
@@ -1029,7 +1029,7 @@ n_{k+1} &= \min\{n\in B, n > n_k\}
 Dann ist die Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$ von $(a_n)_{n\in\mathbb{N}}$ monoton fallend
 \item Fall 2: $B$ ist endlich oder leer
 \begin{align*}
-\Rightarrow &\exists n_0 \in\mathbb{N}: \Forall n\geq n_0: n\not\in B \\
+\implies &\exists n_0 \in\mathbb{N}: \Forall n\geq n_0: n\not\in B \\
 \shortintertext{das heißt}
 \exists k\leq n: a_n < a_k
 \end{align*}
@@ -1053,11 +1053,11 @@ Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind ä
 \end{enumerate}
 \end{thm}
 \begin{proof}
-Wir zeigen \ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3} \\
-   \ref{bolzano:3} $\Rightarrow$ \ref{bolzano:2}: \\
+Wir zeigen \ref{bolzano:3} $\implies$ \ref{bolzano:2} $\implies$ \ref{bolzano:1} $\implies$ \ref{bolzano:3} \\
+   \ref{bolzano:3} $\implies$ \ref{bolzano:2}: \\
    Sei $(a_{n_k})_{k\in\mathbb{N}}$ konvergente Teilfolge von $(a_n)_{n\in\mathbb{N}}$ und $a = \lim_{k\to\infty} a_{n_k}$
 $a$ ist auch der Häufungswert der Folge $(a_n)_{n\in\mathbb{N}}$ \\
-   \ref{bolzano:2} $\Rightarrow$ \ref{bolzano:1}: \\
+   \ref{bolzano:2} $\implies$ \ref{bolzano:1}: \\
 \begin{enumerate}
 \item Beschränktheit:
 Angenommen dies ist falsch. Dann
@@ -1065,34 +1065,34 @@ Angenommen dies ist falsch. Dann
 Nach Voraussetzungen hat jede diese Folge einen Häufungspunkt $x\in A$ und es gilt
 \[\abs{x - a} \geq \abs{a_n - a} - \abs{a_n - x} \geq n - \abs{x - a_n}\]
 Dabei gilt $\abs{x - a_n} < 1$ für unendlich viele $n\in\mathbb{N}$ (aus Häufungswert)
-\[\Rightarrow \abs{x - a} \geq n - 1\]
+\[\implies \abs{x - a} \geq n - 1\]
 Für unendlich viele $n\in\mathbb{N}$ \lightning
 \item Abgeschlossenheit: Wir nutzen Satz \ref{thm:finite}
-Zu zeigen: wenn $a$ Häufungspunkt von $A \Rightarrow a\in A$
+Zu zeigen: wenn $a$ Häufungspunkt von $A \implies a\in A$
 Für
 \[I_{\frac{1}{n}}(a) = \{x\in\mathbb{R} \mid \abs{x - a} < \frac{1}{n}\}\]
 gilt
-\[I_{\frac{1}{n}}(a) \cap A \neq \emptyset \Rightarrow \exists a_n\in A: \abs{a_n - a} < \frac{1}{n}\]
+\[I_{\frac{1}{n}}(a) \cap A \neq \emptyset \implies \exists a_n\in A: \abs{a_n - a} < \frac{1}{n}\]
 Die Folge $(a_{n_k})_{k\in\mathbb{N}} \to a$, da $\frac{1}{n}\to 0$
 Nach Voraussetzung hat $(a_n)_{n\in\mathbb{N}}$ einen Häufungswert $\tilde a \in A$. Wir zeigen $a = \tilde a$
 Sei $\eps > 0$ beliebig.
 \begin{align*}
 &\exists n_\eps\in\mathbb{N}: \abs{a - a_n} <\frac{\eps}{2}\Forall n\geq n_\eps \tag{\text{Aus }$a_n \to a$} \\
 &\exists m_\eps\geq n_\eps: \abs{\tilde a - a_{m_\eps}} <\frac{\eps}{2} \tag{\text{Aus Häufungswert}} \\
-&\Rightarrow \abs{a - \tilde a} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps}} < \eps \\
-&\Rightarrow \abs{a - \tilde a} = 0 \\
-&\Rightarrow \tilde a = a \in A
+&\implies \abs{a - \tilde a} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps}} < \eps \\
+&\implies \abs{a - \tilde a} = 0 \\
+&\implies \tilde a = a \in A
 \end{align*}
 \end{enumerate}
-\ref{bolzano:1} $\Rightarrow$ \ref{bolzano:3}: \\
-   Sei nun $(a_n)_{n\in\mathbb{N}}$ eine Folge in $A$, $(a_{n_k})_{k\in\mathbb{N}}$ eine monotone Teilfolge (nach \ref{lemma:monoton_in_r}), $(a_{n_k})$ ist beschränkt, da $A$ beschränkt ist $\Rightarrow (a_{n_k})$ ist konvergent (\ref{sec-4-2}) \\
+\ref{bolzano:1} $\implies$ \ref{bolzano:3}: \\
+   Sei nun $(a_n)_{n\in\mathbb{N}}$ eine Folge in $A$, $(a_{n_k})_{k\in\mathbb{N}}$ eine monotone Teilfolge (nach \ref{lemma:monoton_in_r}), $(a_{n_k})$ ist beschränkt, da $A$ beschränkt ist $\implies (a_{n_k})$ ist konvergent (\ref{sec-4-2}) \\
    Wir müssen zeigen, dass
 \[a = \lim_{n\to\infty} a_{n_k} \in A\]
 \begin{align*}
-\intertext{Angenommen $a\not\in A \Rightarrow a \in \mathcal{C} A, \mathcal{C} A$ ist offen}
-\Rightarrow \exists I_\eps (a) \subseteq \mathcal{C}A \Rightarrow I_\eps (a) \cap A = \emptyset \\
+\intertext{Angenommen $a\not\in A \implies a \in \mathcal{C} A, \mathcal{C} A$ ist offen}
+\implies \exists I_\eps (a) \subseteq \mathcal{C}A \implies I_\eps (a) \cap A = \emptyset \\
 \shortintertext{Nun ist aber mit geeigneten $n_\eps \in\mathbb{N}$}
-\Forall n\geq n_\eps: a_{n_k} \in I_\eps (a): a_{n_k} \in A \Rightarrow a_{n_k} \in I_\eps (a) \cap A~\lightning \tag*{\qedhere}
+\Forall n\geq n_\eps: a_{n_k} \in I_\eps (a): a_{n_k} \in A \implies a_{n_k} \in I_\eps (a) \cap A~\lightning \tag*{\qedhere}
 \end{align*}
 \end{proof}
 \begin{remark}
@@ -1104,7 +1104,7 @@ Sei $\eps > 0$ beliebig.
 \end{itemize}
 \item In $\mathbb{R}$ alle Cauchy-Folgen konvergieren
 \begin{itemize}
-\item Cauchy Folge in $\mathbb{R} \Rightarrow$ beschränkt und Wertemenge ist abgeschlossen $\xRightarrow{B-W Satz} (a_n)_{n\in\mathbb{N}}$ hat einen Häufungswert in $A \xRightarrow{\ref{lemma:cauchy_haufungswert}}$ konvergiert gegen $a\in A$
+\item Cauchy Folge in $\mathbb{R} \implies$ beschränkt und Wertemenge ist abgeschlossen $\xRightarrow{B-W Satz} (a_n)_{n\in\mathbb{N}}$ hat einen Häufungswert in $A \xRightarrow{\ref{lemma:cauchy_haufungswert}}$ konvergiert gegen $a\in A$
 \end{itemize}
 \end{itemize}
 \end{remark}
@@ -1124,8 +1124,8 @@ Dann gilt:
 \begin{thm}[2.15]
 Seien $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen in $\mathbb{R}$. Dann gilt
 \begin{enumerate}
-\item $\displaystyle a_n \leq b_n \Forall n\in\mathbb{N} \Rightarrow \lim_{n\to\infty} a_n \leq \lim_{n\to\infty} b_n$
-\item $\displaystyle \abs{a_n} \leq b_n \Forall n\in\mathbb{N} \Rightarrow \abs*{\lim_{n\to\infty a_n}} \leq \lim b_n$
+\item $\displaystyle a_n \leq b_n \Forall n\in\mathbb{N} \implies \lim_{n\to\infty} a_n \leq \lim_{n\to\infty} b_n$
+\item $\displaystyle \abs{a_n} \leq b_n \Forall n\in\mathbb{N} \implies \abs*{\lim_{n\to\infty a_n}} \leq \lim b_n$
 \end{enumerate}
 \end{thm}
 \begin{proof}
@@ -1135,8 +1135,8 @@ Seien $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen in $\m
 \exists n_\eps:\Forall n\geq n_\eps: b_n \leq \lim_{k\to\infty} b_n + \frac{\eps}{2} \\
 \shortintertext{und}
 \lim_{k\to\infty} a_k \leq a_n + \frac{\eps}{2} \\
-&\Rightarrow \lim_{k\to\infty} a_k \leq a_n + \frac{\eps}{2} \leq b_n + \frac{\eps}{2} \leq \lim_{k\to\infty} b_k + \eps \Forall \eps > 0 \\
-&\Rightarrow \lim_{\k\to\infty} a_k \leq \lim_{k\to\infty} b_k
+&\implies \lim_{k\to\infty} a_k \leq a_n + \frac{\eps}{2} \leq b_n + \frac{\eps}{2} \leq \lim_{k\to\infty} b_k + \eps \Forall \eps > 0 \\
+&\implies \lim_{\k\to\infty} a_k \leq \lim_{k\to\infty} b_k
 \end{align*}
 \item Wir wählen $a_n = \abs{a_n}$ und müssen noch zeigen
 \[\lim_{n\to\infty} \abs{a_n} = \abs{\lim_{n\to\infty}} a_n\tag{Übung}\]
@@ -1151,15 +1151,15 @@ Die geometrische Folge ist definiert durch
 $\Forall q\in\mathbb{R},\abs{q} < 1$ konvergiert die geometrische Folge $a_n = c q^n$ gegen Null.
 \end{lemma}
 \begin{proof}
-Sei $\eps > 0$ gegeben. Nach Annahme ist $\abs{q} < 1 \Rightarrow \abs{q}^{-1} > 1$, somit $\abs{q}^{-1} = 1 + x$ für ein $x > 0$. \\
+Sei $\eps > 0$ gegeben. Nach Annahme ist $\abs{q} < 1 \implies \abs{q}^{-1} > 1$, somit $\abs{q}^{-1} = 1 + x$ für ein $x > 0$. \\
 \begin{align*}
 \intertext{Zu zeigen: $\abs{c q^n - 0} < \eps$ für genug große $n$, das heißt}
-c(\frac{1}{1+x})^n < \eps \Leftrightarrow \frac{c}{\eps} < (1 + x)^n \\
+c(\frac{1}{1+x})^n < \eps \iff \frac{c}{\eps} < (1 + x)^n \\
 \intertext{Das Archimedische Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
 n_0 > \frac{c}{x\eps} - \frac{1}{x} = \frac{c - \eps}{x\eps} \\
 \Forall n\geq n_0: \frac{c}{\eps} = (\frac{c}{x\eps} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
 \intertext{daraus folgt aus der Bernoulli Ungleichung}
-\frac{c}{\eps} < (1 + x)^n \Rightarrow c q^n \to 0 \tag*{\qedhere}
+\frac{c}{\eps} < (1 + x)^n \implies c q^n \to 0 \tag*{\qedhere}
 \end{align*}
 \end{proof}
 \begin{conc}[2.17]
@@ -1171,7 +1171,7 @@ konvergiert für $\abs{q} < 1$ und $\lim_{n\to\infty} S_n = \frac{1}{1 - q}$
 \begin{gather*}
 \intertext{zu Beweisen mit Induktion}
 \string(1 - q\string)\string(1 + q + q^2 + \ldots + q^n\string) = 1 + q^{n + 1} \\
-\Rightarrow S_n - \frac{1}{1 - q} = \frac{1 - q^{n + 1} - 1}{1 - q} = -\frac{q^{n + 1}}{1 - q} \\
+\implies S_n - \frac{1}{1 - q} = \frac{1 - q^{n + 1} - 1}{1 - q} = -\frac{q^{n + 1}}{1 - q} \\
 \abs{S_n - \frac{1}{1 - q}} = c\abs{q}^n < \eps \Forall n\geq n_\eps \\
 \intertext{$c = \abs*{\frac{1}{1 - q}}$}
 s_n \to \frac{1}{1 -q} \tag*{\qedhere}
@@ -1188,7 +1188,7 @@ s_n \to \frac{1}{1 -q} \tag*{\qedhere}
 \begin{itemize}
 \item $(a_n)_{n\in\mathbb{N}}$ ist monoton wachsend
 \item beschränkt: $a_n < 3 \Forall n\in\mathbb{N}$
-\item $\Rightarrow (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogennante Zahl $\euler$
+\item $\implies (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogennante Zahl $\euler$
 \end{itemize}
 \item $(a_n)_{n\in\mathbb{N}}$ rekursiev definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
 \end{enumerate}
@@ -1196,7 +1196,7 @@ s_n \to \frac{1}{1 -q} \tag*{\qedhere}
 \subsection{Umgebung}
 \label{sec-4-7}
 \begin{defn}[2.19]
-$A\subseteq \mathbb{K}$ heißt Umgebung von $a\in\mathbb{K} \Leftrightarrow \Exists \eps > 0 I_\eps (a) \subseteq A$
+$A\subseteq \mathbb{K}$ heißt Umgebung von $a\in\mathbb{K} \iff \Exists \eps > 0 I_\eps (a) \subseteq A$
 \end{defn}
 \begin{conc}[2.20]
 Aus der Definition folgt
@@ -1209,19 +1209,19 @@ Aus der Definition folgt
 \begin{proof}
 \begin{enumerate}
 \item Für irgendein \[i_0 \in I \Exists \eps > 0: I_\eps (a) \subseteq U_{i_0} \subseteq \bigcup_{i \in I} U_i\]
-\item Es gilt nach Voraussetzung $\eps_1, \ldots \eps_n > 0$ mit $I_{\eps_i}(a) \subseteq U_i$ für $i = 1,\ldots,n$. Folglich gilt für $\eps:= \min \{\eps_1, \ldots, \eps_n\} > 0,~I_\eps(a) \subseteq U_i (\Forall i = 1,\ldots,n) \Rightarrow I_\eps (a) \subseteq U_1 \cap \ldots U_n$
+\item Es gilt nach Voraussetzung $\eps_1, \ldots \eps_n > 0$ mit $I_{\eps_i}(a) \subseteq U_i$ für $i = 1,\ldots,n$. Folglich gilt für $\eps:= \min \{\eps_1, \ldots, \eps_n\} > 0,~I_\eps(a) \subseteq U_i (\Forall i = 1,\ldots,n) \implies I_\eps (a) \subseteq U_1 \cap \ldots U_n$
 \item Nach Vorraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\eps > 0$ mit $I_\eps(a) \subseteq U$ \\
       $V:= I_{\frac{\eps}{2}}(a) \subseteq U$ ist ebenfalls Umgebung von $a$ und $\Forall y\in V$ gilt
-\[I_{\frac{\eps}{2}} \subseteq I_\eps(x) \subseteq U,~\text{denn}~ \underbrace{\abs{y - z}}_{z\in I_{\frac{\eps}{2}}} < \frac{\eps}{2} \Rightarrow \abs{x - z} \leq \abs{x - y} + \abs{x - z} < \eps\]
+\[I_{\frac{\eps}{2}} \subseteq I_\eps(x) \subseteq U,~\text{denn}~ \underbrace{\abs{y - z}}_{z\in I_{\frac{\eps}{2}}} < \frac{\eps}{2} \implies \abs{x - z} \leq \abs{x - y} + \abs{x - z} < \eps\]
 \end{enumerate}
 \end{proof}
 \begin{defn}[2.21]
 \mbox{}
 \begin{enumerate}
-\item $A\subseteq \mathbb{K}$ ist offen $\Leftrightarrow \Forall a\in A$ ist $A$ die Umgebung von $a$ \\
+\item $A\subseteq \mathbb{K}$ ist offen $\iff \Forall a\in A$ ist $A$ die Umgebung von $a$ \\
       (in $\mathbb{R}\Forall a\in A \Exists \eps > 0 I_\eps (a) \subseteq A$)
 Für Intervalle $(a,b)$ haben wir schon gezeigt, dass sie offen sind
-\item $A\subseteq \mathbb{K}$ heißt abgeschlossen $\Leftrightarrow C_\mathbb{K} A$ offen
+\item $A\subseteq \mathbb{K}$ heißt abgeschlossen $\iff C_\mathbb{K} A$ offen
 \item Abschließung von $A$: \[\bar A := \{a \in \mathbb{K} \mid a \in A \vee a ~\text{Häufungspunk von}~A\}\]
 \item Rand von $A$: \[\partial A:= \{a\in\mathbb{K}\mid \Forall ~\text{Umgebung $U$ von $a$}: A \cap U \neq \emptyset \wedge CA \cap U \neq \emptyset\}\]
 \end{enumerate}
@@ -1269,14 +1269,14 @@ Sei $(a_n)_{n\in\mathbb{N}}$ ein Folge von reellen Zahlen, $\emptyset \neq H\sub
 \mbox{}
 \begin{enumerate}
 \item Definition \ref{defn:223} kann man auch für $\mathbb{R}$ formulieren
-\item \[a = \lim_{n\to\infty} \inf a_n \Leftrightarrow \Forall \eps \begin{cases} \string(1\string) \{n \mid \abs{a - a_n} < \eps\} ~\text{ist unendlich (weil $a$ Häufungswert ist)} \\ \string(2\string) \{n \mid a_n < a - \eps\} ~\text{ist endlich ($a$ ist kleinste Häufungswert)}\end{cases}\]
+\item \[a = \lim_{n\to\infty} \inf a_n \iff \Forall \eps \begin{cases} \string(1\string) \{n \mid \abs{a - a_n} < \eps\} ~\text{ist unendlich (weil $a$ Häufungswert ist)} \\ \string(2\string) \{n \mid a_n < a - \eps\} ~\text{ist endlich ($a$ ist kleinste Häufungswert)}\end{cases}\]
 \end{enumerate}
 \end{remark}
 \begin{ex}[2.24]
 \begin{align*}
 a_n = n + (-1)^n n \\
-a_{2n + 1} = 0 \Forall n \Rightarrow 0 ~\text{ist Häufungswert} \\
-a_{2n} = 4n \to \infty \Rightarrow \infty~\text{ist Häufungswert}
+a_{2n + 1} = 0 \Forall n \implies 0 ~\text{ist Häufungswert} \\
+a_{2n} = 4n \to \infty \implies \infty~\text{ist Häufungswert}
 \intertext{also gilt}
 \lim_{n\to\infty} \inf a_n = 0 \\
 \lim_{n\to\infty} \sup a_n = \infty \\
@@ -1285,7 +1285,7 @@ a_{2n} = 4n \to \infty \Rightarrow \infty~\text{ist Häufungswert}
 \begin{remark}
 \mbox{}
 \begin{itemize}
-\item $a_n \to a$ in $\displaystyle \hat{\mathbb{R}} \Leftrightarrow \lim_{n\to\infty} \inf a_n = a = \lim_{n\to\infty}\sup a_n$
+\item $a_n \to a$ in $\displaystyle \hat{\mathbb{R}} \iff \lim_{n\to\infty} \inf a_n = a = \lim_{n\to\infty}\sup a_n$
 \item $\displaystyle \lim_{n\to\infty} \inf a_n + \lim_{n\to\infty}\inf b_n \leq \lim_{n\to\infty} \inf (a_n + b_n)$
 \item $\displaystyle \lim_{n\to\infty} \inf a_n \cdot \lim_{n\to\infty}\inf b_n \leq \lim_{n\to\infty} \inf (a_n \cdot b_n)$ für $a_n,b_n > 0$
 \item $\displaystyle \lim_{n\to\infty} \sup a_n + \lim_{n\to\infty}\sup b_n \geq \lim_{n\to\infty} (a_n + b_n)$ (zum Beispiel betrachte $a_n = n^2, b_n = \frac{1}{n}$)
@@ -1302,7 +1302,7 @@ Eine Reihe \[\sum_{k = 1}^\infty a_k\] (\textbf{unendliche Summe}) konvergiert, 
 \begin{enumerate}
 \item $\displaystyle \sum_{k = 1}^n k = \frac{n(n + 1)}{n}\xrightarrow{n\to\infty} \infty$
 \item $\displaystyle S_n = \sum_{k = 1}^n (-1)^k = \begin{cases} -1 & n~\text{ungerade} \\ 0 & n~\text{gerade}\end{cases}$ S$_{\text{n}}$ ($= -1, 0, -1, 0,\ldots$) konvergiert nicht
-\item $\displaystyle S_n = \sum_{j = 0}^n z^j = \frac{1 - z^{n + 1}}{1 - z}$ Für $\abs{z} < 1$ konvergiert $\displaystyle S_n \to \frac{1}{1 - z} \Rightarrow \sum_{j = 0}^\infty z^j = \frac{1}{1 - z}$
+\item $\displaystyle S_n = \sum_{j = 0}^n z^j = \frac{1 - z^{n + 1}}{1 - z}$ Für $\abs{z} < 1$ konvergiert $\displaystyle S_n \to \frac{1}{1 - z} \implies \sum_{j = 0}^\infty z^j = \frac{1}{1 - z}$
 \item Harmonische Reihe: Seien $\displaystyle S_n = \sum_{k = 1}^n \frac{1}{k}$, Behauptung $\displaystyle \lim_{n\to\infty} S_n = \infty$, also divergent
 \end{enumerate}
 \end{ex}
@@ -1338,7 +1338,7 @@ Die Beschränktheit der Paritalsummen folgt notwendig aus der Beschränktheit ko
 Sei $(a_k)_{k\in\mathbb{N}}$ eine Nullfolge. Dann $\displaystyle \sum_{k = 1}^\infty (a_k - a_{k + 1}) = a_1$
 \end{thm}
 \begin{proof}
-\[s_n = \sum_{k = 1}^n (a_k - a_{k + 1}) = \sum_{k = 1}^n a_k - \sum_{k = 2}^{n + 1} a_k = a_1 - a_{n + 1} \Rightarrow \abs{s_n - a_1} = \abs{a_{n + 1}} \xrightarrow{n\to\infty} 0\]
+\[s_n = \sum_{k = 1}^n (a_k - a_{k + 1}) = \sum_{k = 1}^n a_k - \sum_{k = 2}^{n + 1} a_k = a_1 - a_{n + 1} \implies \abs{s_n - a_1} = \abs{a_{n + 1}} \xrightarrow{n\to\infty} 0\]
 \end{proof}
 \begin{ex}[2.30]
 \[\sum_{k = 1}^\infty \frac{1}{k(k + 1)} = \sum_{k = 1}^\infty (\underbrace{\frac{1}{k}}_{\mathclap{a_k}} - \underbrace{\frac{1}{k + 1}}_{\mathclap{a_{n + 1}}}) = a_1 = \frac{1}{2}\]
@@ -1365,7 +1365,7 @@ s_{2n + 1} - s_{2 n} = a_{2n + 1} \geq 0
 \intertext{und somit}
 s_2 \leq \ldots \leq s_{2n} \leq s_{2n + 1} \leq \ldots \leq s_1
 \intertext{$(S_{2n})$ monoton wachsend, $s_{2n + 1}$ monoton fallend, beide beschränkt}
-\Rightarrow s_{2n} \xrightarrow{n\to\infty} s_\ast, \Rightarrow s_{2n + 1} \xrightarrow{n\to\infty} s^\ast \\
+\implies s_{2n} \xrightarrow{n\to\infty} s_\ast, \implies s_{2n + 1} \xrightarrow{n\to\infty} s^\ast \\
 s_{sn} \leq s_\ast \leq s^\ast \leq s_{2n + 1} \\
 \intertext{da $(a_n)$ Nullfolge}
 \abs{s_{2n + 1} - s_{2 n}} = \abs{a_{2n + 1}} \to 0 \\
@@ -1417,7 +1417,7 @@ $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k}$ konvergent (aber nich
    Behauptung: $\Exists$ Umordnung $\tau$, sodass $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{\tau(k) - 1}}{\tau(k)}$ divergiert
 Beachte
 \[\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{2\cdot 2^j - 1} \leq 2^{j - 1} \frac{1}{2^{j + 1}} = \frac{1}{4}\]
-$\Rightarrow$ Die Umordung
+$\implies$ Die Umordung
 \[1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + (\frac{1}{5} + \frac{1}{7}) - \frac{1}{6} + \underbrace{(\frac{1}{9} + \frac{1}{11} + \frac{1}{13} + \frac{1}{15})}_{\geq \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{8} + \ldots + \underbrace{(\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{1}{2^{j + 1} - 1})}_{> \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{2^k + 2}\]
 konvergiert nicht
 \end{ex}
@@ -1438,14 +1438,14 @@ Gegeben seien zwei Reihen $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k, \ti
 ohne Beschränkung der Allgemeinheit nehmen wir an, dass die Vorraussetzungen $\Forall k \in \mathbb{N}$ gelten
 \begin{enumerate}
 \item Ist $\tilde s_\infty$ konvergent
-\[\Rightarrow \sum_{k = 1}^{n}\abs{a_k} \leq \alpha \sum_{k = 1}^{n} \abs{\tilde a_k} \leq \alpha \sum_{k = 1}^{\infty} \tilde a_k, \Forall n\in\mathbb{N}\]
-$\Rightarrow$ S$_{\text{n}}$ sind beschränkt, $S_\infty$ absolut konverent
-Umgekehrt folgt aus Divergenz von $\tilde S_\infty$ auch $\sum_{k = 1}^{\infty} \abs{a_k} \to \infty \Rightarrow \tilde S_\infty$ auch Divergent
+\[\implies \sum_{k = 1}^{n}\abs{a_k} \leq \alpha \sum_{k = 1}^{n} \abs{\tilde a_k} \leq \alpha \sum_{k = 1}^{\infty} \tilde a_k, \Forall n\in\mathbb{N}\]
+$\implies S_n$ sind beschränkt, $S_\infty$ absolut konverent
+Umgekehrt folgt aus Divergenz von $\tilde S_\infty$ auch $\sum_{k = 1}^{\infty} \abs{a_k} \to \infty \implies \tilde S_\infty$ auch Divergent
 \item Aus Vorraussetzung
 \begin{align*}
 \abs{\frac{a_{k + 1}}{\tilde a_{k + 1}}} \leq \abs{\frac{a_{k + 1}}{a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} \leq \abs{\frac{\tilde a_{k + 1}}{\tilde a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} = \abs{\frac{a_k}{\tilde a_k}} \leq \ldots \leq \abs{\frac{a_1}{\tilde a_1}} =: \alpha
 \end{align*}
-$\Rightarrow$ $\abs{a_{k + 1}} \leq \alpha \abs{a_k}$. Aus 1. folgt die Aussage
+$\implies \abs{a_{k + 1}} \leq \alpha \abs{a_k}$. Aus 1. folgt die Aussage
 \end{enumerate}
 \end{proof}
 \begin{korollar}[2.34 Wurzelkriterium]
@@ -1470,15 +1470,15 @@ Vergleich mit
 \begin{enumerate}
 \item $\displaystyle s_\infty \sum_{k = 1}^{\infty} \frac{z^k}{k!}, z\in\mathbb{C}$ \\
       Qutientenkriterium: \[\abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{z^{k + 1}}{(k + 1)!} \frac{k!}{z^k}} = \abs{\frac{z}{k + 1}}\]
-      Sei $k \geq 2 \abs{z} \Rightarrow \abs{\frac{z}{k + 1}} \leq \frac{1}{2} \Rightarrow s_\infty$ absolut konvergent.
+      Sei $k \geq 2 \abs{z} \implies \abs{\frac{z}{k + 1}} \leq \frac{1}{2} \implies s_\infty$ absolut konvergent.
 \item $\displaystyle \sum_{k = 1}^{\infty} \frac{k!}{k^k}$
       \[\abs{\frac{(k + 1)!}{(k + 1)^{k + 1}} \frac{k^k}{k!}} = \abs{\frac{k}{k + 1}}^k = \frac{1}{(1 + \frac{1}{k})^k} \leq \frac{1}{1 + k \frac{1}{k}} = \frac{1}{2}\]
-      $\Rightarrow s_\infty$ absolut konvergent
+      $\implies s_\infty$ absolut konvergent
 \end{enumerate}
 \end{ex}
 \begin{remark}
 \begin{enumerate}
-\item Falls $q = 1$ $\Rightarrow$ die Kriterien geben keine Entscheidung, zum Beispiel:
+\item Falls $q = 1 \implies$ die Kriterien geben keine Entscheidung, zum Beispiel:
 \begin{align*}
 \sum_{k = 1}^{\infty} \frac{1}{k} \vee \sum_{k = 1}^{\infty} \frac{1}{k^2} \\
 \abs{\frac{a_{k + 1}}{a_k}} = \abs{\frac{k}{k + 1}} \to 1 \\
@@ -1497,7 +1497,7 @@ Eine Reihe $\displaystyle s_\infty = \sum_{k = 1}^{\infty} a_k$, mit $a_k \in \m
 Wir setzen $\displaystyle s_n := \sum_{k = 1}^{n} a_k, \tilde s_n := \sum_{k = 0}^{n} 2^k a_{2^k}$ \\
    Für $n < 2^{k + 1}$
 \[S_n = a_1 + (a_2 + a_3) + \ldots + (a_{2^k} + \ldots + a_{k^{k + 1} - 1}) \leq a_1 + 2 a_2 + 4 a_4 + \ldots + 2^k a_{2^k} = \tilde s_n\]
-$\Rightarrow$ Konvergenz von $\tilde s_k$ impliziert Konvergenz von $S_n$
+$\implies$ Konvergenz von $\tilde s_k$ impliziert Konvergenz von $S_n$
 
 Falls die verdichtete Reihe divergent ist, so folgt aus der für $n \geq 2^{k + 1}$ gültigen Beziehung
 \begin{align*}
@@ -1531,7 +1531,7 @@ Falls $\rho = \infty$, konvergiert die Reihe $\Forall x\in \mathbb{K}$ \\
 \begin{itemize}
 \item Die Konvergenzgrenze $\rho$ ist die größt mögliche und wird \textbf{Konvergenzradius} der Reihe bezeichent
 \item Für $\lim\sup \sqrt[k]{\abs{c_k}} = \infty$ konvergiert die Reihe für kein $x \neq x_0$ und wir setzen $\rho 0$
-\item Falls $\lim\sup \sqrt[k]{\abs{c_k}} = 0 \Rightarrow \rho = \infty$
+\item Falls $\lim\sup \sqrt[k]{\abs{c_k}} = 0 \implies \rho = \infty$
 \end{itemize}
 \end{remark}
 \subsection{Exponentialreihe}
@@ -1557,7 +1557,7 @@ s_{n + m} - s_n &= (1 + \frac{1}{1!} + \ldots + \frac{1}{(m + n)!}) - (1 + \frac
 &\leq \frac{1}{(n + 1)!} \frac{1}{1 - x} = \frac{1}{(n + 1)!} \frac{n + 1}{n}
 \end{align*}
 Da dies für ale $m \in \mathbb{N}$, folgt
-\[0 < e - s_n \leq \frac{1}{n! n} \Rightarrow 0 < e n! -s_n n! \leq \frac{1}{n}\]
+\[0 < e - s_n \leq \frac{1}{n! n} \implies 0 < e n! -s_n n! \leq \frac{1}{n}\]
 Wähle $n = q > 1$, dann folgt $0 < p(q - 1)! - (q! + \ldots + 1!) \leq \frac{1}{1} < 1 \lightning$
 \end{proof}
 \begin{korollar}[2.46 Funktionalgleichung von $\exp(x)$]
@@ -1645,7 +1645,7 @@ Fortsetzbarkeit auf den Abschluss $\bar D \subseteq \mathbb{K}$, wobei
 \begin{defn}[3.1]
 Eine Funktion $f: D\subseteq \mathbb{K} \to \mathbb{K}$ hat im Punkt $x_0 \in \bar D$ einen
 Grenzwert $a \in\mathbb{K}$, wenn alle Folgen $(x_n)_{n\int\mathbb{N}} \subseteq D$ gilt:
-\[x_n \to x_0 (n \to \infty) \Rightarrow f(x_n) \to a (n\to\infty)\]
+\[x_n \to x_0 (n \to \infty) \implies f(x_n) \to a (n\to\infty)\]
 Wir schreiben kurz: $\lim_{x\to x_0} f(x) = a$
 \end{defn}
 \begin{remark}
@@ -1684,7 +1684,7 @@ Die Funktion $f: D\to \mathbb{R}$ hat für $x \to + \infty (x \to -\infty)$ eine
 \[\Forall \eps > 0 \Exists y\in \mathbb{R}: \abs{f(x) - a} < \eps \Forall x\in D, x > y (x < y)\]
 Schreibweise: $\lim_{x \to \infty}f(x) = a$, oder $\lim_{x\to -\infty} f(x) = a$
 
-Sei $x_0 \in \bar D$. Die FUnktion $f$ divergiert bestimmt gegen $+\infty (-\infty) :\Leftrightarrow \Forall K\in\mathbb{R}_{+} \Exists \delta > 0: f(x) > K (f(x) < -K) \Forall x\in I_\delta (x_0) \cap (D\setminus\{x_0\})$ \\
+Sei $x_0 \in \bar D$. Die FUnktion $f$ divergiert bestimmt gegen $+\infty (-\infty) :\iff \Forall K\in\mathbb{R}_{+} \Exists \delta > 0: f(x) > K (f(x) < -K) \Forall x\in I_\delta (x_0) \cap (D\setminus\{x_0\})$ \\
    Schreibweise: $f(x) \to +\infty (f(x) \to -\infty)$ für $x\to x_0$
 \end{defn}
 \begin{ex}[3.4]
@@ -1694,13 +1694,13 @@ Sei $x_0 \in \bar D$. Die FUnktion $f$ divergiert bestimmt gegen $+\infty (-\inf
       wir schreiben kurz $\lim_{\abs{x} \to \infty} \frac{1}{x} = 0$
 \item $\Forall k\in\mathbb{N}$ gilt
 \[\lim_{x\to\infty} \frac{x^k}{e^x} = 0 = \lim_{x\to -\infty} x^k e^x,~\text{denn}~ e^x = \exp(x) \geq \frac{x^{k + 1}}{(k + 1)!}, x\geq 0 \]
-\[\Rightarrow \frac{x^k}{e^x} \leq \frac{(k + 1)!}{x} \to 0 (x\to \infty)\]
+\[\implies \frac{x^k}{e^x} \leq \frac{(k + 1)!}{x} \to 0 (x\to \infty)\]
 \[x^k e^x = \frac{(-1)^k \abs{x}^k}{e^{\abs{x}}}, x < 0\]
 \end{enumerate}
 \end{ex}
-\#+begin$_{\text{defn}}$ latex
+\begin{defn}[3.5]
 Eine Funktion $f:D \subseteq \mathbb{K} \to \mathbb{K}$ heißt stetig im Punkt $x_0 \in D$, wenn gilt:
-Für alle Folgen $x_n \to x_0 (n\to\infty) \Rightarrow f(x_n) \to f(x_0) (n \to \infty)$
+Für alle Folgen $x_n \to x_0 (n\to\infty) \implies f(x_n) \to f(x_0) (n \to \infty)$
 Andernfalls heißt sie unstetig in $x_0 \in D$.
 $f$ heißt stetig (auf ganz $D$), wenn sie in jedem $x_0 \in D$ stetig ist. (\emph{insert Symbolbild hier}) \\
 \begin{lemma}[3.5]
@@ -1720,5 +1720,109 @@ $f$ heißt stetig (auf ganz $D$), wenn sie in jedem $x_0 \in D$ stetig ist. (\em
       $(g\circ f)(x_n) = g(f(x_n)) \rightarrow g(f(x_0)) = (g\circ f)(x_0) (n\to\infty)$
 \end{enumerate}
 \end{proof}
+\begin{lemma}[3.7 $\eps/\delta$ Kriterium]
+Eine Funktion $f: D \to \mathbb{K}$ ist in $x_0 \in D$ genau dann stetig, wenn es zu jedem $\eps > 0$ ein $\delta = \delta(\eps) > 0$ gibt, sodass Für alle $x \in D$ gilt:
+\[\abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \eps\]
+\end{lemma}
+\begin{proof}
+$(\impliedby)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
+   $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
+das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Wiederspruch zu
+\[\lim_{x \to x_0} f(x) = f(x_0)\]
+\end{proof}
+\begin{korollar}[3.8]
+Sei $f: D \to \mathbb{K}$ stetig in $x_0 \in D$ mit $f(x_0) \neq 0$. Dann gibt es ein $\delta > 0$ mit $f(x) \neq 0$.
+Dann gibt es ein $\delta > 0$ mit $f(x) \neq 0 \Forall x\in I_\sigma (x_0) \cap D$. Insbesondere ist $\frac{1}{f}: D\to\mathbb{K}$ stetig in $x_0 \in D$
+\end{korollar}
+\begin{proof}
+Setze $\eps := \abs{f(x_0)} > 0$. Dann gibt es ein $\delta > 0$, sodass $\Forall x\in D$ mit $\abs{x - x_0} < \delta$ folgt $\abs{f(x) - f(x_0)} < \eps$ (aus Stetigkeit von $f$),
+das heißt für $x \in I_\sigma (x_0) \cap D$ gilt
+\[\abs{f(x)} \geq \abs{f(x_0)} - \abs{f(x) - f(x_0)} > \eps - \eps = 0\]
+Insbesondere sind Folgen $x_n \to x_0$ wohldefiniert und die Aussage resultiert aus den Rechenregeln für Folgen
+\end{proof}
+\begin{ex}[3.9]
+\mbox{}
+\begin{enumerate}
+\item $f: \mathbb{R} \to \mathbb{R}, f(x) = x$ ist stetig auf $\mathbb{R}$
+\item Konstante Funktionen $f(x) = c \Forall x\in \mathbb{R}$ sind stetig auf $\mathbb{R}$
+\item Seien $a_0, \ldots, a_n \in \mathbb{R}, a_n\neq 0$, Dann heißt
+\[p: \mathbb{R} \to \mathbb{R}, x\mapsto \sum_{k = 0}^{n} a_k x^k\]
+\textbf{Polynom} vom Grad $n\in\mathbb{N}_0$ und ist stetig (wegen 1. und 2. und Lemma 3.6)
+\item Seien $p,q$ Polynome, dann heißt \[f: \{x\in\mathbb{R} \mid q(x) \neq 0\} \to \mathbb{R}, x\mapsto \frac{p(x)}{q(x)}\]
+      \textbf{rationale Funktion} und ist stetig nach 3. und Korollar 3.8
+\item $g:\mathbb{R} \to \mathbb{R}, x\mapsto \sqrt{1 + 3x^2}$ ist stetig nach 3., Lemma 3.6 und Übung 5.1
+\item $\exp: \mathbb{R} \to \mathbb{R} \setminus \{0\}, x\mapsto e^x$ ist stetig auf $\mathbb{R}$, denn für $x \neq x_0$ ist
+\[e^x = e^{x_0} e^{x - x_0} = e^{x_0} (1 + \underbrace{(x - x_0)}_{\to 0} \frac{e^{x - x_0} - 1}{\underbrace{(x - x_0)}_{1}})\]
+(nach Beispiel 3.2)
+\item $\displaystyle f(x) = \begin{cases} 1 & x \in\mathbb{Q} \\ 0 & x \in \mathbb{R} \setminus \mathbb{Q} \end{cases}$
+\end{enumerate}
+\end{ex}
+\#+begin$_{\text{defn}}$ latex
+Eine Abbildung $f: D \to \mathbb{K}$ heißt \textbf{gleichmäßig stetig} auf $D$, wenn $\Forall \eps > 0 \Exists \delta = \delta(\eps) < 0: \Forall x,y \in D: \abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \eps$
+\end{defn}
+\begin{remark}
+Gleichmäßige Stetigkeit heißt, dass die $\delta$ gleichmäßig für alle Punkte $x\in D$ gewählt werden kann.
+\end{remark}
+\begin{ex}[3.11]
+\[f: \mathbb{R} \setminus \{0\} \to \mathbb{R}, x \mapsto \frac{1}{x}\]
+\begin{enumerate}
+\item $f$ ist gleichmäßig stetig auf $A = \mathbb{R} \setminus (-a, a), a > 0$
+\item $f$ ist \textbf{nicht} gleichmäßig stetig auf $\mathbb{R} \setminus \{0\}$
+\end{enumerate}
+\end{ex}
+\begin{proof}
+\[\abs{f(x) - f(y)} = \abs{\frac{1}{x} - \frac{1}{y}} = \frac{1}{\abs{xy}} \abs{x - y}\]
+also $\abs{f(x) - f(y)} < \eps \iff \abs{x - y} < \abs{xy} \eps$
+\begin{enumerate}
+\item Für $x,y \in \mathbb{R} \setminus (-a, a)$ gilt $\abs{xy} \geq a^2$, also $\abs{x - y} < \eps a^2 := \delta \implies \abs{x - y} < \eps \abs{xy}$.
+Daher $\Forall \eps > 0 \Forall x,y\in A: \abs{x - y} < \delta:= \eps a^2 \implies \abs{f(x) - f(y)} < \eps$
+\item Dagegen können wir $\Forall \delta > 0, x, y \in \mathbb{R} \setminus \{0\}$ finden wir
+$\abs{x - y} < \delta$, aber $\abs{f(x) - f(y)} \geq 1 \iff \abs{x - y} \geq \abs{xy}$ \\
+      Sei $\delta > 0$. Wähle $n\in \mathbb{N}$, sodass $\frac{\delta}{n} < 1$. Nun gilt für
+\begin{align*}
+\abs{x - y} &= \frac{\delta}{2n} \\
+\abs{xy} &< (\abs{x - y} + \abs{x}) \abs{x} \\
+\intertext{für $\abs{x} < \frac{\delta}{2n}$}
+&= (\frac{\delta}{2n} + \abs{x}) \abs{x} < \frac{\delta^2}{2n^2} \\
+&= \frac{\delta}{n} \abs{x - y} \leq \abs{x - y}, ~\text{da}~ \frac{\delta}{n} \leq 1
+\end{align*}
+\end{enumerate}
+\end{proof}
+\begin{defn}[3.12 Lipschitz Stetigkeit]
+Eine Funktion $f:D\to\mathbb{K}$ heißt Lipschitz stetig (kurz L-stetig) auf $D$, wenn
+$\Exists L > 0$ (sogenannte Lipschitz Konstante), sodass
+\[f(x) - f(y) \leq L \abs{x - y} \Forall x,y \in D\]
+\end{defn}
+\begin{remark}
+Menge von stetigen Funktionen $\supset$ Menge von gleichmäßig stetigen Funktionen $\supset$
+Menge von Lipschitz-stetigen Funktionen
+\end{remark}
+\begin{defn}[3.13 Satz von der gleichmäßigen Stetigkeit, Satz von Heine für folgenkompakte metrische Räume]
+Eine auf einer beschränkten, abgeschlossenen (das heißt kompakten) Teilmenge $D \subseteq \mathbb{K}$
+stetige Funktion ist gleichmäßig stetig.
+\end{defn}
+\begin{proof}
+Angenommen $f$ ist nicht gleichmäßig stetig. Dann gibt es ein $\eps > 0$, sodass $\Forall n\in \mathbb{N}$ Punkte $x_n, y_n \in D$ existieren mit
+$\abs{x_n - y_n} < \frac{1}{n}, \abs{f(x_n) - f(y_n)} \geq \eps$ \\
+   Nach dem Satz von Bolzano-Weierstrass besitzt die beschränkte Folge $(x_n)_{n\in\mathbb{N}}$ eine
+konvergente Teilfolge $x_{n_k} \to x \in D$. Wegen $\abs{x_n - y_n}  < \frac{1}{n}$ ist auch $\lim_{k\to\infty} y_{n_k} = y = x$
+Aus der Stetigkeit von $f$ folgt, dass
+\[\abs{f(x_{n_k}) - f(y_{n_k})} \to \abs{f(x) - f(y)} = 0 \lightning\]
+\end{proof}
+\begin{remark}
+\mbox{}
+\begin{enumerate}
+\item Wichtigkeit von Annahmen
+\begin{itemize}
+\item Abgeschlossenheit: $f(x) = x^{-1}$ für $x\in [-A, A] \setminus \{0\}$ Stetig, aber nicht gleichmäßig Stetig
+\item Beschränktheit: $f(x) =x^2$ für $x\in\mathbb{R}$ ist stetig, aber nicht gleichmäßig stetig auf $\mathbb{R}$ \\
+        für $x = m$ und $y = x + \frac{1}{n}$ gilt
+\[\abs{x - y} \to 0, ~\text{aber}~ \abs{f(x) - f(y)} = \abs{x^2 - y^2} = \abs{(x - y)(x + y)} = 2 + \frac{1}{n} \to 2\]
+\item Libschitz-Stetigkeit von $f(x) = x^2$ \\
+        \[\abs{f(x) - f(y)} = \abs{(x - y)(x + y)} \leq L \abs{x y}\]
+        wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A$
+\end{itemize}
+\end{enumerate}
+\end{remark}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

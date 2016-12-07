@@ -1,4 +1,4 @@
-% Created 2016-12-07 Mi 03:10
+% Created 2016-12-07 Mi 13:00
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -59,6 +59,7 @@
 \patchcmd{\thmhead}{(#3)}{#3}{}{}
 \renewcommand*{\proofname}{Beweis}
 \newcommand{\eps}{\ensuremath{\varepsilon}}%
+\usepackage{chemmacros}
 \author{Robin Heinemann}
 \date{\today}
 \title{Experimentalphysik (H.-C. Schulz-Coulon)}
@@ -274,8 +275,8 @@ Wurfweite:
 \[Z(x_w) = 0\]
 \[x_w = \frac{v_0^2}{2g}\sin{2\varphi}(1 + \sqrt{1 + \frac{2gz_0}{v_0^2\sin^2{\varphi}}})\]
 Optimaler Winkel: $\varphi_{opt}, x_w$ max.
-\[z_0 = 0\Rightarrow \sin{2\varphi} = 1 \rightarrow \varphi = \SI{45}{\degree}\]
-\[z_0 \neq 0\Rightarrow \sin{\varphi_{opt}} = (2 + \frac{2gz_0}{v_0^2})^{-\frac{1}{2}}\]
+\[z_0 = 0\implies \sin{2\varphi} = 1 \rightarrow \varphi = \SI{45}{\degree}\]
+\[z_0 \neq 0\implies \sin{\varphi_{opt}} = (2 + \frac{2gz_0}{v_0^2})^{-\frac{1}{2}}\]
 \paragraph{Gleichförmige Kreisbewegung}
 \label{sec-2-1-2-6}
 \[\vec{r}(t) = \cvec{x(t);y(t)} = \cvec{R\cos{\varphi}; R\sin{\varphi}}\]
@@ -287,7 +288,7 @@ Definition Winkelgeschwindigkeit:
 Für $\omega = \text{const.}$:
 \[\vec{r} = R\cvec{\cos{\varphi};\sin{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
 \[\vec{v} = R\omega\cvec{-\sin{\varphi};\cos{\varphi}}~\rightarrow \abs{\vec{r}(t)} = r = \text{const}\]
-\[\vec{v} \perp \vec{r} \Leftrightarrow \vec{v}\cdot\vec{r} = 0\]
+\[\vec{v} \perp \vec{r} \iff \vec{v}\cdot\vec{r} = 0\]
 \subparagraph{{\bfseries\sffamily TODO} Skizze Kreisbewegung}
 \label{sec-2-1-2-6-1}
 \subparagraph{Mitbewegtes Koordinatensystem}
@@ -296,7 +297,7 @@ Für $\omega = \text{const.}$:
 \[\vec{v}(t) = R\omega \vec{e_t} \quad \vec{e_t} = \cvec{-\sin{\varphi (t)}; \cos{\varphi (t)}}\]
 \[\vec{t} \neq~\text{const das heißt}~\vec{a}(t)\neq 0\]
 Kreisbeschleunigung
-\[\vec{a}(t) = \cvec{\ddot{x}(t);\ddot{y}(t)} = \cvec{-R\omega^2\cos{\varphi};-R\omega^2\sin{\varphi}} = -R\omega^2\vec{e_R} \Rightarrow \vec{a}  \parallel \vec{r}\]
+\[\vec{a}(t) = \cvec{\ddot{x}(t);\ddot{y}(t)} = \cvec{-R\omega^2\cos{\varphi};-R\omega^2\sin{\varphi}} = -R\omega^2\vec{e_R} \implies \vec{a}  \parallel \vec{r}\]
 \[\abs{\vec{a}(t)} = R\omega^2 = \frac{v^2}{R} \neq 0\]
 Zentripetalbeschleunigung
 Zeigt in Richtung des Ursprungs.
@@ -441,10 +442,10 @@ Nichttrivialer Fall: \\
 \end{enumerate}
 \subparagraph{Expermiment 2}
 \label{sec-2-2-1-6-3}
-\[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \Rightarrow \f{m_2}{m_1} \approx 1.5\]
+\[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \implies \f{m_2}{m_1} \approx 1.5\]
 \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
 \[a\sim v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
-\[1 = \f{F_1}{F_2} \Rightarrow F_1 = F_2\]
+\[1 = \f{F_1}{F_2} \implies F_1 = F_2\]
 \subparagraph{Beispiele}
 \label{sec-2-2-1-6-4}
 \begin{itemize}
@@ -463,7 +464,7 @@ $m_1,m_2$ Massen, Newtonsches Gravitaitonsgesetz:
 mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}$
 \subsubsection{Erdbeschleunigung}
 \label{sec-3-1-2}
-\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \Rightarrow g\approx \SI{9.81}{\meter\per\second\squared}\]
+\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \implies g\approx \SI{9.81}{\meter\per\second\squared}\]
 (mittleres $g$) \\
 \paragraph{Abweichungen}
 \label{sec-3-1-2-1}
@@ -621,7 +622,7 @@ Also: \[F_R \sim \sum \frac{a_i}{A} \sim F_N\]
 \label{sec-3-10}
 Kräftegleichgewicht: $F_H = F_R$
 \[F_H = m g \sin{\alpha}, F_N = m g \cos{\alpha}\]
-Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R = \tan{\alpha}$
+Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \implies \mu_R = \tan{\alpha}$
 \[\alpha = \SI{15}{\degree} \rightarrow \tan{\alpha} = 0.27,\mu_G = 0.27\]
 \subsection{Zentripetalkraft}
 \label{sec-3-11}
@@ -633,7 +634,7 @@ Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \Rightarrow \mu_R 
 \[F_G = m g = F_Z \cos{\theta}\]
 \[F_{Zp} = F_Z \sin{\theta}\]
 \[F_{Zp} = mg \frac{\sin{\theta}}{\cos{\theta}} = m g \tan{\theta},\quad a_{Zp} = g\tan{\theta}\]
-\[a_{Zp} = \omega^2 r \Rightarrow \omega = \sqrt{\frac{g}{\tan{\theta}}}\]
+\[a_{Zp} = \omega^2 r \implies \omega = \sqrt{\frac{g}{\tan{\theta}}}\]
 \begin{itemize}
 \item $\theta$ steigt mit $\omega$ an
 \item $\theta(\omega)$ ist unabhängig von Masse
@@ -666,7 +667,7 @@ $\v r(s)$ parametrisiere Geschwindigkeit.
 \label{sec-4-1-1}
 \[\v{r_1} = \cvec{0; 0; 0},\v{r_2} = \cvec{\Delta x ; 0; 0},\v F = \cvec{m g ; 0; 0},\d \v r = \cvec{\d x; \d y; \d z}\]
 \[W = \int_{(0)}^{(1)} m g\d x + \int 0\d y + \int 0\d z = m g \Delta x \]
-\subsubsection{Beispiel Kreisbahn ($\Rightarrow$ Gravitation)}
+\subsubsection{Beispiel Kreisbahn ($\implies$ Gravitation)}
 \label{sec-4-1-2}
 \[W = \int_A^B \v F\d \v r = 0\]
 \subsection{kinetische Energie}
@@ -780,7 +781,7 @@ Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfe
 Für konservative Kraftfelder gilt
 \[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
 \begin{itemize}
-\item jedem Ort im Raum kann ein Skalar, die potentielle Energie zugeordnet werden $\Rightarrow$ $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+\item jedem Ort im Raum kann ein Skalar, die potentielle Energie zugeordnet werden $\implies$ $E_{pot} = E_{pot}(x,y,z)$ Skalar!
 \item wird bei der Verschiebung eines Körpers von Ort 1 nach Ort 2 Arbeit gegen eine konservative Kraft geleistet, so erhöht sich die potentielle Energie, das heißt $E_{pot}(2) > E_{pot}(1)$.
 \item Der Nullpunkt $E_{pot}(\v r) = 0$ der potentiellen Energie ist frei wählbar, da allein die Differenz der potentiellen Energie an zwei Punkten relevant ist.
 \end{itemize}
@@ -810,8 +811,8 @@ W_{AB} &= \int_A^B\v F\d \v R \\
 &= \Big[G\frac{mM}{r + \xi}\Big]_{r_A}^{r_B}
 &= E_{pot}(A) - E_{pot}(B)
 \end{align}
-\[\Rightarrow E_{pot}(A) = -G\frac{mM}{r_A} + \xi\]
-\[\Rightarrow E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
+\[\implies E_{pot}(A) = -G\frac{mM}{r_A} + \xi\]
+\[\implies E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
 Potentielle Energie des Gravitationsfelder:
 \[E_{pot}^{grav} = -G\frac{mM}{r}\]
 \paragraph{d = 1}
@@ -920,8 +921,8 @@ Verstärkungsfaktor: \\
 \begin{align*}
 E_{pot} &= \rho(a^{(n)}b^{(n)}c^{(n)}) h^{(n)} g = (\sqrt{2})^4 E_{pot}^{(n-1)} \\
 E_{pot}^{(1)} &= m g h \\
-\Rightarrow E_pot^{(13)} &= 4^{12} E_{pot}^{(1)} \\
-\intertext{$\Rightarrow$ Verstärkungsfaktor $\approx \SI{1.7e7}{}$}
+\implies E_pot^{(13)} &= 4^{12} E_{pot}^{(1)} \\
+\intertext{$\implies$ Verstärkungsfaktor $\approx \SI{1.7e7}{}$}
 \end{align*}
 \section{Systeme von Massenpunkten}
 \label{sec-6}
@@ -951,7 +952,7 @@ $\v r_1$: Ortsvektor zum Massenpunkt $i$ \\
 \v r_s &= \v r_1 + \lambda_s(\v r_1 - \v r_1) \\
 &= (1 - \lambda_s) \v r_1 + \lambda_s \v r_2 \\
 &= \underbrace{\frac{m_1}{m_1 + m_2}}_{= 1 - \lambda_s} \v r_1 +\underbrace{\frac{m_2}{m_1 + m_2}}_{= \lambda_s} \v r_2 \\
-\Rightarrow S_1 = \frac{m_2}{m_1 + m_2}, S_2 = \frac{m_1}{m_1 + m_2} \wedge \frac{S_1}{S_2} = \frac{m_2}{m_2} \\
+\implies S_1 = \frac{m_2}{m_1 + m_2}, S_2 = \frac{m_1}{m_1 + m_2} \wedge \frac{S_1}{S_2} = \frac{m_2}{m_2} \\
 \end{align*}
 Das heißt: Das Verhältnis $\frac{S_1}{S_2}$ ist umgekehrt proportional zum Massenverhältnis $\frac{m_1}{m_2}$.
 \end{ex}
@@ -974,7 +975,7 @@ das heißt: Schwerpunktimpuls ergibt sich aus der Summe der Einzelimpulse
 Frage: Wie bewegt sich ein System von Massepunkten under Einfluß von Kräften? \\
     Es gilt:
 \[\dd{\v p_i} = \underarrow[\v F_i]{äußere Kraft} + \sum_{i\neq j}^{}\overarrow[\v F_{i j}]{innere Kraft}, \v F_{ij} = - \v F_{j i}\]
-$\Rightarrow$: Änderung des Schwerpukntimpulses $\v p_s$:
+$\implies$: Änderung des Schwerpukntimpulses $\v p_s$:
 \[ \dd{\v p_s}{t} = \sum_{i = 1}^{n}\dot{\v p_i} = \sum_{i = 1}^{n}\v F_i + \underbrace{ \sum_{i} \sum_{i\neq j} \v F_{ij}}_{= 0} = \sum_{i = 1}^{n} \v F_i\]
 das heißt: die Impulsänderung des Schwerpunktes ergibt sich aus der Summe der äußeren Kräfte:
 \begin{enumerate}
@@ -993,7 +994,7 @@ Ein abgeschlossenes System ist ein System auf das keine äußeren Kräfte einwir
 
 Der Massenschwerpunkt eines abgeschlossenen Systems hat einen zeitlich konstanten Impuls, das heißt
 \[\v p_s = \sum_{i = 1}^{n} \v p_i =~\text{const}~\]
-($\Rightarrow$ Impulserhaltung!!)
+($\implies$ Impulserhaltung!!)
 \subsubsection{Raketenantrieb}
 \label{sec-6-1-2}
 das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
@@ -1007,7 +1008,7 @@ p(t) = p(t + \Delta t) \\
 p(t) = (m + \Delta m) v \\
 \intertext{Zeitpunkt $t + \Delta t$}
 p(t + \Delta t) 0 m(v + \Delta v) + \Delta m(v - v_B) \\
-\Rightarrow m v + \Delta v = m v + m \Delta v + \Delta m v - \Delta m v_B \\
+\implies m v + \Delta v = m v + m \Delta v + \Delta m v - \Delta m v_B \\
 m \Delta v - \Delta m v_B = 0
 \intertext{Änderung Blickwinkel:}
 m \Delta v + \Delta m v_b = 0 \\
@@ -1018,7 +1019,7 @@ m \Delta v + \Delta m v_b = 0 \\
 v_2 - v_1 = -v_B \cdot \big[\ln m\big]_{m_1}^{m_2} = v_B (\ln m_1 - \ln m_2) = v_B \ln{ \frac{m_1}{m_2}} > 0
 \intertext{Wähle Anfangsbedingungen:}
 v_1 = 0, m_1 = 0,  m_0 = m(t = 0), m_2 = m(t) \\
-\intertext{$\Rightarrow$ Raketengleichung für kräftefreie Rakete}
+\intertext{$\implies$ Raketengleichung für kräftefreie Rakete}
 v(t) = v_B \ln \frac{m_0}{m(t)}
 \end{align*}
 das heißt: Die Endgeschwindkigkeit einer Rakete wird duch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
@@ -1033,7 +1034,7 @@ Vorsicht bei der Anwendung des zweiten Newtonschen Gesetzen $\v F = \dot{\v p}$.
 Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksichtigt
 
 Korrekter Ansatz:
-\[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \Rightarrow m \dd{v}{t} + v_B \dd{m}{t} = 0\]
+\[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \implies m \dd{v}{t} + v_B \dd{m}{t} = 0\]
 das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigkeit verschwindet.
 \end{remark}
 \section{Stöße}
@@ -1049,7 +1050,7 @@ Es gilt:
 \begin{align*}
 m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2' \\
 \frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 = \frac{1}{2} m_1 v_1^{\prime 2} + \frac{1}{2} m_2 v_2^{\prime 2} \\
-\intertext{$\Rightarrow$ Lösung (ohne Herleitung)}
+\intertext{$\implies$ Lösung (ohne Herleitung)}
 v_1' = \frac{v_1(m_1 - m_2) + 2m_2 v_2}{m_1 + m_2} \\
 v_2' = \frac{v_2(m_2 - m_1) + 2m_1 v_1}{m_1 + m_2}
 \end{align*}
@@ -1580,16 +1581,16 @@ E_{pot} &= \frac{1}{2}k(r - r_0)^2 \\
 F &= -\dd{E_{pot}}{r} = -k(r - r_0) = -k Ar
 \end{align*}
 Federkraft!
-$\Rightarrow$
+$\implies$
 \begin{itemize}
 \item Modell eines Festkörper: Federmodell. \\
      Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energei klein gegen $E_{pot}(r_0)$.
 Atome können Gitterplätze nicht verlassen. Fernordung!
 \item Modell einer Flüssigkeit: Kugelmodell: \\
      Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
-Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen $\Rightarrow$ flüssiger Zustand. Nahordung!
+Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
 \item Modell eines Gases: frei bewegliche Teilchen. \\
-     Mittlere kinetische Energei ist grob gegen Bindungsenergie, hohe Temperatur!
+     Mittlere kinetische Energie ist grob gegen Bindungsenergie, hohe Temperatur!
 \end{itemize}
 \subsection{Feste Körper.}
 \label{sec-9-2}
@@ -1617,7 +1618,7 @@ Material-Stahl, $D = \SI{0.3}{\milli\meter}, L = \SI{6}{\meter}, A = \SI{0.07}{\
 \begin{align*}
 F &= \SI{1.2}{\kilo\pascal} = \SI{11.8}{\newton}, \Delta L = \SI{5}{\milli\meter}, \eps = \SI{8e-4}{} \rightarrow \sigma = \SI{168.6}{\newton\per\milli\meter\squared} \\
 F &= \SI{2.4}{\kilo\pascal} = \SI{13.5}{\newton}, \Delta L = \SI{10}{\milli\meter}, \eps = \SI{1.7e-3}{} \rightarrow \sigma = \SI{337.2}{\newton\per\milli\meter\squared}
-\Rightarrow E&= \frac{\sigma}{\eps} \SI{2e5}{\newton\per\milli\meter\squared} = \SI{200e9}{\newton\per\meter\squared}
+\implies E&= \frac{\sigma}{\eps} \SI{2e5}{\newton\per\milli\meter\squared} = \SI{200e9}{\newton\per\meter\squared}
 \end{align*}
 Einfaches Atomares Modell: Lineare Kette.
 Es gilt:
@@ -1627,6 +1628,102 @@ Für eine lineare Kette ist $\eps \frac{\Delta L}{L}$ tatsächlich proportional 
    Für $\eps \sim A^{-1}$ braucht man mehrere lineare Ketten parallel aneinander.
 
 Aber: Auch Wechselwirkung in transversaler Richtung! \\
-   $\rightarrow$ Querkontraktion $= \frac{\Delta D}{D}$
+\begin{defn}[Querkontraktion]
+$\frac{\Delta D}{D} \sim \frac{\Delta L}{L}$
+\[\frac{\Delta D}{D} = -\mu \frac{\Delta L}{L}\]
+$\mu$: Poissonsche Zahl $\approx 0.3$
+\end{defn}
+
+Volumenänderung (kleine Änderung)
+\begin{align*}
+V &= (\frac{\pi}{4}) D^2 L \\
+\Delta \xi &= \frac{\Delta V}{V} = ? \\
+\xi &= \ln V \\
+&= 2 \ln D + \ln L + ~\text{const} \\
+\Delta \xi &\approx \frac{1}{V} \Delta V \approx 2 \frac{1}{D} \Delta D + \frac{1}{L} \Delta L = \dd{\xi}{V} \Delta V = \dd{\xi}{D} \Delta D + \dd{\xi}{L} \delta L \\
+\frac{V}{V} &= -2 \mu \frac{\Delta L}{L} + \frac{\Delta L}{L} = \frac{\Delta L}{L} (1 - 2\mu) \\
+\frac{\Delta V}{V} &= \frac{\sigma}{E} (1 - 2\mu) \tag{Volumenänderung}
+\end{align*}
+
+Kompression (von Flüssigkeiten)
+\begin{align*}
+\frac{\Delta V}{V} &= - \chi \Delta p \\
+\chi = 3 \frac{1}{E}(1 - 2 \mu)
+\end{align*}
+$\chi$: Kompressibilität
+
+\subsection{Scherung und Torsion}
+\label{sec-9-3}
+\begin{align*}
+\intertext{Normalspannung oder Zugspannung}
+\sigma &= \frac{F_N}{A} \\
+\intertext{Tangentialspannung oder Scherspannung}
+\tau &= \frac{F_T}{A}
+\intertext{F+r kliene Scherwinkel}
+\tau = G \alpha \tag{$G$: Schubmodul, Torsionsmodul} \\
+\end{align*}
+
+Torsion eines Drates (Vollzylinder)
+\begin{align*}
+\tau &= \dd{F}{A} \\
+R \phi &= L \alpha \\
+\d M &= \d F R \\
+\d A &= 2\pi R \d R \\
+\tau &= \dd{F}{A} = \underbrace{\frac{\d M}{R}}_{\d F} \frac{1}{2\pi R \d R} = G \alpha = G \frac{R \phi}{L} \\
+\d M &= \frac{2\pi G \phi}{L} \bar R^3 \d \bar R \\
+M &= \underbrace{\frac{2\pi G R^4}{2 L}}_{\text{const}} \phi = k_0 \phi \\
+\intertext{Empfindlichkeit:}
+\frac{\phi}{M} &\sim \frac{1}{R^4} \\
+M &= I \ddot{\phi} = -k_D \phi, k_D = \frac{\pi G R^4}{2L} \\
+\phi(t) &= \phi_{max} \sin(\omega_0 t + \phi_0) \\
+\omega_0 &= \sqrt{\frac{k_K}{I}} \\
+T &= \frac{2\pi}{\omega_0} \sim \sqrt{\frac{I}{k_D}} \frac{1}{R^2} \\
+\end{align*}
+Ein bisschen was für Ingenieure
+\begin{align*}
+\phi &= \frac{L}{\rho} = \frac{L + \Delta L}{\rho + \eta} \\
+\eps &= \frac{\Delta L}{L} = \frac{\eta}{\rho} \\
+\d M &= \eta \d F \\
+\d M &= \eta \d F = \eta \sigma \d A = \eta \eps E \d A = \eta^2 \frac{1}{\rho} E \d A \tag{wegen $\eps = \frac{\eta}{\rho}$}\\
+M &= \frac{E}{\rho} \int \eta^2 \d A
+\end{align*}
+\begin{defn}[Flächenträgheitsmoment]
+\[J = \int \eta^2 \d A\]
+\begin{itemize}
+\item Integral über Querschnittsfläche
+\item $\eta:$ senkrechter Abstand der Punkte der Querschnittsfläche von neutraler Ebene
+\end{itemize}
+\end{defn}
+\begin{ex}[Quader]
+\begin{align*}
+J &= \int_{-\frac{h}{2}}^{\frac{h}{2}} \eta^2 v \d\eta \\
+&= \frac{1}{12} b h^3
+\end{align*}
+Bautechnik:
+Krümmung $\kappa$:
+\[\kappa = \frac{1}{\rho} = \frac{M}{E J}\]
+\end{ex}
+\subsection{Ruhende Flüssigkeiten-Hydrostatik}
+\label{sec-9-4}
+keine Formelastizität, $G = 0$ ! \\
+   aber: Hohe Volumenelastizität \\
+   Das heißt: Alle Kräfte senkrecht zur Oberfläche.
+\begin{defn}[Druck]
+Hydrostatischer Druck
+\[p = \frac{F}{A}\]
+Also die auf die Fläche wirkende Normalkraft pro Fläche.
+\begin{align*}
+[p] &= \si{\newton\per\meter\squared} = \si{\pascal} \\
+\SI{1}{\bar} &= \SI{1e5}{\pascal} \\
+%\SI{1}{\torr} &= \SI{1}{\milli\meter\hg} = \SI{133.322}{\pascal} \\
+\SI{1}{\torr} &= \SI{133.322}{\pascal} \\
+\SI{1}{\atm} &= \SI{1.013}{\bar} \\
+\end{align*}
+\end{defn}
+
+\begin{align*}
+\frac{\Delta V}{V} &= -\kappa \Delta p = \frac{1}{K} \Delta p \\
+\kappa &= \SI{5e-10}{\meter\squared\per\newton}
+\end{align*}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

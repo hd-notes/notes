@@ -24,7 +24,7 @@
    \v r_s &= \v r_1 + \lambda_s(\v r_1 - \v r_1) \\
    &= (1 - \lambda_s) \v r_1 + \lambda_s \v r_2 \\
    &= \underbrace{\frac{m_1}{m_1 + m_2}}_{= 1 - \lambda_s} \v r_1 +\underbrace{\frac{m_2}{m_1 + m_2}}_{= \lambda_s} \v r_2 \\
-   \Rightarrow S_1 = \frac{m_2}{m_1 + m_2}, S_2 = \frac{m_1}{m_1 + m_2} \wedge \frac{S_1}{S_2} = \frac{m_2}{m_2} \\
+   \implies S_1 = \frac{m_2}{m_1 + m_2}, S_2 = \frac{m_1}{m_1 + m_2} \wedge \frac{S_1}{S_2} = \frac{m_2}{m_2} \\
    \end{align*}
    Das heißt: Das Verhältnis $\frac{S_1}{S_2}$ ist umgekehrt proportional zum Massenverhältnis $\frac{m_1}{m_2}$.
    #+end_ex
@@ -48,7 +48,7 @@
 	Frage: Wie bewegt sich ein System von Massepunkten under Einfluß von Kräften? \\
 	Es gilt:
 	\[\dd{\v p_i} = \underarrow[\v F_i]{äußere Kraft} + \sum_{i\neq j}^{}\overarrow[\v F_{i j}]{innere Kraft}, \v F_{ij} = - \v F_{j i}\]
-	\Rightarrow: Änderung des Schwerpukntimpulses $\v p_s$:
+	$\implies$: Änderung des Schwerpukntimpulses $\v p_s$:
 	\[ \dd{\v p_s}{t} = \sum_{i = 1}^{n}\dot{\v p_i} = \sum_{i = 1}^{n}\v F_i + \underbrace{ \sum_{i} \sum_{i\neq j} \v F_{ij}}_{= 0} = \sum_{i = 1}^{n} \v F_i\]
 	das heißt: die Impulsänderung des Schwerpunktes ergibt sich aus der Summe der äußeren Kräfte:
 	2. Newtonsches Gesetz für Systeme von Massenpunkten.
@@ -67,7 +67,7 @@
 
 	Der Massenschwerpunkt eines abgeschlossenen Systems hat einen zeitlich konstanten Impuls, das heißt
 	\[\v p_s = \sum_{i = 1}^{n} \v p_i =~\text{const}~\]
-	(\Rightarrow Impulserhaltung!!)
+	($\implies$ Impulserhaltung!!)
 *** Raketenantrieb
 	das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
 	Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
@@ -80,7 +80,7 @@
 	p(t) = (m + \Delta m) v \\
 	\intertext{Zeitpunkt $t + \Delta t$}
 	p(t + \Delta t) 0 m(v + \Delta v) + \Delta m(v - v_B) \\
-	\Rightarrow m v + \Delta v = m v + m \Delta v + \Delta m v - \Delta m v_B \\
+	\implies m v + \Delta v = m v + m \Delta v + \Delta m v - \Delta m v_B \\
 	m \Delta v - \Delta m v_B = 0
 	\intertext{Änderung Blickwinkel:}
 	m \Delta v + \Delta m v_b = 0 \\
@@ -91,7 +91,7 @@
 	v_2 - v_1 = -v_B \cdot \big[\ln m\big]_{m_1}^{m_2} = v_B (\ln m_1 - \ln m_2) = v_B \ln{ \frac{m_1}{m_2}} > 0
 	\intertext{Wähle Anfangsbedingungen:}
 	v_1 = 0, m_1 = 0,  m_0 = m(t = 0), m_2 = m(t) \\
-	\intertext{$\Rightarrow$ Raketengleichung für kräftefreie Rakete}
+	\intertext{$\implies$ Raketengleichung für kräftefreie Rakete}
 	v(t) = v_B \ln \frac{m_0}{m(t)}
 	\end{align*}
 	das heißt: Die Endgeschwindkigkeit einer Rakete wird duch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
@@ -106,6 +106,6 @@
 	Funktioniert nicht! Grund: Impuls des ausströmenden Gases wird bei diesem Ansatz nicht in der Impulsbilanz berücksichtigt
 
 	Korrekter Ansatz:
-	\[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \Rightarrow m \dd{v}{t} + v_B \dd{m}{t} = 0\]
+	\[\dd{m v}{t} - (v - v_B) \dd{m}{t} = 0 \implies m \dd{v}{t} + v_B \dd{m}{t} = 0\]
 	das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Ausströmungsgeschwindigkeit verschwindet.
 	#+end_remark

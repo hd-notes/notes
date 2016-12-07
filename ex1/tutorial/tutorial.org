@@ -23,21 +23,21 @@
   3 Möglichkeiten:
   1. zu langsam
   2. "zu" schnell
-  3. "perfekt" richtig \Rightarrow gesucht
+  3. "perfekt" richtig \implies gesucht
 
   \[\frac{1}{2}a t^2 + v_0 t = v_p (t - t_v)\]
-  \[\Rightarrow t_{1,2} = \frac{v_p - v_0 \pm \sqrt{(v_0 - v_p)^2 - 2 a v_p t_v}}{a}\]
+  \[\implies t_{1,2} = \frac{v_p - v_0 \pm \sqrt{(v_0 - v_p)^2 - 2 a v_p t_v}}{a}\]
 
   \[(v_0 - v_p)^2 - 2 a v_p t_v = 0\]
   \rightarrow $v_p$
 
-  \[a t + v_0 = v_p \Rightarrow t = \frac{v_p - v_0}{a}\]
+  \[a t + v_0 = v_p \implies t = \frac{v_p - v_0}{a}\]
   \[v_p = v_0 + at_v \pm \sqrt{(at_v + v_0)^2 - v_0^2} \approx \SI{11.9}{\meter\per\second}\]
 
   \[x(t) = t v_{x0} = t v_0 }cos{\alpha}\]
   \[y(t) = t v_0 \sin{\alpha} - \frac{1}{2}gt^2\]
-  \[x(T) = d\quad d = T v_0 \cos{\alpha} \Rightarrow t = \frac{d}{v_0 \cos{\alpha}}\]
+  \[x(T) = d\quad d = T v_0 \cos{\alpha} \implies t = \frac{d}{v_0 \cos{\alpha}}\]
   \[y(T) = \frac{d \sin{\alpha}{\cos{alpha}} - \frac{1}{2} g \frac{d^2}{v_0^2 \cos^2{\alpha}}\]
-  \[\Rightarrow v_0 = \sqrt{\frac{g d^2}{2\cos^2\alpha(d\tan\alpha - h)}}\]
+  \[\implies v_0 = \sqrt{\frac{g d^2}{2\cos^2\alpha(d\tan\alpha - h)}}\]
   \[\Delta h = \frac{D_L - D_B}{2}\]
   \[v_0 = \sqrt{\frac{g d ^2}{2\cos^2\alpha(a\tan \alpha - (h + \Delta h))}}\]

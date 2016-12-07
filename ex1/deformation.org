@@ -11,15 +11,15 @@
    F &= -\dd{E_{pot}}{r} = -k(r - r_0) = -k Ar
    \end{align*}
    Federkraft!
-   \Rightarrow
+   $\implies$
    - Modell eines Festkörper: Federmodell. \\
 	 Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energei klein gegen $E_{pot}(r_0)$.
 	 Atome können Gitterplätze nicht verlassen. Fernordung!
    - Modell einer Flüssigkeit: Kugelmodell: \\
 	 Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
-	 Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen \Rightarrow flüssiger Zustand. Nahordung!
+	 Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
    - Modell eines Gases: frei bewegliche Teilchen. \\
-	 Mittlere kinetische Energei ist grob gegen Bindungsenergie, hohe Temperatur!
+	 Mittlere kinetische Energie ist grob gegen Bindungsenergie, hohe Temperatur!
 ** Feste Körper.
    - Elastischer fester Körper \rightarrow Formelastizität, Volumenelastitität aufgrund rücktreibender Kräfter (Hookscher Bereich)
    - Plastisch feste Körper \rightarrow Formänderungen verbleiben
@@ -42,7 +42,7 @@
    \begin{align*}
    F &= \SI{1.2}{\kilo\pascal} = \SI{11.8}{\newton}, \Delta L = \SI{5}{\milli\meter}, \eps = \SI{8e-4}{} \rightarrow \sigma = \SI{168.6}{\newton\per\milli\meter\squared} \\
    F &= \SI{2.4}{\kilo\pascal} = \SI{13.5}{\newton}, \Delta L = \SI{10}{\milli\meter}, \eps = \SI{1.7e-3}{} \rightarrow \sigma = \SI{337.2}{\newton\per\milli\meter\squared}
-   \Rightarrow E&= \frac{\sigma}{\eps} \SI{2e5}{\newton\per\milli\meter\squared} = \SI{200e9}{\newton\per\meter\squared}
+   \implies E&= \frac{\sigma}{\eps} \SI{2e5}{\newton\per\milli\meter\squared} = \SI{200e9}{\newton\per\meter\squared}
    \end{align*}
    Einfaches Atomares Modell: Lineare Kette.
    Es gilt:
@@ -52,4 +52,101 @@
    Für $\eps \sim A^{-1}$ braucht man mehrere lineare Ketten parallel aneinander.
 
    Aber: Auch Wechselwirkung in transversaler Richtung! \\
-   \rightarrow Querkontraktion $= \frac{\Delta D}{D}$
+   #+ATTR_LATEX: :options [Querkontraktion]
+   #+begin_defn latex
+   $\frac{\Delta D}{D} \sim \frac{\Delta L}{L}$
+   \[\frac{\Delta D}{D} = -\mu \frac{\Delta L}{L}\]
+   $\mu$: Poissonsche Zahl $\approx 0.3$
+   #+end_defn
+
+   Volumenänderung (kleine Änderung)
+   \begin{align*}
+   V &= (\frac{\pi}{4}) D^2 L \\
+   \Delta \xi &= \frac{\Delta V}{V} = ? \\
+   \xi &= \ln V \\
+   &= 2 \ln D + \ln L + ~\text{const} \\
+   \Delta \xi &\approx \frac{1}{V} \Delta V \approx 2 \frac{1}{D} \Delta D + \frac{1}{L} \Delta L = \dd{\xi}{V} \Delta V = \dd{\xi}{D} \Delta D + \dd{\xi}{L} \delta L \\
+   \frac{V}{V} &= -2 \mu \frac{\Delta L}{L} + \frac{\Delta L}{L} = \frac{\Delta L}{L} (1 - 2\mu) \\
+   \frac{\Delta V}{V} &= \frac{\sigma}{E} (1 - 2\mu) \tag{Volumenänderung}
+   \end{align*}
+
+   Kompression (von Flüssigkeiten)
+   \begin{align*}
+   \frac{\Delta V}{V} &= - \chi \Delta p \\
+   \chi = 3 \frac{1}{E}(1 - 2 \mu)
+   \end{align*}
+   $\chi$: Kompressibilität
+
+** Scherung und Torsion
+   \begin{align*}
+   \intertext{Normalspannung oder Zugspannung}
+   \sigma &= \frac{F_N}{A} \\
+   \intertext{Tangentialspannung oder Scherspannung}
+   \tau &= \frac{F_T}{A}
+   \intertext{F+r kliene Scherwinkel}
+   \tau = G \alpha \tag{$G$: Schubmodul, Torsionsmodul} \\
+   \end{align*}
+
+   Torsion eines Drates (Vollzylinder)
+   \begin{align*}
+   \tau &= \dd{F}{A} \\
+   R \phi &= L \alpha \\
+   \d M &= \d F R \\
+   \d A &= 2\pi R \d R \\
+   \tau &= \dd{F}{A} = \underbrace{\frac{\d M}{R}}_{\d F} \frac{1}{2\pi R \d R} = G \alpha = G \frac{R \phi}{L} \\
+   \d M &= \frac{2\pi G \phi}{L} \bar R^3 \d \bar R \\
+   M &= \underbrace{\frac{2\pi G R^4}{2 L}}_{\text{const}} \phi = k_0 \phi \\
+   \intertext{Empfindlichkeit:}
+   \frac{\phi}{M} &\sim \frac{1}{R^4} \\
+   M &= I \ddot{\phi} = -k_D \phi, k_D = \frac{\pi G R^4}{2L} \\
+   \phi(t) &= \phi_{max} \sin(\omega_0 t + \phi_0) \\
+   \omega_0 &= \sqrt{\frac{k_K}{I}} \\
+   T &= \frac{2\pi}{\omega_0} \sim \sqrt{\frac{I}{k_D}} \frac{1}{R^2} \\
+   \end{align*}
+   Ein bisschen was für Ingenieure
+   \begin{align*}
+   \phi &= \frac{L}{\rho} = \frac{L + \Delta L}{\rho + \eta} \\
+   \eps &= \frac{\Delta L}{L} = \frac{\eta}{\rho} \\
+   \d M &= \eta \d F \\
+   \d M &= \eta \d F = \eta \sigma \d A = \eta \eps E \d A = \eta^2 \frac{1}{\rho} E \d A \tag{wegen $\eps = \frac{\eta}{\rho}$}\\
+   M &= \frac{E}{\rho} \int \eta^2 \d A
+   \end{align*}
+   #+ATTR_LATEX: :options [Flächenträgheitsmoment]
+   #+begin_defn latex
+   \[J = \int \eta^2 \d A\]
+   - Integral über Querschnittsfläche
+   - $\eta:$ senkrechter Abstand der Punkte der Querschnittsfläche von neutraler Ebene
+   #+end_defn
+   #+ATTR_LATEX: :options [Quader]
+   #+begin_ex latex
+   \begin{align*}
+   J &= \int_{-\frac{h}{2}}^{\frac{h}{2}} \eta^2 v \d\eta \\
+   &= \frac{1}{12} b h^3
+   \end{align*}
+   Bautechnik:
+   Krümmung $\kappa$:
+   \[\kappa = \frac{1}{\rho} = \frac{M}{E J}\]
+   #+end_ex
+** Ruhende Flüssigkeiten-Hydrostatik
+   keine Formelastizität, $G = 0$ ! \\
+   aber: Hohe Volumenelastizität \\
+   Das heißt: Alle Kräfte senkrecht zur Oberfläche.
+   #+ATTR_LATEX: :options [Druck]
+   #+begin_defn latex
+   Hydrostatischer Druck
+   \[p = \frac{F}{A}\]
+   Also die auf die Fläche wirkende Normalkraft pro Fläche.
+   \begin{align*}
+   [p] &= \si{\newton\per\meter\squared} = \si{\pascal} \\
+   \SI{1}{\bar} &= \SI{1e5}{\pascal} \\
+   %\SI{1}{\torr} &= \SI{1}{\milli\meter\hg} = \SI{133.322}{\pascal} \\
+   \SI{1}{\torr} &= \SI{133.322}{\pascal} \\
+   \SI{1}{\atm} &= \SI{1.013}{\bar} \\
+   \end{align*}
+   #+end_defn
+
+   \begin{align*}
+   \frac{\Delta V}{V} &= -\kappa \Delta p = \frac{1}{K} \Delta p \\
+   \kappa &= \SI{5e-10}{\meter\squared\per\newton}
+   \kappa &= \SI{1.4e-10}{\meter\squared\per\newton}
+   \end{align*}

@@ -32,31 +32,31 @@
   4. $\mathcal{B}$ ist unverlängerbar linear unabhängig, das heißt $\mathcal{B}$ ist linear unabhängig und für jedes $v\in V$ ist die Familie $(v_1, \ldots, v_n, v)$ linear abhängig
   #+end_thm
   #+begin_proof latex
-  Wir zeigen 1. \Rightarrow 2. \Rightarrow 3. \Rightarrow 4. \Rightarrow 1. \\
-  1. \Rightarrow 2.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ eine Basis von $V \Rightarrow \mathcal{B}$ ist ES von $V$ \\
+  Wir zeigen 1. $\implies$ 2. $\implies$ 3. $\implies$ 4. $\implies$ 1. \\
+  1. $\implies$ 2.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ eine Basis von $V \implies \mathcal{B}$ ist ES von $V$ \\
 	 Annahme: $\mathcal{B}$ ist verkürzbar, das heißt es gibt ein $r\in\{r, \ldots, n\}$, sodass $(v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n)$ immernoch ein ES von $V$
-	 \Rightarrow $v_r \in \Lin((v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n))$, das heißt
+	 $\implies$ $v_r \in \Lin((v_1, \ldots, v_{r - 1}, v_{r + 1}, \ldots, v_n))$, das heißt
 	 \[\Exists \lambda_1, \ldots, \lambda_{r - 1}, \lambda_{r + 1}, \ldots, \lambda_n\in K: v_r = \lambda_1 v_1 + \ldots + \lambda_{r - 1} v_{r - 1} + (-1)v_r + \lambda_{r + 1} v_{r + 1} + \ldots + \lambda_n v_n\]
-	 \Rightarrow $\mathcal{B}$ linear abhängig $\lightning$ zu $\mathcal{B}$ Basis von $V$
-  2. \Rightarrow 1.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ ein unverkürzbares ES von $V$ \Rightarrow Für jedes $v\in V$ existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$
+	 $\implies$ $\mathcal{B}$ linear abhängig $\lightning$ zu $\mathcal{B}$ Basis von $V$
+  2. $\implies$ 1.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ ein unverkürzbares ES von $V$ $\implies$ Für jedes $v\in V$ existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$
 	 Annahme: Es gibt $v\in V, \lambda_1, \ldots, \lambda_v v_n = \mu_1 v_1 + \ldots \mu_n v_n$
 	 \begin{align*}
-	 \Rightarrow (\lambda_i - \mu_i) v_i = (\mu_1 - \lambda_1)v_i + \ldots + (\mu_{i - 1} - \lambda_{i - 1})v_{i - 1} + (\mu_{i + 1} - \lambda_{i + 1}) v_{i + 1} + \ldots + (\mu_n - \lambda_n) v_n \\
-	 \Rightarrow v_1 = \frac{\mu_{1} - \lambda_{1}}{\lambda_{i} - \mu_{i}} v_1 + \ldots + \frac{\mu_{i - 1} - \lambda_{i - 1}}{\lambda_{i} - \mu_{i}} v_{i - 1} + \frac{\mu_{i + 1} - \lambda_{i + 1}}{\lambda_{i} - \mu_{i}} v_{i + 1} + \ldots + \frac{\mu_{n} - \lambda_{n}}{\lambda_{i} - \mu_{i}} v_n \\
+	 \implies (\lambda_i - \mu_i) v_i = (\mu_1 - \lambda_1)v_i + \ldots + (\mu_{i - 1} - \lambda_{i - 1})v_{i - 1} + (\mu_{i + 1} - \lambda_{i + 1}) v_{i + 1} + \ldots + (\mu_n - \lambda_n) v_n \\
+	 \implies v_1 = \frac{\mu_{1} - \lambda_{1}}{\lambda_{i} - \mu_{i}} v_1 + \ldots + \frac{\mu_{i - 1} - \lambda_{i - 1}}{\lambda_{i} - \mu_{i}} v_{i - 1} + \frac{\mu_{i + 1} - \lambda_{i + 1}}{\lambda_{i} - \mu_{i}} v_{i + 1} + \ldots + \frac{\mu_{n} - \lambda_{n}}{\lambda_{i} - \mu_{i}} v_n \\
 	 \end{align*}
-	 \Rightarrow Jeder UVR von $v_i$ der $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n$  enthält, enthält auch $v_i$ \\
-	 \Rightarrow $\Lin((v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n)) = \Lin((v_1, \ldots, v_n)) = v$ \\
-	 \Rightarrow $\mathcal{B}$ ist verkürzbar $\lightning$
-  3. \Rightarrow 4.: Wir setzte 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
+	 $\implies$ Jeder UVR von $v_i$ der $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n$  enthält, enthält auch $v_i$ \\
+	 $\implies$ $\Lin((v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n)) = \Lin((v_1, \ldots, v_n)) = v$ \\
+	 $\implies$ $\mathcal{B}$ ist verkürzbar $\lightning$
+  3. $\implies$ 4.: Wir setzte 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
 	 zu zeigen: $\mathcal{B}$ ist unverlängerbar linear unabhängig \\
-	 denn Insbesondere existiert für jedes $v\in \Lin((c_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \Rightarrow (v_1,\ldots, v_n)$ linear unabhängig.
-	 Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \Rightarrow (v_1, \ldots, v_n)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
-  4. \Rightarrow 1. Sei $\mathcal{B}$ unverlängerbar linear unabhängig
+	 denn Insbesondere existiert für jedes $v\in \Lin((c_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1,\ldots, v_n)$ linear unabhängig.
+	 Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1, \ldots, v_n)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
+  4. $\implies$ 1. Sei $\mathcal{B}$ unverlängerbar linear unabhängig
 	 zu zeigen: $\mathcal{B}$ ist Basis von $V$, das heißt es bleibt noch zu zeigen, dass $\mathcal{B}$ ein ES von $V$ ist \\
-	 Sei $v\in V \Rightarrow (v_1, \ldots, v_n, v)$ linear abhängig \Rightarrow $\Exists \lambda_1, \ldots, \lambda_n \in K, (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0): \lambda_1 v_1 + \ldots + \lambda_n v_n + \lambda v = 0$
+	 Sei $v\in V \implies (v_1, \ldots, v_n, v)$ linear abhängig $\implies \Exists \lambda_1, \ldots, \lambda_n \in K, (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0): \lambda_1 v_1 + \ldots + \lambda_n v_n + \lambda v = 0$
 	 Es ist $\lambda \neq 0$, da sonst $(v_1, \ldots, v_n)$ linear abhängig
-	 \[\Rightarrow v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - -\frac{\lambda_n}{\lambda} v_n \in \Lin((v_1, \ldots, v_n))\]
-	 \Rightarrow $\mathcal{B}$ ist ES von $V$
+	 \[\implies v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - -\frac{\lambda_n}{\lambda} v_n \in \Lin((v_1, \ldots, v_n))\]
+	 $\implies$ $\mathcal{B}$ ist ES von $V$
   #+end_proof
   #+ATTR_LATEX: :options [9.4 Basiswahlsatz]
   #+begin_conc latex
@@ -83,7 +83,7 @@
   Wir können ohne Einschränkung ("ohne Beschränkung der Allgemeinheit") annehmen, dass $k = 1$ ist (können wir duch Umsortieren erreichen). Gegeben ist $w = \lambda_1 v_1 + \ldots + \lambda_r v_r \in V$, mit $\lambda_1 \neq 0$
   zu zeigen ist, dass $\mathcal{B}' = (w, v_2, \ldots, v_r)$ ein Basis von $V$ ist.
   1. $\mathcal{B}'$ ist ein ES von $V$ \\
-	 Sei $v\in V \Rightarrow \Exists \mu_1, \ldots, \mu_r \in K: v = \mu_1 v_1 + \ldots + \mu_r v_r$ \\
+	 Sei $v\in V \implies \Exists \mu_1, \ldots, \mu_r \in K: v = \mu_1 v_1 + \ldots + \mu_r v_r$ \\
 	 Aus $w = \lambda_1 v_1 + \ldots + \lambda_r v_r$ folgt wegen $\lambda_1 \neq 0$:
 	 \begin{align*}
 	 v_1 = \frac{1}{\lambda_1} w - \frac{\lambda_2}{\lambda_1} v_2 - \ldots - \frac{\lambda_r}{\lambda_1} v \\
@@ -92,9 +92,9 @@
   2. $\mathcal{B}'$ ist linear unabhängig, denn: \\
 	 \begin{align*}
 	 \intertext{Sei $\mu, \mu_2, \ldots, \mu_r \in K$ mit $\mu w + \mu_2 v_2 + \ldots + \mu_r v_r = 0$}
-	 \Rightarrow \mu(\lambda_1 v_1 + \ldots + \lambda_r v_r) + \mu_2 v_2 + \ldots + \mu_r v_r = 0 \\
-	 \Rightarrow \mu \lambda_1 v_1 + (\mu \lambda_2 + \mu_2) v_2 + \ldots + (\mu \lambda_r + \mu_r) v_r = 0 \\
-	 \Rightarrow \mu \lambda_1 = 0 \Rightarrow \mu = 0 \Rightarrow \mu_2 v_2 + \ldots + \mu_r v_r = 0 \Rightarrow \mu_2 = \ldots = \mu_r = 0
+	 \implies \mu(\lambda_1 v_1 + \ldots + \lambda_r v_r) + \mu_2 v_2 + \ldots + \mu_r v_r = 0 \\
+	 \implies \mu \lambda_1 v_1 + (\mu \lambda_2 + \mu_2) v_2 + \ldots + (\mu \lambda_r + \mu_r) v_r = 0 \\
+	 \implies \mu \lambda_1 = 0 \implies \mu = 0 \implies \mu_2 v_2 + \ldots + \mu_r v_r = 0 \implies \mu_2 = \ldots = \mu_r = 0
 	 \end{align*}
   #+end_proof
   #+ATTR_LATEX: :options [Austauschsatz]
@@ -107,7 +107,7 @@
   #+begin_proof latex
   Wir zeigen 1. und 2. zusammen per Induktion nach $n$ \\
   Induktionsanfang: $n = 0$: $(w_1, \ldots, w_n)$ leere Familie \\
-  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\Rightarrow n - 1 \leq r$ und nach Umnummerieren von $\mathcal{B}$ ist auch
+  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\implies n - 1 \leq r$ und nach Umnummerieren von $\mathcal{B}$ ist auch
   \[\tilde{\mathcal{B}} := (v_1, \ldots, w_{n - 1}, v_n, \ldots, v_r)\]
   eine Basis von $V$.
 
@@ -117,7 +117,7 @@
   Da $\tilde{\mathcal{B}}$ Basis von $V, \Exists \lambda_1, \ldots, \lambda_r \in K: w_n = \lambda_1 w_1 + \ldots, \lambda_{n - 1} w_{n - 1} \lambda_n w_n + \ldots + \lambda_r$ \\
   Falls $\lambda_n = \ldots = \lambda_r = 0$, dann $(w_1, \ldots, w_n)$ linear abhängig $\lightning$ \\
   Also existiert ein $k \in \{n, \ldots, r\}$ mit $\lambda_k \neq 0$ Nach umnummerieren von $v_n, \ldots, v_r$ kann man $\lambda_n \neq 0$ erreichen
-  \[\Rightarrow \mathcal{B}^\ast := (w_1, \ldots, w_{n - 1}, w _n, v_{n + 1}, \ldots, v_r)\] ist eine Basis von $V$ (tausche $v_n$ gegen $w_n$)
+  \[\implies \mathcal{B}^\ast := (w_1, \ldots, w_{n - 1}, w _n, v_{n + 1}, \ldots, v_r)\] ist eine Basis von $V$ (tausche $v_n$ gegen $w_n$)
   #+end_proof
   #+ATTR_LATEX: :options [9.8]
   #+begin_conc latex
@@ -127,9 +127,9 @@
   #+end_conc
   #+begin_proof latex
   1.
-	 - $V$ endlich erzeugt $\Rightarrow$ ex existiert eine endliche Basis $(v_1, \ldots, v_r)$ von $V$, sei $(w_i)_{i\in I}$ beliebige Basis von $V$. Falls $I$ unendlich, dann existiert $i_1, \ldots, i_{r + 1} \in I$, dosass $(w_{i_1} + \ldots + w_{i_{r + 1}})$
-		linear unabhängig \Rightarrow $r + 1 \leq r \lightning$
-	 - Sind $(v_1, \ldots, v_r), (w_1, \ldots, w_k)$ endliche Basen von $V$, dann folgt nach Austauschsatz $k \leq r$, sowie $r\leq k \Rightarrow r = k$
+	 - $V$ endlich erzeugt $\implies$ ex existiert eine endliche Basis $(v_1, \ldots, v_r)$ von $V$, sei $(w_i)_{i\in I}$ beliebige Basis von $V$. Falls $I$ unendlich, dann existiert $i_1, \ldots, i_{r + 1} \in I$, dosass $(w_{i_1} + \ldots + w_{i_{r + 1}})$
+		linear unabhängig $\implies$ $r + 1 \leq r \lightning$
+	 - Sind $(v_1, \ldots, v_r), (w_1, \ldots, w_k)$ endliche Basen von $V$, dann folgt nach Austauschsatz $k \leq r$, sowie $r\leq k \implies r = k$
   2. Besitzt $V$ eine Basis endlicher Länge, dann ist diese auch ein endliches ES, das heißt $V$ endlich erzeugt $\lightning$
   #+end_proof
   #+ATTR_LATEX: :options [9.9]
@@ -148,29 +148,29 @@
   #+end_ex
   #+begin_note latex
   - Ist klar, welcher Körper gemeint ist schreibt man kurz $\dim V$ statt $\dim_K V$.
-  - Offenbar gilt $V$ endlich erzeugt $\Leftrightarrow$ $V$ endlichdimensional
+  - Offenbar gilt $V$ endlich erzeugt $\iff$ $V$ endlichdimensional
   #+end_note
   #+ATTR_LATEX: :options [9.11]
   #+begin_conc latex
   $V$ endlichdimensionaler K-VR, $U\subseteq V$ UVR von $V$ Dann gilt:
   1. $U$ ist endlichdimensional
   2. $\dim_k U \leq \dim_K V$
-  3. Es ist $U = V \Leftrightarrow \dim_k U = \dim_k V$
+  3. Es ist $U = V \iff \dim_k U = \dim_k V$
   #+end_conc
   #+begin_proof latex
   1. Annahme: $U$ ist nicht endlichdimensional \\
 	 Beweis: per Induktion nach $N$ \\
 	 Induktionsanfang: $n = 1$: Da $n\neq \{0\}$ wegen $\dim_k U = \infty$ existiert $u_1 \in U \setminus \{0\}, (u_1)$ ist linear unabhängig
-	 Induktionsschritt: Sei $n > 1$, die Assage sei für $n - 1$ bewiesen. \Rightarrow ex existiert linear unabhängige Familie $(u_1, \ldots, u_{n - 1})$.
+	 Induktionsschritt: Sei $n > 1$, die Assage sei für $n - 1$ bewiesen. $\implies$ ex existiert linear unabhängige Familie $(u_1, \ldots, u_{n - 1})$.
 	 Falls $(u_1, \ldots, u_{n - 1}, u)$ linear abhängig für alle $u \in U$, dann wäre $(u_1, \ldots u_{n - 1})$ unverlängerbar linear abhängig und somit nach 9.3 eine Basis von $U~\lightning$ zu $U$ nicht endlichdimensional.
-	 Also existiert ein $u_1 \in U$ mit $(u_1, \ldots, u_n)$ linear unabhängig \Rightarrow Behauptung
-	 Wir setzen $r:= \sum_K V$, dann existiert nach 1. eine lineare Familie $(u_1, \ldots, u_{r + 1})$ in $U$. Die Familie $(u_1, \ldots, u_{r + 1})$ ist auch eine linear unabhängige Famnile in $V \Rightarrow r + 1 \leq r ~ \lightning$ Das heißt $U$ ist endlich
+	 Also existiert ein $u_1 \in U$ mit $(u_1, \ldots, u_n)$ linear unabhängig $\implies$ Behauptung
+	 Wir setzen $r:= \sum_K V$, dann existiert nach 1. eine lineare Familie $(u_1, \ldots, u_{r + 1})$ in $U$. Die Familie $(u_1, \ldots, u_{r + 1})$ ist auch eine linear unabhängige Famnile in $V \implies r + 1 \leq r ~ \lightning$ Das heißt $U$ ist endlich
   2. Annahme: $n := \dim_k U > \dim V$ \\
-	 Sei $(u_1, \ldots, u_n)$ Basis von $U$, das heißt insbesondere ist die Familie $(u_1, \ldots, u_n)$ eine linear unabhängige Familie in $V$ \Rightarrow $n \leq \sum_k V ~\lightning$
-  3. "$\Rightarrow$" trivial \\
-	 "$\Leftarrow$" Annahme: $U \subsetneq V$ \\
-	 Sei $(u_1, \ldots, u_r)$ Basis von $U$. Wegen $U \subsetneq V$ ist $(u_1, \ldots, u_r)$ keine Basis von $V$ \Rightarrow $\Exists v\in V: (u_1, \ldots, u_r, v)$ linear unabhängig.
-	 $\Rightarrow$ es existiert $v \in V$, sodass $(u_1, \ldots, u_r, v)$ linear unabhänig \Rightarrow $r + 1 \leq \dim V = \dim U = r \lightning$
+	 Sei $(u_1, \ldots, u_n)$ Basis von $U$, das heißt insbesondere ist die Familie $(u_1, \ldots, u_n)$ eine linear unabhängige Familie in $V$ $\implies$ $n \leq \sum_k V ~\lightning$
+  3. "$\implies$" trivial \\
+	 "$\impliedby$" Annahme: $U \subsetneq V$ \\
+	 Sei $(u_1, \ldots, u_r)$ Basis von $U$. Wegen $U \subsetneq V$ ist $(u_1, \ldots, u_r)$ keine Basis von $V$ $\implies$ $\Exists v\in V: (u_1, \ldots, u_r, v)$ linear unabhängig.
+	 $\implies$ es existiert $v \in V$, sodass $(u_1, \ldots, u_r, v)$ linear unabhänig $\implies$ $r + 1 \leq \dim V = \dim U = r \lightning$
   #+end_proof
   #+ATTR_LATEX: :options [9.12 Besisergänzungssatz]
   #+begin_thm latex
@@ -206,17 +206,17 @@
 	   Noch zu zeigen: $S\in M$, das heißt $A\subseteq S$ und $S$ ist linear unabhängig
 	   - $A\subseteq S$ klar, denn $A\subseteq X\Forall X\in T$
 	   - $S$ ist linear unabhängig, das heißt jede endliche Teilfamilie von $(s)_{s\in S}$ inst linear unabhägig: \\
-		 Seien $s_1, \ldots, s_n \in S$ paarweise verschieden $\Rightarrow \Exists X_1, \ldots X_n \in T: s_i \in X_i, i = 1, \ldots, n$ \\
-		 Da $(T, \subseteq)$ totalgeordnet ist existiert ein $i\in \{1, \ldots, n\}$ mit $X_j \subseteq X_i$ für alle $j\in \{1,\ldots,n\} \Rightarrow s_1, \ldots, s_n \subseteq X_i \xRightarrow{X_i \in M} (x_1, \ldots, s_n)$ linear unabhängig.
-  2. Nach 1. können wir das Zornsche Lemma auf $(M,\subseteq)$ anwenden $\Rightarrow \Exists \max B \in M$ \\
+		 Seien $s_1, \ldots, s_n \in S$ paarweise verschieden $\implies \Exists X_1, \ldots X_n \in T: s_i \in X_i, i = 1, \ldots, n$ \\
+		 Da $(T, \subseteq)$ totalgeordnet ist existiert ein $i\in \{1, \ldots, n\}$ mit $X_j \subseteq X_i$ für alle $j\in \{1,\ldots,n\} \implies s_1, \ldots, s_n \subseteq X_i \xRightarrow{X_i \in M} (x_1, \ldots, s_n)$ linear unabhängig.
+  2. Nach 1. können wir das Zornsche Lemma auf $(M,\subseteq)$ anwenden $\implies \Exists \max B \in M$ \\
 	 Behauptung: $(b)_{b\in B}$ ist eine Basis von $V$ mit $A\subseteq B$, denn: Da $(b)_{b\in B}$ linear unabhängig wegen $V\in M$, gilt zu Zeigen, dass $\Lin(B) = V)$ \\
 	 "$\subseteq$" klar \\
 	 "$\supseteq$"
 	 \begin{align*}
 	 \intertext{Sei $v \in V$. Falls $v\in B$, dann $v\in\Lin(B)$, falls $v = 0$, dann $v\in \Lin(B)$, im Folgenden sei $v\not\in B, v\neq 0$}
-	 \Rightarrow A \subseteq B \subsetneq B\cup \{v\} \\
+	 \implies A \subseteq B \subsetneq B\cup \{v\} \\
 	 \intertext{Da $B$ Maximum von $(M,\subseteq)$ ist, ist $B \cup \{v\} \not \in M$, das heißt $B\cup \{v\}$ ist linear abhängig}
-	 \Rightarrow \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, (\lambda, \lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0), b_1, \ldots, b_n \in B: \\
+	 \implies \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, (\lambda, \lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0), b_1, \ldots, b_n \in B: \\
 	 \lambda v + \lambda_1 b_1 + \ldots + \lambda_n b_n = 0 \\
 	 \intertext{Falls $n = 0$}
 	 \lambda v = 0 \xRightarrow{v \neq 0} \lambda = 0 \lightning \\

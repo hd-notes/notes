@@ -15,7 +15,7 @@
 ** Differentialgleichungen
    hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
 *** 1. Ordung
-	Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung (\Rightarrow nur 1. Ableitung):
+	Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung (\implies nur 1. Ableitung):
 	\[y'(x) = f(x,y)\]
 **** Lösung
 	 Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
@@ -45,25 +45,25 @@
 	 \[\f{\d y(x)}{\d x} = y'(x) = f(x,y(x)) = \f{(x,y(x))}{1}\]
 **** Weiteres Argument für die Existenz und Eindeutigkeit TODO(Skizze)
 	 Steigung der gesuchten Funktion bei $x_0$ ist bekannt als $f(x_0, y_0)$
-	 \Rightarrow kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
+	 \implies kann Wert der Funktion bei $x + \Delta x$ abschätzen: $y_0 + \Delta x f(x_0,y_0)$ (für kleine $\Delta x$)
 	 Kenne Steigung bei $x_0 \Delta x: f(x_0 + \Delta x, y_0 + \Delta x f(x_0,y_0))$
-	 \Rightarrow Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. (\Rightarrow perfekt für Numerik)
+	 \implies Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. (\implies perfekt für Numerik)
 *** Beispiele
 	1. \[y'(x) = f(x,y), f(x,y) = 3\]
-	   \[y'(x) = 3 \Rightarrow y(x) = \int 3\d x = 3 x + c\]
+	   \[y'(x) = 3 \implies y(x) = \int 3\d x = 3 x + c\]
 	   Das ist schon die allgemeine Lösung der Dgl.
 	   Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich duch Bestimmen der Konstanten lösen:
-	   \[y(x) = 3 x + c \Rightarrow 1 = 3(-1) + c \Rightarrow c = 4 \Rightarrow y(x) = 3x + 4\]
+	   \[y(x) = 3 x + c \implies 1 = 3(-1) + c \implies c = 4 \implies y(x) = 3x + 4\]
 *** Seperation der Variablen
 	Seperation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
 **** Beispiel
-	 \[f(x,y) = \f{x}{y} \Rightarrow y'(x) = \f{x}{y(x)}\]
-	 \[\f{\d x}{\d x} = \f{x}{y} \Rightarrow y\d y = x\d x\]
+	 \[f(x,y) = \f{x}{y} \implies y'(x) = \f{x}{y(x)}\]
+	 \[\f{\d x}{\d x} = \f{x}{y} \implies y\d y = x\d x\]
 	 Variablen sind getrennt, kann einfach Integrieren
-	 \[\int y\d y = \int x\d x \Rightarrow \f{y^2}{2} = \f{x^2}{2} + c \Rightarrow y = \pm \sqrt{x^2 + 2c}\]
+	 \[\int y\d y = \int x\d x \implies \f{y^2}{2} = \f{x^2}{2} + c \implies y = \pm \sqrt{x^2 + 2c}\]
 ***** Lösen allgemeines Anfangswertproblem
 	  allgemeines Anfangswertproblem mit Anfangsbedingung $(x_0,y_0)$
-	  \[y_0^2 = x_0^2 + 2c \Rightarrow 2c = y_0^2 - x_0^2 \Rightarrow y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
+	  \[y_0^2 = x_0^2 + 2c \implies 2c = y_0^2 - x_0^2 \implies y = \begin{cases} \sqrt{y_0^2 + x^2 - x_0^2} & y_0 \geq 0 \\ -\sqrt{y_0^2 + x^2 - x_0^2} & y_0 \leq 0 \end{cases}\]
 ****** TODO Skizze
 *** System von Dgl
 	(fast) alles oben gesagte funktioniert auch für Systeme gewöhnlicher Dgl. 1. Ordnung:
@@ -73,7 +73,7 @@
 	\[\f{\d \v y}{\d x} = \v f(x,\v y)\]
 	Wir haben hier eine vektorwertige Funktion von $n+1$ Variablen benutzt:
 	\[\v f:\mathbb{R}\times\mathbb{R}^n\to \mathbb{R}^n\]
-	Anfangsbedingungen: $(x_0,\v{y}_0)$ \rightarrow $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung \Rightarrow allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
+	Anfangsbedingungen: $(x_0,\v{y}_0)$ \rightarrow $n+1$ Parameter. Einer davon entspricht der verschiebung entlang der ein under derselben Lösung \implies allgemeine Lösung hat $(n + 1) - 1 = n$ Parameter oder Integrationskonstanten.
 *** Systeme von $n$ gewöhnlicher Dgl. p-ter Ordnung
 	\[\v{y}^{(p)}(x) = \v f(x,\v y,\v{y}',\v{y}'',\ldots,\v{y}^{(p-1)})\]
 	Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
@@ -91,11 +91,11 @@
 	 \end{equation}
 	 Ursprüngliche Form folgt duch Eisezten der 2. Gleichung in die erste.
 	 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-	 \Rightarrow System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
+	 \implies System von $n p$ Dgl 1. Ordung; allgemeine Lösung hat $n p$ Parameter
 *** Erste physikalische Beipiele
 **** Punktmasse
 	 3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
-	 \Rightarrow 6 Dgl 1. Ordung:
+	 \implies 6 Dgl 1. Ordung:
 	 \begin{equation}
 	 \begin{cases}
 	 \dot{\v v} &= \f{1}{m}\v F(t,\v x,\v v) \\
@@ -134,7 +134,7 @@
 ***** Freier Fall mit Luftwiederstand
 	  Aufgabe: Bestime zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
 	  Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
-	  \[F=m\ddot x \Rightarrow m g - c \dot{x}^2 = m\ddot x \Rightarrow \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
+	  \[F=m\ddot x \implies m g - c \dot{x}^2 = m\ddot x \implies \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
 	  Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
 	  \begin{align*}
 	  \frac{\d v}{\d t} &= g - \frac{c}{m}v^2 \\
@@ -145,16 +145,16 @@
 	  Kann leicht Konstanten der Dimension Zeit und Geschwindigkeit bilden:
 	  \[\hat{t} = \sqrt{\frac{m}{g c}},\hat{v} = \sqrt{\frac{g m}{c}}\]
 	  Benutze jetzt die dimensionslosen Variablen $t' = \frac{t}{\hat{t}},v'=\frac{v}{\hat{v}}$
-	  \[\Rightarrow \d t' = \frac{d v'}{1 - v^{2\prime}} = \frac{\d v'}{2}(\frac{1}{1 + v'} + \frac{1}{1 - v'})\]
+	  \[\implies \d t' = \frac{d v'}{1 - v^{2\prime}} = \frac{\d v'}{2}(\frac{1}{1 + v'} + \frac{1}{1 - v'})\]
 	  \[2t' = \ln{1 + v'} - \ln{1 - v'} + c\]
-	  $v' = 0$ bei $t' = 0 \Rightarrow c = 0$
-	  Auflösen nach $v'$: \[e^{2t'} = \frac{1 + v'}{1 - v'} \Rightarrow \ldots\]
-	  \[\Rightarrow v' = 1 - \frac{2}{e^{2t'} + 1} \Rightarrow v = \hat{v}(1 - \frac{2}{e^{\frac{2t}{\hat{t}}}} + 1)\]
-	  \Rightarrow $\hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
+	  $v' = 0$ bei $t' = 0 \implies c = 0$
+	  Auflösen nach $v'$: \[e^{2t'} = \frac{1 + v'}{1 - v'} \implies \ldots\]
+	  \[\implies v' = 1 - \frac{2}{e^{2t'} + 1} \implies v = \hat{v}(1 - \frac{2}{e^{\frac{2t}{\hat{t}}}} + 1)\]
+	  \implies $\hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn $t \gg \hat{t}$ \\
 
 	  Zugabe: einfache physikalische Argumente für die Größe von $c$:
 	  1. $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
-		 $\Rightarrow c \sim \rho_L A$
+		 $\implies c \sim \rho_L A$
 	  2. Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
 ** Taylorentwickung
    Ohne Beschränkung der Allgemeinheit $x_0 = 0$. Untersuche Verhalten beliebiger glatter Funktionen $f(x)$ nahe $x = 0$
@@ -177,7 +177,7 @@
 	Überzeugen sie sich, dass alle Ableitungen existieren, auch bei Null! \\
 	Sie Brauchen:
 	\[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
-	Die Ableitungen verschwinden sogar bei Null \Rightarrow Taylor-Reihe ist Null, keine gute Näherung
+	Die Ableitungen verschwinden sogar bei Null \implies Taylor-Reihe ist Null, keine gute Näherung
 ** Harmonicher Oszillator
    - eines der wichtigesten physikalischen Systeme
    - beschreibt viele kompilziertere Systeme angenähert
@@ -191,14 +191,14 @@
 **** Ziel
 	 Untersuchung der Bewegung in der Nähe von Minimal (also bei $x\approx x_0$ wobei $v'(x_0) = 0$ gelte) \\
 	 $V(x)$ bei $x_0$, $V'(x_0) = 0, \abs{x - x_0}$ klein \\
-	 \[\Rightarrow V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
-	 \[\Rightarrow F(x) \simeq - V''(x_0)(x-x_0)\]
-	 \[x-x_0\equiv y \Rightarrow \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
+	 \[\implies V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
+	 \[\implies F(x) \simeq - V''(x_0)(x-x_0)\]
+	 \[x-x_0\equiv y \implies \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
 	 Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr großem Nutzen (viele Systeme)
 **** Lösung
-	 Newton \Rightarrow $m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
-	 \Rightarrow $\sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
-	 \Rightarrow $y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+	 Newton \implies $m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
+	 \implies $\sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
+	 \implies $y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
 	 (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
 **** Verallgemeinerungen
 	 - Reibungterm $\sim \dot{y}$
@@ -225,13 +225,13 @@
 	   \[(c e^{-A})' + a C e^{-A} = f\]
 	   \[c' e^{-A} - C A' e^{-A} + C a e^{-A} = f\]
 	   Beachte $A' = a$
-	   \[\Rightarrow c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
+	   \[\implies c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
 	   \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
 	   $f(x')$ ist eine frei wählbare additive Konsante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
 *** Zusammenfassung / Verallgemeinerung auf $n > 1$
 	\begin{defn}[Linear Unabhängig]
 	Ein Satz von Funktionen $f_1(x),\ldots,f_n(x)$ heißt linear unabhängig, falls jede Linearkombination bei der nicht alle Koeffizienten Null sind auch nicht Null ist:
-	\[\alpha_1 f_1(x) +\ldots \alpha_n f_n(x)\equiv 0 \Rightarrow \alpha_1 = \ldots = \alpha_n = 0\]
+	\[\alpha_1 f_1(x) +\ldots \alpha_n f_n(x)\equiv 0 \implies \alpha_1 = \ldots = \alpha_n = 0\]
 	(identisch zur linearen Unabhängigkeit von Vektoren)
 	\end{defn}
 **** Fakt

@@ -3,7 +3,7 @@
    Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$ \\
    Informatik: \\
    Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann. \\
-   Quadratwurzel: $y = \sqrt{x} \Leftrightarrow y \geq 0 \wedge y^2 = x (\Rightarrow x > 0)$ \\
+   Quadratwurzel: $y = \sqrt{x} \iff y \geq 0 \wedge y^2 = x (\implies x > 0)$ \\
    Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
    iteratives Verfahren: \\
    Initial Guess $y^{(0)} = 1$
@@ -12,7 +12,7 @@
   Lösugswege, genauer Algorithmen
 ** Algorithmus
    *schematische* Vorgehensweise mit der jedes Problem einer bestimmten *Klasse* mit *endliche* vielen *elementaren* Schritten / Operationen gelöst werden kann
-   - schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\Rightarrow$ Computer)
+   - schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\implies$ Computer)
    - alle Probleme einer Klasse: zum Beispiel: die Wurzel aus jeder beliebigen nicht-negativen Zahl, und nicht nur $\sqrt{11}$
    - endliche viele Schritte: man kommt nach endlicher Zeit zur Lösung
    - elementare Schrite / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
@@ -20,14 +20,14 @@
    Daten sind Symbole,
    - die Entitäten und Eigenschaften der realen Welt im Computer representieren.
    - die interne Zwischenergebnisse eines Algorithmus aufbewahren
-   $\Rightarrow$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebniss).
+   $\implies$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebniss).
    Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch"
 *** Beispiele für Symbole
 	- Zahlen
 	- Buchstaben
 	- Icons
 	- Verkehrszeichen
-	aber: heutige Computer verstehen nur Binärzahlen $\Rightarrow$ alles andere muss man übersetzen
+	aber: heutige Computer verstehen nur Binärzahlen $\implies$ alles andere muss man übersetzen
 	Eingansdaten: "Ereignisse":
 	- Symbol von Festplatte lesen oder per Netzwerk empfangen
 	- Benutzerinteraktion (Taste, Maus, ...)
@@ -50,13 +50,13 @@
 	Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
 	| Zustände \ Ereignisse | Knopf drücken                                     | Timeout                                                   | Timeout(Variante)                       |
 	|-----------------------+---------------------------------------------------+-----------------------------------------------------------+-----------------------------------------|
-	| aus                   | \Rightarrow{halb} \\ {4 LEDs an}                 | %                                                         | (\Rightarrow{aus},{nichts})             |
-	| halb                  | (\Rightarrow{voll},{8 LEDs an})                   | %                                                         | (\Rightarrow{aus},{nichts})             |
-	| voll                  | (\Rightarrow{blinken an},{Timer starten})         | %                                                         | (\Rightarrow{aus},{nichts})             |
-	| blinken an            | (\Rightarrow{aus},{Alle LEDs aus, Timer stoppen}) | (\Rightarrow{blinken aus},{alle LEDs aus, Timer starten}) | (\Rightarrow{blinken aus},{8 LEDs aus}) |
-	| blinken aus           | (\Rightarrow{aus},{Alle LEDs aus, Timer stoppen}) | (\Rightarrow{blinken an},{alle LEDs an, Timer starten})   | (\Rightarrow{blinken an},{8 LEDs an})   |
+	| aus                   | \implies{halb} \\ {4 LEDs an}                 | %                                                         | (\implies{aus},{nichts})             |
+	| halb                  | (\implies{voll},{8 LEDs an})                   | %                                                         | (\implies{aus},{nichts})             |
+	| voll                  | (\implies{blinken an},{Timer starten})         | %                                                         | (\implies{aus},{nichts})             |
+	| blinken an            | (\implies{aus},{Alle LEDs aus, Timer stoppen}) | (\implies{blinken aus},{alle LEDs aus, Timer starten}) | (\implies{blinken aus},{8 LEDs aus}) |
+	| blinken aus           | (\implies{aus},{Alle LEDs aus, Timer stoppen}) | (\implies{blinken an},{alle LEDs an, Timer starten})   | (\implies{blinken an},{8 LEDs an})   |
 
-	Variante: Timer läuft immer (Signal alle 0.3s) \Rightarrow Timout ignorieren im Zustand "aus", "halb", "voll"
+	Variante: Timer läuft immer (Signal alle 0.3s) \implies Timout ignorieren im Zustand "aus", "halb", "voll"
 *** Beispiel 2:
 	\begin{align}
 	&1~0~1~1~0~1~0 &= 2 + 8 + 16 + 74 &= 90_{\text{dez}} \\
@@ -82,7 +82,7 @@
 	 | carry = 1 | $\emptyset$ | "1"      |
 	 *Wichtig:* In jedem Zustand muss für *alle möglichen* Ereignisse eine Aktion und Folgezustand definiert werden.
 	 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen "Bug".
-	 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" \Rightarrow Übergang nach "Fehler",
+	 Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" \implies Übergang nach "Fehler",
 	 Aktion: Ausgeben einer Fehlermeldung
 ***** TODO Skizze Fehlermeldung
 	  Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
@@ -111,7 +111,7 @@
 \end{center}
 	  Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
 	  Spendiert man zusätzlichen Specher, geht mehr:
-	  - Automat mit Stack-Speicher (Stapel oder Keller) \Rightarrow Kellerautomat (Kontextfreie Sprachen)
+	  - Automat mit Stack-Speicher (Stapel oder Keller) \implies Kellerautomat (Kontextfreie Sprachen)
 	  - Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles auführen, was man intuitiv für berechenbar hält
 	  Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
 	  Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)

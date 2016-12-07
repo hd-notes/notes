@@ -4,7 +4,7 @@
 	- optimiert für Programmierer
   - Compiler oder Interpreter übersetzen Hoch- in Maschinensprache
 ** Umwandlung in Maschinensprache
-  1. Eingaben und (Zwischen)-Ergebnisse werden in Speicherzellen abgespeichert \Rightarrow jeder Knoten im Baum bekommt eine Speicherzelle
+  1. Eingaben und (Zwischen)-Ergebnisse werden in Speicherzellen abgespeichert \implies jeder Knoten im Baum bekommt eine Speicherzelle
   2. Speicherzellen für Eingaben initialisieren
 	 - Notation: SpZ \leftarrow Wert
   3. Rechenoperationen in Reihenfolge des Substitutionsmodell ausführen und in der jeweiligen Speicherzelle speichern

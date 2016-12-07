@@ -17,7 +17,7 @@
    #+begin_defn latex
    Eine Funktion $f: D\subseteq \mathbb{K} \to \mathbb{K}$ hat im Punkt $x_0 \in \bar D$ einen
    Grenzwert $a \in\mathbb{K}$, wenn alle Folgen $(x_n)_{n\int\mathbb{N}} \subseteq D$ gilt:
-   \[x_n \to x_0 (n \to \infty) \Rightarrow f(x_n) \to a (n\to\infty)\]
+   \[x_n \to x_0 (n \to \infty) \implies f(x_n) \to a (n\to\infty)\]
    Wir schreiben kurz: $\lim_{x\to x_0} f(x) = a$
    #+end_defn
    #+begin_remark latex
@@ -54,7 +54,7 @@
    \[\Forall \eps > 0 \Exists y\in \mathbb{R}: \abs{f(x) - a} < \eps \Forall x\in D, x > y (x < y)\]
    Schreibweise: $\lim_{x \to \infty}f(x) = a$, oder $\lim_{x\to -\infty} f(x) = a$
 
-   Sei $x_0 \in \bar D$. Die FUnktion $f$ divergiert bestimmt gegen $+\infty (-\infty) :\Leftrightarrow \Forall K\in\mathbb{R}_{+} \Exists \delta > 0: f(x) > K (f(x) < -K) \Forall x\in I_\delta (x_0) \cap (D\setminus\{x_0\})$ \\
+   Sei $x_0 \in \bar D$. Die FUnktion $f$ divergiert bestimmt gegen $+\infty (-\infty) :\iff \Forall K\in\mathbb{R}_{+} \Exists \delta > 0: f(x) > K (f(x) < -K) \Forall x\in I_\delta (x_0) \cap (D\setminus\{x_0\})$ \\
    Schreibweise: $f(x) \to +\infty (f(x) \to -\infty)$ für $x\to x_0$
    #+end_defn
    #+ATTR_LATEX: :options [3.4]
@@ -64,13 +64,13 @@
 	  wir schreiben kurz $\lim_{\abs{x} \to \infty} \frac{1}{x} = 0$
    2. $\Forall k\in\mathbb{N}$ gilt
 	  \[\lim_{x\to\infty} \frac{x^k}{e^x} = 0 = \lim_{x\to -\infty} x^k e^x,~\text{denn}~ e^x = \exp(x) \geq \frac{x^{k + 1}}{(k + 1)!}, x\geq 0 \]
-	  \[\Rightarrow \frac{x^k}{e^x} \leq \frac{(k + 1)!}{x} \to 0 (x\to \infty)\]
+	  \[\implies \frac{x^k}{e^x} \leq \frac{(k + 1)!}{x} \to 0 (x\to \infty)\]
 	  \[x^k e^x = \frac{(-1)^k \abs{x}^k}{e^{\abs{x}}}, x < 0\]
    #+end_ex
    #+ATTR_LATEX: :options [3.5]
    #+begin_defn latex
    Eine Funktion $f:D \subseteq \mathbb{K} \to \mathbb{K}$ heißt stetig im Punkt $x_0 \in D$, wenn gilt:
-   Für alle Folgen $x_n \to x_0 (n\to\infty) \Rightarrow f(x_n) \to f(x_0) (n \to \infty)$
+   Für alle Folgen $x_n \to x_0 (n\to\infty) \implies f(x_n) \to f(x_0) (n \to \infty)$
    Andernfalls heißt sie unstetig in $x_0 \in D$.
    $f$ heißt stetig (auf ganz $D$), wenn sie in jedem $x_0 \in D$ stetig ist. (/insert Symbolbild hier/) \\
    #+ATTR_LATEX: :options [3.5]
@@ -89,16 +89,113 @@
    #+end_proof
    #+ATTR_LATEX: :options [3.7 $\eps/\delta$ Kriterium]
    #+begin_lemma latex
-   Eine Funktion $f: D \to \matbb{K}$ ist in $x_0 \in D$ genau dann stetig, wenn es zu jedem $\eps > 0$ ein $\delta = \delta(\eps) > 0$ gibt, sodass Für alle $x \in D$ gilt:
-   \[\abs{x - x_0} < \delta \Rightarrow \abs{f(x) - f(x_0)} < \eps\]
+   Eine Funktion $f: D \to \mathbb{K}$ ist in $x_0 \in D$ genau dann stetig, wenn es zu jedem $\eps > 0$ ein $\delta = \delta(\eps) > 0$ gibt, sodass Für alle $x \in D$ gilt:
+   \[\abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \eps\]
    #+end_lemma
    #+begin_proof latex
-   $(\Leftarrow)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
-   $(\Rightarrow)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
-   das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\æbs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Wiederspruch zu
+   $(\impliedby)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
+   $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
+   das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Wiederspruch zu
    \[\lim_{x \to x_0} f(x) = f(x_0)\]
    #+end_proof
    #+ATTR_LATEX: :options [3.8]
    #+begin_korollar latex
-   Sei $f: D \to \mathbb{K}$ stetig in $x_0 \in D$ mit $f(x_0) \neq 0$. Dann gibt es ein $\delta > 0$ mit $f(x) \neq 0$
+   Sei $f: D \to \mathbb{K}$ stetig in $x_0 \in D$ mit $f(x_0) \neq 0$. Dann gibt es ein $\delta > 0$ mit $f(x) \neq 0$.
+   Dann gibt es ein $\delta > 0$ mit $f(x) \neq 0 \Forall x\in I_\sigma (x_0) \cap D$. Insbesondere ist $\frac{1}{f}: D\to\mathbb{K}$ stetig in $x_0 \in D$
    #+end_korollar
+   #+begin_proof latex
+   Setze $\eps := \abs{f(x_0)} > 0$. Dann gibt es ein $\delta > 0$, sodass $\Forall x\in D$ mit $\abs{x - x_0} < \delta$ folgt $\abs{f(x) - f(x_0)} < \eps$ (aus Stetigkeit von $f$),
+   das heißt für $x \in I_\sigma (x_0) \cap D$ gilt
+   \[\abs{f(x)} \geq \abs{f(x_0)} - \abs{f(x) - f(x_0)} > \eps - \eps = 0\]
+   Insbesondere sind Folgen $x_n \to x_0$ wohldefiniert und die Aussage resultiert aus den Rechenregeln für Folgen
+   #+end_proof
+   #+ATTR_LATEX: :options [3.9]
+   #+begin_ex latex
+   \mbox{}
+   1. $f: \mathbb{R} \to \mathbb{R}, f(x) = x$ ist stetig auf $\mathbb{R}$
+   2. Konstante Funktionen $f(x) = c \Forall x\in \mathbb{R}$ sind stetig auf $\mathbb{R}$
+   3. Seien $a_0, \ldots, a_n \in \mathbb{R}, a_n\neq 0$, Dann heißt
+	  \[p: \mathbb{R} \to \mathbb{R}, x\mapsto \sum_{k = 0}^{n} a_k x^k\]
+	  *Polynom* vom Grad $n\in\mathbb{N}_0$ und ist stetig (wegen 1. und 2. und Lemma 3.6)
+   4. Seien $p,q$ Polynome, dann heißt \[f: \{x\in\mathbb{R} \mid q(x) \neq 0\} \to \mathbb{R}, x\mapsto \frac{p(x)}{q(x)}\]
+	  *rationale Funktion* und ist stetig nach 3. und Korollar 3.8
+   5. $g:\mathbb{R} \to \mathbb{R}, x\mapsto \sqrt{1 + 3x^2}$ ist stetig nach 3., Lemma 3.6 und Übung 5.1
+   6. $\exp: \mathbb{R} \to \mathbb{R} \setminus \{0\}, x\mapsto e^x$ ist stetig auf $\mathbb{R}$, denn für $x \neq x_0$ ist
+	  \[e^x = e^{x_0} e^{x - x_0} = e^{x_0} (1 + \underbrace{(x - x_0)}_{\to 0} \frac{e^{x - x_0} - 1}{\underbrace{(x - x_0)}_{1}})\]
+	  (nach Beispiel 3.2)
+   7. $\displaystyle f(x) = \begin{cases} 1 & x \in\mathbb{Q} \\ 0 & x \in \mathbb{R} \setminus \mathbb{Q} \end{cases}$
+   #+end_ex
+   #+ATTR_LATEX: :options [3.10 Gleichmäßige Stetigkeit]
+   #+begin_defn latex
+   Eine Abbildung $f: D \to \mathbb{K}$ heißt *gleichmäßig stetig* auf $D$, wenn $\Forall \eps > 0 \Exists \delta = \delta(\eps) < 0: \Forall x,y \in D: \abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \eps$
+   #+end_defn
+   #+begin_remark latex
+   Gleichmäßige Stetigkeit heißt, dass die $\delta$ gleichmäßig für alle Punkte $x\in D$ gewählt werden kann.
+   #+end_remark
+   #+ATTR_LATEX: :options [3.11]
+   #+begin_ex latex
+   \[f: \mathbb{R} \setminus \{0\} \to \mathbb{R}, x \mapsto \frac{1}{x}\]
+   1. $f$ ist gleichmäßig stetig auf $A = \mathbb{R} \setminus (-a, a), a > 0$
+   2. $f$ ist *nicht* gleichmäßig stetig auf $\mathbb{R} \setminus \{0\}$
+   #+end_ex
+   #+begin_proof latex
+   \[\abs{f(x) - f(y)} = \abs{\frac{1}{x} - \frac{1}{y}} = \frac{1}{\abs{xy}} \abs{x - y}\]
+   also $\abs{f(x) - f(y)} < \eps \iff \abs{x - y} < \abs{xy} \eps$
+   1. Für $x,y \in \mathbb{R} \setminus (-a, a)$ gilt $\abs{xy} \geq a^2$, also $\abs{x - y} < \eps a^2 := \delta \implies \abs{x - y} < \eps \abs{xy}$.
+	  Daher $\Forall \eps > 0 \Forall x,y\in A: \abs{x - y} < \delta:= \eps a^2 \implies \abs{f(x) - f(y)} < \eps$
+   2. Dagegen können wir $\Forall \delta > 0, x, y \in \mathbb{R} \setminus \{0\}$ finden wir
+	  $\abs{x - y} < \delta$, aber $\abs{f(x) - f(y)} \geq 1 \iff \abs{x - y} \geq \abs{xy}$ \\
+	  Sei $\delta > 0$. Wähle $n\in \mathbb{N}$, sodass $\frac{\delta}{n} < 1$. Nun gilt für
+	  \begin{align*}
+	  \abs{x - y} &= \frac{\delta}{2n} \\
+	  \abs{xy} &< (\abs{x - y} + \abs{x}) \abs{x} \\
+	  \intertext{für $\abs{x} < \frac{\delta}{2n}$}
+	  &= (\frac{\delta}{2n} + \abs{x}) \abs{x} < \frac{\delta^2}{2n^2} \\
+	  &= \frac{\delta}{n} \abs{x - y} \leq \abs{x - y}, ~\text{da}~ \frac{\delta}{n} \leq 1
+	  \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [3.12 Lipschitz Stetigkeit]
+   #+begin_defn latex
+   Eine Funktion $f:D\to\mathbb{K}$ heißt Lipschitz stetig (kurz L-stetig) auf $D$, wenn
+   $\Exists L > 0$ (sogenannte Lipschitz Konstante), sodass
+   \[f(x) - f(y) \leq L \abs{x - y} \Forall x,y \in D\]
+   #+end_defn
+   #+begin_remark latex
+   Menge von stetigen Funktionen $\supset$ Menge von gleichmäßig stetigen Funktionen $\supset$
+   Menge von Lipschitz-stetigen Funktionen
+   #+end_remark
+   #+ATTR_LATEX: :options [3.13 Satz von der gleichmäßigen Stetigkeit, Satz von Heine für folgenkompakte metrische Räume]
+   #+begin_defn latex
+   Eine auf einer beschränkten, abgeschlossenen (das heißt kompakten) Teilmenge $D \subseteq \mathbb{K}$
+   stetige Funktion ist gleichmäßig stetig.
+   #+end_defn
+   #+begin_proof latex
+   Angenommen $f$ ist nicht gleichmäßig stetig. Dann gibt es ein $\eps > 0$, sodass $\Forall n\in \mathbb{N}$ Punkte $x_n, y_n \in D$ existieren mit
+   $\abs{x_n - y_n} < \frac{1}{n}, \abs{f(x_n) - f(y_n)} \geq \eps$ \\
+   Nach dem Satz von Bolzano-Weierstrass besitzt die beschränkte Folge $(x_n)_{n\in\mathbb{N}}$ eine
+   konvergente Teilfolge $x_{n_k} \to x \in D$. Wegen $\abs{x_n - y_n}  < \frac{1}{n}$ ist auch $\lim_{k\to\infty} y_{n_k} = y = x$
+   Aus der Stetigkeit von $f$ folgt, dass
+   \[\abs{f(x_{n_k}) - f(y_{n_k})} \to \abs{f(x) - f(y)} = 0 \lightning\]
+   #+end_proof
+   #+begin_remark latex
+   \mbox{}
+   1. Wichtigkeit von Annahmen
+	  - Abgeschlossenheit: $f(x) = x^{-1}$ für $x\in [-A, A] \setminus \{0\}$ Stetig, aber nicht gleichmäßig Stetig
+	  - Beschränktheit: $f(x) =x^2$ für $x\in\mathbb{R}$ ist stetig, aber nicht gleichmäßig stetig auf $\mathbb{R}$ \\
+		für $x = m$ und $y = x + \frac{1}{n}$ gilt
+		\[\abs{x - y} \to 0, ~\text{aber}~ \abs{f(x) - f(y)} = \abs{x^2 - y^2} = \abs{(x - y)(x + y)} = 2 + \frac{1}{n} \to 2\]
+   2. Libschitz-Stetigkeit von $f(x) = x^2$ \\
+	  \[\abs{f(x) - f(y)} = \abs{(x - y)(x + y)} \leq L \abs{x y}\]
+	  wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A \imples L = 2A \imples$ Libschitz-Stetigkeit,
+	  aber wenn $D = R \implies$ gibt keine $L < \infty$
+   3. Libschitz-Stetigkeit impliziert gleichmäßige Stetigkeit, aber nicht umgekehrt. Zum Beispiel: $f(x) = \sqrt{x}, x \in [0, A]$ ist gleichmäßig stetig nach Satz 3.13, aber nicht Libschitz-stetig in $0$.
+	  \begin{align*}
+	  \abs{\sqrt{x} - \sqrt{y}} \leq L \abs{x - y} \\
+	  \abs{\frac{y - x}{\sqrt{x} - \sqrt{y}}} > n \abs{x - y}
+	  \intertext{$\implies \not\Exists L > 0$}
+	  \end{align*}
+   #+end_remark
+   #+begin_remark latex
+   Stetigkeit kann interpretiert werden als "lokale Approximation" durch Konstanten, das heißt Funktion $f$ nach der Stelle $x_0$ durch eine Konstante $f(x_0)$ approximiert werden
+   kann und die Fehelr der Approximation $\abs{f(x) - f(x_0)} < \eps$
+   #+end_remark

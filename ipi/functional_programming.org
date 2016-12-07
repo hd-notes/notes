@@ -18,13 +18,13 @@
 ** Vorteile von Zwischenergebnissen
    1. lesbarer
    2. redundante Berechnung vermieden. Beachte: In der funktionalen Programmierung können die Speicherzellen nach der Initialisierung nicht mehr verändert werden
-   3. Speicherzellen und Namen sind nützlich um Argumente an Funktionen zu übergeben \Rightarrow Definition eigener Funktionen
+   3. Speicherzellen und Namen sind nützlich um Argumente an Funktionen zu übergeben \implies Definition eigener Funktionen
 	  #+BEGIN_SRC cpp
 	  function sq(x) {
 		 return x * x
 	  }
 	  #+END_SRC
-	  \Rightarrow $d \leftarrow sqrt(sq(p) - q)$
+	  \implies $d \leftarrow sqrt(sq(p) - q)$
 	  Speicherzelle mit Namen "x" für das Argument von $sq$
 ** Funktionale Programmierung in c++
    - in c++ hat jede Speicherzelle einen Typ (legt Größe und Bedeutung der Speicherzelle fest)
@@ -68,7 +68,7 @@
 		   return x*x;
 	   }
 	   #+END_SRC
-	 - beide Varianten dürfen in c++ gleichzeitig definiert sein \Rightarrow "function overloading" \Rightarrow c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
+	 - beide Varianten dürfen in c++ gleichzeitig definiert sein \implies "function overloading" \implies c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
 	   #+BEGIN_SRC cpp
 	   int x = 2;
 	   double y = 1.1
@@ -93,9 +93,9 @@
 	   - Funktion der Standardbibilothek $\estimates$ müssen "angefordert" werden
 		 - Namen beginnen mit "std::", "std::sin,..."
 		 - sind in Module geordnet, zum Beispiel
-		   - cmath \Rightarrow algebraische Funktion
-		   - complex \Rightarrow komplexe Zahlen
-		   - string \Rightarrow Zeichenkettenverarbeitung
+		   - cmath \implies algebraische Funktion
+		   - complex \implies komplexe Zahlen
+		   - string \implies Zeichenkettenverarbeitung
 		 - um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ include <name>
 		   #+BEGIN_SRC cpp
 		   #include <iostream>
@@ -109,13 +109,13 @@
 		   #+END_SRC
 	 - overloading der arithmetischen Operationene
 	   - overloading genau wie bei $sq$
-		 - 3 * 4 \Rightarrow int Variante
-		 - 3.0 * 4.0 \Rightarrow double Variante
-		 - 3 * 4.0 \Rightarrow automatische Umwandliung in höheren Typ, hier "double" \Rightarrow wird als 3.0 * 4.0 ausgeführt
-	 - \Rightarrow Devision unterscheidet sich
+		 - 3 * 4 \implies int Variante
+		 - 3.0 * 4.0 \implies double Variante
+		 - 3 * 4.0 \implies automatische Umwandliung in höheren Typ, hier "double" \implies wird als 3.0 * 4.0 ausgeführt
+	 - \implies Devision unterscheidet sich
 	   - Integer-Division: 12 / 5 = 2 (wird abgerundet)
 	   - Double-Division: 12.0 / 5.0 = 2.4
-	   - -12 / 5 = 2 (\Rightarrow truncated Division)
+	   - -12 / 5 = 2 (\implies truncated Division)
 	   - 12.0 / 5.0 = 2.4
 	   - Gegensatz (zum Beispiel in Python)
-		 - floor division \Rightarrow wird immer abgerundet \Rightarrow -12 / 4 = -2
+		 - floor division \implies wird immer abgerundet \implies -12 / 4 = -2

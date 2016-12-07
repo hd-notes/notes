@@ -11,7 +11,7 @@
 *** Beispiel
 	\[\v{r_1} = \cvec{0; 0; 0},\v{r_2} = \cvec{\Delta x ; 0; 0},\v F = \cvec{m g ; 0; 0},\d \v r = \cvec{\d x; \d y; \d z}\]
 	\[W = \int_{(0)}^{(1)} m g\d x + \int 0\d y + \int 0\d z = m g \Delta x \]
-*** Beispiel Kreisbahn (\Rightarrow Gravitation)
+*** Beispiel Kreisbahn ($\implies$ Gravitation)
 	\[W = \int_A^B \v F\d \v r = 0\]
 ** kinetische Energie
    \[k = \frac{1}{2} g t^2\]
@@ -93,7 +93,7 @@
 	Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfelder
 	Für konservative Kraftfelder gilt
 	\[W_{12} = \int_1^2\v F\d\v r = E_{pot}(1) - E_{pot}(2)\]
-	- jedem Ort im Raum kann ein Skalar, die potentielle Energie zugeordnet werden \Rightarrow $E_{pot} = E_{pot}(x,y,z)$ Skalar!
+	- jedem Ort im Raum kann ein Skalar, die potentielle Energie zugeordnet werden $\implies$ $E_{pot} = E_{pot}(x,y,z)$ Skalar!
 	- wird bei der Verschiebung eines Körpers von Ort 1 nach Ort 2 Arbeit gegen eine konservative Kraft geleistet, so erhöht sich die potentielle Energie, das heißt $E_{pot}(2) > E_{pot}(1)$.
 	- Der Nullpunkt $E_{pot}(\v r) = 0$ der potentiellen Energie ist frei wählbar, da allein die Differenz der potentiellen Energie an zwei Punkten relevant ist.
 **** homogenes Kraftfeld
@@ -116,8 +116,8 @@
 	 &= \Big[G\frac{mM}{r + \xi}\Big]_{r_A}^{r_B}
 	 &= E_{pot}(A) - E_{pot}(B)
 	 \end{align}
-	 \[\Rightarrow E_{pot}(A) = -G\frac{mM}{r_A} + \xi\]
-	 \[\Rightarrow E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
+	 \[\implies E_{pot}(A) = -G\frac{mM}{r_A} + \xi\]
+	 \[\implies E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
 	 Potentielle Energie des Gravitationsfelder:
 	 \[E_{pot}^{grav} = -G\frac{mM}{r}\]
 **** d = 1

@@ -46,6 +46,7 @@
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 #+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
+#+LATEX_HEADER: \usepackage{chemmacros}
 
 \begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}]
 \tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]

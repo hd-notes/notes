@@ -151,8 +151,8 @@
    | $\subseteq$   | ist Untermenge von oder gleich               |
    | $\cup$        | Vereiningungsmenge                           |
    | $\exists$     | es existiert ein                             |
-   | $\Rightarrow$ | daraus folgt, ist hinreichende Bedingung für |
-   | $\Leftarrow$  | gilt wenn, ist notwendige Bedingung für      |
+   | $\implies$ | daraus folgt, ist hinreichende Bedingung für |
+   | $\impliedby$  | gilt wenn, ist notwendige Bedingung für      |
    | $\exists!$    | es existiert genau ein                       |
    | $\notin$      | kein Element von                             |
    | $:=$          | ist definiert durch                          |
@@ -468,11 +468,11 @@ plot exp(x), exp(-x)
   Die ursprüngliche Abbildung $y=f(x)$ und die Umkehrabbildung $x=f^{-1}(y)=g(y)$ heben sich in ihrer Wirkung auf \[f^{-1}(f(x))= x\]
 ** Graph der Umkehrfunktion
    1. Gegebenfalls Einschränktung von $D_f$, sodass eine bijektive Funktion vorliegt
-   2. Auflösen der Gleichung $y=f(x)\Rightarrow x=f^-1(y)$
+   2. Auflösen der Gleichung $y=f(x)\implies x=f^-1(y)$
    3. Umbennenung der Variablen: die unabhängige Variable $y$ wird wieder $x$ genannt, die abhängige wieder $y$: $y=f^{-1}(x)
 *** Beispiel $y=x^2$
 	1. Einschränktung $D_f$ auf $x\geq 0$
-	2. $y=x^2, x\geq 0 \Leftrightarrow x = \sqrt{y}$
+	2. $y=x^2, x\geq 0 \iff x = \sqrt{y}$
 	3. Umbenennung: $y=\sqrt{x} = x^\frac{1}{2}$
 *** Graphisch
 	Spiegelung an $y=x$
@@ -508,9 +508,9 @@ plot exp(x), exp(-x)
 	 \[\int_a^b f(g(t))g'(t)\mathrm{d}t = F(g(t))\mid_a^b=F(g(b)) - F(g(a)) = F(x)\mid_{g(a)}^{g(b)} = \int_{g(a)}^{g(b)}f(y)\mathrm{d}y\]
 **** Beispiel
 	 - \[\int_1^5\sqrt{2x+1}\mathrm{d}x = \int_1^9\sqrt{y}\frac{1}{2}\mathrm{d}y=\frac{26}{3}\]
-	   \[y=2x-1\quad y'=g'(x) =\frac{\mathrm{d}y}{\mathrm{d}x} = g'(x) = 2 \Rightarrow \mathrm{d}y = 2\mathrm{d}x \Rightarrow \frac{1}{2}\mathrm{d}y = \mathrm{d}x\]
+	   \[y=2x-1\quad y'=g'(x) =\frac{\mathrm{d}y}{\mathrm{d}x} = g'(x) = 2 \implies \mathrm{d}y = 2\mathrm{d}x \implies \frac{1}{2}\mathrm{d}y = \mathrm{d}x\]
 	 - \[\int_0^b t e^{-\alpha t^2}\mathrm{d}t = -\frac{1}{2\alpha}\int_0^{-\alpha b^2} e^y\mathrm{d}y = -\frac{1}{2\alpha}(e^{-\alpha b^2} - 1)\]
-	   \[y=g(t)=-\alpha ^2 \Rightarrow \frac{\mathrm{d}y}{\mathrm{d}t}=-2\alpha t \Rightarrow \mathrm{d}y=-2\alpha t \mathrm{d}t \Rightarrow \mathrm{d}t = -\frac{1}{2\alpha t}\mathrm{d}y\]
+	   \[y=g(t)=-\alpha ^2 \implies \frac{\mathrm{d}y}{\mathrm{d}t}=-2\alpha t \implies \mathrm{d}y=-2\alpha t \mathrm{d}t \implies \mathrm{d}t = -\frac{1}{2\alpha t}\mathrm{d}y\]
 	 - \[\int_0^T \cos{\omega t}\mathrm{d}t = \frac{1}{\omega}\int_0^{\omega T}\mathrm{d}y\]
 	 - \[\int_a^b \frac{g'(x)}{g(x)}\mathrm{d}x = \int_{g(a)}^{g(b)}\frac{1}{y}\mathrm{d}y=\ln{\abs{y}}\mid_{g(a)}^{g(b)}\]
 	 - \[\int \frac{\mathrm{d}x}{ax\pm b} = \frac{1}{a}\ln{\abs{ax\pm b}} + c\]
@@ -518,7 +518,7 @@ plot exp(x), exp(-x)
 *** Partielle Integration
 	\[\int_a^b f'(x)g(x)\mathrm{d}x = f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x\]
 **** Beweis
-	 \[F(x)=f(x)g(x)\Rightarrow F'(x) = f'(x)g(x) + f(x)g'(x)\]
+	 \[F(x)=f(x)g(x)\implies F'(x) = f'(x)g(x) + f(x)g'(x)\]
 	 \[\int_a^b F'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
 	 \[f(x)g(x)\mid_a^b = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
 	 \[f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x\]
@@ -528,8 +528,8 @@ plot exp(x), exp(-x)
 	 - \[\int x\sin{x}\mathrm{d}x=-x\cos{x} + \int cos{x}\mathrm{d}x = -x\cos{x}+\sin{x}\]
 **** Kreisfläche
 	 \[y=f(x)=\sqrt{1-x^2}\]
-	 \[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\Rightarrow \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
-	 \[x=\sin{t} \Rightarrow t = \arcsin{x},\quad \frac{\mathrm{x}}{\mathrm{d}t} = \cos{t},\quad \mathrm{d}x = \cos{t}\mathrm{d}t\]
+	 \[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\implies \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
+	 \[x=\sin{t} \implies t = \arcsin{x},\quad \frac{\mathrm{x}}{\mathrm{d}t} = \cos{t},\quad \mathrm{d}x = \cos{t}\mathrm{d}t\]
 	 \[\int \cos{t}\cos{t} = \sin{t}\cos{t} + \int sin^2{t}\mathrm{d}t = \sin{t}\cos{t} + \int 1 - cos^2{t}\mathrm{d}t = \frac{\sin{t}\cos{t} + t}{2}\]
 ***** In Polarkoordinaten
 	  \[y=\sin{t}\]
@@ -542,10 +542,10 @@ plot exp(x), exp(-x)
 	  \[\int \mathrm{d}A = \int_0^R 2\pi r\mathrm{d}r=2\pi\frac{1}{2}r^2\mid_0^R = \pi R^2\]
 *** Weitere Integrationstricks
 **** Partialbruchzerlegung
-	 $\Rightarrow$ Integration rationaler Funktionen
+	 $\implies$ Integration rationaler Funktionen
 	 \[\int_a^b\frac{\mathrm{d}}{1-x^2} \text{ mit } \{-1,1\}\not\in [a,b] \]
 	 \[1-x^2 = (1-x)(1+x)\]
-	 \[\frac{1}{1-x^2} = \frac{\alpha}{1-x} + \frac{\beta}{1+x} = \frac{\alpha(1+x)+\beta{1-x}}{(1-x)(1+x)} = \frac{\alpha + \beta + x(\alpha - \beta)}{1-x^2} \Rightarrow \alpha = \beta \frac{1}{2}\]
+	 \[\frac{1}{1-x^2} = \frac{\alpha}{1-x} + \frac{\beta}{1+x} = \frac{\alpha(1+x)+\beta{1-x}}{(1-x)(1+x)} = \frac{\alpha + \beta + x(\alpha - \beta)}{1-x^2} \implies \alpha = \beta \frac{1}{2}\]
 	 \[\int_a^b \frac{\mathrm{d}x}{1-x^2} = \frac{1}{2}(\int_a^b\frac{1}{1+x} + \int_a^b\frac{1}{1+x})\]
 ** Uneigentliche Integrale
 *** Unendliches Integralintervall
@@ -579,8 +579,8 @@ plot exp(x), exp(-x)
 	Satz: Es gilt $\Gamma(1) = 1,~\Gamma(m+1) = m! \Forall n\in\mathbb{N},~x\Gamma(x) = \Gamma(x+1)$
 	\[\Gamma(1)=\int_0^\infty e^{-t}\mathrm{d}t=-e^{-t}\mid_0^\infty = 1\]
 	\[\Gamma(x+1) = \int_\epsilon^R t^x e^{-t}\mathrm{d}t = \underbrace{t^x e^{-t}\mid_\epsilon^R}_{R\to\infty t} + x\int_\epsilon^R t^{x-1}e^{-t}\mathrm{d}t\]
-	\[f(t) = -e^{-t} \Leftarrow f'(t)=e^{-t}\]
-	\[g(t) = t^x \Rightarrow xt^{t-1} = g'(t)\]
+	\[f(t) = -e^{-t} \impliedby f'(t)=e^{-t}\]
+	\[g(t) = t^x \implies xt^{t-1} = g'(t)\]
 * Vektoren
 ** $\mathbb{R}^3$
 *** Orthonormal
@@ -590,10 +590,10 @@ plot exp(x), exp(-x)
 *** Definition
 	\[<\vec{a},\vec{b}> = \vec{a}\cdot\vec{b} := \abs{\vec{a}}\abs{\vec{b}}\cos{\angle (\vec{a},\vec{b})}\]
 *** Spezialfälle
-	\[\vec{a}\|\vec{b}\Rightarrow \vec{a}\cdot\vec{b}=\abs{\vec{a}}\abs{\vec{b}}\]
+	\[\vec{a}\|\vec{b}\implies \vec{a}\cdot\vec{b}=\abs{\vec{a}}\abs{\vec{b}}\]
 	$\vec{a}$ und $\vec{b}$ antiparallel:
 	\[\vec{a}\cdot\vec{b}=-\abs{\vec{a}}\abs{\vec{b}}\]
-	\[\vec{a}\bot\vec{b}\Rightarrow\vec{a}\cdot\vec{b}=0\]
+	\[\vec{a}\bot\vec{b}\implies\vec{a}\cdot\vec{b}=0\]
 *** Betrag:
 	\[<\vec{a},\vec{b}>=\abs{\vec{a}}^2=a^2\]
 *** Eigenschaften
@@ -604,7 +604,7 @@ plot exp(x), exp(-x)
 	- Distributivgesetz
 	  \[<\vec{a}+\vec{b},\vec{c}>=<\vec{a},\vec{c}>+<\vec{b},\vec{c}>\]
 	  \[<\vec{a},\vec{b}+\vec{c}>=<\vec{a},\vec{b}>+<\vec{a},\vec{c}>\]
-	- \[<\vec{a},\vec{a}>\geq 0 \quad <\vec{a},\vec{a}>=0\Leftrightarrow\vec{a}=0\]
+	- \[<\vec{a},\vec{a}>\geq 0 \quad <\vec{a},\vec{a}>=0\iff\vec{a}=0\]
 *** Orthonormalbasis der kartesischen Koordinatensystem
 	Basisvecktoren $\vec{e_k}, k=1,2,4$
 	Orthogonalität $<\vec{e_k},\vec{e_l}> = 0\quad l\neq k$
@@ -640,7 +640,7 @@ plot exp(x), exp(-x)
    = \begin{matrix} 0 \\ 0 \\ 0\end{matrix}
    \]
    sind $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear unabhängig, dann gibt es nur die Lösung $x_1=x_2=x_3=0$
-   Nichttriviale Lösung nur wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear abhängig $\Rightarrow \lambda,\mu\in\mathbb{R}$, sodass z.B. $\vec{a_1} = \lambda\vec{a_2} + \mu\vec{a_3}$
+   Nichttriviale Lösung nur wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear abhängig $\implies \lambda,\mu\in\mathbb{R}$, sodass z.B. $\vec{a_1} = \lambda\vec{a_2} + \mu\vec{a_3}$
    Wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear unabhängig, dann $\det A = 0$.
 ** Levi Civita Symbol
    \begin{equation}

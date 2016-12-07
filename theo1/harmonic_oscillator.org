@@ -3,16 +3,16 @@
    Harmonischer Oszillator mit Reibung:
    \[\ddot{x} = -\omega^2 x - c \dot{x}\]
    Exponentieller Ansatz:
-   \[x\sim e^{\alpha t} \Rightarrow \alpha^2 + \omega^2 + c\alpha = 0\]
+   \[x\sim e^{\alpha t} \implies \alpha^2 + \omega^2 + c\alpha = 0\]
    gesucht: $\alpha$, Betrachte Genzfälle:
   1. $\omega$ klein
-	 \[\Rightarrow \alpha^2 + c\alpha = 0 \Rightarrow \alpha = -c \Rightarrow x\sim e^{-c t}\]
+	 \[\implies \alpha^2 + c\alpha = 0 \implies \alpha = -c \implies x\sim e^{-c t}\]
   2. $\omega$ groß (beziehungsweise $c$ klein)
 	 \[\alpha^2 + \omega^2 \simeq 0\]
 	 nicht lösbar!
   Aber: wir wissen schon $\sin{\omega t}, \cos{\omega t}$ sind Lösungen.
 
-  Falls jede gesuchte Gleichung lösbar \Rightarrow Hoffnung auf elegante allgemeine Lösung
+  Falls jede gesuchte Gleichung lösbar \implies Hoffnung auf elegante allgemeine Lösung
 
   *Speziell:* $\alpha^1 = -1$ (für $\omega = 1, c = 0$)
 ** Komplexe Zahlen
@@ -53,7 +53,7 @@
 	Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
 	\[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
 
-	$\mathbb{C} = \mathbb{R}^2 \Rightarrow$ Darstellung durch Vektoren in Ebene liegt nahe.
+	$\mathbb{C} = \mathbb{R}^2 \implies$ Darstellung durch Vektoren in Ebene liegt nahe.
 	- Addition: $\equiv$ Vektoraddition
 	- Multiplikatoin: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
 	- $\arg{z} = \phi$
@@ -81,7 +81,7 @@
 	&= \sum_{k = 0}^\infty \frac{(-1)^k y^{2k}}{(2 k)!} + \I \sum_{k = 0}^\infty \frac{(-1)^k y^{2k + 1}}{(2k + 1)!} \\
 	&= \cos{y} + \I \sin{y}
 	\end{align*}
-	\Rightarrow Eulersche Formel
+	\implies Eulersche Formel
 	\[e^{\I \phi} = \cos{\phi} + \I \sin{\phi}\]
 *** Zusammenfassung:
    \[e^{\I\phi} = \cos{\phi} + \I \sin{\phi}\]
@@ -115,24 +115,24 @@
    \intertext{Fall $\frac{c}{2} > \omega$ (Kriechfall)}
    x=e^{\alpha t}, \alpha^2 + c\alpha + \omega^2 = 0 \\
    \alpha_{1,2} =-\frac{c}{2} \pm \sqrt{\frac{c^2}{4} - \omega^2} \\
-   \intertext{$\Rightarrow$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
-   \intertext{$\Rightarrow$ exponentielles Abfallverhalten, ohne Oszillationen}
+   \intertext{$\implies$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
+   \intertext{$\implies$ exponentielles Abfallverhalten, ohne Oszillationen}
    \intertext{Fall $\frac{c}{2} < \omega$ (Schwingfall), $\sqrt{-x} = \I \sqrt{x}$}
    \alpha_{1,2} = -\frac{c}{2}\pm \I\sqrt{\omega^2 - \frac{c^2}{4}} \equiv -\frac{c}{2} \pm \I \tilde\omega \\
    x_{1,2} = e^{-\frac{c}{2}t} e^{\pm \I \omega t} = e^{-\frac{c}{2}t} (\cos{\pm \tilde \omega t} + \I \sin{\pm\tilde\omega t}) \\
    x_{1,2} =  e^{-\frac{c}{2}t} (\cos{\tilde \omega t} \pm \I \sin{\tilde\omega t}) \\
    \intertext{Durch Linearkombination $\to$ 2 reelle Lösungen:}
    x_1 = e^{-\frac{c}{2}t}\cos{\tilde \omega t};\qquad x_2 = e^{-\frac{c}{2}t} \sin{\tilde\omega t}
-   \intertext{$\Rightarrow$ allgemeine Lösung durch Linearkombination}
-   \intertext{$\Rightarrow$ gedämpfte Schwingung}
+   \intertext{$\implies$ allgemeine Lösung durch Linearkombination}
+   \intertext{$\implies$ gedämpfte Schwingung}
    \intertext{Fall $\frac{c}{2} = \omega$ (aperiodischer Grenzfall)}
    \alpha_1 = \alpha_2
-   \intertext{$\Rightarrow$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
+   \intertext{$\implies$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
    \intertext{Idee: Betrachte Schwingfall Lösungen für $\tilde \omega \to 0$}
    \intertext{Taylor:}
    \cos{x} = 1 + \O(x^2);\qquad \sin{x} = x + O(x^3) \\
-   \Rightarrow x_1 = e^{-\frac{c}{2}t}; \qquad x_2 = e^{-\frac{c}{2}t} \tilde\omega t
-   \intertext{$\Rightarrow$ Wieder asymptotische Annäherung an $0$ ohne Oszillation}
+   \implies x_1 = e^{-\frac{c}{2}t}; \qquad x_2 = e^{-\frac{c}{2}t} \tilde\omega t
+   \intertext{$\implies$ Wieder asymptotische Annäherung an $0$ ohne Oszillation}
    \end{align*}
 ** harmonischer Oszillator mit periodisch treibender Kraft
    \begin{align*}
@@ -140,7 +140,7 @@
    \ddot{x} + c \dot{x} + \omega^2 x = \frac{1}{m} F(t), F(t) = f e^{\I \ubar\omega t}  \\
    \intertext{Ansatz:}
    x(t) = A e^{\I \ubar \omega t} \\
-   \Rightarrow (A (-\ubar\omega^2 + \I c \ubar\omega + \omega^2) - \frac{f}{m}) e^{\I \omega t = 0} \\
+   \implies (A (-\ubar\omega^2 + \I c \ubar\omega + \omega^2) - \frac{f}{m}) e^{\I \omega t = 0} \\
    A \equiv \abs{A}e^{\I \phi} = \frac{f}{m}\cdot\frac{1}{\omega^2 - \ubar\omega^2 + \I c \ubar \omega} \\
    \intertext{mit}
    \frac{1}{a + \I b} = \frac{a - \I b}{a - \I b} \frac{1}{a + \I b} = \frac{a - \I b}{a^2 - b^2} \\
@@ -150,4 +150,4 @@
    \end{align*}
    Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der inhomogenen Gleichung die allgemeine Lösung der homogenen Gleichung addiert.
 
-   *Wichtig:* Langzeitverhalten ist durch die partikuläre Lösung bestimmt \Rightarrow Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
+   *Wichtig:* Langzeitverhalten ist durch die partikuläre Lösung bestimmt \implies Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$

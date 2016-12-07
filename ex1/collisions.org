@@ -9,7 +9,7 @@
    \begin{align*}
    m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2' \\
    \frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 = \frac{1}{2} m_1 v_1^{\prime 2} + \frac{1}{2} m_2 v_2^{\prime 2} \\
-   \intertext{$\Rightarrow$ Lösung (ohne Herleitung)}
+   \intertext{$\implies$ Lösung (ohne Herleitung)}
    v_1' = \frac{v_1(m_1 - m_2) + 2m_2 v_2}{m_1 + m_2} \\
    v_2' = \frac{v_2(m_2 - m_1) + 2m_1 v_1}{m_1 + m_2}
    \end{align*}
