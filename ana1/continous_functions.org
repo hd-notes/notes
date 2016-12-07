@@ -87,3 +87,18 @@
    4. Sei $(x_n)_{n\in\mathbb{N}} \subseteq D$ mit $\lim_{n \to\infty} x_n = x_0$, dann folgt aus Stetigkeit von $f: \lim_{n\to\infty} f(x_n) = f(x_0)$ \\
 	  $(g\circ f)(x_n) = g(f(x_n)) \rightarrow g(f(x_0)) = (g\circ f)(x_0) (n\to\infty)$
    #+end_proof
+   #+ATTR_LATEX: :options [3.7 $\eps/\delta$ Kriterium]
+   #+begin_lemma latex
+   Eine Funktion $f: D \to \matbb{K}$ ist in $x_0 \in D$ genau dann stetig, wenn es zu jedem $\eps > 0$ ein $\delta = \delta(\eps) > 0$ gibt, sodass Für alle $x \in D$ gilt:
+   \[\abs{x - x_0} < \delta \Rightarrow \abs{f(x) - f(x_0)} < \eps\]
+   #+end_lemma
+   #+begin_proof latex
+   $(\Leftarrow)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
+   $(\Rightarrow)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
+   das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\æbs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Wiederspruch zu
+   \[\lim_{x \to x_0} f(x) = f(x_0)\]
+   #+end_proof
+   #+ATTR_LATEX: :options [3.8]
+   #+begin_korollar latex
+   Sei $f: D \to \mathbb{K}$ stetig in $x_0 \in D$ mit $f(x_0) \neq 0$. Dann gibt es ein $\delta > 0$ mit $f(x) \neq 0$
+   #+end_korollar
