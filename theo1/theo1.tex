@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 17:56
+% Created 2016-12-09 Fr 23:09
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -76,8 +76,8 @@
 
 Einleitung: \\
 \begin{itemize}
-\item Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
-\item Bartelman skripte
+\item Website: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
+\item Bartelman Skripte
 \end{itemize}
 
 \section{Semesterüberblick}
@@ -85,12 +85,12 @@ Einleitung: \\
 \begin{enumerate}
 \item Newtonsche Mechanik
 \item Lagrange / Hamilton Mechanik / Statistik / Kontinua
-\item Elektrodynamik / Spezielle Relativitättheorie
-\item Quatenmechanik
+\item Elektrodynamik / Spezielle Relativitätstheorie
+\item Quantenmechanik
 \item Thermodynamik / Quantenstatistik
-\item Allgemeine Relativitättheorie / Kosmologie
-\item Quatenfeldtheorie I (ggf. 5.)
-\item Quatenfeldtheorie II (ggf. 6. $\impliedby$ Stringtheorie / Teilchenphysik / Supersymmetrie)
+\item Allgemeine Relativitätstheorie / Kosmologie
+\item Quantenfeldtheorie I (ggf. 5.)
+\item Quantenfeldtheorie II (ggf. 6. $\impliedby$ Stringtheorie / Teilchenphysik / Supersymmetrie)
 \item Masterarbeit
 \item Masterarbeit
 \end{enumerate}
@@ -104,7 +104,7 @@ Einleitung: \\
 \section{Kinematik des Massenpunktes}
 \label{sec-2}
 Massenpunkt / Punktmasse - (selbstevidente) Abstraktion
-Kinematik: Bescheibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
+Kinematik: Beschreibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
 \subsection{Kinematik der Massenpunktes in einer Dimension}
 \label{sec-2-1}
 \subsubsection{Graphik}
@@ -112,7 +112,7 @@ Kinematik: Bescheibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik
 \begin{itemize}
 \item Ort: $x$
 \item zu Zeit $t:~x(t)$
-\item Geschwindigketi: $v(t) \equiv \frac{\mathrm{d}x(t)}{\mathrm{d}t} \equiv \dot{x}(t)$
+\item Geschwindigkeit: $v(t) \equiv \frac{\mathrm{d}x(t)}{\mathrm{d}t} \equiv \dot{x}(t)$
 \item Beschleunigung: $a(t) \equiv \dot{v}(t) = \ddot{x}(t)$
 \item Beispiel: $x(t) \equiv x_0 + v_0 t + \frac{a_0}{2}t^2, ~v(t) = v_0 + a_0 t,~a(t) = a_0$
 \item Umgekehrt: Integration, z.B. von Geschwindigkeit zu Trajektorie: Anfangsposition muss gegeben sein, z.B. $x(t_0) \equiv x_0$
@@ -136,19 +136,19 @@ Gegeben: $a(t) = a_0,~t_0=0,v_0,x_0$ \\
 \subsubsection{Differentiation oder Ableitung}
 \label{sec-2-2-2}
 \[\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}\]
-$\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwaches $\Delta f\equiv f(x + \Delta x) - f(x)$.
+$\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwachs $\Delta f\equiv f(x + \Delta x) - f(x)$.
 \begin{itemize}
 \item Aus $\Delta f = f'(x)\Delta(x) + O(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
-\item Anwendung auf die Identitätabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
+\item Anwendung auf die Identitätsabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
       \[\implies \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
-      Dies ist eigentlich nur eine Schreibweise für $f'(x)$, \uline{aber} nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwertdefinition)
+      Dies ist eigentlich nur eine Schreibweise für $f'(x)$, \uline{aber} nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwert-Definition)
 \item $f'(x)$ wieder Funktion $\implies$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
 \item Praxis
 \[(f\cdot g)' = f' g + g' f~\text{(Produkt/Leibnizregel)}\]
 \[(f \circ g)'(x) = f'(g(x))g'(x)~\text{(Kettenregel)}\]
 \[(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}~\text{(Ableitung der Inversen Funktion)}\]
 \begin{itemize}
-\item Begründung (nur zum letzen Punkt)
+\item Begründung (nur zum letzten Punkt)
 \[(f^{-1})'(x) = \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}y}{\mathrm{d}(f(y))} = \frac{\mathrm{d}y}{f'(y)\mathrm{d}y} = \frac{1}{f'(f^{-1}(x))}\]
 \item Schöne Beispiele
 \[(x^x)' = (e^{\ln{x^x}})' = (e^{x\ln{x}})' = e^{x\ln{x}}(\ln{x} + 1) = x^x(\ln{x} + 1)\]
@@ -160,7 +160,7 @@ Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}
 \item Inverse \[f^{-1} : x=f(y)\mapsto y\]
 \item Grenzwerte:
 \begin{itemize}
-\item nützliche Regel: l'Hôpital ("$\frac{0}{0}$") \\
+\item nützliche Regel: l'Hospital ("$\frac{0}{0}$") \\
         Falls $\lim_{x\to x_0} f,g = 0$ und $\lim_{x\to x_0} \frac{f'}{g'}$ existiert, so gilt $\lim_{x\to x_0}\frac{f}{g} = \lim_{x\to x_0} \frac{f'}{g'}$
 \item weitere nützliche Regel \[\lim \frac{\text{Beschränkt}}{\text{Unbeschränkt und monoton wachsend}} = 0\]
 \begin{itemize}
@@ -179,7 +179,7 @@ Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}
 \[\int^y f(x)\mathrm{d}x = F(y) \&  F'(y) = f(y)\]
 \[\int f(x)\mathrm{d}x = F(x) + C\]
 \[\int_a^b f(x)\mathrm{d}x = F(b) - F(a)\]
-($\to$ saubere Definition über Riemansches Integral)
+($\to$ saubere Definition über Riemannsches Integral)
 \paragraph{Praxis}
 \label{sec-2-2-3-2}
 \subparagraph{Partielle Integration}
@@ -200,7 +200,7 @@ Substitution $y=g(x)$
 \subsubsection{Zweidimensionale Bewegung}
 \label{sec-2-3-1}
 Zweidimensional $\rightarrow$ Bewegung in der Ebene. Trajektorie: $x(t),y(t)$
-\paragraph{Bespiel}
+\paragraph{Beispiel}
 \label{sec-2-3-1-1}
 \[x(t) = v_0 t \sin{\omega t}\]
 \[y(t) = v_0 t \cos{\omega t}\]
@@ -209,12 +209,12 @@ Zweidimensional $\rightarrow$ Bewegung in der Ebene. Trajektorie: $x(t),y(t)$
 \subparagraph{Raumkurve}
 \label{sec-2-3-1-1-2}
 Menge aller Punkte $\{x,y\}$, die das Teilchen durchläuft
-\subparagraph{{\bfseries\sffamily TODO} Skizze Nichtriviale Darstellung \underline{nur} im Raum (Raumkurve)}
+\subparagraph{{\bfseries\sffamily TODO} Skizze Nichttriviale Darstellung \underline{nur} im Raum (Raumkurve)}
 \label{sec-2-3-1-1-3}
 \subsubsection{Dreidimensionale Bewegung}
 \label{sec-2-3-2}
-Die Darstellung der Tranjektorie ist erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
-Formal keim Problem: Trajektorie ist
+Die Darstellung der Trajektorie ist erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
+Formal kein Problem: Trajektorie ist
 \begin{itemize}
 \item \[x(t),y(t),z(t)\]
 \item \[x^1(t),x^2(t),x^3(t)\]
@@ -239,13 +239,13 @@ so dass gilt:
 \[v + (w + u) = (v + w) + u\quad u,v,w\in V\tag*{Assoziativität}\]
 \[v+w = w+v\tag*{Kommutativität}\]
 \[\exists 0 \in V: v + 0 = v \Forall v\in V\tag*{Null}\]
-\[\alpha(v+w) = \alpha v + \alpha w \tag*{Distributvität}\]
+\[\alpha(v+w) = \alpha v + \alpha w \tag*{Distributivität}\]
 \[(\alpha + \beta)v = \alpha v + \beta v \quad \alpha,\beta \in \mathbb{R}\tag*{Distributivität}\]
 \[\alpha(\beta v) = (\alpha\beta) v\tag*{Assoziativität der Multiplikation}\]
 \[1 v = v \tag*{Multiplikation mit Eins}\]
 \subsubsection{Einfachstes Beispiel}
 \label{sec-2-4-1}
-$V\equiv \mathbb{R}$ (mit der gewöhnlichen Addition und Multiplikation und mit $0\in\mathbb{R}$ als Vektorraumnull)
+$V\equiv \mathbb{R}$ (mit der gewöhnlichen Addition und Multiplikation und mit $0\in\mathbb{R}$ als Vektorraum Null)
 \subsubsection{Unser Haupt-Beispiel}
 \label{sec-2-4-2}
 Zahlentupel aus n-Zahlen:
@@ -263,7 +263,7 @@ $\rightarrow$ übliche Darstellung durch "Pfeile"
 \label{sec-2-5}
 Trajektorie ist Abbildung: $\mathbb{R} \to \mathbb{R}^3, t\to \vec{x}(t) ) (x^1(t),x^1(t),x^3(t))$
 \[\vec{v} = \dot{\vec{x}}(t), \vec{a(t)} = \dot{\vec{v}}(t) = \ddot{\vec{x}}(t)\]
-Setzt allgemeine Definition der Ableitun voraus:
+Setzt allgemeine Definition der Ableitung voraus:
 \[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \implies \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
 \subsubsection{Beispiel für 3-dimensionale Trajektorie}
 \label{sec-2-5-1}
@@ -291,7 +291,7 @@ Es folgt:
 \end{align*}
 \paragraph{Bemerkung}
 \label{sec-2-5-1-3}
-Man kann Integrale über Vektoren auch durch Riemansche Summen definieren:
+Man kann Integrale über Vektoren auch durch Riemannsche Summen definieren:
 \[\int_{t_0}^t \vec{v}(t')\mathrm{d}t' = \lim_{n\to\infty} (v(t_0)\Delta t + \vec{v}(t_0 + \Delta t)\Delta t + \ldots + \vec{v}(t - \Delta t)\Delta t)\]
 mit $\Delta t = \frac{t - t_0}{N}$
 \subsection{Skalarprodukt}
@@ -313,7 +313,7 @@ Hier : Skalarprodukt $\equiv$ positiv definite symmetrische Bilinearform
 \[\abs{v} = \sqrt{v\cdot v} = \sqrt{v^2}\]
 $\mathbb{R}^n$: Wir definieren \[\vec{x}\cdot\vec{y} = x^1y^1 + \ldots + x^n y^n \equiv \sum_{i=1}^n x^iy^i \equiv \underbrace{x^i y^i}_{\text{Einsteinsche Summenkonvention}}\]
 \[\abs{\vec{x}} = \sqrt{(x^1)^2 + \ldots + (x^n)^2}\]
-Wichtig: oben euklidiesches Skalarprodukt! Anderes Skalarprodukt auf $\mathbb{R}^2: \vec{x}\cdot\vec{y} = 7x^1 y^2 + x^2y^2$
+Wichtig: oben euklidisches Skalarprodukt! Anderes Skalarprodukt auf $\mathbb{R}^2: \vec{x}\cdot\vec{y} = 7x^1 y^2 + x^2y^2$
 anderes Beispiel:
 \[\vec{x}\cdot\vec{y} \equiv x^1y^1 - x^2y^2\]
 symmetrische Bilinearform, \uline{nicht} positiv, semidefinit!
@@ -322,7 +322,7 @@ Frage: \\
 \[\v x \v y = x^1 y^1\]
 \subsection{Abstand zwischen Raumpunkten}
 \label{sec-2-7}
-Der anschauliche Abstand zweichen Raumpunkten $\v x,\v y$:
+Der anschauliche Abstand zwischen Raumpunkten $\v x,\v y$:
 \[\abs{\v x - \v y} = \sqrt{(\v x - \v y)(\v x - \v y)} = \sqrt{(\v x - \v y)^2} = \sqrt{\sum_{i=1}^3 (x^i - y^i)^2} = \sqrt{(x^i - y^i)(x^i - y^i)}\]
 \[=\sqrt{{\v x}^2 + {\v y}^2 - 2\v x \v y} = \sqrt{\abs{\v x}^2 +  \abs{\v y}^2 - 2\abs{\v x}\abs{\v y}}\cos{\theta}\]
 Haben benutzt: $\v x\cdot \v y = \abs{\v x}\abs{\v y}\cos{\theta}$
@@ -334,7 +334,7 @@ Haben benutzt: $\v x\cdot \v y = \abs{\v x}\abs{\v y}\cos{\theta}$
 \label{sec-2-7-1-1}
 \[\implies \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
 Dass dies für beliebige Vektoren gilt, wird später klar werden.
-\subsubsection{Infinisetimaler Abstand}
+\subsubsection{Infinitesimaler Abstand}
 \label{sec-2-7-2}
 Speziell wird der infinitesimale Abstand wichtig sein:
 \[\d\v x = (\d x^1, \d x^2,\d x^3)\]
@@ -354,7 +354,7 @@ Es gilt \[\v T\parallel \v v; \abs{\v T} = \abs{\f{\v v \d t}{\abs{\v v}\d t}} =
 Ableiten nach $s$:
 \[0 = \f{\d}{\d s}(1) = \f{\d \v T}{\d s}(\v T \cdot\v T) = \f{\d \v T}{\d s}\cdot \v T + \v T\cdot \f{\d\v T}{\d s} = 2\v T \cdot \f{\d \v T}{\d s}\]
 Nutze \[\v T\cdot \v T = T^i T^i\]
-$\implies$ Ableitung des Tangentenvektors ist ortogonal zum Tangentenvektor.
+$\implies$ Ableitung des Tangentenvektors ist orthogonal zum Tangentenvektor.
 Krümmungsradius der Bahn: \[\rho \equiv \f{1}{\abs{\f{\d \v T}{\d s}}}\]
 Normalenvektor: \[\v N = \f{\f{\d \v T}{\d s}}{\abs{\f{\d \v T}{\d s}}} = \rho \f{\d \v T}{\d s}\]
 \subsubsection{Beispiel in d=2}
@@ -389,7 +389,7 @@ Alternativ:
 \label{sec-2-10}
 \[\b B = \v T\times\v N\]
 $\v T, \v N, \v B$ heißen "begleitendes Dreibein" und bilden ein Rechtssystem. alle haben Länge 1
-\(\v T, \v N\) spannen die "Smiegeebene" auf
+\(\v T, \v N\) spannen die "Schmiegebene" auf
 \subsubsection{Zur Information}
 \label{sec-2-10-1}
 \[\f{\d\v T}{\d s} = \frac{1}{\rho}\v N;~\f{\d \v B}{\d s} = -\f{1}{\sigma}\v B;~\f{\d\v N}{\d s}=\f{1}{\sigma}\v B - \f{1}{\rho}\v T\]
@@ -407,7 +407,7 @@ Dynamik: Ursachen der Bewegungsänderung $\rightarrow$ Kräfte: $\v F = (F^1,F^2
 
 \item definiert die \textbf{träge} Masse
 \end{enumerate}
-Die entscheidene physikalische Aussage von 2. ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
+Die entscheidende physikalische Aussage von 2. ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
 Alternative Diskussionen der obigen Axiomatik:
 \begin{itemize}
 \item zum Beispiel Kapitel 1.2 von Jose/Saletan (mit $2$ Definition der Kraft)
@@ -417,14 +417,14 @@ Alternative Diskussionen der obigen Axiomatik:
 Vorhersagen erfordern: $\v F \rightarrow \text{Trajektorie}$. Genauer: Sei $\v F(\v x,t)$ gegeben. Berechne $\v x(t)$ !
 \subsection{Differentialgleichungen}
 \label{sec-3-3}
-hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
-\subsubsection{1. Ordung}
+hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variablen))
+\subsubsection{1. Ordnung}
 \label{sec-3-3-1}
-Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung ($\implies$ nur 1. Ableitung):
+Die allgemeine Form einer gewöhnlichen Dgl. 1. Ordnung ($\implies$ nur 1. Ableitung):
 \[y'(x) = f(x,y)\]
 \paragraph{Lösung}
 \label{sec-3-3-1-1}
-Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
+Funktion: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
 \subsubsection{Anfangswertproblem}
 \label{sec-3-3-2}
 Gegeben durch:
@@ -470,12 +470,12 @@ $\implies$ Schätze Wert der Funktion bei $x_0 + 2\Delta x$ ab. ($\implies$ perf
 \item \[y'(x) = f(x,y), f(x,y) = 3\]
 \[y'(x) = 3 \implies y(x) = \int 3\d x = 3 x + c\]
 Das ist schon die allgemeine Lösung der Dgl.
-Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich duch Bestimmen der Konstanten lösen:
+Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich durch Bestimmen der Konstanten lösen:
 \[y(x) = 3 x + c \implies 1 = 3(-1) + c \implies c = 4 \implies y(x) = 3x + 4\]
 \end{enumerate}
-\subsubsection{Seperation der Variablen}
+\subsubsection{Separation der Variablen}
 \label{sec-3-3-6}
-Seperation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
+Separation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
 \paragraph{Beispiel}
 \label{sec-3-3-6-1}
 \[f(x,y) = \f{x}{y} \implies y'(x) = \f{x}{y(x)}\]
@@ -507,7 +507,7 @@ Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \e
 \paragraph{Tatsache}
 \label{sec-3-3-8-1}
 Systeme von Dgl. können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
-Wir illustieren dies am Beispiel mit $p = 2$
+Wir illustrieren dies am Beispiel mit $p = 2$
 \paragraph{Beispiel}
 \label{sec-3-3-8-2}
 \[\v{y}''(x) = \v{f}(x,\v{y},\v{y}')\]
@@ -518,15 +518,15 @@ Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
 \v{y}'(x) &= \v z \tag{$\equiv g(x,\v y, \v z)$}
 \end{cases}
 \end{equation}
-Ursprüngliche Form folgt duch Einsezten der 2. Gleichung in die Erste.
+Ursprüngliche Form folgt durch Einsetzen der 2. Gleichung in die Erste.
 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-     $\implies$ System von $p$ Dgl 1. Ordung; allgemeine Lösung hat $p$ Parameter
-\subsubsection{Erste physikalische Beipiele}
+     $\implies$ System von $p$ Dgl 1. Ordnung; allgemeine Lösung hat $p$ Parameter
+\subsubsection{Erste physikalische Beispiele}
 \label{sec-3-3-9}
 \paragraph{Punktmasse}
 \label{sec-3-3-9-1}
-3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
-$\implies$ 6 Dgl 1. Ordung:
+3 Dgl 2. Ordnung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
+$\implies$ 6 Dgl 1. Ordnung:
 \begin{equation}
 \begin{cases}
 \dot{\v v} &= \f{1}{m}\v F(t,\v x,\v v) \\
@@ -537,7 +537,7 @@ $\implies$ 6 Dgl 1. Ordung:
 In vielen Fällen: (zeitunabhängiges) Kraftfeld $\v F(\v x)$ ("Vektorfeld").
 \subparagraph{Darstellung in $d = 2$ (Skizze Vektorfeld).}
 \label{sec-3-3-9-1-1}
-wichtig: doppelte Makierung der Achsen
+wichtig: doppelte Markierung der Achsen
 \subparagraph{Einfachster Fall ($d = 1$)}
 \label{sec-3-3-9-1-2}
 betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
@@ -554,7 +554,7 @@ betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
 Analyse im Phasenraum passt perfekt zur früheren allgemeinen Analyse von Dgl 1. Ordnung
 Analog in $d = 3$: Vektorfeld: $(\f{\v F}{m}, \v v)$, Phasenraum $(\v x, \v v)$ oder $(\v x, \v p)$ ist 6-dimensional
 \end{enumerate}
-\subparagraph{Harmonischer Oszilator ($d = 1$)}
+\subparagraph{Harmonischer Oszillator ($d = 1$)}
 \label{sec-3-3-9-1-3}
 $F(x) = -k x$
 \begin{equation}
@@ -564,11 +564,11 @@ $F(x) = -k x$
 \end{cases}
 \end{equation}
 \begin{tikzpicture}
-\begin{axis}[title={Phasenraum des Harmonischen Oszilators},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
+\begin{axis}[title={Phasenraum des Harmonischen Oszillator},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
 \addplot3[blue,quiver={u={y},v={-x},scale arrows=0.3},-stealth,samples=15] {y-x};
 \end{axis}
 \end{tikzpicture}
-\subparagraph{Freier Fall mit Luftwiederstand}
+\subparagraph{Freier Fall mit Luftwiderstand}
 \label{sec-3-3-9-1-4}
 Aufgabe: Bestimme die zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
       Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
@@ -596,7 +596,7 @@ Zugabe: einfache physikalische Argumente für die Größe von $c$:
          $\implies c \sim \rho_L A$
 \item Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
 \end{enumerate}
-\subsection{Taylorentwickung}
+\subsection{Taylorentwicklung}
 \label{sec-3-4}
 Ohne Beschränkung der Allgemeinheit $x_0 = 0$. Untersuche Verhalten beliebiger glatter Funktionen $f(x)$ nahe $x = 0$
 \begin{align*}
@@ -607,7 +607,7 @@ f(x) &= f(0) + \int_0^x\d x' f'(x') \\
 \end{align*}
 Allgemein:
 \[f(x) = f(0) + \sum_{n=1}^m f^{(n)}(0)\frac{x^n}{n!}+\overbrace{\int_0^x \d x' f^{(m+1)}(x')\frac{(x' - x)^m}{m!}}^{\text{Restglied}}\]
-Falls das Restgliend für $n\to\infty$ verschwindet:
+Falls das Restglied für $n\to\infty$ verschwindet:
 \[f(x) = f(0) + \sum_{n=1}^\infty f^{(n)}(0)\frac{x^n}{n!}\]
 Analog:
 Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}{n!}\]
@@ -622,18 +622,18 @@ Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}
     Sie Brauchen:
 \[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
 Die Ableitungen verschwinden sogar bei Null $\implies$ Taylor-Reihe ist Null, keine gute Näherung
-\subsection{Harmonicher Oszillator}
+\subsection{Harmonischer Oszillator}
 \label{sec-3-5}
 \begin{itemize}
-\item eines der wichtigesten physikalischen Systeme
-\item beschreibt viele kompilziertere Systeme angenähert
+\item eines der wichtigsten physikalischen Systeme
+\item beschreibt viele kompliziertere Systeme angenähert
 \end{itemize}
 \subsubsection{Eindimensionales System}
 \label{sec-3-5-1}
 $d = 1, F = F(x)$
 \[F(x) = -\dd{}{x}v(x) = -v'(x)\]
 
-Damit haben wir das \textbf{Potetial} ($\rightarrow$ beschreibt die potentielle Energie des Massenpunktes) $v$ als Stammfunktion von $-F$ definiert
+Damit haben wir das \textbf{Potential} ($\rightarrow$ beschreibt die potentielle Energie des Massenpunktes) $v$ als Stammfunktion von $-F$ definiert
 \begin{itemize}
 \item Skizze
 \end{itemize}
@@ -650,12 +650,12 @@ Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr gr
 \label{sec-3-5-1-2}
 Newton $\implies m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
      $\implies \sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
-     $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+     $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ ist auch Lösung (wegen Linearität) \\
      (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
 \paragraph{Verallgemeinerungen}
 \label{sec-3-5-1-3}
 \begin{itemize}
-\item Reibungterm $\sim \dot{y}$
+\item Reibungsterm $\sim \dot{y}$
 \item treibende Kraft $\sim f(t)$
 \end{itemize}
 \subsection{Lineare Differentialgleichungen}
@@ -669,14 +669,14 @@ Homogen von Grad $p$: Ersetzung $y\to\alpha y$ führt zu Vorfaktor $\alpha p$, h
 \item wir hatten oben dem Fall $n = 2$ "mit konstanten Koeffizienten"
 \item noch einfacheres Beispiel: $n = 1, f\equiv 0$ (aber beliebige Koeffizienten)
 \[y' + a(x)y = 0\]
-Das ist seperabel:
+Das ist separabel:
 \[\dd{y}{x} + a(x) y = 0\]
 \[\dd{y}{x} = -a(x) y\]
 \[\frac{\d y}{x} = -a(x) \d x\]
 \[\int\frac{\d y}{y} = - \int a(x)\d x\]
 \[\ln{y} - A(x) + c_1\]
 \[y = c e^{-A(x)}\]
-$A(x)$ sei eine beliebege aber fest gewählte Stammfunktion von $a$
+$A(x)$ sei eine beliebige aber fest gewählte Stammfunktion von $a$
 Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
 \begin{itemize}
 \item Ansatz: $y = C(x)e^{-A(x)}$, Dgl. $y' + ay = f$
@@ -685,7 +685,7 @@ Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
        Beachte $A' = a$
        \[\implies c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
        \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
-       $f(x')$ ist eine frei wählbare additive Konsante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
+       $f(x')$ ist eine frei wählbare additive Konstante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
 \end{itemize}
 \end{itemize}
 \subsubsection{Zusammenfassung / Verallgemeinerung auf $n > 1$}
@@ -697,9 +697,9 @@ Ein Satz von Funktionen $f_1(x),\ldots,f_n(x)$ heißt linear unabhängig, falls 
 \end{defn}
 \paragraph{Fakt}
 \label{sec-3-6-1-1}
-Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-ter Ordnung, so kenn man die allgemeine Lösung:
+Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-ter Ordnung, so kennt man die allgemeine Lösung:
 \[y_{hom}(x) = C_1 y_1(x) + \ldots + C_n y_n(x)\]
-Die allgeimeine Lösung ist stets von dieser Form.
+Die allgemeine Lösung ist stets von dieser Form.
 
 Wenn wir außerdem eine \textbf{partikuläre} Lösung der inhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
 \begin{align*}
@@ -718,7 +718,7 @@ Mächtigere Methoden: Überführen von System von linearen Dgl. 1. Ordnung (brau
 Systeme mit mehreren Massenpunkten $a,b\in\{1,\ldots, n\}$ \\
    Trajektorien: $\v x_a(t), a=1,\ldots,n$ \\
 \begin{thm}[Impulserhaltung]
-Bei verschwindenen externen Kräften ($\v F_{ext} = 0$) gilt:
+Bei verschwindenden externen Kräften ($\v F_{ext} = 0$) gilt:
 \[\v p \equiv \sum_a \v{P_a} \equiv \sum_a m_a\dot{\v{x_a}} =~\text{const}\]
 \end{thm}
 \begin{proof}
@@ -735,14 +735,14 @@ Bei verschwindenen externen Kräften ($\v F_{ext} = 0$) gilt:
 
 mit äußeren Kräften:
 \[\dot{\v p} = \sum_a \v F_{a,ext.} \equiv \v F_{ext}\]
-Falls zum Beispiel die äußere Kraft nicht in $x^1$ -Richtung wirkt (F$^{\text{1}}_{\text{ext}}$ = 0), so gilt immer nocht $p^1 = \text{const}$
+Falls zum Beispiel die äußere Kraft nicht in $x^1$ -Richtung wirkt (F$^{\text{1}}_{\text{ext}}$ = 0), so gilt immer noch $p^1 = \text{const}$
 (eigentlich drei Erhaltungssätze für $p^1, p^2,p^3$, manchmal gelten nur einige davon)
-\subsection{Drehimpusherhaltung}
+\subsection{Drehimpulserhaltung}
 \label{sec-4-2}
 Oft: Kräfte wirken parallel zur Verbindungslinie zweier Massenpunkte:
 \begin{itemize}
 \item Gravitationskraft
-\item Elektrostatitsche Kraft
+\item Elektrostatische Kraft
 \item Modell der masselosen Stange ($\rightarrow$ Modell für starre Körper!)
 \end{itemize}
 \begin{defn}[Drehimpuls]
@@ -751,7 +751,7 @@ Oft: Kräfte wirken parallel zur Verbindungslinie zweier Massenpunkte:
 (\v L_a)^i &= \varepsilon^{ijk}x_a^j p_a^k
 \end{align*}
 \end{defn}
-Falls $\v F_{a,ext} = 0$ und alle interen Kräfte wirken parallel zur Verbindungslinie der jeweiligen Punkte, dann gilt \textbf{Drehimplusherhaltung}
+Falls $\v F_{a,ext} = 0$ und alle interne Kräfte wirken parallel zur Verbindungslinie der jeweiligen Punkte, dann gilt \textbf{Drehimpulserhaltung}
 \begin{thm}[Drehimpulserhaltung]
 \[\v L \equiv \sum_a \v L_a = \sum_a m_a \v x_a \times \dot{\v x}_a = \sum_a \v x_a \times \v p_a = ~\text{const}\]
 \end{thm}
@@ -778,7 +778,7 @@ Wichtig: Drehimpulserhaltung gilt auch dann wenn alle äußeren Kräfte \textbf{
 Drehimpuls hängt vom Koordinatensystem ab.
 \begin{remark}
 $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
-ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wei Vektor, Bei Reflexion am Ursprung kein Vorzeichenänderung
+ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wie Vektor, Bei Reflexion am Ursprung kein Vorzeichenänderung
 \begin{proof}
 \[\v a \to -\v a, \v b \to -\v b \implies \v a \times \v b \to + \v a \times \v b \qedhere\]
 \end{proof}
@@ -790,13 +790,13 @@ Gradient von $V$:
 \[\v\nabla \equiv \left(\frac{\partial V}{\partial x^1}, \frac{\partial V}{\partial x^2}, \frac{\partial V}{\partial x^3}\right)\]
 $\frac{\partial}{\partial x}$ ist ein "Differentialoperator", also:
 \[\frac{\partial}{\partial x}:f(x,y)\mapsto \frac{\partial f(x,y)}{\partial x}\]
-Dementsprechen $\frac{\partial^2}{\partial x^2}$ ist ein "Differentialoperator" zweiter Ordung, also:
+Dementsprechend $\frac{\partial^2}{\partial x^2}$ ist ein "Differentialoperator" zweiter Ordnung, also:
 \[\frac{\partial^2}{\partial x^2}:f(x,y)\mapsto \frac{\partial^2 f(x,y)}{\partial x^2}\]
 $\v\nabla V$ ist gute Schreibweise, weil $\v\nabla$ ein vektorwertiger Differentialoperator ist:
 \[\v\nabla = \left(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3}\right)\]
 \end{defn}
 \begin{defn}[konservatives Kraftfeld]
-Ein zeitunabhängiges Kraftfeld $\v F(\v x)$ heißt \textbf{konservativ} falls es eine Funktion $V(\v x)$ ("Potential") gibt. dodass
+Ein zeitunabhängiges Kraftfeld $\v F(\v x)$ heißt \textbf{konservativ} falls es eine Funktion $V(\v x)$ ("Potential") gibt. sodass
 \[\v F = -\v \nabla V\]
 \end{defn}
 \subsubsection{Energieerhaltung}
@@ -851,7 +851,7 @@ V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
 \intertext{Linienintegral kann immer definiert werden, wenn Kurve durch Gebiet mit Vektorfeld verläuft}
 \d\v s &\equiv \d\v x(s) =(\dd{x^1}{\d x}, \dd{x^2}{\d x}, \dd{x^3}{\d x}) \d s \\
 \intertext{Also gilt:}
-\v F\d\v s &= \underbrace{F^i (\dd{x^i}{s})\d s}_{\mathclap{\text{Integrand im normalen Riemann Inegral}}} \\
+\v F\d\v s &= \underbrace{F^i (\dd{x^i}{s})\d s}_{\mathclap{\text{Integrand im normalen Riemann Integral}}} \\
 \intertext{Wähle beliebigen kleinen Vektor $\v l$ und berechne:}
 \v l \v F(\v x) &\cong -(-\int_{\v x}^{\v x + \v l} \d\v s \v F) \\
 &= -((-\int_{\v x_0}^{\v x + \v l} \d \v s \v F) - ( -\int_{\v x_0}^{\v x} \d\v s \v F)) \\
@@ -895,10 +895,10 @@ Kurve $C \to \v x(t)$
 &\approx \Delta \v f(\v \nabla \times \v F)
 \end{align*}
 Allgemein steht $\Delta \v f$ oder $\d \v f$ für ein kleines oder infinitesimales Flächenelement, Länge $\estimates$ Größe der Fläche
-Die Richtung des Vektors definiert \textbf{Orientierung} der Fläche (Zum Beispiel Oben = da, wo der Pfeil hinzeigt) \\
+Die Richtung des Vektors definiert \textbf{Orientierung} der Fläche (Zum Beispiel Oben = da, wo der Pfeil hin zeigt) \\
    Randkurve: so definiert, dass man von oben gesehen linksherum (mathematisch positiver Drehsinn) läuft
 \begin{enumerate}
-\item Spezielle Lage in unsererer Rechung unwichtig
+\item Spezielle Lage in unserer Rechnung unwichtig
 \item Übergang zu größeren Flächen durch Aufaddieren
 \end{enumerate}
 Fläche $= N\Delta ^2 \implies N\sim \frac{1}{Delta^2}$
@@ -922,7 +922,7 @@ Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \implies$ Fehler $O(\Delta)$
 Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen")
 \end{proof}
 
-Für unsere Anwendung: wichtig, dass jede geschlossene Kurve inn einem einfach zusammenhängenden Gebiet, \textbf{Rand} ist.
+Für unsere Anwendung: wichtig, dass jede geschlossene Kurve in einem einfach zusammenhängenden Gebiet, \textbf{Rand} ist.
 \subsection{Energieerhaltung für Systeme von Massenpunkten}
 \label{sec-4-6}
 Massenpunkte: $\v x_a, a = 1,\ldots, n$ \\
@@ -949,7 +949,7 @@ In diesem System gilt Energieerhaltung:
 Begründung:
 \begin{align*}
 \dot{E} &= \sum_a \dot{\v x}_a \v F_a + \frac{1}{2}\sum_{a\neq b}((\v \nabla_a V_{ab})\dot{\v x}_a + (\v\nabla_b V_{ab})\dot{\v x}_b) \\
-&= \sum_{a\neq b} \dot{\v x}_a \v F_{ab} + \frac{1}{2}\sum_{a\neq b} ( -\v F_{ab}\dot{\v x}_a - \underbrace{\v F_{ab} \dot{\v x}_b}_{\mathclap{\text{Umbennenung $a\leftrightarrow b$}}}) = 0 \\
+&= \sum_{a\neq b} \dot{\v x}_a \v F_{ab} + \frac{1}{2}\sum_{a\neq b} ( -\v F_{ab}\dot{\v x}_a - \underbrace{\v F_{ab} \dot{\v x}_b}_{\mathclap{\text{Umbenennung $a\leftrightarrow b$}}}) = 0 \\
 (& = W - \frac{1}{2} W - \frac{1}{2} W)
 \end{align*}
 
@@ -959,7 +959,7 @@ Bemerkung: Passend gewähltes $V_{ab}$ gibt das Modell der starren Stangen
 \[F(x) = m\ddot{x}\]
 \begin{itemize}
 \item mit Einsatz allgemein lösbar!
-\item Startpunkt: Jedes 1-dim. zeitunabhängiges Kraftfelt ist konservativ
+\item Startpunkt: Jedes 1-dim. zeitunabhängiges Kraftfeld ist konservativ
 \begin{align*}
 E = \frac{m}{2}\dot{x}^2 + V(x) = ~\text{const} \\
 \intertext{(bis auf Vorzeichen)}
@@ -977,7 +977,7 @@ t = t(x) ~\text{auflösen}~ \implies x = x(t) \checkmark
    \[\ddot{x} = -\omega^2 x - c \dot{x}\]
    Exponentieller Ansatz:
    \[x\sim e^{\alpha t} \implies \alpha^2 + \omega^2 + c\alpha = 0\]
-   gesucht: $\alpha$, Betrachte Genzfälle:
+   gesucht: $\alpha$, Betrachte Grenzfälle:
 \begin{enumerate}
 \item $\omega$ klein
 \[\implies \alpha^2 + c\alpha = 0 \implies \alpha = -c \implies x\sim e^{-c t}\]
@@ -1005,7 +1005,7 @@ Wir definieren außerdem:
 \item $z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) \equiv (x_1 + x_2) + \I(y_1 + y_2)$
 \item $z_1 \cdot z_2 = (x_1 + \I y_1) (x_2 + \I y_2) \equiv x_1 x_2 + x_1 \I y_2 + \I y_1 x_2 + \I y_1 \I y_2 \equiv (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)$
 \end{itemize}
-\subsubsection{präsizere Definition}
+\subsubsection{präzisere Definition}
 \label{sec-5-1-3}
 \begin{defn}[Körper]
 Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen $("+","\cdot")$, so dass:
@@ -1015,7 +1015,7 @@ Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen $("+","\cdot"
 \item $\Exists 0 \in K: \alpha + 0 = \alpha \Forall \alpha$ \hfill (Null)
 \item $\Forall \alpha \Exists (-\alpha) \in K: \alpha + (-\alpha) = 0$ \hfill (Additives Inverses)
 \item $(\alpha \cdot \beta) \cdot \gamma = \alpha \cdot (\beta \cdot \gamma)$ \hfill (Assoziativität der Mult.)
-\item $\alpha \cdot \beta = \beta \cdot \alpha$ \hfill (Kummutativität der Mult.)
+\item $\alpha \cdot \beta = \beta \cdot \alpha$ \hfill (Kommutativität der Mult.)
 \item $\Exists 1 \in K: 1\cdot \alpha = \alpha \Forall \alpha$ \hfill (Eins)
 \item $\Forall \alpha \neq 0 \Exists \alpha^{-1} \in K: \alpha \cdot \alpha^{-1} = 1$ \hfill (Inverses der Mult.)
 \item $\alpha\cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma$ \hfill (Distributivität)
@@ -1034,14 +1034,14 @@ Komplexe Zahlen sind die Menge $\mathbb{C} = \mathbb{R} \times \mathbb{R} = \mat
 \end{itemize}
 Das ist äquivalent zu unserer "naiven Definition" $z = x + \I y$
 \end{defn}
-\textbf{Aufgabe:} Prüfen sie, dass die Axiome erfült sind! \\
+\textbf{Aufgabe:} Prüfen sie, dass die Axiome erfüllt sind! \\
     Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
 \[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
 
 $\mathbb{C} = \mathbb{R}^2 \implies$ Darstellung durch Vektoren in Ebene liegt nahe.
 \begin{itemize}
 \item Addition: $\equiv$ Vektoraddition
-\item Multiplikatoin: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
+\item Multiplikation: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
 \item $\arg{z} = \phi$
 \item $\Re{z} = x$
 \item $\Im{z} = y$
@@ -1054,7 +1054,7 @@ $\mathbb{C} = \mathbb{R}^2 \implies$ Darstellung durch Vektoren in Ebene liegt n
 Brauchen $e^{z + w} = e^z \cdot e^w$ \\
     Nachrechnen:
 \begin{align*}
-e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binomialkoeffizient}}}$} z^kw^{n - k}
+e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binominialkoeffizient}}}$} z^kw^{n - k}
 \intertext{englisch: "n choose k"}
 \intertext{durch Umschreiben der Summen erhält man:}
 &= \sum_{n = 0}^\infty \sum_{k = 0}^n \frac{n^k}{k!} \frac{w^{n -k}}{(n -k)!} \\
@@ -1103,12 +1103,12 @@ also auch
 \subsection{Anwendung auf harmonischen Oszillator}
 \label{sec-5-2}
 \begin{align*}
-\intertext{Erinnerung: pyhsikalisches Problem:}
+\intertext{Erinnerung: physikalisches Problem:}
 \ddot{x} + c \dot{x} + \omega^2 x = 0 \\
 \intertext{Fall $\frac{c}{2} > \omega$ (Kriechfall)}
 x=e^{\alpha t}, \alpha^2 + c\alpha + \omega^2 = 0 \\
 \alpha_{1,2} =-\frac{c}{2} \pm \sqrt{\frac{c^2}{4} - \omega^2} \\
-\intertext{$\implies$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
+\intertext{$\implies$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch lineare Superposition}
 \intertext{$\implies$ exponentielles Abfallverhalten, ohne Oszillationen}
 \intertext{Fall $\frac{c}{2} < \omega$ (Schwingfall), $\sqrt{-x} = \I \sqrt{x}$}
 \alpha_{1,2} = -\frac{c}{2}\pm \I\sqrt{\omega^2 - \frac{c^2}{4}} \equiv -\frac{c}{2} \pm \I \tilde\omega \\
@@ -1120,7 +1120,7 @@ x_1 = e^{-\frac{c}{2}t}\cos{\tilde \omega t};\qquad x_2 = e^{-\frac{c}{2}t} \sin
 \intertext{$\implies$ gedämpfte Schwingung}
 \intertext{Fall $\frac{c}{2} = \omega$ (aperiodischer Grenzfall)}
 \alpha_1 = \alpha_2
-\intertext{$\implies$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
+\intertext{$\implies$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedingungen zu erfüllen}
 \intertext{Idee: Betrachte Schwingfall Lösungen für $\tilde \omega \to 0$}
 \intertext{Taylor:}
 \cos{x} = 1 + \O(x^2);\qquad \sin{x} = x + O(x^3) \\
@@ -1145,7 +1145,7 @@ A \equiv \abs{A}e^{\I \phi} = \frac{f}{m}\cdot\frac{1}{\omega^2 - \ubar\omega^2 
 Allgemeine Lösung ergibt sich, indem man zu dieser partikulären Lösung der inhomogenen Gleichung die allgemeine Lösung der homogenen Gleichung addiert.
 
 \textbf{Wichtig:} Langzeitverhalten ist durch die partikuläre Lösung bestimmt $\implies$ Resonanzkatastrophe bei $c \to 0 \& \ubar \omega \to \omega$
-\section{Symmetrie der Raumzeit}
+\section{Symmetrie der Raum zeit}
 \label{sec-6}
 \subsection{Matrix, Determinante, Inverse Matrix}
 \label{sec-6-1}
@@ -1158,7 +1158,7 @@ Eine Permutation heißt \textbf{gerade} $(\sgn(\sigma) = 1)$, falls sie sich aus
 Zum Beispiel ist $123\to 312$ das Produkt von $123\to 132$ und $123\to 213$:
 \[123\to 132 \to 312\]
 \end{defn}
-\begin{defn}[Levi-Cevita-Tensor]
+\begin{defn}[Levi-Civita-Tensor]
 \[\eps^{\sigma(1) \ldots \sigma(n)} \equiv \sgn(\sigma)\]
 Insbesondere: $\eps^{12\ldots n} = 1$
 \end{defn}
@@ -1167,7 +1167,7 @@ Insbesondere: $\eps^{12\ldots n} = 1$
 \item Eine $(n\times m)$- Matrix ist ein Schema $A^{ij}$ von Zahlen, die jeweils Eintrag $i$ in Zeile $i$ und Spalte $j$ bezeichnen.
 \item Man kann eine $(n\times m)$-Matrix mit einer $(m\times p)$-Matrix multiplizieren:
 \[(AB)^{ij} = \sum_{k = 1}^{m}A^{ik} B^{kj}\]
-das Ergebniss ist eine $(n\times p)$-Matrix
+das Ergebnis ist eine $(n\times p)$-Matrix
 \end{itemize}
 
 \begin{defn}[Determinante]
@@ -1177,7 +1177,7 @@ Für quadratische ($(n\times n)$-Matrizen) definieren wir die \textbf{Determinan
 Damit erhält man: \\
    Determinante einer $(1\times 1)$-Matrix: die Zahl selbst.
 
-Erstes nichttriviales Bespiel: $(2\times 2)$-Matrix
+Erstes nicht triviales Beispiel: $(2\times 2)$-Matrix
 \begin{align*}
 \det A &= \det \begin{pmatrix} A^{11} & A^{12} \\ A^{21} & A^{22}\end{pmatrix} = \frac{1}{2!} \eps^{ij} A^{ik} A^{jl} \eps^{kl} \\
 &= \frac{1}{2!}(\eps^{12}A^{11}A^{22}\eps^{12} + \eps^{12}A^{12}A^{21}\eps^{21} + \eps^{21}A^{21}A^{12}\eps^{12} + \eps^{21}A^{22}A^{11}\eps^{21}) \\
@@ -1198,10 +1198,10 @@ Betrachte nun den Ausdruck:
 \begin{align*}
 \eps^{i_1 i_2 \ldots i_n} A^{i_1 j_1} A^{i_2 j_2} \ldots A^{i_n j_n} = \eps^{i_1 i_2 \ldots} A^{i_2 j_2}A^{i_1 j_2} \ldots \\
 = \eps^{i_2 i_1\ldots } A^{i_2 j_2} A^{i_2 j_1}  \ldots = - \eps^{i_1 i_2 \ldots i_n} A^{i_1 j_2} A^{i_2 j_1} \ldots A^{i_n j_n}
-\intertext{Vorzeichenwechslung durch Vertauschen zweier Indizes, obiger Ausdruck ist "total antisymmentrisch"}
+\intertext{Vorzeichenwechsel durch Vertauschen zweier Indizes, obiger Ausdruck ist "total antisymmetrisch"}
 \end{align*}
 
-Totale Antisymmetrie ist die definierende Eigenschaft von $\eps$. Sie bestimmt jeden Ausdrch mit $u$ Indizes bis auf Vorfaktor. Deshalb:
+Totale Antisymmetrie ist die definierende Eigenschaft von $\eps$. Sie bestimmt jeden Ausdruck mit $u$ Indizes bis auf Vorfaktor. Deshalb:
 \begin{align*}
 \eps^{i_1 \ldots i_n}A^{i_1 j_1} \ldots A^{i_n j_n} = c \eps^{j_1 \ldots j_n} \\
 \intertext{Multipliziere mit $\eps^{j_1 \ldots j_n}$:}
@@ -1224,7 +1224,7 @@ Kommentar:
 \begin{align*}
 \frac{1}{(n - 1)!} \eps^{i i_2 \ldots i_n} \eps^{j j_2 \ldots j_n} A^{i_2 j_2} \ldots A^{i_n j_n} \\
 = (-1)^{i + j} \det(\underarrow[M]{Matrix der Cofaktoren}(i,j))
-\intertext{Matrix der Cofaktoren ergbit sich aus $A$ Streichen von Zeile $i$ und Spalte $j$}
+\intertext{Matrix der Cofaktoren ergibt sich aus $A$ Streichen von Zeile $i$ und Spalte $j$}
 \end{align*}
 \subsection{Der Euklidische Raum}
 \label{sec-6-2}
@@ -1260,10 +1260,10 @@ Ganz explizit
 \[R = \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix} \implies \cvec{1 ; 0} \mapsto \cvec{2; 1}; \cvec{0 ; 1} \mapsto \cvec{0; 1}\]
 Transformation der beiden Basisvektoren
 
-Jeder andere Vektor ($\cvec{\alpha; \beta}$) ist schreibbar als $\alpha \cvec{1; 0} + \beta \cvec{0 ; 1}$. Er transformiert demanch gemäß
+Jeder andere Vektor ($\cvec{\alpha; \beta}$) ist schreibbar als $\alpha \cvec{1; 0} + \beta \cvec{0 ; 1}$. Er transformiert demnach gemäß
 \[\cvec{\alpha; \beta} \mapsto \alpha \cvec{2 ; 1} + \beta \cvec{0 ; 1} = \cvec{2 \alpha ; \alpha + \beta}\]
 \end{ex}
-Wichig: Symmetrietransformationen müssen verknüpfbar sein: \\
+Wichtig: Symmetrietransformationen müssen verknüpfbar sein: \\
    Dazu: Betrachte zwei Transformationen:
 \begin{align*}
 R_1: x\mapsto R_1 x; R_2: x\mapsto R_2 x \\
@@ -1291,7 +1291,7 @@ Wäre Linearität die einzige wichtige Eigenschaft: dann wären die Symmetriefun
 Wir brauchen zusätzlich:
 \[\v x \v y = R(\v x) R(\v y), R(x)^i = R^{ij} \times j\]
 Dazu wichtige Schreibweise
-\[(M^{T})^{ij} = M^{ji} \tag{T für Tansponiert}\]
+\[(M^{T})^{ij} = M^{ji} \tag{T für transponiert}\]
 auch: $x = \cvec{x^i ; \ldots ; x^n}, x^{\v i} = (x^1 \ldots x^n)$
 Es gilt: $\v x \v y = x^{T} y = x^i y^i$ \\
    es gilt weiterhin:
@@ -1304,7 +1304,7 @@ Es gilt: $\v x \v y = x^{T} y = x^i y^i$ \\
 \implies (AB)^{T} = B^T A^T \\
 \end{align*}
 
-Zie: $x^T R^T Ry = x T_y$ soll gelten für beliebige x,y. Dies gilt genau dann wenn $R^{T} R = \mathbb{1}$
+Ziel: $x^T R^T Ry = x T_y$ soll gelten für beliebige x,y. Dies gilt genau dann wenn $R^{T} R = \mathbb{1}$
 \[(R^{T})^{ik} R^{kj} = \delta^{ii}\]
 \[R^{ki} R^{kj} = \delta^{ii}\]
 \[R^{ik} R^{jk} = \delta^{ii}\]
@@ -1353,17 +1353,17 @@ $K$ mit Operationen $+,\cdot$ ist ein Körper falls:
 \end{itemize}
 \end{defn}
 
-$GL(n)$ ist eine (nichtabelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\implies A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
+$GL(n)$ ist eine (nicht abelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\implies A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
 \[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
 
-$GL^+ (n)$ - orientierungserhaltende Untergrupppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
-   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüfen dass $A,B$ orthogonoal $\implies A\cdot B$ orthogonal. Dazu:
+$GL^+ (n)$ - orientierungserhaltende Untergruppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
+   $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüfen dass $A,B$ orthogonal $\implies A\cdot B$ orthogonal. Dazu:
 \[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
 
-Wichtige Untergrupe: Spezielle Orthogonale Transformationn $SO(n)$ \\
+Wichtige Untergruppe: Spezielle Orthogonale Transformation $SO(n)$ \\
    Diese Transformationen erfüllen: $\det(R) = 1$
 
-Dazu zwei Faken: $\det A^{T} = \det A, \det(AB) = (\det(A))(\det B)$
+Dazu zwei Fakten: $\det A^{T} = \det A, \det(AB) = (\det(A))(\det B)$
 Damit folgt aus $R^{T} R =\mathbb{1}$
 \[\det(R^{T} R) = \det(R^{T})(\det R) = (\det R)^2 = \det {\mathbb{R}} = 1, \det R = \pm 1\]
 $\equiv$ Matrizen in $O(n)$ mit $\det = 1$
@@ -1394,12 +1394,12 @@ Praktisch:
 Die Menge solcher linearen Abbildungen bildet auch einen n-dimensionalen Vektorraum, den sogenannten Dualraum $V^\ast$ (zu $V$)
 Notation: $\ubar t = \{t_1, \ldots, t_n\} \in V^\ast$ \\
      Erinnerung: $\v x = \{x^1, \ldots, x^n\} \in V$ \\
-     Oben(Untenschreiben der Indizes macht die "natürliche Wirkung") von $\ubar t$ auf $\v x$ besonders deutlich: $t_i x^i \in \mathbb{R}$
+     Oben(Unten schreiben der Indizes macht die "natürliche Wirkung") von $\ubar t$ auf $\v x$ besonders deutlich: $t_i x^i \in \mathbb{R}$
 \begin{itemize}
 \item oben: kontravariant
 \item unten: kovariant ($\rightarrow$ Co-Vektor $\in V^\ast$)
 \end{itemize}
-Für und: enorme Verienfachung: \\
+Für und: enorme Vereinfachung: \\
      Wir haben immer euklidischen Raum und damit die besondere Rolle von $\delta_{ij}$ und die inversen Matrix $\delta^{ij}$
 \[\delta_{ij} \delta^{jk} = \delta_i^k = (\mathbb{1}_i^k)\]
 Dies erlaubt uns Indizes beliebig zu "heben" und zu "senken":
@@ -1417,7 +1417,7 @@ Wichtig für uns: Resultat von Anwendung eines Rang-1-Tensors auf Vektor ist inv
 \[x\mapsto x' = Rx, x^{ij} = R^{ij} x^j\]
 Invarianz:
 \[t^{T} x = t^{T} R^{T} R x\]
-Betrachte einfaches, allgemeines Bespiel für Tensor der Stufe 2:
+Betrachte einfaches, allgemeines Beispiel für Tensor der Stufe 2:
 \begin{align*}
 t\equiv U\otimes W \in V\otimes V \\
 t:(\v x, \v y) \mapsto (u^i w^j) \cdot (x^i y^j) &= (\v u \cdot \v x) \cdot (\v w \cdot \v y) \\
@@ -1441,7 +1441,7 @@ Invarianz von $t(\v u_{(1)}, \ldots, \v u_{(m)})$ folgt wie oben.
 
 Fortgeschrittener Kommentar: Gruppe wirkt auf Vektoren aus $K \equiv$ Darstellung
 
-Für unser Bespiel der Wirkung von $O(n)$ auf $\mathbb{R}^k$ war das "offensichtlich" mit Tensoren haben wir "nichttriviales Bespiel für Darstellung"
+Für unser Beispiel der Wirkung von $O(n)$ auf $\mathbb{R}^k$ war das "offensichtlich" mit Tensoren haben wir "nicht triviales Beispiel für Darstellung"
 \[\underbrace{R\in O(n)}_{\text{Elemente $R^{ij}$}} \overset{\text{Darst.}}{\mapsto} D(R) \in \underbrace{n^2 \times n^2 \text{-Matrizen}}_{\text{Elemente}~D(R)^{ij,kl} = R^{ik}R^{jl}}\]
 Dieses $D(R)$ wirkt wie oben beschrieben auf Tensoren:
 \[t^{ij} \overset{D(R)}{\mapsto} D(R)^{ij,kl} t^{kl}\]
@@ -1468,7 +1468,7 @@ $\v a \times \v v$ ist ein Pseudovektor:
 \textbf{Bisher:} $\mathbb{R}^3$ mit Symmetriegruppe $O(3)$ \\
    \textbf{Jetzt:} Physikalische Raum Zeit: Zusätzlich: $t\in \mathbb{R}$ \\
    Punkt $\v x \in \mathbb{R}^3 \xrightarrow{neu}$ Ereignisse $(t,\v x) \in \mathbb{R} \times \mathbb{R}^3$ \\
-   Müssen abschaffen: $\v 0$ im Vektorraum. In der Tat: $\abs{\v x}, \abs{\v y}$ sind unphysikalisch, physikalisch ist nur $\abs{\v x - \v y}$, ebenso ist nur $t_1 - t_2$ pyhsikalisch
+   Müssen abschaffen: $\v 0$ im Vektorraum. In der Tat: $\abs{\v x}, \abs{\v y}$ sind unphysikalisch, physikalisch ist nur $\abs{\v x - \v y}$, ebenso ist nur $t_1 - t_2$ physikalisch
 
 $\implies$ Symmetrietransformationen:
 \begin{enumerate}
@@ -1477,28 +1477,28 @@ $\implies$ Symmetrietransformationen:
 \item Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$ "zeitabhängige Verschiebung"
 \end{enumerate}
 
-Die Galilei-Gruppe $G$ ist die von 1., 2. und 3. "generierte" Gruppe. Nichttrivialer Fakt: Jedes $g\in G$ ist scheibbar als $g = \overarrow[g_3]{Boost} \circ \underarrow[g_2]{Trans} \circ \overarrow[g_1]{Rot.}$
+Die Galilei-Gruppe $G$ ist die von 1., 2. und 3. "generierte" Gruppe. Nicht trivialer Fakt: Jedes $g\in G$ ist schreibbar als $g = \overarrow[g_3]{Boost} \circ \underarrow[g_2]{Trans} \circ \overarrow[g_1]{Rot.}$
 Man muss dazu unter anderem zeigen, dass es zu einem $g_2 \circ g_1 \circ g_2'' \in G$ ein $g_2'', g_1''$ gibt, sodass $g_2 \circ g_1 \circ g_2' = g_2'' \circ g_1''$ \\
    "Boost" = Zunahme (der Geschwindigkeit). Boost einer Trajektorie: $(t, \v x(t)) \mapsto (t, \v x(t) + \v v_0 t)$ \\
    $\v v = \dot{\v x}(t) \mapsto \v v' = \dot{\v x}(t) + \v v_0$
 
 Boost zerstören das Konzept der Gleichörtlichkeit: Seien $(t, x), (t', x)$ zwei Ereignisse am gleichen Ort. Boost $\implies (t, x + v t), (t', x + v t')$, \textbf{nicht} mehr am gleichen Ort
-\subsection{Affinier Raum}
+\subsection{Affiner Raum}
 \label{sec-6-6}
 \begin{defn}
 $O(3)$ Symmetriegruppe des euklidischen Raumes. "Elegant!". \\
-   Besser: Definition des \textbf{affinen Raumes}: Gegeben sein Menge $A$, ein Vektorraum $V$ un eine Abbildung $A\times A \to V, (P, Q) \mapsto \v{PQ}$
-sodass $\v{PQ} + \v{QR} = \v{PR}$. Außerdem: Zu jeden $P\in A, \v V$ soll es eindeutig ein $Q\in A$ geben, sodass $\v = \v{PQ}$, das Paar $(A,V)$ heißt affinier Raum
+   Besser: Definition des \textbf{affinen Raumes}: Gegeben sein Menge $A$, ein Vektorraum $V$ und eine Abbildung $A\times A \to V, (P, Q) \mapsto \v{PQ}$
+sodass $\v{PQ} + \v{QR} = \v{PR}$. Außerdem: Zu jeden $P\in A, \v V$ soll es eindeutig ein $Q\in A$ geben, sodass $\v = \v{PQ}$, das Paar $(A,V)$ heißt affiner Raum
 \end{defn}
 \begin{ex}
-Zu jedem Vektorraum gehört ein affinier Raum: Wähle $A \equiv V, V\times V \to V, (\v x, \v y) \mapsto \v y - \v x$
+Zu jedem Vektorraum gehört ein affiner Raum: Wähle $A \equiv V, V\times V \to V, (\v x, \v y) \mapsto \v y - \v x$
 \end{ex}
-Sei $(A^4, V^4)$ ein 4-dimensionaler affiner Raum. (Man denke zum Beispiel an den zu $\mathbb{R} \times \mathbb{R}^3$ geörigen affinien Raum) \\
+Sei $(A^4, V^4)$ ein 4-dimensionaler affiner Raum. (Man denke zum Beispiel an den zu $\mathbb{R} \times \mathbb{R}^3$ gehörigen affinen Raum) \\
    Physikalische Raumzeit: $(A^{(4)}, V^{(4)})$ mit
 \begin{enumerate}
 \item Eine lineare Abbildung $V^4 \to \mathbb{R}$ ("Zeitfunktion") (im konkreten Beispiel: $((t,x), (t', x')) \mapsto t' - t$)
 \item Sei $\tilde V^{(3)} \subset V^{(4)}$ der Raum von Pfeilen zwischen gleichzeitigen Ereignissen ($v\in \tilde V^{(3)}$ heißt $T(\tilde v) = 0$)
-Dann hat $\tilde V$ ein Skalarprodukt, "Abstandsfunktion". Im konkreten Bespiel: $(t,x),(t,x') \mapsto \abs{x - x'}$
+Dann hat $\tilde V$ ein Skalarprodukt, "Abstandsfunktion". Im konkreten Beispiel: $(t,x),(t,x') \mapsto \abs{x - x'}$
 \end{enumerate}
 
 Zusammen bilden 1. und 2. eine Galileische Struktur. Die physikalische Raumzeit ist $(A^{(4)}, V^{(4)})$ mit galileischer Struktur
@@ -1506,13 +1506,13 @@ Zusammen bilden 1. und 2. eine Galileische Struktur. Die physikalische Raumzeit 
 $G$ sind die Transformationen des $(A^{(4)}, V^{(4)})$, welche seine Galileische Struktur respektieren.
 \subsection{Dynamik}
 \label{sec-6-7}
-Dynamik soll invariant sein! Betrachte Tranjektorie, die die Bewegungsgleichung erfüllt:
+Dynamik soll invariant sein! Betrachte Trajektorie, die die Bewegungsgleichung erfüllt:
 \[(t, \v x(t)), m \frac{\d^2 \v x}{\d t^2} = \v F(t, \v x(t))\]
-Transformierte Tranjektorie:
+Transformierte Trajektorie:
 \[t', \v x'(t') = (t + s, R\v x(t) + \v y + \v v(t + x))\]
 Dazu:
 \[m \frac{\d^2}{\d t'^2} = m \frac{\d^2 x}{\d t^2} = m \\frac{\d^2}{\d t^2} (R\v x(t) + \v y + \v v(t + s)) = m R \frac{\d^2 \v x}{\d t^2} = R\v F(t, \v x(t))\]
-$\implies$ Newtonsche Dynamik ist invariant falls Kräfte wie Cektoren transformieren. (hatten wir schon verlangt)
+$\implies$ Newtonsche Dynamik ist invariant falls Kräfte wie Vektoren transformieren. (hatten wir schon verlangt)
 Bei Systemen von Massepunkten mit Zentralkräften ist die Kraft gleich dem Gradient, sie besitzt automatisch Vektor-Transformationseigenschaften
 
 Wir fordern bei
@@ -1522,7 +1522,7 @@ eigentlich
 Wichtig: Die Transformation von $\v F$ beinhaltet nicht nur Drehung, sondern auch Transformation über das Argument.
 Betrachte zur Vereinfachung $R = \mathbb{1} \implies \v F'(t', \v x') = \v F(t, \v x)$ \\
 
-Geschwindigkeitsabhänige Kräfte: zum Bespiel Reibung
+Geschwindigkeitsabhängige Kräfte: zum Beispiel Reibung
 \[\v F_R = -\alpha(\v x - \underarrow[v u]{Medium})\]
 \subsection{Zusammenfassung:}
 \label{sec-6-8}
@@ -1530,7 +1530,7 @@ Allgemeingültiges Schema:
 \begin{itemize}
 \item Beschreibung der Bewegung festlegen (Spielfeld) (hier: affiner Raum und Galileische Struktur)
 \item Identifikation der Symmetriegruppe (hier Galilei Gruppe)
-\item Invarianz der Dynamik prüfen beziehungsweise forder (Spielregeln) (Newtonsches Grundgesetz)
+\item Invarianz der Dynamik prüfen beziehungsweise fordern (Spielregeln) (Newtonsches Grundgesetz)
 \end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

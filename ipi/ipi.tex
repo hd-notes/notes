@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 17:47
+% Created 2016-12-09 Fr 23:09
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -96,7 +96,7 @@
 \item Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?\hfill \textbf{IPI}, \textbf{IPK}
 \item Algorithmen und Datenstrukturen: Wie baut man komplexe Programme aus einfachen Grundbausteinen?\hfill \textbf{IAL}
 \item Softwaretechnik: Wie organisiert man sehr große Projekte?\hfill \textbf{ISW}
-\item Kernanwendung der Informatik: Betriebsysteme, Netzwerke, Parallelisierung\hfill \textbf{IBN}
+\item Kernanwendung der Informatik: Betriebssysteme, Netzwerke, Parallelisierung\hfill \textbf{IBN}
 \begin{itemize}
 \item Datenbanksysteme\hfill \textbf{IDB1}
 \item Graphik, Graphische Benutzerschnittstellen\hfill \textbf{ICG1}
@@ -105,26 +105,26 @@
 \item künstliche Intelligenz
 \end{itemize}
 \end{itemize}
-\subsubsection{angewante Informatik}
+\subsubsection{angewandte Informatik}
 \label{sec-1-1-4}
 \begin{itemize}
 \item Wie löst man Probleme aus einem anderem Gebiet mit Programmen?
 \item Informationstechnik
 \begin{itemize}
-\item Buchhandlung, e-commerce, Logistik
+\item Buchhandlung, e-Kommerz, Logistik
 \end{itemize}
-\item Web programming
+\item Web Programmierung
 \item scientific computing für Physik, Biologie
 \item Medizininformatik
 \begin{itemize}
 \item bildgebende Verfahren
 \item digitale Patientenakte
 \end{itemize}
-\item computer linguistik
+\item Computer Linguistik
 \begin{itemize}
 \item Sprachverstehen, automatische Übersetzung
 \end{itemize}
-\item Unterhaltung: Spiele, special effect im Film
+\item Unterhaltung: Spiele, special effects im Film
 \end{itemize}
 \section{Wie unterscheidet sich Informatik von anderen Disziplinen?}
 \label{sec-2}
@@ -132,7 +132,7 @@
 \label{sec-2-1}
 Am Beispiel der Definition $a \leq b: \exists c \geq 0: a + c = b$ \\
    Informatik: \\
-   Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechen, wenn man subtrahieren und mit $0$ vergleichen kann. \\
+   Lösungsverfahren: $a - b \leq 0$, das kann man leicht ausrechnen, wenn man subtrahieren und mit $0$ vergleichen kann. \\
    Quadratwurzel: $y = \sqrt{x} \iff y \geq 0 \wedge y^2 = x (\implies x > 0)$ \\
    Informatik: Algorithmus aus der Antike: $y = \frac{x}{y}$
 iteratives Verfahren: \\
@@ -140,7 +140,7 @@ iteratives Verfahren: \\
 schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
 \section{Informatik}
 \label{sec-3}
-Lösugswege, genauer Algorithmen
+Lösungswege, genauer Algorithmen
 \subsection{Algorithmus}
 \label{sec-3-1}
 \textbf{schematische} Vorgehensweise mit der jedes Problem einer bestimmten \textbf{Klasse} mit \textbf{endliche} vielen \textbf{elementaren} Schritten / Operationen gelöst werden kann
@@ -148,16 +148,16 @@ Lösugswege, genauer Algorithmen
 \item schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\implies$ Computer)
 \item alle Probleme einer Klasse: zum Beispiel: die Wurzel aus jeder beliebigen nicht-negativen Zahl, und nicht nur $\sqrt{11}$
 \item endliche viele Schritte: man kommt nach endlicher Zeit zur Lösung
-\item elementare Schrite / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
+\item elementare Schritte / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
 \end{itemize}
 \subsection{Daten}
 \label{sec-3-2}
 Daten sind Symbole,
 \begin{itemize}
-\item die Entitäten und Eigenschaften der realen Welt im Computer representieren.
+\item die Entitäten und Eigenschaften der realen Welt im Computer repräsentieren.
 \item die interne Zwischenergebnisse eines Algorithmus aufbewahren
 \end{itemize}
-$\implies$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebniss).
+$\implies$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebnis).
 Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch"
 \subsubsection{Beispiele für Symbole}
 \label{sec-3-2-1}
@@ -172,7 +172,7 @@ Eingansdaten: "Ereignisse":
 \begin{itemize}
 \item Symbol von Festplatte lesen oder per Netzwerk empfangen
 \item Benutzerinteraktion (Taste, Maus, \ldots{})
-\item Sensor übermittelt Meßergebnis, Stoppuhr läuft ab
+\item Sensor übermittelt Messergebnis, Stoppuhr läuft ab
 \end{itemize}
 Ausgangsdaten: "Aktionen":
 \begin{itemize}
@@ -222,11 +222,11 @@ Variante: Timer läuft immer (Signal alle 0.3s) $\implies$ Timout ignorieren im 
 \end{align}
 \paragraph{Implementation mit Endlichen Automaten}
 \label{sec-3-3-3-1}
-Prinzipen:
+Prinzipien:
 \begin{itemize}
 \item wir lesen die Eingangsdaten von rechts nach links
 \item Beide Zahlen gleich lang (sonst mit 0en auffüllen)
-\item Ergebnis wird von rechts nach link ausgegeben
+\item Ergebnis wird von rechts nach links ausgegeben
 \end{itemize}
 \paragraph{{\bfseries\sffamily TODO} Skizze der Automaten}
 \label{sec-3-3-3-2}
@@ -246,13 +246,13 @@ carry = 1 & $\emptyset$ & "1"\\
 \end{center}
 \textbf{Wichtig:} In jedem Zustand muss für \textbf{alle möglichen} Ereignisse eine Aktion und Folgezustand definiert werden.
 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen "Bug".
-Falls keine sinvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\implies$ Übergang nach "Fehler",
+Falls keine sinnvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\implies$ Übergang nach "Fehler",
 Aktion: Ausgeben einer Fehlermeldung
 \subparagraph{{\bfseries\sffamily TODO} Skizze Fehlermeldung}
 \label{sec-3-3-3-2-1}
-Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angibt. Folge:
+Ein endlicher Automat hat nur ein Speicherelement, das den aktuellen Zustand angibt. Folge:
 \begin{itemize}
-\item Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächnis")
+\item Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächtnis")
 \item Automat kann nicht beliebig weit zählen, sondern nur bis zu einer vorgegebenen Grenze
 \end{itemize}
 \begin{center}
@@ -277,21 +277,21 @@ Ein endlicher Automat hat nur ein Speicherelement, das den aktuelen Zustand angi
 \end{tikzpicture}
 \end{center}
 Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
-Spendiert man zusätzlichen Specher, geht mehr:
+Spendiert man zusätzlichen Speicher, geht mehr:
 \begin{itemize}
 \item Automat mit Stack-Speicher (Stapel oder Keller) $\implies$ Kellerautomat (Kontextfreie Sprachen)
-\item Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles auführen, was man intuitiv für berechenbar hält
+\item Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles ausführen, was man intuitiv für berechenbar hält
 \end{itemize}
 Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
 Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
-Frage: Gibt es einen universellen Algorithms für alle berechenbare Probleme?
-Betrache formale Algorithmusbeschreibung als Teil der Eingabe des universellen Algorithmus.
+Frage: Gibt es einen universellen Algorithmus für alle berechenbare Probleme?
+Betrachte formale Algorithmusbeschreibung als Teil der Eingabe des universellen Algorithmus.
 \section{Substitutionsmodell (funktionale Programmierung)}
 \label{sec-4}
 \begin{itemize}
 \item einfaches Modell für arithmetische Berechnung "Taschenrechner"
-\item Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißten "Literale"
-\item elementare Funktionen: haben eine oder mehere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
+\item Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißen "Literale"
+\item elementare Funktionen: haben eine oder mehrere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
 \begin{itemize}
 \item add(1,2) $\rightarrow$ 3, mul(2,3) $\rightarrow$ 6, analog sub(), div(), mod()
 \end{itemize}
@@ -308,12 +308,12 @@ Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen s
 \[mul(3,2)\]
 \[6\]
 \begin{itemize}
-\item Die arithmetischen Operationene add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
+\item Die arithmetischen Operationen add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
 \item Die meisten Programmiersprachen bieten außerdem algebraische Funktionen wie: sqrt(), sin(), cos(), log()
 \begin{itemize}
-\item sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibilothek"
+\item sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibliothek"
 \end{itemize}
-\item in C++: mathematisches Modul des Standardbibilothek: "cmath"
+\item in C++: mathematisches Modul des Standardbibliothek: "cmath"
 \item Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "\%"
 \item mul(add(1,2),sub(5,3)) $\iff$ ((1+2)*(5-3))
 \begin{itemize}
@@ -325,10 +325,10 @@ Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen s
 \item äußere Klammer kann man weglassen (1+2)$\iff$ 1+2
 \end{enumerate}
 \end{itemize}
-\item Computer wandeln Infix zuerst in Prefix Notation um
+\item Computer wandeln Infix zuerst in Präfix Notation um
 \begin{enumerate}
 \item weggelassene Klammer wieder einfügen
-\item Operatorensymbol durch Funktionsnamen ersetzen und an Prefix-Position verschieben
+\item Operatorensymbol durch Funktionsnamen ersetzen und an Präfix-Position verschieben
 \[1 + 2 + 3 * 4 / (1 + 5) - 2\]
 \[(((1 + 2) + ((3 * 4) / (1 + 5))) - 2)\]
 \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
@@ -343,12 +343,12 @@ Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen s
 \begin{itemize}
 \item bestehen aus Knoten und Kanten (Kreise und Pfeile)
 \item Kanten verbinden Knoten mit ihren Kind-knoten
-\item jeder Koten (außer der Wurzel) hat genau ein Elternteil ("parent node")
+\item jeder Konten (außer der Wurzel) hat genau ein Elternteil ("parent node")
 \item Knoten ohne Kinder heißen Blätter ("leaves / leaf node")
 \item Teilbaum
 \begin{itemize}
 \item wähle beliebigen Knoten
-\item entferne temporär dessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Teilbaum des Orginalbaumes)
+\item entferne temporär dessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Teilbaum des Originalbaumes)
 \end{itemize}
 \item trivialer Teilbaum hat nur einen Knoten
 \item Tiefe: Abstand eines Knotens von der Wurzel (Anzahl der Kanten zwischen Knoten und Wurzel)
@@ -366,7 +366,7 @@ Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen s
 \subsection{Rekursion}
 \label{sec-4-3}
 Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
-\subsection{Prefixnotation aus dem Baum rekonstruieren}
+\subsection{Präfixnotation aus dem Baum rekonstruieren}
 \label{sec-4-4}
 \begin{enumerate}
 \item \label{algstart1} Wenn die Wurzel ein Blatt ist: Drucke die Zahl
@@ -381,7 +381,7 @@ Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
 \end{itemize}
 $\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 \end{enumerate}
-\subsection{Prefixnotation aus dem Baum rekonstruieren}
+\subsection{Präfixnotation aus dem Baum rekonstruieren}
 \label{sec-4-5}
 \begin{enumerate}
 \item \label{algstart2} Wenn die Wurzel ein Blatt ist: Drucke die Zahl
@@ -397,7 +397,7 @@ $\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 $\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
 \end{enumerate}
 $\implies$ \textbf{inorder}
-\subsection{Berechnen des Werts mit Substitutionsmethode}
+\subsection{Berechnen des Werts mit Substitutionsmodell}
 \label{sec-4-6}
 \begin{enumerate}
 \item \label{algstart3} Wenn Wurzel dein Blatt gib Zahl zurück
@@ -408,8 +408,8 @@ $\implies$ \textbf{inorder}
 \item berechne funktionsname(lhs,rhs) und gebe das Ergebnis zurück
 \end{itemize}
 \end{enumerate}
-$\implies$ \textbf{postorder}
-\section{Maschienensprachen}
+$\implies$ \textbf{post-order}
+\section{Maschinensprachen}
 \label{sec-5}
 \begin{itemize}
 \item optimiert für die Hardware
@@ -429,7 +429,7 @@ $\implies$ \textbf{postorder}
 \end{itemize}
 \item Rechenoperationen in Reihenfolge des Substitutionsmodell ausführen und in der jeweiligen Speicherzelle speichern
 \begin{itemize}
-\item Notation: SpZ-Ergebniss $\leftarrow$ fname SpZArg1 SpZArg2
+\item Notation: SpZ-Ergebnis $\leftarrow$ fname SpZArg1 SpZArg2
 \end{itemize}
 \item alles in Zahlencode umwandeln
 \begin{itemize}
@@ -450,9 +450,9 @@ div & 5\\
 \section{Funktionale Programmierung}
 \label{sec-6}
 \begin{itemize}
-\item bei Maschienensprache werden Zwischenergebnisse in Speicherzellen abgelegt
+\item bei Maschinensprache werden Zwischenergebnisse in Speicherzellen abgelegt
 \item das ist auch in der funktionalen Programmierung eine gute Idee
-\item Speicherzellen werden duch Namen (vom Programmierer vergeben) unterschieden
+\item Speicherzellen werden durch Namen (vom Programmierer vergeben) unterschieden
 \end{itemize}
 \subsection{Beispiel}
 \label{sec-6-1}
@@ -462,7 +462,7 @@ Lösen einer quadratischen Gleichung:
 \[x_2 = p + \sqrt{p^2 - q},x_2 = p - \sqrt{p^2 - q}\]
 ohne Zwischenergebnisse:
 \[x_1 \leftarrow add(div(div(b,a),-2),sqrt(sub(mul(div(b,a),-2),div(div(b,a)-1)),div(c,a)))\]
-mit Zwischenergebniss und Infix Notation
+mit Zwischenergebnis und Infix Notation
 \[p\leftarrow b / c / -2~\text{oder}~p\leftarrow -0.5 * b / a\]
 \[a\leftarrow c / a\]
 \[d\leftarrow sqrt(p*p - q)\]
@@ -515,7 +515,7 @@ std::cout << "x1: " << x1 << ", x2: " << x2 << std::endl;
 \begin{minted}[tabsize=4]{cpp}
 // Kommentar (auch /* */)
 type_ergebnis fname(type_arg1 name1, ...) {
-	// Signatur / Funkitonskopf / Deklaration
+	// Signatur / Funktionskopf / Deklaration
 	return ergebnis;
 	/* Funktionskörper / Definition / Implementation */
 }
@@ -533,14 +533,14 @@ double sq(double x) {
 	return x*x;
 }
 \end{minted}
-\item beide Varianten dürfen in c++ gleichzeitig definiert sein $\implies$ "function overloading" $\implies$ c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
+\item beide Varianten dürfen in c++ gleichzeitig definiert sein $\implies$ "function overloading" $\implies$ c++ wählt automatisch die richtig Variable anhand des Argumenttyps ("overload resolution")
 \begin{minted}[tabsize=4]{cpp}
 int x = 2;
 double y = 1.1
 int x2 = sq(x) // int Variante
 double y2 = sq(y) // double Variante
 \end{minted}
-\item jedes c++-Programm muss genau eine Funktion names "main" haben. Dort beginnt die Programmausführung.
+\item jedes c++-Programm muss genau eine Funktion namens "main" haben. Dort beginnt die Programmausführung.
 \begin{minted}[tabsize=4]{cpp}
 int main() {
 	Code;
@@ -560,9 +560,9 @@ int main() {
 \item eingebaute $\estimates$ immer vorhanden
 \begin{itemize}
 \item Infix-Operatoren $+,-,*,/,\%$
-\item Prefix-Operatoren $operator+,operator-,\ldots$
+\item Präfix-Operatoren $operator+,operator-,\ldots$
 \end{itemize}
-\item Funktion der Standardbibilothek $\estimates$ müssen "angefordert" werden
+\item Funktion der Standardbibliothek $\estimates$ müssen "angefordert" werden
 \begin{itemize}
 \item Namen beginnen mit "std::", "std::sin,\ldots{}"
 \item sind in Module geordnet, zum Beispiel
@@ -571,7 +571,7 @@ int main() {
 \item complex $\implies$ komplexe Zahlen
 \item string $\implies$ Zeichenkettenverarbeitung
 \end{itemize}
-\item um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ include <name>
+\item um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header inkludieren) $\rightarrow$ include <name>
 \begin{minted}[tabsize=4]{cpp}
 #include <iostream>
 #include <string>
@@ -584,16 +584,16 @@ int main() {
 \end{minted}
 \end{itemize}
 \end{itemize}
-\item overloading der arithmetischen Operationene
+\item overloading der arithmetischen Operationen
 \begin{itemize}
 \item overloading genau wie bei $sq$
 \begin{itemize}
 \item 3 * 4 $\implies$ int Variante
 \item 3.0 * 4.0 $\implies$ double Variante
-\item 3 * 4.0 $\implies$ automatische Umwandliung in höheren Typ, hier "double" $\implies$ wird als 3.0 * 4.0 ausgeführt
+\item 3 * 4.0 $\implies$ automatische Umwandlung in höheren Typ, hier "double" $\implies$ wird als 3.0 * 4.0 ausgeführt
 \end{itemize}
 \end{itemize}
-\item $\implies$ Devision unterscheidet sich
+\item $\implies$ Division unterscheidet sich
 \begin{itemize}
 \item Integer-Division: 12 / 5 = 2 (wird abgerundet)
 \item Double-Division: 12.0 / 5.0 = 2.4
@@ -616,22 +616,22 @@ int main() {
 \item alle Berechnungen durch Funktionsaufruf, Ergebnis ist Rückgabe
 \item Ergebnis hängt nur von den Werten der Funktionsargumente ab, nicht von externen Faktoren "referentielle Integrität"
 \item Speicherzellen für Zwischenergebnisse und Argumente können nach Initialisierung nicht geändert werden "write once"
-\item Möglichkeit rekusiver Funktionsaufrufe (jeder Aufruf bekommt eigene Speicherzellen)
+\item Möglichkeit rekursiver Funktionsaufrufe (jeder Aufruf bekommt eigene Speicherzellen)
 \begin{itemize}
 \item Vorteile
 \begin{itemize}
-\item natürliche Ausdrucksweise für arithmetische und algebraische Funktionaliät ("Taschenrechner")
+\item natürliche Ausdrucksweise für arithmetische und algebraische Funktionalität ("Taschenrechner")
 \item einfache Auswertung durch Substitutionsmodell $\rightarrow$ Auswertungsreihenfolge nach Post-Order
 \item mathematisch gut formalisierbar $\implies$ Korrektheitsbeweise, besonders bei Parallelverarbeitung
-\item Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakultät, Baumtraversierung)
+\item Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakultät, Baum-Traversierung)
 \end{itemize}
 \item Nachteile
 \begin{itemize}
 \item viele Probleme lassen sich anders natürlicher ausdrücken (z.B. Rekursion vs. Iteration)
-\item setzt unendlich viel Speicher voraus ($\implies$ Memory management notwendig $\implies$ später)
+\item setzt unendlich viel Speicher voraus ($\implies$ Memory Management notwendig $\implies$ später)
 \item Entitäten, die sich zeitlich verändern sind schwer zu modellieren
 \end{itemize}
-\item Korrolar: kann keine externen Resourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
+\item Korollar: kann keine externen Ressourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
 \begin{itemize}
 \item $\implies$ Multi-Paradigmen-Sprachen, zum Beispiel Kombination von Funktionaler Programmierung und prozeduraler Programmierung
 \end{itemize}
@@ -648,11 +648,11 @@ int main() {
 \item Beispiel
 \begin{minted}[tabsize=4]{cpp}
 std::cout << "Hello\n"; // Infix
-operator<<(std::cout, "Hello\n"; // Prefix
+operator<<(std::cout, "Hello\n"; // Präfix
 \end{minted}
 \item Prozeduren in c++
 \begin{enumerate}
-\item Funktion die "void" zurückgibt (Pseudotyp für "nichts")
+\item Funktion die "void" zurück gibt (Pseudotyp für "nichts")
 \begin{minted}[tabsize=4]{cpp}
 void foo(int x) {
 	return;
@@ -726,7 +726,7 @@ typ const name = neuer_wert; // write once
 \item $\implies$ Folgen: mächtiger, aber ermöglicht völlig neue Bugs $\implies$ erhöhte Aufmerksamkeit beim Programmieren
 \begin{itemize}
 \item die Reihenfolge der Ausführung ist viel kritischer als beim Substitutionsmodell
-\item Programmierer muss immer ein mentales Bild des aktuellen Systemzustans haben
+\item Programmierer muss immer ein mentales Bild des aktuellen Systemzustands haben
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -734,8 +734,8 @@ typ const name = neuer_wert; // write once
 \label{sec-7-2-4}
 Der gleiche Code soll oft wiederholt werden
 \begin{minted}[tabsize=4]{cpp}
-while(bedingung) {
-	// code, wird ausgeführt solange Bedingung "true"
+while(Bedingung) {
+	// Code, wird ausgeführt solange Bedingung "true"
 }
 \end{minted}
 \begin{minted}[tabsize=4]{cpp}
@@ -758,15 +758,15 @@ counter & Bedingung & Ausgabe\\
 
 \begin{itemize}
 \item in c++ beginnt Zählung meist mit $0$ ("zero based")
-\item vergisst man Inkrementierung $\implies$ Bedingung immer "true" $\implies$ Endlosschleife $\implies$ Bug
-\item drei äquivalente Schreibweisen für Inkrementierung:
+\item vergisst man Inkrementieren $\implies$ Bedingung immer "true" $\implies$ Endlosschleife $\implies$ Bug
+\item drei äquivalente Schreibweisen für Inkrementieren:
 \begin{itemize}
 \item counter = counter + 1; // assignment $\estimates$ Zuweisung
-\item counter += 1;          // add-assignment $\estimates$ Abbkürzung
+\item counter += 1;          // add-assignment $\estimates$ Abkürzung
 \item ++counter;             // pre-increment
 \end{itemize}
 \end{itemize}
-\subsubsection{prozedurale Wurzelberechung}
+\subsubsection{prozedurale Wurzelberechnung}
 \label{sec-7-2-5}
 \paragraph{Ziel}
 \label{sec-7-2-5-1}
@@ -775,7 +775,7 @@ double sqrt(double y);
 \end{minted}
 \paragraph{Methode}
 \label{sec-7-2-5-2}
-iterative Verbesserung mittel Newtonverfahren
+iterative Verbesserung mittels Newtonverfahren
 initial\_guess $x^{(0)}$ ("geraten"), t = 0 \\
      while not\_good\_enough($x^{(t)}$): \\
          update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
@@ -785,11 +785,11 @@ initial\_guess $x^{(0)}$ ("geraten"), t = 0 \\
 Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
 Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta +$ setze $x^\ast = x + \Delta$
 \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \implies \Delta = - \frac{f(x)}{f'(x)}\]
-Iteratiosvorschrift:
+Iterationsvorschrift:
 \[x^{(t + 1)} = x^{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
 Anwendung auf Wurzel: setze $f(x) = x^2 - y \implies$ mit $f(x^\ast) = 0$ gilt
 \[(x^\ast)^2 -y = 0 \quad (x^\ast)^2 = y \quad x^\ast = \sqrt{y}\quad f'(x) = 2x)\]
-Iterationsvorschrieft:
+Iterationsvorschrift:
 \[x^{(t + 1)} = x^{(t)} - \frac{(x^{(t)^2}) - y}{2x^{(t)}} = \frac{x^{(t)^2} + y}{2x^{(t)}}\]
 \begin{minted}[tabsize=4]{cpp}
 double sqrt(double y) {
@@ -812,7 +812,7 @@ double sqrt(double y) {
 \begin{minted}[tabsize=4]{cpp}
 int c = 0;
 while(c < 3) {
-	// unser code
+	// unser Code
 	c++; // vergisst man leicht
 }
 \end{minted}
@@ -821,20 +821,20 @@ Bei der while Schleife kann man leicht vergessen $c$ zu inkrementieren, die for 
     Äquivalent zu der while Schleife oben ist:
 \begin{minted}[tabsize=4]{cpp}
 for(int c = 0; c < 3; c++) {
-	// unser code
+	// unser Code
 }
 \end{minted}
 
 Allgemeine Form:
 \begin{minted}[tabsize=4]{cpp}
 for(init; Bedingung; Inkrement) {
-	// unser code
+	// unser Code
 }
 \end{minted}
 \begin{itemize}
 \item Befehle, um Schleifen vorzeitig abzubrechen
 \begin{itemize}
-\item continue: Bricht aktuelle Iteration ab und springt zum Scleifenkpf
+\item continue: Bricht aktuelle Iteration ab und springt zum Schleifenkörper
 \item break: bricht die ganze Schleife ab und springt hinter das Schleifenende
 \item return: beendet Funktion und auch die Schleife
 \end{itemize}
@@ -879,11 +879,11 @@ Bestandteil der Sprachsyntax und normalerweise direkt von der Hardware unterstü
 mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
 \begin{itemize}
 \item wie das geht $\implies$ später
-\item Standardtypen: in der C++ Standardbibilothek definiert, aktivieren durch $\#include <module\_name>$
+\item Standardtypen: in der C++ Standardbibliothek definiert, aktivieren durch $\#include <module\_name>$
 \begin{itemize}
 \item std::string, std::complex, etc.
 \end{itemize}
-\item externe Typen: aus anderer Bibilothek, die man zuvor herunterladen und installieren muss
+\item externe Typen: aus anderer Bibliothek, die man zuvor herunterladen und installieren muss
 \item eigene Typen: vom Programmierer selbst implementiert $\implies$ später
 \end{itemize}
 Durch "objekt-orientierte Programmierung" ($\implies$ später) erreicht man, dass zusammengesetzte
@@ -898,9 +898,9 @@ $\implies$ Punktsyntax: type$\backslash$\_name t = init; t.foo(a1, a2); $\estima
 \label{sec-8-3}
 zwei Datentypen in c++
 \begin{itemize}
-\item klassischer c-string: char[] ("charakter array") $\implies$ nicht gekapselt, umständlich
+\item klassischer c-string: char[] ("Charakter Array") $\implies$ nicht gekapselt, umständlich
 \item c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
-\item string literale: "zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
+\item string Literale: "Zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
      Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale),
 müssen erst in c++ strings umgewandelt werden, das passiert meist automatisch
 \begin{itemize}
@@ -910,7 +910,7 @@ müssen erst in c++ strings umgewandelt werden, das passiert meist automatisch
 std::string s = "abcde";
 std::string s2 = s1;
 std::string leer = "";
-std::string leer(); // Abkürzung, default constructor
+std::string leer(); // Abkürzung, default Konstruktor
 \end{minted}
 \item Länge
 \begin{minted}[tabsize=4]{cpp}
@@ -934,12 +934,12 @@ s3 = s + s; // "xyxy"
 s3 = "abc" + "def"; // Bug Literale unterstützen + mit ganz anderer Bedeutung
 s3 = std::string("abc") + "def"; // Ok
 \end{minted}
-\item Add-Assignment: Abkürzung für Addition gefolt von Zuweisung
+\item Add-Assignment: Abkürzung für Addition gefolgt von Zuweisung
 \begin{minted}[tabsize=4]{cpp}
 s += "nmk"; // s = s + "nmk" => "xynmk"
 \end{minted}
 \item die Zeichen werden intern in einem C-Array gespeichert (Array = "Feld") \\
-       Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummerriert
+       Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummeriert
 in c++: von $0$ beginnend $\estimates$ Index
 \begin{itemize}
 \item Indexoperator:
@@ -980,7 +980,7 @@ for(int i = s.size() - 1; i >= 0; i--) {
 \label{sec-9}
 Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für die prozedurale Programmierung
 \begin{itemize}
-\item Regeln für Auswertung von Audrücken
+\item Regeln für Auswertung von Ausdrücken
 \item Regeln für automatische Speicherverwaltung
 \begin{itemize}
 \item Freigeben nicht mehr benötigter Speicherzellen, $\implies$ bessere Approximation von "unendlich viel Speicher"
@@ -992,7 +992,7 @@ Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für di
 \item Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf $\implies$ Speicherzellen für Argumente und Ergebnis gehören zur Umgebung
 \item globale Umgebung außerhalb aller "\{ \}" Klammern
 \end{itemize}
-\item automatische Speiccherverwaltung
+\item automatische Speicherverwaltung
 \begin{itemize}
 \item Speicherzellen, die in einer Umgebung angelegt werde (initialisiert, deklariert) werde, am Ende der Umgebung in umgekehrter Reihenfolge freigegeben
 \item Computer fügt vor "\}" automatisch die Notwendigen Befehle ein
@@ -1014,7 +1014,7 @@ Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für di
 \item Umgebung jeder Funktion sind Kindknoten der globalen Umgebung (Ausnahme: Namensräume $\implies$ siehe unten) \\
       $\implies$ Funktions Umgebung ist \textbf{nicht} in der Umgebung, wo die Funktion aufgerufen wird
 \end{itemize}
-\item Jede Umgebung besitzt eine \textbf{Zuordungstabelle} für alle Speicherzellen, die in der Umgebung definiert wurden
+\item Jede Umgebung besitzt eine \textbf{Zuordnungstabelle} für alle Speicherzellen, die in der Umgebung definiert wurden
 \begin{center}
 \begin{tabular}{llr}
 Name & Typ & aktueller Wert\\
@@ -1026,21 +1026,21 @@ l & int & 2\\
 \item Ausnahme Funktionsnamen können mehrmals vorkommen bei function overloading (nur c++)
 \item Alle Befehle werden relativ zur aktuellen Umgebung ausgeführt
 \begin{itemize}
-\item aktuell: Zuordungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
+\item aktuell: Zuordnungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
       Beispiel: $c = a * b;$ \\
       Regeln:
-\item wird der Name (nur $a, b, c$) in der aktuellen Zuordungstabelle gefunden
+\item wird der Name (nur $a, b, c$) in der aktuellen Zuordnungstabelle gefunden
 \begin{enumerate}
 \item Typprüfung $\implies$ Fehlermeldung, wenn Typ und Operation nicht zusammenpassen
-\item andernfalls, setze aktuellen Wert aus Tabelle in Ausdruch ein (ähnlich Substitutionsmodell)
+\item andernfalls, setze aktuellen Wert aus Tabelle in Ausdruck ein (ähnlich Substitutionsmodell)
 \end{enumerate}
 \item wird Name nicht gefunden: suche in der Elternumgebung weiter
-\item wird der Name bis zur Wurzel (gloable Umgebung) nicht gefunden $\implies$ Fehlermeldung
+\item wird der Name bis zur Wurzel (globale Umgebung) nicht gefunden $\implies$ Fehlermeldung
 \item $\implies$ ist der Name in mehreren Umgebungen vorhanden gilt der zuerst gefundene (Typ, Wert)
 \end{itemize}
-\item $\implies$ Programmierrer muss selbst darauf achten, dass
+\item $\implies$ Programmierer muss selbst darauf achten, dass
 \begin{enumerate}
-\item bei der Suche die gewünschte Spicherzelle gefunden wird $\implies$ benutze "sprechende Namen"
+\item bei der Suche die gewünschte Speicherzelle gefunden wird $\implies$ benutze "sprechende Namen"
 \item der aktuelle Wert der richtig ist $\implies$ beachte Reihenfolge der Befehle!
 \end{enumerate}
 \item Namensraum: spezielle Umgebungen in der globalen Umgebung (auch geschachtelt) mit einem Namen \\
@@ -1049,7 +1049,7 @@ l & int & 2\\
 \item Gruppieren von Funktionalität in Module (zusätzlich zu Headern)
 \item Verhinderung von Namenskollisionen
 \end{itemize}
-Beispiel: c++ Standardbibilothek:
+Beispiel: c++ Standardbibliothek:
 \begin{minted}[tabsize=4]{cpp}
 namespace std {
 double sqrt(double x);
@@ -1058,7 +1058,7 @@ class system_clock;
 }
 }
 
-// Benutzung mit Namespace-Prefix:
+// Benutzung mit Namespace-Präfix:
 std::sqrt(80);
 std::chrono::system_clock clock;
 \end{minted}
@@ -1087,7 +1087,7 @@ int main() {
 \label{sec-10}
 sind neue (zusätzliche) Namen für vorhandene Speicherzellen
 \begin{minted}[tabsize=4]{cpp}
-int x = 3; // neue Variable x mit neuer Speicherzell
+int x = 3; // neue Variable x mit neuer Speicherzelle
 int & y = x; // Referenz: y ist neuer Name für x, beide haben die selbe Speicherzelle
 y = 4; // Zuweisung an y, aber x ändert sich auch, das heißt x == 4
 x = 5; // jetzt y == 5
@@ -1097,10 +1097,10 @@ x = 6; // jetzt auch z == 6
 Hauptanwendung:
 \begin{itemize}
 \item die Umgebung, in der eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
-\item häuftig möchte man Speicherzellen in beiden Umgebungen teilen $\implies$ verwende Referenzen
+\item häufig möchte man Speicherzellen in beiden Umgebungen teilen $\implies$ verwende Referenzen
 \item häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
 \begin{itemize}
-\item Durch pass-by-reference brauch man keine Kopie $\implies$ typisch "const \&", also read-only, keine Seiteneffekte
+\item Durch pass-by-reference braucht man keine Kopie $\implies$ typisch "const \&", also read-only, keine Seiteneffekte
 \begin{minted}[tabsize=4]{cpp}
 int foo(int x) { // pass-by-value
 	x += 3;
@@ -1194,7 +1194,7 @@ std::map<std::string, double> noten; noten["krause"] = 10;
 \item Elemente werden beim 1. Zugriff automatisch erzeugt (dynamisch)
 \end{itemize}
 \end{itemize}
-\item alle dynamischen und assoziativen Arrays unterstützen a.size() zum Abfragen der Grlße
+\item alle dynamischen und assoziativen Arrays unterstützen a.size() zum Abfragen der Größe
 \end{itemize}
 \subsection{std::vector}
 \label{sec-11-1}
@@ -1222,8 +1222,8 @@ v.push_back(neues_element); // ein neues Element am Ende anhängen (ähnlich str
 v.insert(v.begin() + index, neues_element); // neues element an Position "index" einfügen 0 <= index <= size()
 // Falls index == size(): am Ende anhängen, sonst: alte Elemente ab Index werden eine Position nach hinten verschoben (teuer)
 
-v.pop_back(); // letzes Element löschen (effizient)
-v.erase(v.begin() + index); // Element an Pos index löschen, alles dahinter eine Position verschieben (teuer)
+v.pop_back(); // letztes Element löschen (effizient)
+v.erase(v.begin() + index); // Element an Position index löschen, alles dahinter eine Position verschieben (teuer)
 v.clear(); // alles löschen
 \end{minted}
 \item Zugriff
@@ -1259,11 +1259,11 @@ std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 \end{minted}
 \end{itemize}
 \end{itemize}
-\subsubsection{Effizenz von push$\backslash$\_back}
+\subsubsection{Effizienz von push$\backslash$\_back}
 \label{sec-11-1-1}
 Warum ist push$\backslash$\_back() effizient? (bei std::vector)
 \begin{itemize}
-\item veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens vei Initialisierung, bekannt)
+\item veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens bei Initialisierung, bekannt)
 \begin{itemize}
 \item sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
 \end{itemize}
@@ -1278,17 +1278,17 @@ Warum ist push$\backslash$\_back() effizient? (bei std::vector)
 \end{itemize}
 \item Verhalten bei push$\backslash$\_back():
 \begin{enumerate}
-\item noch Reserve vorhanden: lege neues Element im eine unbenutze Speicherzelle $\implies$ billig
+\item noch Reserve vorhanden: lege neues Element im eine unbenutzte Speicherzelle $\implies$ billig
 \item keine Reserve
 \begin{enumerate}
-\item alloziiere neues statisches Array mit doppeler Kapazität
+\item alloziere neues statisches Array mit doppelt Kapazität
 \item kopiere die Daten aus dem altem in das neue Array
 \item gebe das alte Array frei
 \item gehe zum Anfang des Algorithmus, jetzt ist wieder Reserve vorhanden
 \end{enumerate}
 \end{enumerate}
 \item das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist
-\item Bespiel:
+\item Beispiel:
 \begin{minted}[tabsize=4]{cpp}
 std::vector<int> v;
 
@@ -1329,12 +1329,12 @@ v.size() // aktuelle Zahl der Elemente
 v.capacity() // aktuelle Zahl Speicherzellen
 assert(v.capacity() - v.size() >= 0) // Reserve
 v.resize(new_size) // ändert immer v.size(), aber v.capacity() nur wenn < new_size
-v.reserve(new_capacity) // änder v.size() nicht, aber v.capacity() falls new_capacity >= size
-v.shrink_to_fit() // == v.reserve/v.size()) Reseve ist danach 0, wenn Endgröße erreicht
+v.reserve(new_capacity) // ändert v.size() nicht, aber v.capacity() falls new_capacity >= size
+v.shrink_to_fit() // == v.reserve/v.size()) Reserve ist danach 0, wenn Endgröße erreicht
 \end{minted}
 \item wenn Reserve > size: capacity kann auch halbiert werden
-\item wichtige Container der c++ Standardbibilothek
-\item wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered$\backslash$\_map
+\item wichtige Container der c++ Standardbibliothek
+\item wir hatten dynamische Arrays std::string, std::vector, assoziative Arrays std::map, std::unordered$\backslash$\_map
 \item std::set, std::unordered$\backslash$\_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
 \item std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push\_back() und pop\_back() bei std::vector
 \item std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
@@ -1359,7 +1359,7 @@ for(int i = 0; i != v.size(); i++) {
 \begin{itemize}
 \item $\implies$ ein Iterator zeigt immer auf ein Element des Containers, oder auf Spezialwert "ungültiges Element"
 \end{itemize}
-\item in c++ unerstützt jeder Iterator 5 Grundoperationen
+\item in c++ unterstützt jeder Iterator 5 Grundoperationen
 \begin{enumerate}
 \item Iterator auf erstes Element erzeugen: auto iter = v.begin();
 \item Iterator auf "ungültiges Element" erzeugen: auto end = v.end();
@@ -1379,13 +1379,13 @@ int current = *iter; // lesen
 // Abkürzung: range-based for loop
 for(auto & element : v) {
 int current = element; // lesen
-element  = new_vlaue; // schreiben
+element  = new_value; // schreiben
 }
 \end{minted}
 \end{itemize}
 \item Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
 \item "bidirectional iterators": unterstützen auch $--iter$, zum vorigen Element ((fast) alle Iteratoren in std)
-\item "random acces iterators": beliebige Sprünge "iter += 5; iter -= 3;"
+\item "random access iterators": beliebige Sprünge "iter += 5; iter -= 3;"
 \item Besonderheit für assoziative Arrays (std::map, std::unordered$\backslash$\_map)
 Schlüssel und Werte können beliebig gewählt werden
 \begin{itemize}
@@ -1398,7 +1398,7 @@ iter->first;
 iter->second;
 \end{minted}
 \begin{itemize}
-\item bei std::map liefern die Iteratoren die Elemente in aufsteigneder Reihenfolge der Schlüssel
+\item bei std::map liefern die Iteratoren die Elemente in aufsteigender Reihenfolge der Schlüssel
 \end{itemize}
 \end{itemize}
 \item Die Funktion std::transform()
@@ -1432,7 +1432,7 @@ for(; src_begin != src_end; src_begin++, tgt_begin++) {
 \item Das letzte Argument von std::transform() muss ein Funktor sein (verhält sich wie eine Funktion), drei Varianten:
 \begin{enumerate}
 \item normale Funktion, z.B. sq. Aber: wenn Funktion für mehrere Argumenttypen überladen ist (overloading) (zum Beispiel, wenn es sq(double) und sq(int) gibt), muss der Programmierer dem Compiler sagen, welche Version gemeint ist $\implies$ für Fortgeschrittene ("functionpointer cast")
-\item Funktorobjekte $\implies$ objekt-orientierte Programmierung
+\item Funktionsobjekt $\implies$ objekt-orientierte Programmierung
 \item Definiere eine namenlose Funktion $\implies$ "Lambda-Funktion $\lambda$"
 \begin{itemize}
 \item statt $\lambda$ verwenden wir den Universalnamen []
@@ -1453,7 +1453,7 @@ std::vector<double> v = {4, 2, 3, 5 ,1};
 std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
 \end{minted}
 \item std::sort ruft intern den $<$-Operator des Elementtyps auf, um Reihenfolge zu bestimmen
-\item die $<$-Operation muss eine totale Ordung der Elemente definieren:
+\item die $<$-Operation muss eine totale Ordnung der Elemente definieren:
 \begin{itemize}
 \item $a < b$ muss für beliebige $a,b$ ausführbar sein
 \item transitiv: $(a < b) \wedge (b < c) \implies (a < c)$
@@ -1471,9 +1471,9 @@ schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compil
 \begin{itemize}
 \item wie beim Aufnehmen und Ordnen eines Kartenblatts
 \item gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
-\item Einfügen des k-ten Elements an richtiger Stelle $\rightarrow$ Erzeuge Lücke an richtiger Position duch verschieben von Elementen nach rechts
+\item Einfügen des k-ten Elements an richtiger Stelle $\rightarrow$ Erzeuge Lücke an richtiger Position durch verschieben von Elementen nach rechts
 \item Wiederholung für $k = 1, \ldots, N$
-\item Bespiel:
+\item Beispiel:
 \begin{center}
 \begin{tabular}{rrrrr}
 4 & 2 & 3 & 5 & 1\\
@@ -1510,7 +1510,7 @@ void insertion_sort(std::vector<double> & v) {
 	}
 }
 \end{minted}
-\item andere Sortierung: definiere Funktor cmp(a, b), der das gewüschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
+\item andere Sortierung: definiere Funktor cmp(a, b), der das gewünschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
 \item neue Sortierung am besten per Lambda-Funktion an std::sort übergeben
 \begin{minted}[tabsize=4]{cpp}
 std::sort(v.begin(), v.end()); // Standartsort mit "<"
@@ -1555,9 +1555,9 @@ void insertion_sort(std::vector<T> & v) {
 \item Klassen-templates für Datenstrukturen, zum Beispiel Container sollen beliebige Elementtypen unterstützen
 \begin{itemize}
 \item Implementation $\implies$ später
-\item Benutzung: Datenstrukturname gefolgt vom Elementtyp in Spizen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
+\item Benutzung: Datenstrukturname gefolgt vom Elementtyp in spitzen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
 \end{itemize}
-\item Funktionen-Templates: es gab schon function overloadingg
+\item Funktionen-Templates: es gab schon function overloading
 \begin{minted}[tabsize=4]{cpp}
 int sq(int x) {
 	return x * x;
@@ -1584,14 +1584,14 @@ T sq(T x) {
 \end{minted}
 \begin{itemize}
 \item wie bei Substituieren von Variablen mit Werten, aber jetzt mit Typen
-\item Benutzug:
+\item Benutzung:
 \begin{itemize}
 \item Typen für die Platzhalter hinter dem Funktionsnamen in spitzen klammern
 \begin{minted}[tabsize=4]{cpp}
 sq<int>(2) == 4;
 sq<double>(3.0) == 9.0,
 \end{minted}
-\item meist kann man die Typangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
+\item meist kann man die Typenangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
 \begin{minted}[tabsize=4]{cpp}
 sq(2); // == sq<int>(2) == 4
 sq(3.0); // == sq<double>(3.0) == 9
@@ -1613,18 +1613,18 @@ void print_vector(std::vector<ElementType> const & v) {
 	std::cout << " }";
 }
 \end{minted}
-\item Verallgemeinerung für beliebige Container mittel Iteratoren:
+\item Verallgemeinerung für beliebige Container mittels Iteratoren:
 \begin{minted}[tabsize=4]{cpp}
 std::list<int> l = {1, 2, 3};
-print_containter(l.begin(), l.end()); // "{1,2,3}"
+print_container(l.begin(), l.end()); // "{1,2,3}"
 \end{minted}
-\item es genügen forward\_interators
+\item es genügen forward\_itertators
 \begin{minted}[tabsize=4]{cpp}
 Iterator iter2 = iter1; // Kopie erzeugen
 iter1++; // zum nächsten Element
 iter1 == iter2; // Zeigen sie auf das selbe Element?
 iter1 != end;
-*iter1; // Zugrif auf aktuelles Element
+*iter1; // Zugriff auf aktuelles Element
 
 template<typename Iterator>
 void print_container(Iterator begin, Iterator end) {
@@ -1637,7 +1637,7 @@ void print_container(Iterator begin, Iterator end) {
 	std::cout << "}";
 }
 \end{minted}
-\item Bespiel 3: checken, ob Container sortiert ist
+\item Beispiel 3: überprüfen, ob Container sortiert ist
 \begin{minted}[tabsize=4]{cpp}
 template<typename E, typename CMP>
 bool check_sorted(std::vector<E> const & v, CMP less_than) {
@@ -1655,7 +1655,7 @@ check_sorted(v, [](double a, double b) { return a < b; } ); // == true
 
 check_sorted(v, [](double a, double b) { return a > b; } ); // == false
 
-// implementation für iteratoren
+// Implementation für Iteratoren
 template<typename Iterator, typename CMP>
 bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
 	if(begin == end) {
@@ -1672,8 +1672,8 @@ bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
 }
 // == std::is_sorted
 \end{minted}
-\item Bemerkung: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
-\item mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene
+\item Bemerkung: Compiler-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrung nötig aber: Compiler werden darin immer besser, besonders clang-Compiler
+\item mit Templates kann man noch viel raffinierter Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene
 \end{itemize}
 \end{itemize}
 \end{enumerate}
@@ -1684,8 +1684,8 @@ bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
 \label{sec-15-1}
 2 Möglichkeiten:
 \begin{enumerate}
-\item Messe die "wall clock time" - wie lange mus man auf das Ergebnis warten
-\item unabhängig von Hardware benutz man das Konzept der algorithmischen Komplexität
+\item Messe die "wall clock time" - wie lange muss man auf das Ergebnis warten
+\item unabhängig von Hardware benutzt man das Konzept der algorithmischen Komplexität
 \end{enumerate}
 \subsubsection{wall clock}
 \label{sec-15-1-1}
@@ -1695,13 +1695,13 @@ wall clock time misst man zum Beispiel mit dem Modul <chrono>
 #include <iostream>
 
 int main() {
-	// alles zur Zetimessung vorbereiten
+	// alles zur Zeitmessung vorbereiten
 
 	auto start = std::chrono::high_resolution_clock::now(); // Startzeit
 	// code der gemessen werden soll
 	auto stop = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> diff = stop - start; // Zeitdifferenz
-	std::cout << "Zeitdauer: " << diff.count() << " sekunden\n" << std::endl; // ausgeben
+	std::cout << "Zeitdauer: " << diff.count() << " Sekunden\n" << std::endl; // ausgeben
 }
 \end{minted}
 Pitfalls:
@@ -1715,18 +1715,18 @@ Abhilfen:
 \item der Algorithmus ist schneller als die clock $\implies$ rufe den Algorithmus mehrmals in einer Schleife
 auf
 \item die Ausführung ihres Programms kann vom Betriebssystem jederzeit für etwas wichtigeres unterbrochen werden
-(zum Beispiel Email checken) $\implies$ gemessene Zeit zu lang $\implies$ messe
-mehrmals und nimm die kürzeste Zeit (mest reicht 3 bis 10 fach)
-\item Fausregel: Messug zwischen $\SI{0.02}{\second}$ und $\SI{3}{\second}$
+(zum Beispiel Mail checken) $\implies$ gemessene Zeit zu lang $\implies$ messe
+mehrmals und nimm die kürzeste Zeit (meist reicht 3 bis 10 fach)
+\item Faustregel: Messung zwischen $\SI{0.02}{\second}$ und $\SI{3}{\second}$
 \end{itemize}
 Nachteil: Zeit hängt von der Qualität der Implementation, den Daten (insbesondere der Menge) und der Hardware ab
 \subsubsection{algorithmische Komplexität}
 \label{sec-15-1-2}
-Algorithmische Kompexität ist davon unabhängig, ist eine Art theoretisches Effizenzmaß. Sie
-beschreibt, wie sichdie Laufzeit verlängert, wenn man mehr Daten hat.
+Algorithmische Komplexität ist davon unabhängig, ist eine Art theoretisches Effizienzmaß. Sie
+beschreibt, wie sich die Laufzeit verlängert, wenn man mehr Daten hat.
 
 \begin{ex}
-Algorithmus brauch für $n$ Elemente $x$ Sekunden, wie lange dauert es für $2n$, $10n$ für große $n$
+Algorithmus braucht für $n$ Elemente $x$ Sekunden, wie lange dauert es für $2n$, $10n$ für große $n$
 \end{ex}
 Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
     Grundidee:
@@ -1747,7 +1747,7 @@ Regeln:
 \begin{enumerate}
 \item $f(n) \in \Theta(f(n)) \implies f(n) \in O(f(n)), f(n) \in \Omega(f(n))$
 \item $c' f(n) \in \Theta(f(n))$
-\item $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Miltiplikationsregel
+\item $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Multiplikationsregel
 \item $O(f(n)) + O(g(n)) \in O(\text{"max"}(f(n), g(n)))$ \hfill Additionsregel \\
        formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
        $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
@@ -1760,12 +1760,12 @@ Beliebte Wahl für $g(n)$
 \item $O(\log(n))$ \hfill "logarithmische Komplexität" \\
       zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
 \item $O(n)$ \hfill "lineare Komplexität" \\
-      zum Bespiel std::transform() ($n$ = Anzahl der transformierten Elemente)
-\item $O(n \log(n))$ \hfill{"n log n", "loglinear" "linearithmisch"} \\
+      zum Beispiel std::transform() ($n$ = Anzahl der transformierten Elemente)
+\item $O(n \log(n))$ \hfill{"n log n", "log linear" "linearithmisch"} \\
       Beispiel: std::sort
-\item $O(n^2)$ \hfill "quardatische Komplexität"
+\item $O(n^2)$ \hfill "quadratische Komplexität"
 \item $O(n^p)$ \hfill "polynomielle Komplexität"
-\item $O(2^n)$ \hfill "eexponentielle komplexität"
+\item $O(2^n)$ \hfill "exponentielle Komplexität"
 \end{itemize}
 \begin{ex}
 \[f(n) = 1 + 15 n + 4n^2 + 7n^3 \in O(n^3)\]
@@ -1787,7 +1787,7 @@ int fib1(int k) {
 		return k; // O(1)
 	}
 	// O(1)
-	int f1 = 0; // letzten beiden Fibonacci Zahlen, anfags die ersten beiden
+	int f1 = 0; // letzten beiden Fibonacci Zahlen, anfangs die ersten beiden
 	int f2 = 1;
 	for(int i = 2; i <= k; i++) { // f(k) = k - 1 e O(k)
 		int f = f1 + f2; // O(1)
@@ -1795,9 +1795,9 @@ int fib1(int k) {
 		f2 = f; // O(1)
 	} // gesamte Schleife: O(1)*O(k) = O(k)
 	return f2;
-} // gesanmte Funktion: teuerstes gewinnt: O(k)
+} // gesamte Funktion: teuerstes gewinnt: O(k)
 
-// rekusive Variante:
+// rekursive Variante:
 int fib2(int k) {
 	if(k < 2) { // O(1)
 		return k; // O(1)
@@ -1806,7 +1806,7 @@ int fib2(int k) {
 }
 \end{minted}
 \begin{itemize}
-\item sehr ineffizent, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
+\item sehr ineffizient, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
 \end{itemize}
 Sei $f(k)$  die Anzahl der Schritte, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$
 \end{enumerate}

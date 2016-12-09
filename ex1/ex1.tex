@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 17:43
+% Created 2016-12-09 Fr 23:09
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -126,7 +126,7 @@ mark=at position 0.5 with
 Physik ist \uline{nicht} axiomatisch!
 \begin{itemize}
 \item Nicht alle Gesetze der Natur sind bekannt.
-\item Die bekannten Naturgesezte sind \uline{nicht} unumstößlich
+\item Die bekannten Naturgesetze sind \uline{nicht} unumstößlich
 \item unfertig
 \item empirisch
 \item quantitativ
@@ -163,7 +163,7 @@ Zeit & Sekunden & $\si{\second}$\\
 Strecke, die das Licht im Vakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
 \paragraph{Sekunde}
 \label{sec-1-2-1-2}
-Das $\SI{9192631770}{}$-fache  der Periodendauder der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
+Das $\SI{9192631770}{}$-fache  der Periodendauer der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
 \paragraph{Kilogramm}
 \label{sec-1-2-1-3}
 Das Kilogramm ist die Einheit der Masse, es ist gleich der Masse des internationalen Kilogrammprototyps (ist scheiße).
@@ -228,7 +228,7 @@ Die Erdbeschleunigung $g$ ist für alle Körper gleich (Naturgesetz).
 \label{sec-2-1-2-1}
 Ortsvektor:
 \[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} = {\begin{pmatrix} x(t) & y(t) & z(t)\end{pmatrix}}^\intercal\]
-Durschnittsgeschwindigkeit
+Durchschnittsgeschwindigkeit
 \[\frac{\vec{\Delta r_{12}}}{\Delta t} = \frac{\vec{r_2} - \vec{r_1}}{\Delta t} = \vec{v_D}\]
 \[\vec{v}(t) = \frac{\mathrm{d}\vec{r}}{\mathrm{d}t} = \dot{\vec{r}}(t) = {\begin{pmatrix}\dot{x}(t) & \dot{y}(t) & \dot{z}(t)\end{pmatrix}}^\intercal = {\begin{pmatrix} v_x & v_y & v_z\end{pmatrix}}^\intercal\]
 \[\vec{a}(t) = \frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = \dot{\vec{v}}(t) = \ddot{\vec{r}}(t) = {\begin{pmatrix} \ddot{x} & \ddot{y} & \ddot{z}\end{pmatrix}}^\intercal = {\begin{pmatrix} a_x & a_y & a_z \end{pmatrix}}^\intercal\]
@@ -371,7 +371,7 @@ Superpositions von Kräften (Zusatz zu den Newtonschen Gesetzen (Korollar)):
 \label{sec-2-2-1-0-2}
 \begin{itemize}
 \item Elektromagnetische Kraft
-\item Starke Draft
+\item Starke Kraft
 \item Schwache Kraft
 \item Gravitation
 \end{itemize}
@@ -392,7 +392,7 @@ $m = \text{const.}$:
 \paragraph{Experiment}
 \label{sec-2-2-1-4}
 \[\v F_G = \underbrace{m\v g}_{Kraft} = \underbrace{(m + M)}_{Trägheit}\v a = m_{\text{ges}}\v a\]
-\[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{text{ges}}}g\]
+\[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{\text{ges}}}g\]
 \subparagraph{Erwartung:}
 \label{sec-2-2-1-4-1}
 $a\sim {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s = \f{1}{2} a\Delta t^2$
@@ -400,7 +400,7 @@ $a\sim {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s =
 \label{sec-2-2-1-4-2}
 \begin{center}
 \begin{tabular}{rrrrrrr}
-$m[\si{\gram}]$ & $M[\si{\gram}]$ & $m_{\text{ges}}[\si{\gram}]$ & $\f{m_{\text{ges}}}{m}$ & $\Delta s[\si{\mm}]$ & $\Delta t [\si{\second}]$ & $a[\si{meter\per\second}]$\\
+$m[\si{\gram}]$ & $M[\si{\gram}]$ & $m_{\text{ges}}[\si{\gram}]$ & $\f{m_{\text{ges}}}{m}$ & $\Delta s[\si{\mm}]$ & $\Delta t [\si{\second}]$ & $a[\si{\meter\per\second}]$\\
 \hline
 10 & 470 & 480 & 48 & 800 & 2.75 & 0.21157025\\
 40 & 440 & 480 & 12 & 800 & 1.40 & 0.81632653\\
@@ -412,35 +412,35 @@ $m[\si{\gram}]$ & $M[\si{\gram}]$ & $m_{\text{ges}}[\si{\gram}]$ & $\f{m_{\text{
 \label{sec-2-2-1-4-3}
 \paragraph{Trägheitsprinzip - "revisited"}
 \label{sec-2-2-1-5}
-\textbf{Definition}: Ein Bezugssystem in dem das Trägheitsprinzip gilt nennt man ein Inatialsystem. \\
+\textbf{Definition}: Ein Bezugssystem in dem das Trägheitsprinzip gilt nennt man ein Inertialsystem. \\
 
-In einem beschleunigten Bezugsystem gilt das Trägheitsprinzip \uline{nicht}. Beschleunigte Systeme $\neq$ Inatialsysteme.
+In einem beschleunigten Bezugssystem gilt das Trägheitsprinzip \uline{nicht}. Beschleunigte Systeme $\neq$ Inertialsysteme.
 Das Trägheitsprinzip ist Galilei-invariant.
 
 \subparagraph{{\bfseries\sffamily TODO} Skizze whatever}
 \label{sec-2-2-1-5-1}
 \subparagraph{Trägheitsprinzip: [moderne Formulierung]:}
 \label{sec-2-2-1-5-2}
-Es gibt Inatialsysteme, das heißt Koordinatensysteme  in denen ein Kräftefreier Körper im Zustand der Ruhe oder der gradlinig gleichförmigen Bewegung verbleibt.
+Es gibt Inertialsysteme, das heißt Koordinatensysteme  in denen ein kräftefreier Körper im Zustand der Ruhe oder der gradlinig gleichförmigen Bewegung verbleibt.
 
 \paragraph{Actio gleich Reactio}
 \label{sec-2-2-1-6}
 \[\underbrace{\v{F_{12}}}_{\text{Kraft}} = \underbrace{-\v{F_{21}}}_{\text{Gegenkraft}}\]
 \subparagraph{{\bfseries\sffamily TODO} Skizze von Körpern}
 \label{sec-2-2-1-6-1}
-\subparagraph{{\bfseries\sffamily TODO} (Skizze) Expermiment}
+\subparagraph{{\bfseries\sffamily TODO} (Skizze) Experiment}
 \label{sec-2-2-1-6-2}
 \begin{enumerate}
 \item Erwartung:
 \label{sec-2-2-1-6-2-1}
 \[v_1 = v_2 \rightarrow a_1 = a_2 \rightarrow F_1 = F_2~\checkmark\]
-Nichttrivialer Fall: \\
+Nicht trivialer Fall: \\
        Kraftstoß: \\
        Magnetische Kraft: $F_{\text{mag}} \sim {\f{1}{r^2}}$
 \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
 \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
 \end{enumerate}
-\subparagraph{Expermiment 2}
+\subparagraph{Experiment 2}
 \label{sec-2-2-1-6-3}
 \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \implies \f{m_2}{m_1} \approx 1.5\]
 \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
@@ -456,10 +456,10 @@ Nichttrivialer Fall: \\
 \label{sec-3}
 \subsection{Gravitation (TODO Skizze)}
 \label{sec-3-1}
-Eperimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals Cavendish)
+Experimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals Cavendish)
 \subsubsection{Anziehungskraft zweier Massen}
 \label{sec-3-1-1}
-$m_1,m_2$ Massen, Newtonsches Gravitaitonsgesetz:
+$m_1,m_2$ Massen, Newtonsches Gravitationsgesetz:
 \[\v{F_G} = -G\frac{m_1 m_2}{r^2}\v{e_r}\]
 mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}$
 \subsubsection{Erdbeschleunigung}
@@ -469,7 +469,7 @@ mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}$
 \paragraph{Abweichungen}
 \label{sec-3-1-2-1}
 \begin{itemize}
-\item kompilizierte Massenverteilung, Strukturen
+\item komplizierte Massenverteilung, Strukturen
 \item Abflachung der Erde
 \end{itemize}
 \paragraph{Messung von $g$}
@@ -494,9 +494,9 @@ Beliebige Auslenkungsfunktion ($F_x(\Delta x = x - x_0)$)
 $\rightarrow$ unabhängig von konkreter Zusammenhang $f_x(x)$ gilt kleine Änderungen
 \subsection{Maxwell'sches Rad}
 \label{sec-3-3}
-\subsubsection{Ruhezushand}
+\subsubsection{Ruhezustand}
 \label{sec-3-3-1}
-Waage misst Gesamtmasse $M$ austariert
+Waage misst Gesamtmasse $M$ austarierter
 \subsubsection{Frage}
 \label{sec-3-3-2}
 Was passiert, wenn sich das Rad bewegt??
@@ -528,7 +528,7 @@ Die Kraft $F = \frac{m}{2\pi R}v^2$ spannt die Kette.
 \subsection{Normalkraft}
 \label{sec-3-5}
 \begin{enumerate}
-\item (Skizze) Normalkraft $\v{F}_N$ = Kraft senktrecht zur Kontaktfläche. Wird kompensiert duchr $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
+\item (Skizze) Normalkraft $\v{F}_N$ = Kraft senkrecht zur Kontaktfläche. Wird kompensiert durch $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
 \end{enumerate}
 \subsection{Schiefe Ebene}
 \label{sec-3-6}
@@ -556,7 +556,7 @@ $\rightarrow$ Tribologie = Reibungslehre
 \item Gewicht setzt sich in Bewegung: $\abs{\v{F}_Z} > \abs{\v{F}_R} \to a > 0,v$ steigt an
 \item Gewicht gleitet: $\v{F}_Z = - \v{R}_R \to a = 0, v =~\text{const.}~\neq 0$ mit $\v v =~\text{const}~$
 \end{itemize}
-Reibugskraft nimmt ab, sobald das Gewicht bewegt wird.
+Reibungskraft nimmt ab, sobald das Gewicht bewegt wird.
 \begin{itemize}
 \item Haftreibung $F_H$ \\
        Schwellenwert für Zugkraft um Körper zu bewegen
@@ -595,7 +595,7 @@ Messung der Zugkraft bei der sich der Holzblock nach kleiner Störung in Richtun
 \begin{itemize}
 \item $F_R$ hängt nicht von der Oberfläche ab.
 \item $F_R$ hängt von dem Gewicht des Blocks ab
-\item $F_R$ ist Materialbhängig
+\item $F_R$ ist Materialabhängig
 \end{itemize}
 
 \subsection{Tribologische Reibungslehre}
@@ -605,7 +605,7 @@ Messung der Zugkraft bei der sich der Holzblock nach kleiner Störung in Richtun
 \[\mu_H > \mu_G\]
 \subsection{Mikroskopisches Modell}
 \label{sec-3-9}
-Verantwortlich sind elektrische Kröfte zwischen Atomen und Molekülen der beieinanderliegenden Oberflächen: Van-der-Waals-Kräfte
+Verantwortlich sind elektrische Kräfte zwischen Atomen und Molekülen der beieinander liegenden Oberflächen: Van-der-Waals-Kräfte
 \begin{itemize}
 \item Stärke ergibt sich aus effektivem Kontakt.
 \end{itemize}
@@ -772,7 +772,7 @@ Kugelsymmetrisch, Zentralfeld
 \label{sec-4-9-3}
 \begin{itemize}
 \item Feldlinien sind immer tangential zur Kraftrichtung
-\item Feldliniendichte ist proportional zum Betrag der Karft
+\item Feldliniendichte ist proportional zum Betrag der Kraft
 \item Feldlinien schneiden sich nie
 \end{itemize}
 \subsubsection{konservative Kraftfelder}
@@ -874,25 +874,25 @@ E_{pot}(1) = E_{pot(2')} = 0 \\
 \rightarrow \\
 E_{kin}(2) = E_{kin}(2') = \frac{1}{2}m v^2 \\
 \end{align*}
-Bemerkung: Berechung von $v$ mit Newtonschen Gesetzen deutlich komplexer
+Bemerkung: Berechnung von $v$ mit Newtonschen Gesetzen deutlich komplexer
 \subsubsection{Energieerhaltungssatz der Newtonschen Mechanik}
 \label{sec-5-1-2}
 \[E_{pot} + E_{kin} = E_{ges} = ~\text{const}\]
 $E_{ges}$ = mechanische Gesamtenergie \\
-    das heißt: In einem konservativen Kraftfeld ist due Summe aus potetieller und kinetischer Energie
+    das heißt: In einem konservativen Kraftfeld ist die Summe aus potentieller und kinetischer Energie
 eines Massenpunktes zu jeder Zeit konstant
 
-Wichtig: gilt nur für konservative Kraftfelder (Beim Auftreten nicht-konservativer, dissipativer Kröfte wird
+Wichtig: gilt nur für konservative Kraftfelder (Beim Auftreten nicht-konservativer, dissipativer Kräfte wird
 mechanische Energie in Wärme umgewandelt)
 \subsubsection{Energiediagramme}
 \label{sec-5-1-3}
 Häufig: Potentielle Energie abhängig von Ort $x$ oder Abstand $r$ \\
-    Hilfreich: Diskussion mittel Energiediagramm
+    Hilfreich: Diskussion mittels Energiediagramme
 \paragraph{Kugelbahn}
 \label{sec-5-1-3-1}
 \begin{itemize}
 \item Abhängig von $E_{ges}$ kann sich die Kugel nur in bestimmten Bereichen aufhalten
-\item Gleichgewichtslagen: Kugel ruht, es wirken keine Kräfte, das heißt
+\item Gleichgewichtslage: Kugel ruht, es wirken keine Kräfte, das heißt
 \[F = -\dd{E_{pot}}{x} = 0, ~\text{bzw}~ \v F = -\grad E_{pot} = 0\]
 \end{itemize}
 
@@ -900,13 +900,13 @@ Drei Fälle:
 \begin{enumerate}
 \item Stabiles bzw. Metastabiles Gleichgewicht: Potentialkurve hat ein Minimum
 \item labiles Gleichgewicht: Potentialkurve hat ein Maximum
-\item Indifferentes Gleichgeweicht: Flacher Verlauf der Potentialkurve
+\item Indifferentes Gleichgewicht: Flacher Verlauf der Potentialkurve
 \end{enumerate}
 \paragraph{Lennard-Jones-Potential}
 \label{sec-5-1-3-2}
-Potienial zur Beschreibung von molekularen Bindugen
+Potential zur Beschreibung von molekularen Bindungen
 \[E_{pot} = V_0 (\frac{r}{r_0})^{-12} - 2(\frac{r}{r_0})^{-6}\]
-(Dipol-Dipol-Wchselwirkung, Van-der-Waals Kräfte)
+(Dipol-Dipol-Wechselwirkung, Van-der-Waals Kräfte)
 \paragraph{Mechanischer Verstärker}
 \label{sec-5-1-3-3}
 \[E_{pot}' = m g h = \underarrow[\rho]{Dichte} \overarrow[(a b c)]{Volumen} g h\]
@@ -960,10 +960,10 @@ Das heißt: Das Verhältnis $\frac{S_1}{S_2}$ ist umgekehrt proportional zum Mas
 \begin{align*}
 M_E = \SI{6e21}{\kilo\gram}, M_S = \SI{2e30}{\kilo\gram} \\
 X_S = \frac{M_E X_E + M_S 0}{M_E + M_S} = \SI{4.5e5}{\meter}
-\intertext{Vergleich mit Sonnenradius $\SI{7e8}{\meter}$ Schwerpunkt praktisch im Sonenmittelpunkt}
+\intertext{Vergleich mit Sonnenradius $\SI{7e8}{\meter}$ Schwerpunkt praktisch im Sonnenmittelpunkt}
 \end{align*}
 \end{ex}
-\subsubsection{Bewegung des Schwerpunkts}
+\subsubsection{Bewegung des Schwerpunktes}
 \label{sec-6-1-1}
 Geschwindigkeit:
 \[\v v_s = \dd{\v r_s}{t} = \frac{1}{M} \sum_{i = 1}^n m_1 \dd{\v r_i}{t} = \frac{1}{M} \sum_{i = 1}^n m_i \v v_i = \frac{1}{M}\sum_{i = 1}^n \v p_i\]
@@ -972,10 +972,10 @@ $\v p_i$: Impuls des einzelnen Massenpunktes
 \[\v p_s = \sum_{i = 1}^{n}\v p_i = \sum_{i = 1}^{n} m_i \v v_i = M \v v_s\]
 das heißt: Schwerpunktimpuls ergibt sich aus der Summe der Einzelimpulse
 \end{defn}
-Frage: Wie bewegt sich ein System von Massepunkten under Einfluß von Kräften? \\
+Frage: Wie bewegt sich ein System von Massepunkten unter Einfluss von Kräften? \\
     Es gilt:
 \[\dd{\v p_i} = \underarrow[\v F_i]{äußere Kraft} + \sum_{i\neq j}^{}\overarrow[\v F_{i j}]{innere Kraft}, \v F_{ij} = - \v F_{j i}\]
-$\implies$: Änderung des Schwerpukntimpulses $\v p_s$:
+$\implies$: Änderung des Schwerpunktimpulses $\v p_s$:
 \[ \dd{\v p_s}{t} = \sum_{i = 1}^{n}\dot{\v p_i} = \sum_{i = 1}^{n}\v F_i + \underbrace{ \sum_{i} \sum_{i\neq j} \v F_{ij}}_{= 0} = \sum_{i = 1}^{n} \v F_i\]
 das heißt: die Impulsänderung des Schwerpunktes ergibt sich aus der Summe der äußeren Kräfte:
 \begin{enumerate}
@@ -985,7 +985,7 @@ das heißt: die Impulsänderung des Schwerpunktes ergibt sich aus der Summe der 
 Hierbei: $\v a_s = \dot{\v v_s} = \frac{1}{M} \sum m_i \ddot{\v r_i} = \frac{1}{M} \sum m_i \v a_i$
 
 \begin{defn}[Allgemeiner Impulssatz]
-Das Schwerpunkt eines beliebiges Systems ovn Massenpunkten $I$ bewegt sich so, als sei er ein Körper mit der Gesamtmasse $M = \sum m_i$
+Das Schwerpunkt eines beliebiges Systems von Massenpunkten $I$ bewegt sich so, als sei er ein Körper mit der Gesamtmasse $M = \sum m_i$
 \end{defn}
 \begin{defn}[Abgeschlossenes System]
 Ein abgeschlossenes System ist ein System auf das keine äußeren Kräfte einwirken, das heißt:
@@ -998,7 +998,7 @@ Der Massenschwerpunkt eines abgeschlossenen Systems hat einen zeitlich konstante
 \subsubsection{Raketenantrieb}
 \label{sec-6-1-2}
 das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
-    Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
+    Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuhläufer)
 
 Betrachte Rakete:
 Impulssatz:
@@ -1012,7 +1012,7 @@ p(t + \Delta t) 0 m(v + \Delta v) + \Delta m(v - v_B) \\
 m \Delta v - \Delta m v_B = 0
 \intertext{Änderung Blickwinkel:}
 m \Delta v + \Delta m v_b = 0 \\
-\intertext{Wichtig: Masse $m$ und Massenänderung $\d m$ mässen sich auf gleiche Referenz beziehen. Damit folgt:}
+\intertext{Wichtig: Masse $m$ und Massenänderung $\d m$ müssen sich auf gleiche Referenz beziehen. Damit folgt:}
 \d v = - v_b \frac{\d m}{m} \\
 \intertext{Integration:}
 \int_{v_1}^{v_2}\d v = -v_B \int_{m_1}^{m_2} \frac{1}{m} \d m, m_1 > m_2, v_B = ~\text{const} \\
@@ -1022,7 +1022,7 @@ v_1 = 0, m_1 = 0,  m_0 = m(t = 0), m_2 = m(t) \\
 \intertext{$\implies$ Raketengleichung für kräftefreie Rakete}
 v(t) = v_B \ln \frac{m_0}{m(t)}
 \end{align*}
-das heißt: Die Endgeschwindkigkeit einer Rakete wird duch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
+das heißt: Die Endgeschwindkigkeit einer Rakete wird durch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
 
 Für die nicht kräftefreie Rakete gilt:
 \[m(t) \dd{\v v(t)}{t} = -\dd{m(t)}{t} \v v_B + \v F\]
@@ -1039,12 +1039,12 @@ das heißt: der naive Ansatz funktioniert nur, wenn $v - v_B = 0$, also die Auss
 \end{remark}
 \section{Stöße}
 \label{sec-7}
-Für ein abgeschlossenens System gilt: (keine äußere Kräfte) \\
+Für ein abgeschlossenes System gilt: (keine äußere Kräfte) \\
   Impulserhaltung:
 \[\sum_{i = 1}^{n} \v p_i = \sum_{i = 1}^{n} \v p_i'\]
 Energieerhaltung:
 \[\sum_{i = 1}^{n} E_i = \sum_{i = 1}^{n} E_i'\]
-\subsection{Kollinearer elatischer Stoß}
+\subsection{Kollinearer elastischer Stoß}
 \label{sec-7-1}
 Es gilt:
 \begin{align*}
@@ -1107,13 +1107,13 @@ E_{kin,1}^{\ast\prime} = E_{kin,1}^\ast \\
 E_{kin,2}^{\ast\prime} = E_{kin,2}^\ast \\
 \end{align*}
 Im Schwerpunktsystem findet bei elastischen Stößen keine Energieübertragung statt. Aber: Impulse werden ausgetauscht
-\subsubsection{Nicht-zentraler, elatischer Stoß im Schwerpunktsystem}
+\subsubsection{Nicht-zentraler, elastischer Stoß im Schwerpunktsystem}
 \label{sec-7-2-1}
 \begin{align*}
 \v p_s^\ast = 0, \v p_1^\ast = -\v p_2^\ast \\
 \v p_s^{\ast\prime} = -\v p_2^{\ast\prime}, \abs{\v p_1^\ast = \abs{\v p_1^{\ast\prime}}} \\
 \end{align*}
-Im Schwerpunktsystem sind für ein abgeschlossenes System zweier Massepunkte ein- und auslaufende kollinear und vom Betrag her gleich
+Im Schwerpunktsystem sind für ein abgeschlossenes System zweier Massenpunkte ein- und auslaufende kollinear und vom Betrag her gleich
 \subsection{Inelastische Stöße}
 \label{sec-7-3}
 Betrachte $2$ Kugeln
@@ -1250,8 +1250,8 @@ beschreiben. Dabei greift $\v F$ im Schwerpunkt an
 Wirkung von Kräftepaaren: Reine Rotation. Es gilt:
 \[\v M = \v r_1 \times \v F - \v r_2 \times \v F = (\v r_1 - \v r_2)\times \v F = \v r_{12} \times \v F\]
 Merke:
-Das Drehmoment eines Kräftepaares ist unabhängig vonm Bezugspunkt $0$ \\
-    Zwei Kräftepaare sind äquivalent, wenn sie das gleiche Drahmoment besitzen. Äqzivalente Kräftepaare können einander ersetzen.
+Das Drehmoment eines Kräftepaares ist unabhängig vom Bezugspunkt $0$ \\
+    Zwei Kräftepaare sind äquivalent, wenn sie das gleiche Drehmoment besitzen. Äquivalente Kräftepaare können einander ersetzen.
 \subsection{Statisches Gleichgewicht}
 \label{sec-8-3}
 Statik:
@@ -1264,7 +1264,7 @@ das heißt keine Translation, keine Rotation
      Frage: Wo muss $\v F$ angreifen um für statisches Gleichgewicht zu sorgen? \\
      Kräfte:
 \begin{align*}
-sum \v F_i + \v F = 0 \\
+\sum \v F_i + \v F = 0 \\
 \v F = - \sum m_i \v g = - m_{ges} \v g \\
 \end{align*}
 Drehmomente:
@@ -1274,8 +1274,8 @@ Drehmomente:
 = (\sum m_i \v r_i) \times \v g - m_{ges} \v R \times \v G \\
 = m_{ges} (\v R \times \v g) = m_{ges} (\v r_s \times \v g)
 \end{align*}
-Lösung A: $\v R = \v r_s$, das heißt Untertützung im Schwerepunkt mit $\v F = - m{ges} \v g$ \\
-     Lösung B: $(\v R - \v f_s) \times \v g = 0$, das heißt $(\v R - \v r_s) \parallel \v g$, also Unterstützung oberhalb oder unterhalb des Schwerpunkts
+Lösung A: $\v R = \v r_s$, das heißt Unterstützung im Schwerpunkt mit $\v F = - m{ges} \v g$ \\
+     Lösung B: $(\v R - \v f_s) \times \v g = 0$, das heißt $(\v R - \v r_s) \parallel \v g$, also Unterstützung oberhalb oder unterhalb des Schwerpunkt
 3 Möglichkeiten:
 \begin{itemize}
 \item $\v R$ über Schwerpunkt: stabiles Gleichgewicht
@@ -1291,7 +1291,7 @@ Kräftegleichgewicht:
       Kräftegleichgewicht:
 \[\v F_N = - \v F_G, \v F_N' = -\v F_R\]
 Drehmomente: \\
-      Bezugspunkt = unteres Leiterende (günstige Wahl!) \\
+      Bezugspunkt = unteres Leiter-Ende (günstige Wahl!) \\
       \[F_W h = F_g (\frac{1}{2} a)\]
 (vergleiche Übungsaufgabe)
 \end{enumerate}
@@ -1310,14 +1310,14 @@ E_{kin} &= \sum \frac{1}{2} m_i \v v_i^2 \tag{mit $\v v_i = \v v_s + \v v_{si}$}
 E_{kin} &= \frac{1}{2} \sum m_i (\v v_s^2 + 2\v v_s \v v_{si} + \v v_{si} + \v v_{si}^2) \\
 &= \frac{1}{2} \sum m_i \v v_s^2 + \v v_s \sum m_i \v v_{si} + \frac{1}{2} \sum m_i \v v_{si}^2 \\
 \end{align*}
-Die kinetische Energie zerlegt sich in die kinetische Energie des Schwerpunkts und Rotationsenergie, aus der kintischen Energie der Bewegung relativ zum Schwerpunkt
+Die kinetische Energie zerlegt sich in die kinetische Energie des Schwerpunktes und Rotationsenergie, aus der kinetischen Energie der Bewegung relativ zum Schwerpunkt
 
 Jetzt: Betrachte Rotation um raumfeste Achse: (Spezialfall: Achse durch Schwerpunkt) \\
-   Kinetische Energei des Massenstücks $\d m$:
+   Kinetische Energie des Massenstücks $\d m$:
 \begin{align*}
 \d E_{kin} &= \frac{1}{2} \d m \v v_i^2 = \frac{1}{2} \d m (\omega r_{\perp})^2 \\
 &= \frac{1}{2} \d m \omega^2 r_\perp^2 \\
-E_{rot} &= \int \d E_{kin} = \frac{1}{2} \int \omega^2 r_{\perp}^2 \d m = \frac{1}{2} \omega^2 \underbrace{\int r_\perp^2 \d m}_{\text{Trängheitsmoment}}
+E_{rot} &= \int \d E_{kin} = \frac{1}{2} \int \omega^2 r_{\perp}^2 \d m = \frac{1}{2} \omega^2 \underbrace{\int r_\perp^2 \d m}_{\text{Trägheitsmoment}}
 \end{align*}
 
 
@@ -1333,7 +1333,7 @@ Rotationsenergie eines starren Rotators (Rotation um raumfeste Achse)
 \[E_{rot} = \frac{1}{2} I \omega^2\]
 \end{defn}
 
-\subsection{Berechung von Trägheitsmomenten}
+\subsection{Berechnung von Trägheitsmoment}
 \label{sec-8-5}
 Volumenintegral:
 \[I = \int r_\perp^2 \d m = \int r_{\perp}^2 \rho(\v r) \d V\]
@@ -1464,7 +1464,7 @@ T_2^2 - T_0^2 = \SI{8}{\second\squared} \\
 \begin{defn}[Drehimpuls]
 \[\v L = \v r \times \v p\]
 \end{defn}
-Wichtig: Allen bewegten Masenpunkten kann man bezüglich eines Referenzpunktes $0$ einen Drehimpuls zuordnen; der hängt vom Bezugspunkt ab.
+Wichtig: Allen bewegten Massenpunkten kann man bezüglich eines Referenzpunkts $0$ einen Drehimpuls zuordnen; der hängt vom Bezugspunkt ab.
 
 \[\dot{\v L} = \dd{}{t} (\v r \times \v p) = \underbrace{\dot{\v r} \times \v p}_{0} + \v r \times \dot{\v p} = \v r \times \v F = \v M\]
 
@@ -1501,9 +1501,9 @@ Allgemeiner Zusammenhang:
 \end{align*}
 
 \begin{ex}[Schief gestellte Hantel]
-Drehimplus:
+Drehimpuls:
 \[\v L = \v r_1 \times \v p_1 + \v r_2 \times \v p_2\]
-Drehimpulsvektor steht senkrecht auf Verbundingslinie zu $m_1$ und $m_2$.
+Drehimpulsvektor steht senkrecht auf Verbindungslinie zu $m_1$ und $m_2$.
 Aber: Winkelgeschwindigkeit $\v \omega$ zeigt in Richtung der Drehachse.
 \end{ex}
 \begin{ex}[Rotierende Scheibe mit Unwucht]
@@ -1511,8 +1511,8 @@ Für Rad mit Masse $M$ gilt: (ohne Unwucht)
 \[\v L_1 = \int \d \v L~\text{parallel zu}~ \v \omega\]
 aus Symmetriegründen, $\v L = I \v \omega$
 Für das Rad plus Unwucht gilt:
-\[\v L = \v L_1 + \v L_2, \v L_2 = \v r \times \underarrow[\v p]{Drehimpul der Unwucht}\]
-das heißt: $\v L$ nicht parallel zu $\v \omega$, daraus folgt: Derhimpuls hat Komponente senkrecht
+\[\v L = \v L_1 + \v L_2, \v L_2 = \v r \times \underarrow[\v p]{Drehimpuls der Unwucht}\]
+das heißt: $\v L$ nicht parallel zu $\v \omega$, daraus folgt: Drehimpuls hat Komponente senkrecht
 zur Winkelgeschwindigkeit $\v \omega$, diese rotiert mit $\v \omega$
 \[\v M = \dot{\v L}\]
 das heißt auf Achse wirkt Drehmoment.
@@ -1550,7 +1550,7 @@ Rotationsenergie:
 \[E_{rot} = \frac{1}{2} \v \omega^{T} \hat I \v \omega\]
 \end{defn}
 Trägheitstensor $\hat I$ hängt von der Wahl des Koordinatensystems ab! \\
-   Geeignete Koordinatentransformation $\rightarrow$ Diagonalisierung von $\hat I$. (Hauptachsentransformation)
+   Geeignete Koordinatentransformation $\rightarrow$ Diagonalisieren von $\hat I$. (Hauptachsentransformation)
 
 Nach Hauptachsentransformation:
 \[\hat I = \begin{pmatrix} I_a & 0 & 0 \\ 0 & I_b & 0 \\ 0 & 0 & I_c \end{pmatrix}\]
@@ -1559,17 +1559,17 @@ mit $I_a > I_b > I_c$. \\
 
 \subsubsection{Kreisel}
 \label{sec-8-8-1}
-Ein Kreisel ist ein rotierender starrer Körepr, der höchstens an einem Punkt aufgehängt ist. (Kompass, Sattelit, Geschoß) \\
+Ein Kreisel ist ein rotierender starrer Körper, der höchstens an einem Punkt aufgehängt ist. (Kompass, Satellit, Geschoss) \\
     Beschreibung der Kreiselbewegung mit 3 Achsen:
 \begin{itemize}
-\item Figurachse
+\item Figurenachse
 \item Momentane Drehachse, Richtung von $\v \omega$
 \item Drehimpulsachse
 \end{itemize}
 \section{Mechanik deformierbarer Körper}
 \label{sec-9}
 Starrer Körper: $\v r_i - \v r_j = ~\text{const}$, das heißt Abstand zwischen Massenpunkten konstant. \\
-  Wirklichkeint: Verformung bei Anwendung äußerer Kräfte.
+  Wirklichkeit: Verformung bei Anwendung äußerer Kräfte.
 \subsection{Atomares Modell}
 \label{sec-9-1}
 Experiment: Alle Körper sind aus Atomen oder Molekülen aufgebaut.
@@ -1584,18 +1584,18 @@ Federkraft!
 $\implies$
 \begin{itemize}
 \item Modell eines Festkörper: Federmodell. \\
-     Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energei klein gegen $E_{pot}(r_0)$.
+     Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energie klein gegen $E_{pot}(r_0)$.
 Atome können Gitterplätze nicht verlassen. Fernordung!
 \item Modell einer Flüssigkeit: Kugelmodell: \\
      Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
-Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
+Aber: Temperatur zu hoch für feste Zuordnung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
 \item Modell eines Gases: frei bewegliche Teilchen. \\
      Mittlere kinetische Energie ist grob gegen Bindungsenergie, hohe Temperatur!
 \end{itemize}
 \subsection{Feste Körper.}
 \label{sec-9-2}
 \begin{itemize}
-\item Elastischer fester Körper $\rightarrow$ Formelastizität, Volumenelastitität aufgrund rücktreibender Kräfter (Hookscher Bereich)
+\item Elastischer fester Körper $\rightarrow$ Formelastizität, Volumenelastizität aufgrund rücktreibender Kräfte (Hookscher Bereich)
 \item Plastisch feste Körper $\rightarrow$ Formänderungen verbleiben
 \end{itemize}
 Hier: Elastische Körper!
@@ -1659,11 +1659,11 @@ $\chi$: Kompressibilität
 \sigma &= \frac{F_N}{A} \\
 \intertext{Tangentialspannung oder Scherspannung}
 \tau &= \frac{F_T}{A}
-\intertext{F+r kliene Scherwinkel}
+\intertext{F+r kleine Scherwinkel}
 \tau = G \alpha \tag{$G$: Schubmodul, Torsionsmodul} \\
 \end{align*}
 
-Torsion eines Drates (Vollzylinder)
+Torsion eines Drahtes (Vollzylinder)
 \begin{align*}
 \tau &= \dd{F}{A} \\
 R \phi &= L \alpha \\

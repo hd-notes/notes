@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 17:29
+% Created 2016-12-09 Fr 23:09
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -127,7 +127,7 @@ $m$ gerade Zahl $\implies$ $m^2$ gerade Zahl
 \label{sec-2-1-3-1-1-1}
 $m$ gerade $\implies \exists n\in\mathbb{N}~\text{sodass}~m = 2n \implies m^2 = 4n^2 = 2k,~\text{wobei}~k=2n^2\in\mathbb{N} \square$
 \end{enumerate}
-\paragraph{Beweis der Transponerten (der Kontraposition)}
+\paragraph{Beweis der Transponierten (der Kontraposition)}
 \label{sec-2-1-3-2}
 Zum Beweis $A\implies B$ zeigt man $\neg B\implies \neg A~(A\implies B)\iff (\neg B) \implies (\neg A)$
 \subparagraph{Beispiel}
@@ -139,9 +139,9 @@ Sei $m\in\mathbb{N}$, dann gilt $m^2~\text{gerade}~\implies m~\text{gerade}$
 Wir zeigen: $m$ ist ungerade $\implies m^2$ ungerade
 \[\exists n\in\mathbb{N}:~m=2n+1\implies m^2 = (2n+1)^2 = 2k+1, k=2n^2 + 2n\in\mathbb{N}\implies m^2~\text{ungerade} \square\]
 \end{enumerate}
-\paragraph{Indirekter Schluss ( Beweis durch Wiederspruch)}
+\paragraph{Indirekter Schluss ( Beweis durch Widerspruch)}
 \label{sec-2-1-3-3}
-Man nimmt an, dass $A\implies B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\implies \neg C$, also ein Wiederspruch
+Man nimmt an, dass $A\implies B$ nicht gilt, das heißt $A \wedge \neg B$ und zeigt, dass dann für eine Aussage $C$ gelten muss $C\implies \neg C$, also ein Widerspruch
 \subparagraph{Beispiel}
 \label{sec-2-1-3-3-1}
 $\not\exists q\in\mathbb{Q}: a^2 = 2$
@@ -149,7 +149,7 @@ $\not\exists q\in\mathbb{Q}: a^2 = 2$
 \item Beweis
 \label{sec-2-1-3-3-1-1}
 Wir nehmen an, dass $\exists a\in\mathbb{Q}: a^2=2$ Dann folgt:
-$\exists b,c\in\mathbb{Z}$ teilfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
+$\exists b,c\in\mathbb{Z}$ teilerfremd (ohne Einschränkung, denn sonst kürzen soweit wie möglich) mit $a=\frac{b}{c}$
 Falls \[a^2=2\implies (\frac{b}{c})^2=2=\frac{b^2}{c^2}=2 \implies b^2 = 2c^2 \implies b^2~\text{gerade}~\implies b~\text{ist gerade (schon gezeigt)}\] \[\implies\exists d\in\mathbb{N}~\text{sodass}~b=2d\implies b^2=4d^2\]
 Außerdem $b^2=2c^2\implies 2c^2=4d^2\implies c^2=2d^2\implies c$ ist auch gerade. Also müssen $b$ und $c$ beide gerade sein, also nicht teilerfremd, damit haben wir einen Widerspruch hergeleitet $\square$
 \end{enumerate}
@@ -158,7 +158,7 @@ Außerdem $b^2=2c^2\implies 2c^2=4d^2\implies c^2=2d^2\implies c$ ist auch gerad
 \paragraph{Summenzeichen}
 \label{sec-2-1-4-1}
 Wir definieren für $m > 0$ \[\sum_{k=m}^m a_k := a_m + \ldots + a_n\] falls $n\geq m$
-\[\sum_{k=m}^n a_k := 0\] falls $n < m$ (sogennante leere Summe)
+\[\sum_{k=m}^n a_k := 0\] falls $n < m$ (sogenannten leere Summe)
 \paragraph{Produktzeichen}
 \label{sec-2-1-4-2}
 \[\prod_{k=m}^n a_k := \begin{cases} a_m \cdot ... \cdot a_n & \text{falls}~n\geq m\\ 1 & \text{falls}~n<m~\text{(sog. leeres Produkt)}\end{cases}\]
@@ -166,7 +166,7 @@ Wir definieren für $m > 0$ \[\sum_{k=m}^m a_k := a_m + \ldots + a_n\] falls $n\
 \label{sec-2-2}
 \subsubsection{Definition}
 \label{sec-2-2-1}
-(Georg cantor 1885) Unter einer \uline{Menge} verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
+(Georg Cantor 1885) Unter einer \uline{Menge} verstehen wir jede Zusammenfassung $M$ von bestimmten wohl unterschiedenen Objekten (welche die Elemente von $M$ genannt werden), zu einem Ganzen
 $M$ dadurch ist charakterisiert, dass von jedem vorliegendem Objekt $x$ feststeht, ab gilt
 \begin{itemize}
 \item $x\in M$ (x Element von M)
@@ -244,7 +244,7 @@ Eine Äquivalenzrelation auf eine Menge $A$ ist eine Beziehung zwischen ihren El
 \item $a\sim b \implies b\sim a$ \hfill Symmetrie
 \item $a \sim b, b \sim c \implies a \sim c$ \hfill Transitivität
 \end{itemize}
-Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in sogenannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\sim a\}$
+Mit Hilfe einer Äquivalenzrelation lassen sich die Elemente einer Menge in so genannte Äquivalenzklassen einordnen: $[a]:\{b\in A\mid b\sim a\}$
 \subsection{Relationen und Abbildungen}
 \label{sec-2-3}
 \subsubsection{Relationen}
@@ -271,8 +271,8 @@ Ist kein Graph einer Funktion $\mathbb{R}\rightarrow\mathbb{R}$, denn $M^{ *}(x)
 $f$ heißt
 \begin{itemize}
 \item surjektiv, wenn gilt $f(X) = Y$
-\item injectiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \implies x_1 = x_2$
-\item bijektiv, wenn $f$ surjektiv und injectiv ist
+\item injektiv, $\Forall x_1,x_2\in X: f(x_1) = f(x_2) \implies x_1 = x_2$
+\item bijektiv, wenn $f$ surjektiv und injektiv ist
 \end{itemize}
 \subsubsection{Umkehrabbildung}
 \label{sec-2-3-3}
@@ -294,7 +294,7 @@ Für jede Menge $X$ definieren wir die identische Abbildung \[I_d(A) = I_A: A\ri
 \end{itemize}
 \subsubsection{Homomorphe Abbildungen}
 \label{sec-2-3-6}
-Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel Addition, Ordungsrelation), ho heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
+Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel Addition, Ordnungsrelation), so heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
 Eine bijektive Homomorphie heißt Isomorphisumus, beziehungsweise $X\approx Y$ (äquivalent, isomorph)
 \subsection{Natürliche Zahlen}
 \label{sec-2-4}
@@ -309,7 +309,7 @@ $\mathbb{N} = \{1,2,3,\ldots\},~\mathbb{N}_0 := \mathbb{N}\cup \{0\}$
 \item Enthält eine Teilmenge  $M \subseteq \mathbb{N}$ die Zahl $1$ und von jedem $n\in m$ auch den Nachfolger $n'$ ist $M = \mathbb{N}$
 \end{enumerate}
 Bemerkung: \\
-    Mit Hilfe der Axiome lassen sich auf $\mathbb{N}$ Addition ($+$), Multiplikation ($\cdot$) und Ordung ($\leq$) einführen.
+    Mit Hilfe der Axiome lassen sich auf $\mathbb{N}$ Addition ($+$), Multiplikation ($\cdot$) und Ordnung ($\leq$) einführen.
 Wir definieren: \\
     $1' = 2, 2' = 3, \ldots$
 $n + 1 := m'$
@@ -328,7 +328,7 @@ Es seien die folgende Schritte vollzogen:
 Dann sind alle Aussagen $A(n),n\in\mathbb{N}$ gültig.
 \paragraph{Beweis:}
 \label{sec-2-4-2-2}
-Wir definieren die Tailmenge $M\subseteq\mathbb{N},~M:=\{n\in \mathbb{N}\mid A(N)~\text{ist gültig}\}$
+Wir definieren die Teilmenge $M\subseteq\mathbb{N},~M:=\{n\in \mathbb{N}\mid A(N)~\text{ist gültig}\}$
 Die Induktionsverankerung besagt, dass $1\in M$ und die Induktionsannahme $n\in M\implies n + 1 \in M$. Folglich ist nach dem 5. Axiom von Peano $M = \mathbb{N}\hfill\square$
 \paragraph{Beispiel 1}
 \label{sec-2-4-2-3}
@@ -348,11 +348,11 @@ Definition von Potenzen
 \[x^0 := 1\]
 \[\Forall n\in\mathbb{N} x^n := x^{n - 1}x\]
 (iterative (rekursive) Definition) \\
-     Auf $\mathbb{N}$ sind diese elementaren Operationene erklärt:
+     Auf $\mathbb{N}$ sind diese elementaren Operationen erklärt:
 \begin{itemize}
 \item Addition $a+b$
 \item Multiplikation $a\cdot b$
-\item (unter gewissen Vorraussetzungen):
+\item (unter gewissen Voraussetzungen):
 \begin{itemize}
 \item Subtraktion $a-b$
 \item Division $\frac{a}{b}$
@@ -362,7 +362,7 @@ $\mathbb{N}$ ist bezüglich "$-$" oder "$/$" nicht vollständig, das heißt $n+x
 Erweiterungen:
 \begin{itemize}
 \item Ganze Zahlen $\mathbb{Z}:=\{0; \pm, n\in\mathbb{N}\}$ \\
-       Negative Zahl $(-n)$ ist definiert duch $n+(-n) = 0$
+       Negative Zahl $(-n)$ ist definiert durch $n+(-n) = 0$
 \item Rationale Zahlen $\mathbb{Q}~(b x = y)$
 \end{itemize}
 Man sagt, dass $(\mathbb{Q},+,\cdot)$ einen Körper bildet.
@@ -370,17 +370,17 @@ Man sagt, dass $(\mathbb{Q},+,\cdot)$ einen Körper bildet.
 \label{sec-2-4-3}
 $\mathbb{K}$ sei eine Menge auf der Addition und Multiplikation sei. $\mathbb{K}$ heißt ein Körper, wenn die folgende Axiome erfüllt sind:
 \begin{itemize}
-\item Addition: $(\mathbb{K}, +)$ ist eine kummutative Gruppe, das heißt $\Forall a,b,c\in \mathbb{K}$:
+\item Addition: $(\mathbb{K}, +)$ ist eine kommutative Gruppe, das heißt $\Forall a,b,c\in \mathbb{K}$:
 \begin{enumerate}
 \item \((a+b)+c = a+(b+c)\) \hfill Assoziativität
 \item \(a+b = b+a\) \hfill Kommutativität
 \item \(\exists! 0\in\mathbb{K}:a+0 = a\)\hfill Existenz des Nullelement
-\item \(\exists x\in\mathbb{K}: a+x = 0\)\hfill Existstenz des Nagativen
+\item \(\exists x\in\mathbb{K}: a+x = 0\)\hfill Existenz des Negativen
 \end{enumerate}
-\item Multiplikation: $(\mathbb{K}\setminus\{0\},\cdot)$ ist eine kommutative Gruppte, das heißt $\Forall a,b,c\in\mathbb{K}$
+\item Multiplikation: $(\mathbb{K}\setminus\{0\},\cdot)$ ist eine kommutative Gruppe, das heißt $\Forall a,b,c\in\mathbb{K}$
 \begin{enumerate}
-\item \((a\cdot b)\cdot c = a\cdot(b\cdot c)\)\hfill Assozativität
-\item \(a\cdot b = b\cdot a\)\hfill Kummutativität
+\item \((a\cdot b)\cdot c = a\cdot(b\cdot c)\)\hfill Assoziativität
+\item \(a\cdot b = b\cdot a\)\hfill Kommutativität
 \item \(\exists!1\in\mathbb{K}:a\cdot 1 = a\)\hfill Existenz des Einselement
 \item Für \(a\neq 0, \exists! y\in\mathbb{K}:a\cdot y = 1\)\hfill Inverse
 \end{enumerate}
@@ -391,7 +391,7 @@ $\mathbb{K}$ sei eine Menge auf der Addition und Multiplikation sei. $\mathbb{K}
 \end{itemize}
 \paragraph{Satz}
 \label{sec-2-4-3-1}
-$(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" duch \[x\leq y \iff\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
+$(\mathbb{Q},+,\cdot)$ ist ein Körper. Definieren auf $\mathbb{Q}$ eine Ordnung "$\leq$" durch \[x\leq y \iff\exists m\in\mathbb{N}_0, n\in\mathbb{N}:y - x = \frac{m}{n}\]
 dann ist auch diese Ordnung mit der Addition und Multiplikation in $\mathbb{Q}$ in folgendem Sinne verträglich (Axiom M0):
 \begin{itemize}
 \item \(a\leq b\implies a+c \leq b + c\)
@@ -409,7 +409,7 @@ Sei $A$ eine Menge\\
 \item $A$ heißt endlich mit $\abs{A} = n$ Elementen ist äquivalent zu
 \[\abs{A} = \begin{cases} A = \emptyset & n = 0 \\ \exists f:A\to \{1,\ldots,n\} &f~\text{bijektiv},n < \infty\end{cases}\]
 \item $A$ heißt abzählbar unendlich genau dann wenn \[\exists f: A\to \mathbb{N}~\text{bijektiv}\]
-\item $A$ heißt überabzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
+\item $A$ heißt über abzählbar genau dann wenn: $A$ ist weder endlich oder abzählbar unendlich
 \end{itemize}
 \paragraph{Beispiel}
 \label{sec-2-5-1-1}
@@ -427,7 +427,7 @@ Man unterscheide:
 \item n ungerade $\rightarrow$ $z=-\frac{n + 1}{2}$
 \end{itemize}
 \item Injektivität: Sei $z_1,z_2 \in\mathbb{Z}$ und $f(z_1) = f(z_2)$ \\
-        ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade \textbf{Wiederspruch}.
+        ohne Beschränkung der Allgemeinheit $z_1 \leq z_2$. Entweder $z_1,z_2 \geq 0$ oder $z_1,z_2 < 0$, denn sonst währe $f(z_1)$ ungerade und $f(z_1)$ gerade \textbf{Widerspruch}.
 Falls
 \begin{itemize}
 \item $z_1,z-2 \geq 0 \implies 2z_1 = f(z_1) = f(z_2) = 2z_2 \implies z_1 = z_2$
@@ -439,7 +439,7 @@ Falls
 \begin{itemize}
 \item $\mathbb{N}^2 = \mathbb{N}\times\mathbb{N}$ abzählbar unendlich
 \item $\mathbb{Q}$ abzählbar unendlich
-\item $\mathbb{R}$ überabzählbar
+\item $\mathbb{R}$ über abzählbar
 \end{itemize}
 \paragraph{Abzählbarkeit von $\mathbb{N}\times\mathbb{N}$}
 \label{sec-2-5-1-3}
@@ -452,13 +452,13 @@ $M_1,M_2,\ldots,M_n$ abzählbar $\implies M_1 \times \ldots \times M_n$ abzählb
 Durch vollständige Induktion $M_1\times(M_2\times\ldots \times M_n)\approx \mathbb{N}\times\mathbb{N}\approx\mathbb{N}$
 \paragraph{Satz}
 \label{sec-2-5-1-5}
-Die Menge aller Folgen $f:\mathbb{N}\to\{0,1\}$ ist überabzählbar. (Zum Beispiel: $1,0,0,0,\ldots, \underarrow[1]{\text{k-te Stelle}},\ldots,0,\ldots$)
+Die Menge aller Folgen $f:\mathbb{N}\to\{0,1\}$ ist über abzählbar. (Zum Beispiel: $1,0,0,0,\ldots, \underarrow[1]{\text{k-te Stelle}},\ldots,0,\ldots$)
 \subparagraph{Beweis}
 \label{sec-2-5-1-5-1}
-$M$ ist unendlich, denn die Folgen $f_k:0,,\ldots,0,1,0,\ldots$ sind parrweise verschieden. Angenommen $M$ wäre abzählbar. Sei $f_1,f_2, \ldots$ eine Abzählung mit $f_k = ({z_{kn}}_{n\in \mathbb{N}})$.
+$M$ ist unendlich, denn die Folgen $f_k:0,,\ldots,0,1,0,\ldots$ sind paarweise verschieden. Angenommen $M$ wäre abzählbar. Sei $f_1,f_2, \ldots$ eine Abzählung mit $f_k = ({z_{kn}}_{n\in \mathbb{N}})$.
 \[\begin{matrix}1 & 0 & 0 & \ldots \\ 0 & 1 & \ldots \\ 0 & 0 & 0 & \ldots \\ 1 & 1 & 1 & 1 & \ldots \end{matrix}\]
 $f:0 0 1 0$ Man setze $f=(z_n)_{n\in\mathbb{N}}$ mit \[z_n := \begin{cases} 1 & z_{nn} = 0 \\ 0 & z_{nn} = 1\end{cases}\]
-Dann $f\in M$, aber $f\neq f_k \Forall k\in\mathbb{N}$. Also ist $M$ nicht abzählbar. ("Cantorsche Diagonalverfahren").
+Dann $f\in M$, aber $f\neq f_k \Forall k\in\mathbb{N}$. Also ist $M$ nicht abzählbar. ("Cantorsches Diagonalverfahren").
 \subsection{Ordnung}
 \label{sec-2-6}
 \subsubsection{Definition}
@@ -474,13 +474,13 @@ Wenn außerdem noch $\Forall x,y\in A$ gilt:
 \setcounter{enumi}{3}
 \item $x\leq y \vee y\leq x$ \hfill (Vergleichbarkeit je zweier Elemente)
 \end{enumerate}
-so heißt $R$ (totale) Ordung auf $A$. $(A,\leq)$ heißt teilweise beziehungsweise (total) geordnete Menge.
+so heißt $R$ (totale) Ordnung auf $A$. $(A,\leq)$ heißt teilweise beziehungsweise (total) geordnete Menge.
 \paragraph{Beispiel}
 \label{sec-2-6-1-1}
 \begin{enumerate}
 \item $(\mathbb{Q},\leq)$ mit der üblichen Ordnung ist eine total geordnete Menge
 \item Wir definieren auf der Potenzmenge $\mathcal{P}(A)$ einer Menge $A$ eine Teilordnung "$\leq$": \[B\leq C \iff B \subseteq C\Forall B,C\in \mathcal{P}(A)\] \\
-        \textbf{Beweis}: 1. - 3. sind trivial, 4. geht nicht (keine Totalordung). Wähle $B,C\in \mathcal{P}(a), B,C\neq \emptyset, B\cap C = \emptyset$. Dann gilt weder $B\subseteq C$ noch $C\subseteq B\hfill\square$
+        \textbf{Beweis}: 1. - 3. sind trivial, 4. geht nicht (keine Totalordnung). Wähle $B,C\in \mathcal{P}(a), B,C\neq \emptyset, B\cap C = \emptyset$. Dann gilt weder $B\subseteq C$ noch $C\subseteq B\hfill\square$
 \item Sei $F:=\{f\mid f:A\to\mathbb{R}\}$ für eine Menge $A\subseteq \mathbb{R}$. Wir definieren $f\leq g \iff \Forall x\in A: f(x) \leq g(x)$ \\
         (1.) - (3.) trivial, 4. gilt nicht. Falls $A$ mehr als ein Element hat, gibt es eine Funktion, die nicht miteinander verglichen werden können.
 \end{enumerate}
@@ -506,15 +506,15 @@ Sei $(A,\leq)$ eine (total geordnete) Menge, $B\subseteq A$
 \item $\bar{S}(B):= \{S\in A \mid S~\text{S ist untere Schranke zu}~B\}$ \\
       $\ubar{S}(B):= \{S\in A \mid S~\text{S ist obere Schranke zu}~B\}$
 \item Existiert $g:=\min \ubar{S}(B)$ beziehungsweise $g:=\max \bar{S}$ so sagen wir: \\
-      $g = \sup B$ (kleinste obere Schranke, \uline{supremum}, obere "Grenze" von $B$ in $A$)
-$g = \inf B$ (größte obere Schranke, \uline{infimum}, untere "Grenze" von $B$ in $A$)
+      $g = \sup B$ (kleinste obere Schranke, \uline{Supremum}, obere "Grenze" von $B$ in $A$)
+$g = \inf B$ (größte obere Schranke, \uline{Infimum}, untere "Grenze" von $B$ in $A$)
 \end{enumerate}
 \subsubsection{Bemerkung}
 \label{sec-2-8-1}
 \begin{enumerate}
-\item Existiert $\max B = \bar{b}$, so folt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nach Definition.
+\item Existiert $\max B = \bar{b}$, so folgt $\sup B = \bar{b}$, denn $\bar{b} \in \ubar{S}(B)$ nach Definition.
 \[s\in \ubar{S}(B) \implies \bar{b} \leq s,~\text{da}~\bar{b}\in B\]
-Ebeso gilt: $\exists\min B = \ubar{b} \implies \inf B = \ubar{b}$
+Ebenso gilt: $\exists\min B = \ubar{b} \implies \inf B = \ubar{b}$
 \end{enumerate}
 \subsubsection{Beispiel}
 \label{sec-2-8-2}
@@ -542,11 +542,11 @@ Das motiviert die folgende Vorstellung:
 Jede nach oben (unten) beschränkte Teilmenge hat ein Supremum oder Infimum.
 \subsubsection{Axiomatischer Standpunkt}
 \label{sec-2-9-2}
-Es gibt eine Menge $\mathbb{R}$ (genannt Menge der reellen Zahlen) mit Addition, Multiplikation, Ordung, die die Definition eines Körper und das Vollständigkeitsaxiom erfüllt und $(\mathbb{R},+,\cdot)$ mit "$\leq$" eine Ordung bildet.
+Es gibt eine Menge $\mathbb{R}$ (genannt Menge der reellen Zahlen) mit Addition, Multiplikation, Ordnung, die die Definition eines Körper und das Vollständigkeitsaxiom erfüllt und $(\mathbb{R},+,\cdot)$ mit "$\leq$" eine Ordnung bildet.
 \subsubsection{Bemerkung}
 \label{sec-2-9-3}
 \begin{enumerate}
-\item Bis auf Isomorphie gibt es höchstens ein solches $\mathbb{R}$, das heißt $\tilde{\mathbb{R}}$ ein weiteres System der reellen Zahlen ist, dann $\exists$ bijektive Abbildung $f:\mathbb{R}\to\tilde{\mathbb{R}}$ die bezüglich Additoin, Multiplikation, Ordung eine Homomorphie ist.
+\item Bis auf Isomorphie gibt es höchstens ein solches $\mathbb{R}$, das heißt $\tilde{\mathbb{R}}$ ein weiteres System der reellen Zahlen ist, dann $\exists$ bijektive Abbildung $f:\mathbb{R}\to\tilde{\mathbb{R}}$ die bezüglich Addition, Multiplikation, Ordnung eine Homomorphie ist.
 \[\Forall x,y\in \mathbb{R}:\]
 \[f(x+y) = f(x) + f(y)\]
 \[f(x y) = f(x) f(y)\]
@@ -561,15 +561,15 @@ Es gibt eine Menge $\mathbb{R}$ (genannt Menge der reellen Zahlen) mit Addition,
 Wir können $\mathbb{R}$ ausgehend von $\mathbb{Q}$ konstruieren.
 \paragraph{Methode der Abschnitte}
 \label{sec-2-9-4-1}
-Jede reelle Zahl wird charakterisiert durch ein "rechts offenes, unbeschränktes Interval", dessen "rechte Grenze" die Zahl erstellt.
+Jede reelle Zahl wird charakterisiert durch ein "rechts offenes, unbeschränktes Intervall", dessen "rechte Grenze" die Zahl erstellt.
 \[\mathbb{R}:=\{A\subseteq \mathbb{Q}\begin{cases}A\neq\emptyset \\ x\in A, y\leq x\implies y\in A \\ \Forall x\in A\exists y\in A, x<y\end{cases}\]
-\paragraph{Mehtode der Cauchy-Folgen}
+\paragraph{Methode der Cauchy-Folgen}
 \label{sec-2-9-4-2}
-Jede reelle Zahl wird charaktierisiert als "Grenzwert" eine Klasser äquivalenter "Cauchy Folgen" aus $\mathbb{Q}$ (später)
+Jede reelle Zahl wird charakterisiert als "Grenzwert" eine Klasse äquivalenter "Cauchy Folgen" aus $\mathbb{Q}$ (später)
 \subsubsection{Definition 1.37}
 \label{sec-2-9-5}
 \begin{itemize}
-\item \[x\in \mathbb{R}~\text{heißt}~\begin{cases}\text{positiv} & 0 < x \\ \text{nichtnegativ} & 0\leq x \\ \text{negativ} & x < 0 \\ \text{nichtpositiv} & x\geq 0 \end{cases}\]
+\item \[x\in \mathbb{R}~\text{heißt}~\begin{cases}\text{positiv} & 0 < x \\ \text{nicht negativ} & 0\leq x \\ \text{negativ} & x < 0 \\ \text{nicht positiv} & x\geq 0 \end{cases}\]
 \item Die Betragsfunktion $\abs \cdot:\mathbb{R} \to \mathbb{R}$ wird definiert durch $\abs{x} = \max \{x,-x\} = \begin{cases} x & x \geq 0 \\ -x & x < 0\end{cases}$
 \item Die Vorzeichen- oder Signumfunktion \[\sgn:\mathbb{R}\to\mathbb{R},\sgn{x} = \begin{cases}\frac{x}{\abs{x}} & x \neq 0 \\ 0 & x = 0\end{cases} = \begin{cases} 1 & x > 0 \\ -1 & x < 0 \\ 0 & x = 0\end{cases}\]
 \end{itemize}
@@ -630,7 +630,7 @@ $z\in I_\delta(y) \implies z\in I_\eps(x)$. Es gilt
 \label{sec-2-9-10}
 $A,B$ seien geordnete Mengen, $f:A\to B$ heißt:
 \begin{itemize}
-\item monoton $\begin{cases} \text{wachsed} & x \leq y \implies f(x) \leq f(y)  \\ \text{fallend} & x \leq y \implies  f(x) \leq f(y) \end{cases}$
+\item monoton $\begin{cases} \text{wachsend} & x \leq y \implies f(x) \leq f(y)  \\ \text{fallend} & x \leq y \implies  f(x) \leq f(y) \end{cases}$
 \item streng monoton $\begin{cases} \text{wachsend} & x < y \implies f(x) < f(y) \\ \text{fallend} & x < y \implies f(x) > f(y) \end{cases}$
 \end{itemize}
 \paragraph{Beispiel 1.43}
@@ -661,7 +661,7 @@ Es gilt $\Forall a,b\in\mathbb{R}$ (beziehungsweise $\mathbb{R}\setminus \{0\}$)
 \end{enumerate}
 \paragraph{Beweis}
 \label{sec-2-9-13-1}
-Zunächst f+r $n,m\in\mathbb{N}_0$ durch Indukton nach $n$, dann für $n,m\in\mathbb{Z}$ (mit Hilfe der Definition von $a^{-n}$)
+Zunächst f+r $n,m\in\mathbb{N}_0$ durch Induktion nach $n$, dann für $n,m\in\mathbb{Z}$ (mit Hilfe der Definition von $a^{-n}$)
 \subsubsection{Definition 1.47}
 \label{sec-2-9-14}
 Sei $n,k\in\mathbb{N}_0$ \[\binom{n}{k}:=\prod_{j=1}^k \frac{n -j + 1}{j}\]
@@ -721,7 +721,7 @@ $\mathbb{N}$ ist unbeschränkt in $\mathbb{R}$
 \paragraph{Beweis}
 \label{sec-2-9-19-1}
 sonst $\exists x = \sup \mathbb{N}$ (nach Vollständigkeits Axiom), $x$ kleinste obere Schranke $\xRightarrow{\text{[[Lemma 1.51]]}} \eps= \frac{1}{2} \exists m_o \in \mathbb{N}:x - \frac{1}{2} < m_0 \implies m_0 + 1 \in \mathbb{N},m_0 + 1 > x + \frac{1}{2} > x$
-$\implies x$ inst nicht die obere Schranke von $\mathbb{N}\hfill\square$
+$\implies x$ ist nicht die obere Schranke von $\mathbb{N}\hfill\square$
 \subsubsection{Lemma 1.53 (Bernoullische Ungleichung)}
 \label{sec-2-9-20}
 \label{Lemma-1.53}
@@ -818,22 +818,22 @@ Aus \ref{1.55.4} und \ref{1.55.5} folgt $x^m = a\hfill\square$
 \section{Komplexe Zahlen}
 \label{sec-3}
 \textbf{Motivation:} $x^2 + 1 = 0$ nicht lösbar in $\mathbb{R}$ \\
-  Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
+  Wir betrachten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
 \begin{itemize}
 \item \label{KA} (KA) $\{x_1,y_1\} + \{x_2,y_2\} = \{x_1 + x_2, y_2 + y_2\}$
 \item \label{KM} (KM) $\{x_1,y_1\} \cdot \{x_2,y_2\} = \{x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1\}$
 \end{itemize}
-\subsection{Komplexer Zahlkörper}
+\subsection{Komplexer Zahlenkörper}
 \label{sec-3-1}
 \begin{enumerate}
-\item Die Menge der Paare $z = \{x,y\} \in \mathbb{R}\times\mathbb{R}$ mit Addition \ref{KA} und Multiplikation \ref{KM} bildet den Körper $\mathbb{C}$ der \textbf{komplexen Zahlen} mit den neutralen Elementn $\{0,0\}$ und $\{1,0\}$
+\item Die Menge der Paare $z = \{x,y\} \in \mathbb{R}\times\mathbb{R}$ mit Addition \ref{KA} und Multiplikation \ref{KM} bildet den Körper $\mathbb{C}$ der \textbf{komplexen Zahlen} mit den neutralen Elementen $\{0,0\}$ und $\{1,0\}$
 \item Die Gleichung $z^2 + \{1,0\} = \{0,0\}$ hat in $\mathbb{C}$ zwei Lösungen, welche mit $\I:= \{0,\pm 1\}$ bezeichnet werden
 \item Der Körper $\mathbb{R}$ ist mit der Abbildung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ isomorph zu einem Unterkörper von $\mathbb{C}$
 \end{enumerate}
 \subsubsection{Beweis}
 \label{sec-3-1-1}
 \begin{enumerate}
-\item Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributibitätsgesetzes verifiziert man durch Nachrechenen. \\
+\item Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributivitätsgesetzes verifiziert man durch Nachrechnen. \\
        Neutrale Elemente: Wir lösen die Gleichung $a + z = \{0,0\}$ für beliebige gegebene $a\in\mathbb{C},a=\{a_1,a_2\}$
        \[\implies z = \{-a_1, -a_2\}\]
        \[a\cdot z = \{1,0\}\]
@@ -871,7 +871,7 @@ Jede algebraische Gleichung der Form \[z^n + \sum_{i = 0}^{n - 1} a_i z^i = 0\]
 hat in $\mathbb{C}$ mindestens eine Lösung. Beweis $\rightarrow$ Funktionstheorie
 \subsection{Betrag}
 \label{sec-3-7}
-Für komplese Zahlen lässt sich ein Absolutbetrag definieren
+Für komplexe Zahlen lässt sich ein Absolutbetrag definieren
 \[r = \abs{z} = \sqrt{x^2 + y^2}\]
 Damit:
 \begin{align}
@@ -902,7 +902,7 @@ Topologische Struktur auf Mengen.
 \end{itemize}
 
 Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder $\mathbb{C}$)
-\subsection{Definition 2.1 Konverenz}
+\subsection{Definition 2.1 Konvergenz}
 \label{sec-4-1}
 Wir sagen, dass die Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) gegen den Grenzwert (oder Limes) $a\in\mathbb{K}$ konvergiert
 \[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
@@ -984,7 +984,7 @@ Ein $a\in\mathbb{K}$ heißt Häufungspunkt einer Teilmenge $M$ von $\mathbb{K}$,
 \end{enumerate}
 \end{ex}
 \begin{remark}
-Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Haufungswert
+Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Häufungswert
 \end{remark}
 \begin{lemma}[2.11]
 \label{lemma:cauchy_haufungswert}
@@ -1012,7 +1012,7 @@ $\implies CA$ offen $\implies A$ abgeschlossen \\
 $(\implies)$: \\
 Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das heißt $x \in CA$, so gilt
 \[\exists \eps > 0: I_\eps \subseteq CA \implies I_\eps (x) \cap A = \emptyset \text{lightning}\]
-\textbf{Widerspruch} zur Definition von Häufungspunkt $\implies$ jeder Häufungspunk von $A$ ist in $A$
+\textbf{Widerspruch} zur Definition von Häufungspunkt $\implies$ jeder Häufungspunkt von $A$ ist in $A$
 \end{proof}
 \begin{lemma}[2.14]
 \label{lemma:monoton_in_r}
@@ -1035,7 +1035,7 @@ Dann ist die Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$ von $(a_n)_{n\in\mathbb{N}}$
 \end{align*}
 Damit können wir definieren
 \[n_{k + 1} = \min\{k \geq n_k: a_{n_k} < a_k\}\]
-und die Folge $(a_{n_k})_{k\in\mathbb{N}}$ ist monoton wachsed
+und die Folge $(a_{n_k})_{k\in\mathbb{N}}$ ist monoton wachsend
 \end{itemize}
 \end{proof}
 \begin{ex}
@@ -1049,7 +1049,7 @@ Sei $A\subseteq \mathbb{R}$ ( gilt in $\mathbb{R}^n$!) Folgende Aussagen sind ä
 \begin{enumerate}
 \item \label{bolzano:1} $A$ ist beschränkt abgeschlossen
 \item \label{bolzano:2} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ hat einen Häufungswert in $A$
-\item \label{bolzano:3} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ hesitzt eine in $A$ konvergente Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$
+\item \label{bolzano:3} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ besitzt eine in $A$ konvergente Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$
 \end{enumerate}
 \end{thm}
 \begin{proof}
@@ -1155,7 +1155,7 @@ Sei $\eps > 0$ gegeben. Nach Annahme ist $\abs{q} < 1 \implies \abs{q}^{-1} > 1$
 \begin{align*}
 \intertext{Zu zeigen: $\abs{c q^n - 0} < \eps$ für genug große $n$, das heißt}
 c(\frac{1}{1+x})^n < \eps \iff \frac{c}{\eps} < (1 + x)^n \\
-\intertext{Das Archimedische Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
+\intertext{Das Archimedisches Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
 n_0 > \frac{c}{x\eps} - \frac{1}{x} = \frac{c - \eps}{x\eps} \\
 \Forall n\geq n_0: \frac{c}{\eps} = (\frac{c}{x\eps} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
 \intertext{daraus folgt aus der Bernoulli Ungleichung}
@@ -1188,9 +1188,9 @@ s_n \to \frac{1}{1 -q} \tag*{\qedhere}
 \begin{itemize}
 \item $(a_n)_{n\in\mathbb{N}}$ ist monoton wachsend
 \item beschränkt: $a_n < 3 \Forall n\in\mathbb{N}$
-\item $\implies (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogennante Zahl $\euler$
+\item $\implies (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogenannten Zahl $\euler$
 \end{itemize}
-\item $(a_n)_{n\in\mathbb{N}}$ rekursiev definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
+\item $(a_n)_{n\in\mathbb{N}}$ rekursiv definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
 \end{enumerate}
 \end{ex}
 \subsection{Umgebung}
@@ -1210,7 +1210,7 @@ Aus der Definition folgt
 \begin{enumerate}
 \item Für irgendein \[i_0 \in I \Exists \eps > 0: I_\eps (a) \subseteq U_{i_0} \subseteq \bigcup_{i \in I} U_i\]
 \item Es gilt nach Voraussetzung $\eps_1, \ldots \eps_n > 0$ mit $I_{\eps_i}(a) \subseteq U_i$ für $i = 1,\ldots,n$. Folglich gilt für $\eps:= \min \{\eps_1, \ldots, \eps_n\} > 0,~I_\eps(a) \subseteq U_i (\Forall i = 1,\ldots,n) \implies I_\eps (a) \subseteq U_1 \cap \ldots U_n$
-\item Nach Vorraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\eps > 0$ mit $I_\eps(a) \subseteq U$ \\
+\item Nach Voraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\eps > 0$ mit $I_\eps(a) \subseteq U$ \\
       $V:= I_{\frac{\eps}{2}}(a) \subseteq U$ ist ebenfalls Umgebung von $a$ und $\Forall y\in V$ gilt
 \[I_{\frac{\eps}{2}} \subseteq I_\eps(x) \subseteq U,~\text{denn}~ \underbrace{\abs{y - z}}_{z\in I_{\frac{\eps}{2}}} < \frac{\eps}{2} \implies \abs{x - z} \leq \abs{x - y} + \abs{x - z} < \eps\]
 \end{enumerate}
@@ -1222,7 +1222,7 @@ Aus der Definition folgt
       (in $\mathbb{R}\Forall a\in A \Exists \eps > 0 I_\eps (a) \subseteq A$)
 Für Intervalle $(a,b)$ haben wir schon gezeigt, dass sie offen sind
 \item $A\subseteq \mathbb{K}$ heißt abgeschlossen $\iff C_\mathbb{K} A$ offen
-\item Abschließung von $A$: \[\bar A := \{a \in \mathbb{K} \mid a \in A \vee a ~\text{Häufungspunk von}~A\}\]
+\item Abschließung von $A$: \[\bar A := \{a \in \mathbb{K} \mid a \in A \vee a ~\text{Häufungspunkt von}~A\}\]
 \item Rand von $A$: \[\partial A:= \{a\in\mathbb{K}\mid \Forall ~\text{Umgebung $U$ von $a$}: A \cap U \neq \emptyset \wedge CA \cap U \neq \emptyset\}\]
 \end{enumerate}
 \end{defn}
@@ -1234,7 +1234,7 @@ A&= (a,b\right] \\
 \Forall \eps > 0 I_\eps(a) \cap (a,b\right] \neq \emptyset \\
 I_\eps (a) \cap \mathbb{R} \setminus (a,b\right] \neq \emptyset
 \end{align*}
-Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\eps$-Intervall um eine rationale Zahl gilbt es sowohl rationale als auch irrationale Zahlen
+Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\eps$-Intervall um eine rationale Zahl gibt es sowohl rationale als auch irrationale Zahlen
 \end{ex}
 \begin{remark}
 \mbox{}
@@ -1323,7 +1323,7 @@ Aus den Rechenregeln für konvergente Folgen
 \end{proof}
 \subsection{Konvergenzkriterien}
 \label{sec-5-1}
-Cauchy Kriterium für Paritalsummen besagt, dass eine Reihe genau dann konvergent ist, wenn
+Cauchy Kriterium für Partialsummen besagt, dass eine Reihe genau dann konvergent ist, wenn
 \[\Forall \eps > 0 \Exists n_\eps \in \mathbb{N}: \Forall n > m \geq n_\eps: \abs{s_n - s_m} = \abs{\sum_{k = m + 1}^n a_k} < \eps\]
 
 \begin{lemma}[2.28 Reihenkonvergenz]
@@ -1332,7 +1332,7 @@ Eine Reihe $\displaystyle \sum_{k = 1}^\infty a_k$ kann nur dann konvergent sein
 \begin{proof}
 Sei $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k = \lim_{n \to \infty} s_n$. Dann gilt
 \[\lim_{n\to\infty} a_n = \lim_{n\to\infty} (s_n - s_{n - 1}) = \lim_{n\to\infty} s_n - \lim_{n\to\infty} s_{n - 1} = s_\infty - s_\infty = 0\]
-Die Beschränktheit der Paritalsummen folgt notwendig aus der Beschränktheit konvergenter Folgen.
+Die Beschränktheit der Partialsummen folgt notwendig aus der Beschränktheit konvergenter Folgen.
 \end{proof}
 \begin{thm}[2.29]
 Sei $(a_k)_{k\in\mathbb{N}}$ eine Nullfolge. Dann $\displaystyle \sum_{k = 1}^\infty (a_k - a_{k + 1}) = a_1$
@@ -1380,9 +1380,9 @@ Analog im Fall $m = 2n$
 \end{proof}
 \begin{ex}[2.33]
 \begin{enumerate}
-\item $\displaystyle s_\infty = \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \ldots$ konvergiert nach dem Leibnitz Kriterium
+\item $\displaystyle s_\infty = \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \ldots$ konvergiert nach dem Leibniz Kriterium
 \[\abs{\frac{(-1)^{k - 1}}{k}} = \frac{1}{k} \to 0~\text{monoton}\]
-\item Die Leibnitz Reihe $\displaystyle s_\infty =  \sum_{k = 0}^\infty \frac{(-1)^k}{2k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots$ konvergiert nach Leibnitz Kriterium
+\item Die Leibniz Reihe $\displaystyle s_\infty =  \sum_{k = 0}^\infty \frac{(-1)^k}{2k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots$ konvergiert nach Leibniz Kriterium
 \end{enumerate}
 \end{ex}
 \begin{remark}[Monotonie ist wichtig]
@@ -1402,7 +1402,7 @@ Sei $\displaystyle \sum_{k = 1}^\infty \abs{a_k}$ konvergent in $\mathbb{R}$. Da
 \begin{proof}
 Mit Cauchy Kriterium:
 \[\abs{\sum_{k = m}^n a_k} \leq \sum_{k = m}^n \abs{a_k} < \eps\]
-aus der Absolutkonverenz
+aus der absoluten Konvergenz
 \end{proof}
 \begin{thm}[2.36 Umordnungssatz]
 Sei $\displaystyle \sum_{k = 1}^\infty a_k$ eine absolut konvergente Reihe in $\mathbb{R}$. Dann gilt
@@ -1410,14 +1410,14 @@ für jede bijektive Abbildung $\tau: \mathbb{N} \to \mathbb{N}$
 \[\sum_{k = 1}^\infty a_{\tau(k)} = \sum_{k = 1}^\infty a_k\]
 \end{thm}
 \begin{proof}
-Ranacher für spezifische Umordung
+Ranacher für spezifische Umordnung
 \end{proof}
 \begin{ex}[2.37]
 $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k}$ konvergent (aber nicht absolut) \\
    Behauptung: $\Exists$ Umordnung $\tau$, sodass $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{\tau(k) - 1}}{\tau(k)}$ divergiert
 Beachte
 \[\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{2\cdot 2^j - 1} \leq 2^{j - 1} \frac{1}{2^{j + 1}} = \frac{1}{4}\]
-$\implies$ Die Umordung
+$\implies$ Die Umordnung
 \[1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + (\frac{1}{5} + \frac{1}{7}) - \frac{1}{6} + \underbrace{(\frac{1}{9} + \frac{1}{11} + \frac{1}{13} + \frac{1}{15})}_{\geq \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{8} + \ldots + \underbrace{(\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{1}{2^{j + 1} - 1})}_{> \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{2^k + 2}\]
 konvergiert nicht
 \end{ex}
@@ -1426,7 +1426,7 @@ Seien $\displaystyle \sum_{k = 1}^\infty a_k, \sum_{k = 1}^\infty b_k$ absolut k
 \[\sum_{m = 1}^\infty = (\sum_{k = 1}^\infty a_k)(\sum_{k = 1}^\infty b_k)\]
 (ohne Beweis)
 \end{thm}
-\begin{thm}[2.39 Vergleichkriterium]
+\begin{thm}[2.39 Vergleichskriterium]
 Gegeben seien zwei Reihen $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k, \tilde s_\infty = \sum_{k = 1}^\infty \tilde a_k$
 \begin{enumerate}
 \item Gilt für fast alle $k \in \mathbb{N}$ mit einer Konstante $\alpha > 0\quad \abs{a_k} \leq \alpha \tilde a_k$ \\
@@ -1435,13 +1435,13 @@ Gegeben seien zwei Reihen $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k, \ti
 \end{enumerate}
 \end{thm}
 \begin{proof}
-ohne Beschränkung der Allgemeinheit nehmen wir an, dass die Vorraussetzungen $\Forall k \in \mathbb{N}$ gelten
+ohne Beschränkung der Allgemeinheit nehmen wir an, dass die Voraussetzungen $\Forall k \in \mathbb{N}$ gelten
 \begin{enumerate}
 \item Ist $\tilde s_\infty$ konvergent
 \[\implies \sum_{k = 1}^{n}\abs{a_k} \leq \alpha \sum_{k = 1}^{n} \abs{\tilde a_k} \leq \alpha \sum_{k = 1}^{\infty} \tilde a_k, \Forall n\in\mathbb{N}\]
-$\implies S_n$ sind beschränkt, $S_\infty$ absolut konverent
+$\implies S_n$ sind beschränkt, $S_\infty$ absolut konvergent
 Umgekehrt folgt aus Divergenz von $\tilde S_\infty$ auch $\sum_{k = 1}^{\infty} \abs{a_k} \to \infty \implies \tilde S_\infty$ auch Divergent
-\item Aus Vorraussetzung
+\item Aus Voraussetzung
 \begin{align*}
 \abs{\frac{a_{k + 1}}{\tilde a_{k + 1}}} \leq \abs{\frac{a_{k + 1}}{a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} \leq \abs{\frac{\tilde a_{k + 1}}{\tilde a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} = \abs{\frac{a_k}{\tilde a_k}} \leq \ldots \leq \abs{\frac{a_1}{\tilde a_1}} =: \alpha
 \end{align*}
@@ -1454,7 +1454,7 @@ beziehungsweise $\lim_{k \to \infty} \sup \sqrt{\abs{a_k}} < 1$ \\
    Wenn für unendlich viele $k \in \mathbb{N}$ gilt $\sqrt[k]{\abs{a_k}} > 1$, beziehungsweise $\abs{a_k} > 1$, so ist die Reihe absolut divergent.
 \end{korollar}
 \begin{proof}
-Nach Vorraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante für $s_\infty$
+Nach Voraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante für $s_\infty$
 \end{proof}
 \begin{korollar}[2.41 Quotientenkriterium]
 Eine Reihe $\displaystyle \sum_{k = 0}^{\infty} a_k$ konvergiert absolut, wenn es ein $q\in (0,1)$ gibt mit dem für f.a. $k\in\mathbb{N}$ gilt
@@ -1511,7 +1511,7 @@ auch die Divergenz von $S_n$
 \[S_\infty = \sum_{k = 0}^{\infty} c_k (x - x_0)^k\]
 mit den Koeffizienten $c_k \in \mathbb{K}$, Zentrum $x_0 \in \mathbb{K}$ und Argument $x\in \mathbb{K}$
 \begin{itemize}
-\item Die geometrische Reihe ist ein Spezialfall der allgeminen Potenzreihe
+\item Die geometrische Reihe ist ein Spezialfall der allgemeinen Potenzreihe
 \item Unendlicher Dezimalbruch
 \[0, d_1, d_2, d_3, \ldots = \sum_{k = 1}^{\infty} d_k 10^{-k}, d_k \in \{0,1,\ldots, 9\}\]
 \end{itemize}
@@ -1529,7 +1529,7 @@ Für $x\neq x_0$ gilt
 Falls $\rho = \infty$, konvergiert die Reihe $\Forall x\in \mathbb{K}$ \\
    Falls $\rho = 0$, konvergiert die Reihe für kein $x\neq x_0$
 \begin{itemize}
-\item Die Konvergenzgrenze $\rho$ ist die größt mögliche und wird \textbf{Konvergenzradius} der Reihe bezeichent
+\item Die Konvergenzgrenze $\rho$ ist die größt mögliche und wird \textbf{Konvergenzradius} der Reihe bezeichnet
 \item Für $\lim\sup \sqrt[k]{\abs{c_k}} = \infty$ konvergiert die Reihe für kein $x \neq x_0$ und wir setzen $\rho 0$
 \item Falls $\lim\sup \sqrt[k]{\abs{c_k}} = 0 \implies \rho = \infty$
 \end{itemize}
@@ -1537,7 +1537,7 @@ Falls $\rho = \infty$, konvergiert die Reihe $\Forall x\in \mathbb{K}$ \\
 \subsection{Exponentialreihe}
 \label{sec-5-3}
 \[\exp(x) := \sum_{k = 0}^{\infty} \frac{x^k}{k!}\] ist eine Potenzreihe.
-Ihr Konvergenzradizs
+Ihr Konvergenzradius
 \[\rho = \frac{1}{\lim_{n\to\infty}\sup \sqrt[n]{\abs{a_n}}} = \frac{1}{\lim_{n\to\infty} \sqrt[n]{\frac{1}{n!}}} = \lim_{n\to\infty} \sqrt[n]{n!} = \infty\]
 
 \begin{thm}[2.45]
@@ -1565,7 +1565,7 @@ Da dies für alle $m \in \mathbb{N}$, folgt
 \label{sec-6-1}
 Wir betrachten die Funktion
 \[f:\mathbb{R}\setminus\{0\} \to \mathbb{R}, x\mapsto \frac{e^x - }{x} \]
-und wolllen diese auf ganz $\mathbb{R}$ fortsetzen, das heißt Wir suchen ein $\tilde f: \mathbb{R} \to \mathbb{R}$
+und wollen diese auf ganz $\mathbb{R}$ fortsetzen, das heißt Wir suchen ein $\tilde f: \mathbb{R} \to \mathbb{R}$
 mit $\tilde f\mid \mathbb{R}\setminus \{0\} = f$ und einen Wert $\tilde f(0) \in \mathbb{R}$
 
 Allgemeiner überprüft man für Funktionen $f: D \subseteq \mathbb{K} \to \mathbb{K}$ die
@@ -1589,10 +1589,10 @@ Wir schreiben kurz: $\lim_{x\to x_0} f(x) = a$
 verstehen wir unter
 \[\lim_{\substack{x\to x_0 \\ x\in T}} f(x)\]
 den Grenzwert $\lim_{x\to x_0} f\mid T$, falls er existiert.
-\item Spezialfällte:
+\item Spezialfälle:
 \begin{align*}
-T_{>} := \{x\in D\mid x > x_0\}: f(x_0^{+}) := \lim_{\substack{x\to x_0 \\ x\in T_{>}}} f(x) = \lim_{x\to x_0^{+}} f(x) \tag{rechtsseitiger Grenwzwert} \\
-T_{<} := \{x\in D\mid x < x_0\}: f(x_0^{-}) := \lim_{\substack{x\to x_0 \\ x\in T_{<}}} f(x) = \lim_{x\to x_0^{-}} f(x) \tag{linksseitiger Grenwzwert}
+T_{>} := \{x\in D\mid x > x_0\}: f(x_0^{+}) := \lim_{\substack{x\to x_0 \\ x\in T_{>}}} f(x) = \lim_{x\to x_0^{+}} f(x) \tag{rechtsseitiger Grenzwert} \\
+T_{<} := \{x\in D\mid x < x_0\}: f(x_0^{-}) := \lim_{\substack{x\to x_0 \\ x\in T_{<}}} f(x) = \lim_{x\to x_0^{-}} f(x) \tag{linksseitiger Grenzwert}
 \end{align*}
 \item Existiert $\lim_{x\to x_0} f(x), x_0 \in \bar T \subseteq \bar D$, dann gilt
 \[\lim_{x\to x_0 \\ x\in T} f(x) = \lim_{x\to x_0}  f(x)\]
@@ -1640,7 +1640,7 @@ $f$ heißt stetig (auf ganz $D$), wenn sie in jedem $x_0 \in D$ stetig ist. (\em
 \end{defn}
 \begin{lemma}[3.5]
 \begin{enumerate}
-\item Ist $f: D\to \mathbb{K}$ stetig, dann ist auch $f\mid T$ statig, $T\subseteq D$
+\item Ist $f: D\to \mathbb{K}$ stetig, dann ist auch $f\mid T$ stetig, $T\subseteq D$
 \item Ist $f:D\to \mathbb{K}$ stetig, so auch $\Re(f):D\to\mathbb{R}$, $\Im(f): D\to \mathbb{R}$, $\abs{f}: D\to\mathbb{R}_+$ stetig (auf ganz $D$)
 \item Sind $f,g:D\to\mathbb{K}$ stetig, so auch $f + g, f\cdot g: D\to\mathbb{K}$
 \item Ist $f:D\to f(D)\subseteq \mathbb{K},g:f(D) \to \mathbb{K}$ stetig in $x_0$, beziehungsweise in $f(x_0) =: y_0$ so auch $f \circ f: D\to\mathbb{K}$ stetig in $x_0 \in D:$
@@ -1662,7 +1662,7 @@ Eine Funktion $f: D \to \mathbb{K}$ ist in $x_0 \in D$ genau dann stetig, wenn e
 \begin{proof}
 $(\impliedby)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
    $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
-das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Wiederspruch zu
+das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Widerspruch zu
 \[\lim_{x \to x_0} f(x) = f(x_0)\]
 \end{proof}
 \begin{korollar}[3.8]
@@ -1725,7 +1725,7 @@ $\abs{x - y} < \delta$, aber $\abs{f(x) - f(y)} \geq 1 \iff \abs{x - y} \geq \ab
 \end{proof}
 \begin{defn}[3.12 Lipschitz Stetigkeit]
 Eine Funktion $f:D\to\mathbb{K}$ heißt Lipschitz stetig (kurz L-stetig) auf $D$, wenn
-$\Exists L > 0$ (sogenannte Lipschitz Konstante), sodass
+$\Exists L > 0$ (so genannte Lipschitz Konstante), sodass
 \[f(x) - f(y) \leq L \abs{x - y} \Forall x,y \in D\]
 \end{defn}
 \begin{remark}
@@ -1739,7 +1739,7 @@ stetige Funktion ist gleichmäßig stetig.
 \begin{proof}
 Angenommen $f$ ist nicht gleichmäßig stetig. Dann gibt es ein $\eps > 0$, sodass $\Forall n\in \mathbb{N}$ Punkte $x_n, y_n \in D$ existieren mit
 $\abs{x_n - y_n} < \frac{1}{n}, \abs{f(x_n) - f(y_n)} \geq \eps$ \\
-   Nach dem Satz von Bolzano-Weierstrass besitzt die beschränkte Folge $(x_n)_{n\in\mathbb{N}}$ eine
+   Nach dem Satz von Bolzano-Weierstraß besitzt die beschränkte Folge $(x_n)_{n\in\mathbb{N}}$ eine
 konvergente Teilfolge $x_{n_k} \to x \in D$. Wegen $\abs{x_n - y_n}  < \frac{1}{n}$ ist auch $\lim_{k\to\infty} y_{n_k} = y = x$
 Aus der Stetigkeit von $f$ folgt, dass
 \[\abs{f(x_{n_k}) - f(y_{n_k})} \to \abs{f(x) - f(y)} = 0 \lightning\]
@@ -1754,11 +1754,11 @@ Aus der Stetigkeit von $f$ folgt, dass
         für $x = m$ und $y = x + \frac{1}{n}$ gilt
 \[\abs{x - y} \to 0, ~\text{aber}~ \abs{f(x) - f(y)} = \abs{x^2 - y^2} = \abs{(x - y)(x + y)} = 2 + \frac{1}{n} \to 2\]
 \end{itemize}
-\item Libschitz-Stetigkeit von $f(x) = x^2$ \\
+\item Lipschitz-Stetigkeit von $f(x) = x^2$ \\
       \[\abs{f(x) - f(y)} = \abs{(x - y)(x + y)} \leq L \abs{x y}\]
-wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A \implies L = 2A \implies$ Libschitz-Stetigkeit,
+wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A \implies L = 2A \implies$ Lipschitz-Stetigkeit,
 aber wenn $D = R \implies$ gibt keine $L < \infty$
-\item Libschitz-Stetigkeit impliziert gleichmäßige Stetigkeit, aber nicht umgekehrt. Zum Beispiel: $f(x) = \sqrt{x}, x \in [0, A]$ ist gleichmäßig stetig nach Satz 3.13, aber nicht Libschitz-stetig in $0$.
+\item Lipschitz-Stetigkeit impliziert gleichmäßige Stetigkeit, aber nicht umgekehrt. Zum Beispiel: $f(x) = \sqrt{x}, x \in [0, A]$ ist gleichmäßig stetig nach Satz 3.13, aber nicht Lipschitz-stetig in $0$.
 \begin{align*}
 \abs{\sqrt{x} - \sqrt{y}} \leq L \abs{x - y} \\
 \abs{\frac{y - x}{\sqrt{x} - \sqrt{y}}} > n \abs{x - y}
@@ -1768,7 +1768,7 @@ aber wenn $D = R \implies$ gibt keine $L < \infty$
 \end{remark}
 \begin{remark}
 Stetigkeit kann interpretiert werden als "lokale Approximation" durch Konstanten, das heißt Funktion $f$ nach der Stelle $x_0$ durch eine Konstante $f(x_0)$ approximiert werden
-kann und die Fehelr der Approximation $\abs{f(x) - f(x_0)} < \eps$
+kann und die Fehler der Approximation $\abs{f(x) - f(x_0)} < \eps$
 \end{remark}
 \subsection{Eigenschaften stetiger Funktionen}
 \label{sec-6-2}
@@ -1777,7 +1777,7 @@ Eine auf einer beschränkten, abgeschlossenen Teilmenge $D\subset\mathbb{K}$ ste
 $\Exists K > 0: \sup_{x\in D} \abs{f(x)} \leq K$
 \end{thm}
 \begin{proof}
-Angenommen das eine stetige $f(x)$ incht beschränkt auf $D$ ist.
+Angenommen das eine stetige $f(x)$ nicht beschränkt auf $D$ ist.
 Dann gibt zu jedem $n\in \mathbb{N}$ ein $x_n \in D$ mit $\abs{f(x_n)} >n$ \\
    Die Folge $(x_n)_{n\in\mathbb{N}}$ ist beschränkt (da $D$ beschränkt). Nach dem B.-W. Satz $\Exists x_{m_k} \to x \in D$ (weil $D$ abgeschlossen ist).
 Aus der Stetigkeit von $f$
@@ -1785,7 +1785,7 @@ Aus der Stetigkeit von $f$
 Widerspruch zur Annahme $f(x_m) \to \infty$
 \end{proof}
 \begin{thm}[3.15 Satz von Extremum]
-Eine auf iner beschränkten, abgeschlossenen Teilmenge $D\subseteq\mathbb{K}$ stetige reelwertige Funktion $f:D\to\mathbb{K}$ besitzt
+Eine auf einer beschränkten, abgeschlossenen Teilmenge $D\subseteq\mathbb{K}$ stetige reellwertigen Funktion $f:D\to\mathbb{K}$ besitzt
 dort ein Maximum und ein Minimum, das heißt:
 \[\Exists x_{min}, x_{max} \in D: \sup_{x\in D} f(x) = f(x_{max}) \wedge \inf_{x\in D} f(x) = f(x_{min})\]
 \end{thm}
@@ -1808,7 +1808,7 @@ Entweder ist dann $\sup A = b$ (und dann $c = b$) oder es gibt per Definition ei
 In beiden Fällen folgt $f(c) \leq y$
 \begin{itemize}
 \item Falls $c = b \implies y = f(c) = f(b) \implies f(c) \geq y$
-\item Falls $c < b \implies$ Aus stetigkeit von $f$, eine monoton fallende Folge von Punkten aus $A$ existiert, welche gegen $\sup A$ konvergiert
+\item Falls $c < b \implies$ Aus Stetigkeit von $f$, eine monoton fallende Folge von Punkten aus $A$ existiert, welche gegen $\sup A$ konvergiert
 \end{itemize}
 Aus Stetigkeit und Definition von $A$ folgt $f(c) \leq y$. Beide zusammen genommen ergibt $f(c) = y$
 \end{proof}
@@ -1839,8 +1839,8 @@ erhalten wir eine äquidistante Zerlegung von $[a, b]$
 Dann definieren wir
 \[\bar \phi_\eps(x) := \sup \{f(x) \mid x_{k - 1} \leq x < x_k\}\]
 \[\ubar \phi_\eps(x) := \inf \{f(x) \mid x_{k - 1} \leq x < x_k \}\]
-Nach Konstruktion gemäßt $\ubar \phi_\eps (x) \leq f(x) \leq \bar \phi_\eps(x) \Forall x\in [a,b]$ \\
-   Nach dem Satz von Extremum $Forall [x_1, \ldots, x_k] \Exists \bar \xi_k, \ubar\xi_k$ sodass
+Nach Konstruktion gemäß $\ubar \phi_\eps (x) \leq f(x) \leq \bar \phi_\eps(x) \Forall x\in [a,b]$ \\
+   Nach dem Satz von Extremum $\Forall [x_1, \ldots, x_k] \Exists \bar \xi_k, \ubar\xi_k$ sodass
 \begin{align*}
 f(\bar\xi_k) = \sup \{f(x) \mid x_{k - 1} \leq x \leq x_k\}
 f(\ubar\xi_k) = \inf \{f(x) \mid x_{k - 1} \leq x \leq x_k\}
