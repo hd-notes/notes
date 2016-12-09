@@ -33,6 +33,8 @@
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{conc}{Folgerung}
 #+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{algorithm}{Algorithmus}
+#+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{ex}{Beispiel}
 #+LATEX_HEADER: \usepackage{etoolbox}
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}

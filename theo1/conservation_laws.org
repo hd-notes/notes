@@ -148,6 +148,13 @@
 	 zum Beispiel:
 	 \[(\v\nabla\times\v F)^1 = \frac{\partial F^3}{\partial x^2} - \frac{\partial F^2}{\partial x^3}\]
 	 \[\int_{L_2}\d \v s \v F - \int_{L_1}\d \v s\v F = \oint_{\partial \Sigma} \d\v s \v F \underarrow[=]{\text{"Stokes"}} \int_{\Sigma}\d\v f*(\v\nabla\times\v F) \overset{!}{=} 0\]
+** Kurvenintegrale
+   Jedes Kurvenintegral kann durch Parametrisierung der Kurve berechnet werden.
+   Kurve $C \to \v x(t)$
+   \begin{align*}
+   \d \v x &\equiv \d \v s \\
+   \int_C \d \v s \v F(\v x) &\equiv \int_C \d \v x \v F(\v x) = \int_{t_1}^{t_2} \d t \frac{\d \v x(t)}{\d t} \v F(\v x(t))
+   \end{align*}
 ** Satz von Stokes
    #+ATTR_LATEX: :options [Satz von Stokes]
    #+begin_defn latex

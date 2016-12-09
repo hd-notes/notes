@@ -1,4 +1,4 @@
-* DONE Matrizen
+* Matrizen
   In diesem Abschnitt seinen $m,n,r\in\mathbb{N}$ \\
   Frage: Gegeben sei ein UVR $U = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ Wie bestimmt man effizient die Basis von $U$?
   #+ATTR_LATEX: :options [10.1]
@@ -145,3 +145,184 @@
   - neutrales Element: $E_n$
   - Existenz von Inversen: Sei $A\in GL(n,K) \implies \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
   #+end_proof
+  #+ATTR_LATEX: :options [10.5]
+  #+begin_defn latex
+  $A \in M(m\times n, K)$ mit Zeilen $a_1, \ldots, a_m \in K^n$ \\
+  Unter elementaren Zeilenumformungen von $A$ verstehen wir die folgende Umformungen von $A$
+  1. Multiplikaiton der i-ten Zeile mit $\lambda \in K^\ast = K \setminus\{0\}$
+	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \end{pmatrix} \to \begin{pmatrix} \vdots \\ \lambda a_i \\ \vdots \end{pmatrix}\]
+  2. Addition der j-ten Zeile zur i-ten Zeile, $i\neq j$
+	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix} \to \begin{pmatrix} \vdots \\ a_i + a_j \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}\]
+  3. Addition der $\lambda$ fachen der j-ten Zeile zur i-iten Zeile, $\lambda \in K^\ast, i\neq j$
+	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix} \to \begin{pmatrix} \vdots \\ a_i + \lambda a_j \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}\]
+  4. Vertauschen der i-ten Zeile mit der j-ten Zeile, $i\neq j$
+	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix} \to \begin{pmatrix} \vdots \\ a_j \\ \vdots \\ a_i  \\ \vdots \end{pmatrix}\]
+  #+end_defn
+  #+begin_note latex
+  \mbox{}
+  - Typ 3. und 4. kann man durch Kombination von Umfornumen vom Typ 1. und 2. erhalten, 3.:
+	\begin{equation}
+	\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i \\ \vdots \\ \lambda a_j  \\ \vdots \end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i \\ \vdots \\ \lambda a_j \\ \vdots\end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i + \lambda a_j \\ \vdots \\ \lambda a_j  \\ \vdots \end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i + \lambda a_j \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}
+	\end{equation}
+	Typ 4.:
+	\begin{equation}
+	\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i + a_j \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i + a_j \\ \vdots \\ -a_j  \\ \vdots \end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i + a_j \\ \vdots \\ a_i  \\ \vdots \end{pmatrix}
+	\to \begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}
+	\end{equation}
+  - Analog zu den elementaren Zeilenumformungen definiert man elementare Spaltenumformungen in nachliegender Weise
+  - Elementare Zeilenumformungen erhält man durch Multiplikaiton von $A$ mit sogenannten *Elementarmatrizen* von link,
+	elementare Spaltenumformungen durch Multiplikation mit Elementarmatrizen von recht.
+  #+end_note
+  #+ATTR_LATEX: :options [10.6]
+  #+begin_defn latex
+  $A\in M(m\times n, K)$ mit Zeilen $a_1, \ldots, a_m \in K^n$ \\
+  \[ZR(A) := \Lin((a_1, \ldots, a_m)) \subseteq K^n\]
+  heißt Zeilenraum von $A$.
+  #+end_defn
+  #+ATTR_LATEX: :options [10.7]
+  #+begin_ex latex
+  \begin{equation}
+  A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 5 \end{pmatrix} \in M(2,\times 3, \mathbb{Q}) \implies ZR(A) = \Lin((1,2,3), (4,5,6)) \subseteq \mathbb{Q}^2
+  \end{equation}
+  #+end_ex
+  #+ATTR_LATEX: :options [10.8]
+  #+begin_remark latex
+  $A,B \in M(m\times n, K)$ \\
+  Dann gilt: Ist $B$ aus $A$ durch eine endliche Folge von elementaren Zeilenumformungen entstanden, dann ist $ZR(B) = ZR(A)$
+  #+end_remark
+  #+begin_proof latex
+  Wegen Anmerkung nach 10.5 genügt es, einzelne Zeilenumformungen vom Typ 1. und 2. zu betrachten
+  1. Typ 1-Umformung:
+	 \[A = \begin{pmatrix} a_1 \\ \vdots \\ a_m \end{pmatrix}, B = \begin{pmatrix} a_1 \\ \vdots \\ \lambda a_j \\ \vdots \\ a_m\end{pmatrix}, \lambda \in K^\ast\]
+	 zu zeigen: \[ZR(A) = \Lin((a_1, \ldots, a_m)) = \Lin((a_1, \ldots, a_{j - 1}, \lambda a_j, a_{j + 1},\ldots, a_m)) = ZR(B)\]
+	 Dies gilt, da jeder UVR von $K^n$, der $a_1, \ldots, a_m$ enthält, auch $a_1, \ldots, a_{j -1}, \lambda a_j, a_{j + 1}, \ldots, a_m$ enthält und umgekehrt (Behauptung folgt dann aus 8.13)
+  2. Typ 2-Umformungen:
+	 \[A = \begin{pmatrix} a_1 \\ \vdots \\ a_m \end{pmatrix}, B = \begin{pmatrix} a_1 \\ \vdots \\ a_i + a_j \\ \vdots \\ a_m\end{pmatrix}, \lambda \in K^\ast\]
+	 zu zeigen:
+	 \[ZR(A) = \Lin((a_1, \ldots, a_m)) = \Lin((a_1, \ldots, a_{i - 1}, a_i + a_j, a_{i + 1}, \ldots, a_m)) = ZR(B)\]
+	 Dies gilt, denn jeder UVR von $K^n$, der $a_1, \ldots a_m$ enthält auch $a_1, \ldots, a_{i - 1}, a_i + a_j, a_{i + 1}, \ldots, a_m$ enthält und umgekehrt (Behauptung folgt dann aus 8.13)
+  #+end_proof
+  Ziel: Bringe Matrix $A \in M(m\times n, K)$ mit Zeilen $a_1, \ldots, a_m \in K^n$ durch elementare Zeilenumformungen auf "einfache Gestalt", aus dder man eine Basis von $\Lin((a_1, \dots, a_m)) = ZR(A) = ZR(B)$
+  ablesen kann.
+  #+ATTR_LATEX: :options [10.9]
+  #+begin_defn latex
+  $A = (a_{ij}) \in M(m\times n, K)$ \\
+  $A$ ist in Zeilenstufenform (ZSF) $\xLeftrightarrow{\text{Def}}$ die folgenden Bedingugnen sind erfüllt
+  - (Z1) Es gibt eine Zahl $r\in\mathbb{N}_0$, mit $0\leq r \leq m$, so dass in den Zeilen mit Index $1$ bis $r$ jeweils nicht nur NUllen stehen und in der Zeile mit den Indizes $r + 1$ bis $m$ stehen nur Nullen.
+  - (Z2) Setzen wir für $i$ mit $1 \leq i \leq r$
+	\[j_{i} := \min\{j\in \{1, \ldots, n\} \mid a_{ij} \neq 0\}\]
+	dann gilt: $j_1 < j_2 < \ldots < j_r$ (Stufenbedingung), die Elemente $a_{1j_1}, \ldots, a_{1j_r}$ heißen die Pivots von $A$
+  #+end_defn
+  #+ATTR_LATEX: :options [10.10]
+  #+begin_ex latex
+  \begin{equation}
+  A =
+  \begin{pmatrix}
+  0 & 3 & 1 & 0 & 3 & 4 \\
+  0 & 0 & 0 & 2 & 3 & 4 \\
+  0 & 0 & 0 & 0 & 6 & -1 \\
+  0 & 0 & 0 & 0 & 0 & 0
+  \end{pmatrix}
+  \in M(4\times 6, \mathbb{R})
+  \end{equation}
+  ist in ZSF. Es ist $r = 3, j_1 = 2, j_2 = 4, j_3 = 5$, Pivots: $a_{12} = 3, a_{24} = 2, a_{35} = 6$
+  #+end_ex
+  #+ATTR_LATEX: :options [10.11]
+  #+begin_defn latex
+  $A \in M(m\times n, K)$ \\
+  Dann lässt sich $A$ durch endlich viele elementare Zeilenstufenumformugen in eine Matrix $B$ in ZSF umformen:
+  \begin{equation}
+  \begin{pmatrix}
+  & b_{1j_1} & \ast & & & & \\
+  & & b_{1j_2} & \ast & & & \\
+  & & & \ldots & & \\
+  & & & & b_{1j_r} & \ast & \\
+  0 & & & & & & \\
+  \end{pmatrix}
+  \end{equation}
+  Die ersten $r$ Zeilen von $B$ bilden eine Basis von $ZR(A)$.
+  #+end_defn
+  #+begin_proof latex
+  1. $A$ lässt sich wie behauptet auf ZSF brigen: \\
+	 Falls $A = 0$, dann ist $A$ bereits in ZSF (mit r = 0), also im FOlgenden sei $A \neq 0$ \\
+	 1) Bestimme minimalen Index $j_1 \in \{1, \ldots, n\}$, so dass es ein $i_1 \in \{1, \ldots, m\}$ gibt mit $a_{i_1 j_1} \neq 0$ ("Wie weit links in der Matrix $A$ befinden sich Einträge $\neq 0$?") \\
+		Wähle solch ein $i_1$ aus.
+	 2) Vertausche $i_1$-te Zeile mit erster Zeile, erhalte ersten Pivot:
+		\begin{equation}
+		\tilde a_{1, j_1} := a_{i_1, j_1} \neq 0 \\
+		A_1 :=
+		\begin{pmatrix}
+		0 & \ldots & 0 & \tilde a_{1, j_1} & \ast & \ldots & \ast \\
+		  &        &   &       \ast        &  & & \\
+		& \text{\huge0} & & \vdots & & \text{\huge$\ast$} & \\
+		& & & \ast & & & \\
+		\end{pmatrix}
+		\end{equation}
+	 3) Durch Umformungen vom Typ 3. können alle EInträge der $j_1$-ten Splate unterhalb der ersten Zeile zu Null gemacht werden, erhalte:
+		\begin{equation}
+		\begin{pmatrix}
+		0 & \ldots & 0 & \tilde a_{1, j_1} & \ast & \ldots & \ast \\
+		  &        &   &       0        &  & & \\
+		& \text{\huge0} & & \vdots & & A_2 & \\
+		& & & 0 & & & \\
+		\end{pmatrix}
+		\end{equation}
+	 4) Wende das Verfahren 1. - 3. auf $A_2$ an. Die dafür benötigten elementaren Zeilenunmformungen von $A_2$ kann man
+		auf die Zeilen $2$ bis $m$ von $\tilde A_1$ ausdehnen, ohne dass sich in den Spalten $1$ bis $j_1$ von $\tilde A_1$ etwas ändert, denn
+		dort stehen Nullen. Erhalte auf deise Weise $\tilde A_2$ beziehungsweise $A_3$. Iteriere dieses Verfahren.
+		Das Verfahren bricht ab, weil die Folge der Spaltenzahlen der Matrizen $A_k$ string monoton fallend in $\mathbb{N}$ ist, oder irgendwann eine Matrix $A_k = 0$ entsteht. \\
+		$\implies$ erhalte ZSF.
+		Die ersten $r$ Zeilen $b_1, \ldots, b_r$ von $B$ bilden eine Basis von $ZR(A)$, denn Es ist $ZR(A) = ZR(B) = \Lin((b_1, \ldots, b_r))$ \\
+		noch zu zeigen: $(b_1, \ldots, b_r)$ ist linear unabhängig. \\
+		Es seien $\lambda_1, \dots, \lambda_r \in K$ mit $\lambda_1 b_1 + \ldots + \lambda_r b_r = 0$. In der $j_1$-ten Komponente von $\lambda_1 b_1 + \ldots + \lambda_r b_r$ steht $\lambda_1 b_{1 j_1}$ = 0.
+		Wegen $b_{1 j_1} = 0$ folgt $\lambda_1$ = 0.
+		In der $j_2$-ten Komponente von $\lambda_1 v_1 + \ldots + \lambda_r b_r = \lambda_2 b_2 + \ldots + \lambda_r b_r$ steht $\lambda_2 b_{2 j_2} = 0$
+		Wegen $b_{2 j_2} \neq 0$ folgt $\lambda_2 = 0$.
+		Durch Iterieren dieses Arguments erhalten wir $\lambda_1 = \ldots = \lambda_r = 0$
+  #+end_proof
+  #+ATTR_LATEX: :options [10.12]
+  #+begin_algorithm latex
+  Eingabe: $W = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ \\
+  Ausgabe: Eine Basis $(w_1, \ldots, w_r)$ von $W$ \\
+  Durchführung: \\
+  1. Bilde aus den Zeilenvektoren $v_1, \ldots, v_m$ die Matrix $A\in M(m\times n, K)$
+  2. Bringe die Matrix $A$ durch elementare Zeilenumformung auf ZSF $B$
+  3. Die Familie $(w_1, \ldots, w_r)$ der ersten $r$ Zeilenvektoren von $B$ ist ein Basis von $W$
+  #+end_algorithm
+  #+ATTR_LATEX: :options [10.13]
+  #+begin_ex latex
+  $W = \Lin((0,0,3,-1), (0, 1, 2, 0), (0, 3, 0, 2)) \subseteq \mathbb{R}^4$
+  \begin{gather}
+  A = \begin{pmatrix}
+  0 & 0 & 3 & -1 \\
+  0 & 1 & 2 & 0 \\
+  0 & 3 & 0 & 2
+  \end{pmatrix}
+  \to
+  \begin{pmatrix}
+  0 & 1 & 2 & 0 \\
+  0 & 0 & 3 & -1 \\
+  0 & 3 & 0 & 2
+  \end{pmatrix}
+  \to
+  \begin{pmatrix}
+  0 & 1 & 2 & 0 \\
+  0 & 0 & 3 & -1 \\
+  0 & 0 & -6 & 2
+  \end{pmatrix}
+  \to
+  \begin{pmatrix}
+  0 & 1 & 2 & 0 \\
+  0 & 0 & 3 & -1 \\
+  0 & 0 & 0 & 0
+  \end{pmatrix}
+  \end{gather}
+  $\implies ((0,1,2,0), (0,0,3,-1))$ ist eine Basis von $W$ insbesondere ist $\dim_W = 2$
+  #+end_ex

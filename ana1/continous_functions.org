@@ -200,3 +200,31 @@
    Stetigkeit kann interpretiert werden als "lokale Approximation" durch Konstanten, das heißt Funktion $f$ nach der Stelle $x_0$ durch eine Konstante $f(x_0)$ approximiert werden
    kann und die Fehelr der Approximation $\abs{f(x) - f(x_0)} < \eps$
    #+end_remark
+** Eigenschaften stetiger Funktionen
+   #+ATTR_LATEX: :options [3.14 Satz von Beschränktheit]
+   #+begin_thm latex
+   Eine auf einer beschränkten, abgeschlossenen Teilmenge $D\subset\mathbb{K}$ stetige Funktion $f:D\to\mathbb{K}$ ist beschränkt,
+   $\Exists K > 0: \sup_{x\in D} \abs{f(x)} \leq K$
+   #+end_thm
+   #+begin_proof latex
+   Angenommen das eine stetige $f(x)$ incht beschränkt auf $D$ ist.
+   Dann gibt zu jedem $n\in \mathbb{N}$ ein $x_n \in D$ mit $\abs{f(x_n)} >n$ \\
+   Die Folge $(x_n)_{n\in\mathbb{N}}$ ist beschränkt (da $D$ beschränkt). Nach dem B.-W. Satz $\Exists x_{m_k} \to x \in D$ (weil $D$ abgeschlossen ist).
+   Aus der Stetigkeit von $f$
+   \[\abs{f(n_k)} \xrightarrow{x\to\infty} \abs{f(x)} < \infty \lightning\]
+   Widerspruch zur Annahme $f(x_m) \to \infty$
+   #+end_proof
+   #+ATTR_LATEX: :options [3.15 Satz von Extremum]
+   #+begin_thm latex
+   Eine auf iner beschränkten, abgeschlossenen Teilmenge $D\subseteq\mathbb{K}$ stetige reelwertige Funktion $f:D\to\mathbb{K}$ besitzt
+   dort ein Maximum und ein Minimum, das heißt:
+   \[\Exists x_{min}, x_{max} \in D: \sup_{x\in D} f(x) = f(x_{max}) \wedge \inf_{x\in D} f(x) = f(x_{min})\]
+   #+end_thm
+   #+begin_proof latex
+   \[\Exists K < \infty: K = \sup_{x\in D} < \infty\]
+   $\Exists$ eine Folge $(x_n)_{n\in\mathbb{N}} \in D: f(x_n) \xrightarrow{n\to\infty} K$.
+   Die Folge $(x_n)_{n\in\mathbb{N}}$ ist beschränkt und in $D$ abgeschlossen
+   \[\implies \Exists (x_{n_k})_{k\in\mathbb{K}} \in D: x_{n_k} \to x\in D\]
+   Aus $f(x_{n_k}) \xrightarrow{k\to\infty} f(x) \implies f(x) = K$ \\
+   Analog für untere Grenze.
+   #+end_proof

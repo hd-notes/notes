@@ -1,4 +1,4 @@
-% Created 2016-12-07 Mi 19:33
+% Created 2016-12-09 Fr 12:04
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -871,8 +871,16 @@ Lücke: Wegunabhängigkeit der Definition von $V$: \\
 zum Beispiel:
 \[(\v\nabla\times\v F)^1 = \frac{\partial F^3}{\partial x^2} - \frac{\partial F^2}{\partial x^3}\]
 \[\int_{L_2}\d \v s \v F - \int_{L_1}\d \v s\v F = \oint_{\partial \Sigma} \d\v s \v F \underarrow[=]{\text{"Stokes"}} \int_{\Sigma}\d\v f*(\v\nabla\times\v F) \overset{!}{=} 0\]
-\subsection{Satz von Stokes}
+\subsection{Kurvenintegrale}
 \label{sec-4-4}
+Jedes Kurvenintegral kann durch Parametrisierung der Kurve berechnet werden.
+Kurve $C \to \v x(t)$
+\begin{align*}
+\d \v x &\equiv \d \v s \\
+\int_C \d \v s \v F(\v x) &\equiv \int_C \d \v x \v F(\v x) = \int_{t_1}^{t_2} \d t \frac{\d \v x(t)}{\d t} \v F(\v x(t))
+\end{align*}
+\subsection{Satz von Stokes}
+\label{sec-4-5}
 \begin{defn}[Satz von Stokes]
 \[\oint \d \v s\v F = \int_{\Sigma} \d \v f (\v \nabla \times \v F)\]
 \end{defn}
@@ -916,7 +924,7 @@ Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte z
 
 Für unsere Anwendung: wichtig, dass jede geschlossene Kurve inn einem einfach zusammenhängenden Gebiet, \textbf{Rand} ist.
 \subsection{Energieerhaltung für Systeme von Massenpunkten}
-\label{sec-4-5}
+\label{sec-4-6}
 Massenpunkte: $\v x_a, a = 1,\ldots, n$ \\
    Kräfte: seien $\parallel$ zu $\v x_a - \v x_b$ ("Zentralkräfte") \\
    Solche Kräfte kann man stets schreiben als:
@@ -947,7 +955,7 @@ Begründung:
 
 Bemerkung: Passend gewähltes $V_{ab}$ gibt das Modell der starren Stangen
 \subsection{Eindimensionale Bewegung}
-\label{sec-4-6}
+\label{sec-4-7}
 \[F(x) = m\ddot{x}\]
 \begin{itemize}
 \item mit Einsatz allgemein lösbar!
@@ -1465,8 +1473,64 @@ $\v a \times \v v$ ist ein Pseudovektor:
 $\implies$ Symmetrietransformationen:
 \begin{enumerate}
 \item Rotationen: $(t,x) \mapsto (t,Rx), R \in O(3)$
-\item Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3$
-\item Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$
+\item Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3 \implies$ Abschaffung der $0\in\mathbb{R}$ und $\v 0 \in \mathbb{R}^3$"
+\item Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$ "zeitabhängige Verschiebung"
 \end{enumerate}
+
+Die Galilei-Gruppe $G$ ist die von 1., 2. und 3. "generierte" Gruppe. Nichttrivialer Fakt: Jedes $g\in G$ ist scheibbar als $g = \overarrow[g_3]{Boost} \circ \underarrow[g_2]{Trans} \circ \overarrow[g_1]{Rot.}$
+Man muss dazu unter anderem zeigen, dass es zu einem $g_2 \circ g_1 \circ g_2'' \in G$ ein $g_2'', g_1''$ gibt, sodass $g_2 \circ g_1 \circ g_2' = g_2'' \circ g_1''$ \\
+   "Boost" = Zunahme (der Geschwindigkeit). Boost einer Trajektorie: $(t, \v x(t)) \mapsto (t, \v x(t) + \v v_0 t)$ \\
+   $\v v = \dot{\v x}(t) \mapsto \v v' = \dot{\v x}(t) + \v v_0$
+
+Boost zerstören das Konzept der Gleichörtlichkeit: Seien $(t, x), (t', x)$ zwei Ereignisse am gleichen Ort. Boost $\implies (t, x + v t), (t', x + v t')$, \textbf{nicht} mehr am gleichen Ort
+\subsection{Affinier Raum}
+\label{sec-6-6}
+\begin{defn}
+$O(3)$ Symmetriegruppe des euklidischen Raumes. "Elegant!". \\
+   Besser: Definition des \textbf{affinen Raumes}: Gegeben sein Menge $A$, ein Vektorraum $V$ un eine Abbildung $A\times A \to V, (P, Q) \mapsto \v{PQ}$
+sodass $\v{PQ} + \v{QR} = \v{PR}$. Außerdem: Zu jeden $P\in A, \v V$ soll es eindeutig ein $Q\in A$ geben, sodass $\v = \v{PQ}$, das Paar $(A,V)$ heißt affinier Raum
+\end{defn}
+\begin{ex}
+Zu jedem Vektorraum gehört ein affinier Raum: Wähle $A \equiv V, V\times V \to V, (\v x, \v y) \mapsto \v y - \v x$
+\end{ex}
+Sei $(A^4, V^4)$ ein 4-dimensionaler affiner Raum. (Man denke zum Beispiel an den zu $\mathbb{R} \times \mathbb{R}^3$ geörigen affinien Raum) \\
+   Physikalische Raumzeit: $(A^{(4)}, V^{(4)})$ mit
+\begin{enumerate}
+\item Eine lineare Abbildung $V^4 \to \mathbb{R}$ ("Zeitfunktion") (im konkreten Beispiel: $((t,x), (t', x')) \mapsto t' - t$)
+\item Sei $\tilde V^{(3)} \subset V^{(4)}$ der Raum von Pfeilen zwischen gleichzeitigen Ereignissen ($v\in \tilde V^{(3)}$ heißt $T(\tilde v) = 0$)
+Dann hat $\tilde V$ ein Skalarprodukt, "Abstandsfunktion". Im konkreten Bespiel: $(t,x),(t,x') \mapsto \abs{x - x'}$
+\end{enumerate}
+
+Zusammen bilden 1. und 2. eine Galileische Struktur. Die physikalische Raumzeit ist $(A^{(4)}, V^{(4)})$ mit galileischer Struktur
+
+$G$ sind die Transformationen des $(A^{(4)}, V^{(4)})$, welche seine Galileische Struktur respektieren.
+\subsection{Dynamik}
+\label{sec-6-7}
+Dynamik soll invariant sein! Betrachte Tranjektorie, die die Bewegungsgleichung erfüllt:
+\[(t, \v x(t)), m \frac{\d^2 \v x}{\d t^2} = \v F(t, \v x(t))\]
+Transformierte Tranjektorie:
+\[t', \v x'(t') = (t + s, R\v x(t) + \v y + \v v(t + x))\]
+Dazu:
+\[m \frac{\d^2}{\d t'^2} = m \frac{\d^2 x}{\d t^2} = m \\frac{\d^2}{\d t^2} (R\v x(t) + \v y + \v v(t + s)) = m R \frac{\d^2 \v x}{\d t^2} = R\v F(t, \v x(t))\]
+$\implies$ Newtonsche Dynamik ist invariant falls Kräfte wie Cektoren transformieren. (hatten wir schon verlangt)
+Bei Systemen von Massepunkten mit Zentralkräften ist die Kraft gleich dem Gradient, sie besitzt automatisch Vektor-Transformationseigenschaften
+
+Wir fordern bei
+\[m R \frac{\d^2 \v x}{\d t^2} = R\v F(t,\v x(t))\]
+eigentlich
+\[R\v F(t,\v x(t)) = \v F'(t', x'(t'))\]
+Wichtig: Die Transformation von $\v F$ beinhaltet nicht nur Drehung, sondern auch Transformation über das Argument.
+Betrachte zur Vereinfachung $R = \mathbb{1} \implies \v F'(t', \v x') = \v F(t, \v x)$ \\
+
+Geschwindigkeitsabhänige Kräfte: zum Bespiel Reibung
+\[\v F_R = -\alpha(\v x - \underarrow[v u]{Medium})\]
+\subsection{Zusammenfassung:}
+\label{sec-6-8}
+Allgemeingültiges Schema:
+\begin{itemize}
+\item Beschreibung der Bewegung festlegen (Spielfeld) (hier: affiner Raum und Galileische Struktur)
+\item Identifikation der Symmetriegruppe (hier Galilei Gruppe)
+\item Invarianz der Dynamik prüfen beziehungsweise forder (Spielregeln) (Newtonsches Grundgesetz)
+\end{itemize}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

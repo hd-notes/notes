@@ -39,7 +39,7 @@
 	 \[\Exists \lambda_1, \ldots, \lambda_{r - 1}, \lambda_{r + 1}, \ldots, \lambda_n\in K: v_r = \lambda_1 v_1 + \ldots + \lambda_{r - 1} v_{r - 1} + (-1)v_r + \lambda_{r + 1} v_{r + 1} + \ldots + \lambda_n v_n\]
 	 $\implies$ $\mathcal{B}$ linear abhängig $\lightning$ zu $\mathcal{B}$ Basis von $V$
   2. $\implies$ 1.: Sei $\mathcal{B} = (v_1, \ldots, v_n)$ ein unverkürzbares ES von $V$ $\implies$ Für jedes $v\in V$ existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$
-	 Annahme: Es gibt $v\in V, \lambda_1, \ldots, \lambda_v v_n = \mu_1 v_1 + \ldots \mu_n v_n$
+	 Annahme: Es gibt $v\in V, \lambda_1, \ldots, \lambda_v v_n = \mu_1 v_1 + \ldots \mu_n v_n, i \in \{i, \ldots, n\}$ mit $\lambda_i \not \in \mu_i$
 	 \begin{align*}
 	 \implies (\lambda_i - \mu_i) v_i = (\mu_1 - \lambda_1)v_i + \ldots + (\mu_{i - 1} - \lambda_{i - 1})v_{i - 1} + (\mu_{i + 1} - \lambda_{i + 1}) v_{i + 1} + \ldots + (\mu_n - \lambda_n) v_n \\
 	 \implies v_1 = \frac{\mu_{1} - \lambda_{1}}{\lambda_{i} - \mu_{i}} v_1 + \ldots + \frac{\mu_{i - 1} - \lambda_{i - 1}}{\lambda_{i} - \mu_{i}} v_{i - 1} + \frac{\mu_{i + 1} - \lambda_{i + 1}}{\lambda_{i} - \mu_{i}} v_{i + 1} + \ldots + \frac{\mu_{n} - \lambda_{n}}{\lambda_{i} - \mu_{i}} v_n \\
@@ -49,11 +49,11 @@
 	 $\implies$ $\mathcal{B}$ ist verkürzbar $\lightning$
   3. $\implies$ 4.: Wir setzte 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
 	 zu zeigen: $\mathcal{B}$ ist unverlängerbar linear unabhängig \\
-	 denn Insbesondere existiert für jedes $v\in \Lin((c_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1,\ldots, v_n)$ linear unabhängig.
-	 Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1, \ldots, v_n)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
+	 denn Insbesondere existiert für jedes $v\in \Lin((v_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1,\ldots, v_n)$ linear unabhängig.
+	 Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1, \ldots, v_n, v)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
   4. $\implies$ 1. Sei $\mathcal{B}$ unverlängerbar linear unabhängig
 	 zu zeigen: $\mathcal{B}$ ist Basis von $V$, das heißt es bleibt noch zu zeigen, dass $\mathcal{B}$ ein ES von $V$ ist \\
-	 Sei $v\in V \implies (v_1, \ldots, v_n, v)$ linear abhängig $\implies \Exists \lambda_1, \ldots, \lambda_n \in K, (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0): \lambda_1 v_1 + \ldots + \lambda_n v_n + \lambda v = 0$
+	 Sei $v\in V \implies (v_1, \ldots, v_n, v)$ linear abhängig $\implies \Exists \lambda_1, \ldots, \lambda_n, \lambda \in K, (\lambda_1, \ldots, \lambda_n, \lambda) \neq (0, \ldots, 0): \lambda_1 v_1 + \ldots + \lambda_n v_n + \lambda v = 0$
 	 Es ist $\lambda \neq 0$, da sonst $(v_1, \ldots, v_n)$ linear abhängig
 	 \[\implies v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - -\frac{\lambda_n}{\lambda} v_n \in \Lin((v_1, \ldots, v_n))\]
 	 $\implies$ $\mathcal{B}$ ist ES von $V$

@@ -1,6 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Einführung in die Anwendungsorientierte Informatik (Köthe)
 #+OPTIONS: H:6
+#+OPTIONS: ^:nil
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage{siunitx}%
@@ -25,6 +26,25 @@
 #+LATEX_HEADER: \setlistdepth{20}
 #+LATEX_HEADER: \renewlist{itemize}{itemize}{20}
 #+LATEX_HEADER: \setlist[itemize]{label=$\cdot$}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \theoremstyle{definition}
+#+LATEX_HEADER: \newtheorem{defn}{Definition}
+#+LATEX_HEADER: \theoremstyle{plain}
+#+LATEX_HEADER: \newtheorem{thm}{Satz}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
+#+LATEX_HEADER: \usepackage{etoolbox}
+#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
+#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
+#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 
 # #+BEGIN_SRC cpp
 # for(int i = 0; i < 5) {
@@ -231,5 +251,110 @@
 		   }
 		   // == std::is_sorted
 		   #+END_SRC
-		 - Bemerkung1: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
+		 - Bemerkung: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
 		 - mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene
+* Effizienz von Algorithmen und Datenstrukturen
+** Bestimmung der Effizienz
+   2 Möglichkeiten:
+   1. Messe die "wall clock time" - wie lange mus man auf das Ergebnis warten
+   2. unabhängig von Hardware benutz man das Konzept der algorithmischen Komplexität
+*** wall clock
+   wall clock time misst man zum Beispiel mit dem Modul <chrono>
+   #+BEGIN_SRC cpp
+   #include <chrono>
+   #include <iostream>
+
+   int main() {
+	   // alles zur Zetimessung vorbereiten
+
+	   auto start = std::chrono::high_resolution_clock::now(); // Startzeit
+	   // code der gemessen werden soll
+	   auto stop = std::chrono::high_resolution_clock::now();
+	   std::chrono::duration<double> diff = stop - start; // Zeitdifferenz
+	   std::cout << "Zeitdauer: " << diff.count() << " sekunden\n" << std::endl; // ausgeben
+   }
+   #+END_SRC
+   Pitfalls:
+   - moderne Compiler optimieren oft zu gut, das heißt komplexe Berechnungen werden zur Compilezeit ausgeführt und ersetzt $\implies$ gemessene Zeit ist viel zu kurz.
+	 Abhilfen:
+	 - Daten nicht "hard-wired", sondern zum Beispiel von Platte lesen
+	 - "volatile" Schlüsselwort "volatile int k = 3;"
+   - der Algorithmus ist schneller als die clock $\implies$ rufe den Algorithmus mehrmals in einer Schleife
+	 auf
+   - die Ausführung ihres Programms kann vom Betriebssystem jederzeit für etwas wichtigeres unterbrochen werden
+	 (zum Beispiel Email checken) $\implies$ gemessene Zeit zu lang $\implies$ messe
+	 mehrmals und nimm die kürzeste Zeit (mest reicht 3 bis 10 fach)
+   - Fausregel: Messug zwischen $\SI{0.02}{\second}$ und $\SI{3}{\second}$
+   Nachteil: Zeit hängt von der Qualität der Implementation, den Daten (insbesondere der Menge) und der Hardware ab
+*** algorithmische Komplexität
+	Algorithmische Kompexität ist davon unabhängig, ist eine Art theoretisches Effizenzmaß. Sie
+	beschreibt, wie sichdie Laufzeit verlängert, wenn man mehr Daten hat.
+
+	#+begin_ex latex
+	Algorithmus brauch für $n$ Elemente $x$ Sekunden, wie lange dauert es für $2n$, $10n$ für große $n$
+	#+end_ex
+	Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
+	Grundidee:
+	1. berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
+	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$-Notation* und ihren Verwandten
+	   Gegeben: $f(n)$ und $g(n)$
+	   1. $g(n)$ ist eine asymptotische (für große $n$) overe Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
+		  und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in O(g(n))$
+	   2. $g(n)$ ist asymptotische untere Schranke für $f(n)$ ($f(n) \geq g(n)$)
+		  \[f(n) \in \Omega(g(n)) \iff \Exists n_0,C : \Forall n > n_0 f(n) \geq C g(n)\]
+	   3. $g(n)$ ist asymptotisch scharfe Schranke für $f(n)$ ($f(n) = g(n))
+		  \[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
+	Regeln:
+	1. $f(n) \in \Theta(f(n)) \implies f(n) \in O(f(n)), f(n) \in \Omega(f(n))$
+	2. $c' f(n) \in \Theta(f(n))$
+	3. $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Miltiplikationsregel
+	4. $O(f(n)) + O(g(n)) \in O(\text{"max"}(f(n), g(n)))$ \hfill Additionsregel \\
+	   formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
+	   $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
+	5. $n^p \in O(n^q)$ wenn $p \leq q$
+	Beliebte Wahl für $g(n)$
+	- $O(1)$ \hfill "konstante Komplexität" \\
+	  elementare Operation "+, -, *, /", Array-Zugriff v[k] (v: std::vector)
+	- $O(\log(n))$ \hfill "logarithmische Komplexität" \\
+	  zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
+	- $O(n)$ \hfill "lineare Komplexität" \\
+	  zum Bespiel std::transform() ($n$ = Anzahl der transformierten Elemente)
+	- $O(n \log(n))$ \hfill{"n log n", "loglinear" "linearithmisch"} \\
+	  Beispiel: std::sort
+	- $O(n^2)$ \hfill "quardatische Komplexität"
+	- $O(n^p)$ \hfill "polynomielle Komplexität"
+	- $O(2^n)$ \hfill "eexponentielle komplexität"
+	#+begin_ex latex
+	\[f(n) = 1 + 15 n + 4n^2 + 7n^3 \in O(n^3)\]
+	#+end_ex
+*** Anwendung
+	1. Fibonacci-Zahlen: $f_k = f_{k - 2} + f_{k - 1}$
+	   | k     | 0 | 1 | 2 | 3 | 4 | 5 | 6 |  7 |  8 |
+	   |-------+---+---+---+---+---+---+---+----+----|
+	   | $f_k$ | 0 | 1 | 1 | 2 | 3 | 5 | 8 | 13 | 21 |
+	   #+begin_src cpp
+	   int fib1(int k) {
+		   if(k < 2) { // O(1)
+			   return k; // O(1)
+		   }
+		   // O(1)
+		   int f1 = 0; // letzten beiden Fibonacci Zahlen, anfags die ersten beiden
+		   int f2 = 1;
+		   for(int i = 2; i <= k; i++) { // f(k) = k - 1 e O(k)
+			   int f = f1 + f2; // O(1)
+			   f1 = f2; // O(1)
+			   f2 = f; // O(1)
+		   } // gesamte Schleife: O(1)*O(k) = O(k)
+		   return f2;
+	   } // gesanmte Funktion: teuerstes gewinnt: O(k)
+
+	   // rekusive Variante:
+	   int fib2(int k) {
+		   if(k < 2) { // O(1)
+			   return k; // O(1)
+		   }
+		   return fib2(k - 2) + fib2(k - 1);
+	   }
+	   #+end_src
+	   - sehr ineffizent, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
+	   Sei $f(k)$  die Anzahl der Schritte, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$

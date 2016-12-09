@@ -305,5 +305,55 @@
 
    $\implies$ Symmetrietransformationen:
    1. Rotationen: $(t,x) \mapsto (t,Rx), R \in O(3)$
-   2. Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3$
-   3. Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$
+   2. Translationen: $(t,x) \mapsto (t + s, x + y), s \in \mathbb{R}, y\in\mathbb{R}^3 \implies$ Abschaffung der $0\in\mathbb{R}$ und $\v 0 \in \mathbb{R}^3$"
+   3. Boosts: $(t, x) \mapsto (t, x + vt),v\in\mathbb{R}^3$ "zeitabhängige Verschiebung"
+
+   Die Galilei-Gruppe $G$ ist die von 1., 2. und 3. "generierte" Gruppe. Nichttrivialer Fakt: Jedes $g\in G$ ist scheibbar als $g = \overarrow[g_3]{Boost} \circ \underarrow[g_2]{Trans} \circ \overarrow[g_1]{Rot.}$
+   Man muss dazu unter anderem zeigen, dass es zu einem $g_2 \circ g_1 \circ g_2'' \in G$ ein $g_2'', g_1''$ gibt, sodass $g_2 \circ g_1 \circ g_2' = g_2'' \circ g_1''$ \\
+   "Boost" = Zunahme (der Geschwindigkeit). Boost einer Trajektorie: $(t, \v x(t)) \mapsto (t, \v x(t) + \v v_0 t)$ \\
+   $\v v = \dot{\v x}(t) \mapsto \v v' = \dot{\v x}(t) + \v v_0$
+
+   Boost zerstören das Konzept der Gleichörtlichkeit: Seien $(t, x), (t', x)$ zwei Ereignisse am gleichen Ort. Boost $\implies (t, x + v t), (t', x + v t')$, *nicht* mehr am gleichen Ort
+** Affinier Raum
+   #+begin_defn latex
+   $O(3)$ Symmetriegruppe des euklidischen Raumes. "Elegant!". \\
+   Besser: Definition des *affinen Raumes*: Gegeben sein Menge $A$, ein Vektorraum $V$ un eine Abbildung $A\times A \to V, (P, Q) \mapsto \v{PQ}$
+   sodass $\v{PQ} + \v{QR} = \v{PR}$. Außerdem: Zu jeden $P\in A, \v V$ soll es eindeutig ein $Q\in A$ geben, sodass $\v = \v{PQ}$, das Paar $(A,V)$ heißt affinier Raum
+   #+end_defn
+   #+begin_ex latex
+   Zu jedem Vektorraum gehört ein affinier Raum: Wähle $A \equiv V, V\times V \to V, (\v x, \v y) \mapsto \v y - \v x$
+   #+end_ex
+   Sei $(A^4, V^4)$ ein 4-dimensionaler affiner Raum. (Man denke zum Beispiel an den zu $\mathbb{R} \times \mathbb{R}^3$ geörigen affinien Raum) \\
+   Physikalische Raumzeit: $(A^{(4)}, V^{(4)})$ mit
+   1. Eine lineare Abbildung $V^4 \to \mathbb{R}$ ("Zeitfunktion") (im konkreten Beispiel: $((t,x), (t', x')) \mapsto t' - t$)
+   2. Sei $\tilde V^{(3)} \subset V^{(4)}$ der Raum von Pfeilen zwischen gleichzeitigen Ereignissen ($v\in \tilde V^{(3)}$ heißt $T(\tilde v) = 0$)
+	  Dann hat $\tilde V$ ein Skalarprodukt, "Abstandsfunktion". Im konkreten Bespiel: $(t,x),(t,x') \mapsto \abs{x - x'}$
+
+   Zusammen bilden 1. und 2. eine Galileische Struktur. Die physikalische Raumzeit ist $(A^{(4)}, V^{(4)})$ mit galileischer Struktur
+
+   $G$ sind die Transformationen des $(A^{(4)}, V^{(4)})$, welche seine Galileische Struktur respektieren.
+   # Zur Anschauung: (für 2d-Welt $\mathbb{R} \times \mathbb{R}^2$)
+** Dynamik
+   Dynamik soll invariant sein! Betrachte Tranjektorie, die die Bewegungsgleichung erfüllt:
+   \[(t, \v x(t)), m \frac{\d^2 \v x}{\d t^2} = \v F(t, \v x(t))\]
+   Transformierte Tranjektorie:
+   \[t', \v x'(t') = (t + s, R\v x(t) + \v y + \v v(t + x))\]
+   Dazu:
+   \[m \frac{\d^2}{\d t'^2} = m \frac{\d^2 x}{\d t^2} = m \\frac{\d^2}{\d t^2} (R\v x(t) + \v y + \v v(t + s)) = m R \frac{\d^2 \v x}{\d t^2} = R\v F(t, \v x(t))\]
+   $\implies$ Newtonsche Dynamik ist invariant falls Kräfte wie Cektoren transformieren. (hatten wir schon verlangt)
+   Bei Systemen von Massepunkten mit Zentralkräften ist die Kraft gleich dem Gradient, sie besitzt automatisch Vektor-Transformationseigenschaften
+
+   Wir fordern bei
+   \[m R \frac{\d^2 \v x}{\d t^2} = R\v F(t,\v x(t))\]
+   eigentlich
+   \[R\v F(t,\v x(t)) = \v F'(t', x'(t'))\]
+   Wichtig: Die Transformation von $\v F$ beinhaltet nicht nur Drehung, sondern auch Transformation über das Argument.
+   Betrachte zur Vereinfachung $R = \mathbb{1} \implies \v F'(t', \v x') = \v F(t, \v x)$ \\
+
+   Geschwindigkeitsabhänige Kräfte: zum Bespiel Reibung
+   \[\v F_R = -\alpha(\v x - \underarrow[v u]{Medium})\]
+** Zusammenfassung:
+   Allgemeingültiges Schema:
+   - Beschreibung der Bewegung festlegen (Spielfeld) (hier: affiner Raum und Galileische Struktur)
+   - Identifikation der Symmetriegruppe (hier Galilei Gruppe)
+   - Invarianz der Dynamik prüfen beziehungsweise forder (Spielregeln) (Newtonsches Grundgesetz)

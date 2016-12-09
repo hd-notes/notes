@@ -1,4 +1,4 @@
-% Created 2016-12-07 Mi 19:20
+% Created 2016-12-09 Fr 11:47
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -37,6 +37,25 @@
 \setlistdepth{20}
 \renewlist{itemize}{itemize}{20}
 \setlist[itemize]{label=$\cdot$}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\theoremstyle{plain}
+\newtheorem{thm}{Satz}
+\theoremstyle{remark}
+\newtheorem{remark}{Bemerkung}
+\theoremstyle{remark}
+\newtheorem{ex}{Beispiel}
+\usepackage{etoolbox}
+\patchcmd{\thmhead}{(#3)}{#3}{}{}
+\usepackage{xparse}% http://ctan.org/pkg/xparse
+\NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+\overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+}
+\NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+\underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+}
+\renewcommand*{\proofname}{Beweis}
 \author{Robin Heinemann}
 \date{\today}
 \title{Einführung in die Anwendungsorientierte Informatik (Köthe)}
@@ -757,8 +776,8 @@ double sqrt(double y);
 \paragraph{Methode}
 \label{sec-7-2-5-2}
 iterative Verbesserung mittel Newtonverfahren
-initial$_{\text{guess}}$ $x^{(0)}$ ("geraten"), t = 0 \\
-     while not$_{\text{good}}$$_{\text{enough}}$($x^{(t)}$): \\
+initial\_guess $x^{(0)}$ ("geraten"), t = 0 \\
+     while not\_good\_enough($x^{(t)}$): \\
          update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
          t = t + 1 \\
 \subparagraph{Newtonverfahren}
@@ -874,7 +893,7 @@ Durch "objekt-orientierte Programmierung" ($\implies$ später) erreicht man, das
 \item Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
 \end{itemize}
 
-$\implies$ Punktsyntax: type$\backslash$$_{\text{name}}$ t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+$\implies$ Punktsyntax: type$\backslash$\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 \subsection{Zeichenketten-Strings:}
 \label{sec-8-3}
 zwei Datentypen in c++
@@ -1240,15 +1259,15 @@ std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 \end{minted}
 \end{itemize}
 \end{itemize}
-\subsubsection{Effizenz von push$\backslash$$_{\text{back}}$}
+\subsubsection{Effizenz von push$\backslash$\_back}
 \label{sec-11-1-1}
-Warum ist push$\backslash$$_{\text{back}}$() effizient? (bei std::vector)
+Warum ist push$\backslash$\_back() effizient? (bei std::vector)
 \begin{itemize}
 \item veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens vei Initialisierung, bekannt)
 \begin{itemize}
 \item sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
 \end{itemize}
-\item modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push$_{\text{back}}$())
+\item modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push\_back())
 \begin{itemize}
 \item dies kann sehr effizient unterstützt werden $\implies$ dynamisches Array
 \end{itemize}
@@ -1257,7 +1276,7 @@ Warum ist push$\backslash$$_{\text{back}}$() effizient? (bei std::vector)
 \item wird das interne Array zu klein $\implies$ wird automatisch auf ein doppelt so großes umgeschaltet
 \item ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve
 \end{itemize}
-\item Verhalten bei push$\backslash$$_{\text{back}}$():
+\item Verhalten bei push$\backslash$\_back():
 \begin{enumerate}
 \item noch Reserve vorhanden: lege neues Element im eine unbenutze Speicherzelle $\implies$ billig
 \item keine Reserve
@@ -1277,7 +1296,7 @@ for(int i = 0; i < 32; i++) v.push_back(k);
 \end{minted}
 \begin{center}
 \begin{tabular}{rrrrrr}
-k & capacity vor push$_{\text{back}}$() & capacity nach push$_{\text{back}}$() & size() & Reserve & \#Umkopieren\\
+k & capacity vor push\_back() & capacity nach push\_back() & size() & Reserve & \#Umkopieren\\
 \hline
 0 & 0 & 1 & 1 & 0 & 0\\
 1 & 1 & 2 & 2 & 0 & 1\\
@@ -1315,12 +1334,12 @@ v.shrink_to_fit() // == v.reserve/v.size()) Reseve ist danach 0, wenn Endgröße
 \end{minted}
 \item wenn Reserve > size: capacity kann auch halbiert werden
 \item wichtige Container der c++ Standardbibilothek
-\item wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered$\backslash$$_{\text{map}}$
-\item std::set, std::unordered$\backslash$$_{\text{set}}$: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
-\item std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push$_{\text{back}}$() und pop$_{\text{back}}$() bei std::vector
+\item wir hatten dynamische Arrays std::string, std::vector, assozaitive Arrays std::map, std::unordered$\backslash$\_map
+\item std::set, std::unordered$\backslash$\_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
+\item std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push\_back() und pop\_back() bei std::vector
 \item std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
-\item std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop$\backslash$$_{\text{front}}$(), pop$\backslash$$_{\text{back}}$()
-\item std::priority$\backslash$$_{\text{queue}}$, push() und pop() - Element mit höchster niedrigster Priorität (user defined)
+\item std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop$\backslash$\_front(), pop$\backslash$\_back()
+\item std::priority$\backslash$\_queue, push() und pop() - Element mit höchster niedrigster Priorität (user defined)
 \end{itemize}
 \section{Iteratoren}
 \label{sec-12}
@@ -1367,7 +1386,7 @@ element  = new_vlaue; // schreiben
 \item Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
 \item "bidirectional iterators": unterstützen auch $--iter$, zum vorigen Element ((fast) alle Iteratoren in std)
 \item "random acces iterators": beliebige Sprünge "iter += 5; iter -= 3;"
-\item Besonderheit für assoziative Arrays (std::map, std::unordered$\backslash$$_{\text{map}}$)
+\item Besonderheit für assoziative Arrays (std::map, std::unordered$\backslash$\_map)
 Schlüssel und Werte können beliebig gewählt werden
 \begin{itemize}
 \item $\implies$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
@@ -1508,7 +1527,7 @@ std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
 \end{itemize}
 \section{generische Programmierung}
 \label{sec-14}
-insertion$\backslash$$_{\text{sort}}$ soll für beliebige Elementtypen funktionieren
+insertion$\backslash$\_sort soll für beliebige Elementtypen funktionieren
 \begin{minted}[tabsize=4]{cpp}
 template<typename T>
 void insertion_sort(std::vector<T> & v) {
@@ -1578,7 +1597,7 @@ sq(2); // == sq<int>(2) == 4
 sq(3.0); // == sq<double>(3.0) == 9
 \end{minted}
 \item kombiniert man templates mit Overloading, wird die ausprogrammierte Variante vom Compiler bevorzugt.
-Komplizierte Fälle (Argument teilweise Template, teilweise hard$_{\text{coded}}$) $\implies$ für Fortgeschrittene
+Komplizierte Fälle (Argument teilweise Template, teilweise hard\_coded) $\implies$ für Fortgeschrittene
 \end{itemize}
 \item Beispiel 2: Funktion, die ein Array auf Konsole ausgibt, für beliebige Elementtypen
 \begin{minted}[tabsize=4]{cpp}
@@ -1599,7 +1618,7 @@ void print_vector(std::vector<ElementType> const & v) {
 std::list<int> l = {1, 2, 3};
 print_containter(l.begin(), l.end()); // "{1,2,3}"
 \end{minted}
-\item es genügen forward$_{\text{interators}}$
+\item es genügen forward\_interators
 \begin{minted}[tabsize=4]{cpp}
 Iterator iter2 = iter1; // Kopie erzeugen
 iter1++; // zum nächsten Element
@@ -1653,11 +1672,143 @@ bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
 }
 // == std::is_sorted
 \end{minted}
-\item Bemerkung1: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
+\item Bemerkung: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
 \item mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene
 \end{itemize}
 \end{itemize}
 \end{enumerate}
 \end{itemize}
+\section{Effizienz von Algorithmen und Datenstrukturen}
+\label{sec-15}
+\subsection{Bestimmung der Effizienz}
+\label{sec-15-1}
+2 Möglichkeiten:
+\begin{enumerate}
+\item Messe die "wall clock time" - wie lange mus man auf das Ergebnis warten
+\item unabhängig von Hardware benutz man das Konzept der algorithmischen Komplexität
+\end{enumerate}
+\subsubsection{wall clock}
+\label{sec-15-1-1}
+wall clock time misst man zum Beispiel mit dem Modul <chrono>
+\begin{minted}[tabsize=4]{cpp}
+#include <chrono>
+#include <iostream>
+
+int main() {
+	// alles zur Zetimessung vorbereiten
+
+	auto start = std::chrono::high_resolution_clock::now(); // Startzeit
+	// code der gemessen werden soll
+	auto stop = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> diff = stop - start; // Zeitdifferenz
+	std::cout << "Zeitdauer: " << diff.count() << " sekunden\n" << std::endl; // ausgeben
+}
+\end{minted}
+Pitfalls:
+\begin{itemize}
+\item moderne Compiler optimieren oft zu gut, das heißt komplexe Berechnungen werden zur Compilezeit ausgeführt und ersetzt $\implies$ gemessene Zeit ist viel zu kurz.
+Abhilfen:
+\begin{itemize}
+\item Daten nicht "hard-wired", sondern zum Beispiel von Platte lesen
+\item "volatile" Schlüsselwort "volatile int k = 3;"
+\end{itemize}
+\item der Algorithmus ist schneller als die clock $\implies$ rufe den Algorithmus mehrmals in einer Schleife
+auf
+\item die Ausführung ihres Programms kann vom Betriebssystem jederzeit für etwas wichtigeres unterbrochen werden
+(zum Beispiel Email checken) $\implies$ gemessene Zeit zu lang $\implies$ messe
+mehrmals und nimm die kürzeste Zeit (mest reicht 3 bis 10 fach)
+\item Fausregel: Messug zwischen $\SI{0.02}{\second}$ und $\SI{3}{\second}$
+\end{itemize}
+Nachteil: Zeit hängt von der Qualität der Implementation, den Daten (insbesondere der Menge) und der Hardware ab
+\subsubsection{algorithmische Komplexität}
+\label{sec-15-1-2}
+Algorithmische Kompexität ist davon unabhängig, ist eine Art theoretisches Effizenzmaß. Sie
+beschreibt, wie sichdie Laufzeit verlängert, wenn man mehr Daten hat.
+
+\begin{ex}
+Algorithmus brauch für $n$ Elemente $x$ Sekunden, wie lange dauert es für $2n$, $10n$ für große $n$
+\end{ex}
+Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
+    Grundidee:
+\begin{enumerate}
+\item berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
+\item vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels \textbf{$O$-Notation} und ihren Verwandten
+Gegeben: $f(n)$ und $g(n)$
+\begin{enumerate}
+\item $g(n)$ ist eine asymptotische (für große $n$) overe Schranke für $f(n)$ ("f(n) $\le$ g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
+und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in O(g(n))$
+\item $g(n)$ ist asymptotische untere Schranke für $f(n)$ ($f(n) \geq g(n)$)
+\[f(n) \in \Omega(g(n)) \iff \Exists n_0,C : \Forall n > n_0 f(n) \geq C g(n)\]
+\item $g(n)$ ist asymptotisch scharfe Schranke für $f(n)$ (\$f(n) = g(n))
+\[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
+\end{enumerate}
+\end{enumerate}
+Regeln:
+\begin{enumerate}
+\item $f(n) \in \Theta(f(n)) \implies f(n) \in O(f(n)), f(n) \in \Omega(f(n))$
+\item $c' f(n) \in \Theta(f(n))$
+\item $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Miltiplikationsregel
+\item $O(f(n)) + O(g(n)) \in O(\text{"max"}(f(n), g(n)))$ \hfill Additionsregel \\
+       formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
+       $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
+\item $n^p \in O(n^q)$ wenn $p \leq q$
+\end{enumerate}
+Beliebte Wahl für $g(n)$
+\begin{itemize}
+\item $O(1)$ \hfill "konstante Komplexität" \\
+      elementare Operation "+, -, *, /", Array-Zugriff v[k] (v: std::vector)
+\item $O(\log(n))$ \hfill "logarithmische Komplexität" \\
+      zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
+\item $O(n)$ \hfill "lineare Komplexität" \\
+      zum Bespiel std::transform() ($n$ = Anzahl der transformierten Elemente)
+\item $O(n \log(n))$ \hfill{"n log n", "loglinear" "linearithmisch"} \\
+      Beispiel: std::sort
+\item $O(n^2)$ \hfill "quardatische Komplexität"
+\item $O(n^p)$ \hfill "polynomielle Komplexität"
+\item $O(2^n)$ \hfill "eexponentielle komplexität"
+\end{itemize}
+\begin{ex}
+\[f(n) = 1 + 15 n + 4n^2 + 7n^3 \in O(n^3)\]
+\end{ex}
+\subsubsection{Anwendung}
+\label{sec-15-1-3}
+\begin{enumerate}
+\item Fibonacci-Zahlen: $f_k = f_{k - 2} + f_{k - 1}$
+\begin{center}
+\begin{tabular}{lrrrrrrrrr}
+k & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+\hline
+$f_k$ & 0 & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21\\
+\end{tabular}
+\end{center}
+\begin{minted}[tabsize=4]{cpp}
+int fib1(int k) {
+	if(k < 2) { // O(1)
+		return k; // O(1)
+	}
+	// O(1)
+	int f1 = 0; // letzten beiden Fibonacci Zahlen, anfags die ersten beiden
+	int f2 = 1;
+	for(int i = 2; i <= k; i++) { // f(k) = k - 1 e O(k)
+		int f = f1 + f2; // O(1)
+		f1 = f2; // O(1)
+		f2 = f; // O(1)
+	} // gesamte Schleife: O(1)*O(k) = O(k)
+	return f2;
+} // gesanmte Funktion: teuerstes gewinnt: O(k)
+
+// rekusive Variante:
+int fib2(int k) {
+	if(k < 2) { // O(1)
+		return k; // O(1)
+	}
+	return fib2(k - 2) + fib2(k - 1);
+}
+\end{minted}
+\begin{itemize}
+\item sehr ineffizent, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
+\end{itemize}
+Sei $f(k)$  die Anzahl der Schritte, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$
+\end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}
