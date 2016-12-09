@@ -1,6 +1,6 @@
 * Umgebungsmodell
   Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für die prozedurale Programmierung
-  - Regeln für Auswertung von Audrücken
+  - Regeln für Auswertung von Ausdrücken
   - Regeln für automatische Speicherverwaltung
 	- Freigeben nicht mehr benötigter Speicherzellen, $\implies$ bessere Approximation von "unendlich viel Speicher"
   - Umgebung beginnt normalerweise bei "{" und endet bei "}" \\
@@ -8,7 +8,7 @@
 	- $for$: Umgebung beginnt schon bei "for" $\implies$ Laufvariable ist Teil der Umgebung
 	- Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf $\implies$ Speicherzellen für Argumente und Ergebnis gehören zur Umgebung
 	- globale Umgebung außerhalb aller "{ }" Klammern
-  - automatische Speiccherverwaltung
+  - automatische Speicherverwaltung
 	- Speicherzellen, die in einer Umgebung angelegt werde (initialisiert, deklariert) werde, am Ende der Umgebung in umgekehrter Reihenfolge freigegeben
 	- Computer fügt vor "}" automatisch die Notwendigen Befehle ein
 	- Speicherzellen in der globalen Umgebung werden am Programmende freigegeben
@@ -26,31 +26,31 @@
   - Funktionen sind in der globalen Umgebung definiert
 	- Umgebung jeder Funktion sind Kindknoten der globalen Umgebung (Ausnahme: Namensräume $\implies$ siehe unten) \\
 	  $\implies$ Funktions Umgebung ist *nicht* in der Umgebung, wo die Funktion aufgerufen wird
-  - Jede Umgebung besitzt eine *Zuordungstabelle* für alle Speicherzellen, die in der Umgebung definiert wurden
+  - Jede Umgebung besitzt eine *Zuordnungstabelle* für alle Speicherzellen, die in der Umgebung definiert wurden
 	| Name | Typ | aktueller Wert |
 	|------+-----+----------------|
 	| l    | int | 2              |
   - jeder Name kann pro Umgebung nur einmal vorkommen
   - Ausnahme Funktionsnamen können mehrmals vorkommen bei function overloading (nur c++)
   - Alle Befehle werden relativ zur aktuellen Umgebung ausgeführt
-	- aktuell: Zuordungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
+	- aktuell: Zuordnungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
 	  Beispiel: $c = a * b;$ \\
 	  Regeln:
-	- wird der Name (nur $a, b, c$) in der aktuellen Zuordungstabelle gefunden
+	- wird der Name (nur $a, b, c$) in der aktuellen Zuordnungstabelle gefunden
 	  1. Typprüfung $\implies$ Fehlermeldung, wenn Typ und Operation nicht zusammenpassen
-	  2. andernfalls, setze aktuellen Wert aus Tabelle in Ausdruch ein (ähnlich Substitutionsmodell)
+	  2. andernfalls, setze aktuellen Wert aus Tabelle in Ausdruck ein (ähnlich Substitutionsmodell)
 	- wird Name nicht gefunden: suche in der Elternumgebung weiter
-	- wird der Name bis zur Wurzel (gloable Umgebung) nicht gefunden $\implies$ Fehlermeldung
+	- wird der Name bis zur Wurzel (globale Umgebung) nicht gefunden $\implies$ Fehlermeldung
 	- $\implies$ ist der Name in mehreren Umgebungen vorhanden gilt der zuerst gefundene (Typ, Wert)
-  - $\implies$ Programmierrer muss selbst darauf achten, dass
-	1. bei der Suche die gewünschte Spicherzelle gefunden wird $\implies$ benutze "sprechende Namen"
+  - $\implies$ Programmierer muss selbst darauf achten, dass
+	1. bei der Suche die gewünschte Speicherzelle gefunden wird $\implies$ benutze "sprechende Namen"
 	2. der aktuelle Wert der richtig ist $\implies$ beachte Reihenfolge der Befehle!
   - Namensraum: spezielle Umgebungen in der globalen Umgebung (auch geschachtelt) mit einem Namen \\
 	Ziele:
 	- Gruppieren von Funktionalität in Module (zusätzlich zu Headern)
 	- Verhinderung von Namenskollisionen
 
-	Beispiel: c++ Standardbibilothek:
+	Beispiel: c++ Standardbibliothek:
 	#+BEGIN_SRC cpp
 	namespace std {
 	double sqrt(double x);
@@ -59,7 +59,7 @@
 	}
 	}
 
-	// Benutzung mit Namespace-Prefix:
+	// Benutzung mit Namespace-Präfix:
 	std::sqrt(80);
 	std::chrono::system_clock clock;
 	#+END_SRC

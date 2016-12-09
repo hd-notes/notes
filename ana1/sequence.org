@@ -7,7 +7,7 @@
   - Umgebung in $\mathbb{R}^1$ $\eps$-Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
 
   Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder $\mathbb{C}$)
-** Definition 2.1 Konverenz
+** Definition 2.1 Konvergenz
    Wir sagen, dass die Folge $(a_n)_{n\in\mathbb{N}}$ in $\mathbb{K}$ ($\mathbb{R}$ oder $\mathbb{C}$) gegen den Grenzwert (oder Limes) $a\in\mathbb{K}$ konvergiert
    \[a_n \xrightarrow{n\to\infty} a~(a=\lim_{n\to\infty} a_n)\]
    wenn für beliebiges $\eps > 0$ von einem $n_\eps \in\mathbb{N}$ an gilt
@@ -85,7 +85,7 @@
    \end{enumerate}
    \end{ex}
    \begin{remark}
-   Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Haufungswert
+   Nach \ref{lemma:one_limit} hat die konvergente Folge 1 Häufungswert
    \end{remark}
    \begin{lemma}[2.11]
    \label{lemma:cauchy_haufungswert}
@@ -113,7 +113,7 @@
    $(\implies)$: \\
    Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das heißt $x \in CA$, so gilt
    \[\exists \eps > 0: I_\eps \subseteq CA \implies I_\eps (x) \cap A = \emptyset \text{lightning}\]
-   \textbf{Widerspruch} zur Definition von Häufungspunkt $\implies$ jeder Häufungspunk von $A$ ist in $A$
+   \textbf{Widerspruch} zur Definition von Häufungspunkt $\implies$ jeder Häufungspunkt von $A$ ist in $A$
    \end{proof}
    \begin{lemma}[2.14]
    \label{lemma:monoton_in_r}
@@ -135,7 +135,7 @@
 	 \end{align*}
 	 Damit können wir definieren
 	 \[n_{k + 1} = \min\{k \geq n_k: a_{n_k} < a_k\}\]
-	 und die Folge $(a_{n_k})_{k\in\mathbb{N}}$ ist monoton wachsed
+	 und die Folge $(a_{n_k})_{k\in\mathbb{N}}$ ist monoton wachsend
    #+end_proof
    #+begin_ex latex
    1. $a_n = (-1)^n (1 + \frac{1}{n + 1}),\quad B=\{2 n \mid n \in\mathbb{N}\}$ monoton fallend
@@ -146,7 +146,7 @@
    \begin{enumerate}
    \item \label{bolzano:1} $A$ ist beschränkt abgeschlossen
    \item \label{bolzano:2} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ hat einen Häufungswert in $A$
-   \item \label{bolzano:3} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ hesitzt eine in $A$ konvergente Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$
+   \item \label{bolzano:3} Jede Folge $(a_n)_{n\in\mathbb{N}}$ aus $A$ besitzt eine in $A$ konvergente Teilfolge $(a_{n_k})_{k\in\mathbb{N}}$
    \end{enumerate}
    \end{thm}
    #+begin_proof latex
@@ -240,7 +240,7 @@
    \begin{align*}
    \intertext{Zu zeigen: $\abs{c q^n - 0} < \eps$ für genug große $n$, das heißt}
    c(\frac{1}{1+x})^n < \eps \iff \frac{c}{\eps} < (1 + x)^n \\
-   \intertext{Das Archimedische Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
+   \intertext{Das Archimedisches Axiom garantiert die Existenz von $n_0\in\mathbb{N}$:}
    n_0 > \frac{c}{x\eps} - \frac{1}{x} = \frac{c - \eps}{x\eps} \\
    \Forall n\geq n_0: \frac{c}{\eps} = (\frac{c}{x\eps} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
    \intertext{daraus folgt aus der Bernoulli Ungleichung}
@@ -273,8 +273,8 @@
    5. $a_n = \sum_{i = 0}^{n} \frac{1}{i!}$
 	  - $(a_n)_{n\in\mathbb{N}}$ ist monoton wachsend
 	  - beschränkt: $a_n < 3 \Forall n\in\mathbb{N}$
-	  - $\implies (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogennante Zahl $\euler$
-   6. $(a_n)_{n\in\mathbb{N}}$ rekursiev definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
+	  - $\implies (a_n)_{n\in\mathbb{N}}$ konvergiert, Limes ist sogenannten Zahl $\euler$
+   6. $(a_n)_{n\in\mathbb{N}}$ rekursiv definiert: $a_0 = 0, a_1 = 1, a_n = a_{n - 1} + a_{n - 2}$ Fibonacci Folge
    #+end_ex
 ** Umgebung
    #+ATTR_LATEX: :options [2.19]
@@ -291,7 +291,7 @@
    #+begin_proof latex
    1. Für irgendein \[i_0 \in I \Exists \eps > 0: I_\eps (a) \subseteq U_{i_0} \subseteq \bigcup_{i \in I} U_i\]
    2. Es gilt nach Voraussetzung $\eps_1, \ldots \eps_n > 0$ mit $I_{\eps_i}(a) \subseteq U_i$ für $i = 1,\ldots,n$. Folglich gilt für $\eps:= \min \{\eps_1, \ldots, \eps_n\} > 0,~I_\eps(a) \subseteq U_i (\Forall i = 1,\ldots,n) \implies I_\eps (a) \subseteq U_1 \cap \ldots U_n$
-   3. Nach Vorraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\eps > 0$ mit $I_\eps(a) \subseteq U$ \\
+   3. Nach Voraussetzung gibt es für eine Umgebung $U$ von $a$ ein $\eps > 0$ mit $I_\eps(a) \subseteq U$ \\
 	  $V:= I_{\frac{\eps}{2}}(a) \subseteq U$ ist ebenfalls Umgebung von $a$ und $\Forall y\in V$ gilt
 	  \[I_{\frac{\eps}{2}} \subseteq I_\eps(x) \subseteq U,~\text{denn}~ \underbrace{\abs{y - z}}_{z\in I_{\frac{\eps}{2}}} < \frac{\eps}{2} \implies \abs{x - z} \leq \abs{x - y} + \abs{x - z} < \eps\]
    #+end_proof
@@ -302,7 +302,7 @@
 	  (in $\mathbb{R}\Forall a\in A \Exists \eps > 0 I_\eps (a) \subseteq A$)
 	  Für Intervalle $(a,b)$ haben wir schon gezeigt, dass sie offen sind
    2. $A\subseteq \mathbb{K}$ heißt abgeschlossen $\iff C_\mathbb{K} A$ offen
-   3. Abschließung von $A$: \[\bar A := \{a \in \mathbb{K} \mid a \in A \vee a ~\text{Häufungspunk von}~A\}\]
+   3. Abschließung von $A$: \[\bar A := \{a \in \mathbb{K} \mid a \in A \vee a ~\text{Häufungspunkt von}~A\}\]
    4. Rand von $A$: \[\partial A:= \{a\in\mathbb{K}\mid \Forall ~\text{Umgebung $U$ von $a$}: A \cap U \neq \emptyset \wedge CA \cap U \neq \emptyset\}\]
    #+end_defn
    #+ATTR_LATEX: :options [2.22]
@@ -314,7 +314,7 @@
    \Forall \eps > 0 I_\eps(a) \cap (a,b\right] \neq \emptyset \\
    I_\eps (a) \cap \mathbb{R} \setminus (a,b\right] \neq \emptyset
    \end{align*}
-   Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\eps-$Intervall um eine rationale Zahl gilbt es sowohl rationale als auch irrationale Zahlen
+   Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\eps$-Intervall um eine rationale Zahl gibt es sowohl rationale als auch irrationale Zahlen
    #+end_ex
    #+begin_remark latex
    \mbox{}

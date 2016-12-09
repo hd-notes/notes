@@ -2,7 +2,7 @@
 ** Grenzwert einer Funktion, Stetigkeit
    Wir betrachten die Funktion
    \[f:\mathbb{R}\setminus\{0\} \to \mathbb{R}, x\mapsto \frac{e^x - }{x} \]
-   und wolllen diese auf ganz $\mathbb{R}$ fortsetzen, das heißt Wir suchen ein $\tilde f: \mathbb{R} \to \mathbb{R}$
+   und wollen diese auf ganz $\mathbb{R}$ fortsetzen, das heißt Wir suchen ein $\tilde f: \mathbb{R} \to \mathbb{R}$
    mit $\tilde f\mid \mathbb{R}\setminus \{0\} = f$ und einen Wert $\tilde f(0) \in \mathbb{R}$
 
    Allgemeiner überprüft man für Funktionen $f: D \subseteq \mathbb{K} \to \mathbb{K}$ die
@@ -26,10 +26,10 @@
 	 verstehen wir unter
 	 \[\lim_{\substack{x\to x_0 \\ x\in T}} f(x)\]
 	 den Grenzwert $\lim_{x\to x_0} f\mid T$, falls er existiert.
-   - Spezialfällte:
+   - Spezialfälle:
 	 \begin{align*}
-	 T_{>} := \{x\in D\mid x > x_0\}: f(x_0^{+}) := \lim_{\substack{x\to x_0 \\ x\in T_{>}}} f(x) = \lim_{x\to x_0^{+}} f(x) \tag{rechtsseitiger Grenwzwert} \\
-	 T_{<} := \{x\in D\mid x < x_0\}: f(x_0^{-}) := \lim_{\substack{x\to x_0 \\ x\in T_{<}}} f(x) = \lim_{x\to x_0^{-}} f(x) \tag{linksseitiger Grenwzwert}
+	 T_{>} := \{x\in D\mid x > x_0\}: f(x_0^{+}) := \lim_{\substack{x\to x_0 \\ x\in T_{>}}} f(x) = \lim_{x\to x_0^{+}} f(x) \tag{rechtsseitiger Grenzwert} \\
+	 T_{<} := \{x\in D\mid x < x_0\}: f(x_0^{-}) := \lim_{\substack{x\to x_0 \\ x\in T_{<}}} f(x) = \lim_{x\to x_0^{-}} f(x) \tag{linksseitiger Grenzwert}
 	 \end{align*}
    - Existiert $\lim_{x\to x_0} f(x), x_0 \in \bar T \subseteq \bar D$, dann gilt
 	 \[\lim_{x\to x_0 \\ x\in T} f(x) = \lim_{x\to x_0}  f(x)\]
@@ -76,7 +76,7 @@
    #+end_defn
    #+ATTR_LATEX: :options [3.5]
    #+begin_lemma latex
-   1. Ist $f: D\to \mathbb{K}$ stetig, dann ist auch $f\mid T$ statig, $T\subseteq D$
+   1. Ist $f: D\to \mathbb{K}$ stetig, dann ist auch $f\mid T$ stetig, $T\subseteq D$
    2. Ist $f:D\to \mathbb{K}$ stetig, so auch $\Re(f):D\to\mathbb{R}$, $\Im(f): D\to \mathbb{R}$, $\abs{f}: D\to\mathbb{R}_+$ stetig (auf ganz $D$)
    3. Sind $f,g:D\to\mathbb{K}$ stetig, so auch $f + g, f\cdot g: D\to\mathbb{K}$
    4. Ist $f:D\to f(D)\subseteq \mathbb{K},g:f(D) \to \mathbb{K}$ stetig in $x_0$, beziehungsweise in $f(x_0) =: y_0$ so auch $f \circ f: D\to\mathbb{K}$ stetig in $x_0 \in D:$
@@ -96,7 +96,7 @@
    #+begin_proof latex
    $(\impliedby)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
    $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
-   das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Wiederspruch zu
+   das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Widerspruch zu
    \[\lim_{x \to x_0} f(x) = f(x_0)\]
    #+end_proof
    #+ATTR_LATEX: :options [3.8]
@@ -158,7 +158,7 @@
    #+ATTR_LATEX: :options [3.12 Lipschitz Stetigkeit]
    #+begin_defn latex
    Eine Funktion $f:D\to\mathbb{K}$ heißt Lipschitz stetig (kurz L-stetig) auf $D$, wenn
-   $\Exists L > 0$ (sogenannte Lipschitz Konstante), sodass
+   $\Exists L > 0$ (so genannte Lipschitz Konstante), sodass
    \[f(x) - f(y) \leq L \abs{x - y} \Forall x,y \in D\]
    #+end_defn
    #+begin_remark latex
@@ -173,7 +173,7 @@
    #+begin_proof latex
    Angenommen $f$ ist nicht gleichmäßig stetig. Dann gibt es ein $\eps > 0$, sodass $\Forall n\in \mathbb{N}$ Punkte $x_n, y_n \in D$ existieren mit
    $\abs{x_n - y_n} < \frac{1}{n}, \abs{f(x_n) - f(y_n)} \geq \eps$ \\
-   Nach dem Satz von Bolzano-Weierstrass besitzt die beschränkte Folge $(x_n)_{n\in\mathbb{N}}$ eine
+   Nach dem Satz von Bolzano-Weierstraß besitzt die beschränkte Folge $(x_n)_{n\in\mathbb{N}}$ eine
    konvergente Teilfolge $x_{n_k} \to x \in D$. Wegen $\abs{x_n - y_n}  < \frac{1}{n}$ ist auch $\lim_{k\to\infty} y_{n_k} = y = x$
    Aus der Stetigkeit von $f$ folgt, dass
    \[\abs{f(x_{n_k}) - f(y_{n_k})} \to \abs{f(x) - f(y)} = 0 \lightning\]
@@ -185,11 +185,11 @@
 	  - Beschränktheit: $f(x) =x^2$ für $x\in\mathbb{R}$ ist stetig, aber nicht gleichmäßig stetig auf $\mathbb{R}$ \\
 		für $x = m$ und $y = x + \frac{1}{n}$ gilt
 		\[\abs{x - y} \to 0, ~\text{aber}~ \abs{f(x) - f(y)} = \abs{x^2 - y^2} = \abs{(x - y)(x + y)} = 2 + \frac{1}{n} \to 2\]
-   2. Libschitz-Stetigkeit von $f(x) = x^2$ \\
+   2. Lipschitz-Stetigkeit von $f(x) = x^2$ \\
 	  \[\abs{f(x) - f(y)} = \abs{(x - y)(x + y)} \leq L \abs{x y}\]
-	  wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A \implies L = 2A \implies$ Libschitz-Stetigkeit,
+	  wenn $D$ beschränkt $D = [-A, A] \implies \abs{x + y} \leq 2A \implies L = 2A \implies$ Lipschitz-Stetigkeit,
 	  aber wenn $D = R \implies$ gibt keine $L < \infty$
-   3. Libschitz-Stetigkeit impliziert gleichmäßige Stetigkeit, aber nicht umgekehrt. Zum Beispiel: $f(x) = \sqrt{x}, x \in [0, A]$ ist gleichmäßig stetig nach Satz 3.13, aber nicht Libschitz-stetig in $0$.
+   3. Lipschitz-Stetigkeit impliziert gleichmäßige Stetigkeit, aber nicht umgekehrt. Zum Beispiel: $f(x) = \sqrt{x}, x \in [0, A]$ ist gleichmäßig stetig nach Satz 3.13, aber nicht Lipschitz-stetig in $0$.
 	  \begin{align*}
 	  \abs{\sqrt{x} - \sqrt{y}} \leq L \abs{x - y} \\
 	  \abs{\frac{y - x}{\sqrt{x} - \sqrt{y}}} > n \abs{x - y}
@@ -198,7 +198,7 @@
    #+end_remark
    #+begin_remark latex
    Stetigkeit kann interpretiert werden als "lokale Approximation" durch Konstanten, das heißt Funktion $f$ nach der Stelle $x_0$ durch eine Konstante $f(x_0)$ approximiert werden
-   kann und die Fehelr der Approximation $\abs{f(x) - f(x_0)} < \eps$
+   kann und die Fehler der Approximation $\abs{f(x) - f(x_0)} < \eps$
    #+end_remark
 ** Eigenschaften stetiger Funktionen
    #+ATTR_LATEX: :options [3.14 Satz von Beschränktheit]
@@ -207,7 +207,7 @@
    $\Exists K > 0: \sup_{x\in D} \abs{f(x)} \leq K$
    #+end_thm
    #+begin_proof latex
-   Angenommen das eine stetige $f(x)$ incht beschränkt auf $D$ ist.
+   Angenommen das eine stetige $f(x)$ nicht beschränkt auf $D$ ist.
    Dann gibt zu jedem $n\in \mathbb{N}$ ein $x_n \in D$ mit $\abs{f(x_n)} >n$ \\
    Die Folge $(x_n)_{n\in\mathbb{N}}$ ist beschränkt (da $D$ beschränkt). Nach dem B.-W. Satz $\Exists x_{m_k} \to x \in D$ (weil $D$ abgeschlossen ist).
    Aus der Stetigkeit von $f$
@@ -216,7 +216,7 @@
    #+end_proof
    #+ATTR_LATEX: :options [3.15 Satz von Extremum]
    #+begin_thm latex
-   Eine auf iner beschränkten, abgeschlossenen Teilmenge $D\subseteq\mathbb{K}$ stetige reelwertige Funktion $f:D\to\mathbb{K}$ besitzt
+   Eine auf einer beschränkten, abgeschlossenen Teilmenge $D\subseteq\mathbb{K}$ stetige reellwertigen Funktion $f:D\to\mathbb{K}$ besitzt
    dort ein Maximum und ein Minimum, das heißt:
    \[\Exists x_{min}, x_{max} \in D: \sup_{x\in D} f(x) = f(x_{max}) \wedge \inf_{x\in D} f(x) = f(x_{min})\]
    #+end_thm
@@ -239,7 +239,7 @@
    Entweder ist dann $\sup A = b$ (und dann $c = b$) oder es gibt per Definition ein $x\in [a,b]$ mit $x > c \implies x \not\in A \implies f(x) > y$
    In beiden Fällen folgt $f(c) \leq y$
    - Falls $c = b \implies y = f(c) = f(b) \implies f(c) \geq y$
-   - Falls $c < b \implies$ Aus stetigkeit von $f$, eine monoton fallende Folge von Punkten aus $A$ existiert, welche gegen $\sup A$ konvergiert
+   - Falls $c < b \implies$ Aus Stetigkeit von $f$, eine monoton fallende Folge von Punkten aus $A$ existiert, welche gegen $\sup A$ konvergiert
    Aus Stetigkeit und Definition von $A$ folgt $f(c) \leq y$. Beide zusammen genommen ergibt $f(c) = y$
    #+end_proof
    #+begin_remark latex
@@ -268,8 +268,8 @@
    Dann definieren wir
    \[\bar \phi_\eps(x) := \sup \{f(x) \mid x_{k - 1} \leq x < x_k\}\]
    \[\ubar \phi_\eps(x) := \inf \{f(x) \mid x_{k - 1} \leq x < x_k \}\]
-   Nach Konstruktion gemäßt $\ubar \phi_\eps (x) \leq f(x) \leq \bar \phi_\eps(x) \Forall x\in [a,b]$ \\
-   Nach dem Satz von Extremum $Forall [x_1, \ldots, x_k] \Exists \bar \xi_k, \ubar\xi_k$ sodass
+   Nach Konstruktion gemäß $\ubar \phi_\eps (x) \leq f(x) \leq \bar \phi_\eps(x) \Forall x\in [a,b]$ \\
+   Nach dem Satz von Extremum $\Forall [x_1, \ldots, x_k] \Exists \bar \xi_k, \ubar\xi_k$ sodass
    \begin{align*}
    f(\bar\xi_k) = \sup \{f(x) \mid x_{k - 1} \leq x \leq x_k\}
    f(\ubar\xi_k) = \inf \{f(x) \mid x_{k - 1} \leq x \leq x_k\}

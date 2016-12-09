@@ -62,7 +62,7 @@
   #+end_remark
   #+begin_proof latex
   Nachrechnen \\
-  Zu $\dim M(m\times n, K) = m\cdot n$: Eine Basis von $M(m\times n, K)$ ist durch die Familie der Matrizen $E_{ij}, i = 1, \ldots, m, j = 1,\ldots, n$ gegeben, wobei $E_{ij}$ dijenige $m\times n$-Matrix mit Einträgen in $K$ bezeichen, die in der i-ten Zeile, j-ten Spalte eine Eins
+  Zu $\dim M(m\times n, K) = m\cdot n$: Eine Basis von $M(m\times n, K)$ ist durch die Familie der Matrizen $E_{ij}, i = 1, \ldots, m, j = 1,\ldots, n$ gegeben, wobei $E_{ij}$ diejenige $m\times n$-Matrix mit Einträgen in $K$ bezeichnen, die in der i-ten Zeile, j-ten Spalte eine Eins
   und sonst nur Nullen stehen hat. \\
   zu 3.: $M(n\times n, K)$ ist nicht kommutativ für $n > 1$:
   \begin{align*}
@@ -128,7 +128,7 @@
   #+begin_remark latex
   Es gilt:
   \[GL(n, K) := \{A\in M(n\times n, K) \mid A ~\text{ist invertierbar}\}\]
-  ist bezüglich der Matrizenmultiplikation eine Gruppe, die sogenannte allgemiene lineare Gruppe.
+  ist bezüglich der Matrizenmultiplikation eine Gruppe, die so genannte allgemeine lineare Gruppe.
   Das neutrale Element ist $E_n$, das zu $A\in GL(n,K)$ inverse Element bezeichnen wir mit $A^{-1}$.
   #+end_remark
   #+begin_proof latex
@@ -141,7 +141,7 @@
   (B_2 B_1) \cdot (A_1 A_2) = B_2 (B_1 A_1) A_2 = B_2 E_n A_2 = B_2 A_2 = E_n
   \end{align*}
   das heißt $A_1 A_2 \in GL(n,K)$
-  - Assoziativiät: Vererbt sich von $M(n\times n, K)$
+  - Assoziativität: Vererbt sich von $M(n\times n, K)$
   - neutrales Element: $E_n$
   - Existenz von Inversen: Sei $A\in GL(n,K) \implies \Exists B\in M(n\times n, K): AB = BA = E_n$ also ist $B\in GL(n,K)$ und $B$ ist invers zu $A$ bezüglich "$\cdot$".
   #+end_proof
@@ -149,18 +149,18 @@
   #+begin_defn latex
   $A \in M(m\times n, K)$ mit Zeilen $a_1, \ldots, a_m \in K^n$ \\
   Unter elementaren Zeilenumformungen von $A$ verstehen wir die folgende Umformungen von $A$
-  1. Multiplikaiton der i-ten Zeile mit $\lambda \in K^\ast = K \setminus\{0\}$
+  1. Multiplikation der i-ten Zeile mit $\lambda \in K^\ast = K \setminus\{0\}$
 	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \end{pmatrix} \to \begin{pmatrix} \vdots \\ \lambda a_i \\ \vdots \end{pmatrix}\]
   2. Addition der j-ten Zeile zur i-ten Zeile, $i\neq j$
 	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix} \to \begin{pmatrix} \vdots \\ a_i + a_j \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}\]
-  3. Addition der $\lambda$ fachen der j-ten Zeile zur i-iten Zeile, $\lambda \in K^\ast, i\neq j$
+  3. Addition der $\lambda$ fachen der j-ten Zeile zur i-ten Zeile, $\lambda \in K^\ast, i\neq j$
 	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix} \to \begin{pmatrix} \vdots \\ a_i + \lambda a_j \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}\]
   4. Vertauschen der i-ten Zeile mit der j-ten Zeile, $i\neq j$
 	 \[\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix} \to \begin{pmatrix} \vdots \\ a_j \\ \vdots \\ a_i  \\ \vdots \end{pmatrix}\]
   #+end_defn
   #+begin_note latex
   \mbox{}
-  - Typ 3. und 4. kann man durch Kombination von Umfornumen vom Typ 1. und 2. erhalten, 3.:
+  - Typ 3. und 4. kann man durch Kombination von Umformungen vom Typ 1. und 2. erhalten, 3.:
 	\begin{equation}
 	\begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots\end{pmatrix}
 	\to \begin{pmatrix} \vdots \\ a_i \\ \vdots \\ \lambda a_j  \\ \vdots \end{pmatrix}
@@ -176,8 +176,8 @@
 	\to \begin{pmatrix} \vdots \\ a_i + a_j \\ \vdots \\ a_i  \\ \vdots \end{pmatrix}
 	\to \begin{pmatrix} \vdots \\ a_i \\ \vdots \\ a_j  \\ \vdots \end{pmatrix}
 	\end{equation}
-  - Analog zu den elementaren Zeilenumformungen definiert man elementare Spaltenumformungen in nachliegender Weise
-  - Elementare Zeilenumformungen erhält man durch Multiplikaiton von $A$ mit sogenannten *Elementarmatrizen* von link,
+  - Analog zu den elementaren Zeilenumformungen definiert man elementare Spaltenumformungen in nahe liegender Weise
+  - Elementare Zeilenumformungen erhält man durch Multiplikation von $A$ mit sogenannten *Elementarmatrizen* von links,
 	elementare Spaltenumformungen durch Multiplikation mit Elementarmatrizen von recht.
   #+end_note
   #+ATTR_LATEX: :options [10.6]
@@ -209,13 +209,13 @@
 	 \[ZR(A) = \Lin((a_1, \ldots, a_m)) = \Lin((a_1, \ldots, a_{i - 1}, a_i + a_j, a_{i + 1}, \ldots, a_m)) = ZR(B)\]
 	 Dies gilt, denn jeder UVR von $K^n$, der $a_1, \ldots a_m$ enthält auch $a_1, \ldots, a_{i - 1}, a_i + a_j, a_{i + 1}, \ldots, a_m$ enthält und umgekehrt (Behauptung folgt dann aus 8.13)
   #+end_proof
-  Ziel: Bringe Matrix $A \in M(m\times n, K)$ mit Zeilen $a_1, \ldots, a_m \in K^n$ durch elementare Zeilenumformungen auf "einfache Gestalt", aus dder man eine Basis von $\Lin((a_1, \dots, a_m)) = ZR(A) = ZR(B)$
+  Ziel: Bringe Matrix $A \in M(m\times n, K)$ mit Zeilen $a_1, \ldots, a_m \in K^n$ durch elementare Zeilenumformungen auf "einfache Gestalt", aus oder man eine Basis von $\Lin((a_1, \dots, a_m)) = ZR(A) = ZR(B)$
   ablesen kann.
   #+ATTR_LATEX: :options [10.9]
   #+begin_defn latex
   $A = (a_{ij}) \in M(m\times n, K)$ \\
-  $A$ ist in Zeilenstufenform (ZSF) $\xLeftrightarrow{\text{Def}}$ die folgenden Bedingugnen sind erfüllt
-  - (Z1) Es gibt eine Zahl $r\in\mathbb{N}_0$, mit $0\leq r \leq m$, so dass in den Zeilen mit Index $1$ bis $r$ jeweils nicht nur NUllen stehen und in der Zeile mit den Indizes $r + 1$ bis $m$ stehen nur Nullen.
+  $A$ ist in Zeilenstufenform (ZSF) $\xLeftrightarrow{\text{Def}}$ die folgenden Bedingungen sind erfüllt
+  - (Z1) Es gibt eine Zahl $r\in\mathbb{N}_0$, mit $0\leq r \leq m$, so dass in den Zeilen mit Index $1$ bis $r$ jeweils nicht nur Nullen stehen und in der Zeile mit den Indizes $r + 1$ bis $m$ stehen nur Nullen.
   - (Z2) Setzen wir für $i$ mit $1 \leq i \leq r$
 	\[j_{i} := \min\{j\in \{1, \ldots, n\} \mid a_{ij} \neq 0\}\]
 	dann gilt: $j_1 < j_2 < \ldots < j_r$ (Stufenbedingung), die Elemente $a_{1j_1}, \ldots, a_{1j_r}$ heißen die Pivots von $A$
@@ -237,7 +237,7 @@
   #+ATTR_LATEX: :options [10.11]
   #+begin_defn latex
   $A \in M(m\times n, K)$ \\
-  Dann lässt sich $A$ durch endlich viele elementare Zeilenstufenumformugen in eine Matrix $B$ in ZSF umformen:
+  Dann lässt sich $A$ durch endlich viele elementare Zeilenstufenumformungen in eine Matrix $B$ in ZSF umformen:
   \begin{equation}
   \begin{pmatrix}
   & b_{1j_1} & \ast & & & & \\
@@ -250,8 +250,8 @@
   Die ersten $r$ Zeilen von $B$ bilden eine Basis von $ZR(A)$.
   #+end_defn
   #+begin_proof latex
-  1. $A$ lässt sich wie behauptet auf ZSF brigen: \\
-	 Falls $A = 0$, dann ist $A$ bereits in ZSF (mit r = 0), also im FOlgenden sei $A \neq 0$ \\
+  1. $A$ lässt sich wie behauptet auf ZSF bringen: \\
+	 Falls $A = 0$, dann ist $A$ bereits in ZSF (mit r = 0), also im Folgenden sei $A \neq 0$ \\
 	 1) Bestimme minimalen Index $j_1 \in \{1, \ldots, n\}$, so dass es ein $i_1 \in \{1, \ldots, m\}$ gibt mit $a_{i_1 j_1} \neq 0$ ("Wie weit links in der Matrix $A$ befinden sich Einträge $\neq 0$?") \\
 		Wähle solch ein $i_1$ aus.
 	 2) Vertausche $i_1$-te Zeile mit erster Zeile, erhalte ersten Pivot:
@@ -265,7 +265,7 @@
 		& & & \ast & & & \\
 		\end{pmatrix}
 		\end{equation}
-	 3) Durch Umformungen vom Typ 3. können alle EInträge der $j_1$-ten Splate unterhalb der ersten Zeile zu Null gemacht werden, erhalte:
+	 3) Durch Umformungen vom Typ 3. können alle Einträge der $j_1$-ten Spalte unterhalb der ersten Zeile zu Null gemacht werden, erhalte:
 		\begin{equation}
 		\begin{pmatrix}
 		0 & \ldots & 0 & \tilde a_{1, j_1} & \ast & \ldots & \ast \\
@@ -274,9 +274,9 @@
 		& & & 0 & & & \\
 		\end{pmatrix}
 		\end{equation}
-	 4) Wende das Verfahren 1. - 3. auf $A_2$ an. Die dafür benötigten elementaren Zeilenunmformungen von $A_2$ kann man
+	 4) Wende das Verfahren 1. - 3. auf $A_2$ an. Die dafür benötigten elementaren Zeilenumformungen von $A_2$ kann man
 		auf die Zeilen $2$ bis $m$ von $\tilde A_1$ ausdehnen, ohne dass sich in den Spalten $1$ bis $j_1$ von $\tilde A_1$ etwas ändert, denn
-		dort stehen Nullen. Erhalte auf deise Weise $\tilde A_2$ beziehungsweise $A_3$. Iteriere dieses Verfahren.
+		dort stehen Nullen. Erhalte auf diese Weise $\tilde A_2$ beziehungsweise $A_3$. Iteriere dieses Verfahren.
 		Das Verfahren bricht ab, weil die Folge der Spaltenzahlen der Matrizen $A_k$ string monoton fallend in $\mathbb{N}$ ist, oder irgendwann eine Matrix $A_k = 0$ entsteht. \\
 		$\implies$ erhalte ZSF.
 		Die ersten $r$ Zeilen $b_1, \ldots, b_r$ von $B$ bilden eine Basis von $ZR(A)$, denn Es ist $ZR(A) = ZR(B) = \Lin((b_1, \ldots, b_r))$ \\

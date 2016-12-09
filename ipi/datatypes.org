@@ -5,9 +5,9 @@
 ** zusammengesetzte Typen
    mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
    - wie das geht $\implies$ später
-   - Standardtypen: in der C++ Standardbibilothek definiert, aktivieren durch $\#include <module\_name>$
+   - Standardtypen: in der C++ Standardbibliothek definiert, aktivieren durch $\#include <module\_name>$
 	 - std::string, std::complex, etc.
-   - externe Typen: aus anderer Bibilothek, die man zuvor herunterladen und installieren muss
+   - externe Typen: aus anderer Bibliothek, die man zuvor herunterladen und installieren muss
    - eigene Typen: vom Programmierer selbst implementiert $\implies$ später
    Durch "objekt-orientierte Programmierung" ($\implies$ später) erreicht man, dass zusammengesetzte
     Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
@@ -17,9 +17,9 @@
    $\implies$ Punktsyntax: type\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 ** Zeichenketten-Strings:
    zwei Datentypen in c++
-   - klassischer c-string: char[] ("charakter array") $\implies$ nicht gekapselt, umständlich
+   - klassischer c-string: char[] ("Charakter Array") $\implies$ nicht gekapselt, umständlich
    - c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
-   - string literale: "zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
+   - string Literale: "Zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
 	 Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale),
 	  müssen erst in c++ strings umgewandelt werden, das passiert meist automatisch
 	 - #include <string>
@@ -28,7 +28,7 @@
 	   std::string s = "abcde";
 	   std::string s2 = s1;
 	   std::string leer = "";
-	   std::string leer(); // Abkürzung, default constructor
+	   std::string leer(); // Abkürzung, default Konstruktor
 	   #+END_SRC
 	 - Länge
 	   #+BEGIN_SRC cpp
@@ -52,12 +52,12 @@
 	   s3 = "abc" + "def"; // Bug Literale unterstützen + mit ganz anderer Bedeutung
 	   s3 = std::string("abc") + "def"; // Ok
 	   #+END_SRC
-	 - Add-Assignment: Abkürzung für Addition gefolt von Zuweisung
+	 - Add-Assignment: Abkürzung für Addition gefolgt von Zuweisung
 	   #+BEGIN_SRC cpp
 	   s += "nmk"; // s = s + "nmk" => "xynmk"
 	   #+END_SRC
 	 - die Zeichen werden intern in einem C-Array gespeichert (Array = "Feld") \\
-	   Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummerriert
+	   Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummeriert
 	   in c++: von $0$ beginnend $\estimates$ Index
 	   - Indexoperator:
 		 #+BEGIN_SRC cpp

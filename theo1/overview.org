@@ -1,12 +1,12 @@
 * Semesterüberblick
   1. Newtonsche Mechanik
   2. Lagrange / Hamilton Mechanik / Statistik / Kontinua
-  3. Elektrodynamik / Spezielle Relativitättheorie
-  4. Quatenmechanik
+  3. Elektrodynamik / Spezielle Relativitätstheorie
+  4. Quantenmechanik
   5. Thermodynamik / Quantenstatistik
-  6. Allgemeine Relativitättheorie / Kosmologie
-  7. Quatenfeldtheorie I (ggf. 5.)
-  8. Quatenfeldtheorie II (ggf. 6. $\impliedby$ Stringtheorie / Teilchenphysik / Supersymmetrie)
+  6. Allgemeine Relativitätstheorie / Kosmologie
+  7. Quantenfeldtheorie I (ggf. 5.)
+  8. Quantenfeldtheorie II (ggf. 6. $\impliedby$ Stringtheorie / Teilchenphysik / Supersymmetrie)
   9. Masterarbeit
   10. Masterarbeit
 ** Mathe

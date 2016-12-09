@@ -1,7 +1,7 @@
 * Referenzen
   sind neue (zusätzliche) Namen für vorhandene Speicherzellen
    #+BEGIN_SRC cpp
-   int x = 3; // neue Variable x mit neuer Speicherzell
+   int x = 3; // neue Variable x mit neuer Speicherzelle
    int & y = x; // Referenz: y ist neuer Name für x, beide haben die selbe Speicherzelle
    y = 4; // Zuweisung an y, aber x ändert sich auch, das heißt x == 4
    x = 5; // jetzt y == 5
@@ -10,9 +10,9 @@
    #+END_SRC
   Hauptanwendung:
   - die Umgebung, in der eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
-  - häuftig möchte man Speicherzellen in beiden Umgebungen teilen $\implies$ verwende Referenzen
+  - häufig möchte man Speicherzellen in beiden Umgebungen teilen $\implies$ verwende Referenzen
   - häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
-	- Durch pass-by-reference brauch man keine Kopie $\implies$ typisch "const &", also read-only, keine Seiteneffekte
+	- Durch pass-by-reference braucht man keine Kopie $\implies$ typisch "const &", also read-only, keine Seiteneffekte
 	 #+BEGIN_SRC cpp
 	 int foo(int x) { // pass-by-value
 		 x += 3;

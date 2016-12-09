@@ -97,8 +97,8 @@
 	Wirkung von Kräftepaaren: Reine Rotation. Es gilt:
 	\[\v M = \v r_1 \times \v F - \v r_2 \times \v F = (\v r_1 - \v r_2)\times \v F = \v r_{12} \times \v F\]
 	Merke:
-	Das Drehmoment eines Kräftepaares ist unabhängig vonm Bezugspunkt $0$ \\
-	Zwei Kräftepaare sind äquivalent, wenn sie das gleiche Drahmoment besitzen. Äqzivalente Kräftepaare können einander ersetzen.
+	Das Drehmoment eines Kräftepaares ist unabhängig vom Bezugspunkt $0$ \\
+	Zwei Kräftepaare sind äquivalent, wenn sie das gleiche Drehmoment besitzen. Äquivalente Kräftepaare können einander ersetzen.
 ** Statisches Gleichgewicht
    Statik:
    \[\v F = \sum \v F_i = 0, \v M = \sum \v M_i = 0\]
@@ -109,7 +109,7 @@
 	 Frage: Wo muss $\v F$ angreifen um für statisches Gleichgewicht zu sorgen? \\
 	 Kräfte:
 	 \begin{align*}
-	 sum \v F_i + \v F = 0 \\
+	 \sum \v F_i + \v F = 0 \\
 	 \v F = - \sum m_i \v g = - m_{ges} \v g \\
 	 \end{align*}
 	 Drehmomente:
@@ -119,8 +119,8 @@
 	 = (\sum m_i \v r_i) \times \v g - m_{ges} \v R \times \v G \\
 	 = m_{ges} (\v R \times \v g) = m_{ges} (\v r_s \times \v g)
 	 \end{align*}
-	 Lösung A: $\v R = \v r_s$, das heißt Untertützung im Schwerepunkt mit $\v F = - m{ges} \v g$ \\
-	 Lösung B: $(\v R - \v f_s) \times \v g = 0$, das heißt $(\v R - \v r_s) \parallel \v g$, also Unterstützung oberhalb oder unterhalb des Schwerpunkts
+	 Lösung A: $\v R = \v r_s$, das heißt Unterstützung im Schwerpunkt mit $\v F = - m{ges} \v g$ \\
+	 Lösung B: $(\v R - \v f_s) \times \v g = 0$, das heißt $(\v R - \v r_s) \parallel \v g$, also Unterstützung oberhalb oder unterhalb des Schwerpunkt
 	 3 Möglichkeiten:
 	  - $\v R$ über Schwerpunkt: stabiles Gleichgewicht
 	  - $\v R$ unter SP: labiles Gleichgewicht
@@ -134,7 +134,7 @@
 	  Kräftegleichgewicht:
 	  \[\v F_N = - \v F_G, \v F_N' = -\v F_R\]
 	  Drehmomente: \\
-	  Bezugspunkt = unteres Leiterende (günstige Wahl!) \\
+	  Bezugspunkt = unteres Leiter-Ende (günstige Wahl!) \\
 	  \[F_W h = F_g (\frac{1}{2} a)\]
 	  (vergleiche Übungsaufgabe)
    #+end_ex
@@ -149,14 +149,14 @@
    E_{kin} &= \frac{1}{2} \sum m_i (\v v_s^2 + 2\v v_s \v v_{si} + \v v_{si} + \v v_{si}^2) \\
    &= \frac{1}{2} \sum m_i \v v_s^2 + \v v_s \sum m_i \v v_{si} + \frac{1}{2} \sum m_i \v v_{si}^2 \\
    \end{align*}
-   Die kinetische Energie zerlegt sich in die kinetische Energie des Schwerpunkts und Rotationsenergie, aus der kintischen Energie der Bewegung relativ zum Schwerpunkt
+   Die kinetische Energie zerlegt sich in die kinetische Energie des Schwerpunktes und Rotationsenergie, aus der kinetischen Energie der Bewegung relativ zum Schwerpunkt
 
    Jetzt: Betrachte Rotation um raumfeste Achse: (Spezialfall: Achse durch Schwerpunkt) \\
-   Kinetische Energei des Massenstücks $\d m$:
+   Kinetische Energie des Massenstücks $\d m$:
    \begin{align*}
    \d E_{kin} &= \frac{1}{2} \d m \v v_i^2 = \frac{1}{2} \d m (\omega r_{\perp})^2 \\
    &= \frac{1}{2} \d m \omega^2 r_\perp^2 \\
-   E_{rot} &= \int \d E_{kin} = \frac{1}{2} \int \omega^2 r_{\perp}^2 \d m = \frac{1}{2} \omega^2 \underbrace{\int r_\perp^2 \d m}_{\text{Trängheitsmoment}}
+   E_{rot} &= \int \d E_{kin} = \frac{1}{2} \int \omega^2 r_{\perp}^2 \d m = \frac{1}{2} \omega^2 \underbrace{\int r_\perp^2 \d m}_{\text{Trägheitsmoment}}
    \end{align*}
 
 
@@ -174,7 +174,7 @@
    \[E_{rot} = \frac{1}{2} I \omega^2\]
    #+end_defn
 
-** Berechung von Trägheitsmomenten
+** Berechnung von Trägheitsmoment
    Volumenintegral:
    \[I = \int r_\perp^2 \d m = \int r_{\perp}^2 \rho(\v r) \d V\]
    #+begin_ex latex
@@ -297,7 +297,7 @@
    #+begin_defn latex
    \[\v L = \v r \times \v p\]
    #+end_defn
-   Wichtig: Allen bewegten Masenpunkten kann man bezüglich eines Referenzpunktes $0$ einen Drehimpuls zuordnen; der hängt vom Bezugspunkt ab.
+   Wichtig: Allen bewegten Massenpunkten kann man bezüglich eines Referenzpunkts $0$ einen Drehimpuls zuordnen; der hängt vom Bezugspunkt ab.
 
    \[\dot{\v L} = \dd{}{t} (\v r \times \v p) = \underbrace{\dot{\v r} \times \v p}_{0} + \v r \times \dot{\v p} = \v r \times \v F = \v M\]
 
@@ -335,9 +335,9 @@
 
    #+ATTR_LATEX: :options [Schief gestellte Hantel]
    #+begin_ex latex
-   Drehimplus:
+   Drehimpuls:
    \[\v L = \v r_1 \times \v p_1 + \v r_2 \times \v p_2\]
-   Drehimpulsvektor steht senkrecht auf Verbundingslinie zu $m_1$ und $m_2$.
+   Drehimpulsvektor steht senkrecht auf Verbindungslinie zu $m_1$ und $m_2$.
    Aber: Winkelgeschwindigkeit $\v \omega$ zeigt in Richtung der Drehachse.
    #+end_ex
    #+ATTR_LATEX: :options [Rotierende Scheibe mit Unwucht]
@@ -346,8 +346,8 @@
    \[\v L_1 = \int \d \v L~\text{parallel zu}~ \v \omega\]
    aus Symmetriegründen, $\v L = I \v \omega$
    Für das Rad plus Unwucht gilt:
-   \[\v L = \v L_1 + \v L_2, \v L_2 = \v r \times \underarrow[\v p]{Drehimpul der Unwucht}\]
-   das heißt: $\v L$ nicht parallel zu $\v \omega$, daraus folgt: Derhimpuls hat Komponente senkrecht
+   \[\v L = \v L_1 + \v L_2, \v L_2 = \v r \times \underarrow[\v p]{Drehimpuls der Unwucht}\]
+   das heißt: $\v L$ nicht parallel zu $\v \omega$, daraus folgt: Drehimpuls hat Komponente senkrecht
    zur Winkelgeschwindigkeit $\v \omega$, diese rotiert mit $\v \omega$
    \[\v M = \dot{\v L}\]
    das heißt auf Achse wirkt Drehmoment.
@@ -385,7 +385,7 @@
    \[E_{rot} = \frac{1}{2} \v \omega^{T} \hat I \v \omega\]
    #+end_defn
    Trägheitstensor $\hat I$ hängt von der Wahl des Koordinatensystems ab! \\
-   Geeignete Koordinatentransformation \rightarrow Diagonalisierung von $\hat I$. (Hauptachsentransformation)
+   Geeignete Koordinatentransformation \rightarrow Diagonalisieren von $\hat I$. (Hauptachsentransformation)
 
    Nach Hauptachsentransformation:
    \[\hat I = \begin{pmatrix} I_a & 0 & 0 \\ 0 & I_b & 0 \\ 0 & 0 & I_c \end{pmatrix}\]
@@ -393,8 +393,8 @@
    Es folgt: Bei Rotation eines Körpers um eine der drei Hauptachsen sind Drehimpuls und Winkelgeschwindigkeit parallel.
 
 *** Kreisel
-	Ein Kreisel ist ein rotierender starrer Körepr, der höchstens an einem Punkt aufgehängt ist. (Kompass, Sattelit, Geschoß) \\
+	Ein Kreisel ist ein rotierender starrer Körper, der höchstens an einem Punkt aufgehängt ist. (Kompass, Satellit, Geschoss) \\
 	Beschreibung der Kreiselbewegung mit 3 Achsen:
-	- Figurachse
+	- Figurenachse
 	- Momentane Drehachse, Richtung von $\v \omega$
 	- Drehimpulsachse

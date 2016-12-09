@@ -4,7 +4,7 @@
    \[\ddot{x} = -\omega^2 x - c \dot{x}\]
    Exponentieller Ansatz:
    \[x\sim e^{\alpha t} \implies \alpha^2 + \omega^2 + c\alpha = 0\]
-   gesucht: $\alpha$, Betrachte Genzfälle:
+   gesucht: $\alpha$, Betrachte Grenzfälle:
   1. $\omega$ klein
 	 \[\implies \alpha^2 + c\alpha = 0 \implies \alpha = -c \implies x\sim e^{-c t}\]
   2. $\omega$ groß (beziehungsweise $c$ klein)
@@ -25,7 +25,7 @@
 	Wir definieren außerdem:
    - $z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) \equiv (x_1 + x_2) + \I(y_1 + y_2)$
    - $z_1 \cdot z_2 = (x_1 + \I y_1) (x_2 + \I y_2) \equiv x_1 x_2 + x_1 \I y_2 + \I y_1 x_2 + \I y_1 \I y_2 \equiv (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)$
-*** präsizere Definition
+*** präzisere Definition
 	#+ATTR_LATEX: :options [Körper]
 	#+begin_defn latex
 	Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen $("+","\cdot")$, so dass:
@@ -34,7 +34,7 @@
 	- $\Exists 0 \in K: \alpha + 0 = \alpha \Forall \alpha$ \hfill (Null)
 	- $\Forall \alpha \Exists (-\alpha) \in K: \alpha + (-\alpha) = 0$ \hfill (Additives Inverses)
 	- $(\alpha \cdot \beta) \cdot \gamma = \alpha \cdot (\beta \cdot \gamma)$ \hfill (Assoziativität der Mult.)
-	- $\alpha \cdot \beta = \beta \cdot \alpha$ \hfill (Kummutativität der Mult.)
+	- $\alpha \cdot \beta = \beta \cdot \alpha$ \hfill (Kommutativität der Mult.)
 	- $\Exists 1 \in K: 1\cdot \alpha = \alpha \Forall \alpha$ \hfill (Eins)
 	- $\Forall \alpha \neq 0 \Exists \alpha^{-1} \in K: \alpha \cdot \alpha^{-1} = 1$ \hfill (Inverses der Mult.)
 	- $\alpha\cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma$ \hfill (Distributivität)
@@ -49,13 +49,13 @@
 	- $(x_1, y_1) \cdot (x_2, y_2) \equiv (x_1 \cdot x_2 - y_1 \cdot y_2, x_1 \cdot y_2 + x_2 \cdot y_1)$
 	Das ist äquivalent zu unserer "naiven Definition" $z = x + \I y$
 	#+end_defn
-	*Aufgabe:* Prüfen sie, dass die Axiome erfült sind! \\
+	*Aufgabe:* Prüfen sie, dass die Axiome erfüllt sind! \\
 	Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
 	\[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
 
 	$\mathbb{C} = \mathbb{R}^2 \implies$ Darstellung durch Vektoren in Ebene liegt nahe.
 	- Addition: $\equiv$ Vektoraddition
-	- Multiplikatoin: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
+	- Multiplikation: Beträge der Vektoren werden multipliziert, Winkel "$\arg$" werden addiert.
 	- $\arg{z} = \phi$
 	- $\Re{z} = x$
 	- $\Im{z} = y$
@@ -67,7 +67,7 @@
 	Brauchen $e^{z + w} = e^z \cdot e^w$ \\
 	Nachrechnen:
 	\begin{align*}
-	e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binomialkoeffizient}}}$} z^kw^{n - k}
+	e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binominialkoeffizient}}}$} z^kw^{n - k}
 	\intertext{englisch: "n choose k"}
 	\intertext{durch Umschreiben der Summen erhält man:}
 	&= \sum_{n = 0}^\infty \sum_{k = 0}^n \frac{n^k}{k!} \frac{w^{n -k}}{(n -k)!} \\
@@ -110,12 +110,12 @@
 	\[ij = k, j i = -k, jk = i,\ldots\]
 ** Anwendung auf harmonischen Oszillator
    \begin{align*}
-   \intertext{Erinnerung: pyhsikalisches Problem:}
+   \intertext{Erinnerung: physikalisches Problem:}
    \ddot{x} + c \dot{x} + \omega^2 x = 0 \\
    \intertext{Fall $\frac{c}{2} > \omega$ (Kriechfall)}
    x=e^{\alpha t}, \alpha^2 + c\alpha + \omega^2 = 0 \\
    \alpha_{1,2} =-\frac{c}{2} \pm \sqrt{\frac{c^2}{4} - \omega^2} \\
-   \intertext{$\implies$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch linare Superposition}
+   \intertext{$\implies$ 2 linear unabhängige Lösungen, also allgemeine Lösung durch lineare Superposition}
    \intertext{$\implies$ exponentielles Abfallverhalten, ohne Oszillationen}
    \intertext{Fall $\frac{c}{2} < \omega$ (Schwingfall), $\sqrt{-x} = \I \sqrt{x}$}
    \alpha_{1,2} = -\frac{c}{2}\pm \I\sqrt{\omega^2 - \frac{c^2}{4}} \equiv -\frac{c}{2} \pm \I \tilde\omega \\
@@ -127,7 +127,7 @@
    \intertext{$\implies$ gedämpfte Schwingung}
    \intertext{Fall $\frac{c}{2} = \omega$ (aperiodischer Grenzfall)}
    \alpha_1 = \alpha_2
-   \intertext{$\implies$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedinungen zu erfüllen}
+   \intertext{$\implies$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedingungen zu erfüllen}
    \intertext{Idee: Betrachte Schwingfall Lösungen für $\tilde \omega \to 0$}
    \intertext{Taylor:}
    \cos{x} = 1 + \O(x^2);\qquad \sin{x} = x + O(x^3) \\

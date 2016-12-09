@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 12:10
+% Created 2016-12-09 Fr 17:42
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -102,7 +102,7 @@ Im folgenden seien $A$ und $B$ Aussagen.
 \begin{itemize}
 \item Negation (NICHT-Verknüpfung)
 \begin{itemize}
-\item Symbol: \$$\neg{}$
+\item Symbol: $\neg$
 \item Wahrheitstafel:
 \begin{center}
 \begin{tabular}{ll}
@@ -263,7 +263,7 @@ Wir wollen zeigen, dass $A\implies B$ für alle natürlichen Zahlen $m,n$ wahr i
 \label{sec-2-3}
 \subsubsection{Existenzquantor}
 \label{sec-2-3-1}
-\$A(x) Aussage, die von Variable x abhängt \\
+$A(x)$ Aussage, die von Variable x abhängt \\
     $\exists x:~A(x)$ ist gleichbedeutend mit "Es existiert ein x, für das $A(x)$ wahr ist" (hierbei ist "existiert ein x" im Sinne von "existiert mindestens ein x" zu verstehen) \\
     Beispiel:
 \[\exists n\in\mathbb{N}:~n>5\quad\text{(w)}\]
@@ -303,7 +303,7 @@ Mengenbegriff nach Cantor: \\
 \subsubsection{Angabe von Mengen}
 \label{sec-2-4-2}
 \begin{itemize}
-\item Reihenfolge ist unrelevant (\$\{1,2,3\}=\{1,3,2\})
+\item Reihenfolge ist unrelevant ($\{1,2,3\}=\{1,3,2\}$)
 \item Elemente sind wohlunterschieden $\{1,2,2\} = \{1,2\}$
 \item Auflisten der Elemente $M=\{a,b,c,\ldots\}$
 \item Beschreibung der Elemente durch Eigenschaften: $M=\{x\mid E(x)\}$ \\
@@ -387,7 +387,7 @@ $A,B$ seien zwei Mengen. Dann gilt \[A\cap (B\cup C) = (A\cap B) \cup (A\cap C)\
        \[\implies x\in A\cap C \implies x\in (A\cap B)\cup(A\cap C)\]
 \end{itemize}
 Damit ist "$\subseteq$" gezeigt.
-"$\supseteq$" Sei \$x$\in$ (A$\cap$ B) $\cup$ (A$\cap$ C)
+"$\supseteq$" Sei $x\in (A\cap B) \cup (A\cap C)$
 \[\implies x\in A\cap B \vee x\in A\cap C \\ \implies (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C) \\ \implies x\in A \wedge (x\in B\vee x\in C) \\ \implies x\in A \wedge x\in B\cup C \\ \implies x\in A\cap (B\cup C)\]
 Damit ist "$\supseteq$" gezeigt.
 \subsubsection{Bemerkung zu Äquivalenz von Mengen}
@@ -408,7 +408,7 @@ Wir zeigen 1) $\implies$ 2) und 2) $\implies$ 1.
 \label{sec-2-4-11}
 Seien $A,B$ Mengen
 \[A\times B := \{(a,b)\mid a\in A, b\in B\}\]
-heipt das kartesische Produkt von $A$ und $B$. Hierbei ist $(a,b) = (a',b') \xLeftrightarrow{\text{Def}} a = a' \wedge b = b'$ a = a' $\wedge$ b = b'\$
+heipt das kartesische Produkt von $A$ und $B$. Hierbei ist $(a,b) = (a',b') \xLeftrightarrow{\text{Def}} a = a' \wedge b = b'$
 
 \paragraph{Beispiel}
 \label{sec-2-4-11-1}
@@ -476,10 +476,10 @@ Wir schreiben $a\sim b \xLeftrightarrow{\text{Def}} (a,b) \in R$ ("a steht in Re
 \end{itemize}
 \paragraph{Anmerkung}
 \label{sec-2-5-1-1}
-Aufgrund der obigen Notation spricht man in der Regel von Relation "\$$\sim$" auf $M$ als von der Relation $R \subseteq M\times M$
+Aufgrund der obigen Notation spricht man in der Regel von Relation "$\sim$" auf $M$ als von der Relation $R \subseteq M\times M$
 \paragraph{Beispiel}
 \label{sec-2-5-1-2}
-\$M = \{1,2,3\}. Durch $R = \{(1,1), (1,2), (3,3) \subseteq M\times M\}$ ist eine Relation auf $M$ gegeben. Es gilt dann: $1\sim 1, 1\sim 2, 3\sim 3$ (aber zum Beispiel: $1\not\sim 3, 2\not\sim 1, 2\not\sim 2$)
+$M = \{1,2,3\}$. Durch $R = \{(1,1), (1,2), (3,3) \subseteq M\times M\}$ ist eine Relation auf $M$ gegeben. Es gilt dann: $1\sim 1, 1\sim 2, 3\sim 3$ (aber zum Beispiel: $1\not\sim 3, 2\not\sim 1, 2\not\sim 2$)
 
 \subsubsection{Eigenschaften von Relationen}
 \label{sec-2-5-2}
@@ -605,15 +605,15 @@ Man sagt auch: Die Äquivalenzklassen bezüglich "$\sim$" bilden eine \textbf{Pa
 \item Sei $a\in M$ \\
          zu zeigen: Es gibt genau eine Äquivalenzklassen, in der $a$ liegt
 \begin{enumerate}
-\item Es gibt eine Äquivalenzklasse, in der $a$ liegt, denn \$a$\in$ [a], denn $a\sim a$
-\item Ist \$a$\in$[b] und a$\in$[c], dann ist [b]=[c] (d.h. $a$ liegt in höchstens einer Äquivalenzklasse) \\
+\item Es gibt eine Äquivalenzklasse, in der $a$ liegt, denn $a\in [a]$, denn $a\sim a$
+\item Ist $a\in[b]$ und $a\in[c]$, dann ist $[b]=[c]$ (d.h. $a$ liegt in höchstens einer Äquivalenzklasse) \\
             denn: Seien $b,c\in M$ mit $a\in[b]$ und $a\in[c]$
             $\implies a\sim b$ und $a\sim c \xRightarrow{\text{Symmetrie}} b\sim a$ und $a\sim c \xRightarrow{\text{Transitivität}} b\sim c$
             Behautptung $[b] =[c]$
             denn: "$\subseteq$" Sei $x\in [b] \implies x\sim b \xRightarrow{Transitivität}^{b\sim c} x\sim c \implies x\in [c]$
             denn: "$\supseteq$" Sei $x\in [c] \implies x\sim c \xRightarrow{Transitivität}^{c\sim b} x\sim b \implies x\in [b]$
 \end{enumerate}
-\item Sind $b,c\in M$ mit $[b] \cap [c] \neq \emptyset$, dann existiert ein \$a$\in$ [b]$\cap$ [c], und es folgt wie in 2.: \\
+\item Sind $b,c\in M$ mit $[b] \cap [c] \neq \emptyset$, dann existiert ein $a\in [b]\cap [c]$, und es folgt wie in 2.: \\
          $[b] = [c]$
          Für $b,c\in M$ gilt also entweder $[b]\cap[c] =\emptyset$ oder $[b] = [c]\hfill\square$
 \end{enumerate}
@@ -779,7 +779,7 @@ Statt 1. $\iff$ 2. und 2. $\iff$ 3. zeigen 1. $\implies$ 2. $\implies$ 3. $\impl
         zz: Ist $n\in N$, dann existiert genau ein $m\in M$ mit $f(m) = n$ \\
 \begin{itemize}
 \item Existenz folgt aus Surjektivität von $f$
-\item Eindeutigkeit: Seien \$m$_{\text{1}}$,m$_{\text{2}}$ $\in$ M  mit \(f(m_1) = n, f(m_2) = n \implies f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
+\item Eindeutigkeit: Seien $m_1,m_2 \in M$  mit \(f(m_1) = n, f(m_2) = n \implies f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
 \end{itemize}
 \item 2. $\implies$ 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
         zz: Ex existert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
@@ -955,11 +955,11 @@ Dann ist $(S(M),\circ)$ eine Gruppen, die \textbf{symmetrische} Gruppe auf $M$
 \subparagraph{Beweis}
 \label{sec-3-1-5-2-1}
 \begin{enumerate}
-\item "\$\^{}" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus \ref{sec-2-6-7-10}
-\item "\$\^{}" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach \texttt{4.9}
+\item "$\circ$" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus \ref{sec-2-6-7-10}
+\item "$\circ$" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach \texttt{4.9}
 \item $id_M$ ist neutral: $id_M \in S(M)$ und $id_M\circ f = f = f\circ id_M \Forall f\in S(M)$
 \item Existenz von Inversen: $f\in S(M) \implies f$ bijektiv $\implies$ Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
-         für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "\$\^{}"
+         für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "$\circ$"
 \end{enumerate}
 \subsubsection{Permutationen}
 \label{sec-3-1-6}
@@ -1316,7 +1316,7 @@ $n\in\mathbb{N}$ Dann sind äquivalent
 \end{enumerate}
 \subparagraph{Beweis}
 \label{sec-3-2-5-2-1}
-\ref{6.8.1} $\implies [[6.8.2]]$ zeigen wir durch Kontraposition, das heißt \$$\neg{}$\$\ref{6.8.2} $\implies$ $\neg{}$\$ \ref{6.8.1} \\
+\ref{6.8.1} $\implies$ \ref{6.8.2} zeigen wir durch Kontraposition, das heißt $\neg$ \ref{6.8.2} $\implies \neg$ \ref{6.8.1} \\
       Sei $n\in\mathbb{N}$ keine Primzahl. Falls $n = 1$ dann ist $\frac{\mathbb{Z}}{n\mathbb{Z}} = \{\bar 0\}$ (Nullring), das heißt $\frac{\mathbb{Z}}{n\mathbb{Z}}$ ist kein Integritätsbereich. Seim im Folgenden $n > 1$ und keine Primzahl.
 \begin{align}
 &\implies \exists a,b\in\mathbb{N}:1\ <a,b<n \wedge n = a\cdot b \\
@@ -1685,7 +1685,7 @@ Der Nullvektor ist gegeben duch $0_{K^n} = (0,\ldots,0)$, für $x =(x_1,\ldots,x
 \item $K[t]$ Polynomring über $K$ in der Variablen $t$ wird zum $K$-VR durch
 \begin{itemize}
 \item $+$ = Addition von Polynomen
-\item akalare Multiplikation, \$$\cdot$: K\texttimes{} K[t] $\to$ K[t]: $\lambda$ $\cdot$ $\sum$$_{\text{k = 0}}^{\text{n}}$ a$_{\text{k}}$ t$^{\text{k}}$ := $\sum$$_{\text{k = 0}}^{\text{n}}$ $\lambda$ a$_{\text{k}}$ t$^{\text{k}}$
+\item skalare Multiplikation, $\cdot: K\times K[t] \to K[t]: \lambda \cdot \sum_{k = 0}^n a_k t^k := \sum_{k = 0}^n \lambda a_k t^k$
 \end{itemize}
 \item $M$ Menge, $\Abb(M,K):= \{f: M \to K~\text{Abbildung}\}$ wird zum $K$-Vektorraum durch die folgende Verknüpfungen:
 \begin{itemize}
@@ -2004,7 +2004,7 @@ $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. $(v_i)_{i\i I}$ heißt \textbf{Er
   $V$ heißt \textbf{endlich erzeugt} $\xLeftrightarrow{\text{Def}} V$ besitzt ein endliches Erzeugendessystem (das heißt es existiert eine endliche Familie $(v_1, \ldots, v_n)$ von Vektoren aus $V$ mit $V = \Lin((v_1, \ldots, v_n))$) \\
   $(v_i)_{i\in I}$ heißt \textbf{Basis} von $V \xLeftrightarrow{\text{Def}} (v_i)_{i\in I}$ ist linear unabhängiges Erzeugendessystem von $V$ \\
   Ist $\mathcal{B} = (v_1, \ldots, v_n)$ eine endliche Basis von $V$, dann heißt $n$ die \textbf{Länge} von $\mathcal{B}$
-+end$_{\text{defn}}$
+\end{defn}
 \begin{ex}[9.2]
 \begin{enumerate}
 \item Die Familie $(e_1, \ldots, e_n)$ ist eine Basis des K$_{\text{VR}}$ $K^n$, da $\Lin((e_1, \ldots, e_n)) = K^n$ (vergleiche 8.10.2) und somit $(e_1,\ldots, e_n)$ Erzeugendessystem des $K^n$, und $(e_1, \ldots, e_n)$ linear unabhängig nach 8.15.1.
@@ -2139,7 +2139,7 @@ Es gilt:
 \item Besitzt $V$ eine Basis endlicher Länge, dann ist diese auch ein endliches ES, das heißt $V$ endlich erzeugt $\lightning$
 \end{enumerate}
 \end{proof}
-\#+begin$_{\text{defn}}$ latex
+\begin{defn}[9.9]
 \[\dim_k V := \begin{cases} r & ~\text{falls $V$ endlich erzeugt, $r$ Länge jeder Basis von $V$} \\ \infty & ~\text{falls $V$ nicht endlich erzeugt}\end{cases}\]
 heißt die Dimension von $V$ über $K$. Ist $\dim_k V\in\mathbb{N}_0$, dann heißt $V$ endlichdimensional über $K$.
 \end{defn}

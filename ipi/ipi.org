@@ -69,9 +69,9 @@
   - Idee von Insertion Sort:
 	- wie beim Aufnehmen und Ordnen eines Kartenblatts
 	- gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
-	- Einfügen des k-ten Elements an richtiger Stelle \rightarrow Erzeuge Lücke an richtiger Position duch verschieben von Elementen nach rechts
+	- Einfügen des k-ten Elements an richtiger Stelle \rightarrow Erzeuge Lücke an richtiger Position durch verschieben von Elementen nach rechts
 	- Wiederholung für $k = 1, \ldots, N$
-	- Bespiel:
+	- Beispiel:
 	  | 4 | 2 | 3 | 5 | 1 |
 	  |---+---+---+---+---|
 	  | 4 | _ | 3 | 5 | 1 |
@@ -104,7 +104,7 @@
 		  }
 	  }
 	  #+END_SRC
-	- andere Sortierung: definiere Funktor cmp(a, b), der das gewüschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
+	- andere Sortierung: definiere Funktor cmp(a, b), der das gewünschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
 	- neue Sortierung am besten per Lambda-Funktion an std::sort übergeben
 	  #+BEGIN_SRC cpp
 	  std::sort(v.begin(), v.end()); // Standartsort mit "<"
@@ -141,8 +141,8 @@
   - zwei Arten von Templates ("Schablone"):
 	1. Klassen-templates für Datenstrukturen, zum Beispiel Container sollen beliebige Elementtypen unterstützen
 	   - Implementation $\implies$ später
-	   - Benutzung: Datenstrukturname gefolgt vom Elementtyp in Spizen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
-	2. Funktionen-Templates: es gab schon function overloadingg
+	   - Benutzung: Datenstrukturname gefolgt vom Elementtyp in spitzen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
+	2. Funktionen-Templates: es gab schon function overloading
 	   #+BEGIN_SRC cpp
 	   int sq(int x) {
 		   return x * x;
@@ -165,13 +165,13 @@
 		 }
 		 #+END_SRC
 		 - wie bei Substituieren von Variablen mit Werten, aber jetzt mit Typen
-		 - Benutzug:
+		 - Benutzung:
 		   - Typen für die Platzhalter hinter dem Funktionsnamen in spitzen klammern
 			 #+BEGIN_SRC cpp
 			 sq<int>(2) == 4;
 			 sq<double>(3.0) == 9.0,
 			 #+END_SRC
-		   - meist kann man die Typangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
+		   - meist kann man die Typenangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
 			 #+BEGIN_SRC cpp
 			 sq(2); // == sq<int>(2) == 4
 			 sq(3.0); // == sq<double>(3.0) == 9
@@ -192,18 +192,18 @@
 			   std::cout << " }";
 		   }
 		   #+END_SRC
-		 - Verallgemeinerung für beliebige Container mittel Iteratoren:
+		 - Verallgemeinerung für beliebige Container mittels Iteratoren:
 		   #+BEGIN_SRC cpp
 		   std::list<int> l = {1, 2, 3};
-		   print_containter(l.begin(), l.end()); // "{1,2,3}"
+		   print_container(l.begin(), l.end()); // "{1,2,3}"
 		   #+END_SRC
-		 - es genügen forward_interators
+		 - es genügen forward_itertators
 		   #+BEGIN_SRC cpp
 		   Iterator iter2 = iter1; // Kopie erzeugen
 		   iter1++; // zum nächsten Element
 		   iter1 == iter2; // Zeigen sie auf das selbe Element?
 		   iter1 != end;
-		   *iter1; // Zugrif auf aktuelles Element
+		   *iter1; // Zugriff auf aktuelles Element
 
 		   template<typename Iterator>
 		   void print_container(Iterator begin, Iterator end) {
@@ -216,7 +216,7 @@
 			   std::cout << "}";
 		   }
 		   #+END_SRC
-		 - Bespiel 3: checken, ob Container sortiert ist
+		 - Beispiel 3: überprüfen, ob Container sortiert ist
 		   #+BEGIN_SRC cpp
 		   template<typename E, typename CMP>
 		   bool check_sorted(std::vector<E> const & v, CMP less_than) {
@@ -234,7 +234,7 @@
 
 		   check_sorted(v, [](double a, double b) { return a > b; } ); // == false
 
-		   // implementation für iteratoren
+		   // Implementation für Iteratoren
 		   template<typename Iterator, typename CMP>
 		   bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
 			   if(begin == end) {
@@ -251,13 +251,13 @@
 		   }
 		   // == std::is_sorted
 		   #+END_SRC
-		 - Bemerkung: Complier-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrug nötig aber: Compiler werden darin immer besser, besonders clang-comiler
-		 - mit Templatees kann man noch viel raffiniertere Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene
+		 - Bemerkung: Compiler-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrung nötig aber: Compiler werden darin immer besser, besonders clang-Compiler
+		 - mit Templates kann man noch viel raffinierter Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene
 * Effizienz von Algorithmen und Datenstrukturen
 ** Bestimmung der Effizienz
    2 Möglichkeiten:
-   1. Messe die "wall clock time" - wie lange mus man auf das Ergebnis warten
-   2. unabhängig von Hardware benutz man das Konzept der algorithmischen Komplexität
+   1. Messe die "wall clock time" - wie lange muss man auf das Ergebnis warten
+   2. unabhängig von Hardware benutzt man das Konzept der algorithmischen Komplexität
 *** wall clock
    wall clock time misst man zum Beispiel mit dem Modul <chrono>
    #+BEGIN_SRC cpp
@@ -265,13 +265,13 @@
    #include <iostream>
 
    int main() {
-	   // alles zur Zetimessung vorbereiten
+	   // alles zur Zeitmessung vorbereiten
 
 	   auto start = std::chrono::high_resolution_clock::now(); // Startzeit
 	   // code der gemessen werden soll
 	   auto stop = std::chrono::high_resolution_clock::now();
 	   std::chrono::duration<double> diff = stop - start; // Zeitdifferenz
-	   std::cout << "Zeitdauer: " << diff.count() << " sekunden\n" << std::endl; // ausgeben
+	   std::cout << "Zeitdauer: " << diff.count() << " Sekunden\n" << std::endl; // ausgeben
    }
    #+END_SRC
    Pitfalls:
@@ -282,32 +282,32 @@
    - der Algorithmus ist schneller als die clock $\implies$ rufe den Algorithmus mehrmals in einer Schleife
 	 auf
    - die Ausführung ihres Programms kann vom Betriebssystem jederzeit für etwas wichtigeres unterbrochen werden
-	 (zum Beispiel Email checken) $\implies$ gemessene Zeit zu lang $\implies$ messe
-	 mehrmals und nimm die kürzeste Zeit (mest reicht 3 bis 10 fach)
-   - Fausregel: Messug zwischen $\SI{0.02}{\second}$ und $\SI{3}{\second}$
+	 (zum Beispiel Mail checken) $\implies$ gemessene Zeit zu lang $\implies$ messe
+	 mehrmals und nimm die kürzeste Zeit (meist reicht 3 bis 10 fach)
+   - Faustregel: Messung zwischen $\SI{0.02}{\second}$ und $\SI{3}{\second}$
    Nachteil: Zeit hängt von der Qualität der Implementation, den Daten (insbesondere der Menge) und der Hardware ab
 *** algorithmische Komplexität
-	Algorithmische Kompexität ist davon unabhängig, ist eine Art theoretisches Effizenzmaß. Sie
-	beschreibt, wie sichdie Laufzeit verlängert, wenn man mehr Daten hat.
+	Algorithmische Komplexität ist davon unabhängig, ist eine Art theoretisches Effizienzmaß. Sie
+	beschreibt, wie sich die Laufzeit verlängert, wenn man mehr Daten hat.
 
 	#+begin_ex latex
-	Algorithmus brauch für $n$ Elemente $x$ Sekunden, wie lange dauert es für $2n$, $10n$ für große $n$
+	Algorithmus braucht für $n$ Elemente $x$ Sekunden, wie lange dauert es für $2n$, $10n$ für große $n$
 	#+end_ex
 	Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
 	Grundidee:
 	1. berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
 	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$-Notation* und ihren Verwandten
 	   Gegeben: $f(n)$ und $g(n)$
-	   1. $g(n)$ ist eine asymptotische (für große $n$) overe Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
+	   1. $g(n)$ ist eine asymptotische (für große $n$) obere Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
 		  und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in O(g(n))$
 	   2. $g(n)$ ist asymptotische untere Schranke für $f(n)$ ($f(n) \geq g(n)$)
 		  \[f(n) \in \Omega(g(n)) \iff \Exists n_0,C : \Forall n > n_0 f(n) \geq C g(n)\]
-	   3. $g(n)$ ist asymptotisch scharfe Schranke für $f(n)$ ($f(n) = g(n))
+	   3. $g(n)$ ist asymptotisch scharfe Schranke für $f(n) (f(n) = g(n))$
 		  \[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
 	Regeln:
 	1. $f(n) \in \Theta(f(n)) \implies f(n) \in O(f(n)), f(n) \in \Omega(f(n))$
 	2. $c' f(n) \in \Theta(f(n))$
-	3. $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Miltiplikationsregel
+	3. $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Multiplikationsregel
 	4. $O(f(n)) + O(g(n)) \in O(\text{"max"}(f(n), g(n)))$ \hfill Additionsregel \\
 	   formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
 	   $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
@@ -318,12 +318,12 @@
 	- $O(\log(n))$ \hfill "logarithmische Komplexität" \\
 	  zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
 	- $O(n)$ \hfill "lineare Komplexität" \\
-	  zum Bespiel std::transform() ($n$ = Anzahl der transformierten Elemente)
-	- $O(n \log(n))$ \hfill{"n log n", "loglinear" "linearithmisch"} \\
+	  zum Beispiel std::transform() ($n$ = Anzahl der transformierten Elemente)
+	- $O(n \log(n))$ \hfill{"n log n", "log linear" "linearithmisch"} \\
 	  Beispiel: std::sort
-	- $O(n^2)$ \hfill "quardatische Komplexität"
+	- $O(n^2)$ \hfill "quadratische Komplexität"
 	- $O(n^p)$ \hfill "polynomielle Komplexität"
-	- $O(2^n)$ \hfill "eexponentielle komplexität"
+	- $O(2^n)$ \hfill "exponentielle Komplexität"
 	#+begin_ex latex
 	\[f(n) = 1 + 15 n + 4n^2 + 7n^3 \in O(n^3)\]
 	#+end_ex
@@ -338,7 +338,7 @@
 			   return k; // O(1)
 		   }
 		   // O(1)
-		   int f1 = 0; // letzten beiden Fibonacci Zahlen, anfags die ersten beiden
+		   int f1 = 0; // letzten beiden Fibonacci Zahlen, anfangs die ersten beiden
 		   int f2 = 1;
 		   for(int i = 2; i <= k; i++) { // f(k) = k - 1 e O(k)
 			   int f = f1 + f2; // O(1)
@@ -346,9 +346,9 @@
 			   f2 = f; // O(1)
 		   } // gesamte Schleife: O(1)*O(k) = O(k)
 		   return f2;
-	   } // gesanmte Funktion: teuerstes gewinnt: O(k)
+	   } // gesamte Funktion: teuerstes gewinnt: O(k)
 
-	   // rekusive Variante:
+	   // rekursive Variante:
 	   int fib2(int k) {
 		   if(k < 2) { // O(1)
 			   return k; // O(1)
@@ -356,5 +356,5 @@
 		   return fib2(k - 2) + fib2(k - 1);
 	   }
 	   #+end_src
-	   - sehr ineffizent, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
+	   - sehr ineffizient, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
 	   Sei $f(k)$  die Anzahl der Schritte, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$

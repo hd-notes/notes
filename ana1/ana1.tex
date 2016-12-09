@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 17:17
+% Created 2016-12-09 Fr 17:29
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -474,7 +474,7 @@ Wenn außerdem noch $\Forall x,y\in A$ gilt:
 \setcounter{enumi}{3}
 \item $x\leq y \vee y\leq x$ \hfill (Vergleichbarkeit je zweier Elemente)
 \end{enumerate}
-so heißt $R$ (totale) Ordung auf $A$. \$(A,$\le$) heißt teilweise beziehungsweise (total) geordnete Menge.
+so heißt $R$ (totale) Ordung auf $A$. $(A,\leq)$ heißt teilweise beziehungsweise (total) geordnete Menge.
 \paragraph{Beispiel}
 \label{sec-2-6-1-1}
 \begin{enumerate}
@@ -644,8 +644,8 @@ Induktion + Axiom M0 $\hfill\square$
 Sei $M,N \subseteq \mathbb{R}, f:M\to N$ streng monoton und bijektiv. Dann ist $f^{-1}$ streng monoton.
 \paragraph{Beweis}
 \label{sec-2-9-11-1}
-Wir betrachten den Fall $f$ streng monoton wachsend. Seien \$y$_{\text{1}}$,y$_{\text{2}}$ $\in$ N, y$_{\text{1}}$ < y$_{\text{2}}$,x$_{\text{1}}$ = f$^{\text{-1}}$(y$_{\text{1}}$), x$_{\text{2}}$ = f$^{\text{-1}}$(y$_{\text{2}}$). \\
-     Behauptung $x_1 < x_2$ (sonst wäre \$x$_{\text{1}}$ $\ge$ x$_{\text{2}}$). \\
+Wir betrachten den Fall $f$ streng monoton wachsend. Seien $y_1,y_2 \in N, y_1 < y_2,x_1 = f^{-1}(y_1), x_2 = f^{-1}(y_2)$. \\
+     Behauptung $x_1 < x_2$ (sonst wäre $x_1 \geq x_2$). \\
      Falls $x_1 > x_2 \xRightarrow{\text{streng monoton}} f(x_2) > f(x_2)$ \textbf{Widerspruch} zu $y_1 < y_2$ \\
      Falls $x_1 = x_2 \implies y_1 = y_2$ \textbf{Widerspruch} zur Annahme $y_1 < y_2 \hfill \square$
 \subsubsection{Definition 1.45 Produktzeichen}
@@ -656,7 +656,7 @@ Für $a\in\mathbb{R},n\in\mathbb{N}$ definieren wir $a^n := \prod_{j=1}^n a$ und
 Es gilt $\Forall a,b\in\mathbb{R}$ (beziehungsweise $\mathbb{R}\setminus \{0\}$),$n,m\in\mathbb{N}_0$ (beziehungsweise $\mathbb{Z}$)
 \begin{enumerate}
 \item $a^n a^m = a^{n+m}$
-\item $(a^n)^m$ = a$^{\text{n m}}$\$
+\item $(a^n)^m = a^{n m}$
 \item $(ab)^m = a^m b^m$
 \end{enumerate}
 \paragraph{Beweis}
@@ -1234,7 +1234,7 @@ A&= (a,b\right] \\
 \Forall \eps > 0 I_\eps(a) \cap (a,b\right] \neq \emptyset \\
 I_\eps (a) \cap \mathbb{R} \setminus (a,b\right] \neq \emptyset
 \end{align*}
-Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem \$\eps-\$Intervall um eine rationale Zahl gilbt es sowohl rationale als auch irrationale Zahlen
+Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\eps$-Intervall um eine rationale Zahl gilbt es sowohl rationale als auch irrationale Zahlen
 \end{ex}
 \begin{remark}
 \mbox{}
@@ -1545,7 +1545,7 @@ Der Wert der $\exp$ Reihe für $x = 1$ ist die Eulersche Zahl $e$
 \[\exp(1) = \sum_{k = 0}^{\infty} \frac{1}{k!} = \lim_{n\to\infty} (1 + \frac{1}{n})^n =: e\]
 Diese ist irrational
 \end{thm}
-\#+begin$_{\text{proof}}$ latex
+\begin{proof}
 In Übung 6.2 gezeigt \[e = \lim_{n\to\infty} (1 + \frac{1}{n})^n\]
 Angenommen $e = \frac{p}{q}, p,q\in\mathbb{N}, q > 1$. Betrachte Abschätzung, für die Restgliederdarstellung von $\euler$:
 \begin{align*}
@@ -1558,6 +1558,7 @@ s_{n + m} - s_n &= (1 + \frac{1}{1!} + \ldots + \frac{1}{(m + n)!}) - (1 + \frac
 \end{align*}
 Da dies für alle $m \in \mathbb{N}$, folgt
 \[0 < e - s_n \leq \frac{1}{n! n} \implies 0 < e n! -s_n n! \leq \frac{1}{n}\]
+\end{proof}
 \section{Stetige Abbildungen}
 \label{sec-6}
 \subsection{Grenzwert einer Funktion, Stetigkeit}

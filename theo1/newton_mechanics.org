@@ -7,18 +7,18 @@
 	  \[\v{F}_12 = -\v{F}_21\]
 
    2. definiert die *träge* Masse
-   Die entscheidene physikalische Aussage von $2.$ ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
+   Die entscheidende physikalische Aussage von 2. ist das Auftreten von $\ddot{\v x}$ (nicht etwa $\dot{\v x}$ oder $\dddot{\v x}$)
    Alternative Diskussionen der obigen Axiomatik:
    - zum Beispiel Kapitel 1.2 von Jose/Saletan (mit $2$ Definition der Kraft)
 ** Trajektorie
    Vorhersagen erfordern: $\v F \rightarrow \text{Trajektorie}$. Genauer: Sei $\v F(\v x,t)$ gegeben. Berechne $\v x(t)$ !
 ** Differentialgleichungen
-   hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variabeln))
-*** 1. Ordung
-	Die allgemeine Form einer gewöhlichen Dgl. 1. Ordnung ($\implies$ nur 1. Ableitung):
+   hier nur "gewöhnliche DGL" (nur Ableitungen nach einer Variable) (im Gegensatz zu "partiellen" (Ableitung nach verschiedenen Variablen))
+*** 1. Ordnung
+	Die allgemeine Form einer gewöhnlichen Dgl. 1. Ordnung ($\implies$ nur 1. Ableitung):
 	\[y'(x) = f(x,y)\]
 **** Lösung
-	 Funktionn: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
+	 Funktion: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
 *** Anfangswertproblem
 	Gegeben durch:
 	1) Dgl.: $y' = f(x,y)$
@@ -52,10 +52,10 @@
 	1. \[y'(x) = f(x,y), f(x,y) = 3\]
 	   \[y'(x) = 3 \implies y(x) = \int 3\d x = 3 x + c\]
 	   Das ist schon die allgemeine Lösung der Dgl.
-	   Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich duch Bestimmen der Konstanten lösen:
+	   Ein Anfangswertproblem, zum Beispiel mit $(x_0, y_0) = (-1,1)$ lässt sich durch Bestimmen der Konstanten lösen:
 	   \[y(x) = 3 x + c \implies 1 = 3(-1) + c \implies c = 4 \implies y(x) = 3x + 4\]
-*** Seperation der Variablen
-	Seperation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
+*** Separation der Variablen
+	Separation der Variablen funktioniert wenn $f(x,y) = g(x)h(y)$
 **** Beispiel
 	 \[f(x,y) = \f{x}{y} \implies y'(x) = \f{x}{y(x)}\]
 	 \[\f{\d x}{\d x} = \f{x}{y} \implies y\d y = x\d x\]
@@ -79,7 +79,7 @@
 	Anfangsbedingungen: $(x_0,\v{y}_0,\v{y}_0',\ldots,\v{y}_0^{(p - 1)}),\v{y}_0' \estimates \v{y}'(x)$ bei $x = x_0$ \\
 **** Tatsache
 	 Systeme von Dgl. können auf größere Systeme niedrigerer Ordnung zurückgeführt werden.
-	 Wir illustieren dies am Beispiel mit $p = 2$
+	 Wir illustrieren dies am Beispiel mit $p = 2$
 **** Beispiel
 	 \[\v{y}''(x) = \v{f}(x,\v{y},\v{y}')\]
 	 Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
@@ -89,13 +89,13 @@
 	 \v{y}'(x) &= \v z \tag{$\equiv g(x,\v y, \v z)$}
 	 \end{cases}
 	 \end{equation}
-	 Ursprüngliche Form folgt duch Einsezten der 2. Gleichung in die Erste.
+	 Ursprüngliche Form folgt durch Einsetzen der 2. Gleichung in die Erste.
 	 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-	 $\implies$ System von $p$ Dgl 1. Ordung; allgemeine Lösung hat $p$ Parameter
-*** Erste physikalische Beipiele
+	 $\implies$ System von $p$ Dgl 1. Ordnung; allgemeine Lösung hat $p$ Parameter
+*** Erste physikalische Beispiele
 **** Punktmasse
-	 3 Dgl 2. Ordung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
-	 $\implies$ 6 Dgl 1. Ordung:
+	 3 Dgl 2. Ordnung: \[\ddot{\v x} = \f{1}{m}\v F(t,\v x,\dot{\v x})\]
+	 $\implies$ 6 Dgl 1. Ordnung:
 	 \begin{equation}
 	 \begin{cases}
 	 \dot{\v v} &= \f{1}{m}\v F(t,\v x,\v v) \\
@@ -105,7 +105,7 @@
 
 	 In vielen Fällen: (zeitunabhängiges) Kraftfeld $\v F(\v x)$ ("Vektorfeld").
 ***** Darstellung in $d = 2$ (Skizze Vektorfeld).
-	  wichtig: doppelte Makierung der Achsen
+	  wichtig: doppelte Markierung der Achsen
 ***** Einfachster Fall ($d = 1$)
 	  betrachte den Fall, dass $F$ von $v$, aber nicht von $t$ abhängt:
 	  \begin{equation}
@@ -118,7 +118,7 @@
 ****** TODO Darstellung im Phasenraum
 	   Analyse im Phasenraum passt perfekt zur früheren allgemeinen Analyse von Dgl 1. Ordnung
 	   Analog in $d = 3$: Vektorfeld: $(\f{\v F}{m}, \v v)$, Phasenraum $(\v x, \v v)$ oder $(\v x, \v p)$ ist 6-dimensional
-***** Harmonischer Oszilator ($d = 1$)
+***** Harmonischer Oszillator ($d = 1$)
 	  $F(x) = -k x$
 	  \begin{equation}
 	  \begin{cases}
@@ -127,11 +127,11 @@
 	  \end{cases}
 	  \end{equation}
 	  \begin{tikzpicture}
-	  \begin{axis}[title={Phasenraum des Harmonischen Oszilators},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
+	  \begin{axis}[title={Phasenraum des Harmonischen Oszillator},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
 	  \addplot3[blue,quiver={u={y},v={-x},scale arrows=0.3},-stealth,samples=15] {y-x};
 	  \end{axis}
 	  \end{tikzpicture}
-***** Freier Fall mit Luftwiederstand
+***** Freier Fall mit Luftwiderstand
 	  Aufgabe: Bestimme die zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
 	  Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
 	  \[F=m\ddot x \implies m g - c \dot{x}^2 = m\ddot x \implies \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
@@ -156,7 +156,7 @@
 	  1. $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
 		 $\implies c \sim \rho_L A$
 	  2. Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
-** Taylorentwickung
+** Taylorentwicklung
    Ohne Beschränkung der Allgemeinheit $x_0 = 0$. Untersuche Verhalten beliebiger glatter Funktionen $f(x)$ nahe $x = 0$
    \begin{align*}
    f(x) &= f(0) + \int_0^x\d x' f'(x') \\
@@ -166,7 +166,7 @@
    \end{align*}
    Allgemein:
    \[f(x) = f(0) + \sum_{n=1}^m f^{(n)}(0)\frac{x^n}{n!}+\overbrace{\int_0^x \d x' f^{(m+1)}(x')\frac{(x' - x)^m}{m!}}^{\text{Restglied}}\]
-   Falls das Restgliend für $n\to\infty$ verschwindet:
+   Falls das Restglied für $n\to\infty$ verschwindet:
    \[f(x) = f(0) + \sum_{n=1}^\infty f^{(n)}(0)\frac{x^n}{n!}\]
    Analog:
    Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}{n!}\]
@@ -178,14 +178,14 @@
 	Sie Brauchen:
 	\[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
 	Die Ableitungen verschwinden sogar bei Null $\implies$ Taylor-Reihe ist Null, keine gute Näherung
-** Harmonicher Oszillator
-   - eines der wichtigesten physikalischen Systeme
-   - beschreibt viele kompilziertere Systeme angenähert
+** Harmonischer Oszillator
+   - eines der wichtigsten physikalischen Systeme
+   - beschreibt viele kompliziertere Systeme angenähert
 *** Eindimensionales System
 	$d = 1, F = F(x)$
 	\[F(x) = -\dd{}{x}v(x) = -v'(x)\]
 
-	Damit haben wir das *Potetial* (\rightarrow beschreibt die potentielle Energie des Massenpunktes) $v$ als Stammfunktion von $-F$ definiert
+	Damit haben wir das *Potential* (\rightarrow beschreibt die potentielle Energie des Massenpunktes) $v$ als Stammfunktion von $-F$ definiert
 	- Skizze
 	Massenpunkt kann nur ruhen, wo $F=0$ beziehungsweise $V'=0$. Genauer: Nur Minima (Maxima instabil). \\
 **** Ziel
@@ -198,10 +198,10 @@
 **** Lösung
 	 Newton $\implies m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
 	 $\implies \sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
-	 $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ iist auch Lösung (wegen Linearität) \\
+	 $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ ist auch Lösung (wegen Linearität) \\
 	 (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
 **** Verallgemeinerungen
-	 - Reibungterm $\sim \dot{y}$
+	 - Reibungsterm $\sim \dot{y}$
 	 - treibende Kraft $\sim f(t)$
 ** Lineare Differentialgleichungen
    allgemeine Form einer linearen Dgl. n-ter Ordnung:
@@ -212,14 +212,14 @@
    - wir hatten oben dem Fall $n = 2$ "mit konstanten Koeffizienten"
    - noch einfacheres Beispiel: $n = 1, f\equiv 0$ (aber beliebige Koeffizienten)
 	 \[y' + a(x)y = 0\]
-	 Das ist seperabel:
+	 Das ist separabel:
 	 \[\dd{y}{x} + a(x) y = 0\]
 	 \[\dd{y}{x} = -a(x) y\]
 	 \[\frac{\d y}{x} = -a(x) \d x\]
 	 \[\int\frac{\d y}{y} = - \int a(x)\d x\]
 	 \[\ln{y} - A(x) + c_1\]
 	 \[y = c e^{-A(x)}\]
-	 $A(x)$ sei eine beliebege aber fest gewählte Stammfunktion von $a$
+	 $A(x)$ sei eine beliebige aber fest gewählte Stammfunktion von $a$
 	 Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
 	 - Ansatz: $y = C(x)e^{-A(x)}$, Dgl. $y' + ay = f$
 	   \[(c e^{-A})' + a C e^{-A} = f\]
@@ -227,7 +227,7 @@
 	   Beachte $A' = a$
 	   \[\implies c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
 	   \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
-	   $f(x')$ ist eine frei wählbare additive Konsante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
+	   $f(x')$ ist eine frei wählbare additive Konstante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
 *** Zusammenfassung / Verallgemeinerung auf $n > 1$
 	\begin{defn}[Linear Unabhängig]
 	Ein Satz von Funktionen $f_1(x),\ldots,f_n(x)$ heißt linear unabhängig, falls jede Linearkombination bei der nicht alle Koeffizienten Null sind auch nicht Null ist:
@@ -235,9 +235,9 @@
 	(identisch zur linearen Unabhängigkeit von Vektoren)
 	\end{defn}
 **** Fakt
-	 Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-ter Ordnung, so kenn man die allgemeine Lösung:
+	 Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-ter Ordnung, so kennt man die allgemeine Lösung:
 	 \[y_{hom}(x) = C_1 y_1(x) + \ldots + C_n y_n(x)\]
-	 Die allgeimeine Lösung ist stets von dieser Form.
+	 Die allgemeine Lösung ist stets von dieser Form.
 
 	 Wenn wir außerdem eine *partikuläre* Lösung der inhomogenen Gleichung haben, so haben wir auch schon deren allgemeinen Lösung
 	 \begin{align*}

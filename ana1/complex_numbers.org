@@ -1,14 +1,14 @@
 * Komplexe Zahlen
   *Motivation:* $x^2 + 1 = 0$ nicht lösbar in $\mathbb{R}$ \\
-  Wir betracheten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
+  Wir betrachten die Menge der Paare $\{x,y\} = \mathbb{R}\times\mathbb{R}$ auf denen die Addition und Multiplikation wie folgt definiert ist:
    - <<KA>> (KA) $\{x_1,y_1\} + \{x_2,y_2\} = \{x_1 + x_2, y_2 + y_2\}$
    - <<KM>> (KM) $\{x_1,y_1\} \cdot \{x_2,y_2\} = \{x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1\}$
-** Komplexer Zahlkörper
-   1. Die Menge der Paare $z = \{x,y\} \in \mathbb{R}\times\mathbb{R}$ mit Addition [[KA]] und Multiplikation [[KM]] bildet den Körper $\mathbb{C}$ der *komplexen Zahlen* mit den neutralen Elementn $\{0,0\}$ und $\{1,0\}$
+** Komplexer Zahlenkörper
+   1. Die Menge der Paare $z = \{x,y\} \in \mathbb{R}\times\mathbb{R}$ mit Addition [[KA]] und Multiplikation [[KM]] bildet den Körper $\mathbb{C}$ der *komplexen Zahlen* mit den neutralen Elementen $\{0,0\}$ und $\{1,0\}$
    2. Die Gleichung $z^2 + \{1,0\} = \{0,0\}$ hat in $\mathbb{C}$ zwei Lösungen, welche mit $\I:= \{0,\pm 1\}$ bezeichnet werden
    3. Der Körper $\mathbb{R}$ ist mit der Abbildung $x\in\mathbb{R}:x\mapsto\{x,0\}\in\mathbb{C}$ isomorph zu einem Unterkörper von $\mathbb{C}$
 *** Beweis
-	1. Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributibitätsgesetzes verifiziert man durch Nachrechenen. \\
+	1. Die Gültigkeit des Kommutativitäts-, Assoziativs-, und Distributivitätsgesetzes verifiziert man durch Nachrechnen. \\
 	   Neutrale Elemente: Wir lösen die Gleichung $a + z = \{0,0\}$ für beliebige gegebene $a\in\mathbb{C},a=\{a_1,a_2\}$
 	   \[\implies z = \{-a_1, -a_2\}\]
 	   \[a\cdot z = \{1,0\}\]
@@ -37,7 +37,7 @@
    Jede algebraische Gleichung der Form \[z^n + \sum_{i = 0}^{n - 1} a_i z^i = 0\]
    hat in $\mathbb{C}$ mindestens eine Lösung. Beweis \rightarrow Funktionstheorie
 ** Betrag
-   Für komplese Zahlen lässt sich ein Absolutbetrag definieren
+   Für komplexe Zahlen lässt sich ein Absolutbetrag definieren
    \[r = \abs{z} = \sqrt{x^2 + y^2}\]
    Damit:
    \begin{align}

@@ -5,10 +5,10 @@
   Ein K-Vektorraum ist ein Tripel $(V,+,\cdot)$ bestehend aus
   - einer Menge $V$
   - einer Verknüpfung $+:V\times V \to V, (v,w)\mapsto v + w$ \hfill (Addition)
-  - und einer äußeren Verknüpfung $\cdot : K\times V \to V, (\lambda,v) \mapsto \lambda \cdot v$ \hfill (skalare Multiplikaiton)
+  - und einer äußeren Verknüpfung $\cdot : K\times V \to V, (\lambda,v) \mapsto \lambda \cdot v$ \hfill (skalare Multiplikation)
   Welche folgende Bedingungen genügen:
   1. (V1) $(V,+)$ ist eine abelsche Gruppe
-  2. (V2) Die skalare Multiplikaiton ist in folgender Weise mit der anderen Verknüpfung (auf $V$ und $K$) verträglich:
+  2. (V2) Die skalare Multiplikation ist in folgender Weise mit der anderen Verknüpfung (auf $V$ und $K$) verträglich:
 	 \begin{align*}
 	 \intertext{$\Forall \lambda,\mu \in K, v,w\in V$}
 	 (\lambda + \mu) \cdot v  &= \lambda \cdot v + \mu \cdot v \\
@@ -21,7 +21,7 @@
   - Es ist wichtig, zwischen Addition "$+$" und skalarer Multiplikation "$\cdot$" auf $V$ und Addition und Multiplikation in $K$ zu unterschieden:
 	In der Gleichung $(\lambda + \mu) \cdot v = \lambda \cdot v + \mu\cdot v$ sind die Verknüpfungen wie folgt zu verstehen:
 	\[(\lambda \qquad\underarrow[+]{Addition in $K$}\qquad \mu) \qquad \overarrow[\cdot]{skalare Multiplikation} \qquad v = \lambda \qquad \underarrow[\cdot]{skal. Mult.} \qquad v \overarrow[+]{Addition in $V$} \mu\qquad\underarrow[\cdot]{skal. Mult.} \qquad v\]
-  - Das neutrale Element bezüglich "$+$" auf $V$ bezeichnen wir mit $0_v$ (Nullvektor), das inverse zu $v\in V$ bezüglich "$+$" mit $-v$. Das Zeichen "$\cdot$" fpr die skalare Multiplikation lassen wir ab jetzt meistens weg und schreiben $\lambda v$ statt $\lambda\cdot v$ ($\Forall \lambda\in K, v\in V$)
+  - Das neutrale Element bezüglich "$+$" auf $V$ bezeichnen wir mit $0_v$ (Nullvektor), das inverse zu $v\in V$ bezüglich "$+$" mit $-v$. Das Zeichen "$\cdot$" für die skalare Multiplikation lassen wir ab jetzt meistens weg und schreiben $\lambda v$ statt $\lambda\cdot v$ ($\Forall \lambda\in K, v\in V$)
   - Wir schreiben meist verkürzend "V K-Vektorraum" (beziehungsweise: "V K-VR") anstelle von $(V,+,\cdot)$ K-Vektorraum.
   #+end_remark
   #+ATTR_LATEX: :options [8.2]
@@ -32,18 +32,18 @@
 	 \[(x_1,\ldots,x_n) + (y_1,\ldots,y_n) := (x_1 + y_1,\ldots,x_n + y_n)\]
 	 \[\lambda\cdot(x_1,\ldots,x_1) := (\lambda x_1,\ldots,\lambda x_n)\]
 	 \[\lambda \in K, (x_1,\ldots,x_n),(y_1,\ldots,y_n)\in K^n\]
-	 ist ein K-Vektorraum, der sogenannte Standardvektorraum über $K$
+	 ist ein K-Vektorraum, der so genannte Standardvektorraum über $K$
 	 Die Axiome rechnet man nach, exemplarisch: sind $\lambda,\mu\in K, (x_1,\ldots,x_n)\in K^n$, dann ist
 	 \[(\lambda + \mu) \cdot (x-1,\ldots,x_n) = ((\lambda + \mu)x_1,\ldots,(\lambda + \mu)x_n)\]
 	 Mit dem Distributivgesetz in $K$ folgt:
 	 \[(\lambda x_1,\ldots,\lambda x_n) + (\mu x_1,\ldots,\mu x_n) = \lambda(x_1,\ldots,x_n) + \mu(x_1,\ldots,x_n)\]
-	 Der Nullvektor ist gegeben duch $0_{K^n} = (0,\ldots,0)$, für $x =(x_1,\ldots,x_n)$ ist $-x = (-x_1,\ldots,-x_n)$
-  2. $\mathbb{C}$ ist ein $\mathbb{R}$-VK bezüglich
+	 Der Nullvektor ist gegeben durch $0_{K^n} = (0,\ldots,0)$, für $x =(x_1,\ldots,x_n)$ ist $-x = (-x_1,\ldots,-x_n)$
+  2. $\mathbb{C}$ ist ein $\mathbb{R}$-VR bezüglich
 	 - $+$ = übliche Addition auf $\mathbb{C}$
 	 - skalare Multiplikation $\cdot:\mathbb{R}\times\mathbb{C} \to \mathbb{C}, \lambda (a + \I b) := \lambda a + \I \lambda b$
   3. $K[t]$ Polynomring über $K$ in der Variablen $t$ wird zum $K$-VR durch
 	 - $+$ = Addition von Polynomen
-	 - akalare Multiplikation, $\cdot: K\times K[t] \to K[t]: \lambda \cdot \sum_{k = 0}^n a_k t^k := \sum_{k = 0}^n \lambda a_k t^k
+	 - skalare Multiplikation, $\cdot: K\times K[t] \to K[t]: \lambda \cdot \sum_{k = 0}^n a_k t^k := \sum_{k = 0}^n \lambda a_k t^k$
   4. $M$ Menge, $\Abb(M,K):= \{f: M \to K~\text{Abbildung}\}$ wird zum $K$-Vektorraum durch die folgende Verknüpfungen:
 	 - Addition: Zu $f,g\in \Abb(M,K)$ wird $f + g: M \to K$ definiert über
 	   \[(f + g)(x) := f(x) + g(x), x\in M\]
@@ -88,8 +88,8 @@
   (1.) $\implies$ (2.): Sei $U$ ein UVR von $V$ \\
   1. Die Verknüpfung $+:U\times U\to U, \cdot :K\times U \to U$ sind wohldefiniert wegen (U2), (U3)
   2. (V1) gilt (das heißt $(U,+)$ ist eine abelsche Gruppe), denn:
-	 - Asooziativgesetz, Kommutativgesetz bezüglich "$+$" gelten, weil sie schon in $V$ gelten.
-	 - $0_V$ ist neutral bezüglich "$+$" und lieght in $U$, denn wegen $U \neq \emptyset$ existiert ein $u\in U$, wegen (U3) ist ann auch $\underbrace{0_K \cdot u}_{= 0_V} \in U$, also $0_V \in U$
+	 - Assoziativgesetz, Kommutativgesetz bezüglich "$+$" gelten, weil sie schon in $V$ gelten.
+	 - $0_V$ ist neutral bezüglich "$+$" und liegt in $U$, denn wegen $U \neq \emptyset$ existiert ein $u\in U$, wegen (U3) ist dann auch $\underbrace{0_K \cdot u}_{= 0_V} \in U$, also $0_V \in U$
 	 - $-u$ ist invers zu $u$ und liegt in $U$, denn: Mit $u \in U$ ist nach (U3) auch $(-1_K)\cdot u$ in $U$
   3. (V2) gilt, da es schon in $V$ gilt
   (2.) $\implies$ (1.) Es gelte (2.) \\
@@ -130,7 +130,7 @@
   $V$ K-VR, $I$ Indexmenge, $(U_i)_{i\in I}$ Familie von UVR von $V$ (das heißt für jedes $i\in I$ ist ein UVR $U_i$ von $V$ gegeben)
   Dann gilt:
   \[U := \bigcap_{i \in I} U_i\]
-  ist ien UVR von $V$. Mit anderen Worten: der Durchschnitt von UVRen von $V$ ist wieder ein UVR von $V$
+  ist ein UVR von $V$. Mit anderen Worten: der Durchschnitt von UVRen von $V$ ist wieder ein UVR von $V$
   #+end_remark
   #+begin_proof latex
   1. (U1): $U \neq \emptyset$, denn $0 \in U_i \Forall i\in I$, also $0 \in U$
@@ -176,7 +176,7 @@
   #+begin_defn latex
   $V$ K-VR, $(v_i)_{i\in I}$ Familie von Vektoren aus $V$
   \[\Lin((v_i)_{i \in I}) := \{\sum_{i\in I} \alpha_i v_i \mid \alpha_i \in K \Forall i\in I, \alpha_i = 0 ~\text{für fast alle $i\in I$}\}\]
-  heißt die lineare Hülle (das Erzeugnis) der Familie $(v_i)_{i \in I}$. Heibei bedeutet "$\alpha_i = 0$ für fast alle $i\in I$": Es gibt nur endlich viele $i\in I$ mit $\alpha_i \neq 0$,
+  heißt die lineare Hülle (das Erzeugnis) der Familie $(v_i)_{i \in I}$. Hierbei bedeutet "$\alpha_i = 0$ für fast alle $i\in I$": Es gibt nur endlich viele $i\in I$ mit $\alpha_i \neq 0$,
   das heißt die auftretenden Summen sind endliche Summen. Falls $I = \emptyset$ setzen wir $\Lin((v_i)_{i\in\emptyset}) := \{0\}$
   #+end_defn
   #+begin_remark latex
@@ -193,7 +193,7 @@
   #+begin_remark latex
   $V$ K-VR, $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. Dann gilt:
   1. $\Lin((v_i)_{i\in I})$ ist ein UVR von $V$
-  2. Ist $U\subseteq V$ ein UVR mit $v_i \in U\Forall i\in I$, ann ist $\Lin((v_i)_{i\in I}) \subseteq U$
+  2. Ist $U\subseteq V$ ein UVR mit $v_i \in U\Forall i\in I$, dann ist $\Lin((v_i)_{i\in I}) \subseteq U$
 	 das heißt $\Lin((v_i)_{i\in I})$ ist das bezüglich "$\subseteq$" kleinste Element der Menge derjenigen UVR von $V$ die alle $v_i, i\in I$ enthalten
   3. \[\Lin((v_i)_{i\in I}) = \bigcap_{\mathclap{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}}} U\]
   #+end_remark
@@ -225,8 +225,8 @@
   #+end_proof
   *Notation*:
   Ist $M\subseteq V$, dann setzen wir $\Lin(M) := \Lin((m)_{m \in M})$ (= kleinster UVR von $V$, der alle Elemente aus $M$ enthält)
-  Vorteil der Definition von $\Lin(\ldots)$ für Familien von Vektoren: Bei Familien ist es sinnvoll zu sagen, dass ein Vektor mehrfach vorkommt (im Gegensatz zu Mengen), darüber hinaus haben die Vektoren der Familie $(v_i)_{i \in I}$ im wichtigen Spezailfall $I = \{1,\ldots,n\}$,
-  Familie $(v_1, \ldots, v_n)$ eine natürliche Reigenfolge. Diese geht verloren, wenn man die Menge $\{v_1, \ldots, v_n\}$ betrachtet (zum Beispiel in $\mathbb{R}^2:\{e_1, e_2\} = \{e_2, e_1\}$, aber $(e_1, e_2) \neq (e_2, e_1)$)
+  Vorteil der Definition von $\Lin(\ldots)$ für Familien von Vektoren: Bei Familien ist es sinnvoll zu sagen, dass ein Vektor mehrfach vorkommt (im Gegensatz zu Mengen), darüber hinaus haben die Vektoren der Familie $(v_i)_{i \in I}$ im wichtigen Spezialfall $I = \{1,\ldots,n\}$,
+  Familie $(v_1, \ldots, v_n)$ eine natürliche Reihenfolgen. Diese geht verloren, wenn man die Menge $\{v_1, \ldots, v_n\}$ betrachtet (zum Beispiel in $\mathbb{R}^2:\{e_1, e_2\} = \{e_2, e_1\}$, aber $(e_1, e_2) \neq (e_2, e_1)$)
   #+ATTR_LATEX: :options [8.14]
   #+begin_defn latex
   $V$ K-VR, $(v_1, \ldots, v_r)$ endliche Familie von Vektoren aus $V$, $(v_1, \ldots, v_r)$ *linear unabhängig*
@@ -236,11 +236,11 @@
   \[\iff \Exists \lambda_1, \ldots, \lambda_r \in K: (\lambda_1, \ldots, \lambda_r) \neq (0, \ldots, 0) \wedge \lambda_1 v_1 + \ldots + \lambda_r v_r = 0\]
   $(v_i)_{i\in I}$ Familie von Vektoren aus $V$ \\
   $(v_i)_{i\in I}$ heißt linear unabhängig $\xLeftrightarrow{\text{Def}}$ Jede endliche Teilfamilie von $(v_i)_{i\in I}$ ist linear unabhängig, das heißt für jede endliche Teilmenge $J\subseteq I$ ist $(v_i)_{i\in I}$ linear unabhängig. \\
-  $(v_i)_{i\in I}$ heißt lenar abhängig $\xLeftrightarrow{\text{Def}}$ $(v_i)_{i\in I}$ ist nicht linear unabhängig \\
+  $(v_i)_{i\in I}$ heißt linear abhängig $\xLeftrightarrow{\text{Def}}$ $(v_i)_{i\in I}$ ist nicht linear unabhängig \\
   $\iff \Exists$ eine endliche Teilfamilie $(v_i)_{i\in J}$ von $(v_i)_{i \in I}$, die linear abhängig ist \\
   $\iff$ Es gibt eine endliche Teilmenge $J = \{i_1, \ldots, i_r\} \subseteq I, \lambda_{i_1},\ldots,\lambda_{i_r} \in K$ mit
   \[(\lambda_{i_1}, \ldots, \lambda_{i_r}) \neq (0, \ldots, 0) \wedge \lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r} = 0\]
-  $M \subseteq V$ heißt linear (un-)ubhängig $\iff (m)_{m\in M}$ ist linear (un-)abhängig.
+  $M \subseteq V$ heißt linear (un-)abhängig $\iff (m)_{m\in M}$ ist linear (un-)abhängig.
   #+end_defn
   #+begin_remark latex
   - Man sagt häufig statt "$(v_1, \ldots, v_r)$ ist linear (un-)abhängig" auch "die Vektoren $v_1, \ldots, v_r$" sind linear (un-)abhängig."
@@ -255,9 +255,9 @@
 	 \[\underbrace{\underbrace{\lambda_1 (1, 0, \ldots, 0)}_{=(\lambda_1, 0, \ldots, 0)} + \underbrace{\lambda_2 (0, 1, 0, \ldots, 0)}_{= (0, \lambda_2, 0, \ldots, 0)} + \underbrace{\ldots + \lambda_n (0, \ldots, 0, 1)}_{=(0,\ldots,0,\lambda_n)}}_{= (\lambda_1, \ldots, \lambda_n)} = 0\]
 	 $\implies \lambda_1 = \lambda_2 = \ldots = \lambda_n = 0$
   2. $K = \mathbb{R}, V = \mathbb{R}^2$ \\
-	 Die Familie $((1, -1), (0,2), (1,2))$ ist linearabhängig, denn:
+	 Die Familie $((1, -1), (0,2), (1,2))$ ist linear abhängig, denn:
 	 \[2\cdot(1,-1) + 3\cdot(0,2) - 2\cdot(1,2) = 0\]
-	 es gibt also eine nichttiviale Linearkombination der Null aus den Vektoren dieser Familie.
+	 es gibt also eine nicht triviale Linearkombination der Null aus den Vektoren dieser Familie.
   3. $V = K[t]$ als K-VR \\
 	 Die Familie $(t^n)_{n\in \mathbb{N}_0}$ ist linear unabhängig, denn: \\
 	 Sei $J = \{n_1, \ldots, n_r\} \subseteq \mathbb{N}_0$ eine endliche Teilmenge von $\mathbb{N}_0$, und sind $\lambda_{n_1}, \ldots, \lambda_{n_r} \in K$
@@ -291,7 +291,7 @@
 	 \[\sum_{i\in J}\lambda_i v_i = 0\]
 	 Da auch
 	 \[\sum_{i\in J} 0 \cdot \v_i = 0\]
-	 ist, folgt aus der vorrausgesetzen Eindeutigkeit der Linearkombination, dass $\lambda_i = 0 \Forall i\in J \implies (v_i)_{i\in J}$ ist linear unabhängig
+	 ist, folgt aus der vorausgesetzten Eindeutigkeit der Linearkombination, dass $\lambda_i = 0 \Forall i\in J \implies (v_i)_{i\in J}$ ist linear unabhängig
   #+end_proof
   #+ATTR_LATEX: :options [8.17]
   #+begin_remark latex

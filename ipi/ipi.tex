@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 11:47
+% Created 2016-12-09 Fr 17:47
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1456,8 +1456,8 @@ std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
 \item die $<$-Operation muss eine totale Ordung der Elemente definieren:
 \begin{itemize}
 \item $a < b$ muss für beliebige $a,b$ ausführbar sein
-\item transitiv: \$(a < b) $\wedge$ (b < c) $\implies$ (a < c)\$
-\item anti-symmetrisch: \$!(a < b) $\wedge$ !(b < a) $\implies$ a == b\$
+\item transitiv: $(a < b) \wedge (b < c) \implies (a < c)$
+\item anti-symmetrisch: $\neg(a < b) \wedge \neg(b < a) \implies a == b$
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -1735,12 +1735,12 @@ Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfa
 \item vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels \textbf{$O$-Notation} und ihren Verwandten
 Gegeben: $f(n)$ und $g(n)$
 \begin{enumerate}
-\item $g(n)$ ist eine asymptotische (für große $n$) overe Schranke für $f(n)$ ("f(n) $\le$ g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
+\item $g(n)$ ist eine asymptotische (für große $n$) obere Schranke für $f(n)$ ("f(n) $\le$ g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
 und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in O(g(n))$
 \item $g(n)$ ist asymptotische untere Schranke für $f(n)$ ($f(n) \geq g(n)$)
 \[f(n) \in \Omega(g(n)) \iff \Exists n_0,C : \Forall n > n_0 f(n) \geq C g(n)\]
-\item $g(n)$ ist asymptotisch scharfe Schranke für $f(n)$ (\$f(n) = g(n))
-\[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
+\item $g(n)$ ist asymptotisch scharfe Schranke für $f(n) (f(n) = g(n))$
+          \[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
 \end{enumerate}
 \end{enumerate}
 Regeln:

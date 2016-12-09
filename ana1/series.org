@@ -28,7 +28,7 @@
   Aus den Rechenregeln für konvergente Folgen
   #+end_proof
 ** Konvergenzkriterien
-   Cauchy Kriterium für Paritalsummen besagt, dass eine Reihe genau dann konvergent ist, wenn
+   Cauchy Kriterium für Partialsummen besagt, dass eine Reihe genau dann konvergent ist, wenn
    \[\Forall \eps > 0 \Exists n_\eps \in \mathbb{N}: \Forall n > m \geq n_\eps: \abs{s_n - s_m} = \abs{\sum_{k = m + 1}^n a_k} < \eps\]
 
    #+ATTR_LATEX: :options [2.28 Reihenkonvergenz]
@@ -38,7 +38,7 @@
    #+begin_proof latex
    Sei $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k = \lim_{n \to \infty} s_n$. Dann gilt
    \[\lim_{n\to\infty} a_n = \lim_{n\to\infty} (s_n - s_{n - 1}) = \lim_{n\to\infty} s_n - \lim_{n\to\infty} s_{n - 1} = s_\infty - s_\infty = 0\]
-   Die Beschränktheit der Paritalsummen folgt notwendig aus der Beschränktheit konvergenter Folgen.
+   Die Beschränktheit der Partialsummen folgt notwendig aus der Beschränktheit konvergenter Folgen.
    #+end_proof
    #+ATTR_LATEX: :options [2.29]
    #+begin_thm latex
@@ -86,9 +86,9 @@
    #+end_proof
    #+ATTR_LATEX: :options [2.33]
    #+begin_ex latex
-   1. $\displaystyle s_\infty = \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \ldots$ konvergiert nach dem Leibnitz Kriterium
+   1. $\displaystyle s_\infty = \sum_{k = 1}^\infty \frac{(-1)^{k - 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \ldots$ konvergiert nach dem Leibniz Kriterium
 	  \[\abs{\frac{(-1)^{k - 1}}{k}} = \frac{1}{k} \to 0~\text{monoton}\]
-   2. Die Leibnitz Reihe $\displaystyle s_\infty =  \sum_{k = 0}^\infty \frac{(-1)^k}{2k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots$ konvergiert nach Leibnitz Kriterium
+   2. Die Leibniz Reihe $\displaystyle s_\infty =  \sum_{k = 0}^\infty \frac{(-1)^k}{2k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots$ konvergiert nach Leibniz Kriterium
    #+end_ex
    #+ATTR_LATEX: :options [Monotonie ist wichtig]
    #+begin_remark latex
@@ -108,7 +108,7 @@
    #+begin_proof latex
    Mit Cauchy Kriterium:
    \[\abs{\sum_{k = m}^n a_k} \leq \sum_{k = m}^n \abs{a_k} < \eps\]
-   aus der Absolutkonverenz
+   aus der absoluten Konvergenz
    #+end_proof
    #+ATTR_LATEX: :options [2.36 Umordnungssatz]
    #+begin_thm latex
@@ -117,7 +117,7 @@
    \[\sum_{k = 1}^\infty a_{\tau(k)} = \sum_{k = 1}^\infty a_k\]
    #+end_thm
    #+begin_proof latex
-   Ranacher für spezifische Umordung
+   Ranacher für spezifische Umordnung
    #+end_proof
    #+ATTR_LATEX: :options [2.37]
    #+begin_ex latex
@@ -125,7 +125,7 @@
    Behauptung: $\Exists$ Umordnung $\tau$, sodass $\displaystyle \sum_{k = 1}^\infty \frac{(-1)^{\tau(k) - 1}}{\tau(k)}$ divergiert
    Beachte
    \[\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{2\cdot 2^j - 1} \leq 2^{j - 1} \frac{1}{2^{j + 1}} = \frac{1}{4}\]
-   $\implies$ Die Umordung
+   $\implies$ Die Umordnung
    \[1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + (\frac{1}{5} + \frac{1}{7}) - \frac{1}{6} + \underbrace{(\frac{1}{9} + \frac{1}{11} + \frac{1}{13} + \frac{1}{15})}_{\geq \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{8} + \ldots + \underbrace{(\frac{1}{2^j + 1} + \frac{1}{2^j + 3} + \ldots + \frac{1}{2^{j + 1} - 1})}_{> \frac{1}{4} - \frac{1}{8} = \frac{1}{8}} - \frac{1}{2^k + 2}\]
    konvergiert nicht
    #+end_ex
@@ -135,7 +135,7 @@
    \[\sum_{m = 1}^\infty = (\sum_{k = 1}^\infty a_k)(\sum_{k = 1}^\infty b_k)\]
    (ohne Beweis)
    #+end_thm
-   #+ATTR_LATEX: :options [2.39 Vergleichkriterium]
+   #+ATTR_LATEX: :options [2.39 Vergleichskriterium]
    #+begin_thm latex
    Gegeben seien zwei Reihen $\displaystyle s_\infty = \sum_{k = 1}^\infty a_k, \tilde s_\infty = \sum_{k = 1}^\infty \tilde a_k$
    1. Gilt für fast alle $k \in \mathbb{N}$ mit einer Konstante $\alpha > 0\quad \abs{a_k} \leq \alpha \tilde a_k$ \\
@@ -143,12 +143,12 @@
 	  so ist $\tilde s_\infty$ eine *Majorante* von $s_\infty$ und aus der absoluten Konvergenz von $\tilde s_\infty$ folgt auch die von $s_\infty$, absolute Divergenz von $s_\infty$ impliziert die absolute Divergenz von $\tilde s_\infty$
    #+end_thm
    #+begin_proof latex
-   ohne Beschränkung der Allgemeinheit nehmen wir an, dass die Vorraussetzungen $\Forall k \in \mathbb{N}$ gelten
+   ohne Beschränkung der Allgemeinheit nehmen wir an, dass die Voraussetzungen $\Forall k \in \mathbb{N}$ gelten
    1. Ist $\tilde s_\infty$ konvergent
 	  \[\implies \sum_{k = 1}^{n}\abs{a_k} \leq \alpha \sum_{k = 1}^{n} \abs{\tilde a_k} \leq \alpha \sum_{k = 1}^{\infty} \tilde a_k, \Forall n\in\mathbb{N}\]
-	  $\implies S_n$ sind beschränkt, $S_\infty$ absolut konverent
+	  $\implies S_n$ sind beschränkt, $S_\infty$ absolut konvergent
 	  Umgekehrt folgt aus Divergenz von $\tilde S_\infty$ auch $\sum_{k = 1}^{\infty} \abs{a_k} \to \infty \implies \tilde S_\infty$ auch Divergent
-   2. Aus Vorraussetzung
+   2. Aus Voraussetzung
 	  \begin{align*}
 	  \abs{\frac{a_{k + 1}}{\tilde a_{k + 1}}} \leq \abs{\frac{a_{k + 1}}{a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} \leq \abs{\frac{\tilde a_{k + 1}}{\tilde a_k}} \abs{\frac{a_k}{\tilde a_{k + 1}}} = \abs{\frac{a_k}{\tilde a_k}} \leq \ldots \leq \abs{\frac{a_1}{\tilde a_1}} =: \alpha
 	  \end{align*}
@@ -161,7 +161,7 @@
    Wenn für unendlich viele $k \in \mathbb{N}$ gilt $\sqrt[k]{\abs{a_k}} > 1$, beziehungsweise $\abs{a_k} > 1$, so ist die Reihe absolut divergent.
    #+end_korollar
    #+begin_proof latex
-   Nach Vorraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante für $s_\infty$
+   Nach Voraussetzung $\abs{a_k} \leq q^k$, das heißt die konvergierende geometrische Reihe $\tilde s_\infty$ mit $q\in(0,1)$ ist Majorante für $s_\infty$
    #+end_proof
    #+ATTR_LATEX: :options [2.41 Quotientenkriterium]
    #+begin_korollar latex
@@ -215,7 +215,7 @@
 ** Potenzreihe
    \[S_\infty = \sum_{k = 0}^{\infty} c_k (x - x_0)^k\]
    mit den Koeffizienten $c_k \in \mathbb{K}$, Zentrum $x_0 \in \mathbb{K}$ und Argument $x\in \mathbb{K}$
-   - Die geometrische Reihe ist ein Spezialfall der allgeminen Potenzreihe
+   - Die geometrische Reihe ist ein Spezialfall der allgemeinen Potenzreihe
    - Unendlicher Dezimalbruch
 	 \[0, d_1, d_2, d_3, \ldots = \sum_{k = 1}^{\infty} d_k 10^{-k}, d_k \in \{0,1,\ldots, 9\}\]
 
@@ -232,13 +232,13 @@
    #+begin_remark latex
    Falls $\rho = \infty$, konvergiert die Reihe $\Forall x\in \mathbb{K}$ \\
    Falls $\rho = 0$, konvergiert die Reihe für kein $x\neq x_0$
-   - Die Konvergenzgrenze $\rho$ ist die größt mögliche und wird *Konvergenzradius* der Reihe bezeichent
+   - Die Konvergenzgrenze $\rho$ ist die größt mögliche und wird *Konvergenzradius* der Reihe bezeichnet
    - Für $\lim\sup \sqrt[k]{\abs{c_k}} = \infty$ konvergiert die Reihe für kein $x \neq x_0$ und wir setzen $\rho 0$
    - Falls $\lim\sup \sqrt[k]{\abs{c_k}} = 0 \implies \rho = \infty$
    #+end_remark
 ** Exponentialreihe
    \[\exp(x) := \sum_{k = 0}^{\infty} \frac{x^k}{k!}\] ist eine Potenzreihe.
-   Ihr Konvergenzradizs
+   Ihr Konvergenzradius
    \[\rho = \frac{1}{\lim_{n\to\infty}\sup \sqrt[n]{\abs{a_n}}} = \frac{1}{\lim_{n\to\infty} \sqrt[n]{\frac{1}{n!}}} = \lim_{n\to\infty} \sqrt[n]{n!} = \infty\]
 
    #+ATTR_LATEX: :options [2.45]
@@ -260,3 +260,4 @@
    \end{align*}
    Da dies für alle $m \in \mathbb{N}$, folgt
    \[0 < e - s_n \leq \frac{1}{n! n} \implies 0 < e n! -s_n n! \leq \frac{1}{n}\]
+   #+end_proof

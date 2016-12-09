@@ -14,31 +14,31 @@
 	\rightarrow \\
 	E_{kin}(2) = E_{kin}(2') = \frac{1}{2}m v^2 \\
 	\end{align*}
-	Bemerkung: Berechung von $v$ mit Newtonschen Gesetzen deutlich komplexer
+	Bemerkung: Berechnung von $v$ mit Newtonschen Gesetzen deutlich komplexer
 *** Energieerhaltungssatz der Newtonschen Mechanik
 	\[E_{pot} + E_{kin} = E_{ges} = ~\text{const}\]
 	$E_{ges}$ = mechanische Gesamtenergie \\
-	das heißt: In einem konservativen Kraftfeld ist due Summe aus potetieller und kinetischer Energie
+	das heißt: In einem konservativen Kraftfeld ist die Summe aus potentieller und kinetischer Energie
 	eines Massenpunktes zu jeder Zeit konstant
 
-	Wichtig: gilt nur für konservative Kraftfelder (Beim Auftreten nicht-konservativer, dissipativer Kröfte wird
+	Wichtig: gilt nur für konservative Kraftfelder (Beim Auftreten nicht-konservativer, dissipativer Kräfte wird
 	mechanische Energie in Wärme umgewandelt)
 *** Energiediagramme
 	Häufig: Potentielle Energie abhängig von Ort $x$ oder Abstand $r$ \\
-	Hilfreich: Diskussion mittel Energiediagramm
+	Hilfreich: Diskussion mittels Energiediagramme
 **** Kugelbahn
 	- Abhängig von $E_{ges}$ kann sich die Kugel nur in bestimmten Bereichen aufhalten
-	- Gleichgewichtslagen: Kugel ruht, es wirken keine Kräfte, das heißt
+	- Gleichgewichtslage: Kugel ruht, es wirken keine Kräfte, das heißt
 	  \[F = -\dd{E_{pot}}{x} = 0, ~\text{bzw}~ \v F = -\grad E_{pot} = 0\]
 
 	Drei Fälle:
 	1. Stabiles bzw. Metastabiles Gleichgewicht: Potentialkurve hat ein Minimum
 	2. labiles Gleichgewicht: Potentialkurve hat ein Maximum
-	3. Indifferentes Gleichgeweicht: Flacher Verlauf der Potentialkurve
+	3. Indifferentes Gleichgewicht: Flacher Verlauf der Potentialkurve
 **** Lennard-Jones-Potential
-	 Potienial zur Beschreibung von molekularen Bindugen
+	 Potential zur Beschreibung von molekularen Bindungen
 	 \[E_{pot} = V_0 (\frac{r}{r_0})^{-12} - 2(\frac{r}{r_0})^{-6}\]
-	 (Dipol-Dipol-Wchselwirkung, Van-der-Waals Kräfte)
+	 (Dipol-Dipol-Wechselwirkung, Van-der-Waals Kräfte)
 **** Mechanischer Verstärker
 	 \[E_{pot}' = m g h = \underarrow[\rho]{Dichte} \overarrow[(a b c)]{Volumen} g h\]
 	 mit $h = \frac{1}{2}c$ \\

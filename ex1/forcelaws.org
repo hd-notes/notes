@@ -1,15 +1,15 @@
 * Verschiedene Kräfte und Kraftgesetze
 ** Gravitation (TODO Skizze)
-   Eperimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals Cavendish)
+   Experimenteller Nachweis im Labor mit Torsionsdrehungen (erstmals Cavendish)
 *** Anziehungskraft zweier Massen
-	$m_1,m_2$ Massen, Newtonsches Gravitaitonsgesetz:
+	$m_1,m_2$ Massen, Newtonsches Gravitationsgesetz:
 	\[\v{F_G} = -G\frac{m_1 m_2}{r^2}\v{e_r}\]
 	mit $G=\SI{6.67e-11}{\meter\cubed\per\kilo\gram\per\second\squared}$
 *** Erdbeschleunigung
 	\[F_G = G\frac{m M_E}{(r_E + h)^2} \approx G\frac{m M_E}{r^2} = m g \implies g\approx \SI{9.81}{\meter\per\second\squared}\]
 	(mittleres $g$) \\
 **** Abweichungen
-	 - kompilizierte Massenverteilung, Strukturen
+	 - komplizierte Massenverteilung, Strukturen
 	 - Abflachung der Erde
 **** Messung von $g$
 	 - Gravimeter (Federgravimeter, Pendelgravimeter), relative Messung
@@ -26,8 +26,8 @@
    \[F_x(x) = F_x(x_0) + \dd{F_x(x)}{x}(x-x_0) + \frac{1}{2}\frac{\d^2 f_x(x)}{\d x^2}(x - x_0) + \ldots\]
    \rightarrow unabhängig von konkreter Zusammenhang $f_x(x)$ gilt kleine Änderungen
 ** Maxwell'sches Rad
-*** Ruhezushand
-	Waage misst Gesamtmasse $M$ austariert
+*** Ruhezustand
+	Waage misst Gesamtmasse $M$ austarierter
 *** Frage
 	Was passiert, wenn sich das Rad bewegt??
 *** Messung:
@@ -49,7 +49,7 @@
    \[F = F_r \frac{R}{\Delta L} = \Delta m \frac{v^2}{R}\frac{R}{\Delta L} = \frac{m}{2\pi R}v^2\]
    Die Kraft $F = \frac{m}{2\pi R}v^2$ spannt die Kette.
 ** Normalkraft
-   1. (Skizze) Normalkraft $\v{F}_N$ = Kraft senktrecht zur Kontaktfläche. Wird kompensiert duchr $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
+   1. (Skizze) Normalkraft $\v{F}_N$ = Kraft senkrecht zur Kontaktfläche. Wird kompensiert durch $\v{F}_N'$ = Kraft mit der die Unterlage auf Körper wirkt (Źwangskräfte)
 ** Schiefe Ebene
    - Gewichtskraft: $\v{F}_G = m\v g$
    - Normalkraft: $\v{F}_N = m g\cos{\alpha} \v{e}_y$
@@ -65,7 +65,7 @@
 	 - Gewicht ruhte: $\v{F}_Z = - \v{F}_R \to a = 0, v = 0$
 	 - Gewicht setzt sich in Bewegung: $\abs{\v{F}_Z} > \abs{\v{F}_R} \to a > 0,v$ steigt an
 	 - Gewicht gleitet: $\v{F}_Z = - \v{R}_R \to a = 0, v =~\text{const.}~\neq 0$ mit $\v v =~\text{const}~$
-	 Reibugskraft nimmt ab, sobald das Gewicht bewegt wird.
+	 Reibungskraft nimmt ab, sobald das Gewicht bewegt wird.
 	 - Haftreibung $F_H$ \\
 	   Schwellenwert für Zugkraft um Körper zu bewegen
 	 - Gleitreibung $F_G$ \\
@@ -99,14 +99,14 @@
 **** Beobachtung
 	 - $F_R$ hängt nicht von der Oberfläche ab.
 	 - $F_R$ hängt von dem Gewicht des Blocks ab
-	 - $F_R$ ist Materialbhängig
+	 - $F_R$ ist Materialabhängig
 
 ** Tribologische Reibungslehre
    \[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
    \[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
    \[\mu_H > \mu_G\]
 ** Mikroskopisches Modell
-   Verantwortlich sind elektrische Kröfte zwischen Atomen und Molekülen der beieinanderliegenden Oberflächen: Van-der-Waals-Kräfte
+   Verantwortlich sind elektrische Kräfte zwischen Atomen und Molekülen der beieinander liegenden Oberflächen: Van-der-Waals-Kräfte
    - Stärke ergibt sich aus effektivem Kontakt.
    Relative mikroskopische Reibungsfläche: $\sum \frac{a_i}{A} \sim \frac{F_N}{A} \leftarrow~\text{Druck}$
    - $a_1$ = effektive Kontaktfläche eines Einzelatoms

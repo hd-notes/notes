@@ -1,7 +1,7 @@
 * Substitutionsmodell (funktionale Programmierung)
   - einfaches Modell für arithmetische Berechnung "Taschenrechner"
-  - Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißten "Literale"
-  - elementare Funktionen: haben eine oder mehere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
+  - Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißen "Literale"
+  - elementare Funktionen: haben eine oder mehrere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
 	- add(1,2) \rightarrow 3, mul(2,3) \rightarrow 6, analog sub(), div(), mod()
   - Funktionsaufrufe können verschachtelt werden, das heißt Argumente kann Ergebnis einer anderen Funktion sein
 	- mul(add(1,2),sub(5,3)) \rightarrow 6
@@ -11,10 +11,10 @@
    \[mul(3,sub(5,3))\]
    \[mul(3,2)\]
    \[6\]
-   - Die arithmetischen Operationene add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
+   - Die arithmetischen Operationen add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
    - Die meisten Programmiersprachen bieten außerdem algebraische Funktionen wie: sqrt(), sin(), cos(), log()
-	 - sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibilothek"
-   - in C++: mathematisches Modul des Standardbibilothek: "cmath"
+	 - sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibliothek"
+   - in C++: mathematisches Modul des Standardbibliothek: "cmath"
    - Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "%"
    - mul(add(1,2),sub(5,3)) $\iff$ ((1+2)*(5-3))
 	 - oft besser, unter anderem weil man Klammer weglassen darf
@@ -22,9 +22,9 @@
 	   2. Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
 		  1+2+3-4+5 $\iff$ ((((1+2)+3)-4)+5)
 	   3. äußere Klammer kann man weglassen (1+2)$\iff$ 1+2
-   - Computer wandeln Infix zuerst in Prefix Notation um
+   - Computer wandeln Infix zuerst in Präfix Notation um
 	 1. weggelassene Klammer wieder einfügen
-	 2. Operatorensymbol durch Funktionsnamen ersetzen und an Prefix-Position verschieben
+	 2. Operatorensymbol durch Funktionsnamen ersetzen und an Präfix-Position verschieben
 		\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
 		\[(((1 + 2) + ((3 * 4) / (1 + 5))) - 2)\]
 		\[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
@@ -35,11 +35,11 @@
 ** Bäume
    - bestehen aus Knoten und Kanten (Kreise und Pfeile)
    - Kanten verbinden Knoten mit ihren Kind-knoten
-   - jeder Koten (außer der Wurzel) hat genau ein Elternteil ("parent node")
+   - jeder Konten (außer der Wurzel) hat genau ein Elternteil ("parent node")
    - Knoten ohne Kinder heißen Blätter ("leaves / leaf node")
    - Teilbaum
 	 - wähle beliebigen Knoten
-	 - entferne temporär dessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Teilbaum des Orginalbaumes)
+	 - entferne temporär dessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Teilbaum des Originalbaumes)
    - trivialer Teilbaum hat nur einen Knoten
    - Tiefe: Abstand eines Knotens von der Wurzel (Anzahl der Kanten zwischen Knoten und Wurzel)
 	 - Tiefe des Baums: maximale Tiefe eines Knoten
@@ -51,7 +51,7 @@
 	\end{center}
 ** Rekursion
    Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
-** Prefixnotation aus dem Baum rekonstruieren
+** Präfixnotation aus dem Baum rekonstruieren
    1. <<algstart1>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
    2. sonst:
 	  - Drucke Funktionsnamen
@@ -61,7 +61,7 @@
 	  - Wiederhole den Algorithmus ab [[algstart1]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
 	  - Drucke ")"
 	$\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
-** Prefixnotation aus dem Baum rekonstruieren
+** Präfixnotation aus dem Baum rekonstruieren
    1. <<algstart2>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
    2. sonst:
 	  - Drucke Funktionsnamen
@@ -72,10 +72,10 @@
 	  - Drucke ")"
 	$\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
    $\implies$ *inorder*
-** Berechnen des Werts mit Substitutionsmethode
+** Berechnen des Werts mit Substitutionsmodell
    1. <<algstart3>> Wenn Wurzel dein Blatt gib Zahl zurück
    2. sonst:
 	  - Wiederhole den Algorithmus ab [[algstart3]] für das linkes Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "lhs"
 	  - Wiederhole den Algorithmus ab [[algstart3]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "rhs"
 	  - berechne funktionsname(lhs,rhs) und gebe das Ergebnis zurück
-   $\implies$ *postorder*
+   $\implies$ *post-order*

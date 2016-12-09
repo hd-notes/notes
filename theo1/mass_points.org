@@ -1,11 +1,11 @@
 * Kinematik des Massenpunktes
   Massenpunkt / Punktmasse - (selbstevidente) Abstraktion
-  Kinematik: Bescheibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
+  Kinematik: Beschreibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynamik)
 ** Kinematik der Massenpunktes in einer Dimension
 *** Graphik
    - Ort: $x$
    - zu Zeit $t:~x(t)$
-   - Geschwindigketi: $v(t) \equiv \frac{\mathrm{d}x(t)}{\mathrm{d}t} \equiv \dot{x}(t)$
+   - Geschwindigkeit: $v(t) \equiv \frac{\mathrm{d}x(t)}{\mathrm{d}t} \equiv \dot{x}(t)$
    - Beschleunigung: $a(t) \equiv \dot{v}(t) = \ddot{x}(t)$
    - Beispiel: $x(t) \equiv x_0 + v_0 t + \frac{a_0}{2}t^2, ~v(t) = v_0 + a_0 t,~a(t) = a_0$
    - Umgekehrt: Integration, z.B. von Geschwindigkeit zu Trajektorie: Anfangsposition muss gegeben sein, z.B. $x(t_0) \equiv x_0$
@@ -22,17 +22,17 @@
 	\[f: \mathbb{R} \rightarrow \mathbb{R},~x \mapsto f(x)\]
 *** Differentiation oder Ableitung
 	\[\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}\]
-	$\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwaches $\Delta f\equiv f(x + \Delta x) - f(x)$.
+	$\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwachs $\Delta f\equiv f(x + \Delta x) - f(x)$.
 	- Aus $\Delta f = f'(x)\Delta(x) + O(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
-	- Anwendung auf die Identitätabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
+	- Anwendung auf die Identitätsabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
 	  \[\implies \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
-	  Dies ist eigentlich nur eine Schreibweise für $f'(x)$, _aber_ nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwertdefinition)
+	  Dies ist eigentlich nur eine Schreibweise für $f'(x)$, _aber_ nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwert-Definition)
 	- $f'(x)$ wieder Funktion $\implies$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
 	- Praxis
 	  \[(f\cdot g)' = f' g + g' f~\text{(Produkt/Leibnizregel)}\]
 	  \[(f \circ g)'(x) = f'(g(x))g'(x)~\text{(Kettenregel)}\]
 	  \[(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}~\text{(Ableitung der Inversen Funktion)}\]
-	  - Begründung (nur zum letzen Punkt)
+	  - Begründung (nur zum letzten Punkt)
 		\[(f^{-1})'(x) = \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}y}{\mathrm{d}(f(y))} = \frac{\mathrm{d}y}{f'(y)\mathrm{d}y} = \frac{1}{f'(f^{-1}(x))}\]
 	  - Schöne Beispiele
 		\[(x^x)' = (e^{\ln{x^x}})' = (e^{x\ln{x}})' = e^{x\ln{x}}(\ln{x} + 1) = x^x(\ln{x} + 1)\]
@@ -42,7 +42,7 @@
 	- Verknüpfung \[f\circ g: x\mapsto f(g(x))\]
 	- Inverse \[f^{-1} : x=f(y)\mapsto y\]
 	- Grenzwerte:
-	  - nützliche Regel: l'Hôpital ("$\frac{0}{0}$") \\
+	  - nützliche Regel: l'Hospital ("$\frac{0}{0}$") \\
 		Falls $\lim_{x\to x_0} f,g = 0$ und $\lim_{x\to x_0} \frac{f'}{g'}$ existiert, so gilt $\lim_{x\to x_0}\frac{f}{g} = \lim_{x\to x_0} \frac{f'}{g'}$
 	  - weitere nützliche Regel \[\lim \frac{\text{Beschränkt}}{\text{Unbeschränkt und monoton wachsend}} = 0\]
 		- Beispiel: \[\lim_{y\to 0} \frac{\sin{\frac{1}{y}}}{\frac{1}{y}}\]
@@ -53,7 +53,7 @@
 	 \[\int^y f(x)\mathrm{d}x = F(y) \&  F'(y) = f(y)\]
 	 \[\int f(x)\mathrm{d}x = F(x) + C\]
 	 \[\int_a^b f(x)\mathrm{d}x = F(b) - F(a)\]
-	 ($\to$ saubere Definition über Riemansches Integral)
+	 ($\to$ saubere Definition über Riemannsches Integral)
 **** Praxis
 ***** Partielle Integration
 	  \[\int^y f(x)g'(x)\mathrm{d}x = f(y)g(y) - \int^y f'(x)g(x)\mathrm{d}x\]
@@ -68,16 +68,16 @@
 ** Kinematik in mehreren Dimensionen
 *** Zweidimensionale Bewegung
 	Zweidimensional $\rightarrow$ Bewegung in der Ebene. Trajektorie: $x(t),y(t)$
-**** Bespiel
+**** Beispiel
 	 \[x(t) = v_0 t \sin{\omega t}\]
 	 \[y(t) = v_0 t \cos{\omega t}\]
 ***** TODO Skizze der Trajektorie (Bahnkurve)
 ***** Raumkurve
 	  Menge aller Punkte $\{x,y\}$, die das Teilchen durchläuft
-***** TODO Skizze Nichtriviale Darstellung _nur_ im Raum (Raumkurve)
+***** TODO Skizze Nichttriviale Darstellung _nur_ im Raum (Raumkurve)
 *** Dreidimensionale Bewegung
-	Die Darstellung der Tranjektorie ist erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
-	Formal keim Problem: Trajektorie ist
+	Die Darstellung der Trajektorie ist erschwert, denn man bräuchte $4$ Dimensionen: $3$ für Raum und $1$ für Zeit
+	Formal kein Problem: Trajektorie ist
 	- \[x(t),y(t),z(t)\]
 	- \[x^1(t),x^2(t),x^3(t)\]
 	- \[\{x^i(t)\},i=1,2,3\]
@@ -97,12 +97,12 @@
    \[v + (w + u) = (v + w) + u\quad u,v,w\in V\tag*{Assoziativität}\]
    \[v+w = w+v\tag*{Kommutativität}\]
    \[\exists 0 \in V: v + 0 = v \Forall v\in V\tag*{Null}\]
-   \[\alpha(v+w) = \alpha v + \alpha w \tag*{Distributvität}\]
+   \[\alpha(v+w) = \alpha v + \alpha w \tag*{Distributivität}\]
    \[(\alpha + \beta)v = \alpha v + \beta v \quad \alpha,\beta \in \mathbb{R}\tag*{Distributivität}\]
    \[\alpha(\beta v) = (\alpha\beta) v\tag*{Assoziativität der Multiplikation}\]
    \[1 v = v \tag*{Multiplikation mit Eins}\]
 *** Einfachstes Beispiel
-	$V\equiv \mathbb{R}$ (mit der gewöhnlichen Addition und Multiplikation und mit $0\in\mathbb{R}$ als Vektorraumnull)
+	$V\equiv \mathbb{R}$ (mit der gewöhnlichen Addition und Multiplikation und mit $0\in\mathbb{R}$ als Vektorraum Null)
 *** Unser Haupt-Beispiel
 	Zahlentupel aus n-Zahlen:
 	\[V\equiv \mathbb{R}^n = \{(x^1,x^2,\ldots,x^n), x^i \in\mathbb{R}\}\]
@@ -117,7 +117,7 @@
 ** Kinematik in $d>1$
    Trajektorie ist Abbildung: $\mathbb{R} \to \mathbb{R}^3, t\to \vec{x}(t) ) (x^1(t),x^1(t),x^3(t))$
    \[\vec{v} = \dot{\vec{x}}(t), \vec{a(t)} = \dot{\vec{v}}(t) = \ddot{\vec{x}}(t)\]
-   Setzt allgemeine Definition der Ableitun voraus:
+   Setzt allgemeine Definition der Ableitung voraus:
    \[\frac{\mathrm{d}\vec{y}(x)}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\vec{y}(x + \Delta x) - \vec{y}(x)}{\Delta x}  \implies \vec{y}'(x) = (y^{1'}(x), \ldots,y^{n'}(x))\]
 *** Beispiel für 3-dimensionale Trajektorie
 	Schraubenbahn:
@@ -141,7 +141,7 @@
 	 =& (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)
 	 \end{align*}
 **** Bemerkung
-	 Man kann Integrale über Vektoren auch durch Riemansche Summen definieren:
+	 Man kann Integrale über Vektoren auch durch Riemannsche Summen definieren:
 	 \[\int_{t_0}^t \vec{v}(t')\mathrm{d}t' = \lim_{n\to\infty} (v(t_0)\Delta t + \vec{v}(t_0 + \Delta t)\Delta t + \ldots + \vec{v}(t - \Delta t)\Delta t)\]
 	 mit $\Delta t = \frac{t - t_0}{N}$
 ** Skalarprodukt
@@ -158,7 +158,7 @@
 	\[\abs{v} = \sqrt{v\cdot v} = \sqrt{v^2}\]
 	$\mathbb{R}^n$: Wir definieren \[\vec{x}\cdot\vec{y} = x^1y^1 + \ldots + x^n y^n \equiv \sum_{i=1}^n x^iy^i \equiv \underbrace{x^i y^i}_{\text{Einsteinsche Summenkonvention}}\]
 	\[\abs{\vec{x}} = \sqrt{(x^1)^2 + \ldots + (x^n)^2}\]
-	Wichtig: oben euklidiesches Skalarprodukt! Anderes Skalarprodukt auf $\mathbb{R}^2: \vec{x}\cdot\vec{y} = 7x^1 y^2 + x^2y^2$
+	Wichtig: oben euklidisches Skalarprodukt! Anderes Skalarprodukt auf $\mathbb{R}^2: \vec{x}\cdot\vec{y} = 7x^1 y^2 + x^2y^2$
 	anderes Beispiel:
 	\[\vec{x}\cdot\vec{y} \equiv x^1y^1 - x^2y^2\]
 	symmetrische Bilinearform, _nicht_ positiv, semidefinit!
@@ -166,7 +166,7 @@
 	Beispiel für Bilinearform die positiv-semidefinit ist, aber _nicht positiv definit_
 	\[\v x \v y = x^1 y^1\]
 ** Abstand zwischen Raumpunkten
-   Der anschauliche Abstand zweichen Raumpunkten $\v x,\v y$:
+   Der anschauliche Abstand zwischen Raumpunkten $\v x,\v y$:
    \[\abs{\v x - \v y} = \sqrt{(\v x - \v y)(\v x - \v y)} = \sqrt{(\v x - \v y)^2} = \sqrt{\sum_{i=1}^3 (x^i - y^i)^2} = \sqrt{(x^i - y^i)(x^i - y^i)}\]
    \[=\sqrt{{\v x}^2 + {\v y}^2 - 2\v x \v y} = \sqrt{\abs{\v x}^2 +  \abs{\v y}^2 - 2\abs{\v x}\abs{\v y}}\cos{\theta}\]
    Haben benutzt: $\v x\cdot \v y = \abs{\v x}\abs{\v y}\cos{\theta}$
@@ -176,7 +176,7 @@
 **** TODO Skizze
 	 \[\implies \v x\cdot \v y = \abs{\v x}\abs{\v y} \cos{\theta}\]
 	 Dass dies für beliebige Vektoren gilt, wird später klar werden.
-*** Infinisetimaler Abstand
+*** Infinitesimaler Abstand
 	Speziell wird der infinitesimale Abstand wichtig sein:
 	\[\d\v x = (\d x^1, \d x^2,\d x^3)\]
 	\[\d\v x = (\f{\d x^1}{\d t}\d t, \f{\d x^2}{\d t}\d t, \f{\d x^3}{\d t}\d t) = (v^1\d t, v^2\d t, v^3\d t) = (v^1, v^2, v^3)\d t = \v v \d t,~\text{oder:}~\v v = \f{\d\v x}{\d t}\]
@@ -194,7 +194,7 @@
    Ableiten nach $s$:
    \[0 = \f{\d}{\d s}(1) = \f{\d \v T}{\d s}(\v T \cdot\v T) = \f{\d \v T}{\d s}\cdot \v T + \v T\cdot \f{\d\v T}{\d s} = 2\v T \cdot \f{\d \v T}{\d s}\]
    Nutze \[\v T\cdot \v T = T^i T^i\]
-   $\implies$ Ableitung des Tangentenvektors ist ortogonal zum Tangentenvektor.
+   $\implies$ Ableitung des Tangentenvektors ist orthogonal zum Tangentenvektor.
    Krümmungsradius der Bahn: \[\rho \equiv \f{1}{\abs{\f{\d \v T}{\d s}}}\]
    Normalenvektor: \[\v N = \f{\f{\d \v T}{\d s}}{\abs{\f{\d \v T}{\d s}}} = \rho \f{\d \v T}{\d s}\]
 *** Beispiel in d=2
@@ -220,7 +220,7 @@
 ** Binormalenvektor
    \[\b B = \v T\times\v N\]
    $\v T, \v N, \v B$ heißen "begleitendes Dreibein" und bilden ein Rechtssystem. alle haben Länge 1
-   \(\v T, \v N\) spannen die "Smiegeebene" auf
+   \(\v T, \v N\) spannen die "Schmiegebene" auf
 *** Zur Information
 	\[\f{\d\v T}{\d s} = \frac{1}{\rho}\v N;~\f{\d \v B}{\d s} = -\f{1}{\sigma}\v B;~\f{\d\v N}{\d s}=\f{1}{\sigma}\v B - \f{1}{\rho}\v T\]
 	$\sigma$ definiert die Torsion.

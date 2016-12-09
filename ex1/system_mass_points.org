@@ -33,10 +33,10 @@
    \begin{align*}
    M_E = \SI{6e21}{\kilo\gram}, M_S = \SI{2e30}{\kilo\gram} \\
    X_S = \frac{M_E X_E + M_S 0}{M_E + M_S} = \SI{4.5e5}{\meter}
-   \intertext{Vergleich mit Sonnenradius $\SI{7e8}{\meter}$ Schwerpunkt praktisch im Sonenmittelpunkt}
+   \intertext{Vergleich mit Sonnenradius $\SI{7e8}{\meter}$ Schwerpunkt praktisch im Sonnenmittelpunkt}
    \end{align*}
    #+end_ex
-*** Bewegung des Schwerpunkts
+*** Bewegung des Schwerpunktes
 	Geschwindigkeit:
 	\[\v v_s = \dd{\v r_s}{t} = \frac{1}{M} \sum_{i = 1}^n m_1 \dd{\v r_i}{t} = \frac{1}{M} \sum_{i = 1}^n m_i \v v_i = \frac{1}{M}\sum_{i = 1}^n \v p_i\]
 	$\v p_i$: Impuls des einzelnen Massenpunktes
@@ -45,10 +45,10 @@
 	\[\v p_s = \sum_{i = 1}^{n}\v p_i = \sum_{i = 1}^{n} m_i \v v_i = M \v v_s\]
 	das heißt: Schwerpunktimpuls ergibt sich aus der Summe der Einzelimpulse
 	#+end_defn
-	Frage: Wie bewegt sich ein System von Massepunkten under Einfluß von Kräften? \\
+	Frage: Wie bewegt sich ein System von Massepunkten unter Einfluss von Kräften? \\
 	Es gilt:
 	\[\dd{\v p_i} = \underarrow[\v F_i]{äußere Kraft} + \sum_{i\neq j}^{}\overarrow[\v F_{i j}]{innere Kraft}, \v F_{ij} = - \v F_{j i}\]
-	$\implies$: Änderung des Schwerpukntimpulses $\v p_s$:
+	$\implies$: Änderung des Schwerpunktimpulses $\v p_s$:
 	\[ \dd{\v p_s}{t} = \sum_{i = 1}^{n}\dot{\v p_i} = \sum_{i = 1}^{n}\v F_i + \underbrace{ \sum_{i} \sum_{i\neq j} \v F_{ij}}_{= 0} = \sum_{i = 1}^{n} \v F_i\]
 	das heißt: die Impulsänderung des Schwerpunktes ergibt sich aus der Summe der äußeren Kräfte:
 	2. Newtonsches Gesetz für Systeme von Massenpunkten.
@@ -57,7 +57,7 @@
 
 	#+ATTR_LATEX: :options [Allgemeiner Impulssatz]
 	#+begin_defn latex
-	Das Schwerpunkt eines beliebiges Systems ovn Massenpunkten $I$ bewegt sich so, als sei er ein Körper mit der Gesamtmasse $M = \sum m_i$
+	Das Schwerpunkt eines beliebiges Systems von Massenpunkten $I$ bewegt sich so, als sei er ein Körper mit der Gesamtmasse $M = \sum m_i$
 	#+end_defn
 	#+ATTR_LATEX: :options [Abgeschlossenes System]
 	#+begin_defn latex
@@ -70,7 +70,7 @@
 	($\implies$ Impulserhaltung!!)
 *** Raketenantrieb
 	das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
-	Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuläufer)
+	Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuhläufer)
 
 	Betrachte Rakete:
 	Impulssatz:
@@ -84,7 +84,7 @@
 	m \Delta v - \Delta m v_B = 0
 	\intertext{Änderung Blickwinkel:}
 	m \Delta v + \Delta m v_b = 0 \\
-	\intertext{Wichtig: Masse $m$ und Massenänderung $\d m$ mässen sich auf gleiche Referenz beziehen. Damit folgt:}
+	\intertext{Wichtig: Masse $m$ und Massenänderung $\d m$ müssen sich auf gleiche Referenz beziehen. Damit folgt:}
 	\d v = - v_b \frac{\d m}{m} \\
 	\intertext{Integration:}
 	\int_{v_1}^{v_2}\d v = -v_B \int_{m_1}^{m_2} \frac{1}{m} \d m, m_1 > m_2, v_B = ~\text{const} \\
@@ -94,7 +94,7 @@
 	\intertext{$\implies$ Raketengleichung für kräftefreie Rakete}
 	v(t) = v_B \ln \frac{m_0}{m(t)}
 	\end{align*}
-	das heißt: Die Endgeschwindkigkeit einer Rakete wird duch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
+	das heißt: Die Endgeschwindkigkeit einer Rakete wird durch die Ausstoßgeschwindigkeit und die Brennstoffmenge bestimmt
 
 	Für die nicht kräftefreie Rakete gilt:
 	\[m(t) \dd{\v v(t)}{t} = -\dd{m(t)}{t} \v v_B + \v F\]

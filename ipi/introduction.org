@@ -15,21 +15,21 @@
 	- Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?\hfill *IPI*, *IPK*
 	- Algorithmen und Datenstrukturen: Wie baut man komplexe Programme aus einfachen Grundbausteinen?\hfill *IAL*
 	- Softwaretechnik: Wie organisiert man sehr große Projekte?\hfill *ISW*
-	- Kernanwendung der Informatik: Betriebsysteme, Netzwerke, Parallelisierung\hfill *IBN*
+	- Kernanwendung der Informatik: Betriebssysteme, Netzwerke, Parallelisierung\hfill *IBN*
 	  - Datenbanksysteme\hfill *IDB1*
 	  - Graphik, Graphische Benutzerschnittstellen\hfill *ICG1*
 	  - Bild- und Datenanalyse
 	  - maschinelles Lernen
 	  - künstliche Intelligenz
-*** angewante Informatik
+*** angewandte Informatik
 	- Wie löst man Probleme aus einem anderem Gebiet mit Programmen?
 	- Informationstechnik
-	  - Buchhandlung, e-commerce, Logistik
-	- Web programming
+	  - Buchhandlung, e-Kommerz, Logistik
+	- Web Programmierung
 	- scientific computing für Physik, Biologie
 	- Medizininformatik
 	  - bildgebende Verfahren
 	  - digitale Patientenakte
-	- computer linguistik
+	- Computer Linguistik
 	  - Sprachverstehen, automatische Übersetzung
-	- Unterhaltung: Spiele, special effect im Film
+	- Unterhaltung: Spiele, special effects im Film

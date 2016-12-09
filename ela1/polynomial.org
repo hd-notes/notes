@@ -1,11 +1,11 @@
 * Polynome
   \begin{defn}[7.1 Polynome]
-  $K$ Körper, ein Polynom in der Varablen $t$ über $K$ ist ein Ausdruch der Form
+  $K$ Körper, ein Polynom in der Variablen $t$ über $K$ ist ein Ausdruck der Form
   \[f = \sum_{k = 0}^n a_k t^k\]
   mit $n\in\mathbb{N}_0$ (das heißt insbesondere nur endliche Summanden), $a_0,\ldots,a_n \in K$ (fehlende $a = 0$, ebenso setzen wir $a_{k > n} = 0)$. Die $a_k$ heißen die Koeffizienten von $f$
   \[\deg(f) := \begin{cases}-\infty & f = 0 \\  \max\{k\in\mathbb{N}_0 \mid a_k \neq 0\} & f\neq 0\end{cases}\]
   heißt Grad von $f$. für $f\neq 0$ heißt $l(f) := a_{\deg(f)}$ heißt der Leitkoeffizient von $f$, $l(0) := 0$. $f$ heißt normiert $\xLeftrightarrow{\text{Def}} l(f) = 1$
-  Hierbei sind zei Polynome $f = \sum_{k = 0}^n a_k t^k,g = \sum_{k =0}^m b_m t^k$ gleich ($f = g$) $\xLeftrightarrow{\text{Def}} \deg(f) = \deg(g) =: r$ und $a_r = b_r,\ldots,a_1 = b_1, a_0 = b_0$
+  Hierbei sind zwei Polynome $f = \sum_{k = 0}^n a_k t^k,g = \sum_{k =0}^m b_m t^k$ gleich ($f = g$) $\xLeftrightarrow{\text{Def}} \deg(f) = \deg(g) =: r$ und $a_r = b_r,\ldots,a_1 = b_1, a_0 = b_0$
   \end{defn}
   \begin{remark}
   Man kann das auch präzise machen (Algebra 1, WS15/16, Blatt 5, Aufgabe 3)
@@ -79,13 +79,13 @@
 	 - Induktionsanfang: (etwas unkonventionell, geht aber auch): $\deg(f) \in \{0,\ldots,\deg(g) - 1\}$ (das heißt $\deg(f) < \deg(g)$) \\
 	   Setze $q:= 0, r:= g$, dann ist $f = q g + r, \deg(r) = \deg(f) < \deg(g)$.
 	 - Induktionsschritt: Es sei $\deg(f) \geq \deg(g)$ und die Behauptung sei für alle Polynome aus $K[t]$ von Grad < $\deg(f)$ schon gezeigt. \\
-	   Wir sezen $n:= \deg(f), m:=\deg(g)$ und schreiben:
+	   Wir setzen $n:= \deg(f), m:=\deg(g)$ und schreiben:
 	   \[f = l(f)t^n + ~\text{Terme kleineren Grades}\]
 	   \[g = l(g) t^m + ~\text{Terme kleineren Grades}\]
 	   Es ist $f - \frac{l(f)}{l(g)}t^{n - m}g =$
 	   \[l(f) t^n + ~\text{Terme kleineren Grades} - \underbrace{\frac{l(f)}{l(g)} t^{n - m}l(g) t^m}_{l(f)t^n} + ~\text{Terme kleineren Grades}\]
 	   \[\implies \deg(f - \frac{l(f)}{l(g)}t^{n - m}) < n\]
-	   Nach Induktionsannahme gilt: Es existert $q_1,r_1 \in K[t]$ mit
+	   Nach Induktionsannahme gilt: Es existiert $q_1,r_1 \in K[t]$ mit
 	   \[f - \frac{l(f)}{l(g)}t^{n -m}g = q_1 g + r_1, ~\text{mit}~\deg{r_1} < \deg(g)\]
 	   \[\rightarrow f = (q_1 + \frac{l(f)}{l(g)} t^{n - 1})g + r_1\]
 	   Setze $q:= q_1 + \frac{l(f)}{l(g)}t^{n - m}, r:= r_1$, dann ist $f = q g + r$ und $\deg(r) < \deg(g)$
@@ -126,12 +126,12 @@
   *Induktionsanfang:* $n = 0$ Ein konstantes Polynom $\neq 0$ besitzt keine Nullstellen. \\
   *Induktionsschritt:* Es sein $n > 0$ und die Aussage sei für alle Polynome von Grad $< n$ schon gezeigt.
   Falls $f$ keine Nullstelle besitzt, dann fertig.
-  Im Folgenden besitzte $f$ eine Nullstelle sei $\lambda \in K$ eine solche, daraus folgt mit \ref{label:79}
+  Im Folgenden besitze $f$ eine Nullstelle sei $\lambda \in K$ eine solche, daraus folgt mit \ref{label:79}
   \[\exists q\in K[t]: f(t - \lambda)q, \deg{q} = n - 1\]
   Ist $\varepsilon \neq \lambda$ eine weitere Nullstelle von $f$ dann ist
   \[0 = f(\varepsilon) = \underbrace{\varepsilon - \lambda}_{\neq 0}q(\varepsilon)\]
-  Da $K$ als Körper ein Integritätsbereich ist folt: $q(\varepsilon) = 0$, das heißt $\varepsilon$ ist Nullstelle von $q$.
-  Nach Induktionsvorraussetzung hat $q$ höchstens $n-1$ Nullstellen $\implies f$ hat höchstens $n$ Nullstellen
+  Da $K$ als Körper ein Integritätsbereich ist folgt: $q(\varepsilon) = 0$, das heißt $\varepsilon$ ist Nullstelle von $q$.
+  Nach Induktionsvoraussetzung hat $q$ höchstens $n-1$ Nullstellen $\implies f$ hat höchstens $n$ Nullstellen
   #+end_proof
   #+ATTR_LATEX: :options [7.11]
   #+begin_defn latex
@@ -143,11 +143,11 @@
   #+begin_remark latex
   - Es ist $\mu(f,\lambda) = 0 \iff f(\lambda) \neq 0 \lambda$ keine Nullstelle von $f$ (denn: $f(\lambda) = 0 \iff \Exists q\in K[t]: f=(t - \lambda)q \iff \mu(f,\lambda) \neq 0$)
   - Die Vielfachheit von $\lambda$ gibt an, wie oft der Linearfaktor $t - \lambda$ in $f$ vorkommt
-  - Sind $\lambda_1,\ldots,\lambda_m \in K$ sämtliche verschiedene Nullstellen von $f$ und es ist $e_i := \mu(f,\lambda_i),i = 1,\ldots,m$ dann existerit ein Polynom $g\in K[t]$ mit
+  - Sind $\lambda_1,\ldots,\lambda_m \in K$ sämtliche verschiedene Nullstellen von $f$ und es ist $e_i := \mu(f,\lambda_i),i = 1,\ldots,m$ dann existiert ein Polynom $g\in K[t]$ mit
 	\[f = (t - \lambda_1)^{e_1}\cdot\ldots\cdot(t-\lambda_m)^{e_m}g\]
 	und den Eigenschaften, dass $g$ in $K$ kein Nullstelle besitzt und, dass $\deg(g) = \deg(f) - (e_1 + \ldots + e_m)$.
   - "bester Fall:" $\deg(g) = 0$ ("$f$ zerfällt in Linearfaktoren"):
-	Dann existert $a\in K\setminus\{0\}, \lambda_1,\ldots, \lambda_m \in k$ paarweise verschieden, $e_1,\ldots,e_n \in \mathbb{N}$  mit
+	Dann existiert $a\in K\setminus\{0\}, \lambda_1,\ldots, \lambda_m \in k$ paarweise verschieden, $e_1,\ldots,e_n \in \mathbb{N}$  mit
 	\[f = a(t - \lambda_1)^{e_1}\cdot\ldots\cdot(t - \lambda_m)^{e_m}, e_1 + \ldots + e_m = \deg(f)\]
 	Alternative Darstellung:
 	\[f = a(t - \tilde\lambda_1) \cdot \ldots\cdot(t - \tilde\lambda_n), n = \deg(f), \tilde\lambda_1,\ldots\tilde\lambda_n~\text{nicht notwendig verschieden}\]
@@ -166,7 +166,7 @@
   #+end_conc
   #+begin_proof latex
   *Induktionsanfang:* $n = 0 \implies f$ ist konstantes Polynom, fertig \\
-  *Induktionsscritt:* Sei $n\geq 1$ und die Assage sei für alle Polynome vom Grad $< n$ bereits bewiesen. Nach Fundamentalsatz der Algebra existiert eine Nullstelle $\lambda$ von $f$
+  *Induktionsschritt:* Sei $n\geq 1$ und die Aussage sei für alle Polynome vom Grad $< n$ bereits bewiesen. Nach Fundamentalsatz der Algebra existiert eine Nullstelle $\lambda$ von $f$
   \[\xRightarrow{\ref{remark:79}} \Exists g\in \mathbb{C}[t]: f = (t - \lambda)g, \deg(g) = n - 1 \]
   Nach Induktionsannahme $\Exists a\in\mathbb{C},\lambda_1,\ldots,\lambda_{n - 1} \in \mathbb{C}$ (nicht notwendig verschieden)
   \[g = a(t - \lambda_1)\cdot\ldots\cdot(t - \lambda_{n-1})\]
@@ -198,6 +198,6 @@
   $\xRightarrow{K~\text{unendlich}}$ g hat unendlich viele Nullstellen, mit \ref{dfn:zero} folgt: $g = 0\implies f_1 = f_2$
   #+end_proof
   #+begin_remark latex
-  - Lässt man \ref{remark:716} die Vorraussetzung $K$ hat unendlich viele Elemente weg, wird die Aussage falsch, siehe Beispiel \ref{ex:715}
+  - Lässt man \ref{remark:716} die Voraussetzung $K$ hat unendlich viele Elemente weg, wird die Aussage falsch, siehe Beispiel \ref{ex:715}
   - Mit dem Wissen von \ref{ex:715} und \ref{remark:716} im Hintergrund bezeichnet man die vom Polynom $f$ induzierte Polynomfunktion mit $f$ anstelle von $\tilde f$
   #+end_remark

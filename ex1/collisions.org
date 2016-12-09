@@ -1,10 +1,10 @@
 * Stöße
-  Für ein abgeschlossenens System gilt: (keine äußere Kräfte) \\
+  Für ein abgeschlossenes System gilt: (keine äußere Kräfte) \\
   Impulserhaltung:
   \[\sum_{i = 1}^{n} \v p_i = \sum_{i = 1}^{n} \v p_i'\]
   Energieerhaltung:
   \[\sum_{i = 1}^{n} E_i = \sum_{i = 1}^{n} E_i'\]
-** Kollinearer elatischer Stoß
+** Kollinearer elastischer Stoß
    Es gilt:
    \begin{align*}
    m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2' \\
@@ -63,12 +63,12 @@
    E_{kin,2}^{\ast\prime} = E_{kin,2}^\ast \\
    \end{align*}
    Im Schwerpunktsystem findet bei elastischen Stößen keine Energieübertragung statt. Aber: Impulse werden ausgetauscht
-*** Nicht-zentraler, elatischer Stoß im Schwerpunktsystem
+*** Nicht-zentraler, elastischer Stoß im Schwerpunktsystem
 	\begin{align*}
 	\v p_s^\ast = 0, \v p_1^\ast = -\v p_2^\ast \\
 	\v p_s^{\ast\prime} = -\v p_2^{\ast\prime}, \abs{\v p_1^\ast = \abs{\v p_1^{\ast\prime}}} \\
 	\end{align*}
-	Im Schwerpunktsystem sind für ein abgeschlossenes System zweier Massepunkte ein- und auslaufende kollinear und vom Betrag her gleich
+	Im Schwerpunktsystem sind für ein abgeschlossenes System zweier Massenpunkte ein- und auslaufende kollinear und vom Betrag her gleich
 ** Inelastische Stöße
    Betrachte $2$ Kugeln
    - Massen: $m_1, m_2$

@@ -87,7 +87,7 @@
 **** TODO Skizze Feldlinien
 *** Feldlinien:
 	- Feldlinien sind immer tangential zur Kraftrichtung
-	- Feldliniendichte ist proportional zum Betrag der Karft
+	- Feldliniendichte ist proportional zum Betrag der Kraft
 	- Feldlinien schneiden sich nie
 *** konservative Kraftfelder
 	Kraftfelder, die konservative Kräfte beschreiben nennt man konservative Kraftfelder

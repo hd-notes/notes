@@ -53,8 +53,8 @@
 #+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 
 Einleitung: \\
-- Webseite: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
-- Bartelman skripte
+- Website: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
+- Bartelman Skripte
 
 #+INCLUDE: "/home/robin/study/lectures/theo1/overview.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/theo1/mass_points.org" :minlevel 1

@@ -13,6 +13,7 @@
 *.fdb_latexmk
 *.fls
 *.ora~
+*.bak
 
 \#*\#
 /.emacs.desktop

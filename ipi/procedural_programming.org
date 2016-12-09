@@ -4,17 +4,17 @@
 	 - alle Berechnungen durch Funktionsaufruf, Ergebnis ist Rückgabe
 	 - Ergebnis hängt nur von den Werten der Funktionsargumente ab, nicht von externen Faktoren "referentielle Integrität"
 	 - Speicherzellen für Zwischenergebnisse und Argumente können nach Initialisierung nicht geändert werden "write once"
-	 - Möglichkeit rekusiver Funktionsaufrufe (jeder Aufruf bekommt eigene Speicherzellen)
+	 - Möglichkeit rekursiver Funktionsaufrufe (jeder Aufruf bekommt eigene Speicherzellen)
 	   - Vorteile
-		 - natürliche Ausdrucksweise für arithmetische und algebraische Funktionaliät ("Taschenrechner")
+		 - natürliche Ausdrucksweise für arithmetische und algebraische Funktionalität ("Taschenrechner")
 		 - einfache Auswertung durch Substitutionsmodell \rightarrow Auswertungsreihenfolge nach Post-Order
 		 - mathematisch gut formalisierbar $\implies$ Korrektheitsbeweise, besonders bei Parallelverarbeitung
-		 - Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakultät, Baumtraversierung)
+		 - Rekursion ist mächtig und natürliche für bestimmte Probleme (Fakultät, Baum-Traversierung)
 	   - Nachteile
 		 - viele Probleme lassen sich anders natürlicher ausdrücken (z.B. Rekursion vs. Iteration)
-		 - setzt unendlich viel Speicher voraus ($\implies$ Memory management notwendig $\implies$ später)
+		 - setzt unendlich viel Speicher voraus ($\implies$ Memory Management notwendig $\implies$ später)
 		 - Entitäten, die sich zeitlich verändern sind schwer zu modellieren
-	   - Korrolar: kann keine externen Resourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
+	   - Korollar: kann keine externen Ressourcen (z.B. Konsole, Drucker, \ldots, Bildschirm) ansprechen "keine Seiteneffekte"
 		 - $\implies$ Multi-Paradigmen-Sprachen, zum Beispiel Kombination von Funktionaler Programmierung und prozeduraler Programmierung
 ** Kennzeichen
 *** Prozeduren
@@ -22,10 +22,10 @@
 	 - Beispiel
 	   #+BEGIN_SRC cpp
 	   std::cout << "Hello\n"; // Infix
-	   operator<<(std::cout, "Hello\n"; // Prefix
+	   operator<<(std::cout, "Hello\n"; // Präfix
 	   #+END_SRC
 	 - Prozeduren in c++
-	   1. Funktion die "void" zurückgibt (Pseudotyp für "nichts")
+	   1. Funktion die "void" zurück gibt (Pseudotyp für "nichts")
 		  #+BEGIN_SRC cpp
 		  void foo(int x) {
 			  return;
@@ -87,12 +87,12 @@
 		 #+END_SRC
 	   - $\implies$ Folgen: mächtiger, aber ermöglicht völlig neue Bugs $\implies$ erhöhte Aufmerksamkeit beim Programmieren
 		 - die Reihenfolge der Ausführung ist viel kritischer als beim Substitutionsmodell
-		 - Programmierer muss immer ein mentales Bild des aktuellen Systemzustans haben
+		 - Programmierer muss immer ein mentales Bild des aktuellen Systemzustands haben
 *** Schleifen
 	Der gleiche Code soll oft wiederholt werden
 	#+BEGIN_SRC cpp
-	while(bedingung) {
-		// code, wird ausgeführt solange Bedingung "true"
+	while(Bedingung) {
+		// Code, wird ausgeführt solange Bedingung "true"
 	}
 	#+END_SRC
 	#+BEGIN_SRC cpp
@@ -110,18 +110,18 @@
 	|       3 | false     | $\emptyset$ |
 
 	- in c++ beginnt Zählung meist mit $0$ ("zero based")
-	- vergisst man Inkrementierung $\implies$ Bedingung immer "true" $\implies$ Endlosschleife $\implies$ Bug
-	- drei äquivalente Schreibweisen für Inkrementierung:
+	- vergisst man Inkrementieren $\implies$ Bedingung immer "true" $\implies$ Endlosschleife $\implies$ Bug
+	- drei äquivalente Schreibweisen für Inkrementieren:
 	  - counter = counter + 1; // assignment $\estimates$ Zuweisung
-	  - counter += 1;          // add-assignment $\estimates$ Abbkürzung
+	  - counter += 1;          // add-assignment $\estimates$ Abkürzung
 	  - ++counter;             // pre-increment
-*** prozedurale Wurzelberechung
+*** prozedurale Wurzelberechnung
 **** Ziel
 	 #+BEGIN_SRC cpp
 	 double sqrt(double y);
 	 #+END_SRC
 **** Methode
-	 iterative Verbesserung mittel Newtonverfahren
+	 iterative Verbesserung mittels Newtonverfahren
 	 initial_guess $x^{(0)}$ ("geraten"), t = 0 \\
 	 while not_good_enough($x^{(t)}$): \\
 		 update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
@@ -130,11 +130,11 @@
 	  Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
 	  Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta +$ setze $x^\ast = x + \Delta$
 	  \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \implies \Delta = - \frac{f(x)}{f'(x)}\]
-	  Iteratiosvorschrift:
+	  Iterationsvorschrift:
 	  \[x^{(t + 1)} = x^{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
 	  Anwendung auf Wurzel: setze $f(x) = x^2 - y \implies$ mit $f(x^\ast) = 0$ gilt
 	  \[(x^\ast)^2 -y = 0 \quad (x^\ast)^2 = y \quad x^\ast = \sqrt{y}\quad f'(x) = 2x)\]
-	  Iterationsvorschrieft:
+	  Iterationsvorschrift:
 	  \[x^{(t + 1)} = x^{(t)} - \frac{(x^{(t)^2}) - y}{2x^{(t)}} = \frac{x^{(t)^2} + y}{2x^{(t)}}\]
 	  #+BEGIN_SRC cpp
 		double sqrt(double y) {
@@ -156,7 +156,7 @@
 	#+BEGIN_SRC cpp
 	int c = 0;
 	while(c < 3) {
-		// unser code
+		// unser Code
 		c++; // vergisst man leicht
 	}
 	#+END_SRC
@@ -165,18 +165,18 @@
 	Äquivalent zu der while Schleife oben ist:
 	#+BEGIN_SRC cpp
 	for(int c = 0; c < 3; c++) {
-		// unser code
+		// unser Code
 	}
 	#+END_SRC
 
 	Allgemeine Form:
 	#+BEGIN_SRC cpp
 	for(init; Bedingung; Inkrement) {
-		// unser code
+		// unser Code
 	}
 	#+END_SRC
 	- Befehle, um Schleifen vorzeitig abzubrechen
-	  - continue: Bricht aktuelle Iteration ab und springt zum Scleifenkpf
+	  - continue: Bricht aktuelle Iteration ab und springt zum Schleifenkörper
 	  - break: bricht die ganze Schleife ab und springt hinter das Schleifenende
 	  - return: beendet Funktion und auch die Schleife
 	Beispiel: nur gerade Zahlen ausgeben

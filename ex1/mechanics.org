@@ -32,7 +32,7 @@
 **** TODO Skizze 2
 	Ortsvektor:
 	\[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} = {\begin{pmatrix} x(t) & y(t) & z(t)\end{pmatrix}}^\intercal\]
-	Durschnittsgeschwindigkeit
+	Durchschnittsgeschwindigkeit
 	\[\frac{\vec{\Delta r_{12}}}{\Delta t} = \frac{\vec{r_2} - \vec{r_1}}{\Delta t} = \vec{v_D}\]
 	\[\vec{v}(t) = \frac{\mathrm{d}\vec{r}}{\mathrm{d}t} = \dot{\vec{r}}(t) = {\begin{pmatrix}\dot{x}(t) & \dot{y}(t) & \dot{z}(t)\end{pmatrix}}^\intercal = {\begin{pmatrix} v_x & v_y & v_z\end{pmatrix}}^\intercal\]
 	\[\vec{a}(t) = \frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = \dot{\vec{v}}(t) = \ddot{\vec{r}}(t) = {\begin{pmatrix} \ddot{x} & \ddot{y} & \ddot{z}\end{pmatrix}}^\intercal = {\begin{pmatrix} a_x & a_y & a_z \end{pmatrix}}^\intercal\]
@@ -145,7 +145,7 @@
 ***** TODO Skizze Addition von Kräften
 ***** Grundkräfte der Natur
 	  - Elektromagnetische Kraft
-	  - Starke Draft
+	  - Starke Kraft
 	  - Schwache Kraft
 	  - Gravitation
 **** Impuls
@@ -160,11 +160,11 @@
 	  \[\v P = m\v v = \text{const},~\v P = 0~\text{für}~\v F = 0\]
 **** Experiment
 	 \[\v F_G = \underbrace{m\v g}_{Kraft} = \underbrace{(m + M)}_{Trägheit}\v a = m_{\text{ges}}\v a\]
-	 \[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{text{ges}}}g\]
+	 \[\v a = \f{m}{m + M}\v g \xLeftrightarrow{d = 1} a = \f{m}{m + M}g = \f{m}{m_{\text{ges}}}g\]
 ***** Erwartung:
 	  $a\sim {\f{m}{m_{\text{ges}}}}$, $a = \f{2\Delta s}{\Delta s}$, weil $\Delta s = \f{1}{2} a\Delta t^2$
 ***** Messung:
-	 | $m[\si{\gram}]$ | $M[\si{\gram}]$ | $m_{\text{ges}}[\si{\gram}]$ | $\f{m_{\text{ges}}}{m}$ | $\Delta s[\si{\mm}]$ | $\Delta t [\si{\second}]$ | $a[\si{meter\per\second}]$ |
+	 | $m[\si{\gram}]$ | $M[\si{\gram}]$ | $m_{\text{ges}}[\si{\gram}]$ | $\f{m_{\text{ges}}}{m}$ | $\Delta s[\si{\mm}]$ | $\Delta t [\si{\second}]$ | $a[\si{\meter\per\second}]$ |
 	 |-----------------+-----------------+------------------------------+-------------------------+----------------------+---------------------------+----------------------------|
 	 |              10 |             470 |                          480 |                      48 |                  800 |                      2.75 |                 0.21157025 |
 	 |              40 |             440 |                          480 |                      12 |                  800 |                      1.40 |                 0.81632653 |
@@ -173,27 +173,27 @@
 	 #+TBLFM: $3=$1+$2::$4=$3 / $1::$7=(2 * ($5 / 1000)) / ($6 * $6)
 ***** TODO Skizze
 **** Trägheitsprinzip - "revisited"
-	  *Definition*: Ein Bezugssystem in dem das Trägheitsprinzip gilt nennt man ein Inatialsystem. \\
+	  *Definition*: Ein Bezugssystem in dem das Trägheitsprinzip gilt nennt man ein Inertialsystem. \\
 
-	  In einem beschleunigten Bezugsystem gilt das Trägheitsprinzip _nicht_. Beschleunigte Systeme $\neq$ Inatialsysteme.
+	  In einem beschleunigten Bezugssystem gilt das Trägheitsprinzip _nicht_. Beschleunigte Systeme $\neq$ Inertialsysteme.
 	  Das Trägheitsprinzip ist Galilei-invariant.
 
 ***** TODO Skizze whatever
 *****  Trägheitsprinzip: [moderne Formulierung]:
-	   Es gibt Inatialsysteme, das heißt Koordinatensysteme  in denen ein Kräftefreier Körper im Zustand der Ruhe oder der gradlinig gleichförmigen Bewegung verbleibt.
+	   Es gibt Inertialsysteme, das heißt Koordinatensysteme  in denen ein kräftefreier Körper im Zustand der Ruhe oder der gradlinig gleichförmigen Bewegung verbleibt.
 
 **** Actio gleich Reactio
 	 \[\underbrace{\v{F_{12}}}_{\text{Kraft}} = \underbrace{-\v{F_{21}}}_{\text{Gegenkraft}}\]
 ***** TODO Skizze von Körpern
-***** TODO (Skizze) Expermiment
+***** TODO (Skizze) Experiment
 ****** Erwartung:
 	   \[v_1 = v_2 \rightarrow a_1 = a_2 \rightarrow F_1 = F_2~\checkmark\]
-	   Nichttrivialer Fall: \\
+	   Nicht trivialer Fall: \\
 	   Kraftstoß: \\
 	   Magnetische Kraft: $F_{\text{mag}} \sim {\f{1}{r^2}}$
 	   \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
 	   \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
-***** Expermiment 2
+***** Experiment 2
 	  \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \implies \f{m_2}{m_1} \approx 1.5\]
 	  \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
 	  \[a\sim v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]

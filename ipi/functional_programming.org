@@ -1,7 +1,7 @@
 * Funktionale Programmierung
-  - bei Maschienensprache werden Zwischenergebnisse in Speicherzellen abgelegt
+  - bei Maschinensprache werden Zwischenergebnisse in Speicherzellen abgelegt
   - das ist auch in der funktionalen Programmierung eine gute Idee
-  - Speicherzellen werden duch Namen (vom Programmierer vergeben) unterschieden
+  - Speicherzellen werden durch Namen (vom Programmierer vergeben) unterschieden
 ** Beispiel
    Lösen einer quadratischen Gleichung:
    \[ax^2 + bx + c = 0\]
@@ -9,7 +9,7 @@
    \[x_2 = p + \sqrt{p^2 - q},x_2 = p - \sqrt{p^2 - q}\]
    ohne Zwischenergebnisse:
    \[x_1 \leftarrow add(div(div(b,a),-2),sqrt(sub(mul(div(b,a),-2),div(div(b,a)-1)),div(c,a)))\]
-   mit Zwischenergebniss und Infix Notation
+   mit Zwischenergebnis und Infix Notation
    \[p\leftarrow b / c / -2~\text{oder}~p\leftarrow -0.5 * b / a\]
    \[a\leftarrow c / a\]
    \[d\leftarrow sqrt(p*p - q)\]
@@ -51,7 +51,7 @@
 	 #+BEGIN_SRC cpp
 	 // Kommentar (auch /* */)
 	 type_ergebnis fname(type_arg1 name1, ...) {
-		 // Signatur / Funkitonskopf / Deklaration
+		 // Signatur / Funktionskopf / Deklaration
 		 return ergebnis;
 		 /* Funktionskörper / Definition / Implementation */
 	 }
@@ -68,14 +68,14 @@
 		   return x*x;
 	   }
 	   #+END_SRC
-	 - beide Varianten dürfen in c++ gleichzeitig definiert sein $\implies$ "function overloading" $\implies$ c++ wählt automatisch die richtig Variable anhand des Argumenttypes ("overload resolution")
+	 - beide Varianten dürfen in c++ gleichzeitig definiert sein $\implies$ "function overloading" $\implies$ c++ wählt automatisch die richtig Variable anhand des Argumenttyps ("overload resolution")
 	   #+BEGIN_SRC cpp
 	   int x = 2;
 	   double y = 1.1
 	   int x2 = sq(x) // int Variante
 	   double y2 = sq(y) // double Variante
 	   #+END_SRC
-	 - jedes c++-Programm muss genau eine Funktion names "main" haben. Dort beginnt die Programmausführung.
+	 - jedes c++-Programm muss genau eine Funktion namens "main" haben. Dort beginnt die Programmausführung.
 	   #+BEGIN_SRC cpp
 	   int main() {
 		   Code;
@@ -89,14 +89,14 @@
 	 - vordefinierte Funktionen:
 	   - eingebaute $\estimates$ immer vorhanden
 		 - Infix-Operatoren $+,-,*,/,\%$
-		 - Prefix-Operatoren $operator+,operator-,\ldots$
-	   - Funktion der Standardbibilothek $\estimates$ müssen "angefordert" werden
+		 - Präfix-Operatoren $operator+,operator-,\ldots$
+	   - Funktion der Standardbibliothek $\estimates$ müssen "angefordert" werden
 		 - Namen beginnen mit "std::", "std::sin,..."
 		 - sind in Module geordnet, zum Beispiel
 		   - cmath $\implies$ algebraische Funktion
 		   - complex $\implies$ komplexe Zahlen
 		   - string $\implies$ Zeichenkettenverarbeitung
-		 - um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header includieren) $\rightarrow$ include <name>
+		 - um ein Modul zu benutzen muss man zuerst (am Anfang des Programms) sein Inhaltsverzeichnis importieren (Header inkludieren) $\rightarrow$ include <name>
 		   #+BEGIN_SRC cpp
 		   #include <iostream>
 		   #include <string>
@@ -107,12 +107,12 @@
 			   return 0;
 		   }
 		   #+END_SRC
-	 - overloading der arithmetischen Operationene
+	 - overloading der arithmetischen Operationen
 	   - overloading genau wie bei $sq$
 		 - 3 * 4 $\implies$ int Variante
 		 - 3.0 * 4.0 $\implies$ double Variante
-		 - 3 * 4.0 $\implies$ automatische Umwandliung in höheren Typ, hier "double" $\implies$ wird als 3.0 * 4.0 ausgeführt
-	 - $\implies$ Devision unterscheidet sich
+		 - 3 * 4.0 $\implies$ automatische Umwandlung in höheren Typ, hier "double" $\implies$ wird als 3.0 * 4.0 ausgeführt
+	 - $\implies$ Division unterscheidet sich
 	   - Integer-Division: 12 / 5 = 2 (wird abgerundet)
 	   - Double-Division: 12.0 / 5.0 = 2.4
 	   - -12 / 5 = 2 ($\implies$ truncated Division)

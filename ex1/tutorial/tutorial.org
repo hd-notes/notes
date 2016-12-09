@@ -34,7 +34,7 @@
   \[a t + v_0 = v_p \implies t = \frac{v_p - v_0}{a}\]
   \[v_p = v_0 + at_v \pm \sqrt{(at_v + v_0)^2 - v_0^2} \approx \SI{11.9}{\meter\per\second}\]
 
-  \[x(t) = t v_{x0} = t v_0 }cos{\alpha}\]
+  \[x(t) = t v_{x0} = t v_0 }\cos{\alpha}\]
   \[y(t) = t v_0 \sin{\alpha} - \frac{1}{2}gt^2\]
   \[x(T) = d\quad d = T v_0 \cos{\alpha} \implies t = \frac{d}{v_0 \cos{\alpha}}\]
   \[y(T) = \frac{d \sin{\alpha}{\cos{alpha}} - \frac{1}{2} g \frac{d^2}{v_0^2 \cos^2{\alpha}}\]

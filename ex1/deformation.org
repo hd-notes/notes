@@ -1,10 +1,10 @@
 * Mechanik deformierbarer Körper
   Starrer Körper: $\v r_i - \v r_j = ~\text{const}$, das heißt Abstand zwischen Massenpunkten konstant. \\
-  Wirklichkeint: Verformung bei Anwendung äußerer Kräfte.
+  Wirklichkeit: Verformung bei Anwendung äußerer Kräfte.
 ** Atomares Modell
    Experiment: Alle Körper sind aus Atomen oder Molekülen aufgebaut.
    Beschreibung von Kräften zwischen Atomen und Molekülen durch Lennard-Jones-Potential. (Dipol-Dipol-Wechselwirkung, Van-der-Waals Kräfte) \\
-   Gleichgewichtsabstand: $r_0$ ($E_{pot} = $ minimal)
+   Gleichgewichtsabstand: $r_0$ ($E_{pot} =$ minimal)
    Für kleine Auslenkung gilt:
    \begin{align*}
    E_{pot} &= \frac{1}{2}k(r - r_0)^2 \\
@@ -13,15 +13,15 @@
    Federkraft!
    $\implies$
    - Modell eines Festkörper: Federmodell. \\
-	 Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energei klein gegen $E_{pot}(r_0)$.
+	 Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energie klein gegen $E_{pot}(r_0)$.
 	 Atome können Gitterplätze nicht verlassen. Fernordung!
    - Modell einer Flüssigkeit: Kugelmodell: \\
 	 Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
-	 Aber: Temperatur zu hoch für feste Zuordung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
+	 Aber: Temperatur zu hoch für feste Zuordnung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
    - Modell eines Gases: frei bewegliche Teilchen. \\
 	 Mittlere kinetische Energie ist grob gegen Bindungsenergie, hohe Temperatur!
 ** Feste Körper.
-   - Elastischer fester Körper \rightarrow Formelastizität, Volumenelastitität aufgrund rücktreibender Kräfter (Hookscher Bereich)
+   - Elastischer fester Körper \rightarrow Formelastizität, Volumenelastizität aufgrund rücktreibender Kräfte (Hookscher Bereich)
    - Plastisch feste Körper \rightarrow Formänderungen verbleiben
    Hier: Elastische Körper!
    Experimentell findet man:
@@ -83,11 +83,11 @@
    \sigma &= \frac{F_N}{A} \\
    \intertext{Tangentialspannung oder Scherspannung}
    \tau &= \frac{F_T}{A}
-   \intertext{F+r kliene Scherwinkel}
+   \intertext{F+r kleine Scherwinkel}
    \tau = G \alpha \tag{$G$: Schubmodul, Torsionsmodul} \\
    \end{align*}
 
-   Torsion eines Drates (Vollzylinder)
+   Torsion eines Drahtes (Vollzylinder)
    \begin{align*}
    \tau &= \dd{F}{A} \\
    R \phi &= L \alpha \\

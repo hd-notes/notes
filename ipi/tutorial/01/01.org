@@ -29,14 +29,14 @@
 #+LATEX_HEADER: \usepackage{pdflscape}
 #+LATEX_HEADER: \usepackage{adjustbox}
 
-* Aufabe 1
+* Aufgabe 1
   notwendige Zustände:
   - idle
   - 1€ bezahlt
   - 2€ bezahlt
   - Außer Betrieb
   - Münzkassette überprüfen
-  notwendige Eregnisse:
+  notwendige Ereignisse:
   - 1€ eingeworfen
   - 2€ eingeworfen
   - Münze $\neq 1€ \vee 2€$
@@ -165,4 +165,4 @@ Ein endlicher Automat kann keine beliebig große Warteliste implementieren, denn
    - C \to A
    - A \to B
    - B \to C
-   Die könnte im echten Straßenverkehr entstehen, wenn gleichzeitig drei Fahrzeuge, jeweils eins von jeder Seite der Kreuzung, an die Kreuzung heranfahren und entsprechend der Bedinungen abbiegen.
+   Die könnte im echten Straßenverkehr entstehen, wenn gleichzeitig drei Fahrzeuge, jeweils eins von jeder Seite der Kreuzung, an die Kreuzung heranfahren und entsprechend der Bedienungen abbiegen.
