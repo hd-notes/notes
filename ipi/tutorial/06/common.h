@@ -10,10 +10,12 @@
 #include <cassert>
 #include <cinttypes>
 #include <cmath>
+#include <fstream>
+#include <functional>
 #include <iostream>
 #include <iterator>
-#include <functional>
 #include <limits>
+#include <map>
 #include <numeric>
 #include <sstream>
 #include <string>
@@ -38,6 +40,31 @@ std::ostream & operator<<(std::ostream & out, const std::vector<T> & v) {
         std::copy(v.begin(), v.end(), std::ostream_iterator<T>(out, ", "));
         out << "\b\b]";
     }
+    return out;
+}
+
+template <typename T, u32 size>
+auto to_vec(T (&data)[size]) {
+    vec<T> vector;
+    vector.assign(data, data + size);
+    return vector;
+}
+
+template <typename T, typename G>
+std::ostream & operator<<(std::ostream & out, const std::map<T, G> & m) {
+    T key;
+    G value;
+
+    out << '[';
+    for(const auto & key_value : m) {
+        tie(key, value) = key_value;
+
+        out << "{" << key << " : " << value << "}, ";
+    }
+
+    if(!m.empty()) { out << "\b\b"; }
+    out << ']';
+
     return out;
 }
 

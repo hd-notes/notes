@@ -228,3 +228,52 @@
    Aus $f(x_{n_k}) \xrightarrow{k\to\infty} f(x) \implies f(x) = K$ \\
    Analog für untere Grenze.
    #+end_proof
+   #+ATTR_LATEX: :options [3.16 Zwischenwertsatz]
+   #+begin_defn latex
+   Sei $f:[a,b] \to \mathbb{R}$ eine reelle stetige Funktion. Dann
+   gibt es zu jeder $y\in [f(a), f(b)]$ ein $x\in[a,b]$ mit $f(c) = y$
+   #+end_defn
+   #+begin_proof latex
+   Betrachte die (nicht leere, beschränkte) Menge
+   \[A = \{x\in [a,b] \mid f(x) \leq y\}\]
+   Entweder ist dann $\sup A = b$ (und dann $c = b$) oder es gibt per Definition ein $x\in [a,b]$ mit $x > c \implies x \not\in A \implies f(x) > y$
+   In beiden Fällen folgt $f(c) \leq y$
+   - Falls $c = b \implies y = f(c) = f(b) \implies f(c) \geq y$
+   - Falls $c < b \implies$ Aus stetigkeit von $f$, eine monoton fallende Folge von Punkten aus $A$ existiert, welche gegen $\sup A$ konvergiert
+   Aus Stetigkeit und Definition von $A$ folgt $f(c) \leq y$. Beide zusammen genommen ergibt $f(c) = y$
+   #+end_proof
+   #+begin_remark latex
+   Die Eigenschaften von stetigen Funktionen lassen sich zusammen formulieren:
+   Für eine auf einem abgeschlossenen, beschränkten Intervall definierte stetige Funktion ist der Bildbereich wieder ein abgeschlossenes Intervall
+   #+end_remark
+   #+ATTR_LATEX: :options [3.17 Treppenapproximation]
+   #+begin_lemma latex
+   Jede auf einem beschränkten, abgeschlossenen Intervall $[a, b]$ definierte $f:[a,b] \to \mathbb{R}$ lässt
+   sich beliebig gut durch Treppenfunktion einschließen. das heißt
+   \[\Forall \eps > 0 \Exists ~\text{Treppenfunktion}~ \bar \phi_\eps, \ubar \phi_\eps\]
+   ohne Beschränkung der Allgemeinheit zu selben endlichen Zerlegung von $[a, b]$
+   mit den Eigenschaften $\Forall x\in [a,b]$
+   - $\ubar \phi_\eps \leq f(x) \leq \bar \phi_\eps(x)$
+   - $\abs{\ubar\phi_\eps(x) - \bar\phi_\eps(x)} < \eps$
+   Zerlegung: ist mit Teilpunkten $a\leq x_k \leq b, k = 0,\ldots, N < \infty$ (endliche Zerlegung) $(a = x_0 \leq x_1 \leq \ldots \leq x_N = b)$ \\
+   Treppenfunktion ist konstant auf Intervalle $\left[x_1, x_{i + 1}), 0 \leq 1 \leq N - 1$
+   #+end_lemma
+   #+begin_proof latex
+   Aus dem Satz von gleichmäßiger Stetigkeit ist $f$ auf $[a,b]$ gleichmäßig Stetig
+   \[\implies \Forall \eps > 0 \Exists \delta_\eps > 0: \Forall x\in[a,b], \abs{x - y} < \delta_\eps \implies \abs{f(x) - f(y)} < \frac{\eps}{2}\]
+   Sei $n\in\mathbb{N}$ so groß, dass $\frac{a - b}{n} < \delta\eps$. Mit den Teilpunkten
+   \[x_k .= a+ k \frac{b - a}{n}, k = 0, \ldots, n\]
+   erhalten wir eine äquidistante Zerlegung von $[a, b]$
+   \[a = x_0 < x_1 < \ldots < x_n = b, \abs{x_k - x_{k - a}} < \delta_\eps\]
+   Dann definieren wir
+   \[\bar \phi_\eps(x) := \sup \{f(x) \mid x_{k - 1} \leq x < x_k\}\]
+   \[\ubar \phi_\eps(x) := \inf \{f(x) \mid x_{k - 1} \leq x < x_k \}\]
+   Nach Konstruktion gemäßt $\ubar \phi_\eps (x) \leq f(x) \leq \bar \phi_\eps(x) \Forall x\in [a,b]$ \\
+   Nach dem Satz von Extremum $Forall [x_1, \ldots, x_k] \Exists \bar \xi_k, \ubar\xi_k$ sodass
+   \begin{align*}
+   f(\bar\xi_k) = \sup \{f(x) \mid x_{k - 1} \leq x \leq x_k\}
+   f(\ubar\xi_k) = \inf \{f(x) \mid x_{k - 1} \leq x \leq x_k\}
+   \end{align*}
+   Nach Wahlfreiheit von $\delta_\eps$ gilt
+   \[\abs{\ubar\phi_\eps (x) - \bar\phi_\eps(x)} = \abs{f(\ubar\xi_k) - f(\bar\xi_k)} \leq \abs{f(\ubar\xi_k) - f(x)} + \abs{f(x) - f(\bar\xi_k)} \underarrow[<]{aus gleichmäßiger Stetigkeit} \frac{1}{2} \eps + \frac{1}{2} \eps = \eps\]
+   #+end_proof
