@@ -5,7 +5,7 @@
 ** zusammengesetzte Typen
    mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
    - wie das geht $\implies$ später
-   - Standardtypen: in der C++ Standardbibliothek definiert, aktivieren durch $\#include <module\_name>$
+   - Standardtypen: in der C++ Standardbibliothek definiert, aktivieren durch $\#include <module_name>$
 	 - std::string, std::complex, etc.
    - externe Typen: aus anderer Bibliothek, die man zuvor herunterladen und installieren muss
    - eigene Typen: vom Programmierer selbst implementiert $\implies$ später
@@ -14,7 +14,7 @@
    - "Kapselung": die interne Struktur und Implementation ist für Benutzer unsichtbar
    - Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
 
-   $\implies$ Punktsyntax: type\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+   $\implies$ Punktsyntax: type_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 ** Zeichenketten-Strings:
    zwei Datentypen in c++
    - klassischer c-string: char[] ("Charakter Array") $\implies$ nicht gekapselt, umständlich

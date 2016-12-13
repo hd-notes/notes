@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 23:09
+% Created 2016-12-13 Di 17:35
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -879,7 +879,7 @@ Bestandteil der Sprachsyntax und normalerweise direkt von der Hardware unterstü
 mit Hilfe von "struct" oder "class" aus einfachen Typen zusammengesetzt
 \begin{itemize}
 \item wie das geht $\implies$ später
-\item Standardtypen: in der C++ Standardbibliothek definiert, aktivieren durch $\#include <module\_name>$
+\item Standardtypen: in der C++ Standardbibliothek definiert, aktivieren durch $\#include <module_name>$
 \begin{itemize}
 \item std::string, std::complex, etc.
 \end{itemize}
@@ -893,7 +893,7 @@ Durch "objekt-orientierte Programmierung" ($\implies$ später) erreicht man, das
 \item Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
 \end{itemize}
 
-$\implies$ Punktsyntax: type$\backslash$\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
+$\implies$ Punktsyntax: type\_name t = init; t.foo(a1, a2); $\estimates$ foo(t, a1, a2);
 \subsection{Zeichenketten-Strings:}
 \label{sec-8-3}
 zwei Datentypen in c++
@@ -1259,9 +1259,9 @@ std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 \end{minted}
 \end{itemize}
 \end{itemize}
-\subsubsection{Effizienz von push$\backslash$\_back}
+\subsubsection{Effizienz von push\_back}
 \label{sec-11-1-1}
-Warum ist push$\backslash$\_back() effizient? (bei std::vector)
+Warum ist push\_back() effizient? (bei std::vector)
 \begin{itemize}
 \item veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens bei Initialisierung, bekannt)
 \begin{itemize}
@@ -1276,7 +1276,7 @@ Warum ist push$\backslash$\_back() effizient? (bei std::vector)
 \item wird das interne Array zu klein $\implies$ wird automatisch auf ein doppelt so großes umgeschaltet
 \item ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve
 \end{itemize}
-\item Verhalten bei push$\backslash$\_back():
+\item Verhalten bei push\_back():
 \begin{enumerate}
 \item noch Reserve vorhanden: lege neues Element im eine unbenutzte Speicherzelle $\implies$ billig
 \item keine Reserve
@@ -1334,12 +1334,12 @@ v.shrink_to_fit() // == v.reserve/v.size()) Reserve ist danach 0, wenn Endgröß
 \end{minted}
 \item wenn Reserve > size: capacity kann auch halbiert werden
 \item wichtige Container der c++ Standardbibliothek
-\item wir hatten dynamische Arrays std::string, std::vector, assoziative Arrays std::map, std::unordered$\backslash$\_map
-\item std::set, std::unordered$\backslash$\_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
+\item wir hatten dynamische Arrays std::string, std::vector, assoziative Arrays std::map, std::unordered\_map
+\item std::set, std::unordered\_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
 \item std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push\_back() und pop\_back() bei std::vector
 \item std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
-\item std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop$\backslash$\_front(), pop$\backslash$\_back()
-\item std::priority$\backslash$\_queue, push() und pop() - Element mit höchster niedrigster Priorität (user defined)
+\item std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop\_front(), pop\_back()
+\item std::priority\_queue, push() und pop() - Element mit höchster niedrigster Priorität (user defined)
 \end{itemize}
 \section{Iteratoren}
 \label{sec-12}
@@ -1386,7 +1386,7 @@ element  = new_value; // schreiben
 \item Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
 \item "bidirectional iterators": unterstützen auch $--iter$, zum vorigen Element ((fast) alle Iteratoren in std)
 \item "random access iterators": beliebige Sprünge "iter += 5; iter -= 3;"
-\item Besonderheit für assoziative Arrays (std::map, std::unordered$\backslash$\_map)
+\item Besonderheit für assoziative Arrays (std::map, std::unordered\_map)
 Schlüssel und Werte können beliebig gewählt werden
 \begin{itemize}
 \item $\implies$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
@@ -1527,7 +1527,7 @@ std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
 \end{itemize}
 \section{generische Programmierung}
 \label{sec-14}
-insertion$\backslash$\_sort soll für beliebige Elementtypen funktionieren
+insertion\_sort soll für beliebige Elementtypen funktionieren
 \begin{minted}[tabsize=4]{cpp}
 template<typename T>
 void insertion_sort(std::vector<T> & v) {
@@ -1808,7 +1808,192 @@ int fib2(int k) {
 \begin{itemize}
 \item sehr ineffizient, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
 \end{itemize}
-Sei $f(k)$  die Anzahl der Schritte, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$
+Sei $f(k)$  die Anzahl der Schritte, $f'(k)$ die Schritte oberhalb, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$.
+Oberhalb ist der Baum vollständig (jeder nnere Knoten hat zwei Kinder), Anzahl der Knoten im vollständigen Baum der Tielfe $l$:
+\[1 + 2 + 4 + \ldots + 2^l = 2^{l + 1} - 1\]
 \end{enumerate}
+\section{Zahlendarstellung im Computer}
+\label{sec-16}
+Problem: es gibt $\infty$ viele Zahlen, aber der Computer ist endlich.
+\subsection{Natürliche Zahlen}
+\label{sec-16-1}
+Natürliche Zahlen $\implies x \geq 0$. c++ bietet Typen verschiederne Größe.
+\begin{center}
+\begin{tabular}{lllll}
+klassisch & mit Größe & Anzahl Bits & Bereich & Literale\\
+\hline
+unsigned char & uint8\_t & ($\geq$) 8 & 0 - 255 & \\
+unsigned short & uint16\_t & ($\geq$) 16 & 0 - 65535 & \\
+unsigned int & uint32\_t & ($\geq$) 32 & 0 - $\SI{4e9}{}$ & \\
+unsigned long &  & 32 oder 64 &  & \\
+unsigned long long & uint64\_t & 64 & 0 - 0 -  $\SI{2e19}{}$ & L\\
+\end{tabular}
+\end{center}
+was passiert bei zu großen Zahlen? \\
+\begin{itemize}
+\item alle Operationen werden Modula $2^m$ ausgeführt, wenn der Typ $m$ Bits hat
+\begin{minted}[tabsize=4]{cpp}
+uint8_t x = 250, y = 100;
+uint8_t s = x + y; // 350 % 256 = 94
+uint8_t p = x * y; // 25000 % 256 = 168
+\end{minted}
+\end{itemize}
+"integer overflow": einfach Bits oberhalb von $m$ wegwerfen
+\subsubsection{Pitfalls}
+\label{sec-16-1-1}
+\begin{minted}[tabsize=4]{cpp}
+std::vector<uint8_t> v = { ... };
+uint8_t sum = 0; // FALSCH, da es zu overflow kommen kann
+// verwende uint32_t, uint64_t, verhndern overflow mit hoher Wahrscheinlichkeit
+for(int k = 0; k < v.size(); k++) {
+	sum += v[k];
+}
+
+// Endlosschleife, da i nie < 0, da unsigned
+// Abhilfe: int verwenden
+for(uint8_t i = v.size(); i >= 0; i++) {
+	// auf v[k] zugreifen
+}
+\end{minted}
+\subsubsection{arithmetische Operationen}
+\label{sec-16-1-2}
+\begin{itemize}
+\item Addition in Kapitel Automaten \\
+\end{itemize}
+\paragraph{Subtraktion}
+\label{sec-16-1-2-1}
+Subtraktion kann auf Addition zurückgeführt werden
+Erinnerung: Restklassenarithmetik: (Modulo) \\
+     alle Zahlen mit dem gleichen Rest modulo $k$ bilden "Äquivalenzklasse", zum Beispiel $k = 4$
+\begin{align*}
+0 \mod 4 &= 0 \equiv 4 \mod 4 \equiv 8 \mod 4 \equiv 12 \mod 4 \ldots \\
+1 \mod 4 &= 0 \equiv 5 \mod 4 \equiv 9 \mod 4 \equiv 13 \mod 4 \ldots \\
+2 \mod 4 &= 0 \equiv 6 \mod 4 \equiv 10 \mod 4 \equiv 14 \mod 4 \ldots \\
+3 \mod 4 &= 0 \equiv 7 \mod 4 \equiv 11 \mod 4 \equiv 15 \mod 4 \ldots \\
+\end{align*}
+Ein Mitglied jeder Äquivalentzklasse wird Represäntant. \\
+     Hier: kleinste Repreäsentanten $0, \ldots, (k - 1)$, mit $k = 2^m$
+sind das gerade die uint-Werte \\
+     Eigenschaft: man kann Vielfache $n k$ addieren, ohne Äquivalenzklase zu ändern: \\
+     \[ (a - b) \mod 2^m = (a + \underbrace{2^m - b}_{\mathclap{z:~\text{Zweierkomplement}}}) \mod 2^m = (a + z) \mod 2^m \]
+$z = (2^m - b) \mod 2^m$ lässt sich billig berechnen als $(\sim b + 1) \mod 2^m$
+Dabei ist $\sim$ bitweise Negation (dreht alle Bits um)
+\begin{itemize}
+\item $m = 4, \sim(1001) = 0110$
+\end{itemize}
+\begin{thm}
+\[(2^m - b) \mod 2^m = (\sim b + 1) \mod 2^m\]
+\end{thm}
+\begin{proof}
+\begin{align*}
+b + \sim b = 1111\ldots 1 = 2^m - 1 \\
+\sim b + 1 = 2^{m} - b \\
+\intertext{Fall 1: $b > 0$}
+\implies \sim b < 2^m - 1 \implies \sim b + 1 < 2^m \implies (\sim b + 1) \mod 2^m = \sim b + 1 \\
+\implies (\sim b + 1) \mod 2^m = (2^m - b) \mod 2^m \\
+\intertext{Fall 2: $b = 0$}
+\implies \sim b = 2^m - 1 \\
+\sim b + 1 = 2^m \\
+(\sim b + 1) \mod 2^m = 0 \\
+2^m - b = 2^m
+z = (2^m - b) \mod 2^m = (\sim b + 1) \mod 2^m = 0
+\end{align*}
+\end{proof}
+\paragraph{Multiplikation}
+\label{sec-16-1-2-2}
+Neue Operationen: $\ll$  und $\gg$ (left und right shift). Verschiebt die Bits um $k$ Positionen nach
+links oder rechts. Die herausgeschobenen Bits werden vergessen und auf der anderen Seite durch
+$0$-bits ersetzt.
+
+\begin{minted}[tabsize=4]{cpp}
+// m = 8
+assert(11011101b << 3 == 11101000b)
+assert(11011101b >> 3 == 00011011b)
+\end{minted}
+\begin{thm}
+\begin{align*}
+x \ll k \equiv (x \cdot 2^k) \mod 2^m \\
+x >> k \equiv (\frac{x}{2^k}) \\
+\end{align*}
+\end{thm}
+Operation \& und |: bitw4eise und beziehungsweise oder-Verknüpfung (nicht verwechseln mit \&\& und || füür logische Operationen)
+m = 8:
+\$10110011 \& 1 = \$
+\begin{center}
+\begin{tabular}{rrrrrrrr}
+1 & 0 & 1 & 1 & 0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+\end{tabular}
+\end{center}
+(testet, ob in linker Zahl Bit 0 gesetzt ist)
+$10110011 \mid 1 =$
+\begin{center}
+\begin{tabular}{rrrrrrrr}
+1 & 0 & 1 & 1 & 0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+1 & 0 & 1 & 1 & 0 & 0 & 1 & 1\\
+\end{tabular}
+\end{center}
+kombiniere \& mit $\ll$:
+\[x \& (1 \ll k)\]
+testet, ob in $x$ Bit $k$ gesetzt ist.
+\begin{minted}[tabsize=4]{cpp}
+uint8_t mul(uint8_t x, uint8_t y) {
+	 uint8_t res = 0;
+	 for(int i = 0; i < 8; i++) {
+		  if(y & (1 << i)) {
+			   res += x;
+		  }
+		  x = x << 1; // x * 2
+	 }
+}
+\end{minted}
+\subsection{Ganze Zahlen}
+\label{sec-16-2}
+\begin{center}
+\begin{tabular}{llrl}
+klassisch & mit Größe & Anzahl Bits & Bereich\\
+\hline
+signed char & int8\_t & 8 & -128 \ldots 127\\
+signed short & int16\_t & 16 & -2\^{}15 \ldots 2\^{}15 - 1\\
+signed int & int32\_t & 32 & -2\^{}31 \ldots 2\^{}31 - 2\\
+signed long &  & 32 oder 64 & \\
+signed long long & int64\_t & 64 & -2\^{}63 \ldots 2\^{}63 - 1\\
+\end{tabular}
+\end{center}
+Wird der erlaubte Bereich überschritte, ist Verhalten Compiler abhängig.
+In der Praxis: auch Modulo $2^m$, aber mit anderen Repräsentanten.
+
+
+für Restklassen: \\
+   statt $0\ldots 2^m$ bei unsigned jetzt $-2^{m - 1} \ldots 2^{m - 2} - 1$ \\
+   das heißt:
+\begin{itemize}
+\item $x < 2^{m - 1}$: Repräsentant bleibt
+\item $x \geq 2^{m - 1}$: neuer Represenant $x - 2^{m}$ ist gleiche Restklasse
+\end{itemize}
+ Vorteil: $x, -, *$ kann von unsigned übernommen werden \\
+   $a,b$ signed: $a$ OP $b$ $\to$ $c$ signed
+ (interpretiere Bitmuster von $a$ und $b$ als unsigned und Interpretiere das Ergebnis dann als signed)
+Konsequenzen:
+\begin{itemize}
+\item bei negativer Zahl ist höchstes Bit 1, weil $x \to x - 2^m$ falls $x \geq 2^{m - 1}$
+\item unäre Negation $-x$ duch Zweierkomplement
+\begin{align*}
+-x &= (\sim x + 1) \mod 2^m \\
+-0 &= (\sim 00000000 + 1) \mod 2^8 \\
+&= (11111111 + 1) \mod 2^8 \\
+&= \underbrace{(100000000)}_{2^8} \mod 2^8 = 0
+-1 &= (\sim 00000001 + 1) \mod 2^8 \\
+&= (11111110 + 1) \mod 2^8 \\
+&= \underbrace{(11111111)}_{2^8 - 1 < 2^8} \mod 2^8 \\
+&= 11111111
+\end{align*}
+\end{itemize}
+Ausnahmeregel für $\gg$ bei negativen Zahlen: Compilerabhängig, meist wird links
+ein 1-Bit reingeschoben, damit Zahl negativ bleibt $\implies$ es gilt immer noch $x \gg k = (x / 2^k)$
+Reichen 64 Bit nicht aus (zum Beispiel bei moderner Verschlüsselung) verwende BigInt: Datentyp variabler Größe.
+Zum Beispiel GNU Multi-Precision Library
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -34,7 +34,7 @@
   - Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
   - "bidirectional iterators": unterstützen auch $--iter$, zum vorigen Element ((fast) alle Iteratoren in std)
   - "random access iterators": beliebige Sprünge "iter += 5; iter -= 3;"
-  - Besonderheit für assoziative Arrays (std::map, std::unordered\_map)
+  - Besonderheit für assoziative Arrays (std::map, std::unordered_map)
 	Schlüssel und Werte können beliebig gewählt werden
 	- $\implies$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
 	  #+BEGIN_SRC cpp

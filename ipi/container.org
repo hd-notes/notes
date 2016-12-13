@@ -105,8 +105,8 @@
 	   #+BEGIN_SRC cpp
 	   std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
 	   #+END_SRC
-*** Effizienz von push\_back
-	Warum ist push\_back() effizient? (bei std::vector)
+*** Effizienz von push_back
+	Warum ist push_back() effizient? (bei std::vector)
 	- veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens bei Initialisierung, bekannt)
 	  - sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
 	- modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push_back())
@@ -114,7 +114,7 @@
 	- std::vector verwaltet intern ein statisches Array der Größe "capacity", v.capacity() >= c.size()
 	  - wird das interne Array zu klein $\implies$ wird automatisch auf ein doppelt so großes umgeschaltet
 	  - ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve
-	- Verhalten bei push\_back():
+	- Verhalten bei push_back():
 	  1. noch Reserve vorhanden: lege neues Element im eine unbenutzte Speicherzelle $\implies$ billig
 	  2. keine Reserve
 		 1. alloziere neues statisches Array mit doppelt Kapazität
@@ -160,9 +160,9 @@
 	  #+END_SRC
 	- wenn Reserve > size: capacity kann auch halbiert werden
 	- wichtige Container der c++ Standardbibliothek
-	- wir hatten dynamische Arrays std::string, std::vector, assoziative Arrays std::map, std::unordered\_map
-	- std::set, std::unordered\_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
+	- wir hatten dynamische Arrays std::string, std::vector, assoziative Arrays std::map, std::unordered_map
+	- std::set, std::unordered_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
 	- std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push_back() und pop_back() bei std::vector
 	- std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
-	- std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop\_front(), pop\_back()
-	- std::priority\_queue, push() und pop() - Element mit höchster niedrigster Priorität (user defined)
+	- std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop_front(), pop_back()
+	- std::priority_queue, push() und pop() - Element mit höchster niedrigster Priorität (user defined)

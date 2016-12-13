@@ -118,7 +118,7 @@
 	  });
 	  #+END_SRC
 * generische Programmierung
-  insertion\_sort soll für beliebige Elementtypen funktionieren
+  insertion_sort soll für beliebige Elementtypen funktionieren
   #+BEGIN_SRC cpp
 	  template<typename T>
 	  void insertion_sort(std::vector<T> & v) {
@@ -357,4 +357,156 @@
 	   }
 	   #+end_src
 	   - sehr ineffizient, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
-	   Sei $f(k)$  die Anzahl der Schritte, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$
+	   Sei $f(k)$  die Anzahl der Schritte, $f'(k)$ die Schritte oberhalb, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$.
+	   Oberhalb ist der Baum vollständig (jeder nnere Knoten hat zwei Kinder), Anzahl der Knoten im vollständigen Baum der Tielfe $l$:
+	   \[1 + 2 + 4 + \ldots + 2^l = 2^{l + 1} - 1\]
+* Zahlendarstellung im Computer
+  Problem: es gibt $\infty$ viele Zahlen, aber der Computer ist endlich.
+** Natürliche Zahlen
+   Natürliche Zahlen $\implies x \geq 0$. c++ bietet Typen verschiederne Größe.
+   | klassisch          | mit Größe | Anzahl Bits | Bereich                | Literale |
+   |--------------------+-----------+-------------+------------------------+----------|
+   | unsigned char      | uint8_t   | ($\geq$) 8  | 0 - 255                |          |
+   | unsigned short     | uint16_t  | ($\geq$) 16 | 0 - 65535              |          |
+   | unsigned int       | uint32_t  | ($\geq$) 32 | 0 - $\SI{4e9}{}$       |          |
+   | unsigned long      |           | 32 oder 64  |                        |          |
+   | unsigned long long | uint64_t  | 64          | 0 - 0 -  $\SI{2e19}{}$ | L        |
+   was passiert bei zu großen Zahlen? \\
+   - alle Operationen werden Modula $2^m$ ausgeführt, wenn der Typ $m$ Bits hat
+	 #+begin_src cpp
+	 uint8_t x = 250, y = 100;
+	 uint8_t s = x + y; // 350 % 256 = 94
+	 uint8_t p = x * y; // 25000 % 256 = 168
+	 #+end_src
+   "integer overflow": einfach Bits oberhalb von $m$ wegwerfen
+*** Pitfalls
+	#+begin_src cpp
+	std::vector<uint8_t> v = { ... };
+	uint8_t sum = 0; // FALSCH, da es zu overflow kommen kann
+	// verwende uint32_t, uint64_t, verhndern overflow mit hoher Wahrscheinlichkeit
+	for(int k = 0; k < v.size(); k++) {
+		sum += v[k];
+	}
+
+	// Endlosschleife, da i nie < 0, da unsigned
+	// Abhilfe: int verwenden
+	for(uint8_t i = v.size(); i >= 0; i++) {
+		// auf v[k] zugreifen
+	}
+	#+end_src
+*** arithmetische Operationen
+	- Addition in Kapitel Automaten \\
+**** Subtraktion
+	 Subtraktion kann auf Addition zurückgeführt werden
+	 Erinnerung: Restklassenarithmetik: (Modulo) \\
+	 alle Zahlen mit dem gleichen Rest modulo $k$ bilden "Äquivalenzklasse", zum Beispiel $k = 4$
+	 \begin{align*}
+	 0 \mod 4 &= 0 \equiv 4 \mod 4 \equiv 8 \mod 4 \equiv 12 \mod 4 \ldots \\
+	 1 \mod 4 &= 0 \equiv 5 \mod 4 \equiv 9 \mod 4 \equiv 13 \mod 4 \ldots \\
+	 2 \mod 4 &= 0 \equiv 6 \mod 4 \equiv 10 \mod 4 \equiv 14 \mod 4 \ldots \\
+	 3 \mod 4 &= 0 \equiv 7 \mod 4 \equiv 11 \mod 4 \equiv 15 \mod 4 \ldots \\
+	 \end{align*}
+	 Ein Mitglied jeder Äquivalentzklasse wird Represäntant. \\
+	 Hier: kleinste Repreäsentanten $0, \ldots, (k - 1)$, mit $k = 2^m$
+	 sind das gerade die uint-Werte \\
+	 Eigenschaft: man kann Vielfache $n k$ addieren, ohne Äquivalenzklase zu ändern: \\
+	 \[ (a - b) \mod 2^m = (a + \underbrace{2^m - b}_{\mathclap{z:~\text{Zweierkomplement}}}) \mod 2^m = (a + z) \mod 2^m \]
+	 $z = (2^m - b) \mod 2^m$ lässt sich billig berechnen als $(\sim b + 1) \mod 2^m$
+	 Dabei ist $\sim$ bitweise Negation (dreht alle Bits um)
+	 - $m = 4, \sim(1001) = 0110$
+	 #+begin_thm latex
+	 \[(2^m - b) \mod 2^m = (\sim b + 1) \mod 2^m\]
+	 #+end_thm
+	 #+begin_proof latex
+	 \begin{align*}
+	 b + \sim b = 1111\ldots 1 = 2^m - 1 \\
+	 \sim b + 1 = 2^{m} - b \\
+	 \intertext{Fall 1: $b > 0$}
+	 \implies \sim b < 2^m - 1 \implies \sim b + 1 < 2^m \implies (\sim b + 1) \mod 2^m = \sim b + 1 \\
+	 \implies (\sim b + 1) \mod 2^m = (2^m - b) \mod 2^m \\
+	 \intertext{Fall 2: $b = 0$}
+	 \implies \sim b = 2^m - 1 \\
+	 \sim b + 1 = 2^m \\
+	 (\sim b + 1) \mod 2^m = 0 \\
+	 2^m - b = 2^m
+	 z = (2^m - b) \mod 2^m = (\sim b + 1) \mod 2^m = 0
+	 \end{align*}
+	 #+end_proof
+**** Multiplikation
+	 Neue Operationen: $\ll$  und $\gg$ (left und right shift). Verschiebt die Bits um $k$ Positionen nach
+	 links oder rechts. Die herausgeschobenen Bits werden vergessen und auf der anderen Seite durch
+	 $0$-bits ersetzt.
+
+	 #+begin_src cpp
+	 // m = 8
+	 assert(11011101b << 3 == 11101000b)
+	 assert(11011101b >> 3 == 00011011b)
+	 #+end_src
+	 #+begin_thm latex
+	 \begin{align*}
+	 x \ll k \equiv (x \cdot 2^k) \mod 2^m \\
+	 x >> k \equiv (\frac{x}{2^k}) \\
+	 \end{align*}
+	 #+end_thm
+	 Operation \& und |: bitw4eise und beziehungsweise oder-Verknüpfung (nicht verwechseln mit \&\& und || füür logische Operationen)
+	 m = 8:
+	 $10110011 \& 1 = $
+	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
+	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+	 (testet, ob in linker Zahl Bit 0 gesetzt ist)
+	 $10110011 \mid 1 =$
+	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
+	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
+	 kombiniere \& mit $\ll$:
+	 \[x \& (1 \ll k)\]
+	 testet, ob in $x$ Bit $k$ gesetzt ist.
+	 #+begin_src cpp
+	 uint8_t mul(uint8_t x, uint8_t y) {
+		  uint8_t res = 0;
+		  for(int i = 0; i < 8; i++) {
+			   if(y & (1 << i)) {
+					res += x;
+			   }
+			   x = x << 1; // x * 2
+		  }
+	 }
+	 #+end_src
+** Ganze Zahlen
+   | klassisch        | mit Größe | Anzahl Bits | Bereich               |
+   |------------------+-----------+-------------+-----------------------|
+   | signed char      | int8_t    |           8 | -128 \ldots 127       |
+   | signed short     | int16_t   |          16 | -2^15 \ldots 2^15 - 1 |
+   | signed int       | int32_t   |          32 | -2^31 \ldots 2^31 - 2 |
+   | signed long      |           |  32 oder 64 |                       |
+   | signed long long | int64_t   |          64 | -2^63 \ldots 2^63 - 1 |
+   Wird der erlaubte Bereich überschritte, ist Verhalten Compiler abhängig.
+   In der Praxis: auch Modulo $2^m$, aber mit anderen Repräsentanten.
+
+
+   für Restklassen: \\
+   statt $0\ldots 2^m$ bei unsigned jetzt $-2^{m - 1} \ldots 2^{m - 2} - 1$ \\
+   das heißt:
+   - $x < 2^{m - 1}$: Repräsentant bleibt
+   - $x \geq 2^{m - 1}$: neuer Represenant $x - 2^{m}$ ist gleiche Restklasse
+   Vorteil: $x, -, *$ kann von unsigned übernommen werden \\
+   $a,b$ signed: $a$ OP $b$ \to $c$ signed
+   (interpretiere Bitmuster von $a$ und $b$ als unsigned und Interpretiere das Ergebnis dann als signed)
+  Konsequenzen:
+   - bei negativer Zahl ist höchstes Bit 1, weil $x \to x - 2^m$ falls $x \geq 2^{m - 1}$
+   - unäre Negation $-x$ duch Zweierkomplement
+	 \begin{align*}
+	 -x &= (\sim x + 1) \mod 2^m \\
+	 -0 &= (\sim 00000000 + 1) \mod 2^8 \\
+	 &= (11111111 + 1) \mod 2^8 \\
+	 &= \underbrace{(100000000)}_{2^8} \mod 2^8 = 0
+	 -1 &= (\sim 00000001 + 1) \mod 2^8 \\
+	 &= (11111110 + 1) \mod 2^8 \\
+	 &= \underbrace{(11111111)}_{2^8 - 1 < 2^8} \mod 2^8 \\
+	 &= 11111111
+	 \end{align*}
+   Ausnahmeregel für $\gg$ bei negativen Zahlen: Compilerabhängig, meist wird links
+   ein 1-Bit reingeschoben, damit Zahl negativ bleibt $\implies$ es gilt immer noch $x \gg k = (x / 2^k)$
+   Reichen 64 Bit nicht aus (zum Beispiel bei moderner Verschlüsselung) verwende BigInt: Datentyp variabler Größe.
+   Zum Beispiel GNU Multi-Precision Library
