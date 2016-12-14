@@ -200,8 +200,8 @@
 	  | $\bar 2$ | $\bar 2$ | $\bar 3$ | $\bar 0$ | $\bar 1$ |
 	  | $\bar 3$ | $\bar 3$ | $\bar 0$ | $\bar 1$ | $\bar 2$ |
 *** Gruppenhomomorphismus
-	$(G,+),(H,\oast), \varphi : G \to H$ Abbildung \\
-	$\varphi$ heißt ein Gruppenhomomorphismus $\xLeftrightarrow{\text{Def}} \Forall a,b,c\in G: \varphi(a*b) = \varphi(a) \oast \varphi(b)$ \\
+	$(G,*),(H,\oast), \varphi : G \to H$ Abbildung \\
+	$\varphi$ heißt ein Gruppenhomomorphismus $\xLeftrightarrow{\text{Def}} \Forall a,b\in G: \varphi(a*b) = \varphi(a) \oast \varphi(b)$ \\
 	$\varphi$ heißt ein Gruppenisomorphismus $\xLeftrightarrow{\text{Def}} \varphi$ ist bijektiver Gruppenhomomorphismus
 **** Beispiel
 	 1. $\varphi:\mathbb{Z} \to \mathbb{Z}, a\mapsto 2 a$ ist Gruppenhomomorphismus von $(\mathbb{Z},+)$ nach $(\mathbb{Z},+)$ denn:
