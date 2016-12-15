@@ -150,3 +150,74 @@
    \kappa &= \SI{5e-10}{\meter\squared\per\newton}
    \kappa &= \SI{1.4e-10}{\meter\squared\per\newton}
    \end{align*}
+*** Druck
+	\begin{align*}
+	F_p &= A(p(x) - p(x + \Delta x)) \\
+	&=  -\dd{p}{x} \Delta A \\
+	&= -\dd{p}{x}\Delta V \\
+	&= -\frac{\Delta p}{\Delta x}\Delta V \\
+	F_p &= -F_{visc} \\
+	F\Delta x &= -\Delta p \Delta V \\
+	F &= -\grad p \Delta v \\
+	\end{align*}
+	Eigentlich ist das ganze deutlich komplizierter:
+	\begin{align*}
+	\v u (x,y,z,t) \\
+	p(x,y,z,t) \\
+	\rho(x,y,z,t) \\
+	\d m \dd{\v u}{t} = \v F_p + \v F_{visc} + \v F_{ext} \\
+	\intertext{Navier-Stokes-Gleichung}
+	\rho(\frac{\partial}{\partial t} + \v u \ v v) \v u = -\underarrow[\grad p]{"$F_p$"} + \rho \underarrow[\v g]{"$F_{ext}$"} + \underarrow[\eta \Delta \v n]{"$F_{visc}$"} \\
+	\end{align*}
+*** Kontinuitätsgleichung:
+	\begin{align*}
+	\phi &= \frac{\Delta m}{\Delta t} = ~\text{const} \\
+	\phi &= \frac{\Delta m}{\Delta t} = \frac{\rho A_i \Delta x}{\Delta t} \\
+	&= \rho A_i v_i \\
+	\rho A_1 v_1 &= \rho A_2 v_2 \\
+	A_1 v_1 &= A_2 v_2 \\
+	W &= F \Delta x = - \Delta p \Delta V = \frac{1}{2} \Delta m(v_2^2 - v_1^2) + \Delta mg(h_2 - h_1) \\
+	-\Delta p &= \frac{1}{2} \rho v_2^2 - \frac{1}{2} \rho v_1^2 + \rho gh_2 - \rho gh_1 \\
+	p_1- p_2 &= \ldots \\
+	p_1 + \frac{1}{2} \rho v_1^2 + \rho g h_1 = p_2 \frac{1}{2} \rho v_2^2 + \rho g h_2 \\
+	\end{align*}
+	#+ATTR_LATEX: :options [Bernoullische Gleichung]
+	#+begin_defn latex
+	\[p + \frac{1}{2} \rho v^2 + \rho g h = ~\text{const}\]
+	#+end_defn
+*** Reibung in Flüssigkeiten
+	Merke für Flüssigkeiten keine statischen Scherkräfte, aber es gibt dynamische Scherkräfte. \\
+	Experiment: Notwendige Schubspannung
+	\[\tau = \frac{F}{A} \sim \dd{v_x}{y}\]
+	Schubspannung ist proportional zum Geschwindigkeitsgradienten.
+	#+ATTR_LATEX: :options [Newtonsches Reibungsgesetz:]
+	#+begin_defn latex
+	\[\tau = \frac{F_R}{A} = \eta \dd{v_x}{y}\]
+	\[F_R = \eta A \dd{v_x}{y}\]
+	$eta$ nennt man dynamische Scherviskosität.
+	#+end_defn
+*** Strömung durch ein Rohr mit kreisförmigen Querschnitt (Hagen-Poiseuille)
+	\begin{align*}
+	\Delta p &= p_2 - p_1 \\
+	F &= \Delta \pi r^2 \\
+	A &= 2\pi r L \\
+	\tau &= \frac{F}{A} = \frac{\Delta p \pi r^2}{2\pi r L} = -\eta \dd{v}{r} \tag{Newton!} \\
+	v(r) &= \int_{v(r)}^{v(R) = 0}- \d v = \int_{r}^{R} \frac{\Delta p r}{2 \eta L} \d r = \frac{\Delta p}{4 \eta L}(R^2 - r^2)a \\
+	\d V &= 2\pi r \d r v(r) \Delta t \\
+	\Delta V &= \int_{0}^{R}2\pi r \d r v(r) \Delta t \\
+	&= \frac{2\pi \Delta p}{2\eta L}\Delta t \int_{0}^{R}(R^2 r - r^3) \d r \\
+	&= \frac{2\pi \Delta p}{2\eta L}(\frac{1}{4} R^4 - \frac{1}{4} R^4) \Delta t \\
+	\dot{V} &= \dd{v}{t} = \frac{\pi \Delta p}{8\eta L} R^4 \sim R^4 \tag{Hagen-Posieuilles-Gesetz}
+	\bar v = \frac{\dot{V}}{A} = \frac{A \Delta x}{A \Delta t} = \dd{V}{t} \frac{1}{\pi R^2} = \frac{R^2}{8\eta L}\Delta p \\
+	\bar v \sim \Delta p ~\text{typisch für laminare Strömung} \\
+	\end{align*}
+
+	Turbulenz:
+	$\Delta p \sim \bar v^2$
+
+	Vergleich:
+	| Stationare laminare Strömung | Turbulente Strömung                 |
+	|------------------------------+-------------------------------------|
+	| $\dot{v} = \dd{\v v}{t} = 0$ | $\v v = \v v(x,y,z,t)$              |
+	| Stromflächen                 | keine Vorhersage der Teilchenbahnen |
+	| $F_R \sim \v v$              | $F_W \sim \bar v^2$                 |

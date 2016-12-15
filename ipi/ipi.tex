@@ -1,4 +1,4 @@
-% Created 2016-12-13 Di 17:35
+% Created 2016-12-15 Do 17:00
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -46,6 +46,7 @@
 \newtheorem{remark}{Bemerkung}
 \theoremstyle{remark}
 \newtheorem{ex}{Beispiel}
+\newcommand{\eps}{\varepsilon}
 \usepackage{etoolbox}
 \patchcmd{\thmhead}{(#3)}{#3}{}{}
 \usepackage{xparse}% http://ctan.org/pkg/xparse
@@ -1995,5 +1996,202 @@ Ausnahmeregel für $\gg$ bei negativen Zahlen: Compilerabhängig, meist wird lin
 ein 1-Bit reingeschoben, damit Zahl negativ bleibt $\implies$ es gilt immer noch $x \gg k = (x / 2^k)$
 Reichen 64 Bit nicht aus (zum Beispiel bei moderner Verschlüsselung) verwende BigInt: Datentyp variabler Größe.
 Zum Beispiel GNU Multi-Precision Library
+\subsection{reelle Zahlen}
+\label{sec-16-3}
+c++ bietet Typen
+\begin{center}
+\begin{tabular}{lllll}
+Name & Größe & Bereich & kleinste Zahl & Literale\\
+\hline
+float & 32bit & $\SI{-1e38}{} - \SI{1e38}{}$ & $10e-38$ & 4.0f\\
+double & 64bit & $\SI{-1e308}{} - \SI{1e308}{}$ & $\SI{1e-308}{}$ & 4.0, 1e-2\\
+long double & platformabhängig, $\geq$ 64bit &  &  & \\
+\end{tabular}
+\end{center}
+Der c++ Standard legt die Größe nicht fest, aber praktisch alle gängigen CPUs benutzen Standard IEEE 754, c++
+übernimmt HW-Implementation. Ziele der Definition von reellwertigen Typen:
+\begin{itemize}
+\item hohe Genauigkeit (viele gültige Nachommastellen)
+\item Zahlen sehr unterschiedlicher Größenskalen (zum Beispiel Durchmesser eines Proton $=\SI{2e-15}{\meter}$ vs. Durchmesser des sichtbaren Universum $\SI{1e27}{\meter}$)
+mit natürlichen Zahlen bräuchte man \$> 150\$bit
+\end{itemize}
+elegante Lösung: halb-logarithmische Darstellung ("floating point"). Datentyp ist aus 3 natürlichen Zahlen zusammengesetz (aber alles von der CPU gekapselt)
+\begin{itemize}
+\item $S$ (1-bit): Vorzeichen, 0 = "$+$", 1 = "-"
+\item $M$ (m-bit): Mantisse: Nachkommastellen
+\item $E$: (e-bit, Bias b): Exponent: Größenordung
+\end{itemize}
+die eigentliche Zahl wird durch
+\[x = (-1)^s \cdot (1 + M\cdot 2^{-m}) \cdot 2^{E-b}\]
+\begin{itemize}
+\item $M \in [0, 2^m - 1]$
+\item $M\cdot 2^{-m} \in [0, \frac{2^m - 1}{2^m}) \in [0,1)$
+\item $1 + M\cdot 2^{-m} \in [1,2)$
+\end{itemize}
+Beispiel: natürliche Zahlen
+\begin{center}
+\begin{tabular}{rrrl}
+$x$ & $M\cdot 2^{-m}$ & $E - b$ & effektive Darstellung\\
+\hline
+1 & 0 & 0 & $1\cdot 2^0$\\
+2 & 0 & 1 & $1\cdot 2^1$\\
+3 & 0.5 & 1 & $1.5\cdot 2^1$\\
+4 & 0 & 2 & $1\cdot 2^2$\\
+5 & 0.25 & 2 & $1.25\cdot 2^2$\\
+\end{tabular}
+\end{center}
+Konsequenz: alle ganzen Zahlen zwischen $-2^m, \ldots, 2^m$ könne exakt dargestellt werden und haben exakte Arithmetik. (IEEE 754)
+Werte für $m,e,b$
+\begin{itemize}
+\item float
+\begin{itemize}
+\item $m = 23$
+\item $e = 8$
+\item $b = 127$
+\item $2^{E - b} \in [2^{-126}, 2^{127}] \approx [10^{-38}, 10^{38}]$
+\end{itemize}
+\item double
+\begin{itemize}
+\item $m = 52$
+\item $e = 11$
+\item $b = 1024$
+\item $2^{E - b} \in [2^{-1022}, 2^{1023}] \approx [10^{-308}, 10^{308}]$
+\end{itemize}
+\end{itemize}
+Anzahl der Nachkommastellen: $\eps = 2^{-m}$ (machine epsilon, unit last place (ULP))
+\begin{itemize}
+\item float $2^{-23} \approx \SI{1e-7}{}$
+\item float $2^{-52} \approx \SI{1e-16}{}$
+\end{itemize}
+$\eps$ ist die kleinste Zahl, sodass
+\[(1.0 + \eps) \neq 1.0\]
+weil Nachkommastellen außerhalb der Mantisse (rechts von $2^{-m}$) ignoriert werden. $\implies$ Problem der Auslöschung von signifikanten Stellen. Wenn man zwei
+fast gleich große Zahlen subtrahiert, löschen sich fast alle Bits der Mantisse $\implies$ nur wenige gültige Nachkommastellen überleben. Zum Beispiel:
+\[0.1234567 - 0.1234566 = 0.000001\tag{nur eine gültige Nachkommastelle!}\]
+\[1.0 - \cos{x}, x \to 0, x\approx 0 \implies \cos{x} \approx 1 \tag*{$\implies$ Auslösung}\]
+\begin{center}
+\begin{tabular}{llr}
+x & Anzahl der gültigen Stellen & Additionstheoriem $1 - \cos(x) = 2(\sin(x / 2))^2$\\
+\hline
+\SI{0.001}{} & 9 & 15\\
+\SI{1e-8}{} & 0 ($\cos$(\SI{1e-8}{})) & 15\\
+\end{tabular}
+\end{center}
+Quadratische Gleichung:
+\[a x^2 + b x + c = 0, b > 0\]
+\[x_1 = \frac{1}{2 a}(-b + sqrt{b^2 - 4ac})\]
+falls $a\cdot c\wedge b^2 \gg 4ac \implies \sqrt{b^2 -4ac} \approx b \implies x_1 \approx -b + b + (\eps') \approx 0 \implies$ Auslöschung, wenig gültige Stellen. Also umstellen:
+\begin{align*}
+x_1 %= \frac{1}{2a}(-b + \sqrt{b^2 - 4ac}) \frac{-b - \sqrt{b^2 - 4ac}}{-b - \sqrt{b^2 - 4ac}} \\
+&= \frac{1}{2a} \frac{b^2 - (b^2 - 4ac)}{-b - sqrt{b^2 - 4ac}} \\
+&= \frac{2c}{\underbrace{-b -\underbrace{\sqrt{b^2 - 4ac}}_{\approx b}}_{\approx -2b}}
+\intertext{$\implies$ keine Auslösung}
+\intertext{Dies tritt auch bei Aufgabe 8.3 der Übungszettel auf}
+\end{align*}
+Ausnahmeregeln (spezielle Werte)
+\begin{itemize}
+\item normal: $E\in [1,2^e - 2]$
+\item $E = 2^e - 1$ (größtmöglicher Wert): $\begin{cases} x = -\infty & M = 0 \wedge S = 1 \\ x = \infty & M = 0 \wedge S = 0 \\ x = ~\text{NaN}~ & M = 0\end{cases}$
+\begin{itemize}
+\item $\pm\infty: \frac{1.0}{0.0}, \frac{-1.0}{0.0}, \ldots$
+\item NaN: $\frac{0.0}{0.0}, \sqrt{-1.0}, \infty\cdot 0$
+\end{itemize}
+\item $E = 0$ (kleinstmöglicher Wert): $\begin{cases} -0 & M = 0 \wedge S = 1 \\ 0 & M = 0 \wedge S = 0 \\ \text{denormalisierte Zahlen (für sehr kleine Werte)} & M > 0 \end{cases}$
+\end{itemize}
+\section{Buchstabenzeichen}
+\label{sec-17}
+Buchstabenzeichen: "glyphs" müssen durch Zahlen repräsentiert werden "Zeichencode"
+\subsection{Geschichte}
+\label{sec-17-1}
+\begin{center}
+\begin{tabular}{llll}
+1963 & ASCII & 7-bit & Zeichen der englischen Schreibmaschiene (\textbf{keine} Umlaute)\\
+1964 $\ldots$ 2000 &  & 8-bit Codes & mit Umlauten, Akzenten, kyrillische Zeichen, aber 8-bit sind zu wenig, um alles abzudecken $\implies$ viele verschiedene 8-bit Codes: DOS Codepage 437, Codepage 850 (Konsole im deutschen Windows), Windows-1252 ("ANSI") $\approx$ ISO 8859-1 $\approx$ ISO 8859.15 (Westeuropäische Sprachen)\\
+1991 $\ldots$ heute & Unicode & anfangs 16-bit, jetzt $\approx$ 21-bit & alles (chinesisch, Hyroglyphen, Emojis, $\ldots$)\\
+\end{tabular}
+\end{center}
+3 Codierungen für Unicode:
+\begin{itemize}
+\item UTF-8: variable length code: pro glyph $1 \ldots 4$ uint8
+\item UTF-16: variable length code: pro glyph $1 \ldots 2$ uint16
+\item UTF-32: fixed length code: pro glyph 1 uint32 pro glyph
+\end{itemize}
+In c++:
+\begin{itemize}
+\item char: 8-bit Codes
+\item wchar\_t: 16-bit (Windows), 32-bit (Linux)
+\item u16char\_t, u32char\_t:
+\end{itemize}
+leider sehr Plattformabhängig
+\begin{center}
+\begin{tabular}{lrrl}
+Symbol & DOS & ANSI & UTF-8\\
+\hline
+ö & 148 & 246 & 195 182\\
+€ & 221 & 128 & 226 130 172\\
+\end{tabular}
+\end{center}
+$\implies$ ICU Library. \\
+   hat man ale Zeichen korrekt, ist Problem noch nicht gelöst: alphabetische Sortierung:
+\begin{itemize}
+\item kontext abhängig
+\item sprach abhängig
+\item $ä$:
+\begin{itemize}
+\item deutschen Wörterbuch: wie a
+\item deutsches Telefonbuch: wie ae
+\item schwedisch: hinter Zeichen $\overset{\scriptstyle \circ}{a}$
+\end{itemize}
+\end{itemize}
+\begin{minted}[tabsize=4]{cpp}
+#include <locale>
+#include <codecvt
+std::sort(v.begin(), v.end(), std::locale("se_SE.UTF-8")); // für schwedisch (falls se_SE.UTF-8 installiert)
+\end{minted}
+\section{Eigene Datentypen}
+\label{sec-18}
+3 Möglichkeiten
+\begin{itemize}
+\item enum: Aufzählungstypen $\implies$ Selbststudium
+\item struct: strukturierte Daten, zusammengesetzte Typen
+\item class: wie struct, auf objekt-orientiert
+\end{itemize}
+struct und enum schon in C, struct und class fast gleich
+\begin{minted}[tabsize=4]{cpp}
+struct TypeName { // Neuer Typ
+	type_name1 var_name1; // existierende Typen
+	type_name2 var_name2;
+	// ...
+}; // semikolon WICHTIG, falls vergessen: Fehlermeldung
+
+// Beispiel:
+struct Date {
+	// Datenmember, Membervariables
+	int day;
+	int month;
+	int year;
+};
+
+Date easter(int year) {
+	// Datum ausrechnen
+
+	// Datum zurückgeben
+	Date d;
+	d.day = day; // Punktsyntax kennen wir schon
+	d.month = month;
+	d.year = year;
+	return d;
+}
+
+struct Character {
+wchar_t clear;
+wchar_t encrypted;
+int count;
+}
+
+Character c;
+c.count = 0;
+c.count += 1;
+\end{minted}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 23:09
+% Created 2016-12-15 Do 16:58
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -38,7 +38,7 @@
 \renewcommand{\d}{\mathrm{d}}
 \newcommand{\f}[2]{\frac{#1}{#2}}
 \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
-\renewcommand{\v}[1]{\vec{#1}}
+\renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
 \usepackage{pgfplots}
 \usepackage{amsthm}
 \theoremstyle{definition}
@@ -1523,7 +1523,7 @@ Wichtig: Die Transformation von $\v F$ beinhaltet nicht nur Drehung, sondern auc
 Betrachte zur Vereinfachung $R = \mathbb{1} \implies \v F'(t', \v x') = \v F(t, \v x)$ \\
 
 Geschwindigkeitsabhängige Kräfte: zum Beispiel Reibung
-\[\v F_R = -\alpha(\v x - \underarrow[v u]{Medium})\]
+\[\v F_R = -\alpha(\dot{\v x} - \underarrow[\v u]{Medium})\]
 \subsection{Zusammenfassung:}
 \label{sec-6-8}
 Allgemeingültiges Schema:
@@ -1532,5 +1532,185 @@ Allgemeingültiges Schema:
 \item Identifikation der Symmetriegruppe (hier Galilei Gruppe)
 \item Invarianz der Dynamik prüfen beziehungsweise fordern (Spielregeln) (Newtonsches Grundgesetz)
 \end{itemize}
+\section{Wechsel der Koordinatensystms und Scheinkräfte}
+\label{sec-7}
+\subsection{Wechsel des Koordinatensystems im euklidischen Raum}
+\label{sec-7-1}
+$V = \mathbb{R}^n, n = 3$ \\
+   \textbf{Bisher:} \\
+   Immer feste Basis
+\[\v x = \cvec{x^1 ; x^2 ; x^3} = x^1 \cvec{1 ; 0 ; 0} + x^2 \cvec{0 ; 1 ; 0} + x^3 \cvec{0 ; 0 ; 1} = x^i \v e^i\]
+$\{e^i\}$ - duch "$i$" nummerierte Basisvektoren. \\
+   \textbf{Wichtig}:
+\begin{itemize}
+\item In Physik gibt es keine ausgezeichnete Basis.
+\item können Basis / Koordinatensystem wechseln
+\end{itemize}
+
+\[\v e^{\prime k} = R^{ik} \v e^k\]
+(analog zu $\v x = x^i \v e^i$)
+\textbf{Wichig}: $\{\v e^{\prime i}\}$ wieder Basis $\iff R \in GL(n)$ \\
+   \textbf{Hier}: euklidischer Raum: Orthonormalbasen: $\v e^i \v e^j = \delta^{ij}$ \\
+   Wenn $\{\v e^{i}\}$ Orthonormalbasis, so wird $\{\v e^{\prime i}\}$ auch eine sein, falls $R\in O(n)$
+\[\v e^{\prime i} \v e^{\prime j} = (R^{ik} \v e^k)(R^{jl} \v e^l) = R^{ik} R^{jl} \delta^{kl} = \delta^{ij}\]
+Wir können festen Vektor $\v x$ bezüglich neuer Basis zerlegen:
+\begin{align*}
+\v x &= x^{\prime i} \v e^{\prime i} = x^{\prime i} R^{ij} \v e^{j} = x^j \v e^j \\
+&\implies x^j = x^{\prime i} R^{ij} \\
+&\xRightarrow{\cdot (R^T)^{jk}} x^j (R^T)^{jk} = x^{\prime i} R^{ij} (R^t)^{jk} \\
+x^{\prime k} &= R^{kj} x^j \tag{gleiche Formel, wei bei Drehung um $R$}
+\end{align*}
+Dies ist nicht unerwartet, da $\{\v e^{\prime i}\}$ aus $\{\v e^i\}$ durch Drehung $R^{-1}$ hervorgeht:
+\begin{align*}
+\intertext{*Dazu*: Die Vektoren $\{\v e^i\}$ haben bezüglich der Basis $\{\v e^i\}$ die Komponenten $\delta^{ij}$:}
+\v e^i &= \delta^{ij} \v e^j, (\v e^i)^j = \delta^{ij} \\
+\v e^{\prime i} &= R^{ij} \v e^j, (\v e^{\prime i})^j = R^{ij} \\
+\intertext{also gilt:}
+(\v e^{\prime i})^j &= R^{ij} = (R^{-1})^{ji} = (R^{-1})^{jk} \delta^{ki} = (R^{-1})^{jk} (\v e^i)^k \\
+(\v e^{\prime i})^j &= (R^{-1})^{jk} (\v e^i)^k \\
+\intertext{$\implies$ Behauptung ist gezeigt}
+\end{align*}
+\subsection{Aktive und Passive Beschreibung von Symmetrien}
+\label{sec-7-2}
+\begin{itemize}
+\item Aktiv: Transformieren pyhsikalisches Objekt
+\item Passiv: Wechsle Koordinatensystem
+\end{itemize}
+\begin{ex}[]
+\mbox{}
+\begin{itemize}
+\item Aktiv: $x \to x' = Rx$. Symmetrieforderung: $\v x' \cdot \v y' = \v x \cdot \v y$, also: Skalarproduktinvariant
+\item Passiv: $\v x$ fest. Komponenten
+(Es gilt: $\v e^{\prime i} = R^{ij} \v e^j$)
+\begin{itemize}
+\item $x^i$ in Basis $\{\v e^i\}$
+\item $x^{\prime i} = R^{ij} x^j$ in Basis $\{\v e^{\prime i}\}$
+\end{itemize}
+Symmetrieforderung: Mathematischer Ausdruch für Skalarprodukt soll in neuen Komponenten die \textbf{gleiche Form haben}.
+In der Tat:
+\begin{itemize}
+\item alt: $\v x \cdot \v y = x^i y^i$
+\item neu: $\v \cdot \v y = x^i y^i = (R^{-1})^{ij} x^{\prime j} (R^{-1})^{ik} y^{\prime k} = x^{\prime i} y^{\prime i} \checkmark$
+\end{itemize}
+\end{itemize}
+\end{ex}
+\begin{ex}[Galilei-Transformation]
+\begin{itemize}
+\item Aktiv: $(t, x(t)) \to (t + s, R x(t) + y + (t + s) v)$. Symmetrieforderung: Neue
+Trajektorie ist auch physikalische Bewegung.
+\item Passiv: Sei $\v x_0 = \v a + \v b t$ der Vektor, der vom alten zum neuen Koordinatenursprung zeigt:
+\[\v x_n = \v x - (\v a + \v b t)\]
+Bezeichne Komponenten von $\v x_n$ bezüglich der neuen, gedrehten Basis mit $x^{\prime j}$
+\[x'(t) = A^{-1}(x - a - bt) = Rx + y + v t\]
+mit $R\equiv A^{-1}, y\equiv -A^{-1}a, v\equiv -A^{-1}b$ (könnte auch noch Uhren umstellen $\to s$)
+\begin{itemize}
+\item Transformation sieht formal so aus, wie im aktiven Fall \\
+       Symmetrieforderung: "Newton" soll gleiche Form haben: Prüfen dies:
+\[\ddot{x}' = \underarrow[R]{"noch" zeitunabhängig}\ddot{x} = R \frac{F}{m} = \frac{F'}{m} \checkmark\]
+\end{itemize}
+\end{itemize}
+\end{ex}
+\subsection{Beschleunigte, nichtrotierende Koordinatensysteme}
+\label{sec-7-3}
+keine Symmetrietransformation! Nichinertialsysteme! \\
+   $\v x_0(t)$ beschreibe Bewegung des "neuen" Ursprungs
+\begin{align*}
+\v x_I = \v x_0 + \v x \implies \ddot{\v x} = \ddot{\v x_I} - \ddot{\ v x}_0 \tag{\textbf{I}nertial} \\
+m \ddot{\v x} = m \ddot{\v x}_i - m\ddot{\v x}_0 = \v F + \underarrow[\v F_s]{Scheinkraft} \\
+F_s \equiv -m \ddot{\v x_0}
+\end{align*}
+$\implies$ Im Nichtinertialsystem bewegt sich ein Punkt so, als gäbe es eine zusätzliche Kraft: $m\ddot{\v x} = \v F + \v F_s$
+\subsection{Kleine Drehungen}
+\label{sec-7-4}
+\begin{defn}[Spur]
+\[M_{ii} = \sp(M) = \sum_i a_i\]
+$\sp(M)$ wird als Spur bezeichnet, und entspricht der Summe über die Diagnoalelemente
+\end{defn}
+rotierendes Bezugssystem (NIS) \\
+   Drehungen: $R(t) \in SO(u), R^{T} R = \mathbb{1}$ für $t \sim \epsilon, R(0) = \mathbb{1}$
+\begin{align*}
+R(\epsilon) = \mathbb{1} + \eps M + O(\eps^2) \\
+R(\epsilon) R^{T}(\eps) &= (\mathbb{1} + \eps M)(\mathbb{1} + \eps M^T) \overset{!}{=} \\
+&= \mathbb{1} + \epsilon(\underbrace{M + M^T}_{0}) \overset{!}{=} \mathbb{1} \\
+\end{align*}
+$\implies M$ ist antisymmetrisch!, $M_{ij} = -M_{ji}$. Es gibt $N_A = \frac{n(n - 1)}{2}$ linear unabhängige Basismatrizen $T_a$.
+\begin{ex}[$n = 3$]
+Für $n = 3: N_A = 3$:
+\begin{align*}
+M &= \epsilon_a t_a
+t_1 &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0\end{pmatrix}
+t_2 &= \begin{pmatrix} 0 & 0 & -1 \\ 0 & 0 & 0 \\ 1 & 0 & 0\end{pmatrix}
+t_3 &= \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix}
+R(\v \epsilon) &=\mathbb{1} + \v \eps \v T, \eps = \abs{\v \eps} \\
+(T_i)_{j,k} = \eps_{ijk} \\
+\v \epsilon = \abs{\v \epsilon} \cvec{0; 0; 1} \\
+R(\v \epsilon) = \mathbb{1} + \abs{\epsilon} \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix} + O(\abs{\v \epsilon}^2) = \begin{pmatrix} 1 & \abs{\v \epsilon} & 0 \\ -\abs{\v \epsilon} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} + O(\abs{\v\epsilon}^2) \\
+&= \begin{pmatrix} \cos{\abs{\v \epsilon}} & \sin{\abs{\v \epsilon}} & 0 \\ -\sin{\abs{\v \epsilon}} & \cos{\abs{\v \epsilon}} & 0 \\ 0 & 0 & 1 \end{pmatrix} + O(\abs{\v \epsilon}^2) \\
+\end{align*}
+\end{ex}
+Anwendung:
+\begin{align*}
+\v{\Delta\phi} &= -\v \epsilon \\
+R(\v{\Delta\phi} &= \mathbb{1} - \v{\Delta\phi} \v T) \\
+R(\v{\Delta\phi})_{ij} &= \delta_{ij} - \Delta\phi_k \eps_{ijk} \\
+R(\v{\Delta\phi})_{ij}v_j &= v_i + \Delta\phi_k \eps_{ikj} v_j \\
+R(\v{\Delta\phi})\v v &= \v v + \v{\Delta\phi} \times \v v \\
+\intertext{Trivia: Wenn jemand mit Deltas anfängt, dann hört er auch mit $\d$'s auf.}
+\v v(t) &= v  \\
+\v v(t + \Delta t) &= R(\v{\Delta\phi})\v v \\
+\lim_{\Delta t \to 0} \frac{\v v(t +\Delta t) - \v v(t)}{\Delta t} &= \frac{(R(\v{\Delta \phi}) - \mathbb{1})}{\Delta t}\v v = \underbrace{\frac{\v{\Delta\phi}}{\Delta t}}_{\v \omega} \times \v v = \v \omega \times \v v = \dd{\v v}{t} \\
+\v \omega &= \lim_{\Delta t \to 0} \frac{\v{\Delta \phi}}{\Delta t} = \dd{\v\phi}{t} = \dot{\v \phi} \\
+\end{align*}
+\subsection{Rotierendes Koordinatensystem}
+\label{sec-7-5}
+In diesem Abschnitt sei $r_x, \omega_x \in\mathbb{R}^3$ \\
+   $r_I$: Geschwindigkeit im Intertialsystem
+\begin{align*}
+\intertext{Im Inertialsystem}
+r_I &= r_0(t) + r_N \\
+&= r_0(t) + R(t) r \\
+\intertext{Newton im Intertext}
+m\ddot{r_I} &= F_I \\
+\implies m\ddot{r_0} + (R\cdot r)^{..} &= F_I = R\cdot F \\
+\dot{R}(t)\cdot r &= \lim_{\Delta t \to 0} \frac{R(t + \Delta t) - R(t)}{\Delta t} r \\
+\intertext{wichtge Formel: $\dot{R}(t)\cdot r = R(\omega\times r)$, damit erhält man:}
+&= \frac{(R(\Delta t) - \mathbb{1})}{\Delta t} R(t) r = \underarrow[\omega_{IS}]{$R\omega$} \times R(t)\cdot r = (R\omega) \times (R r) = R(\omega\times r) \\
+(R r)^{..} &= (\dot{R} r + R \dot{r})^{.} = (R(\omega \times r) + R\dot{r})^{.} = \dot{R}(\omega\times r) + R(\dot{\omega}\times r) + R(\omega\times\dot{r}) + \dot{R}\dot{r} + R \ddot{r} \\
+&= R(\omega\times(\omega \times r) + \dot{\omega} \times r + 2(\omega\times \dot{r}) + \ddot{r}) \\
+\implies m\ddot{r} &= F - m((R^{-1})\ddot{r}_0 + \underbrace{\omega\times(\omega\times r)}_{F_{Zentrifugal}} + \underbrace{2\omega\times\dot{r}}_{F_{Coriolis}} + \underbrace{\dot{\omega}\times r}_{E_{Tangential}})
+\end{align*}
+\begin{remark}[Zentrifugalkraft]
+\begin{align*}
+\intertext{$F_z$:}
+(-\omega\times(\omega\times r))_k = -\eps_{ijk}\omega_i \eps_{lmj} \omega_l r_m \\
+&= -(\delta_{lk} \delta_{mi} - \delta_{mk} \delta_{li}) \omega_l r_m \omega_i \\
+&= -(\omega r) \omega_k + r_k(\omega^2) \\
+\intertext{für $\omega\perp r$:}
+\v F_z = m\omega^2 \v r
+\end{align*}
+\end{remark}
+\begin{remark}[Corioliskraft]
+\begin{align*}
+\intertext{$F_c$ zum Beispiel: $r\perp \omega$}
+\v F_c &= -2m \abs{\v\omega}\abs{\v v}\v e_3 \times \v e_1 = 2m\abs{\omega}\abs{\omega v} \v e_2
+\end{align*}
+\end{remark}
+\subsection{Trägheitstensor}
+\label{sec-7-6}
+Massenpunkte bei $\v r_a$
+\begin{align*}
+\lim_{\Delta t\to 0} \frac{\Delta \v r_a}{\Delta t} = \frac{\v{\Delta \phi}}{\Delta t} \times \v r_a = \dd{\v r_a}{t} = \v \omega \times \v r_A \\
+E_{kin} = \sum_a \frac{m a}{2}(\dot{\v r}_a^2) = \sum_a \frac{m_a}{2}(\v \omega \times \v r_a)^2 \\
+&= \sum_a \frac{m_a}{2}\eps_{ijk} \eps_{lmk} \omega_i (r_a)_j \omega_l (r_a)_m \\
+&= \sum_a \frac{m_a}{2}(\delta_{jm}\delta_{ij} - \delta_{jl}\delta_{im})\omega_i \omega_l (r_a)_j(r_a)_m \\
+&= \sum_a \frac{1}{2}\underbrace{m_a(\Delta_{ij}r_a^2 - (r_a)_i (r_a)_j)\omega_i \omega_j}_{I_{ij}} = \frac{1}{2}I_{ij}\omega_i \omega_j \\
+&= \frac{1}{2}\omega^T I \omega \\
+I &= \int \d^3 r \underarrow[\rho]{Massendichte}(r)(\mathbb{1} \v r^2 - \v r \otimes \v r^T) \\
+I_{ij} = \int \d^3 r \rho(r) (\v r^2 \delta_{ij} - r_i r_j)
+\end{align*}
+\begin{align*}
+\eps^{ijk} \eps^{lmn} = N(\delta^{il} \delta^{jm} \delta^kn + \ldots) \\
+\delta^{ij} = i
+\end{align*}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

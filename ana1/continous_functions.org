@@ -277,3 +277,139 @@
    Nach Wahlfreiheit von $\delta_\eps$ gilt
    \[\abs{\ubar\phi_\eps (x) - \bar\phi_\eps(x)} = \abs{f(\ubar\xi_k) - f(\bar\xi_k)} \leq \abs{f(\ubar\xi_k) - f(x)} + \abs{f(x) - f(\bar\xi_k)} \underarrow[<]{aus gleichmäßiger Stetigkeit} \frac{1}{2} \eps + \frac{1}{2} \eps = \eps\]
    #+end_proof
+** Konvergenz von Funktionen
+   #+ATTR_LATEX: :options [3.18]
+   #+begin_defn latex
+   Seien $f_n: D\to\mathbb{R}, n \in\mathbb{N}$ Funktionen mit einem gemeinsamen Definitionsbereich $D\subseteq \mathbb{R}$.
+   Wir nennen die folge $(f_n)_{n\in\mathbb{N}}$ *punktweise* konvergenz gegener eine Funktion $f:D\to\mathbb{R}$,
+   wenn für jedes $x\in D$ gilt $f_n(x) \xrightarrow{n\to\infty} f(x)$
+   #+end_defn
+   #+ATTR_LATEX: :options [3.19]
+   #+begin_ex latex
+   \mbox{}
+   1. \[f_n(x) = \sum_{k = 0}^{n} \frac{x^k}{k!} \xrightarrow{n\to\infty} \sum_{k = 0}^{\infty} \frac{x^k}{k!} = e^x\]
+	  Hier ist $f_n(x)$ stetig und $f(x)$ stetig.
+   2. $f_n(x) = 1 - x^n, x\in[0,1] \subseteq \mathbb{R}$
+	  \[\underarrow[f_n(x)]{stetig} \xrightarrow{n\to\infty} \underarrow[f(x)]{nicht stetig} := \begin{cases} 1 & 0 \leq x \leq 1 \\ 0 & x = 1 \end{cases}\]
+   #+end_ex
+   #+ATTR_LATEX: :options [3.19 Gleichmäßige Konvergenz]
+   #+begin_defn latex
+   Eine Folge von Funktionen $f_n:D\to\mathbb{R}, n\in\mathbb{N}$ heißt *gleichmäßig konvergent* gegen eine Funktion $f:D\to\mathbb{R}$, wenn
+   \[\Forall \eps > 0 \Exists n_\eps \in \mathbb{N}: n\geq n_\eps \implies \abs{f_n(x) - f(x)} < \eps \Forall x\in D\]
+   #+end_defn
+   #+ATTR_LATEX: :options [3.20 Satz von der gleichmäßigen Konvergenz]
+   #+begin_thm latex
+   Konvergiert eine Folge stetiger Funkitonen $f_n: D\to\mathbb{R}, n\in\mathbb{N}$ gleichmäßig gegen $f:D\to\mathbb{R}$,
+   so ist auch die Grenzfunktion $f$ stetig.
+   #+end_thm
+   #+begin_proof latex
+   Seien $x_0 \in D$ und $\eps > 0$ gegeben. Zu zeigen:
+   \[\Exists \delta_\eps > 0: \Forall x \in D \abs{x - x_0} < \delta_eps \implies \abs{f(x) - f(x_0)} < \eps\]
+   Wegen der gleichmäßigen Konvergenz von $(f_n)_{n\in\mathbb{N}}$:
+   \[\Exists x\in \mathbb{N} \Forall x\in D: \abs{f_n(x) - f(x)} < \frac{1}{3} \eps\]
+   Aus Stetigkeit von $f_n$:
+   \[\Exists \delta_\eps > 0 Forall x\in D: \abs{x - x_0} < \delta_\eps \implies \abs{f_n(x) - f_n(x_0)} < \frac{1}{3} \eps\]
+   \[\implies \Forall x\in D \abs{f(x) - f(x_0)} \leq \underbrace{\abs{f(x) - f_n(x)}}_{< \frac{1}{3}} + \underbrace{\abs{f_n(x) - f_n(x_0)}}_{< \frac{1}{3}} + \underbrace{\abs{f_n(x_0) - f(x_0)}}_{< \frac{1}{3}} < \eps\]
+   das heißt $f$ ist stetig.
+   #+end_proof
+** Reellwertige stetige Funktionen
+   #+ATTR_LATEX: :options [3.21]
+   #+begin_defn latex
+   \[C(\mathbb{K}) := \{f:\mathbb{K} \to \mathbb{R} \mid f~\text{ist stetig auf}~\mathbb{K}\}\]
+   ist der Raum der stetigen reellwertigen Funktionen auf $\mathbb{K}$
+   #+end_defn
+   #+begin_remark latex
+   Seien $f,g \in C(\mathbb{K}), \lambda \in \mathbb{R}$. Dann ist auch $f + g, f \cdot g, \lambda f$ wieder eine Funktion aus $C(\mathbb{K})$.
+   $C(\mathbb{K})$ bildet dann einen Ring.
+   #+end_remark
+   #+ATTR_LATEX: :options [3.22]
+   #+begin_defn latex
+   Seien $f,g: \mathbb{K} \to \mathbb{R}$.
+   \begin{align*}
+   \max_{x\in\mathbb{K}} (f,g)(x) &:= \max_{x\in\mathbb{K}}(f(x), g(x))
+   \min_{x\in\mathbb{K}} (f,g)(x) &:= \min_{x\in\mathbb{K}}(f(x), g(x))
+   \end{align*}
+   #+end_defn
+   #+ATTR_LATEX: :options [3.23]
+   #+begin_thm latex
+   $\max(f,g)$ und $\min(f,g)$ sind in $C(\mathbb{K})$ für $f,g\in C(\mathbb{K})$
+   #+end_thm
+   #+begin_proof latex
+   Es genügt, dass mit $f$ auch $\abs{f}$ (als Komposition stetige Abbildung) stetig ist, denn
+   \begin{align*}
+   \max(f,g) &= \frac{1}{2}(f + g) + \frac{1}{2}\abs{f - g} \\
+   \min(f,g) &= -\max(-f, -g) \tag*{\qedhere}
+   \end{align*}
+   #+end_proof
+   Wir betrachten jetzt $C(\underbrace{[a,b]}_{\mathbb{K}})$ und definieren
+   \[\norm{f}_\infty := \max_{x\in [a,b]} \abs{f(x)}\]
+   #+ATTR_LATEX: :options [3.24]
+   #+begin_defn latex
+   Sei $\mathbb{K}$ ein Körper (mit dem Betrag $\abs{\,}$), Sei $V$ ein Vektorraum über $\mathbb{K}$.
+   \[\norm{\,}: V \to\mathbb{R}\]
+   heißt eine *Norm* auch $V \iff$:
+   - (N1) $\Forall x\in V: \norm{x} \geq 0 \wedge (\norm{x} = 0 \iff x = 0)$
+   - (N2) $\Forall x\in V: \alpha\in\mathbb{K} \norm{\alpha x} = \abs{\alpha}\norm{x}$
+   - (N3) $\Forall x,y\in V: \norm{x + y} \leq \norm{x} + \norm{y}$
+   $(V,\norm{\,})$ heißt normierter Vektorraum. \\
+   $C([a,b])$ ist ein Vektorraum. Die Normeigenschaften von $\norm{\,}_\infty$ als Abbildung von $C([a,b])$ nach $\left[0,\infty)$
+   folgt direkt aus den Eigenschaften des Absolutbetrags
+   \begin{align*}
+   \norm{f}_\infty &\implies f(x) = 0 \Forall x\in [a,b] \tag{Definitheit} \\
+   \norm{\alpha f} &= \abs{\alpha} \norm{f}_\infty, \alpha \in \mathbb{R} \tag{Homogenität} \\
+   \norm{f + g}_\infty &\leq \norm{f}_\infty + \norm(g)_\infty \tag{Dreiecksungleichung}
+   \end{align*}
+   Wir definieren sogenannte Normkonvergenz
+   \[f_n \xrightarrow{n\to\infty} f~\text{in Norm} \iff \norm{f - f_n}_\infty \xrightarrow{n\to\infty} 0\]
+   Für $\norm{\,}_\infty$ Konvergenz in Norm ist die gleichmäßige Konvergenz.
+   #+end_defn
+   #+ATTR_LATEX: :options [3.25]
+   #+begin_lemma latex
+   Für eine Funktionenfolge $(f_n)_{n\in\mathbb{N}} \in C([a,b])$ ist die gleichmäßige Konvergenz gegen eine Grenzfunktion. $f:[a,b] \to \mathbb{R}$
+   gleichbedeutend mit $\norm{f_n - f}_\infty \xrightarrow{n\to\infty} 0$
+   #+end_lemma
+   #+begin_proof latex
+   aus Definition.
+   #+end_proof
+   #+ATTR_LATEX: :options [3.26 Cauchy Folge von Funktionen]
+   #+begin_defn latex
+   Eine Folge $(f_n)_{n\in\mathbb{N}} \in C([a,b])$ heißt Cauchy-Folge, wenn
+   \[\Forall \eps \Exists n_\eps \in \mathbb{N}: n,m \geq n_\eps \implies \norm{f_n - f_m}_\infty < \eps\]
+   #+end_defn
+   #+ATTR_LATEX: :options [3.27]
+   #+begin_lemma latex
+   Eine Folge $(f_n)_{n\in\mathbb{N}} \in C([a,b])$ welche gegen eine Grenzfunktion $f\in C([a,b])$ konvergiert ist Cauchy-Folge.
+   #+end_lemma
+   #+begin_proof latex
+   analog wie Beweis für Zahlenfolgen
+   #+end_proof
+   #+ATTR_LATEX: :options [3.28 Satz von der Vollständigkeit]
+   #+begin_thm latex
+   $(C([a,b],\norm{\,}_\infty))$ ist vollständig bezüglich der gleichmäßigen Konvergenz, das heißt jede Cauchy-Folge $(f_n)_{n\in\mathbb{N}} \in C([a,b])$ besitzt ein Limes $f \in C([a,b])$
+   #+end_thm
+   #+begin_proof latex
+   Sei $(f_n)_{n\in\mathbb{N}} \in C([a,b])$ eine Cauchy-Folge. Dann ist für jedes feste $x\in [a,b]~(f_n(x))_{n\in\mathbb{N}}$ eine Cauchy-Folge von Zahlen und besitzt einen
+   (eindeutig bestimmten) Limes $f(x) \in \mathbb{R}$. \\
+   Wir wollen zeigen, dass diese Konvergenz gleichmäßig ist. Angenommen $f_n \to f$ nicht gleichmäßig \\
+   $\implies \Exists \eps > 0$ und $\Forall n\in\mathbb{N}$ einen Punkt $x_n\in [a,b]$ sodass $\abs{f_n(x_n) - f(x_n)} > \eps$.
+   Die Punktfolge $(x_n)_{n\in\mathbb{N}}$ besitzt eine konvergente Teilfolge (nach Bolzano-Weierstrass Satz, $[a,b]$ beschränkt und abgeschlossen).
+   Wegen der Cauchy-Folgen Eigenschaft
+   \[\Exists n_\eps\in\mathbb{N}: m\geq n_\eps \implies \norm{f_{n_\eps} - f_n}_\infty < \frac{1}{2} \eps\]
+   Wegen der Konvergenz $f_m(x_{n_\eps}) \xrightarrow{n\to\infty} f(x_{n_\eps})$:
+   \[\Exists m_\eps \geq n_\eps: \abs{f_{m_\eps}(x_{n_\eps}) - f(x_{n_\eps})} < \frac{1}{2} \eps\]
+   \[\implies \abs{f_{n_\eps} - f(x_{n_\eps})} \leq \abs{f_{n_\eps}(x_{n_\eps}) - f_{m_\eps}(x_{n_\eps})} + \abs{f_{m_\eps}(x_{n_\eps}) - f(x_{n_\eps})} < \eps\]
+   $\implies f_n\to f$ gleichmäßig und im Wiederspruch zur Annahme. $\implies f\in C([a,b])$ (aus Satz 3.20)
+   #+end_proof
+   #+begin_remark latex
+   Vollständige normierte Räume werden Banach Räume genannt.
+   $C([a,b])$ ist also ein Banach Raum.
+   #+end_remark
+   #+ATTR_LATEX: :options [3.29 Satz von Arzela-Ascoli]
+   #+begin_thm latex
+   Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge von Funktionen in $C([a,b])$ welceh *gleichmäßig beschränkt* und *gleichmäßig stetig* sind.
+   das heißt
+   1. $\displaystyle\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$
+   2. $\displaystyle\Forall \eps > 0 \Exists \delta_\eps > 0 \Forall n\in\mathbb{N}: \max_{\substack{x,y\in [a,b] \\ \abs{x - a} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps$
+   Dann existiert eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$ welche gegen ein $f\in C([a,b])$ konvergiert, das heißt
+   \[\norm{f_{n_k} - f}_\infty \xrightarrow{k\to\infty} 0\]
+   #+end_thm

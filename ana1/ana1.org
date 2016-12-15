@@ -71,3 +71,4 @@
 #+INCLUDE: "/home/robin/study/lectures/ana1/sequence.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ana1/series.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ana1/continous_functions.org" :minlevel 1
+# #+INCLUDE: "/home/robin/study/lectures/ana1/convergence_of_functions.org" :minlevel 1

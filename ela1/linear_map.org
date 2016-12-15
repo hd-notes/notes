@@ -1,0 +1,73 @@
+* Lineare Abbildungen
+  In diesem Kapitel sei $K$ stets ein Körper, $U, V, W$ stets ein $K$-VR.
+  #+ATTR_LATEX: :options [12.1 Lineare Abbildung]
+  #+begin_defn latex
+  $f: V\to W$ Abbildung. $f$ heißt $K$-lineare Abbildung (Homomorphismus von K-VR, kurz lineare Abbildung) $xLeftrightarrow{\text{Def.}}$ Die folgende Bedingungen sind erfüllt:
+  - (L1) $f(u + v) = f(u) + f(v) \Forall u,v\in V$
+  - (L1) $f(\lambda v) = \lambda f(v) \Forall u,v\in V \Forall w\in V, \lambda \in K$
+  #+end_defn
+  #+ATTR_LATEX: :options [12.2]
+  #+begin_ex latex
+  1. $A = (a_{i,j}) \in M(m\times n, K)$. Wir schreiben die Elemente von $K^n$ als Spaltenvektoren und betrachten die Abbildung:
+	 \[\tilde A : K^n \to K^m, x = \cvec{x_1; \vdots; x_n} \mapsto Ax\]
+	 Es gilt für $u,v \in K^n, \lambda \in K:$
+	 \begin{align*}
+	 \tilde A(u + v) = A(u + v) = Au + Av = \tilde A(u) + \tilde A(v) \\
+	 \tilde A(\lambda v) = A(\lambda v) = \lambda (A v) = \lamda \tilde(v)
+	 \end{align*}
+	 Wegen $\tilde A(e_i) = A e_i = \cvec{a_{i1} ; \vdots ; a_{in}}$ stehen in den Spalten von $A$ genau die Bilder der kanonischen Basisvektoren $e_1, \ldots e_n$ von $K^n$ unter $\tilde A$.
+	 Sind $A\in M(m\times n, K), B\in M(n\times r, K), x\in K^r$, dann ist
+	 \[\tilde{AB} (x) = (AB)(x) = A(B(x)) = A \tilde B(x) = \tilde A(\tilde B(x)) = (\tilde A \tilde B)(x)\]
+	 das heißt die Veknüpfung von $\tilde A, \tilde B$ entspricht der Multiplikation der Matrizen $A,B: \tilde A \cdot \tilde B = \tilde{AB}$
+  2. Wir betrachten die Abbildung \[f: \mathbb{R}^2 \to \mathbb{R}^2, \cvec{x_1; x_2} \mapsto \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\cvec{x_1; x_2} = \cvec{x_1; -x_2}\]
+	 Diese ist linear nach 1., beschreibt Spiegelung an der $x_1$-Achse.
+  3. Sei $V = \{f: (0,1)\to \mathbb{R}\mid f~\text{ist differenzierbar}\}$ (ist ein $\mathbb{R}$-VR)
+	 \[\prime: V\to \{g:(0,1) \to \mathbb{R} ~\text{Abb}\}, f\mapsto f'\]
+	 ist eine lineare Abbildung, denn es gilt für $f,g \in V, \lambda \in\mathbb{R}$:
+	 \begin{align*}
+	 (f + g)' = f' + g' \\
+	 (\lambda f)' = \lambda f'
+	 \end{align*}
+  #+end_ex
+  #+ATTR_LATEX: :options [12.3]
+  #+begin_remark latex
+  $f: V\to W$ lineare Abbildung. Dann gilt:
+  1. $f(0) = 0$
+  2. $f(\lambda_1 v_1 + \ldots + \lambda_n v_n) = \lambda_1 f(v_1) + \ldots + \lambda_n f(v_n) \Forall v_1, \ldots v_n \in V, \lambda_1,\ldots\lambda_n \in K$
+  3. $V'\subseteq V$ UVR $\implies f(V') \subseteq W$ ist UVR
+  4. $W'\subseteq W$ UVR $\implies f^{1}(W') \subseteq V$ ist UVR
+  5. $(v_i)_{i\in I}$ linear abhängige Familie in $V \implies (f(v_i))_{i\in I}$ linear abhängige Familie in $W$
+  6. $V' = \Lin((v_i)_{i\in I}) \implies f(V') = \Lin((f(v_i))_{i\in I})$
+  7. $W$ endlich dimensional $\implies f(V)$ endlich dimensionaler UVR von $W$ mit $\Dim f(V) \leq \sim W$
+  #+end_remark
+  #+begin_proof latex
+  1. $f(0) * f(0 + 0) = f(0) + f(0) \implies f(0) = 0$
+  2. $f(\lambda_1 v_1 + \ldots + \lambda_n v_n) = f(\lambda_1 v_1) + \ldots + f(\lambda_n v_n) = \lambda_1 f(v_1) + \ldots \lambda_n f(v_n)$
+  3. Sei $V' \subseteq V$ UVR. \\
+	 Behauptung: $F(V') \subseteq W$ ist UVR denn:
+	 - (U1): $0 \in V' \implies f(0) \in f(V')$
+	 - (U2): Seien $w_1, w_2 \in f(V') \implies \Exists v_1, v_2 \in V': w_1 = f(v_1), v_2 = f(v_2)$
+	   \[\implies w_1 + w_2 = f(v_1) + f(v_2) = f(\underbrace{v_1 + v_2}_{\in V'}) \in f(V')\]
+	 - (U3): Sei $\lambda \in K, w\in f(V') \implies \Exists v\in V': w = f(v)$
+	   \[\implies \lambda w = \lambda f(v) = f(\underbrace{\lambda v}_{\in V'} \in f(V'))\]
+  4. Sei $W'\subseteq W$ UVR. \\
+	 Behauptung: $f^{-1}(w') \subseteq V$ ist UVR, denn
+	 - (U1): $f(0) = 0 \in W' \implies 0 \in f^{-1}(W')$
+	 - (U2): Seien $v_1, v_2\in f^{-1}(w')$:
+	   \[\implies f(v_1), f(v_2) \in W' \implies f(v_1 + v_2) = f(v_1) + f(v_2) \in W' \implies v_1 + v_2 \in f^{-1}(W')\]
+	 - (U3): Sei $\lambda \in K, v\in f^{-1}(W')$:
+	   \[\implies f(v) \in W' \implies f(\lambda v) = \lambda f(v) \in W' \implies \lambda v \in f^{-1}(W')\]
+  5. Sei $(v_i)_{i\in I}$ linear abhängig
+	 \begin{align*}
+	 &\implies \Exists r\in \mathbb{N}, i_1, \ldots, i_r \in I, \lambda_{i_1}, \lambda_{i_r} \in K: (\lambda_{i_1}, \ldots, \lambda_{i_r}) \neq (0, \ldots, 0) \wedge \lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r} = 0 \\
+	 &\implies 0 = f(0) = f(\lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r}) = \lambda_{i_1} f(v_{i_1}) + \ldots + \lambda_{i_1} f(v_{i_1}) \\
+	 &\implies (f(v_i))_{i\in I} ~\text{linear abhängig}
+	 \end{align*}
+  6. zu zeigen: $V' = \Lin((v_i)_{i\in I}) \implies f(V') = \Lin((f(v_i))_{i\in I})$ \\
+	 "$\subseteq$" Sei $w \in f(V') \implies \Exists v\in V': w = f(v)$. wegen $V'$ = $\lin((v_i)_{i\in I})$:
+	 \begin{align*}
+	 &\Exists i_1, \ldots, i_r \in I, \lambda_{i_1}, \ldots, \lambda_{i_r} \in K: v = \lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r} \\
+	 &\implies f(v) = \lambda_{i_1} f(v_{i_1}) + \ldots + \lambda_{i_r} f(v_{i_r}) \in \Lin((f(v_i))_{i\in I})
+	 \end{align*}
+	 "$\supseteq$" Sei $w\in \Lin((f(v_i))_{i\in I}) $
+  #+end_proof

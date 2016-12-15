@@ -351,7 +351,7 @@
    Betrachte zur Vereinfachung $R = \mathbb{1} \implies \v F'(t', \v x') = \v F(t, \v x)$ \\
 
    Geschwindigkeitsabhängige Kräfte: zum Beispiel Reibung
-   \[\v F_R = -\alpha(\v x - \underarrow[v u]{Medium})\]
+   \[\v F_R = -\alpha(\dot{\v x} - \underarrow[\v u]{Medium})\]
 ** Zusammenfassung:
    Allgemeingültiges Schema:
    - Beschreibung der Bewegung festlegen (Spielfeld) (hier: affiner Raum und Galileische Struktur)

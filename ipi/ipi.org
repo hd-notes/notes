@@ -35,6 +35,7 @@
 #+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
 #+LATEX_HEADER: \theoremstyle{remark}
 #+LATEX_HEADER: \newtheorem{ex}{Beispiel}
+#+LATEX_HEADER: \newcommand{\eps}{\varepsilon}
 #+LATEX_HEADER: \usepackage{etoolbox}
 #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 #+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
@@ -510,3 +511,148 @@
    ein 1-Bit reingeschoben, damit Zahl negativ bleibt $\implies$ es gilt immer noch $x \gg k = (x / 2^k)$
    Reichen 64 Bit nicht aus (zum Beispiel bei moderner Verschlüsselung) verwende BigInt: Datentyp variabler Größe.
    Zum Beispiel GNU Multi-Precision Library
+** reelle Zahlen
+   c++ bietet Typen
+   | Name        | Größe                          | Bereich                        | kleinste Zahl   | Literale  |
+   |-------------+--------------------------------+--------------------------------+-----------------+-----------|
+   | float       | 32bit                          | $\SI{-1e38}{} - \SI{1e38}{}$   | $10e-38$        | 4.0f      |
+   | double      | 64bit                          | $\SI{-1e308}{} - \SI{1e308}{}$ | $\SI{1e-308}{}$ | 4.0, 1e-2 |
+   | long double | platformabhängig, $\geq$ 64bit |                                |                 |           |
+   Der c++ Standard legt die Größe nicht fest, aber praktisch alle gängigen CPUs benutzen Standard IEEE 754, c++
+   übernimmt HW-Implementation. Ziele der Definition von reellwertigen Typen:
+   - hohe Genauigkeit (viele gültige Nachommastellen)
+   - Zahlen sehr unterschiedlicher Größenskalen (zum Beispiel Durchmesser eines Proton $=\SI{2e-15}{\meter}$ vs. Durchmesser des sichtbaren Universum $\SI{1e27}{\meter}$)
+	 mit natürlichen Zahlen bräuchte man $> 150$bit
+   elegante Lösung: halb-logarithmische Darstellung ("floating point"). Datentyp ist aus 3 natürlichen Zahlen zusammengesetz (aber alles von der CPU gekapselt)
+   - $S$ (1-bit): Vorzeichen, 0 = "$+$", 1 = "-"
+   - $M$ (m-bit): Mantisse: Nachkommastellen
+   - $E$: (e-bit, Bias b): Exponent: Größenordung
+   die eigentliche Zahl wird durch
+   \[x = (-1)^s \cdot (1 + M\cdot 2^{-m}) \cdot 2^{E-b}\]
+   - $M \in [0, 2^m - 1]$
+   - $M\cdot 2^{-m} \in [0, \frac{2^m - 1}{2^m}) \in [0,1)$
+   - $1 + M\cdot 2^{-m} \in [1,2)$
+   Beispiel: natürliche Zahlen
+   | $x$ | $M\cdot 2^{-m}$ | $E - b$ | effektive Darstellung |
+   |-----+-----------------+---------+-----------------------|
+   |   1 |               0 |       0 | $1\cdot 2^0$          |
+   |   2 |               0 |       1 | $1\cdot 2^1$          |
+   |   3 |             0.5 |       1 | $1.5\cdot 2^1$        |
+   |   4 |               0 |       2 | $1\cdot 2^2$          |
+   |   5 |            0.25 |       2 | $1.25\cdot 2^2$       |
+   Konsequenz: alle ganzen Zahlen zwischen $-2^m, \ldots, 2^m$ könne exakt dargestellt werden und haben exakte Arithmetik. (IEEE 754)
+   Werte für $m,e,b$
+   - float
+	 - $m = 23$
+	 - $e = 8$
+	 - $b = 127$
+	 - $2^{E - b} \in [2^{-126}, 2^{127}] \approx [10^{-38}, 10^{38}]$
+   - double
+	 - $m = 52$
+	 - $e = 11$
+	 - $b = 1024$
+	 - $2^{E - b} \in [2^{-1022}, 2^{1023}] \approx [10^{-308}, 10^{308}]$
+   Anzahl der Nachkommastellen: $\eps = 2^{-m}$ (machine epsilon, unit last place (ULP))
+   - float $2^{-23} \approx \SI{1e-7}{}$
+   - float $2^{-52} \approx \SI{1e-16}{}$
+   $\eps$ ist die kleinste Zahl, sodass
+   \[(1.0 + \eps) \neq 1.0\]
+   weil Nachkommastellen außerhalb der Mantisse (rechts von $2^{-m}$) ignoriert werden. $\implies$ Problem der Auslöschung von signifikanten Stellen. Wenn man zwei
+   fast gleich große Zahlen subtrahiert, löschen sich fast alle Bits der Mantisse $\implies$ nur wenige gültige Nachkommastellen überleben. Zum Beispiel:
+   \[0.1234567 - 0.1234566 = 0.000001\tag{nur eine gültige Nachkommastelle!}\]
+   \[1.0 - \cos{x}, x \to 0, x\approx 0 \implies \cos{x} \approx 1 \tag*{$\implies$ Auslösung}\]
+   | x            | Anzahl der gültigen Stellen | Additionstheoriem $1 - \cos(x) = 2(\sin(x / 2))^2$ |
+   |--------------+-----------------------------+----------------------------------------------------|
+   | \SI{0.001}{} | 9                           |                                                 15 |
+   | \SI{1e-8}{}  | 0 (\cos(\SI{1e-8}{}))       |                                                 15 |
+   Quadratische Gleichung:
+   \[a x^2 + b x + c = 0, b > 0\]
+   \[x_1 = \frac{1}{2 a}(-b + sqrt{b^2 - 4ac})\]
+   falls $a\cdot c\wedge b^2 \gg 4ac \implies \sqrt{b^2 -4ac} \approx b \implies x_1 \approx -b + b + (\eps') \approx 0 \implies$ Auslöschung, wenig gültige Stellen. Also umstellen:
+   \begin{align*}
+   x_1 %= \frac{1}{2a}(-b + \sqrt{b^2 - 4ac}) \frac{-b - \sqrt{b^2 - 4ac}}{-b - \sqrt{b^2 - 4ac}} \\
+   &= \frac{1}{2a} \frac{b^2 - (b^2 - 4ac)}{-b - sqrt{b^2 - 4ac}} \\
+   &= \frac{2c}{\underbrace{-b -\underbrace{\sqrt{b^2 - 4ac}}_{\approx b}}_{\approx -2b}}
+   \intertext{$\implies$ keine Auslösung}
+   \intertext{Dies tritt auch bei Aufgabe 8.3 der Übungszettel auf}
+   \end{align*}
+   Ausnahmeregeln (spezielle Werte)
+   - normal: $E\in [1,2^e - 2]$
+   - $E = 2^e - 1$ (größtmöglicher Wert): $\begin{cases} x = -\infty & M = 0 \wedge S = 1 \\ x = \infty & M = 0 \wedge S = 0 \\ x = ~\text{NaN}~ & M = 0\end{cases}$
+	 - $\pm\infty: \frac{1.0}{0.0}, \frac{-1.0}{0.0}, \ldots$
+	 - NaN: $\frac{0.0}{0.0}, \sqrt{-1.0}, \infty\cdot 0$
+   - $E = 0$ (kleinstmöglicher Wert): $\begin{cases} -0 & M = 0 \wedge S = 1 \\ 0 & M = 0 \wedge S = 0 \\ \text{denormalisierte Zahlen (für sehr kleine Werte)} & M > 0 \end{cases}$
+* Buchstabenzeichen
+  Buchstabenzeichen: "glyphs" müssen durch Zahlen repräsentiert werden "Zeichencode"
+** Geschichte
+   | 1963                | ASCII   | 7-bit                                  | Zeichen der englischen Schreibmaschiene (*keine* Umlaute)                                                                                                                                                                                                                                      |
+   | 1964 $\ldots$ 2000  |         | 8-bit Codes                            | mit Umlauten, Akzenten, kyrillische Zeichen, aber 8-bit sind zu wenig, um alles abzudecken $\implies$ viele verschiedene 8-bit Codes: DOS Codepage 437, Codepage 850 (Konsole im deutschen Windows), Windows-1252 ("ANSI") $\approx$ ISO 8859-1 \approx ISO 8859.15 (Westeuropäische Sprachen) |
+   | 1991 $\ldots$ heute | Unicode | anfangs 16-bit, jetzt $\approx$ 21-bit | alles (chinesisch, Hyroglyphen, Emojis, $\ldots$)                                                                                                                                                                                                                                             |
+   3 Codierungen für Unicode:
+   - UTF-8: variable length code: pro glyph $1 \ldots 4$ uint8
+   - UTF-16: variable length code: pro glyph $1 \ldots 2$ uint16
+   - UTF-32: fixed length code: pro glyph 1 uint32 pro glyph
+   In c++:
+   - char: 8-bit Codes
+   - wchar_t: 16-bit (Windows), 32-bit (Linux)
+   - u16char_t, u32char_t:
+   leider sehr Plattformabhängig
+   | Symbol | DOS | ANSI | UTF-8       |
+   |--------+-----+------+-------------|
+   | ö      | 148 |  246 | 195 182     |
+   | €      | 221 |  128 | 226 130 172 |
+   $\implies$ ICU Library. \\
+   hat man ale Zeichen korrekt, ist Problem noch nicht gelöst: alphabetische Sortierung:
+   - kontext abhängig
+   - sprach abhängig
+   - $ä$:
+	 - deutschen Wörterbuch: wie a
+	 - deutsches Telefonbuch: wie ae
+	 - schwedisch: hinter Zeichen $\overset{\scriptstyle \circ}{a}$
+   #+BEGIN_SRC cpp
+   #include <locale>
+   #include <codecvt
+   std::sort(v.begin(), v.end(), std::locale("se_SE.UTF-8")); // für schwedisch (falls se_SE.UTF-8 installiert)
+   #+END_SRC
+* Eigene Datentypen
+  3 Möglichkeiten
+  - enum: Aufzählungstypen $\implies$ Selbststudium
+  - struct: strukturierte Daten, zusammengesetzte Typen
+  - class: wie struct, auf objekt-orientiert
+  struct und enum schon in C, struct und class fast gleich
+  #+BEGIN_SRC cpp
+  struct TypeName { // Neuer Typ
+	  type_name1 var_name1; // existierende Typen
+	  type_name2 var_name2;
+	  // ...
+  }; // semikolon WICHTIG, falls vergessen: Fehlermeldung
+
+  // Beispiel:
+  struct Date {
+	  // Datenmember, Membervariables
+	  int day;
+	  int month;
+	  int year;
+  };
+
+  Date easter(int year) {
+	  // Datum ausrechnen
+
+	  // Datum zurückgeben
+	  Date d;
+	  d.day = day; // Punktsyntax kennen wir schon
+	  d.month = month;
+	  d.year = year;
+	  return d;
+  }
+
+  struct Character {
+  wchar_t clear;
+  wchar_t encrypted;
+  int count;
+  }
+
+  Character c;
+  c.count = 0;
+  c.count += 1;
+  #+END_SRC

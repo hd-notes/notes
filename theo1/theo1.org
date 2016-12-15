@@ -25,7 +25,7 @@
 #+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
 #+LATEX_HEADER: \newcommand{\f}[2]{\frac{#1}{#2}}
 #+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
-#+LATEX_HEADER: \renewcommand{\v}[1]{\vec{#1}}
+#+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
 #+LATEX_HEADER: \usepackage{pgfplots}
 #+LATEX_HEADER: \usepackage{amsthm}
 #+LATEX_HEADER: \theoremstyle{definition}
@@ -62,3 +62,4 @@ Einleitung: \\
 #+INCLUDE: "/home/robin/study/lectures/theo1/conservation_laws.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/theo1/harmonic_oscillator.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/theo1/symmetries.org" :minlevel 1
+#+INCLUDE: "/home/robin/study/lectures/theo1/pseudo_forces.org" :minlevel 1

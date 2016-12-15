@@ -1,0 +1,37 @@
+* Untervektorräume
+  #+begin_proof latex
+  (1.) $\implies$ (2.) \\
+  (2.) $\implies$ (3.) klar \\
+  (3.) $\implies$ (4.) klar \\
+  (4.) $\implies$ (2.) Es gelte 4., das heißt $V = U_1 + \ldots + U_r$ und $\dim(V) = \dim(U_1) + \ldots + \dim(U_r)$. Es seien
+	 $B_i = (v_1^{(i)}, \ldots, v_{si}^{(i)}), i = 1, \ldots, r$ Vasen von $U_i, \mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$.
+	 $\implies \mathcal{B}$ ist Erzeugendessystem von $U_1 + \ldots + U_r = V$, $\mathcal{B}$ besteht aus $s_1 + \ldots + s_r = \dim(U_1) + \ldots + \dim(U_r) = \dim V$ Vektoren
+	 $\implies \mathcal{B}$ ist Basis von $V$. \\
+  (2.) $\implies$ (1.) Es gelte 2., das heißt für ale Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{si}^{(i)}), i = 1, \ldots, r$ von $U_i$ ist $\mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$
+  eine Basis von $V$. \\
+  zu zeigen: $V = U_1 \oplus \ldots \oplus U_r$. \\
+  klar: $V = U_1 + \ldots U_r$ \\
+  Sei $i \in \{1, \ldots, r\}, v \in U_1 \cap \sum_{\substack{j = 1 \\ j \neq i}}^{r} U_j$. $\implies \Exists \mu_1^{(k)} \in K, k = 1,\ldots, r, = 1, l = 1, \ldots, s_k:$
+  \[v \underarrow[=]{$v\in U_i$} \mu_1^{(i)} v_1^{(i)} + \ldots + \mu_{si}^{(i)} v_{si}^{(i)} = \sum_{\substack{j = 1 \\ j \neq i}}^{r} (\mu_1^{(j)} v_1^{(j)} + \ldots + \mu_{si}^{(j)} v_{si}^{(j)})\]
+  Wegen $\mathcal{B}$ Basis folgt $\mu_{l}^(k) = 0 \Forall k = 1, \ldots, r, l = 1,\ldots,s_k$, also $v = 0$. Somit
+  \[U_i \cap \sum_{\substack{j = 1 \\ j\neq i}}^{r} U_j = \{0\}\]
+  also $V = U_1 \oplus \ldots \oplus U_r$
+  #+end_proof
+  #+ATTR_LATEX: :options [11.9 Existenz des Komplement]
+  #+begin_thm latex
+  $U\subseteq V$ UVR. Dann $\Exists$ ein UVR $W\subseteq V$ mit $V = U\oplus W$. $W$ heißt ein Komplement zu $U$ in $V$.
+  #+end_thm
+  #+begin_proof latex
+  Sei $(U_j)_{j\in J}$ eine Basis von $U$. Daraus folgt mit dem Basisergänzungssatz: Es existiert eine Menge $I \subseteq J$, Basis $(v_i)_{i\in i}$ von $V$ mit $v_j = u_j \Forall j\in J$
+  insbesondere $U = \Lin((v_i)_{i\in J})$. Setze $V := \Lin((v_i)_{i\in I\setminus J}) \implies U + W = V$. \\
+  Behauptung: $U \cap W = \{0\}$, denn Sei $v \in U \cap W \implies \Exists j_1, \ldots j_r \in J, i_1, \ldots, i_s \in I \setminus J, \lambda_{j_1}, \ldots, \lambda_{j_r}, \lambda_{i_1}, \ldots, \lambda_{i_s} \in K:$
+  \begin{align*}
+  v &= \lambda_{j_1}v_{j_1} + \ldots + \lambda_{j_r} v_{j_r} = \lambda{i_1}v_{i_1} + \ldots + \lambda_{i_s} v_{i_s}. \\
+  &\implies \lambda_{j_1} v_{j_1} + \ldots + \lambda_{j_r} v_{j_r} - \lambda_{i_1} v_{i_1} - \ldots - \lambda_{i_s} v_{i_s} = 0 \\
+  &\implies v = 0
+  \end{align*}
+  #+end_proof
+  #+begin_note latex
+  $W$ wie in 11.9 ist im allgemeinen nicht eindeutig bestimmt. Zum Beispiel:
+  \[K = \mathbb{R}, V = \mathbb{R}^2, U = \Lin((e_1)) \implies V = U \oplus \Lin((e_2)) = U \oplus \Lin((1,1))\]
+  #+end_note
