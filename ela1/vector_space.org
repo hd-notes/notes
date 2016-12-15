@@ -130,7 +130,7 @@
   $V$ K-VR, $I$ Indexmenge, $(U_i)_{i\in I}$ Familie von UVR von $V$ (das heißt für jedes $i\in I$ ist ein UVR $U_i$ von $V$ gegeben)
   Dann gilt:
   \[U := \bigcap_{i \in I} U_i\]
-  ist ein UVR von $V$. Mit anderen Worten: der Durchschnitt von UVRen von $V$ ist wieder ein UVR von $V$
+  ist ein UVR von $V$. Mit anderen Worten: der Durchschnitt von UVR von $V$ ist wieder ein UVR von $V$
   #+end_remark
   #+begin_proof latex
   1. (U1): $U \neq \emptyset$, denn $0 \in U_i \Forall i\in I$, also $0 \in U$
