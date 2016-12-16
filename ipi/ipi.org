@@ -403,9 +403,9 @@
 	 alle Zahlen mit dem gleichen Rest modulo $k$ bilden "Äquivalenzklasse", zum Beispiel $k = 4$
 	 \begin{align*}
 	 0 \mod 4 &= 0 \equiv 4 \mod 4 \equiv 8 \mod 4 \equiv 12 \mod 4 \ldots \\
-	 1 \mod 4 &= 0 \equiv 5 \mod 4 \equiv 9 \mod 4 \equiv 13 \mod 4 \ldots \\
-	 2 \mod 4 &= 0 \equiv 6 \mod 4 \equiv 10 \mod 4 \equiv 14 \mod 4 \ldots \\
-	 3 \mod 4 &= 0 \equiv 7 \mod 4 \equiv 11 \mod 4 \equiv 15 \mod 4 \ldots \\
+	 1 \mod 4 &= 1 \equiv 5 \mod 4 \equiv 9 \mod 4 \equiv 13 \mod 4 \ldots \\
+	 2 \mod 4 &= 2 \equiv 6 \mod 4 \equiv 10 \mod 4 \equiv 14 \mod 4 \ldots \\
+	 3 \mod 4 &= 3 \equiv 7 \mod 4 \equiv 11 \mod 4 \equiv 15 \mod 4 \ldots \\
 	 \end{align*}
 	 Ein Mitglied jeder Äquivalentzklasse wird Represäntant. \\
 	 Hier: kleinste Repreäsentanten $0, \ldots, (k - 1)$, mit $k = 2^m$
@@ -650,7 +650,7 @@
   wchar_t clear;
   wchar_t encrypted;
   int count;
-  }
+  };
 
   Character c;
   c.count = 0;
