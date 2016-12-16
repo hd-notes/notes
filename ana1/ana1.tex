@@ -1,4 +1,4 @@
-% Created 2016-12-15 Do 17:01
+% Created 2016-12-16 Fr 11:41
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -77,6 +77,8 @@
 \catcode`)=\active
 \newcommand{(}{\ifmmode\left\string(\else\string(\fi}
 \newcommand{)}{\ifmmode\right\string)\else\string)\fi}
+\usepackage{xcolor}
+\newcommand\RED{\color{red}}
 \author{Robin Heinemann}
 \date{\today}
 \title{Analysis I (Marciniak-Czochra)}
@@ -1970,7 +1972,7 @@ Vollständige normierte Räume werden Banach Räume genannt.
 $C([a,b])$ ist also ein Banach Raum.
 \end{remark}
 \begin{thm}[3.29 Satz von Arzela-Ascoli]
-Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge von Funktionen in $C([a,b])$ welceh \textbf{gleichmäßig beschränkt} und \textbf{gleichmäßig stetig} sind.
+Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge von Funktionen in $C([a,b])$ welche \textbf{gleichmäßig beschränkt} und \textbf{gleichmäßig stetig} sind.
 das heißt
 \begin{enumerate}
 \item $\displaystyle\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$
@@ -1978,6 +1980,27 @@ das heißt
 \end{enumerate}
 Dann existiert eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$ welche gegen ein $f\in C([a,b])$ konvergiert, das heißt
 \[\norm{f_{n_k} - f}_\infty \xrightarrow{k\to\infty} 0\]
+Annahmen: $f_n \in C([a,b])$,
+\begin{itemize}
+\item gleichmäßig beschränkt: $\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$
+\item gleichmäßig stetig:
+\[\Forall \eps \Exists \delta_\eps > 0 \Forall n\in\mathbb{N \m} \max_{\substack{x,y\in[a,b] \\ \abs{x - y} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps\]
+\end{itemize}
+Aussage: $\Exists$ eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$, sodass $f_{n_k} \xrightarrow{k\to\infty} f\in C([a,b])$
 \end{thm}
+\begin{proof}
+Sei $(r_k)_{k\in\mathbb{N}}$ eine Folge der rationalen Punkte in $[a,b]$. Für jedes $r_k$, nach Vorraussetzung $\sup_{n\in\mathbb{N}} \abs{f_n(r_k)} < \infty$
+\begin{equation*}
+\begin{pmatrix}
+&\RED {f_{n_1^{(1)}}},& f_{n_2^{(1)}},& \ldots,& f_{n_k^{(1)}} & \text{konvergiert in $r_1$} \\
+&f_{n_1^{(2)}},& \RED{f_{n_2^{(2)}}},& \ldots,& f_{n_k^{(2)}} & \text{konvergiert auch in $r_2$} \\
+&f_{n_1^{(3)}},& f_{n_2^{(3)}},& \ldots,& f_{n_k^{(3)}} & \text{konvergiert auch in $r_2$} \\
+&f_{n_1^{(k)}},& f_{n_2^{(k)}},& \ldots,& \RED{f_{n_k^{(k)}}} & \text{konvergiert auch in $r_k$} \\
+\end{pmatrix}
+\end{equation*}
+\RED{Diagonalfolge} \\
+   Nach sukzessiver Anwendung des Bolzano-Weierstrass Satz bekommen wir eine Folge von Teilfolgen. Die Folgen $(f_{n_j^{(k)}}(r_k))_{j\in\mathbb{N}}$ sind konvergent,
+$(n_j^{(k + 1)})_{j\in\mathbb{N}}$ ist Teilfolge von $(n_j^{(k)})_{j\in\mathbb{N}}$. $(f_{n_j^{(k)}}(r_l))_{j\in\mathbb{N}}$ ist konvergent für $l = 1,\ldots, k$.
+\end{proof}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

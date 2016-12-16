@@ -406,10 +406,40 @@
    #+end_remark
    #+ATTR_LATEX: :options [3.29 Satz von Arzela-Ascoli]
    #+begin_thm latex
-   Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge von Funktionen in $C([a,b])$ welceh *gleichmäßig beschränkt* und *gleichmäßig stetig* sind.
+   Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge von Funktionen in $C([a,b])$ welche *gleichmäßig beschränkt* und *gleichmäßig stetig* sind.
    das heißt
    1. $\displaystyle\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$
    2. $\displaystyle\Forall \eps > 0 \Exists \delta_\eps > 0 \Forall n\in\mathbb{N}: \max_{\substack{x,y\in [a,b] \\ \abs{x - a} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps$
    Dann existiert eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$ welche gegen ein $f\in C([a,b])$ konvergiert, das heißt
    \[\norm{f_{n_k} - f}_\infty \xrightarrow{k\to\infty} 0\]
+   Annahmen: $f_n \in C([a,b])$,
+   - gleichmäßig beschränkt: $\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$
+   - gleichmäßig stetig:
+	 \[\Forall \eps \Exists \delta_\eps > 0 \Forall n\in\mathbb{N \m} \max_{\substack{x,y\in[a,b] \\ \abs{x - y} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps\]
+   Aussage: $\Exists$ eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$, sodass $f_{n_k} \xrightarrow{k\to\infty} f\in C([a,b])$
    #+end_thm
+   #+begin_proof latex
+   Sei $(r_k)_{k\in\mathbb{N}}$ eine Folge der rationalen Punkte in $[a,b]$. Für jedes $r_k$, nach Vorraussetzung $\sup_{n\in\mathbb{N}} \abs{f_n(r_k)} < \infty$
+   \begin{equation*}
+   \begin{matrix}
+   &\RED {f_{n_1^{(1)}}},& f_{n_2^{(1)}},& \ldots,& f_{n_k^{(1)}} & \text{konvergiert in $r_1$} \\
+   &f_{n_1^{(2)}},& \RED{f_{n_2^{(2)}}},& \ldots,& f_{n_k^{(2)}} & \text{konvergiert auch in $r_2$} \\
+   &f_{n_1^{(3)}},& f_{n_2^{(3)}},& \ldots,& f_{n_k^{(3)}} & \text{konvergiert auch in $r_2$} \\
+   &f_{n_1^{(k)}},& f_{n_2^{(k)}},& \ldots,& \RED{f_{n_k^{(k)}}} & \text{konvergiert auch in $r_k$} \\
+   \end{matrix}
+   \end{equation*}
+   {\RED{Diagonalfolge}} \\
+   Nach sukzessiver Anwendung des Bolzano-Weierstrass Satz bekommen wir eine Folge von Teilfolgen. Die Folgen $(f_{n_j^{(k)}}(r_k))_{j\in\mathbb{N}}$ sind konvergent,
+   $(n_j^{(k + 1)})_{j\in\mathbb{N}}$ ist Teilfolge von $(n_j^{(k)})_{j\in\mathbb{N}}$. $(f_{n_j^{(k)}}(r_l))_{j\in\mathbb{N}}$ ist konvergent für $l = 1,\ldots, k$.
+   Für die Diagnoalfolge $(f_{n_k^{(k)}})_{k\in\mathbb{N}}$ ist dann $(f_{n_k^{(k)}}(r_j))_{k\in\mathbb{N}}$ konvergent für alle $j\in\mathbb{N}$.
+   Noch zu zeigen: Gleichmäßige konvergenz von dieser Diagonalfolge in allen $x\in[a,b]$. Wir bezeichnen jetzt die Diagonalfolge mit $(f_n)_{n\in\mathbb{N}}$ (erst für alle rationale $r_k$). \\
+   Für jedes $r_k \in [a,b]$ gibt es ein $n_\eps(r_k) \in \mathbb{N}$, sodass
+   \[\abs{f_n(r_k) - f_m(r_k)} < \frac{1}{3}\eps \Forall n,m\geq n_\eps(r_k)\]
+   Die gleichmäßige Stetigkeit impliziert, dass
+   \[\Exists \delta_\eps: x,y\in[a,b], \abs{x - y} < \delta_\eps \implies \sup_{n\in\mathbb{N}} \abs{f_n(x) - f_n(y)} < \frac{\eps}{3}\]
+   Wir unterteilen $[a,b]$ in $i_k = [x_{k - 1}, x_k], k = 1,\ldots, n$ mit $a < x_0 < \ldots < x_n = b$
+   \[\max_{1\leq k \leq n}\abs{x_k - x_{k - 1}} \leq \delta\]
+   Aus jedem $I_k$ wählen wir ein $r_k \in\mathbb{Q}$. $\Forall x\in I_k$ gilt dann für $n,m\geq n_\eps:= \max\{n_\eps(r_1), \ldots, n_\eps(r_n)\}$
+   \[\abs{f_n(x) - f_m(x)} \leq \abs{\underbrace{f_n(x) - f_n(r_k)}_{< \frac{1}{3}\eps}} + \abs{\underbrace{f_n(r_k) - f_m(r_k)}_{< \frac{1}{3}\eps}} + \abs{\underbrace{f_m(r_k) - f_m(x)}_{\frac{1}{3} \eps}} < \eps\]
+   $\implies$ für $n,m \geq n_\eps$ gilt $\norm{f_n - f_m}_\infty < \eps \implies (f_n)_{n\in\mathbb{N}}$ ist Cauchy-Folge im Banachraum $C([a,b]) \implies f_n \xrightarrow{n\to\infty} f$ für $f\in C([a,b])$
+   #+end_proof

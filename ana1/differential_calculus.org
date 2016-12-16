@@ -1,0 +1,90 @@
+* Differentiation
+  #+ATTR_LATEX: :options [4.1 Differenzquotienten]
+  #+begin_defn latex
+  Für eine Funktion $f:D\to \mathbb{R}, D\subseteq \mathbb{R}$, definieren wir in einem Punkt $x_0 \in D$ einen
+  *Differenzquotienten* durch $D_n f(x_0):= \frac{f(x_0 + h) - f(x_0)}{h}$, wobei $x_0 + h \in D$
+  #+end_defn
+  #+ATTR_LATEX: :options [4.2 Ableitung]
+  #+begin_defn latex
+  $f:D\to\mathbb{R}$ heißt *differenzierbar* im Punkt $x_0 \in D$ mit *Ableitung* $f'(x_0)$, wenn
+  für jede Nullfolge $(h_n)_{n\in\mathbb{N}}$ mit $x_0 + h_n \in D$, die Folge $(D_{h_n} f(x_0))_{n\in\mathbb{N}}$
+  konvergiert zu $f'(x_0)$
+  #+end_defn
+  #+begin_remark latex
+  $f'(x)$ ist eindeutig.
+  #+end_remark
+  #+begin_proof latex
+  Für zwei Nulfolge $h_n, \tilde h_n$, sodass:
+  \[\lim_{n\to\infty} D_{h_n} f(x_0) = a, \lim_{n\to\infty} D_{\tilde h_n} f(x_0) = \tilde a\]
+  fassen wir eine Nullfolge $\{h_1, \tilde h_1, h_2, \tilde h_2, \ldots\}$ zusammen. Der
+  zugeörige Differenzquotient konvergiert $\implies a = \tilde a$
+  #+end_proof
+  Notation:
+  \begin{align*}
+  f'(x_0) &=: \dd{f}{x}(x_0) \\
+  f'(x_0) = \lim_{\substack{x\in D \\ x\to x_0}}  \frac{f(x) - f(x_0)}{x - x_0}
+  \end{align*}
+  #+ATTR_LATEX: :options [4.3]
+  #+begin_defn latex
+  Eine Funktion $f:D\to\mathbb{R}$ heißt differenzierbar auf $D$, wenn sie in edem Punkt $x_0 \in D$ differenzierbar ist. Sie heißt stetig differenzierbar, wenn
+  die Ableitung $f'$ auf $D$ eine stetige Funktion ist.
+  #+end_defn
+  #+begin_remark latex
+  Im Falle eines Randpunktes behalten wir einseite Stetigkeit. $D = [a,b]:$
+  - für $x_0 = a, x\downarrow a :\iff x > a \wedge x \to a$
+  - für $x_0 = b, x\uparrow b :\iff x < b \wedge x \to b$
+  #+end_remark
+  #+ATTR_LATEX: :options [4.4]
+  #+begin_thm latex
+  Eine Funktion $f:D\to\mathbb{R}$ ist in einem $x_0 \in D$ genau dann differenzierbar mit Ableitung $f'(x_0)$, wenn
+  \[\Forall \eps > 0 \Exists \delta_\eps > 0: x_0 + h \in D, \abs{h} < \delta_\eps \implies \abs{\frac{f(x_0 + h) - f(x_0)}{h} - f'(x_0)} <  \eps\]
+  #+end_thm
+  #+begin_proof latex
+  Beweis aus der Definition des Grenzwerts.
+  #+end_proof
+  #+ATTR_LATEX: :options [4.5]
+  #+begin_thm latex
+  Eine Funktion $f:D\to\mathbb{R}$ ist genau dann in einem Punkt $x_0\in D$ differenzierbar, wenn es eine Konstante gibt, $x\in\mathbb{R}$, sodass
+  \[f(x) = f(x_0) + c(x - x_0) + \omega(x), x\in D\]
+  mit einer Funktion $\omega:D\to\mathbb{R}$, sodass
+  \[\lim_{\substack{x\in D\\ x\to x_0}} = 0\]
+  Diese Konstante $c = f'(x_0)$
+  #+end_thm
+  #+begin_proof latex
+  Sei $f$ in $x$ differenzierbar und $\omega(x) := f(x) - f(x_0)(x - x_0)$. Dann aus differenzierbarkeit von $f$
+  \[\frac{\omega(x)}{x - x_0} = \frac{f(x) - f(x_0)}{x - x_0} - f'(x_0) \xrightarrow{x\to x_0} 0\]
+  Sei umgekehrt $f(x) = f(x_0) + c(x - x_0) + \omega(x)$ mit $\lim_{x\to x_0} \frac{\omega(x)}{x\to x_0} = 0$
+  Dann gilt:
+  \[\frac{f(x) - f(x_0)}{x - x_0} - c = \frac{\omega(x)}{x - x_0} \xrightarrow{x\to x_0} 0\]
+  das heißt $f$ ist in $x_0$ differenzierbar mit Ableitung $f'(x_0)$
+  #+end_proof
+  #+ATTR_LATEX: :options [4.6]
+  #+begin_lemma latex
+  Eine Funktion $f:D\to\mathbb{R}$ in $x_0 \in D$ differenzierbar ist dort stetig.
+  #+end_lemma
+  #+begin_proof latex
+  \[f(x) = f(x_0) + f'(x_0)(x - x_0) + \omega(x) \Rightarrow f(x) \xrightarrow{x\to x_0} f(x_0)\]
+  #+end_proof
+  #+begin_remark latex
+  Man kann die n-te Ableitung rekursiv definieren.
+  \begin{align*}
+  \frac{\d^n f}{\d x^n}(x) = f^{(n)}(x), n\geq 3 \\
+  \frac{\d^2 f}{\d x^2} (x) = f^{(2)}(x) = f''(x)
+  \end{align*}
+  #+end_remark
+  #+ATTR_LATEX: :options [4.7]
+  #+begin_ex latex
+  $f(x) = \abs{x}$ ist nicht in $x_0 = 0$ differenzierbar. Um dies zu sehen, betrachten wir eine Nullfolge
+  \[h_n = (-1)^n \frac{1}{n}, n\in \mathbb{N}\]
+  und
+  \[\frac{f(h_n) - f(0)}{h_n} = \frac{\abs{h_n}}{h_n} = (-1)^n\]
+  nicht konvergent. $in x_0 \neq 0$ ist $f(x) = \abs{x}$ differenzierbar
+  #+end_ex
+  #+ATTR_LATEX: :options [4.8]
+  #+begin_lemma latex
+  Für $f,g: D\to\mathbb{R}$ differenzierbar gelten die folgenden Rechenregeln:
+  1. Linearkombination ist differenzierbar $(\alpha f + \beta g)' = \alpha f' + \beta g', \alpha,\beta\in\mathbb{R}$
+  2. $(f\cdot g)'(x) = f'(x)g(x) + f(x) g'(x)$
+  3. $g(x) \neq 0$
+	 \[(\frac{f}{g})'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}\]
+  #+end_lemma

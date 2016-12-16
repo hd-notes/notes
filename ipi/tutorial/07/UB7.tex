@@ -1,0 +1,381 @@
+% Created 2016-12-12 Mo 01:30
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{siunitx}%
+\usepackage{fontspec}%
+\sisetup{load-configurations = abbrevations}%
+\newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+\usepackage{mathtools}%
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclareMathOperator{\Exists}{\exists}%
+\DeclareMathOperator{\Forall}{\forall}%
+\def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+\def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+\usepackage{minted}
+\usepackage{makecell}
+\usemintedstyle{perldoc}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz-qtree}
+\usepackage{enumitem}
+\setlistdepth{20}
+\renewlist{itemize}{itemize}{20}
+\setlist[itemize]{label=$\cdot$}
+\author{Robin Heinemann}
+\date{\today}
+\title{Übungszettel 7}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\section*{Aufgabe 7.2}
+a) Der optimale Fall ist, wenn das Array bereits sortiert ist. Dann wird von der inneren Schleife immer
+   nur der erste Durchlauf ausgeführt. Die äußere Schleife wird genau $n$ mal ausgeführt, damit erhält
+   man $f_1(n) = n$, dies lässt sich zu $n \in \Omega(n) \implies g_1(n) = n$ umformen. Hier muss $\Omega$-
+   Notation verwendet werde, da es sich um den günstigsten Fall handelt, es gibt Fälle, bei denen $O(n)$
+   nicht die obere Schranke ist. \\
+b) Der schlechteste Fall tritt auf, wenn das Array genau invers sortiert ist. Die innere Schleife wird also
+   immer genau $n - i$ mal durchlaufen wird, wobei $i$ die Anzahl der Durchläufe der äußeren Schleife
+   bezeichnet. Damit erhält man:
+   \[f_2(n) = \sum_{i = 1}^{n} n - i = \frac{1}{2} (n^2 - n)\]
+   Dies lässt sich zu:
+   \[f_2(n) \in O(n^2) \implies g_2(n) = n^2\]
+   vereinfachen. \\
+c) Analog zum schlechtesten Fall erhält man dann für die innere Schleife $\frac{n - i}{2}$ Durchläufe:
+   \[f_2(n) = \sum_{i = 1}^{n} \frac{n - i}{2} = \frac{1}{4}(n^2 - n)\]
+   und damit:
+   \[f_3(n) \in O(n^2) \implies g_3(n) = n^2\]
+d)
+\begin{itemize}
+\item ohne Optimierungen
+insertion sort best case:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n\log n$\\
+\hline
+1000000 & 0.0384659 & $\SI{3.84659e-08}{}$\\
+1200000 & 0.0470058 & $\SI{3.91715e-08}{}$\\
+1440000 & 0.0567039 & $\SI{3.93777e-08}{}$\\
+1727999 & 0.0673467 & $\SI{3.89738e-08}{}$\\
+2073600 & 0.0811057 & $\SI{3.91135e-08}{}$\\
+2488319 & 0.098592 & $\SI{3.96219e-08}{}$\\
+2985983 & 0.116828 & $\SI{3.91255e-08}{}$\\
+3583180 & 0.140203 & $\SI{3.9128e-08}{}$\\
+4299816 & 0.16865 & $\SI{3.92227e-08}{}$\\
+5159780 & 0.203377 & $\SI{3.94158e-08}{}$\\
+6191736 & 0.243178 & $\SI{3.92746e-08}{}$\\
+7430083 & 0.292753 & $\SI{3.94011e-08}{}$\\
+8916100 & 0.350108 & $\SI{3.9267e-08}{}$\\
+10699320 & 0.414265 & $\SI{3.87189e-08}{}$\\
+12839184 & 0.50081 & $\SI{3.90063e-08}{}$\\
+15407021 & 0.59793 & $\SI{3.88089e-08}{}$\\
+18488425 & 0.724838 & $\SI{3.9205e-08}{}$\\
+22186111 & 0.880652 & $\SI{3.96938e-08}{}$\\
+26623333 & 1.04973 & $\SI{3.94291e-08}{}$\\
+31947999 & 1.26629 & $\SI{3.96361e-08}{}$\\
+38337599 & 1.50603 & $\SI{3.92833e-08}{}$\\
+46005119 & 1.83551 & $\SI{3.9898e-08}{}$\\
+55206143 & 2.18521 & $\SI{3.95828e-08}{}$\\
+66247372 & 2.5922 & $\SI{3.9129e-08}{}$\\
+79496847 & 3.12522\} & $\SI{3.93126e-08}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{3.92505e-08}{}$
+
+insertion sort worst case:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n\log n$\\
+\hline
+2000 & 0.0563335 & $\SI{1.40834e-08}{}$\\
+2140 & 0.0637945 & $\SI{1.39302e-08}{}$\\
+2289 & 0.0708066 & $\SI{1.3514e-08}{}$\\
+2450 & 0.0824421 & $\SI{1.37346e-08}{}$\\
+2621 & 0.0940372 & $\SI{1.36888e-08}{}$\\
+2805 & 0.107795 & $\SI{1.37004e-08}{}$\\
+3001 & 0.127077 & $\SI{1.41103e-08}{}$\\
+3211 & 0.14668 & $\SI{1.42262e-08}{}$\\
+3436 & 0.161834 & $\SI{1.37076e-08}{}$\\
+3676 & 0.18396 & $\SI{1.36135e-08}{}$\\
+3934 & 0.21371 & $\SI{1.38088e-08}{}$\\
+4209 & 0.2442 & $\SI{1.37844e-08}{}$\\
+4504 & 0.291699 & $\SI{1.43793e-08}{}$\\
+4819 & 0.324696 & $\SI{1.39818e-08}{}$\\
+5157 & 0.377055 & $\SI{1.41779e-08}{}$\\
+5518 & 0.429574 & $\SI{1.41083e-08}{}$\\
+5904 & 0.494398 & $\SI{1.41835e-08}{}$\\
+6317 & 0.575462 & $\SI{1.4421e-08}{}$\\
+6759 & 0.637805 & $\SI{1.39612e-08}{}$\\
+7233 & 0.757041 & $\SI{1.44705e-08}{}$\\
+7739 & 0.850441 & $\SI{1.41995e-08}{}$\\
+8281 & 1.0016 & $\SI{1.46059e-08}{}$\\
+8860 & 1.10167 & $\SI{1.40341e-08}{}$\\
+9481 & 1.27307 & $\SI{1.41627e-08}{}$\\
+10144 & 1.4453\} & $\SI{1.40456e-08}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{1.40253e-08}{}$
+
+insertion sort typical case:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n\log n$\\
+\hline
+5000 & 0.179809 & $\SI{7.19236e-09}{}$\\
+5350 & 0.202922 & $\SI{7.08959e-09}{}$\\
+5724 & 0.236923 & $\SI{7.23116e-09}{}$\\
+6125 & 0.270223 & $\SI{7.20295e-09}{}$\\
+6553 & 0.311509 & $\SI{7.25421e-09}{}$\\
+7012 & 0.35963 & $\SI{7.31428e-09}{}$\\
+7503 & 0.427693 & $\SI{7.59735e-09}{}$\\
+8028 & 0.475772 & $\SI{7.38217e-09}{}$\\
+8590 & 0.558334 & $\SI{7.56672e-09}{}$\\
+9192 & 0.648983 & $\SI{7.68092e-09}{}$\\
+9835 & 0.750438 & $\SI{7.75829e-09}{}$\\
+10524 & 0.812448 & $\SI{7.33557e-09}{}$\\
+11260 & 0.912265 & $\SI{7.19523e-09}{}$\\
+12049 & 1.10621 & $\SI{7.61965e-09}{}$\\
+12892 & 1.2469 & $\SI{7.50225e-09}{}$\\
+13795 & 1.41741 & $\SI{7.44823e-09}{}$\\
+14760 & 1.5875 & $\SI{7.28685e-09}{}$\\
+15794 & 1.86811 & $\SI{7.4889e-09}{}$\\
+16899 & 2.0874 & $\SI{7.30942e-09}{}$\\
+18082 & 2.37665 & $\SI{7.26897e-09}{}$\\
+19348 & 2.74368 & $\SI{7.32927e-09}{}$\\
+20702 & 3.09305 & $\SI{7.2171e-09}{}$\\
+22152 & 3.58881 & $\SI{7.3135e-09}{}$\\
+23702 & 4.0872 & $\SI{7.27538e-09}{}$\\
+25361 & 4.64648 & $\SI{7.22423e-09}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{7.36338e-09}{}$
+
+std::sort:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n\log n$\\
+\hline
+100000 & 0.0448357 & $\SI{3.89438e-08}{}$\\
+107000 & 0.0485742 & $\SI{3.92005e-08}{}$\\
+114490 & 0.0526924 & $\SI{3.95112e-08}{}$\\
+122504 & 0.0572872 & $\SI{3.99146e-08}{}$\\
+131079 & 0.0620617 & $\SI{4.01804e-08}{}$\\
+140255 & 0.0672582 & $\SI{4.04635e-08}{}$\\
+150073 & 0.0706144 & $\SI{3.9478e-08}{}$\\
+160578 & 0.0765097 & $\SI{3.975e-08}{}$\\
+171818 & 0.0809247 & $\SI{3.90728e-08}{}$\\
+183845 & 0.087469 & $\SI{3.92494e-08}{}$\\
+196715 & 0.0945126 & $\SI{3.94154e-08}{}$\\
+210485 & 0.0999723 & $\SI{3.87497e-08}{}$\\
+225219 & 0.10864 & $\SI{3.91384e-08}{}$\\
+240984 & 0.118354 & $\SI{3.96311e-08}{}$\\
+257853 & 0.126013 & $\SI{3.92211e-08}{}$\\
+275903 & 0.136135 & $\SI{3.93856e-08}{}$\\
+295216 & 0.151025 & $\SI{4.06159e-08}{}$\\
+315881 & 0.158583 & $\SI{3.96454e-08}{}$\\
+337993 & 0.168726 & $\SI{3.92121e-08}{}$\\
+361652 & 0.180095 & $\SI{3.89093e-08}{}$\\
+386968 & 0.194031 & $\SI{3.89717e-08}{}$\\
+414056 & 0.207441 & $\SI{3.87356e-08}{}$\\
+443040 & 0.226052 & $\SI{3.92442e-08}{}$\\
+474052 & 0.241299 & $\SI{3.8948e-08}{}$\\
+507236 & 0.258856 & $\SI{3.88472e-08}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{3.93774e-08}{}$
+\item mit Optimierungen
+insertion sort best case:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n$\\
+\hline
+1000000 & 0.00180217 & $\SI{1.80217e-09}{}$\\
+1200000 & 0.00221753 & $\SI{1.84794e-09}{}$\\
+1440000 & 0.00302139 & $\SI{2.09819e-09}{}$\\
+1727999 & 0.00383213 & $\SI{2.21767e-09}{}$\\
+2073600 & 0.00465811 & $\SI{2.24639e-09}{}$\\
+2488319 & 0.00552709 & $\SI{2.22121e-09}{}$\\
+2985983 & 0.00680263 & $\SI{2.27819e-09}{}$\\
+3583180 & 0.00791746 & $\SI{2.20962e-09}{}$\\
+4299816 & 0.00957455 & $\SI{2.22673e-09}{}$\\
+5159780 & 0.0114418 & $\SI{2.2175e-09}{}$\\
+6191736 & 0.013643 & $\SI{2.20343e-09}{}$\\
+7430083 & 0.0169643 & $\SI{2.28319e-09}{}$\\
+8916100 & 0.0204979 & $\SI{2.29897e-09}{}$\\
+10699320 & 0.0237447 & $\SI{2.21927e-09}{}$\\
+12839184 & 0.028712 & $\SI{2.23628e-09}{}$\\
+15407021 & 0.0342781 & $\SI{2.22484e-09}{}$\\
+18488425 & 0.0410346 & $\SI{2.21947e-09}{}$\\
+22186111 & 0.0506048 & $\SI{2.28092e-09}{}$\\
+26623333 & 0.0595367 & $\SI{2.23626e-09}{}$\\
+31947999 & 0.0714738 & $\SI{2.23719e-09}{}$\\
+38337599 & 0.0865582 & $\SI{2.25779e-09}{}$\\
+46005119 & 0.103315 & $\SI{2.24572e-09}{}$\\
+55206143 & 0.132733 & $\SI{2.40431e-09}{}$\\
+66247372 & 0.171755 & $\SI{2.59263e-09}{}$\\
+79496847 & 0.195373 & $\SI{2.45763e-09}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{2.23054e-09}{}$
+
+insertion sort worst case:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n^2$\\
+\hline
+2000 & 0.00131307 & $\SI{3.28268e-10}{}$\\
+2140 & 0.00151938 & $\SI{3.31771e-10}{}$\\
+2289 & 0.00175493 & $\SI{3.3494e-10}{}$\\
+2450 & 0.00203224 & $\SI{3.38566e-10}{}$\\
+2621 & 0.00289405 & $\SI{4.2128e-10}{}$\\
+2805 & 0.00272793 & $\SI{3.46711e-10}{}$\\
+3001 & 0.00347161 & $\SI{3.85477e-10}{}$\\
+3211 & 0.00443669 & $\SI{4.30307e-10}{}$\\
+3436 & 0.00420283 & $\SI{3.55988e-10}{}$\\
+3676 & 0.00480767 & $\SI{3.55782e-10}{}$\\
+3934 & 0.00556181 & $\SI{3.59375e-10}{}$\\
+4209 & 0.00692586 & $\SI{3.90945e-10}{}$\\
+4504 & 0.00730396 & $\SI{3.60049e-10}{}$\\
+4819 & 0.00962725 & $\SI{4.14561e-10}{}$\\
+5157 & 0.00958699 & $\SI{3.60486e-10}{}$\\
+5518 & 0.0116548 & $\SI{3.82774e-10}{}$\\
+5904 & 0.0129458 & $\SI{3.71394e-10}{}$\\
+6317 & 0.0144537 & $\SI{3.62209e-10}{}$\\
+6759 & 0.0172369 & $\SI{3.77307e-10}{}$\\
+7233 & 0.0190871 & $\SI{3.6484e-10}{}$\\
+7739 & 0.0219383 & $\SI{3.66297e-10}{}$\\
+8281 & 0.02532 & $\SI{3.6923e-10}{}$\\
+8860 & 0.0298174 & $\SI{3.79842e-10}{}$\\
+9481 & 0.0346395 & $\SI{3.85357e-10}{}$\\
+10144 & 0.0427375\} & $\SI{4.15327e-10}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{3.71563e-10}{}$
+
+insertion sort worst case:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n^2$\\
+\hline
+5000 & 0.00493283 & $\SI{1.97313e-10}{}$\\
+5350 & 0.00571745 & $\SI{1.99754e-10}{}$\\
+5724 & 0.00632268 & $\SI{1.92975e-10}{}$\\
+6125 & 0.0076292 & $\SI{2.03361e-10}{}$\\
+6553 & 0.00888076 & $\SI{2.06809e-10}{}$\\
+7012 & 0.00992745 & $\SI{2.01908e-10}{}$\\
+7503 & 0.0112757 & $\SI{2.00297e-10}{}$\\
+8028 & 0.0131061 & $\SI{2.03357e-10}{}$\\
+8590 & 0.0155581 & $\SI{2.10848e-10}{}$\\
+9192 & 0.0172611 & $\SI{2.04291e-10}{}$\\
+9835 & 0.020206 & $\SI{2.08897e-10}{}$\\
+10524 & 0.0228511 & $\SI{2.06322e-10}{}$\\
+11260 & 0.026403 & $\SI{2.08246e-10}{}$\\
+12049 & 0.029942 & $\SI{2.06243e-10}{}$\\
+12892 & 0.0342058 & $\SI{2.05807e-10}{}$\\
+13795 & 0.0388196 & $\SI{2.03989e-10}{}$\\
+14760 & 0.0452196 & $\SI{2.07565e-10}{}$\\
+15794 & 0.0519203 & $\SI{2.08139e-10}{}$\\
+16899 & 0.0591509 & $\SI{2.07128e-10}{}$\\
+18082 & 0.0680828 & $\SI{2.0823e-10}{}$\\
+19348 & 0.07862 & $\SI{2.1002e-10}{}$\\
+20702 & 0.0894472 & $\SI{2.08709e-10}{}$\\
+22152 & 0.102976 & $\SI{2.09851e-10}{}$\\
+23702 & 0.117309 & $\SI{2.08814e-10}{}$\\
+25361 & 0.13398 & $\SI{2.08309e-10}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{2.05487e-10}{}$
+
+std::sort typical case:
+\begin{center}
+\begin{tabular}{rrl}
+$n$ & Zeit in Sekunden & Zeit / $n\log n$\\
+\hline
+100000 & 0.00763783 & $\SI{6.63414e-09}{}$\\
+107000 & 0.00816836 & $\SI{6.59205e-09}{}$\\
+114490 & 0.00882383 & $\SI{6.61652e-09}{}$\\
+122504 & 0.00930791 & $\SI{6.48525e-09}{}$\\
+131079 & 0.0102184 & $\SI{6.61567e-09}{}$\\
+140255 & 0.0109099 & $\SI{6.56359e-09}{}$\\
+150073 & 0.0118967 & $\SI{6.65105e-09}{}$\\
+160578 & 0.0125743 & $\SI{6.5329e-09}{}$\\
+171818 & 0.0138146 & $\SI{6.67008e-09}{}$\\
+183845 & 0.0147697 & $\SI{6.62753e-09}{}$\\
+196715 & 0.0159018 & $\SI{6.63169e-09}{}$\\
+210485 & 0.0170402 & $\SI{6.60485e-09}{}$\\
+225219 & 0.0181737 & $\SI{6.54722e-09}{}$\\
+240984 & 0.0194615 & $\SI{6.51674e-09}{}$\\
+257853 & 0.0210726 & $\SI{6.55877e-09}{}$\\
+275903 & 0.0227183 & $\SI{6.57272e-09}{}$\\
+295216 & 0.0244938 & $\SI{6.58722e-09}{}$\\
+315881 & 0.0263135 & $\SI{6.57831e-09}{}$\\
+337993 & 0.028485 & $\SI{6.61993e-09}{}$\\
+361652 & 0.030154 & $\SI{6.51474e-09}{}$\\
+386968 & 0.0329184 & $\SI{6.61175e-09}{}$\\
+414056 & 0.0351035 & $\SI{6.55492e-09}{}$\\
+443040 & 0.03794 & $\SI{6.58664e-09}{}$\\
+474052 & 0.0404175 & $\SI{6.52378e-09}{}$\\
+507236 & 0.0432129 & $\SI{6.48508e-09}{}$\\
+\end{tabular}
+\end{center}
+Durchschnitt: $\SI{6.57933e-09}{}$
+\item Analyse:
+\begin{itemize}
+\item Es zeigt sich wie erwartet für insertion sort worst / typical case ein quadratisches Verhalten und für best case lineares Verhalten.
+Außerdem bestätigt sich die Annahme, das im typischen Fall nur die Hälfte der Inneren Schleife durchschritten
+wird.
+\item Die Optimierung wirkt sich sehr positiv auf die Laufzeit aus (bis zu 40x, beim typischen Fall), allerdings unterschiedlich stark auf die insertion sort und std::sort
+\item Um zu Berechnen, bis zu welchen $n$ Insertion Sort mit std::sort mithalten kann muss man einfach das jeweilige $c$ einsetzen:
+\[\SI{2.05487e-10}{}n^2 = \SI{6.57933e-9}{}n\log n \implies n \approx 163\]
+\end{itemize}
+\end{itemize}
+\section*{Aufgabe 7.3}
+a)
+\begin{align*}
+t_{64} &= c\cdot f(64) \\
+t_{32} &= c\cdot f(32) = \SI{5}{\second} \\
+c &= \frac{\SI{5}{\second}}{f(32)} \\
+t_{64} &= \frac{f(64) \SI{5}{\second}}{f(32)} \\
+\shortintertext{Damit erhält man für die verschiedenen Komplexitäten:}
+t_{64} &= \frac{\log_2(64) \cdot\SI{5}{\second}}{\log_2(32)} = \SI{6}{\second} \\
+t_{64} &= \frac{64 \cdot \SI{5}{\second}}{32} = \SI{10}{\second} \\
+t_{64} &= \frac{64 \log_2(64) \cdot\SI{5}{\second}}{32 \log_2(32)} = \SI{12}{\second} \\
+t_{64} &= \frac{64^2 \cdot\SI{5}{\second}}{32^2} = \SI{20}{\second} \\
+t_{64} &= \frac{2^{64} \cdot\SI{5}{\second}}{2^{32}} = \SI{21474836480}{\second} \\
+\end{align*}
+\begin{enumerate}
+\item \begin{align*}
+\log_a(n) &= \frac{\log_b(n)}{\log_b(a)} \\
+\implies \log_b(a) \log_a(n) &\leq \log_b(n) \Forall n \\
+\implies \Exists C: C\log_a(n) &\leq \log_b(n) \Forall n, C = \log_b(a)
+\end{align*}
+\item \begin{align*}
+\intertext{Die Reihenfolge ist:}
+&\log(n), \sqrt(n), n\log(n), n^2, 2^n \\
+\lim_{n\to\infty} \frac{\sqrt{n}}{\log{n}} &= \lim_{n\to\infty} \frac{n}{2\sqrt{n}} = \lim_{n\to\infty} \sqrt{n} = \sqrt{\lim_{n\to\infty} n} = \sqrt{\infty} = \infty \\
+\log(x) &= x \log(x) \implies x = 1 \implies \log(x) > 0 \implies x\log(x) > \log(x) \iff x > 1 \\
+\lim_{n\to\infty} \frac{n^2}{n\log(n)} &= \lim_{n\to\infty} \frac{n}{\log(n)} = \lim_{n\to\infty} n = \infty \\
+\lim_{n\to\infty} \frac{2^n}{n^2} &= \lim_{n\to\infty} \frac{2n}{\log(n) + 1} = \lim_{n\to\infty} 2n = \infty \\
+\end{align*}
+\end{enumerate}
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}

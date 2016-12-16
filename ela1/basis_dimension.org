@@ -107,7 +107,7 @@
   #+begin_proof latex
   Wir zeigen 1. und 2. zusammen per Induktion nach $n$ \\
   Induktionsanfang: $n = 0$: $(w_1, \ldots, w_n)$ leere Familie \\
-  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\implies n - 1 \leq r$ und nach Umnummerieren von $\mathcal{B}$ ist auch
+  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\implies n - 1 \leq r$ und nach umnummerieren von $\mathcal{B}$ ist auch
   \[\tilde{\mathcal{B}} := (v_1, \ldots, w_{n - 1}, v_n, \ldots, v_r)\]
   eine Basis von $V$.
 
@@ -180,7 +180,7 @@
   #+begin_proof latex
   Sei $(v_1, \ldots, v_r)$ eine Basis von $V$. Aus Austauschsatz folgt: Nach Umnummerierung von $v_1, \ldots, v_r$ ist $(u_1, \ldots, u_n,  v_{n + 1}, \ldots, v_r)$ eine Basis von $B$ Setze $u_{n + 1} := v_{n + 1}, \ldots, u_r := v_r$
   #+end_proof
-  #+ATTR_LATEX: :options [9.13 Zorsches Lemma]
+  #+ATTR_LATEX: :options [9.13 Zornsches Lemma]
   #+begin_thm latex
   Jede induktiv geordnete nicht leere Menge $(M, \leq)$ besitzt ein maximales Element.
   Hierbei heißt eine halbgeordnete Menge $(m, \leq)$ *induktiv geordnet* $\xLeftrightarrow{\text{Def}}$ Jede Teilmenge $T\subseteq M$, für die $(T, \leq)$ totalgeordnet ist,
