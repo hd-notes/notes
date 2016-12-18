@@ -38,7 +38,8 @@ git clone https://github.com/hd-notes/pdfs.git pdfs
 git clone https://github.com/hd-notes/hd-notes.github.io.git pages
 
 # Clean out existing contents
-rm -rf pdfs/**/* || exit 0
+# TODO(robin): auto run fetch scripts
+# rm -rf pdfs/**/* || exit 0
 rm -rf pages/index.html || exit 0
 
 # Run our compile script
@@ -76,7 +77,7 @@ eval `ssh-agent -s`
 ssh-add pdf_key
 
 # Now that we're all set up, we can push.
-git@github.com:hd-notes/pdfs.git
+git push git@github.com:hd-notes/pdfs.git
 # git push origin master
 
 cd ..
@@ -110,5 +111,5 @@ ssh-add -D
 ssh-add pages_key
 
 # Now that we're all set up, we can push.
-git@github.com:hd-notes/hd-notes.github.io.git
+git push git@github.com:hd-notes/hd-notes.github.io.git
 # git push origin master
