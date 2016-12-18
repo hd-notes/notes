@@ -29,6 +29,11 @@ else
 	export PATH="${HOME}/texlive/bin/x86_64-darwin:${PATH}"
 fi
 
+mkdir ${HOME}/bin
+curl http://ctan.space-pro.be/tex-archive/support/latexmk/latexmk.pl > ${HOME}/bin/latexmk
+chmod a+x ${HOME}/bin
+export PATH="${HOME}/bin/:${PATH}"
+
 # Save some useful information
 SHA=`git rev-parse --verify HEAD`
 
