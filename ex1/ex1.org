@@ -95,12 +95,12 @@ mark=at position 0.5 with
 \end{scope}
 \end{tikzpicture}
 
-#+INCLUDE: "/home/robin/study/lectures/ex1/introduction.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/mechanics.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/forcelaws.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/work_energy_power.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/conservation_laws.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/system_mass_points.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/collisions.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/ridid_body.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ex1/deformation.org" :minlevel 1
+#+INCLUDE: "introduction.org" :minlevel 1
+#+INCLUDE: "mechanics.org" :minlevel 1
+#+INCLUDE: "forcelaws.org" :minlevel 1
+#+INCLUDE: "work_energy_power.org" :minlevel 1
+#+INCLUDE: "conservation_laws.org" :minlevel 1
+#+INCLUDE: "system_mass_points.org" :minlevel 1
+#+INCLUDE: "collisions.org" :minlevel 1
+#+INCLUDE: "ridid_body.org" :minlevel 1
+#+INCLUDE: "deformation.org" :minlevel 1

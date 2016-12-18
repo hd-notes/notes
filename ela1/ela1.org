@@ -55,14 +55,14 @@
 #+LATEX_HEADER: \usepackage{stackengine}
 
 # Kapitel 1: Grundlagen
-#+INCLUDE: "/home/robin/study/lectures/ela1/introduction.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ela1/basics.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ela1/algebra.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ela1/polynomial.org" :minlevel 1
+#+INCLUDE: "introduction.org" :minlevel 1
+#+INCLUDE: "basics.org" :minlevel 1
+#+INCLUDE: "algebra.org" :minlevel 1
+#+INCLUDE: "polynomial.org" :minlevel 1
 # Kapitel 2: ?????
-#+INCLUDE: "/home/robin/study/lectures/ela1/vector_space.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ela1/basis_dimension.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ela1/matrix.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ela1/sub_vector_space.org" :minlevel 1
+#+INCLUDE: "vector_space.org" :minlevel 1
+#+INCLUDE: "basis_dimension.org" :minlevel 1
+#+INCLUDE: "matrix.org" :minlevel 1
+#+INCLUDE: "sub_vector_space.org" :minlevel 1
 # Kapitel 3: Lineare Abbildungen
-#+INCLUDE: "/home/robin/study/lectures/ela1/linear_map.org" :minlevel 1
+#+INCLUDE: "linear_map.org" :minlevel 1

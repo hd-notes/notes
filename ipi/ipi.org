@@ -53,17 +53,17 @@
 # }
 # #+END_SRC
 
-#+INCLUDE: "/home/robin/study/lectures/ipi/introduction.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/differences.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/substitution_model.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/machine_code.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/functional_programming.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/procedural_programming.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/datatypes.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/stack_model.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/references.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/container.org" :minlevel 1
-#+INCLUDE: "/home/robin/study/lectures/ipi/itertators.org" :minlevel 1
+#+INCLUDE: "introduction.org" :minlevel 1
+#+INCLUDE: "differences.org" :minlevel 1
+#+INCLUDE: "substitution_model.org" :minlevel 1
+#+INCLUDE: "machine_code.org" :minlevel 1
+#+INCLUDE: "functional_programming.org" :minlevel 1
+#+INCLUDE: "procedural_programming.org" :minlevel 1
+#+INCLUDE: "datatypes.org" :minlevel 1
+#+INCLUDE: "stack_model.org" :minlevel 1
+#+INCLUDE: "references.org" :minlevel 1
+#+INCLUDE: "container.org" :minlevel 1
+#+INCLUDE: "itertators.org" :minlevel 1
 
 * Insertion Sort
   schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compiler und CPU ab
