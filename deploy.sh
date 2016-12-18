@@ -101,11 +101,11 @@ git add .
 git commit -m "travis auto update: ${SHA}"
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
-ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
-ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
-ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../pages_key.enc -out pages_key -d
+# ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+# ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+# ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+# ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+openssl aes-256-cbc -K $encrypted_8740fdcfc16d_key -iv $encrypted_8740fdcfc16d_iv -in ../pages_key.enc -out pages_key -d
 chmod 600 pages_key
 ssh-add -D
 ssh-add pages_key
