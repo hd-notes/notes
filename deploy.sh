@@ -5,6 +5,9 @@ function doCompile {
   ./compile.sh
 }
 
+echo "$encrypted_8740fdcfc16d_key" | head 
+echo "$encrypted_8740fdcfc16d_iv" | head 
+
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo "Skipping deploy; just doing a build."
