@@ -6,7 +6,7 @@ before_script:
     - sudo apt-get install --force-yes emacs-snapshot emacs-snapshot-el
     - emacs --version
 install:
-    - sudo apt-get install latexmk python-pygments texlive-xetex realpath 
+    - sudo apt-get install python-pygments realpath 
 script: bash ./deploy.sh
 env:
   global:
