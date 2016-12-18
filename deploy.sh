@@ -12,6 +12,23 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     exit 0
 fi
 
+# Enable case-insensitive pattern matching.
+shopt -s nocasematch
+
+get_download_url() {
+  echo "https://raw.githubusercontent.com/thomasjo/travis-texlive/master/texlive.tar.xz"
+}
+
+echo "Downloading portable TeX Live installation..."
+curl -s $( get_download_url ) | tar -xJC "${HOME}"
+
+# Ensure PATH points to the platform-specific binaries.
+if [[ "${TRAVIS_OS_NAME:-}" == "linux" ]]; then
+	export PATH="${HOME}/texlive/bin/x86_64-linux:${PATH}"
+else
+	export PATH="${HOME}/texlive/bin/x86_64-darwin:${PATH}"
+fi
+
 # Save some useful information
 SHA=`git rev-parse --verify HEAD`
 
