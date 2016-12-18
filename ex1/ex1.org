@@ -4,6 +4,8 @@
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage{siunitx}
+#+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
+#+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
 #+LATEX_HEADER: \usepackage{fontspec}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
 #+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
