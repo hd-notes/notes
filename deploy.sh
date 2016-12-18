@@ -76,7 +76,8 @@ eval `ssh-agent -s`
 ssh-add pdf_key
 
 # Now that we're all set up, we can push.
-git push origin master
+git@github.com:hd-notes/pdfs.git
+# git push origin master
 
 cd ..
 
@@ -105,8 +106,9 @@ ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
 ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../pages_key.enc -out pages_key -d
 chmod 600 pages_key
-eval `ssh-agent -s`
+ssh-add -D
 ssh-add pages_key
 
 # Now that we're all set up, we can push.
-git push origin master
+git@github.com:hd-notes/hd-notes.github.io.git
+# git push origin master
