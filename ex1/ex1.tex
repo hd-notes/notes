@@ -1,4 +1,4 @@
-% Created 2016-12-09 Fr 23:09
+% Created 2016-12-18 So 16:32
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -233,7 +233,7 @@ Durchschnittsgeschwindigkeit
 \[\vec{v}(t) = \frac{\mathrm{d}\vec{r}}{\mathrm{d}t} = \dot{\vec{r}}(t) = {\begin{pmatrix}\dot{x}(t) & \dot{y}(t) & \dot{z}(t)\end{pmatrix}}^\intercal = {\begin{pmatrix} v_x & v_y & v_z\end{pmatrix}}^\intercal\]
 \[\vec{a}(t) = \frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = \dot{\vec{v}}(t) = \ddot{\vec{r}}(t) = {\begin{pmatrix} \ddot{x} & \ddot{y} & \ddot{z}\end{pmatrix}}^\intercal = {\begin{pmatrix} a_x & a_y & a_z \end{pmatrix}}^\intercal\]
 $\rightarrow$ Superpositionsprinzip: \\
-    Kinematik kann für jede einzelne (Orts)komponente einzeln betrachtet werden.
+        Kinematik kann für jede einzelne (Orts)komponente einzeln betrachtet werden.
 
 \[\vec{a_0} = \text{const}\]
 \[\vec{r}(t) = \vec{r_0} + \vec{v_0}(t-t_0) + \frac{1}{2}\vec{a}(t^2-t_0^2) = \begin{pmatrix} x_0 + v_{x,0}(t-t_0) + \frac{1}{2} a_{x,0}(t^2-t_0^2) \\ y_0 + v_{y,0}(t-t_0) + \frac{1}{2} a_{y,0}(t^2-t_0^2) \\ z_0 + v_{z,0}(t-t_0) + \frac{1}{2} a_{z,0}(t^2-t_0^2) \end{pmatrix}\]
@@ -435,8 +435,8 @@ Es gibt Inertialsysteme, das heißt Koordinatensysteme  in denen ein kräftefrei
 \label{sec-2-2-1-6-2-1}
 \[v_1 = v_2 \rightarrow a_1 = a_2 \rightarrow F_1 = F_2~\checkmark\]
 Nicht trivialer Fall: \\
-       Kraftstoß: \\
-       Magnetische Kraft: $F_{\text{mag}} \sim {\f{1}{r^2}}$
+           Kraftstoß: \\
+           Magnetische Kraft: $F_{\text{mag}} \sim {\f{1}{r^2}}$
 \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
 \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
 \end{enumerate}
@@ -559,9 +559,9 @@ $\rightarrow$ Tribologie = Reibungslehre
 Reibungskraft nimmt ab, sobald das Gewicht bewegt wird.
 \begin{itemize}
 \item Haftreibung $F_H$ \\
-       Schwellenwert für Zugkraft um Körper zu bewegen
+           Schwellenwert für Zugkraft um Körper zu bewegen
 \item Gleitreibung $F_G$ \\
-       Reibungskraft bei bewegtem Körper
+           Reibungskraft bei bewegtem Körper
 \end{itemize}
 
 \begin{tikzpicture}
@@ -642,7 +642,7 @@ Grenzwinkel: $F_R = m g \sin{\alpha} = \mu_R m g \cos{\alpha} \implies \mu_R = \
 \subsubsection{Beispiel 2 Geostationärer Satellit}
 \label{sec-3-11-2}
 Zentripetal = Gravitationskraft \\
-    \[m\omega^2 R = G\frac{m M_E}{R^2}\]
+        \[m\omega^2 R = G\frac{m M_E}{R^2}\]
 Geostationär: $\omega = \frac{2\pi}{\SI{24}{\hour}} = \frac{2\pi}{24\cdot\SI{3600}{\second}} = \SI{7.27e-5}{\per\second}$
 \[R^3 = \frac{G M_E}{\omega^2} \rightarrow R = \SI{42312}{\kilo\meter}\]
 Abstand von der Erd-Oberfläche: \[\tilde{R} = R - R_E = \SI{35930}{\kilo\meter}\]
@@ -679,7 +679,7 @@ $\v r(s)$ parametrisiere Geschwindigkeit.
 \[W = \int_0^h F_G \d x = F_G\int_0^h\d x = F_G h = m g h = \frac{1}{2} m v^2\]
 \begin{itemize}
 \item Kinetische Energie: $E_{kin}$
-     \[E_{kin} = \frac{1}{2} mv^2\quad [E_{kin} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}]\]
+         \[E_{kin} = \frac{1}{2} mv^2\quad [E_{kin} = \si{\kilo\gram\meter\per\second\squared} = \si{\joule}]\]
 \item Die Zunahme (beziehungsweise Abnahme) der kinetischen Energie eines Körpers ist gleich der ihm zugeführten (beziehungsweise der von ihm gelieferten) Arbeit (keine Reibung)
 \end{itemize}
 \begin{align}
@@ -879,7 +879,7 @@ Bemerkung: Berechnung von $v$ mit Newtonschen Gesetzen deutlich komplexer
 \label{sec-5-1-2}
 \[E_{pot} + E_{kin} = E_{ges} = ~\text{const}\]
 $E_{ges}$ = mechanische Gesamtenergie \\
-    das heißt: In einem konservativen Kraftfeld ist die Summe aus potentieller und kinetischer Energie
+        das heißt: In einem konservativen Kraftfeld ist die Summe aus potentieller und kinetischer Energie
 eines Massenpunktes zu jeder Zeit konstant
 
 Wichtig: gilt nur für konservative Kraftfelder (Beim Auftreten nicht-konservativer, dissipativer Kräfte wird
@@ -887,7 +887,7 @@ mechanische Energie in Wärme umgewandelt)
 \subsubsection{Energiediagramme}
 \label{sec-5-1-3}
 Häufig: Potentielle Energie abhängig von Ort $x$ oder Abstand $r$ \\
-    Hilfreich: Diskussion mittels Energiediagramme
+        Hilfreich: Diskussion mittels Energiediagramme
 \paragraph{Kugelbahn}
 \label{sec-5-1-3-1}
 \begin{itemize}
@@ -911,13 +911,13 @@ Potential zur Beschreibung von molekularen Bindungen
 \label{sec-5-1-3-3}
 \[E_{pot}' = m g h = \underarrow[\rho]{Dichte} \overarrow[(a b c)]{Volumen} g h\]
 mit $h = \frac{1}{2}c$ \\
-     Fallender Dominostein: $E_{pot}  \to E_{kin}$ \\
-     Startposition: (Meta)stabiles Gleichgewicht \\
-     das heißt: Dominosteine müssen über einen Potentialberg angehoben werden. Danach ist die kinetische Energie
+         Fallender Dominostein: $E_{pot}  \to E_{kin}$ \\
+         Startposition: (Meta)stabiles Gleichgewicht \\
+         das heißt: Dominosteine müssen über einen Potentialberg angehoben werden. Danach ist die kinetische Energie
 ausreichend, um den nächsten Stein über Potentialschwelle zu heben.
 Verstärkungsfaktor: \\
-     Skalierung zwischen den Steinen: Alle Längen $\times \sqrt{2}$ \\
-     Potentielle Energie für Stein $m$:
+         Skalierung zwischen den Steinen: Alle Längen $\times \sqrt{2}$ \\
+         Potentielle Energie für Stein $m$:
 \begin{align*}
 E_{pot} &= \rho(a^{(n)}b^{(n)}c^{(n)}) h^{(n)} g = (\sqrt{2})^4 E_{pot}^{(n-1)} \\
 E_{pot}^{(1)} &= m g h \\
@@ -973,7 +973,7 @@ $\v p_i$: Impuls des einzelnen Massenpunktes
 das heißt: Schwerpunktimpuls ergibt sich aus der Summe der Einzelimpulse
 \end{defn}
 Frage: Wie bewegt sich ein System von Massepunkten unter Einfluss von Kräften? \\
-    Es gilt:
+        Es gilt:
 \[\dd{\v p_i} = \underarrow[\v F_i]{äußere Kraft} + \sum_{i\neq j}^{}\overarrow[\v F_{i j}]{innere Kraft}, \v F_{ij} = - \v F_{j i}\]
 $\implies$: Änderung des Schwerpunktimpulses $\v p_s$:
 \[ \dd{\v p_s}{t} = \sum_{i = 1}^{n}\dot{\v p_i} = \sum_{i = 1}^{n}\v F_i + \underbrace{ \sum_{i} \sum_{i\neq j} \v F_{ij}}_{= 0} = \sum_{i = 1}^{n} \v F_i\]
@@ -998,7 +998,7 @@ Der Massenschwerpunkt eines abgeschlossenen Systems hat einen zeitlich konstante
 \subsubsection{Raketenantrieb}
 \label{sec-6-1-2}
 das heißt: die Bewegung von Objekten mit veränderlicher Masse \\
-    Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuhläufer)
+        Beobachtung: Abstoßen einer Masse kann zum Antrieb verwendet werden (Beispiele: Rakete, Medizinball und Schlittschuhläufer)
 
 Betrachte Rakete:
 Impulssatz:
@@ -1061,7 +1061,7 @@ Hier Betrachtung von Spezialfällen. \\
    Betrachtung von Spezialfällen ist immer wichtig! Hilft beim Verständnis physikalischer Zusammenhänge
 \begin{enumerate}
 \item $m_1 = m_2 = m, r_1 > 0, v_2 = 0$
-      \[v_1' = \frac{2 m v_2}{2 m} = v_2 = 0, v_2' = \frac{2m r_1}{2 m} = v_1\]
+          \[v_1' = \frac{2 m v_2}{2 m} = v_2 = 0, v_2' = \frac{2m r_1}{2 m} = v_1\]
 \item $m_1 = m, m_2 = 2 m, v_1 > 0, v_2 > 0$
 \begin{align*}
 v_1' = \frac{v_1 (- m)}{3 m} = - \frac{1}{3}v_1 \\
@@ -1078,7 +1078,7 @@ v_1' = \frac{v(-m_2)}{m_2} = -v \tag{da $m_1$ vernachlässigbar} \\
 v_2' = \frac{2 m_1 v}{m_2} = 0 \tag{da $m_1 \ll m_2$}
 \end{align*}
 \item $m_1 = m, m_2$ sehr groß!, $v_1 = 0, v_2 = v$
-      \[v_1' = \frac{2m_2 v}{m_2} = 2v,\quad v_2' = \frac{v m_2}{m_2} = v\]
+          \[v_1' = \frac{2m_2 v}{m_2} = 2v,\quad v_2' = \frac{v m_2}{m_2} = v\]
 \end{enumerate}
 \subsection{Betrachtung im Schwerpunktsystem}
 \label{sec-7-2}
@@ -1234,11 +1234,11 @@ Bei Aufhängung eines Körpers im Schwerpunkt ist das resultierende Drehmoment a
 \subsubsection{Kräftepaare}
 \label{sec-8-2-2}
 Frage: Wirkung einer Kraft $\v F_1$ auf einen starren Körper. \\
-    Lösungsansatz: \\
-    Einführung der sich gegenseitig aufgebenden Kräfte $\v F_2$ und $\v F_3$ im Schwerpunkt $S$. Ändert nichts! \\
-    Zerlegung der Bewegung: \\
-    Translation durch Kraft $\v F_2$ mit Angriffspunkt $S$. \\
-    Rotation durch Kräftepaar $(\v F_1, \v F_3)$ mit $F_1 = F_3, \v M = \v r \times \v F_1$
+        Lösungsansatz: \\
+        Einführung der sich gegenseitig aufgebenden Kräfte $\v F_2$ und $\v F_3$ im Schwerpunkt $S$. Ändert nichts! \\
+        Zerlegung der Bewegung: \\
+        Translation durch Kraft $\v F_2$ mit Angriffspunkt $S$. \\
+        Rotation durch Kräftepaar $(\v F_1, \v F_3)$ mit $F_1 = F_3, \v M = \v r \times \v F_1$
 
 Die Wirkung aller Kräfte auf einen starren Körper lässt sich durch
 \begin{align*}
@@ -1251,7 +1251,7 @@ Wirkung von Kräftepaaren: Reine Rotation. Es gilt:
 \[\v M = \v r_1 \times \v F - \v r_2 \times \v F = (\v r_1 - \v r_2)\times \v F = \v r_{12} \times \v F\]
 Merke:
 Das Drehmoment eines Kräftepaares ist unabhängig vom Bezugspunkt $0$ \\
-    Zwei Kräftepaare sind äquivalent, wenn sie das gleiche Drehmoment besitzen. Äquivalente Kräftepaare können einander ersetzen.
+        Zwei Kräftepaare sind äquivalent, wenn sie das gleiche Drehmoment besitzen. Äquivalente Kräftepaare können einander ersetzen.
 \subsection{Statisches Gleichgewicht}
 \label{sec-8-3}
 Statik:
@@ -1261,8 +1261,8 @@ das heißt keine Translation, keine Rotation
 \mbox{}
 \begin{enumerate}
 \item Gleichgewicht eines starren Körpers in Schwerefeld \\
-     Frage: Wo muss $\v F$ angreifen um für statisches Gleichgewicht zu sorgen? \\
-     Kräfte:
+         Frage: Wo muss $\v F$ angreifen um für statisches Gleichgewicht zu sorgen? \\
+         Kräfte:
 \begin{align*}
 \sum \v F_i + \v F = 0 \\
 \v F = - \sum m_i \v g = - m_{ges} \v g \\
@@ -1275,7 +1275,7 @@ Drehmomente:
 = m_{ges} (\v R \times \v g) = m_{ges} (\v r_s \times \v g)
 \end{align*}
 Lösung A: $\v R = \v r_s$, das heißt Unterstützung im Schwerpunkt mit $\v F = - m{ges} \v g$ \\
-     Lösung B: $(\v R - \v f_s) \times \v g = 0$, das heißt $(\v R - \v r_s) \parallel \v g$, also Unterstützung oberhalb oder unterhalb des Schwerpunkt
+         Lösung B: $(\v R - \v f_s) \times \v g = 0$, das heißt $(\v R - \v r_s) \parallel \v g$, also Unterstützung oberhalb oder unterhalb des Schwerpunkt
 3 Möglichkeiten:
 \begin{itemize}
 \item $\v R$ über Schwerpunkt: stabiles Gleichgewicht
@@ -1283,16 +1283,16 @@ Lösung A: $\v R = \v r_s$, das heißt Unterstützung im Schwerpunkt mit $\v F =
 \item $\v R$ in PS: indifferentes Gleichgewicht
 \end{itemize}
 \item Schiefer Turm \\
-      Drehmoment:
+          Drehmoment:
 \[F_g r = F_z r \rightarrow F_g = F_z\]
 Kräftegleichgewicht:
 \[F_g + F_z + F_s = 0 \rightarrow F_s = -2F_g\]
 \item Stehende Leiter \\
-      Kräftegleichgewicht:
+          Kräftegleichgewicht:
 \[\v F_N = - \v F_G, \v F_N' = -\v F_R\]
 Drehmomente: \\
-      Bezugspunkt = unteres Leiter-Ende (günstige Wahl!) \\
-      \[F_W h = F_g (\frac{1}{2} a)\]
+          Bezugspunkt = unteres Leiter-Ende (günstige Wahl!) \\
+          \[F_W h = F_g (\frac{1}{2} a)\]
 (vergleiche Übungsaufgabe)
 \end{enumerate}
 \end{ex}
@@ -1560,7 +1560,7 @@ mit $I_a > I_b > I_c$. \\
 \subsubsection{Kreisel}
 \label{sec-8-8-1}
 Ein Kreisel ist ein rotierender starrer Körper, der höchstens an einem Punkt aufgehängt ist. (Kompass, Satellit, Geschoss) \\
-    Beschreibung der Kreiselbewegung mit 3 Achsen:
+        Beschreibung der Kreiselbewegung mit 3 Achsen:
 \begin{itemize}
 \item Figurenachse
 \item Momentane Drehachse, Richtung von $\v \omega$
@@ -1584,13 +1584,13 @@ Federkraft!
 $\implies$
 \begin{itemize}
 \item Modell eines Festkörper: Federmodell. \\
-     Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energie klein gegen $E_{pot}(r_0)$.
+         Temperatur unterhalb des Schmelzpunktes. Mittlere kinetische Energie klein gegen $E_{pot}(r_0)$.
 Atome können Gitterplätze nicht verlassen. Fernordung!
 \item Modell einer Flüssigkeit: Kugelmodell: \\
-     Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
+         Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
 Aber: Temperatur zu hoch für feste Zuordnung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
 \item Modell eines Gases: frei bewegliche Teilchen. \\
-     Mittlere kinetische Energie ist grob gegen Bindungsenergie, hohe Temperatur!
+         Mittlere kinetische Energie ist grob gegen Bindungsenergie, hohe Temperatur!
 \end{itemize}
 \subsection{Feste Körper.}
 \label{sec-9-2}
@@ -1722,9 +1722,208 @@ Also die auf die Fläche wirkende Normalkraft pro Fläche.
 \end{defn}
 
 \begin{align*}
-\frac{\Delta V}{V} &= -\kappa \Delta p = \frac{1}{K} \Delta p \\
+\frac{\Delta V}{V} &= \kappa \Delta p = \frac{1}{K} \Delta p \\
+\intertext{Wasser:}
 \kappa &= \SI{5e-10}{\meter\squared\per\newton}
+\intertext{Aluminium:}
 \kappa &= \SI{1.4e-10}{\meter\squared\per\newton}
 \end{align*}
+Im Folgende: $\kappa = 0, V =~\text{const}$, das heißt Wasser "inkompresible"
+\begin{thm}[Pascalsches Prinzip]
+Wird auf eine in einem Gefäß eingeschlossene Flüssigkeit ein Druch ausgeübt, dann verteilt sich dieser
+ungehindert auf jeden Punkt in der Flüssigkeit und die Wände.
+\end{thm}
+Zur Veranschaulichung: betrachte frei schwebendes Flüssigkeitsprisma in ruhender Flüssigkeit,
+frei wählbar\ldots{} (hier noch: ohne Schwerkraft)
+\begin{align*}
+F_x &= F_{xc} - F_{xb} = F_c \sin{\alpha} - F_b \\
+&= P_c h c \sin{\alpha} - p_b h b \overset{=}{!} 0 \\
+F_y &= F_{ya} - F_{yc} = F_a - F_c \cos{\alpha} \\
+&= p_a a h - p_c h c \cos{\alpha} \overset{=}{!} 0 \\
+\intertext{Mit $\sin{\alpha} = \frac{b}{a}, \cos{\alpha} = \frac{a}{c}$ folgt:}
+p_c h c \frac{b}{c} - p_b b h &= 0 \implies p_c = p_b \\
+p_a a h - p_c h c \frac{a}{c} &= 0 \implies p_a = p_c
+\end{align*}
+\begin{remark}
+In z-Richtung sind Kräfte aus Symmetriegründen ebenfalls Null!
+da Flüssigkeitsprisma frei gewählt, das heißt beliebig orientiert werden kann folgt Pascalsches Prinzip
+\end{remark}
+Anwendung: Hydraulische Presse. Druck überall gleich!
+$\implies$
+\begin{align*}
+p &= \frac{F_1}{A_1} = \frac{F_2}{A_2} \\
+F_2 = F_1 \frac{A_2}{A_1}
+\end{align*}
+Arbeit:
+\begin{align*}
+W_1 &= F_1 a_1 = p A_1 a_1 = p V \\
+W_2 = F_2 a_2 = p A_2 a_2 = pV
+\end{align*}
+Bisher: Vernachlässigung der Schwerkraft. \\
+   Jetzt: Druch im Schwerefeld.
+
+Eigengewicht einer Flüssigkeit verursacht einen von der Tiefe abhängenden Druck.
+Kraftwirkung auch Fläche $A$:
+\begin{align*}
+F &= m g = \rho V g = \rho A h g \\
+\intertext{mit Tiefe $h$}
+p = \frac{F}{A} = \rho g h
+\end{align*}
+\begin{defn}[Hydrostatischer Druck]
+Der Druck in einer ruhenden, inkompressiblen Flüssigkeit nimmt unter Einfluss der
+Schwerkraft linear mit der Tiefe $h$ zu:
+\[p = p_0 + \rho g h\]
+Der Hydrostatische Druck ist unabhängig von Form und Volumen
+des einschließenden Behältnisses
+\end{defn}
+Anwendung: Quecksilberbarometer
+\begin{align*}
+p_{Luft} + \rho g x &= \rho g h + \rho g x \\
+p_{Luft} &= \rho g h \\
+\end{align*}
+Druckeinheit: $\SI{1}{\milli\meter}\,\text{Hg}~= \SI{133.322}{\pascal}$
+\subsubsection{Auftrieb}
+\label{sec-9-4-1}
+Erfahrung: Ein in eine Flüssigkeit eingetauchter Körper erfährt Autrieb. \\
+        Grund: Auf Körper einwirkende Druckkräfte.
+\begin{thm}[Prinzip des Archimedes]
+Ein Körper, der in eine Flüssigkeit eingetauch ist
+erfähft eine Auftriebskraft, deren Betrag gleich der
+Gewichtskraft der verdrängten Flüssigkeit ist.
+\end{thm}
+\begin{align*}
+p_1 &= \rho g x_1 + p_0 \\
+p_2 = \rho g x_2 + p_0 \\
+E_1 = \rho g x_1 A + p_0 A \\
+E_2 = \rho g x_2 A + p_0 A \\
+F_2 - F_1 = \rho g A \Delta x = m g = F_g
+\end{align*}
+
+Es folgt: Ein Körper schwimmt, wenn seine Dichte kleiner ist als
+die Flüssigkeit, in die er eingetaucht ist.
+\subsubsection{Oberflächenspannung}
+\label{sec-9-4-2}
+Beobachtung: Flüssigkeiten bilden Oberflächen. \\
+        Grund: Potentielle Energie an Oberfläche größer. \\
+        Im Inneren: Kräftegleichgewicht \\
+        An Oberfläche: Kraftwirkung nach Inneren \\
+        Minimierung der potentiellen Energie $\implies$ Minimierung der Oberfläche.
+\begin{defn}[Oberflächenspannung]
+\[\sigma = \frac{\text{Zunahme der Oberflächenenergie}}{\text{Zunahme der Oberfläche}}\]
+Achtung: Anders als Zugspannung. Hier: Kraft pro Länge
+\end{defn}
+
+\subsection{Gase}
+\label{sec-9-5}
+Wesentlicher Unterschie zu Gestkörpern und Flüssigkeiten: Hohe Kompressibilität.
+\begin{defn}[Gesetz von Boyle-Mariette]
+\[p V = ~\text{const}\]
+falls Temperatur $T = ~\text{const}$, siehe später
+\end{defn}
+\subsubsection{Barometrische Höhenformel:}
+\label{sec-9-5-1}
+Flüssigkeiten: $p = \rho g h + p_0$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also \$$\rho$ =\textasciitilde{}\text\{const, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$)\}\$) \\
+        Gase: Hohe Kompressibilität! Das heißt Dichteänderungen müssen berücksichtigt werden. \\
+        Frage: $p(h) = ?, \rho(h) = ?$ \\
+        Es gilt:
+\begin{align*}
+p V &=~\text{const} \\
+p V &= p \frac{M}{\rho} = p_0 V_0 = p_0 \frac{M}{\rho_0} \\
+\intertext{für konstante Masse $M$:}
+\frac{p}{\rho} &= \frac{p_0}{\rho_0}
+\d p &= -\rho g\d h - p \frac{\rho_0}{p_0} g\d h \\
+\frac{\d p}{p} &= -\frac{\rho_0 g}{p_0} \d h \\
+\ln{p} - \ln{p_0} &= -\frac{\rho_0 g}{p_0} h \\
+p &= p_0 \exp{(-\frac{\rho_0 g h}{p_0})} \\
+\intertext{Barometrische Höhenformel:}
+p(h) &= p_0 \exp(-\frac{\rho_0 g}{p_0} h)
+\end{align*}
+das heißt: in Atmosühäre mit kompressiblem gas nimmt der Druck mit der Höhe exponentiell ab.
+\subsection{Strömende Flüssigkeiten und Gase}
+\label{sec-9-6}
+Experiment: Flüssigkeitsströmung durch Rohr \\
+   Beobachtung: Druckabfall entlang des Rohres \\
+\begin{align*}
+F_p &= A(p(x) - p(x + \Delta x)) \\
+&=  -\dd{p}{x} \Delta A \\
+&= -\dd{p}{x}\Delta V \\
+&= -\frac{\Delta p}{\Delta x}\Delta V \\
+F_p &= -F_{visc} \\
+F\Delta x &= -\Delta p \Delta V \\
+F &= -\grad p \Delta v \\
+\end{align*}
+\begin{itemize}
+\item $\v F_p$: Kraft aufgrund des Druckgradienten
+\item $\v F_{visc}$: Kraft aufgrund innerer Reibung
+\end{itemize}
+Also: Bei der Strömung von Flüssigkeiten muss Arbeit gegen die innere Reibung aufgebracht werden
+Es gilt
+\[F\Delta x = -\Delta p \Delta V, F\d x = -\d p \Delta V\]
+Eigentlich ist das ganze deutlich komplizierter:
+\begin{align*}
+\v u (x,y,z,t) \tag{Geschwindigkeitsfeld} \\
+p(x,y,z,t) \tag{Druckfeld} \\
+\rho(x,y,z,t) \tag{Dichtefeld} \\
+\d m \dd{\v u}{t} = \v F_p + \v F_{visc} + \v F_{ext} \\
+\intertext{Navier-Stokes-Gleichung}
+\rho(\frac{\partial}{\partial t} + \v u \ v v) \v u = -\underarrow[\grad p]{"$F_p$"} + \rho \underarrow[\v g]{"$F_{ext}$"} + \underarrow[\eta \Delta \v n]{"$F_{visc}$"} \\
+\end{align*}
+\subsubsection{Kontinuitätsgleichung:}
+\label{sec-9-6-1}
+\begin{align*}
+\phi &= \frac{\Delta m}{\Delta t} = ~\text{const} \\
+\phi &= \frac{\Delta m}{\Delta t} = \frac{\rho A_i \Delta x}{\Delta t} \\
+&= \rho A_i v_i \\
+\rho A_1 v_1 &= \rho A_2 v_2 \\
+A_1 v_1 &= A_2 v_2 \\
+W &= F \Delta x = - \Delta p \Delta V = \frac{1}{2} \Delta m(v_2^2 - v_1^2) + \Delta mg(h_2 - h_1) \\
+-\Delta p &= \frac{1}{2} \rho v_2^2 - \frac{1}{2} \rho v_1^2 + \rho gh_2 - \rho gh_1 \\
+p_1- p_2 &= \ldots \\
+p_1 + \frac{1}{2} \rho v_1^2 + \rho g h_1 = p_2 \frac{1}{2} \rho v_2^2 + \rho g h_2 \\
+\end{align*}
+\begin{defn}[Bernoullische Gleichung]
+\[p + \frac{1}{2} \rho v^2 + \rho g h = ~\text{const}\]
+\end{defn}
+\subsubsection{Reibung in Flüssigkeiten}
+\label{sec-9-6-2}
+Merke für Flüssigkeiten keine statischen Scherkräfte, aber es gibt dynamische Scherkräfte. \\
+        Experiment: Notwendige Schubspannung
+\[\tau = \frac{F}{A} \sim \dd{v_x}{y}\]
+Schubspannung ist proportional zum Geschwindigkeitsgradienten.
+\begin{defn}[Newtonsches Reibungsgesetz:]
+\[\tau = \frac{F_R}{A} = \eta \dd{v_x}{y}\]
+\[F_R = \eta A \dd{v_x}{y}\]
+$eta$ nennt man dynamische Scherviskosität.
+\end{defn}
+\subsubsection{Strömung durch ein Rohr mit kreisförmigen Querschnitt (Hagen-Poiseuille)}
+\label{sec-9-6-3}
+\begin{align*}
+\Delta p &= p_2 - p_1 \\
+F &= \Delta \pi r^2 \\
+A &= 2\pi r L \\
+\tau &= \frac{F}{A} = \frac{\Delta p \pi r^2}{2\pi r L} = -\eta \dd{v}{r} \tag{Newton!} \\
+v(r) &= \int_{v(r)}^{v(R) = 0}- \d v = \int_{r}^{R} \frac{\Delta p r}{2 \eta L} \d r = \frac{\Delta p}{4 \eta L}(R^2 - r^2)a \\
+\d V &= 2\pi r \d r v(r) \Delta t \\
+\Delta V &= \int_{0}^{R}2\pi r \d r v(r) \Delta t \\
+&= \frac{2\pi \Delta p}{2\eta L}\Delta t \int_{0}^{R}(R^2 r - r^3) \d r \\
+&= \frac{2\pi \Delta p}{2\eta L}(\frac{1}{4} R^4 - \frac{1}{4} R^4) \Delta t \\
+\dot{V} &= \dd{v}{t} = \frac{\pi \Delta p}{8\eta L} R^4 \sim R^4 \tag{Hagen-Posieuilles-Gesetz}
+\bar v = \frac{\dot{V}}{A} = \frac{A \Delta x}{A \Delta t} = \dd{V}{t} \frac{1}{\pi R^2} = \frac{R^2}{8\eta L}\Delta p \\
+\bar v \sim \Delta p ~\text{typisch für laminare Strömung} \\
+\end{align*}
+
+Turbulenz:
+$\Delta p \sim \bar v^2$
+
+Vergleich:
+\begin{center}
+\begin{tabular}{ll}
+Stationare laminare Strömung & Turbulente Strömung\\
+\hline
+$\dot{v} = \dd{\v v}{t} = 0$ & $\v v = \v v(x,y,z,t)$\\
+Stromflächen & keine Vorhersage der Teilchenbahnen\\
+$F_R \sim \v v$ & $F_W \sim \bar v^2$\\
+\end{tabular}
+\end{center}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

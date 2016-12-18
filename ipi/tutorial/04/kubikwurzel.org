@@ -44,12 +44,12 @@ x^{(t + 1)} = x^{(t)} - \frac{x^{(t)^3} - y}{3x^{(t)^2}} = \frac{2x^{(t)^3} + y}
 \end{align*}
 
 \section*{Aufgabe 4.2b}
-Herleitung von $n$ ist Quadratzahl \implies $(n \mod 4) \in \{0, 1\}$
-$n$ Quadratzahl \implies $\Exists a\in \mathbb{N}: a^2 = n$
+Herleitung von $n$ ist Quadratzahl $\implies (n \mod 4) \in \{0, 1\}$
+$n$ Quadratzahl $\implies \Exists a\in \mathbb{N}: a^2 = n$
 \[n \mod 4 = (a\cdot a) \mod 4 = ((a \mod 4)(a\mod 4)) \mod 4\]
 Für $a \mod 4$ gibt es 4 verschiedene Fälle:
 1. $a\mod 4 = 0 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 0}) \mod 4 = 0$
 2. $a\mod 4 = 1 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 1}) \mod 4 = 1$
 3. $a\mod 4 = 2 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 4}) \mod 4 = 0$
 4. $a\mod 4 = 3 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 9}) \mod 4 = 1$
-\implies $n$ Quadratzahl \implies $(n\mod 4) \in \{0, 1\}$
+$\implies n$ Quadratzahl $\implies (n\mod 4) \in \{0, 1\}$

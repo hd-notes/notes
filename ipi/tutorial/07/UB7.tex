@@ -1,4 +1,4 @@
-% Created 2016-12-12 Mo 01:30
+% Created 2016-12-18 So 16:32
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -362,13 +362,14 @@ t_{64} &= \frac{64 \log_2(64) \cdot\SI{5}{\second}}{32 \log_2(32)} = \SI{12}{\se
 t_{64} &= \frac{64^2 \cdot\SI{5}{\second}}{32^2} = \SI{20}{\second} \\
 t_{64} &= \frac{2^{64} \cdot\SI{5}{\second}}{2^{32}} = \SI{21474836480}{\second} \\
 \end{align*}
-\begin{enumerate}
-\item \begin{align*}
+b)
+\begin{align*}
 \log_a(n) &= \frac{\log_b(n)}{\log_b(a)} \\
 \implies \log_b(a) \log_a(n) &\leq \log_b(n) \Forall n \\
 \implies \Exists C: C\log_a(n) &\leq \log_b(n) \Forall n, C = \log_b(a)
 \end{align*}
-\item \begin{align*}
+c)
+\begin{align*}
 \intertext{Die Reihenfolge ist:}
 &\log(n), \sqrt(n), n\log(n), n^2, 2^n \\
 \lim_{n\to\infty} \frac{\sqrt{n}}{\log{n}} &= \lim_{n\to\infty} \frac{n}{2\sqrt{n}} = \lim_{n\to\infty} \sqrt{n} = \sqrt{\lim_{n\to\infty} n} = \sqrt{\infty} = \infty \\
@@ -376,6 +377,5 @@ t_{64} &= \frac{2^{64} \cdot\SI{5}{\second}}{2^{32}} = \SI{21474836480}{\second}
 \lim_{n\to\infty} \frac{n^2}{n\log(n)} &= \lim_{n\to\infty} \frac{n}{\log(n)} = \lim_{n\to\infty} n = \infty \\
 \lim_{n\to\infty} \frac{2^n}{n^2} &= \lim_{n\to\infty} \frac{2n}{\log(n) + 1} = \lim_{n\to\infty} 2n = \infty \\
 \end{align*}
-\end{enumerate}
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

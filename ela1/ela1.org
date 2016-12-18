@@ -16,6 +16,10 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Abb}{Abb}
 #+LATEX_HEADER: \DeclareMathOperator{\Lin}{Lin}
 #+LATEX_HEADER: \DeclareMathOperator{\Span}{span}
+#+LATEX_HEADER: \DeclareMathOperator{\ZR}{ZR}
+#+LATEX_HEADER: \DeclareMathOperator{\SR}{SR}
+#+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
 #+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
 #+LATEX_HEADER: \usepackage{stmaryrd}

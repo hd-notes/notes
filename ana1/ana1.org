@@ -66,6 +66,7 @@
 #+LATEX_HEADER: \newcommand{)}{\ifmmode\right\string)\else\string)\fi}
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \newcommand\RED{\color{red}}
+#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
 
 #+INCLUDE: "/home/robin/study/lectures/ana1/introduction.org" :minlevel 1
 #+INCLUDE: "/home/robin/study/lectures/ana1/sets.org" :minlevel 1
