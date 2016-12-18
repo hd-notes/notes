@@ -26,3 +26,5 @@ tramp
 _minted*
 secrets
 cookies.txt
+*.swp
+*\~

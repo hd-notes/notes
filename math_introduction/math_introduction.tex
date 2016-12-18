@@ -1,4 +1,4 @@
-% Created 2016-11-18 Fr 20:44
+% Created 2016-12-18 So 16:33
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -208,8 +208,8 @@ $\in$ & Element von\\
 $\subseteq$ & ist Untermenge von oder gleich\\
 $\cup$ & Vereiningungsmenge\\
 $\exists$ & es existiert ein\\
-$\Rightarrow$ & daraus folgt, ist hinreichende Bedingung für\\
-$\Leftarrow$ & gilt wenn, ist notwendige Bedingung für\\
+$\implies$ & daraus folgt, ist hinreichende Bedingung für\\
+$\impliedby$ & gilt wenn, ist notwendige Bedingung für\\
 $\exists!$ & es existiert genau ein\\
 $\notin$ & kein Element von\\
 $:=$ & ist definiert durch\\
@@ -225,10 +225,15 @@ $\Forall$ & für alle\\
 \begin{enumerate}
 \item \[\sum_{n=1}^3a_n=a_1 + a_2 + a_3\]
 \item Summe der ersten $m$ natürlichen Zahlen
+\end{enumerate}
 \[\sum_{n=1}^{m}n = 1 + 2 + \ldots + \left(m -1\right) + m = \frac{m (m + 1)}{2}\]
+\begin{enumerate}
 \item Summe der ersten $m$ Quadrate der natürlichen Zahlen
+\end{enumerate}
 \[\sum_{n=1}^m n^2 = 1 + 4 + \ldots + \left(m-1\right)^2 + m^2 = \frac{m(m+1)(2m+1)}{6}\]
+\begin{enumerate}
 \item Summe der ersten $m$ Potenzen einer Zahl ($q \neq 1$)
+\end{enumerate}
 \[\sum_{n=0}^m q^n = 1+q+\dots+q^{m-1}+q^m = \frac{1 - q^{m + 1}}{1-q}\]
 sog. \emph{geometrische Summe}
 \begin{itemize}
@@ -237,7 +242,6 @@ sog. \emph{geometrische Summe}
 \[q s_m = q + \ldots + q^{m+1}\]
 \[s_m - q s_m = s_m\left(1-q\right) = 1-q^{m+1}\]
 \end{itemize}
-\end{enumerate}
 
 \paragraph{Rechenregeln}
 \label{sec-2-1-1-2}
@@ -248,7 +252,7 @@ sog. \emph{geometrische Summe}
 \item \[\sum_{k=m}^n a_k + \sum_{k=n+1}^p a_k = \sum_{k=m}^{p} a_k\]
 \item \[\sum_{k=m}^n a_k = \sum_{k=m+p}^{n+p} a_{k-p} = \sum_{k=m-p}^{n-p} a_{k+p}\]
 \item \[\left(\sum_{i=1}^n a_i\right)(\sum_{j=1}^m b_j) = \sum_{i=1}^n \sum_{j=1}^m a_i b_j = \sum_{j=1}^m \sum_{i=1}^n a_i b_j\]
-           falls $n=m$ \[\sum_{i,j=1}^n a_i b_j\]
+                   falls $n=m$ \[\sum_{i,j=1}^n a_i b_j\]
 \end{enumerate}
 
 \subsubsection{Produktzeichen}
@@ -260,7 +264,7 @@ sog. \emph{geometrische Summe}
 \subsubsection{Fakultätszeichen}
 \label{sec-2-1-3}
 \[m! = 1 \cdot 2 \cdot \ldots \cdot \left(m-1\right) \cdot m = \prod_{n=1}^m n\]
-    \[0! = 1\]
+        \[0! = 1\]
 
 \subsection{Zahlen}
 \label{sec-2-2}
@@ -506,7 +510,7 @@ $\SI{90}{\degree}$ & $1$ & $0$ & $\to\infty$\\
 \label{sec-5-7-2}
 $\sin{\alpha} = y$
 Periodische Erweiterung auf $\alpha < 0,~\alpha>\frac{\pi}{2}$ \\
-    Periodische Funktion: \[\sin{x + 2\pi} = \sin{x}\quad\text{Periode: }2\pi\]
+        Periodische Funktion: \[\sin{x + 2\pi} = \sin{x}\quad\text{Periode: }2\pi\]
 \[\cos{x + 2\pi} = \cos{x}\quad\text{Periode: }2\pi\]
 \paragraph{Beispiel}
 \label{sec-5-7-2-1}
@@ -573,7 +577,7 @@ Umkehrfunktion: \[y=\sqrt{x-1}\]
 \subsubsection{Beispiel}
 \label{sec-6-2-2}
 \[y=\Theta(x)\Theta(-x+a)\]
-\textbf{TODO} Graphik
+    \textbf{TODO} Graphik
 \subsection{"symmetrischer Kasten" der Breite $2a$ und der Höhe $\frac{1}{2a}$ (Dirak Delta Funktion)}
 \label{sec-6-3}
 \[\Theta_a (x):=\frac{\Theta(x+a)\Theta(-x+a)}{2a}\]
@@ -634,7 +638,7 @@ analog: nach unten beschränkt \[\exists A\in\mathbb{R}: f(x)\geq A\Forall x\in 
 \subsubsection{Beispiel}
 \label{sec-8-1-1}
 $f(x) = x^2$ durch $A=0$ nach unten beschränkt\\
-    $f(x) = \Theta(x)$ $B=1$, $A=0$
+        $f(x) = \Theta(x)$ $B=1$, $A=0$
 \subsection{Monotonie}
 \label{sec-8-2}
 Eine Funktion $f:D_f\to\mathbb{R}$ heißt monoton steigend im Intervall $[a,b] \subseteq D_f$, wenn aus $x_1,x_2\in [a,b]$ mit $x_1<x_2$ stets folgt $f(x_1) \leq f(x_2)$
@@ -651,14 +655,14 @@ Die ursprüngliche Abbildung $y=f(x)$ und die Umkehrabbildung $x=f^{-1}(y)=g(y)$
 \label{sec-9-1}
 \begin{enumerate}
 \item Gegebenfalls Einschränktung von $D_f$, sodass eine bijektive Funktion vorliegt
-\item Auflösen der Gleichung $y=f(x)\Rightarrow x=f^-1(y)$
+\item Auflösen der Gleichung $y=f(x)\implies x=f^-1(y)$
 \item Umbennenung der Variablen: die unabhängige Variable $y$ wird wieder $x$ genannt, die abhängige wieder $y$: \$y=f$^{\text{-1}}$(x)
 \end{enumerate}
 \subsubsection{Beispiel $y=x^2$}
 \label{sec-9-1-1}
 \begin{enumerate}
 \item Einschränktung $D_f$ auf $x\geq 0$
-\item $y=x^2, x\geq 0 \Leftrightarrow x = \sqrt{y}$
+\item $y=x^2, x\geq 0 \iff x = \sqrt{y}$
 \item Umbenennung: $y=\sqrt{x} = x^\frac{1}{2}$
 \end{enumerate}
 \subsubsection{Graphisch}
@@ -711,9 +715,9 @@ $F$ sei die Stammfunktion zu $f$, $F' = f$
 \label{sec-11-3-2-2}
 \begin{itemize}
 \item \[\int_1^5\sqrt{2x+1}\mathrm{d}x = \int_1^9\sqrt{y}\frac{1}{2}\mathrm{d}y=\frac{26}{3}\]
-       \[y=2x-1\quad y'=g'(x) =\frac{\mathrm{d}y}{\mathrm{d}x} = g'(x) = 2 \Rightarrow \mathrm{d}y = 2\mathrm{d}x \Rightarrow \frac{1}{2}\mathrm{d}y = \mathrm{d}x\]
+           \[y=2x-1\quad y'=g'(x) =\frac{\mathrm{d}y}{\mathrm{d}x} = g'(x) = 2 \implies \mathrm{d}y = 2\mathrm{d}x \implies \frac{1}{2}\mathrm{d}y = \mathrm{d}x\]
 \item \[\int_0^b t e^{-\alpha t^2}\mathrm{d}t = -\frac{1}{2\alpha}\int_0^{-\alpha b^2} e^y\mathrm{d}y = -\frac{1}{2\alpha}(e^{-\alpha b^2} - 1)\]
-       \[y=g(t)=-\alpha ^2 \Rightarrow \frac{\mathrm{d}y}{\mathrm{d}t}=-2\alpha t \Rightarrow \mathrm{d}y=-2\alpha t \mathrm{d}t \Rightarrow \mathrm{d}t = -\frac{1}{2\alpha t}\mathrm{d}y\]
+           \[y=g(t)=-\alpha ^2 \implies \frac{\mathrm{d}y}{\mathrm{d}t}=-2\alpha t \implies \mathrm{d}y=-2\alpha t \mathrm{d}t \implies \mathrm{d}t = -\frac{1}{2\alpha t}\mathrm{d}y\]
 \item \[\int_0^T \cos{\omega t}\mathrm{d}t = \frac{1}{\omega}\int_0^{\omega T}\mathrm{d}y\]
 \item \[\int_a^b \frac{g'(x)}{g(x)}\mathrm{d}x = \int_{g(a)}^{g(b)}\frac{1}{y}\mathrm{d}y=\ln{\abs{y}}\mid_{g(a)}^{g(b)}\]
 \item \[\int \frac{\mathrm{d}x}{ax\pm b} = \frac{1}{a}\ln{\abs{ax\pm b}} + c\]
@@ -724,7 +728,7 @@ $F$ sei die Stammfunktion zu $f$, $F' = f$
 \[\int_a^b f'(x)g(x)\mathrm{d}x = f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x\]
 \paragraph{Beweis}
 \label{sec-11-3-3-1}
-\[F(x)=f(x)g(x)\Rightarrow F'(x) = f'(x)g(x) + f(x)g'(x)\]
+\[F(x)=f(x)g(x)\implies F'(x) = f'(x)g(x) + f(x)g'(x)\]
 \[\int_a^b F'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
 \[f(x)g(x)\mid_a^b = \int_a^b f'(x)g(x)\mathrm{d}x + \int_a^b f(x)g'(x)\mathrm{d}x\]
 \[f(x)g(x)\mid_a^b - \int_a^b f(x)g'(x)\mathrm{d}x = \int_a^b f'(x)g(x)\mathrm{d}x\]
@@ -738,8 +742,8 @@ $F$ sei die Stammfunktion zu $f$, $F' = f$
 \paragraph{Kreisfläche}
 \label{sec-11-3-3-3}
 \[y=f(x)=\sqrt{1-x^2}\]
-\[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\Rightarrow \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
-\[x=\sin{t} \Rightarrow t = \arcsin{x},\quad \frac{\mathrm{x}}{\mathrm{d}t} = \cos{t},\quad \mathrm{d}x = \cos{t}\mathrm{d}t\]
+\[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\implies \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
+\[x=\sin{t} \implies t = \arcsin{x},\quad \frac{\mathrm{x}}{\mathrm{d}t} = \cos{t},\quad \mathrm{d}x = \cos{t}\mathrm{d}t\]
 \[\int \cos{t}\cos{t} = \sin{t}\cos{t} + \int sin^2{t}\mathrm{d}t = \sin{t}\cos{t} + \int 1 - cos^2{t}\mathrm{d}t = \frac{\sin{t}\cos{t} + t}{2}\]
 \subparagraph{In Polarkoordinaten}
 \label{sec-11-3-3-3-1}
@@ -756,10 +760,10 @@ $F$ sei die Stammfunktion zu $f$, $F' = f$
 \label{sec-11-3-4}
 \paragraph{Partialbruchzerlegung}
 \label{sec-11-3-4-1}
-$\Rightarrow$ Integration rationaler Funktionen
+$\implies$ Integration rationaler Funktionen
 \[\int_a^b\frac{\mathrm{d}}{1-x^2} \text{ mit } \{-1,1\}\not\in [a,b] \]
 \[1-x^2 = (1-x)(1+x)\]
-\[\frac{1}{1-x^2} = \frac{\alpha}{1-x} + \frac{\beta}{1+x} = \frac{\alpha(1+x)+\beta{1-x}}{(1-x)(1+x)} = \frac{\alpha + \beta + x(\alpha - \beta)}{1-x^2} \Rightarrow \alpha = \beta \frac{1}{2}\]
+\[\frac{1}{1-x^2} = \frac{\alpha}{1-x} + \frac{\beta}{1+x} = \frac{\alpha(1+x)+\beta{1-x}}{(1-x)(1+x)} = \frac{\alpha + \beta + x(\alpha - \beta)}{1-x^2} \implies \alpha = \beta \frac{1}{2}\]
 \[\int_a^b \frac{\mathrm{d}x}{1-x^2} = \frac{1}{2}(\int_a^b\frac{1}{1+x} + \int_a^b\frac{1}{1+x})\]
 \subsection{Uneigentliche Integrale}
 \label{sec-11-4}
@@ -805,8 +809,8 @@ Elliptisches Integral
 Satz: Es gilt $\Gamma(1) = 1,~\Gamma(m+1) = m! \Forall n\in\mathbb{N},~x\Gamma(x) = \Gamma(x+1)$
 \[\Gamma(1)=\int_0^\infty e^{-t}\mathrm{d}t=-e^{-t}\mid_0^\infty = 1\]
 \[\Gamma(x+1) = \int_\epsilon^R t^x e^{-t}\mathrm{d}t = \underbrace{t^x e^{-t}\mid_\epsilon^R}_{R\to\infty t} + x\int_\epsilon^R t^{x-1}e^{-t}\mathrm{d}t\]
-\[f(t) = -e^{-t} \Leftarrow f'(t)=e^{-t}\]
-\[g(t) = t^x \Rightarrow xt^{t-1} = g'(t)\]
+\[f(t) = -e^{-t} \impliedby f'(t)=e^{-t}\]
+\[g(t) = t^x \implies xt^{t-1} = g'(t)\]
 \section{Vektoren}
 \label{sec-12}
 \subsection{$\mathbb{R}^3$}
@@ -823,10 +827,10 @@ Länge eins, senkrecht aufeinander und sie bilden eine Basis, also jeder Vektor 
 \[<\vec{a},\vec{b}> = \vec{a}\cdot\vec{b} := \abs{\vec{a}}\abs{\vec{b}}\cos{\angle (\vec{a},\vec{b})}\]
 \subsubsection{Spezialfälle}
 \label{sec-12-2-3}
-\[\vec{a}\|\vec{b}\Rightarrow \vec{a}\cdot\vec{b}=\abs{\vec{a}}\abs{\vec{b}}\]
+\[\vec{a}\|\vec{b}\implies \vec{a}\cdot\vec{b}=\abs{\vec{a}}\abs{\vec{b}}\]
 $\vec{a}$ und $\vec{b}$ antiparallel:
 \[\vec{a}\cdot\vec{b}=-\abs{\vec{a}}\abs{\vec{b}}\]
-\[\vec{a}\bot\vec{b}\Rightarrow\vec{a}\cdot\vec{b}=0\]
+\[\vec{a}\bot\vec{b}\implies\vec{a}\cdot\vec{b}=0\]
 \subsubsection{Betrag:}
 \label{sec-12-2-4}
 \[<\vec{a},\vec{b}>=\abs{\vec{a}}^2=a^2\]
@@ -840,7 +844,7 @@ $\vec{a}$ und $\vec{b}$ antiparallel:
 \item Distributivgesetz
 \[<\vec{a}+\vec{b},\vec{c}>=<\vec{a},\vec{c}>+<\vec{b},\vec{c}>\]
 \[<\vec{a},\vec{b}+\vec{c}>=<\vec{a},\vec{b}>+<\vec{a},\vec{c}>\]
-\item \[<\vec{a},\vec{a}>\geq 0 \quad <\vec{a},\vec{a}>=0\Leftrightarrow\vec{a}=0\]
+\item \[<\vec{a},\vec{a}>\geq 0 \quad <\vec{a},\vec{a}>=0\iff\vec{a}=0\]
 \end{itemize}
 \subsubsection{Orthonormalbasis der kartesischen Koordinatensystem}
 \label{sec-12-2-6}
@@ -883,7 +887,7 @@ Summe über alle Permutationen von $S_n$, Vorzeichen der Permutation ist positiv
    = \begin{matrix} 0 \\ 0 \\ 0\end{matrix}
    \]
 sind $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear unabhängig, dann gibt es nur die Lösung $x_1=x_2=x_3=0$
-Nichttriviale Lösung nur wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear abhängig $\Rightarrow \lambda,\mu\in\mathbb{R}$, sodass z.B. $\vec{a_1} = \lambda\vec{a_2} + \mu\vec{a_3}$
+Nichttriviale Lösung nur wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear abhängig $\implies \lambda,\mu\in\mathbb{R}$, sodass z.B. $\vec{a_1} = \lambda\vec{a_2} + \mu\vec{a_3}$
 Wenn $\vec{a_1},\vec{a_2}, \vec{a_3}$ linear unabhängig, dann $\det A = 0$.
 \subsection{Levi Civita Symbol}
 \label{sec-13-3}

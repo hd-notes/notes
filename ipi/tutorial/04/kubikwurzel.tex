@@ -1,4 +1,4 @@
-% Created 2016-11-22 Di 16:46
+% Created 2016-12-18 So 16:32
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -48,11 +48,11 @@
 
 \maketitle
 \section*{Aufgabe 4.1}
-Herleitung des Newtonverfahren für Kubikwurzel
+Herleitung des Newtonverfahren für Kubikwurzeln
 \begin{align*}
 \intertext{Es ist gegeben}
 x^{(t + 1)} = x^{(t)} - \frac{f(x^{(t)})}{f'(x^{(t)})} \\
-\intertext{im Fall der Kubikwurzel gilt:}
+\intertext{im Fall der Kubikwurzeln gilt:}
 f(x) = x^3 - y \\
 f(x^\ast) = 0 \\
 x^\ast = \sqrt[3]{y} \\
@@ -60,20 +60,20 @@ x^\ast = \sqrt[3]{y} \\
 x^{(t + 1)} = x^{(t)} - \frac{x^{(t)^3} - y}{3x^{(t)^2}} = \frac{2x^{(t)^3} + y}{3x^{(t)^2}}
 \intertext{Als Abbruchbedingung könnte man wählen:}
 \abs{x^{(t)^3} - y} \leq \varepsilon
-\intertext{Für ein kleines $\varepsilon$ zum Beispiel ist $\varepsilon = 10^{-15} y$ für double sinnvoll, denn diese sind nur auf genau 16 Nachkommastellen genau, also könnte eine höhere Genauigkeit mit trivialen Methoden garnicht erreicht werden}
+\intertext{Für ein kleines $\varepsilon$ zum Beispiel ist $\varepsilon = 10^{-15} y$ für double sinnvoll, denn diese sind nur auf genau 16 Nachkommastellen genau, also könnte eine höhere Genauigkeit mit trivialen Methoden gar nicht erreicht werden}
 \end{align*}
 
 \section*{Aufgabe 4.2b}
-Herleitung von $n$ ist Quadratzahl $\Rightarrow$ $(n \mod 4) \in \{0, 1\}$
-$n$ Quadratzahl $\Rightarrow$ $\Exists a\in \mathbb{N}: a^2 = n$
+Herleitung von $n$ ist Quadratzahl $\implies (n \mod 4) \in \{0, 1\}$
+$n$ Quadratzahl $\implies \Exists a\in \mathbb{N}: a^2 = n$
 \[n \mod 4 = (a\cdot a) \mod 4 = ((a \mod 4)(a\mod 4)) \mod 4\]
 Für $a \mod 4$ gibt es 4 verschiedene Fälle:
 \begin{enumerate}
-\item $a\mod 4 = 0 \Rightarrow (\underbrace{(a\mod 4)(a\mod 4)}_{= 0}) \mod 4 = 0$
-\item $a\mod 4 = 1 \Rightarrow (\underbrace{(a\mod 4)(a\mod 4)}_{= 1}) \mod 4 = 1$
-\item $a\mod 4 = 2 \Rightarrow (\underbrace{(a\mod 4)(a\mod 4)}_{= 4}) \mod 4 = 0$
-\item $a\mod 4 = 3 \Rightarrow (\underbrace{(a\mod 4)(a\mod 4)}_{= 9}) \mod 4 = 1$
+\item $a\mod 4 = 0 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 0}) \mod 4 = 0$
+\item $a\mod 4 = 1 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 1}) \mod 4 = 1$
+\item $a\mod 4 = 2 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 4}) \mod 4 = 0$
+\item $a\mod 4 = 3 \implies (\underbrace{(a\mod 4)(a\mod 4)}_{= 9}) \mod 4 = 1$
 \end{enumerate}
-$\Rightarrow$ $n$ Quadratzahl $\Rightarrow$ $(n\mod 4) \in \{0, 1\}$
+$\implies n$ Quadratzahl $\implies (n\mod 4) \in \{0, 1\}$
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

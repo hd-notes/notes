@@ -1,6 +1,22 @@
-% Created 2016-10-29 Sa 21:16
-\documentclass[koma,a4paper,10pt]{org-article}
-                          \usepackage[bottom=3cm,top=3cm]{geometry}
+% Created 2016-12-18 So 16:32
+\documentclass[koma,a4paper,10pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage[bottom=3cm,top=3cm]{geometry}
 \usepackage[ngerman, germanb]{babel}%
 \usepackage{siunitx}%
 \usepackage{fontspec}%
@@ -34,7 +50,7 @@
 
 \maketitle
 
-\section{Aufabe 1}
+\section{Aufgabe 1}
 \label{sec-1}
 notwendige Zustände:
 \begin{itemize}
@@ -44,7 +60,7 @@ notwendige Zustände:
 \item Außer Betrieb
 \item Münzkassette überprüfen
 \end{itemize}
-notwendige Eregnisse:
+notwendige Ereignisse:
 \begin{itemize}
 \item 1€ eingeworfen
 \item 2€ eingeworfen
@@ -98,12 +114,12 @@ notwendige Aktionen
 \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
 Zustand $\backslash$ Ereignis & Buch trifft ein & Buch wird ausgeliehen & Buch wird zurückgegeben & Timeout & schlechter Zustand & guter Zustand\\
 \hline
-Grundzustand & Katalogisieren, Timer starten 8 Wochen, $\Rightarrow$ \{ausleihbar\} & \% & \% & \% & \% & \%\\
-ausleihbar & \% & Timer reset, Timer starten 4 Wochen, $\Rightarrow$ \{verliehen\} & \% & $\Rightarrow$ \{Buch überprüfen\} & \% & \%\\
-Buch überprüfen & \% & \% & \% & \% & Buch aus Katalog streichen, Buch wegwerfen, $\Rightarrow$ \{Grundzustand\} & Timer starten 8 Wochen, $\Rightarrow$ \{ausleihbar\}\\
-verliehen & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{verliehen\} & Timer reset, $\Rightarrow$ \{ausleihbar\} & erste Mahnung versenden, Timer auf 2 Wochen, $\Rightarrow$ \{erste Mahnung\} & \% & \%\\
-erste Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{verliehen\} & Timer reset, 5€ einfordern, $\Rightarrow$ \{ausleihbar\} & zweite Mahnung versenden, Timer auf 1 Woche, $\Rightarrow$ \{zweite Mahnung\} & \% & \%\\
-zweite Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{verliehen\} & 20€ einfordern, $\Rightarrow$ \{ausleihbar\} & Buch aus Katalog streichen, Rechtsanwalt einschalten, $\Rightarrow$ \{Grundzustand\} & \% & \%\\
+Grundzustand & Katalogisieren, Timer starten 8 Wochen, $\implies$ \{ausleihbar\} & \% & \% & \% & \% & \%\\
+ausleihbar & \% & Timer reset, Timer starten 4 Wochen, $\implies$ \{verliehen\} & \% & $\implies$ \{Buch überprüfen\} & \% & \%\\
+Buch überprüfen & \% & \% & \% & \% & Buch aus Katalog streichen, Buch wegwerfen, $\implies$ \{Grundzustand\} & Timer starten 8 Wochen, $\implies$ \{ausleihbar\}\\
+verliehen & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{verliehen\} & Timer reset, $\implies$ \{ausleihbar\} & erste Mahnung versenden, Timer auf 2 Wochen, $\implies$ \{erste Mahnung\} & \% & \%\\
+erste Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{verliehen\} & Timer reset, 5€ einfordern, $\implies$ \{ausleihbar\} & zweite Mahnung versenden, Timer auf 1 Woche, $\implies$ \{zweite Mahnung\} & \% & \%\\
+zweite Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{verliehen\} & 20€ einfordern, $\implies$ \{ausleihbar\} & Buch aus Katalog streichen, Rechtsanwalt einschalten, $\implies$ \{Grundzustand\} & \% & \%\\
 \end{tabular}
 \end{center}
 \end{sidewaysfigure}
@@ -115,15 +131,15 @@ zweite Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{verlieh
 \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
 Zustand $\backslash$ Ereignis & Buch trifft ein & Buch wird ausgeliehen & Buch wird zurückgegeben & Timeout & schlechter Zustand & guter Zustand & Buch wird vorbestellt\\
 \hline
-Grundzustand & Katalogisieren, Timer starten 8 Wochen, $\Rightarrow$ \{ausleihbar\} & \% & \% & \% & \% & \% & \%\\
-ausleihbar & \% & Timer reset, Timer starten 4 Wochen, $\Rightarrow$ \{verliehen\} & \% & $\Rightarrow$ \{Buch überprüfen\} & \% & \% & \%\\
-Buch überprüfen & \% & \% & \% & \% & Buch aus Katalog streichen, Buch wegwerfen, $\Rightarrow$ \{Grundzustand\} & Timer starten 8 Wochen, $\Rightarrow$ \{ausleihbar\} & \%\\
-verliehen & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{verliehen\} & Timer reset, $\Rightarrow$ \{ausleihbar\} & erste Mahnung versenden, Timer auf 2 Wochen, $\Rightarrow$ \{erste Mahnung\} & \% & \% & Buch vorbestelen, $\Rightarrow$ \{verliehen (vorbestellt)\}\\
-erste Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{erste Mahnung\} & Timer reset, 5€ einfordern, $\Rightarrow$ \{ausleihbar\} & zweite Mahnung versenden, Timer auf 1 Woche, $\Rightarrow$ \{zweite Mahnung\} & \% & \% & Buch vorbestelen, $\Rightarrow$ \{verliehen (vorbestellt)\}\\
-zweite Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{zweite Mahnung\} & 20€ einfordern, $\Rightarrow$ \{ausleihbar\} & Buch aus Katalog streichen, Rechtsanwalt einschalten, $\Rightarrow$ \{Grundzustand\} & \% & \% & Buch vorbestelen, $\Rightarrow$ \{verliehen (vorbestellt)\}\\
-verliehen (vorbestellt) & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{verliehen (vorbestellt)\} & Timer 4 Wochen, Vorbesteller informieren, $\Rightarrow$ \{verliehen\} & erste Mahnung versenden, Timer auf 2 Wochen, $\Rightarrow$ \{erste Mahnung (verliehen)\} & \% & \% & \%\\
-erste Mahnung (vorbestellt) & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{erste Mahnung (vorbestellt)\} & Timer 4 Wochen, Vorbesteller informieren, 5€ einfordern, $\Rightarrow$ \{verliehen\} & zweite Mahnung versenden, Timer auf 1 Woche, $\Rightarrow$ \{zweite Mahnung (verliehen)\} & \% & \% & \%\\
-zweite Mahnung (vorbestellt) & \% & Fehlermeldung "Buch ist verliehen" $\Rightarrow$ \{zweite Mahnung (vorbestellt)\} & Timer 4 Wochen, Vorbesteller informieren, 20€ einfordern, $\Rightarrow$ \{verliehen\} & Buch aus Katalog streichen, Rechtsanwalt einschalten, $\Rightarrow$ \{Grundzustand\} & \% & \% & \%\\
+Grundzustand & Katalogisieren, Timer starten 8 Wochen, $\implies$ \{ausleihbar\} & \% & \% & \% & \% & \% & \%\\
+ausleihbar & \% & Timer reset, Timer starten 4 Wochen, $\implies$ \{verliehen\} & \% & $\implies$ \{Buch überprüfen\} & \% & \% & \%\\
+Buch überprüfen & \% & \% & \% & \% & Buch aus Katalog streichen, Buch wegwerfen, $\implies$ \{Grundzustand\} & Timer starten 8 Wochen, $\implies$ \{ausleihbar\} & \%\\
+verliehen & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{verliehen\} & Timer reset, $\implies$ \{ausleihbar\} & erste Mahnung versenden, Timer auf 2 Wochen, $\implies$ \{erste Mahnung\} & \% & \% & Buch vorbestelen, $\implies$ \{verliehen (vorbestellt)\}\\
+erste Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{erste Mahnung\} & Timer reset, 5€ einfordern, $\implies$ \{ausleihbar\} & zweite Mahnung versenden, Timer auf 1 Woche, $\implies$ \{zweite Mahnung\} & \% & \% & Buch vorbestelen, $\implies$ \{verliehen (vorbestellt)\}\\
+zweite Mahnung & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{zweite Mahnung\} & 20€ einfordern, $\implies$ \{ausleihbar\} & Buch aus Katalog streichen, Rechtsanwalt einschalten, $\implies$ \{Grundzustand\} & \% & \% & Buch vorbestelen, $\implies$ \{verliehen (vorbestellt)\}\\
+verliehen (vorbestellt) & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{verliehen (vorbestellt)\} & Timer 4 Wochen, Vorbesteller informieren, $\implies$ \{verliehen\} & erste Mahnung versenden, Timer auf 2 Wochen, $\implies$ \{erste Mahnung (verliehen)\} & \% & \% & \%\\
+erste Mahnung (vorbestellt) & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{erste Mahnung (vorbestellt)\} & Timer 4 Wochen, Vorbesteller informieren, 5€ einfordern, $\implies$ \{verliehen\} & zweite Mahnung versenden, Timer auf 1 Woche, $\implies$ \{zweite Mahnung (verliehen)\} & \% & \% & \%\\
+zweite Mahnung (vorbestellt) & \% & Fehlermeldung "Buch ist verliehen" $\implies$ \{zweite Mahnung (vorbestellt)\} & Timer 4 Wochen, Vorbesteller informieren, 20€ einfordern, $\implies$ \{verliehen\} & Buch aus Katalog streichen, Rechtsanwalt einschalten, $\implies$ \{Grundzustand\} & \% & \% & \%\\
 \end{tabular}
 \end{adjustbox}
 \end{sidewaysfigure}
@@ -141,8 +157,8 @@ Ein endlicher Automat kann keine beliebig große Warteliste implementieren, denn
 \begin{tabular}{lll}
 Zustand $\backslash$ Ereignis & Fahrzeug bei C & C frei\\
 \hline
-heranfahren & $\Rightarrow$ \{warten\} & $\Rightarrow$ \{weiterfahren\}\\
-warten & $\Rightarrow$ \{warten\} & $\Rightarrow$ \{weiterfahren\}\\
+heranfahren & $\implies$ \{warten\} & $\implies$ \{weiterfahren\}\\
+warten & $\implies$ \{warten\} & $\implies$ \{weiterfahren\}\\
 weiterfahren & \% & \%\\
 \end{tabular}
 \end{center}
@@ -154,7 +170,7 @@ weiterfahren & \% & \%\\
 \begin{tabular}{lll}
 Zustand $\backslash$ Ereignis & Fahrzeug bei C & C frei\\
 \hline
-heranfahren & $\Rightarrow$ \{weiterfahren\} & $\Rightarrow$ \{weiterfahren\}\\
+heranfahren & $\implies$ \{weiterfahren\} & $\implies$ \{weiterfahren\}\\
 weiterfahren & \% & \%\\
 \end{tabular}
 \end{center}
@@ -165,7 +181,7 @@ weiterfahren & \% & \%\\
 \begin{tabular}{lll}
 Zustand $\backslash$ Ereignis & Fahrzeug bei C & C frei\\
 \hline
-heranfahren & $\Rightarrow$ \{weiterfahren\} & $\Rightarrow$ \{weiterfahren\}\\
+heranfahren & $\implies$ \{weiterfahren\} & $\implies$ \{weiterfahren\}\\
 weiterfahren & \% & \%\\
 \end{tabular}
 \end{center}
@@ -176,8 +192,8 @@ weiterfahren & \% & \%\\
 \begin{tabular}{lll}
 Zustand $\backslash$ Ereignis & Fahrzeug bei B & C frei\\
 \hline
-heranfahren & $\Rightarrow$ \{warten\} & $\Rightarrow$ \{weiterfahren\}\\
-warten & $\Rightarrow$ \{warten\} & $\Rightarrow$ \{weiterfahren\}\\
+heranfahren & $\implies$ \{warten\} & $\implies$ \{weiterfahren\}\\
+warten & $\implies$ \{warten\} & $\implies$ \{weiterfahren\}\\
 weiterfahren & \% & \%\\
 \end{tabular}
 \end{center}
@@ -188,8 +204,8 @@ weiterfahren & \% & \%\\
 \begin{tabular}{lll}
 Zustand $\backslash$ Ereignis & Fahrzeug bei A & A frei\\
 \hline
-heranfahren & $\Rightarrow$ \{warten\} & $\Rightarrow$ \{weiterfahren\}\\
-warten & $\Rightarrow$ \{warten\} & $\Rightarrow$ \{weiterfahren\}\\
+heranfahren & $\implies$ \{warten\} & $\implies$ \{weiterfahren\}\\
+warten & $\implies$ \{warten\} & $\implies$ \{weiterfahren\}\\
 weiterfahren & \% & \%\\
 \end{tabular}
 \end{center}
@@ -200,7 +216,7 @@ weiterfahren & \% & \%\\
 \begin{tabular}{lll}
 Zustand $\backslash$ Ereignis & Fahrzeug bei B & B frei\\
 \hline
-heranfahren & $\Rightarrow$ \{warten\} & $\Rightarrow$ \{weiterfahren\}\\
+heranfahren & $\implies$ \{warten\} & $\implies$ \{weiterfahren\}\\
 weiterfahren & \% & \%\\
 \end{tabular}
 \end{center}
@@ -212,6 +228,6 @@ Ein \textit{deadlock} würde zum Beispiel bei folgenden Bedingungen entstehen:
 \item A $\to$ B
 \item B $\to$ C
 \end{itemize}
-Die könnte im echten Straßenverkehr entstehen, wenn gleichzeitig drei Fahrzeuge, jeweils eins von jeder Seite der Kreuzung, an die Kreuzung heranfahren und entsprechend der Bedinungen abbiegen.
+Die könnte im echten Straßenverkehr entstehen, wenn gleichzeitig drei Fahrzeuge, jeweils eins von jeder Seite der Kreuzung, an die Kreuzung heranfahren und entsprechend der Bedienungen abbiegen.
 % Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

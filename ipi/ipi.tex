@@ -1,4 +1,4 @@
-% Created 2016-12-15 Do 17:00
+% Created 2016-12-18 So 16:33
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -81,7 +81,7 @@
 \item Berechenbarkeit: Welche Probleme kann man mit Informatik lösen und welche prinzipiell nicht?
 \item Komplexität: Welche Probleme kann man effizient lösen?
 \item Korrektheit: Wie beweist man, dass das Ergebnis richtig ist? \\
-      Echtzeit: Dass das richtige Ergebnis rechtzeitig vorliegt.
+          Echtzeit: Dass das richtige Ergebnis rechtzeitig vorliegt.
 \item verteilte Systeme: Wie sichert man, dass verteilte Systeme korrekt kommunizieren?
 \end{itemize}
 \subsubsection{technische Informatik (\textbf{ITE})}
@@ -322,7 +322,7 @@ Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen s
 \begin{enumerate}
 \item "Punkt vor Strichrechnung" 3+4*5 $\iff$ 3+(4*5), mul, div, mod binden stärker als add, sub
 \item Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
-          1+2+3-4+5 $\iff$ ((((1+2)+3)-4)+5)
+                  1+2+3-4+5 $\iff$ ((((1+2)+3)-4)+5)
 \item äußere Klammer kann man weglassen (1+2)$\iff$ 1+2
 \end{enumerate}
 \end{itemize}
@@ -477,7 +477,7 @@ mit Zwischenergebnis und Infix Notation
 \item Speicherzellen und Namen sind nützlich um Argumente an Funktionen zu übergeben $\implies$ Definition eigener Funktionen
 \begin{minted}[tabsize=4]{cpp}
 function sq(x) {
-   return x * x
+       return x * x
 }
 \end{minted}
 $\implies$ $d \leftarrow sqrt(sq(p) - q)$
@@ -497,8 +497,8 @@ std::string & Text\\
 \end{tabular}
 \end{center}
 int: $12,-3$ \\
-       double: $-1.02,1.2e-4 = 1.2*10^{-4}$ \\
-       std::string: "text"
+           double: $-1.02,1.2e-4 = 1.2*10^{-4}$ \\
+           std::string: "text"
 \end{itemize}
 \item Initialisierung wird geschrieben als "typename spzname = Wert;"
 \begin{minted}[tabsize=4]{cpp}
@@ -778,9 +778,9 @@ double sqrt(double y);
 \label{sec-7-2-5-2}
 iterative Verbesserung mittels Newtonverfahren
 initial\_guess $x^{(0)}$ ("geraten"), t = 0 \\
-     while not\_good\_enough($x^{(t)}$): \\
-         update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
-         t = t + 1 \\
+         while not\_good\_enough($x^{(t)}$): \\
+                 update $x^{(t + 1)}$ from $x^{(t)}$ (zum Beispiel $x^{(t + 1)} = x^{(x)} + \Delta^{(t)}$ additives update, $x^{(t + 1)} = x^{(t)}\Delta^{(t)}$ multiplikatives update) \\
+                 t = t + 1 \\
 \subparagraph{Newtonverfahren}
 \label{sec-7-2-5-2-1}
 Finde Nullstellen einer gegebenen Funktion $f(x)$, das heißt suche $x^\ast$ sodass $f(x^\ast) = 0$ oder $\abs{f(x^\ast)} < \varepsilon$
@@ -819,7 +819,7 @@ while(c < 3) {
 \end{minted}
 
 Bei der while Schleife kann man leicht vergessen $c$ zu inkrementieren, die for Schleife ist idiotensicher \\
-    Äquivalent zu der while Schleife oben ist:
+        Äquivalent zu der while Schleife oben ist:
 \begin{minted}[tabsize=4]{cpp}
 for(int c = 0; c < 3; c++) {
 	// unser Code
@@ -902,7 +902,7 @@ zwei Datentypen in c++
 \item klassischer c-string: char[] ("Charakter Array") $\implies$ nicht gekapselt, umständlich
 \item c++ string: std::string gekapselt und bequem (nur dieser in der Vorlesung)
 \item string Literale: "Zeichenkette", einzelnes Zeichen: 'z' ("z" = Kette der Länge 1) \\
-     Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale),
+         Vorsicht: die String-Literale sind c-strings (gibt keine c++ string-Literale),
 müssen erst in c++ strings umgewandelt werden, das passiert meist automatisch
 \begin{itemize}
 \item \#include <string>
@@ -940,7 +940,7 @@ s3 = std::string("abc") + "def"; // Ok
 s += "nmk"; // s = s + "nmk" => "xynmk"
 \end{minted}
 \item die Zeichen werden intern in einem C-Array gespeichert (Array = "Feld") \\
-       Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummeriert
+           Array: zusammenhängende Folge von Speicherzellen des gleichen Typs, hier 'char' (für einzelne Zeichen), Die Länge wird (bei std::string) automatisch angepasst, die einzelnen Speicherzellen sind durchnummeriert
 in c++: von $0$ beginnend $\estimates$ Index
 \begin{itemize}
 \item Indexoperator:
@@ -987,7 +987,7 @@ Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für di
 \item Freigeben nicht mehr benötigter Speicherzellen, $\implies$ bessere Approximation von "unendlich viel Speicher"
 \end{itemize}
 \item Umgebung beginnt normalerweise bei "\{" und endet bei "\}" \\
-    Ausnahmen:
+        Ausnahmen:
 \begin{itemize}
 \item $for$: Umgebung beginnt schon bei "for" $\implies$ Laufvariable ist Teil der Umgebung
 \item Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf $\implies$ Speicherzellen für Argumente und Ergebnis gehören zur Umgebung
@@ -1013,7 +1013,7 @@ Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für di
 \item Funktionen sind in der globalen Umgebung definiert
 \begin{itemize}
 \item Umgebung jeder Funktion sind Kindknoten der globalen Umgebung (Ausnahme: Namensräume $\implies$ siehe unten) \\
-      $\implies$ Funktions Umgebung ist \textbf{nicht} in der Umgebung, wo die Funktion aufgerufen wird
+          $\implies$ Funktions Umgebung ist \textbf{nicht} in der Umgebung, wo die Funktion aufgerufen wird
 \end{itemize}
 \item Jede Umgebung besitzt eine \textbf{Zuordnungstabelle} für alle Speicherzellen, die in der Umgebung definiert wurden
 \begin{center}
@@ -1028,8 +1028,8 @@ l & int & 2\\
 \item Alle Befehle werden relativ zur aktuellen Umgebung ausgeführt
 \begin{itemize}
 \item aktuell: Zuordnungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
-      Beispiel: $c = a * b;$ \\
-      Regeln:
+          Beispiel: $c = a * b;$ \\
+          Regeln:
 \item wird der Name (nur $a, b, c$) in der aktuellen Zuordnungstabelle gefunden
 \begin{enumerate}
 \item Typprüfung $\implies$ Fehlermeldung, wenn Typ und Operation nicht zusammenpassen
@@ -1045,7 +1045,7 @@ l & int & 2\\
 \item der aktuelle Wert der richtig ist $\implies$ beachte Reihenfolge der Befehle!
 \end{enumerate}
 \item Namensraum: spezielle Umgebungen in der globalen Umgebung (auch geschachtelt) mit einem Namen \\
-    Ziele:
+        Ziele:
 \begin{itemize}
 \item Gruppieren von Funktionalität in Module (zusätzlich zu Headern)
 \item Verhinderung von Namenskollisionen
@@ -1063,7 +1063,7 @@ class system_clock;
 std::sqrt(80);
 std::chrono::system_clock clock;
 \end{minted}
- Besonderheit: mehrere Blöcke mit selbem Namensraum werden verschmolzen
+     Besonderheit: mehrere Blöcke mit selbem Namensraum werden verschmolzen
 Beispiel
 \begin{minted}[tabsize=4]{cpp}
 int p = 2;
@@ -1565,7 +1565,7 @@ int sq(int x) {
 }
 
 double sq(double x) {
-   return x * x;
+       return x * x;
 }
 
 // und so weiter für komplexe und rationale Zahlen...
@@ -1730,7 +1730,7 @@ beschreibt, wie sich die Laufzeit verlängert, wenn man mehr Daten hat.
 Algorithmus braucht für $n$ Elemente $x$ Sekunden, wie lange dauert es für $2n$, $10n$ für große $n$
 \end{ex}
 Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
-    Grundidee:
+        Grundidee:
 \begin{enumerate}
 \item berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
 \item vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels \textbf{$O$-Notation} und ihren Verwandten
@@ -1741,7 +1741,7 @@ und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \i
 \item $g(n)$ ist asymptotische untere Schranke für $f(n)$ ($f(n) \geq g(n)$)
 \[f(n) \in \Omega(g(n)) \iff \Exists n_0,C : \Forall n > n_0 f(n) \geq C g(n)\]
 \item $g(n)$ ist asymptotisch scharfe Schranke für $f(n) (f(n) = g(n))$
-          \[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
+                  \[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
 \end{enumerate}
 \end{enumerate}
 Regeln:
@@ -1750,20 +1750,20 @@ Regeln:
 \item $c' f(n) \in \Theta(f(n))$
 \item $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Multiplikationsregel
 \item $O(f(n)) + O(g(n)) \in O(\text{"max"}(f(n), g(n)))$ \hfill Additionsregel \\
-       formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
-       $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
+           formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
+           $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
 \item $n^p \in O(n^q)$ wenn $p \leq q$
 \end{enumerate}
 Beliebte Wahl für $g(n)$
 \begin{itemize}
 \item $O(1)$ \hfill "konstante Komplexität" \\
-      elementare Operation "+, -, *, /", Array-Zugriff v[k] (v: std::vector)
+          elementare Operation "+, -, *, /", Array-Zugriff v[k] (v: std::vector)
 \item $O(\log(n))$ \hfill "logarithmische Komplexität" \\
-      zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
+          zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
 \item $O(n)$ \hfill "lineare Komplexität" \\
-      zum Beispiel std::transform() ($n$ = Anzahl der transformierten Elemente)
+          zum Beispiel std::transform() ($n$ = Anzahl der transformierten Elemente)
 \item $O(n \log(n))$ \hfill{"n log n", "log linear" "linearithmisch"} \\
-      Beispiel: std::sort
+          Beispiel: std::sort
 \item $O(n^2)$ \hfill "quadratische Komplexität"
 \item $O(n^p)$ \hfill "polynomielle Komplexität"
 \item $O(2^n)$ \hfill "exponentielle Komplexität"
@@ -1865,18 +1865,18 @@ for(uint8_t i = v.size(); i >= 0; i++) {
 \label{sec-16-1-2-1}
 Subtraktion kann auf Addition zurückgeführt werden
 Erinnerung: Restklassenarithmetik: (Modulo) \\
-     alle Zahlen mit dem gleichen Rest modulo $k$ bilden "Äquivalenzklasse", zum Beispiel $k = 4$
+         alle Zahlen mit dem gleichen Rest modulo $k$ bilden "Äquivalenzklasse", zum Beispiel $k = 4$
 \begin{align*}
 0 \mod 4 &= 0 \equiv 4 \mod 4 \equiv 8 \mod 4 \equiv 12 \mod 4 \ldots \\
-1 \mod 4 &= 0 \equiv 5 \mod 4 \equiv 9 \mod 4 \equiv 13 \mod 4 \ldots \\
-2 \mod 4 &= 0 \equiv 6 \mod 4 \equiv 10 \mod 4 \equiv 14 \mod 4 \ldots \\
-3 \mod 4 &= 0 \equiv 7 \mod 4 \equiv 11 \mod 4 \equiv 15 \mod 4 \ldots \\
+1 \mod 4 &= 1 \equiv 5 \mod 4 \equiv 9 \mod 4 \equiv 13 \mod 4 \ldots \\
+2 \mod 4 &= 2 \equiv 6 \mod 4 \equiv 10 \mod 4 \equiv 14 \mod 4 \ldots \\
+3 \mod 4 &= 3 \equiv 7 \mod 4 \equiv 11 \mod 4 \equiv 15 \mod 4 \ldots \\
 \end{align*}
 Ein Mitglied jeder Äquivalentzklasse wird Represäntant. \\
-     Hier: kleinste Repreäsentanten $0, \ldots, (k - 1)$, mit $k = 2^m$
+         Hier: kleinste Repreäsentanten $0, \ldots, (k - 1)$, mit $k = 2^m$
 sind das gerade die uint-Werte \\
-     Eigenschaft: man kann Vielfache $n k$ addieren, ohne Äquivalenzklase zu ändern: \\
-     \[ (a - b) \mod 2^m = (a + \underbrace{2^m - b}_{\mathclap{z:~\text{Zweierkomplement}}}) \mod 2^m = (a + z) \mod 2^m \]
+         Eigenschaft: man kann Vielfache $n k$ addieren, ohne Äquivalenzklase zu ändern: \\
+         \[ (a - b) \mod 2^m = (a + \underbrace{2^m - b}_{\mathclap{z:~\text{Zweierkomplement}}}) \mod 2^m = (a + z) \mod 2^m \]
 $z = (2^m - b) \mod 2^m$ lässt sich billig berechnen als $(\sim b + 1) \mod 2^m$
 Dabei ist $\sim$ bitweise Negation (dreht alle Bits um)
 \begin{itemize}
@@ -1944,7 +1944,7 @@ uint8_t mul(uint8_t x, uint8_t y) {
 	 uint8_t res = 0;
 	 for(int i = 0; i < 8; i++) {
 		  if(y & (1 << i)) {
-			   res += x;
+			       res += x;
 		  }
 		  x = x << 1; // x * 2
 	 }
@@ -2187,7 +2187,7 @@ struct Character {
 wchar_t clear;
 wchar_t encrypted;
 int count;
-}
+};
 
 Character c;
 c.count = 0;

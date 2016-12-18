@@ -1,4 +1,4 @@
-% Created 2016-12-15 Do 16:58
+% Created 2016-12-18 So 16:33
 \documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -116,8 +116,8 @@ Kinematik: Beschreibung der Bewegung (Ursachen der Bewegung $\rightarrow$ Dynami
 \item Beschleunigung: $a(t) \equiv \dot{v}(t) = \ddot{x}(t)$
 \item Beispiel: $x(t) \equiv x_0 + v_0 t + \frac{a_0}{2}t^2, ~v(t) = v_0 + a_0 t,~a(t) = a_0$
 \item Umgekehrt: Integration, z.B. von Geschwindigkeit zu Trajektorie: Anfangsposition muss gegeben sein, z.B. $x(t_0) \equiv x_0$
-     \[x(t)=x_0 + \int_{t_0}^{t}v(t')\mathrm{d}t'\]
-     Man prüft leicht $\dot{x}(t) = v(t)$
+         \[x(t)=x_0 + \int_{t_0}^{t}v(t')\mathrm{d}t'\]
+         Man prüft leicht $\dot{x}(t) = v(t)$
 \begin{itemize}
 \item Es gibt keine andere Funktion $\tilde{x}(t)$ mit $\dot{\tilde{x}}(t) = v(t)$ und $\tilde{x}(t_0) = x_0$
 \end{itemize}
@@ -126,7 +126,7 @@ Analog: Von Beschleunigung zur Geschwindigkeit, und dann weiter zur Trajektorie
 \subsubsection{Üben dieser Logik an unserem Beispiel}
 \label{sec-2-1-2}
 Gegeben: $a(t) = a_0,~t_0=0,v_0,x_0$ \\
-    \[\implies~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
+        \[\implies~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
 \[x(t) = x_0 + \int_0^t (v_0 + a_0 t')\mathrm{d}t' = x_0 + v_0 t + \frac{a_0}{2}t^2\]
 \subsection{Grundbegriffe der Differenzial und Integralrechung}
 \label{sec-2-2}
@@ -140,8 +140,8 @@ $\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwachs $\Delta f
 \begin{itemize}
 \item Aus $\Delta f = f'(x)\Delta(x) + O(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
 \item Anwendung auf die Identitätsabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
-      \[\implies \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
-      Dies ist eigentlich nur eine Schreibweise für $f'(x)$, \uline{aber} nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwert-Definition)
+          \[\implies \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
+          Dies ist eigentlich nur eine Schreibweise für $f'(x)$, \uline{aber} nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwert-Definition)
 \item $f'(x)$ wieder Funktion $\implies$ analog: $f''(x),~f'''(x),\ldots,f^{(n)}(x)$
 \item Praxis
 \[(f\cdot g)' = f' g + g' f~\text{(Produkt/Leibnizregel)}\]
@@ -154,14 +154,14 @@ $\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwachs $\Delta f
 \[(x^x)' = (e^{\ln{x^x}})' = (e^{x\ln{x}})' = e^{x\ln{x}}(\ln{x} + 1) = x^x(\ln{x} + 1)\]
 \[\arctan'(x) \equiv (\tan^{-1}(x)) = \frac{1}{\tan^{-1}(y)}~\text{wobei $y = \tan^{-1}(x)$}\]
 Besser: \[\tan^{-1}(y) = (\sin{y} \frac{1}{\cos{y}})' = \cos{y} \frac{1}{\cos{y}} + \sin{y}(\frac{1}{\cos{y}})' = 1 + \sin{y}(-\frac{1}{\cos^2{y}})(-\sin{y}) = \] \\
-        \[ 1 + \tan^2{y} = 1 + x^2 \\ \implies \arctan'(x) = \frac{1}{1 + x^2}\]
+                \[ 1 + \tan^2{y} = 1 + x^2 \\ \implies \arctan'(x) = \frac{1}{1 + x^2}\]
 \end{itemize}
 \item Verknüpfung \[f\circ g: x\mapsto f(g(x))\]
 \item Inverse \[f^{-1} : x=f(y)\mapsto y\]
 \item Grenzwerte:
 \begin{itemize}
 \item nützliche Regel: l'Hospital ("$\frac{0}{0}$") \\
-        Falls $\lim_{x\to x_0} f,g = 0$ und $\lim_{x\to x_0} \frac{f'}{g'}$ existiert, so gilt $\lim_{x\to x_0}\frac{f}{g} = \lim_{x\to x_0} \frac{f'}{g'}$
+                Falls $\lim_{x\to x_0} f,g = 0$ und $\lim_{x\to x_0} \frac{f'}{g'}$ existiert, so gilt $\lim_{x\to x_0}\frac{f}{g} = \lim_{x\to x_0} \frac{f'}{g'}$
 \item weitere nützliche Regel \[\lim \frac{\text{Beschränkt}}{\text{Unbeschränkt und monoton wachsend}} = 0\]
 \begin{itemize}
 \item Beispiel: \[\lim_{y\to 0} \frac{\sin{\frac{1}{y}}}{\frac{1}{y}}\]
@@ -274,9 +274,9 @@ Schraubenbahn:
 \paragraph{{\bfseries\sffamily TODO} Skizze (Raumkurve)}
 \label{sec-2-5-1-1}
 \textbf{Kommentar:} \\
-     $\vec{x},\vec{v},\vec{a}$ leben in verschiedenen Vektorräumen!
+         $\vec{x},\vec{v},\vec{a}$ leben in verschiedenen Vektorräumen!
 allein schon wegen $[x] = \si{\meter}$, $[v] = \si{\meter\per\second}$ \\
-     Wir können wie in $d=1$ von $\vec{a}$ zu $\vec{v}$ zu $\vec{x}$ gelangen!
+         Wir können wie in $d=1$ von $\vec{a}$ zu $\vec{v}$ zu $\vec{x}$ gelangen!
 \[\vec{v}(t) = \vec{v_0} + \int_{t_0}^{t} \mathrm{d}t' \vec{a}(t') = (v_0^1 + \int_{t_0}^t \mathrm{d}t' a^1(t'), v_0^2 + \int_{t_0}^t \mathrm{d}t' a^2(t'), v_0^3 + \int_{t_0}^t \mathrm{d}t' a^2(t'))\]
 \paragraph{Üben:}
 \label{sec-2-5-1-2}
@@ -306,7 +306,7 @@ Abbildung von $V\times V \to \mathbb{R},~(v,w) \mapsto v\cdot w$ mit den Eigensc
 \item $(\alpha u + \beta v) \cdot w = \alpha u\cdot w + \beta v\cdot w$
 \end{itemize}
 Sie heißt positiv-semidefinit, falls  $v\cdot v\geq 0$, \\
-    Sie heißt positiv-definit, falls  $v\cdot v = 0 \implies v = 0$
+        Sie heißt positiv-definit, falls  $v\cdot v = 0 \implies v = 0$
 Hier : Skalarprodukt $\equiv$ positiv definite symmetrische Bilinearform
 \subsubsection{Norm (Länge) eines Vektors}
 \label{sec-2-6-2}
@@ -318,7 +318,7 @@ anderes Beispiel:
 \[\vec{x}\cdot\vec{y} \equiv x^1y^1 - x^2y^2\]
 symmetrische Bilinearform, \uline{nicht} positiv, semidefinit!
 Frage: \\
-    Beispiel für Bilinearform die positiv-semidefinit ist, aber \uline{nicht positiv definit}
+        Beispiel für Bilinearform die positiv-semidefinit ist, aber \uline{nicht positiv definit}
 \[\v x \v y = x^1 y^1\]
 \subsection{Abstand zwischen Raumpunkten}
 \label{sec-2-7}
@@ -340,7 +340,7 @@ Speziell wird der infinitesimale Abstand wichtig sein:
 \[\d\v x = (\d x^1, \d x^2,\d x^3)\]
 \[\d\v x = (\f{\d x^1}{\d t}\d t, \f{\d x^2}{\d t}\d t, \f{\d x^3}{\d t}\d t) = (v^1\d t, v^2\d t, v^3\d t) = (v^1, v^2, v^3)\d t = \v v \d t,~\text{oder:}~\v v = \f{\d\v x}{\d t}\]
 ($\d \v x~\text{analog zu}~\d f$ vorher); \\
-    $\d {\v x}^2 = \abs{\d \v x}^2 = \abs{\v v}^2 \d t^2$ \\ $\abs{\d x} = \abs{\v v}\d t$.
+        $\d {\v x}^2 = \abs{\d \v x}^2 = \abs{\v v}^2 \d t^2$ \\ $\abs{\d x} = \abs{\v v}\d t$.
 \subsection{Bogenlänge und begleitendes Dreibein}
 \label{sec-2-8}
 $\abs{d\v x}$ entlang $\v x(t)$ aufaddieren $\rightarrow$ Bogenlänge.
@@ -520,7 +520,7 @@ Dies ist äquivalent zu einem System von $2n$ Dgl 1. Ordnung
 \end{equation}
 Ursprüngliche Form folgt durch Einsetzen der 2. Gleichung in die Erste.
 Das verallgemeinert sich sofort auf die Ordnung $p$: Man gibt einfach der $(p - 1)$ niederen Ableitungen neue Namen und betrachtet sie als neue Variablen. Die zusätzlichen Dgl sind schlicht die Aussagen, dass es sich dabei immer noch um die ehemaligen Ableitungen handelt. \\
-     $\implies$ System von $p$ Dgl 1. Ordnung; allgemeine Lösung hat $p$ Parameter
+         $\implies$ System von $p$ Dgl 1. Ordnung; allgemeine Lösung hat $p$ Parameter
 \subsubsection{Erste physikalische Beispiele}
 \label{sec-3-3-9}
 \paragraph{Punktmasse}
@@ -571,7 +571,7 @@ $F(x) = -k x$
 \subparagraph{Freier Fall mit Luftwiderstand}
 \label{sec-3-3-9-1-4}
 Aufgabe: Bestimme die zeitliche Entwicklung von $v$ wenn Körper im Schwerefeld losgelassen wird. $F_R = -cv^2$ \\
-      Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
+          Problem $1-dim$: x wachse nach unten, Start bei $t = 0, x = 0, \dot{x} = 0$
 \[F=m\ddot x \implies m g - c \dot{x}^2 = m\ddot x \implies \begin{cases} m g - cv^2 &= m \dot{v} \\ v &= \dot{x} \end{cases}\]
 Erste Gleichung enthält kein $x$ und kann unabhängig gelöst werden:
 \begin{align*}
@@ -593,7 +593,7 @@ $\implies \hat{v}$ ist Grenzgeschwindigkeit, wird exponentiell angenommen, wenn 
 Zugabe: einfache physikalische Argumente für die Größe von $c$:
 \begin{enumerate}
 \item $[c] = \si{\kilo\gram\per\meter}$, Input: $A$ (Querschnitt), $\rho_L$
-         $\implies c \sim \rho_L A$
+                 $\implies c \sim \rho_L A$
 \item Energiebilanz an verdrängter Luft: \[F_R\cdot l \sim E_{\text{kin,Luft}}\sim\rho_L l A \frac{v^2}{2}\]
 \end{enumerate}
 \subsection{Taylorentwicklung}
@@ -619,7 +619,7 @@ Taylor-Reihe: \[f(x) = f(x_0) + \sum_{n=1}^\infty f^{(n)}(x_0)\frac{(x - x_0)^n}
 \label{sec-3-4-1}
 \[f(x) \equiv \begin{cases} e^{-\frac{1}{x^2}} & x\neq 0 \\ 0 & x = 0 \end{cases}\]
 Überzeugen sie sich, dass alle Ableitungen existieren, auch bei Null! \\
-    Sie Brauchen:
+        Sie Brauchen:
 \[\lim_{x\to 0}\frac{1}{x^n}e^{-\frac{1}{x^2}} = 0\]
 Die Ableitungen verschwinden sogar bei Null $\implies$ Taylor-Reihe ist Null, keine gute Näherung
 \subsection{Harmonischer Oszillator}
@@ -641,17 +641,17 @@ Massenpunkt kann nur ruhen, wo $F=0$ beziehungsweise $V'=0$. Genauer: Nur Minima
 \paragraph{Ziel}
 \label{sec-3-5-1-1}
 Untersuchung der Bewegung in der Nähe von Minimal (also bei $x\approx x_0$ wobei $v'(x_0) = 0$ gelte) \\
-     $V(x)$ bei $x_0$, $V'(x_0) = 0, \abs{x - x_0}$ klein \\
-     \[\implies V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
+         $V(x)$ bei $x_0$, $V'(x_0) = 0, \abs{x - x_0}$ klein \\
+         \[\implies V(x) \simeq V(x_0) + \frac{1}{2}v''(x_0)(x-x_0)^2\]
 \[\implies F(x) \simeq - V''(x_0)(x-x_0)\]
 \[x-x_0\equiv y \implies \underbrace{F(y) = -k y}_{\text{harmonischer Oszillator}}, k\equiv v''(0)\]
 Wir sehen: Harmonischer Oszillator ist eine Idealisierung von potentiell sehr großem Nutzen (viele Systeme)
 \paragraph{Lösung}
 \label{sec-3-5-1-2}
 Newton $\implies m\ddot{y} = -ky$ beziehungsweise $\ddot{y} = -\omega^2 y,\omega\equiv\sqrt{\frac{k}{m}}$ \\
-     $\implies \sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
-     $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ ist auch Lösung (wegen Linearität) \\
-     (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
+         $\implies \sin{\omega t}$ und $\cos{\omega t}$ sind Lösungen \\
+         $\implies y(t) = A\sin{\omega t} + B\cos{\omega t}$ ist auch Lösung (wegen Linearität) \\
+         (wegen der beiden frei wählbaren Konstanten ist dies schon die allgemeine Lösung)
 \paragraph{Verallgemeinerungen}
 \label{sec-3-5-1-3}
 \begin{itemize}
@@ -680,12 +680,12 @@ $A(x)$ sei eine beliebige aber fest gewählte Stammfunktion von $a$
 Wir können den inhomogenen Fall lösen, durch "Variation der Konstanten"
 \begin{itemize}
 \item Ansatz: $y = C(x)e^{-A(x)}$, Dgl. $y' + ay = f$
-       \[(c e^{-A})' + a C e^{-A} = f\]
-       \[c' e^{-A} - C A' e^{-A} + C a e^{-A} = f\]
-       Beachte $A' = a$
-       \[\implies c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
-       \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
-       $f(x')$ ist eine frei wählbare additive Konstante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
+           \[(c e^{-A})' + a C e^{-A} = f\]
+           \[c' e^{-A} - C A' e^{-A} + C a e^{-A} = f\]
+           Beachte $A' = a$
+           \[\implies c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
+           \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
+           $f(x')$ ist eine frei wählbare additive Konstante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
 \end{itemize}
 \end{itemize}
 \subsubsection{Zusammenfassung / Verallgemeinerung auf $n > 1$}
@@ -845,7 +845,7 @@ $\implies$ \\ \[\v F = -\v\nabla V \implies \underbrace{\v\nabla\times\v F}_{\ma
 &\underarrow[=]{$k \leftrightarrow j$} -\frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V + \frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V = 0
 \end{align*}
 $\impliedby$ \\
-     Wähle beliebiges festes $\v x_0$ im Gebiet. Definiere Potential als minus Arbeit am Massenpunkt $\rightarrow Abbildung$
+         Wähle beliebiges festes $\v x_0$ im Gebiet. Definiere Potential als minus Arbeit am Massenpunkt $\rightarrow Abbildung$
 \begin{align*}
 V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
 \intertext{Linienintegral kann immer definiert werden, wenn Kurve durch Gebiet mit Vektorfeld verläuft}
@@ -861,7 +861,7 @@ V(\v x) &\equiv -\int_{\v x_0}^{\v x} \v F(x)\d\v s \tag{Linienintegral} \\
 &\implies \v F + \v\nabla V = 0 \checkmark
 \end{align*}
 Lücke: Wegunabhängigkeit der Definition von $V$: \\
-     Wähle zwei unterschiedliche Wege ($L_1, L_2$):
+         Wähle zwei unterschiedliche Wege ($L_1, L_2$):
 \begin{align*}
 \int_{L_1}\d\v s \v F - \int_{L_2}\d \v s \v F = \underarrow[\oint]{\text{Rand von } $\Sigma$} \d\v s\v F \\
 \intertext{Satz von Stokes}
@@ -1035,7 +1035,7 @@ Komplexe Zahlen sind die Menge $\mathbb{C} = \mathbb{R} \times \mathbb{R} = \mat
 Das ist äquivalent zu unserer "naiven Definition" $z = x + \I y$
 \end{defn}
 \textbf{Aufgabe:} Prüfen sie, dass die Axiome erfüllt sind! \\
-    Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
+        Schwierigster Teil: Multiplikations-Inverses, Idee / Vorschlag:
 \[z^{-1} = (x + \I y)^{-1} = \frac{x}{x^2 + y^2} - \I \frac{y}{x^2 + y^2}\]
 
 $\mathbb{C} = \mathbb{R}^2 \implies$ Darstellung durch Vektoren in Ebene liegt nahe.
@@ -1049,10 +1049,10 @@ $\mathbb{C} = \mathbb{R}^2 \implies$ Darstellung durch Vektoren in Ebene liegt n
 \end{itemize}
 
 Übliche Funktionen ($\exp, \ln, \sin, \cos$) können mittels ihrer in $\mathbb{R}$ bekannten Taylorreihe auf $\mathbb{C}$ übertragen werden \\
-    \textbf{Besonders wichtig:}
+        \textbf{Besonders wichtig:}
 \[e^z \equiv \sum_{n = 0}^\infty \frac{z^n}{n!}\]
 Brauchen $e^{z + w} = e^z \cdot e^w$ \\
-    Nachrechnen:
+        Nachrechnen:
 \begin{align*}
 e^{z + w} &= \sum_{n = 0}^\infty \frac{(z + w)^n}{n!} = \sum_{n = 0}^\infty \frac{1}{n!}\sum_{k = 0}^n \underarrow[\binom{n}{k}]{$\mathclap{\underset{\binom{n}{k} = \frac{n!}{k!(n -k)!}}{\text{Binominialkoeffizient}}}$} z^kw^{n - k}
 \intertext{englisch: "n choose k"}
@@ -1388,19 +1388,19 @@ Praktisch:
 \begin{ex}
 \begin{itemize}
 \item Euklidisches Skalarprodukt: $V\times V \to \mathbb{R}$
-     \[\delta: (\v x, \v y) \mapsto \delta_{ij} x^i y^j \equiv \v x \cdot \v y \in \mathbb{R}\]
+         \[\delta: (\v x, \v y) \mapsto \delta_{ij} x^i y^j \equiv \v x \cdot \v y \in \mathbb{R}\]
 \item Noch einfacher:
 \[t: V \to \mathbb{R}: t_i \v x \to t_i x^i \in \mathbb{R}\]
 Die Menge solcher linearen Abbildungen bildet auch einen n-dimensionalen Vektorraum, den sogenannten Dualraum $V^\ast$ (zu $V$)
 Notation: $\ubar t = \{t_1, \ldots, t_n\} \in V^\ast$ \\
-     Erinnerung: $\v x = \{x^1, \ldots, x^n\} \in V$ \\
-     Oben(Unten schreiben der Indizes macht die "natürliche Wirkung") von $\ubar t$ auf $\v x$ besonders deutlich: $t_i x^i \in \mathbb{R}$
+         Erinnerung: $\v x = \{x^1, \ldots, x^n\} \in V$ \\
+         Oben(Unten schreiben der Indizes macht die "natürliche Wirkung") von $\ubar t$ auf $\v x$ besonders deutlich: $t_i x^i \in \mathbb{R}$
 \begin{itemize}
 \item oben: kontravariant
 \item unten: kovariant ($\rightarrow$ Co-Vektor $\in V^\ast$)
 \end{itemize}
 Für und: enorme Vereinfachung: \\
-     Wir haben immer euklidischen Raum und damit die besondere Rolle von $\delta_{ij}$ und die inversen Matrix $\delta^{ij}$
+         Wir haben immer euklidischen Raum und damit die besondere Rolle von $\delta_{ij}$ und die inversen Matrix $\delta^{ij}$
 \[\delta_{ij} \delta^{jk} = \delta_i^k = (\mathbb{1}_i^k)\]
 Dies erlaubt uns Indizes beliebig zu "heben" und zu "senken":
 \[t^i \equiv \delta^{ij} t_j, x_i \equiv \delta_{ij}x^j\]
@@ -1605,7 +1605,7 @@ Bezeichne Komponenten von $\v x_n$ bezüglich der neuen, gedrehten Basis mit $x^
 mit $R\equiv A^{-1}, y\equiv -A^{-1}a, v\equiv -A^{-1}b$ (könnte auch noch Uhren umstellen $\to s$)
 \begin{itemize}
 \item Transformation sieht formal so aus, wie im aktiven Fall \\
-       Symmetrieforderung: "Newton" soll gleiche Form haben: Prüfen dies:
+           Symmetrieforderung: "Newton" soll gleiche Form haben: Prüfen dies:
 \[\ddot{x}' = \underarrow[R]{"noch" zeitunabhängig}\ddot{x} = R \frac{F}{m} = \frac{F'}{m} \checkmark\]
 \end{itemize}
 \end{itemize}
