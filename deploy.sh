@@ -13,14 +13,14 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 fi
 
 # Save some useful information
-PDF_REPO=`git config remote.origin.url`
-PDF_SSH_REPO=${https://github.com/hd-notes/pdfs.git/https:\/\/github.com\//git@github.com:}
-PAGES_REPO=`git config remote.origin.url`
-PAGES_SSH_REPO=${https://github.com/hd-notes/hd-notes.github.io.git/https:\/\/github.com\//git@github.com:}
+PDF_REPO=${https://github.com/hd-notes/pdfs.git/https:\/\/github.com\//git@github.com:}
+PAGES_REPO=${https://github.com/hd-notes/hd-notes.github.io.git/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
 # Clone the existing gh-pages for this repo into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
+echo $PDF_REPO
+echo $PAGES_REPO
 git clone $PDF_REPO pdfs
 git clone $PAGES_REPO pages
 
