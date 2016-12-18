@@ -29,3 +29,7 @@ cookies.txt
 *.swp
 *\~
 bin
+pages
+pdfs
+*.tex
+*.pdf
