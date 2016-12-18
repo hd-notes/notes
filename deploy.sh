@@ -67,7 +67,11 @@ git add .
 git commit -m "travis auto compile: ${SHA}"
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-openssl aes-256-cbc -K $encrypted_fcdac90c3348_key -iv $encrypted_fcdac90c3348_iv -in ../pdf_key.enc -out pdf_key -d
+openssl aes-256-cbc -K $encrypted_fcdac90c3348_key -iv $encrypted_fcdac90c3348_iv -in keys.enc -out
+ secrets/keys -d
+
+head -c3243 keys > pdf_key
+head -c3247 keys > ../pages/pages_key
 chmod 600 pdf_key
 eval `ssh-agent -s`
 ssh-add pdf_key
@@ -95,8 +99,6 @@ git config user.email "$COMMIT_AUTHOR_EMAIL"
 # The delta will show diffs between new and old versions.
 git add .
 git commit -m "travis auto update: ${SHA}"
-
-openssl aes-256-cbc -K $encrypted_fcdac90c3348_key -iv $encrypted_fcdac90c3348_iv -in ../pages_key.enc -out pages_key -d
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
 # ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
