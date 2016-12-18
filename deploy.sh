@@ -67,12 +67,7 @@ git add .
 git commit -m "travis auto compile: ${SHA}"
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
-ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
-ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
-ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../pdf_key.enc -out pdf_key -d
-openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../pages_key.enc -out ../pages/pages_key -d
+openssl aes-256-cbc -K $encrypted_fcdac90c3348_key -iv $encrypted_fcdac90c3348_iv -in ../pdf_key.enc -out pdf_key -d
 chmod 600 pdf_key
 eval `ssh-agent -s`
 ssh-add pdf_key
@@ -101,13 +96,14 @@ git config user.email "$COMMIT_AUTHOR_EMAIL"
 git add .
 git commit -m "travis auto update: ${SHA}"
 
+openssl aes-256-cbc -K $encrypted_fcdac90c3348_key -iv $encrypted_fcdac90c3348_iv -in ../pages_key.enc -out pages_key -d
+
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
 # ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
 # ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
 # ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
 # ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 
-# openssl aes-256-cbc -K "$encrypted_8740fdcfc16d_key" -iv "$encrypted_8740fdcfc16d_iv" -in ../pages_key.enc -out pages_key -d
 chmod 600 pages_key
 ssh-add -D
 ssh-add pages_key
