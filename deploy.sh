@@ -71,7 +71,7 @@ git commit -m "travis auto compile: ${SHA}"
 openssl aes-256-cbc -K $encrypted_fcdac90c3348_key -iv $encrypted_fcdac90c3348_iv -in ../keys.enc -out keys -d
 
 head -c3243 keys > pdf_key
-head -c3247 keys > ../pages/pages_key
+tail -c3247 keys > ../pages/pages_key
 chmod 600 pdf_key
 eval `ssh-agent -s`
 ssh-add pdf_key
