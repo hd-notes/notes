@@ -58,6 +58,11 @@
   \[\frac{f(x) - f(x_0)}{x - x_0} - c = \frac{\omega(x)}{x - x_0} \xrightarrow{x\to x_0} 0\]
   das heißt $f$ ist in $x_0$ differenzierbar mit Ableitung $f'(x_0)$
   #+end_proof
+  #+begin_remark latex
+  Der Satz besagt, dass affin-lineare Funktion (Gerade) $g(x) = f(x_0) + f'(x_0)(x - x_0)$
+  approximiert die differenzierbare Funktion in $x_0 \in D$. Der Graph von $g$ ist
+  die tangenta an dem Graphen von $f$ in $(x_0, f(x_0))$
+  #+end_remark
   #+ATTR_LATEX: :options [4.6]
   #+begin_lemma latex
   Eine Funktion $f:D\to\mathbb{R}$ in $x_0 \in D$ differenzierbar ist dort stetig.
@@ -88,3 +93,17 @@
   3. $g(x) \neq 0$
 	 \[(\frac{f}{g})'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}\]
   #+end_lemma
+  #+begin_proof latex
+  1. Aus den Eigenschaften von konvergenten Zahlenfolgen
+  2. \begin{align*}
+	 (f\cdot g)'(x_0) &= \lim_{x\to x_0}  \frac{f(x)(g(x) - g(x_0)) + (g(x) - f(x_0))g(x)}{x - x_0} \\
+	 &= f(x_0)g'(x_0) + f'(x)g(x)
+	 \end{align*}
+  3. Erst $f \equiv 1$
+	 \begin{align*}
+	 (\frac{1}{g})'(x) &= \lim_{x\to x_0} (\frac{1}{g(x)} - \frac{1}{g(x_0)}) \frac{1}{x - x_0} \\
+	 &= \lim_{x\to x_0} \frac{g(x_0) - g(x)}{g(x)g(x_0)} \frac{1}{x - x_0} \\
+	 &= \lim - \frac{g'(x_0)}{g^2(x_0)} \\
+	 (\frac{f}{g})'(x_0) = (f \frac{1}{g})'(x_0) = \frac{f' g - f g'}{g^2}(x)
+	 \end{align*}
+  #+end_proof

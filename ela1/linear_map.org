@@ -69,5 +69,7 @@
 	 &\Exists i_1, \ldots, i_r \in I, \lambda_{i_1}, \ldots, \lambda_{i_r} \in K: v = \lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r} \\
 	 &\implies f(v) = \lambda_{i_1} f(v_{i_1}) + \ldots + \lambda_{i_r} f(v_{i_r}) \in \Lin((f(v_i))_{i\in I})
 	 \end{align*}
-	 "$\supseteq$" Sei $w\in \Lin((f(v_i))_{i\in I}) $
+	 "$\supseteq$" Sei $w\in \Lin((f(v_i))_{i\in I}) \implies \Exists i_1, \ldots, i_r \in I, \lambda_{i_1}, \ldots, \lamda_{i_r} \in K$ mit
+	 \[w = \lambda_{i_1} f(v_{i_1}) + \ldots + \lambda_{i_r} f(v_{i_r}) = f(\lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r}) \in f(V')\]
+  7. $f(V)$ sit UVR von $W$ nach 3. Rest aus Eigenschaften von $\dim$.
   #+end_proof

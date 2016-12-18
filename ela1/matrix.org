@@ -1,4 +1,4 @@
-* Matrizen
+* TODO Matrizen
   In diesem Abschnitt seinen $m,n,r\in\mathbb{N}$ \\
   Frage: Gegeben sei ein UVR $U = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ Wie bestimmt man effizient die Basis von $U$?
   #+ATTR_LATEX: :options [10.1]
@@ -326,3 +326,64 @@
   \end{gather}
   $\implies ((0,1,2,0), (0,0,3,-1))$ ist eine Basis von $W$ insbesondere ist $\dim_W = 2$
   #+end_ex
+  #+ATTR_LATEX: :options [10.14 transponierte Matrix]
+  #+begin_defn latex
+  $A = (a_{ij}) \in M(m\times n, K)$
+  \[A^t := \begin{pmatrix} a_{11} & & a_{m1} \\ \vdots & \ldots & \vdots \\ a_{1n} & & a_{mn} \end{pmatrix} \in M(n\times m, K)\]
+  heißt die zu $A$ transponierte Matrix (Transponierte von $A$).
+  #+end_defn
+  #+ATTR_LATEX: :options [10.15]
+  #+begin_ex latex
+  \[A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6\end{pmatrix} \in M(2\times 3, \mathbb{R}) \implies A^t = \begin{pmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6 \end{pmatrix} \in M(3\times 2, \mathbb{R})\]
+  #+end_ex
+  #+ATTR_LATEX: :options [10.16]
+  #+begin_remark latex
+  $A, A_2, A_2 \in M(m\times n, K), B\in M(n\times r, K), \lambda K$ dann gilt:
+  1. $(A_1 + A_2)^t = A_1^t + A_2^t$
+  2. $(\lambda A)^t = \lambda A^t$
+  3. $(A^t)^t = A$
+  4. $(AB)^t = B^t A^t$
+  #+end_remark
+  #+begin_proof latex
+  1. trivial
+  2. trivial
+  3. trivial
+  4. Nach 3. gezeigt: $AB = (B^t A^t)^t \implies (AB)^t = ((B^t A^t)^t)^t = B^t A^t$.
+	 Sei $A = (a_{ij})_{\substack{1 \leq 1 \leq m \\ 1 \leq j \leq n}}, B = (b_{ij})_{\substack{1 \leq 1 \leq n \\ 1 \leq j \leq r}}$ \\
+	 $\implies$ Eintrag an Position $(i,k)$ von $AB$ ist gegeben durch
+	 \[\sum_{1\leq j\leq n}^{a_{ij}b_{jk}}\]
+	 Eintrag an Position $(i,k)$ in $(B^t A^t)^t =$ eintrag an Position $(r,i)$ von $B^t A^t$.
+	 Dieser ist gegeben durch:
+	 \[\sum_{i\leq j \leq n} b'_{kj} a'_{ji} = \sum_{1\leq j\eq n} b_{jk} a_{ij} = \sum_{1 \leq j \leq m} a_{ij} b_{jk} \]
+	 wobei:
+	 - $b'_{kj} =$ Eintrag an Position $(k,j)$ von $B^t = b_{jk}$
+	 - $a'_{ji} =$ Eintrag an Position $(j,i)$ von $A^t = a_{ij}$
+	 Somit $AB = (B^t A^t)^t$
+  #+end_proof
+  #+ATTR_LATEX: :options [10.17]
+  #+begin_defn latex
+  $A\in M(m\times n, K)$
+  - Zeilenrang$(A):= \dim_k \ZR(A)$ heißt der *Zeilenrang* von $A$
+  - $\SR(A):= \ZR(A^t) \subseteq k^m$ heißt der *Spaltenraum* von $A$
+  - Spaltenrang(A):= \dim_k \SR(A)$ heißt der *Spaltenrang* von $A$
+  #+end_defn
+  #+ATTR_LATEX: :options [10.18]
+  #+begin_ex latex
+  Wir betrachten die Matrix $A$ aus Beispiel 10.13
+  \begin{align*}
+  A &= \begin{pmatrix} 0 & 0 & 3 & -1 \\ 0 & 1 & 2 & 0 \\ 0 & 3 & 0 & 2\end{pmatrix} \in M(3\times 4, \mathbb{R}), \dim \ZU(A) = 2 \\
+  A^t &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 3 \\ 3 & 2 & 0 \\ -1 & 0 & 2\end{pmatrix} \in M(4\times 3, \mathbb{R}) \implies \SR(A) := \Lin((0,0,0), (0,1,3), (3,2,0), (-1,0,2)) \\
+  \end{align*}
+  Wir bestimmen eine Basis von $\SR(A)$:
+  \begin{equation*}
+  A^t = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 3 \\ 3 & 2 & 0 \\ -1 & 0 & 2\end{pmatrix} \to
+  \begin{pmatrix} -1 & 0 & 2 \\ 0 & 1 & 3 \\ 3 & 2 & 0 \\ 0 & 0 & 0\end{pmatrix} \to
+  \begin{pmatrix} -1 & 0 & 2 \\ 0 & 1 & 3 \\ 0 & 2 & 6 \\ 0 & 0 & 0\end{pmatrix} \to
+  \begin{pmatrix} -1 & 0 & 2 \\ 0 & 1 & 3 \\ 0 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix}
+  \end{equation*}
+  $\implies ((-1, 0, 2), (0, 1, 3))$ ist eine Basis von $\SR(A) \implies$ Spaltenrang$(A)$ = 2.
+  In diesem Beispiel ist also Zeilenrang$(A) =$ Spaltenrang$(A)$.
+  #+end_ex
+  #+begin_note latex
+  Wir werden später zeigen: Für jedes $A\in M(m\times n, K)$ ist Zeilenrang$(A) =$ Spaltenrang$(A)$.
+  #+end_note

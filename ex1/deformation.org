@@ -146,29 +146,150 @@
    #+end_defn
 
    \begin{align*}
-   \frac{\Delta V}{V} &= -\kappa \Delta p = \frac{1}{K} \Delta p \\
+   \frac{\Delta V}{V} &= \kappa \Delta p = \frac{1}{K} \Delta p \\
+   \intertext{Wasser:}
    \kappa &= \SI{5e-10}{\meter\squared\per\newton}
+   \intertext{Aluminium:}
    \kappa &= \SI{1.4e-10}{\meter\squared\per\newton}
    \end{align*}
-*** Druck
+   Im Folgende: $\kappa = 0, V =~\text{const}$, das heißt Wasser "inkompresible"
+   #+ATTR_LATEX: :options [Pascalsches Prinzip]
+   #+begin_thm latex
+   Wird auf eine in einem Gefäß eingeschlossene Flüssigkeit ein Druch ausgeübt, dann verteilt sich dieser
+   ungehindert auf jeden Punkt in der Flüssigkeit und die Wände.
+   #+end_thm
+   Zur Veranschaulichung: betrachte frei schwebendes Flüssigkeitsprisma in ruhender Flüssigkeit,
+   frei wählbar... (hier noch: ohne Schwerkraft)
+   \begin{align*}
+   F_x &= F_{xc} - F_{xb} = F_c \sin{\alpha} - F_b \\
+   &= P_c h c \sin{\alpha} - p_b h b \overset{=}{!} 0 \\
+   F_y &= F_{ya} - F_{yc} = F_a - F_c \cos{\alpha} \\
+   &= \p_a a h - p_c h c \cos{\alpha} \overset{=}{!} 0 \\
+   \intertext{Mit $\sin{\alpha} = \frac{b}{a}, \cos{\alpha} = \frac{a}{c}$ folgt:}
+   p_c h c \frac{b}{c} - p_b b h &= 0 \implies p_c = p_b
+   p_a a h - p_c h c \frac{a}{c} &= 0 \implies p_a = p_c
+   \end{align*}
+   #+begin_remark latex
+   In z-Richtung sind Kräfte aus Symmetriegründen ebenfalls Null!
+   da Flüssigkeitsprisma frei gewählt, das heißt beliebig orientiert werden kann folgt Pascalsches Prinzip
+   #+end_remark
+   Anwendung: Hydraulische Presse. Druck überall gleich!
+   $\implies$
+   \begin{align*}
+   p &= \frac{F_1}{A_1} = \frac{F_2}{A_2} \\
+   F_2 = F_1 \frac{A_2}{A_1}
+   \end{align*}
+   Arbeit:
+   \begin{align*}
+   W_1 &= F_1 a_1 = p A_1 a_1 = p V \\
+   W_2 = F_2 a_2 = p A_2 a_2 = pV
+   \end{align*}
+   Bisher: Vernachlässigung der Schwerkraft. \\
+   Jetzt: Druch im Schwerefeld.
+
+   Eigengewicht einer Flüssigkeit verursacht einen von der Tiefe abhängenden Druck.
+   Kraftwirkung auch Fläche $A$:
+   \begin{align*}
+   F &= m g = \rho V g = \rho A h g \\
+   \intertext{mit Tiefe $h$}
+   p = \frac{F}{A} = \rho g h
+   \end{align*}
+   #+ATTR_LATEX: :options [Hydrostatischer Druck]
+   #+begin_defn latex
+   Der Druck in einer ruhenden, inkompressiblen Flüssigkeit nimmt unter Einfluss der
+   Schwerkraft linear mit der Tiefe $h$ zu:
+   \[p = p_0 + \rho g h\]
+   Der Hydrostatische Druck ist unabhängig von Form und Volumen
+   des einschließenden Behältnisses
+   #+end_defn
+   Anwendung: Quecksilberbarometer
+   \begin{align*}
+   p_{Luft} + \rho g x &= \rho g h + \rho g x \\
+   p_{Luft} &= \rho g h \\
+   \end{align*}
+   Druckeinheit: $\SI{1}{\milli\meter\Hg} = \SI{133.322}{\pascal}$
+*** Auftrieb
+	Erfahrung: Ein in eine Flüssigkeit eingetauchter Körper erfährt Autrieb. \\
+	Grund: Auf Körper einwirkende Druckkräfte.
+	#+ATTR_LATEX: :options [Prinzip des Archimedes]
+	#+begin_thm latex
+	Ein Körper, der in eine Flüssigkeit eingetauch ist
+	erfähft eine Auftriebskraft, deren Betrag gleich der
+	Gewichtskraft der verdrängten Flüssigkeit ist.
+	#+end_thm
 	\begin{align*}
-	F_p &= A(p(x) - p(x + \Delta x)) \\
-	&=  -\dd{p}{x} \Delta A \\
-	&= -\dd{p}{x}\Delta V \\
-	&= -\frac{\Delta p}{\Delta x}\Delta V \\
-	F_p &= -F_{visc} \\
-	F\Delta x &= -\Delta p \Delta V \\
-	F &= -\grad p \Delta v \\
+	p_1 &= \rho g x_1 + p_0 \\
+	p_2 = \rho g x_2 + p_0 \\
+	E_1 = \rho g x_1 A + p_0 A \\
+	E_2 = \rho g x_2 A + p_0 A \\
+	F_2 - F_1 = \rho g A \Delta x = m g = F_g
 	\end{align*}
-	Eigentlich ist das ganze deutlich komplizierter:
+
+	Es folgt: Ein Körper schwimmt, wenn seine Dichte kleiner ist als
+	die Flüssigkeit, in die er eingetaucht ist.
+*** Oberflächenspannung
+	Beobachtung: Flüssigkeiten bilden Oberflächen. \\
+	Grund: Potentielle Energie an Oberfläche größer. \\
+	Im Inneren: Kräftegleichgewicht \\
+	An Oberfläche: Kraftwirkung nach Inneren \\
+	Minimierung der potentiellen Energie $\implies$ Minimierung der Oberfläche.
+	#+ATTR_LATEX: :options [Oberflächenspannung]
+	#+begin_defn latex
+	\[\sigma = \frac{\text{Zunahme der Oberflächenenergie}}{\text{Zunahme der Oberfläche}}\]
+	Achtung: Anders als Zugspannung. Hier: Kraft pro Länge
+	#+end_defn
+
+** Gase
+   Wesentlicher Unterschie zu Gestkörpern und Flüssigkeiten: Hohe Kompressibilität.
+   #+ATTR_LATEX: :options [Gesetz von Boyle-Mariette]
+   #+begin_defn latex
+   \[p V = ~\text{const}\]
+   falls Temperatur $T = ~\text{const}$, siehe später
+   #+end_defn
+*** Barometrische Höhenformel:
+	Flüssigkeiten: $p = \rho g h + p_0$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$)}$) \\
+	Gase: Hohe Kompressibilität! Das heißt Dichteänderungen müssen berücksichtigt werden. \\
+	Frage: $p(h) = ?, \rho(h) = ?$ \\
+	Es gilt:
 	\begin{align*}
-	\v u (x,y,z,t) \\
-	p(x,y,z,t) \\
-	\rho(x,y,z,t) \\
-	\d m \dd{\v u}{t} = \v F_p + \v F_{visc} + \v F_{ext} \\
-	\intertext{Navier-Stokes-Gleichung}
-	\rho(\frac{\partial}{\partial t} + \v u \ v v) \v u = -\underarrow[\grad p]{"$F_p$"} + \rho \underarrow[\v g]{"$F_{ext}$"} + \underarrow[\eta \Delta \v n]{"$F_{visc}$"} \\
+	p V &=~\text{const} \\
+	p V = p \frac{M}{\rho} = p_0 V_0 = p_0 \frac{M}{\rho_0} \\
+	\intertext{für konstante Masse $M$:}
+	\frac{p}{\rho} = \frac{p_0}{\rho_0}
+	\d p &= -\rho g\d h - p \frac{\rho_0}{p_0} g\d h \\
+	\frac{\d p}{p} &= -\frac{\rho_0 g}{\p_0} \d h \\
+	\ln{p} - \ln{p_0} &= -\frac{\rho_0 g}{p_0} h \\
+	p &= p_0 \exp{(-\frac{\rho_0 g h}{p_0})} \\
+	\intertext{Barometrische Höhenformel:}
+	p(h) = p_0 \exp(-\frac{\rho_0 g}{p_0} h)
 	\end{align*}
+	das heißt: in Atmosühäre mit kompressiblem gas nimmt der Druck mit der Höhe exponentiell ab.
+** Strömende Flüssigkeiten und Gase
+   Experiment: Flüssigkeitsströmung durch Rohr \\
+   Beobachtung: Druckabfall entlang des Rohres \\
+   \begin{align*}
+   F_p &= A(p(x) - p(x + \Delta x)) \\
+   &=  -\dd{p}{x} \Delta A \\
+   &= -\dd{p}{x}\Delta V \\
+   &= -\frac{\Delta p}{\Delta x}\Delta V \\
+   F_p &= -F_{visc} \\
+   F\Delta x &= -\Delta p \Delta V \\
+   F &= -\grad p \Delta v \\
+   \end{align*}
+   - $\v F_p$: Kraft aufgrund des Druckgradienten
+   - $\v F_{visc}$: Kraft aufgrund innerer Reibung
+   Also: Bei der Strömung von Flüssigkeiten muss Arbeit gegen die innere Reibung aufgebracht werden
+   Es gilt
+   \[F\Delta x = -\Delta p \Delta V, F\d x = -\d p \Delta V\]
+   Eigentlich ist das ganze deutlich komplizierter:
+   \begin{align*}
+   \v u (x,y,z,t) \tag{Geschwindigkeitsfeld} \\
+   p(x,y,z,t) \tag{Druckfeld} \\
+   \rho(x,y,z,t) \tag{Dichtefeld} \\
+   \d m \dd{\v u}{t} = \v F_p + \v F_{visc} + \v F_{ext} \\
+   \intertext{Navier-Stokes-Gleichung}
+   \rho(\frac{\partial}{\partial t} + \v u \ v v) \v u = -\underarrow[\grad p]{"$F_p$"} + \rho \underarrow[\v g]{"$F_{ext}$"} + \underarrow[\eta \Delta \v n]{"$F_{visc}$"} \\
+   \end{align*}
 *** Kontinuitätsgleichung:
 	\begin{align*}
 	\phi &= \frac{\Delta m}{\Delta t} = ~\text{const} \\

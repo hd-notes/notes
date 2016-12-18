@@ -1,18 +1,149 @@
-* Untervektorräume
+* Summen von Untervektorräumen
+  In diesem Abschnitt sei $V$ stets ein $K$-VR
+  #+ATTR_LATEX: :options [11.1]
+  #+begin_defn latex
+  $U_1, \ldot, U_r \subseteq V$ UVR.
+  \[U_1 + \ldots + U_r := \{u_1 + \ldots + u_r \mid u_1 \in U_1, \ldots, u_r \in U_r\} \subseteq V\]
+  heißt die Summe von $U_1, \ldots, U_r$. Für $U_1 + \ldots + U_r$ schreiben wir auch
+  \[\sum_{i = 1}^{r} U_i\]
+  #+end_defn
+  #+ATTR_LATEX: :options [11,2]
+  #+begin_remark latex
+  $U_1, \ldots, U_r \subseteq V$ UVR. Dann gilt:
+  1. $U_1 + \ldots + U_r = \Lin(U_1 \cup \ldots \cup U_r)$ das heißt $U_1 + \ldots + U_r$
+	 ist der kleinste UVr von $V$, der alle Elemente aus $U_1, \ldots, U_r$ enthält.
+  2. Sind $U_1, \ldots, U_r$ endlichdimensional, dann ist auch $U_1 + \ldots + U_r$
+	 endlichdimensional, und es ist
+	 \[\dim(U_1 + \ldots + U_r) \leq \sim(U_1) + \ldots + \dim(U_r)\]
+  #+end_remark
+  #+begin_proof latex
+  1. "$\subseteq$" Sei $v\in U_1 + \ldots + U_r$
+	 \[\implies \Exists u_1 \in U_1, \ldots, u_r \in U_r: v = u_1 + \ldots + u_r\]
+	 somit $v \in \Lin(U_1 \cup\ldots \cup U_r)$ \\
+	 "$\supseteq$" Sei $v\in \Lin(U_1 \cup \ldots \cup U_r)$
+	 \[\implies \Exists w_1, \ldots, w_s \in U_1 \cup \ldots \cup U_r, \lambda_1, \ldots, \lambda_s \in K: v = \lambda_1 w_1 + \ldots + \lambda_s w_s\]
+	 Wegen $w_i \in U_1 \cup \ldots \cup U_r$: \[\Exists j_i \in \{1, \ldots, r\}: w_i \in U_{j_i}\]
+	 somit \[v_i := \lambda w_1 \in U_{j_i} \implies v = v_1 + \ldots + v_s \in U_1 + \ldots + U_r\]
+  2. Ist $(u_1^{(i)}, \ldots, u_{s_i})^{(i)}$ eine Basis von $U_i$, dann ist
+	 \[(u_1^{(1)}, \ldots u_{s_1}^{(1)}, \ldots, u_{1}^{(r)}, \ldots, u_{s_r}^{(r)})\]
+	 ein ES von $U_1 + \ldots + U_r \implies \dim(U_1 + \ldots + U_r) \leq s_1 + \ldots + s_r = \dim(U_1) + \ldots + \dim(U_r)$
+  #+end_proof
+  #+ATTR_LATEX: :options [11.3]
+  #+begin_ex latex
+  1. $K = \mathbb{R}, V = \mathbb{R}^2, U_1 = \Lin((1,-1)), U_2 = \Lin((1, 1))$ \\
+	 \[\implies U_1 + U_2 = \Lin((1, -1), (1, 1)) = \mathbb{R}^2\]
+  2. $K = \mathbb{R}, V = \mathbb{R}^3, U_1 = \Lin((e_1, e_2)) =$ ("$x_1-x_2$-Ebene"), $U_2 = \Lin((e_2, e_3))$ ("$x_2 - x_3$-Ebene")
+	 \[\implies U_1 + U_2 \ni e_1, e_2, e_3 \implies U_1 + U_2 = \mathbb{R}^3 \implies \dim(U_1 + U_2) = 3 < \dim(U_1) + \sim(U_2) = 4\]
+  #+end_ex
+  #+ATTR_LATEX: :options [11.4]
+  #+begin_thm latex
+  $U_1, U_2 \subseteq V$ endlichdimensionale UVR. Dann gilt:
+  \[\dim(U_1 + U_2) = \dim(U_1) + \dim(U_2) - \dim(U_1 \cap U_2)\]
+  #+end_thm
+  #+begin_proof latex
+  1. Sei $(v_1, \ldots, v_m)$ eine Basis von $U_1 \cap U_2$
+	 \[\implies \Exists u_1, \ldots, u_k \in U_1: \mathcal{B}_1 := (v_1, \ldots, v_m, u_1, \ldots, u_k)~\text{Basis von}~U_1\]
+	 und es gibt $u_1', \ldots, u_l'$ sodass
+	 \[\mathcal{B}_2 := (v_1,\ldots, v_m, u_1', \ldots u_l')~\text{Basis von}~U_2\]
+  2. Behauptung: $\mathcal{B} := (v_1, \ldots, v_m, u_1, \ldots, u_k, u_1', \ldots u_l')$ ist Basis von $U_1 + U_2$
+	 Beweis:
+	 - $\mathcal{B}$ ist ES von $U_1 + U_2$
+	 - $\mathcal{B}$ ist linear unabhängig, denn: Sei
+	   \begin{gather*}
+	   \underbrace{\lambda_1 v_1 + \ldots + \lambda_m v_m + \mu_1 u_1 + \ldots \mu_k u_k}_{=: v\in U_1} + \mu_1' u_1' + \ldots + \mu_l' u_l' = 0 \\
+	   \implies v = -\mu_1' u_1' - \ldots - \mu_l' u_l' \in U_1 \cap U_2 = \Lin((v_1, \ldots, v_m)) \\
+	   \intertext{Eindeutigkeit der Darstellung in $\mathcal{B}_1$}
+	   \implies \mu_1 = \ldots = \mu_k = 0 \\
+	   \implies \lambda_1 v_1 + \ldots + \lambda_m v_m + \mu_1' u_1' + \ldots + \mu_l' u_l' = 0 \\
+	   \intertext{Wegen $\mathcal{B}_2$ Basis von $U_2$}
+	   \implies \lambda_1 = \ldots = \lambda_m = \mu_1' = \ldots = \mu_l' = 0
+	   \end{gather*}
+  3. Aus Aussage 1. und 2. folgt: $\dim(U_1 \cap U_2) = m, \dim U_1 = m + k, \dim U_2 = m + l, \dim(U_1 + U_2) = m + k + l = m + k + l$
+	 \[\implies \dim(U_1 + U_2) = \dim(U_1) + \dim(U_2) - \dim(U_1 \cap U_2)\]
+  #+end_proof
+  #+ATTR_LATEX: :options [11.5 Direkte Summe]
+  #+begin_defn latex
+  $U_1, \ldots, U_r \subseteq V$ UVR. $V$ heißt die direkte Summe von $U_1, \ldots, U_r \xLeftrightarrow{\text{Def}}$:
+  \[V = U_1 + \ldots + U_r \wedge U_i \cap \sum_{\substack{j = 1\\j\neq i}}^{r} U_j = \{0\}\]
+  Notation: $V = U_1 \oplus \ldots \oplus U_r$
+  #+end_defn
+  #+begin_note latex
+  - Spezialfall: $r = 2$:
+	\[V = U_1 \oplus U_2 \iff V = U_1 + U_2 \wedge U_1 \cap U_2 = \{0\}\]
+	In diesem Fall ist $\dim (V) = \dim (U_1) + \dim (U_2)$
+  - Ist $r\geq 3$, dann genügt für $V = U_1 \oplus \ldots \oplus U_r$ nicht, zu fordern, dass
+	\[V = U_1 + \ldots + U_r \wedge U_i \cap U_j = \{0\} \Forall i\neq j\]
+	zum Beispiel:
+	\[K = \mathbb{R}, V = \mathbb{R}^2, U_1 = \Lin((e_1)), U_2 = \Lin((e_2)), U_3 = \Lin((1,1))\]
+	Dann ist $V = U_1 + U_2 + U_3$ und $U_i \cap U_j = \{0\} \Forall i\neq j$, aber
+	\[U_1 \cap (\underbrace{U_2 + U_3}_{= \mathbb{R^2}}) = U_1 \neq \{0\}\]
+	has heißt die Summe ist nicht direkt.
+  #+end_note
+  #+ATTR_LATEX: :options [11.6]
+  #+begin_ex latex
+  (vergleiche Beispiel 11.3)
+  1. $K = \mathbb{R}, V = \mathbb{R}^2, U_1 = \Lin((1,1)), U_2 = \Lin((1, -1)) \impiles V = U_1 \oplus U_2$
+  2. $K = \mathbb{R}, V = \mathbb{R}^3, U_1 = \Lin((e_1, e_2)), U_2 = \Lin((e_2, e_3)) \implies V = U_1 + U_2$, aber
+	 die Summe ist nicht direkt, denn $e_2 \in U_1 \cap U_2$
+  #+end_ex
+  #+ATTR_LATEX: :options [11.7]
+  #+begin_remark latex
+  $U_1, \ldots, U_r \subseteq V$. Dann sind äquivalent
+  1. $V = U_1 \oplus \ldots \oplus U_r$
+  2. Fü jedes $v\in V$ existieren eindeutig bestimmte $u_i \in U_i, i = 1,\ldots, r$ mit $v = u_1 + \ldots u_r$
+  #+end_remark
+  #+begin_proof latex
+  1. $\implies$ 2. Sei $V = U_1 \oplus \ldots \oplus U_r, v\in V$
+	 \[\implies V = U_1 + \ldots + U_r \implies \Exists u_i \in U_i, i=1,\ldots r: v= u_1 + \ldots + u_r\]
+	 Eindeutigkeit: Seien $\tilde u_i \in U_i, i = 1, \ldots, r$ mit $v = u_1 + \ldots + u_r = \tilde u_1 + \tilde u_r$
+	 \begin{align*}
+	 \implies \underbrace{u_1 - \tilde u_1}_{\in U_1} &= \underbrace{(\tilde u_2 - u_2)}_{\in U_2} + \ldots + \underbrace{(\tilde u_r - u_r)}_{\in U_r} \in U_1 \cap \sum_{i = 2}^{r} U_i = \{0\} \\
+	 \implies u_1 &= \tilde u_1 \implies u_1 + \ldots + u_r = \tilde u_2 + \ldots + \tilde u_r
+	 \end{align*}
+	 Induktiv folgt duch Wiederholung dieses Arguments: $u_2 = \tilde u_2, \ldots, u_r = \tilde u_r$
+  2. $\implies$ 1. Aus 2. folgt sofort: $V = U_1 + \ldots + U_r$  \\
+	 Annahme:
+	 \[\Exists i\in \{1,\ldots, r\}: U_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^{r} U_j \neq \{0\}\]
+	 $\implies \Exists u_k \n U_k, k = 1,\ldots, r, u_1 \neq 0$ und
+	 \[u_i = u_1 + \ldots + u_{i - 1} + u_{i + 1} + \ldots + u_r \lightning\]
+	 Wiederspruch zur Eindeutigkeit der Darstellung.
+  #+end_proof
+  #+ATTR_LATEX: :options [11.8]
+  #+begin_thm latex
+  $V$ endlichdimensionaler $K$-VR, $U_1, \ldots, U_r \subseteq V$ UVR. Dann sind äquivalent
+  1. $V = U_1 \oplus \ldots \oplus U_r$
+  2. Für alle Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)})$ von $U_i, i = 1,\ldots, r$ ist
+	 \[\mathcal{B}:= (v_1^{(i)}, \ldots, v_{s_1}^{(1)}, \ldots, v_1^{(r)}, \ldots, v_{s_r}^{(r)})\]
+	 eine Basis von $V$
+  3. Es gibt Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)})$ von $U_i, i = 1,\ldots, r$ sodass
+	 \[\mathcal{B}:= (v_1^{(1)}, \ldots, v_{s_1}^{(1)}, \ldots, v_1^{(r)}, \ldots, v_{s_r}^(r))\]
+	 eine Basis von $V$ ist.
+  4. $V = U_1 + \ldots + U_r$ und $\dim V = \dim U_1 + \ldots + \dim U_r$
+  #+end_thm
   #+begin_proof latex
   (1.) $\implies$ (2.) \\
+  Es sei
+  \[V = U_1 \oplus \ldots \oplus U_r, \mathcal{B}_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)}), i = 1,\ldots, r~\text{Basis von $U_i$}\]
+  \[\mathcal{B}:= (v_1^{(i)}, \ldots, v_{s_1}^{(1)}, \ldots, v_1^{(r)}, \ldots, v_{s_r}^{(r)})\]
+  1. Wegen $V = U_1 + \ldots + U_r$ ist $\mathcal{B}$ ES von $V$
+  2. $\mathcal{B}$ ist linear unabhängig, denn: Sei
+	 \[\underbrace{\mu_1^{(1)}, v_1^{(1)} + \ldots + \mu_{s_1}^{(1)} v_{s_1}^{(1)}}_{=: u_1} + \ldots + \underbrace{\mu_1^{(r)} v_1^{(r)} + \ldots + \mu_{s_r}^{(r)} v_{s_r}^{(r)} = 0}_{=: u_r}\]
+	 also $U_1 + \ldots + u_r = 0$. Falls $u_1 = \ldots = u_r = 0$, dann folgt wegen $\mathcal{B}_i$ linear unabhängig, dass
+	 \[\mu_1^{(i)} = \ldots = \mu_{s_i}^{(i)} = 0 \Forall i\in \{1, \ldots, r\}\]
+	 Falls ein $i\in \{1, \ldots, r\}$ existiert mit $u_i \neq 0$, dann
+	 \[u_i = -u_1 - \ldots - u_{i - 1} - u_{i + 1} - \ldots - u_r \in U_i \cap \sum_{\substack{j = 1 \\ j\neq i}}^{r} U_j = \{0\}\lightning\]
   (2.) $\implies$ (3.) klar \\
   (3.) $\implies$ (4.) klar \\
   (4.) $\implies$ (2.) Es gelte 4., das heißt $V = U_1 + \ldots + U_r$ und $\dim(V) = \dim(U_1) + \ldots + \dim(U_r)$. Es seien
-	 $B_i = (v_1^{(i)}, \ldots, v_{si}^{(i)}), i = 1, \ldots, r$ Vasen von $U_i, \mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$.
+	 $B_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)}), i = 1, \ldots, r$ Basen von $U_i, \mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$.
 	 $\implies \mathcal{B}$ ist Erzeugendessystem von $U_1 + \ldots + U_r = V$, $\mathcal{B}$ besteht aus $s_1 + \ldots + s_r = \dim(U_1) + \ldots + \dim(U_r) = \dim V$ Vektoren
 	 $\implies \mathcal{B}$ ist Basis von $V$. \\
-  (2.) $\implies$ (1.) Es gelte 2., das heißt für ale Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{si}^{(i)}), i = 1, \ldots, r$ von $U_i$ ist $\mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$
+  (2.) $\implies$ (1.) Es gelte 2., das heißt für alle Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)}), i = 1, \ldots, r$ von $U_i$ ist $\mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$
   eine Basis von $V$. \\
   zu zeigen: $V = U_1 \oplus \ldots \oplus U_r$. \\
   klar: $V = U_1 + \ldots U_r$ \\
   Sei $i \in \{1, \ldots, r\}, v \in U_1 \cap \sum_{\substack{j = 1 \\ j \neq i}}^{r} U_j$. $\implies \Exists \mu_1^{(k)} \in K, k = 1,\ldots, r, = 1, l = 1, \ldots, s_k:$
-  \[v \underarrow[=]{$v\in U_i$} \mu_1^{(i)} v_1^{(i)} + \ldots + \mu_{si}^{(i)} v_{si}^{(i)} = \sum_{\substack{j = 1 \\ j \neq i}}^{r} (\mu_1^{(j)} v_1^{(j)} + \ldots + \mu_{si}^{(j)} v_{si}^{(j)})\]
+  \[v \underarrow[=]{$v\in U_i$} \mu_1^{(i)} v_1^{(i)} + \ldots + \mu_{s_i}^{(i)} v_{s_i}^{(i)} = \sum_{\substack{j = 1 \\ j \neq i}}^{r} (\mu_1^{(j)} v_1^{(j)} + \ldots + \mu_{s_i}^{(j)} v_{s_i}^{(j)})\]
   Wegen $\mathcal{B}$ Basis folgt $\mu_{l}^(k) = 0 \Forall k = 1, \ldots, r, l = 1,\ldots,s_k$, also $v = 0$. Somit
   \[U_i \cap \sum_{\substack{j = 1 \\ j\neq i}}^{r} U_j = \{0\}\]
   also $V = U_1 \oplus \ldots \oplus U_r$
