@@ -13,16 +13,12 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 fi
 
 # Save some useful information
-PDF_REPO=${https://github.com/hd-notes/pdfs.git/https:\/\/github.com\//git@github.com:}
-PAGES_REPO=${https://github.com/hd-notes/hd-notes.github.io.git/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
 # Clone the existing gh-pages for this repo into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
-echo $PDF_REPO
-echo $PAGES_REPO
-git clone $PDF_REPO pdfs
-git clone $PAGES_REPO pages
+git clone https://github.com/hd-notes/pdfs.git pdfs
+git clone https://github.com/hd-notes/hd-notes.github.git pages
 
 # Clean out existing contents
 rm -rf pdfs/**/* || exit 0
@@ -62,7 +58,7 @@ eval `ssh-agent -s`
 ssh-add pdf_key
 
 # Now that we're all set up, we can push.
-git push $PDFS_REPO master
+git push origin master
 
 cd ..
 cd pages
@@ -93,4 +89,4 @@ eval `ssh-agent -s`
 ssh-add pages_key
 
 # Now that we're all set up, we can push.
-git push $PAGES_REPO master
+git push origin master
