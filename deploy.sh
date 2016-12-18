@@ -19,6 +19,7 @@ get_download_url() {
   echo "https://raw.githubusercontent.com/rroohhh/travis-texlive/master/texlive.tar.xz"
 }
 
+
 echo "Downloading portable TeX Live installation..."
 curl -s $( get_download_url ) | tar -xJC "${HOME}"
 
