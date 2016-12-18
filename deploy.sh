@@ -5,9 +5,6 @@ function doCompile {
   ./compile.sh
 }
 
-echo "$encrypted_8740fdcfc16d_key" | head 
-echo "$encrypted_8740fdcfc16d_iv" | head 
-
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo "Skipping deploy; just doing a build."
@@ -75,6 +72,7 @@ ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
 ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
 ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../pdf_key.enc -out pdf_key -d
+openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../pages_key.enc -out ../pages/pages_key -d
 chmod 600 pdf_key
 eval `ssh-agent -s`
 ssh-add pdf_key
@@ -108,7 +106,8 @@ git commit -m "travis auto update: ${SHA}"
 # ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
 # ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
 # ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-openssl aes-256-cbc -K "$encrypted_8740fdcfc16d_key" -iv "$encrypted_8740fdcfc16d_iv" -in ../pages_key.enc -out pages_key -d
+
+# openssl aes-256-cbc -K "$encrypted_8740fdcfc16d_key" -iv "$encrypted_8740fdcfc16d_iv" -in ../pages_key.enc -out pages_key -d
 chmod 600 pages_key
 ssh-add -D
 ssh-add pages_key
