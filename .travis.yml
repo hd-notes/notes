@@ -1,0 +1,9 @@
+sudo: required
+install:
+    - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended latexmk emacs python-pygments
+script: bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: 8740fdcfc16d
+  - COMMIT_AUTHOR_EMAIL: "robin.ole.heinemann@t-online.de"
+language: generic
