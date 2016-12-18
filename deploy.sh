@@ -56,10 +56,10 @@ git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
-if [ -z `git diff --exit-code` ]; then
-    echo "No changes to the output on this push; exiting."
-    exit 0
-fi
+# if [ -z `git diff --exit-code` ]; then
+#     echo "No changes to the output on this push; exiting."
+#     exit 0
+# fi
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
@@ -90,10 +90,10 @@ git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
-if [ -z `git diff --exit-code` ]; then
-    echo "No changes to the output on this push; exiting."
-    exit 0
-fi
+# if [ -z `git diff --exit-code` ]; then
+#    echo "No changes to the output on this push; exiting."
+#    exit 0
+# fi
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
@@ -105,7 +105,7 @@ git commit -m "travis auto update: ${SHA}"
 # ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
 # ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
 # ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-openssl aes-256-cbc -K $encrypted_8740fdcfc16d_key -iv $encrypted_8740fdcfc16d_iv -in ../pages_key.enc -out pages_key -d
+openssl aes-256-cbc -K "$encrypted_8740fdcfc16d_key" -iv "$encrypted_8740fdcfc16d_iv" -in ../pages_key.enc -out pages_key -d
 chmod 600 pages_key
 ssh-add -D
 ssh-add pages_key
