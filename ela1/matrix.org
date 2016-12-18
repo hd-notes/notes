@@ -1,4 +1,4 @@
-* TODO Matrizen
+* Matrizen
   In diesem Abschnitt seinen $m,n,r\in\mathbb{N}$ \\
   Frage: Gegeben sei ein UVR $U = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ Wie bestimmt man effizient die Basis von $U$?
   #+ATTR_LATEX: :options [10.1]
@@ -354,7 +354,7 @@
 	 \[\sum_{1\leq j\leq n}^{a_{ij}b_{jk}}\]
 	 Eintrag an Position $(i,k)$ in $(B^t A^t)^t =$ eintrag an Position $(r,i)$ von $B^t A^t$.
 	 Dieser ist gegeben durch:
-	 \[\sum_{i\leq j \leq n} b'_{kj} a'_{ji} = \sum_{1\leq j\eq n} b_{jk} a_{ij} = \sum_{1 \leq j \leq m} a_{ij} b_{jk} \]
+     \[\sum_{i\leq j \leq n} b'_{kj} a'_{ji} = \sum_{1\leq j\leq n} b_{jk} a_{ij} = \sum_{1 \leq j \leq m} a_{ij} b_{jk} \]
 	 wobei:
 	 - $b'_{kj} =$ Eintrag an Position $(k,j)$ von $B^t = b_{jk}$
 	 - $a'_{ji} =$ Eintrag an Position $(j,i)$ von $A^t = a_{ij}$
@@ -365,13 +365,13 @@
   $A\in M(m\times n, K)$
   - Zeilenrang$(A):= \dim_k \ZR(A)$ heißt der *Zeilenrang* von $A$
   - $\SR(A):= \ZR(A^t) \subseteq k^m$ heißt der *Spaltenraum* von $A$
-  - Spaltenrang(A):= \dim_k \SR(A)$ heißt der *Spaltenrang* von $A$
+  - Spaltenrang$(A):= \dim_k \SR(A)$ heißt der *Spaltenrang* von $A$
   #+end_defn
   #+ATTR_LATEX: :options [10.18]
   #+begin_ex latex
   Wir betrachten die Matrix $A$ aus Beispiel 10.13
   \begin{align*}
-  A &= \begin{pmatrix} 0 & 0 & 3 & -1 \\ 0 & 1 & 2 & 0 \\ 0 & 3 & 0 & 2\end{pmatrix} \in M(3\times 4, \mathbb{R}), \dim \ZU(A) = 2 \\
+  A &= \begin{pmatrix} 0 & 0 & 3 & -1 \\ 0 & 1 & 2 & 0 \\ 0 & 3 & 0 & 2\end{pmatrix} \in M(3\times 4, \mathbb{R}), \dim \ZR(A) = 2 \\
   A^t &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 3 \\ 3 & 2 & 0 \\ -1 & 0 & 2\end{pmatrix} \in M(4\times 3, \mathbb{R}) \implies \SR(A) := \Lin((0,0,0), (0,1,3), (3,2,0), (-1,0,2)) \\
   \end{align*}
   Wir bestimmen eine Basis von $\SR(A)$:

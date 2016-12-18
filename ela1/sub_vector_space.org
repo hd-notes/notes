@@ -2,7 +2,7 @@
   In diesem Abschnitt sei $V$ stets ein $K$-VR
   #+ATTR_LATEX: :options [11.1]
   #+begin_defn latex
-  $U_1, \ldot, U_r \subseteq V$ UVR.
+  $U_1, \ldots, U_r \subseteq V$ UVR.
   \[U_1 + \ldots + U_r := \{u_1 + \ldots + u_r \mid u_1 \in U_1, \ldots, u_r \in U_r\} \subseteq V\]
   heißt die Summe von $U_1, \ldots, U_r$. Für $U_1 + \ldots + U_r$ schreiben wir auch
   \[\sum_{i = 1}^{r} U_i\]
@@ -82,7 +82,7 @@
   #+ATTR_LATEX: :options [11.6]
   #+begin_ex latex
   (vergleiche Beispiel 11.3)
-  1. $K = \mathbb{R}, V = \mathbb{R}^2, U_1 = \Lin((1,1)), U_2 = \Lin((1, -1)) \impiles V = U_1 \oplus U_2$
+  1. $K = \mathbb{R}, V = \mathbb{R}^2, U_1 = \Lin((1,1)), U_2 = \Lin((1, -1)) \implies V = U_1 \oplus U_2$
   2. $K = \mathbb{R}, V = \mathbb{R}^3, U_1 = \Lin((e_1, e_2)), U_2 = \Lin((e_2, e_3)) \implies V = U_1 + U_2$, aber
 	 die Summe ist nicht direkt, denn $e_2 \in U_1 \cap U_2$
   #+end_ex
@@ -104,7 +104,7 @@
   2. $\implies$ 1. Aus 2. folgt sofort: $V = U_1 + \ldots + U_r$  \\
 	 Annahme:
 	 \[\Exists i\in \{1,\ldots, r\}: U_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^{r} U_j \neq \{0\}\]
-	 $\implies \Exists u_k \n U_k, k = 1,\ldots, r, u_1 \neq 0$ und
+	 $\implies \Exists u_k \in U_k, k = 1,\ldots, r, u_1 \neq 0$ und
 	 \[u_i = u_1 + \ldots + u_{i - 1} + u_{i + 1} + \ldots + u_r \lightning\]
 	 Wiederspruch zur Eindeutigkeit der Darstellung.
   #+end_proof

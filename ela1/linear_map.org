@@ -13,7 +13,7 @@
 	 Es gilt für $u,v \in K^n, \lambda \in K:$
 	 \begin{align*}
 	 \tilde A(u + v) = A(u + v) = Au + Av = \tilde A(u) + \tilde A(v) \\
-	 \tilde A(\lambda v) = A(\lambda v) = \lambda (A v) = \lamda \tilde(v)
+	 \tilde A(\lambda v) = A(\lambda v) = \lambda (A v) = \lambda \tilde(v)
 	 \end{align*}
 	 Wegen $\tilde A(e_i) = A e_i = \cvec{a_{i1} ; \vdots ; a_{in}}$ stehen in den Spalten von $A$ genau die Bilder der kanonischen Basisvektoren $e_1, \ldots e_n$ von $K^n$ unter $\tilde A$.
 	 Sind $A\in M(m\times n, K), B\in M(n\times r, K), x\in K^r$, dann ist
@@ -38,7 +38,7 @@
   4. $W'\subseteq W$ UVR $\implies f^{1}(W') \subseteq V$ ist UVR
   5. $(v_i)_{i\in I}$ linear abhängige Familie in $V \implies (f(v_i))_{i\in I}$ linear abhängige Familie in $W$
   6. $V' = \Lin((v_i)_{i\in I}) \implies f(V') = \Lin((f(v_i))_{i\in I})$
-  7. $W$ endlich dimensional $\implies f(V)$ endlich dimensionaler UVR von $W$ mit $\Dim f(V) \leq \sim W$
+  7. $W$ endlich dimensional $\implies f(V)$ endlich dimensionaler UVR von $W$ mit $\dim f(V) \leq \sim W$
   #+end_remark
   #+begin_proof latex
   1. $f(0) * f(0 + 0) = f(0) + f(0) \implies f(0) = 0$
@@ -64,12 +64,12 @@
 	 &\implies (f(v_i))_{i\in I} ~\text{linear abhängig}
 	 \end{align*}
   6. zu zeigen: $V' = \Lin((v_i)_{i\in I}) \implies f(V') = \Lin((f(v_i))_{i\in I})$ \\
-	 "$\subseteq$" Sei $w \in f(V') \implies \Exists v\in V': w = f(v)$. wegen $V'$ = $\lin((v_i)_{i\in I})$:
+	 "$\subseteq$" Sei $w \in f(V') \implies \Exists v\in V': w = f(v)$. wegen $V'$ = $\Lin((v_i)_{i\in I})$:
 	 \begin{align*}
 	 &\Exists i_1, \ldots, i_r \in I, \lambda_{i_1}, \ldots, \lambda_{i_r} \in K: v = \lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r} \\
 	 &\implies f(v) = \lambda_{i_1} f(v_{i_1}) + \ldots + \lambda_{i_r} f(v_{i_r}) \in \Lin((f(v_i))_{i\in I})
 	 \end{align*}
-	 "$\supseteq$" Sei $w\in \Lin((f(v_i))_{i\in I}) \implies \Exists i_1, \ldots, i_r \in I, \lambda_{i_1}, \ldots, \lamda_{i_r} \in K$ mit
+	 "$\supseteq$" Sei $w\in \Lin((f(v_i))_{i\in I}) \implies \Exists i_1, \ldots, i_r \in I, \lambda_{i_1}, \ldots, \lambda_{i_r} \in K$ mit
 	 \[w = \lambda_{i_1} f(v_{i_1}) + \ldots + \lambda_{i_r} f(v_{i_r}) = f(\lambda_{i_1} v_{i_1} + \ldots + \lambda_{i_r} v_{i_r}) \in f(V')\]
   7. $f(V)$ sit UVR von $W$ nach 3. Rest aus Eigenschaften von $\dim$.
   #+end_proof

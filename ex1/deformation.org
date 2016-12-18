@@ -164,9 +164,9 @@
    F_x &= F_{xc} - F_{xb} = F_c \sin{\alpha} - F_b \\
    &= P_c h c \sin{\alpha} - p_b h b \overset{=}{!} 0 \\
    F_y &= F_{ya} - F_{yc} = F_a - F_c \cos{\alpha} \\
-   &= \p_a a h - p_c h c \cos{\alpha} \overset{=}{!} 0 \\
+   &= p_a a h - p_c h c \cos{\alpha} \overset{=}{!} 0 \\
    \intertext{Mit $\sin{\alpha} = \frac{b}{a}, \cos{\alpha} = \frac{a}{c}$ folgt:}
-   p_c h c \frac{b}{c} - p_b b h &= 0 \implies p_c = p_b
+   p_c h c \frac{b}{c} - p_b b h &= 0 \implies p_c = p_b \\
    p_a a h - p_c h c \frac{a}{c} &= 0 \implies p_a = p_c
    \end{align*}
    #+begin_remark latex
@@ -207,7 +207,7 @@
    p_{Luft} + \rho g x &= \rho g h + \rho g x \\
    p_{Luft} &= \rho g h \\
    \end{align*}
-   Druckeinheit: $\SI{1}{\milli\meter\Hg} = \SI{133.322}{\pascal}$
+   Druckeinheit: $\SI{1}{\milli\meter}\,\text{Hg}~= \SI{133.322}{\pascal}$
 *** Auftrieb
 	Erfahrung: Ein in eine Flüssigkeit eingetauchter Körper erfährt Autrieb. \\
 	Grund: Auf Körper einwirkende Druckkräfte.
@@ -253,15 +253,15 @@
 	Es gilt:
 	\begin{align*}
 	p V &=~\text{const} \\
-	p V = p \frac{M}{\rho} = p_0 V_0 = p_0 \frac{M}{\rho_0} \\
+	p V &= p \frac{M}{\rho} = p_0 V_0 = p_0 \frac{M}{\rho_0} \\
 	\intertext{für konstante Masse $M$:}
-	\frac{p}{\rho} = \frac{p_0}{\rho_0}
+	\frac{p}{\rho} &= \frac{p_0}{\rho_0}
 	\d p &= -\rho g\d h - p \frac{\rho_0}{p_0} g\d h \\
-	\frac{\d p}{p} &= -\frac{\rho_0 g}{\p_0} \d h \\
+	\frac{\d p}{p} &= -\frac{\rho_0 g}{p_0} \d h \\
 	\ln{p} - \ln{p_0} &= -\frac{\rho_0 g}{p_0} h \\
 	p &= p_0 \exp{(-\frac{\rho_0 g h}{p_0})} \\
 	\intertext{Barometrische Höhenformel:}
-	p(h) = p_0 \exp(-\frac{\rho_0 g}{p_0} h)
+	p(h) &= p_0 \exp(-\frac{\rho_0 g}{p_0} h)
 	\end{align*}
 	das heißt: in Atmosühäre mit kompressiblem gas nimmt der Druck mit der Höhe exponentiell ab.
 ** Strömende Flüssigkeiten und Gase
