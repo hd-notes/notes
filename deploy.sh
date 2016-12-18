@@ -6,11 +6,11 @@ function doCompile {
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    echo "Skipping deploy; just doing a build."
-    doCompile
-    exit 0
-fi
+#if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+#    echo "Skipping deploy; just doing a build."
+#    doCompile
+#    exit 0
+#fi
 
 # Enable case-insensitive pattern matching.
 shopt -s nocasematch
@@ -45,10 +45,11 @@ rm -rf pages/index.html || exit 0
 doCompile
 
 # copy the pdfs
-find . ! -path "./pdfs/*" ! -path "./pages/*" -name '*.pdf' -exec dirname {} \; | xargs -I {} mkdir pdfs/{} 2> /dev/null
+find . ! -path "./pdfs/*" ! -path "./pages/*" -name '*.pdf' -exec dirname {} \; | xargs -I {} mkdir -p pdfs/{} 2> /dev/null
 find . ! -path "./pdfs/*" ! -path "./pages/*" -name '*.pdf' -exec cp {} pdfs/{} \;
 
 # Now let's go have some fun with the cloned repo
+echo "updating pdfs"
 cd pdfs
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
@@ -78,6 +79,8 @@ ssh-add pdf_key
 git push origin master
 
 cd ..
+
+echo "updating pages"
 cd pages
 ./generate.sh ../
 
