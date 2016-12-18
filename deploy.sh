@@ -16,7 +16,7 @@ fi
 shopt -s nocasematch
 
 get_download_url() {
-  echo "https://raw.githubusercontent.com/thomasjo/travis-texlive/master/texlive.tar.xz"
+  echo "https://raw.githubusercontent.com/rroohhh/travis-texlive/master/texlive.tar.xz"
 }
 
 echo "Downloading portable TeX Live installation..."
@@ -28,11 +28,6 @@ if [[ "${TRAVIS_OS_NAME:-}" == "linux" ]]; then
 else
 	export PATH="${HOME}/texlive/bin/x86_64-darwin:${PATH}"
 fi
-
-mkdir ${HOME}/bin
-curl http://ctan.space-pro.be/tex-archive/support/latexmk/latexmk.pl > ${HOME}/bin/latexmk
-chmod a+x ${HOME}/bin
-export PATH="${HOME}/bin/:${PATH}"
 
 # Save some useful information
 SHA=`git rev-parse --verify HEAD`
