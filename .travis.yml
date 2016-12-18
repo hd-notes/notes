@@ -1,6 +1,6 @@
 sudo: required
 install:
-    - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended latexmk emacs python-pygments
+    - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended latexmk emacs python-pygments texlive-xetex
 script: bash ./deploy.sh
 env:
   global:
