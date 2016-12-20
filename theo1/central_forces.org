@@ -45,4 +45,16 @@
    (Nach allgemeines $V(r)$). Wir wissen bereits:
    \[\v L = \v r \times \v p = ~\text{const}, \v p = m\dot{\v r}, \v r = ~\text{Koordinaten des Teilchens}\]
    Es gilt $\v L \perp \v r \wedge \v L =~\text{const} \implies$ Bewegung in gester Ebene. Also
-   ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene
+   ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene. Außerdem:
+   Problem rotationssymmetrisch. \\
+   $\implies$ angemessene Beschreibung: Polarkoordinaten (Winkel und Rotation)
+** Allgemeine Koordinatensysteme
+   Kenne bereits: $\mathbb{C} = \mathbb{R}^2$
+   \begin{align*}
+   x^1 &= \Re z \\
+   x^2 &= \Im z
+   \intertext{$\implies$}
+   r &= \abs{z} \\
+   \phi &= \arg{z}
+   \end{align*}
+   "Polarkoordinaten", sind einfaches Beispiel für mögliche allgemeine Parametrisierungen
