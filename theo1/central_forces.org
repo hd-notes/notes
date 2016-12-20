@@ -41,13 +41,6 @@
    m\ddot{\v x} = - \v\nabla V(\abs{\v x})
    \intertext{Das ist Zentralkraftproblem mit ursprünglichem Potential, aber mit der reduzierten Masse}
    \end{align*}
-** Zentralkraftproblem
-   (Nach allgemeines $V(r)$). Wir wissen bereits:
-   \[\v L = \v r \times \v p = ~\text{const}, \v p = m\dot{\v r}, \v r = ~\text{Koordinaten des Teilchens}\]
-   Es gilt $\v L \perp \v r \wedge \v L =~\text{const} \implies$ Bewegung in gester Ebene. Also
-   ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene. Außerdem:
-   Problem rotationssymmetrisch. \\
-   $\implies$ angemessene Beschreibung: Polarkoordinaten (Winkel und Rotation)
 ** Allgemeine Koordinatensysteme
    Kenne bereits: $\mathbb{C} = \mathbb{R}^2$
    \begin{align*}
@@ -57,4 +50,73 @@
    r &= \abs{z} \\
    \phi &= \arg{z}
    \end{align*}
-   "Polarkoordinaten", sind einfaches Beispiel für mögliche allgemeine Parametrisierungen
+   "Polarkoordinaten", sind einfaches Beispiel für mögliche allgemeine Parametrisierungen.
+   #+ATTR_LATEX: :options [Zylinderkoordinaten]
+   #+begin_ex latex
+   \begin{align*}
+   x^1 &= r\cos{\phi} \\
+   x^2 &= r\sin{\phi} \\
+   x^3 &= z
+   \end{align*}
+   Wichtig: Eineindeutige Abbildung $(x^1, x^2, x^3) \leftrightarrow (r, \phi, z)$ (und allgemein). Hier:
+   \begin{align*}
+   r &= \sqrt{(x^1)^2 + (x^2)^2} \\
+   \phi &= \arctan{\frac{x^2}{x^1}} \\
+   z &= x^3
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Kugelkoodinaten]
+   #+begin_ex latex
+   \begin{align*}
+   x^1 &= r\sin{\theta}\cos{\phi} \\
+   x^2 &= r\sin{\theta}\sin{\phi} \\
+   x^3 &= r\cos{\theta}
+   \end{align*}
+   #+end_ex
+** Zentralkraftproblem
+   (Nach allgemeines $V(r)$). Wir wissen bereits:
+   \[\v L = \v r \times \v p = ~\text{const}, \v p = m\dot{\v r}, \v r = ~\text{Koordinaten des Teilchens}\]
+   Es gilt $\v L \perp \v r \wedge \v L =~\text{const} \implies$ Bewegung in gester Ebene. Also
+   ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene. Außerdem:
+   Problem rotationssymmetrisch. \\
+   $\implies$ angemessene Beschreibung: Polarkoordinaten (Winkel und Rotation) \\
+   naiv: $m \underarrow[durch $r,\phi$ ausdrücken]{\ddot{\v x}} = \v F(\v x)$ \\
+   eleganter: Weiter mit Drehimpulserhaltung (wieder: $\v x \to \v r$)
+   \[\v L = ~\text{const}, ~\text{const} = \abs{\v L} = m\abs{\v r \times \dot{\v r}} = m r\cdot r\dot{\phi} = mr^2\dot{\phi}\]
+   Nachrechnen:
+   \begin{align*}
+   \dot{\v r} &= (r\cos{\phi}, r\sin{\phi})^{.} \\
+   &= \underbrace{(\dot{\v r}\cos{\phi},\dot{\v r}\sin{\phi})}_{\parallel \v r \implies ~\text{Radialgeschwindigkeit}} + \underbrace{(r(-\sin{\phi}), r\cos{\phi})\dot{\phi}}_{\perp \v r \implies ~\text{Tangentialgeschwindigkeit}}
+   \intertext{Insbesondere:}
+   r\dot{\phi} \equiv~\texŧ{Betrag der Tangentengeschwindigkeit}
+   \end{align*}
+   Konstanz von $\abs{\v L}$ geometrische Interpertaiton: \\
+   Berechne die von "Leitstrahl" in Zeit $\d t$ überstrichene Fläche: "Die Flächengeschwindigkeit ist konstant" (2. Keplersches Gesetz)
+   \begin{align*}
+   \d f = \frac{1}{2}r r \d\phi \\
+   \dd{f}{t} = \frac{1}{2}r^2 \dot{\phi} = ~\text{const}
+   \end{align*}
+   Energieerhaltung:
+   \[E = \frac{m}{2} \dot{\v r}^2 + V(r) = \frac{m}{2}(\dot{r}^2 + r^2 \dot{\phi}^2 + V(r) = ~\text{const})\]
+   Kombinieren mit Drehimpulserhaltung gibt: ($L \equiv \abs{\v L}$)
+   \begin{align*}
+   \dot{\phi} &= \frac{L}{m r^2} \\
+   E &= \frac{m}{2} r^2 + \frac{L^2}{2mr^2} + V(r) \\
+   \intertext{Definiere:}
+   U(r) \equiv \frac{L^2}{2mr^2} + V(r) \\
+   \intertext{$\implies$ Energieerhaltung:}
+   E = \frac{m}{2} \dot{r}^2 + U(r)
+   \end{align*}
+   Dies ist die Energieerhaltung für das "effektive 1-dimensionale Problem mit dem effektiven Potential".
+   Dieses ist allgemein lösbar mit
+   \[\int \d t = \int \frac{\dr}{\sqrt{\frac{2}{m}(E - U(r))}}\]
+   Damit $t = t(r)$
+   \[\implies r = r(t) \implies \dot{\phi}(t) \implies \phi(t) \tag{Integrieren}\]
+   Explizit lösbar: $V\sim \frac{1}{r}, V\sim r^2$
+** Qualitative Lösung
+   \begin{align*}
+   E &= \frac{m}{2} \dot{r^2} + U(r) \\
+   U(r) &= \frac{L^2}{2mr^2} + V(r) \\
+   &= \frac{L^2}{2mr^2} - \frac{\alpha}{r} \tag{Kepler} \\
+   \alpha &= g_N m_1 m_2
+   \end{align*}

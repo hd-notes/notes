@@ -1,0 +1,36 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Übungszettel 8
+#+OPTIONS: toc:nil
+#+OPTIONS: H:6
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [a4paper]
+#+LATEX_HEADER: \usepackage{siunitx}%
+#+LATEX_HEADER: \usepackage{fontspec}%
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}%
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+#+LATEX_HEADER: \usepackage{mathtools}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}%
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}%
+#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage{makecell}
+# #+LATEX_HEADER: \usemintedstyle{tango}
+#+LATEX_HEADER: \usemintedstyle{perldoc}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{arrows,automata}
+#+LATEX_HEADER: \usepackage{tikz-qtree}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlistdepth{20}
+#+LATEX_HEADER: \renewlist{itemize}{itemize}{20}
+#+LATEX_HEADER: \setlist[itemize]{label=$\cdot$}
+
+\section*{Aufgabe 8.1}
+\subsection*{(a)}
+
+
+\section*{Aufgabe 8.3}
+
+\section*{Aufgabe 8.4}

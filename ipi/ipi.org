@@ -656,3 +656,183 @@
   c.count = 0;
   c.count += 1;
   #+END_SRC
+* Objektorientiere Programmierung
+  Eigene Datentypen mit Kapselung. Eigene Datentypen sind zusammengesetz aus
+  einfachen existierenden Datentypen (Ausnahme: enum), zwei Arten:
+  - offene Typen: Benutzer kann auf interne Daten zugreifen, "C-style types"
+	wenige Beispiele in der Standardbibilothek:
+	- std::pair
+	- std::tm (von C übernommen)
+	- std::div_t (Resultat von div(), zwei Returnwerte: Quotient und Rest)
+  - gekapselte Typen: Benutzer kann nicht auf interne Daten zugreifen "private".
+	Alle Benutzerzugriffe über Offentliches Interface "public". Vorteile:
+	- komplexe Details zur Verwaltung bleiben verborgen
+	- öfftenliches Interface (hoffentlich) einfach, zum Beispiel std::vector
+	- interne Details können bei Bedarf geändert werden, ohne dass sich das öfftenliche Interface ändert
+	  $\implies$ Benutzer muss Code nicht änder, aber plötzlich geht Programm schneller, "Rückwärts-Kompatibilität"
+  Wie erreicht man Kapselung? \\
+  Zwei Schlüsselwörter für eigene Typen "class" (Konvention OOP), "struct" (von C übernommen) \\
+  Zwei Schlüsselwörter für Kapselung: "public" (öffentlicher Teil), "private" (gekapselter Teil). class ist
+  standardmäßig "private", struct standardmößig "public"
+  #+BEGIN_SRC cpp
+  class MyType {
+	  // private by default
+	  public:
+	  // jetzt öffentlich
+	  private:
+	  // wieder private
+	  public:
+	  // etc.
+  }; // <--- Semikolon wichtig
+  struct MyType {
+	  // öffentlich by default
+	  private:
+	  // jetzt privat
+	  public:
+	  // etc
+  };
+  #+END_SRC
+  Benutzer können nur auf Funktionalität in public-Teil zugreifen. \\
+  Die im zusammengesetzten typ enthaltenen daten heißten "Daten-Members", "member variables" sind
+  normalerweise "private" $\implies$
+  - kann nachträglich geändert werden, zum Beispiel comples real/imaginär vs. Betrag/Phase
+  - Benutzer kann nicht unbeabsichtigt die Konsistenz verletzen (zum Beispiel versentlich negativer Betrag bei complex)
+  Running example: Punkt-Klasse für 2-dimensionalen PUnkt
+  #+BEGIN_SRC cpp
+  class Point {
+	  double x_; // Koordinaten als private
+	  double y_; // Datenmenber (Konvention "_" am Ende)
+  };
+  #+END_SRC
+  dieser Typ ist unbenutzbar, weil alle privat. \\
+  unverzichtabr: öfftenliche Punktion zum Initialisieren des Speichers = "Konstructoren"
+  - Prozeduren innerhalb der Klasse, Name gleich Klassenamen, Returntyp muss weggelassen werden (fügt Compiler automatisch ein) $\implies$ nur Seiteneffekt:
+	neues Objekt initialisieren, also die Konstruktoren der Datenmember aufrufen.
+  - zur Erinnerung: zwei Möglichkeiten für normale Variableninitialisierung
+	#+BEGIN_SRC cpp
+	double z = 1.0;
+	double z(1.0); // nur diese Syntax im Konstruktor erlaubt.
+	double z{1,0}; // seit c++11
+
+	class Point {
+		double x_;
+		double y_;
+	public:
+		Point(double x, double y) :x_(x), // Member x_ auf Initialwert x vom Prozedurargument setzen
+		y_(y) // Member y_ auf Initialwert y vom Prozedurargument setzen
+		{
+		// normaler Rumpf der Prozedur, hier leer, weil nichts zu tun
+		// Datenmenber hier schon fertig initialisiert und können benutzt werden
+		}
+	};
+	Point p(1.0, 2.0);
+	Point q = {3.0, 4.0}
+	#+END_SRC
+	Spezieller Konstruktor: ohne Argument = Standardkonstruktor, "default constructor", initialisiert Objekt in Standardzustand. Zum Beispiel bei Zahlen auf 0 setzten, hier au Koordinatenursprung Point origin; $\iff$ Point origin(0.0, 0.0);
+	#+BEGIN_SRC cpp
+	class Point {
+	// ... wie zuvor
+	Point() : x_(0.0), y_(0.0) {} // Standardkonstruktor
+	};
+	#+END_SRC
+  um mit Punkt-Objekten zu arbeiten, brauchen wir weitere Funktionen: zwei Möglichkeiten
+  - Member-Funktionen: innerhalb der Klasse definiert (wie Konstruktor), dürfen auf alles private zugreifen, können als private oder public definiert sein
+  - freie Funktionen: normale Funktionen außerhalb der Klasse, die ein Argument des neuen Typs haben, können nur auf Öffentliches Interface zugreifen
+  wichtigeste Vertreter der Member-Funkitonen: Zugriffsfunktionen "Getter": erlauben Benutzer, aktuellen Zustand abzufragen:
+  #+BEGIN_SRC cpp
+  std::vector<int> v = {1, 2, 3};
+  v.size(); // getter für Arraygröße
+  Point p(1,0, 2.0);
+  p.x() // -> 1.0 x-Koordinate abfragen
+  p.y() // -> 2.0 y-Koordinate abfragen
+  #+END_SRC
+  Member-Funktionen werden mit Punkt-Syntax aufgefuren: p.x(), das Objekt for dem Punkt ist das "nullte" Argument der Funktion, Compiler macht daraus x(p).
+  Bei Implementation der Member Funktion schreibt man das nullte Argument nicht hin. Der Compiler stellt es automatisch unter dem Namen "(*this)" zur Verfügung.
+  #+BEGIN_SRC cpp
+  class Point {
+	  // ... wie zuvor
+	  double x() const {
+		  return (*this).x_;
+	  }
+
+	  double y() const {
+		  return (*this).y_;
+	  }
+  };
+  #+END_SRC
+  Meist kann man (*this) weglassen, wenn eindeutig ist, welchen Member man meint, fügt es der Compiler es automatisch ein.
+  Getter-Funktionen sind read-only (ändern die Member-Variablen nicht), man sollte sie deshalb mittels "const" explizit als read-only markieren.
+  Vorteile:
+  - Programmierer kann Member-Variablen nicht irrtümlich ändern
+  - Funktion kann in Kontexten benutzt werden, wo das Objekt (nulltes Argument) explizit als read-only markiert ist.
+	#+BEGIN_SRC cpp
+	Point const cp(1.0, 2.0); // write-once
+	cp.x();
+	#+END_SRC
+  Point auf Konsole ausgeben: nach String wandeln und String ausgeben
+  - zwei Möglichkeiten:
+  #+BEGIN_SRC cpp
+  // Member Funktion:
+  std::cout << p.to_string() << endl;
+  class Point {
+	  // ... wie zuvor
+	  std::string to_string() const {
+		  std::string res;
+		  res += "[" + std::to_string((*this).x()) + "," + std::to_string((*this).y()) + "]"
+		  return res;
+	  }
+  };
+
+  // freie Funktion:
+  std::cout << to_string(p) << endl;
+  std::string to_string(Point p) const {
+	  std::string res;
+	  res += "[" + std::to_string((*this).x()) + "," + std::to_string((*this).y()) + "]"
+	  return res;
+  }
+  #+END_SRC
+  Was man wählt ist Geschmackssache (freie Funktion ist kompatibel zu std::to_string, kleiner Vorteil). \\
+  Punkte vergleichen:
+  #+BEGIN_SRC cpp
+  class Point {
+	  // ... wie zuvor
+	  bool equals(Point other) const {
+		  return (*this).x() == other.x() && (*this).y() == other.y();
+	  }
+	  bool operator==(Point other) const {
+		  return (*this).x() == other.x() && (*this).y() == other.y();
+	  }
+	  bool operator!=(Point other) const {
+		  return (*this).x() != other.x() || (*this).y() != other.y();
+	  }
+  }
+
+  Point p(1.0, 2.0);
+  Point origin;
+  assert(p.equals(p));
+  assert(!p.equals(origin));
+  // üblicher: Infix-Notation
+  assert(p == p);
+  assert(!(p == origin));
+  assert(p != origin);
+  #+END_SRC
+  Für Infix-Notation muss Prefix-Varante operator== und operator!= implementiert werden.
+  #+BEGIN_SRC cpp
+  p == origin; // -> p.operator==(origin) -> operator==(point, origin)
+  #+END_SRC
+  zwei weitere Funktionen:
+  - neuen Punkt erzeugen, transponiert, das heißt x- und y-Koordinate vertauscht.
+  - verschoben um Punkt
+  #+BEGIN_SRC cpp
+  class Point {
+	  // ... wie zuvor
+	  Point transpose() const {
+		  Point res((*this).y(), (*this).x());
+		  return res;
+	  }
+	  Point translate(Point v) const {
+		  Point res((*this).x() + v.x(), (*this).y() + v.y());
+		  return res;
+	  }
+  }
+  #+END_SRC
