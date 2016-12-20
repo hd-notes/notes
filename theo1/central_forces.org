@@ -1,0 +1,48 @@
+* Zentralkraftproblem
+** Motivation
+   für Kräfte zwischen Massenpunkten die parallel zur Verbindungslinie wirken: Potentialbeschreibung
+   \[\v F_1 = \underarrow[-\v \nabla_1]{$\v x_1$} V(\abs{\v x_1 - \v x_2})\]
+   Besonders wichtig:
+   \[V(r) \sim \frac{1}{r}\]
+   #+ATTR_LATEX: :options [Gravitation]
+   #+begin_ex latex
+   \begin{align*}
+   V(\abs{\v x_1 - \v x_2}) &= - \frac{G_N m_1 m_2}{\abs{\v x_1 - \v x_2}} \\
+   \v F_1 = -\frac{-\v x_1 - \v x_2}{\abs{\v x_1 - \v x_2}^3} F_n m_1 m_2 \\
+   &= -\frac{\v x_1 - \v x_2}{\abs{\v x_1 - \v x_2}} \frac{G_N}{(\v x_1 - \v x_2)^2}
+   \end{align*}
+   Nichttriviale Aussage: "träge Masse = schwere Masse"
+   #+end_ex
+   #+ATTR_LATEX: :options [Elektrostatik]
+   #+begin_ex latex
+   \[V = \frac{q_1 q_2}{4\pi \eps \abs{\v x_1 -\v x_2}}\]
+   #+end_ex
+   Vereinfachung:
+   1. Masse $m_2$ bei $\v 0$ fixiert
+   2. $m_2 \gg m_2 \implies$ analog zu 1.
+   \[\implies V(\v x) = - \frac{G_N m_1 m_2}{\abs{\v x}} = V(r) = - \frac{G_n m_1 m_2}{r}\]
+** Zweikörperproblem
+   Lassen Bewegung beider Massen zu
+   \begin{align*}
+   m_1 \ddot{\v x}_1 &= - \v\nabla_1 V(\abs{\v x_1 - \v x_2}) \\
+   m_2 \ddot{\v x}_2 &= - \v\nabla_2 V(\abs{\v x_1 - \v x_2}) \\
+   \intertext{Betrachte passende Linearkombination:}
+   \ddot{\v x}_1 - \ddot{\v x}_2 &= \frac{1}{m_1}(-\v\nabla V(\abs{\v x_1 - \v x_2})) - \frac{1}{m_2}(-\v\nabla_2(\abs{\v x_1 - \v x_2})) \\
+   &= \underbrace{(\frac{1}{m_1} + \frac{1}{m_2})}_{\equiv \frac{1}{m}}(-\v\nabla_1(\abs{\v x_1 - \v x_2})) \\
+   \intertext{Man erhält Gleichung für die "Relativkoordinate" $\v x_1 - \v x_2$}
+   (\v x_1 - \v x_2)^{..} &= \frac{1}{m}(-\v\nabla V(\abs{\v x_1 - \v x_2}))
+   \frac{1}{m} \equiv \frac{1}{m_1} + \frac{1}{m_2} = \frac{m_1 m_2}{m_1 + m_2}\tag{Reduzierte Masse}
+   \intertext{Zusätzlich: Addition der beiden Gleichungen gibt:}
+   m_1 \ddot{\v x}_1 + m_2 \ddot{\v x}_2 &= 0 \\
+   \implies \ddot{\v x}_s &= 0 \\
+   \intertext{Mit $\v x_s \equiv$ Schwerpunktskoordinate, bewegt sich frei}
+   \v x_s &\equiv \frac{m_1 \v x_1 + m_2 \v x_2}{m_1 + m_2}
+   \intertext{$\implies$ Das zu läsende Problem ist also nur die Bewegung der Relativkoordinate}
+   m\ddot{\v x} = - \v\nabla V(\abs{\v x})
+   \intertext{Das ist Zentralkraftproblem mit ursprünglichem Potential, aber mit der reduzierten Masse}
+   \end{align*}
+** Zentralkraftproblem
+   (Nach allgemeines $V(r)$). Wir wissen bereits:
+   \[\v L = \v r \times \v p = ~\text{const}, \v p = m\dot{\v r}, \v r = ~\text{Koordinaten des Teilchens}\]
+   Es gilt $\v L \perp \v r \wedge \v L =~\text{const} \implies$ Bewegung in gester Ebene. Also
+   ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene

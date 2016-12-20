@@ -63,3 +63,4 @@ Einleitung: \\
 #+INCLUDE: "harmonic_oscillator.org" :minlevel 1
 #+INCLUDE: "symmetries.org" :minlevel 1
 #+INCLUDE: "pseudo_forces.org" :minlevel 1
+#+INCLUDE: "central_forces.org" :minlevel 1
