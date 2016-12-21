@@ -29,8 +29,11 @@
 
 \section*{Aufgabe 8.1}
 \subsection*{(a)}
-
-
+Bis zu einer gewissen Anzahl von Iterationen wird die Approximation von von $\pi$ immer besser.
+Danach wird sie allerdings wieder schlechter, denn $s$ und $t$ werden (zwangsweise) immer kleiner.
+\subsection*{(b)}
+Auch mit double tritt dieses Problem auch auf, allerdings erst bei ungefähr der doppelten Anzahl von
+Iterationen.
 \section*{Aufgabe 8.3}
 
 \section*{Aufgabe 8.4}

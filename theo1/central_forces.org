@@ -80,7 +80,7 @@
    ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene. Außerdem:
    Problem rotationssymmetrisch. \\
    $\implies$ angemessene Beschreibung: Polarkoordinaten (Winkel und Rotation) \\
-   naiv: $m \underarrow[durch $r,\phi$ ausdrücken]{\ddot{\v x}} = \v F(\v x)$ \\
+   naiv: \[m \underarrow[\ddot{\v x}]{durch $r,\phi$ ausdrücken} = \v F(\v x)\]
    eleganter: Weiter mit Drehimpulserhaltung (wieder: $\v x \to \v r$)
    \[\v L = ~\text{const}, ~\text{const} = \abs{\v L} = m\abs{\v r \times \dot{\v r}} = m r\cdot r\dot{\phi} = mr^2\dot{\phi}\]
    Nachrechnen:
@@ -88,7 +88,7 @@
    \dot{\v r} &= (r\cos{\phi}, r\sin{\phi})^{.} \\
    &= \underbrace{(\dot{\v r}\cos{\phi},\dot{\v r}\sin{\phi})}_{\parallel \v r \implies ~\text{Radialgeschwindigkeit}} + \underbrace{(r(-\sin{\phi}), r\cos{\phi})\dot{\phi}}_{\perp \v r \implies ~\text{Tangentialgeschwindigkeit}}
    \intertext{Insbesondere:}
-   r\dot{\phi} \equiv~\texŧ{Betrag der Tangentengeschwindigkeit}
+   r\dot{\phi} \equiv~\text{Betrag der Tangentengeschwindigkeit}
    \end{align*}
    Konstanz von $\abs{\v L}$ geometrische Interpertaiton: \\
    Berechne die von "Leitstrahl" in Zeit $\d t$ überstrichene Fläche: "Die Flächengeschwindigkeit ist konstant" (2. Keplersches Gesetz)
@@ -109,7 +109,7 @@
    \end{align*}
    Dies ist die Energieerhaltung für das "effektive 1-dimensionale Problem mit dem effektiven Potential".
    Dieses ist allgemein lösbar mit
-   \[\int \d t = \int \frac{\dr}{\sqrt{\frac{2}{m}(E - U(r))}}\]
+   \[\int \d t = \int \frac{\d r}{\sqrt{\frac{2}{m}(E - U(r))}}\]
    Damit $t = t(r)$
    \[\implies r = r(t) \implies \dot{\phi}(t) \implies \phi(t) \tag{Integrieren}\]
    Explizit lösbar: $V\sim \frac{1}{r}, V\sim r^2$

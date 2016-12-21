@@ -108,3 +108,61 @@
      \left\string(\frac{f}{g})'\left\string(x_0) = (f \frac{1}{g})'(x_0) = \frac{f' g - f g'}{g^2}(x)
      \end{align*}
   #+end_proof
+  #+ATTR_LATEX: :options [4.9]
+  #+begin_lemma latex
+  Sei $f:D\to B\subseteq\mathbb{B}$ eine auf einem abgeschlossenen Definitionsbereich stetige und invertierbare Funktion mit Inverse $f^{-1}: B\to D$.
+  Ist $f$ in einem $x_0 \in D$ differenzierbar mit $f'(x_0) \neq 0$, so ist auch $F^{-1}$ in einem $y_0 = f(x_0)$ differenzierbar
+  und es gilt
+  \[(f^{-1})'(y_0 = \frac{1}{f'(x_0)}, y_0 = f(x_0))\]
+  #+end_lemma
+  #+begin_proof latex
+  Für $y_n = f(x_n), y_0 = f(x_0)$ mit $y_n \neq y_0$ und $y_n \xrightarrow{n\to\infty} y_0$.
+  Aus Stetigkeit von $f^{-1}$ gilt auch $x_n \xrightarrow{n\to\infty} x_0$ und $x_n \neq x_0$.
+  Aus der Differenzierbarkeit von $f$ in einem $x_0$ folgt:
+  \[\frac{f^{-1}(y_n) - f^{-1}(y_0)}{y_n - y_0} = \frac{x_n - x_0}{f(x_n) - f(x_0)} = (\frac{f(x_n) - f(x_0)}{x_n - x_0})^{-1} \xrightarrow{n\to\infty} (f'(x_0))^{-1}\]
+  Dies impliziert, dass $f^{-1}$ im Punkt $y_0 = f(x_0)$ differenzierbar ist mit der Ableitung $\frac{1}{f'/x_0}$
+  #+end_proof
+  #+ATTR_LATEX: :options [4.10]
+  #+begin_ex latex
+  \mbox{}
+  1. $\displaystyle \ln'(y): f^{-1}(y) = \ln{y}, f(x) = e^x \implies \ln'(y) = \frac{1}{(e^x)'} = \frac{1}{e^x} = \frac{1}{y}$
+  2. Umkehrfunktion des Sinus
+	 \begin{align*}
+	 y &= \sin{x}, x\in (-\frac{\pi}{2}, \frac{\pi}{2}) \\
+	 x = \arcsin{y}, y\in (-1,1) = D \\
+	 \arcsin'(y) = \frac{1}{\sin'(x)} = \frac{1}{\cos{x}} = \frac{1}{\sqrt{1 - \sin^2{x}}} = \frac{1}{\sqrt{1 - y^2}}
+	 \end{align*}
+  #+end_ex
+  #+ATTR_LATEX: :options [4.11 Kettenregel]
+  #+begin_lemma latex
+  Seien $g:D_g \to \mathbb{R}, f:D_f \to D_g \subseteq \mathbb{R}$ stetige Funktionen. Die Funktion $f$ sei in $x_0 \in D_f$ differenzierbar
+  und $g in y_0 = f(x_0)$ differenzierbar. Dann ist die zusammengesetzte Funktion $g(f(x_0)) =: (g\circ f)(x_0)$ in $x_0$ differenzierbar und
+  es gilt
+  \[(g\circ f)'(x_0) = g'(f(x_0))f'(x) \tag{Kettenregel}\]
+  #+end_lemma
+  #+begin_proof latex
+  \begin{align*}
+  \intertext{Wir definieren eine Funktion $\Delta g: D_g \to \mathbb{R}$ durch}
+  \Delta g\string(y\string) &:= \begin{cases} \frac{g(y) - f(y_0)}{y - y_0} & y \neq y_0 \\ g'(y) & y = y_0\end{cases} \\
+  \intertext{Da $g$ in $y_0$ differenzierbar ist gilt}
+  \lim_{y \to y_0} \Delta g(y) &= g'(y_0) \\
+  \intertext{Ferner gilt für $y\in D_g$:}
+  g\string(y\string) - g(y_0) &= \Delta g(y)(y - y_0) \\
+  \intertext{Damit erhalten wir}
+  \string(g\circ f\string)'\string(x_0\string) &= \lim_{x\to x_0} \frac{g(f(x)) - g(f(x_0))}{x - x_0} \\
+  &= \lim_{x \to x_0} \frac{\Delta g(f(x))(f(x) - f(x_0))}{x - x_0} \\
+  &= \lim_{x\to x_0} \Delta g(f(x)) \lim_{x - x_0} \frac{f(x) - f(x_0)}{x - x_0} = g'(f(x_0))f'(x_0) \tag*{\qedhere}
+  \end{align*}
+  #+end_proof
+  #+ATTR_LATEX: :options [4.12]
+  #+begin_ex latex
+  1. $g(x) = f(a x + b), a, b \in\mathbb{R} \implies g'(x) = a f'(a x + b)$
+  2. $x^{\alpha} = e^{\alpha \ln{x}} = f(g(x)) = f(g(x)), f(y) := e^y, g(x) := \alpha \ln(x)$ \\
+	 \[(x^{\alpha})' = f'(g(x))g'(x) = e^{\alpha\ln{x}}\alpha x^{-1} = \alpha x^{\alpha - 1}\]
+  #+end_ex
+** Mittelwertsätze und Extremalbedingungen
+   #+ATTR_LATEX: :options [4.13]
+   #+begin_defn latex
+   Die Funktion $f:D\to\mathbb{R}$ hat in einem Punkt $x_0 \in D$ ein *globales Extremum* (Minimum oder Maximum), wenn gilt
+   \[f(x_0) \leq f(x), x\in D \vee f(x_0) \geq f(x) \Forall x \in D\]
+   #+end_defn

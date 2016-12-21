@@ -11,6 +11,7 @@ clean_files = $(tex_files:.tex=.does_not_exist)
 
 %.pdf: %.tex FORCE_MAKE
 	latexmk -xelatex -cd --silent --shell-escape -pdflatex="xelatex -8bit %O %S" $<	
+#	latexmk -xelatex -cd --shell-escape -pdflatex="xelatex -8bit %O %S" $<	
 #	latexmk -xelatex -cd -c -pdflatex="xelatex -8bit %O %S" $<	
 
 all: $(pdf_files)
