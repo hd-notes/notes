@@ -165,4 +165,66 @@
    #+begin_defn latex
    Die Funktion $f:D\to\mathbb{R}$ hat in einem Punkt $x_0 \in D$ ein *globales Extremum* (Minimum oder Maximum), wenn gilt
    \[f(x_0) \leq f(x), x\in D \vee f(x_0) \geq f(x) \Forall x \in D\]
+   Es handelt sich um ein *lokales Extremeum* (Minimum oder Moaximum), wenn auf einer $\delta$-Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
+   gilt $f(x_0) \geq f(x) \Forall x\in U_\delta(x_0) \vee f(x_0) \leq f(x) \Forall x\in U_\delta(x_0)$
+   Ein Extremum (globales oder lokales) heißt strikt, wenn es das isolierteste PUnkt in $D$ beziehungsweise in $U_\delta(x_0)$ ist, as heißt $f(x_0) > f(x) \bee f(x_0) < f(x)$
    #+end_defn
+   #+ATTR_LATEX: :options [4.14 Satz von Extremum]
+   #+begin_thm latex
+   Besitz eine auf einem Intervall $I = (a,b)$ differenzierbare Funktion ein lokales Extremum $x_0 \in I$, so gilt dort notwendig $f'(x_0) = 0$
+   #+end_thm
+   #+begin_proof latex
+   Habe $f$ in $x_0$ ein Minimum. Dann gilt für eine $(h_n)_{n\in\mathbb{N}}$ mit $h_n > 0, x_0 + h_n \in U_\delta(x_0)$
+   \[\frac{f(x_0 + h_n) - f(x_0)}{h_n} \geq 0\]
+   für eine Nullfolge $(h_n)_n\in\mathbb{N}$ mit $h_n < 0, x_0 + h_n \in U_\delta(x_0)$
+   \[\frac{f(x_0 + h_n) - f(x_0)}{h_n} \leq 0\]
+   Im Limes $h_n \to 0$ bekommen wir
+   \[f'(x_0) \leq 0 \leq f'(x_0) \implies f'(x_0) = 0\]
+   (Analog für Maximum)
+   #+end_proof
+   #+begin_remark latex
+   Eine stetige Funktion besitzt auf einem abgeschlossenem Interball $[a,b]$ ein Minimum. Dieses kann in einem Randpunkt ($x_0 = a vee x_0 = b$) liegen,
+   das heißt es ist nicht notwendig, das $f'(x_0) = 0$
+   #+end_remark
+   #+ATTR_LATEX: :options [4.15 Satz von Rolle]
+   #+begin_thm latex
+   Wenn eine im Interball $[a,b]$ stetige Funktion, in $(a,b)$ differenzierbar ist und $f(a) = f(b)$, so existiert ein $c\in (a,b)$, sodass $f'(c) = 0$
+   #+end_thm
+   #+begin_proof latex
+   - Stetige Funktion auf $[a,b]$ nimmt ihr Maximum und Minimum
+   - Wenn $f$ ist konstant $\implies f'(x) = 0$
+   - Wen $f$ nicht konstant $\implies \Exists x_0 \in (a,b): f(x_0) > f(a) = f(b) \vee f(x_0) < f(a) = f(b)$
+   $\implies$ das Maximum oder Minimum ist in einem $x_0 \in (a,b)$ angenommen $\implies f'(x_0) = 0$
+   #+end_proof
+   #+ATTR_LATEX: :options [4.16 1. Mittelwertsatz]
+   #+begin_thm latex
+   Ist $f$ stetig in $[a,b]$ und differenzierbar in $(a,b)$, so $\Exists c \in (a,b): f'(c) = \frac{f(b) - f(a)}{b - a}$
+   #+end_thm
+   #+begin_proof latex
+   Wir definieren Funktion
+   \[g(x) := f(x) - \frac{f(b) - f(a)}{b - a}(x - a)\]
+   - $g$ ist stetig in $[a,b]$, differenzierbar in $(a,b)$
+   - $g(a) = f(a) = g(b)$, Satz von Rolle liefert, dass $\Exists c\in(a,b): g'(c) = 0$
+   \[0 = g'(c) = f'(c) - \frac{f(b) - f(a)}{b - a} \implies f'(c) = \frac{f(b) - f(a)}{b - a}\tag*{\qedhere}\]
+   #+end_proof
+   #+ATTR_LATEX: :options [4.17]
+   #+begin_korollar latex
+   Sei $f:(a,b) \to \mathbb{R}$ mindestens zweimal differenzierbar mit $f'(x_0) = 0$für ein $x_0 \in (a,b)$.
+   Dann hat $f$ im Fall $f''(x_0) > 0$ in $x_0$ ein striktes lokales Minimum und im Fall $f''(x_0) < 0$ ein striktes lokales Maximum.
+   #+end_korollar
+   #+begin_proof latex
+   Sei $f$ zweimal differenzierbar mit $f''(x_0) > 0$ Wegen
+   \[f''(x_0) = \lim_{x\to x_0} \frac{f'(x) - f'(x_0)}{x - x_0} > 0\]
+   gibt es ein $\eps \in \mathbb{R}_+$, sodass f+r $0 < \abs{x - x_0} < \eps$ gilt
+   \[\frac{f'(x) - f'(x_0)}{x - x_0} > 0\]
+   mit $f'(x_0) = 0$ folgt damit
+   \begin{align*}
+   f'(x) < 0 &\quad x\in (x_0 - \eps, x_0) \\
+   f'(x) < 0 &\quad x\in(x_0, x_0 + \eps)
+   \end{align*}
+   $\implies f$ ist streng monoton fallend in $x\in (x_0 - \eps, x_0)$ und streng monoton wachsend in $(x_0, x_0 + \eps)$,
+   das heißt $f$ hat in $x_0$ ein striktes lokales Maximum (Analog im Fall $f''(x_0) < 0$)
+   #+end_proof
+   #+begin_remark latex
+   Es ist keine notwendige Bedingung zum Beispiel $f(x) = x^4$ hat lokales Minimum $x_0 = 0$, aber $f''(x_0) = 0$
+   #+end_remark

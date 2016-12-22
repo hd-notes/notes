@@ -113,10 +113,51 @@
    Damit $t = t(r)$
    \[\implies r = r(t) \implies \dot{\phi}(t) \implies \phi(t) \tag{Integrieren}\]
    Explizit lösbar: $V\sim \frac{1}{r}, V\sim r^2$
-** Qualitative Lösung
+** Qualitative Lösung des Zentralkraftproblems
    \begin{align*}
    E &= \frac{m}{2} \dot{r^2} + U(r) \\
    U(r) &= \frac{L^2}{2mr^2} + V(r) \\
    &= \frac{L^2}{2mr^2} - \frac{\alpha}{r} \tag{Kepler} \\
    \alpha &= g_N m_1 m_2
+   \end{align*}
+   - Fall 1: $E > 0 \implies$ minimales, aber kein maximales $r$
+   - Fall 2: $E < 0 \implies r$ zwischen zwei Extrema
+   $V \sim \frac{1}{r} \implies$ keine Periheldrehung. \\
+   allgemeiner: Periheldrehung triff auf! (kein Schließen der Bahn)
+** Kepler-Problem: Bahnform
+   \begin{align*}
+   E &= \frac{m}{2} \dot{r}^2 + \frac{L^2}{2 m r^2} - \frac{\alpha}{r} \\
+   \dot{E} = 0 &= m \dot{r}\ddot{r} - \frac{L^2}{m r^3}\dot{r} + \frac{\alpha}{r^2}\dot{r} \\
+   m \ddot{r} = \frac{L}{mr^3} - \frac{\alpha}{r^2} \\
+   \intertext{Schreibe $\dd{}{t}$ in $\dd{}{\phi}$ um, da $r(t)$ nicht lösbar:}
+   \dd{}{t}(\ldots) &= \dd{\phi}{t} \dd{}{\phi}(\ldots) \\
+   &= \frac{L}{m r^2} \dd{}{\phi}(\ldots) \\
+   \intertext{speziell:}
+   \dot{r} &= \frac{L}{m r^2} \dd{}{\phi}(r) = -\frac{L}{m} \dd{}{\phi}(\frac{1}{r}) \\
+   m \ddot{r} &= m \frac{L}{m r^2} \dd{}{\phi}(- \frac{L}{m} \dd{}{\phi}(\frac{1}{r})) \\
+   &= -\frac{L^2}{mr^2}\frac{\d^2}{\d \phi^2}(\frac{1}{r}) \\
+   -\frac{L^2}{mr^2}\frac{\d^2}{\d \phi^2}(\frac{1}{r}) &=  \frac{L^2}{m r^3} - \frac{\alpha}{r^2} \\
+   \frac{\d^2}{\d\phi^2}(\frac{1}{r}) &= -\frac{1}{r} + \frac{m \alpha}{L^2} \\
+   \intertext{Definiere $u \equiv \frac{1}{r}, \dd{}{\phi}(\ldots) = (\ldots)'$}
+   u'' &= -u + \frac{m \alpha}{L^2} \\
+   \intertext{harmonischer Oszillator mit äußerer Kraft, weiter mit $w \equiv u - \frac{m \alpha}{L^2}$}
+   w'' &= -w \\
+   \intertext{Allgemeine Lösung:}
+   w &= A\cos{\phi - \phi_0} \\
+   \intertext{Ohne Beschränkung der Allgemeinheit: $\phi_0 = 0$, so dass}
+   \frac{1}{r} - \frac{m\alpha}{L^2} &= A\cos{\phi} \\
+   r &= \frac{1}{\frac{m\alpha}{L^2} + A\cos{\phi}} \\
+   r &= \frac{p}{1 + e\cos{\phi}} \\
+   p &= \frac{L^2}{m\alpha} \\
+   e &= \sqrt{2 + \frac{2EL^2}{m\alpha^2}}
+   \end{align*}
+   Herleitung der letzen Formel für $e$:
+   \begin{align*}
+   \intertext{leite nach $t$ ab:}
+   r &= \frac{p}{1 + e\cos{\phi}} \\
+   \intertext{Diese verschwindet bei $\phi = 0$. Dort gilt dann:}
+   E &= \frac{L^2}{2mr^2} - \frac{\alpha}{r} \\
+   r &= \frac{p}{1 + e} = \frac{\frac{L^2}{m\alpha}}{1 + e} \\
+   \intertext{Beides zusammen ergibt:}
+   e = \sqrt{1 + \frac{2 EL^2}{m\alpha^2}}
    \end{align*}

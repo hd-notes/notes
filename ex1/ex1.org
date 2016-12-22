@@ -106,3 +106,46 @@ mark=at position 0.5 with
 #+INCLUDE: "collisions.org" :minlevel 1
 #+INCLUDE: "ridid_body.org" :minlevel 1
 #+INCLUDE: "deformation.org" :minlevel 1
+* Thermodynamik
+  \begin{align*}
+  \intertext{Boyle Mariotte}
+  p V &= ~\text{const} \\
+  \intertext{Gay-Lussac}
+  V = V_0 \gamma T \\
+  p V = p V(p, T) = p_0 V(p_0, T) = p_0 V(p_0, T_0)\gamma T = p_0 V_0 \gamma T \sim T \\
+  \end{align*}
+  #+ATTR_LATEX: :options [Boyle-Mariotte-Gay-Lussac]
+  #+begin_thm latex
+  Für idelae Gase gilt das Boyle-Mariotte-Gay-Lussac Gesetz
+  \[pV \sim T, \wedge \frac{p_1 V_1}{T_1} = \frac{p_2 V_2}{T_2} = ~\text{const}\]
+  $p\sim T$ für $V = ~\text{const}$
+  #+end_thm
+  Gedankenexperiment:
+  Fasse zwei identische Kisten gefüllt mit idealem Gas zu einer Kiste zusammen:
+  \begin{align*}
+  \intertext{1 Kist}
+  p_0 V_0 = \xi T_o \\
+  \intertext{2 zusammengefasste Kisten}
+  p_0 2 V_0 \sim T_0
+  \end{align*}
+  Also: Verdopplung von $\xi$!. Ansatz: $\xi \sim$ Gasmenge
+  \begin{align*}
+  \implies p V &= k_B N T \\
+  k_B &= \SIS{1.381e-23}{\joulse\per\kelvin} \tag{Boltzmankonstange}
+  \end{align*}
+  #+ATTR_LATEX: :options [Zustandsgleichung idealer Gase]
+  #+begin_thm latex
+  \begin{align*}
+  p V &= n \underbrace{N_a k_B}_{R} T \\
+  p V &= n R T \\
+  \intertext{mit $R$ (universelle Gaskonstante):}
+  R &= \SI{8.31451}{\joule\per\kelvin\mol}
+  \end{align*}
+  Für Normalbedingungen:
+  \begin{align*}
+  p_0 &= \SI{1013}{\meter\bar} \\
+  T_0 &= \SI{273.15}{\kelvin} \\
+  n &= 1 \\
+  V_0 = \SI{22.4e-3}{\meter\cubed} = \SI{22.4}{\liter}
+  \end{align*}
+  #+end_thm
