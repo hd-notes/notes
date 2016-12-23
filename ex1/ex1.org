@@ -131,7 +131,7 @@ mark=at position 0.5 with
   Also: Verdopplung von $\xi$!. Ansatz: $\xi \sim$ Gasmenge
   \begin{align*}
   \implies p V &= k_B N T \\
-  k_B &= \SIS{1.381e-23}{\joulse\per\kelvin} \tag{Boltzmankonstange}
+  k_B &= \SI{1.381e-23}{\joule\per\kelvin} \tag{Boltzmankonstange}
   \end{align*}
   #+ATTR_LATEX: :options [Zustandsgleichung idealer Gase]
   #+begin_thm latex

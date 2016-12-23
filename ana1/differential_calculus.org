@@ -167,7 +167,7 @@
    \[f(x_0) \leq f(x), x\in D \vee f(x_0) \geq f(x) \Forall x \in D\]
    Es handelt sich um ein *lokales Extremeum* (Minimum oder Moaximum), wenn auf einer $\delta$-Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
    gilt $f(x_0) \geq f(x) \Forall x\in U_\delta(x_0) \vee f(x_0) \leq f(x) \Forall x\in U_\delta(x_0)$
-   Ein Extremum (globales oder lokales) heißt strikt, wenn es das isolierteste PUnkt in $D$ beziehungsweise in $U_\delta(x_0)$ ist, as heißt $f(x_0) > f(x) \bee f(x_0) < f(x)$
+   Ein Extremum (globales oder lokales) heißt strikt, wenn es das isolierteste PUnkt in $D$ beziehungsweise in $U_\delta(x_0)$ ist, as heißt $f(x_0) > f(x) \vee f(x_0) < f(x)$
    #+end_defn
    #+ATTR_LATEX: :options [4.14 Satz von Extremum]
    #+begin_thm latex

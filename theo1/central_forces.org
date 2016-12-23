@@ -128,13 +128,13 @@
    \begin{align*}
    E &= \frac{m}{2} \dot{r}^2 + \frac{L^2}{2 m r^2} - \frac{\alpha}{r} \\
    \dot{E} = 0 &= m \dot{r}\ddot{r} - \frac{L^2}{m r^3}\dot{r} + \frac{\alpha}{r^2}\dot{r} \\
-   m \ddot{r} = \frac{L}{mr^3} - \frac{\alpha}{r^2} \\
+   m \ddot{r} = \frac{L^2}{mr^3} - \frac{\alpha}{r^2} \\
    \intertext{Schreibe $\dd{}{t}$ in $\dd{}{\phi}$ um, da $r(t)$ nicht lösbar:}
    \dd{}{t}(\ldots) &= \dd{\phi}{t} \dd{}{\phi}(\ldots) \\
    &= \frac{L}{m r^2} \dd{}{\phi}(\ldots) \\
    \intertext{speziell:}
    \dot{r} &= \frac{L}{m r^2} \dd{}{\phi}(r) = -\frac{L}{m} \dd{}{\phi}(\frac{1}{r}) \\
-   m \ddot{r} &= m \frac{L}{m r^2} \dd{}{\phi}(- \frac{L}{m} \dd{}{\phi}(\frac{1}{r})) \\
+   m \ddot{r} &= m \frac{L^2}{m r^2} \dd{}{\phi}(- \frac{L}{m} \dd{}{\phi}(\frac{1}{r})) \\
    &= -\frac{L^2}{mr^2}\frac{\d^2}{\d \phi^2}(\frac{1}{r}) \\
    -\frac{L^2}{mr^2}\frac{\d^2}{\d \phi^2}(\frac{1}{r}) &=  \frac{L^2}{m r^3} - \frac{\alpha}{r^2} \\
    \frac{\d^2}{\d\phi^2}(\frac{1}{r}) &= -\frac{1}{r} + \frac{m \alpha}{L^2} \\
@@ -161,3 +161,52 @@
    \intertext{Beides zusammen ergibt:}
    e = \sqrt{1 + \frac{2 EL^2}{m\alpha^2}}
    \end{align*}
+** Kegelschnitte
+   Kreis, Ellipse, Parabel, Hyperbel
+   \[r = \frac{p}{1 + e\cos{\phi}}\]
+   - Kreis: $e = 0, r =~\text{const}$, physikalisch: $E = U_{min}$
+   - Ellipse: $0 < e < 1 \implies r$ beschränkt
+	 \begin{align*}
+	 \phi = 0 &\implies r = \frac{p}{1 + e} \\
+	 \phi = \pi &\implies r = \frac{p}{1 - e} \\
+	 \phi = \pi \frac{\pi}{2} &\implies r = p \\
+	 \frac{p}{1 + e} \tag{Perihelabstand}
+	 \intertext{Außerdem}
+	 2 a &= p(\frac{1}{1 + e} - \frac{1}{1 - e}) = \frac{2p}{1 - e^2} \\
+	 a &= \frac{p}{1 - e^2}
+	 \intertext{Für die kleine Halbachse: Maximiere $y \implies$ maximiere $y^2$ (äquivalent)}
+	 0 &\overset{=}{!} \dd{y^2}{r} \\
+	 y^2 &= (r\sin{\phi})^2 = r^2(1 - \cos^2{\phi}) = r^2(1 - \frac{1}{e^2}(\frac{p}{r} - 1)^2) = r^2 - \frac{1}{e^2}(p - r)^2 \\
+	 0 &= 2(r + \frac{1}{e^2}(p - r)) \\
+	 r_0 &= \frac{\frac{-p}{e}}{1 - \frac{1}{e^2}} = \frac{p}{1 - e^2} \\
+	 \intertext{Einsetzen in obige Forlem für $y$:}
+	 y_{max} = \frac{p}{\sqrt{1 - e^2} \equiv b}
+	 \end{align*}
+	 Andere Definition der Ellipse
+	 \[\frac{\tilde x^2}{a^2} + \frac{\tilde y^2}{b^2} = 1\]
+	 Vorsicht: $x,y$ verschieden von $\tilde x, \tilde y$.
+   - Parabel: $e = 1$, physikalisch: $E = 0$, Körper "kommt im Unendlichen zur Ruhe", weil
+	 \[\frac{m}{2}v^2 = E - U(r) \wedge U(\infty) = 0\]
+	 Skizze, etc.: DIY
+   - Hyperbel: $e > 1, E > 0$, Körper hat für $r\to\infty$ nicht verschwindende Grenzgeschwindigkeit.
+	 \begin{align*}
+	 \phi = 0 &\implies r = \frac{p}{1 + e} \\
+	 \phi = \pm \frac{\pi}{2} &\implies r = p \\
+	 r = \infty &\implies 0 = 1 + e\cos{\phi} \iff \phi = \arccos{-\frac{1}{e}} \\
+	 \intertext{Wichtiger: Streuwinkel $\theta$:}
+	 \theta &= \pi - 2(\pi - \phi) = 2\phi - \pi
+	 \end{align*}
+** Die Trajektorie
+   Wie bekannt:
+   \[t = \int \frac{r\d r}{\sqrt{\frac{2E}{m}r^2 + \frac{2\alpha}{m}r - \frac{L^2}{m^2}}}\]
+   Brauchen Fallunterscheidung für $E$
+*** Ellipse
+	\begin{align*}
+	t &= \sqrt{\frac{m}{2\abs{E}}} \int \frac{r \d r}{\sqrt{-r^2 + \frac{2\alpha}{m} r - \frac{L^2}{m^2}}} \\
+	\intertext{Ersetze: $r \to s, r -a \equiv s a e$}
+	&= \frac{\d s(s + \frac{1}{e})}{\sqrt{1 - s^2}} \\
+	\intertext{Ersetze $s = -\cos{\eta}$}
+	t = \sqrt{\frac{ma^2}{2\abs{E}}}(\eta - e\sin{\eta}) \\
+	r = a(1 - e\cos{\eta})
+	\end{align*}
+	Dies ist die Parameterdarstellung.
