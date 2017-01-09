@@ -1,0 +1,85 @@
+* Faktorräume und der Homomorphiesatz
+  In diesem Abschnitt seien $V,W$ stets K-Vektorräume.
+  #+ATTR_LATEX: :options [13.1]
+  #+begin_defn latex
+  $A\subseteq V$. $A$ heißt ein affiner Unterraum von $V \xLeftrightarrow{\text{Def}}$ Es gibt ein
+  $a\in V$ und einen UVR $U\subseteq V$, sodass
+  \[A = a + U := \{a + u \mid u \in U\}\]
+  ist, oder $A = \emptyset$
+  #+end_defn
+  #+begin_note latex
+  - affine Unterräume von $V$ entstehen (mit Ausnahme von $\emptyset$) durch "Parallelverschiebung"
+	von UVR von $V$.
+  - ist $A = a + U$ mit $a\not\in U$, dann $0\not\in a + U$, das heißt $A$ ist in diesem
+	Fall kein UVR von $V$
+  #+end_note
+  #+ATTR_LATEX: :options [13.2]
+  #+begin_defn latex
+  $a \in V, U\subseteq V$ UVR, $A = a + U$. Dann gilt:
+  1. Für jedes $b \in A$ ist $A = b + U$
+  2. Ist $\tilde A \in V, \tilde U\subseteq V$ UVR mit $\tilde a + \tilde U = a + U$, dann ist $U = \tilde U$
+	und $a - \tilde a \in U$.
+  Mit anderen Worten: Zu einem affinen Unterraum $A = a + U$ ist der UVR $U$ eindeutig bestimmt,
+  der "Aufhängepunkt" $a$ kann beliebig in $A$ gewählt werden. Wir setzen $\dim A := \dim U, \dim\emptyset := -1$
+  #+end_defn
+  #+begin_proof latex
+  1. Sei $b\in A = a + U \implies \Exists u\in U: b = a + u$ zu zeigen: $a + U = b + U$ \\
+	 "$\subseteq$" Sei $v\in a + U \implies \Exists t\in U: v = a + t = \underbrace{b - u}_{= a} + t = b + (\underbrace{t - u}_{\in U}) \in b + U$. \\
+	 "$\supseteq$" Sei $v\in b + U \implies \Exists t\in U: v = b + t = a + (\underbrace{u + t}_{\in U}) \in a + U$
+  2. Behauptung $U = \{b_1 - b_2 \mid b_1, b_2 \in a + U\}$ denn: \\
+	 "$\subseteq$" Sei $u\in U$. Setze $b_1 := a + u \in a + U, b_2 := a + 0\in a + U$, dann
+	 $b_1 - b_2 = a + u - (a + 0) = 0$ \\
+	 "$\supseteq$" Seien $b_1, b_2 \in a + U \implies \Exists u_1, u_2 \in U: b_1 = a + u_1, b_2 = a + u_2 \implies b_1 - b_2 = (a + u_1) - (a + u_2) = u_1 - u_2 \in U$ \\
+	 Analog: $\tilde U = \{b_1 - b_2 \mid b_1, b_2 \in \tilde a + \tilde U\}$ \\
+	 Somit: $U = \{b_1 - b_2 \mid b_1, b_2 \in a + U\} = \{b_1 - b_2 \mid b_1, b_2 \in \tilde a + \tilde U\} = \tilde U$
+	 $\implies a + U = \tilde a + U \implies a \in a + U = \tilde a + U \implies \Exists u \i U: a = \tilde a + u \implies a - \tilde a = u\in U$
+  #+end_proof
+  #+ATTR_LATEX: :options [13.3]
+  #+begin_ex latex
+  - UVR $U$ im $\mathbb{R}$-Vektorraum $\mathbb{R}^2$:
+	- $\dim U = 0: \{0\}$
+	- $\dim U = 1: \Lin((v)), v\neq 0$ \hfill (Ursprungsgeraden)
+	- $\dim U = 2: \mathbb{R}^2$
+  - affine UR $A$ in $\mathbb{R}^2$:
+	- $\dim A = -1: \emptyset$
+	- $\dim A = 0: \{a\}, a\in\mathbb{R}^2$ \hfill (Punkte)
+	- $\dim A = 1: a + \Lin((v)), a, v \in R^2, v\neq 0$ \hfill (Geraden)
+	- $\dim A = 2: \mathbb{R}^2$
+  #+end_ex
+  #+ATTR_LATEX: :options [13.4]
+  #+begin_defn latex
+  $f:V\to W$ lineare Abbildung, $w\in W$
+  \[f^{-1}({w}) = \{v\in V\mid f(v) = w\}\]
+  heißt die Faser von $f$ über $w$
+  #+end_defn
+  #+begin_remark latex
+  - Ist $A\in M(m\times n, K)$, so erhalten wir eine lineare Abbildung $\tilde A: K^n \to K^m, x\mapsto Ax$.
+	Für $b\in K^m$ ist $\tilde A^{-1}({b}) = {x \in K^n \mid \tilde A(x) = b} = \{x \in K^n\mid Ax = b\}$ genau
+	die Lösungsmenge des lineare Gleichungssystems $Ax = b$
+  - Durch $v_1 \sim v_2 \xLeftrightarrow{\text{Def}} f(v_1) = f(v_2)$ ist eine Äquivalenzrelation auf
+	$V$ erklärt, die Äquivalenzklasse von $v\in V$ ist gegeben durch $\{u\in V\mid f(u) = f(v)\} = f^{-1}({f(v)})$.
+	Somit sind die nichtleeren Fasern von $A$ genau die Äquivenzklassen bezüglich "$\sim$". Insbesondere ist
+	$V$ die Vereinigung der Fasern von $f$, je zwei Fastern von $f$ sind gleich oder disjunkt.
+  #+end_remark
+  #+ATTR_LATEX: :options [13.5]
+  #+begin_thm latex
+  $f:V\to W$ lineare Abbildung, $w\in W$. Dann gilt:
+  \[f^{-1}({w}) = \begin{cases} u + \ker f & \text{falls $w\in \im f$ (hierbei $u\in f^{-1}({w})$)} \\ \emptyset & \text{falls $w\not\in \im f$}\end{cases}\]
+  Somit ist die Faser von $f$ über $w$ ein affiner UR von $V$ mit
+  \[\dim f^{-1}({w}) = \begin{cases} \dim \ker f = \dim V - \dim \im f & \text{falls $w\in \im f$} \\ -1 & \text{falls $w\not\in \im f$}\end{cases}\]
+  Insbesondere haben alle nichtlleren Fasern von $f$ dieselbe Dimesion.
+  #+end_thm
+  #+begin_proof latex
+  Falls $w\not\in \im f$, dann $f^{-1}({w}) = \emptyset$. Im Folgenden sei $w\in \im f$. zu zeigen:
+  $f^{-1}({w}) = u + \ker f$ \\
+  "$\subseteq$" Sei $v\in f^{-1}({w}) \implies f(v) = w = f(u) \implies f(v) - f(u) = 0 \implies f(v - u) = 0 \implies v - u\in\ker f \implies v \in u + \ker f$.
+  "$\supseteq$" Sei $v\in u + \ker f \implies \Exists t\in \ker f: v = u + t \implies f(v) = f(u + t) = f(u) + \underbrace{f(t)}_{= 0} = f(u) \implies v\in f^{-1}({w})$.
+  Es ist $\dim(u + \ker f) = \dim(\ker f) = \dim V - \dim \im f$
+  #+end_proof
+  #+ATTR_LATEX: :options [13.6]
+  #+begin_ex latex
+  $K = \mathbb{R}, V =\mathbb{R}^2$. Wir betrachten die Abbildung $f:\mathbb{R}^2 \to \mathbb{R}^2$,
+  \[\cvec{x_1 ; x_2} \mapsto \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}\cvec{x_1 ; x_2} = \cvec{x_1 ; 0}\]
+  $f$ ist linear und es ist $\im f = \Lin((e_1)), \ker f = \Lin((e_2))$ und für $w = \lambda e_1 = \cvec{\lambda ; 0} \in \im f$
+  ist $f^{-1}({w}) = f^{-1}({\cvec{\lambda ; 0}}) = \cvec{\lambda ; 5} + \ker f = \cvec{\lambda ; 5} + \Lin((e_2))$
+  #+end_ex

@@ -18,6 +18,13 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Span}{span}
 #+LATEX_HEADER: \DeclareMathOperator{\ZR}{ZR}
 #+LATEX_HEADER: \DeclareMathOperator{\SR}{SR}
+#+LATEX_HEADER: \DeclareMathOperator{\Hom}{Hom}
+#+LATEX_HEADER: \DeclareMathOperator{\End}{End}
+#+LATEX_HEADER: \DeclareMathOperator{\Iso}{Iso}
+#+LATEX_HEADER: \DeclareMathOperator{\Aut}{Aut}
+#+LATEX_HEADER: \DeclareMathOperator{\im}{im}
+#+LATEX_HEADER: \DeclareMathOperator{\id}{id}
+#+LATEX_HEADER: \DeclareMathOperator{\Rang}{Rang}
 #+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
 #+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
@@ -66,3 +73,4 @@
 #+INCLUDE: "sub_vector_space.org" :minlevel 1
 # Kapitel 3: Lineare Abbildungen
 #+INCLUDE: "linear_map.org" :minlevel 1
+#+INCLUDE: "quotient_space.org" :minlevel 1
