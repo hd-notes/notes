@@ -9,6 +9,6 @@ install:
     - sudo apt-get install python-pygments realpath 
 script: bash ./deploy.sh
 env:
-  global:
-  - COMMIT_AUTHOR_EMAIL: "robin.ole.heinemann@t-online.de"
+    global:
+        - COMMIT_AUTHOR_EMAIL: "robin.ole.heinemann@t-online.de"
 language: generic
