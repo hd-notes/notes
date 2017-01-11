@@ -210,3 +210,31 @@
 	r = a(1 - e\cos{\eta})
 	\end{align*}
 	Dies ist die Parameterdarstellung.
+** Umlaufzeit
+   (Ellipsenbahn)
+   \[T = \int_{1~\text{Umlauf}} \d t \underarrow[=]{\dd{f}{t} = \frac{1}{2} r^2 \dot{\phi}}; L = mr^2\dot{\phi} \frac{2m}{L} \int_{1~\text{Umlauf}} \d f = \frac{2m}{L} F_{ell} = \frac{2m}{L} \pi ab\]
+   Begründung von $F_{ell} = \pi ab$:
+   Ellipse: \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \xrightarrow{\text{Koordinatenwechsel}} x^{\prime 2} + y^{\prime 2} = 1\]
+   Also:
+   \[F_{ell} = \int_{\text{Ell}} \d x \d y = ab \int_{Einh.kreis} \d x' \d y' = \pi ab \checkmark\]
+   \begin{align*}
+   T &= \frac{2\pi m}{L} ab = \frac{2\pi m}{L} \frac{p^2}{\sqrt{1 - e^2}^3} = \frac{2\pi m}{L} \frac{(\frac{L^2}{m\alpha})^2}{(\frac{2\abs{E}L^2}{m\alpha^2})^{\frac{3}{2}}} = \pi \alpha \sqrt{\frac{m}{2\abs{E}^3}} \\
+   \intertext{Mit $a = \frac{\alpha}{2 \abs{E}}$:}
+   &= 2\pi a^{\frac{3}{2}} \sqrt{\frac{m}{\alpha}}
+   \end{align*}
+   #+ATTR_LATEX: :options [Zweites Keplersches Gesetz]
+   #+begin_thm latex
+   $T$ ist proportional zu $a^{\frac{3}{2}}$.
+   #+end_thm
+   (Zur Vollständigkeit:)
+   #+ATTR_LATEX: :options [Erstes Keplersches Gesetz]
+   #+begin_thm latex
+   Umlaufbahnen sind Ellipsen, in deren einem Brennpunkt die Sonne steht.
+   #+end_thm
+   #+begin_remark latex
+   Analoge Analyse für $V = \frac{+\alpha}{r} \implies$ stets Hyperbelbahnen:
+   \[r = \frac{p}{-1 + e\cos{\phi}}\]
+   Es existiert eine *dritte* Erhaltungsgröße. Lenzscher Vektor:
+   \[\bar v \times \var L - \frac{\alpha \bar r}{r} \implies ~\text{noch elegantere Analyse möglich}\]
+   Die Annahme $m_2 \gg m_1$ stimmt für System Erde-Mond nicht sehr gut. $\implies$ Gezeitenberge, Zentrifugalkraft, örtlich variierende Gravitationskraft.
+   #+end_remark

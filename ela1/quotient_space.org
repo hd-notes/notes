@@ -49,7 +49,7 @@
   #+ATTR_LATEX: :options [13.4]
   #+begin_defn latex
   $f:V\to W$ lineare Abbildung, $w\in W$
-  \[f^{-1}({w}) = \{v\in V\mid f(v) = w\}\]
+  \[f^{-1}(\{w\}) = \{v\in V\mid f(v) = w\}\]
   heißt die Faser von $f$ über $w$
   #+end_defn
   #+begin_remark latex
@@ -64,16 +64,16 @@
   #+ATTR_LATEX: :options [13.5]
   #+begin_thm latex
   $f:V\to W$ lineare Abbildung, $w\in W$. Dann gilt:
-  \[f^{-1}({w}) = \begin{cases} u + \ker f & \text{falls $w\in \im f$ (hierbei $u\in f^{-1}({w})$)} \\ \emptyset & \text{falls $w\not\in \im f$}\end{cases}\]
+  \[f^{-1}(\{w\}) = \begin{cases} u + \ker f & \text{falls $w\in \im f$ (hierbei $u\in f^{-1}(\{w\})$)} \\ \emptyset & \text{falls $w\not\in \im f$}\end{cases}\]
   Somit ist die Faser von $f$ über $w$ ein affiner UR von $V$ mit
-  \[\dim f^{-1}({w}) = \begin{cases} \dim \ker f = \dim V - \dim \im f & \text{falls $w\in \im f$} \\ -1 & \text{falls $w\not\in \im f$}\end{cases}\]
+  \[\dim f^{-1}(\{w\}) = \begin{cases} \dim \ker f = \dim V - \dim \im f & \text{falls $w\in \im f$} \\ -1 & \text{falls $w\not\in \im f$}\end{cases}\]
   Insbesondere haben alle nichtlleren Fasern von $f$ dieselbe Dimesion.
   #+end_thm
   #+begin_proof latex
-  Falls $w\not\in \im f$, dann $f^{-1}({w}) = \emptyset$. Im Folgenden sei $w\in \im f$. zu zeigen:
-  $f^{-1}({w}) = u + \ker f$ \\
-  "$\subseteq$" Sei $v\in f^{-1}({w}) \implies f(v) = w = f(u) \implies f(v) - f(u) = 0 \implies f(v - u) = 0 \implies v - u\in\ker f \implies v \in u + \ker f$.
-  "$\supseteq$" Sei $v\in u + \ker f \implies \Exists t\in \ker f: v = u + t \implies f(v) = f(u + t) = f(u) + \underbrace{f(t)}_{= 0} = f(u) \implies v\in f^{-1}({w})$.
+  Falls $w\not\in \im f$, dann $f^{-1}(\{w\}) = \emptyset$. Im Folgenden sei $w\in \im f$. zu zeigen:
+  $f^{-1}(\{w\}) = u + \ker f$ \\
+  "$\subseteq$" Sei $v\in f^{-1}(\{w\}) \implies f(v) = w = f(u) \implies f(v) - f(u) = 0 \implies f(v - u) = 0 \implies v - u\in\ker f \implies v \in u + \ker f$.
+  "$\supseteq$" Sei $v\in u + \ker f \implies \Exists t\in \ker f: v = u + t \implies f(v) = f(u + t) = f(u) + \underbrace{f(t)}_{= 0} = f(u) \implies v\in f^{-1}(\{w\})$.
   Es ist $\dim(u + \ker f) = \dim(\ker f) = \dim V - \dim \im f$
   #+end_proof
   #+ATTR_LATEX: :options [13.6]
@@ -81,5 +81,94 @@
   $K = \mathbb{R}, V =\mathbb{R}^2$. Wir betrachten die Abbildung $f:\mathbb{R}^2 \to \mathbb{R}^2$,
   \[\cvec{x_1 ; x_2} \mapsto \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}\cvec{x_1 ; x_2} = \cvec{x_1 ; 0}\]
   $f$ ist linear und es ist $\im f = \Lin((e_1)), \ker f = \Lin((e_2))$ und für $w = \lambda e_1 = \cvec{\lambda ; 0} \in \im f$
-  ist $f^{-1}({w}) = f^{-1}({\cvec{\lambda ; 0}}) = \cvec{\lambda ; 5} + \ker f = \cvec{\lambda ; 5} + \Lin((e_2))$
+  ist $f^{-1}(\{w\}) = f^{-1}({\cvec{\lambda ; 0}}) = \cvec{\lambda ; 5} + \ker f = \cvec{\lambda ; 5} + \Lin((e_2))$
   #+end_ex
+
+  #+ATTR_LATEX: :options [13.8]
+  #+begin_thm latex
+  $U\subseteq V$ UVR. Wir definieren auf $V/U$ Verknüpfungen
+  - $+: V/U \times V/U \to V/U, \bar a + \bar b := \overline{a + b}$
+  - $\cdot : K\times V/U \to V/U, \lambda \cdot \bar a := \overline{\lambda a}$
+  Dann gilt:
+  1. $V/U$ wird mit der obigen Addition und skalaren Multiplikation zu einem K-Vektorraum, dem *Faktorvektorraum* (*Faktorraum*, *Quotientenvektorraum*) von $V/U$.
+	 Der Nullvektor in $V/U$ ist $\bar 0 = 0 + u = u$
+  2. Die Abbildung
+	 \[\pi: V\to V/U, a\mapsto \bar a\]
+	 ist die surjektive lineare Abbildung mit $\ker \pi = U$
+  3. Ist $V$ endlichdimenisonal, dann ist $\dim_K V/U = \dim_K V - \dim_K U$
+  #+end_thm
+  #+begin_proof latex
+  1.
+	 1. "$+$","$\\cdot$" wohldefiniert: \\
+	   "$+$" wohldefiniert: Seien $a_1, a_2, b_1, b_2 \in V, \bar a_1 = \bar a_2, \bar b_1 = \bar b_2 \implies a_1 \equiv a_1 (\mod u), b_1 \equiv b_2 (\mod u) \implies a_1 - a_2 \in U, b_1 - b_2 \in U \implies (a_1 + b_1 - (a_2 + b_2)) = (\underbrace{a_1 - a_2}_{\in U}) + (\underbrace{b_1 - b_2}_{\in U}) \in U \implies a_1 + b_2 \equiv a_2 + b_2 (\mod u) \implies \overline(a_1 + b_1) = \overline(a_2 + b_2)$ \\
+	   "$\cdot$" wohldefiniert: Seien $\lambda \in K, a_1, a_2 \in V, \bar a_1 = \bar a_2 \implies a_1 - a_2 \in U \implies \lambda a_1 - \lambda a_2 = \lambda (\underbrace{a_1 - a_2}_{\in U}) \in U \implies \lambda a_1 \equiv \lambda a_2 (\mod U) \implies \overline{\lambda a_1} = \overline{\lambda a_2}$
+	 2. Vekorraumaxiome gelten: nachrechnen. \\
+		Nullvektor: $\Forall a\in V: \bar a + \bar 0 = \overline{a + 0} = \bar a = \bar 0 + \bar a, \bar 0 = 0 + U$
+  2.
+	 - $\pi$ ist linear: Seien $a_1, a_2 \in V, \lambda \in K$, dann $\pi(a_1 + a_2) = \overline{a_1 + a_2} = \bar a_1 + \bar a_2 = \pi(a_1) + \pi(a_2), \pi(\lambda a_1) = \overline{\lambda a_1} = \lambda \bar a_1 = \lambda \pi(a_1)$
+	 - $\pi$ ist surjektiv: $\im \pi = \pi(V) = \{\bar a \mid a \in V\} = V/U$
+	 - $\ker \pi = U$, denn: Sei $a \in V$. Dann gilt:
+	   \[\dim_K V = \dim_K(\ker \pi) + \dim_K(\im \pi) = \dim_K U + \dim_K V/U \implies ~\text{Behauptung}\]
+  #+end_proof
+  #+ATTR_LATEX: :options [13.9]
+  #+begin_conc latex
+  $U\subseteq V$. Dann sind äquivalent:
+  1. $U$ ist UVR von $V$
+  2. Es gibt einen K-Vektorraum $W$ und eine lineare Abbildung $F:V\to W$ mit $\ker f = U$.
+	 Ist $V$ endlichdimensional, dann kann in diesem fall $W$ auch endlichdimensional mit $\dim W \leq \dim V$ gewählt werden.
+  #+end_conc
+  #+begin_proof latex
+  1. $\implies$ 2. Setze $W:= V/U, v:= \pi, V\to V/U, a\mapsto \bar a$, Behauptung folgt aus 12.8. (Zusatzaussage folgt aus 13.8: $\dim_K V/U \leq \dim_K V$)
+  2. $\implies$ 1. $\ker f$ ist UVR von $V$ nach 12.10
+  #+end_proof
+  #+ATTR_LATEX: :options [13.10]
+  #+begin_conc latex
+  $A\subseteq V$. Dann sind äquivalent:
+  1. $A$ ist ein afiner Unterraum von $V$
+  2. Es gibt einen K-Vektorraum $W$, eine lineare Abbildung $f: V \to W$ und ein $w\in W$ mit $A = f^{-1}(\{w\})$.
+	 ist $V$ endlichdimensional, dann kann in diesem Fall auch $W$ endlichdimensional, mit $\dim W \leq \dim V$ gewählt werden.
+  #+end_conc
+  #+begin_proof latex
+  1. $\implies$ 2. Sei $A$ affiner Unterraum von $V$. Falls $A = \emptyset$, setze $W := K, f:V\to K, v\mapsto 0$ (ist linear), $w := 1 \implies f^{-1}(\{w\}) = \emptyset = A$.
+	 Im Folgenden sei $A \neq \emptyset$. Dann $\Exists a\in V, U\subseteq V$ UVR mit $A = a + U$. Setze $W := V/U, f:=\pi V\to V/U, v\mapsto \bar v, w:= \bar a = a + U \implies f^{-1}(\{\bar a\}) = \{b \in V \mid f(v) = \bar a\} = \{b \in  B \mid \bar b = \bar a\} = \bar a = a + U = A$
+	 (Zusatzaussage folgt aus 13.8)
+  2. $\implies$ 1. $f^{-1}(\{w\})$ ist ein affiner Unterraum.
+  #+end_proof
+  #+begin_remark latex
+  Philosopie hinter 13.9 / 13.10: UVR = Kerne von lineare Abbildungen, affine Unterräume = Fasern von linearen Abbildungen.
+  #+end_remark
+  #+ATTR_LATEX: :options [13.11 Homomophiesatz]
+  #+begin_thm latex
+  $f:V\to W$ lineare Abbildung. Dann induziert $f$ einen Isomorphismus
+  \[\bar f : V/\ker f \to \im f, \bar v \mapsto f(v)\]
+  das heißt: $V/\ker f \cong \im f$
+  #+end_thm
+  #+begin_proof latex
+  1. $\bar f$ wohldefiniert: Seien $v_1, v_2 \in V$ mit $\bar v_1 = \bar v_2 \implies v_1 \equiv v_2 (\mod \ker f) \implies v_1 - v_2 \in \ker \implies f(v_1 - v_2) = 0 \implies f(v_1) = f(v_2)f$
+	 - Für $v\in V$ ist $f(v) \in \im f$.
+  2. $\bar f$ ist linear: Seien $\bar v_1, \bar v_2 \in V/\ker f \implies \bar f(\bar v_1 + \bar v_2) = \bar f(\overline{v_1 + v_2}) = f(v_1 + v_2) = f(v_1) + f(v_2) = \bar f(\bar v_1) + \bar f(\bar v_2)$
+	 Sei $\lambda \in K, \bar v \in V/\ker f \implies \bar f(\lambda \bar v) = \bar f(\overline{\lambda v}) = f(\lambda v) = \lambda f(v) = \lambda \bar f(\bar v)$.
+  3. $\bar f$ ist injektiv, das heißt $\ker \bar f = \{0\}$. Sei $\bar v \in \ker \bar f \implies \bar f(\bar v) = 0 \implies f(v) = 0 \implies v\in \ker f \implies \bar v = v + \ker f = \ker f = \bar 0$
+  4. $\bar f$ ist surjektiv, dann $\im \bar f = \{\bar f(\bar v) \mid \bar v \in V/\ker f\} = \{f(v) \mid v\in V\} = \im f$
+  #+end_proof
+  #+ATTR_LATEX: :options [13.12]
+  #+begin_conc latex
+  $f: V\to W$ lineare Abbildung. Dann lässt sich $f$ schreiben als
+  \[f = i \v \circ \bar f \circ \pi\]
+  wobei $\pi: V\to V/\ker f, v\mapsto \bar v, \bar f:$ Abbildung aus 1311, $i:\im f \to W, w\mapsto w$ Man sagt auch: das Diagramm
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em] {V & W \\ V/\ker f & \im f\\};
+  \path[-stealth]
+  (m-1-1) edge node [left] {$\pi$} (m-2-1)
+		  edge node [below] {$f$} (m-1-2)
+  (m-2-1) edge node [below] {$\bar f$} (m-2-2)
+  (m-2-2) edge node [left] {$i$} (m-1-2);
+  \end{tikzpicture}
+  kommutiert. Hierbei ist $\pi$ surjektiv, $\bar f$ ein Isomorphismus, $i$ ist surjektiv.
+  #+end_conc
+  #+begin_proof latex
+  Für $v\in V$ ist $(i \circ \bar f \circ \pi)(v) = (i\circ \bar f)(\bar v) = i(f(v)) = f(v)$
+  #+end_proof
+  #+begin_remark latex
+  Für einen UVR $U\subseteq V$ nennt man die Abbildung $\pi: V\to V/U, v\mapsto \bar v$ die kanonische Projektion von $V$ nach $V/U$
+  #+end_remark

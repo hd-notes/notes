@@ -1,0 +1,23 @@
+* Zerfalls und Stoßprozesse
+  Chemie, Kernphysik, Teilchenphysik (QM-Aspekte sehr wichtig $\to$ später), astrophysikalische  Prozesse (zum Beispiel kollisionsfreie Begegnung zweier Himmelskörper)
+** Stoßparameter und Streuwinkel
+   Streuwinkel $\theta$ folgt eindeutig aus $b$ (bei mechanischem System) $\implies$ Funktion $\theta = \theta(b)$. Bei perfekt reflektierender Kugel leicht zu berechnen:
+   \begin{align*}
+   \pi &= 2\Delta\phi + \theta, b = R\sin(\Delta\phi) \\
+   \intertext{Auflösen nach $\theta$}
+   \theta(b) = \pi - 2\arcsin{\frac{b}{R}} = r\arccos(\frac{b}{R})
+   \end{align*}
+   Allgemeiner: Streuung an Zentralpotential $V(r)$ (hier mit abstoßender Kraft)
+   Obige starre Kugel entspricht dann dem Grenzfall
+   \[V(r) = \begin{cases} 0 & r > R \\ \infty r \leq R\end{cases}\]
+   \begin{align*}
+   \intertext{Starte mit}
+   \d t &= \frac{\d r}{\sqrt{\frac{2}{m}(E - U(r))}}; L = m r^2 \dd{\phi}{t} \\
+   \intertext{Hierbei: $E = \frac{m}{2}v_\infty^2, L = m v_\infty b}
+   \phi &= \int \frac{\frac{L^2}{r^2}\d r}{\sqrt{2m(E - V(r)) - \frac{L^2}{r^2}}} \\
+   \Delta \phi &=0 \int_{r_{min}}^{\infty} \frac{\frac{b\d r}{r^2}}{\sqrt{1 - \frac{V(r)}{E} - \frac{b^2}{r^2}}} \\
+   \intertext{$r_{min}$ ist Lösung zu}
+   1 - \frac{V(r)}{E} - \frac{b^2}{r^2} &= 0 \\
+   \intertext{In der Tat: Bei $r_{min}$ ist gerade $\d r = 0$ obgleich $\d \phi \neq 0$ ist. Diest geschieht exakt wenn $\sqrt{\ldots} = 0$}
+   \implies \theta(b) &= \pi - 2\Delta\phi \tag{allgemein bekannt}
+   \end{align*}

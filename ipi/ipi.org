@@ -836,3 +836,77 @@
 	  }
   }
   #+END_SRC
+  Jede Klasse hat bestimmte spezielle Menber-Funktionen:
+  - Konstruktoren bringen Objekt in wohldefinierten Anfangszustand
+  - Destruktoren: Entsorgt ein nicht mehr benötigtes Objekt (meist am Ende der Umgebung)
+  - Zuweisungsoperatoren: um Objekt per Zuweisung ("=") zu überschreiben $\implies$ später
+** Destruktoren
+   jede Klasse muss genau einen Destruktor haben, wenn der Programmierer das nicht expliziet implementiert,
+   fügt Compiler ihn automatisch ein. Syntax:
+   #+BEGIN_SRC cpp
+   class klassenName {
+   public:
+	   ~klassenName(){
+		// Implementation
+		}
+   };
+   #+END_SRC
+   Der automatische Destruktor ruft einfach die Destruktoren aller Member-Variablen auf. Meist ist
+   das ausreichend, aber in bestimmten Situationen muss der Programmierer zusätzliche Aktionen implementieren.
+   Beispiele dafür:
+   1. manuelle Speicherverwaltung: Destruktor muss nicht mehr benötigten Speicher an
+	  Betriebssystem zurückgeben ($\implies$ später), zum Beispiel Destruktor von
+	  std::vector, std::string (Kapselung: Benutzer merken davon nichts)
+   2. manuelles Dateimanagement: Destruktor muss Datei schließen, also Dateien aus
+	  dem Festplattencache auf Platte übertragen und Metadaten für Datei schreiben, zum Beispiel
+	  std::ofstream, std::ifstream
+   3. Abmelden von einem Service (ausloggen, Verbindung beenden)
+** Kopier-Konstruktor
+   Spezieller Kontruktor: Kopier-Konstruktor zum Erzeugen einer Kopie eines vorhandenen Objekts,
+   das heißt neue Speicherzelle mit gleichem Inhalt.
+   #+BEGIN_SRC cpp
+   Point p(1.0, 2.0); // Konstruktor mit Initialwert
+   Point q = p;       // Kopierkonstruktor
+   Point r(p);        // Kopierkonstruktor
+
+   int foo(Point q) {
+	   // ...
+   }
+   int bar(Point const & g) {
+	   // ...
+   }
+   int main() {
+	   Pont p(1.0, 2.0);
+	   foo(p) // Kopierkonstruktor, um lokales q in foo aus p zu erzeugen, "pass-by-value"
+	   bar(p) // g ist neuer Name für p, keine neue Speicherzelle, kein Kopierkonstruktor, "pass-by-reference"
+   }
+
+   // Syntax:
+   class KlassenName {
+   public:
+	   klassenName(klassenName const & existing) {
+	   // ...
+	   }
+   };
+   #+END_SRC
+   Der Compiler erzeugt Kopier-Konstruktor automatisch, falls nicht explizit programmiert = ruft Kopier-Konstruktor
+   aller Member-Variablen auf, meistens richtig, Ausnahmen wie oben.
+** Standard-Konstruktor
+   Spezieller Konstruktor: Standard-Konstruktor ("default constructor"): ohne Argumente,
+   bringt Object in Standard-Zustand, zum Beispiel "0" bei Zahlen, "" bei (Leerstring) bei std::string,
+   leeres Array std::vector, (0, 0) bei Point. Syntax:
+   #+BEGIN_SRC cpp
+   class klassenName {
+   public:
+	   klassenName() {}
+	   klassenName() : Initialiserungserte der Member-Variablen {}
+   };
+   #+END_SRC
+   Compiler erzeugt Standard-Konstruktor automatisch, falls es *keinen* eenutzerdefinierten Konstruktor gibt.
+** rule of three
+   "rule of three": Faustregel: wenn es notwendig ist, eine der drei Funktionen Destruktor, Kopierkonstruktor,
+   Kopier-Zuweisung ("\implies" später) explizit zu implementieren, müssen alle drei explizit implementiert werden
+** Vorteile der Kapselung:
+   1. Benutzung der Klasse ist viel einfacher, weil unwichtige Details verborgen sind
+   2. interne Implementatoin kann geändert werden, ohne den Benutzer zu Folgeänderungen zu zweingen,
+	  weil externe Schnittstelle erhalten bleibt.

@@ -60,6 +60,8 @@
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 #+LATEX_HEADER: \usepackage{stackengine}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{matrix}
 
 # Kapitel 1: Grundlagen
 #+INCLUDE: "introduction.org" :minlevel 1
@@ -74,3 +76,10 @@
 # Kapitel 3: Lineare Abbildungen
 #+INCLUDE: "linear_map.org" :minlevel 1
 #+INCLUDE: "quotient_space.org" :minlevel 1
+* Lineare Gleichungssysteme
+  In diesem Abschnitt seien stets $m,n \in \mathbb{N}, A = (a_{ij}) \in M(m\times n, K), b = \cvec{b_1 ; \vdots ; b_m} \im K^m$
+  Ziel: bestimme alle $x = \cvec{x_1; \vdots; x_n} \in K^n$ mit $Ax = b$, das heißt löse das lineare Gleichungssystem $Ax = b$.
+  explizit
+  \begin{align*}
+  a_{11} x_1 + \ldots
+  \end{align*}

@@ -64,3 +64,4 @@ Einleitung: \\
 #+INCLUDE: "symmetries.org" :minlevel 1
 #+INCLUDE: "pseudo_forces.org" :minlevel 1
 #+INCLUDE: "central_forces.org" :minlevel 1
+#+INCLUDE: "collision.org" :minlevel 1
