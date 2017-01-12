@@ -127,7 +127,7 @@
 	 \[-\frac{\d E_{pot}}{\d x} = F\]
 **** d = 3
 	 Zusammenhang zwischen konservativen Kraftfeld und potentieller Energie:
-	 \[E_{pot} = -\int \v F\d\v r \rightarrow \v F = - "\frac{\d E_{pot}}{\d \v r}"\]
+	 \[E_{pot} = -\int \v F\d\v r \rightarrow \v F = - \frac{\d E_{pot}}{\d \v r}\]
 	 Gesucht: Ableitung eines Vektors nach einem Skalar.
 	 Betrachte:\[\Delta E_{pot} = -\v F\Delta \v r = -(F_x \Delta x + F_y \Delta y + F_z \Delta z)\]
 	 \[\Delta E_{pot} = \frac{\partial E_{pot}}{\partial x} \Delta x + \frac{\partial E_{pot}}{\partial y} \Delta y + \frac{\partial E_{pot}}{\partial z} \Delta z\]

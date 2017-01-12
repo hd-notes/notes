@@ -100,7 +100,7 @@
   #+begin_proof latex
   1.
 	 1. "$+$","$\\cdot$" wohldefiniert: \\
-	   "$+$" wohldefiniert: Seien $a_1, a_2, b_1, b_2 \in V, \bar a_1 = \bar a_2, \bar b_1 = \bar b_2 \implies a_1 \equiv a_1 (\mod u), b_1 \equiv b_2 (\mod u) \implies a_1 - a_2 \in U, b_1 - b_2 \in U \implies (a_1 + b_1 - (a_2 + b_2)) = (\underbrace{a_1 - a_2}_{\in U}) + (\underbrace{b_1 - b_2}_{\in U}) \in U \implies a_1 + b_2 \equiv a_2 + b_2 (\mod u) \implies \overline(a_1 + b_1) = \overline(a_2 + b_2)$ \\
+	   "$+$" wohldefiniert: Seien $a_1, a_2, b_1, b_2 \in V, \bar a_1 = \bar a_2, \bar b_1 = \bar b_2 \implies a_1 \equiv a_1 (\mod u), b_1 \equiv b_2 (\mod u) \implies a_1 - a_2 \in U, b_1 - b_2 \in U \implies (a_1 + b_1 - (a_2 + b_2)) = (\underbrace{a_1 - a_2}_{\in U}) + (\underbrace{b_1 - b_2}_{\in U}) \in U \implies a_1 + b_2 \equiv a_2 + b_2 (\mod u) \implies \overline{a_1 + b_1} = \overline{a_2 + b_2}$ \\
 	   "$\cdot$" wohldefiniert: Seien $\lambda \in K, a_1, a_2 \in V, \bar a_1 = \bar a_2 \implies a_1 - a_2 \in U \implies \lambda a_1 - \lambda a_2 = \lambda (\underbrace{a_1 - a_2}_{\in U}) \in U \implies \lambda a_1 \equiv \lambda a_2 (\mod U) \implies \overline{\lambda a_1} = \overline{\lambda a_2}$
 	 2. Vekorraumaxiome gelten: nachrechnen. \\
 		Nullvektor: $\Forall a\in V: \bar a + \bar 0 = \overline{a + 0} = \bar a = \bar 0 + \bar a, \bar 0 = 0 + U$
@@ -151,6 +151,10 @@
   3. $\bar f$ ist injektiv, das heißt $\ker \bar f = \{0\}$. Sei $\bar v \in \ker \bar f \implies \bar f(\bar v) = 0 \implies f(v) = 0 \implies v\in \ker f \implies \bar v = v + \ker f = \ker f = \bar 0$
   4. $\bar f$ ist surjektiv, dann $\im \bar f = \{\bar f(\bar v) \mid \bar v \in V/\ker f\} = \{f(v) \mid v\in V\} = \im f$
   #+end_proof
+  #+begin_latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_latex
   #+ATTR_LATEX: :options [13.12]
   #+begin_conc latex
   $f: V\to W$ lineare Abbildung. Dann lässt sich $f$ schreiben als
@@ -166,6 +170,10 @@
   \end{tikzpicture}
   kommutiert. Hierbei ist $\pi$ surjektiv, $\bar f$ ein Isomorphismus, $i$ ist surjektiv.
   #+end_conc
+  #+begin_latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_latex
   #+begin_proof latex
   Für $v\in V$ ist $(i \circ \bar f \circ \pi)(v) = (i\circ \bar f)(\bar v) = i(f(v)) = f(v)$
   #+end_proof

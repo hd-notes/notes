@@ -1,51 +1,10 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Einführung in die Anwendungsorientierte Informatik (Köthe)
-#+OPTIONS: H:6
-#+OPTIONS: ^:nil
-#+LATEX_CLASS: koma-article
-#+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx}%
-#+LATEX_HEADER: \usepackage{fontspec}%
-#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}%
-#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
-#+LATEX_HEADER: \usepackage{mathtools}%
-#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}%
-#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}%
-#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
-#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
-#+LATEX_HEADER: \usepackage{minted}
-#+LATEX_HEADER: \usepackage{makecell}
-# #+LATEX_HEADER: \usemintedstyle{tango}
-#+LATEX_HEADER: \usemintedstyle{perldoc}
-#+LATEX_HEADER: \usepackage{tikz}
-#+LATEX_HEADER: \usetikzlibrary{arrows,automata}
-#+LATEX_HEADER: \usepackage{tikz-qtree}
-#+LATEX_HEADER: \usepackage{enumitem}
+
+#+INCLUDE: "../header.org" :minlevel 1
 #+LATEX_HEADER: \setlistdepth{20}
 #+LATEX_HEADER: \renewlist{itemize}{itemize}{20}
 #+LATEX_HEADER: \setlist[itemize]{label=$\cdot$}
-#+LATEX_HEADER: \usepackage{amsthm}
-#+LATEX_HEADER: \theoremstyle{definition}
-#+LATEX_HEADER: \newtheorem{defn}{Definition}
-#+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{thm}{Satz}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
-#+LATEX_HEADER: \newcommand{\eps}{\varepsilon}
-#+LATEX_HEADER: \usepackage{etoolbox}
-#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
-#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
-#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
-#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
-#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 
 # #+BEGIN_SRC cpp
 # for(int i = 0; i < 5) {
@@ -309,7 +268,7 @@
 	1. $f(n) \in \Theta(f(n)) \implies f(n) \in O(f(n)), f(n) \in \Omega(f(n))$
 	2. $c' f(n) \in \Theta(f(n))$
 	3. $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Multiplikationsregel
-	4. $O(f(n)) + O(g(n)) \in O(\text{"max"}(f(n), g(n)))$ \hfill Additionsregel \\
+	4. $O(f(n)) + O(g(n)) \in O(\text{"`max"'}(f(n), g(n)))$ \hfill Additionsregel \\
 	   formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
 	   $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
 	5. $n^p \in O(n^q)$ wenn $p \leq q$
@@ -320,7 +279,7 @@
 	  zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
 	- $O(n)$ \hfill "lineare Komplexität" \\
 	  zum Beispiel std::transform() ($n$ = Anzahl der transformierten Elemente)
-	- $O(n \log(n))$ \hfill{"n log n", "log linear" "linearithmisch"} \\
+	- $O(n \log(n))$ \hfill{"`n log n"', "`log linear"' "`linearithmisch"'} \\
 	  Beispiel: std::sort
 	- $O(n^2)$ \hfill "quadratische Komplexität"
 	- $O(n^p)$ \hfill "polynomielle Komplexität"
@@ -449,9 +408,9 @@
 	 x >> k \equiv (\frac{x}{2^k}) \\
 	 \end{align*}
 	 #+end_thm
-	 Operation \& und |: bitw4eise und beziehungsweise oder-Verknüpfung (nicht verwechseln mit \&\& und || füür logische Operationen)
+	 Operation \amp und |: bitw4eise und beziehungsweise oder-Verknüpfung (nicht verwechseln mit \amp\amp und || füür logische Operationen)
 	 m = 8:
-	 $10110011 \& 1 = $
+	 $10110011 \amp 1 = $
 	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
@@ -460,7 +419,7 @@
 	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
-	 kombiniere \& mit $\ll$:
+	 kombiniere \amp mit $\ll$:
 	 \[x \& (1 \ll k)\]
 	 testet, ob in $x$ Bit $k$ gesetzt ist.
 	 #+begin_src cpp
@@ -528,10 +487,18 @@
    - $M$ (m-bit): Mantisse: Nachkommastellen
    - $E$: (e-bit, Bias b): Exponent: Größenordung
    die eigentliche Zahl wird durch
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+   #+end_export
    \[x = (-1)^s \cdot (1 + M\cdot 2^{-m}) \cdot 2^{E-b}\]
+   - $M\cdot 2^{-m} \in [0, \frac{2^m - 1}{2^m}[ \in [0,1[$
    - $M \in [0, 2^m - 1]$
-   - $M\cdot 2^{-m} \in [0, \frac{2^m - 1}{2^m}) \in [0,1)$
-   - $1 + M\cdot 2^{-m} \in [1,2)$
+   - $1 + M\cdot 2^{-m} \in [1,2\string[$
+   #+begin_export latex
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
    Beispiel: natürliche Zahlen
    | $x$ | $M\cdot 2^{-m}$ | $E - b$ | effektive Darstellung |
    |-----+-----------------+---------+-----------------------|
@@ -910,3 +877,224 @@
    1. Benutzung der Klasse ist viel einfacher, weil unwichtige Details verborgen sind
    2. interne Implementatoin kann geändert werden, ohne den Benutzer zu Folgeänderungen zu zweingen,
 	  weil externe Schnittstelle erhalten bleibt.
+** Arithmetische Infix-Operationen
+   Ziel der OO-Programmierung: Arbeiten mit Nutzer-definierten Datenstruktoren möglichst einfach, wie mit eingebauten. Zum Beispiel arithmetische Infix-Operationen
+   #+BEGIN_SRC cpp
+   Point p(2.0, 3.0), q(4.0, 5.0);
+   Point r = 2.5 * p + q;
+   assert(r == Point(9.0, 12.5));
+   #+END_SRC
+   dazu muss man die entsprechenden Prefix-Funktionen implementieren
+   - Addition:
+     #+BEGIN_SRC cpp
+     Point operator+(Point p1, Point p2) {
+         Point res(p1.x() + p2.x(), p1.y() + p2.y());
+         return res;
+     }
+
+     Point operator+(Point & p1, Point & p2) {
+         Point res(p1.x() + p2.x(), p1.y() + p2.y());
+         return res;
+     }
+     #+END_SRC
+   - subtraktion, elementweise Multiplikation und Division genauso ("+" überall durch "-", "*", "/" ersetzen)
+   - Skalierungsoperation: Multiplikation von Punkt mit Zahl, das heißt zwei verschiedene Argumenttypen
+	 $\implies$ zwei Versionen: 2.5*p und p*2.5
+     #+BEGIN_SRC cpp
+     Point operator*(double s, Point p) {
+         Point res(s * p.x(), s * p.y());
+         return res;
+     }
+
+     Point operator*(Point p, double s) {
+         Point res(p.x() * s, p.y() * s);
+         return res;
+     }
+     #+END_SRC
+     alle diese Versionen können dank "function overloading" gleichzeitig implementiert sein
+   Bisher: freie Funktionen. Falls das erste Argument vom Typ Point oder Point const & ist,
+   kann man die Funktionen alternativ als Member-Funktion implementieren:
+   #+BEGIN_SRC cpp
+   class Point {
+       // ... wie bisher
+       Point operator+(Point const & other) const {
+           Point res(x_ * other.x_, y_ * other.y_);
+           return res;
+       }
+   };
+   #+END_SRC
+   Vorteil von Member Funktionen: Zugriff auf private Member der Klasse (hier nicht notwendig). \\
+   Nachteil:
+   - nur möglich, wenn das linke Argument vom Klassentyp ist p*2.5 kann Member Funktion sein, 2.5*p nicht
+   - nur möglich,wenn man die Klassendefinition ändern darf
+** Objekte nachrträglich verändern
+   Bisher: Alle Objekte waren write-once, das heißt Speicher wurde im Konstruktor initialisiert und
+   war dann unveränderlich. $\implies$ Paradigma der funktionalen Programmierung - "referentielle Integrität"
+   Prozedurale Programmierung erfodert Möglichkeit, Objekte zu änder, zum Beispiel um entsprechende Änderungen in der realen
+   Welt wiederzuspiegeln (zum Beispiel Student besteht Prüfung). Möglichkeit 1: Setter-Funktionen
+   #+BEGIN_SRC cpp
+   class Point {
+       // ... wie bisher
+
+       void setX(double new_x) {
+           x_ = new_x;
+       }
+
+       void setY(double new_y) {
+           y_ = new_y;
+       }
+   };
+   #+END_SRC
+   Möglichkeit 2: Index-Zugriff, wie bei std::vector
+   #+BEGIN_SRC cpp
+   Point p(2, 3);
+   assert(p[0] == 2 && p[1] == 3);
+   p[0] = 4;
+   p[1] = 5;
+   assert(p[0] == 4 && p[1] == 5);
+
+   // dazu muss die Member-Funktion operator[] implementiert werden
+   class Point {
+       // ... wie bisher
+
+       double operator[](int index) const {
+           if(index == 0) { return x_; }
+           if(index == 1) { return y_; }
+           // andernfalls Fehlermeldung (Exception -> später)
+       }
+
+       double operator[](int index) {
+           // implementation identisch / gleicher Quellcode, aber
+           // unterschiedlicher Maschienencode
+       }
+   }
+
+   // Verwendung (Langform):
+   Point p(2.0, 3.0);
+   double & x = p[0]; // neue Namen x, y für Variablen p.x_ und p.y_
+   double & y = p[1];
+   x = 4.0; // ändert indirekt auch p.x_
+   y = 5.0; // ändert indirekt auch p.y_
+   #+END_SRC
+   Möglichkeit 3 : Zuweisungoperatoren
+   #+BEGIN_SRC cpp
+   Point p(2, 3), g(4, 5);
+   p = 1.0; // beide Koordinaten mit 1.0 überschreiben
+   assert(p == Point(1.0, 1.0)) p = q; // Speicherzelle p werden die gleichen
+                                       // Werte zugewiesen wie Speicherzelle q
+   assert(p == Point(4.0, 5.0)) Point & r =
+       q; // Gegesatz r und q sind Namen für gleiche Speicherzelle
+
+   class Point {
+       // ... wie bisher
+
+       void operator=(double v) {
+           x_ = v;
+           y_ = v;
+       }
+
+       // copy assignment operator (analog zu copy constructor)
+       operator=(Point const & other) {
+           x_ = other.x_;
+           y_ = other.y_;
+       }
+   }
+   #+END_SRC
+   Bemerkung:
+   1. implementiert der Programmierer keinen copy assignment Operator, implementiert
+	  Compiler ihn automatisch (wieKopierkonstruktor): ruft copy assignment für alle Member-Variablen auf
+   2. man implementiert meist
+   #+BEGIN_SRC cpp
+   Point & operator=(...) {
+       // ... wie bisher
+       return *this;
+   }
+   #+END_SRC
+   Vorteil: man kann Zuweisung verketten:
+   #+BEGIN_SRC cpp
+   r = p = q; // -> r = (p = q)
+   #+END_SRC
+   arithmetische Zuweisung:
+   #+BEGIN_SRC cpp
+   Point p(2, 3),
+   q(4, 5);
+   p += q; // add -asign: Abbkürzung für p = p + q
+   assert(p == Point(6, 8));
+
+   class Point {
+       // ... wie bisher
+       Point & operator+=(Point const & other) {
+           x_ += other.x_;
+           y_ += other.y_;
+           return *this;
+       }
+   };
+   #+END_SRC
+** Klasse Image
+   Speichert 2D Bild (analog: Matrix) zunächst nur Graubilder, später: Farbbilder.
+   Beispiel für dynamische Datenstruktor, Größe erst zu Laufzeit bekannt und änderbar.
+   Besteht aus Pixeln ("picture elements"), die mit 2 Indizes x und y angesprochen werden
+   Problem: Speicher ist 1-dimensional, Lösung: Lege Zeieln hinterineanger ab.
+   $\implies$ Übergangsformeln:
+   \begin{align*}
+   i &= x + y \cdot width \\
+   x &= 1 %% width \\
+   y &= \frac{1}{width}
+   \end{align*}
+   #+BEGIN_SRC cpp
+   class Image {
+       int                   width_, height_;
+       std::vector<uint16_t> data_;
+
+   public:
+       Image() : width_(0), height_(0) {}
+       Image(unsigned int w, unsigned int h)
+           : width_(w), height_(h), data_(w * h, 0) {}
+       int  width() const { return width_; }
+       int  height() const { return height_; }
+       int  size() const { return width_ * height_; }
+       void resize(unsigned int w, unsigned int h) {
+           width_  = w;
+           height_ = h;
+           data.resize(w * h);
+       }
+       uint16_t get(int x, int y) const { return data_[x + y * width_]; }
+       void set(int x, int y, uint16_t v) { data_[x + y * width_] = v; }
+
+       // Zugriff bequemer: wünschenswert:
+       // uint16_t v = image[1, 2];
+       // image[1, 2] = 255;
+       // geht nicht, weil im Indexoperator nur 1 Argument sein darf
+       // -> verwende Stattdessen runde Klammern
+       uint16_t operator()(int x, int y) const {
+           return get(x, y); // return data_[x + y * width_];
+       }
+       uint16_t operator()(int x, int y) {
+           return return data_[x + y * width_];
+       }
+       // damit: uint16_t = image(1, 2); image(1, 2) = 255;
+   };
+
+
+   std::string to_string(Image const & im) {
+       std::string res;
+       for(int x = 0; x < im.width(); x++) {
+           for(int y = 0; y < im.height(); y++) {
+   			   res += std::to_string(im(x, y)) + " ";
+           }
+   		   res.pop_back();
+   		   res += "\n";
+       }
+
+   	   return res;
+   }
+   #+END_SRC
+   PGM-Format ("Portable GrayMap"): reines Textformat:
+   my_image.pgm:
+   #+begin_example
+   P2
+   # Kommentar
+   <width> <height>
+   255
+   Ausgabe von to_string
+   #+end_example

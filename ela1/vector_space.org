@@ -11,10 +11,10 @@
   2. (V2) Die skalare Multiplikation ist in folgender Weise mit der anderen Verknüpfung (auf $V$ und $K$) verträglich:
 	 \begin{align*}
 	 \intertext{$\Forall \lambda,\mu \in K, v,w\in V$}
-	 (\lambda + \mu) \cdot v  &= \lambda \cdot v + \mu \cdot v \\
-	 \lambda \cdot (v + w) = \lambda \cdot v + \lambda \cdot w \\
-	 \lambda \cdot (\mu \cdot w) = (\lambda \cdot \mu) \cdot v \\
-	 1\cdot v = v
+	 \string(\lambda + \mu\string) \cdot v  &= \lambda \cdot v + \mu \cdot v \\
+	 \lambda \cdot \string(v + w\string) &= \lambda \cdot v + \lambda \cdot w \\
+	 \lambda \cdot \string(\mu \cdot w\string) &= (\lambda \cdot \mu) \cdot v \\
+	 1\cdot v &= v
 	 \end{align*}
   #+end_defn
   #+begin_remark latex
@@ -219,8 +219,8 @@
 	 in $U$. $\implies \Lin((v_i)_{i\in I}) = W \subseteq U$.
   3. zu zeigen: \[\Lin((v_i)_{i \in I}) = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
 	 "$\subseteq$" Wegen 2. liegt $\Lin((v_i)_{i\in I})$ in jedem UVR $U$ von $V$, der alle $v_i, i\in I$ enthält
-	 \[\implies \Lin((v_i)_{i\in I} = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
-	 "$\supseteq$" Nach 1. ist $W = \Lin((v_i)_{i\in I}$ ist ein UVR von $V$ mit $v_i \in W \Forall i\in I$, das heißt $W$ ist einer der UVR, über die der obige Durchschnitt gebildet wird
+	 \[\implies \Lin((v_i)_{i\in I}) = \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U\]
+	 "$\supseteq$" Nach 1. ist $W = \Lin((v_i)_{i\in I})$ ist ein UVR von $V$ mit $v_i \in W \Forall i\in I$, das heißt $W$ ist einer der UVR, über die der obige Durchschnitt gebildet wird
 	 \[\implies \bigcap_{\text{$U$ UVR von $V$ mit $v_i \in U \Forall i\in I$}} U \subseteq W = \Lin((v_i)_{i\in I})\]
   #+end_proof
   *Notation*:
@@ -290,7 +290,7 @@
 	 Sei $J \subseteq I$ endlich, und sei $(\lambda_i)_{i\in J}$ eine Familie von Elemente aus $K$ mit
 	 \[\sum_{i\in J}\lambda_i v_i = 0\]
 	 Da auch
-	 \[\sum_{i\in J} 0 \cdot \v_i = 0\]
+	 \[\sum_{i\in J} 0 \cdot v_i = 0\]
 	 ist, folgt aus der vorausgesetzten Eindeutigkeit der Linearkombination, dass $\lambda_i = 0 \Forall i\in J \implies (v_i)_{i\in J}$ ist linear unabhängig
   #+end_proof
   #+ATTR_LATEX: :options [8.17]

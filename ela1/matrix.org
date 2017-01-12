@@ -68,56 +68,56 @@
   \begin{align*}
   &\sbox0{$\begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix}$}%
   \sbox1{$\begin{matrix} 0 & 1 \\ 0 & 0 \end{matrix}$}%
-  \left(
+  \left\string(
   \begin{array}{c|c}
   \usebox{0}&\makebox[\wd0]{$0$} \\
   \hline
   \vphantom{\usebox{0}}\makebox[\wd0]{$0$}&\makebox[\wd0]{$0$}
   \end{array}
-  \right)
+  \right\string)
   \cdot
-  \left(
+  \left\string(
   \begin{array}{c|c}
   \usebox{1}&\makebox[\wd1]{$0$} \\
   \hline
   \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
   \end{array}
-  \right)
+  \right\string)
   =
-  \left(
+  \left\string(
   \begin{array}{c|c}
   \usebox{1}&\makebox[\wd1]{$0$} \\
   \hline
   \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
   \end{array}
-  \right) \\
+  \right\string) \\
   \neq&
   \sbox0{$\begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix}$}%
   \sbox1{$\begin{matrix} 0 & 1 \\ 0 & 0 \end{matrix}$}%
   \sbox2{$\begin{matrix} 0 & 0 \\ 0 & 0 \end{matrix}$}%
-  \left(
+  \left\string(
   \begin{array}{c|c}
   \usebox{1}&\makebox[\wd1]{$0$} \\
   \hline
   \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
   \end{array}
-  \right)
+  \right\string)
   \cdot
-  \left(
+  \left\string(
   \begin{array}{c|c}
   \usebox{0}&\makebox[\wd0]{$0$} \\
   \hline
   \vphantom{\usebox{0}}\makebox[\wd0]{$0$}&\makebox[\wd0]{$0$}
   \end{array}
-  \right)
+  \right\string)
   =
-  \left(
+  \left\string(
   \begin{array}{c|c}
   \usebox{2}&\makebox[\wd1]{$0$} \\
   \hline
   \vphantom{\usebox{1}}\makebox[\wd1]{$0$}&\makebox[\wd1]{$0$}
   \end{array}
-  \right) \\
+  \right\string) \\
   \end{align*}
   #+end_proof
   #+ATTR_LATEX: :options [10.3]
@@ -135,11 +135,11 @@
   Wohldefiniertheit von "$\cdot$" auf $GL(n, K)$ \\
   zu zeigen ist: $A_1, A_2 \in GL(n, K) \implies A_1 A_2 \in GL(n,K)$ \\
   Dies gilt, denn:
-  \begin{align*}
-  A_1, A_2 \in GL(n, K) \implies \Exists B_1, B_2 \in M(n\times n, K): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
-  \implies (A_1 A_2) \cdot (B_2 B_1) = A_1(A_2 B_2) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
-  (B_2 B_1) \cdot (A_1 A_2) = B_2 (B_1 A_1) A_2 = B_2 E_n A_2 = B_2 A_2 = E_n
-  \end{align*}
+  \begin{gather*}
+  A_1, A_2 \in GL\string(n, K\string) \implies \Exists B_1, B_2 \in M\string(n\times n, K\string): A_1 B_1 = B_1 A_1 = E_n, A_2 B_2 = B_2 A_2 = E_N \\
+  \implies \string(A_1 A_2\string) \cdot \string(B_2 B_1\string) = A_1\string(A_2 B_2\string) B_1 = A_1 E_n B_1 = A_1 B_1 = E_n \\
+  \string(B_2 B_1\string) \cdot \string(A_1 A_2\string) = B_2 \string(B_1 A_1\string) A_2 = B_2 E_n A_2 = B_2 A_2 = E_n
+  \end{gather*}
   das heißt $A_1 A_2 \in GL(n,K)$
   - Assoziativität: Vererbt sich von $M(n\times n, K)$
   - neutrales Element: $E_n$
@@ -351,7 +351,7 @@
   4. Nach 3. gezeigt: $AB = (B^t A^t)^t \implies (AB)^t = ((B^t A^t)^t)^t = B^t A^t$.
 	 Sei $A = (a_{ij})_{\substack{1 \leq 1 \leq m \\ 1 \leq j \leq n}}, B = (b_{ij})_{\substack{1 \leq 1 \leq n \\ 1 \leq j \leq r}}$ \\
 	 $\implies$ Eintrag an Position $(i,k)$ von $AB$ ist gegeben durch
-	 \[\sum_{1\leq j\leq n}^{a_{ij}b_{jk}}\]
+	 \[\sum_{1\leq j\leq n}{a_{ij}b_{jk}}\]
 	 Eintrag an Position $(i,k)$ in $(B^t A^t)^t =$ eintrag an Position $(r,i)$ von $B^t A^t$.
 	 Dieser ist gegeben durch:
      \[\sum_{i\leq j \leq n} b'_{kj} a'_{ji} = \sum_{1\leq j\leq n} b_{jk} a_{ij} = \sum_{1 \leq j \leq m} a_{ij} b_{jk} \]

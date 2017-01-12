@@ -1,67 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Lineare Algebra (Vogel)
-#+OPTIONS: H:6
-#+LATEX_CLASS: koma-article
-#+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx}
-#+LATEX_HEADER: \usepackage{fontspec}
-#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
-#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
-#+LATEX_HEADER: \usepackage{mathtools}
-#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
-#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
-#+LATEX_HEADER: \DeclareMathOperator{\cha}{char}
-#+LATEX_HEADER: \DeclareMathOperator{\Abb}{Abb}
-#+LATEX_HEADER: \DeclareMathOperator{\Lin}{Lin}
-#+LATEX_HEADER: \DeclareMathOperator{\Span}{span}
-#+LATEX_HEADER: \DeclareMathOperator{\ZR}{ZR}
-#+LATEX_HEADER: \DeclareMathOperator{\SR}{SR}
-#+LATEX_HEADER: \DeclareMathOperator{\Hom}{Hom}
-#+LATEX_HEADER: \DeclareMathOperator{\End}{End}
-#+LATEX_HEADER: \DeclareMathOperator{\Iso}{Iso}
-#+LATEX_HEADER: \DeclareMathOperator{\Aut}{Aut}
-#+LATEX_HEADER: \DeclareMathOperator{\im}{im}
-#+LATEX_HEADER: \DeclareMathOperator{\id}{id}
-#+LATEX_HEADER: \DeclareMathOperator{\Rang}{Rang}
-#+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
-#+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
-#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
-#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
-#+LATEX_HEADER: \usepackage{stmaryrd}
-#+LATEX_HEADER: \usepackage{amsthm}
-#+LATEX_HEADER: \theoremstyle{definition}
-#+LATEX_HEADER: \newtheorem{defn}{Definition}
-#+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{thm}{Satz}
-#+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{lemma}{Lemma}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{note}{Anmerkung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{conc}{Folgerung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{algorithm}{Algorithmus}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
-#+LATEX_HEADER: \usepackage{etoolbox}
-#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
-#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
-#+LATEX_HEADER: \usepackage{wasysym}
-#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
-#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
-#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
-#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
-#+LATEX_HEADER: \usepackage{stackengine}
-#+LATEX_HEADER: \usepackage{tikz}
-#+LATEX_HEADER: \usetikzlibrary{matrix}
+
+#+INCLUDE: "../header.org" :minlevel 1
 
 # Kapitel 1: Grundlagen
 #+INCLUDE: "introduction.org" :minlevel 1

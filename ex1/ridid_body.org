@@ -271,20 +271,20 @@
 
    #+begin_ex latex
    \begin{align*}
-   M = I \alpha \\
-   \v M = \v r \times \v F_G \\
-   I = 2m R^2 \\
-   \alpha = \frac{M}{I} = \dot{\omega} \\
-   \omega = \alpha t + \omega_0 = \alpha t \\
-   \phi = \frac{1}{2} \alpha t^2 + \omega_0 t + \phi 0 = \frac{1}{2} \alpha t^2 \\
-   2\pi = \frac{1}{2} \alpha T^2 \\
-   T^2 = \frac{4 \phi}{\alpha} = 4 \pi \frac{I}{M} \\
+   M &= I \alpha \\
+   \v M &= \v r \times \v F_G \\
+   I &= 2m R^2 \\
+   \alpha &= \frac{M}{I} = \dot{\omega} \\
+   \omega &= \alpha t + \omega_0 = \alpha t \\
+   \phi &= \frac{1}{2} \alpha t^2 + \omega_0 t + \phi 0 = \frac{1}{2} \alpha t^2 \\
+   2\pi &= \frac{1}{2} \alpha T^2 \\
+   T^2 &= \frac{4 \phi}{\alpha} = 4 \pi \frac{I}{M} \\
    \intertext{wir wollen berechnen}
-   T_0^2 = 4\pi \frac{I_0}{M} = (\SI{1.72})^2 \si{\second\squared} \\
-   T_1^2 = 4\pi \frac{I_0 + 2 m R^2}{M} = (\SI{5.9})^2 \si{\second\squared} \\
-   T_2^2 = 4\pi \frac{I_0 + 2 m \frac{R^2}{4}}{M} = (\SI{3.3})^2 \si{\second\squared} \\
-   T_1^2 - T_0^2 = \SI{32}{\second\squared} \\
-   T_2^2 - T_0^2 = \SI{8}{\second\squared} \\
+   T_0^2 &= 4\pi \frac{I_0}{M} = (\si{1.72})^2 \si{\second\squared} \\
+   T_1^2 &= 4\pi \frac{I_0 + 2 m R^2}{M} = (\si{5.9})^2 \si{\second\squared} \\
+   T_2^2 &= 4\pi \frac{I_0 + 2 m \frac{R^2}{4}}{M} = (\si{3.3})^2 \si{\second\squared} \\
+   T_1^2 - T_0^2 &= \SI{32}{\second\squared} \\
+   T_2^2 - T_0^2 &= \SI{8}{\second\squared} \\
    \end{align*}
    #+end_ex
 ** Drehimpuls

@@ -12,7 +12,7 @@
   1. Die Familie $(e_1, \ldots, e_n)$ ist eine Basis des K_VR $K^n$, da $\Lin((e_1, \ldots, e_n)) = K^n$ (vergleiche 8.10.2) und somit $(e_1,\ldots, e_n)$ Erzeugendensystem des $K^n$, und $(e_1, \ldots, e_n)$ linear unabhängig nach 8.15.1.
 	 Die Länge der Basis ist $(e_1, \ldots, e_n)$ ist $n$. $(e_1, \ldots, e_n)$ heißt die kanonische Basis oder Standardbasis der $K^n$.
   2. Die Familie $(t^n)_{n\in\mathbb{N}_0}$ ist eine Basis der K-VR $K[t]$, denn: $\Lin((t^n)_{n\in\mathbb{N}_0}) = K[t]$ nach 8.12, $(t^n)_{n\in\mathbb{N}_0}$ ist linear unabhängig nach 8.15.3
-  3. $((1, -1), (0,2), (1,2))$ ist ein Erzeugendensystem des $\mathbb{R}$-VR $\mathbb{R}^2$, denn für jedes $(x_1, x_2) \in \mathbb{R}^2$ ist $(x_1, x_2) = x_1(1, -1) + \frac{x_1 + x_2}{e}(0,2)\in \Lin((1,-1, (0,2), (1,2))$,
+  3. $((1, -1), (0,2), (1,2))$ ist ein Erzeugendensystem des $\mathbb{R}$-VR $\mathbb{R}^2$, denn für jedes $(x_1, x_2) \in \mathbb{R}^2$ ist $(x_1, x_2) = x_1(1, -1) + \frac{x_1 + x_2}{e}(0,2)\in \Lin((1,-1), (0,2), (1,2))$,
 	 $((1, -1), (0,2), (1,2))$ ist jedoch keine Basis des $\mathbb{R}$, da linear abhängig nach 8.15.2
   4. Die leere Familie $()$ ist eine Basis des Nullraums $\{0\}$: vergleiche 8.11 und Annahme nach 8.14
   #+end_ex
@@ -209,22 +209,22 @@
 		 Seien $s_1, \ldots, s_n \in S$ paarweise verschieden $\implies \Exists X_1, \ldots X_n \in T: s_i \in X_i, i = 1, \ldots, n$ \\
 		 Da $(T, \subseteq)$ totalgeordnet ist existiert ein $i\in \{1, \ldots, n\}$ mit $X_j \subseteq X_i$ für alle $j\in \{1,\ldots,n\} \implies s_1, \ldots, s_n \subseteq X_i \xRightarrow{X_i \in M} (x_1, \ldots, s_n)$ linear unabhängig.
   2. Nach 1. können wir das Zornsche Lemma auf $(M,\subseteq)$ anwenden $\implies \Exists \max B \in M$ \\
-	 Behauptung: $(b)_{b\in B}$ ist eine Basis von $V$ mit $A\subseteq B$, denn: Da $(b)_{b\in B}$ linear unabhängig wegen $V\in M$, gilt zu Zeigen, dass $\Lin(B) = V)$ \\
+	 Behauptung: $(b)_{b\in B}$ ist eine Basis von $V$ mit $A\subseteq B$, denn: Da $(b)_{b\in B}$ linear unabhängig wegen $V\in M$, gilt zu zeigen, dass $\Lin(B) = V$ \\
 	 "$\subseteq$" klar \\
 	 "$\supseteq$"
-	 \begin{align*}
+	 \begin{gather*}
 	 \intertext{Sei $v \in V$. Falls $v\in B$, dann $v\in\Lin(B)$, falls $v = 0$, dann $v\in \Lin(B)$, im Folgenden sei $v\not\in B, v\neq 0$}
 	 \implies A \subseteq B \subsetneq B\cup \{v\} \\
 	 \intertext{Da $B$ Maximum von $(M,\subseteq)$ ist, ist $B \cup \{v\} \not \in M$, das heißt $B\cup \{v\}$ ist linear abhängig}
-	 \implies \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, (\lambda, \lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0), b_1, \ldots, b_n \in B: \\
+	 \implies \Exists n\in\mathbb{N}_0, \lambda_1, \ldots, \lambda_n \in K, \lambda \in K, \string(\lambda, \lambda_1, \ldots, \lambda_n\string) \neq \string(0, \ldots, 0\string), b_1, \ldots, b_n \in B: \\
 	 \lambda v + \lambda_1 b_1 + \ldots + \lambda_n b_n = 0 \\
 	 \intertext{Falls $n = 0$}
 	 \lambda v = 0 \xRightarrow{v \neq 0} \lambda = 0 \lightning \\
 	 \intertext{Also $n \geq 1$, Falls $\lambda = 0$}
-	 (b_1, \ldots, b_n) ~\text{linear abhängig} \lightning \\
+	 \string(b_1, \ldots, b_n\string) ~\text{linear abhängig} \lightning \\
 	 \intertext{Also $\lambda \neq 0$, somit:}
-	 v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - \frac{\lambda_n}{\lambda} b_n \in\Lin((b_1, \ldots, b_n)) \subseteq \Lin(B)
-	 \end{align*}
+	 v = -\frac{\lambda_1}{\lambda} v_1 - \ldots - \frac{\lambda_n}{\lambda} b_n \in\Lin\string(\string(b_1, \ldots, b_n\string)\string) \subseteq \Lin\string(B\string)
+	 \end{gather*}
   #+end_proof
   #+begin_note latex
   Der Satz "Jeder VR hat eine Basis" ist äquivalent zum Auswahlaxiom.

@@ -73,8 +73,8 @@
 ** Kleine Drehungen
    #+ATTR_LATEX: :options [Spur]
    #+begin_defn latex
-   \[M_{ii} = \sp(M) = \sum_i a_i\]
-   $\sp(M)$ wird als Spur bezeichnet, und entspricht der Summe über die Diagnoalelemente
+   \[M_{ii} = \Sp(M) = \sum_i a_i\]
+   $\Sp(M)$ wird als Spur bezeichnet, und entspricht der Summe über die Diagnoalelemente
    #+end_defn
    rotierendes Bezugssystem (NIS) \\
    Drehungen: $R(t) \in SO(u), R^{T} R = \mathbb{1}$ für $t \sim \epsilon, R(0) = \mathbb{1}$
@@ -93,16 +93,16 @@
    t_2 &= \begin{pmatrix} 0 & 0 & -1 \\ 0 & 0 & 0 \\ 1 & 0 & 0\end{pmatrix}
    t_3 &= \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix}
    R(\v \epsilon) &=\mathbb{1} + \v \eps \v T, \eps = \abs{\v \eps} \\
-   (T_i)_{j,k} = \eps_{ijk} \\
-   \v \epsilon = \abs{\v \epsilon} \cvec{0; 0; 1} \\
-   R(\v \epsilon) = \mathbb{1} + \abs{\epsilon} \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix} + O(\abs{\v \epsilon}^2) = \begin{pmatrix} 1 & \abs{\v \epsilon} & 0 \\ -\abs{\v \epsilon} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} + O(\abs{\v\epsilon}^2) \\
+   (T_i)_{j,k} &= \eps_{ijk} \\
+   \v \epsilon &= \abs{\v \epsilon} \cvec{0; 0; 1} \\
+   R(\v \epsilon) &= \mathbb{1} + \abs{\epsilon} \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix} + O(\abs{\v \epsilon}^2) = \begin{pmatrix} 1 & \abs{\v \epsilon} & 0 \\ -\abs{\v \epsilon} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} + O(\abs{\v\epsilon}^2) \\
    &= \begin{pmatrix} \cos{\abs{\v \epsilon}} & \sin{\abs{\v \epsilon}} & 0 \\ -\sin{\abs{\v \epsilon}} & \cos{\abs{\v \epsilon}} & 0 \\ 0 & 0 & 1 \end{pmatrix} + O(\abs{\v \epsilon}^2) \\
    \end{align*}
    #+end_ex
    Anwendung:
    \begin{align*}
    \v{\Delta\phi} &= -\v \epsilon \\
-   R(\v{\Delta\phi} &= \mathbb{1} - \v{\Delta\phi} \v T) \\
+   R(\v{\Delta\phi}) &= \mathbb{1} - \v{\Delta\phi} \v T \\
    R(\v{\Delta\phi})_{ij} &= \delta_{ij} - \Delta\phi_k \eps_{ijk} \\
    R(\v{\Delta\phi})_{ij}v_j &= v_i + \Delta\phi_k \eps_{ikj} v_j \\
    R(\v{\Delta\phi})\v v &= \v v + \v{\Delta\phi} \times \v v \\

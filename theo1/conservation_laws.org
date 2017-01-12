@@ -68,13 +68,13 @@
 ** Konservative Kräfte und Energieerhaltung
    \begin{defn}[Gradient]
    Gradient von $V$:
-   \[\v\nabla \equiv \left(\frac{\partial V}{\partial x^1}, \frac{\partial V}{\partial x^2}, \frac{\partial V}{\partial x^3}\right)\]
+   \[\v\nabla \equiv (\frac{\partial V}{\partial x^1}, \frac{\partial V}{\partial x^2}, \frac{\partial V}{\partial x^3})\]
    $\frac{\partial}{\partial x}$ ist ein "Differentialoperator", also:
    \[\frac{\partial}{\partial x}:f(x,y)\mapsto \frac{\partial f(x,y)}{\partial x}\]
    Dementsprechend $\frac{\partial^2}{\partial x^2}$ ist ein "Differentialoperator" zweiter Ordnung, also:
    \[\frac{\partial^2}{\partial x^2}:f(x,y)\mapsto \frac{\partial^2 f(x,y)}{\partial x^2}\]
    $\v\nabla V$ ist gute Schreibweise, weil $\v\nabla$ ein vektorwertiger Differentialoperator ist:
-   \[\v\nabla = \left(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3}\right)\]
+   \[\v\nabla = (\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3})\]
    \end{defn}
    \begin{defn}[konservatives Kraftfeld]
    Ein zeitunabhängiges Kraftfeld $\v F(\v x)$ heißt \textbf{konservativ} falls es eine Funktion $V(\v x)$ ("Potential") gibt. sodass
@@ -147,7 +147,7 @@
 	 \[(\rot \v F)^i = (\v\nabla \times \v F)^i = \varepsilon^{ijk}\frac{\partial}{\partial x^j} F^k\]
 	 zum Beispiel:
 	 \[(\v\nabla\times\v F)^1 = \frac{\partial F^3}{\partial x^2} - \frac{\partial F^2}{\partial x^3}\]
-	 \[\int_{L_2}\d \v s \v F - \int_{L_1}\d \v s\v F = \oint_{\partial \Sigma} \d\v s \v F \underarrow[=]{\text{"Stokes"}} \int_{\Sigma}\d\v f*(\v\nabla\times\v F) \overset{!}{=} 0\]
+	 \[\int_{L_2}\d \v s \v F - \int_{L_1}\d \v s\v F = \oint_{\partial \Sigma} \d\v s \v F \underarrow[=]{\text{"`Stokes"'}} \int_{\Sigma}\d\v f*(\v\nabla\times\v F) \overset{!}{=} 0\]
 ** Kurvenintegrale
    Jedes Kurvenintegral kann durch Parametrisierung der Kurve berechnet werden.
    Kurve $C \to \v x(t)$
@@ -223,7 +223,7 @@
    \begin{align*}
    \dot{E} &= \sum_a \dot{\v x}_a \v F_a + \frac{1}{2}\sum_{a\neq b}((\v \nabla_a V_{ab})\dot{\v x}_a + (\v\nabla_b V_{ab})\dot{\v x}_b) \\
    &= \sum_{a\neq b} \dot{\v x}_a \v F_{ab} + \frac{1}{2}\sum_{a\neq b} ( -\v F_{ab}\dot{\v x}_a - \underbrace{\v F_{ab} \dot{\v x}_b}_{\mathclap{\text{Umbenennung $a\leftrightarrow b$}}}) = 0 \\
-   (& = W - \frac{1}{2} W - \frac{1}{2} W)
+   & = W - \frac{1}{2} W - \frac{1}{2} W
    \end{align*}
 
    Bemerkung: Passend gewähltes $V_{ab}$ gibt das Modell der starren Stangen

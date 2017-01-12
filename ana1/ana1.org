@@ -1,73 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Analysis I (Marciniak-Czochra)
-#+OPTIONS: H:6
-#+LATEX_CLASS: koma-article
-#+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx}%
-#+LATEX_HEADER: \usepackage{fontspec}%
-#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}%
-#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
-#+LATEX_HEADER: \usepackage{mathtools}%
-#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}%
-#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}%
-#+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
-#+LATEX_HEADER: \def\colvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \colvecA#1;;}}\right)}
-#+LATEX_HEADER: \def\colvecA#1;{\if;#1;\else #1\cr \expandafter \colvecA \fi}
-#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
-#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
-#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
-#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
-#+LATEX_HEADER: \makeatletter
-#+LATEX_HEADER: \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
-#+LATEX_HEADER: \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
-#+LATEX_HEADER: \makeatother
-#+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
-#+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
-#+LATEX_HEADER: \usepackage{amsthm}
-#+LATEX_HEADER: \theoremstyle{definition}
-#+LATEX_HEADER: \newtheorem{defn}{Definition}
-#+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{thm}{Satz}
-#+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{lemma}{Lemma}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{conc}{Folgerung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{korollar}{Korollar}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{note}{Anmerkung}
-#+LATEX_HEADER: \usepackage{etoolbox}
-#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
-#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
-#+LATEX_HEADER: \usepackage{wasysym}
-#+LATEX_HEADER: \newcommand{\euler}{e}
-#+LATEX_HEADER: \makeatletter
-#+LATEX_HEADER: \def\resetMathstrut@{%
-#+LATEX_HEADER:   \setbox\z@\hbox{%
-#+LATEX_HEADER:     \mathchardef\@tempa\mathcode`\[\relax
-#+LATEX_HEADER:     \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
-#+LATEX_HEADER:     \expandafter\@tempb\meaning\@tempa \relax
-#+LATEX_HEADER:   }%
-#+LATEX_HEADER:   \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
-#+LATEX_HEADER: \makeatother
-#+LATEX_HEADER: \catcode`(=\active
-#+LATEX_HEADER: \catcode`)=\active
-#+LATEX_HEADER: \newcommand{(}{\ifmmode\left\string(\else\string(\fi}
-#+LATEX_HEADER: \newcommand{)}{\ifmmode\right\string)\else\string)\fi}
-#+LATEX_HEADER: \usepackage{xcolor}
-#+LATEX_HEADER: \newcommand\RED{\color{red}}
-#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
-#+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
+
+#+INCLUDE: "../header.org" :minlevel 1
 
 #+INCLUDE: "introduction.org" :minlevel 1
 #+INCLUDE: "sets.org" :minlevel 1

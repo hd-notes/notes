@@ -344,8 +344,8 @@
 	Sei $a,b\in\mathbb{R},a\leq b$
 	- $[a,b]:=\{x\in\mathbb{R}: a\leq x \leq b\}$ \hfill abgeschlossenes Intervall
 	- $(a,b):= \{x\in\mathbb{R}: a < x < b\} = ]a,b[$ \hfill offenes Intervall
-	- $\left[a,b) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
-	- $(a,b\right]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
+	- $[a,b\string) := \{x\in\mathbb{R}:a\leq x < b\}$ \hfill rechts-halboffenes Intervall
+	- $\string(a,b]:=\{x\in\mathbb{R}:a<x\leq b\}$ \hfill links-halboffenes Intervall
 	- $\eps > 0, I_\eps (x) := (x -\eps,x + \eps) = \{y\in\mathbb{R}:\abs{x - y} < \eps = B_\eps (x) (\text{Kugel})\}$
 *** Lemma 1.41
 	Es gilt $y\in I_\eps (x) \implies \exists \delta > 0: I_\delta (y) \subseteq I_\eps (x)$
@@ -426,7 +426,7 @@
 	 $\implies x$ ist nicht die obere Schranke von $\mathbb{N}\hfill\square$
 *** Lemma 1.53 (Bernoullische Ungleichung)
 	<<Lemma 1.53>>
-	\[\Forall x\in \left[-1,\infty),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
+	\[\Forall x\in [-1,\infty\string),n\in\mathbb{N}_0: (1 + x)^n \geq 1 + n x\]
 **** Beweis
 	 Beweis durch Induktion:
 	 - *IA*: $n = 0$ klar
@@ -447,12 +447,12 @@
 		\[\Forall \eps > 0\exists n_0\in\mathbb{N}\Forall n\geq n_0: x^n > \frac{1}{\eps}\]
 		\[\implies \frac{1}{\abs{y^n}} > \frac{1}{\eps} \implies \abs{y^n} < \eps \hfill \square\]
 *** Satz 1.55 (Existenz der m-ten Wurzel)
-	\[\Forall m\in\mathbb{N}, a\in\left[a,\infty)~\text{gilt}~\exists ! x\in\left[0,\infty): x^m = a\]
+	\[\Forall m\in\mathbb{N}, a\in[a,\infty\string)~\text{gilt}~\exists ! x\in[0,\infty\string): x^m = a\]
 **** Beweis (Skizze 1, 2)
 	 Wir geben ein Iterationsverfahren
 	 \[p_3 (x) = m\]
 	 \[a_3 x^3 + a_2 x^2 + a_1 x + a_0, a_3 > 0\]
-	 Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:\left[0,\infty) \to \mathbb{R},x\mapsto x^m - a$ suchen.
+	 Ohne Beschränkung der Allgemeinheit $a > 0,m\geq 2$, $x$ muss die Gleichung $x^m -a = 0$ lösen, das heißt Nullstelle der Funktion $f:[0,\infty\string) \to \mathbb{R},x\mapsto x^m - a$ suchen.
 	 Diese approximieren wir nach dem *Newton Verfahren* \\
 	 $x_0$ sodass $x_0^m - a \geq 0$
 	 \[x_n - x_{n + 1} = \frac{f(x_n)}{f'(x_n)} \impliedby \frac{f(x_n)}{x_n - x_{n + 1}} = f'(x_n)\]

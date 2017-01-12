@@ -216,8 +216,8 @@
 	2) $A\subseteq B$
 **** Beweis
 	 Wir zeigen 1) $\implies$ 2) und 2) $\implies$ 1.
-	 \[1) \implies 2):~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \implies x\in A \wedge x \in B \implies x\in A\cup B = B\]
-	 \[2) \implies 1):~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
+	 \[1 \implies 2:~\text{Es gelte}~A\cup B = B,~\text{zu zeigen ist}~A\subseteq B \\ \text{Sei}~x\in A \implies x\in A \wedge x \in B \implies x\in A\cup B = B\]
+	 \[2 \implies 1:~\text{Es gelte}~A\subseteq B\text{, zu zeigen ist}~A\cup B = B \]
 	 "$\subseteq$": Sei $x\in A\cup B \implies x\in A \vee x\in B \xRightarrow{A\subseteq B} x\in B$
 	 "$\supseteq$": $B\subseteq A\cup B$ klar
 *** Kartesisches Produkt

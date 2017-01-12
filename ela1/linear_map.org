@@ -11,10 +11,10 @@
   1. $A = (a_{i,j}) \in M(m\times n, K)$. Wir schreiben die Elemente von $K^n$ als Spaltenvektoren und betrachten die Abbildung:
 	 \[\tilde A : K^n \to K^m, x = \cvec{x_1; \vdots; x_n} \mapsto Ax\]
 	 Es gilt für $u,v \in K^n, \lambda \in K:$
-	 \begin{align*}
+	 \begin{gather*}
 	 \tilde A(u + v) = A(u + v) = Au + Av = \tilde A(u) + \tilde A(v) \\
-	 \tilde A(\lambda v) = A(\lambda v) = \lambda (A v) = \lambda \tilde(v)
-	 \end{align*}
+	 \tilde A(\lambda v) = A(\lambda v) = \lambda (A v) = \lambda \tilde A(v)
+	 \end{gather*}
 	 Wegen $\tilde A(e_i) = A e_i = \cvec{a_{i1} ; \vdots ; a_{in}}$ stehen in den Spalten von $A$ genau die Bilder der kanonischen Basisvektoren $e_1, \ldots e_n$ von $K^n$ unter $\tilde A$.
 	 Sind $A\in M(m\times n, K), B\in M(n\times r, K), x\in K^r$, dann ist
 	 \[\tilde{AB} (x) = (AB)(x) = A(B(x)) = A \tilde B(x) = \tilde A(\tilde B(x)) = (\tilde A \tilde B)(x)\]
@@ -25,8 +25,8 @@
 	 \[\prime: V\to \{g:(0,1) \to \mathbb{R} ~\text{Abb}\}, f\mapsto f'\]
 	 ist eine lineare Abbildung, denn es gilt für $f,g \in V, \lambda \in\mathbb{R}$:
 	 \begin{align*}
-	 (f + g)' = f' + g' \\
-	 (\lambda f)' = \lambda f'
+	 \string(f + g\string)' &= f' + g' \\
+	 \string(\lambda f\string)' &= \lambda f'
 	 \end{align*}
   #+end_ex
   #+ATTR_LATEX: :options [12.3]

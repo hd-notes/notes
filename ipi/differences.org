@@ -88,27 +88,35 @@
 	  Ein endlicher Automat hat nur ein Speicherelement, das den aktuellen Zustand angibt. Folge:
 	  - Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächtnis")
 	  - Automat kann nicht beliebig weit zählen, sondern nur bis zu einer vorgegebenen Grenze
+#+begin_export latex
+\catcode`(=12
+\catcode`)=12
+#+end_export
 \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
-\node[initial,state] (0) {"0"};
-\node[state] (1) [right of=0] {"1"};
-\node[state] (2) [right of=1]{"2"};
-\node[state] (3) [right of=2]{"3"};
-\node[accepting,state] [below of=1] (end) {"stop"};
-\path (0) edge [loop above] node {"0"} (0)
-(0) edge node {"x"} (1)
+\node[initial,state] (0) {"`0"'};
+\node[state] (1) [right of=0] {"`1"'};
+\node[state] (2) [right of=1]{"`2"'};
+\node[state] (3) [right of=2]{"`3"'};
+\node[accepting,state] [below of=1] (end) {"`stop"'};
+\path (0) edge [loop above] node {"`0"'} (0)
+(0) edge node {"`x"'} (1)
 (0) edge node {$\emptyset$} (end)
-(1) edge [loop above] node {"0"} (1)
-(1) edge node {"x"} (2)
+(1) edge [loop above] node {"`0"'} (1)
+(1) edge node {"`x"'} (2)
 (1) edge node {$\emptyset$} (end)
-(2) edge [loop above] node {"0"} (2)
-(2) edge node {"x"} (3)
+(2) edge [loop above] node {"`0"'} (2)
+(2) edge node {"`x"'} (3)
 (2) edge node {$\emptyset$} (end)
-(3) edge [loop above] node {"$0\vee x$"} (3)
-(3) edge node {"x"} (3)
+(3) edge [loop above] node {"`$0\vee x$"'} (3)
+(3) edge node {"`x"'} (3)
 (3) edge node {$\emptyset$} (end);
 \end{tikzpicture}
 \end{center}
+#+begin_export latex
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
 	  Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
 	  Spendiert man zusätzlichen Speicher, geht mehr:
 	  - Automat mit Stack-Speicher (Stapel oder Keller) $\implies$ Kellerautomat (Kontextfreie Sprachen)

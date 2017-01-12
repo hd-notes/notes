@@ -21,14 +21,14 @@
 *** Naive Definition
 	Definiere "Imaginäre Einheit" $x^2 = -1$ lösbar "$\I$", so dass $\I^2 = -1$
 	Wollen addieren und Multiplizieren, deshalb erkläre komplexe Zahl $\mathbb{C}$ als:
-	\[\mathbb{C} \ni z ) x + \I y, x,y\in\mathbb{R}\]
+	\[\mathbb{C} \ni z = x + \I y, x,y\in\mathbb{R}\]
 	Wir definieren außerdem:
    - $z_1 + z_2 = (x_1 + \I y_1) + (x_2 + \I y_2) \equiv (x_1 + x_2) + \I(y_1 + y_2)$
    - $z_1 \cdot z_2 = (x_1 + \I y_1) (x_2 + \I y_2) \equiv x_1 x_2 + x_1 \I y_2 + \I y_1 x_2 + \I y_1 \I y_2 \equiv (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)$
 *** präzisere Definition
 	#+ATTR_LATEX: :options [Körper]
 	#+begin_defn latex
-	Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen $("+","\cdot")$, so dass:
+	Körper ("Field") ist eine Menge $K$ mit zwei binären Operationen ("$+$","$\cdot$"), so dass:
 	- $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$ \hfill (Assoziativität)
 	- $\alpha + \beta = \beta + \alpha$ \hfill (Kommutativität)
 	- $\Exists 0 \in K: \alpha + 0 = \alpha \Forall \alpha$ \hfill (Null)

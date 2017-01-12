@@ -2,7 +2,7 @@
   \begin{defn}[7.1 Polynome]
   $K$ Körper, ein Polynom in der Variablen $t$ über $K$ ist ein Ausdruck der Form
   \[f = \sum_{k = 0}^n a_k t^k\]
-  mit $n\in\mathbb{N}_0$ (das heißt insbesondere nur endliche Summanden), $a_0,\ldots,a_n \in K$ (fehlende $a = 0$, ebenso setzen wir $a_{k > n} = 0)$. Die $a_k$ heißen die Koeffizienten von $f$
+  mit $n\in\mathbb{N}_0$ (das heißt insbesondere nur endliche Summanden), $a_0,\ldots,a_n \in K$ (fehlende $a = 0$, ebenso setzen wir $a_{k > n} = 0$). Die $a_k$ heißen die Koeffizienten von $f$
   \[\deg(f) := \begin{cases}-\infty & f = 0 \\  \max\{k\in\mathbb{N}_0 \mid a_k \neq 0\} & f\neq 0\end{cases}\]
   heißt Grad von $f$. für $f\neq 0$ heißt $l(f) := a_{\deg(f)}$ heißt der Leitkoeffizient von $f$, $l(0) := 0$. $f$ heißt normiert $\xLeftrightarrow{\text{Def}} l(f) = 1$
   Hierbei sind zwei Polynome $f = \sum_{k = 0}^n a_k t^k,g = \sum_{k =0}^m b_m t^k$ gleich ($f = g$) $\xLeftrightarrow{\text{Def}} \deg(f) = \deg(g) =: r$ und $a_r = b_r,\ldots,a_1 = b_1, a_0 = b_0$
@@ -33,7 +33,7 @@
   $K$ Körper, $f,g\in K[t]$, Dann gilt:
   1. $\deg(f + g) \leq \max\{\deg(f),\deg(g)\}$
   2. $\deg(f g) = \deg(f) + \deg(g)$
-  (Hierbei setzt man Formel für $n\in\mathbb{N}_0: -\infty < n, n + (-\infty) = -\infty = (-\infty) + n, (-\infty) + -(\infty) = -\infty)$
+  (Hierbei setzt man Formel für $n\in\mathbb{N}_0: -\infty < n, n + (-\infty) = -\infty = (-\infty) + n, (-\infty) + -(\infty) = -\infty$)
   #+END_REMARK
   #+BEGIN_PROOF latex
   Falls $f = 0$ oder $g = 0$, dann sind 1. und 2. klar. Im Folgenden seien $f,g\neq 0$, etwa $f = \sum_{k = 0}^n a_k t^k, g = \sum_{k =0}^m b_k t^k$ mit $a_n, b_m \neq 0$ (insbesondere $\deg(f) = n, \deg(g) = m$)
@@ -126,7 +126,7 @@
   *Induktionsanfang:* $n = 0$ Ein konstantes Polynom $\neq 0$ besitzt keine Nullstellen. \\
   *Induktionsschritt:* Es sein $n > 0$ und die Aussage sei für alle Polynome von Grad $< n$ schon gezeigt.
   Falls $f$ keine Nullstelle besitzt, dann fertig.
-  Im Folgenden besitze $f$ eine Nullstelle sei $\lambda \in K$ eine solche, daraus folgt mit \ref{label:79}
+  Im Folgenden besitze $f$ eine Nullstelle sei $\lambda \in K$ eine solche, daraus folgt mit \ref{remark:79}
   \[\exists q\in K[t]: f(t - \lambda)q, \deg{q} = n - 1\]
   Ist $\varepsilon \neq \lambda$ eine weitere Nullstelle von $f$ dann ist
   \[0 = f(\varepsilon) = \underbrace{\varepsilon - \lambda}_{\neq 0}q(\varepsilon)\]

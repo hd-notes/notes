@@ -1,60 +1,11 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Theoretische Physik (Hebecker)
-#+OPTIONS: H:6
-#+LATEX_CLASS: koma-article
-#+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx}
-#+LATEX_HEADER: \usepackage{fontspec}
-#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
-#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
-#+LATEX_HEADER: \usepackage{mathtools}
-#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-#+LATEX_HEADER: \makeatletter
-#+LATEX_HEADER: \let\oldabs\abs
-#+LATEX_HEADER: \def\abs{\@ifstar{\oldabs}{\oldabs*}}
-#+LATEX_HEADER: \let\oldnorm\norm
-#+LATEX_HEADER: \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
-#+LATEX_HEADER: \makeatother
-#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
-#+LATEX_HEADER: \DeclareMathOperator{\rot}{rot}
-#+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
-#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
-#+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
-#+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
-#+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
-#+LATEX_HEADER: \newcommand{\f}[2]{\frac{#1}{#2}}
-#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
-#+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
-#+LATEX_HEADER: \usepackage{pgfplots}
-#+LATEX_HEADER: \usepackage{amsthm}
-#+LATEX_HEADER: \theoremstyle{definition}
-#+LATEX_HEADER: \newtheorem{defn}{Definition}
-#+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{thm}{Satz}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
-#+LATEX_HEADER: \usepackage{etoolbox}
-#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
-#+LATEX_HEADER: \usepackage{xparse}% http://ctan.org/pkg/xparse
-#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
-#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
-#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
-#+LATEX_HEADER: \newcommand{\I}{\ensuremath{i}}%
-# #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
-# #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\mathrm{i}}}%
-#+LATEX_HEADER: \newcommand{\ubar}[1]{\underline{#1}}
-#+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 
-Einleitung: \\
-- Website: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
-- Bartelman Skripte
+# Einleitung: \\
+# - Website: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
+# - Bartelman Skripte
+
+#+INCLUDE: "../header.org" :minlevel 1
 
 #+INCLUDE: "overview.org" :minlevel 1
 #+INCLUDE: "mass_points.org" :minlevel 1

@@ -12,3 +12,8 @@
 (setq org-latex-minted-options
           '(("tabsize" "4")))
 
+(require 'package)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(package-initialize)
+(package-install 'org)
+

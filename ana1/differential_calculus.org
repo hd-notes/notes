@@ -97,15 +97,15 @@
   1. Aus den Eigenschaften von konvergenten Zahlenfolgen
   2. Aus Definition:
      \begin{align*}
-     \left\string(f\cdot g)'\left\string(x_0) &= \lim_{x\to x_0}  \frac{f(x)(g(x) - g(x_0)) + (g(x) - f(x_0))g(x)}{x - x_0} \\
+     \string(f\cdot g\string)'\string(x_0\string) &= \lim_{x\to x_0}  \frac{f(x)(g(x) - g(x_0)) + (g(x) - f(x_0))g(x)}{x - x_0} \\
      &= f(x_0)g'(x_0) + f'(x)g(x)
      \end{align*}
   3. Erst $f \equiv 1$
      \begin{align*}
-     \left\string(\frac{1}{g})'\left\string(x) &= \lim_{x\to x_0} (\frac{1}{g(x)} - \frac{1}{g(x_0)}) \frac{1}{x - x_0} \\
+     \string(\frac{1}{g}\string)'\string(x\string) &= \lim_{x\to x_0} (\frac{1}{g(x)} - \frac{1}{g(x_0)}) \frac{1}{x - x_0} \\
      &= \lim_{x\to x_0} \frac{g(x_0) - g(x)}{g(x)g(x_0)} \frac{1}{x - x_0} \\
      &= \lim - \frac{g'(x_0)}{g^2(x_0)} \\
-     \left\string(\frac{f}{g})'\left\string(x_0) = (f \frac{1}{g})'(x_0) = \frac{f' g - f g'}{g^2}(x)
+     \string(\frac{f}{g}\string)'\string(x_0\string) = (f \frac{1}{g})'(x_0) = \frac{f' g - f g'}{g^2}(x)
      \end{align*}
   #+end_proof
   #+ATTR_LATEX: :options [4.9]
@@ -324,7 +324,7 @@
    #+begin_remark latex
    Bei der Anwendung der Regeln von L'Hospital ist zunächst zu prüfen, ob die Limes von $\frac{f'(x)}{g'(x)}$ überhaupt existiert.
    zum Beispiel
-   \[\lim_{x\downarrow 0} \frac{x^2 \sim(\frac{1}{x})}{\sin{x}} = \lim_{x \downarrow} \frac{x}{\sin{x}} x \sin{\frac{1}{x}}  = 0\]
+   \[\lim_{x\downarrow 0} \frac{x^2 \sin(\frac{1}{x})}{\sin{x}} = \lim_{x \downarrow} \frac{x}{\sin{x}} x \sin{\frac{1}{x}}  = 0\]
    aber
    \[\lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} + x^2 \cos{\frac{1}{x}}(- \frac{1}{x^2})}{\cos{x}} = \lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} - \cos{\frac{1}{x}}}{\cos{x}} = -\lim_{x\downarrow 0} \cos{\frac{1}{x}}\]
    der existiert nicht

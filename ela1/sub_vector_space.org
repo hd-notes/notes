@@ -116,7 +116,7 @@
 	 \[\mathcal{B}:= (v_1^{(i)}, \ldots, v_{s_1}^{(1)}, \ldots, v_1^{(r)}, \ldots, v_{s_r}^{(r)})\]
 	 eine Basis von $V$
   3. Es gibt Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)})$ von $U_i, i = 1,\ldots, r$ sodass
-	 \[\mathcal{B}:= (v_1^{(1)}, \ldots, v_{s_1}^{(1)}, \ldots, v_1^{(r)}, \ldots, v_{s_r}^(r))\]
+	 \[\mathcal{B}:= (v_1^{(1)}, \ldots, v_{s_1}^{(1)}, \ldots, v_1^{(r)}, \ldots, v_{s_r}^{(r)})\]
 	 eine Basis von $V$ ist.
   4. $V = U_1 + \ldots + U_r$ und $\dim V = \dim U_1 + \ldots + \dim U_r$
   #+end_thm
@@ -144,7 +144,7 @@
   klar: $V = U_1 + \ldots U_r$ \\
   Sei $i \in \{1, \ldots, r\}, v \in U_1 \cap \sum_{\substack{j = 1 \\ j \neq i}}^{r} U_j$. $\implies \Exists \mu_1^{(k)} \in K, k = 1,\ldots, r, = 1, l = 1, \ldots, s_k:$
   \[v \underarrow[=]{$v\in U_i$} \mu_1^{(i)} v_1^{(i)} + \ldots + \mu_{s_i}^{(i)} v_{s_i}^{(i)} = \sum_{\substack{j = 1 \\ j \neq i}}^{r} (\mu_1^{(j)} v_1^{(j)} + \ldots + \mu_{s_i}^{(j)} v_{s_i}^{(j)})\]
-  Wegen $\mathcal{B}$ Basis folgt $\mu_{l}^(k) = 0 \Forall k = 1, \ldots, r, l = 1,\ldots,s_k$, also $v = 0$. Somit
+  Wegen $\mathcal{B}$ Basis folgt $\mu_{l}^{(k)} = 0 \Forall k = 1, \ldots, r, l = 1,\ldots,s_k$, also $v = 0$. Somit
   \[U_i \cap \sum_{\substack{j = 1 \\ j\neq i}}^{r} U_j = \{0\}\]
   also $V = U_1 \oplus \ldots \oplus U_r$
   #+end_proof

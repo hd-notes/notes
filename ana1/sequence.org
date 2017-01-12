@@ -58,7 +58,7 @@
    und ein $m_\eps$, sodass
    \[\abs{a_n - \tilde a < \frac{\eps}{2}} \Forall n\geq m_\eps\]
    Dann für $n \geq \max \{n_\eps, m_\eps\}$:
-   \[\abs{a - \tilde a} \leq \abs{a - a_n} + \abs{a_n - \tilde a} < \eps\text{\lightning}\]
+   \[\abs{a - \tilde a} \leq \abs{a - a_n} + \abs{a_n - \tilde a} < \eps\lightning\]
    \textbf{Widerspruch} $\implies a = \tilde a$
    \end{proof}
    \begin{remark}
@@ -163,7 +163,7 @@
    \[\abs{x - a} \geq \abs{a_n - a} - \abs{a_n - x} \geq n - \abs{x - a_n}\]
    Dabei gilt $\abs{x - a_n} < 1$ für unendlich viele $n\in\mathbb{N}$ (aus Häufungswert)
    \[\implies \abs{x - a} \geq n - 1\]
-   Für unendlich viele $n\in\mathbb{N}$ \lightning
+   Für unendlich viele $n\in\mathbb{N} \lightning$
    \item Abgeschlossenheit: Wir nutzen Satz \ref{thm:finite}
    Zu zeigen: wenn $a$ Häufungspunkt von $A \implies a\in A$
    Für
@@ -308,11 +308,11 @@
    #+ATTR_LATEX: :options [2.22]
    #+begin_ex latex
    \begin{align*}
-   A&= (a,b\right] \\
+   A&= \string(a,b] \\
    \bar A &= [a,b] \\
    \partial A &= \{ a,b \} \\
-   \Forall \eps > 0 I_\eps(a) \cap (a,b\right] \neq \emptyset \\
-   I_\eps (a) \cap \mathbb{R} \setminus (a,b\right] \neq \emptyset
+   \Forall \eps > 0 I_\eps(a) \cap \string(a,b] \neq \emptyset \\
+   I_\eps (a) \cap \mathbb{R} \setminus \string(a,b] \neq \emptyset
    \end{align*}
    Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\eps$-Intervall um eine rationale Zahl gibt es sowohl rationale als auch irrationale Zahlen
    #+end_ex

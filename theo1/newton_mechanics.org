@@ -18,7 +18,7 @@
 	Die allgemeine Form einer gewöhnlichen Dgl. 1. Ordnung ($\implies$ nur 1. Ableitung):
 	\[y'(x) = f(x,y)\]
 **** Lösung
-	 Funktion: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R})$
+	 Funktion: $y:x\mapsto y(x)$ mit $y'(x) = f(x,y(x))$ (im Allgemeinen wird $x$ aus einem gewissen Intervall kommen: $x\in I\equiv (a,b)\subseteq \mathbb{R}$)
 *** Anfangswertproblem
 	Gegeben durch:
 	1) Dgl.: $y' = f(x,y)$

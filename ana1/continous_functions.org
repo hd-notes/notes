@@ -256,7 +256,7 @@
    - $\ubar \phi_\eps \leq f(x) \leq \bar \phi_\eps(x)$
    - $\abs{\ubar\phi_\eps(x) - \bar\phi_\eps(x)} < \eps$
    Zerlegung: ist mit Teilpunkten $a\leq x_k \leq b, k = 0,\ldots, N < \infty$ (endliche Zerlegung) $(a = x_0 \leq x_1 \leq \ldots \leq x_N = b)$ \\
-   Treppenfunktion ist konstant auf Intervalle $\left[x_1, x_{i + 1}), 0 \leq 1 \leq N - 1$
+   Treppenfunktion ist konstant auf Intervalle $[x_1, x_{i + 1}\string), 0 \leq 1 \leq N - 1$
    #+end_lemma
    #+begin_proof latex
    Aus dem Satz von gleichmäßiger Stetigkeit ist $f$ auf $[a,b]$ gleichmäßig Stetig
@@ -352,7 +352,7 @@
    - (N2) $\Forall x\in V: \alpha\in\mathbb{K} \norm{\alpha x} = \abs{\alpha}\norm{x}$
    - (N3) $\Forall x,y\in V: \norm{x + y} \leq \norm{x} + \norm{y}$
    $(V,\norm{\,})$ heißt normierter Vektorraum. \\
-   $C([a,b])$ ist ein Vektorraum. Die Normeigenschaften von $\norm{\,}_\infty$ als Abbildung von $C([a,b])$ nach $\left[0,\infty)$
+   $C([a,b])$ ist ein Vektorraum. Die Normeigenschaften von $\norm{\,}_\infty$ als Abbildung von $C([a,b])$ nach $[0,\infty\string)$
    folgt direkt aus den Eigenschaften des Absolutbetrags
    \begin{align*}
    \norm{f}_\infty &\implies f(x) = 0 \Forall x\in [a,b] \tag{Definitheit} \\
@@ -422,13 +422,15 @@
    Sei $(r_k)_{k\in\mathbb{N}}$ eine Folge der rationalen Punkte in $[a,b]$. Für jedes $r_k$, nach Vorraussetzung $\sup_{n\in\mathbb{N}} \abs{f_n(r_k)} < \infty$
    \begin{equation*}
    \begin{matrix}
-   &\RED {f_{n_1^{(1)}}},& f_{n_2^{(1)}},& \ldots,& f_{n_k^{(1)}} & \text{konvergiert in $r_1$} \\
-   &f_{n_1^{(2)}},& \RED{f_{n_2^{(2)}}},& \ldots,& f_{n_k^{(2)}} & \text{konvergiert auch in $r_2$} \\
+   &\color{red} {f_{n_1^{(1)}}},& f_{n_2^{(1)}},& \ldots,& f_{n_k^{(1)}} & \text{konvergiert in $r_1$} \\
+   &f_{n_1^{(2)}},& color{red}{f_{n_2^{(2)}}},& \ldots,& f_{n_k^{(2)}} & \text{konvergiert auch in $r_2$} \\
    &f_{n_1^{(3)}},& f_{n_2^{(3)}},& \ldots,& f_{n_k^{(3)}} & \text{konvergiert auch in $r_2$} \\
-   &f_{n_1^{(k)}},& f_{n_2^{(k)}},& \ldots,& \RED{f_{n_k^{(k)}}} & \text{konvergiert auch in $r_k$} \\
+   &f_{n_1^{(k)}},& f_{n_2^{(k)}},& \ldots,& color{red}{f_{n_k^{(k)}}} & \text{konvergiert auch in $r_k$} \\
    \end{matrix}
    \end{equation*}
-   {\RED{Diagonalfolge}} \\
+   #+begin_export latex
+   {color{red}{Diagonalfolge}} \\
+   #+end_export
    Nach sukzessiver Anwendung des Bolzano-Weierstrass Satz bekommen wir eine Folge von Teilfolgen. Die Folgen $(f_{n_j^{(k)}}(r_k))_{j\in\mathbb{N}}$ sind konvergent,
    $(n_j^{(k + 1)})_{j\in\mathbb{N}}$ ist Teilfolge von $(n_j^{(k)})_{j\in\mathbb{N}}$. $(f_{n_j^{(k)}}(r_l))_{j\in\mathbb{N}}$ ist konvergent für $l = 1,\ldots, k$.
    Für die Diagnoalfolge $(f_{n_k^{(k)}})_{k\in\mathbb{N}}$ ist dann $(f_{n_k^{(k)}}(r_j))_{k\in\mathbb{N}}$ konvergent für alle $j\in\mathbb{N}$.

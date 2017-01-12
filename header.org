@@ -1,0 +1,123 @@
+#+OPTIONS: H:6
+#+OPTIONS: ^:nil
+#+OPTIONS: ':t
+#+LANGUAGE: de
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [a4paper]
+#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem}
+#+LATEX_HEADER: \usepackage[ngerman]{babel}
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
+#+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
+#+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
+#+LATEX_HEADER: \DeclareSIUnit{\calories}{cal}
+
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
+#+LATEX_HEADER: \DeclareMathOperator{\grad}{grad}
+#+LATEX_HEADER: \DeclareMathOperator{\rot}{rot}
+#+LATEX_HEADER: \DeclareMathOperator{\cha}{char}
+#+LATEX_HEADER: \DeclareMathOperator{\Abb}{Abb}
+#+LATEX_HEADER: \DeclareMathOperator{\Lin}{Lin}
+#+LATEX_HEADER: \DeclareMathOperator{\Span}{span}
+#+LATEX_HEADER: \DeclareMathOperator{\ZR}{ZR}
+#+LATEX_HEADER: \DeclareMathOperator{\SR}{SR}
+#+LATEX_HEADER: \DeclareMathOperator{\Hom}{Hom}
+#+LATEX_HEADER: \DeclareMathOperator{\End}{End}
+#+LATEX_HEADER: \DeclareMathOperator{\Iso}{Iso}
+#+LATEX_HEADER: \DeclareMathOperator{\Sp}{sp}
+#+LATEX_HEADER: \DeclareMathOperator{\Aut}{Aut}
+#+LATEX_HEADER: \DeclareMathOperator{\im}{im}
+#+LATEX_HEADER: \DeclareMathOperator{\id}{id}
+#+LATEX_HEADER: \DeclareMathOperator{\Rang}{Rang}
+#+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
+
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \let\oldabs\abs
+#+LATEX_HEADER: \def\abs{\@ifstar{\oldabs}{\oldabs*}}
+#+LATEX_HEADER: \let\oldnorm\norm
+#+LATEX_HEADER: \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+#+LATEX_HEADER: \makeatother
+
+#+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
+#+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
+#+LATEX_HEADER: \newcommand{\euler}{e}
+#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
+#+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+#+LATEX_HEADER: \newcommand{\f}[2]{{\frac{#1}{#2}}}
+#+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
+#+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
+
+#+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
+#+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
+#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
+#+LATEX_HEADER: \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
+#+LATEX_HEADER: \makeatother
+
+#+LATEX_HEADER: \theoremstyle{definition}
+#+LATEX_HEADER: \newtheorem{defn}{Definition}
+#+LATEX_HEADER: \theoremstyle{plain}
+#+LATEX_HEADER: \newtheorem{thm}{Satz}
+#+LATEX_HEADER: \theoremstyle{plain}
+#+LATEX_HEADER: \newtheorem{lemma}{Lemma}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{note}{Anmerkung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{conc}{Folgerung}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{algorithm}{Algorithmus}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
+#+LATEX_HEADER: \theoremstyle{remark}
+#+LATEX_HEADER: \newtheorem{korollar}{Korollar}
+#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
+#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
+
+#+LATEX_HEADER: \usetikzlibrary{arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
+
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \def\resetMathstrut@{%
+#+LATEX_HEADER:   \setbox\z@\hbox{%
+#+LATEX_HEADER:     \mathchardef\@tempa\mathcode`\[\relax
+#+LATEX_HEADER:     \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+#+LATEX_HEADER:     \expandafter\@tempb\meaning\@tempa \relax
+#+LATEX_HEADER:   }%
+#+LATEX_HEADER:   \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+#+LATEX_HEADER: \makeatother
+#+LATEX_HEADER: \catcode`(=\active
+#+LATEX_HEADER: \catcode`)=\active
+#+LATEX_HEADER: \newcommand{(}{\ifmmode\mathopen{}\mathclose\bgroup\left\string(\else\string(\fi}
+#+LATEX_HEADER: \newcommand{)}{\ifmmode\aftergroup\egroup\right\string)\else\string)\fi}
+#+LATEX_HEADER: \AtBeginDocument{\mathcode`(="8000 }
+#+LATEX_HEADER: \AtBeginDocument{\mathcode`)="8000 }
+#+LATEX_HEADER: \NewDocumentCommand{\INTERVALINNARDS}{ m m }{
+#+LATEX_HEADER:     #1 {,} #2
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \NewDocumentCommand{\interval}{ s m >{\SplitArgument{1}{,}}m m o }{
+#+LATEX_HEADER:     \IfBooleanTF{#1}{
+#+LATEX_HEADER:         \left#2 \INTERVALINNARDS #3 \right#4
+#+LATEX_HEADER:     }{
+#+LATEX_HEADER:         \IfValueTF{#5}{
+#+LATEX_HEADER:             #5{#2} \INTERVALINNARDS #3 #5{#4}
+#+LATEX_HEADER:         }{
+#+LATEX_HEADER:             #2 \INTERVALINNARDS #3 #4
+#+LATEX_HEADER:         }
+#+LATEX_HEADER:     }
+#+LATEX_HEADER: }
+
+
+# #+LATEX_HEADER: \usemintedstyle{tango}
+#+LATEX_HEADER: \usemintedstyle{perldoc}
+#+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines}
