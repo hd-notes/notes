@@ -459,9 +459,6 @@
 	 \[x_{n+1} := \underbrace{x_n - \frac{f(x_n)}{f'(x_n)}}_{F(x_n)} = x_n - \frac{x_n^m - a}{m x_n^{m - 1}}\]
 	 \[= x_n(1 - \frac{1}{m}(1 - \frac{a}{x_n^m}))\]
 	 Hoffnung: $x_n \to x^*$
-
-	 [[Skizze 3]]
-
 	 Sei $x_0^m > a$. Wir zeigen
 	 1. <<1.55.1>> $x_n > 0$
 	 2. <<1.55.2>> $x_n^m \geq a$

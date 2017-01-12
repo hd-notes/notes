@@ -30,7 +30,7 @@
    \begin{defn}[Drehimpuls]
    \begin{align*}
    \v L_a &\equiv \v x_a \times \v p_a \\
-   (\v L_a)^i &= \varepsilon^{ijk}x_a^j p_a^k
+   \hspace{0pt}(\v L_a)^i &= \varepsilon^{ijk}x_a^j p_a^k
    \end{align*}
    \end{defn}
    Falls $\v F_{a,ext} = 0$ und alle interne Kräfte wirken parallel zur Verbindungslinie der jeweiligen Punkte, dann gilt *Drehimpulserhaltung*
@@ -116,7 +116,7 @@
 **** Begründung
 	 $\implies$ \\ \[\v F = -\v\nabla V \implies \underbrace{\v\nabla\times\v F}_{\mathclap{\equiv~\text{Rotation von $F$ ($\rot{F}$)}}} = 0\]
 	 \begin{align*}
-	 (\v\nabla\times\v F)^i &= \varepsilon^{ijk} \frac{\partial}{\partial x^j} F^k = \varepsilon^{ijk}\partial^i F^k \\
+	 \hspace{0pt}(\v\nabla\times\v F)^i &= \varepsilon^{ijk} \frac{\partial}{\partial x^j} F^k = \varepsilon^{ijk}\partial^i F^k \\
 	 &= -\varepsilon^{ijk}\partial^j\partial^k V = -\frac{1}{2}(\varepsilon^{ijk} -\varepsilon^{ikj})\partial^j\partial^k V \\
 	 &= - \frac{1}{2}\varepsilon^{ijk}\partial^j \partial^k V + \frac{1}{2}\varepsilon^{ikj}\underbrace{\partial^k\partial^j}_{\mathclap{\text{habe benutzt}~\frac{\partial}{\partial x}\frac{\partial}{\partial y} = \frac{\partial}{\partial y}\frac{\partial}{\partial x}}} V \\
 	 &\underarrow[=]{$k \leftrightarrow j$} -\frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V + \frac{1}{2}\varepsilon^{ijk}\partial^j\partial^k V = 0

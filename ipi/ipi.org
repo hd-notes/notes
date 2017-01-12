@@ -379,17 +379,17 @@
 	 #+end_thm
 	 #+begin_proof latex
 	 \begin{align*}
-	 b + \sim b = 1111\ldots 1 = 2^m - 1 \\
-	 \sim b + 1 = 2^{m} - b \\
+	 b + \sim b &= 1111\ldots 1 = 2^m - 1 \\
+	 \sim b + 1 &= 2^{m} - b \\
 	 \intertext{Fall 1: $b > 0$}
-	 \implies \sim b < 2^m - 1 \implies \sim b + 1 < 2^m \implies (\sim b + 1) \mod 2^m = \sim b + 1 \\
-	 \implies (\sim b + 1) \mod 2^m = (2^m - b) \mod 2^m \\
+	 \implies \sim b &< 2^m - 1 \implies \sim b + 1 < 2^m \implies (\sim b + 1) \mod 2^m = \sim b + 1 \\
+	 \implies (\sim b + 1) \mod 2^m &= (2^m - b) \mod 2^m \\
 	 \intertext{Fall 2: $b = 0$}
-	 \implies \sim b = 2^m - 1 \\
-	 \sim b + 1 = 2^m \\
-	 (\sim b + 1) \mod 2^m = 0 \\
-	 2^m - b = 2^m
-	 z = (2^m - b) \mod 2^m = (\sim b + 1) \mod 2^m = 0
+	 \implies \sim b &= 2^m - 1 \\
+	 \sim b + 1 &= 2^m \\
+	 \ (\sim b + 1) \mod 2^m &= 0 \\
+	 2^m - b &= 2^m \\
+	 z &= (2^m - b) \mod 2^m = (\sim b + 1) \mod 2^m = 0
 	 \end{align*}
 	 #+end_proof
 **** Multiplikation
@@ -487,18 +487,10 @@
    - $M$ (m-bit): Mantisse: Nachkommastellen
    - $E$: (e-bit, Bias b): Exponent: Größenordung
    die eigentliche Zahl wird durch
-   #+begin_export latex
-   \catcode`(=12
-   \catcode`)=12
-   #+end_export
    \[x = (-1)^s \cdot (1 + M\cdot 2^{-m}) \cdot 2^{E-b}\]
-   - $M\cdot 2^{-m} \in [0, \frac{2^m - 1}{2^m}[ \in [0,1[$
+   - $M\cdot 2^{-m} \in [0, \frac{2^m - 1}{2^m}\string) \in [0,1\string)$
    - $M \in [0, 2^m - 1]$
-   - $1 + M\cdot 2^{-m} \in [1,2\string[$
-   #+begin_export latex
-   \catcode`(=\active
-   \catcode`)=\active
-   #+end_export
+   - $1 + M\cdot 2^{-m} \in [1,2\string)$
    Beispiel: natürliche Zahlen
    | $x$ | $M\cdot 2^{-m}$ | $E - b$ | effektive Darstellung |
    |-----+-----------------+---------+-----------------------|

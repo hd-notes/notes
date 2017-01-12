@@ -12,7 +12,7 @@
   1. Die Familie $(e_1, \ldots, e_n)$ ist eine Basis des K_VR $K^n$, da $\Lin((e_1, \ldots, e_n)) = K^n$ (vergleiche 8.10.2) und somit $(e_1,\ldots, e_n)$ Erzeugendensystem des $K^n$, und $(e_1, \ldots, e_n)$ linear unabhängig nach 8.15.1.
 	 Die Länge der Basis ist $(e_1, \ldots, e_n)$ ist $n$. $(e_1, \ldots, e_n)$ heißt die kanonische Basis oder Standardbasis der $K^n$.
   2. Die Familie $(t^n)_{n\in\mathbb{N}_0}$ ist eine Basis der K-VR $K[t]$, denn: $\Lin((t^n)_{n\in\mathbb{N}_0}) = K[t]$ nach 8.12, $(t^n)_{n\in\mathbb{N}_0}$ ist linear unabhängig nach 8.15.3
-  3. $((1, -1), (0,2), (1,2))$ ist ein Erzeugendensystem des $\mathbb{R}$-VR $\mathbb{R}^2$, denn für jedes $(x_1, x_2) \in \mathbb{R}^2$ ist $(x_1, x_2) = x_1(1, -1) + \frac{x_1 + x_2}{e}(0,2)\in \Lin((1,-1), (0,2), (1,2))$,
+  3. $((1, -1), (0,2), (1,2))$ ist ein Erzeugendensystem des $\mathbb{R}$ -VR $\mathbb{R}^2$, denn für jedes $(x_1, x_2) \in \mathbb{R}^2$ ist $(x_1, x_2) = x_1(1, -1) + \frac{x_1 + x_2}{e}(0,2)\in \Lin((1,-1), (0,2), (1,2))$,
 	 $((1, -1), (0,2), (1,2))$ ist jedoch keine Basis des $\mathbb{R}$, da linear abhängig nach 8.15.2
   4. Die leere Familie $()$ ist eine Basis des Nullraums $\{0\}$: vergleiche 8.11 und Annahme nach 8.14
   #+end_ex
@@ -144,7 +144,7 @@
   #+begin_ex latex
   1. $V = K^n$ Die Standardbasis $(e_1, \ldots, e_n)$ von $K^n$ hat Länge von $n$, das heißt $\dim_k K^n = n$. Insbesondere hat jede Basis von $K^n$ die Länge $n$
   2. In $K[t]$ ist die Familie $(t^n)_{n\in\mathbb{N}_0}$ eine Basis unendlicher Länge. Wäre $K[t]$ endlich dimensional über $K$, dann wäre jede Basis von $K[t]$ als K-VR von endlicher Länge. Also $\dim_k K[t] = \infty$
-  3. $\dim_\mathbb{C} \mathbb{C} = 1$, aber $\dim_\mathbb{R} \mathbb{C} = 2$, (denn: $(1,\I)$ ist eine Basis von $\mathbb{C}$ also $\mathbb{R}$-VR)
+  3. $\dim_\mathbb{C} \mathbb{C} = 1$, aber $\dim_\mathbb{R} \mathbb{C} = 2$, (denn: $(1,\I)$ ist eine Basis von $\mathbb{C}$ also $\mathbb{R}$ -VR)
   #+end_ex
   #+begin_note latex
   - Ist klar, welcher Körper gemeint ist schreibt man kurz $\dim V$ statt $\dim_K V$.

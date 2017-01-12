@@ -63,8 +63,9 @@
 	 $M$ Menge, Wir setzten $S(M):= \{f:M\to M | f~\text{bijektiv}\}$
 	 Dann ist $(S(M),\circ)$ eine Gruppen, die *symmetrische* Gruppe auf $M$
 ***** Beweis
-	  1. "$\circ$" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus [[Bemerkung 4.19]]
-	  2. "$\circ$" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach [[4.9]]
+	  1. "$\circ$" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus
+		 [[Bemerkung 4.19]]
+	  2. "$\circ$" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach 4.9
 	  3. $id_M$ ist neutral: $id_M \in S(M)$ und $id_M\circ f = f = f\circ id_M \Forall f\in S(M)$
 	  4. Existenz von Inversen: $f\in S(M) \implies f$ bijektiv $\implies$ Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
 		 für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "$\circ$"
@@ -256,7 +257,7 @@
 	2. $a\cdot (-a) = - a b = (-a) \cdot b \Forall a,b\in R$
 	3. Ist $R\neq 0$, dann ist $1_R\neq 0_R$
 **** Beweis
-	 1. $0_R + 0_R\cdot a = 0_R\cdot a = (0_R + 0_R)\cdot a = 0_R\cdot a + 0_R\cdot \xRightarrow{\text{"kürzen s. [[Bemerkung 5.11]]"}} 0_R = 0_R \cdot a$, $a\cdot 0_R = 0_R$ analog
+	 1. $0_R + 0_R\cdot a = 0_R\cdot a = (0_R + 0_R)\cdot a = 0_R\cdot a + 0_R\cdot \xRightarrow{\text{"`kürzen s. [[Bemerkung 5.11]]"'}} 0_R = 0_R \cdot a$, $a\cdot 0_R = 0_R$ analog
 	 2. $0_R = 0_R\cdot b = (a + (-a))\cdot b = a\cdot b + (-a) \cdot b \implies{\text{[[Bemerkung 5.11]]}} - a b = (-a)\cdot b$, $a\cdot(-b) 0 -a b$ analog
 	 3. Beweis durch Kontraposition: Sei $1_R = 0_R$
 		\[\implies \Forall a\in R: a = a\cdot 1_R = a\cdot 0_R = 0_R\]

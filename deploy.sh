@@ -30,6 +30,13 @@ else
 	export PATH="${HOME}/texlive/bin/x86_64-darwin:${PATH}"
 fi
 
+git clone git://orgmode.org/org-mode.git
+cd org-mode
+make autoloads
+make 
+sudo make install
+cd ..
+
 # Save some useful information
 SHA=`git rev-parse --verify HEAD`
 

@@ -1,5 +1,5 @@
 * Summen von Untervektorräumen
-  In diesem Abschnitt sei $V$ stets ein $K$-VR
+  In diesem Abschnitt sei $V$ stets ein $K$ -VR
   #+ATTR_LATEX: :options [11.1]
   #+begin_defn latex
   $U_1, \ldots, U_r \subseteq V$ UVR.
@@ -32,7 +32,7 @@
   #+begin_ex latex
   1. $K = \mathbb{R}, V = \mathbb{R}^2, U_1 = \Lin((1,-1)), U_2 = \Lin((1, 1))$ \\
 	 \[\implies U_1 + U_2 = \Lin((1, -1), (1, 1)) = \mathbb{R}^2\]
-  2. $K = \mathbb{R}, V = \mathbb{R}^3, U_1 = \Lin((e_1, e_2)) =$ ("$x_1-x_2$-Ebene"), $U_2 = \Lin((e_2, e_3))$ ("$x_2 - x_3$-Ebene")
+  2. $K = \mathbb{R}, V = \mathbb{R}^3, U_1 = \Lin((e_1, e_2)) =$ ("$x_1-x_2$ -Ebene"), $U_2 = \Lin((e_2, e_3))$ ("$x_2 - x_3$ -Ebene")
 	 \[\implies U_1 + U_2 \ni e_1, e_2, e_3 \implies U_1 + U_2 = \mathbb{R}^3 \implies \dim(U_1 + U_2) = 3 < \dim(U_1) + \sim(U_2) = 4\]
   #+end_ex
   #+ATTR_LATEX: :options [11.4]
@@ -110,7 +110,7 @@
   #+end_proof
   #+ATTR_LATEX: :options [11.8]
   #+begin_thm latex
-  $V$ endlichdimensionaler $K$-VR, $U_1, \ldots, U_r \subseteq V$ UVR. Dann sind äquivalent
+  $V$ endlichdimensionaler $K$ -VR, $U_1, \ldots, U_r \subseteq V$ UVR. Dann sind äquivalent
   1. $V = U_1 \oplus \ldots \oplus U_r$
   2. Für alle Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)})$ von $U_i, i = 1,\ldots, r$ ist
 	 \[\mathcal{B}:= (v_1^{(i)}, \ldots, v_{s_1}^{(1)}, \ldots, v_1^{(r)}, \ldots, v_{s_r}^{(r)})\]

@@ -100,22 +100,8 @@
 #+LATEX_HEADER: \catcode`)=\active
 #+LATEX_HEADER: \newcommand{(}{\ifmmode\mathopen{}\mathclose\bgroup\left\string(\else\string(\fi}
 #+LATEX_HEADER: \newcommand{)}{\ifmmode\aftergroup\egroup\right\string)\else\string)\fi}
-#+LATEX_HEADER: \AtBeginDocument{\mathcode`(="8000 }
-#+LATEX_HEADER: \AtBeginDocument{\mathcode`)="8000 }
-#+LATEX_HEADER: \NewDocumentCommand{\INTERVALINNARDS}{ m m }{
-#+LATEX_HEADER:     #1 {,} #2
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \NewDocumentCommand{\interval}{ s m >{\SplitArgument{1}{,}}m m o }{
-#+LATEX_HEADER:     \IfBooleanTF{#1}{
-#+LATEX_HEADER:         \left#2 \INTERVALINNARDS #3 \right#4
-#+LATEX_HEADER:     }{
-#+LATEX_HEADER:         \IfValueTF{#5}{
-#+LATEX_HEADER:             #5{#2} \INTERVALINNARDS #3 #5{#4}
-#+LATEX_HEADER:         }{
-#+LATEX_HEADER:             #2 \INTERVALINNARDS #3 #4
-#+LATEX_HEADER:         }
-#+LATEX_HEADER:     }
-#+LATEX_HEADER: }
+# #+LATEX_HEADER: \AtBeginDocument{\mathcode`(="8000 }
+# #+LATEX_HEADER: \AtBeginDocument{\mathcode`)="8000 }
 
 
 # #+LATEX_HEADER: \usemintedstyle{tango}

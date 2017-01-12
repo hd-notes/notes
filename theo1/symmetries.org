@@ -66,9 +66,9 @@
 
    Inverse Matrix:
    \begin{align*}
-   (A^{-1})^{ij} &= \frac{1}{(n - 1)! \det A} \eps^{j i_2 \ldots i_n} \eps^{i j_2 \ldots j_n} A^{i_2 j_2} \ldots A^{i_n j_n} \\
+   \hspace{0pt}(A^{-1})^{ij} &= \frac{1}{(n - 1)! \det A} \eps^{j i_2 \ldots i_n} \eps^{i j_2 \ldots j_n} A^{i_2 j_2} \ldots A^{i_n j_n} \\
    \intertext{Prüfen:}
-   (A^{-1})^{ij} A^{jk} &= \frac{1}{(n - 1)! \det A} \eps^{j i_2 \ldots i_n} \eps^{i j_2 \ldots j_n} A^{j k} A^{i_2 j_2} \ldots A^{i_n j_n} \\
+   \hspace{0pt}(A^{-1})^{ij} A^{jk} &= \frac{1}{(n - 1)! \det A} \eps^{j i_2 \ldots i_n} \eps^{i j_2 \ldots j_n} A^{j k} A^{i_2 j_2} \ldots A^{i_n j_n} \\
    &= \frac{1}{(n - 1)! \det A} (\det A) \underbrace{\eps^{k j_2 \ldots j_n} \eps^{i j_2 \ldots j_n}}_{(n - 1)! \delta^{ik}} \\
    &= \delta^{ik} \checkmark
    \end{align*}
@@ -134,7 +134,7 @@
    Für den Begriff der Symmetrie brauchen wir Invertierbarkeit. Wir nennen eine Transformation beziehungsweise die entsprechende Matrix $R$ invertierbar, falls es eine zweite Matrix $R^{-1}$ gibt, so dass
    \begin{align*}
    R^{-1} \circ R &= id \tag{Identitätsabbildung} \\
-   (R^{-1})^{ij} R^{jk} &= \mathbb{1}^{ik} \equiv \delta^{ik}
+   \hspace{0pt}(R^{-1})^{ij} R^{jk} &= \mathbb{1}^{ik} \equiv \delta^{ik}
    \end{align*}
 
    Wäre Linearität die einzige wichtige Eigenschaft: dann wären die Symmetriefunktionen alle
@@ -150,7 +150,7 @@
 
    \begin{align*}
    \intertext{Nebenrechnung}
-   ((AB)^{T})^{ij} = (AB)^{ji} = A^{jk} B^{jk} = B^{ki} B^{j k} = (B^{T})^{ik} (A^{tilde})^{kj} \\
+   \hspace{0pt}((AB)^{T})^{ij} = (AB)^{ji} = A^{jk} B^{jk} = B^{ki} B^{j k} = (B^{T})^{ik} (A^{tilde})^{kj} \\
    = (B^{T} A^{T})^{ij} \\
    \implies (AB)^{T} = B^T A^T \\
    \end{align*}

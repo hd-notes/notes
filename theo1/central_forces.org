@@ -30,7 +30,7 @@
    \ddot{\v x}_1 - \ddot{\v x}_2 &= \frac{1}{m_1}(-\v\nabla V(\abs{\v x_1 - \v x_2})) - \frac{1}{m_2}(-\v\nabla_2(\abs{\v x_1 - \v x_2})) \\
    &= \underbrace{(\frac{1}{m_1} + \frac{1}{m_2})}_{\equiv \frac{1}{m}}(-\v\nabla_1(\abs{\v x_1 - \v x_2})) \\
    \intertext{Man erhält Gleichung für die "Relativkoordinate" $\v x_1 - \v x_2$}
-   (\v x_1 - \v x_2)^{..} &= \frac{1}{m}(-\v\nabla V(\abs{\v x_1 - \v x_2}))
+   \hspace{0pt}(\v x_1 - \v x_2)^{..} &= \frac{1}{m}(-\v\nabla V(\abs{\v x_1 - \v x_2}))
    \frac{1}{m} \equiv \frac{1}{m_1} + \frac{1}{m_2} = \frac{m_1 m_2}{m_1 + m_2}\tag{Reduzierte Masse}
    \intertext{Zusätzlich: Addition der beiden Gleichungen gibt:}
    m_1 \ddot{\v x}_1 + m_2 \ddot{\v x}_2 &= 0 \\

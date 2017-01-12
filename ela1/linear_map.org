@@ -1,8 +1,8 @@
 * Lineare Abbildungen
-  In diesem Kapitel sei $K$ stets ein Körper, $U, V, W$ stets ein $K$-VR.
+  In diesem Kapitel sei $K$ stets ein Körper, $U, V, W$ stets ein $K$ -VR.
   #+ATTR_LATEX: :options [12.1 Lineare Abbildung]
   #+begin_defn latex
-  $f: V\to W$ Abbildung. $f$ heißt $K$-lineare Abbildung (Homomorphismus von K-VR, kurz lineare Abbildung) $xLeftrightarrow{\text{Def.}}$ Die folgende Bedingungen sind erfüllt:
+  $f: V\to W$ Abbildung. $f$ heißt $K$ -lineare Abbildung (Homomorphismus von K-VR, kurz lineare Abbildung) $xLeftrightarrow{\text{Def.}}$ Die folgende Bedingungen sind erfüllt:
   - (L1) $f(u + v) = f(u) + f(v) \Forall u,v\in V$
   - (L1) $f(\lambda v) = \lambda f(v) \Forall u,v\in V \Forall w\in V, \lambda \in K$
   #+end_defn
@@ -20,8 +20,8 @@
 	 \[\tilde{AB} (x) = (AB)(x) = A(B(x)) = A \tilde B(x) = \tilde A(\tilde B(x)) = (\tilde A \tilde B)(x)\]
 	 das heißt die Veknüpfung von $\tilde A, \tilde B$ entspricht der Multiplikation der Matrizen $A,B: \tilde A \cdot \tilde B = \tilde{AB}$
   2. Wir betrachten die Abbildung \[f: \mathbb{R}^2 \to \mathbb{R}^2, \cvec{x_1; x_2} \mapsto \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\cvec{x_1; x_2} = \cvec{x_1; -x_2}\]
-	 Diese ist linear nach 1., beschreibt Spiegelung an der $x_1$-Achse.
-  3. Sei $V = \{f: (0,1)\to \mathbb{R}\mid f~\text{ist differenzierbar}\}$ (ist ein $\mathbb{R}$-VR)
+	 Diese ist linear nach 1., beschreibt Spiegelung an der $x_1$ -Achse.
+  3. Sei $V = \{f: (0,1)\to \mathbb{R}\mid f~\text{ist differenzierbar}\}$ (ist ein $\mathbb{R}$ -VR)
 	 \[\prime: V\to \{g:(0,1) \to \mathbb{R} ~\text{Abb}\}, f\mapsto f'\]
 	 ist eine lineare Abbildung, denn es gilt für $f,g \in V, \lambda \in\mathbb{R}$:
 	 \begin{align*}
@@ -90,8 +90,8 @@
   #+end_proof
   #+ATTR_LATEX: :options [12.5]
   #+begin_defn latex
-  \[\Hom_K(V, W) := \{f: V\to W \mid f~\text{ist $K$-linear}\}\]
-  Eine $K$-lineare Abbildung $f:V \to V$ heißt ein *Endomorphismus* von $V$.
+  \[\Hom_K(V, W) := \{f: V\to W \mid f~\text{ist $K$ -linear}\}\]
+  Eine $K$ -lineare Abbildung $f:V \to V$ heißt ein *Endomorphismus* von $V$.
   \[\End_K(V):= \{f: V\to V\mid f~\text{ist Endomorphismus}\} = \Hom_K(V,V)\]
   #+end_defn
   #+ATTR_LATEX: :options [12.6]
@@ -113,8 +113,8 @@
   #+end_proof
   #+ATTR_LATEX: :options [12.7]
   #+begin_defn latex
-  Eine bijektive $K$-lineare Abbildung $f:V\to W$ heißt ein *Isomorphismus* von $V$ nach $W$.
-  Eine bijektive $K$-lineare Abbildung $f:V\to V$ heißt *Automorphismus* von $V$.
+  Eine bijektive $K$ -lineare Abbildung $f:V\to W$ heißt ein *Isomorphismus* von $V$ nach $W$.
+  Eine bijektive $K$ -lineare Abbildung $f:V\to V$ heißt *Automorphismus* von $V$.
   \begin{align*}
   \Iso_K(V,W) := \{f:V\to W\mid f~\text{ist ein Isomorphismus}\} \\
   \Aut_K(V):= \{f:V\to V\mid f~\text{ist ein Automorphismus}\} = \Iso_K(V,V)
@@ -175,7 +175,7 @@
   #+end_defn
   #+ATTR_LATEX: :options [Dimensionsformel für lineare Abbildungen]
   #+begin_thm latex
-  $V$ endlichdimensionaler $K$-Vektorraum, $f:V\to W$ linare Abbildung.
+  $V$ endlichdimensionaler $K$ -Vektorraum, $f:V\to W$ linare Abbildung.
   $(v_1, \ldots, v_k)$ Basis von $\ker f$, $(w_1, \ldots, w_r)$ Basis von $\im f$
   (beachte $\im f$ endlichdimensional wegen 12.3 5.). Für $i = 1, \ldots r$ sei $u_i \i V$ mit
   $f(u_i) = w_i$. Dann ist

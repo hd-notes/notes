@@ -36,7 +36,7 @@
   #+end_proof
   #+ATTR_LATEX: :options [13.3]
   #+begin_ex latex
-  - UVR $U$ im $\mathbb{R}$-Vektorraum $\mathbb{R}^2$:
+  - UVR $U$ im $\mathbb{R}$ -Vektorraum $\mathbb{R}^2$:
 	- $\dim U = 0: \{0\}$
 	- $\dim U = 1: \Lin((v)), v\neq 0$ \hfill (Ursprungsgeraden)
 	- $\dim U = 2: \mathbb{R}^2$
@@ -151,10 +151,10 @@
   3. $\bar f$ ist injektiv, das heißt $\ker \bar f = \{0\}$. Sei $\bar v \in \ker \bar f \implies \bar f(\bar v) = 0 \implies f(v) = 0 \implies v\in \ker f \implies \bar v = v + \ker f = \ker f = \bar 0$
   4. $\bar f$ ist surjektiv, dann $\im \bar f = \{\bar f(\bar v) \mid \bar v \in V/\ker f\} = \{f(v) \mid v\in V\} = \im f$
   #+end_proof
-  #+begin_latex
+  #+begin_export latex
   \catcode`(=12
   \catcode`)=12
-  #+end_latex
+  #+end_export
   #+ATTR_LATEX: :options [13.12]
   #+begin_conc latex
   $f: V\to W$ lineare Abbildung. Dann lässt sich $f$ schreiben als
@@ -170,10 +170,10 @@
   \end{tikzpicture}
   kommutiert. Hierbei ist $\pi$ surjektiv, $\bar f$ ein Isomorphismus, $i$ ist surjektiv.
   #+end_conc
-  #+begin_latex
+  #+begin_export latex
   \catcode`(=\active
   \catcode`)=\active
-  #+end_latex
+  #+end_export 
   #+begin_proof latex
   Für $v\in V$ ist $(i \circ \bar f \circ \pi)(v) = (i\circ \bar f)(\bar v) = i(f(v)) = f(v)$
   #+end_proof

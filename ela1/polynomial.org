@@ -28,14 +28,14 @@
   Man rechnet die Ringaxiome nach
   \end{proof}
   #+ATTR_LATEX: :options [7.4]
-  #+BEGIN_REMARK latex
+  #+begin_remark latex
   \label{remark:74}
   $K$ Körper, $f,g\in K[t]$, Dann gilt:
   1. $\deg(f + g) \leq \max\{\deg(f),\deg(g)\}$
   2. $\deg(f g) = \deg(f) + \deg(g)$
   (Hierbei setzt man Formel für $n\in\mathbb{N}_0: -\infty < n, n + (-\infty) = -\infty = (-\infty) + n, (-\infty) + -(\infty) = -\infty$)
-  #+END_REMARK
-  #+BEGIN_PROOF latex
+  #+end_remark
+  #+begin_proof latex
   Falls $f = 0$ oder $g = 0$, dann sind 1. und 2. klar. Im Folgenden seien $f,g\neq 0$, etwa $f = \sum_{k = 0}^n a_k t^k, g = \sum_{k =0}^m b_k t^k$ mit $a_n, b_m \neq 0$ (insbesondere $\deg(f) = n, \deg(g) = m$)
   1. Wir setzen $k:= \max\{m,n\}$
 	 \begin{align*}
@@ -43,15 +43,15 @@
 	 &\implies \deg(f + g) \leq k \tag{\text{beachte: Ex könnte $a_k + b_k = 0$ sein}}
 	 \end{align*}
   2. Es sei $f g = a_n b_m t^{n + m} + \ldots + a_0 b_0$ und es ist $a_n b_m \neq 0$ da $K$ als Körper ein Integritätsbereich ist $\implies \deg(f g) = n + m$
-  #+END_PROOF
+  #+end_proof
   #+ATTR_LATEX: :options [7.5]
-  #+BEGIN_CONC latex
+  #+begin_conc latex
   $K$ Körper, dann ist $K[t]$ ein Integritätsbereich
-  #+END_CONC
-  #+BEGIN_PROOF latex
+  #+end_conc
+  #+begin_proof latex
   $K[t] \neq 0$ klar (zum Beispiel $t\in\mathbb{t}$)
   Seien $f,g\in K[t], f,g\neq 0 \implies \deg(f),\deg(g) \geq 0 \implies \deg(f g) = \deg(f) + \deg(g) \geq 0 \implies f g \neq 0$
-  #+END_PROOF
+  #+end_proof
   #+begin_remark latex
   $K[t]$ ist kein Körper: Das Polynom $t\in K[t]$ besitzt kein Inverses bezüglich "$\cdot$", denn: \\
   Wäre $f\in K[t]$ invers zu $t$, dann wäre $f t = 0 \implies \deg(1) = 0 \deg(f t) = \deg(f) + \deg(t) = \deg (f) + 1 \implies \deg(f) = -1 \lightning$

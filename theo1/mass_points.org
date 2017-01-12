@@ -135,10 +135,10 @@
 	 Es folgt:
 	 \begin{align*}
 	 &\vec{v}(t) (0, R\omega, v_0) + \int_0^t \mathrm{d}t' ( -R\omega^2)(\cos{\omega t', \sin{\omega t'}, 0})\\
-	 =& (0, R\omega, v_0) + (-R\omega^2)(\frac{1}{\omega}\sin{\omega t'}, -\frac{1}{\omega}\cos{\omega t'}, 0)\mid_0^t\\
-	 =& (0, R\omega, v_0) - R\omega (\sin{\omega t}, -\cos{\omega t}, 0) - (0, -1, 0)\\
-	 =& (-R\omega\sin{\omega t}, R\omega + R\omega\cos{\omega t} - R\omega, v_0)\\
-	 =& (-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)
+	 =& \hspace{0pt}(0, R\omega, v_0) + (-R\omega^2)(\frac{1}{\omega}\sin{\omega t'}, -\frac{1}{\omega}\cos{\omega t'}, 0)\mid_0^t\\
+	 =& \hspace{0pt}(0, R\omega, v_0) - R\omega (\sin{\omega t}, -\cos{\omega t}, 0) - (0, -1, 0)\\
+	 =& \hspace{0pt}(-R\omega\sin{\omega t}, R\omega + R\omega\cos{\omega t} - R\omega, v_0)\\
+	 =& \hspace{0pt}(-R\omega\sin{\omega t}, R\omega\cos{\omega t}, v_0)
 	 \end{align*}
 **** Bemerkung
 	 Man kann Integrale über Vektoren auch durch Riemannsche Summen definieren:

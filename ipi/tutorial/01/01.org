@@ -94,13 +94,13 @@
 | zweite Mahnung     | %                                                               | Fehlermeldung "Buch ist verliehen" $\implies$ {verliehen}   | 20€ einfordern, $\implies$ {ausleihbar}             | Buch aus Katalog streichen, Rechtsanwalt einschalten, $\implies$ {Grundzustand} | %                                                                     | %                                               |
 \end{sidewaysfigure}
 
-#+BEGIN_LATEX
+#+BEGIN_EXPORT LATEX
 \begin{sidewaysfigure}
-#+END_LATEX
+#+END_EXPORT 
 * Aufgabe 2b
-#+BEGIN_LATEX
+#+BEGIN_EXPORT LATEX
 \begin{adjustbox}{width=\textwidth}
-#+END_LATEX
+#+END_EXPORT
 #+ATTR_LATEX: :align |p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}| :center nil
 | Zustand \ Ereignis           | Buch trifft ein                                                  | Buch wird ausgeliehen                                                         | Buch wird zurückgegeben                                                           | Timeout                                                                               | schlechter Zustand                                                     | guter Zustand                                    | Buch wird vorbestellt                                   |
 |------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+------------------------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------|
@@ -113,10 +113,10 @@
 | verliehen (vorbestellt)      | %                                                                | Fehlermeldung "Buch ist verliehen" $\implies$ {verliehen (vorbestellt)}      | Timer 4 Wochen, Vorbesteller informieren, $\implies$ {verliehen}                 | erste Mahnung versenden, Timer auf 2 Wochen, $\implies$ {erste Mahnung (verliehen)}  | %                                                                      | %                                                | %                                                       |
 | erste Mahnung (vorbestellt)  | %                                                                | Fehlermeldung "Buch ist verliehen" $\implies$ {erste Mahnung (vorbestellt)}  | Timer 4 Wochen, Vorbesteller informieren, 5€ einfordern, $\implies$ {verliehen}  | zweite Mahnung versenden, Timer auf 1 Woche, $\implies$ {zweite Mahnung (verliehen)} | %                                                                      | %                                                | %                                                       |
 | zweite Mahnung (vorbestellt) | %                                                                | Fehlermeldung "Buch ist verliehen" $\implies$ {zweite Mahnung (vorbestellt)} | Timer 4 Wochen, Vorbesteller informieren, 20€ einfordern, $\implies$ {verliehen} | Buch aus Katalog streichen, Rechtsanwalt einschalten, $\implies$ {Grundzustand}      | %                                                                      | %                                                | %                                                       |
-#+BEGIN_LATEX
+#+BEGIN_EXPORT LATEX
 \end{adjustbox}
 \end{sidewaysfigure}
-#+END_LATEX
+#+END_EXPORT
 \pagebreak
 ** Warteliste
 Ein endlicher Automat kann keine beliebig große Warteliste implementieren, denn für jeden Eintrag wäre (mindestens) ein weiterer Zustand nötig. Außerdem gäbe es Probleme einer Position in der Warteliste einen Namen zuzuordnen und somit den richtigen Vorbesteller zu informieren.

@@ -28,8 +28,8 @@
    \v e^i &= \delta^{ij} \v e^j, (\v e^i)^j = \delta^{ij} \\
    \v e^{\prime i} &= R^{ij} \v e^j, (\v e^{\prime i})^j = R^{ij} \\
    \intertext{also gilt:}
-   (\v e^{\prime i})^j &= R^{ij} = (R^{-1})^{ji} = (R^{-1})^{jk} \delta^{ki} = (R^{-1})^{jk} (\v e^i)^k \\
-   (\v e^{\prime i})^j &= (R^{-1})^{jk} (\v e^i)^k \\
+   \hspace{0pt}(\v e^{\prime i})^j &= R^{ij} = (R^{-1})^{ji} = (R^{-1})^{jk} \delta^{ki} = (R^{-1})^{jk} (\v e^i)^k \\
+   \hspace{0pt}(\v e^{\prime i})^j &= (R^{-1})^{jk} (\v e^i)^k \\
    \intertext{$\implies$ Behauptung ist gezeigt}
    \end{align*}
 ** Aktive und Passive Beschreibung von Symmetrien
@@ -92,10 +92,10 @@
    t_1 &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0\end{pmatrix}
    t_2 &= \begin{pmatrix} 0 & 0 & -1 \\ 0 & 0 & 0 \\ 1 & 0 & 0\end{pmatrix}
    t_3 &= \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix}
-   R(\v \epsilon) &=\mathbb{1} + \v \eps \v T, \eps = \abs{\v \eps} \\
-   (T_i)_{j,k} &= \eps_{ijk} \\
+   R(\v \epsilon)\hspace{0pt} &=\mathbb{1} + \v \eps \v T, \eps = \abs{\v \eps} \\
+   \hspace{0pt}(T_i)_{j,k} &= \eps_{ijk} \\
    \v \epsilon &= \abs{\v \epsilon} \cvec{0; 0; 1} \\
-   R(\v \epsilon) &= \mathbb{1} + \abs{\epsilon} \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix} + O(\abs{\v \epsilon}^2) = \begin{pmatrix} 1 & \abs{\v \epsilon} & 0 \\ -\abs{\v \epsilon} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} + O(\abs{\v\epsilon}^2) \\
+   R(\v \epsilon)\hspace{0pt} &= \mathbb{1} + \abs{\epsilon} \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix} + O(\abs{\v \epsilon}^2) = \begin{pmatrix} 1 & \abs{\v \epsilon} & 0 \\ -\abs{\v \epsilon} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} + O(\abs{\v\epsilon}^2) \\
    &= \begin{pmatrix} \cos{\abs{\v \epsilon}} & \sin{\abs{\v \epsilon}} & 0 \\ -\sin{\abs{\v \epsilon}} & \cos{\abs{\v \epsilon}} & 0 \\ 0 & 0 & 1 \end{pmatrix} + O(\abs{\v \epsilon}^2) \\
    \end{align*}
    #+end_ex
@@ -125,7 +125,7 @@
    \dot{R}(t)\cdot r &= \lim_{\Delta t \to 0} \frac{R(t + \Delta t) - R(t)}{\Delta t} r \\
    \intertext{wichtge Formel: $\dot{R}(t)\cdot r = R(\omega\times r)$, damit erhält man:}
    &= \frac{(R(\Delta t) - \mathbb{1})}{\Delta t} R(t) r = \underarrow[\omega_{IS}]{$R\omega$} \times R(t)\cdot r = (R\omega) \times (R r) = R(\omega\times r) \\
-   (R r)^{..} &= (\dot{R} r + R \dot{r})^{.} = (R(\omega \times r) + R\dot{r})^{.} = \dot{R}(\omega\times r) + R(\dot{\omega}\times r) + R(\omega\times\dot{r}) + \dot{R}\dot{r} + R \ddot{r} \\
+   \hspace{0pt}(R r)^{..} &= (\dot{R} r + R \dot{r})^{.} = (R(\omega \times r) + R\dot{r})^{.} = \dot{R}(\omega\times r) + R(\dot{\omega}\times r) + R(\omega\times\dot{r}) + \dot{R}\dot{r} + R \ddot{r} \\
    &= R(\omega\times(\omega \times r) + \dot{\omega} \times r + 2(\omega\times \dot{r}) + \ddot{r}) \\
    \implies m\ddot{r} &= F - m((R^{-1})\ddot{r}_0 + \underbrace{\omega\times(\omega\times r)}_{F_{Zentrifugal}} + \underbrace{2\omega\times\dot{r}}_{F_{Coriolis}} + \underbrace{\dot{\omega}\times r}_{E_{Tangential}})
    \end{align*}
@@ -133,7 +133,7 @@
    #+begin_remark latex
    \begin{align*}
    \intertext{$F_z$:}
-   (-\omega\times(\omega\times r))_k = -\eps_{ijk}\omega_i \eps_{lmj} \omega_l r_m \\
+   \hspace{0pt}(-\omega\times(\omega\times r))_k = -\eps_{ijk}\omega_i \eps_{lmj} \omega_l r_m \\
    &= -(\delta_{lk} \delta_{mi} - \delta_{mk} \delta_{li}) \omega_l r_m \omega_i \\
    &= -(\omega r) \omega_k + r_k(\omega^2) \\
    \intertext{für $\omega\perp r$:}
