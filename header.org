@@ -4,8 +4,10 @@
 #+LANGUAGE: de
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem}
+#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem, microtype}
 #+LATEX_HEADER: \usepackage[ngerman]{babel}
+#+LATEX_HEADER: \pagestyle{plain}
+#+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
 #+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
 #+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
