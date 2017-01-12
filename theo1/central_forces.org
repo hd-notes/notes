@@ -212,7 +212,7 @@
 	Dies ist die Parameterdarstellung.
 ** Umlaufzeit
    (Ellipsenbahn)
-   \[T = \int_{1~\text{Umlauf}} \d t \underarrow[=]{\dd{f}{t} = \frac{1}{2} r^2 \dot{\phi}}; L = mr^2\dot{\phi} \frac{2m}{L} \int_{1~\text{Umlauf}} \d f = \frac{2m}{L} F_{ell} = \frac{2m}{L} \pi ab\]
+   \[T = \int_{1~\text{Umlauf}} \d t \underarrow[=]{$\dd{f}{t} = \frac{1}{2} r^2 \dot{\phi}$}, L = mr^2\dot{\phi} \frac{2m}{L} \int_{1~\text{Umlauf}} \d f = \frac{2m}{L} F_{ell} = \frac{2m}{L} \pi ab\]
    Begründung von $F_{ell} = \pi ab$:
    Ellipse: \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \xrightarrow{\text{Koordinatenwechsel}} x^{\prime 2} + y^{\prime 2} = 1\]
    Also:
@@ -235,6 +235,6 @@
    Analoge Analyse für $V = \frac{+\alpha}{r} \implies$ stets Hyperbelbahnen:
    \[r = \frac{p}{-1 + e\cos{\phi}}\]
    Es existiert eine *dritte* Erhaltungsgröße. Lenzscher Vektor:
-   \[\bar v \times \var L - \frac{\alpha \bar r}{r} \implies ~\text{noch elegantere Analyse möglich}\]
+   \[\bar v \times \bar L - \frac{\alpha \bar r}{r} \implies ~\text{noch elegantere Analyse möglich}\]
    Die Annahme $m_2 \gg m_1$ stimmt für System Erde-Mond nicht sehr gut. $\implies$ Gezeitenberge, Zentrifugalkraft, örtlich variierende Gravitationskraft.
    #+end_remark

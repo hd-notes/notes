@@ -228,3 +228,118 @@
    #+begin_remark latex
    Es ist keine notwendige Bedingung zum Beispiel $f(x) = x^4$ hat lokales Minimum $x_0 = 0$, aber $f''(x_0) = 0$
    #+end_remark
+   #+ATTR_LATEX: :options [4.18]
+   #+begin_defn latex
+   Sei $I$ ein offenes Intervall $f:I \to \mathbb{R}$ heißt
+   - (streng) konvex $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \leq (\underarrow[<]{streng}) \lambda f(x) + (1 - \lambda) f(y)$
+   - (streng) konkab $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \geq (\underarrow[>]{streng}) \lambda f(x) + (1 - \lambda) f(y)$
+   #+end_defn
+   #+ATTR_LATEX: :options [4.19]
+   #+begin_ex latex
+   $\exp$ ist eine (streng) konvexe Funktion
+   Für $\lambda \in (0,1), x < y$ gilt:
+   \begin{align*}
+   \exp(\lambda x + (1 - \lambda)y) &= \exp(x + (1 - \lambda)(y - x)) = \exp(x)\exp((1 - \lambda)(y - x)) \\
+   &= \exp(x)(\underbrace{\lambda + 1 - \lambda}_{= 1} + \sum_{j = 1}^{\infty}(1 - \lambda)^j \frac{(y - x)^j}{j'}) \\
+   &= \lambda \exp(x) + (1 - \lambda)\exp(x)(1 + \sum_{j = 1}^{\infty}\underbrace{(1 - \lambda)^{j - 1}}_{< 1}) \frac{(y - x)^j}{j'} \\
+   &< \lambda\exp(x) + (1 -  \lambda)\exp(x)\exp(y - x) = \lambda\exp(x) + (1 - \lambda)\exp(y)
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [4.20]
+   #+begin_korollar latex
+   Sei $I$ offen, $f: I\to\mathbb{R}$ zweimal differenzierbar. Falls $f''(x) \geq 0 \Forall x\in I$, so ist $f$ konvex.
+   #+end_korollar
+   #+begin_proof latex
+   $f'' > 0 \implies f'$ monoton ist wachsend. Für $x = y$ ist $f(\lambda x + (1 - \lambda)y) = \lambda f(x) + (1 - \lambda)f(y)$
+   Ohne Beschränkung der Allgemeinheit nehmen wir $x < y, x,y\in I, \lambda \in (0,1)$. Wir setzen $x_\lambda := \lambda x + (1 - \lambda)y$
+   Nach dem Mittelwertsatz $\Exists \xi \in (x, x_\lambda)$ und $\eta \in (x_\lambda, y)$ mit
+   \[\frac{f(x_\lambda) - f(x)}{x_\lambda - x} \underarrow[=]{Mittelwertsatz} = f'(\xi) \overarrow[\leq]{aus Monotonität} f''(\eta) \underarrow[=]{Mittelwertsatz} \frac{f(y) - f(x_\lambda)}{y - x_\lambda}\]
+   \begin{align*}
+   \intertext{Es gilt:}
+   x_\lambda - x &= \lambda x + (1 -  \lambda)y - x = (1 - \lambda)(y - x) \\
+   y - x_\lambda &= y - \lambda x - (1 - \lambda) y = \lambda(y - x) \\
+   \intertext{Damit erhält man:}
+   \frac{f(x_\lambda) - f(x)}{1 - \lambda} &\leq \frac{(f(y) - f(x_\lambda))}{(y - x_\lambda)} \frac{(x_\lambda - x)}{1 - \lambda} = (f(y) - f(x_\lambda))\frac{(1 - \lambda)(y - x)}{\lambda(y - x)(1 - \lambda)} = \frac{f(y) - f(x_\lambda)}{\lambda} \\
+   &\implies f(x_\lambda) \leq \lambda f(x) + (1 - \lambda)f(y) \\
+   &\implies f(\lambda x + (1 -\lambda) y) \leq \lambda f(x) + (1 - \lambda)f(y)  \implies f ~\text{ist konvex} \tag*{\qedhere} \\
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [2. Mittelwertsatz (verallgemeinert)]
+   #+begin_thm latex
+   Sind die Funktion $f$ und $g$ in $[a, b]$ stetig und in $(a, b)$ differenzierbar und $g'(x) \neq 0$ für $x\in (a, b)$,
+   so gibt es ein $c\in (a, b)$ sodass
+   \[\frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}\]
+   #+end_thm
+   #+begin_proof latex
+   Wegen $g'(x) \neq 0$ bekommen wir $g(a) \neq g(b)$ (wegen Satz von Rolle). Weiter
+   \[\Exists c\in (a,b): \frac{g(b) - g(a)}{b - a} = g'(c) \neq 0\]
+   Wir definieren auf $[a, b]$ die Funktion
+   \[F(x) := f(x) - \frac{f(b) - f(a)}{g(b) - g(a)} g'(c)\]
+   Wir verifizieren $\underline{F(a)} = f(a) = \underline{F(b)}$.
+   Nach dem Setz von Rolle gibt es ein $c\in (a, b)$ mit $F'(c) = 0$, das heißt
+   \begin{align*}
+   0 &= F'(c) = f'(c) = \frac{f(b) - f(a)}{g(b) - g(a)} g'(c) \\
+   \intertext{wegen $g'(c) \neq 0$:}
+   \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)} \tag*{\qedhere}
+   \end{align*}
+   #+end_proof
+** Anwendung von MW Satz 2
+   #+ATTR_LATEX: :options [Regeln von L'Hospital]
+   #+begin_thm latex
+   Es seien $f,g: I \to \mathbb{R}, I = (a, b)$ sodass $g'(x) \neq 0 \Forall x\i I$ und \[\lim_{x \downarrow a} \frac{f'(x)}{g'(x)} =: c \in \mathbb{R}\]
+   Dann gelten die Folgenden Regeln:
+   1. Im Fall
+	  \[\lim_{x\downarrow a} f(x) = \lim_{x\downarrow a} g(x) = 0\]
+	  ist $g(x) \neq 0$ in $I$ und es gilt
+	  \[\lim_{x\downarrow a} \frac{f(x)}{g(x)} = c\]
+   2. Im Fall $f(x) \to \pm \infty, g(x) \to\pm \infty$ für $x\downarrow a$ ist $g(x) \neq 0$ für $a < x y x_\ast \leq b$ und
+	  \[\lim x\downarrow a \frac{f(x)}{g(x)} = c\]
+   #+end_thm
+   #+begin_proof latex
+   1. Wir fassen $f$ und $g$ als Funktion auf, die in $a$ stetigs sind $f(a) = g(a) = 0$. Wegen $g'(x) \neq 0$ kann $g$ keine weitere
+	  Nullstelle von $g$ in $I$ geben, das heißt $g(x) \neq 0$ in $I$. Satz 4.21 $\implies$
+	  \[\Forall x \in I \Exists \xi \in (a, x): \frac{f(x)}{g(x)} = \frac{f'(\xi)}{g'(\xi)}\]
+	  $\implies$ für $x \to a$ auch $\xi \to a$ und
+	  \[\lim_{x\downarrow a} \frac{f(x)}{g(x)} = \lim_{\xi \downarrow a} \frac{f'(\xi)}{g'(\xi)}\]
+   2. Sei $\eps > 0$ beliebig. Nach Vorraussetzung ist $g'(x) \neq 0$ in $(a, b)$.
+	  \begin{gather*}
+	  \intertext{Wir wählen ein $\delta > 0$ mit $a + \delta \leq x_\ast$, sodass}
+	  \Forall x \in (a, a + \delta): f(x) \neq 0 \wedge g(x) \neq 0 \wedge \abs{\frac{f'(x)}{g'(x)} - c} < \eps \\
+	  \intertext{Für beliebigs $x, y \in (a, a + \delta)$ mit $f(x) \neq f(y)$}
+	  \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{g(x) - g(y)}{f(x) - f(y)} \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{(1 - \frac{g(y)}{g(x)})g(x)}{\underbrace{(1 - \frac{f(y)}{f(y)})}_{x\downarrow a \to 1}f(x)}  \frac{f(x)}{g(x)} \\
+	  \implies \Exists \delta_\ast > 0: \Forall x \i n(a, a + \delta_\ast): \abs{\frac{f(x)}{g(x)} - \frac{f(x) - f(y)}{g(x) - g(y)}} < \eps
+	  \intertext{Für ein $x$ sodass $a < x < \underbrace{a + \min\{\delta, \delta_\ast\}}_{x_\ast}$ bekommen wir}
+	  \abs{\frac{f(x)}{g(x)} - c} < 2\eps \tag*{\qedhere}
+	  \end{gather*}
+   #+end_proof
+   #+ATTR_LATEX: :options [4.23]
+   #+begin_ex latex
+   $I = (0, 1), f(x) = \ln(x), g(x) = x - 1, f'(x) = \frac{1}{x}, g'(x) = 1$
+   \[\lim_{x\to 1} \frac{f'(x)}{g'(x)} = 1, \lim_{x\uparrow 1} \frac{\ln x}{x - 1} = \lim_{x\uparrow 1} \frac{\frac{1}{x}}{1} = 1\]
+   #+end_ex
+   #+begin_remark latex
+   Analoge Aussagen gelten auch für $x \to \pm \infty$. Wir nehmen $y := \frac{1}{x} \to 0$ und
+   \[\lim_{x\to\pm\infty} \frac{f(x)}{g(x)} = \lim_{y \to 0_{\pm}} \frac{f(\frac{1}{x})}{g(\frac{1}{x})} = \lim_{\lambda \to \pm \infty} \frac{f'(\lambda)}{g'(\lambda)}\]
+   #+end_remark
+   #+begin_remark latex
+   Bei der Anwendung der Regeln von L'Hospital ist zunächst zu prüfen, ob die Limes von $\frac{f'(x)}{g'(x)}$ überhaupt existiert.
+   zum Beispiel
+   \[\lim_{x\downarrow 0} \frac{x^2 \sim(\frac{1}{x})}{\sin{x}} = \lim_{x \downarrow} \frac{x}{\sin{x}} x \sin{\frac{1}{x}}  = 0\]
+   aber
+   \[\lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} + x^2 \cos{\frac{1}{x}}(- \frac{1}{x^2})}{\cos{x}} = \lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} - \cos{\frac{1}{x}}}{\cos{x}} = -\lim_{x\downarrow 0} \cos{\frac{1}{x}}\]
+   der existiert nicht
+   #+end_remark
+   #+begin_remark latex
+   Die L'Hospital Regeln kann man auch anwenden in dem Fall
+   \[f(x) \to 0, g(x) \to  \infty ~\text{für}~ \lim_{x\downarrow a} f(x) g(x) = \lim_{x\downarrow} \frac{f(x)}{\frac{1}{g(x)}}\]
+   Auch für $0^0, \infty^0, 0^\infty$
+   #+end_remark
+   #+ATTR_LATEX: :options [4.24]
+   #+begin_ex latex
+   1. $\lim_{x\downarrow 0} x^x$ Wir logarithmieren und erhalten
+	  \[\lim_{x\downarrow 0} x\ln x = \lim_{x\downarrow 0} \frac{\ln x}{\frac{1}{x}} = \lim_{x\downarrow 0} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = 0\]
+	  und
+	  \[\lim_{x\downarrow 0} x^x = \lim_{x\downarrow 0} e^{x\ln x} = e^0 = 1\]
+   2. $\lim_{x\to 1} x^{\frac{1}{x - 1}} = \lim_{e^{\frac{1}{x - 1} \ln x}}, \lim_{x \to 1} \frac{1}{x -1} \ln x = \lim_{x \to 1} \frac{\frac{1}{x}}{1} = 1 \implies \lim_{x \to 1} x^{\frac{1}{x - 1}} = e^1 = e$
+
+   #+end_ex

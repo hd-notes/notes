@@ -6,6 +6,7 @@
 #+LATEX_HEADER: \usepackage{siunitx}
 #+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
 #+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
+#+LATEX_HEADER: \DeclareSIUnit{\calories}{cal}
 #+LATEX_HEADER: \usepackage{fontspec}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
 #+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
@@ -131,7 +132,7 @@ mark=at position 0.5 with
   Also: Verdopplung von $\xi$!. Ansatz: $\xi \sim$ Gasmenge
   \begin{align*}
   \implies p V &= k_B N T \\
-  k_B &= \SI{1.381e-23}{\joule\per\kelvin} \tag{Boltzmankonstange}
+  k_B &= \SI{1.381e-23}{\joule\per\kelvin} \tag{Boltzmankonstante}
   \end{align*}
   #+ATTR_LATEX: :options [Zustandsgleichung idealer Gase]
   #+begin_thm latex
@@ -149,3 +150,94 @@ mark=at position 0.5 with
   V_0 = \SI{22.4e-3}{\meter\cubed} = \SI{22.4}{\liter}
   \end{align*}
   #+end_thm
+
+  \[U = n N_a \frac{1}{2} f k_B T = n \frac{1}{2}f R T, R = k_b N_a, Q = c_m \Delta T, Q = \lambda m\]
+** Arbeit und Wärme
+   Machanische Arbiet $\xrightarrow{\text{Reibung}}$ Wärme
+   \begin{align*}
+   W &= F s \\
+   &= m g(\pi d) n \\
+   Q &= c_m \Delta T \\
+   c_m &= \SI{65}{\calories\per\kelvin}
+   \end{align*}
+   \begin{align*}
+   \Delta T &\approx \SI{3}{\kelvin} \to Q \sim \SI{200}{\calories} \\
+   \SI{1}{\calories} &\approx \SI{4.3}{\joule} \to W \sim \SI{870}{\joule} \\
+   \intertext{Genau:}
+   \SI{1}{\calories} &\approx \SI{4.186}{\joule}
+   \end{align*}
+** erster Hauptsatz der Wärmelehre
+   \begin{align*}
+   \Delta U &= \Delta Q + \Delta W
+   U &= n N_a \overline{E_{kin}} \\
+   &= \frac{1}{2} n R T
+   \end{align*}
+   - $\Delta Q$: Wärmezufuhr
+   - $\Delta W$: aus System geleitete Arbeit
+   - $\Delta Q > 0$: Wärmezufuhr, $\Delta W > 0$, Arbeit wird *aus* System verrichtet
+   - $\Delta Q < 0$: Wärmezufuhr, $\Delta W < 0$, Arbeit wird *von* System verrichtet
+   Bei uns: Anders als in klassischer Mechanik
+** Volumenarbeit und PV-Diagramme idealer Gase
+   Thermodynamische Prozesse, Kreisprozesse: ideale Gase!
+   Zustandsgrößen: $n, p, V, T$ ($Q$ ist *keine* Zustandsgröße)
+   \[pV = n R T\]
+   Verscheiben des Kolbens:
+   - Gegen Gasdruck nach *unten*: $\Delta W > 0$
+   - Gegen Außendruck nach *oben*: $\Delta W y 0$
+   \begin{align*}
+   \d W &= F \d s = -p A\d l = -p \d V  \\
+   \d W &< 0 ~\text{für}~ \d V > 0
+   \d W &> 0 ~\text{für}~ \d V < 0
+   \implies W &= -\int_{v_1}^{v_2}p \d V
+   \end{align*}
+   $pV$-Diagramm: \\
+   $pV = n R T$
+   - Isotherme Zustandsänderung: $T = ~\text{const}$
+	 - $T = ~\text{const}$
+	 - $p V = n R T \to p \sim \frac{1}{V}$
+	 - $\Delta U_{12} = 0 = \Delta Q_{12} + \Delta W_{12}$
+	 - $\d U = \d Q -p \d V = 0$
+	 - $\int_{1}^{2} \d Q = \int_{1}^{2} p\d V \to \Delta Q_{12} = \int_{1}^{2} \frac{nRT}{V} \d V = nRT\ln(\frac{V_2}{V_1})$
+	 - $\Delta W_{12} = -\Delta Q_{12} = -n RT \ln(\frac{V_2}{V_1})$
+   - Isobare Zustandsänderung: $P = ~\text{const}$
+	 - $\Delta W_{12} = -p (V_2 - V_1) = - n R(T_2 - T_1)$
+	 - $\Delta Q_{12} = n c_p(T_2 - T_1)$
+	 - $\Delta U_{12} = \Delta W_{12} + \Delta_{12} = n \underbrace{(c_p - R)}_{\frac{f}{2}R}(T_2 - T_1)$
+   - Isochore Zustandsänderung $V = ~\text{const}$
+	 - $\Delta W_{12} = 0$
+	 - $\Delta Q_{12} = n c_v(T_2 t_1)$
+	 - $\Delta U_{12} = \Delta Q_{12} = n c_v(T_2 - T_1)$
+   - Adiabatische Zustandsänderung $Q = ~\text{const}, \Delta Q = 0$
+	 - $\Delta Q_{12} = 0, \Delta U_{12} = \Delta W_{12}$
+	   \begin{align*}
+	   \d U &= \d W \\
+	   \d U &= \frac{1}{2}f n R\d T = n c_v \d T
+	   \d W &= -p\d V \\
+	   \d U &= \d W \implies n c_v \d T = -p\d V = - \frac{n RT}{V} \d V \\
+	   c_v \frac{\d T}{T} &= -R \frac{\d V}{V} \\
+	   c_v \ln T &= - R \ln V + ~\text{const} \\
+	   c_v \ln T + R\ln V &= ~\text{const} \\
+	   \ln T^{c_v} + \ln V^R &= ~\text{const} \\
+	   e^{ln T^{c_v} V^R} &= e^{\text{const}} \\
+	   T^{c_v} V^R &= ~\text{const} \\
+	   T^{c_v} V^{c_p c_v} &= ~\text{const} \\
+	   TV^{\frac{c_p - c_v}{c_v}} &= ~\text{const} \\
+	   \gamma - 1 &:= \frac{c_p - c_v}{c_v} \\
+	   \gamma = \frac{f + 2}{f} \\
+	   \intertext{Isotropenindex:}
+	   TV^{\gamma -1} &= ~\text{const}
+	   (pv)V^{\gamma -1} &= pV^{\gamma} = ~\text{const} \\
+	   T^{\gamma} p^{1 -\gamma} &= ~\text{const} \\
+	   \end{align*}
+	   #+ATTR_LATEX: :options [Adiabatengleichungen:]
+	   #+begin_defn latex
+	   \begin{align*}
+	   pV^{\gamma} &= ~\text{const}, p\sim V^{-\gamma} \\
+	   TV^{\gamma - 1} &= ~\text{const}, T\sim V^{1 - \gamma} \\
+	   T^{\gamma} p^{1 - \gamma} &= ~\text{const}, T^{\gamma} \sim p^{\gamma -1}
+	   \end{align*}
+	   #+end_defn
+   Temperaturerhöhung ist bei konstantem Volumen effektiver als bei konstantem Druck
+   - Isobar: $\Delta Q = \Delta h - \Delta w$
+   - Isochor: $\Delta Q = \Delta u$
+   \[C_v = \frac{f}{2}R, c_p = \frac{f + 2}{2}R = \underbrace{\frac{f}{2}R}_{c-V} + R\]

@@ -905,7 +905,7 @@
    Compiler erzeugt Standard-Konstruktor automatisch, falls es *keinen* eenutzerdefinierten Konstruktor gibt.
 ** rule of three
    "rule of three": Faustregel: wenn es notwendig ist, eine der drei Funktionen Destruktor, Kopierkonstruktor,
-   Kopier-Zuweisung ("\implies" später) explizit zu implementieren, müssen alle drei explizit implementiert werden
+   Kopier-Zuweisung ($\implies$ später) explizit zu implementieren, müssen alle drei explizit implementiert werden
 ** Vorteile der Kapselung:
    1. Benutzung der Klasse ist viel einfacher, weil unwichtige Details verborgen sind
    2. interne Implementatoin kann geändert werden, ohne den Benutzer zu Folgeänderungen zu zweingen,
