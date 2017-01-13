@@ -36,6 +36,7 @@ make autoloads
 make 
 sudo make install
 cd ..
+rm -r org-mode
 
 # Save some useful information
 SHA=`git rev-parse --verify HEAD`
