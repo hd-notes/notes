@@ -513,7 +513,7 @@
 	 - $2^{E - b} \in [2^{-1022}, 2^{1023}] \approx [10^{-308}, 10^{308}]$
    Anzahl der Nachkommastellen: $\eps = 2^{-m}$ (machine epsilon, unit last place (ULP))
    - float $2^{-23} \approx \SI{1e-7}{}$
-   - float $2^{-52} \approx \SI{1e-16}{}$
+   - double $2^{-52} \approx \SI{1e-16}{}$
    $\eps$ ist die kleinste Zahl, sodass
    \[(1.0 + \eps) \neq 1.0\]
    weil Nachkommastellen außerhalb der Mantisse (rechts von $2^{-m}$) ignoriert werden. $\implies$ Problem der Auslöschung von signifikanten Stellen. Wenn man zwei
