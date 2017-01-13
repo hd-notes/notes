@@ -5,13 +5,6 @@ function doCompile {
   ./compile.sh
 }
 
-# Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    echo "Skipping deploy; just doing a build."
-    doCompile
-    exit 0
-fi
-
 # Enable case-insensitive pattern matching.
 shopt -s nocasematch
 
@@ -53,6 +46,12 @@ rm -rf pages/index.html || exit 0
 
 # Run our compile script
 doCompile
+
+# Pull requests and commits to other branches shouldn't try to deploy, just build to verify
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+    echo "Skipping deploy; just doing a build."
+    exit 0
+fi
 
 # copy the pdfs
 find . ! -path "./pdfs/*" ! -path "./pages/*" -name '*.pdf' -exec dirname {} \; | xargs -I {} mkdir -p pdfs/{} 2> /dev/null
