@@ -5,13 +5,35 @@
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem, microtype}
+#+LATEX_HEADER: \usepackage{crimson}
+#+LATEX_HEADER: \usepackage{textcase}
+#+LATEX_HEADER: \usepackage{scrpage2}
+#+LATEX_HEADER: \usepackage{soul}
 #+LATEX_HEADER: \usepackage[ngerman]{babel}
-#+LATEX_HEADER: \pagestyle{plain}
+#+LATEX_HEADER: \pagestyle{scrheadings}
 #+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
 #+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
 #+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
 #+LATEX_HEADER: \DeclareSIUnit{\calories}{cal}
+
+#+LATEX_HEADER: \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}
+#+LATEX_HEADER: \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
+#+LATEX_HEADER: \definecolor{halfgray}{gray}{0.55}
+#+LATEX_HEADER: \renewcommand{\sectionmark}[1]{\markright{\textsc%
+#+LATEX_HEADER: {\MakeTextLowercase{\thesection}} \spacedlowsmallcaps{#1}}}
+#+LATEX_HEADER: \lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray}%
+#+LATEX_HEADER: \vline}%
+#+LATEX_HEADER: \color{halfgray}\hspace{0.5em}\headmark\hfil}} 
+#+LATEX_HEADER: \rohead{\mbox{\hfil{\color{halfgray}%
+#+LATEX_HEADER: \headmark\hspace{0.5em}}%
+#+LATEX_HEADER: \rlap{\small{\color{halfgray}\vline}\kern1em\thepage}}}
+#+LATEX_HEADER: \cehead{}
+#+LATEX_HEADER: \cohead{}
+#+LATEX_HEADER: \cefoot{}
+#+LATEX_HEADER: \cofoot{}
+#+LATEX_HEADER: \renewcommand{\headfont}{\normalfont\sffamily}
+#+LATEX_HEADER: \renewcommand{\pnumfont}{\small\sffamily}
 
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 #+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
@@ -107,5 +129,5 @@
 
 
 # #+LATEX_HEADER: \usemintedstyle{tango}
-#+LATEX_HEADER: \usemintedstyle{perldoc}
+#+LATEX_HEADER: \usemintedstyle{friendly}
 #+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines}
