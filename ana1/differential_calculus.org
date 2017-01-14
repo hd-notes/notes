@@ -231,9 +231,9 @@
    #+ATTR_LATEX: :options [4.18]
    #+begin_defn latex
    Sei $I$ ein offenes Intervall $f:I \to \mathbb{R}$ heißt
-   - (streng) konvex $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \leq (\underarrow[<]{streng}) \lambda f(x) + (1 - \lambda) f(y)$
-   - (streng) konkab $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \geq (\underarrow[>]{streng}) \lambda f(x) + (1 - \lambda) f(y)$
-   #+end_defn
+   - (streng) konvex $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \leq \string(\underarrow[<]{streng}\string) \lambda f(x) + (1 - \lambda) f(y)$
+   - (streng) konkav $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \geq \string(\underarrow[>]{streng}\string) \lambda f(x) + (1 - \lambda) f(y)$
+   #+end_defv
    #+ATTR_LATEX: :options [4.19]
    #+begin_ex latex
    $\exp$ ist eine (streng) konvexe Funktion
@@ -264,7 +264,7 @@
    &\implies f(\lambda x + (1 -\lambda) y) \leq \lambda f(x) + (1 - \lambda)f(y)  \implies f ~\text{ist konvex} \tag*{\qedhere} \\
    \end{align*}
    #+end_proof
-   #+ATTR_LATEX: :options [2. Mittelwertsatz (verallgemeinert)]
+   #+ATTR_LATEX: :options [4.21 2. Mittelwertsatz (verallgemeinert)]
    #+begin_thm latex
    Sind die Funktion $f$ und $g$ in $[a, b]$ stetig und in $(a, b)$ differenzierbar und $g'(x) \neq 0$ für $x\in (a, b)$,
    so gibt es ein $c\in (a, b)$ sodass
@@ -283,63 +283,157 @@
    \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)} \tag*{\qedhere}
    \end{align*}
    #+end_proof
-** Anwendung von MW Satz 2
-   #+ATTR_LATEX: :options [Regeln von L'Hospital]
+*** Anwendung von MW Satz 2
+	#+ATTR_LATEX: :options [4.22 Regeln von L'Hospital]
+	#+begin_thm latex
+	Es seien $f,g: I \to \mathbb{R}, I = (a, b)$ sodass $g'(x) \neq 0 \Forall x\i I$ und \[\lim_{x \downarrow a} \frac{f'(x)}{g'(x)} =: c \in \mathbb{R}\]
+	Dann gelten die Folgenden Regeln:
+	1. Im Fall
+	   \[\lim_{x\downarrow a} f(x) = \lim_{x\downarrow a} g(x) = 0\]
+	   ist $g(x) \neq 0$ in $I$ und es gilt
+	   \[\lim_{x\downarrow a} \frac{f(x)}{g(x)} = c\]
+	2. Im Fall $f(x) \to \pm \infty, g(x) \to\pm \infty$ für $x\downarrow a$ ist $g(x) \neq 0$ für $a < x y x_\ast \leq b$ und
+	   \[\lim x\downarrow a \frac{f(x)}{g(x)} = c\]
+	#+end_thm
+	#+begin_proof latex
+	1. Wir fassen $f$ und $g$ als Funktion auf, die in $a$ stetigs sind $f(a) = g(a) = 0$. Wegen $g'(x) \neq 0$ kann $g$ keine weitere
+	   Nullstelle von $g$ in $I$ geben, das heißt $g(x) \neq 0$ in $I$. Satz 4.21 $\implies$
+	   \[\Forall x \in I \Exists \xi \in (a, x): \frac{f(x)}{g(x)} = \frac{f'(\xi)}{g'(\xi)}\]
+	   $\implies$ für $x \to a$ auch $\xi \to a$ und
+	   \[\lim_{x\downarrow a} \frac{f(x)}{g(x)} = \lim_{\xi \downarrow a} \frac{f'(\xi)}{g'(\xi)}\]
+	2. Sei $\eps > 0$ beliebig. Nach Vorraussetzung ist $g'(x) \neq 0$ in $(a, b)$.
+	   \begin{gather*}
+	   \intertext{Wir wählen ein $\delta > 0$ mit $a + \delta \leq x_\ast$, sodass}
+	   \Forall x \in (a, a + \delta): f(x) \neq 0 \wedge g(x) \neq 0 \wedge \abs{\frac{f'(x)}{g'(x)} - c} < \eps \\
+	   \intertext{Für beliebigs $x, y \in (a, a + \delta)$ mit $f(x) \neq f(y)$}
+	   \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{g(x) - g(y)}{f(x) - f(y)} \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{(1 - \frac{g(y)}{g(x)})g(x)}{\underbrace{(1 - \frac{f(y)}{f(y)})}_{x\downarrow a \to 1}f(x)}  \frac{f(x)}{g(x)} \\
+	   \implies \Exists \delta_\ast > 0: \Forall x \i n(a, a + \delta_\ast): \abs{\frac{f(x)}{g(x)} - \frac{f(x) - f(y)}{g(x) - g(y)}} < \eps
+	   \intertext{Für ein $x$ sodass $a < x < \underbrace{a + \min\{\delta, \delta_\ast\}}_{x_\ast}$ bekommen wir}
+	   \abs{\frac{f(x)}{g(x)} - c} < 2\eps \tag*{\qedhere}
+	   \end{gather*}
+	#+end_proof
+	#+ATTR_LATEX: :options [4.23]
+	#+begin_ex latex
+	$I = (0, 1), f(x) = \ln(x), g(x) = x - 1, f'(x) = \frac{1}{x}, g'(x) = 1$
+	\[\lim_{x\to 1} \frac{f'(x)}{g'(x)} = 1, \lim_{x\uparrow 1} \frac{\ln x}{x - 1} = \lim_{x\uparrow 1} \frac{\frac{1}{x}}{1} = 1\]
+	#+end_ex
+	#+begin_remark latex
+	Analoge Aussagen gelten auch für $x \to \pm \infty$. Wir nehmen $y := \frac{1}{x} \to 0$ und
+	\[\lim_{x\to\pm\infty} \frac{f(x)}{g(x)} = \lim_{y \to 0_{\pm}} \frac{f(\frac{1}{x})}{g(\frac{1}{x})} = \lim_{\lambda \to \pm \infty} \frac{f'(\lambda)}{g'(\lambda)}\]
+	#+end_remark
+	#+begin_remark latex
+	Bei der Anwendung der Regeln von L'Hospital ist zunächst zu prüfen, ob die Limes von $\frac{f'(x)}{g'(x)}$ überhaupt existiert.
+	zum Beispiel
+	\[\lim_{x\downarrow 0} \frac{x^2 \sin(\frac{1}{x})}{\sin{x}} = \lim_{x \downarrow} \frac{x}{\sin{x}} x \sin{\frac{1}{x}}  = 0\]
+	aber
+	\[\lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} + x^2 \cos{\frac{1}{x}}(- \frac{1}{x^2})}{\cos{x}} = \lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} - \cos{\frac{1}{x}}}{\cos{x}} = -\lim_{x\downarrow 0} \cos{\frac{1}{x}}\]
+	der existiert nicht
+	#+end_remark
+	#+begin_remark latex
+	Die L'Hospital Regeln kann man auch anwenden in dem Fall
+	\[f(x) \to 0, g(x) \to  \infty ~\text{für}~ \lim_{x\downarrow a} f(x) g(x) = \lim_{x\downarrow} \frac{f(x)}{\frac{1}{g(x)}}\]
+	Auch für $0^0, \infty^0, 0^\infty$
+	#+end_remark
+	#+ATTR_LATEX: :options [4.24]
+	#+begin_ex latex
+	1. $\lim_{x\downarrow 0} x^x$ Wir logarithmieren und erhalten
+	   \[\lim_{x\downarrow 0} x\ln x = \lim_{x\downarrow 0} \frac{\ln x}{\frac{1}{x}} = \lim_{x\downarrow 0} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = 0\]
+	   und
+	   \[\lim_{x\downarrow 0} x^x = \lim_{x\downarrow 0} e^{x\ln x} = e^0 = 1\]
+	2. $\lim_{x\to 1} x^{\frac{1}{x - 1}} = \lim_{e^{\frac{1}{x - 1} \ln x}}, \lim_{x \to 1} \frac{1}{x -1} \ln x = \lim_{x \to 1} \frac{\frac{1}{x}}{1} = 1 \implies \lim_{x \to 1} x^{\frac{1}{x - 1}} = e^1 = e$
+
+	#+end_ex
+** Taylor Entwicklung
+   Wir kennen
+   \[e^x = \sum_{k = 0}^{\infty} \frac{x^k}{k!} \quad e^{x - x_0} = \sum_{k = 0}^{\infty} \frac{1}{k!}(x - x_0)^k\]
+   Wir wollen untersuchen unter welchen Bedingugen solche Potenzreihe für eine Funktion möglich ist
+   und wie man diese aus der Funktion bestimmen kann. Wir haben schon in Übung für die Darstellung für Polynome gezeicht:
+   \[p(x) = \sum_{k = 0}^{n} \frac{p^{(k)}(x_0)}{k!}(x - x_0)^k\]
+   $p$ -Polynom. Wie ist das bei allgemeinen Funktionen
+   #+ATTR_LATEX: :options [4.25]
+   #+begin_defn latex
+   Für $f:(a, b) \to\mathbb{R}, f$ n-mal stetig differenzierbar definieren wir das n-te Tylor Polynom
+   für ein $x_0 \in (x,b)$
+   \[f_n(x_0, x):= \sum_{k = 0}^{\infty} \frac{f^{(n)}(x_0)}{k!}(x - x_0)^k\]
+   Wir studieren dann den Fehler der Approximation
+   #+end_defn
+   #+ATTR_LATEX: :options [4.26]
    #+begin_thm latex
-   Es seien $f,g: I \to \mathbb{R}, I = (a, b)$ sodass $g'(x) \neq 0 \Forall x\i I$ und \[\lim_{x \downarrow a} \frac{f'(x)}{g'(x)} =: c \in \mathbb{R}\]
-   Dann gelten die Folgenden Regeln:
-   1. Im Fall
-	  \[\lim_{x\downarrow a} f(x) = \lim_{x\downarrow a} g(x) = 0\]
-	  ist $g(x) \neq 0$ in $I$ und es gilt
-	  \[\lim_{x\downarrow a} \frac{f(x)}{g(x)} = c\]
-   2. Im Fall $f(x) \to \pm \infty, g(x) \to\pm \infty$ für $x\downarrow a$ ist $g(x) \neq 0$ für $a < x y x_\ast \leq b$ und
-	  \[\lim x\downarrow a \frac{f(x)}{g(x)} = c\]
+   Sei $f: (a, b) \to \mathbb{R}~(n + 1)$ -mal stetig differenzierbar und $t_n(x_0, \cdot)$  ihr
+   n-tes Taylor Polynom um ein $x_0\i n(a,b)$. Dann gibt es zu jeden $x\in (a,b)$ ein $\xi$ zwischen
+   $x$ und $x_0$, so dass gilt
+   \[f(x) = t_n(x_0, x) + \frac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}\]
+   mit dem sogenannten Lagrangschen Restglied.
    #+end_thm
    #+begin_proof latex
-   1. Wir fassen $f$ und $g$ als Funktion auf, die in $a$ stetigs sind $f(a) = g(a) = 0$. Wegen $g'(x) \neq 0$ kann $g$ keine weitere
-	  Nullstelle von $g$ in $I$ geben, das heißt $g(x) \neq 0$ in $I$. Satz 4.21 $\implies$
-	  \[\Forall x \in I \Exists \xi \in (a, x): \frac{f(x)}{g(x)} = \frac{f'(\xi)}{g'(\xi)}\]
-	  $\implies$ für $x \to a$ auch $\xi \to a$ und
-	  \[\lim_{x\downarrow a} \frac{f(x)}{g(x)} = \lim_{\xi \downarrow a} \frac{f'(\xi)}{g'(\xi)}\]
-   2. Sei $\eps > 0$ beliebig. Nach Vorraussetzung ist $g'(x) \neq 0$ in $(a, b)$.
-	  \begin{gather*}
-	  \intertext{Wir wählen ein $\delta > 0$ mit $a + \delta \leq x_\ast$, sodass}
-	  \Forall x \in (a, a + \delta): f(x) \neq 0 \wedge g(x) \neq 0 \wedge \abs{\frac{f'(x)}{g'(x)} - c} < \eps \\
-	  \intertext{Für beliebigs $x, y \in (a, a + \delta)$ mit $f(x) \neq f(y)$}
-	  \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{g(x) - g(y)}{f(x) - f(y)} \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{(1 - \frac{g(y)}{g(x)})g(x)}{\underbrace{(1 - \frac{f(y)}{f(y)})}_{x\downarrow a \to 1}f(x)}  \frac{f(x)}{g(x)} \\
-	  \implies \Exists \delta_\ast > 0: \Forall x \i n(a, a + \delta_\ast): \abs{\frac{f(x)}{g(x)} - \frac{f(x) - f(y)}{g(x) - g(y)}} < \eps
-	  \intertext{Für ein $x$ sodass $a < x < \underbrace{a + \min\{\delta, \delta_\ast\}}_{x_\ast}$ bekommen wir}
-	  \abs{\frac{f(x)}{g(x)} - c} < 2\eps \tag*{\qedhere}
-	  \end{gather*}
+   Wir bemerken, dass $t(x_0, x_0) = f(x_0)$ und definieren das Restglied
+   \[R_{n + 1}(y, x):= f(x) - t_n(y, x)\]
+   Für festes $x$ ist die Funktion von $y$.
+   Weil $f(n + 1)$ stetig differenzierbar ist, ist $R_{n + 1}(y, x)$ mindestens einmal nach $y$ differenzierbar.
+   \[\dd{{}}{y}R_{n + 1}(x, y) = \dd{{}}{y}(f(x) - t_n(y, x)) = - \sum_{k = 0}^{\infty}\frac{f^{(n + 1)}(y)}{k!}(x - y)^k + \sum_{k = 1}^{\infty}\frac{f^{(k)}(y)}{(k - 1)!}(x - y)^{k - 1} = -\frac{f^{(n + 1)}(g)}{n!}(x - y)^n\]
+   Wir wenden jetzt 2. Mittelwertsatz für $f(y) := R_{n + 1}(y,x), g(y):=(x - y)^{n + 1}$ an.
+   \begin{align*}
+   R_{n + 1}(x , x) &= f(x) -t_n(x, x) = 0 \\
+   \frac{R_{n + 1}(y, x)}{(x - y)^{n + 1}} &= \frac{R_{n + 1}(x, y) - R_{n + 1}(y,x)}{(x - x)^{n + 1} - (x - y)^{n + 1}} = \frac{\dd{}{y}R_{n + 1}(\xi, x)}{-(n + 1)(x - \xi)^n}\\
+   \end{align*}
+   mit $\xi \in (a, b)$ zwischen $x$ und $y$.
+   Mit der obigen Identität für $y = \xi$ ergibt sich
+   \[\frac{R_{n + 1}(y, x)}{(x - y)^{n + 1}} = \frac{f^{(n + 1)}(\xi)}{(n + 1)!}\]
+   und folgt die Aussage.
    #+end_proof
-   #+ATTR_LATEX: :options [4.23]
-   #+begin_ex latex
-   $I = (0, 1), f(x) = \ln(x), g(x) = x - 1, f'(x) = \frac{1}{x}, g'(x) = 1$
-   \[\lim_{x\to 1} \frac{f'(x)}{g'(x)} = 1, \lim_{x\uparrow 1} \frac{\ln x}{x - 1} = \lim_{x\uparrow 1} \frac{\frac{1}{x}}{1} = 1\]
-   #+end_ex
+   #+ATTR_LATEX: :options [4.27]
+   #+begin_defn latex
+   1. $f:(a,b)\to\mathbb{R}$ heißt glatt (oder $C^\infty$ -Funktion) wenn sie beliebig oft
+	  differenzierbar ist, das heißt $\Forall k\in\mathbb{N}$ ihre k-te Ableitung $f^{(k)}$ existiert
+   2. Die Taylorreihe von $f$ und ein $x_0 \in (a,b)$ ist dann definiert durch
+	  \[t_\infty(x_0, x):= \sum_{k = 0}^{\infty} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k\]
+   3. Konvergiert die Taylorreihe von $f$ und $x_0 \Forall x$ in einer Umgebung von $x_0$
+	  und gilt $f(x) = t_\infty(x_0, x)$, so heißt $f$ (reell) analytisch in $x_0$
+   #+end_defn
+   #+ATTR_LATEX: :options [Taylor-Entwicklung]
+   #+begin_thm latex
+   Sei $f:(a, b)\to\mathbb{R}$ eine glatte Funktion mit gleichmäßig beschränker Ableitung und
+   \[\sup_{x\in (a, b)}\abs{f^{(n)}(x)} \leq M < \infty \Forall n\in\mathbb{N}\]
+   Dann ist $f$ auf $(a, b)$ analytisch, also $\Forall x,y_0 \in (a, b)$ konvergiert die Tylorreihe von $f$
+   und es gilt
+   \[f(x) = \sum_{k = 0}^{\infty} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k\]
+   #+end_thm
+   #+begin_proof latex
+   Aus der Restglieddarstellung folt mit Hilfe der Vorraussetzung
+   \[\abs{f(x) - t_{x_0, x}} \leq \frac{\abs{f^{(n + 1)}(\xi)}}{(n + 1)!}\abs{x - x_0}^{n + 1} \leq \frac{M}{(n + 1)!}\abs{b - a}^{n + 1}\]
+   Zu beliebigen $\eps > 0$ gibt es ein $n_\eps \in \mathbb{N}$, sodass $\Forall n\geq n_\eps$ gilt:
+   \[\frac{M}{(n + 1)!}(b - a)^{n + 1} < \eps\]
+   was die Behauptung impliziert.
+   #+end_proof
    #+begin_remark latex
-   Analoge Aussagen gelten auch für $x \to \pm \infty$. Wir nehmen $y := \frac{1}{x} \to 0$ und
-   \[\lim_{x\to\pm\infty} \frac{f(x)}{g(x)} = \lim_{y \to 0_{\pm}} \frac{f(\frac{1}{x})}{g(\frac{1}{x})} = \lim_{\lambda \to \pm \infty} \frac{f'(\lambda)}{g'(\lambda)}\]
-   #+end_remark
-   #+begin_remark latex
-   Bei der Anwendung der Regeln von L'Hospital ist zunächst zu prüfen, ob die Limes von $\frac{f'(x)}{g'(x)}$ überhaupt existiert.
-   zum Beispiel
-   \[\lim_{x\downarrow 0} \frac{x^2 \sin(\frac{1}{x})}{\sin{x}} = \lim_{x \downarrow} \frac{x}{\sin{x}} x \sin{\frac{1}{x}}  = 0\]
+   Eine glatte Funktion muss nicht analytisch sein. Zum Beispiel:
+   \[f(x) = \begin{cases} \exp(-x^{-x^2}) & x \neq 0 \\ 0 & x = 0\end{cases}\]
+   \[\lim_{x\to 0}\exp(- \frac{1}{x^2}) = 0\]
+   $\implies f$ stetig auf $\mathbb{R}$
+   \begin{align*}
+   f'(x) &= 2x^{-3}\exp(-\frac{1}{x^2}) \\
+   f''(x) &= 4x^{-6}\exp(-\frac{1}{x^2}) + 6x^{-4}\exp(-\frac{1}{x^2}) \\
+   &\vdots \\
+   f^{(n)}(x) = p_n(x^{-1}) \exp(\frac{1}{x^2}), n\geq 1
+   \end{align*}
+   wobein $p_n$ ein Polynom ist. Die Ableitungen sind stetig in $x\neq 0$. Wir setzen
+   \[y = x^{-2}\]
+   Es gilt
+   \[\frac{y^k}{e^y} \xrightarrow{y \to 0} 0, k \in \mathbb{N}\]
+   $\implies$ die Ableitung sich stetig in $x_0 = 0$ durch die Null vorstehen lassen, weil
+   \[f^{(n)}(x) \xrightarrow{x \to 0} 0 n\in \mathbb{N} \implies f\in C^\infty(\mathbb{R})\]
    aber
-   \[\lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} + x^2 \cos{\frac{1}{x}}(- \frac{1}{x^2})}{\cos{x}} = \lim_{x\downarrow 0} \frac{2x \sin{\frac{1}{x}} - \cos{\frac{1}{x}}}{\cos{x}} = -\lim_{x\downarrow 0} \cos{\frac{1}{x}}\]
-   der existiert nicht
+   \[\sum_{k = 0}^{\infty} f^{(k)}(0) (x - 0)^k = 0\]
+   konvergiert $\Forall x$, aber stellt die Funktion $f$ außer $x = 0$ nicht dar.
    #+end_remark
    #+begin_remark latex
-   Die L'Hospital Regeln kann man auch anwenden in dem Fall
-   \[f(x) \to 0, g(x) \to  \infty ~\text{für}~ \lim_{x\downarrow a} f(x) g(x) = \lim_{x\downarrow} \frac{f(x)}{\frac{1}{g(x)}}\]
-   Auch für $0^0, \infty^0, 0^\infty$
+   Es gibt auch Funktionen, deren Taylorreihen außer in $x = x_0$ nicht konvergieren
    #+end_remark
-   #+ATTR_LATEX: :options [4.24]
-   #+begin_ex latex
-   1. $\lim_{x\downarrow 0} x^x$ Wir logarithmieren und erhalten
-	  \[\lim_{x\downarrow 0} x\ln x = \lim_{x\downarrow 0} \frac{\ln x}{\frac{1}{x}} = \lim_{x\downarrow 0} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = 0\]
-	  und
-	  \[\lim_{x\downarrow 0} x^x = \lim_{x\downarrow 0} e^{x\ln x} = e^0 = 1\]
-   2. $\lim_{x\to 1} x^{\frac{1}{x - 1}} = \lim_{e^{\frac{1}{x - 1} \ln x}}, \lim_{x \to 1} \frac{1}{x -1} \ln x = \lim_{x \to 1} \frac{\frac{1}{x}}{1} = 1 \implies \lim_{x \to 1} x^{\frac{1}{x - 1}} = e^1 = e$
-
-   #+end_ex
+** Bemerkung zu Stetigkeit
+   stetige Funktion $\supset$ gleichmäßig stetig Funktion $\supset$ Libschitz stetige Funktionen $\supset$ differenzierbare Funktion mit gleichmäßig beschränkten Ableitung (auf beschränkter Menge) $\supset$ stetig differenzierbare Funktionen
+   - $f(x) = \frac{1}{x}$ ist stetig, aber nicht gleichmäßig stetig in $(0, 1)$
+   - $\sqrt{x}$ ist gleichmäßig stetig, aber nicht Lipschitz stetig
+   - $f(x) = x^2, f'(x) = 2x, x\in\mathbb{R} \not\Exists M:\abs{f'(x)} < M \Forall x\in\mathbb{R}$
+   - $\abs{f(x) - f(y)} \leq \abs{(x - y)(x + y)} \leq K\abs{x - y}$
+   - $f(x) = x^2 x\in (a, b), f'(x) = x, \abs{f'(x)} < \max\abs{2a, 2b}$
+   - es gibt Funktionen, die differenzierbar und eine gleichmäßig beschränkte Ableitung haben, aber nicht stetig differenzierbar sind (Beispiel: UB10)

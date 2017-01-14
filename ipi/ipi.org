@@ -544,9 +544,10 @@
 * Buchstabenzeichen
   Buchstabenzeichen: "glyphs" müssen durch Zahlen repräsentiert werden "Zeichencode"
 ** Geschichte
+   #+ATTR_LATEX: :environment longtable :align l|l|p{2.5cm}|p{7cm}
    | 1963                | ASCII   | 7-bit                                  | Zeichen der englischen Schreibmaschiene (*keine* Umlaute)                                                                                                                                                                                                                                      |
    | 1964 $\ldots$ 2000  |         | 8-bit Codes                            | mit Umlauten, Akzenten, kyrillische Zeichen, aber 8-bit sind zu wenig, um alles abzudecken $\implies$ viele verschiedene 8-bit Codes: DOS Codepage 437, Codepage 850 (Konsole im deutschen Windows), Windows-1252 ("ANSI") $\approx$ ISO 8859-1 \approx ISO 8859.15 (Westeuropäische Sprachen) |
-   | 1991 $\ldots$ heute | Unicode | anfangs 16-bit, jetzt $\approx$ 21-bit | alles (chinesisch, Hyroglyphen, Emojis, $\ldots$)                                                                                                                                                                                                                                             |
+   | 1991 $\ldots$ heute | Unicode | anfangs 16-bit, jetzt $\approx$ 21-bit | alles (chinesisch, Hyroglyphen, Emojis, $\ldots$)                                                                                                                                                                                                                                              |
    3 Codierungen für Unicode:
    - UTF-8: variable length code: pro glyph $1 \ldots 4$ uint8
    - UTF-16: variable length code: pro glyph $1 \ldots 2$ uint16
@@ -561,7 +562,7 @@
    | ö      | 148 |  246 | 195 182     |
    | €      | 221 |  128 | 226 130 172 |
    $\implies$ ICU Library. \\
-   hat man ale Zeichen korrekt, ist Problem noch nicht gelöst: alphabetische Sortierung:
+   hat man alle Zeichen korrekt, ist Problem noch nicht gelöst: alphabetische Sortierung:
    - kontext abhängig
    - sprach abhängig
    - $ä$:

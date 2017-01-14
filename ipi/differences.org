@@ -48,9 +48,10 @@
 	graphische Darstellung: Zustände = Kreise, Zustandsübergänge: Pfeile
 *** TODO Darstellung durch Übergangstabellen
 	Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
+    #+ATTR_LATEX: :environment longtable :align l|p{3cm}|p{3cm}|p{3cm}
 	| Zustände \ Ereignisse | Knopf drücken                                     | Timeout                                                   | Timeout(Variante)                       |
 	|-----------------------+---------------------------------------------------+-----------------------------------------------------------+-----------------------------------------|
-	| aus                   | $\implies$ {halb} \\ {4 LEDs an}                  | %                                                         | ($\implies$ {aus},{nichts})             |
+	| aus                   | ($\implies$ {halb} \ {4 LEDs an})                | %                                                         | ($\implies$ {aus},{nichts})             |
 	| halb                  | ($\implies$ {voll},{8 LEDs an})                   | %                                                         | ($\implies$ {aus},{nichts})             |
 	| voll                  | ($\implies$ {blinken an},{Timer starten})         | %                                                         | ($\implies$ {aus},{nichts})             |
 	| blinken an            | ($\implies$ {aus},{Alle LEDs aus, Timer stoppen}) | ($\implies$ {blinken aus},{alle LEDs aus, Timer starten}) | ($\implies$ {blinken aus},{8 LEDs aus}) |
