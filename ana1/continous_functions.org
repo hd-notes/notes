@@ -423,13 +423,13 @@
    \begin{equation*}
    \begin{matrix}
    &\color{red} {f_{n_1^{(1)}}},& f_{n_2^{(1)}},& \ldots,& f_{n_k^{(1)}} & \text{konvergiert in $r_1$} \\
-   &f_{n_1^{(2)}},& color{red}{f_{n_2^{(2)}}},& \ldots,& f_{n_k^{(2)}} & \text{konvergiert auch in $r_2$} \\
+   &f_{n_1^{(2)}},& \color{red}{f_{n_2^{(2)}}},& \ldots,& f_{n_k^{(2)}} & \text{konvergiert auch in $r_2$} \\
    &f_{n_1^{(3)}},& f_{n_2^{(3)}},& \ldots,& f_{n_k^{(3)}} & \text{konvergiert auch in $r_2$} \\
-   &f_{n_1^{(k)}},& f_{n_2^{(k)}},& \ldots,& color{red}{f_{n_k^{(k)}}} & \text{konvergiert auch in $r_k$} \\
+   &f_{n_1^{(k)}},& f_{n_2^{(k)}},& \ldots,& \color{red}{f_{n_k^{(k)}}} & \text{konvergiert auch in $r_k$} \\
    \end{matrix}
    \end{equation*}
    #+begin_export latex
-   {color{red}{Diagonalfolge}} \\
+   {\color{red}{Diagonalfolge}} \\
    #+end_export
    Nach sukzessiver Anwendung des Bolzano-Weierstrass Satz bekommen wir eine Folge von Teilfolgen. Die Folgen $(f_{n_j^{(k)}}(r_k))_{j\in\mathbb{N}}$ sind konvergent,
    $(n_j^{(k + 1)})_{j\in\mathbb{N}}$ ist Teilfolge von $(n_j^{(k)})_{j\in\mathbb{N}}$. $(f_{n_j^{(k)}}(r_l))_{j\in\mathbb{N}}$ ist konvergent für $l = 1,\ldots, k$.
