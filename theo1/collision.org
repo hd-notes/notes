@@ -82,7 +82,7 @@
    #+begin_ex latex
    - Mesonen-Zerfall: $\rho \to \pi \pi$
    - nicht-quaten-mechanisch: Explosionen
-   - Higgs-Zefälle am LHC: $H \to \gamma \gamma, H \to b b$
+   - Higgs-Zefälle am LHC: $\mathrm H \to \gamma \gamma, \mathrm H \to \mathrm b \mathrm b$
    #+end_ex
 
    Masse $M$, innere Energei $U$:
@@ -107,5 +107,41 @@
    Wir wissen bereits
    \begin{align*}
    \abs{\v p_{1, s}} &= \sqrt{\frac{2\abs{\Delta U}m_1 m_2}{M}} \\
-   \v p_{1,s} = \abs{\v p_{1,s}} \cvec{\cos \theta_s ; \sin \theta_s}, \v v_{1,s} = \frac{\v p_{1,s}}{m_1}
+   \v p_{1,s} &= \abs{\v p_{1,s}} \cvec{\cos \theta_s ; \sin \theta_s}, \v v_{1,s} = \frac{\v p_{1,s}}{m_1}
+   \intertext{Boost um $\v v$ zum Laborsystem:}
+   \v v_{1,L} &= \v v_{1, s} + \v v = \abs{\v v_{1,s}} \cvec{\cos\theta_s ; \sin\theta_s} + \abs{\v v}\cvec{1;0} \\
+   \v v_{1,L} &= \cvec{\abs{\v v_{1,s}}\cos{\theta_s} + \abs{\v v}; \abs{\v v_{1,s}}\sin \theta_s} \\
+   \implies \tan\theta_L &= \frac{\abs{\v v_{1,s}}\sin\theta_s}{\abs{\v v_{1,s}}\cos{\theta_s} + \abs{\v v}}
    \end{align*}
+   (Wenn gewünscht, $\abs{\v v_{1,s}}$ durch Ursprünglich gegebene Größen ausdrücken.)
+   Anschaulich klar: $\theta_L \to 0$ für $\abs{\v v} \to \infty$
+   #+begin_remark latex
+   Beim Zerfall $M \to m_1, m_2, m_3$ reichen die Erhaultungssätze nicht
+   einmal mehr für die Betragsbestimmung
+   #+end_remark
+   #+ATTR_LATEX: :options [$\beta$-Zerfall]
+   #+begin_ex latex
+   $\mathrm n \to \mathrm p + \mathrm{e^-} + \v v_e$
+   #+end_ex
+** Elastischer Stoß
+   Allgemeiner: 2-Teilchen-Streuung ("2 $\to$ 2" Streuung)
+   \[(m_1, U_1), (m_2, U_2) \to (m_1', U_1'),(m_2', U_2')\]
+   (bei uns stets Massenerhaltung: $m_1 + m_2 = m_1' + m_2'$)
+   - Einschränkung: kein Massenaustausch: $m_1 = m_1', m_2 = m_2'$
+   - weitere Einschränkungen: $U = U'$ (mit $U = U_1 + U_2, U' = U_1' + U_2'$)
+   $\implies$ elastischer Stoß. Es folgt:
+   \[\v p_1 + \v p_2 = \v p_1' + \v p_2'\]
+   und
+   \[\frac{\v p_1^2}{2m_1} + \frac{\v p_2^2}{2m_2} = \frac{\v p_1^{\prime 2}}{2m_1} + \frac{\v p_2^{\prime 2}}{2 m_2}\]
+   Ziel: Bestimmen von $\v p_1', \v p_2'$ mögliche Prozedur:
+   Gehen zunächts ins Schwerpunktsystem:
+   \[\v p_{1,s} + \v p_{2,s} \equiv \v p_s = 0\]
+   Man denke sich einen Zwischenzeitlich enstehenden instabilen Zustand (ruhendes, instablies Teilchen)
+   mit $\v p_s = 0$. Dieses zerfällt mit Freisetzung des Energeiüberschusses
+   \[\abs{\Delta U} = \frac{\v p_{1,s}^2}{2m_1} + \frac{\v p_{2,s}^2}{2 m_2}\]
+   Wie oben folgt:
+   \[\v p_{1,s}' = -\v p_{2,s}'\]
+   und (unter Ausnutzung von $\abs{\v p_{1,s}'} = \abs{\v p_{2,s}'}$)
+   \[\abs{\v p_{1, s}'} = \abs{\v p_{1, s}'} = \sqrt{\frac{2\abs{\Delta U}m_1 m_2}{M}} = \sqrt{\frac{m_2 \v p_{1,s}^2 + m_1 \v p_{2,s}^2}{m_1 + m_2}} = \abs{\v p_{1,s}} = \abs{\v p_{2,s}}\]
+   $\implies$ Der Übergang $\v p_{1,s}, \v p_{2,s} \to \v p_{1,s}', \v p_{2,s}'$
+   entspricht Drehung, ohne Betragsänderung!

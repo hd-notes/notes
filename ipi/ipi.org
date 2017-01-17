@@ -1091,3 +1091,161 @@
    255
    Ausgabe von to_string
    #+end_example
+** Verschiedene Konstruktoraufrufe
+   Vor c++11 gab es nur () oder gar keine Klammern (Standardkonstruktor).
+   #+BEGIN_SRC cpp
+   std::vector<int> v0; // leeres Array
+   std::vector<int> v1(10, 1); // 10 Elemente mit Initialwert 1
+   std::vector<int> v2(v1); // Kopierkonstruktor
+   std::vector<int> v3(v1.begin(), v1.end()); // Kopie mittels Iteratorpaar
+   #+END_SRC
+   Nachteil: Initialisierung mit Array-Literal wurde nicht unterstützt: c++11 schließt Lücke mittels \{\}
+   #+BEGIN_SRC cpp
+   std::vector<int> v4{1, 2, 3, 4}; // vier Elemente
+   #+END_SRC
+   Problem: neue Syntax \{\} muss rückwärtskompatibel zu allen () sein $\implies$ kompizierte Regeln
+   1. gibt es einen Konstruktor mit $k$ Argumenten und einen Array-konstructor (mit beliebig vielen Argumenten) rufen () den k-Argument-konstruktor auf, \{\} den Array-Konstruktor:
+      #+BEGIN_SRC cpp
+	  std::vector<int> v1(10, 1); // Konstruktor mit 2 Argumenten, 10 Elemente mit Wert 1
+	  std::vector<int> v5{10, 1}; // Array-Konstruktor: 2 Elemente mit Wert 10 und 1
+      #+END_SRC
+	  Der Array-konstruktor hat als Argument den Typ std::initializier_list<ElementTyp>.
+	  Beispiel(Hausaufgabe): verhälft sich ähnlich zu std::vector (Indexschleifen, Kopieren, Iteratoren)
+      #+BEGIN_SRC cpp
+	  class Polynomial {
+	      std::vector<int> a_;
+
+	  public:
+	      Polynomial(std::initializier_list<int> l) : a_{l} {} // kopiere das Initialarray l
+
+	      Polynomial(std::initializier_list<int> l) : a_{l.size()} {
+		      for(int i = 0; i < l.size(); i++) {
+		          a_[i] = l[i];
+		      }
+		  }
+	  };
+
+	  Polynomial p{1, 2, 3}; // \(1 + 2x + 3x^2\)
+      #+END_SRC
+   2. gibt es keinen Array-Konstruktor (kein Argument std::initializer_list) sind () und \{\} #quivalent
+      #+BEGIN_SRC cpp
+	  Point p1(2, 3); // \(x\equiv 2, y\equiv 3\)
+	  Point p2{2, 3}; // \(x\equiv 2, y\equiv 3\)
+      #+END_SRC
+   weitere Regeln: googeln nach "universal construction c++" $\implies$ für Fortgeschrittene
+** Fehlermeldungen mittels Exceptions ("Ausnahmen")
+   Normalerweise werde Funktionen mit "return" beendet. Tritt in der Funktoin ein Fehler auf, kann man
+   den Rückgabewert nicht ausrechnen $\implies$ müssen Funktion anders verlassen. Exceptions
+   verlassen Funktion mittels "throw" (werfen)
+   - Argument von throw (Rückgabewert) ist ein Exception-Object, das den Fehler beschreibt (zum Beispiel Fehlermeldung)
+   - vordefinierte Exceptionsklassen im Header <stdexcept>, kann auch eigene definieren. Zum Beispiel std::runtime_error "Universalfehler"
+   #+BEGIN_SRC cpp
+   class Point {
+   // ... wie zuvor
+
+       double operator[](int index) const {
+           if(index == 0) {
+               return x_;
+		   }
+           if(index == 1) {
+               return y_;
+           }
+           throw std::runtime_error("Point::operator[]: index out of bound");
+       }
+   };
+   #+END_SRC
+   In der aufrufenden Funktion: wirft ein Funktionsaufruf eine Exception, wird standardmäßig die aufrufende Funktion ebenfalls mit "throw" beendet, wobei
+   das Exception-Objekt weitergegeben wird.
+   #+BEGIN_SRC cpp
+   void foo() {
+       Point p(2, 3);
+       p[2] = 5; // Exception: index 2 verboten $\implies$ foo wird auch beendet foo wird auch beendet
+   }
+
+   int main() {
+       foo(); // Exception $\implies$ main wir auch beendet und damit das Programm. Alte Compiler geben dann einfach "abort" aus $\implies$ vermeiden durch try/catch, neue Compiler geben die Fehlermeldung aus
+   }
+   #+END_SRC
+   Um die Exception zu "fangen" und zu behandeln (zum Beispiel Fehler reparieren und retry) bracht man
+   eine try/catch-Umgebung
+   #+BEGIN_SRC cpp
+   try {
+       foo(); // Aufruf, der Exceptions werfen könnte
+       // ... weiterer Code, wenn foo() geklappt hat
+   } catch(std::runtime_exception & e) { // Alternativumgebung, wenn foo() Exception wirft
+       std::cerr << "Exception aufgetreten: " << e.what() << std::endl;
+   }
+   #+END_SRC
+   Prinzip:
+   - tritt im try-Block eine Excpetion auf, wird der Block verlassen $\implies$ die Anweisungen im try-Block *hinter* dem fehlerhaften Aufruf werden nicht mehr ausgeführt
+   - folt ein catch mit passendem Exception-Typ, sprint die Ausführung in diesen catch-Block $\implies$ es kann beliebig viel catch-Blöcke für verschiedene Exceptions geben
+   - Universal-Catch-Block:  catch(std::exception & e) fängt alles auf (genauer: alle von std::exception abgeleiteten Exceptions-Vererbung $\implies$ später)
+   Beispiel: warten auf korrekte Benutzereingabe
+   #+BEGIN_SRC cpp
+   void process_user_input() {
+       double input = 0.0;
+	   bool input_valid = false;
+	   while(!input_valid) {
+	       try {
+		       input = get_user_input(); // wirft runtime_error, wenn falscher Input
+			   input_valid = true;
+		   } catch(std::exception & e) {
+		       std::cerr << "falsche Eingabe: " << e.what() << "\n versuche es nochmal!\n";
+		   }
+	   }
+
+	   // verarbeite Input
+   }
+   #+END_SRC
+** Template-Klassen
+   Wir hatten: Template-Funktionen
+   #+BEGIN_SRC cpp
+   template<typename T>
+   T sq(T x) { return x * x; }
+   #+END_SRC
+   Beispiel: Image-Klasse soll beliebige Pixeltypen unterstützen, bisher uint16_t, danach auch uint8_t (Speicher sparen), float(Genauigkeit bei Bildanalyse), RGB-Typ (Farbbilder).
+   Vorgehen bei der Templatisierung
+   1. Implementiere Klasse und Tests *ohne* Template (hier: fest definierter Pixeltyp uint16_t) $\implies$ können nach und nach Templatisieren und jeden Schritt durch Test prüfen (gehen die Tests nicht mehr, haben wir einen Fehler gemacht und müssen den
+      letzen Schritt rückgängig machen und anders versuchen)
+   2. Neue Typnamen einführen mit typedef OldType NewType
+	  1. in der Testfunktion
+         #+BEGIN_SRC cpp
+		 void test_image_uint16_t() {
+		 typedef Image Img; // wird später zu typedef Image<uint16_t> Img
+		     Img img(10, 20); // Breite 10, Höhe 20
+		     assert(img.width() == 10);
+		     assert(img.height() == 20);
+		     assert(img(0, 0) == 0);
+		     img(0, 0) = 255;
+		     assert(img(0, 0) == 255);
+		 }
+         #+END_SRC
+	  2. in der Klasse für den Pixeltyp alle Vorkommen von uint16_t (als Pixeltyp) durch "PixelType" ersetzen $\implies$ alle tests müssen weiterhin funktionieren, weil nur neue Typnamen, gleiche Funktionalität
+         #+BEGIN_SRC cpp
+		 class Image {
+		     int width_, height;
+		     std::vector<uint16_t> data_;
+		 public:
+		     uint16_t operator()(int x, int y) {
+		         return data[x + y * width_];
+		     }
+
+		     // ...
+		 };
+         #+END_SRC
+		 $\to$
+         #+BEGIN_SRC cpp
+		 class Image {
+		 public:
+		     typedef uint16_t PixelType;
+		 private:
+		     int width_, height;
+		     std::vector<PixelType> data_;
+		 public:
+		     PixelType operator()(int x, int y) {
+		         return data[x + y * width_];
+		     }
+
+		     // ...
+		 };
+         #+END_SRC

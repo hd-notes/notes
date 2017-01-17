@@ -458,3 +458,150 @@ mark=at position 0.5 with
    - Isobar: $\Delta Q = \Delta h - \Delta w$
    - Isochor: $\Delta Q = \Delta u$
    \[C_v = \frac{f}{2}R, c_p = \frac{f + 2}{2}R = \underbrace{\frac{f}{2}R}_{c-V} + R\]
+
+** Zusammenfassung: Spezielle Zustandsänderung idealer Gase
+   Es glit
+   \[p V = n R T, \Delta U = \Delta Q + \Delta W\]
+   mit $R = \SI{8.314}{\joule\per\kelvin\per\mol}$
+   1. Isotherme Zustandsänderung $\Delta T = 0$
+	  \begin{align*}
+	  \Delta U &= 0, p \sim \frac{1}{V} \\
+	  \Delta Q &= -\Delta W = n R T \ln{\frac{V_2}{V_2}}
+      \end{align*}
+   2. Isochore Zustandsänderung, $\Delta V = 0$
+	  \begin{align*}
+	  \Delta W &= 0 \\
+	  \Delta U &= \Delta Q = n c_V \Delta T
+      \end{align*}
+   3. Isobare Zustandsänderung, $\Delta p = 0$
+	  \begin{align*}
+	  \Delta Q &= n c_p \Delta T \\
+	  &= \Delta U - \Delta W \\
+	  \Delta W &= -p \Delta V
+	  \\
+	  \Delta Q &= n c_v \Delta T = n \frac{f}{2} R \Delta T \\
+	  \Delta Q &= n c_p \Delta T = n \frac{f + 2}{2} R \Delta T \\
+	  \implies C_p &= c_v + R
+      \end{align*}
+   4. Adiabatische Zustandsänderung, $\Delta Q = 0$
+	  ($Q$ keine Zustandsgröße!)
+	  \begin{align*}
+	  \Delta U &= \Delta W \\
+	  p V^{\gamma} &= ~\text{const} \\
+	  TV^{\gamma - 1} &= ~\text{const} \\
+	  T^{\gamma} p^{1 - \gamma} &= ~\text{const}
+      \end{align*}
+
+   Verfügbare Freiheitsgrade?
+   (Vorgriff auf Quantentheorie)
+   \[C_v = \frac{f}{2}R, C_p = \frac{f + 2}{f}R\]
+   - $f$: verfügbare Freiheitsgrade
+   - $R$: universelle Gaskonstante
+   Mittlere Energei pro Freiheitsgrad:
+   \begin{align*}
+   \bar E &= \frac{1}{2}k_B T \\
+   U &= N \bar E = n N_A \frac{f}{2}k_B T = n \frac{f}{2} RT = nc_v T \\
+   f = ?
+   \end{align*}
+   Klassische: \\
+   Gleichverteilungssatz oder Äquipartitionsprinzip, Gleichmäßige Verteilung der Energei
+   auf alle Freiheitsgrade. \\
+   Quantenmechanik: \\
+   Enfrieren von Freiheitsgraden, das heißt nicht alle möglichen Freiheitsgrade verfügbar.
+   Hängt von Temperatur ab (klassisch nicht erklärbar)
+** Zweiter Hauptsatz der Wärmelehre
+   Erster Hauptsatz: Energieerhaltung, Energieflüsse. \\
+   Zweiter Hauptsatz: Richtung thermodynamischer Prozesse. \\
+   Erfahrung: Wärme fließt nur vom wärmeren zum kälteren Körper.
+   Mechanische Arbeit kann vollständig in Wärme, nicht aber Wärme vollständig in
+   mechanische Arbeit umgewandelt werden.
+
+   #+ATTR_LATEX: :options [Zweiter Hauptsatz]
+   #+begin_thm latex
+   Wärme fließt von selbst nur vom wärmeren zum kälteren Körper, nie umgekehrt.
+   #+end_thm
+
+   Eine mehr quantitative Formulierung erfodert die Einführung und Betrachtung
+   reversibler und irreversibler Prozesse.
+
+   #+ATTR_LATEX: :options [Reversibler Prozess]
+   #+begin_defn latex
+   Langsam ablaufende Zustandsänderung, ber der jeder eizelne Schritt einer infinitesimalen
+   Veränderung des Systems entspricht, das sich verändernde System befindet sich damit
+   zu jedem Zeitpunkt im Gleichgewicht. Reversible Prozesse sind umkehrbar.
+   #+end_defn
+
+   #+ATTR_LATEX: :options [Irreversibler Prozess]
+   #+begin_defn latex
+   Zustandsänderung, bei der sich ein thermodynamisches System stark aus seiner
+   Gleichgewichtslage entfernt. Währen des Vorgangs sind die (statistischen) Zustandsgrößen
+   (e.g $p, T$) nicht definiert. Irreversible Prozesse sind nicht umkehrbar.
+   #+end_defn
+
+   Merke:
+   - Reversibler Prozess - Nach Umkehrung keine (beobachtbare) Veränderung am System und an der Umgebung
+   - Irreversibler Prozess - Nach umkehrung ist das System verändert, ebenso wie auch die Umgebung
+
+*** Kreisprozesse:
+	Anfangszustand = Endzustand! $\implies$
+	\[\Delta U = 0 \implies \Delta Q = -\Delta W, \Delta W = -\oint p\d V\]
+	- Rechtsläufig: Wärme $\to$ Arbeit, System leistet Arbeit
+	- Linksläufig: Arbeit $\to$ Wärme, Arbeit wir am System geleistet
+
+    Interessant:
+	- zugeführte / abgeführte mechanische Arbeit $\Delta W > 0 / \Delta W < 0$
+	- zugeführte / abgeführte Wärme $\Delta Q > 0 / \Delta Q < 0$
+	Prinzip Wärmekraftmaschine
+	#+ATTR_LATEX: :options [Wirkungsgrad]
+	#+begin_defn latex
+	\[\eta = \frac{\abs{\Delta W}}{Q_w} = \frac{\text{geleistete Arbeit}}{\text{zugeführte Wärme}} = \frac{Q_W - \abs{Q_k}}{Q_W} = 1 - \frac{\abs{Q_K}}{Q_W}\]
+	#+end_defn
+	#+ATTR_LATEX: :options [Leistungszahl]
+	#+begin_defn latex
+	\begin{align*}
+	\eps_{\text{Wärme}} &= \frac{\abs{Q_W}}{\Delta W} = \frac{1}{\eta} > 1 \tag{auch Wirkungsgrad einer Wärmepumpe} \\
+	\eps_{\text{Kälte}} &= \frac{Q_K}{\Delta W} = \frac{1}{\eta} - L \tag{Auch Wirkungsgrad einer Kältemaschine}
+	\end{align*}
+	#+end_defn
+	Es gilt: $\eta \leq 1$! \\
+	Frage: $\eta = 1$ möglich? \\
+
+	Optimale Maschine:
+	- keine Wärmeverluste durch Reibung etc
+	- langsam ablaufende Przess, system immer im Gleichgewicht
+    das heißt: Betrachtung reversibler Prozesse!
+	Bemerkung: Optimale Maschine in der Realität offenbar nicht realisierbar, idealisierung!
+*** Carnot-Prozess
+	Idealisierte Maschine zur Untersuchung der Grundlagen thermodynamischer Prozesse, Realisierung (auch näherungsweise) schwierig
+	1. Isotherme Expansion $(a \t b), \Delta U = 0$ Wärmezufuhr $Q_1$
+	2. Adiabatische Expansion $(b \to c), \Delta Q = 0, T_1 \to T_2$
+	3. Isotherme Kompression $(c \to d), \Delta U = 0$ Wärmezufur $Q_2$
+	4. Adiabatische Kompression $(d \to a), \Delta Q = 0, T_2 \to T_1$
+    Wirkungsgrad:
+	\[\eta_c = 1 - \frac{\abs{Q_2}}{Q_1}\]
+	Bemerkung: Schritte 2 und 4 speichern Arbeit zwischen.
+
+	Schritt 1: Isotherme:
+	\begin{align*}
+	Q_1 = \Delta Q_{ab} &= n RT_1 \ln \frac{V_b}{V_a} > 0 \tag*{da $V_b > V_a$} \\
+	\Delta W_{ab} &= -\Delta Q_{ab}
+	\end{align*}
+	Schritt 3: Isotheme:
+	\begin{align*}
+	Q_2 = \Delta Q_{cd} &= n R T_2 \ln \frac{V_d}{C_c} < 0 \tag*{da $V_c > V_D$} \\
+	\Delta W_{cd} &= -\Delta Q_{cd}
+	\end{align*}
+	Außerdem:
+	Schritt 2: Adiabate:
+	\[T_1 V_b^{\gamma -1} = T_2 V_c^{\gamma -1} \to \frac{V_b}{V_c} = (\frac{T_2}{T_1})^{\frac{1}{\gamma - 1}}\]
+	Schritt 4: Adiabate:
+	\[T_2 V_d^{\gamma -1} = T_1 V_a^{\gamma -1} \to \frac{V_a}{V_d} = (\frac{T_2}{T_1})^{\frac{1}{\gamma - 1}}\]
+	Adiabate insgesamt:
+	\[\frac{V_b}{V_a} = \frac{V_c}{V_d}\]
+	Also:
+	Wirkungsgrad einer Carnot-Maschine:
+	\[\eta_c = 1 - \frac{T_2}{T_1} = \frac{T_1 - T_2}{T_1} < 1\]
+	Wichtig: $T_1, T_2$ sind absolute Temperaturen in Kelvin!
+	Maximaler Wirkungsgrad $\eta_c = 1$ kann nur für $T_2 = \SI{0}{\kelvin}$ erreicht werden,
+	hieraus ergibt sich eine alternative thermodynamische Definition der absoluten
+	Temperaturskala.
