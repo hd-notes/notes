@@ -167,8 +167,8 @@ Image readPGM(std::string const & filename) {
     // die Zeilen und Spalten einlesen.
 
 	int value;
-	for(int x = 0; x < width; x++) {
-		for(int y = 0; y < height; y++) {
+	for(int y = 0; y < height; y++) {
+		for(int x = 0; x < width; x++) {
 			pgm >> value;
 			res(x, y) = value;
 		}

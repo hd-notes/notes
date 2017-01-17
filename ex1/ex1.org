@@ -66,51 +66,309 @@ mark=at position 0.5 with
 #+INCLUDE: "collisions.org" :minlevel 1
 #+INCLUDE: "ridid_body.org" :minlevel 1
 #+INCLUDE: "deformation.org" :minlevel 1
-* Thermodynamik
-  \begin{align*}
-  \intertext{Boyle Mariotte}
-  p V &= ~\text{const} \\
-  \intertext{Gay-Lussac}
-  V = V_0 \gamma T \\
-  p V = p V(p, T) = p_0 V(p_0, T) = p_0 V(p_0, T_0)\gamma T = p_0 V_0 \gamma T \sim T \\
-  \end{align*}
-  #+ATTR_LATEX: :options [Boyle-Mariotte-Gay-Lussac]
-  #+begin_thm latex
-  Für idelae Gase gilt das Boyle-Mariotte-Gay-Lussac Gesetz
-  \[pV \sim T, \wedge \frac{p_1 V_1}{T_1} = \frac{p_2 V_2}{T_2} = ~\text{const}\]
-  $p\sim T$ für $V = ~\text{const}$
-  #+end_thm
-  Gedankenexperiment:
-  Fasse zwei identische Kisten gefüllt mit idealem Gas zu einer Kiste zusammen:
-  \begin{align*}
-  \intertext{1 Kist}
-  p_0 V_0 = \xi T_o \\
-  \intertext{2 zusammengefasste Kisten}
-  p_0 2 V_0 \sim T_0
-  \end{align*}
-  Also: Verdopplung von $\xi$!. Ansatz: $\xi \sim$ Gasmenge
-  \begin{align*}
-  \implies p V &= k_B N T \\
-  k_B &= \SI{1.381e-23}{\joule\per\kelvin} \tag{Boltzmankonstante}
-  \end{align*}
-  #+ATTR_LATEX: :options [Zustandsgleichung idealer Gase]
-  #+begin_thm latex
-  \begin{align*}
-  p V &= n \underbrace{N_a k_B}_{R} T \\
-  p V &= n R T \\
-  \intertext{mit $R$ (universelle Gaskonstante):}
-  R &= \SI{8.31451}{\joule\per\kelvin\mol}
-  \end{align*}
-  Für Normalbedingungen:
-  \begin{align*}
-  p_0 &= \SI{1013}{\meter\bar} \\
-  T_0 &= \SI{273.15}{\kelvin} \\
-  n &= 1 \\
-  V_0 = \SI{22.4e-3}{\meter\cubed} = \SI{22.4}{\liter}
-  \end{align*}
-  #+end_thm
+* Wärmelehre
+  Energierhaltung: Wichtiges Konzept der Mechanik. Es gilt:
+  \[E_{pot} + E_{kin} = ~\text{const}, \Delta E = 0\]
+  Aber: Obiges Gesetz gilt nur für konservative Kräfte. Beim Auftreten dissipativer Kräfte,
+  zum Beispiel Reibung, geht mechanische Energie verloren. $\implies$ Umwandlung von Energei
+  in Wärme, Beobachtung: Temperaturerhöhung.
+  Idee zur Rettung des Energiesatzes: Einführung der sogenannten "inneren Energie" $\implies Thermodynamik, Temperaturbegriff$
 
-  \[U = n N_a \frac{1}{2} f k_B T = n \frac{1}{2}f R T, R = k_b N_a, Q = c_m \Delta T, Q = \lambda m\]
+  #+ATTR_LATEX: :options [Wärme]
+  #+begin_defn latex
+  Wärme ist ein makroskopisches Maß für den statischen Mittelwert der kinetischen Energie
+  mikroskopischer Objekte. Ist mit deren Relativbewegung auch eine potentielle Energie verknüpft, so tritt
+  sie zur Wärmeenergie hinzu.
+  #+end_defn
+  Der Wärmebegriff ist damit nur sinnvoll für makroskopische Systeme, das heißt Systeme mit vielen
+  mikroskopischen Objekten (Atome, Moleküle, $\ldots$). Wärmeenergie = innere Energie eines Körpers.
+  (Lange- und Bewegungsenergie des Schwerpunktes werden nicht berücksichtigt).
+  - Thermodynamik: phänomenologische Beschreibung. Das heißt makroskopische, phänomenologische Beschreibung
+	thermodynamischer Vorgänge. Neue Größen: Temperatur $T$, Wärme $Q$, Entropie $S$, $\ldots$.
+	Formulierung über Zustandsgleichungenund $3$ Hauptsätze
+  - Statistische Mechanik: statischtische Beschreibung. Das heißt mikroskopische, statistische Beschreibung
+	thermodynamischer Vorgänge. Basis: Gesetzmäßigkeiten der Mechanik und statistische Beobachtungen.
+	Zustandsgrößen: statistische Mittelwerte des Teilchenkollektivs.
+** Temperaturbegriff und Wärmeausdehung
+   Temperaturbegriff erscheit aufgrund unserer Erfahung vertraut. (Wahrnehmung von warm und kalt).
+   Aber: Qualitatives Temperaturempfinden kann trügen. Also: Physikalische Beschreibung erfordert ein genaueres Maß!
+   Nutze Erfahrung: Bringt man zwei Körper unterschiedlicher Temperatur für längere Zeit
+   zusammen so heben sie schließlich die gleiche Temperatur. Beide Körper sind dann im thermischen Gleichgewicht.
+   Das heißt: Temperatur beschreibt den Zustand eines Körpers.
+
+   #+ATTR_LATEX: :options [Nullter Hauptsatz der Wärmelehre]
+   #+begin_defn latex
+   Befinden sich zwei Körper im thermischen Gleichgewicht mit einem dritten, so stehen sie
+   auch untereinander im thermischen Gleichgewicht.
+   #+end_defn
+   Der nullte Hauptsatz erlaubt die Definition einer Temperaturskala über
+   Temperaturfixpunkte, zum Beispiel Gefrier- und Siedepunkt von Wasser.
+   Konstruktion von Thermometern über die Ausnutzung von temperaturabhängger
+   Materialeigenschaften: zum Beispiel Volumenausdehung mit steigender Temperatur,
+   Temperaturabhängige Längenänderung, Änderung des elektrischen Widerstands
+*** Volumenausdehung von Gasen
+	Experimentelle Beobachtung: Gasvolumina vergrößern sich bei Ernährung.
+	Zur Temperaturdefinition. Annahme: $\Delta V \sim \Delta T$.
+	Das heißt lineare Abhängigkeit wird in die Definition reingesteckt!
+
+	Celsius-Skala:
+	- Fixpunkt 1: $T = \SI{0}{\degreeCelsius}$
+	- Fixpunkt 2: $T = \SI{100}{\degreeCelsius}$
+
+    Quantitativ:
+	#+ATTR_LATEX: :options [Gesetz von Gay-Lussac]
+	#+begin_defn latex
+	\[V(T) = V_0(1 + \gamma T)\]
+	- $p = ~\text{const}$
+	- $T$: Temperatur
+	- $V_0$: Gasvolumen bei $T = \SI{0}{\degreeCelsius}$
+	#+end_defn
+	Experimentelle Beobachtungen:
+	\[\gamma = \frac{1}{\SI{273.15}{\degreeCelsius}}\]
+	für alle Gase, falls $T$ groß und $p$ klein. Damit folgt:
+	$V(T) = 0$ für $T = \SI{-273.15}{\degreeCelsius}$ wenn man Gaseigenschaften bis $V = 0$ extrapoliert.
+	Dieser Sachverhalt legt die Definition einer neuen von Wasser unabhängigen Temperaturskala nahe.
+	#+ATTR_LATEX: :options [Absolute Temperaturskala]
+	#+begin_defn latex
+	- Fixpunkt 1: $T = \SI{0}{\kelvin} = \SI{-273.15}{\degreeCelsius}$ \hfill(absoluter Nullpunkt)
+	- Fixpunkt 2: $T = \SI{273.16}{\kelvin}$ \hfill(Tripelpunkt des Wassers)
+	Unterteilung in Gradschritten bleibt erhalten. Das heißt $\Delta T = \SI{1}{\degreeCelsius} \estimates \Delta T = \SI{1}{\kelvin}$
+	Einheit: Kelvin, Basisgröße der Physik, SI-Einheit.
+	#+end_defn
+*** Volumen und Längenausdehung fester und flüssiger Stoffe
+	Experiment: Bei Erwärmung dehnen sich Körper im Allgemeinen aus. Man findet:
+	\[\Delta L = \alpha L \Delta T\]
+	$\alpha$: Längenausdehungskoeffizient. \\
+	Für kleine $\alpha \Delta T$ folgt:
+	\begin{align*}
+	\frac{\d L}{L} &= \alpha \d T \\
+	\ln L - \ln L_0 &= \alpha \Delta T \\
+	L &= L_0 e^{\alpha \Delta T} \approx L_0(1 + \alpha \Delta T) \\
+	\end{align*}
+	mit $L_0$: Länge bei $T = T_0$
+	Volumenausdehung:
+	\begin{align*}
+	\Delta V &= \gamma V_0 \Delta T \\
+	V &= V_0(1 + \gamma \Delta T)
+	\end{align*}
+	mit $V_0$: Volumen bei $T = T_0$.
+
+	Es gilt: $\gamma \approx 3\alpha$
+	Bemerkung:
+	\begin{align*}
+	V &= l_1 l_2 l_3 \\
+	\dd{V}{T} &= l_1 l_2 \dd{l_3}{T} + l_1 l_3 \dd{l_2}{T} + l_2 l_3 \dd{l_1}{T} \\
+	\gamma &= \frac{1}{V} \dd{V}{T} = \frac{1}{l_3} \dd{l_3}{T} + \frac{1}{l_2} \dd{l_2}{T} + \frac{1}{l_1} \dd{l_1}{T}
+	\end{align*}
+	für kleine $\Delta T$
+*** Anomalie des Wassers
+	Wasser: Keine Ausdehung bei Erwärmung zwischen $\SI{0}{\degreeCelsius}$ und $\SI{4}{\degreeCelsius}$.
+	Stattdessen: Volumen nimmt mit steigender Temperatur ab.
+	Wichtige Eigenschaft! Garantiert Leben im Wasser aufgrund von Eisbildung an Oberfläche.
+** Zustandsgleichung idealer Gase
+   Wir wissen:
+   \begin{align*}
+   p V &=~\text{const} \tag{für $T = ~\text{const} (Boyle-Mariotte)$} \\
+   V &= V_0(1 + \gamma T) \text{für $p = ~\text{const}$ (Guy-Lussac)}
+   \end{align*}
+   Wähle absolute Temperaturskala. Dann folgt für Gay-Lussac:
+   \begin{align*}
+   V &= V_0 \gamma T \\
+   \intertext{$V_0 = V(\SI{273.15}{\kelvin}), \gamma = \frac{1}{\SI{273.15}{\kelvin}}$}
+   \end{align*}
+   \begin{align*}
+   Also:
+   \intertext{Boyle Mariotte}
+   p V &= ~\text{const} \\
+   \intertext{Gay-Lussac}
+   V = V_0 \gamma T \\
+   p V = p V(p, T) = p_0 V(p_0, T) = p_0 V(p_0, T_0)\gamma T = p_0 V_0 \gamma T \sim T \\
+   \end{align*}
+   #+ATTR_LATEX: :options [Boyle-Mariotte-Gay-Lussac]
+   #+begin_thm latex
+   Für idelae Gase gilt das Boyle-Mariotte-Gay-Lussac Gesetz
+   \[pV \sim T, \wedge \frac{p_1 V_1}{T_1} = \frac{p_2 V_2}{T_2} = ~\text{const}\]
+   $p\sim T$ für $V = ~\text{const}$
+   #+end_thm
+   Frage: Was bedeutet "const" in dieser Gleichung? \\
+   Erwartung: Hängt von Stoffmenge ab. Hierzu:
+   Gedankenexperiment:
+   Fasse zwei identische Kisten gefüllt mit idealem Gas zu einer Kiste zusammen:
+   \begin{align*}
+   \intertext{1 Kist}
+   p_0 V_0 = \xi T_o \\
+   \intertext{2 zusammengefasste Kisten}
+   p_0 2 V_0 \sim T_0
+   \end{align*}
+   Also: Verdopplung von $\xi$!. Ansatz: $\xi \sim$ Gasmenge
+   \begin{align*}
+   \implies p V &= k_B N T \\
+   k_B &= \SI{1.381e-23}{\joule\per\kelvin} \tag{Boltzmankonstante}
+   \end{align*}
+   #+ATTR_LATEX: :options [Mol]
+   #+begin_defn latex
+   Das Mol ist die Stoffmenge eines Systems, das us ebensoviel Einzelteilchen besteht, wie Atome
+   im $12$ Gramm des Kohlenstoffnuklids $C$ enthalten sind. Bei Benutzung des Mol müssen die
+   Einzelteilchen spezifiziert sein und können Atome, Moleküle, Ionen, Elektronen sowie andere Teilchen
+   oder Gruppen solcher Teilchen genau angegebener Zusammensetzung sein.
+   \[\SI{1}{\mol} \estimates \SI{6.022e23}{}~\text{Teilchen}\]
+   Avogadro-Zahl:
+   \[N_A = \SI{6.022e23}{\per\mol}\]
+   #+end_defn
+   #+ATTR_LATEX: :options [Zustandsgleichung idealer Gase]
+   #+begin_thm latex
+   \begin{align*}
+   p V &= n \underbrace{N_a k_B}_{R} T \\
+   p V &= n R T \\
+   \intertext{mit $R$ (universelle Gaskonstante):}
+   R &= \SI{8.31451}{\joule\per\kelvin\mol}
+   \end{align*}
+   Für Normalbedingungen:
+   \begin{align*}
+   p_0 &= \SI{1013}{\meter\bar} \\
+   T_0 &= \SI{273.15}{\kelvin} \\
+   n &= 1 \\
+   V_0 = \SI{22.4e-3}{\meter\cubed} = \SI{22.4}{\liter}
+   \end{align*}
+   #+end_thm
+** kinetische Gastheorie
+   Bisher: Beschreibung mit Hilfe makroskopische Zustandsgrößen. \\
+   Jetzt: Ableitung makroskopischer-Zustandsgrößen aus mikroskopischen Eigenschaften. \\
+
+   Grundidee:
+   Temperatur $\estimates$ innere Energie $\estimates$ Bewegungsenergie der Teilchen. \\
+   Zustandsgrößen $\estimates$ Mittelwert mikroskopischer Größe. \\
+
+   Model des idealen Gases:
+   - $N$ Punktteilchen (Atome, Moleküle) der Masse $m$ mit statistisch verteilten Geschwindigkeiten $(N \gg 1)$
+   - Gasteilchen sind starre Kugeln, mittlerer Abstand $r$ zwischen den Gasteilchen sind
+	 groß gegen Kugelradius $r_0$. (Das heißt Eigenvolumina sind vernachlässigbar)
+   - Einzige Wechselwirkung: elastische Stoße, das heißt es gelten sowohl Impuls-
+	 als auch Energeierhaltung. (Keine innere Anregung der Gasteilchen)
+   - Stöße mit den Wänden des einschließenden Behälters sind ebenfalls perfekt elastisch.
+   Druck: Impulsübertrag der Gasteilchen auf Behälterwand. Das heißt
+   \[\text{Druck} = \frac{F}{A}, F = \dot{p}\]
+   Betrachte Gesamtkraft auf Fläche $A$:
+   \begin{align*}
+   F &= \dot{p} = \frac{\Delta p}{\Delta t} \\
+   &= \frac{\text{Impulsübertrag}}{\text{Stoß}} \cdot \frac{\text{Stöße}}{\text{Zeit}} \\
+   &= 2m v_x \cdot \frac{\text{Stöße}}{\text{Zeit}}
+   \end{align*}
+   Aber $v_x$ ist nicht für alle Gasteilchen gleich, sondern statistisch verteilt.
+   Erwartung: Verteilungsfunktoin der $v_x$ -Werte muss symmetrisch um $v_x = 0$ sein, da Gas ruht!
+   Es gilt:
+   \begin{align*}
+   N &= \int_{-\infty}^{\infty} n(v_x) \d v_x \\
+   \bar v_x &= \frac{1}{N} \int_{-\infty}^{\infty}v_x n(v_x) \d v_x = 0 \\
+   \overline(v_x^2) = \frac{1}{N} \int_{-\infty}^{\infty}v_x^2 n(v_x) \d v_x \neq 0 \\
+   \intertext{Damit folgt für Gesamtkraft $F$}
+   F &= \dot{p} = \dd{}{t} \sum_{i = 1}^{\tilde N}p_i = \dd{}{t} \int_{-\infty}^{\infty} 2m v_x \tilde N(v_x) \d v_x \\
+   \intertext{$\tilde N(v_x)$: Anzahl Gasteilchen, die mit Geschwindigkeit $v_x$ im Zeitintervall $\d t$ auf Behälterwand treffen, Bedingung: $v_x > 0$}
+   \intertext{Betrachte Gasvolumen mit Querschnittsfläche $A$:}
+   \tilde N(v_x) = \Theta(v_x) n(v_x) v_x \d t A \tag{$\Theta$: Heavyside Funktion}  \\
+   F &= \dd{}{t} \int_{-\infty}^{\infty} 2m v_x \tilde N(v_x) \d v_x \\
+   &= \dd{}{t} \int_{0}^{\infty} 2m v_x n(v_x) v_x \d t A \d v_x \\
+   &= \frac{1}{2} m A \int_{-\infty}^{\infty}2 v_x^2 n(v_x) \d v_x \\
+   &= m AN \overline(v_x^2) ng \overline(v_x^2) \\
+   &= \frac{1}{N} \int_{-\infty}^{\infty} v_x^2 n(v_x) \d v_x
+   \end{align*}
+   Damit folgt für den Gesmatdruck auf Behälterwand mit Querschnittsfläche $A$:
+   \[p = \frac{F}{A} = m N \overline{v_x^2}\]
+   Dabei ist $N$ die Teilchenanzahl pro Volumen. \\
+   Bisher: Betrachtung nur in einer Dimension. \\
+   Jetzt: Erweiterung auf drei Dimensionen. \\
+   Es gilt:
+   \[\overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2}, \overline{v^2} = \overline{v_x^2} + \overline{v_y^2} + \overline{v_z^2} \to \overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2} = \frac{1}{\rho} \overline{v^2}\]
+   (Geschwindigketien der Gasteilchen sind isotrop verteilt! Gas ruht!) $\implies$
+   \[p = \frac{1}{3} N m \overline{v^2} = \frac{2}{3}N \overline{E_{kin}}\]
+   - $\overline{E_{kin}} = \frac{1}{2} m \overline{v^2}$
+   - $p$: Druck
+   - $N$: Gesmatzahl Gasteilchen pro Volumen!
+   - $E_{kin}$: mittlere kinetische Energie
+   Vergleich mit Zustandsgleichung idealer Gase
+   \begin{align*}
+   p V &= n R T = k_B n N_A T = k_B (N V) T \\
+   p &= k_B NT \\
+   \bar E_{kin} &= \frac{3}{2} k_B T
+   \end{align*}
+   Damit ergibt sich die Zustandsgleichung idealer Gase aus der Bewegungsenergie der Gasteilchen,
+   das heißt man findet
+   - Äquivalenz zwischen phänomenologischer und mikroskopischer Beschreibung
+   - Konsistente Definition eines idealen Gases
+   Zum Ursprung des Faktors $\frac{3}{2}$ in $\bar E_{kin} = \frac{3}{2} k_B T$: \\
+   Es gilt: $p = m N \overline{v_x^2} = \frac{1}{3} m N \overline{v^2}$, das heißt
+   Faktor $3$ ergibt sich aus der Zahl möglicher Raumrichtungen beziehungsweise "Translationsfreiheitsgrade".
+   Legt nahe: Mittlere Energie eines Gasteilchens Pro Freiheitsgrad $= \frac{1}{2} k_B T$.
+   Tatsächlich können bei realen Molekülen zusätzliche Rotations- und Schwingungsfreiheitsgrade auftreten,
+   so dass die Zahl der Freiheitsgrade $f$ insgesamt zunimmt. Die Energie der einzelnen Moleküle
+   berteilt sich dann gleichförmig auf alle vorhandenen Freiheitsgrade. Es gilt:
+   Gleichverteilungssatz oder Äquipartitionsprinzip:
+   \[\overline{E_{kin}} = f \frac{1}{2} k_B T\]
+
+   \[U = n N_A \frac{1}{2} f k_B T\]
+   nennt man *innere Energie*. Gesamtenergie, die aus der Wärmebewegung von Molekülen etc.
+   resultiert. $U_n$ fasst sowohl kintische als auch (innere) potentielle Energie
+** Wärme, Wärmekapazität und latente Wärme
+   Beobachtung: Beim Erwärmen oder Abkühlen eines Körpers wird Wärme mit der Umgebung ausgetauscht.
+   #+ATTR_LATEX: :options [Wärme]
+   #+begin_defn latex
+   Wäme ist die zwischen zwei Systemen aufgrund eines Temperaturunterschieds ausgetauschte Energie
+   #+end_defn
+   das heißt: Erwärmen findet durch Energieübergratung via Wärmefluß statt.
+
+   Termisches Gleichgewicht: Wärmefluß zwischen zwei Systemen beziehungsweise Systenm und
+   Umgebung in beide Richtung gleich oder Nullpunkt Temperatur gleich!
+
+   Experiment: Temperaturausgleich System A und B.
+   \[(T_A - T) m_A \sim (T - T_B) m_B\]
+   das heißt größere Masse hat eine größen Einfluß!
+   Proportionalität hängt von der Art der Materialien ab. Einführung zweier Materialkonstanten!
+   \begin{align*}
+   C_A (T_A - T)m_A &= C_B(T - T_B) m_B \\
+   Q_A &= Q_B
+   \end{align*}
+   - $C_A, C_B$: materialspezifische Konstanten
+   - $Q_A$: Von System A abgegebene Wärme
+   - $Q_B$: Von System B aufgenommene Wärme
+   #+ATTR_LATEX: :options [Wärmemenge]
+   #+begin_defn latex
+   \[Q = c m \Delta T\]
+   $c$: spezifische Wärmekapazität
+   #+end_defn
+
+   Kalorie: $1$ Kalorie ist die Wärme, mit der man $\SI{1}{\gram}$ Wasser um $\SI{1}{\degreeCelsius}$ erwärmen kann.
+
+   Begiffe:
+   - $c = $ spezifische Wärmekapazität, spezifische Wärme
+   - $C = cm = $ Wärmekapazität einer Masse $m$
+   - $c_m = c_{mol} = c m_{mol} = $  molare Wärmekapazität, spezielle Molwärme
+   \[Q = c_m n \Delta T\]
+
+   Jetzt: Latente Wärme. Beobachtung: Temperatur eines Körpers ändert sich linear mit der
+   zugeführten Wärmeenergie. Aber!
+   Experiment: Poleischmelzen.
+   1. Aufzeizen $Q = cm \Delta T$ \checkmark
+   2. Phasenübergang $Q = \lambda m$ \\
+	  Zuführen von Wärme ohne Temperaturerhöhung. Quantitative Beobachtung: Wärmemenge $Q$ proportional
+	  zur Masse $m$.
+
+   Phasenübergänge:
+   1. Energie wird zum Aufbrechen der Teilchenbindungen gebraucht $\implies$ Wärmezufuhr
+	  - Schmelzen: fest $\to$ flüssig
+	  - Verdampfen: flüssig $\to$ fest
+	  - Sublimieren: fest $\to$ gasförmig
+   2. Bindugsenergie wird frei $\to$ Wärmeabgabe
+	  - Gefrieren / Erstarren: flüssig $\to$ fest
+	  - Kondensieren: gasförmig $\to$ flüssig
+	  - Kondensieren: gasförmig $\to$ fest
+
+   Die Wärmeenergie, die ein Körper bei einem Phasenübergang aufnimmt beziehungsweise abgibt,
+   ohne das damit eine Temperaturänderung einhergeht, nennt man *latente Wärme*, es gilt:
+   \[Q = \lambda m\]
+   mit $Q$: aufgenommene/abgegebene Wärme, $m$: Masse.
+   Dabei ist $\lambda$ die (latente) Schmelzwärme oder (latente) Verdampfungswärme.
+
+   \[U = n N_a \frac{1}{2} f k_B T = n \frac{1}{2}f R T, R = k_b N_a, Q = c_m \Delta T, Q = \lambda m\]
 ** Arbeit und Wärme
    Machanische Arbiet $\xrightarrow{\text{Reibung}}$ Wärme
    \begin{align*}

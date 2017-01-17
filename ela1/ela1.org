@@ -21,5 +21,145 @@
   Ziel: bestimme alle $x = \cvec{x_1; \vdots; x_n} \in K^n$ mit $Ax = b$, das heißt löse das lineare Gleichungssystem $Ax = b$.
   explizit
   \begin{align*}
-  a_{11} x_1 + \ldots
+  a_{11} x_1 + \ldots + a_{1n} x_n &= b_1 \\
+  &\vdots \\
+  a_{m1} x_1 + \ldots + a_{mn} x_n &= b_m \\
   \end{align*}
+  Die Matrix $A$ induziert eine lineare Abbildung $\tilde A: K^n \to K^m, x\mapsto Ax$,
+  das heißt: Bestimmung der Lösungsmenge von $Ax = b$ korrespondiert zur Bestimmung
+  der Faser $\tilde A^{-1}(b)$
+  #+ATTR_LATEX: :options [14.1]
+  #+begin_defn latex
+  Das Lineare Gleichungssystem $Ax = b$
+  - *homogen* $\xLeftrightarrow{\text{Def}} b = 0$
+  - *inhomogen* $\xLeftrightarrow{\text{Def}} b \neq 0$
+  Das LGS $Ax = 0$ heißt das zu $Ax = b$ gehörige homogene LGS. $A$ heißt die *Koeffizietenmatrix*
+  des LGS $Ax = b$. $\Lös(A, b) := \{x \in K^n \mid Ax = b = \tilde A^{-1}(\{b\})\}$ heißt der
+  Lösungsraum des LGS $Ax = b$. Insbesondere ist $\Lös(A, 0) = \ker \tilde A$.
+  #+end_defn
+  #+ATTR_LATEX: :options [14.2]
+  #+begin_thm latex
+  Es glt:
+  1. $\Lös(A, 0) \subseteq K^n$ ist ein UVR der Dimension $u - \Rang(A)$.
+  2. $\Lös(A, b) \subseteq K^n$ ist ein affinier Unterraum von $K^n$. Ist $\Lös(A,b) \neq \emptyset$
+	 dann hat dieser die Dimension $n - \Rang(A)$
+  3. Ist $\Lös(A,b) \neq \emptyset$ und $v \in \Lös(A, b)$, dann ist $\Lös(A, b) = v + \Lös(A, 0)$
+  #+end_thm
+  #+begin_proof latex
+  1. Es ist $\Lös(A, 0) = \ker \tilde A, \ker \tilde A$ ist ein UVR von $K^n$ mit
+	 $\dim(\ker \tilde A) = \dim(K^n) - \dim(\im \tilde A) = n - \Rang(\tilde A) = n - \Rang(A)$
+  2. Es ist $\Lös(A, b) = \tilde A^{-1}(\{b\})$, dies ist nach 13.5 ein affiner UR von $K^n$.
+	 Falls $\Lös(A, b) \neq \emptyset$, dann ist $b \in \im\tilde A$ und $\dim \Lös(A, b) = \dim(\{b\}) = \dim \ker \tilde A = u - \Rang A$
+  3. Falls $\Lös(A, b) \neq \emptyset, v \in \Lös(A, b)$, dann
+	 \[\Lös(A, b) = \tilde A^{-1}(\{b\}) = v + \ker \tilde A = v + \Lös(A, 0)\]
+  #+end_proof
+  #+begin_note latex
+  - $\Lös(A, 0)$ enthält immer die triviale Lösung $0$, nichttriviale Lösung von $Ax = 0$ gibt
+	es wegen 1. genau dann, wenn $\Rang A < n$
+  #+end_note
+  #+ATTR_LATEX: :options [14.3]
+  #+begin_defn latex
+  \[A \mid b := \begin{pmatrix} a_{11} & \ldots & a_{1n} & b_1 \\ \vdots & & \vdots & \vdots \\ a_{m1} & \ldots & a_{mn} & b_m \end {pmatrix} \subseteq M(m \times (n + 1), K)\]
+  heißt die erweiterte Koeffizientenmatrix des LGS $Ax = b$.
+  #+end_defn
+  #+ATTR_LATEX: :options [14.4]
+  #+begin_thm latex
+  Es sind äquivalent:
+  1. $\Lös(A, b) \neq \emptyset$, das heißt LGS $Ax = b$ besitzt eine Lösung
+  2. $\Rang(A) = \Rang(A\mid b)$
+  #+end_thm
+  #+begin_proof latex
+  1. Es ist $\im \tilde A = \tilde A(K^n) = \tilde A(\Lin(e_1, \ldots, e_n)) = \Lin(\tilde A(e_1), \ldots, \tilde A(e_n)) = \Lin(Ae_1, \ldots, Ae_n)$
+	 und es ist $\im \tilde{A\mid b} = \tilde{A\mid b}(K^{n + 1}) = \tilde{A\mid b}(\Lin(e_1, \ldots, e_{n + 1})) = \Lin(\tilde{A\mid b}(e_1), \ldots, \tilde{A\mid b}(e_n), \tilde{A\mid b}(e_{n + 1})) = \Lin((A\mid b)e_1, \ldots, (A\mid b)e_n, (A\mid b)e_{n + 1}) = \Lin(Ae_1, \ldots, Ae_n, b)$
+	 insbesondere $\im \tilde A \subseteq \im \tilde{A\mid b}$
+  2. Also $\Lös(A, b) \neq \emptyset \iff b \in \im \tilde A \iff \tilde{A\mid b} \iff \dim \im \tilde A = \dim \im \tilde{A\mid b} \iff \Rang \tilde A = \Rang \tilde{A\mid b} \iff \Rang A =\Rang A\mid b$
+  #+end_proof
+  #+ATTR_LATEX: :options [14.5]
+  #+begin_conc latex
+  Es sind äquivalent:
+  1. Das LGS $Ax = b$ besitzt genau eine Lösung
+  2. $\Rang(A) = \Rang(A\mid b) = n$
+  #+end_conc
+  #+begin_proof latex
+  1. $\implies$ 2. Das LGS $Ax = b$ besitze genau eine Lösung. Aus der Existenz einer Lösung folgt
+	 nach 14.4: $\Rang A = \Rang(A \mid b)$ aus der Eindeutigkeit folgt $\dim \Lös(A, b) = 0$, also
+	 nach 14.2:
+	 \[0 = \dim \Lös(A, b) = n - \Rang(A)\]
+	 also $\Rang(A) = n$
+  2. $\implies$ 1. Sei $\Rang(A) = \Rang(A\mid b) = n \implies \Lös(A, b) \neq \emptyset$ nach 14.2 ist
+	 $\dim \Lös(A, b) = n - \Rang(A) = 0$, das heißt die Lösung ist eindeutig bestimmt.
+  #+end_proof
+  Ziel: Algorithmus zur Bestimmung von $\Lös(A, b)$
+  #+ATTR_LATEX: :options [14.6]
+  #+begin_defn latex
+  $A$ ist in *strenger Zeilenstufenform* (SZSF) $\xLeftrightarrow{\text{Def}} A$ ist in ZSF
+  mit Pivotspalten bei $j_1, \ldots, j_r$ und es gilt:
+  - (SZ1) $a_{1j_1} = \ldots = a_{rj_r} = 1$
+  - (SZ2) $a_{ij_k} = 0 \Forall k \in \{1, \ldots, r\}, i \in \{1, \ldots, k - 1\}$
+  #+end_defn
+  #+ATTR_LATEX: :options [14.7]
+  #+begin_thm latex
+  $A$ lässt sich durch elementare Zeilenumformung auf SZSF bringen.
+  #+end_thm
+  #+begin_proof latex
+  Bringe $A$ auf ZSF B nach Satz 10.11. Multipliziere die i-te Zeile für $i = 1, \ldots r$
+  mit $\frac{1}{b_{ij_i}}$ und annulliere dann die Einträge der $j_k$-ten Spalte oberhalb
+  des Pivotelements durch Substraktion geeigneter Vielfacher der $k$-ten Zeile.
+  #+end_proof
+  #+ATTR_LATEX: :options [14.8]
+  #+begin_ex latex
+  #+begin_equation latex
+  A =
+  \begin{pmatrix}
+  0 & 0 & 3 & -1 \\
+  0 & 1 & 2 & 0 \\
+  0 & 3 & 0 & 2
+  \end{pmatrix} \in M(3\times 4, \mathbb{R}) \to
+  \begin{pmatrix}
+  0 & 1 & 2 & 0 \\
+  0 & 0 & 3 & -1 \\
+  0 & 0 & 0 & 0
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  0 & 1 & 2 & 0 \\
+  0 & 0 & 1 & -\frac{1}{3} \\
+  0 & 0 & 0 & 0
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  0 & 1 & 0 & \frac{2}{3} \\
+  0 & 0 & 1 & -\frac{1}{3} \\
+  0 & 0 & 0 & 0
+  \end{pmatrix}
+  #+end_equation
+  #+end_ex
+  #+begin_note latex
+  Die strenge ZSF von $A$ ist eindeutig bestimmt (vergleiche Blatt 11 ZA 5)
+  #+end_note
+  #+ATTR_LATEX: :options [14.9]
+  #+begin_remark latex
+  $C \in M(m\times n, K), d \in K^m$
+  ist $C\mid d$ durch eine Folge elementarer Zeilenumformungen aus $A\mid b$ entstanden,
+  dann ist $\Lös(C, d) = \Lös(A, b)$
+  #+end_remark
+  #+begin_proof latex
+  Wegen Anmerkung nach 10.5 genügt es, einzelne Zeilenumformungen von Typ 1. beziehungsweise 2. zu betrachten
+  1. Typ 1-Umformungen
+     \[A\mid b = \begin{pmatrix} a_{11} & \ldots & a_{1n} & b_1 \\ \vdots & & & \vdots \\ a_{m1} & \ldots & a_{mn} & b_m \end{pmatrix} \quad C\mid d = \begin{pmatrix} a_{11} & \ldots & a_{1n} & b_1 \\ \vdots & & & \vdots \\ \lambda a_{j1} & \ldots & \lambda a_{jn} & \lambda b_j \\ \vdots & & & \vdots a_{m1} & \ldots & a_{mn} & b_m \end{pmatrix}\]
+	 mit $\lambda \in K^x$. Es ist $x = \cvec{x_1 ; \vdots ; x_n} \in \Lös(A, b) \iff$
+	 \begin{align*}
+	 a_{11} x_1 + \ldots + a_{1n} x_n &= b_1 \\
+	 &\vdots
+	 a_{m1} x_1 + \ldots + a_{mn} x_n &= b_m \\
+     \end{align*}
+	 $\iff$
+	 \begin{align*}
+	 a_{11} x_1 + \ldots + a_{1n} x_n &= b_1 \\
+	 &\vdots
+	 \lambda a_{j1} x_1 + \ldots + a_{jn} x_n &= b_j \\
+	 &\vdots
+	 a_{m1} x_1 + \ldots + a_{mn} x_n &= b_m \\
+     \end{align*}
+	 $\iff$
+	 \[x\in \Lös(C, d)\]
+  2. Typ 2-Umformung: analog
+  #+end_proof

@@ -18,6 +18,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
 #+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
 #+LATEX_HEADER: \DeclareMathOperator{\grad}{grad}
+#+LATEX_HEADER: \DeclareMathOperator{\Lös}{Lös}
 #+LATEX_HEADER: \DeclareMathOperator{\rot}{rot}
 #+LATEX_HEADER: \DeclareMathOperator{\cha}{char}
 #+LATEX_HEADER: \DeclareMathOperator{\Abb}{Abb}

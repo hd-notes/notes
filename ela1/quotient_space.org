@@ -83,7 +83,32 @@
   $f$ ist linear und es ist $\im f = \Lin((e_1)), \ker f = \Lin((e_2))$ und für $w = \lambda e_1 = \cvec{\lambda ; 0} \in \im f$
   ist $f^{-1}(\{w\}) = f^{-1}({\cvec{\lambda ; 0}}) = \cvec{\lambda ; 5} + \ker f = \cvec{\lambda ; 5} + \Lin((e_2))$
   #+end_ex
-
+  Ziel: Wir haben gesehen, dass der Kern einer linearen Abbildung $f: V\t W$ ein UVR von $V$
+  ist und dass für jedes $w \in W$ die Faser vo $f$ über $w$ ein affiner UR von $V$ ist.
+  Wir wollen nun zu einem gegebenen UVR $U \subseteq V$ einen UR $W$ und eine lineare
+  Abbildung $f: V \to W$ konstruieren, sodass $U = \ker f$ ist (beziehungsweise dass ein
+  gegebener affiner UR von V eine Faser von $f$ ist)
+  #+ATTR_LATEX: :options [13.7]
+  #+begin_remark latex
+  $U \subseteq V$ UVR. Dann ist durch $a \sim_U b \xLeftrightarrow{\text{Def}} a - b \in U$ eine
+  Äquivalenzrelation auf $V$ gegeben. Anstelle von $s \sim_U b$ schreiben wir auch $a \equiv b (\mod U)$
+  ("$a$ kongruent $b$ modulo $U$"). Die Äquivalenzklasse von $a \in V$ ist gegeben durch
+  \[\bar a := a + U\]
+  und heißt die *Restklasse* von $a$ modulo $U$. Die Menge aller Äquivalenzklassen modulo $U$
+  bezeichnen wir mit $\frac{V}{U}$.
+  #+end_remark
+  #+begin_proof latex
+  1. "$\equiv$" ist eine Äquivalenzrelation:
+	 - "$\equiv$" ist reflexiv: Für $a \in V$ ist $a \equiv a (\mod U)$, denn $a - a = 0 \in U$
+	 - "$\equiv$" ist symmetrisch: Seien $a, b \in V$ mit $a \equiv b(\mod U)$, dann $a - b \in U \implies b - a = -(a - b) \in U \implies b\equiv a (\mod U)$
+	 - "$\equiv$" ist transitiv: Seien $a, b \in V$ mit $a \equiv b (\mod U), b \equiv (\mod U) \implies a - b \in U, b - c \in U \implies a - c = (a - b) + (b - c) \in U \implies a \equiv c (\mod U)$
+  2. Die Äquivalenzklasse von $a \in V$ ist gegeben durch
+	 \begin{align*}
+	 \bar a &= \{b \in V \mid b\equiv a(\mod U)\} = \{b \in V \mid b - a \in U\} \\
+	 &= \{b \in V \mid \Exists u \in U: b - a = u\} \\
+	 &= \{b \in V \mid \Exists u \in U: b = a + u\} = a + U
+     \end{align*}
+  #+end_proof
   #+ATTR_LATEX: :options [13.8]
   #+begin_thm latex
   $U\subseteq V$ UVR. Wir definieren auf $V/U$ Verknüpfungen

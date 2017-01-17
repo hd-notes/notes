@@ -1,6 +1,6 @@
 /*
   Copyright (C) 2016 by Robin Heinemann. All Rights Reserved.
-  sort_template.cpp -- Insertion Sort implemenation
+  sort.cpp -- Insertion Sort implemenation
 */
 
 #include "common.h"

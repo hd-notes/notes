@@ -65,3 +65,47 @@
    \dd{\sigma}{\theta} &= \pi (\frac{\alpha}{m v^2})^2 \frac{\cos{\frac{\theta}{2}}}{\sin^3{\frac{\theta}{2}}}, \d \Omega = \d \theta 4\pi \sin \frac{\theta}{2} \cos \frac{\theta}{2} \\
    \implies \dd{\sigma}{\Omega} = (\frac{\alpha}{2mv^2})^2 \frac{1}{\sin^4(\frac{\theta}{2})}
    \end{align*}
+   $\implies$ Rutherford-Streuung:
+   \[\dd{\sigma}{\Omega} = (\frac{\alpha}{2mv^2})^2 \frac{1}{\sin^4 \frac{\theta}{2}} \sim \frac{1}{\theta^4}\]
+   $\implies \sigma_{tot} = \infty$
+   Begründung:
+   \begin{align*}
+   \int \dd{\sigma}{\Omega}\d\Omega &= \int_{0}^{\pi} \dd{\sigma}{\Omega}2\pi \sin{\theta} \d\theta \\
+   \intertext{Bei kleinem $\theta$:}
+   &\sim \int_{0}^{..}\d\theta \theta \frac{1}{\theta^4} \sim \int_{0}^{...} \dd{\theta}{theta^3} `"='" ~\text{$\infty$}
+   \end{align*}
+   #+begin_ex latex
+   \[\int_{\eps}^{1} \frac{\d x}{x^\alpha} \sim \frac{1}{x^{\alpha - 1}} \Big|_1^\eps \sim (\frac{1}{\eps})^{\alpha - 1} \xrightarrow{\alpha > 1} \infty\]
+   #+end_ex
+** Teilchenzerfall
+   #+ATTR_LATEX: :options
+   #+begin_ex latex
+   - Mesonen-Zerfall: $\rho \to \pi \pi$
+   - nicht-quaten-mechanisch: Explosionen
+   - Higgs-Zefälle am LHC: $H \to \gamma \gamma, H \to b b$
+   #+end_ex
+
+   Masse $M$, innere Energei $U$:
+   \[M, U \to m_1, U_1 "+" m_2, U_2\]
+   1. Massenerhaltung: $M = m_1 + m_2$ (nicht in Spezielle Relativitätstheorie)
+   2. Energie: $U + \frac{M}{2} \bar{\v v}^2 = (U_1 + \frac{m_1}{2}\v v_1^2) + (U_2 + \frac{m_2}{2} \v v_2^2)$
+   3. Impuls: $\v p = \v p_1 + \v p_2, (\v p = M\v v)$
+   Ohne Beschränkung der Allgemeinheit ruhe $M$ vor dem Zerfall (Schwerpunktsystem) $\v p = 0, \v v = 0$ (immer durch Boost erreichbar) $\implies$
+   \begin{align*}
+   \v p_1 + \v p_2 &= 0, U - U_1 - U_2 \equiv (\Delta U) = \frac{\v p_1^2}{2 m_1} + \frac{\v p_2^2}{2 m_2} \\
+   \abs{\Delta U} &= \frac{p_1^21}{2}(\frac{1}{m_1} + \frac{1}{m_2}) = \frac{p_1^2}{2} \frac{M}{m_1 m_2} \\
+   \intertext{mit $\v p_1 = -\v p_2$:}
+   \abs{\v p_1} = \abs{\v p_2} &= \sqrt{\frac{2(\Delta U)m_1 m_2}{M}}
+   \intertext{Es gilt außerdem:}
+   \frac{\abs{v_1}}{\abs{v_2}} &= \frac{m_2}{m_1}
+   \end{align*}
+   Diese Beschreibung durch Erhaltungsätze bleibt unvollständig! Richtungsinformation fehlt.
+   (In QM-Beispielen wird die Richtungs-information oft im Spin/Drehimpuls von $M$ liegen)
+** Schwerpunkts vs Laborsystem
+   Interessanter Fall: $\theta \equiv \theta_s$ im Schwerpunktsystem sei bekannt. Frage: Wingel
+   $\theta_L$ im Laborsystem?
+   Wir wissen bereits
+   \begin{align*}
+   \abs{\v p_{1, s}} &= \sqrt{\frac{2\abs{\Delta U}m_1 m_2}{M}} \\
+   \v p_{1,s} = \abs{\v p_{1,s}} \cvec{\cos \theta_s ; \sin \theta_s}, \v v_{1,s} = \frac{\v p_{1,s}}{m_1}
+   \end{align*}

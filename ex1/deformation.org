@@ -342,3 +342,39 @@
 	| $\dot{v} = \dd{\v v}{t} = 0$ | $\v v = \v v(x,y,z,t)$              |
 	| Stromflächen                 | keine Vorhersage der Teilchenbahnen |
 	| $F_R \sim \v v$              | $F_W \sim \bar v^2$                 |
+
+	Reynold-Kriterium:
+	\begin{align*}
+	R_e < R_{e_{krit}} \tag{laminar} \\
+	R_e > R_{e_{krit}} \tag{turbulent}
+	\end{align*}
+	#+begin_ex latex
+	Für ein rundes Rohr mit Radis $R$ gilt:
+	\[R_e = \frac{2\rho \bar v R}{\eta}, R_{e_{krit}} = 2000 - 2300\]
+	#+end_ex
+*** Strömungswiderstand von glatten Körper
+	Frage: Welche Kraft wird auf einem Körper ausgeübt, der sich mit Geschwindigkeit $v$ durch
+	eine Flüssigkeit bewegt?
+	1. Laminare Strömung: $F_N \sim v$
+	   #+ATTR_LATEX: :options [Gesetz von Stokes]
+ 	   #+begin_defn latex
+	   Strömungswiederstand einer Kugel
+	   \[F_W = F_R = 6\pi \eta r v\]
+	   #+end_defn
+	   Gesetz von Stokes wichtig für die gesmate Naturwissenschaft! (Sedimentation, Staubteilchen, Milikanversuch...)
+	2. Turbulente Strömung: $F_N \sim v^2$
+	   Qualitativer Beweis: Teilchen, die mit der Strömungsgeschwindigketi $\v v_K$ auf den
+	   Körper mit Konturfläche $A$ auftreffen, werde im Staupunkt gebremst. Dadurch steigt der Druck
+	   $p_0$ um $\Delta p$. Hinter dem Körper werden die Teilchen in eine turbulente Strömung
+	   überführt. Deren Geschwindigketi entspricht ungefähr der Strömungsgeschwindigkeit $v_k$,
+	   weshalb der Druck hinter dem Körper wieder auf dem altn Druck $p_0$ absinkt. Die
+	   Druckdifferenz zwischen Vorder- und Rückseite des Körpers gibt den Druckwiderstand. Es
+	   gilt dann:
+	   - Strömung ungestört: $p_0 + \frac{1}{2}\rho \v v_k^2$
+	   - Druck vor dem Körper: $p_0 + \Delta p$
+	   - Druck hinter dem Körper: $p_0 + \frac{1}{2}\rho \overline{\v v^2}$
+	   - $\implies F_W \approx A \Delta p = A \frac{1}{2} \rho \v v_K^2 = A \frac{1}{2} \rho \overline{\v v^2}$
+	Strömungswiderstand = Staudruck $\times$ Konturfläche!! \\
+	Aber: Der Strömungswiderstand hängt auch von der Form des Körpers ab. $\implies$ Einführung
+	des "$c_W$ -Wertes" für quantitative Beschreibung:
+	\[F_W = v_W \frac{1}{2}\rho v^2 A\]
