@@ -605,3 +605,92 @@ mark=at position 0.5 with
 	Maximaler Wirkungsgrad $\eta_c = 1$ kann nur für $T_2 = \SI{0}{\kelvin}$ erreicht werden,
 	hieraus ergibt sich eine alternative thermodynamische Definition der absoluten
 	Temperaturskala.
+*** Ottomotor
+	1. Adiabate: $\Delta Q = 0, \Delta W_{ab} = \Delta U_{ab}$
+	2. Isochore: $\Delta W, Q_1 = \eta c_V(T_c - T_b) < 0$
+	3. Adiabate: $\Delta Q = 0, \Delta W_{cd} = \Delta U_{cd}$
+	4. $\Delta W = 0, Q_2 = n c_v(T_a, T_d) > 0$
+	\begin{align*}
+	\eta_0 &= \frac{\abs{\Delta W}}{Q_2}, \Delta W = \Delta U_{ab} + \Delta U_{cd} = n c_v(T_b - T_a) + nc_v(T_d - T_c) < 0 \\
+	&= \frac{T_a + T_c - T_b - T_d}{T_a - T_d} = 1 - \frac{T_b - T_c}{T_a - T_d} = 1 - \frac{T_b}{T_a} \frac{1 - \frac{T_c}{T_b}}{1 - \frac{T_d}{T_a}} \\
+	\intertext{Aus Adiabatengleichung erhält man $\frac{T_b}{T_a} = \frac{T_d}{T_a}$:}
+	1- \frac{T_b}{T_a} < \eta_c
+	\end{align*}
+*** Stirling-Motor
+	1. Isotherme
+	2. Isphore
+	3. Isotherme
+	4. Isphore
+	Ohne Regenerator:
+	\[\eta_s = \frac{R\ln \frac{V_b}{V_a}(T_1 - T_2)}{R T_2 \ln \frac{V_b}{V_a} + c_v(T_1 - T_2)}\]
+	Mit Regnerator:
+	\[\eta_s = 1 - \frac{T_2}{T_1} = \eta_c\]
+*** Zweiter Hauptsatz der Thermodynamik
+	#+ATTR_LATEX: :options [2. Hauptsatz der Thermodynamik]
+	#+begin_thm latex
+    Es gibt keine periodisch arbeitende achine, die einen höheren Wirkungsgrad hat als der Carnot-Prozess.
+	Diese Aussage ist äquivalent zum Claudius-Prinzip!
+	#+end_thm
+	Annahnme: Es gibt Wundermaschine mit $\eta > 0$ \\
+	$\implies$ Wärmereservoir: $\Delta Q_x, T_1 > T_2 \to$ Wundermaschine $\Delta W \to$ Kältereservoir: $\Delta Q_y, T_2 < T_1$
+	\begin{align*}
+	\Delta W &= \eta \Delta Q_x \\
+	\Delta W &= \Delta Q_x - \Delta Q_y
+	\end{align*}
+	Wenn man eine Carnot-Maschine mit $\Delta W$ betreibt, also
+	$\implies$ Wärmereservoir: $\Delta Q_1, T_1 > T_2 \leftarrow, \Delta W$ Carnot-Prozess $\leftarrow$ Kältereservoir: $\Delta Q_2, T_2 < T_1$ \\
+	$\implies \Delta Q_x < \Delta Q_1$
+	\begin{align*}
+	\implies \Delta W &= \eta_c \Delta Q_1 \\
+	\Delta W &= \Delta Q_1 - \Delta Q_2 \\
+	\implies \Delta Q_y &< \Delta Q_2
+	\end{align*}
+	$\implies$ Wärme von Kalt nach Warm ohne Arbeit $\lightning
+** Entropie
+   Zentraler Begriff der Thermodynamik!
+   - Kriterium für Reversibel und Irreversibel
+   - Erlaubt mathematithe Formuleriung des 2. Hauptsatzes
+   - Ordungs- beziehugsweise Wahrscheinlichkeitsmaß
+   Betrachte Carnot-Prozess:
+   \begin{align*}
+   \eta &= 1 - \frac{T_2}{T_1} = 1 - \frac{\abs{\Delta Q_2}}{\Delta Q_1} \\
+   - \frac{\Delta Q_2}{T_2} = \frac{\Delta Q_1}{T_1} \\
+   \frac{\Delta Q_1}{T_1} + \frac{\Delta Q_2}{T_2} = 0
+   \end{align*}
+   $\frac{\Delta Q}{T} =$ reduzierte Wärmemenge.
+   #+ATTR_LATEX: :options [reversible Kreisprozesse]
+   #+begin_defn latex
+   \[\sum \frac{\Delta Q_{ij,rev}}{T_i} = 0\]
+   beziehungsweise
+   \[\oint \frac{\d Q_{rev}}{T} = 0\]
+   Allgemeiner Kreisprozess:
+   \[\oint \frac{\d Q_{rev}}{T} = 0\]
+   #+end_defn
+   #+ATTR_LATEX: :options [irreversibler Kreisprozess]
+   #+begin_defn latex
+   \[\sum \frac{\Delta Q_{i,rev}}{T_i} < 0\]
+   bezierungsweise
+   \[\oint \frac{\d Q_{rev}}{T} < 0\]
+   \[\oint \frac{\d Q_{rev}}{T} = \oint \frac{\d Q_{rev}}{T} + \int \frac{\d Q_{extern}}{T} < 0\]
+   #+end_defn
+   Weg $A, B$, Anfang: $1$, Ende $2$: Wegunabhängigkeit $\implies$:
+   \[\int_{1,A}^{2} \frac{\d Q}{T} = \int_{1,B}^{2} \frac{\d Q}{T}\]
+
+   #+ATTR_LATEX: :options [Entropie und Entropieänderung]
+   #+begin_defn latex
+   \[\d S = \frac{\d Q_{rev}}{T}, \Delta S = \int_{1}^{2} \frac{\d Q_{rev}}{T}\]
+   \[S(2) = S(1) + \int_{1}^{2} \frac{\d Q_{rev}}{T}\]
+   $S$: Entropie, $\Delta S, \d s$: Entropieänderungen, $[S] = \si{\joule\per\kelvin}$
+   per Definition:
+   \[\Delta S = \oint \frac{\d Q_{rev}}{T} = 0\]
+   $\implies$ Bei einem reversiblen Kreisprozess bleibt die Entropie konstant
+   #+end_defn
+   #+begin_ex latex
+   #+ATTR_LATEX: :options [Reibung]
+   Arbeit $\to$ Wärme
+   \[\Delta S = \frac{\Delta W}{T} = \frac{\Delta Q}{T} > 0\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Wärmeleitung]
+   #+begin_ex latex
+   Zwei Wasserbehälter: $T_1, T_2$
+   #+end_ex

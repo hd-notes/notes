@@ -390,7 +390,7 @@
    3. Konvergiert die Taylorreihe von $f$ und $x_0 \Forall x$ in einer Umgebung von $x_0$
 	  und gilt $f(x) = t_\infty(x_0, x)$, so heißt $f$ (reell) analytisch in $x_0$
    #+end_defn
-   #+ATTR_LATEX: :options [Taylor-Entwicklung]
+   #+ATTR_LATEX: :options [4.28 Taylor-Entwicklung]
    #+begin_thm latex
    Sei $f:(a, b)\to\mathbb{R}$ eine glatte Funktion mit gleichmäßig beschränker Ableitung und
    \[\sup_{x\in (a, b)}\abs{f^{(n)}(x)} \leq M < \infty \Forall n\in\mathbb{N}\]
@@ -437,3 +437,83 @@
    - $\abs{f(x) - f(y)} \leq \abs{(x - y)(x + y)} \leq K\abs{x - y}$
    - $f(x) = x^2 x\in (a, b), f'(x) = x, \abs{f'(x)} < \max\abs{2a, 2b}$
    - es gibt Funktionen, die differenzierbar und eine gleichmäßig beschränkte Ableitung haben, aber nicht stetig differenzierbar sind (Beispiel: UB10)
+** Anwendung von Taylor-Entwicklung
+   #+ATTR_LATEX: :options [4.29]
+   #+begin_korollar latex
+   Sei $f:(a, b)\to \mathbb{R}$ eine $n$-mal $(n \geq 2)$ stetig differenzierbare Funktion mit
+   \[f'(x_0) = f''(x_0) = \ldots = f^{n - 1}(x_0)= 0, f^{(n)}(x_0) \neq 0\]
+   für ein $x_0 \in (a, b)$
+   Ist $n$ gerae, so hat $f$ in $x_0$ ein striktes lokales Minimum oder Maximum (je nachdem ob $f^{(n)}(x_0) > 0$ oder $f^{(n)}(x_0) < 0$ ist).
+   Ist $n$ ungerade, so hat $f$ in $x_0$ einen Wendepunkt.
+   #+end_korollar
+   #+begin_proof latex
+   Ist $f$ $n$-mal differenzierbar in $(a, b)$ und gilt die Bedingung, so folgt mit der Taylor-Entwicklung
+   \[f(x) = \sum_{k = 0}^{n - 1} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k + \frac{f^{(n)}(\xi)}{n!}(x - \xi)^n = f(x_0) + \frac{f^{(n)}(\xi)}{n!}(x - \xi)^n\]
+   mit einem $\xi \in (a, b)$ zwichen $x$ und $x_0$. Die Funktion
+   \[\Delta_n(x) := \frac{f(x) - f(x_0)}{(x - x_0)^n}, x \neq x_0\]
+   konvergiert für $x \to x_0$ nach
+   \[\Delta_n(x) \to \frac{f^{(n)}(x_0)}{n!}\]
+   Folglich kann die Funktion $\Delta_n$ zu einer auf $(a, b)$ stetigen Funktion fortgesetzt werden. Für diese gilt
+   \[f(x) - f(x_0) = \Delta_n(x)(x - x_0)^n, \Delta_n(x_0) = \frac{f^{(n)}(x_0)}{n!}\]
+   Falls $\Delta_n(x_0) > 0$, existiert wegen der Stetigkeit von $\Delta_n$ eine $\eps$-Umgebung, $\eps > 0$,
+   von $x_0$, in der $\Delta_n > 0$. Auf dieser $\eps$-Umgebung git daher für gerades $n$:
+   \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \implies f(x) > f(x_0)\]
+   $\implies f(x_0)$ ist ein lokales Minimum. Analog argumentieren wir für $\Delta_n(x_0) < 0$.
+   Für ungerades $n$ dagegen \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \begin{cases} > 0 & x > x_0 \\ < 0 & x < x_0 \end{cases}\]
+   $\implies f(x_0)$ ist kein lokales Extremum
+   #+end_proof
+   #+ATTR_LATEX: :options [4.30]
+   #+begin_ex latex
+   1. Exponentialfunktion vesitzt um $x_0$ die Taylor-Entwicklung
+	  \[e^x = \sum_{k = 0}^{n} \frac{x^k}{k!} + R_{n + 1}(x), R_{n + 1}(x) = \frac{e^\xi}{(n + 1)!}x^{n + 1}\]
+	  stimmt mit der Potenzreihe Darstellung überein.
+   2. $\displaystyle \sin(x) = \sum_{k = 0}^{n} \frac{(-1)^k}{(2k + 1)!}x^{2k + 1} + R_{2n + 3}(x), R_{2n + 3}(x) = \frac{\sin^{(2n + 3)}(\xi)}{(2n + 3)!}x^{2n + 3} = \frac{(-1)^{2n + 1}\cos(\xi)}{(2n + 3)!}x^{2n + 3}$
+   3. $f(x) = \ln(1 + x), x_0 = 0$
+	  \[\ln^{(k)}(1 + x)\mid_{x = 0} = (-1)^{k - 1} \frac{(k - 1)!}{(1 + x)^k}\mid_{x = 0} = (-1)^{k - 1}(k - 1)!\]
+	  Dann für $-1 < x \leq 1$
+	  \[\ln(1 + x) = \sum_{k = 1}^{n} \frac{\ln^{(k)}(1)}{k!}x^k + r_{n + 1} = \sum_{k = 1}^{n} \frac{(-1)^{k - 1}}{k}x^k + R_{n + 1}, R_{n + 1} = \frac{\ln^{(n)}(1 + \xi)}{(n + 1)!}x^{n + 1} = \frac{(-1)^k}{(n + 1)(2 + \xi)^{n + 1}}x^{n + 1}\]
+	  Für festes $x, \xi \in (-1, 1)$ ist $\abs{R_{n + 1}(x)} \leq \frac{c(x)}{n} \xrightarrow{n \to \infty} 0$.
+	  Die Reihe konvergiert für $x\in \string(-1, \string]$ (absolut nur für $x\in(-1, 1)$). Zum Beispiel:
+	  \[\ln(2) = \sum_{k = 1}^{\infty} \frac{(-1)^{k - 1}}{k}\]
+	  und wir bekommen Limes der alternierenden harmonischen Reihe.
+   #+end_ex
+** Differentation und Grenzprozesse
+   \[\sum_{k = 1}^{\infty} a(x) = \lim_{n \to \infty} \sum_{k = 1}^{\infty}a(x)\]
+   Motivation: Frage:
+   \[\dd{}{x}(\sum_{k = 1}^{\infty}a(x)) \overset{?}{=} \sum_{k = 1}^{\infty}\dd{}{x}a(x)\]
+   #+ATTR_LATEX: :options [Patalogische Beispiele]
+   #+begin_remark latex
+   1. Eine gleichmäßig konvergente Folge differenzierbarer Funktionen mit dicht differenzierbarem Limes
+	  \[f_n(x) := \begin{cases} \frac{n}{2}x^2 + \frac{1}{2n} & \abs{x} \leq \frac{1}{n} \\ \abs{x} & \abs{x} > \frac{1}{n} \end{cases}\]
+	  - $f_n$ sind differenzierbar
+	  - $f_n \xrightarrow{x \to \infty} \abs{x}$ auf $\mathbb{R}$ gleichmäßig und nicht differenzierbar
+   2. $f_n(x) := \frac{\sin(n^2 x)}{n}$
+	  - $f_n$ differenzierbar
+	  - $f_n \xrightarrow{n\to\infty} 0$ gleichmäßig auf $\mathbb{R}$, Limes Funktion $f(x) \equiv 0$
+	  - $f'_n(x) = n\cos{n^2}x$ ist in $x = m\pi, m\in \mathbb{R}$ divergent $\implies f'_n(x) \not\to f'(x)$
+   3. $f_n(x) := x - \frac{x^n}{n}$
+	  - $f_n$ differenzierbar
+	  - $f_n \to f, f(x) = x$ gleichmäßig auf $[0, 1]$, aber $f'_n(x) = 1 - x^{n - 1}$ in $x = 1, f'_n(1) = 0$ nicht gegen $f'(x) = 1$ konvergent
+   #+end_remark
+   #+ATTR_LATEX: :options [Stabilität der Differenzierbarkeit]
+   #+begin_thm latex
+   Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge stetig differenzierbarer Funktionen auf einem beschränktem Intervall, welche Punktweise gegen ein Funktion $f$ konvergiert.
+   Ist die Folge der Ableitungen $(f_n)'_{n\in\mathbb{N}}$ gleichmäßig konvergent gegen einen $f^\ast$, so ist auch $f$ differenzierbar und es gilt
+   \[f' = f^\ast \iff \dd{}{x}(\lim_{n\to\infty} f_n(x)) = \lim_{n \to\infty} f_n'(x)\]
+   #+end_thm
+   #+begin_proof latex
+   Sei $x_0 \in I$ und
+   \[\Delta(x) := \begin{cases} \frac{f(x) - f(x_0)}{x - x_0} & x\neq x_0 \\ f^{\ast}(x_0) & x = x_0 \end{cases}\]
+   Falls $f_{(x_0)} = f^\ast(x_0) \iff \Delta(x)$ ist stetig in $x = x_0$. Für $x \in i\setminus\{x_0\}$ konvergiert
+   \[\Delta_n(x) := \frac{f_n(x) - f_n(x_0)}{x - x_0}\xrightarrow{n\to\infty} \Delta(x)\]
+   Nach dem Mittelwertsatz gibt es ein $\xi_n \in I$, zwischen $x$ und $x_0$, sodass
+   \[f'_n(\xi_n) = \frac{f_n(x) - f_n(x_0)}{x - x_0} = \Delta_n(x)\]
+   Folglich ist
+   \[\Delta(x) - \Delta(x_0) = \Delta{x} - \Delta_n(x) + f_n'(\xi_n) - f^\ast(x)\]
+   Sei $\eps > 0$ gegeben. Wir wählen ein $n_0 \in \mathbb{N}$ und ein $\delta > 0$, sodass $\Forall n\geq n_0$ und $x \in U_\sigma(x_0)$ gilt
+   \[\abs{f'_n(x) - f^\ast(x_0)} \leq \abs{f'_n(x) - f^\ast(x)} + \abs{f^\ast(x) - f^\ast(x_0)} < \frac{\eps}{2}\]
+   Mit $x\in U_\sigma(x_0)$ gilt
+   \[\xi_n \in U_\sigma(x_0), \Forall x \in U_\sigma(x_0)\setminus\{x_0\} \Exists n_1(x) \geq n_0: \Forall n\geq n_1(x): \abs{\Delta(x) - \Delta_n(x)} < \frac{\eps}{2}\]
+   Für beliebige $x\in U_\sigma(x_0)\setminus\{x_0\}$ folgt dann, dass für $x \geq n_1(x)$
+   \[\Delta(x) -\Delta(x_0) \leq \abs{\Delta(x) - \Delta_n(x)} + \abs{f'_n(\xi_n) - f} < \eps \implies \Delta(x) \xrightarrow{x\to x_0} \Delta(x_0)\]
+   #+end_proof
