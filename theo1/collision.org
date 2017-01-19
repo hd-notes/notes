@@ -145,3 +145,34 @@
    \[\abs{\v p_{1, s}'} = \abs{\v p_{1, s}'} = \sqrt{\frac{2\abs{\Delta U}m_1 m_2}{M}} = \sqrt{\frac{m_2 \v p_{1,s}^2 + m_1 \v p_{2,s}^2}{m_1 + m_2}} = \abs{\v p_{1,s}} = \abs{\v p_{2,s}}\]
    $\implies$ Der Übergang $\v p_{1,s}, \v p_{2,s} \to \v p_{1,s}', \v p_{2,s}'$
    entspricht Drehung, ohne Betragsänderung!
+** Elastischer Stoß am ruhenden Target
+   In $L$ soll Target ruhen. Projektil: $m_1, \v p_1 \neq 0$, Target: $m_1, \v p_2 = 0$
+   (Kein Index für $L$, Index "s" für Schwerpunktsystem)
+   Gegeben: $\v p_1, \Theta$ gesucht $\abs{\v p_1'}$
+   1. Analyse durch Übergang zum Schwerpunktsystem. In S:
+	  \[0 = \v p_s = \v p_{1, s} + \v p_{2, s} = (\v p_1 - m_1 \underarrow[\v v]{Boost Geschwindigkeit $\v v = \v v_{Boost}$}) + (0 - m_2 \v v)\]
+	  (Benutze $\v v_s = \v v_L - \v v_{Boost}$)
+	  \[\implies \v v = \frac{\v p_1}{M}i, M \equiv m_1 + m_2\]
+	  \[\v p_{1,s} = -\v p_{2, s} = -(-m_s \v v) = \frac{m_2}{M} \v p_1\]
+      - Jetzt erhalten wir $\v p_{1, s}', \v p_{2,s}'$ durch Drehung um $Theta_s$
+	  - Dann trf. wir zurück zu $L \implies \abs{\v p_1', \Theta} also Funktion von $\Theta_s$.
+		Eliminieren von $\Theta_s$ ergibt $\abs{\v p_1'}$ als Funktion von $\Theta$
+   2. Analyse direkt in $L$ (Notation: $p_1 \equiv \abs{\v p_1}$, etc.)
+	  Energie:
+	  \[\frac{p_1^2}{2m_1} = \frac{p_1^{\prime 2}}{2m_1} + \frac{p_2^{\pime 2}}{2 m_2}\]
+	  beziehungsweise:
+	  \[p_2^{\prime 2} = \frac{m_2}{m_1}(p_1^2 - p_1^{\prime 2})\]
+	  Impuls:
+	  \[\v p_1 = \v p_1' + \v p_2' \implies p_{1,\parallel} = p_{1, \parallel}' + p_{2,\parallel}', p_{1,\perp}' = -p_{2,\perp}'\]
+	  \begin{align*}
+	  \implies p_1 &= p_{i,\parallel} = p_1' \cos{\theta} + \sqrt{(p_2')^2 - (p_{2,\perp}')^2} = p_1\cos{\theta} + \sqrt{(p_2')^2 - (p_{1,\perp}')^2} \\
+	  &= p_1'\cos{\theta} + \sqrt{\frac{m_2}{m_1}(p_1^2 - p_1^{\prime^2}) - (p_1')^2 \sin^2{\theta}} = p_1
+	  \intertext{Forme um, so dass $\sqrt{\ldots}$ rechts allein steht, quadriere, löse auf nach $p_1'$:}
+	  p_1' &= p_1 \frac{m_1\cos{\theta} \pm \sqrt{m_2^2 - m_1^2\sin^2{\theta}}}{M}
+      \end{align*}
+	  Falls das Argument der Wurzel positiv, tatsächlich zwei physikalische Lösungen. Zum Verständins: Enfacher Fall: $\theta = 0, m_1 > m_2 \implies$
+      \begin{align*}
+      p_1' &= p_1 \frac{m_1 + \sqrt{m_2^2}}{M} = p_1 \frac{M}{M} = p_1 \\
+      p_1' &= p_1 \frac{m_1 - m_2}{M} = p_1 \frac{m_1 - m_2}{m_1 + m_2}
+      \end{align*}
+	  Im Allgemeinen (bei $\theta \neq 0$) ist die Situation analog, Es gibt einen "starken" und "schwachen" Stoß, die zum gleichen $\theta$ führen. (aber nur falls Argument von Wurzel positiv)

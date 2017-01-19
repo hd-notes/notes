@@ -1249,3 +1249,112 @@
 		     // ...
 		 };
          #+END_SRC
+   3. Klasse templatisieren: typedef aus 1. durch Template-Deklaration ersetzen
+      #+BEGIN_SRC cpp
+	  template<typename PixelType>
+	  class Image {
+	  // wie zuvor, nur ohne typedef
+	  };
+      #+END_SRC
+   4. Tests anpassen:
+	  1. typedef aktualisieren
+         #+BEGIN_SRC cpp
+		 void test_image_uint16_t() {
+		     typedef Image<uint16_t> Img; // überall, wo Img verwendet wird, hat sich jetzt automatisch der Typ von Image nach Image<uint16_t> geändert
+		 }
+         #+END_SRC
+	  2. freie Funktionen sind noch nicht templatisiert $\implies$ vorübergehend auskommentieren, ebenso
+		 die zugehörigen Tests (zum Beispiel to_string(), readPGM(), writePGM())
+	  3. verbleibende Tests ausführen, müssen immer noch funktionieren
+	  (die Typdeklaration Image<uint16_t> wird vom Compiler so implementiert, dass in der Templateklasse Image alle Vorkommen des Typ-Platzhalters "PixelType" durch den Type "uint16_t" ersetzt werden.
+      Das ist "Template Instanziierung", das heißt erzeugen einer echten Klasse aus einer Template-Klasse)
+   5. *eine* freie Funktion auswählen, wieder einkommentieren (zusammen mit ihren Tests) und templatisieren, zum Beispiel
+      #+BEGIN_SRC cpp
+	  std::string to_string(Image const & img);
+	  // wird zu
+	  template<typename PixelType>
+	  std::string to_string(Image<PixelType> const & img);
+	  // Implementation bleibt zufällig gleich in diesem Fall
+      #+END_SRC
+   6. Test ausführen, müssen wieder funktionieren, zurück zu Schritt 5, bis alle freien Funktionen templatisiert sind
+   7. weitere Testfuktion für einen anderen Pixeltyp schreiben
+      #+BEGIN_SRC cpp
+	  void test_image_float() {
+	  typedef Image<float> Img;
+	  // ähnliche Tests wie in test_image_uint16_t(), aber *auch* mit krummen Zahlen (ging vorher nicht), klappt das *nicht*, hat man oft uint16_t irgendwo nicht durch PixelType ersetzt
+	  }
+      #+END_SRC
+	  $\implies$ erst, wenn beide Testfunktionen laufen, kann man relativ sicher sein, das Templatisierung erfolgreich
+* Adressen und Zeiger
+  Bisher: Speicherzellen werden über Variablennamen angesprochen (oder mehrere Namen für gleiche Speicherzelle, falls Referenzen).
+  Adressen sind Alternative, um Speicherzelle zu identifizieren. Betrachte den gesamten Speicher des Comupters als *ein*
+  riesiges Array vom Type "byte" (globaler Index vom Betriebssystem festgelegt). Der globale Index heißt
+  Adresse des bytes. Die Adresse des esten Bytes einer Speicherzelle heißt Adresse der Speicherzelle.
+  $\implies$ kennt man die Adresse einer Speicherzelle und ihren Typ, kann man den Speicher genauso identifizieren wie
+  mit Variablenklammern. Konvention: die Adresse $0$ wird nicht verwendet $\implies$ interpretiert als "ungültige Adresse".
+  Die Adresse einer Speicherzelle kann von einer Variable mit dem Adressoperator erfragt werden. (unäre \&-Operator)
+  #+BEGIN_SRC cpp
+  int i = 3;
+  std::cout << "Adreesse von i: " << &i << std::endl; // Nicht mit binärem und-Operator verwechseln
+  #+END_SRC
+  Adressen ewrden Standardmäßig im Hexadezimalformat angezeigt. Hex: zur Basis 16, Ziffer 0-9,a-f, Prefix: 0x. Zum Beispiel
+  |    0x1 |     1 |
+  |    0xa |    10 |
+  |    0xe |    14 |
+  |   0x10 |    16 |
+  |   0x11 |    17 |
+  |   0x1a |    26 |
+  | 0xbeaf | 48815 |
+  "Zeiger" sind spezielle Variablen, mit denen man Adressen speicher kann. (englisch Pointer)
+  #+BEGIN_SRC cpp
+  int i = 3;
+  int * ptr_i = &i; // Initialisierung
+  int * ptr2 = ptr_i; // Kopierkonstruktor: weiterer Zeiger mit der selben Adresse wie ptr_i
+  int * ptr3 = 0; // ungültige Adresse
+
+  if(!ptr3) {
+  // ungülge Adresse
+  } else {
+  // gültige Adresse
+  }
+  #+END_SRC
+  Um vom Zeiger zur Variablen zurückzukommen, benutzt man den Dereferenzierungsoperator * (von Iteratoren bereits bekannt) $\implies$ Ergebnis: Referenz auf die Speicherzelle, die bei der Adresse beginnt
+  #+BEGIN_SRC cpp
+  int i = 3;
+  int * ptr_i = &i;
+  int &j = *ptr_i; // j ist neuer Name für i, äquivalent zu int & j = i;
+  j = 5; // i ändert sich auch
+  *ptr_i = 7; // i und j ändern sich, Schreibender Zugriff über den Zeiger, Compiler legt intern eine temporäre Referenz an
+  int k = *ptr_i; // eine neue Variable mit dem selben Wert wie *ptr_i (= 7
+  #+END_SRC
+  Adressoperator und Dereferenzierungsoperator sind invers: für alle Variablen gilt:
+  #+BEGIN_SRC cpp
+  assert(i == *(&i));
+  #+END_SRC
+  Nulltes Argument von Member-Funktionen ist eigentlich ein *Zeiger* auf die Adresse des aktuellen
+  Objekts this: Zeiger, wir haben daraus Referenz erzeugt (*this)
+** Wozu verwendet man Zeiger?
+   Heute versucht man, Zeiger so weit wie möglich in Objekte zu kapseln $\implies$ einfacher, weniger Fehler
+   zum Beispiel std::vector versus old-type C-Arrays. In C gibt es noch keine Referenzen $\implies$
+   benutze Zeiger um Referenzen zu simulieren:
+   C++:
+   #+BEGIN_SRC cpp
+   void foo(int & i) {
+       i = 5;
+   }
+
+   int j = 3;
+   foo(j);
+   assert(j == 5);
+   #+END_SRC
+   C:
+   #+BEGIN_SRC cpp
+   void foo(int * i) {
+       *i = 5;
+   }
+
+   int j = 3;
+   foo(&j);
+   assert(j == 5);
+   #+END_SRC
+   $\implies$ wenn man aus c++ eine Bibilothek aufrufen (zum Beispiel um TIFF oder JPEG zu erzeugen) braucht man oft Zeiger.
