@@ -22,7 +22,7 @@
    potentielle Energie für Gravitation zwischen $m_0$ und $m_1$
    \[V(\abs{\v r_0 - \v r_1}) = - \frac{m_0 m_1 G}{\abs{\v r_0 - \v r_1}}, \v F_{01} = -\v \nabla_0 V(\abs{\v r_0 - \v r_1}) \equiv -(\frac{\partial}{\partial(r_0)^1}, \frac{\partial}{\partial(r_0)^2}, \frac{\partial}{\partial(r_0)^3})^T V(\abs{\v r_0 - \v r_1})\]
    Wir wollen hier nur sehr kleine "Testmassen" $m_0$ betrachten $\implies$ Bewegung von $m_0$ im unveränderlichen Fled von $m_1, m_2, m_3, \ldots \implies$ Schreibe
-   \[V(\v r_0) = -\frac{m_0 m_1 G}{\abs{\v r_0 - \v r_1}}, \v F = -\v \nable_{(0)}V(\v r_0)\]
+   \[V(\v r_0) = -\frac{m_0 m_1 G}{\abs{\v r_0 - \v r_1}}, \v F = -\v \nabla_{(0)}V(\v r_0)\]
    Nützlich, ein von $m_0$ unabhäniiges Gravitationspotential $\phi$ zu definieren: $\phi \equiv \frac{V}{m_0} \implies$
    \[\phi(\v r_0) = -\frac{m_1 G}{\abs{\v r_0 - \v r_1}}, \v F = -m_0 \v \nabla_0\phi(\v r_0)\]
    ($m_0$ verschwindet völlig in Bewegungsgleichung der Testmasse: $\ddot{\v r_0} = - \v \nabla_0 \phi(\v r_0)$) \\
@@ -33,4 +33,4 @@
    Idee: diskrete Summe von $\v r_a \to$ kontinuierliche Integral Variable $\v r$. Erinnerung an Flächenintegral:
    \[\int_A \d^2 \v x f(\v x) \equiv \int_{x_{min}^1}^{x_{max}^1} \d x^1\int_{x_{min}^2}^{x_{max}^2} \d x^2 f(x^1, x^2)\]
    Volumenintegral:
-   \[\int_V \d^3 \v x f(\v x) = \int_{x^2_{min}}^{x^2_{max}}\dx^2 \int_A \d^2 \v y f(x^1, x^2, x^3), \v y = (x^1, x^3)^T\]
+   \[\int_V \d^3 \v x f(\v x) = \int_{x^2_{min}}^{x^2_{max}}\d x^2 \int_A \d^2 \v y f(x^1, x^2, x^3), \v y = (x^1, x^3)^T\]

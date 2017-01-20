@@ -1292,7 +1292,7 @@
   Adresse des bytes. Die Adresse des esten Bytes einer Speicherzelle heißt Adresse der Speicherzelle.
   $\implies$ kennt man die Adresse einer Speicherzelle und ihren Typ, kann man den Speicher genauso identifizieren wie
   mit Variablenklammern. Konvention: die Adresse $0$ wird nicht verwendet $\implies$ interpretiert als "ungültige Adresse".
-  Die Adresse einer Speicherzelle kann von einer Variable mit dem Adressoperator erfragt werden. (unäre \&-Operator)
+  Die Adresse einer Speicherzelle kann von einer Variable mit dem Adressoperator erfragt werden. (unäre &-Operator)
   #+BEGIN_SRC cpp
   int i = 3;
   std::cout << "Adreesse von i: " << &i << std::endl; // Nicht mit binärem und-Operator verwechseln

@@ -10,3 +10,5 @@
 #+INCLUDE: "series.org" :minlevel 1
 #+INCLUDE: "continous_functions.org" :minlevel 1
 #+INCLUDE: "differential_calculus.org" :minlevel 1
+* Integration
+  Auf analytischer Seite kann die Integration
