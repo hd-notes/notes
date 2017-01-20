@@ -57,6 +57,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\id}{id}
 #+LATEX_HEADER: \DeclareMathOperator{\Rang}{Rang}
 #+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
+#+LATEX_HEADER: \DeclareMathOperator{\RS}{RS}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs
@@ -69,7 +70,8 @@
 #+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 #+LATEX_HEADER: \newcommand{\euler}{e}
 #+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
-#+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
+#+LATEX_HEADER: \newcommand\ubar[1]{\stackunder[1.2pt]{$#1$}{\rule{.8ex}{.075ex}}}
+# #+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
 #+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
 #+LATEX_HEADER: \newcommand{\f}[2]{{\frac{#1}{#2}}}
 #+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}

@@ -11,4 +11,103 @@
 #+INCLUDE: "continous_functions.org" :minlevel 1
 #+INCLUDE: "differential_calculus.org" :minlevel 1
 * Integration
-  Auf analytischer Seite kann die Integration
+  Auf analytischer Seite kann die Integration als inverser Prozess zur
+  Differentation angesehen werden. Geometrisch kann man für einfache Klasse von Funktionen
+  (etwa stetige Funktionen), das (bestimmte) Integral einer (positiven) Funktion $f$ auf
+  einem Intervall $[a, b]$ interpretieren als den Flächeninhalt zwischen der reellen Achse und dem
+  Funktionsgraph (/insert Symbolbild here/)
+** Das Riemannsche Integral
+   Wir betrachten ein beschränktes Intervall $I = [a, b]$ und eine (endliche) *Zerlegung* $Z$
+   von \[I, Z = \{x_0, \ldots, x_n\}, a:= x_0 < x_1 < \ldots < x_n =: b\]. Wir bezeichnen
+   \[h := \max_{k = 1, \ldots, n} \abs{x_k - x_{k - 1}}\] als die *Feinheit der Zerlegung*. Die
+   Menge aller solcher Zerlegungen sei mit $\mathcal{Z}(a, b)$ bezeichnet eine Verfeinerung
+   \[\tilde Z = \{\tilde x_0, \ldots, \tilde x_m\} \in \mathcal{Z}(a,b)\] mit $m \geq n$ von
+   $Z \in \mathcal{Z}(a,b)$ enthält die Zerlegungspunkte von $Z$ (und möglichst noch weitere).
+   Es gilt \[\tilde h = \max_{k = 1,\ldots, m} \abs{\tilde x_{k} - \tilde x_{k - 1}} \leq h\]
+   Für zwei Zerlegungen $Z_1, Z_2 \in \mathcal{Z}(a,b)$ besteht eine gemeinsame Verfeinerug $Z_{12}$
+   und $h_{12} \leq \min\{h_1, h_2\}$. Eine Zerlegung $Z\in\mathcal{Z}(a, b)$ mit \[\abs{x_k - x_{k - 1}} = h \Forall k = 1,\ldots, n\]
+   heißt *äquidistant*.
+   #+ATTR_LATEX: :options [5.1 Ober- und Untersumme]
+   #+begin_defn latex
+   Sei $f:I = [a,b] \to\mathbb{R}$ und $Z \in \mathcal{Z}(a, b)$ eine Zerlegung mit $Z = \{x_0, \ldots, x_n\}$.
+   Wir setzen $I_k := [x_{k - 1}, x_k]$ für $k =1, \ldots, n$. Damit definieren wir die Obersumme der Funktion $f$ bezüglich der Zerlegung $Z$ mittels
+   \[\bar S_Z f(x) := \sum_{k = 1}^{n}\sup_{x \in[x_{k - 1}, x_k]}f(x)(x_k - x_{k - 1})\]
+   Völlig analog setzen wir die Untersumme von $f$ bezüglich $Z$:
+   \[\ubar S_Z f(x) := \sum_{k = 1}^{n}\inf_{x \in I_k}f(x)(x_k - x_{k - 1})\]
+   #+end_defn
+   #+ATTR_LATEX: :options [5.2 Ober und Unterintegral]
+   #+begin_defn latex
+   Wir definieren das *Oberintegral* $f$ auf $I$ als
+   \[\overline{\int_{a}^{b}}f(x) \d x := \inf_{Z\in \mathcal{Z}(a,b)} \bar S_Zf(x)\]
+   Analog definieren wir das *Unterintegral* von $f$ auf $I$
+   \[\underline{\int_{a}^{b}} f(x)\d x := \sup_{Z\in\mathcal{Z}(a,b)} \ubar S_Z f(x)\]
+   #+end_defn
+   #+ATTR_LATEX: :options [5.3]
+   #+begin_lemma latex
+   1. Für eine beschränkte Funktion $f: I = [a, b] \to \mathbb{R}$ existieren das Oberintegral und das Unterintegral
+   2. Sei $(Z_n)$ eine Folge von Zerlegungen aus $Z_n \in \mathcal{Z}(a, b), n\in\mathbb{N}$. Sei $h_n$
+	  die Feinheit von $Z_n$ mit $h_n \to 0$ für $n \to \infty$. Dann gilt
+	  \[\lim_{n\to\infty} \ubar S_{Z_n} = \underline{\int_{a}^{b}} f(x) \d x \leq \overline{\int_{a}^{b}} f(x) \d x = \lim_{n\to\infty} \ubar S_{Z_n}\]
+   #+end_lemma
+   #+begin_proof latex
+   1. Sei $Z\in \mathcal{Z}(a, b)$ eine beliebige Zerlegung. $\ubar S_Z$ und $\bar S_Z$ sind beschränkt, da
+	  \[\inf_{x\in[a,b]} f(x)(b - a) \leq \ubar S_Z \leq \bar S_Z \leq \sup_{x\in[a,b]} f(x)(b - a)\]
+	  Die Existenz des Ober- und Unterintegrals folgt aus Existenz von Supremum und Infimum beschränkter Zahlenmengen
+   2. Sei $(Z_n)_{n\in\mathbb{N}}$ eine Folge von Elementen aus $\mathcal{Z}(a,b)$ mit $h_n \xrightarrow{n\to\infty} 0$.
+	  Nach Definition von Supremum und Infimum gilt
+	  \[\Forall \eps > 0 \Exists Z_\eps, Z^\eps \in \mathcal{Z}(a,b): \underline{\int_{a}^{b}} f(x) \d x \leq \ubar S_{Z_\eps}(f) + \frac{\eps}{2} \wedge \bar S_{Z^\eps}(f) \leq \overline{\int_{a}^{b}}f(x) \d x + \frac{\eps}{2}\]
+	  Da nun $Z_\eps$ und $Z^\eps$ nur endlich viele Unterteilungspunkte haben und $h_n \to 0$ gilt,
+	  kann $n\in \mathbb{N}$ so groß gewählt werden, dass die Teilintervalle von $Z_n$ die Zerlegungspunkte
+	  von $Z^\eps, Z_\eps$ enthalten und insgesamt eine Länge $L < \frac{\eps}{2M}$ mit
+	  \[M = \sup_{x\in I} \abs{f(x)}\]
+	  haben. dann gilt
+	  \[\ubar S_{Z_\eps}(f) \leq \ubar S_{Z_n}(f) + \frac{\eps}{2} \wedge \bar S_{z_n}(f) \leq \bar S_{Z^\eps}(f) + \frac{\eps}{2}\]
+	  und daraus folgt
+	  \begin{align*}
+	  &\underline{\int_{a}^{b}}f(x) \d x \leq \ubar S_{Z_n}(f) + \eps \\
+	  \bar S_{Z_n}(f) \leq &\overline{\int_{a}^{b}}f(x) \d x + \eps
+      \end{align*}
+	  Dies impliziert wegen der Beliebigkeit der Wahl von $\eps$ die Behauptung.
+   #+end_proof
+   #+ATTR_LATEX: :options [5.4 Riemann Integral]
+   #+begin_defn latex
+   Sei $f:I = [a, b] \to \mathbb{R}$ eine beschränkte Funktion. Sind Ober- und Unterintegral gleich,
+   so heißt der gemeinsame Wert das (bestimmte) Riemann Integral von $f$ über $I$
+   \[\underline{\int_{a}^{b}}f(x) \d x = \int_{a}^{b} f(x) \d x = \overline{\int_{a}^{b}} f(x) \d x\]
+   #+end_defn
+   #+ATTR_LATEX: :options [5.5]
+   #+begin_ex latex
+   Nicht alle beschränkten Funktionen sind Riemann-integrierbar.
+   \[f:[0,1] \to \mathbb{R} x \mapsto \begin{cases} 0 & x \in\mathbb{Q} \\ 1 & x \in \mathbb{R} \setminus \mathbb{Q}\end{cases}\]
+   Auf jeder Zerlegung $Z\in\mathcal{Z}(0, 1)$
+   \[\ubar S_Z(f) = 0 < 1 = \bar S_Z(f)\]
+   #+end_ex
+   #+ATTR_LATEX: :options [5.6 Riemannsches Integrabilitätskriterium]
+   #+begin_thm latex
+   Eine beschränkte Funktion $f:I =[a,b] \to \mathbb{R}$ ist genau dann über $I$ Riemann-integrierbar,
+   wenn es zu beliebigen $\eps > 0$ ein Zerlegung $Z\in\mathcal{Z}(a, b)$ gibt, sodass
+   für die zugehörige Ober- und Untersummen gilt
+   \[\abs{\bar S_Z(f) - \ubar S_Z(f)} < \eps\]
+   #+end_thm
+   #+ATTR_LATEX: :options [5.7 Riemannsche Summe]
+   #+begin_defn latex
+   Für eine Funktion $f:[a, b] \to \mathbb{R}$ und eine Zerlegung $Z \in\mathcal{Z}(a,b)$ wird die mit einem Punkten $\xi_k \in [x_{k - 1}, x_k]$ gebildete Summe
+   \[\RS_z(f) := \sum_{k = 1}^{n} f(\xi_k)(x_k - x_{k - 1})\]
+   als eine Riemannsche Summe von $f$ bezeichnet.
+   #+end_defn
+   #+ATTR_LATEX: :options [5.9]
+   #+begin_thm latex
+   Eine Funktion $f:[a, b] \to \mathbb{R}$ ist genau dann Riemann-integrierbar, wenn für jede Folge von Zerlegungen $Z_n \in\mathcal{Z}(a, b)$ mit
+   $h_n \xrightarrow{n\to\infty} 0$ alle zugehörigen Riemann-Summen konvergieren und denselben Limes haben
+   \[\RS_{Z_n}(f) \xrightarrow{n \to\infty} \int_{a}^{b} f(x) \d x\]
+   #+end_thm
+   #+begin_proof latex
+   Sei $f: I\to\mathbb{R}$ Riemann-integrierbar. $\Forall Z\in\mathcal{Z}(a,b)$ mit Feinheit $h$ gilt offenbar
+   \[\ubar S_Z(f) \leq \RS_Z(f) \leq \bar S_Z(f)\]
+   Aus
+   \[\abs{\ubar S_Z(f) - \bar S_Z(f)} \xrightarrow{h \to 0} 0\]
+   folgt die Konvergenz der Riemann-Summe. Seien alle Riemann-Summen von $f$ konvergent gegen den selben Limes.
+   \[\Forall \bar S_Z(f), \ubar S_Z(f), Z\in\mathcal{Z}(a,b)\Exists \overline{\RS}_Z(f), \underline{\RS}_Z(f):\Forall \eps > 0: \underline{\RS}_Z(f) - \eps \leq \ubar S_Z(f) \leq \bar S_Z(f) \leq \overline{\RS}_Z(f) + \eps\]
+   Aus Konvergenz (für $h\to 0$) alle Riemann-Summen gegen denselben Limes und aus der Beliebigkeit von $\eps$ folgt
+   \[\abs{\ubar S_Z(f) - \bar S_Z(f)} \xrightarrow{h\to 0} 0\]
+   #+end_proof
