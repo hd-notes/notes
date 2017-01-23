@@ -1,0 +1,747 @@
+* Wärmelehre
+  Energierhaltung: Wichtiges Konzept der Mechanik. Es gilt:
+  \[E_{pot} + E_{kin} = ~\text{const}, \Delta E = 0\]
+  Aber: Obiges Gesetz gilt nur für konservative Kräfte. Beim Auftreten dissipativer Kräfte,
+  zum Beispiel Reibung, geht mechanische Energie verloren. $\implies$ Umwandlung von Energei
+  in Wärme, Beobachtung: Temperaturerhöhung.
+  Idee zur Rettung des Energiesatzes: Einführung der sogenannten "inneren Energie" $\implies Thermodynamik, Temperaturbegriff$
+
+  #+ATTR_LATEX: :options [Wärme]
+  #+begin_defn latex
+  Wärme ist ein makroskopisches Maß für den statischen Mittelwert der kinetischen Energie
+  mikroskopischer Objekte. Ist mit deren Relativbewegung auch eine potentielle Energie verknüpft, so tritt
+  sie zur Wärmeenergie hinzu.
+  #+end_defn
+  Der Wärmebegriff ist damit nur sinnvoll für makroskopische Systeme, das heißt Systeme mit vielen
+  mikroskopischen Objekten (Atome, Moleküle, $\ldots$). Wärmeenergie = innere Energie eines Körpers.
+  (Lange- und Bewegungsenergie des Schwerpunktes werden nicht berücksichtigt).
+  - Thermodynamik: phänomenologische Beschreibung. Das heißt makroskopische, phänomenologische Beschreibung
+	thermodynamischer Vorgänge. Neue Größen: Temperatur $T$, Wärme $Q$, Entropie $S$, $\ldots$.
+	Formulierung über Zustandsgleichungenund $3$ Hauptsätze
+  - Statistische Mechanik: statischtische Beschreibung. Das heißt mikroskopische, statistische Beschreibung
+	thermodynamischer Vorgänge. Basis: Gesetzmäßigkeiten der Mechanik und statistische Beobachtungen.
+	Zustandsgrößen: statistische Mittelwerte des Teilchenkollektivs.
+** Temperaturbegriff und Wärmeausdehung
+   Temperaturbegriff erscheit aufgrund unserer Erfahung vertraut. (Wahrnehmung von warm und kalt).
+   Aber: Qualitatives Temperaturempfinden kann trügen. Also: Physikalische Beschreibung erfordert ein genaueres Maß!
+   Nutze Erfahrung: Bringt man zwei Körper unterschiedlicher Temperatur für längere Zeit
+   zusammen so heben sie schließlich die gleiche Temperatur. Beide Körper sind dann im thermischen Gleichgewicht.
+   Das heißt: Temperatur beschreibt den Zustand eines Körpers.
+
+   #+ATTR_LATEX: :options [Nullter Hauptsatz der Wärmelehre]
+   #+begin_defn latex
+   Befinden sich zwei Körper im thermischen Gleichgewicht mit einem dritten, so stehen sie
+   auch untereinander im thermischen Gleichgewicht.
+   #+end_defn
+   Der nullte Hauptsatz erlaubt die Definition einer Temperaturskala über
+   Temperaturfixpunkte, zum Beispiel Gefrier- und Siedepunkt von Wasser.
+   Konstruktion von Thermometern über die Ausnutzung von temperaturabhängger
+   Materialeigenschaften: zum Beispiel Volumenausdehung mit steigender Temperatur,
+   Temperaturabhängige Längenänderung, Änderung des elektrischen Widerstands
+*** Volumenausdehung von Gasen
+	Experimentelle Beobachtung: Gasvolumina vergrößern sich bei Ernährung.
+	Zur Temperaturdefinition. Annahme: $\Delta V \sim \Delta T$.
+	Das heißt lineare Abhängigkeit wird in die Definition reingesteckt!
+
+	Celsius-Skala:
+	- Fixpunkt 1: $T = \SI{0}{\degreeCelsius}$
+	- Fixpunkt 2: $T = \SI{100}{\degreeCelsius}$
+
+    Quantitativ:
+	#+ATTR_LATEX: :options [Gesetz von Gay-Lussac]
+	#+begin_defn latex
+	\[V(T) = V_0(1 + \gamma T)\]
+	- $p = ~\text{const}$
+	- $T$: Temperatur
+	- $V_0$: Gasvolumen bei $T = \SI{0}{\degreeCelsius}$
+	#+end_defn
+	Experimentelle Beobachtungen:
+	\[\gamma = \frac{1}{\SI{273.15}{\degreeCelsius}}\]
+	für alle Gase, falls $T$ groß und $p$ klein. Damit folgt:
+	$V(T) = 0$ für $T = \SI{-273.15}{\degreeCelsius}$ wenn man Gaseigenschaften bis $V = 0$ extrapoliert.
+	Dieser Sachverhalt legt die Definition einer neuen von Wasser unabhängigen Temperaturskala nahe.
+	#+ATTR_LATEX: :options [Absolute Temperaturskala]
+	#+begin_defn latex
+	- Fixpunkt 1: $T = \SI{0}{\kelvin} = \SI{-273.15}{\degreeCelsius}$ \hfill(absoluter Nullpunkt)
+	- Fixpunkt 2: $T = \SI{273.16}{\kelvin}$ \hfill(Tripelpunkt des Wassers)
+	Unterteilung in Gradschritten bleibt erhalten. Das heißt $\Delta T = \SI{1}{\degreeCelsius} \estimates \Delta T = \SI{1}{\kelvin}$
+	Einheit: Kelvin, Basisgröße der Physik, SI-Einheit.
+	#+end_defn
+*** Volumen und Längenausdehung fester und flüssiger Stoffe
+	Experiment: Bei Erwärmung dehnen sich Körper im Allgemeinen aus. Man findet:
+	\[\Delta L = \alpha L \Delta T\]
+	$\alpha$: Längenausdehungskoeffizient. \\
+	Für kleine $\alpha \Delta T$ folgt:
+	\begin{align*}
+	\frac{\d L}{L} &= \alpha \d T \\
+	\ln L - \ln L_0 &= \alpha \Delta T \\
+	L &= L_0 e^{\alpha \Delta T} \approx L_0(1 + \alpha \Delta T) \\
+	\end{align*}
+	mit $L_0$: Länge bei $T = T_0$
+	Volumenausdehung:
+	\begin{align*}
+	\Delta V &= \gamma V_0 \Delta T \\
+	V &= V_0(1 + \gamma \Delta T)
+	\end{align*}
+	mit $V_0$: Volumen bei $T = T_0$.
+
+	Es gilt: $\gamma \approx 3\alpha$
+	Bemerkung:
+	\begin{align*}
+	V &= l_1 l_2 l_3 \\
+	\dd{V}{T} &= l_1 l_2 \dd{l_3}{T} + l_1 l_3 \dd{l_2}{T} + l_2 l_3 \dd{l_1}{T} \\
+	\gamma &= \frac{1}{V} \dd{V}{T} = \frac{1}{l_3} \dd{l_3}{T} + \frac{1}{l_2} \dd{l_2}{T} + \frac{1}{l_1} \dd{l_1}{T}
+	\end{align*}
+	für kleine $\Delta T$
+*** Anomalie des Wassers
+	Wasser: Keine Ausdehung bei Erwärmung zwischen $\SI{0}{\degreeCelsius}$ und $\SI{4}{\degreeCelsius}$.
+	Stattdessen: Volumen nimmt mit steigender Temperatur ab.
+	Wichtige Eigenschaft! Garantiert Leben im Wasser aufgrund von Eisbildung an Oberfläche.
+** Zustandsgleichung idealer Gase
+   Wir wissen:
+   \begin{align*}
+   p V &=~\text{const} \tag{für $T = ~\text{const} (Boyle-Mariotte)$} \\
+   V &= V_0(1 + \gamma T) \text{für $p = ~\text{const}$ (Guy-Lussac)}
+   \end{align*}
+   Wähle absolute Temperaturskala. Dann folgt für Gay-Lussac:
+   \begin{align*}
+   V &= V_0 \gamma T \\
+   \intertext{$V_0 = V(\SI{273.15}{\kelvin}), \gamma = \frac{1}{\SI{273.15}{\kelvin}}$}
+   \end{align*}
+   \begin{align*}
+   Also:
+   \intertext{Boyle Mariotte}
+   p V &= ~\text{const} \\
+   \intertext{Gay-Lussac}
+   V = V_0 \gamma T \\
+   p V = p V(p, T) = p_0 V(p_0, T) = p_0 V(p_0, T_0)\gamma T = p_0 V_0 \gamma T \sim T \\
+   \end{align*}
+   #+ATTR_LATEX: :options [Boyle-Mariotte-Gay-Lussac]
+   #+begin_thm latex
+   Für idelae Gase gilt das Boyle-Mariotte-Gay-Lussac Gesetz
+   \[pV \sim T, \wedge \frac{p_1 V_1}{T_1} = \frac{p_2 V_2}{T_2} = ~\text{const}\]
+   $p\sim T$ für $V = ~\text{const}$
+   #+end_thm
+   Frage: Was bedeutet "const" in dieser Gleichung? \\
+   Erwartung: Hängt von Stoffmenge ab. Hierzu:
+   Gedankenexperiment:
+   Fasse zwei identische Kisten gefüllt mit idealem Gas zu einer Kiste zusammen:
+   \begin{align*}
+   \intertext{1 Kist}
+   p_0 V_0 = \xi T_o \\
+   \intertext{2 zusammengefasste Kisten}
+   p_0 2 V_0 \sim T_0
+   \end{align*}
+   Also: Verdopplung von $\xi$!. Ansatz: $\xi \sim$ Gasmenge
+   \begin{align*}
+   \implies p V &= k_B N T \\
+   k_B &= \SI{1.381e-23}{\joule\per\kelvin} \tag{Boltzmankonstante}
+   \end{align*}
+   #+ATTR_LATEX: :options [Mol]
+   #+begin_defn latex
+   Das Mol ist die Stoffmenge eines Systems, das us ebensoviel Einzelteilchen besteht, wie Atome
+   im $12$ Gramm des Kohlenstoffnuklids $C$ enthalten sind. Bei Benutzung des Mol müssen die
+   Einzelteilchen spezifiziert sein und können Atome, Moleküle, Ionen, Elektronen sowie andere Teilchen
+   oder Gruppen solcher Teilchen genau angegebener Zusammensetzung sein.
+   \[\SI{1}{\mol} \estimates \SI{6.022e23}{}~\text{Teilchen}\]
+   Avogadro-Zahl:
+   \[N_A = \SI{6.022e23}{\per\mol}\]
+   #+end_defn
+   #+ATTR_LATEX: :options [Zustandsgleichung idealer Gase]
+   #+begin_thm latex
+   \begin{align*}
+   p V &= n \underbrace{N_a k_B}_{R} T \\
+   p V &= n R T \\
+   \intertext{mit $R$ (universelle Gaskonstante):}
+   R &= \SI{8.31451}{\joule\per\kelvin\mol}
+   \end{align*}
+   Für Normalbedingungen:
+   \begin{align*}
+   p_0 &= \SI{1013}{\meter\bar} \\
+   T_0 &= \SI{273.15}{\kelvin} \\
+   n &= 1 \\
+   V_0 = \SI{22.4e-3}{\meter\cubed} = \SI{22.4}{\liter}
+   \end{align*}
+   #+end_thm
+** kinetische Gastheorie
+   Bisher: Beschreibung mit Hilfe makroskopische Zustandsgrößen. \\
+   Jetzt: Ableitung makroskopischer-Zustandsgrößen aus mikroskopischen Eigenschaften. \\
+
+   Grundidee:
+   Temperatur $\estimates$ innere Energie $\estimates$ Bewegungsenergie der Teilchen. \\
+   Zustandsgrößen $\estimates$ Mittelwert mikroskopischer Größe. \\
+
+   Model des idealen Gases:
+   - $N$ Punktteilchen (Atome, Moleküle) der Masse $m$ mit statistisch verteilten Geschwindigkeiten $(N \gg 1)$
+   - Gasteilchen sind starre Kugeln, mittlerer Abstand $r$ zwischen den Gasteilchen sind
+	 groß gegen Kugelradius $r_0$. (Das heißt Eigenvolumina sind vernachlässigbar)
+   - Einzige Wechselwirkung: elastische Stoße, das heißt es gelten sowohl Impuls-
+	 als auch Energeierhaltung. (Keine innere Anregung der Gasteilchen)
+   - Stöße mit den Wänden des einschließenden Behälters sind ebenfalls perfekt elastisch.
+   Druck: Impulsübertrag der Gasteilchen auf Behälterwand. Das heißt
+   \[\text{Druck} = \frac{F}{A}, F = \dot{p}\]
+   Betrachte Gesamtkraft auf Fläche $A$:
+   \begin{align*}
+   F &= \dot{p} = \frac{\Delta p}{\Delta t} \\
+   &= \frac{\text{Impulsübertrag}}{\text{Stoß}} \cdot \frac{\text{Stöße}}{\text{Zeit}} \\
+   &= 2m v_x \cdot \frac{\text{Stöße}}{\text{Zeit}}
+   \end{align*}
+   Aber $v_x$ ist nicht für alle Gasteilchen gleich, sondern statistisch verteilt.
+   Erwartung: Verteilungsfunktoin der $v_x$ -Werte muss symmetrisch um $v_x = 0$ sein, da Gas ruht!
+   Es gilt:
+   \begin{align*}
+   N &= \int_{-\infty}^{\infty} n(v_x) \d v_x \\
+   \bar v_x &= \frac{1}{N} \int_{-\infty}^{\infty}v_x n(v_x) \d v_x = 0 \\
+   \overline(v_x^2) = \frac{1}{N} \int_{-\infty}^{\infty}v_x^2 n(v_x) \d v_x \neq 0 \\
+   \intertext{Damit folgt für Gesamtkraft $F$}
+   F &= \dot{p} = \dd{}{t} \sum_{i = 1}^{\tilde N}p_i = \dd{}{t} \int_{-\infty}^{\infty} 2m v_x \tilde N(v_x) \d v_x \\
+   \intertext{$\tilde N(v_x)$: Anzahl Gasteilchen, die mit Geschwindigkeit $v_x$ im Zeitintervall $\d t$ auf Behälterwand treffen, Bedingung: $v_x > 0$}
+   \intertext{Betrachte Gasvolumen mit Querschnittsfläche $A$:}
+   \tilde N(v_x) = \Theta(v_x) n(v_x) v_x \d t A \tag{$\Theta$: Heavyside Funktion}  \\
+   F &= \dd{}{t} \int_{-\infty}^{\infty} 2m v_x \tilde N(v_x) \d v_x \\
+   &= \dd{}{t} \int_{0}^{\infty} 2m v_x n(v_x) v_x \d t A \d v_x \\
+   &= \frac{1}{2} m A \int_{-\infty}^{\infty}2 v_x^2 n(v_x) \d v_x \\
+   &= m AN \overline(v_x^2) ng \overline(v_x^2) \\
+   &= \frac{1}{N} \int_{-\infty}^{\infty} v_x^2 n(v_x) \d v_x
+   \end{align*}
+   Damit folgt für den Gesmatdruck auf Behälterwand mit Querschnittsfläche $A$:
+   \[p = \frac{F}{A} = m N \overline{v_x^2}\]
+   Dabei ist $N$ die Teilchenanzahl pro Volumen. \\
+   Bisher: Betrachtung nur in einer Dimension. \\
+   Jetzt: Erweiterung auf drei Dimensionen. \\
+   Es gilt:
+   \[\overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2}, \overline{v^2} = \overline{v_x^2} + \overline{v_y^2} + \overline{v_z^2} \to \overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2} = \frac{1}{\rho} \overline{v^2}\]
+   (Geschwindigketien der Gasteilchen sind isotrop verteilt! Gas ruht!) $\implies$
+   \[p = \frac{1}{3} N m \overline{v^2} = \frac{2}{3}N \overline{E_{kin}}\]
+   - $\overline{E_{kin}} = \frac{1}{2} m \overline{v^2}$
+   - $p$: Druck
+   - $N$: Gesmatzahl Gasteilchen pro Volumen!
+   - $E_{kin}$: mittlere kinetische Energie
+   Vergleich mit Zustandsgleichung idealer Gase
+   \begin{align*}
+   p V &= n R T = k_B n N_A T = k_B (N V) T \\
+   p &= k_B NT \\
+   \bar E_{kin} &= \frac{3}{2} k_B T
+   \end{align*}
+   Damit ergibt sich die Zustandsgleichung idealer Gase aus der Bewegungsenergie der Gasteilchen,
+   das heißt man findet
+   - Äquivalenz zwischen phänomenologischer und mikroskopischer Beschreibung
+   - Konsistente Definition eines idealen Gases
+   Zum Ursprung des Faktors $\frac{3}{2}$ in $\bar E_{kin} = \frac{3}{2} k_B T$: \\
+   Es gilt: $p = m N \overline{v_x^2} = \frac{1}{3} m N \overline{v^2}$, das heißt
+   Faktor $3$ ergibt sich aus der Zahl möglicher Raumrichtungen beziehungsweise "Translationsfreiheitsgrade".
+   Legt nahe: Mittlere Energie eines Gasteilchens Pro Freiheitsgrad $= \frac{1}{2} k_B T$.
+   Tatsächlich können bei realen Molekülen zusätzliche Rotations- und Schwingungsfreiheitsgrade auftreten,
+   so dass die Zahl der Freiheitsgrade $f$ insgesamt zunimmt. Die Energie der einzelnen Moleküle
+   berteilt sich dann gleichförmig auf alle vorhandenen Freiheitsgrade. Es gilt:
+   Gleichverteilungssatz oder Äquipartitionsprinzip:
+   \[\overline{E_{kin}} = f \frac{1}{2} k_B T\]
+
+   \[U = n N_A \frac{1}{2} f k_B T\]
+   nennt man *innere Energie*. Gesamtenergie, die aus der Wärmebewegung von Molekülen etc.
+   resultiert. $U_n$ fasst sowohl kintische als auch (innere) potentielle Energie
+** Wärme, Wärmekapazität und latente Wärme
+   Beobachtung: Beim Erwärmen oder Abkühlen eines Körpers wird Wärme mit der Umgebung ausgetauscht.
+   #+ATTR_LATEX: :options [Wärme]
+   #+begin_defn latex
+   Wäme ist die zwischen zwei Systemen aufgrund eines Temperaturunterschieds ausgetauschte Energie
+   #+end_defn
+   das heißt: Erwärmen findet durch Energieübergratung via Wärmefluß statt.
+
+   Termisches Gleichgewicht: Wärmefluß zwischen zwei Systemen beziehungsweise Systenm und
+   Umgebung in beide Richtung gleich oder Nullpunkt Temperatur gleich!
+
+   Experiment: Temperaturausgleich System A und B.
+   \[(T_A - T) m_A \sim (T - T_B) m_B\]
+   das heißt größere Masse hat eine größen Einfluß!
+   Proportionalität hängt von der Art der Materialien ab. Einführung zweier Materialkonstanten!
+   \begin{align*}
+   C_A (T_A - T)m_A &= C_B(T - T_B) m_B \\
+   Q_A &= Q_B
+   \end{align*}
+   - $C_A, C_B$: materialspezifische Konstanten
+   - $Q_A$: Von System A abgegebene Wärme
+   - $Q_B$: Von System B aufgenommene Wärme
+   #+ATTR_LATEX: :options [Wärmemenge]
+   #+begin_defn latex
+   \[Q = c m \Delta T\]
+   $c$: spezifische Wärmekapazität
+   #+end_defn
+
+   Kalorie: $1$ Kalorie ist die Wärme, mit der man $\SI{1}{\gram}$ Wasser um $\SI{1}{\degreeCelsius}$ erwärmen kann.
+
+   Begiffe:
+   - $c = $ spezifische Wärmekapazität, spezifische Wärme
+   - $C = cm = $ Wärmekapazität einer Masse $m$
+   - $c_m = c_{mol} = c m_{mol} = $  molare Wärmekapazität, spezielle Molwärme
+   \[Q = c_m n \Delta T\]
+
+   Jetzt: Latente Wärme. Beobachtung: Temperatur eines Körpers ändert sich linear mit der
+   zugeführten Wärmeenergie. Aber!
+   Experiment: Poleischmelzen.
+   1. Aufzeizen $Q = cm \Delta T$ \checkmark
+   2. Phasenübergang $Q = \lambda m$ \\
+	  Zuführen von Wärme ohne Temperaturerhöhung. Quantitative Beobachtung: Wärmemenge $Q$ proportional
+	  zur Masse $m$.
+
+   Phasenübergänge:
+   1. Energie wird zum Aufbrechen der Teilchenbindungen gebraucht $\implies$ Wärmezufuhr
+	  - Schmelzen: fest $\to$ flüssig
+	  - Verdampfen: flüssig $\to$ fest
+	  - Sublimieren: fest $\to$ gasförmig
+   2. Bindugsenergie wird frei $\to$ Wärmeabgabe
+	  - Gefrieren / Erstarren: flüssig $\to$ fest
+	  - Kondensieren: gasförmig $\to$ flüssig
+	  - Kondensieren: gasförmig $\to$ fest
+
+   Die Wärmeenergie, die ein Körper bei einem Phasenübergang aufnimmt beziehungsweise abgibt,
+   ohne das damit eine Temperaturänderung einhergeht, nennt man *latente Wärme*, es gilt:
+   \[Q = \lambda m\]
+   mit $Q$: aufgenommene/abgegebene Wärme, $m$: Masse.
+   Dabei ist $\lambda$ die (latente) Schmelzwärme oder (latente) Verdampfungswärme.
+
+   \[U = n N_a \frac{1}{2} f k_B T = n \frac{1}{2}f R T, R = k_b N_a, Q = c_m \Delta T, Q = \lambda m\]
+** Arbeit und Wärme
+   Machanische Arbiet $\xrightarrow{\text{Reibung}}$ Wärme
+   \begin{align*}
+   W &= F s \\
+   &= m g(\pi d) n \\
+   Q &= c_m \Delta T \\
+   c_m &= \SI{65}{\calories\per\kelvin}
+   \end{align*}
+   \begin{align*}
+   \Delta T &\approx \SI{3}{\kelvin} \to Q \sim \SI{200}{\calories} \\
+   \SI{1}{\calories} &\approx \SI{4.3}{\joule} \to W \sim \SI{870}{\joule} \\
+   \intertext{Genau:}
+   \SI{1}{\calories} &\approx \SI{4.186}{\joule}
+   \end{align*}
+** erster Hauptsatz der Wärmelehre
+   \begin{align*}
+   \Delta U &= \Delta Q + \Delta W
+   U &= n N_a \overline{E_{kin}} \\
+   &= \frac{1}{2} n R T
+   \end{align*}
+   - $\Delta Q$: Wärmezufuhr
+   - $\Delta W$: aus System geleitete Arbeit
+   - $\Delta Q > 0$: Wärmezufuhr, $\Delta W > 0$, Arbeit wird *aus* System verrichtet
+   - $\Delta Q < 0$: Wärmezufuhr, $\Delta W < 0$, Arbeit wird *von* System verrichtet
+   Bei uns: Anders als in klassischer Mechanik
+** Volumenarbeit und PV-Diagramme idealer Gase
+   Thermodynamische Prozesse, Kreisprozesse: ideale Gase!
+   Zustandsgrößen: $n, p, V, T$ ($Q$ ist *keine* Zustandsgröße)
+   \[pV = n R T\]
+   Verscheiben des Kolbens:
+   - Gegen Gasdruck nach *unten*: $\Delta W > 0$
+   - Gegen Außendruck nach *oben*: $\Delta W y 0$
+   \begin{align*}
+   \d W &= F \d s = -p A\d l = -p \d V  \\
+   \d W &< 0 ~\text{für}~ \d V > 0
+   \d W &> 0 ~\text{für}~ \d V < 0
+   \implies W &= -\int_{v_1}^{v_2}p \d V
+   \end{align*}
+   $pV$-Diagramm: \\
+   $pV = n R T$
+   - Isotherme Zustandsänderung: $T = ~\text{const}$
+	 - $T = ~\text{const}$
+	 - $p V = n R T \to p \sim \frac{1}{V}$
+	 - $\Delta U_{12} = 0 = \Delta Q_{12} + \Delta W_{12}$
+	 - $\d U = \d Q -p \d V = 0$
+	 - $\int_{1}^{2} \d Q = \int_{1}^{2} p\d V \to \Delta Q_{12} = \int_{1}^{2} \frac{nRT}{V} \d V = nRT\ln(\frac{V_2}{V_1})$
+	 - $\Delta W_{12} = -\Delta Q_{12} = -n RT \ln(\frac{V_2}{V_1})$
+   - Isobare Zustandsänderung: $P = ~\text{const}$
+	 - $\Delta W_{12} = -p (V_2 - V_1) = - n R(T_2 - T_1)$
+	 - $\Delta Q_{12} = n c_p(T_2 - T_1)$
+	 - $\Delta U_{12} = \Delta W_{12} + \Delta_{12} = n \underbrace{(c_p - R)}_{\frac{f}{2}R}(T_2 - T_1)$
+   - Isochore Zustandsänderung $V = ~\text{const}$
+	 - $\Delta W_{12} = 0$
+	 - $\Delta Q_{12} = n c_v(T_2 t_1)$
+	 - $\Delta U_{12} = \Delta Q_{12} = n c_v(T_2 - T_1)$
+   - Adiabatische Zustandsänderung $Q = ~\text{const}, \Delta Q = 0$
+	 - $\Delta Q_{12} = 0, \Delta U_{12} = \Delta W_{12}$
+	   \begin{align*}
+	   \d U &= \d W \\
+	   \d U &= \frac{1}{2}f n R\d T = n c_v \d T
+	   \d W &= -p\d V \\
+	   \d U &= \d W \implies n c_v \d T = -p\d V = - \frac{n RT}{V} \d V \\
+	   c_v \frac{\d T}{T} &= -R \frac{\d V}{V} \\
+	   c_v \ln T &= - R \ln V + ~\text{const} \\
+	   c_v \ln T + R\ln V &= ~\text{const} \\
+	   \ln T^{c_v} + \ln V^R &= ~\text{const} \\
+	   e^{ln T^{c_v} V^R} &= e^{\text{const}} \\
+	   T^{c_v} V^R &= ~\text{const} \\
+	   T^{c_v} V^{c_p c_v} &= ~\text{const} \\
+	   TV^{\frac{c_p - c_v}{c_v}} &= ~\text{const} \\
+	   \gamma - 1 &:= \frac{c_p - c_v}{c_v} \\
+	   \gamma = \frac{f + 2}{f} \\
+	   \intertext{Isotropenindex:}
+	   TV^{\gamma -1} &= ~\text{const}
+	   (pv)V^{\gamma -1} &= pV^{\gamma} = ~\text{const} \\
+	   T^{\gamma} p^{1 -\gamma} &= ~\text{const} \\
+	   \end{align*}
+	   #+ATTR_LATEX: :options [Adiabatengleichungen:]
+	   #+begin_defn latex
+	   \begin{align*}
+	   pV^{\gamma} &= ~\text{const}, p\sim V^{-\gamma} \\
+	   TV^{\gamma - 1} &= ~\text{const}, T\sim V^{1 - \gamma} \\
+	   T^{\gamma} p^{1 - \gamma} &= ~\text{const}, T^{\gamma} \sim p^{\gamma -1}
+	   \end{align*}
+	   #+end_defn
+   Temperaturerhöhung ist bei konstantem Volumen effektiver als bei konstantem Druck
+   - Isobar: $\Delta Q = \Delta h - \Delta w$
+   - Isochor: $\Delta Q = \Delta u$
+   \[C_v = \frac{f}{2}R, c_p = \frac{f + 2}{2}R = \underbrace{\frac{f}{2}R}_{c-V} + R\]
+
+** Zusammenfassung: Spezielle Zustandsänderung idealer Gase
+   Es glit
+   \[p V = n R T, \Delta U = \Delta Q + \Delta W\]
+   mit $R = \SI{8.314}{\joule\per\kelvin\per\mol}$
+   1. Isotherme Zustandsänderung $\Delta T = 0$
+	  \begin{align*}
+	  \Delta U &= 0, p \sim \frac{1}{V} \\
+	  \Delta Q &= -\Delta W = n R T \ln{\frac{V_2}{V_2}}
+      \end{align*}
+   2. Isochore Zustandsänderung, $\Delta V = 0$
+	  \begin{align*}
+	  \Delta W &= 0 \\
+	  \Delta U &= \Delta Q = n c_V \Delta T
+      \end{align*}
+   3. Isobare Zustandsänderung, $\Delta p = 0$
+	  \begin{align*}
+	  \Delta Q &= n c_p \Delta T \\
+	  &= \Delta U - \Delta W \\
+	  \Delta W &= -p \Delta V
+	  \\
+	  \Delta Q &= n c_v \Delta T = n \frac{f}{2} R \Delta T \\
+	  \Delta Q &= n c_p \Delta T = n \frac{f + 2}{2} R \Delta T \\
+	  \implies C_p &= c_v + R
+      \end{align*}
+   4. Adiabatische Zustandsänderung, $\Delta Q = 0$
+	  ($Q$ keine Zustandsgröße!)
+	  \begin{align*}
+	  \Delta U &= \Delta W \\
+	  p V^{\gamma} &= ~\text{const} \\
+	  TV^{\gamma - 1} &= ~\text{const} \\
+	  T^{\gamma} p^{1 - \gamma} &= ~\text{const}
+      \end{align*}
+
+   Verfügbare Freiheitsgrade?
+   (Vorgriff auf Quantentheorie)
+   \[C_v = \frac{f}{2}R, C_p = \frac{f + 2}{f}R\]
+   - $f$: verfügbare Freiheitsgrade
+   - $R$: universelle Gaskonstante
+   Mittlere Energei pro Freiheitsgrad:
+   \begin{align*}
+   \bar E &= \frac{1}{2}k_B T \\
+   U &= N \bar E = n N_A \frac{f}{2}k_B T = n \frac{f}{2} RT = nc_v T \\
+   f = ?
+   \end{align*}
+   Klassische: \\
+   Gleichverteilungssatz oder Äquipartitionsprinzip, Gleichmäßige Verteilung der Energei
+   auf alle Freiheitsgrade. \\
+   Quantenmechanik: \\
+   Enfrieren von Freiheitsgraden, das heißt nicht alle möglichen Freiheitsgrade verfügbar.
+   Hängt von Temperatur ab (klassisch nicht erklärbar)
+** Zweiter Hauptsatz der Wärmelehre
+   Erster Hauptsatz: Energieerhaltung, Energieflüsse. \\
+   Zweiter Hauptsatz: Richtung thermodynamischer Prozesse. \\
+   Erfahrung: Wärme fließt nur vom wärmeren zum kälteren Körper.
+   Mechanische Arbeit kann vollständig in Wärme, nicht aber Wärme vollständig in
+   mechanische Arbeit umgewandelt werden.
+
+   #+ATTR_LATEX: :options [Zweiter Hauptsatz]
+   #+begin_thm latex
+   Wärme fließt von selbst nur vom wärmeren zum kälteren Körper, nie umgekehrt.
+   #+end_thm
+
+   Eine mehr quantitative Formulierung erfodert die Einführung und Betrachtung
+   reversibler und irreversibler Prozesse.
+
+   #+ATTR_LATEX: :options [Reversibler Prozess]
+   #+begin_defn latex
+   Langsam ablaufende Zustandsänderung, ber der jeder eizelne Schritt einer infinitesimalen
+   Veränderung des Systems entspricht, das sich verändernde System befindet sich damit
+   zu jedem Zeitpunkt im Gleichgewicht. Reversible Prozesse sind umkehrbar.
+   #+end_defn
+
+   #+ATTR_LATEX: :options [Irreversibler Prozess]
+   #+begin_defn latex
+   Zustandsänderung, bei der sich ein thermodynamisches System stark aus seiner
+   Gleichgewichtslage entfernt. Währen des Vorgangs sind die (statistischen) Zustandsgrößen
+   (e.g $p, T$) nicht definiert. Irreversible Prozesse sind nicht umkehrbar.
+   #+end_defn
+
+   Merke:
+   - Reversibler Prozess - Nach Umkehrung keine (beobachtbare) Veränderung am System und an der Umgebung
+   - Irreversibler Prozess - Nach umkehrung ist das System verändert, ebenso wie auch die Umgebung
+
+*** Kreisprozesse:
+	Anfangszustand = Endzustand! $\implies$
+	\[\Delta U = 0 \implies \Delta Q = -\Delta W, \Delta W = -\oint p\d V\]
+	- Rechtsläufig: Wärme $\to$ Arbeit, System leistet Arbeit
+	- Linksläufig: Arbeit $\to$ Wärme, Arbeit wir am System geleistet
+
+    Interessant:
+	- zugeführte / abgeführte mechanische Arbeit $\Delta W > 0 / \Delta W < 0$
+	- zugeführte / abgeführte Wärme $\Delta Q > 0 / \Delta Q < 0$
+	Prinzip Wärmekraftmaschine
+	#+ATTR_LATEX: :options [Wirkungsgrad]
+	#+begin_defn latex
+	\[\eta = \frac{\abs{\Delta W}}{Q_w} = \frac{\text{geleistete Arbeit}}{\text{zugeführte Wärme}} = \frac{Q_W - \abs{Q_k}}{Q_W} = 1 - \frac{\abs{Q_K}}{Q_W}\]
+	#+end_defn
+	#+ATTR_LATEX: :options [Leistungszahl]
+	#+begin_defn latex
+	\begin{align*}
+	\eps_{\text{Wärme}} &= \frac{\abs{Q_W}}{\Delta W} = \frac{1}{\eta} > 1 \tag{auch Wirkungsgrad einer Wärmepumpe} \\
+	\eps_{\text{Kälte}} &= \frac{Q_K}{\Delta W} = \frac{1}{\eta} - L \tag{Auch Wirkungsgrad einer Kältemaschine}
+	\end{align*}
+	#+end_defn
+	Es gilt: $\eta \leq 1$! \\
+	Frage: $\eta = 1$ möglich? \\
+
+	Optimale Maschine:
+	- keine Wärmeverluste durch Reibung etc
+	- langsam ablaufende Przess, system immer im Gleichgewicht
+    das heißt: Betrachtung reversibler Prozesse!
+	Bemerkung: Optimale Maschine in der Realität offenbar nicht realisierbar, idealisierung!
+*** Carnot-Prozess
+	Idealisierte Maschine zur Untersuchung der Grundlagen thermodynamischer Prozesse, Realisierung (auch näherungsweise) schwierig
+	1. Isotherme Expansion $(a \t b), \Delta U = 0$ Wärmezufuhr $Q_1$
+	2. Adiabatische Expansion $(b \to c), \Delta Q = 0, T_1 \to T_2$
+	3. Isotherme Kompression $(c \to d), \Delta U = 0$ Wärmezufur $Q_2$
+	4. Adiabatische Kompression $(d \to a), \Delta Q = 0, T_2 \to T_1$
+    Wirkungsgrad:
+	\[\eta_c = 1 - \frac{\abs{Q_2}}{Q_1}\]
+	Bemerkung: Schritte 2 und 4 speichern Arbeit zwischen.
+
+	Schritt 1: Isotherme:
+	\begin{align*}
+	Q_1 = \Delta Q_{ab} &= n RT_1 \ln \frac{V_b}{V_a} > 0 \tag*{da $V_b > V_a$} \\
+	\Delta W_{ab} &= -\Delta Q_{ab}
+	\end{align*}
+	Schritt 3: Isotheme:
+	\begin{align*}
+	Q_2 = \Delta Q_{cd} &= n R T_2 \ln \frac{V_d}{C_c} < 0 \tag*{da $V_c > V_D$} \\
+	\Delta W_{cd} &= -\Delta Q_{cd}
+	\end{align*}
+	Außerdem:
+	Schritt 2: Adiabate:
+	\[T_1 V_b^{\gamma -1} = T_2 V_c^{\gamma -1} \to \frac{V_b}{V_c} = (\frac{T_2}{T_1})^{\frac{1}{\gamma - 1}}\]
+	Schritt 4: Adiabate:
+	\[T_2 V_d^{\gamma -1} = T_1 V_a^{\gamma -1} \to \frac{V_a}{V_d} = (\frac{T_2}{T_1})^{\frac{1}{\gamma - 1}}\]
+	Adiabate insgesamt:
+	\[\frac{V_b}{V_a} = \frac{V_c}{V_d}\]
+	Also:
+	Wirkungsgrad einer Carnot-Maschine:
+	\[\eta_c = 1 - \frac{T_2}{T_1} = \frac{T_1 - T_2}{T_1} < 1\]
+	Wichtig: $T_1, T_2$ sind absolute Temperaturen in Kelvin!
+	Maximaler Wirkungsgrad $\eta_c = 1$ kann nur für $T_2 = \SI{0}{\kelvin}$ erreicht werden,
+	hieraus ergibt sich eine alternative thermodynamische Definition der absoluten
+	Temperaturskala.
+*** Ottomotor
+	1. Adiabate: $\Delta Q = 0, \Delta W_{ab} = \Delta U_{ab}$
+	2. Isochore: $\Delta W, Q_1 = \eta c_V(T_c - T_b) < 0$
+	3. Adiabate: $\Delta Q = 0, \Delta W_{cd} = \Delta U_{cd}$
+	4. $\Delta W = 0, Q_2 = n c_v(T_a, T_d) > 0$
+	\begin{align*}
+	\eta_0 &= \frac{\abs{\Delta W}}{Q_2}, \Delta W = \Delta U_{ab} + \Delta U_{cd} = n c_v(T_b - T_a) + nc_v(T_d - T_c) < 0 \\
+	&= \frac{T_a + T_c - T_b - T_d}{T_a - T_d} = 1 - \frac{T_b - T_c}{T_a - T_d} = 1 - \frac{T_b}{T_a} \frac{1 - \frac{T_c}{T_b}}{1 - \frac{T_d}{T_a}} \\
+	\intertext{Aus Adiabatengleichung erhält man $\frac{T_b}{T_a} = \frac{T_d}{T_a}$:}
+	1- \frac{T_b}{T_a} < \eta_c
+	\end{align*}
+*** Stirling-Motor
+	1. Isotherme
+	2. Isphore
+	3. Isotherme
+	4. Isphore
+	Ohne Regenerator:
+	\[\eta_s = \frac{R\ln \frac{V_b}{V_a}(T_1 - T_2)}{R T_2 \ln \frac{V_b}{V_a} + c_v(T_1 - T_2)}\]
+	Mit Regnerator:
+	\[\eta_s = 1 - \frac{T_2}{T_1} = \eta_c\]
+*** Zweiter Hauptsatz der Thermodynamik
+	#+ATTR_LATEX: :options [2. Hauptsatz der Thermodynamik]
+	#+begin_thm latex
+    Es gibt keine periodisch arbeitende achine, die einen höheren Wirkungsgrad hat als der Carnot-Prozess.
+	Diese Aussage ist äquivalent zum Claudius-Prinzip!
+	#+end_thm
+	Annahnme: Es gibt Wundermaschine mit $\eta > 0$ \\
+	$\implies$ Wärmereservoir: $\Delta Q_x, T_1 > T_2 \to$ Wundermaschine $\Delta W \to$ Kältereservoir: $\Delta Q_y, T_2 < T_1$
+	\begin{align*}
+	\Delta W &= \eta \Delta Q_x \\
+	\Delta W &= \Delta Q_x - \Delta Q_y
+	\end{align*}
+	Wenn man eine Carnot-Maschine mit $\Delta W$ betreibt, also
+	$\implies$ Wärmereservoir: $\Delta Q_1, T_1 > T_2 \leftarrow, \Delta W$ Carnot-Prozess $\leftarrow$ Kältereservoir: $\Delta Q_2, T_2 < T_1$ \\
+	$\implies \Delta Q_x < \Delta Q_1$
+	\begin{align*}
+	\implies \Delta W &= \eta_c \Delta Q_1 \\
+	\Delta W &= \Delta Q_1 - \Delta Q_2 \\
+	\implies \Delta Q_y &< \Delta Q_2
+	\end{align*}
+	$\implies$ Wärme von Kalt nach Warm ohne Arbeit $\lightning
+** Entropie
+   Zentraler Begriff der Thermodynamik!
+   - Kriterium für Reversibel und Irreversibel
+   - Erlaubt mathematithe Formuleriung des 2. Hauptsatzes
+   - Ordungs- beziehugsweise Wahrscheinlichkeitsmaß
+   Betrachte Carnot-Prozess:
+   \begin{align*}
+   \eta &= 1 - \frac{T_2}{T_1} = 1 - \frac{\abs{\Delta Q_2}}{\Delta Q_1} \\
+   - \frac{\Delta Q_2}{T_2} = \frac{\Delta Q_1}{T_1} \\
+   \frac{\Delta Q_1}{T_1} + \frac{\Delta Q_2}{T_2} = 0
+   \end{align*}
+   $\frac{\Delta Q}{T} =$ reduzierte Wärmemenge.
+   #+ATTR_LATEX: :options [reversible Kreisprozesse]
+   #+begin_defn latex
+   \[\sum \frac{\Delta Q_{ij,rev}}{T_i} = 0\]
+   beziehungsweise
+   \[\oint \frac{\d Q_{rev}}{T} = 0\]
+   Allgemeiner Kreisprozess:
+   \[\oint \frac{\d Q_{rev}}{T} = 0\]
+   #+end_defn
+   #+ATTR_LATEX: :options [irreversibler Kreisprozess]
+   #+begin_defn latex
+   \[\sum \frac{\Delta Q_{i,rev}}{T_i} < 0\]
+   bezierungsweise
+   \[\oint \frac{\d Q_{rev}}{T} < 0\]
+   \[\oint \frac{\d Q_{rev}}{T} = \oint \frac{\d Q_{rev}}{T} + \int \frac{\d Q_{extern}}{T} < 0\]
+   #+end_defn
+   Weg $A, B$, Anfang: $1$, Ende $2$: Wegunabhängigkeit $\implies$:
+   \[\int_{1,A}^{2} \frac{\d Q}{T} = \int_{1,B}^{2} \frac{\d Q}{T}\]
+
+   #+ATTR_LATEX: :options [Entropie und Entropieänderung]
+   #+begin_defn latex
+   \[\d S = \frac{\d Q_{rev}}{T}, \Delta S = \int_{1}^{2} \frac{\d Q_{rev}}{T}\]
+   \[S(2) = S(1) + \int_{1}^{2} \frac{\d Q_{rev}}{T}\]
+   $S$: Entropie, $\Delta S, \d s$: Entropieänderungen, $[S] = \si{\joule\per\kelvin}$
+   per Definition:
+   \[\Delta S = \oint \frac{\d Q_{rev}}{T} = 0\]
+   $\implies$ Bei einem reversiblen Kreisprozess bleibt die Entropie konstant
+   #+end_defn
+   #+begin_ex latex
+   #+ATTR_LATEX: :options [Reibung]
+   Arbeit $\to$ Wärme
+   \[\Delta S = \frac{\Delta W}{T} = \frac{\Delta Q}{T} > 0\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Wärmeleitung]
+   #+begin_ex latex
+   Zwei gleich große Wasserbehälter: $T_1, T_2, T_1 > T_2$ werden vermischt $\implies T_3,  T_2 < T_3 < T_1$
+   \begin{align*}
+   \Delta Q_1 &= c_m (T_3 - T_1) < 0 \\
+   \Delta Q_2 &= c_m (T_3 - T_2) > 0 \\
+   \Delta Q_1 &= -\Delta Q_2 \implies T_2 = \frac{T_1 + T_2}{2} \\
+   \Delta S_1 &= \int_{T_1}^{T_3}\frac{\d Q}{T} = cm \int_{T_1}^{T_3} \frac{\d T}{T} = c_m \ln \frac{T_3}{T_1} \\
+   \Delta S_2 &= \int_{T_2}^{T_3}\frac{\d Q}{T} = cm \int_{T_2}^{T_3} \frac{\d T}{T} = c_m \ln \frac{T_3}{T_2} \\
+   \intertext{mit $\Delta s_1 < 0$ und $\Delta s_1 > 0$, da $T_3 < T_1$ und $T_2 < T_3$}
+   \Delta S &= \Delta S_1 + \Delta S_2 = c_m \ln \frac{T_3^2}{T_1 T_2} = c_M \ln \frac{(T_1 + T_2)^2}{4T_1 T_2} > 0 \tag{wegen $(T_1 + T_2)^2 > 4T_1 T_2$}
+   \end{align*}
+   das heißt: Beim Temperaturausgleich zweier Systeme nimmt die Entropie des Gesamtsystems zu.
+   #+end_ex
+
+   #+ATTR_LATEX: :options [Zweiter Hauptsatz der Wärmelehre]
+   #+begin_thm latex
+   Allgemein gilt: \\
+   In allen abgeschlossenen Systemen nimmt die ENtropie im Laufe der Zeit zu $\ldots$. Kurz: $\Delta s \geq 0$
+   (Merke: Entropie des Universums nimmt immer zu. $\implies$ Zeitrichtung, dagegen: $E = ~\text{const}$)
+   #+end_thm
+
+   Das heißt: Ein natürlich, das heißt von selbst ablaufender Prozess zwischen zwei Gleichgewichtszuständen wird nur in die Richtung ablaufen, in der die Entropie des (abgeschlossenen) Gesamtsystems zunimmt.
+   Aussagen ebenfalls äquivalten zum Clausius-Prinzip, da $\Delta s < 0 \iff$ Existenz einer perfekten Kältemaschine (das heißt $\Delta W = 0$)
+
+   Frage: Was treibt die Zunahme der Entropie an? \\
+   Antwort ergibt such über statistische Interpretation der Entropie:
+   - Streben nach Unordung
+   - Streben in Richtung maximaler Wahrscheinlichkeit
+   Hierzu: Betrachte freie, isotherme Expansion eines idealen Gases $\ldots$
+   - Zeitpunkt $t = 0$: Gas in Volumen $V_1$
+   - Zeitpunkt $t > 0$: Gas in Volumen $V_1 + V_2$
+   Irreversibler Prozess! \\
+   Wahrscheinlichkeit nach Ventilöffnung alle Gasteilchen im Volumen V_1 zu finden ist quasi Null.
+   Sei $p(V) =$ Wahrscheinlichkeit *ein* Gasteilchen im Volumen $V$ anzutreffen.
+   - $V = V_1 + V_2"$
+   - $t = 0: p(V_1) = 1, p(V_2) = 0$
+   - $t > 0: p(V_1) = \frac{V_1}{V}, p(V_2) = \frac{V_2}{V}$
+   Jetzt: $W(V) =$ Wahrscheinlichkeit *alle* Gasteilchen im Volument $V$ anzutreffen $\implies$
+   \[W(V_1) = (p(V_1))^N\]
+   wobie $N =$ Anzahl Gasteilchen, $N = n \frac{R}{k_B}$ sehr grpß, $N\sim O(10^24)$
+   - Vorher $(t = 0): W(V_1) = 1$
+   - Nachher $(t > 0): W(V_1) = (\frac{V_1}{V})^N \approx 0$, da $\frac{V_1}{V} < 1$ und $N$ extrem groß.
+   Logarithmieren:
+   - Vorher $\implies \ln W_{vor} = 0$
+   - Nachher $\implies \ln W_{nach} = \ln (\frac{V_1}{V})^N = N\ln(\frac{V_1}{V{V}})$
+   Es folgt:
+   <<vergleich>>
+   \[\ln W_{nach} = \frac{1}{k_B} n R \ln (\frac{V_1}{V_1 + V_2}) \implies k_B \ln W_{nach} = - nR \ln(\frac{V_1 + V_2}{V_1})\]
+
+   Jetzt: Entropieänderung für $A$? \\
+   Problem: Entorpieänderung $\Delta S$ kann für $A$ nicht über $\int \frac{\d Q}{T}$ bestimmt werden, da der Prozess nicht reversibel ist und
+   während der Zustandsänderung kein thermodynamisches Gleichgewicht herrscht. \\
+   Aber: Anfangs- und Endzustand von $A$ und $B$ sind gleich, das heißt
+   Entropieänderung für beide ebenfalls gleich! \\
+   #+begin_remark latex
+   Bezieht sich nur auf betrachtete Systeme, nicht auf System + Umgebung!
+   Denn, im Fall $A$ nimmt Gesamtentropie zu (Umgebung bleibt unverändert),
+   während im Fall $B$ die Gesamtentropie aufgrund der Wärmeentnahme aus Umgebung konstant bleibt
+   #+end_remark
+
+   Also: Bestimme Entropieänderung über reversiblen Prozess $B$
+   \[\Delta S = \int_{V_1}^{V} \frac{\d Q_{rev}}{T} = \frac{1}{T} \int_{V_1}^{V}\d Q_{rev} = \frac{1}{T} \int_{V_1}^{V} p\d V = n R \int_{V_1}^{V} \frac{\d V}{V} = v R \ln \frac{V}{V_1} = n R \ln(\frac{V_1 + V_2}{V_1})\]
+   Vergleicht mit [[vergleich]] ergibt:
+   \[\Delta S = -k_B \ln W_{nach} > 0\]
+   da $W_{nach} < 1$, beziehungsweise
+   \[\Delta S = k_B \ln \frac{1}{W_{nach}}, W_{vor} = 1 \implies \Delta S = k_B \ln \frac{W_{vor}}{W_{nach}} = k_B \ln \frac{1}{W_{nach}} - k_B \ln \frac{1}{W_{vor}}\]
+   Im Allgemeinen ist die Wahrscheinlichkeit $w$ eines Zustands umgekehrt proportional zur Zahl der Realisierungsmöglichkeiten $\Omega$, die für einen bestehenden thermodynamischen Zustand
+   verfügbar sind, das heißt
+   \[\frac{1}{W} \sim \Omega\]
+   Damit
+   \[S = k_B \ln \Omega = k_B \ln \frac{1}{W} + ~\text{const}\]
+   Die Entropie ist proportioonal zum Logarithmus derZahl der Realisierungsmöglichkeiten eines thermodynamischen Zustands. $\implies$
+   \[\Delta S = k_B \ln \frac{\Omega_{nach}}{\Omega_{vor}} = k_B \ln \frac{W_{vor}}{W_{nach}}\]
+   Es folgt: \[\Delta S > 0\], da $W_{nach} < W_{vor}$ (siehe obiges Beispiel)
+** Thermodynamische Temperaturskala
+   (und 3. Hauptsatz der Wärmelehre)
+*** Temperaturskala (via Carnot-Wirkungsgrad)
+	Es gitl:
+	\[1 - \eta = \frac{\abs{\Delta Q_2}}{\Delta Q_1} = \frac{T_2}{T_1}\]
+	mit $T_2 < T_1$. Wähle Fixpunkt $T_1 = \SI{273.16}{\kelvin}$ (Tripelpunkt des Wassers) $\implies$
+	\[T_2 = \SI{273.16}{\kelvin} (1 - \eta), \eta = 1 \implies T_2 = \SI{0}{\kelvin}\]
+    #+ATTR_LATEX: :options [Thermodynamische Temperaturskala]
+    #+begin_defn latex
+	Ein Kelvin ist der $273.16$ste Teil der thermodynamischen Temperatur des Tripelpunkt des Wassers
+    #+end_defn
+*** Dritter Hauptsatz
+	Betrachte Kältemaschine:
+	\[\eps_{kälte} = \frac{1}{\eta} - 1 = \frac{\Delta Q_K}{\Delta W} = \frac{T_K}{T_W - T_K}\]
+	mit $T_W > T_K$. Arbeitsaufwand um $T_K = 0$ zu erreichen:
+	\[\Delta W = \Delta Q_K \frac{T_N - T_K}{T_K} \xrightarrow{T_K \to 0} \infty\]
+	$\implies$
+    #+ATTR_LATEX: :options [Dritter Hauptsatz der Wärmelehre]
+    #+begin_thm latex
+	Es ist prinzipiell unmöglich den absoluten Temperaturnullpunkt $T = \SI{0}{\kelvin}$ zu erreichen.
+
+	Formulierung dur W.Nernst:
+	Für reine Stoffe gilt:
+	\[S(T = \SI{0}{\kelvin}) = 0\]
+    #+end_thm
+** Zusammenfassung thermodynamische Gesetze
+   - Erster Hauptsatz: $\Delta U = \Delta Q + \Delta W$ (Energieerhaltung). Es gibt kein Perpetuum Mobile erster Art.
+   - Zweiter hauptsatz: Es gibt keine perfekte Kühlmaschine. Maximaler Wirkungsgrad $\eta_c = 1 - \frac{T_2}{T_1}$.
+	 Es gibt kein Perpetuum Mobile zweiter Art. Die Entropie des Universums nimmt immer zu.
+   - Dritter Hauptsatz: Der absolute Temperaturnullpunkt ist unerreichbar
+** Thermodynamik realer Gase und Flüssigkeiten.
+   Bisher: ideales Gas, das heißt
+   - kein Eigenvolumen der Gasteilchen
+   - keine Wechselwirkung zwischen Gasteilchen
+   - $pV = nRT$
+   Ein ideales Gas bleibt immer gasförmig! \\
+   Aber: In der Realität Beobachtung von Phasenübergängen
+*** Ausdehung
+	Kovolumen:
+	\[V_K = \frac{4}{3}\pi (2r)^3 = 8V_a\]
+	mit $V_a =$ Volumen der Gasteilchen. $\implies$ Gesamtes Kovolumen:
+	\[V_N = \frac{1}{2}N (8V_a) = 4N V_a = 4(n N_a) V_a \equiv n b\]
+	mit:
+	- $b = 4 N_A V_a$
+	- $V_a = \frac{4}{3}\pi r^3$
+    Das Kovolumen muss vom verfügbaren Volumen für Gasteilchen abgezogen werden. Verlust an freiem Volumen erhöht Zahl der Wandanstöße $\implies$ Druckerhöhung
+*** Wechselwirkung
+	Beschreibung der Wechselwirkung zwischen Gasteilchen dur Leenard-Jones-Potential $\implies$ Langreichweitige Anziehungskraft.

@@ -360,10 +360,53 @@
    Dann existiert nach 2. eine lineare Abbildung $f:V\to W$ mit $f(v_i) = w_i$ für $i = 1,\ldots, n$,
    insbesondere ist $f(v_i) = w_i$ für $i =1,\ldots, r$
    #+end_proof
+   #+ATTR_LATEX: :options [15.2]
+   #+begin_conc latex
+   $\mathcal{B} = (v_1, \ldots, v_2)$ Basis von $V$. Dann gibt es genau einen Isomorphismus
+   \[\Phi_{\mathcal{B}}:K^n \to V\]
+   von K-VR mit $\Phi_{\mathcal{B}}(e_i) = v_i$ für $i = 1, \ldots, n$. $\Phi_{\mathcal{B}}$ heißt
+   das durch $\mathcal{B}$ bestimmte *Koodinatensystem* von $V$. Ist $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \in V$,
+   dann nennt man $\Phi_{\mathcal{B}}^{-1} = \lambda_1 e_1, \ldots, \lambda_n e_n = \cvec{\lambda_1; \vdots; \lambda_n} \in K^n$
+   die *Koordinaten* von $v$ bezüglich $\mathcal{B}$
+   #+end_conc
+   #+begin_proof latex
+   Wende 15.1.2 auf die Basen $(e_1, \ldots, e_n)$ von $K^n$ und $(v_1, \ldots, v_n)$ von $V$ an.
+   #+end_proof
+   #+ATTR_LATEX: :options [15.3]
+   #+begin_thm latex
+   $\mathcal{A} = (v_1, \ldots, v_n)$ Basis von $V, \mathcal{B} = (w_1, \ldots, w_m)$ Basis von $W$.
+   Dann gilt:
+   1. Für jede lineare Abbildung $f:V\to W$ gibt es genau eine Matrix $A = (a_{ij}) \in M(m\times n, K)$,
+	  sodass
+	  \[f(v_j) = \sum_{j = 1}^{m}a_{ij} w_i, j = 1,\ldots, n\]
+	  $M_{\mathcal{B}}^{\mathcal{A}}(f) := A$ heißt die *Darstelungsmatrix* von $f$ bezüglich der Basen
+	  $\mathcal{B}$ und $\mathcal{B}$. In der j-ten Spalte von $M_{\mathcal{B}}^{\mathcal{A}}(f)$
+	  stehen die Koordiaten von $f(v_j)$ bezüglich der Basis von $\mathcal{B}$ von $W$ (für $j = 1, \ldots , n$)
+   2. Die aus 1. erhaltene Abbildung
+	  \[M_{\mathcal{B}}^{\mathcal{A}}:\Hom_K(V, W) \to M(m\times n, K), f\mapsto M_{\mathcal{B}}^{\mathcal{A}}(f)\]
+	  ist ein Isomorphismus von K-VR. Insbesondere ist im Fall $V = W, \mathcal{A} = \mathcal{B}$ die
+	  Abbildung
+	  \[M_{\mathcal{B}}: \End_K(V) \t M(n\times m,K), f\mapsto M_{\mathcal{B}}(f) := M_{\mathcal{B}}^{\mathcal{B}}(f)\]
+	  ein Isomorphismus von K-Vekorraum.
+   #+end_thm
+   #+begin_proof latex
+   1. klar, weil $\mathcal{B} = (w_1, \ldots, w_m)$ Basis von $W$ ist.
+   2. $M_{\mathcal{B}}^{\mathcal{A}}$ ist linear, denn: \\
+	  Sind $f, g \in \Hom_K(V, W), \lambda \in K$ mit $M_{\mathcal{B}}^{\mathcal{A}}(f) = (a_{ij}), M_{\mathcal{B}}^{\mathcal{A}}(g) = (b_{ij})$,
+	  dann ist
+	  \[(f + g)(v_j) = f(v_j) + g(v_j) = \sum_{i = 1}^{m}a_{ij}w_i + \sum_{i = 1}^{m} b_{ij} w_i = \sum_{i = 1}^{m} (a_{ij} + b_{ij}) w_i, j = 1, \ldots, n w_i, j = 1, \ldots, n\]
+	  das heißt $M_{\mathcal{B}}^{\mathcal{A}}(f + g) = M_{\mathcal{B}}^{\mathcal{A}}(f) + M_{\mathcal{B}}^{\mathcal{A}}(g)$
+	  \[(\lambda f)(v_j) = \lambda f(v_j) = \lambda \sum_{i = 1}^{m} a_{ij} w_i = \sum_{i = 1}^{m} (\lambda a_{ij}) w_i, j = 1,\ldots, n\]
+	  also $M_{\mathcal{B}}^{\mathcal{A}}(\lambda f) = \lambda M_{\mathcal{B}}^{\mathcal{A}}(f)$ \\
+	  $M_{\mathcal{B}}^{\mathcal{A}}$ ist bijektiv, denn: \\
+	  Ist $A = (a_{ij}) \in M(m\times n, K)$, dann existiert nach 15.1.2 genau ein $f\in \Hom_K(V,W)$ mit
+	  \[f(v_j) = \sum_{i = 1}^{m} a_{ij} w_i, j = 1,\ldots, n\]
+   #+end_proof
 
    #+ATTR_LATEX: :options [15.4]
    #+begin_conc latex
-   $M^{(e_1,\ldots, e_n)}_{(e_1, \ldots, e_m)}: \Hom_K(K^n, K^m) \to M(m\times n, K)$ ist ein Isomorphismus von K-VR mit
+   Die Abbildung
+   \[M^{(e_1,\ldots, e_n)}_{(e_1, \ldots, e_m)}: \Hom_K(K^n, K^m) \to M(m\times n, K)\] ist ein Isomorphismus von K-VR mit
    Umkehrabbildung:
    \[\sim: M(m\times n, K)\to \Hom_K(K^n,K^m), A\mapsto \tilde A\]
    Insbesondere ist $\sim$ ebenfalls ein Isomorphismus.

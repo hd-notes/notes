@@ -34,3 +34,5 @@ pdfs
 *.tex
 *.pdf
 pdf_key
+*.pg
+*.pgm
