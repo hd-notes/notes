@@ -744,3 +744,4 @@
 	- $V_a = \frac{4}{3}\pi r^3$
     Das Kovolumen muss vom verfügbaren Volumen für Gasteilchen abgezogen werden. Verlust an freiem Volumen erhöht Zahl der Wandanstöße $\implies$ Druckerhöhung
 *** Wechselwirkung
+	Beschreibung der Wechselwirkung zwischen Gasteilchen dur Leenard-Jones-Potential $\implies$ Langreichweitige Anziehungskraft.
