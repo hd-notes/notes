@@ -23,8 +23,8 @@ else
 	export PATH="${HOME}/texlive/bin/x86_64-darwin:${PATH}"
 fi
 
-mkdir -p $HOME/texmf/tex/latex
-curl -s http://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/src/tikzuml-v1.0-2016-03-29.tbz | tar -xJC $HOME/texmf/tex/latex
+mkdir -p "${HOME}/texmf/tex/latex"
+curl -s http://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/src/tikzuml-v1.0-2016-03-29.tbz | tar -xJC "${HOME}/texmf/tex/latex"
 
 git clone git://orgmode.org/org-mode.git
 cd org-mode
