@@ -139,4 +139,4 @@
 
 # #+LATEX_HEADER: \usemintedstyle{tango}
 #+LATEX_HEADER: \usemintedstyle{friendly}
-#+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines}
+#+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines,mathescape=true}

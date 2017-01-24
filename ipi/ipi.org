@@ -1449,6 +1449,22 @@
   bei GUI (graphical user interface) und bei Zeichenprogrammen/Computer Graphik. Eine Klasse (abgeleitete Klasse, Unterklasse) kann
   Funktionalität einer anderen Klasse (Basisklasse) erbe, Basisklasse muss dafür nicht sterben. Sprachunabängige Schreibweise: UML-Diagramm ("Universal modelling language")
   # (TODO: typeset uml diagramm (tikz-uml))
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \umlsimpleclass{Base}
+  \umlsimpleclass[y = 3]{Derived}
+  \umlinherit{Base}{Derived}
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
   in c++:
   #+BEGIN_SRC cpp
   class Base {
