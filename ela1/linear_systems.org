@@ -1,0 +1,306 @@
+* Lineare Gleichungssysteme
+  In diesem Abschnitt seien stets $m,n \in \mathbb{N}, A = (a_{ij}) \in M(m\times n, K), b = \cvec{b_1 ; \vdots ; b_m} \im K^m$
+  Ziel: bestimme alle $x = \cvec{x_1; \vdots; x_n} \in K^n$ mit $Ax = b$, das heißt löse das lineare Gleichungssystem $Ax = b$.
+  explizit
+  \begin{align*}
+  a_{11} x_1 + \ldots + a_{1n} x_n &= b_1 \\
+  &\vdots \\
+  a_{m1} x_1 + \ldots + a_{mn} x_n &= b_m \\
+  \end{align*}
+  Die Matrix $A$ induziert eine lineare Abbildung $\tilde A: K^n \to K^m, x\mapsto Ax$,
+  das heißt: Bestimmung der Lösungsmenge von $Ax = b$ korrespondiert zur Bestimmung
+  der Faser $\tilde A^{-1}(b)$
+  #+ATTR_LATEX: :options [14.1]
+  #+begin_defn latex
+  Das Lineare Gleichungssystem $Ax = b$
+  - *homogen* $\xLeftrightarrow{\text{Def}} b = 0$
+  - *inhomogen* $\xLeftrightarrow{\text{Def}} b \neq 0$
+  Das LGS $Ax = 0$ heißt das zu $Ax = b$ gehörige homogene LGS. $A$ heißt die *Koeffizietenmatrix*
+  des LGS $Ax = b$. $\Lös(A, b) := \{x \in K^n \mid Ax = b = \tilde A^{-1}(\{b\})\}$ heißt der
+  Lösungsraum des LGS $Ax = b$. Insbesondere ist $\Lös(A, 0) = \ker \tilde A$.
+  #+end_defn
+  #+ATTR_LATEX: :options [14.2]
+  #+begin_thm latex
+  Es glt:
+  1. $\Lös(A, 0) \subseteq K^n$ ist ein UVR der Dimension $u - \Rang(A)$.
+  2. $\Lös(A, b) \subseteq K^n$ ist ein affinier Unterraum von $K^n$. Ist $\Lös(A,b) \neq \emptyset$
+	 dann hat dieser die Dimension $n - \Rang(A)$
+  3. Ist $\Lös(A,b) \neq \emptyset$ und $v \in \Lös(A, b)$, dann ist $\Lös(A, b) = v + \Lös(A, 0)$
+  #+end_thm
+  #+begin_proof latex
+  1. Es ist $\Lös(A, 0) = \ker \tilde A, \ker \tilde A$ ist ein UVR von $K^n$ mit
+	 $\dim(\ker \tilde A) = \dim(K^n) - \dim(\im \tilde A) = n - \Rang(\tilde A) = n - \Rang(A)$
+  2. Es ist $\Lös(A, b) = \tilde A^{-1}(\{b\})$, dies ist nach 13.5 ein affiner UR von $K^n$.
+	 Falls $\Lös(A, b) \neq \emptyset$, dann ist $b \in \im\tilde A$ und $\dim \Lös(A, b) = \dim(\{b\}) = \dim \ker \tilde A = u - \Rang A$
+  3. Falls $\Lös(A, b) \neq \emptyset, v \in \Lös(A, b)$, dann
+	 \[\Lös(A, b) = \tilde A^{-1}(\{b\}) = v + \ker \tilde A = v + \Lös(A, 0)\]
+  #+end_proof
+  #+begin_note latex
+  - $\Lös(A, 0)$ enthält immer die triviale Lösung $0$, nichttriviale Lösung von $Ax = 0$ gibt
+	es wegen 1. genau dann, wenn $\Rang A < n$
+  #+end_note
+  #+ATTR_LATEX: :options [14.3]
+  #+begin_defn latex
+  \[A \mid b := \begin{pmatrix} a_{11} & \ldots & a_{1n} & b_1 \\ \vdots & & \vdots & \vdots \\ a_{m1} & \ldots & a_{mn} & b_m \end {pmatrix} \subseteq M(m \times (n + 1), K)\]
+  heißt die erweiterte Koeffizientenmatrix des LGS $Ax = b$.
+  #+end_defn
+  #+ATTR_LATEX: :options [14.4]
+  #+begin_thm latex
+  Es sind äquivalent:
+  1. $\Lös(A, b) \neq \emptyset$, das heißt LGS $Ax = b$ besitzt eine Lösung
+  2. $\Rang(A) = \Rang(A\mid b)$
+  #+end_thm
+  #+begin_proof latex
+  1. Es ist $\im \tilde A = \tilde A(K^n) = \tilde A(\Lin(e_1, \ldots, e_n)) = \Lin(\tilde A(e_1), \ldots, \tilde A(e_n)) = \Lin(Ae_1, \ldots, Ae_n)$
+	 und es ist $\im \reallywidetilde{A\mid b} = \reallywidetilde{A\mid b}(K^{n + 1}) = \reallywidetilde{A\mid b}(\Lin(e_1, \ldots, e_{n + 1})) = \Lin(\reallywidetilde{A\mid b}(e_1), \ldots, \reallywidetilde{A\mid b}(e_n), \reallywidetilde{A\mid b}(e_{n + 1})) = \Lin((A\mid b)e_1, \ldots, (A\mid b)e_n, (A\mid b)e_{n + 1}) = \Lin(Ae_1, \ldots, Ae_n, b)$
+	 insbesondere $\im \tilde A \subseteq \im \reallywidetilde{A\mid b}$
+  2. Also $\Lös(A, b) \neq \emptyset \iff b \in \im \tilde A \iff \reallywidetilde{A\mid b} \iff \dim \im \tilde A = \dim \im \reallywidetilde{A\mid b} \iff \Rang \tilde A = \Rang \reallywidetilde{A\mid b} \iff \Rang A =\Rang A\mid b$
+  #+end_proof
+  #+ATTR_LATEX: :options [14.5]
+  #+begin_conc latex
+  Es sind äquivalent:
+  1. Das LGS $Ax = b$ besitzt genau eine Lösung
+  2. $\Rang(A) = \Rang(A\mid b) = n$
+  #+end_conc
+  #+begin_proof latex
+  1. $\implies$ 2. Das LGS $Ax = b$ besitze genau eine Lösung. Aus der Existenz einer Lösung folgt
+	 nach 14.4: $\Rang A = \Rang(A \mid b)$ aus der Eindeutigkeit folgt $\dim \Lös(A, b) = 0$, also
+	 nach 14.2:
+	 \[0 = \dim \Lös(A, b) = n - \Rang(A)\]
+	 also $\Rang(A) = n$
+  2. $\implies$ 1. Sei $\Rang(A) = \Rang(A\mid b) = n \implies \Lös(A, b) \neq \emptyset$ nach 14.2 ist
+	 $\dim \Lös(A, b) = n - \Rang(A) = 0$, das heißt die Lösung ist eindeutig bestimmt.
+  #+end_proof
+  Ziel: Algorithmus zur Bestimmung von $\Lös(A, b)$
+  #+ATTR_LATEX: :options [14.6]
+  #+begin_defn latex
+  $A$ ist in *strenger Zeilenstufenform* (SZSF) $\xLeftrightarrow{\text{Def}} A$ ist in ZSF
+  mit Pivotspalten bei $j_1, \ldots, j_r$ und es gilt:
+  - (SZ1) $a_{1j_1} = \ldots = a_{rj_r} = 1$
+  - (SZ2) $a_{ij_k} = 0 \Forall k \in \{1, \ldots, r\}, i \in \{1, \ldots, k - 1\}$
+  #+end_defn
+  #+ATTR_LATEX: :options [14.7]
+  #+begin_thm latex
+  $A$ lässt sich durch elementare Zeilenumformung auf SZSF bringen.
+  #+end_thm
+  #+begin_proof latex
+  Bringe $A$ auf ZSF B nach Satz 10.11. Multipliziere die i-te Zeile für $i = 1, \ldots r$
+  mit $\frac{1}{b_{ij_i}}$ und annulliere dann die Einträge der $j_k$-ten Spalte oberhalb
+  des Pivotelements durch Substraktion geeigneter Vielfacher der $k$-ten Zeile.
+  #+end_proof
+  #+ATTR_LATEX: :options [14.8]
+  #+begin_ex latex
+  #+begin_equation latex
+  A =
+  \begin{pmatrix}
+  0 & 0 & 3 & -1 \\
+  0 & 1 & 2 & 0 \\
+  0 & 3 & 0 & 2
+  \end{pmatrix} \in M(3\times 4, \mathbb{R}) \to
+  \begin{pmatrix}
+  0 & 1 & 2 & 0 \\
+  0 & 0 & 3 & -1 \\
+  0 & 0 & 0 & 0
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  0 & 1 & 2 & 0 \\
+  0 & 0 & 1 & -\frac{1}{3} \\
+  0 & 0 & 0 & 0
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  0 & 1 & 0 & \frac{2}{3} \\
+  0 & 0 & 1 & -\frac{1}{3} \\
+  0 & 0 & 0 & 0
+  \end{pmatrix}
+  #+end_equation
+  #+end_ex
+  #+begin_note latex
+  Die strenge ZSF von $A$ ist eindeutig bestimmt (vergleiche Blatt 11 ZA 5)
+  #+end_note
+  #+ATTR_LATEX: :options [14.9]
+  #+begin_remark latex
+  $C \in M(m\times n, K), d \in K^m$
+  ist $C\mid d$ durch eine Folge elementarer Zeilenumformungen aus $A\mid b$ entstanden,
+  dann ist $\Lös(C, d) = \Lös(A, b)$
+  #+end_remark
+  #+begin_proof latex
+  Wegen Anmerkung nach 10.5 genügt es, einzelne Zeilenumformungen von Typ 1. beziehungsweise 2. zu betrachten
+  1. Typ 1-Umformungen
+     \[A\mid b = \begin{pmatrix} a_{11} & \ldots & a_{1n} & b_1 \\ \vdots & & & \vdots \\ a_{m1} & \ldots & a_{mn} & b_m \end{pmatrix} \quad C\mid d = \begin{pmatrix} a_{11} & \ldots & a_{1n} & b_1 \\ \vdots & & & \vdots \\ \lambda a_{j1} & \ldots & \lambda a_{jn} & \lambda b_j \\ \vdots & & & \vdots a_{m1} & \ldots & a_{mn} & b_m \end{pmatrix}\]
+	 mit $\lambda \in K^x$. Es ist $x = \cvec{x_1 ; \vdots ; x_n} \in \Lös(A, b) \iff$
+	 \begin{align*}
+	 a_{11} x_1 + \ldots + a_{1n} x_n &= b_1 \\
+	 &\vdots
+	 a_{m1} x_1 + \ldots + a_{mn} x_n &= b_m \\
+     \end{align*}
+	 $\iff$
+	 \begin{align*}
+	 a_{11} x_1 + \ldots + a_{1n} x_n &= b_1 \\
+	 &\vdots
+	 \lambda a_{j1} x_1 + \ldots + a_{jn} x_n &= b_j \\
+	 &\vdots
+	 a_{m1} x_1 + \ldots + a_{mn} x_n &= b_m \\
+     \end{align*}
+	 $\iff$
+	 \[x\in \Lös(C, d)\]
+  2. Typ 2-Umformung: analog
+  #+end_proof
+  #+ATTR_LATEX: :options [14.10 Gauß-Algorithmus zur Lösung homogener LGS]
+  #+begin_algorithm latex
+  *Eingabe*: $A \in M(m \times n, K)$ \\
+  *Ausgabe*: eine Basis von $\Lös(A, 0)$ \\
+  *Durchführung*:
+  1. Bringe die Matrix $A$ durch elementare Zeilenumformung auf SZSF $S$:
+	 #+begin_equation latex
+	 S =
+	 \begin{pmatrix}
+	 & 1 & \ast & 0 & & & 0 & \\
+	 &   & & 1 & \ast & \vdots & \ast \\
+	 &   & &   &      &   0    & \\
+	 &   & &   &      &   1    & \\
+	 & & & & & & \\
+	 \end{pmatrix}
+	 #+end_equation
+	 Mit den Spalten $j_1, \ldots, j_r$ als die Spalten der Pivot-Elemente, $r = $ Zeilenrang$(A)$
+  2. Sei $B \in M(r \times (n - r), K)$, die aus $S$ durch Streichen der Spalten mit den Indizes
+	 $j_1, \ldots, j_r$ und der Zeilen mit den Idizes $r + 1, \ldots, m$ entsteht.
+	 Seinen $k_1 < k_2 < \ldots < k_{n - r}$ mit $\{1, \ldots, n\} = \{j_1, \ldots, j_r, k_1, \ldots, k_{n - 1}\}$
+  3. Eine Basis von $\Lös(A, 0)$ ist gegeben durch $(w_1, \ldots, w_{n - r})$, wobei
+	 \[w_i = \cvec{w_{i_1}; \vdots; w_{i_n}} \in K^n\]
+	 für $i = 1, \ldots, n - r$ wie folgt gegeben ist:
+	 \[\cvec{w_{ij_1}; \vdots; w_{ij_r}} = ~\text{i-te Spalte von B}, \cvec{w_{ik_1}; \vdots; w_{ik_{n - r}}} = e^i \in k^n - r\]
+  #+end_algorithm
+  #+begin_proof latex
+  Nach 14.9 ist $\Lös(A, 0) = \Lös(B,0)$. Es ist $x \in Lös(S,0) \iff Sx = 0 \iff$
+  \[0 = \cvec{x_{j_1}; x_{j_2}; \vdots; x_{j_r}} + B\cvec{x_{k_{n1}}; \vdots; x_{k_{n - r}}} \iff -\cvec{x_{j_1}; x_{j_2}; \vdots; x_{j_r}} = B\cvec{x_{k_{1}}; \vdots; x_{k_{n - r}}}\]
+  das heißt nach belieber Vorgabe von $x_{k_1}, \ldots, x_{k_{n - r}}$ ergeben sich $x_{j_1}, \ldots, x_{j_r}$ eindeutig.
+  Setzen wir
+  \[\cvec{x_{k_1}; \vdots; x_{k_{n - r}}} = e_i \in K^{n - r}\]
+  für $i = 1, \ldots, n- r$, dann ist
+  \[\cvec{x_{j_1}}; \vdots; x_{j_r}\]
+  die i-te spalte von $-B$. Das heißt auf diese Weise erhalten wir $w_1, \ldots, w_{n - 1}$.
+  $(w_1, \ldots, w_{n - r})$ ist nach Konstruktion ein ES von $\Lös(A, 0) = \Lös(S, 0)$ wegen
+  \[K^{n - r} = \Lin((e_1, \ldots, e_{n - r}))\]
+  $(w_1, \ldots, w_{n - r})$ ist linear unabhängig, denn: Seinen $\lambda_1,\ldots, \lambda_{n - r} \i K$ mit
+  \[\lambda_1 w_1 + \ldots + \lambda_{n - r} w_{n - r} = 0\]
+  Für $i = 1, \ldots, n - r$ lautet Eintrak in $k_1$-ter Zeile:
+  \[\lambda_1 \underbrace{w_{1k_i}}_{= 0} + \ldots + \lambda_{i - 1}\underbrace{w_{i - 1,k_i}}_{ = 0} + \lambda_i \underbrace{w_{i,k_i}}_{= 1} + \lambda_{i + 1}\underbrace{w_{i + 1, k_i}}_{= 0} + \ldots + \lambda_{n - r}\underbrace{w_{n - r, k_i}}_{ = 0} = 0\]
+  \[\implies \lambda_i \cdot i = 0 \implies \lambda_i = 0, i = 1,\ldots,n - r\]
+  #+end_proof
+  #+ATTR_LATEX: :options [14.11]
+  #+begin_conc latex
+  Es gilt: Zeilenrang$(A) =$ Spaltenrange$(A) = \Rang(A)$
+  #+end_conc
+  #+begin_proof latex
+  In 14.10 haben wir gezeigt: $\dim\Lös(A, 0) = n -$ Zeilenrang$(A)$, nach 14.2
+  ist $\dim\Lös(A,0) = n - \Rang(A) = n -$ Spaltenrang$(A) \implies$ Zeilenrang$(A) =$ Spaltenrang $(A)$
+  #+end_proof
+  #+ATTR_LATEX: :options [14.12]
+  #+begin_ex latex
+  Sei
+  \[A = \begin{pmatrix} 2 & 4 & 2 & 6 \\ 3 & 6 & 3 & 9 \\ 4 & 8 & 5 & 9\end{pmatrix} \in M(3\times 4, \mathbb{R})\]
+  gesucht ist eine Basis von $\Lös(A, 0) \subseteq \mathbb{R}^4$
+  \begin{equation}
+  A \to \begin{pmatrix}
+  2 & 4 & 2 & 6 \\
+  3 & 6 & 3 & 9 \\
+  4 & 8 & 5 & 9
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  1 & 2 & 1 & 3 \\
+  0 & 0 & 0 & 0 \\
+  0 & 0 & 1 & -3
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  1 & 2 & 1 & 3 \\
+  0 & 0 & 1 & -3 \\
+  0 & 0 & 0 & 0
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  1 & 2 & 0 & 6 \\
+  0 & 0 & 1 & -3 \\
+  0 & 0 & 0 & 0
+  \end{pmatrix}
+  \end{equation}
+  Insbesondere ist $\Rang(A) = 2, \dim\Lös(A, 0) = 4 -\Rang(A) = 2$. Es ist $j_1 = 1, j_2 = 3$. Wegen
+  $\{1, 2, 3, 4\} = \{j_1, j_2, k_1, k_2\}$ und $k_1 < k_2$ ist $k_1 = 2, k_2 = 4$. Es ist
+  #+begin_equation latex
+  B =
+  \begin{pmatrix}
+  2 & 6 \\
+  0 & -3
+  \end{pmatrix}, -B =
+  \begin{pmatrix}
+  -2 & -6 \\
+  0 & 3
+  \end{pmatrix}
+  #+end_equation
+  Eine Basis von $\Lös(A, 0)$ ist gegeben durch $(w_1, w_2)$ mit
+  \[w_1 = \cvec{-2; 1; 0; 0}, w_2 = \cvec{-6; 0; 3; 1}\]
+  #+end_ex
+  #+ATTR_LATEX: :options [14.13 Gauß-Algorithmus zur Lösung inhomogener LGS]
+  #+begin_algorithm latex
+  *Eingabe*: $A\in M(m\times n, K), b\in K^m, b\neq 0$ \\
+  *Ausgabe*: $\Lös(A, b)$ \\
+  *Durchführung*:
+  1. Bringe die Matrix $A\mid b$ durch elementare Zeilenumformung auf SZSF $S\mid s$
+	 \begin{equation}
+	 S =
+	 \begin{pmatrix}
+	 & 1 & \ast & 0 & & & 0 & & s_1\\
+	 &   & & 1 & \ast & \vdots & \ast & \vdots\\
+	 &   & &   &      &   0    & & \\
+	 &   & &   &      &   1    & & s_r \\
+	 & & & & & & & 0\\
+	 \end{pmatrix} \in M(m\times(n + 1), K), r = \Rang(A\mid b)
+	 \end{equation}
+  2. Falls $j_r = n + 1$, dann ist $\Lös(A, b) = \emptyset$
+  3. Falls $j_r < n + 1$, dann ist eine spezielle Lösung von $Ax = b$ gegeben durch
+	 \[v = \cvec{v_1; \vdots; v_n} \in K^n\]
+	 wobei
+	 \[v_{j_1}; \vdots; v_{j_r} = \vdots{s_1; \vdots; s_r}, i\in \{1, \ldots, n\}\setminus\{j_1, \ldots, j_r\} \implies v_i = 0\]
+	 Es ist $\Lös(A, b) = v + \Lös(A, 0)$, wobei $\Lös(A, 0)$ mittles 14.10 bestimmt.
+  #+end_algorithm
+  #+begin_proof latex
+  Wegen $S\mid s\in M(m\times (n + 1), K)$ ist $j_r \leq n + 1$. Falls $j_r = n + 1$, dann
+  ist $\Rang(A\mid b) =$ Spaltenrang$(A\mid b) =$ Zeilenrang$(A\mid b) =$ Zeilenrang$(S\mid s) =$ Spaltenrang$(S\mid s) >$ Spaltenrang$(S) = \Rang(A) \implies \Lös(A, b) = \emptyset$.
+  Falls $j_r < n + 1$, dann ist $v$ aus Schritt 3 eine spezielle Lösung von $Sx = s$, also auch von
+  $Ax = b$ wegen 14.9. Somit ist $\Lös(A, b) = v + \Lös(A, 0)$ nach 14.2.
+  #+end_proof
+  #+ATTR_LATEX: :options [14.14]
+  #+begin_ex latex
+  Wir betrachten das LGS $Ax = b$ mit
+  \[A = \begin{pmatrix} 2 & 4 & 2 & 6 \\ 3 & 6 & 3 & 9 \\ 4 & 8 & 5 & 9\end{pmatrix} \in M(3\times 4, \mathbb{R}), b = \cvec{4;6;9} \in\mathbb{R}^3\]
+  \begin{equation}
+  A\mid b \to
+  \begin{pmatrix}
+  2 & 4 & 2 & 6 & 4 \\
+  3 & 6 & 3 & 9 & 6 \\
+  4 & 8 & 5 & 9 & 9
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  1 & 2 & 1 & 3 & 2 \\
+  3 & 6 & 3 & 9 & 6 \\
+  4 & 8 & 5 & 9 & 9
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  1 & 2 & 1 & 3 & 2 \\
+  0 & 0 & 0 & 0 & 0 \\
+  0 & 0 & 1 & -3 & 1
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  1 & 2 & 1 & 3 & 2 \\
+  0 & 0 & 1 & -3 & 1 \\
+  0 & 0 & 0 & 0 & 0
+  \end{pmatrix} \to
+  \begin{pmatrix}
+  1 & 2 & 0 & 6 & 1 \\
+  0 & 0 & 1 & -3 & 1 \\
+  0 & 0 & 0 & 0 & 0
+  \end{pmatrix}
+  \end{equation}
+  Es ist $\Rang(A\mid b) = \Rang(A) = 2$, insbesondere ist $\Lös(A, b) \neq \emptyset, \dim\Lös(A, b) = 4 - \Rang(A) = 2$.
+  Es ist $j_1 = 1, j_2 = 3$. Eine spzielle Lösung von $Ax = b$ ist nach 14.13 gegeben durch
+  \[v = \cvec{1; 0; 1; 0}\]
+  Nach Beispiel 14.12 ist \[\Lös(A, b) = \cvec{1; 0; 1; 0} + \Lin(\cvec{-2; 1; 0; 0}, \cvec{-6; 0; 3; 1}) = \{\cvec{1 - 2\lambda -6\mu; \lambda; 1 + 3\mu; \mu}\mid \lambda,\mu\in \mathbb{R}\} \]
+  #+end_ex

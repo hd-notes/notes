@@ -1,0 +1,195 @@
+* Basiswechsel
+  In diesem Abschnitt seien $V, W$ endlich dimensionale K-VR. \\
+  Ziel: $f:V \to W$ lineare Abbildung, $\mathcal{A},\mathcal{A}'$ Basen von $V, $\mathcal{B}, \mathcal{B}'$ Basen von $W$. Wie hängen $M_{\mathcal{B}}^{\mathcal{A}}(f)$ und $M_{\mathcal{B}}^{\mathcal{A}}(f)$
+  zusammen?
+
+  #+ATTR_LATEX: :options [16.1]
+  #+begin_remark latex
+  $f:V \to W$ lineare Abbildung, $\mathcal{A}$ Basis von $V$, $\mathcal{B}$ Basis von $W$. Dann gilt: Das Diagramm
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+	 \centering
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {K^n & V \\ K^m & W\\};
+  \path[-stealth]
+  (m-1-1) edge node [left] {$\Phi_{\mathcal{A}}$} (m-2-1)
+          edge node [below] {$\reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)}$} (m-1-2)
+  (m-2-1) edge node [below] {$\Phi_{\mathcal{B}}$} (m-2-2)
+  (m-1-2) edge node [left] {$f$} (m-2-2);
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  ist kommutativ, das heißt $\Phi_{\mathcal{B}} \circ M_{\mathcal{B}}^{\mathcal{A}} = f\circ \Phi_{\mathcal{A}}$ (Hierbei sind $\Phi_{\mathcal{A}}$, $\Phi_{\mathcal{B}}$ Koordinatensysteme von $V$ bezüglich $\mathcal{A}$ beziehungsweise von $W$ bezüglich $\mathcal{B}$)
+  Insbesondere ist $\reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)} = \Phi_{\mathcal{B}}^{-1} \circ f \circ \Phi_{\mathcal{A}}$
+  #+end_remark
+  #+begin_proof latex
+  Es gilt zu zeigen, dass die Abbildung $\Phi_{\mathcal{B}} \circ \reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)}: K^n \to W$ und $f\circ \Phi_{\mathcal{A}}: K^n \to W$ auf
+  der kanonischen Basis $(e_1, \ldots, e_n)$ von $K^n$ übereinstimmen. Sei $A = (a_{ij}) = M_{\mathcal{B}}^{\mathcal{A}}(f)$, $\mathcal{A} = (v_1, \ldots, v_n), \mathcal{B} = (w_1, \ldots, w_m)$
+  \[\implies (\Phi_{\mathcal{B}}) \circ \reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)}(e_j) = \Phi_{\mathcal{B}}(\tilde A(e_j)) = \Phi_{\mathcal{B}}(Ae_j) = \Phi_{\mathcal{B}} (\cvec{a_{1j}; \vdots; a_{mj}}) = a_{1j}w_1 + \ldots + a_{mj} w_m\]
+  \[(f\circ \Phi_{\mathcal{A}})(e_j) = f(\Phi_{\mathcal{A}}(e_j)) = f(v_j) = a_{ij} w_1 + \ldots  + a_{mj} w_m\]
+  #+end_proof
+  #+ATTR_LATEX: :options [16.2]
+  #+begin_remark latex
+  $\mathcal{A}, \mathcal{A}'$ Basen von $V, n = \dim(V)$
+  \[T_{\mathcal{A}'}^{\mathcal{A}}:= M_{\mathcal{A}'}^{\mathcal{A}}(\id_V) \in M(n\times n, K)\]
+  heißt die *Transformationsmatrix* des Basiswechsels von $\mathcal{A}$ nach $\mathcal{A}'$. Es gilt:
+  1. $T_{\mathcal{A}'}^{\mathcal{A}} \in GL(n, K)$
+  2. $\reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}}} = \Phi_{\mathcal{A}'}^{-1} \circ \Phi_{\mathcal{A}}$
+  3. $T_{\mathcal{A}'}^{\mathcal{A}} = (T_{\mathcal{A}}^{\mathcal{A}'})^{-1}$
+  #+end_remark
+  #+begin_proof latex
+  (2) nach 16.1 ist das Diagramm
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+	 \centering
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {K^n & V \\ K^n & V\\};
+  \path[-stealth]
+  (m-1-1) edge node [left] {$\Phi_{\mathcal{A}}$} (m-2-1)
+          edge node [below] {$\reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}}} = \reallywidetilde{M_{\mathcal{A'}}^{\mathcal{A}}(f)}$} (m-1-2)
+  (m-2-1) edge node [below] {$\Phi_{\mathcal{A}'}$} (m-2-2)
+  (m-1-2) edge node [right] {$\id_V$} (m-2-2);
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  kommutativ $\implies$
+  \[\Phi_{\mathcal{A}'} \circ T_{\mathcal{A}'}^{\mathcal{A}} = \id_V \circ \Phi_{\mathcal{A}} = \Phi_{\mathcal{A}} \implies \reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}}} = \Phi_{\mathcal{A}'}^{-1} \circ \Phi_{\mathcal{A}}\]
+  (1) Da $\Phi_{\mathcal{A}'}, \Phi_{\mathcal{A}}$ Isomorphismen, ist auch $\reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}}} = \Phi_{\mathcal{A}'}^{-1}\circ \Phi_{\mathcal{A}}$ ein Isomorphismus, nach 15.6 folgt $T_{\mathcal{A}'}^{\mathcal{A}} \in GL(n, K)$ \\
+  (3) Nach (2) ist $\reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}} \cdot T_{\mathcal{A}}^{\mathcal{A}'}} = \tilde T_{\mathcal{A}'}^{\mathcal{A}} \circ \tilde T_{\mathcal{A}}^{\mathcal{A}'} = \Phi_{\mathcal{A}'}^{-1} \circ \Phi_{\mathcal{A}} \circ \Phi_{\mathcal{A}}^{-1} \circ \Phi_{\mathcal{A}'} = \Phi_{\mathcal{A}'}^{-1} \circ id_{K^n} \circ \Phi_{\mathcal{A}'} = \id_{K^n} = \tilde E_n$
+  \[\implies T_{\mathcal{A}'}^{\mathcal{A}} \cdot T_{\mathcal{A}}^{\mathcal{A}'} = E_n \implies T_{\mathcal{A}'}^{\mathcal{A}} = (T_{\mathcal{A}}^{\mathcal{A}'})^{-1}\]
+  #+end_proof
+  #+ATTR_LATEX: :options [16.3]
+  #+begin_ex latex
+  $K = \mathbb{R}, V = \mathbb{R}^2, \mathcal{A} = (\cvec{-1; 1}; \cvec{1; 1}), \mathcal{A}(\cvec{2; -1}; \cvec{1 ; -1})$. Gesucht ist $T_{\mathcal{B}}^{\mathcal{A}} = M_{\mathcal{B}}^{\mathcal{A}}(\id_{\mathbb{R}^2})$
+  Es ist
+  \[\cvec{-1; 1} = 0 \cvec{2; -1} + (-1) \cvec{1; -1}, \cvec{1; 1} = 2\cvec{2; -1} + (-3)\cvec{1; -1}\]
+  also:
+  \[T_{\mathcal{B}}^{\mathcal{A}} = \begin{pmatrix} 0 & 2 \\ -1 & -3\end{pmatrix}\]
+  #+end_ex
+  #+ATTR_LATEX: :options [16.4]
+  #+begin_thm latex
+  $U, V, W$ endlichdimensionale K-VR mit Basen $\mathcal{A}, \mathcal{B}, \mathcal{C}, g:U\to V, f:V\to W$ linare Abbildungen. Dann gilt:
+  \[M_{\mathcal{C}}^{\mathcal{A}}(f\circ g) = M_{\mathcal{C}}^{\mathcal{B}}(f) \cdot M_{\mathcal{B}}^{\mathcal{A}}(g)\]
+  #+end_thm
+  #+begin_proof latex
+  Wir setzen $r:= \dim U, m:= \dim V, n:=\dim W, A := M_{\mathcal{C}}^{\mathcal{B}}(f), B := M_{\mathcal{B}}^{\mathcal{A}}(g)$
+  Wir erhalten das Diagramm
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em] {K^r & & & U \\ & K^m & V & \\ K^n & & & W\\};
+  \path[-stealth]
+  (m-1-1) edge node [above] {$\Phi_{\mathcal{A}}$} (m-1-4)
+          edge node [below] {$\tilde B$} (m-2-2)
+		  edge node [left] {$\reallywidetilde{AB}$} (m-3-1)
+  (m-2-2) edge node [above] {$\Phi_{\mathcal{B}}$} (m-2-3)
+          edge node [above] {$\tilde A$} (m-3-1)
+  (m-3-1) edge node [below] {$\Phi_{\mathcal{C}}$} (m-3-4)
+  (m-1-4) edge node [right] {$f\circ g$} (m-3-4)
+          edge node [below] {$g$} (m-2-3)
+  (m-2-3) edge node [above] {$f$} (m-3-4);
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  Die Trapeze sind kommutativ nach 16.1, das linke Dreiech nach 12.2, das rechte Dreiech trivialerweise. Damit kommutiert auch das äußere Rechteck, das heißt
+  \[\Phi_{\mathcal{C}}\circ \reallywidetilde{AB} = f\circ g\circ \Phi_{\mathcal{A}}\]
+  \[\implies \reallywidetilde{AB} = \Phi_{\mathcal{C}}^{-1} \circ (f\circ g)\circ \Phi_{\mathcal{A}} = \reallywidetilde{M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)} \implies M_{\mathcal{C}}^{\mathcal{B}(f)}\cdot M_{\mathcal{B}}^{\mathcal{A}} = AB = M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)\]
+  #+end_proof
+  #+ATTR_LATEX: :options [16.5]
+  #+begin_conc latex
+  $\mathcal{A}, \mathcal{B}, \mathcal{C}$ Basen von  $V$. Dann gilt:
+  1. $T_{\mathcal{C}}^{\mathcal{A}} = T_{\mathcal{C}}^{\mathcal{B}} \cdot T_{\mathcal{B}}^{\mathcal{A}}$
+  2. $M_{\mathcal{B}}:\End_K(v) \to M(n\times n, K), f\mapsto M_{\mathcal{B}}(f) = M_{\mathcal{B}}^{\mathcal{B}}(f)$ ist ein Isomorphismus von Ringen, das heißt $M_{\mathcal{B}}$ ist bijektiv, \[M_{\mathcal{B}}(f + g) = M_{\mathcal{B}}(f) + M_{\mathcal{B}}(g), M_{\mathcal{B}}(f\circ g) = M_{\mathcal{B}}(f) M_{\mathcal{B}}(g), M_{\mathcal{B}}(\id_V) = E_n \Forall f,g \in \End_K(v)\]
+  #+end_conc
+  #+begin_proof latex
+  1. aus 16.4 für $U = V = W, f = g = \id_V$
+  2. Nach 15.3.2 ist $M_{\mathcal{B}}$ ein Isomorphismus von K-VR, es ist $M_{\mathcal{B}}(\id_V) = E_n$ nach 16.4
+	 \[M_{\mathcal{B}}(f\circ g) = M_{\mathcal{B}}(f) M_{\mathcal{B}}(g)\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Transformationsformel]
+  #+begin_thm latex
+  $f: V\to W$ lineare Abbildung, $\mathcal{A}, \mathcal{A}'$ Basen von $V, \mathcal{B}, \mathcal{B}'$ Basen von $W$. Dann gilt:
+  \[M_{\mathcal{B}'}^{\mathcal{A}'}(f) = T_{\mathcal{B}'}^{\mathcal{B}} M_{\mathcal{B}}^{\mathcal{A}}(f) T_{\mathcal{A}}^{\mathcal{A}'}\]
+  Setzen wir $A:= M_{\mathcal{B}}^{\mathcal{A}}(f), B:= M_{\mathcal{B}'}^{\mathcal{A}'}(f), S := T_{\mathcal{B}'}^{\mathcal{B}}, T := T_{\mathcal{A}'}^{\mathcal{A}}$, dann gilt also
+  \[B = SAT^{-1}\]
+  #+end_thm
+  #+begin_proof latex
+  Wir betrachten das Diagramm
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+	  \centering
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em] {K^n & & & K^m \\ & V & W & \\ K^n & & & K^m\\};
+  \path[-stealth]
+  (m-1-1) edge node [above] {$\reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)}$} (m-1-4)
+          edge node [below] {$\Phi_{\mathcal{A}}$} (m-2-2)
+		  edge node [left] {$\reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}}}$} (m-3-1)
+  (m-2-2) edge node [above] {$f$} (m-2-3)
+  (m-3-1) edge node [below] {$\reallywidetilde{M_{\mathcal{B}'}^{\mathcal{A}'}(f)}$} (m-3-4)
+          edge node [above] {$\Phi_{\mathcal{A}'}$} (m-2-2)
+  (m-1-4) edge node [right] {$\reallywidetilde{T_{\mathcal{B}'}^{\mathcal{B}}}$} (m-3-4)
+          edge node [below] {$\Phi_{\mathcal{B}}$} (m-2-3)
+  (m-3-4) edge node [above] {$\Phi_{\mathcal{B}'}$} (m-2-3);
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  Die Trapeze sind kommutativ nach 16.1, die Dreiecke nach 16.2.2 $\implies$ Das äußere Rechteck kummutiert, das heißt
+  \[\reallywidetilde{M_{\mathcal{B}'}^{\mathcal{A}'}(f)} \circ \reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}}} = \reallywidetilde{T_{\mathcal{B}'}^{\mathcal{B}}} \circ \reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)}\]
+  \[\implies \reallywidetilde{M_{\mathcal{B}'}^{\mathcal{A}'}(f)\cdot T_{\mathcal{A}'}^{\mathcal{A}}} = \reallywidetilde{T_{\mathcal{B}'}^{\mathcal{B}} \cdot M_{\mathcal{B}}^{\mathcal{A}}(f)} \implies M_{\mathcal{B}'}^{\mathcal{A}'}(f) \cdot T_{\mathcal{A}'}^{\mathcal{A}} = T_{\mathcal{B}'}^{\mathcal{B}} M_{\mathcal{B}}^{\mathcal{A}}(f)\]
+  \[\implies M_{\mathcal{B}'}^{\mathcal{A}'}(f) = T_{\mathcal{B}'}^{\mathcal{B}} M_{\mathcal{B}}^{\mathcal{A}}(f) (T_{\mathcal{A}'}^{\mathcal{A}})^{-1}\]
+  #+end_proof
+  #+ATTR_LATEX: :options [16.7]
+  #+begin_ex latex
+  Sei
+  \[A = \begin{pmatrix} 2 & 1 \\ 1 & 1\end{pmatrix} \in M(2\times 2, \mathbb{R}), \mathcal{A} = (\cvec{-1; 1}, \cvec{1; 1}), \mathcal{B} = (\cvec{2; -1}, \cvec{1; -1})\]
+  Gesucht ist $M_{\mathcal{B}}^{\mathcal{A}}(\tilde A)$ Nach 16.6 ist
+  \[M_{\mathcal{B}}^{\mathcal{A}}(\tilde A) = T_{\mathcal{B}}^{(e_1, e_2)} \underbrace{M_{(e_1, e_2)}^{(e_1, e_2)}(\tilde A)}_{= A} T_{(e_1, e_2)}^{\mathcal{A}} = T_{\mathcal{B}}^{(e_1, e_2)} A T_{(e_1, e_2)}^{\mathcal{A}} = (T_{(e_1, e_2)}^{\mathcal{B}}) A T_{(e_1, e_2)}^{\mathcal{A}}\]
+  Es ist
+  \[T_{(e_1, e_2)}^{\mathcal{A}} = \begin{pmatrix} -1 & 1 \\ 1 & 1\end{pmatrix}, T_{(e_1, e_2)}^{\mathcal{B}} = \begin{pmatrix} 2 & 1 \\ -1 & -1\end{pmatrix}\]
+  \[\implies M_{\mathcal{B}}^{\mathcal{A}}(\tilde A) = \begin{pmatrix} 2 & 1 \\ -1 & -1\end{pmatrix}^{-1} \begin{pmatrix} 2 & 1 \\ 1 & 1\end{pmatrix} \begin{pmatrix} -1 & 1 \\ 1 & 1\end{pmatrix} = \ldots = \begin{pmatrix} -1 & 5 \\ 1 & -7\end{pmatrix}\]
+  #+end_ex
+  #+ATTR_LATEX: :options [16.8]
+  #+begin_conc latex
+  $\mathcal{A}, \mathcal{B}$ Basen von $V, f\in \End_K(V)$. Dann gilt:
+  \[M_{\mathcal{B}}(f) = T_{\mathcal{B}}^{\mathcal{A}} M_{\mathcal{A}}(f) T_{\mathcal{A}}^{\mathcal{B}}\]
+  Setzen wir $A:= M_{\mathcal{A}}(f), B := M_{\mathcal{B}}(f) = S:= T_{\mathcal{B}}^{\mathcal{A}}$
+  dann gilt also
+  \[B = SAS^{-1}\]
+  #+end_conc
+  #+ATTR_LATEX: :options [16.9]
+  #+begin_defn latex
+  $A, B\in M(m\times n, K)$. $A, B$ heißten äquivalent $(A\sim B) \xLeftrightarrow{\text{Def}} \Exists S\in GL(m, K), T\in GL(n, K):$
+  \[B = SAT^{-1}\]
+  #+end_defn
+  #+ATTR_LATEX: :options [16.10]
+  #+begin_remark latex
+  Äquivalenz von Matrizen ist eine Äquvalenzrelation auf $M(m\times n, K)$
+  #+end_remark
+  #+begin_proof latex
+  leicht nachzurechnen.
+  #+end_proof

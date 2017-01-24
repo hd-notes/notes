@@ -1,0 +1,182 @@
+* Lineare Abbildungen und Matrizen
+  In diesem Abschnitt seien $V, W$ endlichdimensionale K-VR.
+  #+ATTR_LATEX: :options [15.1]
+  #+begin_thm latex
+  $v_1, \ldots, v_r \in V, w_1, \ldots, w_r \in W$. dann gilt:
+  1. Ist $(v_1, \ldots, v_r)$ linear unabhängig, dann gibt es eine lineare Abbildung $f: V\to W$
+	 mit $f(v_i) = w_i$ für $i = 1,\ldots, r$
+  2. Ist $(v_1, \ldots, v_r)$ eine Basis von $V$, dann gibt es genau ein lineare Abbildung $f:V\to W$ mit
+	 $f(v_i) = w_i$ für $i = 1,\ldots, r$. Diese Abbildung hat die folgenden Eigenschaften
+	 - $\im f = \Lin((w_1, \ldots, w_r))$, insbesondere $f$ surjektiv $\iff (w_1, \ldots, w_r)$ ES von $W$
+	 - $f$ injektiv $\iff (w_1, \ldots, w_r)$ linear unabhängig
+	 - $f$ Isomorphismus $\iff (w_1, \ldots, w_r)$ Basis von $W$
+  #+end_thm
+  #+begin_proof latex
+  (2): \\
+  1. Existenz: Für $v\in V$ existieren eindeutig bestimmte $\lambda_1, \ldots, \lambda_r\in K$ mit
+	 $v = \lambda_1v_1 + \ldots + \lambda_r v_r$. Wir setzen $f:V\to W, v\mapsto \lambda w_1 + \ldots + \lambda_r w_r$,
+	 dann sit insbesondere $f(v_i) = w_i$ f+r $i = 1,\ldots, r$. Behauptung: $f$ linear, denn Seien
+	 $u, v \in U$ mit $u = \lambda_1 v_1 +\ldots + \lambda_r v_r, v =\mu_1 v_1 +\ldots + \mu_r v_r$
+	 \[\implies f(u + v) = f((\lambda_1 + \mu_1)v_1 + \ldots + (\lambda_r + \mu_r)v_r) = (\lambda_1 + \mu_1)w_1 + \ldots + (\lambda_r + \mu_r)w_r = f(u) + f(v)\]
+	 Ist $\lambda\in K, v\in V$ wie oben, dann ist
+	 \[f(\lambda v) = f(\lambda\mu_1 v_1 + \ldots + \lambda\mu_r v_r) = \lambda\mu_1 w_1 + \ldots + \lambda\mu_r w_r = \lambda f(v)\]
+  2. Eindeutigkeit: Sei $f:V\to W$ eine weitere lineare Abbildung $g(v_i) = w_i$ für $i = 1,\ldots, r \implies$
+	 Für $v\in V$ mit $v = \lambda_1 v_1 + \ldots + \lambda_r v_r$ ist dann
+	 \[g(v) = \lambda_1 g(v_1) + \ldots + \lambda_r g(v_r) = \lambda w_1 + \ldots + \lambda_r w_r = f(v) \implies f = g\]
+  3. Eigenschaften von $f$:
+	 - $\im f = \Lin((f(v_1), \ldots, f(v_r))) = \Lin((w_1, \ldots, w_r))$
+	 - $f$ injektiv $\iff (w_1, \ldots, w_r)$ linear unabhängig, denn: \\
+	   "$\implies$" (durch Kontrapositon) Sei $(w_1, \ldots, w_r)$ linear abhängig
+	   $\implies \Exists \mu_1, \ldots, \mu_r \in K$ mit $(\mu_1, \ldots, \mu_r) \neq (0, \ldots, 0)$
+	   und $\mu_1 w_1 + \ldots + \mu_r w_r = 0 \implies f(\underbrace{\mu_1 v_1 + \ldots + \mu_r v_r}_{\neq 0}) = 0 \implies f$ nicht injektiv \\
+	   "$\impliedby$" Sei $w_1, \ldots, w_r$ linear unabängig. Sei $v\in V$ mit $f(v) = 0, v = \lambda_1 v_1 + \ldots + \lambda_r v_r \implies f(v) = \lambda_1 w_1 + \ldots + \lambda_r w_r = 0 \implies \lambda_1 = \ldots = \lambda_r = 0 \implies v = 0$
+  (1): \\
+  Sei $(v_1, \ldots, v_r)$ linear unabhängig $\implies (v_1, \ldots, v_r)$ kann zu Basis
+  $(v_1, \ldots, v_r, v_{r + 1}, \ldots, v_n)$ von $V$ ergänzt werden. Wir wählen $w_{r + 1}, \ldots, w_n \in W$ beliebig.
+  Dann existiert nach 2. eine lineare Abbildung $f:V\to W$ mit $f(v_i) = w_i$ für $i = 1,\ldots, n$,
+  insbesondere ist $f(v_i) = w_i$ für $i =1,\ldots, r$
+  #+end_proof
+  #+ATTR_LATEX: :options [15.2]
+  #+begin_conc latex
+  $\mathcal{B} = (v_1, \ldots, v_2)$ Basis von $V$. Dann gibt es genau einen Isomorphismus
+  \[\Phi_{\mathcal{B}}:K^n \to V\]
+  von K-VR mit $\Phi_{\mathcal{B}}(e_i) = v_i$ für $i = 1, \ldots, n$. $\Phi_{\mathcal{B}}$ heißt
+  das durch $\mathcal{B}$ bestimmte *Koodinatensystem* von $V$. Ist $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \in V$,
+  dann nennt man $\Phi_{\mathcal{B}}^{-1} = \lambda_1 e_1, \ldots, \lambda_n e_n = \cvec{\lambda_1; \vdots; \lambda_n} \in K^n$
+  die *Koordinaten* von $v$ bezüglich $\mathcal{B}$
+  #+end_conc
+  #+begin_proof latex
+  Wende 15.1.2 auf die Basen $(e_1, \ldots, e_n)$ von $K^n$ und $(v_1, \ldots, v_n)$ von $V$ an.
+  #+end_proof
+  #+ATTR_LATEX: :options [15.3]
+  #+begin_thm latex
+  $\mathcal{A} = (v_1, \ldots, v_n)$ Basis von $V, \mathcal{B} = (w_1, \ldots, w_m)$ Basis von $W$.
+  Dann gilt:
+  1. Für jede lineare Abbildung $f:V\to W$ gibt es genau eine Matrix $A = (a_{ij}) \in M(m\times n, K)$,
+	 sodass
+	 \[f(v_j) = \sum_{j = 1}^{m}a_{ij} w_i, j = 1,\ldots, n\]
+	 $M_{\mathcal{B}}^{\mathcal{A}}(f) := A$ heißt die *Darstelungsmatrix* von $f$ bezüglich der Basen
+	 $\mathcal{B}$ und $\mathcal{B}$. In der j-ten Spalte von $M_{\mathcal{B}}^{\mathcal{A}}(f)$
+	 stehen die Koordiaten von $f(v_j)$ bezüglich der Basis von $\mathcal{B}$ von $W$ (für $j = 1, \ldots , n$)
+  2. Die aus 1. erhaltene Abbildung
+	 \[M_{\mathcal{B}}^{\mathcal{A}}:\Hom_K(V, W) \to M(m\times n, K), f\mapsto M_{\mathcal{B}}^{\mathcal{A}}(f)\]
+	 ist ein Isomorphismus von K-VR. Insbesondere ist im Fall $V = W, \mathcal{A} = \mathcal{B}$ die
+	 Abbildung
+	 \[M_{\mathcal{B}}: \End_K(V) \t M(n\times m,K), f\mapsto M_{\mathcal{B}}(f) := M_{\mathcal{B}}^{\mathcal{B}}(f)\]
+	 ein Isomorphismus von K-Vekorraum.
+  #+end_thm
+  #+begin_proof latex
+  1. klar, weil $\mathcal{B} = (w_1, \ldots, w_m)$ Basis von $W$ ist.
+  2. $M_{\mathcal{B}}^{\mathcal{A}}$ ist linear, denn: \\
+	 Sind $f, g \in \Hom_K(V, W), \lambda \in K$ mit $M_{\mathcal{B}}^{\mathcal{A}}(f) = (a_{ij}), M_{\mathcal{B}}^{\mathcal{A}}(g) = (b_{ij})$,
+	 dann ist
+	 \[(f + g)(v_j) = f(v_j) + g(v_j) = \sum_{i = 1}^{m}a_{ij}w_i + \sum_{i = 1}^{m} b_{ij} w_i = \sum_{i = 1}^{m} (a_{ij} + b_{ij}) w_i, j = 1, \ldots, n w_i, j = 1, \ldots, n\]
+	 das heißt $M_{\mathcal{B}}^{\mathcal{A}}(f + g) = M_{\mathcal{B}}^{\mathcal{A}}(f) + M_{\mathcal{B}}^{\mathcal{A}}(g)$
+	 \[(\lambda f)(v_j) = \lambda f(v_j) = \lambda \sum_{i = 1}^{m} a_{ij} w_i = \sum_{i = 1}^{m} (\lambda a_{ij}) w_i, j = 1,\ldots, n\]
+	 also $M_{\mathcal{B}}^{\mathcal{A}}(\lambda f) = \lambda M_{\mathcal{B}}^{\mathcal{A}}(f)$ \\
+	 $M_{\mathcal{B}}^{\mathcal{A}}$ ist bijektiv, denn: \\
+	 Ist $A = (a_{ij}) \in M(m\times n, K)$, dann existiert nach 15.1.2 genau ein $f\in \Hom_K(V,W)$ mit
+	 \[f(v_j) = \sum_{i = 1}^{m} a_{ij} w_i, j = 1,\ldots, n\]
+  #+end_proof
+
+  #+ATTR_LATEX: :options [15.4]
+  #+begin_conc latex
+  Die Abbildung
+  \[M^{(e_1,\ldots, e_n)}_{(e_1, \ldots, e_m)}: \Hom_K(K^n, K^m) \to M(m\times n, K)\] ist ein Isomorphismus von K-VR mit
+  Umkehrabbildung:
+  \[\sim: M(m\times n, K)\to \Hom_K(K^n,K^m), A\mapsto \tilde A\]
+  Insbesondere ist $\sim$ ebenfalls ein Isomorphismus.
+  #+end_conc
+  #+begin_proof latex
+  $M^{(e_1,\ldots, e_n)}_{(e_1, \ldots, e_m)}$ ist ein Isomorphismus nach 15.3, und für $A\in M(m\times n, K)$ ist $M^{(e_1,\ldots, e_n)}_{(e_1, \ldots, e_m)}(\tilde A) = A$,
+  da $\tilde A(e_j) = Ae_j =$ j-te Spalte von $A$ für $j = 1, \ldots, n$
+  #+end_proof
+  #+ATTR_LATEX: :options [15.5]
+  #+begin_ex latex
+  $A = \begin{pmatrix} 2 & 1 \\ 1 & 1\end{pmatrix} \in M(2\times 2, \mathbb{R})$. Es ist  $M^{(e_1,\ldots, e_n)}_{(e_1, \ldots, e_m)}(\tilde A) = A$.
+  Es sei $\mathcal{A} = (\cvec{-1; 1},\cvec{1;1}), \mathcal{B} = (\cvec{2; -1},\cvec{1; -1})$. Was ist $M_{\mathcal{B}}^{\mathcal{A}}(\tilde A)$?
+  \begin{align*}
+  \tilde A(\cvec{-1; 1}) &= \begin{pmatrix} 2 & 1 \\ 1 & 1\end{pmatrix} \cvec{-1;1} = \cvec{-1; 0} = -\cvec{2; -1} + \cvec{1; -1} \\
+  \tilde A(\cvec{1; 1}) &= \begin{pmatrix} 2 & 1 \\ 1 & 1\end{pmatrix}\cvec{1;1} = \cvec{3; 2} = 5\cvec{2; -1} -7\cvec{1; -1} \\
+  \implies M_{\mathcal{B}}^{\mathcal{A}}(\tilde A) = \begin{pmatrix} -1 & 5 \\ 1 & -7\end{pmatrix}
+  \end{align*}
+  Wir haben einen Basiswechsel durchgeführt. Wie das systematisch geht, sehen wir im nächsten Abschnitt.
+  #+end_ex
+  #+ATTR_LATEX: :options [15.6]
+  #+begin_conc latex
+  $A\in M(n\times n, K)$. Dann sind äquivalent:
+  1. $A\in GL(n, K)$
+  2. Es gibt ein $B\in M(n\times n, K)$ mit $AB = E_n = BA$
+  3. Es gibt ein $B\in M(n\times n, K)$ mit $AB = E_n$
+  4. Es gibt ein $B\in M(n\times n, K)$ mit $BA = E_n$
+  5. $\tilde A: K^n \to K^n$ ist ein Isomorphismus
+  6. $\Rang(A) = n$
+  #+end_conc
+  #+begin_proof latex
+  (1) $\iff$ (2) Definition. \\
+  (5) $\iff$ (6) $\tilde A$ Isomorphismus $\iff \tilde A$ surjektiv $\iff$ $\dim\im \tilde A = n \iff \Rang\tilde A = n \iff \Rang(A) = n$ \\
+  (2) $\implies$ (3), (2) $\implies$ (4) trivial \\
+  (3) $\implies$ (5) Sei $B\in M(n\times n, K)$ mit $AB = E_n \implies \tilde A \circ \tilde B = \reallywidetilde{AB} = \tilde E_n = id_{K^n} \implies \tilde A$ sujektiv $\implies \tilde A$ Isomorphimus \\
+  (4) $\implies$ (5) analog \\
+  (5) $\implies$ (2) Sei $\tilde A$ Isomorphismus $\implies \Exists g\in \End_K(K^n): \tilde A \circ g = \id_{K^n} = g\circ \tilde A$. Nach 15.4 $\Exists B\in M(n\times n, K)$ mit $g = \tilde B$,
+  insbesondere $\tilde A \circ\tilde B = \id_{K^n} = \tilde B \circ \tilde A$, also $\tilde A \circ \tilde B =\tilde E_n = \tilde B\circ \tilde A \implies \tilde E_n = \reallywidetilde{AB} = \reallywidetilde{BA}\implies E_n = AB = BA$
+  #+end_proof
+  #+ATTR_LATEX: :options [15.7]
+  #+begin_conc latex
+  Es gilt:
+  \[\dim_K\Hom_K(V, W) = \dim_K(V) \cdot \dim_K(W)\]
+  #+end_conc
+  #+begin_proof latex
+  Nach Wahl von Basen $\mathcal{A} = (v_1, \ldots, v_n)$ von $V, \mathcal{B}=(w_1,\ldots, w_n)$ von $W$ erhalten wir nach 15.2 einen Isomorphismus
+  \[M_{\mathcal{B}}^{\mathcal{A}}:\Hom_K(V, W) \to M(m\times n, K)\]
+  also ist $\dim_K\Hom_K(V,W) = \dim_K M(m\times n, K) = m\times n = \dim_K W\cdot \dim_K V$
+  #+end_proof
+  #+ATTR_LATEX: :options [15.8]
+  #+begin_conc latex
+  $U\subseteq K^n$. Dannsind äquivalent:
+  1. $U$ ist UVR von $K^n$
+  2. Es gib ein $m\in \mathbb{N}$ und ein $A\in M(m\times n,K)$, sodass $U = \Lös(A, 0)$
+  #+end_conc
+  #+begin_proof latex
+  1. $\implies$ 2. nach 13.9 existiert ein endlichdimensionaler K-VR und eine lineare Abbildung $f:K^n \to W$ mit $\ker f = U$.
+	 Sei $m = \dim W$, dass esistiert ein Isomorphismus $g: W\to K^m$. Wir setzen
+	 \[\phi := g\circ f: K^n \to K^m\]
+	 Es ist $\ker\phi = \ker f$, denn: Für $v\in K^n$ ist $f(v) = 0 \iff g(f(v)) = g(0) = 0 \iff \phi(v) = 0$, also $\ker \phi = U$. Nach 15.4
+	 existiert $A\in M(m\times n, K)$ mit $\phi = \tilde A \implies U = \ker \phi = \ker \tilde A = \Lös(A, 0)$
+  2. $\implies$ 1. aus Satz 14.2
+  #+end_proof
+  #+ATTR_LATEX: :options [15.9]
+  #+begin_conc latex
+  $U\subseteq K^n$. Dann sind äquivalent:
+  1. $U$ ist affinier UR von $K^n$
+  2. Es gitb $m\in\mathbb{N}, A\in M(m\times n, K), b\in K^m$, sodass $U = \Lös(A, b)$
+  #+end_conc
+  #+begin_proof latex
+  1. $\implies$ 2. Nach 13.10 Existiert ein endlichdimensionaler K-VR, $W, w\in W$ und eine lineare Abbildung $K^n \to W$ mit $U = f^{-1}(\{w\})$.
+	 Sei $m = \dim W$, dass Existiert ein Isomorphismus $g: W\to K^m$. Wir setzten $\phi := g\circ g: K^n \to K^m$. Es ist $f^{-1}(\{w\}) = \phi^{-1}(\{b\})$, wobei
+	 $b:= g(w)$, denn für $v\in K^n$ ist
+	 \[f(v) = w \iff g(f(v)) = g(w) = b \iff \phi(v) = b\]
+	 Nach 15.4 existiert ein $A\in M(m\times n, K)$ mit $\phi = \tilde A \implies U = \phi^{-1}(\{b\}) = \tilde A^{-1}(\{b\}) = \Lös(A, b)$
+  3. $\implies$ 1. aus Satz 14.2
+  #+end_proof
+  #+begin_note latex
+  Philosophie hinter 15.8/15.9: affine UR von $K^n =$ Lösungräume von LGS (in $n$ Variablen) über $K$, UVR von $K^n =$ Lösungräume homogener GLS (in $n$ Variablen) über $K$
+  #+end_note
+  Frage: $f:V\to W$ lineare Abbildung, Wie einfach kann man $M_{\mathcal{B}}^{\mathcal{A}}(f)$ durch geeignete Wahl von $\mathcal{A},\mathcal{B}$ bekommen?
+  #+ATTR_LATEX: :options [15.19]
+  #+begin_remark latex
+  $f: V\to W$ lineare Abbildung. Dann gibt es Basen $\mathcal{A}$ von $V$, $\mathcal{B}$ von $W$ mit
+  \[M_{\mathcal{B}}^{\mathcal{A}}(f) = \begin{pmatrix} E_r & \\ & 0\end{pmatrix}, r = \Rang{f}\]
+  #+end_remark
+  #+begin_proof latex
+  Sei $\mathcal{B} := (w_1, \ldots, w_r)$ Basis von $\im f$. Sind $u_1 \in f^{-1}(\{w_1\}), \ldots, u_r \in f^{-1}(\{w_r\})$ und
+  ist $(v_1, \ldots, v_k)$ eine Basis von $\ker f$, dann ist nach 12.13
+  \[\mathcal{A} := (u_1,\ldots, u_r, v_1, \ldots, v_k)\]
+  eine Basis von $V$. Nach Konstruktion ist $f(u_1) = w_1, \ldots, f(u_r) = w_r, f(v_1) = 0, \ldots, f(v_k) = 0$,
+  also ist
+  \[M_{\mathcal{B}}^{\mathcal{A}}(f) = \begin{pmatrix} E_r & \\ & 0\end{pmatrix}\]
+  #+end_proof
+  #+begin_note latex
+  Das Problem für $f\in End_K(V)$ eine Basis $\mathcal{B}$ zu finden, sodass $M_{\mathcal{B}}(f) = M_{\mathcal{B}}^{\mathcal{B}}(f)$ möglichst
+  einfach ist, ist wesentlich schwieriger zu lösen ($\to$ Jordansche Normalform, LA2)
+  #+end_note

@@ -170,9 +170,11 @@
 	  \intertext{Forme um, so dass $\sqrt{\ldots}$ rechts allein steht, quadriere, löse auf nach $p_1'$:}
 	  p_1' &= p_1 \frac{m_1\cos{\theta} \pm \sqrt{m_2^2 - m_1^2\sin^2{\theta}}}{M}
       \end{align*}
+	  Im Allgemeinen (bei $\theta \neq 0$) ist die Situation analog, Es gibt einen "starken" und "schwachen" Stoß, die zum gleichen $\theta$ führen. (aber nur falls Argument von Wurzel positiv)
+	  Speziell: \[m_1 = m_2 \equiv m \implies p_1' = p_1 \frac{1}{2} \cos{\theta}(1 \pm 1)\]
+	  Aber: bei $m_1 > m_2$, gibt es "echte" starke und schwache Stöße.
 	  Falls das Argument der Wurzel positiv, tatsächlich zwei physikalische Lösungen. Zum Verständins: Enfacher Fall: $\theta = 0, m_1 > m_2 \implies$
       \begin{align*}
       p_1' &= p_1 \frac{m_1 + \sqrt{m_2^2}}{M} = p_1 \frac{M}{M} = p_1 \\
       p_1' &= p_1 \frac{m_1 - m_2}{M} = p_1 \frac{m_1 - m_2}{m_1 + m_2}
       \end{align*}
-	  Im Allgemeinen (bei $\theta \neq 0$) ist die Situation analog, Es gibt einen "starken" und "schwachen" Stoß, die zum gleichen $\theta$ führen. (aber nur falls Argument von Wurzel positiv)

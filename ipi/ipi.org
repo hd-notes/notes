@@ -1358,3 +1358,143 @@
    assert(j == 5);
    #+END_SRC
    $\implies$ wenn man aus c++ eine Bibilothek aufrufen (zum Beispiel um TIFF oder JPEG zu erzeugen) braucht man oft Zeiger.
+** Anwendungen der Zeiger
+   1. Ersatz für Referenzen (bis in C)
+   2. für Variablen, die auch ungültig sein können
+	  1. für optionale Argumente:
+         #+BEGIN_SRC cpp
+		 int foo(int * a = 0) { // Default Argument, setzt der Compiler automatisch ein, wenn Benutzer es nicht angibt
+		     if(a == 0) { // ungültige Adresse $\implies$ Benutzer hat kein Argument übergeben
+			     // Berechnung mit einem Standard-Wert für a
+			 } else {
+			     // Berechnung mit gegebenem Wert (*a)
+			 }
+		 }
+
+		 // Verwendung:
+		 foo(0); // Nullpointer $\iff$ ungültig $\implies$ Standardberechung
+		 int a = 2;
+		 foo(&a); // Berechung mit Wert = 2
+		 foo(); // Compiler mach daraus automatisch foo(0);
+         #+END_SRC
+	  2. wenn eine Funktion fehlschlägt: (typisch für C). Öffnen einer Datei in C:
+         #+BEGIN_SRC cpp
+		 FILE * file = fopen("filename");
+		 if(!file) { // ungültige Adresse
+		     std::cerr << "unable to open file: filename" << std::endl;
+			 return; // throw
+		 }
+		 // file lesen
+         #+END_SRC
+		 bessere Lösung in c++: kapseln und bei Fehler Exception werfen $\implies$ if(file == 0) kann nicht vergessen werden.
+	  3. Variablen, die nacheinander auf verschiedene Speicherzellen zeigen, typisch: "Iteratoren" in c
+         #+BEGIN_SRC cpp
+		 int array[100]; // C-Array, Größe 100
+		 int * iter = &(a[0]); // Zeiger auf erstes Element $\estimates$ std::vector.begin()
+		 int * end = iter + 100; // Zeiger hinter letztes Element $\estimates$ std::vector.end()
+
+		 int c = 0;
+		 for(;iter != end; iter++, c++) {
+		     *iter = c; // Array mit 0, 1, 2, 3, $\ldots$, 99 initialisierenn
+		 }
+         #+END_SRC
+		 Syntax wie bei Iteratoren, weil Iteratoren nach dem Vorbild der Zeiger definiert wurden.
+	  4. manuelle Speicherverwaltung:
+		 - Speicherzellen, die mit Schlüsselwort "new" angelegt wurden, gibt der Compiler am Ende der Umgebung *nicht* automatisch frei
+		 - wenn nicht mehr benötigt, muss der Programmierer den Speicher mit "delete" manuell freigeben
+		 - das Resultat von "new" ist Adresse der Speicherzelle $\implies$ an Zeiger zuweisen
+         #+BEGIN_SRC cpp
+		 Image * img = 0; // Zeiger auf Bild, anfangs ungültig
+		 {
+		     // ... Breite und Höhe erfragen
+		     img = new Image(width, height);
+		 } // img wird *nicht* automatisch freigegeben
+         (*img)(0, 0) = 255; // Pixel (0, 0) überschreiben
+		 Image & image = *img; // Referenz auf Speicherzelle an Adresse "img"
+		 image(1, 1) = 128; // Pixel (1, 1) schreiben
+		 // Wichtig!!!!!!!!:
+		 delete img; // Speicher händisch freigeben, nicht vergessen (sonst Speicherleck) aber auch nicht zu früh (sonst Absturz)
+         #+END_SRC
+		 In c++ verwende "smart pointer" std::unique_ptr, std::shared_ptr $\implies$ rufen delete automatisch im richtigem Moment auf (std::shared_ptr<Image> img = new Image(w, h))
+		 Für Arrays gibt es analog new[], delete[]. Beispiel: manuelle Speicherverwaltung im Image
+         #+BEGIN_SRC cpp
+		 class Image {
+		     int width_, height_;
+		     uint16_t * data_; // war: std::vector<uint16_t> data_;
+		 public:
+		     Image(unsigned int w, unsigned int h) : width_(w), height_(h), data_(new uint16_t[w * h]) { // manuelle Array-Allokation
+		         for(int i = 0; i < w * h; i++) {
+		             data_[i] = 0;
+		         }
+		     }
+
+             // Jetzt ist der automatisch generierte Kopierkonstruktor ungeeignet $\implies$ manuell implementieren
+			 Image(const Image & other) : width_(other.width_), height_(other.height_), data_(new uint16_t[width_ * height_]) { // manuelle Speicher-Verwaltung
+			     for(int i = 0; i < width_ * height_; i++) {
+				     data_[i] = other.data_[i];
+				 }
+			 }
+
+			 // analog: Kopierzuweisung manuell implementieren, "rule of three"
+			 // Destruktor
+			 ~Image() {
+			     delete[] data_; // Array freigeben (falls delete ohne [] $\implies$ Absturz)
+			 }
+		 }
+         #+END_SRC
+	  5. Heterogene Container: normale Container (std::vector<double>) sind *homogen* $\estimates$ Elemente haben gleichen Typ (double).
+		 Manchmal braucht man Container, die Objekte verschiedener Typen aufnehmen "heterogen", dafür braucht man Zeiger und *Vererbung*
+* Vererbung
+  Vererbung war am Anfag der objekt-orientierten Programmierung Lösung für alles. Heute ist der Hype vorbei, eine Technik unter vielen, sparsam eingesetzt, besonders
+  bei GUI (graphical user interface) und bei Zeichenprogrammen/Computer Graphik. Eine Klasse (abgeleitete Klasse, Unterklasse) kann
+  Funktionalität einer anderen Klasse (Basisklasse) erbe, Basisklasse muss dafür nicht sterben. Sprachunabängige Schreibweise: UML-Diagramm ("Universal modelling language")
+  # (TODO: typeset uml diagramm (tikz-uml))
+  in c++:
+  #+BEGIN_SRC cpp
+  class Base {
+  // ...
+  };
+
+  class Derived : public Base { // Vererbung
+      // ...
+      using Base::Base; // Vererbung von Konstruktor erzwingen
+  }
+  #+END_SRC
+  Die Funktionalität aus der Umgebung von Base ist in der Umgebung von Derived sichtbar (wie bei normalen geschachtelten Umgebungen). Ausnahmen:
+  - Konstruktoren und Zuweisungsoperatoren werden *nicht* vererbt (in Derived neu implementieren, ab c++11 mit "using" Vererbung erzwingen)
+  - private Member sind unsichtbar (aber noch vorhanden)
+  $\implies$ in Derived die öffentliche Schnittstelle von Base benutzen. Ausnahme: ersetze "private" in Base durch "protected" $\implies$ protected Members werden in Derived sichtbar
+  (aber bleiben von außen privat). Die in Derived geerbte Funktionalität gehört zur Öffentlichen Schnittstelle von Derived $\implies$ Wiederverwendung der Funktionalität vor Base.
+  Ausnahme:
+  - wenn Derived eine neue Member-Variable oder -fuktion mit dem gleichen Namen implementiert, wird die geerbte Variante *verdeckt* (wie bei normalen Umgebungen auch)
+  - man kann die Verwendung der geerbten Version erzwingen durch Doppenpunktnotation Base:: (wie bei Namensräumen std::), Base::data_, Base::foo()
+  Im Konstruktor von Derived wird der Konstruktor von Base aufgerufen wie ein Konstruktor der Membervariablen
+  #+BEGIN_SRC cpp
+  class Base {
+      int b_;
+  public:
+      Base(int b) : b_(b) {}
+  };
+
+  class Derived : public Base {
+      int d_;
+  public:
+      Derived(int b, int d) : Base(b), d_(d) {}
+  };
+  #+END_SRC
+* Anwendung von Vererbung
+** Spezialisierung
+   Spezialisierung "is-a" Beziehung, Derived is a (special kind of) Base. Basisklasse: ungeordneter Container von Point-Objekten ("Punktwolke")
+    #+BEGIN_SRC cpp
+	class PointSet {
+	    // Punktionen wie Anzahl, boundingbox bestimmen, konvexe hülle, Punkte verschieben, skalieren, zeichnen
+	};
+    #+END_SRC
+	abgeleitete Klasse: Polygon, geordnete Punktmenge, jeder Punkt ist mit seinem Nachfolger verbunden.
+    #+BEGIN_SRC cpp
+	class Polygon : public PointSet {
+	    // erbt Funktionalität vor PointSet
+		// zusätzliche Funktionalität: Flächeninhalt, Umfang, Test: ist Punkt innen oder außen
+		// veränderte Funktionalität: zeichnen
+	};
+    #+END_SRC

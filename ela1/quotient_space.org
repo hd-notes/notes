@@ -185,6 +185,8 @@
   $f: V\to W$ lineare Abbildung. Dann lässt sich $f$ schreiben als
   \[f = i \v \circ \bar f \circ \pi\]
   wobei $\pi: V\to V/\ker f, v\mapsto \bar v, \bar f:$ Abbildung aus 1311, $i:\im f \to W, w\mapsto w$ Man sagt auch: das Diagramm
+  \begin{figure}[H]
+	  \centering
   \begin{tikzpicture}
   \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em] {V & W \\ V/\ker f & \im f\\};
   \path[-stealth]
@@ -193,6 +195,7 @@
   (m-2-1) edge node [below] {$\bar f$} (m-2-2)
   (m-2-2) edge node [left] {$i$} (m-1-2);
   \end{tikzpicture}
+  \end{figure}
   kommutiert. Hierbei ist $\pi$ surjektiv, $\bar f$ ein Isomorphismus, $i$ ist surjektiv.
   #+end_conc
   #+begin_export latex

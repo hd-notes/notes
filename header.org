@@ -4,7 +4,7 @@
 #+LANGUAGE: de
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem, microtype}
+#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem, microtype, scalerel}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
 #+LATEX_HEADER: \usepackage{scrpage2}
@@ -76,6 +76,12 @@
 #+LATEX_HEADER: \newcommand{\f}[2]{{\frac{#1}{#2}}}
 #+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
 #+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand\reallywidetilde[1]{\ThisStyle{%
+#+LATEX_HEADER:   \setbox0=\hbox{$\SavedStyle#1$}%
+#+LATEX_HEADER:   \stackengine{-.1\LMpt}{$\SavedStyle#1$}{%
+#+LATEX_HEADER:     \stretchto{\scaleto{\SavedStyle\mkern.2mu\AC}{.5150\wd0}}{.6\ht0}%
+#+LATEX_HEADER:   }{O}{c}{F}{T}{S}%
+#+LATEX_HEADER: }}
 
 #+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
 #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}

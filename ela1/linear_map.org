@@ -17,8 +17,8 @@
 	 \end{gather*}
 	 Wegen $\tilde A(e_i) = A e_i = \cvec{a_{i1} ; \vdots ; a_{in}}$ stehen in den Spalten von $A$ genau die Bilder der kanonischen Basisvektoren $e_1, \ldots e_n$ von $K^n$ unter $\tilde A$.
 	 Sind $A\in M(m\times n, K), B\in M(n\times r, K), x\in K^r$, dann ist
-	 \[\tilde{AB} (x) = (AB)(x) = A(B(x)) = A \tilde B(x) = \tilde A(\tilde B(x)) = (\tilde A \tilde B)(x)\]
-	 das heißt die Veknüpfung von $\tilde A, \tilde B$ entspricht der Multiplikation der Matrizen $A,B: \tilde A \cdot \tilde B = \tilde{AB}$
+	 \[\reallywidetilde{AB} (x) = (AB)(x) = A(B(x)) = A \tilde B(x) = \tilde A(\tilde B(x)) = (\tilde A \tilde B)(x)\]
+	 das heißt die Veknüpfung von $\tilde A, \tilde B$ entspricht der Multiplikation der Matrizen $A,B: \tilde A \cdot \tilde B = \reallywidetilde{AB}$
   2. Wir betrachten die Abbildung \[f: \mathbb{R}^2 \to \mathbb{R}^2, \cvec{x_1; x_2} \mapsto \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\cvec{x_1; x_2} = \cvec{x_1; -x_2}\]
 	 Diese ist linear nach 1., beschreibt Spiegelung an der $x_1$ -Achse.
   3. Sei $V = \{f: (0,1)\to \mathbb{R}\mid f~\text{ist differenzierbar}\}$ (ist ein $\mathbb{R}$ -VR)
