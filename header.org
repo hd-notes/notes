@@ -4,7 +4,7 @@
 #+LANGUAGE: de
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem, microtype, scalerel}
+#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
 #+LATEX_HEADER: \usepackage{scrpage2}
