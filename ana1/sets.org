@@ -46,10 +46,12 @@
 	\[M=\{x\mid A(x)\} \rightarrow~\text{eine Menge}~M\text{für die}~x\in\ M \iff A(x)\]
 *** Mengenrelationen
 	- Mengeninklusion $A\subseteq M$ ($A$ ist eine Teilmenge von $M$)
-	  \[\Forall x: (x\in A \implies x\in M)\] ,zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
+	  \[\Forall x: (x\in A \implies x\in M)\]
+	  zum Beispiel $\mathbb{N} \subseteq \mathbb{Z}$
 	- \[A = B \iff \Forall x: (x\in A \iff x\in B)\]
 	- \[A \subset M~\text{(strikte Teilmenge)}~\iff A\subset M \wedge A \neq M\]
-	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]. Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beispiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
+	- \[\emptyset:~\text{leere Menge}~\not\exists x: x\in\emptyset\]
+	Wir setzen fest, dass $\emptyset$ eine Teilmenge jeder Menge ist. Zum Beispiel \[\{x\in\mathbb{R}: x^2 + 1 = 0\}\]
 	- Durchschnitt \[A\cap B := \{x\mid x\in A \wedge x\in B\}\]
 	- Vereinigung \[A\cup B := \{x \mid x\in A \vee x\in B\}\]
 	- Differenz (auch Komplement von $B$ in $A$) \[A\setminus B := \{x\mid x\in A \wedge x\not\in B\} := C_a B~\text{(auch $B^c$)}\]
@@ -98,7 +100,7 @@
 *** Relationen
 	Unter einer *Relation* verstehen wir eine Teilmenge $R\subseteq X\times Y$ wobei $X, Y$ Mengen sind. Für $x\in X$ definieren wir, das *Bild* von $x$ unter $R$
 	\[R(X) := \{y\in Y \mid (x,y) \in R\}\]
-	und *Definitionsbereiche von $R$ (bezüglich $X$)
+	und *Definitionsbereiche* von $R$ (bezüglich $X$)
 	\[D(R):= \{x\in X\mid R(x)\neq\emptyset\}\]
 *** Graph der Abbildung
 	$R\subseteq X\times Y$ heißt Graph der Abbildung (Funktion) \[f:X\rightarrow Y \iff D(R) = X, \Forall x\in X: R(x) = \{f(x)\}\]
