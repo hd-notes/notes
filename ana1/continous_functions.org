@@ -2,7 +2,8 @@
 ** Grenzwert einer Funktion, Stetigkeit
    Wir betrachten die Funktion
    \[f:\mathbb{R}\setminus\{0\} \to \mathbb{R}, x\mapsto \frac{e^x - }{x} \]
-   und wollen diese auf ganz $\mathbb{R}$ fortsetzen, das heißt Wir suchen ein $\tilde f: \mathbb{R} \to \mathbb{R}$
+   und wollen diese auf ganz $\mathbb{R}$ fortsetzen, das heißt: \\
+   Wir suchen ein $\tilde f: \mathbb{R} \to \mathbb{R}$
    mit $\tilde f\mid \mathbb{R}\setminus \{0\} = f$ und einen Wert $\tilde f(0) \in \mathbb{R}$
 
    Allgemeiner überprüft man für Funktionen $f: D \subseteq \mathbb{K} \to \mathbb{K}$ die

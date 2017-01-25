@@ -41,9 +41,9 @@
    \[r = \abs{z} = \sqrt{x^2 + y^2}\]
    Damit:
    \begin{align}
-   x &=& r\cos{\alpha}
-   y &=& r\sin{\alpha}
-   z &=& x + \I y = r(\cos{\alpha} + \I\sin{\alpha})
+   x &=& r\cos{\alpha} \\
+   y &=& r\sin{\alpha} \\
+   z &=& x + \I y = r(\cos{\alpha} + \I\sin{\alpha}) \\
    \end{align}
 ** Konjugation
    Zu einem $z = x + \I y\in\mathbb{C}$ definieren wir eine konjugierte komplexe Zahl \[\bar z = x - \I y \in\mathbb{C}\]
