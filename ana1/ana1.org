@@ -111,3 +111,126 @@
    Aus Konvergenz (für $h\to 0$) alle Riemann-Summen gegen denselben Limes und aus der Beliebigkeit von $\eps$ folgt
    \[\abs{\ubar S_Z(f) - \bar S_Z(f)} \xrightarrow{h\to 0} 0\]
    #+end_proof
+   #+ATTR_LATEX: :options [5.9]
+   #+begin_thm latex
+   Eine stetige Funktion $f:[a, b] \to \mathbb{R}$ ist Riemann-integrierbar.
+   #+end_thm
+   #+begin_proof latex
+   Auf dem kompakten (beschränkten und abgeschlossenen) Intervall ist $f$ gleichmäßig stetig.
+   \[\Forall \eps > 0 \Exists \delta_\eps > 0: \Forall x, \tilde x \in I:\abs{x - \tilde x} < \delta_\eps \implies \abs{f(x) - f(\tilde x)} < \eps\]
+   $\Forall$ Zerlegung $Z\in\mathcal{Z}$ mit der Feinheit $h < \delta_\eps$ gilt
+   \[\abs{\bar S_Z(f) - \ubar S_Z(f)} \leq \sum_{k = 1}^{n} \abs{\sup_{x\in I_k}f(x) - \inf_{x\in I_k} f(x)}(x_k - x_{k - 1}) \leq \eps(b - a)\]
+   Dies impliziert die Existenz des Riemann-Integral von $f$
+   #+end_proof
+   #+ATTR_LATEX: :options [5.10]
+   #+begin_thm latex
+   Eine (beschränkte) monotone Funktion $f:[a, b] \to \mathbb{R}$ ist Riemann-integrierbar.
+   #+end_thm
+   #+begin_proof latex
+   Ohne Beschränkung der Allgemeinheit sei $f$ monoton steigend. Dann gilt $f(a) \leq f(x) \leq f(b) \Forall x\in I$.
+   $\Forall$ Zerlegung $Z\in\mathcal{Z}(a, b)$ mit Feinheit $h$ gilt:
+   \[\bar S_Z(f) - \ubar S_Z(f) = \sum_{k = 1}^{n}(f(x_k) - f(x_{k - 1}))(x_k - x_{k - 1}) \leq h(f(b) - f(a))\]
+   Für beliebige $\eps > 0 \Exists h_\eps > 0$ sodass für $h\leq h_\eps$ gilt
+   \[\abs{\bar S_Z(f) - \ubar S_Z(f)} < \eps \tag*{\qedhere}\]
+   #+end_proof
+   #+ATTR_LATEX: :options [5.11 Zusammengesetzte Integrale]
+   #+begin_thm latex
+   1. Eine (beschränkte) Riemann-integrierbare Funktion $f:[a,b]\to\mathbb{R}$ ist auch über jedem Teilintervall $[\tilde a, \tilde b] \in [a,b]$ Riemann-itegrierbar. Insobesondere gilt für $c \in (a,b)$
+	  \[\int_{a}^{b}f(x) \d x = \int_{a}^{c} f(x) \d x + \int_{c}^{b} f(x) \d x\]
+   2. Ist eine (beschränkte) Funktion $f:[a,b] \to\mathbb{R}$ für $c\in (a,b)$ über den Teilintervallen $[a,c]$ und $[c, b]$ Riemann-integrierbar, so ist sie auch über $[a,b]$ Riemann-integrierbar und es
+	  gilt 1.
+   #+end_thm
+   #+begin_proof latex
+   1. Seien $Z_n \in \mathcal{Z}(a,b)$ mit Feinehit $h_n \to 0$ und $\RS_{z_n}(f)$ zugehörige Riemann-Summan, sodass
+	  \[\RS_{Z_n}(f)\xrightarrow{n\to\infty} \int_{a}^{b}f(x) \d x\]
+	  Wir zeigen Integrierbarkeit von $f$ über $(\tilde a, \tilde b)$. Ohne Beschränkung der Allgemeinheit können wir annehmen, dass $Z_n$ die Punkte $\{\tilde a,\tilde b\}$ als Teilungspunkte enthalten.
+	  Wir betrachten zwei beliebige Folge $\tilde Z_n^{(1)}, \tilde Z_n^{(2)} \in \mathcal{Z}(\tilde a, \tilde b)$ mit Feinheiten $\tilde h_n^{(1)}, \tilde h_n^{(2)} \to 0$
+	  und irgendwelche zugehörigen Riemann-Summen $\RS_{\tilde Z_n^{(1)}}(f), \RS_{\tilde Z_n^{(2)}}(f)$. $\tilde Z_n^{(1)}, \tilde Z_n^{(2)}$ lassen sich erweitern zu $Z_n^{(1)}, Z_n^{(2)}$ auf $[a, b]$
+	  (durch Verwendung von gleichen Teilungspunkten aus $[a,\tilde a] \cup [\tilde b, b]$). Wir bekommen zugehörige $\RS_{Z_n^{(1)}}, \RS_{Z_n^{(2)}}(f)$. Nach Konstruktion gilt
+	  \[\abs{\RS_{\tilde Z_n^{(1)}}(f) - \RS_{\tilde Z_n^{(2)}}(f)} = \abs{\RS_{Z_n^{(1)}}(f) - \RS_{Z_n^{(2)}}(f)} \xrightarrow{n\to\infty} 0\]
+	  Hieraus folgt, dass jede  Folge von Riemann-Summen $\RS_{\tilde Z_n}(f)$ zu Zerlegung $Z_n\in\mathcal{Z}(\tilde a,\tilde b)$ mit $\tilde h\to 0$ Cauchy Folge ist
+	  und dass alle solche Folgen gegen den selben Limes konvergieren, also $f$ ist über $[\tilde a, \tilde b]$ Riemann-integrierbar.
+
+	  Sei $c\in (a,b) \implies f$ ist Riemann-integrierbar über $[a,c]$ und $[c, b]$. Da jedes Paar $\RS_{Z^{(1)}}(f)$ und $\RS_{Z^{(2)}}(f)$ zu einer $\RS_{Z}(f)$ über $[a,b]$ erweitert werden kann
+	  bekommen wir durch Grenzübergang $h\to 0$
+	  \begin{align*}
+	  \int_{a}^{c}f(x)\d x + \int_{c}^{b}f(x)\d x &= \lim_{h\to 0} \RS_{Z^{(1)}}(f) + \lim_{h \to 0} \RS_{Z^{(2)}}(f) \\
+	  &= \lim_{h\to 0} (\RS_{Z^{(1)}} + \RS_{Z^{(2)}}(f)) = \lim_{h\to 0} \RS_Z(f) = \int_{a}^{b}f(x) \d x
+	  \end{align*}
+   2. Sei $f$ über $[a,c]$ beziehungsweise $[c,b]$ integrierbar. Die Konverenz
+	  \begin{align*}
+	  \lim_{h\to 0}\RS_{Z^{(1)}}(f) &= \int_{a}^{c}f(x) \d x \\
+	  \lim_{h\to 0}\RS_{Z^{(2)}}(f) &= \int_{c}^{b}f(x) \d x
+	  \implies \int_{a}^{c}f(x) \d x + \int_{c}^{b}f(x) \d x &= \lim_{h\to 0} \RS_{Z^{(1)}}(f) + \lim_{h\to 0} \RS_{Z^{(2)}}(f) \\
+	  &= \lim_{h\to 0} (\RS_{Z^{(1)}}(f) + \RS_{Z^{(2)}}(f)) = \lim_{h\to 0} \RS_Z(f) \\
+	  &=: \int_{a}^{b}f(x) \d x \tag*{\qedhere}
+      \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [5.12 Linearität des Riemann-integral]
+   #+begin_defn latex
+   Sind $f, g:[a,b]\to\mathbb{R}$ (beschränkt) Riemann-integrierbar, so ist auch jede Linearkombination
+   \[\alpha f + \beta g, \alpha,\beta \in\mathbb{R}\]
+   über $I$ Riemann-intgerierbar und es gilt
+   \[\int_{a}^{b}(\alpha f(x) + \beta g(x))\d x = \alpha \int_{a}^{b}f(x) \d x + \beta \int_{a}^{b}g(x) \d x\]
+   #+end_defn
+   #+begin_proof latex
+   Wegen der Integrierbarkeit von $f$ und $g$ existieren $\RS_Z(f)$ und $\RS_Z(g)$ mit Feinheiten $h\to 0$, sodass
+   \[\lim_{h\to 0} \RS_Z(f) = \int_{y}^{b}f(x) \d x\]
+   und ähnlich für $g$, wobei ohne Beschränkung der Allgemeinheit angenommen werden kann, dass $Z\in\mathcal{Z}(a,b)$ sowie die Anwendungspunkte $\xi_k \in [x_{k - 1, x_k}]$ für beide Riemann-Summen
+   die selben sind. Dann ist für $\alpha,\beta \in\mathbb{R}$ auch
+   \[\RS_Z(\alpha f + \beta g) := \RS_Z(\alpha f) + \RS_Z(\beta g) = \alpha \RS_Z(f) + \beta \RS_Z(g)\]
+	Riemann-Summe für $\alpha f + \beta g$
+	Es gilt
+	\begin{align*}
+	\alpha \int_{a}^{b}f(x)\d x + \beta \int_{a}^{b}g(x) &= \alpha \lim_{h\to 0} \RS_Z(f) + \beta \lim_{h\to 0} \RS_Z(g) \\
+	&= \lim_{h\to 0} \RS_Z(\alpha f + \beta g) \\
+	&= \int_{a}^{b}(\alpha f + \beta g) \d x
+	\end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [5.13 Monotonie des Riemann-Integral]
+   #+begin_thm latex
+   Seien $f, g:[a,b] \to \mathbb{R}$ (beschränkt) Riemann-integrierebare Fukntion mit $g(x) \geq f(x) \Forall x\in[a,b]$. Dann gilt auch
+   \[\int_{a}^{b}g(x) \d x \geq \int_{a}^{b}f(x) \d x\]
+   (ohne Beweis)
+   #+end_thm
+   #+ATTR_LATEX: :options [5.14]
+   #+begin_korollar latex
+   Für eine (beschränkte) Riemann-integrierbare Funktion $f:[a,b]\to\mathbb{R}$ mit $m\leq f(x) \leq M$, dann gilt
+   \[m(b - a) \leq \int_{a}^{b}f(x) \d x \leq M(b - a)\]
+   #+end_korollar
+   #+ATTR_LATEX: :options [5.15]
+   #+begin_korollar latex
+   Es seien $f,g:[a,b]\to\mathbb{R}$ (beschränkt) Riemann-integrierbar. Dann gilt
+   1. Die Funktion $f_+ := \max\{f,0\}, f_{-} := \min\{f, 0\}$ sind Riemann-integrierbar
+   2. $\abs{f}$ ist Riemann-integrierbar und es gilt
+	  \[\abs{\int_{a}^{b}f(x) \d x} \leq \int_{a}^{b}\abs{f(x)} \d x\]
+   3. $\Forall p\in [1, \infty]$ ist $\abs{f}^p$ Riemann-integrierbar
+   4. Das Produkt $f g$ ist Riemann-integrierbar
+   #+end_korollar
+   #+begin_proof latex
+   1. $\Forall Z\in \mathcal{Z}(a,b)$ gilt
+      \begin{align*}
+      0 &\leq \bar S_Z(f_+) - \ubar S_Z(f_+) \leq \bar S_Z(f) - \ubar S_Z(f) \\
+      0 &\leq \bar S_Z(f_-) - \ubar S_Z(f_-) \leq \bar S_Z(f) - \ubar S_Z(f)
+      \end{align*}
+      das hei0t mit $f$ sind auch $f_+$ und $f_{-}$ Riemann-integrierbar
+   2. $\abs{f} = f_+ - f_{-} \implies \abs{f}$ ist Riemann-integrierbar als linear Kombination von $f_+$ und $f_{-}$
+	  \[\abs{\int_{a}^{b}f(x) \d x} \leq \int_{a}^{b} \abs{f(x) \d x}\]
+	  folgt aus Monotonie des Riemann-Integrals, wil $f \leq \abs{f}, -f \leq \abs{f}$
+   3. Sei $\displaystyle M:= \sup_{x\in[a,b]}\abs{f}, \frac{\abs{f}}{M}$ ist Riemann-integrierbar. Wir brauchen also nur die Ausage für $0 < f \leq 1$.
+	  Mit Hilfe des Mittelwertsatzes folgt für $0\leq x < y \leq 1$
+	  \[y^p - x^p = p\xi \xi^{p-1}, x < \xi < y\]
+	  $\Forall Z\in\mathcal{Z}(a,b)$ gilt daher
+	  \[\bar S_Z(\abs{f}^p) - \ubar S_Z(\abs{f}^p) \leq p(\bar S_Z(\abs{f}) - \ubar S_Z(\abs{f}))\]
+	  das heißt mit $\abs{f}$ ist auch $\abs{f}^p$ integrierbar
+   4. Wegen $f g = \frac{1}{4}((f + g)^2 - (f - g)^2)$ folgt die Riemann-integrierbarkeint von $fg$ mit Hilfe von 3.
+   #+end_proof
+   #+begin_remark latex
+   Im Allgemeinen
+   \[\int_{a}^{b}f(x) g(x) \d x \neq (\int_{a}^{b}f(x) \d x)(\int_{a}^{b}g(x)\d x)\]
+   #+end_remark
+   #+begin_ex latex
+   $f\equiv 1$
+   \[\int_{a}^{b}f(x)g(x) \d x  = \int_{a}^{b} g(x)\d x \neq (\int_{a}^{b}f(x) \d x)(\int_{a}^{b}g(x) \d x) = (b - a) \int_{a}^{b}g(x) \d x\]
+   für $b - a \neq 1$
+   #+end_ex
