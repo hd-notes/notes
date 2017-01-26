@@ -67,3 +67,46 @@ mark=at position 0.5 with
 #+INCLUDE: "ridid_body.org" :minlevel 1
 #+INCLUDE: "deformation.org" :minlevel 1
 #+INCLUDE: "thermodynamics.org" :minlevel 1
+* Transportprozesse
+  Nichtgleichgewichtszustände $\implies$ Transport
+  - Wärme (Wärmeleitung, Konvektion)
+  - Materie (Diffusion, Strömungen)
+  - Ladung (Strom)
+  Fluß einer physikalischen Größe in Richtung Gleichgewicht
+  \begin{align*}
+  \intertext{Energiefluß:}
+  J_{\frac{E}{a}} &= \dd{E}{t}a \quad j_E = \frac{\d E}{A\d t} \\
+  \intertext{Massenfluß:}
+  J_m &= \dd{m}{t} \quad j_M = \frac{\d m}{A \d t} \\
+  \intertext{Ladungsfluß:}
+  J_a &= \dd{Q}{t} \quad j_a = \frac{\d Q}{A\d t}
+  \end{align*}
+  Allgemein gilt (1-dim.):
+  \[\dd{\rho}{t} + \dd{j}{z} = 0\]
+  - $\rho$: Dichte
+  - $j$: Stromdichte
+  "Beweis:"
+  \[\dd{j}{z} = \dd{}{z} \frac{\d m}{A\d t} = \frac{\d}{\d t} \frac{\d m}{\d V} = \dot{\rho}\]
+  3-dim:
+  \begin{align*}
+  \frac{\partial \rho}{\partial t} + \div \dot{\v j} &= 0 \\
+  \div \v j &= \frac{\partial}{\partial x} j_x + \frac{\partial}{\partial y} j_y + \frac{\partial}{\partial z} j_z
+  \end{align*}
+  Außerdem
+  \[\v j = \rho \v v\]
+  "Beweis:"
+  \[j = \frac{\d m}{A \d t} = \underbrace{\frac{\d m}{A\d z}}_{\rho} \underbrace{\dd{z}{t}}_{v}\]
+** Wärmetransport
+   Beobachtung:
+   \[\frac{\Delta T}{\Delta x} = ~\text{const}\]
+   Ansatz:
+   \[J_{\frac{E}{a}} = -\lambda A \frac{\Delta T}{\Delta x}\]
+   #+ATTR_LATEX: :options [Fourisches Gesetz der Wärmeleitung]
+   #+begin_thm latex
+   1-dim.
+   \[j_Q = -\lambda \frac{\d T}{\d x}\]
+   3-dim.
+   \[\v j_Q = -\lambda \grad T\]
+   - $\v j_Q$: Wärmestromdichte
+   - $\lambda$: Wärmeleitzahl
+   #+end_thm

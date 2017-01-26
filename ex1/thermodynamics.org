@@ -738,10 +738,22 @@
 	Kovolumen:
 	\[V_K = \frac{4}{3}\pi (2r)^3 = 8V_a\]
 	mit $V_a =$ Volumen der Gasteilchen. $\implies$ Gesamtes Kovolumen:
-	\[V_N = \frac{1}{2}N (8V_a) = 4N V_a = 4(n N_a) V_a \equiv n b\]
+	\[V_N = \frac{1}{2}N (8V_a) = 4N V_a = 4(n N_a) V_a = n b\]
 	mit:
 	- $b = 4 N_A V_a$
 	- $V_a = \frac{4}{3}\pi r^3$
-    Das Kovolumen muss vom verfügbaren Volumen für Gasteilchen abgezogen werden. Verlust an freiem Volumen erhöht Zahl der Wandanstöße $\implies$ Druckerhöhung
+    Das Kovolumen muss vom verfügbaren Volumen für Gasteilchen abgezogen werden. Verlust an freiem
+    Volumen erhöht Zahl der Wandanstöße $\implies$ Druckerhöhung
 *** Wechselwirkung
-	Beschreibung der Wechselwirkung zwischen Gasteilchen dur Leenard-Jones-Potential $\implies$ Langreichweitige Anziehungskraft.
+	Beschreibung der Wechselwirkung zwischen Gasteilchen durch Leenard-Jones-Potential $\implies$
+	Langreichweitige Anziehungskraft.
+	\begin{align*}
+	U &\sim \rho n \sim \frac{n}{V}n \\
+	\dd{U}{V} &= \frac{a n^2}{V^2} = -P_{innen} \\
+	\end{align*}
+	#+ATTR_LATEX: :options [Van-der-Waals Gleichung]
+	#+begin_thm latex
+	\[(p + \frac{an^2}{V^2})(V - nb) = nRT\]
+	$\implies$
+	\[p(V) = \frac{nRT}{V - nb} - \frac{an^2}{V^2}\]
+	#+end_thm
