@@ -18,7 +18,8 @@
   Funktionsgraph (/insert Symbolbild here/)
 ** Das Riemannsche Integral
    Wir betrachten ein beschränktes Intervall $I = [a, b]$ und eine (endliche) *Zerlegung* $Z$
-   von \[I, Z = \{x_0, \ldots, x_n\}, a:= x_0 < x_1 < \ldots < x_n =: b\]. Wir bezeichnen
+   von \[I, Z = \{x_0, \ldots, x_n\}, a:= x_0 < x_1 < \ldots < x_n =: b\]
+   Wir bezeichnen
    \[h := \max_{k = 1, \ldots, n} \abs{x_k - x_{k - 1}}\] als die *Feinheit der Zerlegung*. Die
    Menge aller solcher Zerlegungen sei mit $\mathcal{Z}(a, b)$ bezeichnet eine Verfeinerung
    \[\tilde Z = \{\tilde x_0, \ldots, \tilde x_m\} \in \mathcal{Z}(a,b)\] mit $m \geq n$ von
@@ -141,7 +142,7 @@
 	  gilt 1.
    #+end_thm
    #+begin_proof latex
-   1. Seien $Z_n \in \mathcal{Z}(a,b)$ mit Feinehit $h_n \to 0$ und $\RS_{z_n}(f)$ zugehörige Riemann-Summan, sodass
+   1. Seien $Z_n \in \mathcal{Z}(a,b)$ mit Feinheit $h_n \to 0$ und $\RS_{z_n}(f)$ zugehörige Riemann-Summan, sodass
 	  \[\RS_{Z_n}(f)\xrightarrow{n\to\infty} \int_{a}^{b}f(x) \d x\]
 	  Wir zeigen Integrierbarkeit von $f$ über $(\tilde a, \tilde b)$. Ohne Beschränkung der Allgemeinheit können wir annehmen, dass $Z_n$ die Punkte $\{\tilde a,\tilde b\}$ als Teilungspunkte enthalten.
 	  Wir betrachten zwei beliebige Folge $\tilde Z_n^{(1)}, \tilde Z_n^{(2)} \in \mathcal{Z}(\tilde a, \tilde b)$ mit Feinheiten $\tilde h_n^{(1)}, \tilde h_n^{(2)} \to 0$
@@ -166,7 +167,7 @@
 	  &=: \int_{a}^{b}f(x) \d x \tag*{\qedhere}
       \end{align*}
    #+end_proof
-   #+ATTR_LATEX: :options [5.12 Linearität des Riemann-integral]
+   #+ATTR_LATEX: :options [5.12 Linearität des Riemann-Integrals]
    #+begin_defn latex
    Sind $f, g:[a,b]\to\mathbb{R}$ (beschränkt) Riemann-integrierbar, so ist auch jede Linearkombination
    \[\alpha f + \beta g, \alpha,\beta \in\mathbb{R}\]
@@ -187,7 +188,7 @@
 	&= \int_{a}^{b}(\alpha f + \beta g) \d x
 	\end{align*}
    #+end_proof
-   #+ATTR_LATEX: :options [5.13 Monotonie des Riemann-Integral]
+   #+ATTR_LATEX: :options [5.13 Monotonie des Riemann-Integrals]
    #+begin_thm latex
    Seien $f, g:[a,b] \to \mathbb{R}$ (beschränkt) Riemann-integrierebare Fukntion mit $g(x) \geq f(x) \Forall x\in[a,b]$. Dann gilt auch
    \[\int_{a}^{b}g(x) \d x \geq \int_{a}^{b}f(x) \d x\]
