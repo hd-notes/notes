@@ -235,3 +235,136 @@
    \[\int_{a}^{b}f(x)g(x) \d x  = \int_{a}^{b} g(x)\d x \neq (\int_{a}^{b}f(x) \d x)(\int_{a}^{b}g(x) \d x) = (b - a) \int_{a}^{b}g(x) \d x\]
    für $b - a \neq 1$
    #+end_ex
+   #+ATTR_LATEX: :options [5.16 Definitheit des Riemann-Integral]
+   #+begin_korollar latex
+   Sei $f:[a, b] \to \mathbb{R}$ stetig mit $f(x) \geq 0$ für $x\in [a,b]$. Dann gilt:
+   \[\int_{a}^{b}f(x) \d x = 0 \iff f \equiv 0\]
+   #+end_korollar
+   #+begin_proof latex
+   Angenommen $f\not\equiv 0$, das heißt
+   \[\Exists x_0 \in [a,b]: f(x_0) > 0\]
+   Dann, aus Stetigkeit von $f$ gibt es ein $I_\eps := [x_0, x_0 + \eps]$ sodass
+   \[f(x) \geq \delta > 0 \Forall x\in I_\eps\]
+   Da jede Zerlegung $Z$ vin $i$ mit hinreichend kleiner Feinheit $h$ ein Teilintervall $I_k \subseteq I_\eps$ beinhaltet, git fpr die
+   zugehörigen Summen
+   \[0 <  \delta(x_k - x_{k - 1}) \leq \inf_{x\in I_k}f(x)(x_k - x_{k - 1}) \leq \ubar S_Z(f) \leq \int_{a}^{b}f(x) \d x \tag*{\lightning\qedhere}\]
+   #+end_proof
+   #+begin_remark latex
+   Wir haben Riemann-Integral definiert für $a < b$. Für $b \geq a$ definieren wir
+   \[\int_{a}^{b} f(x) \d x := - \int_{a}^{b}f(x) \d x,\quad \int_{a}^{a} f(x) \d x := 0\]
+   #+end_remark
+   #+ATTR_LATEX: :options [5.17 Mittelwertsatz für Integrale]
+   #+begin_thm latex
+   Es seien $f:I=[a,b] \to\mathbb{R}$ stetig und $g:I\to\mathbb{R}$ Riemann-integrierbar und $g$ habe in $I$ keinen Vorzeichenwechsel.
+   Dann gibt es eine Zwischenstelle $\xi [a,b]$ sodass
+   \[\int_{a}^{b}f(x)g(x)\d x = f(\xi)\int_{a}^{b}g(x) \d x\]
+   #+end_thm
+   #+begin_proof latex
+   Es folgt aus dem Zwischenwertsatz für stetig Funktionen: Ohne Beschränkung der Allgemeinheit behalten wir den Fall $g\geq 0$
+   Aus stetigkeit von $f$ folgt:
+   \[\Exists m := \min_{x\in I} f(x), M:= \max_{x\in I}f(x)\]
+   Damit, wegen $g\geq 0$
+   \[m \int_{a}^{b} g(x) \d x \leq \int_{a}^{b}f(x)g(x) \d x \leq M \int_{a}^{b} g(x) \d x\]
+   Wir nehmen eine lineare Funktion mit $t \in [0,1]$
+   \[l(g) .= (m(1 - t) + Mt) \int_{a}^{b}g(x) \d x\]
+   $\implies \Exists \mu\in[m,M]$ mit
+   \[\int_{a}^{b}f(x)g(x)\d x = \mu \int_{a}^{b}g(x) \d x\]
+   und dann (Stetigkeit von $f$) $\Exists \xi \in [a,b]$, sodass $\mu = f(\xi)$
+   #+end_proof
+   #+ATTR_LATEX: :options [5.18]
+   #+begin_korollar latex
+   Sei $f:I = [a,b] \to \mathbb{R}$ stetig, dann $\Exists \xi \in I$ sodass
+   \[\int_{a}^{b}f(x) \d x = f(\xi)(b - a)\]
+   Seien $f:[a,b] \to \mathbb{R}$ stetig mit
+   \[m\leq f(x) \leq M \Forall x\in I\]
+   und $g$ Riemann-integrierbar mit $g\geq 0$, Dann gilt
+   \[m \int_{a}^{b} f(x) \d x \leq \int_{a}^{b} f(x) g(x) \d x  \leq M \int_{a}^{b} g(x) \d x\]
+   #+end_korollar
+   #+ATTR_LATEX: :options [5.19 (Notwendigkeit von Vorraussetzungen)]
+   #+begin_ex latex
+   1. Stetigkeit von $f$. Wir nehmen
+	  \[f:[0,2] \to \mathbb{R},x \mapsto \begin{cases} 0 & 0\leq x < 1 \\ 1 & 1 \leq x \leq 2\end{cases}\]
+	  $f$ ist Unstetig und $\Forall \xi\in [0,2]$
+	  \[\int_{0}^{2} f(x) \d x = 1 \neq f(\xi)(2 - 0)\]
+   2. Positivität von $g$: Für
+	  \begin{align*}
+	  f(x) &:= x \\
+	  g(x) &:= \begin{cases} -1 & 0\leq x \leq 1 \\ 1 & 1\leq x \leq 2\end{cases}
+      \end{align*}
+	  $\Forall \xi \in [0,2]$ gilt
+	  \[\int_{0}^{2}f(x)g(x) \d x = -\int_{0}^{1}x\d x + \int_{1}^{2} x\d x = 1 \neq f(\xi)\int_{0}^{2}g(x) \d x = 0\]
+   #+end_ex
+   #+ATTR_LATEX: :options [5.20]
+   #+begin_defn latex
+   Eine Funktion $F:I = [a,b] \to \mathbb{R}$ heißt *unbestimmtes Integral* (oder Stammfunktion) einer Funktion $f:I \to \mathbb{R}$, wenn sie differenzerbar ist und
+   \[F'(x) = f(x) \Forall x\in I\]
+   Wir schreiben
+   \[F = \int f(x) \d x\]
+   #+end_defn
+   #+ATTR_LATEX: :options [5.21 Fundamentalsatz der Analysis]
+   #+begin_thm latex
+   \mbox{}
+   1. Für eine stetige Funktion $f: I = [a,b] \to \mathbb{R}$ ist das unbestimmte Integral
+	  \[F(x) := \int_{a}^{x} f(y) \d y, x \in [a,b]\]
+	  aufgefasst als Funktion der Oberen Grenze $x$ eine Stammfunktion von $f$. Jede weitere Stammfunktion von $f$
+	  unterscheidet sich von $F$ durch eine Konstante
+   2. Ist umgekehrt die Funktion $F:I = [a,b] \to \mathbb{R}$ Stammfunktion einer stetigen Funktion $f$, so gilt
+	  \[\int_{a}^{b}f(x) \d x = F(x) \big|_a^b := F(b) - F(a)\]
+   #+end_thm
+   #+begin_proof latex
+   1. Wir betrachten Differenzenquotienten von $F(x)$
+      \[\frac{F(x + h) - F(x)}{h} = \frac{1}{h}(\int_{a}^{x + h}f(y \d y) - \int_{a}^{x}f(y) \d y) = \frac{1}{h} \int_{x}^{x + h} f(y) \d y\]
+      Nach Mittelwertsatz gilt mit einem $\xi_h \in [x, x + h]$
+      \[\frac{F(x + h) - F(x)}{h} = f(\xi_h)\]
+      Für $h\to 0$, konvergiert $\xi_h \to x$, sodass $F'(x) = f(x)$ (aus Stetigkeit von $f$).
+      Sei $G$ eine weitere Stammfunktion von $f$. Dann gilt
+      \[0 = F' - G' = (F - G)'\]
+      das heißt $F - G$ ist konstant.
+   2. Sei $F$ eine Stammfunktion von $f$, das heißt $F'(x) = f(x)$. Mit der Funktion
+	  \[G(x) := \int_{a}^{x}f(y) \d y, G(a) = 0\]
+	  ist $F - G$ konstant (aus 1.). Deshalb
+      \[F(b) - F(a) = G(b) - G(a) = \int_{a}^{b}f(x) \d x \tag{\qedhere}\]
+   #+end_proof
+   #+begin_remark latex
+   Integration und Differenzierung sind zueinander inverse Prozesse
+   \begin{align*}
+   \frac{\d}{\d x} \int_{a}^{x}f(y) \d y &= f(x) \\
+   f(x) &= f(a) + \int_{a}^{x}f'(y) \d y
+   \end{align*}
+   Die Regeln für die Differenzierung liefern
+   1. $\int y^\alpha \d y = \frac{1}{\alpha + 1}x^{\alpha + 1}$
+   2. $\int a^y \d y = \int e^{y\ln a}\d y = \frac{e^{x\ln a}}{\ln a} = \frac{a^x}{\ln a}$
+   3. $\int \sin{y} \d y = -\cos x$ \\
+      $\int \cos{y} \d y = \sin x$
+   4. $\int \frac{1}{y}\d y = \ln\abs{x}$
+   #+end_remark
+   #+ATTR_LATEX: :options [5.21 Partielle Integration]
+   #+begin_lemma latex
+   Seien $f,g:I\to \mathbb{R}$ zwei stetig differenzierbare Funktionen. Dann gilt
+   \[\int_{a}^{b}f(x)g'(x)\d x = (fg)(x)\big|_a^b - \int_{a}^{b} f'(x)g(x)\d x\]
+   #+end_lemma
+   #+begin_proof latex
+   \begin{align*}
+   \hspace{0pt}(fg)'(x) &= f'(x)g(x) + f(x)g'(x) \\
+   fg\big|^b &= \int_{b}^{a}f'(x)g(x)\d x + \int_{a}^{b}f(x) g'(x)\d x \tag*{\qedhere}
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [5.23]
+   #+begin_ex latex
+   \[\int_{a}^{b} x e^x \d x = x e^x \big|_a^b - \int_{a}^{b} e^x \d x = e^b(b - 1) - e^a(a - 1)\]
+   \[\int_{a}^{b} \ln(x) \d x = x\ln (x) \big|_a^b - \int_{a}^{b} \frac{1}{x} x \d x = b\ln b - a\ln a - (b - a)\]
+   #+end_ex
+   #+ATTR_LATEX: :options [5.24 Substitutionsregel]
+   #+begin_thm latex
+   Seien $f:I \to \mathbb{R}$ eine stetige Funktion und $\phi:[a,b]\to I$ eine stetig differenzierbare
+   Funktion. Dann gilt
+   \[\int_{a}^{b}f(\phi(y))\phi'(y)\d y = \int_{\phi(a)}^{\phi(b)} f(x) \d x\]
+   (sogenannte Substitutionsregel)
+   #+end_thm
+   #+begin_proof latex
+   Sei $F:I\to \mathbb{R}$ eine Stammfunktion von $f$. Die Komposition $F\circ \phi:[a,b]\to \mathbb{R}$.
+   ist stetig differenzierbar, und nach der Kettenregel
+   \[(F\circ \phi)'(y) = F'(\phi(y))\phi'(y) = f(\phi(y))\phi'(y)\]
+   Aufgrund des Fundamentalsatzes gilt
+   \[\int_{a}^{b}f(\phi(y))\phi'(y)\d y = \int_{a}^{b}(F\circ \phi)'(y)\d y = F\circ\phi(y)\big|_a^b = (F\circ \phi)(b) - (F\circ \phi)(a) = F(\phi(b)) - F(\phi(a)) = \int_{\phi(a)}^{\phi(b)}f(x) \d x\]
+   #+end_proof
