@@ -4,12 +4,18 @@
 #+LANGUAGE: de
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{siunitx, mathtools, mathspec, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, minted, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \usepackage{mathspec}
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage{polyglossia}
+#+LATEX_HEADER: \setdefaultlanguage[spelling=new, babelshorthands=true]{german}
+# #+LATEX_HEADER: \usepackage[german]{translator}
+#+LATEX_HEADER: \usepackage{siunitx, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
 #+LATEX_HEADER: \usepackage{scrpage2}
 #+LATEX_HEADER: \usepackage{soul}
-#+LATEX_HEADER: \usepackage[ngerman]{babel}
 #+LATEX_HEADER: \pagestyle{scrheadings}
 #+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
@@ -120,15 +126,15 @@
 
 #+LATEX_HEADER: \usetikzlibrary{arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
 
-#+LATEX_HEADER: \makeatletter
-#+LATEX_HEADER: \def\resetMathstrut@{%
-#+LATEX_HEADER:   \setbox\z@\hbox{%
-#+LATEX_HEADER:     \mathchardef\@tempa\mathcode`\[\relax
-#+LATEX_HEADER:     \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
-#+LATEX_HEADER:     \expandafter\@tempb\meaning\@tempa \relax
-#+LATEX_HEADER:   }%
-#+LATEX_HEADER:   \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
-#+LATEX_HEADER: \makeatother
+# #+LATEX_HEADER: \makeatletter
+# #+LATEX_HEADER: \def\resetMathstrut@{%
+# #+LATEX_HEADER:   \setbox\z@\hbox{%
+# #+LATEX_HEADER:     \mathchardef\@tempa\mathcode`\[\relax
+# #+LATEX_HEADER:     \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+# #+LATEX_HEADER:     \expandafter\@tempb\meaning\@tempa \relax
+# #+LATEX_HEADER:   }%
+# #+LATEX_HEADER:   \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+# #+LATEX_HEADER: \makeatother
 #+LATEX_HEADER: \catcode`(=\active
 #+LATEX_HEADER: \catcode`)=\active
 #+LATEX_HEADER: \newcommand{(}{\ifmmode\mathopen{}\mathclose\bgroup\left\string(\else\string(\fi}

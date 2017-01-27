@@ -1448,7 +1448,6 @@
   Vererbung war am Anfag der objekt-orientierten Programmierung Lösung für alles. Heute ist der Hype vorbei, eine Technik unter vielen, sparsam eingesetzt, besonders
   bei GUI (graphical user interface) und bei Zeichenprogrammen/Computer Graphik. Eine Klasse (abgeleitete Klasse, Unterklasse) kann
   Funktionalität einer anderen Klasse (Basisklasse) erbe, Basisklasse muss dafür nicht sterben. Sprachunabängige Schreibweise: UML-Diagramm ("Universal modelling language")
-  # (TODO: typeset uml diagramm (tikz-uml))
   #+begin_export latex
   \catcode`(=12
   \catcode`)=12
@@ -1514,3 +1513,153 @@
 		// veränderte Funktionalität: zeichnen
 	};
     #+END_SRC
+** Implementationsvererbung, Ziel: Wiederverwnden von Funktionalität, SEHR UMSTRITTEN.
+   Nur in wenigen Fällen die richtige Lösung, ok ist es im Zusammenhang mit Spezialisierung, zum
+   Beispiel Polygon erbt nützliche Funktionalität von PointSet. Meist bevorzugt man heute: Komposition und Delegation
+   #+BEGIN_SRC cpp
+   class Polynomial {
+       std::vecotr<double> a_; // Komposition
+	   // alle Operationen, die Koeffizienten betreffen, werden an Vektor a_ weitergeleitet:
+	   double & operator[](int i) {
+	       return a_[i]; // Delegation
+	   }
+   };
+
+   // mit Vererbung:
+   class Polynomial : public std::vector<double> {
+       // ...
+	   // operator[] jetzt geerbt
+   };
+   #+END_SRC
+   Probleme: Man erbt auch Funktionen, die man *nicht* möchte, zum Beispiel erase(). $\implies$ dadurch ist auch der Designer von std::vector in seiner Freiheit beschränkt.
+   Völlig verrückt wäre:
+   #+BEGIN_SRC cpp
+   class Point2D {
+   protected:
+       double x_, y_;
+   public:
+       // ....
+   };
+
+   // Ärger:
+   class Point3D : public Point2D {
+       double z_;
+   public:
+       // ...
+   }
+   #+END_SRC
+** Interface-Vererbung
+   Basisklasse definiert die öffentliche Schnittstelle, aber implementiert sie nicht. \\
+   Abgeleitete Klassen implementieren die Schnittstelle auf verschiedene Art. Beispiel: Zeichenobjekte
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+   #+end_export
+   \begin{figure}[H]
+   \centering
+   \begin{tikzpicture}
+   \umlsimpleclass{Shape}
+   \umlsimpleclass[y = 3, x = -5]{Line}
+   \umlsimpleclass[y = 3, x = -3]{Circle}
+   \umlsimpleclass[y = 3, x = -1]{Rectangle}
+   \umlsimpleclass[y = 3, x = 1]{Polygon}
+   \umlsimpleclass[y = 3, x = 3]{Composite}
+   \umlinherit{Shape}{Line}
+   \umlinherit{Shape}{Circle}
+   \umlinherit{Shape}{Rectangle}
+   \umlinherit{Shape}{Polygon}
+   \umlinherit{Shape}{Composite}
+   \end{tikzpicture}
+   \end{figure}
+   #+begin_export latex
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   Shape: Schnittstellenklasse("Interface"), *abstrakte* Basisklasse. \\
+   Composite: Container für Shape-Objekte $\implies$ eine fertige Zeichnung kann als
+   Ganzes in neue Zeichung eingebettet werden. Iterface-Vererbung ist möglich, weil
+   Zeiger / Referenzen auf abgeleitete Klasse in Zeiger / Referenzen der Basisklasse konvertier werden können.
+   #+begin_src cpp
+   Line line(...);
+   Shape * shape = &line;
+
+   // Gegensatz:
+   int i = 3;
+   double * p = &i; // verboten
+   #+end_src
+   $\implies$ bei dieser Konvertierung geht die Typinformation von Line nicht vollständig verloren,
+   das hießt der Compiler merkt sich, dass die in shape gespeicherte Adresse zu einer Line-Speicherzelle
+   gehört $\implies$ shape hat gleichzeitig zwei Type:
+   - statischer Typ = Shape * = der Typ der Deklaration
+   - dynamischer Typ = Line = "der ursprüngliche Typ" der Speicherzelle
+   Das funktioniert, wenn die Interface-Klasse Shape mindestens eine "virtuelle" Member Funktion hat
+   $\implies$ dann fügt der Compiler automatisch die notwendige zusätzliche Typinformation in die
+   Speicherzelle ein
+   #+begin_src cpp
+   class Shape {
+   public:
+       virtual void draw(Image & img) const = 0;
+	   virtual void drawZoomed(Image & img, double zoom) const = 0;
+	   virtual ~Shape() = 0; // falls virtuelle Funktion $\implies$ virtueller Destruktor
+   }
+   #+end_src
+   statt leerer Implementation kann man auch "abstrakte Funktionen" definieren, ganz
+   ohne Implementation $\implies$ ersetze {} mit = 0; (Aufruf führt dann zu Fehlermeldung)
+   $\implies$ dann ist auch die ganze Klasse abstrakt. (Fehlermeldung beim Konstruktoraufruf),
+   Zeiger sind erlaubt.
+   Jede abgeleitete Klasse muss die virtuellen Funktionen implementieren:
+   #+begin_src cpp
+   class Line : public Shape {
+       Point start_, end_, uint16_t color;
+   public:
+       Line(Point s, Point e, uint16_t color) : start_(s), end_(e), color_(color) {}
+	   virtual void draw(Image & img) const {
+	       // benutze Bresenham-Algorithmus um in img eine Line von start_ nach end_ zu zeichnen mit Farbe color_
+	   }
+
+	   virtual void drawZoomed(Image & img, double zoom) {
+	       // zeichne Linie von zoom * start_ nach zoom * end_
+	   }
+
+	   virtual ~Line() {} // compiler fügt Destruktoraufrufe der Member Variablen automatisch ein
+   };
+   #+end_src
+   Bedeutung der zwei-Typen-Regel beim Aufruf (*shape).foo();
+   - normale Member Funktionen (nicht virtuall) werden mit dem statischen Typ aufgerufen:
+	 - verwende Implementation im statischen Typ
+	 - nulltes Argument (this-Zeiger) ist Zeiger auf statischen Typ
+   - virtuelle Memberfunktionen werden mit dem dynamischen Typ aufgerufen
+	 - verwende Implementation der abgeleiteten Klasse
+	 - Nulltes Argument ist Zeiger auf abgeleitete Klasse
+   #+begin_src cpp
+   Image img(width, height);
+   Line line(start, end);
+   Shape * shape = &line;
+   (*shape).draw(img); // virtuelle Funktion $\implies$ Line::draw() wird ausgeführt
+   #+end_src
+*** Haupanwendung von Interface-Vererbung
+	heterogene Containter $\equiv$ Elemente verschiedener Type, in c++ nicht möglich.
+	Trick: verwende Zeiger auf Interface-Klasse als Elementtyp $\implies$ dynamischer Typ
+	aller Elemente kann unterschiedlich sein $\implies$ Container ist heterogen bezüglich
+	Aufrufen virtueller Funktionen sein.
+    #+begin_src cpp
+	std::vector<Shape *> drawing;
+	drawing.push_back(new Line(start1, end1)); // manuelle Speicherverwaltung
+	drawing.push_back(new Circle(center, radius));
+	drawing.push_back(new Line(start2, end2));
+	// ...
+	Image img(width, height);
+
+	for(int i = 0; i < drawing.size(); i++) {
+        drawing[i]->draw(img); // ruft für jedes i die passende draw() Funktion auf $\implies$ heterogenes Array
+	}
+    #+end_src
+	Das Composite Shape enthält ein solchen heterogenus Array als Membervariable, seine draw()-Funktion kapselt die Schleife.
+	Heterogenous Containter verwenden manuelle Speicherverwaltung $\implies$ man darf am Ende nicht das "delete" für die
+	Elemente vergessen $\implies$ besser verwende smart pointer: std::vector<std::shared_ptr<Shape>> drawing; (delete wird automatisch aufgerufen)
+** Kritik an Vererbung
+   Die Vererbungshirachie ist fest verdrahtet, *aber* in verschiedenen Kontexten braucht man eigentlich
+   verschiedene Hierachien. Zum Beispiel Person-Objekt kan je nach Situation verschiedene Rollen einnehmen
+   $\estimates$ verschiedene Iterface-Definitionen: Schüler, Student, Employee, Mitglied, Kunde, $\ldots$.
+   Person kann nicht von all diesen Interfaces abgeleitet sein, zumal es verschiedenste Varianten gibt.
+   Besser: verwalte diese Relationen in Datenbanken.

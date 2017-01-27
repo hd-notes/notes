@@ -478,7 +478,7 @@
 	  und wir bekommen Limes der alternierenden harmonischen Reihe.
    #+end_ex
 ** Differentation und Grenzprozesse
-   \[\sum_{k = 1}^{\infty} a(x) = \lim_{n \to \infty} \sum_{k = 1}^{\infty}a(x)\]
+   \[\sum_{k = 1}^{\infty} a(x) = \lim_{n \to \infty} \sum_{k = 1}^{n}a(x)\]
    Motivation: Frage:
    \[\dd{}{x}(\sum_{k = 1}^{\infty}a(x)) \overset{?}{=} \sum_{k = 1}^{\infty}\dd{}{x}a(x)\]
    #+ATTR_LATEX: :options [Patalogische Beispiele]

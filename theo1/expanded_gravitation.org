@@ -1,0 +1,149 @@
+* Gravitation ausgedehnter Körper
+  Punktmassennäherung oft schlecht, Aber: leicht korrigierbar wegen Additivität der Kräfte (Genauer: Newtonsche Gravitation ist linearisierte Näherung der ART).
+** Potential einer Massenverteilung
+   potentielle Energie für Gravitation zwischen $m_0$ und $m_1$
+   \[V(\abs{\v r_0 - \v r_1}) = - \frac{m_0 m_1 G}{\abs{\v r_0 - \v r_1}}, \v F_{01} = -\v \nabla_0 V(\abs{\v r_0 - \v r_1}) \equiv -(\frac{\partial}{\partial(r_0)^1}, \frac{\partial}{\partial(r_0)^2}, \frac{\partial}{\partial(r_0)^3})^T V(\abs{\v r_0 - \v r_1})\]
+   Wir wollen hier nur sehr kleine "Testmassen" $m_0$ betrachten $\implies$ Bewegung von $m_0$ im unveränderlichen Fled von $m_1, m_2, m_3, \ldots \implies$ Schreibe
+   \[V(\v r_0) = -\frac{m_0 m_1 G}{\abs{\v r_0 - \v r_1}}, \v F = -\v \nabla_{(0)}V(\v r_0)\]
+   Nützlich, ein von $m_0$ unabhäniiges Gravitationspotential $\phi$ zu definieren: $\phi \equiv \frac{V}{m_0} \implies$
+   \[\phi(\v r_0) = -\frac{m_1 G}{\abs{\v r_0 - \v r_1}}, \v F = -m_0 \v \nabla_0\phi(\v r_0)\]
+   ($m_0$ verschwindet völlig in Bewegungsgleichung der Testmasse: $\ddot{\v r_0} = - \v \nabla_0 \phi(\v r_0)$) \\
+   Ziel: Gravitationspotential einer Ansammlung von Punktmassen:
+   \[\phi(\v r_0) = \sum_{a = 1}^{N} \frac{m_a G}{\abs{\v r_0 - \v r_a}}\]
+   Limes sehr vieler, sehr kleiner Elemente: Volumenintegral:
+   \[\phi(\v r_0) = -G \int \frac{\d^3 t \rho(\v r)}{\abs{\v r_0 - \v r}}\]
+   Idee: diskrete Summe von $\v r_a \to$ kontinuierliche Integral Variable $\v r$. Erinnerung an Flächenintegral:
+   \[\int_A \d^2 \v x f(\v x) \equiv \int_{x_{min}^1}^{x_{max}^1} \d x^1\int_{x_{min}^2}^{x_{max}^2} \d x^2 f(x^1, x^2)\]
+   Volumenintegral:
+   \[\int_V \d^3 \v x f(\v x) = \int_{x^2_{min}}^{x^2_{max}}\d x^2 \int_A \d^2 \v y f(x^1, x^2, x^3), \v y = (x^1, x^3)^T\]
+   Anstatt das Volumen stupide zu zerlegen ist es oft sinnvoller, Symmetrien auszunutzen ($\implies$ Kugel, etc),
+   Bei Rotationssymmetrie:
+   \[\int_{\text{Kreisfläche}} \d^2 \v x f(\v x) = \int_{0}^{R}\d r \underbrace{\int_{0}^{2\pi} r\d \phi f(r, \phi)}_{\text{Kreis mit Radius $r$}} = \int_{0}^{R}r\d r \int_{0}^{2\pi}\d \phi f(r, \phi)\]
+   In 3D: (Volumenintegral)
+   \[\int_{\text{Kugel}} \d^3 \v x f(\v x) = \int_{0}^{R}\d r r^2 \underbrace{\int_{0}^{\pi} \sin{\theta} \d \theta \int_{0}^{2\pi} \d \phi f(r, \theta, \phi)}_{\text{Sphäre mit Radius $r$}}\]
+** Gravitationspotential einer Kugelschale
+   Kugelschale sei dünn $\implies$ Flächendichte $\rho_F, [\rho_F] = \si{\kilo\gram\per\meter\squared}$
+   Brauche eigentlich nur Flächenintegral:
+   \[\int \d^3 \v r\rho (\v r)\ldots = \int \d^2 \v r \rho_F(\v r)\]
+   Genauer: Koordinaten $r, \theta, \phi$, Kugelschale: $r\in (R, R + \Delta R)$
+   \[\int_{R}^{R + \Delta R} r^2 \d r \int_{0}^{\pi} \sin{\theta} \d\theta \int_{0}^{2\pi}d\phi \rho(\v r) \ldots \cong R^2 \int_{0}^{\pi}\sin{\theta} \d \theta \int_{0}^{2\pi} \d\phi \rho_F(\theta,\phi) \ldots\]
+   \[A \rho_F = \Delta R \rho A = M\]
+   Kommentar:
+   \[\underbrace{\int_{0}^{\pi}\sin{\theta} \d\theta \int_{0}^{2pi}\d \phi}_{\mathclap{\text{Integrieren über Raumwinkel}}} \ldots = \int \d \Omega\]
+   Noch direkter zum konkretem Problem:
+   \begin{align*}
+   \d \phi &= - G \frac{\d M}{r} = -G \frac{\rho_F \d A}{r} = - \frac{G \rho_F}{r}\underbrace{(R\d\theta)}_{\text{Breite}}\underbrace{(2\pi R\sin(\theta))}_{\text{Länge}} \\
+   r &= \sqrt{(a - R\cos{\theta})^2 + (R\sin{\theta})^2} = \sqrt{\underbrace{a^2 + R^2}_{A} - \underbrace{2aR}_{B}\cos{\theta}} \\
+   \phi &= -G \rho_F 2\pi R^2 \int \frac{\sin\theta \d \theta}{\sqrt{A - B\cos{\theta}}} \\
+   \intertext{Substituiere: $x = \cos\theta, \d x = -\sin \theta \d \theta, \theta = 0 \implies x = 1, \theta = \pi \implies x = 1$}
+   \phi &=  -G \rho_F 2\pi R^2 \int_{1}^{-1} \frac{-\d x}{\sqrt{A - Bx}} \\
+   \phi &= -G\rho_F2\pi R^2 \frac{2}{2aR}(\sqrt{a^2 + R^2 + 2aR} - \sqrt{a^2 + R^2 - 2aR}) \\
+   \phi &= -G\rho_F2\pi R^2 \frac{1}{aT}((a + R) - (a - R)) = -G\rho_f \frac{4\pi R^2}{a} \\
+   \phi &= -\frac{GM}{a}
+   \end{align*}
+   $\implies$ Potential so, als sei die Masse im Zentrum konzentriert. Analoge Rechnung zeigt: Keine Gravitationskraft (also Potential konstant) im Inneren.
+   Pol. jedes sphärisch symmetrischen Körpers (auch inhomogen) ist so wie bei enbph Punktmasse im Zentrum
+** Divergenz und Gaußscher Satz
+   Betrachte Integrale vom Typ
+   \begin{align*}
+   I &= \int_{\underarrow[O]{Oberfläche eines Volumens}}\overarrow[\d \v f]{Flächenelement} \v F \\
+   \intertext{$\v F$: Vektorfeld. Betrache Würfel:}
+   I &= I_{12} + I_{23} + \underarrow[I_{31}]{Betrag der zwei Flächen in der $x^3-x^1$ Ebene} \\
+   I_{12} &= \int_{12,\text{oben}} \d x^1 \d x^2 F^3(x^1, x^2, \Delta x^3) + \int_{12,\text{unten}} \d x^1 \d x^2 (-F^3(x^1, x^2, 0)) \\
+   \intertext{$\implies$ *ein* Interal, Integrand:}
+   \underbrace{F^3(x^1, x^2, \Delta x^3 - F^3(x^1, x^2, 0))}_{\text{Taylor um $x^3 \equiv 0$}} \\
+   I_{12} &= \int_{12}\d x^1 \d x^2 \Delta x^3 \frac{\partial F^3}{\partial x^3}(x^1, x^2, 0) \\
+   I_{12} &= \Delta x^1 \Delta x^2, \Delta x^3 (\frac{\partial F^3}{\partial x^3})(0,0,0) + O(\Delta^4) \\
+   \intertext{Zusammen mit analoger Rechnung für $I_{23}, I_{31}$:}
+   I &= \underarrow[V]{$\Delta x^1 Delta x^2 \Delta x^3$} (\frac{\partial F^1}{\partial x^1} + \frac{\partial F^2}{\partial x^2} + \frac{\partial F^2}{\partial x^2}) = V(\partial^i F^i) = V(\v \nabla \v F) = V(\div \v F) \\
+   \end{align*}
+   #+ATTR_LATEX: :options [Divergenz]
+   #+begin_defn latex
+   \[\div \v F \equiv \v\nabla \v F= \partial^i F^i\]
+   #+end_defn
+
+   Jetzt: Großen Volumen zusammengesetzt aus kleinen Quadern.
+   Addiere alle Gleichungen vom Typ (Einsteinsche Summenkonvention $\implies$ Summe über $a$)
+   \[I_{(a)} = V_{(a)}(\v\nabla \underarrow[\v F]{bei Pos. von "$a$"})\]
+   In der Summe der Oberflächenintegral fallen "innere Flächen" weg.
+   $\implies$ Satz von Gauß:
+   \[\int_{O} \d \v f \v F = \int_{V} \d^3 \v r (\v\nabla \v F)\]
+   Wichtig: $O = \partial V$ ist Oberfläche des Volumen $V$ (keine "inneren" Flächen).
+   Vergleich mit Stokes:
+   \[\oint_{"`\partial A"'} \d \v s \v F = \int_A \d \v f (\v \nabla \times \v F)\]
+   Sehr ähnlich, aber "eine Dimension weniger". Noch eine Dimension weniger als bei Stokes:
+   \[V(\v x_b) - V(\v x_a) = \int_C \d \v l(\v\nabla V)\]
+   Allgemein: "Generalized Stokes Theorem" \\
+   Lücke schließen: \\
+   Ist "Abschneiden" von Ecken in unserer Näherung akzeptabel?
+   1. Volumenänderung: Gesamt $V:$
+	  \[N_{ges} \sim \frac{V}{\Delta^3} \sim \frac{1}{\Delta^3}\]
+	  Zahl der Oberflächenquader:
+	  \[N_O \sim \frac{O}{\Delta^2} \sim \frac{1}{\Delta^2}\]
+	  Beitrag der Oberflächenquader zum Volumen ist
+	  \[N_O \Delta^3 \sim \frac{1}{\Delta^2} \Delta^3 \sim \Delta \xrightarrow{\Delta \to 0} 0\]
+   2. Oberflächenänderung. Dazu wichtiger Fakt:
+	  Die Summe der Flächenvektoren eines Tetraeders ist Null. Herleitung:
+	  Seien $\v a, \v b, \v c$ die Ortsvektoren dreier Punkte, sodass die Ortsvektoren, zusammen mit
+	  den Verbindungsvektoren der Punkte einen Tetraeder bilden. Die Fläche eines Dreiecks (mit Kanten $\v a, \v b$) ist
+	  \[\v A_{ab} = \frac{1}{2}\v a \times \v b\]
+	  Unsere Behauptung, hier angewandt, lautet:
+	  \[-\frac{1}{2}(\v a\times\v b) - \frac{1}{2}(\v b\times c) - \frac{1}{2}(\v c \times \v a) + \frac{1}{2}((\v b - \v a)\times (\v c - \v a)) = 0\]
+	  Tetraeder $\to$ allgemeine Dreieckspyramide.
+** Gaußscher Satz und Gravitation
+   $O$: Oberfläche deines Volumen
+   \[M = -\frac{1}{4\pi G} \int_{O} \frac{1}{m} \underarrow[\v F]{Kraft durch $M$ auf Probemasse} \d \v f\]
+   "Integrale Formulierung des Newtonsches Gravitationsgesetzes"
+   Zunächst Spezialfall: Zentrierte Späre mit Radius $R$: "O_1"
+   \[I_1 \equiv \int_{O_1}\v F\d \v f = \int_{O_1}(- \frac{GmM}{R^2}\v e_r)\abs{\d \v f} \v e_r = -GmM 2\pi\]
+   stimmt!
+   Beliebiges Volumen: $O_2$
+   \begin{align*}
+   I_2 &= \int_{O_2}\v F\d \v f \\
+   I_2 - I_1 &= \int_{O_2} \v F \d \v f - \int_{O_1} \v F \d \v f \\
+   \intertext{mit $\tilde O_1$: Fläche der Sphäre mit entgegengesetzter Orientierung}
+   &= \int_{O_2}\v F \d \v f + \int_{\tilde O_1}\v F \d \v f \\
+   \intertext{mit "$O_2 - O_1$" ist Oberfläche des "Zwischenvolumens" "$Vol_2 - Vol_1$"}
+   &= \int_{O_2 - O_1} \v F \d \v f
+   \intertext{mit Gaußschem Satz:}
+   &= \int_{Vol_2 - Vol_1} \d^3 \v r(\v\nabla \v F) = -\int_{Vol_2 - Vol_1}\d^3 \v r (\v\nabla^2 V) \tag{$\v F = -\v\nabla V$}
+   \intertext{$\v\nabla^2 = \Delta$ ist der Laplace-Operator}
+   V(\v r) &= - \frac{GmM}{r}, r = \abs{\v r} = \sqrt{(x^1)^2 + (x^2)^2 + (x^3)^2}
+   \intertext{Fokussiere auf $\frac{1}{r}$:}
+   \hspace{0pt}(\v\nabla(\frac{1}{r}))^i &= \frac{\partial}{\partial x^i}(\frac{1}{r}) = \frac{\partial}{\partial x^i} \frac{1}{\sqrt{\sum_j(x^j)^2}} \\
+   &= -\frac{1}{2} \frac{2x^i}{\sqrt{\sum_j(x^j)^2}^3} \\
+   \v\nabla^2(\frac{1}{r}) &= \v\nabla(\v\nabla(\frac{1}{r})) = \frac{\partial}{\partial x^i}(-\frac{x^i}{\sqrt{\sum_j(x^j)^2}^3}) \\
+   &= -(\frac{3}{\sqrt{\sum_j(x^j)^2}^3} - \frac{3}{2}\frac{x^i 2x^i}{\sqrt{\sum_j(x^j)^2}^5}) \\
+   &= -(\frac{3}{r^3} - \frac{3}{2} \frac{2r^2}{r^5}) = 0
+   \end{align*}
+   1. beliebige Fläche: Ok
+   2. Translation $\to$ beliebige Position der Masse: Ok
+   \begin{align*}
+   M_i &= -\frac{1}{4\pi m G} \int_O \v F_i \d \v f \\
+   M &= \sum_i M_i = - \frac{1}{4\pi mG} \int_O(\sum_i \v F_i)\d \v f \\
+   \intertext{Symmetriegründe: auf Sphäre mit Radius $r: \abs{\v F} = ~\text{const}$}
+   &= - \frac{1}{4\pi m G} \underbrace{\int_O \v F \d \v f}_{\abs{\v F}4\pi r^2} \\
+   \abs{\v F} &= \frac{mMG}{r^2} \\
+   \end{align*}
+   \begin{align*}
+   \int_{Vol}(\v\nabla \v F)\d Vol &= -4\pi mG \int_{Vol} \rho \d Vol \\
+   \implies \v \nabla \v F &= -4\pi Gm\rho \\
+   \v F &= -\v \nabla V, \phi = \frac{V}{m} \\
+   \v\nabla^2 \phi &= -4\pi G \rho
+   \end{align*}
+   #+ATTR_LATEX: :options [Poisson-Gleichung]
+   #+begin_defn latex
+   \[\v\nabla^2 \phi = 4\pi G \rho\]
+   Mit $\rho = 0$: Laplace-Gleichung
+   \[\v\nabla^2 \phi = 0\]
+   #+end_defn
+
+
+   #+ATTR_LATEX: :options [Laplace-Operator]
+   #+begin_defn latex
+   Allgemein:
+   \begin{align*}
+   \v\nabla(\v\nabla f) &= (\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3})^T (\frac{\partial f}{\partial x^1}, \frac{\partial f}{\partial x^2}, \frac{\partial f}{\partial x^3}) \\
+   &= \underbrace{(\frac{\partial^2}{\partial(x^1)^2}, \frac{\partial^2}{\partial(x^2)^2}, \frac{\partial^2}{\partial(x^3)^2})}_{\Delta}f
+   \end{align*}
+   #+end_defn
