@@ -81,7 +81,7 @@ mark=at position 0.5 with
   \intertext{Ladungsfluß:}
   J_a &= \dd{Q}{t} \quad j_a = \frac{\d Q}{A\d t}
   \end{align*}
-  Allgemein gilt (1-dim.):
+  Allgemein gilt die Kontinuitätsgleichung (1-dim.):
   \[\dd{\rho}{t} + \dd{j}{z} = 0\]
   - $\rho$: Dichte
   - $j$: Stromdichte
@@ -110,3 +110,130 @@ mark=at position 0.5 with
    - $\v j_Q$: Wärmestromdichte
    - $\lambda$: Wärmeleitzahl
    #+end_thm
+   #+ATTR_LATEX: :options [Analogie zum Ohmschen Gesetz]
+   #+begin_remark latex
+   \begin{align*}
+   J_Q &= \dd{Q}{t} = \lambda A \frac{\Delta T}{\Delta x} = \Delta T R \\
+   R &= \frac{\Delta x}{\lambda A} \implies \Delta T = R J_Q
+   \intertext{Elektrizitätslehre:}
+   J_Q &\estimates I, \Delta T \estimates U, R = \frac{d}{\sigma A}, U = R I
+   \end{align*}
+   #+end_remark
+   Besseres Verständnis über Diffusion $\ldots$.
+** Diffusion
+   Materietransport aufgrund eines Konzentrationsgefälles. Hier: Eindimensionale, vereinfachte Betrachtung.
+
+   Bos mit zwei Molekülsorten $A$ und $B$. \\
+   Start $t = 0$: Alle Moleküle der Sorte $B$ in $V_1$. \\
+   $t\gg 0$: Gleichgewicht. \\
+
+   Betrachte Umgebung um Ebene $E$: \\
+   "Nettofluß" = Fluß nach rechts - Fluß nach links = $j_1 - j_2$
+   \begin{align*}
+   j_1 &= \frac{1}{6} n_1 v \\
+   j_2 &= \frac{1}{6} n_2 v \\
+   j &= \frac{1}{6} (n_1 - n_2) v
+   \end{align*}
+   Aber: Allgemein gilt $n = n(x)$. \\
+   Frage: Was muss man für
+   \[n_{1,2} = n(x_E \pm \frac{1}{2}\Delta x)\]
+   einsetzen? \\
+   Antwort:
+   \[\frac{1}{2}\Delta x = \lambda\]
+   wobei $\lambda$ die mittlere freie Weglänge der Molekülsorte $B$ ist, das heißt
+   man wählt die Teilchendichten dort, wo die Moleküle nach dem letzten Stoß starten.
+   \begin{align*}
+   j &= \frac{1}{6}(n(x_E - \frac{1}{2}\Delta x) + n(x_E + \frac{1}{2}\Delta x))v \\
+   &= -\frac{1}{6} \dd{n}{x} \Delta x \\
+   &= -\frac{\lambda v}{3} \dd{n}{x} = - \frac{\lambda^2}{3\tau}\dd{n}{x} = -D \dd{n}{x} \\
+   D &= \frac{\lambda v}{3} = \frac{\lambda^2}{2\tau}
+   \end{align*}
+   - $\lambda$: mittlere freie Weglänge
+   - $\tau$: mittlere Zeit zwischen zwei Stößen
+   - $v = \frac{\lambda}{\tau}$: mittlere Geschwindigkeit
+   Also:
+   #+ATTR_LATEX: :options [1. Ficksches Gesetz]
+   #+begin_thm latex
+   \begin{align*}
+   j_D &= -D \dd{n}{x} \tag{1-dim} \\
+   j_D &= -D \grad n \tag{3-dim}
+   \end{align*}
+   #+end_thm
+   Vergleich:
+   | Diffusion         | Konzentrationsgradient |
+   | Wärmeleitung      | Temperatutrgradient    |
+   | laminare Strömung | Druckgradient          |
+
+   Laminare Strömung:
+   - Volumenstrom: $\dot{V} = - \frac{\pi \Delta p}{8\eta L} R^4$
+   - Stromdichte: $j = \frac{\dot{V}}{A} = \frac{\dot{L}}{\pi R^2} = - \frac{R^2}{8\eta} \frac{\Delta p}{\Delta x}, L = \Delta x$
+   - $\implies j = -\xi \dd{p}{x}, \xi = \frac{R^2}{8\eta}$
+** Wärmestrahlung
+   Wärmetransport im Allgemeinen sehr kompex. Zusätzlich zur Wärmeleitung: Konvektion und Wärmestrahlung.
+   Erfahrung: \\
+   Auch ohne direkten Kontakt findet Wärmeaustausch von Körpen über thermische Strahlung statt,
+   elektormagnetische Strahlung siehe später. \\
+   Interessant: \\
+   Emissions- und Absoptionsvermögen von Körpern. \\
+   Charakterisierungsgrößen:
+   | Emission                                                                                 | Absoption                                                                                                                                                                                  |
+   |------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+   | $\phi = \dd{Q}{t}$ Strahlungsleistung, $[\phi] = \si{\joule\per\second} = \si{\watt}$    | $I = \frac{\phi}{F}$ Bestrahlungsstärke, Intensität                                                                                                                                        |
+   | $E = \frac{\Phi}{F}$ Emissionsvermögen, Intensität, $[E] = \si{\watt\per\meter\squared}$ | $A = \frac{\text{absobierte Strahlungsleistung}}{\text{auffallende Strahlungsleistung}}$ Absoptionsvermögen, $[A] = \si{L}$                                                                |
+   | $F_\lambda = \dd{E}{\lambda}$ spektrales Emissionsvermögen                               | $A_\lambda = \frac{\text{absorbierte Strahlungsleistung im Bereich} [\lambda,\lambda + \d \lambda]}{\text{einfallende Strahlungsleistung im Bereich} [\lambda, \lambda + \d \lambda]}$ |
+   Es gilt:
+   \[E = \int_{0}^{\infty}E_\lambda \d \lambda, A, A_\lambda \leq 1 \wedge R = 1 - A:~\text{Reflexionsvermögen}\]
+   #+ATTR_LATEX: :options [Jaresmittelwert der Sonneneinstrahlung der Erde]
+   #+begin_ex latex
+   Solarkonstante: (merken!)
+   \[I_{solar} = \SI{1.37}{\kilo\watt\per\meter\squared} \approx \SI{1}{\kilo\watt\per\meter\squared}\]
+   #+end_ex
+   Emmsions und Absoptionsvermögen hängen sicherlich von der Art und Beschaffenheit des abstrahlenden/absobierenden Körpers ab. \\
+   Experiment: Leslie Würfel. \\
+   Messung:
+   - $A: T_s > T_b$
+   - $B: T_s = T_b$
+   Sei
+   \begin{align*}
+   T_s &= T_0 + \Delta T_s \\
+   T_b &= T_0 + \Delta t_b
+   \end{align*}
+   - $A: \Delta T_s > \Delta T_b$
+   - $B: \Delta t_s = \Delta T_b$
+   Außerdem:
+   \[\Delta T \sim \Delta U \sim \Delta Q \sim EA\]
+   Damit ergibt sich aus $B$:
+   \[E_s A_b = E_b A_s \implies \frac{E_b}{A_b} = \frac{E_s}{A_s}\]
+   Das Verhältnis von Emmisions- und Absoptionsvermögen eines Körpers ist unabhänig von der
+   Beschaffenheit seiner Oberfläche. Übliche Referenz: Nicht-reflektierender Körper, auch "schwarzer-Körper" oder "schwarzer" Strahler.
+   das heißt
+   \[A_\lambda^s = 1\]
+   für alle Wellenlängen gleich! \\
+   Wichtig: Auch für $A_\lambda = 1$ seindet ein Körper Wärmestrahlung aus, seinen eigene!, das heißt ein schwarzer Körper kann "weiß" sein.
+
+   Technische Realisierung eines schwarzen Strahlers: Hohlraumstrahler. (Da kein Material mit $A_\lambda = 1$ existiert) \\
+   Hohlraum mit stark absobierenden Wänden. Reflexionsvermögen der Öffnung verschwindet quasi! $\implies$
+   #+ATTR_LATEX: :options [Kirchhoffsches Strahlungsgesetz]
+   #+begin_thm latex
+   Für alle Körper im thermischen Gleichgewicht gilt:
+   \[\frac{E_\lambda (T)}{A_\lambda (T)} = E_\lambda^s (T), A_\lambda^S(T) = 1\]
+   das heißt das Verhältnis von spektralem Emissoins- und Absoptionsvermögen ist unabhängig von der
+   Oberflächenbeschaffenheit eines Strahlers und gleich dem Emissionsvermögen eines schwarzen Strahlers. (bei gegebener Temperatur)
+   Es folgt: Ein schwarzer Strahler hat maximales Emissionsvermögen.
+   #+end_thm
+   $\implies$ Emissoinsvermögen eines schwarzen Strahlers ist universell! \\
+   Experiment: Schwarzer Strahler. \\
+   Beobachtung:
+   1. Bei höheren Temperaturen wir mehr Energie abgestrahlt
+   2. Warme Körper strahlen "unsichtbar" (IR-Strahlung), wärmere "rot", heiße "weiß-blau"
+   $\implies$ Mit steigener Temperatur strahlen Körper elektromagnetische Strahlung mit höheren Frequenzen ab $\implies$
+   \begin{align*}
+   E^{\frac{q}{r}}(T) &= \sigma \qquad E(T) = \eps \sigma T^4 \tag{Stefan-Boltz-mannsches Strahlungsgesetz} \\
+   \intertext{Planksches Strahlungsgesetz:}
+   E^{\frac{q}{r}}_\lambda(T) &= \frac{2\pi hc^2}{\lambda^5} \frac{1}{e^{\frac{hc}{\lambda kT}} - 1} \\
+   E^{SK}_V(T) &= \frac{2\pi hv^3}{c^2} \frac{1}{e^{\frac{hc}{\lambda kT}} - 1}
+   \end{align*}
+   - $\sigma = \SI{5.7e-8}{\watt\per\meter\squared\per\kelvin\tothe{4}}$: Stafan-Boltzmann-Konstante
+   - $\lambda$: Wellenlänge
+   - $v$: Frequenz
+   - $h$: Plancksches Wirkungsquantum

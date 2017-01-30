@@ -1,0 +1,59 @@
+* Determinanten
+  In diesem Abschnitt sei $n\in \mathbb{N}$ \\
+  Ziel: Ordne jeder Matrix aus $M(n\times n, K)$ ein Element aus $K$ zu, dass genau dann $= 0$ ist,
+  wenn die Matrix nicht invertierbar ist. Die Zuordnung soll mehreren Bedingungen genügen.
+  #+ATTR_LATEX: :options [17.1]
+  #+begin_defn latex
+  Eine Abbildung $\det: M(n\times n, K) \to K, A\mapsto \det A$ heißt *Determinante* $\xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt:
+  - (D1) $\det$ ist *linear in jeder Zeile*, das heißt ist
+	\[A = \cvec{a_1; \vdots; a_n} \in M(n\times n, K)\]
+	mit Zeilen $a_1, \ldots, a_n$, dann gilt für jedes $i\in \{1, \ldots, n\}$:
+	- (D1a) Ist $a_i = a_i' + a_i''$, dann ist
+	  \[\det \cvec{a_1; \vdots; a_i; \vdots; a_n} = \det \cvec{a_1; \vdots; a_i'; \vdots; a_n} + \det \cvec{a_1; \vdots; a_i''; \vdots; a_n}\]
+	- (D1b) Ist $a_i = \lambda a_i'$ mit $\lambda \in K$, dann ist
+	  \[\det \cvec{a_1; \vdots; a_i; \vdots; a_n} = \lambda \det \cvec{a_1; \vdots; a_i'; \vdots; a_n}\]
+  - (D2) $\det$ ist *alternierend*, das heißt: Hat $A\in M(n\times n, K)$ zwei gleiche Zeilen, dann ist $\det A = 0$
+  - (D3) $\det$ ist *normiert*, das heißt $\det E_n = 1$
+  Weitere Schreibweise: Für $A = (a_{ij})$ schreiben wir auch
+  \[\begin{vmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & & \\ a_{n1} & \ldots & a_{nn}\end{vmatrix} := \det \begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & & \\ a_{n1} & \ldots & a_{nn}\end{pmatrix}\]
+  #+end_defn
+  #+begin_note latex
+  Wir müssen erst noch zeigen, dass es Determinanten überhaupt gibt.
+  - geometrische Motivation für (D1)-(D3) für den Fall $K = \mathbb{R}$:
+	ist $A = \cvec{a_1; \vdots; a_n} \in M(n\times n, \mathbb{R})$, dann spannen die Vektoren
+	$a_1, \ldots, a_n$ ein "Parallelotop im $\mathbb{R}$ auf ($n = 2$: Parallogramm). \\
+	D1-D3 sind sinnvolle Forderungen für ein Volumen im $\mathbb{R}^n$:
+	- D2: Volumen ist Null, wenn $i\neq j$ mit $a_i = a_j$ existiert.
+	- D3: Volumen des "Einheitspolytops" ist 1
+	- D1b: Volumen ist "homogen"
+	- D1 + D2 implizieren (siehe Satz 17.2): Für $\lambda \in \mathbb{R}, i \neq j$ ist
+	  \[\det \cvec{a_1; \vdots; a_1 + \lambda a_j; \vdots; a_n} = \det \cvec{a_1; \vdots; a_n}\]
+	  ("Scherungsinvarianz")
+  #+end_note
+  #+ATTR_LATEX: :options [17.2]
+  #+begin_thm latex
+  $\det: M(n\times n, K) \to K$ sei einen Determinante,
+  \[A = \cvec{a_1; \vdots; a_n}, B \in M(n\times n, K)\]
+  Dann gilt:
+  - (D4) $\det (\lambda A) = \lambda^n \det(A)$
+  - (D5) Ist eine Zeile von $A$ gleich Null, dann ist $\det A = 0$
+  - (D6) \[\det \cvec{a_1; \vdots; a_j; \vdots; a_i; \vdots; a_n} = -\det (A)\]
+	das heißt bei Zeilenumformungen vom Typ 4 wird das Ergebnis mit $-1$ multipliziert.
+  - (D7) \[\det\cvec{a_1; \vdots; a_i + \lambda a_j; \vdots; a_n} = \det A\]
+	für $i\neq j, \lambda \in K$, das heißt $\det$ ist invariant unter Zeilenumformungen vom Typ 3
+  - (D8) Ist $A$ eine obere Dreiecksmatrix, das heißt
+	\[A = \begin{pmatrix} \lambda_1 & & \ast \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix}\]
+	dann ist $\det A = \lambda_1 \cdots \ldots \cdots \lambda_n$ Analog für untere Dreiecksmatrizen.
+  - (D9) Ist $n\geq 2$ und $A$ von der Gestalt
+	\[A = \begin{pmatrix} A_1 & C \\ 0 & A_2\end{pmatrix}\]
+	mit $A_1 \in M(r\times r, K), A_2 \in M(s\times s, K), r + s = n$, dann ist $\det A = \det(A_1) \cdots \det(A_2)$.
+  - (D10) $\det A = 0 \iff \Rang A < 0$ (das heißt $\det A \neq 0 \iff A \in GL(n, K)$)
+  - (D11) $\det (AB) = \det(A)\det(B)$. Insbesondere ist $\det(A^{-1}) = \det(A)^{-1}$
+  #+end_thm
+  #+begin_proof latex
+  (D4) \[\det (\lambda A) = \det \cvec{\lambda a_1; \vdots; \lambda a_n} = \lambda \det \cvec{a_1; \lambda a_2; \vdots; \lambda a_n} = \ldots = \lambda^n \det \cvec{a_1; \vdots; a_n} = \lambda^n \det(A)\]
+  (D5) Sei etwa $a_1 = 0 = 0_k \cdots 0$. Es ist
+  \[\det \cvec{a_1; \vdots; 0; \vdots; a_n} = \det \cvec{a_1; \vdots; 0_K \cdot 0; \vdots 0} = 0_K \det\cvec{a_1; \vdots; 0; \vdots; a_n} = 0\]
+  (D6) \[\det \cvec{a_1; \vdots; a_i; \vdots; a_j; \vdots; a_n} + \det \cvec{a_1; \vdots; a_j; \vdots; a_i; \vdots; a_n} = \det \cvec{a_1; \vdots; a_i; \vdots; a_i; \vdots; a_n} + \det \cvec{a_1; \vdots; a_i; \vdots; a_j; \vdots; a_n} + \det \cvec{a_1; \vdots; a_j; \vdots; a_i; \vdots; a_n} + \cvec{a_1; \vdots; a_j; \vdots; a_j; \vdots; a_n} = \det \cvec{a_1; \vdots; a_i; \vdots; a_i + a_j; \vdots; a_n} + \det \cvec{a_1; \vdots; a_j; \vdots; a_i + a_j; \vdots; a_n} = \det \cvec{a_1; \vdots; a_i + a_j; \vdots; a_1 + a_j; \vdots; a_n} = 0\]
+  (D7) \[\det \cvec{a_1; \vdots; a_i + \lambda a_j; \vdots; a_j; \vdots; a_n} = \det \cvec{a_1; \vdots; a_i; \vdots; a_j; \vdots; a_n} + \lambda \det \cvec{a_1; \vdots; a_j; \vdots; a_j; \vdots; a_n} = \det \cvec{a_1; \vdots; \vdots; \vdots; \vdots; \vdots; a_n}\]
+  #+end_proof

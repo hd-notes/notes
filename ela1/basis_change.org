@@ -193,3 +193,63 @@
   #+begin_proof latex
   leicht nachzurechnen.
   #+end_proof
+  #+ATTR_LATEX: :options [16.11]
+  #+begin_remark latex
+  $A,B\in M(m\times n, K), \mathcal{A}$ Basis von $K^n, \mathcal{B}$ Basis von $K^m, f:K^n \to K^m$
+  lineare Abbildung mit $M_{\mathcal{B}}^{\mathcal{A}}(f) = A$ (Existenz nach 15.3.2). Dann sind äquivalent:
+  1. $A\sim B$, das heißt $\Exists S\in GL(m, K), T\in GL(n,K): B = SAT^{-1}$
+  2. Es existieren Basen $\mathcal{A}'$ von $K^n, \mathcal{B}'$ von K^m mit $M_{\mathcal{B}'}^{\mathcal{A}'}(f) = B$ (das heißt $A,B$ beschreiben bezüglich geeigneter Parre von Basen dieselbe lineare Abbildung)
+  3. $\Rang A = \Rang B$
+  Insbesondere ist jede Matrix aus $M(m\times n, K)$ vom Rang $r$ äquivalent zu \[\begin{pmatrix} E_r  & 0 \\ 0 & 0\end{pmatrix}\]
+  #+end_remark
+  #+begin_proof latex
+  1. $\implies$ 2. Sei $A\sim B \implies \Exists S\in GL(m,K), T\in GL(n,K): B = SAT^{-1}$.
+	 Sei $\mathcal{A} = (v_1, \ldots, v_n), T^{-1} = (a_{ij})$. Wir setzen für $j = 1, \ldots, n$:
+	 \[v_j' := a_{1j}v_1 + \ldots + a_{nj} v_n, \mathcal{A}' := (v_1', \ldots, v_n')\]
+	 Insbesondere ist
+	 \[v_j' = \Phi_{\mathcal{A}}(\cvec{a_{1j}; \vdots; a_{nj}}) = \Phi_{\mathcal{A}}(T^{-1}e_j) = (\Phi_{\mathcal{A}} \circ \reallywidetilde{T^{-1}})(e_j)\]
+	 Wegen $T^{-1} \in GL(n,K)$ ist $\reallywidetilde{T^{-1}}$ nach 15.6 ein Isomorphismus, $\Phi_{\mathcal{A}}$ ist ein Isomorphismus,
+	 das heißt $\Phi_{\mathcal{A}} \circ \reallywidetilde{T^{-1}}$ ein Isomorphismus $\implies \mathcal{A}'$ Basis von $K^n$. Nach Konstruktion
+	 ist $T^{-1} = T^{\mathcal{A}'}_{\mathcal{A}}$
+	 \[\implies B = SAT^{-1} = T_{\mathcal{B}'}^{\mathcal{B}} M_{\mathcal{B}}^{\mathcal{A}}(f) T_{\mathcal{A}}^{\mathcal{A}'} = M_{\mathcal{B}'}^{\mathcal{A}'}(f)\]
+  2. $\implies$ 3. Es gelte 2. Es ist
+	 \begin{align*}
+	 \Rang A &= \Rang \tilde A = \Rang \reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)} = \Rang(\Phi_{\mathcal{B}}^{-1} \circ f \circ \Phi_{\mathcal{A}}) = \dim \im (\Phi_{\mathcal{B}}^{-1} \circ f \circ \Phi_{\mathcal{A}}) \\
+	 &= \dim(\Phi_{\mathcal{B}}^{-1} \circ f)(K^n) = \dim f(K^n) = \dim \im f = \Rang f
+     \end{align*}
+	 Analog: \[\Rang(B) = \Rang(f) \implies \Rang(A) = \Rang(B)\]
+  3. $\implies$ 1. Sei $\Rang A = \Rang B = r$. Nach 15.10 existieren Basen $\mathcal{A}$ von $K^n$,
+	 $\mathcal{B}$ von $K^m$ mit
+	 \[M_{\mathcal{B}}^{\mathcal{A}}(\tilde A) = \begin{pmatrix} E_r & 0 \\ 0 & 0\end{pmatrix}, \Rang \tilde A = \Rang A = r\]
+	 \[\implies \begin{pmatrix} E_r & 0 \\ 0 & 0\end{pmatrix} = M_{\mathcal{B}}^{\mathcal{A}}(\tilde A) = \underbrace{T_{\mathcal{B}}^{(e_1, \ldots, e_m)}}_{\in GL(m, K)} \underbrace{M_{(e_1, \ldots, e_m)}^{e_1, \ldots, e_n}(\tilde A)}_{A} \underbrace{T^{\mathcal{A}}_{(e_1, \ldots, e_n)}}_{\in GL(n, K)}\]
+	 \[\implies \begin{pmatrix} E_r & 0 \\ 0 & 0\end{pmatrix} \sim A\]
+	 Analog:
+	 \[\begin{pmatrix} E_r & 0 \\ 0 & 0\end{pmatrix} \sim B \implies A \sim B\]
+  #+end_proof
+  #+ATTR_LATEX: :options [16.12]
+  #+begin_defn latex
+  $A, B\in M(n\times n, K)$. $A, B$ heißen *ähnlich* $\xLeftrightarrow{\text{Def}}$ \[\Exists S\in GL(n,K): B = SAS^{-1}\]
+  (Notation: $A\approx B$)
+  #+end_defn
+  #+ATTR_LATEX: :options [16.13]
+  #+begin_remark latex
+  Ähnlichkeit von Matrizen ist eine Äquivalenzrelation.
+  #+end_remark
+  #+begin_proof latex
+  Übung.
+  #+end_proof
+  #+ATTR_LATEX: :options [16.14]
+  #+begin_remark latex
+  $A, B \in M(n\times n, K), \mathcal{A}$ Basis von $K^n, f:K^n \to K^n$ lineare Abbildung mit $M_{\mathcal{A}}(f) = A$.
+  Dann sind äquivalent:
+  1. $A\approx B$
+  2. Es existiert eine Basis $\mathcal{B}$ von $K^n$ mit $M_{\mathcal{B}}(f)$ (das heißt $A,B$ beschrieben bezügliche geeigneter Basen denselben Endomorphismus)
+  #+end_remark
+  #+begin_proof latex
+  1. $\implies$ 2. analog zu 16.11 1. $\implies$ 2.
+  2. $\implies$ 1. Es gelte 2. Nach 16.8 existiert ein $S\in GL(n,K)$ mit $B = M_{\mathcal{B}}(f) = SAS^{-1} \implies A \simeq B$.
+  #+end_proof
+  #+begin_note latex
+  Einen möglichst enfachen Vertreter der Ähnlichkeitsklassen von $A$ zu finden, ist eine
+  schwierige Aufgabe ($\to$ LA2, Jordansche Normalform)
+  #+end_note

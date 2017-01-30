@@ -19,3 +19,4 @@
 #+INCLUDE: "linear_systems.org" :minlevel 1
 #+INCLUDE: "linear_systems_matrices.org" :minlevel 1
 #+INCLUDE: "basis_change.org" :minlevel 1
+#+INCLUDE: "determinants.org" :minlevel 1
