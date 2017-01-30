@@ -85,8 +85,8 @@
   #+end_thm
   #+begin_proof latex
   Bringe $A$ auf ZSF B nach Satz 10.11. Multipliziere die i-te Zeile für $i = 1, \ldots r$
-  mit $\frac{1}{b_{ij_i}}$ und annulliere dann die Einträge der $j_k$-ten Spalte oberhalb
-  des Pivotelements durch Substraktion geeigneter Vielfacher der $k$-ten Zeile.
+  mit $\frac{1}{b_{ij_i}}$ und annulliere dann die Einträge der $j_k$ -ten Spalte oberhalb
+  des Pivotelements durch Substraktion geeigneter Vielfacher der $k$ -ten Zeile.
   #+end_proof
   #+ATTR_LATEX: :options [14.8]
   #+begin_ex latex
@@ -161,7 +161,7 @@
 	 & & & & & & \\
 	 \end{pmatrix}
 	 #+end_equation
-	 Mit den Spalten $j_1, \ldots, j_r$ als die Spalten der Pivot-Elemente, $r = $ Zeilenrang$(A)$
+	 Mit den Spalten $j_1, \ldots, j_r$ als die Spalten der Pivot-Elemente, $r = $ Zeilenrang $(A)$
   2. Sei $B \in M(r \times (n - r), K)$, die aus $S$ durch Streichen der Spalten mit den Indizes
 	 $j_1, \ldots, j_r$ und der Zeilen mit den Idizes $r + 1, \ldots, m$ entsteht.
 	 Seinen $k_1 < k_2 < \ldots < k_{n - r}$ mit $\{1, \ldots, n\} = \{j_1, \ldots, j_r, k_1, \ldots, k_{n - 1}\}$

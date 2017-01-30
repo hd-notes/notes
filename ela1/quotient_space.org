@@ -67,7 +67,7 @@
   \[f^{-1}(\{w\}) = \begin{cases} u + \ker f & \text{falls $w\in \im f$ (hierbei $u\in f^{-1}(\{w\})$)} \\ \emptyset & \text{falls $w\not\in \im f$}\end{cases}\]
   Somit ist die Faser von $f$ über $w$ ein affiner UR von $V$ mit
   \[\dim f^{-1}(\{w\}) = \begin{cases} \dim \ker f = \dim V - \dim \im f & \text{falls $w\in \im f$} \\ -1 & \text{falls $w\not\in \im f$}\end{cases}\]
-  Insbesondere haben alle nichtlleren Fasern von $f$ dieselbe Dimesion.
+  Insbesondere haben alle nichtleeren Fasern von $f$ dieselbe Dimesion.
   #+end_thm
   #+begin_proof latex
   Falls $w\not\in \im f$, dann $f^{-1}(\{w\}) = \emptyset$. Im Folgenden sei $w\in \im f$. zu zeigen:
@@ -201,7 +201,7 @@
   #+begin_export latex
   \catcode`(=\active
   \catcode`)=\active
-  #+end_export 
+  #+end_export
   #+begin_proof latex
   Für $v\in V$ ist $(i \circ \bar f \circ \pi)(v) = (i\circ \bar f)(\bar v) = i(f(v)) = f(v)$
   #+end_proof

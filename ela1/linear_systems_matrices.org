@@ -133,9 +133,9 @@
   #+end_proof
   #+ATTR_LATEX: :options [15.8]
   #+begin_conc latex
-  $U\subseteq K^n$. Dannsind äquivalent:
+  $U\subseteq K^n$. Dann sind äquivalent:
   1. $U$ ist UVR von $K^n$
-  2. Es gib ein $m\in \mathbb{N}$ und ein $A\in M(m\times n,K)$, sodass $U = \Lös(A, 0)$
+  2. Es gibt ein $m\in \mathbb{N}$ und ein $A\in M(m\times n,K)$, sodass $U = \Lös(A, 0)$
   #+end_conc
   #+begin_proof latex
   1. $\implies$ 2. nach 13.9 existiert ein endlichdimensionaler K-VR und eine lineare Abbildung $f:K^n \to W$ mit $\ker f = U$.

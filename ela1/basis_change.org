@@ -110,7 +110,7 @@
   \catcode`(=\active
   \catcode`)=\active
   #+end_export
-  Die Trapeze sind kommutativ nach 16.1, das linke Dreiech nach 12.2, das rechte Dreiech trivialerweise. Damit kommutiert auch das äußere Rechteck, das heißt
+  Die Trapeze sind kommutativ nach 16.1, das linke Dreieck nach 12.2, das rechte Dreieck trivialerweise. Damit kommutiert auch das äußere Rechteck, das heißt
   \[\Phi_{\mathcal{C}}\circ \reallywidetilde{AB} = f\circ g\circ \Phi_{\mathcal{A}}\]
   \[\implies \reallywidetilde{AB} = \Phi_{\mathcal{C}}^{-1} \circ (f\circ g)\circ \Phi_{\mathcal{A}} = \reallywidetilde{M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)} \implies M_{\mathcal{C}}^{\mathcal{B}(f)}\cdot M_{\mathcal{B}}^{\mathcal{A}} = AB = M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)\]
   #+end_proof

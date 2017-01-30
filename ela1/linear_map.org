@@ -2,7 +2,7 @@
   In diesem Kapitel sei $K$ stets ein Körper, $U, V, W$ stets ein $K$ -VR.
   #+ATTR_LATEX: :options [12.1 Lineare Abbildung]
   #+begin_defn latex
-  $f: V\to W$ Abbildung. $f$ heißt $K$ -lineare Abbildung (Homomorphismus von K-VR, kurz lineare Abbildung) $xLeftrightarrow{\text{Def.}}$ Die folgende Bedingungen sind erfüllt:
+  $f: V\to W$ Abbildung. $f$ heißt $K$ -lineare Abbildung (Homomorphismus von K-VR, kurz lineare Abbildung) $\xleftrightarrow{\text{Def.}}$ Die folgende Bedingungen sind erfüllt:
   - (L1) $f(u + v) = f(u) + f(v) \Forall u,v\in V$
   - (L1) $f(\lambda v) = \lambda f(v) \Forall u,v\in V \Forall w\in V, \lambda \in K$
   #+end_defn
