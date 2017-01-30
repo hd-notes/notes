@@ -3,7 +3,7 @@
   Frage: Gegeben sei ein UVR $U = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ Wie bestimmt man effizient die Basis von $U$?
   #+ATTR_LATEX: :options [10.1]
   #+begin_defn latex
-  Eine $m\times n$-Matrix mit Einträgen aus $K$ ist eine Familie $(a_{11}, \ldots, a_{1n}, a_{21}, \ldots, a_{2n}, \ldots, a_{m1}, \ldots, a_{mn})$
+  Eine $m\times n$ -Matrix mit Einträgen aus $K$ ist eine Familie $(a_{11}, \ldots, a_{1n}, a_{21}, \ldots, a_{2n}, \ldots, a_{m1}, \ldots, a_{mn})$
   von $m n$ Elementen aus $K$, die wir in der Form
   \[(a_{ij})_{\substack{1\leq i \leq m \\ 1 \leq j \leq n}} = \begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & & \vdots \\ a_{m 1} & \ldots & a_{mn} \end{pmatrix} \tag{kurz $(a_{ij})$ wenn $m,n$ klar sind}\]
   schreiben. Die Menge aller $m\times n$ Matrizen mit Einträgen aus $K$ bezeichnen wir mit $M(m\times n, K)$.

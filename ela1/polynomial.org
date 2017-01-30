@@ -40,7 +40,7 @@
   1. Wir setzen $k:= \max\{m,n\}$
 	 \begin{align*}
 	 &\implies f + g = (a_k + b_k)t^k + \ldots + (a_1 + b_1)t + (a_0 + b_0) \\
-	 &\implies \deg(f + g) \leq k \tag{\text{beachte: Ex könnte $a_k + b_k = 0$ sein}}
+	 &\implies \deg(f + g) \leq k \tag{\text{beachte: Es könnte $a_k + b_k = 0$ sein}}
 	 \end{align*}
   2. Es sei $f g = a_n b_m t^{n + m} + \ldots + a_0 b_0$ und es ist $a_n b_m \neq 0$ da $K$ als Körper ein Integritätsbereich ist $\implies \deg(f g) = n + m$
   #+end_proof

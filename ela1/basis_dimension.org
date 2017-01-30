@@ -47,7 +47,7 @@
 	 $\implies$ Jeder UVR von $v_i$ der $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n$  enthält, enthält auch $v_i$ \\
 	 $\implies$ $\Lin((v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n)) = \Lin((v_1, \ldots, v_n)) = v$ \\
 	 $\implies$ $\mathcal{B}$ ist verkürzbar $\lightning$
-  3. $\implies$ 4.: Wir setzte 3. vor raus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
+  3. $\implies$ 4.: Wir setzten 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
 	 zu zeigen: $\mathcal{B}$ ist unverlängerbar linear unabhängig \\
 	 denn Insbesondere existiert für jedes $v\in \Lin((v_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1,\ldots, v_n)$ linear unabhängig.
 	 Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1, \ldots, v_n, v)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
@@ -127,7 +127,7 @@
   #+end_conc
   #+begin_proof latex
   1.
-	 - $V$ endlich erzeugt $\implies$ ex existiert eine endliche Basis $(v_1, \ldots, v_r)$ von $V$, sei $(w_i)_{i\in I}$ beliebige Basis von $V$. Falls $I$ unendlich, dann existiert $i_1, \ldots, i_{r + 1} \in I$, so dass $(w_{i_1} + \ldots + w_{i_{r + 1}})$
+	 - $V$ endlich erzeugt $\implies$ es existiert eine endliche Basis $(v_1, \ldots, v_r)$ von $V$, sei $(w_i)_{i\in I}$ beliebige Basis von $V$. Falls $I$ unendlich, dann existiert $i_1, \ldots, i_{r + 1} \in I$, so dass $(w_{i_1} + \ldots + w_{i_{r + 1}})$
 		linear unabhängig $\implies$ $r + 1 \leq r \lightning$
 	 - Sind $(v_1, \ldots, v_r), (w_1, \ldots, w_k)$ endliche Basen von $V$, dann folgt nach Austauschsatz $k \leq r$, sowie $r\leq k \implies r = k$
   2. Besitzt $V$ eine Basis endlicher Länge, dann ist diese auch ein endliches ES, das heißt $V$ endlich erzeugt $\lightning$

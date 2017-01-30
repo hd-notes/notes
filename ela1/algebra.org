@@ -167,7 +167,8 @@
 	 Für $\bar a,\bar b \in\frac{\mathbb{Z}}{n\mathbb{Z}}$ setzen wir $\bar a + \bar b = \overline{a + b}$
 	 Dann gilt $(\frac{\mathbb{Z}}{n\mathbb{Z}},+)$ ist eine abelsche Gruppe
 ***** Beweis
-	  1. Die Verknüpfung ist wohldefiniert: \\ Problem: Die Addition verwendet Vertreter von Restklassen. Es ist zum Beispiel in $\frac{\mathbb{Z}}{n\mathbb{Z}}: \bar 3 + \bar 4 = \overline{3 + 4} = \bar 7 = \bar 2$, aber man könnte auch Rechnen:
+	  1. Die Verknüpfung ist wohldefiniert: \\
+	   Problem: Die Addition verwendet Vertreter von Restklassen. Es ist zum Beispiel in $\frac{\mathbb{Z}}{n\mathbb{Z}}: \bar 3 + \bar 4 = \overline{3 + 4} = \bar 7 = \bar 2$, aber man könnte auch Rechnen:
 		 $\bar 3 + \bar 4 = \bar 8 + \bar 9 = \overline{8 + 9} = \overline{17} = \bar 2$ \\
 		 Wir müssen nachweisen, dass die Wahl der Vertreter keinen Einfluss auf das Ergebnis hat, das heißt die Verknüpfung ist "Vertreter unabhängig": \\
 		 Seien $a_1,a_2 ,b_1,b_2 \in\mathbb{Z},\overline{a_1} = \overline{a_2},\overline{b_1} = \overline{b_2}$
@@ -240,7 +241,7 @@
 	 \[\Forall a,b,c\in R: a\cdot(a + b) = a\cdot b + a\cdot c, (a+b)\cdot c = a\cdot c + b\cdot c\]
    Ein Ring heißt *kommutativ* $\xLeftrightarrow{\text{Def}}$ die Multiplikation ist kommutativ, das heißt $\Forall a,b\in R: a\cdot b = b\cdot a$
 *** Anmerkung
-	- ohne Klammerung gilt die Konvention "$\cdot$" vor "$+$", "$\cdot$" wird häufig weggelassen
+	- ohne Klammerung gilt die Konvention "$\cdot$" vor "$+$". Das Zeichen "$\cdot$" wird häufig weggelassen.
 	- das neutrale Element bezüglich "$+$" bezeichnen wir mit $0_R$ (Nullelement), das neutrale Element bezüglich "$\cdot$" mit $1_R$ (Einselement).
 	  Das zu $a\in R$ bezüglich "$+$" inverse Element bezeichnen wir mit $-a$,
 	  für $a + (-b)$ schreiben wir $a - b$. Existiert zu $a\in R$ ein Inverses bezüglich "$\cdot$", so bezeichnen wir dieses mit $a^{-1}$
