@@ -11,6 +11,7 @@
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 #+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 #+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
+#+LATEX_HEADER: \DeclareMathOperator{\erf}{erf}
 #+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
 # #+LATEX_HEADER: \usepackage{enumitem}
 # #+LATEX_HEADER: \renewcommand\labelenumi{\left(\roman*\right)}
