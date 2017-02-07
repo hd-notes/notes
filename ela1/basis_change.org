@@ -1,6 +1,6 @@
 * Basiswechsel
   In diesem Abschnitt seien $V, W$ endlich dimensionale K-VR. \\
-  Ziel: $f:V \to W$ lineare Abbildung, $\mathcal{A},\mathcal{A}'$ Basen von $V, $\mathcal{B}, \mathcal{B}'$ Basen von $W$. Wie hängen $M_{\mathcal{B}}^{\mathcal{A}}(f)$ und $M_{\mathcal{B}}^{\mathcal{A}}(f)$
+  Ziel: $f:V \to W$ lineare Abbildung, $\mathcal{A},\mathcal{A}'$ Basen von $V, \mathcal{B}, \mathcal{B}'$ Basen von $W$. Wie hängen $M_{\mathcal{B}}^{\mathcal{A}}(f)$ und $M_{\mathcal{B}}^{\mathcal{A}}(f)$
   zusammen?
 
   #+ATTR_LATEX: :options [16.1]

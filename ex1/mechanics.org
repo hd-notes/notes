@@ -113,8 +113,8 @@
 	 \[\v a = \dot v \v{e_t} + \frac{v^2}{\rho}\v{e_n}\]
 ***** TODO Skizze
 **** Relativbewegung
-	 - $S$-Laborsystem
-	 - $S'$-Bewegtes System
+	 - $S$ -Laborsystem
+	 - $S'$ -Bewegtes System
 	 - $\v u = (u, 0, 0) = \text{const}$ Geschwindigkeit von S' im System S
 	 - Punkt $P=(x,y,z)$ in $S$
 	 - Punkt $P'=(x',y',z')$ in $S'$

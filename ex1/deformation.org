@@ -247,7 +247,7 @@
    falls Temperatur $T = ~\text{const}$, siehe später
    #+end_defn
 *** Barometrische Höhenformel:
-	Flüssigkeiten: $p = \rho g h + p_0$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$)}$) \\
+	Flüssigkeiten: $p = \rho g h + p_0$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$)) \\
 	Gase: Hohe Kompressibilität! Das heißt Dichteänderungen müssen berücksichtigt werden. \\
 	Frage: $p(h) = ?, \rho(h) = ?$ \\
 	Es gilt:

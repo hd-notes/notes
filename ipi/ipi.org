@@ -256,7 +256,7 @@
 	Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
 	Grundidee:
 	1. berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
-	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$-Notation* und ihren Verwandten
+	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$ -Notation* und ihren Verwandten
 	   Gegeben: $f(n)$ und $g(n)$
 	   1. $g(n)$ ist eine asymptotische (für große $n$) obere Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
 		  und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in O(g(n))$
@@ -395,7 +395,7 @@
 **** Multiplikation
 	 Neue Operationen: $\ll$  und $\gg$ (left und right shift). Verschiebt die Bits um $k$ Positionen nach
 	 links oder rechts. Die herausgeschobenen Bits werden vergessen und auf der anderen Seite durch
-	 $0$-bits ersetzt.
+	 $0$ -bits ersetzt.
 
 	 #+begin_src cpp
 	 // m = 8
@@ -409,12 +409,12 @@
 	 \end{align*}
 	 #+end_thm
 	 Operation \amp und |: bitw4eise und beziehungsweise oder-Verknüpfung (nicht verwechseln mit \amp\amp und || für logische Operationen)
-	 m = 8:
+	 m = 8: \\
 	 $10110011 \amp 1 = $
 	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-	 (testet, ob in linker Zahl Bit 0 gesetzt ist)
+	 (testet, ob in linker Zahl Bit 0 gesetzt ist) \\
 	 $10110011 \mid 1 =$
 	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
@@ -481,7 +481,7 @@
    übernimmt HW-Implementation. Ziele der Definition von reellwertigen Typen:
    - hohe Genauigkeit (viele gültige Nachkommastellen)
    - Zahlen sehr unterschiedlicher Größenskalen (zum Beispiel Durchmesser eines Proton $=\SI{2e-15}{\meter}$ vs. Durchmesser des sichtbaren Universum $\SI{1e27}{\meter}$)
-	 mit natürlichen Zahlen bräuchte man $> 150$bit
+	 mit natürlichen Zahlen bräuchte man $> 150$ bit
    elegante Lösung: halb-logarithmische Darstellung ("floating point"). Datentyp ist aus 3 natürlichen Zahlen zusammengesetzt (aber alles von der CPU gekapselt)
    - $S$ (1-bit): Vorzeichen, 0 = "$+$", 1 = "-"
    - $M$ (m-bit): Mantisse: Nachkommastellen
@@ -1736,7 +1736,7 @@
    * erster Anstrich
    * zweiter Anstrich
    #+end_example
-   - lesbarer als Text mit <$\ldots$>
+   - lesbarer als Text mit < $\ldots$ >
    - einfacher zu schrieben
    - wird vom Markdown-Compiler nach HTML konvertiert
    - weniger leistungsfähig (weniger Formatierungsoptionen)

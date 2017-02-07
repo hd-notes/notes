@@ -115,7 +115,7 @@
 	betrachte $\frac{\si{\planckbar} c}{\si{\MeV\meter}}=\num{197.33e-15}$
 *** natürliches Einheitensystem
 	$h = c = 1$
-	In diesem Fall ist $\si{1\per\mega\electronvolt} = \SI{197.44}{\femto\meter}
+	In diesem Fall ist $\si{1\per\mega\electronvolt} = \SI{197.44}{\femto\meter}$
 	In diesem Einheitensystem ist die Einheit von $[Energie] = [Masse] = [L\ddot{a}nge]^-1 = [Zeit]^-1$
 
 ** Endliche Messgenauigkeit
@@ -469,7 +469,7 @@ plot exp(x), exp(-x)
 ** Graph der Umkehrfunktion
    1. Gegebenenfalls Einschränkung von $D_f$, sodass eine bijektive Funktion vorliegt
    2. Auflösen der Gleichung $y=f(x)\implies x=f^-1(y)$
-   3. Umbenennung der Variablen: die unabhängige Variable $y$ wird wieder $x$ genannt, die abhängige wieder $y$: $y=f^{-1}(x)
+   3. Umbenennung der Variablen: die unabhängige Variable $y$ wird wieder $x$ genannt, die abhängige wieder $y$: $y=f^{-1}(x)$
 *** Beispiel $y=x^2$
 	1. Einschränkung $D_f$ auf $x\geq 0$
 	2. $y=x^2, x\geq 0 \iff x = \sqrt{y}$
@@ -614,7 +614,7 @@ plot exp(x), exp(-x)
 	\[\delta_{kl}:=\begin{cases}1&k=l\\0&k\neq l\end{cases}\]
 	Entspricht Komponenten der Einheitsmatrix
 	Symmetrie gegen Vertauschung der Indizes $\delta_{kl}=\delta{lk}
-	Spur: $\delta_{kk} = \underbrace{\sum_{k=1}^3 \delta_{kk}=3}_{\text{Einsteinsche Summenkonvention}}$
+	Spur: \[\delta_{kk} = \underbrace{\sum_{k=1}^3 \delta_{kk}=3}_{\mathclap{\text{Einsteinsche Summenkonvention}}}\]
 *** Komponentendarstellung des Skalarprodukts
 	\[\vec{a}=\sum_{k=1}^3 a_k \vec{e_k}=\underbrace{a_k \vec{e_k}}_{\text{Einsteinsche Summenkonvention}}\]
 	\[\vec{b}=\sum_{k=1}^3 b_k \vec{e_k}=\underbrace{b_k \vec{e_k}}_{\text{Einsteinsche Summenkonvention}}\]

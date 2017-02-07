@@ -165,7 +165,7 @@
    #+begin_defn latex
    Die Funktion $f:D\to\mathbb{R}$ hat in einem Punkt $x_0 \in D$ ein *globales Extremum* (Minimum oder Maximum), wenn gilt
    \[f(x_0) \leq f(x), x\in D \vee f(x_0) \geq f(x) \Forall x \in D\]
-   Es handelt sich um ein *lokales Extremum* (Minimum oder Maximum), wenn auf einer $\delta$-Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
+   Es handelt sich um ein *lokales Extremum* (Minimum oder Maximum), wenn auf einer $\delta$ -Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
    gilt $f(x_0) \geq f(x) \Forall x\in U_\delta(x_0) \vee f(x_0) \leq f(x) \Forall x\in U_\delta(x_0)$
    Ein Extremum (globales oder lokales) heißt strikt, wenn es das isolierteste Punkt in $D$ beziehungsweise in $U_\delta(x_0)$ ist, das heißt $f(x_0) > f(x) \vee f(x_0) < f(x)$
    #+end_defn
@@ -456,7 +456,7 @@
    Folglich kann die Funktion $\Delta_n$ zu einer auf $(a, b)$ stetigen Funktion fortgesetzt werden. Für diese gilt
    \[f(x) - f(x_0) = \Delta_n(x)(x - x_0)^n, \Delta_n(x_0) = \frac{f^{(n)}(x_0)}{n!}\]
    Falls $\Delta_n(x_0) > 0$, existiert wegen der Stetigkeit von $\Delta_n$ eine $\eps$ -Umgebung, $\eps > 0$,
-   von $x_0$, in der $\Delta_n > 0$. Auf dieser $\eps$-Umgebung gilt daher für gerades $n$:
+   von $x_0$, in der $\Delta_n > 0$. Auf dieser $\eps$ -Umgebung gilt daher für gerades $n$:
    \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \implies f(x) > f(x_0)\]
    $\implies f(x_0)$ ist ein lokales Minimum. Analog argumentieren wir für $\Delta_n(x_0) < 0$.
    Für ungerades $n$ dagegen \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \begin{cases} > 0 & x > x_0 \\ < 0 & x < x_0 \end{cases}\]

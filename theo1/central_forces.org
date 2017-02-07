@@ -77,7 +77,7 @@
    (Nach allgemeines $V(r)$). Wir wissen bereits:
    \[\v L = \v r \times \v p = ~\text{const}, \v p = m\dot{\v r}, \v r = ~\text{Koordinaten des Teilchens}\]
    Es gilt $\v L \perp \v r \wedge \v L =~\text{const} \implies$ Bewegung in gester Ebene. Also
-   ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene. Außerdem:
+   ohne Beschränkung der Allgemeinheit ist die Bewegung in der $(1-2)$ -Ebene. Außerdem:
    Problem rotationssymmetrisch. \\
    $\implies$ angemessene Beschreibung: Polarkoordinaten (Winkel und Rotation) \\
    naiv: \[m \underarrow[\ddot{\v x}]{durch $r,\phi$ ausdrücken} = \v F(\v x)\]

@@ -96,7 +96,7 @@
    #+end_lemma
    #+begin_proof latex
    $(\impliedby)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
-   $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
+   $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$ -Kriterium gälte nicht,
    das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Widerspruch zu
    \[\lim_{x \to x_0} f(x) = f(x_0)\]
    #+end_proof

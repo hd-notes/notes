@@ -161,7 +161,7 @@
 	 & & & & & & \\
 	 \end{pmatrix}
 	 #+end_equation
-	 Mit den Spalten $j_1, \ldots, j_r$ als die Spalten der Pivot-Elemente, $r = $ Zeilenrang $(A)$
+	 Mit den Spalten $j_1, \ldots, j_r$ als die Spalten der Pivot-Elemente, $r =$ Zeilenrang $(A)$
   2. Sei $B \in M(r \times (n - r), K)$, die aus $S$ durch Streichen der Spalten mit den Indizes
 	 $j_1, \ldots, j_r$ und der Zeilen mit den Indizes $r + 1, \ldots, m$ entsteht.
 	 Seinen $k_1 < k_2 < \ldots < k_{n - r}$ mit $\{1, \ldots, n\} = \{j_1, \ldots, j_r, k_1, \ldots, k_{n - 1}\}$
@@ -177,13 +177,13 @@
   Setzen wir
   \[\cvec{x_{k_1}; \vdots; x_{k_{n - r}}} = e_i \in K^{n - r}\]
   für $i = 1, \ldots, n- r$, dann ist
-  \[\cvec{x_{j_1}}; \vdots; x_{j_r}\]
-  die i-te spalte von $-B$. Das heißt auf diese Weise erhalten wir $w_1, \ldots, w_{n - 1}$.
+  \[\cvec{x_{j_1}; \vdots; x_{j_r}}\]
+  die i-te Spalte von $-B$. Das heißt auf diese Weise erhalten wir $w_1, \ldots, w_{n - 1}$.
   $(w_1, \ldots, w_{n - r})$ ist nach Konstruktion ein ES von $\Lös(A, 0) = \Lös(S, 0)$ wegen
   \[K^{n - r} = \Lin((e_1, \ldots, e_{n - r}))\]
   $(w_1, \ldots, w_{n - r})$ ist linear unabhängig, denn: Seinen $\lambda_1,\ldots, \lambda_{n - r} \i K$ mit
   \[\lambda_1 w_1 + \ldots + \lambda_{n - r} w_{n - r} = 0\]
-  Für $i = 1, \ldots, n - r$ lautet Eintrag in $k_1$-ter Zeile:
+  Für $i = 1, \ldots, n - r$ lautet Eintrag in $k_1$ -ter Zeile:
   \[\lambda_1 \underbrace{w_{1k_i}}_{= 0} + \ldots + \lambda_{i - 1}\underbrace{w_{i - 1,k_i}}_{ = 0} + \lambda_i \underbrace{w_{i,k_i}}_{= 1} + \lambda_{i + 1}\underbrace{w_{i + 1, k_i}}_{= 0} + \ldots + \lambda_{n - r}\underbrace{w_{n - r, k_i}}_{ = 0} = 0\]
   \[\implies \lambda_i \cdot i = 0 \implies \lambda_i = 0, i = 1,\ldots,n - r\]
   #+end_proof

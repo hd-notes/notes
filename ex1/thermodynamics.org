@@ -271,9 +271,9 @@
    Kalorie: $1$ Kalorie ist die Wärme, mit der man $\SI{1}{\gram}$ Wasser um $\SI{1}{\degreeCelsius}$ erwärmen kann.
 
    Begiffe:
-   - $c = $ spezifische Wärmekapazität, spezifische Wärme
-   - $C = cm = $ Wärmekapazität einer Masse $m$
-   - $c_m = c_{mol} = c m_{mol} = $  molare Wärmekapazität, spezielle Molwärme
+   - $c =$ spezifische Wärmekapazität, spezifische Wärme
+   - $C = cm =$ Wärmekapazität einer Masse $m$
+   - $c_m = c_{mol} = c m_{mol} =$  molare Wärmekapazität, spezielle Molwärme
    \[Q = c_m n \Delta T\]
 
    Jetzt: Latente Wärme. Beobachtung: Temperatur eines Körpers ändert sich linear mit der
@@ -339,7 +339,7 @@
    \d W &> 0 ~\text{für}~ \d V < 0
    \implies W &= -\int_{v_1}^{v_2}p \d V
    \end{align*}
-   $pV$-Diagramm: \\
+   $pV$ -Diagramm: \\
    $pV = n R T$
    - Isotherme Zustandsänderung: $T = ~\text{const}$
 	 - $T = ~\text{const}$
@@ -577,7 +577,7 @@
 	\Delta W &= \Delta Q_1 - \Delta Q_2 \\
 	\implies \Delta Q_y &< \Delta Q_2
 	\end{align*}
-	$\implies$ Wärme von Kalt nach Warm ohne Arbeit $\lightning
+	$\implies$ Wärme von Kalt nach Warm ohne Arbeit $\lightning$
 ** Entropie
    Zentraler Begriff der Thermodynamik!
    - Kriterium für Reversibel und Irreversibel
@@ -706,7 +706,7 @@
 	\[T_2 = \SI{273.16}{\kelvin} (1 - \eta), \eta = 1 \implies T_2 = \SI{0}{\kelvin}\]
     #+ATTR_LATEX: :options [Thermodynamische Temperaturskala]
     #+begin_defn latex
-	Ein Kelvin ist der $273.16$ste Teil der thermodynamischen Temperatur des Tripelpunkt des Wassers
+	Ein Kelvin ist der $273.16$ ste Teil der thermodynamischen Temperatur des Tripelpunkt des Wassers
     #+end_defn
 *** Dritter Hauptsatz
 	Betrachte Kältemaschine:
