@@ -305,7 +305,7 @@
    #+end_thm
    #+begin_proof latex
    Seien $x_0 \in D$ und $\eps > 0$ gegeben. Zu zeigen:
-   \[\Exists \delta_\eps > 0: \Forall x \in D \abs{x - x_0} < \delta_\eps \implies \abs{f(x) - f(x_0)} < \eps\]
+   \[\Exists \delta_\eps > 0: \Forall x \in D \abs{x - x_0} < \delta_{\eps} \implies \abs{f(x) - f(x_0)} < \eps\]
    Wegen der gleichmäßigen Konvergenz von $(f_n)_{n\in\mathbb{N}}$:
    \[\Exists x\in \mathbb{N} \Forall x\in D: \abs{f_n(x) - f(x)} < \frac{1}{3} \eps\]
    Aus Stetigkeit von $f_n$:
