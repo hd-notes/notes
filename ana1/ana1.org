@@ -368,3 +368,210 @@
    Aufgrund des Fundamentalsatzes gilt
    \[\int_{a}^{b}f(\phi(y))\phi'(y)\d y = \int_{a}^{b}(F\circ \phi)'(y)\d y = F\circ\phi(y)\big|_a^b = (F\circ \phi)(b) - (F\circ \phi)(a) = F(\phi(b)) - F(\phi(a)) = \int_{\phi(a)}^{\phi(b)}f(x) \d x\]
    #+end_proof
+** Uneigentliche Integrale
+   Wir wollen das Konzept des (bestimten) Riemann-Integrals für Funktionen auf unbeschränkten Intervallen mit Singularitäten ausdehnen. Solche Integrale werden *uneigentlich* genannt.
+*** Uneigentliche Integrale auf beschränkten Intervallen
+   Wir nennen eine Funktion auf deinem endlichen, halboffenen Interball $\string(a, b]$ "integrierbar", wenn sie auf jedem abgeschlossenen Teilintervall $[a', b] \subset \string(a,b]$ Riemann-integrierbar ist.
+   #+ATTR_LATEX: :options [5.25 Uneigentliches Riemann-Integral 1]
+   #+begin_thm latex
+   Sei $f:\string(a,b]\to \mathbb{R}$ eine auf dem halboffenen Interball $\string(a,b]$ aber nicht auf dem Abschluß $[a,b]$ integrierbare Funktion. Existiert für jede Folge von Punkten $a_n \in \string(a,b]$
+   der Limes
+   \[\int_{a}^{b}f(x) \d x := \lim_{a_n \downarrow a} \int_{a_n}^{b}f(x) \d x\]
+   so ist dieser unabhängig von der Wahl der Folge $(a_n)_{n\in\mathbb{N}}$ und heißt das "uneigentliche Integral" von $f$ über $[a,b]$
+   #+end_thm
+   #+begin_proof latex
+   Ist $(a'_n)_{n\in\mathbb{N}}$ eine zweite Folge mit
+   \[\lim_{a'_n \downarrow a} \int_{a'_n}^{b} f(x) \d x = A' \]
+   so konvergieren gemäß Vorraussetzung auch die Integrale zu der zusammengesetzten Folge $\{a_1, a'_1, \ldots, a_n, a'_n, \ldots\}$ gegen den Limes $A''$. Da aber
+   Teilfolgen gegen denselben Limes konvergieren wie die Gesamtfolge muss $A'' = A'$ sein. Also konvergieren alle Integralfolgen gegen den selben Limes
+   #+end_proof
+   #+ATTR_LATEX: :options [5.26]
+   #+begin_lemma latex
+   Sei $f:\string(a,b]\to\mathbb{R}$ auf $\string(a,b]$ aber nicht auf $[a,b]$ intergrierbar. Existiert dann das uneigentliche Integral von $\abs{f}$ über $[a,b]$, so existiert auch das uneigentliche
+   Integral von $f$ über $[a,b]$ und
+   \[\abs{\int_{a}^{b}f(x) \d x} \leq \int_{a}^{b} \abs{f(x)} \d x\]
+   #+end_lemma
+   #+begin_proof latex
+   Für $\eps > 0, \eps < b - a$ schreiben wir
+   \[\int_{a + \eps}^{b} f(x) \d x = \int_{a + \eps}^{b} \frac{\abs{x} + f(x)}{2} \d x - \frac{a + \eps}{b} \frac{\abs{f(x)} - f(x)}{2} \d x\]
+   Die Integrale rechts sind für $\eps \to 0$ nach Vorraussetzung gleichmäßig beschränkt und wegen der Nichtnegativität des Integranden jeweils monoton wachsend.
+   \[\abs{\int_{a + \eps}^{b} \frac{\abs{f(x)} + f(x)}{2} \d x} + \abs{\int_{a + \eps}^{b} \frac{\abs{f(x)} - f(x)}{2} \d x} \leq 2 \int_{a + \eps}^{b}\abs{f(x)} \d x \leq 2 \int_{a}^{b}\abs{f(x)}\d x\]
+   Folglich konvergieren die Integrale für $\eps \to 0$. Damit hat das linke Integral für $\eps \to 0$ einen Limes, das heißt $f$ besitzt ein uneigentliches Integral
+   #+end_proof
+   #+begin_remark latex
+   Die Umkehrung der letzten Aussage ist nicht richtig (wie bei Reihen).
+   #+end_remark
+   #+ATTR_LATEX: :options [5.27 (nicht existierendes uneigentliches Integral)]
+   #+begin_ex latex
+   \[\int_{a + \eps}^{b} \frac{\d x}{x - a} = \ln(b - a) - \ln(\eps) \xrightarrow{\eps \to 0} \infty\]
+   das heißt das Uneigentliche Integral über $[a, b]$ existiert nicht. \\
+   Im Fall $\mu \neq 1$ gilt
+   \[\int_{a + \eps}^{b} \frac{\d x}{(x - a)^\mu} = \frac{1}{1 - \mu} \frac{1}{(x - a)^{\mu - 1}}\big|_{a + \eps}^{b} = \frac{1}{1 - \mu}(\frac{1}{(b - a)^{\mu - 1}} - \frac{1}{(-\eps)^{\mu - 1}})\]
+   Für $0 < \mu < 1 \wedge \mu \geq 1$ existiert das uneigentliche Integral nicht.
+   #+end_ex
+*** Uneigentliche Integrale auf unbeschränkten Intervallen
+	Wir nennen einen Funktion auf $[a,\infty\string)$ *lokal integrierbar*, wenn sie auf jedem abgeschlossenem Teilintervall $[a, \tilde b] \subset [a, \infty\string)$ Riemannintegrierbar ist.
+	#+ATTR_LATEX: :options [5.28 Uneigentliches Riemann-Integrale 2]
+	#+begin_thm latex
+	Sei $f:[a,\infty\string) \to \mathbb{R}$ eine lokal integrierbare Funktion. Existiert für jede Folge
+	$b_n \in [a,\infty\string)$ der Limes
+	\[\lim_{b_n \to\infty} \int_{a}^{b_n}f(x) \d x =: \int_{a}^{\infty}f(x) \d x\]
+	so ist dieser unabhängig von der Wahl der Folge $(b_n)_{n\in\mathbb{N}}$ und heißt das uneigentliche Integral von $f$ über $[a,\infty\string)$
+	#+end_thm
+	#+begin_proof latex
+	Analog wie Beweis von Satz 5.25
+	#+end_proof
+	#+ATTR_LATEX: :options [5.29]
+	#+begin_lemma latex
+	Sei $f:[a,\infty\string) \to \mathbb{R}$ lokal integrierbar. Existiert das uneigntliche Integral von $\abs{f}$ über $[a,\infty\string)$, so existiert auch das uneigentliche Integral von
+	$f$ über $[a, \infty\string)$ und
+	\[\abs{\int_{a}^{\infty}f(x) \d x} \leq \int_{a}^{\infty}\abs{f(x)} \d x\]
+	#+end_lemma
+	#+begin_proof latex
+	Analog zu Satz 5.26
+	#+end_proof
+	#+ATTR_LATEX: :options [5.30 Konvergenzkriterium für uneigentliche Integrale]
+	#+begin_thm latex
+	Sei $f:[a, \infty\string) \to \mathbb{R}$ in $[a,\infty\string)$ integrierbar mit
+	\[\sup_{x\geq a}\abs{\int_{a}^{x}f(x) \d \xi} = \mu <\infty\]
+	Ferner sei $g:[a,\infty\string) \to \mathbb{R}$ differenzierbar und monoton gegen Null fallend. Dann existert das uneigentliche Integral
+	\[\int_{a}^{\infty}f(x) g(x) \d x = \lim_{x\to\infty} \int_{a}^{x}f(\xi)g(\xi)\d \xi\]
+	#+end_thm
+	#+begin_proof latex
+	Mit $f$ und $g$ ist auch das Produkt $fg$ in $[a,\infty\string)$ lokal integrierbar.
+	\[F(x) = \int_{a}^{x}f(\xi) \d \xi\]
+	ist die Stammfunktion von $f$. Für $a < x < \infty$ erhalten wir durch partielle Integration
+	\[\int_{a}^{x}f(\xi)g(\xi)\d \xi = F(\xi)g(\xi)\big|_a^x - \int_{a}^{b}F(\xi)g'(\xi)\d \xi\]
+	Sei $\eps < 0$ beliebig. Dann gibt es ein $\beta_\eps > a$, sodass
+	\[g(x) < \frac{\eps}{2\mu}, x\geq \beta_\eps\]
+	Für beliebige $\beta \geq \alpha \geq \beta_\eps$ folgt damit wegen $g' \leq 0$
+	\[\abs{\int_{\alpha}^{\beta}F(\xi)g'(\xi)\d \xi} \leq \mu \int_{\alpha}^{\beta}\abs{g'(\xi)}\d \xi = - \mu \int_{\alpha}^{\beta}g'(\xi)\d \xi = - \mu g(\xi)\big|_\alpha^\beta \leq \eps\]
+	\[\int_{a}^{x}F(\xi)g'(\xi)\d \xi\] für $x \to \infty$ hat einen Limes nach dem Cauchy-Kriterium
+	\[\lim_{x\to\infty} \int_{a}^{x}f(\xi)g(\xi)\d \xi = \underbrace{\lim_{x\to\infty} F(x)g(x)}_{= 0} - \underbrace{F(a)}_{= 0}g(a) - \int_{a}^{\infty}F(\xi)g'(\xi)\d \xi < \infty\]
+	liefrt die Behauptung
+	#+end_proof
+	#+ATTR_LATEX: :options [5.31]
+	#+begin_thm latex
+	Es sei $f:[n_0, \infty\string) \to \mathbb{R}$ eine stetige, positive, monoton fallende Funkton. Dann gilt
+	\[\sum_{k = n_0}^{\infty}f(k) < \infty \iff \int_{n_0}^{\infty}f(x)\d x < \infty\]
+	#+end_thm
+	#+begin_proof latex
+	$(\implies)$: Aus Monotonie von $f$ gilt $\Forall n \in \mathbb{N}$ mit $n > n_0$
+	\[\int_{n_0}^{n + 1}f(x) \d x = \sum_{k = n_0}^{n} \int_{k}^{k + 1}f(x) \d x \leq \sum_{k = n_0}^{n} f(k) \leq \underbrace{\sum_{k = n_0}^{\infty}f(k)}_{< \infty} \implies \int_{n_0}^{\infty}f(x) \d x < \infty\]
+	$(\impliedby)$: Für alle $n\geq n_0$
+	\[\sum_{k = n_0}^{n} f(k) = f(n_0) + \sum_{k = n_0}^{n - 1} \leq f(n_0 + 1) \leq f(n_0) + \sum_{k = n_0}^{n - 1}\int_{k}^{k + 1}f(x)\d x \leq \int_{n_0}^{\infty}f(x) \d x < \infty\]
+	#+end_proof
+	#+ATTR_LATEX: :options [5.32]
+	#+begin_ex latex
+	1. Es gilt
+	   \[\int \frac{\d x}{x\ln^2(x)} = - \frac{1}{\ln(x)} \implies \int_{2}^{\infty} \frac{\d x}{x\ln^2 x} = \frac{1}{\ln(2)}\]
+	   $f(x) = \frac{1}{x\ln^2 x}$ ist auf $[2,\infty\string)$ positiv und monoton fallend $\implies$
+	   \[\sum_{k = 2}^{\infty} \frac{1}{k\ln^2 k} < \infty\]
+	2. Aus dem Satz 5.30 folgt die Existenz von Integralen
+	   \[\int_{0}^{\infty} \frac{\sin x}{x}\d x, \int_{0}^{\infty}\frac{\cos x}{x} \d x\]
+	   mit $f(x) := \sin x, g(x) := \frac{1}{x}$ (beziehungsweise $f(x) := \cos x$). Ebenso bekommen wir Existenz von
+	   \[\int_{2}^{\infty}\frac{\sin x}{\ln x} \d x, \int_{2}^{\infty}\frac{\sin x}{\ln(\ln(x))} \d x\]
+	#+end_ex
+** Kurvenlänge
+** Integration und Grenzprozesse
+   Frage:
+   \[\int_{a}^{b} \lim_{n\to\infty} f_n(x) \d x \overset{?}{=} \lim_{n\to\infty} \int_{a}^{b}f_n(x) \d x\]
+   Patologisches Beispiel:
+   \begin{align*}
+   f_n(x) &:= n x e^{-n x^2} \\
+   \lim_{n\to\infty} f_n(x) &= 0 \\
+   \int_{0}^{1}\lim_{n\to\infty} f_n(x) \d x &= 0 \\
+   \lim_{n\to\infty} \int_{0}^{1}f_n(x) \d x &= \lim_{n\to\infty} (-\frac{1}{2} e^{-n x^2}\big|_0^1) = \lim_{n\to\infty} (-\frac{1}{2}e^{-n} + \frac{1}{2}) = \frac{1}{2}
+   \end{align*}
+   #+ATTR_LATEX: :options [3.34 Gleichmäßige Konvergenz]
+   #+begin_thm latex
+   Die Folge $(f_n)_{n\in\mathbb{N}}$ stetiger (und Riemann-integrierbarer) Funktionen $f_n:I=[a,b]\to\mathbb{R}$ konvergiere gleichmäßig gegen eine
+   Funktion $f:I\to\mathbb{R}$. Dann ist die Grenzfunktion ebenfalls stetig (und Riemann-integrierbar), und es gilt:
+   \[\lim_{n\to\infty} \int_{a}^{b}f_n(x) \d x = \int_{a}^{b}\lim_{n\to\infty} f_n(x) \d x\]
+   #+end_thm
+   #+ATTR_LATEX: :options [5.35]
+   #+begin_thm latex
+   Für eine Folge stetiger Funktionen $f_k:I\to\mathbb{R}, k \in\mathbb{N}$, konvergiere die
+   Reihe
+   \[\sum_{k = 1}^{\infty}f_k\]
+   auf dem Intervall $I = [a,b]$ gleichmäßig. Dann stellt die Reihe eine integrierbare Funktion dar, und
+   \[\int_{a}^{b} \sum_{k = 1}^{\infty}f_k(x) \d x = \sum_{k = 1}^{\infty}\int_{a}^{b}f_k(x) \d x\]
+   #+end_thm
+   #+begin_proof latex
+   Aus Stetigkeit von $f_k$ sind auch alle Partialsummen stetig und damit integrierbar. Gleichmäßige
+   Konvergenz der Partialsummen impliziert, dass die Reihe eine stetige Funktion und damit
+   integrierbar ist. Es gilt
+   \[\int_{a}^{b}\sum_{k = 1}^{\infty} f_k(x) \d x = \sum_{k = 1}^{n}\int_{a}^{b}f_k(x) \d x + \int_{a}^{b}\sum_{k = n + 1}^{\infty}f_k(x) \d x\]
+   Gleichmäßige Konvergenz der Reihe $\implies$
+   \[\Forall \eps > 0 \Exists n_\eps \in \mathbb{N}: \Forall n \geq n_\eps: \abs{\int_{a}^{b} \sum_{k = n + 1}^{\infty}f_k(x) \d x} \leq \int_{a}^{b} \eps \d x = \eps(b - a)\]
+   \[\implies \abs{\int_{a}^{b} \sum_{k = 1}^{\infty} f_k(x) \d x - \sum_{k = 1}^{n} \int_{a}^{b} f_k(x) \d x} \xrightarrow{n \to \infty} 0\]
+   #+end_proof
+   #+ATTR_LATEX: :options [5.36]
+   #+begin_thm latex
+   Die Potenzreihe
+   \[\sum_{k = 0}^{\infty} c_k(x - x_0)^k\]
+   habe den Konvergenzradius $\rho > 0$, sie stellt also auf dem Intervall $I = (x_0 - \rho, x_0 + \rho)$ eine
+   stetig Funktion dar. Deren Stammfunktion erhält man duch gliedweise Integration und diese hat denselben Konvergenzradius $\rho$
+   \[\int \sum_{k = 0}^{\infty}c_k(y - x_0)^k \d x = \sum_{k = 0}^{\infty} \frac{c_k}{k + 1}(x - x_0)^{k + 1} + c\]
+   #+end_thm
+   #+begin_proof latex
+   Sei $\abs{x - x_0} \leq R < \rho$ und $eps > 0$ beliebig. Gleichmäßige Konvergenz der Reihe auf dem Intervall $[x_0 - R, x_0 + R]$
+   impliziert $\Forall n \geq n_\eps \in\mathbb{N}$
+   \[\abs{\sum_{k = n + 1}^{\infty}c_k(x - x_0)^k} \leq \sum_{k = n + 1}^{\infty} \abs{c_k}R^k < \eps\]
+   Ferner,
+   \[\int_{x_0}^{x} \sum_{k = 1}^{\infty}c_k(y - x_0)\d y = \sum_{k = 0}^{\infty} \int_{x_0}^{x}c_k(y - x_0) \d y = \sum_{k = 0}^{\infty}\frac{c_k}{k + 1}(x - x_0)^{k + 1}\tag*{\qedhere}\]
+   #+end_proof
+   #+begin_remark latex
+   Der Satz 5.34 gilt auch für Folgen von uneigentlichen Integralen auf beschränkten Intervallen. Bei uneigentlichen Integralen auf unbeschränkten Gebieten reicht
+   die gleichmäßige Konvergen der Folge im allgemeinen nicht.
+   zum Beispiel:
+   \[f_n(x) := \begin{cases} \frac{1}{n} & 0 \leq x \leq n \\ 0 & x > n\end{cases}\]
+   $f_n \xrightarrow{\text{gleichmäßig}} 0$ auf $I = [0, \infty\string)$, aber
+   \[\int_{0}^{\infty} \lim_{n\to\infty} f_n(x) \d x = 0 \neq \lim_{n\to\infty} \int_{0}^{\infty} f_n(x= \d x = 1)\]
+   #+end_remark
+   #+ATTR_LATEX: :options [5.37 Monotone Konvergenz]
+   #+begin_thm latex
+   Die Folge $(f_n)_{n\in\mathbb{N}}$ von auf dem Intervall $I = [a,b\string)$ oder $I = [a,\infty\string)$ (uneigentlich) integrierbaren Funktionen $f_n:I\to \mathbb{R}$ konvergiere
+   punktweise gegen eine Funktion $f:I\to \mathbb{R}$. Ist die Grenzfunktion $f$ ebenfalls (uneigentlich) integrierbar und sind
+   Funktionen $f_n$ gleichmäßig beschränkt durch eine auf $I$ (uneigentlich) integrierbare Funktion $g:I\to \mathbb{R}$, das heißt
+   \[\abs{f_n}(x) \leq g(x), x\in I\]
+   so gilt
+   \[\lim_{n\to\infty} \int_{a}^{b}f_n(x) \d x = \int_{a}^{b} \lim_{n\to\infty} f_n(x) \ dx\]
+   Beweis in Analysis 3.
+   #+end_thm
+   #+ATTR_LATEX: :options [5.38 Nullmenge]
+   #+begin_defn latex
+   Eine Teilmenge $M\subset \mathbb{R}$ heißt Nullmenge (Lebesque Nullmenge)
+   wenn es zu jedem $\eps > 0$ höchstens abzählbar unendlich viele Intervalle $I_1, \I_2, \ldots$ gibt sodass
+   \[M \subseteq \bigcup_k I_k \quad \sum_{k} \abs{I_k} \leq \eps\]
+   Mann nennt das System der Intervalle $I_k$ eine *abzählbare* (offene oder abgeschlossene) *Überdeckung* der Menge $M$.
+   Eine Funktion $f:[a,b]$ besitzt eine Eigenschfat (zum Beipsiel stetig) *fast überall*, wenn die Menge der Punkte, in deren sie diese Eigenschaft nicht besitzt eine Nullmenge ist.
+   #+end_defn
+   #+ATTR_LATEX: :options [5.39]
+   #+begin_lemma latex
+   1. Jede Teilmenge einer Nullmenge ist eine Nullmenge
+   2. Endliche und abzähbare Teilmengen von $\mathbb{R}$ sind Nullmengen
+   3. Die Vereinigung abhählbar vieler Nullmengen ist wieder einer Nullmenge
+   #+end_lemma
+   #+begin_proof latex
+   1. Sei $M$ eine Nullmenge $\implies M \subset \bigcup_k I_k$ und $\sum_k \abs{I_k} < \eps$
+	  \[N \subset M \implies N \subset M \subset \bigcup_k I_k \wedge \sum_k \abs{I_k} < \eps\]
+   2. Sei $M \subset \mathbb{R}$ endlich oder abzählbar. $\Forall \eps > 0$ ist jedes $x_k \in M$ Mittelpunkt eines Intervalls
+	  \[I_k = [x_k - \frac{\eps}{2^{k + 1}}, x_k + \frac{\eps}{2^{k + 1}}]\]
+	  Es gilt
+	  \[M \subset \bigcup_k I_k ~\text{mit}~\sum_k \abs{I_k} \leq \sum_{k = 1}^{\infty} \frac{\eps}{2^k} = \eps(\sum_{k = 0}^{\infty} \frac{1}{2^k} - 1) = \eps (\frac{1}{1 - \frac{1}{2}} - 1) = \eps\]
+   3. Seien $\{M_k\}$  höchstens abzählbare Nullmengen. Für $\eps > 0$ kann man jedes $M_k$ durch höchstens abzählbar vile Intervalle $(I_{kl})$ überdecken sodass
+	  \[sum_l \abs{I_{kl}} \leq 2^{-k} \eps\]
+	  Dann überdechen alle Mengen $(I_{kl})^{\infty}$ auch die Vereinugung
+	  \[\bigcup_k M_k\]
+	  und es gilt
+	  \[sum_{k,l} \abs{I_{kl}} = \sum_k (\sum_l \abs{I_{kl}}) \leq \sum_k \frac{\eps}{2^k} \leq \eps \tag*{\qedhere}\]
+   #+end_proof
+   #+ATTR_LATEX: :options [5.40 Satz von Lebesque]
+   #+begin_thm latex
+   Eine Funktion $f:[a,b\string) \to \mathbb{R}$ ist Riemann-integrierbar auf $[a,b]$ genau dann wenn sie auf $[a,b]$
+   beschränkt und fast überall statig ist (ohne Beweis).
+   #+end_thm
+   #+begin_remark latex
+   Dieser Satz charakterisiert das Riemann-integral vollständig. Wichtig ist die Zulässigkeit von abzählbar vielen unstetigen Stellen.
+   #+end_remark

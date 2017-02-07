@@ -1663,3 +1663,259 @@
    $\estimates$ verschiedene Iterface-Definitionen: Schüler, Student, Employee, Mitglied, Kunde, $\ldots$.
    Person kann nicht von all diesen Interfaces abgeleitet sein, zumal es verschiedenste Varianten gibt.
    Besser: verwalte diese Relationen in Datenbanken.
+* Deklarative Programmierung
+  Wir haben folgende Programmier-Paradigmen gelernt:
+  - endliche Automaten
+  - Maschinensprache
+  - funktionale Programmierung
+  - prozedurale Programmierung
+  - objekt-orientierte Programmierung
+  - generische Programmierung (mit Templates)
+  Das sind Spezialfälle der *imperativen* Programmierung (imerare = befehlen), weil der Programmierer nicht nur angeben muss,
+  *was* passieren soll, sondern imDetail, *wie* es passiert (insbesondere explizite Angabe des Kontrollflusses, if-Bedingungen, Schleifen und rekursive Funktionen).
+  In deklarativen Spracen sagt der Programmierer nur, *was* er/sie erreichen will, das ganze *wie* ist im Compiler/Interpreter der Sprache gekapselt.
+  Das funktioniert in relativ engen Anwendungsdomänen ("domain specific languages"), und vereinfacht dann die Programmierung stark
+** Data serialization languages
+   Beispiele: XML, JSON, YAML \\
+   Serialization: Umwandlung einer komplexen Datenstruktur (Array, Baum, Graph, geschachtelte Daten) in eine Bytefolge, die auf Festplatte gespeichert und über Netzwerk gesenden werden kann \\
+   Deserialization: Aus der Bytefolge die Datenstruktur wieder zusammenbauen. \\
+   Serialitation *languages*: Bytefolge ist ein Textfile, das man mit normalen Editoren anschauen / bearbeiten kann  \\
+   Beispiel: JSON
+   - es gibt die üblichen Literale: true/fales (bool), 1234 (int), 5.67e-7 (float), "abcd" (string), null (undefiniert)
+   - zusätzlich gibt es Array-Literale: [wert1, wert2, "\ldots"]
+   - assoziative Array-Literale: {"key1" : wert1, "key2" : wert2, "\ldots"}
+   - Array (assoziative Arrays sind heterogen (beliebige gemischte Elementtypen)), insbesondere wieder Arrays / assozitaive Arrays $\implies$ Möglichkeit der beliebig tiefen Schachtelung
+   #+begin_src js
+   {
+       "Adam Müller": {
+           "Martrikel": 12345,
+           "Übungspunkte": [
+               38.5,
+               40.0,
+               0.0,
+               35.0
+           ],
+           "Note": null
+       },
+       "Eva Heller": {
+           "Martrikel": 67890,
+           "Übungspunkte": [
+               10.0,
+               15.0
+           ],
+           "Note": null
+       }
+   }
+   #+end_src
+   deklarativ: Programmierer sagt nicht, *wie* aus der Beschreibung eine c++ Datenstruktur gebaut wird.
+** document description languages, markup languages
+   Zum Beispiel: HTML, Markdown, \LaTeX (teilweise auch imperativ) \\
+   Textdokumente mit dem eigentlichen Text *und* Formatierungsanweisungen. \\
+   HTML:
+   #+begin_src html
+   <h1>Hauptüberschrift</h1>
+   <h2>Unterüberschrift</h2>
+   <p>Absatz-mehrere Sätze</p>
+   <ul>
+   <li> erster Anstrich </li>
+   <li> zweiter Anstrich </li>
+   </ul>
+   #+end_src
+   - sehr mächtig
+   - Attribute zur weiteren Verfeinerung <h1 style="color:blue">Hauptüberschrift</h1>
+	 (typischerweise in seperaten Style-Files .css)
+   #+begin_example
+   Hauptüberschrift
+   ================
+   Unterüberschrift
+   ________________
+
+   Absatz (durch Leerzeilen getrennt).
+
+   Aufzählung:
+   * erster Anstrik
+   * zweiter Anstrick
+   #+end_example
+   - lesbarer als Text mit <$\ldots$>
+   - einfacher zu schrieben
+   - wird vom Markdown-Compiler nach HTML konvertier
+   - weniger leistungsfähig (weniger Formatierungsoptionen)
+** SQL
+   SQL ("structured query language") zur kommunikation mit relationalen Datenbanken
+   - relative Datenbank:
+	 - sammlung von tabellen mit Querverwisen
+	 - Tabelle:
+       - Spalten (Felder, Attribute) $\estimates$ Membervariablen einer Datenstruktur
+	   - Zeilen (Records) $\estimates$ Instanzen der Datenstruktur
+       | Matrikel | Name   | Vorname | Fach           |
+       |----------+--------+---------+----------------|
+       |    12345 | Müller | Adam    | Informatik BSC |
+       |    67890 | Heller | Eva     | Physik BSC     |
+   Spraceh SQL enthält Befehle zum
+   - Tabellen anlegen und verändern (zum Beispiel neue Spalte einfügen)
+   - Daten in Tabelle einfügen und modifizieren
+   - Daten in Tabellen nach bestimmten Kriterien *suchen*
+   aber: sagt nicht, wie die Daten auf Platte/im RAM abgelegt sind oder wie die Suche funktioniert
+   #+begin_src sql
+   SELECT Vorname, Name
+   FROM Teilnehmer
+   WHERE Fach="Fysik BSC"
+   #+end_src
+   $\implies$ Eva Heller
+** Logikprogrammierung mit PROLOG
+   PROLOG (PROgrammiation en LOGique) \\
+   Programmierer definiert ("deklariert") Fakten und Regeln, die in der interenden Anwendung gelten. \\
+   Programmierer definiert ("deklariert") das Ziel der Berechnung durch Anfagen (queries).
+   Computer Benutz intern die allgemeinen Schlussregeln der Logi ("Proädikatenlogik erster Stufe")
+   um die Anfrage zu beantworten, zum Beispiel
+   - Beweis, dass Aussage wahr oder falsch
+   - Menge aller Symbole, die die Anfrage erfüllen
+   Stammbaum:
+   #+begin_src prolog
+   % Fakten
+   mann(A).
+   mann(T).
+   frau(E).
+   frau(D).
+   frau(U).
+   vater(A,T).
+   vater(T,F).
+   vater(T,U).
+   mutter(E,T).
+   mutter(D,F).
+   mutter(D,U).
+
+   % Regeln
+   grossvater(X,Y) :-
+   vater(X,Z),
+   vater(Z,Y).
+   grossvater(X,Y) :-
+   vater(X,Z),
+   mutter(Z,Y).
+
+   % Anfragen
+   ?-mann(A). % yes.
+   ?-frau(E). % yes.
+   ?-mann(E). % no.
+   ?-mann(H). % no.
+   ?-grossvater(A, U). % yes.
+   ?-grossvater(X, F). % X=A
+   #+end_src
+** formale Grammatiken
+   Beispiel: BNF (Bachus-Nauer-Form). \\
+   Spezifizieren die formale Struktur (Syntax) einer anderen Programmiersprache, was sind gültige
+   Befehle und Programme. Computer für die spezifizierte Sprache checkt zuerst die Grammatik $\implies$
+   wenn verletzt Fehlermeldung ("Syntax error"). Bestehen aus Ableitungsregen \\
+   <neuer Begriff> ::= Definition (viele symtaktische Variablen) \\
+   Beispiel: Teil von c++
+   #+begin_src bnf
+   <Ziffer> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+   <positiveZahl> ::= <Ziffer | <Ziffer><positiveZahl>
+   <ganzeZahl> ::= ["x" | "-"]<positiveZahl>
+   <kommaZahl> ::= <ganzeZahl>"."<positiveZahl> | <ganzeZahl>"." | "."<positiveZahl>
+   <FließpunktZahl> ::= <kommaZahl>["E" | "e"]<ganzeZahl> | <ganzeZahl>["E" | "e"]<ganzeZahl>
+   <alphabetic> ::= "a" | "b" | ... | "A" | "B" | ... | "Z" | " "
+   <Bezeichner> ::= <alphabetic>{<alphabetic> | <Ziffer> }
+   <Argument> ::= <Bezeichner" "<Bezeichner>
+   <ArgumentListe> ::= "" | <Argument> | <Argument>","<ArgumentListe>
+   <Funktionsdeklaration> ::= <Bezeicher>" "<Bezeichner>"("<ArgumentListe>");"
+   #+end_src
+** Reguläre Ausdrücke
+   Reguläre Ausdrücke: Suchen und ersetzen mit Jokerzeichen, seit c++11: Header <regex>
+* Wiederholung
+** Pointer und Referenzen
+   #+begin_src cpp
+   // ursprünglicherTypename neuerTypname
+   typedef int *     int_ptr;   // Zeiger
+   typedef int &     int_ref;   // Referenz
+   typedef int const const_int; // write-once integer
+   typedef const_int *
+   const_int_ptr; // equivalent typdef int const * int_const_ptr
+   typedef const_int & const_int_ref;
+
+   int     a = 0;
+   int_ref b = a; // äquivalent: int & b = a;
+   b         = 3;
+   int_ptr p = &a; // äqzivalent: int * p = &a;
+   *p = 5; // Kompiler mach daraus: int_ref tmp1 = *p; tmp1 = 5; (hier wird tmp1
+   // wieder gelöscht)
+   // generell: temporäre interne Variablen / Referenzen werden beim Semikolon
+   // gelöscht
+   int c = *p; // Kompiler: int_ref tmp2 = *p; int c = tmp2;
+   p     = &c;
+   (*p)  = 7; // $\implies$ int_ref tmp3 = *p; tmp3 = 7;
+
+   void foo(int f) { f = 4; }
+
+   void bar(int_ref g) { g = 4; }
+
+   void baz(const_int_ref h) { std::cout << h; }
+
+   foo(a); // pass-by-value
+   bar(a); // pass-by-reference
+   baz(a); // pass-by-const-reference
+
+   class Point {
+        int x, y;
+
+   public:
+       Point(int x, y) : x(x), y(y) {}
+       int getX() const { return x; }
+       int_ref getX() { return x; }
+   };
+
+   Point g(1, 2);    // sizeof(Point) == 8
+   a  = g.getX();    // Kompiler: int_ref tmp4 = g.getX(); a = tmp4;
+   p  = &(g.getX()); // int_ref tmp5 = g.getX(); p = &tmp5;
+   *p = 8;           // int_ref tmp6 = *p; tmp6 = 8;
+
+   Point const & gg = g;         // read only Name
+   a                = gg.getX(); // Komplier: int tmp7 = gg.x; a = tmp7;
+   #+end_src
+** Wiederhohlung Komplexität:
+   $\mathcal{O}$ -Notation
+   komplizierte Formen $f(n)$, einfache Formel $g(n)$, die das gleiche *wesentliche* Verhalten
+   wie $f(n)$ hat. Asymptotische für große $n$ ununterscheidbeir
+   \[f(n) \in \mathcal{O}(g(n)) \iff \Exists n_0, c: \Forall n > n_0: f(n) \leq c g(n)\]
+   Diagramme für $f(n)$ und $cg(n)$ sehen für für $n > n_0$ fast gleich aus.
+   wichtige Regeln:
+   1. konstante Faktoren werden von $\mathcal{O}$ absobiert $d f(n) \in \mathcal{O}(f(n)), d\mathcal{O}(f(n)) \in \mathcal{O}(f(n))$
+   2. Produkte von $\mathcal{O}$ werden zum $\mathcal{O}$ der Produkte $\mathcal{O}(f(n)) \mathcal{O}(g(n)) \in \mathcal{O}(f(n)g(n))$
+   3. In einer Summe überlebt nur der *wichtigste* (am schnellsten wachsende) Term
+		 \[\mathcal{O}(f(n) + g(n)) \in \begin{cases} \mathcal{O}(g(n)) & f(n) \in \mathcal{O}(g(n)) \\ \mathcal{O}(f(n)) & g(n) \in\mathcal{O}(f(n))\end{cases}\]
+   4. Polynome: $n^p \in \mathcal{O}(n^p) \iff p \leq q$ Falls $f(n) = g(n) \quad\mathcal{O}(f(n) + g(n)) \in 2\mathcal{O}(f(n)) \in \mathcal{O}(f(n))$
+		 \[n^{p1} + n^{p2} + n^{p3} \in \mathcal{O}(n^{\max\{p_1, p_2, \ldots\}})\]
+   für große $n$:
+   \begin{gather*}
+   f(n) \leq g(n) \iff \frac{g(n)}{f(n)} \leq \frac{1}{c} > 0 \\
+   \implies f(n) \in \mathcal{O}(g(n))\iff \lim_{n\to\infty} \frac{g(n)}{f(n)} > 0
+   \end{gather*}
+   #+begin_ex latex
+   \begin{align*}
+   f(n) &= n^2 \quad g(n) = n^3 \quad \frac{g(n)}{f(n)} = \frac{n^3}{n^2} = n \quad \lim_{n\to\infty} n = \infty > 0 \\
+   f(n) &= n \quad g(n) = n\log n \quad \frac{g(n)}{f(n)} = \frac{n\log n}{n} = \log n \quad \lim_{n\to\infty} \log n = \infty > 0 \\
+   f(n) &= n\log n \quad g(n) = n^2 \quad \frac{g(n)}{f(n)} = \frac{n^2}{n\log n} = \frac{n}{\log n} \quad \lim_{n\to\infty} \frac{n}{\log n} = \frac{\infty}{\infty} = \lim_{n\to\infty} n = \infty > 0 \\
+   \end{align*}
+   #+end_ex
+   Komplexität von Algorithmen $\estimates$ Summe der Komplexitäten der Schritte $\implies$
+   nach Regel 3. nur der *wichtigste* Teil
+*** Sieb des Eratones
+	Sieb des Eratones: finde alle Primzahlen $\leq n$. Prinip: streiche in Liste alle zahlen, die
+	Vielfache einer Zahl sind $\implies$ übrigbleibend sind Primzahlen
+	#+begin_src cpp
+	std::vector<bool> find_primes(int n) {
+	    std::vector<bool> res(n + 1, true); // alle Zahlen prim : O(n): n SpZ auf "true" initialisieren
+	    res[0] = false; res[1] = false; // keine Primzahlen : O(1): Indexzugriff unabhängig von n
+
+	    for(int k = 2, k < n, k++) { // k $\estimates$ alle Vielfachen von k
+	        for(j = 2 * k, j <= n, j += k) { // n / k - 1 Schritte
+	            res[j] = false; // Vielfaches von k und damit nicht prim
+	        }
+	    }
+
+	    return res; // res[i] = true $\iff$ i Primzahl : O(n), Array der Länge n kopieren
+	}
+	#+end_src
+	Komplexität der Algorithmus $\estimates$ Summe der Komplexitäten der Schritte $\implies$ nach
+	Regel 3 bestimmt der stärkste Schritt die Komplexität.
+	\[\sum_{k = 2}^n (\floor*{\frac{n}{k}} - 1) \leq \sum_{k = 2}^{n}\floor*{\frac{n}{k}} \leq \sum_{k = 1}^{n} \frac{n}{k} = n \frac{k = 1}{n} \frac{1}{k} = n\log n\]

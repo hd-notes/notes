@@ -32,14 +32,18 @@ class FractalView {
          */
     }
 
-    cmplx pixel_to_complex(Image const & img, int ix, int iy) const {
+    cmplx pixel_to_complex(Image const & img, double ix, double iy) const {
         return pixel_to_real(cmplx(ix, iy),
                              cmplx(img.width() / 2, img.height() / 2),
                              cmplx(x_center_, y_center_), pixel_side_);
     }
 
-    uint16_t color_scheme(int num_iterations) const {
-        return 255 - (std::cbrt(num_iterations) / std::cbrt(max_iter)) * 255;
+    uint16_t color_scheme(double num_iterations) const {
+        return 255.0 -
+               std::sin((std::cbrt(num_iterations) / std::cbrt(max_iter)) *
+                            4.0 * M_PI +
+                        M_PI) *
+                   255.0;
     };
 
 public:
@@ -52,8 +56,17 @@ public:
     void render_mandelbrot(Image & img) const {
         for(int y = 0; y < img.height(); y++) {
             for(int x = 0; x < img.width(); x++) {
-                img(x, y) = color_scheme(
-                    iterations_until_limit(pixel_to_complex(img, x, y)));
+                double its = 0;
+                its += iterations_until_limit(
+                    pixel_to_complex(img, (double)x + 0.25, (double)y + 0.25));
+                its += iterations_until_limit(
+                    pixel_to_complex(img, (double)x + 0.25, (double)y - 0.25));
+                its += iterations_until_limit(
+                    pixel_to_complex(img, (double)x - 0.25, (double)y + 0.25));
+                its += iterations_until_limit(
+                    pixel_to_complex(img, (double)x - 0.25, (double)y - 0.25));
+                its /= 4;
+                img(x, y) = color_scheme(its);
             }
         }
     }
@@ -71,6 +84,13 @@ int main() {
         writePGM(i, "mandelbrot_overview.pgm");
     }
 
+    {
+        FractalView v(0.375011, -0.1875, 2.38419e-08);
+        Image       i(640, 480);
+        v.render_mandelbrot(i);
+        writePGM(i, "mandelbrot_zoom.pgm");
+    }
+
     bool        open   = true;
     double      x      = 0;
     double      y      = 0;
@@ -79,6 +99,7 @@ int main() {
     double      height = 480;
     FractalView v(x, y, zoom / (width / 2.0));
     Image       i(width, height);
+
     while(open) {
         v.render_mandelbrot(i);
         writePGM(i, "mandelbrot.pgm");

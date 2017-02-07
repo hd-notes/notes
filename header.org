@@ -43,10 +43,12 @@
 
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 #+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+#+LATEX_HEADER: \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 #+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
 #+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
 #+LATEX_HEADER: \DeclareMathOperator{\grad}{grad}
-#+LATEX_HEADER: \DeclareMathOperator{\Lös}{Lös}
+#+LATEX_HEADER: \DeclareMathOperator{\Lös}{\textnormal{Lös}}
 #+LATEX_HEADER: \DeclareMathOperator{\rot}{rot}
 #+LATEX_HEADER: \DeclareMathOperator{\cha}{char}
 #+LATEX_HEADER: \DeclareMathOperator{\Abb}{Abb}
