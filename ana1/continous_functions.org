@@ -407,10 +407,10 @@
    #+end_remark
    #+ATTR_LATEX: :options [3.29 Satz von Arzela-Ascoli]
    #+begin_thm latex
-   Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge von Funktionen in $C([a,b])$ welche *gleichmäßig beschränkt* und *gleichmäßig stetig* sind.
+   Sei $(f_n)_{n\in\mathbb{N}}$ eine Folge von Funktionen in $C([a,b])$ welche *gleichmäßig beschränkt* und *gleichgradig stetig* sind.
    das heißt
    1. $\displaystyle\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$
-   2. $\displaystyle\Forall \eps > 0 \Exists \delta_\eps > 0 \Forall n\in\mathbb{N}: \max_{\substack{x,y\in [a,b] \\ \abs{x - a} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps$
+   2. $\displaystyle\Forall \eps > 0 \Exists \delta_\eps > 0 \Forall n\in\mathbb{N}: \max_{\substack{x,y\in [a,b] \\ \abs{x - y} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps$
    Dann existiert eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$ welche gegen ein $f\in C([a,b])$ konvergiert, das heißt
    \[\norm{f_{n_k} - f}_\infty \xrightarrow{k\to\infty} 0\]
    Annahmen: $f_n \in C([a,b])$,
