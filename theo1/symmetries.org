@@ -133,7 +133,7 @@
    \end{align*}
    Für den Begriff der Symmetrie brauchen wir Invertierbarkeit. Wir nennen eine Transformation beziehungsweise die entsprechende Matrix $R$ invertierbar, falls es eine zweite Matrix $R^{-1}$ gibt, so dass
    \begin{align*}
-   R^{-1} \circ R &= id \tag{Identitätsabbildung} \\
+   R^{-1} \circ R &= \id \tag{Identitätsabbildung} \\
    \hspace{0pt}(R^{-1})^{ij} R^{jk} &= \mathbb{1}^{ik} \equiv \delta^{ik}
    \end{align*}
 
@@ -150,7 +150,7 @@
 
    \begin{align*}
    \intertext{Nebenrechnung}
-   \hspace{0pt}((AB)^{T})^{ij} = (AB)^{ji} = A^{jk} B^{jk} = B^{ki} B^{j k} = (B^{T})^{ik} (A^{tilde})^{kj} \\
+   \hspace{0pt}((AB)^{T})^{ij} = (AB)^{ji} = A^{jk} B^{jk} = B^{ki} B^{j k} = (B^{T})^{ik} (A^{\sim})^{kj} \\
    = (B^{T} A^{T})^{ij} \\
    \implies (AB)^{T} = B^T A^T \\
    \end{align*}

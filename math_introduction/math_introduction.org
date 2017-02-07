@@ -16,12 +16,12 @@
 # #+LATEX_HEADER: \renewcommand\labelenumi{\left(\roman*\right)}
 
 * Messwert und Maßeinheit
-  Zu jeder phys. Größe gehören _Messwert_ und _Maßeinheit_, d.h. Zahlewert $\cdot$ Einheit
+  Zu jeder phys. Größe gehören _Messwert_ und _Maßeinheit_, d.h. Zahlenwert $\cdot$ Einheit
 
 ** Beispiel
    Geschw. $v = \si{\kilo\meter\per\second}$
 
-** Bezeichungen
+** Bezeichnungen
    | Abkürzung | Bedeutung        |
    |-----------+------------------|
    | t         | time             |
@@ -41,11 +41,11 @@
 ** Maßeinheiten
    Maßeinheiten werden über Maßstäbe definiert.
 
-*** Bespiel:
+*** Beispiel:
 	\SI{1}{\meter} = Strecke, die das Licht in $\frac{1}{299792458}\si{\second}$ zurücklegt.
 
 *** SI-Einheiten
-	Internationaler Standart (außer die bösen Amerikaner :D)
+	Internationaler Standard (außer die bösen Amerikaner :D)
 
     | Größe              | Einheit    | Symbol          |
     |--------------------+------------+-----------------|
@@ -54,7 +54,7 @@
     | Masse              | Kilogramm  | \si{\kilogram}  |
     | elektrischer Strom | Ampere     | \si{\ampere}    |
     | Temperatur         | Kelvin     | \si{\kelvin}    |
-    | Lichstärke         | Candela    | \si{\candela}   |
+    | Lichtstärke         | Candela    | \si{\candela}   |
     | ebener Winkel      | Radiant    | \si{\radian}    |
     | Raumwinkel         | Steradiant | \si{\steradian} |
     | Stoffmenge         | Mol        | \si{\mol}       |
@@ -63,7 +63,7 @@
 	 Kreisumfang $U = 2\pi r$
 	 Bogenmaß $b = \phi r$
 
-	 Umrechung in Winkelgrad
+	 Umrechnung in Winkelgrad
 	 \[\SI{2\pi}{\radian} \estimates \SI{360}{\degree}\]
 
 	 \[\frac{Winkel in Radiant}{2\pi} = \frac{Winkel in Grad}{360}\]
@@ -72,7 +72,7 @@
 	 \[\Omega = \frac{A}{r^2}\]
 
 **** Abgeleitete Einheiten
-     | Gröpe                    | Einheit | Symbol        | Equivalent                             |
+     | Größe                    | Einheit | Symbol        | Äquivalent                             |
      |--------------------------+---------+---------------+----------------------------------------|
      | Frequenz                 | Hertz   | \si{\hertz}   | \si{1\per\second}                      |
      | Kraft                    | Newton  | \si{\newton}  | \si{\kilogram\meter\per\square\second} |
@@ -80,13 +80,13 @@
      | Leistung                 | Watt    | \si{\watt}    | \si{\joule\per\second}                 |
      | Druck                    | Pascal  | \si{\pascal}  | \si{\newton\per\square\meter}          |
      | elektrischer Ladung      | Coulomb | \si{\coulomb} | \si{\ampere\second}                    |
-     | elektrisches Potenzal    | Volt    | \si{\volt}    | \si{\joule\per\coulomb}                |
-     | elektrischer Wiederstand | Ohm     | \si{\ohm}     | \si{\volt\per\ampere}                  |
+     | elektrisches Potenzial    | Volt    | \si{\volt}    | \si{\joule\per\coulomb}                |
+     | elektrischer Widerstand | Ohm     | \si{\ohm}     | \si{\volt\per\ampere}                  |
      | Kapazität                | Farad   | \si{\farad}   | \si{\coulomb\per\newton}               |
      | magn. Fluss              | Weber   | \si{\weber}   | \si{\volt\per\second}                  |
 
-**** Prefix / Größenordungen
-     | Prefix | \log{10} | Abkürzung  |
+**** Präfix / Größenordnungen
+     | Präfix | \log{10} | Abkürzung  |
      |--------+----------+------------|
      | Dezi   |       -1 | d          |
      | Zenti  |       -2 | c          |
@@ -159,7 +159,7 @@
    | $\emptyset$   | Nullmenge                                    |
    | $\Forall$     | für alle                                     |
 
-*** Summenzeichn
+*** Summenzeichen
 **** Beispiel
    	 1. \[\sum_{n=1}^3a_n=a_1 + a_2 + a_3\]
    	 2. Summe der ersten $m$ natürlichen Zahlen
@@ -198,7 +198,7 @@
    rationale Zahlen $\mathbb{Q}=\mathbb{Z}\cup {\frac{b}{a} \mid a \in \mathbb{Z} \setminus \{0\} \and b \in \mathbb{Z}}$
    reelle Zahlen $\mathbb{R} = \mathbb{Q} \cup \text{unendliche Dezimalbrüche}$
    Die reellen Zahlen lassen sich umkehrbar eindeutig auf die Zahlengerade abbilden, dh.h jedem Punkt entspricht genau eine reelle Zahl und umgekehrt
-*** Rechengesetze für reelle Zahlen
+*** Rassengesetze für reelle Zahlen
 **** Addition
 	 - Assoziativität $(a+b) + c = a + (b + c)$
 	 - Kommutativität $a + b = b + a$
@@ -210,7 +210,7 @@
 	 - neutrales Element $a \cdot 1 = a$
 	 - Inverses $a \cdot x = b$ hat für jedes $a \neq a$ genau eine Lösung $x = \frac{b}{a} \text{für} \frac{1}{a}$ schreiben wir $a^-1$
 	 - Distributivgesetz $a \cdot (b + c) = a\cdot b + a\cdot c$
-**** Ordung der reellen Zahlen
+**** Ordnung der reellen Zahlen
 	 Die kleiner-Beziehung $a<b$, oder auch $b > a$ hat folgende Eigenschaften:
 	 - Trichotomie: Es gilt immer genau eine Beziehung
 	   $a < b$, $a = b$ $a > b$
@@ -228,7 +228,7 @@
 ***** Eigenschaften
 	  \[\abs{a} \geq 0 \Forall a\in\mathbb{R}\]
 	  \[\abs{a} = 0\] nur für $a = 0$
-	  \[\abs{a + b} \leq \abs{a} + \abs{b}\] Dreieckungleichung
+	  \[\abs{a + b} \leq \abs{a} + \abs{b}\] Dreiecksungleichung
 *** Satz des Pythagoras
 	\[a^2 + b^2 = c^2\]
 *** binomische Formeln:
@@ -248,12 +248,12 @@
 	$n = 5$ 1 5 10 10 5 1 \\
 	\end{center}
 
-*** Beweisprinzip der Vollständingen Induktion
+*** Beweisprinzip der Vollständigen Induktion
 **** Beispiel
-	 Für alle $n \in \mathbb{N}$ soll die Summe der ersten $n$ Quadratzahlen beiesen werden
+	 Für alle $n \in \mathbb{N}$ soll die Summe der ersten $n$ Quadratzahlen bewiesen werden
 	 \[A(n) := \sum_{k=1}^n{k^1} = 1^2 + 2^2 + \ldots + n^2 = \frac{1}{6}n(n+1)(2n+1)\]
 	 1. Induktionsanfang $A(1) = 1$ \checkmark
-	 2. Induktonsschritt Falls $A(k)$ richtig ist, wird gezeigt, dass auch $A(k+1)$ richtig ist
+	 2. Induktionsschritt Falls $A(k)$ richtig ist, wird gezeigt, dass auch $A(k+1)$ richtig ist
 		\[A(k+1) = \underbrace{1^2 + 2^2 + \ldots + k^2}_{A(n)} + (k+1)^2 = \frac{1}{6}k(k+1)(2k+1)+(k+1)^2\]
 		\[=\frac{1}{6}(k+1)(k(2k+1)+6(k+1))\]
 		\[=\frac{1}{6}(k+1)(k+2)(2k+3)\]
@@ -284,7 +284,7 @@
 *** Frage
 	Kann man etwas über das Verhalten von $(a_n)_{n\in \mathbb{N}}$ für $n \to \infty$ aussagen, ohne tatsächlich "die Reise ins Unendliche" anzutreten"
 *** Beschränktheit
-	Eine Folge heißt _nach oben beschänkt_, wenn es eine obere Schranke B für die Flieder der Folge gibt: $a_n \leq B$, d.h. $\exists B: a_n \leq B \Forall n \in \mathbb{N}$
+	Eine Folge heißt _nach oben beschränkt_, wenn es eine obere Schranke B für die Flieder der Folge gibt: $a_n \leq B$, d.h. $\exists B: a_n \leq B \Forall n \in \mathbb{N}$
 	Nach unten beschränkt: $\exists A: A \geq a_n \Forall n\in\mathbb{N}$
 *** Monotonie
 	- Eine Folge heißt _monoton steigend_, wenn aufeinanderfolgende Glieder mit wachsender Nummer immer größer werden: $a_n \leq a_{n+1} \Forall n\in\mathbb{N}$
@@ -337,7 +337,7 @@
    \[y=f(x)=x^n\]
    - gerade n: f ist symmetrisch, d.h. $f(-x) = f(x)$
    - ungerade n: f ist antisymmetrisch, d.h. $f(-x) = -f(x)$
-** Potenzfunktionen als "Bausteine" in susammengesetzten Funktionen
+** Potenzfunktionen als "Bausteine" in zusammengesetzten Funktionen
    Polynom m-ten Grades \[y=P_m(x) = a_0 + a_1 x + \ldots + a_m x^m = \sum_{k=0}^m a_k x^k\]
 ** Rationale Funktionen
    \[y=\frac{P_m(x)}{Q_n(x)}\quad D_f = \{x\in\mathbb{R}\mid Q_n(x)\neq 0\}\]
@@ -393,7 +393,7 @@ plot exp(x), exp(-x)
 	#+END_SRC
 *** Beispiel radioaktiver Zerfall
 	\[N(t) = N(0)e^\frac{-t}{\tau}\]
-** Cosinus hyperbolicus
+** Kosinus hyperbolicus
    \[y=\cosh{x}:=\frac{1}{2}\left(e^x + e^{-x}\right)\]
 ** Sinus hyperbolicus
    \[y=\sinh{x}:=\frac{1}{2}\left(e^x - e^{-x}\right)\]
@@ -406,14 +406,14 @@ plot exp(x), exp(-x)
 ** Wurzelfunktion
    Umkehrfunktion der Potenzfunktionen \[y=f(x)=x^n\quad n\in\mathbb{Z}\]
    Wurzelfunktion: \[y=f(x)=\sqrt[n]{x} = x^\frac{1}{n}\]
-   n gerade: vor der Umkehrung ist die Einschränkung des Definitionsbereiches auf $x\geq 0$ notwendig
+   n gerade: vor der Umkehrung ist die Einschränkung des Definitionsbereichs auf $x\geq 0$ notwendig
 *** Beispiel
 	\[y=f(x)=x^2 + 1\quad x\geq 0\]
 	Umkehrfunktion: \[y=\sqrt{x-1}\]
 * Funktionen mit Ecken und Sprüngen
 ** Betragsfunktion
    \[y=\abs{x}:=\begin{cases}x& x \geq 0\\ -x& x < 0\end{cases}\]
-** Heaviside-Stufenfunktion
+** Heavyside-Stufenfunktion
    \[y=\Theta(x):=\begin{cases}1&x>0\\0&x<0\\\frac{1}{2}&x=0\end{cases}\]
 *** TODO Graphik
 *** Beispiel
@@ -429,7 +429,7 @@ plot exp(x), exp(-x)
 	\[z = g(x) = 1+x^2\quad W_g: z\geq 1\]
 	\[y=f(z)=\frac{1}{z}\quad D_f=\mathbb{R}\setminus\{0\}\]
 	also $W_g\subset D_f$, sodass \[(f\circ g)(x)=f(g(x)) = \frac{1}{g(x)}= \frac{1}{1+x^2}\]
-** Spiegelsymmetrie (Siegelung an der y-Achse, d.h. $x\to -x$)
+** Spiegelsymmetrie (Spiegelung an der y-Achse, d.h. $x\to -x$)
    Eine Funktion $f(x)$ heißt
    - gerade(symmetrisch) wenn $f(-x) = f(x)$
    - ungerade (antisymmetrisch) wenn $f(-x) = -f(x)$
@@ -463,15 +463,15 @@ plot exp(x), exp(-x)
    Analog heißt $f$ monoton (streng monoton) fallend, wenn stets folgt $f(x_1) \geq f(x_2)$ ($f(x_1) > f(x_2)$)
 *** Beispiel
 	$f(x) = x^3\quad$ streng monoton steigend
-* Umkehrfunktionen
+* Umkehrfunktion
   Sei $f : D_f\to W_f$ eineindeutig(bijektiv), dann kann man die Gleichung $y=f(x)$ eindeutig nach $x$ auflösen \[x=f^{-1}(y):=g(y)\quad\quad D_g = W_f,\quad W_g = D_f\] \[f^{-1}=g:W_f\to D_f\]
   Die ursprüngliche Abbildung $y=f(x)$ und die Umkehrabbildung $x=f^{-1}(y)=g(y)$ heben sich in ihrer Wirkung auf \[f^{-1}(f(x))= x\]
 ** Graph der Umkehrfunktion
-   1. Gegebenfalls Einschränktung von $D_f$, sodass eine bijektive Funktion vorliegt
+   1. Gegebenenfalls Einschränkung von $D_f$, sodass eine bijektive Funktion vorliegt
    2. Auflösen der Gleichung $y=f(x)\implies x=f^-1(y)$
-   3. Umbennenung der Variablen: die unabhängige Variable $y$ wird wieder $x$ genannt, die abhängige wieder $y$: $y=f^{-1}(x)
+   3. Umbenennung der Variablen: die unabhängige Variable $y$ wird wieder $x$ genannt, die abhängige wieder $y$: $y=f^{-1}(x)
 *** Beispiel $y=x^2$
-	1. Einschränktung $D_f$ auf $x\geq 0$
+	1. Einschränkung $D_f$ auf $x\geq 0$
 	2. $y=x^2, x\geq 0 \iff x = \sqrt{y}$
 	3. Umbenennung: $y=\sqrt{x} = x^\frac{1}{2}$
 *** Graphisch
@@ -479,7 +479,7 @@ plot exp(x), exp(-x)
 * what after this?
 * Integral und Differenzialrechnung
   \[\int_a^b f(x)\mathrm{d}x=F(b) - F(a)\]
-  Haupsatz:
+  Hauptsatz:
   \[F'(x) = \frac{\mathrm{d}F(x)}{\mathrm{d}x} = f(x)\]
   | $F(x)=\int f(x)\mathrm{d}x$ | f(x)        | Bemerkungen               |
   |-----------------------------+-------------+---------------------------|
@@ -488,7 +488,7 @@ plot exp(x), exp(-x)
   | $\frac{x^{r+1}}{r+1}$       | $x^r$       | $-1 \neq  r\in\mathbb{R}$ |
 ** Die Kunst des Integrierens
    \[\int_1^e \frac{1}{x}\mathrm{d}x = \ln{x}\mid_1^e = \ln{e} - \ln{1} = 1\]
-   \[\int_0^{\frac{\pi}{2}} cos(t)\mathrm{d}t=\sin{t}\mid_0^{\frac{\pi}{2}} = \sin{\frac{\pi}{2}} - \sin{0} = 1\]
+   \[\int_0^{\frac{\pi}{2}} \cos(t)\mathrm{d}t=\sin{t}\mid_0^{\frac{\pi}{2}} = \sin{\frac{\pi}{2}} - \sin{0} = 1\]
    \[\int_a^b\frac{1}{1+x^2}\mathrm{d}x = \arctan{x}\mid_a^b\]
 ** Ableiten über Umkehrfunktion
    \[\frac{\mathrm{d}f^-1(x)}{\mathrm{d}x}=\frac{1}{f'(f^-1(x))}\]
@@ -525,12 +525,12 @@ plot exp(x), exp(-x)
 **** Beispiel
 	 - \[\int_a^b x\ln{x}\mathrm{d}x = \frac{1}{2}x^2\ln(x)\mid_a^b - \int_a^b \frac{1}{2}x^2 \frac{1}{x}\mathrm{d}x = \frac{1}{2}x^2\ln(x)\mid_a^b - \frac{1}{2}\int_a^b x\mathrm{d}x\]
 	 - \[\int 1\ln{x}\mathrm{d}x = x\ln{x} - \int x\frac{1}{x}\mathrm{d}x = x\ln{x} - \int 1\mathrm{d}x = x\ln{x}-x+c=x(\ln{x}-1)+c\]
-	 - \[\int x\sin{x}\mathrm{d}x=-x\cos{x} + \int cos{x}\mathrm{d}x = -x\cos{x}+\sin{x}\]
+	 - \[\int x\sin{x}\mathrm{d}x=-x\cos{x} + \int \cos{x}\mathrm{d}x = -x\cos{x}+\sin{x}\]
 **** Kreisfläche
 	 \[y=f(x)=\sqrt{1-x^2}\]
-	 \[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\implies \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
+	 \[\int_a^b\sqrt{1-x^2}\mathrm{d}x = \int_{\arcsin{a}}^{\arcsin{b}}\sqrt{1-\sin^2{t}}\cos{t}\mathrm{t}d = \int_{\arcsin{a}}^{\arcsin{b}} \cos{t}\cos{t}\mathrm{d}t = \frac{1}{2}(\arcsin{b} + b\sqrt{1-b^2} - \arcsin{a} - a\sqrt{1-a^2}) \text{ mit } a=-1,b=1\quad\implies \frac{1}{2}(\frac{\pi}{2} + \frac{\pi}{2}) = \frac{\pi}{2}\]
 	 \[x=\sin{t} \implies t = \arcsin{x},\quad \frac{\mathrm{x}}{\mathrm{d}t} = \cos{t},\quad \mathrm{d}x = \cos{t}\mathrm{d}t\]
-	 \[\int \cos{t}\cos{t} = \sin{t}\cos{t} + \int sin^2{t}\mathrm{d}t = \sin{t}\cos{t} + \int 1 - cos^2{t}\mathrm{d}t = \frac{\sin{t}\cos{t} + t}{2}\]
+	 \[\int \cos{t}\cos{t} = \sin{t}\cos{t} + \int \sin^2{t}\mathrm{d}t = \sin{t}\cos{t} + \int 1 - \cos^2{t}\mathrm{d}t = \frac{\sin{t}\cos{t} + t}{2}\]
 ***** In Polarkoordinaten
 	  \[y=\sin{t}\]
 	  \[x=\cos{t}\]
@@ -561,8 +561,8 @@ plot exp(x), exp(-x)
 *** Unbeschränkter Integrand
 	Situation: Integrand wird an einer Stelle $x_0 \in [a,b]$ unbeschränkt
 **** Definition
-	 Sei $f:(a,b] \to \mathbb{R}$ eine Fnunkion, die über jedem Teilintervall $[a+\eta, b],~0<\eta<b-a$ (Riemann-)integrierbar ist.
-	 Falls der Grenzwert $\lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x$ existiert, heipßt das Integral $\int_a^b f(x)\mathrm{d}x$ konvergent
+	 Sei $f:(a,b] \to \mathbb{R}$ eine Funktion, die über jedem Teilintervall $[a+\eta, b],~0<\eta<b-a$ (Riemann-)integrierbar ist.
+	 Falls der Grenzwert $\lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x$ existiert, heißt das Integral $\int_a^b f(x)\mathrm{d}x$ konvergent
 	 \[\int_a^b f(x)\mathrm{d}x = \lim_{\eta\to 0}\int_{a+\eta}^b f(x)\mathrm{d}x\]
 **** Beispiel
 	 \[\int_0^b \frac{1}{x^{1-\epsilon}}\mathrm{d}x = \lim_{\eta\to 0} \int_\eta^b \frac{1}{x^{1-\epsilon}}\mathrm{d}x = \lim_{\eta\to 0} \frac{1}{\epsilon}(b^\epsilon - \eta^\epsilon) = \frac{1}{\eta}b^\epsilon\]
@@ -571,7 +571,7 @@ plot exp(x), exp(-x)
 ** Integralfunktionen
    \[\ln{x} = \int_1^x \frac{\mathrm{d}x}{x}\]
    \[\arctan{x} = \int_0^y \frac{\mathrm{d}x}{1+x^2}\]
-   \[erf(x) = \frac{2}{\sqrt{\pi}}\int_0^y e^{-x^2}\mathrm{d}x\]
+   \[\erf(x) = \frac{2}{\sqrt{\pi}}\int_0^y e^{-x^2}\mathrm{d}x\]
    Elliptisches Integral
 ** Gamma-Funktion
 *** Definition
@@ -606,7 +606,7 @@ plot exp(x), exp(-x)
 	  \[<\vec{a},\vec{b}+\vec{c}>=<\vec{a},\vec{b}>+<\vec{a},\vec{c}>\]
 	- \[<\vec{a},\vec{a}>\geq 0 \quad <\vec{a},\vec{a}>=0\iff\vec{a}=0\]
 *** Orthonormalbasis der kartesischen Koordinatensystem
-	Basisvecktoren $\vec{e_k}, k=1,2,4$
+	Basisvektoren $\vec{e_k}, k=1,2,4$
 	Orthogonalität $<\vec{e_k},\vec{e_l}> = 0\quad l\neq k$
 	Für $k=l:~<\vec{e_k},\vec{e_k}>=\cos(0)=1$
 	Orthonormalität
@@ -683,7 +683,7 @@ plot exp(x), exp(-x)
 #   \end{equation}
  \[\vec{a}\times\vec{b} = \sum_{i,j,k=1}^3 \varepsilon_{ijk} a_i b_j \vec e_k = \varepsilon_{ijk}a_i b_j \vec{e_k}\]
 ** Spatprodukt
-   \[\abs{( \vec{a} \times \vec{b} ) \vec{c}} = \text{Volumen einees Spats}\]
+   \[\abs{( \vec{a} \times \vec{b} ) \vec{c}} = \text{Volumen eines Spats}\]
    \[(\vec{a}\vec{b}\vec{c})=(\vec{a}\times\vec{b})\vec{c}=(\vec{c}\times\vec{a})\vec{b}=(\vec{b}\times\vec{c})\vec{a}=-(\vec{b}\times\vec{a})\vec{c}\]
 ** Geschachteltes Vektorprodukt
    \[\vec{a}(\vec{b}\times\vec{v})=(\vec{a}\vec{c})\vec{b}-(\vec{a}\vec{b})\vec{c}=\vec{b}(\vec{a}\vec{c})-\vec{c}(\vec{a}\vec{b})\]

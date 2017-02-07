@@ -47,7 +47,7 @@
 	 $\implies$ Jeder UVR von $v_i$ der $v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n$  enthält, enthält auch $v_i$ \\
 	 $\implies$ $\Lin((v_1, \ldots, v_{i - 1}, v_{i + 1}, \ldots, v_n)) = \Lin((v_1, \ldots, v_n)) = v$ \\
 	 $\implies$ $\mathcal{B}$ ist verkürzbar $\lightning$
-  3. $\implies$ 4.: Wir setzten 3. vorraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
+  3. $\implies$ 4.: Wir setzten 3. voraus, das heißt für jedes $v\in V$ existieren eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n$. \\
 	 zu zeigen: $\mathcal{B}$ ist unverlängerbar linear unabhängig \\
 	 denn Insbesondere existiert für jedes $v\in \Lin((v_1, \ldots, v_n))$ eindeutig bestimmt $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1,\ldots, v_n)$ linear unabhängig.
 	 Ist $v\in V$, dann existiert $\lambda_1, \ldots, \lambda_n \in K$ mit $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \implies (v_1, \ldots, v_n, v)$ linear abhängig. Somit: $\mathcal{B}$ unverlängerbar linear unabhängig
@@ -196,7 +196,7 @@
   Insbesondere besitzt jeder K-VR eine Basis.
   #+end_defn
   #+begin_proof latex
-  1. Wir setzen $A:= \{uj \mid j \in J\}, M:= \{X \subseteq V \mid A\subseteq X \wedge X ~\text{ist linear unabhängig}\}$
+  1. Wir setzen $A:= \{u_j \mid j \in J\}, M:= \{X \subseteq V \mid A\subseteq X \wedge X ~\text{ist linear unabhängig}\}$
 	 - $(M, \subseteq)$ ist eine halbgeordnete Menge
 	 - $(M \neq \emptyset)$, denn $A\in M$
 	 - $(m, \subseteq)$ ist induktiv geordnet, denn:

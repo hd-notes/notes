@@ -352,7 +352,7 @@
 	 Sei $A = (a_{ij})_{\substack{1 \leq 1 \leq m \\ 1 \leq j \leq n}}, B = (b_{ij})_{\substack{1 \leq 1 \leq n \\ 1 \leq j \leq r}}$ \\
 	 $\implies$ Eintrag an Position $(i,k)$ von $AB$ ist gegeben durch
 	 \[\sum_{1\leq j\leq n}{a_{ij}b_{jk}}\]
-	 Eintrag an Position $(i,k)$ in $(B^t A^t)^t =$ eintrag an Position $(r,i)$ von $B^t A^t$.
+	 Eintrag an Position $(i,k)$ in $(B^t A^t)^t =$ Eintrag an Position $(r,i)$ von $B^t A^t$.
 	 Dieser ist gegeben durch:
      \[\sum_{i\leq j \leq n} b'_{kj} a'_{ji} = \sum_{1\leq j\leq n} b_{jk} a_{ij} = \sum_{1 \leq j \leq m} a_{ij} b_{jk} \]
 	 wobei:

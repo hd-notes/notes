@@ -112,7 +112,7 @@
    $\implies CA$ offen $\implies A$ abgeschlossen \\
    $(\implies)$: \\
    Sei $A$ abgeschlossen, also $CA$ offen, ist Häufungspunkt $x\not\in A$ das heißt $x \in CA$, so gilt
-   \[\exists \eps > 0: I_\eps \subseteq CA \implies I_\eps (x) \cap A = \emptyset \text{lightning}\]
+   \[\exists \eps > 0: I_\eps \subseteq CA \implies I_\eps (x) \cap A = \emptyset \text{\lightning}\]
    \textbf{Widerspruch} zur Definition von Häufungspunkt $\implies$ jeder Häufungspunkt von $A$ ist in $A$
    \end{proof}
    \begin{lemma}[2.14]

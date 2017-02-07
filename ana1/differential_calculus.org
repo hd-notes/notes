@@ -1,8 +1,8 @@
 * Differentiation
-  #+ATTR_LATEX: :options [4.1 Differenzquotienten]
+  #+ATTR_LATEX: :options [4.1 Differenzenquotient]
   #+begin_defn latex
   Für eine Funktion $f:D\to \mathbb{R}, D\subseteq \mathbb{R}$, definieren wir in einem Punkt $x_0 \in D$ einen
-  *Differenzquotienten* durch $D_n f(x_0):= \frac{f(x_0 + h) - f(x_0)}{h}$, wobei $x_0 + h \in D$
+  *Differenzenquotient* durch $D_n f(x_0):= \frac{f(x_0 + h) - f(x_0)}{h}$, wobei $x_0 + h \in D$
   #+end_defn
   #+ATTR_LATEX: :options [4.2 Ableitung]
   #+begin_defn latex
@@ -14,10 +14,10 @@
   $f'(x)$ ist eindeutig.
   #+end_remark
   #+begin_proof latex
-  Für zwei Nulfolge $h_n, \tilde h_n$, sodass:
+  Für zwei Nullfolge $h_n, \tilde h_n$, sodass:
   \[\lim_{n\to\infty} D_{h_n} f(x_0) = a, \lim_{n\to\infty} D_{\tilde h_n} f(x_0) = \tilde a\]
   fassen wir eine Nullfolge $\{h_1, \tilde h_1, h_2, \tilde h_2, \ldots\}$ zusammen. Der
-  zugeörige Differenzquotient konvergiert $\implies a = \tilde a$
+  zugehörige Differenzenquotient konvergiert $\implies a = \tilde a$
   #+end_proof
   Notation:
   \begin{align*}
@@ -26,11 +26,11 @@
   \end{align*}
   #+ATTR_LATEX: :options [4.3]
   #+begin_defn latex
-  Eine Funktion $f:D\to\mathbb{R}$ heißt differenzierbar auf $D$, wenn sie in edem Punkt $x_0 \in D$ differenzierbar ist. Sie heißt stetig differenzierbar, wenn
+  Eine Funktion $f:D\to\mathbb{R}$ heißt differenzierbar auf $D$, wenn sie in jedem Punkt $x_0 \in D$ differenzierbar ist. Sie heißt stetig differenzierbar, wenn
   die Ableitung $f'$ auf $D$ eine stetige Funktion ist.
   #+end_defn
   #+begin_remark latex
-  Im Falle eines Randpunktes behalten wir einseite Stetigkeit. $D = [a,b]:$
+  Im Falle eines Randpunktes behalten wir einseitige Stetigkeit. $D = [a,b]:$
   - für $x_0 = a, x\downarrow a :\iff x > a \wedge x \to a$
   - für $x_0 = b, x\uparrow b :\iff x < b \wedge x \to b$
   #+end_remark
@@ -40,7 +40,7 @@
   \[\Forall \eps > 0 \Exists \delta_\eps > 0: x_0 + h \in D, \abs{h} < \delta_\eps \implies \abs{\frac{f(x_0 + h) - f(x_0)}{h} - f'(x_0)} <  \eps\]
   #+end_thm
   #+begin_proof latex
-  Beweis aus der Definition des Grenzwerts.
+  Beweis aus der Definition des Grenzwertes.
   #+end_proof
   #+ATTR_LATEX: :options [4.5]
   #+begin_thm latex
@@ -165,9 +165,9 @@
    #+begin_defn latex
    Die Funktion $f:D\to\mathbb{R}$ hat in einem Punkt $x_0 \in D$ ein *globales Extremum* (Minimum oder Maximum), wenn gilt
    \[f(x_0) \leq f(x), x\in D \vee f(x_0) \geq f(x) \Forall x \in D\]
-   Es handelt sich um ein *lokales Extremeum* (Minimum oder Moaximum), wenn auf einer $\delta$-Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
+   Es handelt sich um ein *lokales Extremum* (Minimum oder Maximum), wenn auf einer $\delta$-Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
    gilt $f(x_0) \geq f(x) \Forall x\in U_\delta(x_0) \vee f(x_0) \leq f(x) \Forall x\in U_\delta(x_0)$
-   Ein Extremum (globales oder lokales) heißt strikt, wenn es das isolierteste PUnkt in $D$ beziehungsweise in $U_\delta(x_0)$ ist, as heißt $f(x_0) > f(x) \vee f(x_0) < f(x)$
+   Ein Extremum (globales oder lokales) heißt strikt, wenn es das isolierteste Punkt in $D$ beziehungsweise in $U_\delta(x_0)$ ist, das heißt $f(x_0) > f(x) \vee f(x_0) < f(x)$
    #+end_defn
    #+ATTR_LATEX: :options [4.14 Satz von Extremum]
    #+begin_thm latex
@@ -183,12 +183,12 @@
    (Analog für Maximum)
    #+end_proof
    #+begin_remark latex
-   Eine stetige Funktion besitzt auf einem abgeschlossenem Interball $[a,b]$ ein Minimum. Dieses kann in einem Randpunkt ($x_0 = a$ oder $x_0 = b$) liegen,
+   Eine stetige Funktion besitzt auf einem abgeschlossenem Intervall $[a,b]$ ein Minimum. Dieses kann in einem Randpunkt ($x_0 = a$ oder $x_0 = b$) liegen,
    das heißt es ist nicht notwendig, das $f'(x_0) = 0$
    #+end_remark
    #+ATTR_LATEX: :options [4.15 Satz von Rolle]
    #+begin_thm latex
-   Wenn eine im Interball $[a,b]$ stetige Funktion, in $(a,b)$ differenzierbar ist und $f(a) = f(b)$, so existiert ein $c\in (a,b)$, sodass $f'(c) = 0$
+   Wenn eine im Intervall $[a,b]$ stetige Funktion, in $(a,b)$ differenzierbar ist und $f(a) = f(b)$, so existiert ein $c\in (a,b)$, sodass $f'(c) = 0$
    #+end_thm
    #+begin_proof latex
    - Stetige Funktion auf $[a,b]$ nimmt ihr Maximum und Minimum
@@ -233,7 +233,7 @@
    Sei $I$ ein offenes Intervall $f:I \to \mathbb{R}$ heißt
    - (streng) konvex $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \leq \string(\underarrow[<]{streng}\string) \lambda f(x) + (1 - \lambda) f(y)$
    - (streng) konkav $\iff \Forall \lambda \in (0,1), x, y \in I: f(\lambda x + (1 - \lambda)y) \geq \string(\underarrow[>]{streng}\string) \lambda f(x) + (1 - \lambda) f(y)$
-   #+end_defv
+   #+end_defn
    #+ATTR_LATEX: :options [4.19]
    #+begin_ex latex
    $\exp$ ist eine (streng) konvexe Funktion
@@ -276,7 +276,7 @@
    Wir definieren auf $[a, b]$ die Funktion
    \[F(x) := f(x) - \frac{f(b) - f(a)}{g(b) - g(a)} g'(c)\]
    Wir verifizieren $\underline{F(a)} = f(a) = \underline{F(b)}$.
-   Nach dem Setz von Rolle gibt es ein $c\in (a, b)$ mit $F'(c) = 0$, das heißt
+   Nach dem Satz von Rolle gibt es ein $c\in (a, b)$ mit $F'(c) = 0$, das heißt
    \begin{align*}
    0 &= F'(c) = f'(c) = \frac{f(b) - f(a)}{g(b) - g(a)} g'(c) \\
    \intertext{wegen $g'(c) \neq 0$:}
@@ -301,11 +301,11 @@
 	   \[\Forall x \in I \Exists \xi \in (a, x): \frac{f(x)}{g(x)} = \frac{f'(\xi)}{g'(\xi)}\]
 	   $\implies$ für $x \to a$ auch $\xi \to a$ und
 	   \[\lim_{x\downarrow a} \frac{f(x)}{g(x)} = \lim_{\xi \downarrow a} \frac{f'(\xi)}{g'(\xi)}\]
-	2. Sei $\eps > 0$ beliebig. Nach Vorraussetzung ist $g'(x) \neq 0$ in $(a, b)$.
+	2. Sei $\eps > 0$ beliebig. Nach Voraussetzung ist $g'(x) \neq 0$ in $(a, b)$.
 	   \begin{gather*}
 	   \intertext{Wir wählen ein $\delta > 0$ mit $a + \delta \leq x_\ast$, sodass}
 	   \Forall x \in (a, a + \delta): f(x) \neq 0 \wedge g(x) \neq 0 \wedge \abs{\frac{f'(x)}{g'(x)} - c} < \eps \\
-	   \intertext{Für beliebigs $x, y \in (a, a + \delta)$ mit $f(x) \neq f(y)$}
+	   \intertext{Für beliebiges $x, y \in (a, a + \delta)$ mit $f(x) \neq f(y)$}
 	   \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{g(x) - g(y)}{f(x) - f(y)} \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{(1 - \frac{g(y)}{g(x)})g(x)}{\underbrace{(1 - \frac{f(y)}{f(y)})}_{x\downarrow a \to 1}f(x)}  \frac{f(x)}{g(x)} \\
 	   \implies \Exists \delta_\ast > 0: \Forall x \i n(a, a + \delta_\ast): \abs{\frac{f(x)}{g(x)} - \frac{f(x) - f(y)}{g(x) - g(y)}} < \eps
 	   \intertext{Für ein $x$ sodass $a < x < \underbrace{a + \min\{\delta, \delta_\ast\}}_{x_\ast}$ bekommen wir}
@@ -346,13 +346,13 @@
 ** Taylor Entwicklung
    Wir kennen
    \[e^x = \sum_{k = 0}^{\infty} \frac{x^k}{k!} \quad e^{x - x_0} = \sum_{k = 0}^{\infty} \frac{1}{k!}(x - x_0)^k\]
-   Wir wollen untersuchen unter welchen Bedingugen solche Potenzreihe für eine Funktion möglich ist
-   und wie man diese aus der Funktion bestimmen kann. Wir haben schon in Übung für die Darstellung für Polynome gezeicht:
+   Wir wollen untersuchen unter welchen Bedingungen solche Potenzreihe für eine Funktion möglich ist
+   und wie man diese aus der Funktion bestimmen kann. Wir haben schon in Übung für die Darstellung für Polynome gezeigt:
    \[p(x) = \sum_{k = 0}^{n} \frac{p^{(k)}(x_0)}{k!}(x - x_0)^k\]
    $p$ -Polynom. Wie ist das bei allgemeinen Funktionen
    #+ATTR_LATEX: :options [4.25]
    #+begin_defn latex
-   Für $f:(a, b) \to\mathbb{R}, f$ n-mal stetig differenzierbar definieren wir das n-te Tylor Polynom
+   Für $f:(a, b) \to\mathbb{R}, f$ n-mal stetig differenzierbar definieren wir das n-te Taylor Polynom
    für ein $x_0 \in (x,b)$
    \[f_n(x_0, x):= \sum_{k = 0}^{\infty} \frac{f^{(n)}(x_0)}{k!}(x - x_0)^k\]
    Wir studieren dann den Fehler der Approximation
@@ -363,7 +363,7 @@
    n-tes Taylor Polynom um ein $x_0\i n(a,b)$. Dann gibt es zu jeden $x\in (a,b)$ ein $\xi$ zwischen
    $x$ und $x_0$, so dass gilt
    \[f(x) = t_n(x_0, x) + \frac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}\]
-   mit dem sogenannten Lagrangschen Restglied.
+   mit dem sogenannten lagrangesche Restglied.
    #+end_thm
    #+begin_proof latex
    Wir bemerken, dass $t(x_0, x_0) = f(x_0)$ und definieren das Restglied
@@ -392,14 +392,14 @@
    #+end_defn
    #+ATTR_LATEX: :options [4.28 Taylor-Entwicklung]
    #+begin_thm latex
-   Sei $f:(a, b)\to\mathbb{R}$ eine glatte Funktion mit gleichmäßig beschränker Ableitung und
+   Sei $f:(a, b)\to\mathbb{R}$ eine glatte Funktion mit gleichmäßig beschrankter Ableitung und
    \[\sup_{x\in (a, b)}\abs{f^{(n)}(x)} \leq M < \infty \Forall n\in\mathbb{N}\]
-   Dann ist $f$ auf $(a, b)$ analytisch, also $\Forall x,y_0 \in (a, b)$ konvergiert die Tylorreihe von $f$
+   Dann ist $f$ auf $(a, b)$ analytisch, also $\Forall x,y_0 \in (a, b)$ konvergiert die Taylorreihe von $f$
    und es gilt
    \[f(x) = \sum_{k = 0}^{\infty} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k\]
    #+end_thm
    #+begin_proof latex
-   Aus der Restglieddarstellung folt mit Hilfe der Vorraussetzung
+   Aus der Restglieddarstellung folgt mit Hilfe der Voraussetzung
    \[\abs{f(x) - t_{x_0, x}} \leq \frac{\abs{f^{(n + 1)}(\xi)}}{(n + 1)!}\abs{x - x_0}^{n + 1} \leq \frac{M}{(n + 1)!}\abs{b - a}^{n + 1}\]
    Zu beliebigen $\eps > 0$ gibt es ein $n_\eps \in \mathbb{N}$, sodass $\Forall n\geq n_\eps$ gilt:
    \[\frac{M}{(n + 1)!}(b - a)^{n + 1} < \eps\]
@@ -416,7 +416,7 @@
    &\vdots \\
    f^{(n)}(x) = p_n(x^{-1}) \exp(\frac{1}{x^2}), n\geq 1
    \end{align*}
-   wobein $p_n$ ein Polynom ist. Die Ableitungen sind stetig in $x\neq 0$. Wir setzen
+   wobei $p_n$ ein Polynom ist. Die Ableitungen sind stetig in $x\neq 0$. Wir setzen
    \[y = x^{-2}\]
    Es gilt
    \[\frac{y^k}{e^y} \xrightarrow{y \to 0} 0, k \in \mathbb{N}\]
@@ -430,7 +430,7 @@
    Es gibt auch Funktionen, deren Taylorreihen außer in $x = x_0$ nicht konvergieren
    #+end_remark
 ** Bemerkung zu Stetigkeit
-   stetige Funktion $\supset$ gleichmäßig stetig Funktion $\supset$ Libschitz stetige Funktionen $\supset$ differenzierbare Funktion mit gleichmäßig beschränkten Ableitung (auf beschränkter Menge) $\supset$ stetig differenzierbare Funktionen
+   stetige Funktion $\supset$ gleichmäßig stetig Funktion $\supset$ Lipschitz stetige Funktionen $\supset$ differenzierbare Funktion mit gleichmäßig beschränkten Ableitung (auf beschränkter Menge) $\supset$ stetig differenzierbare Funktionen
    - $f(x) = \frac{1}{x}$ ist stetig, aber nicht gleichmäßig stetig in $(0, 1)$
    - $\sqrt{x}$ ist gleichmäßig stetig, aber nicht Lipschitz stetig
    - $f(x) = x^2, f'(x) = 2x, x\in\mathbb{R} \not\Exists M:\abs{f'(x)} < M \Forall x\in\mathbb{R}$
@@ -449,14 +449,14 @@
    #+begin_proof latex
    Ist $f$ $n$ -mal differenzierbar in $(a, b)$ und gilt die Bedingung, so folgt mit der Taylor-Entwicklung
    \[f(x) = \sum_{k = 0}^{n - 1} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k + \frac{f^{(n)}(\xi)}{n!}(x - \xi)^n = f(x_0) + \frac{f^{(n)}(\xi)}{n!}(x - \xi)^n\]
-   mit einem $\xi \in (a, b)$ zwichen $x$ und $x_0$. Die Funktion
+   mit einem $\xi \in (a, b)$ zwischen $x$ und $x_0$. Die Funktion
    \[\Delta_n(x) := \frac{f(x) - f(x_0)}{(x - x_0)^n}, x \neq x_0\]
    konvergiert für $x \to x_0$ nach
    \[\Delta_n(x) \to \frac{f^{(n)}(x_0)}{n!}\]
    Folglich kann die Funktion $\Delta_n$ zu einer auf $(a, b)$ stetigen Funktion fortgesetzt werden. Für diese gilt
    \[f(x) - f(x_0) = \Delta_n(x)(x - x_0)^n, \Delta_n(x_0) = \frac{f^{(n)}(x_0)}{n!}\]
    Falls $\Delta_n(x_0) > 0$, existiert wegen der Stetigkeit von $\Delta_n$ eine $\eps$ -Umgebung, $\eps > 0$,
-   von $x_0$, in der $\Delta_n > 0$. Auf dieser $\eps$-Umgebung git daher für gerades $n$:
+   von $x_0$, in der $\Delta_n > 0$. Auf dieser $\eps$-Umgebung gilt daher für gerades $n$:
    \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \implies f(x) > f(x_0)\]
    $\implies f(x_0)$ ist ein lokales Minimum. Analog argumentieren wir für $\Delta_n(x_0) < 0$.
    Für ungerades $n$ dagegen \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \begin{cases} > 0 & x > x_0 \\ < 0 & x < x_0 \end{cases}\]
@@ -464,7 +464,7 @@
    #+end_proof
    #+ATTR_LATEX: :options [4.30]
    #+begin_ex latex
-   1. Exponentialfunktion vesitzt um $x_0$ die Taylor-Entwicklung
+   1. Exponentialfunktion besitzt um $x_0$ die Taylor-Entwicklung
 	  \[e^x = \sum_{k = 0}^{n} \frac{x^k}{k!} + R_{n + 1}(x), R_{n + 1}(x) = \frac{e^\xi}{(n + 1)!}x^{n + 1}\]
 	  stimmt mit der Potenzreihe Darstellung überein.
    2. $\displaystyle \sin(x) = \sum_{k = 0}^{n} \frac{(-1)^k}{(2k + 1)!}x^{2k + 1} + R_{2n + 3}(x), R_{2n + 3}(x) = \frac{\sin^{(2n + 3)}(\xi)}{(2n + 3)!}x^{2n + 3} = \frac{(-1)^{2n + 1}\cos(\xi)}{(2n + 3)!}x^{2n + 3}$
@@ -477,11 +477,11 @@
 	  \[\ln(2) = \sum_{k = 1}^{\infty} \frac{(-1)^{k - 1}}{k}\]
 	  und wir bekommen Limes der alternierenden harmonischen Reihe.
    #+end_ex
-** Differentation und Grenzprozesse
+** Differentiation und Grenzprozesse
    \[\sum_{k = 1}^{\infty} a(x) = \lim_{n \to \infty} \sum_{k = 1}^{n}a(x)\]
    Motivation: Frage:
    \[\dd{}{x}(\sum_{k = 1}^{\infty}a(x)) \overset{?}{=} \sum_{k = 1}^{\infty}\dd{}{x}a(x)\]
-   #+ATTR_LATEX: :options [Patalogische Beispiele]
+   #+ATTR_LATEX: :options [Pathologische Beispiele]
    #+begin_remark latex
    1. Eine gleichmäßig konvergente Folge differenzierbarer Funktionen mit dicht differenzierbarem Limes
 	  \[f_n(x) := \begin{cases} \frac{n}{2}x^2 + \frac{1}{2n} & \abs{x} \leq \frac{1}{n} \\ \abs{x} & \abs{x} > \frac{1}{n} \end{cases}\]

@@ -12,7 +12,7 @@
 #+INCLUDE: "differential_calculus.org" :minlevel 1
 * Integration
   Auf analytischer Seite kann die Integration als inverser Prozess zur
-  Differentation angesehen werden. Geometrisch kann man für einfache Klasse von Funktionen
+  Differentiation angesehen werden. Geometrisch kann man für einfache Klasse von Funktionen
   (etwa stetige Funktionen), das (bestimmte) Integral einer (positiven) Funktion $f$ auf
   einem Intervall $[a, b]$ interpretieren als den Flächeninhalt zwischen der reellen Achse und dem
   Funktionsgraph (/insert Symbolbild here/)
@@ -25,7 +25,7 @@
    \[\tilde Z = \{\tilde x_0, \ldots, \tilde x_m\} \in \mathcal{Z}(a,b)\] mit $m \geq n$ von
    $Z \in \mathcal{Z}(a,b)$ enthält die Zerlegungspunkte von $Z$ (und möglichst noch weitere).
    Es gilt \[\tilde h = \max_{k = 1,\ldots, m} \abs{\tilde x_{k} - \tilde x_{k - 1}} \leq h\]
-   Für zwei Zerlegungen $Z_1, Z_2 \in \mathcal{Z}(a,b)$ besteht eine gemeinsame Verfeinerug $Z_{12}$
+   Für zwei Zerlegungen $Z_1, Z_2 \in \mathcal{Z}(a,b)$ besteht eine gemeinsame Verfeinerung $Z_{12}$
    und $h_{12} \leq \min\{h_1, h_2\}$. Eine Zerlegung $Z\in\mathcal{Z}(a, b)$ mit \[\abs{x_k - x_{k - 1}} = h \Forall k = 1,\ldots, n\]
    heißt *äquidistant*.
    #+ATTR_LATEX: :options [5.1 Ober- und Untersumme]
@@ -136,13 +136,13 @@
    #+end_proof
    #+ATTR_LATEX: :options [5.11 Zusammengesetzte Integrale]
    #+begin_thm latex
-   1. Eine (beschränkte) Riemann-integrierbare Funktion $f:[a,b]\to\mathbb{R}$ ist auch über jedem Teilintervall $[\tilde a, \tilde b] \in [a,b]$ Riemann-itegrierbar. Insobesondere gilt für $c \in (a,b)$
+   1. Eine (beschränkte) Riemann-integrierbare Funktion $f:[a,b]\to\mathbb{R}$ ist auch über jedem Teilintervall $[\tilde a, \tilde b] \in [a,b]$ Riemann-integrierbar. Insbesondere gilt für $c \in (a,b)$
 	  \[\int_{a}^{b}f(x) \d x = \int_{a}^{c} f(x) \d x + \int_{c}^{b} f(x) \d x\]
    2. Ist eine (beschränkte) Funktion $f:[a,b] \to\mathbb{R}$ für $c\in (a,b)$ über den Teilintervallen $[a,c]$ und $[c, b]$ Riemann-integrierbar, so ist sie auch über $[a,b]$ Riemann-integrierbar und es
 	  gilt 1.
    #+end_thm
    #+begin_proof latex
-   1. Seien $Z_n \in \mathcal{Z}(a,b)$ mit Feinheit $h_n \to 0$ und $\RS_{z_n}(f)$ zugehörige Riemann-Summan, sodass
+   1. Seien $Z_n \in \mathcal{Z}(a,b)$ mit Feinheit $h_n \to 0$ und $\RS_{z_n}(f)$ zugehörige Riemann-Summen, sodass
 	  \[\RS_{Z_n}(f)\xrightarrow{n\to\infty} \int_{a}^{b}f(x) \d x\]
 	  Wir zeigen Integrierbarkeit von $f$ über $(\tilde a, \tilde b)$. Ohne Beschränkung der Allgemeinheit können wir annehmen, dass $Z_n$ die Punkte $\{\tilde a,\tilde b\}$ als Teilungspunkte enthalten.
 	  Wir betrachten zwei beliebige Folge $\tilde Z_n^{(1)}, \tilde Z_n^{(2)} \in \mathcal{Z}(\tilde a, \tilde b)$ mit Feinheiten $\tilde h_n^{(1)}, \tilde h_n^{(2)} \to 0$
@@ -158,7 +158,7 @@
 	  \int_{a}^{c}f(x)\d x + \int_{c}^{b}f(x)\d x &= \lim_{h\to 0} \RS_{Z^{(1)}}(f) + \lim_{h \to 0} \RS_{Z^{(2)}}(f) \\
 	  &= \lim_{h\to 0} (\RS_{Z^{(1)}} + \RS_{Z^{(2)}}(f)) = \lim_{h\to 0} \RS_Z(f) = \int_{a}^{b}f(x) \d x
 	  \end{align*}
-   2. Sei $f$ über $[a,c]$ beziehungsweise $[c,b]$ integrierbar. Die Konverenz
+   2. Sei $f$ über $[a,c]$ beziehungsweise $[c,b]$ integrierbar. Die Konvergenz
 	  \begin{align*}
 	  \lim_{h\to 0}\RS_{Z^{(1)}}(f) &= \int_{a}^{c}f(x) \d x \\
 	  \lim_{h\to 0}\RS_{Z^{(2)}}(f) &= \int_{c}^{b}f(x) \d x
@@ -171,7 +171,7 @@
    #+begin_defn latex
    Sind $f, g:[a,b]\to\mathbb{R}$ (beschränkt) Riemann-integrierbar, so ist auch jede Linearkombination
    \[\alpha f + \beta g, \alpha,\beta \in\mathbb{R}\]
-   über $I$ Riemann-intgerierbar und es gilt
+   über $I$ Riemann-integrierbar und es gilt
    \[\int_{a}^{b}(\alpha f(x) + \beta g(x))\d x = \alpha \int_{a}^{b}f(x) \d x + \beta \int_{a}^{b}g(x) \d x\]
    #+end_defn
    #+begin_proof latex
@@ -190,7 +190,7 @@
    #+end_proof
    #+ATTR_LATEX: :options [5.13 Monotonie des Riemann-Integrals]
    #+begin_thm latex
-   Seien $f, g:[a,b] \to \mathbb{R}$ (beschränkt) Riemann-integrierebare Fukntion mit $g(x) \geq f(x) \Forall x\in[a,b]$. Dann gilt auch
+   Seien $f, g:[a,b] \to \mathbb{R}$ (beschränkt) Riemann-integrierbare Funktion mit $g(x) \geq f(x) \Forall x\in[a,b]$. Dann gilt auch
    \[\int_{a}^{b}g(x) \d x \geq \int_{a}^{b}f(x) \d x\]
    (ohne Beweis)
    #+end_thm
@@ -217,14 +217,14 @@
       das hei0t mit $f$ sind auch $f_+$ und $f_{-}$ Riemann-integrierbar
    2. $\abs{f} = f_+ - f_{-} \implies \abs{f}$ ist Riemann-integrierbar als linear Kombination von $f_+$ und $f_{-}$
 	  \[\abs{\int_{a}^{b}f(x) \d x} \leq \int_{a}^{b} \abs{f(x) \d x}\]
-	  folgt aus Monotonie des Riemann-Integrals, wil $f \leq \abs{f}, -f \leq \abs{f}$
-   3. Sei $\displaystyle M:= \sup_{x\in[a,b]}\abs{f}, \frac{\abs{f}}{M}$ ist Riemann-integrierbar. Wir brauchen also nur die Ausage für $0 < f \leq 1$.
+	  folgt aus Monotonie des Riemann-Integrals, weil $f \leq \abs{f}, -f \leq \abs{f}$
+   3. Sei $\displaystyle M:= \sup_{x\in[a,b]}\abs{f}, \frac{\abs{f}}{M}$ ist Riemann-integrierbar. Wir brauchen also nur die Aussage für $0 < f \leq 1$.
 	  Mit Hilfe des Mittelwertsatzes folgt für $0\leq x < y \leq 1$
 	  \[y^p - x^p = p\xi \xi^{p-1}, x < \xi < y\]
 	  $\Forall Z\in\mathcal{Z}(a,b)$ gilt daher
 	  \[\bar S_Z(\abs{f}^p) - \ubar S_Z(\abs{f}^p) \leq p(\bar S_Z(\abs{f}) - \ubar S_Z(\abs{f}))\]
 	  das heißt mit $\abs{f}$ ist auch $\abs{f}^p$ integrierbar
-   4. Wegen $f g = \frac{1}{4}((f + g)^2 - (f - g)^2)$ folgt die Riemann-integrierbarkeint von $fg$ mit Hilfe von 3.
+   4. Wegen $f g = \frac{1}{4}((f + g)^2 - (f - g)^2)$ folgt die Riemann-Integrierbarkeit von $fg$ mit Hilfe von 3.
    #+end_proof
    #+begin_remark latex
    Im Allgemeinen
@@ -245,7 +245,7 @@
    \[\Exists x_0 \in [a,b]: f(x_0) > 0\]
    Dann, aus Stetigkeit von $f$ gibt es ein $I_\eps := [x_0, x_0 + \eps]$ sodass
    \[f(x) \geq \delta > 0 \Forall x\in I_\eps\]
-   Da jede Zerlegung $Z$ vin $i$ mit hinreichend kleiner Feinheit $h$ ein Teilintervall $I_k \subseteq I_\eps$ beinhaltet, git fpr die
+   Da jede Zerlegung $Z$ von $i$ mit hinreichend kleiner Feinheit $h$ ein Teilintervall $I_k \subseteq I_\eps$ beinhaltet, gilt für die
    zugehörigen Summen
    \[0 <  \delta(x_k - x_{k - 1}) \leq \inf_{x\in I_k}f(x)(x_k - x_{k - 1}) \leq \ubar S_Z(f) \leq \int_{a}^{b}f(x) \d x \tag*{\lightning\qedhere}\]
    #+end_proof
@@ -261,7 +261,7 @@
    #+end_thm
    #+begin_proof latex
    Es folgt aus dem Zwischenwertsatz für stetig Funktionen: Ohne Beschränkung der Allgemeinheit behalten wir den Fall $g\geq 0$
-   Aus stetigkeit von $f$ folgt:
+   Aus Stetigkeit von $f$ folgt:
    \[\Exists m := \min_{x\in I} f(x), M:= \max_{x\in I}f(x)\]
    Damit, wegen $g\geq 0$
    \[m \int_{a}^{b} g(x) \d x \leq \int_{a}^{b}f(x)g(x) \d x \leq M \int_{a}^{b} g(x) \d x\]
@@ -280,7 +280,7 @@
    und $g$ Riemann-integrierbar mit $g\geq 0$, Dann gilt
    \[m \int_{a}^{b} f(x) \d x \leq \int_{a}^{b} f(x) g(x) \d x  \leq M \int_{a}^{b} g(x) \d x\]
    #+end_korollar
-   #+ATTR_LATEX: :options [5.19 (Notwendigkeit von Vorraussetzungen)]
+   #+ATTR_LATEX: :options [5.19 (Notwendigkeit von Voraussetzungen)]
    #+begin_ex latex
    1. Stetigkeit von $f$. Wir nehmen
 	  \[f:[0,2] \to \mathbb{R},x \mapsto \begin{cases} 0 & 0\leq x < 1 \\ 1 & 1 \leq x \leq 2\end{cases}\]
@@ -296,7 +296,7 @@
    #+end_ex
    #+ATTR_LATEX: :options [5.20]
    #+begin_defn latex
-   Eine Funktion $F:I = [a,b] \to \mathbb{R}$ heißt *unbestimmtes Integral* (oder Stammfunktion) einer Funktion $f:I \to \mathbb{R}$, wenn sie differenzerbar ist und
+   Eine Funktion $F:I = [a,b] \to \mathbb{R}$ heißt *unbestimmtes Integral* (oder Stammfunktion) einer Funktion $f:I \to \mathbb{R}$, wenn sie differenzierbar ist und
    \[F'(x) = f(x) \Forall x\in I\]
    Wir schreiben
    \[F = \int f(x) \d x\]
@@ -369,12 +369,12 @@
    \[\int_{a}^{b}f(\phi(y))\phi'(y)\d y = \int_{a}^{b}(F\circ \phi)'(y)\d y = F\circ\phi(y)\big|_a^b = (F\circ \phi)(b) - (F\circ \phi)(a) = F(\phi(b)) - F(\phi(a)) = \int_{\phi(a)}^{\phi(b)}f(x) \d x\]
    #+end_proof
 ** Uneigentliche Integrale
-   Wir wollen das Konzept des (bestimten) Riemann-Integrals für Funktionen auf unbeschränkten Intervallen mit Singularitäten ausdehnen. Solche Integrale werden *uneigentlich* genannt.
+   Wir wollen das Konzept des (bestimmten) Riemann-Integrals für Funktionen auf unbeschränkten Intervallen mit Singularitäten ausdehnen. Solche Integrale werden *uneigentlich* genannt.
 *** Uneigentliche Integrale auf beschränkten Intervallen
-   Wir nennen eine Funktion auf deinem endlichen, halboffenen Interball $\string(a, b]$ "integrierbar", wenn sie auf jedem abgeschlossenen Teilintervall $[a', b] \subset \string(a,b]$ Riemann-integrierbar ist.
+   Wir nennen eine Funktion auf deinem endlichen, halboffenen Intervall $\string(a, b]$ "integrierbar", wenn sie auf jedem abgeschlossenen Teilintervall $[a', b] \subset \string(a,b]$ Riemann-integrierbar ist.
    #+ATTR_LATEX: :options [5.25 Uneigentliches Riemann-Integral 1]
    #+begin_thm latex
-   Sei $f:\string(a,b]\to \mathbb{R}$ eine auf dem halboffenen Interball $\string(a,b]$ aber nicht auf dem Abschluß $[a,b]$ integrierbare Funktion. Existiert für jede Folge von Punkten $a_n \in \string(a,b]$
+   Sei $f:\string(a,b]\to \mathbb{R}$ eine auf dem halboffenen Intervall $\string(a,b]$ aber nicht auf dem Abschluss $[a,b]$ integrierbare Funktion. Existiert für jede Folge von Punkten $a_n \in \string(a,b]$
    der Limes
    \[\int_{a}^{b}f(x) \d x := \lim_{a_n \downarrow a} \int_{a_n}^{b}f(x) \d x\]
    so ist dieser unabhängig von der Wahl der Folge $(a_n)_{n\in\mathbb{N}}$ und heißt das "uneigentliche Integral" von $f$ über $[a,b]$
@@ -382,19 +382,19 @@
    #+begin_proof latex
    Ist $(a'_n)_{n\in\mathbb{N}}$ eine zweite Folge mit
    \[\lim_{a'_n \downarrow a} \int_{a'_n}^{b} f(x) \d x = A' \]
-   so konvergieren gemäß Vorraussetzung auch die Integrale zu der zusammengesetzten Folge $\{a_1, a'_1, \ldots, a_n, a'_n, \ldots\}$ gegen den Limes $A''$. Da aber
+   so konvergieren gemäß Voraussetzung auch die Integrale zu der zusammengesetzten Folge $\{a_1, a'_1, \ldots, a_n, a'_n, \ldots\}$ gegen den Limes $A''$. Da aber
    Teilfolgen gegen denselben Limes konvergieren wie die Gesamtfolge muss $A'' = A'$ sein. Also konvergieren alle Integralfolgen gegen den selben Limes
    #+end_proof
    #+ATTR_LATEX: :options [5.26]
    #+begin_lemma latex
-   Sei $f:\string(a,b]\to\mathbb{R}$ auf $\string(a,b]$ aber nicht auf $[a,b]$ intergrierbar. Existiert dann das uneigentliche Integral von $\abs{f}$ über $[a,b]$, so existiert auch das uneigentliche
+   Sei $f:\string(a,b]\to\mathbb{R}$ auf $\string(a,b]$ aber nicht auf $[a,b]$ integrierbar. Existiert dann das uneigentliche Integral von $\abs{f}$ über $[a,b]$, so existiert auch das uneigentliche
    Integral von $f$ über $[a,b]$ und
    \[\abs{\int_{a}^{b}f(x) \d x} \leq \int_{a}^{b} \abs{f(x)} \d x\]
    #+end_lemma
    #+begin_proof latex
    Für $\eps > 0, \eps < b - a$ schreiben wir
    \[\int_{a + \eps}^{b} f(x) \d x = \int_{a + \eps}^{b} \frac{\abs{x} + f(x)}{2} \d x - \frac{a + \eps}{b} \frac{\abs{f(x)} - f(x)}{2} \d x\]
-   Die Integrale rechts sind für $\eps \to 0$ nach Vorraussetzung gleichmäßig beschränkt und wegen der Nichtnegativität des Integranden jeweils monoton wachsend.
+   Die Integrale rechts sind für $\eps \to 0$ nach Voraussetzung gleichmäßig beschränkt und wegen der Nichtnegativität des Integranden jeweils monoton wachsend.
    \[\abs{\int_{a + \eps}^{b} \frac{\abs{f(x)} + f(x)}{2} \d x} + \abs{\int_{a + \eps}^{b} \frac{\abs{f(x)} - f(x)}{2} \d x} \leq 2 \int_{a + \eps}^{b}\abs{f(x)} \d x \leq 2 \int_{a}^{b}\abs{f(x)}\d x\]
    Folglich konvergieren die Integrale für $\eps \to 0$. Damit hat das linke Integral für $\eps \to 0$ einen Limes, das heißt $f$ besitzt ein uneigentliches Integral
    #+end_proof
@@ -410,7 +410,7 @@
    Für $0 < \mu < 1 \wedge \mu \geq 1$ existiert das uneigentliche Integral nicht.
    #+end_ex
 *** Uneigentliche Integrale auf unbeschränkten Intervallen
-	Wir nennen einen Funktion auf $[a,\infty\string)$ *lokal integrierbar*, wenn sie auf jedem abgeschlossenem Teilintervall $[a, \tilde b] \subset [a, \infty\string)$ Riemannintegrierbar ist.
+	Wir nennen einen Funktion auf $[a,\infty\string)$ *lokal integrierbar*, wenn sie auf jedem abgeschlossenem Teilintervall $[a, \tilde b] \subset [a, \infty\string)$ Riemann-integrierbar ist.
 	#+ATTR_LATEX: :options [5.28 Uneigentliches Riemann-Integrale 2]
 	#+begin_thm latex
 	Sei $f:[a,\infty\string) \to \mathbb{R}$ eine lokal integrierbare Funktion. Existiert für jede Folge
@@ -423,7 +423,7 @@
 	#+end_proof
 	#+ATTR_LATEX: :options [5.29]
 	#+begin_lemma latex
-	Sei $f:[a,\infty\string) \to \mathbb{R}$ lokal integrierbar. Existiert das uneigntliche Integral von $\abs{f}$ über $[a,\infty\string)$, so existiert auch das uneigentliche Integral von
+	Sei $f:[a,\infty\string) \to \mathbb{R}$ lokal integrierbar. Existiert das uneigentliche Integral von $\abs{f}$ über $[a,\infty\string)$, so existiert auch das uneigentliche Integral von
 	$f$ über $[a, \infty\string)$ und
 	\[\abs{\int_{a}^{\infty}f(x) \d x} \leq \int_{a}^{\infty}\abs{f(x)} \d x\]
 	#+end_lemma
@@ -434,7 +434,7 @@
 	#+begin_thm latex
 	Sei $f:[a, \infty\string) \to \mathbb{R}$ in $[a,\infty\string)$ integrierbar mit
 	\[\sup_{x\geq a}\abs{\int_{a}^{x}f(x) \d \xi} = \mu <\infty\]
-	Ferner sei $g:[a,\infty\string) \to \mathbb{R}$ differenzierbar und monoton gegen Null fallend. Dann existert das uneigentliche Integral
+	Ferner sei $g:[a,\infty\string) \to \mathbb{R}$ differenzierbar und monoton gegen Null fallend. Dann existiert das uneigentliche Integral
 	\[\int_{a}^{\infty}f(x) g(x) \d x = \lim_{x\to\infty} \int_{a}^{x}f(\xi)g(\xi)\d \xi\]
 	#+end_thm
 	#+begin_proof latex
@@ -448,11 +448,11 @@
 	\[\abs{\int_{\alpha}^{\beta}F(\xi)g'(\xi)\d \xi} \leq \mu \int_{\alpha}^{\beta}\abs{g'(\xi)}\d \xi = - \mu \int_{\alpha}^{\beta}g'(\xi)\d \xi = - \mu g(\xi)\big|_\alpha^\beta \leq \eps\]
 	\[\int_{a}^{x}F(\xi)g'(\xi)\d \xi\] für $x \to \infty$ hat einen Limes nach dem Cauchy-Kriterium
 	\[\lim_{x\to\infty} \int_{a}^{x}f(\xi)g(\xi)\d \xi = \underbrace{\lim_{x\to\infty} F(x)g(x)}_{= 0} - \underbrace{F(a)}_{= 0}g(a) - \int_{a}^{\infty}F(\xi)g'(\xi)\d \xi < \infty\]
-	liefrt die Behauptung
+	liefert die Behauptung
 	#+end_proof
 	#+ATTR_LATEX: :options [5.31]
 	#+begin_thm latex
-	Es sei $f:[n_0, \infty\string) \to \mathbb{R}$ eine stetige, positive, monoton fallende Funkton. Dann gilt
+	Es sei $f:[n_0, \infty\string) \to \mathbb{R}$ eine stetige, positive, monoton fallende Funktion. Dann gilt
 	\[\sum_{k = n_0}^{\infty}f(k) < \infty \iff \int_{n_0}^{\infty}f(x)\d x < \infty\]
 	#+end_thm
 	#+begin_proof latex
@@ -476,7 +476,7 @@
 ** Integration und Grenzprozesse
    Frage:
    \[\int_{a}^{b} \lim_{n\to\infty} f_n(x) \d x \overset{?}{=} \lim_{n\to\infty} \int_{a}^{b}f_n(x) \d x\]
-   Patologisches Beispiel:
+   Pathologisches Beispiel:
    \begin{align*}
    f_n(x) &:= n x e^{-n x^2} \\
    \lim_{n\to\infty} f_n(x) &= 0 \\
@@ -511,11 +511,11 @@
    Die Potenzreihe
    \[\sum_{k = 0}^{\infty} c_k(x - x_0)^k\]
    habe den Konvergenzradius $\rho > 0$, sie stellt also auf dem Intervall $I = (x_0 - \rho, x_0 + \rho)$ eine
-   stetig Funktion dar. Deren Stammfunktion erhält man duch gliedweise Integration und diese hat denselben Konvergenzradius $\rho$
+   stetig Funktion dar. Deren Stammfunktion erhält man durch gliedweise Integration und diese hat denselben Konvergenzradius $\rho$
    \[\int \sum_{k = 0}^{\infty}c_k(y - x_0)^k \d x = \sum_{k = 0}^{\infty} \frac{c_k}{k + 1}(x - x_0)^{k + 1} + c\]
    #+end_thm
    #+begin_proof latex
-   Sei $\abs{x - x_0} \leq R < \rho$ und $eps > 0$ beliebig. Gleichmäßige Konvergenz der Reihe auf dem Intervall $[x_0 - R, x_0 + R]$
+   Sei $\abs{x - x_0} \leq R < \rho$ und $\eps > 0$ beliebig. Gleichmäßige Konvergenz der Reihe auf dem Intervall $[x_0 - R, x_0 + R]$
    impliziert $\Forall n \geq n_\eps \in\mathbb{N}$
    \[\abs{\sum_{k = n + 1}^{\infty}c_k(x - x_0)^k} \leq \sum_{k = n + 1}^{\infty} \abs{c_k}R^k < \eps\]
    Ferner,
@@ -523,7 +523,7 @@
    #+end_proof
    #+begin_remark latex
    Der Satz 5.34 gilt auch für Folgen von uneigentlichen Integralen auf beschränkten Intervallen. Bei uneigentlichen Integralen auf unbeschränkten Gebieten reicht
-   die gleichmäßige Konvergen der Folge im allgemeinen nicht.
+   die gleichmäßige Konvergenz der Folge im allgemeinen nicht.
    zum Beispiel:
    \[f_n(x) := \begin{cases} \frac{1}{n} & 0 \leq x \leq n \\ 0 & x > n\end{cases}\]
    $f_n \xrightarrow{\text{gleichmäßig}} 0$ auf $I = [0, \infty\string)$, aber
@@ -541,17 +541,17 @@
    #+end_thm
    #+ATTR_LATEX: :options [5.38 Nullmenge]
    #+begin_defn latex
-   Eine Teilmenge $M\subset \mathbb{R}$ heißt Nullmenge (Lebesque Nullmenge)
+   Eine Teilmenge $M\subset \mathbb{R}$ heißt Nullmenge (Lebesgue Nullmenge)
    wenn es zu jedem $\eps > 0$ höchstens abzählbar unendlich viele Intervalle $I_1, \I_2, \ldots$ gibt sodass
    \[M \subseteq \bigcup_k I_k \quad \sum_{k} \abs{I_k} \leq \eps\]
    Mann nennt das System der Intervalle $I_k$ eine *abzählbare* (offene oder abgeschlossene) *Überdeckung* der Menge $M$.
-   Eine Funktion $f:[a,b]$ besitzt eine Eigenschfat (zum Beipsiel stetig) *fast überall*, wenn die Menge der Punkte, in deren sie diese Eigenschaft nicht besitzt eine Nullmenge ist.
+   Eine Funktion $f:[a,b]$ besitzt eine Eigenschaft (zum Beispiel stetig) *fast überall*, wenn die Menge der Punkte, in deren sie diese Eigenschaft nicht besitzt eine Nullmenge ist.
    #+end_defn
    #+ATTR_LATEX: :options [5.39]
    #+begin_lemma latex
    1. Jede Teilmenge einer Nullmenge ist eine Nullmenge
-   2. Endliche und abzähbare Teilmengen von $\mathbb{R}$ sind Nullmengen
-   3. Die Vereinigung abhählbar vieler Nullmengen ist wieder einer Nullmenge
+   2. Endliche und abzählbare Teilmengen von $\mathbb{R}$ sind Nullmengen
+   3. Die Vereinigung abwählbar vieler Nullmengen ist wieder einer Nullmenge
    #+end_lemma
    #+begin_proof latex
    1. Sei $M$ eine Nullmenge $\implies M \subset \bigcup_k I_k$ und $\sum_k \abs{I_k} < \eps$
@@ -560,17 +560,17 @@
 	  \[I_k = [x_k - \frac{\eps}{2^{k + 1}}, x_k + \frac{\eps}{2^{k + 1}}]\]
 	  Es gilt
 	  \[M \subset \bigcup_k I_k ~\text{mit}~\sum_k \abs{I_k} \leq \sum_{k = 1}^{\infty} \frac{\eps}{2^k} = \eps(\sum_{k = 0}^{\infty} \frac{1}{2^k} - 1) = \eps (\frac{1}{1 - \frac{1}{2}} - 1) = \eps\]
-   3. Seien $\{M_k\}$  höchstens abzählbare Nullmengen. Für $\eps > 0$ kann man jedes $M_k$ durch höchstens abzählbar vile Intervalle $(I_{kl})$ überdecken sodass
-	  \[sum_l \abs{I_{kl}} \leq 2^{-k} \eps\]
-	  Dann überdechen alle Mengen $(I_{kl})^{\infty}$ auch die Vereinugung
+   3. Seien $\{M_k\}$  höchstens abzählbare Nullmengen. Für $\eps > 0$ kann man jedes $M_k$ durch höchstens abzählbar viele Intervalle $(I_{kl})$ überdecken sodass
+	  \[\sum_l \abs{I_{kl}} \leq 2^{-k} \eps\]
+	  Dann überdecken alle Mengen $(I_{kl})^{\infty}$ auch die Vereinigung
 	  \[\bigcup_k M_k\]
 	  und es gilt
-	  \[sum_{k,l} \abs{I_{kl}} = \sum_k (\sum_l \abs{I_{kl}}) \leq \sum_k \frac{\eps}{2^k} \leq \eps \tag*{\qedhere}\]
+	  \[\sum_{k,l} \abs{I_{kl}} = \sum_k (\sum_l \abs{I_{kl}}) \leq \sum_k \frac{\eps}{2^k} \leq \eps \tag*{\qedhere}\]
    #+end_proof
-   #+ATTR_LATEX: :options [5.40 Satz von Lebesque]
+   #+ATTR_LATEX: :options [5.40 Satz von Lebesgue]
    #+begin_thm latex
    Eine Funktion $f:[a,b\string) \to \mathbb{R}$ ist Riemann-integrierbar auf $[a,b]$ genau dann wenn sie auf $[a,b]$
-   beschränkt und fast überall statig ist (ohne Beweis).
+   beschränkt und fast überall stetig ist (ohne Beweis).
    #+end_thm
    #+begin_remark latex
    Dieser Satz charakterisiert das Riemann-integral vollständig. Wichtig ist die Zulässigkeit von abzählbar vielen unstetigen Stellen.

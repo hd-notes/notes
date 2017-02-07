@@ -394,7 +394,7 @@
 *** Beispiel
 	1. $f:\mathbb{R}\to\mathbb{R}, x\mapsto x^2$
 	2. $f:\mathbb{R}\to\mathbb{R}^2,x\mapsto (x,x+1)$
-	3. $M$ Menge, $id_M: M\to M,m\mapsto m$ heißt Identität (identische Abbildung) auf $M$
+	3. $M$ Menge, $\id_M: M\to M,m\mapsto m$ heißt Identität (identische Abbildung) auf $M$
 	4. $I$,$M$ Mengen: Eine über $I$ indizierte Familie von Elementen von $M$ ist eine Abbildung: \\
 	   $m:I\to M,i\mapsto m(i) =: m_i$. Wir schreiben für die Familie auch kurz $(m_i)_{i\in I}$. $I$ heißt Indexmenge der Familie.
 	5. Spezialfall von 4.: $I = \mathbb{N},M = \mathbb{R}:~((m_i)_{i\in\mathbb{N}})$ nennt man auch Folge reeller Zahlen.
@@ -469,19 +469,19 @@
 		- surjektiv, denn für $m\in\mathbb{R}_{\geq 0}$ ist $f(\sqrt{m}) = (\sqrt{m})^2 = m$
 		- bijektiv
 **** Bemerkung 4.12
-	 $M,N$ Mengen, $f:M\to N, g:n\to M$ mit $g\circ f = id_M$
+	 $M,N$ Mengen, $f:M\to N, g:n\to M$ mit $g\circ f = \id_M$
 	 Dann ist $f$ injektiv und $g$ surjektiv.
 ***** Beweis
 	  1. $f$ ist injektiv, denn: \\
-		 Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \implies g(f(m_1)) = g(f(m_2)) \implies (g\circ f)(m_1) = (g\circ f)(m_2) \implies id_m(m_1) = id_M(m_2)\implies m_1 = m_2$
+		 Seien $m_1, m_2 \in M$ mit $f(m_1) = f(m_2) \implies g(f(m_1)) = g(f(m_2)) \implies (g\circ f)(m_1) = (g\circ f)(m_2) \implies \id_m(m_1) = \id_M(m_2)\implies m_1 = m_2$
 	  2. $g$ ist surjektiv, denn: \\
-		 Sei $m\in M$ Dann ist $m=id_M(m) = (g\circ f)(m) = g(f(m))$
+		 Sei $m\in M$ Dann ist $m=\id_M(m) = (g\circ f)(m) = g(f(m))$
 **** Bemerkung
 	 Sei $f:M\to N$, $N,M$ Mengen
 	 Dann sind äquivalent:
 	 1. $f$ ist bijektiv
 	 2. Zu jedem $n\in N$ gibt es genau ein $m\in M$ mit $f(m) = n$
-	 3. Es gibt genau eine Abbildung $g:N\to M$ mit $g\circ f = id_M$ und $f\circ g = id_N$
+	 3. Es gibt genau eine Abbildung $g:N\to M$ mit $g\circ f = \id_M$ und $f\circ g = \id_N$
 	 In diesem Fall bezeichnen wir die Abbildung $g:N\to M$ aus 3. mit $f^{-1}$ und nennen $f^{-1}$ die Umkehrabbildung von $f$. Sie ist gegeben durch
 	 \[f^{-1} : N\to M, n\mapsto~\text{Das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$}\]
 ***** Beweis
@@ -491,35 +491,35 @@
 		- Existenz folgt aus Surjektivität von $f$
 		- Eindeutigkeit: Seien $m_1,m_2 \in M$  mit \(f(m_1) = n, f(m_2) = n \implies f(m_1) = f(m_2) \xRightarrow{f injektiv} m_1 = m_2\)
 	  - 2. $\implies$ 3. Zu jedem $n\in M$ existiere genau ein $m\in M$ mit $f(m) = n$ \\
-		zu zeigen: Ex existiert genau eine Abbildung $g:N\to M$ mit $f\circ f = id_M$ und $f\circ g = id_N$
+		zu zeigen: Ex existiert genau eine Abbildung $g:N\to M$ mit $f\circ f = \id_M$ und $f\circ g = \id_N$
 		- Existenz: Wir definieren \(g:N\to M, n\mapsto~\text{das nach 2. eindeutig \\
 		  bestimmte Element $m\in M$ mit $f(m) = n$}\) \\
-		  Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~\text{das heißt}~ g\circ f = id_M\]
+		  Dann gilt für $m\in M$: \[(g\circ f)(m) = f(f(m)) = m,~\text{das heißt}~ g\circ f = \id_M\]
 		  und für $n\in N$ ist $(f\circ g)(n) = f(g(n)) = n$ also $f\circ g = id_N$
-		- Eindeutigkeit: Es seinen $g_1,g_2:N\to M$ mit $g_i \circ f = id_M, f\circ g_i = id_N$ für $i = 1,2$ \\
-		  \[\implies g_1 = g_1 \circ id_N = g_1 \circ (f\circ g_2) = (g_1 \circ f) \circ g_2 = id_M \circ g_2 = g_2\]
-	  - 3. $\implies$ 1. Wegen 3. existiert $g:N\to M$ mit $g\circ f = id_M,f\circ g = id_N$ \\
+		- Eindeutigkeit: Es seinen $g_1,g_2:N\to M$ mit $g_i \circ f = \id_M, f\circ g_i = \id_N$ für $i = 1,2$ \\
+		  \[\implies g_1 = g_1 \circ \id_N = g_1 \circ (f\circ g_2) = (g_1 \circ f) \circ g_2 = \id_M \circ g_2 = g_2\]
+	  - 3. $\implies$ 1. Wegen 3. existiert $g:N\to M$ mit $g\circ f = \id_M,f\circ g = \id_N$ \\
 		\[\xRightarrow{[[Bemerkung 4.12]]} f~\text{injektiv}~,f~\text{surjektiv}~\implies f~\text{bijektiv}\implies~\text{1.}\]
 ***** Anmerkung
 	  - Bitte stets aufpassen, ob mit $f^{-1}$ die Umkehrabbildung (falls existent) oder das Bilden der Urbildmenge gemeint ist.
 	  - Im Beweis von 3. $\implies$ 1. haben wir die Eindeutigkeit von $g$ gar nicht verwendet, das heißt wir haben sogar gezeigt: \\
-		$f$ bijektiv $\iff$ 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = id_N$ und $f\circ f = id_M$ Solch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
+		$f$ bijektiv $\iff$ 3.' Es existiert eine Abbildung $g:N\to M$ mit $f\circ g = \id_N$ und $f\circ f = \id_M$ Solch eine Abbildung $g$ ist in diesem Fall automatisch bestimmt.
 ***** Beispiel
 	  Im Beispiel vorher haben wir gesehen $f:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto x^2$ ist bijektiv.
 	  Die Umkehrabbildung ist gegeben durch $f^{-1}:\mathbb{R}_{\geq 0} \to \mathbb{R}_{\geq 0}, x\mapsto \sqrt{x}$
 **** Bemerkung
 	 $M,N$ Mengen, $f:M\to N$ Dann gilt:
-	 1. $f$ injektiv $\iff$ Es existiert $g:N\to M$ mit $g\circ f = id_M$ \\
+	 1. $f$ injektiv $\iff$ Es existiert $g:N\to M$ mit $g\circ f = \id_M$ \\
 		*Beweis:*
 		- "$\impliedby$" folgt aus [[Bemerkung 4.12]]
 		- "$\implies$" Sei $f$ injektiv. Sein $x$ ein beliebiges Element aus $M$
 		  Wir definieren \[g:N\to M,n\mapsto \begin{cases} x & n\not\in f(M) \\ \text{das eindeutig bestimmte Element $m\in M$ mit $f(m) = n$} & n\in f(M) \end{cases}\]
-		  Für alle $m\in M$ ist dann $(g\circ f)(m) = g(f(m)) = m$ das heißt $g\circ f = id_M$
-	 2. $f$ surjektiv $\iff$ Es existiert $g:N\to M$ mit $f\circ g = id_N$ \\
+		  Für alle $m\in M$ ist dann $(g\circ f)(m) = g(f(m)) = m$ das heißt $g\circ f = \id_M$
+	 2. $f$ surjektiv $\iff$ Es existiert $g:N\to M$ mit $f\circ g = \id_N$ \\
 		*Beweis:*
 		- "$\impliedby$" folgt aus [[Bemerkung 4.12]]
 		- "$\implies$" Sei $f$ surjektiv. Für jedes Element $n\in N$ wählen wir ein Element $\tilde n\in f^{-1}(\{n\}) \neq \emptyset$ und sehen
-		  $g:N\to M,n\mapsto \tilde n$. Dann ist $(f\circ g)(n) = f(g(n)) = n$ für alle $n\in N$ und das heißt $f\circ g = id_N \hfill\square$
+		  $g:N\to M,n\mapsto \tilde n$. Dann ist $(f\circ g)(n) = f(g(n)) = n$ für alle $n\in N$ und das heißt $f\circ g = \id_N \hfill\square$
 ***** Anmerkung
 	  Das wir stets einen Auswahlprozess wie im Beweis von 2. "$\implies$" vornehmen können ist ein Axiom der Mengenlehre (erkennen wir als gültig an, ist jedoch nicht beweisbar), das *Auswahlaxiom*: \\
 	  Ist $I$ eine Indexmenge und $(A_i)_{i\in I}$ eine Familie von nicht leeren Mengen, dann gibt es eine Abbildung $\gamma:I\to \bigcup_{i\in I} A_i$ mit $\gamma (i) \in A_i$ für alle $i\in I$ (im obigen Beweis ist $I = N,A_n = f^{-1}(\{n\})$ für $n\in N$)
