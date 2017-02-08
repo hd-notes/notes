@@ -91,8 +91,10 @@
 #+LATEX_HEADER:   }{O}{c}{F}{T}{S}%
 #+LATEX_HEADER: }}
 
-#+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
-#+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
+#+LATEX_HEADER: \def\cvec#1{\begin{pmatrix}\cvecA#1;;\end{pmatrix}}
+#+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\\ \expandafter \cvecA \fi}
+# #+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
+# #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
 #+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
 #+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
 #+LATEX_HEADER: }

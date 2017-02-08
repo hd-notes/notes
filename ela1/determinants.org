@@ -396,3 +396,145 @@
   A^\# = \begin{pmatrix} 4 & -3 \\ -2 & 1\end{pmatrix}^{T} = \begin{pmatrix}4 & -2 \\ -3 & 1\end{pmatrix}
   \end{gather*}
   #+end_ex
+  #+ATTR_LATEX: :options [17.18]
+  #+begin_remark latex
+  $A \in M(n\times n, K), i, j \in \{1, \ldots, n\}$. Dann gilt:
+  \[\det(A_{ij}) = (-i)^{i + j} \det(A_{ij}')\]
+  #+end_remark
+  #+begin_proof latex
+  Durch $i - 1$ Vertauschungen benachbarter Zeilen und $j - 1$ Vertauschungen benachbarter Spalten
+  kann man $A_{ij}$ auf die Form
+  \[\begin{pmatrix} 1 & 0 \\ & 0 & A_{ij}\end{pmatrix}\]
+  bringen $\implies$
+  \[\det(A_{ij}) = (-1)^{i - 1 + j - 1} \det(A_{ij}') = (-1)^{i + j}\det{A_{ij}'}\]
+  #+end_proof
+  #+ATTR_LATEX: :options [17.19]
+  #+begin_remark latex
+  $A = (a^1, \ldots, a^n) \in M(n\times n, K)$ mit Spaltenvektoren $a^1, \ldots, a^n$,
+  \[e^i := \cvec{0;\vdots;1;\vdots;0}\]
+  Dann gilt:
+  \[\det(A_{ij}) = \det((a^1, \ldots, a^{j - 1}, e^i, a^{j + 1}, \ldots, a^n))\]
+  #+end_remark
+  #+begin_proof latex
+  Führe $(a^i, \ldots, a^{j - 1}, e^i, a^{j + 1}, \ldots, a^n)$ durch Addition von geeigneten Vielfachen
+  der j-ten Spalte in $A_{ij}$ über ("i-te Zeile ausräumen") $\xRightarrow{\text{D7}}$ Behauptung
+  #+end_proof
+  #+ATTR_LATEX: :options [17.20]
+  #+begin_thm latex
+  $A\in M(n\times n, K)$. Dann gilt:
+  \[A \cdot A^\# = \det(A) \cdot E_n = A^\# \cdot A\]
+  #+end_thm
+  #+begin_proof latex
+  Sei $A = (a^i, \ldots, a^n) = (a_{ij})$. Es ist $A^\# A = (b_{ik})$ mit
+  \begin{align*}
+  b_{ij} &= \sum_{j = 1}^{n} a_{ij}^\# a_{ik} = \sum_{j = 1}^{n}a_{jk} \det(A_{ji}) = \sum_{j = 1}^{n} a_{jk} \det((a^1, \ldots, a^{i - 1}, e^j, a^{i + 1}, \ldots, a^n)) \\
+  &= \det((a^1, \ldots, a^{i - 1}, \underbrace{\sum_{j = 1}^{n} a_{jk}e^j}_{a^k}, a^{i + 1}, \ldots, a^n)) = \delta_{ij} \det(A)
+  \end{align*}
+  \[\implies A^\# \cdot A = \det(A) E_n\]
+  Analog: $A\cdot A^\# = \det(A) E_n$.
+  #+end_proof
+  #+ATTR_LATEX: :options [17.21 Entwicklungssatz von Laplace]
+  #+begin_thm latex
+  $n\geq 2, A\in M(n\times n, K)$. Dann gilt: Für jede $i \in \{1, \ldots, n\}$ ist
+  \[\det(A) = \sum_{j = 1}^{n} (-1)^{i + j} a_{ij} \det(A_{ij}')\tag{Entwicklung nach der i-ten Zeile}\]
+  und für jedes $j\in\{1, \ldots, n\}$ ist
+  \[\det(A) = \sum_{i = 1}^{n} (-1)^{i + j} a_{ij} \det(A_{ij}')\tag{Entwicklung nach der j-ten Spalte}\]
+  #+end_thm
+  #+begin_proof latex
+  Nach 17.20 ist $A\cdot A^\# = \det(A) = E_n$, insbesondere ist für jedes $i\in \{1, \ldots, n\}$:
+  \[\det(A) = \sum_{j = 1}^{n} a_{ij} a_{ij}^\# = \sum_{j = 1}^{n} a_{ij} \det(A_{ij}) = \sum_{j = 1}^{n}(-1)^{i + j} a_{ij} \det(A_{ij}')\]
+  Analog für Entwicklung nach j-ten Spalte über $A^\# \cdot A = \det(A) E_n$
+  #+end_proof
+  #+ATTR_LATEX: :options [17.22]
+  #+begin_ex latex
+  \begin{align*}
+  \det\begin{pmatrix}
+  -2 & 2 & 3 \\
+  -1 & 1 & 1 \\
+  -1 & 0 & 1 \\
+  \end{pmatrix}
+  &= (-1)^{1 + 2} \cdot 2 \cdot \det \begin{pmatrix} -1 & 1 \\ -1 & 1\end{pmatrix} +
+  (-1)^{2 + 2} \cdot 2 \cdot \det \begin{pmatrix} -2 & 3 \\ -1 & 1\end{pmatrix} +
+  (-1)^{3 + 2} \cdot 0 \cdot \det \begin{pmatrix} -2 & 3 \\ -1 & 1\end{pmatrix} \\
+  &= 0 + \det\begin{pmatrix} -2 & 3 \\ -1 & 1\end{pmatrix} + 0 = (-2)1 -4(-1) = 1
+  \end{align*}
+  #+end_ex
+  #+begin_note latex
+  - Versuche, nach Zeilen beziehungsweise Spalten mit möglichst vielen Nullen zu entwickeln.
+  - Vorzeichenverteilung durch $(-1)^{i + j}$:
+	\[\begin{pmatrix} + & - & + & \\ - & + & & \\ + & & \ddots & \\ \end{pmatrix}\]
+  #+end_note
+  #+ATTR_LATEX: :options [17.23]
+  #+begin_thm latex
+  $A\in GL(n, K)$. Dann gilt:
+  \[A^{-1} = \frac{1}{\det(A)} A^\# = \frac{1}{\det(A)} B^T\]
+  wobei
+  \[B = (\det(A_{ij})) = ((-1)^{i + j} \det A_{ij}')\]
+  #+end_thm
+  #+begin_proof latex
+  folgt aus 17.20
+  #+end_proof
+  #+ATTR_LATEX: :options [17.24]
+  #+begin_ex latex
+  Sei
+  \[A = \begin{pmatrix} a & b \\ c & d\end{pmatrix} \in GL(2, K)\]
+  \[\implies A^{-1} = \frac{1}{ad - bc} \begin{pmatrix}d & -c \\ -b & a\end{pmatrix}^{T} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a\end{pmatrix}\]
+  #+end_ex
+  #+ATTR_LATEX: :options [17.25 Cramersche Regel]
+  #+begin_thm latex
+  $A = (a^1, \ldots, a^n) \in GL(n, K), b\in K^n, x\in\cvec{x_1;\vdots;x_n}\in K^n$ Sei die eindeutig
+  bestimmte Lösung des LGS $Ax = b$ (es ist $x = A^{-1}b$)
+  Dann: für jedes $i \in \{1, \ldots, n\}$ ist
+  \[x_1 = \frac{\det(a^1, \ldots, a^{i - 1}, b, a^{i + 1}, \ldots, a^n)}{\det(A)}\]
+  #+end_thm
+  #+begin_proof latex
+  Es ist $x = A^{-1} b$, und $A^{-1} = (d_{ij})$ mit $d_{ij} = \frac{1}{\det(A)} a_{ij}^\#$, also
+  \[\d_{ij} = \frac{1}{\det(A)} \det(A_{ji}) = \frac{\det(a^1, \ldots, a^{i - 1}, e^j, a^{i + 1}, \ldots, a^n)}{\det(A)}\]
+  \begin{align*}
+  \implies x_i &= \sum_{j = 1}^{n} d_{ij} b_j = \sum_{j = 1}^{n} b_j \frac{\det(a^1, \ldots, a^{i - 1}, e^j, a^{i + 1}, \ldots, a^n)}{\det(A)} \\
+  &= \frac{\det(a^1, \ldots, a^{i - 1}, \sum_{j = 1}^{n}b_j e^j, a^{i + 1}, \ldots, a^n)}{\det(A)} = \frac{\det(a^1,\ldots, a^{i - 1}, b, a^{i + 1}, \ldots, a^n)}{\det(A)}
+  \end{align*}
+  #+end_proof
+  #+ATTR_LATEX: :options [17.26]
+  #+begin_ex latex
+  Wir betrachten das reelle $3\times 3$ LGS
+  \[\underbrace{\begin{pmatrix}-2 & 2 & 3 \\ -1 & 1 & 1 \\ -1 & 0 & 1\end{pmatrix}}_{=:A}\cvec{x_1;x_2;x_3} = \underbrace{\cvec{1;2;0}}_{=: b}\]
+  Nach Beispiel 17.22 ist $\det(A) = 1$
+  \begin{align*}
+  \implies x_1 &= \det \begin{pmatrix}1 & 2 & 3 \\ 2 & 1 & 1 \\ 0 & 0 & 1\end{pmatrix} = 1\det\begin{pmatrix}1 & 2 \\ 2 & 1\end{pmatrix} = -3 \\
+  x_2 &= \det\begin{pmatrix}-2 & 2 & 3 \\ -1 & 1 & 1 \\ -1 & 0 & 1\end{pmatrix} = 1(-1)\det\begin{pmatrix}1 & 3 \\ 2 & 1\end{pmatrix} + 1 \cdot 1 \det\begin{pmatrix} -2 & 1 \\ -1 & 2\end{pmatrix} = 5 + (-3) = 2 \\
+  x_3 &= \det\begin{pmatrix}-2 & 2 & 3 \\ -1 & 1 & 1 \\ -1 & 0 & 1\end{pmatrix} = 1(-1)\det\begin{pmatrix}2 & 1 \\ 1 & 2\end{pmatrix} = -3
+  \end{align*}
+  #+end_ex
+  #+begin_note latex
+  In der Praxis findet die Cramersche Regel wegend er vielen zu berechnenden Determinanten kaum Anwendung.
+  #+end_note
+  #+ATTR_LATEX: :options [17.27]
+  #+begin_defn latex
+  $V$ endlichdimensionaler K-VR, $f\in\End_K(V)$. Wir wählen eine Basis $\mathcal{B}$ von $V$ und setzen
+  \[\det(f) := \det(M_{\mathcal{B}}(f))\]
+  Dann gilt:
+  1. $\det(f)$ ist wohldefiniert.
+  2. $f$ ist ein Isomorphismus $\iff \det(f)\neq 0$
+  #+end_defn
+  #+begin_proof latex
+  1. Sei $\mathcal{A}$ eine weitere Basis von $V, S:= T_{\mathcal{A}}^{\mathcal{B}}$
+	 \begin{align*}
+	 \implies M_{\mathcal{A}}(f) = S M_{\mathcal{B}}(f) S^{-1} \implies \det(M_{\mathcal{A}}(f)) &= \det(M_{\mathcal{B}}(f)S^{-1}) = \det(S)\det(M_{\mathcal{B}}(f))\det(S^{-1}) \\
+	 &= \det(S)\det(S^{-1})\det(M_{\mathcal{B}}(f)) = \det(M_{\mathcal{B}}(f))
+     \end{align*}
+  2. $f$ Isomorphismus
+	 \begin{align*}
+	 &\iff \Phi_{\mathcal{B}}^{-1} \circ f \circ \Phi_{\mathcal{B}} = \reallywidetilde{M_{\mathcal{B}}(f)}~\text{Isomorphismus} \\
+	 &\iff M_{\mathcal{B}}(f) \in GL(n, K) \\
+	 &\iff \det(M_{\mathcal{B}}(f)) \neq 0 \\
+	 &\iff \det(f) \neq 0
+	 \end{align*}
+  #+end_proof
+  #+begin_note latex
+  Ist $R$ ein kommutativer Ring, dann kann man (in Analogie zu $M(n\times n, K)$ für einen Körper $K$)
+  den Ring $M(n\times n, R)$ der $n\times n$ -Matrizen mit Einträgen in $R$ betrachten. Im Beweis von 17.12 wird nicht dividiert.
+  Somit: Definiert man
+  \[\det: M(n\times n, R) \to R, \det(A) = \sum_{\sigma\in S_n}\sgn(\sigma) a_{1\sigma(1)} \cdot \ldots \cdot A_{n\sigma(n)}, A = (a_{ij})\]
+  dann sind D1-D3 (für $R$ statt $K$) erfüllt. (und man kann zeigen: D4 - D9, D11 sind erfüllt, $\det(A) = \det(A^T), A\cdot A^\# = A^\# \cdot A = \det(A) E_n$, Entwicklungssatz von Laplace)
+  #+end_note
