@@ -18,7 +18,7 @@
    \Delta \phi &= \int_{r_{min}}^{\infty} \frac{\frac{b\d r}{r^2}}{\sqrt{1 - \frac{V(r)}{E} - \frac{b^2}{r^2}}} \\
    \intertext{$r_{min}$ ist Lösung zu}
    1 - \frac{V(r)}{E} - \frac{b^2}{r^2} &= 0 \\
-   \intertext{In der Tat: Bei $r_{min}$ ist gerade $\d r = 0$ obgleich $\d \phi \neq 0$ ist. Diest geschieht exakt wenn $\sqrt{\ldots} = 0$}
+   \intertext{In der Tat: Bei $r_{min}$ ist gerade $\d r = 0$ obgleich $\d \phi \neq 0$ ist. Dies geschieht exakt wenn $\sqrt{\ldots} = 0$}
    \implies \theta(b) &= \pi - 2\Delta\phi \tag{allgemein bekannt} \\
    \intertext{Für konkreten Fall $V(r) = -\frac{\alpha}{r}$ kennen wir Ergebnis:}
    \theta &= 2\phi - \pi, \cos\phi = -\frac{1}{e}
@@ -31,8 +31,8 @@
    Teilchenstrahldichte:
    \[n = \frac{\text{Teilchenzahl}}{\text{Fläche}\cdot\text{Zeit}}, [n] = \si{\per\meter\squared\per\second}\]
    $\implies \overarrow[Zahl der gestreuten Teilchen pro Zeit]{N}= n \cdot \underarrow[\sigma_{tot}]{Querschnittsfläche des Targets}, [N] = \si{\per\second}$ \\
-   $\sigma_{tot}$- totaler Wirkungsquerschnitt, $\sigma_{tot} \equiv \frac{N}{n}$ \\
-*** Differentieller Qirkungsquerschnitt
+   $\sigma_{tot}$ -totaler Wirkungsquerschnitt, $\sigma_{tot} \equiv \frac{N}{n}$ \\
+*** Differentieller Wirkungsquerschnitt
 	\begin{align*}
 	\d N &= n(\dd{\sigma}{\theta}(\theta)) \\
 	\intertext{Ring im Bild hat Fläche:}
@@ -50,11 +50,11 @@
 	\dd{\sigma}{\theta} &= \pi b R \sin{\frac{\theta}{2}} \\
 	\dd{\sigma}{\Omega} &= \frac{R^2}{4} \\
 	\dd{\sigma}{\Omega} &= \frac{\d \sigma}{2\pi \sim{\theta \d\theta}} = \frac{\pi b R\sin{\frac{\theta}{2}}}{2\pi\sin{\theta}} = \frac{\pi R^2 \cos{\frac{\theta}{2}}\sin{\frac{\theta}{2}}}{2\pi\sin{\theta}} \checkmark \\
-	\intertext{$\implies$ gleichberechtigte Streuing in alle Richtungen. Integration:}
+	\intertext{$\implies$ gleichberechtigte Streuung in alle Richtungen. Integration:}
 	\sigma_{tot} &= \int \d \Omega (\frac{\d \sigma}{\d \Omega}) = (\int \d \Omega) \frac{R^2}{4} = \pi R^2 \checkmark \\
-	\intertext{Analoge allgemeine Rechung:}
+	\intertext{Analoge allgemeine Rechnung:}
 	\sigma_{tot} &= \int_{0}^{\pi}\d \theta (\frac{\d \sigma}{\d \theta}) = \int_{0}^{\pi}\d\theta 2\pi b \abs{\frac{\d b}{\d \theta}} = \int_{0}^{R} \d b2\pi b = \pi R^2 \\
-	\intertext{gilt nur, wenn $\theta(b)$ bei eindlichem $b$ verschwindet}
+	\intertext{gilt nur, wenn $\theta(b)$ bei endlichem $b$ verschwindet}
 	\end{align*}
 ** Rutherford-Streuung
    \begin{align*}
@@ -82,10 +82,10 @@
    #+begin_ex latex
    - Mesonen-Zerfall: $\rho \to \pi \pi$
    - nicht-quaten-mechanisch: Explosionen
-   - Higgs-Zefälle am LHC: $\mathrm H \to \gamma \gamma, \mathrm H \to \mathrm b \mathrm b$
+   - Higgs-Zerfälle am LHC: $\mathrm H \to \gamma \gamma, \mathrm H \to \mathrm b \mathrm b$
    #+end_ex
 
-   Masse $M$, innere Energei $U$:
+   Masse $M$, innere Energie $U$:
    \[M, U \to m_1, U_1 "+" m_2, U_2\]
    1. Massenerhaltung: $M = m_1 + m_2$ (nicht in Spezielle Relativitätstheorie)
    2. Energie: $U + \frac{M}{2} \bar{\v v}^2 = (U_1 + \frac{m_1}{2}\v v_1^2) + (U_2 + \frac{m_2}{2} \v v_2^2)$
@@ -102,7 +102,7 @@
    Diese Beschreibung durch Erhaltungsätze bleibt unvollständig! Richtungsinformation fehlt.
    (In QM-Beispielen wird die Richtungs-information oft im Spin/Drehimpuls von $M$ liegen)
 ** Schwerpunkts vs Laborsystem
-   Interessanter Fall: $\theta \equiv \theta_s$ im Schwerpunktsystem sei bekannt. Frage: Wingel
+   Interessanter Fall: $\theta \equiv \theta_s$ im Schwerpunktsystem sei bekannt. Frage: Winkel
    $\theta_L$ im Laborsystem?
    Wir wissen bereits
    \begin{align*}
@@ -116,7 +116,7 @@
    (Wenn gewünscht, $\abs{\v v_{1,s}}$ durch Ursprünglich gegebene Größen ausdrücken.)
    Anschaulich klar: $\theta_L \to 0$ für $\abs{\v v} \to \infty$
    #+begin_remark latex
-   Beim Zerfall $M \to m_1, m_2, m_3$ reichen die Erhaultungssätze nicht
+   Beim Zerfall $M \to m_1, m_2, m_3$ reichen die Erhaltungssätze nicht
    einmal mehr für die Betragsbestimmung
    #+end_remark
    #+ATTR_LATEX: :options [$\beta$-Zerfall]
@@ -134,10 +134,10 @@
    und
    \[\frac{\v p_1^2}{2m_1} + \frac{\v p_2^2}{2m_2} = \frac{\v p_1^{\prime 2}}{2m_1} + \frac{\v p_2^{\prime 2}}{2 m_2}\]
    Ziel: Bestimmen von $\v p_1', \v p_2'$ mögliche Prozedur:
-   Gehen zunächts ins Schwerpunktsystem:
+   Gehen zunächst ins Schwerpunktsystem:
    \[\v p_{1,s} + \v p_{2,s} \equiv \v p_s = 0\]
-   Man denke sich einen Zwischenzeitlich enstehenden instabilen Zustand (ruhendes, instablies Teilchen)
-   mit $\v p_s = 0$. Dieses zerfällt mit Freisetzung des Energeiüberschusses
+   Man denke sich einen Zwischenzeitlich entstehenden instabilen Zustand (ruhendes, instabiles Teilchen)
+   mit $\v p_s = 0$. Dieses zerfällt mit Freisetzung des Energieüberschusses
    \[\abs{\Delta U} = \frac{\v p_{1,s}^2}{2m_1} + \frac{\v p_{2,s}^2}{2 m_2}\]
    Wie oben folgt:
    \[\v p_{1,s}' = -\v p_{2,s}'\]
@@ -173,7 +173,7 @@
 	  Im Allgemeinen (bei $\theta \neq 0$) ist die Situation analog, Es gibt einen "starken" und "schwachen" Stoß, die zum gleichen $\theta$ führen. (aber nur falls Argument von Wurzel positiv)
 	  Speziell: \[m_1 = m_2 \equiv m \implies p_1' = p_1 \frac{1}{2} \cos{\theta}(1 \pm 1)\]
 	  Aber: bei $m_1 > m_2$, gibt es "echte" starke und schwache Stöße.
-	  Falls das Argument der Wurzel positiv, tatsächlich zwei physikalische Lösungen. Zum Verständins: Enfacher Fall: $\theta = 0, m_1 > m_2 \implies$
+	  Falls das Argument der Wurzel positiv, tatsächlich zwei physikalische Lösungen. Zum Verständnis: Einfacher Fall: $\theta = 0, m_1 > m_2 \implies$
       \begin{align*}
       p_1' &= p_1 \frac{m_1 + \sqrt{m_2^2}}{M} = p_1 \frac{M}{M} = p_1 \\
       p_1' &= p_1 \frac{m_1 - m_2}{M} = p_1 \frac{m_1 - m_2}{m_1 + m_2}

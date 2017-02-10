@@ -37,7 +37,7 @@
    \implies \ddot{\v x}_s &= 0 \\
    \intertext{Mit $\v x_s \equiv$ Schwerpunktskoordinate, bewegt sich frei}
    \v x_s &\equiv \frac{m_1 \v x_1 + m_2 \v x_2}{m_1 + m_2}
-   \intertext{$\implies$ Das zu läsende Problem ist also nur die Bewegung der Relativkoordinate}
+   \intertext{$\implies$ Das zu lösende Problem ist also nur die Bewegung der Relativkoordinate}
    m\ddot{\v x} = - \v\nabla V(\abs{\v x})
    \intertext{Das ist Zentralkraftproblem mit ursprünglichem Potential, aber mit der reduzierten Masse}
    \end{align*}
@@ -50,7 +50,7 @@
    r &= \abs{z} \\
    \phi &= \arg{z}
    \end{align*}
-   "Polarkoordinaten", sind einfaches Beispiel für mögliche allgemeine Parametrisierungen.
+   "Polarkoordinaten", sind einfaches Beispiel für mögliche allgemeine Parametrisierung.
    #+ATTR_LATEX: :options [Zylinderkoordinaten]
    #+begin_ex latex
    \begin{align*}
@@ -77,7 +77,7 @@
    (Nach allgemeines $V(r)$). Wir wissen bereits:
    \[\v L = \v r \times \v p = ~\text{const}, \v p = m\dot{\v r}, \v r = ~\text{Koordinaten des Teilchens}\]
    Es gilt $\v L \perp \v r \wedge \v L =~\text{const} \implies$ Bewegung in gester Ebene. Also
-   ohne Beschränkung der Allgemeinheit sie die Bewegung in der $(1-2)$-Ebene. Außerdem:
+   ohne Beschränkung der Allgemeinheit ist die Bewegung in der $(1-2)$ -Ebene. Außerdem:
    Problem rotationssymmetrisch. \\
    $\implies$ angemessene Beschreibung: Polarkoordinaten (Winkel und Rotation) \\
    naiv: \[m \underarrow[\ddot{\v x}]{durch $r,\phi$ ausdrücken} = \v F(\v x)\]
@@ -90,7 +90,7 @@
    \intertext{Insbesondere:}
    r\dot{\phi} \equiv~\text{Betrag der Tangentengeschwindigkeit}
    \end{align*}
-   Konstanz von $\abs{\v L}$ geometrische Interpertaiton: \\
+   Konstanz von $\abs{\v L}$ geometrische Interpretation: \\
    Berechne die von "Leitstrahl" in Zeit $\d t$ überstrichene Fläche: "Die Flächengeschwindigkeit ist konstant" (2. Keplersches Gesetz)
    \begin{align*}
    \d f = \frac{1}{2}r r \d\phi \\
@@ -151,7 +151,7 @@
    p &= \frac{L^2}{m\alpha} \\
    e &= \sqrt{2 + \frac{2EL^2}{m\alpha^2}}
    \end{align*}
-   Herleitung der letzen Formel für $e$:
+   Herleitung der letzten Formel für $e$:
    \begin{align*}
    \intertext{leite nach $t$ ab:}
    r &= \frac{p}{1 + e\cos{\phi}} \\
@@ -179,7 +179,7 @@
 	 y^2 &= (r\sin{\phi})^2 = r^2(1 - \cos^2{\phi}) = r^2(1 - \frac{1}{e^2}(\frac{p}{r} - 1)^2) = r^2 - \frac{1}{e^2}(p - r)^2 \\
 	 0 &= 2(r + \frac{1}{e^2}(p - r)) \\
 	 r_0 &= \frac{\frac{-p}{e}}{1 - \frac{1}{e^2}} = \frac{p}{1 - e^2} \\
-	 \intertext{Einsetzen in obige Forlem für $y$:}
+	 \intertext{Einsetzen in obige Formel für $y$:}
 	 y_{max} = \frac{p}{\sqrt{1 - e^2} \equiv b}
 	 \end{align*}
 	 Andere Definition der Ellipse

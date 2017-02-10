@@ -18,7 +18,7 @@
 	 Wegen $\tilde A(e_i) = A e_i = \cvec{a_{i1} ; \vdots ; a_{in}}$ stehen in den Spalten von $A$ genau die Bilder der kanonischen Basisvektoren $e_1, \ldots e_n$ von $K^n$ unter $\tilde A$.
 	 Sind $A\in M(m\times n, K), B\in M(n\times r, K), x\in K^r$, dann ist
 	 \[\reallywidetilde{AB} (x) = (AB)(x) = A(B(x)) = A \tilde B(x) = \tilde A(\tilde B(x)) = (\tilde A \tilde B)(x)\]
-	 das heißt die Veknüpfung von $\tilde A, \tilde B$ entspricht der Multiplikation der Matrizen $A,B: \tilde A \cdot \tilde B = \reallywidetilde{AB}$
+	 das heißt die Verknüpfung von $\tilde A, \tilde B$ entspricht der Multiplikation der Matrizen $A,B: \tilde A \cdot \tilde B = \reallywidetilde{AB}$
   2. Wir betrachten die Abbildung \[f: \mathbb{R}^2 \to \mathbb{R}^2, \cvec{x_1; x_2} \mapsto \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\cvec{x_1; x_2} = \cvec{x_1; -x_2}\]
 	 Diese ist linear nach 1., beschreibt Spiegelung an der $x_1$ -Achse.
   3. Sei $V = \{f: (0,1)\to \mathbb{R}\mid f~\text{ist differenzierbar}\}$ (ist ein $\mathbb{R}$ -VR)
@@ -122,7 +122,7 @@
   #+end_defn
   #+ATTR_LATEX: :options [12.8]
   #+begin_remark latex
-  $f: V\to W$ lineare Abbildung. Dann gilt: Ist $f$ ein Isomorhpismus, dann ist auch $f^{-1}: W\to V$
+  $f: V\to W$ lineare Abbildung. Dann gilt: Ist $f$ ein Isomorphismus, dann ist auch $f^{-1}: W\to V$
   ein Isomorphismus. Existiert zwischen $V$ und $W$ ein Isomorphismus, dann nennen wir $V,W$ isomorph.
   (Notation: $V \cong W$)
   #+end_remark
@@ -175,7 +175,7 @@
   #+end_defn
   #+ATTR_LATEX: :options [Dimensionsformel für lineare Abbildungen]
   #+begin_thm latex
-  $V$ endlichdimensionaler $K$ -Vektorraum, $f:V\to W$ linare Abbildung.
+  $V$ endlichdimensionaler $K$ -Vektorraum, $f:V\to W$ lineare Abbildung.
   $(v_1, \ldots, v_k)$ Basis von $\ker f$, $(w_1, \ldots, w_r)$ Basis von $\im f$
   (beachte $\im f$ endlichdimensional wegen 12.3 5.). Für $i = 1, \ldots r$ sei $u_i \in V$ mit
   $f(u_i) = w_i$. Dann ist
@@ -221,7 +221,7 @@
 	   $\implies f(u + v) = f((\lambda_1 + \mu_1) v_1 + \ldots + (\lambda_r + \mu_r) v_r) = (\lambda_1 + \mu_1)w_1 + \ldots + (\lambda_r + \mu_r) w_r = \lambda_1 w_r + \ldots + \lambda_r w_r + \mu_1 w_1 + \ldots + \mu_r w_r = f(u) + f(v)$
 	   Für $\lambda \in K$ ist $f(\lambda v) = f(\lambda \mu_1 v_1 + \ldots + \lambda \mu_r v_r) = \lambda \mu_1 w_1 + \ldots + \lambda\mu_r w_r = \lambda f(v)$
 	 - Es ist $\im f = \Lin((w_1, \ldots, w_r)) = W$, das heißt $f$ ist surjektiv
-	 - $f$ sit injektiv, denn $\dim V = \dim (\ker f) + \underbrace{\dim (\im f)}_{= \dim W = \dim V} \implies \dim (\ker f) = 0 \implies \ker f = \{0\}$, das
+	 - $f$ ist injektiv, denn $\dim V = \dim (\ker f) + \underbrace{\dim (\im f)}_{= \dim W = \dim V} \implies \dim (\ker f) = 0 \implies \ker f = \{0\}$, das
 	   heißt $f$ injektiv.
   #+end_proof
   #+ATTR_LATEX: :options [12.15]

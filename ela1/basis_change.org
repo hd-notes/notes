@@ -1,6 +1,6 @@
 * Basiswechsel
   In diesem Abschnitt seien $V, W$ endlich dimensionale K-VR. \\
-  Ziel: $f:V \to W$ lineare Abbildung, $\mathcal{A},\mathcal{A}'$ Basen von $V, $\mathcal{B}, \mathcal{B}'$ Basen von $W$. Wie hängen $M_{\mathcal{B}}^{\mathcal{A}}(f)$ und $M_{\mathcal{B}}^{\mathcal{A}}(f)$
+  Ziel: $f:V \to W$ lineare Abbildung, $\mathcal{A},\mathcal{A}'$ Basen von $V, \mathcal{B}, \mathcal{B}'$ Basen von $W$. Wie hängen $M_{\mathcal{B}}^{\mathcal{A}}(f)$ und $M_{\mathcal{B}}^{\mathcal{A}}(f)$
   zusammen?
 
   #+ATTR_LATEX: :options [16.1]
@@ -80,7 +80,7 @@
   #+end_ex
   #+ATTR_LATEX: :options [16.4]
   #+begin_thm latex
-  $U, V, W$ endlichdimensionale K-VR mit Basen $\mathcal{A}, \mathcal{B}, \mathcal{C}, g:U\to V, f:V\to W$ linare Abbildungen. Dann gilt:
+  $U, V, W$ endlichdimensionale K-VR mit Basen $\mathcal{A}, \mathcal{B}, \mathcal{C}, g:U\to V, f:V\to W$ lineare Abbildungen. Dann gilt:
   \[M_{\mathcal{C}}^{\mathcal{A}}(f\circ g) = M_{\mathcal{C}}^{\mathcal{B}}(f) \cdot M_{\mathcal{B}}^{\mathcal{A}}(g)\]
   #+end_thm
   #+begin_proof latex
@@ -158,7 +158,7 @@
   \catcode`(=\active
   \catcode`)=\active
   #+end_export
-  Die Trapeze sind kommutativ nach 16.1, die Dreiecke nach 16.2.2 $\implies$ Das äußere Rechteck kummutiert, das heißt
+  Die Trapeze sind kommutativ nach 16.1, die Dreiecke nach 16.2.2 $\implies$ Das äußere Rechteck kommutiert, das heißt
   \[\reallywidetilde{M_{\mathcal{B}'}^{\mathcal{A}'}(f)} \circ \reallywidetilde{T_{\mathcal{A}'}^{\mathcal{A}}} = \reallywidetilde{T_{\mathcal{B}'}^{\mathcal{B}}} \circ \reallywidetilde{M_{\mathcal{B}}^{\mathcal{A}}(f)}\]
   \[\implies \reallywidetilde{M_{\mathcal{B}'}^{\mathcal{A}'}(f)\cdot T_{\mathcal{A}'}^{\mathcal{A}}} = \reallywidetilde{T_{\mathcal{B}'}^{\mathcal{B}} \cdot M_{\mathcal{B}}^{\mathcal{A}}(f)} \implies M_{\mathcal{B}'}^{\mathcal{A}'}(f) \cdot T_{\mathcal{A}'}^{\mathcal{A}} = T_{\mathcal{B}'}^{\mathcal{B}} M_{\mathcal{B}}^{\mathcal{A}}(f)\]
   \[\implies M_{\mathcal{B}'}^{\mathcal{A}'}(f) = T_{\mathcal{B}'}^{\mathcal{B}} M_{\mathcal{B}}^{\mathcal{A}}(f) (T_{\mathcal{A}'}^{\mathcal{A}})^{-1}\]
@@ -183,22 +183,22 @@
   #+end_conc
   #+ATTR_LATEX: :options [16.9]
   #+begin_defn latex
-  $A, B\in M(m\times n, K)$. $A, B$ heißten äquivalent $(A\sim B) \xLeftrightarrow{\text{Def}} \Exists S\in GL(m, K), T\in GL(n, K):$
+  $A, B\in M(m\times n, K)$. $A, B$ heißen äquivalent $(A\sim B) \xLeftrightarrow{\text{Def}} \Exists S\in GL(m, K), T\in GL(n, K):$
   \[B = SAT^{-1}\]
   #+end_defn
   #+ATTR_LATEX: :options [16.10]
   #+begin_remark latex
-  Äquivalenz von Matrizen ist eine Äquvalenzrelation auf $M(m\times n, K)$
+  Äquivalenz von Matrizen ist eine Äquivalenzrelation auf $M(m\times n, K)$
   #+end_remark
   #+begin_proof latex
-  leicht nachzurechnen.
+  leicht nach zurechnen.
   #+end_proof
   #+ATTR_LATEX: :options [16.11]
   #+begin_remark latex
   $A,B\in M(m\times n, K), \mathcal{A}$ Basis von $K^n, \mathcal{B}$ Basis von $K^m, f:K^n \to K^m$
   lineare Abbildung mit $M_{\mathcal{B}}^{\mathcal{A}}(f) = A$ (Existenz nach 15.3.2). Dann sind äquivalent:
   1. $A\sim B$, das heißt $\Exists S\in GL(m, K), T\in GL(n,K): B = SAT^{-1}$
-  2. Es existieren Basen $\mathcal{A}'$ von $K^n, \mathcal{B}'$ von K^m mit $M_{\mathcal{B}'}^{\mathcal{A}'}(f) = B$ (das heißt $A,B$ beschreiben bezüglich geeigneter Parre von Basen dieselbe lineare Abbildung)
+  2. Es existieren Basen $\mathcal{A}'$ von $K^n, \mathcal{B}'$ von K^m mit $M_{\mathcal{B}'}^{\mathcal{A}'}(f) = B$ (das heißt $A,B$ beschreiben bezüglich geeigneter Paare von Basen dieselbe lineare Abbildung)
   3. $\Rang A = \Rang B$
   Insbesondere ist jede Matrix aus $M(m\times n, K)$ vom Rang $r$ äquivalent zu \[\begin{pmatrix} E_r  & 0 \\ 0 & 0\end{pmatrix}\]
   #+end_remark
@@ -250,6 +250,6 @@
   2. $\implies$ 1. Es gelte 2. Nach 16.8 existiert ein $S\in GL(n,K)$ mit $B = M_{\mathcal{B}}(f) = SAS^{-1} \implies A \simeq B$.
   #+end_proof
   #+begin_note latex
-  Einen möglichst enfachen Vertreter der Ähnlichkeitsklassen von $A$ zu finden, ist eine
+  Einen möglichst einfachen Vertreter der Ähnlichkeitsklassen von $A$ zu finden, ist eine
   schwierige Aufgabe ($\to$ LA2, Jordansche Normalform)
   #+end_note

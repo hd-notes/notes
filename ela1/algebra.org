@@ -66,9 +66,9 @@
 	  1. "$\circ$" ist wohl definiert, das heißt für $f,g\in S(M)$ ist $f\circ g \in S(M)$ folgt aus
 		 [[Bemerkung 4.19]]
 	  2. "$\circ$" ist assoziativ $f\circ(g\circ h) = (f\circ g) \circ h \Forall f,g\in S(M)$ nach 4.9
-	  3. $id_M$ ist neutral: $id_M \in S(M)$ und $id_M\circ f = f = f\circ id_M \Forall f\in S(M)$
+	  3. $\id_M$ ist neutral: $\id_M \in S(M)$ und $\id_M\circ f = f = f\circ \id_M \Forall f\in S(M)$
 	  4. Existenz von Inversen: $f\in S(M) \implies f$ bijektiv $\implies$ Es existiert Umkehrabbildung $f^{-1}\in S(M)$ zu $f$
-		 für diese gilt: $f\circ f^{-1} = id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "$\circ$"
+		 für diese gilt: $f\circ f^{-1} = \id_M = f^{-1}\circ f$ das heißt $f^{-1}$ ist immer zu $f$ bezüglich "$\circ$"
 *** Permutationen
 	$n\in\mathbb{N}$
 	\[S_n := S(\{1,\ldots,n\}) = \{\pi \{1,\ldots,n\} \to \{1,\ldots,n\} \mid \pi~\text{ist bijektiv}\}\]
@@ -216,7 +216,7 @@
 		\[\varphi(2 + 6) = \varphi(8) = 9,~\text{aber}~\varphi(2)+\varphi(6) = 3 + 7 = 10\]
 	 4. $\exp:\mathbb{R}\to\mathbb{R}_{\geq 0}, x\mapsto \exp{x} = e^x$ ist ein Gruppenisomorphismus von $(\mathbb{R},+)$ nach $(\mathbb{R}_{\geq 0},\cdot)$, denn:
 		- \[\exp(a + b) = \exp(a)\exp(b) \Forall a,b\in\mathbb{R}\]
-		- $exp$ ist bijektiv (vgl. Ana1 - Vorlesung)
+		- $\exp$ ist bijektiv (vgl. Ana1 - Vorlesung)
 **** Bemerkung 5.23
 	 $(G,*),(H,\oast)$ Gruppen mit neutralen Elementen $e_G$ beziehungsweise $e_H,\varphi:G\to H$ Gruppenhomomorphismus. Dann gilt
 	 1. $\varphi(e_G) = e_H$

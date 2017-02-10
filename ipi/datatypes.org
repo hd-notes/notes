@@ -50,7 +50,7 @@
 	   s3 = s + s; // "xyxy"
 	   // aber nicht!!
 	   s3 = "abc" + "def"; // Bug Literale unterstützen + mit ganz anderer Bedeutung
-	   s3 = std::string("abc") + "def"; // Ok
+	   s3 = std::string("abc") + "def"; // OK
 	   #+END_SRC
 	 - Add-Assignment: Abkürzung für Addition gefolgt von Zuweisung
 	   #+BEGIN_SRC cpp

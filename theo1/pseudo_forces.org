@@ -1,17 +1,17 @@
-* Wechsel der Koordinatensystms und Scheinkräfte
+* Wechsel der Koordinatensystems und Scheinkräfte
 ** Wechsel des Koordinatensystems im euklidischen Raum
    $V = \mathbb{R}^n, n = 3$ \\
    *Bisher:* \\
    Immer feste Basis
    \[\v x = \cvec{x^1 ; x^2 ; x^3} = x^1 \cvec{1 ; 0 ; 0} + x^2 \cvec{0 ; 1 ; 0} + x^3 \cvec{0 ; 0 ; 1} = x^i \v e^i\]
-   $\{e^i\}$ - duch "$i$" nummerierte Basisvektoren. \\
+   $\{e^i\}$ - durch "$i$" nummerierte Basisvektoren. \\
    *Wichtig*:
    - In Physik gibt es keine ausgezeichnete Basis.
    - können Basis / Koordinatensystem wechseln
 
    \[\v e^{\prime k} = R^{ik} \v e^k\]
    (analog zu $\v x = x^i \v e^i$)
-   *Wichig*: $\{\v e^{\prime i}\}$ wieder Basis $\iff R \in GL(n)$ \\
+   *Wichtig*: $\{\v e^{\prime i}\}$ wieder Basis $\iff R \in GL(n)$ \\
    *Hier*: euklidischer Raum: Orthonormalbasen: $\v e^i \v e^j = \delta^{ij}$ \\
    Wenn $\{\v e^{i}\}$ Orthonormalbasis, so wird $\{\v e^{\prime i}\}$ auch eine sein, falls $R\in O(n)$
    \[\v e^{\prime i} \v e^{\prime j} = (R^{ik} \v e^k)(R^{jl} \v e^l) = R^{ik} R^{jl} \delta^{kl} = \delta^{ij}\]
@@ -20,7 +20,7 @@
    \v x &= x^{\prime i} \v e^{\prime i} = x^{\prime i} R^{ij} \v e^{j} = x^j \v e^j \\
    &\implies x^j = x^{\prime i} R^{ij} \\
    &\xRightarrow{\cdot (R^T)^{jk}} x^j (R^T)^{jk} = x^{\prime i} R^{ij} (R^t)^{jk} \\
-   x^{\prime k} &= R^{kj} x^j \tag{gleiche Formel, wei bei Drehung um $R$}
+   x^{\prime k} &= R^{kj} x^j \tag{gleiche Formel, wie bei Drehung um $R$}
    \end{align*}
    Dies ist nicht unerwartet, da $\{\v e^{\prime i}\}$ aus $\{\v e^i\}$ durch Drehung $R^{-1}$ hervorgeht:
    \begin{align*}
@@ -33,17 +33,17 @@
    \intertext{$\implies$ Behauptung ist gezeigt}
    \end{align*}
 ** Aktive und Passive Beschreibung von Symmetrien
-   - Aktiv: Transformieren pyhsikalisches Objekt
+   - Aktiv: Transformieren physikalisches Objekt
    - Passiv: Wechsle Koordinatensystem
    #+ATTR_LATEX: :options []
    #+begin_ex latex
    \mbox{}
-   - Aktiv: $x \to x' = Rx$. Symmetrieforderung: $\v x' \cdot \v y' = \v x \cdot \v y$, also: Skalarproduktinvariant
+   - Aktiv: $x \to x' = Rx$. Symmetrieforderung: $\v x' \cdot \v y' = \v x \cdot \v y$, also: Skalarproduktinvarianz
    - Passiv: $\v x$ fest. Komponenten
 	 (Es gilt: $\v e^{\prime i} = R^{ij} \v e^j$)
 	 - $x^i$ in Basis $\{\v e^i\}$
 	 - $x^{\prime i} = R^{ij} x^j$ in Basis $\{\v e^{\prime i}\}$
-	 Symmetrieforderung: Mathematischer Ausdruch für Skalarprodukt soll in neuen Komponenten die *gleiche Form haben*.
+	 Symmetrieforderung: Mathematischer Ausdruck für Skalarprodukt soll in neuen Komponenten die *gleiche Form haben*.
 	 In der Tat:
 	 - alt: $\v x \cdot \v y = x^i y^i$
 	 - neu: $\v \cdot \v y = x^i y^i = (R^{-1})^{ij} x^{\prime j} (R^{-1})^{ik} y^{\prime k} = x^{\prime i} y^{\prime i} \checkmark$
@@ -74,7 +74,7 @@
    #+ATTR_LATEX: :options [Spur]
    #+begin_defn latex
    \[M_{ii} = \Sp(M) = \sum_i a_i\]
-   $\Sp(M)$ wird als Spur bezeichnet, und entspricht der Summe über die Diagnoalelemente
+   $\Sp(M)$ wird als Spur bezeichnet, und entspricht der Summe über die Diagonalelemente
    #+end_defn
    rotierendes Bezugssystem (NIS) \\
    Drehungen: $R(t) \in SO(u), R^{T} R = \mathbb{1}$ für $t \sim \epsilon, R(0) = \mathbb{1}$
@@ -114,16 +114,16 @@
    \end{align*}
 ** Rotierendes Koordinatensystem
    In diesem Abschnitt sei $r_x, \omega_x \in\mathbb{R}^3$ \\
-   $r_I$: Geschwindigkeit im Intertialsystem
+   $r_I$: Geschwindigkeit im Inertialsystem
    \begin{align*}
    \intertext{Im Inertialsystem}
    r_I &= r_0(t) + r_N \\
    &= r_0(t) + R(t) r \\
-   \intertext{Newton im Intertext}
+   \intertext{Newton im Inertialsystem}
    m\ddot{r_I} &= F_I \\
    \implies m\ddot{r_0} + (R\cdot r)^{..} &= F_I = R\cdot F \\
    \dot{R}(t)\cdot r &= \lim_{\Delta t \to 0} \frac{R(t + \Delta t) - R(t)}{\Delta t} r \\
-   \intertext{wichtge Formel: $\dot{R}(t)\cdot r = R(\omega\times r)$, damit erhält man:}
+   \intertext{wichtige Formel: $\dot{R}(t)\cdot r = R(\omega\times r)$, damit erhält man:}
    &= \frac{(R(\Delta t) - \mathbb{1})}{\Delta t} R(t) r = \underarrow[\omega_{IS}]{$R\omega$} \times R(t)\cdot r = (R\omega) \times (R r) = R(\omega\times r) \\
    \hspace{0pt}(R r)^{..} &= (\dot{R} r + R \dot{r})^{.} = (R(\omega \times r) + R\dot{r})^{.} = \dot{R}(\omega\times r) + R(\dot{\omega}\times r) + R(\omega\times\dot{r}) + \dot{R}\dot{r} + R \ddot{r} \\
    &= R(\omega\times(\omega \times r) + \dot{\omega} \times r + 2(\omega\times \dot{r}) + \ddot{r}) \\

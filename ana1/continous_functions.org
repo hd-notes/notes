@@ -96,7 +96,7 @@
    #+end_lemma
    #+begin_proof latex
    $(\impliedby)$: Gilt das $\eps / \delta$ Kriterium, so ist $f$ auch in $x_0$ offensichtlich stetig \\
-   $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$-Kriterium gälte nicht,
+   $(\implies)$: Sei also $f$ stetig in $x_0$. Angenommen, dass $\eps / \delta$ -Kriterium gälte nicht,
    das heißt es gibt ein $\eps > 0$, sodass $\Forall \delta > 0$ ein $x\in D$ mit $\abs{x - x_0} < \delta$ und $\abs{f(x) - f(x_0)} \geq \eps$ gibt. Widerspruch zu
    \[\lim_{x \to x_0} f(x) = f(x_0)\]
    #+end_proof
@@ -282,7 +282,7 @@
    #+ATTR_LATEX: :options [3.18]
    #+begin_defn latex
    Seien $f_n: D\to\mathbb{R}, n \in\mathbb{N}$ Funktionen mit einem gemeinsamen Definitionsbereich $D\subseteq \mathbb{R}$.
-   Wir nennen die folge $(f_n)_{n\in\mathbb{N}}$ *punktweise* konvergenz gegener eine Funktion $f:D\to\mathbb{R}$,
+   Wir nennen die folge $(f_n)_{n\in\mathbb{N}}$ *punktweise* Konvergenz gegen eine Funktion $f:D\to\mathbb{R}$,
    wenn für jedes $x\in D$ gilt $f_n(x) \xrightarrow{n\to\infty} f(x)$
    #+end_defn
    #+ATTR_LATEX: :options [3.19]
@@ -300,16 +300,16 @@
    #+end_defn
    #+ATTR_LATEX: :options [3.20 Satz von der gleichmäßigen Konvergenz]
    #+begin_thm latex
-   Konvergiert eine Folge stetiger Funkitonen $f_n: D\to\mathbb{R}, n\in\mathbb{N}$ gleichmäßig gegen $f:D\to\mathbb{R}$,
+   Konvergiert eine Folge stetiger Funktionen $f_n: D\to\mathbb{R}, n\in\mathbb{N}$ gleichmäßig gegen $f:D\to\mathbb{R}$,
    so ist auch die Grenzfunktion $f$ stetig.
    #+end_thm
    #+begin_proof latex
    Seien $x_0 \in D$ und $\eps > 0$ gegeben. Zu zeigen:
-   \[\Exists \delta_\eps > 0: \Forall x \in D \abs{x - x_0} < \delta_eps \implies \abs{f(x) - f(x_0)} < \eps\]
+   \[\Exists \delta_\eps > 0: \Forall x \in D \abs{x - x_0} < \delta_{\eps} \implies \abs{f(x) - f(x_0)} < \eps\]
    Wegen der gleichmäßigen Konvergenz von $(f_n)_{n\in\mathbb{N}}$:
    \[\Exists x\in \mathbb{N} \Forall x\in D: \abs{f_n(x) - f(x)} < \frac{1}{3} \eps\]
    Aus Stetigkeit von $f_n$:
-   \[\Exists \delta_\eps > 0 Forall x\in D: \abs{x - x_0} < \delta_\eps \implies \abs{f_n(x) - f_n(x_0)} < \frac{1}{3} \eps\]
+   \[\Exists \delta_\eps > 0 \Forall x\in D: \abs{x - x_0} < \delta_\eps \implies \abs{f_n(x) - f_n(x_0)} < \frac{1}{3} \eps\]
    \[\implies \Forall x\in D \abs{f(x) - f(x_0)} \leq \underbrace{\abs{f(x) - f_n(x)}}_{< \frac{1}{3}} + \underbrace{\abs{f_n(x) - f_n(x_0)}}_{< \frac{1}{3}} + \underbrace{\abs{f_n(x_0) - f(x_0)}}_{< \frac{1}{3}} < \eps\]
    das heißt $f$ ist stetig.
    #+end_proof
@@ -366,7 +366,7 @@
    #+end_defn
    #+ATTR_LATEX: :options [3.25]
    #+begin_lemma latex
-   Für eine Funktionenfolge $(f_n)_{n\in\mathbb{N}} \in C([a,b])$ ist die gleichmäßige Konvergenz gegen eine Grenzfunktion. $f:[a,b] \to \mathbb{R}$
+   Für eine Funktionsfolge $(f_n)_{n\in\mathbb{N}} \in C([a,b])$ ist die gleichmäßige Konvergenz gegen eine Grenzfunktion. $f:[a,b] \to \mathbb{R}$
    gleichbedeutend mit $\norm{f_n - f}_\infty \xrightarrow{n\to\infty} 0$
    #+end_lemma
    #+begin_proof latex
@@ -399,7 +399,7 @@
    Wegen der Konvergenz $f_m(x_{n_\eps}) \xrightarrow{n\to\infty} f(x_{n_\eps})$:
    \[\Exists m_\eps \geq n_\eps: \abs{f_{m_\eps}(x_{n_\eps}) - f(x_{n_\eps})} < \frac{1}{2} \eps\]
    \[\implies \abs{f_{n_\eps} - f(x_{n_\eps})} \leq \abs{f_{n_\eps}(x_{n_\eps}) - f_{m_\eps}(x_{n_\eps})} + \abs{f_{m_\eps}(x_{n_\eps}) - f(x_{n_\eps})} < \eps\]
-   $\implies f_n\to f$ gleichmäßig und im Wiederspruch zur Annahme. $\implies f\in C([a,b])$ (aus Satz 3.20)
+   $\implies f_n\to f$ gleichmäßig und im Widerspruch zur Annahme. $\implies f\in C([a,b])$ (aus Satz 3.20)
    #+end_proof
    #+begin_remark latex
    Vollständige normierte Räume werden Banach Räume genannt.
@@ -420,7 +420,7 @@
    Aussage: $\Exists$ eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$, sodass $f_{n_k} \xrightarrow{k\to\infty} f\in C([a,b])$
    #+end_thm
    #+begin_proof latex
-   Sei $(r_k)_{k\in\mathbb{N}}$ eine Folge der rationalen Punkte in $[a,b]$. Für jedes $r_k$, nach Vorraussetzung $\sup_{n\in\mathbb{N}} \abs{f_n(r_k)} < \infty$
+   Sei $(r_k)_{k\in\mathbb{N}}$ eine Folge der rationalen Punkte in $[a,b]$. Für jedes $r_k$, nach Voraussetzung $\sup_{n\in\mathbb{N}} \abs{f_n(r_k)} < \infty$
    \begin{equation*}
    \begin{matrix}
    &\color{red} {f_{n_1^{(1)}}},& f_{n_2^{(1)}},& \ldots,& f_{n_k^{(1)}} & \text{konvergiert in $r_1$} \\
@@ -434,8 +434,8 @@
    #+end_export
    Nach sukzessiver Anwendung des Bolzano-Weierstrass Satz bekommen wir eine Folge von Teilfolgen. Die Folgen $(f_{n_j^{(k)}}(r_k))_{j\in\mathbb{N}}$ sind konvergent,
    $(n_j^{(k + 1)})_{j\in\mathbb{N}}$ ist Teilfolge von $(n_j^{(k)})_{j\in\mathbb{N}}$. $(f_{n_j^{(k)}}(r_l))_{j\in\mathbb{N}}$ ist konvergent für $l = 1,\ldots, k$.
-   Für die Diagnoalfolge $(f_{n_k^{(k)}})_{k\in\mathbb{N}}$ ist dann $(f_{n_k^{(k)}}(r_j))_{k\in\mathbb{N}}$ konvergent für alle $j\in\mathbb{N}$.
-   Noch zu zeigen: Gleichmäßige konvergenz von dieser Diagonalfolge in allen $x\in[a,b]$. Wir bezeichnen jetzt die Diagonalfolge mit $(f_n)_{n\in\mathbb{N}}$ (erst für alle rationale $r_k$). \\
+   Für die Diagonalfolge $(f_{n_k^{(k)}})_{k\in\mathbb{N}}$ ist dann $(f_{n_k^{(k)}}(r_j))_{k\in\mathbb{N}}$ konvergent für alle $j\in\mathbb{N}$.
+   Noch zu zeigen: Gleichmäßige Konvergenz von dieser Diagonalfolge in allen $x\in[a,b]$. Wir bezeichnen jetzt die Diagonalfolge mit $(f_n)_{n\in\mathbb{N}}$ (erst für alle rationale $r_k$). \\
    Für jedes $r_k \in [a,b]$ gibt es ein $n_\eps(r_k) \in \mathbb{N}$, sodass
    \[\abs{f_n(r_k) - f_m(r_k)} < \frac{1}{3}\eps \Forall n,m\geq n_\eps(r_k)\]
    Die gleichmäßige Stetigkeit impliziert, dass

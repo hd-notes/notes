@@ -3,9 +3,9 @@
 ** Potential einer Massenverteilung
    potentielle Energie für Gravitation zwischen $m_0$ und $m_1$
    \[V(\abs{\v r_0 - \v r_1}) = - \frac{m_0 m_1 G}{\abs{\v r_0 - \v r_1}}, \v F_{01} = -\v \nabla_0 V(\abs{\v r_0 - \v r_1}) \equiv -(\frac{\partial}{\partial(r_0)^1}, \frac{\partial}{\partial(r_0)^2}, \frac{\partial}{\partial(r_0)^3})^T V(\abs{\v r_0 - \v r_1})\]
-   Wir wollen hier nur sehr kleine "Testmassen" $m_0$ betrachten $\implies$ Bewegung von $m_0$ im unveränderlichen Fled von $m_1, m_2, m_3, \ldots \implies$ Schreibe
+   Wir wollen hier nur sehr kleine "Testmassen" $m_0$ betrachten $\implies$ Bewegung von $m_0$ im unveränderlichen Feld von $m_1, m_2, m_3, \ldots \implies$ Schreibe
    \[V(\v r_0) = -\frac{m_0 m_1 G}{\abs{\v r_0 - \v r_1}}, \v F = -\v \nabla_{(0)}V(\v r_0)\]
-   Nützlich, ein von $m_0$ unabhäniiges Gravitationspotential $\phi$ zu definieren: $\phi \equiv \frac{V}{m_0} \implies$
+   Nützlich, ein von $m_0$ unabhängiges Gravitationspotential $\phi$ zu definieren: $\phi \equiv \frac{V}{m_0} \implies$
    \[\phi(\v r_0) = -\frac{m_1 G}{\abs{\v r_0 - \v r_1}}, \v F = -m_0 \v \nabla_0\phi(\v r_0)\]
    ($m_0$ verschwindet völlig in Bewegungsgleichung der Testmasse: $\ddot{\v r_0} = - \v \nabla_0 \phi(\v r_0)$) \\
    Ziel: Gravitationspotential einer Ansammlung von Punktmassen:
@@ -42,15 +42,15 @@
    \phi &= -\frac{GM}{a}
    \end{align*}
    $\implies$ Potential so, als sei die Masse im Zentrum konzentriert. Analoge Rechnung zeigt: Keine Gravitationskraft (also Potential konstant) im Inneren.
-   Pol. jedes sphärisch symmetrischen Körpers (auch inhomogen) ist so wie bei enbph Punktmasse im Zentrum
+   Pol. jedes sphärisch symmetrischen Körpers (auch inhomogen) ist so wie bei einer Punktmasse im Zentrum
 ** Divergenz und Gaußscher Satz
    Betrachte Integrale vom Typ
    \begin{align*}
    I &= \int_{\underarrow[O]{Oberfläche eines Volumens}}\overarrow[\d \v f]{Flächenelement} \v F \\
-   \intertext{$\v F$: Vektorfeld. Betrache Würfel:}
+   \intertext{$\v F$: Vektorfeld. Betrachte Würfel:}
    I &= I_{12} + I_{23} + \underarrow[I_{31}]{Betrag der zwei Flächen in der $x^3-x^1$ Ebene} \\
    I_{12} &= \int_{12,\text{oben}} \d x^1 \d x^2 F^3(x^1, x^2, \Delta x^3) + \int_{12,\text{unten}} \d x^1 \d x^2 (-F^3(x^1, x^2, 0)) \\
-   \intertext{$\implies$ *ein* Interal, Integrand:}
+   \intertext{$\implies$ *ein* Integral, Integrand:}
    \underbrace{F^3(x^1, x^2, \Delta x^3 - F^3(x^1, x^2, 0))}_{\text{Taylor um $x^3 \equiv 0$}} \\
    I_{12} &= \int_{12}\d x^1 \d x^2 \Delta x^3 \frac{\partial F^3}{\partial x^3}(x^1, x^2, 0) \\
    I_{12} &= \Delta x^1 \Delta x^2, \Delta x^3 (\frac{\partial F^3}{\partial x^3})(0,0,0) + O(\Delta^4) \\
@@ -94,7 +94,7 @@
    $O$: Oberfläche deines Volumen
    \[M = -\frac{1}{4\pi G} \int_{O} \frac{1}{m} \underarrow[\v F]{Kraft durch $M$ auf Probemasse} \d \v f\]
    "Integrale Formulierung des Newtonsches Gravitationsgesetzes"
-   Zunächst Spezialfall: Zentrierte Späre mit Radius $R$: "O_1"
+   Zunächst Spezialfall: Zentrierte Sphäre mit Radius $R$: "O_1"
    \[I_1 \equiv \int_{O_1}\v F\d \v f = \int_{O_1}(- \frac{GmM}{R^2}\v e_r)\abs{\d \v f} \v e_r = -GmM 2\pi\]
    stimmt!
    Beliebiges Volumen: $O_2$

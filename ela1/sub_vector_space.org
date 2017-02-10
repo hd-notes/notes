@@ -11,7 +11,7 @@
   #+begin_remark latex
   $U_1, \ldots, U_r \subseteq V$ UVR. Dann gilt:
   1. $U_1 + \ldots + U_r = \Lin(U_1 \cup \ldots \cup U_r)$ das heißt $U_1 + \ldots + U_r$
-	 ist der kleinste UVr von $V$, der alle Elemente aus $U_1, \ldots, U_r$ enthält.
+	 ist der kleinste UVR von $V$, der alle Elemente aus $U_1, \ldots, U_r$ enthält.
   2. Sind $U_1, \ldots, U_r$ endlichdimensional, dann ist auch $U_1 + \ldots + U_r$
 	 endlichdimensional, und es ist
 	 \[\dim(U_1 + \ldots + U_r) \leq \sim(U_1) + \ldots + \dim(U_r)\]
@@ -90,7 +90,7 @@
   #+begin_remark latex
   $U_1, \ldots, U_r \subseteq V$. Dann sind äquivalent
   1. $V = U_1 \oplus \ldots \oplus U_r$
-  2. Fü jedes $v\in V$ existieren eindeutig bestimmte $u_i \in U_i, i = 1,\ldots, r$ mit $v = u_1 + \ldots u_r$
+  2. Für jedes $v\in V$ existieren eindeutig bestimmte $u_i \in U_i, i = 1,\ldots, r$ mit $v = u_1 + \ldots u_r$
   #+end_remark
   #+begin_proof latex
   1. $\implies$ 2. Sei $V = U_1 \oplus \ldots \oplus U_r, v\in V$
@@ -100,13 +100,13 @@
 	 \implies \underbrace{u_1 - \tilde u_1}_{\in U_1} &= \underbrace{(\tilde u_2 - u_2)}_{\in U_2} + \ldots + \underbrace{(\tilde u_r - u_r)}_{\in U_r} \in U_1 \cap \sum_{i = 2}^{r} U_i = \{0\} \\
 	 \implies u_1 &= \tilde u_1 \implies u_1 + \ldots + u_r = \tilde u_2 + \ldots + \tilde u_r
 	 \end{align*}
-	 Induktiv folgt duch Wiederholung dieses Arguments: $u_2 = \tilde u_2, \ldots, u_r = \tilde u_r$
+	 Induktiv folgt durch Wiederholung dieses Arguments: $u_2 = \tilde u_2, \ldots, u_r = \tilde u_r$
   2. $\implies$ 1. Aus 2. folgt sofort: $V = U_1 + \ldots + U_r$  \\
 	 Annahme:
 	 \[\Exists i\in \{1,\ldots, r\}: U_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^{r} U_j \neq \{0\}\]
 	 $\implies \Exists u_k \in U_k, k = 1,\ldots, r, u_1 \neq 0$ und
 	 \[u_i = u_1 + \ldots + u_{i - 1} + u_{i + 1} + \ldots + u_r \lightning\]
-	 Wiederspruch zur Eindeutigkeit der Darstellung.
+	 Widerspruch zur Eindeutigkeit der Darstellung.
   #+end_proof
   #+ATTR_LATEX: :options [11.8]
   #+begin_thm latex
@@ -136,7 +136,7 @@
   (3.) $\implies$ (4.) klar \\
   (4.) $\implies$ (2.) Es gelte 4., das heißt $V = U_1 + \ldots + U_r$ und $\dim(V) = \dim(U_1) + \ldots + \dim(U_r)$. Es seien
 	 $B_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)}), i = 1, \ldots, r$ Basen von $U_i, \mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$.
-	 $\implies \mathcal{B}$ ist Erzeugendessystem von $U_1 + \ldots + U_r = V$, $\mathcal{B}$ besteht aus $s_1 + \ldots + s_r = \dim(U_1) + \ldots + \dim(U_r) = \dim V$ Vektoren
+	 $\implies \mathcal{B}$ ist Erzeugendensystem von $U_1 + \ldots + U_r = V$, $\mathcal{B}$ besteht aus $s_1 + \ldots + s_r = \dim(U_1) + \ldots + \dim(U_r) = \dim V$ Vektoren
 	 $\implies \mathcal{B}$ ist Basis von $V$. \\
   (2.) $\implies$ (1.) Es gelte 2., das heißt für alle Basen $\mathcal{B}_i = (v_1^{(i)}, \ldots, v_{s_i}^{(i)}), i = 1, \ldots, r$ von $U_i$ ist $\mathcal{B}:=(v_1^{(1)}, \ldots, v_{s1}^{(1)}, \ldots, v_{1}^{(r)}, v_{sr}^{(r)})$
   eine Basis von $V$. \\

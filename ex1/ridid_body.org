@@ -224,8 +224,8 @@
    \begin{align*}
    I &= \int r_\perp^2 \d m \\
    &= \int (r_{s,\perp} + R_\perp)^2 \d m \\
-   &= \int \v r_{s,\perp}^2 \d m + \int \v R_{perp}^2 \d m + 2\int r_{s,\perp} R_{perp} \d m
-   &= \underbrace{\v r_{s,\perp}^2 \int  \d m}_{ = r_{s,\perp}^2 m} + I_s +  2r_{s,\perp} \underbrace{\int R_{perp} \d m}_{ = 0}
+   &= \int \v r_{s,\perp}^2 \d m + \int \v R_{\perp}^2 \d m + 2\int r_{s,\perp} R_{\perp} \d m
+   &= \underbrace{\v r_{s,\perp}^2 \int  \d m}_{ = r_{s,\perp}^2 m} + I_s +  2r_{s,\perp} \underbrace{\int R_{\perp} \d m}_{ = 0}
    \end{align*}
 
    #+ATTR_LATEX: :options [Steinersche Satz]

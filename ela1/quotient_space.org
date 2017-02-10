@@ -58,8 +58,8 @@
 	die Lösungsmenge des lineare Gleichungssystems $Ax = b$
   - Durch $v_1 \sim v_2 \xLeftrightarrow{\text{Def}} f(v_1) = f(v_2)$ ist eine Äquivalenzrelation auf
 	$V$ erklärt, die Äquivalenzklasse von $v\in V$ ist gegeben durch $\{u\in V\mid f(u) = f(v)\} = f^{-1}({f(v)})$.
-	Somit sind die nichtleeren Fasern von $A$ genau die Äquivenzklassen bezüglich "$\sim$". Insbesondere ist
-	$V$ die Vereinigung der Fasern von $f$, je zwei Fastern von $f$ sind gleich oder disjunkt.
+	Somit sind die nichtleeren Fasern von $A$ genau die Äquivalenzklassen bezüglich "$\sim$". Insbesondere ist
+	$V$ die Vereinigung der Fasern von $f$, je zwei Fasern von $f$ sind gleich oder disjunkt.
   #+end_remark
   #+ATTR_LATEX: :options [13.5]
   #+begin_thm latex
@@ -67,7 +67,7 @@
   \[f^{-1}(\{w\}) = \begin{cases} u + \ker f & \text{falls $w\in \im f$ (hierbei $u\in f^{-1}(\{w\})$)} \\ \emptyset & \text{falls $w\not\in \im f$}\end{cases}\]
   Somit ist die Faser von $f$ über $w$ ein affiner UR von $V$ mit
   \[\dim f^{-1}(\{w\}) = \begin{cases} \dim \ker f = \dim V - \dim \im f & \text{falls $w\in \im f$} \\ -1 & \text{falls $w\not\in \im f$}\end{cases}\]
-  Insbesondere haben alle nichtleeren Fasern von $f$ dieselbe Dimesion.
+  Insbesondere haben alle nichtleeren Fasern von $f$ dieselbe Dimension.
   #+end_thm
   #+begin_proof latex
   Falls $w\not\in \im f$, dann $f^{-1}(\{w\}) = \emptyset$. Im Folgenden sei $w\in \im f$. zu zeigen:
@@ -84,7 +84,7 @@
   ist $f^{-1}(\{w\}) = f^{-1}({\cvec{\lambda ; 0}}) = \cvec{\lambda ; 5} + \ker f = \cvec{\lambda ; 5} + \Lin((e_2))$
   #+end_ex
   Ziel: Wir haben gesehen, dass der Kern einer linearen Abbildung $f: V\to W$ ein UVR von $V$
-  ist und dass für jedes $w \in W$ die Faser vo $f$ über $w$ ein affiner UR von $V$ ist.
+  ist und dass für jedes $w \in W$ die Faser von $f$ über $w$ ein affiner UR von $V$ ist.
   Wir wollen nun zu einem gegebenen UVR $U \subseteq V$ einen UR $W$ und eine lineare
   Abbildung $f: V \to W$ konstruieren, sodass $U = \ker f$ ist (beziehungsweise dass ein
   gegebener affiner UR von V eine Faser von $f$ ist)
@@ -119,8 +119,8 @@
 	 Der Nullvektor in $V/U$ ist $\bar 0 = 0 + u = u$
   2. Die Abbildung
 	 \[\pi: V\to V/U, a\mapsto \bar a\]
-	 ist die surjektive lineare Abbildung mit $\ker \pi = U$
-  3. Ist $V$ endlichdimenisonal, dann ist $\dim_K V/U = \dim_K V - \dim_K U$
+	 ist die surjektiv lineare Abbildung mit $\ker \pi = U$
+  3. Ist $V$ endlichdimensional, dann ist $\dim_K V/U = \dim_K V - \dim_K U$
   #+end_thm
   #+begin_proof latex
   1.
@@ -140,7 +140,7 @@
   $U\subseteq V$. Dann sind äquivalent:
   1. $U$ ist UVR von $V$
   2. Es gibt einen K-Vektorraum $W$ und eine lineare Abbildung $F:V\to W$ mit $\ker f = U$.
-	 Ist $V$ endlichdimensional, dann kann in diesem fall $W$ auch endlichdimensional mit $\dim W \leq \dim V$ gewählt werden.
+	 Ist $V$ endlichdimensional, dann kann in diesem Fall $W$ auch endlichdimensional mit $\dim W \leq \dim V$ gewählt werden.
   #+end_conc
   #+begin_proof latex
   1. $\implies$ 2. Setze $W:= V/U, v:= \pi, V\to V/U, a\mapsto \bar a$, Behauptung folgt aus 12.8. (Zusatzaussage folgt aus 13.8: $\dim_K V/U \leq \dim_K V$)
@@ -149,7 +149,7 @@
   #+ATTR_LATEX: :options [13.10]
   #+begin_conc latex
   $A\subseteq V$. Dann sind äquivalent:
-  1. $A$ ist ein afiner Unterraum von $V$
+  1. $A$ ist ein affiner Unterraum von $V$
   2. Es gibt einen K-Vektorraum $W$, eine lineare Abbildung $f: V \to W$ und ein $w\in W$ mit $A = f^{-1}(\{w\})$.
 	 ist $V$ endlichdimensional, dann kann in diesem Fall auch $W$ endlichdimensional, mit $\dim W \leq \dim V$ gewählt werden.
   #+end_conc
@@ -160,9 +160,9 @@
   2. $\implies$ 1. $f^{-1}(\{w\})$ ist ein affiner Unterraum.
   #+end_proof
   #+begin_remark latex
-  Philosopie hinter 13.9 / 13.10: UVR = Kerne von lineare Abbildungen, affine Unterräume = Fasern von linearen Abbildungen.
+  Philosophie hinter 13.9 / 13.10: UVR = Kerne von lineare Abbildungen, affine Unterräume = Fasern von linearen Abbildungen.
   #+end_remark
-  #+ATTR_LATEX: :options [13.11 Homomophiesatz]
+  #+ATTR_LATEX: :options [13.11 Homomorphiesatz]
   #+begin_thm latex
   $f:V\to W$ lineare Abbildung. Dann induziert $f$ einen Isomorphismus
   \[\bar f : V/\ker f \to \im f, \bar v \mapsto f(v)\]

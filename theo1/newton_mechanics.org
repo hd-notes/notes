@@ -227,7 +227,7 @@
 	   Beachte $A' = a$
 	   \[\implies c'e^{-A} = f e^{A},c(x) = \int\d x f(x) e^{A(x)}\]
 	   \[y(x) = \left[\int^x\d x' f(x') e^{A(x')}\right] e^{-A(x)}\]
-	   $f(x')$ ist eine frei wählbare additive Konstante im $x'$-Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
+	   $f(x')$ ist eine frei wählbare additive Konstante im $x'$ -Int. ($C(x)\to C(x) +\alpha$) entspricht der Addition der Lösung der homogenen Dgl.
 *** Zusammenfassung / Verallgemeinerung auf $n > 1$
 	\begin{defn}[Linear Unabhängig]
 	Ein Satz von Funktionen $f_1(x),\ldots,f_n(x)$ heißt linear unabhängig, falls jede Linearkombination bei der nicht alle Koeffizienten Null sind auch nicht Null ist:
@@ -235,7 +235,7 @@
 	(identisch zur linearen Unabhängigkeit von Vektoren)
 	\end{defn}
 **** Fakt
-	 Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$-ter Ordnung, so kennt man die allgemeine Lösung:
+	 Kennt man $n$ linear unabhängige Lösungen einer homogenen linearen Dgl. $n$ -ter Ordnung, so kennt man die allgemeine Lösung:
 	 \[y_{hom}(x) = C_1 y_1(x) + \ldots + C_n y_n(x)\]
 	 Die allgemeine Lösung ist stets von dieser Form.
 

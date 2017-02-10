@@ -155,7 +155,7 @@
    Im Folgende: $\kappa = 0, V =~\text{const}$, das heißt Wasser "inkompresible"
    #+ATTR_LATEX: :options [Pascalsches Prinzip]
    #+begin_thm latex
-   Wird auf eine in einem Gefäß eingeschlossene Flüssigkeit ein Druch ausgeübt, dann verteilt sich dieser
+   Wird auf eine in einem Gefäß eingeschlossene Flüssigkeit ein Druck ausgeübt, dann verteilt sich dieser
    ungehindert auf jeden Punkt in der Flüssigkeit und die Wände.
    #+end_thm
    Zur Veranschaulichung: betrachte frei schwebendes Flüssigkeitsprisma in ruhender Flüssigkeit,
@@ -185,7 +185,7 @@
    W_2 = F_2 a_2 = p A_2 a_2 = pV
    \end{align*}
    Bisher: Vernachlässigung der Schwerkraft. \\
-   Jetzt: Druch im Schwerefeld.
+   Jetzt: Druck im Schwerefeld.
 
    Eigengewicht einer Flüssigkeit verursacht einen von der Tiefe abhängenden Druck.
    Kraftwirkung auch Fläche $A$:
@@ -209,12 +209,12 @@
    \end{align*}
    Druckeinheit: $\SI{1}{\milli\meter}\,\text{Hg}~= \SI{133.322}{\pascal}$
 *** Auftrieb
-	Erfahrung: Ein in eine Flüssigkeit eingetauchter Körper erfährt Autrieb. \\
+	Erfahrung: Ein in eine Flüssigkeit eingetauchter Körper erfährt Auftrieb. \\
 	Grund: Auf Körper einwirkende Druckkräfte.
 	#+ATTR_LATEX: :options [Prinzip des Archimedes]
 	#+begin_thm latex
-	Ein Körper, der in eine Flüssigkeit eingetauch ist
-	erfähft eine Auftriebskraft, deren Betrag gleich der
+	Ein Körper, der in eine Flüssigkeit eingetaucht ist
+	erfährt eine Auftriebskraft, deren Betrag gleich der
 	Gewichtskraft der verdrängten Flüssigkeit ist.
 	#+end_thm
 	\begin{align*}
@@ -240,14 +240,14 @@
 	#+end_defn
 
 ** Gase
-   Wesentlicher Unterschie zu Gestkörpern und Flüssigkeiten: Hohe Kompressibilität.
+   Wesentlicher Unterschied zu Festkörpern und Flüssigkeiten: Hohe Kompressibilität.
    #+ATTR_LATEX: :options [Gesetz von Boyle-Mariette]
    #+begin_defn latex
    \[p V = ~\text{const}\]
    falls Temperatur $T = ~\text{const}$, siehe später
    #+end_defn
 *** Barometrische Höhenformel:
-	Flüssigkeiten: $p = \rho g h + p_0$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$)}$) \\
+	Flüssigkeiten: $p = \rho g h + p_0$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$, das heißt Druck steigt linear mit der Tiefe. (Ausnahme: Inkompressibilität, also $\rho =~\text{const}$)) \\
 	Gase: Hohe Kompressibilität! Das heißt Dichteänderungen müssen berücksichtigt werden. \\
 	Frage: $p(h) = ?, \rho(h) = ?$ \\
 	Es gilt:
@@ -263,7 +263,7 @@
 	\intertext{Barometrische Höhenformel:}
 	p(h) &= p_0 \exp(-\frac{\rho_0 g}{p_0} h)
 	\end{align*}
-	das heißt: in Atmosühäre mit kompressiblem gas nimmt der Druck mit der Höhe exponentiell ab.
+	das heißt: in Atmosphäre mit kompressiblem Gas nimmt der Druck mit der Höhe exponentiell ab.
 ** Strömende Flüssigkeiten und Gase
    Experiment: Flüssigkeitsströmung durch Rohr \\
    Beobachtung: Druckabfall entlang des Rohres \\
@@ -315,7 +315,7 @@
 	#+begin_defn latex
 	\[\tau = \frac{F_R}{A} = \eta \dd{v_x}{y}\]
 	\[F_R = \eta A \dd{v_x}{y}\]
-	$eta$ nennt man dynamische Scherviskosität.
+	$\eta$ nennt man dynamische Scherviskosität.
 	#+end_defn
 *** Strömung durch ein Rohr mit kreisförmigen Querschnitt (Hagen-Poiseuille)
 	\begin{align*}
@@ -328,7 +328,7 @@
 	\Delta V &= \int_{0}^{R}2\pi r \d r v(r) \Delta t \\
 	&= \frac{2\pi \Delta p}{2\eta L}\Delta t \int_{0}^{R}(R^2 r - r^3) \d r \\
 	&= \frac{2\pi \Delta p}{2\eta L}(\frac{1}{4} R^4 - \frac{1}{4} R^4) \Delta t \\
-	\dot{V} &= \dd{v}{t} = \frac{\pi \Delta p}{8\eta L} R^4 \sim R^4 \tag{Hagen-Posieuilles-Gesetz}
+	\dot{V} &= \dd{v}{t} = \frac{\pi \Delta p}{8\eta L} R^4 \sim R^4 \tag{Hagen-Poiseuille-Gesetz}
 	\bar v = \frac{\dot{V}}{A} = \frac{A \Delta x}{A \Delta t} = \dd{V}{t} \frac{1}{\pi R^2} = \frac{R^2}{8\eta L}\Delta p \\
 	\bar v \sim \Delta p ~\text{typisch für laminare Strömung} \\
 	\end{align*}
@@ -337,7 +337,7 @@
 	$\Delta p \sim \bar v^2$
 
 	Vergleich:
-	| Stationare laminare Strömung | Turbulente Strömung                 |
+	| Stationäre laminare Strömung | Turbulente Strömung                 |
 	|------------------------------+-------------------------------------|
 	| $\dot{v} = \dd{\v v}{t} = 0$ | $\v v = \v v(x,y,z,t)$              |
 	| Stromflächen                 | keine Vorhersage der Teilchenbahnen |
@@ -349,7 +349,7 @@
 	R_e > R_{e_{krit}} \tag{turbulent}
 	\end{align*}
 	#+begin_ex latex
-	Für ein rundes Rohr mit Radis $R$ gilt:
+	Für ein rundes Rohr mit Radius $R$ gilt:
 	\[R_e = \frac{2\rho \bar v R}{\eta}, R_{e_{krit}} = 2000 - 2300\]
 	#+end_ex
 *** Strömungswiderstand von glatten Körper
@@ -358,16 +358,16 @@
 	1. Laminare Strömung: $F_N \sim v$
 	   #+ATTR_LATEX: :options [Gesetz von Stokes]
  	   #+begin_defn latex
-	   Strömungswiederstand einer Kugel
+	   Strömungswiderstand einer Kugel
 	   \[F_W = F_R = 6\pi \eta r v\]
 	   #+end_defn
-	   Gesetz von Stokes wichtig für die gesmate Naturwissenschaft! (Sedimentation, Staubteilchen, Milikanversuch...)
+	   Gesetz von Stokes wichtig für die gesamte Naturwissenschaft! (Sedimentation, Staubteilchen, Milikanversuch...)
 	2. Turbulente Strömung: $F_N \sim v^2$
-	   Qualitativer Beweis: Teilchen, die mit der Strömungsgeschwindigketi $\v v_K$ auf den
+	   Qualitativer Beweis: Teilchen, die mit der Strömungsgeschwindigkeit $\v v_K$ auf den
 	   Körper mit Konturfläche $A$ auftreffen, werde im Staupunkt gebremst. Dadurch steigt der Druck
 	   $p_0$ um $\Delta p$. Hinter dem Körper werden die Teilchen in eine turbulente Strömung
-	   überführt. Deren Geschwindigketi entspricht ungefähr der Strömungsgeschwindigkeit $v_k$,
-	   weshalb der Druck hinter dem Körper wieder auf dem altn Druck $p_0$ absinkt. Die
+	   überführt. Deren Geschwindigkeit entspricht ungefähr der Strömungsgeschwindigkeit $v_k$,
+	   weshalb der Druck hinter dem Körper wieder auf dem alten Druck $p_0$ absinkt. Die
 	   Druckdifferenz zwischen Vorder- und Rückseite des Körpers gibt den Druckwiderstand. Es
 	   gilt dann:
 	   - Strömung ungestört: $p_0 + \frac{1}{2}\rho \v v_k^2$

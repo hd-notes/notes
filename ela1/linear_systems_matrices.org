@@ -15,7 +15,7 @@
   (2): \\
   1. Existenz: Für $v\in V$ existieren eindeutig bestimmte $\lambda_1, \ldots, \lambda_r\in K$ mit
 	 $v = \lambda_1v_1 + \ldots + \lambda_r v_r$. Wir setzen $f:V\to W, v\mapsto \lambda w_1 + \ldots + \lambda_r w_r$,
-	 dann sit insbesondere $f(v_i) = w_i$ f+r $i = 1,\ldots, r$. Behauptung: $f$ linear, denn Seien
+	 dann ist insbesondere $f(v_i) = w_i$ f+r $i = 1,\ldots, r$. Behauptung: $f$ linear, denn Seien
 	 $u, v \in U$ mit $u = \lambda_1 v_1 +\ldots + \lambda_r v_r, v =\mu_1 v_1 +\ldots + \mu_r v_r$
 	 \[\implies f(u + v) = f((\lambda_1 + \mu_1)v_1 + \ldots + (\lambda_r + \mu_r)v_r) = (\lambda_1 + \mu_1)w_1 + \ldots + (\lambda_r + \mu_r)w_r = f(u) + f(v)\]
 	 Ist $\lambda\in K, v\in V$ wie oben, dann ist
@@ -26,10 +26,10 @@
   3. Eigenschaften von $f$:
 	 - $\im f = \Lin((f(v_1), \ldots, f(v_r))) = \Lin((w_1, \ldots, w_r))$
 	 - $f$ injektiv $\iff (w_1, \ldots, w_r)$ linear unabhängig, denn: \\
-	   "$\implies$" (durch Kontrapositon) Sei $(w_1, \ldots, w_r)$ linear abhängig
+	   "$\implies$" (durch Kontraposition) Sei $(w_1, \ldots, w_r)$ linear abhängig
 	   $\implies \Exists \mu_1, \ldots, \mu_r \in K$ mit $(\mu_1, \ldots, \mu_r) \neq (0, \ldots, 0)$
 	   und $\mu_1 w_1 + \ldots + \mu_r w_r = 0 \implies f(\underbrace{\mu_1 v_1 + \ldots + \mu_r v_r}_{\neq 0}) = 0 \implies f$ nicht injektiv \\
-	   "$\impliedby$" Sei $w_1, \ldots, w_r$ linear unabängig. Sei $v\in V$ mit $f(v) = 0, v = \lambda_1 v_1 + \ldots + \lambda_r v_r \implies f(v) = \lambda_1 w_1 + \ldots + \lambda_r w_r = 0 \implies \lambda_1 = \ldots = \lambda_r = 0 \implies v = 0$
+	   "$\impliedby$" Sei $w_1, \ldots, w_r$ linear unabhängig. Sei $v\in V$ mit $f(v) = 0, v = \lambda_1 v_1 + \ldots + \lambda_r v_r \implies f(v) = \lambda_1 w_1 + \ldots + \lambda_r w_r = 0 \implies \lambda_1 = \ldots = \lambda_r = 0 \implies v = 0$
   (1): \\
   Sei $(v_1, \ldots, v_r)$ linear unabhängig $\implies (v_1, \ldots, v_r)$ kann zu Basis
   $(v_1, \ldots, v_r, v_{r + 1}, \ldots, v_n)$ von $V$ ergänzt werden. Wir wählen $w_{r + 1}, \ldots, w_n \in W$ beliebig.
@@ -41,7 +41,7 @@
   $\mathcal{B} = (v_1, \ldots, v_2)$ Basis von $V$. Dann gibt es genau einen Isomorphismus
   \[\Phi_{\mathcal{B}}:K^n \to V\]
   von K-VR mit $\Phi_{\mathcal{B}}(e_i) = v_i$ für $i = 1, \ldots, n$. $\Phi_{\mathcal{B}}$ heißt
-  das durch $\mathcal{B}$ bestimmte *Koodinatensystem* von $V$. Ist $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \in V$,
+  das durch $\mathcal{B}$ bestimmte *Koordinatensystem* von $V$. Ist $v = \lambda_1 v_1 + \ldots + \lambda_n v_n \in V$,
   dann nennt man $\Phi_{\mathcal{B}}^{-1} = \lambda_1 e_1, \ldots, \lambda_n e_n = \cvec{\lambda_1; \vdots; \lambda_n} \in K^n$
   die *Koordinaten* von $v$ bezüglich $\mathcal{B}$
   #+end_conc
@@ -55,15 +55,15 @@
   1. Für jede lineare Abbildung $f:V\to W$ gibt es genau eine Matrix $A = (a_{ij}) \in M(m\times n, K)$,
 	 sodass
 	 \[f(v_j) = \sum_{j = 1}^{m}a_{ij} w_i, j = 1,\ldots, n\]
-	 $M_{\mathcal{B}}^{\mathcal{A}}(f) := A$ heißt die *Darstelungsmatrix* von $f$ bezüglich der Basen
+	 $M_{\mathcal{B}}^{\mathcal{A}}(f) := A$ heißt die *Darstellungsmatrix* von $f$ bezüglich der Basen
 	 $\mathcal{B}$ und $\mathcal{B}$. In der j-ten Spalte von $M_{\mathcal{B}}^{\mathcal{A}}(f)$
-	 stehen die Koordiaten von $f(v_j)$ bezüglich der Basis von $\mathcal{B}$ von $W$ (für $j = 1, \ldots , n$)
+	 stehen die Koordinaten von $f(v_j)$ bezüglich der Basis von $\mathcal{B}$ von $W$ (für $j = 1, \ldots , n$)
   2. Die aus 1. erhaltene Abbildung
 	 \[M_{\mathcal{B}}^{\mathcal{A}}:\Hom_K(V, W) \to M(m\times n, K), f\mapsto M_{\mathcal{B}}^{\mathcal{A}}(f)\]
 	 ist ein Isomorphismus von K-VR. Insbesondere ist im Fall $V = W, \mathcal{A} = \mathcal{B}$ die
 	 Abbildung
 	 \[M_{\mathcal{B}}: \End_K(V) \to M(n\times m,K), f\mapsto M_{\mathcal{B}}(f) := M_{\mathcal{B}}^{\mathcal{B}}(f)\]
-	 ein Isomorphismus von K-Vekorraum.
+	 ein Isomorphismus von K-Vektorraum.
   #+end_thm
   #+begin_proof latex
   1. klar, weil $\mathcal{B} = (w_1, \ldots, w_m)$ Basis von $W$ ist.
@@ -116,7 +116,7 @@
   (1) $\iff$ (2) Definition. \\
   (5) $\iff$ (6) $\tilde A$ Isomorphismus $\iff \tilde A$ surjektiv $\iff$ $\dim\im \tilde A = n \iff \Rang\tilde A = n \iff \Rang(A) = n$ \\
   (2) $\implies$ (3), (2) $\implies$ (4) trivial \\
-  (3) $\implies$ (5) Sei $B\in M(n\times n, K)$ mit $AB = E_n \implies \tilde A \circ \tilde B = \reallywidetilde{AB} = \tilde E_n = id_{K^n} \implies \tilde A$ sujektiv $\implies \tilde A$ Isomorphimus \\
+  (3) $\implies$ (5) Sei $B\in M(n\times n, K)$ mit $AB = E_n \implies \tilde A \circ \tilde B = \reallywidetilde{AB} = \tilde E_n = \id_{K^n} \implies \tilde A$ surjektiv $\implies \tilde A$ Isomorphismus \\
   (4) $\implies$ (5) analog \\
   (5) $\implies$ (2) Sei $\tilde A$ Isomorphismus $\implies \Exists g\in \End_K(K^n): \tilde A \circ g = \id_{K^n} = g\circ \tilde A$. Nach 15.4 $\Exists B\in M(n\times n, K)$ mit $g = \tilde B$,
   insbesondere $\tilde A \circ\tilde B = \id_{K^n} = \tilde B \circ \tilde A$, also $\tilde A \circ \tilde B =\tilde E_n = \tilde B\circ \tilde A \implies \tilde E_n = \reallywidetilde{AB} = \reallywidetilde{BA}\implies E_n = AB = BA$
@@ -139,7 +139,7 @@
   #+end_conc
   #+begin_proof latex
   1. $\implies$ 2. nach 13.9 existiert ein endlichdimensionaler K-VR und eine lineare Abbildung $f:K^n \to W$ mit $\ker f = U$.
-	 Sei $m = \dim W$, dass esistiert ein Isomorphismus $g: W\to K^m$. Wir setzen
+	 Sei $m = \dim W$, dass existiert ein Isomorphismus $g: W\to K^m$. Wir setzen
 	 \[\phi := g\circ f: K^n \to K^m\]
 	 Es ist $\ker\phi = \ker f$, denn: Für $v\in K^n$ ist $f(v) = 0 \iff g(f(v)) = g(0) = 0 \iff \phi(v) = 0$, also $\ker \phi = U$. Nach 15.4
 	 existiert $A\in M(m\times n, K)$ mit $\phi = \tilde A \implies U = \ker \phi = \ker \tilde A = \Lös(A, 0)$
@@ -148,8 +148,8 @@
   #+ATTR_LATEX: :options [15.9]
   #+begin_conc latex
   $U\subseteq K^n$. Dann sind äquivalent:
-  1. $U$ ist affinier UR von $K^n$
-  2. Es gitb $m\in\mathbb{N}, A\in M(m\times n, K), b\in K^m$, sodass $U = \Lös(A, b)$
+  1. $U$ ist affiner UR von $K^n$
+  2. Es gibt $m\in\mathbb{N}, A\in M(m\times n, K), b\in K^m$, sodass $U = \Lös(A, b)$
   #+end_conc
   #+begin_proof latex
   1. $\implies$ 2. Nach 13.10 Existiert ein endlichdimensionaler K-VR, $W, w\in W$ und eine lineare Abbildung $K^n \to W$ mit $U = f^{-1}(\{w\})$.
@@ -160,7 +160,7 @@
   3. $\implies$ 1. aus Satz 14.2
   #+end_proof
   #+begin_note latex
-  Philosophie hinter 15.8/15.9: affine UR von $K^n =$ Lösungräume von LGS (in $n$ Variablen) über $K$, UVR von $K^n =$ Lösungräume homogener GLS (in $n$ Variablen) über $K$
+  Philosophie hinter 15.8/15.9: affine UR von $K^n =$ Lösungsräume von LGS (in $n$ Variablen) über $K$, UVR von $K^n =$ Lösungsräume homogener GLS (in $n$ Variablen) über $K$
   #+end_note
   Frage: $f:V\to W$ lineare Abbildung, Wie einfach kann man $M_{\mathcal{B}}^{\mathcal{A}}(f)$ durch geeignete Wahl von $\mathcal{A},\mathcal{B}$ bekommen?
   #+ATTR_LATEX: :options [15.19]

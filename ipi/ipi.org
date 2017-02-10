@@ -256,7 +256,7 @@
 	Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
 	Grundidee:
 	1. berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
-	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$-Notation* und ihren Verwandten
+	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$ -Notation* und ihren Verwandten
 	   Gegeben: $f(n)$ und $g(n)$
 	   1. $g(n)$ ist eine asymptotische (für große $n$) obere Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
 		  und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in O(g(n))$
@@ -318,12 +318,12 @@
 	   #+end_src
 	   - sehr ineffizient, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
 	   Sei $f(k)$  die Anzahl der Schritte, $f'(k)$ die Schritte oberhalb, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$.
-	   Oberhalb ist der Baum vollständig (jeder nnere Knoten hat zwei Kinder), Anzahl der Knoten im vollständigen Baum der Tielfe $l$:
+	   Oberhalb ist der Baum vollständig (jeder innere Knoten hat zwei Kinder), Anzahl der Knoten im vollständigen Baum der Tiefe $l$:
 	   \[1 + 2 + 4 + \ldots + 2^l = 2^{l + 1} - 1\]
 * Zahlendarstellung im Computer
   Problem: es gibt $\infty$ viele Zahlen, aber der Computer ist endlich.
 ** Natürliche Zahlen
-   Natürliche Zahlen $\implies x \geq 0$. c++ bietet Typen verschiederne Größe.
+   Natürliche Zahlen $\implies x \geq 0$. c++ bietet Typen verschiedene Größe.
    | klassisch          | mit Größe | Anzahl Bits | Bereich                | Literale |
    |--------------------+-----------+-------------+------------------------+----------|
    | unsigned char      | uint8_t   | ($\geq$) 8  | 0 - 255                |          |
@@ -343,7 +343,7 @@
 	#+begin_src cpp
 	std::vector<uint8_t> v = { ... };
 	uint8_t sum = 0; // FALSCH, da es zu overflow kommen kann
-	// verwende uint32_t, uint64_t, verhndern overflow mit hoher Wahrscheinlichkeit
+	// verwende uint32_t, uint64_t, verhindern overflow mit hoher Wahrscheinlichkeit
 	for(int k = 0; k < v.size(); k++) {
 		sum += v[k];
 	}
@@ -366,10 +366,10 @@
 	 2 \mod 4 &= 2 \equiv 6 \mod 4 \equiv 10 \mod 4 \equiv 14 \mod 4 \ldots \\
 	 3 \mod 4 &= 3 \equiv 7 \mod 4 \equiv 11 \mod 4 \equiv 15 \mod 4 \ldots \\
 	 \end{align*}
-	 Ein Mitglied jeder Äquivalentzklasse wird Represäntant. \\
-	 Hier: kleinste Repreäsentanten $0, \ldots, (k - 1)$, mit $k = 2^m$
+	 Ein Mitglied jeder Äquivalenzklasse wird Repräsentant. \\
+	 Hier: kleinste Repräsentanten $0, \ldots, (k - 1)$, mit $k = 2^m$
 	 sind das gerade die uint-Werte \\
-	 Eigenschaft: man kann Vielfache $n k$ addieren, ohne Äquivalenzklase zu ändern: \\
+	 Eigenschaft: man kann Vielfache $n k$ addieren, ohne Äquivalenzklasse zu ändern: \\
 	 \[ (a - b) \mod 2^m = (a + \underbrace{2^m - b}_{\mathclap{z:~\text{Zweierkomplement}}}) \mod 2^m = (a + z) \mod 2^m \]
 	 $z = (2^m - b) \mod 2^m$ lässt sich billig berechnen als $(\sim b + 1) \mod 2^m$
 	 Dabei ist $\sim$ bitweise Negation (dreht alle Bits um)
@@ -395,7 +395,7 @@
 **** Multiplikation
 	 Neue Operationen: $\ll$  und $\gg$ (left und right shift). Verschiebt die Bits um $k$ Positionen nach
 	 links oder rechts. Die herausgeschobenen Bits werden vergessen und auf der anderen Seite durch
-	 $0$-bits ersetzt.
+	 $0$ -bits ersetzt.
 
 	 #+begin_src cpp
 	 // m = 8
@@ -408,13 +408,13 @@
 	 x >> k \equiv (\frac{x}{2^k}) \\
 	 \end{align*}
 	 #+end_thm
-	 Operation \amp und |: bitw4eise und beziehungsweise oder-Verknüpfung (nicht verwechseln mit \amp\amp und || füür logische Operationen)
-	 m = 8:
+	 Operation \amp und |: bitw4eise und beziehungsweise oder-Verknüpfung (nicht verwechseln mit \amp\amp und || für logische Operationen)
+	 m = 8: \\
 	 $10110011 \amp 1 = $
 	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-	 (testet, ob in linker Zahl Bit 0 gesetzt ist)
+	 (testet, ob in linker Zahl Bit 0 gesetzt ist) \\
 	 $10110011 \mid 1 =$
 	 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
 	 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
@@ -441,7 +441,7 @@
    | signed int       | int32_t   |          32 | -2^31 \ldots 2^31 - 2 |
    | signed long      |           |  32 oder 64 |                       |
    | signed long long | int64_t   |          64 | -2^63 \ldots 2^63 - 1 |
-   Wird der erlaubte Bereich überschritte, ist Verhalten Compiler abhängig.
+   Wird der erlaubte Bereich überschritten, ist Verhalten Compiler abhängig.
    In der Praxis: auch Modulo $2^m$, aber mit anderen Repräsentanten.
 
 
@@ -449,13 +449,13 @@
    statt $0\ldots 2^m$ bei unsigned jetzt $-2^{m - 1} \ldots 2^{m - 2} - 1$ \\
    das heißt:
    - $x < 2^{m - 1}$: Repräsentant bleibt
-   - $x \geq 2^{m - 1}$: neuer Represenant $x - 2^{m}$ ist gleiche Restklasse
+   - $x \geq 2^{m - 1}$: neuer Repräsentant $x - 2^{m}$ ist gleiche Restklasse
    Vorteil: $x, -, *$ kann von unsigned übernommen werden \\
    $a,b$ signed: $a$ OP $b$ \to $c$ signed
    (interpretiere Bitmuster von $a$ und $b$ als unsigned und Interpretiere das Ergebnis dann als signed)
   Konsequenzen:
    - bei negativer Zahl ist höchstes Bit 1, weil $x \to x - 2^m$ falls $x \geq 2^{m - 1}$
-   - unäre Negation $-x$ duch Zweierkomplement
+   - unäre Negation $-x$ durch Zweierkomplement
 	 \begin{align*}
 	 -x &= (\sim x + 1) \mod 2^m \\
 	 -0 &= (\sim 00000000 + 1) \mod 2^8 \\
@@ -479,13 +479,13 @@
    | long double | platformabhängig, $\geq$ 64bit |                                |                 |           |
    Der c++ Standard legt die Größe nicht fest, aber praktisch alle gängigen CPUs benutzen Standard IEEE 754, c++
    übernimmt HW-Implementation. Ziele der Definition von reellwertigen Typen:
-   - hohe Genauigkeit (viele gültige Nachommastellen)
+   - hohe Genauigkeit (viele gültige Nachkommastellen)
    - Zahlen sehr unterschiedlicher Größenskalen (zum Beispiel Durchmesser eines Proton $=\SI{2e-15}{\meter}$ vs. Durchmesser des sichtbaren Universum $\SI{1e27}{\meter}$)
-	 mit natürlichen Zahlen bräuchte man $> 150$bit
-   elegante Lösung: halb-logarithmische Darstellung ("floating point"). Datentyp ist aus 3 natürlichen Zahlen zusammengesetz (aber alles von der CPU gekapselt)
+	 mit natürlichen Zahlen bräuchte man $> 150$ bit
+   elegante Lösung: halb-logarithmische Darstellung ("floating point"). Datentyp ist aus 3 natürlichen Zahlen zusammengesetzt (aber alles von der CPU gekapselt)
    - $S$ (1-bit): Vorzeichen, 0 = "$+$", 1 = "-"
    - $M$ (m-bit): Mantisse: Nachkommastellen
-   - $E$: (e-bit, Bias b): Exponent: Größenordung
+   - $E$: (e-bit, Bias b): Exponent: Größenordnung
    die eigentliche Zahl wird durch
    \[x = (-1)^s \cdot (1 + M\cdot 2^{-m}) \cdot 2^{E-b}\]
    - $M\cdot 2^{-m} \in [0, \frac{2^m - 1}{2^m}\string) \in [0,1\string)$
@@ -520,7 +520,7 @@
    fast gleich große Zahlen subtrahiert, löschen sich fast alle Bits der Mantisse $\implies$ nur wenige gültige Nachkommastellen überleben. Zum Beispiel:
    \[0.1234567 - 0.1234566 = 0.000001\tag{nur eine gültige Nachkommastelle!}\]
    \[1.0 - \cos{x}, x \to 0, x\approx 0 \implies \cos{x} \approx 1 \tag*{$\implies$ Auslösung}\]
-   | x            | Anzahl der gültigen Stellen | Additionstheoriem $1 - \cos(x) = 2(\sin(x / 2))^2$ |
+   | x            | Anzahl der gültigen Stellen | Additionstheorem $1 - \cos(x) = 2(\sin(x / 2))^2$ |
    |--------------+-----------------------------+----------------------------------------------------|
    | \SI{0.001}{} | 9                           |                                                 15 |
    | \SI{1e-8}{}  | 0 (\cos(\SI{1e-8}{}))       |                                                 15 |
@@ -545,9 +545,9 @@
   Buchstabenzeichen: "glyphs" müssen durch Zahlen repräsentiert werden "Zeichencode"
 ** Geschichte
    #+ATTR_LATEX: :environment longtable :align l|l|p{2.5cm}|p{7cm}
-   | 1963                | ASCII   | 7-bit                                  | Zeichen der englischen Schreibmaschiene (*keine* Umlaute)                                                                                                                                                                                                                                      |
+   | 1963                | ASCII   | 7-bit                                  | Zeichen der englischen Schreibmaschine (*keine* Umlaute)                                                                                                                                                                                                                                      |
    | 1964 $\ldots$ 2000  |         | 8-bit Codes                            | mit Umlauten, Akzenten, kyrillische Zeichen, aber 8-bit sind zu wenig, um alles abzudecken $\implies$ viele verschiedene 8-bit Codes: DOS Codepage 437, Codepage 850 (Konsole im deutschen Windows), Windows-1252 ("ANSI") $\approx$ ISO 8859-1 \approx ISO 8859.15 (Westeuropäische Sprachen) |
-   | 1991 $\ldots$ heute | Unicode | anfangs 16-bit, jetzt $\approx$ 21-bit | alles (chinesisch, Hyroglyphen, Emojis, $\ldots$)                                                                                                                                                                                                                                              |
+   | 1991 $\ldots$ heute | Unicode | anfangs 16-bit, jetzt $\approx$ 21-bit | alles (chinesisch, Hieroglyphen, Emojis, $\ldots$)                                                                                                                                                                                                                                              |
    3 Codierungen für Unicode:
    - UTF-8: variable length code: pro glyph $1 \ldots 4$ uint8
    - UTF-16: variable length code: pro glyph $1 \ldots 2$ uint16
@@ -556,7 +556,7 @@
    - char: 8-bit Codes
    - wchar_t: 16-bit (Windows), 32-bit (Linux)
    - u16char_t, u32char_t:
-   leider sehr Plattformabhängig
+   leider sehr Platformabhängig
    | Symbol | DOS | ANSI | UTF-8       |
    |--------+-----+------+-------------|
    | ö      | 148 |  246 | 195 182     |
@@ -585,7 +585,7 @@
 	  type_name1 var_name1; // existierende Typen
 	  type_name2 var_name2;
 	  // ...
-  }; // semikolon WICHTIG, falls vergessen: Fehlermeldung
+  }; // Semikolon WICHTIG, falls vergessen: Fehlermeldung
 
   // Beispiel:
   struct Date {
@@ -616,24 +616,24 @@
   c.count = 0;
   c.count += 1;
   #+END_SRC
-* Objektorientiere Programmierung
-  Eigene Datentypen mit Kapselung. Eigene Datentypen sind zusammengesetz aus
+* Objektorientierte Programmierung
+  Eigene Datentypen mit Kapselung. Eigene Datentypen sind zusammengesetzt aus
   einfachen existierenden Datentypen (Ausnahme: enum), zwei Arten:
   - offene Typen: Benutzer kann auf interne Daten zugreifen, "C-style types"
-	wenige Beispiele in der Standardbibilothek:
+	wenige Beispiele in der Standardbibliothek:
 	- std::pair
 	- std::tm (von C übernommen)
 	- std::div_t (Resultat von div(), zwei Returnwerte: Quotient und Rest)
   - gekapselte Typen: Benutzer kann nicht auf interne Daten zugreifen "private".
-	Alle Benutzerzugriffe über Offentliches Interface "public". Vorteile:
+	Alle Benutzerzugriffe über öffentliches Interface "public". Vorteile:
 	- komplexe Details zur Verwaltung bleiben verborgen
-	- öfftenliches Interface (hoffentlich) einfach, zum Beispiel std::vector
-	- interne Details können bei Bedarf geändert werden, ohne dass sich das öfftenliche Interface ändert
-	  $\implies$ Benutzer muss Code nicht änder, aber plötzlich geht Programm schneller, "Rückwärts-Kompatibilität"
+	- öffentliches Interface (hoffentlich) einfach, zum Beispiel std::vector
+	- interne Details können bei Bedarf geändert werden, ohne dass sich das öffentliche Interface ändert
+	  $\implies$ Benutzer muss Code nicht andern, aber plötzlich geht Programm schneller, "Rückwärts-Kompatibilität"
   Wie erreicht man Kapselung? \\
   Zwei Schlüsselwörter für eigene Typen "class" (Konvention OOP), "struct" (von C übernommen) \\
   Zwei Schlüsselwörter für Kapselung: "public" (öffentlicher Teil), "private" (gekapselter Teil). class ist
-  standardmäßig "private", struct standardmößig "public"
+  standardmäßig "private", struct standardmäßig "public"
   #+BEGIN_SRC cpp
   class MyType {
 	  // private by default
@@ -653,19 +653,19 @@
   };
   #+END_SRC
   Benutzer können nur auf Funktionalität in public-Teil zugreifen. \\
-  Die im zusammengesetzten typ enthaltenen daten heißten "Daten-Members", "member variables" sind
+  Die im zusammengesetzten Typ enthaltenen Daten heißen "Daten-Members", "member variables" sind
   normalerweise "private" $\implies$
-  - kann nachträglich geändert werden, zum Beispiel comples real/imaginär vs. Betrag/Phase
-  - Benutzer kann nicht unbeabsichtigt die Konsistenz verletzen (zum Beispiel versentlich negativer Betrag bei complex)
-  Running example: Punkt-Klasse für 2-dimensionalen PUnkt
+  - kann nachträglich geändert werden, zum Beispiel complex real/imaginär vs. Betrag/Phase
+  - Benutzer kann nicht unbeabsichtigt die Konsistenz verletzen (zum Beispiel versehentlich negativer Betrag bei complex)
+  Running example: Punkt-Klasse für 2-dimensionalen Punkt
   #+BEGIN_SRC cpp
   class Point {
 	  double x_; // Koordinaten als private
-	  double y_; // Datenmenber (Konvention "_" am Ende)
+	  double y_; // Datenmember (Konvention "_" am Ende)
   };
   #+END_SRC
   dieser Typ ist unbenutzbar, weil alle privat. \\
-  unverzichtabr: öfftenliche Punktion zum Initialisieren des Speichers = "Konstructoren"
+  unverzichtbar: öffentliche Funktion zum Initialisieren des Speichers = "Konstruktoren"
   - Prozeduren innerhalb der Klasse, Name gleich Klassenamen, Returntyp muss weggelassen werden (fügt Compiler automatisch ein) $\implies$ nur Seiteneffekt:
 	neues Objekt initialisieren, also die Konstruktoren der Datenmember aufrufen.
   - zur Erinnerung: zwei Möglichkeiten für normale Variableninitialisierung
@@ -682,7 +682,7 @@
 		y_(y) // Member y_ auf Initialwert y vom Prozedurargument setzen
 		{
 		// normaler Rumpf der Prozedur, hier leer, weil nichts zu tun
-		// Datenmenber hier schon fertig initialisiert und können benutzt werden
+		// Datenmember hier schon fertig initialisiert und können benutzt werden
 		}
 	};
 	Point p(1.0, 2.0);
@@ -698,7 +698,7 @@
   um mit Punkt-Objekten zu arbeiten, brauchen wir weitere Funktionen: zwei Möglichkeiten
   - Member-Funktionen: innerhalb der Klasse definiert (wie Konstruktor), dürfen auf alles private zugreifen, können als private oder public definiert sein
   - freie Funktionen: normale Funktionen außerhalb der Klasse, die ein Argument des neuen Typs haben, können nur auf Öffentliches Interface zugreifen
-  wichtigeste Vertreter der Member-Funkitonen: Zugriffsfunktionen "Getter": erlauben Benutzer, aktuellen Zustand abzufragen:
+  wichtigste Vertreter der Member-Funktionen: Zugriffsfunktionen "Getter": erlauben Benutzer, aktuellen Zustand abzufragen:
   #+BEGIN_SRC cpp
   std::vector<int> v = {1, 2, 3};
   v.size(); // getter für Arraygröße
@@ -706,7 +706,7 @@
   p.x() // -> 1.0 x-Koordinate abfragen
   p.y() // -> 2.0 y-Koordinate abfragen
   #+END_SRC
-  Member-Funktionen werden mit Punkt-Syntax aufgefuren: p.x(), das Objekt for dem Punkt ist das "nullte" Argument der Funktion, Compiler macht daraus x(p).
+  Member-Funktionen werden mit Punkt-Syntax aufgerufen: p.x(), das Objekt for dem Punkt ist das "nullte" Argument der Funktion, Compiler macht daraus x(p).
   Bei Implementation der Member Funktion schreibt man das nullte Argument nicht hin. Der Compiler stellt es automatisch unter dem Namen "(*this)" zur Verfügung.
   #+BEGIN_SRC cpp
   class Point {
@@ -776,7 +776,7 @@
   assert(!(p == origin));
   assert(p != origin);
   #+END_SRC
-  Für Infix-Notation muss Prefix-Varante operator== und operator!= implementiert werden.
+  Für Infix-Notation muss Präfix-Variante operator== und operator!= implementiert werden.
   #+BEGIN_SRC cpp
   p == origin; // -> p.operator==(origin) -> operator==(point, origin)
   #+END_SRC
@@ -796,12 +796,12 @@
 	  }
   }
   #+END_SRC
-  Jede Klasse hat bestimmte spezielle Menber-Funktionen:
+  Jede Klasse hat bestimmte spezielle Member-Funktionen:
   - Konstruktoren bringen Objekt in wohldefinierten Anfangszustand
   - Destruktoren: Entsorgt ein nicht mehr benötigtes Objekt (meist am Ende der Umgebung)
   - Zuweisungsoperatoren: um Objekt per Zuweisung ("=") zu überschreiben $\implies$ später
 ** Destruktoren
-   jede Klasse muss genau einen Destruktor haben, wenn der Programmierer das nicht expliziet implementiert,
+   jede Klasse muss genau einen Destruktor haben, wenn der Programmierer das nicht explizit implementiert,
    fügt Compiler ihn automatisch ein. Syntax:
    #+BEGIN_SRC cpp
    class klassenName {
@@ -822,7 +822,7 @@
 	  std::ofstream, std::ifstream
    3. Abmelden von einem Service (ausloggen, Verbindung beenden)
 ** Kopier-Konstruktor
-   Spezieller Kontruktor: Kopier-Konstruktor zum Erzeugen einer Kopie eines vorhandenen Objekts,
+   Spezieller Konstruktor: Kopier-Konstruktor zum Erzeugen einer Kopie eines vorhandenen Objekts,
    das heißt neue Speicherzelle mit gleichem Inhalt.
    #+BEGIN_SRC cpp
    Point p(1.0, 2.0); // Konstruktor mit Initialwert
@@ -836,7 +836,7 @@
 	   // ...
    }
    int main() {
-	   Pont p(1.0, 2.0);
+	   Point p(1.0, 2.0);
 	   foo(p) // Kopierkonstruktor, um lokales q in foo aus p zu erzeugen, "pass-by-value"
 	   bar(p) // g ist neuer Name für p, keine neue Speicherzelle, kein Kopierkonstruktor, "pass-by-reference"
    }
@@ -853,31 +853,31 @@
    aller Member-Variablen auf, meistens richtig, Ausnahmen wie oben.
 ** Standard-Konstruktor
    Spezieller Konstruktor: Standard-Konstruktor ("default constructor"): ohne Argumente,
-   bringt Object in Standard-Zustand, zum Beispiel "0" bei Zahlen, "" bei (Leerstring) bei std::string,
+   bringt Objekt in Standard-Zustand, zum Beispiel "0" bei Zahlen, "" bei (Leerstring) bei std::string,
    leeres Array std::vector, (0, 0) bei Point. Syntax:
    #+BEGIN_SRC cpp
    class klassenName {
    public:
 	   klassenName() {}
-	   klassenName() : Initialiserungserte der Member-Variablen {}
+	   klassenName() : Initialisierungswerte der Member-Variablen {}
    };
    #+END_SRC
-   Compiler erzeugt Standard-Konstruktor automatisch, falls es *keinen* eenutzerdefinierten Konstruktor gibt.
+   Compiler erzeugt Standard-Konstruktor automatisch, falls es *keinen* benutzerdefinierten Konstruktor gibt.
 ** rule of three
    "rule of three": Faustregel: wenn es notwendig ist, eine der drei Funktionen Destruktor, Kopierkonstruktor,
    Kopier-Zuweisung ($\implies$ später) explizit zu implementieren, müssen alle drei explizit implementiert werden
 ** Vorteile der Kapselung:
    1. Benutzung der Klasse ist viel einfacher, weil unwichtige Details verborgen sind
-   2. interne Implementatoin kann geändert werden, ohne den Benutzer zu Folgeänderungen zu zweingen,
+   2. interne Implementation kann geändert werden, ohne den Benutzer zu Folgeänderungen zu zwingen,
 	  weil externe Schnittstelle erhalten bleibt.
 ** Arithmetische Infix-Operationen
-   Ziel der OO-Programmierung: Arbeiten mit Nutzer-definierten Datenstruktoren möglichst einfach, wie mit eingebauten. Zum Beispiel arithmetische Infix-Operationen
+   Ziel der OO-Programmierung: Arbeiten mit Nutzer-definierten Datenstrukturen möglichst einfach, wie mit eingebauten. Zum Beispiel arithmetische Infix-Operationen
    #+BEGIN_SRC cpp
    Point p(2.0, 3.0), q(4.0, 5.0);
    Point r = 2.5 * p + q;
    assert(r == Point(9.0, 12.5));
    #+END_SRC
-   dazu muss man die entsprechenden Prefix-Funktionen implementieren
+   dazu muss man die entsprechenden Präfix-Funktionen implementieren
    - Addition:
      #+BEGIN_SRC cpp
      Point operator+(Point p1, Point p2) {
@@ -890,7 +890,7 @@
          return res;
      }
      #+END_SRC
-   - subtraktion, elementweise Multiplikation und Division genauso ("+" überall durch "-", "*", "/" ersetzen)
+   - Subtraktion, elementweise Multiplikation und Division genauso ("+" überall durch "-", "*", "/" ersetzen)
    - Skalierungsoperation: Multiplikation von Punkt mit Zahl, das heißt zwei verschiedene Argumenttypen
 	 $\implies$ zwei Versionen: 2.5*p und p*2.5
      #+BEGIN_SRC cpp
@@ -920,11 +920,11 @@
    Nachteil:
    - nur möglich, wenn das linke Argument vom Klassentyp ist p*2.5 kann Member Funktion sein, 2.5*p nicht
    - nur möglich,wenn man die Klassendefinition ändern darf
-** Objekte nachrträglich verändern
+** Objekte nachträglich verändern
    Bisher: Alle Objekte waren write-once, das heißt Speicher wurde im Konstruktor initialisiert und
    war dann unveränderlich. $\implies$ Paradigma der funktionalen Programmierung - "referentielle Integrität"
-   Prozedurale Programmierung erfodert Möglichkeit, Objekte zu änder, zum Beispiel um entsprechende Änderungen in der realen
-   Welt wiederzuspiegeln (zum Beispiel Student besteht Prüfung). Möglichkeit 1: Setter-Funktionen
+   Prozedurale Programmierung erfordert Möglichkeit, Objekte zu ändern, zum Beispiel um entsprechende Änderungen in der realen
+   Welt widerzuspiegeln (zum Beispiel Student besteht Prüfung). Möglichkeit 1: Setter-Funktionen
    #+BEGIN_SRC cpp
    class Point {
        // ... wie bisher
@@ -957,8 +957,8 @@
        }
 
        double operator[](int index) {
-           // implementation identisch / gleicher Quellcode, aber
-           // unterschiedlicher Maschienencode
+           // Implementation identisch / gleicher Quellcode, aber
+           // unterschiedlicher Maschinencode
        }
    }
 
@@ -969,14 +969,14 @@
    x = 4.0; // ändert indirekt auch p.x_
    y = 5.0; // ändert indirekt auch p.y_
    #+END_SRC
-   Möglichkeit 3 : Zuweisungoperatoren
+   Möglichkeit 3 : Zuweisungsoperatoren
    #+BEGIN_SRC cpp
    Point p(2, 3), g(4, 5);
    p = 1.0; // beide Koordinaten mit 1.0 überschreiben
    assert(p == Point(1.0, 1.0)) p = q; // Speicherzelle p werden die gleichen
                                        // Werte zugewiesen wie Speicherzelle q
    assert(p == Point(4.0, 5.0)) Point & r =
-       q; // Gegesatz r und q sind Namen für gleiche Speicherzelle
+       q; // Gegensatz r und q sind Namen für gleiche Speicherzelle
 
    class Point {
        // ... wie bisher
@@ -995,7 +995,7 @@
    #+END_SRC
    Bemerkung:
    1. implementiert der Programmierer keinen copy assignment Operator, implementiert
-	  Compiler ihn automatisch (wieKopierkonstruktor): ruft copy assignment für alle Member-Variablen auf
+	  Compiler ihn automatisch (wie Kopierkonstruktor): ruft copy assignment für alle Member-Variablen auf
    2. man implementiert meist
    #+BEGIN_SRC cpp
    Point & operator=(...) {
@@ -1011,7 +1011,7 @@
    #+BEGIN_SRC cpp
    Point p(2, 3),
    q(4, 5);
-   p += q; // add -asign: Abbkürzung für p = p + q
+   p += q; // add -asign: Abkürzung für p = p + q
    assert(p == Point(6, 8));
 
    class Point {
@@ -1025,9 +1025,9 @@
    #+END_SRC
 ** Klasse Image
    Speichert 2D Bild (analog: Matrix) zunächst nur Graubilder, später: Farbbilder.
-   Beispiel für dynamische Datenstruktor, Größe erst zu Laufzeit bekannt und änderbar.
+   Beispiel für dynamische Datenstruktur, Größe erst zu Laufzeit bekannt und änderbar.
    Besteht aus Pixeln ("picture elements"), die mit 2 Indizes x und y angesprochen werden
-   Problem: Speicher ist 1-dimensional, Lösung: Lege Zeieln hinterineanger ab.
+   Problem: Speicher ist 1-dimensional, Lösung: Lege Zeilen hintereinander ab.
    $\implies$ Übergangsformeln:
    \begin{align*}
    i &= x + y \cdot width \\
@@ -1103,14 +1103,14 @@
    #+BEGIN_SRC cpp
    std::vector<int> v4{1, 2, 3, 4}; // vier Elemente
    #+END_SRC
-   Problem: neue Syntax \{\} muss rückwärtskompatibel zu allen () sein $\implies$ kompizierte Regeln
-   1. gibt es einen Konstruktor mit $k$ Argumenten und einen Array-konstructor (mit beliebig vielen Argumenten) rufen () den k-Argument-konstruktor auf, \{\} den Array-Konstruktor:
+   Problem: neue Syntax \{\} muss rückwärtskompatibel zu allen () sein $\implies$ komplizierte Regeln
+   1. gibt es einen Konstruktor mit $k$ Argumenten und einen Array-Konstruktor (mit beliebig vielen Argumenten) rufen () den k-Argument-Konstruktor auf, \{\} den Array-Konstruktor:
       #+BEGIN_SRC cpp
 	  std::vector<int> v1(10, 1); // Konstruktor mit 2 Argumenten, 10 Elemente mit Wert 1
 	  std::vector<int> v5{10, 1}; // Array-Konstruktor: 2 Elemente mit Wert 10 und 1
       #+END_SRC
-	  Der Array-konstruktor hat als Argument den Typ std::initializier_list<ElementTyp>.
-	  Beispiel(Hausaufgabe): verhälft sich ähnlich zu std::vector (Indexschleifen, Kopieren, Iteratoren)
+	  Der Array-Konstruktor hat als Argument den Typ std::initializier_list<ElementTyp>.
+	  Beispiel(Hausaufgaben): verhält sich ähnlich zu std::vector (Indexschleifen, Kopieren, Iteratoren)
       #+BEGIN_SRC cpp
 	  class Polynomial {
 	      std::vector<int> a_;
@@ -1127,17 +1127,17 @@
 
 	  Polynomial p{1, 2, 3}; // \(1 + 2x + 3x^2\)
       #+END_SRC
-   2. gibt es keinen Array-Konstruktor (kein Argument std::initializer_list) sind () und \{\} #quivalent
+   2. gibt es keinen Array-Konstruktor (kein Argument std::initializer_list) sind () und \{\} #äquivalent
       #+BEGIN_SRC cpp
 	  Point p1(2, 3); // \(x\equiv 2, y\equiv 3\)
 	  Point p2{2, 3}; // \(x\equiv 2, y\equiv 3\)
       #+END_SRC
    weitere Regeln: googeln nach "universal construction c++" $\implies$ für Fortgeschrittene
 ** Fehlermeldungen mittels Exceptions ("Ausnahmen")
-   Normalerweise werde Funktionen mit "return" beendet. Tritt in der Funktoin ein Fehler auf, kann man
+   Normalerweise werde Funktionen mit "return" beendet. Tritt in der Funktion ein Fehler auf, kann man
    den Rückgabewert nicht ausrechnen $\implies$ müssen Funktion anders verlassen. Exceptions
    verlassen Funktion mittels "throw" (werfen)
-   - Argument von throw (Rückgabewert) ist ein Exception-Object, das den Fehler beschreibt (zum Beispiel Fehlermeldung)
+   - Argument von throw (Rückgabewert) ist ein Exception-Objekt, das den Fehler beschreibt (zum Beispiel Fehlermeldung)
    - vordefinierte Exceptionsklassen im Header <stdexcept>, kann auch eigene definieren. Zum Beispiel std::runtime_error "Universalfehler"
    #+BEGIN_SRC cpp
    class Point {
@@ -1177,8 +1177,8 @@
    }
    #+END_SRC
    Prinzip:
-   - tritt im try-Block eine Excpetion auf, wird der Block verlassen $\implies$ die Anweisungen im try-Block *hinter* dem fehlerhaften Aufruf werden nicht mehr ausgeführt
-   - folt ein catch mit passendem Exception-Typ, sprint die Ausführung in diesen catch-Block $\implies$ es kann beliebig viel catch-Blöcke für verschiedene Exceptions geben
+   - tritt im try-Block eine Exception auf, wird der Block verlassen $\implies$ die Anweisungen im try-Block *hinter* dem fehlerhaften Aufruf werden nicht mehr ausgeführt
+   - folgt ein catch mit passendem Exception-Typ, springt die Ausführung in diesen catch-Block $\implies$ es kann beliebig viel catch-Blöcke für verschiedene Exceptions geben
    - Universal-Catch-Block:  catch(std::exception & e) fängt alles auf (genauer: alle von std::exception abgeleiteten Exceptions-Vererbung $\implies$ später)
    Beispiel: warten auf korrekte Benutzereingabe
    #+BEGIN_SRC cpp
@@ -1206,7 +1206,7 @@
    Beispiel: Image-Klasse soll beliebige Pixeltypen unterstützen, bisher uint16_t, danach auch uint8_t (Speicher sparen), float(Genauigkeit bei Bildanalyse), RGB-Typ (Farbbilder).
    Vorgehen bei der Templatisierung
    1. Implementiere Klasse und Tests *ohne* Template (hier: fest definierter Pixeltyp uint16_t) $\implies$ können nach und nach Templatisieren und jeden Schritt durch Test prüfen (gehen die Tests nicht mehr, haben wir einen Fehler gemacht und müssen den
-      letzen Schritt rückgängig machen und anders versuchen)
+      letzten Schritt rückgängig machen und anders versuchen)
    2. Neue Typnamen einführen mit typedef OldType NewType
 	  1. in der Testfunktion
          #+BEGIN_SRC cpp
@@ -1220,7 +1220,7 @@
 		     assert(img(0, 0) == 255);
 		 }
          #+END_SRC
-	  2. in der Klasse für den Pixeltyp alle Vorkommen von uint16_t (als Pixeltyp) durch "PixelType" ersetzen $\implies$ alle tests müssen weiterhin funktionieren, weil nur neue Typnamen, gleiche Funktionalität
+	  2. in der Klasse für den Pixeltyp alle Vorkommen von uint16_t (als Pixeltyp) durch "PixelType" ersetzen $\implies$ alle Tests müssen weiterhin funktionieren, weil nur neue Typnamen, gleiche Funktionalität
          #+BEGIN_SRC cpp
 		 class Image {
 		     int width_, height;
@@ -1277,7 +1277,7 @@
 	  // Implementation bleibt zufällig gleich in diesem Fall
       #+END_SRC
    6. Test ausführen, müssen wieder funktionieren, zurück zu Schritt 5, bis alle freien Funktionen templatisiert sind
-   7. weitere Testfuktion für einen anderen Pixeltyp schreiben
+   7. weitere Testfunktion für einen anderen Pixeltyp schreiben
       #+BEGIN_SRC cpp
 	  void test_image_float() {
 	  typedef Image<float> Img;
@@ -1287,17 +1287,17 @@
 	  $\implies$ erst, wenn beide Testfunktionen laufen, kann man relativ sicher sein, das Templatisierung erfolgreich
 * Adressen und Zeiger
   Bisher: Speicherzellen werden über Variablennamen angesprochen (oder mehrere Namen für gleiche Speicherzelle, falls Referenzen).
-  Adressen sind Alternative, um Speicherzelle zu identifizieren. Betrachte den gesamten Speicher des Comupters als *ein*
+  Adressen sind Alternative, um Speicherzelle zu identifizieren. Betrachte den gesamten Speicher des Computers als *ein*
   riesiges Array vom Type "byte" (globaler Index vom Betriebssystem festgelegt). Der globale Index heißt
-  Adresse des bytes. Die Adresse des esten Bytes einer Speicherzelle heißt Adresse der Speicherzelle.
+  Adresse des bytes. Die Adresse des ersten Bytes einer Speicherzelle heißt Adresse der Speicherzelle.
   $\implies$ kennt man die Adresse einer Speicherzelle und ihren Typ, kann man den Speicher genauso identifizieren wie
   mit Variablenklammern. Konvention: die Adresse $0$ wird nicht verwendet $\implies$ interpretiert als "ungültige Adresse".
   Die Adresse einer Speicherzelle kann von einer Variable mit dem Adressoperator erfragt werden. (unäre &-Operator)
   #+BEGIN_SRC cpp
   int i = 3;
-  std::cout << "Adreesse von i: " << &i << std::endl; // Nicht mit binärem und-Operator verwechseln
+  std::cout << "Adresse von i: " << &i << std::endl; // Nicht mit binärem und-Operator verwechseln
   #+END_SRC
-  Adressen ewrden Standardmäßig im Hexadezimalformat angezeigt. Hex: zur Basis 16, Ziffer 0-9,a-f, Prefix: 0x. Zum Beispiel
+  Adressen werden Standardmäßig im Hexadezimalformat angezeigt. Hex: zur Basis 16, Ziffer 0-9,a-f, Prefix: 0x. Zum Beispiel
   |    0x1 |     1 |
   |    0xa |    10 |
   |    0xe |    14 |
@@ -1305,7 +1305,7 @@
   |   0x11 |    17 |
   |   0x1a |    26 |
   | 0xbeaf | 48815 |
-  "Zeiger" sind spezielle Variablen, mit denen man Adressen speicher kann. (englisch Pointer)
+  "Zeiger" sind spezielle Variablen, mit denen man Adressen speichern kann. (englisch Pointer)
   #+BEGIN_SRC cpp
   int i = 3;
   int * ptr_i = &i; // Initialisierung
@@ -1313,7 +1313,7 @@
   int * ptr3 = 0; // ungültige Adresse
 
   if(!ptr3) {
-  // ungülge Adresse
+  // ungültige Adresse
   } else {
   // gültige Adresse
   }
@@ -1357,7 +1357,7 @@
    foo(&j);
    assert(j == 5);
    #+END_SRC
-   $\implies$ wenn man aus c++ eine Bibilothek aufrufen (zum Beispiel um TIFF oder JPEG zu erzeugen) braucht man oft Zeiger.
+   $\implies$ wenn man aus c++ eine Bibliothek aufrufen (zum Beispiel um TIFF oder JPEG zu erzeugen) braucht man oft Zeiger.
 ** Anwendungen der Zeiger
    1. Ersatz für Referenzen (bis in C)
    2. für Variablen, die auch ungültig sein können
@@ -1372,9 +1372,9 @@
 		 }
 
 		 // Verwendung:
-		 foo(0); // Nullpointer $\iff$ ungültig $\implies$ Standardberechung
+		 foo(0); // Nullpointer $\iff$ ungültig $\implies$ Standardberechnung
 		 int a = 2;
-		 foo(&a); // Berechung mit Wert = 2
+		 foo(&a); // Berechnung mit Wert = 2
 		 foo(); // Compiler mach daraus automatisch foo(0);
          #+END_SRC
 	  2. wenn eine Funktion fehlschlägt: (typisch für C). Öffnen einer Datei in C:
@@ -1395,7 +1395,7 @@
 
 		 int c = 0;
 		 for(;iter != end; iter++, c++) {
-		     *iter = c; // Array mit 0, 1, 2, 3, $\ldots$, 99 initialisierenn
+		     *iter = c; // Array mit 0, 1, 2, 3, $\ldots$, 99 initialisieren
 		 }
          #+END_SRC
 		 Syntax wie bei Iteratoren, weil Iteratoren nach dem Vorbild der Zeiger definiert wurden.
@@ -1445,9 +1445,9 @@
 	  5. Heterogene Container: normale Container (std::vector<double>) sind *homogen* $\estimates$ Elemente haben gleichen Typ (double).
 		 Manchmal braucht man Container, die Objekte verschiedener Typen aufnehmen "heterogen", dafür braucht man Zeiger und *Vererbung*
 * Vererbung
-  Vererbung war am Anfag der objekt-orientierten Programmierung Lösung für alles. Heute ist der Hype vorbei, eine Technik unter vielen, sparsam eingesetzt, besonders
+  Vererbung war am Anfang der objekt-orientierten Programmierung Lösung für alles. Heute ist der Hype vorbei, eine Technik unter vielen, sparsam eingesetzt, besonders
   bei GUI (graphical user interface) und bei Zeichenprogrammen/Computer Graphik. Eine Klasse (abgeleitete Klasse, Unterklasse) kann
-  Funktionalität einer anderen Klasse (Basisklasse) erbe, Basisklasse muss dafür nicht sterben. Sprachunabängige Schreibweise: UML-Diagramm ("Universal modelling language")
+  Funktionalität einer anderen Klasse (Basisklasse) erbe, Basisklasse muss dafür nicht sterben. Sprachunabhängige Schreibweise: UML-Diagramm ("Universal modelling language")
   #+begin_export latex
   \catcode`(=12
   \catcode`)=12
@@ -1481,8 +1481,8 @@
   $\implies$ in Derived die öffentliche Schnittstelle von Base benutzen. Ausnahme: ersetze "private" in Base durch "protected" $\implies$ protected Members werden in Derived sichtbar
   (aber bleiben von außen privat). Die in Derived geerbte Funktionalität gehört zur Öffentlichen Schnittstelle von Derived $\implies$ Wiederverwendung der Funktionalität vor Base.
   Ausnahme:
-  - wenn Derived eine neue Member-Variable oder -fuktion mit dem gleichen Namen implementiert, wird die geerbte Variante *verdeckt* (wie bei normalen Umgebungen auch)
-  - man kann die Verwendung der geerbten Version erzwingen durch Doppenpunktnotation Base:: (wie bei Namensräumen std::), Base::data_, Base::foo()
+  - wenn Derived eine neue Member-Variable oder -Funktion mit dem gleichen Namen implementiert, wird die geerbte Variante *verdeckt* (wie bei normalen Umgebungen auch)
+  - man kann die Verwendung der geerbten Version erzwingen durch Doppelpunktnotation Base:: (wie bei Namensräumen std::), Base::data_, Base::foo()
   Im Konstruktor von Derived wird der Konstruktor von Base aufgerufen wie ein Konstruktor der Membervariablen
   #+BEGIN_SRC cpp
   class Base {
@@ -1502,7 +1502,7 @@
    Spezialisierung "is-a" Beziehung, Derived is a (special kind of) Base. Basisklasse: ungeordneter Container von Point-Objekten ("Punktwolke")
     #+BEGIN_SRC cpp
 	class PointSet {
-	    // Punktionen wie Anzahl, boundingbox bestimmen, konvexe hülle, Punkte verschieben, skalieren, zeichnen
+	    // Funktionen wie Anzahl, boundingbox bestimmen, konvexe hülle, Punkte verschieben, skalieren, zeichnen
 	};
     #+END_SRC
 	abgeleitete Klasse: Polygon, geordnete Punktmenge, jeder Punkt ist mit seinem Nachfolger verbunden.
@@ -1513,12 +1513,12 @@
 		// veränderte Funktionalität: zeichnen
 	};
     #+END_SRC
-** Implementationsvererbung, Ziel: Wiederverwnden von Funktionalität, SEHR UMSTRITTEN.
+** Implementationsvererbung, Ziel: Wiederverwenden von Funktionalität, SEHR UMSTRITTEN.
    Nur in wenigen Fällen die richtige Lösung, ok ist es im Zusammenhang mit Spezialisierung, zum
    Beispiel Polygon erbt nützliche Funktionalität von PointSet. Meist bevorzugt man heute: Komposition und Delegation
    #+BEGIN_SRC cpp
    class Polynomial {
-       std::vecotr<double> a_; // Komposition
+       std::vector<double> a_; // Komposition
 	   // alle Operationen, die Koeffizienten betreffen, werden an Vektor a_ weitergeleitet:
 	   double & operator[](int i) {
 	       return a_[i]; // Delegation
@@ -1577,8 +1577,8 @@
    #+end_export
    Shape: Schnittstellenklasse("Interface"), *abstrakte* Basisklasse. \\
    Composite: Container für Shape-Objekte $\implies$ eine fertige Zeichnung kann als
-   Ganzes in neue Zeichung eingebettet werden. Iterface-Vererbung ist möglich, weil
-   Zeiger / Referenzen auf abgeleitete Klasse in Zeiger / Referenzen der Basisklasse konvertier werden können.
+   Ganzes in neue Zeichnung eingebettet werden. Interface-Vererbung ist möglich, weil
+   Zeiger / Referenzen auf abgeleitete Klasse in Zeiger / Referenzen der Basisklasse konvertieren werden können.
    #+begin_src cpp
    Line line(...);
    Shape * shape = &line;
@@ -1621,11 +1621,11 @@
 	       // zeichne Linie von zoom * start_ nach zoom * end_
 	   }
 
-	   virtual ~Line() {} // compiler fügt Destruktoraufrufe der Member Variablen automatisch ein
+	   virtual ~Line() {} // Compiler fügt Destruktoraufrufe der Member Variablen automatisch ein
    };
    #+end_src
    Bedeutung der zwei-Typen-Regel beim Aufruf (*shape).foo();
-   - normale Member Funktionen (nicht virtuall) werden mit dem statischen Typ aufgerufen:
+   - normale Member Funktionen (nicht virtuell) werden mit dem statischen Typ aufgerufen:
 	 - verwende Implementation im statischen Typ
 	 - nulltes Argument (this-Zeiger) ist Zeiger auf statischen Typ
    - virtuelle Memberfunktionen werden mit dem dynamischen Typ aufgerufen
@@ -1637,8 +1637,8 @@
    Shape * shape = &line;
    (*shape).draw(img); // virtuelle Funktion $\implies$ Line::draw() wird ausgeführt
    #+end_src
-*** Haupanwendung von Interface-Vererbung
-	heterogene Containter $\equiv$ Elemente verschiedener Type, in c++ nicht möglich.
+*** Hauptanwendung von Interface-Vererbung
+	heterogene Container $\equiv$ Elemente verschiedener Type, in c++ nicht möglich.
 	Trick: verwende Zeiger auf Interface-Klasse als Elementtyp $\implies$ dynamischer Typ
 	aller Elemente kann unterschiedlich sein $\implies$ Container ist heterogen bezüglich
 	Aufrufen virtueller Funktionen sein.
@@ -1654,13 +1654,13 @@
         drawing[i]->draw(img); // ruft für jedes i die passende draw() Funktion auf $\implies$ heterogenes Array
 	}
     #+end_src
-	Das Composite Shape enthält ein solchen heterogenus Array als Membervariable, seine draw()-Funktion kapselt die Schleife.
-	Heterogenous Containter verwenden manuelle Speicherverwaltung $\implies$ man darf am Ende nicht das "delete" für die
+	Das Composite Shape enthält ein solchen heterogenes Array als Membervariable, seine draw()-Funktion kapselt die Schleife.
+	Heterogenous Container verwenden manuelle Speicherverwaltung $\implies$ man darf am Ende nicht das "delete" für die
 	Elemente vergessen $\implies$ besser verwende smart pointer: std::vector<std::shared_ptr<Shape>> drawing; (delete wird automatisch aufgerufen)
 ** Kritik an Vererbung
-   Die Vererbungshirachie ist fest verdrahtet, *aber* in verschiedenen Kontexten braucht man eigentlich
-   verschiedene Hierachien. Zum Beispiel Person-Objekt kan je nach Situation verschiedene Rollen einnehmen
-   $\estimates$ verschiedene Iterface-Definitionen: Schüler, Student, Employee, Mitglied, Kunde, $\ldots$.
+   Die Vererbungshierarchie ist fest verdrahtet, *aber* in verschiedenen Kontexten braucht man eigentlich
+   verschiedene Hierarchien. Zum Beispiel Person-Objekt kann je nach Situation verschiedene Rollen einnehmen
+   $\estimates$ verschiedene Interface-Definitionen: Schüler, Student, Employee, Mitglied, Kunde, $\ldots$.
    Person kann nicht von all diesen Interfaces abgeleitet sein, zumal es verschiedenste Varianten gibt.
    Besser: verwalte diese Relationen in Datenbanken.
 * Deklarative Programmierung
@@ -1671,20 +1671,20 @@
   - prozedurale Programmierung
   - objekt-orientierte Programmierung
   - generische Programmierung (mit Templates)
-  Das sind Spezialfälle der *imperativen* Programmierung (imerare = befehlen), weil der Programmierer nicht nur angeben muss,
-  *was* passieren soll, sondern imDetail, *wie* es passiert (insbesondere explizite Angabe des Kontrollflusses, if-Bedingungen, Schleifen und rekursive Funktionen).
-  In deklarativen Spracen sagt der Programmierer nur, *was* er/sie erreichen will, das ganze *wie* ist im Compiler/Interpreter der Sprache gekapselt.
+  Das sind Spezialfälle der *imperativen* Programmierung (imperare = befehlen), weil der Programmierer nicht nur angeben muss,
+  *was* passieren soll, sondern im Detail, *wie* es passiert (insbesondere explizite Angabe des Kontrollflusses, if-Bedingungen, Schleifen und rekursive Funktionen).
+  In deklarativen Sprachen sagt der Programmierer nur, *was* er/sie erreichen will, das ganze *wie* ist im Compiler/Interpreter der Sprache gekapselt.
   Das funktioniert in relativ engen Anwendungsdomänen ("domain specific languages"), und vereinfacht dann die Programmierung stark
 ** Data serialization languages
    Beispiele: XML, JSON, YAML \\
-   Serialization: Umwandlung einer komplexen Datenstruktur (Array, Baum, Graph, geschachtelte Daten) in eine Bytefolge, die auf Festplatte gespeichert und über Netzwerk gesenden werden kann \\
+   Serialization: Umwandlung einer komplexen Datenstruktur (Array, Baum, Graph, geschachtelte Daten) in eine Bytefolge, die auf Festplatte gespeichert und über Netzwerk gesendet werden kann \\
    Deserialization: Aus der Bytefolge die Datenstruktur wieder zusammenbauen. \\
-   Serialitation *languages*: Bytefolge ist ein Textfile, das man mit normalen Editoren anschauen / bearbeiten kann  \\
+   Serialization *languages*: Bytefolge ist ein Textfile, das man mit normalen Editoren anschauen / bearbeiten kann  \\
    Beispiel: JSON
-   - es gibt die üblichen Literale: true/fales (bool), 1234 (int), 5.67e-7 (float), "abcd" (string), null (undefiniert)
+   - es gibt die üblichen Literale: true/false (bool), 1234 (int), 5.67e-7 (float), "abcd" (string), null (undefiniert)
    - zusätzlich gibt es Array-Literale: [wert1, wert2, "\ldots"]
    - assoziative Array-Literale: {"key1" : wert1, "key2" : wert2, "\ldots"}
-   - Array (assoziative Arrays sind heterogen (beliebige gemischte Elementtypen)), insbesondere wieder Arrays / assozitaive Arrays $\implies$ Möglichkeit der beliebig tiefen Schachtelung
+   - Array (assoziative Arrays sind heterogen (beliebige gemischte Elementtypen)), insbesondere wieder Arrays / assoziative Arrays $\implies$ Möglichkeit der beliebig tiefen Schachtelung
    #+begin_src js
    {
        "Adam Müller": {
@@ -1723,7 +1723,7 @@
    #+end_src
    - sehr mächtig
    - Attribute zur weiteren Verfeinerung <h1 style="color:blue">Hauptüberschrift</h1>
-	 (typischerweise in seperaten Style-Files .css)
+	 (typischerweise in separaten Style-Files .css)
    #+begin_example
    Hauptüberschrift
    ================
@@ -1733,17 +1733,17 @@
    Absatz (durch Leerzeilen getrennt).
 
    Aufzählung:
-   * erster Anstrik
-   * zweiter Anstrick
+   * erster Anstrich
+   * zweiter Anstrich
    #+end_example
-   - lesbarer als Text mit <$\ldots$>
+   - lesbarer als Text mit < $\ldots$ >
    - einfacher zu schrieben
-   - wird vom Markdown-Compiler nach HTML konvertier
+   - wird vom Markdown-Compiler nach HTML konvertiert
    - weniger leistungsfähig (weniger Formatierungsoptionen)
 ** SQL
-   SQL ("structured query language") zur kommunikation mit relationalen Datenbanken
+   SQL ("structured query language") zur Kommunikation mit relationalen Datenbanken
    - relative Datenbank:
-	 - sammlung von tabellen mit Querverwisen
+	 - Sammlung von Tabellen mit Querverweisen
 	 - Tabelle:
        - Spalten (Felder, Attribute) $\estimates$ Membervariablen einer Datenstruktur
 	   - Zeilen (Records) $\estimates$ Instanzen der Datenstruktur
@@ -1751,7 +1751,7 @@
        |----------+--------+---------+----------------|
        |    12345 | Müller | Adam    | Informatik BSC |
        |    67890 | Heller | Eva     | Physik BSC     |
-   Spraceh SQL enthält Befehle zum
+   Sprache SQL enthält Befehle zum
    - Tabellen anlegen und verändern (zum Beispiel neue Spalte einfügen)
    - Daten in Tabelle einfügen und modifizieren
    - Daten in Tabellen nach bestimmten Kriterien *suchen*
@@ -1759,14 +1759,14 @@
    #+begin_src sql
    SELECT Vorname, Name
    FROM Teilnehmer
-   WHERE Fach="Fysik BSC"
+   WHERE Fach="Physik BSC"
    #+end_src
    $\implies$ Eva Heller
 ** Logikprogrammierung mit PROLOG
    PROLOG (PROgrammiation en LOGique) \\
-   Programmierer definiert ("deklariert") Fakten und Regeln, die in der interenden Anwendung gelten. \\
-   Programmierer definiert ("deklariert") das Ziel der Berechnung durch Anfagen (queries).
-   Computer Benutz intern die allgemeinen Schlussregeln der Logi ("Proädikatenlogik erster Stufe")
+   Programmierer definiert ("deklariert") Fakten und Regeln, die in der jeweiligen Anwendung gelten. \\
+   Programmierer definiert ("deklariert") das Ziel der Berechnung durch Anfragen (queries).
+   Computer Benutzt intern die allgemeinen Schlussregeln der Logik ("Prädikatenlogik erster Stufe")
    um die Anfrage zu beantworten, zum Beispiel
    - Beweis, dass Aussage wahr oder falsch
    - Menge aller Symbole, die die Anfrage erfüllen
@@ -1805,8 +1805,8 @@
    Beispiel: BNF (Bachus-Nauer-Form). \\
    Spezifizieren die formale Struktur (Syntax) einer anderen Programmiersprache, was sind gültige
    Befehle und Programme. Computer für die spezifizierte Sprache checkt zuerst die Grammatik $\implies$
-   wenn verletzt Fehlermeldung ("Syntax error"). Bestehen aus Ableitungsregen \\
-   <neuer Begriff> ::= Definition (viele symtaktische Variablen) \\
+   wenn verletzt Fehlermeldung ("Syntax error"). Bestehen aus Ableitungsregel \\
+   <neuer Begriff> ::= Definition (viele syntaktische Variablen) \\
    Beispiel: Teil von c++
    #+begin_src bnf
    <Ziffer> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
@@ -1830,18 +1830,18 @@
    typedef int &     int_ref;   // Referenz
    typedef int const const_int; // write-once integer
    typedef const_int *
-   const_int_ptr; // equivalent typdef int const * int_const_ptr
+   const_int_ptr; // äquivalent typdef int const * int_const_ptr
    typedef const_int & const_int_ref;
 
    int     a = 0;
    int_ref b = a; // äquivalent: int & b = a;
    b         = 3;
-   int_ptr p = &a; // äqzivalent: int * p = &a;
-   *p = 5; // Kompiler mach daraus: int_ref tmp1 = *p; tmp1 = 5; (hier wird tmp1
+   int_ptr p = &a; // äquivalent: int * p = &a;
+   *p = 5; // Compiler mach daraus: int_ref tmp1 = *p; tmp1 = 5; (hier wird tmp1
    // wieder gelöscht)
    // generell: temporäre interne Variablen / Referenzen werden beim Semikolon
    // gelöscht
-   int c = *p; // Kompiler: int_ref tmp2 = *p; int c = tmp2;
+   int c = *p; // Compiler: int_ref tmp2 = *p; int c = tmp2;
    p     = &c;
    (*p)  = 7; // $\implies$ int_ref tmp3 = *p; tmp3 = 7;
 
@@ -1865,21 +1865,21 @@
    };
 
    Point g(1, 2);    // sizeof(Point) == 8
-   a  = g.getX();    // Kompiler: int_ref tmp4 = g.getX(); a = tmp4;
+   a  = g.getX();    // Compiler: int_ref tmp4 = g.getX(); a = tmp4;
    p  = &(g.getX()); // int_ref tmp5 = g.getX(); p = &tmp5;
    *p = 8;           // int_ref tmp6 = *p; tmp6 = 8;
 
    Point const & gg = g;         // read only Name
-   a                = gg.getX(); // Komplier: int tmp7 = gg.x; a = tmp7;
+   a                = gg.getX(); // Kumulier: int tmp7 = gg.x; a = tmp7;
    #+end_src
-** Wiederhohlung Komplexität:
+** Wiederholung Komplexität:
    $\mathcal{O}$ -Notation
    komplizierte Formen $f(n)$, einfache Formel $g(n)$, die das gleiche *wesentliche* Verhalten
-   wie $f(n)$ hat. Asymptotische für große $n$ ununterscheidbeir
+   wie $f(n)$ hat. Asymptotische für große $n$ ununterscheidbar
    \[f(n) \in \mathcal{O}(g(n)) \iff \Exists n_0, c: \Forall n > n_0: f(n) \leq c g(n)\]
    Diagramme für $f(n)$ und $cg(n)$ sehen für für $n > n_0$ fast gleich aus.
    wichtige Regeln:
-   1. konstante Faktoren werden von $\mathcal{O}$ absobiert $d f(n) \in \mathcal{O}(f(n)), d\mathcal{O}(f(n)) \in \mathcal{O}(f(n))$
+   1. konstante Faktoren werden von $\mathcal{O}$ absorbiert $d f(n) \in \mathcal{O}(f(n)), d\mathcal{O}(f(n)) \in \mathcal{O}(f(n))$
    2. Produkte von $\mathcal{O}$ werden zum $\mathcal{O}$ der Produkte $\mathcal{O}(f(n)) \mathcal{O}(g(n)) \in \mathcal{O}(f(n)g(n))$
    3. In einer Summe überlebt nur der *wichtigste* (am schnellsten wachsende) Term
 		 \[\mathcal{O}(f(n) + g(n)) \in \begin{cases} \mathcal{O}(g(n)) & f(n) \in \mathcal{O}(g(n)) \\ \mathcal{O}(f(n)) & g(n) \in\mathcal{O}(f(n))\end{cases}\]
@@ -1900,8 +1900,8 @@
    Komplexität von Algorithmen $\estimates$ Summe der Komplexitäten der Schritte $\implies$
    nach Regel 3. nur der *wichtigste* Teil
 *** Sieb des Eratones
-	Sieb des Eratones: finde alle Primzahlen $\leq n$. Prinip: streiche in Liste alle zahlen, die
-	Vielfache einer Zahl sind $\implies$ übrigbleibend sind Primzahlen
+	Sieb des Eratones: finde alle Primzahlen $\leq n$. Prinzip: streiche in Liste alle zahlen, die
+	Vielfache einer Zahl sind $\implies$ übrigbleibenden sind Primzahlen
 	#+begin_src cpp
 	std::vector<bool> find_primes(int n) {
 	    std::vector<bool> res(n + 1, true); // alle Zahlen prim : O(n): n SpZ auf "true" initialisieren
