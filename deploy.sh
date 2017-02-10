@@ -93,11 +93,11 @@ echo "updating pages"
 # sleep a bit to give github some time
 sleep 1
 cd pages
-cd pdfs
-git pull
-cd ..
+#cd pdfs
+#git pull
+#cd ..
 # TODO(robin): why does this not work? (maybe git is too old?)
-#git submodule update --remote --merge
+git submodule update --remote --merge
 ./generate.sh ../
 
 git config user.name "Travis CI"
