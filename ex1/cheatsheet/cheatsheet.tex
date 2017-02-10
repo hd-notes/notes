@@ -1,0 +1,524 @@
+\documentclass[10pt,landscape,a4paper]{article}
+\usepackage[ngerman]{babel}
+\usepackage{tikz}
+%\usepackage{siunitx}
+%\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+%\usepackage[nosf]{kpfonts}
+%\usepackage{lipsum}
+%\usepackage[t1]{sourcesanspro}
+%\usepackage{crimson}
+%\usepackage[lf]{MyriadPro}
+%\usepackage[lf,minionint]{MinionPro}
+%\usepackage{polyglossia}
+\usepackage{multicol}
+\usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+\usepackage{microtype}
+\usepackage[no-math]{fontspec}
+\usepackage{nath}
+\makeatletter
+\let\mathop\o@mathop
+\makeatother
+\let\bar\overline
+
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+%\colorlet{circle edge}{myblue}
+%\colorlet{circle area}{myblue!5}
+
+%\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+%    outline/.style={draw=circle edge, thick}}
+
+%\pgfdeclarelayer{background}
+%\pgfsetlayers{background,main}
+
+%\everymath\expandafter{\the\everymath \color{myblue}}
+%\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+
+% \global\mdfdefinestyle{header}{%
+% linecolor=gray,linewidth=1pt,%
+% leftmargin=0mm,rightmargin=0mm,skipbelow=0mm,skipabove=0mm,
+% }
+
+% \newcommand{\header}{
+% \begin{mdframed}[style=header]
+% \footnotesize
+% \sffamily
+% Formelzettel\\
+% von~Robin~Heinemann
+% \end{mdframed}
+% }
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+
+
+
+\def\multi@column@out{%
+   \ifnum\outputpenalty <-\@M
+   \speci@ls \else
+   \ifvoid\colbreak@box\else
+     \mult@info\@ne{Re-adding forced
+               break(s) for splitting}%
+     \setbox\@cclv\vbox{%
+        \unvbox\colbreak@box
+        \penalty-\@Mv\unvbox\@cclv}%
+   \fi
+   \splittopskip\topskip
+   \splitmaxdepth\maxdepth
+   \dimen@\@colroom
+   \divide\skip\footins\col@number
+   \ifvoid\footins \else
+      \leave@mult@footins
+   \fi
+   \let\ifshr@kingsaved\ifshr@king
+   \ifvbox \@kludgeins
+     \advance \dimen@ -\ht\@kludgeins
+     \ifdim \wd\@kludgeins>\z@
+        \shr@nkingtrue
+     \fi
+   \fi
+   \process@cols\mult@gfirstbox{%
+%%%%% START CHANGE
+\ifnum\count@=\numexpr\mult@rightbox+2\relax
+          \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+% \setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\else
+      \setbox\count@\vsplit\@cclv to \dimen@
+\fi
+%%%%% END CHANGE
+            \set@keptmarks
+            \setbox\count@
+                 \vbox to\dimen@
+                  {\unvbox\count@
+                   \remove@discardable@items
+                   \ifshr@nking\vfill\fi}%
+           }%
+   \setbox\mult@rightbox
+       \vsplit\@cclv to\dimen@
+   \set@keptmarks
+   \setbox\mult@rightbox\vbox to\dimen@
+          {\unvbox\mult@rightbox
+           \remove@discardable@items
+           \ifshr@nking\vfill\fi}%
+   \let\ifshr@king\ifshr@kingsaved
+   \ifvoid\@cclv \else
+       \unvbox\@cclv
+       \ifnum\outputpenalty=\@M
+       \else
+          \penalty\outputpenalty
+       \fi
+       \ifvoid\footins\else
+         \PackageWarning{multicol}%
+          {I moved some lines to
+           the next page.\MessageBreak
+           Footnotes on page
+           \thepage\space might be wrong}%
+       \fi
+       \ifnum \c@tracingmulticols>\thr@@
+                    \hrule\allowbreak \fi
+   \fi
+   \ifx\@empty\kept@firstmark
+      \let\firstmark\kept@topmark
+      \let\botmark\kept@topmark
+   \else
+      \let\firstmark\kept@firstmark
+      \let\botmark\kept@botmark
+   \fi
+   \let\topmark\kept@topmark
+   \mult@info\tw@
+        {Use kept top mark:\MessageBreak
+          \meaning\kept@topmark
+         \MessageBreak
+         Use kept first mark:\MessageBreak
+          \meaning\kept@firstmark
+        \MessageBreak
+         Use kept bot mark:\MessageBreak
+          \meaning\kept@botmark
+        \MessageBreak
+         Produce first mark:\MessageBreak
+          \meaning\firstmark
+        \MessageBreak
+        Produce bot mark:\MessageBreak
+          \meaning\botmark
+         \@gobbletwo}%
+   \setbox\@cclv\vbox{\unvbox\partial@page
+                      \page@sofar}%
+   \@makecol\@outputpage
+     \global\let\kept@topmark\botmark
+     \global\let\kept@firstmark\@empty
+     \global\let\kept@botmark\@empty
+     \mult@info\tw@
+        {(Re)Init top mark:\MessageBreak
+         \meaning\kept@topmark
+         \@gobbletwo}%
+   \global\@colroom\@colht
+   \global \@mparbottom \z@
+   \process@deferreds
+   \@whilesw\if@fcolmade\fi{\@outputpage
+      \global\@colroom\@colht
+      \process@deferreds}%
+   \mult@info\@ne
+     {Colroom:\MessageBreak
+      \the\@colht\space
+              after float space removed
+              = \the\@colroom \@gobble}%
+    \set@mult@vsize \global
+  \fi}
+
+\setlength{\parindent}{0pt}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\phi}{\varphi}
+\newcommand{\implies}{\Longrightarrow}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand*\abs[1]{\lvert#1\rvert}
+\newcommand\const{\text{ const }}
+\newcommand\eps{\varepsilon}
+\renewcommand\d{\mathrm{d}}
+\renewcommand\v[1]{\vec{#1}}
+
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{-100pt}
+    \setlength\belowdisplayskip{-100pt}
+    \setlength\abovedisplayshortskip{-100pt}
+    \setlength\belowdisplayshortskip{-100pt}
+%    \setlength\beloweqnsskip{-100pt}
+%    \setlength\displaybaselineskip{-100pt}
+%    \setlength\displaylineskip{-100pt}
+}
+
+\begin{document}
+\small
+\begin{multicols*}{4}
+  \section{Mechanik}
+  \subsection{Kinematik des Massenpunktes}
+  Ort:\\ $\vec r(t) = {(x(t), y(t), z(t))}^T$\\
+  Geschwindigkeit:\\ $\vec v(t) = \dot{\vec{r}}(t) = (\dot{x}(t), \dot{y}(t), \dot{z}(t))^T = (v_x, v_y, v_z)^T$ \\
+  Beschleunigung:\\ $\vec{a}(t) = \dot{\vec{t}}(t) = \ddot{\vec{x}}(t) = (a_x, a_y, a_z)^T$
+  \\ $\vec r(t) = \vec r_0 + \vec v_0(t - t_0) + \frac{1}{2} \vec a(t^2 - t_0^2)$
+  \subsubsection{Schiefer Wurf}
+  $\vec a_0 = (0, 0, -g)^T, \vec v_0 = (v_{x,0}, 0, v_{z,0})^T, \vec r_0 = (0, 0, z_0)$ \\
+  $\vec r(t) = (x_{x,0} t, 0, -\frac{1}{2} gt^2 + v_{z,0}t + z_0)$ \\
+  $z(x) = -\frac{1}{2} \frac{g}{v_{x,0}^2}x^2 + \frac{v_{z,0}}{v_{x,0}}x + z_0$ \\
+  Wurfweite: \\
+  $x_w = \displayed{\frac{v_0^2}{2g}\sin 2\phi(1 + \sqrt{1 + \frac{2g z_0}{v_0^2 \sin^2 \phi}})}$\\
+  Optimaler Winkel:
+  $\sin \phi_{opt} = (2 + \frac{2 g z_0}{v_0^2})^{-\frac{1}{2}}$
+  \subsubsection{Gleichförmige Kreisbewegung}
+  $\vec r(t) = (R \cos \phi, R\sin \phi)^T$ \\
+  $\vec v(t) = (-R \dot{\phi}\sin \phi, R\dot{\phi}\cos \phi)^T$ \\
+  Winkelgeschwindigkeit: $\omega = \dot{\phi}$ \\
+  $\v v = \omega \times \v r,\quad\omega = \frac{v}{r}$ \\
+  $\omega = \const \implies \abs{\vec r(t)} = r = \const, v = \const$
+  \subsubsection{Galilei-Transformation}
+  $\vec r' = \vec r - \vec ut,\quad\vec v' = \vec v - \vec u,\quad\vec a' = \vec a$
+  \subsection{Newtonsche Dynamik}
+  Impuls: $\v p = m\v v$ \\
+  Kraft: $\displayed{\vec F = (F_x, F_y, F_z)^T = \dot{\v p}, \vec F_{ges} = {\sum_{i = 1}^n} \vec F_i}$ \\
+  Trägheitsprinzip (Impulserhaltung): \\ $\v p = m\v v = \const \iff \v F = 0$ \\
+  actio gleich reactio: $\v F_{12} = - \v F_{21}$
+  \section{Kräfte und Kraftgesetze}
+  \subsection{Gravitation}
+  Newtonsches Gravitationsgesetz: \\
+  $\v F_g = -G \displayed{\frac{m_1 m_2}{r^2}\v e_r}, G = 6.67 \cdot 10^{-11}$ \\
+  träge Masse: $\v F = m_T \v a$\\
+  schwere Masse: $\v F = m_s \frac{G M_E}{r_E^2}\v e_r = m_s \v g$ \\
+  Äquivalenzprinzip: $m_{schwer} \sim m_{träge}$ bzw. $m_{schwer} = m_{träge}$ (bei dieser Wahl von $\v g)$
+  \subsection{Federkraft}
+  Hook'sches Gesetz: $F_x = F_x(\Delta x) = -k_F \Delta x$ (kleine Auslenkungen)
+  \subsection{Normalkraft, Zwangskräfte}
+  Schiefe Ebene: \\
+  Gewichtskraft: $\v F_g = m\v g$ \\
+  Normalkraft: $\v F_N = m g \cos \alpha \v e_y$ \\
+  Hangabtriebskraft: $\v F_H = m g \sin \alpha \v e_x$
+  \subsection{Reibungskräfte}
+  Gleitreibung: $F_G = \mu_G F_N$ \\
+  Haftreibung: $F_H = \mu_H F_N, \mu_H > \mu_G$
+  \subsection{Zentripetalkräfte}
+  Zentripetalkraft: \\ $\v F_{zp} = m\v\omega \times (\v\omega \times \v r)$ \\
+  $F_{zp} = m\omega^2 r = m \displayed{\frac{v^2}{r}}$
+  \section{Arbeit, Energie, Leistung}
+  Arbeit: $\Delta W = \v F \v x$ \\
+  $W = \displayed{\int_{\v r_1}^{\v r_2} \v F \d \v r = \int_{t_1}^{t_2} \v F(t) \frac{\d \v r}{\d t} \d t}$ \\
+  Kinetische Energie: $E_{kin} = \frac{1}{2} mv^2$ \\
+  Pot. Energie: $E_{pot} = \frac{1}{2} m x^2$ (Verformung) \\
+  Pot. Energie: $E_{pot} = m g h$ (Lageenergie) \\
+  Umwandlung von Energie: \\ $\d E_{kin} = \v F\d \v r = -\d E_{pot}$ \\
+  $\displayed{W = \int_{\v r_1}^{\v r_2} \v F\d \v r = E_{kin}(\v r_2) - E_{kin}(\v r_1) = \Delta E_{kin}}$ \\
+  $\displayed{W = \int_{\v r_1}^{\v r_2} \v F\d \v r = E_{pot}(\v r_1) - E_{pot}(\v r_2) = -\Delta E_{pot}}$ \\
+  Leistung: $P = \displayed{\frac{\d W}{\d t} = \v F \frac{\d \v r}{\d t}} = \v F \v v$ \\
+  Konservative Kraft: \\
+  $\v F$ konservativ $\iff \oint \v F \d \v r = 0$ \\
+  $\displayed{\implies W_{12} = \int_1^2 \v F \d\v r = E_{pot}(1) - E_{pot}(2)}$ \\
+  Kraftfeld: $\v F = \v F(\v r)$ \\
+  Gravitationskraft: $\displayed{\v F(\v r) =  - G\frac{m M}{r^2}\v e_r = f(r) \v e_r}$ \\
+  Hom. Kraftfeld: $\v F(\v r) = (0, 0, F_z)^T$ ist konservativ \\
+  Zentralkraftfeld: $\v F(\v r) = f(r) \v e_r$ ist konservativ \\
+  Potentielle Energie des Gravitationsfeldes: \\ $\displayed{E_{pot}^{grav} = -G \frac{m M}{r}}$ \\
+  Im konservativem Kraftfeld: \\ $\displayed{\v F = -\v\nabla E_{pot} = -\grad E_{pot}}$ \\
+  $\displayed{= -(\frac{\partial E_{pot}}{\partial x}, \frac{\partial E_{pot}}{\partial y},\frac{\partial E_{pot}}{\partial z})}$ \\
+  Potential: $\displayed{\Phi(\v r) = \lim_{m \to 0}\frac{E_{pot}(\v r)}{m}}$ \\
+  $E_{pot}(\v r) = m\Phi(\v r)$\\
+  $ \v F(\v r) = -\v\nabla E_{pot}(\v r) = -m\v \nabla\Phi(\v r)$ \\
+  Gravitationspotential: $\displayed{\Phi = -G \frac{M}{r}}$ \\
+  Gravitationsfeld: $\displayed{\v G = -G \frac{M}{r^2}\v e_r}$ \\
+  Energieerhaltung (konservative Kraftfelder):
+  $E_{pot} + E_{kin} = E_{ges} = \const$
+  \section{Systeme von Massenpunkten}
+  Gesamtmasse: $\displayed{M = \sum_{i = 1}^n m_i}$ \\
+  Schwerpunkt: \\
+  $\displayed{\v r_s = \frac{1}{M} \sum_{i = 1}^n m_i \v r_i}$ \\
+  $\displayed{\v r_s = \frac{1}{M} \int_V \v r\d m = \frac{1}{M}\int_V \v r \rho(\v r)\d V}$
+  \subsection{Bewegung des Schwerpunkts}
+  Geschwindigkeit: \\
+  $\displayed{\v v_s = \frac{\d \v r_s}{\d t} = \frac{1}{M}\sum_{i = 1}^n \v p_i}$ \\
+  Schwerpunktimpuls: \\
+  $\displayed{\v p_s = \sum_{i = 1}^n \v p_i = \sum_{i = 1}^n m_i \v v_i = M\v v_s}$ \\
+  Allgemeiner Impulssatz: $\displayed{\dot{\v p}_s = M\v a_s = \sum_{i = 1}^n \v F_i}$
+  System abgeschlossen $\iff \sum F_i = 0$ \\
+  $\displayed{\implies \v p_s = \sum_{i = 1}^n \v p_i = \const}$ \\
+  \subsection{Raketengleichung}
+  Kräftefreie Rakete: \\
+  $\displayed{v(t) = v_B \ln \frac{m_0}{m(t)}}$ \\
+  Allgemeine Raketengleichung: \\
+  $\displayed{m(t) \frac{\d\v v(t)}{\d t} = -\frac{\d m(t)}{\d t}\v v_B + \v F}$
+  \section{Stöße}
+  Kollinearer, elastischer Stoß: \\
+  $\displayed{v_1' = \frac{v_1(m_1 - m_2) + 2m_2v_2}{m_1 + m_2}}$ \\
+  $\displayed{v_2' = \frac{v_2(m_2 - m_1) + 2m_1v_1}{m_1 + m_2}}$ \\
+  Geschwindigkeit im Schwerpunktsystem: \\
+  $\displayed{v_s = \frac{m_1 v_1 + m_2 v_2}{m_1 + m_2}}$ \\
+  $\displayed{v_1^\ast = v_1 - v_s = \frac{m_2 v_1 - m_2 v_2}{m_1 + m_2}}$ \\
+  $\displayed{v_2^\ast = v_2 - v_s = \frac{m_1 v_2 - m_1 v_1}{m_1 + m_2}}$ \\
+  $\displayed{p_1^\ast = m_1 v_1^\ast = \frac{m_1 m_2}{m_1 + m_2}(v_1 - v_2)}$ \\
+  $\displayed{p_2^\ast = m_2 v_2^\ast = \frac{m_1 m_2}{m_1 + m_2}(v_2 - v_1)}$ \\
+  $p_1^\ast = -p_2^\ast$ \\
+  $\displayed{p_1^{\ast\prime} = -p_1^\ast}$ \\
+  $\displayed{p_2^{\ast\prime} = -p_2^\ast}$ \\
+  Nicht-zentraler, elastischer Stoß im Schwerpunktsystem: \\
+  $\v p_s^\ast = 0, \v p_1^\ast = -\v p_2^\ast$ \\
+  $\v p_1^{\ast\prime} = -\v p_2^{\ast\prime}, \abs{\v p_1^{\ast\prime}} = \abs{\v p_2^{\ast\prime}}$ \\
+  Inelastische Stöße: Umwandung der kinetischen Energie. \\
+  $E_{kin,1} + E_{kin,2} = E_{kin,1}' + E_{kin,2}' + Q$ \\
+  $Q = 0$: elastischer Stoß \\
+  $Q < 0$: inelastischer Stoß \\
+  $Q > 0$: superelastischer Stoß \\
+  \section{Mechanik des starren Körpers}
+  Volumen: $\displayed{V = \lim_{\Delta V_i \to 0} \sum \Delta V_i = \int \d V}$ \\
+  Masse: $\displayed{M = \lim_{\Delta M_i \to 0} \sum \Delta M_i = \int \d m = \int \rho{\v r}\d V}$ \\
+  Schwerpunkt: $\displayed{\v r_s = \frac{1}{M}\int \v r\d m = \frac{1}{M} \int \v r\rho(\v r)\d V}$ \\
+  Geschwindigkeit: $\v v_i = \v v_s + (\v \omega(t) \times \v r_{si})$
+  \subsection{Drehmoment und Kräftepaare}
+  Hebelgesetz: $F_1 l_1 = F_2 l_2$ \\
+  Drehmoment: $\v M = \v r \times \v F, M = r\cdot F$ \\
+  Gesamter Drehmoment: \\
+  $\displayed{\sum \v M_i = \sum \v r_i \times \v F_i}$ \\
+  Wirkung von $n$ Kräften an den Punkten $\v r_i$: \\
+  Translation: $\displayed{\v F = \sum \v F_i}$ \\
+  Rotation: $\displayed{\v M = \sum (\v r_i - \v r_s) \times \v F_i}$ \\
+  Statisches Gleichgewicht: \\ $\v F = \sum \v F_i = 0, \v M = \sum\v M_i = 0$ \\
+  Gleichgewicht im Schwerefeld: $(\v r - \v r_s) \times \v g = 0$ \\
+  \subsection{Rotation und Trägheitsmoment}
+  Kinetische Energie: \\
+  $\displayed{E_{kin} = \frac{1}{2} m \v v_s^2 + \frac{1}{2}\sum m_i \v v_{si}^2}$ \\
+  Trägheitsmoment: $\displayed{I = \int r_{\perp}^2 \d m \int r_{\perp}^2 \rho(\v r) \d V = \Theta}$ \\
+  Rotationsenergie: $\displayed{E_{rot} = \frac{1}{2}I\omega^2}$ \\
+  Dünner Stab: $I = \frac{1}{12} m L^2$ \\
+  Zylinder: $I = \frac{1}{2}m R^2$ \\
+  Dünner Hohlzylinder: $I = m R^2$ \\
+  Kugel: $I = \frac{2}{5} m R^2$ \\
+  Zylinderkoordinaten: \\
+  $x = r\cos \phi, y = r\sin \phi, z = z$ \\
+  $\d V = r\d \phi\d r\d z$ \\
+  Kugelkoordinaten: \\
+  $\d V = r^2 \sin\theta \d r \d\phi \d \theta$ \\
+  Steinerscher Satz: $I = I_s + r^2_{s\perp} m$ \\
+  Bewegungsgleichung (raumfeste Achse): $M = I \dot{\omega} = I\alpha$ \\
+  Drehimpuls: \\
+  $\v L = \v r\times \v p$ \\
+  $L = I\omega$ \\
+  $\dot{\v L} = \v M$ \\
+  $\displayed{\v L = \int \d \v L = \int (\v r\times \v v)\d m}$ \\
+  Systeme von Massenpunkten:\\
+  $\displayed{\v L = \sum \v r_i \times \v p_i}$ \\
+  $\displayed{\v M = \sum \v r_i \times \v F_i = \dot{\v L}}$ \\
+  Ohne äußere Kraft: $\v M = 0 \iff \v L = \const$ \\
+  Drehimpuls eines starren Körpers: \\
+  $\displayed{\v L = \v \omega \int r^2 \d m - \int \v r(\v\omega \cdot \v r)\d m}$ \\
+  Trägheitstensor: $\v L = \hat I \v \omega, \hat I = (I_{ij})$ \\
+  $I_{ii} = \int (r^2 - i^2)\d m$ \\
+  $I_{ij} = I_{ji} = -\int ij \d m$
+  \subsection{Deformierbare Körper}
+  Hooksches Gesetz: \\
+  $\displayed{\frac{F}{A} = \sigma = E \frac{\Delta L}{L} = E\eps}$ \\
+  Querkontraktion: $\displayed{\frac{\Delta D}{D} = -\mu \frac{\Delta L}{L}}$ \\
+  Volumenänderung: \\ $\displayed{\frac{\Delta V}{V} = \frac{\Delta L}{L}(1 - 2\mu) = \frac{\sigma}{E}(1 - 2\mu)}$ \\
+  Kompression: $\displayed{\frac{\Delta V}{V} = -\chi \Delta p}$ \\
+  Kompressibilität: $\chi = \frac{3}{E}(1 - 2\mu)$
+  \subsubsection{Scherung und Torison}
+  Normalspannung/Zugspannung: $\sigma = \frac{F_N}{A}$ \\
+  Tangentialspannung/Scherspannung: \\ $\tau = \frac{F_T}{A}$ \\
+  Kleine Scherwinkel: $\tau = G\alpha$ \\
+  Torsion eines Drahtes: \\ $M = \frac{\pi G R^4}{2L} \phi = K_D\phi$ \\
+  Torsionsschwingung eines Drahtes: \ $M = I\ddot{\phi} = -K_D \phi$
+  \subsubsection{Biegung}
+  Flächenträgheitsmoment: $J = \int \eta^2 \d A$ \\
+  $\eta$: senkrechter Abstand der Punkte der Querschnittsfläche von neutraler Ebene. \\
+  Quader: $J = \frac{1}{12} bh^3$ \\
+  Krümmung: $\chi = \frac{1}{rho} = \frac{M}{E J}$
+  \subsection{Hydrostatik}
+  Druck: $p = \frac{F}{A}$ ist überall gleich! \\
+  Flüssigkeit $\implies \chi = 0, V = \const$ \\
+  Hydrostatischer Druck: $p = p_0 + \rho g h$ \\
+  Auftriebskraft: $F_A = g\rho V = g m$ \\
+  \subsection{Gase}
+  Boyle-Mariotte: $T = \const \implies p\cdot V = \const$ \\
+  Barometrische Höhenformel: \\ $\displayed{p(h) = p_0 \exp(-\frac{\rho_0 g}{p_0} h)}$
+  \subsection{Strömende Flüssigkeiten und Gase}
+  Kontinuitätsgleichung: $A_1 v_1 = A_2 v_2$ \\
+  Bernoullische Gleichung: $p + \frac{1}{2}\rho v^2 + \rho g h = \const$ \\
+  Newtonsches Reibungsgesetz: $\displayed{\tau = \frac{F_R}{A} = \eta \frac{\d v_x}{\d y}}$ \\
+  $\displayed{F_R = \eta A \frac{\d v_x}{\d y}}$ \\
+  $\eta$: dynamische Viskosität \\
+  Schubspannung an zylindrischer Oberfläche im Abstand $r$: \\
+  $\displayed{\tau = \frac{F}{A} = \frac{\Delta p \pi r^2}{2\pi rL} = -\eta \frac{\d v}{\d r}}$ \\
+  Geschwindigkeitsprofil: $\displayed{v(r) = \frac{\Delta p}{4\eta L}(R^2 - r^2)}$ \\
+  Hagen-Poisouille: $\displayed{\dot{V} = \frac{\d V}{\d t} = \frac{\pi \Delta p}{8\eta L}R^4}$ \\
+  Mittlere Geschindigkeit: $\displayed{\bar v = \frac{\dot V}{A} = \frac{R^2}{8\eta L}\Delta p}$ \\
+  Reynold-Kriterium: \\
+  $R_e < R_{e,krit}$ laminar \\
+  $R_e > R_{e,krit}$ turbulent \\
+  Rundes Rohr, Radius $R$: $\displayed{R_e = \frac{2\rho \bar v R}{\eta}}$ \\
+  $R_{e,krit} = 2000 - 2300$
+  \subsubsection{Strömungswiderstand von glatten Körpern}
+  Laminare Strömung: $F_W \sim v$ \\
+  Gesetz von Stokes (Kugel): $F_W = F_R = 6\pi \eta r v$ \\
+  Trubulente Strömung: $F_W \sim v^2$ \\
+  $F_W = c_W \frac{1}{2} \rho v^2 A$
+  \section{Wärmelehre}
+  Gesetz von Gay-Lussac: $V(T) = V_o(1 + \gamma T)$ \\
+  Längenausdehung: $\Delta L = \alpha L_0 \Delta T$ \\
+  Volumenausdehung: $\Delta V = \gamma V_0 \Delta T$ \\
+  $\alpha$: Längenausdehungkoeffizient \\
+  $\gamma \approx 3\alpha$
+  \subsection{Zustandsgleichung idealer Gase}
+  Bolye-Mariotte-Gay-Lussac: \\
+  $\displayed{p\cdot v \sim T, \frac{p V}{T} = \const}$ \\
+  Zustandsgleichung idealer Gase: \\
+  $p V = n N_A k_B T$ \\
+  $p V = n R T, R = k_B N_A$ \\
+  $n$: Anzahl Mol \\
+  $N_A = 6.022\cdot 10^{23} \text{mol}^{-1}$ \\
+  $k_B = 1.381\cdot 10^{-23}\text{J/K}$ \\
+  $R = 8.31451 \text{J/K mol}$
+  \subsection{Kinetische Gastheorie}
+  $\displayed{p = \frac{1}{3}N m \bar{v^2}}$ \\
+  $\bar E_{kin} = \frac{3}{2}k_B T$ \\
+  Äquipartitionsprinzip: $\bar E_{`"kin'"} = f \frac{1}{2}k_B T$ \\
+  Innere Energie $U = n N_a \frac{1}{2}f k_B T$
+  \subsection{Wärme, Wärmekapazität, latente Wärme}
+  Wärmemenge: $Q = c m \Delta T$ \\
+  $Q = c_m n \Delta T$ \\
+  $c$: spezifische Wärmekapazität \\
+  $c_m$: spezifische Molwärme \\
+  latente Wärme: $Q = \lambda m$ \\
+  $\lambda$: (latente) Schmelz-/Verdampfungswärme \\
+  Mechanisches Wärmeäquivalent: $1 \text{cal} = 4.186\text{J}$ \\
+  1. Hauptsatz: $\Delta U = \Delta Q + \Delta W$
+  \subsection{Volumenarbeit}
+  Volumenarbeit: $\displayed{W = -\int_{V_1}^{V_2}p\d V}$ \\
+  Isotherme Zustandsänderung: $T = \const$ \\
+  $\Delta U_{12} = 0$ \\
+  $\Delta Q_{12} = n R T\ln{\frac{V_2}{V_1}}$ \\
+  $\Delta W_{12} = -\Delta Q_{12}$ \\
+  Isobar Zustandsänderung: $p = \const$ \\
+  $\Delta W_{12} = -p(V_2 - V_1) = -n R(T_2 -T_1)$ \\
+  $\Delta Q_{12} = nc_p (T_2 - T_1)$ \\
+  $\Delta U_{12} = \Delta U - \Delta W = n(c_p - R)(T_2 - T_1)$ \\
+  $c_v = \frac{f}{2}R$ \\
+  Isochore Zustandsänderung: $V = \const$ \\
+  $\Delta W_{12} = 0$ \\
+  $\Delta Q_{12} = n c_V (T_2 - T_1)$ \\
+  $\Delta U_{12} = \Delta Q_{12} = n c_V (T_2 - T_1)$ \\
+  $c_p = \frac{f + 2}{2}R, c_p = c_V + R$ \\
+  Adiabatische Zustandsänderung: $Q = \const$ \\
+  $\d U = \d W$ \\
+  $\d U = nc_V \d T$ \\
+  $\d W = -n R T \frac{\d V}{V}$ \\
+  Adiabatengleichungen: \\
+  $p V^{\gamma} = \const$ \\
+  $T V^{\gamma - 1} = \const$ \\
+  $T^{\gamma}p^{1 - \gamma} = \const$ \\
+  $\gamma = \frac{c_p}{c_V} = \frac{f + 2}{f}$
+  \subsection{Kreisprozesse}
+  Wirkungsgrad: $\eta = \frac{\abs{\Delta W}{Q_w}} = 1 - \frac{\abs{Q_K}{Q_w}}$ \\
+  Leistungszahl: $\eps_{wärme} = \frac{\abs{Q_W}}{\Delta W} = \frac{1}{\eta}$ \\
+  $\eps_{kälte} = \frac{Q_K}{\Delta W} = \frac{1}{\eta} - 1$ \\
+  Carnot-Prozess: \\
+  Isotherm $\to$ Adiabatisch $\to$ Isotherm $\to$ Adiabatisch \\
+  $\eta_c = 1 - \frac{T_2}{T_1} < 1$ (maximal) \\
+  Ottomotor: $\eta_O = 1 - \frac{T_2}{T_1} < \eta_c$
+  \subsection{Entropie}
+  Reversible Proz.: $\displayed{\sum \frac{\Delta Q_{i,rev}}{T} = 0, ~\oint \frac{\d Q_{rec}}{T} = 0}$ \\
+  Irreversible Proz.: $\displayed{\sum \frac{\Delta Q_{i, irr}}{T_i} < 0, ~\oint \frac{\d Q_{irr}}{T} < 0}$ \\
+  $\displayed{\oint \frac{\d Q_{irr}}{T} = \oint \frac{\d Q_{rec}}{T} + \oint \frac{\d Q_{extra}}{T} < 0}$ \\
+  Entropie: $\displayed{\d S = \frac{\d Q_{rec}}{T},\quad \Delta S = \int_1^2 \frac{\d Q_{rev}}{T}}$ \\
+  $\displayed{S(2) = S(1) + \int_1^2 \frac{\d Q_{rev}}{T}}$ \\
+  Wärmeleitung: $\displayed{\Delta S = c m \ln \frac{(T_1 + T_2)^2}{4T_1 T_2} > 0}$ \\
+  $S = k_B \ln \Omega$ \\
+  $\Omega$: Anzahl der Realisierungsmöglichkeiten. \\
+  3. Hauptsatz: $S(T = 0\mathrm{K}) = 0$
+  \section{Termodynamik realer Gase und Flüssigkeiten}
+  Kovolumen: $V_K = \frac{4}{3}\pi(2r)^3 = 8 V_a$ \\
+  $V_a$: Volumen der Gasteilchen \\
+  Gesamtes Kovolumen: $V_N = 4(n N_A)V_a \equiv n b$ \\
+  Van-der-Walls-Gleichung: \\
+  $\displayed{(p + \frac{a n ^2}{V^2})(V - nb) = n R T, a, b > 0}$ \\
+  \section{Transportprozesse}
+  Energiefluß: $ J_E = \frac{\d E}{\d t}\ j_E = \frac{\d E}{A\d t}$ \\
+  Massenfluß: $ J_M = \frac{\d M}{\d t}\ j_M = \frac{\d M}{A\d t}$ \\
+  Ladungsfluß: $ J_Q = \frac{\d Q}{\d t}\ j_Q = \frac{\d Q}{A\d t}$ \\
+  Kontinuitätsgleichung: \\
+  $\displayed{\frac{\d \rho}{\d t} + \frac{\d j}{\d z} = 0}$ \\
+  $\displayed{\frac{\partial \rho}{\partial t} + \nabla \cdot \v j = 0}$ \\
+  $\v j$: Stromdichte \\
+  $\v j = \rho \v v$
+  \subsection{Wärmeleitung}
+  Wärmeleitung (Fouriersches Gesetz): \\
+  $j_Q = -\lambda \frac{\d T}{\d x}$ \\
+  $j_Q = -\lambda \nabla T$
+  \subsection{Diffusion}
+  Diffusion: (Ficksches Gesetz): \\
+  $j_D = -D \frac{\d n}{\d x}$ \\
+  $\v j_D = -D \nabla n$ \\
+  $D = \frac{\lambda v}{3} = \frac{\lambda^2}{3 \tau}$ \\
+  $\lambda$: mittlere freie Weglänge \\
+  $\tau$: mittlere Zeit zwischen 2 Stößen \\
+  $v = \frac{\lambda}{\tau}$: mittlere Geschwindigkeit
+  \subsection{Wärmestrahlung}
+  Solarkonstante $I_{solar} = 1.37 \text{kW/}\mathrm{m}^2 \approx 1\text{kN/}\mathrm{m}^2$ \\
+  Kirchhhoffsches Strahlungsgesetz: \\
+  $\displayed{\frac{E_\lambda(T)}{A_{\lambda}(T)} = E_\lambda^S (T) ~\text{mit}~ A_\lambda^S(T) = 1}$ \\
+  Stefan-Boltzmannsches Strahlungsgesetz: \\
+  $E^{sp}(T) = \sigma T^4\quad E(T) = \eps \sigma T^4$ \\
+  Plancksches Strahlungsgesetz: \\
+  $\displayed{E_\lambda^{sp} = \frac{2\pi h c^2}{\lambda^5} \cdot \frac{1}{e^{\frac{hc}{\lambda k} T} - 1}}$ \\
+  $\displayed{E_V^{sp} = \frac{2\pi h \nu^3}{c^2} \cdot \frac{1}{e^{\frac{h\nu}{\lambda k} T} - 1}}$
+\end{multicols*}
+\end{document}
