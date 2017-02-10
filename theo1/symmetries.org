@@ -163,7 +163,7 @@
 
 
    Symmetrien des euklidischen Raums:
-   $x \t R x$ mit $R^{T} T = \mathbb{1}$
+   $x \to R x$ mit $R^{T} T = \mathbb{1}$
    $R \in O(3) \subset ULU3$
 ** Symmetriegruppe (M)
    Symmetrien in Physik und Mathe \rightarrow Gruppen \\

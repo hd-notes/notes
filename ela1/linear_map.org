@@ -177,7 +177,7 @@
   #+begin_thm latex
   $V$ endlichdimensionaler $K$ -Vektorraum, $f:V\to W$ linare Abbildung.
   $(v_1, \ldots, v_k)$ Basis von $\ker f$, $(w_1, \ldots, w_r)$ Basis von $\im f$
-  (beachte $\im f$ endlichdimensional wegen 12.3 5.). Für $i = 1, \ldots r$ sei $u_i \i V$ mit
+  (beachte $\im f$ endlichdimensional wegen 12.3 5.). Für $i = 1, \ldots r$ sei $u_i \in V$ mit
   $f(u_i) = w_i$. Dann ist
   \[\mathcal{A}:= (u_1, \ldots, u_r, v_1, \ldots v_k)\]
   eine Basis von $V$. Insbesondere ist $\dim V = \dim (\ker f) + \dim(\im f)$

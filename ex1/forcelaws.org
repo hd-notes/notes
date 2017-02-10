@@ -18,7 +18,7 @@
 	 \[F= m_T a \rightarrow ~\text{träge Masse}\]
 	 \[F= m_S G\frac{M_E}{r_E^2} \rightarrow ~\text{schwere Masse}\]
 **** Äquivalenzprinzip
-	 $m_S \sim \m_T$ beziehungsweise $m_S = m_T$
+	 $m_S \sim m_T$ beziehungsweise $m_S = m_T$
 ** Federkraft
    Hook'sches Gesetz
    \[F_x = F_x(\Delta x) = -k_F \Delta x\]

@@ -62,7 +62,7 @@
 	 \[M_{\mathcal{B}}^{\mathcal{A}}:\Hom_K(V, W) \to M(m\times n, K), f\mapsto M_{\mathcal{B}}^{\mathcal{A}}(f)\]
 	 ist ein Isomorphismus von K-VR. Insbesondere ist im Fall $V = W, \mathcal{A} = \mathcal{B}$ die
 	 Abbildung
-	 \[M_{\mathcal{B}}: \End_K(V) \t M(n\times m,K), f\mapsto M_{\mathcal{B}}(f) := M_{\mathcal{B}}^{\mathcal{B}}(f)\]
+	 \[M_{\mathcal{B}}: \End_K(V) \to M(n\times m,K), f\mapsto M_{\mathcal{B}}(f) := M_{\mathcal{B}}^{\mathcal{B}}(f)\]
 	 ein Isomorphismus von K-Vekorraum.
   #+end_thm
   #+begin_proof latex

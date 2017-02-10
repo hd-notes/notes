@@ -2,7 +2,7 @@
   In diesem Abschnitt sei $V$ stets ein K-VR
   #+ATTR_LATEX: :options [9.1]
   #+begin_defn latex
-  $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. $(v_i)_{i\i I}$ heißt *Erzeugendensystem* (ES) von $V \xLeftrightarrow{Def} V = \Lin((v_i)_{i\in I})$ \\
+  $(v_i)_{i\in I}$ Familie von Vektoren aus $V$. $(v_i)_{i\in I}$ heißt *Erzeugendensystem* (ES) von $V \xLeftrightarrow{Def} V = \Lin((v_i)_{i\in I})$ \\
   $V$ heißt *endlich erzeugt* $\xLeftrightarrow{\text{Def}} V$ besitzt ein endliches Erzeugendensystem (das heißt es existiert eine endliche Familie $(v_1, \ldots, v_n)$ von Vektoren aus $V$ mit $V = \Lin((v_1, \ldots, v_n))$) \\
   $(v_i)_{i\in I}$ heißt *Basis* von $V \xLeftrightarrow{\text{Def}} (v_i)_{i\in I}$ ist linear unabhängiges Erzeugendensystem von $V$ \\
   Ist $\mathcal{B} = (v_1, \ldots, v_n)$ eine endliche Basis von $V$, dann heißt $n$ die *Länge* von $\mathcal{B}$

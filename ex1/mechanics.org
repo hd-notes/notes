@@ -194,7 +194,7 @@
 	   \[v_{1,2} = \int_0^{t_{1,2}} a(t)\d t = a_{\text{eff}}T\]
 	   \[\rightarrow F_1(t) = F_2(t) \rightarrow v_1 = v_2\]
 ***** Experiment 2
-	  \[m_1 = \SI{241.8}{\gram} \wedge \m_2 = \SI{341.8}{\gram} \implies \f{m_2}{m_1} \approx 1.5\]
+	  \[m_1 = \SI{241.8}{\gram} \wedge m_2 = \SI{341.8}{\gram} \implies \f{m_2}{m_1} \approx 1.5\]
 	  \[v = \f{\Delta s}{\Delta t} \rightarrow \f{v_1}{v_2} = \f{t_2}{t_1} = \f{71}{48} \approx 1.5\]
 	  \[a\sim v, F = m a \rightarrow \f{v_1}{v_2} = \f{a_1}{a_2} = \f{m_2}{m_1}\cdot \f{F_1}{F_2}\]
 	  \[1 = \f{F_1}{F_2} \implies F_1 = F_2\]

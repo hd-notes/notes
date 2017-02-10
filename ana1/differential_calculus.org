@@ -286,7 +286,7 @@
 *** Anwendung von MW Satz 2
 	#+ATTR_LATEX: :options [4.22 Regeln von L'Hospital]
 	#+begin_thm latex
-	Es seien $f,g: I \to \mathbb{R}, I = (a, b)$ sodass $g'(x) \neq 0 \Forall x\i I$ und \[\lim_{x \downarrow a} \frac{f'(x)}{g'(x)} =: c \in \mathbb{R}\]
+	Es seien $f,g: I \to \mathbb{R}, I = (a, b)$ sodass $g'(x) \neq 0 \Forall x\in I$ und \[\lim_{x \downarrow a} \frac{f'(x)}{g'(x)} =: c \in \mathbb{R}\]
 	Dann gelten die Folgenden Regeln:
 	1. Im Fall
 	   \[\lim_{x\downarrow a} f(x) = \lim_{x\downarrow a} g(x) = 0\]
@@ -307,7 +307,7 @@
 	   \Forall x \in (a, a + \delta): f(x) \neq 0 \wedge g(x) \neq 0 \wedge \abs{\frac{f'(x)}{g'(x)} - c} < \eps \\
 	   \intertext{Für beliebigs $x, y \in (a, a + \delta)$ mit $f(x) \neq f(y)$}
 	   \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{g(x) - g(y)}{f(x) - f(y)} \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) - g(y)} \frac{(1 - \frac{g(y)}{g(x)})g(x)}{\underbrace{(1 - \frac{f(y)}{f(y)})}_{x\downarrow a \to 1}f(x)}  \frac{f(x)}{g(x)} \\
-	   \implies \Exists \delta_\ast > 0: \Forall x \i n(a, a + \delta_\ast): \abs{\frac{f(x)}{g(x)} - \frac{f(x) - f(y)}{g(x) - g(y)}} < \eps
+	   \implies \Exists \delta_\ast > 0: \Forall x \in n(a, a + \delta_\ast): \abs{\frac{f(x)}{g(x)} - \frac{f(x) - f(y)}{g(x) - g(y)}} < \eps
 	   \intertext{Für ein $x$ sodass $a < x < \underbrace{a + \min\{\delta, \delta_\ast\}}_{x_\ast}$ bekommen wir}
 	   \abs{\frac{f(x)}{g(x)} - c} < 2\eps \tag*{\qedhere}
 	   \end{gather*}
@@ -360,7 +360,7 @@
    #+ATTR_LATEX: :options [4.26]
    #+begin_thm latex
    Sei $f: (a, b) \to \mathbb{R}~(n + 1)$ -mal stetig differenzierbar und $t_n(x_0, \cdot)$  ihr
-   n-tes Taylor Polynom um ein $x_0\i n(a,b)$. Dann gibt es zu jeden $x\in (a,b)$ ein $\xi$ zwischen
+   n-tes Taylor Polynom um ein $x_0\in n(a,b)$. Dann gibt es zu jeden $x\in (a,b)$ ein $\xi$ zwischen
    $x$ und $x_0$, so dass gilt
    \[f(x) = t_n(x_0, x) + \frac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}\]
    mit dem sogenannten Lagrangschen Restglied.

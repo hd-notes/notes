@@ -32,7 +32,7 @@
 	 "$\supseteq$" Seien $b_1, b_2 \in a + U \implies \Exists u_1, u_2 \in U: b_1 = a + u_1, b_2 = a + u_2 \implies b_1 - b_2 = (a + u_1) - (a + u_2) = u_1 - u_2 \in U$ \\
 	 Analog: $\tilde U = \{b_1 - b_2 \mid b_1, b_2 \in \tilde a + \tilde U\}$ \\
 	 Somit: $U = \{b_1 - b_2 \mid b_1, b_2 \in a + U\} = \{b_1 - b_2 \mid b_1, b_2 \in \tilde a + \tilde U\} = \tilde U$
-	 $\implies a + U = \tilde a + U \implies a \in a + U = \tilde a + U \implies \Exists u \i U: a = \tilde a + u \implies a - \tilde a = u\in U$
+	 $\implies a + U = \tilde a + U \implies a \in a + U = \tilde a + U \implies \Exists u \in U: a = \tilde a + u \implies a - \tilde a = u\in U$
   #+end_proof
   #+ATTR_LATEX: :options [13.3]
   #+begin_ex latex
@@ -83,7 +83,7 @@
   $f$ ist linear und es ist $\im f = \Lin((e_1)), \ker f = \Lin((e_2))$ und für $w = \lambda e_1 = \cvec{\lambda ; 0} \in \im f$
   ist $f^{-1}(\{w\}) = f^{-1}({\cvec{\lambda ; 0}}) = \cvec{\lambda ; 5} + \ker f = \cvec{\lambda ; 5} + \Lin((e_2))$
   #+end_ex
-  Ziel: Wir haben gesehen, dass der Kern einer linearen Abbildung $f: V\t W$ ein UVR von $V$
+  Ziel: Wir haben gesehen, dass der Kern einer linearen Abbildung $f: V\to W$ ein UVR von $V$
   ist und dass für jedes $w \in W$ die Faser vo $f$ über $w$ ein affiner UR von $V$ ist.
   Wir wollen nun zu einem gegebenen UVR $U \subseteq V$ einen UR $W$ und eine lineare
   Abbildung $f: V \to W$ konstruieren, sodass $U = \ker f$ ist (beziehungsweise dass ein

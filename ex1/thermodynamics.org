@@ -505,7 +505,7 @@
 	Bemerkung: Optimale Maschine in der Realität offenbar nicht realisierbar, idealisierung!
 *** Carnot-Prozess
 	Idealisierte Maschine zur Untersuchung der Grundlagen thermodynamischer Prozesse, Realisierung (auch näherungsweise) schwierig
-	1. Isotherme Expansion $(a \t b), \Delta U = 0$ Wärmezufuhr $Q_1$
+	1. Isotherme Expansion $(a \to b), \Delta U = 0$ Wärmezufuhr $Q_1$
 	2. Adiabatische Expansion $(b \to c), \Delta Q = 0, T_1 \to T_2$
 	3. Isotherme Kompression $(c \to d), \Delta U = 0$ Wärmezufur $Q_2$
 	4. Adiabatische Kompression $(d \to a), \Delta Q = 0, T_2 \to T_1$

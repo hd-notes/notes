@@ -416,7 +416,7 @@
    Annahmen: $f_n \in C([a,b])$,
    - gleichmäßig beschränkt: $\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$
    - gleichmäßig stetig:
-	 \[\Forall \eps \Exists \delta_\eps > 0 \Forall n\in\mathbb{N \m} \max_{\substack{x,y\in[a,b] \\ \abs{x - y} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps\]
+	 \[\Forall \eps \Exists \delta_\eps > 0 \Forall n\in\mathbb{N} \max_{\substack{x,y\in[a,b] \\ \abs{x - y} \leq \delta_\eps}} \abs{f_n(x) - f_n(y)} < \eps\]
    Aussage: $\Exists$ eine Teilfolge $(f_{n_k})_{k\in\mathbb{N}}$, sodass $f_{n_k} \xrightarrow{k\to\infty} f\in C([a,b])$
    #+end_thm
    #+begin_proof latex
