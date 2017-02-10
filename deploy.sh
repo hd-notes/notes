@@ -37,7 +37,7 @@ SHA=`git rev-parse --verify HEAD`
 # Clone the existing gh-pages for this repo into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
 git clone https://github.com/hd-notes/pdfs.git pdfs
-git clone https://github.com/hd-notes/hd-notes.github.io.git pages
+git clone --recursive https://github.com/hd-notes/hd-notes.github.io.git pages
 
 # Clean out existing contents
 # TODO(robin): auto run fetch scripts
@@ -91,7 +91,7 @@ cd ..
 
 echo "updating pages"
 # sleep a bit to give github some time
-sleep 10
+sleep 1
 cd pages
 cd pdfs
 git pull
