@@ -91,6 +91,7 @@ cd ..
 
 echo "updating pages"
 cd pages
+git submodule update --remote --merge
 ./generate.sh ../
 
 git config user.name "Travis CI"
