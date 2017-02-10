@@ -90,8 +90,14 @@ git push git@github.com:hd-notes/pdfs.git
 cd ..
 
 echo "updating pages"
+# sleep a bit to give github some time
+sleep 10
 cd pages
-git submodule update --remote --merge
+cd pdfs
+git pull
+cd ..
+# TODO(robin): why does this not work? (maybe git is too old?)
+#git submodule update --remote --merge
 ./generate.sh ../
 
 git config user.name "Travis CI"
