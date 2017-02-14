@@ -1,0 +1,482 @@
+%\documentclass[10pt,landscape,a4paper]{article}
+\documentclass[9pt, landscape,a4paper]{extarticle}
+\usepackage[ngerman]{babel}
+\usepackage{tikz}
+%\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+%\usepackage{siunitx}
+%\usepackage[nosf]{kpfonts}
+%\usepackage{lipsum}
+%\usepackage[t1]{sourcesanspro}
+%\usepackage{crimson}
+%\usepackage[lf]{MyriadPro}
+%\usepackage[lf,minionint]{MinionPro}
+%\usepackage{polyglossia}
+%\setdefaultlanguage[spelling=new, babelshorthands=true]{german}
+\usepackage{multicol}
+\usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+\usepackage{microtype}
+\usepackage[no-math]{fontspec}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{mathspec}
+\usepackage{stmaryrd}
+\usepackage{stackengine}
+\usepackage{nath}
+\makeatletter
+\let\mathop\o@mathop
+\makeatother
+\let\bar\overline
+
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+%\colorlet{circle edge}{myblue}
+%\colorlet{circle area}{myblue!5}
+
+%\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+%    outline/.style={draw=circle edge, thick}}
+
+%\pgfdeclarelayer{background}
+%\pgfsetlayers{background,main}
+
+\everymath\expandafter{\the\everymath \color{myblue}}
+\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+
+% \global\mdfdefinestyle{header}{%
+% linecolor=gray,linewidth=1pt,%
+% leftmargin=0mm,rightmargin=0mm,skipbelow=0mm,skipabove=0mm,
+% }
+
+% \newcommand{\header}{
+% \begin{mdframed}[style=header]
+% \footnotesize
+% \sffamily
+% Formelzettel\\
+% von~Robin~Heinemann
+% \end{mdframed}
+% }
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+
+
+
+\def\multi@column@out{%
+   \ifnum\outputpenalty <-\@M
+   \speci@ls \else
+   \ifvoid\colbreak@box\else
+     \mult@info\@ne{Re-adding forced
+               break(s) for splitting}%
+     \setbox\@cclv\vbox{%
+        \unvbox\colbreak@box
+        \penalty-\@Mv\unvbox\@cclv}%
+   \fi
+   \splittopskip\topskip
+   \splitmaxdepth\maxdepth
+   \dimen@\@colroom
+   \divide\skip\footins\col@number
+   \ifvoid\footins \else
+      \leave@mult@footins
+   \fi
+   \let\ifshr@kingsaved\ifshr@king
+   \ifvbox \@kludgeins
+     \advance \dimen@ -\ht\@kludgeins
+     \ifdim \wd\@kludgeins>\z@
+        \shr@nkingtrue
+     \fi
+   \fi
+   \process@cols\mult@gfirstbox{%
+%%%%% START CHANGE
+\ifnum\count@=\numexpr\mult@rightbox+2\relax
+          \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+% \setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\else
+      \setbox\count@\vsplit\@cclv to \dimen@
+\fi
+%%%%% END CHANGE
+            \set@keptmarks
+            \setbox\count@
+                 \vbox to\dimen@
+                  {\unvbox\count@
+                   \remove@discardable@items
+                   \ifshr@nking\vfill\fi}%
+           }%
+   \setbox\mult@rightbox
+       \vsplit\@cclv to\dimen@
+   \set@keptmarks
+   \setbox\mult@rightbox\vbox to\dimen@
+          {\unvbox\mult@rightbox
+           \remove@discardable@items
+           \ifshr@nking\vfill\fi}%
+   \let\ifshr@king\ifshr@kingsaved
+   \ifvoid\@cclv \else
+       \unvbox\@cclv
+       \ifnum\outputpenalty=\@M
+       \else
+          \penalty\outputpenalty
+       \fi
+       \ifvoid\footins\else
+         \PackageWarning{multicol}%
+          {I moved some lines to
+           the next page.\MessageBreak
+           Footnotes on page
+           \thepage\space might be wrong}%
+       \fi
+       \ifnum \c@tracingmulticols>\thr@@
+                    \hrule\allowbreak \fi
+   \fi
+   \ifx\@empty\kept@firstmark
+      \let\firstmark\kept@topmark
+      \let\botmark\kept@topmark
+   \else
+      \let\firstmark\kept@firstmark
+      \let\botmark\kept@botmark
+   \fi
+   \let\topmark\kept@topmark
+   \mult@info\tw@
+        {Use kept top mark:\MessageBreak
+          \meaning\kept@topmark
+         \MessageBreak
+         Use kept first mark:\MessageBreak
+          \meaning\kept@firstmark
+        \MessageBreak
+         Use kept bot mark:\MessageBreak
+          \meaning\kept@botmark
+        \MessageBreak
+         Produce first mark:\MessageBreak
+          \meaning\firstmark
+        \MessageBreak
+        Produce bot mark:\MessageBreak
+          \meaning\botmark
+         \@gobbletwo}%
+   \setbox\@cclv\vbox{\unvbox\partial@page
+                      \page@sofar}%
+   \@makecol\@outputpage
+     \global\let\kept@topmark\botmark
+     \global\let\kept@firstmark\@empty
+     \global\let\kept@botmark\@empty
+     \mult@info\tw@
+        {(Re)Init top mark:\MessageBreak
+         \meaning\kept@topmark
+         \@gobbletwo}%
+   \global\@colroom\@colht
+   \global \@mparbottom \z@
+   \process@deferreds
+   \@whilesw\if@fcolmade\fi{\@outputpage
+      \global\@colroom\@colht
+      \process@deferreds}%
+   \mult@info\@ne
+     {Colroom:\MessageBreak
+      \the\@colht\space
+              after float space removed
+              = \the\@colroom \@gobble}%
+    \set@mult@vsize \global
+  \fi}
+
+\setlength{\parindent}{0pt}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\phi}{\varphi}
+% \newcommand{\implies}{\Longrightarrow}
+% \newcommand{\impliedby}{\Longleftarrow}
+\newcommand{\grad}{\mathrm{grad}}
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+%\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\newcommand*\abs[1]{\lvert#1\rvert}
+\newcommand*\norm[1]{\lVert#1\rVert}
+\newcommand\const{\text{ const }}
+\newcommand\eps{\varepsilon}
+\renewcommand\d{\mathrm{d}}
+\newcommand\sgn{\mathrm{sgn}}
+\newcommand\id{\mathrm{id}}
+\newcommand\RS{\mathrm{RS}}
+\renewcommand\v[1]{\vec{#1}}
+\newcommand\ubar[1]{\stackunder[1.2pt]{$#1$}{\rule{.99ex}{.065ex}}}
+
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{-100pt}
+    \setlength\belowdisplayskip{-100pt}
+    \setlength\abovedisplayshortskip{-100pt}
+    \setlength\belowdisplayshortskip{-100pt}
+%    \setlength\beloweqnsskip{-100pt}
+%    \setlength\displaybaselineskip{-100pt}
+%    \setlength\displaylineskip{-100pt}
+}
+
+\raggedbottom
+\begin{document}
+\small
+\begin{multicols*}{4}
+\raggedcolumns
+  \section{Mengen und Zahlen}
+  Quantoren, Mengen (operationen), Äquivalenzrelationen, Abbildungen \\
+  $f: X\to Y$ heißt \\
+  injektiv, wenn $\forall x_1, x_2 \in X: f(x_1) = f(x_2) \implies x_1 = x_2$ \\
+  surjektiv,w enn $f(X) = Y \iff \forall y\in Y \exists x\in x: f(x) = y$ \\
+  bijektiv, wenn surjektiv und injektiv $\iff \exists ! g: Y \to X, g\circ f = \id_x, f\circ g = \id_y$ \\
+  $f: X\to Y, g: Y\to Z$ injektiv/surjektiv $\implies$ $g\circ f$ injektiv/surjektiv. \\
+  $g\circ f$ injektiv $\implies f$ injektiv \\
+  Natürliche Zahlen: \\
+  Peano-Axiome \\
+  \textbf{vollständige Induktion} \\
+  Körper $\mathbb{Q}, \mathbb{R}$, Ordnungsrelationen \\
+  Abzählbarkeit: $n\in \mathbb{N}, A_n := \{m\in \mathbb{N} \mid m\leq n\} = \{1, \ldots, n\}$ \\
+  Menge $M$ heißt \\
+  endlich, wenn es ein $n\in\mathbb{N}$ und eine bijektive Abbildung $f: M \to A_n$ gibt. \\
+  abzählbar uneindlich,w enn es eine bijektive Abbildung $f: M\to \mathbb{N}$ gibt. \\
+    ($\mathbb{N}, \mathbb{N}^2, \mathbb{Z}, \mathbb{Q}$, kartesiches Produkt abzählbarer Mengen, abzählbare Vereinigung abzählbarer Mengen) \\
+  überabzählbar, wenn sie weder endlich noch abzählbar ist. \\
+    ($\mathbb{R}$, Menge der Folgen mit Werten in $\{0, 1\})$
+  höchstens abzählbar, wenn sie abzählbar oder endlich ist \\
+  Schranken: $M$ Menge, $A\subseteq M$, dann heißt $S\in M$ \\
+  obere Schranke, wenn $\forall x\in A: x\leq S$ \\
+  untere Schranke, wenn $\forall x\in A: x\geq S$ \\
+  Supremum von $A$, wenn für alle oberen Schranken $S'$ von $A$ gilt $S\leq S'$ \\
+  Infimum von $A$, wenn für alle untere Schranken $S'$ von $A$ gilt $S'\leq S$ \\
+  Axiome der reellen Zahlen: Körper, geordnet, Einbettung von $\mathbb{N}$ \\
+  Vollständigkeit: Jede nach oben beschränkte Teilmenge hat ein Supremum. \\
+  Archimedisches Prinzip: $\forall x\in \mathbb{R}: \exists n\in \mathbb{N}: x\leq n$ \\
+  $M\subseteq \mathbb{R}$ beschränkt: \\
+  $S$ (obere Schranke) ist Supremum $\iff \forall \eps > 0 \exists x\in M: S - \eps \leq x$ \\
+  $S$ (unter Schranke) ist Infimum $\iff \forall \eps > 0 \exists x\in M: S + \eps \leq x$ \\
+  $\emptyset \neq A, B \subseteq \mathbb{R}$ beschränkt, sodass $A\subseteq B$, dann $\sup A \leq \sup B$ \\
+  Monotonie: \\
+  $f: A\to B$ heißt (streng) monoton wachsend, wenn $x\leq y \implies f(x) \leq (<) f(y)$ \\
+  $f: A\to B$ heißt (streng) monoton fallend, wenn $x\leq y \implies f(x) \geq (>) f(y)$ \\
+  Betrag: $\displayed{\abs{\cdot}: \mathbb{R} \to \mathbb{R}_{+}, x\mapsto \begin{cases} x & x\geq 0 \\ -x & x < 0\end{cases}}$ \\
+  Signum: $\displayed{\sgn:\mathbb{R} \to \{-1, 0, 1\}, x\mapsto \begin{cases} \frac{x}{\abs{x}} & x \neq 0 \\ 0 & x = 0\end{cases}}$ \\
+  $\abs{x \cdot y} = \abs{x}\cdot \abs{y}, \abs{x + y} \leq \abs{x} + \abs{y}, \abs{\abs{x} - \abs{y}} \leq \abs{x - y}, \abs{x - y} \leq \eps \iff x - e \leq y \leq x + \eps$ \\
+  Fakultät/Binominalkoeffizient: $k, n\in \mathbb{N}_0$ \\
+  $\displayed{\binom{n}{k} = \frac{n!}{(n - k)! k!} = \binom{n}{n - k}} = \binom{n - 1}{k - 1} + \binom{n - 1}{k}$ \\
+  Binominalsatz: $\forall n\in\mathbb{N}_0, x, y\in\mathbb{R}$ gilt: \\
+  $\displayed{(x + y)^n = \sum_{k = 0}^n\binom{n}{k} x^{n - k}y^k}$ \\
+  Bernoulli-Ungleichung: Für $x\geq -1, n\in \mathbb{N}$ gilt \\
+  $(1 + x)^n \geq 1 + xn$ \\
+  Intervalle: $D \subseteq \mathbb{R}$ heißt Intervall, wenn es für $x, y \in D$ mit $x \leq y$ für alle
+  $z \in \mathbb{R}$ mit $x\leq z \leq y$ gilt $z\in D$ \\
+  (beschränkt) offene Intervalle $(a, b), a, b \in \mathbb{R}$ \\
+  (beschränkt) abgeschlossene Intervalle $[a, b], a, b\in\mathbb{R}$ \\
+  Halbgeraden \\
+  $(a, \infty), (-\infty, b), [a,\infty), (-\infty, b], a, b\in\mathbb{R}$ \\
+  reelle Gerade $(-\infty, \infty) = \mathbb{R}$ \\
+  Komplexe Zahlen: definiere auf $\mathbb{R} \times \mathbb{R}$ \\
+  $+: (x_1, y_1), (x_2, y_2)\mapsto (x_1 + x_2, y_1 + y_2)$ \\
+  $\cdot: (x_1, y_1), (x_2, y_2)\mapsto (x_1x_2  - y_1 y_2, x_1 y_2 + y_1 x_2)$ \\
+  $\mathbb{C} := (\mathbb{R}\times\mathbb{R}, +, \cdot)$ ist Körper mit Lösungen der Gleichung \\
+  $(x, y) \cdot (x, y) + (1,0) = (0,0)$ der Form $\pm i:= (0, \pm 1)$ \\
+  Schreibweise: $z\in\mathbb{C}, z = x + i y$ \\
+  $x =: \Re(z), y =: \Im(z), \mathbb{R}$ ist eingebetteter Unterkörper \\
+  $\mathbb{R} = \{z \in \mathbb{C} \mid \Im(z) = 0\}$ \\
+  $\abs{\cdot}: \mathbb{C} \to \mathbb{R}_{+}, z\mapsto \sqrt{\Re(z)^2 + \Im(z)^2}$ \\
+  $\bar\cdot: \mathbb{C}\to\mathbb{C}, z\mapsto \bar z := \Re(z) - i\Im(z)$ \\
+  $\abs{z}^2 = z\cdot\bar z$ \\
+  Ex existiert keine Ordungsrelation auf $\mathbb{C}$, die die Körperstruktor respektiert. ($0 < i^2 < i^2 + 1 = 0 \lightning$) \\
+  Fundamentalsatz der Algebra: \\
+  Jedes Polynom $z^n + a_{n - 1}z^{n - 1} + \dots + a_1 z + a_0$ mit Koeffizienten in $\mathbb{C}$ hat eine Nullstelle in $\mathbb{C}$
+  \section{Folgen und Reihen}
+  (reelle) Folge ist Abbildung $a: \mathbb{N}\to \mathbb{R}$ \\
+  $a(n) =: a_n, a =: (a_n)_{n\in\mathbb{N}}$ \\
+  $(a_n)_{n\in\mathbb{N}}$ konvergiert gegenDen Grenzewrt $a\in \mathbb{R}$, wenn für alle $\eps > 0$ ein $N_\eps \in \mathbb{N}$ existiert, sodass \\
+  $\abs{a_n - a < \eps} \forall n\geq N_\eps$ \\
+  $(a_n)_{n\in\mathbb{N}}$ heißt Cauchy-Folge, wenn für alle $\eps > 0$ ein $N_\eps \in\mathbb{N}$ existiert, sodass \\
+  $\abs{a_n - a_m} \leq \eps \forall m\geq n \geq N_\eps$ \\
+  $(a_n)_{n\in\mathbb{N}}$ konvergiert $\iff (a_n)_{n\in\mathbb{N}}$ Cauchy-Folge. \\
+  $a$ heißt Häufungswert der Folge $(a_n)_{n\in\mathbb{N}}$, wenn für alle $\eps > 0$ unendlich viele Folgenglieder im Intervall $(a - \eps, a + \eps)$ liegen. \\
+  jeder Grenzwert ist auch ein Häufungswert (aber nicht notwendig umgekehrt) \\
+  Grenzwerte sind eindeutig (Häufungswerte aber nicht notwendig). \\
+  $M\subseteq \mathbb{R}, a$ Häufungspunkt von $M$, wenn für alle $\eps > 0$ unendlich viele $x\in M$ im Intervall $(a - \eps, a + \eps)$. \\
+  $(a_n)_{n\in\mathbb{N}}$ Folge, $M := \{a_n \mid n\in\mathbb{N}\}$, dann $a$ Häufungswert der Folge $\impliedby a$ Häufungspunkt der Menge, \textbf{aber} nicht
+  notwendig umgekehrt, $(a_n := 1 \forall n\in\mathbb{N})$ \\
+  Eigenschaften des Grenzwerts \\
+  Eindeutigkeit: sind $a, a'$ Grenzwert der Folge $(a_n)_{n\in\mathbb{N}}$, dann gilt $a = a'$ \\
+  Ist $(a_n)_{n\in\mathbb{N}}$ eine beschränkte, monoton wachsende Folge $M:= \{a_n \mid n\in\mathbb{N}\}$, dann $a_n \to^{n\rightarrow \infty} \sup M$ \\
+  Ist $(a_n)_{n\in\mathbb{N}}$ eine beschränkte, monoton fallende Folge $M:= \{a_n \mid n\in\mathbb{N}\}$, dann $a_n \to^{n\rightarrow \infty} \inf M$ \\
+  Stabilität: Sind $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$ konvergente Folgen mit Grenzwert $a, b$, dann \\
+    $(a_n + b_n)_{n \in\mathbb{N}} \to^{n\rightarrow\infty} a + b$ \\
+    $(a_n \cdot b_n)_{n \in\mathbb{N}} \to^{n\rightarrow\infty} a \cdot b$ \\
+    $\abs{a_n} \to^{n\rightarrow \infty} \abs{a}$ \\
+    $b_n \neq 0 \forall n\in \mathbb{N}, b\neq 0: \frac{a_n}{b_n} \to^{n\rightarrow \infty} \frac{a}{b}$ \\
+    Ist $a = b, (c_n)_{n\in\mathbb{N}}$ Folge mit $a_n \leq c_n \leq b_n \forall n\in\mathbb{N}$, dann \\
+    $c_n \to^{n\rightarrow\infty} a = b$ \\
+  $\exists \gamma \in (0,1):\abs{b_{n + 1}} \leq \gamma \abs{b_n} \forall n\in\mathbb{N} \implies  b_n \to^{n\rightarrow \infty} 0$ \\
+  $\frac{1}{n}, \frac{1}{n^2},\frac{1}{n^3},\dots \to^{n\rightarrow \infty} 0$ \\
+  geometrische Folge, $\abs{q} < 1$ \\
+  $a_n = c q^n \to^{n\rightarrow \infty} 0$ \\
+  $\displayed{\sum_{k = 0}^n cq^k = c\frac{1 - q^{n + 1}}{1 - q} \to^{n\rightarrow \infty} \frac{1}{1 - q}}$ \\
+  $\displayed{(1 + \frac{1}{n})^n \to^{n\rightarrow \infty} e}\quad\displayed{(1 - \frac{1}{n})^n \to^{n\rightarrow \infty} \frac{1}{e}}$ \\
+  $\displayed{\abs{x} > 1: \frac{x^n}{n!} \to^{n\rightarrow \infty} 0}\quad\displayed{\frac{n!}{n^n} \to^{n\rightarrow \infty} 0}$ \\
+  Bolzano-Weierstraß: Sei $A\subseteq \mathbb{R}$, dann sind folgende Aussagen äquivalent: \\
+  $A$ ist beschränkt und abgeschlosen. \\
+  jede Folge in $A$ hat einen Häufungswert in $A$. \\
+  jede Fogle in $A$ hat eine konvergente Teilfolge mit Grenzwert $A$. \\
+  Jede Folge hat eine monotone Teilfolge. \\
+  $(a_n)_{n\in\mathbb{N}} \to$ Reihe $\displayed{\sum_{n = 1}^\infty a_n}$ \\
+  Folge der Partialsummen $\displayed{S_n = \sum_{k = 1}^n a_k}$ \\
+  Konvergenzkriterien: \\
+  Notwendig: $(a_n)_{n\in\mathbb{N}}$ Nullfolge \\
+  Cauchy: $\forall\eps > 0\exists N_\eps \in \mathbb{N}: \forall n > m \geq N_\eps$: \\
+  $\displayed{\abs{\sum_{k = m + 1}^n a_n} < \eps}$ \\
+  Leibnitz: $(a_n)_{n\in\mathbb{N}}$ alternierend und $\abs{a_n}$ ist monoton fallend und $a_n \to^{n\rightarrow \infty} 0$. Außerdem $\displayed{\abs{\sum_{k = m}^\infty a_n} \leq \abs{a_m} \forall m\in\mathbb{N}}$ \\
+  Absolute Konvergenz: $\sum_{k = 1}^\infty \abs{a_n} \implies \sum_{k = 1}^{\infty} a_k$ konvergent \\
+  Majorante: Ist $\displayed{\sum_{n = 1}^\infty b_n}$ (absolut) konvergent und gilt $\abs{a_k} \leq b_k$ für fast alle $k \implies \displayed{\sum_{k = 1}^\infty a_k}$ absolut konvergent. \\
+  Minorante: Ist $\displayed{\sum_{n = 1}^\infty b_n}$ divergent und gilt $b_k \leq \abs{a_k}$ für fast alle $k \implies \displayed{\sum_{k = 1}^\infty a_k}$ divergent. \\
+  Wurzelkriterum: wenn es $q \in (0,1)$ mit $\root{k}{\abs{a_k}} \leq q < 1 \forall k \implies$ absolute Konvergenz $\sum a_k$ (alternativ: $\limsup \root{k}{\abs{a_k}} < 1$ Konvergenz, $\limsup \root{k}{\abs{a_k}} > 1 \implies$ Divergenz) \\
+  Quotientenkriterium: wenn es $g\in (0,1)$ gibt mit $\abs{\frac{a_{n +1}}{a_k}} \leq q < 1 \implies$ absolute Konvergenz $\sum a_k$ (alternativ: $\limsup \abs{\frac{a_{k - 1}}{a_k}} < 1$) \\
+  Cauchy'scher Verdichtungssatz: Reihe $\sum a_k, a_k \geq 0, a_k \to^{k\rightarrow \infty} 0$, dann gilt \\
+  $\displayed{\sum a_k} \iff \sum 2^k a_{2^k}$ \\
+  Teleskopreihe $(a_n)_{n\in\mathbb{N}}$ Nullfolge $\implies$ \\
+  $\displayed{\sum_{k = 1}^\infty (a_k - a_{k + 1}) = a_1}$ \\
+  oder auch \\
+  $\displayed{a_n \to^{n\rightarrow \infty} a_1 - S \iff \sum_{k = 1}^\infty(a_k - a_{k - 1}) = S}$ \\
+  Umordnungsatz: Ist $\sum a_n$ absolut konvergent, dann gilt $\forall \tau:\mathbb{N} \to\mathbb{N}$ (bijektiv) ist auch $\sum a_{\tau(n)}$ absolut konvergent mit dem gleichen Grenzwert. \\
+  Potenzreihen: $\displayed{\sum_{k = 0}^\infty a_k(x - x_0)^k}$ Koeffizienten $a_k \in \mathbb{C}$. Entwicklungspunkt $x_0$. \\
+  Potenzreiehn konvergieren absolut $\forall x \in \mathbb{C}$ mit \\
+  $\displayed{\abs{x - x_0} < \rho := \frac{1}{\limsup_{k\rightarrow \infty} \root{k}{\abs{a_k}}}}$ \\
+  (mit der Konvention $\frac{1}{\infty} = 0, \frac{1}{0} = \infty$) \\
+  $\rho$ heißt Konvergenzradius.
+  \section{Stetige Funktionen}
+  $f: D\to\mathbb{R}$ heißt stetig in $x_0 \in D$ wenn für alle Folgen in $D$ mit $x_n \to^{x\rightarrow \infty} x_0$ gilt \\
+  $f(x_n) \to^{n\rightarrow \infty} f(x_0)$ \\
+  $f$ heißt stetig auf $D$, wenn $f$ in allen Punkten von $D$ stetig ist. \\
+  $f:D\to\mathbb{R}$ hat in $x_0 \in \bar D$ einen Grenzwert, wenn für alle Folgen in $D$ mit $x_n \to^{x\rightarrow \infty} x_0$ gilt \\
+  $f(x_n) \to^{n\rightarrow \infty} a$, schreibe $\displayed{\lim_{x\to x_0} f(x) = a}$ \\
+  einseitiger Grenzwert: \\
+  $\displayed{\lim_{x\downarrow x_0^+} f(x) := \lim_{x\to x_0}f\mid_{\{x > x_0\}}(x)}$ \\
+  $\displayed{\lim_{x\uparrow x_0^-} f(x) := \lim_{x\to x_0}f\mid_{\{x < x_0\}}(x)}$ \\
+  Asymptotik: $f:D \to \mathbb{R}, D$ unbeschränkt. \\
+  $f$ hat Grenzwert $a$ in $\infty$, wenn \\
+  $\displayed{\forall\eps > 0 \exists c\in\mathbb{R}: \abs{f(x) - a} < \eps \forall x > c}$ \\
+  $f(x) \to^{x\rightarrow x_0} \pm \infty$, wenn $\forall c \in \mathbb{R}_+ \exists \delta >0: f(x) > c, < -c \forall x\in (x_0 - \delta, x_0 + \delta) \cap (D\setminus \{x_0\})$ \\
+  Stetigkeit ist stabil gegenüber punktweisen Summen, Produkt, Quotient $(\neq 0)$ und Komposition, das heißt \\
+  $f, g$ stetig $\implies f + g, f\cdot g, \frac{f}{g}(g\neq 0), g\circ f$ stetig. $(f + g)(x) = f(x) + g(x), (f\cdot g)(x) = f(x)\cdot g(x)$. \\
+  $\eps$-$\delta$-Kriterium: $f: D \to \mathbb{R}$ ist stetig in $x_0 \in D$, $\iff \forall \eps > 0 \exists \delta_{\eps,x_0} > 0: \forall x\in D$: \\
+  $\abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \eps$ \\
+  gleichmäßige Stetigkeit: Eine stetige Funktion $f$ heißt gleichmäßig stetig, wenn $\forall \eps > 0 \exists \delta_\eps >0 : \forall x, y \in D:$ \\
+  $\abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \eps$ \\
+  Lipschitz-Stetigkeit: $f:D\to\mathbb{R}$ heißt Lipschitzstetig, wenn es $L > 0$, sodass $\forall x, y\in D$ gilt \\
+  $\abs{f(x) - f(y)} \leq L\abs{x - y}$ \\
+  Lipschitz-stetig $\implies$ gleichmäßig stetig $\implies$ stetig. \\
+  Satz von der gleichmäßigen Stetigkeit: \\
+  $f:[a,b] \to\mathbb{R}$ stetig $\implies f$ ist gleichmäßig stetig auf $[a,b]$
+  Abbildungseigenschaften stetiger Funktionen: \\
+  Satz vom Extremum: Sei $f: D\to\mathbb{R}$ stetig, $D$ beschränkt und abgeschlossen. Dann existeren $x_{\min}, x_{\max}$, sodass \\
+  $\displayed{\sup_{x\in D} f(x) = f(x_{\max})} \quad \displayed{\inf_{x\in D} f(x) = f(x_{\min})}$ \\
+  Zwischenwertsatz: Sei $f:[a,b] \to\mathbb{R}$ stetig, dann gibt es zu $y \in [f(a), f(b)]$ ein
+  $\xi \in (a,b)$, sodass $f(\xi) = y$ (stärker: $\forall y \in [\min f, \max f])$ \\
+  Monotonie: $f:(a,b) \to\mathbb{R}$ stetig ist genau dann injektiv, wenn sie streng monoton ist. \\
+  Funktionsfolgen: $n\in \mathbb{N}, f_n: D\to\mathbb{N}$ \\
+  $(f_n)_{n\in\mathbb{N}}$ konvergiert punktweise, wenn für alle $x\in D$ die Zahlenfolge $(f_n(x))_n\in\mathbb{N}$ konvergiert gegen Grenzfunktion $f: f_n(x) \to^{n\rightarrow \infty} f(x)$.
+  (sprich: $\forall \eps > 0\exists N_{\eps,x} \in \mathbb{N}: \abs{f_n(x) - f(x)} < \eps \forall n\geq N_{eps,x}$) \\
+  gleichmäßige Konvergenz: $(f_n)_{n\in\mathbb{N}}$ heißt gleichmäßig konvergent auf $D$ gegen die Grenzfunktion $f$, wenn $\forall \eps > 0$ \\
+  $\exists N_\eps \in \mathbb{N}: \abs{f_n(x) - f(x)} < \eps \forall n\geq N_\eps \forall x\in D$
+  $f_n: D\to\mathbb{R}$ stetig und $(f_n)_{n\in\mathbb{N}}$ konvergiert gleichmäßig gegen $f$, dann ist auch $f$ stetig. \\
+  Funktionenräume: $\mathcal{C}([a,b]) := \{f:[a, b] \to \mathbb{R} \mid f\text{ stetig}\}$ \\
+  $\mathbb{R}$-Vektorraum (in der Regel unendlich dimensional) \\
+  $\norm{\cdot}_\infty: \mathcal{C}([a,b]) \to \mathbb{R}_+, f\mapsto \max_{x\in [a,b]}\abs{f(x)}$ \\
+  Norm, normierer Raum $(\mathcal{C}([a,b]), \norm{\cdot}_\infty)$ \\
+  $\forall x, y \in V, \lambda \in \mathbb{R}$: \\
+  $\norm{x} \geq 0, \norm{x} = 0\iff x = 0, \norm{\lambda x} = \abs{\lambda} \norm{x}, \norm{x + y} \leq \norm{x} + \norm{y}$ \\
+  Konvergenzbegriff in Norm: $f_n \to f$ bezüglich $\norm{\cdot}_\infty \iff \forall \eps > 0 \exists N\in \mathbb{N}: \norm{f_n - f}_\infty < \eps \forall n \geq N$
+  Satz von Arzela-Ascoli: $(f_n)_{n\in\mathbb{N}} \subseteq \mathcal{C}([a,b])$ Folge von gleichmäßig beschränkten (das heißt $\sup_{n\in\mathbb{N}} \norm{f_n}_\infty < \infty$) und
+  gleichgradig stetig (das heißt $\forall \eps > 0, \exists \delta > 0 \forall n\in\mathbb{N}: \sup_{\abs{x - y} < \delta} \abs{f_n(x) - f_n(y)} < \eps$)
+  dann gibt es eine konvergente Teilfolge mit Grenzwert in $\mathcal{C}([a,b])$ bezüglich $\norm{\cdot}_\infty$
+  \section{Differentialrechnung}
+  $f:D\to\mathbb{R}, x_0 \in D$, definiere \\
+  $\displayed{D_h f(x_0) = \frac{f(x_0 + h) - f(x_0)}{h}}$ \\
+  $f$ heißt differenzierbar in $x_0$, wenn für jede Nullfolge $(h_n)_{n\in\mathbb{N}}$ die Folge der Differenzenquotienten $(D_{h_n} f(x_0))_{n\in\mathbb{N}}$ konvergiert.
+  Der Grenzwert $\displayed{\lim_{n\to\infty} D_{h_n} f(x_0)}$ heißt Ableitung von $f$ im Punkt $x_0, f'(x_0)$. \\
+  Alternativ: $\exists L:\mathbb{R} \to \mathbb{R}: f(x) = f(x_0) + L(x - x_0) + r(x - x_0)$ mit $\frac{r(x - x_0)}{x - x_0} \to^{x\rightarrow x_0} 0, f'(x_0) = L$ \\
+  $f$ differenzierbar in $x_0 \implies f$ stetig in $x_0$. \\
+  $f$ ist differenzierbar auf $D$, wenn $f$ in jedem Punkt differenzierbar ist. \\
+  Fasse $f'$ als Funktion $f': D\to\mathbb{R}, x\mapsto f'(x)$ \\
+  $f$ heißt stetig differenzierbar, wenn $f'$ stetig ist. \\
+  $n$-te Ableitung: $f^{(n)}(x_0) = (f^{(n - 1)})' (x_0), f^{(0)} = f$. \\
+  $f$ heißt glatt, wenn $f^{(n)}$ für alle $n\in\mathbb{N}$ existiert. \\
+  Stabilität: $f,g: D\to\mathbb{R}, x_0 \in D$ \\
+  Linearität: $(\alpha f + \beta g)'(x_0) = \alpha f'(x_0) + \beta g'(x_0) \forall \alpha, \beta \in \mathbb{R}$ \\
+  Produktregel: $(f\cdot g)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)$ \\
+  hat $g$ keine Nullstelle, so gilt: \\
+  Quotientenregel: $(\frac{f}{g})'(x_0) = \frac{f'(x_0)g(x_0) - f(x_0)g'(x_0)}{g^2(x_0)}$ \\
+  Kettenregel: $f: D\to D', g: D'\to \mathbb{R}$ beide differenzierbar in $x_0\in D, f(x_0) \in D'$.
+  dann ist $(g\circ f)'(x_0) = g'(f(x_0))f'(x_0)$ \
+  Satz von der inversen Funktion: $f: D\to\mathbb{R}$ stetig, injektiv, $D$ abgeschlossen, $f$ differenzierbar in $x_0 \in D, f: D\to f(D)$ bijektiv $\implies \exists f^{-1}:f(D) \to D$ und es gilt
+  $(f^{-1})'(f(x_0)) = \frac{1}{f'(x_0)}$ \\
+  Extremwertheorie: $f:D\to\mathbb{R}$ hat in $x_0 \in D$ ein globales Extremum wenn gilt: \\
+  $f(x_0) \geq f(x) \forall x \in D$ (Maximum) \\
+  $f(x_0) \leq f(x) \forall x \in D$ (Minimum) \\
+  $f$ hat ein lokales Extremum, wenn obige Bedingungen auf einer $\delta$-Umgebung von $x_0$ zutreffen. \\
+  Satz von Extremum: (notwendige Bedingung) $f:(a,b) \to \mathbb{R}$ differenzierbar hat lokales Extremum in $x_0 \in (a,b)$, dann gilt $f'(x_0) = 0$ \\
+  1. Mittelwertsatz: Ist $f:D\to\mathbb{R}$ stetig und differenzierbar in $(a,b)$, dann gibt es $x\in (a,b)$, sodass \\
+  $\displayed{f'(\xi) = \frac{f(b) - f(a)}{b - a}}$ \\
+  Hinreichende Bedingung: Sei $f:(a,b) \to \mathbb{R}$ zweimal differenzierbar mit $f'(x_0) = 0$ und $f''(x_0) \neq 0$, dann folgt $f$ hat in $x_0$ ein lokales Extremum.
+  (Maximum für $<$, Minimum für $>$) \\
+  Taylorentwicklung: $f:(a,b) \to \mathbb{R}$ $n$-mal stetig differenzierbar \\
+  $\displayed{t_n(x_0, x) := \sum_{k = 0}^n \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k}$ \\
+  $n$-te Taylorpolynom mit Entwicklungsstelle $x_0$. \\
+  $f$ $(n + 1)$-mal stetig differenzierbar, dann gibt es zu jedem $x\in (a,b)$ ein $\xi$ zwischen $x_0$ und $x$, sodass \\
+  $\displayed{f(x) - t_n(x_0, x) = R_n(x) = \frac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}}$ \\
+  $f$ glatt $\implies$ \\
+  $\displayed{t_\infty(x_0, x) = \sum_{k = 0}^\infty \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k}$ \\
+%  $\rho$ Konvergenzradius: \\
+  $f$ ist analytisch in $x_0$, wenn es in $(x_0 - \rho, x_0 + \rho)$ eine Umgebung gibt, sodass $f(x) = t_\infty(x_0, x)$
+  Regel von L'Hospital: $f, g:(a,b)\to\mathbb{R}$ sodass $g'(x) \neq 0$ und der Grenzwert $\frac{f'(x)}{g'(x)} \to^{x\rightarrow a} c \in \mathbb{R}$, dann gilt: \\
+  $\displayed{\lim_{x\to a} f(x) = \lim_{x\to a} g(x) \in \{-\infty, 0, \infty\} \implies\lim_{x\to a}\frac{f(x)}{g(x)} = c}$
+  Differentation und Limes: $(f_n)_{n\in\mathbb{N}}$ Folge stetig differenzierbarer Funktionen auf beschränkten Intervallen mit punktweisen Grenzwert $f_n (x) \to^{n\rightarrow\infty} f(x)$ und gilt $f_n' \to^{n\rightarrow\infty} f^\ast$ gleichmäßig, dann gilt $f$ ist differenzierbar mit $f'(x) = f^\ast(x)$
+  \section{Integration}
+  Zerlegung: $[a,b], Z := \{x_0, \dots, x_n\}, x_0 = a, x_n = b, x_0 < x_1 < \dots < x_n$. \\
+  Feinheit: $h := \max_{k = 1,\dots, n}\abs{x_k - x_{k - 1}}$ \\
+  Zerlegung äquidistant $:\iff h$ konstant in $k$. \\
+  $f:[a,b] \to \mathbb{R}, Z$ Zerlegung, $I_k = [x_{k - 1}, x_k]$ \\
+  Obersumme: $\displayed{\bar S_z f(x) := \sum_{k = 1}^\infty \sup_{x\in I_k} f(x)(x_k - x_{k - 1})}$ \\
+  Untersumme: $\displayed{\ubar S_z f(x) := \sum_{k = 1}^\infty \inf_{x\in I_k} f(x)(x_k - x_{k - 1})}$ \\
+  Oberintegral: $\displayed{\overline{\int_a^b}f(x) \d x := \inf_{Z\in\mathcal{Z}(a,b)} \bar S_Z f(x)}$ \\
+  Unterintegral: $\displayed{\underline{\int_a^b}f(x) \d x := \sup_{Z\in\mathcal{Z}(a,b)} \ubar S_Z f(x)}$ \\
+  $\displayed{\underline{\int_a^b}f(x)\d x \leq \overline{\int_a^b}f(x)\d x}$ \\
+  $f$ heißt Riemann-integrierbar, wenn \\
+  $\displayed{\underline{\int_a^b}f(x)\d x = \overline{\int_a^b}f(x)\d x}$ \\
+  $\iff \forall \eps > 0 \exists Z\in\mathcal{Z}(a,b)\abs{\bar S_z f(x) - \ubar S_z} < \eps$ \\
+  Riemannsche Summe: $f:[a, b] \to \mathbb{R}, Z$ Zerlegung, $\xi_k \in I_k$ \\
+  $\displayed{\RS_Z(f) = \sum_{k = 1}^n f(\xi_k)(x_k - x_{k - 1})}$ \\
+  Sei $f$ beschränkt. $f$ ist Riemann-integrierbar $\iff \forall (Z_n)_{n\in\mathbb{N}} \in \mathcal{Z}(a,b)$ mit
+  $h_n \to 0$ die zugehörigen Riemannschen Summen konvergieren und den gleichen Grenzwert haben. \\
+  stetige Funktionen sind integrierbar. \\
+  monotone Funktionen sind integrierbar. \\
+  $f:[a,b] \to \mathbb{R}$ integrierbar, dann auch für jedes $[c,d]\subseteq [a,b]$ und es gilt
+  für $c\in[a,b]$: \\
+  $\displayed{\int_a^c f(x) \d x + \int_c^b f(x) \d x = \int_a^b f(x)\d x}$ \\
+  Ferner ist das Integral linear, das heißt $\forall \alpha,\beta \in \mathbb{R}$: \\
+  $\displayed{\int_a^b (\alpha f + \beta g)\d x = \alpha \int_a^b f(x)\d x + \beta \int_a^b g(x)\d x}$ \\
+  Monoton: $g(x) \geq f(x) \forall x\in[a,b] \implies$: \\
+  $\displayed{\int_a^b g(x) \d x \geq \int_a^b f(x) \d x}$ \\
+  Standardabschätzung: $m \leq f(x) \leq M \forall x\in[a,b] \implies$: \\
+  $\displayed{m(b  a)  \leq \int_a^b f(x) \d x \leq M(b - a)}$ \\
+  Definitheit: $f(x) \geq 0 \forall x\in [a,b], \int_a^b f(x)\d x = 0 \implies f(x) = 0$ \\
+  Mittelwertsatz: $f:[a,b] \to\mathbb{R}$ stetig, $g:[a,b] \to\mathbb{R}$ integrierbar ohne Vorraussetzungen, dann gibt es $\xi\in [a,b]$ mit \\
+  $\displayed{\int_a^b f(x)g(x) \d x = f(\xi)\int_a^b g(x)\d x}$
+  Stammfunktion: $F, f:[a,b] \to\mathbb{R}, F$ differenzierbar heißt Stammfunktion vin $f$, wenn gilt: $F' = f$. \\
+  Fundamentalsatz der Analysis: $f:[a,b] \to\mathbb{R}$ stetig $\implies$: \\
+  $\displayed{F(x) = \int_a^x f(x) \d x}$ ist eine Stammfunktion von $f$. \\
+  Ist $F$ Stammfunktion von $f$, dann gilt: \\
+  $\displayed{\int_a^b f(x) \d x = [F(x)]_a^b = F(b) - F(a)}$ \\
+  Partielle Integration: $f,g:[a,b] \to \mathbb{R}$ stetig differenzierbar, dann gilt: \\
+  $\displayed{\int_a^b f(x) g'(x)\d x = [f(x) g(x)]_a^b - \int_a^b f'(x)g(x) \d x}$ \\
+  Substitution: $\phi:[c,d] \to [a,b]$ stetig differenzierbar, dann gilt: \\
+  $\displayed{\int_a^b f(\phi(x)) \phi'(x)\d x = \int_{\phi(a)}^{\phi(b)} f(x) \d x}$
+\end{multicols*}
+\end{document}

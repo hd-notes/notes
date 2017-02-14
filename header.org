@@ -4,6 +4,7 @@
 #+LANGUAGE: de
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper]
+#+LATEX_COMPILER: xelatex
 #+LATEX_HEADER: \usepackage{amsmath}
 #+LATEX_HEADER: \usepackage{mathtools}
 #+LATEX_HEADER: \usepackage{mathspec}
