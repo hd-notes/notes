@@ -94,13 +94,13 @@
    \[\text{Multiplikation}: \mathbb{R}\times V \rightarrow V\]
    $V\times V$ - Produktmenge $\equiv$ Menge aller Paare
    so dass gilt:
-   \[v + (w + u) = (v + w) + u\quad u,v,w\in V\tag*{Assoziativität}\]
-   \[v+w = w+v\tag*{Kommutativität}\]
-   \[\exists 0 \in V: v + 0 = v \Forall v\in V\tag*{Null}\]
-   \[\alpha(v+w) = \alpha v + \alpha w \tag*{Distributivität}\]
-   \[(\alpha + \beta)v = \alpha v + \beta v \quad \alpha,\beta \in \mathbb{R}\tag*{Distributivität}\]
-   \[\alpha(\beta v) = (\alpha\beta) v\tag*{Assoziativität der Multiplikation}\]
-   \[1 v = v \tag*{Multiplikation mit Eins}\]
+   \[v + (w + u) = (v + w) + u\quad u,v,w\in V\hfill\text{Assoziativität}\]
+   \[v+w = w+v\hfill\text{Kommutativität}\]
+   \[\exists 0 \in V: v + 0 = v \Forall v\in V\hfill\text{Null}\]
+   \[\alpha(v+w) = \alpha v + \alpha w \hfill\text{Distributivität}\]
+   \[(\alpha + \beta)v = \alpha v + \beta v \quad \alpha,\beta \in \mathbb{R}\hfill\text{Distributivität}\]
+   \[\alpha(\beta v) = (\alpha\beta) v\hfill\text{Assoziativität der Multiplikation}\]
+   \[1 v = v \hfill\text{Multiplikation mit Eins}\]
 *** Einfachstes Beispiel
 	$V\equiv \mathbb{R}$ (mit der gewöhnlichen Addition und Multiplikation und mit $0\in\mathbb{R}$ als Vektorraum Null)
 *** Unser Haupt-Beispiel

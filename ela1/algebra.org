@@ -415,7 +415,7 @@
 	&\implies \exists a,b\in\mathbb{N}, 1 < a,b < \cha(R): \cha(R) = a b \\
 	&\implies 0_R = \sum_{k = 1}^{\cha(R)} 1_R = \sum_{k = 1}^a 1_R \cdot \sum_{k = 1}^b 1_R \\
 	&\xRightarrow{R~\text{Integritätsbereich}} \sum_{k = 1}^a 1_R = 0_R \vee \sum_{k = 1}^b = 0_R \\
-	&\implies \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R) \tag*{\qedhere}
+	&\implies \cha(R) \leq a \vee \cha(R)\leq b \lightning~\text{zu}~ a,b < \cha(R)
 	\end{align*}
 	\end{proof}
 	\begin{remark}

@@ -87,8 +87,8 @@
 ** Beweis
    Mathematische Sätze, Bemerkungen, Folgerungen, etc. sind meistens in Form wahrer Implikationen formuliert
 *** beweisen
-	Begründen warum diese Implikation wahr ist
-*** Beweismethoden für diese Implikation $A\implies B$
+	Begründen warum diese Implikation wahr ist \\
+    Beweismethoden für diese Implikation $A\implies B$
 	- direkter Beweis ($A\implies B$)
 	- Beweis durch Kontraposition ($\neq B \implies \neg A$)
 	- Widerspruchsbeweis ($\neg (A\wedge \neg B)$)

@@ -132,7 +132,7 @@
    $\Forall$ Zerlegung $Z\in\mathcal{Z}(a, b)$ mit Feinheit $h$ gilt:
    \[\bar S_Z(f) - \ubar S_Z(f) = \sum_{k = 1}^{n}(f(x_k) - f(x_{k - 1}))(x_k - x_{k - 1}) \leq h(f(b) - f(a))\]
    Für beliebige $\eps > 0 \Exists h_\eps > 0$ sodass für $h\leq h_\eps$ gilt
-   \[\abs{\bar S_Z(f) - \ubar S_Z(f)} < \eps \tag*{\qedhere}\]
+   \[\abs{\bar S_Z(f) - \ubar S_Z(f)} < \eps\]
    #+end_proof
    #+ATTR_LATEX: :options [5.11 Zusammengesetzte Integrale]
    #+begin_thm latex
@@ -164,7 +164,7 @@
 	  \lim_{h\to 0}\RS_{Z^{(2)}}(f) &= \int_{c}^{b}f(x) \d x
 	  \implies \int_{a}^{c}f(x) \d x + \int_{c}^{b}f(x) \d x &= \lim_{h\to 0} \RS_{Z^{(1)}}(f) + \lim_{h\to 0} \RS_{Z^{(2)}}(f) \\
 	  &= \lim_{h\to 0} (\RS_{Z^{(1)}}(f) + \RS_{Z^{(2)}}(f)) = \lim_{h\to 0} \RS_Z(f) \\
-	  &=: \int_{a}^{b}f(x) \d x \tag*{\qedhere}
+	  &=: \int_{a}^{b}f(x) \d x
       \end{align*}
    #+end_proof
    #+ATTR_LATEX: :options [5.12 Linearität des Riemann-Integrals]
@@ -247,7 +247,7 @@
    \[f(x) \geq \delta > 0 \Forall x\in I_\eps\]
    Da jede Zerlegung $Z$ von $i$ mit hinreichend kleiner Feinheit $h$ ein Teilintervall $I_k \subseteq I_\eps$ beinhaltet, gilt für die
    zugehörigen Summen
-   \[0 <  \delta(x_k - x_{k - 1}) \leq \inf_{x\in I_k}f(x)(x_k - x_{k - 1}) \leq \ubar S_Z(f) \leq \int_{a}^{b}f(x) \d x \tag*{\lightning\qedhere}\]
+   \[0 <  \delta(x_k - x_{k - 1}) \leq \inf_{x\in I_k}f(x)(x_k - x_{k - 1}) \leq \ubar S_Z(f) \leq \int_{a}^{b}f(x) \d x \hfill\text{\lightning}\]
    #+end_proof
    #+begin_remark latex
    Wir haben Riemann-Integral definiert für $a < b$. Für $b \geq a$ definieren wir
@@ -323,7 +323,7 @@
    2. Sei $F$ eine Stammfunktion von $f$, das heißt $F'(x) = f(x)$. Mit der Funktion
 	  \[G(x) := \int_{a}^{x}f(y) \d y, G(a) = 0\]
 	  ist $F - G$ konstant (aus 1.). Deshalb
-      \[F(b) - F(a) = G(b) - G(a) = \int_{a}^{b}f(x) \d x \tag{\qedhere}\]
+      \[F(b) - F(a) = G(b) - G(a) = \int_{a}^{b}f(x) \d x\]
    #+end_proof
    #+begin_remark latex
    Integration und Differenzierung sind zueinander inverse Prozesse
@@ -346,7 +346,7 @@
    #+begin_proof latex
    \begin{align*}
    \hspace{0pt}(fg)'(x) &= f'(x)g(x) + f(x)g'(x) \\
-   fg\big|^b &= \int_{b}^{a}f'(x)g(x)\d x + \int_{a}^{b}f(x) g'(x)\d x \tag*{\qedhere}
+   fg\big|^b &= \int_{b}^{a}f'(x)g(x)\d x + \int_{a}^{b}f(x) g'(x)\d x
    \end{align*}
    #+end_proof
    #+ATTR_LATEX: :options [5.23]
@@ -519,7 +519,7 @@
    impliziert $\Forall n \geq n_\eps \in\mathbb{N}$
    \[\abs{\sum_{k = n + 1}^{\infty}c_k(x - x_0)^k} \leq \sum_{k = n + 1}^{\infty} \abs{c_k}R^k < \eps\]
    Ferner,
-   \[\int_{x_0}^{x} \sum_{k = 1}^{\infty}c_k(y - x_0)\d y = \sum_{k = 0}^{\infty} \int_{x_0}^{x}c_k(y - x_0) \d y = \sum_{k = 0}^{\infty}\frac{c_k}{k + 1}(x - x_0)^{k + 1}\tag*{\qedhere}\]
+   \[\int_{x_0}^{x} \sum_{k = 1}^{\infty}c_k(y - x_0)\d y = \sum_{k = 0}^{\infty} \int_{x_0}^{x}c_k(y - x_0) \d y = \sum_{k = 0}^{\infty}\frac{c_k}{k + 1}(x - x_0)^{k + 1}\]
    #+end_proof
    #+begin_remark latex
    Der Satz 5.34 gilt auch für Folgen von uneigentlichen Integralen auf beschränkten Intervallen. Bei uneigentlichen Integralen auf unbeschränkten Gebieten reicht
@@ -565,7 +565,7 @@
 	  Dann überdecken alle Mengen $(I_{kl})^{\infty}$ auch die Vereinigung
 	  \[\bigcup_k M_k\]
 	  und es gilt
-	  \[\sum_{k,l} \abs{I_{kl}} = \sum_k (\sum_l \abs{I_{kl}}) \leq \sum_k \frac{\eps}{2^k} \leq \eps \tag*{\qedhere}\]
+	  \[\sum_{k,l} \abs{I_{kl}} = \sum_k (\sum_l \abs{I_{kl}}) \leq \sum_k \frac{\eps}{2^k} \leq \eps\]
    #+end_proof
    #+ATTR_LATEX: :options [5.40 Satz von Lebesgue]
    #+begin_thm latex

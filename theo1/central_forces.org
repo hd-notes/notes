@@ -111,7 +111,7 @@
    Dieses ist allgemein lösbar mit
    \[\int \d t = \int \frac{\d r}{\sqrt{\frac{2}{m}(E - U(r))}}\]
    Damit $t = t(r)$
-   \[\implies r = r(t) \implies \dot{\phi}(t) \implies \phi(t) \tag{Integrieren}\]
+   \[\implies r = r(t) \implies \dot{\phi}(t) \implies \phi(t) \text{ (Integrieren)}\]
    Explizit lösbar: $V\sim \frac{1}{r}, V\sim r^2$
 ** Qualitative Lösung des Zentralkraftproblems
    \begin{align*}

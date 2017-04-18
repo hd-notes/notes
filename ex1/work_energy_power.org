@@ -11,7 +11,7 @@
 *** Beispiel
 	\[\v{r_1} = \cvec{0; 0; 0},\v{r_2} = \cvec{\Delta x ; 0; 0},\v F = \cvec{m g ; 0; 0},\d \v r = \cvec{\d x; \d y; \d z}\]
 	\[W = \int_{(0)}^{(1)} m g\d x + \int 0\d y + \int 0\d z = m g \Delta x \]
-*** Beispiel Kreisbahn ($\implies$ Gravitation)
+*** Beispiel Kreisbahn ($⇒$ Gravitation)
 	\[W = \int_A^B \v F\d \v r = 0\]
 ** kinetische Energie
    \[k = \frac{1}{2} g t^2\]

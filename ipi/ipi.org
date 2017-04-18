@@ -518,8 +518,8 @@
    \[(1.0 + \eps) \neq 1.0\]
    weil Nachkommastellen außerhalb der Mantisse (rechts von $2^{-m}$) ignoriert werden. $\implies$ Problem der Auslöschung von signifikanten Stellen. Wenn man zwei
    fast gleich große Zahlen subtrahiert, löschen sich fast alle Bits der Mantisse $\implies$ nur wenige gültige Nachkommastellen überleben. Zum Beispiel:
-   \[0.1234567 - 0.1234566 = 0.000001\tag{nur eine gültige Nachkommastelle!}\]
-   \[1.0 - \cos{x}, x \to 0, x\approx 0 \implies \cos{x} \approx 1 \tag*{$\implies$ Auslösung}\]
+   \[0.1234567 - 0.1234566 = 0.000001 \text{( nur eine gültige Nachkommastelle!)}\]
+   \[1.0 - \cos{x}, x \to 0, x\approx 0 \implies \cos{x} \approx 1 \text{ $\implies$ Auslösung}\]
    | x            | Anzahl der gültigen Stellen | Additionstheorem $1 - \cos(x) = 2(\sin(x / 2))^2$ |
    |--------------+-----------------------------+----------------------------------------------------|
    | \SI{0.001}{} | 9                           |                                                 15 |

@@ -12,7 +12,8 @@
 #+LATEX_HEADER: \usepackage{polyglossia}
 #+LATEX_HEADER: \setdefaultlanguage[spelling=new, babelshorthands=true]{german}
 # #+LATEX_HEADER: \usepackage[german]{translator}
-#+LATEX_HEADER: \usepackage{siunitx, stmaryrd, amsthm, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
+#+LATEX_HEADER: \usepackage{unicode-math, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
+#+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
 #+LATEX_HEADER: \usepackage{scrpage2}
@@ -68,6 +69,8 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Rang}{Rang}
 #+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
 #+LATEX_HEADER: \DeclareMathOperator{\RS}{RS}
+#+LATEX_HEADER: \DeclareMathOperator{\GL}{GL}
+#+LATEX_HEADER: \DeclareMathOperator{\Eig}{Eig}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs
@@ -79,7 +82,7 @@
 #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 #+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 #+LATEX_HEADER: \newcommand{\euler}{e}
-#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\ d#2}}
+#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
 #+LATEX_HEADER: \newcommand\ubar[1]{\stackunder[1.2pt]{$#1$}{\rule{.8ex}{.075ex}}}
 # #+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
 #+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
@@ -109,26 +112,23 @@
 #+LATEX_HEADER: \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
 #+LATEX_HEADER: \makeatother
 
-#+LATEX_HEADER: \theoremstyle{definition}
-#+LATEX_HEADER: \newtheorem{defn}{Definition}
 #+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{thm}{Satz}
-#+LATEX_HEADER: \theoremstyle{plain}
-#+LATEX_HEADER: \newtheorem{lemma}{Lemma}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{remark}{Bemerkung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{note}{Anmerkung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{conc}{Folgerung}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{algorithm}{Algorithmus}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{ex}{Beispiel}
-#+LATEX_HEADER: \theoremstyle{remark}
-#+LATEX_HEADER: \newtheorem{korollar}{Korollar}
-#+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
-#+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
+#+LATEX_HEADER: \theorembodyfont{\normalfont}
+#+LATEX_HEADER: \newtheorem{defn}{Definition}[section]
+#+LATEX_HEADER: \newtheorem{thm}[defn]{Satz}
+#+LATEX_HEADER: \newtheorem{lemma}[defn]{Lemma}
+#+LATEX_HEADER: \newtheorem{remark}[defn]{Bemerkung}
+#+LATEX_HEADER: \newtheorem{note}[defn]{Anmerkung}
+#+LATEX_HEADER: \newtheorem{conc}[defn]{Folgerung}
+#+LATEX_HEADER: \newtheorem{algorithm}[defn]{Algorithmus}
+#+LATEX_HEADER: \newtheorem{ex}[defn]{Beispiel}
+#+LATEX_HEADER: \newtheorem{korollar}[defn]{Korollar}
+#+LATEX_HEADER: \theoremstyle{nonumberplain}
+#+LATEX_HEADER:	\theoremsymbol{\ensuremath\square}
+#+LATEX_HEADER:	\qedsymbol{\ensuremath\square}
+#+LATEX_HEADER: \newtheorem{proof}{Beweis}
+# #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
+# #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 
 #+LATEX_HEADER: \usetikzlibrary{arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
 

@@ -85,7 +85,7 @@
   &= f(g(u_1)) + f(g(u_2)) = (f\circ g)(u_1) + (f\circ g)(u_2)
   \intertext{(L2:) Seien $u\in U, \lambda\in K$}
   \implies (f\circ g)(\lambda u) &= f(g(\lambda u)) = f(\lambda g(u)) \\
-  &= \lambda f(g(u)) = \lambda(f\circ g)(u) \tag*{\qedhere}
+  &= \lambda f(g(u)) = \lambda(f\circ g)(u)
   \end{align*}
   #+end_proof
   #+ATTR_LATEX: :options [12.5]

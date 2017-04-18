@@ -44,7 +44,7 @@
    \begin{proof}
    \begin{align*}
    a_n \xrightarrow[k\to\infty]{} a &\implies \Forall \eps > 0 \exists n_\eps \in\mathbb{N} \Forall n\geq n_\eps: \abs{a - a_n} < \frac{\eps}{2} \\
-   &\implies \Forall n,m\in n_\eps: \abs{a_n - a_m} \leq \abs{a_n - a} + \abs{a - a_m} <\frac{\eps}{2} + \frac{\eps}{2} \tag*{\qedhere}
+   &\implies \Forall n,m\in n_\eps: \abs{a_n - a_m} \leq \abs{a_n - a} + \abs{a - a_m} <\frac{\eps}{2} + \frac{\eps}{2}
    \end{align*}
    \end{proof}
    \begin{lemma}
@@ -97,7 +97,7 @@
    und $m_\eps > n_\eps$ mit
    \[\abs{a - a_{m_\eps}} < \frac{\eps}{2}\hfill\text{ (Häufungswert)}\]
    Dann folgt
-   \[\Forall n > m_\eps: \abs{a - a_n} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps} - a_n} < \eps \implies a_n \xrightarrow[n\to\infty]{} a \qedhere\]
+   \[\Forall n > m_\eps: \abs{a - a_n} \leq \abs{a - a_{m_\eps}} + \abs{a_{m_\eps} - a_n} < \eps \implies a_n \xrightarrow[n\to\infty]{} a\]
    \end{proof}
    \begin{thm}
    \label{thm:finite}
@@ -189,7 +189,7 @@
    \intertext{Angenommen $a\not\in A \implies a \in \mathcal{C} A, \mathcal{C} A$ ist offen}
    \implies \exists I_\eps (a) \subseteq \mathcal{C}A \implies I_\eps (a) \cap A = \emptyset \\
    \shortintertext{Nun ist aber mit geeigneten $n_\eps \in\mathbb{N}$}
-   \Forall n\geq n_\eps: a_{n_k} \in I_\eps (a): a_{n_k} \in A \implies a_{n_k} \in I_\eps (a) \cap A~\lightning \tag*{\qedhere}
+   \Forall n\geq n_\eps: a_{n_k} \in I_\eps (a): a_{n_k} \in A \implies a_{n_k} \in I_\eps (a) \cap A~\lightning
    \end{align*}
    #+end_proof
    #+begin_remark latex
@@ -225,7 +225,7 @@
 	  &\implies \lim_{\k\to\infty} a_k \leq \lim_{k\to\infty} b_k
 	  \end{align*}
    2. Wir wählen $a_n = \abs{a_n}$ und müssen noch zeigen
-	  \[\lim_{n\to\infty} \abs{a_n} = \abs{\lim_{n\to\infty}} a_n\tag{Übung}\]
+	  \[\lim_{n\to\infty} \abs{a_n} = \abs{\lim_{n\to\infty}} a_n\text{ (Übung)}\]
    #+end_proof
 ** Geometrische Folge
    Die geometrische Folge ist definiert durch
@@ -244,7 +244,7 @@
    n_0 > \frac{c}{x\eps} - \frac{1}{x} = \frac{c - \eps}{x\eps} \\
    \Forall n\geq n_0: \frac{c}{\eps} = (\frac{c}{x\eps} - \frac{1}{x}x + 1 < n_0 x + 1 \leq n x + 1)
    \intertext{daraus folgt aus der Bernoulli Ungleichung}
-   \frac{c}{\eps} < (1 + x)^n \implies c q^n \to 0 \tag*{\qedhere}
+   \frac{c}{\eps} < (1 + x)^n \implies c q^n \to 0
    \end{align*}
    #+end_proof
    #+ATTR_LATEX: :options [2.17]
@@ -260,7 +260,7 @@
    \implies S_n - \frac{1}{1 - q} = \frac{1 - q^{n + 1} - 1}{1 - q} = -\frac{q^{n + 1}}{1 - q} \\
    \abs{S_n - \frac{1}{1 - q}} = c\abs{q}^n < \eps \Forall n\geq n_\eps \\
    \intertext{$c = \abs*{\frac{1}{1 - q}}$}
-   s_n \to \frac{1}{1 -q} \tag*{\qedhere}
+   s_n \to \frac{1}{1 -q}
    \end{gather*}
    #+end_proof
    #+ATTR_LATEX: :options [2.18]

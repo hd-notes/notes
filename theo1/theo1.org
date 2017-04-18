@@ -1,5 +1,5 @@
 #+AUTHOR: Robin Heinemann
-#+TITLE: Theoretische Physik (Hebecker)
+#+TITLE: Theoretische Physik I (Hebecker)
 
 # Einleitung: \\
 # - Website: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html

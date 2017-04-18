@@ -102,8 +102,8 @@
 	 - $F_R$ ist Materialabhängig
 
 ** Tribologische Reibungslehre
-   \[F_G = \mu_G F_N \tag{$\mu_G=$ Gleitreibungskraft}\]
-   \[F_H = \mu_H F_H \tag{$\mu_H=$ Haftreibungskraft}\]
+   \[F_G = \mu_G F_N \text{ ($\mu_G=$ Gleitreibungskraft)}\]
+   \[F_H = \mu_H F_H \text{ ($\mu_H=$ Haftreibungskraft)}\]
    \[\mu_H > \mu_G\]
 ** Mikroskopisches Modell
    Verantwortlich sind elektrische Kräfte zwischen Atomen und Molekülen der beieinander liegenden Oberflächen: Van-der-Waals-Kräfte

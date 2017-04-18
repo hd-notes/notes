@@ -332,7 +332,7 @@
 	 &\implies \det(A) = 0
 	 \end{align*}
 	 D3: Sei
-	 \[\delta_{ij} = \begin{cases} 1 & i = j \\ 0 & i\neq j\end{cases}\tag{Kronecker-Symbol, dann ist $E_n = (\delta_{ij})$}\]
+	 \[\delta_{ij} = \begin{cases} 1 & i = j \\ 0 & i\neq j\end{cases}\text{ (Kronecker-Symbol, dann ist $E_n = (\delta_{ij})$)}\]
 	 und
 	 \[\delta_{1,\sigma(1)}\cdot\ldots\cdot \delta_{n,\sigma(n)} = \begin{cases}0 & \sigma \neq id \\ 1 & \sigma = \id\end{cases}\implies\det(E_n) = \det((\delta_{ij})) = \sum_{\sigma\in S_n}\sgn(\sigma)\delta_{1\sigma(1)}\cdot \ldots \cdot \delta_{n\sigma(n)} = 1\]
   #+end_proof
@@ -436,9 +436,9 @@
   #+ATTR_LATEX: :options [17.21 Entwicklungssatz von Laplace]
   #+begin_thm latex
   $n\geq 2, A\in M(n\times n, K)$. Dann gilt: Für jede $i \in \{1, \ldots, n\}$ ist
-  \[\det(A) = \sum_{j = 1}^{n} (-1)^{i + j} a_{ij} \det(A_{ij}')\tag{Entwicklung nach der i-ten Zeile}\]
+  \[\det(A) = \sum_{j = 1}^{n} (-1)^{i + j} a_{ij} \det(A_{ij}')\text{ (Entwicklung nach der i-ten Zeile)}\]
   und für jedes $j\in\{1, \ldots, n\}$ ist
-  \[\det(A) = \sum_{i = 1}^{n} (-1)^{i + j} a_{ij} \det(A_{ij}')\tag{Entwicklung nach der j-ten Spalte}\]
+  \[\det(A) = \sum_{i = 1}^{n} (-1)^{i + j} a_{ij} \det(A_{ij}')\text{ (Entwicklung nach der j-ten Spalte)}\]
   #+end_thm
   #+begin_proof latex
   Nach 17.20 ist $A\cdot A^\# = \det(A) = E_n$, insbesondere ist für jedes $i\in \{1, \ldots, n\}$:

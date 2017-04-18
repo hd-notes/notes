@@ -339,7 +339,7 @@
    Es genügt, dass mit $f$ auch $\abs{f}$ (als Komposition stetige Abbildung) stetig ist, denn
    \begin{align*}
    \max(f,g) &= \frac{1}{2}(f + g) + \frac{1}{2}\abs{f - g} \\
-   \min(f,g) &= -\max(-f, -g) \tag*{\qedhere}
+   \min(f,g) &= -\max(-f, -g)
    \end{align*}
    #+end_proof
    Wir betrachten jetzt $C(\underbrace{[a,b]}_{\mathbb{K}})$ und definieren

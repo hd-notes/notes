@@ -1,5 +1,5 @@
 #+AUTHOR: Robin Heinemann
-#+TITLE: Lineare Algebra (Vogel)
+#+TITLE: Lineare Algebra I (Vogel)
 
 #+INCLUDE: "../header.org" :minlevel 1
 

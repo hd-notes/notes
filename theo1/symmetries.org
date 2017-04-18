@@ -142,7 +142,7 @@
    Wir brauchen zusätzlich:
    \[\v x \v y = R(\v x) R(\v y), R(x)^i = R^{ij} \times j\]
    Dazu wichtige Schreibweise
-   \[(M^{T})^{ij} = M^{ji} \tag{T für transponiert}\]
+   \[(M^{T})^{ij} = M^{ji} \text{ (T für transponiert)}\]
    auch: $x = \cvec{x^i ; \ldots ; x^n}, x^{\v i} = (x^1 \ldots x^n)$
    Es gilt: $\v x \v y = x^{T} y = x^i y^i$ \\
    es gilt weiterhin:

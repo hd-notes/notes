@@ -14,7 +14,7 @@
    &= \sum_{\substack{a,b \\ a\neq b}} \v{F_{ab}} \tag{Summe über alle Paare von $a,b$} \\
    &= \sum_{a > b}\v{F_{ab}} + \sum{a < b} \v{F_{ab}} \\
    &= \sum_{a > b}(\v{F_{ab}} + \v{F_{ba}})
-   &\underarrow[=]{3. Newtonsches Axiom} 0 \tag*{\qedhere}
+   &\underarrow[=]{3. Newtonsches Axiom} 0
    \end{align*}
    \end{proof}
 
@@ -46,7 +46,7 @@
    &= \sum_{a > b}(\v x_a \times \v F_{ab} + \v x_b \times \v F_{ba}) \\
    &= \sum_{a > b} (\v x_a - \v x_b)\times \v F_{ab} \\
    \intertext{da $\v F_{ab} \parallel (\v x_a - \v x_b)$ per Annahme} \\
-   &= 0 \tag*{\qedhere}
+   &= 0
    \end{align*}
    \end{proof}
    Bei externen Kräften:
@@ -62,7 +62,7 @@
    $\v L \equiv \v x\times \v p$ (allgemeiner jedes Kreuzprodukt von Vektoren) \\
    ist ein \textbf{Axial-} oder \textbf{Pseudovektor}, das heißt: Bei Drehungen wie Vektor, Bei Reflexion am Ursprung kein Vorzeichenänderung
    \begin{proof}
-   \[\v a \to -\v a, \v b \to -\v b \implies \v a \times \v b \to + \v a \times \v b \qedhere\]
+   \[\v a \to -\v a, \v b \to -\v b \implies \v a \times \v b \to + \v a \times \v b\]
    \end{proof}
    \end{remark}
 ** Konservative Kräfte und Energieerhaltung

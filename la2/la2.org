@@ -1,0 +1,108 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Lineare Algebra II (Vogel)
+
+#+INCLUDE: "../header.org" :minlevel 1
+#+LATEX_HEADER:	\setcounter{section}{17}
+
+* Eigenwerte
+ In diesem Abschnitt sei $n ∈ ℕ$, $V$ ein K-VR und $φ ∈ \End_K(V)$. \\
+ Frage: $V$ endlichdim. Existiet eine Basis $\mathcal{B} = (v_1, \dots, v_n)$ von $V$, sodass $M_{\mathcal{B}}(φ)$ eine
+ Diagonalmatrix ist, das heißt
+ \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\]
+ mit $λ_1, \dots, λ_n ∈ K$? \\
+ Für $i = 1, \dots, n$ wäre dann $φ(v_i) = λ_i v_i$
+ #+begin_defn latex
+ $λ ∈ K, v ∈ V$ \\
+ - $λ$ heißt Eigenwert von $φ \xLeftrightarrow{\text{Def}} ∃ v ∈ V, v \neq 0: φ(v) = λ v$
+ - $v$ heißt Eigenvektor zum Eigenwert $λ \xLeftrightarrow{\text{Def}} v\neq 0 \wedge φ(v) = λ v$
+ - $φ$ heißt diagonalisierbar $\xLeftrightarrow{\text{Def}} V$ besitzt eine Basis aus EV von $φ$
+ (Falls $V$ endlichdimensional, ist die äquivalent zu: Es gibt eine Basis $\mathcal{B}$ von $V$ und $λ_1, \dots, λ_n ∈ K$ mit \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\])
+ Eigenwerte, Eigenvektoren, Diagonalisiebarkeit einer Matrix $A ∈ M(n\times n, K)$ sind über den Endomorphismus $\tilde A:K^n \to K^n$ definiet.
+ #+end_defn
+ #+begin_remark latex
+ $A ∈ M(n\times n, K)$. Dann sind äquivalent:
+ 1. $A$ ist diagonalisiebar.
+ 2. Es gibt eine Basis von $K^n$ aus Eigenvektoren von $A$
+ 3. Es gibt ein $S ∈ \GL(n, K), λ_1, \dots, λ_n ∈ K$ mit $S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}$
+ 4.	$A$ ist ähnlich zu einer Diagonalmatrix
+ In diesem Fall steht in den Spalten von $S^{-1}$ eine Basis des $K^n$ aus EU von $A$, und für jede Matrix $A∈ M(n\times n, K)$ mit der Eigenschaft, dass die Spalten von $S^{-1}$ eine Basis des
+ $K^n$ aus EV von $A$ bilden, dann ist $S A S^{-1}$ eine Diagonalmatrix (mit den EW auf der Diagonalen.)
+ #+end_remark
+ #+begin_proof latex
+ Äquivalenz: \\ 1. $\iff$ 2. Definition, 2. $\iff$ 3. aus Basiswechselsatz (16.6), 3. $\iff$ 4. aus Definition Ähnlichkeit (16.12) \\
+ Zusatz: Sei $S ∈ \GL(n, K)$ mit $S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} \implies A(S^{-1} e_j) = S^{-1} \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} e_j$. \\
+ Wegen $S^{-1} ∈ \GL(n, K)$ ist $S^{-1} e_j \neq 0$, das heißt $S^{-1}$ ist EV von $A$ zum EW $λ_j$ \\
+ Wegen $S^{-1} ∈ \GL(n, K)$ ist $(S^{-1} e_1, \dots, S^{-1} e_n)$ eine Basis des $K^n$ aus EV von $A$. \\
+ Sei $S ∈ \GL(n, K)$, das heißt die Spalten von $S^{-1}$ eine Basis des $K^n$ aus EV von $A$ bilden, das heißt für alle $j ∈ \{1, \dots, n\}$ ist $A S^{-1} e_j = λ_j S^{-1} e_j$ für ein $λ_j ∈ K$.
+ \begin{align*}
+ &\implies A S^{-1} e_j = S^{-1} λ_j e_j = S^{-1} \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} e_j \implies S A S^{-1} e_j =  \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} e_j, j = 1, \dots, n \\
+ &\implies S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}
+ \end{align*}
+ #+end_proof
+ #+begin_ex latex
+ $K = ℝ, V = ℝ^2$
+ 1. $φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \cvec{x_2; x_1} = \begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix} \cvec{x_1; x_2}$
+	Es ist $φ(\cvec{1 ; 1}) = \cvec{1; 1} = 1 \cdot \cvec{1; 1}$, das heißt $\cvec{1; 1}$ ist EV von $φ$ zum EW $1$. \\
+	$φ(\cvec{1; -1}) = \cvec{-1; 1} = (-1) \cvec{1; -1}$, also ist $\cvec{1; -1}$ EV von $φ$ zum EW $-1$.
+	Somit: $(\cvec{1; 1}, \cvec{1; -1})$ ist eine Basis des $ℝ^2$ aus EV von $φ$, das heißt $φ$ ist diagonalisierbar. \\
+	In Termen von Matrizen: $A = \begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix} ∈ M(2\times 2, ℝ)$ ist diagonalisiebar, und mit $S = \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}$ ist dann ist $S A S^{-1} = \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}$
+	Achtung: Das $φ$ diagonalisiebar ist, heißt nicht, dass jeder Vektor aus $V = ℝ^2$ ein EV von $φ$ ist, zum Beispiel ist $φ(\cvec{1; 2}) = \cvec{2; 1} \neq λ \cvec{1; 2} ∀ λ ∈ ℝ$.
+ 2.	$φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \begin{pmatrix} 0 & -1 \\ 1 & 0\end{pmatrix}\cvec{x_1; x_2} = \cvec{-x_2; x_1}$ (= Drehung um $\frac{π}{2}$).
+	hat keinen EW. Beweig dafür: später.
+ #+end_ex
+ Ziel: Suche Kriterien für Diagonalisiebarkeit.
+ #+begin_remark latex
+ $v_1, \dots, v_m$ EV von $φ$ zu paarweise verschiedenen EW $λ_1, \dots, λ_m ∈ K$.
+ Dann ist $(v_1, \dots, v_m)$ linear unabhängig, insbesondere ist $m \leq \dim V$.
+ Insbesondere gilt: ist $V$ endlichdimesional, dann hat $φ$ höchstens $\dim(v)$ Eigenwerte.
+ #+end_remark
+ #+begin_proof latex
+ per Induktion nach $m$: \\
+ IA: $m = 1: v_1 \neq 0$, da $v_1$ EV $\implies (v_1)$ linear unabhängig. \\
+ IS: sei $m \geq 2$, und die Aussage für $m - 1$ bewiesen. \\
+ Seien $α_1, \dots, α_m ∈ K$ mit $α_1 λ_1 v_1 + \dots + α_m λ_m v_m = 0$
+ Außerdem: $α_1 λ_1 v_1 + \dots + α_m λ_1 v_m = 0$
+ \begin{align*}
+ \implies α_2(λ_2 - λ_1) v_2 + \dots + α_m(λ_m - λ_1) v_m = 0 \\
+ α_2{λ_2 - λ_1} = \dots = α_m(λ_m - λ_1) = 0 \\
+ \implies α_2 = \dots = α_m = 0 \\
+ \implies α_1 v_1 = 0 \implies α_1 = 0 \implies (v_1, \dots, v_w) \text{ linear unabhängig}
+ \end{align*}
+ #+end_proof
+ #+begin_conc latex
+ $V$ endlichdemensional, $φ$ hage $n$ paarweise verschiedene EW, wobei $n = \dim V$
+ Dann ist $φ$ diagonalisiebar.
+ #+end_conc
+ #+begin_proof latex
+ Für $i = 1, \dots, n$ sei $v_i$ ein EV von $φ$ zum EW $λ_i \implies (v_1, \dots, v_n)$ linear unabhängig, wegen $n = \dim V$ ist $(v_1, \dots, v_n)$ eine Basis von $V$ aus EV von $φ$
+ #+end_proof
+ #+begin_defn latex
+ $λ ∈ K$ \\
+ $\Eig(φ, λ) := \{v ∈ V \mid φ(v) = λ v\}$ heißt der Eigenraum von $φ$ bezüglich $λ$. \\
+ $μ_{geo}(φ, λ) := \dim \Eig(φ, λ)$ heißt die geometrische Vielfachheit von $λ$. \\
+ Für $A ∈ M(n\times n, K)$ setzen vir $\Eig(A, λ) := \Eig(\tilde A, λ), μ_{geo}(A, λ) := μ_{geo}(\tilde A, λ)$.
+ #+end_defn
+ #+begin_remark latex
+ $λ ∈ K$. Dann gilt:
+ 1. $\Eig(φ, λ)$ ist ein UVR von $V$.
+ 2. $λ$ ist EW von $φ \iff \Eig(φ, λ) \neq \{0\}$.
+ 3. $\Eig(φ, λ) \setminus \{0 \}$ ist die Menge der zu $λ$ gehörenden EV von $φ$.
+ 4. $\Eig(φ, λ) = \ker(λ \id_V - φ)$, insbesondere ist $\Eig(A, λ) = \ker(λ E_m - φ) = \Lös(λ E_n - A, 0)$ für $A ∈ M(n × n, K)$
+ 6. Sind $λ_1, λ_2 ∈ K mit λ_1 \neq λ_2$, dann $\Eig(φ, λ_1) ∩ \Eig(φ, λ_2) = \{0\}$
+ #+end_remark
+ #+begin_proof latex
+ 4. [@4] Es ist $v ∈ \Eig(φ, λ) \iff φ(v) = λ v \iff λ v - φ(v) = 0 \iff (λ \id_V - φ)(v) = 0 \iff v∈\ker(λ \id_V - φ)$
+	Es ist $\Eig(A, λ) = \ker(λ\id_{K^n} - \tilde A) = \ker(\reallywidetilde{λ E_n - A}) = \ker(λ E_n - A) = \Lös(λ E_n - A, 0)$
+ 1. [@1] aus 4.
+ 2. $λ$ EW von $φ ⇔ ∃ v ∈ V, v \neq 0$ mit $φ(v) = λ v ⇔ \Eig(φ, λ) \neq \{0\}$.
+ 3. klar.
+ 5. [@5] Sei $λ_1 \neq λ_2, v ∈ \Eig(φ, λ_1) ∩ \Eig(φ, λ_2) ⇒ λ_1 v = φ(v) = λ_2 v ⇒ \underbrace{(λ_1 - λ_2)}_{\neq 0} v = 0 ⇒ v = 0$
+ #+end_proof
+ #+begin_remark latex
+ $V$ endlichdimesional, $λ ∈ K$. Dann sind äquivalent:
+ 1. $λ$ ist EW von $φ$
+ 2. $\det(λ\id_V - φ) = 0$
+ #+end_remark
+ #+begin_proof latex
+ 1. $⇔ \Eig(φ, λ) \neq \{0\} ⇒ \ker(λ \id_V - φ) \neq \{0\} ⇒ λ\id_V - φ\text{ nicht injektiv }⇒ λ \id_V - φ\text{ kein Isomorphismus }⇒ \det(λ\id_V - φ) = 0$.
+ #+end_proof
