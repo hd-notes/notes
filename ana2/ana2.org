@@ -6,7 +6,7 @@
 * Metrische und normierte Räume
 ** Metrische Räume
    #+begin_defn latex
-   Sei $M$ eine Menge, $d: M×M \to [0, ∞)$ heißt *Metrik* auf $M$ genau dann wenn $∀x, y, z ∈ M$
+   Sei $M$ eine Menge, $d: M×M \to [0, ∞\string)$ heißt *Metrik* auf $M$ genau dann wenn $∀x, y, z ∈ M$
    - (D1) $d(x, y) = 0 ⇔ x = y$ \hfill (Definitheit)
    - (D2) $d(x, y) = d(y, x)$ \hfill (Symmetrie)
    - (D3) $d(x, z) \leq d(x, y) + d(z, y)$ \hfill (Dreiecksungleichung)
@@ -44,3 +44,55 @@
    Sei $(X, d)$ ein metrischer Raum. Eine Folge $(x_n)_{n ∈ ℕ}$ heißt Cauchy-Folge falls $d(x_n, x_m) \to 0$ für $n, m \to ∞$.
    Der metrische Raum heißt *vollständig*, falls jede Cauchy-Folge konvergent ist.
    #+end_defn
+** Normierte Räume
+   #+begin_defn latex
+   Ein normierter Raum $(X, \norm{·})$ ist ein Paar bestehend aus einem $\mathbb{K}$ -Vektorraum X und einer Abbildung $\norm{·}: X \to [0, ∞\string)$ mit
+   1. $\norm{x} = 0 ⇔ x = 0$
+   2. $\norm{λx} = \abs{λ}\norm{x} ∀ λ ∈ \mathbb{K}, x ∈ X$
+   3. $\norm{x + y} \leq \norm{x} + \norm{y} ∀x, y ∈ X$
+   #+end_defn
+   #+begin_remark latex
+   1. Die Norm $\norm{·}$ induziert auf $X$ eine Metrik $d(x, y) = \norm{x - y}$
+   2. Eine Metrik $d$ auf einem Vektorraum definiert die Norm $\norm{d(x, 0)}$ nur dann, wenn
+	  \begin{align*}
+	  ∀ λ ∈ \mathbb{K} ∀ x, y, z ∈ X: d(λ x, λ y) = \abs{λ}d(x, y) \tag{Homagenität} \\
+	  d(x + z, y + z) = d(x, y) \tag{Translationsinvarianz}
+      \end{align*}
+   #+end_remark
+   #+ATTR_LATEX: :options [1.8 Banachraum]
+   #+begin_defn latex
+   Ein normierter Raum $(X, \norm{·})$ heißt vollständig, falls $X$ als metrischer Raum mit der Metrik $d(x, y) = \norm{x - y}$ vollständig ist.
+   Ein solcher vollständiger normierter Raum heißt *Banachraum*
+   #+end_defn
+   #+ATTR_LATEX: :options [1.9]
+   #+begin_ex latex
+   1. $(ℝ^n, \norm{·}_2)$, wobei \[\norm{x}_2 = (\sum_{i = 1}^{n} \abs{x_i}^2)^{\frac{n}{2}}\]
+   2. Sei $K$ eine kompakte Menge:
+	  \[C_{\mathbb{K}} := \{f: K \to \mathbb{K} \mid f \text{ stetig}\}\]
+	  \[\norm{·}_∞ = \max_{λ ∈ K} \abs{f(x)}\]
+	  $(C_{\mathbb{K}(K)}, \norm{·}_∞)$ ist ein Banachraum.
+   #+end_ex
+   #+begin_remark latex
+   1. Sede Cauchy-Folge in $\mathbb{K}^n$ konvergiert, das heißt $(\mathbb{K}^n, \norm{·})$ ist vollständig
+   2. Jede beschränkte Folge in $\mathbb{K}^n$ besitzt eine konvergente Teilfolge. (Bolzano-Weierstraß Satz gilt in $ℝ^n$) (Beweis für $ℝ^n$ zum Beispiel in RR Ana2 Satz 1.1)
+   #+end_remark
+   #+ATTR_LATEX: :options [1.10 (Äquivalenz von Normen)]
+   #+begin_thm latex
+   Auf dem endlich dimesionalen Vektorraum $\mathbb{K}^n$ sind alle Normen *äquivalent* zur Maximumnorm, das heiht zu jeder Norm $\norm{·}$ gibt es positive Konstanten $w, M$ mit denen gilt
+   \[m \norm{x}_∞ \leq \norm{x} \leq M \norm{x}_∞, x ∈ \mathbb{K}^n\]
+   #+end_thm
+   #+begin_proof latex
+   Sei $\norm{·}$ irgendeine Norm $∀ x ∈ \mathbb{K}^n$ gilt
+   \[\norm{x} \leq \sum_{k = 1}^{n} \abs{x_k} \norm{e^{(k)}} \leq M \norm{x}_∞\]
+   mit
+   \[M := \sum_{k = 1}^{n} \norm{e^{(k)}}\]
+   Wir setzen
+   \[S_1 := \{x ∈ \mathbb{K}^m \mid \norm{x}_∞ = 1\}, m := \inf\{\norm{x}, x ∈ S_1\} \geq 0\]
+   Zu zeigen $m > 0$ (dann ergibt sich für $x \neq 0$ wegen $\norm{x}_∞^{-1} x ∈ S_1$ auch $m \leq \norm{x}_∞^{-1} \norm{x} ⇒ 0 < m \norm{x}_∞ \leq \norm{x}\quad x ∈ \mathbb{K}^n$)
+   Sei also angenommen, dass $m = 0$ \\
+   Dann gibt eine eine Folge $(x^{(k)})_{k ∈ ℕ} ∈ S_1$ mit $\norm{x^{(k)}} \xrightarrow{k \to ∞} 0$. Da diee Folge bezüglich $\norm{·}_∞$ beschränkt ist, gibt ei nach dew B.-W. Satz
+   eine Teilfolge auch von $(x^{(k)})$, die bezüglich $\norm{·}_∞$ gegen ein $x ∈ \mathbb{K}^n$ konvergiert.
+   \[\abs{1 - \norm{x}_∞} = \abs{\norm{x^{(k)}}_∞ - \norm{x}_∞} \leq \norm{x^{(k)} - x}_∞ \to 0 ⇒ \norm{x}_∞ = 1 ⇒ x ∈ S_1\]
+   Anderseits gilt \[∀k ∈ ℕ: \norm{x} \leq \norm{x - x^{(k)}} + \norm{x^{(k)}} \leq M \norm{x - x^{(k)}}_∞ + \norm{x^{(k)}} \xrightarrow{k \to ∞} ⇒ x = 0\]
+   \lightning zu $x ∈ S_1$
+   #+end_proof

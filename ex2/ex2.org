@@ -1,0 +1,52 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Experimentalphysik (H.-C. Schulz-Coulon)
+#+INCLUDE: "../header.org" :minlevel 1
+#+LATEX_HEADER:	\setcounter{section}{10}
+
+# 60% Punkte aus Übungaufgaben
+
+* Elektrostatik
+** Elektrische Ladung
+   - Neue Kraft
+   - anziehend oder abstoßend
+   - Konzept der elektrischen Ladung
+   Experimetelle Erkenntnisse:
+   - Erzeugung von Ladungen durch Reibung
+   - Ladungen gleicher Vorzeichen: Abstoßung
+   - Ladungen ungleicher Vorzeichen: Anziehung
+   - Ladung kann transportiert werden
+   - Elektrische Kräfte	sind Fernkräfte
+   - Ladungen sind erhalten
+   #+ATTR_LATEX: :options []
+   #+begin_defn latex
+   Influenz
+   Ladungstrennung durch die (Fern) Wirkung elektrischer Kräfte nennt man Influenz oder elektrostatische Induktion.
+   #+end_defn
+** Mikroskopische Deutung
+   Elektron: negativ \\
+   Proton: positiv \\
+   Atome elektrische neutral
+   - Z: Anzahl Protonen / Elektronen
+   - N: Anzahl Neutronen
+   - A: Anzahl Neutronen + Protonen
+   Leiter und Nichtleiter: Unterschiedliche Verfügbarkeit von Ladungsträgern
+** Coulombsches Gesetz
+   Experimentelles Resultat:
+   \[\v F_C = K \frac{q_1 q_2}{r_{12}^2} \hat r_{12}\]
+   #+ATTR_LATEX: :options []
+   #+begin_defn latex
+   \[\v F_C = \frac{1}{4π ε_0} \frac{q_1 q_2}{r_{12}^2} \hat r_{12}\]
+   mit $ε_0 = \SI{8.85416e-12}{\coulomb\per\newton\per\meter\squared}$
+   #+end_defn
+   Vergleich: Coulomb vs. Gravitation
+   \begin{align*}
+   \v F_G &= -G \frac{m_1 m_2}{r_{12}^2} \hat r_{12} \\
+   \v F_C &= K \frac{q_1 q_2}{r_{12}^2} \hat r_{12} \\
+   \frac{F_C}{F_G} &= \SI{227e39}{} \\
+   \end{align*}
+** elektrisches Feld
+   #+ATTR_LATEX: :options [Elektrisches Feld]
+   #+begin_defn latex
+   \[\v E(\v r) = \frac{\v F_C(\v r)}{q} = \frac{1}{4 π ε_0} \frac{Q}{r^2} \hat r\]
+   \[\v F(\v r) = q \v E(\v r)\]
+   #+end_defn
