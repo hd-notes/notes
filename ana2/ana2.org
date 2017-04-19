@@ -1,0 +1,46 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Analysis II (Marciniak-Czochra)
+
+#+INCLUDE: "../header.org" :minlevel 1
+
+* Metrische und normierte Räume
+** Metrische Räume
+   #+begin_defn latex
+   Sei $M$ eine Menge, $d: M×M \to [0, ∞)$ heißt *Metrik* auf $M$ genau dann wenn $∀x, y, z ∈ M$
+   - (D1) $d(x, y) = 0 ⇔ x = y$ \hfill (Definitheit)
+   - (D2) $d(x, y) = d(y, x)$ \hfill (Symmetrie)
+   - (D3) $d(x, z) \leq d(x, y) + d(z, y)$ \hfill (Dreiecksungleichung)
+   #+end_defn
+   #+begin_ex latex
+   1. Charakterische (diskrete) Metrik
+	  \[d(x, y) = \begin{cases} 0 & x = y \\ 1 & \text{sonst}\end{cases}\]
+   2. Sei $X = \mathbb{K}^n (\mathbb{K} = ℝ\text{ oder } ℂ)$ mit Metrik
+	  \[d(x, y) = (\sum_{i = 1}^{n} \abs{x_i - y_i}^2)^{\frac{n}{2}}\]
+	  (euklidische Metrik)
+   3. Sei $X = ℝ^n$. Für $1 \leq ϕ \leq ∞$. Sei
+	  \[d_ϕ(x, y) = (\sum_{i = 1}^{n} \abs{x_i - y_i}^p)^{\frac{n}{ϕ}}\]
+	  Ist $ϕ = ∞$, so definieren wir
+	  \[d_∞(x, y) = \max_{i - 1, \dots, n} \abs{x_i - y_i}\]
+   4. $X = ℝ$ mit Metrik
+	  \[d(x, y) = \frac{\abs{x - y}}{1 + \abs{x - y}}\]
+   5. Der Raum der Folgen $a: ℕ \to ℝ$ (beziehungsweise $ℝ^ℕ$) kann mit der Metrik
+	  \[d(x, y) = \sum_{k = 0}^{∞} 2^{-k} \frac{\abs{x_k - y_k}}{1 + \abs{x_k - y_k}}\]
+   #+end_ex
+   #+begin_defn latex
+   Sei $M$ eine Menge mit Metrik $d$. Wir definieren für $x ∈ M, ε > 0$, die offene ε-Kugel um $x$ durch
+   \[K_ε(x):=\{y ∈ M \mid d(x, y) < ε\}\]
+   $A ⊂ M$ heißt *Umgebung* von $x ∈ M ⇔ ∃ε: K_ε(x) ⊂ A$
+   #+end_defn
+   *Konvergenz und Stetigkeit in metrischen Räumen* \\
+   #+begin_defn latex
+   Eine Folge $(x_n)_{n ∈ ℕ}$ in einem  metrischen Raum $(X, d)$ ist konvergent gegen einem $x ∈ X$ genau dann wenn $∀ε > 0 ∃n_0 ∈ ℕ: ∀n \geq n_0 d(x_n, x) < ε$
+   #+end_defn
+   #+begin_thm latex
+   1. Sei $(X, d)$ ein metrischer Raumn. Dann ist $A ⊆ X$ abgeschlosen genau dann wenn $(X_n)_{n ∈ ℕ}$ Folge in $A$ mit $x_n \to x ⇒ x ∈ A$
+   2. Seien $(X, d_1), (Y, d_2)$ zwei metrische Räume. Dann ist die Funktion stetig in $x ∈ X$ genau dann wenn $(x_n)_{n ∈ ℕ}$ Folge in $X$ mit $x_n \to x ⇒ f(x_n) \to f(x)$.
+   #+end_thm
+   #+ATTR_LATEX: :options [(Cauchy Folgen und Vollständigkeit)]
+   #+begin_defn latex
+   Sei $(X, d)$ ein metrischer Raum. Eine Folge $(x_n)_{n ∈ ℕ}$ heißt Cauchy-Folge falls $d(x_n, x_m) \to 0$ für $n, m \to ∞$.
+   Der metrische Raum heißt *vollständig*, falls jede Cauchy-Folge konvergent ist.
+   #+end_defn
