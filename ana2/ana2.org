@@ -18,7 +18,7 @@
 	  \[d(x, y) = (\sum_{i = 1}^{n} \abs{x_i - y_i}^2)^{\frac{n}{2}}\]
 	  (euklidische Metrik)
    3. Sei $X = ℝ^n$. Für $1 \leq ϕ \leq ∞$. Sei
-	  \[d_ϕ(x, y) = (\sum_{i = 1}^{n} \abs{x_i - y_i}^p)^{\frac{n}{ϕ}}\]
+	  \[d_ϕ(x, y) = (\sum_{i = 1}^{n} \abs{x_i - y_i}^ϕ)^{\frac{n}{ϕ}}\]
 	  Ist $ϕ = ∞$, so definieren wir
 	  \[d_∞(x, y) = \max_{i - 1, \dots, n} \abs{x_i - y_i}\]
    4. $X = ℝ$ mit Metrik
@@ -73,12 +73,12 @@
 	  $(C_{\mathbb{K}(K)}, \norm{·}_∞)$ ist ein Banachraum.
    #+end_ex
    #+begin_remark latex
-   1. Sede Cauchy-Folge in $\mathbb{K}^n$ konvergiert, das heißt $(\mathbb{K}^n, \norm{·})$ ist vollständig
+   1. Jede Cauchy-Folge in $\mathbb{K}^n$ konvergiert, das heißt $(\mathbb{K}^n, \norm{·})$ ist vollständig
    2. Jede beschränkte Folge in $\mathbb{K}^n$ besitzt eine konvergente Teilfolge. (Bolzano-Weierstraß Satz gilt in $ℝ^n$) (Beweis für $ℝ^n$ zum Beispiel in RR Ana2 Satz 1.1)
    #+end_remark
    #+ATTR_LATEX: :options [1.10 (Äquivalenz von Normen)]
    #+begin_thm latex
-   Auf dem endlich dimesionalen Vektorraum $\mathbb{K}^n$ sind alle Normen *äquivalent* zur Maximumnorm, das heiht zu jeder Norm $\norm{·}$ gibt es positive Konstanten $w, M$ mit denen gilt
+   Auf dem endlich dimesionalen Vektorraum $\mathbb{K}^n$ sind alle Normen *äquivalent* zur Maximumnorm, das heißt zu jeder Norm $\norm{·}$ gibt es positive Konstanten $w, M$ mit denen gilt
    \[m \norm{x}_∞ \leq \norm{x} \leq M \norm{x}_∞, x ∈ \mathbb{K}^n\]
    #+end_thm
    #+begin_proof latex
