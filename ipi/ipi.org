@@ -116,7 +116,7 @@
 	   #+END_SRC
 	   - Nachteil
 		 - wenn die Implementationen gleich sind \rightarrow nutzlose Arbeit
-		 - Redundanz ist gefährlich: korrigiert man einen Bug wir leicht eine Variante vergessen
+		 - Redundanz ist gefährlich: korrigiert man einen Bug wird leicht eine Variante vergessen
 	   - mit templates reicht eine Implementation
 		 #+BEGIN_SRC cpp
 		 template<typename T> // T: Platzhalter für beliebigen Typ, wird später durch einen tatsächlichen Typ ersetzt
@@ -532,7 +532,7 @@
    x_1 %= \frac{1}{2a}(-b + \sqrt{b^2 - 4ac}) \frac{-b - \sqrt{b^2 - 4ac}}{-b - \sqrt{b^2 - 4ac}} \\
    &= \frac{1}{2a} \frac{b^2 - (b^2 - 4ac)}{-b - sqrt{b^2 - 4ac}} \\
    &= \frac{2c}{\underbrace{-b -\underbrace{\sqrt{b^2 - 4ac}}_{\approx b}}_{\approx -2b}}
-   \intertext{$\implies$ keine Auslösung}
+   \intertext{$\implies$ keine Auslöschung}
    \intertext{Dies tritt auch bei Aufgabe 8.3 der Übungszettel auf}
    \end{align*}
    Ausnahmeregeln (spezielle Werte)

@@ -131,11 +131,11 @@
 	  Taylorreihe von $f(x)$:, $f(x + \Delta) \approx f(x) + f'(x)\Delta +$ setze $x^\ast = x + \Delta$
 	  \[0 \overset{!}{=} f(x^\ast) \approx f(x) + f'(x)\Delta = 0 \implies \Delta = - \frac{f(x)}{f'(x)}\]
 	  Iterationsvorschrift:
-	  \[x^{(t + 1)} = x^{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
+	  \[x_{(t + 1)} = x_{(t)} - \frac{f(x^{(\ast)})}{f'(x^{(\ast)})}\]
 	  Anwendung auf Wurzel: setze $f(x) = x^2 - y \implies$ mit $f(x^\ast) = 0$ gilt
 	  \[(x^\ast)^2 -y = 0 \quad (x^\ast)^2 = y \quad x^\ast = \sqrt{y}\quad f'(x) = 2x\]
 	  Iterationsvorschrift:
-	  \[x^{(t + 1)} = x^{(t)} - \frac{(x^{(t)^2}) - y}{2x^{(t)}} = \frac{x^{(t)^2} + y}{2x^{(t)}}\]
+	  \[x_{(t + 1)} = x_{(t)} - \frac{(x_{(t)^2}) - y}{2x_{(t)}} = \frac{x_{(t)^2} + y}{2x_{(t)}}\]
 	  #+BEGIN_SRC cpp
 		double sqrt(double y) {
 		  if(y < 0.0) {
@@ -199,7 +199,7 @@
 	#+BEGIN_SRC cpp
 	double sqrt(double y) {
 		while(true) {
-			x = (x + y / 2) / 2.0;
+			x = (x + y / x) / 2.0;
 			if(abs(x * x - y) < epsilon) {
 				return x;
 			}

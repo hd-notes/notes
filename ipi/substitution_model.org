@@ -52,16 +52,6 @@
 ** Rekursion
    Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
 ** Präfixnotation aus dem Baum rekonstruieren
-   1. <<algstart1>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
-   2. sonst:
-	  - Drucke Funktionsnamen
-	  - Drucke "("
-	  - Wiederhole den Algorithmus ab [[algstart1]] für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
-	  - Drucke ","
-	  - Wiederhole den Algorithmus ab [[algstart1]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
-	  - Drucke ")"
-	$\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
-** Präfixnotation aus dem Baum rekonstruieren
    1. <<algstart2>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
    2. sonst:
 	  - Drucke Funktionsnamen
