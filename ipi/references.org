@@ -1,42 +1,42 @@
 * Referenzen
-  sind neue (zusätzliche) Namen für vorhandene Speicherzellen
-   #+BEGIN_SRC cpp
-   int x = 3; // neue Variable x mit neuer Speicherzelle
-   int & y = x; // Referenz: y ist neuer Name für x, beide haben die selbe Speicherzelle
-   y = 4; // Zuweisung an y, aber x ändert sich auch, das heißt x == 4
-   x = 5; // jetzt y == 5
-   int const & z = x; // read-only Referenz, das heißt z = 6 ist verboten
-   x = 6; // jetzt auch z == 6
-   #+END_SRC
+  Referenzen sind neue (zusätzliche) Namen für vorhandene Speicherzellen.
+  #+BEGIN_SRC cpp
+  int x = 3; // neue Variable x mit neuer Speicherzelle
+  int & y = x; // Referenz: y ist neuer Name für x, beide haben die selbe Speicherzelle
+  y = 4; // Zuweisung an y, aber x ändert sich auch, das heißt x == 4
+  x = 5; // jetzt y == 5
+  int const & z = x; // read-only Referenz, das heißt z = 6 ist verboten
+  x = 6; // jetzt auch z == 6
+  #+END_SRC
   Hauptanwendung:
   - die Umgebung, in der eine Funktion aufgerufen wird und die Umgebung der Implementation sind unabhängig, das heißt Variablen der einen Umgebung sind in der anderen nicht sichtbar
   - häufig möchte man Speicherzellen in beiden Umgebungen teilen $\implies$ verwende Referenzen
   - häufig will man vermeiden, dass eine Variable kopiert wird (pass-by-value)
 	- Durch pass-by-reference braucht man keine Kopie $\implies$ typisch "const &", also read-only, keine Seiteneffekte
-	 #+BEGIN_SRC cpp
-	 int foo(int x) { // pass-by-value
-		 x += 3;
-		 return x;
-	 }
+  #+BEGIN_SRC cpp
+  int foo(int x) { // pass-by-value
+	  x += 3;
+ 	  return x;
+  }
 
-	 int bar(int & y) { // pass-by-reference
-		 y += 3; // Seiteneffekt der Funktion
-		 return y;
-	 }
+  int bar(int & y) { // pass-by-reference
+ 	  y += 3; // Seiteneffekt der Funktion
+ 	  return y;
+  }
 
-	 void baz(int & z) { // pass-by-reference
-		 z += 3;
-	 }
+  void baz(int & z) { // pass-by-reference
+ 	  z += 3;
+  }
 
-	 int main() {
-		 int a = 3;
-		 std::cout << foo(a) << std::endl; // 5
-		 std::cout << a << std::endl; // 3
-		 std::cout << bar(a) << std::endl; // 5
-		 std::cout << a << std::endl; // 5
-		 baz(a);
-		 std::cout << a << std::endl; // 8
-	 }
-	 #+END_SRC
-	 in der funktionalen Programmierung sind Seiteneffekte grundsätzlich verboten, 
-	 mit Ausnahmen, zum Beispiel für Ein-/Ausgabe
+  int main() {
+ 	  int a = 3;
+ 	  std::cout << foo(a) << std::endl; // 5
+ 	  std::cout << a << std::endl; // 3
+ 	  std::cout << bar(a) << std::endl; // 5
+ 	  std::cout << a << std::endl; // 5
+ 	  baz(a);
+ 	  std::cout << a << std::endl; // 8
+  }
+  #+END_SRC
+  In der funktionalen Programmierung sind Seiteneffekte grundsätzlich verboten,
+  mit Ausnahmen, zum Beispiel für Ein-/Ausgabe.

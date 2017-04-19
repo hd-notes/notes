@@ -8,21 +8,21 @@
    iteratives Verfahren: \\
    Initial Guess $y^{(0)} = 1$
    schrittweise Verbesserung $y^{(t+1)} = \frac{y^{(t)} + \frac{x}{y^{(t)}}}{2}$
-* Informatik
-  Lösungswege, genauer Algorithmen
-** Algorithmus
-   *schematische* Vorgehensweise mit der jedes Problem einer bestimmten *Klasse* mit *endliche* vielen *elementaren* Schritten / Operationen gelöst werden kann
-   - schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\implies$ Computer)
-   - alle Probleme einer Klasse: zum Beispiel: die Wurzel aus jeder beliebigen nicht-negativen Zahl, und nicht nur $\sqrt{11}$
-   - endliche viele Schritte: man kommt nach endlicher Zeit zur Lösung
-   - elementare Schritte / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
-** Daten
-   Daten sind Symbole,
-   - die Entitäten und Eigenschaften der realen Welt im Computer repräsentieren.
-   - die interne Zwischenergebnisse eines Algorithmus aufbewahren
-   $\implies$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebnis).
-   Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch"
-*** Beispiele für Symbole
+** Informatik
+   Lösungswege, genauer Algorithmen
+*** Algorithmus
+	*schematische* Vorgehensweise mit der jedes Problem einer bestimmten *Klasse* mit *endliche* vielen *elementaren* Schritten / Operationen gelöst werden kann
+	- schematisch: man kann den Algorithmus ausführen, ohne ihn zu verstehen ($\implies$ Computer)
+	- alle Probleme einer Klasse: zum Beispiel: die Wurzel aus jeder beliebigen nicht-negativen Zahl, und nicht nur $\sqrt{11}$
+	- endliche viele Schritte: man kommt nach endlicher Zeit zur Lösung
+	- elementare Schritte / Operationen: führen die Lösung auf Operationen oder Teilprobleme zurück, die wir schon gelöst haben
+*** Daten
+	Daten sind Symbole,
+	- die Entitäten und Eigenschaften der realen Welt im Computer repräsentieren.
+	- die interne Zwischenergebnisse eines Algorithmus aufbewahren
+	$\implies$ Algorithmen transformieren nach bestimmten Regeln die Eingangsdaten (gegebene Symbole) in Ausgangsdaten (Symbole für das Ergebnis).
+	Die Bedeutung / Interpretation der Symbole ist dem Algorithmus egal $\estimates$ "schematisch" \\
+	Beispiele für Symbole:
 	- Zahlen
 	- Buchstaben
 	- Icons
@@ -40,13 +40,12 @@
 	Interne Daten:
 	- Symbole im Hauptspeicher oder auf Festplatte
 	- Stoppuhr starten / Timeout
-** Einfachster Computer
-   endliche Automaten (endliche Zustandsautomaten)
-   - befinden sich zu jedem Zeitpunkt in einem bestimmten Zustand aus einer vordefinierten endlichen Zustandsmenge
-   - äußere Ereignisse können Zustandsänderungen bewirken und Aktionen auslösen
-*** TODO Graphische Darstellung
-	graphische Darstellung: Zustände = Kreise, Zustandsübergänge: Pfeile
-*** TODO Darstellung durch Übergangstabellen
+*** Einfachster Computer
+	endliche Automaten (endliche Zustandsautomaten)
+	- befinden sich zu jedem Zeitpunkt in einem bestimmten Zustand aus einer vordefinierten endlichen Zustandsmenge
+	- äußere Ereignisse können Zustandsänderungen bewirken und Aktionen auslösen
+	Graphische Darstellung: Zustände = Kreise, Zustandsübergänge: Pfeile \\
+    Darstellung durch Übergangstabellen \\
 	Zeilen: Zustände, Spalten: Ereignisse, Felder: Aktion und Folgezustände
     #+ATTR_LATEX: :environment longtable :align l|p{3cm}|p{3cm}|p{3cm}
 	| Zustände \ Ereignisse | Knopf drücken                                     | Timeout                                                   | Timeout(Variante)                       |
@@ -58,71 +57,71 @@
 	| blinken aus           | ($\implies$ {aus},{Alle LEDs aus, Timer stoppen}) | ($\implies$ {blinken an},{alle LEDs an, Timer starten})   | ($\implies$ {blinken an},{8 LEDs an})   |
 
 	Variante: Timer läuft immer (Signal alle 0.3s) $\implies$ Timout ignorieren im Zustand "aus", "halb", "voll"
-*** Beispiel 2:
+	#+ATTR_LATEX: :options [Binäre Addition]
+	#+begin_ex latex
 	\begin{align}
 	&1~0~1~1~0~1~0 &= 2 + 8 + 16 + 74 &= 90_{\text{dez}} \\
 	+&0~1~1~1~0~0~1 &= 1 + 8 + 16 + 32 &= 57_{\text{dez}} \\
 	\hline
 	1~&0~0~1~0~0~1~1 &= 1 + 2 + 16 + 128 &= 147_{\text{dez}}\checkmark
 	\end{align}
-**** Implementation mit Endlichen Automaten
-	 Prinzipien:
-	 - wir lesen die Eingangsdaten von rechts nach links
-	 - Beide Zahlen gleich lang (sonst mit 0en auffüllen)
-	 - Ergebnis wird von rechts nach links ausgegeben
-**** TODO Skizze der Automaten
-	 | Zustand   | Ereignis    | Ausgeben |
-	 |-----------+-------------+----------|
-	 | start     | (0,1)       | "1"      |
-	 | start     | (1,0)       | "1"      |
-	 | start     | (0,0)       | "0"      |
-	 | start     | (1,1)       | "0"      |
-	 | carry = 1 | (1,1)       | "1"      |
-	 | carry = 1 | (0,1)       | "0"      |
-	 | carry = 1 | (1.0)       | "0"      |
-	 | carry = 1 | $\emptyset$ | "1"      |
-	 *Wichtig:* In jedem Zustand muss für *alle möglichen* Ereignisse eine Aktion und Folgezustand definiert werden.
-	 Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen "Bug".
-	 Falls keine sinnvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\implies$ Übergang nach "Fehler",
-	 Aktion: Ausgeben einer Fehlermeldung
-***** TODO Skizze Fehlermeldung
-	  Ein endlicher Automat hat nur ein Speicherelement, das den aktuellen Zustand angibt. Folge:
-	  - Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächtnis")
-	  - Automat kann nicht beliebig weit zählen, sondern nur bis zu einer vorgegebenen Grenze
-#+begin_export latex
-\catcode`(=12
-\catcode`)=12
-#+end_export
-\begin{center}
-\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
-\node[initial,state] (0) {"`0"'};
-\node[state] (1) [right of=0] {"`1"'};
-\node[state] (2) [right of=1]{"`2"'};
-\node[state] (3) [right of=2]{"`3"'};
-\node[accepting,state] [below of=1] (end) {"`stop"'};
-\path (0) edge [loop above] node {"`0"'} (0)
-(0) edge node {"`x"'} (1)
-(0) edge node {$\emptyset$} (end)
-(1) edge [loop above] node {"`0"'} (1)
-(1) edge node {"`x"'} (2)
-(1) edge node {$\emptyset$} (end)
-(2) edge [loop above] node {"`0"'} (2)
-(2) edge node {"`x"'} (3)
-(2) edge node {$\emptyset$} (end)
-(3) edge [loop above] node {"`$0\vee x$"'} (3)
-(3) edge node {"`x"'} (3)
-(3) edge node {$\emptyset$} (end);
-\end{tikzpicture}
-\end{center}
-#+begin_export latex
-\catcode`(=\active
-\catcode`)=\active
-#+end_export
-	  Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
-	  Spendiert man zusätzlichen Speicher, geht mehr:
-	  - Automat mit Stack-Speicher (Stapel oder Keller) $\implies$ Kellerautomat (Kontextfreie Sprachen)
-	  - Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles ausführen, was man intuitiv für berechenbar hält
-	  Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
-	  Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse)
-	  Frage: Gibt es einen universellen Algorithmus für alle berechenbare Probleme?
-	  Betrachte formale Algorithmusbeschreibung als Teil der Eingabe des universellen Algorithmus.
+     Implementation mit Endlichen Automaten: \\
+	Prinzipien:
+	- wir lesen die Eingangsdaten von rechts nach links
+	- Beide Zahlen gleich lang (sonst mit 0en auffüllen)
+	- Ergebnis wird von rechts nach links ausgegeben
+	| Zustand   | Ereignis    | Ausgeben |
+	|-----------+-------------+----------|
+	| start     | (0,1)       | "1"      |
+	| start     | (1,0)       | "1"      |
+	| start     | (0,0)       | "0"      |
+	| start     | (1,1)       | "0"      |
+	| carry = 1 | (1,1)       | "1"      |
+	| carry = 1 | (0,1)       | "0"      |
+	| carry = 1 | (1.0)       | "0"      |
+	| carry = 1 | $\emptyset$ | "1"      |
+	*Wichtig:* In jedem Zustand muss für *alle möglichen* Ereignisse eine Aktion und Folgezustand definiert werden.
+	Vergisst man ein Ereignis zeigt der Automat undefiniertes Verhalten, also einen "Bug".
+	Falls keine sinnvolle Reaktion möglich ist: neuer Zustand: "Fehler" $\implies$ Übergang nach "Fehler",
+	Aktion: Ausgeben einer Fehlermeldung
+	Ein endlicher Automat hat nur ein Speicherelement, das den aktuellen Zustand angibt. Folge:
+	- Automat kann sich nicht merken, wie er in den aktuellen Zustand gekommen ist ("kein Gedächtnis")
+	- Automat kann nicht beliebig weit zählen, sondern nur bis zu einer vorgegebenen Grenze
+    #+begin_export latex
+    \catcode`(=12
+    \catcode`)=12
+    #+end_export
+    \begin{center}
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
+    \node[initial,state] (0) {"`0"'};
+    \node[state] (1) [right of=0] {"`1"'};
+    \node[state] (2) [right of=1]{"`2"'};
+    \node[state] (3) [right of=2]{"`3"'};
+    \node[accepting,state] [below of=1] (end) {"`stop"'};
+    \path (0) edge [loop above] node {"`0"'} (0)
+    (0) edge node {"`x"'} (1)
+    (0) edge node {$\emptyset$} (end)
+    (1) edge [loop above] node {"`0"'} (1)
+    (1) edge node {"`x"'} (2)
+    (1) edge node {$\emptyset$} (end)
+    (2) edge [loop above] node {"`0"'} (2)
+    (2) edge node {"`x"'} (3)
+    (2) edge node {$\emptyset$} (end)
+    (3) edge [loop above] node {"`$0\vee x$"'} (3)
+    (3) edge node {"`x"'} (3)
+    (3) edge node {$\emptyset$} (end);
+    \end{tikzpicture}
+    \end{center}
+    #+begin_export latex
+    \catcode`(=\active
+    \catcode`)=\active
+    #+end_export
+	#+end_ex
+	Insgesamt: Man kann mit endlichen Automaten nur relativ einfache Algorithmen implementieren. (nur reguläre Sprachen)
+	Spendiert man zusätzlichen Speicher, geht mehr:
+	- Automat mit Stack-Speicher (Stapel oder Keller) $\implies$ Kellerautomat (Kontextfreie Sprachen)
+	- Automat mit zwei Stacks oder äquivalent Turing-Maschine kann alles ausführen, was man intuitiv für berechenbar hält
+	Markov Modelle: endliche Automaten mit probabilistischen Übergangen.
+	Bisher: Algorithmen für einen bestimmten Zweck (Problemklasse) \\
+	Frage: Gibt es einen universellen Algorithmus für alle berechenbare Probleme? \\
+	Betrachte formale Algorithmusbeschreibung als Teil der Eingabe des universellen Algorithmus.

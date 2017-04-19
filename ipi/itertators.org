@@ -1,97 +1,94 @@
 * Iteratoren
-  - für Arrays lautet die kanonische Schleife
-	#+BEGIN_SRC cpp
-	for(int i = 0; i != v.size(); i++) {
-		int current = v[i]; // lesen
-		v[i] = new_value; // schreiben
-	}
-	#+END_SRC
-  - wir wollen eine so einfache Schleife für beliebige Container
-	- der Index-Zugriff v[] ist bei den meisten Container nicht effizient
-	- Iteratoren sind immer effizient $\implies$ es gibt sie in allen modernen Programmiersprachen, aber Details sehr unterschiedlich
-	- Analogie: Zeiger einer Uhr, Cursor in Textverarbeitung
-	  - $\implies$ ein Iterator zeigt immer auf ein Element des Containers, oder auf Spezialwert "ungültiges Element"
-	- in c++ unterstützt jeder Iterator 5 Grundoperationen
-	  1. Iterator auf erstes Element erzeugen: auto iter = v.begin();
-	  2. Iterator auf "ungültiges Element" erzeugen: auto end = v.end();
-	  3. Vergleich $iter1 == iter2$ (Zeigen auf gleiches Element), $iter != end$: 
-	  iter zeigt *nicht* auf ungültiges Element
-	  4. zum nächsten weitergehen: ++iter. Ergebnis ist v.end(), wenn man vorher beim letzten Element war
-	  5. auf Daten zugreifen: *iter ("Dereferenzierung") analog v[k]
+  Für Arrays lautet die kanonische Schleife
+  #+BEGIN_SRC cpp
+  for(int i = 0; i != v.size(); i++) {
+   	  int current = v[i]; // lesen
+	  v[i] = new_value; // schreiben
+  }
+  #+END_SRC
+  Wir wollen eine so einfache Schleife für beliebige Container.
+  Der Index-Zugriff v[] ist bei den meisten Container nicht effizient.
+  Iteratoren sind immer effizient $\implies$ es gibt sie in allen modernen Programmiersprachen, aber Details sehr unterschiedlich.
+  Analogie: Zeiger einer Uhr, Cursor in Textverarbeitung.
+  $\implies$ ein Iterator zeigt immer auf ein Element des Containers, oder auf Spezialwert "ungültiges Element".
+  In c++ unterstützt jeder Iterator 5 Grundoperationen
+  1. Iterator auf erstes Element erzeugen: \code{auto iter = v.begin();}
+  2. Iterator auf "ungültiges Element" erzeugen: \code{auto end = v.end();}
+  3. Vergleich \code{iter1 == iter2} (Zeigen auf gleiches Element), \code{iter != end}: iter zeigt *nicht* auf ungültiges Element
+  4. zum nächsten weitergehen: \code{++iter}. Ergebnis ist \code{v.end()}, wenn man vorher beim letzten Element war
+  5. auf Daten zugreifen: \code{*iter ("Dereferenzierung") analog \code{v[k]}
+  kanonische Schleife:
+  #+BEGIN_SRC cpp
+  for(auto iter = v.begin(); iter != v.end(); ++iter) {
+      int current = *iter; // lesen
+      *iter = new_value; // schreiben
+  }
 
-	  kanonische Schleife:
-	  #+BEGIN_SRC cpp
-	  for(auto iter = v.begin(); iter != v.end(); ++iter) {
-	  int current = *iter; // lesen
-	  *iter = new_value; // schreiben
-	  }
-	  // Abkürzung: range-based for loop
-	  for(auto & element : v) {
-	  int current = element; // lesen
-	  element  = new_value; // schreiben
-	  }
-	  #+END_SRC
-  - Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen ++iter)
-  - "bidirectional iterators": unterstützen auch $--iter$, zum vorigen Element ((fast) alle Iteratoren in std)
-  - "random access iterators": beliebige Sprünge "iter += 5; iter -= 3;"
-  - Besonderheit für assoziative Arrays (std::map, std::unordered_map)
-	Schlüssel und Werte können beliebig gewählt werden
-	- $\implies$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
-	  #+BEGIN_SRC cpp
-	  (*iter).first; // Schlüssel
-	  (*iter).second; // Wert
-	  // Abkürzung
-	  iter->first;
-	  iter->second;
-	  #+END_SRC
-	  - bei std::map liefern die Iteratoren die Elemente in aufsteigender Reihenfolge der Schlüssel
-  - Die Funktion std::transform()
-	- wir hatten: std::copy()
-	  #+BEGIN_SRC cpp
-	  std::vector<double> source = {1, 2, 3, 4};
-	  std::vector<double> target(source.size());
-	  std::copy(source.begin(), source.end(), target.begin());
-	  #+END_SRC
-	- std::transform:
-	  #+BEGIN_SRC cpp
-	  // nach Kleinbuchstaben konvertieren
-	  std::string source = "aAbCdE";
-	  std::string target = source;
-	  std::transform(source.begin(), source.end(), target.begin(), std::tolower); // Name einer Funktion, die ein einzelnes Element transformiert, t="aabcde"
-	  // die Daten quadrieren
-	  double sq(double x) { return x * x; }
-	  std::transform(source.begin(), source.end(), target.begin(), sq); // target == {1, 4, 9, 16}
-	  // das ist eine Abkürzung für eine Schleife
-	  auto src_begin = source.begin();
-	  auto src_end = source.end();
-	  auto tgt_begin = target.begin();
+  // Abkürzung: range-based for loop
+  for(auto & element : v) {
+       int current = element; // lesen
+     element  = new_value; // schreiben
+  }
+  #+END_SRC
+  Iteratoren mit den 5 Grundoperationen heißen "forward iterator" (wegen \code{++iter}).
+  - "bidirectional iterators": unterstützen auch \code{--iter}, zum vorigen Element ((fast) alle Iteratoren in \code{std})
+  - "random access iterators": beliebige Sprünge \code{iter += 5; iter -= 3;}
+  Besonderheit für assoziative Arrays (\code{std::map, std::unordered\_map}): Schlüssel und Werte können beliebig gewählt werden.
+  $\implies$ das aktuelle Element ist ein Schlüssel / Wert -Paar, das heißt Iterator gibt Schlüssel und Wert zurück
+  #+BEGIN_SRC cpp
+  (*iter).first; // Schlüssel
+  (*iter).second; // Wert
+  // Abkürzung
+  iter->first;
+  iter->second;
+  #+END_SRC
+  bei \code{std::map} liefern die Iteratoren die Elemente in aufsteigender Reihenfolge der Schlüssel. \\
+  Wir hatten: \code{std::copy()}
+  #+BEGIN_SRC cpp
+  std::vector<double> source = {1, 2, 3, 4};
+  std::vector<double> target(source.size());
+  std::copy(source.begin(), source.end(), target.begin());
+  #+END_SRC
+  \code{std::transform}:
+  #+BEGIN_SRC cpp
+  // nach Kleinbuchstaben konvertieren
+  std::string source = "aAbCdE";
+  std::string target = source;
+  std::transform(source.begin(), source.end(), target.begin(), std::tolower); // Name einer Funktion, die ein einzelnes Element transformiert, t="aabcde"
+  // die Daten quadrieren
+  double sq(double x) { return x * x; }
+  std::transform(source.begin(), source.end(), target.begin(), sq); // target == {1, 4, 9, 16}
+  // das ist eine Abkürzung für eine Schleife
+  auto src_begin = source.begin();
+  auto src_end = source.end();
+  auto tgt_begin = target.begin();
 
-	  for(; src_begin != src_end; src_begin++, tgt_begin++) {
-		  *tgt_begin = sq(*src_begin);
-	  }
-	  #+END_SRC
-	  - Der Argumenttyp der Funktion muss mit dem source Elementtyp kompatibel sein. Der Returntyp der Funktion muss mit dem Target-Elementtyp kompatibel sein.
-	  - Das letzte Argument von std::transform() muss ein Funktor sein (verhält sich wie eine Funktion), drei Varianten:
-		1. normale Funktion, z.B. sq. Aber: wenn Funktion für mehrere Argumenttypen überladen ist (overloading) (zum Beispiel, wenn es sq(double) und sq(int) gibt), muss der Programmierer dem Compiler sagen, welche Version gemeint ist $\implies$ für Fortgeschrittene ("functionpointer cast")
-		2. Funktionsobjekt $\implies$ objekt-orientierte Programmierung
-		3. Definiere eine namenlose Funktion $\implies$ "Lambda-Funktion $\lambda$"
-		   - statt $\lambda$ verwenden wir den Universalnamen []
-			#+BEGIN_SRC cpp
-			std::transform(source.begin(), source.end(), target.begin(), [](double x) { return x*x; }); // statt Funktionsname sq wie bei 1 steht hier die ganz Funktionsimplementation
-			// Returntyp setzt Computer automatisch ein, wenn es nur einen return-Befehl gibt.
-			#+END_SRC
-		   - Lambda-Funktionen können noch viel mehr $\implies$ für Fortgeschrittene
-		   - std::transform() kann in-place arbeiten (das heißt source-Container überschreiben), wenn source und target gleich
+  for(; src_begin != src_end; src_begin++, tgt_begin++) {
+	  *tgt_begin = sq(*src_begin);
+  }
+  #+END_SRC
+  Der Argumenttyp der Funktion muss mit dem source Elementtyp kompatibel sein. Der Returntyp der Funktion muss mit dem Target-Elementtyp kompatibel sein.
+  Das letzte Argument von \code{std::transform()} muss ein Funktor sein (verhält sich wie eine Funktion), drei Varianten:
+  1. normale Funktion, z.B. sq. Aber: wenn Funktion für mehrere Argumenttypen überladen ist (overloading) (zum Beispiel, wenn es sq(double) und sq(int) gibt), muss der Programmierer dem Compiler sagen, welche Version gemeint ist $\implies$ für Fortgeschrittene ("functionpointer cast")
+  2. Funktionsobjekt $\implies$ objekt-orientierte Programmierung
+  3. Definiere eine namenlose Funktion $\implies$ "Lambda-Funktion $\lambda$"
+     - statt $\lambda$ verwenden wir den Universalnamen []
+	   #+BEGIN_SRC cpp
+	   std::transform(source.begin(), source.end(), target.begin(), [](double x) { return x*x; }); // statt Funktionsname sq wie bei 1 steht hier die ganz Funktionsimplementation
+	   // Returntyp setzt Computer automatisch ein, wenn es nur einen return-Befehl gibt.
+	   #+END_SRC
+	 - Lambda-Funktionen können noch viel mehr $\implies$ für Fortgeschrittene
+	 - \code{std::transform()} kann in-place arbeiten (das heißt source-Container überschreiben), wenn source und target gleich
 			#+BEGIN_SRC cpp
 			std::transform(source.begin(), source.end(), source.begin(), sq);
 			#+END_SRC
-	  - Die Funktion std::sort() zum in-place sortieren eines Arrays
-		#+BEGIN_SRC cpp
-		std::vector<double> v = {4, 2, 3, 5 ,1};
-		std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
-		#+END_SRC
-	  - std::sort ruft intern den $<$ -Operator des Elementtyps auf, um Reihenfolge zu bestimmen
-	  - die $<$ -Operation muss eine totale Ordnung der Elemente definieren:
-		- $a < b$ muss für beliebige $a,b$ ausführbar sein
-		- transitiv: $(a < b) \wedge (b < c) \implies (a < c)$
-		- anti-symmetrisch: $\neg(a < b) \wedge \neg(b < a) \implies a == b$
+  Die Funktion \code{std::sort()} zum in-place sortieren eines Arrays:
+  #+BEGIN_SRC cpp
+  std::vector<double> v = {4, 2, 3, 5 ,1};
+  std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
+  #+END_SRC
+  \code{std::sort} ruft intern den $<$ -Operator des Elementtyps auf, um Reihenfolge zu bestimmen.
+  Die $<$ -Operation muss eine totale Ordnung der Elemente definieren:
+  - $a < b$ muss für beliebige $a,b$ ausführbar sein
+  - transitiv: $(a < b) \wedge (b < c) \implies (a < c)$
+  - anti-symmetrisch: $\neg(a < b) \wedge \neg(b < a) \implies a == b$

@@ -79,6 +79,7 @@
 #+LATEX_HEADER: \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 #+LATEX_HEADER: \makeatother
 
+#+LATEX_HEADER: \newcommand{\code}{\texttt}%
 #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 #+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 #+LATEX_HEADER: \newcommand{\euler}{e}
