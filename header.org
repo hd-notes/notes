@@ -71,6 +71,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\RS}{RS}
 #+LATEX_HEADER: \DeclareMathOperator{\GL}{GL}
 #+LATEX_HEADER: \DeclareMathOperator{\Eig}{Eig}
+#+LATEX_HEADER: \DeclareMathOperator{\rd}{rd}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs
