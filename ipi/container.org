@@ -1,168 +1,169 @@
 * Container-Datentypen
-  Dienen dazu, andere Daten aufzubewahren
-  - Art der Elemente:
-	- homogene Container: alle Elemente haben gleichen Type (typisch für c++)
-	- heterogene Container: Elemente könne verschiedene Typen haben (z.B. Python)
-  - nach Größen
-	- statische Container: feste Größe, zur Compilezeit bekannt
-	- dynamische Container: Größe zur Laufzeit veränderbar
-  - Arrays sind die wichtigsten Container, weil effizient auf Hardware abgebildet und einfach zu benutzen
-	- klassisch: Arrays sind statisch, zum Beispiel C-Arrays (hat c++ geerbt)
-	 #+BEGIN_SRC cpp
-	 int a[20];
-	 #+END_SRC
-	- modern: dynamische Arrays
-	  - Entdeckung einer effizienten Implementation
-	  - Kapselung durch objekt-orientierte Programmierung (sonst zu kompliziert)
+  Dienen dazu, andere Daten aufzubewahren. \\
+  Art der Elemente:
+  - homogene Container: alle Elemente haben gleichen Type (typisch für c++)
+  - heterogene Container: Elemente könne verschiedene Typen haben (z.B. Python)
+  Nach Größen: \\
+  - statische Container: feste Größe, zur Compilezeit bekannt
+  - dynamische Container: Größe zur Laufzeit veränderbar
+  Arrays sind die wichtigsten Container, weil effizient auf Hardware abgebildet und einfach zu benutzen. \\
+  klassisch: Arrays sind statisch, zum Beispiel C-Arrays (hat c++ geerbt)
+  #+BEGIN_SRC cpp
+  int a[20];
+  #+END_SRC
+  modern: dynamische Arrays
+  - Entdeckung einer effizienten Implementation
+  - Kapselung durch objekt-orientierte Programmierung (sonst zu kompliziert)
   - wir kennen bereits ein dynamisches Array: std::string ist Abbildung int (Index) \rightarrow char (Zeichen), mit $0 \leq~\text{index}~ < ~\text{s.size()}$
-	- wichtigste Funktion: s.size() (weil Größe dynamisch), s[4 ] Indexzugriff, s+="mehr" Zeichen anhängen
+  - wichtigste Funktion: s.size() (weil Größe dynamisch), s[4 ] Indexzugriff, s+="mehr" Zeichen anhängen
   - wir wollen dasselbe Verhalten für beliebige Elementtypen:
-	 #+BEGIN_SRC cpp
-	 #include <vector>
+  #+BEGIN_SRC cpp
+  #include <vector>
 
-	 //          Elementtyp    Größe  Initialwert der Elemente
-	 std::vector<double    > v(20   ,           0.0           );
-	 // analog
-	 std::vector<int>;
-	 std::vector<std::string>;
-	 #+END_SRC
-  - weitere Verallgemeinerung: Indextyp beliebig (man sagt dann "Schlüssel-Typ") "assoziatives Array"
-	- typische Fälle:
-	  - Index ist nicht im Bereich (0,size], zum Beispiel Matrikelnummern
-	  - Index ist string, zum Beispiel Name eines Studenten
-		#+BEGIN_SRC cpp
-		#include <map>
-		#include <unordered_map>
+  //          Elementtyp    Größe  Initialwert der Elemente
+  std::vector<double    > v(20   ,           0.0           );
+  // analog
+  std::vector<int>;
+  std::vector<std::string>;
+  #+END_SRC
+  Weitere Verallgemeinerung: Indextyp beliebig (man sagt dann "Schlüssel-Typ") "assoziatives Array".
+  Typische Fälle:
+  - Index ist nicht im Bereich (0,size], zum Beispiel Matrikelnummern
+  - Index ist string, zum Beispiel Name eines Studenten
+  #+BEGIN_SRC cpp
+  #include <map>
+  #include <unordered_map>
 
-		// Binärer Suchbaum
-		std::map;
+  // Binärer Suchbaum
+  std::map;
 
-		// Hashtabelle, siehe Algorithmen und Datenstrukturen
-		std::unordered_map;
+  // Hashtabelle, siehe Algorithmen und Datenstrukturen
+  std::unordered_map;
 
-		//       Schlüsseltyp  Elementtyp
-		std::map<int         , double> noten; noten[3121101] = 10;
-		std::map<std::string, double> noten; noten["krause"] = 10;
-		#+END_SRC
-	  - Indexoperationen wie beim Array
-	  - Elemente werden beim 1. Zugriff automatisch erzeugt (dynamisch)
+  //       Schlüsseltyp  Elementtyp
+  std::map<int         , double> noten; noten[3121101] = 10;
+  std::map<std::string, double> noten; noten["krause"] = 10;
+  #+END_SRC
+  - Indexoperationen wie beim Array
+  - Elemente werden beim 1. Zugriff automatisch erzeugt (dynamisch)
   - alle dynamischen und assoziativen Arrays unterstützen a.size() zum Abfragen der Größe
 ** std::vector
-   - Erzeugen:
-	 #+BEGIN_SRC cpp
-	 std::vector<double> v(20, 1.0);
-	 std::vector<double> v; // leeres Array
-	 std::vector<double> v = {1.0, -3.0, 2.2}; // "initializer list": Element für Anfangszustand
-	 #+END_SRC
-   - Größe:
-	 #+BEGIN_SRC cpp
-	 v.size();
-	 v.empty(); // => v.size() == 0
-	 #+END_SRC
-   - Größe ändern
-	 #+BEGIN_SRC cpp
-	 v.resize(neue_groesse, initialwert);
-	 // Dann:
-	 // Fall 1: neue_groesse < size(): Element ab Index "neue_groesse" gelöscht die andern bleiben
-	 // Fall 2: neue_groesse > size(): neue Elemente mit Initialwert am Ende anhängen, die anderen bleiben
-	 // Fall 3: neue_groesse == size(): nichts passiert
+   Erzeugen:
+   #+BEGIN_SRC cpp
+   std::vector<double> v(20, 1.0);
+   std::vector<double> v; // leeres Array
+   std::vector<double> v = {1.0, -3.0, 2.2}; // "initializer list": Element für Anfangszustand
+   #+END_SRC
+   Größe:
+   #+BEGIN_SRC cpp
+   v.size();
+   v.empty(); // => v.size() == 0
+   #+END_SRC
+   Größe ändern
+   #+BEGIN_SRC cpp
+   v.resize(neue_groesse, initialwert);
+   // Dann:
+   // Fall 1: neue_groesse < size(): Element ab Index "neue_groesse" gelöscht die andern bleiben
+   // Fall 2: neue_groesse > size(): neue Elemente mit Initialwert am Ende anhängen, die anderen bleiben
+   // Fall 3: neue_groesse == size(): nichts passiert
 
-	 v.push_back(neues_element); // ein neues Element am Ende anhängen (ähnlich string += "mehr")
-	 v.insert(v.begin() + index, neues_element); // neues element an Position "index" einfügen 0 <= index <= size()
-	 // Falls index == size(): am Ende anhängen, sonst: alte Elemente ab Index werden eine Position nach hinten verschoben (teuer)
+   v.push_back(neues_element); // ein neues Element am Ende anhängen (ähnlich string += "mehr")
+   v.insert(v.begin() + index, neues_element); // neues element an Position "index" einfügen 0 <= index <= size()
+   // Falls index == size(): am Ende anhängen, sonst: alte Elemente ab Index werden eine Position nach hinten verschoben (teuer)
 
-	 v.pop_back(); // letztes Element löschen (effizient)
-	 v.erase(v.begin() + index); // Element an Position index löschen, alles dahinter eine Position verschieben (teuer)
-	 v.clear(); // alles löschen
-	 #+END_SRC
-   - Zugriff
-	 #+BEGIN_SRC cpp
-	 v[k]; // Element bei Index k
-	 v.at(k); // wie v[k], aber Fehlermeldung, wenn nicht 0 <= k < size() (zum Debuggen)
-	 #+END_SRC
-   - Funktionen für Container benutzen in c++ immer Iteratoren, damit sie für verschiedene Container funktionieren
-	 - Iterator-Range
-	   #+BEGIN_SRC cpp
-	   // erstes Element
-	   v.begin()
+   v.pop_back(); // letztes Element löschen (effizient)
+   v.erase(v.begin() + index); // Element an Position index löschen, alles dahinter eine Position verschieben (teuer)
+   v.clear(); // alles löschen
+   #+END_SRC
+   Zugriff
+   #+BEGIN_SRC cpp
+   v[k]; // Element bei Index k
+   v.at(k); // wie v[k], aber Fehlermeldung, wenn nicht 0 <= k < size() (zum Debuggen)
+   #+END_SRC
+   Funktionen für Container benutzen in c++ immer Iteratoren, damit sie für verschiedene Container funktionieren. \\
+   Iterator-Range
+   #+BEGIN_SRC cpp
+   // erstes Element
+   v.begin()
 
-	   // hinter letztem Element
-	   v.end()
-	   #+END_SRC
-	 - im Header <algorithm>
-	 - alle Elemente kopieren
-	   #+BEGIN_SRC cpp
-	   std::vector<double> source = {1.0, 2, 3, 4, 5};
-	   std::vector<double> target(source.size(), 0.0);
-	   std::copy(source.begin(), source.end(), target.begin());
-	   std::copy(source.begin() + 2, source.end() - 1, target.begin()); // nur index 2 .. size() - 1 kopieren
-	   #+END_SRC
-	 - Elemente sortieren
-	   #+BEGIN_SRC cpp
-	   std::sort(v.begin(), v.end()); // "in-place" sortieren
-	   #+END_SRC
-	 - Elemente mischen:
-	   #+BEGIN_SRC cpp
-	   std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
-	   #+END_SRC
+   // hinter letztem Element
+   v.end()
+   #+END_SRC
+   im Header \code{<algorithm>}
+   alle Elemente kopieren
+   #+BEGIN_SRC cpp
+   std::vector<double> source = {1.0, 2, 3, 4, 5};
+   std::vector<double> target(source.size(), 0.0);
+   std::copy(source.begin(), source.end(), target.begin());
+   std::copy(source.begin() + 2, source.end() - 1, target.begin()); // nur index 2 .. size() - 1 kopieren
+   #+END_SRC
+   Elemente sortieren
+   #+BEGIN_SRC cpp
+   std::sort(v.begin(), v.end()); // "in-place" sortieren
+   #+END_SRC
+   Elemente mischen:
+   #+BEGIN_SRC cpp
+   std::random_shuffle(v.begin(), v.end()); // "in-place" mischen
+   #+END_SRC
 *** Effizienz von push_back
-	Warum ist push_back() effizient? (bei std::vector)
-	- veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens bei Initialisierung, bekannt)
-	  - sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (std::list)
-	- modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel push_back())
-	  - dies kann sehr effizient unterstützt werden $\implies$ dynamisches Array
-	- std::vector verwaltet intern ein statisches Array der Größe "capacity", v.capacity() >= c.size()
-	  - wird das interne Array zu klein $\implies$ wird automatisch auf ein doppelt so großes umgeschaltet
-	  - ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve
-	- Verhalten bei push_back():
-	  1. noch Reserve vorhanden: lege neues Element im eine unbenutzte Speicherzelle $\implies$ billig
-	  2. keine Reserve
-		 1. alloziere neues statisches Array mit doppelt Kapazität
-		 2. kopiere die Daten aus dem altem in das neue Array
-		 3. gebe das alte Array frei
-		 4. gehe zum Anfang des Algorithmus, jetzt ist wieder Reserve vorhanden
-	- das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist
-	- Beispiel:
-	  #+BEGIN_SRC cpp
-	  std::vector<int> v;
+	Warum ist \code{push\_back()} effizient? (bei \code{std::vector}). \\
+	Veraltete Lehrmeinung: Arrays sind nur effizient wenn statisch (das heißt Größe zur Compilezeit, oder spätestens bei Initialisierung, bekannt),
+	sonst: andere Datenstruktur verwenden, zum Beispiel verkettete Liste (\code{std::list}) \\
+	modern: bei vielen Anwendungen genügt, wenn Array (meist) nur am Ende vergrößert wird (zum Beispiel \code{push\_back()}).
+	Dies kann sehr effizient unterstützt werden $\implies$ dynamisches Array.
+	\code{std::vector} verwaltet intern ein statisches Array der Größe "capacity", \code{v.capacity() >= c.size()}
+	Wird das interne Array zu klein $\implies$ wird automatisch auf ein doppelt so großes umgeschaltet.
+	Ist das interne Array zu groß, bleiben unbenutzte Speicherzellen als Reserve.
+	Verhalten bei push_back():
+	1. noch Reserve vorhanden: lege neues Element im eine unbenutzte Speicherzelle $\implies$ billig
+	2. keine Reserve
+	   1. alloziere neues statisches Array mit doppelt Kapazität
+	   2. kopiere die Daten aus dem altem in das neue Array
+	   3. gebe das alte Array frei
+	   4. gehe zum Anfang des Algorithmus, jetzt ist wieder Reserve vorhanden
+	Das Umkopieren ist nicht zu teuer, weil es nur selten notwendig ist.
+	#+begin_ex latex
+	#+BEGIN_SRC cpp
+	std::vector<int> v;
 
-	  for(int i = 0; i < 32; i++) v.push_back(k);
-	  #+END_SRC
-	  |     k | capacity vor push_back() | capacity nach push_back() | size() | Reserve | #Umkopieren |
-	  |-------+--------------------------+---------------------------+--------+---------+-------------|
-	  |     0 |                        0 |                         1 |      1 |       0 |           0 |
-	  |     1 |                        1 |                         2 |      2 |       0 |           1 |
-	  |-------+--------------------------+---------------------------+--------+---------+-------------|
-	  |     2 |                        2 |                         4 |      3 |       1 |           2 |
-	  |     3 |                        4 |                         4 |      4 |       0 |           2 |
-	  |-------+--------------------------+---------------------------+--------+---------+-------------|
-	  |     4 |                        4 |                         8 |      5 |       3 |           4 |
-	  |   5-7 |                        8 |                         8 |      8 |       0 |           0 |
-	  |-------+--------------------------+---------------------------+--------+---------+-------------|
-	  |     8 |                        8 |                        16 |      9 |       7 |           8 |
-	  |  9-15 |                       16 |                        16 |     16 |       0 |           0 |
-	  |-------+--------------------------+---------------------------+--------+---------+-------------|
-	  |    16 |                       16 |                        32 |     17 |      15 |          16 |
-	  | 17-31 |                       32 |                        32 |     32 |       0 |           0 |
-	  - was kostet das:
-		- 32 Elemente einfügen = 32 Kopien extern $\implies$ intern
-		- aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern $\implies$ intern
-		- $\implies$ im Durchschnitt sind pro Einfügung 2 Kopien nötig
-		- $\implies$ dynamisches Array ist doppelt so teuer sie das statische  $\implies$ immer noch sehr effizient
-	- relevante Funktionen von std::vector
-	  #+BEGIN_SRC cpp
-	  v.size() // aktuelle Zahl der Elemente
-	  v.capacity() // aktuelle Zahl Speicherzellen
-	  assert(v.capacity() - v.size() >= 0) // Reserve
-	  v.resize(new_size) // ändert immer v.size(), aber v.capacity() nur wenn < new_size
-	  v.reserve(new_capacity) // ändert v.size() nicht, aber v.capacity() falls new_capacity >= size
-	  v.shrink_to_fit() // == v.reserve/v.size()) Reserve ist danach 0, wenn Endgröße erreicht
-	  #+END_SRC
+	for(int i = 0; i < 32; i++) v.push_back(k);
+	#+END_SRC
+	|     k | capacity vor push_back() | capacity nach push_back() | size() | Reserve | #Umkopieren |
+	|-------+--------------------------+---------------------------+--------+---------+-------------|
+	|     0 |                        0 |                         1 |      1 |       0 |           0 |
+	|     1 |                        1 |                         2 |      2 |       0 |           1 |
+	|-------+--------------------------+---------------------------+--------+---------+-------------|
+	|     2 |                        2 |                         4 |      3 |       1 |           2 |
+	|     3 |                        4 |                         4 |      4 |       0 |           2 |
+	|-------+--------------------------+---------------------------+--------+---------+-------------|
+	|     4 |                        4 |                         8 |      5 |       3 |           4 |
+	|   5-7 |                        8 |                         8 |      8 |       0 |           0 |
+	|-------+--------------------------+---------------------------+--------+---------+-------------|
+	|     8 |                        8 |                        16 |      9 |       7 |           8 |
+	|  9-15 |                       16 |                        16 |     16 |       0 |           0 |
+	|-------+--------------------------+---------------------------+--------+---------+-------------|
+	|    16 |                       16 |                        32 |     17 |      15 |          16 |
+	| 17-31 |                       32 |                        32 |     32 |       0 |           0 |
+	Was kostet das:
+	- 32 Elemente einfügen = 32 Kopien extern $\implies$ intern
+	- aus allem Array ins neu kopieren $(1 + 2 + 4 + 8 + 16) = 31$ kopieren intern $\implies$ intern
+	- $\implies$ im Durchschnitt sind pro Einfügung 2 Kopien nötig
+	- $\implies$ dynamisches Array ist doppelt so teuer sie das statische  $\implies$ immer noch sehr effizient
+	#+end_ex
+	Relevante Funktionen von std::vector:
+	#+BEGIN_SRC cpp
+	v.size() // aktuelle Zahl der Elemente
+	v.capacity() // aktuelle Zahl Speicherzellen
+	assert(v.capacity() - v.size() >= 0) // Reserve
+	v.resize(new_size) // ändert immer v.size(), aber v.capacity() nur wenn < new_size
+	v.reserve(new_capacity) // ändert v.size() nicht, aber v.capacity() falls new_capacity >= size
+	v.shrink_to_fit() // == v.reserve/v.size()) Reserve ist danach 0, wenn Endgröße erreicht
+	#+END_SRC
 	- wenn Reserve > size: capacity kann auch halbiert werden
 	- wichtige Container der c++ Standardbibliothek
-	- wir hatten dynamische Arrays std::string, std::vector, assoziative Arrays std::map, std::unordered_map
-	- std::set, std::unordered_set: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
-	- std::stack (Stapel, Keller): unterstützt push und pop() mit Last in- First out Semantik (LIFO) äquivalent zu push_back() und pop_back() bei std::vector
-	- std::queue (Warteschlange) push() und pop() mit First in-first out Semantik (FIFO)
-	- std::deque ("double-ended queue") gleichzeitig stack und queue, push, pop_front(), pop_back()
-	- std::priority_queue, push() und pop() - Element mit höchster niedrigster Priorität (user defined)
+	- wir hatten dynamische Arrays \code{std::string, std::vector, assoziative Arrays std::map, std::unordered\_map}
+	- \code{std::set, std::unordered\_set}: Menge, jedes Element ist höchstens einmal enthalten zum Beispiel Duplikate
+	- \code{std::stack} (Stapel, Keller): unterstützt \code{push()} und \code{pop()} mit Last in- First out Semantik (LIFO) äquivalent zu \code{push\_back()} und \code{pop\_back()} bei std::vector
+	- \code{std::queue} (Warteschlange) \code{push()} und \code{pop()} mit First in-first out Semantik (FIFO)
+	- \code{std::deque} ("double-ended queue") gleichzeitig stack und queue, \code{push(), pop\_front(), pop\_back()}
+	- \code{std::priority\_queue, push() und pop()} - Element mit höchster niedrigster Priorität (user defined)

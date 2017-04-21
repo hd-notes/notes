@@ -12,7 +12,7 @@
 	- CPU, GPU, RAM, HD, Display, Printer, Networks
 *** praktische Informatik
 	- Wie entwickelt man Software?
-	- Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?\hfill *IPI*, *IPK*
+	- Programmiersprachen und Compiler: Wie kommuniziert der Programmierer mit der Hardware?\hfill *IPI, IPK*
 	- Algorithmen und Datenstrukturen: Wie baut man komplexe Programme aus einfachen Grundbausteinen?\hfill *IAL*
 	- Softwaretechnik: Wie organisiert man sehr große Projekte?\hfill *ISW*
 	- Kernanwendung der Informatik: Betriebssysteme, Netzwerke, Parallelisierung\hfill *IBN*

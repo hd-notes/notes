@@ -76,7 +76,105 @@
    F[y_α] &= ∫_0^1 \d x f(y_0 + α δy, y_0' + α δy', x) \\
    &= F[y_0] + ∫_0^1 \d x (\frac{\partial f}{\partial y}(y_0, y_0', x) · α δy + \frac{\partial f}{\partial y'}(y_0, y_0', x) · α δy') + O(α^2) \\
    \shortintertext{Term linear in $α$ muss verschwinden:}
-   0 &= ∫_0^1 \d x (\frac{\partial f}{\partial y} δy x \frac{\partial f}{\partial y'} \dd{}{x} (δy)) \\
+   0 &= ∫_0^1 \d x (\frac{\partial f}{\partial y} δy + \frac{\partial f}{\partial y'} \dd{}{x} (δy)) \\
    \intertext{$\frac{\partial f}{\partial y'} δy = 0$ bei $0,1$}
    &= ∫_0^1 \d x (\frac{\partial f}{\partial y} - \dd{}{x}(\frac{\partial f}{\partial y'}))	δy = 0
+   \intertext{für beliebige $δy ⇒$ der Koeffizient von $δy$ im Integral muss verschwinden}
+   0 &= \frac{\partial f}{\partial y} - \dd{}{x}(\frac{\partial t}{\partial y'})  \tag{Eulersche Differentialgleichung}
    \end{align*}
+   Falls $y_0$ das Funktional $F$ extremalisiert, so gilt die obige Gleichung für $y_0 ∀ x ∈ [0, 1]$
+   #+begin_ex latex
+   $f(y, y', x) = y^2 + y^{\prime 2}$
+   \begin{align*}
+   \frac{\partial f}{\partial y} &= 2 y \\
+   \dd{}{x}(\frac{\partial f}{\partial y'}) &= \dd{}{x} 2y' = 2y'' \\
+   ⇒ y_0'' - y_0 &= 0
+   \end{align*}
+   #+end_ex
+   Beachte: $y$ und	$y'$ sind hier unabhängig, das heißt es spielt für die Herleitung der Eulerschen Differentialgleichung keine Rolle, dass $y'$ die Ableitung von $y$ ist.
+** Das Hamiltonsche Prinzip (Prinpip der kleinsten Wirkung)
+   Die Lage einer sehr großen Klasse von Systemen beschreben durch verallgemeinerte Koordinaten $(q_1, \dots, q_s), s:$ Zahl der Freiheitsgrade.
+   #+begin_ex latex
+   - $N$ Massenpunkte: $s = 3N, (q_1, \dots, q_ {3N}) = (x_1^1, x_1^2, x_1^3, \dots, x_N^1, x_N^2, x_N^3)$
+   - $1$ Massenpunkt in Kugelkoordinaten: $s = 3, (q_1, q_2, q_3) = (r, θ, φ)$
+   - eine dünne Stange: $s = 5$. Schwerpunktskoordinaten $x_s^1, x_s^2, x_s^3$. 2 Winkel zur Ausrichtung $θ, φ$
+   - Rad auf einer Welle: $s = 1, q_1 = φ$
+   - Perle auf einem Draht: $s = 1, q_1 = s$ (Bogenlänge)
+   #+end_ex
+   *Hamiltonsches Prinzip*: \\
+   Für jedes (in einer sehr großen Klasse) mechanische System $s$ Freiheitsgraden existiert die Lagrange-Funktion
+   $L(q_1, \dots, q_s, \dot q_1, \dots, \dot q_s, t)$ (kurz $L(q, \dot q, t)$), für die gilt: \\
+   Die physikalische Beweging aus einer Lage $q(t_1) = q^{(1)}$ in eine Lage $q(t_2) = q^{(2)}$ verläuft so,
+   dass das Wirkungsfunktional
+   \[S[q] = ∫_{t_1}^{t_2} \d t L(q, \dot q, t)\]
+   extremal wird.
+   #+begin_note latex
+   - für kliene Bahnabschnitte: Minimalität
+   - DGL. aus Stationalität
+   - Wirkung: Dimensionsgründe $[S] = \text{ Zeit } · \text{ Wirkung}$
+   - Bedeutung des Wirkungsprinzip kann man kaum überschätzen. [spezielle + allgemeine Relativitätstheorie, Feldtheorie (Elektro-Dynamik), Quantenfeldtheorie (Teilchenphysik, kondensierte Materie), Quantengravitation]
+   #+end_note
+   für $s = 1$ folgt aus dem Hamiltonschen Prinzip:
+   \[\dd{}{t} \frac{\partial L}{\dot q} - \frac{\partial L}{\partial q} = 0\]
+   (Euler-Lagrange-Gleichung, oder Lagrange-Gleichung der 2. Art) \\
+   für $s \geq 1$:
+   \[\dd{}{t} \frac{\partial L}{\dot q_i} - \frac{\partial L}{\partial q_i} = 0, i = 1,\dots,s\]
+** Form der Lagrange-Funktion und erste Anwendungen
+   Fundamentaler Fakt:
+   \[L = T - V\]
+   - $T$: kinetische Energie
+   - $V$: potentielle Energie
+   #+ATTR_LATEX: :options [Massenpunkt im Potenzial]
+   #+begin_ex latex
+   \begin{align*}
+   L(\v x, \dot{\v x}, t) &= \frac{m}{2} \dot{\v x}^2 - V(\v x) \\
+   \dd{}{t} \frac{\partial L}{\partial \dot x^i} - \frac{\partial}{\partial x^i} L &= 0 \\
+   \dd{}{t} (m \dot x^i) - (-\frac{\partial V}{\partial x_i}) &= 0 \\
+   m \ddot x^i - F^i &= 0 \\
+   m \ddot{\v x} - \v F = 0
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [System wechselwirkender Massenpunkte]
+   #+begin_ex latex
+   \begin{align*}
+   T &= \sum_{a} T_a = \sum_{a} \frac{m_a}{2} \dot{\v x_a}^2 \\
+   V &= \sum_{\substack{a, b\\a < b}} V_{ab} (\abs{x_a - x_b})
+   \end{align*}
+   Lagrange Gleichung für $x_a^i$:
+   \begin{align*}
+   m_a \ddot{x}_a^i - \frac{\partial}{\partial x_a^i}(\sum_{b} V_{ab} (\abs{\v x_a - \v x_b})) &= 0 \\
+   m_a \ddot{\v x}_a - \v ∇_a \sum_{b} V_{ab} (\abs{\v x_a - \v x_b}) &= 0 \\
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Perle auf Draht]
+   #+begin_ex latex
+   Draht: beschrieben durch $\v x(s)$ ($s$: Bogenlänge)
+   \begin{align*}
+   L &= \frac{m}{2} v^2 - V(\v x(s)) \\
+   v &= \abs{\dd{\v x}{s}} \dd{s}{t} \\
+   L &= \frac{m}{2} \dot{s}^2 - V(\v x(s)) \\
+   \dd{}{t} \frac{\partial L}{\partial \dot s} - \frac{\partial L}{\partial s} &= 0 \\
+   m \ddot{s} - \sum_{i} \underbrace{\frac{\partial L}{\partial x^i}}_{-\frac{\partial V}{\partial x^i}} \frac{\partial x^i}{\partial s} &= 0 \\
+   m \ddot{s} - \v F · \frac{\v x}{s} &= 0
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Mathematisches Pendel im Fahrstuhl]
+   #+begin_ex latex
+   Beschleunigung des Fahrstuhls: $v_y = a·t$
+   \begin{align*}
+   L &= \frac{m}{2} \v v^2 - V \\
+   \v v &= (\dd{}{t}(l \sin{φ}), a t - \dd{}{t}(l \cos{φ})) \\
+   &= (l \cos(φ)\dot φ, a t + l \sin φ \dot φ) \\
+   V &= m g (\frac{a}{2} t^2 - l \cos{φ}) \\
+   0 &= \dd{}{t} \frac{\partial L}{\partial \dot φ} - \frac{\partial L}{\partial φ} \\
+   \end{align*}
+   \begin{multline*}
+   = \dd{}{t} (\frac{m}{2}(l^2 \cos^2 φ 2 \dot φ + 2 a t l \sin φ + l^2 \sin^2 φ 2 \dot φ)) - \\
+   \left\string(\frac{m}{2} (l^2 \dot φ^2 2 \cos φ (-\sin φ) + 2 a t l \dot φ \cos φ + l^2 \dot φ^2 2 \sin φ \cos φ) - m g l \sin φ\right\string)
+   \end{multline*}
+   \begin{multline*}
+   0 = (2 l^2 \cos φ (-\sin φ) \dot φ^2 + l^2 \cos^2 φ \ddot{φ} + a l \sin{φ} + a t l \cos φ \dot φ + l^2 2\sin φ \cos φ \dot φ^2 + l^2 \sin^2 φ \ddot φ) \\
+   - t a l \dot φ \cos{φ} + g l \sin φ
+   \end{multline*}
+   \[0 = l^2 \ddot{φ} + l \sin φ(a + g)\]
+   #+end_ex

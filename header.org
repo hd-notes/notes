@@ -71,6 +71,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\RS}{RS}
 #+LATEX_HEADER: \DeclareMathOperator{\GL}{GL}
 #+LATEX_HEADER: \DeclareMathOperator{\Eig}{Eig}
+#+LATEX_HEADER: \DeclareMathOperator{\rd}{rd}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs
@@ -79,6 +80,7 @@
 #+LATEX_HEADER: \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 #+LATEX_HEADER: \makeatother
 
+#+LATEX_HEADER: \newcommand{\code}{\texttt}%
 #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
 #+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 #+LATEX_HEADER: \newcommand{\euler}{e}

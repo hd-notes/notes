@@ -1,45 +1,43 @@
 * Umgebungsmodell
-  Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für die prozedurale Programmierung
-  - Regeln für Auswertung von Ausdrücken
-  - Regeln für automatische Speicherverwaltung
-	- Freigeben nicht mehr benötigter Speicherzellen, $\implies$ bessere Approximation von "unendlich viel Speicher"
-  - Umgebung beginnt normalerweise bei "{" und endet bei "}" \\
-	Ausnahmen:
-	- $for$: Umgebung beginnt schon bei "for" $\implies$ Laufvariable ist Teil der Umgebung
-	- Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf $\implies$ Speicherzellen für Argumente und Ergebnis gehören zur Umgebung
-	- globale Umgebung außerhalb aller "{ }" Klammern
-  - automatische Speicherverwaltung
-	- Speicherzellen, die in einer Umgebung angelegt werde (initialisiert, deklariert) werde, am Ende der Umgebung in umgekehrter Reihenfolge freigegeben
-	- Computer fügt vor "}" automatisch die Notwendigen Befehle ein
-	- Speicherzellen in der globalen Umgebung werden am Programmende freigegeben
-	  #+BEGIN_SRC cpp
-	- int global = 1;
-	  int main() {
-		  int l = 2;
-		  {
-			  int m = 3
-		  } // <- m wird freigegeben
-	  } // <- l wird freigegeben
-	  // <- global wird freigegeben
-	  #+END_SRC
-  - Umgebungen können beliebig geschachtelt werden $\implies$ alle Umgebungen bilden einen Baum, mit der globalen Umgebung als Wurzel
-  - Funktionen sind in der globalen Umgebung definiert
-	- Umgebung jeder Funktion sind Kindknoten der globalen Umgebung (Ausnahme: Namensräume $\implies$ siehe unten) \\
+  Gegenstück zum Substitutionsmodell (in der funktionalen Programmierung) für die prozedurale Programmierung.
+  Regeln für Auswertung von Ausdrücken, Regeln für automatische Speicherverwaltung
+  - Freigeben nicht mehr benötigter Speicherzellen, $\implies$ bessere Approximation von "unendlich viel Speicher"
+  Umgebung beginnt normalerweise bei "{" und endet bei "}". Ausnahmen:
+  - $for$: Umgebung beginnt schon bei "for" $\implies$ Laufvariable ist Teil der Umgebung
+  - Funktionsdefinitionen: Umgebung beginnt beim Funktionskopf $\implies$ Speicherzellen für Argumente und Ergebnis gehören zur Umgebung
+  - globale Umgebung außerhalb aller "{ }" Klammern
+  automatische Speicherverwaltung
+  - Speicherzellen, die in einer Umgebung angelegt werde (initialisiert, deklariert) werde, am Ende der Umgebung in umgekehrter Reihenfolge freigegeben
+  - Computer fügt vor "}" automatisch die Notwendigen Befehle ein
+  - Speicherzellen in der globalen Umgebung werden am Programmende freigegeben
+  #+BEGIN_SRC cpp
+  int global = 1;
+  int main() {
+      int l = 2;
+      {
+	      int m = 3
+      } // <- m wird freigegeben
+   } // <- l wird freigegeben
+   // <- global wird freigegeben
+   #+END_SRC
+  Umgebungen können beliebig geschachtelt werden $\implies$ alle Umgebungen bilden einen Baum, mit der globalen Umgebung als Wurzel.
+  Funktionen sind in der globalen Umgebung definiert.
+  Umgebung jeder Funktion sind Kindknoten der globalen Umgebung (Ausnahme: Namensräume $\implies$ siehe unten) \\
 	  $\implies$ Funktions Umgebung ist *nicht* in der Umgebung, wo die Funktion aufgerufen wird
-  - Jede Umgebung besitzt eine *Zuordnungstabelle* für alle Speicherzellen, die in der Umgebung definiert wurden
-	| Name | Typ | aktueller Wert |
-	|------+-----+----------------|
-	| l    | int | 2              |
-  - jeder Name kann pro Umgebung nur einmal vorkommen
-  - Ausnahme Funktionsnamen können mehrmals vorkommen bei function overloading (nur c++)
-  - Alle Befehle werden relativ zur aktuellen Umgebung ausgeführt
-	- aktuell: Zuordnungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
-	  Beispiel: $c = a * b;$ \\
-	  Regeln:
-	- wird der Name (nur $a, b, c$) in der aktuellen Zuordnungstabelle gefunden
-	  1. Typprüfung $\implies$ Fehlermeldung, wenn Typ und Operation nicht zusammenpassen
-	  2. andernfalls, setze aktuellen Wert aus Tabelle in Ausdruck ein (ähnlich Substitutionsmodell)
-	- wird Name nicht gefunden: suche in der Elternumgebung weiter
+  Jede Umgebung besitzt eine *Zuordnungstabelle* für alle Speicherzellen, die in der Umgebung definiert wurden
+  | Name | Typ | aktueller Wert |
+  |------+-----+----------------|
+  | l    | int |              2 |
+  Jeder Name kann pro Umgebung nur einmal vorkommen.
+  Ausnahme: Funktionsnamen können mehrmals vorkommen bei function overloading (nur c++).
+  Alle Befehle werden relativ zur aktuellen Umgebung ausgeführt. \\
+  aktuell: Zuordnungstabelle der gleichen Umgebung und aktueller Wert zum Zeitpunkt des Aufrufs \\
+	Beispiel: $c = a * b;$ \\
+  Regeln:
+  - wird der Name (nur $a, b, c$) in der aktuellen Zuordnungstabelle gefunden
+	1. Typprüfung $\implies$ Fehlermeldung, wenn Typ und Operation nicht zusammenpassen
+	2. andernfalls, setze aktuellen Wert aus Tabelle in Ausdruck ein (ähnlich Substitutionsmodell)
+  - wird Name nicht gefunden: suche in der Elternumgebung weiter
 	- wird der Name bis zur Wurzel (globale Umgebung) nicht gefunden $\implies$ Fehlermeldung
 	- $\implies$ ist der Name in mehreren Umgebungen vorhanden gilt der zuerst gefundene (Typ, Wert)
   - $\implies$ Programmierer muss selbst darauf achten, dass
@@ -49,37 +47,35 @@
 	Ziele:
 	- Gruppieren von Funktionalität in Module (zusätzlich zu Headern)
 	- Verhinderung von Namenskollisionen
+  Beispiel: c++ Standardbibliothek:
+  #+BEGIN_SRC cpp
+  namespace std {
+      double sqrt(double x);
+      namespace chrono {
+          class system_clock;
+      }
+  }
 
-	Beispiel: c++ Standardbibliothek:
-	#+BEGIN_SRC cpp
-	namespace std {
-	double sqrt(double x);
-	namespace chrono {
-	class system_clock;
-	}
-	}
+  // Benutzung mit Namespace-Präfix:
+  std::sqrt(80);
+  std::chrono::system_clock clock;
+  #+END_SRC
+  Besonderheit: mehrere Blöcke mit selbem Namensraum werden verschmolzen.
+  #+BEGIN_SRC cpp
+  int p = 2;
+  int q = 3;
 
-	// Benutzung mit Namespace-Präfix:
-	std::sqrt(80);
-	std::chrono::system_clock clock;
-	#+END_SRC
-	Besonderheit: mehrere Blöcke mit selbem Namensraum werden verschmolzen
-   Beispiel
-   #+BEGIN_SRC cpp
-   int p = 2;
-   int q = 3;
+  int foo(int p) {
+	  return p * q;
+  }
 
-   int foo(int p) {
-	   return p * q;
-   }
-
-   int main() {
-	   int k = p * q; // beides global => 6 = 2 * 3
-	   int p = 4; // lokales p verdeckt globales p
-	   int r = p * q; // p lokal, q global => 12 = 4 * 3
-	   int s = foo(p); // lokale p von main() wird zum lokalen p von foo() 12 = 4 * 3
-	   int t = foo(q); // globales q wird zum lokalen p von foo() 9 = 3 * 3
-	   int q = 5;
-	   int n = foo(g); // lokales q wird zum lokalen p von foo() 15 = 5 * 3
-   }
-   #+END_SRC
+  int main() {
+	  int k = p * q; // beides global => 6 = 2 * 3
+	  int p = 4; // lokales p verdeckt globales p
+	  int r = p * q; // p lokal, q global => 12 = 4 * 3
+	  int s = foo(p); // lokale p von main() wird zum lokalen p von foo() 12 = 4 * 3
+	  int t = foo(q); // globales q wird zum lokalen p von foo() 9 = 3 * 3
+	  int q = 5;
+	  int n = foo(g); // lokales q wird zum lokalen p von foo() 15 = 5 * 3
+  }
+  #+END_SRC

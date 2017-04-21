@@ -1,57 +1,72 @@
 * Substitutionsmodell (funktionale Programmierung)
-  - einfaches Modell für arithmetische Berechnung "Taschenrechner"
-  - Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißen "Literale"
-  - elementare Funktionen: haben eine oder mehrere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
-	- add(1,2) \rightarrow 3, mul(2,3) \rightarrow 6, analog sub(), div(), mod()
-  - Funktionsaufrufe können verschachtelt werden, das heißt Argumente kann Ergebnis einer anderen Funktion sein
-	- mul(add(1,2),sub(5,3)) \rightarrow 6
+  Einfaches Modell für arithmetische Berechnung "Taschenrechner". Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißen "Literale"
+  Elementare Funktionen: haben eine oder mehrere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
+  \code{add(1,2) \to 3, mul(2,3) \to 6}, analog \code{sub(), div(), mod()}
+  Funktionsaufrufe können verschachtelt werden, das heißt Argumente kann Ergebnis einer anderen Funktion sein. \\
+  \code{mul(add(1,2),sub(5,3)) \to 6}
 ** Substitutionsmodell
    Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen sind) durch den Wert des Ergebnisses ersetzen ("substituieren"). Geschachtelte Ausdrücke lassen sich so von innen nach außen auswerten.
-   \[mul(add(1,2),sub(5,3))\]
-   \[mul(3,sub(5,3))\]
-   \[mul(3,2)\]
-   \[6\]
-   - Die arithmetischen Operationen add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
-   - Die meisten Programmiersprachen bieten außerdem algebraische Funktionen wie: sqrt(), sin(), cos(), log()
-	 - sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibliothek"
-   - in C++: mathematisches Modul des Standardbibliothek: "cmath"
-   - Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "%"
-   - mul(add(1,2),sub(5,3)) $\iff$ ((1+2)*(5-3))
-	 - oft besser, unter anderem weil man Klammer weglassen darf
-	   1. "Punkt vor Strichrechnung" 3+4*5 $\iff$ 3+(4*5), mul, div, mod binden stärker als add, sub
-	   2. Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
-		  1+2+3-4+5 $\iff$ ((((1+2)+3)-4)+5)
-	   3. äußere Klammer kann man weglassen (1+2)$\iff$ 1+2
-   - Computer wandeln Infix zuerst in Präfix Notation um
-	 1. weggelassene Klammer wieder einfügen
-	 2. Operatorensymbol durch Funktionsnamen ersetzen und an Präfix-Position verschieben
-		\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
-		\[(((1 + 2) + ((3 * 4) / (1 + 5))) - 2)\]
-		\[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
-		\[sub(add(3,div(12,6)), 2)\]
-		\[sub(add(3,2), 2)\]
-		\[sub(5, 2)\]
-		\[2\]
+   #+begin_center latex
+   \code{mul(add(1,2),sub(5,3))} \\
+   \code{mul(3,sub(5,3))} \\
+   \code{mul(3,2)} \\
+   \code{6}
+   #+end_center
+   Die arithmetischen Operationen add(), sub(), mul(), div(), mod() werden normalerweise von der Hardware implementiert.
+   Die meisten Programmiersprachen bieten außerdem algebraische Funktionen wie: \code{sqrt(), sin(), cos(), log()}.
+   Diese sind meist nicht in Hardware, aber vorgefertigte Algorithmen, werden mit Programmiersprachen geliefert, "Standardbibliothek".
+   In C++: mathematisches Modul des Standardbibliothek: "cmath".
+   Für Arithmetik gebräuchlicher ist "Infix-Notation" mit Operator-Symbolen "+", "-", "*", "/", "%" \\
+   \code{mul(add(1,2),sub(5,3)) $\iff$ ((1+2)*(5-3))} \\
+   Oft besser, unter anderem weil man Klammer weglassen darf.
+   1. "Punkt vor Strichrechnung" 3+4*5 $\iff$ 3+(4*5), \code{mul, div, mod} binden stärker als \code{add, sub}
+   2. Operatoren gleicher Präzedenz werden von links nach rechts ausgeführt (links-assoziativ) \\
+	  1+2+3-4+5 $\iff$ ((((1+2)+3)-4)+5)
+   3. äußere Klammer kann man weglassen (1+2)$\iff$ 1+2
+   Computer wandeln Infix zuerst in Präfix Notation um
+   1. weggelassene Klammer wieder einfügen
+   2. Operatorensymbol durch Funktionsnamen ersetzen und an Präfix-Position verschieben \\
+   #+begin_center latex
+   \code{1 + 2 + 3 * 4 / (1 + 5) - 2} \\
+   \code{(((1 + 2) + ((3 * 4) / (1 + 5))) - 2)} \\
+   \code{sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)} \\
+   \code{sub(add(3,div(12,6)), 2)} \\
+   \code{sub(add(3,2), 2)} \\
+   \code{sub(5, 2)} \\
+   \code{2}
+   #+end_center
 ** Bäume
-   - bestehen aus Knoten und Kanten (Kreise und Pfeile)
-   - Kanten verbinden Knoten mit ihren Kind-knoten
-   - jeder Konten (außer der Wurzel) hat genau ein Elternteil ("parent node")
-   - Knoten ohne Kinder heißen Blätter ("leaves / leaf node")
-   - Teilbaum
-	 - wähle beliebigen Knoten
-	 - entferne temporär dessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Teilbaum des Originalbaumes)
+   Bestehen aus Knoten und Kanten (Kreise und Pfeile).
+   Kanten verbinden Knoten mit ihren Kind-knoten.
+   Jeder Konten (außer der Wurzel) hat genau ein Elternteil ("parent node").
+   Knoten ohne Kinder heißen Blätter ("leaves / leaf node").
+   Teilbaum:
+   - wähle beliebigen Knoten
+   - entferne temporär dessen Elternkante, dadurch wird der Knoten temporär zu einer Wurzel, dieser Knoten mit allen Nachkommen bildet wieder einen Baum (Teilbaum des Originalbaumes)
    - trivialer Teilbaum hat nur einen Knoten
-   - Tiefe: Abstand eines Knotens von der Wurzel (Anzahl der Kanten zwischen Knoten und Wurzel)
-	 - Tiefe des Baums: maximale Tiefe eines Knoten
-*** Beispiel
-	\[1 + 2 + 3 * 4 / (1 + 5) - 2\]
-	\[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
-	\begin{center}
-	\Tree [ .sub [ .add [ .add 1 2 ] [ .div [ .mul 3 4 ] [ .add 1 5 ] ] ] 2 ]
-	\end{center}
+   Tiefe: Abstand eines Knotens von der Wurzel (Anzahl der Kanten zwischen Knoten und Wurzel)
+   - Tiefe des Baums: maximale Tiefe eines Knoten
+   #+begin_ex latex
+   \mbox{}
+   \begin{center}
+   \code{1 + 2 + 3 * 4 / (1 + 5) - 2} \\
+   \code{sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)} \\
+   \Tree [ .sub [ .add [ .add 1 2 ] [ .div [ .mul 3 4 ] [ .add 1 5 ] ] ] 2 ]
+   \end{center}
+   #+end_ex
 ** Rekursion
    Rekursiv $\estimates$ Algorithmus für Teilproblem von vorn.
 ** Präfixnotation aus dem Baum rekonstruieren
+   1. <<algstart1>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
+   2. sonst:
+	  - Drucke Funktionsnamen
+	  - Drucke "("
+	  - Wiederhole den Algorithmus ab [[algstart1]] für das linke Kind (Teilbaum mit Wurzel = linkes Kind)
+	  - Drucke ","
+	  - Wiederhole den Algorithmus ab [[algstart1]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
+	  - Drucke ")"
+	$\implies$ \code{sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)}
+** Infixnotation aus dem Baum rekonstruieren
    1. <<algstart2>> Wenn die Wurzel ein Blatt ist: Drucke die Zahl
    2. sonst:
 	  - Drucke Funktionsnamen
@@ -60,7 +75,7 @@
 	  - Drucke Operatorsymbol
 	  - Wiederhole den Algorithmus ab [[algstart2]] für das rechte Kind (Teilbaum mit Wurzel = rechtes Kind)
 	  - Drucke ")"
-	$\implies$ \[sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)\]
+	$\implies$ \code{sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)}
    $\implies$ *inorder*
 ** Berechnen des Werts mit Substitutionsmodell
    1. <<algstart3>> Wenn Wurzel dein Blatt gib Zahl zurück

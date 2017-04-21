@@ -2,9 +2,6 @@
 #+TITLE: Einführung in die Anwendungsorientierte Informatik (Köthe)
 
 #+INCLUDE: "../header.org" :minlevel 1
-#+LATEX_HEADER: \setlistdepth{20}
-#+LATEX_HEADER: \renewlist{itemize}{itemize}{20}
-#+LATEX_HEADER: \setlist[itemize]{label=$\cdot$}
 
 # #+BEGIN_SRC cpp
 # for(int i = 0; i < 5) {
@@ -25,194 +22,195 @@
 #+INCLUDE: "itertators.org" :minlevel 1
 
 * Insertion Sort
-  schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compiler und CPU ab
-  - Idee von Insertion Sort:
-	- wie beim Aufnehmen und Ordnen eines Kartenblatts
-	- gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
-	- Einfügen des k-ten Elements an richtiger Stelle \rightarrow Erzeuge Lücke an richtiger Position durch verschieben von Elementen nach rechts
-	- Wiederholung für $k = 1, \ldots, N$
-	- Beispiel:
-	  | 4 | 2 | 3 | 5 | 1 |
-	  |---+---+---+---+---|
-	  | 4 | _ | 3 | 5 | 1 |
-	  | _ | 4 | 3 | 5 | 1 |
-	  | 2 | 4 | 3 | 5 | 1 |
-	  |---+---+---+---+---|
-	  | 2 | 4 | _ | 5 | 1 |
-	  | 2 | _ | 4 | 5 | 1 |
-	  | 2 | 3 | 4 | 5 | 1 |
-	  |---+---+---+---+---|
-	  | 2 | 3 | 4 | _ | 1 |
-	  | 2 | 3 | 4 | 5 | 1 |
-	  |---+---+---+---+---|
-	  | 2 | 3 | 4 | 5 | _ |
-	  | _ | 2 | 3 | 4 | 5 |
-	  | 1 | 2 | 3 | 4 | 5 |
-	  #+BEGIN_SRC cpp
-	  void insertion_sort(std::vector<double> & v) {
-		  for(int i = 0; i < v.size(); i++) {
-			  double current = v[i];
-			  int j = i; // Anfangsposition der Lücke
-			  while(j > 0) {
-				  if(v[j - 1] < current) { // -> if(cmp(a, b))
-					  break; // j ist richtige Position der Lücke
-				  }
-				  v[j] = v[j - 1];
-				  j--;
-			  }
-			  v[j] = current;
-		  }
-	  }
-	  #+END_SRC
-	- andere Sortierung: definiere Funktor cmp(a, b), der das gewünschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung)
-	- neue Sortierung am besten per Lambda-Funktion an std::sort übergeben
-	  #+BEGIN_SRC cpp
-	  std::sort(v.begin(), v.end()); // Standartsort mit "<"
-	  std::sort(v.begin(), v.end(), [](double a, double b) { return a < b; }); // Standardsortierung aufsteigen
-	  std::sort(v.begin(), v.end(), [](double a, double b) { return b < a; }); // absteigende Sortierung
-	  std::sort(v.begin(), v.end(), [](double a, double b) { return std::abs(a) < std::abs(b); }); // Normal nach Betrag; // Normal nach Betrag
-	  std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
-		  std::transform(a.begin(), a.end(), a.begin(), std::tolower);
-		  std::transform(b.begin(), b.end(), b.begin(), std::tolower);
-		  return a < b;
-	  });
-	  #+END_SRC
-* generische Programmierung
-  insertion_sort soll für beliebige Elementtypen funktionieren
+  Schnellster Sortieralgorithmus für kleine Arrays ($n\leq 30$) hängt von Compiler und CPU ab.
+  Idee von Insertion Sort:
+  - wie beim Aufnehmen und Ordnen eines Kartenblatts
+  - gegeben: bereits sortierte Teilmenge bis Position $k - 1$ Karten bereits in Fächer
+  - Einfügen des k-ten Elements an richtiger Stelle \rightarrow Erzeuge Lücke an richtiger Position durch verschieben von Elementen nach rechts
+  - Wiederholung für $k = 1, \ldots, N$
+  - Beispiel:
+    | 4 | 2 | 3 | 5 | 1 |
+    |---+---+---+---+---|
+    | 4 | _ | 3 | 5 | 1 |
+    | _ | 4 | 3 | 5 | 1 |
+    | 2 | 4 | 3 | 5 | 1 |
+    |---+---+---+---+---|
+    | 2 | 4 | _ | 5 | 1 |
+    | 2 | _ | 4 | 5 | 1 |
+    | 2 | 3 | 4 | 5 | 1 |
+    |---+---+---+---+---|
+    | 2 | 3 | 4 | _ | 1 |
+    | 2 | 3 | 4 | 5 | 1 |
+    |---+---+---+---+---|
+    | 2 | 3 | 4 | 5 | _ |
+    | _ | 2 | 3 | 4 | 5 |
+    | 1 | 2 | 3 | 4 | 5 |
   #+BEGIN_SRC cpp
-	  template<typename T>
-	  void insertion_sort(std::vector<T> & v) {
-		  for(int i = 0; i < v.size(); i++) {
-			  T current = v[i];
-			  int j = i; // Anfangsposition der Lücke
-			  while(j > 0) {
-				  if(v[j - 1] < current) { // -> if(cmp(a, b))
-					  break; // j ist richtige Position der Lücke
-				  }
-				  v[j] = v[j - 1];
-				  j--;
-			  }
-			  v[j] = current;
-		  }
-	  }
+  void insertion_sort(std::vector<double> & v) {
+    for(int i = 0; i < v.size(); i++) {
+  	  double current = v[i];
+  	  int j = i; // Anfangsposition der Lücke
+  	  while(j > 0) {
+  		  if(v[j - 1] < current) { // -> if(cmp(a, b))
+  			  break; // j ist richtige Position der Lücke
+  		  }
+  		  v[j] = v[j - 1];
+  		  j--;
+  	  }
+  	  v[j] = current;
+    }
+  }
   #+END_SRC
-  - Ziel: benutze template-Mechanismus, damit *eine* Implementation für viele verschiedene Typen verwendbar ist
-	- erweitert funktionale und prozedurale und objekt-orientiere Programmierung
-  - zwei Arten von Templates ("Schablone"):
-	1. Klassen-templates für Datenstrukturen, zum Beispiel Container sollen beliebige Elementtypen unterstützen
-	   - Implementation $\implies$ später
-	   - Benutzung: Datenstrukturname gefolgt vom Elementtyp in spitzen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
-	2. Funktionen-Templates: es gab schon function overloading
-	   #+BEGIN_SRC cpp
-	   int sq(int x) {
-		   return x * x;
-	   }
+  Andere Sortierung: definiere Funktor \code{cmp(a, b)}, der das gewünschte kleiner realisiert (gibt genau dann "true" zurück, wenn a "kleiner" b nach neuer Sortierung).
+  Neue Sortierung am besten per Lambda-Funktion \code{an std::sort} übergeben
+  #+BEGIN_SRC cpp
+  std::sort(v.begin(), v.end()); // Standartsort mit "<"
+  std::sort(v.begin(), v.end(), [](double a, double b) { return a < b; }); // Standardsortierung aufsteigen
+  std::sort(v.begin(), v.end(), [](double a, double b) { return b < a; }); // absteigende Sortierung
+  std::sort(v.begin(), v.end(), [](double a, double b) { return std::abs(a) < std::abs(b); }); // Normal nach Betrag; // Normal nach Betrag
+  std::sort(v.begin(), v.end(), [](std::string a, std::string b) {
+	  std::transform(a.begin(), a.end(), a.begin(), std::tolower);
+	  std::transform(b.begin(), b.end(), b.begin(), std::tolower);
+	  return a < b;
+  });
+  #+END_SRC
+* generische Programmierung
+  insertion_sort soll für beliebige Elementtypen funktionieren.
+  #+BEGIN_SRC cpp
+  template<typename T>
+  void insertion_sort(std::vector<T> & v) {
+	  for(int i = 0; i < v.size(); i++) {
+		  T current = v[i];
+		  int j = i; // Anfangsposition der Lücke
+		  while(j > 0) {
+			  if(v[j - 1] < current) { // -> if(cmp(a, b))
+				  break; // j ist richtige Position der Lücke
+			  }
+			  v[j] = v[j - 1];
+			  j--;
+		  }
+		  v[j] = current;
+	  }
+  }
+  #+END_SRC
+  Ziel: benutze template-Mechanismus, damit *eine* Implementation für viele verschiedene Typen verwendbar ist
+  - erweitert funktionale und prozedurale und objekt-orientiere Programmierung
+  zwei Arten von Templates ("Schablone"):
+  1. Klassen-templates für Datenstrukturen, zum Beispiel Container sollen beliebige Elementtypen unterstützen
+     - Implementation $\implies$ später
+	 - Benutzung: Datenstrukturname gefolgt vom Elementtyp in spitzen Klammern (std::vector<double>), oder mehrere Typen, zum Beispiel Schlüssel und Wert bei std::map<std::string, double>
+  2. Funktionen-Templates: es gab schon function overloading
+	 #+BEGIN_SRC cpp
+	 int sq(int x) {
+		 return x * x;
+	 }
 
-	   double sq(double x) {
-		  return x * x;
-	   }
+	 double sq(double x) {
+		return x * x;
+	 }
 
-	   // und so weiter für komplexe und rationale Zahlen...
-	   #+END_SRC
-	   - Nachteil
-		 - wenn die Implementationen gleich sind \rightarrow nutzlose Arbeit
-		 - Redundanz ist gefährlich: korrigiert man einen Bug wird leicht eine Variante vergessen
-	   - mit templates reicht eine Implementation
-		 #+BEGIN_SRC cpp
-		 template<typename T> // T: Platzhalter für beliebigen Typ, wird später durch einen tatsächlichen Typ ersetzt
-		 T sq(T x) {
-			 return x * x; // implizierte Anforderung an den Typ T, er muss Multiplikation unterstützen, sonst: Fehlermeldung
-		 }
-		 #+END_SRC
-		 - wie bei Substituieren von Variablen mit Werten, aber jetzt mit Typen
-		 - Benutzung:
-		   - Typen für die Platzhalter hinter dem Funktionsnamen in spitzen klammern
-			 #+BEGIN_SRC cpp
-			 sq<int>(2) == 4;
-			 sq<double>(3.0) == 9.0,
-			 #+END_SRC
-		   - meist kann man die Typenangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
-			 #+BEGIN_SRC cpp
-			 sq(2); // == sq<int>(2) == 4
-			 sq(3.0); // == sq<double>(3.0) == 9
-			 #+END_SRC
-		   - kombiniert man templates mit Overloading, wird die ausprogrammierte Variante vom Compiler bevorzugt.
-			 Komplizierte Fälle (Argument teilweise Template, teilweise hard_coded) $\implies$ für Fortgeschrittene
-		 - Beispiel 2: Funktion, die ein Array auf Konsole ausgibt, für beliebige Elementtypen
-		   #+BEGIN_SRC cpp
-		   template<typename ElementType>
-		   void print_vector(std::vector<ElementType> const & v) {
-			   std::cout << "{";
-			   if(v.size() > 0) {
-				   std::cout << " " << v[0];
-				   for(int i = 1; i < v.size(); i++) {
-					   std::cout << ", " << v[i];
-				   }
-			   }
-			   std::cout << " }";
-		   }
-		   #+END_SRC
-		 - Verallgemeinerung für beliebige Container mittels Iteratoren:
-		   #+BEGIN_SRC cpp
-		   std::list<int> l = {1, 2, 3};
-		   print_container(l.begin(), l.end()); // "{1,2,3}"
-		   #+END_SRC
-		 - es genügen forward_itertators
-		   #+BEGIN_SRC cpp
-		   Iterator iter2 = iter1; // Kopie erzeugen
-		   iter1++; // zum nächsten Element
-		   iter1 == iter2; // Zeigen sie auf das selbe Element?
-		   iter1 != end;
-		   *iter1; // Zugriff auf aktuelles Element
+	 // und so weiter für komplexe und rationale Zahlen...
+	 #+END_SRC
+	 Nachteil:
+	 - wenn die Implementationen gleich sind \rightarrow nutzlose Arbeit
+	 - Redundanz ist gefährlich: korrigiert man einen Bug wir leicht eine Variante vergessen
+	 Mit templates reicht eine Implementation:
+	 #+BEGIN_SRC cpp
+	 template<typename T> // T: Platzhalter für beliebigen Typ, wird später durch einen tatsächlichen Typ ersetzt
+	 T sq(T x) {
+		 return x * x; // implizierte Anforderung an den Typ T, er muss Multiplikation unterstützen, sonst: Fehlermeldung
+	 }
+	 #+END_SRC
+** Funktionstemplates
+   Wie bei Substituieren von Variablen mit Werten, aber jetzt mit Typen.
+   Benutzung:
+   Typen für die Platzhalter hinter dem Funktionsnamen in spitzen Klammern
+   #+BEGIN_SRC cpp
+   sq<int>(2) == 4;
+   sq<double>(3.0) == 9.0,
+   #+END_SRC
+   Meist kann man die Typenangabe <type> weglassen, weil der Computer sie anhand des Argumenttyps automatisch einsetzt:
+   #+BEGIN_SRC cpp
+   sq(2); // == sq<int>(2) == 4
+   sq(3.0); // == sq<double>(3.0) == 9
+   #+END_SRC
+   Kombiniert man templates mit Overloading, wird die ausprogrammierte Variante vom Compiler bevorzugt.
+   Komplizierte Fälle (Argument teilweise Template, teilweise hard_coded) $\implies$ für Fortgeschrittene. \\
+   Funktion, die ein Array auf Konsole ausgibt, für beliebige Elementtypen:
+   #+BEGIN_SRC cpp
+   template<typename ElementType>
+   void print_vector(std::vector<ElementType> const & v) {
+  	 std::cout << "{";
+  	 if(v.size() > 0) {
+  		 std::cout << " " << v[0];
+  		 for(int i = 1; i < v.size(); i++) {
+  			 std::cout << ", " << v[i];
+  		 }
+  	 }
+  	 std::cout << " }";
+   }
+   #+END_SRC
+   Verallgemeinerung für beliebige Container mittels Iteratoren:
+   #+BEGIN_SRC cpp
+   std::list<int> l = {1, 2, 3};
+   print_container(l.begin(), l.end()); // "{1,2,3}"
+   #+END_SRC
+   es genügen forward_itertators
+   #+BEGIN_SRC cpp
+   Iterator iter2 = iter1; // Kopie erzeugen
+   iter1++; // zum nächsten Element
+   iter1 == iter2; // Zeigen sie auf das selbe Element?
+   iter1 != end;
+   *iter1; // Zugriff auf aktuelles Element
 
-		   template<typename Iterator>
-		   void print_container(Iterator begin, Iterator end) {
-			   std::cout << "{}";
-			   if(begin != end) { // Container nicht leer?
-				   std::cout << " " << *begin++;
-				   for(;begin != end; begin++) {
-					   std::cout << ", " << *begin;
-				   }
-			   std::cout << "}";
-		   }
-		   #+END_SRC
-		 - Beispiel 3: überprüfen, ob Container sortiert ist
-		   #+BEGIN_SRC cpp
-		   template<typename E, typename CMP>
-		   bool check_sorted(std::vector<E> const & v, CMP less_than) {
-			   for(int i = 1; i < v.size(); i++) {
-				   if(less_than(v[k], v[k - 1])) { // statt v[k] < v[k - 1], ausnutzen der Transitivität
-					   return false;
-				   }
-			   }
-			   return true;
-		   }
+   template<typename Iterator>
+   void print_container(Iterator begin, Iterator end) {
+  	   std::cout << "{}";
+  	   if(begin != end) { // Container nicht leer?
+  		   std::cout << " " << *begin++;
+  		   for(;begin != end; begin++) {
+  			   std::cout << ", " << *begin;
+  		   }
+  	   std::cout << "}";
+   }
+   #+END_SRC
+   Überprüfen, ob Container sortiert ist:
+   #+BEGIN_SRC cpp
+   template<typename E, typename CMP>
+   bool check_sorted(std::vector<E> const & v, CMP less_than) {
+  	   for(int i = 1; i < v.size(); i++) {
+  		    if(less_than(v[k], v[k - 1])) { // statt v[k] < v[k - 1], ausnutzen der Transitivität
+  			   return false;
+  		   }
+  	   }
+  	   return true;
+   }
 
-		   // Aufruf:
-		   std::vector<double> v = {1.0, 2.0, 3.0};
-		   check_sorted(v, [](double a, double b) { return a < b; } ); // == true
+   // Aufruf:
+   std::vector<double> v = {1.0, 2.0, 3.0};
+   check_sorted(v, [](double a, double b) { return a < b; } ); // == true
 
-		   check_sorted(v, [](double a, double b) { return a > b; } ); // == false
+   check_sorted(v, [](double a, double b) { return a > b; } ); // == false
 
-		   // Implementation für Iteratoren
-		   template<typename Iterator, typename CMP>
-		   bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
-			   if(begin == end) {
-				   return true;
-			   }
-			   Iterator next = begin;
-			   ++next;
-			   for(; next != end; ++begin, ++next) {
-				   if(less_than(*next, *begin)) {
-					   return false;
-				   }
-			   }
-			   return true;
-		   }
-		   // == std::is_sorted
-		   #+END_SRC
-		 - Bemerkung: Compiler-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrung nötig aber: Compiler werden darin immer besser, besonders clang-Compiler
-		 - mit Templates kann man noch viel raffinierter Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene
+   // Implementation für Iteratoren
+   template<typename Iterator, typename CMP>
+   bool check_sorted(Iterator begin, Iterator end, CMP less_than) {
+  	   if(begin == end) {
+  		   return true;
+  	   }
+  	   Iterator next = begin;
+  	   ++next;
+  	   for(; next != end; ++begin, ++next) {
+  		   if(less_than(*next, *begin)) {
+  			   return false;
+  		   }
+  	   }
+  	   return true;
+   }
+   // == std::is_sorted
+   #+END_SRC
+   Bemerkung: Compiler-Fehlermeldungen bei Template-Code sind oft schwer zu interpretieren, $\implies$ Erfahrung nötig aber: Compiler werden darin immer besser, besonders clang-Compiler.
+   Mit Templates kann man noch viel raffinierter Dinge machen, zum Beispiel Traits-Klassen, intelligent libraries template meta programming $\implies$ nur für Fortgeschrittene.
 * Effizienz von Algorithmen und Datenstrukturen
 ** Bestimmung der Effizienz
    2 Möglichkeiten:
