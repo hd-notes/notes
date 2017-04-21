@@ -193,7 +193,7 @@
 
 	double sqrt(double y) {
 		while(true) {
-			x = (x + y / 2) / 2.0;
+			x = (x + y / x) / 2.0;
 			if(abs(x * x - y) < epsilon) {
 				return x;
 			}
