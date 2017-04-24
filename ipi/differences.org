@@ -28,14 +28,14 @@
 	- Icons
 	- Verkehrszeichen
 	aber: heutige Computer verstehen nur Binärzahlen $\implies$ alles andere muss man übersetzen
-	Eingansdaten: "Ereignisse":
+	Eingangsdaten: "Ereignisse":
 	- Symbol von Festplatte lesen oder per Netzwerk empfangen
 	- Benutzerinteraktion (Taste, Maus, ...)
 	- Sensor übermittelt Messergebnis, Stoppuhr läuft ab
 	Ausgangsdaten: "Aktionen":
 	- Symbole auf Festplatte schreiben, per Netzwerk senden
 	- Benutzeranzeige (Display, Drucker, Ton)
-	- Stoppuhr starten
+	- Stopuhr starten
 	- Roboteraktion ausführen (zum Beispiel Bremsassistent)
 	Interne Daten:
 	- Symbole im Hauptspeicher oder auf Festplatte

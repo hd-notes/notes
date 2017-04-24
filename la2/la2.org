@@ -18,7 +18,7 @@
  - $λ$ heißt Eigenwert von $φ \xLeftrightarrow{\text{Def}} ∃ v ∈ V, v \neq 0: φ(v) = λ v$
  - $v$ heißt Eigenvektor zum Eigenwert $λ \xLeftrightarrow{\text{Def}} v\neq 0 \wedge φ(v) = λ v$
  - $φ$ heißt diagonalisierbar $\xLeftrightarrow{\text{Def}} V$ besitzt eine Basis aus EV von $φ$
- (Falls $V$ endlichdimensional, ist die äquivalent zu: Es gibt eine Basis $\mathcal{B}$ von $V$ und $λ_1, \dots, λ_n ∈ K$ mit \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\])
+ (Falls $V$ endlichdimensional, ist die äquivalent zu: Es gibt eine Basis $\mathcal{B}$ von $V$ und $λ_1, \dots, λ_n ∈ K$ mit \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\])\\
  Eigenwerte, Eigenvektoren, Diagonalisiebarkeit einer Matrix $A ∈ M(n\times n, K)$ sind über den Endomorphismus $\tilde A:K^n \to K^n$ definiet.
  #+end_defn
  #+begin_remark latex
