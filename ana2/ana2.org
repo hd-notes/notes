@@ -2,6 +2,8 @@
 #+TITLE: Analysis II (Marciniak-Czochra)
 
 #+INCLUDE: "../header.org" :minlevel 1
+#+LATEX_HEADER: \theoremstyle{nonumberplain}
+#+LATEX_HEADER: \renewtheorem{remark}{Bemerkung}
 
 * Metrische und normierte Räume
 ** Metrische Räume
@@ -29,6 +31,8 @@
    #+begin_defn latex
    Sei $M$ eine Menge mit Metrik $d$. Wir definieren für $x ∈ M, ε > 0$, die offene ε-Kugel um $x$ durch
    \[K_ε(x):=\{y ∈ M \mid d(x, y) < ε\}\]
+   und eine abgeschlossene Kugel durch
+   \[K_ε(x):=\{y ∈ M \mid d(x, y) \leq ε\}\]
    $A ⊂ M$ heißt *Umgebung* von $x ∈ M ⇔ ∃ε: K_ε(x) ⊂ A$
    #+end_defn
    *Konvergenz und Stetigkeit in metrischen Räumen* \\
@@ -46,7 +50,7 @@
    #+end_defn
 ** Normierte Räume
    #+begin_defn latex
-   Ein normierter Raum $(X, \norm{·})$ ist ein Paar bestehend aus einem $\mathbb{K}$ -Vektorraum X und einer Abbildung $\norm{·}: X \to [0, ∞\string)$ mit
+   Ein normierter Raum $(X, \norm{·})$ ist ein Paar bestehend aus einem $\mathbb{K}$ -Vektorraum $X$ und einer Abbildung $\norm{·}: X \to [0, ∞\string)$ mit
    1. $\norm{x} = 0 ⇔ x = 0$
    2. $\norm{λx} = \abs{λ}\norm{x} ∀ λ ∈ \mathbb{K}, x ∈ X$
    3. $\norm{x + y} \leq \norm{x} + \norm{y} ∀x, y ∈ X$
@@ -59,12 +63,11 @@
 	  d(x + z, y + z) = d(x, y) \tag{Translationsinvarianz}
       \end{align*}
    #+end_remark
-   #+ATTR_LATEX: :options [1.8 Banachraum]
+   #+ATTR_LATEX: :options [Banachraum]
    #+begin_defn latex
    Ein normierter Raum $(X, \norm{·})$ heißt vollständig, falls $X$ als metrischer Raum mit der Metrik $d(x, y) = \norm{x - y}$ vollständig ist.
    Ein solcher vollständiger normierter Raum heißt *Banachraum*
    #+end_defn
-   #+ATTR_LATEX: :options [1.9]
    #+begin_ex latex
    1. $(ℝ^n, \norm{·}_2)$, wobei \[\norm{x}_2 = (\sum_{i = 1}^{n} \abs{x_i}^2)^{\frac{n}{2}}\]
    2. Sei $K$ eine kompakte Menge:
@@ -76,7 +79,7 @@
    1. Sede Cauchy-Folge in $\mathbb{K}^n$ konvergiert, das heißt $(\mathbb{K}^n, \norm{·})$ ist vollständig
    2. Jede beschränkte Folge in $\mathbb{K}^n$ besitzt eine konvergente Teilfolge. (Bolzano-Weierstraß Satz gilt in $ℝ^n$) (Beweis für $ℝ^n$ zum Beispiel in RR Ana2 Satz 1.1)
    #+end_remark
-   #+ATTR_LATEX: :options [1.10 (Äquivalenz von Normen)]
+   #+ATTR_LATEX: :options [Äquivalenz von Normen]
    #+begin_thm latex
    Auf dem endlich dimesionalen Vektorraum $\mathbb{K}^n$ sind alle Normen *äquivalent* zur Maximumnorm, das heiht zu jeder Norm $\norm{·}$ gibt es positive Konstanten $w, M$ mit denen gilt
    \[m \norm{x}_∞ \leq \norm{x} \leq M \norm{x}_∞, x ∈ \mathbb{K}^n\]
@@ -95,4 +98,106 @@
    \[\abs{1 - \norm{x}_∞} = \abs{\norm{x^{(k)}}_∞ - \norm{x}_∞} \leq \norm{x^{(k)} - x}_∞ \to 0 ⇒ \norm{x}_∞ = 1 ⇒ x ∈ S_1\]
    Anderseits gilt \[∀k ∈ ℕ: \norm{x} \leq \norm{x - x^{(k)}} + \norm{x^{(k)}} \leq M \norm{x - x^{(k)}}_∞ + \norm{x^{(k)}} \xrightarrow{k \to ∞} ⇒ x = 0\]
    \lightning zu $x ∈ S_1$
+   #+end_proof
+   #+begin_defn latex
+   Eine Menge $M ⊂ K^n$ heißt kompakt (folgenkompakt), wenn jede beliebige Folge in $M$ eine konvergente Teifolge besitzt, deren Grenzwert ebenfalls in $M$ enthalten ist.
+   #+end_defn
+   #+begin_ex latex
+   Mit Hilfe von dem Satz von B.W. folgt, dass alle abgeschlossene Kugeln im $ℝ^n$ ($K_r(a), a ∈ K^n$) kompakt sind. Ferner ist für beschränkte Mangen $M$ der Rand $\partial M$ kompakt.
+   Jede endliche Menge ist auch kompakt.
+   #+end_ex
+** Hilberträume
+   #+begin_defn latex
+   Sei $H \mathbb{K}$ Vektorraun. Ein *Skalarprodukt* auf eine Abbildung
+   \[(·,·): H × H \to \mathbb{K}\]
+   mit
+   1. $∀ x, y, z ∈ H, λ ∈ \mathbb{K}: (z, x + λ y) = (z, x) + λ(z, y)$
+   2. $∀ x, y ∈ H: (x, y) = \overline{(y, x)}$
+   3. $∀ x ∈ H: (x, x) \geq 0 ∧ (x, x) = 0 ⇔ x = 0$
+   $(H, (·,·))$ nennt man einen Prähilbertraum.
+   #+end_defn
+   #+begin_remark latex
+   Für $\mathbb{K} = ℂ$ ist das Skalarprodukt linar in der zweiten Komponente aber antilinear in der ersten ($(λ x, y) = \bar λ (x, y)$).
+   #+end_remark
+   #+ATTR_LATEX: :options [Cauchy-Schwarz Ungleichung]
+   #+begin_lemma latex
+   Sei $(H, (·, ·))$ Prähilbertraum, dann gilt
+   \[∀ x, y ∈ H: \abs{(x, y)}^2 \leq (x, x) (y, y)\]
+   #+end_lemma
+   #+begin_proof latex
+   Da die Ungleichung für $y = 0$ bereits erfüllt ist, können wir ohne Beschränkung der Allgemeiheit annehmen $y \neq 0$.
+   Für ein beliebiges $α ∈ \mathbb{K}$ gilt
+   \begin{align*}
+   0 &\leq (x + α y, x + α y) = (x, x) + \bar α (y, x) + α (x, y) + α \bar α (y, y) \\
+   \intertext{Setze nun $α := -(x, y)(y, y)^{-1}$}
+   &= (x, x) - \overline{(x, y)}(y, y)^{-1} - (x, y)(y, y)^{-1}(x, y) - \abs{(x, y)^2}(y, y)^{-1} \\
+   &= (x, x) - \underbrace{((y, x)(y, x) + (x, y)(x, y))(y, y)^{-1} }_{> 0} - \abs{(x, y)}^2(y, y)^{-1} \\
+   &\leq (x, x) - \abs{(x, y)}^2 (y, y)^{-1} \\
+   &⇔ \abs{(x, y)}^2 \leq (x, x)(y, y)
+   \end{align*}
+   #+end_proof
+   #+begin_korollar latex
+   Sei $(H, (·, ·))$ ein Prähilbertraum, dann ist $\norm{x} := \sqrt{(x, x)}$ eine Norm auf $H$.
+   #+end_korollar
+   #+begin_proof latex
+   Es ist nur die Dreiecksungleichung zu beweisen, weil der Rest klar ist.
+   Für $x, y ∈ H$ gilt
+   \begin{align*}
+   \norm{x + y}^2 &= \norm{x}^2 + \norm{y}^2 + 2\Re(x, y) \leq \norm{x}^2 + \norm{y}^2 + 2\abs{(x,y )} \leq \norm{x}^2 + \norm{y}^2 + 2 \norm{x}\norm{y} \\
+   &= (\norm{x} + \norm{y})^2
+   \end{align*}
+   #+end_proof
+   #+begin_defn latex
+   Ein Prähilbertraum $(H, (·, ·))$ heißt Hilbertraum, falls $(H, \norm{·})$ mit $\norm{x} := \sqrt{(x, x)}$ ein Banachraum ist.
+   #+end_defn
+   #+begin_ex latex
+   1. $H = ℝ^n$ versehen mit $\underbrace{(x, y) := \sum_{i = 1}^{n}x_i y_i}_{\mathclap{\text{euklidisches Skalarprodukt}}}$ ist ein Hilbertraum
+   2. $H = ℂ^n$ mit $\underbrace{(x, y) := \sum_{i = 1}^{n}\bar x_i y_i}_{\mathclap{\text{euklidisches Skalarprodukt}}}$ ist ein Hilbertraum
+   3. Sei $l^2{\mathbb{K}} := \{(x_k)_{k ∈ ℕ} \mid x_k ∈ \mathbb{K}, ∀k ∈ ℕ ∧ \sum_{i =1 }^{∞}\abs{x_k}^2 < ∞\}$
+	  versehen mit $(x, y) := \sum_{i = 1}^{∞} \bar x_i y_i$ ist ein Hilbertraum.
+	  \[\sum_{i = 1}^{n} \abs{x_i} \abs{y_i} \leq (\sum_{i = 1}^{n} \abs{x_i}^2)^{\frac{1}{2}}(\sum_{i = 1}^{n} \abs{y_i}^2)^{\frac{1}{2}} \leq \norm{x}_{l^2} \norm{y}_{l^2} < ∞\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Höller-Ungleichung]
+   #+begin_lemma latex
+   Für das euklidische Skalarprodukt $(·,·)_2$ gilt für beliebige $p, q$ mit $1 < p, q < ∞$ und $\frac{1}{p} + \frac{1}{q} = 1$ die Ungleichung
+   \[∀x, y ∈ \mathbb{K}^n: \abs{(x, y)_2} \leq \norm{x}_p \norm{y}_q, \norm{x}_p := (\sum_{i = 1}^{n} \abs{x_i}^p)^{\frac{1}{p}}\]
+   Darüber hinaus gilt die Ungleichung auch für $p = 1, q = ∞$
+   #+end_lemma
+   #+ATTR_LATEX: :options [Young'sche Ungleichung]
+   #+begin_lemma latex
+   Tür $p, q ∈ ℝ, 1 < p, q < ∞, \frac{1}{p} + \frac{1}{q} = 1$ gilt
+   \[∀x, y ∈ \mathbb{K}: \abs{(x, y)} \leq \frac{\abs{x}^p}{p} + \frac{\abs{y}^q}{q}\]
+   #+end_lemma
+   #+ATTR_LATEX: :options [Minkowski-Ungleichung]
+   #+begin_lemma latex
+   Für ein beliebiges $p ∈ [1, ∞]$ gilt
+   \[∀x, y ∈ \mathbb{K}^n: \norm{x + y}_p \leq \norm{x}_p + \norm{y}_p\]
+   #+end_lemma
+   #+ATTR_LATEX: :options [Banachscher Fixpunktsatz]
+   #+begin_thm latex
+   Sei $(M, d)$ ein vollständiger, metrischer Raum und $f: M \to M$ ist eine strenge Kontraktion, das heißt
+   \[∃ 0 < α < 1 ∀x, y ∈ M: d(f(x), f(y)) < α d(x, y)\]
+   Dann	existiert ein eindeutiger Fixpunkt von $f$, das heißt es existiert ein eindeutiges $x^\ast ∈ M: f(x^\ast) = x^\ast$
+   #+end_thm
+   #+begin_proof latex
+   *Existenz*: \\
+   Wähle ein $x_0 ∈ M$ beliebig, aber fest und definiere dann $x_1 := f(x_0), x_2 := f(x_1), \dots$. Dann gilt für $n \leq m$
+   \begin{align*}
+   d(x_n, x_m) &= d(f(x_{n - 1}), f(x_{m - 1})) < α d(x_{n - 1}, x_{m - 1}) \\
+   &= α d(f(x_{n - 2}), f(x_{m - 2})) < \dots < α^n d(x_0, x_{m - n}) \\
+   \intertext{Nun gilt aber}
+   d(x_0, x_{m - n}) &\leq d(x_0, x_1) + d(x_1, x_2) + \dots + d(x_{m - n -1}, x_{m - n}) \\
+   &\leq d(x_0, x_1) + α d(x_0, x_1) + \dots + a^{m - n - 1} d(x_0, x_1) \\
+   &= d(x_0, x_1) \sum_{i = 0}^{m - n - 1} α^i \leq d(x_0, x_1) \sum_{i = 0}^{∞} α^i \\
+   &= \frac{d(x_0, x_1)}{1 - α} < ∞ \\
+   ⇒ d(x_n, x_m) &\leq \frac{α^n}{1 - α} d(x_0, x_1)
+   \end{align*}
+   Also ist $(x_k)_{k ∈ ℕ}$ Cauchy-Folge. Da $(M, d)$ vollständig ist existiert $x^\ast ∈ M$, sodass $x_k \xrightarrow{k \to ∞} x^\ast$. Zeige, dass $x^\ast$ Fixpunkt von $f$ ist:
+   \begin{align*}
+   0 \leq d(x^\ast, f(x^\ast)) &\leq d(x^\ast, x_k) + d(x_k, f(x^\ast)) \\
+   &\leq d(x^\ast, x_k) + α d(x_{k - 1}, x^\ast) \xrightarrow{k \to ∞} 0
+   \end{align*}
+   $⇒ f(x^\ast) = x^\ast$ \\
+   *Eindeutigkeit*: Angenommen $∃ x' ∈ M, x' \neq x^\ast: f(x') = x'$:
+   \[0 < d(x^\ast, x') = d(f(x^\ast), f(x')) < α d(x^{\ast}, x') ⇒ α > 1 \lightning\]
    #+end_proof

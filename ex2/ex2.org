@@ -17,7 +17,6 @@
    - Ladung kann transportiert werden
    - Elektrische Kräfte	sind Fernkräfte
    - Ladungen sind erhalten
-   #+ATTR_LATEX: :options []
    #+begin_defn latex
    Influenz
    Ladungstrennung durch die (Fern) Wirkung elektrischer Kräfte nennt man Influenz oder elektrostatische Induktion.
@@ -33,7 +32,6 @@
 ** Coulombsches Gesetz
    Experimentelles Resultat:
    \[\v F_C = K \frac{q_1 q_2}{r_{12}^2} \hat r_{12}\]
-   #+ATTR_LATEX: :options []
    #+begin_defn latex
    \[\v F_C = \frac{1}{4π ε_0} \frac{q_1 q_2}{r_{12}^2} \hat r_{12}\]
    mit $ε_0 = \SI{8.85416e-12}{\coulomb\per\newton\per\meter\squared}$
@@ -49,4 +47,70 @@
    #+begin_defn latex
    \[\v E(\v r) = \frac{\v F_C(\v r)}{q} = \frac{1}{4 π ε_0} \frac{Q}{r^2} \hat r\]
    \[\v F(\v r) = q \v E(\v r)\]
+   Das elektrische Feld hängt nur von der Ladung $Q$ ab, aber nicht von der Testladung $q$.
+   Es gilt damit:
+   \[\v F(\v r) = q \v E(\v r)\]
    #+end_defn
+   Bedeutung das elektrischen Feldes: \\
+   Coulomb-Gesetz bescheibt Fernwirkung. \\
+   Aber: Wodurch wird diese Wirkung übertragen? \\
+   Geschieht die Übertragung instantan? (nein!) \\
+   Feldwirkungstheorie: Elektrische Kraftübertragung über Ausbreitung des elektrischen Feldes, das mit der Probeladung $q$.
+   Elektrostatik:
+   Fernwirkung- und Feldwerungstheorie äquivalent. \\
+   Elektrodynamik: Feldbegriff essentiell. \\
+   Feld einer allgemeinen Ladungsverteilung: \\
+   Wichtig: Es gilt das Superpositionsprinzips. Es gilt
+   \[\d Q = ρ(\v r) \d V\]
+   \[\v E(\v R) = \frac{1}{4π ε_0} ∫ \frac{\v R - \v r}{\abs{\v R - \v r}^3} ρ(\v r) \d V\]
+   Für diskrete Ladungen:
+   \[\v E = \frac{1}{4 π ε_0} \sum_{i} \frac{q_i}{r_i^2} \hat r\]
+   Die Anweseheit von Ladungen verändern den Raum. Es entstehte in Vektorfeld, dessen Stärke und Richtung in jedem Raumpunkt die normierte Kraft $\frac{\v F}{q}$ auf eine Probeladung angibt. \\
+   Eigenschaften der Feldlinien
+   1. Das $\v E$ -Feld zeigt tangential zu den Feldlinien
+   2. Feldlinien zeigen weg von positiven Ladungen
+   3. Feldliniendischte entspricht Stärke des Feldes.
+** Elektrischer Fluss
+   #+ATTR_LATEX: :options [Elektrischer Fluss $ϕ_E$]
+   #+begin_defn latex
+   Maß für die Anzahl der Feldlinien, die Fläche $A$ durchstoßen.
+   #+end_defn
+   Für geschlossene Oberflächen:
+   \begin{align*}
+   Q_{innen} &= 0 ⇒ ϕ_E = 0 \\
+   Q_{innen} &> 0 ⇒ ϕ_E > 0 \\
+   Q_{innen} &< 0 ⇒ ϕ_E < 0 \\
+   \end{align*}
+   Mathematisch:
+   - Homogenes Feld, $\perp$ zur Oberfläche $⇒ ϕE = E A$
+   - Homogenes elektrisches Feld $E A' = E A \cos{θ} = \v E \v A = \v E \v n A$
+   Verallgemeinerung:
+   \begin{align*}
+   Δϕ_i &= \v E_i \v n_i ΔA_i \\
+   ϕ_E &= \lim_{ΔA_i \to 0} \sum \v E_i \v n_i Δ A \\
+   ϕ_A &= ∫ \v E \d \v A \tag{Definition von Elektrischem Fluss} \\
+   \end{align*}
+   Ladung einer Kugel:
+   \begin{align*}
+   ϕ_A &= ∫ \v E \d \v A \\
+   &= \frac{1}{4 π ε_0} \frac{Q}{R^2} ∫ \d \v D \\
+   &= \frac{1}{4 π ε_0} \frac{Q}{R^2} 4 π R^2 \\
+   &= \frac{Q}{ε_0}
+   \end{align*}
+   #+ATTR_LATEX: :options [Gauß'sches Gesetz]
+   #+begin_defn latex
+   \[∮ \v E \d \v A = \frac{Q_{\text{innen}}}{ε_0}\]
+   Das Gauß'sche Gesetz ist allgemeingültig, da:
+   \begin{align*}
+   ∮_{A_2} \v E \d \v A &- ∮_{A_1} \v E \d \v A = 0
+   ∮_{A_2} \v E \d \v A &= ∮_{A_1} \v E \d \v A = \frac{Q_{\text{innen}}}{ε_0}
+   \end{align*}
+   Zusammen mit Superpositionsprinzip und homogener Fläche erhält man die Allgemeingültigkeit des Gauß'schen Gesetz.
+   #+end_defn
+   Herleitung des Coulombschen Gesetz mit Gauß'schen Gesetz:
+   \begin{align*}
+   ∮ \v E \d \v A &= \frac{Q}{ε_0} \\
+   E ∮ \d \v A &= \frac{Q}{ε_0} \\
+   E 4π R^2 &= \frac{Q}{ε_0} \\
+   E(R) = \frac{Q}{4 π ε_0} \frac{1}{R^2}
+   \end{align*}
