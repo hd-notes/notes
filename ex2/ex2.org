@@ -57,7 +57,7 @@
    Geschieht die Übertragung instantan? (nein!) \\
    Feldwirkungstheorie: Elektrische Kraftübertragung über Ausbreitung des elektrischen Feldes, das mit der Probeladung $q$.
    Elektrostatik:
-   Fernwirkung- und Feldwerungstheorie äquivalent. \\
+   Fernwirkung- und Feldwirkungstheorie sind äquivalent. \\
    Elektrodynamik: Feldbegriff essentiell. \\
    Feld einer allgemeinen Ladungsverteilung: \\
    Wichtig: Es gilt das Superpositionsprinzips. Es gilt
@@ -65,11 +65,11 @@
    \[\v E(\v R) = \frac{1}{4π ε_0} ∫ \frac{\v R - \v r}{\abs{\v R - \v r}^3} ρ(\v r) \d V\]
    Für diskrete Ladungen:
    \[\v E = \frac{1}{4 π ε_0} \sum_{i} \frac{q_i}{r_i^2} \hat r\]
-   Die Anweseheit von Ladungen verändern den Raum. Es entstehte in Vektorfeld, dessen Stärke und Richtung in jedem Raumpunkt die normierte Kraft $\frac{\v F}{q}$ auf eine Probeladung angibt. \\
+   Die Anwesenheit von Ladungen verändern den Raum. Es entsteht ein Vektorfeld, dessen Stärke und Richtung in jedem Raumpunkt die normierte Kraft $\frac{\v F}{q}$ auf eine Probeladung angibt. \\
    Eigenschaften der Feldlinien
    1. Das $\v E$ -Feld zeigt tangential zu den Feldlinien
    2. Feldlinien zeigen weg von positiven Ladungen
-   3. Feldliniendischte entspricht Stärke des Feldes.
+   3. Feldliniendichte entspricht Stärke des Feldes.
 ** Elektrischer Fluss
    #+ATTR_LATEX: :options [Elektrischer Fluss $ϕ_E$]
    #+begin_defn latex
@@ -105,7 +105,7 @@
    ∮_{A_2} \v E \d \v A &- ∮_{A_1} \v E \d \v A = 0
    ∮_{A_2} \v E \d \v A &= ∮_{A_1} \v E \d \v A = \frac{Q_{\text{innen}}}{ε_0}
    \end{align*}
-   Zusammen mit Superpositionsprinzip und homogener Fläche erhält man die Allgemeingültigkeit des Gauß'schen Gesetz.
+   Zusammen mit dem Superpositionsprinzip und homogener Fläche erhält man die Allgemeingültigkeit des Gauß'schen Gesetz.
    #+end_defn
    Herleitung des Coulombschen Gesetz mit Gauß'schen Gesetz:
    \begin{align*}
