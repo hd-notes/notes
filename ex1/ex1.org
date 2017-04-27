@@ -89,8 +89,8 @@ mark=at position 0.5 with
   \[\dd{j}{z} = \dd{}{z} \frac{\d m}{A\d t} = \frac{\d}{\d t} \frac{\d m}{\d V} = \dot{\rho}\]
   3-dim:
   \begin{align*}
-  \frac{\partial \rho}{\partial t} + \div \dot{\v j} &= 0 \\
-  \div \v j &= \frac{\partial}{\partial x} j_x + \frac{\partial}{\partial y} j_y + \frac{\partial}{\partial z} j_z
+  \frac{\partial \rho}{\partial t} + \Div \dot{\v j} &= 0 \\
+  \Div \v j &= \frac{\partial}{\partial x} j_x + \frac{\partial}{\partial y} j_y + \frac{\partial}{\partial z} j_z
   \end{align*}
   Außerdem
   \[\v j = \rho \v v\]

@@ -11,8 +11,8 @@ constexpr inline auto sq(f64 x) noexcept -> f64 { return x * x; }
   Es wäre unsinnvoll nicht sq zu verwenden, wenn man nicht das
   Zwischenergebnis von power(x, i / 2) abspeichert, denn dann würde
   man einen bereits berechneten Wert nocheinmal ausrechen, und da dies
-  auf allen Ebenen von power passieren würde man anstatt O(n)
-  Berechnungen O(2^n) Berechnungen benötigen
+  auf allen Ebenen von power passieren würde man anstatt \mathcal{O}(n)
+  Berechnungen \mathcal{O}(2^n) Berechnungen benötigen
  */
 constexpr inline auto power(f64 x, i32 i) noexcept -> f64 {
 	return (i == 1) ? x

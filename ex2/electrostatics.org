@@ -1,0 +1,197 @@
+* Elektrostatik
+** Elektrische Ladung
+   - Neue Kraft
+   - anziehend oder abstoßend
+   - Konzept der elektrischen Ladung
+   Experimetelle Erkenntnisse:
+   - Erzeugung von Ladungen durch Reibung
+   - Ladungen gleicher Vorzeichen: Abstoßung
+   - Ladungen ungleicher Vorzeichen: Anziehung
+   - Ladung kann transportiert werden
+   - Elektrische Kräfte	sind Fernkräfte
+   - Ladungen sind erhalten
+   #+begin_defn latex
+   Influenz
+   Ladungstrennung durch die (Fern) Wirkung elektrischer Kräfte nennt man Influenz oder elektrostatische Induktion.
+   #+end_defn
+** Mikroskopische Deutung
+   Elektron: negativ \\
+   Proton: positiv \\
+   Atome elektrische neutral
+   - Z: Anzahl Protonen / Elektronen
+   - N: Anzahl Neutronen
+   - A: Anzahl Neutronen + Protonen
+   Leiter und Nichtleiter: Unterschiedliche Verfügbarkeit von Ladungsträgern
+** Coulombsches Gesetz
+   Experimentelles Resultat:
+   \[\v F_C = K \frac{q_1 q_2}{r_{12}^2} \hat r_{12}\]
+   #+begin_defn latex
+   \[\v F_C = \frac{1}{4π ε_0} \frac{q_1 q_2}{r_{12}^2} \hat r_{12}\]
+   mit $ε_0 = \SI{8.85416e-12}{\coulomb\per\newton\per\meter\squared}$
+   #+end_defn
+   Vergleich: Coulomb vs. Gravitation
+   \begin{align*}
+   \v F_G &= -G \frac{m_1 m_2}{r_{12}^2} \hat r_{12} \\
+   \v F_C &= K \frac{q_1 q_2}{r_{12}^2} \hat r_{12} \\
+   \frac{F_C}{F_G} &= \SI{227e39}{} \\
+   \end{align*}
+** elektrisches Feld
+   #+ATTR_LATEX: :options [Elektrisches Feld]
+   #+begin_defn latex
+   \[\v E(\v r) = \frac{\v F_C(\v r)}{q} = \frac{1}{4 π ε_0} \frac{Q}{r^2} \hat r\]
+   \[\v F(\v r) = q \v E(\v r)\]
+   Das elektrische Feld hängt nur von der Ladung $Q$ ab, aber nicht von der Testladung $q$.
+   Es gilt damit:
+   \[\v F(\v r) = q \v E(\v r)\]
+   #+end_defn
+   Bedeutung das elektrischen Feldes: \\
+   Coulomb-Gesetz bescheibt Fernwirkung. \\
+   Aber: Wodurch wird diese Wirkung übertragen? \\
+   Geschieht die Übertragung instantan? (nein!) \\
+   Feldwirkungstheorie: Elektrische Kraftübertragung über Ausbreitung des elektrischen Feldes, das mit der Probeladung $q$.
+   Elektrostatik:
+   Fernwirkung- und Feldwerungstheorie äquivalent. \\
+   Elektrodynamik: Feldbegriff essentiell. \\
+   Feld einer allgemeinen Ladungsverteilung: \\
+   Wichtig: Es gilt das Superpositionsprinzips. Es gilt
+   \[\d Q = ρ(\v r) \d V\]
+   \[\v E(\v R) = \frac{1}{4π ε_0} ∫ \frac{\v R - \v r}{\abs{\v R - \v r}^3} ρ(\v r) \d V\]
+   Für diskrete Ladungen:
+   \[\v E = \frac{1}{4 π ε_0} \sum_{i} \frac{q_i}{r_i^2} \hat r\]
+   Die Anweseheit von Ladungen verändern den Raum. Es entstehte in Vektorfeld, dessen Stärke und Richtung in jedem Raumpunkt die normierte Kraft $\frac{\v F}{q}$ auf eine Probeladung angibt. \\
+   Eigenschaften der Feldlinien
+   1. Das $\v E$ -Feld zeigt tangential zu den Feldlinien
+   2. Feldlinien zeigen weg von positiven Ladungen
+   3. Feldliniendischte entspricht Stärke des Feldes.
+** Elektrischer Fluss
+   #+ATTR_LATEX: :options [Elektrischer Fluss $ϕ_E$]
+   #+begin_defn latex
+   Maß für die Anzahl der Feldlinien, die Fläche $A$ durchstoßen.
+   #+end_defn
+   Für geschlossene Oberflächen:
+   \begin{align*}
+   Q_{innen} &= 0 ⇒ ϕ_E = 0 \\
+   Q_{innen} &> 0 ⇒ ϕ_E > 0 \\
+   Q_{innen} &< 0 ⇒ ϕ_E < 0 \\
+   \end{align*}
+   Mathematisch:
+   - Homogenes Feld, $\perp$ zur Oberfläche $⇒ ϕE = E A$
+   - Homogenes elektrisches Feld $E A' = E A \cos{θ} = \v E \v A = \v E \v n A$
+   Verallgemeinerung:
+   \begin{align*}
+   Δϕ_i &= \v E_i \v n_i ΔA_i \\
+   ϕ_E &= \lim_{ΔA_i \to 0} \sum \v E_i \v n_i Δ A \\
+   ϕ_A &= ∫ \v E \d \v A \tag{Definition von Elektrischem Fluss} \\
+   \end{align*}
+   Ladung einer Kugel:
+   \begin{align*}
+   ϕ_A &= ∫ \v E \d \v A \\
+   &= \frac{1}{4 π ε_0} \frac{Q}{R^2} ∫ \d \v D \\
+   &= \frac{1}{4 π ε_0} \frac{Q}{R^2} 4 π R^2 \\
+   &= \frac{Q}{ε_0}
+   \end{align*}
+   #+ATTR_LATEX: :options [Gauß'sches Gesetz (1. Maxwell-Gleichung)]
+   #+begin_defn latex
+   \[∮ \v E \d \v A = \frac{Q_{\text{innen}}}{ε_0}\]
+   Das Gauß'sche Gesetz ist allgemeingültig, da:
+   \begin{align*}
+   ∮_{A_2} \v E \d \v A - ∮_{A_1} \v E \d \v A &= 0 \\
+   ∮_{A_2} \v E \d \v A &= ∮_{A_1} \v E \d \v A = \frac{Q_{\text{innen}}}{ε_0}
+   \end{align*}
+   Zusammen mit Superpositionsprinzip und homogener Fläche erhält man die Allgemeingültigkeit des Gauß'schen Gesetz.
+   #+end_defn
+   Herleitung des Coulombschen Gesetz mit Gauß'schen Gesetz:
+   \begin{align*}
+   ∮ \v E \d \v A &= \frac{Q}{ε_0} \\
+   E ∮ \d \v A &= \frac{Q}{ε_0} \\
+   E 4π R^2 &= \frac{Q}{ε_0} \\
+   E(R) &= \frac{Q}{4 π ε_0} \frac{1}{R^2}
+   \end{align*}
+   #+ATTR_LATEX: :options [Unendlich langer Draht]
+   #+begin_ex latex
+   Ladungsdichte: $λ = Q / L$
+   \[\v E(\v R) = \v E(R)\]
+   - Mantelfläche:e $\v E \parallel \d \v A$
+   - Deckel: $\v E \perp \d \v D$
+   \[ϕ_E = ∮ \v E \d \v A = ∫_{\text{Mantel}} \v E \d \v A + \underbrace{∫_{\text{Deckel}} \v E \d \v A}_{= 0} = E ∫_{\text{Mantel}} \d A = E 2 π R L = \frac{V}{ε_0}\]
+   \[E = \frac{\frac{Q}{L}}{2 π R ε_0} = \frac{λ}{2 π ε_0} \frac{1}{R}\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Unendlich ausgedehnte Flächenladung]
+   #+begin_ex latex
+   Flächenladungsdichte: $σ = Q / A$ \\
+   Symmetrie: \\
+   $\v E$ konstant für festen Abstand. \\
+   $\v E \parallel \v A$
+   \begin{align*}
+   ϕ_E &= ∮\v E \d \v A = \underbrace{∫_{\text{Mantel}}\v E\d \v A}_{0} + ∫_{\text{Deckel}} \v E \d \v A = E A_1 + E A_2 = 2 E A \\
+   ϕ_E &= 2E A = \frac{Q}{ε_0} ⇒ E = \frac{σ}{2 ε_0} \\
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Plattenkondensator]
+   #+begin_ex latex
+   \[\v E = \frac{σ}{2 ε_0}\]
+   #+end_ex
+** Elektrische Felder innerhalb von Leitern
+   Innerhalb eines Leiters verschwindet das elektrostatische Feld. \\
+   Bei einem geladenem, isolierten Leiter sitzen alle Ladungen auf der Oberfläche. \\
+   Dazu betrachte Oberfläche, die gerade kleiner als der Leiter ist, dort ist das Elektrische Feld gleich null, also folgt:
+   \[∮ \v E \d \v A = 0 = \frac{Q_{\text{innen}}}{ε_0} ⇒ Q_{\text{innen}} = 0\]
+   Leiter mit Hohlrum:
+   \[∮_O \v E \d \v A = 0 ⇒ Q = 0\]
+** Differentielle Form des Gaußschen Gesetzes
+   \[∮_A \v E \d \v A = ∫_V \Div \v E \d V\]
+   $\Div \v E = \partial_x E_x + \partial_y E_y + \partial_z E_z$ \\
+   Zur Divergenz: \\
+   Schreibweise: $\Div \v E = \v ∇ · \v E, \v ∇ = (\partial_x, \partial_y, \partial_z)$
+   in Anschauung:
+   \begin{align*}
+   ϕ_E &= E_O Δ A - E_i Δ A \\
+   &= Δ E_x Δ A \\
+   &= \frac{Δ E_x}{Δ x} Δ x Δ A = \underbrace{\partial_x E_x}_{\text{"`div"'}} Δ V
+   \end{align*}
+   \[∫_V \Div \v E \d V = ∮ \v E \d \v A = \frac{Q}{ε_0} = \frac{1}{ε_0} ∫_V ρ \d V\]
+   Differentielle Form des Gaus Gesetz, 1. Maxwell Gleichung:
+   \[\Div \v E = \frac{ρ}{ε_0}\]
+   $ρ$: Ladungsdichte.
+** Elektrisches Potential
+   Coulombkraft ist konservativ da radialsymmetrisch.
+   \begin{align*}
+   W &= E_{pot}(2) - E_{pot}(1) = -∫_1^2 \v F_C \d \v s \\
+   \v F_C &= -\grad E_{pot} \\
+   E_{pot}(\v r) &= -∫_∞^{+r} \v F_C \d \v r = -\frac{1}{4π ε_0} ∫ \frac{Q q}{r^2} \d r \\
+   &= \frac{1}{4π ε_0} \frac{Qq}{r} \tag{Theorie: $Qq / r$}
+   \end{align*}
+   #+ATTR_LATEX: :options [Coulombpotential]
+   #+begin_defn latex
+   \[φ(\v r) = \frac{E_{pot}(\v r)}{q} = \frac{1}{4πε_0} \frac{Q}{r}, φ(∞) = 0\]
+   #+end_defn
+   \begin{align*}
+   Δφ &= φ(\v r_2) l φ{\v r_1} = - ∫\v E \d \v s \\
+   ∮\v E\d \v s &= 0 \\
+   \v E(\v r) &= -\grad φ(\v r)
+   \end{align*}
+   Allgemeine Ladungsverteilung:
+   \[φ(\v R) = \frac{1}{4πε_0} ∫\frac{ρ(\v r)}{\abs{\v R - \v r}} \d V\]
+   #+ATTR_LATEX: :options [Elektrische Spannung]
+   #+begin_defn latex
+   \[U_{12} = φ_2 - φ_1 = Δφ_{21} = - ∫_1^2 \v E \d \v s\]
+   #+end_defn
+** Grundgleichungen der Elektrostatik
+   \begin{align*}
+   \intertext{Integralform:}
+   ∮ \v E \d \v A &= \frac{Q}{ε_0} \quad ∮ \v E \d \v s = 0 \\
+   \intertext{Differentialform:}
+   \Div \v E &= \frac{ρ}{ε_0} \quad \rot \v E = 0
+   \end{align*}
+   Stokscher Satz:
+   \[∮_C E\d \v s = ∫_A \rot \v E \d \v A\]
+   Zur Rotation: \\
+   Schreibweise:
+   \[\rot \v E = \v ∇ × \v E, \v ∇ = (\partial_x, \partial_y, \partial_z)\]
+   \[\rot \v E = (\partial_y E_z - \partial_z E_y, \partial_z E_x - \partial_x E_z, \partial_x E_y - \partial_y E_x)\]
+   Anschauung:
+   \begin{align*}
+   ∮_C \v A \d \v s &= Δ E_2 Δz - ΔE_x Δx \\
+   &= \frac{ΔE_z}{Δ_x} Δx Δz - \frac{ΔE_x}{Δz}Δz Δx \\
+   &= \underbrace{(\partial_x E_z - \partial_z E_x)}_{\rot} Δ A
+   \end{align*}

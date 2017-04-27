@@ -79,7 +79,7 @@
    rotierendes Bezugssystem (NIS) \\
    Drehungen: $R(t) \in SO(u), R^{T} R = \mathbb{1}$ für $t \sim \epsilon, R(0) = \mathbb{1}$
    \begin{align*}
-   R(\epsilon) = \mathbb{1} + \eps M + O(\eps^2) \\
+   R(\epsilon) = \mathbb{1} + \eps M + \mathcal{O}(\eps^2) \\
    R(\epsilon) R^{T}(\eps) &= (\mathbb{1} + \eps M)(\mathbb{1} + \eps M^T) \overset{!}{=} \\
    &= \mathbb{1} + \epsilon(\underbrace{M + M^T}_{0}) \overset{!}{=} \mathbb{1} \\
    \end{align*}
@@ -95,8 +95,8 @@
    R(\v \epsilon)\hspace{0pt} &=\mathbb{1} + \v \eps \v T, \eps = \abs{\v \eps} \\
    \hspace{0pt}(T_i)_{j,k} &= \eps_{ijk} \\
    \v \epsilon &= \abs{\v \epsilon} \cvec{0; 0; 1} \\
-   R(\v \epsilon)\hspace{0pt} &= \mathbb{1} + \abs{\epsilon} \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix} + O(\abs{\v \epsilon}^2) = \begin{pmatrix} 1 & \abs{\v \epsilon} & 0 \\ -\abs{\v \epsilon} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} + O(\abs{\v\epsilon}^2) \\
-   &= \begin{pmatrix} \cos{\abs{\v \epsilon}} & \sin{\abs{\v \epsilon}} & 0 \\ -\sin{\abs{\v \epsilon}} & \cos{\abs{\v \epsilon}} & 0 \\ 0 & 0 & 1 \end{pmatrix} + O(\abs{\v \epsilon}^2) \\
+   R(\v \epsilon)\hspace{0pt} &= \mathbb{1} + \abs{\epsilon} \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix} + \mathcal{O}(\abs{\v \epsilon}^2) = \begin{pmatrix} 1 & \abs{\v \epsilon} & 0 \\ -\abs{\v \epsilon} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} + \mathcal{O}(\abs{\v\epsilon}^2) \\
+   &= \begin{pmatrix} \cos{\abs{\v \epsilon}} & \sin{\abs{\v \epsilon}} & 0 \\ -\sin{\abs{\v \epsilon}} & \cos{\abs{\v \epsilon}} & 0 \\ 0 & 0 & 1 \end{pmatrix} + \mathcal{O}(\abs{\v \epsilon}^2) \\
    \end{align*}
    #+end_ex
    Anwendung:

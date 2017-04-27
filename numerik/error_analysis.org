@@ -1,0 +1,326 @@
+* Fehleranalyse
+** Zahldarstellung und Rundungsfehler
+   Anforderung: Rechnen mit reellen Zahlin auf dem Computer. \\
+   Problem: Speicher endlich ($⇒$ endliche Genauigkeit). \\
+   Lösung: Gleitkommazahlen, ein *Kompromiss* zwischen:
+   - Umfang darstellbarer Zahlen
+   - Genauigkeit
+   - Geschwindigkeit einfacher Rechenoperationen (+, -, ·, /)
+   Alternativen:
+   - Fixkommazahlen
+   - logarithmische Zahlen
+   - Rationalzahlen
+   #+begin_defn latex
+   Eine (normalisierte) Gleitkommazahl zur Basis $b ∈ ℕ, b \geq 2$, ist eine Zahl $x ∈ ℝ$ der Form
+   \[x = \pm m · b^{\pm e}\]
+   mit der Mantisse $m = m_1 b^{-1} + m_2 b^{-2} + \dots ∈ ℝ$ und dem Exponenten
+   $e = e_{s - 1}b^{s - 1} + \dots + e_0 b^0 ∈ ℕ$, wobei $m_i, e_i ∈ \{0, \dots, b - 1\}$.
+   Für $x \neq 0$ ist die Darstellung durch die Normieungsvorschrift $m \neq 0$ eindeutig.
+   Für $x = 0$ setzt man $m = 0$.
+   #+end_defn
+   #+ATTR_LATEX: :options [$b = 10$]
+   #+begin_ex latex
+   - $m_i$: $i$ -te Nachkommastelle der Mantisse
+   - $e$: Verschiebt das Komma um $e$ Stellen.
+   \begin{align*}
+   \num{0.314e1} &= \num{3.14} \\
+   \num{0.123e6} &= \num{123000}
+   \end{align*}
+   #+end_ex
+   Auf dem Rechner stehen nur endlich viele Stellen zur Verfügung: \\
+   $r$ Ziffern + 1 Vorzeichen für Mantisse $m$ \\
+   $s$ Ziffern + 1 Vorzeichen für Exponenten. \\
+   Für $x = \pm [m_1 b^{-1} + \dots + m_r b^{-r}] · b^{\pm[e_{s - 1} b^{s - 1} + \dots + e_0 b^0]}$
+   muss man alsu nur $(\pm)[m_1\dots m_r](\pm)[e_{s - 1} \dots e_0]$
+   ebspeichern. Wählt man $b = 2$, so gilt $m_i, e_i ∈ \{0, 1\}$
+   und $x$ kann mit $2 + r + s$ Bits gespeichert werden (Maschinenzahlen).
+   Maschinenzahlen bilden das numerische Gleitkommagitter $A = A(b, r, s)$
+   #+ATTR_LATEX: :options [$b = 2, r = 3, s = 1$]
+   #+begin_ex latex
+   \begin{align*}
+   m &= \frac{1}{2} + m_2 \frac{1}{4} + m_3 \frac{1}{8} ∈ \{\frac{4}{8}, \frac{5}{8}, \frac{6}{8}, \frac{7}{8}\} \\
+   e &= e_0 ∈ \{0, 1\}
+   \end{align*}
+   #+end_ex
+   Da $A$ endlich ist, gibt es eine größte/kleinste darstellbare Zahl:
+   \begin{align*}
+   x_\{min/max\} &= \pm (b - 1) [b^{-1} + \dots + b^{-r}]·b^{(b - 1)[b^{s - 1} + \dots + b^0]} \\
+   &= \pm (1 - b^{-r}) · b^{(b^s - 1)}
+   \end{align*}
+   sowie eine kleinste positive/größte negative Zahl:
+   \begin{align*}
+   x_{posmin/negmax} &= \pm b^{-1} · b^{-(b - 1)[b^{s - 1} + \dots + b^0]} \\
+   &= b^{-b^s}
+   \end{align*}
+   Das gängigste Format ist das IEEE-Format, das auch hinter dem Python-Datentyp float steht:
+   \[x = \pm m · 2^{c - 1022}\]
+   Dieser Datentyp ist 64 Bit (8 Byte) groß (dopplte Genauigkeit, double). Davon speichert 1 Bit das Vorzeichen, 52 Bits die Mantisse $m = 2^{-1} + m_2 2^{-2} + \dots + m_{53} 2^{-53}$
+   und 11 Bits die Charakteristik $c = c_0 2^0 + \dots + c_{10} 2^{10}$, mit $m_i, c_i ∈ \{0, 1\}$.
+   Es gibt folgende spezielle Werte:
+   - Alle $c_i, m_i = 0: x = \pm 0$
+   - Alle $m_i = 0, c_i = 1: x = \pm ∞$
+   - Ein $m_i \neq 0$, alle $c_i = 1$: x = NaN (not a number)
+   Für $c$ bleibt damit ein Bereich von $\{0, \dots, 2046\}$ beziehungsweise $c - 1022 ∈ \{-1022, \dots, 1024\}$.
+   Damit gilt:
+   - $x_{max} \approx 2^{1024} \approx \num{1.8e308}, x_{min} = -x_{max}$
+   - $x_{posmin} = 2^{-1022} \approx \num{2.2e-308}, x_{negmax} = -x_{posmin}$
+   Ausgangsdaten $x ∈ ℝ$ einer numerischen Aufgabe und die Zwischenergebnisse einer Rechnung müssen durch Maschinenzahlen dargestellt werden. Für Zahlen des "zulässigen" Bereichs $D = [x_{min}, x_{negmax}] ∪ \{0\} [x_{posmin}, x_{max}]$ wird
+   eine Rundungsoperation $\rd: D \to A$ verwendet, die
+   \[\abs{x - \rd{x}} = \min_{y ∈ A} \abs{x - y} ∀ x ∈ D\]
+   erfüllt.
+   #+ATTR_LATEX: :options [Natürliche Rundund im IEEE-Format]
+   #+begin_ex latex
+   \[\rd(x) = \sgn(x) · \begin{cases} 0, m_1, \dots, m_{53} · 2^e & m_{54} = 0 \\ \string(0, m_1, \dots, m_{53} + 2^{-53}\string) · 2^e & m_{54} = 1\end{cases}\]
+   Rundungsfehler:
+   - absolut:
+	 \[\abs{x -  \rd(x)} \leq \frac{1}{2} b^{-r} b^e\]
+   - relativ:
+	 \[\abs{\frac{x - \rd(x)}{x}} \leq \frac{1}{2} \frac{b^{-r} b^e}{\abs{m} b^e} \leq \frac{1}{2} b^{-r + 1}\]
+   Der relative Fehler ist für $x ∈ D \setminus \{0\}$ beschränkt durch die "Maschienengenauigkeit"
+   \[eps = \frac{1}{2} b^{-r + 1}\]
+   Für $x ∈ D$ ist $\rd(x) = x(1 + ε), \abs(ε) \leq eps$. Für das IEEE-Format (double)
+   \[eps = \frac{1}{2} 2^{-52} \approx 10^{-16}\]
+   #+end_ex
+   Arithmetische Grundoperationen
+   \[*: ℝ × ℝ \to ℝ, * ∈ \{x, -, +, /\}\]
+   werden auf dem Rechner ersetzt durch Maschinenoperationen:
+   \[\oast: A × A \to A\]
+   Dies ist normalerweise für $x, y ∈ A$ und $x * y ∈ D$ realisiert durch
+   \[x \oast y := \rd(x * y) = (x * y)(1 + ε), \abs{ε} \leq eps\]
+   Dazu werden die Operationen maschinenintern (unter Verwendung einer längeren Mantisse) ausgeführt, normalisiet und dann gerundet. Im Fall $x * y \not ∈ D$ gibt es eine Fehlermeldung (overflow, underflow)
+   oder das Ergebnis NaN.
+   Achtung: Das Assoziativ- und Distributivgesetz gilt dann nur näherungsweise. Im Allgemeinen ist für $x, y, z ∈ A$
+   \begin{align*}
+   \string(x \oplus y\string) \oplus z &\neq x \oplus (y \oplus z) \\
+   \string(x \oplus y\string) \odot z &\neq (x \odot z) \oplus (y \odot z)
+   \end{align*}
+   Insbesondere gilt für $\abs{y} \leq \frac{\abs{x}}{b} eps$
+   \[x \oplus y = x\]
+   Damit ergibt sich eine alternative Charakterisierung der Maschienengenauigkeit: $eps$ ist die kleinste positive Zahl in $A$, sodass $1 \oplus eps \neq 1$
+** Konditionierung numerischer Aufgaben
+   Eine numerische Aufgabe wird als *gut konditioniert* bezeichnet,	wenn eine kleine Störung in den Eingangsdaten (Messfehler, Rundungsfehler) auch nur eine kleine Änderung der Ergebnisse zur Folge hat.
+   #+ATTR_LATEX: :options [Schnittpunkt von Geraden]
+   #+begin_ex latex
+   Zwei Geraden, die sich (annähernd) rechtwinklig treffen sind gut konditioniert. \\
+   Zwei Geraden, die sich unter einem stumpfen, oder spitzen Winkel treffen sind schlecht konditioniert.
+   #+end_ex
+   #+ATTR_LATEX: :options [Lineares Gleichungssystem]
+   #+begin_ex latex
+   \[\begin{pmatrix} 1 & 10^6 \\ 0 & 1\end{pmatrix} \cvec{x_1; x_2} = \cvec{b_1; b_2} ⇒ \cvec{x_1; x_2} = \begin{pmatrix} 1 & -10^6 \\ 0 & 1\end{pmatrix} \cvec{b_1; b_2}\]
+   \[b = \cvec{1; 0} ⇒ x = \cvec{1; 0}\]
+   \[b = \cvec{1; 10^{-3}} ⇒ x = \cvec{-999; 10^{-3}} \not\approx \cvec{1; 0}\]
+   $⇒$ schlecht konditioniert.
+   #+end_ex
+   #+begin_defn latex
+   Eine *numerische Aufgabe* berechnet aus Eingangsgrößen $x_j ∈ ℝ, j = 1,\dots, m$ unter der funktionellen Vorschrift $f(x_1, \dots, x_m), i = 1, \dots, n$ Ausgangsgrößen $y_i = f_i(x_1, \dots, x_m)$
+   \[y = f(x), f:ℝ^m \to ℝ^n\]
+   #+end_defn
+   #+ATTR_LATEX: :options [Lösung eines LGS]
+   #+begin_ex latex
+   $A y = x, f(x) = A^{-1} x$
+   #+end_ex
+   #+begin_defn latex
+   Fehlerhafte Eingangsgrößen $x_i + Δx_i$ ($Δx_i$: Rundungsfehler, Maschienenfehler) ergeben fehlerhafte Resultate $y_i + Δy_i$. Wir bezeichnen $\abs{Δy_i}$ als den absoluten Fehler und
+   $\abs{\frac{Δy_i}{y_i}}$ für $y_i \neq 0$ als den relativen Fehler.
+   #+end_defn
+*** Differentielle Fehleranalyse
+	Annahmen:
+	- kleine relative Datenfehler $\abs{Δx_i} \ll \abs{x_i}$
+	- $f_i$ stetig partiell differenzierbar nach llen $x_i$
+    Dann gilt:
+	\begin{align*}
+	y_i &= f_i(x_i), y_i + Δy_i = f_i(x + Δx) \\
+	⇒ Δy_i &= f_i(x + Δx) - f(x) \\
+	\intertext{Talorentwicklung}
+	&= \sum_{j = 1}^{m} \frac{\partial f_i}{\partial x_j} Δx_j + R_i^f(x, Δx)
+	\end{align*}
+	mit einem Restglied $R_i^f$, das für $\abs{Δx} = \max_{j = 1,\dots, m} \abs{Δx_j} \to 0$ schneller gegen $0$ geht als $\abs{Δx}$.
+	Wenn $f$ sogar zweimal stetig differenziebar ist, gilt sogar, dass
+	\[\abs{R_i^f(x, Δx)} \leq c \abs{Δx}^2, c ∈ ℝ\]
+	#+ATTR_LATEX: :options [Landau-Notation]
+	#+begin_defn latex
+	Seien $g, h: ℝ_+ \to ℝ, t \to 0^+$. Wir schreiben:
+	- $g(t) = \mathcal{O}(h(t)) :⇔ ∃t_0, c ∈ ℝ_+: ∀ t ∈ \string(0, t_0]: \abs{g(t)} \leq c\abs{h{t}}$
+	- $g{t} = σ(h{t}) :⇔ ∃t_0 ∈ ℝ_+, c: ℝ_+ \to ℝ, \lim_{t \to 0^+} c(t) = 0: ∀ t ∈ \string(0, t_0]: \abs{g(t)} \leq c(t) \abs{h(t)}$
+	#+end_defn
+	#+begin_remark latex
+	- Analoge Schreibweise für $t \to ∞$
+	- $\mathcal{O}$ und $σ$ sind Symbole, keine Funktionen
+	  \[\mathcal{O}(t^2) + \mathcal{O}(t^3) + \mathcal{O}(2 t^2) = \mathcal{O}(t^2) \not ⇒ \mathcal{O}(t^3) + \mathcal{2 t^2} = 0\]
+	- $σ(t^n)$ ist stärker als $\mathcal{O}(t^n): σ(t^n) + \mathcal{O}(t^n) = \mathcal{O}(t^n)$
+	- $\mathcal{O}(t^{n + 1})$ ist stärker als $σ(t^n)$: Wähle $c(t) = t$!
+	#+end_remark
+	#+begin_ex latex
+	Ist $g(t)$ zweimal stetig differenzierbar, so gilt mit Taylor
+	\[g(t + Δt) = g(t) + Δt g'(t) + \frac{1}{2}Δt^2 g''(τ), τ ∈ [t, t + Δt]\]
+	\[⇒ \frac{1}{Δt} (g(t + Δt) - g(t)) = g'(t) + \mathcal{O}(Δt)\]
+	Damit folgt dass $Δy_i$ in erster Näherung, das heißt bis auf eine Größe der Ordnung $\mathcal{O}(\abs{Δx}^2)$ gleich
+	\[\sum_{j = 1}^{m} \frac{\partial f_i}{\partial x_j}(x) Δx_j\]
+	ist. Schreibweise
+	\[Δ y_i \overset{·}{=} \sum_{j = 1}^{m} \frac{\partial f_i}{\partial x_j}(x) Δx_j\]
+	Für den komponentenweisen relativen Fehler gilt
+	\[\frac{Δy_i}{y_i} \overset{·}{=} \sum_{j = 1}^{m} \frac{\partial f_i}{\partial x_j}(x) \frac{Δx_j}{y_i} = \sum_{j = 1}^{m} \underbrace{\frac{\partial f_i}{\partial x_j}(x) \frac{x_j}{f_i(x)}}_{=: k_{ij}(x)} \frac{Δx_j}{x_j}\]
+	Vernachlässigt haben wir dabei
+	\[\abs{\frac{R_i^f(x_j, Δx)}{y_i}} = \mathcal{O}(\frac{\abs{Δx}^2}{\abs{y_i}})\]
+	Diese Vernachlässigung ist nur zulässig falls
+	\[\abs{Δx} = σ(\abs{y_i}), i = 1, \dots, n\]
+	damit
+	\[\mathcal{O}(\frac{\abs{Δx}^2}{\abs{y_i}}) = σ(\abs{Δx})\]
+	(stärker als $\mathcal{O}(\abs{Δx})$)
+	#+end_ex
+	#+begin_defn latex
+	Die Größen $k_{ij}(x)$ heißen (relative) Konditionszahlen von $f$ im Punzt $x$. Sie sind Maß dafür, wie sich kleine relative Fehler in den Ausgansgdaten $x_j$ auf das Ergebnis $y_i$ auswirken.
+	Sprechweise:
+	- $\abs{k_{ij}(x)} \gg 1$: Die Aufgabe $y = f(x)$ ist schlecht konditioniert
+	- sonst: Die Aufgabe $y = f(x)$ ist gut konditioniert
+	- $\abs{k_{ij}(x)} < 1$: Fehlerdämpfung
+	- $\abs{k_{ij}(x)} > 1$: Fehlerverstärkung.
+	#+end_defn
+	#+begin_remark latex
+	Man kann auch Störungen in $f$ betrachten.
+	#+end_remark
+	#+begin_ex latex
+	Implizit gegebene Augaben. Für $n = m$ sie $y$ die gegebene Eingangsgröße und ein $x$ mit $f(x) = y$ die Ausgabe (zum Beispiel: $f(x) = Ax + b$)
+	Die differentielle Fehleranalyse auf der Umkehrfunztion $x = f^{-1}(y)$ liefert unter geeigneten Annahmen.
+	\[\frac{Δx_i}{x_i} \overset{·}{=} \sum_{j = 1}^{n} k_{ij}^{-1}(y) \frac{Δy_j}{y_j}, k_{ij}^{-1} = \frac{\partial f^{-1}_i}{\partial y_j}(y) \frac{y_j}{x_i}\]
+	Wir definieren die Matrizen
+	\[K^{-1}(y) = (k_{ij}^{-1})^n_{i,j = 1}, K(x) = (k_{ij}(x))^n_{i,j = 1}\]
+	und betrachten deren Produkt:
+	\begin{align*}
+	\string(K^{-1}(y)K(x)\string)_{ij} &= \sum_{l = 1}^{n} k_{il}^{-1}(y)k_{lj}(x) \\
+	&= \sum_{l = 1}^{n} \frac{\partial f_i^{-1}}{\partial y_l}(y) \frac{y_l}{x_i} \frac{\partial f_l}{\partial x_j}(x) \frac{x_j}{y_l} \\
+	&= \frac{x_j}{x_i} \sum_{l = 1}^{n} \frac{\partial f_i^{-1}}{\partial y_l} \frac{\partial f_l}{\partial x_j} = \frac{x_j}{x_i} \dd{}{x_j}(f^{-1}_i (f(x))) \\
+	&= \frac{x_j}{x_i} \dd{x_i}{x_j} = δ_{ij} = \begin{cases} 1 & i = j \\ 0 & \text{sonst} \end{cases}
+	\end{align*}
+	$K^{-1}$ ist gerade das Inverse von $K$.
+	#+end_ex
+	Wiederhohlung: Numerische Aufgabe
+	\[f: x ∈ ℝ^m ↦ y ∈ ℝ\]
+	Konditionszahlen:
+	\[\frac{Δ y_i}{y_i} \overset{·}{=} \sum_{j = 1}^{m} k_{ij}(x) \frac{Δx_j}{x_j}\]
+	\[k_{ij}(x)= \pp{f_i}{x_j}(x) \frac{x_j}{f_i(x)}\]
+*** Arithmetische Grundoperationen
+	Addition: $f(x_1, x_2) = x_1 + x_2, x_1, x_2 ∈ ℝ \setminus \{0\}$
+	\begin{align*}
+	k_{1j}(x) &= \pp{f}{x_j} \frac{x_j}{f} = 1 \frac{x_j}{x_1 + x_2} = \frac{1}{1 + \frac{x_{\bar j}}{x_j}} \\
+	\bar j &= \begin{cases} 2 & j = 1 \\ 1 & j = 2 \end{cases}
+	\end{align*}
+	Die Addition ist schlecht konditioniert für $x_1 \approx -x_2$.
+	#+ATTR_LATEX: :options [Auslöschung]
+	#+begin_defn latex
+	Unter Auslöschung versteht man den Verlust von Genauigkeit bei der Subtraktion von Zahlen gleichen Vorzeichens.
+	#+end_defn
+	#+begin_ex latex
+	$b = 10, r = 4, s = 1$
+	\begin{alignat*}{2}
+	x_1 &= \num{0.112587e2} \quad \rd(x_1) &= \num{0.1126e2} \\
+	x_2 &= \num{0.112448e2} \quad \rd(x_1) &= \num{0.1124e2} \\
+	x_1 + x_2 &= \num{0.225035e2} \quad \rd(x_1) \oplus \rd(x_2) &= \num{0.2250e2} \\
+	x_1 - x_2 &= \num{0.129e-1} \quad \rd(x_1) \ominus \rd(x_2) &= \num{-0.2e-1} & \tag{Großer Fehler}
+	\end{alignat*}
+	#+end_ex
+	Multiplikation: $y = f(x_1, x_2) = x_1 x_2$
+	\[k_{1j}(x) = \pp{f}{x_j}\frac{x_j}{f} = x_j - \frac{x_j}{x_1 x_2} = 1\]
+	$⇒$ gut konditioniert
+	#+ATTR_LATEX: :options [Lösungen quadratischer Gleichungen]
+	#+begin_ex latex
+	Für $p, q ∈ ℝ$ betrachte:
+	\begin{align*}
+	0 &= y^2 - py + q \\
+	y_{1,2} &= y_{1,2}(p, q) = \frac{p}{2} \pm \sqrt{\frac{p^2}{4} - q} \\
+	\intertext{nach Vieta $p = y_1 + y_2, q = y_1 · y_2$}
+	1 &= \dd{p}{p} = \pp{y_1}{p} + \pp{y_2}{p} \\
+	0 &= \dd{q}{p} = \pp{y_1}{p} y_2 + y_1 \pp{y_2}{p} \\
+	⇒ (y_2 - y_1) \pp{y_2}{p} &= y_2 \\
+	⇒ \pp{y_2}{p} &= \frac{y_2}{y_2 - y_1} \\
+	⇒ \pp{y_1}{p} &= \frac{y_1}{y_1 - y_2} \\
+	0 &= \dd{p}{q} = \pp{y_1}{q} + \pp{y_2}{q} \\
+	1 &= \dd{q}{q} = \pp{y_1}{q} y_2 + y_1 \pp{y_2}{q} \\
+	⇒ 1 &= (y_2 - y_1)\pp{y_1}{q} \\
+	⇒ \pp{y_1}{q} &= \frac{1}{y_2 - y_1} \\
+	⇒ \pp{y_2}{q} &= -\frac{1}{y_2 - y_1} \\
+	k_{11}(x) &= \pp{y_1}{p} \frac{p}{y_1} = \frac{y_1}{y_1 - y_2} \frac{y_1 + y_2}{y_1} = \frac{1 + y_2 / y_1}{1 - y_2 / y_1} \\
+	k_{12}(x) &= \pp{y_1}{q} \frac{q}{y_1} = \frac{1}{y_2 - y_1} \frac{y_1 y_2}{y_1} = \frac{1}{1 - y_1 / y_2}
+	\end{align*}
+	Analog für $k_{21}, k_{22}$ \\
+	Die Berechnung von $y_1, y_2$ ist schlecht konditioniert $y_1 \approx y_2$. \\
+	Konkretes Beispiel: $p = 4, q = 3\num{3.999}, y_{1,2} = 2 \pm \num{10e-1}$
+	\[k_{12} = \frac{y_2}{y_2 - y_1} = \frac{2 - 10^{-2}}{\num{-2e-2}} = -99.5\]
+	$⇒$ 100-fache Fehlerverstärkung.
+	#+end_ex
+** Stabilität numerischer Algorithmen
+   Gegeben: Numerische Aufgabe $f: x ∈ ℝ^m ↦ y ∈ ℝ^n$
+   #+ATTR_LATEX: :options [Verfahren / Algorithmus]
+   #+begin_defn latex
+   Unter einem Verfahren / Algorithmus zur (gegebenenfalls näherungsweisen) Berechnung von $y$ aus $x$ verstehen wir eine endliche Folge von elementaren Abbildungen $φ^{(k)}$, die durch sukzessiv Anwendung
+   einen Näherungswert $\tilde y$ zu $y$ liefern.
+   \[x = x^{(0)} ↦ φ^{(1)}(x^{(0)}) = x^{(1)} ↦ \dots ↦ φ^{(k)}(x^{(k - 1)}) ↦ \tilde y \to y\]
+   Im einfachsten Fall sind die $φ^{(i)}$ arithmetische Grundoperationen. Bei der Durchführung des Algorithmus auf dem Rechner treten in jedem Schritt Fehler auf (Rundungsfehler, Auswertungsfehler, \dots),
+   die sich akkumulieren können.
+   #+end_defn
+   #+ATTR_LATEX: :options [Algorithmus]
+   #+begin_defn latex
+   Ein Algorithmus heißt stabil, wenn die im Verlauf der Rechnung akkumulierten Fehler den durch die Konditionierung der Aufgabe $y = f(x)$ bedingten
+   unvermeidbaren Problemfehler nicht übersteigen.
+   #+end_defn
+   #+ATTR_LATEX: :options [Lösung quadratischer Gleichungen]
+   #+begin_ex latex
+   Annahme: $0 \neq q < p^2 / 4$ \\
+   Für $\abs{\frac{y_1}{y_2}} \gg 1$, das heißt $q \ll \frac{p^2}{4}$, ist die Aufgabe gut konditioniert.
+   Algorithmus: $u = p^2 / 4, v = u - q, w = \sqrt{v}$. \\
+   Im Fall $p < 0$ wird zur Vermeidung von Auslöschung zunächst $\tilde y_2 = p / 2 - w$ berechnet. \\
+   Fehlerfortpflanzung:
+   \[w = \sqrt{u - q} \begin{cases} \approx \frac{\abs{p}}{2} & q > 0 \\ > \frac{\abs{p}}{2} & q < 0\end{cases}\]
+   \begin{align*}
+   \frac{Δy_2}{y_2} &\overset{·}{\leq} \abs{\frac{\frac{1}{2} p}{\frac{p}{2} - w}}\abs{\frac{Δp}{p}} + \abs{\frac{-w}{\frac{p}{2} - w}}\abs{\frac{Δw}{w}} \\
+   &= \underbrace{\abs{\frac{1}{1 - \frac{2w}{p}}}}_{\leq \frac{1}{2}}\abs{\frac{Δp}{p}} + \underbrace{\abs{\frac{1}{1 - \frac{p}{2w}}}}_{< 1} \abs{\frac{Δw}{w}}
+   \end{align*}
+   Die zweite Wurzel kann so bestimmt werden:
+   \[A: \tilde y_1 = \frac{p}{2} + w, \quad B: \tilde y_1 = \frac{q}{\tilde y_2}\]
+   Für $\abs{q} \ll \frac{p^2}{4}$ ist $w \approx \frac{\abs{p}}{2}$ $⇒$ Auslöschung in Variante $A$
+   \[\abs{\frac{Δy_1}{y_1}} \overset{·}{=} \underbrace{\frac{1}{1 + \frac{2w}{p}}}_{\gg 1} \frac{Δp}{p} + \underbrace{\frac{1}{1 + \frac{p}{2w}}}_{\gg 1} \frac{Δw}{w}\]
+   $⇒$ Variante A ist instabil. Variante B ist stabil:
+   \[\abs{\frac{Δy_1}{y_1}} \overset{·}{\leq} \underbrace{\abs{\frac{Δq}{q}}}_{\leq eps} + \underbrace{\abs{\frac{Δy_2}{y_2}}}_{\approx eps}\]
+   Regel: Bei der Lösung quadratischer Gleichungen sollten nicht beide Wurzeld aus der Lösugsformel berechnet werden. \\
+   Konkretes Beispiel: $p = -4, q = 0.01$ (vierstellige Rechnung)
+   \begin{align*}
+   u &= 4, v = 3.99, w = 1.9974948\dots, \tilde y_2 = -3.997(4981\dots) \\
+   \tilde y_1 &= \begin{cases} \text{exakt:} & -0.9925915\dots \\ A: & -0.003000 \quad\text{(rel. Fehler: 20\%)}\\ B: & -0.002502\quad\text{(rel. Fehler: $\num{1.7e-4}$)}\end{cases}
+   \end{align*}
+   #+end_ex
+   *Auswertung arithmetischer Ausdrücke* \\
+   Vorwärtirundunsgsfehleranalyse: Akkumulation des Rundungsfehlers ausgehend von Startwert.
+   #+begin_ex latex
+   $y = f(x_1, x_2) = x_1^2 - x_2^2 = (x_1 - x_2)(x_1 + x_2)$
+   Konditionierung:
+   \begin{align*}
+   \abs{\frac{Δy}{y}} &\overset{·}{\leq} \sum_{i = 1}^{2} \abs{\pp{f}{x_i} \frac{x_i}{f}} \abs{\frac{Δx_i}{x_i}}	\\
+   &= \abs{2x_1 \frac{x_1}{x_1^2 - x_2^2}}\abs{\frac{Δx_1}{x_1}} + \abs{-2x_2 \frac{x_2}{x_1^2 - x_2^2}}\abs{\frac{Δx_2}{x_2}} \\
+   &\leq 2 \frac{x_1^2 + x_2^2}{\abs{x_1^2 - x_2^2}} eps = 2 \abs{\frac{(\frac{x_1}{x_2})^2 + 1}{(\frac{x_1}{x_2})^2 - 1}} eps
+   \end{align*}
+   $⇒$ schlecht konditioniert für $\abs{\frac{x_1}{x_2}} \approx 1$
+   \begin{equation*}
+   \begin{aligned}[c]
+   &\text{Algorithmus A} \\
+   u &= x_1 \odot x_1 \\
+   v &= x_2 \odot x_2 \\
+   \tilde q &= u \ominus v
+   \end{aligned}
+   \qquad
+   \begin{aligned}[c]
+   &\text{Algorithmus B} \\
+   u &= x_1 \oplus x_1 \\
+   v &= x_1 \ominus x_2 \\
+   \tilde q &= u \odot v
+   \end{aligned}
+   \end{equation*}
+   Sei $x_1, x_2 ∈ A$. Für Maschienenoperationen $\oast$ und $a, b ∈ A$ gilt
+   \[a \oast b = (a \ast b)(1 + ε), \abs(ε) \leq eps.\]
+   Algorithmus A:
+   \begin{align*}
+   u &= x_1^2(1 + ε_1), v = x_2^2(1 + ε_2) \\
+   \tilde y &= (x_1^2(1 + ε_1) - x_2^2(1 + ε_2))(1 + ε_3) \\
+   &= \underbrace{x_1^2 - x_2^2}_{y} + x_1^2 ε_1 - x_2^2 ε_2 + \underbrace{(x_1^2 - x_2^2)}_{y} ε_3, \abs{ε} \leq eps \\
+   ⇒ \abs{\frac{Δy}{y}} &\overset{·}{\leq} eps \frac{x_1^2 + x_2^2 + \abs{x_1^2 - x_2^2}}{\abs{x_1^2 - x_2^2}} = eps (1 + \frac{(\frac{x_1}{x_2})^2 + 1}{(\frac{x_1}{x_2})^2 - 1})
+   \end{align*}
+   #+end_ex

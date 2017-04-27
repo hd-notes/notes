@@ -130,7 +130,7 @@
    \intertext{$\implies$ Nur eine linear unabhängige Lösung, brauche weitere Lösung um allgemeine Anfangsbedingungen zu erfüllen}
    \intertext{Idee: Betrachte Schwingfall Lösungen für $\tilde \omega \to 0$}
    \intertext{Taylor:}
-   \cos{x} = 1 + \O(x^2);\qquad \sin{x} = x + O(x^3) \\
+   \cos{x} = 1 + \mathcal{O}(x^2);\qquad \sin{x} = x + \mathcal{O}(x^3) \\
    \implies x_1 = e^{-\frac{c}{2}t}; \qquad x_2 = e^{-\frac{c}{2}t} \tilde\omega t
    \intertext{$\implies$ Wieder asymptotische Annäherung an $0$ ohne Oszillation}
    \end{align*}

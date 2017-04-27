@@ -1,0 +1,41 @@
+* Dualraum
+  In diesem Abschnitt sei $V$ ein $K$ Vektorraum.
+  #+ATTR_LATEX: :options [Dualraum]
+  #+begin_defn latex
+  \[V^{\ast} := \Hom_K(V, K) = \{φ: V \to K \mid φ \text{ linear}\}\]
+  heißt der *Dualraum* von $V$, die Elemente aus $V^{\ast}$ heißen *Linearformen* auf $V$.
+  #+end_defn
+  #+begin_ex latex
+  1. $K = ℝ, V = ℝ^n, φ: ℝ^n \to ℝ, \cvec{x_1; \dots; x_n} ↦ x_1$ ist eine Linearform aut $ℝ^n$.
+  2. $K = ℝ, V = \mathcal{C}[0, 1] = \{f:[0, 1] \to ℝ \mid f \text{ stetig}\}$
+	 \[φ: \mathcal{C}[0, 1] \to ℝ, f ↦ ∫_0^1 f(t) \d t\]
+	 ist eine Linearform auf $\mathcal{C}[0, 1]$
+  #+end_ex
+  #+begin_remdef latex
+  $V$ endlichdimensional $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V$. Wir definieren für $i = 1, \dots, n$ die linear Abbildung
+  \[v_i^{\ast}: V \to V, v_j ↦ δ_{ij} = \begin{cases} 1 & i = j \\ 0 & 1 \neq j\end{cases}\]
+  Dann ist $\mathcal{B}^{\ast} := (v_1^{\ast}, \dots, v_n^{\ast})$ ist eine Basis von $V^{\ast}$, die *duale Basis* zu $\mathcal{B}$.
+  #+end_remdef
+  #+begin_proof latex
+  1. $\mathcal{B}^{\ast}$ ist linear unabhängig: Seien $λ_1, \dots, λ_n ∈ K, λ_1 v_1^{\ast} + \dots + λ_n v_n^{\ast} = 0$. $⇒ ∀ i ∈ \{1, \dots, n\}$ ist
+	 \[0 = \underbrace{λ_1 v_1^{\ast}(v_i)}_{= 0} + \dots + \underbrace{λ_{i - 1} v_{i - 1}^{\ast}(v_i)}_{= 0} + \underbrace{λ_i v_i^{\ast}(v_i)}_{= 1} + \underbrace{λ_{i + 1} v_{i + 1}^{\ast}(v_i)}_{= 0} + \dots + \underbrace{λ_n v_n^{\ast}}_{= 0} = λ_i\]
+  2. $\mathcal{B}^{\ast}$ ist ES von $V^{\ast}$: Sei $φ ∈ V^{\ast}$. Setze $λ_i := φ(v_i)$ für $i = 1, \dots, n$
+	 \begin{align*}
+	 &⇒ (λ_1 v_1^{\ast} + \dots + λ_n v_n^{\ast})(v_i) = λ_i = φ(v_i), i = 1, \dots, n \\
+	 &⇒ φ = λ_1 v_1^{\ast} + \dots + λ_n v_n^{\ast}
+     \end{align*}
+  #+end_proof
+  #+begin_note latex
+  Ist $V$ unendlichdimesional mit Basis $(v_i)_{i ∈ I}$, dann ist $(v_i^{\ast})_{i ∈ I}$ (analog definiert) linear unabhängig, aber kein ES von $V$.
+  #+end_note
+  *Notation*: \\
+  Elemete des $K^n$ schreiben wir im Folgenden als Spaltenvektoren. Ist $φ ∈ (K^n)^{\ast} = \Hom_K(K^n, K)$, dann existiert nach LA1 ein eindeutig bestimmtes $A = \begin{pmatrix}a_1 & \dots & a_n\end{pmatrix} ∈ M(1 × n, K)$
+  mit
+  \[φ = \tilde A: K^n \to K, x = \cvec{x_1; \vdots; v_n} ↦ \begin{pmatrix} a_1 & \dots & a_n\end{pmatrix}\cvec{x_1; \vdots; x_n}\]
+  Es ist $A = M_{(e_1)}^{(e_1, \dots, e_n)}(φ)$. Dementsprechende schreiben wir Elemente von $(K^n)^{\ast}$ als Zeilenvektoren.
+  #+begin_ex latex
+  1. $V = K^n, \mathcal{B} = (e_1, \dots, e_n) ⇒ \mathcal{B}^{\ast} = (e_1^{\ast}, \dots, e_n^{\ast})$ duale Basis zu $\mathcal{B}$ mit
+	 \[e_i^{\ast} = (0, \dots, 0, 1, 0, \dots, 0)\]
+	 Für die Abbildung aus 19.2.1 gilt $φ = e_1^{\ast} = (1, \dots, 0)$.
+  2. $K = ℝ, V = ℝ^2, \mathcal{B} = (v_1, v_2)$
+  #+end_ex

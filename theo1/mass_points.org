@@ -23,7 +23,7 @@
 *** Differentiation oder Ableitung
 	\[\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}\]
 	$\mathrm{d}f$ bezeichnet den in $\Delta x$ linearen Anteil des Zuwachs $\Delta f\equiv f(x + \Delta x) - f(x)$.
-	- Aus $\Delta f = f'(x)\Delta(x) + O(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
+	- Aus $\Delta f = f'(x)\Delta(x) + \mathcal{O}(\Delta x^2)~\text{folgt}~\mathrm{d}f = f'(x)\Delta x$
 	- Anwendung auf die Identitätsabbildung: $x \mapsto x \implies \mathrm{d}x = \Delta x$
 	  \[\implies \mathrm{d}f = f'(x)\mathrm{d}x~\text{oder}~\frac{\mathrm{d}f(x)}{\mathrm{d}x} = f'(x)\]
 	  Dies ist eigentlich nur eine Schreibweise für $f'(x)$, _aber_ nützlich, weil bei kleinen $\Delta x~\mathrm{d}f \simeq \Delta f$ (Schreibweise beinhaltet intuitiv die Grenzwert-Definition)

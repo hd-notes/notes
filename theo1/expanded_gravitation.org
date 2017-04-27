@@ -53,13 +53,13 @@
    \intertext{$\implies$ *ein* Integral, Integrand:}
    \underbrace{F^3(x^1, x^2, \Delta x^3 - F^3(x^1, x^2, 0))}_{\text{Taylor um $x^3 \equiv 0$}} \\
    I_{12} &= \int_{12}\d x^1 \d x^2 \Delta x^3 \frac{\partial F^3}{\partial x^3}(x^1, x^2, 0) \\
-   I_{12} &= \Delta x^1 \Delta x^2, \Delta x^3 (\frac{\partial F^3}{\partial x^3})(0,0,0) + O(\Delta^4) \\
+   I_{12} &= \Delta x^1 \Delta x^2, \Delta x^3 (\frac{\partial F^3}{\partial x^3})(0,0,0) + \mathcal{O}(\Delta^4) \\
    \intertext{Zusammen mit analoger Rechnung für $I_{23}, I_{31}$:}
-   I &= \underarrow[V]{$\Delta x^1 Delta x^2 \Delta x^3$} (\frac{\partial F^1}{\partial x^1} + \frac{\partial F^2}{\partial x^2} + \frac{\partial F^2}{\partial x^2}) = V(\partial^i F^i) = V(\v \nabla \v F) = V(\div \v F) \\
+   I &= \underarrow[V]{$\Delta x^1 Delta x^2 \Delta x^3$} (\frac{\partial F^1}{\partial x^1} + \frac{\partial F^2}{\partial x^2} + \frac{\partial F^2}{\partial x^2}) = V(\partial^i F^i) = V(\v \nabla \v F) = V(\Div \v F) \\
    \end{align*}
    #+ATTR_LATEX: :options [Divergenz]
    #+begin_defn latex
-   \[\div \v F \equiv \v\nabla \v F= \partial^i F^i\]
+   \[\Div \v F \equiv \v\nabla \v F= \partial^i F^i\]
    #+end_defn
 
    Jetzt: Großen Volumen zusammengesetzt aus kleinen Quadern.

@@ -72,6 +72,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\GL}{GL}
 #+LATEX_HEADER: \DeclareMathOperator{\Eig}{Eig}
 #+LATEX_HEADER: \DeclareMathOperator{\rd}{rd}
+#+LATEX_HEADER: \DeclareMathOperator{\Div}{div}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs
@@ -82,9 +83,11 @@
 
 #+LATEX_HEADER: \newcommand{\code}{\texttt}%
 #+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
+#+LATEX_HEADER: \newcommand{\const}{\ensuremath{\text{const.}}}%
 #+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
 #+LATEX_HEADER: \newcommand{\euler}{e}
 #+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
+#+LATEX_HEADER: \newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
 #+LATEX_HEADER: \newcommand\ubar[1]{\stackunder[1.2pt]{$#1$}{\rule{.8ex}{.075ex}}}
 # #+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
 #+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}

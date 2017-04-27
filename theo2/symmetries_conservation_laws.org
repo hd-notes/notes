@@ -1,0 +1,163 @@
+* Symmetrien und Erhaltungssätze
+  Zentrales Ziel: *Noeter Theorem* (Emmy Noether - 1918) \\
+  "Zu jeder Kontinuierlichen Symmetrie eines physikalischen Systems gehört eine Erhaltungsgröße." \\
+  Idealfall: Symmetrien $⇒$ Form der Wirkung. Wirkung hat Symmetrie $⇒$ Erhaltungsgrößen.
+** Symmetriemotivation der Wirkung
+*** Freier Massenpunkt
+	Homogenität von Raum und Zeit $⇒ L(\v x, \v v, t) = L(\v v)$. \\
+	Isotropie des Raumes $⇒ L = L(\v v^2)$. \\
+	Betrachte (kleine) Galilei-Boosts: $\v v \to \v v' = \v v + \v ε$.
+	#+begin_export latex
+	\begin{align*}
+	L(\v v^2) \to L(\v v^{2\prime}) &= L(\v v^2 + 2\v v · \v ε + \v ε^2) \\
+	\intertext{Taytorentwicklung:}
+	&= L(\v v^2) + \frac{\partial L(\v v^2)}{\partial (\v v^2)} (2\v v \v ε) + \mathcal{O}(\v ε^2) \\
+	\intertext{Falls nun $(\partial L / \partial \v v^2) = \const$, so gilt}
+	\frac{\partial L}{\partial \v v^2} (2\v v \v ε) &= \dd{}{t} (\frac{\partial L}{\partial \v v^2} (2\v x \v ε))
+	\end{align*}
+	#+end_export
+	$⇒$ wir fordern, dass $\partial L / \partial \v v^2$ eine Konstante ist und nennen diese $m / 2$. $⇒ L = \frac{m}{2} \v v^2$
+*** Mehrere Massenpunkte
+	Für unabhänige Systeme können wir die Lagrangefunktionen schlicht addieren:
+	\[L(q_1, q_2, \dot q_1, \dot q_2, t) = L_1(q_1, \dot q_2, t) + L_2(q_2, \dot q_2, t)\]
+	Dazu rechnen wir nach, dass die Anwendung der Differentialoperatoren
+	\[\dd{}{t} \frac{\partial}{\partial \dot q_i} - \frac{\partial}{\partial q_i}\quad (i = 1, 2)\]
+	auf $L$ und Nullsetzen äquivalent ist zur Anwendung des Operators "1" auf $L_1$ und "2" auf $L_2$.
+	Dies gibt aber gerade die Lagrangefunktionen und es ist somit egal ob ich $L_1 + L_2$ oder $L_1$ und $L_2$ getrennt als Lagrange-Funktionen betrachte
+	\[(\dd{}{t} \frac{\partial}{\partial \dot q_1} - \frac{\partial}{\partial q_1}) L = (\dd{}{t} \frac{\partial}{\partial \dot q_1} - \frac{\partial}{\partial q_1}) L_1 = \dd{}{t} \frac{\partial L_1}{\partial \dot q_1} - \frac{\partial L_1}{\partial q_1} \overset{!}{=} 0\]
+	Also Mehrere Messenpunkte:
+	\[L = \sum_{a} \frac{m_a}{2} \v v_a^2\]
+	$⇒ L = T$ mit $T =$ kinetische Energie. Hinzunahme von Wechselwirkungen der Form
+	\[V = \sum_{a < b}^{V_{ab}}(\abs{\v x_a - \v x_b})\]
+	respektiert Galilei-Invarianz. Also Vorschlag: $L = T - V$ wie oben eingeführt. Aber: $T, V$ sind im Moment nur Namen.
+** Homogene Funktionen und Satz von Euler
+   Eine Funktion $f$ von $n$ Variablen heißt homogen von Grad $k$ falls $f(α x_1, \dots, α x_n) = α^k f(x_1, \dots, x_n)$.
+   #+begin_ex latex
+   $f(x) = x^p$ ist homogen von Grad $p$.
+   #+end_ex
+   #+begin_ex latex
+   $f(x, y, z) = \frac{x}{y f} + \frac{1}{z}\cos(\frac{x}{z})$ ist homogen von Grad $-1$.
+   #+end_ex
+   #+ATTR_LATEX: :options ["Unser Bespiel"]
+   #+begin_ex latex
+   \[T(q_1, \dots, q_n, \dot q_1, \dots, \dot q_n) = \frac{1}{2} f_{ij}(q)\dot q_i \dot q_j \text{ Summe!}\]
+   homogen *in den $\dot q_i$* vom Grad $2$.
+   #+end_ex
+   #+ATTR_LATEX: :options [Satz von Euler]
+   #+begin_thm latex
+   $f(x_1, \dots, x_n)$ homogen von Grad $k$
+   \[⇒ \sum_{i} \pp{f}{x_i} x_i = k f\]
+   Begründung:
+   \begin{align*}
+   \pp{}{α} f(α x_1, \dots, α x_n) &= \pp{}{α}(α^k f(x_1, \dots, x_n)) \\
+   ⇒ \sum_{i} \pp{f(α x_1, \dots, α x_n)}{(α x_i)} \pp{α x_i}{α} &= k α^{k -1} f(x_1, \dots, x_n) \\
+   \intertext{Setze $α = 1$}
+   ⇒ \sum_{i} \pp{f(x_1, \dots, x_n)}{x_i} x_i &= k f(x_1, \dots, x_n) \\
+   \end{align*}
+   #+end_thm
+** Energieerhaltung
+   Homogenität von $t$ "$⇒$" $L(q, \dot q, t) = L(q, \dot q)$ \\
+   Wir betrachten:
+   \begin{align*}
+   \dd{}{t} L &= \frac{\partial L}{\partial q_i} \dot q_i + \frac{\partial L}{\partial \dot q_i} \ddot{q_i} \tag{Kettenregel} \\
+   \intertext{Euler-Lagrange-Gleichung ($\frac{\partial L}{\partial q_i} = \dd{}{t} \frac{\partial L}{\partial \dot q_i}$)}
+   &= \dd{}{t} (\frac{\partial L}{\partial \dot q_i}) \dot q_i + \frac{\partial L}{\partial \dot q_i} \dd{}{t} \dot q_i \\
+   \intertext{Produktregel}
+   &= \dd{}{t}(\frac{\partial L}{\partial \dot q_i} · \dot q_i) \\
+   ⇒ \dd{}{t}\underbrace{(\sum_{i} \frac{\partial L}{\partial \dot q_i} \dot q_i - L)}_{=: E} &= 0 \\
+   ⇒ \dd{}{t} E &= 0 \\
+   \end{align*}
+   #+begin_ex latex
+   \begin{align*}
+   L &= \frac{m}{2} \dot x^2 - V(x) \\
+   \pp{L}{\dot x} - L &= m \dot x^2 - (\frac{m}{2} \dot x^2 - V) \\
+   &= \frac{m}{2} \dot x^2 + V
+   \end{align*}
+   #+end_ex
+   Um dies allgemeiner zu zeigen: Satz von Euler. Wir nehmen an, dass $L$ folgende Form hat:
+   \[L = T - V = \frac{1}{2} f_{ij}(q) \dot q_{i} \dot q_{j} - V(q)\]
+   Begründung: Diese Form ergibt sich typischerweise, wenn man
+   \[\sum_{a} \frac{m_a}{2} \dot{\v x}_a^2 - V(\v x)\]
+   in verallgemeinerte Koodinaten umscheibt. \\
+   Mit dieser Annahme folgt:
+   \begin{align*}
+   \pp{L}{\dot q_i} \dot q_i &= \pp{T}{\dot q_i} \dot q_i = \pp{}{\dot q_i}(\frac{1}{2}f_{jk} \dot q_j \dot q_k)\dot q_i \\
+   &= \frac{1}{2} f_{jk} δ_{ij} \dot q_k \dot q_i + \frac{1}{2} f_{jk} \dot q_j δ_{ik} \dot q_i \\
+   &= f_{ik} \dot q_i \dot q_k = 2T \\
+   \intertext{Leichter mit Satz von Euler}
+   E &\equiv \pp{L}{\dot q_i} - L = 2 T - (T - V) = T + V~\checkmark
+   \end{align*}
+** Erhaltung von verallgemeinerten Impulsen
+   In einen durch $q_1, \dots, q_s$ parametrisierten System heißen
+   \[p_i := \pp{L}{\dot q_i}\]
+   "verallgemeinerte Impulse" \\
+   Bekannter Fall:
+   \[L = \sum_{i = 1}^{3} \frac{m}{2} \dot x_i^2\]
+   mit
+   \[p_i = m \dot x_i = \pp{L}{\dot x_i}\]
+   Eine Koordinate heißt "zyklisch", falls die *nicht* expliziet in $L$ vorkommt (Ableitung darf vorkommen).
+   #+begin_ex latex
+   \[L = L(q_2, \dots, q_s, \dot q_1, \dots, \dot q_s)\]
+   In dieser Situation ist die Transformation $q_1 \to q_1' = q_1 + ε$ eine Symmetrie.
+   #+end_ex
+   Sei $q_1$ zyklisch. Es gilt
+   \begin{align*}
+   \dd{}{t} \pp{L}{\dot q_1} - \pp{L}{q_1} &= 0 \tag{Euler-Lagrange-Gleichung} \\
+   \intertext{$\partial L / \partial q_1 = 0$ per Annahme}
+   ⇒ \dd{}{t} \pp{L}{\dot q_1} &= 0 \\
+   \dd{}{t}(p_1) &= 0
+   \end{align*}
+   $⇒$ "Die verallgemeinerten Impulse zyklischer Koordinaten sind erhalten."
+   #+begin_ex latex
+   Massenpunkt in Potential, dass nicht von $x_1$ abhängt. Noch konkreter: schräger Wurf:
+   \[V(x_1, x_2, x_3) = m g x_3\]
+   $⇒ x_1,x_2$ zyklisch.
+   #+end_ex
+   #+ATTR_LATEX: :options [Massenpunkt in Ebene mit Zentralpotential]
+   #+begin_ex latex
+   \[L = \frac{m}{2}(r^2 \dot φ^2 + \dot r^2) - V(q)\]
+   $φ$ zyklisch \\
+   $⇒ \pp{L}{\dot φ} = m r^2 \dot φ$: Betrag des Drehimpulses. (Dieses Beispiel erklärt den Namen "zyklisch" im Sinne von periodisch)
+   #+end_ex
+** Noether-Theorem
+   #+ATTR_LATEX: :options [kontinuierliche Transformation]
+   #+begin_defn latex
+   \begin{align*}
+   q(t) \to q'(t) &= q(t) + δq(t) \\
+   &= q(t) + ε χ(t)
+   \end{align*}
+   $ε ∈ ℝ$, sodass $ε \to 0$ möglich ist.
+   #+end_defn
+   #+ATTR_LATEX: :options [kontinuiierliche Transformatio]
+   #+begin_defn latex
+   Damit diese Transformation eine Symmetrie ist, fordern wir *Invarianz der Bewegungsgleichungen*, also
+   \[δL \equiv L(q+ δq, \dot q + δ \dot , t) - L(q, \dot q, t) = ε\dd{}{t}f\]
+   #+end_defn
+   Wir betrachten
+   \begin{align*}
+   ε \dd{}{t} f &= δL = \pp{L}{q} δq + \pp{L}{\dot q}δ\dot q \\
+   \intertext{mit Euler-Lagrange:}
+   &=\dd{}{t}(\pp{L}{\dot q}) δ q + \pp{L}{\dot q} \dd{}{t}(δ ) = \dd{}{t}(\pp{L}{\dot q}δ q) \\
+   ⇒ 0 &= \dd{}{t}(\pp{L}{\dot q}δq - ε f) \\
+   &= ε \dd{}{t}\underbrace{(\pp{L}{\dot q}χ - f)}_{\text{Erhaltungsgröße}} \tag{Erhaltungsgröße}
+   \end{align*}
+   #+ATTR_LATEX: :options [Noether-Theorem]
+   #+begin_thm latex
+   *Noether-Theorem* (nach analoger Rechnung mit $q_1, \dots, q_n$): \\
+   Falls $δq_i = ε χ_i$ Symmetrie (also $δL = ε \dd{}{t}f$) gilt
+   \[\dd{}{t}(\pp{L}{\dot q_i} χ_i - f) = 0\]
+   #+end_thm
+   #+ATTR_LATEX: :options [Zeittranslation]
+   #+begin_ex latex
+   $q(t) \to q'(t) = q(t + ε) = q(t) + \dot q(t) ε + \mathcal{O}(ε^2)$ \\
+   $δq = \dot q ε = ε χ ⇒ χ = \dot q$
+   Berechne $δL$:
+   \begin{align*}
+   δL &= \pp{L}{q} δq + \pp{L}{\dot q} δ \dot q = ε \pp{L}{q} \dot q + \pp{L}{\dot q} ε \ddot{q} \\
+   &= ε(\pp{L}{q} \dd{q}{t} + \pp{L}{\dot q}\dd{\dot q}{t}) = ε \dd{}{t} L \\
+   ⇒ \pp{L}{\dot q}χ - f &= \pp{L}{\dot q} \dot q - L = E~\checkmark
+   \end{align*}
+   #+end_ex
+   #+begin_ex latex
+   \[q' = q + ε\]
+   #+end_ex

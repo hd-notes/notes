@@ -1,0 +1,399 @@
+* Eigenwerte
+ In diesem Abschnitt sei $n ∈ ℕ$, $V$ ein K-VR und $φ ∈ \End_K(V)$. \\
+ Frage: $V$ endlichdim. Existiet eine Basis $\mathcal{B} = (v_1, \dots, v_n)$ von $V$, sodass $M_{\mathcal{B}}(φ)$ eine
+ Diagonalmatrix ist, das heißt
+ \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\]
+ mit $λ_1, \dots, λ_n ∈ K$? \\
+ Für $i = 1, \dots, n$ wäre dann $φ(v_i) = λ_i v_i$
+ #+begin_defn latex
+ $λ ∈ K, v ∈ V$ \\
+ - $λ$ heißt Eigenwert von $φ \xLeftrightarrow{\text{Def}} ∃ v ∈ V, v \neq 0: φ(v) = λ v$
+ - $v$ heißt Eigenvektor zum Eigenwert $λ \xLeftrightarrow{\text{Def}} v\neq 0 \wedge φ(v) = λ v$
+ - $φ$ heißt diagonalisierbar $\xLeftrightarrow{\text{Def}} V$ besitzt eine Basis aus EV von $φ$
+ (Falls $V$ endlichdimensional, ist die äquivalent zu: Es gibt eine Basis $\mathcal{B}$ von $V$ und $λ_1, \dots, λ_n ∈ K$ mit \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\])\\
+ Eigenwerte, Eigenvektoren, Diagonalisiebarkeit einer Matrix $A ∈ M(n\times n, K)$ sind über den Endomorphismus $\tilde A:K^n \to K^n$ definiet.
+ #+end_defn
+ #+begin_remark latex
+ $A ∈ M(n\times n, K)$. Dann sind äquivalent:
+ 1. $A$ ist diagonalisiebar.
+ 2. Es gibt eine Basis von $K^n$ aus Eigenvektoren von $A$
+ 3. Es gibt ein $S ∈ \GL(n, K), λ_1, \dots, λ_n ∈ K$ mit $S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}$
+ 4.	$A$ ist ähnlich zu einer Diagonalmatrix
+ In diesem Fall steht in den Spalten von $S^{-1}$ eine Basis des $K^n$ aus EU von $A$, und für jede Matrix $A∈ M(n\times n, K)$ mit der Eigenschaft, dass die Spalten von $S^{-1}$ eine Basis des
+ $K^n$ aus EV von $A$ bilden, dann ist $S A S^{-1}$ eine Diagonalmatrix (mit den EW auf der Diagonalen.)
+ #+end_remark
+ #+begin_proof latex
+ Äquivalenz: \\ 1. $\iff$ 2. Definition, 2. $\iff$ 3. aus Basiswechselsatz (16.6), 3. $\iff$ 4. aus Definition Ähnlichkeit (16.12) \\
+ Zusatz: Sei $S ∈ \GL(n, K)$ mit $S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} \implies A(S^{-1} e_j) = S^{-1} \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} e_j$. \\
+ Wegen $S^{-1} ∈ \GL(n, K)$ ist $S^{-1} e_j \neq 0$, das heißt $S^{-1}$ ist EV von $A$ zum EW $λ_j$ \\
+ Wegen $S^{-1} ∈ \GL(n, K)$ ist $(S^{-1} e_1, \dots, S^{-1} e_n)$ eine Basis des $K^n$ aus EV von $A$. \\
+ Sei $S ∈ \GL(n, K)$, das heißt die Spalten von $S^{-1}$ eine Basis des $K^n$ aus EV von $A$ bilden, das heißt für alle $j ∈ \{1, \dots, n\}$ ist $A S^{-1} e_j = λ_j S^{-1} e_j$ für ein $λ_j ∈ K$.
+ \begin{align*}
+ &\implies A S^{-1} e_j = S^{-1} λ_j e_j = S^{-1} \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} e_j \implies S A S^{-1} e_j =  \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} e_j, j = 1, \dots, n \\
+ &\implies S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}
+ \end{align*}
+ #+end_proof
+ #+begin_ex latex
+ $K = ℝ, V = ℝ^2$
+ 1. $φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \cvec{x_2; x_1} = \begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix} \cvec{x_1; x_2}$
+	Es ist $φ(\cvec{1 ; 1}) = \cvec{1; 1} = 1 \cdot \cvec{1; 1}$, das heißt $\cvec{1; 1}$ ist EV von $φ$ zum EW $1$. \\
+	$φ(\cvec{1; -1}) = \cvec{-1; 1} = (-1) \cvec{1; -1}$, also ist $\cvec{1; -1}$ EV von $φ$ zum EW $-1$.
+	Somit: $(\cvec{1; 1}, \cvec{1; -1})$ ist eine Basis des $ℝ^2$ aus EV von $φ$, das heißt $φ$ ist diagonalisierbar. \\
+	In Termen von Matrizen: $A = \begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix} ∈ M(2\times 2, ℝ)$ ist diagonalisiebar, und mit $S = \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}$ ist dann ist $S A S^{-1} = \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}$
+	Achtung: Das $φ$ diagonalisiebar ist, heißt nicht, dass jeder Vektor aus $V = ℝ^2$ ein EV von $φ$ ist, zum Beispiel ist $φ(\cvec{1; 2}) = \cvec{2; 1} \neq λ \cvec{1; 2} ∀ λ ∈ ℝ$.
+ 2.	$φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \begin{pmatrix} 0 & -1 \\ 1 & 0\end{pmatrix}\cvec{x_1; x_2} = \cvec{-x_2; x_1}$ (= Drehung um $\frac{π}{2}$).
+	hat keinen EW. Beweig dafür: später.
+ #+end_ex
+ Ziel: Suche Kriterien für Diagonalisiebarkeit.
+ #+begin_remark latex
+ $v_1, \dots, v_m$ EV von $φ$ zu paarweise verschiedenen EW $λ_1, \dots, λ_m ∈ K$.
+ Dann ist $(v_1, \dots, v_m)$ linear unabhängig, insbesondere ist $m \leq \dim V$.
+ Insbesondere gilt: ist $V$ endlichdimesional, dann hat $φ$ höchstens $\dim(v)$ Eigenwerte.
+ #+end_remark
+ #+begin_proof latex
+ per Induktion nach $m$: \\
+ IA: $m = 1: v_1 \neq 0$, da $v_1$ EV $\implies (v_1)$ linear unabhängig. \\
+ IS: sei $m \geq 2$, und die Aussage für $m - 1$ bewiesen. \\
+ Seien $α_1, \dots, α_m ∈ K$ mit $α_1 λ_1 v_1 + \dots + α_m λ_m v_m = 0$.
+ Außerdem: $α_1 λ_1 v_1 + \dots + α_m λ_1 v_m = 0$
+ \begin{align*}
+ \implies α_2(λ_2 - λ_1) v_2 + \dots + α_m(λ_m - λ_1) v_m = 0 \\
+ α_2{λ_2 - λ_1} = \dots = α_m(λ_m - λ_1) = 0 \\
+ \implies α_2 = \dots = α_m = 0 \\
+ \implies α_1 v_1 = 0 \implies α_1 = 0 \implies (v_1, \dots, v_w) \text{ linear unabhängig}
+ \end{align*}
+ #+end_proof
+ #+begin_conc latex
+ $V$ endlichdemensional, $φ$ hage $n$ paarweise verschiedene EW, wobei $n = \dim V$
+ Dann ist $φ$ diagonalisiebar.
+ #+end_conc
+ #+begin_proof latex
+ Für $i = 1, \dots, n$ sei $v_i$ ein EV von $φ$ zum EW $λ_i \implies (v_1, \dots, v_n)$ linear unabhängig, wegen $n = \dim V$ ist $(v_1, \dots, v_n)$ eine Basis von $V$ aus EV von $φ$
+ #+end_proof
+ #+begin_defn latex
+ $λ ∈ K$ \\
+ $\Eig(φ, λ) := \{v ∈ V \mid φ(v) = λ v\}$ heißt der Eigenraum von $φ$ bezüglich $λ$. \\
+ $μ_{geo}(φ, λ) := \dim \Eig(φ, λ)$ heißt die geometrische Vielfachheit von $λ$. \\
+ Für $A ∈ M(n\times n, K)$ setzen vir $\Eig(A, λ) := \Eig(\tilde A, λ), μ_{geo}(A, λ) := μ_{geo}(\tilde A, λ)$.
+ #+end_defn
+ #+begin_remark latex
+ $λ ∈ K$. Dann gilt:
+ 1. $\Eig(φ, λ)$ ist ein UVR von $V$.
+ 2. $λ$ ist EW von $φ \iff \Eig(φ, λ) \neq \{0\}$.
+ 3. $\Eig(φ, λ) \setminus \{0 \}$ ist die Menge der zu $λ$ gehörenden EV von $φ$.
+ 4. $\Eig(φ, λ) = \ker(λ \id_V - φ)$, insbesondere ist $\Eig(A, λ) = \ker(λ E_m - φ) = \Lös(λ E_n - A, 0)$ für $A ∈ M(n × n, K)$
+ 6. Sind $λ_1, λ_2 ∈ K mit λ_1 \neq λ_2$, dann $\Eig(φ, λ_1) ∩ \Eig(φ, λ_2) = \{0\}$
+ #+end_remark
+ #+begin_proof latex
+ 4. [@4] Es ist $v ∈ \Eig(φ, λ) \iff φ(v) = λ v \iff λ v - φ(v) = 0 \iff (λ \id_V - φ)(v) = 0 \iff v∈\ker(λ \id_V - φ)$
+	Es ist $\Eig(A, λ) = \ker(λ\id_{K^n} - \tilde A) = \ker(\reallywidetilde{λ E_n - A}) = \ker(λ E_n - A) = \Lös(λ E_n - A, 0)$
+ 1. [@1] aus 4.
+ 2. $λ$ EW von $φ ⇔ ∃ v ∈ V, v \neq 0$ mit $φ(v) = λ v ⇔ \Eig(φ, λ) \neq \{0\}$.
+ 3. klar.
+ 5. [@5] Sei $λ_1 \neq λ_2, v ∈ \Eig(φ, λ_1) ∩ \Eig(φ, λ_2) ⇒ λ_1 v = φ(v) = λ_2 v ⇒ \underbrace{(λ_1 - λ_2)}_{\neq 0} v = 0 ⇒ v = 0$
+ #+end_proof
+ #+begin_remark latex
+ $V$ endlichdimesional, $λ ∈ K$. Dann sind äquivalent:
+ 1. $λ$ ist EW von $φ$
+ 2. $\det(λ\id_V - φ) = 0$
+ #+end_remark
+ #+begin_proof latex
+ 1. $⇔ \Eig(φ, λ) \neq \{0\} ⇒ \ker(λ \id_V - φ) \neq \{0\} ⇒ λ\id_V - φ\text{ nicht injektiv }⇒ λ \id_V - φ\text{ kein Isomorphismus }⇒ \det(λ\id_V - φ) = 0$.
+ #+end_proof
+ #+begin_defn latex
+ $K$ Körper, $A = (a_{ij}) ∈ M(n × n, K)$
+ \[χ_A^{char} := \det(t E_n - A) = \det \begin{pmatrix} t - a_{11} & -a_{12} & & -a_{1n} \\ -a_{21} & t - a_{22} & & \\ & & \ddots & \\ -a_{n1} & \dots & & t - a_{nn}\end{pmatrix} ∈ K[t]\]
+ heißt das *charakteristische Polynom von $A$.
+ #+end_defn
+ #+begin_note latex
+ Hiefür nötig: Determinanten von Matrizen mit Einträgen in einem kommutativen Ring. \\
+ In manchen Büchern $χ_A^{char} = \det(A - t E_n)$ (schlecht)
+ #+end_note
+ #+begin_ex latex
+ \begin{gather*}
+ A = \begin{pmatrix} 1 & 2 \\ 3 & 4\end{pmatrix} ∈ M(2×2, ℝ) \\
+ ⇒ A χ_a^{char} = \det \begin{pmatrix} t - 1 & -1 \\ -3 & t - 4 \end{pmatrix} = (t - 1)(t - 4) - 6 = t^2 - 5t - 2
+ \end{gather*}
+ #+end_ex
+ #+begin_remark latex
+ $A, B ∈ M(n×n, K), A \approx B$. \\
+ Dann ist $χ_A^{char} = χ_B^{char}$.
+ #+end_remark
+ #+begin_proof latex
+ $A\approx B ⇒ ∃ S ∈ \GL(n, K): B = S A S^{-1}$
+ \begin{gather*}
+ ⇒ t E_n - B = t E_n - S A S^{-1} = S S^{-1} t E_n - S A S^{-1} = S t E_n S_{-1} - S A S^-1 = S(t E_n - A) S^{-1} \\
+ ⇒ χ_B^{char} = \det(t E_n - B) = \det(S(t E_n - A) S^{-1}) = \det(S)\det(t E_n - A) \det(S^{-1}) = \\
+ \underbrace{\det(S)\det(S)^{-1}}_{= 1}  \det(t E_n - A) = χ_A^{char}
+ \end{gather*}
+ #+end_proof
+ #+begin_defn latex
+ $V$ endlichdim, $n = \dim V, \mathcal{B}$ Basis von $V, φ ∈ \End(V), A = M_{\mathcal{B}}(φ)$
+ \[χ_φ^{char} := χ_A^{char} = \det(t E_n - A) ∈ K[t]\]
+ heißt das charakteristische Polynom von $φ$.
+ #+end_defn
+ #+begin_note latex
+ $χ_φ^{char}$ ist wohldefiniert, dann: Ist $\mathcal{B}'$ eine weitere Basis von $V, A' = M_{\mathcal{B}'}{φ}$, dann ist $A \approx A'$ und deshalb nach 18.11: $χ_A^{char} = χ_{A'}^{char}$.
+ #+end_note
+ #+begin_thm latex
+ $V$ endlichdimensional, $n = \dim{V}$. Dann gilt:
+ 1. $χ_φ^{char}$ ist ein normiertes Polynom von Grad $n$:
+	\[χ_φ^{char} = t^n + c_{n - 1} t^{n - 1} + \dots + c_0\]
+	mit $c_0 = (-1)^n \det φ, c_{n - 1} = -\sp{(φ)}$ (vgl. Übung zur Spur)
+ 2.	Die Nullstellet von $χ_{φ}^{char}$ sind genau die EW von $φ$:
+	\[λ ∈ K \text{ ist EW von } φ ⇔ χ_φ^{char}{λ} = 0\]
+ #+end_thm
+ #+begin_proof latex
+ Sei $\mathcal{B}$ eine Basis von $V, A := M_{\mathcal{B}}(φ) ∈ M(n × n, K)$
+ 1.
+    \begin{align*}
+	χ_φ^{char} &= χ_A^{char} = \det \underbrace{(t E_n - A)}_{=: B = (B_{ij})} = \sum_{σ ∈ S_n} \sgn(σ) B_{1, σ(1)}	· \dots · B_{n, σ(n)} \\
+	&= (t - a_{11} · \dots · (t - a_{nn})) + \underbrace{\sum_{σ ∈ S_n \setminus \{\id\}} \sgn(σ) B_{1, σ(1)} · \dots · B_{n, σ(n)}}_{:= g}
+    \end{align*}
+	Für $σ ∈ S_n \setminus \{\id\}$ treten in $B_{1,σ(1)}, \dots, B_{n, σ(n)}$ höchstens $n - 2$ Diagonalelemente auf, also $\deg(g) \leq n - 2$.
+	\[⇒ χ_φ^{char} = t^n - (a_{11} + \dots + a_{nn}) t^{n - 1} + \text{ Terme kleineren Grades}\]
+	insbesondere:
+	\[c_{n - 1} = -(a_{11} + \dots + a_{nn}) = -\sp A = -\sp φ\]
+	Es ist
+	\[c_0 = χ_φ^{char}(0) = (\det(t E_n - A))(0) = \det(0 E_n - A) = \det(- A) = (-1)^n \det A\]
+ 2.	Aus $A = M_{\mathcal{B}}(φ)$ folgt $λ E_n - A = M_{\mathcal{B}}(λ \id_V - φ)$. Also:
+	\begin{align*}
+	χ_φ^{char}(λ) = 0 &⇔ (\det(t E_n - A))(λ) = 0 ⇒ \det(λ E_n - A) = 0 ⇔ \det(M_{\mathcal{B}}(λ\id_V - φ)) = 0 \\
+	&⇒ \det(λ \id_V - φ) = 0 ⇔ λ \text{ ist EW von } φ
+    \end{align*}
+ #+end_proof
+ #+begin_defn latex
+ $λ ∈ K$ \\
+ \[μ_{alg}(φ, λ) := μ(χ_φ^{char}, λ)\]
+ heißt die *algebraische Vielfachheit*
+ #+end_defn
+ #+begin_ex latex
+ 1. $φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \underbrace{\begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix}}_{=: A} \cvec{x_1; x_2}$.
+	Es ist $χ_φ^{char} = χ_φ^{char} = \det\begin{pmatrix} t & -1 \\ -1 & t \end{pmatrix} = t^2 - 1 = (t -1)(t + 1) ∈ ℝ[t]$
+	⇒ EW von $φ: 1, -1$. \\
+	Es ist $μ_{alg}(φ, 1) = 1, μ_{alg}(φ, -1) = 1$
+	\[\Eig(φ, 1) = \Eig(A, 1) = \Lös(E_2 - A, 0) = \Lös(\begin{pmatrix} 1 & -1 \\ -1 & 1\end{pmatrix}, 0) = \Lin(\cvec{1; 1})\]
+	also $μ_{geo}(φ, 1) = \dim \Eig(φ, 1) = 1$
+	\[\Eig(φ, -1) = \Eig(A, -1) = \Lös((-1)·E_2 - A, 0) = \Lös(\begin{pmatrix} -1 & -1 \\ -1 & -1\end{pmatrix}, 0) = \Lin(\cvec{1; -1})\]
+	also $μ_{geo}(φ, -1) = 1$.
+ 2. $φ:ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \underbrace{\begin{pmatrix} 0 & -1 \\ 1 & 0\end{pmatrix}}_{=: A}\cvec{x_1; x_2}$. Es ist
+	$χ_φ^{char} = χ_A^{char} = \det \begin{pmatrix} t & 1 \\ -1 & t\end{pmatrix} = t^2 + 1, χ_φ^{char}$ hat keine NS in $ℝ ⇒ φ$ hat keine EW.
+ 3.	$φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \underbrace{\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}}_{=: A} \cvec{x_1; x_2}$. Es ist
+	$χ_φ^{char} = χ_A^{char} = \det \begin{pmatrix} t - 1 & -1 \\ 0 & t - 1\end{pmatrix} = (t - 1)^2 ⇒ 1$ ist einziger EW von $φ$, es ist $μ_{alg}(φ, 1) = 2$
+	\[\Eig(φ, 1) = \Eig(A, 1) = \Lös(1 E_2 - A, 0) \Lös(\begin{pmatrix} 0 & -1 \\ 0 & 1\end{pmatrix}, 0) = \Lin(\cvec{1; 0})\]
+	$⇒ μ_{geo}(φ, 1) = 1$. $⇒ φ$ ist nicht diagonalisierbar.
+ #+end_ex
+ #+begin_thm latex
+ $V$ endlichdimensional, $n = \dim V$
+ 1. Ist $φ$ diagonalisierbar, dann ist $χ_φ^{char} = (t - λ_1)·\dots·(t - λ_n)$ mit $λ_1, \dots, λ_n ∈ K$, nicht notwendig verschieden, das heißt $χ_φ^{char}$ zerfällt in Linearfaktoren.
+ 2.	Ist $χ_φ^{char} = (t - λ_1) · \dots · (t - λ_n)$ mit paarweise verschiedene $λ_1, \dots, λ_n ∈ K$, dann ist $φ$ diagonalisierbar.
+ #+end_thm
+ #+begin_proof latex
+ 1. Sei $φ$ diagonalisierbar $\to V$ besitzt Basis $\mathcal{B} = (v_1, \dots, v_n)$ aus EV zu EW $λ_i ∈ K$.
+	\[⇒ M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} ⇒ χ_φ^{char} = \det\begin{pmatrix} t - λ_1 & & 0 \\ & \ddots & \\ 0 & & t - λ_n\end{pmatrix} = (t - λ_1) · \dots · (t - λ_n)\]
+ 2.	Aus $χ_φ^{char} = (t - λ_1) · \dots · (t - λ_n)$ wit $λ_1, \dots, λ_n$ paarweise verschieden $⇒ λ_1, \dots, λ_n$ sind paarweise verschiedene EW von $φ ⇒ φ$ diagonalisierbar.
+ #+end_proof
+ #+begin_remark latex
+ $V$ endlichdimensional, $n = \dim V, λ$ EW von $φ$. Dann gilt:
+ \[1 \leq μ_{geo}(φ, λ) \leq μ_{alg}(φ, λ)\]
+ #+end_remark
+ #+begin_proof latex
+ Sei $(v_1, \dots, v_s)$ eine Basis von $\Eig(φ, λ) ⇒ s = μ_{geo}(φ, λ) \geq 1$, da $λ$ EW von $φ$.
+ Nach Basiserweiterungssatz $∃ v_{s + 1}, \dots, v_n ∈ V$, sodass $\mathcal{B} := (v_1, \dots, v_s, v_{s + 1}, \dots, v_n)$ eine Basis von $V$ ist.
+ \[⇒ A:= A_{\mathcal{B}}(φ) = (\begin{array}{ccc|c} λ & & 0 & \\ & \ddots & & * \\ 0 & & λ & \\ \hline & 0 & & A'\end{array}), A' ∈ M((n - s) × (n - s), K)\]
+ \[⇒ χ_φ^{char} = χ_A^{char} = \det (\begin{array}{ccc|c} t - λ & & 0 & \\ & \ddots & & * \\ 0 & & t - λ & \\ \hline & 0 & & t E_{n - s} - A'\end{array}) = (t - λ)^s \det(t E_{n - s} - A') = (t - λ)^s χ_{A'}^{char}\]
+ \[⇒ μ_{geo} (φ, λ) = s \leq μ(χ_φ^{char}, λ) = μ_{alg}(φ, λ)\]
+ #+end_proof
+ #+begin_remark latex
+ $λ_{1}, \dots, λ_r$ paarweise verschiedene EW von $φ$. Dann gilt:
+ \[\Eig(φ, λ_i) ∩ \sum_{\substack{j = 1\\ j \neq i}}^{r} \Eig(φ, λ_j) = \{0\} ∀i∈\{1, \dots, r\}\]
+ #+end_remark
+ #+begin_proof latex
+ Sei $i ∈ \{1, \dots, r\}$. Annahme: $∃v_i ∈ \Eig(φ, λ_i) ∩ \sum_{\substack{j = 1\\ j \neq i}}^{r} \Eig(φ, λ_j): v_i \neq 0$.
+ \[⇒ ∃ v_j ∈ \Eig(φ, λ_j), j = 1, \dots, r, j\neq i: v_i = v_1 + \dots + v_{i - 1} + v_{i + 1} + \dots + v_r\]
+ Setze $J := \{j ∈ \{1, \dots r\}, j \neq i \mid v_j \neq 0\} = \{j_1, \dots, j_s\}$
+ \[⇒ v_i = v_{j_1} + \dots + v_{j_s} ⇒ v_{j_1} + \dots + v_{j_s} + (-1) v_i = 0 ⇒ (v_{j_1}, \dots, v_{j_s}, v_i) \text{ linear abhängig \lightning}\]
+ #+end_proof
+ #+begin_thm latex
+ $V$ endlichdimensional. Dann sind äquivalent:
+ 1. $φ$ diagonalisierbar
+ 2. $χ_φ^{char}$ zerfällt in Linearfaktoren und $μ_{alg}(φ, λ) = μ_{geo}(φ, λ) ∀$ EW von $φ$.
+ 3. Sind $λ_1, \dots, λ_k$ die paarweise verschiedenen EW von $φ$, dann ist
+	\[V = \Eig(φ, λ_1) \oplus \dots \oplus \Eig(φ, λ_k)\]
+	In diesem Fall erhält man eine Basis von $V$ aus EV von $φ$, indem man Basen von $\Eig(φ, λ_i), i = 1, \dots, k$ zusammenfügt.
+ #+end_thm
+ #+begin_proof latex
+ 1. $⇒$ 2. Sei $φ$ diagonalisierbar. $⇒ ∃$ Basis $\mathcal{B}$ von $V$ aus EV von $φ$. Wir ordnen die EV in $\mathcal{B}$ den verschiedenen EW von $φ$ zu und gelangen so zu Familien $\mathcal{B}_i := (v_1^{(i)}, \dots, v_{s_i}^{(i)})$
+	von linear unabhängigen im $\Eig(φ, λ), i = 1, \dots, k$
+	1. Behauptung: $\mathcal{B}_i$ ist eine Basis von $\Eig(φ, λ_i)$, denn gezeigt: $\mathcal{B}_i$ ist ein ES von $\Eig(φ, λ_i)$.
+	   Sei $v ∈ \Eig(φ, λ_i) \leq V$
+       \[⇒ ∃ λ^{(j)} ∈ K: v = \sum_{j = 1}^{k} (λ_1^{(j)} v_1^{(j)} + \dots + λ_{s_j}^{(j)} v_{s_j}^{(j)})\]
+	   \[⇒ \underbrace{v - (λ_1^{(i)} v_{1}^{(i)} + \dots + λ_{s_i}^{(i)} v_{s_i}^{(i)})}_{∈ \Eig(φ, λ_i)} = \sum_{\substack{j = 1\\ j \neq i}}^{k} (λ_1^{(j)} v_1^{(j)} + \dots + λ_{s_j}^{(j)} v_{s_j}^{(j)}) ∈ \sum_{\substack{j = 1 \\ j \neq i}}^{k}\Eig(φ, λ_j)\]
+	   \[⇒ v = λ_1^{(i)} v_1^{(i)} + \dots + λ_{s_i}^{(i)} v_{s_i}^{(i)}\]
+	2. Nach 1. ist
+	   \[μ_{geo}(φ, λ_1) + \dots + μ_{geo}(φ, λ_k) = s_1 + \dots + s_k = \dim V\]
+	   $χ_φ^{char}$ zerfällt nach 18.16 in Linearfaktoren, somit
+	   \[μ_{alg}(φ, λ_1) + \dots + μ_{alg}(φ, λ_k) = \deg(χ_φ^{char}) = \dim V\]
+	   Wegen $μ_{geo}(φ, λ_i) \leq μ_{alg}(φ, λ_i)$ für $i = 1, \dots, k$ folgt: $μ_{geo}(φ, λ_i) = μ_{alg}(φ, λ_i)$ für $i = 1, \dots,k$.
+ 2. $⇒$ 3. Es gelte 2. Es seien $λ_1, \dots, λ_k$ die verschiedenen EW von $φ$. Wir setzen $W := \Eig(φ, λ_1) + \dots + \Eig(φ, λ_k)$. Wegen 18.18 ist
+	\[W = \Eig(φ, λ_1) \oplus \dots \oplus \Eig(φ, λ_k)\]
+	\begin{align*}
+	⇒ \dim W &= \dim \Eig(χ, λ_1) + \dots + \dim \Eig(φ, λ_k) \\
+	&= μ_{geo}(χ, λ_1) + \dots + μ_{geo}(φ, λ_k) \\
+	&= μ_{alg}(χ, λ_1) + \dots + μ_{alg}(φ, λ_k) = \deg(χ_φ^{char}) \\
+	&= \dim V
+    \end{align*}
+	$⇒ W = V$
+ 3. $⇒$ 1. Es gelte 3. Sei $\mathcal{B} = (v_1^{(i)}, \dots, v_{s_i}^{(i)})$ eine Basis von $\Eig{φ, λ_i} ⇒ \mathcal{B} := (v_1^{(1)}, \dots, v_{s_1}^{(1)}, \dots, v_1^{(k)}, v_{s_r}^{(k)})$
+	   ist eine Basis von $V$ aus EV von $φ ⇒ φ$ diagonalisierbar.
+ #+end_proof
+ #+begin_note latex
+ In der Praxis ist es in der Regel schwierig festzustellen, ob $χ_φ^{char}$ in Linearfaktoren zerfällt oder die NS von $χ_φ^{char}$ zu bestimmen. Für Polynome von Grad $\geq 5$ existiert keine Lösungsformel zur Bestimmung der NS.
+ (Algebra 1 Vorlesung), die NS müssen numerisch bestimmt werden.
+ #+end_note
+ #+begin_ex latex
+ 1. In 18.15.3 ist $A = \begin{pmatrix} 1 & 1 \\ 0 & 1\end{pmatrix} ∈ M(2 × 2, ℝ)$ ist $χ_A^{char} = (t - 1)^2, μ_{geo}(A, 1) = 1 < μ_{alg}(A, 1) = 2 ⇒ A$ nicht diagonalisierbar.
+ 2. $\displaystyle{A = \begin{pmatrix} 2 & -1 & -1 \\ -6 & 1 & 2 \\ 3 & -1 & -2\end{pmatrix} ∈ M(3 × 3, ℝ)}$
+	\[χ_A^{char} = \det\begin{pmatrix} t - 2 & 1 & 1 \\ 6 & t - 1 & -1 \\ -3 & 1 & t + 2\end{pmatrix} = t^3 - t^2 - 5t - 3 = (t + 1)^2 (t - 3)\]
+	EW von $A: -1, 3, μ_{alg} = (A, -1) = 2, μ_alg(A, 3) = 1$
+	\[\Eig(A, -1) = \Lös(-E_n - A, 0) = \Lös(\begin{pmatrix} -3 & 1 & 1 \\ 6 & -1 & -2 \\ -3 & 1 & 1\end{pmatrix}, 0) = \Lin(\cvec{-1; 3; 0}, \cvec{0; -1; 3})\]
+	$μ_{geo}(A, -1) = 2 = μ_{alg}(A, -1)$.
+	\[\Eig(A, 3) = \Lös(3 E_n - A, 0) = Lös(\begin{pmatrix} 1 & 1 & 1 \\ 6 & 2 & -2 \\ -3 & 1 & 5\end{pmatrix}, 0) = \Lin(\cvec{1; -2; 1})\]
+	$μ_{geo}(A, 3) = 1 = μ_{alg}(A, 3)$. Also ist $A$ diagonalisierbar, $\mathcal{B} := (\cvec{-1; 3; 0}, \cvec{0; -1; 3}, \cvec{1; -2; 1})$ ist eine Basis des $ℝ^3$ aus EV von $A$,
+	\[M_{\mathcal{B}}(\tilde A) = \begin{pmatrix} 1 & & 0 \\ & -1 & \\ 0 & & 3\end{pmatrix}\]
+	Mit
+	\[S := \begin{pmatrix} -1 & 0 & 1 \\ 3 & -1 & -1 \\ 0 & 3 & 1\end{pmatrix}^{-1}, S A S^{-1} = \begin{pmatrix} -1 & & 0 \\ & -1 & \\ 0 & & 3\end{pmatrix}\]
+ #+end_ex
+ #+begin_note latex
+ Ist $f = a_m t^m + \dots + a_1 t + a_0 ∈ K[t]$, dann können wir in $f$:
+ - Endomorphismen $φ ∈ \End_K(V)$ einsetzen durch die Reget
+   \[f(φ) := a_m φ^m + \dots + a_1 φ + a_0 \id_V ∈ \End_K(V)\]
+   wobei $φ^k := \underbrace{φ \circ \dots \circ φ}_{\text{k-mal}}$
+ - Matrizen $A ∈ M(n × n, K)$ einsetzen durch die Regel
+   \[f(A) := a_m A^m + \dots + a_1 A + a_0 E_n ∈ M(n × n, K)\]
+   Für $f, g ∈ K[t], φ ∈ \End_K(V)$ ist $f(φ) \circ g(φ) = (f g)(φ) = (g f)(φ) = g(φ) \circ f(φ)$, analog für Matrizen.
+ #+end_note
+ #+ATTR_LATEX: :options [Satz von Cayley-Hamilton]
+ #+begin_thm latex
+ $V$ endlichdimensional. Dann gilt: $χ_φ^{char}(φ) = 0$.
+ Insbesondere gilt für alle $A ∈ M(n × n, K): χ_A^{char}(A) = 0$.
+ #+end_thm
+ #+begin_proof latex
+ 1. Es genügt zu zeigen, dass $χ_A^{char} = 0$ für alle $A ∈ M(n × n, K)$, denn: \\
+	Ist $φ ∈ \End_K(V), \mathcal{B}$ Basis von $V, A = A_{\mathcal{B}}, χ_φ^{char} = t^n + a_{n - 1} t^{n - 1} + \dots + a_0 = χ_A^{char} ∈ K[t]$
+	\begin{align*}
+	⇒ 0 &= χ_A^{char}(A) = A^n + a_{n - 1} A^{n - 1} + \dots + a_0 E_n = M_{\mathcal{B}}(φ^n + a_{n - 1} φ^{n - 1} + \dots + a_0 \id_V) \\ &= M_{\mathcal{B}}(χ_φ^{char}(φ))
+    \end{align*}
+ 	$⇒ χ_φ^{char}(φ) = 0$
+ 2. Sei $A ∈ M(n × n, K)$. Wri setzen $D:= (t E_n - A)^{\#} ∈ M(n × n, K[t])$ \\
+	\[⇒ D(t E_n - A) = \det(t E_n - A) E_n = χ_A^{char} E_n\]
+	Sei $D = \sum_{i = 0}^{n - 1} D_i t^i$ mit $D_i ∈ M(n × n, K), χ_A^{char} = \sum_{i = 0}^{n} a_i t^i$ mit $a_i ∈ K$
+	\begin{align*}
+	⇒ \sum_{i = 0}^{n} a_i E_n t^i &= (\sum_{i = 0}^{n} a_i t^i) E_n = χ_A^{char} E_n = D(t E_n = A) \\
+	&= (\sum_{i = 0}^{n - 1} D_i t^i)(t E_n - A) = \sum_{i = 0}^{n - 1} D_i t^{i + 1} - \sum_{i = 0}^{n - 1} D_i A t^i \\
+	&= \sum_{i = 0}^{n} (D_{i - 1} - D_i A) t^i \tag{mit $D_{-1} := 0, D_n := 0$} \\
+	\intertext{Koeffizientenvergleich liefert: $a_i A_n = D_{i - 1} - D_i A$ für $i = 0, \dots, n$}
+ 	χ_A^{char} &= \sum_{i = 0}^{n} a_i A_i = \sum_{i = 0}^{n}(a_i E_n) A^i = \sum_{i = 0}^{n}(D_{i - 1} - D_i A) A^i \\
+	&= (D_{-1} - D_0 A) + (D_0 - D_1 A) A + \dots + (D_{n - 1} - D_n A) A^{n} \\
+	&= D_{-1} - D_n A^{n + 1} = 0
+    \end{align*}
+ #+end_proof
+ #+begin_note latex
+ Der "Beweis"
+ \[χ_A(A) = (\det(t E_n - A))(A) = \det(A E_n - A) = \det(A - A) = \det(0) = 0\]
+ funktioniert nicht, denn:
+ \[\underbrace{\underbrace{(\det(t E_n - A))}_{∈ K[t]}(A)}_{∈ M(n × n, K)} \quad \underbrace{\det\underbrace{(A E_n - A)}_{∈ M(n × n, K)}}_{∈ K}\]
+ #+end_note
+ #+begin_defthm latex
+ $V$ endlichdimetional, $I:= \{f ∈ K[t] \mid f(φ) = 0\}$. Dann gilt:
+ 1. Es gibt ein eindeutig bestimmtes, normiertes Polynom $χ_φ^{min} ∈ K[t]$, sodass
+	\[I = χ_φ^{min} K[t] := \{χ_φ^{min} q \mid q ∈ K[t]\}\]
+	$χ_φ^{min}$ heißt das *Minimalpolynom* von $φ$. $χ_φ^{min}$ ist ads eindeutig bestimmte normierte Polynom kleinsten Grades mit $f(φ) = 0$.
+ 2. $χ_φ^{mit}\mid χ_φ^{char}$, das heißt $∃ q ∈ K[t]: χ_φ^{char} = q · χ_φ^{min}$
+ Analog konstruiert man für $A ∈ M(n × n, K)$, das Minimalpolynom $χ_A^{min}$. Es ist $χ_A^{min} = χ_{\tilde A}^{min}$.
+ #+end_defthm
+ #+begin_proof latex
+ 1. Existenz: Wegen Satz von Cayley-Hamilton ist $χ_φ^{char}(φ) = 0$. Somit ist $χ_φ^{char} ∈ I$, insbesondere $I \neq \emptyset$. \\
+	$\deg(f) \mid f ∈ I, f \neq 0$ ist eine nichtleere Teilmenge von $ℕ_0$, hat somit ein minimales Element. $⇒ ∃ g ∈ I, g \neq 0: \deg(g)$ minimal in $I \setminus \{0\}$ ist.
+	Wir setzen
+	\[χ_φ^{min} := \frac{1}{l(g)} g ⇒ χ_φ^{min} \text{normiert}\]
+	und es ist
+	\[χ_φ^{min}(φ) = \frac{1}{l(g)}g g(φ) = 0\]
+	das heißt $χ_φ^{min} ∈ I$. \\
+	*Behauptung*: $I = χ_φ^{min} K[t]$, denn: \\
+	"$\supseteq$" Für $q ∈ K[t]$ ist $(χ_φ^{min} q)(φ) = \underbrace{χ_φ^{min}(φ)}_{= 0} · g(φ) = 0$, das heißt $χ_φ^{min} q ∈ I$. \\
+	"$⊆$" Sei $f ∈ I ⇒ ∃ q, r ∈ K[t]: f = q χ_φ^{min} + r, \deg(r) < \deg(χ_φ^{min})$ \\
+	\[⇒ 0 = f(φ) = (q χ_φ^{min} φ + r)(φ) = q(φ) · χ_φ^{min}(φ) + r(φ) = r(φ) ⇒ r ∈ I\]
+	Wegen $\deg(r) < \deg(χ_φ^{min})$ und der Minimalität des Grades von $χ_φ^{min}$ in $I \setminus \{0\}$ folgt $r = 0 ⇒ f = q χ_φ^{min}$ \\
+	Eindeutigkeit: Sei $χ ∈ K[t]$ ein weiteres Polynom mit $I = χ K[t] = χ_φ^{min} K[t]$
+	\[⇒ χ = χ · 1 ∈ I = χ_φ^{min} K[t] ⇒ ∃ q ∈ K[t]: χ = χ_φ^{min} q\]
+	Analog $∃ p ∈ K[t]: χ_φ^{min} = χ p$
+	\[⇒ χ_φ^{min} = χ p = χ_φ^{min} q p ⇒ p q = 1 ⇒ p, q ∈ K^{\ast}\]
+	Wegen $χ, χ_φ^{min}$ normiert folgt $p = q = 1$, also $χ = χ_φ^{min}$
+ 2. Wegen $χ_φ^{char}(φ) = 0$ nach Satz von Cayley-Hamilton folgt $χ_φ^{char} ∈ I$.
+	\[⇒ ∃ q ∈ K[t]: χ_φ^{char} = q χ_φ^{min}\]
+	das heißt $χ_φ^{min} \mid χ_φ^{char}$
+ #+end_proof
+ #+begin_remark latex
+ $V$ endlichdimensionay, $λ ∈ K$. Dann gilt:
+ \[χ_φ^{char}(λ) = 0 ⇔ χ_φ^{min}(λ) = 0\]
+ Insbesondere haben $χ_φ^{char}$ und $χ_φ^{min}$ dieselben NS.
+ #+end_remark
+ #+begin_proof latex
+ "$\impliedby$" Sei $χ_φ^{min}(λ) = 0$. Nach 18.22 $∃ q ∈ K[t]$ mit $χ_φ^{char} = q χ_φ^{min}$
+ \[⇒ χ_φ^{char}(λ) = q(λ) \underbrace{χ_φ^{min}(λ)}_{} = 0\]
+ "$⇒$" Sei $χ_φ^{char}(λ) = 0 ⇒ λ$ ist EW von $φ$, sei $v ∈ V$ EV zum EW $λ$. Sei $χ_φ^{min} = t^r + a_{r - 1} t^{r - 1} + \dots + a_1 t + a_0$
+ \begin{align*}
+ ⇒ 0 = (χ_φ^{min}(φ))(v) &= (φ^r + a_{r - 1} φ^{r - 1} + \dots + a_1 φ + a_0 \id_V)(v)  \\
+ &= λ^r v + a_{r - 1} λ^{r - 1} v + \dots + a_1 λ v + a_0 v \\
+ &= \underbrace{(λ^r + a_{r - 1} λ^{r - 1} + \dots + a_1 λ + a_0)}_{= χ_φ^{min}(λ)} v
+ \end{align*}
+ $⇒ χ_φ^{min}(λ) = 0$.
+ #+end_proof
+
+ #+begin_proof latex
+ Beweis der Behauptung per Induktion nach $n := \dim V$ \\
+ IA: $n = 1$ klar \\
+ IS: Sei $n > 1$, die Behauptung sei für $1, \dots, n - 1$ gezeigt. \\
+ 1. Behauptung: $V = \ker(φ - λ_1 \id_V) \oplus \im(φ - λ_1 \id_V)$, denn: Nach 7.6 $∃v, s ∈ K[t]$ mit
+	\[(t - λ_2) · \dots · (t - λ_r) = q(t - λ_1) + s, \deg(s) < \deg(t - λ_1) = 1\]
+	das heißt $s$ ist konstantes Polynom. Wegen
+	\[s(λ_1) = (λ_1 - λ_2) · \dots · (λ_1 - λ_r) - q(λ_1)\underbrace{(λ_1 - λ_1)}_{= 0} \neq 0\]
+	das heißt $s ∈ K^\ast$. Einsetzen von $φ$ liefert:
+	\[(φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V) = q(φ) \circ (φ - λ_1 \id_V) + s \id_V\]
+	$⇒ ∀ v ∈ V$ ist
+	\begin{align*}
+	s v &= (φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v) - q(φ) \circ (φ - λ_1 \id_V)(v) \\
+	⇒ v &= \frac{1}{s} \underbrace{(φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v)}_{=: u} - \underbrace{q(φ) \circ (φ - λ_1 \id_V)(v)}_{=: w}	\\
+	\string(φ - λ_1 \id_V\string)(u) &= \frac{1}{s}(φ - λ_1 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v) = \frac{1}{s} \underbrace{χ_φ^{min}(φ)}_{= 0}(v) = 0 \\
+	&⇒ n ∈ \ker(φ - λ_1 \id_V) \\
+ 	w &= \frac{1}{s} q(φ) \circ (φ - λ_1 \id_V)(v) = \frac{1}{s} ((φ - λ_1 \id_V) \circ q(φ))(v) ∈ \im(φ - λ_1 \id_V) \\
+	⇒ V &= \ker(φ - λ_1 \id_V) + \im(φ - λ_1 \id_V)
+    \end{align*}
+	Nach der Dimensionsformel für lineare Abbildungen ist
+	\[\dim \ker(φ - λ_1 \id_V) + \dim \im(φ - λ_1 \id_V) = \dim V\]
+	$⇒$ Summe ist direkt $⇒$ Behauptung.
+ 2. Wir setzen $W := \im(φ - λ_1 \id_V)$, dann ist
+    \[V = \ker(φ - λ_1 \id_V) \oplus W = \underbrace{\Eig(φ, λ_1)}_{\neq 0} \oplus W\]
+	$⇒ \dim W < \dim V$. Es gilt:
+	\begin{align*}
+	φ \circ (φ - λ_1 \id_V) &= φ \circ φ - λ_1 φ = (φ - λ_1 \id_V) \circ φ \\
+ 	⇒ φ(W) &= φ((φ - λ_1 \id_V)(V)) = (φ - λ_1 \id_V)(φ(V)) \leq (φ - λ_1 \id_V)(V) = W
+    \end{align*}
+	Wir betrachten die Abbildung $ψ := φ \big|_W^W: W \to W$. Sei $χ_φ^{min} = t^n + a_{n - 1}t^{n - 1} + \dots + a_0$.
+	$⇒ ∀ w ∈ W$ ist
+	\begin{align*}
+	χ_φ^{min}(ψ)(w) &= (ψ_n + a_{n - 1} ψ_{n - 1} + \dots + a_0 \id_V)(w) \\
+	&= ψ^n(w) + a_{n - 1}ψ^{n - 1}(w) + \dots + a_0 w \\
+	&= φ_n (w) +a_{n - 1} φ^{n - 1}(w) + \dots + a_0 w \\
+	&= (φ^n + a_{n - 1} φ^{n - 1} + \dots + a_0 \id_V)(w) \\
+	&= \underbrace{(χ_φ^{min}(φ))}_{= 0}(w) = 0
+    \end{align*}
+	\[⇒ χ_φ^{min}{ψ} = 0 ⇒ χ_ψ^{min} \mid χ_φ^{min} = (t - λ_1) · \dots · (t - λ_r)\]
+	$⇒ χ_ψ^{min}$ zerfällt in Linearfaktoren und besitzt nur einfache Nullstellen. $⇒ ψ$ diagonalisierbar, das heißt es existiert eine Basis von $W$ aus EV zu $ψ = φ\big|_W^W$.
+	Wegen $V = \Eig(φ, λ_1) \oplus W$ existiert nach 11.8 eine Basis von $V$ aus EV zu $φ$, das heißt $φ$ ist diagonalisierbar.
+ #+end_proof
+ #+begin_ex latex
+ 1. $\displaystyle{A = \begin{pmatrix} 1 & -1 & 0 \\ -8 & 1 & 4 \\ 2 & -1 & -1\end{pmatrix}} ∈ M(3 × 3, ℝ)$. Es ist $χ_A^{min} = (t + 1)^2(t - 3) ⇒ A$ ist nicht diagonalisierbar.
+ 2.	$\displaystyle{A = \begin{pmatrix} 2 & -1 & -1 \\ -6 & 1 & 2 \\ 3 & -1 & -2\end{pmatrix}} ∈ M(3 × 3, ℝ)$. Es ist $χ_A^{min} = (t + 1)(t - 3) ⇒ A$ ist diagonalisierbar.
+ #+end_ex

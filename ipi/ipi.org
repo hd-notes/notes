@@ -256,34 +256,34 @@
 	1. berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
 	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$ -Notation* und ihren Verwandten
 	   Gegeben: $f(n)$ und $g(n)$
-	   1. $g(n)$ ist eine asymptotische (für große $n$) obere Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in O(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
-		  und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in O(g(n))$
+	   1. $g(n)$ ist eine asymptotische (für große $n$) obere Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in \mathcal{O}(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
+		  und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in \mathcal{O}(g(n))$
 	   2. $g(n)$ ist asymptotische untere Schranke für $f(n)$ ($f(n) \geq g(n)$)
 		  \[f(n) \in \Omega(g(n)) \iff \Exists n_0,C : \Forall n > n_0 f(n) \geq C g(n)\]
 	   3. $g(n)$ ist asymptotisch scharfe Schranke für $f(n) (f(n) = g(n))$
-		  \[f(n) \in \Theta(g(n)) \iff f(n) \in O(g(n)) \wedge f(n) \in \Omega(g(n))\]
+		  \[f(n) \in \Theta(g(n)) \iff f(n) \in \mathcal{O}(g(n)) \wedge f(n) \in \Omega(g(n))\]
 	Regeln:
-	1. $f(n) \in \Theta(f(n)) \implies f(n) \in O(f(n)), f(n) \in \Omega(f(n))$
+	1. $f(n) \in \Theta(f(n)) \implies f(n) \in \mathcal{O}(f(n)), f(n) \in \Omega(f(n))$
 	2. $c' f(n) \in \Theta(f(n))$
-	3. $O(f(n)) \cdot O(g(n)) \in O(f(n) g(n))$ \hfill Multiplikationsregel
-	4. $O(f(n)) + O(g(n)) \in O(\text{"`max"'}(f(n), g(n)))$ \hfill Additionsregel \\
-	   formal: wenn $f(n) \in O(g(n)) \implies O(f(n)) + O(g(n)) \in O(g(n))$ \\
-	   $g(n) \in O(f(n)) \implies O(f(n)) + O(g(n)) \in O(f(n))$
-	5. $n^p \in O(n^q)$ wenn $p \leq q$
+	3. $\mathcal{O}(f(n)) \cdot \mathcal{O}(g(n)) \in \mathcal{O}(f(n) g(n))$ \hfill Multiplikationsregel
+	4. $\mathcal{O}(f(n)) + \mathcal{O}(g(n)) \in \mathcal{O}(\text{"`max"'}(f(n), g(n)))$ \hfill Additionsregel \\
+	   formal: wenn $f(n) \in \mathcal{O}(g(n)) \implies \mathcal{O}(f(n)) + \mathcal{O}(g(n)) \in \mathcal{O}(g(n))$ \\
+	   $g(n) \in \mathcal{O}(f(n)) \implies \mathcal{O}(f(n)) + \mathcal{O}(g(n)) \in \mathcal{O}(f(n))$
+	5. $n^p \in \mathcal{O}(n^q)$ wenn $p \leq q$
 	Beliebte Wahl für $g(n)$
-	- $O(1)$ \hfill "konstante Komplexität" \\
+	- $\mathcal{O}(1)$ \hfill "konstante Komplexität" \\
 	  elementare Operation "+, -, *, /", Array-Zugriff v[k] (v: std::vector)
-	- $O(\log(n))$ \hfill "logarithmische Komplexität" \\
+	- $\mathcal{O}(\log(n))$ \hfill "logarithmische Komplexität" \\
 	  zum Beispiel: auf Element von std::map zugreifen m[k] (m: std::map)
-	- $O(n)$ \hfill "lineare Komplexität" \\
+	- $\mathcal{O}(n)$ \hfill "lineare Komplexität" \\
 	  zum Beispiel std::transform() ($n$ = Anzahl der transformierten Elemente)
-	- $O(n \log(n))$ \hfill{"`n log n"', "`log linear"' "`linearithmisch"'} \\
+	- $\mathcal{O}(n \log(n))$ \hfill{"`n log n"', "`log linear"' "`linearithmisch"'} \\
 	  Beispiel: std::sort
-	- $O(n^2)$ \hfill "quadratische Komplexität"
-	- $O(n^p)$ \hfill "polynomielle Komplexität"
-	- $O(2^n)$ \hfill "exponentielle Komplexität"
+	- $\mathcal{O}(n^2)$ \hfill "quadratische Komplexität"
+	- $\mathcal{O}(n^p)$ \hfill "polynomielle Komplexität"
+	- $\mathcal{O}(2^n)$ \hfill "exponentielle Komplexität"
 	#+begin_ex latex
-	\[f(n) = 1 + 15 n + 4n^2 + 7n^3 \in O(n^3)\]
+	\[f(n) = 1 + 15 n + 4n^2 + 7n^3 \in \mathcal{O}(n^3)\]
 	#+end_ex
 *** Anwendung
 	1. Fibonacci-Zahlen: $f_k = f_{k - 2} + f_{k - 1}$
@@ -292,30 +292,30 @@
 	   | $f_k$ | 0 | 1 | 1 | 2 | 3 | 5 | 8 | 13 | 21 |
 	   #+begin_src cpp
 	   int fib1(int k) {
-		   if(k < 2) { // O(1)
-			   return k; // O(1)
+		   if(k < 2) { // \mathcal{O}(1)
+			   return k; // \mathcal{O}(1)
 		   }
-		   // O(1)
+		   // \mathcal{O}(1)
 		   int f1 = 0; // letzten beiden Fibonacci Zahlen, anfangs die ersten beiden
 		   int f2 = 1;
-		   for(int i = 2; i <= k; i++) { // f(k) = k - 1 e O(k)
-			   int f = f1 + f2; // O(1)
-			   f1 = f2; // O(1)
-			   f2 = f; // O(1)
-		   } // gesamte Schleife: O(1)*O(k) = O(k)
+		   for(int i = 2; i <= k; i++) { // f(k) = k - 1 e \mathcal{O}(k)
+			   int f = f1 + f2; // \mathcal{O}(1)
+			   f1 = f2; // \mathcal{O}(1)
+			   f2 = f; // \mathcal{O}(1)
+		   } // gesamte Schleife: \mathcal{O}(1)*\mathcal{O}(k) = \mathcal{O}(k)
 		   return f2;
-	   } // gesamte Funktion: teuerstes gewinnt: O(k)
+	   } // gesamte Funktion: teuerstes gewinnt: \mathcal{O}(k)
 
 	   // rekursive Variante:
 	   int fib2(int k) {
-		   if(k < 2) { // O(1)
-			   return k; // O(1)
+		   if(k < 2) { // \mathcal{O}(1)
+			   return k; // \mathcal{O}(1)
 		   }
 		   return fib2(k - 2) + fib2(k - 1);
 	   }
 	   #+end_src
 	   - sehr ineffizient, weil alle Fibonacci-Zahlen $< k$  mehrmals berechnet werden
-	   Sei $f(k)$  die Anzahl der Schritte, $f'(k)$ die Schritte oberhalb, Annahme: jeder Knoten ist $O(1) \implies f(k) \in O(\text{Anzahl Knoten})$.
+	   Sei $f(k)$  die Anzahl der Schritte, $f'(k)$ die Schritte oberhalb, Annahme: jeder Knoten ist $\mathcal{O}(1) \implies f(k) \in \mathcal{O}(\text{Anzahl Knoten})$.
 	   Oberhalb ist der Baum vollständig (jeder innere Knoten hat zwei Kinder), Anzahl der Knoten im vollständigen Baum der Tiefe $l$:
 	   \[1 + 2 + 4 + \ldots + 2^l = 2^{l + 1} - 1\]
 * Zahlendarstellung im Computer
@@ -1902,8 +1902,8 @@
 	Vielfache einer Zahl sind $\implies$ übrigbleibenden sind Primzahlen
 	#+begin_src cpp
 	std::vector<bool> find_primes(int n) {
-	    std::vector<bool> res(n + 1, true); // alle Zahlen prim : O(n): n SpZ auf "true" initialisieren
-	    res[0] = false; res[1] = false; // keine Primzahlen : O(1): Indexzugriff unabhängig von n
+	    std::vector<bool> res(n + 1, true); // alle Zahlen prim : \mathcal{O}(n): n SpZ auf "true" initialisieren
+	    res[0] = false; res[1] = false; // keine Primzahlen : \mathcal{O}(1): Indexzugriff unabhängig von n
 
 	    for(int k = 2, k < n, k++) { // k $\estimates$ alle Vielfachen von k
 	        for(j = 2 * k, j <= n, j += k) { // n / k - 1 Schritte
@@ -1911,7 +1911,7 @@
 	        }
 	    }
 
-	    return res; // res[i] = true $\iff$ i Primzahl : O(n), Array der Länge n kopieren
+	    return res; // res[i] = true $\iff$ i Primzahl : \mathcal{O}(n), Array der Länge n kopieren
 	}
 	#+end_src
 	Komplexität der Algorithmus $\estimates$ Summe der Komplexitäten der Schritte $\implies$ nach

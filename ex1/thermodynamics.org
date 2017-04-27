@@ -662,7 +662,7 @@
    - $t > 0: p(V_1) = \frac{V_1}{V}, p(V_2) = \frac{V_2}{V}$
    Jetzt: $W(V) =$ Wahrscheinlichkeit *alle* Gasteilchen im Volumen $V$ anzutreffen $\implies$
    \[W(V_1) = (p(V_1))^N\]
-   wobei $N =$ Anzahl Gasteilchen, $N = n \frac{R}{k_B}$ sehr groß, $N\sim O(10^24)$
+   wobei $N =$ Anzahl Gasteilchen, $N = n \frac{R}{k_B}$ sehr groß, $N\sim \mathcal{O}(10^24)$
    - Vorher $(t = 0): W(V_1) = 1$
    - Nachher $(t > 0): W(V_1) = (\frac{V_1}{V})^N \approx 0$, da $\frac{V_1}{V} < 1$ und $N$ extrem groß.
    Logarithmieren:

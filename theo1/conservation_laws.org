@@ -164,9 +164,9 @@
    \begin{align*}
    \oint \d\v s\v F &= \int_0^{\Delta x^1}\d s F^1(x,0) + \int_0^{\Delta x^2}\d s F^2(\Delta x^1, s) - \int_0^{\Delta x^1}\d s F^1(s, \Delta x^2) - \int_0^{\Delta x^2}\d s F^2(0,s) \\
    &= \int_0^{\Delta x^1}\d s(F^1(s,0) - F^1(s,\Delta x^2)) + \int_0^{\Delta x^2}\d s(F^2(\Delta x^1, s) - F^2(0,s)) \\
-   &= \int_0^{\Delta x^1}\d s(\frac{\partial F^1}{\partial x^2})\Delta x^2 + \int_0^{\Delta x^2}\d s \frac{\partial F^2}{\partial x^1}\Delta x^1 + O(\Delta^3) \\
-   &= \Delta x^1 \Delta x^2(\frac{\partial F^2}{\partial x^1} - \frac{\partial F^1}{\partial x^2}) + O(\Delta^3) \\
-   &= \Delta x^1 \Delta x^2(\v\nabla \times \v F)^3 + O(\Delta^3) \\
+   &= \int_0^{\Delta x^1}\d s(\frac{\partial F^1}{\partial x^2})\Delta x^2 + \int_0^{\Delta x^2}\d s \frac{\partial F^2}{\partial x^1}\Delta x^1 + \mathcal{O}(\Delta^3) \\
+   &= \Delta x^1 \Delta x^2(\frac{\partial F^2}{\partial x^1} - \frac{\partial F^1}{\partial x^2}) + \mathcal{O}(\Delta^3) \\
+   &= \Delta x^1 \Delta x^2(\v\nabla \times \v F)^3 + \mathcal{O}(\Delta^3) \\
    &= \underbrace{\Delta x^1 \Delta x^2 \hat{e_3}}_{\mathclap{\Delta \v f = ~\text{Der dem kleinen Flächenelement zugeordnete Vektor}}} (\v\nabla \times \v F) \\
    &\approx \Delta \v f(\v \nabla \times \v F)
    \end{align*}
@@ -177,7 +177,7 @@
    2. Übergang zu größeren Flächen durch Aufaddieren
    Fläche $= N\Delta ^2 \implies N\sim \frac{1}{Delta^2}$
    \begin{align*}
-   \sum_{\text{Rechtecke}} \oint\d \v s\v F = \sum_{\text{Rechtecke}} \int\d\v f(\v\nabla \times \v F) + \underarrow[N]{Zahl der Rechtecke = $O(\Delta)$} O(\Delta^3) \\
+   \sum_{\text{Rechtecke}} \oint\d \v s\v F = \sum_{\text{Rechtecke}} \int\d\v f(\v\nabla \times \v F) + \underarrow[N]{Zahl der Rechtecke = $\mathcal{O}(\Delta)$} \mathcal{O}(\Delta^3) \\
    \shortintertext{weil sich nicht "innere Ränder wegheben"}
    \oint\d \v s\v F = \sum_{\text{Rechtecke}} \int\d\v f(\v\nabla \times \v F) \\
    \shortintertext{klar}
@@ -187,11 +187,11 @@
    Zerlegung des Randes $\Delta \v s$ in kleine Rechtecke $\Delta \v s_1, \Delta \v s_2$
    \begin{align*}
    \Delta \v s &= \Delta \v s_1 + \Delta \v s_2 \\
-   \v F \Delta\v s &= \v F \Delta \v s_1 + \v F \Delta \v s_2 = \v F_1 \Delta \v s_1 + \v F_2 \Delta \v s_2 + O(\Delta x^2)
+   \v F \Delta\v s &= \v F \Delta \v s_1 + \v F \Delta \v s_2 = \v F_1 \Delta \v s_1 + \v F_2 \Delta \v s_2 + \mathcal{O}(\Delta x^2)
    \end{align*}
    $\v F, \v F_1, \v F_2$ jeweils am Mittelpunkt der Linienelemente
-   Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \implies$ Fehler $O(\Delta)$ \\
-   $\implies$ Auch nach Summation bleibt Fehler von $O(\Delta)$
+   Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \implies$ Fehler $\mathcal{O}(\Delta)$ \\
+   $\implies$ Auch nach Summation bleibt Fehler von $\mathcal{O}(\Delta)$
 
    Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen")
    #+end_proof
