@@ -1,9 +1,8 @@
 %\documentclass[10pt,landscape,a4paper]{article}
 \documentclass[9pt, landscape,a4paper]{extarticle}
-\usepackage[ngerman]{babel}
+%\usepackage[ngerman]{babel}
 \usepackage{tikz}
 %\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
-%\usepackage{siunitx}
 %\usepackage[nosf]{kpfonts}
 %\usepackage{lipsum}
 %\usepackage[t1]{sourcesanspro}
@@ -15,18 +14,23 @@
 \usepackage{multicol}
 \usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
 \usepackage{microtype}
-\usepackage[no-math]{fontspec}
+%\usepackage{fontspec}
 \usepackage{amsfonts}
-\usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{siunitx}
 \usepackage{mathspec}
+\usepackage{nath}
+\usepackage{unicode-math}
 \usepackage{stmaryrd}
 \usepackage{stackengine}
-\usepackage{nath}
+\usepackage{polyglossia}
+\setdefaultlanguage[spelling=new, babelshorthands=true]{german}
 \makeatletter
 \let\mathop\o@mathop
+%\let\overline\o@overline
+%\let\bar\overline
 \makeatother
-\let\bar\overline
+%\renewcommand{\bar}{\overline}
 
 \definecolor{myblue}{cmyk}{1,.72,0,.38}
 \def\firstcircle{(0,0) circle (1.5cm)}
@@ -204,9 +208,11 @@
 \renewcommand\d{\mathrm{d}}
 \newcommand\sgn{\mathrm{sgn}}
 \newcommand\id{\mathrm{id}}
-\newcommand\RS{\mathrm{RS}}
+\DeclareMathOperator{\RS}{RS}
+%\newcommand\RS{\mathrm{RS}}
 \renewcommand\v[1]{\vec{#1}}
-\newcommand\ubar[1]{\stackunder[1.2pt]{$#1$}{\rule{.99ex}{.065ex}}}
+%\newcommand\ubar[1]{\stackunder[1.2pt]{\(#1\)}{\rule{.99ex}{.065ex}}}
+\newcommand\ubar[1]{\stackunder[1.2pt]{\(#1\)}{\rule{1.25ex}{.08ex}}}
 
 \expandafter\def\expandafter\normalsize\expandafter{%
     \normalsize
@@ -222,6 +228,7 @@
 \raggedbottom
 \begin{document}
 \small
+\[ϑ∞π∈βξγχφζκριεαοδσντλυ⊂ηψϰμωϕθ∨∮Π↦×ΞΓℂΦℤ∩ℝ⇒∃∀∇ΔΣℕ⇔ΛΥℚ⊆∧Ψ⊊∫Ω∪Θ×\]
 \begin{multicols*}{4}
 \raggedcolumns
   \section{Mengen und Zahlen}

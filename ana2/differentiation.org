@@ -145,7 +145,7 @@
   f(y + h_2) &= f(y) + D_y f(y)h_2 + ω_f(h_2) \\
   \lim_{\substack{x + h_1 ∈ D_y \\ \norm{h_1} \to 0}} \frac{\norm{ω_g(h_1)}}{\norm{h_1}} &= 0 \\
   \lim_{\substack{y + h_2 ∈ D_y \\ \norm{h_2} \to 0}} \frac{\norm{ω_f(h_2)}}{\norm{h_2}} &= 0 \\
-  (f \circ g)(x + h_1) &= f(g(x + h_1)) = f(y + η), \quad η := D_x g(x)h_1 + ω_g(h_1) \\
+  \string(f \circ g\string)(x + h_1) &= f(g(x + h_1)) = f(y + η), \quad η := D_x g(x)h_1 + ω_g(h_1) \\
   &= f(y) + D_y f(y) η + ω_f(η) \\
   &= f(y) + D_y f(y) D_x g(x) h_1 + D_y f(y) ω_g(h_1) + ω_f(D_x g(x)h_1 + ω_g(h_1)) \\
   &= (f\circ g)(x) + D_y f(y) D_x g(x) h_1 + ω_{f \circ g}(h_1) \\
@@ -175,4 +175,3 @@
    Sei $f: D \to ℝ^m$ stetig differenzierbar. Ferner sei $x ∈ D$ mit $K_r(x) ⊂ D, r > 0$, dann gilt
    \[\norm{f(x) - f(y)}_2 \leq M\norm{x - y}_2, y ∈ K_r(x), M := sup_{z ∈ K_r(x)}\norm{J_f(z)}_M\]
   #+end_korollar
-  \[\abs{\frac{}{}}\]

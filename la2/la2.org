@@ -14,5 +14,3 @@
 
 #+INCLUDE: "eigen_values.org" :minlevel 1
 #+INCLUDE: "dual_vector.org" :minlevel 1
-
-printf("enrtext"text

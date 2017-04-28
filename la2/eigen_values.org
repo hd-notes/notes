@@ -350,48 +350,86 @@
  \end{align*}
  $⇒ χ_φ^{min}(λ) = 0$.
  #+end_proof
-
+ #+begin_ex latex
+ 1. $A = \begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix} ∈ M(2 × 2, ℚ), χ_A^{char} = (t - 1)^2$
+	Wegen 18.22, 18.23 gilt: $χ_A^{min}$ normiert, $χ_A^{min} \mid χ_A^{char}, χ_A^{char}(1) = 0 ⇒ χ_A^{min} ∈ \{t - 1, (t - 1)^2\}$
+	Wegen $A - E_2 = 0$ ist $χ_A^{min} = t - 1$
+ 2. $A = \begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix} ∈ M(2 × 2, ℚ) ⇒ χ_A^{char} = (t - 1)(t + 1) ⇒ χ_A^{min} = (t - 1)(t + 1)$
+ 3. $A = \begin{pmatrix}1 & -1 & 0 \\ -8 & 1 & 4 \\ 2 & -1 & -1\end{pmatrix} ∈ M(3 × 3, ℝ)$
+	\[⇒ χ_A^{char} = (t + 1)^2(t - 3) ⇒ χ_A^{min} = \{(t + 1)(t - 3), (t + 1)^2(t - 3)\}\]
+	Es ist $(A + E_n)(A - 3E_n) \neq 0$, also ist $χ_A^{min} = (t + 1)^2(t - 3)$
+ 4. $A = \begin{pmatrix}2 & -1 & -1 \\ -6 & 1 & 2 \\ 3 & -1 & -2\end{pmatrix} ∈ M(3 × 3, ℝ) ⇒ χ_A^{char} = (t + 1)^2(t - 3)$
+	\[χ_A^{min} ∈ \{(t + 1)(t - 3), (t + 1)^2(t - 3)\}\]
+	Es ist $(A + E_n)(A - 3E_n) = 0 ⇒ χ_A^{min} = (t + 1)(t - 3)$
+ #+end_ex
+ #+begin_thm latex
+ $V$ endlichdimesional. Dann sind äquivalent:
+ 1. $φ$ diagonalisierbar
+ 2.	Das Minimalpolynom $χ_φ^{min}$ zerfällt in Linearfaktoren und besitzt nur einfache NS, das heißt
+	$χ_φ^{min} = (t - λ_1) · \dots · (t - λ_r)$ mit paarweise verschiedenen $λ_1, \dots, λ_r ∈ K$
+ #+end_thm
  #+begin_proof latex
- Beweis der Behauptung per Induktion nach $n := \dim V$ \\
- IA: $n = 1$ klar \\
- IS: Sei $n > 1$, die Behauptung sei für $1, \dots, n - 1$ gezeigt. \\
- 1. Behauptung: $V = \ker(φ - λ_1 \id_V) \oplus \im(φ - λ_1 \id_V)$, denn: Nach 7.6 $∃v, s ∈ K[t]$ mit
-	\[(t - λ_2) · \dots · (t - λ_r) = q(t - λ_1) + s, \deg(s) < \deg(t - λ_1) = 1\]
-	das heißt $s$ ist konstantes Polynom. Wegen
-	\[s(λ_1) = (λ_1 - λ_2) · \dots · (λ_1 - λ_r) - q(λ_1)\underbrace{(λ_1 - λ_1)}_{= 0} \neq 0\]
-	das heißt $s ∈ K^\ast$. Einsetzen von $φ$ liefert:
-	\[(φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V) = q(φ) \circ (φ - λ_1 \id_V) + s \id_V\]
-	$⇒ ∀ v ∈ V$ ist
+ 1. $⇒$ 2. Sei $φ$ diagonalisierbar, seinen $λ_1, \dots, λ_r$ die verschiedenen EW von $φ$. Sei
+    $v ∈ V$. Da $φ$ diagonalisierbar, ist $V = \operatorname{\oplus}\limits_{i = 1}^r \Eig(φ, λ_i)$ nach 18.19,
+	das heißt es existieren $v_i ∈ \Eig(φ, λ_i), i = 1, \dots, r$ mit $v = v_1 + \dots + v_r$
 	\begin{align*}
-	s v &= (φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v) - q(φ) \circ (φ - λ_1 \id_V)(v) \\
-	⇒ v &= \frac{1}{s} \underbrace{(φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v)}_{=: u} - \underbrace{q(φ) \circ (φ - λ_1 \id_V)(v)}_{=: w}	\\
-	\string(φ - λ_1 \id_V\string)(u) &= \frac{1}{s}(φ - λ_1 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v) = \frac{1}{s} \underbrace{χ_φ^{min}(φ)}_{= 0}(v) = 0 \\
-	&⇒ n ∈ \ker(φ - λ_1 \id_V) \\
- 	w &= \frac{1}{s} q(φ) \circ (φ - λ_1 \id_V)(v) = \frac{1}{s} ((φ - λ_1 \id_V) \circ q(φ))(v) ∈ \im(φ - λ_1 \id_V) \\
-	⇒ V &= \ker(φ - λ_1 \id_V) + \im(φ - λ_1 \id_V)
+	⇒ (φ - λ_r \id_V)(V) &= φ(v_1) + \dots + φ(v_r) - λ_r v_1 - \dots - λ_r v_r \\
+	&= λ_1 v_1 + \dots + λ_r v_r - λ_r v_1 - \dots - λ_r v_r \\
+	&= (λ_1 - λ_r)v_1 + \dots + (λ_{r - 1} - λ_r) v_{r - 1} \\
+	&∈ \Eig(φ, λ_1) \oplus \dots \oplus \Eig(φ, λ_{r - 1}) \\
+	\intertext{analog:}
+	\string(φ - λ_{r -1}\id_V\string) \circ (φ - λ_r \id_V)(v) &∈ \Eig(φ, λ_1) \oplus \dots \oplus \Eig(φ, λ_{r - 2})
+ 	\intertext{Induktiv erhalten wir:}
+ 	0 &= (φ - λ_1 \id_V) \circ (φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V)(V) \\
+	⇒ 0 &= (φ - λ_1 \id_V) \circ \dots \circ (φ - λ_r \id_V) \\
+	⇒ 0 &= ((t -λ_1) · \dots · (t - λ_r))(φ)
     \end{align*}
-	Nach der Dimensionsformel für lineare Abbildungen ist
-	\[\dim \ker(φ - λ_1 \id_V) + \dim \im(φ - λ_1 \id_V) = \dim V\]
-	$⇒$ Summe ist direkt $⇒$ Behauptung.
- 2. Wir setzen $W := \im(φ - λ_1 \id_V)$, dann ist
-    \[V = \ker(φ - λ_1 \id_V) \oplus W = \underbrace{\Eig(φ, λ_1)}_{\neq 0} \oplus W\]
-	$⇒ \dim W < \dim V$. Es gilt:
-	\begin{align*}
-	φ \circ (φ - λ_1 \id_V) &= φ \circ φ - λ_1 φ = (φ - λ_1 \id_V) \circ φ \\
- 	⇒ φ(W) &= φ((φ - λ_1 \id_V)(V)) = (φ - λ_1 \id_V)(φ(V)) \leq (φ - λ_1 \id_V)(V) = W
-    \end{align*}
-	Wir betrachten die Abbildung $ψ := φ \big|_W^W: W \to W$. Sei $χ_φ^{min} = t^n + a_{n - 1}t^{n - 1} + \dots + a_0$.
-	$⇒ ∀ w ∈ W$ ist
-	\begin{align*}
-	χ_φ^{min}(ψ)(w) &= (ψ_n + a_{n - 1} ψ_{n - 1} + \dots + a_0 \id_V)(w) \\
-	&= ψ^n(w) + a_{n - 1}ψ^{n - 1}(w) + \dots + a_0 w \\
-	&= φ_n (w) +a_{n - 1} φ^{n - 1}(w) + \dots + a_0 w \\
-	&= (φ^n + a_{n - 1} φ^{n - 1} + \dots + a_0 \id_V)(w) \\
-	&= \underbrace{(χ_φ^{min}(φ))}_{= 0}(w) = 0
-    \end{align*}
-	\[⇒ χ_φ^{min}{ψ} = 0 ⇒ χ_ψ^{min} \mid χ_φ^{min} = (t - λ_1) · \dots · (t - λ_r)\]
-	$⇒ χ_ψ^{min}$ zerfällt in Linearfaktoren und besitzt nur einfache Nullstellen. $⇒ ψ$ diagonalisierbar, das heißt es existiert eine Basis von $W$ aus EV zu $ψ = φ\big|_W^W$.
-	Wegen $V = \Eig(φ, λ_1) \oplus W$ existiert nach 11.8 eine Basis von $V$ aus EV zu $φ$, das heißt $φ$ ist diagonalisierbar.
+	$⇒$ Es existiert $g ∈ K[t]$ mit $(t - λ_1) · \dots · (t - λ_r) = g χ_φ^{min}$.
+	Wegen $χ_φ^{min}(λ_1) = \dots = χ_φ^{min}(λ_r) = 0$ nach 18.23 existiert $h ∈ K[t]$ mit
+	\[χ_φ^{min} = (t - λ_1) · \dots · (t - λ_r)h = gχ_φ^{min} h = g h χ_φ^{min} ⇒ gh = 1\]
+	$⇒ g, h ∈ K^{\ast}$, $χ_φ^{min}$ normiert $⇒ g = h = 1 ⇒ χ_φ^{min} = (t - λ_1) · \dots · (t - λ_r)$
+ 2. $⇒$ 1. Sei $χ_φ^{min} = (t - λ_1) · \dots · (t - λ_1)$, wobei $λ_1, \dots, λ_r ∈ K$ paarweise verschieden.
+	Nach 18.23 sind $λ_1, \dots, λ_r$ die EW von $φ$.
+    Beweis der Behauptung per Induktion nach $n := \dim V$ \\
+    IA: $n = 1$ klar \\
+    IS: Sei $n > 1$, die Behauptung sei für $1, \dots, n - 1$ gezeigt. \\
+    1. Behauptung: $V = \ker(φ - λ_1 \id_V) \oplus \im(φ - λ_1 \id_V)$, denn: Nach 7.6 $∃v, s ∈ K[t]$ mit
+       \[(t - λ_2) · \dots · (t - λ_r) = q(t - λ_1) + s, \deg(s) < \deg(t - λ_1) = 1\]
+       das heißt $s$ ist konstantes Polynom. Wegen
+       \[s(λ_1) = (λ_1 - λ_2) · \dots · (λ_1 - λ_r) - q(λ_1)\underbrace{(λ_1 - λ_1)}_{= 0} \neq 0\]
+       das heißt $s ∈ K^\ast$. Einsetzen von $φ$ liefert:
+       \[(φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V) = q(φ) \circ (φ - λ_1 \id_V) + s \id_V\]
+       $⇒ ∀ v ∈ V$ ist
+       \begin{align*}
+       s v &= (φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v) - q(φ) \circ (φ - λ_1 \id_V)(v) \\
+       ⇒ v &= \frac{1}{s} \underbrace{(φ - λ_2 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v)}_{=: u} - \underbrace{q(φ) \circ (φ - λ_1 \id_V)(v)}_{=: w}	\\
+       \string(φ - λ_1 \id_V\string)(u) &= \frac{1}{s}(φ - λ_1 \id_V) \circ \dots \circ (φ - λ_r \id_V)(v) = \frac{1}{s} \underbrace{χ_φ^{min}(φ)}_{= 0}(v) = 0 \\
+       &⇒ n ∈ \ker(φ - λ_1 \id_V) \\
+       w &= \frac{1}{s} q(φ) \circ (φ - λ_1 \id_V)(v) = \frac{1}{s} ((φ - λ_1 \id_V) \circ q(φ))(v) ∈ \im(φ - λ_1 \id_V) \\
+       ⇒ V &= \ker(φ - λ_1 \id_V) + \im(φ - λ_1 \id_V)
+       \end{align*}
+       Nach der Dimensionsformel für lineare Abbildungen ist
+       \[\dim \ker(φ - λ_1 \id_V) + \dim \im(φ - λ_1 \id_V) = \dim V\]
+       $⇒$ Summe ist direkt $⇒$ Behauptung.
+    2. Wir setzen $W := \im(φ - λ_1 \id_V)$, dann ist
+       \[V = \ker(φ - λ_1 \id_V) \oplus W = \underbrace{\Eig(φ, λ_1)}_{\neq 0} \oplus W\]
+       $⇒ \dim W < \dim V$. Es gilt:
+       \begin{align*}
+       φ \circ (φ - λ_1 \id_V) &= φ \circ φ - λ_1 φ = (φ - λ_1 \id_V) \circ φ \\
+       ⇒ φ(W) &= φ((φ - λ_1 \id_V)(V)) = (φ - λ_1 \id_V)(φ(V)) \leq (φ - λ_1 \id_V)(V) = W
+       \end{align*}
+       Wir betrachten die Abbildung $ψ := φ \big|_W^W: W \to W$. Sei $χ_φ^{min} = t^n + a_{n - 1}t^{n - 1} + \dots + a_0$.
+       $⇒ ∀ w ∈ W$ ist
+       \begin{align*}
+       χ_φ^{min}(ψ)(w) &= (ψ_n + a_{n - 1} ψ_{n - 1} + \dots + a_0 \id_V)(w) \\
+       &= ψ^n(w) + a_{n - 1}ψ^{n - 1}(w) + \dots + a_0 w \\
+       &= φ_n (w) +a_{n - 1} φ^{n - 1}(w) + \dots + a_0 w \\
+       &= (φ^n + a_{n - 1} φ^{n - 1} + \dots + a_0 \id_V)(w) \\
+       &= \underbrace{(χ_φ^{min}(φ))}_{= 0}(w) = 0
+       \end{align*}
+       \[⇒ χ_φ^{min}{ψ} = 0 ⇒ χ_ψ^{min} \mid χ_φ^{min} = (t - λ_1) · \dots · (t - λ_r)\]
+       $⇒ χ_ψ^{min}$ zerfällt in Linearfaktoren und besitzt nur einfache Nullstellen. $⇒ ψ$ diagonalisierbar, das heißt es existiert eine Basis von $W$ aus EV zu $ψ = φ\big|_W^W$.
+       Wegen $V = \Eig(φ, λ_1) \oplus W$ existiert nach 11.8 eine Basis von $V$ aus EV zu $φ$, das heißt $φ$ ist diagonalisierbar.
  #+end_proof
  #+begin_ex latex
  1. $\displaystyle{A = \begin{pmatrix} 1 & -1 & 0 \\ -8 & 1 & 4 \\ 2 & -1 & -1\end{pmatrix}} ∈ M(3 × 3, ℝ)$. Es ist $χ_A^{min} = (t + 1)^2(t - 3) ⇒ A$ ist nicht diagonalisierbar.

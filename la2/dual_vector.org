@@ -37,5 +37,9 @@
   1. $V = K^n, \mathcal{B} = (e_1, \dots, e_n) ⇒ \mathcal{B}^{\ast} = (e_1^{\ast}, \dots, e_n^{\ast})$ duale Basis zu $\mathcal{B}$ mit
 	 \[e_i^{\ast} = (0, \dots, 0, 1, 0, \dots, 0)\]
 	 Für die Abbildung aus 19.2.1 gilt $φ = e_1^{\ast} = (1, \dots, 0)$.
-  2. $K = ℝ, V = ℝ^2, \mathcal{B} = (v_1, v_2)$
+  2. $K = ℝ, V = ℝ^2, \mathcal{B} = (v_1, v_2), v_1 = \cvec{1; 0}, v_2 = \cvec{1; 1}$. Es ist $e_1 = v_1, e_2 = v_2 - v_1$
+	 \[⇒ v_1^{\ast}(e_1) = v_1^{\ast}(v_1) = 1, v_1^{\ast}(e_2) = v_1^{\ast}(v_2 - v_1) = \underbrace{v_1^{\ast}(v_2)}_{= 0} - \underbrace{v_1^{\ast}(v_1)}_{= 1} = -1\]
+	 $⇒ v_1^{\ast} = (1, -1)$
+	 \[⇒ v_2^{\ast}(e_1) = v_2^{\ast}(v_1) = 0, v_2^{\ast}(e_2) = v_2^{\ast}(v_2 - v_1) = \underbrace{v_2^{\ast}(v_2)}_{= 1} - \underbrace{v_2^{\ast}(v_1)}_{= 0} = 1\]
+	 $⇒ v_2^{\ast} = (0, 1)$
   #+end_ex
