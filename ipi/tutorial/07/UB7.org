@@ -31,7 +31,7 @@
 a) Der optimale Fall ist, wenn das Array bereits sortiert ist. Dann wird von der inneren Schleife immer
    nur der erste Durchlauf ausgeführt. Die äußere Schleife wird genau $n$ mal ausgeführt, damit erhält
    man $f_1(n) = n$, dies lässt sich zu $n \in \Omega(n) \implies g_1(n) = n$ umformen. Hier muss $\Omega$-
-   Notation verwendet werde, da es sich um den günstigsten Fall handelt, es gibt Fälle, bei denen $\mathcal{O}}(n)$
+   Notation verwendet werde, da es sich um den günstigsten Fall handelt, es gibt Fälle, bei denen $\mathcal{O}(n)$
    nicht die obere Schranke ist. \\
 b) Der schlechteste Fall tritt auf, wenn das Array genau invers sortiert ist. Die innere Schleife wird also
    immer genau $n - i$ mal durchlaufen wird, wobei $i$ die Anzahl der Durchläufe der äußeren Schleife
