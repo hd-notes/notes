@@ -5,5 +5,8 @@
 #+LATEX_HEADER:	\theoremsymbol{}
 #+LATEX_HEADER: \theoremstyle{nonumberplain}
 #+LATEX_HEADER: \renewtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \theoremstyle{}
+#+LATEX_HEADER: \renewtheorem*{ex*}{Beispiel}
 
 #+INCLUDE: "metric_norm.org" :minlevel 1
+#+INCLUDE: "differentiation.org" :minlevel 1
