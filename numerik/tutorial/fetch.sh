@@ -1,6 +1,6 @@
 #!/bin/bash
 pdfs=$(wget -qO- https://typo.iwr.uni-heidelberg.de/groups/mobocon/teaching/numerik-0-ss17/ | grep -o 'href=".*blatt.*pdf"')
-echo $pdfs
+rm *.pdf
 
 for pdf in $pdfs
 do
