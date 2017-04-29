@@ -5,7 +5,7 @@
    Lösung: Gleitkommazahlen, ein *Kompromiss* zwischen:
    - Umfang darstellbarer Zahlen
    - Genauigkeit
-   - Geschwindigkeit einfacher Rechenoperationen (+, -, ·, /)
+   - Geschwindigkeit einfacher Rechenoperationen (+, -, $·$, /)
    Alternativen:
    - Fixkommazahlen
    - logarithmische Zahlen

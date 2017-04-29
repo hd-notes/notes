@@ -173,5 +173,5 @@
   #+end_remark
   #+begin_korollar latex
    Sei $f: D \to ℝ^m$ stetig differenzierbar. Ferner sei $x ∈ D$ mit $K_r(x) ⊂ D, r > 0$, dann gilt
-   \[\norm{f(x) - f(y)}_2 \leq M\norm{x - y}_2, y ∈ K_r(x), M := sup_{z ∈ K_r(x)}\norm{J_f(z)}_M\]
+   \[\norm{f(x) - f(y)}_2 \leq M\norm{x - y}_2, y ∈ K_r(x), M := \sup_{z ∈ K_r(x)}\norm{J_f(z)}_M\]
   #+end_korollar

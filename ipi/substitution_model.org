@@ -1,9 +1,9 @@
 * Substitutionsmodell (funktionale Programmierung)
   Einfaches Modell für arithmetische Berechnung "Taschenrechner". Eingaben und Ausgaben sind Zahlen (ganze oder reelle Zahlen). Zahlenkonstanten heißen "Literale"
   Elementare Funktionen: haben eine oder mehrere Zahlen als Argumente (Parameter) und liefern eine Zahl als Ergebnis (wie Mathematik):
-  \code{add(1,2) \to 3, mul(2,3) \to 6}, analog \code{sub(), div(), mod()}
+  \code{add(1,2) \(\to\) 3, mul(2,3) \(\to\) 6}, analog \code{sub(), div(), mod()}
   Funktionsaufrufe können verschachtelt werden, das heißt Argumente kann Ergebnis einer anderen Funktion sein. \\
-  \code{mul(add(1,2),sub(5,3)) \to 6}
+  \code{mul(add(1,2),sub(5,3)) \(\to\) 6}
 ** Substitutionsmodell
    Man kann einen Funktionsaufruf, dessen Argument bekannt ist (das heißt Zahlen sind) durch den Wert des Ergebnisses ersetzen ("substituieren"). Geschachtelte Ausdrücke lassen sich so von innen nach außen auswerten.
    #+begin_center latex

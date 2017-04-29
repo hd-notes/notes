@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \usepackage{polyglossia}
 #+LATEX_HEADER: \setdefaultlanguage[spelling=new, babelshorthands=true]{german}
 # #+LATEX_HEADER: \usepackage[german]{translator}
-#+LATEX_HEADER: \usepackage{unicode-math, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
+#+LATEX_HEADER: \usepackage{siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
 #+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
@@ -24,20 +24,82 @@
 #+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
 #+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
 #+LATEX_HEADER: \DeclareSIUnit{\calories}{cal}
+#+LATEX_HEADER:	\usepackage{newunicodechar}
+#+LATEX_HEADER: \newunicodechar{α}{\alpha}
+#+LATEX_HEADER: \newunicodechar{β}{\beta}
+#+LATEX_HEADER: \newunicodechar{γ}{\gamma}
+#+LATEX_HEADER: \newunicodechar{δ}{\delta}
+#+LATEX_HEADER: \newunicodechar{ε}{\varepsilon}
+#+LATEX_HEADER: \newunicodechar{ζ}{\zeta}
+#+LATEX_HEADER: \newunicodechar{η}{\eta}
+#+LATEX_HEADER: \newunicodechar{θ}{\theta}
+#+LATEX_HEADER: \newunicodechar{ι}{\iota}
+#+LATEX_HEADER: \newunicodechar{κ}{\kappa}
+#+LATEX_HEADER: \newunicodechar{λ}{\lambda}
+#+LATEX_HEADER: \newunicodechar{μ}{\mu}
+#+LATEX_HEADER: \newunicodechar{ν}{\nu}
+#+LATEX_HEADER: \newunicodechar{ξ}{\xi}
+#+LATEX_HEADER: \newunicodechar{ο}{\omicron}
+#+LATEX_HEADER: \newunicodechar{π}{\pi}
+#+LATEX_HEADER: \newunicodechar{ρ}{\rho}
+#+LATEX_HEADER: \newunicodechar{σ}{\sigma}
+#+LATEX_HEADER: \newunicodechar{τ}{\tau}
+#+LATEX_HEADER: \newunicodechar{υ}{\upsilon}
+#+LATEX_HEADER: \newunicodechar{φ}{\varphi}
+#+LATEX_HEADER: \newunicodechar{χ}{\chi}
+#+LATEX_HEADER: \newunicodechar{ψ}{\psi}
+#+LATEX_HEADER: \newunicodechar{ω}{\omega}
+#+LATEX_HEADER: \newunicodechar{∀}{\forall}
+#+LATEX_HEADER: \newunicodechar{×}{\times}
+#+LATEX_HEADER: \newunicodechar{Γ}{\Gamma}
+#+LATEX_HEADER: \newunicodechar{Δ}{\Delta}
+#+LATEX_HEADER: \newunicodechar{∃}{\exists}
+#+LATEX_HEADER: \newunicodechar{ℤ}{\mathbb{Z}}
+#+LATEX_HEADER: \newunicodechar{∧}{\wedge}
+#+LATEX_HEADER: \newunicodechar{Θ}{\Theta}
+#+LATEX_HEADER: \newunicodechar{⇒}{\implies}
+#+LATEX_HEADER: \newunicodechar{∩}{\cap}
+#+LATEX_HEADER: \newunicodechar{Λ}{\Lambda}
+#+LATEX_HEADER: \newunicodechar{∫}{\int}
+#+LATEX_HEADER: \newunicodechar{ℕ}{\mathbb{N}}
+#+LATEX_HEADER: \newunicodechar{Ξ}{\Xi}
+#+LATEX_HEADER: \newunicodechar{∇}{\nabla}
+#+LATEX_HEADER: \newunicodechar{Π}{\Pi}
+#+LATEX_HEADER: \newunicodechar{ℝ}{\mathbb{R}}
+#+LATEX_HEADER: \newunicodechar{Σ}{\Sigma}
+#+LATEX_HEADER: \newunicodechar{⇔}{\iff}
+#+LATEX_HEADER: \newunicodechar{Υ}{\Upsilon}
+#+LATEX_HEADER: \newunicodechar{Φ}{\Phi}
+#+LATEX_HEADER: \newunicodechar{ℂ}{\mathbb{C}}
+#+LATEX_HEADER: \newunicodechar{Ψ}{\Psi}
+#+LATEX_HEADER: \newunicodechar{Ω}{\Omega}
+#+LATEX_HEADER: \newunicodechar{ϑ}{\vartheta}
+#+LATEX_HEADER: \newunicodechar{∞}{\infty}
+#+LATEX_HEADER: \newunicodechar{∈}{\in}
+#+LATEX_HEADER: \newunicodechar{⊂}{\subset}
+#+LATEX_HEADER: \newunicodechar{ϰ}{\varkappa}
+#+LATEX_HEADER: \newunicodechar{ϕ}{\phi}
+#+LATEX_HEADER: \newunicodechar{∨}{\vee}
+#+LATEX_HEADER: \newunicodechar{∮}{\oint}
+#+LATEX_HEADER: \newunicodechar{↦}{\mapsto}
+#+LATEX_HEADER: \newunicodechar{ℚ}{\mathbb{Q}}
+#+LATEX_HEADER: \newunicodechar{⊆}{\subseteq}
+#+LATEX_HEADER: \newunicodechar{⊊}{\subsetneq}
+#+LATEX_HEADER: \newunicodechar{∪}{\cup}
+#+LATEX_HEADER: \newunicodechar{·}{\cdot}
 
-#+LATEX_HEADER: \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}
-#+LATEX_HEADER: \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
-#+LATEX_HEADER: \definecolor{halfgray}{gray}{0.55}
-#+LATEX_HEADER: \renewcommand{\sectionmark}[1]{\markright{\textsc%
-#+LATEX_HEADER: {\MakeTextLowercase{\thesection}} \spacedlowsmallcaps{#1}}}
-#+LATEX_HEADER: \lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray}%
-#+LATEX_HEADER: \vline}%
-#+LATEX_HEADER: \color{halfgray}\hspace{0.5em}\headmark\hfil}} 
-#+LATEX_HEADER: \rohead{\mbox{\hfil{\color{halfgray}%
-#+LATEX_HEADER: \headmark\hspace{0.5em}}%
-#+LATEX_HEADER: \rlap{\small{\color{halfgray}\vline}\kern1em\thepage}}}
+#+LATEX_HEADER: \renewcommand{\sectionmark}[1]{\markright{\thesection~#1}}
+# #+LATEX_HEADER: \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}
+# #+LATEX_HEADER: \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
+# #+LATEX_HEADER: \definecolor{halfgray}{gray}{0.55}
+# #+LATEX_HEADER: \renewcommand{\sectionmark}[1]{\markright{\textsc% {\MakeTextLowercase{\thesection}} \spacedlowsmallcaps{#1}}}
+# #+LATEX_HEADER: \lehead{\mbox{\llap{\small\thepage\kern1em%
+# #+LATEX_HEADER: \vline}%
+# #+LATEX_HEADER: \hspace{0.5em}\headmark\hfil}}
+#+LATEX_HEADER: \lohead{\mbox{\hfil{\headmark}}}
+#+LATEX_HEADER: \rohead{\thepage}
 #+LATEX_HEADER: \cehead{}
-#+LATEX_HEADER: \cohead{}
+#+LATEX_HEADER: \cohead{\rule[-2.5pt]{\linewidth}{.8pt}}
 #+LATEX_HEADER: \cefoot{}
 #+LATEX_HEADER: \cofoot{}
 #+LATEX_HEADER: \renewcommand{\headfont}{\normalfont\sffamily}
@@ -92,7 +154,9 @@
 # #+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
 #+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
 #+LATEX_HEADER: \newcommand{\f}[2]{{\frac{#1}{#2}}}
-#+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
+# #+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
+#+LATEX_HEADER: \renewcommand{\v}[1]{\vec{\mkern2mu\phantom{#1}}\mathllap{#1}}
+# #+LATEX_HEADER: \renewcommand{\v}[1]{\vec{#1}}
 #+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
 #+LATEX_HEADER: \newcommand\reallywidetilde[1]{\ThisStyle{%
 #+LATEX_HEADER:   \setbox0=\hbox{$\SavedStyle#1$}%

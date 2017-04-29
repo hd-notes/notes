@@ -10,14 +10,14 @@
   x_2 &= p + \sqrt{p^2 - q},x_2 = p - \sqrt{p^2 - q} \\
   \end{align*}
   ohne Zwischenergebnisse: \\
-  \code{$x_1$ \leftarrow add(div(div(b,a),-2),sqrt(sub(mul(div(b,a),-2),div(div(b,a)-1)),div(c,a)))}
+  \code{\(x_1 \leftarrow\) add(div(div(b,a),-2),sqrt(sub(mul(div(b,a),-2),div(div(b,a),-1)),div(c,a)))}
   mit Zwischenergebnis und Infix Notation
   #+begin_center latex
-  \code{p \leftarrow b / c / -2} oder \code{p\leftarrow -0.5 * b / a} \\
-  \code{a \leftarrow c / a} \\
-  \code{d \leftarrow sqrt(p*p - q)} \\
-  \code{$x_1$ \leftarrow p + d} \\
-  \code{$x_2$ \leftarrow p - d} \\
+  \code{p \(\leftarrow\) b / c / -2} oder \code{p \(\leftarrow\) -0.5 * b / a} \\
+  \code{a \(\leftarrow\) c / a} \\
+  \code{d \(\leftarrow\) sqrt(p*p - q)} \\
+  \code{\(x_1 \leftarrow\) p + d} \\
+  \code{\(x_2 \leftarrow\) p - d} \\
   #+end_center
   #+end_ex
   Vorteile von Zwischenergebnissen:
@@ -29,7 +29,7 @@
 		return x * x
 	 }
 	 #+END_SRC
-	 $\implies$ \code{d \leftarrow sqrt(sq(p) - q)}
+	 $\implies$ \code{d \(\leftarrow\) sqrt(sq(p) - q)}
 	 Speicherzelle mit Namen "x" für das Argument von $sq$
 ** Funktionale Programmierung in c++
    In c++ hat jede Speicherzelle einen Typ (legt Größe und Bedeutung der Speicherzelle fest). Wichtige Typen:

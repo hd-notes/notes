@@ -170,7 +170,7 @@
  #+begin_ex latex
  1. $φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \underbrace{\begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix}}_{=: A} \cvec{x_1; x_2}$.
 	Es ist $χ_φ^{char} = χ_φ^{char} = \det\begin{pmatrix} t & -1 \\ -1 & t \end{pmatrix} = t^2 - 1 = (t -1)(t + 1) ∈ ℝ[t]$
-	⇒ EW von $φ: 1, -1$. \\
+	$⇒$ EW von $φ: 1, -1$. \\
 	Es ist $μ_{alg}(φ, 1) = 1, μ_{alg}(φ, -1) = 1$
 	\[\Eig(φ, 1) = \Eig(A, 1) = \Lös(E_2 - A, 0) = \Lös(\begin{pmatrix} 1 & -1 \\ -1 & 1\end{pmatrix}, 0) = \Lin(\cvec{1; 1})\]
 	also $μ_{geo}(φ, 1) = \dim \Eig(φ, 1) = 1$
