@@ -6,7 +6,7 @@
   heißt der *Dualraum* von $V$, die Elemente aus $V^{\ast}$ heißen *Linearformen* auf $V$.
   #+end_defn
   #+begin_ex latex
-  1. $K = ℝ, V = ℝ^n, φ: ℝ^n \to ℝ, \cvec{x_1; \dots; x_n} ↦ x_1$ ist eine Linearform aut $ℝ^n$.
+  1. $K = ℝ, V = ℝ^n, φ: ℝ^n \to ℝ, \cvec{x_1; \dots; x_n} ↦ x_1$ ist eine Linearform auf $ℝ^n$.
   2. $K = ℝ, V = \mathcal{C}[0, 1] = \{f:[0, 1] \to ℝ \mid f \text{ stetig}\}$
 	 \[φ: \mathcal{C}[0, 1] \to ℝ, f ↦ ∫_0^1 f(t) \d t\]
 	 ist eine Linearform auf $\mathcal{C}[0, 1]$
@@ -26,10 +26,10 @@
      \end{align*}
   #+end_proof
   #+begin_note latex
-  Ist $V$ unendlichdimesional mit Basis $(v_i)_{i ∈ I}$, dann ist $(v_i^{\ast})_{i ∈ I}$ (analog definiert) linear unabhängig, aber kein ES von $V$.
+  Ist $V$ unendlichdimensional mit Basis $(v_i)_{i ∈ I}$, dann ist $(v_i^{\ast})_{i ∈ I}$ (analog definiert) linear unabhängig, aber kein ES von $V$.
   #+end_note
   *Notation*: \\
-  Elemete des $K^n$ schreiben wir im Folgenden als Spaltenvektoren. Ist $φ ∈ (K^n)^{\ast} = \Hom_K(K^n, K)$, dann existiert nach LA1 ein eindeutig bestimmtes $A = \begin{pmatrix}a_1 & \dots & a_n\end{pmatrix} ∈ M(1 × n, K)$
+  Elemente des $K^n$ schreiben wir im Folgenden als Spaltenvektoren. Ist $φ ∈ (K^n)^{\ast} = \Hom_K(K^n, K)$, dann existiert nach LA1 ein eindeutig bestimmtes $A = \begin{pmatrix}a_1 & \dots & a_n\end{pmatrix} ∈ M(1 × n, K)$
   mit
   \[φ = \tilde A: K^n \to K, x = \cvec{x_1; \vdots; v_n} ↦ \begin{pmatrix} a_1 & \dots & a_n\end{pmatrix}\cvec{x_1; \vdots; x_n}\]
   Es ist $A = M_{(e_1)}^{(e_1, \dots, e_n)}(φ)$. Dementsprechende schreiben wir Elemente von $(K^n)^{\ast}$ als Zeilenvektoren.

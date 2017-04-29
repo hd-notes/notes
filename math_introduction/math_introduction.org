@@ -317,7 +317,7 @@
 *** Beispiel
 	geometrische Reihe \[\sum_{n=0}^\infty q^n = \lim_{m\to\infty}(\sum_{n=0}^m q^n) = \lim_{m\to\infty}\frac{1-q^{m+1}}{1-q} = \frac{1}{1-q} \text{für} q < 1, q\neq 0\]
 *** Absolute Konvergenz
-	Eine Reihe \[\sum_{k=1}^\infty a_k\] heißt absolut konvergent, wenn die Reihe \[\sum_{k=1}^\infty\abs{a_k}\] konvergiert. Absolut konvergente Reihen können ohne Änderung der Grenzwertes umgeordnet werden, d.h. jede ihrer Umordungen konvergiert wieder und zwar immer gegen den gleichen Grenzwert.
+	Eine Reihe \[\sum_{k=1}^\infty a_k\] heißt absolut konvergent, wenn die Reihe \[\sum_{k=1}^\infty\abs{a_k}\] konvergiert. Absolut konvergente Reihen können ohne Änderung der Grenzwertes umgeordnet werden, d.h. jede ihrer Umordnungen konvergiert wieder und zwar immer gegen den gleichen Grenzwert.
 * TODO what was done after this? (Funktionen? (only?))
 * Funktionen
 ** Normal-Hyperbel

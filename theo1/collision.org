@@ -81,7 +81,7 @@
    #+ATTR_LATEX: :options
    #+begin_ex latex
    - Mesonen-Zerfall: $\rho \to \pi \pi$
-   - nicht-quaten-mechanisch: Explosionen
+   - nicht-quanten-mechanisch: Explosionen
    - Higgs-Zerfälle am LHC: $\mathrm H \to \gamma \gamma, \mathrm H \to \mathrm b \mathrm b$
    #+end_ex
 
@@ -99,7 +99,7 @@
    \intertext{Es gilt außerdem:}
    \frac{\abs{v_1}}{\abs{v_2}} &= \frac{m_2}{m_1}
    \end{align*}
-   Diese Beschreibung durch Erhaltungsätze bleibt unvollständig! Richtungsinformation fehlt.
+   Diese Beschreibung durch Erhaltungssätze bleibt unvollständig! Richtungsinformation fehlt.
    (In QM-Beispielen wird die Richtungs-information oft im Spin/Drehimpuls von $M$ liegen)
 ** Schwerpunkts vs Laborsystem
    Interessanter Fall: $\theta \equiv \theta_s$ im Schwerpunktsystem sei bekannt. Frage: Winkel

@@ -31,14 +31,14 @@
   #+begin_defn latex
   Eine Funktion $f: D \to ℝ$ heißt in einem Punkt $x ∈ D$ partiell differenzierbar bezüglich der i-ten Koordinatenrichtung, falls der Limes
   \[\lim_{h \to 0}  \frac{f(x + h e_i) - f(x)}{h} =: \frac{\partial f}{\partial x_i}(x) =: \partial_i f(x)\]
-  existiert. Existieren in allen Punkten $x ∈ D$ *alle* partiellen Ableitungen, so heißt $f$ partiell differenziebar. Sind alle partiellen Ableitungen stetig auf $D$, so heißt $f$ stetig
-  partiell differenziebar. Eine Funktion $f: D \to ℝ^m$ heißt (stetig) partiell differenzierbar, wenn $f_i, i = 1, \dots, m$ (stetig) partiell differenziebar.
+  existiert. Existieren in allen Punkten $x ∈ D$ *alle* partiellen Ableitungen, so heißt $f$ partiell differenzierbar. Sind alle partiellen Ableitungen stetig auf $D$, so heißt $f$ stetig
+  partiell differenzierbar. Eine Funktion $f: D \to ℝ^m$ heißt (stetig) partiell differenzierbar, wenn $f_i, i = 1, \dots, m$ (stetig) partiell differenzierbar.
   #+end_defn
   #+begin_remark latex
-  Die Ableitungsregeln aus dem Eindimesionalen übertragen sich auf partielle Ableitungen.
+  Die Ableitungsregeln aus dem Eindimensionalen übertragen sich auf partielle Ableitungen.
   #+end_remark
   #+begin_ex* latex
-  1. Polynome sind stetig partiell differenziebar. Sei $p: D ⊂ ℝ^2 \to ℝ, (x_1, x_2) ↦ a_{01} x_2 + a_{11}x_1 x_2 + a_{02} x_2^2 + a_{21} x_1^2 x_2$. Dann ist
+  1. Polynome sind stetig partiell differenzierbar. Sei $p: D ⊂ ℝ^2 \to ℝ, (x_1, x_2) ↦ a_{01} x_2 + a_{11}x_1 x_2 + a_{02} x_2^2 + a_{21} x_1^2 x_2$. Dann ist
 	 \[\frac{\partial p}{\partial x_1}(x_1, x_2) = a_{11} x_2 + 2 a_{21} x_1 x_2 \quad \frac{\partial p}{\partial x_2} = a_{01} + a_{11} x_1 + 2 a_{02} x_2 + a_{21} x_1^2\]
   2. $\norm{·}_2: ℝ^k \setminus \{0\} \to ℝ$ ist stetig partiell differenzierbar, da
 	 \[\frac{\partial \norm{·}}{x_i} = \frac{1}{2} \frac{2 x_i}{(x_1^2 + \dots + x_k^2)^{\frac{1}{2}}} = \frac{x_i}{\norm{x}_2}\]
@@ -67,7 +67,7 @@
   \[\frac{\partial}{\partial x_1} \dots \frac{\partial}{\partial x_k} f(x) = \frac{\partial^k f}{\partial x_{i_1} \dots \partial x_{i_k}}\]
   #+begin_ex* latex
   \[\frac{x_1}{x_2} := \frac{x_1^3 x_2 - x_1 x_2^3}{x_1^2 + x_2^2}\]
-  für $(x_1, x_2) \neq (0, 0), f(0, 0) = 0$. $f$ zweimal partiell diffbar, aber
+  für $(x_1, x_2) \neq (0, 0), f(0, 0) = 0$. $f$ zweimal partiell diff'bar, aber
   \[\frac{\partial^2}{\partial x_1 \partial x_2} f(0, 0) \neq \frac{\partial^2}{\partial x_2 \partial x_1} f(0, 0)\]
   #+end_ex*
   #+begin_thm latex
@@ -77,7 +77,7 @@
   #+begin_proof latex
   $n = 2$. Sei $A:= f(x_1 - h_1, x_2 + h_2) - f(x_1 + h_1, x_2) - f(x_1, x_2 + h_2) + f(x_1, x_2)$.
   \[φ(x_1) := f(x_1, x_2 + h_2) - f(x_1, x_2) ⇒ A = φ(x_1 + h_1) - φ{x_1}\]
-  Mit dem Muttelwertsatz erhalten wir $A = h_1 φ'(x_1 + θ_1 h_1), θ_1 ∈ (0, 1)$.
+  Mit dem Mittelwertsatz erhalten wir $A = h_1 φ'(x_1 + θ_1 h_1), θ_1 ∈ (0, 1)$.
   \[φ'(x_1) = \frac{\partial}{\partial x_1} f(x_1, x_2 + h_2) - \frac{\partial}{\partial x_1} f(x_1, x_2) = h_2 \frac{\partial^2}{\partial x_2 x_1} f(x_1, x_2 + θ_1' h_2), θ_1' ∈ (0, 2)\]
   Analog verfahre man mit $x_2$ und erhalte für $ψ(x_2) := f(x_1 + h_1, x_2) - f(x_1, x_2)$
   \[A = ψ(x_2 - h_2) - ψ(x_2) = h_2 ψ'(x_2 + θ_2 h_2) = h_1 h_2 \frac{\partial^2}{\partial x_1 \partial x_2} f(x_1 + θ_2 h_1, x_2 θ'_2 h_2)\]
@@ -104,7 +104,7 @@
   heißt *Hesse-Matrix*.
   #+end_defn
   #+begin_defn latex
-  Sei $f: D \to ℝ^m$, dann nennen wri $f$ in einem Punkt $x ∈ D$ (total differenziebar), wenn die Funktion $f$ in $x$
+  Sei $f: D \to ℝ^m$, dann nennen wir $f$ in einem Punkt $x ∈ D$ (total differenzierbar), wenn die Funktion $f$ in $x$
   sich linear approximieren lässt, das heißt es gibt eine lineare Abbildung $Df(x): ℝ^n \to ℝ^m$ (Differential) sodass in einer kleinen Umgebung von $x$ gilt:
   \[f(x + h) = f(x) + Df(x)h + w(h), h ∈ ℝ^n, x + h ∈ D\]
   mit einer Funktion $w: D \to ℝ^m$, die die Eigenschaft hat
@@ -113,8 +113,8 @@
   #+end_defn
   #+begin_thm latex
   Für Funktionen $f: D \to ℝ^m$ gilt:
-  1. Ist $f$ in $x ∈ D$ differenziebar, so ist $f$ auch in $x$ partiell differenzierbar und das Differential von $f$ ist gegeben durch die Jacobi-Matrix.
-  2. Ist $f$ partiell differenziebar in einer Umgebung von $x$ und sind zusätzlich die partiellen Ableitungen stetig in	$x$, so ist $f$ in $x$ differenzierbar.
+  1. Ist $f$ in $x ∈ D$ differenzierbar, so ist $f$ auch in $x$ partiell differenzierbar und das Differential von $f$ ist gegeben durch die Jacobi-Matrix.
+  2. Ist $f$ partiell differenzierbar in einer Umgebung von $x$ und sind zusätzlich die partiellen Ableitungen stetig in	$x$, so ist $f$ in $x$ differenzierbar.
   #+end_thm
   #+begin_proof latex
   1. Für differenzierbares $f$ gilt für $i = 1,2$:
@@ -139,7 +139,7 @@
   so ist die Komposition $h = f \circ g$ im Punkt $x$ differenzierbar. Es gilt $D_x h(x) = D_y f(g(x)) · D_x g(x)$. Hierbei ist $·$ die Matrixmultiplikation.
   #+end_thm
   #+begin_proof latex
-  Nach Vorraussetzung $x ∈ D_g$ sodass $g(x) = y ∈ D_f$. Da sowohl $f$ als auch $g$ differenzierbar
+  Nach Voraussetzung $x ∈ D_g$ sodass $g(x) = y ∈ D_f$. Da sowohl $f$ als auch $g$ differenzierbar
   \begin{align*}
   g(x + h_1) &= g(x) + D_x g(x)h_1 + ω_g(h_1) \\
   f(y + h_2) &= f(y) + D_y f(y)h_2 + ω_f(h_2) \\
@@ -150,7 +150,7 @@
   &= f(y) + D_y f(y) D_x g(x) h_1 + D_y f(y) ω_g(h_1) + ω_f(D_x g(x)h_1 + ω_g(h_1)) \\
   &= (f\circ g)(x) + D_y f(y) D_x g(x) h_1 + ω_{f \circ g}(h_1) \\
   ω_{f\circ g}(h_1) &:= D_y f(y)ω_g(h_1) + ω_f(D_x g(x)h_1 + ω_g(h_1)) \\
-  \intertext{Es bleibt zu zeigen $ω_{f \circ g} = \mathcal{o}(h_1)$. Nach Vorraussetzung gilt $ω_{f \circ g} \xrightarrow{h_1 \to 0} 0$}
+  \intertext{Es bleibt zu zeigen $ω_{f \circ g} = \mathcal{o}(h_1)$. Nach Voraussetzung gilt $ω_{f \circ g} \xrightarrow{h_1 \to 0} 0$}
   \end{align*}
   #+end_proof
   #+begin_lemma latex

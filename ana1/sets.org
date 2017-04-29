@@ -131,7 +131,7 @@
 	 - Seien $X,Y$ Mengen, $M\subseteq X\times Y, f:M\rightarrow X$ \\ $f$ heißt Projektion, $f$ surjektiv \[f(M) = \{x\mid \exists y \in Y : (x,y) \in M\} = X\]
 *** Homomorphe Abbildungen
 	Existieren auf Mengen $X$ und $Y$ mit gewissen Operationen $\oplus_x$ bzw. $\oplus_y$ (zum Beispiel Addition, Ordnungsrelation), so heißt die Abbildung $f:X\to Y$ homomorph (strukturerhaltend), wenn gilt $\Forall x_1,x_2 \in X f(x_1\oplus_x x_2) = f(x_1)\oplus_y f(x_2)$
-	Eine bijektive Homomorphie heißt Isomorphisumus, beziehungsweise $X\approx Y$ (äquivalent, isomorph)
+	Eine bijektive Homomorphie heißt Isomorphismus, beziehungsweise $X\approx Y$ (äquivalent, isomorph)
 ** Natürliche Zahlen
    $\mathbb{N} = \{1,2,3,\ldots\},~\mathbb{N}_0 := \mathbb{N}\cup \{0\}$
 *** Peanosche Axiomensystem der natürlichen Zahlen

@@ -10,7 +10,7 @@
    externe Typen: aus anderer Bibliothek, die man zuvor herunterladen und installieren muss \\
    eigene Typen: vom Programmierer selbst implementiert $\implies$ später \\
    Durch "objekt-orientierte Programmierung" ($\implies$ später) erreicht man, dass zusammengesetzte
-   ypen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
+   Typen genauso einfach und bequem und effizient sind wie Basistypen (nur c++, nicht c)
    - "Kapselung": die interne Struktur und Implementation ist für Benutzer unsichtbar
    - Benutzer manipuliert Speicher über Funktionen ("member functions") $\estimates$ Schnittstelle des Typs, "Interface", API
 
@@ -42,7 +42,7 @@
 	s = "xy";
 	s2 = leer;
 	#+END_SRC
-	Addition: Aneinanderkettung von String ("concatenate")
+	Addition: Aneinanderreihung von String ("concatenate")
 	 #+BEGIN_SRC cpp
 	std::string s3 = s + "ijh"; // "xyijh"
 	s3 = "ghi" + s; // "ghixy"

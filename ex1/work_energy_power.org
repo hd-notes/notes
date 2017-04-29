@@ -118,7 +118,7 @@
 	 \end{align}
 	 \[\implies E_{pot}(A) = -G\frac{mM}{r_A} + \xi\]
 	 \[\implies E_{pot}(B) = -G\frac{mM}{r_B} + \xi = E_{pot}(C)\]
-	 Potentielle Energie des Gravitationsfelder:
+	 Potentielle Energie des Gravitationsfeld:
 	 \[E_{pot}^{grav} = -G\frac{mM}{r}\]
 **** d = 1
 	 Zusammenhang zwischen konservativen Kraftfeld und potentieller Energie:

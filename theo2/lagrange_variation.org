@@ -1,22 +1,22 @@
 * Lagrange - Formalismus
 ** Grundidee (1788, Joseph-Louis Lagrange)
    Vorteile gegenüber Newton:
-   - Flexibelität
+   - Flexibilität
    - Zwangskräfte
    - Zusammenhang zwischen Symmetrie und Erhaltungsgrößen
    Zentrales Objekt: Wirkungsfunktional $S$. \\
    Abbildung $S:$ Trajektorie $↦$ reelle Zahl \\
-   ($S$ definiiert mittls Lagrange-Funktion $L$) \\
-   Zentrale physikalische Aussage des Formalimus: "Wirkungsprinzip" ("Hamilton-Prinzip") \\
+   ($S$ definiert mittels Lagrange-Funktion $L$) \\
+   Zentrale physikalische Aussage des Formalismus: "Wirkungsprinzip" ("Hamilton-Prinzip") \\
    Letztes besagt: Eine physikalische Bewegung verläuft so, dass das Wirkungsfunktional minimal wird. \\
    $\to$ DGL ("Euler-Lagrange-Gleichung"), im einfachen Fall $\equiv$ Newton Gleichung
 ** Variationsrechnung: Der Funktionalbegriff
    Funktion (mehrerer Variablen) $y$;
    \[y: ℝ^n \to ℝ, y: \v x ↦ y(\v x)\]
-   Funktional: analg, mit $ℝ^n$ ersetzt durch eine Menge von Funktionen (Vektorraum $\mathbb{V}$)
+   Funktional: analog, mit $ℝ^n$ ersetzt durch eine Menge von Funktionen (Vektorraum $\mathbb{V}$)
    \[F: \mathbb{V} \to ℝ, F: y ↦ F[y]\]
    #+begin_ex latex
-   $\mathbb{V}$ seinen differenziebare Funktionen auf $[0, 1]$ mit $y(0) = y(1) = 0$ \\
+   $\mathbb{V}$ seinen differenzierbare Funktionen auf $[0, 1]$ mit $y(0) = y(1) = 0$ \\
    Diskretisierung: \[x_1, \dots, x_n \to \underarrow[\{y(x_1), \dots, y(x_n)\}]{Vektor $\equiv$ Funktion}\] \\
    $⇒$ im diskreten Fall ist unser Funktional schlicht eine Funktion mit Vektor-Argument. (Eigentlicher Funktionalbegriff folgt im Limes $n \to ∞$). \\
    Beispielfunktionale zu obigem $\mathbb{V}$.
@@ -38,7 +38,7 @@
    Weglänge:
    \[F[\v y] = ∫_{\v y_a}^{\v y_b} \abs{\d \v y} = ∫_0^1 \d τ \sqrt{(\frac{\d \v y(τ)}{\d τ})^2}\]
    (Eigentlich haben wir sogar ein Funktional einer vektorwertigen Funktion beziehungsweise ein Funktional mit $3$ Argumenten: $F[y] = F[y^1, y^2, y^3]$) \\
-   Etwas interessater: Weglänge im Gebirge: \\
+   Etwas interessanter: Weglänge im Gebirge: \\
    Sei $\v x(τ) = \{x^1(τ), x^2(τ)\}$ die Projektion des Weges auf Horizontale. Zu jedem solchen Weg gehört die "echte" Weglänge im Gebirge.
    Beachte: Höhenfunktion $z: \v x ↦ z(\v x)$ \\
    $⇒$ 3-d Weg:
@@ -47,10 +47,10 @@
    &\equiv \{x^1(τ), x^2(τ), z(\v x(τ))\} \\
    F_{Geb.}[x] &= F[\v y[\v x]] = ∫\d t \sqrt{(\frac{\d x^1(τ)}{\d τ})^2 + (\frac{\d x^2(τ)}{\d τ})^2 + (\frac{\d z(x^1(τ), x^2(τ))}{\d τ})}
    \end{align*}
-** Variationsrechnung: Extremalisieung von Funktionalen
+** Variationsrechnung: Extremalisierung von Funktionalen
    Funktionen: $y: x ↦ y(x)$; wir wissen $y$ hat Extremum bei $x_0 ⇒ y'(x_0) = 0$ \\
    Funktionale der Form: $F[y] = ∫_0^1 \d x f(y, y', x); y:[0, 1] \to ℝ; y(0) = y_a; y(1) = y_b$ \\
-   Annahme: $y_0$ extremalisiert $F$. Sei weiterhin $δ y$ eine beliebige 2-fach differenziebare Funktion mit $δ y(0) = δ y(1) = 0$ \\
+   Annahme: $y_0$ extremalisiert $F$. Sei weiterhin $δ y$ eine beliebige 2-fach differenzierbare Funktion mit $δ y(0) = δ y(1) = 0$ \\
    \[⇒ \underbrace{y_α \equiv y_0 + α · δ y}_{\mathclap{\text{Ist eine Funktion aus unserem Wertevorrat von } F}}\quad (α ∈ (-ε, ε))\]
    $⇒$ Betrachte Abbildung $(-ε, ε) \to ℝ, α ↦ F[y_α]$. Per unserer Annahme hat diese Abbildung Extremum bei $α = 0$.
    Also gilt \[\dd{}{α} F[y_α] = 0\big|_{α = 0}\]
@@ -75,8 +75,8 @@
    \end{align*}
    #+end_ex
    Beachte: $y$ und	$y'$ sind hier unabhängig, das heißt es spielt für die Herleitung der Eulerschen Differentialgleichung keine Rolle, dass $y'$ die Ableitung von $y$ ist.
-** Das Hamiltonsche Prinzip (Prinpip der kleinsten Wirkung)
-   Die Lage einer sehr großen Klasse von Systemen beschreben durch verallgemeinerte Koordinaten $(q_1, \dots, q_s), s:$ Zahl der Freiheitsgrade.
+** Das Hamiltonsche Prinzip (Prinzip der kleinsten Wirkung)
+   Die Lage einer sehr großen Klasse von Systemen beschreiben durch verallgemeinerte Koordinaten $(q_1, \dots, q_s), s:$ Zahl der Freiheitsgrade.
    #+begin_ex latex
    - $N$ Massenpunkte: $s = 3N, (q_1, \dots, q_ {3N}) = (x_1^1, x_1^2, x_1^3, \dots, x_N^1, x_N^2, x_N^3)$
    - $1$ Massenpunkt in Kugelkoordinaten: $s = 3, (q_1, q_2, q_3) = (r, θ, φ)$
@@ -87,12 +87,12 @@
    *Hamiltonsches Prinzip*: \\
    Für jedes (in einer sehr großen Klasse) mechanische System $s$ Freiheitsgraden existiert die Lagrange-Funktion
    $L(q_1, \dots, q_s, \dot q_1, \dots, \dot q_s, t)$ (kurz $L(q, \dot q, t)$), für die gilt: \\
-   Die physikalische Beweging aus einer Lage $q(t_1) = q^{(1)}$ in eine Lage $q(t_2) = q^{(2)}$ verläuft so,
+   Die physikalische Bewegung aus einer Lage $q(t_1) = q^{(1)}$ in eine Lage $q(t_2) = q^{(2)}$ verläuft so,
    dass das Wirkungsfunktional
    \[S[q] = ∫_{t_1}^{t_2} \d t L(q, \dot q, t)\]
    extremal wird.
    #+begin_note latex
-   - für kliene Bahnabschnitte: Minimalität
+   - für kleine Bahnabschnitte: Minimalität
    - DGL. aus Stationalität
    - Wirkung: Dimensionsgründe $[S] = \text{ Zeit } · \text{ Wirkung}$
    - Bedeutung des Wirkungsprinzip kann man kaum überschätzen. [spezielle + allgemeine Relativitätstheorie, Feldtheorie (Elektro-Dynamik), Quantenfeldtheorie (Teilchenphysik, kondensierte Materie), Quantengravitation]

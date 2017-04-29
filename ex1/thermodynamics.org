@@ -36,9 +36,9 @@
    Der nullte Hauptsatz erlaubt die Definition einer Temperaturskala über
    Temperaturfixpunkte, zum Beispiel Gefrier- und Siedepunkt von Wasser.
    Konstruktion von Thermometern über die Ausnutzung von temperaturabhängiger
-   Materialeigenschaften: zum Beispiel Volumenausdehung mit steigender Temperatur,
+   Materialeigenschaften: zum Beispiel Volumenausdehnung mit steigender Temperatur,
    Temperaturabhängige Längenänderung, Änderung des elektrischen Widerstands
-*** Volumenausdehung von Gasen
+*** Volumenausdehnung von Gasen
 	Experimentelle Beobachtung: Gasvolumina vergrößern sich bei Ernährung.
 	Zur Temperaturdefinition. Annahme: $\Delta V \sim \Delta T$.
 	Das heißt lineare Abhängigkeit wird in die Definition reingesteckt!
@@ -78,7 +78,7 @@
 	L &= L_0 e^{\alpha \Delta T} \approx L_0(1 + \alpha \Delta T) \\
 	\end{align*}
 	mit $L_0$: Länge bei $T = T_0$
-	Volumenausdehung:
+	Volumenausdehnung:
 	\begin{align*}
 	\Delta V &= \gamma V_0 \Delta T \\
 	V &= V_0(1 + \gamma \Delta T)
@@ -270,7 +270,7 @@
 
    Kalorie: $1$ Kalorie ist die Wärme, mit der man $\SI{1}{\gram}$ Wasser um $\SI{1}{\degreeCelsius}$ erwärmen kann.
 
-   Begiffe:
+   Begriffe:
    - $c =$ spezifische Wärmekapazität, spezifische Wärme
    - $C = cm =$ Wärmekapazität einer Masse $m$
    - $c_m = c_{mol} = c m_{mol} =$  molare Wärmekapazität, spezielle Molwärme

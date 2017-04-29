@@ -193,7 +193,7 @@
    Zahl derartiger Randelemente $\sim \frac{1}{\Delta} \implies$ Fehler $\mathcal{O}(\Delta)$ \\
    $\implies$ Auch nach Summation bleibt Fehler von $\mathcal{O}(\Delta)$
 
-   Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen")
+   Besser wäre Zerlegung in Simplices ("Haben sie mal versucht eine Schildkröte zu fliesen?")
    #+end_proof
 
    Für unsere Anwendung: wichtig, dass jede geschlossene Kurve in einem einfach zusammenhängenden Gebiet, *Rand* ist.

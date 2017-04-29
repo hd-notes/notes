@@ -161,7 +161,7 @@ mark=at position 0.5 with
    #+end_thm
    Vergleich:
    | Diffusion         | Konzentrationsgradient |
-   | Wärmeleitung      | Temperatutrgradient    |
+   | Wärmeleitung      | Temperaturgradient    |
    | laminare Strömung | Druckgradient          |
 
    Laminare Strömung:
@@ -174,12 +174,12 @@ mark=at position 0.5 with
    Auch ohne direkten Kontakt findet Warenaustausch von Körpern über thermische Strahlung statt,
    elektromagnetische Strahlung siehe später. \\
    Interessant: \\
-   Emissions- und Absoptionsvermögen von Körpern. \\
+   Emissions- und Absorptionsvermögen von Körpern. \\
    Charakterisierungsgrößen:
-   | Emission                                                                                 | Absoption                                                                                                                                                                                  |
+   | Emission                                                                                 | Absorption                                                                                                                                                                                  |
    |------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
    | $\phi = \dd{Q}{t}$ Strahlungsleistung, $[\phi] = \si{\joule\per\second} = \si{\watt}$    | $I = \frac{\phi}{F}$ Bestrahlungsstärke, Intensität                                                                                                                                        |
-   | $E = \frac{\Phi}{F}$ Emissionsvermögen, Intensität, $[E] = \si{\watt\per\meter\squared}$ | $A = \frac{\text{absorbierte Strahlungsleistung}}{\text{auffallende Strahlungsleistung}}$ Absoptionsvermögen, $[A] = \si{L}$                                                                |
+   | $E = \frac{\Phi}{F}$ Emissionsvermögen, Intensität, $[E] = \si{\watt\per\meter\squared}$ | $A = \frac{\text{absorbierte Strahlungsleistung}}{\text{auffallende Strahlungsleistung}}$ Absorptionsvermögen, $[A] = \si{L}$                                                                |
    | $F_\lambda = \dd{E}{\lambda}$ spektrales Emissionsvermögen                               | $A_\lambda = \frac{\text{absorbierte Strahlungsleistung im Bereich} [\lambda,\lambda + \d \lambda]}{\text{einfallende Strahlungsleistung im Bereich} [\lambda, \lambda + \d \lambda]}$ |
    Es gilt:
    \[E = \int_{0}^{\infty}E_\lambda \d \lambda, A, A_\lambda \leq 1 \wedge R = 1 - A:~\text{Reflexionsvermögen}\]
@@ -188,7 +188,7 @@ mark=at position 0.5 with
    Solarkonstante: (merken!)
    \[I_{solar} = \SI{1.37}{\kilo\watt\per\meter\squared} \approx \SI{1}{\kilo\watt\per\meter\squared}\]
    #+end_ex
-   Emissions und Absoptionsvermögen hängen sicherlich von der Art und Beschaffenheit des abstrahlenden/absorbierenden Körpers ab. \\
+   Emissions und Absorptionsvermögen hängen sicherlich von der Art und Beschaffenheit des abstrahlenden/absorbierenden Körpers ab. \\
    Experiment: Leslie Würfel. \\
    Messung:
    - $A: T_s > T_b$
@@ -204,7 +204,7 @@ mark=at position 0.5 with
    \[\Delta T \sim \Delta U \sim \Delta Q \sim EA\]
    Damit ergibt sich aus $B$:
    \[E_s A_b = E_b A_s \implies \frac{E_b}{A_b} = \frac{E_s}{A_s}\]
-   Das Verhältnis von Emissions- und Absoptionsvermögen eines Körpers ist unabhängig von der
+   Das Verhältnis von Emissions- und Absorptionsvermögen eines Körpers ist unabhängig von der
    Beschaffenheit seiner Oberfläche. Übliche Referenz: Nicht-reflektierender Körper, auch "schwarzer-Körper" oder "schwarzer" Strahler.
    das heißt
    \[A_\lambda^s = 1\]
@@ -217,7 +217,7 @@ mark=at position 0.5 with
    #+begin_thm latex
    Für alle Körper im thermischen Gleichgewicht gilt:
    \[\frac{E_\lambda (T)}{A_\lambda (T)} = E_\lambda^s (T), A_\lambda^S(T) = 1\]
-   das heißt das Verhältnis von spektralem Emissions- und Absoptionsvermögen ist unabhängig von der
+   das heißt das Verhältnis von spektralem Emissions- und Absorptionsvermögen ist unabhängig von der
    Oberflächenbeschaffenheit eines Strahlers und gleich dem Emissionsvermögen eines schwarzen Strahlers. (bei gegebener Temperatur)
    Es folgt: Ein schwarzer Strahler hat maximales Emissionsvermögen.
    #+end_thm

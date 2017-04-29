@@ -17,7 +17,7 @@
 	 Atome können Gitterplätze nicht verlassen. Fernordung!
    - Modell einer Flüssigkeit: Kugelmodell: \\
 	 Auch hier mittlerer Abstand $= r_0$, das heißt Dichte ähnlich die des Festkörpers.
-	 Aber: Temperatur zu hoch für feste Zuordnung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordung!
+	 Aber: Temperatur zu hoch für feste Zuordnung auf Kristallgitterplätzen $\implies$ flüssiger Zustand. Nahordnung!
    - Modell eines Gases: frei bewegliche Teilchen. \\
 	 Mittlere kinetische Energie ist grob gegen Bindungsenergie, hohe Temperatur!
 ** Feste Körper.
@@ -152,7 +152,7 @@
    \intertext{Aluminium:}
    \kappa &= \SI{1.4e-10}{\meter\squared\per\newton}
    \end{align*}
-   Im Folgende: $\kappa = 0, V =~\text{const}$, das heißt Wasser "inkompresible"
+   Im Folgende: $\kappa = 0, V =~\text{const}$, das heißt Wasser "inkompressibel"
    #+ATTR_LATEX: :options [Pascalsches Prinzip]
    #+begin_thm latex
    Wird auf eine in einem Gefäß eingeschlossene Flüssigkeit ein Druck ausgeübt, dann verteilt sich dieser
@@ -199,7 +199,7 @@
    Der Druck in einer ruhenden, inkompressiblen Flüssigkeit nimmt unter Einfluss der
    Schwerkraft linear mit der Tiefe $h$ zu:
    \[p = p_0 + \rho g h\]
-   Der Hydrostatische Druck ist unabhängig von Form und Volumen
+   Der hydrostatische Druck ist unabhängig von Form und Volumen
    des einschließenden Behältnisses
    #+end_defn
    Anwendung: Quecksilberbarometer

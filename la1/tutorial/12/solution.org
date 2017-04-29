@@ -29,7 +29,7 @@ A &= \begin{pmatrix}
 b &= \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4\end{pmatrix} \in \mathbb{F}_7^6
 \end{align}
 Löse: $Ax = b \quad (x \in \mathbb{F}_7^6)$. \\
-$\Lös(A, b)$ ist *affinier Unterraum* von $\mathbb{F}_7^6$
+$\Lös(A, b)$ ist *affiner Unterraum* von $\mathbb{F}_7^6$
 \begin{equation}
 A\mid b \xrightarrow{\text{Gauß}}
 \begin{pmatrix}[cccccc|c]

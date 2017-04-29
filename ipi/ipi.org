@@ -393,7 +393,7 @@
 **** Multiplikation
 	 Neue Operationen: $\ll$  und $\gg$ (left und right shift). Verschiebt die Bits um $k$ Positionen nach
 	 links oder rechts. Die herausgeschobenen Bits werden vergessen und auf der anderen Seite durch
-	 $0$ -bits ersetzt.
+	 $0$ -Bits ersetzt.
 
 	 #+begin_src cpp
 	 // m = 8
@@ -561,7 +561,7 @@
    | €      | 221 |  128 | 226 130 172 |
    $\implies$ ICU Library. \\
    hat man alle Zeichen korrekt, ist Problem noch nicht gelöst: alphabetische Sortierung:
-   - kontext abhängig
+   - Kontext abhängig
    - sprach abhängig
    - $ä$:
 	 - deutschen Wörterbuch: wie a
@@ -1899,7 +1899,7 @@
    nach Regel 3. nur der *wichtigste* Teil
 *** Sieb des Eratones
 	Sieb des Eratones: finde alle Primzahlen $\leq n$. Prinzip: streiche in Liste alle zahlen, die
-	Vielfache einer Zahl sind $\implies$ übrigbleibenden sind Primzahlen
+	Vielfache einer Zahl sind $\implies$ übrig bleibenden sind Primzahlen
 	#+begin_src cpp
 	std::vector<bool> find_primes(int n) {
 	    std::vector<bool> res(n + 1, true); // alle Zahlen prim : \mathcal{O}(n): n SpZ auf "true" initialisieren

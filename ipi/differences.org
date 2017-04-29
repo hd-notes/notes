@@ -35,7 +35,7 @@
 	Ausgangsdaten: "Aktionen":
 	- Symbole auf Festplatte schreiben, per Netzwerk senden
 	- Benutzeranzeige (Display, Drucker, Ton)
-	- Stopuhr starten
+	- Stoppuhr starten
 	- Roboteraktion ausführen (zum Beispiel Bremsassistent)
 	Interne Daten:
 	- Symbole im Hauptspeicher oder auf Festplatte
@@ -56,7 +56,7 @@
 	| blinken an            | ($\implies$ {aus},{Alle LEDs aus, Timer stoppen}) | ($\implies$ {blinken aus},{alle LEDs aus, Timer starten}) | ($\implies$ {blinken aus},{8 LEDs aus}) |
 	| blinken aus           | ($\implies$ {aus},{Alle LEDs aus, Timer stoppen}) | ($\implies$ {blinken an},{alle LEDs an, Timer starten})   | ($\implies$ {blinken an},{8 LEDs an})   |
 
-	Variante: Timer läuft immer (Signal alle 0.3s) $\implies$ Timout ignorieren im Zustand "aus", "halb", "voll"
+	Variante: Timer läuft immer (Signal alle 0.3s) $\implies$ Timeout ignorieren im Zustand "aus", "halb", "voll"
 	#+ATTR_LATEX: :options [Binäre Addition]
 	#+begin_ex latex
 	\begin{align}

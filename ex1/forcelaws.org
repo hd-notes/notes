@@ -99,7 +99,7 @@
 **** Beobachtung
 	 - $F_R$ hängt nicht von der Oberfläche ab.
 	 - $F_R$ hängt von dem Gewicht des Blocks ab
-	 - $F_R$ ist Materialabhängig
+	 - $F_R$ ist materialabhängig
 
 ** Tribologische Reibungslehre
    \[F_G = \mu_G F_N \text{ ($\mu_G=$ Gleitreibungskraft)}\]

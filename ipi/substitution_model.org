@@ -77,7 +77,7 @@
 	  - Drucke ")"
 	$\implies$ \code{sub(add(add(1,2),div(mul(3,4),add(1,5))), 2)}
    $\implies$ *inorder*
-** Berechnen des Werts mit Substitutionsmodell
+** Berechnen des Wertes mit Substitutionsmodell
    1. <<algstart3>> Wenn Wurzel dein Blatt gib Zahl zurück
    2. sonst:
 	  - Wiederhole den Algorithmus ab [[algstart3]] für das linkes Kind (Teilbaum mit Wurzel = rechtes Kind), speichere Ergebnis als "lhs"

@@ -3,7 +3,7 @@
    - Neue Kraft
    - anziehend oder abstoßend
    - Konzept der elektrischen Ladung
-   Experimetelle Erkenntnisse:
+   Experimentelle Erkenntnisse:
    - Erzeugung von Ladungen durch Reibung
    - Ladungen gleicher Vorzeichen: Abstoßung
    - Ladungen ungleicher Vorzeichen: Anziehung
@@ -45,12 +45,12 @@
    \[\v F(\v r) = q \v E(\v r)\]
    #+end_defn
    Bedeutung das elektrischen Feldes: \\
-   Coulomb-Gesetz bescheibt Fernwirkung. \\
+   Coulomb-Gesetz beschreibt Fernwirkung. \\
    Aber: Wodurch wird diese Wirkung übertragen? \\
    Geschieht die Übertragung instantan? (nein!) \\
    Feldwirkungstheorie: Elektrische Kraftübertragung über Ausbreitung des elektrischen Feldes, das mit der Probeladung $q$.
    Elektrostatik:
-   Fernwirkung- und Feldwerungstheorie äquivalent. \\
+   Fernwirkung- und Feldwirkungstheorie äquivalent. \\
    Elektrodynamik: Feldbegriff essentiell. \\
    Feld einer allgemeinen Ladungsverteilung: \\
    Wichtig: Es gilt das Superpositionsprinzips. Es gilt
@@ -58,11 +58,11 @@
    \[\v E(\v R) = \frac{1}{4π ε_0} ∫ \frac{\v R - \v r}{\abs{\v R - \v r}^3} ρ(\v r) \d V\]
    Für diskrete Ladungen:
    \[\v E = \frac{1}{4 π ε_0} \sum_{i} \frac{q_i}{r_i^2} \hat r\]
-   Die Anweseheit von Ladungen verändern den Raum. Es entstehte in Vektorfeld, dessen Stärke und Richtung in jedem Raumpunkt die normierte Kraft $\frac{\v F}{q}$ auf eine Probeladung angibt. \\
+   Die Anwesenheit von Ladungen verändern den Raum. Es entsteht in Vektorfeld, dessen Stärke und Richtung in jedem Raumpunkt die normierte Kraft $\frac{\v F}{q}$ auf eine Probeladung angibt. \\
    Eigenschaften der Feldlinien
    1. Das $\v E$ -Feld zeigt tangential zu den Feldlinien
    2. Feldlinien zeigen weg von positiven Ladungen
-   3. Feldliniendischte entspricht Stärke des Feldes.
+   3. Feldliniendichte entspricht Stärke des Feldes.
 ** Elektrischer Fluss
    #+ATTR_LATEX: :options [Elektrischer Fluss $ϕ_E$]
    #+begin_defn latex
@@ -134,9 +134,9 @@
 ** Elektrische Felder innerhalb von Leitern
    Innerhalb eines Leiters verschwindet das elektrostatische Feld. \\
    Bei einem geladenem, isolierten Leiter sitzen alle Ladungen auf der Oberfläche. \\
-   Dazu betrachte Oberfläche, die gerade kleiner als der Leiter ist, dort ist das Elektrische Feld gleich null, also folgt:
+   Dazu betrachte Oberfläche, die gerade kleiner als der Leiter ist, dort ist das Elektrische Feld gleich Null, also folgt:
    \[∮ \v E \d \v A = 0 = \frac{Q_{\text{innen}}}{ε_0} ⇒ Q_{\text{innen}} = 0\]
-   Leiter mit Hohlrum:
+   Leiter mit Hohlraum:
    \[∮_O \v E \d \v A = 0 ⇒ Q = 0\]
 ** Differentielle Form des Gaußschen Gesetzes
    \[∮_A \v E \d \v A = ∫_V \Div \v E \d V\]
@@ -150,7 +150,7 @@
    &= \frac{Δ E_x}{Δ x} Δ x Δ A = \underbrace{\partial_x E_x}_{\text{"`div"'}} Δ V
    \end{align*}
    \[∫_V \Div \v E \d V = ∮ \v E \d \v A = \frac{Q}{ε_0} = \frac{1}{ε_0} ∫_V ρ \d V\]
-   Differentielle Form des Gaus Gesetz, 1. Maxwell Gleichung:
+   Differentielle Form des Gauß Gesetz, 1. Maxwell Gleichung:
    \[\Div \v E = \frac{ρ}{ε_0}\]
    $ρ$: Ladungsdichte.
 ** Elektrisches Potential

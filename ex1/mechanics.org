@@ -104,7 +104,7 @@
 	  \[\vec{v} = \v{w}\times  \v r \quad v = \omega r\]
 	  \[\v a = \v w \times \v v\]
 ****** TODO Skizze omega
-**** Allgemeine Krummlinige Bewegung
+**** Allgemeine krummlinige Bewegung
 	 \[\v v = v \v{e_t}\]
 	 \[\v a = \dot{\v v} = \frac{\d (v\v{e_t})}{\d t} = \frac{\d v}{\d t}\v{e_t} + v\frac{\d v{e_t}}{\d t}\]
 	 \[\v{e_t} = \cos{\rho}\v{e_x} + \sin{\rho}\v{e_y}\]
@@ -140,7 +140,7 @@
    3. Übt ein Körper $1$ auf einen Körper $2$ die Kraft $F_{12}$, so reagiert Körper $2$ auf den Körper $1$ mit der Gegenkraft $F_{21}$ und es gilt $F_{21} = -F_{12}$ (actio = reactio)
 *** Kraft und Impuls
 	\[\v F = \cvec{F_x;F_y;F_z}\]
-	Superpositions von Kräften (Zusatz zu den Newtonschen Gesetzen (Korollar)):
+	Superposition von Kräften (Zusatz zu den Newtonschen Gesetzen (Korollar)):
 	\[\v{F}_{\text{ges}} = \sum_{i = 1}^n \v{F_i}\]
 ***** TODO Skizze Addition von Kräften
 ***** Grundkräfte der Natur

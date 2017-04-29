@@ -11,7 +11,7 @@ gezeigt wurde ist schon eines der simpelsten physikalischen Systeme, das Pendel 
 Deswegen ist es für die Physik zwingend notwendig auf numerische Methoden / Simulationen zurückzugreifen.
 Selbst die Ursprünge der Numerik liegen in der Physik, genauer in Astronomischen Betrachtungen.
 Ich habe mich damit sogar schon selber beschäftigt, im Rahmen eines Jugend Forscht Projektes habe
-ich eine N-Körper-Simulation entwickelt um den Einfluss verschiedener Parameter, wie Geschwindigkeits- und Massenverteilung einzelner Partikel
+ich eine N-Körper-Simulation entwickelt um den Einfluss verschiedener Parameter, wie Geschwindigkeit- und Massenverteilung einzelner Partikel
 auf die Entwicklung von Protoplanetaren Scheiben zu untersuchen. Hierbei reichte es aufgrund der Problemgröße nicht aus
 einen naiven Ansatz zu wählen und alle $n^2$ Kräfte zu berechnen, sondern ein intelligenterer Ansatz,
 der die Gruppierung der einzelnen Partikel berücksichtigt war notwendig. Außerdem habe ich
@@ -21,7 +21,7 @@ Dieses Projekt hat mein Interesse an der Numerik geweckt, da mir bewusst geworde
 wie viel von der richtigen Wahl und Umsetzung der Numerischen Methode abhängt und wie wichtig
 die Numerik überhaupt für die Physik ist. \\
 Später habe ich mich noch mit einem anderem Projekt beschäftigt, der Entwicklung einer
-passiven Schallbasierten Ortung. Auch dabei habe ich einiges aus der Numerik kennengelernt.
+passiven Schallbasierten Ortung. Auch dabei habe ich einiges aus der Numerik kennen gelernt.
 Als erster Schritt der Ortung muss das Signal mehrerer Mikrophone in seine einzelnen Frequenzen
 aufgespalten werden, dazu ist eine Fourier-Transformation notwendig. Den Kern der Ortung
 bildet ein Gleichungssystem, ähnlich dem einer GPS-Ortung, das gelöst werden muss. Anfangs habe ich probiert dieses Gleichungssystem analytisch zu lösen. Dies
@@ -29,20 +29,20 @@ ist mir nur mit Hilfe eines CAS gelungen und die resultierende Formel war ausged
 Auch den 3D Fall wollte ich analytisch lösen, allerdings war die analytische Lösung davon schon in Form einer Textdatei 140Mb groß.
 Deswegen bin in dazu übergegangen das Gleichungssystem numerisch mit der Newton-Methode zu lösen.
 Ein Vorteil davon war, das ich sehr leicht dazu übergehen konnte anstatt der minimal benötigten 4
-Mikrofone noch mehr zu verwenden, um das Ergebniss mit der Least-Squares-Methode noch weiter zu verbessern.
+Mikrofone noch mehr zu verwenden, um das Ergebnis mit der Least-Squares-Methode noch weiter zu verbessern.
 Außerdem habe ich Methoden der Rückkopplung von Simulation und Experiment benutzt um für die Ortung
 lokal die Schallgeschwindigkeit zu bestimmen. \\
 Durch diese beiden Projekte wurde mein Interesse an Numerik	sehr verstärkt, denn Numerik ist
 nicht nur wichtig für die Physik, auch ein großer Teil unseres Alltags sähe ganz Anders aus
 ohne die Numerik. \\
-Bei einem Praktikum beim Frauenhofer-Institut in Kassel, habe ich noch einen ganz anderen
-Teil die Numerik kennengelernt, der Entwicklung von Reglern für Stromnetze. \\
+Bei einem Praktikum beim Fraunhofer-Institut in Kassel, habe ich noch einen ganz anderen
+Teil die Numerik kennen gelernt, der Entwicklung von Reglern für Stromnetze. \\
 Ich hoffe durch das Besuchen dieser Vorlesung noch mehr zu generellen numerischen Methoden zu erfahren.
 Insbesondere interessiert mich die Fehlerabschätzung, denn damit habe ich mich bis jetzt wenig befasst.
 Außerdem hoffe ich einige Methoden, die ich bereits kenne, wie die numerische Lösung eines
 Least-Squares-Problems noch tiefer und besser zu verstehen. Ein weiter interessantes Thema ist für mich
 die Stabilität von numerischen Verfahren, da ich damit selber einige Probleme hatte. Auch ist die Vorlesung
-Vorraussetzung für einige weiterführende Vorlesungen, wie das numerische Lösen von Differentialgleichungen,
+Voraussetzung für einige weiterführende Vorlesungen, wie das numerische Lösen von Differentialgleichungen,
 die interessant in Bezug auf die Physik sind. Die Numerik spielt in	großen Teilen der aktuellen
 Forschung der Physik eine so große Rolle, das jeder Physiker in den Grundzügen mit der Numerik vertraut
 sein sollte.

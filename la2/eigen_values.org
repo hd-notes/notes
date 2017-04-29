@@ -1,6 +1,6 @@
 * Eigenwerte
  In diesem Abschnitt sei $n ∈ ℕ$, $V$ ein K-VR und $φ ∈ \End_K(V)$. \\
- Frage: $V$ endlichdim. Existiet eine Basis $\mathcal{B} = (v_1, \dots, v_n)$ von $V$, sodass $M_{\mathcal{B}}(φ)$ eine
+ Frage: $V$ endlichdim. Existiert eine Basis $\mathcal{B} = (v_1, \dots, v_n)$ von $V$, sodass $M_{\mathcal{B}}(φ)$ eine
  Diagonalmatrix ist, das heißt
  \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\]
  mit $λ_1, \dots, λ_n ∈ K$? \\
@@ -11,11 +11,11 @@
  - $v$ heißt Eigenvektor zum Eigenwert $λ \xLeftrightarrow{\text{Def}} v\neq 0 \wedge φ(v) = λ v$
  - $φ$ heißt diagonalisierbar $\xLeftrightarrow{\text{Def}} V$ besitzt eine Basis aus EV von $φ$
  (Falls $V$ endlichdimensional, ist die äquivalent zu: Es gibt eine Basis $\mathcal{B}$ von $V$ und $λ_1, \dots, λ_n ∈ K$ mit \[M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}\])\\
- Eigenwerte, Eigenvektoren, Diagonalisiebarkeit einer Matrix $A ∈ M(n\times n, K)$ sind über den Endomorphismus $\tilde A:K^n \to K^n$ definiet.
+ Eigenwerte, Eigenvektoren, Diagonalisierbarkeit einer Matrix $A ∈ M(n\times n, K)$ sind über den Endomorphismus $\tilde A:K^n \to K^n$ definiert.
  #+end_defn
  #+begin_remark latex
  $A ∈ M(n\times n, K)$. Dann sind äquivalent:
- 1. $A$ ist diagonalisiebar.
+ 1. $A$ ist diagonalisierbar.
  2. Es gibt eine Basis von $K^n$ aus Eigenvektoren von $A$
  3. Es gibt ein $S ∈ \GL(n, K), λ_1, \dots, λ_n ∈ K$ mit $S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix}$
  4.	$A$ ist ähnlich zu einer Diagonalmatrix
@@ -39,16 +39,16 @@
 	Es ist $φ(\cvec{1 ; 1}) = \cvec{1; 1} = 1 \cdot \cvec{1; 1}$, das heißt $\cvec{1; 1}$ ist EV von $φ$ zum EW $1$. \\
 	$φ(\cvec{1; -1}) = \cvec{-1; 1} = (-1) \cvec{1; -1}$, also ist $\cvec{1; -1}$ EV von $φ$ zum EW $-1$.
 	Somit: $(\cvec{1; 1}, \cvec{1; -1})$ ist eine Basis des $ℝ^2$ aus EV von $φ$, das heißt $φ$ ist diagonalisierbar. \\
-	In Termen von Matrizen: $A = \begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix} ∈ M(2\times 2, ℝ)$ ist diagonalisiebar, und mit $S = \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}$ ist dann ist $S A S^{-1} = \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}$
-	Achtung: Das $φ$ diagonalisiebar ist, heißt nicht, dass jeder Vektor aus $V = ℝ^2$ ein EV von $φ$ ist, zum Beispiel ist $φ(\cvec{1; 2}) = \cvec{2; 1} \neq λ \cvec{1; 2} ∀ λ ∈ ℝ$.
+	In Termen von Matrizen: $A = \begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix} ∈ M(2\times 2, ℝ)$ ist diagonalisierbar, und mit $S = \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}$ ist dann ist $S A S^{-1} = \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}$
+	Achtung: Das $φ$ diagonalisierbar ist, heißt nicht, dass jeder Vektor aus $V = ℝ^2$ ein EV von $φ$ ist, zum Beispiel ist $φ(\cvec{1; 2}) = \cvec{2; 1} \neq λ \cvec{1; 2} ∀ λ ∈ ℝ$.
  2.	$φ: ℝ^2 \to ℝ^2, \cvec{x_1; x_2} ↦ \begin{pmatrix} 0 & -1 \\ 1 & 0\end{pmatrix}\cvec{x_1; x_2} = \cvec{-x_2; x_1}$ (= Drehung um $\frac{π}{2}$).
-	hat keinen EW. Beweig dafür: später.
+	hat keinen EW. Beweis dafür: später.
  #+end_ex
- Ziel: Suche Kriterien für Diagonalisiebarkeit.
+ Ziel: Suche Kriterien für Diagonalisierbarkeit.
  #+begin_remark latex
  $v_1, \dots, v_m$ EV von $φ$ zu paarweise verschiedenen EW $λ_1, \dots, λ_m ∈ K$.
  Dann ist $(v_1, \dots, v_m)$ linear unabhängig, insbesondere ist $m \leq \dim V$.
- Insbesondere gilt: ist $V$ endlichdimesional, dann hat $φ$ höchstens $\dim(v)$ Eigenwerte.
+ Insbesondere gilt: ist $V$ endlichdimensional, dann hat $φ$ höchstens $\dim(v)$ Eigenwerte.
  #+end_remark
  #+begin_proof latex
  per Induktion nach $m$: \\
@@ -64,8 +64,8 @@
  \end{align*}
  #+end_proof
  #+begin_conc latex
- $V$ endlichdemensional, $φ$ hage $n$ paarweise verschiedene EW, wobei $n = \dim V$
- Dann ist $φ$ diagonalisiebar.
+ $V$ endlichdimensional, $φ$ habe $n$ paarweise verschiedene EW, wobei $n = \dim V$
+ Dann ist $φ$ diagonalisierbar.
  #+end_conc
  #+begin_proof latex
  Für $i = 1, \dots, n$ sei $v_i$ ein EV von $φ$ zum EW $λ_i \implies (v_1, \dots, v_n)$ linear unabhängig, wegen $n = \dim V$ ist $(v_1, \dots, v_n)$ eine Basis von $V$ aus EV von $φ$
@@ -74,7 +74,7 @@
  $λ ∈ K$ \\
  $\Eig(φ, λ) := \{v ∈ V \mid φ(v) = λ v\}$ heißt der Eigenraum von $φ$ bezüglich $λ$. \\
  $μ_{geo}(φ, λ) := \dim \Eig(φ, λ)$ heißt die geometrische Vielfachheit von $λ$. \\
- Für $A ∈ M(n\times n, K)$ setzen vir $\Eig(A, λ) := \Eig(\tilde A, λ), μ_{geo}(A, λ) := μ_{geo}(\tilde A, λ)$.
+ Für $A ∈ M(n\times n, K)$ setzen wir $\Eig(A, λ) := \Eig(\tilde A, λ), μ_{geo}(A, λ) := μ_{geo}(\tilde A, λ)$.
  #+end_defn
  #+begin_remark latex
  $λ ∈ K$. Dann gilt:
@@ -93,7 +93,7 @@
  5. [@5] Sei $λ_1 \neq λ_2, v ∈ \Eig(φ, λ_1) ∩ \Eig(φ, λ_2) ⇒ λ_1 v = φ(v) = λ_2 v ⇒ \underbrace{(λ_1 - λ_2)}_{\neq 0} v = 0 ⇒ v = 0$
  #+end_proof
  #+begin_remark latex
- $V$ endlichdimesional, $λ ∈ K$. Dann sind äquivalent:
+ $V$ endlichdimensional, $λ ∈ K$. Dann sind äquivalent:
  1. $λ$ ist EW von $φ$
  2. $\det(λ\id_V - φ) = 0$
  #+end_remark
@@ -106,7 +106,7 @@
  heißt das *charakteristische Polynom von $A$.
  #+end_defn
  #+begin_note latex
- Hiefür nötig: Determinanten von Matrizen mit Einträgen in einem kommutativen Ring. \\
+ Hierfür nötig: Determinanten von Matrizen mit Einträgen in einem kommutativen Ring. \\
  In manchen Büchern $χ_A^{char} = \det(A - t E_n)$ (schlecht)
  #+end_note
  #+begin_ex latex
@@ -140,7 +140,7 @@
  1. $χ_φ^{char}$ ist ein normiertes Polynom von Grad $n$:
 	\[χ_φ^{char} = t^n + c_{n - 1} t^{n - 1} + \dots + c_0\]
 	mit $c_0 = (-1)^n \det φ, c_{n - 1} = -\sp{(φ)}$ (vgl. Übung zur Spur)
- 2.	Die Nullstellet von $χ_{φ}^{char}$ sind genau die EW von $φ$:
+ 2.	Die Nullstellen von $χ_{φ}^{char}$ sind genau die EW von $φ$:
 	\[λ ∈ K \text{ ist EW von } φ ⇔ χ_φ^{char}{λ} = 0\]
  #+end_thm
  #+begin_proof latex
@@ -191,7 +191,7 @@
  #+begin_proof latex
  1. Sei $φ$ diagonalisierbar $\to V$ besitzt Basis $\mathcal{B} = (v_1, \dots, v_n)$ aus EV zu EW $λ_i ∈ K$.
 	\[⇒ M_{\mathcal{B}}(φ) = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} ⇒ χ_φ^{char} = \det\begin{pmatrix} t - λ_1 & & 0 \\ & \ddots & \\ 0 & & t - λ_n\end{pmatrix} = (t - λ_1) · \dots · (t - λ_n)\]
- 2.	Aus $χ_φ^{char} = (t - λ_1) · \dots · (t - λ_n)$ wit $λ_1, \dots, λ_n$ paarweise verschieden $⇒ λ_1, \dots, λ_n$ sind paarweise verschiedene EW von $φ ⇒ φ$ diagonalisierbar.
+ 2.	Aus $χ_φ^{char} = (t - λ_1) · \dots · (t - λ_n)$ mit $λ_1, \dots, λ_n$ paarweise verschieden $⇒ λ_1, \dots, λ_n$ sind paarweise verschiedene EW von $φ ⇒ φ$ diagonalisierbar.
  #+end_proof
  #+begin_remark latex
  $V$ endlichdimensional, $n = \dim V, λ$ EW von $φ$. Dann gilt:
@@ -258,7 +258,7 @@
 	EW von $A: -1, 3, μ_{alg} = (A, -1) = 2, μ_alg(A, 3) = 1$
 	\[\Eig(A, -1) = \Lös(-E_n - A, 0) = \Lös(\begin{pmatrix} -3 & 1 & 1 \\ 6 & -1 & -2 \\ -3 & 1 & 1\end{pmatrix}, 0) = \Lin(\cvec{-1; 3; 0}, \cvec{0; -1; 3})\]
 	$μ_{geo}(A, -1) = 2 = μ_{alg}(A, -1)$.
-	\[\Eig(A, 3) = \Lös(3 E_n - A, 0) = Lös(\begin{pmatrix} 1 & 1 & 1 \\ 6 & 2 & -2 \\ -3 & 1 & 5\end{pmatrix}, 0) = \Lin(\cvec{1; -2; 1})\]
+	\[\Eig(A, 3) = \Lös(3 E_n - A, 0) = \Lös(\begin{pmatrix} 1 & 1 & 1 \\ 6 & 2 & -2 \\ -3 & 1 & 5\end{pmatrix}, 0) = \Lin(\cvec{1; -2; 1})\]
 	$μ_{geo}(A, 3) = 1 = μ_{alg}(A, 3)$. Also ist $A$ diagonalisierbar, $\mathcal{B} := (\cvec{-1; 3; 0}, \cvec{0; -1; 3}, \cvec{1; -2; 1})$ ist eine Basis des $ℝ^3$ aus EV von $A$,
 	\[M_{\mathcal{B}}(\tilde A) = \begin{pmatrix} 1 & & 0 \\ & -1 & \\ 0 & & 3\end{pmatrix}\]
 	Mit
@@ -266,7 +266,7 @@
  #+end_ex
  #+begin_note latex
  Ist $f = a_m t^m + \dots + a_1 t + a_0 ∈ K[t]$, dann können wir in $f$:
- - Endomorphismen $φ ∈ \End_K(V)$ einsetzen durch die Reget
+ - Endomorphismen $φ ∈ \End_K(V)$ einsetzen durch die Regel
    \[f(φ) := a_m φ^m + \dots + a_1 φ + a_0 \id_V ∈ \End_K(V)\]
    wobei $φ^k := \underbrace{φ \circ \dots \circ φ}_{\text{k-mal}}$
  - Matrizen $A ∈ M(n × n, K)$ einsetzen durch die Regel
@@ -285,7 +285,7 @@
 	⇒ 0 &= χ_A^{char}(A) = A^n + a_{n - 1} A^{n - 1} + \dots + a_0 E_n = M_{\mathcal{B}}(φ^n + a_{n - 1} φ^{n - 1} + \dots + a_0 \id_V) \\ &= M_{\mathcal{B}}(χ_φ^{char}(φ))
     \end{align*}
  	$⇒ χ_φ^{char}(φ) = 0$
- 2. Sei $A ∈ M(n × n, K)$. Wri setzen $D:= (t E_n - A)^{\#} ∈ M(n × n, K[t])$ \\
+ 2. Sei $A ∈ M(n × n, K)$. Wir setzen $D:= (t E_n - A)^{\#} ∈ M(n × n, K[t])$ \\
 	\[⇒ D(t E_n - A) = \det(t E_n - A) E_n = χ_A^{char} E_n\]
 	Sei $D = \sum_{i = 0}^{n - 1} D_i t^i$ mit $D_i ∈ M(n × n, K), χ_A^{char} = \sum_{i = 0}^{n} a_i t^i$ mit $a_i ∈ K$
 	\begin{align*}
@@ -305,10 +305,10 @@
  \[\underbrace{\underbrace{(\det(t E_n - A))}_{∈ K[t]}(A)}_{∈ M(n × n, K)} \quad \underbrace{\det\underbrace{(A E_n - A)}_{∈ M(n × n, K)}}_{∈ K}\]
  #+end_note
  #+begin_defthm latex
- $V$ endlichdimetional, $I:= \{f ∈ K[t] \mid f(φ) = 0\}$. Dann gilt:
+ $V$ endlichdimensional, $I:= \{f ∈ K[t] \mid f(φ) = 0\}$. Dann gilt:
  1. Es gibt ein eindeutig bestimmtes, normiertes Polynom $χ_φ^{min} ∈ K[t]$, sodass
 	\[I = χ_φ^{min} K[t] := \{χ_φ^{min} q \mid q ∈ K[t]\}\]
-	$χ_φ^{min}$ heißt das *Minimalpolynom* von $φ$. $χ_φ^{min}$ ist ads eindeutig bestimmte normierte Polynom kleinsten Grades mit $f(φ) = 0$.
+	$χ_φ^{min}$ heißt das *Minimalpolynom* von $φ$. $χ_φ^{min}$ ist das eindeutig bestimmte normierte Polynom kleinsten Grades mit $f(φ) = 0$.
  2. $χ_φ^{mit}\mid χ_φ^{char}$, das heißt $∃ q ∈ K[t]: χ_φ^{char} = q · χ_φ^{min}$
  Analog konstruiert man für $A ∈ M(n × n, K)$, das Minimalpolynom $χ_A^{min}$. Es ist $χ_A^{min} = χ_{\tilde A}^{min}$.
  #+end_defthm
@@ -335,7 +335,7 @@
 	das heißt $χ_φ^{min} \mid χ_φ^{char}$
  #+end_proof
  #+begin_remark latex
- $V$ endlichdimensionay, $λ ∈ K$. Dann gilt:
+ $V$ endlichdimensional, $λ ∈ K$. Dann gilt:
  \[χ_φ^{char}(λ) = 0 ⇔ χ_φ^{min}(λ) = 0\]
  Insbesondere haben $χ_φ^{char}$ und $χ_φ^{min}$ dieselben NS.
  #+end_remark
@@ -363,7 +363,7 @@
 	Es ist $(A + E_n)(A - 3E_n) = 0 ⇒ χ_A^{min} = (t + 1)(t - 3)$
  #+end_ex
  #+begin_thm latex
- $V$ endlichdimesional. Dann sind äquivalent:
+ $V$ endlichdimensional. Dann sind äquivalent:
  1. $φ$ diagonalisierbar
  2.	Das Minimalpolynom $χ_φ^{min}$ zerfällt in Linearfaktoren und besitzt nur einfache NS, das heißt
 	$χ_φ^{min} = (t - λ_1) · \dots · (t - λ_r)$ mit paarweise verschiedenen $λ_1, \dots, λ_r ∈ K$

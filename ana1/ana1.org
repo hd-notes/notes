@@ -284,7 +284,7 @@
    #+begin_ex latex
    1. Stetigkeit von $f$. Wir nehmen
 	  \[f:[0,2] \to \mathbb{R},x \mapsto \begin{cases} 0 & 0\leq x < 1 \\ 1 & 1 \leq x \leq 2\end{cases}\]
-	  $f$ ist Unstetig und $\Forall \xi\in [0,2]$
+	  $f$ ist unstetig und $\Forall \xi\in [0,2]$
 	  \[\int_{0}^{2} f(x) \d x = 1 \neq f(\xi)(2 - 0)\]
    2. Positivität von $g$: Für
 	  \begin{align*}

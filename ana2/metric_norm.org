@@ -33,7 +33,7 @@
    Eine Folge $(x_n)_{n ∈ ℕ}$ in einem  metrischen Raum $(X, d)$ ist konvergent gegen einem $x ∈ X$ genau dann wenn $∀ε > 0 ∃n_0 ∈ ℕ: ∀n \geq n_0 d(x_n, x) < ε$
    #+end_defn
    #+begin_thm latex
-   1. Sei $(X, d)$ ein metrischer Raumn. Dann ist $A ⊆ X$ abgeschlosen genau dann wenn $(X_n)_{n ∈ ℕ}$ Folge in $A$ mit $x_n \to x ⇒ x ∈ A$
+   1. Sei $(X, d)$ ein metrischer Raum. Dann ist $A ⊆ X$ abgeschlossen genau dann wenn $(X_n)_{n ∈ ℕ}$ Folge in $A$ mit $x_n \to x ⇒ x ∈ A$
    2. Seien $(X, d_1), (Y, d_2)$ zwei metrische Räume. Dann ist die Funktion stetig in $x ∈ X$ genau dann wenn $(x_n)_{n ∈ ℕ}$ Folge in $X$ mit $x_n \to x ⇒ f(x_n) \to f(x)$.
    #+end_thm
    #+ATTR_LATEX: :options [(Cauchy Folgen und Vollständigkeit)]
@@ -52,7 +52,7 @@
    1. Die Norm $\norm{·}$ induziert auf $X$ eine Metrik $d(x, y) = \norm{x - y}$
    2. Eine Metrik $d$ auf einem Vektorraum definiert die Norm $\norm{d(x, 0)}$ nur dann, wenn
 	  \begin{align*}
-	  ∀ λ ∈ \mathbb{K} ∀ x, y, z ∈ X: d(λ x, λ y) = \abs{λ}d(x, y) \tag{Homagenität} \\
+	  ∀ λ ∈ \mathbb{K} ∀ x, y, z ∈ X: d(λ x, λ y) = \abs{λ}d(x, y) \tag{Homogenität} \\
 	  d(x + z, y + z) = d(x, y) \tag{Translationsinvarianz}
       \end{align*}
    #+end_remark
@@ -74,7 +74,7 @@
    #+end_remark
    #+ATTR_LATEX: :options [Äquivalenz von Normen]
    #+begin_thm latex
-   Auf dem endlich dimesionalen Vektorraum $\mathbb{K}^n$ sind alle Normen *äquivalent* zur Maximumnorm, das heißt zu jeder Norm $\norm{·}$ gibt es positive Konstanten $w, M$ mit denen gilt
+   Auf dem endlich dimensionalen Vektorraum $\mathbb{K}^n$ sind alle Normen *äquivalent* zur Maximumnorm, das heißt zu jeder Norm $\norm{·}$ gibt es positive Konstanten $w, M$ mit denen gilt
    \[m \norm{x}_∞ \leq \norm{x} \leq M \norm{x}_∞, x ∈ \mathbb{K}^n\]
    #+end_thm
    #+begin_proof latex
@@ -86,22 +86,22 @@
    \[S_1 := \{x ∈ \mathbb{K}^m \mid \norm{x}_∞ = 1\}, m := \inf\{\norm{x}, x ∈ S_1\} \geq 0\]
    Zu zeigen $m > 0$ (dann ergibt sich für $x \neq 0$ wegen $\norm{x}_∞^{-1} x ∈ S_1$ auch $m \leq \norm{x}_∞^{-1} \norm{x} ⇒ 0 < m \norm{x}_∞ \leq \norm{x}\quad x ∈ \mathbb{K}^n$)
    Sei also angenommen, dass $m = 0$ \\
-   Dann gibt eine eine Folge $(x^{(k)})_{k ∈ ℕ} ∈ S_1$ mit $\norm{x^{(k)}} \xrightarrow{k \to ∞} 0$. Da diee Folge bezüglich $\norm{·}_∞$ beschränkt ist, gibt ei nach dew B.-W. Satz
+   Dann gibt eine eine Folge $(x^{(k)})_{k ∈ ℕ} ∈ S_1$ mit $\norm{x^{(k)}} \xrightarrow{k \to ∞} 0$. Da die Folge bezüglich $\norm{·}_∞$ beschränkt ist, gibt es nach dem B.-W. Satz
    eine Teilfolge auch von $(x^{(k)})$, die bezüglich $\norm{·}_∞$ gegen ein $x ∈ \mathbb{K}^n$ konvergiert.
    \[\abs{1 - \norm{x}_∞} = \abs{\norm{x^{(k)}}_∞ - \norm{x}_∞} \leq \norm{x^{(k)} - x}_∞ \to 0 ⇒ \norm{x}_∞ = 1 ⇒ x ∈ S_1\]
    Anderseits gilt \[∀k ∈ ℕ: \norm{x} \leq \norm{x - x^{(k)}} + \norm{x^{(k)}} \leq M \norm{x - x^{(k)}}_∞ + \norm{x^{(k)}} \xrightarrow{k \to ∞} ⇒ x = 0\]
    \lightning zu $x ∈ S_1$
    #+end_proof
    #+begin_defn latex
-   Eine Menge $M ⊂ K^n$ heißt kompakt (folgenkompakt), wenn jede beliebige Folge in $M$ eine konvergente Teifolge besitzt, deren Grenzwert ebenfalls in $M$ enthalten ist.
+   Eine Menge $M ⊂ K^n$ heißt kompakt (folgenkompakt), wenn jede beliebige Folge in $M$ eine konvergente Teilfolge besitzt, deren Grenzwert ebenfalls in $M$ enthalten ist.
    #+end_defn
    #+begin_ex latex
-   Mit Hilfe von dem Satz von B.W. folgt, dass alle abgeschlossene Kugeln im $ℝ^n$ ($K_r(a), a ∈ K^n$) kompakt sind. Ferner ist für beschränkte Mangen $M$ der Rand $\partial M$ kompakt.
+   Mit Hilfe von dem Satz von B.W. folgt, dass alle abgeschlossene Kugeln im $ℝ^n$ ($K_r(a), a ∈ K^n$) kompakt sind. Ferner ist für beschränkte Mengen $M$ der Rand $\partial M$ kompakt.
    Jede endliche Menge ist auch kompakt.
    #+end_ex
 ** Hilberträume
    #+begin_defn latex
-   Sei $H \mathbb{K}$ Vektorraun. Ein *Skalarprodukt* auf eine Abbildung
+   Sei $H \mathbb{K}$ Vektorraum. Ein *Skalarprodukt* auf eine Abbildung
    \[(·,·): H × H \to \mathbb{K}\]
    mit
    1. $∀ x, y, z ∈ H, λ ∈ \mathbb{K}: (z, x + λ y) = (z, x) + λ(z, y)$
@@ -110,7 +110,7 @@
    $(H, (·,·))$ nennt man einen Prähilbertraum.
    #+end_defn
    #+begin_remark latex
-   Für $\mathbb{K} = ℂ$ ist das Skalarprodukt linar in der zweiten Komponente aber antilinear in der ersten ($(λ x, y) = \bar λ (x, y)$).
+   Für $\mathbb{K} = ℂ$ ist das Skalarprodukt linear in der zweiten Komponente aber antilinear in der ersten ($(λ x, y) = \bar λ (x, y)$).
    #+end_remark
    #+ATTR_LATEX: :options [Cauchy-Schwarz Ungleichung]
    #+begin_lemma latex
@@ -118,7 +118,7 @@
    \[∀ x, y ∈ H: \abs{(x, y)}^2 \leq (x, x) (y, y)\]
    #+end_lemma
    #+begin_proof latex
-   Da die Ungleichung für $y = 0$ bereits erfüllt ist, können wir ohne Beschränkung der Allgemeiheit annehmen $y \neq 0$.
+   Da die Ungleichung für $y = 0$ bereits erfüllt ist, können wir ohne Beschränkung der Allgemeinheit annehmen $y \neq 0$.
    Für ein beliebiges $α ∈ \mathbb{K}$ gilt
    \begin{align*}
    0 &\leq (x + α y, x + α y) = (x, x) + \bar α (y, x) + α (x, y) + α \bar α (y, y) \\
@@ -150,7 +150,7 @@
 	  versehen mit $(x, y) := \sum_{i = 1}^{∞} \bar x_i y_i$ ist ein Hilbertraum.
 	  \[\sum_{i = 1}^{n} \abs{x_i} \abs{y_i} \leq (\sum_{i = 1}^{n} \abs{x_i}^2)^{\frac{1}{2}}(\sum_{i = 1}^{n} \abs{y_i}^2)^{\frac{1}{2}} \leq \norm{x}_{l^2} \norm{y}_{l^2} < ∞\]
    #+end_ex
-   #+ATTR_LATEX: :options [Höller-Ungleichung]
+   #+ATTR_LATEX: :options [Hölder-Ungleichung]
    #+begin_lemma latex
    Für das euklidische Skalarprodukt $(·,·)_2$ gilt für beliebige $p, q$ mit $1 < p, q < ∞$ und $\frac{1}{p} + \frac{1}{q} = 1$ die Ungleichung
    \[∀x, y ∈ \mathbb{K}^n: \abs{(x, y)_2} \leq \norm{x}_p \norm{y}_q, \norm{x}_p := (\sum_{i = 1}^{n} \abs{x_i}^p)^{\frac{1}{p}}\]

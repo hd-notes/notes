@@ -39,14 +39,14 @@
   Numerische Lösung: \\
   Setze $u(t) := \dd{}{t} ϕ(t)$
   \[\dd{}{t} \cvec{ϕ; u} = \cvec{u; - \frac{g}{l}\sin(ϕ)}\]
-  Appraximation mit Differenkenquotient
+  Approximation mit Differenzenquotienten
   \[\cvec{u(t); -\frac{g}{l}\sin{ϕ(t)}} = \dd{}{t} \cvec{ϕ; u} = \lim_{Δt \to 0} \frac{1}{Δt}\cvec{ϕ(t + Δt) - ϕ(t); u(t + Δt) - u(t)} \approx \underarrow[\frac{1}{Δt}]{> 0, klein} \cvec{ϕ(t + Δt) - ϕ(t); u(t + Δt) - u(t)}\]
   Fehlerquelle: Diskretisierungsfehler \\
   Auf Gitter $t_n = n Δt$ mit Werten $ϕ_n = ϕ(n Δt), u_n = u(n Δt)$:
   \[ϕ_{n + 1} = ϕ_n + Δt u_n, u_{n + 1} = u_n - Δt \frac{g}{l}ϕ_n\]
   Kleinerer Diskretisierungsfehler mit zentralen Differenzen:
   \[-\frac{g}{l} \sinϕ(t) = \frac{\d^2}{\d t^2} ϕ(t) \approx \frac{ϕ(t + Δt) - 2ϕ(t) + ϕ(t - Δt)}{Δt^2}\]
-  Rukursionsformel:
+  Rekursionsformel:
   \[ϕ_{n + 1} = 2ϕ_n - ϕ_{n - 1} - Δt^2 \frac{g}{l}\sin ϕ_n, n\geq 1\]
   mit $ϕ_1 = ϕ_0 + Δt n_0$ (Expliziter Euler) \\
   Letzte Fehlerquelle: Rundungsfehler

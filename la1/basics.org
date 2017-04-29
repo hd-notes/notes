@@ -285,7 +285,7 @@
 	 Sei $M$ die Menge der Studierenden in der LA1-Vorlesung
 	 1. Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ $a$ hat den selben Vornamen wie $b$ \\
 		$\sim$ reflexiv, symmetrisch, nicht antisymmetrisch, transitiv, nicht total
-	 2. Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ Matrikelnummern von $a$ ist kleiner gleich als die Martrikelnummer von $b$ \\
+	 2. Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ Matrikelnummern von $a$ ist kleiner gleich als die Matrikelnummern von $b$ \\
 		$\sim$ ist reflexiv, nicht symmetrisch, antisymmetrisch, transitiv, total
 	 3. Für $a,b \in M$ sei $a\sim b \xLeftrightarrow{\text{Def}}$ $a$ sitzt auf dem Platz recht von $b$ \\
 		$\sim$ ist nicht reflexiv, nicht symmetrisch, nicht antisymmetrisch, nicht transitiv, nicht total

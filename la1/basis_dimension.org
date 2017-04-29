@@ -107,7 +107,7 @@
   #+begin_proof latex
   Wir zeigen 1. und 2. zusammen per Induktion nach $n$ \\
   Induktionsanfang: $n = 0$: $(w_1, \ldots, w_n)$ leere Familie \\
-  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\implies n - 1 \leq r$ und nach umnummerieren von $\mathcal{B}$ ist auch
+  Induktionsschritt: Sei $n \geq 1$, und die Aussage sei für $n - 1$ schon bewiesen. Wegen $(w_1, \ldots, w_a)$ linear unabhängige Familie ist auch $(w_1, \ldots, w_{n - 1})$ linear unabhängig $\implies n - 1 \leq r$ und nach Umnummerieren von $\mathcal{B}$ ist auch
   \[\reallywidetilde{\mathcal{B}} := (v_1, \ldots, w_{n - 1}, v_n, \ldots, v_r)\]
   eine Basis von $V$.
 
@@ -116,7 +116,7 @@
 
   Da $\reallywidetilde{\mathcal{B}}$ Basis von $V, \Exists \lambda_1, \ldots, \lambda_r \in K: w_n = \lambda_1 w_1 + \ldots, \lambda_{n - 1} w_{n - 1} \lambda_n w_n + \ldots + \lambda_r$ \\
   Falls $\lambda_n = \ldots = \lambda_r = 0$, dann $(w_1, \ldots, w_n)$ linear abhängig $\lightning$ \\
-  Also existiert ein $k \in \{n, \ldots, r\}$ mit $\lambda_k \neq 0$ Nach umnummerieren von $v_n, \ldots, v_r$ kann man $\lambda_n \neq 0$ erreichen
+  Also existiert ein $k \in \{n, \ldots, r\}$ mit $\lambda_k \neq 0$ Nach Umnummerieren von $v_n, \ldots, v_r$ kann man $\lambda_n \neq 0$ erreichen
   \[\implies \mathcal{B}^\ast := (w_1, \ldots, w_{n - 1}, w _n, v_{n + 1}, \ldots, v_r)\] ist eine Basis von $V$ (tausche $v_n$ gegen $w_n$)
   #+end_proof
   #+ATTR_LATEX: :options [9.8]

@@ -341,7 +341,7 @@
    Dazu:
    \[m \frac{\d^2}{\d t'^2} = m \frac{\d^2 x}{\d t^2} = m \\frac{\d^2}{\d t^2} (R\v x(t) + \v y + \v v(t + s)) = m R \frac{\d^2 \v x}{\d t^2} = R\v F(t, \v x(t))\]
    $\implies$ Newtonsche Dynamik ist invariant falls Kräfte wie Vektoren transformieren. (hatten wir schon verlangt)
-   Bei Systemen von Massepunkten mit Zentralkräften ist die Kraft gleich dem Gradient, sie besitzt automatisch Vektor-Transformationseigenschaften
+   Bei Systemen von Massenpunkten mit Zentralkräften ist die Kraft gleich dem Gradient, sie besitzt automatisch Vektor-Transformationseigenschaften
 
    Wir fordern bei
    \[m R \frac{\d^2 \v x}{\d t^2} = R\v F(t,\v x(t))\]
@@ -353,7 +353,7 @@
    Geschwindigkeitsabhängige Kräfte: zum Beispiel Reibung
    \[\v F_R = -\alpha(\dot{\v x} - \underarrow[\v u]{Medium})\]
 ** Zusammenfassung:
-   Allgemeingültiges Schema:
+   All gemeingültiges Schema:
    - Beschreibung der Bewegung festlegen (Spielfeld) (hier: affiner Raum und Galileische Struktur)
    - Identifikation der Symmetriegruppe (hier Galilei Gruppe)
    - Invarianz der Dynamik prüfen beziehungsweise fordern (Spielregeln) (Newtonsches Grundgesetz)

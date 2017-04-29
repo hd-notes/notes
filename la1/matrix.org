@@ -237,7 +237,7 @@
   #+ATTR_LATEX: :options [10.11]
   #+begin_defn latex
   $A \in M(m\times n, K)$ \\
-  Dann lässt sich $A$ durch endlich viele elementare Zeilenstufenumformungen in eine Matrix $B$ in ZSF umformen:
+  Dann lässt sich $A$ durch endlich viele elementare Zeilenumformungen in eine Matrix $B$ in ZSF umformen:
   \begin{equation}
   \begin{pmatrix}
   & b_{1j_1} & \ast & & & & \\
@@ -277,7 +277,7 @@
 	 4) Wende das Verfahren 1. - 3. auf $A_2$ an. Die dafür benötigten elementaren Zeilenumformungen von $A_2$ kann man
 		auf die Zeilen $2$ bis $m$ von $\tilde A_1$ ausdehnen, ohne dass sich in den Spalten $1$ bis $j_1$ von $\tilde A_1$ etwas ändert, denn
 		dort stehen Nullen. Erhalte auf diese Weise $\tilde A_2$ beziehungsweise $A_3$. Iteriere dieses Verfahren.
-		Das Verfahren bricht ab, weil die Folge der Spaltenzahlen der Matrizen $A_k$ string monoton fallend in $\mathbb{N}$ ist, oder irgendwann eine Matrix $A_k = 0$ entsteht. \\
+		Das Verfahren bricht ab, weil die Folge der Spaltenzahlen der Matrizen $A_k$ streng monoton fallend in $\mathbb{N}$ ist, oder irgendwann eine Matrix $A_k = 0$ entsteht. \\
 		$\implies$ erhalte ZSF.
 		Die ersten $r$ Zeilen $b_1, \ldots, b_r$ von $B$ bilden eine Basis von $ZR(A)$, denn Es ist $ZR(A) = ZR(B) = \Lin((b_1, \ldots, b_r))$ \\
 		noch zu zeigen: $(b_1, \ldots, b_r)$ ist linear unabhängig. \\

@@ -1,6 +1,6 @@
 * Fehleranalyse
 ** Zahldarstellung und Rundungsfehler
-   Anforderung: Rechnen mit reellen Zahlin auf dem Computer. \\
+   Anforderung: Rechnen mit reellen Zahlen auf dem Computer. \\
    Problem: Speicher endlich ($⇒$ endliche Genauigkeit). \\
    Lösung: Gleitkommazahlen, ein *Kompromiss* zwischen:
    - Umfang darstellbarer Zahlen
@@ -15,7 +15,7 @@
    \[x = \pm m · b^{\pm e}\]
    mit der Mantisse $m = m_1 b^{-1} + m_2 b^{-2} + \dots ∈ ℝ$ und dem Exponenten
    $e = e_{s - 1}b^{s - 1} + \dots + e_0 b^0 ∈ ℕ$, wobei $m_i, e_i ∈ \{0, \dots, b - 1\}$.
-   Für $x \neq 0$ ist die Darstellung durch die Normieungsvorschrift $m \neq 0$ eindeutig.
+   Für $x \neq 0$ ist die Darstellung durch die Normierungsvorschrift $m \neq 0$ eindeutig.
    Für $x = 0$ setzt man $m = 0$.
    #+end_defn
    #+ATTR_LATEX: :options [$b = 10$]
@@ -31,8 +31,8 @@
    $r$ Ziffern + 1 Vorzeichen für Mantisse $m$ \\
    $s$ Ziffern + 1 Vorzeichen für Exponenten. \\
    Für $x = \pm [m_1 b^{-1} + \dots + m_r b^{-r}] · b^{\pm[e_{s - 1} b^{s - 1} + \dots + e_0 b^0]}$
-   muss man alsu nur $(\pm)[m_1\dots m_r](\pm)[e_{s - 1} \dots e_0]$
-   ebspeichern. Wählt man $b = 2$, so gilt $m_i, e_i ∈ \{0, 1\}$
+   muss man also nur $(\pm)[m_1\dots m_r](\pm)[e_{s - 1} \dots e_0]$
+   abspeichern. Wählt man $b = 2$, so gilt $m_i, e_i ∈ \{0, 1\}$
    und $x$ kann mit $2 + r + s$ Bits gespeichert werden (Maschinenzahlen).
    Maschinenzahlen bilden das numerische Gleitkommagitter $A = A(b, r, s)$
    #+ATTR_LATEX: :options [$b = 2, r = 3, s = 1$]
@@ -54,7 +54,7 @@
    \end{align*}
    Das gängigste Format ist das IEEE-Format, das auch hinter dem Python-Datentyp float steht:
    \[x = \pm m · 2^{c - 1022}\]
-   Dieser Datentyp ist 64 Bit (8 Byte) groß (dopplte Genauigkeit, double). Davon speichert 1 Bit das Vorzeichen, 52 Bits die Mantisse $m = 2^{-1} + m_2 2^{-2} + \dots + m_{53} 2^{-53}$
+   Dieser Datentyp ist 64 Bit (8 Byte) groß (doppelte Genauigkeit, double). Davon speichert 1 Bit das Vorzeichen, 52 Bits die Mantisse $m = 2^{-1} + m_2 2^{-2} + \dots + m_{53} 2^{-53}$
    und 11 Bits die Charakteristik $c = c_0 2^0 + \dots + c_{10} 2^{10}$, mit $m_i, c_i ∈ \{0, 1\}$.
    Es gibt folgende spezielle Werte:
    - Alle $c_i, m_i = 0: x = \pm 0$
@@ -68,7 +68,7 @@
    eine Rundungsoperation $\rd: D \to A$ verwendet, die
    \[\abs{x - \rd{x}} = \min_{y ∈ A} \abs{x - y} ∀ x ∈ D\]
    erfüllt.
-   #+ATTR_LATEX: :options [Natürliche Rundund im IEEE-Format]
+   #+ATTR_LATEX: :options [Natürliche Rundung im IEEE-Format]
    #+begin_ex latex
    \[\rd(x) = \sgn(x) · \begin{cases} 0, m_1, \dots, m_{53} · 2^e & m_{54} = 0 \\ \string(0, m_1, \dots, m_{53} + 2^{-53}\string) · 2^e & m_{54} = 1\end{cases}\]
    Rundungsfehler:
@@ -87,7 +87,7 @@
    \[\oast: A × A \to A\]
    Dies ist normalerweise für $x, y ∈ A$ und $x * y ∈ D$ realisiert durch
    \[x \oast y := \rd(x * y) = (x * y)(1 + ε), \abs{ε} \leq eps\]
-   Dazu werden die Operationen maschinenintern (unter Verwendung einer längeren Mantisse) ausgeführt, normalisiet und dann gerundet. Im Fall $x * y \not ∈ D$ gibt es eine Fehlermeldung (overflow, underflow)
+   Dazu werden die Operationen maschinenintern (unter Verwendung einer längeren Mantisse) ausgeführt, normalisiert und dann gerundet. Im Fall $x * y \not ∈ D$ gibt es eine Fehlermeldung (overflow, underflow)
    oder das Ergebnis NaN.
    Achtung: Das Assoziativ- und Distributivgesetz gilt dann nur näherungsweise. Im Allgemeinen ist für $x, y, z ∈ A$
    \begin{align*}
@@ -126,16 +126,16 @@
 *** Differentielle Fehleranalyse
 	Annahmen:
 	- kleine relative Datenfehler $\abs{Δx_i} \ll \abs{x_i}$
-	- $f_i$ stetig partiell differenzierbar nach llen $x_i$
+	- $f_i$ stetig partiell differenzierbar nach allen $x_i$
     Dann gilt:
 	\begin{align*}
 	y_i &= f_i(x_i), y_i + Δy_i = f_i(x + Δx) \\
 	⇒ Δy_i &= f_i(x + Δx) - f(x) \\
-	\intertext{Talorentwicklung}
+	\intertext{Taylorentwicklung}
 	&= \sum_{j = 1}^{m} \frac{\partial f_i}{\partial x_j} Δx_j + R_i^f(x, Δx)
 	\end{align*}
 	mit einem Restglied $R_i^f$, das für $\abs{Δx} = \max_{j = 1,\dots, m} \abs{Δx_j} \to 0$ schneller gegen $0$ geht als $\abs{Δx}$.
-	Wenn $f$ sogar zweimal stetig differenziebar ist, gilt sogar, dass
+	Wenn $f$ sogar zweimal stetig differenzierbar ist, gilt sogar, dass
 	\[\abs{R_i^f(x, Δx)} \leq c \abs{Δx}^2, c ∈ ℝ\]
 	#+ATTR_LATEX: :options [Landau-Notation]
 	#+begin_defn latex
@@ -169,7 +169,7 @@
 	(stärker als $\mathcal{O}(\abs{Δx})$)
 	#+end_ex
 	#+begin_defn latex
-	Die Größen $k_{ij}(x)$ heißen (relative) Konditionszahlen von $f$ im Punzt $x$. Sie sind Maß dafür, wie sich kleine relative Fehler in den Ausgansgdaten $x_j$ auf das Ergebnis $y_i$ auswirken.
+	Die Größen $k_{ij}(x)$ heißen (relative) Konditionszahlen von $f$ im Punkt $x$. Sie sind Maß dafür, wie sich kleine relative Fehler in den Ausgangsdaten $x_j$ auf das Ergebnis $y_i$ auswirken.
 	Sprechweise:
 	- $\abs{k_{ij}(x)} \gg 1$: Die Aufgabe $y = f(x)$ ist schlecht konditioniert
 	- sonst: Die Aufgabe $y = f(x)$ ist gut konditioniert
@@ -180,8 +180,8 @@
 	Man kann auch Störungen in $f$ betrachten.
 	#+end_remark
 	#+begin_ex latex
-	Implizit gegebene Augaben. Für $n = m$ sie $y$ die gegebene Eingangsgröße und ein $x$ mit $f(x) = y$ die Ausgabe (zum Beispiel: $f(x) = Ax + b$)
-	Die differentielle Fehleranalyse auf der Umkehrfunztion $x = f^{-1}(y)$ liefert unter geeigneten Annahmen.
+	Implizit gegebene Aufgaben. Für $n = m$ sie $y$ die gegebene Eingangsgröße und ein $x$ mit $f(x) = y$ die Ausgabe (zum Beispiel: $f(x) = Ax + b$)
+	Die differentielle Fehleranalyse auf der Umkehrfunktion $x = f^{-1}(y)$ liefert unter geeigneten Annahmen.
 	\[\frac{Δx_i}{x_i} \overset{·}{=} \sum_{j = 1}^{n} k_{ij}^{-1}(y) \frac{Δy_j}{y_j}, k_{ij}^{-1} = \frac{\partial f^{-1}_i}{\partial y_j}(y) \frac{y_j}{x_i}\]
 	Wir definieren die Matrizen
 	\[K^{-1}(y) = (k_{ij}^{-1})^n_{i,j = 1}, K(x) = (k_{ij}(x))^n_{i,j = 1}\]
@@ -194,7 +194,7 @@
 	\end{align*}
 	$K^{-1}$ ist gerade das Inverse von $K$.
 	#+end_ex
-	Wiederhohlung: Numerische Aufgabe
+	Wiederholung: Numerische Aufgabe
 	\[f: x ∈ ℝ^m ↦ y ∈ ℝ\]
 	Konditionszahlen:
 	\[\frac{Δ y_i}{y_i} \overset{·}{=} \sum_{j = 1}^{m} k_{ij}(x) \frac{Δx_j}{x_j}\]
@@ -252,7 +252,7 @@
    Gegeben: Numerische Aufgabe $f: x ∈ ℝ^m ↦ y ∈ ℝ^n$
    #+ATTR_LATEX: :options [Verfahren / Algorithmus]
    #+begin_defn latex
-   Unter einem Verfahren / Algorithmus zur (gegebenenfalls näherungsweisen) Berechnung von $y$ aus $x$ verstehen wir eine endliche Folge von elementaren Abbildungen $φ^{(k)}$, die durch sukzessiv Anwendung
+   Unter einem Verfahren / Algorithmus zur (gegebenenfalls näherungsweise) Berechnung von $y$ aus $x$ verstehen wir eine endliche Folge von elementaren Abbildungen $φ^{(k)}$, die durch sukzessiv Anwendung
    einen Näherungswert $\tilde y$ zu $y$ liefern.
    \[x = x^{(0)} ↦ φ^{(1)}(x^{(0)}) = x^{(1)} ↦ \dots ↦ φ^{(k)}(x^{(k - 1)}) ↦ \tilde y \to y\]
    Im einfachsten Fall sind die $φ^{(i)}$ arithmetische Grundoperationen. Bei der Durchführung des Algorithmus auf dem Rechner treten in jedem Schritt Fehler auf (Rundungsfehler, Auswertungsfehler, \dots),
@@ -281,7 +281,7 @@
    \[\abs{\frac{Δy_1}{y_1}} \overset{·}{=} \underbrace{\frac{1}{1 + \frac{2w}{p}}}_{\gg 1} \frac{Δp}{p} + \underbrace{\frac{1}{1 + \frac{p}{2w}}}_{\gg 1} \frac{Δw}{w}\]
    $⇒$ Variante A ist instabil. Variante B ist stabil:
    \[\abs{\frac{Δy_1}{y_1}} \overset{·}{\leq} \underbrace{\abs{\frac{Δq}{q}}}_{\leq eps} + \underbrace{\abs{\frac{Δy_2}{y_2}}}_{\approx eps}\]
-   Regel: Bei der Lösung quadratischer Gleichungen sollten nicht beide Wurzeld aus der Lösugsformel berechnet werden. \\
+   Regel: Bei der Lösung quadratischer Gleichungen sollten nicht beide Wurzeln aus der Lösungsformel berechnet werden. \\
    Konkretes Beispiel: $p = -4, q = 0.01$ (vierstellige Rechnung)
    \begin{align*}
    u &= 4, v = 3.99, w = 1.9974948\dots, \tilde y_2 = -3.997(4981\dots) \\
@@ -289,7 +289,7 @@
    \end{align*}
    #+end_ex
    *Auswertung arithmetischer Ausdrücke* \\
-   Vorwärtirundunsgsfehleranalyse: Akkumulation des Rundungsfehlers ausgehend von Startwert.
+   Vorwärtsrundungsfehleranalyse: Akkumulation des Rundungsfehlers ausgehend von Startwert.
    #+begin_ex latex
    $y = f(x_1, x_2) = x_1^2 - x_2^2 = (x_1 - x_2)(x_1 + x_2)$
    Konditionierung:
@@ -314,7 +314,7 @@
    \tilde q &= u \odot v
    \end{aligned}
    \end{equation*}
-   Sei $x_1, x_2 ∈ A$. Für Maschienenoperationen $\oast$ und $a, b ∈ A$ gilt
+   Sei $x_1, x_2 ∈ A$. Für Maschinenoperationen $\oast$ und $a, b ∈ A$ gilt
    \[a \oast b = (a \ast b)(1 + ε), \abs(ε) \leq eps.\]
    Algorithmus A:
    \begin{align*}

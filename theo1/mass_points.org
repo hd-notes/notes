@@ -17,7 +17,7 @@
 	Gegeben: $a(t) = a_0,~t_0=0,v_0,x_0$ \\
 	\[\implies~v(t) = v_0 + \int_0^t a_0\mathrm{d}t' = v_0 + a_0 t\]
 	\[x(t) = x_0 + \int_0^t (v_0 + a_0 t')\mathrm{d}t' = x_0 + v_0 t + \frac{a_0}{2}t^2\]
-** Grundbegriffe der Differenzial und Integralrechung
+** Grundbegriffe der Differenzial und Integralrechnung
 *** Funktion
 	\[f: \mathbb{R} \rightarrow \mathbb{R},~x \mapsto f(x)\]
 *** Differentiation oder Ableitung
