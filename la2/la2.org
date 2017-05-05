@@ -14,3 +14,5 @@
 
 #+INCLUDE: "eigen_values.org" :minlevel 1
 #+INCLUDE: "dual_vector.org" :minlevel 1
+# Kapitel 4 Bilinearformen und Skalarprodukte
+#+INCLUDE: "bilinear_form.org" :minlevel 1

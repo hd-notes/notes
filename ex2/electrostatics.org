@@ -195,3 +195,81 @@
    &= \frac{ΔE_z}{Δ_x} Δx Δz - \frac{ΔE_x}{Δz}Δz Δx \\
    &= \underbrace{(\partial_x E_z - \partial_z E_x)}_{\rot} Δ A
    \end{align*}
+   Mathematik:
+   \begin{align*}
+   \rot \v E &= -\rot(\grad φ) = -\v ∇ × (\v ∇φ) = 0 \\
+   \Div \v E &= -\Div(\grad φ) = -\v ∇ · (\v ∇ φ) = -\v ∇^2 φ = -Δ φ \\
+   &= -(\frac{\partial^2 φ}{\partial x^2} + \frac{\partial^2 φ}{\partial y^2} + \frac{\partial^2 φ}{\partial z^2}) = \frac{ρ}{ε_0}
+   \end{align*}
+   #+ATTR_LATEX: :options [Poissongleichung]
+   #+begin_defn latex
+   \[Δφ = -\frac{φ}{ε_0}\]
+   Zentrale Gleichung der Elektrostatik
+   #+end_defn
+   #+ATTR_LATEX: :options [Laplacegleichung]
+   #+begin_defn latex
+   \[Δφ = 0\]
+   Echstein der mathematischen Physik [PTP3]
+   #+end_defn
+   Realisierung eines Feldes der Form
+   \begin{align*}
+   φ &= ax^2 + by^2 + cz^2 \quad a, b, c > 0 \\
+   Δφ &= 2a + 2b + 2c > 0 \\
+   \end{align*}
+   $2a + 2b + 2c$ ist immer $> 0 ⇒$ solches Feld nicht möglich.
+** Elektrische Felder geladener Felder
+   "Einfach": Berechnung für bekannte Ladungsverteilung. \\
+   "Schwierg": Berechnung in Anwesenheit von Leitern. \\
+   Für statische Felder gilt: \\
+   im Leiter $\v E = 0$ \\
+   im Hohlraum $q = 0, \v E = 0$ \\
+
+   Oberfläche eines Leiters: \\
+   1. $\v E \parallel \v A$
+   2. $\v E = \frac{σ}{ε_0}$
+      \begin{align*}
+      \d ϕ_E &= \v A \d \v A = E \d A \\
+      &= \dd{Q}{ε_0} \\
+      E &= \underbrace{\dd{Q}{A}}_{σ} \frac{1}{ε_0} = \frac{σ}{ε_0}
+      \end{align*}
+   3. $φ = \const$ an Leiteroberfläche.
+   Berechnung von Verteilungen von Ladungen schwierig. Hier nur qualitatives Verständnis. \\
+   Kugelladung (Radius $R$): \\
+   Innen: $E = 0, φ = \const$ \\
+   Außen: $E = 1/(4πε_0) Q/r^2$ \\
+   \begin{align*}
+   \v E(\v R) &= \frac{σ}{ε_0} \\
+   \v E(\v R) &= \frac{\v φ(R)}{R}
+   \end{align*}
+   $φ = \const ⇒$ Erzeugung hoher Felder für kleine $R$
+   #+ATTR_LATEX: :options [Zwei Kugeln (verbunden)]
+   #+begin_ex latex
+   verbunden $⇒ φ = φ_1 = φ_2 ⇒ Q_1 / R_1 = Q_2 / R_2$
+   \begin{align*}
+   R_1 &> R_2 \\
+   ⇒ Q_1 &> Q_2	\\
+   σ_1 &< σ_2 \\
+   E_1 &< E_2
+   \end{align*}
+   #+end_ex
+   kleiner krümmungsradius $⇒$ größeres Feld, größere Flächenladungsdichte. \\
+   Merke: Scharfe Kanten beziehungsweise kleiner Krümmugsradius bedeutet hohes E-Feld \\
+   #+ATTR_LATEX: :options [Halbraumleiter mit Ladung]
+   #+begin_ex latex
+   #+end_ex
+   #+ATTR_LATEX: :options [Dipol]
+   #+begin_ex latex
+   \begin{align*}
+   φ(\v r) &= \frac{1}{4πε_0} \left[\frac{q}{\abs{\v r - \frac{1}{2}\v d}} + \frac{-q}{\abs{\v r + \frac{1}{2}\v d}}\right] \\
+   φ(\v r) &= \frac{\v p \hat r}{4 π ε_0 r^2} \\
+   \v p &= q \v d \\
+   \v E &= y \grad φ \\
+   E(\v r) &= \frac{3(\v p\v r)\v r - r^2 \v p}{r^5} \tag{Elektrisches Dipolfeld (ohne Beweis)}
+   \end{align*}
+   Merke: Elektrischer Dipol, $r \gg d$
+   \[φ(\v r) \sim \frac{1}{r^2} \qquad E(\v r) \sim \frac{1}{r^3}\]
+   #+end_ex
+   Multipolentwicklung:
+   \[φ(\v r) = \frac{a_0}{r} + \frac{a_1}{r^2} + \frac{a_2}{r^3} + \dots\]
+   \[a_0 = \frac{Q}{4π ε_0} \quad a_1 = \frac{1}{4πε_0} · \v p \hat r\]
+   \[\v p = ∫ρ(\v r) \v r \d Q\]

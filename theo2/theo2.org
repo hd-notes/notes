@@ -17,3 +17,104 @@
 
 #+INCLUDE: "lagrange_variation.org" :minlevel 1
 #+INCLUDE: "symmetries_conservation_laws.org" :minlevel 1
+* Trägheitstensor
+** Trägheitsmoment und Satz von Steiner
+   Rotation von Körper um feste Achse $A$. Körper besteht aus Elementen $m_a$ mit Radius $r_{a, \perp}$.
+   Kontinuierlich: $m_a = \rho ΔV$. Einzige erlaubte Bewegung sei Drehung um Achse $A$:
+   \begin{align*}
+   T &\simeq \sum_{a} \frac{m_a}{2}v_a^2 = \sum_{a} \frac{m_a}{2} ω_2 r_{a,\perp}^2 \\
+   &= \frac{1}{2} I_A ω^2 \\
+   ⇒ I_A &\equiv \sum_{a} m_a r_{a, \perp}^2 \\
+   \intertext{Trägheitsmoment im Kontinuum:}
+   I_A = ∫ \d^2 \v r ρ(\v r) r_{\perp}^2
+   \end{align*}
+   Einziger Freiheitsgrad: Drehwinkel $φ$ (wobei $ω = \dot φ$)
+   \begin{align*}
+   L(φ, \dots φ) &= \frac{1}{2} I_A \dot φ^2 - V(φ) \\
+   ⇒ I_A \ddot{φ} &= -\pp{V}{φ}
+   \end{align*}
+   Annahme: $V$ ergibt sich als Summe der Potentiale aller Teilmassen:
+   \[V(φ) = \sum_{a} V_a(\v r_a(φ))\]
+   Betrachte
+   \begin{align*}
+   V(φ + δφ) &= \sum_{a} V_a(\v r_(φ) + δ\v v_a) \\
+   &= \sum_{a} V_a(\v r_a(φ) + δ\v φ × \v r_a(φ)) \\
+   &= \sum_{a} V_a + \sum_{a}(δ\v φ × \v r_a) · \v ∇ V_a(\v r_a(φ)) \\
+   V(φ + δφ) - V(φ) &= \sum_{a}(δ\v φ × \v r_a) \v ∇ V_a(\v r_a(φ)) \\
+   \intertext{Limes $δφ$ \to 0, δ\v φ = \v e_A δφ, \v e_A$ Einheitsvektor der Achse}
+   -\dd{V(φ)}{φ} &= -\sum_{a} \frac{δ\v φ × \v_a}{δφ} \v ∇V \\
+   &= \sum_{a} ε_{ijk}(\v e_A)_j (\v r_a)_k · (F_a)_i \\
+   &= \sum_{a} (\v e_A)_j (\v r_a × \v F_a)_j = \sum_{a} \v e_A · \v M_a
+   \end{align*}
+   $\v M_a$: Drehmoment auf Punkt "$a$". \\
+   Zuletzt: $I_A \ddot φ = -\dd{V}{φ}$
+   \[⇒ \dd{}{t}(I_A \dot φ) = \v e_A \v M\]
+   $\v M$: Gesamtdrehmoment. \\
+   Erinnerung: Drehimpuls für Punktmasse: $\v L = m\v r × \v v$
+   \[⇒ \v e_A · \v L = m \v e_A [(\v r_{\parallel} + \v r_{\perp}) × \v r]\]
+   \[\abs{\v r_{\perp} × \v v} = \abs{\v r_{\perp}} \abs{\v v} = \abs{\v_{\perp}} \abs{\v r_{\perp}} \dot φ\]
+   \[⇒ \v e_A \v L = m r_{\perp}^2 \dot φ ⇒ \v e_A \v L = I_A \dot φ\]
+   \[⇒ \v e_A · \dot{\v L} = \v e_A \v M\]
+   Bemerkung: $I_A$ ist besonders einfach zu berechnen falls $A \parallel S$ (Schwerpunktsachse) und $I_S$ bekannt, $\v R_{\perp}$ ist der (senkrechte) Abstand der beiden Achsen.
+   \begin{align*}
+   I_A &= \sum_{a} m_a v_{0,\perp}^2 = \sum_{a} m_a (\v R_{\perp} + \v r_{\perp, a}')^2 \\
+   \intertext{Summe der Mischterme fällt weg}
+   I_A &= \sum_{a} m_a (\v R_{\perp}^2 + \v r_{a, \perp}^{\prime 2}) \\
+   \intertext{Satz von Steiner:}
+   ⇒ I_A &= M \v R_{\perp}^2 + I_s
+   \end{align*}
+** Trägheitstesor
+   Berechne kinetische Energie einen Körpers der sich mit $\v v$ und mit $\v ω$ um Achse durch Schwerpunkt dreht.
+   \begin{align*}
+   T &= \sum_{a} \frac{m_a}{2} \v v_a^2 = \sum_{a} \frac{m_a}{2}(\v v + \v ω × \v r_a)^2 \\
+   &= \sum_{a} \frac{m_a}{2}(\v v^2 + 2\v v(\v ω × \v r_a) + (\v ω × \v r_a)^2) \\
+   \intertext{"Mischterm" fällt weg, da $\sum_a m_a \v r_a = 0$, wegen Schwerpunktbedingung}
+   &= \frac{M}{2}\v v^2 + \sum_{a} \frac{m_a}{2}(\v ω + \v r_a)^2 \\
+   &= \frac{M}{2}\v v^2 + \frac{1}{2} I_{ij} ω_i ω_j \\
+   I_{ij} &\equiv \sum_{a} m_a (δ_{ij} \v r_a^2 - (\v r_a)_j (\v r_a)_j) \\
+   \intertext{Integralform:}
+   I_{ij} = ∫ \d^3 \v r ρ(\v r)(δ_{ij} \v r^2 - r_i r_j)
+   \end{align*}
+   Speziell für $\v r = (x, y, z)$ findet man:
+   \[I = ∫\d x \d y \d z ρ(\vr ) \begin{pmatrix}y^2 + z^2 &  -xy & -xz \\ -xy & x^2 + z^2 & -yz \\  -xz & -yz & x^2 + y^2\end{pmatrix}\]
+   #+ATTR_LATEX: :options [homogener Würfel]
+   #+begin_ex latex
+   $∫\d x \to ∫_{-a/2}^{a/2}\d x$
+   \[∫_{-a/2}^{a/2} \d x ∫_{-a/2}^{a/2} \d y y^2 ∫_{-a/2}^{a/2} \d z = a · \frac{a^3}{12} · a\]
+   Insgesamt:
+   \[I = a^2 ρ \begin{pmatrix}\frac{1}{6}a^3 &  &  \\  & \frac{1}{6} a^3 &  \\  &  & \frac{1}{6} a^3\end{pmatrix} = \frac{1}{6} M a^2 \mathbb{1}\]
+   #+end_ex
+** Hauptträgheitsachsen
+   Tensor ist (wie) Vektor ein geometrisches Objekt. Er beschreibt Dichte/ Form des Körpers.
+   Bei Drehungen des Körpers: Dreht sich mit: $I_{ij}' = R_{ik} R_{jl} I_{kl} ⇔ I' = R I R^T = R I R^{-1}$ (aktive Sicht). \\
+   Passire Sicht: Für die Komponenten von $I$ im gedrehten Koordinatensystem gilt:
+   \[I_{ij}' = R_{ik}R_{jl}I_{kl}\]
+   Zentraler Satz: Jede symmetrische, reelle Matrix kann durch eine orthogonale Transformation auf Diagonalform gebracht werden.
+   $⇒$ Wir können als stets den Körper so drehen beziehungsweise das Koordinatensystem so wählen, dass
+   \[I = \begin{pmatrix}I_1 & 0 & 0 \\ 0 & I_2 & 0 \\ 0 & 0 & I_3\end{pmatrix}\]
+   $I_1, I_2, I_3$ heißen Hauptträgheitsmonente. Die Koordinaten $\hat e_1, \hat e_2, \hat e_3$ des Systems in dem $I$ diagonal ist heißen
+   Hauptträgheitsachsen. (im Allgemeinen sind dies die Symmetrieachsen des Körpers, soweit vorhanden). \\
+   Sei $\v v = 0$, sei $\v ω = ω \hat e$ ($\hat e$ beliebiger Einheitsvektor).
+   \[⇒ T = \frac{1}{2}I_{ij}ω_i ω_j = \frac{1}{2} I_{ij} \hat e_i \hat e_j ω^2 \equiv \frac{1}{2} I_e ω^2\]
+   (Daher ist $I_e \equiv I_{ij} \hat e_i \hat e_j$) das Trägheitsmoment bezüglich $\hat e$. \\
+   Sei speziell $I$ diagonal und $\hat e = \hat e_1 = (1, 0, 0)$. Es folgt $I_e = I_{11} = I_1$, sprich: Die Hauptträgheitsmomente sind also gerade die Trägheitsmomente bezüglich die
+   Hauptträgheitsachsen. \\
+   Außerdem gilt:
+   \[I_{ij}(\hat e_1)_j = I_{ij} δ_{j1} = I_{i1} = I_1 δ_{i1} = I_1(\hat e_1)_i\]
+   Matrixschreibweise:
+   \[I \hat e_1 = I_1 \hat e_1\]
+   Demnach ist $\hat e_1$ ein *Eigenvektor* von $I$ mit *Eigenwert* $I_1$. Die Existenz
+   eines gewissen Eigenvektors und dessen Eigenwert sind *koordinatenunabhängig*!
+   In der Tat:
+   \begin{align*}
+   R · I \hat e_1 &= I_1 R \hat e_1 \\
+   (R I R^{-1}) R &= I_1 R \hat e_1 \\
+   I' \hat e_1' &= I_1 \hat e_1' \qquad \hat e_1' = R\hat e_1
+   \end{align*}
+   Wir sehen: Die Matrix $I$ hat 3 Eigenvektoren $\hat e_{(a)}$. Diese Eigenvektoren
+   definieren die Hauptträgheitsachsen. Die Eigenwerte $I_a$ sind die entsprechenden Hauptträgheitsmomente.
+** Trägheitsellipsoid
+   Bisher: $I_{\text{würfel}} = \frac{1}{6} M a^2 \mathbb{1}$ \\
+   Nächstes Beispiel: Kugel, ohne Rechnung: $I \sim \mathbb{1}$, Warum? \\
+   Es muss gelten: $I = R I R^{-1} ∀ R ∈ SO(3)$. Fakt: $δ_{ij}$ ist der einzige invariante Tensor von $SO(3)$
+   mit zwei Indizes.

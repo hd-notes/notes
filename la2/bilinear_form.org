@@ -1,0 +1,172 @@
+* Bilinearformen
+  In diesem Abschnitt sei $V$ stets ein K-VR.
+  #+begin_defn latex
+  $γ: V × V \to K$ heißt eine Bilinearform auf $V$, genau dann wenn die folgenden Bedingungen erfüllt sind:
+  - (B1) $γ(v_1 + v_2, w) = γ(v_1, w) + γ(v_2, w), γ(λ v, w) = λ γ(v, w)$
+  - (B2) $γ(v, w_1 + w_2) = γ(v, w_1) + γ(v, w_2), γ(v, λ w) = λ γ(v, w)$
+  $∀ v, w, v_1, v_2, w_1, w_2 ∈ V, λ ∈ K$.
+  #+end_defn
+  #+begin_ex latex
+  1. $K = ℝ, V = ℝ^n, γ: ℝ^n × ℝ^n \to ℝ, γ(\cvec{x_1; \dots; x_n}, \cvec{y_1; \dots; y_n}) = x_1 y_1 + \dots + x_n y_2$
+	 ist eine Bilinearform auf $ℝ^n$.
+  2. $K = ℝ, V = l[0, 1], γ: l[0, 1] × l[0, 1] ↦ ℝ, γ(f, g) := \∫_0^1 f(t) g(t) \d t$
+	 ist eine Bilinearform auf $l[0, 1]$.
+  3. $K = ℝ, V = ℝ^2, γ: ℝ^2 × R^2 \to ℝ, γ(\cvec{x_1; x_2}, \cvec{y_1; y_2}) = x_1 y_1 + 2 x_1 y_2 - x_2 y_2$
+	 ist eine Bilinearform auf $ℝ^2$.
+  #+end_ex
+  #+begin_defn latex
+  $V$ endlichdimensional, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V, γ$ Bilinearform auf $V$
+  \[M_{\mathcal{B}}(γ) = (γ(v_i, v_j))_{\substack{1 \leq i \leq n\\ 1 \leq j \leq n}} ∈ M(n × n, K)\]
+  heihßb die *Darstellungsmatrix* (*Fundamentalmatrix*) von $γ$ bezüglich $\mathcal{B}$.
+  #+end_defn
+  #+begin_ex latex
+  1. In	20.2a ist für $\mathcal{B} = (e_1, \dots, e_n): M_{\mathcal{B}}(γ) = E_n$
+  2. In 20.2p ist für $\mathcal{B} = (e_1, e_2): M_{\mathcal{B}}(γ) = \begin{pmatrix}1 & 2 \\ 0 & -1\end{pmatrix}$
+  #+end_ex
+  #+begin_remark latex
+  $V$ endlichdimensional, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V, γ$ Bilinearform auf $V, A = M_{\mathcal{B}}(γ)$,
+  $Φ_{\mathcal{B}}: K^n \to V$ Koordinatensystem zu $\mathcal{B}, v, w ∈ V, x = \cvec{x_1; \vdots; v_n} = Φ_{\mathcal{B}}^{-1}(v)$, das heißt $v = x_1 v_1 + \dots + x_n v_n$,
+  \[y = \cvec{y_1; \vdots; y_n} = Φ_{\mathcal{B}}^{-1}(w)\]
+  das heißt $w = q_1 v_1 + \dots + y_n v_n$. Dann gilt:
+  \[γ(v, w) = Φ_{\mathcal{B}}^{-1}^T A Φ_{\mathcal{B}}^{-1}(w) = x^t A y = \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix} A \cvec{y_1; \vdots; y_n}\]
+  #+end_remark
+  #+begin_proof latex
+  Es ist
+  \begin{align*}
+  y(v, w) &= γ(x_1 v_1 + \dots + x_n v_n, y_1 v_1 + \dots + y_n v_n) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i y_j γ(v_i, v_j) \\
+  &= \sum_{i = 1}^{n} x_i \sum_{j = 1}^{n} γ(v_i, y_j) y_j = x^T A y
+  \end{align*}
+  #+end_proof
+  #+begin_remark latex
+  $V$ endlichdimensional, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V, A ∈ M(n × n, K)$. Dann gilt: Durch
+  \[Δ_A^{\mathcal{B}}: V × V \to K, (v, w) ↦ Φ_{\mathcal{B}}^{-1}(v)^T A Φ_{\mathcal{B}}^{-1}(w)\]
+  ist eine Bilinearform auf $V$ gegeben.
+  #+end_remark
+  #+begin_proof latex
+  Nachrechnen.
+  #+end_proof
+  #+ATTR_LATEX: :options [wichtiger Spezialfall von 20.6]
+  #+begin_ex latex
+  $V = K^n, \mathcal{B} = (e_1, \dots, e_n), A ∈ M(n × n, K) ⇒ Φ_{\mathcal{B}} = \id_{K^n}$. Durch
+  \[Δ_A^{(e_1, \dots, e_n)}: K^n × K^n \to K, (v, w) ↦ v^t A w\]
+  ist eine Bilinearform auf $K^n$ gegeben. Wir setzen kurz $Δ(A) := Δ_A := Δ_A^{(e_1, \dots, e_n)}$
+  #+end_ex
+  #+begin_remdef latex
+  $\Bil(V):= \{γ: V × V \to K \mid γ \text{ ist Bilinearform }\}$ ist ein K-VR, ist ein UVR vom K-VR $\Abb(V × V, K)$
+  #+end_remdef
+  #+begin_remark latex
+  $V$ endlichdimensional, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V$. Dann gilt: Die Abbildung
+  \[M_{\mathcal{B}}: \Bil(V) \to M(n × n, K)\]
+  ist ein Isomorphismus von K-VR mit Umkehrabbildung
+  \[Δ^{\mathcal{B}}: M(n × n, K) \to \Bil(V), A ↦ Δ_A^{\mathcal{B}}\]
+  #+end_remark
+  #+begin_proof latex
+  1. $M_{\mathcal{B}}$ linear: nachrechnen.
+  2. $Δ^{\mathcal{B}} \circ M_{\mathcal{B}} = \id_{\Bil(V)}$, denn: Sei $γ ∈ \Bil(V)$
+	 \begin{align*}
+	 ⇒ (Δ^{\mathcal{B}} \circ M_{\mathcal{B}})(γ)(v_i, v_j)	&= Δ_{M_{\mathcal{B}}(γ)}^{\mathcal{B}}(v_i, v_j) = Φ_{\mathcal{B}}^{-v}(v_1)^t M_{\mathcal{B}}(γ) Φ_{\mathcal{B}}^{-1}(v_j) \\
+	 &= e_i^T M_{\mathcal{B}}(γ)e_j = γ(v_i, v_j)
+     \end{align*}
+  3. $M_{\mathcal{B}} \circ Δ^{\mathcal{B}} = \id_{M(n × n, K)}$, denn: Sei $A = (a_{ij}) ∈ M(n × n, K), B = (b_{ij}) = (M_{\mathcal{B}} \circ Δ^{\mathcal{B}})(A) = M_\mathcal{B} \circ Δ_A^{\mathcal{B}}$
+	 \[b_{ij} = Δ_A^{\mathcal{B}}(v_i, v_j) = Φ_{\mathcal{B}}^{-1}(v_i)^T A Φ_{\mathcal{B}}(v_j) = e_i^T A e_j = a_{ij}\]
+	 $⇒ B = A$
+  #+end_proof
+  #+begin_thm latex
+  $V$ endlichdimensional, $\mathcal{A}, \mathcal{B}$ Basen von $V, γ$ Bilinearform auf $V$. Dann gilt:
+  \[M_{\mathcal{B}}(γ) = (T_{\mathcal{A}}^{\mathcal{B}})^T M_{\mathcal{A}}(γ) T_{\mathcal{A}}^{\mathcal{B}}\]
+  #+end_thm
+  #+begin_proof latex
+  Für $v, w ∈ V$ ist
+  \begin{align*}
+  Φ_{\mathcal{B}}^{-1}(v)^T M_{\mathcal{B}}(w) &= γ(v, w) = Φ_{\mathcal{A}}^{-1}(v)^T M_{\mathcal{A}}(γ) Φ_{\mathcal{A}}^{-1}(w) \\
+  \intertext{16.2.2: $\tilde T_{\mathcal{A}}^{\mathcal{B}} = Φ_{\mathcal{A}}^{-1} \circ Φ_{\mathcal{B}}$}
+  &= (T_{\mathcal{A}}^{\mathcal{B}} Φ_{\mathcal{B}}^{-1}(v))^T M_{\mathcal{A}}(γ) T_{\mathcal{A}}^{\mathcal{B}} Φ_{\mathcal{B}}^{-1}(w) \\
+  &= Φ_{\mathcal{B}}^{-1}^T (T_{\mathcal{A}}^{\mathcal{B}})^T M_{\mathcal{A}}(γ) T_{\mathcal{A}}^{\mathcal{B}} Φ_{\mathcal{B}}^{-1}(w) \\
+  ⇒ Δ^{\mathcal{B}}(M_{\mathcal{B}}(γ))(v, w) &= Δ^{\mathcal{B}}((T_{\mathcal{A}}^{\mathcal{B}})^T M_{\mathcal{A}}(γ) T_{\mathcal{A}}^{\mathcal{B}})(v, w) \\
+  ⇒ Δ^{\mathcal{B}}(M_{\mathcal{B}}(γ)) &= Δ^{\mathcal{B}}((T_{\mathcal{A}}^{\mathcal{B}})^T M_{\mathcal{A}}(γ) T_{\mathcal{A}}^{\mathcal{B}}) \\
+  \intertext{$Δ^{\mathcal{B}}$ Isomorphismus}
+  ⇒ M_{\mathcal{B}}(γ) = (T_{\mathcal{A}}^{\mathcal{B}})^T M_{\mathcal{A}}(γ) T_{\mathcal{A}}^{\mathcal{B}}
+  \end{align*}
+  #+end_proof
+  #+begin_defn latex
+  $V$ endlichdimensional, $γ$ Bilinearform auf $V$. Wir setzen $\Rang(γ) := \Rang M_{\mathcal{B}}(γ)$, wobei $\mathcal{B}$ eine Basis von $V$ ist.
+  #+end_defn
+  #+begin_note latex
+  Dies ist wohldefiniert. (folgt aus 20.10, da die Matrizen $T_{\mathcal{A}}^{\mathcal{B}}$ invertiebar sind)
+  #+end_note
+  #+begin_remdef latex
+  Es gilt:
+  1. Ist $γ: V × V \to K$ eine Bilinearform, dann induziert $γ$ die linearen Abbildungen
+	 \begin{align*}
+	 Γ_l: V \to V^{\ast}, w ↦ γ(·, w) &\qquad γ(·, w): V \to K, v ↦ γ(v, w) \\
+	 Γ_r: V \to V^{\ast}, v ↦ γ(v, ·) &\qquad γ(v, ·): V \to K, v ↦ γ(v, w) \\
+     \end{align*}
+  2. Jede lineare Abbildung $Γ: V \to V^{\ast}$ induziert Bilinearformen
+	 \begin{align*}
+	 γ_l: V × V \to K, γ_l(v, w) &:= Γ(w)(v) \\
+	 γ_r: V × V \to K, γ_r(v, w) &:= Γ(v)(w) \\
+     \end{align*}
+  Die Zuordnungen aus 1., 2. induzieren den Isomorphismus $\Bil(V) \cong \Hom_K(V, V^{\ast})$
+  #+end_remdef
+  #+begin_proof latex
+  Nachrechnen.
+  #+end_proof
+  #+begin_defn latex
+  $γ$ Bilinearform auf $V$. $γ$ heißt *nicht-ausgeartet* $⇔$ $Γ_l$ und $Γ_r$ sind injektiv.
+  \[⇔ γ(v, w) = 0 ∀ v ∈ V ⇒ w = 0\]
+  (Injektivität von $Γ_l$), und
+  \[⇔ γ(v, w) = 0 ∀ w ∈ V ⇒ v = 0\]
+  (Injektivität von $Γ_r$). \\
+  $γ$ heißt *perfekt* $⇔$ $Γ_l$ und $Γ_r$ sind Isomorphismen.
+  #+end_defn
+  #+begin_remark latex
+  $V$ endlichdimensional, $γ$ Bilinearform auf $V, \mathcal{B} = (v_1, \dots, v_n)$ Basis von $V, \mathcal{B}^{\ast}$ duale Basis zu $\mathcal{B}$. Dann gilt:
+  \[M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_l) = M_{\mathcal{B}}(γ) = (M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_r))^T\]
+  #+end_remark
+  #+begin_proof latex
+  Behauptung: Es ist $Γ_l(v_i) = γ(v_1, v_i)v_1^{\ast} + \dots + γ(v_n, v_i) v_n^{\ast}$, denn $Γ_l(v_i)(v_j) = γ(v_j, v_i)$ nach Definition
+  \[(γ(v_1, v_i)v_1^{\ast} + \dots + γ(v_n, v_i)v_n^{\ast})(v_j) = γ(v_j = v_i)\]
+  Somit: $M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_l) = M_{\mathcal{B}}(γ)$. \\
+  Analog: $Γ_r(v_i) = γ(v_i, v_1) v_1^{\ast} + \dots + γ(v_i, v_n) v_n^{\ast} ⇒ M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_r) = (M_{\mathcal{B}}(γ))^T$
+  #+end_proof
+  #+begin_conc latex
+  $V$ endlichdimensional, $γ$ Bilinearform auf $V, \mathcal{B}$ Basis von $V$. Dann sind äquivalent:
+  1. $γ$ ist nich-ausgeartet
+  2. $γ$ ist perfekt
+  3. $ M_{\mathcal{B}}(γ)$ invertierbar
+  4. $Γ_l$ injektiv
+  5. $Γ_r$ injektiv
+  #+end_conc
+  #+begin_proof latex
+  1. $⇔$ 2. wegen $\dim V = \dim V^{\ast}$ und 12.12
+  $γ$ perfekt $⇔ Γ_l, Γ_r$ Isomorphismen $⇔ M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_l), M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_r)$ invertierbar $⇔ M_{\mathcal{B}}(γ)$
+  invertierbar.	$M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_l), M_{\mathcal{B}^{\ast}}^{\mathcal{B}}(Γ_r) ⇔ Γ_l$ Isomorphismus $⇔ M_{\mathcal{B}^{\ast}}^\mathcal{B}$ invertierbar.
+  #+end_proof
+  #+begin_defn latex
+  $γ$ Bilinearform auf $V$. \\
+  $γ$ heißt *symmetrisch* $⇔ γ(v, w) = γ(w, v) ∀ v, w ∈ V$ \\
+  $γ$ heißt *antisymmetrisch* $⇔ γ(v, w) = -γ(w, v) ∀ v, w ∈ V$ \\
+  $γ$ heißt *alterniernd* $⇔ γ(v, v) = 0 ∀ v ∈ V$.
+  #+end_defn
+  #+begin_note latex
+  - $γ$ symmetrisch $⇒ Γ_l = Γ_r$
+  - Für $\char(K) \neq 2$ gilt: $γ$ alternierned $⇔ γ$ antisymmetrisch
+  - Für $\char(K) = 2$ gilt immer noch $γ$ alternierend $⇒ γ$ (anti)symmetrisch
+	Die Umkehrung ist falsch: $γ: \mathbb{F}_2^3 × \mathbb{F}_2^3 \to \mathbb{F}, γ(x, y) = x_1 y_1 + x_2 y_2 + x_3 y_3$
+	ist (anti)symmetrisch, aber nicht alternierend:
+	\[γ(\cvec{\bar 1; \bar 0; \bar 0}, \cvec{\bar 1; \bar 0; \bar 0}) = \bar 1 \neq \bar 0\]
+  #+end_note
+  #+begin_remark latex
+  $V$ endlichdimensional, $\mathcal{B}$ Basis von $V, γ$ Bilinearform auf $V$. Dann gilt:
+  1. $γ$ symmetrisch $⇔ M_{\mathcal{B}}(γ)$ ist symmetrisch, das heißt $M_{\mathcal{B}}(γ)^T = M_{\mathcal{B}}(γ)$
+  2. $γ$ antisymmetrisch $⇔ M_{\mathcal{B}}(γ)$ ist antisymmetrisch, das heißt $M_{\mathcal{B}}(γ)^T = -M_{\mathcal{B}}(γ)$
+  #+end_remark
+  #+begin_proof latex
+  1. "$⇒$" klar \\
+	 "$\impliedby$" Sei $M_{\mathcal{B}}(γ) = M_{\mathcal{B}}(γ)^T ⇒$ Für $v, w$ ist
+	 \begin{align*}
+	 γ(v, w) &= Φ_{\mathcal{B}}^{-1}(v)^T M_{\mathcal{B}}(γ)Φ_{\mathcal{B}}^{-1}(w) = Φ_{\mathcal{B}}^{-1}(v)^T M_{\mathcal{B}}(γ)^T Φ_{\mathcal{B}}^{-1}(w)^T \\
+	 &= \underbrace{(Φ_{\mathcal{B}}^{-1}(w)^T M_{\mathcal{B}}(γ)Φ_{\mathcal{B}}^{-1})^T}_{∈ K} = Φ_{\mathcal{B}}^{-1}(w)^T M_{\mathcal{B}}(γ) Φ_{\mathcal{B}}^{-1}(v) = γ(w, v).
+     \end{align*}
+  2. analog.
+  #+end_proof

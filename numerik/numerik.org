@@ -40,3 +40,134 @@
 
 #+INCLUDE: "introduction.org" :minlevel 1
 #+INCLUDE: "error_analysis.org" :minlevel 1
+* Interpolation und Approximation
+  Grundproblem: \\
+  Darstellung und Auswertung von Funktionen. \\
+  Aufgabenstellung:
+  1. Eine Funktion $f(x)$ ist nur auf einer diskreten Menge von Argumenten $x_0, \dots, x_n$ bekannt und soll rekonstruiert werden
+	 (zum Beispiel für Graph Ausgabe)
+  2. Eine analytisch gegebene Funktion $f(x)$ soll auf dem Rechner so dargestellt werden, dass jederzeit Funktionswerte
+	 zu beliebigen Argument $x$ berechnet werden können.
+  $\to$ System mit unendlich vielen Freiheitsgraden $y = f(x)$. "Simulation" durch endlich viele Datensätze in Klassen $P$ von einfach strukturierten Funktionen
+  - Polynome: $p(x) = a_0 + a_1 x + \dots + a_n x^n$
+  - rationale Funktionen:
+	\[r(x) = \frac{a_0 + a_1 x + \dots + a_n x^n}{b_0 + b_1 x + \dots + b_m x^m}\]
+  - trigonometrische Funktionen
+	\[t(x) = \frac{1}{2} a_0 + \sum_{k = 1}^{n} (a_k \cos(k x) + b_k \sin(k x))\]
+  - Exponentialsummen
+	\[e(x) = \sum_{k = 1}^{n} a_k \exp(b_k x)\]
+  #+begin_defn latex
+  Geschieht die Zuordnung eines Elementes $g ∈ P$ zur Funktion $f$ durch Fixieren von Funktionswerten
+  \[g(x_i) = y_i = f(x_i), i = 0, \dots, n\]
+  so spricht man von *Interpolation*.
+  Ist $g$ im gewissen Sinne die beste Darstellung von $f$, zum Beispiel: \\
+  $\max_{a \leq x \leq b} \abs{f(x) - g(x)}$ minimal für $g ∈ P$, oder \\
+  $(∫_a^b \abs{f(x) - g(x)}^2 \d x)^{1/2}$ minimal für $g ∈ P$
+  so spricht man von *Approximation*. Die Wahl der Konstruktion von $g ∈ P$ hängt von der zu erfüllenden Aufgabe ab.
+  Offenbar ist die Interpolation eine Approximation mit
+  \[\max_{i = 0, \dots, n} \abs{f(x_i) - g(x_i)}\]
+  für $g ∈ P$
+  #+end_defn
+  Wiederholung: Interpolition und Approximation
+  - Stützstellen $x_i$ mit Werten $y_i, i = 0, \dots, n$
+  -	Klassen $P$ von Funktion
+  *Polynominterpolation* \\
+  Wir bezeichnen mit $P_n$ den Vektorraum der Polynome vom Grad $\leq n$:
+  \[P_n = \{p(x) = a_0 + a_1 x + \dots + a_n x^n \mid a_i ∈ ℝ, i = 0, \dots, n\}\]
+  #+ATTR_LATEX: :options [Lagrangasche Interpolationsaufgabe]
+  #+begin_defn latex
+  Die Lagrangscheinterpolationsaufgabe besteht darin zu $x + 1$ paarweise verschiedenen Stützstellen (auch Knoten genannt) $x_0, \dots, x_n ∈ ℝ$ und
+  gegebenen Knotenwerten $y_0, \dots, y_n ∈ ℝ$ ein Polynom $p ∈ P_n$ zu bestimmen mit der Eigenschaft $p(x_i) = y_i$
+  #+end_defn
+  #+begin_thm latex
+  Die Lagrangsche Interpolationsaufgabe ist eindeutig lösbar.
+  #+end_thm
+  #+begin_proof latex
+  *Eindeutigkeit*: Sind $p_1, p_2 ∈ P_n$ Lösungen, so gilt für $p = p_1 - p_2$, dass
+  \[p(x_i) = p_1(x_i) - p_2(x_i) = y_i - y_i = 0, i = 0, \dots, n\]
+  Also hat $p$ $n + 1$ Nullstellen und ist folglich identisch Null. $⇒ p_1 = p_2$ \\
+  *Existenz:* Wir betrachten die Gleichungen
+  \[p(x_i) = y_i \qquad i = 0, \dots, n\]
+  Dies ist ein lineares Gleichungssystem mit $n + 1$ Gleichungen und $n + 1$ Freiheitsgraden.
+  \[\begin{pmatrix}x_0^0 & x_0^1 & \dots & x_0^n \\ x_1^0 & x_1^1 &   & x_1^n \\ \vdots &   & \ddots & \vdots \\ x_n^0 & x_n^1 & \dots & x_n^n\end{pmatrix} \cvec{a_0; a_1; \vdots; a_n} = \cvec{y_0; y_1; \vdots; y_n}\]
+  Wegen der Eindeutigkeit von $p$ ist $\ker V = \{0\}$. Mit dem Rangsatz ($\dim ℝ^{n + 1} = \dim \der V + \dim \im V$) liefert $V$ eine surjektive Abbildung.
+  Damit existiert eine Lösung.
+  #+end_proof
+  Zur Konstruktion des Interpolationspolynoms $p ∈ P_n$ verwenden wir die sogenannten Lagrangschen Basispolynome.
+  \[L_i^{(n)}(x) = \prod_{\substack{j = 0\\ j \neq i}}^n \frac{x - x_j}{x_i - x_j} ∈ P_n, i = 0, \dots, n\]
+  #+begin_lemma latex
+  $\{L_i^{(n)}, i = 0, \dots, n\}$ ist eine Basis von $P_n$
+  #+end_lemma
+  #+begin_proof latex
+  Übung.
+  #+end_proof
+  Offensichtlich gilt:
+  \[L_i^{(n)}(x_k) = δ_{ij} = \begin{cases} 1 & i = j \\ 0 & i \neq j\end{cases}\]
+  #+begin_defn latex
+  Das Polynom
+  \[p(x) = \sum_{i = 0}^{n} y_i L_i^{(n)}(x) ∈ P_n\]
+  hat die gewünschten Eigenschaften
+  \[p(x_j) = y_j, j = 0, \dots, n\]
+  und wird die Lagrangsche Darstellung des (Lagrangschen) Interpolationspolynoms zu dem Stützpunkten $(x_i, y_i), i = 0, \dots, n$ genannt.
+  #+end_defn
+  Nachteil: Bei Hinzunahme eines weiteren Stützpunktes $(x_{n+1}, y_{n + 1})$ ändern sich die Basispolynome völlig. \\
+  Abhilfe: Newtonsche Basispolynome
+  \[N_0(x) = 1, N_i(x) = (x - x_{i - 1})N_(i - 1)(x) = \prod_{j = 0}^{i - 1}(x - x_j)\]
+  Für den Ansatz
+  \[p(x) = \sum_{i = 0}^{n} a_i N_i(x)\] erhält man durch Auswertung von $x_0, \dots, x_n$ das gestaffelte Gleichungssystem
+  \begin{align*}
+  y_0 &= p(x_0) = a_0 \\
+  y_1 &= p(x_1) = a_0 + a_1 (x_1 - x_0) \\
+  &\vdots \\
+  y_0 &= p(x_0) = a_0 + a_1 (x_1 - x_0) + \dots + a_n(x_n - x_0) · \dots · (x_n - x_{n - 1}) \\
+  \end{align*}
+  aus dem sich die Koeffizienten $a_i$ rekursiv berechnen lassen. Bei Hinzunahme eines weiteren Stützpunktes $(x_{n + 1}, y_{n + 1})$
+  setzt man den Prozess mit der Basisfunktion $N_{n + 1}$ fort. In der Praxis verwendet man folgende stabilere und effizientere Methode
+  #+ATTR_LATEX: :options [Newtonsche Darstellung]
+  #+begin_thm latex
+  Das Lagrangsche Interpolationspolynom zu den Punkten $(x_0, y_0), \dots, (x_n, y_n)$ lässt sich bezüglich der Newtonschen Polynombasis
+  schreiben in der Form
+  \[p(x) = \sum_{i = 0}^{n} y[x_0, \dots, x_i]N_i(x)\]
+  Dabei bezeichnen $y[x_0, \dots, x_i]$ die zu den Punkten $(x_i, y_i)$ gehörenden "dividierten Differenzen", welhce rekursiv definiert sind durch
+  \begin{align*}
+  \text{für } j = 0, \dots, n: &y[x_j] = y_j \\
+  L \text{für } k = 1, \dots, j: i = k - j: y\underbrace{[x_i, \dots, x_{1 + k}]}_{k + 1} = \frac{y\underbrace{[x_{i + 1}, \dots, x_{1 + k}]}_{k} - y\underbrace{[x_i, \dots, x_{x_1 + k - 1}]}_{k}}{x_{i + k} - x_i}
+  \end{align*}
+  #+end_thm
+  #+begin_proof latex
+  Es bezeichne $p {i, i + k} ∈ P_k$ das Polynom, welhces die Punkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k})$ interpoliert.
+  Speziell ist $p_{0, n} = p$ das gesuchte Interpolationspolynom. Wir zeigen
+  \[p_{i, i + k}(x) = y[x_i] + y[x_i, x_{i + 1}](x - x_i) + \dots + y[x_i, \dots, x_{i + k}](x - x_i) · \dots · (x - x_{i + k})\]
+  was für $i = 0$ und $k = n$ den Satz beweist. Der Beweis wird durch Induktion über die Indexdifferenz $k$ geführt. Für $k = 0$ ist
+  $p_{i,i} = y_i = y[x_i], i = 0, \dots, n$. Sei die Behauptung richtig für $k - 1 \geq 0$. Nach Konstruktion gilt für ein $a ∈ ℝ$
+  \[p_{i, i + k}(x) = p_{i,i + k - 1}(x) + a(x - x_1) · \dots · (x - x_{i + k - 1}) = 0\]
+  für $x = x_j, j = i, \dots, i + k - 1$. Zu zeigen: $a = y[x_i, \dots, x_{i + k}]$.
+  Offenbar ist $a$ der Koeffizient von $x^k$ in $p_{0, i + k}$. Nach Induktionsannahme ist also
+  \begin{align*}
+  p_{i,i + k - 1}(x) &= \dots + y[x_i, \dots, x_{i + k - 1}]x^{k - 1} \\
+  p_{i + 1,i + k - 1}(x) &= \underbrace{\dots}_{\mathclap{\text{Grad } \leq k - 2}} + y[x_{i + 1}, \dots, x_{i + k}]x^{k - 1} \\
+  \end{align*}
+  Ansatz:
+  \begin{align*}
+  q(x) &= \frac{(x - x_i)p_{i + 1, i + k}(x) - (x - x_{i + k})p_{i,i + k - 1}(x)}{x_{i + k} - x_i} \\
+  &= p_{i,i + k - 1}(x) + \frac{(x - x_i)p_{i + 1, i + k}(x) - (x - x_{i + k} + x_{i + k} - x i)p_{i, i + k - 1}(x)}{x_{i + k} - x_i} \\
+  &= p_{i,i + k - 1}(x) + (x - x_i)\frac{p_{i + 1, i + k}(x) - p_{i,i + k - 1}(x)}{x_{i + k} - x_i} \\
+  \end{align*}
+  Ex gilt:
+  \[q(x_i) = y_i, q(x_{i + k}) = \frac{(x_{i + k} - x_i)y_{i + k} + 0}{x_{i + k} - x_i} = y_{1 + k}\]
+  \[q(x_j) = \frac{(x_j - x_i)y_j - (x_j - x_{i + k})y_j}{x_{i + k} - x_i} = y_j, j = i +1 , \dots, i + k - 1\]
+  $⇒ q$ interpoliert die Stützpunkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k}) ⇒ q \equvi p_{i, i + k}$ (Eindeutigkeit des Interpolationspolynoms).
+  Der führende Koeffizient in $p_{i, i + k}(x)$ ist demnach
+  \begin{align*}
+  q &= \frac{y[x_{i + 1}, \dots, x_{i + k}] - y[x_i, \dots, x_{i + k - 1}]}{x_{i + k} - x_i} \\
+  &= y[x_i, \dots, x_{i + k}]
+  \end{align*}
+  #+end_proof
+  #+begin_korollar latex
+  Sei $σ: \{0, \dots, n\} \to \{0, \dots, n\}$ eine
+  beliebige Permutation. Dann gilt für die Stützpunkte $(\tilde x_i, \tilde y_i) = (x_{σ(j)}, y_{σ(j)})$
+  \[y[\tilde x_0, \dots, \tilde x_n] = y[x_0, \dots, x_n]\]
+  #+end_korollar
+  #+begin_proof latex
+  Koeffizient des Monoms $x^n$ ist $y[x_0, \dots, x_n]$ unabhängig von der Reihenfolge.
+  #+end_proof

@@ -43,3 +43,132 @@
 	 \[⇒ v_2^{\ast}(e_1) = v_2^{\ast}(v_1) = 0, v_2^{\ast}(e_2) = v_2^{\ast}(v_2 - v_1) = \underbrace{v_2^{\ast}(v_2)}_{= 1} - \underbrace{v_2^{\ast}(v_1)}_{= 0} = 1\]
 	 $⇒ v_2^{\ast} = (0, 1)$
   #+end_ex
+  #+begin_conc latex
+  $V$ endlichdimensional, $v ∈ V, v \neq 0$. Dann existiert $φ ∈ V^{\ast}$ mit $φ(v) \neq 0$
+  #+end_conc
+  #+begin_proof latex
+  Ergänze die linear unbhängige Familie $(v)$ zu einer Basis $(v, v_2, \dots, v_n)$ von	$V$. Dann ist
+  $(v^{\ast}, v_2^{\ast}, \dots, v_n^{\ast})$ eine Basis von $V^{\ast}$, und es ist $v^{\ast}{v} = 1 \neq 0$.
+  #+end_proof
+  #+begin_note latex
+  Die Aussage gilt auch ohne die Vorraussetzung "$V$ endlichdimensional."
+  #+end_note
+  #+begin_conc latex
+  $V$ endlichdimensional, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V, \mathcal{B}^{\ast} = (v_1^{\ast}, \dots, v_n^{\ast})$ duale Basis zu $\mathcal{B}$.
+  DAnn gibt es einen Isomorpismus
+  \[ψ_{\mathcal{B}}: V \to V^{\ast}, v_i ↦, v_i ↦ v_i^{\ast} \quad (i = 1,\dots, n)\]
+  Insbesondere ist $\dim V = \dim V^{\ast}$
+  #+end_conc
+  #+begin_proof latex
+  folgt direkt aus 19.3
+  #+end_proof
+  #+begin_remdef latex
+  $U ⊆ V$ UVR
+  \[U^0 := \{φ ∈ V^{\ast} \mid φ(u) = 0 ∀ u ∈ U\} ⊆ V^{\ast}\]
+  heißt der Annulator von $U$. $U^0$ ist ein UVR von $V^{\ast}$.
+  #+end_remdef
+  #+begin_proof latex
+  leicht nachzurechnen.
+  #+end_proof
+  #+begin_thm latex
+  $V$ endlichdimensional, $U ⊆ V$ UVR, $(u_1, \dots, u_k)$ von $U$, $\mathcal{B} = (u_1, \dots, u_k, v_1, \dots, v_r)$ Basis von $V$.
+  Dann ist die Teilfamilie $(v_1^{\ast}, \dots, v_r^{\ast})$ von $\mathcal{B}^{\ast}$ eine Basis von $U^0$. Insbesondere ist $\dim U^0 = \dim V - \dim U$.
+  #+end_thm
+  #+begin_proof latex
+  1. $(v_1^{\ast}, \dots, v_r^{\ast})$ linear unhabhängig, da Teilfamilie der Basis $\mathcal{B}^{\ast}$ von $V^{\ast}$
+  2. $\Lin((v_1^{\ast}, \dots, v_r^{\ast})) = U^0$ \\
+	 "$⊆$" $φ ∈ \Lin((v_1^{\ast}, \dots, v_r^{\ast})) ⇒$ Es existieren $λ_1, \dots, λ_r ∈ K$ mit $φ = λ_1 v_1^{\ast} + \dots + λ_r v_r^{\ast}$.
+	 $⇒$ Für $i = 1, \dots, k$ ist $φ(u_i) = λ_1 v_1^{\ast}(u_i) + \dots + λ_1 v_r^{\ast}(u_i) = 0 ⇒ φ(u) = 0 ∀ u ∈ U$ \\
+	 "$\supseteq$" Sei $φ ∈ U^0$. Es existieren $μ_1, \dots, μ_k, λ_1,\dots, λ_r ∈ K$ mit $φ = μ_1 u_1^{\ast} + \dots + μ_k^{\ast} + λ_1 v_1^{\ast} + \dots + λ_r v_r^{\ast}$
+	 $⇒$ Für $i = 1, \dots, k$ ist $0 = φ(u_i) = μ_i ⇒ φ ∈ \Lin((v_1^{\ast}, \dots, v_r^{\ast}))$
+  #+end_proof
+  #+begin_remdef latex
+  $V, W$ K-Vr, $f: V \to W$ lineare Abbildung.
+  Wir definieren $f^{\ast}: W^{\ast} \to V^{\ast}, ψ ↦ f^{\ast}(ψ) := ψ \circ f$
+  $f^{\ast}$ heißt die zu $f$ duale *Abbildung*. Es gilt: $f^{\ast}$ ist linear.
+  #+end_remdef
+  #+begin_proof latex
+  - $f^{\ast}$ ist wohldefiniert, da $f^{\ast}(ψ) = ψ \circ f ∈ V^{\ast} ∀ ψ ∈ W^{\ast}$.
+  - $f^{\ast}$ ist linear, denn: Seien $φ, ψ ∈ W^{\ast}, λ ∈ K$
+	\[⇒ f^{\ast}(φ + ψ) = (φ + ψ) \circ f = φ \circ f + ψ \circ f = f^{\ast}(φ) + f^{\ast}(ψ)\]
+	$f^{\ast}(λφ) = λ f^{\ast}(φ)$ analog.
+  #+end_proof
+  #+begin_remark latex
+  $V, W$ endlichdimensionaler K-VR. Dann ist die Abbildung
+  \[^{\ast}: \Hom_K(V, W) \to \Hom_K(W^{\ast}, V^{\ast}), f ↦ f^{\ast}\]
+  ist ein Isomorphismus von K-VR.
+  #+end_remark
+  #+begin_proof latex
+  1. $^{\ast}$ ist linear: Seien $f, g ∈ \Hom_K(V, W), ψ ∈ W^{\ast}$
+	 \[⇒(f + g)^{\ast}(ψ) = ψ \circ (f + g) = ψ \circ f + ψ \circ g = f^{\ast}(ψ) + g^{\ast}(ψ) ⇒ (f + g)^{\ast} = f^{\ast} + g^{\ast}\]
+	 Rest analog.
+  2. $^{\ast}$ ist injektiv: Sei $f ∈ \Hom_K(V, W)$ wit $f^{\ast} = 0 ⇒ ψ \circ f = 0 ∀ ψ ∈ W^{\ast}$. Annahme: $f \neq 0 ⇒ ∃ v ∈ V: f(v) \neq 0 ⇒ ∃ φ ∈ W^{\ast}: φ(f(v)) = 0$
+	 $⇒ \circ φ \circ f \neq 0~\lightning$
+  3. $^{\ast}$ ist surjektiv: Es ist $\dim \Hom_K(V, W) = \dim (V) \dim (W) = \dim (V^{\ast}) \dim(W^{\ast}) = \dim \Hom_K(W^{\ast}, V^{\ast}) ⇒ ~^{\ast}$ surjektiv.
+  #+end_proof
+  #+ATTR_LATEX: :options [19.11]
+  #+begin_thm latex
+  $V, W$ endlichdimesionale K-VR, $\mathcal{A}, \mathcal{B}$ Basen von $V$ beziehungsweise $W$, $f: V \to W$ lineare Abbildung. Dann gilt:
+  \[M_{\mathcal{A}^{\ast}}^{\mathcal{B}^{\ast}}(f^{\ast}) = (M_{\mathcal{B}}^{\mathcal{A}}(f))^T\]
+  #+end_thm
+  #+begin_proof latex
+  Sei $\mathcal{A} = (v_1, \dots, v_n), \mathcal{B} = (w_1, \dots, w_m), M_{\mathcal{B}}^{\mathcal{A}}(f) = (a_{ij})_{\substack{1 \leq i \leq m\\ 1 \leq j \leq n}}$ insbesondere
+  \begin{align*}
+  f(v_j) &= \sum_{i = 1}^{m} a_{ij} w_i \\
+  ⇒ a_{ij} &= w_i^{\ast}(f(v_j)) = (w_i^{\ast} \circ f)(v_j) = f^{\ast}(w_i^{\ast})(v_j)
+  \end{align*}
+  Sei $M_{\mathcal{A}^{\ast}}^{\mathcal{B}^{\ast}}(f^{\ast}) = (b_{ij})_{\substack{1 \leq j \leq n\\ 1 \leq i \leq m}}$, dann ist
+  \begin{align*}
+  f^{\ast}(w_i^{\ast}) &= \sum_{j = 1}^{n} b_{ji}v_j^{\ast} \\
+  ⇒ b_{ji} &= (f^{\ast}(w_i^{\ast}))(v_j) = a_{ij}
+  \end{align*}
+  #+end_proof
+  #+begin_thm latex
+  $V, W$ endlichdimesionale K-VR, $f: V\to W$ lineare Abbildung. Dann gilt:
+  1. $\im(f^{\ast}) = \ker(f)^0$
+  2. $\ker(f^{\ast}) = \im(f)^0$
+  #+end_thm
+  #+begin_proof latex
+  1. "$⊆$" Sei $φ ∈ \im(f^{\ast}) ⊆ V^{\ast} ⇒ ∃ ψ W^{\ast}: f^{\ast}(ψ) = φ$, das heißt $ψ \circ f = φ$.
+     $⇒ \Big|_{\ker f} = 0 ⇒ φ ∈ (\ker f)^0$
+     "$\supseteq$" Sei $φ ∈ (\ker f)^0 ⊆ V^{\ast}$, das heißt $φ\Big|_{\ker f} = 0$. Zu zeigen: Es existiert ein $ψ ∈ W^{\ast}$ mit $φ = f^{\ast}(ψ) = ψ \circ f$.
+     Sei $(v_1, \dots, v_k)$ eine Basis von $\ker f, (w_1, \dots, w_r)$ eine Basis von $\im f, u_i ∈ f^{-1}(\{w_i\}), i = 1, \dots, r ⇒ (v_1, \dots, v_k, u_1, \dots, u_r)$ Basis von $V$.
+     Wir ergänzen $(w_1, \dots, w_r)$ zu einer Basis $w_1, \dots, w_r, v_{r + 1}, \dots, w_{m}$ von $W$. $⇒$ Es existier genau eine lineare Abbildung $ψ: W \to K$ mit
+     \[ψ(w_i) = \begin{cases} φ(u_i) & 1 = 1, \dots, r \\ 0 & i = r + 1, \dots, m\end{cases}\]
+     Für $i = 1, \dots, r$ ist $φ(u_i) = ψ(w_i) = ψ(f(u_i)) = (ψ \circ f)(u_i)$, und für $i = 1, \dots, k$ ist
+     $φ(v_i) = 0 = ψ(f(v_i))$
+     Also: $φ = ψ \circ f = f^{\ast} (ψ)$, das heißt $φ ∈ \im f^{\ast}$
+  2. $φ ∈ \ker(f^{\ast}) ⇔ f^{\ast}(φ) = 0 ⇔ φ \circ f = 0 ⇔ φ(f(v)) = 0 ∀ v ∈ V ⇔ φ\Big|_{im f} = 0 ⇔ φ ∈ (\im f)^0$
+  #+end_proof
+  #+begin_conc latex
+  $V, W$ endlichdimensionale K-VR, $f: V \to W$ lineare Abbildunge. Dann gilt:
+  \[\Rang(f^{\ast}) = \Rang(f)\]
+  #+end_conc
+  #+begin_proof latex
+  $\Rang f^{\ast} = \dim \im f^{\ast} = \dim (\ker f)^0 = \dim V - \dim \ker f = \dim \im f = \Rang(f)$
+  #+end_proof
+  #+begin_conc latex
+  $A ∈ M(m × n, K)$. Dann gilt:
+  \[\operatorname{Zeilenrang}(A) = \operatorname{Spaltenrang}(A)\]
+  #+end_conc
+  #+begin_proof latex
+  Es ist $A = M_{(e_1,\dots, e_m)}^{e_1, \dots, e_n}(\tilde A), A^T = M_{e_1^{\ast}, \dots, e_n^{\ast}}^{e_1^{\ast}, \dots, e_m^{\ast}}$
+  \[\operatorname{Spaltenrang}(A) = \dim \im \tilde A = \Rang \tilde A = \Rang(\tilde A^{\ast}) = \operatorname{Spaltenrang}(A^t) = \operatorname{Zeilenrang}(A)\]
+  #+end_proof
+  #+begin_defn latex
+  $V^{\ast\ast} := (V^{\ast})^{\ast} = \Hom_K(V^{\ast}, K)$ heißt der Bidualraum von $V$.
+  #+end_defn
+  #+begin_thm latex
+  $V$ endlichdimensional. Dann gibt es einen kanonischen (das heißt basisunabhängigen) Isomorphismus
+  \[i: V \to V^{\ast\ast}, v ↦ i_v, i_v: V^{\ast} \to K, φ ↦ φ(v)\]
+  #+end_thm
+  #+begin_proof latex
+  1. $i$ wohldefinier nud linear: leicht nachzurechnen.
+  2. $i$ injektiv: Sei $v ∈ \ker i ⇒ i_v = 0 ⇒ ∀ φ ∈ V^{\ast} = \Hom_K(V, K): φ(v) = 0 ⇒ v = 0$
+  3. $\dim V^{\ast\ast} = \dim V^{\ast} = \dim V$. Somit nach 12.15: $i$ Isomorphismus
+  #+end_proof
+  #+begin_note latex
+  - Im Gegensatz zu $ψ_{\mathcal{B}}: V \to V^{\ast}$ ist der Isomorphismus $i: V \to V^{\ast\ast}$ unabhängig von der Wahl einer Basis, das heißt $V$ und $V^{\ast}$ sind unkanonisch isomorph,
+    $V$ nud $V^{\ast\ast}$ sind kanonisch isomorph (für $V$ endlichdimensional).
+  -	Ist $V$ unendlichdimesionsal, dann liefert $i$ zumindest nach eine kanonische Inklusion von $V$ nach $V^{\ast\ast}$. Diese ist jedoch die surjektiv.
+  #+end_note

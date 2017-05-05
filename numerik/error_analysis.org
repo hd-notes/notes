@@ -140,13 +140,13 @@
 	#+ATTR_LATEX: :options [Landau-Notation]
 	#+begin_defn latex
 	Seien $g, h: ℝ_+ \to ℝ, t \to 0^+$. Wir schreiben:
-	- $g(t) = \mathcal{O}(h(t)) :⇔ ∃t_0, c ∈ ℝ_+: ∀ t ∈ \string(0, t_0]: \abs{g(t)} \leq c\abs{h{t}}$
+	- $g(t) = \mathcal{O}(h(t)) :⇔ ∃t_0, c ∈ ℝ_+: ∀ t ∈ \string(0, t_0]: \abs{g(t)} \leq c\abs{h(t)}$
 	- $g{t} = σ(h{t}) :⇔ ∃t_0 ∈ ℝ_+, c: ℝ_+ \to ℝ, \lim_{t \to 0^+} c(t) = 0: ∀ t ∈ \string(0, t_0]: \abs{g(t)} \leq c(t) \abs{h(t)}$
 	#+end_defn
 	#+begin_remark latex
 	- Analoge Schreibweise für $t \to ∞$
 	- $\mathcal{O}$ und $σ$ sind Symbole, keine Funktionen
-	  \[\mathcal{O}(t^2) + \mathcal{O}(t^3) + \mathcal{O}(2 t^2) = \mathcal{O}(t^2) \not ⇒ \mathcal{O}(t^3) + \mathcal{2 t^2} = 0\]
+	  \[\mathcal{O}(t^2) + \mathcal{O}(t^3) + \mathcal{O}(2 t^2) = \mathcal{O}(t^2) \not ⇒ \mathcal{O}(t^3) + \mathcal{O}(2 t^2) = 0\]
 	- $σ(t^n)$ ist stärker als $\mathcal{O}(t^n): σ(t^n) + \mathcal{O}(t^n) = \mathcal{O}(t^n)$
 	- $\mathcal{O}(t^{n + 1})$ ist stärker als $σ(t^n)$: Wähle $c(t) = t$!
 	#+end_remark
@@ -321,6 +321,61 @@
    u &= x_1^2(1 + ε_1), v = x_2^2(1 + ε_2) \\
    \tilde y &= (x_1^2(1 + ε_1) - x_2^2(1 + ε_2))(1 + ε_3) \\
    &= \underbrace{x_1^2 - x_2^2}_{y} + x_1^2 ε_1 - x_2^2 ε_2 + \underbrace{(x_1^2 - x_2^2)}_{y} ε_3, \abs{ε} \leq eps \\
-   ⇒ \abs{\frac{Δy}{y}} &\overset{·}{\leq} eps \frac{x_1^2 + x_2^2 + \abs{x_1^2 - x_2^2}}{\abs{x_1^2 - x_2^2}} = eps (1 + \frac{(\frac{x_1}{x_2})^2 + 1}{(\frac{x_1}{x_2})^2 - 1})
+   ⇒ \abs{\frac{Δy}{y}} &\overset{·}{\leq} eps \frac{x_1^2 + x_2^2 + \abs{x_1^2 - x_2^2}}{\abs{x_1^2 - x_2^2}} = eps (1 + \abs{\frac{(\frac{x_1}{x_2})^2 + 1}{(\frac{x_1}{x_2})^2 - 1}})
    \end{align*}
+   Wegen der Konditionierung des Problems
+   \[\abs{\frac{Δy}{y}} \leq 2 \abs{\frac{(\frac{x_1}{x_2})^2 + 1}{(\frac{x_1}{x_2})^2 - 1}} eps\]
+   ist A stabil. Algorithmus B:
+   \begin{align*}
+   u &= x_1 \oplus x_2, v = x_1 \ominus x_2, y = u \odot v \\
+   \intertext{Rundungsfehleranalyse}
+   u &= (x_1 + x_2)(1 + ε_1), v = (x_1 - x_2)(1 + ε_2) \\
+   \tilde y &= (x_1 + x_2)(1 + ε_1)(x_1 - x_2)(1 + ε_2)(1 + ε_3) \\
+   &= \underbrace{x_1^2 - x_2^2}_{y} + \underbrace{(x_1^2 - x_2^2)}_{ε_1 + ε_2 + ε_3} + \mathcal{O}(eps^3) \\
+   ⇒ \abs{\frac{Δy}{y}} &\overset{·}{\leq} \abs(ε_1 + ε_2 + ε_3) \leq 3eps
+   \end{align*}
+   $⇒$ Algorithmus B ist stabiler als Algorithmus A.
    #+end_ex
+   Regel: Bei numerischen Rechnungen sollte man die schlechter konditionierten Operationen möglichst frühzeitug ansetzen. \\
+   Wiederholung
+   - Konditionierung: Eigenschaften einer numerischen Aufgabe
+   - Stabilität: Eigenschaft eines Verfahrens
+	 - Auslöschung
+   - Rundungsfehleranalyse
+	 - $y = f(x_1, x_2) = x_1^2 - x_2^2 = (x_1 - x_2)(x_1 + x_2)$
+   Auswertung von Polynomen
+   \[y = p(x) = a_0 + a_1 x + \dots + a_n x^n\]
+   Als Modellfall betrachten wir
+   \[p(x) = a_1 x + a_2 x^2 = x(a_1 + a_2 x)\]
+   Zwei Varianten für $\tilde y = p(ξ), ξ ∈ A$ \\
+   A: $u = ξ \odot ξ, v = a_2 \odot u, w = a_1 \odot ξ, \tilde y = v + w$ \\
+   B: $u = a_2 \odot ξ, v = a_1 \oplus u, \tilde y = ξ \odot v$ \\
+   B spart eine arithmetische Operation. \\
+   Rundungsfehleranalyse A:
+   \begin{align*}
+   u &= ξ^2(1 + ε_1), v = a_2 ξ^2(1 + ε_1)(1 + ε_2), w = a_1 ξ(1 + ε_3) \\
+   \tilde y &= (a_2 ξ_2(1 + ε_1)(1 + ε_2) + a_1 ξ(1 + ε_3))(1 + ε_4) \\
+   &= \underbrace{a_2 ξ^2 + a_1 ξ}_{y} + \underbrace{(a_2 ξ^2 + a_1)}_{y}ε_4 + a_2 ξ^2(ε_1 + ε_2) + a_1 ξ ε_3 + \mathcal{O}{eps^2} \\
+   \frac{Δy}{y} &\overset{·}{=} ε_4 \frac{a_2 ξ^2(ε_1 ε_2) + a_1ξε_3}{a_2ξ^2 + a_1 ξ} \\
+   &= ε_4 + ε_3 + \frac{a_2ξ^2(ε_1 + ε_2 - ε_3)}{a_2 ξ^2 + a_1 ξ} \\
+   &= ε_3 + ε_3 + \frac{ξ}{\frac{a_1}{a_2} + ξ}(ε_1 + ε_2 - ε_3)
+   \end{align*}
+   Variante B:
+   \begin{align*}
+   u &= x_2 ξ (1 + ε_1), v = (a_1 + a_2 ξ(1 + ε_1))(1 + ε_2) \\
+   \tilde y &= ξ · [a_1 + a_2 ξ(1 + ε_1)](1 + ε_2)(1 + ε_3) \\
+   &= \underbrace{ξ(a_1 + a_2ξ)}_{y} + a_1 ξ(ε_2 + ε_3) + a_2ξ^2(ε_1 + ε_2 + ε_3) + \mathcal{O}(eps^2) \\
+   \frac{Δy}{y} &= ε_2 + ε_3 + \frac{a_2 ξ^2}{a_1 ξ + a_2 ξ}ε_2 = ε_2 + ε_3 + \frac{ξ}{\frac{a_1}{x_2} + ξ}ε_1
+   \end{align*}
+   $⇒$ Variante B ist etwas stabiler als A im Fall $ξ \approx - \frac{a_1}{a_2}$ (nahe bei Nullstelle)
+   Allgemein:
+   \begin{align*}
+   p(x) &= a_0 + a_1 x + \dots + a_n x^n \\
+   &= a_0 + x (a_1 + x (\dots + x(a_{n - 1} + a_n x) \dots ))
+   \end{align*}
+   #+ATTR_LATEX: :options [Horner-Schema]
+   #+begin_defn latex
+   \[b_n = a_n, b_k = a_k + ξ b_{k - 1}, k = n - 1, \dots, 0 \]
+   liefert den Funktionswert $p(ξ) = b_0$ des Polynoms an der Stelle $x = ξ$.
+   #+end_defn
+   Regel: Die Auswertung von Polynomen sollte mit dem Horner-Schema erfolgen.

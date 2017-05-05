@@ -158,6 +158,87 @@
    ⇒ \pp{L}{\dot q}χ - f &= \pp{L}{\dot q} \dot q - L = E~\checkmark
    \end{align*}
    #+end_ex
+   #+ATTR_LATEX: :options [Verschiebung zyklischer Koordinate]
    #+begin_ex latex
-   \[q' = q + ε\]
+   \[q' = q + ε ⇒ χ = 1, δL = 0 ⇒ f = 0\]
+   Erhaltungsgröße:
+   \begin{align*}
+   \pp{L}{\dot q}χ - f &= \pp{L}{\dot q} = p \tag{verallgemeinerter Impuls}
+   \end{align*}
+   #+end_ex
+   Zusammenstellung zu Galilei Transformationen
+   | Symmetrie       | Erhaltungsgröße       |
+   |-----------------+-----------------------|
+   | Zeittranslation | Energie               |
+   | Translation     | Impuls                |
+   | Rotation        | Drehimpuls            |
+   | Boosts          | $\v x_s - \v v_s · t$ |
+   zum Boost: \\
+   $\v x_s - \v v_s · t = \const$ Schwerpunkt bewegt sich geradlinig und gleichförmig.
+** Mechanische Ähnlichkeit
+   Lagrangefunktion:
+   \[L = \sum_{a} \frac{m_a}{2} \dot{\v x}_a^2 - V(\v x_1, \dots, \v x_n)\]
+   Sei $V$ homogen in den $x_a^i$ von Grad $k$. \\
+   Sei $\{\v x_a(t)\}$ beziehungsweise $[t ↦ \{\v x_a(t)\}]$ eine physikalische Bewegung. Kurz: $t ↦ x(t)$. \\
+   Betrachte Transformation: $x\to α x, t \to β t ∀ t, x$. \\
+   Alte Bewegung: $\{t \to x(t)\}$, Neue Bewegung $\{βt ↦ α x(t)\}$. \\
+   Variablenweschsel: $t' = βt$ und anschließend $t' \to t$. Neue Bewegung: $\{t ↦ α x(t/β)\}$ \\
+   Betrachte nun Transformationen von $T, V$ \\
+   \[T, V \to (α / β)^2 T, α^k V)\]
+   Fordere nun $α^k = (α / β)^2 ⇒ L \to α^k L$ \\
+   Beachte:
+   \[\dd{}{t}(\pp{L}{\dot x}) - \pp{L}{x} = 0\]
+   ist homogen in $L, x, t$ jeweils vom Grad $\{1, -1, 0\}$ \\
+   $⇒$ Falls alte Bewegung Lösung $⇒$ neue Bewegung auch Lösung.(entscheidend: $L \to α_k L$) \\
+   $⇒$ *"Mechanische Ähnlichkeit"*.
+   #+ATTR_LATEX: :options [Mechanische Ähnlichkeit]
+   #+begin_defn latex
+   $β = β(α)$ so wählbar, dass $x \to α x, t \to β t ⇒ L \to α^k L$.
+   #+end_defn
+   Anwendung: \\
+   Sei $X$ typische Länge einer Bewegung (Bahnradius, Entfernung von Umkehrpunkten, etc.).
+   Sei $T$ typische Zeit (Periode, Zeit zwischen Umkehrpunkten, etc.).
+   Seien $X' = αX, T' = βT$ die entsprechenden Größen ähnlischer Bewegungen. Dann gilt:
+   \[\frac{T'}{T} = β = α^{1 - k / 2} = (\frac{X'}{X})^{1 - k / 2}\]
+   #+ATTR_LATEX: :options [Harmonischer Oszillator]
+   #+begin_ex latex
+   \[V \sim x^2 ⇒ k = 2 ⇒ \frac{T'}{T} = 1\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Freier Fall]
+   #+begin_ex latex
+   \[V \sim x ⇒ k = 1 ⇒ \frac{T'}{T} = \sqrt{\frac{X'}{X}}\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Gravitation]
+   #+begin_ex latex
+   \[V \sim \frac{1}{x} ⇒ k = -1 ⇒ \frac{T'}{T} = \frac{X'}{X}^{3/2}\]
+   #+end_ex
+** Virialsatz
+   Betrachte Zeitmittel: $<A> := \lim_{t \to ∞} \frac{1}{t} ∫_0^t \d t' A{t'}$
+   (besonders leicht zu berechnen für totale Zeitableitungen). \\
+   Ziel: $<T>$ (kinetische Energie) \\
+   Also: Versuche $T$ als totale Zeitableitung zu schreiben. (zur Vereinfachung in 1D, ein Teilchen)
+   \begin{align*}
+   2 T &= mv^22 = p \dot x = \dd{}{t}(p x) - \dot p x \\
+   &= \dd{}{t}(p x) + x \pp{V}{x} \\
+   ⇒ 2 T - x \pp{V}{x} &= \dd{}{t}(px) \\
+   ⇒ <2 T - x \pp{V}{x}> &= <\dd{}{t}(px)>  \\
+   &= \lim_{t \to ∞} \frac{1}{t} (px\big|_t - px\big|_0) = 0 \tag{falls $p, x$ beschränkt}
+   \end{align*}
+   #+ATTR_LATEX: :options [Virialsatz]
+   #+begin_defn latex
+   Für Bewegungen in beschränkten Gebieten mit beschränket Geschwindigkeiten gilt:
+   \[2<T> = <\sum_{a} \v x_a \pp{V}{\v x_a}> = <\sum_{a} \sum_{i = 1}^{3}x_a^i \pp{V}{x_a^i}>\]
+   #+end_defn
+   #+ATTR_LATEX: :options [homogenes Potential]
+   #+begin_ex latex
+   Falls $V$ homogen von Grad $k$:
+   $2<T> = k<V>$
+   #+end_ex
+   #+ATTR_LATEX: :options [harmonischer Oszillator]
+   #+begin_ex latex
+   $<T> = <V>$
+   #+end_ex
+   #+ATTR_LATEX: :options [Gravitation]
+   #+begin_ex latex
+   $k = -1, 2<T> = -<V>$
    #+end_ex

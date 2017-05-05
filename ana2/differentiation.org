@@ -114,7 +114,7 @@
   #+begin_thm latex
   Für Funktionen $f: D \to ℝ^m$ gilt:
   1. Ist $f$ in $x ∈ D$ differenzierbar, so ist $f$ auch in $x$ partiell differenzierbar und das Differential von $f$ ist gegeben durch die Jacobi-Matrix.
-  2. Ist $f$ partiell differenzierbar in einer Umgebung von $x$ und sind zusätzlich die partiellen Ableitungen stetig in	$x$, so ist $f$ in $x$ differenzierbar.
+  2. Ist $f$ partiell differenzierbar in einer Umgebung von $x$ und sind zusätzlich die partiellen Ableitungen stetig in $x$, so ist $f$ in $x$ differenzierbar.
   #+end_thm
   #+begin_proof latex
   1. Für differenzierbares $f$ gilt für $i = 1,2$:
@@ -174,4 +174,191 @@
   #+begin_korollar latex
    Sei $f: D \to ℝ^m$ stetig differenzierbar. Ferner sei $x ∈ D$ mit $K_r(x) ⊂ D, r > 0$, dann gilt
    \[\norm{f(x) - f(y)}_2 \leq M\norm{x - y}_2, y ∈ K_r(x), M := \sup_{z ∈ K_r(x)}\norm{J_f(z)}_M\]
+   das heißt die Abbildung ist in $D$ lokal Lipschitz-stetig.
   #+end_korollar
+  #+begin_proof latex
+  Nach Satz 2.14 gilt mit $h = y - x$
+  \begin{align*}
+  \norm{f(y) - f(x)}_2 &= \norm{f(x + h) - f(x)_2} = \norm{∫_0^1 J_f(x + sh) h \d s}_2 \\
+  &\leq ∫_0^1 \norm{J_f(x + sh) h}_2 \d s \leq ∫_0^1\norm{J_f(x + sh)}_m \norm{h}_2 \d s \\
+  &\leq \underbrace{\sup_{0 < s < 1} \norm{J_f(x + sh)}_2}_{M} \underbrace{\norm{h}_2}_{\norm{y - x}_2}
+  \end{align*}
+  #+end_proof
+  #+begin_remark latex
+  Korollar 2.16 gilt mit beliebigen von Vektor-Matrix-norm induzierter Norm, siehe Übung 2.1.
+  #+end_remark
+  *Taylor-Entwicklung und Extremwerte in $ℝ^n$*
+  #+ATTR_LATEX: :options [Multiindex Notation]
+  #+begin_defn latex
+  Ein n-dimensionaler *Muliindex* ist ein Tupel $α= (α_1, \dots, α_n)$ mit $α_i ∈ ℕ$. Für Multiindizes sind die *Ordnung* $\abs{α}$ und die Fakultät $α!$
+  definiert durch
+  \begin{align*}
+  \abs{α} &:= α_1 + α_2 + \dots + α_n \\
+  α! &:= α_1! · \dots · α_n!
+  \end{align*}
+  Für $x = (x_1, \dots, x_n) ∈ ℝ^n$ wird gesetzt
+  \[x^α := x_1^{α_1} · \dots _ x_n^{α_n}\]
+  Für eine $\abs{α}$-mal stetig differenzierbare Funktion wird gesetzt
+  \[\partial^α f := \partial_1^{α_1} \dots \partial_n^{α_n} f := \frac{\partial^{\abs{α}} f}{\partial_{x_1}^{α_1} \dots \partial_{x_n}^{α_n}}\]
+  #+end_defn
+  #+begin_remark latex
+  Wegen der Stetigkeit der Ableitung ist dieser Ausdruck unabhänig von der Reihenfolge der partiellen Ableitungen.
+  Wir definieren
+  \[\sum_{\abs{α} = 0}^{r} a_α := \sum_{k = 0}^{r} \sum_{\substack{α ∈ ℕ^n \\ \abs{α} = k}} a_α\]
+  #+end_remark
+  #+begin_ex latex
+  Für $n = 3$ sind die Multiindizes $α = (α_1, α_2, α_3)$ der Ordnung $\abs{α} = 2$ gegeben durck
+  \[(2, 0, 0), (0, 2, 0), (0, 0, 2), (1, 1, 0), (1, 0, 1), (0, 0, 1)\]
+  Die zugehörigen partiellen Ableitungen sind
+  \begin{align*}
+  \partial^α f &= (\partial_{x_1}^2 f, \partial_{x_2}^2 f, \partial_{x_3}^2 f, \partial_{x_1}\partial_{x_2}f, \partial_{x_2}\partial_{x_3}f, \partial_{x_2}\partial_{x_3}f) \\
+  α! &= (2, 2, 2, 1, 1, 1)
+  \end{align*}
+  Schließlich ist
+  \[\sum_{\abs{α} = 2} \partial^α f = \partial_{x_1}^2 f+ \partial_{x_2}^2 f+ \partial_{x_3}^2 f+ \partial_{x_1}\partial_{x_2}f+ \partial_{x_2}\partial_{x_3}f+ \partial_{x_2}\partial_{x_3}f\]
+  #+end_ex
+  #+ATTR_LATEX: :options [Taylor-Formel]
+  #+begin_thm latex
+  Sei $D ⊂ ℝ^n$ eine offene Menge und $f: D \to ℝ$ eine $(r + 1)$ -mal stetig differenziebare Funktion.
+  Dann gilt für jeden Vektor $h ∈ ℝ^n$ mit $x + sh ∈ D, s ∈ [0, 1]$ die Taylor-Formel
+  \[f(x + h) = \sum_{\abs{α} < r} \frac{\partial^α f(x)}{α!}h^α + R_{r + 1}^f(x, h)\]
+  in differentieller Forw
+  \[R_{r + 1}^f (x, h) = \sum_{\abs{α} = r + 1} \frac{\partial^α f(x + θh)}{α!} h^α, θ ∈ (0, 1)\]
+  oder in integraler Form
+  \[R_{r + 1}^f (x, h) = (r + 1) ∫_0^1 \sum_{\abs{α} = r + 1} \frac{\partial^α f(x + th)}{α!} h^α (1 - t)^r \d t\]
+  #+end_thm
+  #+begin_proof latex
+  Wir nehmen $g:[0, 1] \to ℝ$ mit $g(t) := f(x + th)$. $g$ ist $(r + 1)$ mal stetig differenzierbar mit der k-ten Ableitung
+  \[g^{(k)}(t) = \sum_{i_1, \dots, i_k = 1}^{n} \partial_{i_k} \dots \partial_{i_1} f(x + th) h_{i_1}\dots h_{i_k}\]
+  Wir zeigen des durch Induktion nach $k$ (mit Hilfe von Kettenregel). Für $k = 1$ gilt
+  \[g'(t) = \dd{}{t} f(x_1 + th_1, \dots, x_n + th_n) = \sum_{i = 1}^{n} \partial_i f h_i\]
+  Sei die Behauptung als richtig angenommen für $k - 1 \geq 1$. Dann gilt
+  \begin{align*}
+  g^{(k)}(t) &= \dd{}{t} g^{(k - 1)}(t) = \dd{}{t} (\sum_{i_1, \dots, i_{k - 1} = 1}^{n} \partial_{i_{k - 1}} \dots \partial_{i_1}f(x + th) h_1 \dots h_{i_{k - 1}}) \\
+  &= \sum_{i = 1}^{n} \partial_i (\sum_{i_1 \dots i_{k - 1} = 1}^{n}\partial_{i_{k - 1}} \dots \partial_{i_1} f(x + th) h_{i_1} \dots h_{i_{k - 1}}) h_1 \\
+  &= \sum_{i_1 \dots i_k = 1}^{n} \partial_{i_k} \dots \partial_{i_1} f(x + th) h_{i_1} \dots h_{i_k}
+  \end{align*}
+  Es gilt
+  \[\partial_{i_k} \dots \partial_{i_1} f(x + th)h_{i_1} \dots h_{i_k} = \partial_1^{α_1} \dots \partial_n^{α_n}f(x + th) h_1^{α_1} \dots h_n^{α_n}\]
+  (der Index $i ∈ \{1, \dots, n\}$ kommt genau $α_i$ mal vor und wegen Vertauschbarkeit der Ableitungen).
+  Die Anzahl der $k$ -Tupel $(i_1, \dots, i_k)$ von Zahlen $i_j ∈ \{1, \dots, n\}$, bei denen die Zahl $i ∈ \{1, \dots, n\}$ genau $α_i$ -mal vorkommt mit $α_1 + \dots + α_n = k$ ist
+  \[\frac{k!}{α_1! \dots α_n !}\]
+  (Lemma unten)
+  Wir bekommen
+  \begin{align*}
+  g^{(k)}(t) &= \sum_{\abs{α} = k} \frac{k!}{α_1! \dots α_n!} \partial_1^{α_1} \dots \partial_n^{α_n} f(x + th) h_1^{α_1} \dots h_n^{α_n} \\
+  &= \sum_{\abs{α} = k} \frac{k!}{α!}\partial^α f(x + th) h^α
+  \end{align*}
+  Wir wenden die 1-dimensionale Taylor-Formel auf $g(t)$ an. $∃ θ ∈ [0, 1]$ sodass
+  \[g(1) = \sum_{k = 0}^{r} \frac{g^{k}(0)}{k!} + \frac{g^{(r + 1)}(θ)}{(r + 1)!} = \sum_{k = 0}^{n} \frac{g^{(k)}}{k!} + \frac{1}{r!}∫_0^1 g^{(r + 1)}(t)(1 - t)^r \d t\]
+  Man erhält
+  \begin{align*}
+  \frac{g^{(k)}(0)}{k!} &= \sum_{\abs{α} = k} \frac{\partial^α f(x)}{α!} h^α \\
+  \frac{g^{(r + 1)}(θ)}{(r + 1)!} &= \sum_{\abs{α} = r + 1} \frac{\partial^α f(x + θh)}{α!} h^α \\
+  \frac{1}{r!} ∫_0^1 g^{(r + 1)}(t)(1 - t)^r \d t = (r + 1) ∫_0^1 \sum_{\abs{α} = r + 1} \frac{\partial^α f(x + th)}{α!} h^α (1 - t)^r \d t
+  \end{align*}
+  Dies impliziert die Taylor-Formel mit den Restgliedern in differentieller oder integraler Form.
+  #+end_proof
+  #+ATTR_LATEX: :options [2.20]
+  #+begin_lemma latex
+  Sei $α = (α_1, \dots, α_n)$ mit $\abs{α} = k \geq 1$. Dann ist die Anzahl $N_α (k)$ der k-Tupel von Zahlen $i_j = \{1, \dots, n\}$, bei denen die Zahl $i ∈ \{1, \dots, n\}$
+  genau	$α_i$-mal vorkommt, bestimmt durch
+  \[N_α(k) = \frac{k!}{α_1! \dots α_n!}\]
+  #+end_lemma
+  #+begin_proof latex
+  Wir ordnen die Indizes in dem k-Tupel
+  \[(i_1, \dots, i_k) = (\underbrace{1, \dots, 1}_{α_1}, \underbrace{2, \dots, 2}_{α_2}, \dots, \underbrace{n, \dots, n}_{α_n \text{ mal}})\]
+  $α_1 + \dots + α_n = k$. Die Anzahl der möglichen Permutationen der $k$ Elemente des k-Tupel ist $k!$. Das k-Tupel bleibt unverändert bei Permutationen von gleichen Elementen $i$.
+  Insgesamt bekommen wir
+  \[N_α(k) = \frac{k!}{α!}\]
+  #+end_proof
+  #+ATTR_LATEX: :options [2.21]
+  #+begin_korollar latex
+  Sei $D ⊂ ℝ^n$ eine offene Menge und $f: D \to ℝ$ eine $r + 1$ mal stetig differenzierbare Funktion. Dann gilt für $x ∈ D$ und $h ∈ ℝ^n$ mit $x + sh ∈ D, s ∈ [0, 1]$:
+  \[f(x + h) = \sum_{\abs{α} \leq r + 1} \frac{\partial^a f(x)}{α!} h^α + ω_(r + 1)(x, h)\]
+  wobei $ω_{r + 1}(x, 0) = 0$ und $ω_{r + 1}(x, h) = \mathcal{o}(\norm{h}_2^{r + 1})$. \\
+  Im Fall $r = 0$ gilt
+  \[f(x + h) = f(x) + (∇f(x), h)_2 + ω_1(x, h)\]
+  Im Fall $r = 1$ gilt:
+  \[f(x + h) = f(x) + (∇f(x), h)_2 + \frac{1}{2} (H_f(x)h, h)_2 + ω_2(x, h)\]
+  #+end_korollar
+  #+begin_proof latex
+  \begin{align*}
+  f(x + h) &= \sum_{\abs{α} \leq r} \frac{\partial^α f(x)}{α!} h^α + \sum_{\abs{α} = r + 1} \frac{\partial^α f(x + θh)}{α!}h^α \\
+  &= \sum_{\abs{α} \leq r + 1} \frac{\partial^α f(x)}{α!} h^α + \sum_{\abs{α} = r + 1} r_α(x, h)h^α
+  \end{align*}
+  wobei
+  \[r_α(x, h) := \frac{\partial^α f(x + θh) - \partial^α f(x)}{α!}\]
+  $\lim_{h \to 0} r_α(x, h) = 0$, wegen der Stetigkeit von $\partial^α f$ für $\abs{α} = r + 1$.
+  Wir setzen $ω_{r + 1}(x, h) := \sum_{\abs{α} = r + 1} r_α(x, h) h^α$. Es gilt
+  \[\lim_{h \to 0} \frac{ω(h)}{\norm{h}_2^{r + 1}} = 0\]
+  weil
+  \[\frac{\abs{h^α}}{\norm{h}_2^α} = \frac{\abs{h_1^{α_1}} · \dots · h_n^{α_n}}{\norm{h}_2^{α_1} · \dots · \norm{h}_2^{α_n}} \leq 1 \qquad \abs{α} = r + 1\]
+  Für $r = 0$ gilt
+  \begin{align*}
+  f(x + h) &= \sum_{\abs{α} \leq 1} \frac{\partial^α f(x)}{α!} h^α + ω_1(x, h) \\
+  &= f(x) + \sum_{\abs{α} = 1} \frac{\partial^α f(x)}{α!} h^α + ω_1(x, h) \\
+  &= f(x) + \sum_{i = 1}^{n} \partial_i f(x)h_i + ω_1(x, h) \\
+  &= f(x) + (∇f(x), h)_2 + ω_1(x, h)
+  \end{align*}
+  Für $r = 1$
+  \begin{align*}
+  f(x + h) &= \sum_{\abs{α} \leq 2} \frac{\partial^α f(x)}{α!} h^α + ω_2(x, h) \\
+  &= f(x) (∇f(x), h)_2 + \sum_{\abs{α} = 2} \frac{\partial^α f(x)}{α!} h^α + ω_2(x, h) \\
+  &= f(x) + (∇f(x), h)_2 + \frac{1}{2} \sum_{i,j = 1}^{n} \partial_i \partial_j f(x) h_i h_j + ω_2(x, h) \\
+  &= f_1(x) + (∇f(x), h)_2 + \frac{1}{2} (H_f(x)h, h)_2 + ω_2(x, h)
+  \end{align*}
+  #+end_proof
+  #+begin_defn latex
+  Sei $D ⊂ ℝ^n$ eine offene Menge, $x ∈ D$ und $f: D \to ℝ$ beliebig oft differenzierbar.
+  \[F_∞^f(x + h) = \sum_{\abs{α} = 0}^{∞} \frac{\partial^α f(x)}{α!} h^α\]
+  heißt die Taylor-Reihe von $f$ in $x$
+  #+end_defn
+  #+begin_korollar latex
+  Sei $D ⊂ ℝ^n$ eine offene Menge, $f: D \to ℝ$ beliebig oft differenzierbar. Dann konvergiert die Taylor-Reihe von $f$ und stellt $f$ dar, wenn
+  \[R_{r + 1}^f (x, h) \xrightarrow{r \to ∞} 0 \quad x ∈ D\]
+  Hinreichend dafür ist, dass die partielle Ableitung gleichmäßig beschränkt sind:
+  \[\sup_{\abs{α} \geq 0} \sup_{x ∈ D} \abs{\partial^α f(x)} < ∞\]
+  #+end_korollar
+  #+begin_proof latex
+  \[\norm{R_{r + 1}^f(x, h)}_∞ \leq \sum_{\abs{α} = r + 1} \frac{\abs{\partial^α f(x + θh)}}{α!} \norm{h}_∞^{\abs{α}} \leq M(f) \sum_{\abs{α} = r + 1} \frac{1}{α!} \norm{h}_∞^{\abs{α}} \to 0\]
+  #+end_proof
+  #+begin_defn latex
+  Eine Funktion $f: D \to ℝ$ hat in einem Punkt $x ∈ D ⊂ ℝ^n$ ein lokales Extremum, wenn auf einer $K_σ(x) ⊂ ℝ^n$ (Kugelumgebung) gilt
+  \[f(x) = \sup_{y ∈ K_σ(x) ∩ D} f(y) \quad \text{oder} \quad f(x) = \inf_{y ∈ K_σ(x) ∩ D} f(x)\]
+  Das Extremum heißt strikt, wenn es in $K_σ(x) ∩ D$ nur in dem Punkt angenommen wird.
+  Das Extremum heißt global, wenn $f(x) = \sup_{y ∈ D} f(y)$ (oder $\inf_{y ∈ D}$)
+  #+end_defn
+  #+ATTR_LATEX: :options [Notwendige Extremalbedingung]
+  #+begin_thm latex
+  Sei $f: D \to ℝ$ stetig differenzierbar, $D$ offen. Hat $f$ in einem Punkt $\hat x ∈ D$ ein lokales Extremum, so gilt $∇f(\v x) = 0$
+  #+end_thm
+  #+begin_proof latex
+  Angenommen $f: D \to ℝ$ hat in $x ∈ D$ ein lokales Extremum. Wir nehmen
+  $g_i(t) := f(\v x + t e^{(1)}), i = 1, \dots, n, e^{(i)}$ Einheitsvektor in $ℝ^n$.
+  $g_i$ ist auf einem nichtleeren $(-δ_i, δ_i) ⊂ ℝ$ definiert und hat lokales Extremum in $t = 0 ⇒ g'_i(0) = 0$
+  \[0 = g'_i(0) = \sum_{j = 1}^{n} \partial_j f(\v x) δ_{ij} = \partial_i f(\v x) \quad i = 1, \dots, n ⇒ ∇ f(\v x) = 0\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Hinreichende Extremalbedingung]
+  #+begin_thm latex
+  Sei $D ⊂ ℝ^n$ offen und $f:D \to ℝ$ zweimal stetig differenzierbar und $∇f(\v x) = 0$ in einem $\v x ∈ D$. Ist die Hesse Matrix $H_f(x)$ in $\v x$
+  *positiv definit* (das heißt alle Eigenwerte positiv), so liegt in $\v x$ ein striktes lokales Minimum. Ist sie negativ definit (das heißt alle Eigenwerte negativ),
+  so liegt in $\v x$ ein striktes lokals Maximum. Ist sie indefinit (hat sowohl positive als auch negative Eigenwerte), so kann in $\v x$ kein lokales Extremum liegen.
+  #+end_thm
+  #+begin_proof latex
+  Nach Korollar 2.21 gilt
+  \[f(x + h) &= f(x) + (∇f(x), h)_2 + \frac{1}{2} (H_f(x) h, h)_2 + ω_2(x, h)\]
+  wobei
+  \[\lim_{\substack{h \to 0 \\ h \neq 0}} \frac{ω_2(x, h)}{\norm{h}_2^2} =0 \]
+  \[∇f(\v x) = 0 ⇒ f(\v x + h) - f(\v x) = \frac{1}{2}(H_f(\v x)h, h)_2 + ω_2(\v x, h)\]
+  Ist $H_f(\v x)$ positiv definit, so gilt
+  \[(H_f(\v x)h, h)_2 \geq λ\norm{h}_2^2, h ∈ ℝ^n\]
+  wobei $λ$ der kleinste Eigenwert ist.
+  \[⇒ f(\v x + h) - f(\v x) \geq \frac{1}{2} λ\norm{h}_2^2 + ω(\v x, h)\]
+  Für kleines $\norm{h}_2 < σ, h \neq 0$ ist
+  \[\abs{ω_2(\v x, h)} < \frac{1}{2} λ \norm{h}_2^2\]
+  und somit
+  \[f(\v x + h) - f(\v x) > \frac{1}{2} λ \norm{h}_2^2 - \frac{1}{2} λ \norm{h}_2^2 = 0\]
+  $⇒ \v x$ ist ein lokales Maximum. Ist $H_f(\v x)$ negativ definit $⇒ \v x$ ist ein lokales Maximum (analog). \\
+  Ist $H_f(\v x)$ indefinit $⇒ ∃λ_+ > 0$
+  #+end_proof
