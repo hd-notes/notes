@@ -90,7 +90,7 @@
   \[p(x_i) = y_i \qquad i = 0, \dots, n\]
   Dies ist ein lineares Gleichungssystem mit $n + 1$ Gleichungen und $n + 1$ Freiheitsgraden.
   \[\begin{pmatrix}x_0^0 & x_0^1 & \dots & x_0^n \\ x_1^0 & x_1^1 &   & x_1^n \\ \vdots &   & \ddots & \vdots \\ x_n^0 & x_n^1 & \dots & x_n^n\end{pmatrix} \cvec{a_0; a_1; \vdots; a_n} = \cvec{y_0; y_1; \vdots; y_n}\]
-  Wegen der Eindeutigkeit von $p$ ist $\ker V = \{0\}$. Mit dem Rangsatz ($\dim ℝ^{n + 1} = \dim \der V + \dim \im V$) liefert $V$ eine surjektive Abbildung.
+  Wegen der Eindeutigkeit von $p$ ist $\ker V = \{0\}$. Mit dem Rangsatz ($\dim ℝ^{n + 1} = \dim \ker V + \dim \im V$) liefert $V$ eine surjektive Abbildung.
   Damit existiert eine Lösung.
   #+end_proof
   Zur Konstruktion des Interpolationspolynoms $p ∈ P_n$ verwenden wir die sogenannten Lagrangschen Basispolynome.
@@ -112,7 +112,7 @@
   #+end_defn
   Nachteil: Bei Hinzunahme eines weiteren Stützpunktes $(x_{n+1}, y_{n + 1})$ ändern sich die Basispolynome völlig. \\
   Abhilfe: Newtonsche Basispolynome
-  \[N_0(x) = 1, N_i(x) = (x - x_{i - 1})N_(i - 1)(x) = \prod_{j = 0}^{i - 1}(x - x_j)\]
+  \[N_0(x) = 1, N_i(x) = (x - x_{i - 1})N_{i - 1}(x) = \prod_{j = 0}^{i - 1}(x - x_j)\]
   Für den Ansatz
   \[p(x) = \sum_{i = 0}^{n} a_i N_i(x)\] erhält man durch Auswertung von $x_0, \dots, x_n$ das gestaffelte Gleichungssystem
   \begin{align*}
@@ -156,7 +156,7 @@
   Ex gilt:
   \[q(x_i) = y_i, q(x_{i + k}) = \frac{(x_{i + k} - x_i)y_{i + k} + 0}{x_{i + k} - x_i} = y_{1 + k}\]
   \[q(x_j) = \frac{(x_j - x_i)y_j - (x_j - x_{i + k})y_j}{x_{i + k} - x_i} = y_j, j = i +1 , \dots, i + k - 1\]
-  $⇒ q$ interpoliert die Stützpunkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k}) ⇒ q \equvi p_{i, i + k}$ (Eindeutigkeit des Interpolationspolynoms).
+  $⇒ q$ interpoliert die Stützpunkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k}) ⇒ q \equiv p_{i, i + k}$ (Eindeutigkeit des Interpolationspolynoms).
   Der führende Koeffizient in $p_{i, i + k}(x)$ ist demnach
   \begin{align*}
   q &= \frac{y[x_{i + 1}, \dots, x_{i + k}] - y[x_i, \dots, x_{i + k - 1}]}{x_{i + k} - x_i} \\

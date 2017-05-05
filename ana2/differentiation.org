@@ -197,8 +197,8 @@
   α! &:= α_1! · \dots · α_n!
   \end{align*}
   Für $x = (x_1, \dots, x_n) ∈ ℝ^n$ wird gesetzt
-  \[x^α := x_1^{α_1} · \dots _ x_n^{α_n}\]
-  Für eine $\abs{α}$-mal stetig differenzierbare Funktion wird gesetzt
+  \[x^α := x_1^{α_1} · \dots · x_n^{α_n}\]
+  Für eine $\abs{α}$ -mal stetig differenzierbare Funktion wird gesetzt
   \[\partial^α f := \partial_1^{α_1} \dots \partial_n^{α_n} f := \frac{\partial^{\abs{α}} f}{\partial_{x_1}^{α_1} \dots \partial_{x_n}^{α_n}}\]
   #+end_defn
   #+begin_remark latex
@@ -262,7 +262,7 @@
   #+ATTR_LATEX: :options [2.20]
   #+begin_lemma latex
   Sei $α = (α_1, \dots, α_n)$ mit $\abs{α} = k \geq 1$. Dann ist die Anzahl $N_α (k)$ der k-Tupel von Zahlen $i_j = \{1, \dots, n\}$, bei denen die Zahl $i ∈ \{1, \dots, n\}$
-  genau	$α_i$-mal vorkommt, bestimmt durch
+  genau	$α_i$ -mal vorkommt, bestimmt durch
   \[N_α(k) = \frac{k!}{α_1! \dots α_n!}\]
   #+end_lemma
   #+begin_proof latex
@@ -275,7 +275,7 @@
   #+ATTR_LATEX: :options [2.21]
   #+begin_korollar latex
   Sei $D ⊂ ℝ^n$ eine offene Menge und $f: D \to ℝ$ eine $r + 1$ mal stetig differenzierbare Funktion. Dann gilt für $x ∈ D$ und $h ∈ ℝ^n$ mit $x + sh ∈ D, s ∈ [0, 1]$:
-  \[f(x + h) = \sum_{\abs{α} \leq r + 1} \frac{\partial^a f(x)}{α!} h^α + ω_(r + 1)(x, h)\]
+  \[f(x + h) = \sum_{\abs{α} \leq r + 1} \frac{\partial^a f(x)}{α!} h^α + ω_{r + 1}(x, h)\]
   wobei $ω_{r + 1}(x, 0) = 0$ und $ω_{r + 1}(x, h) = \mathcal{o}(\norm{h}_2^{r + 1})$. \\
   Im Fall $r = 0$ gilt
   \[f(x + h) = f(x) + (∇f(x), h)_2 + ω_1(x, h)\]
@@ -347,7 +347,7 @@
   #+end_thm
   #+begin_proof latex
   Nach Korollar 2.21 gilt
-  \[f(x + h) &= f(x) + (∇f(x), h)_2 + \frac{1}{2} (H_f(x) h, h)_2 + ω_2(x, h)\]
+  \[f(x + h) = f(x) + (∇f(x), h)_2 + \frac{1}{2} (H_f(x) h, h)_2 + ω_2(x, h)\]
   wobei
   \[\lim_{\substack{h \to 0 \\ h \neq 0}} \frac{ω_2(x, h)}{\norm{h}_2^2} =0 \]
   \[∇f(\v x) = 0 ⇒ f(\v x + h) - f(\v x) = \frac{1}{2}(H_f(\v x)h, h)_2 + ω_2(\v x, h)\]
@@ -360,5 +360,25 @@
   und somit
   \[f(\v x + h) - f(\v x) > \frac{1}{2} λ \norm{h}_2^2 - \frac{1}{2} λ \norm{h}_2^2 = 0\]
   $⇒ \v x$ ist ein lokales Maximum. Ist $H_f(\v x)$ negativ definit $⇒ \v x$ ist ein lokales Maximum (analog). \\
-  Ist $H_f(\v x)$ indefinit $⇒ ∃λ_+ > 0$
+  Ist $H_f(\v x)$ indefinit $⇒ ∃λ_+ > 0$ (mit Eigenvektor $z_+$) und $∃λ_- < 0$ (mit EV $z_-$)
+  \begin{align*}
+  \string(H_f(\v x)z_+, z_+\string)_2 &= λ_+ \norm{z_+}_2^2 > 0 \\
+  \string(H_f(\v x)z_-, z_-\string)_2 &= λ_- \norm{z_-}_2^2 < 0 \\
+  \end{align*}
+  Für genübend kleines $t > 0$ gilt dann
+  \[f(\v x+ tz_+) - f(\v x) > 0 \qquad f(\v x + tz_-) - f(\v x) < 0\]
+  $⇒$ kein Extremum in $\v x$
   #+end_proof
+  #+begin_ex latex
+  1. $f_1(x) = a + x_1^2 + x_2^2$
+     \[∇f_2(x) = (2x_1, 2x_2) = 0 ⇔ \v x_1 = 0 \wedge \v x_2 = 0 \]
+	 \[H_{f_1}(x) = \begin{pmatrix}2 & 0 \\ 0 & 2\end{pmatrix}\]
+	 positiv definit $⇒ \v x = 0$ ist Minimum.
+  2. $f_2(x) = a - x_1^2 - x_2^2$
+	 \[∇f_2(x) = (-2x_1, -2x_2) ⇒ \v x = 0, H_{f_2}(x) = \begin{pmatrix}-2 & 0 \\ 0 & -2\end{pmatrix}\]
+	 negativ definit $⇒ \v x = 0$ ist Maximum.
+  #+end_ex
+  #+begin_remark latex
+  Ist die Hesse Matrix in einer Nullstelle das Gradienten semidefinit (des heißt $∃ λ_i = 0$), so lassen
+  sich keine allgemeinen Aussagen über lokale Extrema machen.
+  #+end_remark

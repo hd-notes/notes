@@ -184,7 +184,7 @@
    Alte Bewegung: $\{t \to x(t)\}$, Neue Bewegung $\{βt ↦ α x(t)\}$. \\
    Variablenweschsel: $t' = βt$ und anschließend $t' \to t$. Neue Bewegung: $\{t ↦ α x(t/β)\}$ \\
    Betrachte nun Transformationen von $T, V$ \\
-   \[T, V \to (α / β)^2 T, α^k V)\]
+   \[T, V \to ((α / β)^2 T, α^k V)\]
    Fordere nun $α^k = (α / β)^2 ⇒ L \to α^k L$ \\
    Beachte:
    \[\dd{}{t}(\pp{L}{\dot x}) - \pp{L}{x} = 0\]

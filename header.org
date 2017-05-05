@@ -135,6 +135,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Eig}{Eig}
 #+LATEX_HEADER: \DeclareMathOperator{\rd}{rd}
 #+LATEX_HEADER: \DeclareMathOperator{\Div}{div}
+#+LATEX_HEADER: \DeclareMathOperator{\Bil}{Bil}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs

@@ -37,12 +37,12 @@
    \[V(φ) = \sum_{a} V_a(\v r_a(φ))\]
    Betrachte
    \begin{align*}
-   V(φ + δφ) &= \sum_{a} V_a(\v r_(φ) + δ\v v_a) \\
+   V(φ + δφ) &= \sum_{a} V_a(\v r_a(φ) + δ\v v_a) \\
    &= \sum_{a} V_a(\v r_a(φ) + δ\v φ × \v r_a(φ)) \\
    &= \sum_{a} V_a + \sum_{a}(δ\v φ × \v r_a) · \v ∇ V_a(\v r_a(φ)) \\
    V(φ + δφ) - V(φ) &= \sum_{a}(δ\v φ × \v r_a) \v ∇ V_a(\v r_a(φ)) \\
-   \intertext{Limes $δφ$ \to 0, δ\v φ = \v e_A δφ, \v e_A$ Einheitsvektor der Achse}
-   -\dd{V(φ)}{φ} &= -\sum_{a} \frac{δ\v φ × \v_a}{δφ} \v ∇V \\
+   \intertext{Limes $δφ \to 0, δ\v φ = \v e_A δφ, \v e_A$ Einheitsvektor der Achse}
+   -\dd{V(φ)}{φ} &= -\sum_{a} \frac{δ\v φ × \v r_a}{δφ} \v ∇V \\
    &= \sum_{a} ε_{ijk}(\v e_A)_j (\v r_a)_k · (F_a)_i \\
    &= \sum_{a} (\v e_A)_j (\v r_a × \v F_a)_j = \sum_{a} \v e_A · \v M_a
    \end{align*}
@@ -52,7 +52,7 @@
    $\v M$: Gesamtdrehmoment. \\
    Erinnerung: Drehimpuls für Punktmasse: $\v L = m\v r × \v v$
    \[⇒ \v e_A · \v L = m \v e_A [(\v r_{\parallel} + \v r_{\perp}) × \v r]\]
-   \[\abs{\v r_{\perp} × \v v} = \abs{\v r_{\perp}} \abs{\v v} = \abs{\v_{\perp}} \abs{\v r_{\perp}} \dot φ\]
+   \[\abs{\v r_{\perp} × \v v} = \abs{\v r_{\perp}} \abs{\v v} = \abs{\v r_{\perp}} \abs{\v r_{\perp}} \dot φ\]
    \[⇒ \v e_A \v L = m r_{\perp}^2 \dot φ ⇒ \v e_A \v L = I_A \dot φ\]
    \[⇒ \v e_A · \dot{\v L} = \v e_A \v M\]
    Bemerkung: $I_A$ ist besonders einfach zu berechnen falls $A \parallel S$ (Schwerpunktsachse) und $I_S$ bekannt, $\v R_{\perp}$ ist der (senkrechte) Abstand der beiden Achsen.
@@ -76,7 +76,7 @@
    I_{ij} = ∫ \d^3 \v r ρ(\v r)(δ_{ij} \v r^2 - r_i r_j)
    \end{align*}
    Speziell für $\v r = (x, y, z)$ findet man:
-   \[I = ∫\d x \d y \d z ρ(\vr ) \begin{pmatrix}y^2 + z^2 &  -xy & -xz \\ -xy & x^2 + z^2 & -yz \\  -xz & -yz & x^2 + y^2\end{pmatrix}\]
+   \[I = ∫\d x \d y \d z ρ(\v r) \begin{pmatrix}y^2 + z^2 &  -xy & -xz \\ -xy & x^2 + z^2 & -yz \\  -xz & -yz & x^2 + y^2\end{pmatrix}\]
    #+ATTR_LATEX: :options [homogener Würfel]
    #+begin_ex latex
    $∫\d x \to ∫_{-a/2}^{a/2}\d x$
@@ -108,7 +108,7 @@
    In der Tat:
    \begin{align*}
    R · I \hat e_1 &= I_1 R \hat e_1 \\
-   (R I R^{-1}) R &= I_1 R \hat e_1 \\
+   \string(R I R^{-1}\string) R &= I_1 R \hat e_1 \\
    I' \hat e_1' &= I_1 \hat e_1' \qquad \hat e_1' = R\hat e_1
    \end{align*}
    Wir sehen: Die Matrix $I$ hat 3 Eigenvektoren $\hat e_{(a)}$. Diese Eigenvektoren
