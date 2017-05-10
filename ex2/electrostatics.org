@@ -183,7 +183,7 @@
    \intertext{Differentialform:}
    \Div \v E &= \frac{ρ}{ε_0} \quad \rot \v E = 0
    \end{align*}
-   Stokscher Satz:
+   Stokes-scher Satz:
    \[∮_C E\d \v s = ∫_A \rot \v E \d \v A\]
    Zur Rotation: \\
    Schreibweise:
@@ -209,7 +209,7 @@
    #+ATTR_LATEX: :options [Laplacegleichung]
    #+begin_defn latex
    \[Δφ = 0\]
-   Echstein der mathematischen Physik [PTP3]
+   Eckstein der mathematischen Physik [PTP3]
    #+end_defn
    Realisierung eines Feldes der Form
    \begin{align*}
