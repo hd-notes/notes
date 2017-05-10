@@ -141,7 +141,7 @@
   2. $φ ∈ \ker(f^{\ast}) ⇔ f^{\ast}(φ) = 0 ⇔ φ \circ f = 0 ⇔ φ(f(v)) = 0 ∀ v ∈ V ⇔ φ\Big|_{im f} = 0 ⇔ φ ∈ (\im f)^0$
   #+end_proof
   #+begin_conc latex
-  $V, W$ endlichdimensionale K-VR, $f: V \to W$ lineare Abbildunge. Dann gilt:
+  $V, W$ endlichdimensionale K-VR, $f: V \to W$ lineare Abbildung. Dann gilt:
   \[\Rang(f^{\ast}) = \Rang(f)\]
   #+end_conc
   #+begin_proof latex
@@ -163,7 +163,7 @@
   \[i: V \to V^{\ast\ast}, v ↦ i_v, i_v: V^{\ast} \to K, φ ↦ φ(v)\]
   #+end_thm
   #+begin_proof latex
-  1. $i$ wohldefinier nud linear: leicht nachzurechnen.
+  1. $i$ wohldefinier und linear: leicht nachzurechnen.
   2. $i$ injektiv: Sei $v ∈ \ker i ⇒ i_v = 0 ⇒ ∀ φ ∈ V^{\ast} = \Hom_K(V, K): φ(v) = 0 ⇒ v = 0$
   3. $\dim V^{\ast\ast} = \dim V^{\ast} = \dim V$. Somit nach 12.15: $i$ Isomorphismus
   #+end_proof
