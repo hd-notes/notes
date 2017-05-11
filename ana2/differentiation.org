@@ -47,7 +47,7 @@
 	 Für $x = 0$ ist $f(0) = 0$
 	 \[⇒ \lim_{h \to 0} \frac{f(x e_i) - f(0)}{h} = 0\]
 	 Sei $x_ε (ε, ε)$ und damit gilt $\norm{x_ε}_2 \xrightarrow{ε \to 0} 0$
-     \[f(x_ε) = \frac{ε^2}{4 ε^4} = \frac{1}{4 ε2} \xrightarrow{ε \to 0} ∞\]
+     \[f(x_ε) = \frac{ε^2}{4 ε^4} = \frac{1}{4 ε^2} \xrightarrow{ε \to 0} ∞\]
   #+end_ex*
   #+begin_thm latex
   Die Funktion $f: D \to ℝ$ habe in einer Kugelumgebung $K_r(x) ⊂ D$ eines Punktes $x ∈ D$ beschränkte partielle Ableitungen, das heißt
