@@ -113,8 +113,153 @@
    \end{align*}
    Wir sehen: Die Matrix $I$ hat 3 Eigenvektoren $\hat e_{(a)}$. Diese Eigenvektoren
    definieren die Hauptträgheitsachsen. Die Eigenwerte $I_a$ sind die entsprechenden Hauptträgheitsmomente.
+** Eigenwerte, Eigenvektoren, Diagonlisierbarkeit
+   Sei $\mathbb{V} = ℂ^n$ ein Vektorraum über $ℂ$. Definiere das Skalarprodukt $(∀x, y ∈ \mathbb{V})$
+   \[x, y ↦ <x, y> \equiv x^{\dagger} y ∈ ℂ\]
+   Notation: $M^{\dagger} \equiv \bar M^T$ für alle komplexenen Matrizen. Sei $H$ eine hermitesche Matrix ($n × nn$), das heißt $H^{\dagger} = H$.
+   Wir können $H$ wie folgt diagonalisieren:
+   - Löse $\det(H - λ \mathbb{1}) = 0$. (Fundamentalsatz der Algebra)
+	 Nenne diese Lösung $λ_1$. Da nun $\det(H - λ_1 \mathbb{1}) = 0$ hat die Gleichung $(H - λ_1 \mathbb{1}) · x = 0$
+	 eine nichttriviale Lösung $x_1 ∈ \mathbb{V}$. (Wegen Nicht-Invertierbarkeit $(H - λ_1 \mathbb{1})$).
+	 Notation: $x_1$ heißt Eigenvektor von $H$ zum Eigenwert $λ_1$. Es gilt $Hx_1 = λ_1 x_1$
+   - Behauptung: $H$ bildet $\{x_1\}_{\perp}$ auf $\{x_1\}_{\perp}$ ab.
+   - Begründung: Sei $<y, x_1> = 0$. Dann gilt
+	 \[<Hy, x_1> = (Hy)^{\dagger} x_1 = y^{\dagger} H^{\dagger} x_1 = y^{\dagger} H x_1 = λ_1 y^{\dagger} x_1 = λ_1 <y, x_1> = 0~\checkmark\]
+   Betrachte jetzt die $(n - 1) × (n - 1)$ -Matrix $H_1$ welce die Wirkung von $H$ auf $\{x_1\}_{\perp}$ beschreibt. Wiedehohle
+   obiges Argument. Finde $λ_2, x_2$ und so weiter.
+   - Wähle normierte Basis $e_1, \dots, e_n \sim x_1, \dots, x_n$. Diese Basis ist nach obigem auch orthogonal.
+   - Wir nennen Matrizen welche eine Orthonormalbasis in eine Orthonormalbasis überführen unitär.
+	 Ohne Beweis: Für solche Matrizen gilt $U^{\dagger} = U^{-1}$
+   - Damit haben wir Diagonalisierbarkeit vod hermitesche Matrizen durch unitäre Transformationen!
+   - Behauptung: $λ_i$ sind reell.
+   - Begründung: $<H x_1, x_1> = <λ x_1, x_1> = \bar λ <x_1, x_1> = <x_1, H x_1> = λ<x_1, x_1> \checkmark$
+   Korollar: Reelle, symmetrische Matrizen $(H = H^{\dagger}, H_{ij} ∈ ℝ)$ können durck orthogonale Transformationen diagonalisiert werden. \\
+   Dazu: Finde wie oben $λ_1 ∈ ℂ$. Wir wissen aber, dass auch $λ_1 ∈ ℝ$. Dann existiert ein reelles
+   $x_1$ mit $(H - λ_1 \mathbb{1}) x_1 = 0$. Fortsetzung wie oben, nur "unitär" $\to$ "orthogonal".
 ** Trägheitsellipsoid
    Bisher: $I_{\text{würfel}} = \frac{1}{6} M a^2 \mathbb{1}$ \\
-   Nächstes Beispiel: Kugel, ohne Rechnung: $I \sim \mathbb{1}$, Warum? \\
+   Nächstes Beispiel: homogene Kugel, ohne Rechnung: $I \sim \mathbb{1}$, Warum? \\
    Es muss gelten: $I = R I R^{-1} ∀ R ∈ SO(3)$. Fakt: $δ_{ij}$ ist der einzige invariante Tensor von $SO(3)$
-   mit zwei Indizes.
+   mit zwei Indizes (vom Rang 2). \\
+   Betrachte nun ein weniger symmetrisches Beispiel:
+   #+ATTR_LATEX: :options [Hantel]
+   #+begin_ex latex
+   Hantel mit masseloser Stange, $m_1 = m_2 = m$
+   \begin{align*}
+   I_{ij} &= \sum_{m} m · (δ_{ij} \v r^2 - r_i r_j) \\
+   &= 2m(δ_{ij} \v r^2 - r_i r_j) \qquad \v r = (0, 0, a) \\
+   &= 2m a^2 \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{pmatrix}_{ij} \\
+   \intertext{realistische Hantel (keine Punktmassen)}
+   &= 2m a^2 \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & ε\end{pmatrix}_{ij} \\
+   \end{align*}
+   #+end_ex
+   Vermutung: "einfache" Beziehung zwischen Form des Körpers und Trägheitstensors. \\
+   So wie ein Vektor einen Pfeil in $ℝ^3$ entspricht, so entspricht ein symmetrischer Tensor vom Rang $2$ einer *Fläche 2. Grades*:
+   \[t_{ij} x_i x_j = 1\]
+   Wir setzen nun $t \equiv I$ und gehen ins Hauptträgheitsachsensystem.
+   \[I_{ij}x_i x_j = 1 ⇒ I_1 x_1^2 + I_2 x_2^2 + I_3 x_3^2 = 1\]
+   Dies beschreibt einen Ellipsoid. Betrachte beliebige Achse $\hat e$ ($\hat e^2 = 1$).
+   Diese schniede Ellipsoid bei $\v x_e$.
+   \begin{align*}
+   \v x_e &= \hat e · \abs{\v x_e} \\
+   1 &= I_{ij} (x_e)_i (x_e)_j \\
+   1 &= \abs{\v x_e}^2 I_{ij} \hat e_i \hat e_j = I_e \abs{\v x_e}^2 \\
+   ⇒ \abs{\v x_e} &= \frac{1}{\sqrt{I_e}}
+   \end{align*}
+   $\abs{\v x_e}$ groß $⇔ I_e$ klein $⇔$ Körer hat in den "anderen" Richtungen eine kleine Ausdehnung.
+   $⇒$ Trägheitsellipsoid folgt ungefähr Form des Körpers:
+   | Körper    | Würfel / Kugel | Hantel / Quader            | gekreutzte Hantel / "Buch"                 |
+   | Ellipsoid | Sphäre         | vertikal gestreckte Sphäre | vertikal gestauchte ("abgeflachte") Sphäre |
+** Trägheitstensor und Drehimpuls (mehr zur Geometrie)
+   Erinnerung: Tensor $t$ vom Rang $2$ ist bilineare Abbildung
+   \[t: \mathbb{V} × \mathbb{V} \to ℝ, (x, y) ↦ t_{ij} x_i y_j\]
+   Unser Fall:
+   \[I: (\v ω, \v ω) ↦ I_{ij} ω_i ω_j = 2 T\]
+   $⇒$ Die formale mathematische Definition vom $I$ hat unmittelbare physikalische Bedeutung.
+   Sie ordnet $\v ω$ die kinetische Energie zu. Im euklidischen Raum definiert ein Tensor außerdem eine Abbildung
+   \[t: \mathbb{V} \to \mathbb{V}, \{x_i\} ↦ \{t_{ij} x_j\} \text{ beziehungsweise } x \to tx\]
+   Auch dies hat bei uns physikalische Bedeutung:
+   \[I: \{ω_i\} ↦ \{I_{ij} ω_j\} = \{L_i\} \text{ also } \v ω ↦ \v L\]
+   Wir behaupten hier, dass $L_i = I_{ij} ω_j$ gilt. Das ist leicht zu prüfen: Betrachte Massenpunkt bei der Position $\v r$.
+   Drehe jetzt um Achse $\v ω$ mit Winkelgeschwindigkeit $\v ω$:
+   \begin{align*}
+   \v L &= \v r × \v p = m \v r × \dot{\v r} = m\v r × (\v w × \v r) \\
+   L_i &= m ε_{ijk} r_j (ε_{klm} ω_l r_m) = \dots \\
+   &= m(δ_{ij} \v r^2 - r_1 r_j) ω_j
+   \end{align*}
+   Nach Summation über viele Massenpunkte:
+   \[L_i = \sum_{a} m_a (δ_{ij} \v r_a^2 - (r_a)_i (r_a)_j) ω_j = I_{ij} ω_j, L = I ω\]
+* Kreisel
+** Euler-Gleichungen
+   Körperfestes System vs. Raumfestes System. Drehmatrix $R(t) ∈ SO(3)$
+   \[L' = RL, v' = Rv\]
+   Bewegungsgleichungen:
+   \begin{align*}
+   \dot{\v L'} = \v M' \qquad \dd{}{t}(R · L) &= RM \\
+   \dot R L + R \to L &= RM \\
+   \intertext{Erinnerung: $\dot R r = R(ω × r)$}
+   R(ω × L) + R \dot L &= R  M \\
+   \dot R &= M + L × ω \\
+   L &= I ω \\
+   I \dot ω = M + (I ω) × ω
+   \end{align*}
+   Wähle als körperfestes System speziell das Hauptachsensystem $⇒ I = \begin{pmatrix}I_1 &   &   \\   & I_2 &   \\   &   & I_3\end{pmatrix}$.
+   $⇒$ Euler-Gleichungen
+   \begin{align*}
+   I_1 \dot ω_1 &= M_1 + ω_2 ω_3(I_2 - I_3) \\
+   I_2 \dot ω_2 &= M_2 + ω_3 ω_1(I_3 - I_1) \\
+   I_3 \dot ω_3 &= M_3 + ω_1 ω_3(I_1 - I_2)
+   \end{align*}
+** Freier Kreisel
+   Energieerhaltung:
+   \[E = T = \frac{1}{2}ω^T I ω = \frac{1}{2}\sum_{i = 1}^{3}I_i ω_i^2\]
+   \[L_i = I_i ω_i ⇒ E = \frac{1}{2} \sum_{i = 1}^{3} \frac{L_i^2}{I_i}\]
+   oder
+   \[\frac{L_1^2}{2E I_1} + \frac{L_2^2}{2E I_2} + \frac{L_3^2}{2E I_3} = 1\]
+   $⇒ L$ ist auf ein Ellipsoid ("Binet-Ellipsoid" (Ellipsoid im "L-Raum")) eingeschränkt. \\
+   Drehimpulserhaltung:
+   \[L' = \const, L' = RL, R ∈ SO(3) ⇒ \abs{L} = \const\]
+   $⇒ L$ bewegt sich im körperfesten System auf Schnittkurven von Binet-Ellipsoid und Sphäre mit Radius $\abs{\v L} = \abs{\v L'}$
+   Ohne Beschränkung der Allgemeinheit: $I_1 > I_2 > I_3$ \\
+   Fall 1: $\abs{\v L} < \sqrt{2 E I_3} ⇒$ Sphäre und Ellipsoid haben keine gemeinsamen Punkte $⇒$ physikalische unmöglich \\
+   Fall 2: $\abs{\v L} = \sqrt{2 E E_3}$ ("einbeschriebene Kugel") $⇒ L = \pm (0, 0, \sqrt{2 E I_3})^T, ω_2 \parallel e_3$ fest. \\
+   Fall 3: $\sqrt{2 E I_3} < \abs{\v L} < \sqrt{2 E I_2} ⇒$ Sphäre stößt aus Ellipsoid heraus $⇒ L$ bewegt sich im körperfesten System auf einer geschlossenen Kurve
+   $⇒$ kräftefreie Präzession des Kreisels im Laborsystem. \\
+   Fall 4: $\abs{\v L} = sqrt(2 E I_2)$ Zwei kreuzende Kurven $L$ sitzt am Kreuzungspunkt (instabil) oder bewegt sich entlang Kurve \\
+   Fall 5: $\sqrt{2 E I_2} < \abs{\v L} < \sqrt{2 E I_1}$ "Gurke", nur Enden sind abgeschnitten $⇒ L$ bewegt sich im körperfisten System auf einer geschlossenen Kurze $⇒$ kräftefreie Präzessions des Kreisels im Laborsystem \\
+   Fall 6: $\abs{\v L} = \sqrt{2 E I_1}$ ("einbeschriebene Kugel"), wie Fall 2 \\
+   Fall 7: $\sqrt{2 E I_1} < \abs{\v L}$ unmöglich \\
+   Auch möglich: Geometrische Diskussion im raumfesten System $⇒$ Poinsot-Konstruktion: Ellipse rollt rutschfrei auf Ebene ab.
+** Freier Kreisel analytisch
+   Euler-Gleichungen
+   \begin{align*}
+   I_1 \dot ω_1 &= ω_2 ω_3(I_2 - I_3) \\
+   I_2 \dot ω_2 &= ω_3 ω_1(I_3 - I_1) \\
+   I_3 \dot ω_3 &= ω_1 ω_3(I_1 - I_2)
+   \end{align*}
+   $⇒$ Falls 2 der 3 Komponenten von $\v ω$ Null sind $⇒ \v ω = \const$. Jetzt zur Vereinfachung sei $I_1 = I_2 < I_3$.
+   Definiere $I_0 \equiv I_1 = I_2$ (Beispiel: abgeflachte Kugel, wie etwa Erde).
+   \begin{align*}
+   I_0 \dot ω_1 &= ω_2 ω_3(I_0 - I_3) \\
+   I_0 \dot ω_2 &= -ω_3 ω_1(I_0 - I_3) \\
+   I_3 \dot ω_3 &= 0
+   \end{align*}
+   $ω_3 = \const$. Definiere $α \equiv -ω_3(1 - \frac{I_3}{I_0}) = \const$. Man erhält:
+   \begin{align*}
+   \dot ω_1 = -α ω_2 \\
+   \dot ω_2 = -a ω_1 \\
+   ⇒ \ddot ω_1 &= -α^2 ω_1 \\
+   ⇒ ω_1 &= A \cos(α t + φ) \\
+   \end{align*}
+   (ohne Beschränkung der Allgemeinheit $φ = 0$).
+   $⇒$ freie Präzession:
+   \begin{align*}
+   ω_1 &= A\cos α t \\
+   ω_2 &= A\sin α t \\
+   ω_3 &= \const
+   \end{align*}
+   $\v ω$ bewegt sich auf Kreis in der $ω_3 = \const$ Ebene. \\
+   Konkreter Fall: Erde
+   \[-(1 - \frac{I_3}{I_0}) \approx 0.003 \equiv ε\]
+   $⇒ α = ω_3 · ε ⇒ T_{\text{Präz}} = \frac{T_{\text{Erde}}}{ε} \sim 300 \text{Tage}$ \\
+   $⇒$ Realität ist leider komplizierter, "Chandler-Wobble"

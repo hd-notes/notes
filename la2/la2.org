@@ -7,10 +7,16 @@
 #+LATEX_HEADER: \theoremstyle{plain}
 #+LATEX_HEADER: \newtheorem{defthm}[defn]{Satz+Definition}
 #+LATEX_HEADER: \newtheorem{remdef}[defn]{Bemerkung+Definition}
+#+LATEX_HEADER: \newtheorem{concdef}[defn]{Folgerung+Definition}
 #+LATEX_HEADER: \theoremstyle{nonumberplain}
 #+LATEX_HEADER: \renewtheorem{note}{Anmerkung}
 #+LATEX_HEADER: \theoremstyle{break}
 #+LATEX_HEADER: \renewtheorem{ex}[defn]{Beispiel}
+
+#+LATEX_HEADER: \DeclareFontEncoding{LS1}{}{}
+#+LATEX_HEADER: \DeclareFontSubstitution{LS1}{stix}{m}{n}
+#+LATEX_HEADER: \DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+#+LATEX_HEADER: \DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
 
 #+INCLUDE: "eigen_values.org" :minlevel 1
 #+INCLUDE: "dual_vector.org" :minlevel 1

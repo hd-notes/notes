@@ -257,6 +257,7 @@
    #+ATTR_LATEX: :options [Halbraumleiter mit Ladung]
    #+begin_ex latex
    #+end_ex
+** Elektrischer Dipol
    #+ATTR_LATEX: :options [Dipol]
    #+begin_ex latex
    \begin{align*}
@@ -273,3 +274,182 @@
    \[φ(\v r) = \frac{a_0}{r} + \frac{a_1}{r^2} + \frac{a_2}{r^3} + \dots\]
    \[a_0 = \frac{Q}{4π ε_0} \quad a_1 = \frac{1}{4πε_0} · \v p \hat r\]
    \[\v p = ∫ρ(\v r) \v r \d Q\]
+   Elektrischer Dipol im homogenem Feld: \\
+   Drehmoment:
+   \[\v M = \v d × \v F = q · \v d × \frac{1}{q} \v F = \v p × \v E\]
+   Kräfepaar! $⇒$ Ausrichtung im Feld. Potentielle Energie: Drehung eines Dipols im homogenen Feld,
+   das heißt Arbeit wird frei oder wird geleistet. Wähle: $E_{pot} = 0$ für $r = 90^{\circ}$
+   \[E_{pot} = - \v F \v s = -\v p \v E\]
+   Dipol im inhomogenen Feld: das heißt an den beiden Enden des Dipols wirken unterschiedliche Kräfte.
+   $⇒$ Drehmoment + resultierende Kraft. Es gilt:
+   \begin{align*}
+   \v F &= q \v d \dd{\v E}{\v r} = \v p ∇ \v E \\
+   F_x &= \v p \grad E_x \\
+   F_y &= \v p \grad E_y \\
+   F_x &= \v p \grad E_z \\
+   \end{align*}
+** Kapzität und Kondensator
+   Leiter können Ladungen speichern (zum Beispiel: Leidener Flasche, Kondensator, Metallkugel). \\
+   Kondensator = Ladungsspeicher (Ladungen werden im Kondensator "kondensiert", das heißt zusammengerängt)
+   Fage: Was ist die Ladungsspeicherfähigkeit oder Kapazität eines Leiters? Dafür betrachte Kugelkonuktoren.
+   Gespeicherte Ladungsmenge auf einzelner Metallkugel:
+   \[Δφ = -∫_∞^R \v E \d \v r = \frac{1}{4 π ε_0} \frac{Q}{R} \to Q = 4π ε_0 R U\]
+   ($Δφ = U$). Das heißt gespeicherte Ladung ist proportional zur angelegten Spannung $U$
+   (Allgemein: $φ(Q) \sim Q$, Superpositionsprinzip). Definiere Ladungsspeicherfähigkeit "pro Volt"
+   #+ATTR_LATEX: :options [Kapazität]
+   #+begin_defn latex
+   \[C = \frac{Q}{U} \qquad Q = C U\]
+   $[C] = \SI{1}{\coulomb\per\volt} = \SI{1}{\farad}$
+   #+end_defn
+   Die Kapazität einer Leiteranordnung hängt von der Geometri (und vom Material) ab. Kapazität eines
+   Kugelkondensators: $C 4π ε_0 R$ (hier: freistehende Kugel). Einheit Farad ist sehr groß, da
+   $\SI{1}{\coulomb}$ sehr groß ist.
+   #+begin_ex latex
+   Kapazität einer Kugel mit $R = \SI{1}{\centi\meter} \to C \approx \SI{1e-12}{\farad} = \SI{1}{\pico\farad}$ \\
+   Kapazität der Erde mit $R = \SI{7e8}{\centi\meter} \to C \approx \SI{7e-4}{\farad} = \SI{700}{\micro\farad}$ \\
+   Trotzdem heute: Superkondensatornen mit Kapazitäten bis zu $\SI{1e4}{\farad}$
+   #+end_ex
+   Referenzpotential $φ= 0$ muss aber nicht im Unendlichen liegen. Allgemeiner Kondensator:
+   Zwei Leiter mit Ladungen $+Q$ und $-Q$ (Realisierung durch Erdung)
+   $⇒$ Erhöhung der Kapazität durch Influenz.
+   #+ATTR_LATEX: :options [Kugelkondensator]
+   #+begin_ex latex
+   (siehe Übungen)
+   #+end_ex
+   #+ATTR_LATEX: :options [Plattenkondensator]
+   #+begin_ex latex
+   \begin{align*}
+   E &= \frac{σ}{ε_0} = \frac{Q}{Aε_0} \\
+   ⇒ U &= φ(x_2) - φ(x_1) = -∫_{x_1}^{x_2} \v E \d \v s \\
+   &= -E ∫_{x_1}^{x_2}\d s = -\frac{Q}{ε_0 A} d \\
+   ⇒ C &= \frac{Q}{U} = \frac{ε_0 A}{d}
+   \end{align*}
+   - $A$: Fläche der Leiterplatte
+   - $d$: Leiterplattenabstand
+   #+end_ex
+   *Kondensatorschaltungen*: \\
+   Parallelschaltung:
+   - Gleiche Spannung an allen $C_i$
+   - Verschiedene Werte $C_i$
+   Es gilt:
+   \begin{align*}
+   Q &= Q_1 + Q_2 + \dots + Q_n \\
+   \frac{Q}{U} &= \frac{Q_1}{U} + \frac{Q_1}{U} + \dots + \frac{Q_n}{U} \\
+   ⇒ C &= C_1 + C_2 + \dots + C_n
+   \end{align*}
+   $⇒$ Gesamtkapazität parallelgeschalteter Kondensatoren
+   \[C_{ges} = \sum_{i = 1}^{n} C_i\]
+   Reihenschaltung:	Es gilt
+   \begin{align*}
+   U &= U_1 + U_2 + \dots + U_n \\
+   \frac{Q}{C} &= \frac{Q}{C_1} + \frac{Q}{C_2} + \dots + \frac{Q}{C_n} \\
+   ⇒ \frac{1}{C} &= \frac{1}{C_1} + \frac{1}{C_2} + \dots + \frac{1}{C_n}
+   \end{align*}
+   $⇒$ Gesamtkapazität von in Reihe geschalteter Kondensatoren:
+   \[\frac{1}{C_{ges}} = \sum_{i = 1}^{n} \frac{1}{C_i}\]
+   Kehrwert der Gesamtkapazität ergibt sich als Summe der Kehrwerte der Einzelkapazitäten
+** Kondensator als Energiespeicher
+   Energiedichte des elektrischen Feldes. Aufgeladener Kondensator = Energiespeicher. Frage:
+   Wievie Energie ist gespeichert? Hierzu Betrachte Plattenkondensator:
+   Ladungstransport von Platte $A$ zu Platte $B$ erfordert Arbeit
+   \begin{align*}
+   ⇒ \d W &= U \d Q = \frac{Q}{C} \d Q \\
+   W_C &= ∫\frac{Q}{C} \d Q = \frac{1}{C}∫Q \d Q = \frac{1}{2} \frac{Q^2}{C} = \frac{1}{2} CU^2
+   \end{align*}
+   $⇒$ Im Plattenkondensator gespeicherte Energie:
+   \[E_C = \frac{1}{2} C U^2\]
+   gilt allgemein für in Kondensator gespeicherte Energie! (Herleitung unabhängig von Geometrie).
+   Für Plattenkondensator gilt weiter:
+   \[E_C = \frac{1}{2} C U^2 = \frac{1}{2} \frac{ε_0 A}{d}U^2 = \frac{1}{2}ε_0 (A d) \frac{U^2}{d^2} = \frac{1}{2}ε_0 V E^2\]
+   Änderung des Blickwinkels:
+   Energie im elektrischen Feld gespeichert $⇒$ Energiedichte $ω_e = E_c / V$
+   \[⇒ ω_e = \frac{1}{2} ε_0 E^2\]
+   Gilt allgemein für alle elektrischen Felder im Vakuum.
+** Dielektrika - Elektrostatik in Matrie
+   Beobachtung: Einbringen eines Isolators (Dielektrikum) in einen Kondensator hat großen Einfluh
+   auf Kapazität. Spannung sinkt $⇒$ Kapazität steigt
+   #+ATTR_LATEX: :options [Permitivität]
+   #+begin_defn latex
+   \[C_{Diel} = ε_r C_{Vakuum} = ε_r C_0\]
+   auch Dielektrizitätskonstante, relative Dielektrizitätszahl, relative Permitivitätszahl.
+   #+end_defn
+   #+ATTR_LATEX: :options [Plattenkondensator]
+   #+begin_ex latex
+   \begin{align*}
+   C_{Diel} &= ε_r ε_0 \frac{A}{d} \\
+   C_{Vak} · U_{Vak} &= C_{Diel} U_{Diel} \\
+   ⇒ \frac{C_{vak}}{C_{Diel}} &= \frac{U_{Diel}}{U_{vak}} = \frac{E_{Diel}}{E_{vak}} = \frac{1}{ε_r} \\
+   E_{Diel} &= \frac{1}{ε_r} E_{vak}
+   \end{align*}
+   das heißt das Feld im Kondensator mit Dielektrikum reduziert.
+   #+end_ex
+   *Mikroskopische Beschreibung*: \\
+   Isolator: Keine freinen, beweglichen Ladungsträger.
+   Aber Polarisation, das heißt Ausrichtung von Dipolen. \\
+   Kondensator
+   \begin{align*}
+   C_0 &= ε_0 \frac{A}{d} \\
+   C_{Diel.} &= ε_r ε_0 \frac{A}{d} \\
+   E_{Diel.} &= \frac{1}{ε_r} E_{\text{Vakuum}} \\
+   &= \frac{1}{ε_r} E_0 \\
+   \end{align*}
+   \[σ_0 = \frac{Q_0}{A}\]
+   \[σ_p = \frac{Q_p}{A}\]
+   \[E_{Diel} = E_0 - E_p = \frac{σ_0}{ε_0} - \frac{σ_p}{e_0} = \frac{1}{ε_0}(σ_0 - σ_p) = \frac{1}{ε_r} \frac{σ_0}{ε_0}\]
+   \[⇒ σ_p = σ_0(1 - \frac{1}{ε_r})\]
+   \[⇒ σ_0 = σ_{frei} = ε_r σ_{tot}\]
+   \[⇒ Q_0 = Q_{frei} = ε_r Q_{tot}\]
+   #+ATTR_LATEX: :options [Polarisation]
+   Polarisation mit Dipolmoment $\v p_i = q_i \v d_i, [P] = \si{\coulomb\per\meter\squared}$
+   #+begin_defn latex
+   \[\v P = \frac{1}{V} \sum \v p_i\]
+   #+end_defn
+   $\v P$ wächst mit stärkerer Ausrichtung des Dipols an. Und es gilt
+   \[\abs{\v P} = \frac{Q_p d}{V} = \frac{σ_p A d}{V} = σ_p\]
+   $⇒$ Makrospocische Polarisation = Oberflächenladungsdichte auf Dielektrikum.
+   \begin{align*}
+   P &= σ_p = σ_0(1 - \frac{1}{ε_r}) = ε_0 E_{vak}(1 - \frac{1}{ε_r}) \\
+   &= (ε_r - 1)ε_0 E_{Diel.} \\
+   \v P &= χ ε_0 \v E_{Diel.} \\
+   χ &= ε_r - 1
+   \end{align*}
+   #+ATTR_LATEX: :options [Dielektrische Verschiebung]
+   #+begin_defn latex
+   \begin{align*}
+   \v D &= ε_0 \v E_{Diel.} + \v P \\
+   &= ε_0 \v E_{vak} = ε_0 ε_r \v E_{Diel.}
+   \end{align*}
+   #+end_defn
+   Vakuum:
+   \[\v E_{Diel} = \v E_{vak} \quad \v D = ε_0 \v E_{vak}\]
+   Dielektrikum
+   \[\v E_{Diel} = \frac{1}{ε_r} \v E_{vak} \quad \v D = ε_0 \v E_{vak}\]
+   Allgemein:
+   \[E_{vak}^{\parallel} = E_{Diel}^{\parallel}, E_{vak}^{\perp} = ε_r E_{Diel}^{\perp}\]
+   \[D_{vak}^{\parallel} = \frac{1}{ε_r} D_{Diel}^{\parallel}, D_{vak}^{\perp} = D_{Diel}^{\perp}\]
+   \begin{align*}
+   \Div \v E_{vak} &= \frac{ρ_{innen}}{ε_0} \\
+   ⇒ \Div \v D &= ρ_{frei}
+   \end{align*}
+   $⇒$ 1. Maxwell Gleichung in Materie
+   \[\Div \v D = ρ_{frei} \quad ∮\v D \d \v A = Q_{frei}\]
+   \[\Div \v E = \frac{ρ_{frei}}{ε_0 ε_r} \quad ∮\v D \d \v A = \frac{Q_{frei}}{ε_0 ε_r}\]
+   Elektrische Feldenergie im Dielektrikum
+   \[W_e = \frac{1}{2} C n^2 = \frac{1}{2} \frac{Q^2}{C} = \frac{1}{2} \frac{1}{ε_r} \frac{Q^2}{C_0}\]
+   \[⇒ ω_C = \frac{1}{2} ε_r ε_0 \v E^2 = \frac{1}{2} \v E \v D\]
+   Für gleiches Feld $\v E$ wächst die Energiedichte mit $ε_r$. Zur Energie des Feldes $\v E$ wird
+   Polarisationsenergie der Dipole addiert.
+** Elektrische Ströme
+   #+ATTR_LATEX: :options [Elektrischer Strom]
+   #+begin_defn latex
+   \[I = \dd{Q}{t}\]
+   \[[I] = \si{\coulomb\per\second} = \si{\ampere}\]
+   \[\abs{\v j} = \frac{I}{A} = \frac{\d Q}{A\d t}\]
+   \[\v j = ρ \v v = n q_e \v v_D\]
+   \[\dots ρ = \div \v j = 0\]
+   \[I = ∫\v j \d A = \dd{Q}{t} = ∫\dot ρ \d V\]
+   #+end_defn
+   *Elektrischer Widerstand und Ohmsches Gesetz*
+   Ladungsfluß entsteht aufgrund einer Potentialdifferenz beziehungsweise eines Elektrischen Feldes.
+   \[U = φ_b - φ_a = E Δl\]
+   Spannungsänderung $⇒$ Änderung Elektrisches Feld
