@@ -68,7 +68,7 @@
   \[\max_{i = 0, \dots, n} \abs{f(x_i) - g(x_i)}\]
   für $g ∈ P$
   #+end_defn
-  Wiederholung: Interpolition und Approximation
+  Wiederholung: Interpolation und Approximation
   - Stützstellen $x_i$ mit Werten $y_i, i = 0, \dots, n$
   -	Klassen $P$ von Funktion
   *Polynominterpolation* \\
@@ -76,7 +76,7 @@
   \[P_n = \{p(x) = a_0 + a_1 x + \dots + a_n x^n \mid a_i ∈ ℝ, i = 0, \dots, n\}\]
   #+ATTR_LATEX: :options [Lagrangasche Interpolationsaufgabe]
   #+begin_defn latex
-  Die Lagrangscheinterpolationsaufgabe besteht darin zu $x + 1$ paarweise verschiedenen Stützstellen (auch Knoten genannt) $x_0, \dots, x_n ∈ ℝ$ und
+  Die Lagrangsche Interpolationsaufgabe besteht darin zu $x + 1$ paarweise verschiedenen Stützstellen (auch Knoten genannt) $x_0, \dots, x_n ∈ ℝ$ und
   gegebenen Knotenwerten $y_0, \dots, y_n ∈ ℝ$ ein Polynom $p ∈ P_n$ zu bestimmen mit der Eigenschaft $p(x_i) = y_i$
   #+end_defn
   #+begin_thm latex

@@ -103,7 +103,7 @@
  #+begin_defn latex
  $K$ Körper, $A = (a_{ij}) ∈ M(n × n, K)$
  \[χ_A^{char} := \det(t E_n - A) = \det \begin{pmatrix} t - a_{11} & -a_{12} & & -a_{1n} \\ -a_{21} & t - a_{22} & & \\ & & \ddots & \\ -a_{n1} & \dots & & t - a_{nn}\end{pmatrix} ∈ K[t]\]
- heißt das *charakteristische Polynom von $A$.
+ heißt das *charakteristische Polynom* von $A$.
  #+end_defn
  #+begin_note latex
  Hierfür nötig: Determinanten von Matrizen mit Einträgen in einem kommutativen Ring. \\
@@ -130,7 +130,7 @@
  #+begin_defn latex
  $V$ endlichdim, $n = \dim V, \mathcal{B}$ Basis von $V, φ ∈ \End(V), A = M_{\mathcal{B}}(φ)$
  \[χ_φ^{char} := χ_A^{char} = \det(t E_n - A) ∈ K[t]\]
- heißt das charakteristische Polynom von $φ$.
+ heißt das *charakteristische Polynom* von $φ$.
  #+end_defn
  #+begin_note latex
  $χ_φ^{char}$ ist wohldefiniert, dann: Ist $\mathcal{B}'$ eine weitere Basis von $V, A' = M_{\mathcal{B}'}{φ}$, dann ist $A \approx A'$ und deshalb nach 18.11: $χ_A^{char} = χ_{A'}^{char}$.

@@ -92,7 +92,7 @@
   $V$ endlichdimensional, $γ$ Bilinearform auf $V$. Wir setzen $\Rang(γ) := \Rang M_{\mathcal{B}}(γ)$, wobei $\mathcal{B}$ eine Basis von $V$ ist.
   #+end_defn
   #+begin_note latex
-  Dies ist wohldefiniert. (folgt aus 20.10, da die Matrizen $T_{\mathcal{A}}^{\mathcal{B}}$ invertiebar sind)
+  Dies ist wohldefiniert. (folgt aus 20.10, da die Matrizen $T_{\mathcal{A}}^{\mathcal{B}}$ invertierbar sind)
   #+end_note
   #+begin_remdef latex
   Es gilt:
