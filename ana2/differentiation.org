@@ -47,7 +47,7 @@
 	 Für $x = 0$ ist $f(0) = 0$
 	 \[⇒ \lim_{h \to 0} \frac{f(x e_i) - f(0)}{h} = 0\]
 	 Sei $x_ε (ε, ε)$ und damit gilt $\norm{x_ε}_2 \xrightarrow{ε \to 0} 0$
-     \[f(x_ε) = \frac{ε^2}{4 ε^4} = \frac{1}{4 ε_2} \xrightarrow{ε \to 0} ∞\]
+     \[f(x_ε) = \frac{ε^2}{4 ε^4} = \frac{1}{4 ε^2} \xrightarrow{ε \to 0} ∞\]
   #+end_ex*
   #+begin_thm latex
   Die Funktion $f: D \to ℝ$ habe in einer Kugelumgebung $K_r(x) ⊂ D$ eines Punktes $x ∈ D$ beschränkte partielle Ableitungen, das heißt
@@ -67,7 +67,7 @@
   \[\frac{\partial}{\partial x_1} \dots \frac{\partial}{\partial x_k} f(x) = \frac{\partial^k f}{\partial x_{i_1} \dots \partial x_{i_k}}\]
   #+begin_ex* latex
   \[\frac{x_1}{x_2} := \frac{x_1^3 x_2 - x_1 x_2^3}{x_1^2 + x_2^2}\]
-  für $(x_1, x_2) \neq (0, 0), f(0, 0) = 0$. $f$ zweimal partiell diff'bar, aber
+  für $(x_1, x_2) \neq (0, 0), f(0, 0) = 0$. $f$ zweimal partiell differenzierbar, aber
   \[\frac{\partial^2}{\partial x_1 \partial x_2} f(0, 0) \neq \frac{\partial^2}{\partial x_2 \partial x_1} f(0, 0)\]
   #+end_ex*
   #+begin_thm latex
@@ -88,14 +88,14 @@
   $f: D \to ℝ$ partiell differenzierbar.
   \[\grad f(x) := (\pp{}{x_1}f, \dots, \pp{}{x_n}f)^T ∈ ℝ^n\]
   heißt *Gradient* von $f$ in $x ∈ D$. Man schreibt $∇f(x) := \grad f$. $f: D \to ℝ^n$ partiell differenzierbar.
-  \[\Div f(x) := \pp{}{x_1}f_1(x) + \dots + \pp{}{x_n}f_n\]
+  \[\Div f(x) := \pp{}{x_1}f_1(x) + \dots + \pp{}{x_n}f_n(x)\]
   Es gilt:
-  \[\div \grad f(x) := \sum_{i = 1}^{n}\frac{\partial^2}{\partial x_i^2} f_i =: Δf(x)\]
+  \[\Div \grad f(x) := \sum_{i = 1}^{n}\frac{\partial^2}{\partial x_i^2} f_i =: Δf(x)\]
   #+end_defn
   #+begin_defn latex
   $f: D \to ℝ^m$ partiell differenzierbar. Die Matrix der ersten partiellen Ableitungen
   \[J_f := (\pp{f_i}{x_j})_{\substack{i = 1, \dots, w \\ j = 1, \dots, n}} ∈ ℝ^{n×w}\]
-  heißt die *Jacobi-Matrix* (manchmal auch F*undametalmatrix*) von $f$ in $x$.
+  heißt die *Jacobi-Matrix* (manchmal auch *Fundametalmatrix* ) von $f$ in $x$.
   Im Fall $n = m$ bezeichnet man $\det(J_f)$ als *Jacobideterminante*.
   #+end_defn
   #+begin_defn latex
@@ -190,7 +190,7 @@
   *Taylor-Entwicklung und Extremwerte in $ℝ^n$*
   #+ATTR_LATEX: :options [Multiindex Notation]
   #+begin_defn latex
-  Ein n-dimensionaler *Muliindex* ist ein Tupel $α= (α_1, \dots, α_n)$ mit $α_i ∈ ℕ$. Für Multiindizes sind die *Ordnung* $\abs{α}$ und die Fakultät $α!$
+  Ein n-dimensionaler *Multiindex* ist ein Tupel $α= (α_1, \dots, α_n)$ mit $α_i ∈ ℕ$. Für Multiindizes sind die *Ordnung* $\abs{α}$ und die Fakultät $α!$
   definiert durch
   \begin{align*}
   \abs{α} &:= α_1 + α_2 + \dots + α_n \\
@@ -202,12 +202,12 @@
   \[\partial^α f := \partial_1^{α_1} \dots \partial_n^{α_n} f := \frac{\partial^{\abs{α}} f}{\partial_{x_1}^{α_1} \dots \partial_{x_n}^{α_n}}\]
   #+end_defn
   #+begin_remark latex
-  Wegen der Stetigkeit der Ableitung ist dieser Ausdruck unabhänig von der Reihenfolge der partiellen Ableitungen.
+  Wegen der Stetigkeit der Ableitung ist dieser Ausdruck unabhängig von der Reihenfolge der partiellen Ableitungen.
   Wir definieren
   \[\sum_{\abs{α} = 0}^{r} a_α := \sum_{k = 0}^{r} \sum_{\substack{α ∈ ℕ^n \\ \abs{α} = k}} a_α\]
   #+end_remark
   #+begin_ex latex
-  Für $n = 3$ sind die Multiindizes $α = (α_1, α_2, α_3)$ der Ordnung $\abs{α} = 2$ gegeben durck
+  Für $n = 3$ sind die Multiindizes $α = (α_1, α_2, α_3)$ der Ordnung $\abs{α} = 2$ gegeben durch
   \[(2, 0, 0), (0, 2, 0), (0, 0, 2), (1, 1, 0), (1, 0, 1), (0, 0, 1)\]
   Die zugehörigen partiellen Ableitungen sind
   \begin{align*}
@@ -222,7 +222,7 @@
   Sei $D ⊂ ℝ^n$ eine offene Menge und $f: D \to ℝ$ eine $(r + 1)$ -mal stetig differenziebare Funktion.
   Dann gilt für jeden Vektor $h ∈ ℝ^n$ mit $x + sh ∈ D, s ∈ [0, 1]$ die Taylor-Formel
   \[f(x + h) = \sum_{\abs{α} < r} \frac{\partial^α f(x)}{α!}h^α + R_{r + 1}^f(x, h)\]
-  in differentieller Forw
+  in differentieller Form
   \[R_{r + 1}^f (x, h) = \sum_{\abs{α} = r + 1} \frac{\partial^α f(x + θh)}{α!} h^α, θ ∈ (0, 1)\]
   oder in integraler Form
   \[R_{r + 1}^f (x, h) = (r + 1) ∫_0^1 \sum_{\abs{α} = r + 1} \frac{\partial^α f(x + th)}{α!} h^α (1 - t)^r \d t\]

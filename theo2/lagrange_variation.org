@@ -54,7 +54,7 @@
    \[⇒ \underbrace{y_α \equiv y_0 + α · δ y}_{\mathclap{\text{Ist eine Funktion aus unserem Wertevorrat von } F}}\quad (α ∈ (-ε, ε))\]
    $⇒$ Betrachte Abbildung $(-ε, ε) \to ℝ, α ↦ F[y_α]$. Per unserer Annahme hat diese Abbildung Extremum bei $α = 0$.
    Also gilt \[\dd{}{α} F[y_α] = 0\big|_{α = 0}\]
-   Taylor.entwickle um $α = 0$:
+   Taylor-Entwicklung um $α = 0$:
    \begin{align*}
    F[y_α] &= ∫_0^1 \d x f(y_0 + α δy, y_0' + α δy', x) \\
    &= F[y_0] + ∫_0^1 \d x (\frac{\partial f}{\partial y}(y_0, y_0', x) · α δy + \frac{\partial f}{\partial y'}(y_0, y_0', x) · α δy') + \mathcal{O}(α^2) \\
