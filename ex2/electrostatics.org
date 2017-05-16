@@ -439,7 +439,8 @@
    \[⇒ ω_C = \frac{1}{2} ε_r ε_0 \v E^2 = \frac{1}{2} \v E \v D\]
    Für gleiches Feld $\v E$ wächst die Energiedichte mit $ε_r$. Zur Energie des Feldes $\v E$ wird
    Polarisationsenergie der Dipole addiert.
-** Elektrische Ströme
+* Elektrische Gleichströme
+** Strom und Stromdichte
    #+ATTR_LATEX: :options [Elektrischer Strom]
    #+begin_defn latex
    \[I = \dd{Q}{t}\]
@@ -449,7 +450,90 @@
    \[\dots ρ = \div \v j = 0\]
    \[I = ∫\v j \d A = \dd{Q}{t} = ∫\dot ρ \d V\]
    #+end_defn
-   *Elektrischer Widerstand und Ohmsches Gesetz*
+** Elektrischer Widerstand und Ohmsches Gesetz*
    Ladungsfluß entsteht aufgrund einer Potentialdifferenz beziehungsweise eines Elektrischen Feldes.
    \[U = φ_b - φ_a = E Δl\]
-   Spannungsänderung $⇒$ Änderung Elektrisches Feld
+   Spannungsänderung
+   - $⇒$ Änderung Elektrisches Feld
+   - $⇒$ Änderung der Ladungsträgergeschwindigkeit
+   - $⇒$ Änderung von Stromdischte und StromElektrisches Feld
+   #+ATTR_LATEX: :options [Differentieller Wiederstand]
+   #+begin_defn latex
+   \[ϑ = \dd{U}{I}\]
+   $[S] = \si{\ampere\per\volt} = \si{\siemens}$
+   #+end_defn
+   #+ATTR_LATEX: :options [Differentielle Leitfähigkeit]
+   #+begin_defn latex
+   \[S = \dd{I}{U}\]
+   $[ϑ] = \si{\volt\per\ampere} = \si{\ohm}$
+   #+end_defn
+   Beobachtung: Elektischer Leiter: $ϑ = \const$
+   \begin{align*}
+   R &= \frac{U}{I} = \frac{E l}{I} ⇔ I = \frac{E l}{R} \\
+   j &= \frac{I}{A} = \frac{l}{R A} E = σ E = η q_e v_D
+   \end{align*}
+   #+ATTR_LATEX: :options [Ohmsches Gesetz]
+   #+begin_thm latex
+   \begin{align*}
+   U &= R I \\
+   \v j &= σ \v E = η _E \v v_D \\
+   \intertext{mit}
+   σ &= \frac{l}{R A} = S \frac{l}{A} \tag{spezifische Leitfähigkeit} \\
+   ρ &= \frac{1}{σ} &= R \frac{A}{l} \tag{spezifischer Widerstang}
+   \end{align*}
+   Für ohmschen Leiter muss $\v v_D \sim \v E$ gelten.
+   #+end_thm
+   *Durde Modell* \\
+   Bewegung von Elektronen in Leitern.
+   Thermische Bewegung: $v_{th} \approx \num{1e6} - \SI{1e7}{\meter\per\second}$. Bewegung wird
+   gestört durch Stöhe mit Gitteratomen. Mittlere Zeit zwischen zwei Wechselwirkungen:
+   \[τ = \frac{T}{N} ⇒ λ = τ v_m\]
+   $T$: Messzeit, $N$: Anzahl der Stöße.
+   Einschalten eines E-Feldes:
+   Beschleunigung der Elektronen entgegen der Richtung des elektrischen Feldes $\v E$
+   \begin{align*}
+   \v A &= \frac{\v F}{m} = \frac{q \v E}{m} \\
+   ⇒ \v v_D(t) &= \v v_{th} + \frac{q \v E}{m}t \\
+   \v v_D &= \underbrace{<\v v_{th}>}_{= 0} + \frac{q \v E}{m}<t> = \frac{q}{\v E}m	τ = μ \v E
+   \end{align*}
+   Also gilt für einen ohmschen Leiter:
+   \[\v v_D = μ \v E\]
+   mit $μ$: Elektronenbeweglichkeit
+   \[μ = \frac{q}{τ}m, [μ] = \si{\meter\squared\per\volt\second}\]
+   Mit
+   \[\v j = n q_e \v v_D = n q_e μ \v E\]
+   \[σ = n _e μ = \frac{n q_e^2 τ}{m}\]
+   #+ATTR_LATEX: :options [Kupferdraht]
+   #+begin_ex latex
+   \[A = \SI{1}{\milli\meter\squared}, I = \SI{1}{\ampere}, j = \frac{I}{A} ⇒ v_D = \SI{10e-4}{\meter\per\second}\]
+   Jedes Athon liegt 1 Elektron bei.
+   #+end_ex
+   Ohmscher Leiter: $ϑ = \const$
+   \[\dd{ϑ}{I} < 0 \text{ NTC, Heißleiter}\]
+   \[\dd{ϑ}{I} > 0 \text{ PTC, Kaltleiter}\]
+** Elektrische Leistung
+   Strom $I$ fließt durch Widerstand beziehungsweise Verbraucher, gewonnene kinetische Energie
+   der Elektronen wird durch Stöhe in Wärme umgewandelt.
+   \[W = Q U = U I t\]
+   #+ATTR_LATEX: :options [Leistung]
+   #+begin_defn latex
+   \[P = U I\]
+   $[P] = \si{\watt} = \si{\joule\per\second} = \si{\ampere\per\volt}$
+   #+end_defn
+   Für ohmschen Leiter:
+   \[P = R I^2 ⇔ P = \frac{U^2}{R}\]
+   Anwendungsbeispiel: Hochspannungsleitung. Transport von elektrischer Energie:
+   Verluste durch Wärmeerzeugung in Überlandleitung. Ziel: Minimierung von Leistungsverlusten.
+   Kraftwerk: $F = U I$ \\
+   Überlandleitung:
+   - Spannungsabfall: $U_L = R_L I$
+   - Verlustleistung: $P_L = U_L I = R_L I^2 = U^2 / R$
+   das heißt Spannungsabfall beziehungsweise Verlustleistung klein falls $I$ klein und $U$ groß!
+   $⇒$ Hochspannungsleitung.
+   Verfügbare Leistung: $P_V = P - P_L$
+** Stromkreise - Kirchhoffsche Regeln
+   Haushalt, elektrische Schaltungen, $\dots$ Im Allgemeinen Netzwerke vieler Leiter,
+   Spannungsquallen und Verbraucher. Zur Berechnung von Strömen und Spannungen: \\
+   Kirchhoffsche Regeln:
+   1. Knotenregel: An jedem Knoten gilt $\sum I_k = 0$ (Ladungserhaltung, folgt aus Kontinuitätsgleichung)
+   2. Maschenregel: Für jede Masche gilt: $\sum U_k = 0$ (Zirkulationsgesetz)

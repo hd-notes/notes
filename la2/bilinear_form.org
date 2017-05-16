@@ -414,3 +414,136 @@
   $(v_i)_{i ∈ I}$ Familie von Vektoren aus $V$ heißt *orthonormal* $\xLeftrightarrow{\text{Def}} (v_i)_{i ∈ I}$ ist orthogonal und $\norm{v_i} = 1 ∀ i ∈ I$. \\
   $\mathcal{B} = (v_1, \dots, v_n)$ heißt *Orthonormalbasis von $V ((V, γ))$ (ONB) $⇔ \mathcal{B}$ ist Basis von $V$ und $\mathcal{B}$ ist orthonormal.
   #+end_defn
+  # TODO
+  #+begin_remark latex
+  $\mathcal{B} = (v_1, \dots, v_n)$ Orthonormalbasis von $(V, γ), v ∈ V$. Dann gilt: Ist $v = λ_1 v_1 + \dots + λ_n v_n$, dann ist $λ_i = γ(v, v_i) ∀ i = 1, \dots, n$
+  #+end_remark
+  #+begin_proof latex
+  $γ(v, v_i) = λ_1 γ(v_1, v_i) + \dots + λ_n γ(v_n, v_i) = λ_i \underbrace{γ(v_i, v_i)}_{= 1} = λ_i$
+  #+end_proof
+  #+begin_remdef latex
+  $U ⊆ V$ Untervektorraum.
+  \[U^{\perp} := \{v ∈ V \mid γ(v, u) = 0 ∀ u ∈ U\}\]
+  heißt das *orthogonale Komplement* zu $U$. $U^{\perp}$ ist ein Untervektorraum von $V$.
+  #+end_remdef
+  #+begin_proof latex
+  leicht nachzurechnen
+  #+end_proof
+  #+begin_defthm latex
+  $U ⊆ V$ Untervektorraum. Dann gilt:
+  1. $V = U \oplus U^{\perp}$
+  2. $\dim U^{\perp} = \dim V - \dim U$
+  3. $(U^{\perp})^{\perp} = U$
+  4. Ist $(u_1, \dots, u_m)$ eine Orthogonalbasis von $(U, γ\mid_{U × U})$, und ist $v ∈ V$ mit $v = u + v', u ∈ U, v' ∈ U^{\perp}$, dass ist
+	 \[u = \sum_{j = 1}^{m} γ(v, u_j) u_j\]
+	 Die lineare Abbildung
+     \[π_u: V\to U, v ↦ \sum_{j = 1}^{m} γ(v, u_j) u_j\]
+	 hießt die *Orthogonalprojektion* von $V$ auf $U$.
+  #+end_defthm
+  #+begin_proof latex
+  1. $U + U^{\perp} = V$, denn: \\
+	 Sei $(u_1, \dots, u_m)$ eine Orthogonalbasis von $(U, γ\mid_{n × n}), v ∈ V$. Setze
+	 \begin{align*}
+     v' &:= V - \sum_{j = 1}^{m} γ(v, u_j) u_j \\
+	 ⇒ γ(v', u_i) &= γ(v, u_i) - \sum_{j = 1}^{m} γ(v, u_j) γ(u_j, u_i) = γ(v, u_i) - γ(v, u_i) = 0 ∀ i = 1, \dots, m \\
+	 ⇒ v' &∈ U^{\perp} \\
+	 ⇒ v &= \underbrace{\sum_{j = 1}^{m} γ(v, u_j) u_j}_{∈ U} + \underbrace{v'}_{\mathclap{∈ U^{\perp}}} \\
+	 ⇒ V &= U + U^{\perp}
+     \end{align*}
+	 $U ∩ U^{\perp} = \{0\}$, denn: $u ∈ U ∩ U^{\perp} ⇒ γ(u, u) = 0 ⇒ u = 0$ (da $γ$ Skalarprodukt)
+  2. aus 1., 2.
+  3. Sei $u ∈ U ⇒ γ(u, w) = 0 ∀ w = U^{\perp} ⇒ u ∈ (U^{\perp})^{\perp}$, das heißt $U ⊆ U^{\perp\perp}$.
+	 Wegen $\dim(U^{\perp})^{\perp} = \dim V - \dim U^{\perp} = \dim V - (\dim V - \dim U) = \dim U$ foglt $U = U^{\perp\perp}$
+  #+end_proof
+  #+begin_note latex
+  Insbesondere gilt für alle $v ∈ V: v - π_U(v) ∈ U^{\perp}$
+  #+end_note
+  #+begin_ex latex
+  $(V, γ) = (ℝ^2, <·,·>), U = \Lin(\cvec{1; 1}) ⇒ U^{\perp} = \Lin(\cvec{-1; 1})$, denn $\cvec{-1; 1} ∈ U^{\perp}$ wegen $<\cvec{-1; 1}, \cvec{1; 1}> = 0$, und es eist
+  $\dim U^{\perp} = 2 - \dim U = 2 - 1 = 1$. Jedes Element aus $V$ lässt sich eindeutig schreiben als
+  \[v = λ\cvec{1; 1} + μ\cvec{-1; 1}\]
+  das heißt
+  \[π_u: v = \underbrace{λ\cvec{1; 1}}_{∈ U} + μ \underbrace{\cvec{-1; 1}}_{∈ U^{\perp}} ↦ λ\cvec{1; 1} = γ(v, \cvec{1; 1})\vec{1; 1}\]
+  #+end_ex
+  *Frage:* Wie bestimmt man explizit eine Orthogonalbasis eines Euklidischen Raumes?
+  #+ATTR_LATEX: :options [Gram-Schmidt-Verfahren]
+  #+begin_algorithm latex
+  *Eingabe*: $(v_1, \dots, v_n)$ Basis von $V$. \\
+  *Ausgabe*: Orthogonalbasis $(w_1, \dots, w_n)$ von $(V, γ)$ \\
+  *Durchführung:*
+  1. Setze
+     \[w_1 := \frac{v_1}{\norm{v_1}}\]
+  2. Setze für $k = 2, \dots, n$
+	 \[\tilde w_k := v_k - \sum_{i = 1}^{k - 1}γ(v_k, w_i) w_i, \quad w_k := \frac{\tilde w_k}{\norm{\tilde w_k}}\]
+  3. $(w_1, \dots, w_n)$ ist eine Orthogonalbasis von $(V, γ)$
+  #+end_algorithm
+  #+begin_proof latex
+  Sei $U_k := \Lin((v_1, \dots, v_k))$ für $k = 1, \dots, n$. Wir zeigen per Induktion nach $k$, dass $(w_1, \dots, w_k)$ eine Orthogonalbasis von $(U_k, γ\mid_{U_k × U_k})$ ist
+  (Behauptung folgt dann aus $k = n$). \\
+  Induktionsanfang: $k = 1$ klar \\
+  Induktionsschritt: Sei $π_{k - 1} := π_{U_{k - 1}}: V \to V_{k - 1}$ die orthogonale Projektion.
+  \[⇒ \tilde w_k = v_k - π_{k - 1}(v_k)\]
+  da $(w_1, \dots, w_{k - 1})$ Orthogonalbasis von $U_{k - 1}$ nach Induktionsvorraussetzung. $⇒\tilde w_k ∈ U_{k - 1}^{\perp}$.
+  Außerdem $\tilde w_k \neq 0$, da sonst $v_k = π_{k - 1}(v_k) ∈ U_{k - 1} \lightning$ zu $(v_1, \dots, v_k)$ Basis von U_k
+  \[⇒ w_k = \frac{\tilde w_k}{\norm{\tilde w_k}} ∈ U_{k - 1}^{\perp}\]
+  und es ist
+  \[γ(w_k, w_i) = \begin{cases} 0 & i = 1, \dots, k - 1 \\ 1 & i = k\end{cases}\]
+  $⇒ (w_1, \dots, w_k)$ Orthogonalbasis von $U_k$
+  #+end_proof
+  #+begin_ex latex
+  Wir betrachten $(ℝ^3, <·, ·>), U = \Lin((v_1, v_2))$ mit $v_1 := \cvec{2; 0; 1}, v_2 := \cvec{-1; 1; 0}$. Gesucht ist eine Orthogonalbasis von $U$ bezüglich $<·, ·>$.
+  Setze
+  \begin{align*}
+  w &:= \frac{v_1}{\norm{v_1}} = \frac{1}{\sqrt{5}}\cvec{2; 0; 1} \\
+  \tilde w_2 &= v_2 - <v_2, w_1> w_1 = \cvec{-1; 1; 0} - <\cvec{-1; 1; 0}, \frac{1}{\sqrt{5}}\cvec{2; 0; 1}> \frac{1}{\sqrt{5}}\cvec{2; 0; 1} \\
+  &= \cvec{-1; 1; 0} - \frac{1}{5}<\cvec{-1; 1; 0}, \cvec{2; 0; 1}>\cvec{2; 0; 1} = \cvec{-1; 1; 0} + \frac{2}{5}\cvec{2; 0; 1} = \cvec{-\frac{1}{5}; 1; \frac{2}{5}} = \frac{1}{2} \cvec{-1; 5; 2} \\
+  w_2 &= \frac{\tilde w_2}{\norm{\tilde w_2}} = \frac{1}{\sqrt{30}}\cvec{-1; 5; 2}
+  \end{align*}
+  $⇒ (\frac{1}{\sqrt{5}}\cvec{2; 0; 1}, \frac{1}{\sqrt{30}}\cvec{-1; 5; 2})$ ist eine Orthogonalbasis von $U$.
+  #+end_ex
+  #+begin_defn latex
+  $A ∈ M(n × n, ℝ)$ symmetrisch. $A$ heißt *positiv definit* (Notation: $A > 0$) $\xLeftrightarrow{\text{Def}}$ Die symmetrische Bilinearform
+  \[Δ(A): ℝ^n × ℝ^n \to ℝ, (x, y) ↦ x^T A y\]
+  ist positiv definit.
+  #+end_defn
+  #+begin_remark latex
+  $A ∈ M(n × n, ℝ)$ symmetrisch. Dass sind äquivalent:
+  1. $A > 0$
+  2. $∃ T ∈ \GL(n, ℝ): A = T^T T$
+  #+end_remark
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $A > 0 ⇒ (ℝ^n, Δ(A))$ Euklidischer Raum. Sei $\mathcal{B}$ Orthogonalbasis von $(ℝ^n, Δ(A))$ $T := T_{\mathcal{B}}^{(e_1, \dots, e_n)}$
+	 \[⇒ E_n = M_{\mathcal{B}}(Δ(A)) = \underbrace{(T_{(e_1, \dots, e_n)}^{\mathcal{B}})^T}_{= (T^{-1})^T} \underbrace{M_{(e_1, \dots, e_n)}(Δ(A))}_{= A} \underbrace{T_{(e_1, \dots, e_n)}^{\mathcal{B}}}_{= T^{-1}}\]
+	 $⇒ A = T^T T$
+  2. Sei $A = T^T T$ für ein $T ∈ \GL(n, ℝ)$. Für $x ∈ ℝ^n, x \neq 0$ ist
+	 \[Δ(A)(x, x) = x^t A w = x^t T^t T x = (Tx)^T Tx = <Tx, Tx> > 0\]
+  #+end_proof
+  #+begin_note latex
+  1., 2. sind äquivatent zu
+  3. [@3] Es existiert eine obere Dreiecksmatrix $P$ mit Diagonaleinträgen, sodass $A = P^T P$ (siehe Übungen). Obiges $P$ ist sogar eindeutig bestimmt, eine solche Zerlegung heißt Cholesky-Zerlegung.
+  #+end_note
+  #+ATTR_LATEX: :options [Cauchy-Schwarz-Ungleichung]
+  #+begin_thm latex
+  $v, w ∈ V$. Dann gil:
+  \[\abs{γ(v, w)} \leq \norm{v} \norm{w}\]
+  Gleichheit gilt hierbar genau dann, wenn $(v, w)$ linear abhängig.
+  #+end_thm
+  #+begin_proof latex
+  1. Beweis der Ungleichung: Falls $w = 0$, dass fertig. Im Folgenden sei $w \neq 0$. Für $λ, μ ∈ ℝ$ ist
+	 \begin{align*}
+	 0 &\leq γ(λv + μw, λv + μw) = λ^2γ (v, v) + μ^2 γ(w, w) + 2 λ μ γ(v, w) \\
+	 \intertext{Setze $λ := γ(w, w) > 0$, dividiere durch $λ$}
+	 0 &\leq γ(v, v) γ(w, w) + μ^2 + 2μ γ(v, w) \\
+	 \intertext{Setze $μ := -γ(v, w)$}
+	 0 &\leq γ(v, v)γ(w, w) + γ(v, w)^2 - 2γ(v, w)^2 \\
+	 γ(v, w)^2 &\leq γ(v, v)γ(w, w) \\
+	 \abs{γ(v, w)} &\leq \norm{v} \norm{w} \\
+     \end{align*}
+  2. Gleichheitsaussage: Für $w = 0$: $(v, w)$ linear abhängig und "$=$" gilt. Ab jetzt also $w \neq 0$. \\
+	 "$\impliedby$" Sei $(v, w)$ linear abhängig $⇒ ∃ λ ∈ K: v = κw$
+	 \[⇒ \abs{γ(v, w)}^2 = \abs{γ(λw, w)}^2 = \abs{λ^2}\abs{γ(w, w)}^2 = \abs{γ(w, w)}\abs{γ(λw, λw)} = \norm{w}^2 \norm{λw}^2\]
+	 $⇒ \abs{γ(v, w)} = \norm{w}\norm{λ w} = \norm{w}\norm{v}$. \\
+	 "$⇒$" Es gelte, sei also $\abs{γ(v, w)} = \norm{v}\norm{w}$. Führe die Rechnung wie in 1. rückwärts durch: Mit $λ := γ(w, w), μ = -γ(v, w)$ folgt
+	 dass
+     \[γ(λv + μw, λv + μw) = 0 ⇒ λv + μw = 0 ⇒ (v, w)\text{ linear abhängig}\]
+  #+end_proof

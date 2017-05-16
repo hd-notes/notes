@@ -24,6 +24,7 @@
 #+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
 #+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
 #+LATEX_HEADER: \DeclareSIUnit{\calories}{cal}
+#+LATEX_HEADER: \DeclareSIUnit{\year}{a}
 #+LATEX_HEADER:	\usepackage{newunicodechar}
 #+LATEX_HEADER: \newunicodechar{α}{\alpha}
 #+LATEX_HEADER: \newunicodechar{β}{\beta}

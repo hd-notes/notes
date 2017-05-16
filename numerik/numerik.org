@@ -342,3 +342,111 @@
    Analog zur Lagrange-Interpolation:
    - Existenz + Eindeutigkeit
    - Darstellung des Interpolationsfehlers
+   Wiedeholung: Fehlerdarstellung Lagrange-Interpolation. Sei $f∈ C^{n + 1}[a, b]$. $∃ ξ_x ∈ \overline{(x_0, \dots, x_n, x)}$
+   \begin{align*}
+   f(x) - p(x) &= \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!} \prod_{j = 0}^{n}(x - x_j) \\
+   f(x) - p(x) &= f[x_0, \dots, x_n, x] \prod_{j = 0}^n (x - x_j) \\
+   f[x_0, \dots, x_n, x] &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_n}	f^{(n + 1)}(x_0 + t_1(x_1 - x_0) + \dots + t_n(x_n - x_{n - 1}) + t(x_n - x))\d t \d t_n \dots \d t_1
+   \end{align*}
+   Hermite-Interpolation: Such $p ∈ P_n, n = m + \sum_{i= 0}^{m} μ_i$
+   \[p^{(k)}(x_i) = y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i\]
+** Richardsonsche Extrapolation zum Limes
+   Gegeben: Numerischer Prozess mit Werten $a(h), h ∈ ℝ_+, h \to 0$. \\
+   Gesucht: $a(0) = \lim_{h \to 0} a(h)$ \\
+   Idee: Für $h_i > 0, i = 0, \dots, n$, interpoliere $(h_i, a(h_i))$ und berechne $p_n(0)$
+   #+ATTR_LATEX: :options [Numerische Differentation]
+   #+begin_ex latex
+   Sei $f ∈ C^{∞}[a, b], x ∈ (a, b)$. Nach Taylor gilt
+   \[a(h) = \frac{f(x + h) - f(x - h)}{2h} = f'(x) + \sum_{i = 1}^{∞} \frac{f^{(2i + 1)}(x)}{(2i)!} h^{2i}\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Extrapolationsfehler]
+   #+begin_thm latex
+   Für $h ∈ ℝ_+$ habe $a(n)$ die Entwicklung
+   \[a(h) = a_0 + \sum_{j = 1}^{n}a_j h^{jq} + a_{n + 1}(h) h^{(n + 1)q}\]
+   mit $q > 0$, Koeffizienten $a_j$ und
+   \[a_{n + 1}(h) = a_{n + 1} + \mathcal{o}(1)\]
+   Die Folge $(h_i)_{k ∈ ℕ}$ erfülle
+   \[0 \leq \frac{h_{k + 1}}{h_k} \leq ρ < 1\]
+   ($⇒ h_k$ positiv, monoton fallend). Dann gilt für das Interpolationspolynom
+   $p_1^{(k)} ∈ P_n$ (in $h^q$) durch
+   \[(h_k^q, a(h_k)), \dots, (h_{k + n}^q, a(h_{k + n}))\]
+   \[a(0) - p_n^{(k)}(0) = \mathcal{O}(h_k^{(n + 1)q})\]
+   $(k \to ∞)$
+   #+end_thm
+   #+begin_proof latex
+   Abkürzungen $z = h^q, z_k = h_k^q$. Interpoliere $(z_{k + i}, a(h_{k + i})), i = 0, \dots, n$.
+   \begin{align*}
+   p_n(z) &= \sum_{i = 0}^{n} a(h_{k + i})L_{k + i}^{(n)}I \\
+   L_{k + 1}^{(n)}(z) &= \prod_{\substack{l = 0\\ l\ neq i}} \frac{z - z_{k + l}}{z_{k + 1} - z_{wl}}
+   \end{align*}
+   Übung:
+   \[\sum_{i = 0}^{n} x_{k + 1}^n(0) = \begin{cases} 1 & r = 0 \\ 0 & r = 1, \dots, n \\ \string(-1\string)^n \prod_{j = 0}^n z_{k + i} & r = n + 1\end{cases}\]
+   \begin{align*}
+   p_n(0) &= \sum_{i = 0}^{n}(a_0 + \sum_{j = 1}^{n} a_j z_{k + i}^j + a_{n +1}(h_{k + 1})z_{k + i}^{n + 1})	L_{k + i}^{(n)}(0) \\
+   &= a_0 \underbrace{\sum_{i = 0}^{n} L_{k + 1}^{(n)}}_{= 1} + \sum_{j = 1}^{n} a_j \underbrace{\sum_{i = 0}^{n}z_{k + 1}^j L_{k + i}^{(n)}(0)}_{0} \\
+   &= + a_{n + 1} \underbrace{\sum_{i = 0}^{n}z_{k + 1}^{n + 1} L_{k + 1}^{(n)}}_{= (-1)^n \prod_{i = 0}^n z_{k + i}} + \sum_{i = 0}^{n} \mathcal{o}(1) z_{k + i}^{n + 1} L_{k + i}^{(n)}(0) \\
+   \intertext{Da man Landau-Symbole nich ausklammern darf, schätzen wir ab:}
+   \abs{L_{k + i}^{(n)}(0)} &= \prod_{\substack{l = 0\\ l \neq i}}^n \abs{\frac{z_k + l}{z_{k + i} - z_{k + y}}} \\
+   &\leq \prod_{l = 0}^{i - 1} \abs{\frac{z_{n + l}}{z_{k + i} - z_{k + l}}} \prod_{l= 1 + i}^n \abs{\frac{z_{k + i}}{z_{k + i} - z_{k + l}}} \\
+   &= \prod_{l = 0}^{i - 1} \frac{1}{\abs{\frac{z_{k + i}}{z_{k + y}} - 1}} \prod_{l= i + 1}^n \frac{1}{\abs{1 - \frac{z_{k + l}}{z_{k + i}}}} \\
+   &\leq \frac{1}{(1 - ρ^q)^n} \\
+   ⇒ p_n(0) &= a_0 + a_{n + 1} (-1)^n \prod_{i = 0}^n z_{k + i} + \mathcal{o}(z_k^{n + 1}) \\
+   &= a_0 + \mathcal{O}(h_k^{(n + 1)q})
+   \end{align*}
+   #+end_proof
+** Spline-Interpolation
+   Problem: Oszillationen das Interpolationspolynoms, wenn man Stützstellen nicht geeignet wählen kann.
+   Abhilfe: Stückweise polynomielle Interpolation:
+   - Zerlegung: $a = x_0 < x_1 < \dots < x_n = b$
+   - Teilintervalle: $I_i = [x_{i - 1}, x_{i}], i = 1, \dots, n$
+   - Feinheit: $h = \max_{i = 1, \dots, n} h_i$ mit $h_i = \abs{I_i} = x_i - x_{i - 1}$
+   - Vektorräume stückweise polynomieller Funktionen
+     \[S^{k, r}_n [a, b] = \{p ∈ C^r[a, b] \mid p\mid_{I_i} ∈ P_k (i_i)\}, i = 1, \dots, n\]
+
+   #+ATTR_LATEX: :options [Stückweise lineare Interpolation]
+   #+begin_ex latex
+   $⇒ p ∈ S_n^{(1, 0)}[a, b]$. Fehlerabschätzung:
+   \[\max_{x ∈ [a, b]} \abs{f(x) - p(x)} \leq \frac{1}{2} h^2 \max_{x ∈ [a, b]} \abs{f''(x)}\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Splines]
+   #+begin_ex latex
+   Zweimal stetig differenzierbare, stückweise kubische Polynome. Motivation: Biegestab. Minimiere Biegeenergie
+   \[∫_{x_0}^{x_n} s''(x)^2 \d x\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Kubischer Spline]
+   #+begin_defn latex
+   Eine Funktion $s_n:[a, b] \to ℝ$ heißt kubischer Spline bezüglich $a = x_0 < x_1 < \dots < x_n = b$, wenn gilt
+   1. $s_n ∈ C^2[a, b]$
+   2. $s_n\mid I_i ∈ P_3, i = 1, \dots, n$
+   Gilt zusätzlich
+   3. [@3] $s_n''(a) = s_n''(b) = 0$ so heißt $s_n$ natürlicher Spline.
+   #+end_defn
+   Existenz des interpolierenden kubischen Spline zu Knotenwerten $s_n(x_i) = y_i, i = 0, \dots, n$
+   #+ATTR_LATEX: :options [Spline-Interpolation]
+   #+begin_thm latex
+   Der interpolierende kubische Spline existiert und ist eindeutig bestimmt durch zusätzliche Vorgabe von $s_n''(a), s_n''(b)$
+   #+end_thm
+   #+begin_proof latex
+   $s$ hat die Form
+   \[s(x) \mid_{I_i} = p_i(x), i = 1, \dots, n, p_i ∈ P_3(I_i)\]
+   4 Koeffizientena uf jedem der $n$ Intervalle ergeben $4n$ Freiheitsgrade. Zur Bestimmung:
+   | $s(x_i) = y_i, i = 0, \dots, n$          | $2n$ Gleichungen |
+   | $s' ∈ C[a, b]$                           | $n - 1$          |
+   | $s'' ∈ C[a, b]$                          | $n - 1$          |
+   | Zusatzbedingung für $s_n''(a), s_n''(b)$ | 2                |
+   |------------------------------------------+------------------|
+   |                                          | $4n$             |
+   $⇒$ quadratisches lineares Gleichungssystem, $4n × 4n$
+   \[N = \{ω ∈ C^2[a, b] \mid ω_{x_i} = 0, i = 0, \dots, n\}\]
+   Seien $s_n^{(1)}$ und $s_n^{(2)}$ inperpolierende Splines $⇒ s = s_n^{(1)} - s_n^{(2)} ∈ N$. Für $ω ∈ N$ beliebig:
+   \begin{align*}
+   ∫_a^b s''(x) ω''(x) \d x &= \sum_{i = 0}^{n - 1} ∫_{x_i}^{x_{i + 1}} s''(x) ω''(x) \d x \\
+   &= \sum_{i = 0}^{n - 1}[-∫_{x_i}^{x_{i + 1}} s^{(3)} ω' \d x + s'' ω' \mid_{x_i}^{x_{i + 1}}] \\
+   &= \sum_{i = 0}^{n - 1}[-∫_{x_i}^{x_{i + 1}} s^{(4)} ω \d x - s^{(3)} ω \mid_{x_i}^{x_{i + 1}} + s'' ω' \mid_{x_i}^{x_{i + 1}}] \\
+   &= \sum_{i = 0}^{n - 1} s'' ω' \mid_{x_i}^{x_{i + 1}} = s''(x) ω'(x) - s''(a) ω'(a) \\
+   &= 0
+   \end{align*}
+   Speziell für $ω = s$
+   \[∫_a^b \abs{s''(x)}^2 \d x = 0\]
+   $⇒ s$ ist linear $0 = s(a) = s(b) = 0$
+   #+end_proof
