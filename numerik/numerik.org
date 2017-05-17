@@ -135,7 +135,7 @@
   \end{align*}
   #+end_thm
   #+begin_proof latex
-  Es bezeichne $p {i, i + k} ∈ P_k$ das Polynom, welhces die Punkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k})$ interpoliert.
+  Es bezeichne $p {i, i + k} ∈ P_k$ das Polynom, welches die Punkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k})$ interpoliert.
   Speziell ist $p_{0, n} = p$ das gesuchte Interpolationspolynom. Wir zeigen
   \[p_{i, i + k}(x) = y[x_i] + y[x_i, x_{i + 1}](x - x_i) + \dots + y[x_i, \dots, x_{i + k}](x - x_i) · \dots · (x - x_{i + k})\]
   was für $i = 0$ und $k = n$ den Satz beweist. Der Beweis wird durch Induktion über die Indexdifferenz $k$ geführt. Für $k = 0$ ist
@@ -249,8 +249,8 @@
    Dieses "vollständige Horner-Schema" kann leicht zur Auswertung von Polynomen in Newton-Darstellung modifiziert werden:
    \[p(x) = a_0 + a_1(x - x_0) + \dots + a_n(x - x_0) · \dots · (x - x_{n - 1})\]
 ** Interpolation von Funktionen
-   Stützstellen $x_0, \dots, x_n ∈ [a, b]$. Werte gegebpen durch Funktion $y_i = f(x_i), i = 0, \dots, n$ \\
-   *Frage:* Wie got approximiert das Interpolationspolynom $p ∈ P_n$ die Funktion $f$ auf $[a, b]$? \\
+   Stützstellen $x_0, \dots, x_n ∈ [a, b]$. Werte gegeben durch Funktion $y_i = f(x_i), i = 0, \dots, n$ \\
+   *Frage:* Wie gut approximiert das Interpolationspolynom $p ∈ P_n$ die Funktion $f$ auf $[a, b]$? \\
    *Bezeichnungen:*
    - $\overline{(x_0, \dots, x_n)} =$ kleinstes Intervoll, das alle $x_i$ enthält.
    - $C[a, b]:$ Vektorraum der über $[a, b]$ stetigen Funktionen
@@ -321,16 +321,16 @@
    &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_{n - 1}} 1 \d t_n \dots \d t_1 f^{(n)}(x_0) \\
    &= \frac{1}{n!}f^{(n)}(x_0)
    \end{align*}
-   Damit geht das Newtonsche Interpolationspolynom über in das Taytorpolynom n-ten Grades vo $f$ in $x_0$.
+   Damit geht das Newtonsche Interpolationspolynom über in das Taylorpolynom n-ten Grades von $f$ in $x_0$.
    Konstruieren wir die Fehlerdarstellung so erhalten wir für ein $ξ_x ∈ (x_0, \dots, x_n, x)$
    \begin{align*}
    \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!} \prod_{j = 0}^n (x - x_j) &= f(x) - p(x) \\
    &= f[x_0, \dots, x_n, x] \prod_{j = 0}^n (x - x_j) \\
    ⇒ f[x_0, \dots, x_n, x] &= \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!}
    \end{align*}
-   #+ATTR_LATEX: :options [Hermit-Interpolation]
+   #+ATTR_LATEX: :options [Hermite-Interpolation]
    #+begin_defn latex
-   Die Hermitesche Interpolationsaugabe lautet: \\
+   Die Hermitesche Interpolationsaufgabe lautet: \\
    Gegeben $x_i, i = 0, \dots, m$ (paarweise verschieden),
    $y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i, μ \geq 0$. \\
    Gesucht: $p ∈ P_n, n = m + \sum_{i = 0}^{m} μ_i, p^{(k)}(x_j) = y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i$,
@@ -342,7 +342,7 @@
    Analog zur Lagrange-Interpolation:
    - Existenz + Eindeutigkeit
    - Darstellung des Interpolationsfehlers
-   Wiedeholung: Fehlerdarstellung Lagrange-Interpolation. Sei $f∈ C^{n + 1}[a, b]$. $∃ ξ_x ∈ \overline{(x_0, \dots, x_n, x)}$
+   Wiederholung: Fehlerdarstellung Lagrange-Interpolation. Sei $f∈ C^{n + 1}[a, b]$. $∃ ξ_x ∈ \overline{(x_0, \dots, x_n, x)}$
    \begin{align*}
    f(x) - p(x) &= \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!} \prod_{j = 0}^{n}(x - x_j) \\
    f(x) - p(x) &= f[x_0, \dots, x_n, x] \prod_{j = 0}^n (x - x_j) \\
@@ -395,7 +395,7 @@
    \end{align*}
    #+end_proof
 ** Spline-Interpolation
-   Problem: Oszillationen das Interpolationspolynoms, wenn man Stützstellen nicht geeignet wählen kann.
+   Problem: Oszillationen des Interpolationspolynoms, wenn man Stützstellen nicht geeignet wählen kann.
    Abhilfe: Stückweise polynomielle Interpolation:
    - Zerlegung: $a = x_0 < x_1 < \dots < x_n = b$
    - Teilintervalle: $I_i = [x_{i - 1}, x_{i}], i = 1, \dots, n$
@@ -429,7 +429,7 @@
    #+begin_proof latex
    $s$ hat die Form
    \[s(x) \mid_{I_i} = p_i(x), i = 1, \dots, n, p_i ∈ P_3(I_i)\]
-   4 Koeffizientena uf jedem der $n$ Intervalle ergeben $4n$ Freiheitsgrade. Zur Bestimmung:
+   4 Koeffizienten auf jedem der $n$ Intervalle ergeben $4n$ Freiheitsgrade. Zur Bestimmung:
    | $s(x_i) = y_i, i = 0, \dots, n$          | $2n$ Gleichungen |
    | $s' ∈ C[a, b]$                           | $n - 1$          |
    | $s'' ∈ C[a, b]$                          | $n - 1$          |
@@ -438,7 +438,7 @@
    |                                          | $4n$             |
    $⇒$ quadratisches lineares Gleichungssystem, $4n × 4n$
    \[N = \{ω ∈ C^2[a, b] \mid ω_{x_i} = 0, i = 0, \dots, n\}\]
-   Seien $s_n^{(1)}$ und $s_n^{(2)}$ inperpolierende Splines $⇒ s = s_n^{(1)} - s_n^{(2)} ∈ N$. Für $ω ∈ N$ beliebig:
+   Seien $s_n^{(1)}$ und $s_n^{(2)}$ interpolierende Splines $⇒ s = s_n^{(1)} - s_n^{(2)} ∈ N$. Für $ω ∈ N$ beliebig:
    \begin{align*}
    ∫_a^b s''(x) ω''(x) \d x &= \sum_{i = 0}^{n - 1} ∫_{x_i}^{x_{i + 1}} s''(x) ω''(x) \d x \\
    &= \sum_{i = 0}^{n - 1}[-∫_{x_i}^{x_{i + 1}} s^{(3)} ω' \d x + s'' ω' \mid_{x_i}^{x_{i + 1}}] \\

@@ -36,7 +36,7 @@
    1. Sei $(X, d)$ ein metrischer Raum. Dann ist $A ⊆ X$ abgeschlossen genau dann wenn $(X_n)_{n ∈ ℕ}$ Folge in $A$ mit $x_n \to x ⇒ x ∈ A$
    2. Seien $(X, d_1), (Y, d_2)$ zwei metrische Räume. Dann ist die Funktion stetig in $x ∈ X$ genau dann wenn $(x_n)_{n ∈ ℕ}$ Folge in $X$ mit $x_n \to x ⇒ f(x_n) \to f(x)$.
    #+end_thm
-   #+ATTR_LATEX: :options [(Cauchy Folgen und Vollständigkeit)]
+   #+ATTR_LATEX: :options [Cauchy Folgen und Vollständigkeit]
    #+begin_defn latex
    Sei $(X, d)$ ein metrischer Raum. Eine Folge $(x_n)_{n ∈ ℕ}$ heißt Cauchy-Folge falls $d(x_n, x_m) \to 0$ für $n, m \to ∞$.
    Der metrische Raum heißt *vollständig*, falls jede Cauchy-Folge konvergent ist.
@@ -70,7 +70,7 @@
    #+end_ex
    #+begin_remark latex
    1. Jede Cauchy-Folge in $\mathbb{K}^n$ konvergiert, das heißt $(\mathbb{K}^n, \norm{·})$ ist vollständig
-   2. Jede beschränkte Folge in $\mathbb{K}^n$ besitzt eine konvergente Teilfolge. (Bolzano-Weierstraß Satz gilt in $ℝ^n$) (Beweis für $ℝ^n$ zum Beispiel in RR Ana2 Satz 1.1)
+   2. Jede beschränkte Folge in $\mathbb{K}^n$ besitzt eine konvergente Teilfolge. (Der Satz von Bolzano-Weierstraß gilt in $ℝ^n$) (Beweis für $ℝ^n$ zum Beispiel in RR Ana2 Satz 1.1)
    #+end_remark
    #+ATTR_LATEX: :options [Äquivalenz von Normen]
    #+begin_thm latex

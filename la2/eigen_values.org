@@ -23,7 +23,8 @@
  $K^n$ aus EV von $A$ bilden, dann ist $S A S^{-1}$ eine Diagonalmatrix (mit den EW auf der Diagonalen.)
  #+end_remark
  #+begin_proof latex
- Äquivalenz: \\ 1. $\iff$ 2. Definition, 2. $\iff$ 3. aus Basiswechselsatz (16.6), 3. $\iff$ 4. aus Definition Ähnlichkeit (16.12) \\
+ Äquivalenz: \\ 
+ 1. $\iff$ 2. Definition, 2. $\iff$ 3. aus Basiswechselsatz (16.6), 3. $\iff$ 4. aus Definition Ähnlichkeit (16.12) \\
  Zusatz: Sei $S ∈ \GL(n, K)$ mit $S A S^{-1} = \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} \implies A(S^{-1} e_j) = S^{-1} \begin{pmatrix} λ_1 & & 0 \\ & \ddots & \\ 0 & & λ_n\end{pmatrix} e_j$. \\
  Wegen $S^{-1} ∈ \GL(n, K)$ ist $S^{-1} e_j \neq 0$, das heißt $S^{-1}$ ist EV von $A$ zum EW $λ_j$ \\
  Wegen $S^{-1} ∈ \GL(n, K)$ ist $(S^{-1} e_1, \dots, S^{-1} e_n)$ eine Basis des $K^n$ aus EV von $A$. \\
