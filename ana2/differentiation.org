@@ -394,7 +394,7 @@
    $φ: V_1 \to V_2$ mit $φ(a) = b$ und $F(x, φ(x)) = 0 ∀ x ∈ V_1$. (Eindeutigkeit: Ist $(x, y) ∈ V_1 × V_2$ mit $F(x, y) = 0 ⇒ y = φ(x)$.)
    #+end_thm
    #+begin_proof latex
-   Ohne beschränkung der Allgemeinheit $(a, b) = (0, 0)$. Wir setzen
+   Ohne Beschränkung der Allgemeinheit $(a, b) = (0, 0)$. Wir setzen
    \[B := \pp{F}{y}(0, 0) ∈ \GL(m, ℝ)\]
    und betrachten $G: U_1 × U_2 \to ℝ^m$ durch $G(x, y) := y - B^{-1} F(x, y)$ definiert. $G$ ist stetig differenzierbar, weil $F$ es ist.
    Dann gilt
