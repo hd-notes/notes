@@ -290,8 +290,8 @@
    \end{align*}
 ** Kapzität und Kondensator
    Leiter können Ladungen speichern (zum Beispiel: Leidener Flasche, Kondensator, Metallkugel). \\
-   Kondensator = Ladungsspeicher (Ladungen werden im Kondensator "kondensiert", das heißt zusammengerängt)
-   Fage: Was ist die Ladungsspeicherfähigkeit oder Kapazität eines Leiters? Dafür betrachte Kugelkonuktoren.
+   Kondensator = Ladungsspeicher (Ladungen werden im Kondensator "kondensiert", das heißt zusammengedrängt)
+   Frage: Was ist die Ladungsspeicherfähigkeit oder Kapazität eines Leiters? Dafür betrachte Kugelkonduktoren.
    Gespeicherte Ladungsmenge auf einzelner Metallkugel:
    \[Δφ = -∫_∞^R \v E \d \v r = \frac{1}{4 π ε_0} \frac{Q}{R} \to Q = 4π ε_0 R U\]
    ($Δφ = U$). Das heißt gespeicherte Ladung ist proportional zur angelegten Spannung $U$
@@ -301,7 +301,7 @@
    \[C = \frac{Q}{U} \qquad Q = C U\]
    $[C] = \SI{1}{\coulomb\per\volt} = \SI{1}{\farad}$
    #+end_defn
-   Die Kapazität einer Leiteranordnung hängt von der Geometri (und vom Material) ab. Kapazität eines
+   Die Kapazität einer Leiteranordnung hängt von der Geometrie (und vom Material) ab. Kapazität eines
    Kugelkondensators: $C 4π ε_0 R$ (hier: freistehende Kugel). Einheit Farad ist sehr groß, da
    $\SI{1}{\coulomb}$ sehr groß ist.
    #+begin_ex latex
@@ -350,7 +350,7 @@
    Kehrwert der Gesamtkapazität ergibt sich als Summe der Kehrwerte der Einzelkapazitäten
 ** Kondensator als Energiespeicher
    Energiedichte des elektrischen Feldes. Aufgeladener Kondensator = Energiespeicher. Frage:
-   Wievie Energie ist gespeichert? Hierzu Betrachte Plattenkondensator:
+   Wieviel Energie ist gespeichert? Hierzu betrachten wir einen Plattenkondensator:
    Ladungstransport von Platte $A$ zu Platte $B$ erfordert Arbeit
    \begin{align*}
    ⇒ \d W &= U \d Q = \frac{Q}{C} \d Q \\
@@ -365,13 +365,13 @@
    Energie im elektrischen Feld gespeichert $⇒$ Energiedichte $ω_e = E_c / V$
    \[⇒ ω_e = \frac{1}{2} ε_0 E^2\]
    Gilt allgemein für alle elektrischen Felder im Vakuum.
-** Dielektrika - Elektrostatik in Matrie
-   Beobachtung: Einbringen eines Isolators (Dielektrikum) in einen Kondensator hat großen Einfluh
-   auf Kapazität. Spannung sinkt $⇒$ Kapazität steigt
-   #+ATTR_LATEX: :options [Permitivität]
+** Dielektrika - Elektrostatik in Materie
+   Beobachtung: Einbringen eines Isolators (Dielektrikum) in einen Kondensator hat großen Einfluß
+   auf die Kapazität. Die Spannung sinkt $⇒$ Kapazität steigt
+   #+ATTR_LATEX: :options [Permittivität]
    #+begin_defn latex
    \[C_{Diel} = ε_r C_{Vakuum} = ε_r C_0\]
-   auch Dielektrizitätskonstante, relative Dielektrizitätszahl, relative Permitivitätszahl.
+   auch Dielektrizitätskonstante, relative Dielektrizitätszahl, relative Permittivitätszahl.
    #+end_defn
    #+ATTR_LATEX: :options [Plattenkondensator]
    #+begin_ex latex
@@ -384,7 +384,7 @@
    das heißt das Feld im Kondensator mit Dielektrikum reduziert.
    #+end_ex
    *Mikroskopische Beschreibung*: \\
-   Isolator: Keine freinen, beweglichen Ladungsträger.
+   Isolator: Es gibt keine freien, beweglichen Ladungsträger.
    Aber Polarisation, das heißt Ausrichtung von Dipolen. \\
    Kondensator
    \begin{align*}
@@ -406,7 +406,7 @@
    #+end_defn
    $\v P$ wächst mit stärkerer Ausrichtung des Dipols an. Und es gilt
    \[\abs{\v P} = \frac{Q_p d}{V} = \frac{σ_p A d}{V} = σ_p\]
-   $⇒$ Makrospocische Polarisation = Oberflächenladungsdichte auf Dielektrikum.
+   $⇒$ Makroskopische Polarisation = Oberflächenladungsdichte auf Dielektrikum.
    \begin{align*}
    P &= σ_p = σ_0(1 - \frac{1}{ε_r}) = ε_0 E_{vak}(1 - \frac{1}{ε_r}) \\
    &= (ε_r - 1)ε_0 E_{Diel.} \\
@@ -450,13 +450,13 @@
    \[\dots ρ = \div \v j = 0\]
    \[I = ∫\v j \d A = \dd{Q}{t} = ∫\dot ρ \d V\]
    #+end_defn
-** Elektrischer Widerstand und Ohmsches Gesetz*
-   Ladungsfluß entsteht aufgrund einer Potentialdifferenz beziehungsweise eines Elektrischen Feldes.
+** Elektrischer Widerstand und Ohmsches Gesetz
+   Ladungsfluß entsteht aufgrund einer Potentialdifferenz beziehungsweise eines elektrischen Feldes.
    \[U = φ_b - φ_a = E Δl\]
    Spannungsänderung
    - $⇒$ Änderung Elektrisches Feld
    - $⇒$ Änderung der Ladungsträgergeschwindigkeit
-   - $⇒$ Änderung von Stromdischte und StromElektrisches Feld
+   - $⇒$ Änderung von Stromdichte und Strom
    #+ATTR_LATEX: :options [Differentieller Wiederstand]
    #+begin_defn latex
    \[ϑ = \dd{U}{I}\]
@@ -479,14 +479,14 @@
    \v j &= σ \v E = η _E \v v_D \\
    \intertext{mit}
    σ &= \frac{l}{R A} = S \frac{l}{A} \tag{spezifische Leitfähigkeit} \\
-   ρ &= \frac{1}{σ} &= R \frac{A}{l} \tag{spezifischer Widerstang}
+   ρ &= \frac{1}{σ} &= R \frac{A}{l} \tag{spezifischer Widerstand}
    \end{align*}
    Für ohmschen Leiter muss $\v v_D \sim \v E$ gelten.
    #+end_thm
-   *Durde Modell* \\
+   *Drude Modell* \\
    Bewegung von Elektronen in Leitern.
    Thermische Bewegung: $v_{th} \approx \num{1e6} - \SI{1e7}{\meter\per\second}$. Bewegung wird
-   gestört durch Stöhe mit Gitteratomen. Mittlere Zeit zwischen zwei Wechselwirkungen:
+   gestört durch Stöße mit Gitteratomen. Mittlere Zeit zwischen zwei Wechselwirkungen:
    \[τ = \frac{T}{N} ⇒ λ = τ v_m\]
    $T$: Messzeit, $N$: Anzahl der Stöße.
    Einschalten eines E-Feldes:
@@ -506,14 +506,14 @@
    #+ATTR_LATEX: :options [Kupferdraht]
    #+begin_ex latex
    \[A = \SI{1}{\milli\meter\squared}, I = \SI{1}{\ampere}, j = \frac{I}{A} ⇒ v_D = \SI{10e-4}{\meter\per\second}\]
-   Jedes Athon liegt 1 Elektron bei.
+   Jedes Atom trägt 1 Elektron bei.
    #+end_ex
    Ohmscher Leiter: $ϑ = \const$
    \[\dd{ϑ}{I} < 0 \text{ NTC, Heißleiter}\]
    \[\dd{ϑ}{I} > 0 \text{ PTC, Kaltleiter}\]
 ** Elektrische Leistung
    Strom $I$ fließt durch Widerstand beziehungsweise Verbraucher, gewonnene kinetische Energie
-   der Elektronen wird durch Stöhe in Wärme umgewandelt.
+   der Elektronen wird durch Stöße in Wärme umgewandelt.
    \[W = Q U = U I t\]
    #+ATTR_LATEX: :options [Leistung]
    #+begin_defn latex
@@ -527,7 +527,7 @@
    Kraftwerk: $F = U I$ \\
    Überlandleitung:
    - Spannungsabfall: $U_L = R_L I$
-   - Verlustleistung: $P_L = U_L I = R_L I^2 = U^2 / R$
+   - Verlustleistung: $P_L = U_L I = R_L I^2 = U_{L}^{2} / R$
    das heißt Spannungsabfall beziehungsweise Verlustleistung klein falls $I$ klein und $U$ groß!
    $⇒$ Hochspannungsleitung.
    Verfügbare Leistung: $P_V = P - P_L$

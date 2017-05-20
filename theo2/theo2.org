@@ -63,7 +63,7 @@
    \intertext{Satz von Steiner:}
    ⇒ I_A &= M \v R_{\perp}^2 + I_s
    \end{align*}
-** Trägheitstesor
+** Trägheitstensor
    Berechne kinetische Energie einen Körpers der sich mit $\v v$ und mit $\v ω$ um Achse durch Schwerpunkt dreht.
    \begin{align*}
    T &= \sum_{a} \frac{m_a}{2} \v v_a^2 = \sum_{a} \frac{m_a}{2}(\v v + \v ω × \v r_a)^2 \\
@@ -87,7 +87,7 @@
 ** Hauptträgheitsachsen
    Tensor ist (wie) Vektor ein geometrisches Objekt. Er beschreibt Dichte/ Form des Körpers.
    Bei Drehungen des Körpers: Dreht sich mit: $I_{ij}' = R_{ik} R_{jl} I_{kl} ⇔ I' = R I R^T = R I R^{-1}$ (aktive Sicht). \\
-   Passire Sicht: Für die Komponenten von $I$ im gedrehten Koordinatensystem gilt:
+   Passive Sicht: Für die Komponenten von $I$ im gedrehten Koordinatensystem gilt:
    \[I_{ij}' = R_{ik}R_{jl}I_{kl}\]
    Zentraler Satz: Jede symmetrische, reelle Matrix kann durch eine orthogonale Transformation auf Diagonalform gebracht werden.
    $⇒$ Wir können als stets den Körper so drehen beziehungsweise das Koordinatensystem so wählen, dass
@@ -116,7 +116,7 @@
 ** Eigenwerte, Eigenvektoren, Diagonlisierbarkeit
    Sei $\mathbb{V} = ℂ^n$ ein Vektorraum über $ℂ$. Definiere das Skalarprodukt $(∀x, y ∈ \mathbb{V})$
    \[x, y ↦ <x, y> \equiv x^{\dagger} y ∈ ℂ\]
-   Notation: $M^{\dagger} \equiv \bar M^T$ für alle komplexenen Matrizen. Sei $H$ eine hermitesche Matrix ($n × nn$), das heißt $H^{\dagger} = H$.
+   Notation: $M^{\dagger} \equiv \bar M^T$ für alle komplexenen Matrizen. Sei $H$ eine hermitesche Matrix ($n × n$), das heißt $H^{\dagger} = H$.
    Wir können $H$ wie folgt diagonalisieren:
    - Löse $\det(H - λ \mathbb{1}) = 0$. (Fundamentalsatz der Algebra)
 	 Nenne diese Lösung $λ_1$. Da nun $\det(H - λ_1 \mathbb{1}) = 0$ hat die Gleichung $(H - λ_1 \mathbb{1}) · x = 0$
@@ -133,7 +133,7 @@
    - Damit haben wir Diagonalisierbarkeit vod hermitesche Matrizen durch unitäre Transformationen!
    - Behauptung: $λ_i$ sind reell.
    - Begründung: $<H x_1, x_1> = <λ x_1, x_1> = \bar λ <x_1, x_1> = <x_1, H x_1> = λ<x_1, x_1> \checkmark$
-   Korollar: Reelle, symmetrische Matrizen $(H = H^{\dagger}, H_{ij} ∈ ℝ)$ können durck orthogonale Transformationen diagonalisiert werden. \\
+   Korollar: Reelle, symmetrische Matrizen $(H = H^{\dagger}, H_{ij} ∈ ℝ)$ können durch orthogonale Transformationen diagonalisiert werden. \\
    Dazu: Finde wie oben $λ_1 ∈ ℂ$. Wir wissen aber, dass auch $λ_1 ∈ ℝ$. Dann existiert ein reelles
    $x_1$ mit $(H - λ_1 \mathbb{1}) x_1 = 0$. Fortsetzung wie oben, nur "unitär" $\to$ "orthogonal".
 ** Trägheitsellipsoid
@@ -226,7 +226,7 @@
    Fall 3: $\sqrt{2 E I_3} < \abs{\v L} < \sqrt{2 E I_2} ⇒$ Sphäre stößt aus Ellipsoid heraus $⇒ L$ bewegt sich im körperfesten System auf einer geschlossenen Kurve
    $⇒$ kräftefreie Präzession des Kreisels im Laborsystem. \\
    Fall 4: $\abs{\v L} = sqrt(2 E I_2)$ Zwei kreuzende Kurven $L$ sitzt am Kreuzungspunkt (instabil) oder bewegt sich entlang Kurve \\
-   Fall 5: $\sqrt{2 E I_2} < \abs{\v L} < \sqrt{2 E I_1}$ "Gurke", nur Enden sind abgeschnitten $⇒ L$ bewegt sich im körperfisten System auf einer geschlossenen Kurze $⇒$ kräftefreie Präzessions des Kreisels im Laborsystem \\
+   Fall 5: $\sqrt{2 E I_2} < \abs{\v L} < \sqrt{2 E I_1}$ "Gurke", nur Enden sind abgeschnitten $⇒ L$ bewegt sich im körperfesten System auf einer geschlossenen Kurve $⇒$ kräftefreie Präzessions des Kreisels im Laborsystem \\
    Fall 6: $\abs{\v L} = \sqrt{2 E I_1}$ ("einbeschriebene Kugel"), wie Fall 2 \\
    Fall 7: $\sqrt{2 E I_1} < \abs{\v L}$ unmöglich \\
    Auch möglich: Geometrische Diskussion im raumfesten System $⇒$ Poinsot-Konstruktion: Ellipse rollt rutschfrei auf Ebene ab.
