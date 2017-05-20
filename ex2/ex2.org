@@ -6,3 +6,10 @@
 # 60% Punkte aus Übungaufgaben
 
 #+INCLUDE: "electrostatics.org" :minlevel 1
+* Magnetostatik
+  Neue Kraft zwischen elektisch neutralen Materialien. (später: Vereinheitlichung von Elektrizität und Magnetismus $⇒$ Elektromagnetismus)
+  Beobachtungen:
+  - Zwei Pole: Nord- und Südpol
+  - Gleichnamige Pole stoßen sich ab, ungleichnamige ziehen sich an
+  - Pole lassen sich nicht trennen, keine magnetische Ladungen, keine Monopole
+  -	Magnete richten sich auf der Erde im Nord-Süd-Richtung aus

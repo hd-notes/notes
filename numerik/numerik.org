@@ -450,3 +450,7 @@
    \[∫_a^b \abs{s''(x)}^2 \d x = 0\]
    $⇒ s$ ist linear $0 = s(a) = s(b) = 0$
    #+end_proof
+   Wiederhohlung: Extrapolation
+   $a(h), h_i > 0, a(0) = \lim_{h \to 0}  a(h)$
+   Fehler: Entwicklung
+   \[a(h) = a_0 + \sum_{j = 1}^{n} a_j h\]

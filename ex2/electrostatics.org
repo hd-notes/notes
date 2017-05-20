@@ -537,3 +537,45 @@
    Kirchhoffsche Regeln:
    1. Knotenregel: An jedem Knoten gilt $\sum I_k = 0$ (Ladungserhaltung, folgt aus Kontinuitätsgleichung)
    2. Maschenregel: Für jede Masche gilt: $\sum U_k = 0$ (Zirkulationsgesetz)
+   Für ohmsche Widerstände ergibt sich damit: \\
+   Reihenschaltung:
+   \[R = \sum_{i = 1}^{n} R_i\]
+   Parallelschaltung:
+   \[\frac{1}{R} = \sum_{i = 1}^{n} \frac{1}{R_i}\]
+** Strom und Spannungsquellen
+   Spannungsquelle mit Innenwiderstand $R_i$:
+   \begin{align*}
+   U_{kl} &= U_0 - I R_i \\
+   &= U_0 \frac{R_a}{R_a + R_i}
+   \end{align*}
+   $⇒$ Ideale Spannungsquelle:
+   \[R_i \approx 0 \quad I = \frac{U_0}{R_i + R_a}\]
+   Stromquelle: Versorgung mit konstantem Strom. $⇒$ hoher Innenwiderstand ($R_i \to ∞, R_i \gg R_a$)
+   \[I = \frac{U_0}{R_i + R_a} = \frac{U_0}{R_i} = \const\]
+   Technische Realisierung? \\
+   Prinzip: Ladungstrennung durch Energiezufuhr $⇒$ Potentialdifferenz, leitende Verbindung $⇒$ Stromfluß.
+   Anwendung finden:
+   - elektrodynamische Generatoren, magnetische Induktion
+   - Batterie und Akkumulatoren, Ladungstrennung durch chemische Reaktionen
+   - Solarzellen, Ladungstrennung durch Lichtenergie
+   - Thermische Stromquellen, Ladungstrennung durch Temperaturabhängigkeit von Kontaktpotentialen.
+   Galvanische Elemente $⇒$ Galvani-Spannung: $Δφ_C$ $⇒$ Volta-Element \\
+   Minuspol: $Zn \to Zn^{++} + 2e^-$ \\
+   Pluspol: $2H^+ + 2 e^- \to H_2$ \\
+   $Z_n + H_2 SO_4 \to H_2 + Zn SO_4$ \\
+   Daniel-Element: Diaphragma, dass nur $SO_4$ durchlässt verhindert *Vergiftung*. \\
+   Thermische Stromquellen. Bei Kontakt zweier Metalle ergibt sich Potentialdifferenz $⇒$ Kontaktspannung.
+   Ursache: Unterschiedlicshe Austrittarbeit für freie Elektronen. Austrittsarbeit und Kontaktspannung hängen von
+   Temperatur ab.
+   - Thermoelement
+   - Peltierkühlung (Umkehrung)
+** Strom und Spannugsmessung
+   Ziel: Strom- und Spannungsmessung ohne Beeinflussung des zu messendes Systems. \\
+   Strommessung: Ampermeter in Reihe mit Verbraucher, Ampermeter - $R_i \approx 0$ um zusätzlichen Spannungsabfall aus
+   Messgrät zu minimieren. \\
+   Spannungsmessung: Voltmeter parallel zum Verbraucher geschaltet. Voltmeter - $R_i \to \infty$, um
+   Stromfluss durch Voltmeter zu minimieren. \\
+   Messinstrumente:
+   - Galvanometer
+   - Digitalvoltmeter (mit Operationsverstärker)
+	 (Messberecherweiterung durch Parallel- und Serienschaltung von Widerständen)

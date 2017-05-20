@@ -306,3 +306,61 @@
    \end{align*}
    $⇒$ Kurvendiskussion $⇒$ $u$ oszilliert zwischen $u_{min}, u_{max} ⇒$ $θ$ oszilliert zwischen $θ_{min}, θ_{max}$. Währenddessen schreitet $φ$ unregelmäßig voran:
    \[\dot φ = \frac{L_3' - L_3 \cos θ}{I_0 \sin^2 θ}\]
+* D'Alembertsches Prinzip und Lagrange Gleichungen 1. und 2. Art
+  Unter anderem "Herleitung" (historisch) der Euler-Lagrange-Gleichungen, immer noch Anwendungsrelevant: Lagrange-Gleichungen 1. Art / nichtholonome Zwänge
+** Arten von Zwangsbedingungen
+   1. Gasmoleküle in einem Kasten
+   2.
+	  1. Perle auf Draht, Draht unbewegt
+	  2. Perle auf Draht, Draht bewegt
+   3. Senkrecht stehendes Rad, ohne Rutschen
+   4. Durch massenlose Stangen verbundene Punktmassen
+   Zwänge heißen *holonom* falls sie durch nicht-differentielle Gleichungen ausdrückbar sind, zum Beispiel
+   \[ϕ_α(\v x_1, \dots, \v x_N, t) = 0, α ∈ \{0, \dots, d\}\]
+   Genauer: \\
+   $t$ kommt vor: "rheonom" \\
+   $t$ kommt nicht vor: "skleronom" \\
+   Besonders interessant: Zwänge in differentieller, nicht-integriebarer Form (*nicht-holonom*). (Fall 3).
+   Im Moment nicht klassifiziert 1. Also betrachte Fall 3.:
+   4 Parameter: $(\v x, θ, φ), \v x ∈ ℝ^2$. Zwänge: $\d x^1 = R\d φ \cos θ, \d x^2 = R \d φ \sin θ$. Hoffnung: (wenigstens eine) dieser Bedingungen *ausdrückbar* als
+   \[ϕ(x^1, x^2, φ, θ) = 0\]
+   Das heißt Differenzieren dieser Gleichung gibt eine der obigen Zwänge:
+   \[0 = \d ϕ = \pp{ϕ}{x^1} \d x^1 + \pp{ϕ}{x^2} \d x^2 + \pp{ϕ}{φ} \d φ + \pp{ϕ}{θ} \d θ\]
+   Falls dies für beide differentiellen Zwänge ginge, wäre unser System doch *holonom*. (beziehungsweise "integrierbar").
+   Aber im konkreten Fall geht das *nicht*.
+   #+begin_proof latex
+   per Widerspruck: Wenn es ginge, könnten wir nach $φ$ auflösen $⇒ φ = /(x^1, x^2, θ)$. Dies ist unmöglich,
+   weil man durch "Rollen im Kreis" beliebiges $φ$ zu vorgegebenen $x^1, x^2, θ$ erreichen kann.
+   #+end_proof
+** Prinzip der virtuellen Arbeit und "D'Alembert"
+   Betrachte eine masselose starre Stange, die zwei Massen $m_1, m_2$ verbindet. Auf $m_1, m_2$ wirken die Zwangskräfte $\v F_{12}^c, \v F_{21}^c$ "constrait".
+   Wir wissens schon: Energie erhalten $⇒$ Zwangskräfte verrichten keine Arbeit. $⇒ δA = \v F_{12}^c \d \v x_1 + \v F_{21}^] \d \v x_2 = 0$.
+   Ebenso für Perle auf Draht (Draht fest): $\v F_c \perp \text{Draht} \parallel \d \v x$
+   \[⇒ δA = \v F^c \d \v x = 0\]
+   Wir wollen die Aussage "Zwangskräfte verrichten keine Arbeit" allgemein formulieren. \\
+   Problem: bei bewegtem Draht $\d \v x \parallel$ Draht nicht
+   mehr $⇒ δA = 0$ im Allgemeinen nicht mehr. \\
+   Lösung: Definiere *virtuelle Verrückung* $δx$ bei $t = \const$. Dies ist eine *gedachte* Verschiebung des Systems in eine andere Lage - keine echte Bewegung.
+   Fakt: in einfachen Beispielen (bewegter Draht, etc.) gilt jetzt wiedea $δA = 0$.	$⇒$ Formulieren: "*Prinzip der virtuellen Arbeit*"
+   \[\sum_{a} \v F_a^c δ\v x_a = 0\]
+   für jede virtuelle Verrückung $\{δ\v x_a, a = 1, \dots, N\}$
+   $⇒$ Definition eines "glatt geführten Systems".
+   Für jede der Punktmassen gilt: $\v F_a^{tot} = \v F_A + \v F_a^c$
+   \begin{align*}
+   ⇒ \sum_{a}(\v F_a - \v F_a^{tot}) δ\v x_a = 0 \\
+   ⇒ \sum_{a}(\v F_a - m_a \ddot{\v x}_a) δ\v x_a = 0 \tag{d'Alembertsches Prinzip}
+   \end{align*}
+   Das D'Alembertsche Prinzip ist äquivalent zum Prinzip der virtuellen Arbeit. Vorteil: ohne Zwangkräft.
+   Nützliches Korollar: Im Gleichgewicht gilt:
+   \[\sum_{a} \v F_a δ\v x_a = 0\]
+   Elementare Anwendung: Wippe: $m_1, m_2$ im Abstand $l_1, l_2$ von dem Auflagepunkt.
+   Offensichtlich gilt:
+   \[δ x_2 = - \frac{l_2}{l_1} δx_1\]
+   (für jede virtuelle Verrückung $\{δx_1, δx_2\}$). Wir setzen in d'Alembert (im Gleichgewicht) ein: $F_1 δx_i + F_2δx_2 = 0$
+   \[⇒ F_1 δx_i + F_2 (-\frac{l_2}{l_1})δx_1 = 0 ⇒ \frac{F_1}{F_2} = \frac{l_2}{l_1}\]
+   (Hebelgesetz).
+** D'Alembertsches Prinzip mit verallgemeinerten Koordinaten und Kräften.
+   Betrachte $N$ Massenpunkte, $d$ holonome Zwänge.
+   \[ϕ_α(\v x_1, \dots, \v x_N, t) = 0, α = 1, \dots, d\]
+   Laut D'Alembert:
+   \[\sum_{a}(\v F_a - m_a \ddot{\v x}_o)\]
