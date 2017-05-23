@@ -13,3 +13,86 @@
   - Gleichnamige Pole stoßen sich ab, ungleichnamige ziehen sich an
   - Pole lassen sich nicht trennen, keine magnetische Ladungen, keine Monopole
   -	Magnete richten sich auf der Erde im Nord-Süd-Richtung aus
+  Traditionell: Definiton der magnetischen Feldstärke $p$ in Analogie zur elektricschen Ladung $Q$.
+  (Realisierung: langer Stabmagnet)
+  \[⇒ \v F = \frac{1}{4π μ_0} \frac{p_1 p_2}{r^2} \hat r\]
+  mit $μ_0 = 4π · \SI{1e-7}{\volt\second\per\ampere\meter}$
+  \[\v H = \lim_{p_2 \to 0} \frac{\v F}{p_2}\]
+  - $[p] = \si{\volt\second} = \si{\weber}$
+  - $[H] = \si{\ampere\per\meter}$
+  Hieraus folg die historsche Bezeichnung von $H$ als "Magnetfeld" oder "magnetische Feldstärke".
+  Aber $\v B = μ_0 \v H$ wichtigere Größe, eigentliches Äquivalent zum E-Feld
+  | Traditionell                                             | Modern                                        |
+  | $H$ = magnetische Feldstärke                             | $H$ = magnetische Erregung                    |
+  | $B$ = magnetische Induktion oder magnetische Flussdichte | $B$ = Magnetfeld oder magnetische Flussdichte |
+  Ebenfalls: In Analogie zum elektrischen Feld: Magnetischer Kraftfluss
+  \[ϕ_m = ∫ \v B \d \v A\]
+  - $[B] = \si{\volt\second\per\meter\squared} = \si{\tesla}$
+  - $[ϕ m] = \si{\volt\second} = \si{\weber}$
+** Magnetfelder und bewegte Ladungen
+   Beobachtungen:
+   1. Ein Strom durch einen Leiter erzeugt ein Magnetfeld um denselben (Oerstedt, 1777 - 1851)
+   2. Auf bewegten Ladungen wird in einem Magnetfeld eine Kraft ausgeübt. Offenbar: Streuwirkung beeinflußt Krafrichtung. (Ampere, 1775-1836)
+   Experiment:
+   1. $B \sim I / r$
+   2. $\v F \sim I(\v e × \v B)$
+   Konvention:
+   \begin{align*}
+   B &= \frac{μ_0 I}{2π r} \\
+   \v F &= I(\v l × \v B) \tag{Lorentzkraft}
+   \end{align*}
+   $\v l$: Streurichtung. \\
+   mit $\v I = \v j A$:
+   \[\v F = lA(\v j × \v B) = l A n q(\v v × \v B)\]
+   Kraft auf einen einzelnen Ladungsträger:
+   \begin{align*}
+   \v F &= q(\v v × \v B) \tag{Lorentzkraft (ohne E-Feld)} \\
+   \v F &= q(\v E + \v v × B) \tag{Lorentzkraft (allgmeine Form)}
+   \end{align*}
+   #+ATTR_LATEX: :options [Freie Ladung im homogenen B-Feld]
+   #+begin_ex latex
+   Freie Ladung im homogenen B-Feld mit $\v R \perp \v B$.
+   Bewegungsgleichung:
+   \[m \v a = (\v r × \v B)\]
+   Da Kraft senkrecht auf Bewegungsrichtung folgt: Kreisbewegung!
+   Also:
+   \begin{align*}
+   a &= a_{zp} = v ω = \frac{v^2}{r} = \frac{q}{w} v B \\
+   ω &= \frac{q}{w} B \tag{Zyklotronfrequenz}
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Leiterschleife im homogenen B-Feld]
+   #+begin_ex latex
+   Kräftepaar bewirkt Drehmoment
+   \[\v M = \v d × \v F = \v d × I(\v l × \v B) = I(\v A × \v B)\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Magnetischer Moment]
+   #+begin_defn latex
+   \begin{align*}
+   \v μ &:= I \v A = I A \v n \\
+   \v M &= \v μ × \v B
+   \end{align*}
+   #+end_defn
+   | Elektrischer Dipol   | Magnetischer Dipol   |
+   | $\v M = \v p × \v E$ | $\v M = \v μ × \v B$ |
+   Durch Vergleich mit elektrischen Dipol: Offenpor erzeugt ein Kreisstrom einen
+   magnetischen Dipol.
+   #+ATTR_LATEX: :options [Hall-Effekt]
+   #+begin_ex latex
+   Ablenkung bewegter Ladungsträger im Festkörper beziehungsweise im Leitern durch ein externes Feld.
+   Erlaubt Magnetfeldmessung. \\
+   Beobachtug: Aufbau eines elektrischen Querfeldes in einem Stromdurchflossenen Leiter in einem Magnetfeld.
+   Ursache: Lorentzkraft. Es gilt:
+   \begin{align*}
+   F_{el} &= F_{mag} \\
+   q \frac{U_H}{b} &= q v B \\
+   &= \frac{I}{n b d} B \\
+   \intertext{mit $\v v \perp \v B$}
+   I &= j A = jbd = n q v b d \\
+   U_{H} &= \frac{1}{nq} \frac{I}{d} B = R_H \frac{I}{d} B
+   \end{align*}
+   mit $R_H = (nq)^{-1}$, Hallkonstante, $n =$ Ladungsdichte, $q =$ Ladung. \\
+   Anwendunges:
+   - Messunges von Dichte und Vorzeichen der bewegten Ladungsträger in Materialien (zum Beispiel Leiter / Halbleiter)
+   - Messung magnetischer Felder
+   #+end_ex

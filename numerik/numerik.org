@@ -453,4 +453,115 @@
    Wiederhohlung: Extrapolation
    $a(h), h_i > 0, a(0) = \lim_{h \to 0}  a(h)$
    Fehler: Entwicklung
-   \[a(h) = a_0 + \sum_{j = 1}^{n} a_j h\]
+   \[a(h) = a_0 + \sum_{j = 1}^{n} a_j h^{a_j}\]
+   \[0 < \frac{h_{k + 1}}{h_k} \leq ρ < 1\]
+   interpolieren $(h_{k + 1}^a, a(h_{k + 1})), i = 1, \dots, n$
+   \[⇒ a(0) - p_i^{(k)}(0) = \mathcal{O}(h_k^{(n + 1)})\]
+   Splines: $S_h^{(k, r)}[a, b] = \{p ∈ C^r[a, b] \mid p \big|_{[x_i, x_{i + 1}]} ∈ P_k[x_i, x_{i + 1}]\}$
+   Splines: $s ∈ S_k^{(n, x)}[a, b]$. Natürliche kubische Splines: $s''(a) = s''(b) = 0$.
+   #+begin_thm latex
+   Für den interpolierenden natürlichen Spline $S_n$ durch $x_0, \dots, x_n, y_0, \dots, y_n$ gilt
+   \[∫_a^b \abs{S'(x)}^2 \d x \leq ∫_a^b \abs{g''(x)}^2 \d x\]
+   bezüglich allen Funktionen $g ∈ C^2[a, b]$ mit $g(x_i) = y_i, i = 0, \dots, n$
+   #+end_thm
+   #+begin_proof latex
+   Sei $N = \{ω ∈ C^2[a, b] \mid ω(x_i) = 0, i = 0, \dots, n\}$
+   $⇒ ω = g - I_n ∈ N$.
+   \begin{align*}
+   ⇒ ∫_a^b \abs{g''(x)}^2 \d x &= ∫_a^b \abs{S_n''(x) + ω''(x)}^2 \d x \\
+   &= ∫_a^b \abs{S_n''(x)}^2 \d x + \underbrace{2 ∫_a^b S_n''(x) ω''(x) \d x}_{0} + \underbrace{∫_a^b \abs{ω''(x)}^2 \d x}_{\geq 0}	\\
+   &\geq ∫_a^b \abs{S_n''(x)}^2 \d x
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [Approximationsfehler]
+   #+begin_thm latex
+   Sei $f ∈ C^4[a, b]$. Erfüllt der interpolierende kubische Spline $S_1''(a) = f''(a) ∧ S_n(b) = f''(b)$ so gilt:
+   \[\max_{x ∈ [a, b]} \abs{f(x) - S_n(x)} \leq \frac{1}{2} h^4 \max_{x ∈ [a, b]} \abs{f^{(4)}(x)}\]
+   Ohne Beweis.
+   #+end_thm
+** Gauß Approximation
+   Wir betrachten $C[a, b]$, die Menge der stetigen Funktionen auf $[a, b]$ über dem Zahlkörper $\mathbb{K} = ℝ$ oder $\mathbb{K} = ℂ$, als $\mathbb{K}$ -Vektorraum.
+   Für $f, g ∈ [a, b]$ erfüllt
+   \[(f, g) := ∫_a^b f(t) \overline{g(t)} \d t\]
+   die Eigenschaften eines Skalarproduktes:
+   1. Definitheit:
+	  \[(f,f) =∫_a^b f(t) \overline{f(t)} \d t = ∫_a^b \abs{f(t)}^2 \d t \geq 0\]
+	  und $(f, f) = 0 ⇒ f = 0$
+   2. $α ∈ \mathbb{K}, h ∈ C[a, b]$:
+	  \[(αf + g, h) = ∫_a^b(α f(t) + g(t))\overline{h(t)} \d t = α ∫_a^b f(t) \overline{h(t)} \d t + ∫_a^b g(t) \overline{h(t)} \d t = α(f, h) + (g, h)\]
+   3. Symmetrie:
+	  \[(f, g) = ∫_a^b f(t) \overline{g(t)} \d t = ∫_a^b \overline{\overline{f(t)} g(t)} \d t = ∫_a^b g(t) \overline{f(t)} \d t = \overline{(g, f)}\]
+   Durch $\norm{f} = \sqrt{(f, f)}$ ist damit eine Norm auf $C[a, b]$ gegeben:
+   1. Definitheit:
+	  \[\norm{f} \geq 0, f = 0 ⇔ \norm{f} = 0\]
+   2. Sublinearität: Wir benutzen die Cauchy-Schwarz-Ungleichung
+	  \begin{align*}
+	  \abs{(f, g)} &\leq \norm{f}\norm{g} \\
+	  ⇒ \norm{f + g}^2 &= (f + g, f + g) = (f, f) + (f, g) + (g, f) + (g, g) \\
+	  &= \norm{f}^2 + \underbrace{2\Re(f, g)}_{\leq \abs{(f, g)}} + \norm{g}^2 \\
+	  &\leq \norm{f}^2 + 2 \norm{f} \norm{g} + \norm{g}^2 = (\norm{f} + \norm{g})^2 \\
+	  ⇒ \norm{f + g} &\leq \norm{f} + \norm{g} \tag{Dreiecksungleichung}
+      \end{align*}
+   3. Homogenität:
+	  \[\norm{α f} = \sqrt{(αf, αf)} = \sqrt{α \bar α (f, f)} = \abs{α} \norm{f}\]
+   Mit diesem Skalarprodukt und dieser Norm ist also $C[a, b]$ ein Prähilbertraum.
+   #+ATTR_LATEX: :options [Gauß-Approximation]
+   #+begin_thm latex
+   Sei $H$ ein Prähilbertraum und sei $S ⊂ H$ eine endlichdimensionaler Teilraum. Dann existiert zu jedem $f ∈ H$ eine eindeutig bestimmte "beste Approximation" $g ∈ S$
+   \[\norm{f - g} = \min_{φ ∈ S} \norm{f - φ}\]
+   #+end_thm
+   #+begin_proof latex
+   *Vorüberlegung*: Wenn $g ∈ S$ eine beste Approximation ist, so hat für $φ ∈ S$ die Hilfsfunktion
+   \[F_φ(t) = \norm{f - g - tφ}^2, t ∈ ℝ\]
+   bei $t = 0$ ein Minimum. Somit ist
+   \begin{align*}
+   0 &= \dd{}{t} F_φ(t)\big|_{t = 0} = \dd{}{t}[(f - g - tφ, f - g - tφ)]\big|_{t = 0} \\
+   &= \dd{}{t}[(f - g, f - g) - t(φ, f - g) - f(f - g, φ) + t^2(φ, φ)]\big|_{t = 0} \\
+   &= 2 \Re(f - g, φ) ∀ φ ∈ S
+   \end{align*}
+   Falls $\mathbb{K} = ℂ$ ergibt testen mit $i φ$
+   \[0 = \Re(f - g, iφ) = -\Re(f - g, φ) = \Im(t - g, φ) ⇒ (f - g, φ) = 0 ∀ φ ∈ S\]
+   Interpretation: Der Fehler $f - g$ ist orthogonal zum Teilraum $S$.
+   Gilt umgekehrt die letzte Gleichung für ein $g ∈ S$, so gilt für $φ ∈ S$
+   \begin{align*}
+   \norm{f - g}^2 &= (f - g, f - g) = (f - g, f - φ) + \underbrace{(f - g, φ)}_{0} \\
+   \intertext{Cauchy-Schwarz:}
+   &\leq \norm{f - g}\norm{f - φ} \\
+   ⇒ \norm{f - g} \leq \inf_{φ ∈ S} \norm{f - φ}
+   \end{align*}
+   $⇒ g$ ist Bestapproximation. \\
+   *Existenz und Eindeutigkeit*: Da $n = \dim S < ∞$, besitzt $S$ eine Basis $\{φ_1, \dots, φ_n\}$. Jedes $g ∈ S$ hat eine eindeutige Darstellung
+   \begin{align*}
+   g &= \sum_{i = 1}^{n} α_i φ_i \\
+   ⇒ (f - \sum_{i = 1}^{n} α_i φ, φ) &= (f, φ) - \sum_{i = 1}^{n} α_i (φ_i, φ) = 0 ∀ φ ∈ S \\
+   ⇒ \sum_{i = 1}^{n}(φ_i, φ) α_i &= (f, φ_k), k = 1, \dots, n
+   \end{align*}
+   Dies ist ein lineares $n × n$ Gleichungssystem. Notation: $Aα = B$ mit $α = (α_1, \dots, α_n)^T ∈ \mathbb{K}^n, b ∈ \mathbb{K}^n, b_i = (f, φ_i), A ∈ \mathbb{K}^{n × n}, A_{ki} = (φ_i, φ_k)$.
+   $A$ ist hermitisch wegen $(φ_i, φ_k) = \overline{(φ_k, φ_i)}$. Sei $α ∈ \mathbb{K}^n$ beliebig. Wegen
+   \begin{align*}
+   α^H A α &= \sum_{k = 1}^{n} \sum_{i = 1}^{n} \bar α_k (φ_i, φ_k) α_i \\
+   &= \sum_{k = 1}^{n} \sum_{i = 1}^{n} (α_i, φ_i, α_k, φ_k) \\
+   &= (\sum_{i = 1}^{n}α_i φ_i, \sum_{k = 1}^{n} α_k φ_k) = (g, g) > 0
+   \end{align*}
+   für $α \neq 0 (⇒ g \neq 0)$ ist $A$ also positiv definit und damit invertierbar $⇒$ mit $α = A^{-1} b$ löst das eindeutig bestimmte Gleichungssystem und $g$ ist die Bestapproximation.
+   #+end_proof
+   Das lineare Gleichungssystem besitzt besonders einfache Lösung, wenn die Basis $\{φ_1, \dots, φ_n\}$ eine Orthogonalbasis ist, das heist $(φ_i, φ_j) = δ_{ij}$
+   \begin{align*}
+   ⇒ α_i &= (f, φ_i), i = 1, \dots, n \\
+   ⇒ g &= \sum_{i = 1}^{n} (f, φ_i) φ_i \quad \text{ist Bestapproximation}
+   \end{align*}
+   #+ATTR_LATEX: :options [Gram-Schmidt-Algorithmus]
+   #+begin_lemma latex
+   Zu jeder Basis $\{ψ_1, \dots, ψ_k\}$ von $S$ lässt sich eine Orthogonalbasis $\{φ_1, \dots, φ_n\}$ konstruieren.
+   \[\tilde φ_1 = ψ_1, φ_1 = \frac{\tilde φ_1}{\norm{\tilde φ_1}}\]
+   \[\tilde φ_k = ψ_k - \sum_{i = 1}^{k - 1}(ψ_k, φ_i), φ_k = \frac{\tilde φ_k}{\norm{\tilde φ_k}}\]
+   #+end_lemma
+   #+begin_proof latex
+   Per Induktion nach $n$. \\
+   $n = 1$: Da $ψ \neq 0$ gilt $(φ_1, φ_1) = \frac{\abs{ψ_1}^2}{\norm{ψ_1}^2} = 1$. \\
+   $n > 1$: Sei $\{φ_1, \dots, φ_n\}$ eine Orthogonalbasis. Es gilt
+   \[0 \neq \tilde φ_n = ψ_n - \sum_{k = 1}^{n - 1}(ψ_n, φ_k)φ_k\]
+   da sonst $\{ψ_1, \dots, ψ_n\}$ linear abhängig wären. Für $i = 1,\dots, n - 1$ gilt
+   \[(φ_n, φ_1) = (ψ_n, φ_i) - \sum_{k = 1}^{n - 1}(ψ_n, φ_k)\underbrace{(φ_k, φ_i)}_{δ_{ik}} = 0\]
+   und $\norm{φ_n}^2 = 1$ nach Konstruktion.
+   #+end_proof

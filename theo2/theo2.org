@@ -362,5 +362,94 @@
 ** D'Alembertsches Prinzip mit verallgemeinerten Koordinaten und Kräften.
    Betrachte $N$ Massenpunkte, $d$ holonome Zwänge.
    \[ϕ_α(\v x_1, \dots, \v x_N, t) = 0, α = 1, \dots, d\]
+   mit verallgemeinerten Koordinaten $q_m$, sodass
+   \[\v x_a = \v x_a(q_1, \dots, q_{3N - d},t)\]
    Laut D'Alembert:
-   \[\sum_{a}(\v F_a - m_a \ddot{\v x}_o)\]
+   \[\sum_{a}(\v F_a - m_a \ddot{\v x}_a) δ\v x_a = 0\]
+   für alle virtuellen Verrückungen $δ\v x_a$. In verallgemeinerten Koordinaten kann man schreiben
+   \[δ\v x_a = \sum_{m} \pp{\v x_a}{q_m} δq_m\]
+   Für den ersten Term findet man
+   \[\sum_{a} \v F_a δ\v x_a = \sum_{m} Q_m δq_m\]
+   mit den verallgemeinerten Kräften.
+   \[Q_m := \sum_{a} \v F_a \pp{\v x_a}{q_m}\]
+   Für den zweiten Term erhält man:
+   \[\ddot{\v x}_a δ\v x_a = \sum_{m} \ddot{\v x}_a \pp{\v x_a}{q_m} δq_m = \sum_{m} (\dd{}{t}(\dot{\v x}_a \pp{\v x_a}{q_m}) - \dot{\v x}_a \dd{}{t}(\pp{\v x_a}{q_m}))δq_m\]
+   Nebenrechnung: Gegeben $x = x(q, t)$. Totale Zeitableitung:
+   \[\dot x = \pp{x}{q} \dot q + \pp{x}{t} := \dot x(q, \dot q, t)\]
+   Offensichtlich gilt:
+   \[\pp{\dot x}{\dot q} = \pp{x}{q}\]
+   Wir berechnen:
+   \begin{align*}
+   \dd{}{t}(\pp{x}{q}) &= \frac{\partial^2 x}{\partial q^2} \dot q + \frac{\partial^2 x}{\partial q \partial t} \tag{A} \\
+   \pp{\dot x}{q} &= \frac{\partial^2 x}{\partial q^2} \dot q + \frac{\partial^2 x}{\partial q \partial t} \tag{B} \\
+   ⇒ \dd{}{t}(\pp{x}{q})&= \pp{\dot x}{q}
+   \end{align*}
+   Weiterführung vom zweitem Term:
+   \begin{align*}
+   \ddot{\v x}_a δ\v x_a &= \sum_{m} (\dd{}{t}(\dot{\v x}_a \pp{\dot{\v x}_a}{\dot q_m}) - \dot{\v x}_a \pp{\dot{\v x}_a}{q_m})δq_m \\
+   ⇒ \sum_{a} m_a \ddot{\v x}_a δ\v x_a &= \sum_{m,a} m_a (\dd{}{t}(\dot{\v x}_a \pp{\dot{\v x}_a}{\dot q_m}) - \dot{\v x}_a \pp{\dot{\v x}_a}{q_m})δq_m \\
+   &= \sum_{m,a} m_a (\dd{}{t}\pp{}{\dot q_m}(\frac{1}{2} \dot{\v x}_a^2) - \pp{}{q_m}(\frac{1}{2}\dot{\v x}_a^2))δq_m \\
+   &= \sum_{m} (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T δq_m, \quad T = \sum_{a} \frac{1}{2}m_a \dot{\v x}_a^2 \\
+   \intertext{Zusammen mit 1. Term folgt:}
+   0 &= \sum_{m}(Q_m - (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T)δ q_m \\
+   \end{align*}
+   $δ q_m$ unabhängig! $⇒$ jeder der Klammer-Ausdräcke verschwindet getrennt.
+   $⇒ 3d -d$ Differentialgleichungen 2. Ordnung $⇒$ Problem prinzipiell gelöst.
+** Lagrange-Gleichungen 1. Art
+   Jetzt *zusätzlich* $p$ nichtholomome (differentielle) Zwänge.
+   \[α = 1, \dots, p: \sum_{m} f_m^α dq_m + f_t^α \d t = 0\]
+   $f_m^α$ sind Funktionen der $q_m, t$. Wir wollen mit Vektoren in $ℝ^{3N - d}$ arbeiten:
+   \[δ\v q := \{δ_m\}, \v f^α := \{f_m^α\}, \v p := \{Q_M - (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T\}\]
+   Bedindung für virtuelle Verrückung:
+   \[\sum_{m} f_m^α δq_m = 0 ⇔ \v f^α δ\v q = 0\]
+   Sei $\Span\{\v f^α\}$ der von dem $\v f^α$ aufgespannte lineare Unterraum von $ℝ^{3N - d}$.
+   Sei $\Span\{\v f^α\}_{\perp}$ das orthogonale Komplement. $⇒$ Zwänge $δ\v q ∈ \Span \{\v f^α\}_{\perp}$.
+   D'Alembert besagt nun: $\v p δ\v q = 0$. Äquivalent: $\v p ∈ \{δ\v q\}_{\perp}$
+   \[⇒ \v p \{\Span\{\v f_α\}_{\perp}\}_{\perp} = \Span\{\v f_α\}\]
+   $⇒ ∃ λ^α(t)$, sodass
+   \begin{align*}
+   Q_m - (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T + \sum_{α} λ^α f_m^α &= 0 \\
+   \sum_{m} f_m^α \dot q_m + f^α_t &= 0
+   \end{align*}
+   Sie haben: $(3N - d) + p$ Differentialgleichungen für die $(3N - d) + p$ Funktionen $q_m$ und $λ^α$
+   $⇒$ Problem prinzipiell gelöst.
+** Lagrange-Multiplikatoren und Zwangskräfte
+   Aus unserer Herleitung von D'Alembert folgt als technisches Zwischenergebnis:
+   \[(\dd{}{t} \pp{}{\dot q_m} - \pp{}{q_m}) T = \sum_{a} m_a \ddot{\v x}_a \pp{\v x_a}{q_m}\]
+   Ersezte: $m_a \ddot{\v x}_a = \v F_a^{tot} = \v F_a + \v F_a^c$. Definiere
+   \[Q_m := \sum_{a} \v F_a \pp{\v x_a}{q_m}, Q_m^c := \sum_{a} \v F_a^c \pp{\v x_a}{q_m}\]
+   Schreibe rechte Seite von der Gleichung in $Q$ 's um. Setze in "Lagrange-1" ein. Finde:
+   \[Q_m^C= \sum_{α} λ^α f_m^α\]
+   $⇒$ Lagrange-Multiplikatroen bestimmen Zwangskräfte. \\
+   *Schlusskommentar*: Einfacherer Spezialfall: keine holonomen Zwänge. $⇒$ Lagrange-1 direkt in kartesischen Koordinaten formulierbar.
+   \begin{align*}
+   F_m - m_m \ddot x_m + \sum_{α} λ^α f^α_m &= 0 \\
+   \sum_{m = 1}^{3N} f_m^α \dot x_m + f_t^α &= 0
+   \end{align*}
+   $m = 1, \dots, 3N, m_1 = m_2 = m_3, etc$
+** Lagrange-Gleichungen 2. Art
+   Betrachte System wie in 5.4 mit verallgemeinerten Koordinaten $q_m$ und *ohne* nichtholonome Zwänge. Seien die äußeren Kräfte konservatir: $\v F_a = - \v ∇_a V(\v x_1, \dots, \v x_N)$
+   $\v ∇_a$: Gradient bezüglich $\v x_a$
+   \begin{align*}
+   ⇒ Q_m &= \sum_{a} \v F_a \pp{\v x_a}{q_m} = -\sum_{a} (\v ∇_a V)\pp{\v x_a}{q_m} = -\pp{V}{q_m} \\
+   &= (\dd{}{t} \pp{}{\dot q_m} - \pp{}{q_m})V \\
+   \intertext{D'Alembert sagt:}
+   Q_m - (\dd{}{t} \pp{}{\dot q_m} - \pp{q_m}{})T &= 0 \\
+   ⇒ (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})V - (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T &= 0 \\
+   \string(\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m}\string)(V - T) &= 0 \\
+   \string(\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m}\string)(L) &= 0 \\
+   \end{align*}
+   $⇒$ "Herleitung" von "Lagrange-2" aus Newton, "glatt geführte Systeme", konservative Kräfte.
+** Lagrange-Multiplikatoren - allgemeine Sicht
+   Höhenfunktion $f(x, y)$ im Gebirge. Gipfel:
+   \begin{align*}
+   \pp{f}{x} &= 0 \\
+   \pp{f}{y} &= 0 \\
+   \end{align*}
+   Andere Frage: Höchster Punkt auf einem Weg. Weg: gegeben durch $g(x, y) = 0$. Können (im Allgemeinen) nicht Gipfel und Weg Bedingung gleichzeitig lösen!
+   Allgemeine Methode:
+   \begin{align*}
+   \pp{}{x}(f + λ g) &= 0 \\
+   \pp{}{y}(f + λ g) &= 0 \\
+   g &= 0
+   \end{align*}
