@@ -15,7 +15,7 @@
   Zu einer gegebenen Funktion $f: ℝ\to ℝ$ suchen wir eine differenzierbare Funktion $x: ℝ \to ℝ$, deren Ableitung durch $f(·)$ beschrieben wird.
   Wir suchen also eine Funktion sodass
   \[\dd{}{t} x(t) = f(t) ∀ t ∈ ℝ\]
-  *Bewerkung zur Notation* \\
+  *Bemerkung zur Notation* \\
   \begin{align*}
   x' &= f\\
   \dot x &= f
@@ -23,7 +23,7 @@
   #+begin_ex latex
   Für gegebene Geschwindigkeit (in Ableitung von Zeit) suchen wir die Position des Körpers auf einer festen eindimensionalen Achse.
   \[\dd{}{t} x(t) = f(t) ∀ t ∈ ℝ\]
-  Wir müssen noch die Position zu irgendwelchen Zeitpunkt nennen. Das heißt die Lösung ist nicht eindeutig solag wir keinen Wert $x(t_0) ∈ ℝ$ festlegen.
+  Wir müssen noch die Position zu irgendeinem Zeitpunkt kennen. Das heißt die Lösung ist nicht eindeutig solange wir keinen Wert $x(t_0) ∈ ℝ$ festlegen.
   Das Problem
   \begin{align*}
   \dd{}{t} x(t) &= f(t) \\
@@ -43,11 +43,11 @@
   \begin{align*}
   x(·) &= c · e^{rt} \\
   x_0 &= x(0) = c \\
-  ⇒ x(t) = x_0 e^{rt}
+  ⇒ x(t) &= x_0 e^{rt}
   \end{align*}
   #+end_ex
   #+begin_defn latex
-  Gegeben seien nicht leere Teilmenge $D ⊂ ℝ × ℝ^m$ und eine Funktion $f: D \to ℝ^m$. Dann nennt man
+  Gegeben sei eine nicht leere Teilmenge $D ⊂ ℝ × ℝ^m$ und eine Funktion $f: D \to ℝ^m$. Dann nennt man
   \[x' = f(·, x)\]
   eine explizite Gewöhnliche Differenzialgleichung (GDGL)(ODE - ordinary differential equation) 1. Ordnung.
   Im Fall $m = 0$ wird die Gleichung als *Skalar* bezeichnet. Eine solche Differentialgleichung heißt *autonom* falls $f$ nicht explizit von $t$ abhängt (sonst: *nichtautonom*).
@@ -79,16 +79,16 @@
   *Methode der Trennung der Variablen* \\
   Wir betrachten die separable Differentialgleichung
   \[x' = f(x, t) = a(t) g(x)\]
-  Sei $x$ einen Lösung. Falls $g(t) \neq 0$ bekommen
+  Sei $x$ einen Lösung. Falls $g(t) \neq 0$ bekommen wir
   \[∫_{t_0}^t \frac{x'(s)}{g(x(s))} \d s = ∫_{t_0}^t a(s) \d s\]
-  Mit Hilge die Substitution $z := x(s)$ ergibt sich (mit $\dd{z}{x} = x'(s)$)
+  Mit Hilfe der Substitution $z := x(s)$ ergibt sich (mit $\dd{z}{x} = x'(s)$)
   \[∫_{x_0}^{x(t)} \frac{1}{g(z)} \d z = ∫_{t_0}^{t} a(s) \d s\]
   #+ATTR_LATEX: :options [3.4]
   #+begin_ex latex
   \[\begin{cases} x' = x^2 \\ x(t_0) = x_0 \end{cases}\]
   \begin{align*}
   ∫_{x_0}^{x(t)} \frac{\d z}{z^2} &= ∫_{t_0}^{t} 1 \d s \\
-  -\frac{1}{2} \big|_{x_0}^{x(t)} &= t - t_0 \\
+  -\frac{1}{z} \big|_{x_0}^{x(t)} &= t - t_0 \\
   t - t_0 &= \frac{1}{x_0} - \frac{1}{x(t)} \\
   x(t) &= \frac{x_0}{1 - x_0(t - t_0)}
   \end{align*}
@@ -99,7 +99,8 @@
   \addplot[samples=100] {1 / (1 - x)};
   \end{axis}
   \end{tikzpicture}
-  Dies ist keine *globale* ($∀t ∈ ℝ_+$) Lösung, da man $x(t)$ mich nach $t = t^{\ast}$ vorsetzen kann.
+  
+  Dies ist keine *globale* ($∀t ∈ ℝ_+$) Lösung, da man $x(t)$ nicht nach $t = t^{\ast}$ fortsetzen kann.
   #+end_ex
   *Methode der Variation die Konstanten* \\
   Wir betrachten Differentialgleichung $x' = a(t) x(t) + b(t), t ∈ I = [t_0, t_0 + τ] ⊂ ℝ$
@@ -116,7 +117,7 @@
   \end{align*}
   Wir bekommen
   \[c(t) = ∫_{t_0}^{t} \exp(-∫_{t_0}^τ a(s) \d s) b(τ) \d τ + r\]
-  mit einer freien Konstante $r ∈ ℝ$. Damit wird
+  mit einer freien Konstanten $r ∈ ℝ$. Damit wird
   \[x(t) = \exp(∫_{t_0}^{t} a(s) \d s)∫_{t_0}^t \exp(-∫_{t_0}^t a(s) \d s) b(τ) \d τ + r \exp(∫_{t_0}^{t} a(s) \d s)\]
   Durch die Wahl der Konstanten $r = x_0$ ergibt sich $x(t_0) = x_0$
   \[⇒ x(t) = \exp(∫_{t_0}^t a(s) \d s)[x_0 + ∫_{t_0}^t \exp(-∫_{t_0}^τ a(s) \d s) b(τ) \d τ]\]
