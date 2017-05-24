@@ -338,8 +338,8 @@
    Ebenso für Perle auf Draht (Draht fest): $\v F_c \perp \text{Draht} \parallel \d \v x$
    \[⇒ δA = \v F^c \d \v x = 0\]
    Wir wollen die Aussage "Zwangskräfte verrichten keine Arbeit" allgemein formulieren. \\
-   Problem: bei bewegtem Draht $\d \v x \parallel$ Draht nicht
-   mehr $⇒ δA = 0$ im Allgemeinen nicht mehr. \\
+   Problem: bei einem bewegtem Draht gilt die Aussage $\d \v x \parallel$ Draht nicht
+   und damit gilt dann auch $⇒ δA = 0$ im Allgemeinen nicht mehr. \\
    Lösung: Definiere *virtuelle Verrückung* $δx$ bei $t = \const$. Dies ist eine *gedachte* Verschiebung des Systems in eine andere Lage - keine echte Bewegung.
    Fakt: in einfachen Beispielen (bewegter Draht, etc.) gilt jetzt wieder $δA = 0$.	$⇒$ Formulieren: "*Prinzip der virtuellen Arbeit*"
    \[\sum_{a} \v F_a^c δ\v x_a = 0\]
@@ -393,7 +393,7 @@
    \intertext{Zusammen mit 1. Term folgt:}
    0 &= \sum_{m}(Q_m - (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T)δ q_m \\
    \end{align*}
-   $δ q_m$ unabhängig! $⇒$ jeder der Klammer-Ausdräcke verschwindet getrennt.
+   $δ q_m$ unabhängig! $⇒$ jeder der Klammer-Ausdrücke verschwindet getrennt.
    $⇒ 3d -d$ Differentialgleichungen 2. Ordnung $⇒$ Problem prinzipiell gelöst.
 ** Lagrange-Gleichungen 1. Art
    Jetzt *zusätzlich* $p$ nichtholomome (differentielle) Zwänge.
