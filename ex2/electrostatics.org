@@ -549,14 +549,14 @@
    &= U_0 \frac{R_a}{R_a + R_i}
    \end{align*}
    $⇒$ Ideale Spannungsquelle:
-   \[R_i \approx 0 \quad I = \frac{U_0}{R_i + R_a}\]
+   \[R_i \approx 0 \quad I \approx \frac{U_0}{R_a}\]
    Stromquelle: Versorgung mit konstantem Strom. $⇒$ hoher Innenwiderstand ($R_i \to ∞, R_i \gg R_a$)
    \[I = \frac{U_0}{R_i + R_a} = \frac{U_0}{R_i} = \const\]
    Technische Realisierung? \\
    Prinzip: Ladungstrennung durch Energiezufuhr $⇒$ Potentialdifferenz, leitende Verbindung $⇒$ Stromfluß.
    Anwendung finden:
    - elektrodynamische Generatoren, magnetische Induktion
-   - Batterie und Akkumulatoren, Ladungstrennung durch chemische Reaktionen
+   - Batterien und Akkumulatoren, Ladungstrennung durch chemische Reaktionen
    - Solarzellen, Ladungstrennung durch Lichtenergie
    - Thermische Stromquellen, Ladungstrennung durch Temperaturabhängigkeit von Kontaktpotentialen.
    Galvanische Elemente $⇒$ Galvani-Spannung: $Δφ_C$ $⇒$ Volta-Element \\
@@ -578,4 +578,4 @@
    Messinstrumente:
    - Galvanometer
    - Digitalvoltmeter (mit Operationsverstärker)
-	 (Messberecherweiterung durch Parallel- und Serienschaltung von Widerständen)
+	 (Messbereichserweiterung durch Parallel- und Serienschaltung von Widerständen)
