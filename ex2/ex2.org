@@ -96,3 +96,232 @@
    - Messunges von Dichte und Vorzeichen der bewegten Ladungsträger in Materialien (zum Beispiel Leiter / Halbleiter)
    - Messung magnetischer Felder
    #+end_ex
+   \begin{align*}
+   B &\sim \frac{I}{r} \\
+   B(r) &= \frac{μ_0}{2π} \frac{I}{r}
+   μ_0 &= 4 π \SI{1e-7}{\volt\second\per\ampere\meter} \\
+   \v B(\v r) &= \frac{μ_0}{2π}\frac{I}{r}(\hat l × \hat r)
+   \end{align*}
+   \begin{align*}
+   \v B_{21} &= \frac{μ_0 I_1}{2π r_2}(\hat l_1 × \hat r_{21}) \\
+   \v F_{21} &=I_2(\v l_¹ × \v B_{21}) \\
+   \v r_{21} &= \frac{μ_0 I_1 I_2}{2 π r{21}} \hat r_{21}
+   \end{align*}
+** Grundgleichungen der Magnetostatik
+   "Wir wissen": Magnetfeldlinien immer geschlossen
+   \[⇒ ∮\v B \d \v A = 0\]
+   (Quellenfreiheit des Magnetfeldes)
+   \[\Div \v B = 0\]
+   (2. Maxwellsches Gesetz) \\
+   Zirkulation des B-Feldes: \\
+   Elektrostatik:
+   \[∫ \v E \d \v s = U, ∮ \v E \d \v s = 0\]
+   B-Feld: (Kreis senkrecht um B-Feldlinie)
+   \begin{align*}
+   ∮ \v B \d \v s &= B ∮ \d s \\
+   &= \frac{μ_0 I}{2 π r} 2 π r = μ_0 I
+   \end{align*}
+   Anderer Weg (größerer Kreis)
+   \begin{align*}
+   ∮ \v B \d \v s &= ∫_4^1 \v B \d \v s + ∫_2^3 \v B \d \v s \\
+   &= \frac{μ_0 I}{2 π r_1} f_2 2 π r_1 + \frac{μ_0 I}{2 π r_2} f_2 2 π r_2 \\
+   &= μ_0 I(f_1 + f_2) = μ_0 I \\
+   ∮ \v B \d \v s &= μ_0 \sum_{k} I_k \\
+   \rot \v B &= μ_0 \v j
+   \end{align*}
+   $⇒$ Grunggleichungen der Magnetostatik:
+   \begin{align*}
+   ∮_A \v B \d \v A &= 0 \quad ∮_C \v B \d \v s = μ_0 I_{innen} \\
+   \Div \v B &= 0 \quad \rot \v B = μ \v j
+   \end{align*}
+** Zwei Anwendungsbeispiele
+   #+ATTR_LATEX: :options [Magnetfeld Sromdurchflossener Leiter]
+   #+begin_ex latex
+   Querschnitt: $A = π R^2$
+   \[j = \frac{I}{π R^2}\]
+   \[∮ \v B \d \v s = B(r) 2 π r\]
+   \begin{align*}
+   r \geq R: B(r) 2 π r &= μ_0 I ⇒ B(r) = \frac{μ_0 I}{2πr} \\
+   r > R: B(r) 2 π r &= μ_0 j π r^2 ⇒ B(r) = \frac{1}{2} μ_0 j r = \frac{μ_0 I}{2 π R^2} r
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Magnetfeld einer lagen Spule]
+   #+begin_ex latex
+   $N$: Anzahl der Windungen, $L$: Länge, $n = N / L$
+   Weg C:
+   \[∮ \v B \d \v s = B_{12}l' - B_{34}l' \overset{!}{=} 0 ⇒ B_{12} = B_{34}\]
+   Weg C':
+   \[∮ \v B \d \v s = B l' = μ_0 NJ I\]
+   \[⇒ B = \frac{μ_0 N' L}{l'} = μ_0 n I\]
+   \[B_{spule = μ_0 n I}\]
+   #+end_ex
+** Biot-Savart-Gesetz
+   Vergleich Elektro und Magnetostatik
+   \begin{align*}
+   \intertext{E-Feld einer Linienladung}
+   E(r) &= \frac{1}{2π ε_0} \frac{λ}{r} \\
+   \intertext{B-Feld eines geraden Leiters}
+   B(r) &= \frac{μ_0}{2 π} \frac{I}{r}
+   \end{align*}
+   Nutze Analogie!
+   \begin{align*}
+   \d \v E(\v r) &= \frac{1}{4π ε_0} \frac{ρ(\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \v E(\v r) &= \frac{1}{4π ε_0} ∫\frac{ρ(\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \end{align*}
+   Ersetzen $ρ \to \v j, ε_0 \to 1/μ_0, ρ(\v r - \v r') \to \v j × (\v r - \v r')$
+   $⇒$ Biot-Savart-Gesetz
+   \begin{align*}
+   \d \v B(\v r) &= \frac{μ_0}{4π} \frac{\v j(\v r) × (\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \v B(\v r) &= \frac{μ_0}{4π} ∫\frac{\v j(\v r) × (\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \end{align*}
+   \begin{align*}
+   \d \v B(\v r) &= \frac{μ_0}{4π} \frac{\d \v s'  × (\v r - \v r')}{\abs{\v r - \v r'}^3} \\
+   B(\v r) &= \frac{μ_0}{4π} ∫\frac{\d \v s'  × (\v r - \v r')}{\abs{\v r - \v r'}^3} \\
+   \end{align*}
+   #+ATTR_LATEX: :options [Leiterschleife]
+   #+begin_ex latex
+   Symmetrie: $B_{\perp} = 0, B_{x} = 0, B_{y} = 0$
+   \begin{align*}
+   \d B_z &= \d B \sin α \\
+   &= \d B \frac{R}{\abs{\v r - \v r'}} \\
+   &= \frac{μ_0 I}{4 π} \frac{\d s'}{\abs{\v r - \v r'}^2} \frac{R}{\abs{\v r - \v r'}} = \frac{μ_0 I}{4 π} \frac{R}{(z^2 + R^2)^{\frac{3}{2}}} \d s' \\
+   B_z &= ∫ \d B_z = \frac{μ_0 I}{4 π} \frac{R}{(z^2 + R^2)^{\frac{3}{2}}} ∫ \d s' \\
+   &= \frac{μ_0 R^2}{2(z^2 + R^2)^{\frac{3}{2}}} \\
+   \intertext{In der Mitte des Rings: $z = 0$}
+   B_z &= \frac{μ_0 I}{2 R} \\
+   \intertext{Weit weg: $z \gg R$}
+   B_z &= \frac{μ_0 I R^2}{2 z^3} \\
+   \intertext{Allgemeine Lösung für $r \gg R$}
+   B(\v r) &= \frac{μ_0}{4 π}(3 \frac{\v μ \v r}{r^5} \v r - \frac{1}{r^3} \v μ) \\
+   \intertext{Vergleich mit Elektrischem Dipol ($r \gg d$):}
+   E(\v r) &= \frac{1}{4 π ε_0}(3 \frac{\v p \v r}{r^5} \v r - \frac{1}{r^3} \v p) \\
+   \end{align*}
+   #+end_ex
+* Materie im Magnetfeld
+** Magnetisierung und Magnetische Erregung
+  Beobachtung: Beeinflussung des B-Feldes durch Materie.
+  Ein Eisenkern der Länge $l$ hat auf einer Querschnittsfläche $A$ (Normalenvektor $\v n$) viele Kreiströme (magnetische Dipole) $I_i$ mit Fläche $A_i$. Auf der Oberfläche des Eisenkern gibs es also einen Strom $I_m$: molekularer Strom.
+  Für ein infinitesimales Stück es Eisenkerns $\d l$ erhält man:
+  \begin{align*}
+  I_i &= I_m \frac{\d l}{l} \\
+  B_{mag} &= μ_0 \frac{I_m}{l}
+  \end{align*}
+  #+ATTR_LATEX: :options [Magnetisierung]
+  #+begin_defn latex
+  \[\v M = \frac{1}{V} \sum_{i} \v μ_i\]
+  mit $μ := I_i A_i \v n$. (Erinnerung Spule: $B = μ_0 (NI)/l$)
+  #+end_defn
+  \begin{align*}
+  ⇒ \v M &= \frac{1}{V} \sum_{i} A_i I_i \v n = \frac{1}{V} A_i \frac{I_m}{l} \v n ∫ \d l \\
+  &= \frac{1}{V} \frac{I_m}{l} \sum_{i} A_i \v n l \\
+  &= \frac{I_m}{l} \v n
+  \end{align*}
+  Magnetfeld rein aufgrund der Magnetisierung:
+  \[\v B_{mag} = μ_0 \v M\]
+  Jetzt: Eisenkern mit Draht
+  \[⇒ \v B = \v B_0 + μ_0 \v M\]
+  $\v B_0$: Magnetfeld aufgrund äußerer Ströme
+  \begin{align*}
+  ∮_C \v B \d \v s &= ∮_C \v B_0 \d \v s + μ_0 ∮_C \v M \d \v s \\
+  &= μ_0 N I + μ_0 ∮_C \v M \d \v s \\
+  &= μ_0 I_{frei} + μ_0 I_m \\
+  ∮(\v B - μ_0 \v M) \d \v s &= μ_0 I_{frei}
+  \end{align*}
+  #+ATTR_LATEX: :options [Magnetische Erregung]
+  #+begin_defn latex
+  \[\v H = \frac{1}{μ_0} \v B - \v M \qquad \v B = μ_0 (\v H + \v M)\]
+  \[∮ \v H \d \v s = I_{frei} \qquad \rot \v H = \v j_{frei}\]
+  (2. Maxwellsches Gesetz, Amperesches Durchflutungsgesetz)
+  #+end_defn
+  Auch: $\rot \v M = \v j_{geb}$, $\rot \v B = μ_0 \v j_{ges}$
+** Dia-, Para- und Ferromagnetismus
+   Experimentelle Beobachtung:
+   #+begin_defn latex
+   \[\v M = χ_m \v H\]
+   mit $μ_0 \v B = \v B = μ_0 \v M$. Gilt nicht immer!, $χ_m$: magnetische Suszeptibilität.
+   #+end_defn
+   \begin{align*}
+   \v B &= μ_0 (\v H + \v M) &= μ_0(χ_m + 1) \v H = μ_0 μ_r \v H \\
+   \v B &= μ μ_0 \v H \\
+   μ = μ_r = χ_m + 1
+   \end{align*}
+   Bisher: $χ_n > 0$. Gilt dies immer? $⇒$ nein! \\
+   - $χ_m > 0, μ_r > 1$ \hfill Paramagnetismus
+   - $χ_m < 0, μ_r < 1$ \hfill Diamagnetismus
+   - $χ_m \gg 0, μ_r \gg 1$ \hfill Ferromagnetismus
+   - Dia: $\num{-1e-6} \leq χ_m \leq \num{-1e-9}$
+   - Para: $\num{1e-6} \leq χ_m \leq \num{1e-9}$
+   - Ferro: $\num{1e2} \leq χ_m \leq \num{1e5}$
+   Paramegnetismus: Wolfram, Nickel
+   \begin{align*}
+   E_{pot} &= - \v M \v B \v v \\
+   &= - \v μ \v B \\
+   \v F &= \v M \grad \v B V
+   \end{align*}
+   Diamagnetismus: Wismut
+   *Mikroskopische Beschreibung* \\
+   $χ_m < 0 (μ < 1)$: Diamagnetismus. Induktion eines magnetischen Dipolmoments $r = \const$. Zwei Atome:
+   \[\v μ' = \v μ_1' + \v μ_2' \neq \emptyset\]
+   Ursache: Lorentzkraft:
+   \begin{align*}
+   v_1' > v_1 &\qquad v_2' < v_2 \\
+   F_2' p > F_2 p &\qquad F_2' p < F_2 p \\
+   μ_1' > μ_1 &\qquad μ_1' < μ_2 \\
+   \v B &= μ_0 μ \v H = μ_0(1 + χ_m) \v H \\
+   &= (1 + χ_m) \v B_0 \to χ_m < 0
+   \end{align*}
+   $⇒$ Alle Stoffe sind diamagnetisch. Aber Möglichkeit der Überlagerung mit Para- beziehungsweise Ferromagnetismus.
+   $χ_m > 0$: Paramagnetismus \\
+   Ausrichtung permanenter magnetischer Dipole mit außerem B-Feld. Vergleich:
+   - Elektrische Ausrichtung führt zur Abschwächung
+   - Magnetostatische Ausrichtung führt zur Verstärkung
+   Thermische Bewegung wirkt der Ausrichtung entgegen $⇒$ Temperaturabhängigkert der Magnetisierung: (Curie-Gesetz)
+   \[\v M = \frac{1}{3} \frac{μ B_{ext}}{k_B T} \v M_s\]
+   $\v M_s$: Sättigungsmagnetismus \\
+   $χ_m \gg 0$ Ferromagnetismus \\
+   Paramagnetische Materie mit zusätzlicher Wechselwikung der magnetischen Dipole miteinander. \\
+   *Weißsche Bezirke* \\
+   Ohne Magnetfeld: Statistische Ausrichtung $\v M = 0$ \\
+   Mit Magnetfeld: Ausrichtung der Bezirke entlang $\v B$ \\
+   \[χ_m \gg 0, M \gg 1 ⇒ \v M = μ \v M \gg \v H\]
+   Ferromagnet: \\
+   Beobachtung: Magnetisierung durch B-Feld ist abhängig von "Vorgeschichte"
+   - "Hinweg": Koerzitiv Kraft
+   - "Rückweg": Remanenz Kraft
+   Magnetisch hartes Eisen:
+   - große Remanenz
+   - große Koerzitiv
+   Magnetisch weiches Eisen:
+   - kleine Remanenz
+   - kleine Koerzitiv
+   Ferromagnetismus ist Temperaturabhäsgig
+   - geht oberhalb $T_C$ verloren
+   - $T_C$ - kritische Temperatur
+   Oberhalb von $F_C ⇒$ Curie-Weiß Gesetz
+   \[χ(T) = \frac{C}{T - T_C}\]
+** Feldgleichungen in Materie
+   Vakuum: $\v B = μ_0 \v H$ \\
+   Materie: $\v B = μ μ_0 \v H = μ_0 (\v H + \v M)$, allgemein: $μ = μ(H)$. \\
+   Außerdem:
+   \[\Div \v B = 0 \text{ auch in Materie} \qquad \rot \v H = \v j_{frei}\]
+   Verhalten an Grenzflächen
+   \begin{align*}
+   H_{\parallel}^{(1)} = H_{\parallel}^{(2)} &⇒ \frac{B_{\parallel}^{(1)}}{μ_1} = \frac{B_{\parallel}^{(2)}}{μ_2} \\
+   B_{\perp}^{(1)} = B_{\perp}^{(2)} &⇒ μ_1 H_{\perp}^{(1)} = μ_2 H_{\perp}^{(2)}
+   \end{align*}
+   $⇒$ Maxwell-Gleichungen der Elektro- und Magnetostatik
+   \begin{align*}
+   \rot \v E = 0 &\qquad \rot \v H = \v j_{frei} \\
+   \Div \v D = ρ &\qquad \Div \v B = 0
+   \end{align*}
+   Anwendung: Toroidmagnet mit Luftspalt \\
+   Radius des Torus: $R$, Eisenkern $⇒ μ \gg 1$, $N$ Windungen um Kern mit Strom $I$, Breite des Luftspaltes: $d$. $⇒$ Feld im Luftspalt:
+   Ampersches Gesetz:
+   \[∮ \v H \d \v s = N I = ∫_{Eisen} \v H_{Fe} \d \v s + ∫_{Luft} \v H_{Luft} \d \v s\]
+   $\v B_{Fe} = \v B_{Luft} ⇒ μ \v H_{Fe} = \v H_{Luft}$
+   \begin{align*}
+   ⇒ NI &= ∮ \v H \d \v s = H_{Fe} (2 π R - d) + H_{Luft} d \\
+   &= \frac{H_{Luft}}{μ} (2 π R - d) + d H_{Luft} \\
+   H_{Luft} &= \frac{N I μ}{(μ - 1)d + 2 π R} \approx \frac{μ N I}{μ d + 2 π R} \\
+   ⇒ B &= μ_0 H_{Luft} = \frac{μ_0 μ N I}{μ d + 2 π R}
+   \end{align*}

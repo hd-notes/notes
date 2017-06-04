@@ -451,5 +451,158 @@
    \begin{align*}
    \pp{}{x}(f + λ g) &= 0 \\
    \pp{}{y}(f + λ g) &= 0 \\
-   g &= 0
+   g(x, y) &= 0 (⇔ \pp{}{λ}(f + λg) = 0)
    \end{align*}
+   $⇒ \{x_0, y_0, λ_0\}$. Diese Lösung liefert die Funktion $(f + λ_0 g)$, deren Extremum liegt auf Weg. Auf dem Weg ist aber $g = 0$. Damit liegt aber auch das Extremum von $f$ (auf dem Weg) bei $x_0, y_0$.
+   Zunächst zu Lagrange 1: Betrachte *eine* nichtholonome Zwangsbedingung: $\v f \d \v q = 0$. ($f_t = 0$). Naiv:
+   \[\v p \equiv \{Q_m - (\dd{}{t} \pp{}{\dot q_m} - \pp{}{q_m}) T\} = 0\]
+   zusammen mit $\v f · \dot{\v q} = 0$. Das ist aber unmöglich, weil zu viele Differentialgleichungen. In der Tat wir wollen nur $\v p δ \v y = 0$.
+   Lösung: Fordere $\v p + λ \v fs = 0$ und $\v f \dot{\v q} = 0$. \\
+   Noch allgemeiner Anwendung der Lagrange-Multiplikatoren: Seien $F[f], G[f]$ Funktionale. Wir wollen $F$ extremalisieren mit der Nebenbedingung $G = 0$.
+   Lösung: Extremalisieren $F[f] + λG[f]$ bezüglich $f$ und $λ$. Konkrete Anwendung: Sei $L$ Lagrange Funktion und $f = 0$ sei zusätzlich holomoner Zwang.
+   $⇒$ Wir müssen jetzt nur	Extremalisierungs (Variationsproblem)
+   \[δ ∫\d t [L(\v x, \dot{\v x}, t) + λ(t) f(\v x)] = 0\]
+   bezüglich $\v x(t), λ(t)$ lösen.
+* Hamilton-Formalismus
+  Motivation:
+  - nur 1. Ordnung Differentialgleichungen
+  - $∃$ Umkehrung von Noether
+  -	Grundlegend für Quantenmachanik (für kanonische Quantisierung)
+** Legendre-Transformation
+   Gegeben: $f: ℝ \to ℝ, x ↦ f(x)$. Wollen "Information" in $f$ anders darstellen, zum Beispil durch Funktion von $u \equiv f'(x)$. Man könnte zum Beispiel $x = x(u)$ definieren durch Auflösen von $u = f'(x)$.
+   Dann könnte man $f = f(x(u))$ als transformierte Funktion auffassen. Das ist nur "fast" richtig. Mathematisch natürlicher ist
+   \[g(u) = x(u) · u - f(x(u))\]
+   #+ATTR_LATEX: :options [Legendre-Transformation]
+   #+begin_defn latex
+   Die Legendre-Transformation zu einer Funktion $x ↦ f(x)$ ist die Funktion $u ↦ g(u)$ mit
+   \[g(u) = x u - f(x)\] wobei $x$ durch $u = f'(x)$ definiert ist. Wir wollen fordern, dass $f''(x) \neq 0$ damit $u = f'(x)$ auflösbar in $x$.
+   #+end_defn
+   Fakten:
+   - $g'(u) = x(u)$, denn:
+	 \[g'(u) = \dd{}{u} x(u) u - f(x(u)) = \dots = x(u) + u \dd{x(u)}{u} - f'(x(u)) \dd{x(u)}{u} = x(u)\]
+   - Wenn $g$ die Legendre-Transformation zu $f$ ist, dann sind $f', g'$ zueinander inverse Funktionen, denn:
+	 \[f'(g'(u)) = f'(x(u)) = u\]
+   - $\Leg(\Leg(f)) = f$ (Legendre-Transformation ist eine Involution), denn: $f \xrightarrow{Leg.} g \xrightarrow{Leg.} h, h(z) = u z - g(u), z = g'(u)$. Wegen $g'(u) = x$ gilt $z = x$. Weiterhin:
+	 \[h(z) = u x - (x u - f(x)) = f(x) = f(z)\]
+   Verallgemeinerung auf mehrere Variablen: $f: ℝ^n \to ℝ, \v x ↦ f(\v x)$ Legendre-Transformation: $g: ℝ^n \to ℝ, \v u ↦ g(\v u)$
+   #+ATTR_LATEX: :options [Legendre-Transformation mehrerer Variablen]
+   #+begin_defn latex
+   \[g(\v u) = \v x(\v u) \v u - f(\v x), \v u = \v ∇ f(\v x)\]
+   Nebenbedingung:
+   \[f'' \neq 0 ⇒ \det (\frac{\partial^2 f}{\partial x^i \partial x^j}) \neq 0\]
+   #+end_defn
+   #+begin_ex latex
+   \begin{align*}
+   f(x) &= x^2 \\
+   f'(x) &= 2x = u \\
+   x &= \frac{u}{2} \\
+   g(u) &= x u - f = \frac{u^2}{2} - (\frac{u}{2})^2 = \frac{u^2}{4}
+   \end{align*}
+   #+end_ex
+   #+begin_ex latex
+   \begin{align*}
+   f(x) &= e^x \\
+   f'(x) &= e^x = x \\
+   x &= \ln u \\
+   g(u)	&= x u - f = u \ln u - e^{\ln u} = u(\ln u - 1)
+   \end{align*}
+   #+end_ex
+** Hamilton - Funkion
+   Gegeben $L = L(q, \dot q, t)$. Die Hamilton - Funktion $H(q, p, t)$ ist die Legendre-Transformation zu $L$ in der Variablen $\dot q$. Also:
+   \[H(q, p, t) \equiv p \dot q - L(q, \dot q, t)\]
+   mit $\dot q = \dot q(q, p, t)$ gegeben durch:
+   \[p \equiv \pp{L(q, \dot q, t)}{\dot q}\]
+   "Der zu $q$ kanonische Impuls"
+   #+ATTR_LATEX: :options [Eindimensional]
+   #+begin_ex latex
+   \begin{align*}
+   L &= \frac{1}{2} f(q) \dot q^2 - V(q), p = f(q) \dot q \\
+   H &= p \dot q = p \frac{p}{f(q)} - \frac{1}{2} f(q) (\frac{p}{f(q)})^2 + V(q) = \frac{1}{2} \frac{p^2}{f(q)} + V(q) = T + V
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Mehrdimensional]
+   #+begin_ex latex
+   \begin{align*}
+   L &= L(q_1, \dots, q_n, \dot q_1, \dots, \dot q_n, t) \\
+   \intertext{Völlig analog folgt}
+   H &= H(q_1, \dots, q_n, p_1, \dots, p_n) = \sum_{i = 1}^{n} p_i \dot q_i - L \\
+   \dot q_i &= \dot q_i (q_1, \dots, q_n, p_1, \dots, p_n, t) \\
+   p_i &= \pp{L(q_1, \dots, q_n, \dot q_1, \dots, \dot q_n, t)}{\dot q_i} \\
+   L &= T - V \\
+   H &= T + V
+   \end{align*}
+   #+end_ex
+** Hamilton-Gleichungen und Phasenraum
+   Eigenschaften der Legendre-Transformation: $\partial H / \partial p = \dot q$. Außerdem:
+   \begin{align*}
+   \pp{H}{q} &= \pp{}{q}\{p \dot q(q, p, t) - L(q, \dot q(q, p, t), t)\} \\
+   &= p \pp{\dot q}{q} - \pp{L}{q} - \pp{L}{\dot q} \pp{\dot q}{q} = - \pp{L}{q} = - \dd{}{t} \pp{L}{\dot q} = - \dot p
+   \end{align*}
+   Völlig analoge Rechnung: \\
+   $⇒$ Hamilton-Gleichung
+   \begin{align*}
+   \dot q_i &= \pp{H}{p_i} \\
+   \dot p_i &= \pp{H}{q_i}
+   \end{align*}
+   Vergleich:
+   1. Lagrange - $\{q_i\}$ - Lage im Konfigurationsraum, $\{\dot q_i\}$ - momentane Geschwindigkeiten $⇒$ Zustand des Systems
+	  Bewegung: Differentialgleichungen 2. Ordnung
+   2. Hamilton - $\{ξ_a\} \equiv \{q_i, p_i\}$ - Lage im Phasenraum $⇒$ Zustand des Systems
+	  Bewegung: Differentialgleichungen 1. Ordnung (2n Stück): $\dot ξ_a = f_a(ξ_1, \dots, ξ_{2n})$
+   Zur Intuition:
+   \[H = \frac{p^2}{2 w} + V(q)\]
+   Hamilton-Gleichungen:
+   \[\dot q = \pp{H}{p} = \frac{p}{m}, \dot p = -\frac{H}{q} = -\frac{V}{q}\]
+   Check: Leite 1. Gleichung ab:
+   \[\ddot q = \frac{\dot q}{m}\]
+   Setze in 2. Gleichung ein:
+   \[m \ddot q = - \pp{V}{q}\]
+   Veranschaulichung im Phasenraum: Betrachte Energieerhaltung:
+   \[\frac{p^2}{2m} + V(q) = E = \const\]
+   \[⇒ p = \pm \sqrt{2m(E - V(q))} \equiv p(q)\]
+   $⇒$ Trajektiorie im Phasenraum.
+   Allgemein: $-\pp{H}{q}$ und $\pp{H}{p}$ definieren an jedem Punkt des Phasenraumes einen Vektor ($\to$ TP1, 2.2/2.3)
+* Poisson-Klammern
+** Definition und erste Anwendungen
+   Sei der Phasenraum eines Hamiltonschen Systems durch $\{q_i\}, \{p_i\}, i = 1, \dots, n$ parametrisiert. Seien $F(q, p, t)$ und $G(q, p, t)$ zwei beliebige
+   *Observable* (Funktionen auf dem Phasenraum). Dann heißt
+   \[\{F, G\} \equiv \sum_{i}(\pp{F}{q_i} \pp{G}{p_i} - \pp{F}{p_i}\pp{G}{q_i})\]
+   heißt *Poisson-Klammer* von $F$ und $G$ (wieder Observable).
+   Erste Anwendung:
+   \begin{align*}
+   \dot F &= \dd{}{t} F = \pp{F}{t} + \sum_{i} \pp{F}{q_i} \dot q_i + \sum_{i} \pp{P}{p_i} \dot p_i \\
+   &= \pp{F}{t} + \sum_{i}(\pp{F}{q_i} \pp{H}{p_i} - \pp{F}{p_i} \pp{H}{q_i}) \\
+   &= \pp{F}{t} + \{F, H\}
+   \end{align*}
+   $⇒$ Zeitliche Entwicklung einer Observablen ist durch Poisson-Klammer mit $H$ bestimmet.
+   Insbesondere
+   \[\dot H = \pp{H}{t} + \{H, H\} = \{H, H\} = 0\]
+   Allgemeiner: Falls eine Observable $F$ nicht explizit von $t$ abhängt: \\
+   $F$ erhalten $⇔$ $\{F, H\} = 0$ \\
+   Betrachte speziell die Observablen $\{q_i\}$ und $\{p_i\}$
+   \[\dot p_i = \{p_i, H\} = \sum_{j}(\pp{p_i}{q_j} \pp{H}{p_j} - \pp{p_i}{p_j} \pp{H}{q_j}) = -\pp{H}{q_i}\]
+   \[\dot q_i = \{q_i, H\} = \dots = \pp{H}{p_i}\]
+   Man nennt $\{q_i\}, \{p_i\}$ *zueinander kanonisch konjugiert*
+   \[⇔ \{q_i, q_j\} = 0, \{p_i, p_j\} = 0, \{q_i, p_j\} = δ_{ij}\]
+   Nachrechnen:
+   \begin{align*}
+   \{q_i, p_j\} &= \sum_{k}(\pp{q_i}{q_k} \pp{p_j}{p_k} - \pp{q_i}{p_k} \pp{p_j}{q_k}) \\
+   &= \sum_{k} δ_{ik} δ_{jk} = δ_{ij}
+   \end{align*}
+** Die Poissonklammer als Lie-Algebra Operation
+   $V$ Vektroraum, $[·, ·]$ eine binäre Operation (also Abbildung $V × V \to V, (v, w) ↦ [v, w]$). Der Tupel $(V, [·, ·])$ ist eine Lie-Algebra falls:
+   1. $[v, w] = - [w, v]$ \hfill (Antisymmetrie)
+   2. $[α v + β w, u] = α[v, u] + β[w, u]$ \hfill (Linearität)
+   3. $[u,[v,w]] + [v,[w,u]] + [w,[u,v]] = 0$ \hfill (Jacobi-Identität)
+   #+begin_ex latex
+   1. kleine Drehungen
+   2. Raum der $n × n$ Matrizen wird mit
+	  \[[·,·]: A, B ↦ [A,B] \equiv A B - B A\]
+	  zur Lie-Algebra
+   #+end_ex
+   Für uns entschiedend: Die Poisson-Klammer macht den Raum der Observablen zur Lie-Algebra.
+** Poisson-Klammern und Vektorfelder
+   \[\dot q = \pp{H}{p} , \dot p = \pp{H}{q}\]
+   Man kann die Bewegung auf Phasenraum mit Änderung von Observablen verbinden:
+   $F = F(ξ), ξ = \{q, p\}$
+   \[\dd{F}{t} = \pp{F}{ξ^i} \dd{ξ^i}{t} = \dd{ξ^i}{t} \pp{F}{ξ^i} \equiv V^i(ξ) \pp{F}{ξ_i}\]

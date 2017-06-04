@@ -140,6 +140,9 @@
 #+LATEX_HEADER: \DeclareMathOperator{\SymBil}{SymBil}
 #+LATEX_HEADER: \DeclareMathOperator{\Signatur}{Signatur}
 #+LATEX_HEADER: \DeclareMathOperator{\Quad}{Quad}
+#+LATEX_HEADER: \DeclareMathOperator{\Graph}{Graph}
+#+LATEX_HEADER: \DeclareMathOperator{\Leg}{Leg}
+#+LATEX_HEADER: \DeclareMathOperator{\Sesq}{Sesq}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs

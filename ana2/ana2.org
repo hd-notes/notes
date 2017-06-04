@@ -136,6 +136,8 @@
   x' &= f(t, x) \\
   x(0) &= x_0
   \end{align*}
+  Integralgleichung:
+  \[x' = f(t, x) ⇔ x(t) = x_0 + ∫_{t_0}^t f(x, x(s)) \d s\]
   *Existenzsatz von Peano* \\
   #+ATTR_LATEX: :options [Peano]
   #+begin_thm latex
@@ -152,7 +154,7 @@
   \[x_n^h = x_{n - 1}^h + h f(t_{n - 1}, x_{n - 1}^h), n \geq 0\]
   Diese diskreten Funktionswirte wirden linear interpoliert zu einer stetigen Funktion:
   \[x_n^h(t) := x_{n - 1}^h + (t - t_{n - 1}) f(t_{n - 1}, x_{n - 1}^h)\]
-  *Schritt 1*: Wir zeigen Graph $(x^n) ⊂ D$. \\
+  *Schritt 1*: Wir zeigen $\Graph(x^n) ⊂ D$. \\
   Sei $(t, x^h(t)) ∈ D$ für $t_0 \leq t \leq t_{k - 1}$. Es gilt
   \[(x(t)^h)' = f(t_{k - 1}, x_{k - 1}^k), t ∈ [t_{k - 1}, t_k]\]
   Nach Konstruktion gilt dann für $t ∈ [t_{k - 1}, t_k]$
@@ -178,5 +180,273 @@
   \[\norm{x^h(t)} \leq \norm{x^h(t) - x_0} + \norm{x_0} \leq MT + \norm{x_0}, t ∈ (t_0, t_0 + T)\]
   Arzela-Ascoli Satz: $∃$ eine Nullfolge $(h_i)_{i ∈ ℕ}$ und stetiges $x(t)$ sodass
   \[\norm{x^{h_i}(t) - x(t)} \xrightarrow{i \to ∞} 0\]
-  und Graph $(x) ⊂ D$
+  und $\Graph(x) ⊂ D$ \\
+  *Schritt 3* Es bleibt zu zeigen, dass die Grenzfunktion $x$ der Integralgleichung genügt.
+  Für $t ∈ [t_{k - 1, t_k}] ⊂ I$ sehen wir $x^i(t) := x^{h_i}(t)$. $∀ i ∈ ℕ$ gilt:
+  \begin{align*}
+  x^i(t) &= x_{k - 1}^i + (t - t_{k - i})f(t_{k - i}, x_{k - i}^i) = \dots = \\
+  &= x_0 + \sum_{j = 1}^{k}(t_j - t_{j - 1})f(t_{j - i}, x_{j - i}^i) + (t - t_{k - i})f(t_{k - 1}, x_{k - i}^i) \\
+  &= x_0 + \sum_{j = 1}^{k}∫_{t_0}^{t_{j - i}} f(t_{j - i}, x_{j - i}^i) \d s + ∫_{t_{k - i}}^t f(t_{k - i}, x_{k - i}^i) \d s \\
+  &= x_0 + \sum_{j = 1}^{k} ∫_{t_{j -  1}}^{t_j}[f(t_{j - 1}, x_{j - 1}^i) - f(s, x^i(s))]\d s + ∫_{t_{k - 1}}^t[f(t_{k - 1}, x_{k - 1}^i) - f(s, x^i(s))]\d s + ∫_{t_0}^t f(s, x^i(s)) \d s
+  \end{align*}
+  Die Folge $(x^i)_{i ∈ ℕ}$ ist gleichgradig stetig und die Menge der Funktionen $f(x, t)$ ist gleichmäßig stetig (auf der kompakten Menge $D$). $∀ ε > 0 ∃ δ_ε$ sodass für $\abs{t - t'} < δ_ε$ gilt
+  \[\norm{x^i(t) - x^i(t')} \leq ε' < ε\]
+  und weiter für
+  \[\abs{t - t'} < δ_ε, \norm{x - x'} < ε' ⇒ \norm{f(t, x) - f(t', x')} < ε\]
+  Für hinreichend grohes $i \geq i_ε$ (das heißt hinreichend kleines $h_i$) folgt damit
+  \begin{align*}
+  \max_{s ∈ [t_{k - i}, t_k]} \norm{f(t_{k - 1}, x^i(t_{k - 1})) - f(s, x^i(s))} &\leq ε \\
+  \abs{x^i(t) - x_0 - ∫_{t_0}^t f(s, x^i(s))\d s} &\leq ε \abs{t - t_0}
+  \end{align*}
+  Die gleichmäßige Konvergenz $x^i \to x$ auf $I$ impliziert auch die gleichmäßige Konvergenz $f(·,x^i(·)) \xrightarrow{i \to ∞} f(·, x(·))$. $⇒$ Für hinreichend großer $i \geq i_ε$ bekommen wir
+  \[\abs{x(t) - x_0 - ∫_{t_0}^t f(s, x(s))\d s} \leq ε \abs{t - t_0}\]
+  Wegen der beliebigen Wahl von $ε > 0$ folgt, dass die Grenzfunktion $x$ die Integralgleichung löst.
   #+end_proof
+  #+ATTR_LATEX: :options [3.7 Fortsetzungssatz]
+  #+begin_thm latex
+  Sei die Funktion $f(t, x)$ stetig auf einem abgeschlossenem Bereich $D$ des $ℝ^1 × ℝ^m$, mit $(t_0, x_0) ∈ D$ und sei $x$ eine Lösung der Anfangswertaufgabe auf einem Intervall $I = [t_0 - B, t_0 + T]$.
+  Dann ist die lokale Lösung $x$ nach rechts und nach linkt auf ein maximales Existenzintervall $I_{max} = (t_0 - T_{\ast}, t_0 + T_{\ast})$ (stetig differenzierbar)
+  fortsetzbar, solange der $\Graph(x)$ nicht auf dem Rang von $D$ stößt. Dabei kann $\Graph(x) := \{(t, x(t) \mid t ∈ I_{max})\}$ unbeschränkt sein sowohl durch $t \to t_0 + T^{\ast} = ∞$ als auch $\norm{x(t)} \xrightarrow{t \to t_0 + T^{\ast}} 0$
+  #+end_thm
+  #+begin_proof latex
+  Ohne Beschränkung der Allgemeinheit behalten wir nur $[t_0, t_0 + T_{\ast}]$. Peano Satz liefert Existenz einer Lösung $x^0$ auf $[t_0, t_1], t_1 := t_0 + T_0$ mit
+  \[T_0 := \min(α_0, \frac{β_0}{M_0})\]
+  $T_0$ hängt nur von $α_0, β_0, M_0$ ab. Wir lösen die Gleichung mit Anfangspunkt $(t_0, x(t_1))$ auf dem Bereich
+  \[\{(t, x) ∈ D \mid \abs{t - t_0} \leq α_1, \norm{x - x_0} \leq β_1\}\]
+  Die so gewonnenen Lösungsstücke $x^0, x^1$ ergeben zusammengesetzt eine stetige und (wegen Stetigkeit von $f$) differenzierbare Funktion $x$ auf dem Intervall $[t_0, t_0 + T_0 + T_1]$.
+  In $t_1$ gilt:
+  \[(x^0(t_1))' = f(t_1, x^0(t_1)) = f(t, x^1(t_1)) = (x^1(t_1))'\]
+  Nach Konstruktion ist $x(t)$ lokale Lösung der Anfangswertaufgabe. Dieser Prozess lässt sich fortsetzen solang der $\Graph(x)$ nicht an den Rang von $D$ stößt.
+  #+end_proof
+  #+ATTR_LATEX: :options [Regularität]
+  #+begin_thm latex
+  Sei $x$ eine Lösung der Anfangswertaufgabe auf dem Intervall $I$. Falls $f ∈ C^m(D)$ für ein $m \geq 1$ rst, dann $x ∈ C^{m + 1}(I)$
+  #+end_thm
+  #+begin_proof latex
+  Aus der Beziehung $x(t) = x_0 t ∫_{t_0}^t f(s, x(s)) \d s, t ∈ I$ bekommen wir, dass für $f ∈ C^1(D)$, $x$ zweimal stetig differenzierbar ist mit der Ableitung $x''(t) = \partial t f(t, x(t)) + ∇_x f(t, x(t)) x'(t)$.
+  Durch wiederholte Anwendung deses Argument folgt die Behauptung.
+  #+end_proof
+  *Eindeutigkeit?*
+  #+begin_ex latex
+  \[\begin{cases} x' = \sqrt{x} \\ x(0) = 0\end{cases}\]
+  \[∫_0^{x(t)} z^{-\frac{1}{2}} \d z = ∫_0^t \d s ⇒ 2x^{-\frac{1}{2}} = t + c ⇒ x = \frac{t^2}{4}\]
+  aber $x \equiv 0$ ist auch eine Lösung. Jede
+  \[x(t) = \begin{cases} 0 & 0 \leq t \leq c \\ \frac{1}{4}(t - c)^2 & t \geq c \end{cases}\]
+  ist auch eine Lösung.
+  #+end_ex
+  #+ATTR_LATEX: :options [Picard-Lindelöf]
+  #+begin_thm latex
+  Sei $D ⊂ ℝ^{n × 1}$ offen, $f ∈ C(D, ℝ^n)$ und $(t_0, x_0) ∈ D$. Falls $f(t, x)$ lokal lipschitz stetig
+  bezüglich $x$ ist, gleichmäßig in $t_0$, dann existiert eine eindeutige lokale stetig differenzierbare Lösung von
+  \[\begin{cases} x' = f(t, x) \\ x(t_0) = x_0\end{cases}\]
+  #+end_thm
+  #+begin_proof latex
+  wir Betrachten die Integralgleichung
+  \[x(t) = x_0 + ∫_{t_0}^t f(s, x(s)) \d s\]
+  Wir wenden den Banachschen Fixpunktsatz an.
+  Schritt 1:
+  \[∃ δ > 0: K := \{(t_0, x) ∈ ℝ × ℝ^{n + 1} \mid \abs{t - t_0} \leq α, \norm{x - x_0} \leq δ\} ⊂ D\]
+  $f(t, x)$ erfüllt die Lipschitz Bedingung auf $K$
+  \[\norm{f(t, x) - f(t, y)} \leq L_k \norm{x - y}\quad (t_0, x), (t, y) ∈ K\]
+  Da $K$ kompakt und $f$ stetig ist, gibt es eine Konstante $M > 0$
+  \[\norm{f(t, x)} \leq M\quad (t_0, x) ∈ K\]
+  Wir setzen $ε := \min(δ, δ / m, 1 / (2 L_k)), I_ε= [t_0 - ε, t_0 + ε]$ und definieren den Vektorraum
+  $V = C(I_ε)$. $V$ mit der Norm $\norm{·}_∞$ ($\norm{x}_∞ := \max_{t ∈ I_ε} \norm{x(t)}$) ist ein Banachraum.
+  Schritt 2: \\
+  Für $x ∈ V_0 := \{v ∈ V \mid \max_{t ∈ I_ε} \norm{v(t_0) - x_0} \leq δ\} ⊂ V$ definieren wir die
+  Abbildung: $g: V \to V$ durch
+  \[g(x)(t) := x_0 + ∫_{t_0}^t f(s, x(s)) \d s\]
+  Es gilt für $f ∈ I_ε, x ∈ V_0$:
+  \[\norm{g(x)(t) - x} \leq ∫_{t_0}^t \norm{f(s, x(s))} \d s \leq M \underbrace{\abs{t - t_0}}_{\leq ε} \leq M ε \leq δ\]
+  das heißt die Abbildung $g$ bildet die Teilmenge $V_0 ⊂ V$ in sich ab. $g: V_0 \to V_0, V_0 ⊂ V$.
+  Für zwei Funktionen $x, y ∈ V_0$ gilt (aus Lipschitz Stetigkeit von $f(t, ·)$):
+  \begin{align*}
+  \norm{g(x)(t) - g(y)(t)} &\leq ∫_{t_0}^t \norm{f(s, x(s)) - f(s, y(s))} \d s \leq L_k \abs{t - t_0} \norm{x - y}_∞ \\
+  &\leq \underbrace{L_k ε}_{1 / 2} \norm{x - y}_∞ \leq \frac{1}{2} \norm{x - y}_∞
+  \end{align*}
+  das heißt $g$ ist auf $V_0$ eine Kontraktion. Nach dem Banachschem Fixpunktsatz hat $g$ in $V_0$
+  genau einen Fixpunkt $x^{\ast}$ das heißt
+  \[x^{\ast} = g(x^{\ast})(t) = x_0 + ∫_{t_0}^t f(s x^{\ast}(s)) \d s\quad t ∈ I_ε\]
+  has heißt $x^{\ast}$ löst die Integralgleichung.
+  #+end_proof
+  #+begin_remark latex
+  Die Lösung $x^{\ast}$ erhält man durch im Banachraum $V = C(I_ε)$ konvergente Fixpunktiteration (sogenannte "suksessive Approximation")
+  \[x^k(t) := x_0 + ∫_{t_0}^t f(s, x^{k - 1}(s)) \d s\quad t . I_ε\]
+  für eine Startfunktion $x_0$.
+  #+end_remark
+  #+begin_ex latex
+  \begin{align*}
+  x' &= A x \tag{$A$ ist eine reelle $n × n$ Matrix} \\
+  x(0) &= x_0
+  \end{align*}
+  wir bekommen $n$ Gleichung. Es gilt für $t < ε(x)$:
+  \begin{align*}
+  g(x_0)(t) &= x_0 + ∫_{t_0}^t A x_0 \d s = (I + t A) x_0 =: x_1 \\
+  g^m(x)(t)	&= \sum_{k = 1}^{m} \frac{(t A)^k}{k!} \xrightarrow{m \to ∞} x^{\ast}(t) = \sum_{k = 0}^{∞} \frac{(t A)^k}{k!} x_0
+  \end{align*}
+  Tatsächlich konvergierte die Reiche kann gleidweise nach $t$ differenziert werden, daher stellt sie die
+  Lösung da.
+  #+end_ex
+  #+begin_remark latex
+  1. Ein nicht autonomes System $x' = f(t, x), x ∈ ℝ^n$ kann immer zu einem autonomen System in $ℝ^{n + 1}$ durch hinzufügen von $x_{n + 1}(t) := t$
+	 (beziehungsweise $x'_{n + 1} = 1$) gemacht werden.
+  2. ein System $m$ -ter Ordnung für $x(t) ∈ ℝ^n$
+	 \begin{align*}
+	 x^{(n)}(t) &= f(t, x, x'(t), \dots, x^{(n - 1)}(t)) \\
+	 x(t_0) &= x_0, x'(t_0) = x_1, \dots, x^{(n - 1)}(t_0) = x_{n - 1}
+     \end{align*}
+	 lässt sich als System erster Ordnung schreiben, indem man $z_i(t) = x^{(i)}(t), i = 0, \dots, m - 1$ setzt und erhält denn:
+	 \[\underbrace{z_{m - 1}'(t)}_{x^{(n)}(t)} = \underbrace{f(t, x, z_1, \dots, z_{m - 1})}_{z_i'(t) = x_{i + 1}(t)}\]
+  #+end_remark
+  #+ATTR_LATEX: :options [Logistische Gleichung]
+  #+begin_ex latex
+  \begin{align*}
+  x' &= x(t - x) \\
+  x(0) &= x_0
+  \end{align*}
+  Homogene Lösung:
+  \begin{align*}
+  x' &= a x \\
+  x(0) &= x_0 \\
+  x(t) &= x_0 e^{at}
+  \end{align*}
+  Picard-Lindelöf Satz $⇒$ eindeutige Lösung (aber Lokalität) (rechte Seite ist $C^1$).
+  Beschränktheit: $x(t) < \max \{x_0, K\} < ∞$. Im allgemeinen Fall:
+  wir suchen $x = M$, sodass $f(M) \leq 0 ∀ x \geq M, x'(t) \leq 0$, das heißt $x(t)$ kann
+  nicht weiter wachsen. das heißt $I = \{x \mid x \leq M\}$ ist invariant, das heißt $x_0 ∈ I ⇒ x(t) ∈ I ∀ t ∈ ℝ$. Es gibt uns gleichmäßige Beschränktheit.
+  Nichtnegativität heißt $\{x \mid x \geq 0\}$ ist invariant. Es gilt falls $f(0) \geq 0$, das heißt $x'(t) \big|_{x = 0} \geq 0$
+  $x' = ax$ $⇒$ keine gleichmäßige Beschänktheißt.
+  \[x' = \frac{a x}{t + x} x \leq a x\]
+  $⇒ x(t) \leq x(t) e^{at}$ $⇒$ globle Lösungen existieren.
+  #+end_ex
+  #+ATTR_LATEX: :options [Gronwallsches Lemma]
+  #+begin_lemma latex
+  Die stückweise stetige Funktion $w(t) \geq 0$ genüge mit zwei Konstanten $a, b \geq 0$ der Integralgleichung
+  \[w(t) \leq a ∫_{t_0}^t w(s) \d s + b, t \geq t_0\]
+  Dann gilt die Abschätzung
+  \[w(t) \leq e^{a(t - t_0)} b , t \geq t_0\]
+  #+end_lemma
+  #+begin_proof latex
+  Für die Fuktion
+  \[ψ(t) := a ∫_{t_0}^t w(s) \d s + b\]
+  gilt $ψ'(t) = a w(t)$. Somit gemäß Voraussetzung:
+  \[ψ'(t) \leq a ψ(t)\]
+  \[⇒ (e^{-at} ψ(t))' = e^{-at}ψ'(t) - a e^{-at} ψ(t) = e^{-at} (ψ'(t) - ψ(t)) \leq 0\]
+  das heißt $e^{-at} ψ(t)$ ist monoton fallend
+  \[⇒ e^{-at} w(t) \leq e^{-at} ψ(t) \leq ψ(t_0) e^{-at_0} = b^{-a t_0}, t \geq t_0\]
+  \[w(t) \geq e^{(t - t_0)} b, t \geq t_0\]
+  #+end_proof
+  #+begin_remark latex
+  Es gibt verschiedene Verallgemeinerungen, zum Beispiel
+  \[w(t) \leq ∫_{t_0}^t a(s) w(s) \d s b(t), t\geq t_0\]
+  mit einer stetigen Funktion $a(t) \geq 0$ und einer nichtfallenden Funktion $b(t) \geq 0$ so folgt
+  \[w(t) \leq \exp(∫_{t_0}^t a(s) \d s) b(t), t \geq t_0\]
+  #+end_remark
+  Eine wichtige Anwendung des Lemma von Gronwall ist
+  #+ATTR_LATEX: :options [Globale Existenz bei linearem Wachstum]
+  #+begin_thm latex
+  Für $-∞ \leq T_0 < t_0 < T_0 \leq ∞$ sei $f ∈ C([T_1, T_2], ℝ^m)$, sodass
+  \[\abs{f(t, x)} \leq α(t) + β(t) \abs{x}, T_1 < t < T_2\]
+  dann existiert $∀ x_0 ∈ ℝ^m$ die Lösung von
+  \[\begin{cases} x'(t) = f(t, x(t)) \\ x(t_0) = x_0\end{cases}\]
+  auf $(T_1, T_2)$. Insbesondere existiert die Lösung des linearen Systems $x' = A(t)y(t) + b(t)$ global falls
+  $A(t) ∈ C^0(ℝ, ℝ^{m × m})$ und $b ∈ C^0(ℝ, ℝ^m)$ gilt.
+  #+end_thm
+  #+begin_proof latex
+  Nehme an für ein $x_0 ∈ ℝ^m$ wäre $T_{+}(x) < T_2$, dann gibt es eine Konstante $C = C(T_+(x_0))$, sodass für $t_0 \leq t \leq T_+(x)$
+  $\abs{α(t)} \leq C$ und $\abs{β(t)} \leq C$ gilt. Mithilfe von Integration folgt
+  \[\abs{x(t)} \leq \abs{x_0} + C ∫_{t_0}^t (1 + \abs{x(s)}) \d s, t_0 \leq t < T_+(x_0)\]
+  setze im Lemma von Gronwall $w(t) := 1 + \abs{x(t)}, a(t) := 1 + \abs{x}, b(t) := C$ und erhalte
+  \[w(t) \leq e^{C(t - t_0)}(1 + \abs{x_0}) ⇔ \abs{x(t)} \leq e^{C(t - t_0)}(1 + \abs{x_0}) - 1\]
+  $⇒ x(t)$ bleibt beschränkt für $t ∈ (0, T_+(x_0))$ und kann daher	fortgesetzt wirden. Damit folgt $T_+(x_0) = T_2$. Analog erhält man $T_{-}(x) = T_1$
+  #+end_proof
+  #+ATTR_LATEX: :options [Lipschitzstetigkeit / Abhängigkeit von Anfangsdaten]
+  #+begin_thm latex
+  Sei $f(t, x)$ stetig auf $D ⊂ ℝ^1 × ℝ^m$ und genüge einer lipschitz Bedingung. Dann gilt für zwei Lösungen $x, y$ der Differentialgleichung $x' = f(t, x), t ∈ I$
+  auf einem gemeinsamen Existenzintervall $I$
+  \[\norm{x(t) - y(t)} \leq e^{L(t - t_0)} \norm{x(t_0) - y(t_0)}\]
+  mit der Lipschitz Konstante $L = L_k$ von $f$ auf einer beschränkten Teilmenge $K ⊂ D$ welche die Graphen von $x$ und $y$ enthält.
+  #+end_thm
+  #+begin_proof latex
+  Sei $K ⊂ D$ eine beschränkte Teilmenge, welche die Graphen von $x$ und $y$ enthält. Für $u(t) = x(t) - y(t)$ gilt
+  \begin{align*}
+  u(t) &= ∫_{t_0}^t (f(s, x(s)) - f(s, y(s))) \d s + x(t_0) - y(t_0) \\
+  \norm{u(t)} &\leq L_k ∫_{t_0}^t \norm{u(s)} \d s + \norm{x(t_0) - y(t_0)}
+  \end{align*}
+  das heißt eine stetige Funktion $w(t) = \norm{u(t)}$ genügt einer linearen Integralgleichung. Wir wenden Lemma von Gronwall an und bekommen die Aussage.
+  #+end_proof
+  #+begin_remark latex
+  Aus der Bedingung folgt, dass die durch den Existenzsatz von Peano und den Fortsetzungsatz gelieferte lokale Lösung $x$ eindeutig bestimmt ist.
+  #+end_remark
+  #+begin_proof latex
+  Seien $x, y$ zwei Lösungen zu gleichem Anfangspunkt
+  \[\norm{x(t) - y(t)} \leq 0, t ∈ I ⇒ x(t) = y(t)\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Beschränktheit]
+  #+begin_ex latex
+  \begin{align*}
+  x' &= x y - a x \\
+  y' &= - x y - b y
+  \end{align*}
+  #+end_ex
+** Lineare Systeme
+   Wir betrachten lineare inhomogene Differentialgleichungen der Form
+   \[\begin{cases} u'(t) = A(t) u(t) + b(t) & t \geq t_0 \\ u(t_0) = u_0 ∈ ℝ^n\end{cases}\]
+   wobei $A:[t_0,∞\string) \to ℝ^{n × n}, b: [t_0, ∞\string) \to ℝ^n$ stetig seien. Für $n = 1$ hat man bereits per Variation der Konstanten
+   \[u(t) = Φ(t)(u_0 + ∫_0^{t} Φ^{-1}(s) b(s) \d s), \quad Φ(t) = \exp(∫_{t_0}^t A(s) \d s)\]
+   Für $A ∈ ℝ^{n × n}$ folgt mit Übung 6.1 analoges Resultat mit
+   \[Φ(t) = \exp(A(t - t_0))\]
+   Zunächst homogener Fall $b \equiv 0$
+   #+ATTR_LATEX: :options [Homogene Lineare Systeme]
+   #+begin_thm latex
+   Seien $A:[t_0, ∞\string) \to ℝ^{n × n}, b:[t_0, ∞\string) \to ℝ^n$ stetig, dann gelten:
+   1. Die Menge $H$ der Lösungen des linearen Systems $u'(t) = A(t) u(t)$ bildet einen $ℝ$ Vektorraum.
+   2. Zu jeder Basis $\{u_0^1, \dots, u_0^n\}$ des $ℝ^n$ bilden die zugehörigen Lösungen der $n$ Anfangswertaufgaben
+	  \[\begin{cases} \string(u^i\string)'(t) = A(t) u'(t) \\ u'(t_0) = u_0'\end{cases} \quad i = 1, \dots, n\]
+	  eine Basis $\{u^1, \dots, u^n\}$ des Lösungsraums $H$, das heißt $\dim H = n$
+   3. Ist $\{u^1, \dots, u^n\}$ eine Basis von $H$, dann ist für jedes $t \geq t_0 \{u^1(t), \dots, u^n(t)\}$ eine Basis in $ℝ^n$
+   #+end_thm
+   #+begin_proof latex
+   1. Übung: Die Addition ist konponentenweise definiert, zum Beispiel für $α, β ∈ ℝ, u, v ∈ H$
+	  \[⇒ (α u + β v)'(t) = α u'(t) + β v'(t) = A(t)(α u + β v)(t)\]
+   2. Seien $\{u_0^1, \dots, u_0^n\}$ eine Basis von $ℝ^n$, $\{u^1, \dots, u^n\}$ zugeörige Lösungen mit $u'(t_0) = u_0^i$. Lineare Unabhängigkeit:
+	  Seien $α_i ∈ ℝ$ mit
+	  \[\sum_{i = 1}^{n} α_i u^i = 0 ⇔ \sum_{i = 1}^{n} α_i u'(t) = 0 ∀ t \geq t_0\]
+	  so ist für $t = t_0$:
+	  \[\sum_{i = 1}^{n} α_i u_0^i = 0 \xrightarrow{\text{Basis}} α_i = 0 ∀ i = 1, \dots, n\]
+	  Maximalität: Nehmen wir eine weitere Lösung $u^{n + 1}$ mit $u^{n + 1}(t_0) = u_0^{n + 1}$ zu $\{u^1, \dots, u^n\}$ hinzu und nehmen an diese sei linear unabhängig, dann folgt für $t = t_0$, dass
+	  $\{u_0^1, \dots, u_0^{n + 1}\}$ linear unabhängig in $ℝ^n$ \lightning $⇒ \dim H = n$
+   3. Wie 2.
+   #+end_proof
+   #+begin_defn latex
+   Eine Basis $\{φ^1, \dots, φ^n\}$ des Lösungsraums von $u'(t) = A(t) u(t)$ (für zum Beispiel $φ'(t_0) = e_i$) heißt *Fundamentalsystem* der linearen Gleichung. Zusammengefasst lässt sich dies in der *Fundamentalmatrix*
+   $Φ = (φ^1, \dots, φ^n)$ it den Spaltenvektoren $φ^i$ schreiben. Nach Satz 3.15 ist $Φ(t)$ für jedes $t \geq t_0$ invertierbar und es gilt
+   \[Φ'(t) = A(t) Φ(t)\]
+   (mit zum Beispiel $Φ(t_0) = E_n$) (vergleiche Exponentialmatrix $\exp(A(t - t_0))$ für $A$ konstant)
+   #+end_defn
+   #+begin_remark latex
+   Bildet man die sogenannte Wronski-Determinante $\det (U(t))$ für eine Lösungsmeng $\{u^1(t), \dots, u^n(t)\}$ der linearen Gleichung
+   \[\begin{cases} u'(t) = A(t) u(t) & t \geq t_0 \\ u(t_0) = u_0 ∈ ℝ^{n × n}\end{cases}\]
+   so lässt sich mit $\det (U(t)) \neq 0$ auf ein Fundamentalsystem testen. Dies ist nach Satz 3.15 gleichbedeutend mit $\det (U(t_0)) \neq 0$
+   #+end_remark
+   #+begin_thm latex
+   Seien $t_0 ∈ ℝ, A:[t_0, ∞\string) \to ℝ^{n × n}, b: [t_0, ∞\string) \to ℝ^n$ stetig. Sei $u_0 ∈ ℝ^n$, dann ist die eindeutige Lösung von
+   \[\begin{cases} u'(t) = A(t) u(t) + b(t) & t \geq t_0 \\ u(t_0) = u_0\end{cases}\]
+   gegeben durch
+   \[u(t) = Φ(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) ∀ t \geq t_0\]
+   wobei $Φ$ eine Fundamentalmatrix ist der homogenen Gleichung zu $Φ(t_0) = E_n$ sei.
+   #+end_thm
+   #+begin_proof latex
+   Differentation liefert mit Produktregel
+   \begin{align*}
+   u'(t) &= Φ'(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) + Φ(t) Φ^{-1}(t) b(t) \\
+   &= A(t) Φ(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) + b(t) \\
+   &= A(t) u(t) + b(t)
+   \end{align*}
+   #+end_proof
+   #+begin_remark latex
+   Ist $u(t_0)$ nicht vorgeschrieben, ergeben sich Lösungen der inhomogenen Gleichung als Summe homogener Lösungen $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung als Summe homogener Lösungen
+   $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung. Zum Beispiel:
+   \[u_s(t) = Φ(t)(c + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s), c ∈ ℝ^n\]
+   und irgendein Fundamentalsystem $Φ$
+   #+end_remark
