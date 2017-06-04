@@ -32,7 +32,7 @@
 ** Magnetfelder und bewegte Ladungen
    Beobachtungen:
    1. Ein Strom durch einen Leiter erzeugt ein Magnetfeld um denselben (Oerstedt, 1777 - 1851)
-   2. Auf bewegten Ladungen wird in einem Magnetfeld eine Kraft ausgeübt. Offenbar: Streuwirkung beeinflußt Krafrichtung. (Ampere, 1775-1836)
+   2. Auf bewegten Ladungen wird in einem Magnetfeld eine Kraft ausgeübt. Offenbar: Streuwirkung beeinflußt Kraftrichtung. (Ampere, 1775-1836)
    Experiment:
    1. $B \sim I / r$
    2. $\v F \sim I(\v e × \v B)$
@@ -54,7 +54,7 @@
    Freie Ladung im homogenen B-Feld mit $\v R \perp \v B$.
    Bewegungsgleichung:
    \[m \v a = (\v r × \v B)\]
-   Da Kraft senkrecht auf Bewegungsrichtung folgt: Kreisbewegung!
+   Da Kraft senkrecht auf Bewegungsrichtung steht folgt eine Kreisbewegung!
    Also:
    \begin{align*}
    a &= a_{zp} = v ω = \frac{v^2}{r} = \frac{q}{w} v B \\
@@ -79,7 +79,8 @@
    magnetischen Dipol.
    #+ATTR_LATEX: :options [Hall-Effekt]
    #+begin_ex latex
-   Ablenkung bewegter Ladungsträger im Festkörper beziehungsweise im Leitern durch ein externes Feld.
+   Ablenkung bewegter Ladungsträger im Festkörper beziehungsweise in Leitern durch ein externes 
+   Magentfeld.
    Erlaubt Magnetfeldmessung. \\
    Beobachtug: Aufbau eines elektrischen Querfeldes in einem Stromdurchflossenen Leiter in einem Magnetfeld.
    Ursache: Lorentzkraft. Es gilt:
@@ -92,8 +93,8 @@
    U_{H} &= \frac{1}{nq} \frac{I}{d} B = R_H \frac{I}{d} B
    \end{align*}
    mit $R_H = (nq)^{-1}$, Hallkonstante, $n =$ Ladungsdichte, $q =$ Ladung. \\
-   Anwendunges:
-   - Messunges von Dichte und Vorzeichen der bewegten Ladungsträger in Materialien (zum Beispiel Leiter / Halbleiter)
+   Anwendungen:
+   - Messungen von Dichte und Vorzeichen der bewegten Ladungsträger in Materialien (zum Beispiel Leiter / Halbleiter)
    - Messung magnetischer Felder
    #+end_ex
    \begin{align*}

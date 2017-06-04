@@ -552,14 +552,14 @@
    \end{align*}
    #+ATTR_LATEX: :options [Gram-Schmidt-Algorithmus]
    #+begin_lemma latex
-   Zu jeder Basis $\{ψ_1, \dots, ψ_k\}$ von $S$ lässt sich eine Orthogonalbasis $\{φ_1, \dots, φ_n\}$ konstruieren.
+   Zu jeder Basis $\{ψ_1, \dots, ψ_k\}$ von $S$ lässt sich eine Orthonormalbasis $\{φ_1, \dots, φ_n\}$ konstruieren.
    \[\tilde φ_1 = ψ_1, φ_1 = \frac{\tilde φ_1}{\norm{\tilde φ_1}}\]
    \[\tilde φ_k = ψ_k - \sum_{i = 1}^{k - 1}(ψ_k, φ_i), φ_k = \frac{\tilde φ_k}{\norm{\tilde φ_k}}\]
    #+end_lemma
    #+begin_proof latex
    Per Induktion nach $n$. \\
    $n = 1$: Da $ψ \neq 0$ gilt $(φ_1, φ_1) = \frac{\abs{ψ_1}^2}{\norm{ψ_1}^2} = 1$. \\
-   $n > 1$: Sei $\{φ_1, \dots, φ_n\}$ eine Orthogonalbasis. Es gilt
+   $n > 1$: Sei $\{φ_1, \dots, φ_n\}$ eine Orthonormalbasis. Es gilt
    \[0 \neq \tilde φ_n = ψ_n - \sum_{k = 1}^{n - 1}(ψ_n, φ_k)φ_k\]
    da sonst $\{ψ_1, \dots, ψ_n\}$ linear abhängig wären. Für $i = 1,\dots, n - 1$ gilt
    \[(φ_n, φ_1) = (ψ_n, φ_i) - \sum_{k = 1}^{n - 1}(ψ_n, φ_k)\underbrace{(φ_k, φ_i)}_{δ_{ik}} = 0\]

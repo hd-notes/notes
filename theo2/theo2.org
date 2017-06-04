@@ -329,19 +329,19 @@
    Falls dies für beide differentiellen Zwänge ginge, wäre unser System doch *holonom*. (beziehungsweise "integrierbar").
    Aber im konkreten Fall geht das *nicht*.
    #+begin_proof latex
-   per Widerspruck: Wenn es ginge, könnten wir nach $φ$ auflösen $⇒ φ = /(x^1, x^2, θ)$. Dies ist unmöglich,
+   per Widerspruch: Wenn es ginge, könnten wir nach $φ$ auflösen $⇒ φ = /(x^1, x^2, θ)$. Dies ist unmöglich,
    weil man durch "Rollen im Kreis" beliebiges $φ$ zu vorgegebenen $x^1, x^2, θ$ erreichen kann.
    #+end_proof
 ** Prinzip der virtuellen Arbeit und "D'Alembert"
-   Betrachte eine masselose starre Stange, die zwei Massen $m_1, m_2$ verbindet. Auf $m_1, m_2$ wirken die Zwangskräfte $\v F_{12}^c, \v F_{21}^c$ "constrait".
-   Wir wissens schon: Energie erhalten $⇒$ Zwangskräfte verrichten keine Arbeit. $⇒ δA = \v F_{12}^c \d \v x_1 + \v F_{21}^] \d \v x_2 = 0$.
+   Betrachte eine masselose starre Stange, die zwei Massen $m_1, m_2$ verbindet. Auf $m_1, m_2$ wirken die Zwangskräfte $\v F_{12}^c, \v F_{21}^c$ "constraint".
+   Wir wissen schon: Energie erhalten $⇒$ Zwangskräfte verrichten keine Arbeit. $⇒ δA = \v F_{12}^c \d \v x_1 + \v F_{21}^] \d \v x_2 = 0$.
    Ebenso für Perle auf Draht (Draht fest): $\v F_c \perp \text{Draht} \parallel \d \v x$
    \[⇒ δA = \v F^c \d \v x = 0\]
    Wir wollen die Aussage "Zwangskräfte verrichten keine Arbeit" allgemein formulieren. \\
-   Problem: bei bewegtem Draht $\d \v x \parallel$ Draht nicht
-   mehr $⇒ δA = 0$ im Allgemeinen nicht mehr. \\
+   Problem: bei einem bewegtem Draht gilt die Aussage $\d \v x \parallel$ Draht nicht
+   und damit gilt dann auch $⇒ δA = 0$ im Allgemeinen nicht mehr. \\
    Lösung: Definiere *virtuelle Verrückung* $δx$ bei $t = \const$. Dies ist eine *gedachte* Verschiebung des Systems in eine andere Lage - keine echte Bewegung.
-   Fakt: in einfachen Beispielen (bewegter Draht, etc.) gilt jetzt wiedea $δA = 0$.	$⇒$ Formulieren: "*Prinzip der virtuellen Arbeit*"
+   Fakt: in einfachen Beispielen (bewegter Draht, etc.) gilt jetzt wieder $δA = 0$.	$⇒$ Formulieren: "*Prinzip der virtuellen Arbeit*"
    \[\sum_{a} \v F_a^c δ\v x_a = 0\]
    für jede virtuelle Verrückung $\{δ\v x_a, a = 1, \dots, N\}$
    $⇒$ Definition eines "glatt geführten Systems".
@@ -393,7 +393,7 @@
    \intertext{Zusammen mit 1. Term folgt:}
    0 &= \sum_{m}(Q_m - (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T)δ q_m \\
    \end{align*}
-   $δ q_m$ unabhängig! $⇒$ jeder der Klammer-Ausdräcke verschwindet getrennt.
+   $δ q_m$ unabhängig! $⇒$ jeder der Klammer-Ausdrücke verschwindet getrennt.
    $⇒ 3d -d$ Differentialgleichungen 2. Ordnung $⇒$ Problem prinzipiell gelöst.
 ** Lagrange-Gleichungen 1. Art
    Jetzt *zusätzlich* $p$ nichtholomome (differentielle) Zwänge.
@@ -420,7 +420,7 @@
    \[Q_m := \sum_{a} \v F_a \pp{\v x_a}{q_m}, Q_m^c := \sum_{a} \v F_a^c \pp{\v x_a}{q_m}\]
    Schreibe rechte Seite von der Gleichung in $Q$ 's um. Setze in "Lagrange-1" ein. Finde:
    \[Q_m^C= \sum_{α} λ^α f_m^α\]
-   $⇒$ Lagrange-Multiplikatroen bestimmen Zwangskräfte. \\
+   $⇒$ Lagrange-Multiplikatoren bestimmen Zwangskräfte. \\
    *Schlusskommentar*: Einfacherer Spezialfall: keine holonomen Zwänge. $⇒$ Lagrange-1 direkt in kartesischen Koordinaten formulierbar.
    \begin{align*}
    F_m - m_m \ddot x_m + \sum_{α} λ^α f^α_m &= 0 \\

@@ -303,7 +303,7 @@
   #+begin_proof latex
   1. $⇒$ 2. vergleiche Anmerkung nach 21.5
   2. $⇒$ 1. Sei $n = \dim V = \dim W, r = \Rang γ_V = \Rang γ_W$. $⇒ (V, γ_V), (W, γ_W)$ sind als quadratische Räume isomorph zu $(ℂ^n, Δ(\begin{pmatrix}E_r &   \\   &  \end{pmatrix}))$,
-	 also au $(V, γ_V) \cong (W, γ_W)$
+	 also auch $(V, γ_V) \cong (W, γ_W)$
   #+end_proof
   #+begin_defn latex
   $(V, γ)$ quadratischer Raum, $U_1, \dots, U_m ⊆ V$ UVR mit $V = U_1 \oplus \dots \oplus U_n$. Die direkte Summe heißt
@@ -381,7 +381,7 @@
   - *positiv semidefinit* $\xLeftrightarrow{\text{Def}} γ(v, v) \geq 0 ∀ v ∈ V \setminus\{0\}$
   - *negativ definit* $\xLeftrightarrow{\text{Def}} γ(v, v) < 0 ∀ v ∈ V \setminus\{0\}$
   - *negativ semidefinit* $\xLeftrightarrow{\text{Def}} γ(v, v) \leq 0 ∀ v ∈ V \setminus\{0\}$
-  - *indefinit $\xLeftrightarrow{\text{Def}} γ$ ist weder positiv noch negativ semidefinit.
+  - *indefinit* $\xLeftrightarrow{\text{Def}} γ$ ist weder positiv noch negativ semidefinit.
   Eine positiv definite symmetrische Bilinearform nennt man auch ein *Skalarprodukt*.
   #+end_defn
   #+begin_ex latex
@@ -394,7 +394,7 @@
 	 ist ein Skalarprodukt.
   #+end_ex
   #+begin_note latex
-  Um die Definitheit einer symmetrischen Bilinearform nachzuweisen, genügt es nich, das Verhalten auf den Basisvektoren zu untersuchen:
+  Um die Definitheit einer symmetrischen Bilinearform nachzuweisen, genügt es nicht, das Verhalten auf den Basisvektoren zu untersuchen:
   Sei $γ: ℝ^2 × ℝ^2 \to ℝ$ gegeben durch
   \[γ = Δ(\begin{pmatrix}1 & -1 \\ -2 & 1\end{pmatrix})\]
   das heißt
@@ -484,7 +484,7 @@
   Insbesondere gilt für alle $v ∈ V: v - π_U(v) ∈ U^{\perp}$
   #+end_note
   #+begin_ex latex
-  $(V, γ) = (ℝ^2, <·,·>), U = \Lin(\cvec{1; 1}) ⇒ U^{\perp} = \Lin(\cvec{-1; 1})$, denn $\cvec{-1; 1} ∈ U^{\perp}$ wegen $<\cvec{-1; 1}, \cvec{1; 1}> = 0$, und es eist
+  $(V, γ) = (ℝ^2, <·,·>), U = \Lin(\cvec{1; 1}) ⇒ U^{\perp} = \Lin(\cvec{-1; 1})$, denn $\cvec{-1; 1} ∈ U^{\perp}$ wegen $<\cvec{-1; 1}, \cvec{1; 1}> = 0$, und es ist
   $\dim U^{\perp} = 2 - \dim U = 2 - 1 = 1$. Jedes Element aus $V$ lässt sich eindeutig schreiben als
   \[v = λ\cvec{1; 1} + μ\cvec{-1; 1}\]
   das heißt
@@ -591,8 +591,8 @@
   #+end_proof
   #+begin_remark latex
   $v, w ∈ V$. Dann gilt:
-  1. $\norm{v + w}^2 = \norm{v}^2 + \norm{w}^2 ⇔ γ(v, w) = 0$ \hfill\~Satz\~des\~Pythagroas
-  2. $\norm{v + w}^2 + \norm{v - w}^2 = 2\norm{v}^2 + 2\norm{w}^2$ \hfill\~Parallelogrammgleichung
+  1. $\norm{v + w}^2 = \norm{v}^2 + \norm{w}^2 ⇔ γ(v, w) = 0$ \hfill Satz des Pythagoras
+  2. $\norm{v + w}^2 + \norm{v - w}^2 = 2\norm{v}^2 + 2\norm{w}^2$ \hfill Parallelogrammgleichung
   #+end_remark
   #+begin_proof latex
   1. $\norm{v + w}^2 = γ(v + w, v + w) = \norm{v}^2 + \norm{w}^2 + 2γ(v, w) ⇒$ Behauptung
