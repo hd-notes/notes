@@ -748,7 +748,7 @@
   Außerdem: $e_1 \perp e_2 ⇒ A e_1 \perp A e_2$
   \[⇒ <\cvec{a;b}, \cvec{c; d}> = 0\]
   \[⇒ \begin{pmatrix}a & b\end{pmatrix} \begin{pmatrix}c \\ d\end{pmatrix} = 0 ⇒ \cvec{c; d} ∈ \Lin((\cvec{-b; a}))\]
-  das heißt es Existiert $λ ∈ ℝ$ mit
+  das heißt es existiert $λ ∈ ℝ$ mit
   \[\begin{pmatrix}c \\ d\end{pmatrix} = λ \begin{pmatrix}-b \\ a\end{pmatrix}\]
   \[⇒ A = \begin{pmatrix}a & -λ b \\ b & λa\end{pmatrix}, \det A = λ(a^2 + b^2) = λ ∈ \{\pm 1\}\]
   1. Fall: $λ = 1 ⇔ \det A = 1 ⇔ A ∈ SO(2)$
@@ -772,7 +772,7 @@
 	 Bezüglich der Orthogonalbasis $(v_1, v_2)$ des $(ℝ^2, <·, ·>)$ ist $M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$
   #+end_proof
   #+begin_conc latex
-  $φ: (ℝ^2, <·, ·>) \to (ℝ^2, <·, ·>)$ orthogonale Abbildung. Dass existiert eine Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, <·, ·>)$, sodass
+  $φ: (ℝ^2, <·, ·>) \to (ℝ^2, <·, ·>)$ orthogonale Abbildung. Dann existiert eine Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, <·, ·>)$, sodass
   \[M_{\mathcal{B}}(φ) = \begin{pmatrix}\pm 1 & 0 \\ 0 & \pm 1\end{pmatrix} \text{ oder } M_{\mathcal{B}}(φ) = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}, α ∈ (0, π)\]
   Die Anzahl der $\pm 1$ sowie $α$ sind unabhängig von der Wahl einer solchen Orthogonalbasis $\mathcal{B}$ (das heißt sind Invarianten von $φ$).
   #+end_conc
@@ -865,7 +865,7 @@
   \end{align*}
   #+end_proof
   #+begin_thm latex
-  $(V, γ_V), (W, γ_W)$ euklidische Räume, $φ: V \to W$ lineare Abbildung. Dass gilt:
+  $(V, γ_V), (W, γ_W)$ euklidische Räume, $φ: V \to W$ lineare Abbildung. Dann gilt:
   1. $\ker (φ^{ad}) = (\im φ)^{\perp}$
   2. $\im (φ^{ad}) = (\ker φ)^{\perp}$
   #+end_thm
@@ -1056,13 +1056,13 @@
   #+begin_defn latex
   $V$ endlichdimensional, $ℂ$ Vektorraum, $h$ Sesquilinearform auf $V$, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V$
   \[M_{\mathcal{B}}(h) = (h(v_i, v_j))_{\substack{1 \leq i \leq n \\ 1 \leq j \leq n}}\]
-  heißt die *Darstllungsmatrix* (*Fundamentalmatrix*) von $h$ bezüglich $\mathcal{B}$
+  heißt die *Darstellungsmatrix* (*Fundamentalmatrix*) von $h$ bezüglich $\mathcal{B}$
   #+end_defn
   #+begin_remark latex
   $V$ endlichdimensionaler $ℂ$ Vektorraum, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V$.
   \[\Sesq(V) := \{h: V × V \to ℂ \mid h \text{ ist eine Sesquilinearform}\}\]
   ist ein $ℂ$ Vektorraum und Untervektorraum von $\Abb(V × V, ℂ)$.
-  Dann gilt: Die Abbildun $M_{\mathcal{B}} \to M(n × n, ℂ), h ↦ M_{\mathcal{B}}(h)$ ist ein Isomorphismus von $ℂ$ Vektorrüumen mit Umkehrabbildung $Δ^{\mathcal{B}}: M(n × n, ℂ) \to \Sesq(V)$ mit
+  Dann gilt: Die Abbildun $M_{\mathcal{B}} \to M(n × n, ℂ), h ↦ M_{\mathcal{B}}(h)$ ist ein Isomorphismus von $ℂ$ Vektorräumen mit Umkehrabbildung $Δ^{\mathcal{B}}: M(n × n, ℂ) \to \Sesq(V)$ mit
   \[Δ^{\mathcal{B}}(A)(v, w) = Φ_{\mathcal{B}}^{-1}(v)^T A \overline{Φ_{\mathcal{B}}^{-1}(w)}\]
   #+end_remark
   #+begin_thm latex
@@ -1143,7 +1143,7 @@
   2. $M_{\mathcal{A}}^{\mathcal{B}}(φ^{ad}) = \overline{M_{\mathcal{B}}^{\mathcal{A}}(φ)}^T$
   #+end_defthm
   #+begin_proof latex
-  1. Wir im reellen Fall betrachte man das Diagramm
+  1. Wie im reellen Fall betrachte man das Diagramm
      #+begin_export latex
      \catcode`(=12
      \catcode`)=12
@@ -1163,7 +1163,8 @@
      \catcode`(=\active
      \catcode`)=\active
      #+end_export
-	 und setzten $φ^{ad} := Γ_V^{-1} \circ φ^{\ast} \circ Γ_W$. $φ^{ad}$ ist linear, da sowohl $Γ_V$ als auch $Γ_W$ semilinear sind. Rest wie rm reellen Fall
+	 und setzten $φ^{ad} := Γ_V^{-1} \circ φ^{\ast} \circ Γ_W$. $φ^{ad}$ ist linear, da sowohl $Γ_V$ als auch $Γ_W$ semilinear sind. 
+	 Rest wie im reellen Fall
   2. Sei $\mathcal{A} = (v_1, \dots, v_n), \mathcal{B} = (w_1, \dots, w_n), M_{\mathcal{B}}^\mathcal{A}(φ) = (a_{ij}), M_{\mathcal{A}}^{\mathcal{B}}(φ^{ad}) = (b_ij)$
 	 \begin{align*}
 	 ⇒ φ(v_j) &= \sum_{k = 1}^{m} a_{kj} w_k, φ^{ad} = \sum_{k = 1}^{n} b_{ki} v_k \\
@@ -1188,7 +1189,7 @@
   $φ ∈ \End(V)$ selbstadjungiert. Dann sind alle Eigenwerte von $φ$ reell.
   #+end_remark
   #+begin_proof latex
-  Sei $λ ∈ ℂ$ Eigenwirt von $φ, v$ Eigenvektor zum Eigenwirt $λ$.
+  Sei $λ ∈ ℂ$ Eigenwert von $φ, v$ Eigenvektor zum Eigenwert $λ$.
   \[⇒ λ h(v, v) = h(λ v, v) = h(φ(v), v) = h(v, φ^{ad}(v)) = h(v, φ(v)) = h(v, λ v) = \bar λ h(v, v)\]
   $⇒ λ = \bar λ ⇒ λ ∈ ℝ$
   #+end_proof
