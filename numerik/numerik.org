@@ -715,7 +715,7 @@
    #+begin_thm latex
    Gegeben sei ein Skalarprodukt auf $C[a, b]$
    \[(f, g)_ω = ∫_a^b f(x) g(x) ω(x) \d x\]
-   mit integriebarer Gewichtsfunktion $ω(x) \geq 0, x ∈ (a, b)$ mit höchtens endlich vielen Nullstellen. Dann haben die mittels Gram-Schmidt aus \{1, x^1, \dots\} bezüglich $(·,·)_ω$ orthogonalisiierten Polynome
+   mit integriebarer Gewichtsfunktion $ω(x) \geq 0, x ∈ (a, b)$ mit höchtens endlich vielen Nullstellen. Dann haben die mittels Gram-Schmidt aus $\{1, x^1, \dots\}$ bezüglich $(·,·)_ω$ orthogonalisiierten Polynome
    $\{p_0, p_1, \dots\}$ lauter reelle, einfache Nullstellen in $[a, b]$
    #+end_thm
    #+begin_proof latex
@@ -860,3 +860,284 @@
   \[(\mathbb{I} - A) \sum_{k = 0}^{n} A^k = \mathbb{I} - A + A - A^2 + A^2 \dots - A^{n + 1} \xrightarrow{n \to ∞} \mathbb{I}\]
   wegen $\norm{A^k} \leq \norm{A}^k \xrightarrow{k \to ∞} 0$.
   #+end_proof
+  Wiederholung: Kondition numerischer Aufgabe $y = f(x), y ∈ ℝ^n, x ∈ ℝ^m$.
+  \[\frac{Δy_i}{y_i} \overset{·}{=} \sum_{j = 1}^{m} \pp{f_i}{x_j}(x) \frac{Δ x_j}{y_i} = \sum_{j = 1}^{m} \underbrace{\pp{f_i}{x_j} \frac{x_j}{f_i(x)}}_{=: k_{ij}(x)} \frac{Δ x_j}{x_j}\]
+  Neumann-Reihe:
+  \[\norm{A} < 1 ⇒ (\mathbb{1} - A_a)^{-1} = \sum_{n = 0}^{∞} A^n\]
+  Natürliche Matrixnorm:
+  \[\norm{A} = \sup_{\norm{x} = 1} \norm{A x}\]
+  $\norm{A}_∞$: "Zeilensummennorm" \\
+  $\norm{A}_1$: "Spaltensummennorm" \\
+  Euklidisches Skalarprodukt auf $\mathbb{K}$
+  \[(x, y)_2 = \bar y^T x\]
+  #+ATTR_LATEX: :options [Spektralnorm]
+  #+begin_lemma latex
+  Für $A . \mathbb{K}^{n × n}$ ist
+  \[\norm{A}_2 = \max\{\sqrt{\abs{λ}} \mid λ \text{ Eigenwert von } \bar A^T A\}\]
+  Für hermitesche $A = \bar A^T$ gilt:
+  \[\norm{A}_2= \max \{\abs{λ} \mid λ \text{ Eigenwert von } A\}\]
+  #+end_lemma
+  #+begin_proof latex
+  $B = \bar A^T A$ ist hermitesch. $⇒ B$ hat $n$ reelle Eigenwerte $λ_1, \dots, λ_n$ und eine Orthonormalbasis von Eigenvektoren $\{w_1, \dots, w_n\} ⊂ \mathbb{K}^n$
+  $B ω_i = λ_i ω_i$. Jedes $x ∈ \mathbb{K}^n$ hat eine eindeutige Darstellung
+  \[x = \sum_{i = 1}^{n} α_i ω_i\]
+  \begin{align*}
+  ⇒ \norm{x}_2^2 &= (x, x)_2 = \sum_{i, j = 1}^{n} α_i \bar α_j \underbrace{(ω_i, ω_j)_2}_{δ_{ij}} = \sum_{i = 1}^{n} \abs{α_i}^2 \\
+  \norm{A x}_2^2 &= (Bx, Bx)_2 = \sum_{i, j = 1}^{n} λ_i α_i \overline{(λ_j α_j)} \underbrace{ω_i, ω_j}_{δ_{ij}} \\
+  &= \sum_{i = 1}^{n} \abs{λ_i}^2 \abs{α_i}^2 \\
+  \norm{B}_2^2 &= \sup_{x ∈ \mathbb{K}^n \setminus{\{0\}}} \frac{\norm{B x}_2^2}{\norm{x}_2^2} = \sup_{x ∈ \mathbb{K}^n \setminus{\{0\}}} \frac{\sum_{i = 1}^{n} λ_i^2 \abs{α_i}^2}{\sum_{i = 1}^{n} \abs{α_i}^2} \\
+  &\leq \max_{i = 1, \dots, n} \abs{λ_i}^2
+  \end{align*}
+  Mit
+  \begin{align*}
+  \abs{λ_i} &= \abs{λ_i} \norm{ω_i}_2 = \norm{λ_i ω_i}_2 = \norm{B ω_i}_2 \\
+  &\leq \norm{B}_2 \norm{ω_i}_2 = \norm{B}_2, \quad i = 1, \dots, n
+  \end{align*}
+  #+end_proof
+  Betrachte $A x = b$ und Störung
+  \[\underbrace{(A + δA)}_{\tilde A} \underbrace{(x + δ x)}_{\tilde x} = \underbrace{b + δ b}_{\tilde b}\]
+  #+ATTR_LATEX: :options [Störungssatz]
+  #+begin_thm latex
+  Die Matrix $A ∈ \mathbb{K}^{n × n}$ sei regulär uns es sei
+  \[\norm{δ A} \leq \frac{1}{\norm{A^{-1}}}\]
+  Dann ist die gestörte Matrix $\tilde A = A + δ A$ ebenfalls regulär. Für den relativen Fehler der Lzsung gilt mit die Konditionszahl von $A$
+  \[\cond(A) = \norm{A} \norm{A^{-1}}\]
+  die Ungleichung
+  \[\frac{\norm{δ x}}{\norm{x}} \leq \frac{\cond(A)}{1 - \cond(A) \frac{\norm{δ A}}{\norm{A}}} \left[\frac{\norm{δ b}}{\norm{b}} + \frac{\norm{δ A}}{\norm{A}}\right]\]
+  #+end_thm
+  #+begin_proof latex
+  \[\norm{A^{-1} δ A} \leq \norm{A^{-1}}\norm{δ A} < 1\]
+  Neumann $⇒$ $A + δ A = A[\mathbb{1d} + A^{-1} δ A]$ ist regulär. \\
+  $(A + δ A) \tilde x = b + δ  b, (A + δ A) x = b + δ A x$
+  \[⇒ (A + δ A) δ x= δ b - δ A x\]
+  \begin{align*}
+  \norm{(A + δ A)^{-1}} &= \norm{[A(\mathbb{1} + A^{-1})]^{-1}} \\
+  &= \norm{(\mathbb{1} + A^{-1} δ A)^{-1} A^{-1}} \leq \norm{\sum_{n = 0}^{∞}(-A^{-1} δ A)^n} \norm{A^{-1}} \\
+  &\leq (\sum_{n = 0}^{∞} \norm{A^{-1} S A}) \norm{A^{-1}} = \frac{1}{1 - \norm{A^{-1} δ A}} \norm{A^{-1}}
+  \end{align*}
+  \begin{align*}
+  \norm{b} &= \norm{A x} \leq \norm{A} \norm{x} \\
+  \norm{δ x} &\leq \norm{(A + δ A)^{-1}}[\norm{ δ b} + \norm{δ A} \norm{W}] \\
+  &\leq \frac{\norm{A^{-1}}}{1 - \norm{A^{-1} δ a}}[\norm{δ B} \norm{b A} \norm{x}] \\
+  &\leq \frac{\norm{A^{-1}}}{1 - \norm{A^{-1}}\norm{ δ A} \norm{A} \norm{A}^{-1}} \left[\frac{\norm{ δ b}}{\norm{x}} + \frac{\norm{S A}}{\norm{A}}\right]
+  \end{align*}
+  \[\frac{\cond(A)}{1 - \cond (A) \frac{\norm{δ A}}{\norm{A}}}\left[\frac{\norm{ S b}}{\norm{b}} + \frac{\norm{δ A}}{A}\right] \norm{x}\]
+  #+end_proof
+  Ist $\cond(A) \norm{δ A} \ll \norm{A_i}$, so gilt
+  \[\frac{\norm{δ x}}{\norm{x}} \overset{·}{\leq} \cond (A) \left[\frac{\norm{δ b}}{\norm{b}} + \frac{\norm{δ A}}{A}\right]\]
+  Die Konditionszahl hängt von der verwendeten Norm ab.
+  #+begin_ex latex
+  1. $\cond_∞(A) = \norm{A}_∞ \norm{A^{-1}}_∞$
+  2. Für die Spektralnorm gilt:
+	 \[\cond_2 (A) = \norm{A}_2 \norm{A^{-1}} = \sqrt{\frac{\abs{μ_{max}}}{\abs{μ_{min}}}}\]
+	 wobei $μ_{max}, μ_{nin}$ Betragsgößter beziehungsweise kleinster Eigenvektor von	$\bar A^T A$. Ist $A = A=$. Ist $A = \bar A^T$ so gilt:
+	 \[\cond_2(A) = \frac{\abs{λ_{max}}}{\abs{λ_{min}}}\]
+	 mit $λ_{max}$ und $λ_{min}$ Betrasgrößter beziehungsweise kleinster Eigenvektor von $A$. Regel: Es gelte $\cond (A) \approx 10^s$
+	 \[\frac{\norm{δ A}}{\norm{A}} \approx 10^{-k}, \frac{\norm{δ b}}{\norm{b}} \approx 10^{-k}\]
+	 Dann muss einn relativer Fehler von
+	 \[\frac{\norm{δ x}}{\norm{x}} \approx 10^{s - k}\]
+	 erwartet werden. Mit $\norm{·} = \norm{·}_∞$ verliert man $s$ Stellen Genauigkeit.
+  #+end_ex
+  #+begin_ex latex
+  \[A = \begin{pmatrix}1 & 1 \\ 0 & ε\end{pmatrix}, ε ∈ \string(0, 1], A^{-1} = \begin{pmatrix}1 & -ε^{-1} \\ 0 & ε^{-1}\end{pmatrix}\]
+  \begin{align*}
+  ⇒ \norm{A}_∞ &= 2, \norm{A^{-1}}_∞ = 1 + ε^{-1} \\
+  ⇒ \cond_∞ \norm{A} \norm{A^{-1}} = 2 + ε^{-1}
+  \end{align*}
+  für $ε = 10^{-8}$ kann man bereits 8 Stellen Genauigkeit verlieren.
+  #+end_ex
+  Ist die Abschätzung im Störungssatz scharf? Sei $A ∈ ℝ^{n × n}$ symmetrisch posisiv definit mit Eigenwerten $λ_1 \geq \dots \geq λ_n$.
+  Wähle: $δ A = 0, b = ω_1, δ  B = ε w_k, ε \neq 0$
+  \begin{align*}
+  A x &= b ⇒ x = \frac{1}{λ_1} w_1 \\
+  A \tilde x &= b + δ b ⇒ \tilde x = \frac{1}{λ_1} ω_1 + ε \frac{1}{λ_k} ω_k \\
+  ⇒ \frac{\norm{δ x}_2}{\norm{x}_2} &= \abs{ε} \frac{λ_1}{λ_n} \frac{\norm{ω_n}_2}{\norm{ω_1}_2} \\
+  &= \cond(A) \frac{\norm{δ b}_2}{\norm{b}_2}
+  \end{align*}
+** Eliminationsverfahren
+   Direkte Methode zur Lösung von $A x = b, A ∈ ℝ^{n × n}$. Spezialfall: $A$ obere Dreichsmatrix $a_{ij} = 0, i > j$
+   \[\begin{pmatrix}a_{11} & \dots & \dots & \dots & a_{1n} \\ 0 & a_{22} &   &   &  \vdots \\ \vdots & 0 & \ddots &   & \vdots \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & \dots & 0 & a_{nn}\end{pmatrix} \begin{pmatrix}x_1 \\ \vdots \\ \vdots \\ \vdots \\ x_n\end{pmatrix} = \begin{pmatrix}b_1 \\ \vdots \\ \vdots \\ \vdots \\ b_n\end{pmatrix}\]
+   Ist $a_{ii} \neq 0, i = 1, \dots, n$ löst man durch Rückwärtseinsetzen
+   \[x_j = \begin{cases} \frac{b_n}{a_{nn}} & j = n \\ \frac{1}{a_{jj}}(b_j - \sum_{k = j + 1}^{n} a_{jk} x_k) & j= n - 1, \dots, 1 \end{cases}\]
+   Arithmetische Operationen:
+   \[\sum_{j = 1}^{n} j = \frac{(n + 1) n}{2} = \frac{n^2}{2} + \mathcal{O}(n)\]
+   Eine	Operation: eine Division oder eine Multiplikation und eine Addition.
+   Wiederholung: Konditionszahl einer Matrix
+   \[A ∈ ℝ^{n × n}: \cond(A) = \norm{A} \norm{A^{-1}}\]
+   Störungssatz: $(A + δA)(x + δx) = b + δb$
+   \[\frac{\norm{δ x}}{x} \leq \frac{\cond(A)}{1 - \cond(A) \frac{\norm{δ A}}{\norm{A}}}[\frac{\norm{δ A}}{\norm{A}} + \frac{\norm{δ b}}{\norm{b}}]\]
+   *Gaußsches Eliminationsverfahren* \\
+   Umformung von $A x = b$ auf $R x = c$ mit $R$ obere Dreiecksmatrix mittels
+   - Vertauschen von Gleichungen
+   - Addition von Vielfachen einer Gleichung zu einer anderen
+   Annahme: $A$ hat Vollrang
+   0. [@0] Setze $A^{(0)} = A, b^{(0)} = b$
+      \[\left[\begin{array}{ccc|c} a_{11}^{(0)} & \dots & a_{1n}^{(0)} & b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ a_{n1}^{(0)} & \dots & a_{nn}^{(0)} & b_{n}^{(0)}\end{array}\right]\]
+   1. Wähle $r ∈ \{1, \dots, n\}$ mit $a_{r1}^{(0)} \neq 0$ (Pivotelement) und vertausche 1. und r-te Zeile
+      \[\left[\begin{array}{ccc|c} \tilde a_{11}^{(0)} & \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ \tilde a_{n1}^{(0)} & \dots & \tilde a_{nn}^{(0)} & \tilde b_{n}^{(0)}\end{array}\right] := [\tilde A^{(0)} \mid \tilde b^{(0)}]\]
+   2. Für $j = 2, \dots, n$ eleminiere $\tilde a_{j1}^{(0)}$ durch Subtraction von $ \frac{\tilde a_{j1}^{(0)}}{\tilde a_{11}^{(0)}} := q_{j1}$
+	  mal der ersten Zeile von Zeilen $2, \dots, n$:
+      \[\left[\begin{array}{cccc|c} \tilde a_{11}^{(0)} & \tilde a_{12}^{(0)} \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ 0 & \tilde a_{22}^{(1)} \dots & \tilde a_{2n}^{(1)} & \tilde b_{2}^{(1)} \\ \vdots & \vdots & & \vdots & \vdots \\ 0 & \tilde a_{n2}^{(1)} & \dots & \tilde a_{nn}^{(1)} & \tilde b_{n}^{(1)}\end{array}\right] := [A^{(1)} \mid b^{(1)}]\]
+	  Fahre fort auf kleinerem System $⇒ [A^{(0)} \mid b^{(0)}] \to [A^{(1)}\mid b^{(1)}] \to \dots \to [A^{(n - 1)} \mid b^{(n - 1)}] =: [R\mid c]$
+   Wird im $k$ -ten Schritt $[A^{(k - 1)} \mid b^{(n - 1)}] \to [\tilde A^{(k - 1)} \mid \tilde b^{(n - 1)}] \to [A^{(k)} \mid b^{(k)}]$ das Pivot-Element $q_{r_k k}^{k - 1}$ gewählt, so gilt
+   $[\tilde A^{(k -1 )} \mid \tilde b^{(k - 1)}] = P_k[A^{(k - 1)} \mid b^{(k - 1)}]$ mit der Permutationsmatrix
+   \begin{equation*}
+   P_k = \begin{pmatrix}
+   1 & & & & & & & & & & \\
+   & \ddots & & & & & & & & & \\
+   & & 1& & & & & & & & \\
+   & & & 0 & \dots & \dots & \dots & 1 & & & \\
+   & & & & 1 & & & & & & \\
+   & & & & & \ddots& & & & & \\
+   & & & & & & 1 & & & & \\
+   & & & 1 & \dots & \dots & \dots & 0 & & & \\
+   & & & & & & & & 1 & & \\
+   & & & & & & & & & \dots & \\
+   & & & & & & & & & & 1 \\
+   \end{pmatrix} \quad
+   G_k = \begin{pmatrix}
+   1 & & & & \\
+   & \ddots & & & \\
+   & -q_{k + 1, k}^{(k)} & 1& & \\
+   & \vdots & & \ddots & \\
+   & -q_{n,k}^{(k)} & & & 1 \\
+   \end{pmatrix}
+   \end{equation*}
+   Mit den Fehlstellungen von $P_k$ an $k$ und $r_k$ und der Fehlspalte von $G_k$ bei $k$. Weiterhin gilt:
+   $[A^{(k)} \mid b^{(k)}] = G_k [\tilde A^{(k - 1)} \mid \tilde b^{(k - 1)}]$ mit
+   $q_{jk}^{(k)} = \tilde a_{jk}^{(k - 1)} / \tilde a_{kk}^{(k - 1)}$. $G_k$ heißt Frobenius Matrix.
+   Wegen $P_k^{-1} = P_k$ und
+   \begin{equation*}
+   G_k^{-1} = \begin{pmatrix}
+   1 & & & & \\
+   & \ddots & & & \\
+   & q_{k + 1, k}^{(k)} & 1& & \\
+   & \vdots & & \ddots & \\
+   & q_{n,k}^{(k)} & & & 1 \\
+   \end{pmatrix}
+   \end{equation*}
+   haben $A x = b$ und $A^{(k)} x = b^{(k)}$ dieselbe Lösung:
+   \[A x = b ⇔ A^{(k)} x = G_{n - 1} P_{n - 1} \dots G_1 P_1 A x = G_{n - 1} P_{n - 1} \dots G_1 P_1 b = b^{(k)}\]
+   *Wahl des Pivot-Elementes* \\
+   Zierl: Numerische Stabilität.
+   1. Spaltenpivotierung:
+	  \[\abs{a_{r_k, k}^{(k - 1)}} = \max_{j = k, \dots, n} \abs{a_{j k}^{(k - 1)}}\]
+   2. Totalpivotierung
+	  \[\abs{a_{r_k, s_k}^{(k - 1)}} = \max_{i,j = k, \dots, n} \abs{a_{ij}^{(k - 1)}}\]
+	  - bessere Stabilität
+	  - teurer
+	  - Permutationsmatrizen $Q_k$ für $x$
+		\[\underbrace{G_k P_k \dots G_1 P_1 A Q_1 \dots Q_k}_{A^{(k)}} \underbrace{Q_k \dots Q_1 x}_{Q x} = G_k P_k \dots G_1 P_1 b\]
+   *Speicherausnutzung* \\
+   Die $q_{jk}^{(k)}$ können an den eliminierten Stellen im unteren	Dreieck von $A$ gespeichert werden. Das obere Dreick von $A$ wird während der Rechnung ersetzt.
+   Nach $k$ Eliminationsschritten
+   \begin{equation*}
+   \left[
+   \begin{array}{ccccccc|c}
+   r_{11} & r_{12} & \dots & r_{1k} & r_{1, k + 1} & \dots  & r_{1n} & c_1 \\
+   λ_{21} & r_{22} & \dots & r_{2k} & r_{2, k + 1} & \dots  & r_{2n} & c_2 \\
+   λ_{31} & λ_{32} & \ddots &       & \vdots & & \vdots & \vdots \\
+   \vdots & \vdots & \ddots &       & \vdots & & \vdots & \vdots \\
+   λ_{k1} & \dots  & λ_{kk} & r_{kk} & r_{k, k + 1} & \dots & r_{kn} & c_k \\
+   λ_{k1} & \dots  & \dots & λ_{k + 1, k} & a_{k +1, k + 1}^{(k)} & \dots & a_{k + 1, n}^{(k)} & b^{(k)}_{k + 1} \\
+   \vdots &        &       & \vdots       & \vdots  & & \vdots & \vdots \\
+   λ_{n1} & \dots  & \dots & λ_{n, k} & a_{n, k + 1}^{(k)} & \dots & a_{n, n}^{(k)} & b^{(k)}_{n} \\
+   \end{array}
+   \right]
+   \end{equation*}
+   mit $λ_{i + 1, 1}, \dots, λ_{n i}$ Permutationen von $q_{i + 1,i}^{(k)}, \dots , q_{ni}^{(k)}$. Endresultat ($k = n - 1$)
+   \begin{equation*}
+   \left[
+   \begin{array}{cccc|c}
+   r_{11} & \dots & \dots & r_{1n} & c_1 \\
+   l_{21} & r_{22} & \dots & r_{2n} & \vdots \\
+   \vdots & \ddots  & \ddots & \vdots & \vdots \\
+   l_{n1} & \dots & l_{n,n-1} & r_{nn} & c_n \\
+   \end{array}
+   \right]
+   \end{equation*}
+   #+ATTR_LATEX: :options [LR-Zerlegung]
+   #+begin_thm latex
+   Die Matrizen
+   \begin{equation*}
+   L =
+   \left[
+   \begin{array}{cccc}
+   1 & & &   \\
+   l_{21} & 1 & & \\
+   \vdots & \ddots  & \ddots & \\
+   l_{n1} & \dots & l_{n,n-1} & 1 \\
+   \end{array}\right], R =
+   \left[
+   \begin{array}{ccc}
+   r_{11} & \dots & r_{1n} \\
+   & \ddots & \vdots \\
+   & & r_{nn}
+   \end{array}
+   \right]
+   \end{equation*}
+   bilden eine LR-Zerlegung der Matrix $PA$. $PA = LR$, mit $P = P_{n - 1} \dots P_{1}$.
+   Für $P = \mathbb{1}$ ist die Zerlegung eindeutig.
+   #+end_thm
+   #+begin_proof latex
+   (für $P = \mathbb{1}$).
+   \[R = G_{n - 1} \dots G_1 A ⇔ \underbrace{G_1^{-1} \dots G_{n - 1}^{-1}}_{L} R = A\]
+   Eindeutigkeit: Übung.
+   #+end_proof
+   Aufwand:
+   $k$ -ter Eliminationsschritt
+   \begin{align*}
+   a_{ij}^{(k)} &= a_{ij}^{(k - 1)} - \frac{a_{ik}^{(k - 1)}}{a_{kk}^{(k - 1)}} a_{kj}^{(k - 1)} \\
+   b_i^{(k)} &= b_i^{(k - 1)} - \frac{a_{ik}^{(k - 1)}}{a_{kk}^{(k - 1)}} b_k^{(k - 1)}
+   \end{align*}
+   $i, j = k + 1, \dots, n$ $⇒$ $n - k$ Divisionen, $(n - k) + (n - k)^2$ Multiplikationen und Additionen
+   \[⇒ N_{\text{Gauß}}(n) = \frac{1}{3} n^3 + \mathcal{n^2}\]
+   Girl für Lösung von $Ax = b$ und für die Berechnung der Zerlegung $PA = LR$
+   #+begin_ex latex
+   \[A = \begin{pmatrix}3 & 1 & 6 \\ 2 & 1 & 3 \\ 1 & 1 & 1\end{pmatrix}, b = \cvec{2; 7; 4}\]
+   Pivotierung:
+   \begin{equation*}
+   \left[
+   \begin{array}{ccc|c}
+   3 & 1 & 6 & 2 \\
+   2 & 1 & 3 & 7 \\
+   1 & 1 & 1 & 4
+   \end{array}\right] \to
+   \left[
+   \begin{array}{ccc|c}
+   3 & 1 & 6 & 2 \\
+   2/3 & 1/3 & -1 & 17/3 \\
+   1/3 & 2/3 & -1 & 10/3
+   \end{array}\right] \to
+   \left[
+   \begin{array}{ccc|c}
+   3 & 1 & 6 & 2 \\
+   1/3 & 2/3 & -1 & 10/3 \\
+   2/3 & 1/3 & -1 & 17/3 \\
+   \end{array}\right] \to
+   \left[
+   \begin{array}{ccc|c}
+   3 & 1 & 6 & 2 \\
+   1/3 & 2/3 & -1 & 10/3 \\
+   2/3 & 1/2 & -1/2 & 4 \\
+   \end{array}
+   \right]
+   \end{equation*}
+   $\to$
+   \begin{align*}
+   x_3 &= - 8 \\
+   x_2 &= \frac{3}{2}(\frac{10}{3} + x_3) = -7 \\
+   x_1 &= \frac{1}{3}(2 - x_2 - 6x_3) = 19
+   \end{align*}
+   LR-Zerlegung:
+   \[P_1 = E_3, P_2 = \begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}\]
+   \[PA = \begin{pmatrix}3 & 1 & 6 \\ 1 & 1 & 1 \\ 2 & 1 & 3\end{pmatrix} = LR= \begin{pmatrix}1 & 0 & 0 \\ 1/3 & 1 & 0 \\ 2/3 & 1/2 & 1\end{pmatrix} \begin{pmatrix}3 & 1 & 6 \\ 0 & 2/3 & -1 \\ 0 & 0 & -1/2\end{pmatrix}\]
+   Für die numerische Stabilität der Gauß-Elimination ist im Allgemeinen Pivotierung sehr wichtig.
+   #+end_ex
+   Rückwärtsanalyse nach Wilkinson $A ∈ ℝ^{n × n}$, löse $A x = b$ mit Gauß-Elimination mit Spaltenpivotierung. Die berechnete Lösung $\tilde x$ ist
+   die exakte Lösung eines gestörten Systems $(A + δ A) \tilde x = b$ mit
+   \[\frac{\norm{δ A}_∞}{\norm{A}_∞} \leq 1.01 · 2^{n - 1}(n^3 + 2 n^2) eps\]
+   (ohne Beweis) \\
+   Störungssatzt $⇒$
+   \[\frac{\norm{δ x}}{\norm{x}} \leq \frac{\cond_∞ (A)}{1 - \cond_∞ (A) \norm{δ A} / \norm{A}} · 1.01 2^{n - 1}(n^3 + 2n^2) eps\]
+   Diese Abschätzung deckt pathologische Fälle ab. In der Praxis ist das Verhalet gutartig, das heißt die Gaußelimination mit Spaltenpivotierung ist ein stabiler Algorithmus.

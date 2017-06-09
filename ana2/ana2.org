@@ -451,3 +451,142 @@
    \[u_s(t) = Φ(t)(c + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s), c ∈ ℝ^n\]
    und irgendein Fundamentalsystem $Φ$
    #+end_remark
+   #+ATTR_LATEX: :options [3.18]
+   #+begin_ex latex
+   $x'(t) = A x(t), A . ℝ^{2 × 2}$. Ansatz: $x(t) = v e^{λ t}, λ ∈ ℂ, v = (v_1, v_2)^T ∈ ℂ^2$. Einsetzten in die Gleichung
+   \[⇒ λ v e^{λ  t} = \cvec{λ v_1 e^{λ t}}; λ v_2 e^{λ t} = A \cvec{v_1 e^{λ t}; v_2 e^{λ t}}\]
+   $λ v e^{λ t} = A v e^{λ t} ⇒ λ v = A v ⇒ x(t)$ eine Lösung falls $λ$ ein Eigenwert, $v$ zugehöriger Eigenvektor ist.
+   \[\det(A - λ I) = 0\]
+   Fall 1: $λ_1, λ_2 ∈ ℝ, λ_1 \neq λ_2$. Wir haben 2 Lösungen $v e^{λ_1 t}, \tilde e^{λ_2} t$. Die allgemeine Lösung des Systems ist dann gegeben durch
+   \[x(t) = c_1 v e^{λ_1 t} + c_2 \tilde v e^{λ_2 t}, \quad c_1, c_2 ∈ ℝ\]
+   $c_1, c_2$ kann man aus den Anfangsdaten finden. Das qualtiative Verhaltenn der Lösung ist von Vorzeichen $λ_1, λ_2$ abhängig.
+   - $λ_1, λ_2 > 0$: instabiler Knoten
+   - $λ_1 < 0 < λ_2$: Sattel
+   Fall2: $λ_1, λ_2 ∈ ℂ$. In diesem Fall sind $λ_1, λ_2$ konjugierte $λ_{1,2} = a \pm i b$
+   und $v = \cvec{v_1; v_2} + i \cvec{w_1; w_2}$ zu $λ_1$ und $\tilde v = \cvec{v_1; v_2} - i \cvec{w_1; w_2}$ zu $λ_1$.
+   Analog zu Fall 1 kann die allgemeine Lösung des Systems dargestellt werden
+   \begin{align*}
+   x(t) &= c_1 v e^{(a + b i) t} + c_2 \tilde v e^{(a - bi) t} \tag*{$c_1, c_2 ∈ ℂ$} \\
+   &= c_1 v e^{a t} (\cos b t + i \sin b t) + c_2 \tilde v e^{a t}(\cos b t + i \sin b t)
+   \end{align*}
+   Die Lösung des Systems für reelle Anfangsdaten sind reell und die reelwertige Lösung ist gegeben durch
+   \begin{align*}
+   x(t) &= \tilde c_1 e^{a t}(\Re v \cos b t + \Im v \sin b t) \\
+   &+ \tilde c_2 e^{a t}(\im v \cos b t + \Re v \sin b t) \quad \tilde c_1, \tilde c_2 ∈ ℝ
+   \end{align*}
+   #+begin_proof latex
+   Um das zu zeigen benutzen wir, dass die Summe aus dem Realteil und dem Imaginärteil allgemeiner komplexer Lösung eine reelle Lösung ist und
+   \begin{align*}
+   A(\Re v) &= a \Re v + b \Im v \\
+   A(\Im v) &= b \Re v + a \Im v \\
+   \end{align*}
+   #+end_proof
+   Einsetzen der Lösung in die Gleichung und ausnutzen der letzten Gleichung liefert den Beweis.
+   - $\Re λ_i > 0, i = 1, 2$: instabiler Fokus
+   - $\Re λ_1 < 0, r = 1, 2$: stabiler Fokus
+   - $\Re λ_i = 0$: Zentrum
+   Fall 3:  $λ_1 = λ_2$: Die Matrix ist nicht diagonalisierbar. Beispiel:
+   \[x' = \begin{pmatrix}λ & 1 \\ 0 & λ\end{pmatrix}\]
+   \begin{align*}
+   x_2' &= λ x_2 ⇒ x_2(t) = v_2 e^{λ t} \quad v_2 \const \\
+   x_1' &= λ x_1 + v_2 e^{λ t} \\
+   ⇒ x_1(t) = (v_1 + ∫_0^t v_2 e^{λ s} e^{- λ s} \d s) e^{λ t} \\
+   &= (v_1 + v_2 t) e^{λ t} = v_1 e^{λ t} + v_2 t e^{λ t}
+   \end{align*}
+   \begin{align*}
+   x' &= \begin{pmatrix}λ & 1 & 0 \\ 0 & λ & 1 \\ 0 & 0 & λ\end{pmatrix} \\
+   x_3(t) &= v_3 e^{λ t} \\
+   x_2(t) &= (v_2 + v_3 t) e^{λ t} \\
+   x_1(t) &= (v_1 + v_2 t + v_3 \frac{t^2}{2}) e^{λ t}
+   \end{align*}
+   Die gut erkennbare Struktur der einzelnen Komponenten (als Produkt aus Polynomen und Exponentialfunkion) lässt sich durch vollständige Induktion für Systeme mit beliebig vielen linearen Gleichungen nachweisen.
+   #+end_ex
+   #+begin_lemma latex
+   Sei $A ∈ ℝ^{n × n}$ und $\mathcal{L} = \{φ ∈ C^1(ℝ, ℝ^n) \mid φ = A l\}$
+   der Lösungsraum der zugehörigen homogenen Differentialgleichung. Dann gilt:
+   1. Sei $v ∈ ℝ^n \setminus \{0\}$ ein Eigenvektor von $A$ zu Eigenwert $λ$ ($A v = λ v$). Dann gilt:
+	  \[φ(t) := v e^{λ t} ∈ \mathcal{L}\]
+   2. Seien $v_i ∈ ℝ^n \setminus \{0\}$, $n$ linear unabhänigie Eigenvektoren mit Eigenwerten $λ_i ∈ ℝ$. Dann bilden die Funktionen $v_i e^{λ_i t}$ eine Basis von $\mathcal{L}$
+   3. Sei $v ∈ ℂ^n \setminus \{0\}$ ein Eigenvektor zu Eigenwerten $λ ∈ ℂ \setminus ℝ$. Sei $λ = a + b i, v := v + i w$. Dann gilt $φ_1, φ_2 ∈ \mathcal{L}$ wobei
+	  \begin{align*}
+	  φ_1 &= (v \cos b t - w \sin b t) e^{a t} \\
+	  φ_2 &= (v \sin b t + w \cos b t) e^{a t}
+      \end{align*}
+   #+end_lemma
+   #+begin_proof latex
+   1. $φ' = λ v e^{λ t} = A v e^{λ t} = A φ$
+   2. Die Funktionen sind unabhängig für $t = 0$ und liegen in $\mathcal{L}$.
+   3. Die Funktion $u ∈ C^1(ℝ, ℂ^n), u = v e^{λ t}$ erfüllt die Gleichung $u' = A u$. Es gilt:
+	 \[u := v e^{λ t} = e^{(a + i b)}(v + i w) = (v + i w)(\cos b t + i \sin b t) e^{a t}\]
+	 das heißt: $φ_1 := \Re u, φ_2 := \Im u$
+	 Da $A$ reell ist $⇒ \Re u' = \Re A u = A \Re u, \Im u' = \Im A u = A \Im u ⇒ φ_1, φ_2$ sind Lösungen.
+   #+end_proof
+   #+begin_thm latex
+   Sei $A ∈ ℝ^{n × n}$. Dann ist die Lösung der Anfangswertaufgabe
+   \[\begin{cases} ϕ'(t) = A ϕ(t) \\ ϕ(t_0) = \id \end{cases}\]
+   Gegeben durch $ϕ(t) = \exp( t A)$. Die Menge aller Lösungen $\mathcal{L}$ der Differentialgleichung $u'(t) = A u(t)$ ist
+   \[\mathcal{L} = \{ϕ(t) e_i \mid i = 1, \dots, n\}\]
+   #+end_thm
+   #+begin_proof latex
+   Man rechnet nach, dass alle Komponenten $\exp(t A)_{ij}, i, j = 1, \dots, n$ gleichmäßig und absolut konvergieren. Insbesondere ist $\exp(t A)$ glatt. Außerdem
+   vertauschen Ableitungen und Summanden. Daher
+   \[\dd{}{T} ϕ(t) = \sum_{k = 0}^{∞} \dd{}{t} \frac{(t A)^k}{k!} = A \sum_{k = 1}^{∞} \dd{}{t} \frac{(t A)^{k - 1}}{(k - 1)!} = A ϕ(t)\]
+   #+end_proof
+   #+begin_thm latex
+   Zu einer beliebigen Matrix $A ∈ ℝ^{n × n}$ existiert invertierbare Matrix $S$ sodass die Matrix $S^{-1} A S$ die *Jordannormalform* hat, das heißt
+   \[S^{-1} A S= \begin{pmatrix}J_1 &   &   \\   & J_2 &   \\   &   & J_k\end{pmatrix}\]
+   Die Blöcze $J_k$	haben für ein $λ_i ∈ ℂ$ die Form
+   \[J_i = \begin{pmatrix}λ_i & 1 &   & 0 \\   & \ddots & \ddots &   \\   &   & \ddots & 1 \\ 0 &   &   & λ_i\end{pmatrix}\]
+   #+end_thm
+   #+begin_proof latex
+   Lineare Algebra. Dimension von $J_i$ hängt von Vielfachheit von $λ_i$ ab.
+   #+end_proof
+   Mit Hilfe der Jordanschennormalform lässt sich die Exponentialfunkiton von Matrizen ausrechnen. Die Anwendung der Exponentialfunktion auf
+   die Blockmatrix lässt sich explizit ausrechnen.
+** Asymptotisches Lösungsverhalten bei Differentialgleichungen
+   Frage: Welche Eigenschaften haben die Lösungen für $t \to ∞$. Wir konzentrieren uns jetzt auf autonome Differentialgleichungen.
+   #+begin_ex latex
+   $x' = x(1 - x)$. Konstante Lösung
+   \[\bar x_1 := x(t) = 1 ∀ t ∈ ℝ_{+}\]
+   $x_0 = \bar x_1$, das heißt $\abs{x_0 - \bar x_1} = ε$. $\bar x_1$ stabil, weil $x(t) \xrightarrow{t \to ∞} \bar x_1$
+   \begin{align*}
+   \bar x_1 &= x(t) = 0 \tag{konstante Lösung} \\
+   x_0 &= \bar x_2 + ε \tag{instabil}
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Attraktoren]
+   #+begin_defn latex
+   Sei $Ω ⊂ ℝ^m$ offen, $t_0 ∈ ℝ, f ∈ C^0(Ω)$ ($f: Ω \to ℝ^m$). Ein Punkt $\bar x ∈ Ω$ heiße *lokaler Attraktor*
+   der Differentialgleichung $x'(t) = f(x(t))$ falls es eine offene Umbebung $U$ von $x_0$ gibt, dass
+   für sedes $x_0 ∈ U$ die Lösung der Gleichung gegen $\bar x$ konvergiert, das heißt
+   \[x(t) \xrightarrow{t\to ∞} \bar x\]
+   Falls die Lösung der Differentialgleichung gegen $\bar x$ konvergiert $∀ x_0 ∈ Ω$ dann heißt
+   $\bar x$ globaler Attraktor.
+   #+end_defn
+   #+begin_thm latex
+   1. Sei $x ∈ C^1(ℝ)$ eine Lösung der Differentialgleichung $x(t)' = f(x(t))$ mit $x(t) \xrightarrow{t \to ∞} \bar x$
+	  Dann gilt $f(\bar x) = 0$
+   2. Sei $\bar x$ ein lokaler Attraktor der Anfangswertaufgabe. Dann gilt $f(\bar x) = 0$
+   3. Sei $f ∈ C^1(ℝ)$. Es gelte $f(\bar x) = 0$ und $f'(\bar x) (= \dd{f}{x}\big|_{x = \bar x}) < 0$
+	  für ein $\bar x ∈ ℝ$. Dann ist $\bar x$ ein lokaler Attraktor der Anfangswertaufgabe
+   #+end_thm
+   #+begin_proof latex
+   1. Da $f$ stetig ist, gilt $x'(t) = f(x(t)) \to f(\bar x)$. Zusammen mit $x(t) \to \bar x$ folgt daraus $f(\bar x) = 0$
+   2. Aus 1. und Definition von Attraktor
+   3. Es gibt ein $ε > 0$, sodass $f > 0$ in $(\bar x - ε, \bar x), f < 0$ in $\bar x, \bar x + ε$.
+	  Sei $x(t)$ eine Lösung der Anfangswertaufgabe mit $x(t_0) ∈ (\bar x - ε,\bar x + ε)$. Dann
+	  fällt $\abs{x(t)}$ monoton. Daher gibt es eine $x_1 ∈ (\bar x - ε, \bar x + ε)$ mit
+	  $x(t) \to x_1$ für $t \to ∞$. Das $f \neq 0$ für $x ∈ (\bar x - ε, \bar x + ε)$ nach 1.
+	  folgt $x_1 = \bar x$
+   #+end_proof
+   #+ATTR_LATEX: :options [3.24 Stationäre Punkte]
+   #+begin_defn latex
+   Sei $f: ℝ^n \to ℝ^n$ und $x' = f(x)$. Jeder Punkt $\bar x ∈ ℝ^n$ mit $f(\bar x) = 0$ ist ein
+   sogenannter *stationärer Punkt* (Gleichgewichtpunkt, kritischer Punkt). Zum Beispiel:
+   $x' = a x, \bar x = 0$ stationärer Punkt, aber Attraktor nur falls $a < 0$
+   #+end_defn
+   #+ATTR_LATEX: :options [3.25]
+   #+begin_ex latex
+   $x' = x^2 + λ$ mit einem Parameter $λ ∈ ℝ$. Stationäre Punkte:
+   \[f(\bar x) = x^{-2} + λ = 0 ⇒ \begin{cases} \bar x = \pm \sqrt{\abs{λ}} & λ < 0 \\ \bar x = 0 & λ = 0 \\ \text{ keine } & λ > 0\]
+   #+end_ex

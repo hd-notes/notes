@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \usepackage{polyglossia}
 #+LATEX_HEADER: \setdefaultlanguage[spelling=new, babelshorthands=true]{german}
 # #+LATEX_HEADER: \usepackage[german]{translator}
-#+LATEX_HEADER: \usepackage{siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml}
+#+LATEX_HEADER: \usepackage{siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor}
 #+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
@@ -143,6 +143,12 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Graph}{Graph}
 #+LATEX_HEADER: \DeclareMathOperator{\Leg}{Leg}
 #+LATEX_HEADER: \DeclareMathOperator{\Sesq}{Sesq}
+#+LATEX_HEADER: \DeclareMathOperator{\Lie}{Lie}
+#+LATEX_HEADER: \DeclareMathOperator{\cond}{cond}
+#+LATEX_HEADER: \DeclareMathOperator{\GGT}{GGT}
+
+
+#+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}
 
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \let\oldabs\abs

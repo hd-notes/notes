@@ -897,7 +897,7 @@
   #+end_proof
   #+begin_thm latex
   Es gilt:
-  1. $φ ∈ \End(V)$ selbstadjungiert $⇒ γ': V × V \to ℝ, γ'(x, y) γ(φ(x), y)$ ist eine symmetrische
+  1. $φ ∈ \End(V)$ selbstadjungiert $⇒ γ': V × V \to ℝ, γ'(x, y) = γ(φ(x), y)$ ist eine symmetrische
 	 Bilinearform
   2. Ist $γ': V × V \to ℝ$ eine symmetrische Bilinearform, dann existiert genau ein selbstadjungierter Endormorphisums $φ ∈ \End(V)$ mit
 	 $γ'(x, y) = γ(φ(x), y) ∀ x, y ∈ V$
@@ -1224,4 +1224,263 @@
      \end{align*}
   2. Es ist $\im φ^{ad} = (\ker φ)^{\perp} = (\perp φ^{ad})^{\perp} = ((\im φ)^{\perp})^{\perp} = \im φ$
   \[⇒ V = \ker φ \hat\oplus (\ker φ)^{\perp} = \ker φ \hat\oplus \im(φ^{ad}) = \ker φ \hat\oplus \im φ\]
+  #+end_proof
+  #+begin_remark latex
+  $φ ∈ \End(V)$ normal, $λ ∈ ℂ$. Dann gilt:
+  1. $φ - λ \id_V$ ist normal
+  2. $\Eig(φ, λ) = \Eig(φ^{ad}, \bar λ)$
+  #+end_remark
+  #+begin_proof latex
+  1. Setze $ψ := φ - λ \id_V$. Für $v, w ∈ V$ ist $h(λ v, w) = h(v, \bar λ w)$, das heißt $(λ \id_V)^{ad} = \bar λ \id_V$
+	 \begin{align*}
+     ⇒ ψ^{ad} &= φ^{ad} - \bar λ \id_V \\
+	 ⇒ ψ^{ad} &= φ^{ad} - \bar λ \id_V \\
+	 ⇒ ψ^{ad} \circ ψ &= (φ^{ad} - \bar λ \id_V) \circ (φ - λ \id_V) = \underbrace{φ^{ad} \circ φ}_{= φ \circ φ^{ad}} - \bar λ φ - λ φ^{ad} + λ \bar λ \id_V \\
+	 &= (φ - λ \id_V) \circ (φ^{ad} - \bar λ \id_V) = ψ \circ ψ^{ad}
+     \end{align*}
+  2. $\Eig(φ, λ) = \ker ψ = \ker ψ^{ad} = \ker(φ^{ad} - \bar λ \id_V) = \Eig(φ^{ad}, \bar λ)$
+  #+end_proof
+  #+ATTR_LATEX: :options [Spektralsatz für normale Endomorphismen]
+  #+begin_thm latex
+  $φ ∈ \End(V)$. Dann sind äquivalent:
+  1. Es gibt eine Orthonormalbasis von $(V, h)$ aus Eigenvektoren von $φ$.
+  2. $φ$ ist normal
+  #+end_thm
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $\mathcal{B} = (v_1, \dots, v_n)$ eine Orthonormalbasis von $(V, h)$ aus Eigenvektoren von $φ$ zu Eigenwerten $λ_1, \dots, λ_n ∈ ℂ$. Es ist $(φ \circ φ^{ad})(v_i) = φ(φ^{ad}(v_i)) = φ(\bar λ_i, v_i) = \bar λ_i φ(v_i) = \bar λ_i λ_i v_i = (φ^{ad} \circ φ)(v_i) ∀ i = 1, \dots, n ⇒ φ\circ φ^{ad} = φ^{ad} \circ φ$
+  2. $⇒$ 1. per Induktion nach $n = \dim V$. \\
+	 Induktionsanfang: $n = 0$: trivial \\
+	 Induktionsschritt: $n \geq 1$: Sei $λ_1 ∈ ℂ$ ein Eigenwert von $φ$. Sei $U = \Eig(φ, λ_1) = \ker(φ - λ_1 \id_V)$. Sei $(v_1, \dots, v_r)$ eine Orthonormalbasis von $(U, h \Big|_{n × n})$. Nach
+	 25.25 ist $ψ := φ - λ_1 \id_V$ normal
+	 \begin{align*}
+	 V &= \ker ψ \hat\oplus \im ψ \\
+	 &= \Eig(φ, λ_1) \hat\oplus	\underbrace{\im(φ - λ_1 \id_V)}_{=: W}
+     \end{align*}
+	 Es ist $φ(W) = φ(φ - λ_1 \id_V)(V) = ((φ - λ_1 \id_V) \circ φ)(V) = (φ - λ_1 \id_V)(\underbrace{φ(V)}_{⊆ V}) ⊆ \im(φ - λ_1 \id_V) = W$. Außerdem:
+	 \begin{align*}
+	 φ^{ad}(W) &= φ^{ad}(φ - λ_1 \id_V)(V) = (φ^{ad} \circ φ - λ_1 φ^{ad})(V) \\
+	 &= (φ \circ φ^{ad} - λ_1 φ^{ad})(V) = ((φ - λ_1 \id_V) \circ φ^{ad})(V) ⊆ W
+     \end{align*}
+	 $φ\Big|_W^W$ ist normal, denn: Nach Eindeutigkeit der adjungierten Abbildung ist $(φ\Big|_W^W)^{ad} = (φ^{ad})\Big|_W^W$
+	 \begin{align*}
+	 \string(φ\Big|_W^W\string)^{ad} \circ φ\Big|_W^W &= (φ^{ad})\Big|_W^W \circ φ\Big|_W^W = (φ^{ad} \circ φ)\Big|_W^W = (φ \circ φ^{ad})\Big|_W^W \\
+	 &=	φ\Big|_W^W \circ (φ^{ad})\Big|_W^W = φ\Big|_W^W \circ (φ\Big|_W^W)^{ad}
+     \end{align*}
+	 Nach Induktionsanfang existiert eine Orthonormalbasis $(v_{r + 1}, \dots, v_n)$ von $(V, h\Big|_{W × W})$ aus Eigenvektoren von $φ$ $⇒ (v_1, \dots, v_n)$ ist Orthonormalbasis von $(V, h)$ aus Eigenvektoren von $φ$.
+  #+end_proof
+  #+begin_note latex
+  Insbesondere gilt:
+  - Für jedes selbstadjungierten / unitären Endomorphismus existiert eine Orthonormalbasis aus Eigenvektoren
+  - Jede reelle orthogonale Matrix ist *über $ℂ$* diagonalisierbar.
+  Achtung: Über $ℝ$ reicht "normal" nich aus: Es gibt orthogonale Matrizen, die über $ℝ$ nich diagonalisierbar sind (zum Beispiel $\begin{pmatrix}0 & -1 \\ 1 & 0\end{pmatrix}$ (Drehung um $π / 2$))
+  #+end_note
+  #+begin_conc latex
+  $A ∈ M(n × n, ℂ)$. Dann sind äquivalens:
+  1. $A$ ist normal
+  2. Es gibt eis $T ∈ U(n)$, sodass
+	 \[T^{-1} A T = \begin{pmatrix}λ_1 &  & 0 \\   & \ddots &  \\ 0 &   & λ_n\end{pmatrix}\]
+	 $λ_1, \dots, λ_n$ Eigenwerte von $A$
+  #+end_conc
+  #+begin_proof latex
+  Wende 25.26 auf $(ℂ^n, <·,·>)$ und $φ = \tilde A$ an.
+  #+end_proof
+# Kapitel 5 Ringe und Moduln
+* Ringe, Ideale und Teilbarkeit
+  In diesem Abschnitt seien $R, S$ stets kommutative Rnge (bei uns immer mit Eins)
+  #+ATTR_LATEX: :options [Ringhomomorphismus]
+  #+begin_defn latex
+  $φ: R \to S$ Abbildung. $φ$ heißt *Ringhomomorphismus* genau dann wenn folgende	Bedingungen erfüllt sind:
+  - (RH1) $φ(a + b) = φ(a) + φ(b) ∀ a, b ∈ R$
+  - (RH2) $φ(a b) = φ(a)φ(b) ∀ a, b ∈ R$
+  -	(RH3) $φ(1_R) = 1_S$
+  #+end_defn
+  #+ATTR_LATEX: :options [Ideal]
+  #+begin_defn latex
+  $I ⊆ R$. $I$ heißt ein *Ideal* in $R$ genau dann wenn die folgenden Bedingungen erfüllt sind:
+  - (I1) $0 ∈ I$
+  - (I2) $a, b ∈ I ⇒ a + b ∈ I$
+  -	(I3) $r ∈ R, a ∈ I ⇒ r a ∈ I$
+  #+end_defn
+  #+begin_ex latex
+  1. $\{0\}, R$ sind Ideale in $R$
+  2. FÜr $n ∈ ℤ$ ist $n ℤ \{n a \mid a ∈ ℤ\}$ ist ein Ideal
+  #+end_ex
+  #+begin_remdef latex
+  $φ: R \to S$ Ringhomomorphismus. Dann gilt:
+  1. $J ⊆ S$ Ideal $⇒ φ^{-1}(J) ⊆ R$ Ideal
+  2. $\ker φ := \{a ∈ R \mid φ(a) = 0\} ⊆ R$ Ideal
+  3. $φ$ injektiv $⇔ \ker φ = \{0\}$
+  4. $I ⊆ R$ Ideal und $φ$ surjektiv $⇒ φ (I) ⊆ S$ Ideal
+  5. $\im φ	:= φ(R)$ ist ein Unterrung von $S$ (das heißt ein Ring bezügilch der eingeschränkten Verknüpfungen.)
+  #+end_remdef latex
+  #+begin_proof latex
+  1. (I1): $0 ∈ φ^{-1}(J)$, denn $φ(0) = φ(0 + 0) = φ(0) + φ(0) ⇒ φ(0) = 0 ∈ J ⇒ 0 ∈ φ^{-1}(J)$ \\
+     (I2): $a, b ∈ φ^{-1}(J) ⇒ φ(a), φ(b) ∈ J ⇒ φ(a + b) = φ(a) + φ(b) ∈ J ⇒ a + b ∈ φ^{-1}(J)$ \\
+	 (I3): $r ∈ R, a . φ^{-1}(J) ⇒ φ(a) ∈ J ⇒ φ(r a) = φ(r) φ(a) ∈ J ⇒ ra ∈ φ^{-1}(J)$
+  2. aus 1., wegen $\ker φ = φ^{-1}(\{0\}), \{0\} ⊆ S$ Ideal
+  3., 4., 5.: nachrechnen
+  #+end_proof
+  #+begin_note latex
+  4. [@4] wird falsch, wenn man die Vorraussetzung $φ$ surjektiv weglässt: Die kanonische Inklusion $i: ℤ \to ℚ, x ↦ x$ ist ein Ringhomomorphismus, $ℤ$ ist ein Ideal in $ℤ$,
+	 aber $ℤ = i(ℤ)$ ist kein Ideal in $ℚ$, denn:
+	 \[\underbrace{\frac{1}{3}}_{∈ ℚ} · \underbrace{2}_{∈ ℤ} = \frac{2}{3} \dot ∈ ℤ\]
+	 $ℤ$ ist zumindest ein Unterring von $ℚ$.
+  #+end_note
+  #+begin_defthm latex
+  $I ⊆ R$ Ideal. Dann ist durch $r_1 \sim r_2 \xLeftrightarrow{\text{Def}} r_1 - r_2 ∈ I$ eine Äquivalenzrelation auf $R$ gegeben, welche die zusätzliche Eigenschaft
+  \[r_1 \sim r_2, s_1 \sim s_2 ⇒ r_1 + s_1 \sim r_2 + s_2, r_1 s_1 \sim r_2 s_2\]
+  hat ("Kongruenszrelation"). Die Äquivalenzklasse von $r ∈ R$ ist durch
+  \[\bar r := r + I := \{r + a \mid a ∈ I\}\]
+  gegeben und heßt die *Restklasse* von $r$ modulo $I$. Die Menge die Restklassen bezeichnen wir mit $\faktor{R}{I}$.
+  #+end_defthm latex
+  #+begin_proof latex
+  1. "$\sim$" ist Äquivalenzrelation: nachrechnen
+  2. Verträglichkeit mit $+, ·$: Sei $r_1 \sim r_2, s_1 \sim s_2 ⇒ r_1 - r_2 ∈ I, s_1 - s_2 ∈ I$
+	 \begin{align*}
+	 ⇒ (r_1 + s_1) - (r_2 - s_2) &= \underbrace{(r_1 - r_2)}_{∈ I} + \underbrace{(s_1 - s_2)}_{∈ I} ∈ I  ⇒ r_1 + s_1 \sim r_2 + s_2 \\
+  	 \intertext{Außerdem:}
+  	 r_1 s_1 - r_2 s_2 &= \underbrace{r_1 (s_1 - s_2)}_{∈ I} + \underbrace{s_2(r_1 - r_2)}_{∈ I} ∈ I ∈ r_1 s_1 \sim r_2 s_2
+     \end{align*}
+  #+end_proof
+  #+begin_defthm latex
+  $I ⊆ R$ Ideal. Dann wird $\faktor{R}{I}$ mit der Addition
+  \[+: \faktor{R}{I} × \faktor{R}{I} \to \faktor{R}{I}, \bar r + \bar s := \overline{r + s}\]
+  und der Multiplikation
+  \[·:\faktor{R}{I} × \faktor{R}{I} \to \faktor{R}{I}, \bar r · \bar s := \overline{r s}\]
+  zu einem kommutativen Ring, dam *Faktorring* (*Restklassenring*) $\faktor{R}{I}$. Die Abbildung $π: R \to \faktor{R}{I}, r ↦ \bar r$ ist ein surjektiver Ringhomomorphismus mit $\ker π = I$.
+  #+end_defthm latex
+  #+begin_proof latex
+  *Wohldefiniertheit* von "$+$","$·$": Nach 26.5 ist für $r_1, r_2, s_1, s_2 ∈ R$ mit $r_1 \sim r_2, s_1 \sim s_2$ auch $r_1 + s_1 \sim r_2 + s_2, r_1 s_1 \sim r_2 s_2$. \\
+  *Ringeigenschaften*: vererben sich aufgrund der vertreterweisen Definiton von $R$. \\
+  $π$ ist Ringhomomorphismus nach Konstruktion: $π(a + b) = \overline{a + b} = \bar a + \bar b = π(a) + π(b)$, analog für "$·$", $π(1) = \bar 1$ \\
+  $\ker π= \{r ∈ R \mid \bar r = \bar 0\} = \{r ∈ R \mid r \sim 0\} = \{r ∈ R \mid r - 0 ∈ I\} = I$
+  #+end_proof
+  #+begin_note latex
+  Insbesondere sind die Ideale in $R$ genau die Kerne von Ringhomomorphismen, die von $R$ ausgehen.
+  #+end_note
+  #+begin_ex latex
+  Ist $R = ℤ, I = n ℤ$ mit $n ∈ ℕ$, dann erhält man die aus der LA1 bekannten Restklassenringe $\faktor{ℤ}{nℤ}$ (vergleiche 6.4).
+  #+end_ex
+  #+ATTR_LATEX: :options [26.8 (Homomorphiesatz für Ring)]
+  #+begin_thm latex
+  $φ: R \to S$ Ringhomomorphismus. Dann gibt es einen Ringisomorphismus
+  \[Φ: \faktor{R}{\ker φ} \to \im φ, \bar r = r + \ker φ ↦ φ(r)\]
+  #+end_thm
+  #+begin_proof latex
+  *Wohldefiniertheit von $Φ$*: Seien $r_1, r_2 ∈ R$ mit $\bar r_1 = \bar r_2$
+  \[⇒ r_1 - r_2 ∈ \ker φ ℝ φ(r_1 - r_2) = 0 ⇒ φ(r_1) = φ(r_2)\]
+  *$Φ$ ist Ringhomomorphismus:
+  \[Φ(\bar r_1 + \bar r_2) = Φ(\overline{r_1 + r_2}) = φ(r_1 + r_2) = φ(r_1) + φ(r_2) = Φ(\bar r_1) + Φ(\{bar r_2\})\]
+  analog für "$·$", $Φ(\bar 1) = φ(1) = 1$ \\
+  *$Φ$ ist injektiv*: Sei $r ∈ R$ mit $Φ(\bar r) = 0$
+  \[⇒ φ(r) = 0 ⇒ r ∈ \ker φ ⇒ \bar r = r + \ker φ = \ker φ = \bar 0\]
+  das heißt $\ker Φ = \{\bar 0\}$. \\
+  *$Φ$ ist surjektiv*: nach	Konstruktion.
+  #+end_proof
+  #+begin_ex latex
+  $K$ Körper, $R = K[t], φ: K[t] \to K, f ↦ f(0)$. $φ$ ist Ringhomomorphismus (nachrechnen), $\im φ = K, \ker φ = \{f ∈ K[t] \mid \im f(0) = 0\} = \{f g \mid g ∈ K[t]\} = t K[t]$.
+  Wir erhalten einen Ringisomorphismus
+  \[Φ: \faktor{K[t]}{t K[t]} \to K, f + t K[t] ↦ f(0)\]
+  #+end_ex
+  #+ATTR_LATEX: :options [26.10]
+  #+begin_defn latex
+  $x ∈ R$ heißt *Nullteiler* $\xLeftrightarrow{\text{Def}}$ Es existiert $y ∈ R, y \neq 0$ mit $x y = 0$. \\ $R$ heißt *Nullteiler* (*Integritätsbereich*) $\xLeftrightarrow{\text{Def}}$ $R \neq 0$ und $0 ∈ R$ der einzige Nullteiler in $R$.
+  #+end_defn
+  #+begin_note latex
+  $R \neq 0 ⇒ 0$ ist ein Nullteiler in $R$ (wegen $0 · 1 = 0, 0 \neq 1$)
+  #+end_note
+  #+begin_ex latex
+  1. $ℤ$ ist nullteilerfrei
+  2. $\bar 2 ∈ \faktor{ℤ}{6ℤ}$ ist Nullteiler wegen $\bar 2 · \bar 3 = \bar 0$ ist $\faktor{ℤ}{6ℤ}$
+  3. Analog zu $K[t]$ kann man den Polynomring $R[t]$ erklären. Es gilt dann: $R$ nullteilerfrei $⇒ R[t]$ nullteilerfrei. (Übungen)
+  #+end_ex
+  #+ATTR_LATEX: :options [Einheit]
+  #+begin_remdef latex
+  $v ∈ R$ heißt *Einheit* $\xLeftrightarrow{\text{Def}}$ es existiert ein $y ∈ R$ mit $x y = 1$.
+  $R^{\ast} := \{x ∈ R \mid x \text{ ist Einheit }\}$ bildet eine abelsche Gruppe bezüglich "$·$".
+  #+end_remdef latex
+  #+begin_proof latex
+  nachrechnen.
+  #+end_proof
+  #+begin_ex latex
+  1. $ℤ^{\ast} = \{1, -1\}$, dann: $1 · 1 = 1, (-1)(-1) = 1, a b = 1 ⇒ \abs{a} \abs{b} = 1 ⇒ \abs{a} = \abs{b} = 1$
+  2. $K$ Körper $⇒ K^{\ast} = K \setminus \{0\}$
+  3. $R[t]^{\ast} = R^{\ast}$ (Übungen)
+  #+end_ex
+  #+begin_defn latex
+  $a_1, \dots, a_n ∈ R, I ⊆ R$ Ideal.
+  \[(a_1, \dots, a_n) := \{\sum_{i = 1}^{n} a_i r_i \mid r_1, \dots, r_n ∈ R\}\]
+  heißt das *von $a_1, \dots, a_n$ erzeugte Ideal*. $I$ heißt *Hauptideal* $\xLeftrightarrow{\text{Def}}$ es existiert ein $a ∈ R$ mit $I = (a) = \{r a \mid r ∈ R\} =: R a$. \\
+  $R$ heißt *Hauptidealring* (HIR) $\xLeftrightarrow{\text{Def}}$ $R$ ist nullteilerfrei und jedes Ideal in $R$ ist ein Hauptideal.
+  #+end_defn
+  #+begin_note latex
+  $(a_1, \dots, a_n)$ ist ein Ideal in $R$ (leicht nachzurechnen)
+  #+end_note
+  #+begin_remark latex
+  $Z$ ist ein Hauptidealring. Ist $I ⊆ ℤ$ ein Ideal, dann existiert ein eindeutig bestimmtes $n ∈ ℕ_0$ mit
+  \[I = (n) = n ℤ\]
+  #+end_remark
+  #+begin_proof latex
+  *$ℤ$ nullteilerfrei*: klar. \\
+  *Existenz*: Sei $I ⊆ ℤ$ Ideal.
+  1. Fall: $I = \{0\} = (0)$, dann fertig
+  2. Fall: $I \neq \{0\}$. Mat $a ∈ I$ ist auch $-a = (-1) a ∈ I$ somit $I ∩ ℕ \neq \emptyset$. $I ∩ ℕ$ besitzt ein kleinstes Element $b$. Behauptung: $I = (b)$ \\
+	 "$\supseteq$" $x ∈ (b) ⇒$ es existiert ein $r ∈ ℤ$ mit $x = r b ⇒ x ∈ I$ \\
+	 "$⊆$" Sei $x ∈ I ⇒$ es	existieren $q, r ∈ ℤ$ mit $x = q b + r, 0 \leq r < b$
+	 $⇒ r = x - q b ∈ I$. Wegen Minimalität von $b$ in $I ∩ N$ folgt $r = 0 ⇒ x = q b ∈ (b)$
+  *Eindeutigkeit*: Seien $m, n ∈ ℕ_0$ mit $(m) = (n)$. Offenbar gilt: $m = 0 ⇔ n = 0$. Im Folgenden seien $m, n \neq 0$. Wegen $(m) = (n)$ ist $m ∈ (n), n ∈ (m) ⇒$ es existieren $r_1, r_2 ∈ ℤ$ mit
+  $m = r_1 n$ und $n = r_2 m$
+  \[⇒ m = r_1 n = r_1 r_2 m ⇒ r_1 r_2 = 1 ⇒ r_1 = r_2 = 1 ∨ r_1 = r_2 = -1 \xRightarrow{m, n ∈ ℕ_0} r_1 = r_2 = 1 ⇒ m = n\]
+  #+end_proof
+  #+begin_ex latex
+  $ℤ[t]$ ist kein Hauptidealring: Es gibt $f ∈ ℤ[t]$ mit $(2, t) = (f)$, dann: Annahme: Es existiert $f ∈ ℤ[t]$ mit $2 = h f ⇒ \deg h = \deg f = 0$, das heißt $f$ ist konstantes Polynom, etwa $f = a$ für ein
+  $a ∈ ℤ$. Außerdem existiert $\tilde h ∈ ℤ[t]$ mit $t = \tilde h f = h a ⇒ a = \pm 1 ⇒ f = \pm 1$. Aber: $\pm 1 \not ∈ (2, t)$, dann andernfalls existieren $u, v ∈ ℤ[t]$ mit $\pm 1 = 2 u + t v \xRightarrow{t = 0} \pm 1 = 2 u(0) + 0 · v(0) = 2 u(0)$
+  #+end_ex
+  #+begin_defn latex
+  $R$ nullteilerfrei, $a, b ∈ R$. $b$ heißt ein *Teiler* von $a$ (Notation: $b \mid a$) $\xLeftrightarrow{\text{Def}}$ es existiert ein $c ∈ R$ mit $a = b c$. \\
+  $a, b$ heißten assoziiert (Notation: $a \estimates b$) $\xLeftrightarrow{\text{Def}}$ $a \mid b$ und $b \mid a$
+  #+end_defn
+  #+begin_ex latex
+  $R = ℤ, a ∈ ℤ ⇒ a \estimates - a$
+  #+end_ex
+  #+begin_remark latex
+  $R$ nullteilerfrei, $a, b ∈ R$. Dann sind äquivialent:
+  1. $a \estimates b$
+  2. Es existiert $e ∈ ℝ^{\ast}$ mit $a = b e$
+  3. $(a) = (b)$
+  #+end_remark
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $a \estimates b ⇒ a \mid b$ und $b \mid a ⇒$ es existieren $c, d ∈ R$ mit $b = a c, a = b d$
+	 \[⇒ b = a c = b d c ⇒ b(1 - d c) = 0\]
+	 1. Fall: $b = 0 ⇒ a = b d = 0$. Setze $e :=$, fertig: $a = b · 1$
+	 2. Fall: $b \neq 0 ⇒ 1 - d c = 0 ⇒ d c = 1 ⇒ c, d ∈ R^{\ast}$. Setze $e := d$, dann $a = b d = b c$
+  2. Sei $a = b e$ mit $e ∈ R^{\ast} ⇒ a ∈ (b) ⇒ (a) ⊆ (b)$. Wegen $e ∈ R^{\ast}$ ist $b = e^{-1} a ⇒ (b) ⊆ (a)$
+  3. Sei $(a) = (b) ⇒ a ∈ (b) ⇒$ es existiert $c ∈ R$ mit $a = b c ⇒ b \mid a$. Analog: $a \mid b$ also $a \estimates b$
+  #+end_proof
+  #+begin_defn latex
+  $R$ nullteilerfrei, $a_1, \dots, a_n ∈ R$. $d ∈ R$ heißt *größter gemeinsamer Teiler von $a_1, \dots, a_n \xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt:
+  - (GGT1) $d \mid a_1, \dots, d \mid a_n$
+  -	(GGT2) $c \mid a_1, \dots, c \mid a_n ⇔ c \mid d$
+  #+end_defn
+  #+begin_proof latex
+  Wir bezeichnent die Menge aller gröhten gemeinsamen Teiler von $a_1, \dots, a_n$ mit $\GGT(a_1, \dots, a_n)$.
+  #+end_proof
+  #+begin_note latex
+  - Seien $d_1, d_2 ∈ \GGT(a_1, \dots, a_n)$, dann folgt $d_1 \mid d_2$ und $d_2 \mid d_1$, also $d_1 \estimates d_2$.
+  - Ist $d ∈ \GGT(a_1, \dots, a_n)$ und $d' \estimates d$, dann ist $d' ∈ \GGT(a_1, \dots, a_n)$
+  -	Ohne zusatzliche Vorraussetzungen an $R$ kann man im allgemeinen nicht erwarten, dass $\GGT(a_1, \dots, a_n) \neq \emptyset$. Zum Beispiel ist $R = ℤ[\sqrt{-3}] = \{a + b \sqrt{-3} \mid a, b ∈ ℤ\} ⊆ ℂ$ ist
+	$\GGT(4, 2 · (1 + \sqrt{-3})) = \emptyset$ (Übungen)
+  #+end_note
+  #+begin_remark latex
+  $R$ Hauptidealring, $a_1, \dots, a_n ∈ R$. Dann gilt:
+  1. $\GGT(a_1, \dots, a_n) \neq \emptyset$
+  2. $d ∈ \GGT(a_1, \dots, a_n) ⇔ (d) = (a_1, \dots, a_n)$
+  #+end_remark
+  #+begin_proof latex
+  1. $R$ Hauptidealring $⇒$ es existiert $\tilde d ∈ R$ mit $(a_1, \dots, a_n) = (\tilde d)$. Behauptung: $\tilde d ∈ \GGT(a_1, \dots, a_n)$, denn: \\
+     (GGT1): $a_1 ∈ (a_1, \dots, a_n) = (\tilde d) ⇒ \tilde d \mid a_i ∀ i = 1, \dots n$ \\
+     (GGT2): Wegen $\tilde d ∈ (a_1, \dots, a_n)$ existieren $r_1, \dots, r_n ∈ R$ mit $\tilde d = r_1 a_1 + \dots + r_n a_n$. Ist $c ∈ R$ mit $c \mid a_1, \dots, c \mid a_n$, dann folgt
+     $c \mid r_1 a_1 + \dots + r_n a_n = \tilde d$
+  2. "$⇒$" $d ∈ \GGT(a_1, \dots, a_n) ⇒ d \estimates \tilde d ⇒ (d) = (\tilde d) = (a_1, \dots, a_n)$
+	 "$\impliedby$" Sei $(d) = (a_1, \dots, a_n) ⇒ d ∈ \GGT(a_1, \dots, a_n)$ mit Argument aus dem Beweis von 1.
   #+end_proof

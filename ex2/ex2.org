@@ -326,3 +326,76 @@
    H_{Luft} &= \frac{N I μ}{(μ - 1)d + 2 π R} \approx \frac{μ N I}{μ d + 2 π R} \\
    ⇒ B &= μ_0 H_{Luft} = \frac{μ_0 μ N I}{μ d + 2 π R}
    \end{align*}
+* Induktion und elektromagnetische Wechselfelder
+  Bisher: stationäre, das heißt zeitunabhängige Felder \\
+  Jetzt:
+  - zeitabhängige B-Felder $\to$ magnetische Induktion
+  - zeitabhängige E-Felder $\to$ Verschiebungsstrom
+** Magnetische Induktion
+   Beobachtungen
+   - Bewegte Leiterschleife im Magnetfeld resultiert in Induktion und Spannugsstöhen
+   - Vorzeichen abhängig von Bewegungsrischtung und Richtung des Magnetfelds
+   - Mehrere Windungen (beziehungsweise gröhere Fläche) $\to$ höhere Spannungen
+   - Drehung Leiterschleife $\to$ Wechselspannung
+   \[∫ U(t) \d t = Δ ϕ_m \quad\text{mit}\quad ϕ_m= ∫ \v B \d \v A\]
+   \[U_{ind}= - \dot ϕ_m \quad\text{beziehungsweise} U_{ind} = - N \dot ϕ_m\]
+   Ursache? $⇒$ Lorentzkraft
+   \[\v F = q(\v b × \v B)\]
+   \begin{align*}
+   \d U_{ind} &= E_{ind} \d l = \frac{F}{q} \d l = v B \d l \\
+   U_{ind} &= ∫_1^2 E_{ind} \d l = v B l \\
+   U_{ind} &= ∮ E \d l = ∫_1^2 E \d l + ∫_2^1 E \d l = v B l
+   \end{align*}
+   Beliebige Schleife
+   \begin{align*}
+   U_{ind} &= ∮(\v v × \v B) \d \v l \\
+   &= ∮ \v E_{ind} \d \v l \\
+   &= ∮ (\d \v l × \v v) \v B \\
+   &= - ∮(\v v × \d \v l) \v B \\
+   &= - ∮(\dd{\v s}{t} × \d \v l) \v B = - ∮ \dd{\v A}{t} \v B \\
+   &= - \dd{}{t} ∫ \v B \d \v A = - \dot ϕ_m \tag{Für $\v B = \const$} \\
+   ϕ_m &= ∫ \v B \d \v A = B l s \\
+   \dot ϕ_m &= B l \dot s = B l v
+   \end{align*}
+   Neu: Induktion durch $\dot{\v B}$. Rein experimentelle Beobachtung
+   #+ATTR_LATEX: :options [Faradaysches Induktionsgesetz]
+   #+begin_thm latex
+   \[U_{ind} = ∮ E_{ind} \d \v s = - \dot ϕ_m\]
+   mit $ϕ_m = ∫ \v B \d \v A$
+   #+end_thm
+   Neue	grundlegende Eigenschaft: Wichtig: $\rot \v E \neq 0$
+   \begin{align*}
+   ∮_C \v E \d \v s &= - \dot ϕ_m = - \dd{}{t} ∫_O \v B \d \v A \\
+   ⇒ ∫_O \rot \v E \d \v A &= - \dd{}{t} ∫_O \v B \d \v A = - ∫_O \dot{\v B} \d \v A \tag{Falls $O$ beziehungsweise $C$ konstant}
+   \end{align*}
+   #+ATTR_LATEX: :options [3. Maxwell-Gleichung]
+   #+begin_thm latex
+   \begin{align*}
+   ∮_C \v E \d \v s &= - \dd{}{t} ∫_O \v B \d \v A \tag{E-Feld nicht mehr Wirbelfrei} \\
+   \rot \v E &= - \dot{\v B} \tag{Induktion nur in Verbindung mit der Lorenzkraft}
+   \end{align*}
+   #+end_thm
+   #+ATTR_LATEX: :options [Lenzsche-Regel]
+   #+begin_thm latex
+   Die durch Induktion entstehende Spannungen, Ströme, Felder und Kräfte wirken der die Induktion hervorrufenden Ursache stets entgegen.
+   #+end_thm
+** Generatoren
+   \begin{align*}
+   ϕ_m &= ∫\v B \d \v A = B A \cos ω t \\
+   \dot{ϕ_m} = - U_{ind} = ω B A \sin ω t
+   \end{align*}
+** Induktivität und Selbstinduktion
+   $B \sim I, ϕ_m \sim I$
+   #+ATTR_LATEX: :options [Induktivität]
+   #+begin_defn latex
+   \[ϕ_m = L I\]
+   $L$: Eigenschaft des felderzeugenden Leiters.
+   #+end_defn
+   Induktivität einer Spule:
+   $N$ Windungen, $l$ Länge, $n = N / l$, Querschnittsfläche $A$
+   \begin{align*}
+   B &= μ μ_0 n I \\
+   ϕ_m &= N B A = n l B A \\
+   ϕ_m &= \underbrace{μ μ_0 n^2 A l}_{L} I \\
+   ⇒ U_{ind} &= - \dot{ϕ_m} = - L \dot I
+   \end{align*}
