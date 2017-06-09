@@ -400,7 +400,7 @@
    \[α = 1, \dots, p: \sum_{m} f_m^α dq_m + f_t^α \d t = 0\]
    $f_m^α$ sind Funktionen der $q_m, t$. Wir wollen mit Vektoren in $ℝ^{3N - d}$ arbeiten:
    \[δ\v q := \{δ_m\}, \v f^α := \{f_m^α\}, \v p := \{Q_M - (\dd{}{t}\pp{}{\dot q_m} - \pp{}{q_m})T\}\]
-   Bedindung für virtuelle Verrückung:
+   Bedingung für virtuelle Verrückung:
    \[\sum_{m} f_m^α δq_m = 0 ⇔ \v f^α δ\v q = 0\]
    Sei $\Span\{\v f^α\}$ der von dem $\v f^α$ aufgespannte lineare Unterraum von $ℝ^{3N - d}$.
    Sei $\Span\{\v f^α\}_{\perp}$ das orthogonale Komplement. $⇒$ Zwänge $δ\v q ∈ \Span \{\v f^α\}_{\perp}$.
@@ -416,7 +416,7 @@
 ** Lagrange-Multiplikatoren und Zwangskräfte
    Aus unserer Herleitung von D'Alembert folgt als technisches Zwischenergebnis:
    \[(\dd{}{t} \pp{}{\dot q_m} - \pp{}{q_m}) T = \sum_{a} m_a \ddot{\v x}_a \pp{\v x_a}{q_m}\]
-   Ersezte: $m_a \ddot{\v x}_a = \v F_a^{tot} = \v F_a + \v F_a^c$. Definiere
+   Ersetze: $m_a \ddot{\v x}_a = \v F_a^{tot} = \v F_a + \v F_a^c$. Definiere
    \[Q_m := \sum_{a} \v F_a \pp{\v x_a}{q_m}, Q_m^c := \sum_{a} \v F_a^c \pp{\v x_a}{q_m}\]
    Schreibe rechte Seite von der Gleichung in $Q$ 's um. Setze in "Lagrange-1" ein. Finde:
    \[Q_m^C= \sum_{α} λ^α f_m^α\]
@@ -428,7 +428,7 @@
    \end{align*}
    $m = 1, \dots, 3N, m_1 = m_2 = m_3, etc$
 ** Lagrange-Gleichungen 2. Art
-   Betrachte System wie in 5.4 mit verallgemeinerten Koordinaten $q_m$ und *ohne* nichtholonome Zwänge. Seien die äußeren Kräfte konservatir: $\v F_a = - \v ∇_a V(\v x_1, \dots, \v x_N)$
+   Betrachte System wie in 5.4 mit verallgemeinerten Koordinaten $q_m$ und *ohne* nichtholonome Zwänge. Seien die äußeren Kräfte konservativ: $\v F_a = - \v ∇_a V(\v x_1, \dots, \v x_N)$
    $\v ∇_a$: Gradient bezüglich $\v x_a$
    \begin{align*}
    ⇒ Q_m &= \sum_{a} \v F_a \pp{\v x_a}{q_m} = -\sum_{a} (\v ∇_a V)\pp{\v x_a}{q_m} = -\pp{V}{q_m} \\
@@ -469,7 +469,7 @@
   - $∃$ Umkehrung von Noether
   -	Grundlegend für Quantenmachanik (für kanonische Quantisierung)
 ** Legendre-Transformation
-   Gegeben: $f: ℝ \to ℝ, x ↦ f(x)$. Wollen "Information" in $f$ anders darstellen, zum Beispil durch Funktion von $u \equiv f'(x)$. Man könnte zum Beispiel $x = x(u)$ definieren durch Auflösen von $u = f'(x)$.
+   Gegeben: $f: ℝ \to ℝ, x ↦ f(x)$. Wollen "Information" in $f$ anders darstellen, zum Beispiel durch Funktion von $u \equiv f'(x)$. Man könnte zum Beispiel $x = x(u)$ definieren durch Auflösen von $u = f'(x)$.
    Dann könnte man $f = f(x(u))$ als transformierte Funktion auffassen. Das ist nur "fast" richtig. Mathematisch natürlicher ist
    \[g(u) = x(u) · u - f(x(u))\]
    #+ATTR_LATEX: :options [Legendre-Transformation]

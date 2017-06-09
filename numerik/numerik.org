@@ -565,7 +565,7 @@
    \[(φ_n, φ_1) = (ψ_n, φ_i) - \sum_{k = 1}^{n - 1}(ψ_n, φ_k)\underbrace{(φ_k, φ_i)}_{δ_{ik}} = 0\]
    und $\norm{φ_n}^2 = 1$ nach Konstruktion.
    #+end_proof
-   Widerhohlung: Gauß-Approximation, Prähilbertraum $H$, Teilraum $S ⊂ H, \dim S = n < ∞$
+   Wiederhohlung: Gauß-Approximation, Prähilbertraum $H$, Teilraum $S ⊂ H, \dim S = n < ∞$
    \[∀ f ∈ H ∃! g ∈ S: \norm{f - g} \leq \min_{φ ∈ S} \norm{f - φ}\]
    Äquivalent: $e := f - g \perp S ⇔ (f - g, φ) = 0 ∀ φ ∈ S$ \\
    Orthogonalisiere Basis $\{ψ_1, \dots, ψ_n\}$ von $S$ mit Gram-Schmidt
@@ -584,7 +584,7 @@
   \[∫_a^b f(x) \d x \approx \sum_{i = 0}^{n - 1}(x_{i + 1} - x_i) f(x_i)\]
   #+end_ex
   Interpolatorische Quadraturformeln. \\
-  Idee: Interpoliere statt $f$ ein Interpolationspolynom auf $[a, b]$!
+  Idee: Interpoliere $f$ durch ein Interpolationspolynom auf $[a, b]$!
   \[p_n(x) = \sum_{i = 0}^{n} f(x_i) L_i^{(n)}(x)\]
   \[⇒ I^{(n)}(f) = ∫_a^b p_n(x) \d x = \sum_{i = 0}^{n} f(x_i) ∫_a^b \underbrace{L_i^{(n)}(x) \d x}_{= α_i}\]
   Quadraturgewichte hängen nur von $a, x_0, \dots, x_n, b$ ab.
@@ -661,7 +661,7 @@
   &= ω_n h^{(m + 1)}(b - a)f^{(m + 1)}(ξ)
   \end{align*}
   #+begin_ex latex
-  1. Summierte Trapezrgel $(m = 1)$
+  1. Summierte Trapezregel $(m = 1)$
 	 \begin{align*}
 	 I_h^{(1)} &= \sum_{i = 0}^{N - 1}\frac{x_{i + 1} - x_i}{2}[f(x_i) + f(x_{i + 1})] \\
 	 &= \frac{h}{2} f(a) + h \sum_{i = 1}^{N - 1} f(x_i) + \frac{h}{2}f(b) \\
@@ -688,9 +688,9 @@
 ** Gaußsche Quadraturformeln
    Frage: Wie wählt man $x_i$ in
    \[I^{(n)}(f) = \sum_{i = 0}^{N} α_i f(x_i)\]
-   optimal? Nach Konstruktion ist $I^{(n)}$ mindestens von der Ordnug $n + 1$
+   optimal? Nach Konstruktion ist $I^{(n)}$ mindestens von der Ordnung $n + 1$
    #+begin_lemma latex
-   Interpolatorische Quadraturformelt sind höchstens von der Ordnung $2n + 2$
+   Interpolatorische Quadraturformeln sind höchstens von der Ordnung $2n + 2$
    #+end_lemma
    #+begin_proof latex
    Wähle
@@ -699,7 +699,7 @@
    ⇒ 0 &< ∫_a^b p(x) \d x = \sum_{i = 0}^{n} α_i \underbrace{p(x_i)}_{0} = 0 \lightning
    \end{align*}
    #+end_proof
-   Gaußsche Quadraturformelt erreichen die Maximalordnung $2n + 2$ (exakt für $p ∈ P_{2n + 1}$)
+   Gaußsche Quadraturformen erreichen die Maximalordnung $2n + 2$ (exakt für $p ∈ P_{2n + 1}$)
    Herleitung: Für $x_0, \dots, x_n, x_{n + 1}, \dots, x_{2n + 1} ∈ [a, b]$ betrachte $I^{(n)}(t)$ und I^{(2n + 1)}(f)
    \begin{align*}
    I(f) - I^{(2n + 1)}(f) &= I(f) - \sum_{i = 0}^{2n + 1} f[x_0, \dots, x_i] \big|_a^b ∫_a^b \prod_{j = 0}^{i - 1} (x - x_j) \d x \\
@@ -715,11 +715,11 @@
    #+begin_thm latex
    Gegeben sei ein Skalarprodukt auf $C[a, b]$
    \[(f, g)_ω = ∫_a^b f(x) g(x) ω(x) \d x\]
-   mit integriebarer Gewichtsfunktion $ω(x) \geq 0, x ∈ (a, b)$ mit höchtens endlich vielen Nullstellen. Dann haben die mittels Gram-Schmidt aus $\{1, x^1, \dots\}$ bezüglich $(·,·)_ω$ orthogonalisiierten Polynome
+   mit integrierbarer Gewichtsfunktion $ω(x) \geq 0, x ∈ (a, b)$ mit höchstens endlich vielen Nullstellen. Dann haben die mittels Gram-Schmidt aus \{1, x^1, \dots\} bezüglich $(·,·)_ω$ orthogonalisierten Polynome
    $\{p_0, p_1, \dots\}$ lauter reelle, einfache Nullstellen in $[a, b]$
    #+end_thm
    #+begin_proof latex
-   Sei $N_n := \{λ ∈ (a, b) \mid λ \text{ Nullstelle ungerader Vielfachheit von } p_n\}$. Sezte
+   Sei $N_n := \{λ ∈ (a, b) \mid λ \text{ Nullstelle ungerader Vielfachheit von } p_n\}$. Setze
    \[q(x) = \begin{cases} 1 & N_n \neq \emptyset \\ \prod_{i = 1}^m (x - λ_i) & N_n = \{λ_1, \dots, λ_m\}, m > 0\end{cases}\]
    Nach dem Fundamentalsetz der Algebra und wegen $p(x) = x^n - r(x), r ∈ P_{n - 1}$, nach Konstruktion mit Gram-Schmidt (ohne Normalisieren) gilt
    \[p_n(x) = \prod_{i = 1}^n (x - λ_i), λ_i ∈ ℂ, i = 1, \dots, n\]
@@ -728,7 +728,7 @@
    $⇒ p_n q ∈ P_{n + m}$ ist reell und hat in $[a, b]$ keinen Vorzeichenwechsel.
    \[(p_n, q)_ω = ∫_a^b p_n(x) (x) ω(x) \d k \neq 0\]
    Für $m < n$ ist das ein Wiederspruch zu $p_n \perp p_{n - 1} ⇒ μ_n = \{λ_1, \dots, λ_n\}$. Für $[a, b] = [-1, 1]$ und  $ω \equiv 1$, das heißt $(·, ·)_ω = (·,·)_2$
-   sind die $p_n$ mittels $p_n(x) = x^n + \dots$ mormiere Legendre-Polynme $L_n$(x). Wir wählen also die Nullstellen $ζ_0,ndots, λ_n$ von $p_{n + 1}$ beziehungsweise $L_{n + 2}$ als
+   sind die $p_n$ mittels $p_n(x) = x^n + \dots$ mormiere Legendre-Polynome $L_n$(x). Wir wählen also die Nullstellen $ζ_0,ndots, λ_n$ von $p_{n + 1}$ beziehungsweise $L_{n + 2}$ als
    Stützstellen einer interpolatorischen Quadraturformel auf $[-1, 1]$.
    \[I^{(n)}(f) = \sum_{i = 9}^{n} α_i f(λ_i), α_i = ∫_{-1}^1 \prod_{\substack{j = 0 \\ j \neq i}} \frac{x - λ_j}{λ_i - λ_j} \d x\]
    #+end_proof
@@ -805,7 +805,7 @@
   - überbestimmt falls $m > n$
   - quadratisch falls $m = n$
   *Störungsstheorie*:
-  - Konditionierung von quadratischen Linearen Gleichungssystemen
+  - Konditionierung von quadratischen linearen Gleichungssystemen
   - Fehlereinfluss von Datenfehlern und Rundungsfehlern auf Lösung $x$
   *Vektor- und Matrizennormen*: \\
   Sei $\mathbb{K} = ℝ$ oder $\mathbb{K} = ℂ$. Erinnerung: Eigenschaften einer Norm: $\norm{·}: \mathbb{K}^n \to ℝ$
@@ -826,7 +826,7 @@
   #+begin_defn latex
   Eine Norm $\norm{·}$ auf $\mathbb{K}^{n × n}$ heißt verträglich wit einer Vektornorm $\norm{·}$ auf $\mathbb{K}^n$, wenn gilt:
   \[\norm{A x} \leq \norm{A} \norm{x} ∀ x ∈ \mathbb{K}^n, A ∈ \mathbb{K}^{n × n}\]
-  Sie heißt Matrizennorm, wenns ie submultiplikatri ist
+  Sie heißt Matrizennorm, wenn sie submultiplikativ ist
   \[\norm{AB} \leq \norm{A} \norm{B} ∀ A, B ∈ \mathbb{K}^{n × n}\]
   #+end_defn
   #+begin_ex latex
@@ -839,7 +839,7 @@
   \[\norm{\mathbb{I}} = \sup_{\substack{x ∈ \mathbb{K}^n\\ \norm{x} = 1}} \norm{\mathbb{I} x} = 1\]
   #+end_ex
   #+begin_lemma latex
-  Die natürlchen Matrizennormen zu $\norm{·}_∞$ und $\norm{·}_1$ sind die "maximale Zeilen-/Spaltensumme":
+  Die natürlichen Matrizennormen zu $\norm{·}_∞$ und $\norm{·}_1$ sind die "maximale Zeilen-/Spaltensumme":
   \begin{align*}
   \norm{A}_∞ &= \max_{j = 1, \dots, n} \sum_{k = 1}^{n} \abs{a_{jk}} \\
   \norm{A}_1 &= \max_{k = 1, \dots, n} \sum_{j = 1}^{n} \abs{a_{jk}}

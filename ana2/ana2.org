@@ -102,10 +102,10 @@
   
   Dies ist keine *globale* ($∀t ∈ ℝ_+$) Lösung, da man $x(t)$ nicht nach $t = t^{\ast}$ fortsetzen kann.
   #+end_ex
-  *Methode der Variation die Konstanten* \\
-  Wir betrachten Differentialgleichung $x' = a(t) x(t) + b(t), t ∈ I = [t_0, t_0 + τ] ⊂ ℝ$
-  mit stetigen Funktionen $a, b: I \to ℝ$
-  Die zugehörige homogene Differentialgleichung $y' = ay$ hat eine Lösung die Form
+  *Methode der Variation der Konstanten* \\
+  Wir betrachten die Differentialgleichung $x' = a(t) x(t) + b(t), t ∈ I = [t_0, t_0 + τ] ⊂ ℝ$
+  mit den stetigen Funktionen $a, b: I \to ℝ$
+  Die zugehörige homogene Differentialgleichung $y' = ay$ hat eine Lösung in der Form
   \[y(t) = c \exp ∫_{t_0}^{t} a(s) \d s, \quad c ∈ ℝ\]
   (Seperation der Variablen). Sei $y(t)$ eine Lösung mit $c = 1$.
   Zur Bestimmung einer Lösung der *inhomogenen Differentialgleichung* wird $c$ als Funktion von $t$ angesetzt.
@@ -194,7 +194,7 @@
   \[\norm{x^i(t) - x^i(t')} \leq ε' < ε\]
   und weiter für
   \[\abs{t - t'} < δ_ε, \norm{x - x'} < ε' ⇒ \norm{f(t, x) - f(t', x')} < ε\]
-  Für hinreichend grohes $i \geq i_ε$ (das heißt hinreichend kleines $h_i$) folgt damit
+  Für hinreichend großes $i \geq i_ε$ (das heißt hinreichend kleines $h_i$) folgt damit
   \begin{align*}
   \max_{s ∈ [t_{k - i}, t_k]} \norm{f(t_{k - 1}, x^i(t_{k - 1})) - f(s, x^i(s))} &\leq ε \\
   \abs{x^i(t) - x_0 - ∫_{t_0}^t f(s, x^i(s))\d s} &\leq ε \abs{t - t_0}
@@ -206,11 +206,11 @@
   #+ATTR_LATEX: :options [3.7 Fortsetzungssatz]
   #+begin_thm latex
   Sei die Funktion $f(t, x)$ stetig auf einem abgeschlossenem Bereich $D$ des $ℝ^1 × ℝ^m$, mit $(t_0, x_0) ∈ D$ und sei $x$ eine Lösung der Anfangswertaufgabe auf einem Intervall $I = [t_0 - B, t_0 + T]$.
-  Dann ist die lokale Lösung $x$ nach rechts und nach linkt auf ein maximales Existenzintervall $I_{max} = (t_0 - T_{\ast}, t_0 + T_{\ast})$ (stetig differenzierbar)
-  fortsetzbar, solange der $\Graph(x)$ nicht auf dem Rang von $D$ stößt. Dabei kann $\Graph(x) := \{(t, x(t) \mid t ∈ I_{max})\}$ unbeschränkt sein sowohl durch $t \to t_0 + T^{\ast} = ∞$ als auch $\norm{x(t)} \xrightarrow{t \to t_0 + T^{\ast}} 0$
+  Dann ist die lokale Lösung $x$ nach rechts und nach links auf ein maximales Existenzintervall $I_{max} = (t_0 - T_{\ast}, t_0 + T_{\ast})$ (stetig differenzierbar)
+  fortsetzbar, solange der $\Graph(x)$ nicht auf dem Rand von $D$ stößt. Dabei kann der $\Graph(x) := \{(t, x(t) \mid t ∈ I_{max})\}$ unbeschränkt sein sowohl durch $t \to t_0 + T^{\ast} = ∞$ als auch $\norm{x(t)} \xrightarrow{t \to t_0 + T^{\ast}} 0$
   #+end_thm
   #+begin_proof latex
-  Ohne Beschränkung der Allgemeinheit behalten wir nur $[t_0, t_0 + T_{\ast}]$. Peano Satz liefert Existenz einer Lösung $x^0$ auf $[t_0, t_1], t_1 := t_0 + T_0$ mit
+  Ohne Beschränkung der Allgemeinheit behalten wir nur $[t_0, t_0 + T_{\ast}]$. Der Peano Satz liefert Existenz einer Lösung $x^0$ auf $[t_0, t_1], t_1 := t_0 + T_0$ mit
   \[T_0 := \min(α_0, \frac{β_0}{M_0})\]
   $T_0$ hängt nur von $α_0, β_0, M_0$ ab. Wir lösen die Gleichung mit Anfangspunkt $(t_0, x(t_1))$ auf dem Bereich
   \[\{(t, x) ∈ D \mid \abs{t - t_0} \leq α_1, \norm{x - x_0} \leq β_1\}\]
@@ -242,7 +242,7 @@
   \[\begin{cases} x' = f(t, x) \\ x(t_0) = x_0\end{cases}\]
   #+end_thm
   #+begin_proof latex
-  wir Betrachten die Integralgleichung
+  Wir betrachten die Integralgleichung
   \[x(t) = x_0 + ∫_{t_0}^t f(s, x(s)) \d s\]
   Wir wenden den Banachschen Fixpunktsatz an.
   Schritt 1:
@@ -268,7 +268,7 @@
   das heißt $g$ ist auf $V_0$ eine Kontraktion. Nach dem Banachschem Fixpunktsatz hat $g$ in $V_0$
   genau einen Fixpunkt $x^{\ast}$ das heißt
   \[x^{\ast} = g(x^{\ast})(t) = x_0 + ∫_{t_0}^t f(s x^{\ast}(s)) \d s\quad t ∈ I_ε\]
-  has heißt $x^{\ast}$ löst die Integralgleichung.
+  das heißt: $x^{\ast}$ löst die Integralgleichung.
   #+end_proof
   #+begin_remark latex
   Die Lösung $x^{\ast}$ erhält man durch im Banachraum $V = C(I_ε)$ konvergente Fixpunktiteration (sogenannte "suksessive Approximation")
@@ -280,12 +280,12 @@
   x' &= A x \tag{$A$ ist eine reelle $n × n$ Matrix} \\
   x(0) &= x_0
   \end{align*}
-  wir bekommen $n$ Gleichung. Es gilt für $t < ε(x)$:
+  wir bekommen $n$ Gleichungen. Es gilt für $t < ε(x)$:
   \begin{align*}
   g(x_0)(t) &= x_0 + ∫_{t_0}^t A x_0 \d s = (I + t A) x_0 =: x_1 \\
   g^m(x)(t)	&= \sum_{k = 1}^{m} \frac{(t A)^k}{k!} \xrightarrow{m \to ∞} x^{\ast}(t) = \sum_{k = 0}^{∞} \frac{(t A)^k}{k!} x_0
   \end{align*}
-  Tatsächlich konvergierte die Reiche kann gleidweise nach $t$ differenziert werden, daher stellt sie die
+  Tatsächlich konvergiert die Reihe. Sie kann gliedweise nach $t$ differenziert werden, und stellt daher die
   Lösung da.
   #+end_ex
   #+begin_remark latex
@@ -316,7 +316,7 @@
   wir suchen $x = M$, sodass $f(M) \leq 0 ∀ x \geq M, x'(t) \leq 0$, das heißt $x(t)$ kann
   nicht weiter wachsen. das heißt $I = \{x \mid x \leq M\}$ ist invariant, das heißt $x_0 ∈ I ⇒ x(t) ∈ I ∀ t ∈ ℝ$. Es gibt uns gleichmäßige Beschränktheit.
   Nichtnegativität heißt $\{x \mid x \geq 0\}$ ist invariant. Es gilt falls $f(0) \geq 0$, das heißt $x'(t) \big|_{x = 0} \geq 0$
-  $x' = ax$ $⇒$ keine gleichmäßige Beschänktheißt.
+  $x' = ax$ $⇒$ keine gleichmäßige Beschänktheit.
   \[x' = \frac{a x}{t + x} x \leq a x\]
   $⇒ x(t) \leq x(t) e^{at}$ $⇒$ globle Lösungen existieren.
   #+end_ex
@@ -446,8 +446,9 @@
    \end{align*}
    #+end_proof
    #+begin_remark latex
-   Ist $u(t_0)$ nicht vorgeschrieben, ergeben sich Lösungen der inhomogenen Gleichung als Summe homogener Lösungen $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung als Summe homogener Lösungen
-   $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung. Zum Beispiel:
+   Ist $u(t_0)$ nicht vorgeschrieben, ergeben sich Lösungen der inhomogenen Gleichung 
+   als Summe homogener Lösungen $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung. 
+   Zum Beispiel:
    \[u_s(t) = Φ(t)(c + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s), c ∈ ℝ^n\]
    und irgendein Fundamentalsystem $Φ$
    #+end_remark
