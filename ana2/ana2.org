@@ -589,5 +589,14 @@
    #+ATTR_LATEX: :options [3.25]
    #+begin_ex latex
    $x' = x^2 + λ$ mit einem Parameter $λ ∈ ℝ$. Stationäre Punkte:
-   \[f(\bar x) = x^{-2} + λ = 0 ⇒ \begin{cases} \bar x = \pm \sqrt{\abs{λ}} & λ < 0 \\ \bar x = 0 & λ = 0 \\ \text{ keine } & λ > 0\]
+   \[f(\bar x) = x^{-2} + λ = 0 ⇒ \begin{cases} \bar x = \pm \sqrt{\abs{λ}} & λ < 0 \\ \bar x = 0 & λ = 0 \\ \text{ keine } & λ > 0 \end{cases}\]
+   Das zugehörigen Anfangswertproblem mit $x(0) = 0$ lässt sich lösen durch Seperation der Variablen. Für $λ < 0$ $x(t) = - \sqrt{\abs{λ}} \tanh(t \sqrt{\abs{λ}})$.
+   Für $λ = 0 ⇒ x(t) = 0$.
+   \begin{align*}
+   λ > 0 &⇒ f > 0 \\
+   λ < 0 &  \\
+   x \uparrow \quad f(x) > 0 &⇒ x^2 + λ > 0 \\
+   y \uparrow \quad f(x) < 0 &⇒ x ∈ (-\sqrt{\abs{λ}}, \sqrt{\abs{λ}}) \\
+   \end{align*}
+   $⇒$ Bifukation Diagram (Verzweigung).
    #+end_ex
