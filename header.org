@@ -146,6 +146,8 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Lie}{Lie}
 #+LATEX_HEADER: \DeclareMathOperator{\cond}{cond}
 #+LATEX_HEADER: \DeclareMathOperator{\GGT}{GGT}
+#+LATEX_HEADER: \DeclareMathOperator{\ggT}{ggT}
+#+LATEX_HEADER: \DeclareMathOperator{\diag}{diag}
 
 
 #+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}

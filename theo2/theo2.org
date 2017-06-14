@@ -617,10 +617,11 @@
    $G = G(q, p)$ induziert:
    \[\dd{F}{t} = -D_G F = \{F, G\}\]
    Entscheidende Beobachtung (ohne Beweis): Das obige induziert einen Isomorphismus von Lie-Algebren \\
-   \begin{center}
-   Observable $\longleftrightarrow$ Differentialoperator \\
-   $\{·, ·\}$	$\longleftrightarrow$ $[D_F, D_G] = \underbrace{D_F D_G - D_G D_F}_{Kommutator}$
-   \end{center}
+   \[
+   \begin{array}{ccc}
+   \text{Observable} & \longleftrightarrow & \text{Differentialoperator} \\
+   \{·, ·\}	& \longleftrightarrow & [D_F, D_G] = \underbrace{D_F D_G - D_G D_F}_{\text{Kommutator}}
+   \end{array}\]
    Beachte $[D_F, D_G] \neq 0$ weil Ableitung in $D_F$ auf Koeffizientenfunktionen von $D_G$ wirken (und umgekehrt). Beachte: Es entsteht nur Differentialoperator 1. Ordnung weil: $[\partial / \partial x, \partial / \partial y] = 0$, etc.
    #+begin_ex latex
    (unphysikalisch):
@@ -638,7 +639,7 @@
    Aus TP1:
    \[R(ξ)= \mathbb{1} + ε_i T_i; \quad (T_i)_{jk} = ε_{ijk}\]
    Schon erwähint: $T_i$ - Basis von $SO(3) = \Lie(SO(3))$
-   Kommutator tacht $SO(3)$ zur Lie-Algebra:
+   Kommutator macht $SO(3)$ zur Lie-Algebra:
    \[[\frac{1}{2} T_I, \frac{1}{2} T_j] = ε_{ijk}(\frac{1}{2} T_k)\]
    Noether-Theorem ordnet den durch die $T_i$ generierten Symmetrien Erhaltungsgröhen zu, und zwar die Drehimpulskomponenten:
    \[L_i = ε_{ijk} x_j p_k \qquad (q_i \equiv x_i)\]
@@ -742,3 +743,54 @@
    Erklärung: $\dot ξ$ = Vektor = $\{\dot ξ^1, \dots, \dot ξ^d\}$
    $ω(\dot ξ) \equiv ω(·, \dot ξ)$ Dies ist eine 1-Form $⇒ ω(\dot ξ) = \d H$ ist also Äquivalenz von 1-Formen-Gleichungen!
    \[\dot ξ = \dot {\v ξ} \pp{}{ξ^i}\]
+   Jetzt wählen wir auf $M$ Koordianten $q_α, p^α$, sodass
+   \[ω = \d p_α ∧ \d q^α \quad (α = 1, \dots, n)\]
+   (Dass dies geht, ist ein *nichttrivialer Fakt*). Da $ξ^i = \{q^1, \dots, q^n, p_1, \dots, p_n\}$ gilt
+   \[ω_{ij}= \begin{pmatrix}0 & -\mathbb{1} \\ \mathbb{1} & 0\end{pmatrix}\]
+   $R \mathbb{1} R^T = \mathbb{1} \impliedby R ∈ SO(n), S ω S^T = ω \impliedby S ∈ Sp(2n)$. Auswertung der abstrakten Hamilton-Gleichung in unseren speziellen Koordinaten:
+   \begin{align*}
+   \d p_β ∧ \d q^β (·, \dot q^α \pp{}{q^α} + \dot p_α \pp{}{p_α}) &= \dot q^α \d p_α - \dot p_α \d q^α \\
+   &= \pp{H}{q^α} \d q^α + \pp{H}{p_α} \d p_α \\
+   \intertext{Koeffizientenvergleich:}
+   \dot q^α = \pp{H}{p^α}, \dot p_α = - \pp{H}{q_α}
+   \end{align*}
+   Fortgeschrittener Kommentar:
+   Betrachte die zu $ω_{ij}$ inverse Matrix:
+   \[ω^{ij} ω_{jk} = δ_k^i\]
+   $ω^{ij}$ definiert eine antisymmetrische Bilinearform $\ubar ω$ auf $T_q^{\ast}$. Damit gilt: $\{F, G\} \equiv \ubar ω(\d F, \d G)$.
+   Nachrechnen des Vergleichs mit alternativer Definition:
+   \[\ubar ω(\d F, \d G) = ω_{ij}(\d F)^i (\d G)^j = δ_α^β(\pp{F}{q^β} \pp{G}{p_α} - \pp{G}{q^β}\pp{F}{p_α}) = δ_α^β \{F, G\}\]
+   Abstrakte Hamilton-Gleichung in Koordinaten $ξ$ ausschreiben:
+   \[ω_{ij} ξ^i = \pp{H}{ξ^i} ⇒ \dot ξ^i = ω^{ij} \pp{H}{ξ^j}\]
+   $⇒$ Man sieht explizit, wie $H$ das Vektorfeld $ξ^i$ definiert. Das geht mit jeder Observablen und wir nennen den entsprechenden Vektor (Vektorfeld) $V(F), V(G)$, etc.
+   \[⇒ \{F, G\} = ω(V(F), V(G))\]
+** Integration von Differentialformen
+   Behauptung: $p$ -Form kann über $p$ -dimensionale Hyperfläche $C_p$ integriert werden:
+   \[∫_{C_p} ω P = \text{ Zahl}\]
+   Man zerlege dazu die Fläche in kleine Parallelepipede.
+   Definiere
+   \[∫{C_p} ω P = \lim \sum_{\text{Parallelepide}} ω P(v_1, \dots, v_p) \]
+   Wichtig: Obige Definition ist Koodinatenunabhängig. Trotzdem: Praktisch rechnen wir meist in Koordinaten: $d = p = z$:
+   \[v_1 = Δ x^1 \pp{}{x^1}, v_2 = Δx^2 \pp{}{x^2}\]
+   \[⇒ ∫ ω = \lim \sum ω(v_1, v_2) = \lim \sum ω_{12} Δx^1 Δ x^2 = ∫ \d x^1 \d x^2 ω_{12}\]
+   In anderen Koordinaten:
+   \[∫ ω = ∫ \d x^{\prime 1} \d x^{\prime 2} ω_{12}'\]
+   Zum Prüfen der Gleichheißt:
+   Fakt:
+   \[ω_{i_1 \dots i_p}' = (\pp{x^{j_1}}{x^{\prime i_1}}) \dots (\pp{x^{j_p}}{x^{\prime i_p}}) ω_{j_1 \dots j_p}\]
+   (wie beim Vektor, nur $x \leftrightarrow$ x').
+   Einschränkung: $p = d$ ("Top-Form"). Dies ist stets
+   \[ω = ε f(x)\]
+   \[∫ \d x^{\prime 1} \dots \d x^{\prime} f'(x^{\prime 1}, \dots, x^{\prime n}) = ∫ \d x^{\prime 1} \dots \d x^{\prime n} \det (\pp{x'}{x^{\prime j}}) f(x^1(x'), \dots, x^n (x'))\]
+   Verallgemeinerter Satz von Stokes:
+   \[∫_C \d ω = ∫_{\partial C} ω\]
+* Kanonische Transformationen, Integrabilität, Chaos
+  Lagrange-Mechanik ist invariant unter Punkttransformationen
+  \[q \to Q(q), L(q, \dot q, t) \to L'(Q, \dot Q, t)\]
+  (Reparametrisierung des Konfigurationsraums).
+  $L'$ ist definiert durch $L'(Q(q), \dot Q(q), t) \overset{!}{=} L(q, \dot q, t)$. Man prüft leicht nach:
+  \[\dd{}{t} \pp{L}{\dot q} - \pp{L}{q} = 0 ⇒ \dd{}{t} \pp{L'}{\dot Q} - \pp{L'}{Q} = 0\]
+  (obiger ist aus so klar, seil sich $S$ nicht ändert.). \\
+  Bechte analoges Problem in Hamilton-Machanik:
+  \[q, p \to Q(q, p), P(q, p)\]
+  Dürfen wir bei so einem Koordinaten-Wechsel auf Phasenraum "Einteilung" in verallgemeinerte Koordinaten und Impulse verletzen?

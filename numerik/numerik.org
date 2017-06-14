@@ -1141,3 +1141,138 @@
    Störungssatzt $⇒$
    \[\frac{\norm{δ x}}{\norm{x}} \leq \frac{\cond_∞ (A)}{1 - \cond_∞ (A) \norm{δ A} / \norm{A}} · 1.01 2^{n - 1}(n^3 + 2n^2) eps\]
    Diese Abschätzung deckt pathologische Fälle ab. In der Praxis ist das Verhalet gutartig, das heißt die Gaußelimination mit Spaltenpivotierung ist ein stabiler Algorithmus.
+   Wiederholung: Gauß-Elimination $Ax = b, A ∈ ℝ^{n × n}$
+   \begin{align*}
+   A^{(0)} &= A, A^{(k)}= G_k P_k A^{(k - 1)}, k = 1, \dots, n - 1 \\
+   R &= A^{(n - 1)}a = G_{n - 1} P_{n - 1} \dots G_1 P_1 A \\
+   \intertext{setze}
+   \tilde G_{n - 1} &= P_{n - 1}, \tilde G_k = P_{n - 1} \dots P_{k - 1} G_k P_{k + 1} \dots P_{n - 1} \\
+   ⇒ P_{k + 1} \dots P_{n - 1} \tilde G_k &= G_k P_{k + 1} \dots p_{n - 1} \\
+   ⇒ R &= \underbrace{\tilde G_{n + 1} \dots \tilde G_1}_{L^{-1}} \underbrace{P_{n - 1} \dots P_1}_{P} A \\
+   ⇒ LR &= P A
+   \end{align*}
+   Löse $R x = c$ oder $L y = b, R x = y$.
+** Nachiteration
+   Wegen Rundungsfehlern bei der Gauß-Elimination gilt: $P A = L R$ nicht exakt. Damit gilt mit einer Näherungslösung $x^0$ gewonnen aus $L R x^0 = P b$ für den
+   sogenannten Defekt
+   \[d^0 = b - A x^0 \neq 0\]
+   Man kann iterativ Defektkorrektur betreiben.
+   \begin{align*}
+   d^k &= b - A x^k , L R δ x^k = P d^k \\
+   x^{k + 1} = x^k + δ x^k, k = 0, 1, \dots
+   \end{align*}
+   #+begin_lemma latex
+   \[x^k = (\sum_{k= 0}^{k} (\mathbb{1} - R^{-1} L^{-1} P A)^n) R^{-1} L^{-1} P b\]
+   #+end_lemma
+   #+begin_proof latex
+   per Induktion über $k$: \\
+   $k = 0$ \checkmark \\
+   $k \geq 0$:
+   \begin{align*}
+   δ x^k&= R^{-1} L^{-1}(b - A x^k) \\
+   x^{k + 1} &= x^k + δ x^k = (\mathbb{1} - R^{-1} L^{-1} P A) x^k + R^{-1} L^{-1} P b \\
+   &= (\sum_{n = 0}^{k}(\mathbb{1} - R^{-1} L^{-1} P A)^{n + 1}) R^{-1} L^{-1} P b + R^{-1} L^{-1} P b \\
+   &= (\sum_{n = 0}^{k + 1}(\mathbb{1} - R^{-1} L^{-1} P A)^{n}) R^{-1} L^{-1} P b
+   \end{align*}
+   #+end_proof
+   Ist $\norm{\mathbb{1} - R^{-1} L^{-1} P A} < 1$, so gilt
+   \begin{align*}
+   \sum_{n = 0}^{∞}(\mathbb{1} - R^{-1} L^{-1} P A)^n &= (\mathbb{1} - \mathbb{1} + R^{-1} L^{-1} P A)^{-1} \\
+   &= (PA)^{-1} L R
+   \end{align*}
+   $⇒ x^k$ konvergiert gegen
+   \[x^{\ast} = (PA)^{-1} L R R^{-1} L^{-1} P b = A^{-1} b\]
+   Wichtig: In der Praxis muss der Defekt $d^k$ mit höherer Genauigkeit berechnet werden.
+   #+begin_ex latex
+   Skript.
+   #+end_ex
+** Determinantenbestimmung
+   \[A, B ∈ R^{n × n} ⇒ \det (A · B) = \det A \det B\]
+   $A = P^T L R$
+   \[\det A = \underbrace{\det (P^T)}_{\pm 1} \underbrace{L}_{1} \underbrace{\det R}_{\prod_{i = 1}^n r_{ii}} = \pm \prod_{i = 1}^n r_{ii}'\]
+   Bei $k$ Vertauschungen von Zeilen ist das Vorzeichen $(-1)^k$.
+** Rangbestimmung
+   $\to$ Totalpivotierung $P A Q^T= LR$
+   Gilt nach dem $i$ -ten Eliminationsschritt
+   \[a_{k,j}^{(i)} = 0 ∀ j, k= i + 1, \dots, n\]
+   so ist $\Rang(A) = i$ (Geht auch bei nicht quadratischen Matrizen, einfach mit Nullen auffüllen)
+* Spezielle Gleichungssysteme
+** Bandmatrizen
+   Eine Matrix $A ∈ ℝ^{n × n}$ heißt Bandmatrix vom Bandtyp $(m_l, m_r) ∈ \{0, \dots, n - 1\}^2$, wenn gilt
+   \[a_{jk} = 0 ∀ k < j - m_l ∨ k > j + m_r, j, k = 1, \dots, n\]
+   Die Größe $m = m_l + m_r$ heißt Bandbreite.
+   | Typ          | Name                  |
+   |--------------+-----------------------|
+   | $(0, 0)$     | Diagonalmatrix        |
+   | $(1, 1)$     | Tridiagonalmatrizen   |
+   | $(n - 1, 0)$ | Untere Dreiecksmatrix |
+   | $(0, n - 1)$ | Obere Dreiecksmatrix  |
+   #+ATTR_LATEX: :options [Bandmatrix]
+   #+begin_thm latex
+   Ist $A ∈ ℝ^{n × n}$ eine Bandmatrix vom Typ $(m_l, m_r)$, Für die Gauß-Elimination $A = LR$ ohne Zeilenvertauschung durchführbar ist,
+   dann sind alle reduzierten Matrizen $A^{(i)}$ desselben Typs und $L$ beziehungsweise $R$ sind vom Typ $(m_l, 0)$ beziehungsweise
+   $(0, m_r)$. Aufwand:
+   \[N = \frac{1}{3} n m_l m_r + \mathcal{O}(n(m_l + m_r))\]
+   #+end_thm
+   (Ohne Beweis)
+   #+begin_ex latex
+   Typ $(1, 1)$:
+   \[A = \begin{pmatrix}a_1 & b_1 &   &   \\ c_2 & \ddots & \ddots &   \\ & \ddots & \ddots & b_{n - 1} \\   &   & c_n & a_n\end{pmatrix} = L R, L = \begin{pmatrix}1 &   &   &   \\ γ_1 & \ddots &   &   \\   & \ddots & \ddots &   \\  &   & γ_n & 1\end{pmatrix}, R = \begin{pmatrix}α_1 & β_1 &   &   \\   & \ddots & \ddots &   \\   &   & \ddots & β_{n - 1} \\   &   &   & α_n\end{pmatrix}\]
+   Rekursive Bestimmung
+   \begin{align*}
+   α_1 &= a_1, β_1 = b_1 \\
+   γ_i &= c_i / α_{i - 1}, α_i = a_i - γ_i β_{i - 1}, β_i = b_i \\
+   γ_n = c_n / α_{n - 1}, α_n = a_n - γ_n β_{n - 1}
+   \end{align*}
+   Aufwand: $3n - 2$ Speicher,$2n - 2$ arithmetische Operationen. \\
+   Vorsicht: (Beispiel Typ $(4, 4)$): Band "füllt auf"
+   #+end_ex
+** Diagonaldominante Matrizen
+   #+begin_defn latex
+   $A ∈ ℝ^{n × n}$ heißt diagonaldominant, wenn
+   \[\sum_{\substack{k = 1\\ k \neq j}}^{n} \abs{a_{jk}} \leq \abs{a_{jj}}, \quad j = 1, \dots, n\]
+   #+end_defn
+   #+begin_thm latex
+   $A ∈ ℝ^{n × n}$ regulär und diagonaldominant $⇒ A = LR$ kann mit Gauß-Elimination ohne Zeilenvertauschungen berechnet werden. (Beweis: Skript)
+   #+end_thm
+** Positiv definite Matrizen
+   #+begin_defn latex
+   $A ∈ R^{n × n}$ mit $A^T = A$ heißt positiv definit, wann
+   \[x^T A x > 0 ∀ x ∈ ℝ^n \setminus \{0\}\]
+   #+end_defn
+   #+begin_thm latex
+   $A ∈ ℝ^{n × n}$ symmetrisch positiv definit $⇒ A = LR$ kann mit Gauß-Elimination ohne Zeilenvertauschung berechnet werden mit Pivots $a_{ii}^{(i)} > 0$
+   #+end_thm
+   #+begin_proof latex
+   \[0 < e_1^T A e_1 = a_{11}\]
+   \begin{align*}
+   a_{jk}^{(1)} &= a_{jk} - \frac{a_{j1}}{a_{11}} a_{1k} = a_{kj} - \frac{a_{k1}}{a_{11}} a_{1j} = a_{kj}^{(1)} \\
+   ⇒ A^{(1)} &= (a_{jk}^{(1)})_{j,k = 2}^n \text{ ist symmetrisch}
+   \end{align*}
+   Ist $A^{(1)}$ positiv definit, so beweist Induktion die Behauptung. Setze dafür $\tilde x = (x_2, \dots, x_n)^T ∈ ℝ^{n - 1}, x ∈ ℝ^n$, sodass
+   \[x_1 = -\frac{1}{a_{11}} \sum_{k = 2}^{n} a_{1k} x_k\]
+   \begin{align*}
+   ⇒ 0 < x^T A x &= \sum_{j,k = 1}^{n} a_{jk} x_j x_k \\
+   &= \sum_{j,k= 2}^{n} a_{jk} x_j x^k + 2 x_1 \sum_{k = 2}^{n} a_{1k} x_k + a_{11} x_1^2 - \underbrace{\frac{1}{a_{11}} \sum_{j,k = 2}^{n} a_{k1} a_{j1} x_k x_j + \frac{1}{a_{11}}(\sum_{k = 2}^{n} a_{1k} x_k)^2}_{0} \\
+   &= \underbrace{\sum_{j,k = 2}^{n} (a_{jk} - \frac{a_{k1} a_{j1}}{a_{11}}) x_k x_j}_{= a_{jk}^{(1)}} + a_{11}\underbrace{(x_1 + \sum_{1}^{a_{11}} \sum_{k= 2}^{n} a_{1k} x_k)}_{0}^2 \\
+   &= \tilde x^T A^{(1)} \tilde x.
+   \end{align*}
+   #+end_proof
+   $\to A = LR, r_{ii} = a_{ii}^{(i)} > 0$
+   \[A = A^T = (L R)^T = (LD \underbrace{D^{-1} R}_{=: R})^T = \tilde R^T D L^T\]
+   mit $A = \diag(r_1,\dots, r_{nn})$ und
+   \[\tilde R= \begin{pmatrix}1 & r_{12} / r_{11} & \dots & r_{1n}/r_{11} \\ \ddots &   &   & \vdots \\   & \ddots &   & r_{n - 1, n} / r_{n - 1, n - 1} \\   &   &   & 1\end{pmatrix}\]
+   Eindeutigkeit der LR-Zerlegung
+   \[LR = \tilde R^T D L^T ⇒ L = \tilde R^T, R = D L^T\]
+   #+begin_thm latex
+   Jede symmetrisch positiv definite Matrix $A ∈ ℝ^{n × n}$ hta eine sogenannte Cholesky-Zerlegung
+   \[A = L D L^T = \tilde L \tilde L^T\]
+   #+end_thm
+   Aufwand: $N_{\text{Cholesky}}(n) = \frac{n^3}{6} + \mathcal{O}(n^2)$. \\
+   Algorithmus von Cholesky:
+   \[\begin{pmatrix}\tilde l_{11} &   &   \\ \vdots & \ddots &   \\ \tilde l_{n1} & \dots & \tilde l_{nn}\end{pmatrix} \begin{pmatrix}\tilde l_{11} & \dots & \tilde l_{n1} \\ \ddots &   & \vdots \\   &   & \tilde l_{nn}\end{pmatrix} = \begin{pmatrix}a_{11} & \dots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \dots & a_{nn}\end{pmatrix}\]
+   \[i \geq j: a_{ij} = \sum_{k = 1}^{j} \tilde l_{ik} \tilde l_{jk} = \sum_{k = 1}^{j - 1} \tilde l_{ik} \tilde l_{jk} + \tilde l_{ij} \tilde l_{jj}\]
+   für $i = 1,\dots, n$:
+   \[\tilde l_{ii} = \sqrt{a_{ii} - \sum_{k = 1}^{i - 1}\tilde l_{ik}^2}\]
+   Für $j = i + 1, \dots, n$:
+   \[\tilde l_{ij} = \frac{1}{\tilde l_{ii}}(a_{ij} - \sum_{k = 1}^{i -1 }\tilde l_{ik} \tilde l_{jk})\]

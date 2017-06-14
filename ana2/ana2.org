@@ -600,3 +600,46 @@
    \end{align*}
    $⇒$ Bifukation Diagram (Verzweigung).
    #+end_ex
+   #+begin_defn latex
+   $Λ ⊂ ℝ^m$ und $f: ℝ^n × Λ \to ℝ^n$ seien gegeben. $\bar x ∈ ℝ^n$ sei ein stationärer Punkt von
+   $x' = f(x, λ_0)$ zu einem $λ_0 ∈ Ω$. Die Differentialgleichung $x' = f(x, λ)$ besitzt in
+   $(\bar x, λ_0)$ eine *Verzweigung* (Bifukation) wenn	gilt:
+   Die Anzahl von stationären Punkten von $x' = f(x, μ_k) ∈ K_r(\bar x)$ ist ungleich der Anzahl stationärer Funkte von
+   $x' = f(x, ν_k) ∈ K_r(\bar x)$ für zwei Folgen $(μ_n)_{n ∈ ℕ}, (ν_n)_{n ∈ ℕ}$ in $Λ$ die gegen
+   $λ_n$ konvergieren, für jede Kugel $K_r(\bar x) ⊂ ℝ^n$ und hinreichend grohen $n ∈ ℕ$.
+   In unserem Beispiel
+   \begin{align*}
+   μ_n &= \frac{1}{n} \to 0 = λ_0 \\
+   ν_n &= -\frac{1}{n} \to 0 = λ_0
+   \end{align*}
+   #+end_defn
+   #+begin_remark latex
+   Auf der Suche nach Bifukationen gehst es also um die Lösung von $f(x, λ) = 0$ mit einem Parameter $λ$.
+   Der Satz über implizite Funktionen gibt uns Bedingungen, unter denen eine solche Gleichung nach $x$ lokal eindeutig aufgelöst werden kann.
+   Notwendige Bedingung für Bifukation: $x' = f(x, λ)$ in $(\bar x, λ_0)$ eine Bifukation besitzt dann kann die partielle Ableitung $δ_1 f(\bar x, λ_0): ℝ^n \to ℝ$ nicht
+   invertierbar sein.
+   #+end_remark
+   #+begin_defn latex
+   $\bar x$ sei ein stationärer Punkt einer autonomen Differentialgleichung $x' = f(x)$ mit $f: ℝ^n \to ℝ^n$. $\bar x$ heißt stabil (im Simme von Lyapunov (Ljaupnow))
+   wenn es zu jedem $ε > 0$ einen Radius $δ > 0$ mit folgenden Eigenschaften gibt: Jede Lösung $x: [0, T\string) \to ℝ^n$ mit $\abs{x(0) - \bar x} < δ$
+   kann zu einer Lösung auf $[0, ∞ \string)$ fortgesetzt werden und
+   \[\abs{x(t) - \bar x} < ε ∀ t > 0\]
+   $\bar x$ heißt asymptotische stabil, wenn $\bar x$ stabil ist und zuzätzlich
+   \[∃ r > 0: x:[0, ∞\string) \to ℝ^n: \abs{x(0) - \bar x} < r\]
+   die Forderung
+   \[\lim_{t \to ∞} x(t) = \bar x\]
+   erfüllen. $\bar x$ heitß instabil wenn $\bar x$ nicht stabil ist.
+   #+end_defn
+   #+begin_lemma latex
+   Sei die Matrix $A ∈ ℝ^{n × n}, b ∈ ℝ^n$. Wenn der Nullpunkt $\bar x = 0$ stabil bezüglich der
+   homogenen Differentialgleichung $x' = A x$ ist, dann ist der stationäre Punkt der inhomogenen
+   Differentialgleichung $y' = A y + b$ ebefalls stabil.
+   #+end_lemma
+   #+begin_proof latex
+   Verschiebung $x = y - \bar y$, wobei $\bar y = - A^{-1} b$
+   #+end_proof
+   Aus der Theorie der linearen Differntialgleichungen folgt:
+   #+ATTR_LATEX: :options []
+   #+begin_lemma latex
+
+   #+end_lemma
