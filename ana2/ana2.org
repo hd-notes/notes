@@ -639,7 +639,85 @@
    Verschiebung $x = y - \bar y$, wobei $\bar y = - A^{-1} b$
    #+end_proof
    Aus der Theorie der linearen Differntialgleichungen folgt:
-   #+ATTR_LATEX: :options []
    #+begin_lemma latex
-
+   $λ_1, \dots, λ_n ∈ ℂ$ seien die paarweise verschiedenen Eigenwerte von $A$ und $α ∈ ℝ$, sodass
+   \[\max \{\Re λ_i \mid i = 1, \dots, n\} < α\]
+   Dann $∃ c \geq 0$ sodass $∀$ Lösungen $x(): ℝ_{+} \to ℝ^n$ von $x' = Ax$ gilt
+   \[\abs{x(t)} \leq c \abs{x(0)}e^{α t}\]
    #+end_lemma
+   #+begin_korollar latex
+   Nullpunkt ist asymptotisch stabil bezüglich der Gleichung $x' = Ax$ falls alle $\Re λ_i < 0, i = 1, \dots, n, λ_i$ Eigenwerte von $A$
+   #+end_korollar
+   #+begin_thm latex
+   Die Matrix $A ∈ ℝ^{n × n}$ besitze einen Eigenwert $λ ∈ ℂ$ mit $\Re λ > 0$. Dann gibt es $∀$ Radien $r > 0$ eine Lösung $x: ℝ_+ \to ℝ^n$ von $x' = Ax$ mit
+   \[\abs{x(0)} \leq r ∧ \abs{x(t)} \xrightarrow{t \to ∞} ∞\]
+   Also ist der Nullpunkt instabil.
+   #+end_thm
+   #+begin_proof latex
+   $v_0$ sei Eigenvektor zu $λ$ (mit $\Re λ > 0$) und $\abs{v_0} \leq r$. $t \to e^{λ t} v_0$ ist eine Lösung (komplux) von $x' = A x$. Dabei strebt
+   \[\abs{x(t)} \leq e^{\Re λ t} \abs{v_0} \xrightarrow{t \to ∞} ∞\]
+   #+end_proof
+   *Zusammenfassung für lineare Systeme* \\
+   Eigenwerte der Matrix $A$ bestimmen die Stabilität des stationären Punktes
+   1. alle $λ_i < 0$ reell $⇒$ $\bar x = 0$ asymptotisch stabil (Knoten)
+   2. $λ_i$ reell und mindestens ein $λ_i > 0 ⇒$ stationärer Punkt instabil
+	  - falls alle $λ_i > 0 \to$ instabil Knoten
+	  - sonst Sattelpunkt
+   3. $λ_i ∈ ℂ ⇒$ Oszillationen, wobei mit $λ_i = α + β i$
+      - $α < 0 ⇒$ Oszillation mit fallender Amplitude (stabiler Fokus)
+      - $α > 0 ⇒$ Oszillation mit wachsender Amplitude (instabiler Fokus)
+	  - $α = 0 ⇒$ Oszillation mit konstanter Amplitude (Zentrum) \\
+		keine asymptotische Stabilität, aber stabil im Sinne von Lyapunov
+   4. Falls vielfache $λ_i ⇒$ Jordan Blöche $⇒$ polynomiale Komponenten in der Lösung
+   Motivation für Linearisierung von nichtlinearen Systemen
+   \begin{align*}
+   x' &= f(x) = \underbrace{f(\bar x)}_{= 0} + \underbrace{D f(\bar x)(x - \bar x)}_{A x + b} + \underbrace{g(x)}_{+ g(x) \text{ klein}} \\
+   f(\bar x) &= 0
+   \end{align*}
+   #+ATTR_LATEX: :options [Linearisierungssatz, Satz von Hartman-Grobman]
+   #+begin_thm latex
+   Sei $f: ℝ^n \to ℝ$ stetig differenzierbar mit $f(0) = 0$. Die Jacobi Matrix $D f(x) ∈ ℝ^{n × n}$ besitze nur Eigenwerte mit $\Re λ \neq 0$ (das heißt stationärer Punkt ist hyperbolisch).
+   Dann gibt es Umgebungen $U, V ⊂ ℝ^n$ von $0$ und stetige Abbildung $ψ: U \to V$ mit folgenden Eigenschaften:
+   1. $ψ: U \to V$ ist bijektiv und $ψ^{-1}$ ist ebenfalls stetig
+   2. $x: [t_0, t_1] \to U$ durchläuft genau die Punkte einer Lösung $x' = f(x)$ mit den Werten in $U$ wenn
+	  \[y = ψ \circ x: [t_0, t_1] \to ℝ^n\]
+	  die Punkte einer Lösung der linearen Gleichung
+	  \[y' = D f(0)y\]
+	  mit den Werten in $V$ durchläuft.
+   #+end_thm
+   #+begin_remark latex
+   Die Systeme sind topologisch konjugiert.
+   #+end_remark
+   #+ATTR_LATEX: :options [Stabilität von nichtlinearen Systemen]
+   #+begin_thm latex
+   Die Matrix $A$ besitze die Eigenwerte mit $\Re λ_i \leq - α < 0$. Außerdem sei $g: ℝ^n \to ℝ^n$ stetig mit einem linearen Wachstum, das heißt $∃ k > 0: \abs{g(t, x)} \leq k(1 + \abs{x}) ∀ (t, x) ∈ [0, T] × ℝ^n$ und
+   \[\lim_{x \to 0} \frac{\abs{g(x)}}{\abs{x}} = 0\]
+   Dann ist der Nullpunkt asymptotisch stabil bezüglich der Differentialgleichung $x' = Ax + g(x)$.
+   #+end_thm
+   #+begin_proof latex
+   Jede Lösung lässt sich stetig zu einer Lösung auf $[0, ∞\string)$ fortsetzen. Wir nehmen $ϕ$ die Matrixfunktion zu einem Lösungs-Fundamentalsystem von $x' = Ax$ mit $ϕ(0) = \id$.
+   Die Variation der Konstanten führt zu
+   \[x(t) = ϕ(t)(x(0)) + ∫_0^t ϕ(s)^{-1} g(x(s)) \d s\]
+   Also löst die Hilfsfunktion
+   \[\tilde x: ℝ_+ \to ℝ^n, t ↦ ϕ(t) x(0) = x(t) - ∫_0^t ϕ(t)ϕ(s)^{-1} g(x(s)) \d s\]
+   die zugehörige homogene Differentialgleichung $\tilde x' = A \tilde x$ mit $\tilde x(0) = x(0)$. $∃ c > 0$, sodass jede Lösung $y$ von $y' = A y$ erfüllt
+   \[\abs{y(t)} \leq c \abs{y(0)} e^{-α t} ∀ t \geq 0\]
+   \begin{align*}
+   \abs{ϕ(t)} &\leq c e^{-α t} \\
+   \abs{ϕ(t)ϕ(s)^{-1}} &\leq c e^{- α(t -s)} ∀ 0 \leq s \leq t \\
+   \intertext{(denn $t \to ϕ(t)ϕ(s)^{-1}$ induziert eine Lösungsmatrix von $y' = A y$ mit $y(s) = \id$.) Wir erhalten:}
+   \abs{x(t)} &\leq \abs{\tilde x(t)} + ∫_0^t \abs{ϕ(t)ϕ(s)^{-1}} \abs{g(x(s)) \d s} \leq c \abs{x(0)} e^{-α t} + ∫_0^t c e^{-α (t - s)} \abs{g(x(s))} \d s
+   \end{align*}
+   Aus Vorraussetzung $\lim_{x \to 0} \abs{g(x)} / \abs{x} = 0$ gibt es einen Radius $ρ > 0$ mit $\abs{g(z)} \leq α / (2c) \abs{z} ∀ z ∈ \bar K_ρ(0)$. Wir betrachten $x' = Ax + g(x)$ mit $ \abs{x(0)} \leq ρ / (2(1 + c))$.
+   Stetigkeit von $x$ garantiert, dass
+   \[T_{x(·)} = \sup\{t \geq 0 \mid \abs{x(·)} \leq ρ\}\]
+   positiv oder $∞$. $∀ t ∈ [0, T_{x(·)}]$ können wir $\abs{x(t)}$ weiter abschätzen
+   \begin{align*}
+   \abs{x(t)} &\leq c \abs{x(0)} e^{- α t} + ∫_0^t c e^{- α (t - s)} \frac{α}{2c} \abs{x(s)} \d s \\
+   ⇒ e^{α t} \abs{x(t)} &\leq c \abs{x(0)} + ∫_0^t e^{α s} \frac{α}{2} \abs{x(s)} \d s \\
+   ⇒ e^{α t} \abs{x(t)} &\leq c \abs{x(0)} e^{\frac{α}{2}t} \\
+   ⇒ \abs{x(t)} &\leq c \abs{x(0)} e^{-\frac{α}{2}t} \leq \frac{ρ}{2} \\
+   ⇒ T_{x(·)} &= ∞
+   \end{align*}
+   und der Nullpunkt ist asymptotisch stabil.
+   #+end_proof
