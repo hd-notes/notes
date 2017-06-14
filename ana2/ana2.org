@@ -99,7 +99,7 @@
   \addplot[samples=100] {1 / (1 - x)};
   \end{axis}
   \end{tikzpicture}
-  
+
   Dies ist keine *globale* ($∀t ∈ ℝ_+$) Lösung, da man $x(t)$ nicht nach $t = t^{\ast}$ fortsetzen kann.
   #+end_ex
   *Methode der Variation der Konstanten* \\
@@ -148,12 +148,12 @@
   \[T := \min(α, \frac{β}{M}), \quad M := \max_{(t, x) ∈ D} \norm{f(t, x)}\]
   #+end_thm
   #+begin_proof latex
-  Mit Hilfe der Differenzenmethode konstruieren wir eine Folge von stückweise linearer Funktionen, welche eine Teilfolge besitzt, die (gleichmäßig) gegen eine Lösung des Anfangswertproblems konvergiert.
+  Mit Hilfe der Differenzenmethode konstruieren wir eine Folge von stückweisen linearen Funktionen, welche eine Teilfolge besitzt, die (gleichmäßig) gegen eine Lösung des Anfangswertproblems konvergiert.
   Ohne Beschränkung der Allgemeinheit genügt es das Halbintervall $I = [t_0, t_0 + T]$ zu betrachten. Zu einem Schrittweitenparameter $h > 0$ wird eine äquidistante Unterteilung des $I$ gewählt.
   \[t_0 < \dots < t_N = t_0 + T\qquad h = t_n - t_{n - 1}\]
   Ausgehend von $x_0^h := x_0$ erzeugt dann das sogenannte Eulersche Polygonzugverfahren Werte für $x_n^h$ durch
   \[x_n^h = x_{n - 1}^h + h f(t_{n - 1}, x_{n - 1}^h), n \geq 0\]
-  Diese diskreten Funktionswirte wirden linear interpoliert zu einer stetigen Funktion:
+  Diese diskreten Funktionswerte werden linear interpoliert zu einer stetigen Funktion:
   \[x_n^h(t) := x_{n - 1}^h + (t - t_{n - 1}) f(t_{n - 1}, x_{n - 1}^h)\]
   *Schritt 1*: Wir zeigen $\Graph(x^n) ⊂ D$. \\
   Sei $(t, x^h(t)) ∈ D$ für $t_0 \leq t \leq t_{k - 1}$. Es gilt
@@ -289,8 +289,10 @@
   Lösung da.
   #+end_ex
   #+begin_remark latex
+  \\
   1. Ein nicht autonomes System $x' = f(t, x), x ∈ ℝ^n$ kann immer zu einem autonomen System in $ℝ^{n + 1}$ durch hinzufügen von $x_{n + 1}(t) := t$
-	 (beziehungsweise $x'_{n + 1} = 1$) gemacht werden.
+	 (beziehungsweise $x'_{n + 1} = 1$) \\
+	 gemacht werden.
   2. ein System $m$ -ter Ordnung für $x(t) ∈ ℝ^n$
 	 \begin{align*}
 	 x^{(n)}(t) &= f(t, x, x'(t), \dots, x^{(n - 1)}(t)) \\
@@ -328,7 +330,7 @@
   \[w(t) \leq e^{a(t - t_0)} b , t \geq t_0\]
   #+end_lemma
   #+begin_proof latex
-  Für die Fuktion
+  Für die Funktion
   \[ψ(t) := a ∫_{t_0}^t w(s) \d s + b\]
   gilt $ψ'(t) = a w(t)$. Somit gemäß Voraussetzung:
   \[ψ'(t) \leq a ψ(t)\]
@@ -363,7 +365,7 @@
   #+end_proof
   #+ATTR_LATEX: :options [Lipschitzstetigkeit / Abhängigkeit von Anfangsdaten]
   #+begin_thm latex
-  Sei $f(t, x)$ stetig auf $D ⊂ ℝ^1 × ℝ^m$ und genüge einer lipschitz Bedingung. Dann gilt für zwei Lösungen $x, y$ der Differentialgleichung $x' = f(t, x), t ∈ I$
+  Sei $f(t, x)$ stetig auf $D ⊂ ℝ^1 × ℝ^m$ und genüge einer Lipschitz Bedingung. Dann gilt für zwei Lösungen $x, y$ der Differentialgleichung $x' = f(t, x), t ∈ I$
   auf einem gemeinsamen Existenzintervall $I$
   \[\norm{x(t) - y(t)} \leq e^{L(t - t_0)} \norm{x(t_0) - y(t_0)}\]
   mit der Lipschitz Konstante $L = L_k$ von $f$ auf einer beschränkten Teilmenge $K ⊂ D$ welche die Graphen von $x$ und $y$ enthält.
@@ -426,7 +428,7 @@
    (mit zum Beispiel $Φ(t_0) = E_n$) (vergleiche Exponentialmatrix $\exp(A(t - t_0))$ für $A$ konstant)
    #+end_defn
    #+begin_remark latex
-   Bildet man die sogenannte Wronski-Determinante $\det (U(t))$ für eine Lösungsmeng $\{u^1(t), \dots, u^n(t)\}$ der linearen Gleichung
+   Bildet man die sogenannte Wronski-Determinante $\det (U(t))$ für eine Lösungsmenge $\{u^1(t), \dots, u^n(t)\}$ der linearen Gleichung
    \[\begin{cases} u'(t) = A(t) u(t) & t \geq t_0 \\ u(t_0) = u_0 ∈ ℝ^{n × n}\end{cases}\]
    so lässt sich mit $\det (U(t)) \neq 0$ auf ein Fundamentalsystem testen. Dies ist nach Satz 3.15 gleichbedeutend mit $\det (U(t_0)) \neq 0$
    #+end_remark
@@ -446,8 +448,8 @@
    \end{align*}
    #+end_proof
    #+begin_remark latex
-   Ist $u(t_0)$ nicht vorgeschrieben, ergeben sich Lösungen der inhomogenen Gleichung 
-   als Summe homogener Lösungen $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung. 
+   Ist $u(t_0)$ nicht vorgeschrieben, ergeben sich Lösungen der inhomogenen Gleichung
+   als Summe homogener Lösungen $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung.
    Zum Beispiel:
    \[u_s(t) = Φ(t)(c + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s), c ∈ ℝ^n\]
    und irgendein Fundamentalsystem $Φ$
@@ -534,7 +536,7 @@
    \[\dd{}{T} ϕ(t) = \sum_{k = 0}^{∞} \dd{}{t} \frac{(t A)^k}{k!} = A \sum_{k = 1}^{∞} \dd{}{t} \frac{(t A)^{k - 1}}{(k - 1)!} = A ϕ(t)\]
    #+end_proof
    #+begin_thm latex
-   Zu einer beliebigen Matrix $A ∈ ℝ^{n × n}$ existiert invertierbare Matrix $S$ sodass die Matrix $S^{-1} A S$ die *Jordannormalform* hat, das heißt
+   Zu einer beliebigen Matrix $A ∈ ℝ^{n × n}$ existiert eine invertierbare Matrix $S$ sodass die Matrix $S^{-1} A S$ die *Jordannormalform* hat, das heißt
    \[S^{-1} A S= \begin{pmatrix}J_1 &   &   \\   & J_2 &   \\   &   & J_k\end{pmatrix}\]
    Die Blöcze $J_k$	haben für ein $λ_i ∈ ℂ$ die Form
    \[J_i = \begin{pmatrix}λ_i & 1 &   & 0 \\   & \ddots & \ddots &   \\   &   & \ddots & 1 \\ 0 &   &   & λ_i\end{pmatrix}\]
@@ -590,7 +592,7 @@
    #+begin_ex latex
    $x' = x^2 + λ$ mit einem Parameter $λ ∈ ℝ$. Stationäre Punkte:
    \[f(\bar x) = x^{-2} + λ = 0 ⇒ \begin{cases} \bar x = \pm \sqrt{\abs{λ}} & λ < 0 \\ \bar x = 0 & λ = 0 \\ \text{ keine } & λ > 0 \end{cases}\]
-   Das zugehörigen Anfangswertproblem mit $x(0) = 0$ lässt sich lösen durch Seperation der Variablen. Für $λ < 0$ $x(t) = - \sqrt{\abs{λ}} \tanh(t \sqrt{\abs{λ}})$.
+   Das zugehörigen Anfangswertproblem mit $x(0) = 0$ lässt sich lösen durch Separation der Variablen. Für $λ < 0$ $x(t) = - \sqrt{\abs{λ}} \tanh(t \sqrt{\abs{λ}})$.
    Für $λ = 0 ⇒ x(t) = 0$.
    \begin{align*}
    λ > 0 &⇒ f > 0 \\
@@ -598,15 +600,15 @@
    x \uparrow \quad f(x) > 0 &⇒ x^2 + λ > 0 \\
    y \uparrow \quad f(x) < 0 &⇒ x ∈ (-\sqrt{\abs{λ}}, \sqrt{\abs{λ}}) \\
    \end{align*}
-   $⇒$ Bifukation Diagram (Verzweigung).
+   $⇒$ Bifurkation Diagram (Verzweigung).
    #+end_ex
    #+begin_defn latex
    $Λ ⊂ ℝ^m$ und $f: ℝ^n × Λ \to ℝ^n$ seien gegeben. $\bar x ∈ ℝ^n$ sei ein stationärer Punkt von
    $x' = f(x, λ_0)$ zu einem $λ_0 ∈ Ω$. Die Differentialgleichung $x' = f(x, λ)$ besitzt in
-   $(\bar x, λ_0)$ eine *Verzweigung* (Bifukation) wenn	gilt:
-   Die Anzahl von stationären Punkten von $x' = f(x, μ_k) ∈ K_r(\bar x)$ ist ungleich der Anzahl stationärer Funkte von
+   $(\bar x, λ_0)$ eine *Verzweigung* (Bifurkation) wenn	gilt:
+   Die Anzahl von stationären Punkten von $x' = f(x, μ_k) ∈ K_r(\bar x)$ ist ungleich der Anzahl stationärer Punkte von
    $x' = f(x, ν_k) ∈ K_r(\bar x)$ für zwei Folgen $(μ_n)_{n ∈ ℕ}, (ν_n)_{n ∈ ℕ}$ in $Λ$ die gegen
-   $λ_n$ konvergieren, für jede Kugel $K_r(\bar x) ⊂ ℝ^n$ und hinreichend grohen $n ∈ ℕ$.
+   $λ_n$ konvergieren, für jede Kugel $K_r(\bar x) ⊂ ℝ^n$ und hinreichend großem $n ∈ ℕ$.
    In unserem Beispiel
    \begin{align*}
    μ_n &= \frac{1}{n} \to 0 = λ_0 \\
@@ -614,9 +616,9 @@
    \end{align*}
    #+end_defn
    #+begin_remark latex
-   Auf der Suche nach Bifukationen gehst es also um die Lösung von $f(x, λ) = 0$ mit einem Parameter $λ$.
+   Bei der Suche nach Bifurkationen geht es also um die Lösung von $f(x, λ) = 0$ mit einem Parameter $λ$.
    Der Satz über implizite Funktionen gibt uns Bedingungen, unter denen eine solche Gleichung nach $x$ lokal eindeutig aufgelöst werden kann.
-   Notwendige Bedingung für Bifukation: $x' = f(x, λ)$ in $(\bar x, λ_0)$ eine Bifukation besitzt dann kann die partielle Ableitung $δ_1 f(\bar x, λ_0): ℝ^n \to ℝ$ nicht
+   Notwendige Bedingung für Bifurkation: $x' = f(x, λ)$ in $(\bar x, λ_0)$ eine Bifurkation besitzt dann kann die partielle Ableitung $δ_1 f(\bar x, λ_0): ℝ^n \to ℝ$ nicht
    invertierbar sein.
    #+end_remark
    #+begin_defn latex
@@ -628,7 +630,7 @@
    \[∃ r > 0: x:[0, ∞\string) \to ℝ^n: \abs{x(0) - \bar x} < r\]
    die Forderung
    \[\lim_{t \to ∞} x(t) = \bar x\]
-   erfüllen. $\bar x$ heitß instabil wenn $\bar x$ nicht stabil ist.
+   erfüllen. $\bar x$ heißt instabil wenn $\bar x$ nicht stabil ist.
    #+end_defn
    #+begin_lemma latex
    Sei die Matrix $A ∈ ℝ^{n × n}, b ∈ ℝ^n$. Wenn der Nullpunkt $\bar x = 0$ stabil bezüglich der
