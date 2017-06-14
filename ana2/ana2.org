@@ -656,7 +656,7 @@
    Also ist der Nullpunkt instabil.
    #+end_thm
    #+begin_proof latex
-   $v_0$ sei Eigenvektor zu $λ$ (mit $\Re λ > 0$) und $\abs{v_0} \leq r$. $t \to e^{λ t} v_0$ ist eine Lösung (komplux) von $x' = A x$. Dabei strebt
+   $v_0$ sei Eigenvektor zu $λ$ (mit $\Re λ > 0$) und $\abs{v_0} \leq r$. $t \to e^{λ t} v_0$ ist eine Lösung (komplex) von $x' = A x$. Dabei strebt
    \[\abs{x(t)} \leq e^{\Re λ t} \abs{v_0} \xrightarrow{t \to ∞} ∞\]
    #+end_proof
    *Zusammenfassung für lineare Systeme* \\
