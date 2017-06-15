@@ -453,7 +453,7 @@
    \pp{}{y}(f + λ g) &= 0 \\
    g(x, y) &= 0 (⇔ \pp{}{λ}(f + λg) = 0)
    \end{align*}
-   $⇒ \{x_0, y_0, λ_0\}$. Diese Lösung liefert die Funktion $(f + λ_0 g)$, deren Extremum liegt auf Weg. Auf dem Weg ist aber $g = 0$. Damit liegt aber auch das Extremum von $f$ (auf dem Weg) bei $x_0, y_0$.
+   $⇒ \{x_0, y_0, λ_0\}$. Diese Lösung liefert die Funktion $(f + λ_0 g)$, deren auf dem Weg Extremum liegt. Auf dem Weg ist aber $g = 0$. Damit liegt aber auch das Extremum von $f$ (auf dem Weg) bei $x_0, y_0$.
    Zunächst zu Lagrange 1: Betrachte *eine* nichtholonome Zwangsbedingung: $\v f \d \v q = 0$. ($f_t = 0$). Naiv:
    \[\v p \equiv \{Q_m - (\dd{}{t} \pp{}{\dot q_m} - \pp{}{q_m}) T\} = 0\]
    zusammen mit $\v f · \dot{\v q} = 0$. Das ist aber unmöglich, weil zu viele Differentialgleichungen. In der Tat wir wollen nur $\v p δ \v y = 0$.
@@ -542,7 +542,7 @@
    $⇒$ Hamilton-Gleichung
    \begin{align*}
    \dot q_i &= \pp{H}{p_i} \\
-   \dot p_i &= \pp{H}{q_i}
+   \dot p_i &= -\pp{H}{q_i}
    \end{align*}
    Vergleich:
    1. Lagrange - $\{q_i\}$ - Lage im Konfigurationsraum, $\{\dot q_i\}$ - momentane Geschwindigkeiten $⇒$ Zustand des Systems
@@ -550,11 +550,11 @@
    2. Hamilton - $\{ξ_a\} \equiv \{q_i, p_i\}$ - Lage im Phasenraum $⇒$ Zustand des Systems
 	  Bewegung: Differentialgleichungen 1. Ordnung (2n Stück): $\dot ξ_a = f_a(ξ_1, \dots, ξ_{2n})$
    Zur Intuition:
-   \[H = \frac{p^2}{2 w} + V(q)\]
+   \[H = \frac{p^2}{2 m} + V(q)\]
    Hamilton-Gleichungen:
-   \[\dot q = \pp{H}{p} = \frac{p}{m}, \dot p = -\frac{H}{q} = -\frac{V}{q}\]
+   \[\dot q = \pp{H}{p} = \frac{p}{m}, \dot p = -\pp{H}{q} = -\pp{V}{q}\]
    Check: Leite 1. Gleichung ab:
-   \[\ddot q = \frac{\dot q}{m}\]
+   \[\ddot q = \frac{\dot p}{m}\]
    Setze in 2. Gleichung ein:
    \[m \ddot q = - \pp{V}{q}\]
    Veranschaulichung im Phasenraum: Betrachte Energieerhaltung:
@@ -578,7 +578,7 @@
    Insbesondere
    \[\dot H = \pp{H}{t} + \{H, H\} = \{H, H\} = 0\]
    Allgemeiner: Falls eine Observable $F$ nicht explizit von $t$ abhängt: \\
-   $F$ erhalten $⇔$ $\{F, H\} = 0$ \\
+   $F$ bleibt erhalten $⇔$ $\{F, H\} = 0$ \\
    Betrachte speziell die Observablen $\{q_i\}$ und $\{p_i\}$
    \[\dot p_i = \{p_i, H\} = \sum_{j}(\pp{p_i}{q_j} \pp{H}{p_j} - \pp{p_i}{p_j} \pp{H}{q_j}) = -\pp{H}{q_i}\]
    \[\dot q_i = \{q_i, H\} = \dots = \pp{H}{p_i}\]
@@ -600,15 +600,15 @@
 	  \[[·,·]: A, B ↦ [A,B] \equiv A B - B A\]
 	  zur Lie-Algebra
    #+end_ex
-   Für uns entschiedend: Die Poisson-Klammer macht den Raum der Observablen zur Lie-Algebra.
+   Für uns entscheidend: Die Poisson-Klammer macht den Raum der Observablen zur Lie-Algebra.
 ** Poisson-Klammern und Vektorfelder
-   \[\dot q = \pp{H}{p} , \dot p = \pp{H}{q}\]
+   \[\dot q = \pp{H}{p} , \dot p = -\pp{H}{q}\]
    Man kann die Bewegung auf Phasenraum mit Änderung von Observablen verbinden:
    $F = F(ξ), ξ = \{q, p\}$
    \[\dd{F}{t} = \pp{F}{ξ^i} \dd{ξ^i}{t} = \dd{ξ^i}{t} \pp{F}{ξ^i} \equiv V^i(ξ) \pp{F}{ξ_i}\]
    Mit solcher Bewegung ist immer auf natürliche Weise ein Differentialoperator verbunden:
    \[\dd{F}{t} = (V^i{ξ} \pp{}{ξ_i} F \equiv D F)\]
-   Zurücz zum speziellen Fall der Hamilton Dynamik:
+   Zurück zum speziellen Fall der Hamilton Dynamik:
    \[\dd{F}{t} = - \{H, F\} = -(\pp{H}{q_i} \pp{}{p_i} - \pp{H}{p_i} \pp{}{q_i})F \equiv -D_H F\]
    $H$ induziert Bewegung auf Phasenraum $\to$ Vektorfeld $\to$ Differentialoperator. $H$ ist nur *eine* der vielen Observablen. Wir könne auch
    jede andere Observalbe nehmen und analog Vektorfeld / Bewegung / Differentialoperator definieren.
@@ -664,7 +664,7 @@
    #+begin_thm latex
    Die Größe von Teilvolumina des Phasenraums ändert sich bei der durch $H$ definierten Strömung nicht.
    #+end_thm
-   Genauere Begrüngung: Wähle zwei Volumina $V, V'$:
+   Genauere Begründung: Wähle zwei Volumina $V, V'$:
    \begin{align*}
    Δ V &= V' - V = ∫_O \d \v F · Δ \v ξ = ∫_O \d \v f · \v ω Δ t \\
    \dd{V}{t} &= ∫_O \d \v F · \v ω \underarrow[=]{\text{Gauß}} ∫_V \d^{2n} ξ (\v ∇ \v ω) = 0
@@ -688,7 +688,7 @@
    In obiger Diskussion sei zum Beispiel $D_V$ der absolite Vektor in $T_q M$ und $\{v^1, \dots, v^n\}$ beziehungsweise $\{v^{'1}, \dots, v^{'n}\}$ seien die *Komponenten* in $x^i$ beziehungsweise $x^{\prime i}$.
    Basis (immer noch bei $q ∈ M$):
    \[\partial_i \equiv \frac{}{x^i}\]
-   Zu $V$ gibt es Dualraum $V^{\ast}$. (Raum der linearen Funktionale. Hie heißt dieser Cotangentiaraum $(T_q M)^{\ast}$ auf $V$).
+   Zu $V$ gibt es Dualraum $V^{\ast}$. (Raum der linearen Funktionale. Hier heißt dieser Cotangentialraum $(T_q M)^{\ast}$ auf $V$).
    Definiere duale Basis $\d x^i$
    \[\d x^i (\pp{}{x^i}) = δ_j^i\]
    Wegen Linearität ist allgemeines Element von $T_q^{\ast}: ω_i \d x^i ∈ T_q^{\ast}$
@@ -775,7 +775,7 @@
    \[⇒ ∫ ω = \lim \sum ω(v_1, v_2) = \lim \sum ω_{12} Δx^1 Δ x^2 = ∫ \d x^1 \d x^2 ω_{12}\]
    In anderen Koordinaten:
    \[∫ ω = ∫ \d x^{\prime 1} \d x^{\prime 2} ω_{12}'\]
-   Zum Prüfen der Gleichheißt:
+   Zum Prüfen der Gleichheit: \\
    Fakt:
    \[ω_{i_1 \dots i_p}' = (\pp{x^{j_1}}{x^{\prime i_1}}) \dots (\pp{x^{j_p}}{x^{\prime i_p}}) ω_{j_1 \dots j_p}\]
    (wie beim Vektor, nur $x \leftrightarrow$ x').
@@ -791,6 +791,6 @@
   $L'$ ist definiert durch $L'(Q(q), \dot Q(q), t) \overset{!}{=} L(q, \dot q, t)$. Man prüft leicht nach:
   \[\dd{}{t} \pp{L}{\dot q} - \pp{L}{q} = 0 ⇒ \dd{}{t} \pp{L'}{\dot Q} - \pp{L'}{Q} = 0\]
   (obiger ist aus so klar, seil sich $S$ nicht ändert.). \\
-  Bechte analoges Problem in Hamilton-Machanik:
+  Betrachte analoges Problem in Hamilton-Machanik:
   \[q, p \to Q(q, p), P(q, p)\]
   Dürfen wir bei so einem Koordinaten-Wechsel auf Phasenraum "Einteilung" in verallgemeinerte Koordinaten und Impulse verletzen?

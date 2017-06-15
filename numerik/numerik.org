@@ -900,7 +900,7 @@
   #+begin_thm latex
   Die Matrix $A ∈ \mathbb{K}^{n × n}$ sei regulär uns es sei
   \[\norm{δ A} \leq \frac{1}{\norm{A^{-1}}}\]
-  Dann ist die gestörte Matrix $\tilde A = A + δ A$ ebenfalls regulär. Für den relativen Fehler der Lzsung gilt mit die Konditionszahl von $A$
+  Dann ist die gestörte Matrix $\tilde A = A + δ A$ ebenfalls regulär. Für den relativen Fehler der Lösung gilt mit die Konditionszahl von $A$
   \[\cond(A) = \norm{A} \norm{A^{-1}}\]
   die Ungleichung
   \[\frac{\norm{δ x}}{\norm{x}} \leq \frac{\cond(A)}{1 - \cond(A) \frac{\norm{δ A}}{\norm{A}}} \left[\frac{\norm{δ b}}{\norm{b}} + \frac{\norm{δ A}}{\norm{A}}\right]\]
@@ -930,11 +930,11 @@
   1. $\cond_∞(A) = \norm{A}_∞ \norm{A^{-1}}_∞$
   2. Für die Spektralnorm gilt:
 	 \[\cond_2 (A) = \norm{A}_2 \norm{A^{-1}} = \sqrt{\frac{\abs{μ_{max}}}{\abs{μ_{min}}}}\]
-	 wobei $μ_{max}, μ_{nin}$ Betragsgößter beziehungsweise kleinster Eigenvektor von	$\bar A^T A$. Ist $A = A=$. Ist $A = \bar A^T$ so gilt:
+	 wobei $μ_{max}, μ_{nin}$ betragsgrößter beziehungsweise kleinster Eigenvektor von	$\bar A^T A$. Ist $A = A=$. Ist $A = \bar A^T$ so gilt:
 	 \[\cond_2(A) = \frac{\abs{λ_{max}}}{\abs{λ_{min}}}\]
 	 mit $λ_{max}$ und $λ_{min}$ Betrasgrößter beziehungsweise kleinster Eigenvektor von $A$. Regel: Es gelte $\cond (A) \approx 10^s$
 	 \[\frac{\norm{δ A}}{\norm{A}} \approx 10^{-k}, \frac{\norm{δ b}}{\norm{b}} \approx 10^{-k}\]
-	 Dann muss einn relativer Fehler von
+	 Dann muss ein relativer Fehler von
 	 \[\frac{\norm{δ x}}{\norm{x}} \approx 10^{s - k}\]
 	 erwartet werden. Mit $\norm{·} = \norm{·}_∞$ verliert man $s$ Stellen Genauigkeit.
   #+end_ex
@@ -955,7 +955,7 @@
   &= \cond(A) \frac{\norm{δ b}_2}{\norm{b}_2}
   \end{align*}
 ** Eliminationsverfahren
-   Direkte Methode zur Lösung von $A x = b, A ∈ ℝ^{n × n}$. Spezialfall: $A$ obere Dreichsmatrix $a_{ij} = 0, i > j$
+   Direkte Methode zur Lösung von $A x = b, A ∈ ℝ^{n × n}$. Spezialfall: $A$ obere Dreiecksmatrix $a_{ij} = 0, i > j$
    \[\begin{pmatrix}a_{11} & \dots & \dots & \dots & a_{1n} \\ 0 & a_{22} &   &   &  \vdots \\ \vdots & 0 & \ddots &   & \vdots \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & \dots & 0 & a_{nn}\end{pmatrix} \begin{pmatrix}x_1 \\ \vdots \\ \vdots \\ \vdots \\ x_n\end{pmatrix} = \begin{pmatrix}b_1 \\ \vdots \\ \vdots \\ \vdots \\ b_n\end{pmatrix}\]
    Ist $a_{ii} \neq 0, i = 1, \dots, n$ löst man durch Rückwärtseinsetzen
    \[x_j = \begin{cases} \frac{b_n}{a_{nn}} & j = n \\ \frac{1}{a_{jj}}(b_j - \sum_{k = j + 1}^{n} a_{jk} x_k) & j= n - 1, \dots, 1 \end{cases}\]
@@ -975,8 +975,8 @@
       \[\left[\begin{array}{ccc|c} a_{11}^{(0)} & \dots & a_{1n}^{(0)} & b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ a_{n1}^{(0)} & \dots & a_{nn}^{(0)} & b_{n}^{(0)}\end{array}\right]\]
    1. Wähle $r ∈ \{1, \dots, n\}$ mit $a_{r1}^{(0)} \neq 0$ (Pivotelement) und vertausche 1. und r-te Zeile
       \[\left[\begin{array}{ccc|c} \tilde a_{11}^{(0)} & \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ \tilde a_{n1}^{(0)} & \dots & \tilde a_{nn}^{(0)} & \tilde b_{n}^{(0)}\end{array}\right] := [\tilde A^{(0)} \mid \tilde b^{(0)}]\]
-   2. Für $j = 2, \dots, n$ eleminiere $\tilde a_{j1}^{(0)}$ durch Subtraction von $ \frac{\tilde a_{j1}^{(0)}}{\tilde a_{11}^{(0)}} := q_{j1}$
-	  mal der ersten Zeile von Zeilen $2, \dots, n$:
+   2. Für $j = 2, \dots, n$ eleminiere $\tilde a_{j1}^{(0)}$ durch Subtraktion von $ \frac{\tilde a_{j1}^{(0)}}{\tilde a_{11}^{(0)}} := q_{j1}$
+	  mal der ersten Zeile von den Zeilen $2, \dots, n$:
       \[\left[\begin{array}{cccc|c} \tilde a_{11}^{(0)} & \tilde a_{12}^{(0)} \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ 0 & \tilde a_{22}^{(1)} \dots & \tilde a_{2n}^{(1)} & \tilde b_{2}^{(1)} \\ \vdots & \vdots & & \vdots & \vdots \\ 0 & \tilde a_{n2}^{(1)} & \dots & \tilde a_{nn}^{(1)} & \tilde b_{n}^{(1)}\end{array}\right] := [A^{(1)} \mid b^{(1)}]\]
 	  Fahre fort auf kleinerem System $⇒ [A^{(0)} \mid b^{(0)}] \to [A^{(1)}\mid b^{(1)}] \to \dots \to [A^{(n - 1)} \mid b^{(n - 1)}] =: [R\mid c]$
    Wird im $k$ -ten Schritt $[A^{(k - 1)} \mid b^{(n - 1)}] \to [\tilde A^{(k - 1)} \mid \tilde b^{(n - 1)}] \to [A^{(k)} \mid b^{(k)}]$ das Pivot-Element $q_{r_k k}^{k - 1}$ gewählt, so gilt
@@ -1029,7 +1029,7 @@
 	  - Permutationsmatrizen $Q_k$ für $x$
 		\[\underbrace{G_k P_k \dots G_1 P_1 A Q_1 \dots Q_k}_{A^{(k)}} \underbrace{Q_k \dots Q_1 x}_{Q x} = G_k P_k \dots G_1 P_1 b\]
    *Speicherausnutzung* \\
-   Die $q_{jk}^{(k)}$ können an den eliminierten Stellen im unteren	Dreieck von $A$ gespeichert werden. Das obere Dreick von $A$ wird während der Rechnung ersetzt.
+   Die $q_{jk}^{(k)}$ können an den eliminierten Stellen im unteren	Dreieck von $A$ gespeichert werden. Das obere Dreieck von $A$ wird während der Rechnung ersetzt.
    Nach $k$ Eliminationsschritten
    \begin{equation*}
    \left[
@@ -1092,7 +1092,7 @@
    \end{align*}
    $i, j = k + 1, \dots, n$ $⇒$ $n - k$ Divisionen, $(n - k) + (n - k)^2$ Multiplikationen und Additionen
    \[⇒ N_{\text{Gauß}}(n) = \frac{1}{3} n^3 + \mathcal{n^2}\]
-   Girl für Lösung von $Ax = b$ und für die Berechnung der Zerlegung $PA = LR$
+   Gilt für Lösung von $Ax = b$ und für die Berechnung der Zerlegung $PA = LR$
    #+begin_ex latex
    \[A = \begin{pmatrix}3 & 1 & 6 \\ 2 & 1 & 3 \\ 1 & 1 & 1\end{pmatrix}, b = \cvec{2; 7; 4}\]
    Pivotierung:
@@ -1132,15 +1132,15 @@
    LR-Zerlegung:
    \[P_1 = E_3, P_2 = \begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}\]
    \[PA = \begin{pmatrix}3 & 1 & 6 \\ 1 & 1 & 1 \\ 2 & 1 & 3\end{pmatrix} = LR= \begin{pmatrix}1 & 0 & 0 \\ 1/3 & 1 & 0 \\ 2/3 & 1/2 & 1\end{pmatrix} \begin{pmatrix}3 & 1 & 6 \\ 0 & 2/3 & -1 \\ 0 & 0 & -1/2\end{pmatrix}\]
-   Für die numerische Stabilität der Gauß-Elimination ist im Allgemeinen Pivotierung sehr wichtig.
+   Für die numerische Stabilität der Gauß-Elimination ist im Allgemeinen eine Pivotierung sehr wichtig.
    #+end_ex
    Rückwärtsanalyse nach Wilkinson $A ∈ ℝ^{n × n}$, löse $A x = b$ mit Gauß-Elimination mit Spaltenpivotierung. Die berechnete Lösung $\tilde x$ ist
    die exakte Lösung eines gestörten Systems $(A + δ A) \tilde x = b$ mit
    \[\frac{\norm{δ A}_∞}{\norm{A}_∞} \leq 1.01 · 2^{n - 1}(n^3 + 2 n^2) eps\]
    (ohne Beweis) \\
-   Störungssatzt $⇒$
+   Störungssatz $⇒$
    \[\frac{\norm{δ x}}{\norm{x}} \leq \frac{\cond_∞ (A)}{1 - \cond_∞ (A) \norm{δ A} / \norm{A}} · 1.01 2^{n - 1}(n^3 + 2n^2) eps\]
-   Diese Abschätzung deckt pathologische Fälle ab. In der Praxis ist das Verhalet gutartig, das heißt die Gaußelimination mit Spaltenpivotierung ist ein stabiler Algorithmus.
+   Diese Abschätzung deckt pathologische Fälle ab. In der Praxis ist das Verhalten gutartig, das heißt die Gaußelimination mit Spaltenpivotierung ist ein stabiler Algorithmus.
    Wiederholung: Gauß-Elimination $Ax = b, A ∈ ℝ^{n × n}$
    \begin{align*}
    A^{(0)} &= A, A^{(k)}= G_k P_k A^{(k - 1)}, k = 1, \dots, n - 1 \\
@@ -1156,7 +1156,7 @@
    Wegen Rundungsfehlern bei der Gauß-Elimination gilt: $P A = L R$ nicht exakt. Damit gilt mit einer Näherungslösung $x^0$ gewonnen aus $L R x^0 = P b$ für den
    sogenannten Defekt
    \[d^0 = b - A x^0 \neq 0\]
-   Man kann iterativ Defektkorrektur betreiben.
+   Man kann man eine iterative Defektkorrektur betreiben.
    \begin{align*}
    d^k &= b - A x^k , L R δ x^k = P d^k \\
    x^{k + 1} = x^k + δ x^k, k = 0, 1, \dots
@@ -1265,7 +1265,7 @@
    Eindeutigkeit der LR-Zerlegung
    \[LR = \tilde R^T D L^T ⇒ L = \tilde R^T, R = D L^T\]
    #+begin_thm latex
-   Jede symmetrisch positiv definite Matrix $A ∈ ℝ^{n × n}$ hta eine sogenannte Cholesky-Zerlegung
+   Jede symmetrisch positiv definite Matrix $A ∈ ℝ^{n × n}$ hat eine sogenannte Cholesky-Zerlegung
    \[A = L D L^T = \tilde L \tilde L^T\]
    #+end_thm
    Aufwand: $N_{\text{Cholesky}}(n) = \frac{n^3}{6} + \mathcal{O}(n^2)$. \\
