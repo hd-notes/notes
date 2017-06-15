@@ -572,7 +572,7 @@
 	 dass
      \[γ(λv + μw, λv + μw) = 0 ⇒ λv + μw = 0 ⇒ (v, w)\text{ linear abhängig}\]
   #+end_proof
-  #+ATTR_LATEX: :options [Eigenscaften der Norm]
+  #+ATTR_LATEX: :options [Eigenschaften der Norm]
   #+begin_remark latex
   $v, w ∈ V, λ ∈ ℝ$. Dann gilt:
   1. $\norm{v} = 0 ⇔ v = 0$
@@ -960,9 +960,9 @@
   Es ist $z^T \bar z = (z_1, \dots, z_n) \cvec{\bar z_1; \vdots; \bar z_n} = z_1 \bar z_1 + \dots + z_n \bar z_n = \abs{z_1}^2 + \dots + \abs{z_n}^2 \neq 0$
   $⇒ λ_i = \bar λ_i ⇒ λ_i ∈ ℝ$
   #+end_proof
-  #+ATTR_LATEX: :options [Spektralsetz für selbstadjungierte Endomorphismen]
+  #+ATTR_LATEX: :options [Spektralsatz für selbstadjungierte Endomorphismen]
   #+begin_thm latex
-  $φ ∈ \End(V)$ selbstadjungierter Enddmorphismus. Dann existiert eine Orthonormalbasis von $(V, γ)$ aus Eigenvektoren von $φ$.
+  $φ ∈ \End(V)$ selbstadjungierter Endomorphismus. Dann existiert eine Orthonormalbasis von $(V, γ)$ aus Eigenvektoren von $φ$.
   Sind $λ_1, \dots, λ_r$ die verschiedenen Eigenwerte von $φ$, so ist
   \[V = Eig(φ, λ_1) \hat\oplus \dots \hat\oplus \Eig(φ, λ_r)\]
   #+end_thm
@@ -981,7 +981,7 @@
   $⇒ V = \Eig(φ, λ_1) \hat\oplus \dots \hat\oplus \Eig(φ, λ_r)$
   #+end_proof
   #+begin_conc latex
-  $γ':V × V: ℝ$ symmetrische Bilinearform, $n = \dim V$. Dann existiert eine Orthonormalbasis $\mathcal{B}$ von $(V, γ)$ bezüglich derer die Darstellungsmatrix von $γ'$ Diagonalbestalt hat:
+  $γ':V × V: ℝ$ symmetrische Bilinearform, $n = \dim V$. Dann existiert eine Orthonormalbasis $\mathcal{B}$ von $(V, γ)$ bezüglich derer die Darstellungsmatrix von $γ'$ Diagonalgestalt hat:
   \[M_{\mathcal{B}}(γ') = \begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 &   & λ_n\end{pmatrix}\]
   Hierbei sind $λ_i, \dots, λ_n$ die Eigenvektoren (mit Vielfachen) des zu $γ'$ gehörenden eindeutig bestimmten selbstadjungierten Endomorphismus $φ ∈ \End(V)$ mit $γ'(x, y) = γ(φ(x), y)$
   #+end_conc
@@ -1022,7 +1022,7 @@
 	 \[T^{-1} A  T = (λ_1, \dots, λ_1, \dots, λ_k, \dots, λ_k) E_n\]
   #+end_algorithm
   #+begin_note latex
-  Um $T ∈ SO(n)$ zu erreichen ersetze gegebenfalls $v_{1,1}$ durch $-v_{1,1}$.
+  Um $T ∈ SO(n)$ zu erreichen ersetze man gegebenfalls $v_{1,1}$ durch $-v_{1,1}$.
   #+end_note
   #+begin_ex latex
   \[A = \begin{pmatrix}2 & -1 & 2 \\ -1 & 2 & 2 \\ 2 & 2 & -1\end{pmatrix} ∈ M(3 × 3, ℝ)\]
@@ -1439,13 +1439,13 @@
   #+end_ex
   #+begin_defn latex
   $R$ nullteilerfrei, $a, b ∈ R$. $b$ heißt ein *Teiler* von $a$ (Notation: $b \mid a$) $\xLeftrightarrow{\text{Def}}$ es existiert ein $c ∈ R$ mit $a = b c$. \\
-  $a, b$ heißten assoziiert (Notation: $a \estimates b$) $\xLeftrightarrow{\text{Def}}$ $a \mid b$ und $b \mid a$
+  $a, b$ heißen assoziiert (Notation: $a \estimates b$) $\xLeftrightarrow{\text{Def}}$ $a \mid b$ und $b \mid a$
   #+end_defn
   #+begin_ex latex
   $R = ℤ, a ∈ ℤ ⇒ a \estimates - a$
   #+end_ex
   #+begin_remark latex
-  $R$ nullteilerfrei, $a, b ∈ R$. Dann sind äquivialent:
+  $R$ nullteilerfrei, $a, b ∈ R$. Dann sind äquivalent:
   1. $a \estimates b$
   2. Es existiert $e ∈ ℝ^{\ast}$ mit $a = b e$
   3. $(a) = (b)$
@@ -1486,11 +1486,11 @@
 	 "$\impliedby$" Sei $(d) = (a_1, \dots, a_n) ⇒ d ∈ \GGT(a_1, \dots, a_n)$ mit Argument aus dem Beweis von 1.
   #+end_proof
   #+begin_note latex
-  - Im Fall $R = ℤ, a_1, \dots, a_n ∈ ℤ$ ist $\GGT(a_1, \dots, a_n) ∩ ℕ_0 = \{d\}$ für ein $d ∈ ℕ_0$ (beachte $ℤ^{\ast} = \{\pm 1\}$). Mann nennt dann $d$ *den* gröhten gemeinsamen Teiler von $a_1, \dots, a_n$
+  - Im Fall $R = ℤ, a_1, \dots, a_n ∈ ℤ$ ist $\GGT(a_1, \dots, a_n) ∩ ℕ_0 = \{d\}$ für ein $d ∈ ℕ_0$ (beachte $ℤ^{\ast} = \{\pm 1\}$). Mann nennt dann $d$ *den* größten gemeinsamen Teiler von $a_1, \dots, a_n$
     \[d =: \ggT(a_1, \dots, a_n)\]
-  - Im Fall $R = K[T]$ (wobei $K$ Körber, in 27, dies ein Hauptidealring), $f_1, \dots, f_n ∈ K[t]$, nicht alle $f_i = 0$, existiert ein eindeutig bestimmtes normiertes Polynom $d ∈ K[t]$ mit $d ∈ \GGT(f_1, \dots, f_n)$ (bechte: $K[t]^{\ast} = K^{\ast}$). Man nennt
+  - Im Fall $R = K[T]$ (wobei $K$ Körper, in 27, dies ein Hauptidealring), $f_1, \dots, f_n ∈ K[t]$, nicht alle $f_i = 0$, existiert ein eindeutig bestimmtes normiertes Polynom $d ∈ K[t]$ mit $d ∈ \GGT(f_1, \dots, f_n)$ (bechte: $K[t]^{\ast} = K^{\ast}$). Man nennt
 	\[d =: \ggT(f_1, \dots, f_n)\]
-	*den* gröhten gemeinsamen Teiler von $f_1, \dots, f_n$ und setzt
+	*den* größten gemeinsamen Teiler von $f_1, \dots, f_n$ und setzt
 	\[\ggT(0, \dots, 0) := 0\]
   #+end_note
   #+begin_conc latex
@@ -1534,7 +1534,7 @@
 	 1. Behauptung: Ist $I ⊆ R$ mit $(p) ⊊ I$, dann ist $I = R$, denn: Sei $(p) ⊊ I$. Da $R$ Hauptidealring existiert $a ∈ R$ mit $I = (a) ⇒ ∃ c ∈ R: p = a c ⇒ a ∈ R^{\ast} ∨ c ∈ ℝ^{\ast}$. Falls $c ∈ R^{\ast}$, dann $(p) = (a) = I\lightning$ Also $a ∈ R^{\ast}$, das heißt $(a) = I = R$.
 	 2. $\faktor{R}{(p)}$ ist ein Körper, denn:
 		Sei $\bar x ∈ \faktor{R}{(p)}, \bar x \neq \bar 0 ⇒ x \not ∈ (p) ⇒ I := (x, p)$ ist ein Ideal in $R$ mit $(p) ⊊ I ⇒ I = R ⇒ 1 ∈ I ⇒ ∃ u, v ∈ R: 1 = u x + v p ⇒ \bar 1 = \bar u \bar x + \bar v \underbrace{\bar p}_{= 0} = \bar u \bar x$
-	 3.	$p$ ist Primelement, denn: Seien $a, b ∈ R$ mit $p \mid a b ⇒$ in $\faktor{R}{(p)}$ ist $\bar 0 = \bar p = \bar a \bar b$. Nach 2. ist $\faktor{R}{(p)}$ ein Köruer, also nullteilerfrei (6.11) $⇒ \bar a = \bar 0 ∨ \bar b = \bar 0 ⇒ p \mid a ∨ p \mid b$
+	 3.	$p$ ist Primelement, denn: Seien $a, b ∈ R$ mit $p \mid a b ⇒$ in $\faktor{R}{(p)}$ ist $\bar 0 = \bar p = \bar a \bar b$. Nach 2. ist $\faktor{R}{(p)}$ ein Körper, also nullteilerfrei (6.11) $⇒ \bar a = \bar 0 ∨ \bar b = \bar 0 ⇒ p \mid a ∨ p \mid b$
   #+end_proof
   #+begin_note latex
   - Beweis hat gezeigt: $R$ Hauptidealring, $p$ irreduziblet Element in $R$, dann ist $\faktor{R}{(p)}$ ein Körper.
@@ -1587,8 +1587,8 @@
 	 \[p_2 \estimates c q_2 = q_2, p_3 \estimates q_3, \dots, p_r \estimates q_r\]
   #+end_proof
   #+begin_note latex
-  - Fasst man in einer Zerlegung eines Elementes zueinander assoziieret Faktoren zusammen und erlaubt einen Vorfaktor $c ∈ R^{\ast}$, so erhält man eine Darstellung für Elemente $a ∈ R \setminus (R^{\ast} ∪\{0\})$ der FOrm
+  - Fasst man in einer Zerlegung eines Elementes zueinander assoziierter Faktoren zusammen und erlaubt einen Vorfaktor $c ∈ R^{\ast}$, so erhält man eine Darstellung für Elemente $a ∈ R \setminus (R^{\ast} ∪\{0\})$ der FOrm
 	\[a = c p_1^{e_1} · \dots · p_r^{e_r}\]
 	mit $c . R^{\ast}, p_1, \dots, p_r$ irreduzibel, $p_1 \not \estimates p_j$ für $i \neq j, e_1, \dots, e_r ∈ ℕ$. Ist dann $a = d q_1^{f_1} · \dots · q_s^{f_s}$ mit $d ∈ R^{\ast}, q_1, \dots, q_s$ irreduzibel,
-	$q_i \not \estimates q_j$ FÜr $i \neq j$, $f_1,\dots, f_s ∈ ℕ$, dann ist $r = s$ und nach Umnummierieung ist $p_i \estimates q_i, e_i = f_i$ für $i = 1, \dots, r$.
+	$q_i \not \estimates q_j$ FÜr $i \neq j$, $f_1,\dots, f_s ∈ ℕ$, dann ist $r = s$ und nach Umnummerierung ist $p_i \estimates q_i, e_i = f_i$ für $i = 1, \dots, r$.
   #+end_note
