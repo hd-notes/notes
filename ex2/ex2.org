@@ -79,7 +79,7 @@
    magnetischen Dipol.
    #+ATTR_LATEX: :options [Hall-Effekt]
    #+begin_ex latex
-   Ablenkung bewegter Ladungsträger im Festkörper beziehungsweise in Leitern durch ein externes 
+   Ablenkung bewegter Ladungsträger im Festkörper beziehungsweise in Leitern durch ein externes
    Magentfeld.
    Erlaubt Magnetfeldmessung. \\
    Beobachtung: Aufbau eines elektrischen Querfeldes in einem stromdurchflossenen Leiter in einem Magnetfeld.
@@ -201,7 +201,7 @@
 * Materie im Magnetfeld
 ** Magnetisierung und magnetische Erregung
   Beobachtung: Beeinflussung des B-Feldes durch Materie.
-  Ein Eisenkern der Länge $l$ hat auf einer Querschnittsfläche $A$ (Normalenvektor $\v n$) viele Kreiströme (magnetische Dipole) $I_i$ mit Fläche $A_i$. 
+  Ein Eisenkern der Länge $l$ hat auf einer Querschnittsfläche $A$ (Normalenvektor $\v n$) viele Kreiströme (magnetische Dipole) $I_i$ mit Fläche $A_i$.
   Auf der Oberfläche des Eisenkern gibt es also einen Strom $I_m$: molekularer Strom.
   Für ein infinitesimales Stück es Eisenkerns $\d l$ erhält man:
   \begin{align*}
@@ -277,7 +277,7 @@
    Ausrichtung permanenter magnetischer Dipole mit außerem B-Feld. Vergleich:
    - Elektrische Ausrichtung führt zur Abschwächung
    - Magnetostatische Ausrichtung führt zur Verstärkung
-   Thermische Bewegung wirkt der Ausrichtung entgegen $⇒$ Temperaturabhängigkeit der Magnetisierung: 
+   Thermische Bewegung wirkt der Ausrichtung entgegen $⇒$ Temperaturabhängigkeit der Magnetisierung:
    (Curie-Gesetz)
    \[\v M = \frac{1}{3} \frac{μ B_{ext}}{k_B T} \v M_s\]
    $\v M_s$: Sättigungsmagnetismus \\
@@ -335,12 +335,12 @@
   - zeitabhängige E-Felder $\to$ Verschiebungsstrom
 ** Magnetische Induktion
    Beobachtungen
-   - Bewegte Leiterschleife im Magnetfeld resultiert in Induktion und Spannugsstöhen
-   - Vorzeichen abhängig von Bewegungsrischtung und Richtung des Magnetfelds
-   - Mehrere Windungen (beziehungsweise gröhere Fläche) $\to$ höhere Spannungen
+   - Bewegte Leiterschleife im Magnetfeld resultiert in Induktion und Spannugsstößen
+   - Vorzeichen abhängig von Bewegungsrichtung und Richtung des Magnetfelds
+   - Mehrere Windungen (beziehungsweise größere Fläche) $\to$ höhere Spannungen
    - Drehung Leiterschleife $\to$ Wechselspannung
    \[∫ U(t) \d t = Δ ϕ_m \quad\text{mit}\quad ϕ_m= ∫ \v B \d \v A\]
-   \[U_{ind}= - \dot ϕ_m \quad\text{beziehungsweise} U_{ind} = - N \dot ϕ_m\]
+   \[U_{ind}= - \dot ϕ_m \quad\text{beziehungsweise } U_{ind} = - N \dot ϕ_m\]
    Ursache? $⇒$ Lorentzkraft
    \[\v F = q(\v b × \v B)\]
    \begin{align*}
@@ -384,7 +384,7 @@
 ** Generatoren
    \begin{align*}
    ϕ_m &= ∫\v B \d \v A = B A \cos ω t \\
-   \dot{ϕ_m} = - U_{ind} = ω B A \sin ω t
+   \dot{ϕ_m} &= - U_{ind} = ω B A \sin ω t
    \end{align*}
 ** Induktivität und Selbstinduktion
    $B \sim I, ϕ_m \sim I$
