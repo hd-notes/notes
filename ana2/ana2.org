@@ -721,3 +721,102 @@
    \end{align*}
    und der Nullpunkt ist asymptotisch stabil.
    #+end_proof
+   #+ATTR_LATEX: :options [3.33 Instabilitätssatz]
+   #+begin_thm latex
+   Die Matrix $A$ habe mindestens einen Eigenwert $λ$ mit $\Re λ > 0$. Sei $g$ stetig mit linearem Wachstum und
+   \[\lim_{x \to 0} \frac{\abs{g(x)}}{\abs{x}}\]
+   Dann ist der Nullpunkt instabil bezüglich der Differntialgleichung
+   \[x' = A x + g(x)\]
+   #+end_thm
+   (ohne Beweis)
+   #+begin_remark latex
+   Stabilitätssatz und Instabilitätssatz lassen sich direkt auf nichtlineare Differentialgleichungen anwenden,
+   wenn die rechte Seite differenzierbar ist. Denn nach Definition von Totaler Ableitung erfüllt die Restfunkton $φ_{\bar x}(·)$ in
+   \[f(x) = \underbrace{f(\bar x)}_{= 0} + \underbrace{D f(\bar x)(x - \bar x)}_{A(x - \bar x)} + \underbrace{φ_{\bar x}(x)}_{= g}\]
+   die Voraussetzungen der beiden Sätze.
+   #+end_remark
+   #+begin_korollar latex
+   $f: ℝ^n \to ℝ^n$ sei differnzierbar und besitze einen stationären Punkt $\bar x ∈ ℝ^n$. Dann gilt
+   1. Wenn die Jacobi-Matrix $D f(\bar x) ∈ ℝ^{n × n}$ nur Eigenwerte mit $\Re λ_i < 0$ besitzt, dann ist $\bar x$ asymptotisch stabil.
+   2. Wenn mindestens ein $\Re λ_i > 0$ ist, ist die Lösung instabil.
+   #+end_korollar
+   #+begin_remark latex
+   - Bei $\Re λ = 0$ sind entsprechende Schlussfolgerungen über die Stabilität nicht möglich
+   - Satz 3.32 und Satz 3.33 $\impliedby$ Satz von Grobmann-Hartmann
+   #+end_remark
+   #+begin_ex latex
+   \[\begin{cases} x' &= x(1 - x) \\ x(0) &= x_0\end{cases}\]
+   Stabilität: $f'(x) = 1 - 2x$ \\
+   Stationäre Punkte: $\bar x_1 = 0, \bar x_2 = 1$
+   \begin{align*}
+   f'(x) \mid_{x = \bar x_1} &= 1 > 0 ⇒ \bar x_1 \text{ instabil} \\
+   f'(x) \mid_{x = \bar x_2} &= -1 > 0 ⇒ \bar x_2 \text{ asymptotisch instabil} \\
+   \end{align*}
+   #+end_ex
+   #+begin_defn latex
+   Als *Phasenraum* bezeichnet man den Raum, der durch die Variablen das Systems aufgespannt wird. Ein Punkt im Phasenraum
+   nennt man *Zustand* des Systems
+   #+end_defn
+   #+begin_remark latex
+   Das Richtungsfeld gibt den Verlauf der Trajektorien an. Der exakte Verlauf der Frajektorie ist für ein System
+   \[\begin{cases} x_1' = f(x_1, x_2) \\ x_2' = g(x_1, x_2) \end{cases}\]
+   gegeben durch
+   \[\dd{x_1}{x_2} = \frac{f(x_1, x_2)}{g(x_1, x_2)}\]
+   #+end_remark
+   #+ATTR_LATEX: :options [Methode des ersten Integrals]
+   #+begin_ex latex
+   \[\begin{cases} x_1' = x_1 \\ x_2' = - x_1 x_2 \end{cases} ⇒ \dd{x_2}{x_1} = -x_2 ⇒ x_2(x_1) = c e^{- x_1}\]
+   Durch jeden Punkt $(x_1, x_2)$ geht eine eindeutige Kurve.
+   #+end_ex
+   #+ATTR_LATEX: :options [Lotke-Volterra]
+   #+begin_ex latex
+   \[\begin{cases} u' = au - b u v = f(u, v) \\ v' = c u v - d v = g(u, v)\end{cases}\]
+   (Größe der Beutepopulation)
+   1. Existenz und Eindeutigkeit aus P.-L. Satz
+   2. Nichtnegativität der Lösung:
+      - $f(u, v)\big|_{u = 0} = 0 ⇒ u(t) \geq 0$ falls $u_0 \geq 0$ \\
+      - $g(u, v)\big|_{v = 0} = 0 ⇒ v(t) \geq 0$ falls $v_0 \geq 0$ \\
+   3. Gleichgewichtzustände (Stationäre Punkte)
+	  \[\begin{cases} f(\bar u, \bar v) = 0 ⇒ \bar u (a - b \bar v) = 0 ⇔ \bar u = 0 ∨ \bar v = \frac{a}{b} \\ g(\bar u, \bar v) = 0 ⇒ \bar v (c \bar u - d) = 0 ⇔ \bar v = 0 ∨ \bar u = \frac{d}{c} \end{cases}\]
+	  $⇒$ Stationäre Punkte:
+	  \[(\bar u_1, \bar v_1) = (0, 0), (\bar u_2, \bar v_2) = (\frac{d}{c}, \frac{a}{b})\]
+	  Stabilität der stationären Punkte:
+	  Jacobi Matrix:
+	  \[J(u,v ) = \begin{pmatrix}a - b v & - b v \\ c v & c u - d\end{pmatrix}, J(u, v)\big|_{(0, 0)} = \begin{pmatrix}a & 0 \\ 0 & -d\end{pmatrix}\]
+	  $⇒ λ_1 = a, λ_2 = - d$. $(0, 0)$ ist ein Sattel (instabil nach Grobmann-Hartmann-Satz).
+	  \[J(u, v)\big|_{(\frac{d}{c}, \frac{a}{b})} = \begin{pmatrix}0 & -\frac{bd}{c} \\ \frac{ca}{b} & 0\end{pmatrix}\]
+	  \[(-λ)^2 + ad = 0 ⇔ λ_{1,2} = \pm \sqrt{ad} i\]
+	  $⇒$ die Anwendung von Grobman-Hartmann ist nicht möglich. Wir rechnen das erste Integral:
+	  \begin{align*}
+	  \dd{v}{u} &= \frac{v}{u} \frac{c u - d}{a - b v} \\
+   	  ⇒ ∫ \frac{a - b v}{v} \d v &= ∫ \frac{c u - d}{u} \d u \\
+	  ∫ (\frac{a}{v} - b) \d v &= ∫ (c - \frac{d}{u}) \d u \\
+	  a \ln v - b v &= cu - d \ln u + c \\
+	  v^a e^{-b v} e^{-cu} u^d &= c =: F(u, v)
+      \end{align*}
+	  $⇒ F(u, v)$ ist konstant entlang Trajektorien. Die Lösungen sind also periodisch.
+	  Für Oszillationen mit Periode $T$ gilt:
+	  \[\frac{u'}{u} = a - b v ⇒ \ln \underbrace{(\frac{u(T)}{u_0})}_{u_1} = aT - b ∫_0^T u(s) \d s\]
+	  \[v \uparrow ⇔ v' > b\]
+	  \[c u v - d v = v (c u - d), v > 0 ∧ u > \frac{d}{c} ⇒ 0 = a T - b ∫_0^T v(s) \d s\]
+	  $u \equiv 0$ und $v \equiv 0$ sind Isoklinen
+   #+end_ex
+   Lyapunov Funktion (globale Stabilität)
+   \[x' = f(x)\]
+   Wir suchen nach einer Funktion $L(x(t))$, die entlang der Lösung nicht wächst. ($⇒$ "Energie")
+   #+begin_defn latex
+   Sei $U ⊂ ℝ^n$ offen und sei $f ∈ C^0(U, ℝ^n)$ lokal Lipschitzstetig. Eine Lyapunovfunktion für $x' = f(x)$ ist eine Funktion $L ∈ C^1(U, [0, ∞\string))$ mit
+   \[∇ L(x) f(x) \leq 0\]
+   für $x ∈ U$. Falls sogar
+   \[∇L(x) f(x) < 0 ∀ x ∈ U \setminus \{x \mid f(x) = 0\}\]
+   gilt, dann heißt $L$ strikte Lyapunov-Funktion, das heißt $L(x(t))$ fällt, falls	$x(t)$ kein stationärer Punkt ist.
+   #+end_defn
+   #+begin_thm latex
+   Sei $\bar x$ ein stationärer Punkt.
+   - Falls es eine Lyapunov-Funktion auf einer offenen Umgebung $U$ von $\bar x$ gibt mit $L(\bar x) = 0, L(x) > 0$ für $x \neq \bar x$, dann ist
+     $\bar x$ stabil
+   - Falls es eine strikte Lyapunov-Funktion auf einer Umbebung $U$ von $\bar x$ mit $L(\bar x) = 0, L(x) > 0$ für $x \neq \bar x$ und $L'(x) < 0$, dann
+	 ist $\bar x$ asymptotisch stabil.
+   \[(L(x))' = L'(x) x'\]
+   #+end_thm
+   (ohne Beweis)
