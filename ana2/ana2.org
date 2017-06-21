@@ -635,7 +635,7 @@
    #+begin_lemma latex
    Sei die Matrix $A ∈ ℝ^{n × n}, b ∈ ℝ^n$. Wenn der Nullpunkt $\bar x = 0$ stabil bezüglich der
    homogenen Differentialgleichung $x' = A x$ ist, dann ist der stationäre Punkt der inhomogenen
-   Differentialgleichung $y' = A y + b$ ebefalls stabil.
+   Differentialgleichung $y' = A y + b$ ebenfalls stabil.
    #+end_lemma
    #+begin_proof latex
    Verschiebung $x = y - \bar y$, wobei $\bar y = - A^{-1} b$
@@ -727,7 +727,7 @@
    #+begin_thm latex
    Die Matrix $A$ habe mindestens einen Eigenwert $λ$ mit $\Re λ > 0$. Sei $g$ stetig mit linearem Wachstum und
    \[\lim_{x \to 0} \frac{\abs{g(x)}}{\abs{x}}\]
-   Dann ist der Nullpunkt instabil bezüglich der Differntialgleichung
+   Dann ist der Nullpunkt instabil bezüglich der Differentialgleichung
    \[x' = A x + g(x)\]
    #+end_thm
    (ohne Beweis)
@@ -738,7 +738,7 @@
    die Voraussetzungen der beiden Sätze.
    #+end_remark
    #+begin_korollar latex
-   $f: ℝ^n \to ℝ^n$ sei differnzierbar und besitze einen stationären Punkt $\bar x ∈ ℝ^n$. Dann gilt
+   $f: ℝ^n \to ℝ^n$ sei differenzierbar und besitze einen stationären Punkt $\bar x ∈ ℝ^n$. Dann gilt
    1. Wenn die Jacobi-Matrix $D f(\bar x) ∈ ℝ^{n × n}$ nur Eigenwerte mit $\Re λ_i < 0$ besitzt, dann ist $\bar x$ asymptotisch stabil.
    2. Wenn mindestens ein $\Re λ_i > 0$ ist, ist die Lösung instabil.
    #+end_korollar
@@ -760,7 +760,7 @@
    nennt man *Zustand* des Systems
    #+end_defn
    #+begin_remark latex
-   Das Richtungsfeld gibt den Verlauf der Trajektorien an. Der exakte Verlauf der Frajektorie ist für ein System
+   Das Richtungsfeld gibt den Verlauf der Trajektorien an. Der exakte Verlauf der Trajektorie ist für ein System
    \[\begin{cases} x_1' = f(x_1, x_2) \\ x_2' = g(x_1, x_2) \end{cases}\]
    gegeben durch
    \[\dd{x_1}{x_2} = \frac{f(x_1, x_2)}{g(x_1, x_2)}\]

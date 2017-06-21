@@ -1459,17 +1459,17 @@
   3. Sei $(a) = (b) ⇒ a ∈ (b) ⇒$ es existiert $c ∈ R$ mit $a = b c ⇒ b \mid a$. Analog: $a \mid b$ also $a \estimates b$
   #+end_proof
   #+begin_defn latex
-  $R$ nullteilerfrei, $a_1, \dots, a_n ∈ R$. $d ∈ R$ heißt *größter gemeinsamer Teiler von $a_1, \dots, a_n \xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt:
+  $R$ nullteilerfrei, $a_1, \dots, a_n ∈ R$. $d ∈ R$ heißt *größter gemeinsamer Teiler* von $a_1, \dots, a_n \xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt:
   - (GGT1) $d \mid a_1, \dots, d \mid a_n$
   -	(GGT2) $c \mid a_1, \dots, c \mid a_n ⇔ c \mid d$
   #+end_defn
   #+begin_proof latex
-  Wir bezeichnent die Menge aller gröhten gemeinsamen Teiler von $a_1, \dots, a_n$ mit $\GGT(a_1, \dots, a_n)$.
+  Wir bezeichnent die Menge aller größten gemeinsamen Teiler von $a_1, \dots, a_n$ mit $\GGT(a_1, \dots, a_n)$.
   #+end_proof
   #+begin_note latex
   - Seien $d_1, d_2 ∈ \GGT(a_1, \dots, a_n)$, dann folgt $d_1 \mid d_2$ und $d_2 \mid d_1$, also $d_1 \estimates d_2$.
   - Ist $d ∈ \GGT(a_1, \dots, a_n)$ und $d' \estimates d$, dann ist $d' ∈ \GGT(a_1, \dots, a_n)$
-  -	Ohne zusatzliche Vorraussetzungen an $R$ kann man im allgemeinen nicht erwarten, dass $\GGT(a_1, \dots, a_n) \neq \emptyset$. Zum Beispiel ist $R = ℤ[\sqrt{-3}] = \{a + b \sqrt{-3} \mid a, b ∈ ℤ\} ⊆ ℂ$ ist
+  -	Ohne zusätzliche Vorraussetzungen an $R$ kann man im allgemeinen nicht erwarten, dass $\GGT(a_1, \dots, a_n) \neq \emptyset$. Zum Beispiel ist $R = ℤ[\sqrt{-3}] = \{a + b \sqrt{-3} \mid a, b ∈ ℤ\} ⊆ ℂ$ ist
 	$\GGT(4, 2 · (1 + \sqrt{-3})) = \emptyset$ (Übungen)
   #+end_note
   #+begin_remark latex
@@ -1537,12 +1537,13 @@
 	 3.	$p$ ist Primelement, denn: Seien $a, b ∈ R$ mit $p \mid a b ⇒$ in $\faktor{R}{(p)}$ ist $\bar 0 = \bar p = \bar a \bar b$. Nach 2. ist $\faktor{R}{(p)}$ ein Körper, also nullteilerfrei (6.11) $⇒ \bar a = \bar 0 ∨ \bar b = \bar 0 ⇒ p \mid a ∨ p \mid b$
   #+end_proof
   #+begin_note latex
-  - Beweis hat gezeigt: $R$ Hauptidealring, $p$ irreduziblet Element in $R$, dann ist $\faktor{R}{(p)}$ ein Körper.
+  - Beweis hat gezeigt: $R$ Hauptidealring, $p$ irreduzibles Element in $R$, dann ist $\faktor{R}{(p)}$ ein Körper.
   -	Primelement in $ℤ =$ irreduzibles Element in $ℤ$
   #+end_note
   Frage: Wann gilt in $R$ ein Analogon des Satzes über die eindeutige Primfaktorzerlegung in $ℤ$?
   #+begin_defn latex
-  $R$ nullteilerfrei. $R$ heißt *faktoriell* $\xLeftrightarrow{\text{Def}}$ Jedes $a ∈ R \setminus (R^{\ast} ∪ \{0\})$ lässt sich eindeutig bis auf Reihenfolge und Assoziiertheit als Produzt irreduzibler Elemente aus $R$ schreiben, das heißt es existieren irreduzible Elemente $p_1, \dots, p_r ∈ R$ mit
+  $R$ nullteilerfrei. $R$ heißt *faktoriell* $\xLeftrightarrow{\text{Def}}$ Jedes $a ∈ R \setminus (R^{\ast} ∪ \{0\})$ lässt sich eindeutig bis auf Reihenfolge und Assoziiertheit als Produkt
+  irreduzibler Elemente aus $R$ schreiben, das heißt es existieren irreduzible Elemente $p_1, \dots, p_r ∈ R$ mit
   $a = p_1 · \dots · p_r$  und sind $q_1, \dots, q_s ∈ R$ irreduzible Elemente mit $a = q_1 · \dots · q_s$, so ist $r = s$ und nach Umordnen ist $p_i \estimates q_i$ für $i = 1, \dots, r$
   #+end_defn
   Ziel: Hauptidealringe sind faktoriell.
@@ -1569,7 +1570,8 @@
 	 \[M := \{(a) \mid a ∈ R \setminus (R^{\ast} ∪ \{0\}) \mid \text{ besitzt keine Faktorisierung in irreduziblen Elementen}\}\]
 	 $M$ ist wohldefiniert, da Bedingung an $a$ invariant unter Assoziativitätheit. \\
 	 Annahme: $M \neq \emptyset$ \\
-	 Wegen 26.29 existiert bezüglich "$⊆$" maximales Element $I ∈ M$, denn: Anderenfalls existiert zu jedem $I ∈ M$ ein $I' ∈ M$ mit $I ⊊ I'$, das liefert eine unedliche strikt aufsteigende Kette von von Idealen
+	 Wegen 26.29 existiert bezüglich "$⊆$" maximales Element $I ∈ M$, denn: Anderenfalls existiert zu jedem $I ∈ M$ ein $I' ∈ M$ mit $I ⊊ I'$,
+	 das liefert eine unendliche strikt aufsteigende Kette von von Idealen
 	 in $R$ \lightning zu $R$ noethersch. \\
 	 Es existiert $a ∈ R$ mit $I = (a)$. $a$ ist nicht irreduzibel, denn für $a$ irreduzibel wäre $a$ selbst eine Faktorisierung in irreduzible Elemente $⇒ I = (a) \not ∈ M$ \lightning.
 	 $⇒ ∃ a_1, a_2 ∈ R \setminus (R^{\ast} ∪ \{0\})$ mit $a = a_1 a_2 ⇒ (a) ⊆ (a_1), (a) ⊆ (a_2)$. Wäre $(a) = (a_1)$, dann existiert $b ∈ R^{\ast}$ mit $a = a_1 b = a_1 a_2 ⇒ a_2 = b ∈ ℝ^{\ast}$ \lightning.
