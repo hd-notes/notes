@@ -1196,83 +1196,269 @@
    Gilt nach dem $i$ -ten Eliminationsschritt
    \[a_{k,j}^{(i)} = 0 ∀ j, k= i + 1, \dots, n\]
    so ist $\Rang(A) = i$ (Geht auch bei nicht quadratischen Matrizen, einfach mit Nullen auffüllen)
-* Spezielle Gleichungssysteme
-** Bandmatrizen
-   Eine Matrix $A ∈ ℝ^{n × n}$ heißt Bandmatrix vom Bandtyp $(m_l, m_r) ∈ \{0, \dots, n - 1\}^2$, wenn gilt
-   \[a_{jk} = 0 ∀ k < j - m_l ∨ k > j + m_r, j, k = 1, \dots, n\]
-   Die Größe $m = m_l + m_r$ heißt Bandbreite.
-   | Typ          | Name                  |
-   |--------------+-----------------------|
-   | $(0, 0)$     | Diagonalmatrix        |
-   | $(1, 1)$     | Tridiagonalmatrizen   |
-   | $(n - 1, 0)$ | Untere Dreiecksmatrix |
-   | $(0, n - 1)$ | Obere Dreiecksmatrix  |
-   #+ATTR_LATEX: :options [Bandmatrix]
+** Spezielle Gleichungssysteme
+*** Bandmatrizen
+	Eine Matrix $A ∈ ℝ^{n × n}$ heißt Bandmatrix vom Bandtyp $(m_l, m_r) ∈ \{0, \dots, n - 1\}^2$, wenn gilt
+	\[a_{jk} = 0 ∀ k < j - m_l ∨ k > j + m_r, j, k = 1, \dots, n\]
+	Die Größe $m = m_l + m_r$ heißt Bandbreite.
+	| Typ          | Name                  |
+	|--------------+-----------------------|
+	| $(0, 0)$     | Diagonalmatrix        |
+	| $(1, 1)$     | Tridiagonalmatrizen   |
+	| $(n - 1, 0)$ | Untere Dreiecksmatrix |
+	| $(0, n - 1)$ | Obere Dreiecksmatrix  |
+	#+ATTR_LATEX: :options [Bandmatrix]
+	#+begin_thm latex
+	Ist $A ∈ ℝ^{n × n}$ eine Bandmatrix vom Typ $(m_l, m_r)$, Für die Gauß-Elimination $A = LR$ ohne Zeilenvertauschung durchführbar ist,
+	dann sind alle reduzierten Matrizen $A^{(i)}$ desselben Typs und $L$ beziehungsweise $R$ sind vom Typ $(m_l, 0)$ beziehungsweise
+	$(0, m_r)$. Aufwand:
+	\[N = \frac{1}{3} n m_l m_r + \mathcal{O}(n(m_l + m_r))\]
+	#+end_thm
+	(Ohne Beweis)
+	#+begin_ex latex
+	Typ $(1, 1)$:
+	\[A = \begin{pmatrix}a_1 & b_1 &   &   \\ c_2 & \ddots & \ddots &   \\ & \ddots & \ddots & b_{n - 1} \\   &   & c_n & a_n\end{pmatrix} = L R, L = \begin{pmatrix}1 &   &   &   \\ γ_1 & \ddots &   &   \\   & \ddots & \ddots &   \\  &   & γ_n & 1\end{pmatrix}, R = \begin{pmatrix}α_1 & β_1 &   &   \\   & \ddots & \ddots &   \\   &   & \ddots & β_{n - 1} \\   &   &   & α_n\end{pmatrix}\]
+	Rekursive Bestimmung
+	\begin{align*}
+	α_1 &= a_1, β_1 = b_1 \\
+	γ_i &= c_i / α_{i - 1}, α_i = a_i - γ_i β_{i - 1}, β_i = b_i \\
+	γ_n = c_n / α_{n - 1}, α_n = a_n - γ_n β_{n - 1}
+	\end{align*}
+	Aufwand: $3n - 2$ Speicher,$2n - 2$ arithmetische Operationen. \\
+	Vorsicht: (Beispiel Typ $(4, 4)$): Band "füllt auf"
+	#+end_ex
+*** Diagonaldominante Matrizen
+	#+begin_defn latex
+	$A ∈ ℝ^{n × n}$ heißt diagonaldominant, wenn
+	\[\sum_{\substack{k = 1\\ k \neq j}}^{n} \abs{a_{jk}} \leq \abs{a_{jj}}, \quad j = 1, \dots, n\]
+	#+end_defn
+	#+begin_thm latex
+	$A ∈ ℝ^{n × n}$ regulär und diagonaldominant $⇒ A = LR$ kann mit Gauß-Elimination ohne Zeilenvertauschungen berechnet werden. (Beweis: Skript)
+	#+end_thm
+*** Positiv definite Matrizen
+	#+begin_defn latex
+	$A ∈ R^{n × n}$ mit $A^T = A$ heißt positiv definit, wann
+	\[x^T A x > 0 ∀ x ∈ ℝ^n \setminus \{0\}\]
+	#+end_defn
+	#+begin_thm latex
+	$A ∈ ℝ^{n × n}$ symmetrisch positiv definit $⇒ A = LR$ kann mit Gauß-Elimination ohne Zeilenvertauschung berechnet werden mit Pivots $a_{ii}^{(i)} > 0$
+	#+end_thm
+	#+begin_proof latex
+	\[0 < e_1^T A e_1 = a_{11}\]
+	\begin{align*}
+	a_{jk}^{(1)} &= a_{jk} - \frac{a_{j1}}{a_{11}} a_{1k} = a_{kj} - \frac{a_{k1}}{a_{11}} a_{1j} = a_{kj}^{(1)} \\
+	⇒ A^{(1)} &= (a_{jk}^{(1)})_{j,k = 2}^n \text{ ist symmetrisch}
+	\end{align*}
+	Ist $A^{(1)}$ positiv definit, so beweist Induktion die Behauptung. Setze dafür $\tilde x = (x_2, \dots, x_n)^T ∈ ℝ^{n - 1}, x ∈ ℝ^n$, sodass
+	\[x_1 = -\frac{1}{a_{11}} \sum_{k = 2}^{n} a_{1k} x_k\]
+	\begin{align*}
+	⇒ 0 < x^T A x &= \sum_{j,k = 1}^{n} a_{jk} x_j x_k \\
+	&= \sum_{j,k= 2}^{n} a_{jk} x_j x^k + 2 x_1 \sum_{k = 2}^{n} a_{1k} x_k + a_{11} x_1^2 - \underbrace{\frac{1}{a_{11}} \sum_{j,k = 2}^{n} a_{k1} a_{j1} x_k x_j + \frac{1}{a_{11}}(\sum_{k = 2}^{n} a_{1k} x_k)^2}_{0} \\
+	&= \underbrace{\sum_{j,k = 2}^{n} (a_{jk} - \frac{a_{k1} a_{j1}}{a_{11}}) x_k x_j}_{= a_{jk}^{(1)}} + a_{11}\underbrace{(x_1 + \sum_{1}^{a_{11}} \sum_{k= 2}^{n} a_{1k} x_k)}_{0}^2 \\
+	&= \tilde x^T A^{(1)} \tilde x.
+	\end{align*}
+	#+end_proof
+	$\to A = LR, r_{ii} = a_{ii}^{(i)} > 0$
+	\[A = A^T = (L R)^T = (LD \underbrace{D^{-1} R}_{=: R})^T = \tilde R^T D L^T\]
+	mit $A = \diag(r_1,\dots, r_{nn})$ und
+	\[\tilde R= \begin{pmatrix}1 & r_{12} / r_{11} & \dots & r_{1n}/r_{11} \\ \ddots &   &   & \vdots \\   & \ddots &   & r_{n - 1, n} / r_{n - 1, n - 1} \\   &   &   & 1\end{pmatrix}\]
+	Eindeutigkeit der LR-Zerlegung
+	\[LR = \tilde R^T D L^T ⇒ L = \tilde R^T, R = D L^T\]
+	#+begin_thm latex
+	Jede symmetrisch positiv definite Matrix $A ∈ ℝ^{n × n}$ hat eine sogenannte Cholesky-Zerlegung
+	\[A = L D L^T = \tilde L \tilde L^T\]
+	#+end_thm
+	Aufwand: $N_{\text{Cholesky}}(n) = \frac{n^3}{6} + \mathcal{O}(n^2)$. \\
+	Algorithmus von Cholesky:
+	\[\begin{pmatrix}\tilde l_{11} &   &   \\ \vdots & \ddots &   \\ \tilde l_{n1} & \dots & \tilde l_{nn}\end{pmatrix} \begin{pmatrix}\tilde l_{11} & \dots & \tilde l_{n1} \\ \ddots &   & \vdots \\   &   & \tilde l_{nn}\end{pmatrix} = \begin{pmatrix}a_{11} & \dots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \dots & a_{nn}\end{pmatrix}\]
+	\[i \geq j: a_{ij} = \sum_{k = 1}^{j} \tilde l_{ik} \tilde l_{jk} = \sum_{k = 1}^{j - 1} \tilde l_{ik} \tilde l_{jk} + \tilde l_{ij} \tilde l_{jj}\]
+	für $i = 1,\dots, n$:
+	\[\tilde l_{ii} = \sqrt{a_{ii} - \sum_{k = 1}^{i - 1}\tilde l_{ik}^2}\]
+	Für $j = i + 1, \dots, n$:
+	\[\tilde l_{ij} = \frac{1}{\tilde l_{ii}}(a_{ij} - \sum_{k = 1}^{i -1 }\tilde l_{ik} \tilde l_{jk})\]
+	Wiedeholung: Spezielle Matrizen, LR-Zerlegung
+	- Bandmatrizen: Nullen nicht speichern / berechnen
+	- Diagonal-determinante Matrizen: keine Pivotisierung notwendig
+	- Symmetrisch, positiv definite Matrizen
+	  keine Pivotisierung notwendig
+	  \[A = \tilde L \tilde L^T = L D L^T\]
+	  (billiger als $A = LR$)
+** Nicht reguläre Systeme
+   Wir betrachten $A ∈ ℝ^{m × n}$ (nicht notwendig quadratisch).
+   Das Lineare Gleichungssystem $A x = b$ hat
+   - keine Lösung, wenn $b \not ∈ \im(A)$
+   - unendlich viele Lösungen $\bar x + Δ x$ wenn $A \bar x = b, Δ x ∈ \ker (A) \neq \{0\}$
+   Verallgemeinerter Lösungsbegriff:
+   Finde $\bar x ∈ ℝ^n$ mit minimalem Defekt $d = b - A \bar x$ (Für $d = 0$ löst $\bar x \quad A x = b$)
+   #+ATTR_LATEX: :options [Least-Squares-Lösung]
    #+begin_thm latex
-   Ist $A ∈ ℝ^{n × n}$ eine Bandmatrix vom Typ $(m_l, m_r)$, Für die Gauß-Elimination $A = LR$ ohne Zeilenvertauschung durchführbar ist,
-   dann sind alle reduzierten Matrizen $A^{(i)}$ desselben Typs und $L$ beziehungsweise $R$ sind vom Typ $(m_l, 0)$ beziehungsweise
-   $(0, m_r)$. Aufwand:
-   \[N = \frac{1}{3} n m_l m_r + \mathcal{O}(n(m_l + m_r))\]
+   Es gibt immer eine "Lösung" $\bar x ∈ ℝ^n$ mit kleinsten Fehlerquadraten:
+   \[\norm{A \bar x - b}_2 = \min_{x ∈ ℝ^n} \norm{A x - b}_2\]
+   Das gilt genau dann, wenn
+   \[A^T A \bar x = A^T b\]
+   (Normalgleichung). Für $\Rang(A) = n$ ist $\bar x$ eindeutig bestimmt. Ansonsten hat jede weitere Lösung die Form
+   $\bar x + y$ mit $y ∈ \ker (A)$
    #+end_thm
-   (Ohne Beweis)
-   #+begin_ex latex
-   Typ $(1, 1)$:
-   \[A = \begin{pmatrix}a_1 & b_1 &   &   \\ c_2 & \ddots & \ddots &   \\ & \ddots & \ddots & b_{n - 1} \\   &   & c_n & a_n\end{pmatrix} = L R, L = \begin{pmatrix}1 &   &   &   \\ γ_1 & \ddots &   &   \\   & \ddots & \ddots &   \\  &   & γ_n & 1\end{pmatrix}, R = \begin{pmatrix}α_1 & β_1 &   &   \\   & \ddots & \ddots &   \\   &   & \ddots & β_{n - 1} \\   &   &   & α_n\end{pmatrix}\]
-   Rekursive Bestimmung
-   \begin{align*}
-   α_1 &= a_1, β_1 = b_1 \\
-   γ_i &= c_i / α_{i - 1}, α_i = a_i - γ_i β_{i - 1}, β_i = b_i \\
-   γ_n = c_n / α_{n - 1}, α_n = a_n - γ_n β_{n - 1}
-   \end{align*}
-   Aufwand: $3n - 2$ Speicher,$2n - 2$ arithmetische Operationen. \\
-   Vorsicht: (Beispiel Typ $(4, 4)$): Band "füllt auf"
-   #+end_ex
-** Diagonaldominante Matrizen
-   #+begin_defn latex
-   $A ∈ ℝ^{n × n}$ heißt diagonaldominant, wenn
-   \[\sum_{\substack{k = 1\\ k \neq j}}^{n} \abs{a_{jk}} \leq \abs{a_{jj}}, \quad j = 1, \dots, n\]
-   #+end_defn
+   #+begin_lemma latex
+   Sei $A ∈ \mathbb{K}^{m × n}$. Dann ist $\bar A^T A$ hermitesch positiv semidefinit.
+   Ist $\Rang(A) = n$, so ist $\bar A^T A$ positiv definit.
+   #+end_lemma
+   #+begin_proof latex
+   1. $\overline{\bar A^T A}^T= (A^T \bar A)^T = \bar A^T A$
+   2. $\bar x^T \bar A^T A x = \overline{(Ax)}^T (A x) = \norm{A x}_2^2\geq 0$
+   3. $\Rang(A) = n ⇒ m \geq n$ und $A: ℝ^n \to ℝ^m$ injektiv
+	  $⇒$ Aus $\norm{A}_2 = 0 ⇒ A x = 0 ⇒ x = 0$  \\
+	  $⇒$ $\bar x^T \bar A^T A x > 0 ∀ x ∈ \mathbb{K}^{n} \setminus \{0\}$
+   #+end_proof
+   #+begin_proof latex
+   1. Es gelte $A^T A \bar x = A^T b$
+	  \begin{align*}
+	  ⇒ A^T (A \bar x - b) &= 0 \\
+	  ⇒ \norm{b - A x}_2^2 &= \norm{b - A \bar x + A(\bar x - x)}_2^2 \\
+	  &= \norm{b - A \bar x}_2^2 + 2(b - A \bar x, A(\bar x - x))_2 + \norm{A(\bar x - x)}_2^2 \\
+	  \string(A(\bar x - b), b - A \bar x\string)_2 &= (\bar x - x)^T A^T(b - A\bar x) 0 \\
+	  ⇒ \norm{b - Ax}_2^2 > \norm{b - A \bar x}_2^2 + \norm{A(\bar x - x)}_2^2
+      \end{align*}
+	  $⇒$ $\bar x$ ist minimal. Umgekehrt: Sei $\bar x$ mimimal
+	  \begin{align*}
+	  0 &= \pp{}{x_i}\norm{A x - b}_2^2 \big|_{x = \bar x} \\
+	  &= \pp{}{x_i}(\sum_{j = 1}^{m}(\sum_{k = 1}^{n} a_{jk} x_k - b_j)^2)\Big|_{x = \bar x} \\
+	  &= \sum_{j = 1}^{m} 2(\sum_{k = 1}^{n} a_{jk} \bar x_k - b_j) \\
+      a_{ji} &= (2 A^T(A \bar x - b))_i \\
+	  ⇒ A^T A \bar x = A^T b
+      \end{align*}
+   2. Lösbarkeit: Wegen $\im (A)^{\perp} = \ker (A^T)$ hat $b$ eine eindeutige Zerlegung $b = r + s, r ∈ \ker (A^T), s ∈ \im(A)$
+	  Sei $\bar x ∈ ℝ^n$ so, dass $A \bar x = s ⇒ A^T A \bar x = A^T s + A^T r = A^T b$
+   3. $\Rang(A) = n$: $A^T A$ positiv definit $⇒ \bar x$ eindeutig. $Rang(A)< n: A^T A x_1 = A^T b$. Wegen
+	  \[b= A x_1 + (b - A_{x_1}) ∈ \im A + \ker A^T\]
+	  und Eindeutigkeit von $b = r + s$ gilt $A \bar x = A x_1 ∀ \bar x - x_1 ∈ \ker A$
+   #+end_proof
+   Numerische Lösung: Cholesky für Normalengleichung. Vorsicht:
+   Im Fall $\Rang(A) = n = m$ gilt
+   \[\cond_2(A^T A) = \cond_2(A)^2\]
+   Merke: Normalengleichungen sind häufig schlecht konditioniert. Abhilfe: QR-Zerlegung von $A$
    #+begin_thm latex
-   $A ∈ ℝ^{n × n}$ regulär und diagonaldominant $⇒ A = LR$ kann mit Gauß-Elimination ohne Zeilenvertauschungen berechnet werden. (Beweis: Skript)
-   #+end_thm
-** Positiv definite Matrizen
-   #+begin_defn latex
-   $A ∈ R^{n × n}$ mit $A^T = A$ heißt positiv definit, wann
-   \[x^T A x > 0 ∀ x ∈ ℝ^n \setminus \{0\}\]
-   #+end_defn
-   #+begin_thm latex
-   $A ∈ ℝ^{n × n}$ symmetrisch positiv definit $⇒ A = LR$ kann mit Gauß-Elimination ohne Zeilenvertauschung berechnet werden mit Pivots $a_{ii}^{(i)} > 0$
+   Sei $A ∈ \mathbb{K}^{m × n}$ mit $\Rang(A) = n \leq m$. Dann existiert eine eindeutig bestimmte Matrix $Q ∈ \mathbb{K}^{m × n}$ mit $\bar Q^T Q = E_n$ und
+   eine eindeutig bestimmte obere Dreiecksmatrix $R ∈ \mathbb{K}^{n × n}$ mit reellen Diagonalelementen $r_{ii} > 0, i = 1, \dots, n$, sodass
+   \[A = Q R\]
+   Bezichnung: $Q$: orthonormale Matrix ($m = n$: unitär)
    #+end_thm
    #+begin_proof latex
-   \[0 < e_1^T A e_1 = a_{11}\]
+   Konstruktion der Spalten $q_k$ von $Q$ mittels Gram-Schmidt aus den Spalten $a_k$ von $A$
+   \[q_i = \begin{cases} q_i = \norm{a_1}_2^{-1} a_1 & i = 1 \\ q_i = \norm{\tilde q_i}_2^{-1} \tilde q_i, \tilde q_i = a_i - \sum_{k = 1}^{i - 1}(a_i, q_k)_2 q_k & i = 2, \dots, n \end{cases}\]
+   Wegen $\Rang(A) = n$ sind die $a_k$ linear unabhängig und $\norm{\tilde q_k}_2 \neq 0, k = 1, \dots, n$. Betrachte:
    \begin{align*}
-   a_{jk}^{(1)} &= a_{jk} - \frac{a_{j1}}{a_{11}} a_{1k} = a_{kj} - \frac{a_{k1}}{a_{11}} a_{1j} = a_{kj}^{(1)} \\
-   ⇒ A^{(1)} &= (a_{jk}^{(1)})_{j,k = 2}^n \text{ ist symmetrisch}
+   a_k &= \tilde q_k + \sum_{i = 1}^{k - 1}(a_k, q_i)_2 q_i \\
+   &= \norm{\tilde q_k}_2 q_k + \sum_{i = 1}^{k - 1}(a_k, q_i) q_i \\
+   &= \sum_{i = 1}^{k} r_{ik} q_i
    \end{align*}
-   Ist $A^{(1)}$ positiv definit, so beweist Induktion die Behauptung. Setze dafür $\tilde x = (x_2, \dots, x_n)^T ∈ ℝ^{n - 1}, x ∈ ℝ^n$, sodass
-   \[x_1 = -\frac{1}{a_{11}} \sum_{k = 2}^{n} a_{1k} x_k\]
+   $r_{kk} = \norm{\tilde q_k}_2 ∈ ℝ_+, r_{ik} = (a_k, q_i)_2$. Setze $r_{ik} = 0, i > k, R = (r_{ik}) ∈ \mathbb{K}^{n × n} ⇒ A = Q R$. \\
+   Eindeutigkeit: Sei $Q_1 R_1 = A = Q_2 R_2$. Setze
    \begin{align*}
-   ⇒ 0 < x^T A x &= \sum_{j,k = 1}^{n} a_{jk} x_j x_k \\
-   &= \sum_{j,k= 2}^{n} a_{jk} x_j x^k + 2 x_1 \sum_{k = 2}^{n} a_{1k} x_k + a_{11} x_1^2 - \underbrace{\frac{1}{a_{11}} \sum_{j,k = 2}^{n} a_{k1} a_{j1} x_k x_j + \frac{1}{a_{11}}(\sum_{k = 2}^{n} a_{1k} x_k)^2}_{0} \\
-   &= \underbrace{\sum_{j,k = 2}^{n} (a_{jk} - \frac{a_{k1} a_{j1}}{a_{11}}) x_k x_j}_{= a_{jk}^{(1)}} + a_{11}\underbrace{(x_1 + \sum_{1}^{a_{11}} \sum_{k= 2}^{n} a_{1k} x_k)}_{0}^2 \\
-   &= \tilde x^T A^{(1)} \tilde x.
+   Q &= \bar Q_2^T Q_1 = \bar Q_2^T A R_1^{-1} = R_2 R_1^{-1} \tag{obere Dreiecksmatrix} \\
+   \bar Q^T &= \bar Q_1^T Q_2 = \bar Q_1^T A R_2^{-1} = R_1 R_2^{-1} \tag{obere Dreiecksmatrix} \\
+   \bar Q^T Q &= R_1 R_2^{-1} R_2 R_1^{-1} = \mathbb{I}
+   \end{align*}
+   $Q$ ist orthonormal und diagonal. Ihre Eigenwerte $λ_i$ erfüllen $\abs{λ_i} = 1$
+   \begin{align*}
+   Q R_1 &= R_2 R_1^{-1} R_1 = R_2 ⇒ λ_i \underbrace{(R_1)_{ii}}_{> 0} = (R_2)_{ii} > 0 \\
+   ⇒ λ_i ∈ ℝ, λ_i &= 1 \\
+   Q &= E_n ⇒ R_1 = R_2, Q_1 = A R^{-1}_1 = A R_{2}^{-1} = Q_2
    \end{align*}
    #+end_proof
-   $\to A = LR, r_{ii} = a_{ii}^{(i)} > 0$
-   \[A = A^T = (L R)^T = (LD \underbrace{D^{-1} R}_{=: R})^T = \tilde R^T D L^T\]
-   mit $A = \diag(r_1,\dots, r_{nn})$ und
-   \[\tilde R= \begin{pmatrix}1 & r_{12} / r_{11} & \dots & r_{1n}/r_{11} \\ \ddots &   &   & \vdots \\   & \ddots &   & r_{n - 1, n} / r_{n - 1, n - 1} \\   &   &   & 1\end{pmatrix}\]
-   Eindeutigkeit der LR-Zerlegung
-   \[LR = \tilde R^T D L^T ⇒ L = \tilde R^T, R = D L^T\]
+   Least-Squares-Lösung mit
+   \[A = Q_1 R = (Q_1 \mid Q_2)\cvec{R; 0}\]
+   mit $Q = (Q_1 \mid Q_2) ∈ ℝ^{m × n}, R = \cvec{R; 0} ∈ ℝ^{m × n}, \Rang(A) = n$
+   - $\norm{Q v}_2^2 = v^T Q^T Q v = \norm{v}^2_2$
+   - $\norm{A x - b}_2^2 = \norm{Q \tilde R x - Q Q^T b}_2^2 = \norm{Q(\tilde R x - Q^T b)}_2^2$
+	 \begin{align*}
+	 = \norm{\tilde R x - Q^T b}_2^2 &= \norm{\vec{R; 0}x - \cvec{Q_1^T; Q_2^T}b}_2^2 \\
+	 &= \norm{R x - Q_1^T b}_2^2 + \norm{Q_2^T b}_2^2
+     \end{align*}
+	 minimal für $x = R^{-1} Q_1^T b$.
+   - $A^T A = (Q_1 R)^T Q_1 R = R^T Q_1^T Q_1 R = R^T R$ (Cholesky-Zerlegung) \\
+	 $A^T A x = A^T b = R^T R x = R^T Q_1^T b$
+   - Lösung mit $R$ ist besser konditioniert als Lösung mit $R^T R: \cond_2 (R^T R) = \cond_2(R)^2$
+   Widerholung: $A ∈ M(n × m, \mathbb{K})$
+   - $A = Q R = \tilde Q \tilde R$, $\tilde Q = Q|\tilde Q_2$, $\bar Q^T Q = E_n, \bar{\tilde Q}^T \tilde Q = E_m$
+   - Eindeutigkeit mit $r_{ij} > 0$
+   - $\norm{Ax - b}_2^2 = \norm{\tilde Q \tilde R x - \tilde Q \bar{\tilde Q}^T b}_2^2 = \norm{\tilde Q(\tilde R x - \tilde Q^T b)}_2^2 = \norm{R x - Q^T b}_2^2 + \norm{\tilde Q_2 b}$.
+	 $\Rang(A) = n$: $x = \tilde R^{-1} Q^T b$
+   - verhindert schlechte Konditionierung der Normalengleichung
+	 \[\cond_2(A^T A) = \cond_2(A)^2 = \cond_2(R)^2\]
+   Problem: Gram-Schmidt zur Berechnung von Orthogonalbasis ist nicht stabil.
+   Stabile Variante: Householder-Verfaheren
+   #+begin_defn latex
+   Für $v ∈ \mathbb{K}$ mit $\norm{v}_2 = 1$ heißt
+   \[I = E_n - 2 v \bar v^T ∈ \mathbb{K}^{n × n}\]
+   "Hauseholder-Transformation".
+   #+end_defn
+   \[v \bar v^T = \begin{pmatrix}v_1 \bar v_1 & \dots & v_1 \bar v_n \\ \vdots & \ddots & \vdots \\ v_n \bar v_1 & \dots & v_n \bar v_n\end{pmatrix}\]
+   Eigenschaften von $S$:
+   - $\bar S^T = S$ hermitesch
+   - $\bar S^T S = (E_n - 2 v \bar v^T)(E_n - 2 v \bar v^T) = E_n - 4 v \bar v^T + 4 v \underbrace{\bar v^T v}_{1} \bar v^T = E_n$ (unitär)
+   - Spiegelung: Sei $u ∈ \mathbb{K}^n$. Zerlege $u = (v, u)_2 v + [u - (v, u)_2 v] = u_1 + u_2$
+	 \begin{align*}
+	 S u_1 &= (E_n - 2 v \bar v^T)(v, u)_2 v \\
+	 &= (v, u)_2(v - 2v \bar v^T v) = - u_1 \\
+	 S U_2 &= (E_n - 2 v \bar v^T)(u - u_1) \\
+	 &= u - 2(v, u)_2 v + u_1 = u - u_1 = u_2
+     \end{align*}
+     $v$: Normale der Spiegelungshyperebene
+   Householder-Verfahren:
+   \[A = A^{(0)} \to \dots \to A^{(i - 1)} \to \dots \to A^{(n)} = \tilde R\]
+   mit
+   \begin{equation*}
+   A^{(i)} = \begin{pmatrix}
+   a_{11}^{(i)} & \dots & \dots & \dots & \dots & a_{1n}^{(i)} \\
+   & \ddots & & & & \vdots \\
+   & & a_{ii}^{(i)} & \dots & \dots & a_{in}^{(i)} \\
+   & 0 & \vdots & & & \vdots \\
+   & & a_{im}^{(i)} & & & a_{nm}^{(i)} \\
+   \end{pmatrix}
+   \end{equation*}
+   Schritt $i$: Householder-Transformation
+   \[S_i A^{(i - 1)} = A^{(i)}\]
+   \begin{align*}
+   ⇒ \tilde R &= A^{(n)} = S_n S_{n - 1} \dots S_1 A = \bar{\tilde Q}^T A \\
+   ⇒ \tilde Q \tilde R &= A, \tilde Q = \bar S_1^T \dots \bar S_n^T = S_1 \dots S_n
+   \end{align*}
+   Achtung: $\tilde r_{ii} > 0$ wrird nicht garantiert. (keine Eindeutigkeit).
+   Bezeichnung: $\tilde A^{(i)}= (\tilde a_i^{(i)} \mid \dots \mid \tilde a_n^{(i)})$
+   Setze
+   \[v_i = \cvec{0; \vdots; 0; \tilde v_i}, \tilde v_i ∈ \mathbb{K}^{m - i}\]
+   \[⇒ S_i = E_m - 2 v_i \bar v_i^T = \begin{pmatrix}E_{i - 1} & 0 \\ 0 & E_{m - i} - 2 \tilde v_i \bar{\tilde v_i}^T \end{pmatrix} = \begin{pmatrix}\mathbb{1} & 0 \\ 0 & \tilde S_i\end{pmatrix}\]
+   $⇒$ Die ersten $i - 1$ zeilen von $A^{(i - 1)}$ bleiben unverändert. Wähle $\tilde v_i$ so, dass
+   \[\tilde S_i \tilde s_i^{(i)} ∈ \Lin \{e_1^i\}, e_1^i = \cvec{1; 0; \vdots; 0} ∈ ℝ^{m - i}\]
+   2 Möglichkeiten:
+   \begin{align*}
+   \tilde v_i &= \frac{\tilde a_i^{(i)} - \norm{\tilde a_i^{(i)}}_2 e_1}{\norm{\tilde a_i^{(i)} - \norm{\tilde a_i^{(i)}}_2 e_1}_2} \\
+   \tilde v_i &= \frac{\tilde a_i^{(i)} + \norm{\tilde a_i^{(i)}}_2 e_1}{\norm{\tilde a_i^{(i)} + \norm{\tilde a_i^{(i)}}_2 e_1}_2} \\
+   \end{align*}
+   Zur Vermeidung von Auslöschung:
+   \[\tilde v_i = \frac{\tilde a_i^{(i)} + \sgn(\tilde a_{ii}^{(i)}) \norm{\tilde a_i^{(i)}}_2 e_1}{\norm{\tilde a_i^{(i)} + \sgn(\tilde a_{ii}^{(i)}) \norm{\tilde a_i^{(i)}}_2 e_1}_2}\]
+   \[⇒ \tilde S_i \tilde A^{(i)} = \begin{array}{c|c}\pm \norm{\tilde a_i^{(i)}}_2 &   \\ 0 & \tilde a_i^{(i)} - 2(\tilde a_{i + j, i}^{(i)}, \tilde v_i) \tilde v_i \\ \vdots & \\ 0 &  \end{array}, j = 2, \dots, m - i\]
+   Insgesamt ergibt sich für die Spalten von $A^{(i)} = S_i A^{(i - 1)}$
+   \begin{align*}
+   a_k^{(i)} &= a_k^{(i - 1)}, k = 1, \dots, i - 1 \\
+   a_i^{(i)} &= (a_{i,1}^{(i - 1)}, \dots, a_{i - 1, i}^{(i - 1)}, \norm{\tilde a_i^{(i - 1)}}_2, 0, \dots, 2)^T \\
+   a_k^{(i)} &= a_k^{(i - 1)} - 2 (\tilde a_k^{(i - 1)}, \tilde v_i) v_i, k = i + 1, \dots, n
+   \end{align*}
+** Singulärwertzerlegung
    #+begin_thm latex
-   Jede symmetrisch positiv definite Matrix $A ∈ ℝ^{n × n}$ hat eine sogenannte Cholesky-Zerlegung
-   \[A = L D L^T = \tilde L \tilde L^T\]
+   Es sei $A ∈ ℝ^{m × n}$. Dann existieren orthogonale Matrizen $V ∈ ℝ^{n × n}$ und $U ∈ ℝ^{m × m}$, soadd
+   \[U^T A V = Σ = \diag(σ_1, \dots, σ_p) ∈ ℝ^{m × n}, p = \min(m, n)\]
+   mit $σ_1 \geq \dots \geq σ_p \geq 0$
    #+end_thm
-   Aufwand: $N_{\text{Cholesky}}(n) = \frac{n^3}{6} + \mathcal{O}(n^2)$. \\
-   Algorithmus von Cholesky:
-   \[\begin{pmatrix}\tilde l_{11} &   &   \\ \vdots & \ddots &   \\ \tilde l_{n1} & \dots & \tilde l_{nn}\end{pmatrix} \begin{pmatrix}\tilde l_{11} & \dots & \tilde l_{n1} \\ \ddots &   & \vdots \\   &   & \tilde l_{nn}\end{pmatrix} = \begin{pmatrix}a_{11} & \dots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \dots & a_{nn}\end{pmatrix}\]
-   \[i \geq j: a_{ij} = \sum_{k = 1}^{j} \tilde l_{ik} \tilde l_{jk} = \sum_{k = 1}^{j - 1} \tilde l_{ik} \tilde l_{jk} + \tilde l_{ij} \tilde l_{jj}\]
-   für $i = 1,\dots, n$:
-   \[\tilde l_{ii} = \sqrt{a_{ii} - \sum_{k = 1}^{i - 1}\tilde l_{ik}^2}\]
-   Für $j = i + 1, \dots, n$:
-   \[\tilde l_{ij} = \frac{1}{\tilde l_{ii}}(a_{ij} - \sum_{k = 1}^{i -1 }\tilde l_{ik} \tilde l_{jk})\]
+   #+begin_proof latex
+   Skript,
+   #+end_proof
+   $A = U Σ V^T$. Nützliche Forlgerungen: ($σ_1 \geq \dots \geq σ_r > σ_{r + 1} = \dots = σ_p = 0$)
+   - $\Rang(A) = r$
+   - $\ker A = \Lin \{v_{r + 1}, \dots, v_n\}$
+   - $\im A = \Lin \{u_1, \dots, u_r\}$
+   - $A = U Σ V^T = \sum_{i = 1}^{r} σ_1 u_i v_i^T$
+   - $\norm{A}_2 = σ_1$
+   - $\cond_2(A) = \frac{σ_1}{σ_p}$
+   - $\norm{A}_F = \sqrt{\sum_{i = 1}^{r} σ_i^2} = \norm{\cvec{σ_1; \vdots; σ_p}}_2$
+   - $\norm{A - \sum_{i = 1}^{k} σ_i u_i v_i^T}_2 = \norm{\sum_{i = k + 1}^{r} σ_i u_i v_i^T}_2 = σ_{k + 1}$

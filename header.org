@@ -148,6 +148,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\GGT}{GGT}
 #+LATEX_HEADER: \DeclareMathOperator{\ggT}{ggT}
 #+LATEX_HEADER: \DeclareMathOperator{\diag}{diag}
+#+LATEX_HEADER: \DeclareMathOperator{\Fit}{Fit}
 
 
 #+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}

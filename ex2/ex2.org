@@ -387,6 +387,7 @@
    \dot{ϕ_m} &= - U_{ind} = ω B A \sin ω t
    \end{align*}
 ** Induktivität und Selbstinduktion
+   Betrachte stromdurchflossene Leiterschleife
    $B \sim I, ϕ_m \sim I$
    #+ATTR_LATEX: :options [Induktivität]
    #+begin_defn latex
@@ -400,4 +401,516 @@
    ϕ_m &= N B A = n l B A \\
    ϕ_m &= \underbrace{μ μ_0 n^2 A l}_{L} I \\
    ⇒ U_{ind} &= - \dot{ϕ_m} = - L \dot I
+   \end{align*}
+   Weitere Beispiele:
+   - Drahtschleife: $L = μ_0 R \ln R / r$
+   - Doppelleitung: $L = μ_0 l / π \ln a / r$
+   - Koaxialkabel: $L= μ_0 l / (2 π) \ln r_a / r_i$
+   Außerdem:
+   Zeitlich veränderlicher Stromfluß durch eine Leiteranordnug führt zu einer zeitlichen Veränderung des
+   erzeugten B-Feldes $\to$ Flußänderung $\to$ Spannungsindukiton.
+   \[U_{ind} = - \dot ϕ_m = - L \dot I\]
+** Verschiebungsstrom
+   Für zeitlich veränderliche B-Felder:
+   \begin{align*}
+   \rot \v E = 0 &\to \rot \v E = - \dot{\v B} \\
+   ∮ \v E \d \v s = 0 &\to ∮ \v E \d s = - ∫ \dot{\v B} \d \v A
+   \end{align*}
+   Jetzt: Betrachte Ampersches Durchflutungsgesetz
+   \[\rot \v B = μ_0 \v j ⇔ ∮ \v B \} \v s = μ_0 I\]
+   Betrachte Leiter durch Kondensator. Danng gilt:
+   \[∮ \v B \d \v s = B 2 π r = μ_0 I \to B = \frac{μ_0 I}{2 π r}\]
+   Aber: Verschiebung des Integrationsweges zwischen die beiden Kondensatorplatten liefert:
+   \[∮ \v B \d \v s = 0\]
+   Dies erscheint unmöglich! B-Feld kann im Kondensator nicht abrupt verschwinden.
+   Außerdem:
+   \[∮_C \v B \d \v s = μ_0 ∫_A \v j \d \v A\]
+   (gilt für alle Flächen mit Randkurve $C$). Fläche $A_1$: Kreisfläche um Leiter, Fläche $A_2$: Fläche mit
+   Kondensator $⇒$
+   - Fläche $A_1$: $B = μ_0 I / (2 π r)$
+   - Fläche $A_2$: $B = 0$
+   $⇒$ offensichtlicher Widerspruch. $⇒$ Etwas fehlt!
+   Berücksichtigung des durch Kondensatoraufladung erzeugten zeitlich sich ändernden elektrischen Feldes.
+   Kontinuitätsgleichung:
+   \[\Div \v j = - \dot ρ ⇔ ∮ \v j \d \v A = - \dd{q}{t}\]
+   Es gilt:
+   \[∮ \v E \d \v A = q / ε_0 \to \dd{q}{t} = ε_0 \dd{}{t} ∮ \v E \d \v A = ε_0 ∮ \pp{\v E}{t} \d \v A = ε_0 ∮ \dot{\v E} \d \v A\]
+   Konsistente Beschreibung falls:
+   - Fläche $A_1$: $∮\v B \d \v s = μ_0 ∫_{A_1} \v j \d \v A$
+   - Fläche $A_2$: $∮\v B \d \v s = μ_0 ε_0 ∫_{A_2} \dot{\v E}\d \v A = μ_0 ∫_{A_2} \v j_v \d \v A$ mit
+	 \[\v j_v = ε_0 \pp{\v E}{t}\]
+	 "Verschiebungsstrom"
+  $\to$ Erweiterung des Ampereschen Durchflutungsgesetzes:
+  #+ATTR_LATEX: :options [Ampere-Maxwell-Gesetz (4. Maxwell-Gleichung für Vakuum)]
+  #+begin_thm latex
+  \begin{align*}
+  ∮ \v B \d \v s &= μ_0 ∫ \v j \d \v A + μ_0 ε_0 ∫ \pp{\v E}{t} \d \v A \\
+  \rot \v B &= μ_0 \v j + μ_0 ε_0 \pp{\v E}{t} = μ_0 \v j + \frac{1}{c^2} \pp{\v E}{t}
+  \end{align*}
+  #+end_thm
+  #+begin_remark latex
+  Für $j = 0$ gilt: $\rot \v B = 1 / c^2 \dot{\v E}$, das heißt elektrische Wechselfelder erzeugen ein
+  magnetisches Wirbelfeld, umgekhert erzeugen wegen $\rot \v E = - \dot{\v B}$ magnetische Wechselfelder
+  ein eletrisches Wirbelfeld. $\to$ elektromagnetische Wellen (siehe unten)
+  #+end_remark
+  Jetzt: Verschiebungsstrom in Matrie
+  \[∮ \v B \d \v s = μ_0 I_{ges} = μ_0 I_L + μ_0 I_M + μ_0 I_v + μ_0 I_P\]
+  - $I_L$: Leitungsstrom (frei Ströme)
+  - $I_M$: Molekularstrom
+  - $I_V$: Verschiebungsstrom
+  -	$I_P$: Polarisationssrom (nur für nicht-stationäre E-Felder)
+  Molekulorstrom:
+  \begin{align*}
+  ∮ \v M \d \v s &= I_M \\
+  ∮ \v H \d \v s &= ∮ (\frac{1}{μ_0} \v B - \v M) \d \v s = I_L+ I_V + I_P = I_L + ε_0 ∫_A \dot{\v E} \d \v A + I_P \\
+  &= I_L + ε_0 ∫_A \dot{\v E} \d \v A + ∫ \v j_P \d \v A
+  \end{align*}
+  Polarisationsstrom:
+  Ergibt sich aufgrund des Flusses gebundener Ladungen in Richtung des elektrischen Feldes $\to$
+  zeitlich veränderlicher Strom für zeitlich veränderliche E-Felder
+  \begin{align*}
+  \v j_P &= n q \v v = n q \dd{\v s}{t}, \d \v p = q \d \v s, \d \v P = n d \v p \\
+  \v j_P &= n \dd{\v p}{t} = \dd{\v P}{t} ⇔ \v j_P ⇔ \pp{\v P}{t} = \dot{\v P} \\
+  \intertext{Damit}
+  ∮ \v H \d \v s &= I_L + ε_0 ∫\dot{\v E} \d \v A = I_L + ∫ \dot{\v D} \d \v A \\
+  \v E &= ε_0 \v E + \v P
+  \end{align*}
+  #+ATTR_LATEX: :options [Ampere-Maxwell-Gesetz in Matrie (4. Maxwellsche Gleichung)]
+  #+begin_thm latex
+  \begin{align*}
+  ∮ \v H \d \v s &= ∫ \v j \d \v A + ∫ \pp{\v E}{t} \d \v A \\
+  \rot \v H &= \v j + \dot{\v D}
+  \end{align*}
+  #+end_thm
+* Schaltvorgänge, Wechselstrom und Schwingkreise
+** Induktivität im Stromkreis (LR-Glied)
+   Einschlaten:
+   \[U_{ind} = - L \dot I\]
+   Außerdem gilt: (Kirchhoffsche Maschenregel)
+   \begin{align*}
+   U_0 + U_{ind} &= I R \\
+   U_0 - L \dot I &= I R \\
+   \intertext{Man erhält eine inhomogene, lineare Differentialgleichung erster Ordnung, Lösung: allgemeine Lösung der homogenen Differntialgleichung + spezielle Lösng der inhomogenen Differentialgleichung + Anfangsbedingungen}
+   ⇒ \dd{I}{t} + \frac{R}{L} I = \frac{U_0}{L} \\
+   ⇒ I(t) = \frac{U_0}{R} + C e^{-\frac{R}{L}t}
+   \end{align*}
+   Mit der Anfangsbedingung $I(0) = 0$ folgt:
+   \begin{align*}
+   I(t) &= \frac{U_0}{R}(1 - e^{-\frac{R}{L}t}) \\
+   &= \frac{U_0}{R}(1 - e^{-t / τ}) \\
+   τ &= L / R
+   \end{align*}
+   Ausschalten:
+   \begin{align*}
+   U_{ind} &= - L \dot I, U_{ind} = I R \\
+   \dd{I}{t} + \frac{R}{L} I &= 0 \\
+   \intertext{Anfangsbedingung: $I(0) = U_0 / R$. Damit folgt:}
+   I(t) = \frac{U_0}{R} e^{-t / τ}
+   \end{align*}
+   Spannungsabfall am Widerstand:
+   \[U(t) = I(t) R = U_0 e^{-t / τ}\]
+   Aber: Was passiert beim Öffnen des Schalters tatsächlich? $R_{offen} = \tilde R \approx ∞$.
+   \[U(t) = I(t) \tilde R = U_0 \frac{\tilde R}{R} e^{-t / τ}\]
+   $⇒$ Riesiger Spannungsstoß für $\tilde R \to ∞$ $⇒$ Lichtbogen.
+** Kapazität im Stromkreis (RC-Glied)
+   Einschalten:
+   \[U_C = Q / C, Q = Q(t)\]
+   Außerdem gilt: $U_0 = I R + Q / C$. Differenzieren:
+   \[\dot I R + \frac{\dot Q}{C} = I R + \frac{I}{C} = 0\]
+   \[⇒ \dd{I}{t} + \frac{1}{RC} I = 0\]
+   Anfangsbedingung: $I(0) = U_0 / R$. Damit folgt:
+   \[I(t) = \frac{U_0}{R} e^{- t / (RC)} = \frac{U_0}{R} e^{-t / τ}\]
+   $τ = R C$. Spannung:
+   \[U_C(t) = U_0 - I(t) R = U_0(1 - e^{-t / τ})\]
+   Ausschalten, das heißt Entladung:
+   \begin{align*}
+   I R + Q / C &= 0 \to \dot I R = - \frac{1}{C} I \\
+   \dot I &= -\frac{1}{τ} I \\
+   \intertext{Mit $I(0)= - U_0 / R$ als Anfangsbedingung folgt:}
+   I(t) &= -\frac{U_0}{R} e^{-t / τ} \\
+   U_C(t) &= U_0 e^{-t / τ}
+   \end{align*}
+** $R, L, C$ im Wechselstromkreis
+   Beobachtung: Lämpchen brennen für verschiedene Frequenzen $f = ω / (2 π)$ unterschiedlich hell.
+   1. Widerstand: Lämpchen leuchtet unabhängig von der eingestellten Frequenz immer gleich hell
+   2. Kapazität:
+	  - Niedrige Frequenz $\to$ Lämpchen aus
+	  - Hohe Frequenz $\to$ Lämpchen leuchtet
+   3. Induktivität:
+	  - Niedrige Frequenz $\to$ Lämpchen leuchtet
+	  -	Hohe Frequenz $\to$ Lämpchen aus
+   $\to$ Kondensator und Spule verhalten sich wie frequenzabhängige Widerstände.
+   Quantitative Batrachtung:
+   1. Ohmscher Widerstand:
+	  \begin{align*}
+	  U_0(t) &= U_0 \cos ω t \\
+	  ⇒ I(t) &= \frac{1}{R} U(t) \\
+	  &= \frac{U_0}{R} \cos ω t \\
+	  &= I_0 \cos ω t
+      \end{align*}
+	  Leistung:
+	  \[P(t) = U(t) I(t) = I_0 U_0 \cos^2 ω t\]
+	  $⇒$ mittlere Leistung
+	  \[\v P = \frac{1}{T} ∫_0^T P(t) \d t\]
+	  \[\v P = \frac{1}{T} ∫_0^T I_0 U_0 \cos^2 ω t \d t = \frac{I_0 U_0}{T} ∫_0^T \cos^2 ω t \d t = \frac{1}{2} U_0 I_0\]
+	  #+ATTR_LATEX: :options [Wirkleistung]
+      #+begin_defn latex
+	  \[\v P = \frac{1}{2} U_0 I_0 = U_{eff} I_{eff}\]
+	  mit $U_{eff} = \frac{1}{\sqrt{2}} U_0$, $I_{eff} = \frac{1}{\sqrt{2}} I_0$
+      #+end_defn
+   2. Induktiver Widerstand:
+	  \begin{align*}
+	  U_s(t) &= U_0 \cos ω t \\
+	  U_s(t) + U_{ind} &= 0, U_{ind} = - L \dot I \\
+	  ⇒ U_s(t) &= L \dot I
+      \end{align*}
+      Interpretation:
+	  \[∫ U_0 \cos ω t \d t = U_0 \frac{1}{ω} \sin ω t = LI\]
+	  \[⇒ I(t) = \frac{U_0}{ω L} \sin ω t = \frac{U_0}{ω L} \cos(ω t - \frac{π}{2}) = I_0 \cos(ω t - \frac{π}{2})\]
+	  $⇒$
+	  \begin{align*}
+	  U(t) &= U_0 \cos ω t \\
+	  I(t) &= I_0 \cos (ω t - \frac{π}{2}) \\
+	  I_0 &= \frac{U_0}{ω L}
+      \end{align*}
+	  $⇒$ Strom läuft der Spannung um $\SI{90}{\degree}$ hinterher, da der Strom nach Anlegen der Spannung $U_1$ erst allmählich zu fließen beginnt.
+   3. Kapazitiver Widerstand
+	  \begin{align*}
+	  U_s(t) &= U_c, U_c = \frac{Q}{C}, I = \dot Q \\
+	  Q &= C U_s = C U_0 \cos ω t \\
+	  \dot Q = I &= - ω C U_0 \sin(ω t) \\
+	  &= ω C U_0 \cos(ω t + \frac{π}{2}) = U_0 \cos(ω t β \frac{π}{2})
+	  \end{align*}
+	  \begin{align*}
+	  U(t) &= U_0 \cos ω t \\
+	  I(t) = I_0 \cos(ω t + \frac{π}{2}) \\
+	  I_0 = ω C U_0
+      \end{align*}
+	  $⇒$ Strom läuft der Spannung um $\SI{90}{\degree}$ vorraus, da zuerst Ladung auf den Kondensator
+	  fließen muss, bevor Spannng an Kondensator abfällt.
+   Merke:
+   - Ohmscher Widerstand: $Z_R = R, φ = \SI{0}{\degree}$
+   - Induktiver Widerstand: $Z_L = ω L, φ = \SI{-90}{\degree}$
+   - Kapazitiver Widerstand: $Z_C = 1/ ω C, φ = \SI{90}{\degree}$
+   - [@4] Blindleistung
+	  Kapazität:
+	  \[\v P = \frac{1}{T} ∫_0^T U_c(t) I_c(t) \d t = - \frac{1}{T} ∫_0^T U_0 I_0 \cos ω t \sin ω t \d t = 0\]
+	  Induktiviät:
+      \[\v P = \frac{1}{T} ∫_0^T U_L(t) I_L(t) \d t = \frac{1}{T} ∫_0^T U_0 I_0 \underbrace{\cos ω t \sin ω t}_{\frac{1}{2} \sin 2 ω t} \d t = 0\]
+	  Die sogenannte Blindleistung verschwindet im Mittel, da die Energie zum Aufbau der (elektrischen und magnetischen) Felder wieder in den Generrator zurückfließt $\to$ Blindstrom.
+	  Aber: Auch der Blindstrom macht Drähte warm und die Blindleistung muss temporär zur Verfügung gestellt werden. (Wichtig bei Auslegung von Netzwerken)
+** Komplexe Darstellung
+   Strom und Spannung im Wechselstromkreis:
+   \begin{align*}
+   U(t) &= U_0 \cos ω t \\
+   I(t) &= I_0 \cos (ω t + φ)
+   \end{align*}
+   Übertragung ins Komplexe:
+   \begin{align*}
+   U(t) &= U_0 e^{i ω t} \\
+   I(t) &= I_0 e^{i(ω t + φ)} = I_0 e^{i φ} e^{i ω t} \\
+   &= I_0 \cos(ω t + φ) + i I_0 \sin(ω t + φ)
+   \end{align*}
+   Die Verwendung komplexer Zahlen bedeutet rechnerisch eine wesentliche Vereinfachung! Ansonsten äquivalent! \\
+   Warum funktioniert das? \\
+   Grund $\to$ Linearität der auftretenden Differentialgleichungen.
+   - Homogene Differentialgleichung:
+	 \[\begin{cases} \dot z = 0 \\ \ddot z + γ \dot z + z= 0\end{cases}\]
+	 Erste Ordnung: $z(t) = a(t) + i b(t)$ sei Lösung $\to$ $z^{\ast}(t) = a(=) - i b(t)$ ebenfalls Lösung.
+	 das heißt: $\Re(z) = 1/2 (z + z^{\ast})$ ist auch ein Lösung der homogenen	Differentialgleichung. \\
+	 Zweite Ordnung: $\to$ es gibt zwei linear unabhängige Lösungen $z(t), z^{\ast}(t)$. Also
+	 $\Re(z) = 1/2 (z + z^{\ast}) = a(t)$ und $i \Im(z) = 1/2 (z + z^{\ast}) = i b(t)$ sind auch unabhängige
+	 Lösungen.
+   - Inhomogene Differentialgleichungen:
+	 \[\begin{cases} \dot z = ξ \\ \ddot z + γ \dot z + z = ξ\end{cases}\]
+	 $\to$ zusätzliche partikuläre Lösung. \\
+	 Erste Ordnung: $\dot z = α + i β$ $\to$ spezielle Lösung: $z(t) = a(t) + i b(t)$, dann
+	 $a(t), b(t)$ partikuläre Lösungen des reellen / imaginären Teils. \\
+	 Zweite Ordnung: analog.
+   Bei Verwendung komplexer Darstellung:
+   Ohmscher Widerstand
+   \begin{align*}
+   U(t) &= U_0 e^{i ω t} = \hat U e^{i ω t} \\
+   I(t) &= \frac{U_0}{R} e^{i ω t} = \hat I e^{i ω t}
+   \end{align*}
+   Induktiver Widerstand:
+   \begin{align*}
+   U(t) &= U_0 e^{i ω t} = \hat U e^{i ω t} \\
+   I(t) &= \frac{U_0}{ω L} e^{i(ω t - π / 2)} = \frac{U_0}{ω L} e^{-i π/2} e^{i ω t} \\
+   &= \frac{U_0}{i ω L} e^{i ω t} = \hat I e^{i ω t}
+   \end{align*}
+   Kapazitiver Widerstand:
+   \begin{align*}
+   U(t) &= U_0 e^{i ω t} = \hat U e^{i ω t} \\
+   I(t)	&= ω C U_0 e^{i(ω t + π / 2)} = ω C U_0 e^{+ i π/2} e^{i ω t} \\
+   &= i ω C U_0 e^{i ω t} = \hat I e^{i ω t}
+   \end{align*}
+   Offenbar gilt: $\hat I = \hat U / \hat z$, wobei die Phase gegenüber der Spannug im komplexen Widerstand
+   $\hat z$ steckt. $⇒$ Wechselstromwiderstände:
+   \begin{align*}
+   \hat Z_R &= R \\
+   \hat Z_L &= i ω L = ω L e^{i π / 2} \\
+   \hat Z_C &= \frac{1}{i ω C} = \frac{1}{ω C} e^{-i π / 2}
+   \end{align*}
+   $⇒$ Ohmsches Gesetz:
+   \[\hat U = \hat z · \hat I\]
+   #+ATTR_LATEX: :options [RC-Serienschaltung]
+   #+begin_ex latex
+   Kirchhoff: $I_R = I_C = I, U_G = U_R + U_C$. Also:
+   \begin{align*}
+   I(t) &= I_0 e^{i ω t} \\
+   ⇒ U_R &= I_0 R e^{i ω t} \\
+   U_C &= I_0 \frac{1}{i ω C} e^{i ω t} \\
+   U_G &= U_R + U_C = I_0(\underbrace{R + \frac{1}{i ω C}}_{\text{Impedanz } \hat z}) e^{i ω t} = I_0 \underbrace{\abs{\hat z} e^{i φ}}_{\hat z} e^{i ω t}
+   \end{align*}
+   mit
+   \[\hat z = \abs{\hat z} e^{i φ}, \abs{\hat z} = \sqrt{R^2 + (\frac{1}{ωC})^2}, φ = \arctan(\frac{1}{ω R C})\]
+   $⇒$ Lösung:
+   \begin{align*}
+   I(t) &= I_0 e^{i ω t} \\
+   U(t) &= \hat z I_0 e^{i ω t} = I_0 \abs{\hat z}[\cos(ω t+ φ) + i \sin(ω t + φ)]
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [RC-Parallelschaltung]
+   #+begin_ex latex
+   Kirchhoff: $U = U_R = U_C, I_G = I_R + I_C$. Also
+   \begin{align*}
+   U(t) &= U_0 e^{i ω t} \\
+   ⇒ I_R &= \frac{U_0}{\hat z_R} e^{i ω t}, I_C = \frac{U_0}{\hat z_c} e^{i ω t} \\
+   I_R &= \frac{U_0}{R} e^{i ω t}, I_C = i ω C U_0 e^{i ω t} \\
+   I &=	I_R + I_C =	U_ 0(\frac{1}{\hat z_R} + \frac{1}{\hat z_C}) e^{i ω t} \\
+   &= U_0 \underbrace{(\frac{1}{R} + i ω C)}_{= \frac{1}{\hat z}} e^{i ω t}
+   \end{align*}
+   #+end_ex
+   Die beiden Beispiele zeigen, dass für Impedanzen im Wechselstromkreis offenbar die gleichen Regeln
+   wie für Widerstände im Gleichstromkreis gelten. Damit: Erweiterte Kirchhoffsche Regeln:
+   \begin{align*}
+   \sum \hat I &= 0 \tag{Knotenregel} \\
+   \sum \hat U &= 0 \tag{Maschenregel} \\
+   \hat Z &= \sum \hat z_i \tag{Reihenschaltung} \\
+   \hat Z^{-1} &= \sum \hat z_i^{-1} \tag{Parallelschaltung}
+   \end{align*}
+** RLC-Schwingkreis
+   Ohne Stromquelle:
+   \begin{align*}
+   U_{ind} &= I R + Q / C \\
+   - L \dot I = I R + Q / C \\
+   L \dot I + I R + Q / C &= 0 \\
+   \intertext{Ableiten:}
+   L \ddot I + R \dot I + \frac{1}{C} I &= 0 \\
+   \intertext{Gedämpfder harmonischer Oszillator:}
+   m \ddot + β \dot x + k x &= 0 \\
+   \ddot x + 2 γ \dot x + ω_0^2 x = 0 \\
+   ω_0^2 &= k / m \\
+   γ &= β / (2m) \\
+   γ &= R / (2L) \\
+   ω_0^2 &= \frac{1}{L C} \\
+   \intertext{Ansatz: $c e^{λ t}$}
+   I(t) &= C_1 e^{- γ t} e^{i ω_R t} + C_2 e^{- γ t} e^{- i ω_R t} \\
+   ω_R &= \sqrt{ω_0^2 - γ^2}
+   \end{align*}
+   3 Fälle:
+   - $γ < ω_0$: Schwingfall
+   - $γ > ω_0$: Kriechfall
+   - $γ = ω_0$: Aperiodischer Grenzfall
+   Mechanik: $γ = β / (2m), ω_0^2 = k / m$ \\
+   Schwingkreis: $γ = R / (2L), ω_0^2 = 1 / (LC)$
+   Mit Stromquelle:
+   \begin{align*}
+   U_G + U_{ind} &= I R + Q / C \\
+   L \dot I + I R + Q / C e^{i ω t} &= U_0 e^{i ω t} \\
+   L \ddot Q + \dot Q R	+ Q / C &= U_0 e^{i ω t} \\
+   \intertext{Ableiten:}
+   L \ddot I + R \dot I + \frac{1}{C} I &= ω U_0 e^{i(ω t + π / 2)} \\
+   \intertext{Ansatz:}
+   I(t) &= ρ e^{i φ} e^{i Ω t} \\
+   \intertext{Einsetzen $\to$}
+   Ω &= ω \\
+   ρ &= \frac{ω U_0}{L} \frac{1}{\sqrt{(ω_0^2 - ω^2)^2 + 2 γ^2 ω^2}} = \frac{U_0}{\sqrt{R^2 + (ω L - \frac{1}{ω C})^2}} \\
+   φ &= \arctan(\frac{ω_0^2 - ω^2}{2 γ ω})
+   \end{align*}
+   Einfacher:
+   \begin{align*}
+   I(t) &= U_0 \frac{1}{\hat z} e^{i ω t}, \hat z = \hat z_R + \hat z_L + \hat z_C \\
+   I(t) &= \frac{U_0}{R + i ω L + \frac{1}{i ω C}} e^{i ω t}= \frac{U_0}{R + i(ω L - \frac{1}{ω C})}e^{i ω t} \\
+   &= (a + i b) e^{i ω t} = (\frac{U_0 R}{R^2 + (ω L - \frac{1}{ω C})^2} - i \frac{U_0(ω L - \frac{1}{ω C})}{R^2 + (ω L - \frac{1}{ω C})^2}) e^{i ω t} \\
+   &= C e^{i φ} e^{i ω t} \\
+   C &= \sqrt{a^2 + b^2} \\
+   \tan φ = \frac{b}{a} \\
+   C &= ρ = \frac{U_0}{\sqrt{R^2 + (ω L - \frac{1}{ω C})^2}} \\
+   φ &= \arctan(\frac{ω_0^2 - ω^2}{ω^2 γ}) \\
+   φ &= \frac{π}{2} - \arctan(\frac{ω^2 γ}{ω_0^2 - ω^2})
+   \end{align*}
+** Transformator
+   Große Bedeutung in der Wechselstromtechnik. Insbesondere Transformation von Spannungen
+   für Hochspannungsübertragung. Annahme: Magnetische Feldlinien verlaufen vollständig innerhalb des
+   Eisenjochs, das heißt alle Straufelder werden vernachlässigt.
+   Unbelasteter Transformator:
+   \begin{align*}
+   U_1 &= U_0 \cos ω t \tag{Primärseite} \\
+   U_1 + U_{ind,1} &= 0 \\
+   U_1 &= - U_{ind,1} = N_1 \dot ϕ_m \\
+   \intertext{Magnetischer Fluß ist auf Primär und Sekundärseite gleich:}
+   U_2 &= - U_{ind,2} = N_2 \dot ϕ_m = \frac{N_2}{N_1} U_1 \tag{Sekundärseite} \\
+   \intertext{Außerdem gilt bei Vernachlässigung vn Leistungsverlusten}
+   P &= U_1 I_1 = U_2 I_2 \\
+   ⇒ I_2 &= \frac{N_1}{N_2} I_1
+   \end{align*}
+   Magnetfeldführung: Braucht großes $μ$:
+   \begin{align*}
+   B_{\perp, Fe} &= B_{\perp, Lu} \\
+   B_{\parallel, Fe} &= μ B_{\parallel, Lu}
+   \end{align*}
+   Das heißt: B-Feld im Eisen im wesentlichen tangential zur Oberfläche.
+   #+ATTR_LATEX: :options [Unbelasteter Transformator]
+   #+begin_thm latex
+   Transformatorgleichung für verlustfreien, unbelasteten Transformator
+   \[U_2 = \frac{N_2}{N_1} U_1 \qquad I_2 = \frac{N_1}{N_2} I_1\]
+   #+end_thm
+   Mögliche Verluste:
+   - Wirbelströme
+   - Streufelder
+   Konplizierter: belasteter Transformator (siehe Literatur, Übungen, Praktikum)
+** Elektrische und magnetische Feldenergie
+   Elektrische und magnetische Feldenergie: Elektrische Leistung im RC-Glied:
+   \begin{align*}
+   P(t) &= I(t) U(t) = C \dot U U \\
+   &= C U \dd{U}{t} \\
+   ⇒ W_{el} &= ∫_0^t P(t) \d t = ∫_0^t CU \d U = \frac{1}{2} C U(t)^2
+   \end{align*}
+   Elektrische Leistung im LR-Glied:
+   \begin{align*}
+   P(t) &= I(t) U(t) = L \dot I I = L I \dd{I}{t} \
+   ⇒ W_m &= ∫_0^t P(t) \d t = ∫_0^t L I \d I = \frac{1}{2} L I(t)^2
+   \end{align*}
+   Also:
+   - $W_{el} = \frac{1}{2} C U^2$ - gespeicherte Energie im Kondensator, elektrische Feldenergie
+   - $W_{m} = \frac{1}{2} L I^2$ - gespeicherte Energie in Induktivität, magnetische Feldenergie
+   Energiedichte des elektrischen Feldes
+   \begin{align*}
+   W_{el} &= \frac{1}{2} C U^2 = \frac{1}{2} ε ε_0 \frac{A}{d} U^2 \\
+   &= \frac{1}{2} ε ε_0 \frac{A}{d} E^2 d^2 = \frac{1}{2} ε ε_0 V E^2 \\
+   ⇒ ω_{el} &= \frac{1}{2} ε ε_0 E^2 = \frac{1}{2} E D
+   \end{align*}
+   Energiedichte des magnetischen Feldes:
+   \begin{align*}
+   W_{m} &= \frac{1}{2} L I^2 = \frac{1}{2} μ μ_0 \frac{N^2}{l} A I^2 = \frac{1}{2} μ μ_0 \frac{A}{l} M^2 l^2 \\
+   &= \frac{1}{2} μ μ_0 V H^2 \\
+   ω_m &= \frac{1}{2} μ μ_0	H^2 = \frac{1}{2} B H
+   \end{align*}
+   Allgemein gilt:
+   \[ω_{elektrom.} = \frac{1}{2}(\v E \v D + \v B \v H)\]
+* Elektromagnetische Welle
+** Mechanische Wellen
+   Eine Welle ist ein Vorgang bei dem sich eine Schwingung vom Ort Ihrer Erregung in Folge von Kopplungen an benachbarte schwingungsfähige Systeme im Raum ausbreitet.
+   Man unterscheidet
+   - Transversale Wellen $\to$ Ausbreitung senkricht zur Schwingungsrichtung
+   - Longitudinale Wellen $\to$ Ausbreitung entlang der Schwingungsrichtung
+   Eindimensionale harmonische Welle
+   $\to$ harmonische Anregung
+   Bei $t = 0$:
+   \[y(x) = A \sin(k x), k = \frac{2 π}{λ}\]
+   Zusätzliche Zeitabhängigkeit:
+   \begin{align*}
+   y(x, t) &= A \sin(k(x - v_{ph} t)) \\
+   &= A \sin(k x - k v_{ph} t) \\
+   &= A \sin(k x - ω t) \\
+   v_{ph} &= \frac{λ}{T} = \frac{ω}{k}
+   \end{align*}
+   Harmonische ebene Welle:
+   \begin{align*}
+   y(x, t) &= A \sin(k x \pm ω t) \tag{1 dim} \\
+   y(\v x, t) &= A \sin(\v k \v x \pm ω t) \tag{3 dim}
+   \end{align*}
+   - Wellenzahl: $k = 2 π / λ$, $\v λ \parallel$ Ausbreitungsrichtung
+   - Wellenlänge: $λ = 2 π / k$
+   - Phasengeschwindigkeit: $v_{ph} = ω / k$
+   - Amplitude: $A$
+   Wesenliche Eigenschaften: \\
+   Superposition und Interferenz: \\
+   Superposition $\longleftrightarrow$ Überlagerung von Wellen
+   \[y(\v x, t) = \sum_{i = 1}^{n} y_i(\v k, t)\]
+   Überlagerung von Wellen (1 dimensional)
+   \begin{align*}
+   ξ_1(x, t) &= A \cos(k_1 x - ω_1 t) \\
+   ξ_2(x, t) &= A \cos(k_2 x - ω_2 t) \\
+   ξ = ξ_1 + ξ_2 &= A(\cos(k_1 x - ω_1 t) + \cos(k_2 x - ω_2 t)) \\
+   &= 2 A \cos(\frac{k_1 + k_2}{2} x - \frac{ω_1 + ω_2}{2} t) \cos(\frac{k_1 - k_2}{2} x - \frac{ω_1 - ω_2}{2}t) \\
+   \end{align*}
+   Jetzt: $k_1 \approx k_2, ω_1 \approx ω_2$ $⇒$ Schwebung mit mittlerer Frequenz als Schwebungsfrequenz.
+   #+ATTR_LATEX: :options [Fouriertheorem]
+   #+begin_thm latex
+   Jede periodische und aperiodicshe Funktion kann durch harmonische ebene Wellen dargestellt werden.
+   Fourier-Reihe:
+   \[f(t) = f(t + T) = \frac{a_0}{2} + \sum_{n = 1}^{∞} a_n \cos(n ω t) + b_n \sin(n ω t)\]
+   mit
+   \begin{align*}
+   a_i &= \frac{2}{T} ∫_{- T / 2}^{T / 2} f(t) \cos(i ω t) \d t \\
+   b_i &= \frac{2}{T} ∫_{- T / 2}^{T / 2} f(t) \sin(i ω t) \d t \\
+   \end{align*}
+   aperiodische $F$: Fourier-Integral:
+   \begin{align*}
+   f(t) &= \frac{1}{π} ∫_0^∞ a(ω) \cos(ω t) + b(ω) \sin(ω t) \d ω \\
+   a(ω) &= ∫_{-∞}^∞ f(t) \cos ω t \d t \\
+   b(ω) &= ∫_{-∞}^∞ f(t) \sin ω t \d t \\
+   \end{align*}
+   #+end_thm
+   Daher genügt es oft harmonische ebene Wellen zu betrachten.
+** Wellengleichung
+   Wegge $\to$ Ausbreitung einer Schwingung im Raum.
+   Gesucht: Differentialgleichung die die Ausbreitung von Störungen beschreibt.
+   Sich ausbreitende Störung $\estimates$ Wellenpaket.
+   \begin{align*}
+   ψ_+(x, t) &= f(x - v t) \\
+   ψ_-(x, t) &= f(x + v t) \\
+   \pp{ψ}{x} &= f', \pp{ψ}{t} &= \pm v f' \\
+   \frac{\partial^2 ψ}{\partial x^2} &= f'' \\
+   \frac{\partial ψ}{\partial t^2} = v^2 f''
+   \end{align*}
+   Klassische Wellengleichung:
+   \begin{align*}
+   \frac{\partial^2 ψ}{\partial t^2} &= v^2	\frac{\partial^2 ψ}{\partial x^2} \tag{1 dim} \\
+   \frac{\partial^2 ψ}{\partial t^2} &= v^2	(\frac{\partial^2 ψ}{\partial x^2} + \frac{\partial^2 ψ}{\partial y^2} + \frac{\partial^2 ψ}{\partial z^2}) = v^2 Δ ψ \tag{3 dim} \\
+   \end{align*}
+   $v^2$: Phasengeschwindigkeit.
+   Eigenschaften:
+   - lineare Differentialgleichung $\to$ Superposition und Inferferenz
+   - Ebene Wellen sind Lösung der Wellengleichung
+   - Auftreten solcher Gleichungen weist auf Wellenchararkter der Lösung hin
+** Wellenpakete, Phasen- und Gruppengeschwindigkeit
+   Wellenpaket
+   \begin{align*}
+   ψ(x, t) &= \frac{1}{π} ∫_0^∞ \{a(k) \cos k x + b(k) \sin k x\} \d t \\
+   ψ(x, t) &= \frac{1}{π} ∫_0^∞ \{a(k) \cos(k(x - v_{ph} t)) + b(k) \sin(k(x - v_{ph} t))\}
+   \end{align*}
+   Jetzt: Übergang ins komplexe:
+   \begin{align*}
+   \cos φ &= \frac{e^{i φ} + e^{- i φ}}{2} \\
+   \sin φ &= \frac{e^{i φ} - e^{- i φ}}{i2} \\
+   e^{i φ} &= \cos φ + i \sin φ \\
+   ⇒ ψ(x, t) = \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) + \frac{1}{2i} b(k)\} e^{i k(x - v_{ph} t)} \d k + \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) - \frac{1}{2i} b(k)\} e^{- i k(x - v_{ph} t)} \d k \\
+   &= \frac{1}{\sqrt{2 π}} ∫_0^∞ A(k) e^{i k(x - v_{ph}t)} \d k + \frac{1}{\sqrt{2 π}} ∫_0^π A^{\ast}(k) e^{- i k(x - v_{ph}t)} \\
+   &= \frac{1}{\sqrt{2 π}} ∫_0^∞ A(k) e^{i(k x - ω t)} \d k + \frac{1}{\sqrt{2 π}} ∫_{- ∞}^0 A(k) e^{i(k x - ω t)} \d k \tag{$ω = \abs{k} v_{ph} > 0$} \\
+   \intertext{Damit ergibt sich dann allgemein:}
+   ψ(x, t) &= \frac{1}{\sqrt{2 π}} ∫_{-∞}^{∞} A(k) e^{i k x - ω t} \d k \\
+   A(k) &= \frac{1}{\sqrt{2π}} ∫_{-∞}^∞ ψ(x, 0) e^{i(k x)} \d x
+   \end{align*}
+   Phasengeschwindigkeit: $v_{ph} = ω / k$ \leftrightarrow Ausbreitungsgeschwindigkeit gleicher Phasen.
+   Phasengeschwindigkeit kann aber für unterschiedliche $k$, das heißt unterschiedliche Wellenlängen $λ = 2 π / k$ unterschiedlich sein $\to$ Dispersion.
+   Dispersionsrelation:
+   \[ω(k) = ω(k_0) + \dd{ω}{k} \big|_k_0 (k - k_0) + \dots\]
+   (Taylorentwicklung). Dispersion führt im Allgemeinen dazu, dass Wellenpakete mit der Zeit auseinanderfließen.
+   Bei schwacher Abhängigkeit der Ausbreitungsgescwindigkeit von der Wellenlänge bewegt sich
+   das Wellenpaket ein beträchtliches Stück, bevor es nicht wiederzuerkennen ist.
+   Für Wellenpakete für die $A(k)$ nur in einem schmalen Bereich um $k_0$ von Null verschieden ist -
+   was für die meisten relevanten Wellenpakete der FAll ist - kann man eine Wellenpaketgeschwindigkeit
+   herleiten:
+   \[v_{gr} = \dd{ω}{k} \big|_{k_0}\]
+   $⇒$ Gruppengeschwindigkeit, Geschwindigkeit des Schwerpunktes eines Wellenpakets:
+   \[v_{gr} = \dd{ω}{k}\]
+   Einfaches Beispiel: Schwebung:
+   \begin{align*}
+   ξ(x, t) &= 2 A \cos(\frac{k_1 + k_2}{2} x - \frac{ω_1 + ω_2}{2} t) \cos(\frac{k - k_2}{2} x - \frac{ω_1 - ω_2}{2}t) \\
+   &= 2 A \cos(\bar k - \bar ω t) \cos(\frac{Δ k}{2} x - \frac{Δ ω}{2} t) \\
+   ⇒ v_{ph} &= \frac{\bar ω}{\bar k}, v_{gr} = \frac{Δ ω}{Δ k}
    \end{align*}

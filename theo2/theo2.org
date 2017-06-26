@@ -794,3 +794,143 @@
   Betrachte analoges Problem in Hamilton-Machanik:
   \[q, p \to Q(q, p), P(q, p)\]
   Dürfen wir bei so einem Koordinaten-Wechsel auf Phasenraum "Einteilung" in verallgemeinerte Koordinaten und Impulse verletzen?
+  Einfache Antwort: $ξ \to ξ'(ξ)$ stets OK, falls wir in $ω$ und $H$ denken.
+  Etwas kompliziertere (und *interessantere*) Antwort:
+  Wenn wir fordern, dass sich die *Form* der (gewöhnlichen) Hamilton-Gleichung nicht ändert, führt dies auf *kanonische Transformationen*
+  Es wird reichen, zu fordern, dass
+  \[ω = \d p_α ∧ \d q^α \overset{!}{=} \d P_α(q, p) ∧ \d Q^α (q, p)\]
+  Explizit benutzen wir eine erzeugende Funktion $F_z(q, P)$. Wir definieren
+  \[p = \pp{F_Z(q, P)}{q}, Q = \pp{F_Z(q, P)}{P}\]
+  Auflösen $⇒$ $Q = Q(q, p), P = P(q, p)$. Es gilt
+  \begin{align*}
+  \d F_Z &= \pp{F_Z}{q} \d q + \pp{F_Z}{P} \d P \\
+  &= p\d q + Q \d P \\
+  0 &= \d p ∧ \d q + p \d^2 q + \d Q ∧ \d P + Q \d^2 P \\
+  0 &= \d p ∧ \d q - \d P ∧ \d Q \\
+  \d p_α ∧ \d q^α &= \d P_α ∧ \} Q^α \checkmark
+  \end{align*}
+  In der Tat, die so definierte Transformation ist kanonisch.
+  Analog: $F_1(q, Q), F_3(p, Q), F_4(p, P)$.
+  Die Identität ("Triviale Transformation") wird durch $F_Z(q, P) = q^α P_α$ generiert. \checkmark \\
+  Demnach, *kleine* kanonische Transformationen generiert durch
+  \begin{align*}
+  F_Z(q, P) &= q P + ε G(q, P) \\
+  ⇒ p &= P + ε \pp{G}{q}(q, P) \\
+  Q &= q + ε \pp{G}{p}(q, P) \\
+  \intertext{In führender Ordnung in $ε$:}
+  P &= P + ε \pp{G}{q}(q, p) \\
+  Q &= q + ε \pp{G}{p}(q, p) \\
+  ⇒ Δp &= P - p = - ε \pp{G(q, p)}{q} = ε(\pp{p}{q}\pp{G}{p} - \pp{p}{p} \pp{G}{q}) = ε \{p, G\} \\
+  Δq = Q - q = ε \pp{G}{p} = \dots = ε \{q, G\}
+  \end{align*}
+  $⇒$ $F_Z = q P + ε G$ generiert die Transformation die der durch $G(q, p)$ mittels Poisson-Klammer erzeugten Bewegung auf dem Phasenraum entspricht.
+** Integrabilität
+   #+ATTR_LATEX: :options [Integrabilität]
+   #+begin_defn latex
+   Ein System mit $n$ Freiheitsgraden heißt *integrabel*, wenn es $n$ unabhängige Erhaltungsgröhen $f_α (α = 1, \dots, n)$ gibt, sodass $\{f_α, f_β\} = 0$
+   "unabhängig": $\d f_α$ an jedem Punkt $ξ ∈ M$ linear unabhängig in $T_ξ^{\ast} M$.
+   #+end_defn
+   Bedeutung des Begriffs: Für solche Systeme kann man kanonische Transformationen finden, sodass $P_α = f_α, α = 1,\dots, n$.
+   (Wir sehen, dass die Bedingung $\{f_α, f_β\} = 0$ in der Tat notwendig war, denn $\{P_α, P_β\} = 0$ und kanonische Transformationen respektiren Poisson-Klammer)
+   Da nach der Transformation alle Impulse konstant sind, sind alle $Q$'s zyklisch:
+   \[\dot P_α = - \pp{H}{Q^α} = 0\]
+   \[⇒ \dot Q_α = \pp{H(Q, P)}{P_α} = \pp{H(P)}{P_α} = \const\]
+   \[⇒ Q^α = Q^α_0 + t \pp{H(P)}{P_α}\]
+   #+begin_ex latex
+   1. Die eindimensionale Bewegung: $n = 1$ 1 Erhaltungsgröße: $H$
+   2. Das Zweikörper-Problem: $n = 6$, 6 Erhaltungsgrößen: $H, \v P, L_Z, \v L^2$
+   #+end_ex
+   Zeige, dass $\{f_α, f_β\}_{p, q} = 0$ hinreichend ist. (Nur Idee).
+   Definiere $P_α = f_α(q, p)$. Löse auf nach den $p_α$'s $⇒ p_α = p_α(q, P)$.
+   Betrachte Phasenraum als "Schichtung":
+   In jeder Schicht (und damit global) definiere:
+   \[F_Z(q, P) = ∫_{\{q_0^α\}}^{\{q^α\}} \d q^{\prime β} p_β(q', P)\]
+   1. Zeige Wegunabhängigkeit mit Stokes (nicht hier)
+   2. Wollen prüfen:
+	  \[p_α = \pp{F_Z}{q^α}!\]
+	  Dazu: wähle letztes Wegstück parallel zu $q^α$ -Achse
+	  \[\pp{F_Z}{q^α} = \pp{}{q^α} ∫^{q^α} \not \sum \d q^{\prime α} p_α(q^{\prime 1}, \dots, q^{\prime α}, \dots, q^{\prime n}, P) = p_α\]
+   Definiere $Q_α \equiv \pp{P_Z}{P_α}$. Damit ist klar, dass unsere $F_Z$ die Bedingungen erfüllt. $\to$ Theorem von Lioville / Arnold.
+   (Auch: falls $Σ$'s kompakt sind und zusammenhängend, so sind sie Tori, $Σ \sim T^n \sim (S^1)^n$)
+** Chaos
+   Bewegung eines kleinen Bereichs im Phasenraum. Bei kleinen Radien: Volumen $\sim r^{2n}$ Halbachsen $a_i$.
+   \[V(0)= \frac{π^n}{n!} r^{2n} \to V(t) = \frac{π^2}{n!} \prod_{i = 1}^{2n} a_i\]
+   Schnellstes mögliches Wachtum einer Halbachse ist exponentiell: (weil 1. Ordnung Differentialgleichung)
+   \[a_i = e^{λ_i t} r\]
+   Die $λ_i$ heißn Lyapunov-Eponenten:
+   \[λ_i = \lim_{t \to ∞} \lim_{r \to 0} \frac{1}{t} \ln(\frac{a_i(t)}{r})\]
+   Wegen Liouville:
+   \[\prod_{i =1 }^{2n} (e^{λ i t} r) = r^{2n} ⇒ \sum_{i = 1}^{2n} λ_i = 0\]
+   Für integrable Systeme: $P$'s konstant, $Q$'s linear
+   \[⇒ Q_α = t \const_α + Q_α^0\]
+   $\to$ Für Lyapunov-Exponenten
+   \[\frac{1}{t} \ln(t) \xrightarrow{t \to ∞} 0 ⇒ λ_I = 0 ∀ i\]
+   Chaotische Systeme: $λ_i > 0$ für wenigstens ein $i$ \\
+   Problim: Einfache Beispiele in $n = 1$ unmöglich!
+   Stattdessen: "künstliches" Beispiel der Bäcker Transformation $\to$ Teig kneten ($⇒$ Blätterteig \dots)
+   Betrachte zwei Punkte im Teig. Sei $r$ Abstand bei $t = 0$, Periode sei $τ$. Abstand nach $N$ Perioden:
+   \[a_1 = 2^N r = 2^{t / τ} r\]
+   Also
+   \begin{align*}
+   λ_1 &= \lim_{t \to ∞}  \lim_{r \to 0} \frac{1}{t} \ln(\frac{2^{t / τ} r}{r}) = \lim_{t \to ∞} \frac{1}{t} \ln 2^{t / τ} \\
+   &= \lim_{t \to ∞} \frac{1}{τ} \ln 2= \frac{1}{τ} \ln 2 > 0 \checkmark
+   \end{align*}
+   $⇒$ chaotisch.
+* Schwingungen / Kontinuum
+** Kleine Schwingungen allgemeiner Systeme
+*** Ein Freiheitsgrad
+	\[L = \frac{1}{2} f(q) \dot q^2 - V(q)\]
+	Sei $q_0$ eine Ruhelage, $V'(q_0) = 0$. Definiere $\tilde q$: $q = q_0 + \tilde q$. Umbennung: $\tilde q \to q$.
+	\begin{align*}
+	L &= \frac{1}{2} f(q_0 + q) \dot q^2 - V(q_0 + q) \\
+	&= \frac{1}{2}f(q_0) \dot q^2 - V(q_0) - \frac{1}{2} V''(q_0) q^2 + \mathcal{O}(q^3) + \dot q^2 \mathcal{O}(q) \\
+	⇒ L &= \frac{1}{2} \dot q^2 - \frac{1}{2} V''(q_0) q^2
+	\end{align*}
+	$⇒$ harmonischer Oszillator mit
+	\[ω = \sqrt{\frac{V''}{f}}\]
+	völlig unabhängig von Details des Systems!
+*** Viele Freiheisgrade
+	\[L = \frac{1}{2} f_{ij}(q) \dot q_i \dot q_j - V(q), q \equiv \{q_1, \dots, q_n\}\]
+	Ruhelage:
+	\[q_0 \equiv \{q_1^{(0)}, \dots, q_n^{(0)}\}, \pp{V}{q_i}(q_0) = 0 ∀ i\]
+	Variablenwechsel: $q \to q_0 + q$
+	\begin{align*}
+	L &= \frac{1}{2} f_{ij}(q_0 + q) \dot q_i \dot q_j - V(q_0 + q) \\
+	\intertext{Taylor:}
+	L &= \frac{1}{2} f_{ij}(q_0) \dot q_i \dot q_j - \frac{1}{2} V_{ij}(q_0) q_i q_j \\
+	V_{ij} &\equiv \frac{\partial^2 V}{\partial x^i x^j}
+	\end{align*}
+	($f$ und $V$ sind konstante Matrizen). Ohne Beschränkung der Allgemeinheit ist $f_{ij}$ symmetrisch (Weglassen der antisymmetrischen Teils)
+	\[∃ R ∈ SO(n): R f R^{-1} \text{ diagonal }: R f R^{-1} \equiv \diag(a_1, \dots, a_n)\]
+	($a_i > 0$ damit $T$ stets positiv.)
+	Definiere "gestrichene Variablen":
+	\[\dot q_i \equiv (R^T)_{ij} q'_j\]
+	\begin{align*}
+	L &= \frac{1}{2} \dot q'_i R_{ij} f_{jk} (R^T)_{kl} \dot q_l' - \frac{1}{2} q'_i R_{ij} V_{jk} R_{kl}^T q'_l \\
+	&= \frac{1}{2} \sum_{i} a_i (\dot q_i')^2 - \frac{1}{2} q_i' M_{ij} q'_j, M \equiv R V R^T
+	\end{align*}
+	Neue Variablen:
+	\[q_i' \equiv q_i'' / \sqrt{a_i}\]
+	\begin{align*}
+	L &= \frac{1}{2} \dot q''_i \dot q''_i - \frac{1}{2} \sum_{ij} q''_i \underbrace{\frac{M_{ij}}{\sqrt{a_i a_j}}}_{\equiv K_{ij}} q''_j \\
+	L &= \frac{1}{2} (\dot q'')^T \mathbb{1} \dot q'' - \frac{1}{2} (q'')^T K q''
+	\end{align*}
+	$∃ \tilde R ∈ SO(n), \tilde R K \tilde R^T = \diag(k_1, \dots, k_n)$. Definiere
+	\[q'' = (\tilde R^T) q'''\]
+	\begin{align*}
+	⇒ L &= \frac{1}{2} \dot q'''^T \tilde R \tilde R^T \dot q''' - \frac{1}{2} q'''^T \tilde R K \tilde R^T q''' \\
+	⇒ L &= \sum_{i} (\frac{1}{2} \dot q_i^2 - \frac{1}{2} k_i q_i^2)
+	\end{align*}
+	fallen von den $k_i$ einige weg $\to$ instabile Ruhelage, sonst: $n$ harmonische Oszillationen
+** Lineare Kette
+   Betrachte Kette von verbundenen Federn
+   \[L = \sum_{i} \frac{m}{2} \dot q_i^2 - \sum_{i} \frac{k}{2}(q_{i + 1} - q_i)^2\]
+   Angenähert $q(x)$ mit $q_i = q(x_i)$:
+   \begin{align*}
+   q'(x_i) &= \frac{q_{i + 1} - q_i}{Δ x} \\
+   L &= \sum_{i} \frac{m}{2} \dot q(x_i)^2 - \frac{k}{2} q'(x_i)^2 Δ x^2 \\
+   &= \sum_{i} Δ x (\frac{m}{2Δ x} \dot q(x_i)^2 - \frac{m Δ x}{2} q'(x_i)^2)
+   \end{align*}
+   Limes: $Δ x \to 0$: $m \to 0, k \to ∞$ sodass
+   \[ρ = \frac{m}{Δ x} = \const, b = k Δ x = \const\]
+   \[L = ∫ \d x (\frac{ρ}{2} \dot q^2 - \frac{b}{2} q^{\prime 2}), \quad q = q(t, x)\]
