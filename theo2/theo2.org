@@ -841,7 +841,7 @@
    2. Das Zweikörper-Problem: $n = 6$, 6 Erhaltungsgrößen: $H, \v P, L_Z, \v L^2$
    #+end_ex
    Zeige, dass $\{f_α, f_β\}_{p, q} = 0$ hinreichend ist. (Nur Idee).
-   Definiere $P_α = f_α(q, p)$. Löse auf nach den $p_α$'s $⇒ p_α = p_α(q, P)$.
+   Definiere $P_α = f_α(q, p)$. Löse auf nach den $p_α$ 's $⇒ p_α = p_α(q, P)$.
    Betrachte Phasenraum als "Schichtung":
    In jeder Schicht (und damit global) definiere:
    \[F_Z(q, P) = ∫_{\{q_0^α\}}^{\{q^α\}} \d q^{\prime β} p_β(q', P)\]

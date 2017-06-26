@@ -898,7 +898,7 @@
    Phasengeschwindigkeit: $v_{ph} = ω / k$ \leftrightarrow Ausbreitungsgeschwindigkeit gleicher Phasen.
    Phasengeschwindigkeit kann aber für unterschiedliche $k$, das heißt unterschiedliche Wellenlängen $λ = 2 π / k$ unterschiedlich sein $\to$ Dispersion.
    Dispersionsrelation:
-   \[ω(k) = ω(k_0) + \dd{ω}{k} \big|_k_0 (k - k_0) + \dots\]
+   \[ω(k) = ω(k_0) + \dd{ω}{k} \big|_{k_0} (k - k_0) + \dots\]
    (Taylorentwicklung). Dispersion führt im Allgemeinen dazu, dass Wellenpakete mit der Zeit auseinanderfließen.
    Bei schwacher Abhängigkeit der Ausbreitungsgescwindigkeit von der Wellenlänge bewegt sich
    das Wellenpaket ein beträchtliches Stück, bevor es nicht wiederzuerkennen ist.
@@ -914,3 +914,60 @@
    &= 2 A \cos(\bar k - \bar ω t) \cos(\frac{Δ k}{2} x - \frac{Δ ω}{2} t) \\
    ⇒ v_{ph} &= \frac{\bar ω}{\bar k}, v_{gr} = \frac{Δ ω}{Δ k}
    \end{align*}
+** Elektromagnetische Wellengleichung
+   Maxwell-Gleichung im Vakuum ($⇒ ρ = 0, \v j = 0$):
+   \begin{align*}
+   \Div \v E = 0 &\qquad \rot \v E = - \pp{\v B}{t} \\
+   \Div \v B = 0 &\qquad \rot \v B = ε_0 μ_0 \pp{\v E}{t}
+   \end{align*}
+   Ableinet:
+   \begin{align*}
+   \pp{}{t} \rot \v B &= ε_0 μ_0 \frac{\partial^2 \v P}{\partial t^2} \\
+   \rot(\rot \v E) &= - \rot \pp{\v B}{t} = -\pp{}{t} \rot \v B \\
+   ⇒ \rot \rot(\v E) &= - ε_0 μ_0 \frac{\partial^2 \v E}{\partial t^2} \\
+   \rot (\rot (\v E)) &= \underbrace{\grad (\Div \v E)}_{= 0} - \underbrace{\div(\grad \v E)}_{Δ \v E} \\
+   ⇒ Δ \v E &= ε_0 μ_0 \frac{\partial^2 \v E}{\partial t^2} \\
+   ⇒ \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v E \\
+   \intertext{Analog:}
+   \pp{}{t} \rot \v E &= - \frac{\partial^2 \v B}{\partial t^2}, \rot \rot \v B = \dots \\
+   ⇒ \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v B
+   \end{align*}
+   $⇒$ Wellengleichungen für elektromagnetische Wellen. Im Vakuum:
+   \begin{align*}
+   \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v E \\
+   \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v B \\
+   \end{align*}
+   In Matrie:
+   \begin{align*}
+   \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε μ ε_0 μ_0} Δ \v E \\
+   \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε μ ε_0 μ_0} Δ \v B \\
+   \end{align*}
+   mit Lichtgeschwindigkeit:
+   \begin{align*}
+   c &= \sqrt{\frac{1}{ε_0 μ_0}} \\
+   c_{mat} &= \sqrt{\frac{1}{ε μ ε_0 μ_0}} = \frac{c}{n}
+   \end{align*}
+** Struktur elektromagnetischer Wellen
+   Ebene Welle
+   \begin{align*}
+   \v E(\v r, t) &= \v E_0 \sin(k x - ω t) \\
+   k x &= \v k \v r \\
+   ⇒ \v E(\v r, t) &= \v E_0 \sin(\v k \v r - ω t)
+   \div \v E \overset{!}{=} 0 = \pp{E_x}{x} + \underbrace{\pp{E_y}{y}}_{ = 0} + \underbrace{\pp{E_z}{z}}_{= 0} = \pp{E_x}{x} \overset{!}{0} \\
+   ⇒ E_x &= \const
+   \end{align*}
+   Wahl der Randbedingung $\to$ wähle $E_x = 0$. Fazit:
+   Im Vakuum gibt es kein logitudinalen, sondern nur transversale elektromagnetischer Wellen.
+   Jetzt: Verknüpfung von $E$ -und $B$ -Feld. Ansatz: Linear polarisierte Welle
+   (das heißt $\v E, \v B$ zeigen immer in eine Richtung)
+   \begin{align*}
+   \v E(x, t) &= (0, E_y(x, t), 0) \\
+   E_y(x, t) &= E_0 \sin(k x - ω t) \\
+   \intertext{Maxwell: $\rot \v E = - \dot{\v B}, \rot \v B = 1 / c^2 \dot {\v E}$}
+   ⇒ \pp{E_y}{x} &= - \pp{B_z}{t} ⇒ \pp{B_z}{t} = - k E_0 \cos(k x - ω t), \pp{B_x}{t} = \pp{B_y}{t} = 0 \\
+   \frac{1}{c^2} &= - \pp{B_x}{x} ⇒ \pp{B_z}{x} = \frac{ω}{c^2} E_0 \cos(k x - ω t), \pp{B_x}{x} = \pp{B_y}{x} = 0 \\
+   ⇒ \v B(x, t) &= (0, 0, B_z(x, t)), B_z(x, t) = \frac{E_0}{c} \sin(k x - ω t)
+   \end{align*}
+   $⇒$ Magnetisches Wechselfeld muss in z-Richtung zeigen falls das elektrische Feld in y-Richtung polarisiert ist.
+   das heißt für elektromagnetische, ebene Wellen im Vakuum gilt:
+   \[\v E \perp \v B\]
