@@ -975,7 +975,7 @@
       \[\left[\begin{array}{ccc|c} a_{11}^{(0)} & \dots & a_{1n}^{(0)} & b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ a_{n1}^{(0)} & \dots & a_{nn}^{(0)} & b_{n}^{(0)}\end{array}\right]\]
    1. Wähle $r ∈ \{1, \dots, n\}$ mit $a_{r1}^{(0)} \neq 0$ (Pivotelement) und vertausche 1. und r-te Zeile
       \[\left[\begin{array}{ccc|c} \tilde a_{11}^{(0)} & \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ \tilde a_{n1}^{(0)} & \dots & \tilde a_{nn}^{(0)} & \tilde b_{n}^{(0)}\end{array}\right] := [\tilde A^{(0)} \mid \tilde b^{(0)}]\]
-   2. Für $j = 2, \dots, n$ eleminiere $\tilde a_{j1}^{(0)}$ durch Subtraktion von $ \frac{\tilde a_{j1}^{(0)}}{\tilde a_{11}^{(0)}} := q_{j1}$
+   2. Für $j = 2, \dots, n$ eleminiere $\tilde a_{j1}^{(0)}$ durch Subtraktion von $\frac{\tilde a_{j1}^{(0)}}{\tilde a_{11}^{(0)}} := q_{j1}$
 	  mal der ersten Zeile von den Zeilen $2, \dots, n$:
       \[\left[\begin{array}{cccc|c} \tilde a_{11}^{(0)} & \tilde a_{12}^{(0)} \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ 0 & \tilde a_{22}^{(1)} \dots & \tilde a_{2n}^{(1)} & \tilde b_{2}^{(1)} \\ \vdots & \vdots & & \vdots & \vdots \\ 0 & \tilde a_{n2}^{(1)} & \dots & \tilde a_{nn}^{(1)} & \tilde b_{n}^{(1)}\end{array}\right] := [A^{(1)} \mid b^{(1)}]\]
 	  Fahre fort auf kleinerem System $⇒ [A^{(0)} \mid b^{(0)}] \to [A^{(1)}\mid b^{(1)}] \to \dots \to [A^{(n - 1)} \mid b^{(n - 1)}] =: [R\mid c]$

@@ -133,7 +133,7 @@
   $V$ endlichdimensional, $γ$ Bilinearform auf $V, \mathcal{B}$ Basis von $V$. Dann sind äquivalent:
   1. $γ$ ist nich-ausgeartet
   2. $γ$ ist perfekt
-  3. $ M_{\mathcal{B}}(γ)$ invertierbar
+  3. $M_{\mathcal{B}}(γ)$ invertierbar
   4. $Γ_l$ injektiv
   5. $Γ_r$ injektiv
   #+end_conc
@@ -1123,7 +1123,7 @@
   #+begin_remark latex
   $\mathcal{B}$ Orthonormalbasisv on $(V, h), φ ∈ \End(V), A = M_{\mathcal{B}}(φ)$. Dann sind äquivalent:
   1. $φ$ ist unitär
-  2. $ \bar A^T A = E_n$
+  2. $\bar A^T A = E_n$
   #+end_remark
   #+begin_remdef latex
   $A ∈ M(n × n, ℂ)$. $A$ heißt *unitär* genau dann wenn: $\bar A^T A = E_n$.
@@ -1907,3 +1907,69 @@
   \[B = \begin{pmatrix}4 & 3 \\ 2 & 2\end{pmatrix} ∈ M(2 × 2, ℤ) ⇒ \Fit_1(B) = (2, 3, 4) = (1), \Fit_2(B) = (2)\]
   $⇒$ $A \sim B$
   #+end_ex
+  # TODO
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $A \approx B ⇒ ∃ S ∈ \GL(n, K): B = S A S^{-1}$
+	 \begin{align*}
+	 ⇒ P_B &= t E_n - B = t E_n - S A S^{-1} = S t E_n S {-1} - S A  S^{-1} \\
+	 &= S \underbrace{(t E_n - A)}_{= P_A} S^{-1} \\
+	 ⇒ P_B &\approx P_A ⇒ P_B \sim P_A
+     \end{align*}
+  2. $⇒$ 1. Sei	$P_A \sim P_B$
+	 1. Wir konstruieren $R ∈ M(n × n, K)$ mit $A R = R B$: \\
+		$⇒ ∃ S, T ∈ \GL(n, K[t]): P_A = S P_B T^{-1}$, das heißt $S P_B = P_A T$
+		\[⇒ S(t E_n - B) = (t E_n - A) T\]
+		Wir schreiben $S, T$ in der folgenden Form:
+		\[S = \sum_{i = 0}^{m} t^i S_i, T = \sum_{i = 0}^{m} t^i T_i, \quad S_i, T_i ∈ M(n × n, K)\]
+		\begin{align*}
+		⇒ S(t E_n - B) &= \sum_{i = 0}^{m} t^i S_i(t E_n - B) = \sum_{i = 0}^{m} (t^{i + 1} S_i - t^i S_i B) \\
+		\string(t E_n - A\string) T &= (t E_n - A) \sum_{i = 0}^{m} t^i T_i = \sum_{i = 0}^{m} (t^{i + 1d T_i - t^i A T_i}) \\
+		⇒ \sum_{i = 0}^{m + 1} (S_{i - 1} - S_i B) t^i = \sum_{i = 0}^{m + 1}(T_{i - 1} - A T_i) t^i \\
+		\intertext{wobei $S_{-1}, T_{-1}, S_{m + 1}, T_{m + 1} = 0$}
+		⇒ S_{i - 1} - S_i  b &= T_{i - 1} -  a T_i\qquad 0 \leq i \leq m + 1 \\
+		⇒ A^i S_{i - 1} - A^i S_i B &= A^i T_{i - 1} - A^{i + 1} T_i \qquad 0 \leq i \leq m + 1 \\
+		⇒ \sum_{i = 0}^{m + 1}(A^i S_{i - 1} - A^i S_i B) &= \sum_{i = 0}^{m + 1}(A^i T_{i - 1} - A^{i + 1} T_i) \\
+		&= (A^0 T_{-1} - A T_0) + (A T_0 - A^2 T_1) + \dots + (A^{m + 1} T_m - A^{m + 2} T_{m + 1}) \\
+		&= A^0 T_{-1} - A^{m + 2} T_{m + 1} = 0 \\
+		⇒ \sum_{i = 0}^{m + 1} A^i S_{i - 1} &= \sum_{i = 0}^{m + 1} A^i S_i B \\
+		⇒ \sum_{i = 1}^{m + 1} A^i S_{i - 1} &= \sum_{i = 0}^{m} A_i S_i B \\
+		⇒ A(\sum_{i = 0}^{m} A^i S_i) &= (\sum_{i = 0}^{m} A^i S_i) B \\
+		⇒ R &:= \sum_{i = 0}^{m} A^i S_i
+        \end{align*}
+		dann $A R = R B$.
+	 2. Wir zeigen $R ∈ \GL(n, K)$ (wegen $A R = R B$ ist dann $A = R B R^{-1}$, also $A \approx B$, fergit.)
+		Nach Vorraussetzung ist $S ∈ \GL(n, K[t])$ $⇒ ∃ M ∈ \GL(n, K[lt]): S M = E_n, M = \sum_{i = 0}^{m} t^i M_i$ mit $M_i ∈ M(n × n, K)$, ohne Einschränkung dasselbe $n$ wie vorhin.
+		Behauptung: Mit
+		\[N := \sum_{j = 0}^{m} B^j M_j ∈ M(n × n, K)\]
+		gilt $R N = E_n$ also $R ∈ \GL(n, K)$, denn: Es ist
+		\[R N = \sum_{j = 0}^{m} R B^j M_j\]
+		Wegen $R B = A R$ folgt $R B^j = R B B^{j - 1} = A R B^{j - 1} = \dots = A^j R$
+		\[⇒ R N = \sum_{j = 0}^{m} A^j R M_j = \sum_{j = 0}^{m} A^j (\sum_{i = 0}^{m} A^i S_i) M_j = \sum_{i,j = 0}^{m} A^{i + j} S_i M_j\]
+		Wegen $SM = E_n$ folgt
+		\[(\sum_{i = 0}^{m} t^i S_i)(\sum_{j = 0}^{m} t^j M_j) = E_n\]
+		\begin{align*}
+		⇒ S_0 M_0 + \sum_{k = 1}^{2m}(\sum_{i + j = k} S_i M_j) t^k &= E_n \\
+		⇒ S_0 M_0 = E_n, \sum_{i + j = k} S_i M_j &= 0 \quad k \geq 1 \\
+		⇒ R N &= \sum_{i,j = 0}^{m} A^{i + j} S_i M_j = S_0 M_0 + \sum_{k = 1}^{2m} A^k \underbrace{\sum_{i + j = k} S_i M_j}_{= 0} = S_0 M_0 = E_n
+        \end{align*}
+  #+end_proof
+  #+begin_remdef latex
+  $A ∈ M(n × n, K)$. Dan gilt:
+  1. Es gibt eindeutig bestimmte normierte Polynome $c_i(A), \dots, c_n(A) ∈ K[t]$ mit
+	 \[P_A \sim \begin{pmatrix}c_1(A) &   & 3 \\  & \ddots &   \\ 0 &   & c_n(A)\end{pmatrix}, \quad c_1(A) \mid c_2(A) \mid \dots \mid c_n(A)\]
+	 $c_1(A), \dots, c_n(A)$ heißen die *Invariantenteiler* von $A$.
+  2. Es gibt eindeutig bestimmte normierte Polynorme $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
+	 \[\Fit_l(A) = (d_l(A)) \quad l = 1, \dots, n\]
+	 Es ist $d_l(A) = \ggT(\det(B) \mid B \text{ ist \(l× l\) -Untermatrix von } P_A)$. Insbesondere ist $d_n(A) = χ_A^{char}$.
+	 $d_1(A), \dots, d_n(A)$ heißen die Determinantenteiler von $A$.
+  #+end_remdef
+  #+begin_proof latex
+  1. Existenz: $K[t]$ ist ein Euklidischer Ring. Fundamentalteilersatz $⇒ ∃ \tilde c_1, \dots, \tilde c_r ∈ K[t]$:
+	 \[P_a \sim	 \begin{pmatrix} \tilde c_1 & & & & & \\ & \ddots & & & & \\ & & \tilde c_r & & & \\ & & & 0 & & \\ & & & & \ddots & \\ & & & & & 0\end{pmatrix}\qquad \tilde c_1 \mid \dots \mid \tilde c_r\]
+	 Es ist $\Fit_n(F_A) = (\det(P_A)) = (χ_A^{char}) \neq (0) \to r = 0$ und
+	 \[\Fit_n(P_A) = (\tilde c_1 · \dots · \tilde c_n)\]
+	 Da $\tilde c_1, \dots, \tilde c_n \neq 0$ eindeutig bis auf Assoziiertheit, existieren eindeutig bestimmte normierte Polynome $c_1(A), \dots, c_n(A)$ mit $c_1(A) \estimates \tilde c_1,  \dots, c_n(A) \estimates \tilde c_n$.
+	 \[⇒ P_A \sim \begin{pmatrix}c_1(A) &   &   \\   & \ddots &   \\   &   & c_n(A)\end{pmatrix}\]
+  2. $K[t]$ Hauptidealring $⇒ \Fit_l(P_A), l = 1, \dots, n$ sind Hauptideale und nach 27.16 ist $\Fit_l(P_A) = (c_1(A) · \dots · c_l(A))$
+	 # TODO
+  #+end_proof

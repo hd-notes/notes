@@ -22,3 +22,29 @@
 #+INCLUDE: "dual_vector.org" :minlevel 1
 # Kapitel 4 Bilinearformen und Skalarprodukte
 #+INCLUDE: "bilinear_form.org" :minlevel 1
+
+#+begin_conc latex
+$A ∈ M(n × n, K)$. Dan gilt: $d_l(A) = c_1(A) · \dots · c_l(A) ∀ l = 1, \dots, n$. Insbesondere gilt:
+\[χ_A^{char} = d_n(A) = c_1(A) · \dots · c_n(A)\]
+sowie
+\[d_1(A) \mid \dots \mid d_n(A)\]
+#+end_conc
+#+ATTR_LATEX: :options [Invariantenteilersatz]
+#+begin_thm latex
+$A, B ∈ M(n × n, K)$. Dann sind äquivalent:
+1. $A \approx B$
+2. Die Invatiantenteiler von $A$ stimmen mit den Invariantenteilern von $B$ überein:
+   \[c_1(A) = c_1(B), \dots, c_n(A) = c_n(B)\]
+3. Die Determinantenteiler von $A$ stimmen mit den Determinantenteilern von $B$ überein:
+   \[d_1(A) = d_1(B), \dots, d_n(A) = d_n(B)\]
+#+end_thm
+#+begin_proof latex
+aus Satz von Probenius und Satz 27.18
+#+end_proof
+#+begin_ex latex
+Sei
+\[A = \begin{pmatrix}0 & 1 & 3 \\ 3 & 1 & -4 \\ -2 & 1 & 5\end{pmatrix} ∈ M(3 × 3, ℚ)\]
+Es ist
+\[P_A = \begin{pmatrix}t & -1 & -3 \\ -3 & t - 1 & 4 \\ 2 & -1 & t - 5\end{pmatrix}\]
+Bestimmung der Determinantenteiler von $A: d_1(A) = \ggT(-1, \dots) = 1$
+#+end_ex

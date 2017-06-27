@@ -889,7 +889,7 @@
 	  \[S = ∪_{i = 1}^m I_i\]
 	  gilt $\abs{S} \leq μ^{\ast}(S)$. Dazu geben wir ein $ε > 0$ mit $ε = sum ε_i$ (mit $ε_i$ > 0) vor und wählen eine abzählbare Überdeckung
 	  \[∪_i I_i \supset S, \sum_{i} \abs{I_i} \leq μ^{\ast}(S) + ε\]
-	  $∀ I_i$ wählen wir $J_i$, sodass $ \abs{J_i} > \abs{I_i} ∧ \abs{J_i} \leq \abs{I_i} + e_i$. Dann ist
+	  $∀ I_i$ wählen wir $J_i$, sodass $\abs{J_i} > \abs{I_i} ∧ \abs{J_i} \leq \abs{I_i} + e_i$. Dann ist
 	  $(J_i)_i$ eine offene Überdeckung der kompakten Menge $S$ und nach dem Satz von Heine Borel wird $S$ bereits von endlich vielen der $J_i$ überdeckt
 	  \[S ⊂ ∪_{i = 1}^m J_m\]
    4. Die Invarianz von $μ^{\ast}(x)$ gegeüber Translation folgt, da diese Intervalle bei Translation in solche mit demselben Inhalt überführen. Sei $S$ eine Drehung ($S$ eine orthogonale $n × n$ Matrix)
