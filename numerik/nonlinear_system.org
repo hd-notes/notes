@@ -1,0 +1,59 @@
+* Nichtlineare Gleichungen
+** Intervallschachtelung / Bisektion
+   Sei $f ∈ C[a, b]$. Suche $x ∈ [a, b]$ mit $f(x) = 0$.
+   Gilt $a_0, b_0 ∈ [a, b]$ mit $f(a_0) · f(b_0) < 0$, so hat $f$ eine Nullstelle in $[a_0, b_0]$ (Zwischenwertsatz).
+   \begin{algorithm}[H]
+   \For{$k = 0, 1, \dots$}{
+   $x_k = 1/2 (a_k + b_k)$\;
+   \eIf{$f(a_k)f(x_k) < 0$}{
+   $a_{k + 1} = a_k$\;
+   $b_{k + 1} = x_k$\;
+   }{
+   $a_{k + 1} = x_k$\;
+   $b_{k + 1} = b_k$\;}
+   \If{$\abs{b_{k + 1} - a_{k + 1}} < TOL \abs{a_{k + 1}}$}{
+   Ende
+   Lösung: $1/2 (b_{k + 1} + a_{k + 1})$}}
+   \end{algorithm}
+   Konvergenz:
+   \[a_k \leq a_{k + 1} \leq b_{k + 1} \leq b_k\]
+   \[\abs{b_{k + 1} - a_{k + 1}} = \frac{1}{2} \abs{b_k - a_k} = 2^{-k - 1} \abs{b_0 - a_0}\]
+   Eigenschaften:
+   - sehr stabil
+   - langsam
+   - Erweiterung für $x ∈ ℝ^n$ oder $x ∈ ℂ$ nicht möglich
+** Newton-Verfahren im $ℝ^n$
+   Sei $D ⊂ ℝ^n$ offen, $f: D \to ℝ^n$ stetig differenzierbar. Bezeichnung: $J(x) = f'(x): ℝ^n \to ℝ^{n × n}$ (Jacobi-Matrix).
+   Vorüberlegung: Taylor-Entwicklung von $f$ um eine Näherungslösung $x_k ∈ D$:
+   \[f(x_k + Δ x_k) = f(x_k) + J(x_k) Δ x_k + \mathcal{o}(\norm{Δ x_k}) \overset{!}{=}\]
+   Abegleitete Iterationsvorschrift:
+   - Löse $J(x_k) Δx_k = - f(x_k)$
+   - Schritt $x_{k + 1} = x_k + Δ x_k$
+   Insbesondere Fall $n = 1$: $J(x_k) Δ x_k = - f(x_k)$ $\to$ $Δ x_k + x_k$ = Nullstelle der Tangente an der Stelle $x_k$.
+** Konvergenzverhalen iterativer Mathode (Spezialfall $n = 1$)
+   #+begin_defn latex
+   Ein Iterationsverfahren zur Berechnung von
+   \[x_{\ast} = \lim_{k \to ∞}  x_k\]
+   hat eine Konvergenz der Ordnung $α, α \geq 1$, wenn mit einem $c > 0$ gilt:
+   \[\abs{x_{k + 1} - x_{\ast}} \leq c \abs{x_k - x_{\ast}}^α \qquad k = 0, 1, \dots\]
+   Im Fall $α = 1$ (lineare Konvergenz) heißt das beste $c$ lineare Kontraktionsrate. Gilt
+   \[\abs{x_{k + 1} - x_k} \leq c_k \abs{x_k - x_{\ast}}\]
+   mit einer Nullfolge $c_k \to 0$, so spricht man von superlinearer Konvergenz.
+   #+end_defn
+   #+begin_defn latex
+   Die Menge $D(x) = \{y ∈ D \mid \norm{f(y)} \leq \norm{x}\}$
+   heißt die Niveaumenge von $f$ zum Punkt $x$.
+   #+end_defn
+   #+ATTR_LATEX: :options [Newton-Kantorovich]
+   #+begin_thm latex
+   Für ein $\bar x ∈ D$ gelte
+   1. $\norm{J^{-1}(x)} \leq β, x ∈ D_f(\bar x)$
+   2. $\norm{J(x) - J(y)} \leq γ \norm{x - y}, x,  ∈ D_f(\bar x)$
+   3. $x_0 ∈ D_f(x)$
+   4. $q := 1 / 2 α β γ < 1$ mit $α = \norm{J^{-1}(x_0) f(x_0)}$
+   Dann konvergiert	die Folge $(x_k)$ aus der Newtoniteration gegen eine Nullstelle $x_{\ast} ∈ D$ von $f$, mit der a-priori Fehlerabschätzung
+   \[\norm{x_k - x_{\ast}} \leq \frac{α}{1 - q} q^{(2^k - 1)}, k \geq 1\]
+   #+end_thm
+   #+begin_proof latex
+   Skript
+   #+end_proof

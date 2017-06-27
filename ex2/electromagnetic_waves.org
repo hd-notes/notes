@@ -1,0 +1,171 @@
+* Elektromagnetische Welle
+** Mechanische Wellen
+   Eine Welle ist ein Vorgang bei dem sich eine Schwingung vom Ort Ihrer Erregung in Folge von Kopplungen an benachbarte schwingungsfähige Systeme im Raum ausbreitet.
+   Man unterscheidet
+   - Transversale Wellen $\to$ Ausbreitung senkricht zur Schwingungsrichtung
+   - Longitudinale Wellen $\to$ Ausbreitung entlang der Schwingungsrichtung
+   Eindimensionale harmonische Welle
+   $\to$ harmonische Anregung
+   Bei $t = 0$:
+   \[y(x) = A \sin(k x), k = \frac{2 π}{λ}\]
+   Zusätzliche Zeitabhängigkeit:
+   \begin{align*}
+   y(x, t) &= A \sin(k(x - v_{ph} t)) \\
+   &= A \sin(k x - k v_{ph} t) \\
+   &= A \sin(k x - ω t) \\
+   v_{ph} &= \frac{λ}{T} = \frac{ω}{k}
+   \end{align*}
+   Harmonische ebene Welle:
+   \begin{align*}
+   y(x, t) &= A \sin(k x \pm ω t) \tag{1 dim} \\
+   y(\v x, t) &= A \sin(\v k \v x \pm ω t) \tag{3 dim}
+   \end{align*}
+   - Wellenzahl: $k = 2 π / λ$, $\v λ \parallel$ Ausbreitungsrichtung
+   - Wellenlänge: $λ = 2 π / k$
+   - Phasengeschwindigkeit: $v_{ph} = ω / k$
+   - Amplitude: $A$
+   Wesenliche Eigenschaften: \\
+   Superposition und Interferenz: \\
+   Superposition $\longleftrightarrow$ Überlagerung von Wellen
+   \[y(\v x, t) = \sum_{i = 1}^{n} y_i(\v k, t)\]
+   Überlagerung von Wellen (1 dimensional)
+   \begin{align*}
+   ξ_1(x, t) &= A \cos(k_1 x - ω_1 t) \\
+   ξ_2(x, t) &= A \cos(k_2 x - ω_2 t) \\
+   ξ = ξ_1 + ξ_2 &= A(\cos(k_1 x - ω_1 t) + \cos(k_2 x - ω_2 t)) \\
+   &= 2 A \cos(\frac{k_1 + k_2}{2} x - \frac{ω_1 + ω_2}{2} t) \cos(\frac{k_1 - k_2}{2} x - \frac{ω_1 - ω_2}{2}t) \\
+   \end{align*}
+   Jetzt: $k_1 \approx k_2, ω_1 \approx ω_2$ $⇒$ Schwebung mit mittlerer Frequenz als Schwebungsfrequenz.
+   #+ATTR_LATEX: :options [Fouriertheorem]
+   #+begin_thm latex
+   Jede periodische und aperiodicshe Funktion kann durch harmonische ebene Wellen dargestellt werden.
+   Fourier-Reihe:
+   \[f(t) = f(t + T) = \frac{a_0}{2} + \sum_{n = 1}^{∞} a_n \cos(n ω t) + b_n \sin(n ω t)\]
+   mit
+   \begin{align*}
+   a_i &= \frac{2}{T} ∫_{- T / 2}^{T / 2} f(t) \cos(i ω t) \d t \\
+   b_i &= \frac{2}{T} ∫_{- T / 2}^{T / 2} f(t) \sin(i ω t) \d t \\
+   \end{align*}
+   aperiodische $F$: Fourier-Integral:
+   \begin{align*}
+   f(t) &= \frac{1}{π} ∫_0^∞ a(ω) \cos(ω t) + b(ω) \sin(ω t) \d ω \\
+   a(ω) &= ∫_{-∞}^∞ f(t) \cos ω t \d t \\
+   b(ω) &= ∫_{-∞}^∞ f(t) \sin ω t \d t \\
+   \end{align*}
+   #+end_thm
+   Daher genügt es oft harmonische ebene Wellen zu betrachten.
+** Wellengleichung
+   Wegge $\to$ Ausbreitung einer Schwingung im Raum.
+   Gesucht: Differentialgleichung die die Ausbreitung von Störungen beschreibt.
+   Sich ausbreitende Störung $\estimates$ Wellenpaket.
+   \begin{align*}
+   ψ_+(x, t) &= f(x - v t) \\
+   ψ_-(x, t) &= f(x + v t) \\
+   \pp{ψ}{x} &= f', \pp{ψ}{t} &= \pm v f' \\
+   \frac{\partial^2 ψ}{\partial x^2} &= f'' \\
+   \frac{\partial ψ}{\partial t^2} = v^2 f''
+   \end{align*}
+   Klassische Wellengleichung:
+   \begin{align*}
+   \frac{\partial^2 ψ}{\partial t^2} &= v^2	\frac{\partial^2 ψ}{\partial x^2} \tag{1 dim} \\
+   \frac{\partial^2 ψ}{\partial t^2} &= v^2	(\frac{\partial^2 ψ}{\partial x^2} + \frac{\partial^2 ψ}{\partial y^2} + \frac{\partial^2 ψ}{\partial z^2}) = v^2 Δ ψ \tag{3 dim} \\
+   \end{align*}
+   $v^2$: Phasengeschwindigkeit.
+   Eigenschaften:
+   - lineare Differentialgleichung $\to$ Superposition und Inferferenz
+   - Ebene Wellen sind Lösung der Wellengleichung
+   - Auftreten solcher Gleichungen weist auf Wellenchararkter der Lösung hin
+** Wellenpakete, Phasen- und Gruppengeschwindigkeit
+   Wellenpaket
+   \begin{align*}
+   ψ(x, t) &= \frac{1}{π} ∫_0^∞ \{a(k) \cos k x + b(k) \sin k x\} \d t \\
+   ψ(x, t) &= \frac{1}{π} ∫_0^∞ \{a(k) \cos(k(x - v_{ph} t)) + b(k) \sin(k(x - v_{ph} t))\}
+   \end{align*}
+   Jetzt: Übergang ins komplexe:
+   \begin{align*}
+   \cos φ &= \frac{e^{i φ} + e^{- i φ}}{2} \\
+   \sin φ &= \frac{e^{i φ} - e^{- i φ}}{i2} \\
+   e^{i φ} &= \cos φ + i \sin φ \\
+   ⇒ ψ(x, t) = \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) + \frac{1}{2i} b(k)\} e^{i k(x - v_{ph} t)} \d k + \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) - \frac{1}{2i} b(k)\} e^{- i k(x - v_{ph} t)} \d k \\
+   &= \frac{1}{\sqrt{2 π}} ∫_0^∞ A(k) e^{i k(x - v_{ph}t)} \d k + \frac{1}{\sqrt{2 π}} ∫_0^π A^{\ast}(k) e^{- i k(x - v_{ph}t)} \\
+   &= \frac{1}{\sqrt{2 π}} ∫_0^∞ A(k) e^{i(k x - ω t)} \d k + \frac{1}{\sqrt{2 π}} ∫_{- ∞}^0 A(k) e^{i(k x - ω t)} \d k \tag{$ω = \abs{k} v_{ph} > 0$} \\
+   \intertext{Damit ergibt sich dann allgemein:}
+   ψ(x, t) &= \frac{1}{\sqrt{2 π}} ∫_{-∞}^{∞} A(k) e^{i k x - ω t} \d k \\
+   A(k) &= \frac{1}{\sqrt{2π}} ∫_{-∞}^∞ ψ(x, 0) e^{i(k x)} \d x
+   \end{align*}
+   Phasengeschwindigkeit: $v_{ph} = ω / k$ \leftrightarrow Ausbreitungsgeschwindigkeit gleicher Phasen.
+   Phasengeschwindigkeit kann aber für unterschiedliche $k$, das heißt unterschiedliche Wellenlängen $λ = 2 π / k$ unterschiedlich sein $\to$ Dispersion.
+   Dispersionsrelation:
+   \[ω(k) = ω(k_0) + \dd{ω}{k} \big|_{k_0} (k - k_0) + \dots\]
+   (Taylorentwicklung). Dispersion führt im Allgemeinen dazu, dass Wellenpakete mit der Zeit auseinanderfließen.
+   Bei schwacher Abhängigkeit der Ausbreitungsgescwindigkeit von der Wellenlänge bewegt sich
+   das Wellenpaket ein beträchtliches Stück, bevor es nicht wiederzuerkennen ist.
+   Für Wellenpakete für die $A(k)$ nur in einem schmalen Bereich um $k_0$ von Null verschieden ist -
+   was für die meisten relevanten Wellenpakete der FAll ist - kann man eine Wellenpaketgeschwindigkeit
+   herleiten:
+   \[v_{gr} = \dd{ω}{k} \big|_{k_0}\]
+   $⇒$ Gruppengeschwindigkeit, Geschwindigkeit des Schwerpunktes eines Wellenpakets:
+   \[v_{gr} = \dd{ω}{k}\]
+   Einfaches Beispiel: Schwebung:
+   \begin{align*}
+   ξ(x, t) &= 2 A \cos(\frac{k_1 + k_2}{2} x - \frac{ω_1 + ω_2}{2} t) \cos(\frac{k - k_2}{2} x - \frac{ω_1 - ω_2}{2}t) \\
+   &= 2 A \cos(\bar k - \bar ω t) \cos(\frac{Δ k}{2} x - \frac{Δ ω}{2} t) \\
+   ⇒ v_{ph} &= \frac{\bar ω}{\bar k}, v_{gr} = \frac{Δ ω}{Δ k}
+   \end{align*}
+** Elektromagnetische Wellengleichung
+   Maxwell-Gleichung im Vakuum ($⇒ ρ = 0, \v j = 0$):
+   \begin{align*}
+   \Div \v E = 0 &\qquad \rot \v E = - \pp{\v B}{t} \\
+   \Div \v B = 0 &\qquad \rot \v B = ε_0 μ_0 \pp{\v E}{t}
+   \end{align*}
+   Ableinet:
+   \begin{align*}
+   \pp{}{t} \rot \v B &= ε_0 μ_0 \frac{\partial^2 \v P}{\partial t^2} \\
+   \rot(\rot \v E) &= - \rot \pp{\v B}{t} = -\pp{}{t} \rot \v B \\
+   ⇒ \rot \rot(\v E) &= - ε_0 μ_0 \frac{\partial^2 \v E}{\partial t^2} \\
+   \rot (\rot (\v E)) &= \underbrace{\grad (\Div \v E)}_{= 0} - \underbrace{\div(\grad \v E)}_{Δ \v E} \\
+   ⇒ Δ \v E &= ε_0 μ_0 \frac{\partial^2 \v E}{\partial t^2} \\
+   ⇒ \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v E \\
+   \intertext{Analog:}
+   \pp{}{t} \rot \v E &= - \frac{\partial^2 \v B}{\partial t^2}, \rot \rot \v B = \dots \\
+   ⇒ \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v B
+   \end{align*}
+   $⇒$ Wellengleichungen für elektromagnetische Wellen. Im Vakuum:
+   \begin{align*}
+   \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v E \\
+   \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v B \\
+   \end{align*}
+   In Matrie:
+   \begin{align*}
+   \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε μ ε_0 μ_0} Δ \v E \\
+   \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε μ ε_0 μ_0} Δ \v B \\
+   \end{align*}
+   mit Lichtgeschwindigkeit:
+   \begin{align*}
+   c &= \sqrt{\frac{1}{ε_0 μ_0}} \\
+   c_{mat} &= \sqrt{\frac{1}{ε μ ε_0 μ_0}} = \frac{c}{n}
+   \end{align*}
+** Struktur elektromagnetischer Wellen
+   Ebene Welle
+   \begin{align*}
+   \v E(\v r, t) &= \v E_0 \sin(k x - ω t) \\
+   k x &= \v k \v r \\
+   ⇒ \v E(\v r, t) &= \v E_0 \sin(\v k \v r - ω t)
+   \div \v E \overset{!}{=} 0 = \pp{E_x}{x} + \underbrace{\pp{E_y}{y}}_{ = 0} + \underbrace{\pp{E_z}{z}}_{= 0} = \pp{E_x}{x} \overset{!}{0} \\
+   ⇒ E_x &= \const
+   \end{align*}
+   Wahl der Randbedingung $\to$ wähle $E_x = 0$. Fazit:
+   Im Vakuum gibt es kein logitudinalen, sondern nur transversale elektromagnetischer Wellen.
+   Jetzt: Verknüpfung von $E$ -und $B$ -Feld. Ansatz: Linear polarisierte Welle
+   (das heißt $\v E, \v B$ zeigen immer in eine Richtung)
+   \begin{align*}
+   \v E(x, t) &= (0, E_y(x, t), 0) \\
+   E_y(x, t) &= E_0 \sin(k x - ω t) \\
+   \intertext{Maxwell: $\rot \v E = - \dot{\v B}, \rot \v B = 1 / c^2 \dot {\v E}$}
+   ⇒ \pp{E_y}{x} &= - \pp{B_z}{t} ⇒ \pp{B_z}{t} = - k E_0 \cos(k x - ω t), \pp{B_x}{t} = \pp{B_y}{t} = 0 \\
+   \frac{1}{c^2} &= - \pp{B_x}{x} ⇒ \pp{B_z}{x} = \frac{ω}{c^2} E_0 \cos(k x - ω t), \pp{B_x}{x} = \pp{B_y}{x} = 0 \\
+   ⇒ \v B(x, t) &= (0, 0, B_z(x, t)), B_z(x, t) = \frac{E_0}{c} \sin(k x - ω t)
+   \end{align*}
+   $⇒$ Magnetisches Wechselfeld muss in z-Richtung zeigen falls das elektrische Feld in y-Richtung polarisiert ist.
+   das heißt für elektromagnetische, ebene Wellen im Vakuum gilt:
+   \[\v E \perp \v B\]

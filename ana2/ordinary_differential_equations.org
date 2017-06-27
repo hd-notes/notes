@@ -1,0 +1,812 @@
+* Gewöhnliche Differentialgleichungen
+  *Grundbegriffe* \\
+  Zu einer gegebenen Funktion $f: ℝ\to ℝ$ suchen wir eine differenzierbare Funktion $x: ℝ \to ℝ$, deren Ableitung durch $f(·)$ beschrieben wird.
+  Wir suchen also eine Funktion sodass
+  \[\dd{}{t} x(t) = f(t) ∀ t ∈ ℝ\]
+  *Bemerkung zur Notation* \\
+  \begin{align*}
+  x' &= f\\
+  \dot x &= f
+  \end{align*}
+  #+begin_ex latex
+  Für gegebene Geschwindigkeit (in Ableitung von Zeit) suchen wir die Position des Körpers auf einer festen eindimensionalen Achse.
+  \[\dd{}{t} x(t) = f(t) ∀ t ∈ ℝ\]
+  Wir müssen noch die Position zu irgendeinem Zeitpunkt kennen. Das heißt die Lösung ist nicht eindeutig solange wir keinen Wert $x(t_0) ∈ ℝ$ festlegen.
+  Das Problem
+  \begin{align*}
+  \dd{}{t} x(t) &= f(t) \\
+  x(t_0) &= x_0
+  \end{align*}
+  lässt sich lösen wenn $f: ℝ \to ℝ$ stetig ist. Dann besagt nämlich des Hauptsatz der Integralrechnung, dass
+  \[x(·): ℝ \to ℝ, t \to x_0 + ∫_{t_0}^{t} f(s) \d s\]
+  differenzierbar ist und die Ableitung $f(t)$ begrenzt ist.
+  #+end_ex
+  *Ziel*:
+  - Existenz von Lösung
+  - Eindeutigkeit von Lösung
+  - Verhalten
+  #+begin_ex latex
+  \[\dd{x}{t} = r x\]
+  $r$: Konstante. In $t_0 = 0: x(0) = x_0$
+  \begin{align*}
+  x(·) &= c · e^{rt} \\
+  x_0 &= x(0) = c \\
+  ⇒ x(t) &= x_0 e^{rt}
+  \end{align*}
+  #+end_ex
+  #+begin_defn latex
+  Gegeben sei eine nicht leere Teilmenge $D ⊂ ℝ × ℝ^m$ und eine Funktion $f: D \to ℝ^m$. Dann nennt man
+  \[x' = f(·, x)\]
+  eine explizite Gewöhnliche Differenzialgleichung (GDGL)(ODE - ordinary differential equation) 1. Ordnung.
+  Im Fall $m = 0$ wird die Gleichung als *Skalar* bezeichnet. Eine solche Differentialgleichung heißt *autonom* falls $f$ nicht explizit von $t$ abhängt (sonst: *nichtautonom*).
+  Für $m > 1$ bekommen wir ein System von Gewöhnlichen Differentialgleichungen. Eine Funktion $x: I \to ℝ^m, I ⊂ ℝ$, heißt eine Lösung der Differentialgleichung, wenn
+  1. $∀ t ∈ R ⊂ ℝ$ liegt $(t, x(t)) ∈ D$
+  2. $x(·)$ ist differenzierbar, das heißt
+	 \[∀t ∈ I ∃ x'(t) = \lim_{\substack{h \to 0\\ t + h ∈ I}} \frac{x(t + h) - x(t)}{h} ∈ ℝ^m\]
+  3. $∀ t ∈ I$ gilt $x'(t) = f(t, x(t))$
+  Bei *Anfangswertproblemen* zu dieser Gewöhnlichen Differentialgleichung ist noch ein Tupel $(t_0, x_0) ∈ D$ gegeben und gesucht ist eine Funktion die Bedingungen 1. bis 3. und $x(t_0) = x_0$ erfüllt.
+  #+end_defn
+  *Konstruktion von Lösungen* \\
+  *Geometrische Interpretation*: Eine skalare Gleichung $x' = f(t, x)$ bestimmt ein *Richtungsfeld*, das heißt $∀ (t, x) ∈ ℝ^2$ wird durch $x' = f(t, x)$ eine *Steigung* gegeben. Gesucht sind
+  $x(t)$ deren Graph $G(x) =\{(t, x)\}$ in jedem Punkt die vorgegebene Steigung hat. In einfachen Fällen kann mit aus ihrem Richtungsfeld die mögliche Lösung ergeben.
+  \begin{tikzpicture}
+  \begin{axis}[title={$x' = x$},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
+  \addplot3 [gray,quiver={u={1},v={x},scale arrows=0.15},-stealth,samples=15] {0.5*x^2};
+  \end{axis}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+  \begin{axis}[title={$x' = 1 / x$},domain=0:2,view={0}{90},axis background/.style={fill=white}]
+  \addplot3 [gray,quiver={u={1},v={1/x},scale arrows=0.15},-stealth,samples=15] {ln(x)};
+  \end{axis}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+  \begin{axis}[title={$x' = x / t$},domain=-2:2,view={0}{90},axis background/.style={fill=white}]
+  \addplot3 [gray,quiver={u={1},v={y/x},scale arrows=0.15},-stealth,samples=15] {x};
+  \end{axis}
+  \end{tikzpicture}
+  *Methode der Trennung der Variablen* \\
+  Wir betrachten die separable Differentialgleichung
+  \[x' = f(x, t) = a(t) g(x)\]
+  Sei $x$ einen Lösung. Falls $g(t) \neq 0$ bekommen wir
+  \[∫_{t_0}^t \frac{x'(s)}{g(x(s))} \d s = ∫_{t_0}^t a(s) \d s\]
+  Mit Hilfe der Substitution $z := x(s)$ ergibt sich (mit $\dd{z}{x} = x'(s)$)
+  \[∫_{x_0}^{x(t)} \frac{1}{g(z)} \d z = ∫_{t_0}^{t} a(s) \d s\]
+  #+ATTR_LATEX: :options [3.4]
+  #+begin_ex latex
+  \[\begin{cases} x' = x^2 \\ x(t_0) = x_0 \end{cases}\]
+  \begin{align*}
+  ∫_{x_0}^{x(t)} \frac{\d z}{z^2} &= ∫_{t_0}^{t} 1 \d s \\
+  -\frac{1}{z} \big|_{x_0}^{x(t)} &= t - t_0 \\
+  t - t_0 &= \frac{1}{x_0} - \frac{1}{x(t)} \\
+  x(t) &= \frac{x_0}{1 - x_0(t - t_0)}
+  \end{align*}
+  Falls $t_0 = 0, x(0) = 1$:
+  \[x(t) = \frac{1}{1 - t}\]
+  \begin{tikzpicture}
+  \begin{axis}[domain=0.8:1.2,axis background/.style={fill=white},restrict y to domain=0:80]
+  \addplot[samples=100] {1 / (1 - x)};
+  \end{axis}
+  \end{tikzpicture}
+
+  Dies ist keine *globale* ($∀t ∈ ℝ_+$) Lösung, da man $x(t)$ nicht nach $t = t^{\ast}$ fortsetzen kann.
+  #+end_ex
+  *Methode der Variation der Konstanten* \\
+  Wir betrachten die Differentialgleichung $x' = a(t) x(t) + b(t), t ∈ I = [t_0, t_0 + τ] ⊂ ℝ$
+  mit den stetigen Funktionen $a, b: I \to ℝ$
+  Die zugehörige homogene Differentialgleichung $y' = ay$ hat eine Lösung in der Form
+  \[y(t) = c \exp ∫_{t_0}^{t} a(s) \d s, \quad c ∈ ℝ\]
+  (Seperation der Variablen). Sei $y(t)$ eine Lösung mit $c = 1$.
+  Zur Bestimmung einer Lösung der *inhomogenen Differentialgleichung* wird $c$ als Funktion von $t$ angesetzt.
+  Ansatz: $x(t) = c(t) y(t)$
+  \begin{align*}
+  ⇒ x'(t) &= c'(t) y(t) + c(t) y'(t) \\
+  &= c'(t) \exp ∫_{t_0}^{t} a(s) \d s + a(t) x(t) \\
+  &\overset{?}{=} a(t) x(t) + b(t) ⇔ c'(t)\exp(∫_{t_0}^{t} a(x) \d s) = b(t)
+  \end{align*}
+  Wir bekommen
+  \[c(t) = ∫_{t_0}^{t} \exp(-∫_{t_0}^τ a(s) \d s) b(τ) \d τ + r\]
+  mit einer freien Konstanten $r ∈ ℝ$. Damit wird
+  \[x(t) = \exp(∫_{t_0}^{t} a(s) \d s)∫_{t_0}^t \exp(-∫_{t_0}^t a(s) \d s) b(τ) \d τ + r \exp(∫_{t_0}^{t} a(s) \d s)\]
+  Durch die Wahl der Konstanten $r = x_0$ ergibt sich $x(t_0) = x_0$
+  \[⇒ x(t) = \exp(∫_{t_0}^t a(s) \d s)[x_0 + ∫_{t_0}^t \exp(-∫_{t_0}^τ a(s) \d s) b(τ) \d τ]\]
+  #+begin_ex latex
+  \[x' = a x(t) + b(t), \quad x(0) = x_0\]
+  $a$: Konstante
+  \[⇒ x(t) = x_0 e^{at} + ∫_{t_0}^{t} e^{a(t - τ)} b(τ) \d τ\]
+  \[(c(t) e^{at})' = c' e^{at} + c e^{at} a = a e^{at} + b\]
+  \begin{align*}
+  ⇒ c' &= b(t) e^{-at} \\
+  c(t) &= ∫_{t_0}^{t} b(τ) e^{-aτ} \d τ \\
+  x(t) &= x_0 e^{at} + c(t) e^{at}
+  \end{align*}
+  #+end_ex
+  *Anfangswertproblem* \\
+  \begin{align*}
+  x' &= f(t, x) \\
+  x(0) &= x_0
+  \end{align*}
+  Integralgleichung:
+  \[x' = f(t, x) ⇔ x(t) = x_0 + ∫_{t_0}^t f(x, x(s)) \d s\]
+  *Existenzsatz von Peano* \\
+  #+ATTR_LATEX: :options [Peano]
+  #+begin_thm latex
+  Die Funktion $f(t, x)$ sei *stetig* auf einem Zylinder
+  \[D = \{(t, x) ∈ ℝ^1 × ℝ^m \mid \abs{t - t_0} \leq α, \norm{x - x_0} \leq β\}\]
+  Dann existiert eine Lösung $x(t)$ auf dem Intervall $I := [t_0 - T, t_0 + T]$ wobei
+  \[T := \min(α, \frac{β}{M}), \quad M := \max_{(t, x) ∈ D} \norm{f(t, x)}\]
+  #+end_thm
+  #+begin_proof latex
+  Mit Hilfe der Differenzenmethode konstruieren wir eine Folge von stückweisen linearen Funktionen, welche eine Teilfolge besitzt, die (gleichmäßig) gegen eine Lösung des Anfangswertproblems konvergiert.
+  Ohne Beschränkung der Allgemeinheit genügt es das Halbintervall $I = [t_0, t_0 + T]$ zu betrachten. Zu einem Schrittweitenparameter $h > 0$ wird eine äquidistante Unterteilung des $I$ gewählt.
+  \[t_0 < \dots < t_N = t_0 + T\qquad h = t_n - t_{n - 1}\]
+  Ausgehend von $x_0^h := x_0$ erzeugt dann das sogenannte Eulersche Polygonzugverfahren Werte für $x_n^h$ durch
+  \[x_n^h = x_{n - 1}^h + h f(t_{n - 1}, x_{n - 1}^h), n \geq 0\]
+  Diese diskreten Funktionswerte werden linear interpoliert zu einer stetigen Funktion:
+  \[x_n^h(t) := x_{n - 1}^h + (t - t_{n - 1}) f(t_{n - 1}, x_{n - 1}^h)\]
+  *Schritt 1*: Wir zeigen $\Graph(x^n) ⊂ D$. \\
+  Sei $(t, x^h(t)) ∈ D$ für $t_0 \leq t \leq t_{k - 1}$. Es gilt
+  \[(x(t)^h)' = f(t_{k - 1}, x_{k - 1}^k), t ∈ [t_{k - 1}, t_k]\]
+  Nach Konstruktion gilt dann für $t ∈ [t_{k - 1}, t_k]$
+  \begin{align*}
+  x^h(t) - x_0 = x^h(t) - x_{k - 1}^h + \sum_{i = 1}^{k - 1}(x_i^h - x_{i - 1}^h) \\
+  &= (t - t_{k - 1})f(t_{k - 1}, x_{k - 1}^h) + h \sum_{i = 1}^{k - 1}f(t_{i - 1}, x_{i - 1}^h) \\
+  ⇒ \norm{x^h(t) - x_0} &\leq (t - t_{k - 1})M + (t_{k - 1} - t_0)M = (t - t_0)M
+  \end{align*}
+  Also $(t, x^h(t)) ∈ D$ für $0 \leq t \leq t_k$ \\
+  *Schritt 2*: Wir zeigen gleichgradige Stetigkeit \\
+  Seien dazu $t, \tilde t ∈ I, \tilde t \leq t$ mit $t ∈ [t_{k - 1}, t_k], \tilde t ∈ [t_{j - 1}, t_j]$ für gewisse $t_j \leq t_k$. Im Fall $t, \tilde t ∈ [t_{k - 1}, t_k]$ gilt
+  \begin{align*}
+  x^h(t) - x^h(\tilde t) &= (t - \tilde t)f(t_{k - 1}, x^h (t_{k - 1})) \\
+  ⇒ \norm{x^h(t) - x^h(\tilde t)} &\leq M(t - \tilde T) \\
+  \end{align*}
+  Für $t_j < t_k$
+  \begin{align*}
+  x^h(t) - x^h(\tilde t) &= (t - t_{k - 1})f(t_{k - 1}, x_{k - 1}^h) + h \sum_{i = j}^{k - 1}f(t_{i - 1}, x_{i - 1}^h) + (t_{j - 1} - \tilde t) f(t_{j - 1}, x_{j - 1}^h) \\
+  &= (t - t_{k - 1})f(t_{k - 1}, x_{k - 1}^h) + h \sum_{i = j + 1}^{k - 1} f(t_{i - 1}, x_{i - 1}^h) + (h + t_{j - 1} - \tilde t) f(t_{j - 1}, x_{j - 1}^h) \\
+  ⇒ \norm{x^h(t) - x^h(\tilde t)} &\leq M((t - t_{k - 1}) + (t_{k - 1} - t_j) + (t_j - \tilde t)) \leq M \abs{t - \tilde t}
+  \end{align*}
+  Also $x^h_{h > 0}$ gleichgradig stetig. Die Funktionen sind auch gleichmäßig beschränkt:
+  \[\norm{x^h(t)} \leq \norm{x^h(t) - x_0} + \norm{x_0} \leq MT + \norm{x_0}, t ∈ (t_0, t_0 + T)\]
+  Arzela-Ascoli Satz: $∃$ eine Nullfolge $(h_i)_{i ∈ ℕ}$ und stetiges $x(t)$ sodass
+  \[\norm{x^{h_i}(t) - x(t)} \xrightarrow{i \to ∞} 0\]
+  und $\Graph(x) ⊂ D$ \\
+  *Schritt 3* Es bleibt zu zeigen, dass die Grenzfunktion $x$ der Integralgleichung genügt.
+  Für $t ∈ [t_{k - 1, t_k}] ⊂ I$ sehen wir $x^i(t) := x^{h_i}(t)$. $∀ i ∈ ℕ$ gilt:
+  \begin{align*}
+  x^i(t) &= x_{k - 1}^i + (t - t_{k - i})f(t_{k - i}, x_{k - i}^i) = \dots = \\
+  &= x_0 + \sum_{j = 1}^{k}(t_j - t_{j - 1})f(t_{j - i}, x_{j - i}^i) + (t - t_{k - i})f(t_{k - 1}, x_{k - i}^i) \\
+  &= x_0 + \sum_{j = 1}^{k}∫_{t_0}^{t_{j - i}} f(t_{j - i}, x_{j - i}^i) \d s + ∫_{t_{k - i}}^t f(t_{k - i}, x_{k - i}^i) \d s \\
+  &= x_0 + \sum_{j = 1}^{k} ∫_{t_{j -  1}}^{t_j}[f(t_{j - 1}, x_{j - 1}^i) - f(s, x^i(s))]\d s + ∫_{t_{k - 1}}^t[f(t_{k - 1}, x_{k - 1}^i) - f(s, x^i(s))]\d s + ∫_{t_0}^t f(s, x^i(s)) \d s
+  \end{align*}
+  Die Folge $(x^i)_{i ∈ ℕ}$ ist gleichgradig stetig und die Menge der Funktionen $f(x, t)$ ist gleichmäßig stetig (auf der kompakten Menge $D$). $∀ ε > 0 ∃ δ_ε$ sodass für $\abs{t - t'} < δ_ε$ gilt
+  \[\norm{x^i(t) - x^i(t')} \leq ε' < ε\]
+  und weiter für
+  \[\abs{t - t'} < δ_ε, \norm{x - x'} < ε' ⇒ \norm{f(t, x) - f(t', x')} < ε\]
+  Für hinreichend großes $i \geq i_ε$ (das heißt hinreichend kleines $h_i$) folgt damit
+  \begin{align*}
+  \max_{s ∈ [t_{k - i}, t_k]} \norm{f(t_{k - 1}, x^i(t_{k - 1})) - f(s, x^i(s))} &\leq ε \\
+  \abs{x^i(t) - x_0 - ∫_{t_0}^t f(s, x^i(s))\d s} &\leq ε \abs{t - t_0}
+  \end{align*}
+  Die gleichmäßige Konvergenz $x^i \to x$ auf $I$ impliziert auch die gleichmäßige Konvergenz $f(·,x^i(·)) \xrightarrow{i \to ∞} f(·, x(·))$. $⇒$ Für hinreichend großer $i \geq i_ε$ bekommen wir
+  \[\abs{x(t) - x_0 - ∫_{t_0}^t f(s, x(s))\d s} \leq ε \abs{t - t_0}\]
+  Wegen der beliebigen Wahl von $ε > 0$ folgt, dass die Grenzfunktion $x$ die Integralgleichung löst.
+  #+end_proof
+  #+ATTR_LATEX: :options [3.7 Fortsetzungssatz]
+  #+begin_thm latex
+  Sei die Funktion $f(t, x)$ stetig auf einem abgeschlossenem Bereich $D$ des $ℝ^1 × ℝ^m$, mit $(t_0, x_0) ∈ D$ und sei $x$ eine Lösung der Anfangswertaufgabe auf einem Intervall $I = [t_0 - B, t_0 + T]$.
+  Dann ist die lokale Lösung $x$ nach rechts und nach links auf ein maximales Existenzintervall $I_{max} = (t_0 - T_{\ast}, t_0 + T_{\ast})$ (stetig differenzierbar)
+  fortsetzbar, solange der $\Graph(x)$ nicht auf dem Rand von $D$ stößt. Dabei kann der $\Graph(x) := \{(t, x(t) \mid t ∈ I_{max})\}$ unbeschränkt sein sowohl durch $t \to t_0 + T^{\ast} = ∞$ als auch $\norm{x(t)} \xrightarrow{t \to t_0 + T^{\ast}} 0$
+  #+end_thm
+  #+begin_proof latex
+  Ohne Beschränkung der Allgemeinheit behalten wir nur $[t_0, t_0 + T_{\ast}]$. Der Peano Satz liefert Existenz einer Lösung $x^0$ auf $[t_0, t_1], t_1 := t_0 + T_0$ mit
+  \[T_0 := \min(α_0, \frac{β_0}{M_0})\]
+  $T_0$ hängt nur von $α_0, β_0, M_0$ ab. Wir lösen die Gleichung mit Anfangspunkt $(t_0, x(t_1))$ auf dem Bereich
+  \[\{(t, x) ∈ D \mid \abs{t - t_0} \leq α_1, \norm{x - x_0} \leq β_1\}\]
+  Die so gewonnenen Lösungsstücke $x^0, x^1$ ergeben zusammengesetzt eine stetige und (wegen Stetigkeit von $f$) differenzierbare Funktion $x$ auf dem Intervall $[t_0, t_0 + T_0 + T_1]$.
+  In $t_1$ gilt:
+  \[(x^0(t_1))' = f(t_1, x^0(t_1)) = f(t, x^1(t_1)) = (x^1(t_1))'\]
+  Nach Konstruktion ist $x(t)$ lokale Lösung der Anfangswertaufgabe. Dieser Prozess lässt sich fortsetzen solang der $\Graph(x)$ nicht an den Rang von $D$ stößt.
+  #+end_proof
+  #+ATTR_LATEX: :options [Regularität]
+  #+begin_thm latex
+  Sei $x$ eine Lösung der Anfangswertaufgabe auf dem Intervall $I$. Falls $f ∈ C^m(D)$ für ein $m \geq 1$ rst, dann $x ∈ C^{m + 1}(I)$
+  #+end_thm
+  #+begin_proof latex
+  Aus der Beziehung $x(t) = x_0 t ∫_{t_0}^t f(s, x(s)) \d s, t ∈ I$ bekommen wir, dass für $f ∈ C^1(D)$, $x$ zweimal stetig differenzierbar ist mit der Ableitung $x''(t) = \partial t f(t, x(t)) + ∇_x f(t, x(t)) x'(t)$.
+  Durch wiederholte Anwendung deses Argument folgt die Behauptung.
+  #+end_proof
+  *Eindeutigkeit?*
+  #+begin_ex latex
+  \[\begin{cases} x' = \sqrt{x} \\ x(0) = 0\end{cases}\]
+  \[∫_0^{x(t)} z^{-\frac{1}{2}} \d z = ∫_0^t \d s ⇒ 2x^{-\frac{1}{2}} = t + c ⇒ x = \frac{t^2}{4}\]
+  aber $x \equiv 0$ ist auch eine Lösung. Jede
+  \[x(t) = \begin{cases} 0 & 0 \leq t \leq c \\ \frac{1}{4}(t - c)^2 & t \geq c \end{cases}\]
+  ist auch eine Lösung.
+  #+end_ex
+  #+ATTR_LATEX: :options [Picard-Lindelöf]
+  #+begin_thm latex
+  Sei $D ⊂ ℝ^{n × 1}$ offen, $f ∈ C(D, ℝ^n)$ und $(t_0, x_0) ∈ D$. Falls $f(t, x)$ lokal lipschitz stetig
+  bezüglich $x$ ist, gleichmäßig in $t_0$, dann existiert eine eindeutige lokale stetig differenzierbare Lösung von
+  \[\begin{cases} x' = f(t, x) \\ x(t_0) = x_0\end{cases}\]
+  #+end_thm
+  #+begin_proof latex
+  Wir betrachten die Integralgleichung
+  \[x(t) = x_0 + ∫_{t_0}^t f(s, x(s)) \d s\]
+  Wir wenden den Banachschen Fixpunktsatz an.
+  Schritt 1:
+  \[∃ δ > 0: K := \{(t_0, x) ∈ ℝ × ℝ^{n + 1} \mid \abs{t - t_0} \leq α, \norm{x - x_0} \leq δ\} ⊂ D\]
+  $f(t, x)$ erfüllt die Lipschitz Bedingung auf $K$
+  \[\norm{f(t, x) - f(t, y)} \leq L_k \norm{x - y}\quad (t_0, x), (t, y) ∈ K\]
+  Da $K$ kompakt und $f$ stetig ist, gibt es eine Konstante $M > 0$
+  \[\norm{f(t, x)} \leq M\quad (t_0, x) ∈ K\]
+  Wir setzen $ε := \min(δ, δ / m, 1 / (2 L_k)), I_ε= [t_0 - ε, t_0 + ε]$ und definieren den Vektorraum
+  $V = C(I_ε)$. $V$ mit der Norm $\norm{·}_∞$ ($\norm{x}_∞ := \max_{t ∈ I_ε} \norm{x(t)}$) ist ein Banachraum.
+  Schritt 2: \\
+  Für $x ∈ V_0 := \{v ∈ V \mid \max_{t ∈ I_ε} \norm{v(t_0) - x_0} \leq δ\} ⊂ V$ definieren wir die
+  Abbildung: $g: V \to V$ durch
+  \[g(x)(t) := x_0 + ∫_{t_0}^t f(s, x(s)) \d s\]
+  Es gilt für $f ∈ I_ε, x ∈ V_0$:
+  \[\norm{g(x)(t) - x} \leq ∫_{t_0}^t \norm{f(s, x(s))} \d s \leq M \underbrace{\abs{t - t_0}}_{\leq ε} \leq M ε \leq δ\]
+  das heißt die Abbildung $g$ bildet die Teilmenge $V_0 ⊂ V$ in sich ab. $g: V_0 \to V_0, V_0 ⊂ V$.
+  Für zwei Funktionen $x, y ∈ V_0$ gilt (aus Lipschitz Stetigkeit von $f(t, ·)$):
+  \begin{align*}
+  \norm{g(x)(t) - g(y)(t)} &\leq ∫_{t_0}^t \norm{f(s, x(s)) - f(s, y(s))} \d s \leq L_k \abs{t - t_0} \norm{x - y}_∞ \\
+  &\leq \underbrace{L_k ε}_{1 / 2} \norm{x - y}_∞ \leq \frac{1}{2} \norm{x - y}_∞
+  \end{align*}
+  das heißt $g$ ist auf $V_0$ eine Kontraktion. Nach dem Banachschem Fixpunktsatz hat $g$ in $V_0$
+  genau einen Fixpunkt $x^{\ast}$ das heißt
+  \[x^{\ast} = g(x^{\ast})(t) = x_0 + ∫_{t_0}^t f(s x^{\ast}(s)) \d s\quad t ∈ I_ε\]
+  das heißt: $x^{\ast}$ löst die Integralgleichung.
+  #+end_proof
+  #+begin_remark latex
+  Die Lösung $x^{\ast}$ erhält man durch im Banachraum $V = C(I_ε)$ konvergente Fixpunktiteration (sogenannte "suksessive Approximation")
+  \[x^k(t) := x_0 + ∫_{t_0}^t f(s, x^{k - 1}(s)) \d s\quad t . I_ε\]
+  für eine Startfunktion $x_0$.
+  #+end_remark
+  #+begin_ex latex
+  \begin{align*}
+  x' &= A x \tag{$A$ ist eine reelle $n × n$ Matrix} \\
+  x(0) &= x_0
+  \end{align*}
+  wir bekommen $n$ Gleichungen. Es gilt für $t < ε(x)$:
+  \begin{align*}
+  g(x_0)(t) &= x_0 + ∫_{t_0}^t A x_0 \d s = (I + t A) x_0 =: x_1 \\
+  g^m(x)(t)	&= \sum_{k = 1}^{m} \frac{(t A)^k}{k!} \xrightarrow{m \to ∞} x^{\ast}(t) = \sum_{k = 0}^{∞} \frac{(t A)^k}{k!} x_0
+  \end{align*}
+  Tatsächlich konvergiert die Reihe. Sie kann gliedweise nach $t$ differenziert werden, und stellt daher die
+  Lösung da.
+  #+end_ex
+  #+begin_remark latex
+  \mbox{}
+  1. Ein nicht autonomes System $x' = f(t, x), x ∈ ℝ^n$ kann immer zu einem autonomen System in $ℝ^{n + 1}$ durch hinzufügen von $x_{n + 1}(t) := t$
+	 (beziehungsweise $x'_{n + 1} = 1$) \\
+	 gemacht werden.
+  2. ein System $m$ -ter Ordnung für $x(t) ∈ ℝ^n$
+	 \begin{align*}
+	 x^{(n)}(t) &= f(t, x, x'(t), \dots, x^{(n - 1)}(t)) \\
+	 x(t_0) &= x_0, x'(t_0) = x_1, \dots, x^{(n - 1)}(t_0) = x_{n - 1}
+     \end{align*}
+	 lässt sich als System erster Ordnung schreiben, indem man $z_i(t) = x^{(i)}(t), i = 0, \dots, m - 1$ setzt und erhält denn:
+	 \[\underbrace{z_{m - 1}'(t)}_{x^{(n)}(t)} = \underbrace{f(t, x, z_1, \dots, z_{m - 1})}_{z_i'(t) = x_{i + 1}(t)}\]
+  #+end_remark
+  #+ATTR_LATEX: :options [Logistische Gleichung]
+  #+begin_ex latex
+  \begin{align*}
+  x' &= x(t - x) \\
+  x(0) &= x_0
+  \end{align*}
+  Homogene Lösung:
+  \begin{align*}
+  x' &= a x \\
+  x(0) &= x_0 \\
+  x(t) &= x_0 e^{at}
+  \end{align*}
+  Picard-Lindelöf Satz $⇒$ eindeutige Lösung (aber Lokalität) (rechte Seite ist $C^1$).
+  Beschränktheit: $x(t) < \max \{x_0, K\} < ∞$. Im allgemeinen Fall:
+  wir suchen $x = M$, sodass $f(M) \leq 0 ∀ x \geq M, x'(t) \leq 0$, das heißt $x(t)$ kann
+  nicht weiter wachsen. das heißt $I = \{x \mid x \leq M\}$ ist invariant, das heißt $x_0 ∈ I ⇒ x(t) ∈ I ∀ t ∈ ℝ$. Es gibt uns gleichmäßige Beschränktheit.
+  Nichtnegativität heißt $\{x \mid x \geq 0\}$ ist invariant. Es gilt falls $f(0) \geq 0$, das heißt $x'(t) \big|_{x = 0} \geq 0$
+  $x' = ax$ $⇒$ keine gleichmäßige Beschänktheit.
+  \[x' = \frac{a x}{t + x} x \leq a x\]
+  $⇒ x(t) \leq x(t) e^{at}$ $⇒$ globle Lösungen existieren.
+  #+end_ex
+  #+ATTR_LATEX: :options [Gronwallsches Lemma]
+  #+begin_lemma latex
+  Die stückweise stetige Funktion $w(t) \geq 0$ genüge mit zwei Konstanten $a, b \geq 0$ der Integralgleichung
+  \[w(t) \leq a ∫_{t_0}^t w(s) \d s + b, t \geq t_0\]
+  Dann gilt die Abschätzung
+  \[w(t) \leq e^{a(t - t_0)} b , t \geq t_0\]
+  #+end_lemma
+  #+begin_proof latex
+  Für die Funktion
+  \[ψ(t) := a ∫_{t_0}^t w(s) \d s + b\]
+  gilt $ψ'(t) = a w(t)$. Somit gemäß Voraussetzung:
+  \[ψ'(t) \leq a ψ(t)\]
+  \[⇒ (e^{-at} ψ(t))' = e^{-at}ψ'(t) - a e^{-at} ψ(t) = e^{-at} (ψ'(t) - ψ(t)) \leq 0\]
+  das heißt $e^{-at} ψ(t)$ ist monoton fallend
+  \[⇒ e^{-at} w(t) \leq e^{-at} ψ(t) \leq ψ(t_0) e^{-at_0} = b^{-a t_0}, t \geq t_0\]
+  \[w(t) \geq e^{(t - t_0)} b, t \geq t_0\]
+  #+end_proof
+  #+begin_remark latex
+  Es gibt verschiedene Verallgemeinerungen, zum Beispiel
+  \[w(t) \leq ∫_{t_0}^t a(s) w(s) \d s b(t), t\geq t_0\]
+  mit einer stetigen Funktion $a(t) \geq 0$ und einer nichtfallenden Funktion $b(t) \geq 0$ so folgt
+  \[w(t) \leq \exp(∫_{t_0}^t a(s) \d s) b(t), t \geq t_0\]
+  #+end_remark
+  Eine wichtige Anwendung des Lemma von Gronwall ist
+  #+ATTR_LATEX: :options [Globale Existenz bei linearem Wachstum]
+  #+begin_thm latex
+  Für $-∞ \leq T_0 < t_0 < T_0 \leq ∞$ sei $f ∈ C([T_1, T_2], ℝ^m)$, sodass
+  \[\abs{f(t, x)} \leq α(t) + β(t) \abs{x}, T_1 < t < T_2\]
+  dann existiert $∀ x_0 ∈ ℝ^m$ die Lösung von
+  \[\begin{cases} x'(t) = f(t, x(t)) \\ x(t_0) = x_0\end{cases}\]
+  auf $(T_1, T_2)$. Insbesondere existiert die Lösung des linearen Systems $x' = A(t)y(t) + b(t)$ global falls
+  $A(t) ∈ C^0(ℝ, ℝ^{m × m})$ und $b ∈ C^0(ℝ, ℝ^m)$ gilt.
+  #+end_thm
+  #+begin_proof latex
+  Nehme an für ein $x_0 ∈ ℝ^m$ wäre $T_{+}(x) < T_2$, dann gibt es eine Konstante $C = C(T_+(x_0))$, sodass für $t_0 \leq t \leq T_+(x)$
+  $\abs{α(t)} \leq C$ und $\abs{β(t)} \leq C$ gilt. Mithilfe von Integration folgt
+  \[\abs{x(t)} \leq \abs{x_0} + C ∫_{t_0}^t (1 + \abs{x(s)}) \d s, t_0 \leq t < T_+(x_0)\]
+  setze im Lemma von Gronwall $w(t) := 1 + \abs{x(t)}, a(t) := 1 + \abs{x}, b(t) := C$ und erhalte
+  \[w(t) \leq e^{C(t - t_0)}(1 + \abs{x_0}) ⇔ \abs{x(t)} \leq e^{C(t - t_0)}(1 + \abs{x_0}) - 1\]
+  $⇒ x(t)$ bleibt beschränkt für $t ∈ (0, T_+(x_0))$ und kann daher	fortgesetzt wirden. Damit folgt $T_+(x_0) = T_2$. Analog erhält man $T_{-}(x) = T_1$
+  #+end_proof
+  #+ATTR_LATEX: :options [Lipschitzstetigkeit / Abhängigkeit von Anfangsdaten]
+  #+begin_thm latex
+  Sei $f(t, x)$ stetig auf $D ⊂ ℝ^1 × ℝ^m$ und genüge einer Lipschitz Bedingung. Dann gilt für zwei Lösungen $x, y$ der Differentialgleichung $x' = f(t, x), t ∈ I$
+  auf einem gemeinsamen Existenzintervall $I$
+  \[\norm{x(t) - y(t)} \leq e^{L(t - t_0)} \norm{x(t_0) - y(t_0)}\]
+  mit der Lipschitz Konstante $L = L_k$ von $f$ auf einer beschränkten Teilmenge $K ⊂ D$ welche die Graphen von $x$ und $y$ enthält.
+  #+end_thm
+  #+begin_proof latex
+  Sei $K ⊂ D$ eine beschränkte Teilmenge, welche die Graphen von $x$ und $y$ enthält. Für $u(t) = x(t) - y(t)$ gilt
+  \begin{align*}
+  u(t) &= ∫_{t_0}^t (f(s, x(s)) - f(s, y(s))) \d s + x(t_0) - y(t_0) \\
+  \norm{u(t)} &\leq L_k ∫_{t_0}^t \norm{u(s)} \d s + \norm{x(t_0) - y(t_0)}
+  \end{align*}
+  das heißt eine stetige Funktion $w(t) = \norm{u(t)}$ genügt einer linearen Integralgleichung. Wir wenden Lemma von Gronwall an und bekommen die Aussage.
+  #+end_proof
+  #+begin_remark latex
+  Aus der Bedingung folgt, dass die durch den Existenzsatz von Peano und den Fortsetzungsatz gelieferte lokale Lösung $x$ eindeutig bestimmt ist.
+  #+end_remark
+  #+begin_proof latex
+  Seien $x, y$ zwei Lösungen zu gleichem Anfangspunkt
+  \[\norm{x(t) - y(t)} \leq 0, t ∈ I ⇒ x(t) = y(t)\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Beschränktheit]
+  #+begin_ex latex
+  \begin{align*}
+  x' &= x y - a x \\
+  y' &= - x y - b y
+  \end{align*}
+  #+end_ex
+** Lineare Systeme
+   Wir betrachten lineare inhomogene Differentialgleichungen der Form
+   \[\begin{cases} u'(t) = A(t) u(t) + b(t) & t \geq t_0 \\ u(t_0) = u_0 ∈ ℝ^n\end{cases}\]
+   wobei $A:[t_0,∞\string) \to ℝ^{n × n}, b: [t_0, ∞\string) \to ℝ^n$ stetig seien. Für $n = 1$ hat man bereits per Variation der Konstanten
+   \[u(t) = Φ(t)(u_0 + ∫_0^{t} Φ^{-1}(s) b(s) \d s), \quad Φ(t) = \exp(∫_{t_0}^t A(s) \d s)\]
+   Für $A ∈ ℝ^{n × n}$ folgt mit Übung 6.1 analoges Resultat mit
+   \[Φ(t) = \exp(A(t - t_0))\]
+   Zunächst homogener Fall $b \equiv 0$
+   #+ATTR_LATEX: :options [Homogene Lineare Systeme]
+   #+begin_thm latex
+   Seien $A:[t_0, ∞\string) \to ℝ^{n × n}, b:[t_0, ∞\string) \to ℝ^n$ stetig, dann gelten:
+   1. Die Menge $H$ der Lösungen des linearen Systems $u'(t) = A(t) u(t)$ bildet einen $ℝ$ Vektorraum.
+   2. Zu jeder Basis $\{u_0^1, \dots, u_0^n\}$ des $ℝ^n$ bilden die zugehörigen Lösungen der $n$ Anfangswertaufgaben
+	  \[\begin{cases} \string(u^i\string)'(t) = A(t) u'(t) \\ u'(t_0) = u_0'\end{cases} \quad i = 1, \dots, n\]
+	  eine Basis $\{u^1, \dots, u^n\}$ des Lösungsraums $H$, das heißt $\dim H = n$
+   3. Ist $\{u^1, \dots, u^n\}$ eine Basis von $H$, dann ist für jedes $t \geq t_0 \{u^1(t), \dots, u^n(t)\}$ eine Basis in $ℝ^n$
+   #+end_thm
+   #+begin_proof latex
+   1. Übung: Die Addition ist konponentenweise definiert, zum Beispiel für $α, β ∈ ℝ, u, v ∈ H$
+	  \[⇒ (α u + β v)'(t) = α u'(t) + β v'(t) = A(t)(α u + β v)(t)\]
+   2. Seien $\{u_0^1, \dots, u_0^n\}$ eine Basis von $ℝ^n$, $\{u^1, \dots, u^n\}$ zugeörige Lösungen mit $u'(t_0) = u_0^i$. Lineare Unabhängigkeit:
+	  Seien $α_i ∈ ℝ$ mit
+	  \[\sum_{i = 1}^{n} α_i u^i = 0 ⇔ \sum_{i = 1}^{n} α_i u'(t) = 0 ∀ t \geq t_0\]
+	  so ist für $t = t_0$:
+	  \[\sum_{i = 1}^{n} α_i u_0^i = 0 \xrightarrow{\text{Basis}} α_i = 0 ∀ i = 1, \dots, n\]
+	  Maximalität: Nehmen wir eine weitere Lösung $u^{n + 1}$ mit $u^{n + 1}(t_0) = u_0^{n + 1}$ zu $\{u^1, \dots, u^n\}$ hinzu und nehmen an diese sei linear unabhängig, dann folgt für $t = t_0$, dass
+	  $\{u_0^1, \dots, u_0^{n + 1}\}$ linear unabhängig in $ℝ^n$ \lightning $⇒ \dim H = n$
+   3. Wie 2.
+   #+end_proof
+   #+begin_defn latex
+   Eine Basis $\{φ^1, \dots, φ^n\}$ des Lösungsraums von $u'(t) = A(t) u(t)$ (für zum Beispiel $φ'(t_0) = e_i$) heißt *Fundamentalsystem* der linearen Gleichung. Zusammengefasst lässt sich dies in der *Fundamentalmatrix*
+   $Φ = (φ^1, \dots, φ^n)$ it den Spaltenvektoren $φ^i$ schreiben. Nach Satz 3.15 ist $Φ(t)$ für jedes $t \geq t_0$ invertierbar und es gilt
+   \[Φ'(t) = A(t) Φ(t)\]
+   (mit zum Beispiel $Φ(t_0) = E_n$) (vergleiche Exponentialmatrix $\exp(A(t - t_0))$ für $A$ konstant)
+   #+end_defn
+   #+begin_remark latex
+   Bildet man die sogenannte Wronski-Determinante $\det (U(t))$ für eine Lösungsmenge $\{u^1(t), \dots, u^n(t)\}$ der linearen Gleichung
+   \[\begin{cases} u'(t) = A(t) u(t) & t \geq t_0 \\ u(t_0) = u_0 ∈ ℝ^{n × n}\end{cases}\]
+   so lässt sich mit $\det (U(t)) \neq 0$ auf ein Fundamentalsystem testen. Dies ist nach Satz 3.15 gleichbedeutend mit $\det (U(t_0)) \neq 0$
+   #+end_remark
+   #+begin_thm latex
+   Seien $t_0 ∈ ℝ, A:[t_0, ∞\string) \to ℝ^{n × n}, b: [t_0, ∞\string) \to ℝ^n$ stetig. Sei $u_0 ∈ ℝ^n$, dann ist die eindeutige Lösung von
+   \[\begin{cases} u'(t) = A(t) u(t) + b(t) & t \geq t_0 \\ u(t_0) = u_0\end{cases}\]
+   gegeben durch
+   \[u(t) = Φ(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) ∀ t \geq t_0\]
+   wobei $Φ$ eine Fundamentalmatrix ist der homogenen Gleichung zu $Φ(t_0) = E_n$ sei.
+   #+end_thm
+   #+begin_proof latex
+   Differentation liefert mit Produktregel
+   \begin{align*}
+   u'(t) &= Φ'(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) + Φ(t) Φ^{-1}(t) b(t) \\
+   &= A(t) Φ(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) + b(t) \\
+   &= A(t) u(t) + b(t)
+   \end{align*}
+   #+end_proof
+   #+begin_remark latex
+   Ist $u(t_0)$ nicht vorgeschrieben, ergeben sich Lösungen der inhomogenen Gleichung
+   als Summe homogener Lösungen $u^i ∈ H$ und einer speziellen Lösung der inhomogenen Gleichung.
+   Zum Beispiel:
+   \[u_s(t) = Φ(t)(c + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s), c ∈ ℝ^n\]
+   und irgendein Fundamentalsystem $Φ$
+   #+end_remark
+   #+ATTR_LATEX: :options [3.18]
+   #+begin_ex latex
+   $x'(t) = A x(t), A . ℝ^{2 × 2}$. Ansatz: $x(t) = v e^{λ t}, λ ∈ ℂ, v = (v_1, v_2)^T ∈ ℂ^2$. Einsetzten in die Gleichung
+   \[⇒ λ v e^{λ  t} = \cvec{λ v_1 e^{λ t}}; λ v_2 e^{λ t} = A \cvec{v_1 e^{λ t}; v_2 e^{λ t}}\]
+   $λ v e^{λ t} = A v e^{λ t} ⇒ λ v = A v ⇒ x(t)$ eine Lösung falls $λ$ ein Eigenwert, $v$ zugehöriger Eigenvektor ist.
+   \[\det(A - λ I) = 0\]
+   Fall 1: $λ_1, λ_2 ∈ ℝ, λ_1 \neq λ_2$. Wir haben 2 Lösungen $v e^{λ_1 t}, \tilde e^{λ_2} t$. Die allgemeine Lösung des Systems ist dann gegeben durch
+   \[x(t) = c_1 v e^{λ_1 t} + c_2 \tilde v e^{λ_2 t}, \quad c_1, c_2 ∈ ℝ\]
+   $c_1, c_2$ kann man aus den Anfangsdaten finden. Das qualtiative Verhaltenn der Lösung ist von Vorzeichen $λ_1, λ_2$ abhängig.
+   - $λ_1, λ_2 > 0$: instabiler Knoten
+   - $λ_1 < 0 < λ_2$: Sattel
+   Fall2: $λ_1, λ_2 ∈ ℂ$. In diesem Fall sind $λ_1, λ_2$ konjugierte $λ_{1,2} = a \pm i b$
+   und $v = \cvec{v_1; v_2} + i \cvec{w_1; w_2}$ zu $λ_1$ und $\tilde v = \cvec{v_1; v_2} - i \cvec{w_1; w_2}$ zu $λ_1$.
+   Analog zu Fall 1 kann die allgemeine Lösung des Systems dargestellt werden
+   \begin{align*}
+   x(t) &= c_1 v e^{(a + b i) t} + c_2 \tilde v e^{(a - bi) t} \tag*{$c_1, c_2 ∈ ℂ$} \\
+   &= c_1 v e^{a t} (\cos b t + i \sin b t) + c_2 \tilde v e^{a t}(\cos b t + i \sin b t)
+   \end{align*}
+   Die Lösung des Systems für reelle Anfangsdaten sind reell und die reelwertige Lösung ist gegeben durch
+   \begin{align*}
+   x(t) &= \tilde c_1 e^{a t}(\Re v \cos b t + \Im v \sin b t) \\
+   &+ \tilde c_2 e^{a t}(\im v \cos b t + \Re v \sin b t) \quad \tilde c_1, \tilde c_2 ∈ ℝ
+   \end{align*}
+   #+begin_proof latex
+   Um das zu zeigen benutzen wir, dass die Summe aus dem Realteil und dem Imaginärteil allgemeiner komplexer Lösung eine reelle Lösung ist und
+   \begin{align*}
+   A(\Re v) &= a \Re v + b \Im v \\
+   A(\Im v) &= b \Re v + a \Im v \\
+   \end{align*}
+   #+end_proof
+   Einsetzen der Lösung in die Gleichung und ausnutzen der letzten Gleichung liefert den Beweis.
+   - $\Re λ_i > 0, i = 1, 2$: instabiler Fokus
+   - $\Re λ_1 < 0, r = 1, 2$: stabiler Fokus
+   - $\Re λ_i = 0$: Zentrum
+   Fall 3:  $λ_1 = λ_2$: Die Matrix ist nicht diagonalisierbar. Beispiel:
+   \[x' = \begin{pmatrix}λ & 1 \\ 0 & λ\end{pmatrix}\]
+   \begin{align*}
+   x_2' &= λ x_2 ⇒ x_2(t) = v_2 e^{λ t} \quad v_2 \const \\
+   x_1' &= λ x_1 + v_2 e^{λ t} \\
+   ⇒ x_1(t) = (v_1 + ∫_0^t v_2 e^{λ s} e^{- λ s} \d s) e^{λ t} \\
+   &= (v_1 + v_2 t) e^{λ t} = v_1 e^{λ t} + v_2 t e^{λ t}
+   \end{align*}
+   \begin{align*}
+   x' &= \begin{pmatrix}λ & 1 & 0 \\ 0 & λ & 1 \\ 0 & 0 & λ\end{pmatrix} \\
+   x_3(t) &= v_3 e^{λ t} \\
+   x_2(t) &= (v_2 + v_3 t) e^{λ t} \\
+   x_1(t) &= (v_1 + v_2 t + v_3 \frac{t^2}{2}) e^{λ t}
+   \end{align*}
+   Die gut erkennbare Struktur der einzelnen Komponenten (als Produkt aus Polynomen und Exponentialfunkion) lässt sich durch vollständige Induktion für Systeme mit beliebig vielen linearen Gleichungen nachweisen.
+   #+end_ex
+   #+begin_lemma latex
+   Sei $A ∈ ℝ^{n × n}$ und $\mathcal{L} = \{φ ∈ C^1(ℝ, ℝ^n) \mid φ = A l\}$
+   der Lösungsraum der zugehörigen homogenen Differentialgleichung. Dann gilt:
+   1. Sei $v ∈ ℝ^n \setminus \{0\}$ ein Eigenvektor von $A$ zu Eigenwert $λ$ ($A v = λ v$). Dann gilt:
+	  \[φ(t) := v e^{λ t} ∈ \mathcal{L}\]
+   2. Seien $v_i ∈ ℝ^n \setminus \{0\}$, $n$ linear unabhänigie Eigenvektoren mit Eigenwerten $λ_i ∈ ℝ$. Dann bilden die Funktionen $v_i e^{λ_i t}$ eine Basis von $\mathcal{L}$
+   3. Sei $v ∈ ℂ^n \setminus \{0\}$ ein Eigenvektor zu Eigenwerten $λ ∈ ℂ \setminus ℝ$. Sei $λ = a + b i, v := v + i w$. Dann gilt $φ_1, φ_2 ∈ \mathcal{L}$ wobei
+	  \begin{align*}
+	  φ_1 &= (v \cos b t - w \sin b t) e^{a t} \\
+	  φ_2 &= (v \sin b t + w \cos b t) e^{a t}
+      \end{align*}
+   #+end_lemma
+   #+begin_proof latex
+   1. $φ' = λ v e^{λ t} = A v e^{λ t} = A φ$
+   2. Die Funktionen sind unabhängig für $t = 0$ und liegen in $\mathcal{L}$.
+   3. Die Funktion $u ∈ C^1(ℝ, ℂ^n), u = v e^{λ t}$ erfüllt die Gleichung $u' = A u$. Es gilt:
+	 \[u := v e^{λ t} = e^{(a + i b)}(v + i w) = (v + i w)(\cos b t + i \sin b t) e^{a t}\]
+	 das heißt: $φ_1 := \Re u, φ_2 := \Im u$
+	 Da $A$ reell ist $⇒ \Re u' = \Re A u = A \Re u, \Im u' = \Im A u = A \Im u ⇒ φ_1, φ_2$ sind Lösungen.
+   #+end_proof
+   #+begin_thm latex
+   Sei $A ∈ ℝ^{n × n}$. Dann ist die Lösung der Anfangswertaufgabe
+   \[\begin{cases} ϕ'(t) = A ϕ(t) \\ ϕ(t_0) = \id \end{cases}\]
+   Gegeben durch $ϕ(t) = \exp( t A)$. Die Menge aller Lösungen $\mathcal{L}$ der Differentialgleichung $u'(t) = A u(t)$ ist
+   \[\mathcal{L} = \{ϕ(t) e_i \mid i = 1, \dots, n\}\]
+   #+end_thm
+   #+begin_proof latex
+   Man rechnet nach, dass alle Komponenten $\exp(t A)_{ij}, i, j = 1, \dots, n$ gleichmäßig und absolut konvergieren. Insbesondere ist $\exp(t A)$ glatt. Außerdem
+   vertauschen Ableitungen und Summanden. Daher
+   \[\dd{}{T} ϕ(t) = \sum_{k = 0}^{∞} \dd{}{t} \frac{(t A)^k}{k!} = A \sum_{k = 1}^{∞} \dd{}{t} \frac{(t A)^{k - 1}}{(k - 1)!} = A ϕ(t)\]
+   #+end_proof
+   #+begin_thm latex
+   Zu einer beliebigen Matrix $A ∈ ℝ^{n × n}$ existiert eine invertierbare Matrix $S$ sodass die Matrix $S^{-1} A S$ die *Jordannormalform* hat, das heißt
+   \[S^{-1} A S= \begin{pmatrix}J_1 &   &   \\   & J_2 &   \\   &   & J_k\end{pmatrix}\]
+   Die Blöcze $J_k$	haben für ein $λ_i ∈ ℂ$ die Form
+   \[J_i = \begin{pmatrix}λ_i & 1 &   & 0 \\   & \ddots & \ddots &   \\   &   & \ddots & 1 \\ 0 &   &   & λ_i\end{pmatrix}\]
+   #+end_thm
+   #+begin_proof latex
+   Lineare Algebra. Dimension von $J_i$ hängt von Vielfachheit von $λ_i$ ab.
+   #+end_proof
+   Mit Hilfe der Jordanschennormalform lässt sich die Exponentialfunkiton von Matrizen ausrechnen. Die Anwendung der Exponentialfunktion auf
+   die Blockmatrix lässt sich explizit ausrechnen.
+** Asymptotisches Lösungsverhalten bei Differentialgleichungen
+   Frage: Welche Eigenschaften haben die Lösungen für $t \to ∞$. Wir konzentrieren uns jetzt auf autonome Differentialgleichungen.
+   #+begin_ex latex
+   $x' = x(1 - x)$. Konstante Lösung
+   \[\bar x_1 := x(t) = 1 ∀ t ∈ ℝ_{+}\]
+   $x_0 = \bar x_1$, das heißt $\abs{x_0 - \bar x_1} = ε$. $\bar x_1$ stabil, weil $x(t) \xrightarrow{t \to ∞} \bar x_1$
+   \begin{align*}
+   \bar x_1 &= x(t) = 0 \tag{konstante Lösung} \\
+   x_0 &= \bar x_2 + ε \tag{instabil}
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Attraktoren]
+   #+begin_defn latex
+   Sei $Ω ⊂ ℝ^m$ offen, $t_0 ∈ ℝ, f ∈ C^0(Ω)$ ($f: Ω \to ℝ^m$). Ein Punkt $\bar x ∈ Ω$ heiße *lokaler Attraktor*
+   der Differentialgleichung $x'(t) = f(x(t))$ falls es eine offene Umbebung $U$ von $x_0$ gibt, dass
+   für sedes $x_0 ∈ U$ die Lösung der Gleichung gegen $\bar x$ konvergiert, das heißt
+   \[x(t) \xrightarrow{t\to ∞} \bar x\]
+   Falls die Lösung der Differentialgleichung gegen $\bar x$ konvergiert $∀ x_0 ∈ Ω$ dann heißt
+   $\bar x$ globaler Attraktor.
+   #+end_defn
+   #+begin_thm latex
+   1. Sei $x ∈ C^1(ℝ)$ eine Lösung der Differentialgleichung $x(t)' = f(x(t))$ mit $x(t) \xrightarrow{t \to ∞} \bar x$
+	  Dann gilt $f(\bar x) = 0$
+   2. Sei $\bar x$ ein lokaler Attraktor der Anfangswertaufgabe. Dann gilt $f(\bar x) = 0$
+   3. Sei $f ∈ C^1(ℝ)$. Es gelte $f(\bar x) = 0$ und $f'(\bar x) (= \dd{f}{x}\big|_{x = \bar x}) < 0$
+	  für ein $\bar x ∈ ℝ$. Dann ist $\bar x$ ein lokaler Attraktor der Anfangswertaufgabe
+   #+end_thm
+   #+begin_proof latex
+   1. Da $f$ stetig ist, gilt $x'(t) = f(x(t)) \to f(\bar x)$. Zusammen mit $x(t) \to \bar x$ folgt daraus $f(\bar x) = 0$
+   2. Aus 1. und Definition von Attraktor
+   3. Es gibt ein $ε > 0$, sodass $f > 0$ in $(\bar x - ε, \bar x), f < 0$ in $\bar x, \bar x + ε$.
+	  Sei $x(t)$ eine Lösung der Anfangswertaufgabe mit $x(t_0) ∈ (\bar x - ε,\bar x + ε)$. Dann
+	  fällt $\abs{x(t)}$ monoton. Daher gibt es eine $x_1 ∈ (\bar x - ε, \bar x + ε)$ mit
+	  $x(t) \to x_1$ für $t \to ∞$. Das $f \neq 0$ für $x ∈ (\bar x - ε, \bar x + ε)$ nach 1.
+	  folgt $x_1 = \bar x$
+   #+end_proof
+   #+ATTR_LATEX: :options [3.24 Stationäre Punkte]
+   #+begin_defn latex
+   Sei $f: ℝ^n \to ℝ^n$ und $x' = f(x)$. Jeder Punkt $\bar x ∈ ℝ^n$ mit $f(\bar x) = 0$ ist ein
+   sogenannter *stationärer Punkt* (Gleichgewichtpunkt, kritischer Punkt). Zum Beispiel:
+   $x' = a x, \bar x = 0$ stationärer Punkt, aber Attraktor nur falls $a < 0$
+   #+end_defn
+   #+ATTR_LATEX: :options [3.25]
+   #+begin_ex latex
+   $x' = x^2 + λ$ mit einem Parameter $λ ∈ ℝ$. Stationäre Punkte:
+   \[f(\bar x) = x^{-2} + λ = 0 ⇒ \begin{cases} \bar x = \pm \sqrt{\abs{λ}} & λ < 0 \\ \bar x = 0 & λ = 0 \\ \text{ keine } & λ > 0 \end{cases}\]
+   Das zugehörigen Anfangswertproblem mit $x(0) = 0$ lässt sich lösen durch Separation der Variablen. Für $λ < 0$ $x(t) = - \sqrt{\abs{λ}} \tanh(t \sqrt{\abs{λ}})$.
+   Für $λ = 0 ⇒ x(t) = 0$.
+   \begin{align*}
+   λ > 0 &⇒ f > 0 \\
+   λ < 0 &  \\
+   x \uparrow \quad f(x) > 0 &⇒ x^2 + λ > 0 \\
+   y \uparrow \quad f(x) < 0 &⇒ x ∈ (-\sqrt{\abs{λ}}, \sqrt{\abs{λ}}) \\
+   \end{align*}
+   $⇒$ Bifurkation Diagram (Verzweigung).
+   #+end_ex
+   #+begin_defn latex
+   $Λ ⊂ ℝ^m$ und $f: ℝ^n × Λ \to ℝ^n$ seien gegeben. $\bar x ∈ ℝ^n$ sei ein stationärer Punkt von
+   $x' = f(x, λ_0)$ zu einem $λ_0 ∈ Ω$. Die Differentialgleichung $x' = f(x, λ)$ besitzt in
+   $(\bar x, λ_0)$ eine *Verzweigung* (Bifurkation) wenn	gilt:
+   Die Anzahl von stationären Punkten von $x' = f(x, μ_k) ∈ K_r(\bar x)$ ist ungleich der Anzahl stationärer Punkte von
+   $x' = f(x, ν_k) ∈ K_r(\bar x)$ für zwei Folgen $(μ_n)_{n ∈ ℕ}, (ν_n)_{n ∈ ℕ}$ in $Λ$ die gegen
+   $λ_n$ konvergieren, für jede Kugel $K_r(\bar x) ⊂ ℝ^n$ und hinreichend großem $n ∈ ℕ$.
+   In unserem Beispiel
+   \begin{align*}
+   μ_n &= \frac{1}{n} \to 0 = λ_0 \\
+   ν_n &= -\frac{1}{n} \to 0 = λ_0
+   \end{align*}
+   #+end_defn
+   #+begin_remark latex
+   Bei der Suche nach Bifurkationen geht es also um die Lösung von $f(x, λ) = 0$ mit einem Parameter $λ$.
+   Der Satz über implizite Funktionen gibt uns Bedingungen, unter denen eine solche Gleichung nach $x$ lokal eindeutig aufgelöst werden kann.
+   Notwendige Bedingung für Bifurkation: $x' = f(x, λ)$ in $(\bar x, λ_0)$ eine Bifurkation besitzt dann kann die partielle Ableitung $δ_1 f(\bar x, λ_0): ℝ^n \to ℝ$ nicht
+   invertierbar sein.
+   #+end_remark
+   #+begin_defn latex
+   $\bar x$ sei ein stationärer Punkt einer autonomen Differentialgleichung $x' = f(x)$ mit $f: ℝ^n \to ℝ^n$. $\bar x$ heißt stabil (im Simme von Lyapunov (Ljaupnow))
+   wenn es zu jedem $ε > 0$ einen Radius $δ > 0$ mit folgenden Eigenschaften gibt: Jede Lösung $x: [0, T\string) \to ℝ^n$ mit $\abs{x(0) - \bar x} < δ$
+   kann zu einer Lösung auf $[0, ∞ \string)$ fortgesetzt werden und
+   \[\abs{x(t) - \bar x} < ε ∀ t > 0\]
+   $\bar x$ heißt asymptotische stabil, wenn $\bar x$ stabil ist und zuzätzlich
+   \[∃ r > 0: x:[0, ∞\string) \to ℝ^n: \abs{x(0) - \bar x} < r\]
+   die Forderung
+   \[\lim_{t \to ∞} x(t) = \bar x\]
+   erfüllen. $\bar x$ heißt instabil wenn $\bar x$ nicht stabil ist.
+   #+end_defn
+   #+begin_lemma latex
+   Sei die Matrix $A ∈ ℝ^{n × n}, b ∈ ℝ^n$. Wenn der Nullpunkt $\bar x = 0$ stabil bezüglich der
+   homogenen Differentialgleichung $x' = A x$ ist, dann ist der stationäre Punkt der inhomogenen
+   Differentialgleichung $y' = A y + b$ ebenfalls stabil.
+   #+end_lemma
+   #+begin_proof latex
+   Verschiebung $x = y - \bar y$, wobei $\bar y = - A^{-1} b$
+   #+end_proof
+   Aus der Theorie der linearen Differntialgleichungen folgt:
+   #+begin_lemma latex
+   $λ_1, \dots, λ_n ∈ ℂ$ seien die paarweise verschiedenen Eigenwerte von $A$ und $α ∈ ℝ$, sodass
+   \[\max \{\Re λ_i \mid i = 1, \dots, n\} < α\]
+   Dann $∃ c \geq 0$ sodass $∀$ Lösungen $x(): ℝ_{+} \to ℝ^n$ von $x' = Ax$ gilt
+   \[\abs{x(t)} \leq c \abs{x(0)}e^{α t}\]
+   #+end_lemma
+   #+begin_korollar latex
+   Nullpunkt ist asymptotisch stabil bezüglich der Gleichung $x' = Ax$ falls alle $\Re λ_i < 0, i = 1, \dots, n, λ_i$ Eigenwerte von $A$
+   #+end_korollar
+   #+begin_thm latex
+   Die Matrix $A ∈ ℝ^{n × n}$ besitze einen Eigenwert $λ ∈ ℂ$ mit $\Re λ > 0$. Dann gibt es $∀$ Radien $r > 0$ eine Lösung $x: ℝ_+ \to ℝ^n$ von $x' = Ax$ mit
+   \[\abs{x(0)} \leq r ∧ \abs{x(t)} \xrightarrow{t \to ∞} ∞\]
+   Also ist der Nullpunkt instabil.
+   #+end_thm
+   #+begin_proof latex
+   $v_0$ sei Eigenvektor zu $λ$ (mit $\Re λ > 0$) und $\abs{v_0} \leq r$. $t \to e^{λ t} v_0$ ist eine Lösung (komplex) von $x' = A x$. Dabei strebt
+   \[\abs{x(t)} \leq e^{\Re λ t} \abs{v_0} \xrightarrow{t \to ∞} ∞\]
+   #+end_proof
+   *Zusammenfassung für lineare Systeme* \\
+   Eigenwerte der Matrix $A$ bestimmen die Stabilität des stationären Punktes
+   1. alle $λ_i < 0$ reell $⇒$ $\bar x = 0$ asymptotisch stabil (Knoten)
+   2. $λ_i$ reell und mindestens ein $λ_i > 0 ⇒$ stationärer Punkt instabil
+	  - falls alle $λ_i > 0 \to$ instabil Knoten
+	  - sonst Sattelpunkt
+   3. $λ_i ∈ ℂ ⇒$ Oszillationen, wobei mit $λ_i = α + β i$
+      - $α < 0 ⇒$ Oszillation mit fallender Amplitude (stabiler Fokus)
+      - $α > 0 ⇒$ Oszillation mit wachsender Amplitude (instabiler Fokus)
+	  - $α = 0 ⇒$ Oszillation mit konstanter Amplitude (Zentrum) \\
+		keine asymptotische Stabilität, aber stabil im Sinne von Lyapunov
+   4. Falls vielfache $λ_i ⇒$ Jordan Blöche $⇒$ polynomiale Komponenten in der Lösung
+   Motivation für Linearisierung von nichtlinearen Systemen
+   \begin{align*}
+   x' &= f(x) = \underbrace{f(\bar x)}_{= 0} + \underbrace{D f(\bar x)(x - \bar x)}_{A x + b} + \underbrace{g(x)}_{+ g(x) \text{ klein}} \\
+   f(\bar x) &= 0
+   \end{align*}
+   #+ATTR_LATEX: :options [Linearisierungssatz, Satz von Hartman-Grobman]
+   #+begin_thm latex
+   Sei $f: ℝ^n \to ℝ$ stetig differenzierbar mit $f(0) = 0$. Die Jacobi Matrix $D f(x) ∈ ℝ^{n × n}$ besitze nur Eigenwerte mit $\Re λ \neq 0$ (das heißt stationärer Punkt ist hyperbolisch).
+   Dann gibt es Umgebungen $U, V ⊂ ℝ^n$ von $0$ und stetige Abbildung $ψ: U \to V$ mit folgenden Eigenschaften:
+   1. $ψ: U \to V$ ist bijektiv und $ψ^{-1}$ ist ebenfalls stetig
+   2. $x: [t_0, t_1] \to U$ durchläuft genau die Punkte einer Lösung $x' = f(x)$ mit den Werten in $U$ wenn
+	  \[y = ψ \circ x: [t_0, t_1] \to ℝ^n\]
+	  die Punkte einer Lösung der linearen Gleichung
+	  \[y' = D f(0)y\]
+	  mit den Werten in $V$ durchläuft.
+   #+end_thm
+   #+begin_remark latex
+   Die Systeme sind topologisch konjugiert.
+   #+end_remark
+   #+ATTR_LATEX: :options [Stabilität von nichtlinearen Systemen]
+   #+begin_thm latex
+   Die Matrix $A$ besitze die Eigenwerte mit $\Re λ_i \leq - α < 0$. Außerdem sei $g: ℝ^n \to ℝ^n$ stetig mit einem linearen Wachstum, das heißt $∃ k > 0: \abs{g(t, x)} \leq k(1 + \abs{x}) ∀ (t, x) ∈ [0, T] × ℝ^n$ und
+   \[\lim_{x \to 0} \frac{\abs{g(x)}}{\abs{x}} = 0\]
+   Dann ist der Nullpunkt asymptotisch stabil bezüglich der Differentialgleichung $x' = Ax + g(x)$.
+   #+end_thm
+   #+begin_proof latex
+   Jede Lösung lässt sich stetig zu einer Lösung auf $[0, ∞\string)$ fortsetzen. Wir nehmen $ϕ$ die Matrixfunktion zu einem Lösungs-Fundamentalsystem von $x' = Ax$ mit $ϕ(0) = \id$.
+   Die Variation der Konstanten führt zu
+   \[x(t) = ϕ(t)(x(0)) + ∫_0^t ϕ(s)^{-1} g(x(s)) \d s\]
+   Also löst die Hilfsfunktion
+   \[\tilde x: ℝ_+ \to ℝ^n, t ↦ ϕ(t) x(0) = x(t) - ∫_0^t ϕ(t)ϕ(s)^{-1} g(x(s)) \d s\]
+   die zugehörige homogene Differentialgleichung $\tilde x' = A \tilde x$ mit $\tilde x(0) = x(0)$. $∃ c > 0$, sodass jede Lösung $y$ von $y' = A y$ erfüllt
+   \[\abs{y(t)} \leq c \abs{y(0)} e^{-α t} ∀ t \geq 0\]
+   \begin{align*}
+   \abs{ϕ(t)} &\leq c e^{-α t} \\
+   \abs{ϕ(t)ϕ(s)^{-1}} &\leq c e^{- α(t -s)} ∀ 0 \leq s \leq t \\
+   \intertext{(denn $t \to ϕ(t)ϕ(s)^{-1}$ induziert eine Lösungsmatrix von $y' = A y$ mit $y(s) = \id$.) Wir erhalten:}
+   \abs{x(t)} &\leq \abs{\tilde x(t)} + ∫_0^t \abs{ϕ(t)ϕ(s)^{-1}} \abs{g(x(s)) \d s} \leq c \abs{x(0)} e^{-α t} + ∫_0^t c e^{-α (t - s)} \abs{g(x(s))} \d s
+   \end{align*}
+   Aus Vorraussetzung $\lim_{x \to 0} \abs{g(x)} / \abs{x} = 0$ gibt es einen Radius $ρ > 0$ mit $\abs{g(z)} \leq α / (2c) \abs{z} ∀ z ∈ \bar K_ρ(0)$. Wir betrachten $x' = Ax + g(x)$ mit $\abs{x(0)} \leq ρ / (2(1 + c))$.
+   Stetigkeit von $x$ garantiert, dass
+   \[T_{x(·)} = \sup\{t \geq 0 \mid \abs{x(·)} \leq ρ\}\]
+   positiv oder $∞$. $∀ t ∈ [0, T_{x(·)}]$ können wir $\abs{x(t)}$ weiter abschätzen
+   \begin{align*}
+   \abs{x(t)} &\leq c \abs{x(0)} e^{- α t} + ∫_0^t c e^{- α (t - s)} \frac{α}{2c} \abs{x(s)} \d s \\
+   ⇒ e^{α t} \abs{x(t)} &\leq c \abs{x(0)} + ∫_0^t e^{α s} \frac{α}{2} \abs{x(s)} \d s \\
+   ⇒ e^{α t} \abs{x(t)} &\leq c \abs{x(0)} e^{\frac{α}{2}t} \\
+   ⇒ \abs{x(t)} &\leq c \abs{x(0)} e^{-\frac{α}{2}t} \leq \frac{ρ}{2} \\
+   ⇒ T_{x(·)} &= ∞
+   \end{align*}
+   und der Nullpunkt ist asymptotisch stabil.
+   #+end_proof
+   #+ATTR_LATEX: :options [3.33 Instabilitätssatz]
+   #+begin_thm latex
+   Die Matrix $A$ habe mindestens einen Eigenwert $λ$ mit $\Re λ > 0$. Sei $g$ stetig mit linearem Wachstum und
+   \[\lim_{x \to 0} \frac{\abs{g(x)}}{\abs{x}}\]
+   Dann ist der Nullpunkt instabil bezüglich der Differentialgleichung
+   \[x' = A x + g(x)\]
+   #+end_thm
+   (ohne Beweis)
+   #+begin_remark latex
+   Stabilitätssatz und Instabilitätssatz lassen sich direkt auf nichtlineare Differentialgleichungen anwenden,
+   wenn die rechte Seite differenzierbar ist. Denn nach Definition von Totaler Ableitung erfüllt die Restfunkton $φ_{\bar x}(·)$ in
+   \[f(x) = \underbrace{f(\bar x)}_{= 0} + \underbrace{D f(\bar x)(x - \bar x)}_{A(x - \bar x)} + \underbrace{φ_{\bar x}(x)}_{= g}\]
+   die Voraussetzungen der beiden Sätze.
+   #+end_remark
+   #+begin_korollar latex
+   $f: ℝ^n \to ℝ^n$ sei differenzierbar und besitze einen stationären Punkt $\bar x ∈ ℝ^n$. Dann gilt
+   1. Wenn die Jacobi-Matrix $D f(\bar x) ∈ ℝ^{n × n}$ nur Eigenwerte mit $\Re λ_i < 0$ besitzt, dann ist $\bar x$ asymptotisch stabil.
+   2. Wenn mindestens ein $\Re λ_i > 0$ ist, ist die Lösung instabil.
+   #+end_korollar
+   #+begin_remark latex
+   - Bei $\Re λ = 0$ sind entsprechende Schlussfolgerungen über die Stabilität nicht möglich
+   - Satz 3.32 und Satz 3.33 $\impliedby$ Satz von Grobmann-Hartmann
+   #+end_remark
+   #+begin_ex latex
+   \[\begin{cases} x' &= x(1 - x) \\ x(0) &= x_0\end{cases}\]
+   Stabilität: $f'(x) = 1 - 2x$ \\
+   Stationäre Punkte: $\bar x_1 = 0, \bar x_2 = 1$
+   \begin{align*}
+   f'(x) \mid_{x = \bar x_1} &= 1 > 0 ⇒ \bar x_1 \text{ instabil} \\
+   f'(x) \mid_{x = \bar x_2} &= -1 > 0 ⇒ \bar x_2 \text{ asymptotisch instabil} \\
+   \end{align*}
+   #+end_ex
+   #+begin_defn latex
+   Als *Phasenraum* bezeichnet man den Raum, der durch die Variablen das Systems aufgespannt wird. Ein Punkt im Phasenraum
+   nennt man *Zustand* des Systems
+   #+end_defn
+   #+begin_remark latex
+   Das Richtungsfeld gibt den Verlauf der Trajektorien an. Der exakte Verlauf der Trajektorie ist für ein System
+   \[\begin{cases} x_1' = f(x_1, x_2) \\ x_2' = g(x_1, x_2) \end{cases}\]
+   gegeben durch
+   \[\dd{x_1}{x_2} = \frac{f(x_1, x_2)}{g(x_1, x_2)}\]
+   #+end_remark
+   #+ATTR_LATEX: :options [Methode des ersten Integrals]
+   #+begin_ex latex
+   \[\begin{cases} x_1' = x_1 \\ x_2' = - x_1 x_2 \end{cases} ⇒ \dd{x_2}{x_1} = -x_2 ⇒ x_2(x_1) = c e^{- x_1}\]
+   Durch jeden Punkt $(x_1, x_2)$ geht eine eindeutige Kurve.
+   #+end_ex
+   #+ATTR_LATEX: :options [Lotke-Volterra]
+   #+begin_ex latex
+   \[\begin{cases} u' = au - b u v = f(u, v) \\ v' = c u v - d v = g(u, v)\end{cases}\]
+   (Größe der Beutepopulation)
+   1. Existenz und Eindeutigkeit aus P.-L. Satz
+   2. Nichtnegativität der Lösung:
+      - $f(u, v)\big|_{u = 0} = 0 ⇒ u(t) \geq 0$ falls $u_0 \geq 0$ \\
+      - $g(u, v)\big|_{v = 0} = 0 ⇒ v(t) \geq 0$ falls $v_0 \geq 0$ \\
+   3. Gleichgewichtzustände (Stationäre Punkte)
+	  \[\begin{cases} f(\bar u, \bar v) = 0 ⇒ \bar u (a - b \bar v) = 0 ⇔ \bar u = 0 ∨ \bar v = \frac{a}{b} \\ g(\bar u, \bar v) = 0 ⇒ \bar v (c \bar u - d) = 0 ⇔ \bar v = 0 ∨ \bar u = \frac{d}{c} \end{cases}\]
+	  $⇒$ Stationäre Punkte:
+	  \[(\bar u_1, \bar v_1) = (0, 0), (\bar u_2, \bar v_2) = (\frac{d}{c}, \frac{a}{b})\]
+	  Stabilität der stationären Punkte:
+	  Jacobi Matrix:
+	  \[J(u,v ) = \begin{pmatrix}a - b v & - b v \\ c v & c u - d\end{pmatrix}, J(u, v)\big|_{(0, 0)} = \begin{pmatrix}a & 0 \\ 0 & -d\end{pmatrix}\]
+	  $⇒ λ_1 = a, λ_2 = - d$. $(0, 0)$ ist ein Sattel (instabil nach Grobmann-Hartmann-Satz).
+	  \[J(u, v)\big|_{(\frac{d}{c}, \frac{a}{b})} = \begin{pmatrix}0 & -\frac{bd}{c} \\ \frac{ca}{b} & 0\end{pmatrix}\]
+	  \[(-λ)^2 + ad = 0 ⇔ λ_{1,2} = \pm \sqrt{ad} i\]
+	  $⇒$ die Anwendung von Grobman-Hartmann ist nicht möglich. Wir rechnen das erste Integral:
+	  \begin{align*}
+	  \dd{v}{u} &= \frac{v}{u} \frac{c u - d}{a - b v} \\
+   	  ⇒ ∫ \frac{a - b v}{v} \d v &= ∫ \frac{c u - d}{u} \d u \\
+	  ∫ (\frac{a}{v} - b) \d v &= ∫ (c - \frac{d}{u}) \d u \\
+	  a \ln v - b v &= cu - d \ln u + c \\
+	  v^a e^{-b v} e^{-cu} u^d &= c =: F(u, v)
+      \end{align*}
+	  $⇒ F(u, v)$ ist konstant entlang Trajektorien. Die Lösungen sind also periodisch.
+	  Für Oszillationen mit Periode $T$ gilt:
+	  \[\frac{u'}{u} = a - b v ⇒ \ln \underbrace{(\frac{u(T)}{u_0})}_{u_1} = aT - b ∫_0^T u(s) \d s\]
+	  \[v \uparrow ⇔ v' > b\]
+	  \[c u v - d v = v (c u - d), v > 0 ∧ u > \frac{d}{c} ⇒ 0 = a T - b ∫_0^T v(s) \d s\]
+	  $u \equiv 0$ und $v \equiv 0$ sind Isoklinen
+   #+end_ex
+   Lyapunov Funktion (globale Stabilität)
+   \[x' = f(x)\]
+   Wir suchen nach einer Funktion $L(x(t))$, die entlang der Lösung nicht wächst. ($⇒$ "Energie")
+   #+begin_defn latex
+   Sei $U ⊂ ℝ^n$ offen und sei $f ∈ C^0(U, ℝ^n)$ lokal Lipschitzstetig. Eine Lyapunovfunktion für $x' = f(x)$ ist eine Funktion $L ∈ C^1(U, [0, ∞\string))$ mit
+   \[∇ L(x) f(x) \leq 0\]
+   für $x ∈ U$. Falls sogar
+   \[∇L(x) f(x) < 0 ∀ x ∈ U \setminus \{x \mid f(x) = 0\}\]
+   gilt, dann heißt $L$ strikte Lyapunov-Funktion, das heißt $L(x(t))$ fällt, falls	$x(t)$ kein stationärer Punkt ist.
+   #+end_defn
+   #+begin_thm latex
+   Sei $\bar x$ ein stationärer Punkt.
+   - Falls es eine Lyapunov-Funktion auf einer offenen Umgebung $U$ von $\bar x$ gibt mit $L(\bar x) = 0, L(x) > 0$ für $x \neq \bar x$, dann ist
+     $\bar x$ stabil
+   - Falls es eine strikte Lyapunov-Funktion auf einer Umbebung $U$ von $\bar x$ mit $L(\bar x) = 0, L(x) > 0$ für $x \neq \bar x$ und $L'(x) < 0$, dann
+	 ist $\bar x$ asymptotisch stabil.
+   \[(L(x))' = L'(x) x'\]
+   #+end_thm
+   (ohne Beweis)

@@ -1,0 +1,192 @@
+* Magnetostatik
+  Neue Kraft zwischen elektisch neutralen Materialien. (später: Vereinheitlichung von Elektrizität und Magnetismus $⇒$ Elektromagnetismus)
+  Beobachtungen:
+  - Zwei Pole: Nord- und Südpol
+  - Gleichnamige Pole stoßen sich ab, ungleichnamige ziehen sich an
+  - Pole lassen sich nicht trennen, keine magnetische Ladungen, keine Monopole
+  -	Magnete richten sich auf der Erde im Nord-Süd-Richtung aus
+  Traditionell: Definiton der magnetischen Feldstärke $p$ in Analogie zur elektricschen Ladung $Q$.
+  (Realisierung: langer Stabmagnet)
+  \[⇒ \v F = \frac{1}{4π μ_0} \frac{p_1 p_2}{r^2} \hat r\]
+  mit $μ_0 = 4π · \SI{1e-7}{\volt\second\per\ampere\meter}$
+  \[\v H = \lim_{p_2 \to 0} \frac{\v F}{p_2}\]
+  - $[p] = \si{\volt\second} = \si{\weber}$
+  - $[H] = \si{\ampere\per\meter}$
+  Hieraus folg die historsche Bezeichnung von $H$ als "Magnetfeld" oder "magnetische Feldstärke".
+  Aber $\v B = μ_0 \v H$ wichtigere Größe, eigentliches Äquivalent zum E-Feld
+  | Traditionell                                             | Modern                                        |
+  | $H$ = magnetische Feldstärke                             | $H$ = magnetische Erregung                    |
+  | $B$ = magnetische Induktion oder magnetische Flussdichte | $B$ = Magnetfeld oder magnetische Flussdichte |
+  Ebenfalls: In Analogie zum elektrischen Feld: Magnetischer Kraftfluss
+  \[ϕ_m = ∫ \v B \d \v A\]
+  - $[B] = \si{\volt\second\per\meter\squared} = \si{\tesla}$
+  - $[ϕ m] = \si{\volt\second} = \si{\weber}$
+** Magnetfelder und bewegte Ladungen
+   Beobachtungen:
+   1. Ein Strom durch einen Leiter erzeugt ein Magnetfeld um denselben (Oerstedt, 1777 - 1851)
+   2. Auf bewegten Ladungen wird in einem Magnetfeld eine Kraft ausgeübt. Offenbar: Streuwirkung beeinflußt Kraftrichtung. (Ampere, 1775-1836)
+   Experiment:
+   1. $B \sim I / r$
+   2. $\v F \sim I(\v e × \v B)$
+   Konvention:
+   \begin{align*}
+   B &= \frac{μ_0 I}{2π r} \\
+   \v F &= I(\v l × \v B) \tag{Lorentzkraft}
+   \end{align*}
+   $\v l$: Streurichtung. \\
+   mit $\v I = \v j A$:
+   \[\v F = lA(\v j × \v B) = l A n q(\v v × \v B)\]
+   Kraft auf einen einzelnen Ladungsträger:
+   \begin{align*}
+   \v F &= q(\v v × \v B) \tag{Lorentzkraft (ohne E-Feld)} \\
+   \v F &= q(\v E + \v v × B) \tag{Lorentzkraft (allgmeine Form)}
+   \end{align*}
+   #+ATTR_LATEX: :options [Freie Ladung im homogenen B-Feld]
+   #+begin_ex latex
+   Freie Ladung im homogenen B-Feld mit $\v R \perp \v B$.
+   Bewegungsgleichung:
+   \[m \v a = (\v r × \v B)\]
+   Da Kraft senkrecht auf Bewegungsrichtung steht folgt eine Kreisbewegung!
+   Also:
+   \begin{align*}
+   a &= a_{zp} = v ω = \frac{v^2}{r} = \frac{q}{w} v B \\
+   ω &= \frac{q}{w} B \tag{Zyklotronfrequenz}
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Leiterschleife im homogenen B-Feld]
+   #+begin_ex latex
+   Kräftepaar bewirkt Drehmoment
+   \[\v M = \v d × \v F = \v d × I(\v l × \v B) = I(\v A × \v B)\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Magnetischer Moment]
+   #+begin_defn latex
+   \begin{align*}
+   \v μ &:= I \v A = I A \v n \\
+   \v M &= \v μ × \v B
+   \end{align*}
+   #+end_defn
+   | Elektrischer Dipol   | Magnetischer Dipol   |
+   | $\v M = \v p × \v E$ | $\v M = \v μ × \v B$ |
+   Durch Vergleich mit elektrischen Dipol: Offenpor erzeugt ein Kreisstrom einen
+   magnetischen Dipol.
+   #+ATTR_LATEX: :options [Hall-Effekt]
+   #+begin_ex latex
+   Ablenkung bewegter Ladungsträger im Festkörper beziehungsweise in Leitern durch ein externes
+   Magentfeld.
+   Erlaubt Magnetfeldmessung. \\
+   Beobachtung: Aufbau eines elektrischen Querfeldes in einem stromdurchflossenen Leiter in einem Magnetfeld.
+   Ursache: Lorentzkraft. Es gilt:
+   \begin{align*}
+   F_{el} &= F_{mag} \\
+   q \frac{U_H}{b} &= q v B \\
+   &= \frac{I}{n b d} B \\
+   \intertext{mit $\v v \perp \v B$}
+   I &= j A = jbd = n q v b d \\
+   U_{H} &= \frac{1}{nq} \frac{I}{d} B = R_H \frac{I}{d} B
+   \end{align*}
+   mit $R_H = (nq)^{-1}$, Hallkonstante, $n =$ Ladungsdichte, $q =$ Ladung. \\
+   Anwendungen:
+   - Messungen von Dichte und Vorzeichen der bewegten Ladungsträger in Materialien (zum Beispiel Leiter / Halbleiter)
+   - Messung magnetischer Felder
+   #+end_ex
+   \begin{align*}
+   B &\sim \frac{I}{r} \\
+   B(r) &= \frac{μ_0}{2π} \frac{I}{r}
+   μ_0 &= 4 π \SI{1e-7}{\volt\second\per\ampere\meter} \\
+   \v B(\v r) &= \frac{μ_0}{2π}\frac{I}{r}(\hat l × \hat r)
+   \end{align*}
+   \begin{align*}
+   \v B_{21} &= \frac{μ_0 I_1}{2π r_2}(\hat l_1 × \hat r_{21}) \\
+   \v F_{21} &=I_2(\v l_¹ × \v B_{21}) \\
+   \v r_{21} &= \frac{μ_0 I_1 I_2}{2 π r{21}} \hat r_{21}
+   \end{align*}
+** Grundgleichungen der Magnetostatik
+   "Wir wissen": Magnetfeldlinien immer geschlossen
+   \[⇒ ∮\v B \d \v A = 0\]
+   (Quellenfreiheit des Magnetfeldes)
+   \[\Div \v B = 0\]
+   (2. Maxwellsches Gesetz) \\
+   Zirkulation des B-Feldes: \\
+   Elektrostatik:
+   \[∫ \v E \d \v s = U, ∮ \v E \d \v s = 0\]
+   B-Feld: (Kreis senkrecht um B-Feldlinie)
+   \begin{align*}
+   ∮ \v B \d \v s &= B ∮ \d s \\
+   &= \frac{μ_0 I}{2 π r} 2 π r = μ_0 I
+   \end{align*}
+   Anderer Weg (größerer Kreis)
+   \begin{align*}
+   ∮ \v B \d \v s &= ∫_4^1 \v B \d \v s + ∫_2^3 \v B \d \v s \\
+   &= \frac{μ_0 I}{2 π r_1} f_2 2 π r_1 + \frac{μ_0 I}{2 π r_2} f_2 2 π r_2 \\
+   &= μ_0 I(f_1 + f_2) = μ_0 I \\
+   ∮ \v B \d \v s &= μ_0 \sum_{k} I_k \\
+   \rot \v B &= μ_0 \v j
+   \end{align*}
+   $⇒$ Grundgleichungen der Magnetostatik:
+   \begin{align*}
+   ∮_A \v B \d \v A &= 0 \quad ∮_C \v B \d \v s = μ_0 I_{innen} \\
+   \Div \v B &= 0 \quad \rot \v B = μ \v j
+   \end{align*}
+** Zwei Anwendungsbeispiele
+   #+ATTR_LATEX: :options [Magnetfeld stromdurchflossener Leiter]
+   #+begin_ex latex
+   Querschnitt: $A = π R^2$
+   \[j = \frac{I}{π R^2}\]
+   \[∮ \v B \d \v s = B(r) 2 π r\]
+   \begin{align*}
+   r \geq R: B(r) 2 π r &= μ_0 I ⇒ B(r) = \frac{μ_0 I}{2πr} \\
+   r > R: B(r) 2 π r &= μ_0 j π r^2 ⇒ B(r) = \frac{1}{2} μ_0 j r = \frac{μ_0 I}{2 π R^2} r
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Magnetfeld einer langen Spule]
+   #+begin_ex latex
+   $N$: Anzahl der Windungen, $L$: Länge, $n = N / L$
+   Weg C:
+   \[∮ \v B \d \v s = B_{12}l' - B_{34}l' \overset{!}{=} 0 ⇒ B_{12} = B_{34}\]
+   Weg C':
+   \[∮ \v B \d \v s = B l' = μ_0 NJ I\]
+   \[⇒ B = \frac{μ_0 N' L}{l'} = μ_0 n I\]
+   \[B_{spule = μ_0 n I}\]
+   #+end_ex
+** Biot-Savart-Gesetz
+   Vergleich Elektro- und Magnetostatik
+   \begin{align*}
+   \intertext{E-Feld einer Linienladung}
+   E(r) &= \frac{1}{2π ε_0} \frac{λ}{r} \\
+   \intertext{B-Feld eines geraden Leiters}
+   B(r) &= \frac{μ_0}{2 π} \frac{I}{r}
+   \end{align*}
+   Nutze Analogie!
+   \begin{align*}
+   \d \v E(\v r) &= \frac{1}{4π ε_0} \frac{ρ(\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \v E(\v r) &= \frac{1}{4π ε_0} ∫\frac{ρ(\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \end{align*}
+   Ersetzen $ρ \to \v j, ε_0 \to 1/μ_0, ρ(\v r - \v r') \to \v j × (\v r - \v r')$
+   $⇒$ Biot-Savart-Gesetz
+   \begin{align*}
+   \d \v B(\v r) &= \frac{μ_0}{4π} \frac{\v j(\v r) × (\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \v B(\v r) &= \frac{μ_0}{4π} ∫\frac{\v j(\v r) × (\v r - \v r')}{\abs{\v r - \v r'}^3} \d V' \\
+   \end{align*}
+   \begin{align*}
+   \d \v B(\v r) &= \frac{μ_0}{4π} \frac{\d \v s'  × (\v r - \v r')}{\abs{\v r - \v r'}^3} \\
+   B(\v r) &= \frac{μ_0}{4π} ∫\frac{\d \v s'  × (\v r - \v r')}{\abs{\v r - \v r'}^3} \\
+   \end{align*}
+   #+ATTR_LATEX: :options [Leiterschleife]
+   #+begin_ex latex
+   Symmetrie: $B_{\perp} = 0, B_{x} = 0, B_{y} = 0$
+   \begin{align*}
+   \d B_z &= \d B \sin α \\
+   &= \d B \frac{R}{\abs{\v r - \v r'}} \\
+   &= \frac{μ_0 I}{4 π} \frac{\d s'}{\abs{\v r - \v r'}^2} \frac{R}{\abs{\v r - \v r'}} = \frac{μ_0 I}{4 π} \frac{R}{(z^2 + R^2)^{\frac{3}{2}}} \d s' \\
+   B_z &= ∫ \d B_z = \frac{μ_0 I}{4 π} \frac{R}{(z^2 + R^2)^{\frac{3}{2}}} ∫ \d s' \\
+   &= \frac{μ_0 R^2}{2(z^2 + R^2)^{\frac{3}{2}}} \\
+   \intertext{In der Mitte des Rings: $z = 0$}
+   B_z &= \frac{μ_0 I}{2 R} \\
+   \intertext{Weit weg: $z \gg R$}
+   B_z &= \frac{μ_0 I R^2}{2 z^3} \\
+   \intertext{Allgemeine Lösung für $r \gg R$}
+   B(\v r) &= \frac{μ_0}{4 π}(3 \frac{\v μ \v r}{r^5} \v r - \frac{1}{r^3} \v μ) \\
+   \intertext{Vergleich mit Elektrischem Dipol ($r \gg d$):}
+   E(\v r) &= \frac{1}{4 π ε_0}(3 \frac{\v p \v r}{r^5} \v r - \frac{1}{r^3} \v p) \\
+   \end{align*}
+   #+end_ex

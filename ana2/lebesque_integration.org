@@ -1,0 +1,155 @@
+* Das Lebesque Integral
+** Inhalte von Mengen in $ℝ^n$
+   Die Idee ist einen "Inhalt" ("Masse") von Mengen zu definieren, sodass
+   - $\abs{M} \geq 0$ \hfill (Positivität)
+   - $\abs{M} = \abs{M'}$ fals $M$ und $M'$ isometrisch (durch Abstandserhaltende Transformation) sind. \hfill (Bewegungsinvarianz)
+   - $M ∩ N = \emptyset ⇒ \abs{M ∪ N} = \abs{M} + \abs{N}$
+   In $ℝ^1$ oder $ℝ^2$ können wir $∀ M ⊂ ℝ^2$ einen "Inhalt" mit solchen Eigenschaften zuordnen (Banach), aber nicht in $ℝ^3$ (Hausdorff)
+   Wir beginnen mit $n$ -dimensionalen (abgeschlossenen) Intervallen $I := I_1 × \dots × I_n$, wobei $I_i = [a_1, b_i], i = 1, \dots, n, a_i < b_i, a_i, b_i ∈ ℝ$.
+   \[\abs{I} := \prod_{i = 1}^n (b_i - a_i)\]
+   Für Intervallsummen $S$ mit einer nicht überlappenden Darstellung
+   \[S = ∪_{k = 1, \dots, m} I_k\]
+   ist der Inhalt
+   \[\abs{S} := \sum_{k = 1}^{n} \abs{I_k}\]
+   #+ATTR_LATEX: :options [Jordan-Inhalt und Nullmengen]
+   #+begin_defn latex
+   1. Für *beschränkte* (nicht leere) Mengen $M ⊂ ℝ^n$ sind der inneren Inhalt $\abs{M}_i$ und der äußerde Inhalt $\abs{M}_a$ definiert durch
+	  \[\abs{M}_i := \sup_{S ⊂ M} \abs{S} \leq \inf_{M ⊂ S} \abs{S} =: \abs{M}_a, \qquad \abs{\emptyset}_i = \abs{\emptyset}_a = 00\]
+	  Im Fall $\abs{M}_a = \abs{M}_i =: M$ heißt die Menge quadrierbar (messbar) im Jordanischen Sinne mit sogenanntem Jordan Inhalt.
+   2. Mengen $M ⊂ ℝ^n$ mit $\abs{M}_a = 0$ werden Jordan-Nullmengen genannt
+   #+end_defn
+   #+ATTR_LATEX: :options [Äußeres Lebesque-Maß]
+   #+begin_defn latex
+   Das *äußere Lebesque-Maß* einer Menge $A ⊂ ℝ^n$ ist definiert durch
+   \[μ^{\ast}(A) := \inf\{\sum_{i} \abs{I_i}, A ⊂ ∪_i I_i\}\]
+   Die Menge darf auch unbeschränkt sein und dann $μ^{\ast}(A) = ∞$. Wir setzen $μ^{\ast}(\emptyset) = 0$
+   #+end_defn
+   Wir werden hie die Arithmetik von $\bar ℝ := ℝ ∪ \{π\}$ nutzen ($a + ∞ := ∞, a · ∞ := ∞ ∀ a ∈ \bar ℝ, 0 · ∞ := 0$)
+   #+begin_remark latex
+   $∞ - ∞$ ist undefiniert.
+   #+end_remark
+   Das Lebesque Integral wird mit Hilfe von Ober- und Untersummen bezüglich endlicher oder abzählbar unendlicher Zerlegungen definiert.
+   Wir benötigen noch Regeln für Reihen in $\bar ℝ$. Für $0 \leq a_k \leq ∞$ ist
+   \[S_∞= \sum_{k = 1}^{∞} a_k\]
+   wohldefiniert mit $S_∞ := ∞$ falls die Reihe divergent ist oder ein $a_k = ∞$. Für $λ ∈ \bar ℝ$ gilt
+   \[\sum_{k = 1}^{π} λ a_k = λ \sum_{k = 1}^{∞} a_k\]
+   Außerdem
+   \[\sum_{i,j = 1}^{∞} a_{ij} = \sum_{i = 1}^{π} \sum_{j = 1}^{∞} a_{ij} = \sum_{j = 1}^{∞} \sum_{i = 1}^{∞} a_{ij}\]
+   sofern eine der Reihen absolut konvergent.
+   #+begin_remark latex
+   Das äußere Lebesque-Maß:
+   \[0 \leq μ^{\ast}(A) \leq ∞, μ^{\ast}(\{a\}) = 0\]
+   #+end_remark
+   #+begin_lemma latex
+   Für das äußere Lebesque-Maß gelten die folgenden Aussagen
+   1. Aus $A ⊂ B$ folgt $μ^{\ast}(A) \leq μ^{\ast}(B)$ \hfill (Monotonie)
+   2. Für endliche oder abzählbare Mengenfolgen $(A_i)_i$ gilt
+	  \[μ^{\ast} (∪_i A_i) \leq \sum_{i} μ^{\ast} (A_i)\]
+	  (Subadditivität)
+   3. Für beschränkte Mengen ist
+	  \[\abs{A}_i \leq μ^{\ast}(A) \leq \abs{A}_a\]
+	  das heißt für Jordan-quadrierbare Mengen ist $μ^{\ast}(A) = \abs{A}$.
+   4. Das äußere Lebesque-Maß ist Bewegungsinvariant gegenüber Translationen und Drehungen
+   #+end_lemma
+   #+begin_proof latex
+   1. Da im Fall $A ⊂ B$ jede Intervallüberdeckung von $B$ auch eine solche von $A$ ist, folgt aus der Definiton
+	  \[μ^{\ast}(A) \leq μ^{\ast}(B)\]
+   2. Wir nehmen an, dass die rechte Seite in der Ungleichung ist (sonst nichts weiter zu beweisen). Es sei $ε > 0$ vorgegeben und eine Folge $(ε_i)_i$ positiver Zahlen mit
+	  $ε = sum_i ε_i$. Dann $∀ i ∈ ℕ ∃ (I_{ij})_j$ mit $A_i ⊂ ∪_j I_{ij}$
+	  \[\sum_{j} \abs{I_{ij}} \leq μ^{\ast}(A_i) + ε_i\]
+	  Die Doppelfolge $I_{ij}$ überdeckt die Menge $A = ∪_i A_i$
+	  \[⇒ μ^{\ast}(A) \leq \sum_{i,j} \abs{I_{ij}} \leq \sum_{i} (μ^{\ast}(A_i) + ε_i) = \sum_{i} μ^{\ast}(A_i) + ε\]
+   3. Der äußere Jordan-Inhalt von $A$ ist definiert als das Infimum des Inhalts aller endlichen Intervall-Überdeckungen von $A$. Beim Lebesque-Maß	sind allgemeine abzählbare Überdeckungen zugelassen
+	  $⇒ μ^{\ast}(A) \leq \abs{A}_a$
+	  Jetzt zeigen wir $∀$ endlich abgeschlossenen
+	  \[S = ∪_{i = 1}^m I_i\]
+	  gilt $\abs{S} \leq μ^{\ast}(S)$. Dazu geben wir ein $ε > 0$ mit $ε = sum ε_i$ (mit $ε_i$ > 0) vor und wählen eine abzählbare Überdeckung
+	  \[∪_i I_i \supset S, \sum_{i} \abs{I_i} \leq μ^{\ast}(S) + ε\]
+	  $∀ I_i$ wählen wir $J_i$, sodass $\abs{J_i} > \abs{I_i} ∧ \abs{J_i} \leq \abs{I_i} + e_i$. Dann ist
+	  $(J_i)_i$ eine offene Überdeckung der kompakten Menge $S$ und nach dem Satz von Heine Borel wird $S$ bereits von endlich vielen der $J_i$ überdeckt
+	  \[S ⊂ ∪_{i = 1}^m J_m\]
+   4. Die Invarianz von $μ^{\ast}(x)$ gegeüber Translation folgt, da diese Intervalle bei Translation in solche mit demselben Inhalt überführen. Sei $S$ eine Drehung ($S$ eine orthogonale $n × n$ Matrix)
+	  Aus $A ⊂ ∪_i I_i ⇒ S(A) ∈ ∪_i S(I_i)$ mit 1., 2. und Bewegungsinvatianz von Jordan Inhalt (zeigen wir später) bekommer wir
+	  \[μ^{\ast}(S(A)) \leq \sum_{i} μ^{\ast}(S(I)) = \sum_{i} \abs{S(I_i)} = \sum_{i} \abs{I_i}\]
+	  Da die überdeckende Intervallsumme beliebig ist, folgt
+	  \[μ^{\ast}(A) \geq μ^{\ast}(S(A))\]
+	  Dasselbe gilt auch für die transponierte $S^T$
+	  \[⇒ μ^{\ast}(S(A)) \geq μ^{\ast}(S^T S(A)) = μ^{\ast}(A) ⇒ μ^{\ast}(S(A)) = μ^{\ast}(A)\]
+   #+end_proof
+   #+ATTR_LATEX: :options [Lebesque Nullmenge]
+   #+begin_defn latex
+   Eine Menge $A ⊂ ℝ^n$ mit äußerem Lebesque-Maß $μ^{\ast}(A) = 0$ wird (Lebesque) Nullmenge genannt. Gibt es eine Aussage
+   von $A$ bis auf die aus einer Nullmenge, sagen wir, dass sie "fast überall" in $A$ gilt.
+   #+end_defn
+   #+begin_lemma latex
+   Die Vereinigung von abzählbar vielen Lebesque-Nullmengen ist wieder eine Lebesque-Nullmenge. Insbesondere sind abzählbare Menge Lebesque-Nullmengen
+   #+end_lemma
+   #+begin_proof latex
+   Aus der Subadditivität.
+   #+end_proof
+   #+begin_remark latex
+   Das Konzept ist allgemeiner als bei Jordan-Inhalten, wo nur endliche Intervall-Überdeckung zugelassen wird.
+   - $ℚ^n$ ist eine Lebesque-Nullmenge in $ℝ^n$
+   - $ℝ^{n - i}$ iste eine Lebesque-Nullmenge in $ℝ^n$
+   - Die endliche Mengen in $ℝ^n$ sind Jordan-Nullmengen
+   - Für abzählbare Menge kann es der Fall sei (zum Beispiel für jede konvergente Folge $(x_k)_{k ∈ ℕ}$ in $ℝ^n$, die Menge $M = \{x_k, k ∈ ℕ\}$ Jordan-Nullmenge ist)
+	 Im Allgemeinen ist dies nicht der Fall	(zum Beispiel $M = ℚ^n ∩ [0, 1]^n ⊂ ℝ^n$), $\abs{M}_a = 1$, Aber $μ^{\ast}(M) = 0$: Für beliebiges $ε > 0$ ist jeder Punkt $x_k$
+	 in einem Würfel $I_k$ mit $\abs{I_k} = ε^{-nk}$
+	 \[⇒ μ^{\ast}(A) \leq \sum_{k = 1}^{∞} \abs{I_k} = \sum_{k = 1}^{∞} ε 2^{-nk} = \frac{ε}{1 - 2^n} ⇒ μ^{\ast}(A) = 0\]
+   #+end_remark
+   #+begin_remark latex
+   $μ^{\ast}$ ist nicht $σ$ -additiv auf allen Mengen in $ℝ^n$. Dafür brauchen wir eine geeignete Klasse von Mengen in $ℝ^n$.
+   #+end_remark
+   #+ATTR_LATEX: :options [Mengenalgebra]
+   #+begin_defn latex
+   DIe nicht-leere Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ heißt Albebrag auf $X$, wenn sie $X$ und $\emptyset$ enthält und wenn mit $A, B ∈ \mathcal{A}$ auf $A \setminus B, A ∪ B, A ∩ B ∈ \mathcal{A}$ sind.
+   Sie heißt $σ$ -Algebra, wenn sie zusätzlich mit $A_i ∈ \mathcal{A}, i ∈ ℕ$ auch
+   \[∪_{i ∈ ℕ} A_i, ∩_{i ∈ ℕ} A_i ∈ \mathcal{A}\]
+   sind.
+   #+end_defn
+   #+begin_ex latex
+   1. $\mathcal{A} = \{\emptyset, X\}$ die kleinste $σ$ -Algebra für eine Menge $X$, $\mathcal{A} = \mathcal{P}(X)$ ist die größte $σ$ -Alebrag auf $X$
+   2. Für eine Menge $X$ und Teilmenge $A ⊂ X$ ist
+	  \[\mathcal{A} = \{\emptyset, X, A, A^C = X \setminus A\}\]
+	  die kleinste $σ$ -Algebra, die $A$ enthält
+   3. Für $X = ℝ^n$ heißt die kleinste $σ$ -Algebra welche die alle offene und abgeschlossene Teilmengen enthält die *Borelsche $σ$ -Algebra*.
+   4. Ist $X ⊂ ℝ^n$ eine Jordan-quadrierbare Menge, so ist die Menge der Jordan-quadrierbaren Teilmengen von $X$ eine Algebra, aber keine $σ$ -Algebra
+   5. Die Lebesque-Nullmengen in $ℝ^n$ und ihre Komplemente bilden eine $σ$ -Algebra (nicht in dem Fall von Jordan-Nullmengen)
+   #+end_ex
+   #+begin_lemma latex
+   Eine (nicht-leere) Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ ist bereits eine Algebra, wenn die folgenden Bedingungen erfült sind
+   1. Mit $A ∈ \mathcal{A}$ ist $A^C = X \setminus A ∈ \mathcal{A}$
+   2. Mit $A, B ∈ \mathcal{A}, A ∪ B ∈ \mathcal{A}$
+   Es ist eine $σ$ -Algebra, wenn zusätzlich gilt:
+   3. [@3] Für beliebige, paarweise disjunkte Mengen $A_i ∈ \mathcal{A}_i, i ∈ ℕ$ ist
+	  \[∪_{i ∈ ℕ} A_i ∈ \mathcal{A}\]
+   #+end_lemma
+   #+begin_proof latex
+   Wir müssen zeigen, dass für $\mathcal{A} ⊂ \mathcal{P}(X), X, \emptyset ∈ \mathcal{A}$ und $B, C ∈ \mathcal{A}$ auch $A \setminus B, A ∩ B ∈ \mathcal{A}$.
+   Da $\mathcal{A}$ nicht leer ist $∃$ ein $A ∈ \mathcal{A}$ und folglich
+   \[X = (X\setminus A) ∪ A = A^C ∪ A ∈ \mathcal{A}\]
+   sowie $X^C = \emptyset ∈ \mathcal{A}$. Mit $A, B ∈ \mathcal{A}$ ist $A^C, B^C ∈ \mathcal{A}$
+   \[⇒ A ∩ B = (A^C ∪ B^C) ∈ \mathcal{A}\]
+   und folglich auch $A \setminus B = A ∩ B^C ∈ \mathcal{A}$. Für die $σ$ -Algebra muss zusätzlich $∩_{i ∈ ℕ} A_i ∈ \mathcal{A}$. Für $A_i ∈ \mathcal{A}, i ∈ ℕ$ gilt die disjunkte Darstellung
+   \[∪_{i ∈ ℕ} A_i = ∪_{i ∈ ℕ} A_i\]
+   \[B_1 := A_1, B_2 := A_2 \setminus A_1, \dots, B_j = A_j \setminus ∪_{i = 1}^{j - 1} A_i\]
+   alle $B_i ∈ \mathcal{A}$ sowit
+   \[∪_{i ∈ ℕ} A_i = ∪_{i ∈ ℕ} B_i ∈ \mathcal{A}, ∩_{i ∈ ℕ} A_i = (∩_{i ∈ ℕ} A_i^C)^C ∈ \mathcal{A}\]
+   #+end_proof
+** Abbildungen von Mengen
+   Frage: In wie weit erhält die Abbildung $ϕ: ℝ^n \to ℝ^n$ Eigenschaften von Mengen (zum Beispiel offen, quadrierbar)?
+   #+begin_lemma latex
+   Sei $D ⊂ ℝ^n$ (nicht leer) beschränkt und $ϕ: D \to ℝ^n$ eine Lipschitzstetige Abbildung. Dann gilt
+   \[\abs{ϕ(D)}_a \leq α \abs{D}_a, α_i= (L \sqrt{n})^n\]
+   $L$: Lipschitz-Konstante.
+   #+end_lemma
+   (ohne Beweis)
+   #+begin_thm latex
+   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrirbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar mit $\det ϕ'(x) \neq 0$.
+   1. Die Bildmenge $ϕ(D)$ ist offen und quadrierbar, und es ist
+	  \begin{align*}
+	  \overline{ϕ(D)} &= ϕ(\bar D) \\
+	  \partial ϕ(D) &= ϕ(\partial D)
+      \end{align*}
+   2. Ist $ϕ$ in $D$ injektiv, so gilt $\partial ϕ(D) = ϕ(\partial D)$. Ferner ist für jede quadrierbare Teilmenge $A ⊂ \bar D$ auch die Bildmenge $ϕ(A)$ quadrierbar.
+   #+end_thm

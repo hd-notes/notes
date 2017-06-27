@@ -1,0 +1,535 @@
+* Interpolation und Approximation
+  Grundproblem: \\
+  Darstellung und Auswertung von Funktionen. \\
+  Aufgabenstellung:
+  1. Eine Funktion $f(x)$ ist nur auf einer diskreten Menge von Argumenten $x_0, \dots, x_n$ bekannt und soll rekonstruiert werden
+	 (zum Beispiel für Graph Ausgabe)
+  2. Eine analytisch gegebene Funktion $f(x)$ soll auf dem Rechner so dargestellt werden, dass jederzeit Funktionswerte
+	 zu beliebigen Argument $x$ berechnet werden können.
+  $\to$ System mit unendlich vielen Freiheitsgraden $y = f(x)$. "Simulation" durch endlich viele Datensätze in Klassen $P$ von einfach strukturierten Funktionen
+  - Polynome: $p(x) = a_0 + a_1 x + \dots + a_n x^n$
+  - rationale Funktionen:
+	\[r(x) = \frac{a_0 + a_1 x + \dots + a_n x^n}{b_0 + b_1 x + \dots + b_m x^m}\]
+  - trigonometrische Funktionen
+	\[t(x) = \frac{1}{2} a_0 + \sum_{k = 1}^{n} (a_k \cos(k x) + b_k \sin(k x))\]
+  - Exponentialsummen
+	\[e(x) = \sum_{k = 1}^{n} a_k \exp(b_k x)\]
+  #+begin_defn latex
+  Geschieht die Zuordnung eines Elementes $g ∈ P$ zur Funktion $f$ durch Fixieren von Funktionswerten
+  \[g(x_i) = y_i = f(x_i), i = 0, \dots, n\]
+  so spricht man von *Interpolation*.
+  Ist $g$ im gewissen Sinne die beste Darstellung von $f$, zum Beispiel: \\
+  $\max_{a \leq x \leq b} \abs{f(x) - g(x)}$ minimal für $g ∈ P$, oder \\
+  $(∫_a^b \abs{f(x) - g(x)}^2 \d x)^{1/2}$ minimal für $g ∈ P$
+  so spricht man von *Approximation*. Die Wahl der Konstruktion von $g ∈ P$ hängt von der zu erfüllenden Aufgabe ab.
+  Offenbar ist die Interpolation eine Approximation mit
+  \[\max_{i = 0, \dots, n} \abs{f(x_i) - g(x_i)}\]
+  für $g ∈ P$
+  #+end_defn
+  Wiederholung: Interpolation und Approximation
+  - Stützstellen $x_i$ mit Werten $y_i, i = 0, \dots, n$
+  -	Klassen $P$ von Funktion
+  *Polynominterpolation* \\
+  Wir bezeichnen mit $P_n$ den Vektorraum der Polynome vom Grad $\leq n$:
+  \[P_n = \{p(x) = a_0 + a_1 x + \dots + a_n x^n \mid a_i ∈ ℝ, i = 0, \dots, n\}\]
+  #+ATTR_LATEX: :options [Lagrangasche Interpolationsaufgabe]
+  #+begin_defn latex
+  Die Lagrangsche Interpolationsaufgabe besteht darin zu $x + 1$ paarweise verschiedenen Stützstellen (auch Knoten genannt) $x_0, \dots, x_n ∈ ℝ$ und
+  gegebenen Knotenwerten $y_0, \dots, y_n ∈ ℝ$ ein Polynom $p ∈ P_n$ zu bestimmen mit der Eigenschaft $p(x_i) = y_i$
+  #+end_defn
+  #+begin_thm latex
+  Die Lagrangsche Interpolationsaufgabe ist eindeutig lösbar.
+  #+end_thm
+  #+begin_proof latex
+  *Eindeutigkeit*: Sind $p_1, p_2 ∈ P_n$ Lösungen, so gilt für $p = p_1 - p_2$, dass
+  \[p(x_i) = p_1(x_i) - p_2(x_i) = y_i - y_i = 0, i = 0, \dots, n\]
+  Also hat $p$ $n + 1$ Nullstellen und ist folglich identisch Null. $⇒ p_1 = p_2$ \\
+  *Existenz:* Wir betrachten die Gleichungen
+  \[p(x_i) = y_i \qquad i = 0, \dots, n\]
+  Dies ist ein lineares Gleichungssystem mit $n + 1$ Gleichungen und $n + 1$ Freiheitsgraden.
+  \[\begin{pmatrix}x_0^0 & x_0^1 & \dots & x_0^n \\ x_1^0 & x_1^1 &   & x_1^n \\ \vdots &   & \ddots & \vdots \\ x_n^0 & x_n^1 & \dots & x_n^n\end{pmatrix} \cvec{a_0; a_1; \vdots; a_n} = \cvec{y_0; y_1; \vdots; y_n}\]
+  Wegen der Eindeutigkeit von $p$ ist $\ker V = \{0\}$. Mit dem Rangsatz ($\dim ℝ^{n + 1} = \dim \ker V + \dim \im V$) liefert $V$ eine surjektive Abbildung.
+  Damit existiert eine Lösung.
+  #+end_proof
+  Zur Konstruktion des Interpolationspolynoms $p ∈ P_n$ verwenden wir die sogenannten Lagrangschen Basispolynome.
+  \[L_i^{(n)}(x) = \prod_{\substack{j = 0\\ j \neq i}}^n \frac{x - x_j}{x_i - x_j} ∈ P_n, i = 0, \dots, n\]
+  #+begin_lemma latex
+  $\{L_i^{(n)}, i = 0, \dots, n\}$ ist eine Basis von $P_n$
+  #+end_lemma
+  #+begin_proof latex
+  Übung.
+  #+end_proof
+  Offensichtlich gilt:
+  \[L_i^{(n)}(x_k) = δ_{ij} = \begin{cases} 1 & i = j \\ 0 & i \neq j\end{cases}\]
+  #+begin_defn latex
+  Das Polynom
+  \[p(x) = \sum_{i = 0}^{n} y_i L_i^{(n)}(x) ∈ P_n\]
+  hat die gewünschten Eigenschaften
+  \[p(x_j) = y_j, j = 0, \dots, n\]
+  und wird die Lagrangsche Darstellung des (Lagrangschen) Interpolationspolynoms zu dem Stützpunkten $(x_i, y_i), i = 0, \dots, n$ genannt.
+  #+end_defn
+  Nachteil: Bei Hinzunahme eines weiteren Stützpunktes $(x_{n+1}, y_{n + 1})$ ändern sich die Basispolynome völlig. \\
+  Abhilfe: Newtonsche Basispolynome
+  \[N_0(x) = 1, N_i(x) = (x - x_{i - 1})N_{i - 1}(x) = \prod_{j = 0}^{i - 1}(x - x_j)\]
+  Für den Ansatz
+  \[p(x) = \sum_{i = 0}^{n} a_i N_i(x)\] erhält man durch Auswertung von $x_0, \dots, x_n$ das gestaffelte Gleichungssystem
+  \begin{align*}
+  y_0 &= p(x_0) = a_0 \\
+  y_1 &= p(x_1) = a_0 + a_1 (x_1 - x_0) \\
+  &\vdots \\
+  y_0 &= p(x_0) = a_0 + a_1 (x_1 - x_0) + \dots + a_n(x_n - x_0) · \dots · (x_n - x_{n - 1}) \\
+  \end{align*}
+  aus dem sich die Koeffizienten $a_i$ rekursiv berechnen lassen. Bei Hinzunahme eines weiteren Stützpunktes $(x_{n + 1}, y_{n + 1})$
+  setzt man den Prozess mit der Basisfunktion $N_{n + 1}$ fort. In der Praxis verwendet man folgende stabilere und effizientere Methode
+  #+ATTR_LATEX: :options [Newtonsche Darstellung]
+  #+begin_thm latex
+  Das Lagrangsche Interpolationspolynom zu den Punkten $(x_0, y_0), \dots, (x_n, y_n)$ lässt sich bezüglich der Newtonschen Polynombasis
+  schreiben in der Form
+  \[p(x) = \sum_{i = 0}^{n} y[x_0, \dots, x_i]N_i(x)\]
+  Dabei bezeichnen $y[x_0, \dots, x_i]$ die zu den Punkten $(x_i, y_i)$ gehörenden "dividierten Differenzen", welhce rekursiv definiert sind durch
+  \begin{align*}
+  \text{für } j = 0, \dots, n: &y[x_j] = y_j \\
+  L \text{für } k = 1, \dots, j: i = k - j: y\underbrace{[x_i, \dots, x_{1 + k}]}_{k + 1} = \frac{y\underbrace{[x_{i + 1}, \dots, x_{1 + k}]}_{k} - y\underbrace{[x_i, \dots, x_{x_1 + k - 1}]}_{k}}{x_{i + k} - x_i}
+  \end{align*}
+  #+end_thm
+  #+begin_proof latex
+  Es bezeichne $p {i, i + k} ∈ P_k$ das Polynom, welches die Punkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k})$ interpoliert.
+  Speziell ist $p_{0, n} = p$ das gesuchte Interpolationspolynom. Wir zeigen
+  \[p_{i, i + k}(x) = y[x_i] + y[x_i, x_{i + 1}](x - x_i) + \dots + y[x_i, \dots, x_{i + k}](x - x_i) · \dots · (x - x_{i + k})\]
+  was für $i = 0$ und $k = n$ den Satz beweist. Der Beweis wird durch Induktion über die Indexdifferenz $k$ geführt. Für $k = 0$ ist
+  $p_{i,i} = y_i = y[x_i], i = 0, \dots, n$. Sei die Behauptung richtig für $k - 1 \geq 0$. Nach Konstruktion gilt für ein $a ∈ ℝ$
+  \[p_{i, i + k}(x) = p_{i,i + k - 1}(x) + a(x - x_1) · \dots · (x - x_{i + k - 1}) = 0\]
+  für $x = x_j, j = i, \dots, i + k - 1$. Zu zeigen: $a = y[x_i, \dots, x_{i + k}]$.
+  Offenbar ist $a$ der Koeffizient von $x^k$ in $p_{0, i + k}$. Nach Induktionsannahme ist also
+  \begin{align*}
+  p_{i,i + k - 1}(x) &= \dots + y[x_i, \dots, x_{i + k - 1}]x^{k - 1} \\
+  p_{i + 1,i + k - 1}(x) &= \underbrace{\dots}_{\mathclap{\text{Grad } \leq k - 2}} + y[x_{i + 1}, \dots, x_{i + k}]x^{k - 1} \\
+  \end{align*}
+  Ansatz:
+  \begin{align*}
+  q(x) &= \frac{(x - x_i)p_{i + 1, i + k}(x) - (x - x_{i + k})p_{i,i + k - 1}(x)}{x_{i + k} - x_i} \\
+  &= p_{i,i + k - 1}(x) + \frac{(x - x_i)p_{i + 1, i + k}(x) - (x - x_{i + k} + x_{i + k} - x i)p_{i, i + k - 1}(x)}{x_{i + k} - x_i} \\
+  &= p_{i,i + k - 1}(x) + (x - x_i)\frac{p_{i + 1, i + k}(x) - p_{i,i + k - 1}(x)}{x_{i + k} - x_i} \\
+  \end{align*}
+  Ex gilt:
+  \[q(x_i) = y_i, q(x_{i + k}) = \frac{(x_{i + k} - x_i)y_{i + k} + 0}{x_{i + k} - x_i} = y_{1 + k}\]
+  \[q(x_j) = \frac{(x_j - x_i)y_j - (x_j - x_{i + k})y_j}{x_{i + k} - x_i} = y_j, j = i +1 , \dots, i + k - 1\]
+  $⇒ q$ interpoliert die Stützpunkte $(x_i, y_i), \dots, (x_{i + k}, y_{i + k}) ⇒ q \equiv p_{i, i + k}$ (Eindeutigkeit des Interpolationspolynoms).
+  Der führende Koeffizient in $p_{i, i + k}(x)$ ist demnach
+  \begin{align*}
+  q &= \frac{y[x_{i + 1}, \dots, x_{i + k}] - y[x_i, \dots, x_{i + k - 1}]}{x_{i + k} - x_i} \\
+  &= y[x_i, \dots, x_{i + k}]
+  \end{align*}
+  #+end_proof
+  #+begin_korollar latex
+  Sei $σ: \{0, \dots, n\} \to \{0, \dots, n\}$ eine
+  beliebige Permutation. Dann gilt für die Stützpunkte $(\tilde x_i, \tilde y_i) = (x_{σ(j)}, y_{σ(j)})$
+  \[y[\tilde x_0, \dots, \tilde x_n] = y[x_0, \dots, x_n]\]
+  #+end_korollar
+  #+begin_proof latex
+  Koeffizient des Monoms $x^n$ ist $y[x_0, \dots, x_n]$ unabhängig von der Reihenfolge.
+  #+end_proof
+  Wiederholung: Lagrange-Interpolation: \\
+  Gegeben: $(x_i, y_i), i = 0, \dots, n$ \\
+  Suche $p ∈ P_n: p(x_i) = y_i, i = 0, \dots, n$ \\
+  Lösung:
+  \begin{align*}
+  p(x) &= \sum_{i = 0}^{n} y_i L_i^{(n)}(x) \\
+  &= L_i^{(n)}(x) &= \prod_{\substack{j = 0 \\ j \neq i}}^n \frac{x - x_j}{x_i - x_j} ∈ P_n
+  \end{align*}
+  $⇒ L_i^{(n)}(x_j) = δ_{ij}$ \\
+  Andere Darstellung: Newton-Neville
+  \begin{align*}
+  N_i(x) &= \prod_{j = 0}^{n - 1}(x - x_j) \\
+  p(x) &= \sum_{i = 0}^{N}y[x_0, \dots, x_i]D_i(x) \\
+  y[x_i] &= q_i \\
+  y[x_i, \dots, x_{i + k}] = \frac{y[x_{i + 1}, \dots, x_{i + k}] - y[x_{i}, \dots, x_{i + k - 1}]}{x_{i + k} - x_i}
+  \end{align*}
+  #+begin_defn latex
+  Das durch die Rekursion $j = 0, \dots, n, p_{j,j}(x) = y_j$ für $k = 1, \dots, j: i = k - j$
+  \[p_{i, i + k}(x) = p_{i, i + k - 1}(x) + (x - x_i) \frac{p_{i + 1, i + k}(x) - p_{i, i + k - 1}(x)}{x_{i + k} - x_{i}}\]
+  erzeugte Polynom $p_{0, 1}$ ist die sogenannte Nevellsche Darstellung des Interpolationspolynom zu den Stützstellen $(x_0, y_0), \dots, (x_n, y_n)$
+  #+end_defn
+  Schema:
+  #+begin_export latex
+  \begin{equation*}
+  \begin{matrix}
+  & k = 0 & & k = 1	& & k = 2 & \dots & k = n - 1 & k = n \\
+  x_0 & y_0 & \to & p_{0,1} & \to & p_{0, 2} & \dots & p_{0, n - 1} & \to & p_{0, n} \\
+  x_1 & y_1 & \nearrow \to & p_{1, 2} & \nearrow\to & p_{1,3} & \dots & p_{1, n} & \nearrow & \\
+  x_2 & y_2 & \nearrow & & & & & & & \\
+  \vdots & & \vdots & \iddots & & & & & & \\
+  x_{n - 1} & y_{n - 1} & \to & p_{n - 1, n} & & & & & & \\
+  x_n & y_n & \nearrow & & & & & & &
+  \end{matrix}
+  \end{equation*}
+  #+end_export
+  Die Hinzunahme eines weiteren Stützpunktes ist problemlos.
+  Die Auswertung von $p_{0, n}(x)$ an einer Stelle $ξ \neq x_i$ ohne vorige Bestimmung der Koeffizienten der Newton-Darstellung ist damit sehr
+  einfach und numerisch effizient und stabil möglich. Dazu wird im Schema $x$ mit $ξ$ ersetzt. \\
+** Auswertung von Polynomen und deren Ableitungen
+   Sei $p ∈ P_n$ gegeben in der Darstellung
+   \[p(x) = a_0 + a_1 x + \dots + a_n x^n\]
+   Wiederhohlung: Auswertung von $p(ξ)$ mittels Horner-Schema
+   \[b_k = \begin{cases} a_n & k = n \\ a_k + ξ b_{k + 1} & k = n - 1, \dots, 0 \end{cases}\]
+   $⇒ p(ξ) = b_0$. \\
+   Zu $p_n = p ∈ P_n$ und festem $ξ$ wird durch
+   \[p_{n - 1}(x) = b_1 + b_2 x + \dots + b_n x^{n - 1}\]
+   ein Polynom $p_{n - 1} ∈ P_{n - 1}$ definiert.
+   Wegen $a_k = b_k - ξ b_{k + 1}, k = 0, \dots, n - 1, a_n = b_n$:
+   \begin{align*}
+   p_n(x) &= \sum_{k = 0}^{n} b_k x^k - ξ \sum_{k = 0}^{n - 1} b_{k + 1} x^k \\
+   &= b_0 + x \sum_{k = 1}^{n}b_k x^{k - 1} - ξ \sum_{k = 1}^{n} b_k x^{k - 1} \\
+   &= r_0 + (x - ξ)p_{n - 1}(x) \quad r_0 = p(ξ) = b_0
+   \end{align*}
+   $⇒$ Für eine Nullstelle $ξ$ von $p_n$ leistet das Horner-Schema die Abspaltung des Linearfaktors $(x - ξ)$ vom Polynom $p_n$.
+   Weiter ist dann für $x \neq ξ$
+   \begin{align*}
+   \frac{p_n(x) - p_n(ξ)}{x - ξ} &= p_{n - 1}(x) \\
+   \intertext{$x \to ξ$}
+   p'_n(ξ) = p_{n - 1}(ξ)
+   \end{align*}
+   Zur Berechnung von $p'_n(ξ)$ wird das Horner-Schema auf $p_{n - 1}$ angewendet.
+   \[p_{n - 2} ∈ P_{n - 2}, p_{n - 1}(x) = r_1 + (x - ξ)p_{n - 2}(x), r_1 = p_{n - 1}(ξ)\]
+   Fortsetzen $\to$ endliche Folge von Polynomen $p_n, p_{n - 1}, \dots, p_0$ mit
+   \begin{align*}
+   p_{n - j}(x) &= (x - ξ) p_{n - j - 1}(x) + r_j, \quad j = 0, \dots, n \\
+   p_n(x) = r_0 + r_1(x - ξ) + \dots + r_n(x - ξ)^n
+   \end{align*}
+   Vergleich mit der Taylorentwicklung von $p_n$ um $ξ$ ergibt
+   \[r_j = \frac{1}{j!} p_{n}^{(j)}(ξ)\]
+   Die Koeffizienten von $p_{n - j}$ seien
+   \[p_{n - j}(x) = a_j^{(j)} + a_{j + 1}^{(j)} x + \dots + a_n^{(j)} x^{n - j}, j = 0, \dots, n\]
+   Es gilt die Rekursion:
+   \[a_k^{(j + 1)} = \begin{cases} a_n^{(j)} & k = n \\ a_k^{(j)} + ξa_{k + 1}^{(j + 1)}\end{cases}\]
+   und es gilt
+   \[p^{(j)}(ξ) = j! a_j^{j + 1}, j = 0, \dots, n\]
+   Dieses "vollständige Horner-Schema" kann leicht zur Auswertung von Polynomen in Newton-Darstellung modifiziert werden:
+   \[p(x) = a_0 + a_1(x - x_0) + \dots + a_n(x - x_0) · \dots · (x - x_{n - 1})\]
+** Interpolation von Funktionen
+   Stützstellen $x_0, \dots, x_n ∈ [a, b]$. Werte gegeben durch Funktion $y_i = f(x_i), i = 0, \dots, n$ \\
+   *Frage:* Wie gut approximiert das Interpolationspolynom $p ∈ P_n$ die Funktion $f$ auf $[a, b]$? \\
+   *Bezeichnungen:*
+   - $\overline{(x_0, \dots, x_n)} =$ kleinstes Intervoll, das alle $x_i$ enthält.
+   - $C[a, b]:$ Vektorraum der über $[a, b]$ stetigen Funktionen
+   - $C^k[a, b]:$ Vektorraum über $[a, b]$ k-mal stetig differenzierbarer Funktionen.
+   #+ATTR_LATEX: :options [Interpolationsfehler 1]
+   #+begin_thm latex
+   Sei $f ∈ C^{n + 1}[a, b]$. Dann gibt es zu jedem $x ∈ [a, b]$ ein $ξ_x ∈ \overline{(x_0, \dots, x_n, x)}$, sodas gilt
+   \[f(x) - p(x) = \frac{f^{(n + 1)}(ξx)}{(n + 1)!} \prod_{j = 0}^n (x - x_j)\]
+   #+end_thm
+   #+begin_proof latex
+   Für $x ∈ \{x_0, \dots, x_n\}$ ist alles klar. Sei $x ∈ [a, b] \setminus \{x_0, \dots, x_n\}$. Wir setzen
+   \[l(t) = \prod_{j = 0}^n (t - x_j), \quad c(x) = \frac{f(x) - p(x)}{l(x)}\]
+   Die Funktion
+   \[F(t) = f(t) - p(t) - c(x) l(t)\]
+   besitzt dann mindestens die $n + 2$ Nullstellen $x_0, \dots, x_n, x$ in $[a, b]$.
+   Durch wiederhohlte Anwendung des Satzes von Rolle schließt man, dass die Ableitung $F^{n + 1}$ eine Nullstelle $ξ_x ∈ \overline{(x_0, \dots, x_n, x)}$. Es
+   \begin{align*}
+   0 &= F^{(n + 1)}(ξ_x) = f^{(n + 1)}(ξ) - p^{(n + 1)}(ξ) - c(x) l^{(n + 1)}(t) \\
+   &= f^{(n + 1)}(ξ) - c(x)(n + 1)!
+   \end{align*}
+   #+end_proof
+   Wiederholung:
+   - Neville-Schema für $p ∈ P_n$:
+     \[p(x_i) = y_i, i = 0, \dots, n\]
+   - Vollständiges Horner-Schema
+   - Interpolation von Funktionen $y_i = f(x_i)$
+   Interpolationsfehler 1: Sei $f ∈ C^{n + 1}[a, b] ⇒ ∀ x ∈ [a, b] ∃ ξ_x ∈ \overline{(x_0, \dots, x_n, x)}$:
+   \[f(x) - p(x) = \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!} \prod_{j = 0}^n (x - x_j)\]
+   #+ATTR_LATEX: :options [Interpolationsfehler 2]
+   #+begin_thm latex
+   Sei $f ∈ C^{n + 1}[a, b]$. Dass gilt für $x ∈ [a, b] \setminus \{x_0, \dots, x_n\}$:
+   \[f(x) - p(x) = f[x_0, \dots, x_n, x] \prod_{j = 0}^n (x - x_j)\]
+   mit der Notation
+   \[f[x_i, \dots, x_{i + k}] = y[x_i, \dots, x_{i + k}]\]
+   und es ist
+   \[f[x_0, \dots, x_n, x] = ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_n} f^{(n + 1)}(x_0 + t_1(x_1 - x_0) + \dots + t_n(x_n - x_{n - 1}) + t(x - x_n)) \d t \d t_n \dots \d t_1\]
+   #+end_thm
+   #+begin_proof latex
+   Per Induktion über $n$. \\
+   IA: $n = 0$:
+   \[f(x) - p_0(x) = f(x) - f(x_0) = \begin{cases} f[x_0, x](x - x_0) \\ \string(x - x_0\string)∫_0^1 f'(x_0 + t(x - x_0))\d t\end{cases}\]
+   wobei ein
+   \[∫_0^1 g'(t) \d t = g(1) - g(0)\]
+   für $g(t) = f(x_0 + t(x - x_0)) ⇒ g'(t) = f'(t)(x - x_0)$ \\
+   Sei die Behauptung richtig für $n - 1 \geq 0$. Dann ist
+   \begin{align*}
+   f(x) - p_n(x) &= f(x) - \sum_{i = 0}^{n}f[x_0, \dots, x_n]\prod_{j = 0}^{i - 1}(x - x_j) \\
+   &= f(x) - p_{n - 1}(x) - f[x_0, \dots, x_n]\prod_{j = 0}^{n - 1}(x - x_j) \\
+   &=  f[x_0, \dots, x_{n - 1}, x]\prod_{j = 0}^{n - 1}(x - x_j)- f[x_0, \dots, x_n]\prod_{j = 0}^{n - 1}(x - x_j) \\
+   &= (f[x_0, \dots, x_{n - 1}, x] - f[x_0, \dots, x_n])\prod_{j = 0}^{n - 1}(x - x_j) \\
+   &= \frac{f[x, x_0, \dots, x_n] - f[x_0, \dots, x_n]}{x - x_n}\prod_{j = 0}^{n - 1}(x - x_j) \\
+   &= f[x_0, \dots, x_n, x]\prod_{j = 0}^{n - 1}(x - x_j)
+   \end{align*}
+   Weiterhin gilt:
+   \begin{align*}
+   f[x_0, \dots, x_{n - 1}, x] - f[x_0, \dots, x_n] &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{n - 1}[f^{(n)}(x_0 + t_1(x_1 - x_0) + \dots + t_n(x - x_{n + 1})) - f^{(n)}(x_0 + t_1(x_1 - x_0) + \dots + t_n(x_n - x_{n - 1}))] \d t_n \dots \d t_1 \\
+   \intertext{Setze $g(t) = f^{(n)}(x_0 + t_1(x_1 - x_0) + \dots + t_n(x_n - x_{n - 1}) + t_{x - x_n})$}
+   &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_{n - 1}}[g(t_n) - g(0)] \d t_n \dots \d t_1 \\
+   &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_{n - 1}} ∫_0^{t_n} f^{(n + 1)}(x_0 + t_1(x_1 - x_0) + \dots + t_n(x_n - x_{n - 1}) + t(x - x_n))(x - x_n)\d t \d t_n \dots \d t_1 \\
+   ⇒ f[x_0, \dots, x_n, x] &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_n} f^{(n + 1)}(\dots) \d t \d t_n \dots \d t_1
+   \end{align*}
+   #+end_proof
+   Die Integraldarstellung der dividierten Differenzen gestattet ihre stetige Fortsetzung für den Fall, das Stützstellen zusammenfallen:
+   \[f[x_0, \dots, x_r, x_r, \dots, x_n] = \lim_{ε \to 0} f[x_0, \dots, x_r, x_r + ε, \dots, x_n]\]
+   Im Extremfall $x_0 = x_1 = \dots = x_n$ wird
+   \begin{align*}
+   f[x_0, \dots, x_n] &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_{n - 1}} f^{(n)}(x_0) \d t_n \dots \d t_1 \\
+   &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_{n - 1}} 1 \d t_n \dots \d t_1 f^{(n)}(x_0) \\
+   &= \frac{1}{n!}f^{(n)}(x_0)
+   \end{align*}
+   Damit geht das Newtonsche Interpolationspolynom über in das Taylorpolynom n-ten Grades von $f$ in $x_0$.
+   Konstruieren wir die Fehlerdarstellung so erhalten wir für ein $ξ_x ∈ (x_0, \dots, x_n, x)$
+   \begin{align*}
+   \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!} \prod_{j = 0}^n (x - x_j) &= f(x) - p(x) \\
+   &= f[x_0, \dots, x_n, x] \prod_{j = 0}^n (x - x_j) \\
+   ⇒ f[x_0, \dots, x_n, x] &= \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!}
+   \end{align*}
+   #+ATTR_LATEX: :options [Hermite-Interpolation]
+   #+begin_defn latex
+   Die Hermitesche Interpolationsaufgabe lautet: \\
+   Gegeben $x_i, i = 0, \dots, m$ (paarweise verschieden),
+   $y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i, μ \geq 0$. \\
+   Gesucht: $p ∈ P_n, n = m + \sum_{i = 0}^{m} μ_i, p^{(k)}(x_j) = y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i$,
+   $(μ_i + 1)$ -fache Stützstellen.
+   #+end_defn
+   #+begin_ex latex
+   $x_0 = -1, x_1 = 1, m = 1, y_0^{(0)} = 0, y^{(0)}_1 = 1, y_1^{(1)} = 2 ⇒ μ_0 = 0, μ_1 = 1 ⇒ n = 1 + 0 + 1 = 2 ⇒ p(x) = x^2$
+   #+end_ex
+   Analog zur Lagrange-Interpolation:
+   - Existenz + Eindeutigkeit
+   - Darstellung des Interpolationsfehlers
+   Wiederholung: Fehlerdarstellung Lagrange-Interpolation. Sei $f∈ C^{n + 1}[a, b]$. $∃ ξ_x ∈ \overline{(x_0, \dots, x_n, x)}$
+   \begin{align*}
+   f(x) - p(x) &= \frac{f^{(n + 1)}(ξ_x)}{(n + 1)!} \prod_{j = 0}^{n}(x - x_j) \\
+   f(x) - p(x) &= f[x_0, \dots, x_n, x] \prod_{j = 0}^n (x - x_j) \\
+   f[x_0, \dots, x_n, x] &= ∫_0^1 ∫_0^{t_1} \dots ∫_0^{t_n}	f^{(n + 1)}(x_0 + t_1(x_1 - x_0) + \dots + t_n(x_n - x_{n - 1}) + t(x_n - x))\d t \d t_n \dots \d t_1
+   \end{align*}
+   Hermite-Interpolation: Such $p ∈ P_n, n = m + \sum_{i= 0}^{m} μ_i$
+   \[p^{(k)}(x_i) = y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i\]
+** Richardsonsche Extrapolation zum Limes
+   Gegeben: Numerischer Prozess mit Werten $a(h), h ∈ ℝ_+, h \to 0$. \\
+   Gesucht: $a(0) = \lim_{h \to 0} a(h)$ \\
+   Idee: Für $h_i > 0, i = 0, \dots, n$, interpoliere $(h_i, a(h_i))$ und berechne $p_n(0)$
+   #+ATTR_LATEX: :options [Numerische Differentation]
+   #+begin_ex latex
+   Sei $f ∈ C^{∞}[a, b], x ∈ (a, b)$. Nach Taylor gilt
+   \[a(h) = \frac{f(x + h) - f(x - h)}{2h} = f'(x) + \sum_{i = 1}^{∞} \frac{f^{(2i + 1)}(x)}{(2i)!} h^{2i}\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Extrapolationsfehler]
+   #+begin_thm latex
+   Für $h ∈ ℝ_+$ habe $a(n)$ die Entwicklung
+   \[a(h) = a_0 + \sum_{j = 1}^{n}a_j h^{jq} + a_{n + 1}(h) h^{(n + 1)q}\]
+   mit $q > 0$, Koeffizienten $a_j$ und
+   \[a_{n + 1}(h) = a_{n + 1} + \mathcal{o}(1)\]
+   Die Folge $(h_i)_{k ∈ ℕ}$ erfülle
+   \[0 \leq \frac{h_{k + 1}}{h_k} \leq ρ < 1\]
+   ($⇒ h_k$ positiv, monoton fallend). Dann gilt für das Interpolationspolynom
+   $p_1^{(k)} ∈ P_n$ (in $h^q$) durch
+   \[(h_k^q, a(h_k)), \dots, (h_{k + n}^q, a(h_{k + n}))\]
+   \[a(0) - p_n^{(k)}(0) = \mathcal{O}(h_k^{(n + 1)q})\]
+   $(k \to ∞)$
+   #+end_thm
+   #+begin_proof latex
+   Abkürzungen $z = h^q, z_k = h_k^q$. Interpoliere $(z_{k + i}, a(h_{k + i})), i = 0, \dots, n$.
+   \begin{align*}
+   p_n(z) &= \sum_{i = 0}^{n} a(h_{k + i})L_{k + i}^{(n)}I \\
+   L_{k + 1}^{(n)}(z) &= \prod_{\substack{l = 0\\ l\ neq i}} \frac{z - z_{k + l}}{z_{k + 1} - z_{wl}}
+   \end{align*}
+   Übung:
+   \[\sum_{i = 0}^{n} x_{k + 1}^n(0) = \begin{cases} 1 & r = 0 \\ 0 & r = 1, \dots, n \\ \string(-1\string)^n \prod_{j = 0}^n z_{k + i} & r = n + 1\end{cases}\]
+   \begin{align*}
+   p_n(0) &= \sum_{i = 0}^{n}(a_0 + \sum_{j = 1}^{n} a_j z_{k + i}^j + a_{n +1}(h_{k + 1})z_{k + i}^{n + 1})	L_{k + i}^{(n)}(0) \\
+   &= a_0 \underbrace{\sum_{i = 0}^{n} L_{k + 1}^{(n)}}_{= 1} + \sum_{j = 1}^{n} a_j \underbrace{\sum_{i = 0}^{n}z_{k + 1}^j L_{k + i}^{(n)}(0)}_{0} \\
+   &= + a_{n + 1} \underbrace{\sum_{i = 0}^{n}z_{k + 1}^{n + 1} L_{k + 1}^{(n)}}_{= (-1)^n \prod_{i = 0}^n z_{k + i}} + \sum_{i = 0}^{n} \mathcal{o}(1) z_{k + i}^{n + 1} L_{k + i}^{(n)}(0) \\
+   \intertext{Da man Landau-Symbole nich ausklammern darf, schätzen wir ab:}
+   \abs{L_{k + i}^{(n)}(0)} &= \prod_{\substack{l = 0\\ l \neq i}}^n \abs{\frac{z_k + l}{z_{k + i} - z_{k + y}}} \\
+   &\leq \prod_{l = 0}^{i - 1} \abs{\frac{z_{n + l}}{z_{k + i} - z_{k + l}}} \prod_{l= 1 + i}^n \abs{\frac{z_{k + i}}{z_{k + i} - z_{k + l}}} \\
+   &= \prod_{l = 0}^{i - 1} \frac{1}{\abs{\frac{z_{k + i}}{z_{k + y}} - 1}} \prod_{l= i + 1}^n \frac{1}{\abs{1 - \frac{z_{k + l}}{z_{k + i}}}} \\
+   &\leq \frac{1}{(1 - ρ^q)^n} \\
+   ⇒ p_n(0) &= a_0 + a_{n + 1} (-1)^n \prod_{i = 0}^n z_{k + i} + \mathcal{o}(z_k^{n + 1}) \\
+   &= a_0 + \mathcal{O}(h_k^{(n + 1)q})
+   \end{align*}
+   #+end_proof
+** Spline-Interpolation
+   Problem: Oszillationen des Interpolationspolynoms, wenn man Stützstellen nicht geeignet wählen kann.
+   Abhilfe: Stückweise polynomielle Interpolation:
+   - Zerlegung: $a = x_0 < x_1 < \dots < x_n = b$
+   - Teilintervalle: $I_i = [x_{i - 1}, x_{i}], i = 1, \dots, n$
+   - Feinheit: $h = \max_{i = 1, \dots, n} h_i$ mit $h_i = \abs{I_i} = x_i - x_{i - 1}$
+   - Vektorräume stückweise polynomieller Funktionen
+     \[S^{k, r}_n [a, b] = \{p ∈ C^r[a, b] \mid p\mid_{I_i} ∈ P_k (i_i)\}, i = 1, \dots, n\]
+
+   #+ATTR_LATEX: :options [Stückweise lineare Interpolation]
+   #+begin_ex latex
+   $⇒ p ∈ S_n^{(1, 0)}[a, b]$. Fehlerabschätzung:
+   \[\max_{x ∈ [a, b]} \abs{f(x) - p(x)} \leq \frac{1}{2} h^2 \max_{x ∈ [a, b]} \abs{f''(x)}\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Splines]
+   #+begin_ex latex
+   Zweimal stetig differenzierbare, stückweise kubische Polynome. Motivation: Biegestab. Minimiere Biegeenergie
+   \[∫_{x_0}^{x_n} s''(x)^2 \d x\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Kubischer Spline]
+   #+begin_defn latex
+   Eine Funktion $s_n:[a, b] \to ℝ$ heißt kubischer Spline bezüglich $a = x_0 < x_1 < \dots < x_n = b$, wenn gilt
+   1. $s_n ∈ C^2[a, b]$
+   2. $s_n\mid I_i ∈ P_3, i = 1, \dots, n$
+   Gilt zusätzlich
+   3. [@3] $s_n''(a) = s_n''(b) = 0$ so heißt $s_n$ natürlicher Spline.
+   #+end_defn
+   Existenz des interpolierenden kubischen Spline zu Knotenwerten $s_n(x_i) = y_i, i = 0, \dots, n$
+   #+ATTR_LATEX: :options [Spline-Interpolation]
+   #+begin_thm latex
+   Der interpolierende kubische Spline existiert und ist eindeutig bestimmt durch zusätzliche Vorgabe von $s_n''(a), s_n''(b)$
+   #+end_thm
+   #+begin_proof latex
+   $s$ hat die Form
+   \[s(x) \mid_{I_i} = p_i(x), i = 1, \dots, n, p_i ∈ P_3(I_i)\]
+   4 Koeffizienten auf jedem der $n$ Intervalle ergeben $4n$ Freiheitsgrade. Zur Bestimmung:
+   | $s(x_i) = y_i, i = 0, \dots, n$          | $2n$ Gleichungen |
+   | $s' ∈ C[a, b]$                           | $n - 1$          |
+   | $s'' ∈ C[a, b]$                          | $n - 1$          |
+   | Zusatzbedingung für $s_n''(a), s_n''(b)$ | 2                |
+   |------------------------------------------+------------------|
+   |                                          | $4n$             |
+   $⇒$ quadratisches lineares Gleichungssystem, $4n × 4n$
+   \[N = \{ω ∈ C^2[a, b] \mid ω_{x_i} = 0, i = 0, \dots, n\}\]
+   Seien $s_n^{(1)}$ und $s_n^{(2)}$ interpolierende Splines $⇒ s = s_n^{(1)} - s_n^{(2)} ∈ N$. Für $ω ∈ N$ beliebig:
+   \begin{align*}
+   ∫_a^b s''(x) ω''(x) \d x &= \sum_{i = 0}^{n - 1} ∫_{x_i}^{x_{i + 1}} s''(x) ω''(x) \d x \\
+   &= \sum_{i = 0}^{n - 1}[-∫_{x_i}^{x_{i + 1}} s^{(3)} ω' \d x + s'' ω' \mid_{x_i}^{x_{i + 1}}] \\
+   &= \sum_{i = 0}^{n - 1}[-∫_{x_i}^{x_{i + 1}} s^{(4)} ω \d x - s^{(3)} ω \mid_{x_i}^{x_{i + 1}} + s'' ω' \mid_{x_i}^{x_{i + 1}}] \\
+   &= \sum_{i = 0}^{n - 1} s'' ω' \mid_{x_i}^{x_{i + 1}} = s''(x) ω'(x) - s''(a) ω'(a) \\
+   &= 0
+   \end{align*}
+   Speziell für $ω = s$
+   \[∫_a^b \abs{s''(x)}^2 \d x = 0\]
+   $⇒ s$ ist linear $0 = s(a) = s(b) = 0$
+   #+end_proof
+   Wiederhohlung: Extrapolation
+   $a(h), h_i > 0, a(0) = \lim_{h \to 0}  a(h)$
+   Fehler: Entwicklung
+   \[a(h) = a_0 + \sum_{j = 1}^{n} a_j h^{a_j}\]
+   \[0 < \frac{h_{k + 1}}{h_k} \leq ρ < 1\]
+   interpolieren $(h_{k + 1}^a, a(h_{k + 1})), i = 1, \dots, n$
+   \[⇒ a(0) - p_i^{(k)}(0) = \mathcal{O}(h_k^{(n + 1)})\]
+   Splines: $S_h^{(k, r)}[a, b] = \{p ∈ C^r[a, b] \mid p \big|_{[x_i, x_{i + 1}]} ∈ P_k[x_i, x_{i + 1}]\}$
+   Splines: $s ∈ S_k^{(n, x)}[a, b]$. Natürliche kubische Splines: $s''(a) = s''(b) = 0$.
+   #+begin_thm latex
+   Für den interpolierenden natürlichen Spline $S_n$ durch $x_0, \dots, x_n, y_0, \dots, y_n$ gilt
+   \[∫_a^b \abs{S'(x)}^2 \d x \leq ∫_a^b \abs{g''(x)}^2 \d x\]
+   bezüglich allen Funktionen $g ∈ C^2[a, b]$ mit $g(x_i) = y_i, i = 0, \dots, n$
+   #+end_thm
+   #+begin_proof latex
+   Sei $N = \{ω ∈ C^2[a, b] \mid ω(x_i) = 0, i = 0, \dots, n\}$
+   $⇒ ω = g - I_n ∈ N$.
+   \begin{align*}
+   ⇒ ∫_a^b \abs{g''(x)}^2 \d x &= ∫_a^b \abs{S_n''(x) + ω''(x)}^2 \d x \\
+   &= ∫_a^b \abs{S_n''(x)}^2 \d x + \underbrace{2 ∫_a^b S_n''(x) ω''(x) \d x}_{0} + \underbrace{∫_a^b \abs{ω''(x)}^2 \d x}_{\geq 0}	\\
+   &\geq ∫_a^b \abs{S_n''(x)}^2 \d x
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [Approximationsfehler]
+   #+begin_thm latex
+   Sei $f ∈ C^4[a, b]$. Erfüllt der interpolierende kubische Spline $S_1''(a) = f''(a) ∧ S_n(b) = f''(b)$ so gilt:
+   \[\max_{x ∈ [a, b]} \abs{f(x) - S_n(x)} \leq \frac{1}{2} h^4 \max_{x ∈ [a, b]} \abs{f^{(4)}(x)}\]
+   Ohne Beweis.
+   #+end_thm
+** Gauß Approximation
+   Wir betrachten $C[a, b]$, die Menge der stetigen Funktionen auf $[a, b]$ über dem Zahlkörper $\mathbb{K} = ℝ$ oder $\mathbb{K} = ℂ$, als $\mathbb{K}$ -Vektorraum.
+   Für $f, g ∈ [a, b]$ erfüllt
+   \[(f, g) := ∫_a^b f(t) \overline{g(t)} \d t\]
+   die Eigenschaften eines Skalarproduktes:
+   1. Definitheit:
+	  \[(f,f) =∫_a^b f(t) \overline{f(t)} \d t = ∫_a^b \abs{f(t)}^2 \d t \geq 0\]
+	  und $(f, f) = 0 ⇒ f = 0$
+   2. $α ∈ \mathbb{K}, h ∈ C[a, b]$:
+	  \[(αf + g, h) = ∫_a^b(α f(t) + g(t))\overline{h(t)} \d t = α ∫_a^b f(t) \overline{h(t)} \d t + ∫_a^b g(t) \overline{h(t)} \d t = α(f, h) + (g, h)\]
+   3. Symmetrie:
+	  \[(f, g) = ∫_a^b f(t) \overline{g(t)} \d t = ∫_a^b \overline{\overline{f(t)} g(t)} \d t = ∫_a^b g(t) \overline{f(t)} \d t = \overline{(g, f)}\]
+   Durch $\norm{f} = \sqrt{(f, f)}$ ist damit eine Norm auf $C[a, b]$ gegeben:
+   1. Definitheit:
+	  \[\norm{f} \geq 0, f = 0 ⇔ \norm{f} = 0\]
+   2. Sublinearität: Wir benutzen die Cauchy-Schwarz-Ungleichung
+	  \begin{align*}
+	  \abs{(f, g)} &\leq \norm{f}\norm{g} \\
+	  ⇒ \norm{f + g}^2 &= (f + g, f + g) = (f, f) + (f, g) + (g, f) + (g, g) \\
+	  &= \norm{f}^2 + \underbrace{2\Re(f, g)}_{\leq \abs{(f, g)}} + \norm{g}^2 \\
+	  &\leq \norm{f}^2 + 2 \norm{f} \norm{g} + \norm{g}^2 = (\norm{f} + \norm{g})^2 \\
+	  ⇒ \norm{f + g} &\leq \norm{f} + \norm{g} \tag{Dreiecksungleichung}
+      \end{align*}
+   3. Homogenität:
+	  \[\norm{α f} = \sqrt{(αf, αf)} = \sqrt{α \bar α (f, f)} = \abs{α} \norm{f}\]
+   Mit diesem Skalarprodukt und dieser Norm ist also $C[a, b]$ ein Prähilbertraum.
+   #+ATTR_LATEX: :options [Gauß-Approximation]
+   #+begin_thm latex
+   Sei $H$ ein Prähilbertraum und sei $S ⊂ H$ eine endlichdimensionaler Teilraum. Dann existiert zu jedem $f ∈ H$ eine eindeutig bestimmte "beste Approximation" $g ∈ S$
+   \[\norm{f - g} = \min_{φ ∈ S} \norm{f - φ}\]
+   #+end_thm
+   #+begin_proof latex
+   *Vorüberlegung*: Wenn $g ∈ S$ eine beste Approximation ist, so hat für $φ ∈ S$ die Hilfsfunktion
+   \[F_φ(t) = \norm{f - g - tφ}^2, t ∈ ℝ\]
+   bei $t = 0$ ein Minimum. Somit ist
+   \begin{align*}
+   0 &= \dd{}{t} F_φ(t)\big|_{t = 0} = \dd{}{t}[(f - g - tφ, f - g - tφ)]\big|_{t = 0} \\
+   &= \dd{}{t}[(f - g, f - g) - t(φ, f - g) - f(f - g, φ) + t^2(φ, φ)]\big|_{t = 0} \\
+   &= 2 \Re(f - g, φ) ∀ φ ∈ S
+   \end{align*}
+   Falls $\mathbb{K} = ℂ$ ergibt testen mit $i φ$
+   \[0 = \Re(f - g, iφ) = -\Re(f - g, φ) = \Im(t - g, φ) ⇒ (f - g, φ) = 0 ∀ φ ∈ S\]
+   Interpretation: Der Fehler $f - g$ ist orthogonal zum Teilraum $S$.
+   Gilt umgekehrt die letzte Gleichung für ein $g ∈ S$, so gilt für $φ ∈ S$
+   \begin{align*}
+   \norm{f - g}^2 &= (f - g, f - g) = (f - g, f - φ) + \underbrace{(f - g, φ)}_{0} \\
+   \intertext{Cauchy-Schwarz:}
+   &\leq \norm{f - g}\norm{f - φ} \\
+   ⇒ \norm{f - g} \leq \inf_{φ ∈ S} \norm{f - φ}
+   \end{align*}
+   $⇒ g$ ist Bestapproximation. \\
+   *Existenz und Eindeutigkeit*: Da $n = \dim S < ∞$, besitzt $S$ eine Basis $\{φ_1, \dots, φ_n\}$. Jedes $g ∈ S$ hat eine eindeutige Darstellung
+   \begin{align*}
+   g &= \sum_{i = 1}^{n} α_i φ_i \\
+   ⇒ (f - \sum_{i = 1}^{n} α_i φ, φ) &= (f, φ) - \sum_{i = 1}^{n} α_i (φ_i, φ) = 0 ∀ φ ∈ S \\
+   ⇒ \sum_{i = 1}^{n}(φ_i, φ) α_i &= (f, φ_k), k = 1, \dots, n
+   \end{align*}
+   Dies ist ein lineares $n × n$ Gleichungssystem. Notation: $Aα = B$ mit $α = (α_1, \dots, α_n)^T ∈ \mathbb{K}^n, b ∈ \mathbb{K}^n, b_i = (f, φ_i), A ∈ \mathbb{K}^{n × n}, A_{ki} = (φ_i, φ_k)$.
+   $A$ ist hermitisch wegen $(φ_i, φ_k) = \overline{(φ_k, φ_i)}$. Sei $α ∈ \mathbb{K}^n$ beliebig. Wegen
+   \begin{align*}
+   α^H A α &= \sum_{k = 1}^{n} \sum_{i = 1}^{n} \bar α_k (φ_i, φ_k) α_i \\
+   &= \sum_{k = 1}^{n} \sum_{i = 1}^{n} (α_i, φ_i, α_k, φ_k) \\
+   &= (\sum_{i = 1}^{n}α_i φ_i, \sum_{k = 1}^{n} α_k φ_k) = (g, g) > 0
+   \end{align*}
+   für $α \neq 0 (⇒ g \neq 0)$ ist $A$ also positiv definit und damit invertierbar $⇒$ mit $α = A^{-1} b$ löst das eindeutig bestimmte Gleichungssystem und $g$ ist die Bestapproximation.
+   #+end_proof
+   Das lineare Gleichungssystem besitzt besonders einfache Lösung, wenn die Basis $\{φ_1, \dots, φ_n\}$ eine Orthogonalbasis ist, das heist $(φ_i, φ_j) = δ_{ij}$
+   \begin{align*}
+   ⇒ α_i &= (f, φ_i), i = 1, \dots, n \\
+   ⇒ g &= \sum_{i = 1}^{n} (f, φ_i) φ_i \quad \text{ist Bestapproximation}
+   \end{align*}
+   #+ATTR_LATEX: :options [Gram-Schmidt-Algorithmus]
+   #+begin_lemma latex
+   Zu jeder Basis $\{ψ_1, \dots, ψ_k\}$ von $S$ lässt sich eine Orthonormalbasis $\{φ_1, \dots, φ_n\}$ konstruieren.
+   \[\tilde φ_1 = ψ_1, φ_1 = \frac{\tilde φ_1}{\norm{\tilde φ_1}}\]
+   \[\tilde φ_k = ψ_k - \sum_{i = 1}^{k - 1}(ψ_k, φ_i), φ_k = \frac{\tilde φ_k}{\norm{\tilde φ_k}}\]
+   #+end_lemma
+   #+begin_proof latex
+   Per Induktion nach $n$. \\
+   $n = 1$: Da $ψ \neq 0$ gilt $(φ_1, φ_1) = \frac{\abs{ψ_1}^2}{\norm{ψ_1}^2} = 1$. \\
+   $n > 1$: Sei $\{φ_1, \dots, φ_n\}$ eine Orthonormalbasis. Es gilt
+   \[0 \neq \tilde φ_n = ψ_n - \sum_{k = 1}^{n - 1}(ψ_n, φ_k)φ_k\]
+   da sonst $\{ψ_1, \dots, ψ_n\}$ linear abhängig wären. Für $i = 1,\dots, n - 1$ gilt
+   \[(φ_n, φ_1) = (ψ_n, φ_i) - \sum_{k = 1}^{n - 1}(ψ_n, φ_k)\underbrace{(φ_k, φ_i)}_{δ_{ik}} = 0\]
+   und $\norm{φ_n}^2 = 1$ nach Konstruktion.
+   #+end_proof
+   Wiederhohlung: Gauß-Approximation, Prähilbertraum $H$, Teilraum $S ⊂ H, \dim S = n < ∞$
+   \[∀ f ∈ H ∃! g ∈ S: \norm{f - g} \leq \min_{φ ∈ S} \norm{f - φ}\]
+   Äquivalent: $e := f - g \perp S ⇔ (f - g, φ) = 0 ∀ φ ∈ S$ \\
+   Orthogonalisiere Basis $\{ψ_1, \dots, ψ_n\}$ von $S$ mit Gram-Schmidt
+   \[\tilde φ_i = \begin{cases} ψ_i & i = 1 \\ ψ_i - \sum_{j = 1}^{i - 1} \frac{(ψ_i, \tilde φ_j)}{\norm{\tilde φ_j}^2} \tilde φ_j & i = n, \dots, n\end{cases}\]
+   Normalisieren: $φ_k = \norm{\tilde φ_n}^{-1} \tilde φ_k$.
+   $(φ_1, \dots, φ_k)$ Orthogonalbasis $⇒ (φ_i, φ_j) = δ_{ij}$
+   \[⇒ g = \sum_{k = 1}^{n} (f, φ_k) φ_k\]
+   Erinnerung:
+   \[f[x_0, \dots, x_n] = \frac{f[x_1, \dots, x_n] - f[x_0, \dots, x_{n - 1}]}{x_n - x_0}, \quad f[g_k] = f(k)\]
