@@ -116,7 +116,7 @@
   #+end_ex
   *Frage:* Wie bestimmt man explizit eine Orthogonalbasis eines Euklidischen Raumes?
   #+ATTR_LATEX: :options [Gram-Schmidt-Verfahren]
-  #+begin_algorithm latex
+  #+begin_algrthm latex
   *Eingabe*: $(v_1, \dots, v_n)$ Basis von $V$. \\
   *Ausgabe*: Orthonormalbasis $(w_1, \dots, w_n)$ von $(V, γ)$ \\
   *Durchführung:*
@@ -125,7 +125,7 @@
   2. Setze für $k = 2, \dots, n$
 	 \[\tilde w_k := v_k - \sum_{i = 1}^{k - 1}γ(v_k, w_i) w_i, \quad w_k := \frac{\tilde w_k}{\norm{\tilde w_k}}\]
   3. $(w_1, \dots, w_n)$ ist eine Orthonormalbasis von $(V, γ)$
-  #+end_algorithm
+  #+end_algrthm
   #+begin_proof latex
   Sei $U_k := \Lin((v_1, \dots, v_k))$ für $k = 1, \dots, n$. Wir zeigen per Induktion nach $k$, dass $(w_1, \dots, w_k)$ eine Orthogonalbasis von $(U_k, γ\mid_{U_k × U_k})$ ist
   (Behauptung folgt dann aus $k = n$). \\

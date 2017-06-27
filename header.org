@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \usepackage{polyglossia}
 #+LATEX_HEADER: \setdefaultlanguage[spelling=new, babelshorthands=true]{german}
 # #+LATEX_HEADER: \usepackage[german]{translator}
-#+LATEX_HEADER: \usepackage{siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor}
+#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor}
 #+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
@@ -209,7 +209,7 @@
 #+LATEX_HEADER: \newtheorem{remark}[defn]{Bemerkung}
 #+LATEX_HEADER: \newtheorem{note}[defn]{Anmerkung}
 #+LATEX_HEADER: \newtheorem{conc}[defn]{Folgerung}
-#+LATEX_HEADER: \newtheorem{algorithm}[defn]{Algorithmus}
+#+LATEX_HEADER: \newtheorem{algrthm}[defn]{Algorithmus}
 #+LATEX_HEADER: \newtheorem{ex}[defn]{Beispiel}
 #+LATEX_HEADER: \newtheorem{korollar}[defn]{Korollar}
 #+LATEX_HEADER: \theoremstyle{nonumberplain}

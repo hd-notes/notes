@@ -211,7 +211,7 @@
   Man kann sogar stets $T ∈ SO(n)$ erreichen (indem man gegebenfalls eine Spalte $v_i$ von $T$ durch $- v_i$ ersetzt.)
   #+end_note
   #+ATTR_LATEX: :options [Hauptachsentransformation]
-  #+begin_algorithm latex
+  #+begin_algrthm latex
   Eingabe: $A ∈ M(n × n, ℝ)$ symmetrisch \\
   Ausgabe: $T ∈ O(n)$, sodass $T^{-1} A T$ Diagonalmatrix \\
   Durchführung:
@@ -225,7 +225,7 @@
 	 des $(ℝ^n, <·,·>)$ aus Eigenvektoren von $A$
   5. Schreibe die Basisvektoren aus $\mathcal{B}$ in Spalten von $T$. Es ist dann
 	 \[T^{-1} A  T = (λ_1, \dots, λ_1, \dots, λ_k, \dots, λ_k) E_n\]
-  #+end_algorithm
+  #+end_algrthm
   #+begin_note latex
   Um $T ∈ SO(n)$ zu erreichen ersetze man gegebenfalls $v_{1,1}$ durch $-v_{1,1}$.
   #+end_note

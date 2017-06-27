@@ -146,7 +146,7 @@
   2. Typ 2-Umformung: analog
   #+end_proof
   #+ATTR_LATEX: :options [14.10 Gauß-Algorithmus zur Lösung homogener LGS]
-  #+begin_algorithm latex
+  #+begin_algrthm latex
   *Eingabe*: $A \in M(m \times n, K)$ \\
   *Ausgabe*: eine Basis von $\Lös(A, 0)$ \\
   *Durchführung*:
@@ -169,7 +169,7 @@
 	 \[w_i = \cvec{w_{i_1}; \vdots; w_{i_n}} \in K^n\]
 	 für $i = 1, \ldots, n - r$ wie folgt gegeben ist:
 	 \[\cvec{w_{ij_1}; \vdots; w_{ij_r}} = ~\text{i-te Spalte von B}, \cvec{w_{ik_1}; \vdots; w_{ik_{n - r}}} = e^i \in k^n - r\]
-  #+end_algorithm
+  #+end_algrthm
   #+begin_proof latex
   Nach 14.9 ist $\Lös(A, 0) = \Lös(B,0)$. Es ist $x \in \Lös(S,0) \iff Sx = 0 \iff$
   \[0 = \cvec{x_{j_1}; x_{j_2}; \vdots; x_{j_r}} + B\cvec{x_{k_{n1}}; \vdots; x_{k_{n - r}}} \iff -\cvec{x_{j_1}; x_{j_2}; \vdots; x_{j_r}} = B\cvec{x_{k_{1}}; \vdots; x_{k_{n - r}}}\]
@@ -239,7 +239,7 @@
   \[w_1 = \cvec{-2; 1; 0; 0}, w_2 = \cvec{-6; 0; 3; 1}\]
   #+end_ex
   #+ATTR_LATEX: :options [14.13 Gauß-Algorithmus zur Lösung inhomogener LGS]
-  #+begin_algorithm latex
+  #+begin_algrthm latex
   *Eingabe*: $A\in M(m\times n, K), b\in K^m, b\neq 0$ \\
   *Ausgabe*: $\Lös(A, b)$ \\
   *Durchführung*:
@@ -260,7 +260,7 @@
 	 wobei
 	 \[v_{j_1}; \vdots; v_{j_r} = \vdots{s_1; \vdots; s_r}, i\in \{1, \ldots, n\}\setminus\{j_1, \ldots, j_r\} \implies v_i = 0\]
 	 Es ist $\Lös(A, b) = v + \Lös(A, 0)$, wobei $\Lös(A, 0)$ mittels 14.10 bestimmt.
-  #+end_algorithm
+  #+end_algrthm
   #+begin_proof latex
   Wegen $S\mid s\in M(m\times (n + 1), K)$ ist $j_r \leq n + 1$. Falls $j_r = n + 1$, dann
   ist $\Rang(A\mid b) =$ Spaltenrang$(A\mid b) =$ Zeilenrang$(A\mid b) =$ Zeilenrang$(S\mid s) =$ Spaltenrang$(S\mid s) >$ Spaltenrang$(S) = \Rang(A) \implies \Lös(A, b) = \emptyset$.

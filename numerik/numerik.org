@@ -1475,7 +1475,7 @@
    }{
    $a_{k + 1} = x_k$\;
    $b_{k + 1} = b_k$\;}
-   \eIf($\abs{b_{k + 1} - a_{k + 1}} < TOL \abs{a_{k + 1}}$){
+   \If{$\abs{b_{k + 1} - a_{k + 1}} < TOL \abs{a_{k + 1}}$}{
    Ende
    Lösung: $1/2 (b_{k + 1} + a_{k + 1})$}}
    \end{algorithm}

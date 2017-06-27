@@ -358,7 +358,8 @@
 		⇒ \sum_{i = 1}^{m + 1} A^i S_{i - 1} &= \sum_{i = 0}^{m} A_i S_i B \\
 		⇒ A(\sum_{i = 0}^{m} A^i S_i) &= (\sum_{i = 0}^{m} A^i S_i) B \\
 		⇒ R &:= \sum_{i = 0}^{m} A^i S_i
-		\end{align*} dann $A R = R B$.
+		\end{align*}
+        dann $A R = R B$.
 	 2. Wir zeigen $R ∈ \GL(n, K)$ (wegen $A R = R B$ ist dann $A = R B R^{-1}$, also $A \approx B$, fergit.)
 		Nach Vorraussetzung ist $S ∈ \GL(n, K[t])$ $⇒ ∃ M ∈ \GL(n, K[lt]): S M = E_n, M = \sum_{i = 0}^{m} t^i M_i$ mit $M_i ∈ M(n × n, K)$, ohne Einschränkung dasselbe $n$ wie vorhin.
 		Behauptung: Mit
@@ -382,7 +383,7 @@
 	 $c_1(A), \dots, c_n(A)$ heißen die *Invariantenteiler* von $A$.
   2. Es gibt eindeutig bestimmte normierte Polynorme $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
 	 \[\Fit_l(A) = (d_l(A)) \quad l = 1, \dots, n\]
-	 Es ist $d_l(A) = \ggT(\det(B) \mid B \text{ ist \(l× l\) -Untermatrix von } P_A)$. Insbesondere ist $d_n(A) = χ_A^{char}$.
+	 Es ist \[d_l(A) = \ggT(\det(B) \mid B \text{ ist $l× l$ -Untermatrix von } P_A)\]. Insbesondere ist $d_n(A) = χ_A^{char}$.
 	 $d_1(A), \dots, d_n(A)$ heißen die *Determinantenteiler* von $A$.
   #+end_remdef
   #+begin_proof latex
@@ -394,7 +395,8 @@
 	 \[⇒ P_A \sim \begin{pmatrix}c_1(A) &   &   \\   & \ddots &   \\   &   & c_n(A)\end{pmatrix}\]
   2. $K[t]$ Hauptidealring $⇒ \Fit_l(P_A), l = 1, \dots, n$ sind Hauptideale und nach 27.16 ist $\Fit_l(P_A) = (c_1(A) · \dots · c_l(A))$ für $l = 1, \dots, n$, insbesondere $\Fit_l(P_a) \neq (0)$.
 	 Erzeuger der Hauptideale $\Fit_l(P_A)$ sind eindeutig bis auf Assoziiertheit. $⇒$ Es existieren eindeutig bestimmte normierte Polynome $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
-	 $\Fit_l(P_A) = (d_l(A))$ für $l = 1, \dots, n$. $⇒ \Fit_l(P_A) = (\det(B) \mid B \text{ ist $l × l$ -Untermatrix von } A) = (d_l(A))$.
+	 $\Fit_l(P_A) = (d_l(A))$ für $l = 1, \dots, n$. $
+     \[⇒ \Fit_l(P_A) = (\det(B) \mid B \text{ ist $l × l$ -Untermatrix von } A) = (d_l(A))\]
 	 mit $d_l(A)$ normiert und $\ggT(\dots)$ normiert $⇒$ Behauptung.
   #+end_proof
   #+begin_note latex
@@ -437,9 +439,9 @@
   Bestimme Invariantenteiler von $B$:
   \begin{align*}
   P_B &= \begin{pmatrix}t - 1 & -1 & -2 \\ -1 & t - 1 & 2 \\ 1 & -1 & t - 4\end{pmatrix} \sim \begin{pmatrix}-1 & t - 1 & 2 \\ t - 1 & -1 & -2 \\ 1 & -1 & t - 4\end{pmatrix} \\
-  &\sim \begin{pmatrix}-1 & t - 1 & 2 \\ 0 & (t - 1)^2 - 1 & -2 + 2(t - 1) \\ 0 & t - 2 & t - 2\end{pmatrix} \sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t^2 - 2t & 2t - 4 \\ 0 & t - 2 & t - 2\end{pmatrix} \\
+  &\sim \begin{pmatrix}-1 & t - 1 & 2 \\ 0 & \string(t - 1\string)^2 - 1 & -2 + 2\string(t - 1\string) \\ 0 & t - 2 & t - 2\end{pmatrix} \sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t^2 - 2t & 2t - 4 \\ 0 & t - 2 & t - 2\end{pmatrix} \\
   &\sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & t - 2 \\ 0 & t^2 -2t & 2t - 4\end{pmatrix} \sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & t^2 - 2t & -t^2 + 3 t - 4\end{pmatrix} \\
-  &\sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & -(t - 2)^2\end{pmatrix} \sim \begin{pmatrix}1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & (t - 2)^2\end{pmatrix}
+  &\sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & -\string(t - 2\string)^2\end{pmatrix} \sim \begin{pmatrix}1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & \string(t - 2\string)^2\end{pmatrix}
   ⇒ c_1(B) &= 1, c_2(B) = t - 2, c_3(B) = (t - 2)^2 \\
   d_1(B) &= 1, d_2(B) &= t - 2, d_3(B) = (t - 2)^3
   \end{align*}

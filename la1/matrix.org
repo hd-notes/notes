@@ -288,14 +288,14 @@
 		Durch Iterieren dieses Arguments erhalten wir $\lambda_1 = \ldots = \lambda_r = 0$
   #+end_proof
   #+ATTR_LATEX: :options [10.12]
-  #+begin_algorithm latex
+  #+begin_algrthm latex
   Eingabe: $W = \Lin((v_1, \ldots, v_m)) \subseteq K^n$ \\
   Ausgabe: Eine Basis $(w_1, \ldots, w_r)$ von $W$ \\
   Durchführung: \\
   1. Bilde aus den Zeilenvektoren $v_1, \ldots, v_m$ die Matrix $A\in M(m\times n, K)$
   2. Bringe die Matrix $A$ durch elementare Zeilenumformung auf ZSF $B$
   3. Die Familie $(w_1, \ldots, w_r)$ der ersten $r$ Zeilenvektoren von $B$ ist ein Basis von $W$
-  #+end_algorithm
+  #+end_algrthm
   #+ATTR_LATEX: :options [10.13]
   #+begin_ex latex
   $W = \Lin((0,0,3,-1), (0, 1, 2, 0), (0, 3, 0, 2)) \subseteq \mathbb{R}^4$

@@ -348,7 +348,7 @@
    \[\implies \det(A^T) = \sum_{\sigma\in S_n}\sgn(\sigma) a_{1\sigma(1)}\cdot \ldots \cdot a_{n\sigma(n)} = \det(A)\]
   #+end_proof
   #+ATTR_LATEX: :options [17.15]
-  #+begin_algorithm latex
+  #+begin_algrthm latex
   *Eingabe*: $A\in M(n\times n, K)$ \\
   *Ausgabe*: $\det(A)$ \\
   *Durchführung*:
@@ -356,7 +356,7 @@
 	 \[B = \begin{pmatrix}\lambda_1 & & \ast \\ & \ddots & \\ 0 & & \lambda_n\end{pmatrix}\]
   2. Ist $k$ die Zahl der benötigten Vertauschungen von Zeilen und Spalten, dann ist
 	 \[\det(A) = (-1)^{k}\lambda_1 \cdot \ldots \cdot \lambda_n\]
-  #+end_algorithm
+  #+end_algrthm
   #+begin_proof latex
   folgt aus 17.2, 17.12, 17.14.
   #+end_proof
