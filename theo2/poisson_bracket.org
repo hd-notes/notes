@@ -1,0 +1,107 @@
+* Poisson-Klammern
+** Definition und erste Anwendungen
+   Sei der Phasenraum eines Hamiltonschen Systems durch $\{q_i\}, \{p_i\}, i = 1, \dots, n$ parametrisiert. Seien $F(q, p, t)$ und $G(q, p, t)$ zwei beliebige
+   *Observable* (Funktionen auf dem Phasenraum). Dann heißt
+   \[\{F, G\} \equiv \sum_{i}(\pp{F}{q_i} \pp{G}{p_i} - \pp{F}{p_i}\pp{G}{q_i})\]
+   heißt *Poisson-Klammer* von $F$ und $G$ (wieder Observable).
+   Erste Anwendung:
+   \begin{align*}
+   \dot F &= \dd{}{t} F = \pp{F}{t} + \sum_{i} \pp{F}{q_i} \dot q_i + \sum_{i} \pp{P}{p_i} \dot p_i \\
+   &= \pp{F}{t} + \sum_{i}(\pp{F}{q_i} \pp{H}{p_i} - \pp{F}{p_i} \pp{H}{q_i}) \\
+   &= \pp{F}{t} + \{F, H\}
+   \end{align*}
+   $⇒$ Zeitliche Entwicklung einer Observablen ist durch Poisson-Klammer mit $H$ bestimmet.
+   Insbesondere
+   \[\dot H = \pp{H}{t} + \{H, H\} = \{H, H\} = 0\]
+   Allgemeiner: Falls eine Observable $F$ nicht explizit von $t$ abhängt: \\
+   $F$ bleibt erhalten $⇔$ $\{F, H\} = 0$ \\
+   Betrachte speziell die Observablen $\{q_i\}$ und $\{p_i\}$
+   \[\dot p_i = \{p_i, H\} = \sum_{j}(\pp{p_i}{q_j} \pp{H}{p_j} - \pp{p_i}{p_j} \pp{H}{q_j}) = -\pp{H}{q_i}\]
+   \[\dot q_i = \{q_i, H\} = \dots = \pp{H}{p_i}\]
+   Man nennt $\{q_i\}, \{p_i\}$ *zueinander kanonisch konjugiert*
+   \[⇔ \{q_i, q_j\} = 0, \{p_i, p_j\} = 0, \{q_i, p_j\} = δ_{ij}\]
+   Nachrechnen:
+   \begin{align*}
+   \{q_i, p_j\} &= \sum_{k}(\pp{q_i}{q_k} \pp{p_j}{p_k} - \pp{q_i}{p_k} \pp{p_j}{q_k}) \\
+   &= \sum_{k} δ_{ik} δ_{jk} = δ_{ij}
+   \end{align*}
+** Die Poissonklammer als Lie-Algebra Operation
+   $V$ Vektroraum, $[·, ·]$ eine binäre Operation (also Abbildung $V × V \to V, (v, w) ↦ [v, w]$). Der Tupel $(V, [·, ·])$ ist eine Lie-Algebra falls:
+   1. $[v, w] = - [w, v]$ \hfill (Antisymmetrie)
+   2. $[α v + β w, u] = α[v, u] + β[w, u]$ \hfill (Linearität)
+   3. $[u,[v,w]] + [v,[w,u]] + [w,[u,v]] = 0$ \hfill (Jacobi-Identität)
+   #+begin_ex latex
+   1. kleine Drehungen
+   2. Raum der $n × n$ Matrizen wird mit
+	  \[[·,·]: A, B ↦ [A,B] \equiv A B - B A\]
+	  zur Lie-Algebra
+   #+end_ex
+   Für uns entscheidend: Die Poisson-Klammer macht den Raum der Observablen zur Lie-Algebra.
+** Poisson-Klammern und Vektorfelder
+   \[\dot q = \pp{H}{p} , \dot p = -\pp{H}{q}\]
+   Man kann die Bewegung auf Phasenraum mit Änderung von Observablen verbinden:
+   $F = F(ξ), ξ = \{q, p\}$
+   \[\dd{F}{t} = \pp{F}{ξ^i} \dd{ξ^i}{t} = \dd{ξ^i}{t} \pp{F}{ξ^i} \equiv V^i(ξ) \pp{F}{ξ_i}\]
+   Mit solcher Bewegung ist immer auf natürliche Weise ein Differentialoperator verbunden:
+   \[\dd{F}{t} = (V^i{ξ} \pp{}{ξ_i} F \equiv D F)\]
+   Zurück zum speziellen Fall der Hamilton Dynamik:
+   \[\dd{F}{t} = - \{H, F\} = -(\pp{H}{q_i} \pp{}{p_i} - \pp{H}{p_i} \pp{}{q_i})F \equiv -D_H F\]
+   $H$ induziert Bewegung auf Phasenraum $\to$ Vektorfeld $\to$ Differentialoperator. $H$ ist nur *eine* der vielen Observablen. Wir könne auch
+   jede andere Observalbe nehmen und analog Vektorfeld / Bewegung / Differentialoperator definieren.
+   $H$ induziert
+   \[\dd{F}{t} = -D_H F = \{F, H\}\]
+   $G = G(q, p)$ induziert:
+   \[\dd{F}{t} = -D_G F = \{F, G\}\]
+   Entscheidende Beobachtung (ohne Beweis): Das obige induziert einen Isomorphismus von Lie-Algebren \\
+   \[
+   \begin{array}{ccc}
+   \text{Observable} & \longleftrightarrow & \text{Differentialoperator} \\
+   \{·, ·\}	& \longleftrightarrow & [D_F, D_G] = \underbrace{D_F D_G - D_G D_F}_{\text{Kommutator}}
+   \end{array}\]
+   Beachte $[D_F, D_G] \neq 0$ weil Ableitung in $D_F$ auf Koeffizientenfunktionen von $D_G$ wirken (und umgekehrt). Beachte: Es entsteht nur Differentialoperator 1. Ordnung weil: $[\partial / \partial x, \partial / \partial y] = 0$, etc.
+   #+begin_ex latex
+   (unphysikalisch):
+   \[D_1 \equiv \pp{}{x}, D_2 \equiv x \frac{}{x}\]
+   \begin{align*}
+   D_1 D_2 f &= D_1 (x f') = f' + x f'' \\
+   D_2 D_1 f &= D_2 (f') = x f'' \\
+   \string(D_1 D_2 - D_2 D_1\string) f &= f' + x f'' - x f'' = f' = D_1 f \\
+   ⇒ [D_1, D_2] &= D_1
+   \end{align*}
+   #+end_ex
+   *Erhaltungsgrößen* sind Observablen, welche unter der durch $H$ induzierten Bewegung invariant sind: das heißt $D_H F = 0, \{H, F\} = 0$. Die zugehörge *Symmetrie* ist die durch $D_F$ induzierte Bewegung
+   ("Umkehrung von Noether")
+** Die Drehimpuls Lie-Algebra in die Hamilton-Mechanik
+   Aus TP1:
+   \[R(ξ)= \mathbb{1} + ε_i T_i; \quad (T_i)_{jk} = ε_{ijk}\]
+   Schon erwähint: $T_i$ - Basis von $SO(3) = \Lie(SO(3))$
+   Kommutator macht $SO(3)$ zur Lie-Algebra:
+   \[[\frac{1}{2} T_I, \frac{1}{2} T_j] = ε_{ijk}(\frac{1}{2} T_k)\]
+   Noether-Theorem ordnet den durch die $T_i$ generierten Symmetrien Erhaltungsgröhen zu, und zwar die Drehimpulskomponenten:
+   \[L_i = ε_{ijk} x_j p_k \qquad (q_i \equiv x_i)\]
+   Man prüft mit der Definiton der Poisson-Klammer leicht nach, dass
+   \[\{L_i, L_j\} = ε_{ijk} L_k\]
+   Die $L_i$ generieren auf Phasenraum die Bewegung die den zu $T_i$ gehörenden Symmetrien entspricht.
+** Satz von Liouville
+   Schreibe:
+   \[\v ξ(t) = \{q_1(t), \dots, q_n(t), p_1(t), \dots, p_n(t)\}\]
+   Die sei Trajektorie im Phasenraum. Die entsprechenden Geschwindigkeiten seien:
+   \[\v ω(t) \equiv \dd{\v ξ(t)}{t} = \{\pp{H}{p_i}, \dots, \pp{H}{p_n}, - \pp{H}{q_i}, \dots, -\pp{H}{q_n}\}\]
+   Berechne:
+   \begin{align*}
+   \Div \v ω &= \v ∇_ξ \v ω = \v ∇_{q,p} \v ω = \dots \\
+   &= \sum_{i = 1}^{n}(\pp{ω_i}{q_i} + \pp{ω_{n + i}}{p_i}) = \sum_{i = 1}^{n}(\frac{\partial^2 H}{\partial q_i p_i} - \frac{\partial^2 H}{\partial q_i p_i}) \\
+   &= 0
+   \end{align*}
+   Wenn $\Div \v ω = 0$ für Geschwindigkeitsfeld dann spricht man von *inkompressibler Strömung*. In der Tat: Gauß $⇒$
+   \[∫_0 \v ω \d \v f = 0\]
+   $⇒$ pro Zeiteinheit strömnt aus dem Volumen, das von O umgeben ist, gleichviel hinein wie hinaus. Anschaulich folgt damit:
+   #+ATTR_LATEX: :options [Satz von Liouville]
+   #+begin_thm latex
+   Die Größe von Teilvolumina des Phasenraums ändert sich bei der durch $H$ definierten Strömung nicht.
+   #+end_thm
+   Genauere Begründung: Wähle zwei Volumina $V, V'$:
+   \begin{align*}
+   Δ V &= V' - V = ∫_O \d \v F · Δ \v ξ = ∫_O \d \v f · \v ω Δ t \\
+   \dd{V}{t} &= ∫_O \d \v F · \v ω \underarrow[=]{\text{Gauß}} ∫_V \d^{2n} ξ (\v ∇ \v ω) = 0
+   \end{align*}

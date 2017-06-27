@@ -1,0 +1,308 @@
+* Ringe, Ideale und Teilbarkeit
+  In diesem Abschnitt seien $R, S$ stets kommutative Rnge (bei uns immer mit Eins)
+  #+ATTR_LATEX: :options [Ringhomomorphismus]
+  #+begin_defn latex
+  $φ: R \to S$ Abbildung. $φ$ heißt *Ringhomomorphismus* genau dann wenn folgende	Bedingungen erfüllt sind:
+  - (RH1) $φ(a + b) = φ(a) + φ(b) ∀ a, b ∈ R$
+  - (RH2) $φ(a b) = φ(a)φ(b) ∀ a, b ∈ R$
+  -	(RH3) $φ(1_R) = 1_S$
+  #+end_defn
+  #+ATTR_LATEX: :options [Ideal]
+  #+begin_defn latex
+  $I ⊆ R$. $I$ heißt ein *Ideal* in $R$ genau dann wenn die folgenden Bedingungen erfüllt sind:
+  - (I1) $0 ∈ I$
+  - (I2) $a, b ∈ I ⇒ a + b ∈ I$
+  -	(I3) $r ∈ R, a ∈ I ⇒ r a ∈ I$
+  #+end_defn
+  #+begin_ex latex
+  1. $\{0\}, R$ sind Ideale in $R$
+  2. FÜr $n ∈ ℤ$ ist $n ℤ \{n a \mid a ∈ ℤ\}$ ist ein Ideal
+  #+end_ex
+  #+begin_remdef latex
+  $φ: R \to S$ Ringhomomorphismus. Dann gilt:
+  1. $J ⊆ S$ Ideal $⇒ φ^{-1}(J) ⊆ R$ Ideal
+  2. $\ker φ := \{a ∈ R \mid φ(a) = 0\} ⊆ R$ Ideal
+  3. $φ$ injektiv $⇔ \ker φ = \{0\}$
+  4. $I ⊆ R$ Ideal und $φ$ surjektiv $⇒ φ (I) ⊆ S$ Ideal
+  5. $\im φ	:= φ(R)$ ist ein Unterrung von $S$ (das heißt ein Ring bezügilch der eingeschränkten Verknüpfungen.)
+  #+end_remdef
+  #+begin_proof latex
+  1. (I1): $0 ∈ φ^{-1}(J)$, denn $φ(0) = φ(0 + 0) = φ(0) + φ(0) ⇒ φ(0) = 0 ∈ J ⇒ 0 ∈ φ^{-1}(J)$ \\
+     (I2): $a, b ∈ φ^{-1}(J) ⇒ φ(a), φ(b) ∈ J ⇒ φ(a + b) = φ(a) + φ(b) ∈ J ⇒ a + b ∈ φ^{-1}(J)$ \\
+	 (I3): $r ∈ R, a . φ^{-1}(J) ⇒ φ(a) ∈ J ⇒ φ(r a) = φ(r) φ(a) ∈ J ⇒ ra ∈ φ^{-1}(J)$
+  2. aus 1., wegen $\ker φ = φ^{-1}(\{0\}), \{0\} ⊆ S$ Ideal
+  3., 4., 5.: nachrechnen
+  #+end_proof
+  #+begin_note latex
+  4. [@4] wird falsch, wenn man die Vorraussetzung $φ$ surjektiv weglässt: Die kanonische Inklusion $i: ℤ \to ℚ, x ↦ x$ ist ein Ringhomomorphismus, $ℤ$ ist ein Ideal in $ℤ$,
+	 aber $ℤ = i(ℤ)$ ist kein Ideal in $ℚ$, denn:
+	 \[\underbrace{\frac{1}{3}}_{∈ ℚ} · \underbrace{2}_{∈ ℤ} = \frac{2}{3} \dot ∈ ℤ\]
+	 $ℤ$ ist zumindest ein Unterring von $ℚ$.
+  #+end_note
+  #+begin_defthm latex
+  $I ⊆ R$ Ideal. Dann ist durch $r_1 \sim r_2 \xLeftrightarrow{\text{Def}} r_1 - r_2 ∈ I$ eine Äquivalenzrelation auf $R$ gegeben, welche die zusätzliche Eigenschaft
+  \[r_1 \sim r_2, s_1 \sim s_2 ⇒ r_1 + s_1 \sim r_2 + s_2, r_1 s_1 \sim r_2 s_2\]
+  hat ("Kongruenszrelation"). Die Äquivalenzklasse von $r ∈ R$ ist durch
+  \[\bar r := r + I := \{r + a \mid a ∈ I\}\]
+  gegeben und heßt die *Restklasse* von $r$ modulo $I$. Die Menge die Restklassen bezeichnen wir mit $\faktor{R}{I}$.
+  #+end_defthm
+  #+begin_proof latex
+  1. "$\sim$" ist Äquivalenzrelation: nachrechnen
+  2. Verträglichkeit mit $+, ·$: Sei $r_1 \sim r_2, s_1 \sim s_2 ⇒ r_1 - r_2 ∈ I, s_1 - s_2 ∈ I$
+	 \begin{align*}
+	 ⇒ (r_1 + s_1) - (r_2 - s_2) &= \underbrace{(r_1 - r_2)}_{∈ I} + \underbrace{(s_1 - s_2)}_{∈ I} ∈ I  ⇒ r_1 + s_1 \sim r_2 + s_2 \\
+  	 \intertext{Außerdem:}
+  	 r_1 s_1 - r_2 s_2 &= \underbrace{r_1 (s_1 - s_2)}_{∈ I} + \underbrace{s_2(r_1 - r_2)}_{∈ I} ∈ I ∈ r_1 s_1 \sim r_2 s_2
+     \end{align*}
+  #+end_proof
+  #+begin_defthm latex
+  $I ⊆ R$ Ideal. Dann wird $\faktor{R}{I}$ mit der Addition
+  \[+: \faktor{R}{I} × \faktor{R}{I} \to \faktor{R}{I}, \bar r + \bar s := \overline{r + s}\]
+  und der Multiplikation
+  \[·:\faktor{R}{I} × \faktor{R}{I} \to \faktor{R}{I}, \bar r · \bar s := \overline{r s}\]
+  zu einem kommutativen Ring, dam *Faktorring* (*Restklassenring*) $\faktor{R}{I}$. Die Abbildung $π: R \to \faktor{R}{I}, r ↦ \bar r$ ist ein surjektiver Ringhomomorphismus mit $\ker π = I$.
+  #+end_defthm
+  #+begin_proof latex
+  *Wohldefiniertheit* von "$+$","$·$": Nach 26.5 ist für $r_1, r_2, s_1, s_2 ∈ R$ mit $r_1 \sim r_2, s_1 \sim s_2$ auch $r_1 + s_1 \sim r_2 + s_2, r_1 s_1 \sim r_2 s_2$. \\
+  *Ringeigenschaften*: vererben sich aufgrund der vertreterweisen Definiton von $R$. \\
+  $π$ ist Ringhomomorphismus nach Konstruktion: $π(a + b) = \overline{a + b} = \bar a + \bar b = π(a) + π(b)$, analog für "$·$", $π(1) = \bar 1$ \\
+  $\ker π= \{r ∈ R \mid \bar r = \bar 0\} = \{r ∈ R \mid r \sim 0\} = \{r ∈ R \mid r - 0 ∈ I\} = I$
+  #+end_proof
+  #+begin_note latex
+  Insbesondere sind die Ideale in $R$ genau die Kerne von Ringhomomorphismen, die von $R$ ausgehen.
+  #+end_note
+  #+begin_ex latex
+  Ist $R = ℤ, I = n ℤ$ mit $n ∈ ℕ$, dann erhält man die aus der LA1 bekannten Restklassenringe $\faktor{ℤ}{nℤ}$ (vergleiche 6.4).
+  #+end_ex
+  #+ATTR_LATEX: :options [26.8 (Homomorphiesatz für Ring)]
+  #+begin_thm latex
+  $φ: R \to S$ Ringhomomorphismus. Dann gibt es einen Ringisomorphismus
+  \[Φ: \faktor{R}{\ker φ} \to \im φ, \bar r = r + \ker φ ↦ φ(r)\]
+  #+end_thm
+  #+begin_proof latex
+  *Wohldefiniertheit von $Φ$*: Seien $r_1, r_2 ∈ R$ mit $\bar r_1 = \bar r_2$
+  \[⇒ r_1 - r_2 ∈ \ker φ ℝ φ(r_1 - r_2) = 0 ⇒ φ(r_1) = φ(r_2)\]
+  *$Φ$ ist Ringhomomorphismus:
+  \[Φ(\bar r_1 + \bar r_2) = Φ(\overline{r_1 + r_2}) = φ(r_1 + r_2) = φ(r_1) + φ(r_2) = Φ(\bar r_1) + Φ(\{bar r_2\})\]
+  analog für "$·$", $Φ(\bar 1) = φ(1) = 1$ \\
+  *$Φ$ ist injektiv*: Sei $r ∈ R$ mit $Φ(\bar r) = 0$
+  \[⇒ φ(r) = 0 ⇒ r ∈ \ker φ ⇒ \bar r = r + \ker φ = \ker φ = \bar 0\]
+  das heißt $\ker Φ = \{\bar 0\}$. \\
+  *$Φ$ ist surjektiv*: nach	Konstruktion.
+  #+end_proof
+  #+begin_ex latex
+  $K$ Körper, $R = K[t], φ: K[t] \to K, f ↦ f(0)$. $φ$ ist Ringhomomorphismus (nachrechnen), $\im φ = K, \ker φ = \{f ∈ K[t] \mid \im f(0) = 0\} = \{f g \mid g ∈ K[t]\} = t K[t]$.
+  Wir erhalten einen Ringisomorphismus
+  \[Φ: \faktor{K[t]}{t K[t]} \to K, f + t K[t] ↦ f(0)\]
+  #+end_ex
+  #+ATTR_LATEX: :options [26.10]
+  #+begin_defn latex
+  $x ∈ R$ heißt *Nullteiler* $\xLeftrightarrow{\text{Def}}$ Es existiert $y ∈ R, y \neq 0$ mit $x y = 0$. \\ $R$ heißt *Nullteiler* (*Integritätsbereich*) $\xLeftrightarrow{\text{Def}}$ $R \neq 0$ und $0 ∈ R$ der einzige Nullteiler in $R$.
+  #+end_defn
+  #+begin_note latex
+  $R \neq 0 ⇒ 0$ ist ein Nullteiler in $R$ (wegen $0 · 1 = 0, 0 \neq 1$)
+  #+end_note
+  #+begin_ex latex
+  1. $ℤ$ ist nullteilerfrei
+  2. $\bar 2 ∈ \faktor{ℤ}{6ℤ}$ ist Nullteiler wegen $\bar 2 · \bar 3 = \bar 0$ ist $\faktor{ℤ}{6ℤ}$
+  3. Analog zu $K[t]$ kann man den Polynomring $R[t]$ erklären. Es gilt dann: $R$ nullteilerfrei $⇒ R[t]$ nullteilerfrei. (Übungen)
+  #+end_ex
+  #+ATTR_LATEX: :options [Einheit]
+  #+begin_remdef latex
+  $v ∈ R$ heißt *Einheit* $\xLeftrightarrow{\text{Def}}$ es existiert ein $y ∈ R$ mit $x y = 1$.
+  $R^{\ast} := \{x ∈ R \mid x \text{ ist Einheit }\}$ bildet eine abelsche Gruppe bezüglich "$·$".
+  #+end_remdef
+  #+begin_proof latex
+  nachrechnen.
+  #+end_proof
+  #+begin_ex latex
+  1. $ℤ^{\ast} = \{1, -1\}$, dann: $1 · 1 = 1, (-1)(-1) = 1, a b = 1 ⇒ \abs{a} \abs{b} = 1 ⇒ \abs{a} = \abs{b} = 1$
+  2. $K$ Körper $⇒ K^{\ast} = K \setminus \{0\}$
+  3. $R[t]^{\ast} = R^{\ast}$ (Übungen)
+  #+end_ex
+  #+begin_defn latex
+  $a_1, \dots, a_n ∈ R, I ⊆ R$ Ideal.
+  \[(a_1, \dots, a_n) := \{\sum_{i = 1}^{n} a_i r_i \mid r_1, \dots, r_n ∈ R\}\]
+  heißt das *von $a_1, \dots, a_n$ erzeugte Ideal*. $I$ heißt *Hauptideal* $\xLeftrightarrow{\text{Def}}$ es existiert ein $a ∈ R$ mit $I = (a) = \{r a \mid r ∈ R\} =: R a$. \\
+  $R$ heißt *Hauptidealring* (HIR) $\xLeftrightarrow{\text{Def}}$ $R$ ist nullteilerfrei und jedes Ideal in $R$ ist ein Hauptideal.
+  #+end_defn
+  #+begin_note latex
+  $(a_1, \dots, a_n)$ ist ein Ideal in $R$ (leicht nachzurechnen)
+  #+end_note
+  #+begin_remark latex
+  $Z$ ist ein Hauptidealring. Ist $I ⊆ ℤ$ ein Ideal, dann existiert ein eindeutig bestimmtes $n ∈ ℕ_0$ mit
+  \[I = (n) = n ℤ\]
+  #+end_remark
+  #+begin_proof latex
+  *$ℤ$ nullteilerfrei*: klar. \\
+  *Existenz*: Sei $I ⊆ ℤ$ Ideal.
+  1. Fall: $I = \{0\} = (0)$, dann fertig
+  2. Fall: $I \neq \{0\}$. Mat $a ∈ I$ ist auch $-a = (-1) a ∈ I$ somit $I ∩ ℕ \neq \emptyset$. $I ∩ ℕ$ besitzt ein kleinstes Element $b$. Behauptung: $I = (b)$ \\
+	 "$\supseteq$" $x ∈ (b) ⇒$ es existiert ein $r ∈ ℤ$ mit $x = r b ⇒ x ∈ I$ \\
+	 "$⊆$" Sei $x ∈ I ⇒$ es	existieren $q, r ∈ ℤ$ mit $x = q b + r, 0 \leq r < b$
+	 $⇒ r = x - q b ∈ I$. Wegen Minimalität von $b$ in $I ∩ N$ folgt $r = 0 ⇒ x = q b ∈ (b)$
+  *Eindeutigkeit*: Seien $m, n ∈ ℕ_0$ mit $(m) = (n)$. Offenbar gilt: $m = 0 ⇔ n = 0$. Im Folgenden seien $m, n \neq 0$. Wegen $(m) = (n)$ ist $m ∈ (n), n ∈ (m) ⇒$ es existieren $r_1, r_2 ∈ ℤ$ mit
+  $m = r_1 n$ und $n = r_2 m$
+  \[⇒ m = r_1 n = r_1 r_2 m ⇒ r_1 r_2 = 1 ⇒ r_1 = r_2 = 1 ∨ r_1 = r_2 = -1 \xRightarrow{m, n ∈ ℕ_0} r_1 = r_2 = 1 ⇒ m = n\]
+  #+end_proof
+  #+begin_ex latex
+  $ℤ[t]$ ist kein Hauptidealring: Es gibt $f ∈ ℤ[t]$ mit $(2, t) = (f)$, dann: Annahme: Es existiert $f ∈ ℤ[t]$ mit $2 = h f ⇒ \deg h = \deg f = 0$, das heißt $f$ ist konstantes Polynom, etwa $f = a$ für ein
+  $a ∈ ℤ$. Außerdem existiert $\tilde h ∈ ℤ[t]$ mit $t = \tilde h f = h a ⇒ a = \pm 1 ⇒ f = \pm 1$. Aber: $\pm 1 \not ∈ (2, t)$, dann andernfalls existieren $u, v ∈ ℤ[t]$ mit $\pm 1 = 2 u + t v \xRightarrow{t = 0} \pm 1 = 2 u(0) + 0 · v(0) = 2 u(0)$
+  #+end_ex
+  #+begin_defn latex
+  $R$ nullteilerfrei, $a, b ∈ R$. $b$ heißt ein *Teiler* von $a$ (Notation: $b \mid a$) $\xLeftrightarrow{\text{Def}}$ es existiert ein $c ∈ R$ mit $a = b c$. \\
+  $a, b$ heißen assoziiert (Notation: $a \estimates b$) $\xLeftrightarrow{\text{Def}}$ $a \mid b$ und $b \mid a$
+  #+end_defn
+  #+begin_ex latex
+  $R = ℤ, a ∈ ℤ ⇒ a \estimates - a$
+  #+end_ex
+  #+begin_remark latex
+  $R$ nullteilerfrei, $a, b ∈ R$. Dann sind äquivalent:
+  1. $a \estimates b$
+  2. Es existiert $e ∈ ℝ^{\ast}$ mit $a = b e$
+  3. $(a) = (b)$
+  #+end_remark
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $a \estimates b ⇒ a \mid b$ und $b \mid a ⇒$ es existieren $c, d ∈ R$ mit $b = a c, a = b d$
+	 \[⇒ b = a c = b d c ⇒ b(1 - d c) = 0\]
+	 1. Fall: $b = 0 ⇒ a = b d = 0$. Setze $e :=$, fertig: $a = b · 1$
+	 2. Fall: $b \neq 0 ⇒ 1 - d c = 0 ⇒ d c = 1 ⇒ c, d ∈ R^{\ast}$. Setze $e := d$, dann $a = b d = b c$
+  2. Sei $a = b e$ mit $e ∈ R^{\ast} ⇒ a ∈ (b) ⇒ (a) ⊆ (b)$. Wegen $e ∈ R^{\ast}$ ist $b = e^{-1} a ⇒ (b) ⊆ (a)$
+  3. Sei $(a) = (b) ⇒ a ∈ (b) ⇒$ es existiert $c ∈ R$ mit $a = b c ⇒ b \mid a$. Analog: $a \mid b$ also $a \estimates b$
+  #+end_proof
+  #+begin_defn latex
+  $R$ nullteilerfrei, $a_1, \dots, a_n ∈ R$. $d ∈ R$ heißt *größter gemeinsamer Teiler* von $a_1, \dots, a_n \xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt:
+  - (GGT1) $d \mid a_1, \dots, d \mid a_n$
+  -	(GGT2) $c \mid a_1, \dots, c \mid a_n ⇔ c \mid d$
+  #+end_defn
+  #+begin_proof latex
+  Wir bezeichnent die Menge aller größten gemeinsamen Teiler von $a_1, \dots, a_n$ mit $\GGT(a_1, \dots, a_n)$.
+  #+end_proof
+  #+begin_note latex
+  - Seien $d_1, d_2 ∈ \GGT(a_1, \dots, a_n)$, dann folgt $d_1 \mid d_2$ und $d_2 \mid d_1$, also $d_1 \estimates d_2$.
+  - Ist $d ∈ \GGT(a_1, \dots, a_n)$ und $d' \estimates d$, dann ist $d' ∈ \GGT(a_1, \dots, a_n)$
+  -	Ohne zusätzliche Vorraussetzungen an $R$ kann man im allgemeinen nicht erwarten, dass $\GGT(a_1, \dots, a_n) \neq \emptyset$. Zum Beispiel ist $R = ℤ[\sqrt{-3}] = \{a + b \sqrt{-3} \mid a, b ∈ ℤ\} ⊆ ℂ$ ist
+	$\GGT(4, 2 · (1 + \sqrt{-3})) = \emptyset$ (Übungen)
+  #+end_note
+  #+begin_remark latex
+  $R$ Hauptidealring, $a_1, \dots, a_n ∈ R$. Dann gilt:
+  1. $\GGT(a_1, \dots, a_n) \neq \emptyset$
+  2. $d ∈ \GGT(a_1, \dots, a_n) ⇔ (d) = (a_1, \dots, a_n)$
+  #+end_remark
+  #+begin_proof latex
+  1. $R$ Hauptidealring $⇒$ es existiert $\tilde d ∈ R$ mit $(a_1, \dots, a_n) = (\tilde d)$. Behauptung: $\tilde d ∈ \GGT(a_1, \dots, a_n)$, denn: \\
+     (GGT1): $a_1 ∈ (a_1, \dots, a_n) = (\tilde d) ⇒ \tilde d \mid a_i ∀ i = 1, \dots n$ \\
+     (GGT2): Wegen $\tilde d ∈ (a_1, \dots, a_n)$ existieren $r_1, \dots, r_n ∈ R$ mit $\tilde d = r_1 a_1 + \dots + r_n a_n$. Ist $c ∈ R$ mit $c \mid a_1, \dots, c \mid a_n$, dann folgt
+     $c \mid r_1 a_1 + \dots + r_n a_n = \tilde d$
+  2. "$⇒$" $d ∈ \GGT(a_1, \dots, a_n) ⇒ d \estimates \tilde d ⇒ (d) = (\tilde d) = (a_1, \dots, a_n)$
+	 "$\impliedby$" Sei $(d) = (a_1, \dots, a_n) ⇒ d ∈ \GGT(a_1, \dots, a_n)$ mit Argument aus dem Beweis von 1.
+  #+end_proof
+  #+begin_note latex
+  - Im Fall $R = ℤ, a_1, \dots, a_n ∈ ℤ$ ist $\GGT(a_1, \dots, a_n) ∩ ℕ_0 = \{d\}$ für ein $d ∈ ℕ_0$ (beachte $ℤ^{\ast} = \{\pm 1\}$). Mann nennt dann $d$ *den* größten gemeinsamen Teiler von $a_1, \dots, a_n$
+    \[d =: \ggT(a_1, \dots, a_n)\]
+  - Im Fall $R = K[T]$ (wobei $K$ Körper, in 27, dies ein Hauptidealring), $f_1, \dots, f_n ∈ K[t]$, nicht alle $f_i = 0$, existiert ein eindeutig bestimmtes normiertes Polynom $d ∈ K[t]$ mit $d ∈ \GGT(f_1, \dots, f_n)$ (bechte: $K[t]^{\ast} = K^{\ast}$). Man nennt
+	\[d =: \ggT(f_1, \dots, f_n)\]
+	*den* größten gemeinsamen Teiler von $f_1, \dots, f_n$ und setzt
+	\[\ggT(0, \dots, 0) := 0\]
+  #+end_note
+  #+begin_conc latex
+  $R$ Hauptidealring, $a, b ∈ R, d ∈ \GGT(a, b)$. Dann existieren $u, v ∈ R$ mit $d = u a + v b$.
+  #+end_conc
+  #+begin_proof latex
+  aus 26.21: $(d) = (a, b)$
+  #+end_proof
+  #+begin_defn latex
+  $R$ nullteilerfrei, $p ∈ R \setminus (R^{\ast} ∪ \{0\})$
+  - $p$ heißt *irreduzibel* $\xLeftrightarrow{\text{Def}}$ Aus $p = ab$ mit $a, b ∈ R$ folgt stets $a ∈ R^{\ast}$ oder $b ∈ R^{\ast}$
+  -	$p$ heißt *Primelement* $\xLeftrightarrow{\text{Def}}$ Aus $p \mid a b$ folgt stets $p \mid a$ oder $p \mid b$
+  #+end_defn
+  #+begin_note latex
+  $p$ irreduzibel / Primelement, $p' \estimates p ⇒ p'$ irreduzibel / Primelment
+  #+end_note
+  #+begin_ex latex
+  irreduzible Elemente inn $ℤ =$ Primzahlen $p$ aus $N$ sowie deren Negative $- p$. Primelelemente in $ℤ$?
+  #+end_ex
+  Frage: Zusammenhang zwischen irreduziblen Elementen und Primelementen?
+  #+begin_remark latex
+  $R$ nullteilerfrei, $p ∈ R \setminus (R^{\ast} ∪ \{0\})$ Primelement. Dann ist $p$ irreduzibel.
+  #+end_remark
+  #+begin_proof latex
+  1. Wir setzet $S := \faktor{R}{(p)}$. Behauptung $S$ ist nullteilerfrei, denn: Wegen $p \not ∈ R^{\ast}$ ist $(p) \neq R$, das heißt $S \neq 0$. Sind $\bar x, \bar y ∈ S$ mit
+	 $\bar x \bar y = \bar 0$ und $\bar y \neq \bar 0$, das heißt $x y ∈ (p)$ und $y \not ∈ (p) ⇒ p \mid x y$ und $p \not \mid p ⇒ p \mid x ⇒ \bar x = \bar 0$
+  2. Sei $p = a b$ mit $a, b ∈ R$. In $s = \faktor{R}{(p)}$ ist $\bar 0 = \bar p = \bar a \bar b ⇒ \bar a = \bar 0 ∨ \bar b = \bar 0$. Ohne Einschränkung $\bar a = \bar 0 ⇒$ Es existierte $d ∈ R$ mit
+	 $a = p d ⇒ p = a b = p d b ⇒ p(1 - d b) = 0 ⇒ 1 - d b = 0 ⇒ d b = 1 ⇒ b ∈ R^{\ast}$
+  #+end_proof
+  #+begin_note latex
+  Es gibt Beispiele für irreduzible Elemente, die keine Primelemente sind (Übungen)
+  #+end_note
+  #+begin_thm latex
+  $R$ Hauptidealring, $p ∈ R \setminus (R^{\ast} ∪ \{0\})$. Dann sind äquivalent:
+  1. $p$ ist irreduzibel
+  2. $p$ ist Primelement
+  #+end_thm
+  #+begin_proof latex
+  2. [@2] $⇒$ 1. aus 26.25
+  1. [@1] $\impliedby$ 2. Sei $p$ irreduzibel.
+	 1. Behauptung: Ist $I ⊆ R$ mit $(p) ⊊ I$, dann ist $I = R$, denn: Sei $(p) ⊊ I$. Da $R$ Hauptidealring existiert $a ∈ R$ mit $I = (a) ⇒ ∃ c ∈ R: p = a c ⇒ a ∈ R^{\ast} ∨ c ∈ ℝ^{\ast}$. Falls $c ∈ R^{\ast}$, dann $(p) = (a) = I\lightning$ Also $a ∈ R^{\ast}$, das heißt $(a) = I = R$.
+	 2. $\faktor{R}{(p)}$ ist ein Körper, denn:
+		Sei $\bar x ∈ \faktor{R}{(p)}, \bar x \neq \bar 0 ⇒ x \not ∈ (p) ⇒ I := (x, p)$ ist ein Ideal in $R$ mit $(p) ⊊ I ⇒ I = R ⇒ 1 ∈ I ⇒ ∃ u, v ∈ R: 1 = u x + v p ⇒ \bar 1 = \bar u \bar x + \bar v \underbrace{\bar p}_{= 0} = \bar u \bar x$
+	 3.	$p$ ist Primelement, denn: Seien $a, b ∈ R$ mit $p \mid a b ⇒$ in $\faktor{R}{(p)}$ ist $\bar 0 = \bar p = \bar a \bar b$. Nach 2. ist $\faktor{R}{(p)}$ ein Körper, also nullteilerfrei (6.11) $⇒ \bar a = \bar 0 ∨ \bar b = \bar 0 ⇒ p \mid a ∨ p \mid b$
+  #+end_proof
+  #+begin_note latex
+  - Beweis hat gezeigt: $R$ Hauptidealring, $p$ irreduzibles Element in $R$, dann ist $\faktor{R}{(p)}$ ein Körper.
+  -	Primelement in $ℤ =$ irreduzibles Element in $ℤ$
+  #+end_note
+  Frage: Wann gilt in $R$ ein Analogon des Satzes über die eindeutige Primfaktorzerlegung in $ℤ$?
+  #+begin_defn latex
+  $R$ nullteilerfrei. $R$ heißt *faktoriell* $\xLeftrightarrow{\text{Def}}$ Jedes $a ∈ R \setminus (R^{\ast} ∪ \{0\})$ lässt sich eindeutig bis auf Reihenfolge und Assoziiertheit als Produkt
+  irreduzibler Elemente aus $R$ schreiben, das heißt es existieren irreduzible Elemente $p_1, \dots, p_r ∈ R$ mit
+  $a = p_1 · \dots · p_r$  und sind $q_1, \dots, q_s ∈ R$ irreduzible Elemente mit $a = q_1 · \dots · q_s$, so ist $r = s$ und nach Umordnen ist $p_i \estimates q_i$ für $i = 1, \dots, r$
+  #+end_defn
+  Ziel: Hauptidealringe sind faktoriell.
+  #+begin_defn latex
+  $R$ heißt *noethersch* $\xLeftrightarrow{\text{Def}}$ Für jede aufsteigende Kette $I_1 ⊆ I_2 ⊆ \dots$ von Idealen in $R$ existiert ein $n ∈ ℕ$ mit $I_k = I_n$ für alle $k \geq n$
+  #+end_defn
+  #+begin_remark latex
+  $R$ Hauptidealring. Dann ist $R$ noethersch.
+  #+end_remark
+  #+begin_proof latex
+  Sei $I_1 ⊆ I_2 ⊆ \dots$ eine aufsteigende Kette von Idealen aus $R$. Setze
+  \[I := \cup_{k \geq 1} I_k\]
+  1. $I$ ist ein Ideal in $R$, dann: \\
+	 (I1) $0 ∈ I_k ∀ k ∈ ℕ ⇒ 0 ∈ I$ \\
+	 (I2) Seien $a, b ∈ I ⇒ ∃ k, l ∈ ℕ: a ∈ I_k, b ∈ I_l$. Mit $m := \max \{k, l\}$ ist $a, b ∈ I_m ⇒ a + b ∈ I_m ⊆ I$ \\
+	 (I3) $a ∈ I, r ∈ R ⇒ ∃ k ∈ ℕ: a ∈ I_k ⇒ r a ∈ I_k ⊆ I$
+  2. Wegen 1. und $R$ Hauptidealring existiert ein $a ∈ R$ mit $I = (a)$, insbesondere $a ∈ I ⇒ ∃ n ∈ ℕ: a ∈ I_n ⇒ (a) ⊆ I_n ⊆ I = (a) ⇒ I_n = I ⇒ I_k = I = I_n ∀ k \geq n$
+  #+end_proof
+  #+begin_thm latex
+  $R$ Hauptidealring. Dann ist $R$ faktoriell.
+  #+end_thm
+  #+begin_proof latex
+  1. Existenz von Zerlegung in irreduzible Elemente. Setze
+	 \[M := \{(a) \mid a ∈ R \setminus (R^{\ast} ∪ \{0\}) \mid \text{ besitzt keine Faktorisierung in irreduziblen Elementen}\}\]
+	 $M$ ist wohldefiniert, da Bedingung an $a$ invariant unter Assoziativitätheit. \\
+	 Annahme: $M \neq \emptyset$ \\
+	 Wegen 26.29 existiert bezüglich "$⊆$" maximales Element $I ∈ M$, denn: Anderenfalls existiert zu jedem $I ∈ M$ ein $I' ∈ M$ mit $I ⊊ I'$,
+	 das liefert eine unendliche strikt aufsteigende Kette von von Idealen
+	 in $R$ \lightning zu $R$ noethersch. \\
+	 Es existiert $a ∈ R$ mit $I = (a)$. $a$ ist nicht irreduzibel, denn für $a$ irreduzibel wäre $a$ selbst eine Faktorisierung in irreduzible Elemente $⇒ I = (a) \not ∈ M$ \lightning.
+	 $⇒ ∃ a_1, a_2 ∈ R \setminus (R^{\ast} ∪ \{0\})$ mit $a = a_1 a_2 ⇒ (a) ⊆ (a_1), (a) ⊆ (a_2)$. Wäre $(a) = (a_1)$, dann existiert $b ∈ R^{\ast}$ mit $a = a_1 b = a_1 a_2 ⇒ a_2 = b ∈ ℝ^{\ast}$ \lightning.
+	 Also $(a) ⊊ (a_1)$, analog $(a) ⊊ (a_2)$ \\
+	 $⇒ (a_1),(a_2) \not ∈ M ⇒ a_1, a_2$ haben Faktorisierung in irreduzible Elemente also auch $a = a_1 a_2$ \lightning.
+	 Also $M = \emptyset ⇒$ Existenz
+  2. Eindeutigkeit von Zerlegung: Sei $a = p_1 · \dots · p_r = q_1 · \dots · q_s$ mit $p_1, \dots, p_r, q_1, \dots, q_s$ irreduzibel.
+	 Beweis per Induktion nach $r$: \\
+	 Induktionsanfang: $r = 0 ⇒ a = 1 ⇒ s = 0$ (sonst $q_1, \dots, q_s ∈ R^{\ast}\lightning$) \\
+	 Induktionsschritt: Behauptung für $0, \dots, r - 1$ bewiesen.
+	 \[p_1 \mid p_1 · \dots · p_r = q_1 · \dots · q_s ⇒ ∃ j ∈ \{1, \dots, s\}: p_1 \mid q_j\]
+     Nach Umnummerierung sei $j = 1$ also $p_1 \mid q_1$, etwa $q_1 = c p_1$ mit $c ∈ R$. Da $q_1$ irreduzibel folgt $c ∈ R^{\ast}$, also $p_1 \estimates q_1$.
+	 \[⇒ p_1 · \dots · p_r = c p_1 q_2 · \dots · q_s ⇒ p_1 (p_2 · \dots · p_r - c q_2 · \dots · q_s) = 0\]
+	 $⇒ p_2 · \dots · p_r = (c q_2) · \dots · q_s$. Wegen $c ∈ R^{\ast}$ ist $c q_2$ irreduzibel $⇒ r - 1 = s - 1$ ($⇒ r = s$) und nach Umnummerierung
+	 \[p_2 \estimates c q_2 = q_2, p_3 \estimates q_3, \dots, p_r \estimates q_r\]
+  #+end_proof
+  #+begin_note latex
+  - Fasst man in einer Zerlegung eines Elementes zueinander assoziierter Faktoren zusammen und erlaubt einen Vorfaktor $c ∈ R^{\ast}$, so erhält man eine Darstellung für Elemente $a ∈ R \setminus (R^{\ast} ∪\{0\})$ der FOrm
+	\[a = c p_1^{e_1} · \dots · p_r^{e_r}\]
+	mit $c . R^{\ast}, p_1, \dots, p_r$ irreduzibel, $p_1 \not \estimates p_j$ für $i \neq j, e_1, \dots, e_r ∈ ℕ$. Ist dann $a = d q_1^{f_1} · \dots · q_s^{f_s}$ mit $d ∈ R^{\ast}, q_1, \dots, q_s$ irreduzibel,
+	$q_i \not \estimates q_j$ FÜr $i \neq j$, $f_1,\dots, f_s ∈ ℕ$, dann ist $r = s$ und nach Umnummerierung ist $p_i \estimates q_i, e_i = f_i$ für $i = 1, \dots, r$.
+  #+end_note

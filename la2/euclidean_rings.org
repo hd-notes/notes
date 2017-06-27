@@ -1,0 +1,414 @@
+* Euklidische Ringe
+  In diesem Abschnitt sei $R$ stets ein kommutativer Ring.
+  #+begin_defn latex
+  $R$ nullteilerfrei. $R$ heißt *Euklidischer Ring*, wenn es eine Abbildung $δ: R \setminus \{0\} \to ℕ_0$, sodass gilt:
+  \[∀ f,g ∈ R, g \neq 0 ∃ q, r ∈ R: f = q g + r ∧ (δ(r) < δ(g) ∨ r = 0)\]
+  $δ$ heißt eine *Normabbildung* auf $R$.
+  #+end_defn
+  #+begin_ex latex
+  1. $R = ℤ$ mit $δ = \abs{·}$ ist ein Euklidischer Ring (vergleiche Elementare Zahlentheorie-Skript, Satz 1.3)
+  2. $K$ Körper $⇒ R = K[T]$ mit $δ = \deg$ ist ein Euklidischer Ring (vergleiche 7.6)
+  3. $R = ℤ[i] = \{a + b i \mid a, b ∈ ℂ\} ⊆ ℂ$ mit $δ(x + i y) = x^2 + y^2$ ist ein Euklidischer Ring (Ring der ganzen Gaußschen Zahlen) (Übungen)
+  4. $K$ Körper mit $δ: K \setminus \{0\} \to ℕ_0, x ↦ 1$ ist ein Euklidischer Ring (hier ist stets "$r = 0$")
+  #+end_ex
+  #+begin_thm latex
+  $R$ Euklidischer Ring. Dann ist  $R$ ein Hauptidealring.
+  #+end_thm
+  #+begin_proof latex
+  Sei $I ⊆ R$ Ideal, $I \neq 0$. Es ist $\emptyset \neq \{δ(a) \mid a ∈ I \setminus \{0\}\} ⊆ ℕ_0$. Wähle $a ∈ I$, sodass $δ(a)$ minimal. Behauptung: $I = (a)$, denn: \\
+  "$\supseteq$": Wegen $a ∈ I$ ist $(a) ⊆ I$ \\
+  "$⊆$" Sei $f ∈ I ⇒ ∃ q, r: f = q a + r$ und $(δ(r) < δ(a) ∨ r = 0)$ $⇒ r = f - q a ∈ I$. Wegen $δ(a)$ minimal folgt $r = 0 ⇒ f = q a ∈ (a)$
+  #+end_proof
+  #+begin_conc latex
+  $R$ Euklidischer Ring. Dann ist $R$ faktoriell.
+  #+end_conc
+  #+begin_proof latex
+  $R$ Euklidisch $⇒$ $ℝ$ Hauptidealring $⇒$ $R$ faktoriell.
+  #+end_proof
+  #+begin_conc latex
+  $K$ Körper, $f ∈ K[t], f \neq 0$. Dann besitzt $f$ eine bis auf Reihenfolge der Faktoren eindeutige Darstellung
+  \[f = c p_1^{e_1} · \dots · p_r^{e_r}\]
+  mit $c ∈ K^{\ast}, r \geq 0, e_1, \dots, e_r ∈ ℕ_0$ und paarweise verschiedenen irreduziblen normierten Polynomen $p_1, \dots, p_r$.
+  #+end_conc
+  #+begin_proof latex
+  $K[t]$ ist Euklidischer Ring, also faktoriell nach 27.4. Wegen $K[t]^{\ast} = K^{\ast}$ gilt für $f, g ∈ K[t]: f \estimates g ⇔ ∃ λ ∈ K^{\ast}: f = λ g$. Insbesondere existiert in jeder Äquivalenzklasse
+  bezüglich "$\estimates$" in $K[t] \setminus \{0\}$ genau ein normiertes Polynom $⇒$ Behauptung.
+  #+end_proof
+  #+ATTR_LATEX: :options [Euklidischer Algorithmus]
+  #+begin_thm latex
+  $R$ Euklidischer Ring mit Normabstand $δ, a, b ∈ R \setminus \{0\}$. Wir betrachten eine Folge $a_0, a_1, \dots$ von Elementen aus $R$, die induktiv wie folgt gegeben ist:
+  \begin{align*}
+  a_0 &:= a \\
+  a_1 &:= b \\
+  a_0 &= q_0 a_1 + a_2 \quad\text{ mit } δ(a_2) < δ(a_1) \text{ oder } a_2 = 0 \\
+  \intertext{Falls $a_2 \neq 0$:}
+  a_1 &= q_1 a_2 + a_3 \quad\text{ mit } δ(a_3) < δ(a_2) \text{ oder } a_3 = 0 \\
+  &\vdots \\
+  \intertext{Falls $a_i \neq 0$:}
+  a_{i - 1} &= q_i a_i + a_{i + 1} \quad\text{ mit } δ(a_{i + 1}) < δ(a_i) \text{ oder } a_{i + 1} = 0 \\
+  \end{align*}
+  Dann existiert ein eindeutig bestimmter Index $n ∈ ℕ$ mit $a_n \neq 0, a_{n + 1} = 0$. Es ist dann
+  \[d := a_n ∈ \GGT(a, b)\]
+  Durch Rückwärtseinsetzen lässt sich $d$ als Linearkombination von $a, b$ darstellen (vergleiche 26.22):
+  \[d = a_n = a_{n - 2}q_{n - 2} a_{n - 1} = \dots = u a + v b\]
+  mit $u, v ∈ R$ ("erweiterter Euklidischer Algorithmus").
+  #+end_thm
+  #+begin_proof latex
+  Falls $a_i \neq 0$ für alle $i ∈ ℕ$, dann wäre $δ(a_1) > δ(a_2) > \dots$ eine streng monoton fallende
+  unendliche Folge in $ℕ_0$ \lightning. \\
+  $⇒$ es existiert ein eindeutig bestimmtes $n ∈ ℕ$ mit $a_n \neq 0, a_{n + 1} = 0$.
+  Wir betrachten die Gleichungen
+  \begin{align*}
+  \string(G_0\string) \quad a_0 &= q_0 a_1 + a_2 \\
+  &\vdots
+  \string(G_{n - 2}\string) \quad a_{n - 2} &= q_{n - 2} a_{n - 1} + a_n \\
+  \string(G_{n - 1}\string) \quad a_{n - 1} &= q_{n - 1} a_n
+  \end{align*}
+  Dann gilt: $a_n \mid a_{n - 1} ⇒ a_n \mid (q_{n - 2} a_{n - 1} + a_n) = a_{n - 2} ⇒ \dots ⇒ a_n \mid a_1, a_n \mid a_0$.
+  Sei $c ∈ R$ mit $c \mid a_0$ und $c \mid a_1 ⇒ c \mid (a_0 - q_0 a_1) = a_2 ⇒ \dots ⇒ c \mid a_n$.
+  Also: $a_n ∈ \GGT(a_0, a_1) = \GGT(a, b)$. \\
+  Es ist
+  \begin{align*}
+  a_n &= a_{n - 2} - q_{n - 2} a_{n - 1} = a_{n - 2} - q_{n - 2}(q_{n - 3} - q_{n - 3} a_{n - 2}) \\
+  &= (1 + q_{n - 2} q_{n - 3})a_{n - 2} - q_{n - 2} a_{n - 3} = \dots = u a + v b
+  \end{align*}
+  mit geeigneten $u, v ∈ R$.
+  #+end_proof
+  #+begin_ex latex
+  $R = ℤ, a = 24, b = 15$.
+  \begin{align*}
+  24 &= 1 · 15 + 9 \\
+  15 &= 1 · 9 + 6 \\
+  9 &= 1 · 6 + 3 \\
+  6 &= 2 · 3 + 0
+  \end{align*}
+  $⇒ \ggT(24, 15) = 3$.
+  \[3 = 9 - 1 · 6 = 9 - (15 - 1 · 9) = 2 · 9 - 1 · 15 = 2 · (25 - 1 · 15) - 15 = 2 · 24 - 3 · 15\]
+  #+end_ex
+  #+begin_note latex
+  Für Matrizen aus $M(n × n, R)$ kann man analog zu LA1 (vergleiche 10.5) elementare Zeilen- und Spaltenoperationen erklären.
+  #+end_note
+  #+ATTR_LATEX: :options [Gauß-Diagonalisierung für Euklidische Ringe]
+  #+begin_thm latex
+  $R$ Euklidischer Ring, $A ∈ M(m × n, R)$. Dann gilt: $A$ lässt sich durch wiederholte Anwendung von elementaren
+  Zeilen- und Spaltenoperationen vom Typ 3 (Addition des $λ$ -fachen einer Zeile/Spalte zu einer anderen Zeile / Spalte, $λ ∈ R$)
+  sowie des Typ 4 (Zeilen / Spaltenvertauschung) in eine Matrix der Gestalt
+  \begin{equation*}
+  \begin{array}{ccc|c}
+  c_1 & & & \\
+  & \ddots & & 0 \\
+  & & c_r & \\
+  \hline 
+  0 & & & 0
+  \end{array}
+  \end{equation*}
+  mit $c_1, \dots, c_r . R \setminus \{0\}, c_1 \mid c_2 \mid \dots \mid c_r$.
+  überführen.
+  #+end_thm
+  #+begin_proof latex
+  (= Algorithmus zur Durchführung).
+  Falls $A = 0$, dann fertig. Im Folgenden sei $A \neq 0$. Sei $δ$ eine Normabberechnung auf $R$.
+  1. Schritt: Durch Zeilen und Spaltenvertauschung erreichen wir $a_{11} \neq 0$ und $δ(a_11) \leq δ(a_{ij}) ∀ i,j, a_{ij} \neq 0$.
+  2. Schritt: Bring $A$ auf die Form
+	 \[\begin{array}{c|ccc}\ast & & 0 & \\ \hline & & & \\ 0 & & \ast & \\ & & &\end{array}\]
+	 1. Fall: In der ersten Spalte / Zeile stehen keine Elemente $\neq 0$ außer $a_{11}$, dann fertig.
+	 2. Fall: In der ersten Spalte / Zeile stehen noch Elemente $\neq 0$, ohne Einschränkung $a_{21} \neq 0$ $⇒ ∃ q ∈ R: a_{21} = q a_{11}$ oder $δ(a_{21} - q a_{11}) < δ(a_11)$.
+		Addiere das $(-q)$ -fache der 1. Zeile zur 2. Zeile $⇒$ Erhalte Matrix $A' = (a_{ij}')$ mit $a_{21}' = 0$ oder $δ(a_{21}') < δ(a_{11})$.
+		Falls $a_{21}' \neq 0$, dann erhalte durch Zeilen sowie gegebenenfalls Spaltenvertauchung eine Matrix
+		$A'' = (a_{ij}'')$ mit $a_{11}'' \neq 0, δ(a_{11}'') \leq δ(a_{ij}'')$ für alle $i,j$ mit $a_{ij}'' \neq 0$, mit $δ(a_{11}'') < δ(a_11)$.
+		Dieser Prozess bricht nach endlich vielen Iterationen ab und wir erhalten eine Matrix der From
+ 	    \[\begin{array}{c|ccc} d_{11} & & 0 & \\ \hline & & & \\ 0 & & \ast & \\ & & &\end{array}\]
+		$d_{11} \neq 0, δ(d_{11}) \leq δ(d_{ij})$ falls $d_{ij} \neq 0, δ(d_{11}) \leq δ(a_11)$
+  3. Schritt: Erreiche $d_{11} \mid d_{ij} ∀ i,j$:
+	 1. Fall: Es gilt bereits $d_{11} \mid d_{ij} ∀ i,j$, dann fertig.
+	 2. Fall: Es existiert $i,j$ mit $d_{11} \not \mid d_{ij}$
+		$⇒$ Es existiert ein $q ∈ R$ mit $d_{ij} - q d_{11} \neq 0$ und $δ(d_{ij} - q d_{11}) < d_{11}$.
+		Addiere erste Zeile von $D$ zur i-ten Zeile von $D$, erhalte:
+		\begin{equation*}
+	 	\begin{array}{c|ccccc}
+	 	d_{11} & 0 & \dots & \dots & \dots & 0 \\
+		\hline
+		0 & & & & & \\
+		\vdots & & & \ast & & \\
+		0 & & & & & \\
+		a_{11} & d_{iz} & \dots & d_{ij} & \dots & d_{in} \\
+		0 & & & & & \\
+		\vdots & & & & & \\
+		0 & & & \ast & &
+		\end{array}
+		\end{equation*}
+		Subtrahiere das $q$ -fache der ersten Spalte von der j-ten Spalte diser Matrix, erhalte:
+		\begin{equation*}
+	 	\begin{array}{c|cccccccc}
+	 	d_{11} & 0 & \dots & 0 & - q d_{11} & 0 &\dots & \dots & 0 \\
+		\hline
+		0 & & & & & & & \\
+		\vdots & & & & \ast & & & \\
+		0 & & & & & & & \\
+		a_{11} & \ast & & & d_{ij} - q d_{11} &  & & \ast \\
+		0 & & & & & & & \\
+		\vdots & & & & & \\
+		0 & & & & \ast & & &
+		\end{array}
+		\end{equation*}
+		mit $d_{ij}' = d_{ij} - q d_{11}, δ(d_{ij}') < δ(d_11) \leq d_{11}$.
+		Wiederhole die gesamte bisherige Prozedur für die Matrix $D'$. Dieser Prozess bricht
+		nach endlich vielen Schritten ab. Wir erhalten eine Matrix
+ 	    \[C = (c_{ij}) = \begin{array}{c|ccc} c_{11} & & 0 & \\ \hline & & & \\ 0 & & C' & \\ & & &\end{array}\]
+		mit $c_{11} \neq 0, δ(c_{11}) \leq δ(a_11), c_{11} \mid c_{ij} ∀ i,j$
+  4. Schritt: Wende das Verfahren auf $C'$ an (und iteriere dies). Operationen an $C'$ erhalten die Teilbarkeit durch $c_{11}$, wir können daher die Matrix auf die Gestalt
+     \begin{equation*}
+     \begin{array}{ccc|c}
+     c_1 & & & \\
+     & \ddots & & 0 \\
+     & & c_r & \\
+     \hline
+     0 & & & 0
+     \end{array}
+     \end{equation*}
+	 mit $c_1 \mid c_2 \mid c_3 \mid \dots \mid c_r$ bringen.
+  #+end_proof
+  #+begin_ex latex
+  1. $ℝ = ℤ$ mit $δ = \abs{·}$:
+	 \[A = \begin{pmatrix}4 & 3 \\ 6 & 5\end{pmatrix} \to \begin{pmatrix}3 & 4 \\ 5 & 6\end{pmatrix} \to \begin{pmatrix}3 & 1 \\ 5 & 1\end{pmatrix} \to \begin{pmatrix}1 & 3 \\ 1 & 5\end{pmatrix} \to \begin{pmatrix}1 & 0 \\ 1 & 2\end{pmatrix} \to \begin{pmatrix}1 & 0 \\ 0 & 2\end{pmatrix}\]
+  2. $R = ℚ[t]$ mit $δ = \deg$
+	 \[A = \begin{pmatrix}t - 1 & 0 \\ -1 & t - 1\end{pmatrix} \to \begin{pmatrix}-1 & t - 1 \\ t - 1 & 0\end{pmatrix} \to \begin{pmatrix}-1 & t - 1 \\ 0 & \string(t - 1\string)^2\end{pmatrix} \to \begin{pmatrix}-1 & 0 \\ 0 & \string(t - 1\string)^2\end{pmatrix}\]
+  #+end_ex
+  #+begin_note latex
+  Wir haben bei der Gauß-Diagonalisierung nur elementare Operationen vom Typ 3, 4 verwendet. Umformungen von Typ 1 (Multiplikation von einer Zeile / Spalte mit $λ ∈ R^{\ast}$), sowie Typ 2 (Addition
+  einer Zeile / Spalte) auf eine andere Zeile oder Spalte.
+  #+end_note
+  Frage: Eindeutigkeitsaussage für $c_1, \dots, c_r$ ?
+  #+begin_remdef latex
+  $\GL(n, R) := \{A ∈ M(n × n, R) \mid ∃ B ∈ M(n × n, R): A B = B A = E_n\}$
+  ist eine Gruppe bezüglich "$·$", *die allgemeine lineare Gruppe* über $R$ vom Rang $n$. Es ist
+  \[\GL(n, R) = \{A ∈ M(n × n, R) \mid \det(A) ∈ ℝ^{\ast}\}\]
+  #+end_remdef
+  #+begin_proof latex
+  Gruppeneigenschaft: klar. \\
+  $A ∈ \GL(n, R) ⇔ \det(A) ∈ R^{\ast}$, denn:
+  "$⇒$" $A B = E_n ⇒ \det(A) \det(B) = 1 ⇒ \det(A) ∈ R^{\ast}$ \\
+  "$\impliedby$" sei $\det(A) ∈ R^{\ast}$. Es ist $A A^{\#} ∈ R^{\ast}$. Es ist $A A^{\#} = \det(A) E_n = A^{\#} A$
+  \[⇒ A \frac{1}{\det(A)} A^{\#} = E_n = \frac{1}{\det(A)} A^{\#} A\]
+  #+end_proof
+  #+begin_remdef latex
+  $A, B ∈ M(m × n, R)$. $A$ heißt *äquivalent* zu $B$ ($A \sim B$)
+  \[⇔ ∃ S ∈ \GL(m, R), T ∈ \GL(n, R): B = S A T^{-1}\]
+  Falls $m = n$, dann heißt $A$ ähnlich zu $B$ ($A \approx B$)
+  \[⇔ ∃ S ∈ \GL(n, R): B = S A S^{-1}\]
+  $\sim, \approx$ sind Äquivalenzrelationen auf $M(m × n, R)$ beziehungsweise $M(n × n, R)$.
+  #+end_remdef
+  *Erinnerung:* In LA1 gezeigt (vergleiche 16.11): $K$ Körper, $A, B ∈ M(m × n, K)$, dann gilt $A \sim B ⇔ \Rang(A) = \Rang(B)$.
+  Ist $\Rang A = r$, dann
+  \[A \sim \begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix}\]
+  *Ziel:* Klassifikation von Matrizen aus $M(m × n, R), R$ Euklidischer Ring bis auf Äquivalenz.
+  #+begin_defn latex
+  $A ∈ M(m × n, R), 1 \leq k \leq m, 1 \leq l \leq n$. $B ∈ M(k × l, R)$ heißt eine *Untermatrix* von $A$ $\xLeftrightarrow{\text{Def}}$ aus $A$ durch Streichen von $m - k$ Zeilen und $n - l$ Spalten.
+  Ist $B ∈ M(l × l, R)$ eine quadratische Untermatrix von $A$, dann heißt $\det(B)$ ein *Minor* $l$ -ter Stufe von $A$.
+  \[\Fit_l(A) = (\det(B) \mid B \text{ ist } l × l \text{-Untermatrix von } A) ⊆ R\]
+  (das von allen Minoren $l$ -ter Stufe von $A$ erzeugte Ideal in $R$) heißt das *$l$ -te Fittingideal von $A$*.
+  #+end_defn
+  #+begin_ex latex
+  \[A = \begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix} ∈ M(2 × 2, ℤ)\]
+  \[\Fit_1(A) = (\det(1), \det(2), \det(3), \det(4)) = (1, 2, 3, 4) = (1) = ℤ\]
+  \[\Fit_2(A) = (\det\begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix}) = (-2) = (2)\]
+  #+end_ex
+  #+ATTR_LATEX: :options [Fittings Lemma]
+  #+begin_thm latex
+  $A ∈ M(m × n, R), S ∈ \GL(m, R), T ∈ \GL(n, R), l \leq \min \{m, n\}$. Dann gilt:
+  \[\Fit_l(A) = \Fit_l(SA) = \Fit_l(AT)\]
+  #+end_thm
+  #+begin_proof latex
+  1. $\Fit_l(SA) ⊆ \Fit_l(A)$, denn:
+	 $A = (a_{ij}) ∈ M(m × n, R), S = (s_{ij}) ∈ \GL(m, R), SA = (b_{ij}) ∈ M(m × n, R)$. Seinen $1 \leq 1_1 < i_2 < \dots < i_l \leq m, 1 \leq j_1 < j_2 < \dots < j_l \leq n$. Wir betrachten die
+	 $l × l$ -Untermatrix
+	 \[B = \begin{pmatrix}b_{i_1,j_1} & \dots & b_{i_1,j_l} \\ \vdots &   & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix}\]
+	 von $SA$.
+	 \begin{align*}
+	 ⇒ \det B &= \det \begin{pmatrix}\sum_{r_1 = 1}^{m} s_{i_1, r_1} a_{r_1,j_1} & \dots &  \sum_{r_1 = 1}^{m} s_{i_1, r_1} a_{r_1,j_l}\\ b_{i_2, j_1} & \dots & b_{i_2, j_l} \\ \vdots & 8 & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix} \\
+	 &= \sum_{r_1 = 1}^{s_{i_1, r_1}} \det \begin{pmatrix}a_{r_1,j_1} & \dots & a_{r_1,j_l}\\ b_{i_2, j_1} & \dots & b_{i_2, j_l} \\ \vdots & 8 & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix} \\
+	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{pmatrix}a_{r_1, j_1} & \dots & a_{r_1, j_l} \\ \vdots &   & \vdots \\ a_{r_l, j_1} & \dots & a_{r_l, j_l}\end{pmatrix} \\
+	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{cases} 0 & \text{falls $i \neq j$ existiert mit $r_i = r_j$} \\ I \text{ ein Minor $l$ -ter Stufe von $A$}\end{cases} \\
+	 &∈ \Fit_l(A)
+     \end{align*}
+  2. Wende 1. auf $S^{-1} ∈ \GL(m, R), S A ∈ M(m × n, R)$ an: $⇒ \Fit_l(S^{-1}(S A)) ⊆  \Fit_l(S A)$, also $\Fit_l(A) ⊆ \Fit_l(SA)$. Außerdem: $\Fit_l(A) = \Fit_l(A^T)$, also
+	 \[\Fit_l(A T) = \Fit_l((A T)^T) = \Fit_l(T^T A^T) = \Fit_l(A^T) = \Fit_l(A)\]
+  #+end_proof
+  #+begin_conc latex
+  $A, B ∈ M(m × n, R)$ mit $A \sim B$.
+  Dann gilt: $\Fit_l(A) = \Fit_l(B)$ für alle $1 \leq l \leq \min \{m, n\}$.
+  #+end_conc
+  #+begin_proof latex
+  $A \sim B ⇒ ∃ S ∈ \GL(m, R), T ∈ \GL(n, R): B = SAT^{-1}$
+  \[⇒ \Fit_l(B) = \Fit_l(S A T^{-1}) = \Fit_l(A T^{-1}) = \Fit_l(A)\]
+  #+end_proof
+  #+begin_remark latex
+  $R$ nullteilerfreier Ring,
+  \[A = \begin{array}{ccc|c} c_1 & & 0 &  \\ & \ddots & & 0 \\ 0 & & c_r & \\ & 0 & & 0\end{array} ∈ M(m × n, R)\]
+  mit $c_1 \mid \dots \mid c_r$. Dann gilt:
+  \[\Fit_l(A) = \begin{cases} \string(c_1 · \dots · c_l\string) & 1 \leq l \leq r \\ \string(0\string) &\end{cases}\]
+  Insbesondere gilt: $\Fit_l(A) ⊆ \Fit_{r - 1}(A) ⊆ \dots ⊆ \Fit_1(A)$
+  #+end_remark
+  #+begin_proof latex
+  Für $l > r$ enthält jede $l × l$ -Untermatrix von $A$ stets eine Nullzeile, das heißt $\Fit_l(1) = (0)$. \\
+  $l \leq r$: Die einzige $l × l$ Untermatrix von $A$, die keine Nullzeile enthalten, sind von der Form
+  \[\begin{pmatrix}c_{i_1} &   & 0 \\   & \ddots &   \\ 0 &   & c_{i_l}\end{pmatrix}\]
+  mit $1 \leq i_1 < i_2 < \dots < i_l \leq r$.
+  \begin{align*}
+  ⇒ \Fit_l(A) &= (c_{i_1} · \dots · c_{i_l} \mid 1 \leq i_1 < i_2 < \dots < i_l \leq r) \\
+  ⇒ (c_1 · \dots c_l) &⊆ \Fit_l(A)
+  \end{align*}
+  Umgekehrt folgt $1 \leq i_1 < i_2 < \dots < i_l \leq r$: $i_1 \geq 1, i_2 \geq 2, \dots, i_l \geq l$.
+  \begin{align*}
+  ⇒ c_1 \mid c_{i_1}, \dots, c_l \mid c_{i_l} &⇒ c_1 · \dots · c_l \mid c_{i_1} · \dots · c_{i_l} ⇒ (c_{i_1} · \dots · c_{i_l}) ⊆ (c_1 · \dots · c_l) \\
+  ⇒ \Fit_l(A) &⊆ (c_1, \dots, c_l)
+  \end{align*}
+  $⇒$ "$=$"
+  #+end_proof
+  #+ATTR_LATEX: :options [Elementarteilersatz über Euklidischen Ringen]
+  #+begin_defthm latex
+  $R$ Euklidischer Ring, $A ∈ M(m b n, R)$. Dann existieren $c_1, \dots, c_r ∈ R \setminus \{0\}$ mit $c_1 \mid c_2 \mid \dots \mid c_r$, sodass
+  \[A \sim \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array}\]
+  $r$ ist eindeutig bestimmt, $c_1, \dots, c_r$ sind eindeutig bestimmt bis auf Assoziiertheit. $c_1, \dots, c_r$ heißen die *Elementarteiler* von $A$.
+  #+end_defthm
+  #+begin_proof latex
+  1. Nach Gauß-Diagonalisierung 27.8 lässt sich $A$ durch elementare Zeilen- und Spaltenumformungen auf die Form
+     \[\begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array}\]
+     mit $c_1, \dots, c_r ∈ R \setminus \{0\}, c_1 \mid c_2 \mid \dots \mid c_r$ bringen. Wie in LA1 (Übungsblatt 8, Aufgabe 3) entsprechen elementare Zeilenoperationen Multiplikation
+	 mit speziellen invertierbaren Matrizen von links, Spaltenoperationen mit speziellen invertierbaren Matrixen von rechts	$⇒ ∃ S ∈ \GL(m, R), T ∈ \GL(n, R):$
+	 \[S A T^{-1} = \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array} ⇔ A \sim \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array}\]
+  2. Eindeutigkeit von $r$: Sei
+	 \[A \sim \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array}, A \sim \begin{array}{ccc|c}d_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & d_s &   \\   & 0 &   & 0\end{array}\]
+	 mit $c_1, \dots, c_r, d_1, \dots, d_s ∈ R \setminus \{0\}, c_1 \mid \dots \mid c_r, d_1 \mid \dots \mid d_s$.
+	 \[⇒ \Fit_l(A) = \begin{cases} \string(c_1 · \dots · c_l\string) & l \leq r \\ \string(0\string) & l > r\end{cases} = \begin{cases} \string(d_1 · \dots · d_l\string) \\ l \leq s \\ \string(0\string) & l > s\end{cases}\]
+	 für alle $l ∈ \{1, \dots, \min \{m, n\}\}$
+	 \[⇒ r = \max\{l ∈ \{1, \dots, \min\{m, n\} \mid \Fit_l(A) \neq (0)\}\} = s\]
+  3. $c_l \estimates d_l ∀ l = 1, \dots, r$ per Induktion nach $l$: \\
+	 Induktionsanfang: $\Fit_1(A) = (c_1) = (d_1) ⇒ c_1 \estimates d_1$. \\
+	 Indukitionsschritt: $\Fit_l(A) = (c_1 · \dots · c_l) = (d_1 · \dots · d_l) ⇒ c_1 · \dots · c_l \estimates d_1 · \dots · d_l ⇒ c_l \estimates d_l$
+  #+end_proof
+  #+ATTR_LATEX: :options [27.18]
+  #+begin_thm latex
+  $R$ Euklidischer Ring, $A, B ∈ M(m × n, R)$. Dann sind äquivalent:
+  1. $A \sim B$
+  2. Die Elementarteiler von $A$ und $B$ stimmen bis auf Assoziiertheit überein.
+  3. $\Fit_l(A) = \Fit_l(B) ∀ 1 \leq l \leq \min \{m, n\}$
+  #+end_thm
+  #+begin_proof latex
+  1. $⇒$ 2. aus 27.18
+  3. [@3] 2. Seien $c_1, \dots, c_r$ beziehungsweise $d_1, \dots, d_s$ die Elementarteiler von $A$ beziehungsweise $B$. Insbesondere
+	 \[A \sim \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array}, B \sim \begin{array}{ccc|c}d_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & d_s &   \\   & 0 &   & 0\end{array}\]
+	 Argumentiere nun wie im Beweis von	27.17 in 2., 3..27.17 in 2., 3..
+  2. [@2] $⇒$ 1. Sei
+	 \[A \sim \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array}, B \sim \begin{array}{ccc|c}d_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & d_r &   \\   & 0 &   & 0\end{array}\]
+	 mit $c_1 \estimates d_1, \dots, c_r \estimates d_r$, etwa $d_1 = λ_1 c_1, \dots, d_r = λ_r c_r$ mit $λ_1, \dots, λ_r ∈ R^{\ast}$.
+	 \[\begin{array}{ccc|c}d_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & d_r &   \\   & 0 &   & 0\end{array} = \begin{pmatrix} λ_1 & & & & & \\ & \ddots & & & & \\ & & λ_r & & & \\ & & & 1 & & \\ & & & & \ddots & \\ & & & & & 1 \\ \end{pmatrix} \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array}\]
+	 \[⇒ A \sim \begin{array}{ccc|c}c_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & c_r &   \\   & 0 &   & 0\end{array} \sim \begin{array}{ccc|c}d_1 &   & 0 &   \\   & \ddots &   & 0 \\ 0 &   & d_r &   \\   & 0 &   & 0\end{array} \sim B\]
+  #+end_proof
+  #+begin_ex latex
+  \[A = \begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix} ∈ M(2 × 2, ℤ) ⇒ \Fit_1(A) = (1), \Fit_2(A) = (2)\]
+  $⇒$ Elementarteiler von $A$: $1, 2$, insbesondere $A \sim \begin{pmatrix}1 & 0 \\ 0 & 2\end{pmatrix}$. Sei
+  \[B = \begin{pmatrix}4 & 3 \\ 2 & 2\end{pmatrix} ∈ M(2 × 2, ℤ) ⇒ \Fit_1(B) = (2, 3, 4) = (1), \Fit_2(B) = (2)\]
+  $⇒$ $A \sim B$
+  #+end_ex
+  # TODO
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $A \approx B ⇒ ∃ S ∈ \GL(n, K): B = S A S^{-1}$
+	 \begin{align*}
+	 ⇒ P_B &= t E_n - B = t E_n - S A S^{-1} = S t E_n S {-1} - S A  S^{-1} \\
+	 &= S \underbrace{(t E_n - A)}_{= P_A} S^{-1} \\
+	 ⇒ P_B &\approx P_A ⇒ P_B \sim P_A
+     \end{align*}
+  2. $⇒$ 1. Sei	$P_A \sim P_B$:
+	 1. Wir konstruieren $R ∈ M(n × n, K)$ mit $A R = R B$: \\
+		$⇒ ∃ S, T ∈ \GL(n, K[t]): P_A = S P_B T^{-1}$, das heißt $S P_B = P_A T$
+		\[⇒ S(t E_n - B) = (t E_n - A) T\]
+		Wir schreiben $S, T$ in der folgenden Form:
+		\[S = \sum_{i = 0}^{m} t^i S_i, T = \sum_{i = 0}^{m} t^i T_i, \quad S_i, T_i ∈ M(n × n, K)\]
+		\begin{align*}
+		⇒ S(t E_n - B) &= \sum_{i = 0}^{m} t^i S_i(t E_n - B) = \sum_{i = 0}^{m} (t^{i + 1} S_i - t^i S_i B) \\
+		\string(t E_n - A\string) T &= (t E_n - A) \sum_{i = 0}^{m} t^i T_i = \sum_{i = 0}^{m} (t^{i + 1d T_i - t^i A T_i}) \\
+		⇒ \sum_{i = 0}^{m + 1} (S_{i - 1} - S_i B) t^i &= \sum_{i = 0}^{m + 1}(T_{i - 1} - A T_i) t^i \\
+		\intertext{wobei $S_{-1}, T_{-1}, S_{m + 1}, T_{m + 1} = 0$}
+		⇒ S_{i - 1} - S_i  b &= T_{i - 1} -  a T_i\qquad 0 \leq i \leq m + 1 \\
+		⇒ A^i S_{i - 1} - A^i S_i B &= A^i T_{i - 1} - A^{i + 1} T_i \qquad 0 \leq i \leq m + 1 \\
+		⇒ \sum_{i = 0}^{m + 1}(A^i S_{i - 1} - A^i S_i B) &= \sum_{i = 0}^{m + 1}(A^i T_{i - 1} - A^{i + 1} T_i) \\
+		&= (A^0 T_{-1} - A T_0) + (A T_0 - A^2 T_1) + \dots + (A^{m + 1} T_m - A^{m + 2} T_{m + 1}) \\
+		&= A^0 T_{-1} - A^{m + 2} T_{m + 1} = 0 \\
+		⇒ \sum_{i = 0}^{m + 1} A^i S_{i - 1} &= \sum_{i = 0}^{m + 1} A^i S_i B \\
+		⇒ \sum_{i = 1}^{m + 1} A^i S_{i - 1} &= \sum_{i = 0}^{m} A_i S_i B \\
+		⇒ A(\sum_{i = 0}^{m} A^i S_i) &= (\sum_{i = 0}^{m} A^i S_i) B \\
+		⇒ R &:= \sum_{i = 0}^{m} A^i S_i
+        \end{align*}
+		dann $A R = R B$.
+	 2. Wir zeigen $R ∈ \GL(n, K)$ (wegen $A R = R B$ ist dann $A = R B R^{-1}$, also $A \approx B$, fergit.)
+		Nach Vorraussetzung ist $S ∈ \GL(n, K[t])$ $⇒ ∃ M ∈ \GL(n, K[lt]): S M = E_n, M = \sum_{i = 0}^{m} t^i M_i$ mit $M_i ∈ M(n × n, K)$, ohne Einschränkung dasselbe $n$ wie vorhin.
+		Behauptung: Mit
+		\[N := \sum_{j = 0}^{m} B^j M_j ∈ M(n × n, K)\]
+		gilt $R N = E_n$ also $R ∈ \GL(n, K)$, denn: Es ist
+		\[R N = \sum_{j = 0}^{m} R B^j M_j\]
+		Wegen $R B = A R$ folgt $R B^j = R B B^{j - 1} = A R B^{j - 1} = \dots = A^j R$
+		\[⇒ R N = \sum_{j = 0}^{m} A^j R M_j = \sum_{j = 0}^{m} A^j (\sum_{i = 0}^{m} A^i S_i) M_j = \sum_{i,j = 0}^{m} A^{i + j} S_i M_j\]
+		Wegen $SM = E_n$ folgt
+		\[(\sum_{i = 0}^{m} t^i S_i)(\sum_{j = 0}^{m} t^j M_j) = E_n\]
+		\begin{align*}
+		⇒ S_0 M_0 + \sum_{k = 1}^{2m}(\sum_{i + j = k} S_i M_j) t^k &= E_n \\
+		⇒ S_0 M_0 = E_n, \sum_{i + j = k} S_i M_j &= 0 \quad k \geq 1 \\
+		⇒ R N = \sum_{i,j = 0}^{m} A^{i + j} S_i M_j &= S_0 M_0 + \sum_{k = 1}^{2m} A^k \underbrace{\sum_{i + j = k} S_i M_j}_{= 0} = S_0 M_0 = E_n
+        \end{align*}
+  #+end_proof
+  #+begin_remdef latex
+  $A ∈ M(n × n, K)$. Dan gilt:
+  1. Es gibt eindeutig bestimmte normierte Polynome $c_i(A), \dots, c_n(A) ∈ K[t]$ mit
+	 \[P_A \sim \begin{pmatrix}c_1(A) &   & 3 \\  & \ddots &   \\ 0 &   & c_n(A)\end{pmatrix}, \quad c_1(A) \mid c_2(A) \mid \dots \mid c_n(A)\]
+	 $c_1(A), \dots, c_n(A)$ heißen die *Invariantenteiler* von $A$.
+  2. Es gibt eindeutig bestimmte normierte Polynorme $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
+	 \[\Fit_l(A) = (d_l(A)) \quad l = 1, \dots, n\]
+	 Es ist $d_l(A) = \ggT(\det(B) \mid B \text{ ist \(l× l\) -Untermatrix von } P_A)$. Insbesondere ist $d_n(A) = χ_A^{char}$.
+	 $d_1(A), \dots, d_n(A)$ heißen die Determinantenteiler von $A$.
+  #+end_remdef
+  #+begin_proof latex
+  1. Existenz: $K[t]$ ist ein Euklidischer Ring. Fundamentalteilersatz $⇒ ∃ \tilde c_1, \dots, \tilde c_r ∈ K[t]$:
+	 \[P_a \sim	 \begin{pmatrix} \tilde c_1 & & & & & \\ & \ddots & & & & \\ & & \tilde c_r & & & \\ & & & 0 & & \\ & & & & \ddots & \\ & & & & & 0\end{pmatrix}\qquad \tilde c_1 \mid \dots \mid \tilde c_r\]
+	 Es ist $\Fit_n(F_A) = (\det(P_A)) = (χ_A^{char}) \neq (0) \to r = 0$ und
+	 \[\Fit_n(P_A) = (\tilde c_1 · \dots · \tilde c_n)\]
+	 Da $\tilde c_1, \dots, \tilde c_n \neq 0$ eindeutig bis auf Assoziiertheit, existieren eindeutig bestimmte normierte Polynome $c_1(A), \dots, c_n(A)$ mit $c_1(A) \estimates \tilde c_1,  \dots, c_n(A) \estimates \tilde c_n$.
+	 \[⇒ P_A \sim \begin{pmatrix}c_1(A) &   &   \\   & \ddots &   \\   &   & c_n(A)\end{pmatrix}\]
+  2. $K[t]$ Hauptidealring $⇒ \Fit_l(P_A), l = 1, \dots, n$ sind Hauptideale und nach 27.16 ist $\Fit_l(P_A) = (c_1(A) · \dots · c_l(A))$
+	 # TODO
+  #+end_proof
+  #+begin_conc latex
+  $A ∈ M(n × n, K)$. Dan gilt: $d_l(A) = c_1(A) · \dots · c_l(A) ∀ l = 1, \dots, n$. Insbesondere gilt:
+  \[χ_A^{char} = d_n(A) = c_1(A) · \dots · c_n(A)\]
+  sowie
+  \[d_1(A) \mid \dots \mid d_n(A)\]
+  #+end_conc
+  #+ATTR_LATEX: :options [Invariantenteilersatz]
+  #+begin_thm latex
+  $A, B ∈ M(n × n, K)$. Dann sind äquivalent:
+  1. $A \approx B$
+  2. Die Invatiantenteiler von $A$ stimmen mit den Invariantenteilern von $B$ überein:
+     \[c_1(A) = c_1(B), \dots, c_n(A) = c_n(B)\]
+  3. Die Determinantenteiler von $A$ stimmen mit den Determinantenteilern von $B$ überein:
+     \[d_1(A) = d_1(B), \dots, d_n(A) = d_n(B)\]
+  #+end_thm
+  #+begin_proof latex
+  aus Satz von Probenius und Satz 27.18
+  #+end_proof
+  #+begin_ex latex
+  Sei
+  \[A = \begin{pmatrix}0 & 1 & 3 \\ 3 & 1 & -4 \\ -2 & 1 & 5\end{pmatrix} ∈ M(3 × 3, ℚ)\]
+  Es ist
+  \[P_A = \begin{pmatrix}t & -1 & -3 \\ -3 & t - 1 & 4 \\ 2 & -1 & t - 5\end{pmatrix}\]
+  Bestimmung der Determinantenteiler von $A: d_1(A) = \ggT(-1, \dots) = 1$
+  #+end_ex
+  # TODO
+     \begin{equation*}
+     \begin{array}{ccc|c}
+     c_1 & & & \\
+     & \ddots & & 0 \\
+     & & c_r & \\
+     \hline
+     0 & & & 0
+     \end{array}
+     \end{equation*}

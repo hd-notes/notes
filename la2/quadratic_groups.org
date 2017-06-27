@@ -1,0 +1,204 @@
+* Quadratische Räume
+  #+ATTR_LATEX: :options [Quadratische Form]
+  #+begin_defn latex
+  $V$ K-VR. Eine Abbildung $q: V \to K$ heißt eine *quadratische Form* auf $V$, genau dann wenn folgende Bedingungen erfüllt sind:
+  - (Q1) $q(λ v) = λ^2 q(v) ∀ λ ∈ K, v ∈ V$
+  - (Q2) Die Abbildung $ε_q: V × V \to K, (v, w) ↦ q(v + w) - q(v) - q(w)$ ist eine
+	(automatisch symmetrische) Bilinearform
+  #+end_defn
+  #+begin_ex latex
+  $K = ℝ, V = ℝ^2, q(\cvec{x_1; x_2}) = x_1^2 + x_1 x_2 + x_2^2$ ist eine quatratische Form auf $ℝ^2$
+  (Q1) ist erfüllt, (Q2) ist ebenfalls erfüllt, denn
+  \begin{align*}
+  ε_q(\cvec{x_1; x_2}, \cvec{y_1; y_2}) &= q(\cvec{x_1 + y_1; x_2 + y_2}) - q(\cvec{x_1; x_2}) - q(\cvec{y_1; y_2}) \\
+  &= (x_1 + y_1)^2 + (x_1 + y_1)(x_2 + y_2) + (x_2 + y_2)^2 - x_1^2 - x_1 x_2 - x_2^2 - x_2^2 - y_1^2 - y_1 y_2 - y_2^2 \\
+  &= 2x_1 y_1 + x_1 y_2 + x_2 y_1 + 2x_2 y_2
+  \end{align*}
+  das heißt $ε_q$ ist symmetrische Bilinearform.
+  #+end_ex
+  #+begin_remark latex
+  $\cha K \neq 2, V$ K-VR, $\SymBil(V) := \{γ: V × V \to K \mid γ \text{ ist symmetrische Bilinearform}\}, \Quad(V) := \{q: V \to K \mid q \text{ ist eine quadratische Form}\}$. Dann sind die Abbildungen
+  \[Φ: \SymBil(V) \to \Quad(V), γ ↦ q_γ \quad q_γ:V \to K, v ↦ γ(v, v)\]
+  \[Ψ: \Quad(V) \to \SymBil(V), q ↦ γ_q \frac{1}{2}ε_q\]
+  zueinander inverse Bijektionen.
+  #+end_remark
+  #+begin_proof latex
+  1. $Φ$ ist wohldefiniert, das heißt $q_γ ∈ \Quad(V) ∀ γ ∈ \SymBil(V)$. \\
+	 Q1: Sei $λ ∈ K, v ∈ V ⇒ q_γ(λ v) = γ(λv, λv) = λ^2 γ(v, v) = λ^2 q_γ(v)$ \\
+	 Q2:
+	 \begin{align*}
+     ε_{q_γ} &= q_γ(v + w) - q_γ(v) - q_γ(w) = γ(v + w, v + w) - γ(v, v) - γ(w, w) \\
+     &= γ(v, w) + γ(w, v) = 2γ(v, w)
+     \end{align*}
+	 $⇒ ε_{q_γ}$ symmetrische Bilinearform.
+  2. $Ψ$ ist wohldefiniert, denn für jedes $q ∈ \Quad(V)$ ist $γ_q = (1/2) ε_q ∈ \SymBil(V)$, da $ε_q ∈ \SymBil(V)$
+  3. $Φ \circ Ψ = \id_{\Quad(V)}$: Für $q ∈ \Quad(V), v ∈ V$ ist
+	 \[(Φ \circ Ψ)(q)(v) = Φ(γ_q)(v) = γ_q(v, v) = \frac{1}{2}(q(v + v) - q(v) - q(v)) = q(v)\]
+  4. $Ψ \circ Φ = \id_{\SymBil(v)}$: Für $γ ∈ \SymBil(v), v, w ∈ V$ ist
+	 \[(Ψ \circ Φ)(γ)(v, w) = Ψ(q_γ)(v, w) = \frac{1}{2} ε_{q_γ}(v, w) = γ(v, w)\]
+  #+end_proof
+  #+begin_note latex
+  Philosophie dahinter: symmetrische Bilinearformen, quadratische Formen auf $K$ sind für $\cha K \neq 2$ fast dasselbe. Für
+  $\cha k = 2$ kann man die Abblidung $Φ$ immer noch definieren, $Φ$ ist im allgemeinen aber weder injekiv, noch surjektiv.
+  Exemplarisch: Für $K = \mathbb{F}_2, V = \mathbb{F}_2^2$ liegt die quadratische Form $q: \mathbb{F}_2^2 \to \mathbb{F}, \cvec{x_1; x_2} ↦ x_1^2 + x_1 x_2 + x_2^2$ liegt nicht im Bild vom $Φ$.
+  #+end_note
+  Für den Rest dieses Abschnittes sei $K$ stets ein Körper mit $\cha K \neq 2$
+  #+ATTR_LATEX: :options [Quadratischer Raum]
+  #+begin_defn latex
+  Ein *quadratischer Raum* ist ein Paar $(V, γ)$, bestehend aus endlichdimensionalem K-VR $V$ und einer symmetrischen Bilinearform $γ$ auf $V$.
+  $v, w ∈ V$ heißen *orthogonal* bezüglich $γ ⇔ γ(v, w) = 0$. $(v_i)_{i ∈ I}$ Familie von Vektoren aus $V$ heißt orthogonal bezüglich $γ ⇔ γ(v_i, v_j) = 0 ∀ i, j ∈ I, i \neq j$.
+  Eine Familie $(v_1, \dots, v_n)$ von Vektoren aus $V$ heißt eine *Orthogonalbasis* (OB) von $(V, γ) ⇔ (v_1, \dots, v_n)$ ist eine Basis von $V$ und ist orthogonal bezüglich $γ$.
+  #+end_defn
+  #+begin_note latex
+  - Ist $γ$ aus dem Kontext klar, wird es auch häufig weggelassen.
+  -	Ist $\mathcal{B}$ eine Basis von $V$, dann gilt $\mathcal{B}$ OB von $(V, γ) ⇔ M_{\mathcal{B}}(γ)$ ist eine Diagonalmatrix.
+  #+end_note
+  #+begin_defn latex
+  $(V, γ_v), (W, γ_w)$ quadratische Räume, $f: V \to W$ lineare Abbildung. $f$ heißt *Homomophismus quadratischer Räume* $⇔$
+  \[γ_w(f(v_1), f(v_2)) = γ_v(v_1, v_2) ∀ v_1, v_2 ∈ V\]
+  $f$ heißt *Isomorphismus quadratischer Räume* $⇔ f$ ist ein Isomorphismus von K-VR und ein Homomophismus quadratischer Räume.
+  Notation: Wir schreiben häufig $f:(V, γ_v) \to (W, γ_w)$ für Abbildungen / Homomorphismen quadratischer Räume.
+  #+end_defn
+  #+begin_note latex
+  Ist $f: (V, γ_v) \to (W, γ_w)$ ein Isomorphismus quadratischer Räume, dann ist $f^{-1}: (W, γ_w) \to (V, γ_v)$ ebenfalls ein Isomorphismus quadratischer Räume, und es ist $\Rang(γ_v) = \Rang(γ_w)$ (nachrechnen...)
+  #+end_note
+  *Ziel*: Klassifiziere quadratische Räume bis auf Isomorphie quadratischer Räume.
+  #+begin_thm latex
+  $(V, γ)$ quadratischer Raum. Dann besitzt $(V, γ)$ eine OB.
+  #+end_thm
+  #+begin_proof latex
+  per Induktion nach $n = \dim V$. \\
+  IA: $n= 0$: leere Familie ist OB. \\
+  IS: Sei $n \geq 1$
+  1. Fall: $γ(v, v) = 0 ∀ v ∈ V$
+     \[⇒ ∀ v, w ∈ V: 0 = γ(v + w, v + w) = γ(v, v) + γ(w, w) + 2 γ(v, w) = 2γ(v, w)\]
+	 $⇒ γ(v, w) = 0 ∀ v, w ∈ V ⇒$  Jede Basis von $V$ ist OB von $(V, γ)$
+  2. $∃ v_1 ∈ V: γ(v_1, v_1) \neq 0$. Sei $Γ: V \to V^{\ast}, v ↦ γ(v, ·)$ die zu $γ$ gemäß 20.10 gehörige lineare Abbildung. Setze $H = \ker(Γ(v_1)) = \{w ∈ W \mid γ(v_1, w) = 0\}$
+	 \[⇒ \dim H = \dim V - \underbrace{\dim \im(Γ(v_1))}_{\mathclap{\leq K \text{ beachte: } Γ(v_1) ∈ V^{\ast}}} ∈ \{n, n - 1\}\]
+	 Es ist $v_1 \not ∈ H$ wegen $γ(v_1, v_1) \neq 0 ⇒ \dim H = n - 1 ⇒ V = \Lin((v_1)) \oplus H$. $(H, γ \mid_{H × H})$ ist ein quadratischer Raum der Dimension $n - 1$. Wegen IV	existiert eine OB
+	 $(v_2, \dots, v_n)$ von $(H, γ\mid_{H × H}) ⇒ (v_1, v_2, \dots, v_n)$ ist OB von $(V, γ)$
+  #+end_proof
+  #+begin_conc latex
+  $A ∈ M(n × n, K)$ symmetrisch. Dann existiert $T ∈ \GL(n, K)$, sodass $T^T A T$ eine Diagonalmatrix.
+  #+end_conc
+  #+begin_proof latex
+  $A$ definiert eine symmetrische Bilinearform $Δ(A) = Δ_A^{(e_1, \dots, e_n)}$ auf $K^n$ (vergleiche 20.7, $Δ(A)(v, w) = v^T A w$).
+  Nach 21.6 existiert eine OB $\mathcal{B}$ von $(K^n, Δ(A)) ⇒ M_{\mathcal{B}}(Δ(A))$ ist Diagonalmatrix, und es ist
+  \[M_{\mathcal{B}}(Δ(A)) = \underbrace{(T_{(e_1, \dots, e_n)}^{\mathcal{B}})^T}_{= T^T} \underbrace{M_{(e_1, \dots, e_n)}(Δ(A))}_{A} \underbrace{T_{(e_1, \dots, e_n)}^{\mathcal{B}}}_{=: T}\]
+  #+end_proof
+  #+begin_conc latex
+  $(V, γ)$ quadratischer Raum, $n = \dim V, r = \Rang(γ)$. Dann existieren $λ_1, \dots, λ_r ∈ K \setminus \{0\}$ und ein Isomorphismus von quadratischen Räumen
+  \[Φ: (K^n, Δ(\begin{pmatrix}λ_1 &   &   &   & 0 &   \\   & \ddots &   &   &   &   \\   &   & λ_r &   &   &   \\   &   &   & 0 &   &   \\   &   &   &   & \ddots &   \\   & 0  &   &   &  & 0 \end{pmatrix})) \to  (V, γ)\]
+  #+end_conc
+  #+begin_proof latex
+  Wegen 21.6 existiert eine OB $\mathcal{B} = (v_1, \dots, v_n)$ von $(V, γ)$. Nach Umordnung von $v_1, \dots, v_n$ sei $γ(v_i, v_i) \neq 0$ für $i = 1, \dots, s$ und $γ(v_i, v_i) = 0$ für $i = s + 1, \dots, n$
+  \[⇒ M_{\mathcal{B}}(γ) = \begin{pmatrix} λ_1 & & & & & 0 \\ & \ddots & & & & \\ & & λ_s & & & \\ & & & 0 & & \\ & & & & \ddots & \\ 0 & & & & & 0\end{pmatrix} \quad λ_1, \dots, λ_s ∈ K\setminus \{0\}, r = \Rang(γ) = \Rang M_{\mathcal{B}}(γ) = s\]
+  Setze $Φ:= Φ_{\mathcal{B}}: K^n \to V, e_i ↦ v_i$ (Koordinatensystem zu $\mathcal{B}$, vegleiche 15.2). $Φ$ ist Isomorphismus
+  \begin{align*}
+  γ(Φ_{\mathcal{B}}(v), Φ_{\mathcal{B}}(w)) &= Φ_{\mathcal{B}}^{-1}(Φ_{\mathcal{B}}(v))^T M_{\mathcal{B}}(γ) Φ_{\mathcal{B}}^{-1}(Φ_{\mathcal{B}}(w)) = v_t M_{\mathcal{B}}(γ) w \\
+  &= v^T \begin{pmatrix} λ_1 & & & & & 0 \\ & \ddots & & & & \\ & & λ_r & & & \\ & & & 0 & & \\ & & & & \ddots & \\ 0 & & & & & 0\end{pmatrix} w = Δ(\begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 &   & λ_r\end{pmatrix})(v, w)
+  \end{align*}
+  #+end_proof
+  #+begin_note latex
+  $λ_1, \dots, λ_r$ sind im allgemeinen nicht eindeutig bestimmt.
+  #+end_note
+  *Frage:* Kann man über speziellen Körpern mehr sagen? Wir werden $K = ℂ, ℝ$ untersuchen.
+  #+begin_thm latex
+  $(V, γ)$ quadratischer Raum über $ℂ, n = \dim V, r = \Rang γ$. Dass existiert eine Orthogonalbasis $\mathcal{B}$ von $(V, γ)$ mit
+  \[M_{\mathcal{B}}(γ) = \begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix}\]
+  Insbesondere existiert ein Isomorphismus quadratischer Räume $Φ(ℂ^n, Δ(\begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix})) \to (V, γ)$
+  #+end_thm
+  #+begin_proof latex
+  Sei $(\tilde v_1, \dots, \tilde v_n)$ eine Orthogonalbasis von $(V, γ)$. Setze
+  \[v_i := \begin{cases} \tilde v_i & γ(\tilde v_i, \tilde v_i) = 0 \\ \frac{1}{\sqrt{\tilde v_i, \tilde v_i}} \tilde v_i & γ(\tilde v_i, \tilde v_i) \neq 0 \end{cases}\]
+  Hierber ist $\sqrt{γ(\tilde v_i, \tilde v_i)}$ eine komplexe Zahl	$α$ mit $α^2 = γ(\tilde v_i, \tilde v_i)$. Falls $γ(\tilde v_i, \tilde v_i) \neq 0$, dass ist
+  \[γ(v_i, v_i) = γ(\frac{1}{\sqrt{γ(\tilde v_i, \tilde v_i)}}, \frac{1}{\sqrt{γ(\tilde v_i, \tilde v_i)}}) = \frac{1}{γ(\tilde v_i, \tilde v_i)} γ(\tilde v_i, \tilde v_i) = 1\]
+  Außerdem: $γ(v_i, v_j) = 0 ∀ i \neq j$, da $γ(\tilde v_i, \tilde v_j) = 0 ∀ i \neq 0$.
+  Setze $\mathcal{B} := (v_1, \dots, v_n)$. Nach eventueller Umnummerierung von $v_1, \dots, v_n$ ist
+  \[M_{\mathcal{B}}(γ) = \begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix}\]
+  wobei $r = \Rang M_{\mathcal{B}}(γ) = \Rang γ$.
+  #+end_proof
+  #+begin_conc latex
+  $A ∈ M(n × n, ℂ)$ symmetrisch, $r = \Rang A$. Dass existiert ein $T ∈ \GL(n, ℂ)$, sodass
+  \[T^T A T = \begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix}\]
+  #+end_conc
+  #+ATTR_LATEX: :options [21.11]
+  #+begin_conc latex
+  $(V, γ_V), (W, γ_W)$ quadratische Räume über $ℂ$. Dann sind äquivalent:
+  1. Es gibt einen Isomorphismus quadratischer Räume $(V, γ_V) \to (W, γ_W)$
+  2. $\dim V = \dim W$ und $\Rang γ_V = \Rang γ_W$
+  #+end_conc
+  #+begin_proof latex
+  1. $⇒$ 2. vergleiche Anmerkung nach 21.5
+  2. $⇒$ 1. Sei $n = \dim V = \dim W, r = \Rang γ_V = \Rang γ_W$. $⇒ (V, γ_V), (W, γ_W)$ sind als quadratische Räume isomorph zu $(ℂ^n, Δ(\begin{pmatrix}E_r &   \\   &  \end{pmatrix}))$,
+	 also auch $(V, γ_V) \cong (W, γ_W)$
+  #+end_proof
+  #+begin_defn latex
+  $(V, γ)$ quadratischer Raum, $U_1, \dots, U_m ⊆ V$ UVR mit $V = U_1 \oplus \dots \oplus U_n$. Die direkte Summe heißt
+  *orthogonale direkte Summe*
+  \[(V = U_1 \hat oplus \dots \hat \oplus U_m) \xLeftrightarrow{\text{Def}} γ(u_i, u_j) = 0 ∀ u_i ∈ U_i, u_j ∈ U_j, i \neq j\]
+  alternativ $\operp$
+  #+end_defn
+  #+begin_thm latex
+  $(V, γ)$ quadratischer Raum über $ℝ, n = \dim V$. Dann existiert eine Orthogonalbasis $\mathcal{B}$ von $(V, γ)$, sowie $r_+, r_- ∈ \{0, \dots, \dim V\}$ mit
+  \[M_{\mathcal{B}}(γ) = \begin{pmatrix}E_{r_+} &   & 0 \\   & -E_{r_-} &   \\ 0 &   & 0\end{pmatrix}\]
+  Insbesondere existiert ein Isomorphismus quadratischer Räume
+  \[(ℝ^n, Δ(\begin{pmatrix}E_{r_+} &   & 0 \\   & -E_{r_-} &   \\ 0 &   & 0\end{pmatrix})) \to (V, γ)\]
+  Die Zahlen $r_+, r_-$ sind unabhängig von der Wahl einer solchen Basis. Wir nennen $\Signatur(γ) := (r_+, r_-)$ heißt die *Signatur* von $γ$.
+  #+end_thm
+  #+begin_proof latex
+  1. Sei $(\tilde v_1, \dots, \tilde v_n)$ eine Orthogonalbasis von $(V, γ)$. Wir setzen
+	 \[v_i := \begin{cases} \tilde v_i & γ(\tilde v_i, \tilde v_i) = 0 \\ \frac{1}{\sqrt{\abs{γ(\tilde v_i, \tilde v_i)}}} & γ(\tilde v_i, \tilde v_i) \neq 0\end{cases}\]
+	 Falls $γ(\tilde v_i, \tilde v_i) \neq 0$, dass ist
+	 \begin{align*}
+	 γ(v_i, v_i) &= γ(\frac{1}{\sqrt{\abs{γ(\tilde v_i, \tilde v_i)}}} \tilde v_i, \frac{1}{\sqrt{\abs{γ(\tilde v_i, \tilde v_i)}}} \tilde v_i) \\
+	 &=	\frac{1}{\abs{γ(\tilde v_i, \tilde v_i)}} γ(\tilde v_i, \tilde v_i) ∈ \{\pm 1\}
+     \end{align*}
+	 $γ(v_i, v_j) = 0$ für $i \neq j$.
+	 Setze $\mathcal{B} := (v_1, \dots, v_n)$. Nach eventueller Umnummerierung von $v_1, \dots, v_n$ ist
+	 \[M_{\mathcal{B}}(γ) = \begin{pmatrix} 1 & & & & & & & & \\ & \ddots & & & & & & & \\ & & 1 & & & & & & \\ & & & -1 & & & & & \\ & & & & \ddots & & & & \\ 1 & & & & & -1 & & & \\ & & & & & & 0 & & \\ & & & & & & & \ddots & \\ & & & & & & & & 0 \end{pmatrix} = \begin{pmatrix}E_{r_+} &   & 0 \\   & -E_{r_-} &   \\ 0 &   & 0\end{pmatrix}\]
+	 mit geeigneten $r_+, r_- ∈ \{0, \dots, n\}$
+  2. $r_+, r_-$ sind basisunabhängig: Es ist $r_+ + r_- = \Rang γ$, dies ist basisunabhängig. Es gilt zu zeigen: $r_+$ ist basisunabhängig.
+	 Setze $V_+ := \Lin((v_1, \dots, v_{r_+})), V_- = \Lin((v_{r_+ + 1} ,\dots, v_{r_+ + r_-})), V_0 := \Lin((v_{r + + r_- + 1}, \dots, v_n))$
+	 $⇒ V = V_+ \hat \oplus V_- \hat \oplus V_0$. Setze
+     \[s := \max\{\dim W \mid W ⊆ V \text{ UVR mit } γ(w, w) > 0 ∀ w ∈ W, w \neq 0\}\]
+     dies ist wohldefiniert. $V_+$ ist ein UVR von $V$ mit $γ(w, w) > 0 ∀ w ∈ V_+, w \neq 0$, denn für $w = λ_1 v_1 + \dots + λ_{r_+} v_{r_+}$ ist
+	 \[γ(w, w) = λ_1^2 \underbrace{γ(v_1, v_1)}_{= 1} + \dots + λ_{r_+}^2\underbrace{v_{r_+}, v_{r_+}}_{= 1} = λ_1^2 + \dots + λ_{r_+}^2 > 0 \text{ falls } w \neq 0\]
+	 $⇒ s \geq \dim V_+ = r_+$
+	 Annahme: Es existiert ein UVR $W ⊆ V$ mit $γ(w, w) > 0 ∀ w ∈ W, w \neq 0$ und $\dim W > r_+$
+     \[⇒ \underbrace{\dim W}_{> r_+} + \underbrace{\dim V_-}_{= r_-} + \underbrace{\dim V_0}_{n - (r_+ + r_-)} > n\]
+     \begin{align*}
+     ⇒ \dim(W ∩ (V_- \hat\oplus V_0)) &= \dim W + \dim(V_- \hat\oplus V_0) - \dim(W + (W_- \hat\oplus V_0)) \\
+     &= \underbrace{\dim W + \dim V_- + \dim V_0}_{> n} - \underbrace{\dim(W + (V_- \hat\oplus V_0))}_{\mathclap{\leq n, \text{ da } W + (V_- \hat\oplus W_0) \text{ UVR von } V}} \\
+     &= >0
+     \end{align*}
+     $⇒$ Es existiert $w ∈ W, w \neq 0$ mit $w ∈ W_- \hat \oplus V_0$. \\
+     $⇒$ Es existiert $w_- ∈ V_-, w_0 ∈ V_0$ mit $w = w_- + w_0$ \\
+     $⇒$ $γ(w, w) = γ(w_- + w_0, w_- + w_0) = \underbrace{γ(w_-, w_-)}_{< 0} + \underbrace{γ(w_0, w_0)}_{= 0} < 0$
+	 Andererseits: $γ(w, w) > 0$ wegen $w ∈ W, w \neq 0 \lightning$. Somit: $r_+ = s$, insbesondere unabhängig von Basiswahl.
+  #+end_proof
+  #+ATTR_LATEX: :options [Sylvesterscher Trägheitssatz]
+  #+begin_concdef latex
+  $A ∈ M(n × n, ℝ)$ symmetrisch. Dann existieren $T ∈ \GL(n, ℝ), r_+, r_- ∈ \{0, \dots, n\}$ mit
+  \[T^T A T = \begin{pmatrix}E_{r_+} &   & 0 \\   & -E_{r_-} &   \\ 0 &   & 0\end{pmatrix}\]
+  Die Zahlen $r_+, r_-$ sind unabhängig von der Wahl eines solchen $T$. $\Signatur(A) := (r_+, r_-)$ heißt *Signatur* von $A$.
+  #+end_concdef
+  #+begin_proof latex
+  folgt aus 21.13 (analog zum Beweis von 21.7).
+  #+end_proof
+  #+begin_note latex
+  Ist $S ∈ \GL(n, ℝ)$, dann haben die Matrixen $A$ und $S^T A S$ diesselbe Signatur, denn: Ist $\tilde T ∈ \GL(, ℝ)$ mit \[\tilde T^T(S^T A S) T = \begin{pmatrix}E_{r_+} &   & 0 \\   & -E_{r_-} &   \\ 0 &   & 0\end{pmatrix}\], dann ist
+  \[(S\tilde T)^T A (S\tilde T) = \begin{pmatrix}E_{r_+} &   & 0 \\   & -E_{r_-} &   \\ 0 &   & 0\end{pmatrix}\]
+  #+end_note
+  #+begin_conc latex
+  $(V, γ_V), (W, γ_W)$ quadratische Räume über $ℝ$. Dann sind äquivalent:
+  1. Es gibt einen Isomorphismus quadratischer Räume $(V, γ_V) \to (W, γ_W)$
+  2. $\dim V = \dim W$ und $\Signatur(γ_V) = \Signatur(γ_W)$
+  #+end_conc
+  #+begin_proof latex
+  1. $⇒$ 2. Für $\Signatur(γ_V) = \Signatur(γ_W)$ verwende Charakterisierung von $r_+$ aus dem Beweis von 21.3.
+  2. $⇒$ 1. aus 21.13, analog zum Beweis von 21.11
+  #+end_proof
+  #+begin_note latex
+  Man kann Folgerung 21.11/21.15 verwenden, um quadratische Formen über $ℂ$ beziehungsweise $ℝ$ bis auf Äquivalenz zu klassifizieren (vergleiche Übungen)
+  #+end_note

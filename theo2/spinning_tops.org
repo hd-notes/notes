@@ -1,0 +1,117 @@
+* Kreisel
+** Euler-Gleichungen
+   Körperfestes System vs. Raumfestes System. Drehmatrix $R(t) ∈ SO(3)$
+   \[L' = RL, v' = Rv\]
+   Bewegungsgleichungen:
+   \begin{align*}
+   \dot{\v L'} = \v M' \qquad \dd{}{t}(R · L) &= RM \\
+   \dot R L + R \to L &= RM \\
+   \intertext{Erinnerung: $\dot R r = R(ω × r)$}
+   R(ω × L) + R \dot L &= R  M \\
+   \dot R &= M + L × ω \\
+   L &= I ω \\
+   I \dot ω = M + (I ω) × ω
+   \end{align*}
+   Wähle als körperfestes System speziell das Hauptachsensystem $⇒ I = \begin{pmatrix}I_1 &   &   \\   & I_2 &   \\   &   & I_3\end{pmatrix}$.
+   $⇒$ Euler-Gleichungen
+   \begin{align*}
+   I_1 \dot ω_1 &= M_1 + ω_2 ω_3(I_2 - I_3) \\
+   I_2 \dot ω_2 &= M_2 + ω_3 ω_1(I_3 - I_1) \\
+   I_3 \dot ω_3 &= M_3 + ω_1 ω_3(I_1 - I_2)
+   \end{align*}
+** Freier Kreisel
+   Energieerhaltung:
+   \[E = T = \frac{1}{2}ω^T I ω = \frac{1}{2}\sum_{i = 1}^{3}I_i ω_i^2\]
+   \[L_i = I_i ω_i ⇒ E = \frac{1}{2} \sum_{i = 1}^{3} \frac{L_i^2}{I_i}\]
+   oder
+   \[\frac{L_1^2}{2E I_1} + \frac{L_2^2}{2E I_2} + \frac{L_3^2}{2E I_3} = 1\]
+   $⇒ L$ ist auf ein Ellipsoid ("Binet-Ellipsoid" (Ellipsoid im "L-Raum")) eingeschränkt. \\
+   Drehimpulserhaltung:
+   \[L' = \const, L' = RL, R ∈ SO(3) ⇒ \abs{L} = \const\]
+   $⇒ L$ bewegt sich im körperfesten System auf Schnittkurven von Binet-Ellipsoid und Sphäre mit Radius $\abs{\v L} = \abs{\v L'}$
+   Ohne Beschränkung der Allgemeinheit: $I_1 > I_2 > I_3$ \\
+   Fall 1: $\abs{\v L} < \sqrt{2 E I_3} ⇒$ Sphäre und Ellipsoid haben keine gemeinsamen Punkte $⇒$ physikalische unmöglich \\
+   Fall 2: $\abs{\v L} = \sqrt{2 E E_3}$ ("einbeschriebene Kugel") $⇒ L = \pm (0, 0, \sqrt{2 E I_3})^T, ω_2 \parallel e_3$ fest. \\
+   Fall 3: $\sqrt{2 E I_3} < \abs{\v L} < \sqrt{2 E I_2} ⇒$ Sphäre stößt aus Ellipsoid heraus $⇒ L$ bewegt sich im körperfesten System auf einer geschlossenen Kurve
+   $⇒$ kräftefreie Präzession des Kreisels im Laborsystem. \\
+   Fall 4: $\abs{\v L} = sqrt(2 E I_2)$ Zwei kreuzende Kurven $L$ sitzt am Kreuzungspunkt (instabil) oder bewegt sich entlang Kurve \\
+   Fall 5: $\sqrt{2 E I_2} < \abs{\v L} < \sqrt{2 E I_1}$ "Gurke", nur Enden sind abgeschnitten $⇒ L$ bewegt sich im körperfesten System auf einer geschlossenen Kurve $⇒$ kräftefreie Präzessions des Kreisels im Laborsystem \\
+   Fall 6: $\abs{\v L} = \sqrt{2 E I_1}$ ("einbeschriebene Kugel"), wie Fall 2 \\
+   Fall 7: $\sqrt{2 E I_1} < \abs{\v L}$ unmöglich \\
+   Auch möglich: Geometrische Diskussion im raumfesten System $⇒$ Poinsot-Konstruktion: Ellipse rollt rutschfrei auf Ebene ab.
+** Freier Kreisel analytisch
+   Euler-Gleichungen
+   \begin{align*}
+   I_1 \dot ω_1 &= ω_2 ω_3(I_2 - I_3) \\
+   I_2 \dot ω_2 &= ω_3 ω_1(I_3 - I_1) \\
+   I_3 \dot ω_3 &= ω_1 ω_3(I_1 - I_2)
+   \end{align*}
+   $⇒$ Falls 2 der 3 Komponenten von $\v ω$ Null sind $⇒ \v ω = \const$. Jetzt zur Vereinfachung sei $I_1 = I_2 < I_3$.
+   Definiere $I_0 \equiv I_1 = I_2$ (Beispiel: abgeflachte Kugel, wie etwa Erde).
+   \begin{align*}
+   I_0 \dot ω_1 &= ω_2 ω_3(I_0 - I_3) \\
+   I_0 \dot ω_2 &= -ω_3 ω_1(I_0 - I_3) \\
+   I_3 \dot ω_3 &= 0
+   \end{align*}
+   $ω_3 = \const$. Definiere $α \equiv -ω_3(1 - \frac{I_3}{I_0}) = \const$. Man erhält:
+   \begin{align*}
+   \dot ω_1 = -α ω_2 \\
+   \dot ω_2 = -a ω_1 \\
+   ⇒ \ddot ω_1 &= -α^2 ω_1 \\
+   ⇒ ω_1 &= A \cos(α t + φ) \\
+   \end{align*}
+   (ohne Beschränkung der Allgemeinheit $φ = 0$).
+   $⇒$ freie Präzession:
+   \begin{align*}
+   ω_1 &= A\cos α t \\
+   ω_2 &= A\sin α t \\
+   ω_3 &= \const
+   \end{align*}
+   $\v ω$ bewegt sich auf Kreis in der $ω_3 = \const$ Ebene. \\
+   Konkreter Fall: Erde
+   \[-(1 - \frac{I_3}{I_0}) \approx 0.003 \equiv ε\]
+   $⇒ α = ω_3 · ε ⇒ T_{\text{Präz}} = \frac{T_{\text{Erde}}}{ε} \sim 300 \text{Tage}$ \\
+   $⇒$ Realität ist leider komplizierter, "Chandler-Wobble"
+** Schwerer Kreisel (vereinfacht)
+   Raumfestes System!
+   - $\v S'$: Schwerpunktsachse des Kreisels
+   - $φ$: Winkel der Schräglage des Kreisels
+   entscheidende Näherung: $\v L' \parallel \v S'$
+   \[\v M' = \v r' × \v F' \sim \v S' × \v F'\]
+   Also in unserer Näherung: $\v L' \perp \v M'$. Betrachte:
+   \[(\v L^{\prime 2})^{·} = 2\v L' \dot{\v L}' \qquad \dot{\v L}' = \v M'\]
+   $⇒ (\v L^{\prime 2})^{·} = 0$ beziehungsweise $\abs{\v L'} = \const$
+   Weiterhin: $\v F' \parallel \hat e_z' ⇒ \v M'$ liegt in x-y-Ebene. $⇒$ Spitze von $\v L'$ bewegt sich auf Kreis in horizontaler Ebene. \\
+   Kreisradius = $\abs{\v L'} \sin φ$, Geschwindigkeit = $\abs{\v M'}$. Periodendauer:
+   \[T = \frac{2π R}{v} = \frac{2π \abs{\v L'}\sin φ}{\abs{\v M'}} = \frac{2 π \abs{\v L'}}{m g l}\]
+   Anwendung auf Erde: kein fester Punk, stattdessen Drehmoment durch Sonne/Mond und Abflachung der Erde. $⇒$ Präzession der Äquinoktialpunkte (precession of the equinoxes).
+   $T \sim \SI{26000}{\year}$
+** Eulersche Winkel
+   *Ziel*: exakte Analyse der symmetrischen schweren Kreiseln. \\
+   *Brauchen*: Parametrisierung der relativen Lage zweier Koordinatensysteme. \\
+   $⇒$ Drehe um $\hat e_3' = \hat e_3$ um $φ$, dann Drehe um $\hat e_1$ um $θ$ und dann drehe um $\hat e_3$ um $\dot ψ$
+   *Wichtig*: kleine Winkel (als Vektoren) sind bezüglich Drehungen additiv. (folgt aus $ℝ = \mathbb{1} + \mathcal{0}(δ\v φ)$).
+   $⇒$ Winkelgeschwindigkeiten addieren sich vektoriell.
+   \[⇒ \v ω' = \dot φ \hat e_3' + \dot ψ \hat e_3 + \dot θ \hat e_N\]
+** Schwerer Kreisel (exakt)
+   Ungestrichenes System - fest verbunden mit Kreisel. ($I_1 = I_2 \equiv I_0$)
+   \[\mathcal{L} = \frac{1}{2}[I_0(ω_1^2 + ω_2^2) + I_3ω_3^2] - m g l \cos θ\]
+   Wegen Rotationssymmetrie von Schwerefeld und Kreisel sind $φ, ψ$ zyklisch $⇒$ können die Umschreibung von $\{ω_1, ω_2, ω_3\} \to \{φ, ψ, θ, \dot φ, \dot ψ, \dot θ\}$
+   bei $φ = ψ = 0$ durchführen: Wir haben (bei $φ = ψ = 0$):
+   \begin{align*}
+   \hat e_N &= \hat e_1, \hat e_3 = \hat e_3 \cos θ + \hat e_2 \sin θ \\
+   \v ω' &= \dot φ(\hat e_3 \cos θ + \hat e_ 2 \sin θ) + \dot ψ \hat e_3 + \dot θ \hat e_1 \\
+   &= \hat e_1 \underbrace{\dot θ}_{ω_1} + \hat e_2 \underbrace{(\dot φ \sin θ)}_{ω_2} + \hat e_3 \underbrace{(\dot ψ + \dot φ \cos θ)}_{ω_3} \\
+   \mathcal{L} &= \frac{1}{2}(I_0(\dot θ^2 + \dot φ^2 \sin^2 θ) + I_3(\dot ψ + \dot φ \cos θ)^2) - m g l \cos θ
+   \end{align*}
+   Energie: $E = T + V = \const_1$
+   \[\pp{\mathcal{L}}{\dot φ} = L_3' = \const_2\]
+   \[\pp{\mathcal{L}}{\dot ψ} = L_3 = \const_3\]
+   Auflösen nach $\dot φ, \dot ψ$ und einsetzen in $T + V = E$ gibt:
+   \begin{align*}
+   E &= \frac{1}{2}I_0 \frac{\dot U^2}{1 - U^2} + V_{eff}(u), \quad u \equiv \cos θ \\
+   V_{eff}(u) &= m g l u + \frac{L_3^2}{2 I_3^2} + \frac{(L_3' - L_3 u)^2}{2 I_0 (1 - u^2)} \\
+   - \dot U^2 = \frac{2}{I_0}\{(m g l u + \frac{L_3^2}{2 I_3} - E)(1 - U^2) + \frac{(L_3' - L_3U)^2}{2I_0}\}
+   \end{align*}
+   $⇒$ Kurvendiskussion $⇒$ $u$ oszilliert zwischen $u_{min}, u_{max} ⇒$ $θ$ oszilliert zwischen $θ_{min}, θ_{max}$. Währenddessen schreitet $φ$ unregelmäßig voran:
+   \[\dot φ = \frac{L_3' - L_3 \cos θ}{I_0 \sin^2 θ}\]

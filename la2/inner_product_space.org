@@ -1,0 +1,250 @@
+* Unitäre Räume
+  #+ATTR_LATEX: :options [Sesquilinearform]
+  #+begin_defn latex
+  $V$ $ℂ$ Vektorraum, $h: V × V \to ℂ, (v, w) ↦ h(v, w)$ heißt eine *Sesquilinearform* auf $V$ genau dann wenn folgende Bedingungen erfüllt sind:
+  - (S1) $h(v_1 + v_2, w) = h(v_1, w) + h(v_2, w), h(λ v, w) = λ(h(v, w))$
+  - (S2) $h(v, w_1 + w_2) = h(v, w_1) + h(v, w_2), h(v, λ w) = \bar λ h(v, w)$
+  für alle $v_1, v_2, w_1, w_2, v, w ∈ V, λ ∈ ℂ$
+  #+end_defn
+  #+begin_ex latex
+  $h: ℂ^n × ℂ^n \to ℂ, h(x, y) := x^t \bar y$ ist eine Sesquilinearform auf $ℂ^n$ (beachte $h(x, λ y) = x^t \overline{λ y} = \bar λ x^t y$), aber keine Bilinearform auf $ℂ*n$
+  #+end_ex
+  #+begin_remark latex
+  $V$ $ℂ$ Vektorraum, $h: V × V \to ℂ$ Sesquilinearform auf $V$. Dann induziert $h$ eine "semilineare" Abbildung
+  \[Γ: V \to V^{\ast}, w ↦ h(·, w)\]
+  das heißt $Γ(w_1 + w_2) = Γ(w_1) + Γ(w_2), Γ(λ w) = \bar λ Γ(w) ∀ w_1, w_2, w ∈ V, λ ∈ ℂ$
+  #+end_remark
+  #+ATTR_LATEX: :options [Darstellungsmatrix / Fundamentalmatrix]
+  #+begin_defn latex
+  $V$ endlichdimensional, $ℂ$ Vektorraum, $h$ Sesquilinearform auf $V$, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V$
+  \[M_{\mathcal{B}}(h) = (h(v_i, v_j))_{\substack{1 \leq i \leq n \\ 1 \leq j \leq n}}\]
+  heißt die *Darstellungsmatrix* (*Fundamentalmatrix*) von $h$ bezüglich $\mathcal{B}$
+  #+end_defn
+  #+begin_remark latex
+  $V$ endlichdimensionaler $ℂ$ Vektorraum, $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V$.
+  \[\Sesq(V) := \{h: V × V \to ℂ \mid h \text{ ist eine Sesquilinearform}\}\]
+  ist ein $ℂ$ Vektorraum und Untervektorraum von $\Abb(V × V, ℂ)$.
+  Dann gilt: Die Abbildun $M_{\mathcal{B}} \to M(n × n, ℂ), h ↦ M_{\mathcal{B}}(h)$ ist ein Isomorphismus von $ℂ$ Vektorräumen mit Umkehrabbildung $Δ^{\mathcal{B}}: M(n × n, ℂ) \to \Sesq(V)$ mit
+  \[Δ^{\mathcal{B}}(A)(v, w) = Φ_{\mathcal{B}}^{-1}(v)^T A \overline{Φ_{\mathcal{B}}^{-1}(w)}\]
+  #+end_remark
+  #+begin_thm latex
+  $V$ endlichdimensionaler $ℂ$ Vektorraum, $\mathcal{A}, \mathcal{B}$ Basin von $V, h$ Sesquilinearform auf $V$. Dann gilt:
+  \[M_{\mathcal{B}}(h) = (T_{\mathcal{A}}^{\mathcal{B}})^T M_{\mathcal{A}}(h) \overline{T_{\mathcal{B}}^{\mathcal{A}}}\]
+  #+end_thm
+  #+ATTR_LATEX: :options [hermitesch]
+  #+begin_defn latex
+  $V$ $ℂ$ Vektorraum, $h$ Sesquilinearform auf $V$. $h$ heißt *hermitesch* genau dann wenn:
+  \[h(w, v) = \overline{h(v, w)} ∀ v, w ∈ V\]
+  #+end_defn
+  #+begin_note latex
+  In diesem Fall ist $h(v, v) = \overline{h(v, v)}$, das heißt $h(v, v) ∈ ℝ ∀ v ∈ V$
+  #+end_note
+  #+begin_remark latex
+  $V$ endlichdimensionaler $ℂ$ Vektorraum, $h$ Sesquilinearform auf $V, \mathcal{B}$ Basis von $V, A = M_{\mathcal{B}}(h)$. Dann sind äquivalent:
+  1. $h$ ist hermitesch
+  2. $\bar A^t = A$
+  #+end_remark
+  #+begin_note latex
+  Matrizen $A ∈ M(n × n, ℂ)$ mit $\bar A^T = A$ heißen *hermitesche Matrizen*.
+  #+end_note
+  #+begin_defn latex
+  $V$ $ℂ$ Vektorraum, $h$ hermitesche Form auf $V$. $h$ heißt *positiv definit* genau dann wenn
+  \[h(v, v) > 0 ∀ v ∈ V, v \neq 0\]
+  Eine positiv definite hermitesche Form nennt man auch ein *Skalarprodukt*.
+  #+end_defn
+  #+begin_ex latex
+  $V = ℂ^n, <·,·>: ℂ^n × C^n \to ℂ, <x, y> := x^T \bar y$ ist ein Skalarprodukt auf $ℂ^n$ (das *Standardskalarprodukt* auf $ℂ^n$):
+  - $<·,·>$ ist sesquilinear (vergleiche 25.2)
+  - $<·,·>$ ist hermitesch: $<y, x> = y^T \bar x = (y^T \bar x)^T = \bar x^T y = \overline{x^T \bar y} = \overline{<x, y>}$
+  - $<·,·>$ ist positiv definit:
+	\begin{align*}
+    <x, x> = x^T \bar x &= \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix} \begin{pmatrix}\bar x_1 \\ \vdots \\ \bar x_n\end{pmatrix} = x_1 \bar x_1 + \dots + x_n \bar x_n \\
+	&= \abs{x_1}^2 + \dots + \abs{x_n}^2 > 0 \text{ für } x \neq 0
+    \end{align*}
+  #+end_ex
+  #+ATTR_LATEX: :options [Unitärer Raum]
+  #+begin_defn latex
+  Ein *unitärer Raum* ist ein Paar $(V, h)$, bestehend aus einem endlichdimensionalen $ℂ$ Vektorraum $V$ und einem Skalarprodukt $h$ auf $V$.
+  #+end_defn
+  Für den Rest des Abschnitts sei $(V, h)$ stets ein unitärer Raum.
+  #+begin_note latex
+  Analog zu Euklidischen Räumen definiert man die Begriffe:
+  Norm, orthogonal, orthonormal, Orthogonalbasis, Orthonormalbasis, orthogonales Komplement.
+  Es gilt dabei:
+  - Cauchy-Schwarz-Ungleichung: $\abs{h(v, w)} \leq \norm{v} \norm{w} ∀ v, w ∈ V$
+  - Gram-Schmidt-Verfahren (mit $h$ statt $γ$) liefert Orthonormalbasis
+  -	$V = U \hat U^{\perp}, U^{\perp\perp} = U$ für $U ⊆ V$ Untervektorraum
+  #+end_note
+  #+begin_defn latex
+  $(V, h_V), (W, h_W)$ unitäre Räume, $φ: V \to W$ lineare Abbildung. $φ$ heißt *unitär* genau dann wenn:
+  \[h_W(φ(v_1), φ(v_2)) = h_V(v_1, v_2) ∀ v_1, v_2 ∈ V\]
+  #+end_defn
+  #+begin_remark latex
+  $n = \dim V, \mathcal{B}$ Orthonormalbasis von $(V, h)$. Dann ist das Koordinatensystem $Φ_{\mathcal{B}}: (ℂ^n, <·,·>) \to (V, h)$ ein unitärer Isomorphismus.
+  #+end_remark
+  #+begin_remark latex
+  $\mathcal{B}$ Orthonormalbasisv on $(V, h), φ ∈ \End(V), A = M_{\mathcal{B}}(φ)$. Dann sind äquivalent:
+  1. $φ$ ist unitär
+  2. $\bar A^T A = E_n$
+  #+end_remark
+  #+begin_remdef latex
+  $A ∈ M(n × n, ℂ)$. $A$ heißt *unitär* genau dann wenn: $\bar A^T A = E_n$.
+  \[U(n) := \{A ∈ M(n × n, ℂ) \mid A \text{ ist unitär}\}\]
+  $U(n)$ ist eine Gruppe bezüglich "$·$", die *unitäre Gruppe* vom Rang $n$
+  \[SU(n) := \{A ∈ U(n) \mid \det A = 1\}\]
+  ist eine Untergruppe von $U(n)$, die *spezielle unitäre Gruppe* von Rang $n$.
+  #+end_remdef
+  #+begin_remark latex
+  $\mathcal{B} = (v_1, \dots, v_n)$ Orthonormalbasis von $(V, h), \mathcal{B}^{\ast} = (v_1^{\ast}, \dots, v_n^{\ast})$ duale Basis. Dann ist die Abbildung
+  \[Γ: V \to V^{\ast}, w ↦ h(·, w)\]
+  ein Semiisomorphismus mit $Γ(v_i) = v_i^{\ast}$ für $i = 1, \dots, n$.
+  #+end_remark
+  #+begin_defthm latex
+  $(V, h_V), (W, h_W)$ unitäre Räume, $φ: V \to W$ lineare Abbildung, $\mathcal{A}$ Orthonormalbasis von $(V, h_V)$, $\mathcal{B}$ Orthonormalbasis von $(W, h_W)$. Dann gilt:
+  1. Es gibt genau eine lineare Abbildung $φ^{ad}: W \to V$ mit $h_W(φ(v), w) = h_V(v, φ^{ad}(w)) ∀ v ∈ V, w ∈ W$, $φ^{ad}$ heißt die *zu $φ$ adjungierte Abbildung*
+  2. $M_{\mathcal{A}}^{\mathcal{B}}(φ^{ad}) = \overline{M_{\mathcal{B}}^{\mathcal{A}}(φ)}^T$
+  #+end_defthm
+  #+begin_proof latex
+  1. Wie im reellen Fall betrachte man das Diagramm
+     #+begin_export latex
+     \catcode`(=12
+     \catcode`)=12
+     #+end_export
+     \begin{figure}[H]
+     \centering
+     \begin{tikzpicture}
+     \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {V & W \\ V^{\ast} & W^{\ast}\\};
+     \path[-stealth]
+     (m-2-1) edge node [left] {$φ^{ad}$} (m-1-1)
+         	 edge node [below] {$Γ_W$} (m-2-2)
+     (m-1-1) edge node [below] {$Γ_V$} (m-1-2)
+     (m-2-2) edge node [left] {$φ^{\ast}$} (m-1-2);
+     \end{tikzpicture}
+     \end{figure}
+     #+begin_export latex
+     \catcode`(=\active
+     \catcode`)=\active
+     #+end_export
+	 und setzten $φ^{ad} := Γ_V^{-1} \circ φ^{\ast} \circ Γ_W$. $φ^{ad}$ ist linear, da sowohl $Γ_V$ als auch $Γ_W$ semilinear sind.
+	 Rest wie im reellen Fall
+  2. Sei $\mathcal{A} = (v_1, \dots, v_n), \mathcal{B} = (w_1, \dots, w_n), M_{\mathcal{B}}^\mathcal{A}(φ) = (a_{ij}), M_{\mathcal{A}}^{\mathcal{B}}(φ^{ad}) = (b_ij)$
+	 \begin{align*}
+	 ⇒ φ(v_j) &= \sum_{k = 1}^{m} a_{kj} w_k, φ^{ad} = \sum_{k = 1}^{n} b_{ki} v_k \\
+	 ⇒ a_{ij} &= h_W(\sum_{k = 1}^{m} a_{kj} w_k, w_i) = h_W(φ(w_j, w_i)) = h_V(v_j, φ^{ad} (w_i)) \\
+	 &= h_V(v_j, \sum_{k = 1}^{m} b_{ki} v_k) = h_V(v_j, b_{ji} v_j) = \overline{b_{ji}} h(v_j, v_j) = \overline{b_{ji}}
+     \end{align*}
+  #+end_proof
+  #+begin_remark latex
+  $φ ∈ \End(V)$. Dann gilt:
+  1. $\ker φ^{ad} = (\im φ)^{\perp}$
+  2. $\im φ^{ad} = (\ker φ)^{\perp}$
+  #+end_remark
+  #+begin_defn latex
+  $φ ∈ \End(V)$. $φ$ heißt *selbstadjungierte genau dann wenn: $φ = φ^{ad}$
+  #+end_defn
+  #+begin_remark latex
+  $φ ∈ \End(V), \mathcal{B}$ Orthonormalbasis von $(V, h), A = M_{\mathcal{B}}(φ)$. Dann sind äquivalent:
+  1. $φ$ selbstadjungiert
+  2. $\bar A^T = A$, das heißt $A$ ist hermitesch
+  #+end_remark
+  #+begin_remark latex
+  $φ ∈ \End(V)$ selbstadjungiert. Dann sind alle Eigenwerte von $φ$ reell.
+  #+end_remark
+  #+begin_proof latex
+  Sei $λ ∈ ℂ$ Eigenwert von $φ, v$ Eigenvektor zum Eigenwert $λ$.
+  \[⇒ λ h(v, v) = h(λ v, v) = h(φ(v), v) = h(v, φ^{ad}(v)) = h(v, φ(v)) = h(v, λ v) = \bar λ h(v, v)\]
+  $⇒ λ = \bar λ ⇒ λ ∈ ℝ$
+  #+end_proof
+  #+begin_defn latex
+  $φ ∈ \End(V)$. $φ$ heißt *normal* genau dann wenn: $φ^{ad} \circ φ = φ \circ φ^{ad}$. $A ∈ M(n × n, ℂ)$ heißt *normal* genau dann wenn: $\bar A^T A = A \bar A^T$
+  #+end_defn
+  #+begin_note latex
+  Ist $\mathcal{B}$ eine Orthonormalbasis von $(V, h)$, dann: $φ$ normal $⇔ M_{\mathcal{B}}(φ)$ normal.
+  #+end_note
+  #+begin_remark latex
+  $φ ∈ \End(V)$. Dann gilt:
+  1. $φ$ unitär $⇒ φ$ normal
+  2. $φ$ selbstadjungiert $⇒ φ$ normal
+  Für $A ∈ M(n × n, ℂ)$ gilt: $A$ unitär $⇒ A$ normal, $A$ hermitesch $⇒ A$ normal.
+  #+end_remark
+  #+begin_proof latex
+  1. Seien $v, w ∈ V ⇒ h(v, φ^{-1}(w)) = h(φ(v), φ(φ^{-1}(w))) = h(φ(v), w)$
+	 $⇒ φ^{ad} = φ^{-1} ⇒ φ^{ad} \circ φ = φ^{-1} \circ φ = \id_V = φ \circ φ^{-1} = φ \circ φ^{ad}$
+  2. $φ$ selbstadjungiert $⇒ φ = φ^{ad} ⇒ φ^{ad} \circ φ = φ \circ φ = φ \circ φ^{ad}$
+  #+end_proof
+  #+begin_thm latex
+  $φ ∈ \End(V)$ normal. Dann gilt:
+  1. $\ker φ^{ad} = \ker φ$
+  2. $\im φ^{ad} = \im φ$
+  Insbesondere ist $V = \ker φ \hat\oplus \im φ$
+  #+end_thm
+  #+begin_proof latex
+  1. Es gilt:
+     \begin{align*}
+     v ∈ \ker φ ⇔ 0 &= h(φ(v), φ(v)) = h(v, φ^{ad}(φ(v))) = h(v, φ(φ^{ad}(v))) \\
+     &= \overline{h(φ(φ^{ad}(v)), v)} = h(φ^{ad}(v), φ^{ad}(v)) ⇔ φ^{ad}(v) = 0 \\
+     &⇔ v ∈ \ker φ^{ad}
+     \end{align*}
+  2. Es ist $\im φ^{ad} = (\ker φ)^{\perp} = (\perp φ^{ad})^{\perp} = ((\im φ)^{\perp})^{\perp} = \im φ$
+  \[⇒ V = \ker φ \hat\oplus (\ker φ)^{\perp} = \ker φ \hat\oplus \im(φ^{ad}) = \ker φ \hat\oplus \im φ\]
+  #+end_proof
+  #+begin_remark latex
+  $φ ∈ \End(V)$ normal, $λ ∈ ℂ$. Dann gilt:
+  1. $φ - λ \id_V$ ist normal
+  2. $\Eig(φ, λ) = \Eig(φ^{ad}, \bar λ)$
+  #+end_remark
+  #+begin_proof latex
+  1. Setze $ψ := φ - λ \id_V$. Für $v, w ∈ V$ ist $h(λ v, w) = h(v, \bar λ w)$, das heißt $(λ \id_V)^{ad} = \bar λ \id_V$
+	 \begin{align*}
+     ⇒ ψ^{ad} &= φ^{ad} - \bar λ \id_V \\
+	 ⇒ ψ^{ad} &= φ^{ad} - \bar λ \id_V \\
+	 ⇒ ψ^{ad} \circ ψ &= (φ^{ad} - \bar λ \id_V) \circ (φ - λ \id_V) = \underbrace{φ^{ad} \circ φ}_{= φ \circ φ^{ad}} - \bar λ φ - λ φ^{ad} + λ \bar λ \id_V \\
+	 &= (φ - λ \id_V) \circ (φ^{ad} - \bar λ \id_V) = ψ \circ ψ^{ad}
+     \end{align*}
+  2. $\Eig(φ, λ) = \ker ψ = \ker ψ^{ad} = \ker(φ^{ad} - \bar λ \id_V) = \Eig(φ^{ad}, \bar λ)$
+  #+end_proof
+  #+ATTR_LATEX: :options [Spektralsatz für normale Endomorphismen]
+  #+begin_thm latex
+  $φ ∈ \End(V)$. Dann sind äquivalent:
+  1. Es gibt eine Orthonormalbasis von $(V, h)$ aus Eigenvektoren von $φ$.
+  2. $φ$ ist normal
+  #+end_thm
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $\mathcal{B} = (v_1, \dots, v_n)$ eine Orthonormalbasis von $(V, h)$ aus Eigenvektoren von $φ$ zu Eigenwerten $λ_1, \dots, λ_n ∈ ℂ$. Es ist $(φ \circ φ^{ad})(v_i) = φ(φ^{ad}(v_i)) = φ(\bar λ_i, v_i) = \bar λ_i φ(v_i) = \bar λ_i λ_i v_i = (φ^{ad} \circ φ)(v_i) ∀ i = 1, \dots, n ⇒ φ\circ φ^{ad} = φ^{ad} \circ φ$
+  2. $⇒$ 1. per Induktion nach $n = \dim V$. \\
+	 Induktionsanfang: $n = 0$: trivial \\
+	 Induktionsschritt: $n \geq 1$: Sei $λ_1 ∈ ℂ$ ein Eigenwert von $φ$. Sei $U = \Eig(φ, λ_1) = \ker(φ - λ_1 \id_V)$. Sei $(v_1, \dots, v_r)$ eine Orthonormalbasis von $(U, h \Big|_{n × n})$. Nach
+	 25.25 ist $ψ := φ - λ_1 \id_V$ normal
+	 \begin{align*}
+	 V &= \ker ψ \hat\oplus \im ψ \\
+	 &= \Eig(φ, λ_1) \hat\oplus	\underbrace{\im(φ - λ_1 \id_V)}_{=: W}
+     \end{align*}
+	 Es ist $φ(W) = φ(φ - λ_1 \id_V)(V) = ((φ - λ_1 \id_V) \circ φ)(V) = (φ - λ_1 \id_V)(\underbrace{φ(V)}_{⊆ V}) ⊆ \im(φ - λ_1 \id_V) = W$. Außerdem:
+	 \begin{align*}
+	 φ^{ad}(W) &= φ^{ad}(φ - λ_1 \id_V)(V) = (φ^{ad} \circ φ - λ_1 φ^{ad})(V) \\
+	 &= (φ \circ φ^{ad} - λ_1 φ^{ad})(V) = ((φ - λ_1 \id_V) \circ φ^{ad})(V) ⊆ W
+     \end{align*}
+	 $φ\Big|_W^W$ ist normal, denn: Nach Eindeutigkeit der adjungierten Abbildung ist $(φ\Big|_W^W)^{ad} = (φ^{ad})\Big|_W^W$
+	 \begin{align*}
+	 \string(φ\Big|_W^W\string)^{ad} \circ φ\Big|_W^W &= (φ^{ad})\Big|_W^W \circ φ\Big|_W^W = (φ^{ad} \circ φ)\Big|_W^W = (φ \circ φ^{ad})\Big|_W^W \\
+	 &=	φ\Big|_W^W \circ (φ^{ad})\Big|_W^W = φ\Big|_W^W \circ (φ\Big|_W^W)^{ad}
+     \end{align*}
+	 Nach Induktionsanfang existiert eine Orthonormalbasis $(v_{r + 1}, \dots, v_n)$ von $(V, h\Big|_{W × W})$ aus Eigenvektoren von $φ$ $⇒ (v_1, \dots, v_n)$ ist Orthonormalbasis von $(V, h)$ aus Eigenvektoren von $φ$.
+  #+end_proof
+  #+begin_note latex
+  Insbesondere gilt:
+  - Für jedes selbstadjungierten / unitären Endomorphismus existiert eine Orthonormalbasis aus Eigenvektoren
+  - Jede reelle orthogonale Matrix ist *über $ℂ$* diagonalisierbar.
+  Achtung: Über $ℝ$ reicht "normal" nich aus: Es gibt orthogonale Matrizen, die über $ℝ$ nich diagonalisierbar sind (zum Beispiel $\begin{pmatrix}0 & -1 \\ 1 & 0\end{pmatrix}$ (Drehung um $π / 2$))
+  #+end_note
+  #+begin_conc latex
+  $A ∈ M(n × n, ℂ)$. Dann sind äquivalens:
+  1. $A$ ist normal
+  2. Es gibt eis $T ∈ U(n)$, sodass
+	 \[T^{-1} A T = \begin{pmatrix}λ_1 &  & 0 \\   & \ddots &  \\ 0 &   & λ_n\end{pmatrix}\]
+	 $λ_1, \dots, λ_n$ Eigenwerte von $A$
+  #+end_conc
+  #+begin_proof latex
+  Wende 25.26 auf $(ℂ^n, <·,·>)$ und $φ = \tilde A$ an.
+  #+end_proof
+# Kapitel 5 Ringe und Moduln

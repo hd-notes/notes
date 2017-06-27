@@ -1,0 +1,243 @@
+* Der Spektralsatz
+  In diesem Abschnitt sei $(V, γ)$ stets ein Euklidischer Raum.
+  #+begin_remark latex
+  Die Abbildung $Γ:V \to V^{\ast}, w ↦ γ(·, w)$ ist ein Isomorphismus.
+  #+end_remark
+  #+begin_proof latex
+  $γ$ nicht ausgeartet nach 22.6 $⇒ γ$ perfekt, das heißt $Γ$ Isomorphismus.
+  #+end_proof
+  #+begin_note latex
+  Insbesondere ist für einen Euklidischen Vektorraum $(V, γ)$ die Vektorräume $V$ und $V^{\ast}$ kanonisch isomorph.
+  #+end_note
+  #+begin_remark latex
+  $\mathcal{B} = (v_1, \dots, v_n)$ Orthonormalbasis von $(V, γ), \mathcal{B}^{\ast} = (v_1^{\ast}, \dots, v_n^{\ast})$ duale Basis zu $\mathcal{B}$,
+  $U ⊆ V$ Untervektorraum, $Γ:V\to V^{\ast}$ kanonische Abbildung aus 24.1. Dass gilt:
+  1. $Γ(U^{\perp}) = U^0$
+  2. $Γ(v_i) = v_i^{\ast}, i = 1, \dots, n$
+  #+end_remark
+  #+begin_proof latex
+  1. $Γ(U^{\perp}) ⊆ U^0$, denn: Für $v ∈ U^{\perp}, u ∈ U$ ist $(Γ(v))(w) = γ(u, v) = 0 ⇒ Γ(U^{\perp}) ⊆ U^0$.
+     \[\dim Γ(U^{\perp}) = \dim U^{\perp} = \dim V - \dim U = \dim U^0\]
+  2. Es ist $Γ(v_i)(v_j) = γ(v_j, v_i) = δ_{ij} = v_i^{\ast}(v_j), j = 1, \dots, n$, das heißt $Γ(v_i) = v_i^{\ast}$
+  #+end_proof
+  #+begin_remdef latex
+  $(V, γ_V), (W, γ_W)$ Euklidische Räume, $φ: V\to W$. Dass existiert genau eine lineare Abbildung $φ^{ad}: W \to V$ mit
+  \[γ_W(φ(v), w) = γ_V(v, φ^{ad}(w)) ∀ v ∈ V, w ∈ W\]
+  $φ^{ad}$ heißt die zu $φ$ *adjungierte Abbildung*
+  #+end_remdef
+  #+begin_proof latex
+  Existenz: Wir betrachten das Diagramm
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+	 \centering
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {V & W \\ V^{\ast} & W^{\ast}\\};
+  \path[-stealth]
+  (m-2-1) edge node [left] {$φ^{ad}$} (m-1-1)
+     	  edge node [below] {$Γ_W$} (m-2-2)
+  (m-1-1) edge node [below] {$Γ_V$} (m-1-2)
+  (m-2-2) edge node [left] {$φ^{\ast}$} (m-1-2);
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  und setzen $φ^{ad} := Γ_V^{-1} \circ φ^{\ast} \circ Γ_W$, $φ^{ad}$ ist linear nach Konstruktion. Es gilt für $v ∈ V, w ∈ W$:
+  \begin{align*}
+  γ_W(φ(v), w) &= Γ_W(w)(φ(v)) = (Γ_W(w) \circ φ)(v) = φ^{\ast}(Γ_W(w))(v) \\
+  &= ((φ^{\ast} \circ Γ_W)(w))(v) = ((Γ_V \circ φ^{ad})(w))(v) = Γ_V(φ^{ad}(w))(v) \\
+  &= γ(v, φ^{ad}(w))
+  \end{align*}
+  Eindeutigkeit: Damit obige Gleichung für alle $v ∈ V, w ∈ W$ gilt, muss das Diagramm kommutieren, das heißt $Γ_V \circ φ^{ad} = φ^{\ast} \circ Γ_W$, also $φ^{ad} = Γ_V^{-1} \circ φ^{\ast} \circ Γ_W$.
+  #+end_proof
+  #+begin_note latex
+  Ist $φ$ orthogonal, dann ist $φ^{ad} = φ^{-1}$, denn für $v, w ∈ V$
+  \[γ(φ(v), w) = γ(φ(v), φ(φ^{-1}(w))) = γ(v, φ(w))\]
+  #+end_note
+  #+begin_remark latex
+  $(V, γ_V), (W, γ_W)$ euklidische Räume, $\mathcal{A}$ Orthonormalbasis von $(V, γ_V), \mathcal{B}$ Orthonormalbasis von $(W, γ_W)$, $φ: V \to W$ lineare Abbildung. Dass gilt
+  \[M_{\mathcal{A}}^{\mathcal{B}}(φ^{ad}) = (M_{\mathcal{B}}^{\mathcal{A}}(φ))^T\]
+  Insbesondere ist $(φ^{ad})^{ad} = φ$
+  #+end_remark
+  #+begin_proof latex
+  \begin{align*}
+  M_{\mathcal{A}}^{\mathcal{B}}(φ^{ad}) &= M_{\mathcal{A}}^{\mathcal{B}}(Γ_V^{-1} \circ φ^{\ast} \circ Γ_W) = \underbrace{M_{\mathcal{A}}^{\mathcal{A}^{\ast}}(Γ_V^{-1})}_{E_{\dim V}} \underbrace{M_{\mathcal{A}^{\ast}}^{\mathcal{B}^{\ast}}}_{(M_{\mathcal{B}}^{\mathcal{A}}(φ))^T} \underbrace{M_{BB^{\ast}}^{\mathcal{B}}(Γ_W)}_{= E_{\dim W}} \\
+  &= (M_{\mathcal{B}}^{\mathcal{A}}(φ))^T
+  \end{align*}
+  #+end_proof
+  #+begin_thm latex
+  $(V, γ_V), (W, γ_W)$ euklidische Räume, $φ: V \to W$ lineare Abbildung. Dann gilt:
+  1. $\ker (φ^{ad}) = (\im φ)^{\perp}$
+  2. $\im (φ^{ad}) = (\ker φ)^{\perp}$
+  #+end_thm
+  #+begin_proof latex
+  1. $w ∈ (\im φ)^{\perp} ⇔ γ_W(φ(v), w) = 0 ∀ v ∈ V ⇔ γ_V(v, φ^{ad}(w)) = 0 ∀ v ∈ V$, $γ$ nicht ausgeartet $⇒ φ^{ad}(w) = 0 ⇔ w ∈ \ker(φ^{ad})$
+  2. $(\im(φ^{ad}))^{\perp} = \ker{(φ^{ad})^{ad}} = \ker φ ⇔ (\ker φ)^{\perp} = (\im(φ^{ad})^{\perp})^{\perp} = \im{φ^{ad}}$
+  #+end_proof
+  #+begin_conc latex
+  $φ ∈ \End(V)$. Dann gilt:
+  \[V = \ker φ \hat\oplus \im φ^{ad} \quad \text{sowie} \quad V = \ker φ^{ad} \hat\oplus \im φ\]
+  #+end_conc
+  #+begin_proof latex
+  Es ist
+  \[V = (\ker φ) \hat\oplus (\ker φ)^{\perp} = \ker φ \hat\oplus \im φ^{ad}\]
+  andere Gleichung analog.
+  #+end_proof
+  #+ATTR_LATEX: :options [Selbstadjungiert]
+  #+begin_defn latex
+  $φ ∈ \End(V)$ heißt *selbstadjungiert* $⇔ φ = φ^{ad}$
+  #+end_defn
+  #+begin_remark latex
+  $\mathcal{B}$ Orthonormalbasis von $(V, γ)$. Dann sind äquivalent:
+  1. $φ$ selbstadjungiert
+  2. $M_{\mathcal{B}}(φ)$ symmetrisch
+  In diesem Fall $V = \ker φ \hat\oplus \im φ$
+  #+end_remark
+  #+begin_proof latex
+  $φ$ selbstadjungiert $⇔ φ = φ^{ad} ⇔ M_{\mathcal{B}}(φ) = M_{\mathcal{B}}{φ^{ad}} = (M_{\mathcal{B}}(φ))^T$. Nach 24.6 ist dann $V = \ker φ \hat\oplus \im φ^{ad} = \ker φ \hat \oplus \im φ$
+  #+end_proof
+  #+begin_thm latex
+  Es gilt:
+  1. $φ ∈ \End(V)$ selbstadjungiert $⇒ γ': V × V \to ℝ, γ'(x, y) = γ(φ(x), y)$ ist eine symmetrische
+	 Bilinearform
+  2. Ist $γ': V × V \to ℝ$ eine symmetrische Bilinearform, dann existiert genau ein selbstadjungierter Endormorphisums $φ ∈ \End(V)$ mit
+	 $γ'(x, y) = γ(φ(x), y) ∀ x, y ∈ V$
+  In diesem Fällen gilt bezüglich jeder Orthonormalbasis $\mathcal{B}$ von $(V, γ)$:
+  \[M_{\mathcal{B}}(γ') = M_{\mathcal{B}}(φ)\]
+  #+end_thm
+  #+begin_proof latex
+  1. $φ$ selbstadjungiert $⇒ γ'(x, y) = γ(φ(x), y) = γ(x, φ(y)) = γ(φ(y), x) = γ'(y, x)$, $γ'$ bilinear klar.
+  2. Sei $γ': V × V \to ℝ$ symmetrische Bilinearform, $x ∈ V$ $⇒ ρ_x := γ'(x, ·): V \to ℝ, γ ↦ γ'(x, y)$ ist ein Element von $V^{\ast}$.
+	 Nach 24.1 ist $Γ:V \to V^{\ast}, w ↦ γ(·, w)$ ein Isomorphismus $⇒$ Es existiert genau ein $z ∈ V$ mit $Γ(z) = ρ_x$, das heißt mit
+	 \[γ(y, z) = Γ(z)(y) = ρ_x(y) = γ'(x, y) ∀ y ∈ V\]
+	 Wir definieren $φ: V \to V, x ↦ k$ mit $Γ(z) = ρ_x$ $⇒$ Für alle $x, y ∈ V$ ist $γ(φ(x), y) = γ(y, φ(x)) = γ'(x, y)$. \\
+	 $φ$ ist linear: Seien $x_1, x_2, y ∈ V, λ, μ ∈ ℝ$
+	 \begin{align*}
+	 ⇒ Γ(φ(λ x_1 + μx_2) - λφ(x_1) - μ φ(x_2))(y) = γ(y, φ(λ x_1 + μ x_2) - λ φ(x_1) - μ φ(x_2)) \\
+	 &= γ(y, φ(υ x_1 + μ x_2)) - λγ(y, χ(x_1)) - μ γ(y, φ(x_2)) \\
+	 &= γ'(λ x_1 + μ x_2, y) - λ γ'(x_1, y) - μ γ'(x_2, y) \\
+	 \intertext{$γ'$ bilnear}
+	 &= 0 \\
+	 \intertext{Das gilt für alle $y ∈ V$}
+  	 ⇒ Γ(φ(λ x_1 + μ x_2) - λ φ(x_1) - μ φ(x_2)) &= 0 \\
+	 ⇒ φ(λ x_1 + μ x_2) = λ φ(x_1) + μ φ(x_2)
+     \end{align*}
+	 $φ$ selbstadjudgiert: Für $x, y ∈ V$ ist
+	 \[γ(φ(x), y) = γ'(x, y) = γ'(y, x) = γ(φ(y), x) = γ(x, φ(y)) ⇒ φ = φ^{ad}\]
+	 $φ$ ist eindeutig: Sei $\tilde φ$ selbstadjudgiert mit $γ'(x, y) = γ(φ(x), y) = γ(\tilde φ(x), y) ∀ x, y ∈ V$
+	 \begin{align*}
+	 ⇒ Γ(φ(x))(y) &= Γ(\tilde φ(x))(y) ∀ x, y ∈ V \\
+	 ⇒ Γ(φ(x)) &= Γ(\tilde φ(x)) \\
+  	 \intertext{$Γ$ Isomorphismus}
+	 ⇒ φ(x) = \tilde φ(x) ∀ x ∈ V \\
+	 ⇒ φ &= \tilde φ
+     \end{align*}
+	 Darstellungsmatrizen: Sei $\mathcal{B}= (v_1, \dots, v_n)$ Orthogonalbasis von $(V, γ)$. $A = M_{\mathcal{B}}(φ) = (a_{ij})$
+	 \[⇒ γ'(v_i, v_j) = γ(φ(v_i), v_j) = γ(\sum_{k = 1}^{n} a_{ki} v_k, v_j) = a_{ji} \overset{φ \text{ selbstadjudgiert}}{=} a_{ij}\]
+	 $⇒ M_{\mathcal{B}}(γ') = M_{\mathcal{B}}(γ)$
+  #+end_proof
+  #+begin_note latex
+  Interpretation für $(ℝ^n, <·, ·>)$: Ist $A ∈ M(n × n, ℝ)$ symmetrisch, dann ist $A$
+  - Darstellungsmatrix bezüglich $(e_1, \dots, e_n)$ des selbstadjungierten Endomorphismus $\tilde A$ von $ℝ^n$
+  - Darstellungsmatrix bezügilch $(e_1, \dots, e_n)$ der symmetrischen Bilinearform $γ' = Δ(A): (x, y) ↦ x^t A y$
+  Es ist $γ'(x, y) = x^t A y = x^t A^t y = (A x)^t y = <Ax, y> = <\tilde A(x), y> ∀ x, y ∈ ℝ^n$. Bezüglich jeder Orthogonalbasis von $(ℝ^n, <·,·>)$ gilt $M_{\mathcal{B}}(\tilde A) = M_{\mathcal{B}}(γ')$
+  #+end_note
+  #+begin_remark latex
+  $φ ∈ \End(V)$ selbstadjungiert, $U ⊆ V$ Untervektorraum mit $φ(U) ⊆ U$. Dann gilt $φ(U^{\perp}) ⊆ U^{\perp}$
+  #+end_remark
+  #+begin_proof latex
+  Sei $v ∈ U^{\perp} ⇒ ∀ u ∈ U: γ(u, φ(v)) = γ(\underbrace{φ(u)}_{∈ U}, \underbrace{v}_{∈ U^{\perp}}) = 0 ⇒ φ(v) ∈ U^{\perp}$
+  #+end_proof
+  #+begin_remark latex
+  $φ ∈ \End(V)$ selbstadjungiert. Dann zerfällt $χ_φ^{char}$ über $ℝ$ in Linearfaktoren.
+  #+end_remark
+  #+begin_proof latex
+  Sei $\mathcal{B}$ eine Orthonormalbasis von $(V, γ), A = M_{\mathcal{B}}(φ) ⇒ χ_φ^{char} = χ_A^{char}, A = A^T$ wegen $φ$ selbstadjungiert.
+  Wir betrachet die $ℂ$ -lineare Abbildung $\tilde A_{ℂ}: ℂ^n \to ℂ^n, z ↦ Az$. Es ist
+  \[χ_A^{char} = χ_{\tilde A_{ℂ}}^{char} = (t - λ_1) · \dots · (t - λ_n), λ_1, \dots, λ_n ∈ ℂ\]
+  Behauptung: $λ_i ∈ ℝ ∀ i = 1, \dots, n$, denn: Sei $z = \cvec{z_1; \vdots; z_n} ∈ ℂ^n$ ein Eigenvektor zum Eigenwert $λ_i$ von $\tilde A_{ℂ}$.
+  Wir setzen $\bar z := \cvec{\bar z_1; \vdots; \bar z_n}$ und erhalten
+  \[λ_i z^T \bar z = (λ_i z)^T \bar z = (A z)^T \bar z = z^T A^T \bar z = z^T A \bar z = z^T \overline{A z} = z^T \overline{λ_i z} = \bar λ_i z^T \bar z\]
+  Es ist $z^T \bar z = (z_1, \dots, z_n) \cvec{\bar z_1; \vdots; \bar z_n} = z_1 \bar z_1 + \dots + z_n \bar z_n = \abs{z_1}^2 + \dots + \abs{z_n}^2 \neq 0$
+  $⇒ λ_i = \bar λ_i ⇒ λ_i ∈ ℝ$
+  #+end_proof
+  #+ATTR_LATEX: :options [Spektralsatz für selbstadjungierte Endomorphismen]
+  #+begin_thm latex
+  $φ ∈ \End(V)$ selbstadjungierter Endomorphismus. Dann existiert eine Orthonormalbasis von $(V, γ)$ aus Eigenvektoren von $φ$.
+  Sind $λ_1, \dots, λ_r$ die verschiedenen Eigenwerte von $φ$, so ist
+  \[V = Eig(φ, λ_1) \hat\oplus \dots \hat\oplus \Eig(φ, λ_r)\]
+  #+end_thm
+  #+begin_proof latex
+  per Induktion nach $n = \dim V$. \\
+  Induktionsanfang: $n = 0$: trivial \\
+  Induktionsschritt: Sei $n \geq 1$. Nach 24.11 existiert ein Eigenwert $λ$ von $φ$ und es sei $w_1$
+  ein Eigenvektor von $φ$ zum Eigenwert $λ$. Setze
+  \[v_i := \frac{w_1}{\norm{w_1}}, U := \Lin((v_i)) ⇒ φ(U) ⊆ U ⇒ φ(U^{\perp} ⊆ U^{\perp})\]
+  Wir setzen $ψ := φ \big|_{U^{\perp}}^{U^{\perp}}:U^{\perp} \to U^{\perp}$. $ψ$ ist selbstadjungiert, denn:
+  Für alle $x, y ∈ U^{\perp}$ ist
+  \[γ(ψ(x), y) = γ(φ(x), y) = γ(x, φ(y)) = γ(x, ψ(y))\]
+  Nach 22.9 ist $V = U \hat\oplus U^{\perp}, \dim U^{\perp} = \dim V - \dim U = n - 1$.
+  Nach Induktionsvorrausetzung existiert eine Orthonormalbasis von $(v_2, \dots, v_n)$ von $U^{\perp}$
+  aus Eigenvektoren von $φ ⇒ (v_1, \dots, v_n)$ ist von Orthonormalbasis $(V, γ)$ aus Eigenvektoren von $φ$
+  $⇒ V = \Eig(φ, λ_1) \hat\oplus \dots \hat\oplus \Eig(φ, λ_r)$
+  #+end_proof
+  #+begin_conc latex
+  $γ':V × V: ℝ$ symmetrische Bilinearform, $n = \dim V$. Dann existiert eine Orthonormalbasis $\mathcal{B}$ von $(V, γ)$ bezüglich derer die Darstellungsmatrix von $γ'$ Diagonalgestalt hat:
+  \[M_{\mathcal{B}}(γ') = \begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 &   & λ_n\end{pmatrix}\]
+  Hierbei sind $λ_i, \dots, λ_n$ die Eigenvektoren (mit Vielfachen) des zu $γ'$ gehörenden eindeutig bestimmten selbstadjungierten Endomorphismus $φ ∈ \End(V)$ mit $γ'(x, y) = γ(φ(x), y)$
+  #+end_conc
+  #+begin_proof latex
+  Sei $φ ∈ \End(V)$ der entsprechende Endomorphismus von $V$ nach 24.9. Spektralsatz $⇒$ Es existiert eine Orthonormalbasis $\mathcal{B}$ von $(V, γ)$ aus Eigenvektoren von $φ$ zu Eigenwerten $λ_1, \dots, λ_n$
+  (nicht notwendig verschieden)
+  \[⇒ M_{\mathcal{B}}(γ') \overset{24.9}{=} M_{\mathcal{B}}(φ) = \begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 &   & λ_n\end{pmatrix}\]
+  #+end_proof
+  #+begin_conc latex
+  $A ∈ M(n × n, ℝ)$ symmetrisch. Dann existiert ein $T ∈ O(n)$, sodass
+  \[T^{-1} A T = \begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 & & λ_n\end{pmatrix}\]
+  Hierbei sind $λ_i, \dots, λ_n$ die Eigenwerte (mit Vielfachheit) von $A$. Die Spalten von $T$ bilden eine Orthonormalbasas von $(ℝ^n, <·,·>)$ aus Eigenvektoren von $A$.
+  #+end_conc
+  #+begin_proof latex
+  $\tilde A: ℝ^n \to ℝ^n$ ist selbstadjungierter Endomorphismus von $(ℝ^n, <·, ·>)$. Spektralsatz $⇒$ es existiert eine Orthonormalbasis $\mathcal{B}$ aus Eigenvektoren von $A$ des $(ℝ^n, <·, ·>)$ mit
+  \[M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 &   & λ_n\end{pmatrix}\]
+  Es ist
+  \[M_{\mathcal{B}}(\tilde A) = \underbrace{(T_{(e_1, \dots, e_n)}^{\mathcal{B}})^{-1}}_{= T^{-1}} \underbrace{M_{(e_1, \dots, e_n)}^{(e_1, \dots, e_n)}(\tilde A)}_{A} \underbrace{T_{(e_1, \dots, e_n)}^{\mathcal{B}}}_{=: T}\]
+  Es ist $T ∈ O(n)$, da $\mathcal{B}$ Orthogonalbasis von $(ℝ^n, <·,·>)$ (vergleiche 23.7)
+  #+end_proof
+  #+begin_note latex
+  Man kann sogar stets $T ∈ SO(n)$ erreichen (indem man gegebenfalls eine Spalte $v_i$ von $T$ durch $- v_i$ ersetzt.)
+  #+end_note
+  #+ATTR_LATEX: :options [Hauptachsentransformation]
+  #+begin_algorithm latex
+  Eingabe: $A ∈ M(n × n, ℝ)$ symmetrisch \\
+  Ausgabe: $T ∈ O(n)$, sodass $T^{-1} A T$ Diagonalmatrix \\
+  Durchführung:
+  1. Bestimme $χ_A^{char} ∈ ℝ[t]$ sowie eine Zerlegung
+	 \[χ_A^{char} = (t - λ_1)^{T_1} · \dots · (t - λ_k)^{T_A}\]
+	 mit $λ_1, \dots, λ_k$ paarweise verschieden
+  2. Bestimme für $i = 1, \dots, k$ jeweils eine Basis von $\Eig(φ, λ_i)$
+  3. Bestimme mit dem Gram-Schmidt-Verfahren für $i = 1, \dots, k$ eine Orthonormalbasis $\mathcal{B}_i = (v_{i,1}, \dots, v_{i, r_i})$ von $\Eig(φ, λ_i)$
+  4. Die Orthogonalbasis $\mathcal{B}_i, i = 1, \dots, k$ bilden zusammen eine Orthonormalbasis
+	 \[\mathcal{B} = (v_{1,1}, \dots, v_{1, r_1}, \dots, v_{k,1}, \dots, v_{k, r_k})\]
+	 des $(ℝ^n, <·,·>)$ aus Eigenvektoren von $A$
+  5. Schreibe die Basisvektoren aus $\mathcal{B}$ in Spalten von $T$. Es ist dann
+	 \[T^{-1} A  T = (λ_1, \dots, λ_1, \dots, λ_k, \dots, λ_k) E_n\]
+  #+end_algorithm
+  #+begin_note latex
+  Um $T ∈ SO(n)$ zu erreichen ersetze man gegebenfalls $v_{1,1}$ durch $-v_{1,1}$.
+  #+end_note
+  #+begin_ex latex
+  \[A = \begin{pmatrix}2 & -1 & 2 \\ -1 & 2 & 2 \\ 2 & 2 & -1\end{pmatrix} ∈ M(3 × 3, ℝ)\]
+  Es ist $χ_A^{char} = t^3 - 3t^2 - 9 t + 27 = (t - 3)^2(t + 3)$. Es ist $\Eig(A, 3) = \dots = \Lin(\cvec{2; 0; 1}, \cvec{-1; 1; 0})$.
+  Nach Beispiel 22.12 ist $(\frac{1}{\sqrt{5}} \cvec{2; 0; 1}, \frac{1}{\sqrt{30}} \cvec{-1; 5; 2})$ eine Orthonormalbasis von $\Eig(A, 3)$. \\
+  $\Eig(A, -3) = \Lin(\cvec{1; 1; -2}) ⇒ (\frac{1}{\sqrt{6}} \cvec{1; 1; -2})$ ist Orthonormalbasis von $\Eig(A, -2)$.
+  \[⇒ (\frac{1}{\sqrt{5}} \cvec{2; 0; 1}, \frac{1}{\sqrt{30}} \cvec{-1; 5; 2}, \frac{1}{\sqrt{6}} \cvec{1; 1; -2})\]
+  ist Orthonormalbasis von $(ℝ^3, <·,_>)$ aus Eigenvektoren von $A$. Mit
+  \[T = \begin{pmatrix}\frac{2}{\sqrt{5}} & - \frac{1}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ 0 & \frac{5}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{5}} & \frac{2}{\sqrt{30}} & - \frac{2}{\sqrt{6}}\end{pmatrix} \quad \text{ist}\quad T^{-1} A T = \begin{pmatrix}3 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & -3\end{pmatrix}\]
+  Es ist $\det(T) = -1$, also $T ∈ O(3) \setminus(3)$. Setzt man
+  \[T' := \begin{pmatrix}-\frac{2}{\sqrt{5}} & - \frac{1}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ 0 & \frac{5}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{30}} & - \frac{2}{\sqrt{6}}\end{pmatrix} \quad \text{ist}\quad T^{-1} A T = \begin{pmatrix}3 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & -3\end{pmatrix}\]
+  und es ist $T' ∈ SO(3)$.
+  #+end_ex

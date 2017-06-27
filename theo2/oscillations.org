@@ -1,0 +1,143 @@
+* Schwingungen / Kontinuum
+** Kleine Schwingungen allgemeiner Systeme
+*** Ein Freiheitsgrad
+	\[L = \frac{1}{2} f(q) \dot q^2 - V(q)\]
+	Sei $q_0$ eine Ruhelage, $V'(q_0) = 0$. Definiere $\tilde q$: $q = q_0 + \tilde q$. Umbennung: $\tilde q \to q$.
+	\begin{align*}
+	L &= \frac{1}{2} f(q_0 + q) \dot q^2 - V(q_0 + q) \\
+	&= \frac{1}{2}f(q_0) \dot q^2 - V(q_0) - \frac{1}{2} V''(q_0) q^2 + \mathcal{O}(q^3) + \dot q^2 \mathcal{O}(q) \\
+	⇒ L &= \frac{1}{2} \dot q^2 - \frac{1}{2} V''(q_0) q^2
+	\end{align*}
+	$⇒$ harmonischer Oszillator mit
+	\[ω = \sqrt{\frac{V''}{f}}\]
+	völlig unabhängig von Details des Systems!
+*** Viele Freiheisgrade
+	\[L = \frac{1}{2} f_{ij}(q) \dot q_i \dot q_j - V(q), q \equiv \{q_1, \dots, q_n\}\]
+	Ruhelage:
+	\[q_0 \equiv \{q_1^{(0)}, \dots, q_n^{(0)}\}, \pp{V}{q_i}(q_0) = 0 ∀ i\]
+	Variablenwechsel: $q \to q_0 + q$
+	\begin{align*}
+	L &= \frac{1}{2} f_{ij}(q_0 + q) \dot q_i \dot q_j - V(q_0 + q) \\
+	\intertext{Taylor:}
+	L &= \frac{1}{2} f_{ij}(q_0) \dot q_i \dot q_j - \frac{1}{2} V_{ij}(q_0) q_i q_j \\
+	V_{ij} &\equiv \frac{\partial^2 V}{\partial x^i x^j}
+	\end{align*}
+	($f$ und $V$ sind konstante Matrizen). Ohne Beschränkung der Allgemeinheit ist $f_{ij}$ symmetrisch (Weglassen der antisymmetrischen Teils)
+	\[∃ R ∈ SO(n): R f R^{-1} \text{ diagonal }: R f R^{-1} \equiv \diag(a_1, \dots, a_n)\]
+	($a_i > 0$ damit $T$ stets positiv.)
+	Definiere "gestrichene Variablen":
+	\[\dot q_i \equiv (R^T)_{ij} q'_j\]
+	\begin{align*}
+	L &= \frac{1}{2} \dot q'_i R_{ij} f_{jk} (R^T)_{kl} \dot q_l' - \frac{1}{2} q'_i R_{ij} V_{jk} R_{kl}^T q'_l \\
+	&= \frac{1}{2} \sum_{i} a_i (\dot q_i')^2 - \frac{1}{2} q_i' M_{ij} q'_j, M \equiv R V R^T
+	\end{align*}
+	Neue Variablen:
+	\[q_i' \equiv q_i'' / \sqrt{a_i}\]
+	\begin{align*}
+	L &= \frac{1}{2} \dot q''_i \dot q''_i - \frac{1}{2} \sum_{ij} q''_i \underbrace{\frac{M_{ij}}{\sqrt{a_i a_j}}}_{\equiv K_{ij}} q''_j \\
+	L &= \frac{1}{2} (\dot q'')^T \mathbb{1} \dot q'' - \frac{1}{2} (q'')^T K q''
+	\end{align*}
+	$∃ \tilde R ∈ SO(n), \tilde R K \tilde R^T = \diag(k_1, \dots, k_n)$. Definiere
+	\[q'' = (\tilde R^T) q'''\]
+	\begin{align*}
+	⇒ L &= \frac{1}{2} \dot q'''^T \tilde R \tilde R^T \dot q''' - \frac{1}{2} q'''^T \tilde R K \tilde R^T q''' \\
+	⇒ L &= \sum_{i} (\frac{1}{2} \dot q_i^2 - \frac{1}{2} k_i q_i^2)
+	\end{align*}
+	fallen von den $k_i$ einige weg $\to$ instabile Ruhelage, sonst: $n$ harmonische Oszillationen
+** Lineare Kette
+   Betrachte Kette von verbundenen Federn
+   \[L = \sum_{i} \frac{m}{2} \dot q_i^2 - \sum_{i} \frac{k}{2}(q_{i + 1} - q_i)^2\]
+   Angenähert $q(x)$ mit $q_i = q(x_i)$:
+   \begin{align*}
+   q'(x_i) &= \frac{q_{i + 1} - q_i}{Δ x} \\
+   L &= \sum_{i} \frac{m}{2} \dot q(x_i)^2 - \frac{k}{2} q'(x_i)^2 Δ x^2 \\
+   &= \sum_{i} Δ x (\frac{m}{2Δ x} \dot q(x_i)^2 - \frac{m Δ x}{2} q'(x_i)^2)
+   \end{align*}
+   Limes: $Δ x \to 0$: $m \to 0, k \to ∞$ sodass
+   \[ρ = \frac{m}{Δ x} = \const, b = k Δ x = \const\]
+   \[L = ∫ \d x (\frac{ρ}{2} \dot q^2 - \frac{b}{2} q^{\prime 2}), \quad q = q(t, x)\]
+   \[⇒ S = ∫ \d t L = ∫ \d t \d x \mathcal{L} = ∫ \d t \d x(\frac{ρ}{2} \dot q^2 - \frac{b}{2} q^{\prime 2})\]
+   $⇒$ unsere erste (2-dimensionale) Feldtheorie, $\mathcal{L}$ heißt Lagrange-Dichte.
+   Bewegungsgleichung:
+   \begin{align*}
+   0 &\overset{!}{=} δ S = ∫ \d t \d x (\frac{ρ}{2} δ(\dot q^2) - \frac{b}{2} δ(q^{\prime 2})) \\
+   &= ∫ \d \d x (ρ \dot q δ \dot q - b q' δ q') = ∫ \d t \d x (ρ \ddot{q} - b q'') + \underbrace{\dots}_{\text{Randterme } = 0} \\
+   \intertext{$δq$ beliebig, $δ S \overset{!}{=} 0$}
+   ⇒ \ddot q - c^2 q'' &= 0 \tag{Wellengleichnug, Partielle Differentialgleichung} \\
+   c^2 &\equiv b / ρ \tag{Geschwindigkeit}
+   \end{align*}
+** Schwingende Saite
+   Nicht longitudinal, sondern transversal $⇒$ analoge Wellengleichnug
+** Ideale Hydrodynamik (Fluiddynamics)
+   Ausgangspunkt: Gedachte Flüssigkeitszellen. \\
+   Wichtig: Arbeiten mit Feldern: ($\v v(\v x, t), ρ(\v x, t), p(\v x, t), \dots$) \\
+   Newton:
+   \[m \dd{\v v}{t} \v F\]
+   für jede Zelle. $\d / \d t \equiv$ "Matrialableitung", also:
+   \[\dd{}{t} = \pp{}{t} + \dd{x^i}{t} \pp{}{x^i} = \pp{}{t} + \v v · \v ∇\]
+   Kraft auf Zelle:
+   \[\v F = \v F_{äuß} + \v F_p\]
+   \[\v F_p = - ∫_O p \d \v f\]
+   Berechnen zunächst $F_{p_i 1} = \hat e_i \v P_p$
+   \[\hat e_i \v F_p = ∫_O(\hat e_1 p) \d \v f = - ∫_V \v ∇(\hat e_1 p) \d V = - \hat e_1 ∫(\v ∇ p) \d V\]
+   Analog mit $\hat e_2, \hat e_3$:
+   \[⇒ \v F_p = - ∫_V(\v ∇ p) \d V\]
+   Zelle klein:
+   \[⇒ ρ(\pp{\v v}{t} + (\v v · \v ∇)\v v) = \frac{\v F_{äußh}}{V_{Zelle}} - \v ∇ p\]
+   #+begin_defn latex
+   $\v f_{äuß} = \v P_{äuß} / V_{Zelle}$ - "Äußere Kraftdichte". $⇒$ Eulergleichung:
+   \[⇒ \pp{\v v}{t} + (\v v · \v ∇) \v v = - \frac{\v ∇ p + \v f_{äuß}}{ρ}\]
+   #+end_defn
+   Außerdem: Kontinuitätsgleichung. Dazu: Massenstrom $\equiv ρ · \v v \equiv \v j$.
+   (Physikalische Intuition: $\v j · \d \v f$ = Masse / Zeit (durch die Fläche $\d \v f$))
+   Betrachte festes gedachtes Volumen $O$.
+   \[∫_O \d \v f · \v j = ∫_V (\v ∇ · \v j) \d V\]
+   Dies muss der Massenabnahme
+   \[-\pp{}{t} ∫_V ρ \d V = - ∫_V(\pp{ρ}{t}) · \d V\]
+   entsprechen. Im Limes beliebig kleiner $V$ folgt: Kontinuitätsgleichung
+   \[\pp{ρ}{t} + \v ∇(ρ \v v) = 0\]
+   Außerdem: Zustansgleichnug $p = p(ρ)$ (zum Beispiel $p \sim ρ^k$).
+   $⇒$ Eulergleichung + Kontinuitätsgleichng + Zustandsgleichung = 5 Partielle Differentialgleichungen.
+   Da wir fünf Funktionen bestimmen	($\v v, p, ρ$) ist alles prinzipiell gelöst.
+   Einfach Anwendung: Bernoulli-Gleichung. Inkompressibel ($ρ = \const$), stationär ($\partial \v v / \partial t = 0$)
+   \[⇒ (\v v · \v ∇) \v v = - \frac{\v ∇ p}{ρ} + \v f\]
+   $\v f = - \v ∇ V$ (konstante Kraft)
+   \begin{align*}
+   \string(\v v · \v ∇\string) \v v + \v ∇(\frac{f}{ρ} + V) &= 0 \\
+   \v v \dd{}{t} \v v + \v v · \v ∇(\frac{p}{ρ} + V) &= 0 \\
+   \intertext{$\v V · \v ∇ = \d / \d t$ wegen stationär}
+   ⇒ \dd{}{t}(\frac{1}{2} \v v^2 + \frac{p}{ρ} + V) = 0 \tag{Bernoulli}
+   \end{align*}
+** Potentialströmungen
+   Wirbelfreiheit: $\v ∇ × \v v = 0$. Falls Wirbelfrei $⇒$ wirbelfrei für immer, folgt aus Kelvin's Theorem:
+   \[∮_C \v v \d \v s = \const\]
+   (falls $\v F$ \const, $p = p(ρ)$)
+   $⇒ ∃$ Geschwindigkeitspotential $φ$, sodass
+   \[\v v = \v ∇ φ\]
+   (weiter mit Inkompressibilität)
+   \[\pp{ρ}{t} + \v ∇(ρ \v v) = 0 ⇒ \v ∇ \v v = 0 ⇒ \v ∇ \v ∇ φ = 0 ⇒ Δ φ = 0\]
+   Laplace-Gleichung. Noch besser: $d = 2$. Definiere zur Geschwindigkeit duales Feld $\v u \equiv -ε_{ij}^{2d} v_j$
+   Rechne:
+   \begin{align*}
+   \string(\v ∇ × \v u\string)_3 &= ε_{3ij}^{(3d)} \partial_i u_j = ε_{ij}^{(2d)} \partial_i u_j = -ε_{ij}^{(2d)} \partial_i ε_{jk}^{2d} v_k \\
+   &= δ_{ij} \partial_i u_k = \v ∇ \v v = 0
+   \end{align*}
+   $⇒$ $u$ auch Wirbelfrei $⇒ ∃ ψ$, sodass $ε_{ij} v_j = - \partial ψ$
+   \begin{align*}
+   v_1 &= \partial_1 φ \\
+   v_2 &= \partial_2 φ \\
+   u_1 &= \partial_2 ψ \\
+   u_2 &= -\partial_1 ψ \\
+   \end{align*}
+   Mit $1, 2 \to x y$
+   \begin{align*}
+   \partial_x φ &= \partial_y ψ \\
+   \partial_y φ &= - \partial_x ψ
+   \end{align*}
+   $⇒$ Cauchy-Riemannsche Differentialgleichungen $⇔$ Existenz einer holomorphen Funktion
+   \begin{align*}
+   w &= W(z) \\
+   z &= x + i y \\
+   ⇒ φ &= \Re w(z) \\
+   ψ &= \Im w(z)
+   \end{align*}

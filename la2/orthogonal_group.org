@@ -1,0 +1,189 @@
+* Die orthogonale Gruppe
+  #+begin_defn latex
+  $(V, γ_V), (W, γ_W)$ Euklidische Räume, $φ: V \to W$ lineare Abbildung. $φ$ heißt *orthogonal* $\xLeftrightarrow{\text{Def}}$ $φ$ ist ein Homomorphismus quadratischer Räume, das heißt
+  \[γ_W(φ(v_1), φ(v_2)) = γ_V(v_1, v_2) ∀ v_1, v_2 ∈ V\]
+  #+end_defn
+  #+begin_remark latex
+  $(V, γ_V), (W, γ_W)$ Euklidische Räume, $φ: V \to W$ orthogonale Abbildung. Dann gilt:
+  1. $\norm{φ(v)}_W = \norm{v}_V ∀ v ∈ V$
+  2. $v_1 \perp v_2 ⇔ φ(v_1) \perp φ(v_2) ∀ v_1, v_2 ∈ V$
+  3. $φ$ ist injektiv
+  #+end_remark
+  #+begin_proof latex
+  1. $\norm{φ(v)}_W^2 = γ_W(φ(v), φ(v)) = γ_V(v, v) = \norm{v}_V^2$
+  2. $v_1 \perp v_2 ⇔ γ_V(v_1, v_2) = 0 ⇔ γ_W(φ(v_1), φ(v_2)) = 0 ⇔ φ(v_1) \perp φ(v_2)$
+  3. Sei $v ∈ V$ mit $φ(v) = 0 ⇒ \norm{φ(v)}_W = 0 ⇒ \norm{v}_V = 0 ⇒ v = 0$
+  #+end_proof
+  #+begin_remark latex
+  $(V, γ)$ Euklidischer Raum, $n = \dim V, \mathcal{B}$ Orthogonalbasis von $(V, γ)$. Dann ist das Koordinatensystem $Φ_{\mathcal{B}}: (ℝ^n, <·,·>) \to (V, γ)$ ein
+  orthogonaler Isomorphismus.
+  #+end_remark
+  #+begin_proof latex
+  $Φ_{\mathcal{B}}$ Isomorphismus: klar. $Φ_{\mathcal{B}}$ orthogonal, denn: Sei $\mathcal{B} = (v_1, \dots, v_n)$ dann ist
+  \[γ(Φ_{\mathcal{B}}(e_i), Φ_{\mathcal{B}}(e_j)) = γ(v_1, v_j) = δ_{ij} = <e_i, e_j>\]
+  #+end_proof
+  #+begin_remark latex
+  $(V, γ)$ Euklidischer Raum, $φ ∈ \End(V)$ orthogonal. Dann gilt:
+  1. $φ$ ist Isomorphismus
+  2. $φ^{-1}$ ist orthogonal
+  3. $λ ∈ ℝ$ Eigenwert von $γ ⇒ \abs{λ} = 1$, das heißt $λ ∈ \{\pm 1\}$
+  #+end_remark
+  #+begin_proof latex
+  1. aus 23.2.3 folgt: $φ$ injektiv $⇒$ $φ$ Isomorphismus
+  2. $v_1, v_2 ∈ V ⇒ γ(φ^{-1}(v_1), φ^{-1}(v_2)) = γ(φ(φ^{-1}(v_1)), φ(φ^{-1}(v_2))) = γ(v_1, v_2)$ $⇒$ $φ^{-1}$ orthogonal
+  3. Sei $v ∈ V$ Eigenvektor zum Eigenwert $λ ⇒ \norm{v} = \norm{φ(v)} = \norm{λv} = \abs{λ} \norm{v} ⇒ \abs{λ} = 1$
+  #+end_proof
+  #+begin_remark latex
+  $(V, γ)$ Euklidischer Raum, $n = \dim V, \mathcal{B}$ Orthogonalbasis von $V, φ ∈ \End(V), A = M_{\mathcal{B}}(φ)$. Dann sind äquivalent:
+  1. $φ$ ist orthogonal
+  2. $A^T A = E_n$
+  #+end_remark
+  #+begin_proof latex
+  Wir erhalten kommutierendes Diagramm
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+	 \centering
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {(V, γ) & (V, γ) \\ (ℝ^n,<·,·>) & (ℝ^n, <·,·>)\\};
+  \path[-stealth]
+  (m-1-1) edge node [left] {$φ$} (m-2-1)
+  (m-1-2) edge node [below] {$Φ_{\mathcal{B}}$} (m-1-1)
+  (m-2-2) edge node [below] {$Φ_{\mathcal{B}}$} (m-2-1)
+  (m-1-2) edge node [left] {$φ$} (m-2-2);
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  Da $Φ_{\mathcal{B}}$ orthogonaler Isomorphismus nach 23.3 folgt:
+  \begin{align*}
+  φ \text{ orthogonal } &⇔ \tilde A = Φ_{\mathcal{B}}^{-1} = φ\circ Φ_{\mathcal{B}} \text{ orthogonal} \\
+  &⇔ ∀ x, y ∈ ℝ^n: <Ax, Ay> = <x, y> \\
+  &⇔ ∀ x, y ∈ ℝ^n: (Ax)^T Ay = x^T y \\
+  &⇔ ∀ x, y ∈ ℝ^n: <Ax, Ay> = x^T A^T A y = x^T y \\
+  &⇔ Δ(A^T A) = Δ(E_n) \\
+  &⇔ A^T A = E_n
+  \end{align*}
+  #+end_proof
+  #+begin_remdef latex
+  $A$ heißt *orthogonal* $\xLeftrightarrow{\text{Def}} A^T A = E_n$
+  \[O(n) :=\{A ∈ M(n × n, ℝ) \mid A \text{ ist orthogonal }\}\]
+  $O(n)$ ist bezüglich die Matrixmultiplikation eine Gruppe, die *orthogonale Gruppe* vom Rang $n$
+  #+end_remdef
+  #+begin_proof latex
+  Wohldefiniertheit von "$·$" (das heißt Abgeschlossenheit bezüglich "$·$"): $A, B ∈ O(n) ⇒ (AB)^T AB = B^T A^T A B = B^T B = E_n ⇒ AB ∈ O(n)$. \\
+  Existenz des neutralen Elements: $E_n ∈ O(n)$ \\
+  Assoziativität: klar \\
+  Existenz von Inversen: Sei $A ∈ A(n) ⇒ A^T A = E_n ⇒ A^{-1} = A^t ⇒ (A^{-1})^T A^{-1} = (A^T)^T A^T = A A^T = A A^{-1} = E_n$
+  #+end_proof
+  #+begin_note latex
+  $A ∈ O(n) ⇒ \det(A) ∈ \{\pm 1\}$, denn $1 = \det(E_n) = \det(A^T A) = \det(A^T)\det(A) = \det(A)^2$
+  #+end_note
+  #+begin_remark latex
+  $A ∈ M(n × n, ℝ)$. Dann sind äquivalent:
+  1. $A ∈ O(n)$
+  2. $A A^T = E_n$
+  3. $A^T A = E_n$
+  4. Die Transponierten der Zeilen von $A$ bilden eine Orthogonalbasis von $(ℝ^n, <·,·>)$
+  5. Die Spalten von $A$ bilden eine Orthogonalbasis von $(ℝ^n, <·,·>)$
+  6. Die Abbildung $\tilde A: (ℝ^n, <·,·>) \to (ℝ^n, <·,·>)$ ist orthogonal
+  #+end_remark
+  #+begin_proof latex
+  1. $⇔$ 2. $⇔$ 3. $⇔$ klar
+  2. $⇔$ 4., 3. $⇔$ 5.
+  1. [@1] $⇔$ 6. aus 23.5 (setze $V = (ℝ^n, <·, ·>), \mathcal{B} = (e_1, \dots, e_n)$)
+  #+end_proof
+  #+begin_thm latex
+  $φ: ℝ^n \to ℝ^n$ (nicht notwendig linear) abstandstreu, das heißt
+  \[\norm{φ(x) - φ(y)} = \norm{x - y} ∀ x, y ∈ ℝ^n\]
+  wobie $\norm{·}$ die Norm auf $(ℝ^n, <·,·>)$ bezeichne. Dann existieren eindeutig bestimmte $A ∈ O(n), b ∈ ℝ^n$, sodass
+  \[φ(x) = Ax + b\]
+  für alle $x ∈ ℝ^n$
+  #+end_thm
+  #+begin_remdef latex
+  $SO(n) := \{A ∈ O(n) \mid \det A = 1\}$ ist eine Untergruppe von $O(n)$ (das heißt $SO(n) ⊆ O(n)$ und ist eine Gruppe bezüglich der eingeschränkten Verknüpfung),
+  die *spezielle orthogonale Gruppe* vom Rang $n$.
+  #+end_remdef
+  #+begin_proof latex
+  Wohldefiniertheit von "$·$" (= Abgeschlossenheit bezüglich "$·$")
+  \[A, B ∈ SO(n) ⇒ AB ∈ O(n) ∧ \det(AB) = \det(A)\det(B) = 1·1 = 1\]
+  neutrales Element: $E_n ∈ SO(n)$ \\
+  Assoziativität: klar \\
+  Existenz von Inversem: $A ∈ SO(n) ⇒ A^{-1} ∈ O(n), \det(A^{-1}) = \det(A)^{-1} = 1 ⇒ A^{-1} ∈ SO(n)$
+  #+end_proof
+  #+begin_ex latex
+  $n = 1: O(1) = \{\pm 1\}, SO(1) = \{0\}$
+  #+end_ex
+  #+begin_remark latex
+  $A ∈ O(2)$. Dann gilt:
+  1. $A ∈ SO(2) ⇔ ∃! α ∈ [0, 2π]$ mit
+	 \[A = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α \end{pmatrix}\]
+	 In diesem Fall beschreibt $A$ eine Drehung mit Zentrum $0$ um den Winkel $α$. Außer im Fall $α ∈ \{0, π\}$ besitzt $A$ keine Eigenwerte. Falls $α = 0$:
+	 \[A = \begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}\]
+	 einziger Eigenwert: $1$. Falls $α = π$:
+	 \[A = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}\]
+	 einziger Eigenwert: $-1$.
+  2. $A ∈ O(2) \setminus SO(2) ⇔ ∃! α ∈ [0, 2π]$ mit
+	 \[A = \begin{pmatrix}\cos α & \sin α \\ \sin α & -\cos α\end{pmatrix}\]
+	 In diesem Fall beschreibt $A$ eine Spiegelung an der Geraden $\Lin(\cvec{\cos \frac{α}{2}; \sin \frac{α}{2}})$. $A$ besitzt die Eigenwerte $\pm 1$, und es existiert eine Orthogonalbasis $\mathcal{B}$ von
+	 $(ℝ^2, <·,·>)$ mit
+	 \[M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}\]
+  #+end_remark
+  #+begin_proof latex
+  Sei $A = \begin{pmatrix}a & c \\ b & d\end{pmatrix} ∈ O(2)$
+  \begin{align*}
+  ⇒ 1 &= \norm{e_1}^2 = \norm{Ae_1}^2 = a^2 + b^2 \\
+  ⇒ 1 &= \norm{e_2}^2 = \norm{Ae_2}^2 = c^2 + d^2 \\
+  \end{align*}
+  Außerdem: $e_1 \perp e_2 ⇒ A e_1 \perp A e_2$
+  \[⇒ <\cvec{a;b}, \cvec{c; d}> = 0\]
+  \[⇒ \begin{pmatrix}a & b\end{pmatrix} \begin{pmatrix}c \\ d\end{pmatrix} = 0 ⇒ \cvec{c; d} ∈ \Lin((\cvec{-b; a}))\]
+  das heißt es existiert $λ ∈ ℝ$ mit
+  \[\begin{pmatrix}c \\ d\end{pmatrix} = λ \begin{pmatrix}-b \\ a\end{pmatrix}\]
+  \[⇒ A = \begin{pmatrix}a & -λ b \\ b & λa\end{pmatrix}, \det A = λ(a^2 + b^2) = λ ∈ \{\pm 1\}\]
+  1. Fall: $λ = 1 ⇔ \det A = 1 ⇔ A ∈ SO(2)$
+	 Wegen $a^2 + b^2 = 1$ ist $\cvec{a; b}$ ein Punkt auf dem Einheitskreis. $⇒ ∃! α ∈ [0, 2π\string)$ mit $a = \cos{α}, b = \sin{α}$.
+	 Somit:
+     \[A ∈ SO(2) ⇔ A = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}\]
+	 für eindeutig bestimmte $α ∈ [0, 2π\string)$. Sei $\cvec{x_1; x_2} = \cvec{\cos β; \sin β}$ ein Punkt auf dem Einheitskreis
+	 \[A \cvec{\cos β; \sin β} = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}\cvec{\cos β; \sin β} = \begin{pmatrix}\cos α \cos β - \sin α \sin β \\ \sin α \cos β + \cos α \sin β\end{pmatrix} = \cvec{\cos{α + β}; \sin{α + β}}\]
+	 $⇒ A$ beschreibt eine Drehung mit Zentrum $0$ um den Winkel $α$. $A$ hat nur Eigenwerte, wenn $α = 0$ beziehungsweise $α = π$ (Eigenwert: $1$ beziehungsweise $-1$):
+	 \[χ_A^{char} = t^2 - \Sp(A)t + \det A = t^2 - 2\cos α + 1\]
+	 Eigenwerte: $λ_{1,2} = \cos α \pm \sqrt{\cos^2 α - 1}$, Eigenwert in $ℝ ⇔ \cos^2 α - 1 \geq 0 ⇔ α = 1$ oder $α = π$
+  2. $λ= -1 ⇔ A ∈ O(2) \setminus SO(2)$:
+	 \[⇔ A = \begin{pmatrix}a & b \\ b & -a\end{pmatrix}\]
+	 Wegen $a^2 + b^2 = 1$ existiert genau ein $α ∈ [0, 2π\string)$ mit $a = \cos{α}, b = \sin{α}$. Sei $\cvec{x_1; x_2} = \cvec{\cos β; \sin β}$ ein Punkt auf dem Einheitskreis.
+	 \[⇒ A \cvec{\cos β; \sin β} = \begin{pmatrix}\cos α & \sin α \\ \sin α & -\cos α\end{pmatrix} \cvec{\cos β; \sin β} = \cvec{\cos α \cos β + \sin α \sin β; \sin α \cos β - \cos α \sin β} = \cvec{\cos (α - b),  \sin{α - B}}\]
+	 \[⇒ A \cvec{\cos(\frac{α}{2} + β); \sin(\frac{α}{2} + β)} = \cvec{\cos(\frac{α}{2} - β); \sin(\frac{α}{2} - β)}\]
+	 $⇒ A$ beschreibt Spiegelung an der Geraden $\Lin(\cvec{\cos \frac{α}{2}; \sin \frac{α}{2}})$
+	 \[χ_A^{char} = t^2 - \Sp(A) t + \det A = t^2 - 1 = (t + 1)(t - 1)\]
+	 $⇒$ A diagonalisierbar und hat Eigenwert $\pm 1$. Sei $v_1$ Eigenvektor von $A$ zum Eigenwert $1$ mit $\norm{v_1} = 1, v_2$ Eigenvektor von $A$ zum Eigenwert $-1$ mit $\norm{v_2} = 1$
+	 \[⇒ <v_1, v_2> = <A v_1, A v_2> = <v_1, -v_2> = -<v_1, v_2> ⇒ <v_1, v_2> = 0 ⇔ v_1 \perp v_2\]
+	 Bezüglich der Orthogonalbasis $(v_1, v_2)$ des $(ℝ^2, <·, ·>)$ ist $M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$
+  #+end_proof
+  #+begin_conc latex
+  $φ: (ℝ^2, <·, ·>) \to (ℝ^2, <·, ·>)$ orthogonale Abbildung. Dann existiert eine Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, <·, ·>)$, sodass
+  \[M_{\mathcal{B}}(φ) = \begin{pmatrix}\pm 1 & 0 \\ 0 & \pm 1\end{pmatrix} \text{ oder } M_{\mathcal{B}}(φ) = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}, α ∈ (0, π)\]
+  Die Anzahl der $\pm 1$ sowie $α$ sind unabhängig von der Wahl einer solchen Orthogonalbasis $\mathcal{B}$ (das heißt sind Invarianten von $φ$).
+  #+end_conc
+  #+begin_proof latex
+  Existenz von $\mathcal{B}$: Sei $\mathcal{C} = (e_1, e_2), A := M_{\mathcal{C}}(φ)$, insbesondere $A ∈ O(2)$.
+  1. Fall: $A ∈ SO(2) ⇒ ∃ β ∈ (0, 2π), β \neq π$ mit
+	 \[A = \begin{pmatrix}\cos β & -\sin β \\ \sin β & \cos β\end{pmatrix} \text{ oder } A = \begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix} \text{ oder } A = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}\]
+	 Falls $β ∈ (0, π)$, setze $α := β, \mathcal{B} = \mathcal{C}$. \\
+	 Falls $β ∈ (π, 2π)$
+	 \[⇒ M_{(e_2, e_1)}(φ) = \begin{pmatrix}\cos β & \sin β \\ -\sin β & \cos β\end{pmatrix}\]
+	 Setze $α := 2π - B, \mathcal{B} := (e_2, e_1) ⇒ β = 2π - α ⇒ \cos β = \cos α, \sin β = - \sin β$
+	 \[⇒ M_{\mathcal{B}}(φ) = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}\]
+  2. $A ∈ O(2) \setminus SO(2) ⇒ ∃$ Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, <·, ·>)$ mit $M_{\mathcal{B}}(φ) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$.
+  Eindeutigkeit: Falls $M_{\mathcal{B}}(φ) = \begin{pmatrix}\pm 1 & 0 \\ 0 & \pm -1\end{pmatrix}$, dann Anzahl der $\pm 1 = μ_{alg}$ der Eigenwirte $\pm 1$.
+  Falls $M_{\mathcal{B}}(φ) = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}$, dann $χ_φ^{char} = t^2 - 2\cos α t + 1 ⇒ \cos α$ ist
+  unabhängig von der Wahl der Basis $\mathcal{B}$. Wegen $α ∈ (0, π)$ ist $α$ unabhängig von $\mathcal{B}$.
+  #+end_proof
+  #+begin_note latex
+  Verallgemeinerung von 23.12 auf $(ℝ^n, <·,·>)$ ist möglich.
+  #+end_note

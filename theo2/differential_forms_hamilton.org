@@ -1,0 +1,115 @@
+* Hamilton-Machanik in Differentialformen
+** Tangential- und Cotangentialraum
+   Sei $M$ ein $d$ -dimensionaler Raum, zum Beispiel für $d = 2$ ein Sphäre. Solch ein Raum ist "real" unabhängig von den Koordianten.
+   #+ATTR_LATEX: :options [Ebene]
+   #+begin_ex latex
+   Koordiantenwechsel wird durch wohlbekannte Ausdrücke für $x^1 = x^1(r, φ), x^2 = x^2(r, φ)$ beschrieben. Auch Vektorfeld auf $M$ ist real unabhänigig von den Koordianten: Zum Beispiel sieht man dies,
+   weil Vektorfeld $\longleftrightarrow$ Differentialoperator, aber $\underbrace{D: f ↦ D f}_{koodinatenunabhängig}$
+   #+end_ex
+   Vektorfelder sind ebenso real ("koordinatenunabängig"). \\
+   In gewissen Koordinaten $x^i: H = v^i(x) \pp{}{x^i}$ \\
+   In andere Koordinaten $x^{\prime i}: D = v^{\prime i} (x') \pp{}{x^{\prime i}}$ \\
+   Umrechnung:
+   \[d = v^j \pp{}{x^j} = v^j (\pp{x^{\prime i}}{x^j}) \pp{}{x^{\prime i}}\]
+   Koeffizientenvergleich liefert:
+   \[v^{\prime i} = (\pp{x^{\prime i}}{x^j}) v^j\]
+   Diese Vektoren an $q ∈ M$ bilden "Tangentialraum" (Vektorraum!) $T_q M$.
+   In obiger Diskussion sei zum Beispiel $D_V$ der absolite Vektor in $T_q M$ und $\{v^1, \dots, v^n\}$ beziehungsweise $\{v^{'1}, \dots, v^{'n}\}$ seien die *Komponenten* in $x^i$ beziehungsweise $x^{\prime i}$.
+   Basis (immer noch bei $q ∈ M$):
+   \[\partial_i \equiv \frac{}{x^i}\]
+   Zu $V$ gibt es Dualraum $V^{\ast}$. (Raum der linearen Funktionale. Hier heißt dieser Cotangentialraum $(T_q M)^{\ast}$ auf $V$).
+   Definiere duale Basis $\d x^i$
+   \[\d x^i (\pp{}{x^i}) = δ_j^i\]
+   Wegen Linearität ist allgemeines Element von $T_q^{\ast}: ω_i \d x^i ∈ T_q^{\ast}$
+   \[ω(v) = ω_i \d x^i (v^j \pp{}{x^j}) = ω_i v^j δ_j^i = ω_i v^i\]
+** Vektorfelder und 1-Formen
+   All dies geht auch gleichzeitig an allen Punkten $q ∈ M$: Vektorfeld ist Abbildung $q ↦ v(q) ∈ T_q M$. (eigentlich nur Satz von Funktionen $v^i(x)$).
+   Analog: 1-Form ist Abbildung: $q ↦ ω(q) ∈ (T_q M)^{\ast}$ (Funktionen $ω_i(x)$). \\
+   #+begin_ex latex
+   Zu jeder Funktion $f$ gehört eine 1-Form $ω = \d f$, definiert durch:
+   \[\d f(v) = v^i \pp{}{x^i}(f) = v^i \pp{f}{x^i} = D_v f\]
+   In Komponenten:
+   \[\d f = (\pp{f}{x^i}) \d x^i \quad\text{beziehungsweise}\quad (\d f)_i = \pp{f}{x^i}\]
+   #+end_ex
+** Höhere p-Formen
+   Betrachte Tensorprodukte:
+   $T_q^{\ast} \otimes F^{\ast}_q$ mit Basis
+   \[\{\d x^i \otimes \d x^j\} = \{\d x^1 \otimes \d x^1, \d x^i \otimes \d x^2, \dots\}\]
+   auffassbar als Raum der bilinearen Funktionale auf $T_q$:
+   \[(\d x^i \otimes \d x^j)(\pp{}{x^k}, \pp{}{x^l}) \equiv \d x^i (\pp{}{x^k}) \d x^i (\pp{}{x^l}) = δ_k^i δ_l^j\]
+   Allgemeineres Element:
+   \[ω^2() = ω_{ij} \d x^i \otimes \d x^j, \quad ω^2(q) ∈ (T_q^{\ast})^2\]
+   $ω^2$ ist eine Rang-2 Tensorfeld. Allgemeiner: Wi können ebeso das p-fache Tensorprodukt von $(T_q M)^{\ast}$ mit sich betrachten.
+   $⇒$ Tensoren und Tensorfelder vom Rnag $p$:
+   \[ω*p(q) ∈ (T_q^{\ast} M)^{\otimes p}\]
+   Besonders wichtig: total antisymmetrische Tensoren: Diese sind definiert dadurch, dass $ω_{ij \dots k l}$ sei Vorzeichen wechselt, wann man zwei beliebige,
+   benachbarte Indizes vertauscht. Antisymmetrisch $⇒ ω^p(q) ∈ (T_q^{\ast})^{∧ p} ⊂ (T_q^{\ast})^{\otimes p}$, $∧$ symbolisiert Antisymmetrie $⇒$ "antisymmetrische Unterraum von $(T_q^{\ast})^{\otimes p}$".
+   Diese antisymmetrische Tensorfelder (Tensorfelder mit Werten in $(T^{\ast}_q)^{∧ p}$) heißen *p-Formen*. Wir wollen den Fall $p = 2$ explizit machen:
+   \[ω^2(x) = ω_{ij}(x) \d x^i \otimes \d x^j\]
+   mit $ω_{ij} = - ω_{ji}$. Die Basiselemente von $(T_q^{\ast})^{∧ p}$ schreibt man mit "Wedge":
+   \[ω^2(x) = \frac{1}{2} ω_{ij}(x) \d x^i ∧ \d x^j \equiv ω_{ij}(x) \frac{1}{2}(\d x^i \otimes \d x^j - \d x^j \otimes \d x^i)\]
+   Noch konkreter: $p = d = 2$
+   #+begin_ex latex
+   \[ω^2 = \frac{1}{2} ε_{ij} \d x^i ∧ \d x^j = ε_{ij} \frac{1}{2} \frac{1}{2}(\d x^i \otimes \d x^j - \d x^j \otimes \d x^j) = \d x^1 \otimes \d x^2 - \d x^2 \otimes \d x^1\]
+   #+end_ex
+   für $p = d$ immer!, aber zum Beispiel $p = 2$ in $d = 1$ geht nicht! (weil $\d x^1 ∧ \d x^1 = 0$). \\
+   Aber: $p < d$ ist natürlich möglich. zum Beispiel:
+   \[ω^2 = \frac{1}{2} ω_{ij} \d x^i ∧ \d x^j, i, j ∈ \{1, \dots, d\}\]
+   Nebenbewerkung: Äußere Ableitung $d$:
+   \[d: ω^p ↦ ω^{p + 1}\]
+   \[\d(ω_{i_1 \dots i_p} \d x^{i_1} ∧ \dots ∧ \d x^{i_p}) \equiv (\pp{}{x^i} ω_{i_1\dots i_p})\d x^i \d x^{i_1} ∧ \dots ∧ \d x^{i_p}\]
+   Wichtiges Beispiel:
+   \[d(f) = \d f \equiv (\pp{f}{x^i}) \d x^i\]
+   Funktion $\equiv$ "0-Form". Fakt: $d^2 = d \otimes d = 0$
+** Formulierung der Hamilton-Mechanik in Formen
+   Ein Phasenraum ist ein $2n$ dimensionaler Raum $d = 2n$ mit einer nicht-degenerierten, geschlossenen 2-Form
+   \[ω^2 \equiv ω = ω_{ij}(\v ξ) \d \v ξ^i ∧ \d \v ξ^j\qquad \v ξ \leftrightarrow \{q, p\}\]
+   welche man symplektische Struktur nennt. *Nicht-degeneriert* heißt: $ω_{ij}$ als Matrix invertierbar. *Geschlossen* heißt: $\d ω = 0$.
+   Eine Hamilton-Funktion ist eine Funktion auf dem Phasenraum
+   \[H = H(\v ξ) = H(ξ^1, \dots, ξ^d)\]
+   Hamilton-Gleichungen:
+   \[ω(\dot ξ)= \d H\quad \dot ξ \equiv \dd{ξ}{t}\]
+   Erklärung: $\dot ξ$ = Vektor = $\{\dot ξ^1, \dots, \dot ξ^d\}$
+   $ω(\dot ξ) \equiv ω(·, \dot ξ)$ Dies ist eine 1-Form $⇒ ω(\dot ξ) = \d H$ ist also Äquivalenz von 1-Formen-Gleichungen!
+   \[\dot ξ = \dot {\v ξ} \pp{}{ξ^i}\]
+   Jetzt wählen wir auf $M$ Koordianten $q_α, p^α$, sodass
+   \[ω = \d p_α ∧ \d q^α \quad (α = 1, \dots, n)\]
+   (Dass dies geht, ist ein *nichttrivialer Fakt*). Da $ξ^i = \{q^1, \dots, q^n, p_1, \dots, p_n\}$ gilt
+   \[ω_{ij}= \begin{pmatrix}0 & -\mathbb{1} \\ \mathbb{1} & 0\end{pmatrix}\]
+   $R \mathbb{1} R^T = \mathbb{1} \impliedby R ∈ SO(n), S ω S^T = ω \impliedby S ∈ Sp(2n)$. Auswertung der abstrakten Hamilton-Gleichung in unseren speziellen Koordinaten:
+   \begin{align*}
+   \d p_β ∧ \d q^β (·, \dot q^α \pp{}{q^α} + \dot p_α \pp{}{p_α}) &= \dot q^α \d p_α - \dot p_α \d q^α \\
+   &= \pp{H}{q^α} \d q^α + \pp{H}{p_α} \d p_α \\
+   \intertext{Koeffizientenvergleich:}
+   \dot q^α = \pp{H}{p^α}, \dot p_α = - \pp{H}{q_α}
+   \end{align*}
+   Fortgeschrittener Kommentar:
+   Betrachte die zu $ω_{ij}$ inverse Matrix:
+   \[ω^{ij} ω_{jk} = δ_k^i\]
+   $ω^{ij}$ definiert eine antisymmetrische Bilinearform $\ubar ω$ auf $T_q^{\ast}$. Damit gilt: $\{F, G\} \equiv \ubar ω(\d F, \d G)$.
+   Nachrechnen des Vergleichs mit alternativer Definition:
+   \[\ubar ω(\d F, \d G) = ω_{ij}(\d F)^i (\d G)^j = δ_α^β(\pp{F}{q^β} \pp{G}{p_α} - \pp{G}{q^β}\pp{F}{p_α}) = δ_α^β \{F, G\}\]
+   Abstrakte Hamilton-Gleichung in Koordinaten $ξ$ ausschreiben:
+   \[ω_{ij} ξ^i = \pp{H}{ξ^i} ⇒ \dot ξ^i = ω^{ij} \pp{H}{ξ^j}\]
+   $⇒$ Man sieht explizit, wie $H$ das Vektorfeld $ξ^i$ definiert. Das geht mit jeder Observablen und wir nennen den entsprechenden Vektor (Vektorfeld) $V(F), V(G)$, etc.
+   \[⇒ \{F, G\} = ω(V(F), V(G))\]
+** Integration von Differentialformen
+   Behauptung: $p$ -Form kann über $p$ -dimensionale Hyperfläche $C_p$ integriert werden:
+   \[∫_{C_p} ω P = \text{ Zahl}\]
+   Man zerlege dazu die Fläche in kleine Parallelepipede.
+   Definiere
+   \[∫{C_p} ω P = \lim \sum_{\text{Parallelepide}} ω P(v_1, \dots, v_p) \]
+   Wichtig: Obige Definition ist Koodinatenunabhängig. Trotzdem: Praktisch rechnen wir meist in Koordinaten: $d = p = z$:
+   \[v_1 = Δ x^1 \pp{}{x^1}, v_2 = Δx^2 \pp{}{x^2}\]
+   \[⇒ ∫ ω = \lim \sum ω(v_1, v_2) = \lim \sum ω_{12} Δx^1 Δ x^2 = ∫ \d x^1 \d x^2 ω_{12}\]
+   In anderen Koordinaten:
+   \[∫ ω = ∫ \d x^{\prime 1} \d x^{\prime 2} ω_{12}'\]
+   Zum Prüfen der Gleichheit: \\
+   Fakt:
+   \[ω_{i_1 \dots i_p}' = (\pp{x^{j_1}}{x^{\prime i_1}}) \dots (\pp{x^{j_p}}{x^{\prime i_p}}) ω_{j_1 \dots j_p}\]
+   (wie beim Vektor, nur $x \leftrightarrow$ x').
+   Einschränkung: $p = d$ ("Top-Form"). Dies ist stets
+   \[ω = ε f(x)\]
+   \[∫ \d x^{\prime 1} \dots \d x^{\prime} f'(x^{\prime 1}, \dots, x^{\prime n}) = ∫ \d x^{\prime 1} \dots \d x^{\prime n} \det (\pp{x'}{x^{\prime j}}) f(x^1(x'), \dots, x^n (x'))\]
+   Verallgemeinerter Satz von Stokes:
+   \[∫_C \d ω = ∫_{\partial C} ω\]
