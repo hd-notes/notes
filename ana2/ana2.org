@@ -710,7 +710,7 @@
    \intertext{(denn $t \to ϕ(t)ϕ(s)^{-1}$ induziert eine Lösungsmatrix von $y' = A y$ mit $y(s) = \id$.) Wir erhalten:}
    \abs{x(t)} &\leq \abs{\tilde x(t)} + ∫_0^t \abs{ϕ(t)ϕ(s)^{-1}} \abs{g(x(s)) \d s} \leq c \abs{x(0)} e^{-α t} + ∫_0^t c e^{-α (t - s)} \abs{g(x(s))} \d s
    \end{align*}
-   Aus Vorraussetzung $\lim_{x \to 0} \abs{g(x)} / \abs{x} = 0$ gibt es einen Radius $ρ > 0$ mit $\abs{g(z)} \leq α / (2c) \abs{z} ∀ z ∈ \bar K_ρ(0)$. Wir betrachten $x' = Ax + g(x)$ mit $ \abs{x(0)} \leq ρ / (2(1 + c))$.
+   Aus Vorraussetzung $\lim_{x \to 0} \abs{g(x)} / \abs{x} = 0$ gibt es einen Radius $ρ > 0$ mit $\abs{g(z)} \leq α / (2c) \abs{z} ∀ z ∈ \bar K_ρ(0)$. Wir betrachten $x' = Ax + g(x)$ mit $\abs{x(0)} \leq ρ / (2(1 + c))$.
    Stetigkeit von $x$ garantiert, dass
    \[T_{x(·)} = \sup\{t \geq 0 \mid \abs{x(·)} \leq ρ\}\]
    positiv oder $∞$. $∀ t ∈ [0, T_{x(·)}]$ können wir $\abs{x(t)}$ weiter abschätzen
