@@ -169,3 +169,86 @@
    $⇒$ Magnetisches Wechselfeld muss in z-Richtung zeigen falls das elektrische Feld in y-Richtung polarisiert ist.
    das heißt für elektromagnetische, ebene Wellen im Vakuum gilt:
    \[\v E \perp \v B\]
+   \begin{align*}
+   \ddot{\v E} &= c^2 Δ \v E \\
+   \ddot{\v B} &= c^2 Δ \v B \\
+   ⇒ \v E(\v r, t) = \v E_0 \sim(\v k \v r - ω t) \tag{Ebene Welle}
+   \end{align*}
+   Mit $\rot \v E = - \dot{\v B}, \rot \v B = 1/c^2 \dot{\v E}$
+   \begin{align*}
+   \v E(x, t) &= (0, E_y, 0) \\
+   E_y &= E_0 \sin(k x - ω t) \\
+   \v B &= (0, 0, B_z) \\
+   B_z &= \frac{E_0}{c} \sin(k x - ω t)
+   \end{align*}
+   $⇒ \v E \perp \v B, \v E, \v B \perp \v K$, $\v E, \v B$ in Phase
+   \begin{align*}
+   \abs{\v B} &= \frac{\abs{\v E}}{C} \\
+   \v B &= \frac{1}{ω}(\v k × \v E)
+   \end{align*}
+   Zirkular polarisierte Welle:
+   \[[E_{0, x} = E_{0, y}, φ = \SI{90}{\degree}]\]
+   Elliptisch Polarisierte Welle:
+   \[[E_{0, x} \neq E_{0, y}, φ = \SI{90}{\degree}]\]
+   Unpolarisierte Welle:
+   \[[\text{keine feste Phasenverschiebung}]\]
+   Kugelwellen:
+   \begin{align*}
+   \v E &= \frac{\v E_0}{r} \sin(\v k \v r - ω t) \\
+   \v B &= \frac{\v B_0}{r} \sin(\v k \v r - ω t)
+   \end{align*}
+** Energietransport elektrigmagnetische Welle
+   Energiedichte im Vakuum:
+   \begin{align*}
+   ω_{em} &= \frac{1}{2} (\v E \v D + \v B \v H) = \frac{1}{2} ε_0 E^2 + \frac{1}{2 μ_0} B^2 = ε_0 E^2(t) \\
+   <ω_{em}> = <ω_{em}(t)> = \frac{1}{2} ε_0 E_0^2
+   \end{align*}
+   Energiestromdichte (oder Intensität)
+   \begin{align*}
+   S &= \frac{\text{Strahlungsleistung}}{\text{Fläche}} = \frac{\text{Energie}}{\text{Fläche $·$ Zeit}} \\
+   &= \text{Eneriedichte} · \text{Geschwindigkeit} \\
+   ⇒ S = ω_{em} c = ε_0 c E^2(t) = ε_0 c^2 E B = \frac{1}{μ_0} E B = E H
+   \end{align*}
+   #+ATTR_LATEX: :options [Poyntingvektor]
+   #+begin_defn latex
+   \[\v S = \frac{1}{μ_0}(\v E × \v B) = \v E × \v H\]
+   #+end_defn
+** Erzeugung elektromagnetischer Wellen
+   Hetzscher Dipol:
+   \[ω = \frac{1}{\sqrt{L C}}\]
+   $ω$ groß $\to$ $L, C$ klein
+   - Spule $\to$ Draht
+   - Kondensator $\to$ Draht
+   $⇒$ geraderiung: PTP3
+   \begin{align*}
+   \v B(\v v, t) &= \frac{1}{4 π ε_0 c^2 r^3}(\dot{\v p} × \v r + \frac{r}{C}(\ddot{\v p} × \v r)) \\
+   \v E(\v r, t) &= \frac{1}{4 π ε_0 r^3}(\v p + \frac{r}{C} \dot{\v p} + 3((\v p + \frac{r}{C}\dot{\v p})\hat r)\hat r) + \frac{1}{4 π E_0 c^2 r^2}(\ddot{\v p} × \v r) × \v r
+   \end{align*}
+   $⇒$ Hertzscher Dipol
+   - Nahfeld: $E \sim 1 / r^3, B \sim 1 / r^2$
+   - Fernfeld: $E \sim 1 / r, b \sim 1 / r$
+   $⇒ \abs{\v S} \sim E B \sim 1 / r^2$ \\
+   Symmetrie:
+   - $S = σ(r) · ξ(v)$
+   - $\v S \parallel \v r$
+   - $∮ \v S \d \v A = \const$
+   \[∮σ(r)ξ(v) r^2 \d Ω = σ(r) r^2 \underbrace{∮ξ(v) \d Ω}_{\text{konstant}} = C σ(r) r^2 \overset{!}{=} \const\]
+   $⇒$ $σ(r) \sim 1 / r^2, S \sim 1 / r^2$.
+   Also: Die $1 / r$ -Abhängigkeit von E, B-Feld und die $1 / r^2$ Abhängigkeit von $\abs{\v S}$ ergeben
+   sich für das Fernfeld aus der Symmetrie und der Erhaltung des Energieflusses.
+   Außerdem: Fernfeld $=$ reines Wellenfeld im freien Raum. Daher sind $\v E, \v B$ rein transversal, $\v E, \v B$ in Phase.
+   Nachfeld: $r \gg d ⇒$ $\v B, \v E$ phasenverschoben. Vorbemerkung: Hochfrequente Wechselspannung auf
+   einem Leiter führt zu eletromagnetischen Wellen entlang des Leiters, da sich die Oberflächenladung $σ$ nur mit endlicher Geschwindigkeit ausbreitet.
+   (Drahtwelle) $⇒$ Hertzscher Diporl: Stehende Drahtwellen:
+   \begin{align*}
+   \intertext{Phasenverschiebung: $π / 2$}
+   I(z, t) &= I_0(z) \sin ω t \\
+   U(z, t) &= U_0(z) \cos ω t \\
+   \intertext{Randbedingungen}
+   I_0(\pm \frac{1}{2} l) &= 0 \\
+   U_0(\pm \frac{1}{2} l) &= U_0 \\
+   U_0(0) &= 0
+   \intertext{Daraus folgt}
+   I_0(z) &= I_0 \cos(\frac{π x}{l}) \\
+   U_0(z) &= U_0 \sin(\frac{π x}{l})
+   \end{align*}

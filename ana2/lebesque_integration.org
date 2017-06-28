@@ -2,7 +2,7 @@
 ** Inhalte von Mengen in $ℝ^n$
    Die Idee ist einen "Inhalt" ("Masse") von Mengen zu definieren, sodass
    - $\abs{M} \geq 0$ \hfill (Positivität)
-   - $\abs{M} = \abs{M'}$ fals $M$ und $M'$ isometrisch (durch Abstandserhaltende Transformation) sind. \hfill (Bewegungsinvarianz)
+   - $\abs{M} = \abs{M'}$ falls $M$ und $M'$ isometrisch (durch Abstandserhaltende Transformation) sind. \hfill (Bewegungsinvarianz)
    - $M ∩ N = \emptyset ⇒ \abs{M ∪ N} = \abs{M} + \abs{N}$
    In $ℝ^1$ oder $ℝ^2$ können wir $∀ M ⊂ ℝ^2$ einen "Inhalt" mit solchen Eigenschaften zuordnen (Banach), aber nicht in $ℝ^3$ (Hausdorff)
    Wir beginnen mit $n$ -dimensionalen (abgeschlossenen) Intervallen $I := I_1 × \dots × I_n$, wobei $I_i = [a_1, b_i], i = 1, \dots, n, a_i < b_i, a_i, b_i ∈ ℝ$.
@@ -145,11 +145,68 @@
    #+end_lemma
    (ohne Beweis)
    #+begin_thm latex
-   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrirbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar mit $\det ϕ'(x) \neq 0$.
+   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrirbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar beziehungsweise $\det ϕ'(x) \neq 0$.
    1. Die Bildmenge $ϕ(D)$ ist offen und quadrierbar, und es ist
 	  \begin{align*}
 	  \overline{ϕ(D)} &= ϕ(\bar D) \\
-	  \partial ϕ(D) &= ϕ(\partial D)
+	  \partial ϕ(D) &⊂ ϕ(\partial D)
       \end{align*}
    2. Ist $ϕ$ in $D$ injektiv, so gilt $\partial ϕ(D) = ϕ(\partial D)$. Ferner ist für jede quadrierbare Teilmenge $A ⊂ \bar D$ auch die Bildmenge $ϕ(A)$ quadrierbar.
    #+end_thm
+   #+begin_proof latex
+   Das Bild $ϕ(D)$ der offenen Menge $D$ unter der regulären Abbildung $""$ ist offen (folgt aus Umkehr Funktions Satz). Aus der Stetigkeit von $ϕ$ ist das Bild $ϕ(\bar D)$ der beschränkten, abgeschlossenen
+   Menge $\bar D$ abgeschlossen. $⇒ \overline{θ(D)} ⊂ ϕ(\bar D)$, da $\overline{ϕ(D)}$ die kleinste abgeschlossene Menge von $ϕ(D)$ ist.
+   \[⇒ \partial ϕ(D) = \bar ϕ(D) \setminus ϕ(D) ⊂ ϕ(\bar D) \setminus ϕ(D) ⊂ ϕ(\partial D)\]
+   Da $D$ quadrierbar ist, muss $\abs{\partial D}_a = 0$. Nach Lemma 4.9 $\abs{ϕ(\partial D)}_a = 0$
+   und damit $\abs{\partial ϕ(D)}_a = 0$. $ϕ(D)$ ist also quadrierbar. Zu $x ∈ \bar D$ gibt es eine Folge $(x_k)_{k ∈ ℕ}$ in $D$ mit $x = \lim_{k \to ∞} x_k$. $ϕ(x) = \lim_{k \to ∞} ϕ(x_k)$.
+   Dies und $\overline{ϕ(D) ⊂ ϕ(\bar D)} ⇒ \overline{ϕ(D)} = ϕ(\bar D)$. \\
+   Sei nun $ϕ$ zusatzlich injektiv auf $Di$. Wir nehmen $x ∈ \partial D$ und eine Folge $(x_k)_{k ∈ ℕ}$ in $D$ mit $x = \lim_{k \to ∞} x_k$ und $ϕ(x) = \lim_{k \to ∞} ϕ(x_k)$. Wir zeigen, dass
+   $ϕ(x) ∈ \partial ϕ(D)$. Wäre $ϕ(x) ∈ ϕ(D)$, dass heißt es gäbe $\tilde x ∈ D$ mit $ϕ(x) = ϕ(\tilde x)$. $⇒$ Wegen der Offenheit von $ϕ(D)$ eine Umgebung
+   $V(ϕ(x)) ⊂ ϕ(D)$ und eine Umgebung $U(\tilde x) ⊂ D$ mit $ϕ(U(\tilde x)) = V(ϕ(x))$. Wegen $\lim_{k \to ∞} x_k = x ∈ \partial D$ ist dann aber $x_k \dot ∈ U(\tilde x)$ für hinreichund graßes $k$.
+   $⇒ ϕ(x_k) \not ∈ V(ϕ(x))$ \lightning zu $ϕ(\tilde x) = ϕ(x) = \lim_{k \to ∞} ϕ(x_k)$. Zusammen mit $\partial ϕ(D) ⊂ ϕ(\partial D) ⇒ \partial ϕ(D) = ϕ(\partial D)$.
+   Sei $A ⊂ D$ quadrierbar. Dann ist auch das Innere $A^0 = A \setminus \partial A$ quadrierbar und mit dem vorherigen Argument, dass $ϕ(A)$ quadrierbar ist.
+   Wegen $A \setminus A^0 ⊂ \partial A$ ist $A \setminus A^0$ eine Nullmenge $⇒ ϕ(A \setminus A^0)$ eine Nullmenge $⇒ ϕ(A) = ϕ(A^0) ∪ ϕ(A \setminus A^0)$ quadrierbar.
+   #+end_proof
+   #+ATTR_LATEX: :options [4.11]
+   #+begin_lemma latex
+   Sei $D ⊂ ℝ^n$ nicht leer und $ϕ:D \to ℝ^n$ eine Lipschitzstetige Abbildung. Dann besitzt $ϕ$ eine Lipschitzstetige Fortsetzung $\bar ϕ: \bar D \to ℝ^n$ mit
+   $\bar ϕ\big|_D = ϕ$.
+   #+end_lemma
+   #+begin_proof latex
+   Sei $x ∈ \bar D$ mit $x = \lim_{k \to ∞} x_k, x_k ∈ D$. Aus Lipschitzstetigkeit von $ϕ$ aus $D$
+   \[⇒ \norm{ϕ(x_k) - ϕ(x_i)} \leq L \norm{x_k - x_i}\]
+   das heißt $(ϕ(x_k))_{k ∈ ℕ}$ ist eine Cauchy-Folge. Sei $y = \lim ϕ(x_k)$ im Falle $x \to ∈ D$ setzen wir $\overline{ϕ(x)} := y$. Dadurch wird eine Punktion $\bar ϕ: \bar D \to ℝ^n$ definiert.
+   Die Definition ist eindeutig, da für zweite Folge $(ξ_k)_{~ ∈ ℕ}$ mit $x = \lim_{k \to ∞} ξ_k$, die $ϕ(ξ_k) \to y$ wegen
+   \[\norm{ϕ(x_k) - ϕ(ξ_k)} \leq L \norm{x_k - ξ_k}\]
+   Für $x ∈ D$ ist $\overline{ϕ(x)} = ϕ(x)$. Seinen $x, ξ ∈ \bar D$ und $(x_k)_{k ∈ ℕ}, (ξ_k)_{k ∈ ℕ}$ die Approximationen in $D$
+   \[⇒ \norm{\bar ϕ(x) - \bar ϕ(ξ)} = \lim_{k \to ∞} \norm{\bar ϕ(x_k) - \bar ϕ(ξ_k)} \leq L \lim_{k \to ∞} \norm{x_k - ξ_k} = L\norm{x - ξ}\]
+   $⇒ \bar ϕ$ ist Lipschitzstetig mit derselben Lipschitzkonstante wie $ϕ$.
+   #+end_proof
+   #+begin_thm latex
+   Es sei $D ⊂ ℝ^n$ eine quadrierbare Menge und $A ∈ ℝ^{n × n}$ eine Matrix und $b ∈ ℝ^n$ ein Vektor. Damit ist auch $ϕ(D) ⊂ ℝ^n$ mit $ϕ(x) := A x + b$ (affin-lineare Abbildung) quadrierbar und $\abs{ϕ(D)} = \abs{\det A} \abs{D}$
+   #+end_thm
+   #+begin_proof latex
+   1. $ϕ(x) = x + b$. Hier $\abs{ϕ(s)} = \abs{s}$. Ferner ist $A ⊂ B ⊂ C$ äquivalent zu $ϕ(A) ⊂ ϕ(B) ⊂ ϕ(C)$. Also $∀ D ⊂ ℝ^n$ quadrierbar gilt
+	  \[\abs{ϕ(D)}_i = \lim_{k \to ∞} \abs{ϕ(D_k)} = \lim_{k \to ∞} \abs{D_k} = \abs{D}_i = \abs{D}_a = \lim_{k \to ∞} \abs{D^k} = \lim_{k \to ∞} \abs{ϕ(D^k)} = \abs{ϕ(D)}_a\]
+	  wobei
+      - $D_k := ∪ \{W ∈ W_k \mid W ⊂ D\}$
+	  - $D^k := ∪ \{W ∈ W_k \mid W ∩ D \neq \emptyset\}$
+	  Für beschränkte Menge
+	  \[\abs{D}_i = \lim_{k \to ∞} \abs{D_k}, \abs{D}_a = \lim_{k \to ∞} \abs{D^k}\]
+   2. Sei $\det A \neq 0$, das heißt $A$ gibt eine bijektive Abbildung. Bild $ϕ(W)$ einses Würfels $W$ ist quadrierbar (Satz 4.10). Sei $W_1$ der Einheitswürfel $\abs{W_1} = 1$ und
+	  $α := \abs{ϕ(W_1)}$. $∀ W = r W_1 + b$ gilt
+	  \[\abs{ϕ(W)} = \abs{ϕ(r W_1)} = r^n \abs{ϕ(W_1)} = α r^n \abs{W_1} = α \abs{W}\]
+	  Ähnlich für beliebige Würfelsummen.
+      \begin{align*}
+      \abs{ϕ(D^k)} &= α \abs{D^k} \\
+      \abs{ϕ(D_k)} &= α \abs{D_k}
+      \end{align*}
+      $W$ Aus
+      \[ϕ(D_k) ⊂ ϕ(D) ⊂ ϕ(D^k) ⇒ α (D_k) = \abs{ϕ(D_k)} \leq \abs{ϕ(D)}_i \leq \abs{ϕ(D)}_a \leq α \abs{D^k}\]
+      $⇒ α \abs{D} = \abs{ϕ(D)}$. Um zu zeige, dass $α = \det A$ nutzen wir $A = Q_1 Λ Q_2$, wobei $Q_1, Q_2$ ortonormal, und $Λ = \diag(λ_1, \dots, λ_n)$ mit $λ_1 > 0$.
+      Da
+      \[\abs{\det A} = \abs{\det(Q_1 Λ Q_2)} = \abs{λ_1 · \dots · λ_n}\]
+      und
+      \[\abs{ϕ K_1(0)} = \abs{λ_1 \dots λ_n} \abs{Q_2(K)} = \abs{λ_1 \dots λ_n} \abs{K}\]
+      $K_1$: Einheitskugel. Im Fall $\det A = 0$, die beschränkte Mengen $ϕ(D)$ sind Nullmengen.
+   #+end_proof
