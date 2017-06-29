@@ -145,11 +145,7 @@
    #+end_lemma
    (ohne Beweis)
    #+begin_thm latex
-<<<<<<< HEAD
-   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrierbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar mit $\det ϕ'(x) \neq 0$.
-=======
-   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrirbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar beziehungsweise $\det ϕ'(x) \neq 0$.
->>>>>>> 28344d773c12a7a243ad8045350acc84fb4bcaa4
+   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrierbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar beziehungsweise $\det ϕ'(x) \neq 0$.
    1. Die Bildmenge $ϕ(D)$ ist offen und quadrierbar, und es ist
 	  \begin{align*}
 	  \overline{ϕ(D)} &= ϕ(\bar D) \\
