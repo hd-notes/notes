@@ -1,6 +1,6 @@
 * Elektromagnetische Welle
 ** Mechanische Wellen
-   Eine Welle ist ein Vorgang bei dem sich eine Schwingung vom Ort Ihrer Erregung in Folge von Kopplungen an benachbarte schwingungsfähige Systeme im Raum ausbreitet.
+   Eine Welle ist ein Vorgang bei dem sich eine Schwingung vom Ort ihrer Erregung in Folge von Kopplungen an benachbarte schwingungsfähige Systeme im Raum ausbreitet.
    Man unterscheidet
    - Transversale Wellen $\to$ Ausbreitung senkricht zur Schwingungsrichtung
    - Longitudinale Wellen $\to$ Ausbreitung entlang der Schwingungsrichtung
@@ -86,7 +86,7 @@
    \cos φ &= \frac{e^{i φ} + e^{- i φ}}{2} \\
    \sin φ &= \frac{e^{i φ} - e^{- i φ}}{i2} \\
    e^{i φ} &= \cos φ + i \sin φ \\
-   ⇒ ψ(x, t) = \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) + \frac{1}{2i} b(k)\} e^{i k(x - v_{ph} t)} \d k + \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) - \frac{1}{2i} b(k)\} e^{- i k(x - v_{ph} t)} \d k \\
+   ⇒ ψ(x, t) &= \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) + \frac{1}{2i} b(k)\} e^{i k(x - v_{ph} t)} \d k + \frac{1}{π} ∫_0^∞ \{\frac{1}{2} a(k) - \frac{1}{2i} b(k)\} e^{- i k(x - v_{ph} t)} \d k \\
    &= \frac{1}{\sqrt{2 π}} ∫_0^∞ A(k) e^{i k(x - v_{ph}t)} \d k + \frac{1}{\sqrt{2 π}} ∫_0^π A^{\ast}(k) e^{- i k(x - v_{ph}t)} \\
    &= \frac{1}{\sqrt{2 π}} ∫_0^∞ A(k) e^{i(k x - ω t)} \d k + \frac{1}{\sqrt{2 π}} ∫_{- ∞}^0 A(k) e^{i(k x - ω t)} \d k \tag{$ω = \abs{k} v_{ph} > 0$} \\
    \intertext{Damit ergibt sich dann allgemein:}
@@ -101,7 +101,7 @@
    Bei schwacher Abhängigkeit der Ausbreitungsgescwindigkeit von der Wellenlänge bewegt sich
    das Wellenpaket ein beträchtliches Stück, bevor es nicht wiederzuerkennen ist.
    Für Wellenpakete für die $A(k)$ nur in einem schmalen Bereich um $k_0$ von Null verschieden ist -
-   was für die meisten relevanten Wellenpakete der FAll ist - kann man eine Wellenpaketgeschwindigkeit
+   was für die meisten relevanten Wellenpakete der Fall ist - kann man eine Wellenpaketgeschwindigkeit
    herleiten:
    \[v_{gr} = \dd{ω}{k} \big|_{k_0}\]
    $⇒$ Gruppengeschwindigkeit, Geschwindigkeit des Schwerpunktes eines Wellenpakets:
@@ -155,7 +155,7 @@
    ⇒ E_x &= \const
    \end{align*}
    Wahl der Randbedingung $\to$ wähle $E_x = 0$. Fazit:
-   Im Vakuum gibt es kein logitudinalen, sondern nur transversale elektromagnetischer Wellen.
+   Im Vakuum gibt es keine longitudinalen, sondern nur transversale elektromagnetischer Wellen.
    Jetzt: Verknüpfung von $E$ -und $B$ -Feld. Ansatz: Linear polarisierte Welle
    (das heißt $\v E, \v B$ zeigen immer in eine Richtung)
    \begin{align*}

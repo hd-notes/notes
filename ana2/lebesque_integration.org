@@ -13,7 +13,7 @@
    \[\abs{S} := \sum_{k = 1}^{n} \abs{I_k}\]
    #+ATTR_LATEX: :options [Jordan-Inhalt und Nullmengen]
    #+begin_defn latex
-   1. Für *beschränkte* (nicht leere) Mengen $M ⊂ ℝ^n$ sind der inneren Inhalt $\abs{M}_i$ und der äußerde Inhalt $\abs{M}_a$ definiert durch
+   1. Für *beschränkte* (nicht leere) Mengen $M ⊂ ℝ^n$ sind der inneren Inhalt $\abs{M}_i$ und der äußere Inhalt $\abs{M}_a$ definiert durch
 	  \[\abs{M}_i := \sup_{S ⊂ M} \abs{S} \leq \inf_{M ⊂ S} \abs{S} =: \abs{M}_a, \qquad \abs{\emptyset}_i = \abs{\emptyset}_a = 00\]
 	  Im Fall $\abs{M}_a = \abs{M}_i =: M$ heißt die Menge quadrierbar (messbar) im Jordanischen Sinne mit sogenanntem Jordan Inhalt.
    2. Mengen $M ⊂ ℝ^n$ mit $\abs{M}_a = 0$ werden Jordan-Nullmengen genannt
@@ -55,7 +55,7 @@
    1. Da im Fall $A ⊂ B$ jede Intervallüberdeckung von $B$ auch eine solche von $A$ ist, folgt aus der Definiton
 	  \[μ^{\ast}(A) \leq μ^{\ast}(B)\]
    2. Wir nehmen an, dass die rechte Seite in der Ungleichung ist (sonst nichts weiter zu beweisen). Es sei $ε > 0$ vorgegeben und eine Folge $(ε_i)_i$ positiver Zahlen mit
-	  $ε = sum_i ε_i$. Dann $∀ i ∈ ℕ ∃ (I_{ij})_j$ mit $A_i ⊂ ∪_j I_{ij}$
+	  $ε = \sum_i ε_i$. Dann $∀ i ∈ ℕ ∃ (I_{ij})_j$ mit $A_i ⊂ ∪_j I_{ij}$
 	  \[\sum_{j} \abs{I_{ij}} \leq μ^{\ast}(A_i) + ε_i\]
 	  Die Doppelfolge $I_{ij}$ überdeckt die Menge $A = ∪_i A_i$
 	  \[⇒ μ^{\ast}(A) \leq \sum_{i,j} \abs{I_{ij}} \leq \sum_{i} (μ^{\ast}(A_i) + ε_i) = \sum_{i} μ^{\ast}(A_i) + ε\]
@@ -63,12 +63,12 @@
 	  $⇒ μ^{\ast}(A) \leq \abs{A}_a$
 	  Jetzt zeigen wir $∀$ endlich abgeschlossenen
 	  \[S = ∪_{i = 1}^m I_i\]
-	  gilt $\abs{S} \leq μ^{\ast}(S)$. Dazu geben wir ein $ε > 0$ mit $ε = sum ε_i$ (mit $ε_i$ > 0) vor und wählen eine abzählbare Überdeckung
+	  gilt $\abs{S} \leq μ^{\ast}(S)$. Dazu geben wir ein $ε > 0$ mit $ε = \sum ε_i$ (mit $ε_i$ > 0) vor und wählen eine abzählbare Überdeckung
 	  \[∪_i I_i \supset S, \sum_{i} \abs{I_i} \leq μ^{\ast}(S) + ε\]
 	  $∀ I_i$ wählen wir $J_i$, sodass $\abs{J_i} > \abs{I_i} ∧ \abs{J_i} \leq \abs{I_i} + e_i$. Dann ist
 	  $(J_i)_i$ eine offene Überdeckung der kompakten Menge $S$ und nach dem Satz von Heine Borel wird $S$ bereits von endlich vielen der $J_i$ überdeckt
 	  \[S ⊂ ∪_{i = 1}^m J_m\]
-   4. Die Invarianz von $μ^{\ast}(x)$ gegeüber Translation folgt, da diese Intervalle bei Translation in solche mit demselben Inhalt überführen. Sei $S$ eine Drehung ($S$ eine orthogonale $n × n$ Matrix)
+   4. Die Invarianz von $μ^{\ast}(x)$ gegenüber Translation folgt, da diese Intervalle bei Translation in solche mit demselben Inhalt überführen. Sei $S$ eine Drehung ($S$ eine orthogonale $n × n$ Matrix)
 	  Aus $A ⊂ ∪_i I_i ⇒ S(A) ∈ ∪_i S(I_i)$ mit 1., 2. und Bewegungsinvatianz von Jordan Inhalt (zeigen wir später) bekommer wir
 	  \[μ^{\ast}(S(A)) \leq \sum_{i} μ^{\ast}(S(I)) = \sum_{i} \abs{S(I_i)} = \sum_{i} \abs{I_i}\]
 	  Da die überdeckende Intervallsumme beliebig ist, folgt
@@ -145,7 +145,7 @@
    #+end_lemma
    (ohne Beweis)
    #+begin_thm latex
-   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrirbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar mit $\det ϕ'(x) \neq 0$.
+   Sei $D ⊂ ℝ^n$ (nicht leer) offen und quadrierbar. Die Abbildung $ϕ: \bar D \to ℝ^n$ sein in $\bar D$ Lipschitzstetig und in $D$ regulär, das heißt stetig differenzierbar mit $\det ϕ'(x) \neq 0$.
    1. Die Bildmenge $ϕ(D)$ ist offen und quadrierbar, und es ist
 	  \begin{align*}
 	  \overline{ϕ(D)} &= ϕ(\bar D) \\

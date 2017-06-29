@@ -1,6 +1,6 @@
 * Schaltvorgänge, Wechselstrom und Schwingkreise
 ** Induktivität im Stromkreis (LR-Glied)
-   Einschlaten:
+   Einschalten:
    \[U_{ind} = - L \dot I\]
    Außerdem gilt: (Kirchhoffsche Maschenregel)
    \begin{align*}
@@ -260,7 +260,7 @@
 ** Transformator
    Große Bedeutung in der Wechselstromtechnik. Insbesondere Transformation von Spannungen
    für Hochspannungsübertragung. Annahme: Magnetische Feldlinien verlaufen vollständig innerhalb des
-   Eisenjochs, das heißt alle Straufelder werden vernachlässigt.
+   Eisenjochs, das heißt alle Streufelder werden vernachlässigt.
    Unbelasteter Transformator:
    \begin{align*}
    U_1 &= U_0 \cos ω t \tag{Primärseite} \\
