@@ -98,7 +98,7 @@
   c_1 & & & \\
   & \ddots & & 0 \\
   & & c_r & \\
-  \hline 
+  \hline
   0 & & & 0
   \end{array}
   \end{equation*}
@@ -228,7 +228,7 @@
 	 ⇒ \det B &= \det \begin{pmatrix}\sum_{r_1 = 1}^{m} s_{i_1, r_1} a_{r_1,j_1} & \dots &  \sum_{r_1 = 1}^{m} s_{i_1, r_1} a_{r_1,j_l}\\ b_{i_2, j_1} & \dots & b_{i_2, j_l} \\ \vdots & 8 & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix} \\
 	 &= \sum_{r_1 = 1}^{s_{i_1, r_1}} \det \begin{pmatrix}a_{r_1,j_1} & \dots & a_{r_1,j_l}\\ b_{i_2, j_1} & \dots & b_{i_2, j_l} \\ \vdots & 8 & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix} \\
 	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{pmatrix}a_{r_1, j_1} & \dots & a_{r_1, j_l} \\ \vdots &   & \vdots \\ a_{r_l, j_1} & \dots & a_{r_l, j_l}\end{pmatrix} \\
-	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{cases} 0 & \text{falls $i \neq j$ existiert mit $r_i = r_j$} \\ I \text{ ein Minor $l$ -ter Stufe von $A$}\end{cases} \\
+	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{cases} 0 \text{falls $i \neq j$ existiert mit $r_i = r_j$} \\ I \text{ ein Minor $l$ -ter Stufe von $A$}\end{cases} \\
 	 &∈ \Fit_l(A)
      \end{align*}
   2. Wende 1. auf $S^{-1} ∈ \GL(m, R), S A ∈ M(m × n, R)$ an: $⇒ \Fit_l(S^{-1}(S A)) ⊆  \Fit_l(S A)$, also $\Fit_l(A) ⊆ \Fit_l(SA)$. Außerdem: $\Fit_l(A) = \Fit_l(A^T)$, also
@@ -431,7 +431,7 @@
   \begin{align*}
   d_2(A) &= \ggT((-1) · 4 - (-3)(t - 1), (-3)(-1) - 2(t-1), \dots) \\
   &= \ggT(3t - 7, -2t + 5, \dots) = 1 \\
-  d_3(A) &= χ_A^{char} &= (t - 2)^3 \\
+  d_3(A) &= χ_A^{char} = (t - 2)^3 \\
   ⇒ c_1(A) &= 1, c_2(A) = 1, c_3(A) = (t - 2)^3
   \end{align*}
   Sei
@@ -442,7 +442,7 @@
   &\sim \begin{pmatrix}-1 & t - 1 & 2 \\ 0 & \string(t - 1\string)^2 - 1 & -2 + 2\string(t - 1\string) \\ 0 & t - 2 & t - 2\end{pmatrix} \sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t^2 - 2t & 2t - 4 \\ 0 & t - 2 & t - 2\end{pmatrix} \\
   &\sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & t - 2 \\ 0 & t^2 -2t & 2t - 4\end{pmatrix} \sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & t^2 - 2t & -t^2 + 3 t - 4\end{pmatrix} \\
   &\sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & -\string(t - 2\string)^2\end{pmatrix} \sim \begin{pmatrix}1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & \string(t - 2\string)^2\end{pmatrix}
-  ⇒ c_1(B) &= 1, c_2(B) = t - 2, c_3(B) = (t - 2)^2 \\
-  d_1(B) &= 1, d_2(B) &= t - 2, d_3(B) = (t - 2)^3
+  ⇒ c_1(B) = 1, c_2(B) = t - 2, c_3(B) = (t - 2)^2 \\
+  d_1(B) = 1, d_2(B) = t - 2, d_3(B) = (t - 2)^3
   \end{align*}
   #+end_ex
