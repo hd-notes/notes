@@ -144,7 +144,7 @@
   *Eindeutigkeit*: Seien $m, n ∈ ℕ_0$ mit $(m) = (n)$. Offenbar gilt: $m = 0 ⇔ n = 0$. Im Folgenden seien $m, n \neq 0$. Wegen $(m) = (n)$ ist $m ∈ (n), n ∈ (m) ⇒$ es existieren $r_1, r_2 ∈ ℤ$ mit
   $m = r_1 n$ und $n = r_2 m$
   \[⇒ m = r_1 n = r_1 r_2 m ⇒ r_1 r_2 = 1 ⇒ r_1 = r_2 = 1 ∨ r_1 = r_2 = -1 \xRightarrow{m, n ∈ ℕ_0}\] \\
-  [\ r_1 = r_2 = 1 ⇒ m = n\]
+  \[ r_1 = r_2 = 1 ⇒ m = n\]
   #+end_proof
   #+begin_ex latex
   $ℤ[t]$ ist kein Hauptidealring: Es gibt $f ∈ ℤ[t]$ mit $(2, t) = (f)$, dann: Annahme: Es existiert $f ∈ ℤ[t]$ mit $2 = h f ⇒ \deg h = \deg f = 0$, das heißt $f$ ist konstantes Polynom, etwa $f = a$ für ein
