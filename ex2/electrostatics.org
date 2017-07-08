@@ -219,7 +219,7 @@
    $2a + 2b + 2c$ ist immer $> 0 ⇒$ solches Feld nicht möglich.
 ** Elektrische Felder geladener Felder
    "Einfach": Berechnung für bekannte Ladungsverteilung. \\
-   "Schwierg": Berechnung in Anwesenheit von Leitern. \\
+   "Schwierig": Berechnung in Anwesenheit von Leitern. \\
    Für statische Felder gilt: \\
    im Leiter $\v E = 0$ \\
    im Hohlraum $q = 0, \v E = 0$ \\
@@ -252,8 +252,8 @@
    E_1 &< E_2
    \end{align*}
    #+end_ex
-   kleiner krümmungsradius $⇒$ größeres Feld, größere Flächenladungsdichte. \\
-   Merke: Scharfe Kanten beziehungsweise kleiner Krümmugsradius bedeutet hohes E-Feld \\
+   kleiner Krümmungsradius $⇒$ größeres Feld, größere Flächenladungsdichte. \\
+   Merke: Scharfe Kanten beziehungsweise kleiner Krümmungsradius bedeutet hohes E-Feld \\
    #+ATTR_LATEX: :options [Halbraumleiter mit Ladung]
    #+begin_ex latex
    #+end_ex
@@ -277,7 +277,7 @@
    Elektrischer Dipol im homogenem Feld: \\
    Drehmoment:
    \[\v M = \v d × \v F = q · \v d × \frac{1}{q} \v F = \v p × \v E\]
-   Kräfepaar! $⇒$ Ausrichtung im Feld. Potentielle Energie: Drehung eines Dipols im homogenen Feld,
+   Kräftepaar! $⇒$ Ausrichtung im Feld. Potentielle Energie: Drehung eines Dipols im homogenen Feld,
    das heißt Arbeit wird frei oder wird geleistet. Wähle: $E_{pot} = 0$ für $r = 90^{\circ}$
    \[E_{pot} = - \v F \v s = -\v p \v E\]
    Dipol im inhomogenen Feld: das heißt an den beiden Enden des Dipols wirken unterschiedliche Kräfte.
@@ -288,10 +288,10 @@
    F_y &= \v p \grad E_y \\
    F_x &= \v p \grad E_z \\
    \end{align*}
-** Kapzität und Kondensator
+** Kapazität und Kondensator
    Leiter können Ladungen speichern (zum Beispiel: Leidener Flasche, Kondensator, Metallkugel). \\
    Kondensator = Ladungsspeicher (Ladungen werden im Kondensator "kondensiert", das heißt zusammengedrängt)
-   Frage: Was ist die Ladungsspeicherfähigkeit oder Kapazität eines Leiters? Dafür betrachte Kugelkonduktoren.
+   Frage: Was ist die Ladungsspeicherfähigkeit oder Kapazität eines Leiters? Dafür betrachte Kugelkondensator.
    Gespeicherte Ladungsmenge auf einzelner Metallkugel:
    \[Δφ = -∫_∞^R \v E \d \v r = \frac{1}{4 π ε_0} \frac{Q}{R} \to Q = 4π ε_0 R U\]
    ($Δφ = U$). Das heißt gespeicherte Ladung ist proportional zur angelegten Spannung $U$
@@ -307,7 +307,7 @@
    #+begin_ex latex
    Kapazität einer Kugel mit $R = \SI{1}{\centi\meter} \to C \approx \SI{1e-12}{\farad} = \SI{1}{\pico\farad}$ \\
    Kapazität der Erde mit $R = \SI{7e8}{\centi\meter} \to C \approx \SI{7e-4}{\farad} = \SI{700}{\micro\farad}$ \\
-   Trotzdem heute: Superkondensatornen mit Kapazitäten bis zu $\SI{1e4}{\farad}$
+   Trotzdem heute: Superkondensatoren mit Kapazitäten bis zu $\SI{1e4}{\farad}$
    #+end_ex
    Referenzpotential $φ= 0$ muss aber nicht im Unendlichen liegen. Allgemeiner Kondensator:
    Zwei Leiter mit Ladungen $+Q$ und $-Q$ (Realisierung durch Erdung)
@@ -350,7 +350,7 @@
    Kehrwert der Gesamtkapazität ergibt sich als Summe der Kehrwerte der Einzelkapazitäten
 ** Kondensator als Energiespeicher
    Energiedichte des elektrischen Feldes. Aufgeladener Kondensator = Energiespeicher. Frage:
-   Wieviel Energie ist gespeichert? Hierzu betrachten wir einen Plattenkondensator:
+   Wie viel Energie ist gespeichert? Hierzu betrachten wir einen Plattenkondensator:
    Ladungstransport von Platte $A$ zu Platte $B$ erfordert Arbeit
    \begin{align*}
    ⇒ \d W &= U \d Q = \frac{Q}{C} \d Q \\
@@ -366,7 +366,7 @@
    \[⇒ ω_e = \frac{1}{2} ε_0 E^2\]
    Gilt allgemein für alle elektrischen Felder im Vakuum.
 ** Dielektrika - Elektrostatik in Materie
-   Beobachtung: Einbringen eines Isolators (Dielektrikum) in einen Kondensator hat großen Einfluß
+   Beobachtung: Einbringen eines Isolators (Dielektrikum) in einen Kondensator hat großen Einfluss
    auf die Kapazität. Die Spannung sinkt $⇒$ Kapazität steigt
    #+ATTR_LATEX: :options [Permittivität]
    #+begin_defn latex
@@ -451,13 +451,13 @@
    \[I = ∫\v j \d A = \dd{Q}{t} = ∫\dot ρ \d V\]
    #+end_defn
 ** Elektrischer Widerstand und Ohmsches Gesetz
-   Ladungsfluß entsteht aufgrund einer Potentialdifferenz beziehungsweise eines elektrischen Feldes.
+   Ladungsfluss entsteht aufgrund einer Potentialdifferenz beziehungsweise eines elektrischen Feldes.
    \[U = φ_b - φ_a = E Δl\]
    Spannungsänderung
    - $⇒$ Änderung Elektrisches Feld
    - $⇒$ Änderung der Ladungsträgergeschwindigkeit
    - $⇒$ Änderung von Stromdichte und Strom
-   #+ATTR_LATEX: :options [Differentieller Wiederstand]
+   #+ATTR_LATEX: :options [Differentieller Widerstand]
    #+begin_defn latex
    \[ϑ = \dd{U}{I}\]
    $[S] = \si{\ampere\per\volt} = \si{\siemens}$
@@ -467,7 +467,7 @@
    \[S = \dd{I}{U}\]
    $[ϑ] = \si{\volt\per\ampere} = \si{\ohm}$
    #+end_defn
-   Beobachtung: Elektischer Leiter: $ϑ = \const$
+   Beobachtung: Elektrischer Leiter: $ϑ = \const$
    \begin{align*}
    R &= \frac{U}{I} = \frac{E l}{I} ⇔ I = \frac{E l}{R} \\
    j &= \frac{I}{A} = \frac{l}{R A} E = σ E = η q_e v_D
@@ -533,7 +533,7 @@
    Verfügbare Leistung: $P_V = P - P_L$
 ** Stromkreise - Kirchhoffsche Regeln
    Haushalt, elektrische Schaltungen, $\dots$ Im Allgemeinen Netzwerke vieler Leiter,
-   Spannungsquallen und Verbraucher. Zur Berechnung von Strömen und Spannungen: \\
+   Spannungsquellen und Verbraucher. Zur Berechnung von Strömen und Spannungen: \\
    Kirchhoffsche Regeln:
    1. Knotenregel: An jedem Knoten gilt $\sum I_k = 0$ (Ladungserhaltung, folgt aus Kontinuitätsgleichung)
    2. Maschenregel: Für jede Masche gilt: $\sum U_k = 0$ (Zirkulationsgesetz)
@@ -553,7 +553,7 @@
    Stromquelle: Versorgung mit konstantem Strom. $⇒$ hoher Innenwiderstand ($R_i \to ∞, R_i \gg R_a$)
    \[I = \frac{U_0}{R_i + R_a} = \frac{U_0}{R_i} = \const\]
    Technische Realisierung? \\
-   Prinzip: Ladungstrennung durch Energiezufuhr $⇒$ Potentialdifferenz, leitende Verbindung $⇒$ Stromfluß.
+   Prinzip: Ladungstrennung durch Energiezufuhr $⇒$ Potentialdifferenz, leitende Verbindung $⇒$ Stromfluss.
    Anwendung finden:
    - elektrodynamische Generatoren, magnetische Induktion
    - Batterien und Akkumulatoren, Ladungstrennung durch chemische Reaktionen
@@ -565,14 +565,14 @@
    $Z_n + H_2 SO_4 \to H_2 + Zn SO_4$ \\
    Daniel-Element: Diaphragma, dass nur $SO_4$ durchlässt verhindert *Vergiftung*. \\
    Thermische Stromquellen. Bei Kontakt zweier Metalle ergibt sich Potentialdifferenz $⇒$ Kontaktspannung.
-   Ursache: Unterschiedlicshe Austrittarbeit für freie Elektronen. Austrittsarbeit und Kontaktspannung hängen von
+   Ursache: Unterschiedliche Austrittsarbeit für freie Elektronen. Austrittsarbeit und Kontaktspannung hängen von
    Temperatur ab.
    - Thermoelement
    - Peltierkühlung (Umkehrung)
-** Strom und Spannugsmessung
+** Strom und Spannungsmessung
    Ziel: Strom- und Spannungsmessung ohne Beeinflussung des zu messendes Systems. \\
-   Strommessung: Ampermeter in Reihe mit Verbraucher, Ampermeter - $R_i \approx 0$ um zusätzlichen Spannungsabfall aus
-   Messgrät zu minimieren. \\
+   Strommessung: Amperemeter in Reihe mit Verbraucher, Amperemeter - $R_i \approx 0$ um zusätzlichen Spannungsabfall aus
+   Messgerät zu minimieren. \\
    Spannungsmessung: Voltmeter parallel zum Verbraucher geschaltet. Voltmeter - $R_i \to \infty$, um
    Stromfluss durch Voltmeter zu minimieren. \\
    Messinstrumente:

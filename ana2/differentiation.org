@@ -95,7 +95,7 @@
   #+begin_defn latex
   $f: D \to ℝ^m$ partiell differenzierbar. Die Matrix der ersten partiellen Ableitungen
   \[J_f := (\pp{f_i}{x_j})_{\substack{i = 1, \dots, w \\ j = 1, \dots, n}} ∈ ℝ^{n×w}\]
-  heißt die *Jacobi-Matrix* (manchmal auch *Fundametalmatrix* ) von $f$ in $x$.
+  heißt die *Jacobi-Matrix* (manchmal auch *Fundamentalmatrix* ) von $f$ in $x$.
   Im Fall $n = m$ bezeichnet man $\det(J_f)$ als *Jacobideterminante*.
   #+end_defn
   #+begin_defn latex
@@ -219,7 +219,7 @@
   #+end_ex
   #+ATTR_LATEX: :options [Taylor-Formel]
   #+begin_thm latex
-  Sei $D ⊂ ℝ^n$ eine offene Menge und $f: D \to ℝ$ eine $(r + 1)$ -mal stetig differenziebare Funktion.
+  Sei $D ⊂ ℝ^n$ eine offene Menge und $f: D \to ℝ$ eine $(r + 1)$ -mal stetig differenzierbare Funktion.
   Dann gilt für jeden Vektor $h ∈ ℝ^n$ mit $x + sh ∈ D, s ∈ [0, 1]$ die Taylor-Formel
   \[f(x + h) = \sum_{\abs{α} < r} \frac{\partial^α f(x)}{α!}h^α + R_{r + 1}^f(x, h)\]
   in differentieller Form
@@ -343,7 +343,7 @@
   #+begin_thm latex
   Sei $D ⊂ ℝ^n$ offen und $f:D \to ℝ$ zweimal stetig differenzierbar und $∇f(\v x) = 0$ in einem $\v x ∈ D$. Ist die Hesse Matrix $H_f(x)$ in $\v x$
   *positiv definit* (das heißt alle Eigenwerte positiv), so liegt in $\v x$ ein striktes lokales Minimum. Ist sie negativ definit (das heißt alle Eigenwerte negativ),
-  so liegt in $\v x$ ein striktes lokals Maximum. Ist sie indefinit (hat sowohl positive als auch negative Eigenwerte), so kann in $\v x$ kein lokales Extremum liegen.
+  so liegt in $\v x$ ein striktes lokales Maximum. Ist sie indefinit (hat sowohl positive als auch negative Eigenwerte), so kann in $\v x$ kein lokales Extremum liegen.
   #+end_thm
   #+begin_proof latex
   Nach Korollar 2.21 gilt
@@ -365,7 +365,7 @@
   \string(H_f(\v x)z_+, z_+\string)_2 &= λ_+ \norm{z_+}_2^2 > 0 \\
   \string(H_f(\v x)z_-, z_-\string)_2 &= λ_- \norm{z_-}_2^2 < 0 \\
   \end{align*}
-  Für genübend kleines $t > 0$ gilt dann
+  Für genügend kleines $t > 0$ gilt dann
   \[f(\v x+ tz_+) - f(\v x) > 0 \qquad f(\v x + tz_-) - f(\v x) < 0\]
   $⇒$ kein Extremum in $\v x$
   #+end_proof
@@ -422,20 +422,20 @@
    &= \frac{1}{2}\norm{φ_1 - φ_2}_∞
    \end{align*}
    $⇒$ es existiert ein eindeutiges $φ ∈ C_b(V_1, ℝ^m)$ mit $Φ(φ) = φ ⇔ G(x, φ(x)) = φ(x)$. Nach eventueller Verkleinerung von $V_1$ könne wir annehmen, dass
-   $\pp{F}{y}$ in jedem Punkt $(x, (φ(x))), x ∈ V_1$ invertierbar ist. Wir zeigen de Differenziebarkeit von $φ$ nur in 0.
+   $\pp{F}{y}$ in jedem Punkt $(x, (φ(x))), x ∈ V_1$ invertierbar ist. Wir zeigen de Differenzierbarkeit von $φ$ nur in 0.
    \[A := \pp{F}{x}(0, 0) ∈ M(m × n, ℝ), \quad B := \pp{F}{y}(0, 0) ∈ \GL(m, ℝ)\]
    Aus der Differenzierbarkeit von $F$ in $(0, 0)$ folgt: $F(x, y) = Ax + By + ω(x, y)$. Nun gilt $F(x, φ(x)) = 0 ∀ x ∈ V_1$, das heißt
    \[φ(x) = -B^{-1} A x - B^{-1} ω(x, φ(x))\]
-   Es muss also gezeigt werden, dass $ω(x, φ(x)) = \mathcal{o}(\norm{(x, φ(x))})$. Zeige dazu, dass es eine Umgebung $V_1 ⊂ V_1$ von $0$ gibt und eine Konstate $K > 0$, sodass
+   Es muss also gezeigt werden, dass $ω(x, φ(x)) = \mathcal{o}(\norm{(x, φ(x))})$. Zeige dazu, dass es eine Umgebung $V_1 ⊂ V_1$ von $0$ gibt und eine Konstante $K > 0$, sodass
    \[\norm{φ(x)} \leq K \norm{x}\,∀ x ∈ V_1' \quad p_1 := \norm{B^{-1}A} \quad c_2 := \norm{B^{-1}}\]
    und wegen $ω(x, y) = \mathcal{0}(\norm{x, y})$ gibt es zu $ε := 1 / (2 c_2)$ eine Umgebung $V' ⊂ V_1 × V_2$ von $0, 0$, sodass
    \[\norm{ω(x, y)} = ε\norm{(x, y)} \leq \frac{1}{2 c_2}(\norm{x} + \norm{y})\,∀ (x, y) ∈ V'\]
-   Wegen der Stetigkeit von $φ$ gibt es eine Nullumgebung $V_1' ⊂ V_1$, sodass der Graph $φ\mid_{V_1'}$ ganz in $V'$ enthalten ist. Dahit gilt
+   Wegen der Stetigkeit von $φ$ gibt es eine Nullumgebung $V_1' ⊂ V_1$, sodass der Graph $φ\mid_{V_1'}$ ganz in $V'$ enthalten ist. Damit gilt
    \[\norm{ω(x, φ(x))} \leq \frac{1}{2 c_2}(\norm{x} + \norm{φ(x)})\]
    Außerdem gilt
    \begin{align*}
    \norm{φ(x)} &\leq c_1 \norm{x} + c_2 \norm{ω(x, φ(x))} \\
-   &leq (c_1 + \frac{1}{2})\norm{x} + \frac{1}{2}\norm{φ(x)} \\
+   &\leq (c_1 + \frac{1}{2})\norm{x} + \frac{1}{2}\norm{φ(x)} \\
    ⇒ \norm{φ(x)} &\leq \underbrace{2(c_1 + \frac{1}{2})}_{=: K} \norm{x}
    \end{align*}
    #+end_proof
@@ -451,7 +451,7 @@
    #+ATTR_LATEX: :options [Satz von der Umkehrabbildung]
    #+begin_thm latex
    Sei $D ⊂ ℝ^n$ offen, $f: D \to ℝ^n$ regulär in einem Punkt $\hat x ∈ D$. Dann gibt es eine offene Umgebung $V(\hat x) ⊂ D$, die von $f$ bijektiv auf eine offene Umgebung $U(\hat y) ⊂ ℝ^n$
-   ($\hat y = f(\hat x)$) abgebildet wird. Die Umkehrabbildung ist ebenfalls regulär in $\hat y$. $f^{-1}: U(\hat y) \to V(\hat x)$. Für die Funktionalmatrix und -determinante gilt:
+   ($\hat y = f(\hat x)$) abgebildet wird. Die Umkehrabbildung ist ebenfalls regulär in $\hat y$. $f^{-1}: U(\hat y) \to V(\hat x)$. Für die Fundamentalmatrix und -determinante gilt:
    \[J_{f^{-1}}(\hat y) = (J_f (\hat x))^{-1}, \quad \det J_{f^{-1}}(\hat y) = \frac{1}{\det J_f(\hat x)}\]
    #+end_thm
    #+begin_proof latex
@@ -460,31 +460,31 @@
    $φ: U(\hat y) \to U(\hat x)$ sodass $0 = F(y, φ(y)) = y - f(φ(y)), y ∈ U(\hat y)$. Das bedeutet zu jedem $y ∈ U(\hat y)$ kann man genau ein $x = φ(y) ∈ U(\hat x)$ finden mit $y = f(x)$.
    Wir setzen
    \[V(\hat x) := U(\hat x) ∩ f^{-1}(U(\hat y)) = \{x ∈ U(\hat x) \mid f(x) ∈ U(\hat y)\}\]
-   $V(\hat x)$ offen. Fermer wird $V(\hat x)$ bijktiv von $f$ abgebildet mit zugehörgen Umkehrabbildung $f^{-1} = φ$. Wegen $J_{f \circ f^{-1}} = J_{\id} = I$ und der Ketteregel
+   $V(\hat x)$ offen. Ferner wird $V(\hat x)$ bijektiv von $f$ abgebildet mit zugehörigen Umkehrabbildung $f^{-1} = φ$. Wegen $J_{f \circ f^{-1}} = J_{\id} = I$ und der Kettenregel
    gilt
    \[J_f(x) · J_{f^{-1}}(f(x)) = I ⇒ J_{f^{-1}}(f(x)) = (J_f(x))^{-1}\]
    #+end_proof
    #+begin_ex latex
-   Transformation der Polarkoordinaten auf kartesische Koordinaten. Polarkoodinaten: $(r, θ) \to$ kartesische Koordinaten $(x_1, x_2)$.
+   Transformation der Polarkoordinaten auf kartesische Koordinaten. Polarkoordinaten: $(r, θ) \to$ kartesische Koordinaten $(x_1, x_2)$.
    \[(x_1, x_2) = f(r, θ) := (r \cos θ, r \sin θ) \qquad f: ℝ_+ × ℝ \to ℝ^2\]
    \[J_f(r, θ) = \begin{pmatrix}\cos θ & -r\sin θ \\ \sin θ & r\cos θ\end{pmatrix} \quad \det J_f(r, θ) = r > 0\]
-   $f$ ist also auf $D = ℝ_+ × ℝ$ regulär. Nach dem Satz über Umkherabbildung ist $f$ also überall in $D$ lokal umkehrbar
+   $f$ ist also auf $D = ℝ_+ × ℝ$ regulär. Nach dem Satz über Umkehrabbildung ist $f$ also überall in $D$ lokal umkehrbar
    \[J_{f^{-1}}(x_1, x_2) = J_f(r, θ)^{-1} = \begin{pmatrix}\cos θ & \sin θ \\ - r^{-1} \sin θ & r^{-1} \cos θ\end{pmatrix}\]
    Umrechnung in die Variablen $(x_1, x_2) = (r \cos θ, r \sin θ)$ liefert
    \[r = \sqrt{x_1^2 + x_2^2}, \cos θ = \frac{x_1}{r}, \sin θ = \frac{x_2}{r}\]
    \[J_{f^{-1}}(x_1, x_2) = \frac{1}{\sqrt{x_1^2 + x_2^2}} \begin{pmatrix}x_1 \sqrt{x_1^2 + x_2^2} & x_1 \sqrt{x_1^2 + x_2^2} \\ -x_2 & x_1\end{pmatrix}\]
    Wir haben bekommen die Jacobi-Matrix von $f^{-1}$ ohne $f^{-1}$ explizit zu berechnen. Wir berechnen jetzt die $f^{-1}$
-   $f: U \to V$ wit $U := ℝ_+ × (-\frac{π}{2}, \frac{π}{2}), V := ℝ_+ × ℝ$ ist bijktiv
+   $f: U \to V$ mit $U := ℝ_+ × (-\frac{π}{2}, \frac{π}{2}), V := ℝ_+ × ℝ$ ist bijektiv
    \[f^{-1}(x_1, x_2)(\sqrt{x_1^2 + x_2^2}, \arctan(\frac{x_2}{x_1}))\]
    #+end_ex
 ** Extremalaufgaben mit Nebenbedingungen
-   Sei $f: D \to ℝ$ und $g: D \to ℝ$ differenziebare Funktionen auf einer offenen Meng $D ⊂ ℝ^n$. Wir suchen $\hat x ∈ D$, sodass
+   Sei $f: D \to ℝ$ und $g: D \to ℝ$ differenzierbare Funktionen auf einer offenen Menge $D ⊂ ℝ^n$. Wir suchen $\hat x ∈ D$, sodass
    \[f(\hat x) = \inf\{f(x) \mid x ∈ U(\hat x), g(\hat x) = 0\}\]
    für eine Umgebung $U(\hat x)$ von $\hat x$, oder
    \[f(\hat x) = \sup\{f(x) \mid x ∈ U(\hat x), g(\hat x) = 0\}\]
    #+ATTR_LATEX: :options [Lagrange Multiplikatoren]
    #+begin_thm latex
-   Sei $D ⊂ ℝ^n$ offen und $f, g: D \to ℝ$ stetig differenzierbar. Ferner sei $\hat x ∈ D$ ein Punkt, in dem $f$ ein lokales Extremum unter der Nebenbegingung $g(\hat x) = 0$ hat. Das heißt
+   Sei $D ⊂ ℝ^n$ offen und $f, g: D \to ℝ$ stetig differenzierbar. Ferner sei $\hat x ∈ D$ ein Punkt, in dem $f$ ein lokales Extremum unter der Nebenbedingung $g(\hat x) = 0$ hat. Das heißt
    \[f(\hat x) = \inf_{x ∈ U ∩ Ng} f(x) \qquad \sup_{x ∈ U ∩ Ng} f(x)\]
    wobei $Ng := \{x ∈ D \mid g(x) = 0\}$.
    Ist dass $∇g(\hat x) \neq 0$, so gilt es ein $\hat λ ∈ ℝ$
@@ -492,7 +492,7 @@
    Der Parameter $\hat λ$ ist der sogenannte *Lagrange-Multiplikator*.
    #+end_thm
    #+begin_proof latex
-   Wegen $∇ g(\hat x) \neq 0$ können wir (nach evetueller Umnummerierung der Koordinaten) annehmen, dass $\partial_n g(\hat x) \neq 0$
+   Wegen $∇ g(\hat x) \neq 0$ können wir (nach eventueller Umnummerierung der Koordinaten) annehmen, dass $\partial_n g(\hat x) \neq 0$
    \[\hat x := (\hat x', \hat x_n) ∈ ℝ^n, \hat x' ∈ ℝ^{n - 1}\]
    Nach dem Impliziten Funktionen Satz existieren für die Gleichung $F(x', x_n) := g(x) = 0$ die Umgebungen $U(\hat x') ⊂ ℝ^{n - 1}$ und $U(\hat x_n) ⊂ ℝ$ mit $U(\hat x') × U(\hat x_n) ⊂ D$
    und eine eindeutige Funktion	$φ: U(\hat x') \to U(\hat x_n)$ stetig differenzierbar und sodass
@@ -509,7 +509,7 @@
    \end{align*}
    #+end_proof
    #+begin_remark latex
-   Jedes lokale	Minimum $\v x$ der Funktion $f$ unter der Nebenbedingung $g(\hat x) = 0$ korrespondiert zu einem sogenanntem "stationären Punkt der Lagrange Funktion"
+   Jedes lokale	Minimum $\v x$ der Funktion $f$ unter der Nebenbedingung $g(\hat x) = 0$ korrespondiert zu einem sogenannten "stationären Punkt der Lagrange Funktion"
    \[\mathcal{L}(x, λ) := f(x) - λg(x) \quad (x, λ) ∈ D × ℝ\]
    \[∇_{x, λ} \mathcal{L}(\hat x, \hat y) = \begin{pmatrix}∇_x f(\hat x) - \hat λ ∇_x g(\hat x) \\ g(\hat x)\end{pmatrix} = 0\]
    #+end_remark

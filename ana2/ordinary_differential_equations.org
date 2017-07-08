@@ -95,7 +95,7 @@
   mit den stetigen Funktionen $a, b: I \to ℝ$
   Die zugehörige homogene Differentialgleichung $y' = ay$ hat eine Lösung in der Form
   \[y(t) = c \exp ∫_{t_0}^{t} a(s) \d s, \quad c ∈ ℝ\]
-  (Seperation der Variablen). Sei $y(t)$ eine Lösung mit $c = 1$.
+  (Separation der Variablen). Sei $y(t)$ eine Lösung mit $c = 1$.
   Zur Bestimmung einer Lösung der *inhomogenen Differentialgleichung* wird $c$ als Funktion von $t$ angesetzt.
   Ansatz: $x(t) = c(t) y(t)$
   \begin{align*}
@@ -136,7 +136,7 @@
   \[T := \min(α, \frac{β}{M}), \quad M := \max_{(t, x) ∈ D} \norm{f(t, x)}\]
   #+end_thm
   #+begin_proof latex
-  Mit Hilfe der Differenzenmethode konstruieren wir eine Folge von stückweisen linearen Funktionen, welche eine Teilfolge besitzt, die (gleichmäßig) gegen eine Lösung des Anfangswertproblems konvergiert.
+  Mit Hilfe der Differenzenmethode konstruieren wir eine Folge von stückweise linearen Funktionen, welche eine Teilfolge besitzt, die (gleichmäßig) gegen eine Lösung des Anfangswertproblems konvergiert.
   Ohne Beschränkung der Allgemeinheit genügt es das Halbintervall $I = [t_0, t_0 + T]$ zu betrachten. Zu einem Schrittweitenparameter $h > 0$ wird eine äquidistante Unterteilung des $I$ gewählt.
   \[t_0 < \dots < t_N = t_0 + T\qquad h = t_n - t_{n - 1}\]
   Ausgehend von $x_0^h := x_0$ erzeugt dann das sogenannte Eulersche Polygonzugverfahren Werte für $x_n^h$ durch
@@ -209,11 +209,11 @@
   #+end_proof
   #+ATTR_LATEX: :options [Regularität]
   #+begin_thm latex
-  Sei $x$ eine Lösung der Anfangswertaufgabe auf dem Intervall $I$. Falls $f ∈ C^m(D)$ für ein $m \geq 1$ rst, dann $x ∈ C^{m + 1}(I)$
+  Sei $x$ eine Lösung der Anfangswertaufgabe auf dem Intervall $I$. Falls $f ∈ C^m(D)$ für ein $m \geq 1$ ist, dann $x ∈ C^{m + 1}(I)$
   #+end_thm
   #+begin_proof latex
   Aus der Beziehung $x(t) = x_0 t ∫_{t_0}^t f(s, x(s)) \d s, t ∈ I$ bekommen wir, dass für $f ∈ C^1(D)$, $x$ zweimal stetig differenzierbar ist mit der Ableitung $x''(t) = \partial t f(t, x(t)) + ∇_x f(t, x(t)) x'(t)$.
-  Durch wiederholte Anwendung deses Argument folgt die Behauptung.
+  Durch wiederholte Anwendung dieses Argument folgt die Behauptung.
   #+end_proof
   *Eindeutigkeit?*
   #+begin_ex latex
@@ -259,7 +259,7 @@
   das heißt: $x^{\ast}$ löst die Integralgleichung.
   #+end_proof
   #+begin_remark latex
-  Die Lösung $x^{\ast}$ erhält man durch im Banachraum $V = C(I_ε)$ konvergente Fixpunktiteration (sogenannte "suksessive Approximation")
+  Die Lösung $x^{\ast}$ erhält man durch im Banachraum $V = C(I_ε)$ konvergente Fixpunktiteration (sogenannte "sukzessive Approximation")
   \[x^k(t) := x_0 + ∫_{t_0}^t f(s, x^{k - 1}(s)) \d s\quad t . I_ε\]
   für eine Startfunktion $x_0$.
   #+end_remark
@@ -306,9 +306,9 @@
   wir suchen $x = M$, sodass $f(M) \leq 0 ∀ x \geq M, x'(t) \leq 0$, das heißt $x(t)$ kann
   nicht weiter wachsen. das heißt $I = \{x \mid x \leq M\}$ ist invariant, das heißt $x_0 ∈ I ⇒ x(t) ∈ I ∀ t ∈ ℝ$. Es gibt uns gleichmäßige Beschränktheit.
   Nichtnegativität heißt $\{x \mid x \geq 0\}$ ist invariant. Es gilt falls $f(0) \geq 0$, das heißt $x'(t) \big|_{x = 0} \geq 0$
-  $x' = ax$ $⇒$ keine gleichmäßige Beschänktheit.
+  $x' = ax$ $⇒$ keine gleichmäßige Beschränktheit.
   \[x' = \frac{a x}{t + x} x \leq a x\]
-  $⇒ x(t) \leq x(t) e^{at}$ $⇒$ globle Lösungen existieren.
+  $⇒ x(t) \leq x(t) e^{at}$ $⇒$ globale Lösungen existieren.
   #+end_ex
   #+ATTR_LATEX: :options [Gronwallsches Lemma]
   #+begin_lemma latex
@@ -349,7 +349,7 @@
   \[\abs{x(t)} \leq \abs{x_0} + C ∫_{t_0}^t (1 + \abs{x(s)}) \d s, t_0 \leq t < T_+(x_0)\]
   setze im Lemma von Gronwall $w(t) := 1 + \abs{x(t)}, a(t) := 1 + \abs{x}, b(t) := C$ und erhalte
   \[w(t) \leq e^{C(t - t_0)}(1 + \abs{x_0}) ⇔ \abs{x(t)} \leq e^{C(t - t_0)}(1 + \abs{x_0}) - 1\]
-  $⇒ x(t)$ bleibt beschränkt für $t ∈ (0, T_+(x_0))$ und kann daher	fortgesetzt wirden. Damit folgt $T_+(x_0) = T_2$. Analog erhält man $T_{-}(x) = T_1$
+  $⇒ x(t)$ bleibt beschränkt für $t ∈ (0, T_+(x_0))$ und kann daher	fortgesetzt werden. Damit folgt $T_+(x_0) = T_2$. Analog erhält man $T_{-}(x) = T_1$
   #+end_proof
   #+ATTR_LATEX: :options [Lipschitzstetigkeit / Abhängigkeit von Anfangsdaten]
   #+begin_thm latex
@@ -367,7 +367,7 @@
   das heißt eine stetige Funktion $w(t) = \norm{u(t)}$ genügt einer linearen Integralgleichung. Wir wenden Lemma von Gronwall an und bekommen die Aussage.
   #+end_proof
   #+begin_remark latex
-  Aus der Bedingung folgt, dass die durch den Existenzsatz von Peano und den Fortsetzungsatz gelieferte lokale Lösung $x$ eindeutig bestimmt ist.
+  Aus der Bedingung folgt, dass die durch den Existenzsatz von Peano und den Fortsetzungssatz gelieferte lokale Lösung $x$ eindeutig bestimmt ist.
   #+end_remark
   #+begin_proof latex
   Seien $x, y$ zwei Lösungen zu gleichem Anfangspunkt
@@ -398,9 +398,9 @@
    3. Ist $\{u^1, \dots, u^n\}$ eine Basis von $H$, dann ist für jedes $t \geq t_0 \{u^1(t), \dots, u^n(t)\}$ eine Basis in $ℝ^n$
    #+end_thm
    #+begin_proof latex
-   1. Übung: Die Addition ist konponentenweise definiert, zum Beispiel für $α, β ∈ ℝ, u, v ∈ H$
+   1. Übung: Die Addition ist komponentenweise definiert, zum Beispiel für $α, β ∈ ℝ, u, v ∈ H$
 	  \[⇒ (α u + β v)'(t) = α u'(t) + β v'(t) = A(t)(α u + β v)(t)\]
-   2. Seien $\{u_0^1, \dots, u_0^n\}$ eine Basis von $ℝ^n$, $\{u^1, \dots, u^n\}$ zugeörige Lösungen mit $u'(t_0) = u_0^i$. Lineare Unabhängigkeit:
+   2. Seien $\{u_0^1, \dots, u_0^n\}$ eine Basis von $ℝ^n$, $\{u^1, \dots, u^n\}$ zugehörige Lösungen mit $u'(t_0) = u_0^i$. Lineare Unabhängigkeit:
 	  Seien $α_i ∈ ℝ$ mit
 	  \[\sum_{i = 1}^{n} α_i u^i = 0 ⇔ \sum_{i = 1}^{n} α_i u'(t) = 0 ∀ t \geq t_0\]
 	  so ist für $t = t_0$:
@@ -411,7 +411,7 @@
    #+end_proof
    #+begin_defn latex
    Eine Basis $\{φ^1, \dots, φ^n\}$ des Lösungsraums von $u'(t) = A(t) u(t)$ (für zum Beispiel $φ'(t_0) = e_i$) heißt *Fundamentalsystem* der linearen Gleichung. Zusammengefasst lässt sich dies in der *Fundamentalmatrix*
-   $Φ = (φ^1, \dots, φ^n)$ it den Spaltenvektoren $φ^i$ schreiben. Nach Satz 3.15 ist $Φ(t)$ für jedes $t \geq t_0$ invertierbar und es gilt
+   $Φ = (φ^1, \dots, φ^n)$ in den Spaltenvektoren $φ^i$ schreiben. Nach Satz 3.15 ist $Φ(t)$ für jedes $t \geq t_0$ invertierbar und es gilt
    \[Φ'(t) = A(t) Φ(t)\]
    (mit zum Beispiel $Φ(t_0) = E_n$) (vergleiche Exponentialmatrix $\exp(A(t - t_0))$ für $A$ konstant)
    #+end_defn
@@ -428,7 +428,7 @@
    wobei $Φ$ eine Fundamentalmatrix ist der homogenen Gleichung zu $Φ(t_0) = E_n$ sei.
    #+end_thm
    #+begin_proof latex
-   Differentation liefert mit Produktregel
+   Differentiation liefert mit Produktregel
    \begin{align*}
    u'(t) &= Φ'(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) + Φ(t) Φ^{-1}(t) b(t) \\
    &= A(t) Φ(t)(u_0 + ∫_{t_0}^t Φ^{-1}(s) b(s) \d s) + b(t) \\
@@ -450,7 +450,7 @@
    \[\det(A - λ I) = 0\]
    Fall 1: $λ_1, λ_2 ∈ ℝ, λ_1 \neq λ_2$. Wir haben 2 Lösungen $v e^{λ_1 t}, \tilde e^{λ_2} t$. Die allgemeine Lösung des Systems ist dann gegeben durch
    \[x(t) = c_1 v e^{λ_1 t} + c_2 \tilde v e^{λ_2 t}, \quad c_1, c_2 ∈ ℝ\]
-   $c_1, c_2$ kann man aus den Anfangsdaten finden. Das qualtiative Verhaltenn der Lösung ist von Vorzeichen $λ_1, λ_2$ abhängig.
+   $c_1, c_2$ kann man aus den Anfangsdaten finden. Das qualitative Verhalten der Lösung ist von Vorzeichen $λ_1, λ_2$ abhängig.
    - $λ_1, λ_2 > 0$: instabiler Knoten
    - $λ_1 < 0 < λ_2$: Sattel
    Fall2: $λ_1, λ_2 ∈ ℂ$. In diesem Fall sind $λ_1, λ_2$ konjugierte $λ_{1,2} = a \pm i b$
@@ -490,14 +490,14 @@
    x_2(t) &= (v_2 + v_3 t) e^{λ t} \\
    x_1(t) &= (v_1 + v_2 t + v_3 \frac{t^2}{2}) e^{λ t}
    \end{align*}
-   Die gut erkennbare Struktur der einzelnen Komponenten (als Produkt aus Polynomen und Exponentialfunkion) lässt sich durch vollständige Induktion für Systeme mit beliebig vielen linearen Gleichungen nachweisen.
+   Die gut erkennbare Struktur der einzelnen Komponenten (als Produkt aus Polynomen und Exponentialfunktion) lässt sich durch vollständige Induktion für Systeme mit beliebig vielen linearen Gleichungen nachweisen.
    #+end_ex
    #+begin_lemma latex
    Sei $A ∈ ℝ^{n × n}$ und $\mathcal{L} = \{φ ∈ C^1(ℝ, ℝ^n) \mid φ = A l\}$
    der Lösungsraum der zugehörigen homogenen Differentialgleichung. Dann gilt:
    1. Sei $v ∈ ℝ^n \setminus \{0\}$ ein Eigenvektor von $A$ zu Eigenwert $λ$ ($A v = λ v$). Dann gilt:
 	  \[φ(t) := v e^{λ t} ∈ \mathcal{L}\]
-   2. Seien $v_i ∈ ℝ^n \setminus \{0\}$, $n$ linear unabhänigie Eigenvektoren mit Eigenwerten $λ_i ∈ ℝ$. Dann bilden die Funktionen $v_i e^{λ_i t}$ eine Basis von $\mathcal{L}$
+   2. Seien $v_i ∈ ℝ^n \setminus \{0\}$, $n$ linear unabhängige Eigenvektoren mit Eigenwerten $λ_i ∈ ℝ$. Dann bilden die Funktionen $v_i e^{λ_i t}$ eine Basis von $\mathcal{L}$
    3. Sei $v ∈ ℂ^n \setminus \{0\}$ ein Eigenvektor zu Eigenwerten $λ ∈ ℂ \setminus ℝ$. Sei $λ = a + b i, v := v + i w$. Dann gilt $φ_1, φ_2 ∈ \mathcal{L}$ wobei
 	  \begin{align*}
 	  φ_1 &= (v \cos b t - w \sin b t) e^{a t} \\
@@ -526,13 +526,13 @@
    #+begin_thm latex
    Zu einer beliebigen Matrix $A ∈ ℝ^{n × n}$ existiert eine invertierbare Matrix $S$ sodass die Matrix $S^{-1} A S$ die *Jordannormalform* hat, das heißt
    \[S^{-1} A S= \begin{pmatrix}J_1 &   &   \\   & J_2 &   \\   &   & J_k\end{pmatrix}\]
-   Die Blöcze $J_k$	haben für ein $λ_i ∈ ℂ$ die Form
+   Die Blöcke $J_k$	haben für ein $λ_i ∈ ℂ$ die Form
    \[J_i = \begin{pmatrix}λ_i & 1 &   & 0 \\   & \ddots & \ddots &   \\   &   & \ddots & 1 \\ 0 &   &   & λ_i\end{pmatrix}\]
    #+end_thm
    #+begin_proof latex
    Lineare Algebra. Dimension von $J_i$ hängt von Vielfachheit von $λ_i$ ab.
    #+end_proof
-   Mit Hilfe der Jordanschennormalform lässt sich die Exponentialfunkiton von Matrizen ausrechnen. Die Anwendung der Exponentialfunktion auf
+   Mit Hilfe der Jordanschennormalform lässt sich die Exponentialfunktion von Matrizen ausrechnen. Die Anwendung der Exponentialfunktion auf
    die Blockmatrix lässt sich explizit ausrechnen.
 ** Asymptotisches Lösungsverhalten bei Differentialgleichungen
    Frage: Welche Eigenschaften haben die Lösungen für $t \to ∞$. Wir konzentrieren uns jetzt auf autonome Differentialgleichungen.
@@ -548,8 +548,8 @@
    #+ATTR_LATEX: :options [Attraktoren]
    #+begin_defn latex
    Sei $Ω ⊂ ℝ^m$ offen, $t_0 ∈ ℝ, f ∈ C^0(Ω)$ ($f: Ω \to ℝ^m$). Ein Punkt $\bar x ∈ Ω$ heiße *lokaler Attraktor*
-   der Differentialgleichung $x'(t) = f(x(t))$ falls es eine offene Umbebung $U$ von $x_0$ gibt, dass
-   für sedes $x_0 ∈ U$ die Lösung der Gleichung gegen $\bar x$ konvergiert, das heißt
+   der Differentialgleichung $x'(t) = f(x(t))$ falls es eine offene Umgebung $U$ von $x_0$ gibt, dass
+   für jedes $x_0 ∈ U$ die Lösung der Gleichung gegen $\bar x$ konvergiert, das heißt
    \[x(t) \xrightarrow{t\to ∞} \bar x\]
    Falls die Lösung der Differentialgleichung gegen $\bar x$ konvergiert $∀ x_0 ∈ Ω$ dann heißt
    $\bar x$ globaler Attraktor.
@@ -588,7 +588,7 @@
    x \uparrow \quad f(x) > 0 &⇒ x^2 + λ > 0 \\
    y \uparrow \quad f(x) < 0 &⇒ x ∈ (-\sqrt{\abs{λ}}, \sqrt{\abs{λ}}) \\
    \end{align*}
-   $⇒$ Bifurkation Diagram (Verzweigung).
+   $⇒$ Bifurkation Diagramm (Verzweigung).
    #+end_ex
    #+begin_defn latex
    $Λ ⊂ ℝ^m$ und $f: ℝ^n × Λ \to ℝ^n$ seien gegeben. $\bar x ∈ ℝ^n$ sei ein stationärer Punkt von
@@ -610,11 +610,11 @@
    invertierbar sein.
    #+end_remark
    #+begin_defn latex
-   $\bar x$ sei ein stationärer Punkt einer autonomen Differentialgleichung $x' = f(x)$ mit $f: ℝ^n \to ℝ^n$. $\bar x$ heißt stabil (im Simme von Lyapunov (Ljaupnow))
+   $\bar x$ sei ein stationärer Punkt einer autonomen Differentialgleichung $x' = f(x)$ mit $f: ℝ^n \to ℝ^n$. $\bar x$ heißt stabil (im Sinne von Lyapunov (Ljaupnow))
    wenn es zu jedem $ε > 0$ einen Radius $δ > 0$ mit folgenden Eigenschaften gibt: Jede Lösung $x: [0, T\string) \to ℝ^n$ mit $\abs{x(0) - \bar x} < δ$
    kann zu einer Lösung auf $[0, ∞ \string)$ fortgesetzt werden und
    \[\abs{x(t) - \bar x} < ε ∀ t > 0\]
-   $\bar x$ heißt asymptotische stabil, wenn $\bar x$ stabil ist und zuzätzlich
+   $\bar x$ heißt asymptotische stabil, wenn $\bar x$ stabil ist und zusätzlich
    \[∃ r > 0: x:[0, ∞\string) \to ℝ^n: \abs{x(0) - \bar x} < r\]
    die Forderung
    \[\lim_{t \to ∞} x(t) = \bar x\]
@@ -628,7 +628,7 @@
    #+begin_proof latex
    Verschiebung $x = y - \bar y$, wobei $\bar y = - A^{-1} b$
    #+end_proof
-   Aus der Theorie der linearen Differntialgleichungen folgt:
+   Aus der Theorie der linearen Differentialgleichungen folgt:
    #+begin_lemma latex
    $λ_1, \dots, λ_n ∈ ℂ$ seien die paarweise verschiedenen Eigenwerte von $A$ und $α ∈ ℝ$, sodass
    \[\max \{\Re λ_i \mid i = 1, \dots, n\} < α\]
@@ -658,7 +658,7 @@
       - $α > 0 ⇒$ Oszillation mit wachsender Amplitude (instabiler Fokus)
 	  - $α = 0 ⇒$ Oszillation mit konstanter Amplitude (Zentrum) \\
 		keine asymptotische Stabilität, aber stabil im Sinne von Lyapunov
-   4. Falls vielfache $λ_i ⇒$ Jordan Blöche $⇒$ polynomiale Komponenten in der Lösung
+   4. Falls vielfache $λ_i ⇒$ Jordan Blöcke $⇒$ polynomielle Komponenten in der Lösung
    Motivation für Linearisierung von nichtlinearen Systemen
    \begin{align*}
    x' &= f(x) = \underbrace{f(\bar x)}_{= 0} + \underbrace{D f(\bar x)(x - \bar x)}_{A x + b} + \underbrace{g(x)}_{+ g(x) \text{ klein}} \\
@@ -698,7 +698,7 @@
    \intertext{(denn $t \to ϕ(t)ϕ(s)^{-1}$ induziert eine Lösungsmatrix von $y' = A y$ mit $y(s) = \id$.) Wir erhalten:}
    \abs{x(t)} &\leq \abs{\tilde x(t)} + ∫_0^t \abs{ϕ(t)ϕ(s)^{-1}} \abs{g(x(s)) \d s} \leq c \abs{x(0)} e^{-α t} + ∫_0^t c e^{-α (t - s)} \abs{g(x(s))} \d s
    \end{align*}
-   Aus Vorraussetzung $\lim_{x \to 0} \abs{g(x)} / \abs{x} = 0$ gibt es einen Radius $ρ > 0$ mit $\abs{g(z)} \leq α / (2c) \abs{z} ∀ z ∈ \bar K_ρ(0)$. Wir betrachten $x' = Ax + g(x)$ mit $\abs{x(0)} \leq ρ / (2(1 + c))$.
+   Aus Voraussetzung $\lim_{x \to 0} \abs{g(x)} / \abs{x} = 0$ gibt es einen Radius $ρ > 0$ mit $\abs{g(z)} \leq α / (2c) \abs{z} ∀ z ∈ \bar K_ρ(0)$. Wir betrachten $x' = Ax + g(x)$ mit $\abs{x(0)} \leq ρ / (2(1 + c))$.
    Stetigkeit von $x$ garantiert, dass
    \[T_{x(·)} = \sup\{t \geq 0 \mid \abs{x(·)} \leq ρ\}\]
    positiv oder $∞$. $∀ t ∈ [0, T_{x(·)}]$ können wir $\abs{x(t)}$ weiter abschätzen
@@ -721,7 +721,7 @@
    (ohne Beweis)
    #+begin_remark latex
    Stabilitätssatz und Instabilitätssatz lassen sich direkt auf nichtlineare Differentialgleichungen anwenden,
-   wenn die rechte Seite differenzierbar ist. Denn nach Definition von Totaler Ableitung erfüllt die Restfunkton $φ_{\bar x}(·)$ in
+   wenn die rechte Seite differenzierbar ist. Denn nach Definition von Totaler Ableitung erfüllt die Restfunktion $φ_{\bar x}(·)$ in
    \[f(x) = \underbrace{f(\bar x)}_{= 0} + \underbrace{D f(\bar x)(x - \bar x)}_{A(x - \bar x)} + \underbrace{φ_{\bar x}(x)}_{= g}\]
    die Voraussetzungen der beiden Sätze.
    #+end_remark
@@ -805,7 +805,7 @@
    Sei $\bar x$ ein stationärer Punkt.
    - Falls es eine Lyapunov-Funktion auf einer offenen Umgebung $U$ von $\bar x$ gibt mit $L(\bar x) = 0, L(x) > 0$ für $x \neq \bar x$, dann ist
      $\bar x$ stabil
-   - Falls es eine strikte Lyapunov-Funktion auf einer Umbebung $U$ von $\bar x$ mit $L(\bar x) = 0, L(x) > 0$ für $x \neq \bar x$ und $L'(x) < 0$, dann
+   - Falls es eine strikte Lyapunov-Funktion auf einer Umgebung $U$ von $\bar x$ mit $L(\bar x) = 0, L(x) > 0$ für $x \neq \bar x$ und $L'(x) < 0$, dann
 	 ist $\bar x$ asymptotisch stabil.
    \[(L(x))' = L'(x) x'\]
    #+end_thm

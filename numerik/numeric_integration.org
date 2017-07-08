@@ -48,7 +48,7 @@
   #+end_thm
   #+ATTR_LATEX: :options [Verallgemeinerter Mittelwertsatz]
   #+begin_thm latex
-  Sei $f ∈ C[a, b], g \geq 0$ oder $g \leq 0$ integriebar. Dann $∃ ξ ∈ [a, b]$, sodass
+  Sei $f ∈ C[a, b], g \geq 0$ oder $g \leq 0$ integrierbar. Dann $∃ ξ ∈ [a, b]$, sodass
   \[∫_a^b f(x) g(x) \d x = f(ξ)∫_a^b g(x) \d x\]
   #+end_thm
   #+begin_proof latex
@@ -56,7 +56,7 @@
   1. Für $x ∈ [a, b]$ ist $(x - a)(x - b) \leq 0$
 	 \begin{align*}
 	 ⇒ I(f) - I^{(1)}(f) &= ∫_a^b f[x_0, x_1, x] \prod_{i = 1}^1 (x - x_i) \d x \\
-	 \intertext{Verallgemeinerter Mitterwertsatz: $∃ ξ ∈ [a, b]$, sodass}
+	 \intertext{Verallgemeinerter Mittelwertsatz: $∃ ξ ∈ [a, b]$, sodass}
 	 &= \frac{f''(ξ)}{2!} (-\frac{1}{6}(b - a)^3) \\
 	 &= - \frac{f''(ξ)}{12}(b - a)^3
      \end{align*}
@@ -96,13 +96,13 @@
 	 &= \frac{h}{6}[f(a) + 2 \sum_{i = 1}^{N - 1} f(x_i) + 4 \sum_{i = 0}^{N - 1}f(\frac{x_i + x_{i + 1}}{2}) + f(b)] \\
 	 I(f) - I_h^{(2)}(f) &= -\frac{b - a}{2880}h^4 f^{(4)}(ξ), ξ ∈ [a, b]
      \end{align*}
-  3. Summierte Mittelpunktsregel $(m = 1)$
+  3. Summierte Mittelpunktregel $(m = 1)$
 	 \begin{align*}
 	 I_h^{(0)}(f) &= \sum_{i = 0}^{N - 1}(x_{i + 1} - x_i)f(\frac{x_i + x_{i + 1}}{2}) = h \sum_{i = 0}^{N - 1}f(\frac{x_i + x_{i + 1}}{2}) \\
 	 I(f) - I_h^{(0)}(f) &= \frac{b - a}{24} h^2 f''(ξ), \quad ξ ∈ [a, b]
      \end{align*}
   #+end_ex
-  Widerholung Quadratur
+  Wiederholung Quadratur
   \[∫_a^b f(x) \d x \approx \sum_{i = 0}^{n} α_i f(x_i) = I^{(n) f}\]
   - Interpolatorische Quadraturregel, Äquidistante Stützstellen \\
     $\to$ Newton-Cotes Formeln (abgeschlossen, offen)
@@ -144,14 +144,14 @@
    #+begin_proof latex
    Sei $N_n := \{λ ∈ (a, b) \mid λ \text{ Nullstelle ungerader Vielfachheit von } p_n\}$. Setze
    \[q(x) = \begin{cases} 1 & N_n \neq \emptyset \\ \prod_{i = 1}^m (x - λ_i) & N_n = \{λ_1, \dots, λ_m\}, m > 0\end{cases}\]
-   Nach dem Fundamentalsetz der Algebra und wegen $p(x) = x^n - r(x), r ∈ P_{n - 1}$, nach Konstruktion mit Gram-Schmidt (ohne Normalisieren) gilt
+   Nach dem Fundamentalsatz der Algebra und wegen $p(x) = x^n - r(x), r ∈ P_{n - 1}$, nach Konstruktion mit Gram-Schmidt (ohne Normalisieren) gilt
    \[p_n(x) = \prod_{i = 1}^n (x - λ_i), λ_i ∈ ℂ, i = 1, \dots, n\]
    Ist $λ_I$ nicht reell, so ist $\bar λ_i$ auch eine Nullstellen von $p_N$ und
    \[(x - λ_i)x - \bar λ_i\ = (x - λ_I)(x - λ_i) ⇒ \abs{x - λ_i}^2 \geq 0\]
    $⇒ p_n q ∈ P_{n + m}$ ist reell und hat in $[a, b]$ keinen Vorzeichenwechsel.
    \[(p_n, q)_ω = ∫_a^b p_n(x) (x) ω(x) \d k \neq 0\]
-   Für $m < n$ ist das ein Wiederspruch zu $p_n \perp p_{n - 1} ⇒ μ_n = \{λ_1, \dots, λ_n\}$. Für $[a, b] = [-1, 1]$ und  $ω \equiv 1$, das heißt $(·, ·)_ω = (·,·)_2$
-   sind die $p_n$ mittels $p_n(x) = x^n + \dots$ mormiere Legendre-Polynome $L_n$(x). Wir wählen also die Nullstellen $ζ_0,ndots, λ_n$ von $p_{n + 1}$ beziehungsweise $L_{n + 2}$ als
+   Für $m < n$ ist das ein Widerspruch zu $p_n \perp p_{n - 1} ⇒ μ_n = \{λ_1, \dots, λ_n\}$. Für $[a, b] = [-1, 1]$ und  $ω \equiv 1$, das heißt $(·, ·)_ω = (·,·)_2$
+   sind die $p_n$ mittels $p_n(x) = x^n + \dots$ normierte Legendre-Polynome $L_n$(x). Wir wählen also die Nullstellen $ζ_0,\dots, λ_n$ von $p_{n + 1}$ beziehungsweise $L_{n + 2}$ als
    Stützstellen einer interpolatorischen Quadraturformel auf $[-1, 1]$.
    \[I^{(n)}(f) = \sum_{i = 9}^{n} α_i f(λ_i), α_i = ∫_{-1}^1 \prod_{\substack{j = 0 \\ j \neq i}} \frac{x - λ_j}{λ_i - λ_j} \d x\]
    #+end_proof
@@ -193,7 +193,7 @@
    Die $λ_i^{(n)}$ (Nullstellen von $p_{n + 1}$) und die dazugehörigen $α_i$ lassen sich tabellieren. Durch Transformation von $[a, b]$ auf $[-1, 1]$ erhält man eine allgemeine Quadraturformel.
    #+ATTR_LATEX: :options [Konvergenz der Gauß-Quadratur]
    #+begin_thm latex
-   Sei $I^{(n)}(f)$ die $(n + 1)$ punktige Grauß-Formel zur Berechnung von $I(f) = ∫_{-1}^1 f(x) \d x$. Für jedes $f ∈ C[-1, 1]$ konvergiert $I^{(n)}(f) \xrightarrow{n \to ∞} I(f)$
+   Sei $I^{(n)}(f)$ die $(n + 1)$ punktige Gauß-Formel zur Berechnung von $I(f) = ∫_{-1}^1 f(x) \d x$. Für jedes $f ∈ C[-1, 1]$ konvergiert $I^{(n)}(f) \xrightarrow{n \to ∞} I(f)$
    #+end_thm
    #+begin_proof latex
    Es gilt
@@ -213,10 +213,10 @@
 	 \[(f,g)_ω = ∫_a^b f(x) g(x) ω(x) \d x\]
 ** Praktische Aspekte der Quadratur
    Ziel: Möglichst hohe Genauigkeit bei möglichst wenig Funktionsauswertungen. Schwierigkeiten:
-   - Fehlerschätzung: $f^{(k)}$ nur schwer zugänglich für $k > 2$ $⇒$ a-posteriori Fehlerschätzer.
+   - Fehlerabschätzung: $f^{(k)}$ nur schwer zugänglich für $k > 2$ $⇒$ a-posteriori Fehlerschätzer.
      #+begin_ex latex
 	 1. Vergleiche $I_n(f)$ und $I_{\frac{n}{2}}(f)$ bei summierten Quadraturformeln
-	 2. Extrapolationfehler
+	 2. Extrapolationsfehler
      #+end_ex
    - Wiederbenutzung bereits berechneter Werte von $f$
 	 - schwierig bei Gauß

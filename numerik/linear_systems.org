@@ -24,7 +24,7 @@
   #+end_ex
   Betrachte Vektorraum der $n × n$ -Matrizen $A ∈ \mathbb{K}^{n × n}$
   #+begin_defn latex
-  Eine Norm $\norm{·}$ auf $\mathbb{K}^{n × n}$ heißt verträglich wit einer Vektornorm $\norm{·}$ auf $\mathbb{K}^n$, wenn gilt:
+  Eine Norm $\norm{·}$ auf $\mathbb{K}^{n × n}$ heißt verträglich mit einer Vektornorm $\norm{·}$ auf $\mathbb{K}^n$, wenn gilt:
   \[\norm{A x} \leq \norm{A} \norm{x} ∀ x ∈ \mathbb{K}^n, A ∈ \mathbb{K}^{n × n}\]
   Sie heißt Matrizennorm, wenn sie submultiplikativ ist
   \[\norm{AB} \leq \norm{A} \norm{B} ∀ A, B ∈ \mathbb{K}^{n × n}\]
@@ -32,7 +32,7 @@
   #+begin_ex latex
   Die Frobeniusnorm
   \[\norm{A}_{Fr} = (\sum_{i,j = 1}^{n} \abs{a_{ij}}^2)^{1/2}\]
-  ist eine mit $\norm{·}_2$ verträgliche Matrizennorn. \\
+  ist eine mit $\norm{·}_2$ verträgliche Matrizennorm. \\
   Die natürliche Matrizennorm
   \[\norm{A} = \sup_{x ∈ \mathbb{K}^n \setminus \{0\}} \frac{\norm{A x}}{\norm{x}} = \sup_{\substack{x ∈ \mathbb{K}^n\\ \norm{x} = 1}} \norm{A x}\]
   ist eine mit $\norm{·}$ verträgliche Matrizennorm (Übung!). Es gilt
@@ -130,9 +130,9 @@
   1. $\cond_∞(A) = \norm{A}_∞ \norm{A^{-1}}_∞$
   2. Für die Spektralnorm gilt:
 	 \[\cond_2 (A) = \norm{A}_2 \norm{A^{-1}} = \sqrt{\frac{\abs{μ_{max}}}{\abs{μ_{min}}}}\]
-	 wobei $μ_{max}, μ_{nin}$ betragsgrößter beziehungsweise kleinster Eigenvektor von	$\bar A^T A$. Ist $A = A=$. Ist $A = \bar A^T$ so gilt:
+	 wobei $μ_{max}, μ_{min}$ betragsgrößter beziehungsweise kleinster Eigenvektor von	$\bar A^T A$. Ist $A = A=$. Ist $A = \bar A^T$ so gilt:
 	 \[\cond_2(A) = \frac{\abs{λ_{max}}}{\abs{λ_{min}}}\]
-	 mit $λ_{max}$ und $λ_{min}$ Betrasgrößter beziehungsweise kleinster Eigenvektor von $A$. Regel: Es gelte $\cond (A) \approx 10^s$
+	 mit $λ_{max}$ und $λ_{min}$ betragsgrößter beziehungsweise kleinster Eigenvektor von $A$. Regel: Es gelte $\cond (A) \approx 10^s$
 	 \[\frac{\norm{δ A}}{\norm{A}} \approx 10^{-k}, \frac{\norm{δ b}}{\norm{b}} \approx 10^{-k}\]
 	 Dann muss ein relativer Fehler von
 	 \[\frac{\norm{δ x}}{\norm{x}} \approx 10^{s - k}\]
@@ -146,7 +146,7 @@
   \end{align*}
   für $ε = 10^{-8}$ kann man bereits 8 Stellen Genauigkeit verlieren.
   #+end_ex
-  Ist die Abschätzung im Störungssatz scharf? Sei $A ∈ ℝ^{n × n}$ symmetrisch posisiv definit mit Eigenwerten $λ_1 \geq \dots \geq λ_n$.
+  Ist die Abschätzung im Störungssatz scharf? Sei $A ∈ ℝ^{n × n}$ symmetrisch positiv definit mit Eigenwerten $λ_1 \geq \dots \geq λ_n$.
   Wähle: $δ A = 0, b = ω_1, δ  B = ε w_k, ε \neq 0$
   \begin{align*}
   A x &= b ⇒ x = \frac{1}{λ_1} w_1 \\
@@ -175,7 +175,7 @@
       \[\left[\begin{array}{ccc|c} a_{11}^{(0)} & \dots & a_{1n}^{(0)} & b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ a_{n1}^{(0)} & \dots & a_{nn}^{(0)} & b_{n}^{(0)}\end{array}\right]\]
    1. Wähle $r ∈ \{1, \dots, n\}$ mit $a_{r1}^{(0)} \neq 0$ (Pivotelement) und vertausche 1. und r-te Zeile
       \[\left[\begin{array}{ccc|c} \tilde a_{11}^{(0)} & \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ \vdots & & \vdots & \vdots \\ \tilde a_{n1}^{(0)} & \dots & \tilde a_{nn}^{(0)} & \tilde b_{n}^{(0)}\end{array}\right] := [\tilde A^{(0)} \mid \tilde b^{(0)}]\]
-   2. Für $j = 2, \dots, n$ eleminiere $\tilde a_{j1}^{(0)}$ durch Subtraktion von $\frac{\tilde a_{j1}^{(0)}}{\tilde a_{11}^{(0)}} := q_{j1}$
+   2. Für $j = 2, \dots, n$ eliminiere $\tilde a_{j1}^{(0)}$ durch Subtraktion von $\frac{\tilde a_{j1}^{(0)}}{\tilde a_{11}^{(0)}} := q_{j1}$
 	  mal der ersten Zeile von den Zeilen $2, \dots, n$:
       \[\left[\begin{array}{cccc|c} \tilde a_{11}^{(0)} & \tilde a_{12}^{(0)} \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ 0 & \tilde a_{22}^{(1)} \dots & \tilde a_{2n}^{(1)} & \tilde b_{2}^{(1)} \\ \vdots & \vdots & & \vdots & \vdots \\ 0 & \tilde a_{n2}^{(1)} & \dots & \tilde a_{nn}^{(1)} & \tilde b_{n}^{(1)}\end{array}\right] := [A^{(1)} \mid b^{(1)}]\]
 	  Fahre fort auf kleinerem System $⇒ [A^{(0)} \mid b^{(0)}] \to [A^{(1)}\mid b^{(1)}] \to \dots \to [A^{(n - 1)} \mid b^{(n - 1)}] =: [R\mid c]$
@@ -219,7 +219,7 @@
    haben $A x = b$ und $A^{(k)} x = b^{(k)}$ dieselbe Lösung:
    \[A x = b ⇔ A^{(k)} x = G_{n - 1} P_{n - 1} \dots G_1 P_1 A x = G_{n - 1} P_{n - 1} \dots G_1 P_1 b = b^{(k)}\]
    *Wahl des Pivot-Elementes* \\
-   Zierl: Numerische Stabilität.
+   Ziel: Numerische Stabilität.
    1. Spaltenpivotierung:
 	  \[\abs{a_{r_k, k}^{(k - 1)}} = \max_{j = k, \dots, n} \abs{a_{j k}^{(k - 1)}}\]
    2. Totalpivotierung
@@ -476,11 +476,11 @@
 	\[\tilde l_{ii} = \sqrt{a_{ii} - \sum_{k = 1}^{i - 1}\tilde l_{ik}^2}\]
 	Für $j = i + 1, \dots, n$:
 	\[\tilde l_{ij} = \frac{1}{\tilde l_{ii}}(a_{ij} - \sum_{k = 1}^{i -1 }\tilde l_{ik} \tilde l_{jk})\]
-	Wiedeholung: Spezielle Matrizen, LR-Zerlegung
+	Wiederholung: Spezielle Matrizen, LR-Zerlegung
 	- Bandmatrizen: Nullen nicht speichern / berechnen
-	- Diagonal-determinante Matrizen: keine Pivotisierung notwendig
+	- Diagonal-dominante Matrizen: keine Pivotierung notwendig
 	- Symmetrisch, positiv definite Matrizen
-	  keine Pivotisierung notwendig
+	  keine Pivotierung notwendig
 	  \[A = \tilde L \tilde L^T = L D L^T\]
 	  (billiger als $A = LR$)
 ** Nicht reguläre Systeme
@@ -519,7 +519,7 @@
 	  \string(A(\bar x - b), b - A \bar x\string)_2 &= (\bar x - x)^T A^T(b - A\bar x) 0 \\
 	  ⇒ \norm{b - Ax}_2^2 > \norm{b - A \bar x}_2^2 + \norm{A(\bar x - x)}_2^2
       \end{align*}
-	  $⇒$ $\bar x$ ist minimal. Umgekehrt: Sei $\bar x$ mimimal
+	  $⇒$ $\bar x$ ist minimal. Umgekehrt: Sei $\bar x$ minimal
 	  \begin{align*}
 	  0 &= \pp{}{x_i}\norm{A x - b}_2^2 \big|_{x = \bar x} \\
 	  &= \pp{}{x_i}(\sum_{j = 1}^{m}(\sum_{k = 1}^{n} a_{jk} x_k - b_j)^2)\Big|_{x = \bar x} \\
@@ -533,15 +533,15 @@
 	  \[b= A x_1 + (b - A_{x_1}) ∈ \im A + \ker A^T\]
 	  und Eindeutigkeit von $b = r + s$ gilt $A \bar x = A x_1 ∀ \bar x - x_1 ∈ \ker A$
    #+end_proof
-   Numerische Lösung: Cholesky für Normalengleichung. Vorsicht:
+   Numerische Lösung: Cholesky für Normalgleichung. Vorsicht:
    Im Fall $\Rang(A) = n = m$ gilt
    \[\cond_2(A^T A) = \cond_2(A)^2\]
-   Merke: Normalengleichungen sind häufig schlecht konditioniert. Abhilfe: QR-Zerlegung von $A$
+   Merke: Normalgleichungen sind häufig schlecht konditioniert. Abhilfe: QR-Zerlegung von $A$
    #+begin_thm latex
    Sei $A ∈ \mathbb{K}^{m × n}$ mit $\Rang(A) = n \leq m$. Dann existiert eine eindeutig bestimmte Matrix $Q ∈ \mathbb{K}^{m × n}$ mit $\bar Q^T Q = E_n$ und
    eine eindeutig bestimmte obere Dreiecksmatrix $R ∈ \mathbb{K}^{n × n}$ mit reellen Diagonalelementen $r_{ii} > 0, i = 1, \dots, n$, sodass
    \[A = Q R\]
-   Bezichnung: $Q$: orthonormale Matrix ($m = n$: unitär)
+   Bezeichnung: $Q$: orthonormale Matrix ($m = n$: unitär)
    #+end_thm
    #+begin_proof latex
    Konstruktion der Spalten $q_k$ von $Q$ mittels Gram-Schmidt aus den Spalten $a_k$ von $A$
@@ -579,19 +579,19 @@
    - $A^T A = (Q_1 R)^T Q_1 R = R^T Q_1^T Q_1 R = R^T R$ (Cholesky-Zerlegung) \\
 	 $A^T A x = A^T b = R^T R x = R^T Q_1^T b$
    - Lösung mit $R$ ist besser konditioniert als Lösung mit $R^T R: \cond_2 (R^T R) = \cond_2(R)^2$
-   Widerholung: $A ∈ M(n × m, \mathbb{K})$
+   Wiederholung: $A ∈ M(n × m, \mathbb{K})$
    - $A = Q R = \tilde Q \tilde R$, $\tilde Q = Q|\tilde Q_2$, $\bar Q^T Q = E_n, \bar{\tilde Q}^T \tilde Q = E_m$
    - Eindeutigkeit mit $r_{ij} > 0$
    - $\norm{Ax - b}_2^2 = \norm{\tilde Q \tilde R x - \tilde Q \bar{\tilde Q}^T b}_2^2 = \norm{\tilde Q(\tilde R x - \tilde Q^T b)}_2^2 = \norm{R x - Q^T b}_2^2 + \norm{\tilde Q_2 b}$.
 	 $\Rang(A) = n$: $x = \tilde R^{-1} Q^T b$
-   - verhindert schlechte Konditionierung der Normalengleichung
+   - verhindert schlechte Konditionierung der Normalgleichung
 	 \[\cond_2(A^T A) = \cond_2(A)^2 = \cond_2(R)^2\]
    Problem: Gram-Schmidt zur Berechnung von Orthogonalbasis ist nicht stabil.
-   Stabile Variante: Householder-Verfaheren
+   Stabile Variante: Householder-Verfahren
    #+begin_defn latex
    Für $v ∈ \mathbb{K}$ mit $\norm{v}_2 = 1$ heißt
    \[I = E_n - 2 v \bar v^T ∈ \mathbb{K}^{n × n}\]
-   "Hauseholder-Transformation".
+   "Householder-Transformation".
    #+end_defn
    \[v \bar v^T = \begin{pmatrix}v_1 \bar v_1 & \dots & v_1 \bar v_n \\ \vdots & \ddots & \vdots \\ v_n \bar v_1 & \dots & v_n \bar v_n\end{pmatrix}\]
    Eigenschaften von $S$:
@@ -623,12 +623,12 @@
    ⇒ \tilde R &= A^{(n)} = S_n S_{n - 1} \dots S_1 A = \bar{\tilde Q}^T A \\
    ⇒ \tilde Q \tilde R &= A, \tilde Q = \bar S_1^T \dots \bar S_n^T = S_1 \dots S_n
    \end{align*}
-   Achtung: $\tilde r_{ii} > 0$ wrird nicht garantiert. (keine Eindeutigkeit).
+   Achtung: $\tilde r_{ii} > 0$ wird nicht garantiert. (keine Eindeutigkeit).
    Bezeichnung: $\tilde A^{(i)}= (\tilde a_i^{(i)} \mid \dots \mid \tilde a_n^{(i)})$
    Setze
    \[v_i = \cvec{0; \vdots; 0; \tilde v_i}, \tilde v_i ∈ \mathbb{K}^{m - i}\]
    \[⇒ S_i = E_m - 2 v_i \bar v_i^T = \begin{pmatrix}E_{i - 1} & 0 \\ 0 & E_{m - i} - 2 \tilde v_i \bar{\tilde v_i}^T \end{pmatrix} = \begin{pmatrix}\mathbb{1} & 0 \\ 0 & \tilde S_i\end{pmatrix}\]
-   $⇒$ Die ersten $i - 1$ zeilen von $A^{(i - 1)}$ bleiben unverändert. Wähle $\tilde v_i$ so, dass
+   $⇒$ Die ersten $i - 1$ Zeilen von $A^{(i - 1)}$ bleiben unverändert. Wähle $\tilde v_i$ so, dass
    \[\tilde S_i \tilde s_i^{(i)} ∈ \Lin \{e_1^i\}, e_1^i = \cvec{1; 0; \vdots; 0} ∈ ℝ^{m - i}\]
    2 Möglichkeiten:
    \begin{align*}
@@ -646,14 +646,14 @@
    \end{align*}
 ** Singulärwertzerlegung
    #+begin_thm latex
-   Es sei $A ∈ ℝ^{m × n}$. Dann existieren orthogonale Matrizen $V ∈ ℝ^{n × n}$ und $U ∈ ℝ^{m × m}$, soadd
+   Es sei $A ∈ ℝ^{m × n}$. Dann existieren orthogonale Matrizen $V ∈ ℝ^{n × n}$ und $U ∈ ℝ^{m × m}$, sodass
    \[U^T A V = Σ = \diag(σ_1, \dots, σ_p) ∈ ℝ^{m × n}, p = \min(m, n)\]
    mit $σ_1 \geq \dots \geq σ_p \geq 0$
    #+end_thm
    #+begin_proof latex
    Skript,
    #+end_proof
-   $A = U Σ V^T$. Nützliche Forlgerungen: ($σ_1 \geq \dots \geq σ_r > σ_{r + 1} = \dots = σ_p = 0$)
+   $A = U Σ V^T$. Nützliche Folgerungen: ($σ_1 \geq \dots \geq σ_r > σ_{r + 1} = \dots = σ_p = 0$)
    - $\Rang(A) = r$
    - $\ker A = \Lin \{v_{r + 1}, \dots, v_n\}$
    - $\im A = \Lin \{u_1, \dots, u_r\}$

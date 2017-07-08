@@ -44,3 +44,216 @@
 #+INCLUDE: "numeric_integration.org" :minlevel 1
 #+INCLUDE: "linear_systems.org" :minlevel 1
 #+INCLUDE: "nonlinear_system.org" :minlevel 1
+* Lineare Gleichungssysteme: Iterative Verfahren
+  Problem direkter Methoden: Speicheraufwand für große $n$. Alternatives Beispiel: Fixpunktiteration für $A x = b$ ($A ∈ ℝ^{n × n}, b ∈ ℝ^n$)
+  \[⇒ a_{jj} x_j + \sum_{\substack{k = 1\\ k \neq j}}^{n} a_{jk} x_k = b_j, j = 1, \dots, n\]
+  Ist $a_{jj} \neq 0$
+  \[⇔ x_j = \frac{1}{a_{jj}}(b_j - \sum_{\substack{k = 1 \\ k \neq j}}^{n} a_{jk} x_k), j = 1, \dots, n\]
+  Gesamtschritt- /Jacobi-Verfahren:
+  \begin{align*}
+  x^0 &= 0 \\
+  x_j^t &= \frac{1}{a_{jj}} (b_j - \sum_{\substack{k = 1\\ k \neq j}}^{n} a_{jk x_k^{t - 1}}) \\
+  j &= 1, \dots, n, t = 1, 2, \dots
+  \end{align*}
+  Einzelschritt- /Gauß-Seidel-Verfahren
+  \begin{align*}
+  x_j^t &= \frac{1}{a_{jj}}(b_j - \sum_{k < j} a_{jk} x^t_k - \sum_{k > j} a_{jk} x_k^{t - 1}) \\
+  j &= 1, \dots, n, t = 1, 2, \dots
+  \end{align*}
+  Fixpunktiterationen:
+  \[A = D + L + R\]
+  Jacobi:
+  \begin{align*}
+  x^t &= D^{-1}(b - (L + R) x^{t - 1}) \\
+  &= \underbrace{-D^{-1}(L + R)}_{=: J} x^{t - 1} + D^{-1} b
+  \end{align*}
+  Gauß-Seidel:
+  \begin{align*}
+  x^t &= D^{-1}(b - L x^t - Rx^{t - 1}) \\
+  ⇔ D x^t + L x^t &= b - R x^{t - 1} \\
+  ⇔ x^t &= -(D + L)^{-1} R x^{t - 1} + (D +L)^{-1} b
+  \end{align*}
+  Gemeinsame Form $x^t = B x^{t - 1} + c$, $B$: Iterationsmatrix. Konvergiert $(x^t)$ gegen $x$, so gilt $x = B x + c$.
+  Allgemein: Wähle $C ∈ ℝ^{n × n}$ invertierbar
+  \begin{align*}
+  A x = b &⇔ C x = C x - A x + b \\
+  &⇔ x = x + C^{-1}(b - A x)
+  \end{align*}
+  Form der Fixpunktiteration:
+  \[x^t = \underbrace{(E_n - C^{-1} A)}_{=: B} x^{t - 1} + \underbrace{C^{-1} b}_{=: c}\]
+  Defektkorrekturiteration:
+  \begin{align*}
+  d^{t - 1} &= b - A x^{t - 1}, C δ x^{t - 1} = d^{t - 1} \\
+  x^t &= x^{t - 1} + δ x^{t - 1}
+  \end{align*}
+  Erinnerung: Lokaler Kontraktionssatz:
+  \[κ = \norm{E_n - C^{-1} A} < 1\]
+  $⇒$ Konvergenz für beliebige Startwerte $(ω = 0)$. Problem: $κ$ ist Norm-abhängig. "Schärfere" Alternative
+  \[\spr(B) = \max\{\abs{λ} \mid λ ∈ σ(B)\}\]
+  $σ(B) ⊂ ℂ$: Menge der Eigenwerte von $B$ ($B x = λ x, λ ∈ ℂ, x ∈ ℂ^n, x \neq 0$).
+  Achtung: $\spr(B)$ ist keine Norm. Betrachte
+  \[\spr(\begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}) = 0\]
+  aber dies ist nicht die Nullmatrix. Für natürliche Matrizennormen gilt
+  \[\norm{B} = \sup_{x ∈ ℂ^n \setminus \{0\}} \frac{\norm{B x}}{\norm{x}} \geq \abs{λ}\]
+  mit $λ$ ein Eigenwert, wählen $x$ als den zugehörigen Eigenvektor.
+  \[⇒ \spr(B) \leq \norm{B}\]
+  #+begin_lemma latex
+  Für jede $B ∈ ℝ^{n × n}$ gibt es zu jedem $ε > 0$ eine natürliche Matrizennorm $\norm{·}_ε$, sodass
+  \[\spr(B) \leq \norm{B}_ε \leq \spr(B) + ε\]
+  #+end_lemma
+  #+begin_proof latex
+  Schnur-Zerlegung $B = T^{-1} R =, T ∈ ℂ^{n × n}$, unitär
+  \[R = \begin{pmatrix}r_{11} & \dots & r_{1n} \\   & \ddots & \vdots \\ 0 &   & r_{nn}\end{pmatrix}\]
+  \[⇒ \spr(B) = \spr(R) = \max_{j = 1, \dots, n} \abs{r_{jj}}\]
+  Für beliebige $δ ∈ \string(0, 1]$, wähle
+  \[S_δ = \diag(δ^0, δ^1, \dots, δ^{n - 1})\]
+  \begin{align*}
+  R_0 &= \diag{r_{11}, r_{22}, \dots, r_{nn}} "\\
+  Q_δ &= \begin{pmatrix}0 & r_{12} & δr_{13} & \dots & δ^{n - 2}r_{1n} \\   & \ddots & \ddots & \ddots & \vdots \\   &   & \ddots & \ddots & δr_{n - 2, n} \\   &   &  & \ddots & r_{n - 1, n} \\ 0 &   &   &   & 0\end{pmatrix} \\
+  R_δ &= S^{-1}_δ R D_δ = \begin{pmatrix}r_{11} & δ r_{12} & δ^2 r_{13} & \dots & δ^{n - 1}r_{1n} \\   & \ddots & \ddots & \ddots & \vdots \\   &   & \ddots & \ddots & δ^2 r_{n - 2, n} \\   &   &  & \ddots & δ r_{n - 1, n} \\ 0 &   &   &   & r_{n, n}\end{pmatrix} \\
+  ⇒ R_δ &= R_0 + δ Q_δ
+  \end{align*}
+  $S^{-1}_δ T$ invertierbar
+  \[⇒ \norm{x}_δ = \norm{S_δ^{-1} T x}_2\]
+  ist Vektornorm auf $ℝ^n$. Mit $B = T^{-1} R T = T^{-1} S_δ R_δ S^{-1}_δ T$ und $y = S_δ^{-1} T x$ folgt
+  \begin{align*}
+  \norm{B x}_δ &= \norm{T^{-1} S_{δ} R_δ S_δ^{-1} T x}_δ \\
+  &= \norm{R_δ y}_2 \leq \norm{R_0 y}_2 + δ\norm{Q_δ y}_2 \\
+  &\leq (\max_{i = 1, \dots, n} \abs{r_{ii}} + δ μ) \norm{y}_2 \\
+  &= (\spr(B) + δ μ)\norm{x}_δ \\
+  \intertext{mit}
+  μ &= (\sum_{i, j = 1}^{n} \abs{r_{ij}})^{1/2} \\
+  \norm{B}_δ &= \sup_{x ∈ ℝ^n \setminus \{0\}} \frac{\norm{B x}_δ}{\norm{x}_δ} \\
+  &\leq \spr(B) + δ μ
+  \end{align*}
+  Wähle $δ = ε / μ$
+  #+end_proof
+  #+ATTR_LATEX: :options [Fixpunktiteration]
+  #+begin_thm latex
+  Die durch
+  \[x^t = B x^{t - 1} + c\]
+  erzeugten Iterierten konvergieren genau dann für jeden Startwert $x^0 ∈ ℝ^n$ gegen die Lösung von $x = B x + c$, wenn $\spr(B) < 1$. Asymptotisches Konvergenzverhalten:
+  \[\sup_{x_0 ∈ ℝ^n} \limsup_{t \to ∞} (\frac{\norm{x^t - x}}{x^0 - x})^{1/t} = \spr(B)\]
+  #+end_thm
+  #+begin_proof latex
+  Fehler:
+  \begin{align*}
+  e^t &:= x^t - x = B x^{t - 1} + c - B x - c = B e^{t  1} \\
+  ⇒ e^t &= B^t e^0, t ∈ ℕ
+  \end{align*}
+  1. $\spr(B) < 1$. Sei $ε < 1 - \spr(B)$
+	 \[⇒ ∃ \norm{·}_ε: \norm{B}_ε \leq \spr(B) + ε < 1\]
+	 \[\norm{e^t}_ε = \norm{B^t e^0}_ε \leq \norm{B}_ε^t \norm{e^0}_ε \xrightarrow{t \to ∞} 0\]
+	 $⇒ x^t \to x$ für $x \to ∞$
+  2. (Beweis für Fall $B ω = λ ω, \abs{λ} = \spr(B), ω ∈ ℝ^n \setminus \{0\}$). Konvergenz für jeden Startwert. Wähle $x^0 = x + w$
+	 \[λ^t ω = B^t ω = B^t e^ = e^t \to 0\]
+	 $⇒ \abs{λ} < 1 ⇒ \spr(B) < 1$. Weiterhin:
+	 \[(\frac{\norm{e^t}}{\norm{e^0}})^{1 / t} = \abs{λ}\]
+  3. Norm Äquivalenz: $∃m, M > 0$, sodass
+	 \begin{align*}
+	 m \norm{x} &\leq \norm{x}_ε \leq M \norm{x}\quad x ∈ ℝ^n \\
+	 ⇒ \norm{e^t} &\leq \frac{1}{m} \norm{e^t}_ε \leq \frac{1}{m} \norm{B}_ε^t \norm{e^0}_ε \\
+	 &\leq \frac{M}{m}(\spr(B) + ε)^t \norm{e^0}
+   	 \end{align*}
+	 Wegen
+	 \[(\frac{M}{m})^{1 / t} \xrightarrow{t \to ∞} 1\]
+	 \[\limsup_{t \to ∞} (\frac{\norm{e^t}}{\norm{e^0}})^{1/t} \leq \sup(B) + ε \xrightarrow{ε \to 0} \spr(B)\]
+  #+end_proof
+  Wiederholung: $A x = b, A ∈ ℝ^{n × n}, b ∈ ℝ^n$
+  - Fixpunktiteration: $x^{t + 1} = B x^t + c$ konvergiert genau dann $∀ x^0$, wenn $\spr(B) < 1$
+  - Jacobi: $B = J = -D^{-1}(L + R)$ wobei $A = A + L + R$
+  - Gauß-Seidel $B = H_1 = -(D + L)^{-1} R$
+  -	Asymptotische Konvergenzrate:
+	\[\sup_{x^0 ∈ ℝ^n} \lim_{t \to ∞} (\frac{\norm{e^t}}{\norm{e^0}})^{1/t} = \spr B\]
+  Interpretation: Gewinn von $k$ Dezimalstellen (für große $t$) $ρ = \spr(B)$. Bestimme $t$ so, dass
+  \[ρ^t \leq 0,1^t ⇒ t \log_{10} ρ \leq - k ⇒ t \geq - \frac{k}{\log_{10}ρ}\]
+  #+ATTR_LATEX: :options [$ρ = 0.99, k = 1$]
+  #+begin_ex latex
+  $t = 230$,
+  #+end_ex
+  Konstruktion von Iterationsverfahren: Zwei Ziele (Gegenspieler)
+  1. $\spr(\underbrace{E_n - C^{-1}A}_{B})$ klein
+  2. $C δ x^{t - 1} = d^{t_ 1}$ leicht lösbar
+  Jacobi- und Gauß-Seidel_verfahren
+  #+ATTR_LATEX: :options [Starke Zeilensummenkriterium]
+  #+begin_thm latex
+  Ist $A ∈ ℝ^{n × n}$ strikt diagonaldominant
+  \[\sum_{\substack{k = 1\\ k \neq j}}^{n} \abs{a_{j k}} < \abs{a_{jj}}, j = 1, \dots, n\]
+  so ist $\spr(J) < 1$ und $\spr(H_1) < 1$ das heißt Jacobi- und Gauß-Seidel-Verfahren konvergieren.
+  #+end_thm
+  #+begin_proof latex
+  $0 < \abs{a_{jj}}$. Sei $λ ∈ σ(J)$ und $μ ∈ σ(H_1)$ mit Eigenvektoren $v, w ∈ ℂ^n$
+  \[\norm{v}_∞ = \norm{w}_∞ = 1\]
+  das heißt
+  \[λ v = J v = - D^{-1}(L + R) v\]
+  und
+  \begin{align*}
+  μ w &= H_1 w = -(D + L)^{-1} R w \\
+  ⇔ μ w &= - D^{-1}(μ L + R) w \\
+  ⇒	\abs{λ} &\leq \norm{D^{-1}(L+ R)}_∞ \\
+  &= \max_{j = 1, \dots, n} \{\frac{1}{\abs{a_{jj}}} \sum_{\substack{k = 1\\ k \neq j}}^{n} \abs{a_{jk}}\} < 1 \\
+  \abs{μ} &\leq \norm{D^{-1}(μ L + R)}_∞ \\
+  &\leq \max_{j = 1, \dots, n} \{\frac{1}{\abs{a_{jj}}} (\sum_{k < j} \abs{μ} \abs{a_{jk}} + \sum_{k > j} \abs{a_{jk}})\}
+  \end{align*}
+  wäre $\abs{μ} > 1$, so würde
+  \[\abs{μ} \leq \abs{μ} \norm{D^{-1}(L + R)}_∞ < \abs{μ} \lightning\]
+  #+end_proof
+  Die Voraussetzungen können abgeschwächt werden (siehe Skript). \\
+  SOR-Verfahren (Successive Overrelaxation) \\
+  \begin{align*}
+  \tilde x^t &= \frac{1}{a_{jj}}(b_j - \sum_{k < j} a_{jk} \tilde x_k^t - \sum_{k > j} a_{jk} x_k^{t - 1}), j = 1, \dots, n \\
+  x^t &= ω \tilde x^t + (1 - ω) x^{t - 1}, ω \geq 1
+  \end{align*}
+  Für $ω = 1$ ist SOR gleich Gauß-Seidel ($ω < 1$: Unterrelaxation)
+  \begin{align*}
+  x^t &= -ω(D + L)^{-1} R x^{t - 1} + (1 - ω)x^{t - 1} + ω(D + L)^{-1} b \\
+  H_ω &= (D + ω L)^{-1}((1 - ω)D - ω R)
+  \end{align*}
+  #+begin_lemma latex
+  Für $A ∈ ℝ^{n × n}$ mit $D$ regulär gilt
+  \[\spr(H_ω) \geq \abs{ω - 1}, ω ∈ ℝ\]
+  #+end_lemma
+  #+begin_proof latex
+  \begin{align*}
+  H_ω &= (E_n - ω \underbrace{D^{-1} L}_{L'})^{-1} B^{-1} D D((1 - ω) E_n - ω \underbrace{D^{-1} R}_{R'}) \\
+  \det(H_ω) &= \det(E_n - ω L') · \det((1 - ω) E_n - ω R') = (1 - ω)^2
+  \end{align*}
+  Wegen
+  \[\det(H_ω) = \prod_{λ ∈ σ(H_ω)} λ\]
+  folgt
+  \begin{align*}
+  \spr(H_ω) &= \max_{λ ∈ σ(H_ω)} \abs{λ} \geq (\prod_{λ ∈ σ(H_ω)} \abs{λ})^{1/n} \\
+  &= \abs{1 - ω}
+  \end{align*}
+  #+end_proof
+  #+ATTR_LATEX: :options [SOR]
+  #+begin_thm latex
+  Sei $A ∈ ℝ^{n × n}$ symmetrisch positiv definit. Dann gilt
+  \[\spr(H_ω) < 1 ∀ ω ∈ (0, 2)\]
+  Insbesondere konvergiert Gauß-Seidel.
+  #+end_thm
+  #+begin_proof latex
+  $A$ symmetrisch $⇒ R = L^T$. $A = D + L + L^T$. Sei $λ ∈ σ(H_ω)$, $ω ∈ (0, 2)$ mit Eigenvektor $v ∈ ℝ^n \setminus \{0\}$, das heißt
+  $H_ω v = λ v$
+  \begin{align*}
+  ⇒((1 - ω)D - ω L^T) v &= λ(D + ω L) v \\
+  ⇒ ω(D + L^T)v &= (1 - λ) D v + λ ω L v \\
+  ⇒ ω A v &= λ ω(D + L^T) v + ω L v
+  \end{align*}
+  und
+  \begin{align*}
+  λ ω A v &= λ ω (D + L^T) v + λ ω L v \\
+  &= λ ω (D + L^T) v + (1 - λ) D v - ω(D + L^T) v \\
+  &= (λ - 1) ω(D + L^T) v + (1 - λ)D v \\
+  &= (1 - λ)(1 - ω) D v - (1 - λ)ω L^T v
+  \end{align*}
+  Wegen $vωT L v = v^T L^T v$ folgt
+  1. $ω v^T A v = (1 - λ)v^T D v + ω(1 - λ)v^T L v$
+  2. $λ ω v^T A v = (1 - λ)(1 - ω) v^T D v - (1 - λ)ω v^T L v$
+  \[⇒ (1 + λ) ω v^T A v = (1 - λ)\underbrace{(2 - ω)}_{> 0} v^T D v\]
+  $A$ positiv definit $⇒$ $D$ positiv definit. Also: $v^T A v > 0, v^T D v > 0$. $⇒ λ \neq \pm 1$ und
+  \[μ := \frac{1 + λ}{1 - λ} = \frac{2 - ω}{w} \frac{v^T D v}{v^T A v} > 0\]
+  \[⇒(1 - λ)μ = (1 + λ)\]
+  \[(1 + μ)λ = -(1 - μ)\]
+  \[⇒ \abs{λ} = \abs{\frac{μ - 1}{μ + 1}} < 1\]
+  #+end_proof

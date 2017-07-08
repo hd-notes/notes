@@ -149,6 +149,9 @@
 #+LATEX_HEADER: \DeclareMathOperator{\ggT}{ggT}
 #+LATEX_HEADER: \DeclareMathOperator{\diag}{diag}
 #+LATEX_HEADER: \DeclareMathOperator{\Fit}{Fit}
+#+LATEX_HEADER: \DeclareMathOperator{\spr}{spr}
+#+LATEX_HEADER: \DeclareMathOperator{\kgV}{kgV}
+#+LATEX_HEADER: \DeclareMathOperator{\coker}{coker}
 
 
 #+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}

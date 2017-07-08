@@ -336,7 +336,7 @@
    \end{align*}
    $⇒$ Algorithmus B ist stabiler als Algorithmus A.
    #+end_ex
-   Regel: Bei numerischen Rechnungen sollte man die schlechter konditionierten Operationen möglichst frühzeitug ansetzen. \\
+   Regel: Bei numerischen Rechnungen sollte man die schlechter konditionierten Operationen möglichst frühzeitig ansetzen. \\
    Wiederholung
    - Konditionierung: Eigenschaften einer numerischen Aufgabe
    - Stabilität: Eigenschaft eines Verfahrens
