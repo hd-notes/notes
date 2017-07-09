@@ -1,5 +1,5 @@
 * Ringe, Ideale und Teilbarkeit
-  In diesem Abschnitt seien $R, S$ stets kommutative Rnge (bei uns immer mit Eins)
+  In diesem Abschnitt seien $R, S$ stets kommutative Ringe (bei uns immer mit Eins)
   #+ATTR_LATEX: :options [Ringhomomorphismus]
   #+begin_defn latex
   $φ: R \to S$ Abbildung. $φ$ heißt *Ringhomomorphismus* genau dann wenn folgende	Bedingungen erfüllt sind:
@@ -24,7 +24,7 @@
   2. $\ker φ := \{a ∈ R \mid φ(a) = 0\} ⊆ R$ Ideal
   3. $φ$ injektiv $⇔ \ker φ = \{0\}$
   4. $I ⊆ R$ Ideal und $φ$ surjektiv $⇒ φ (I) ⊆ S$ Ideal
-  5. $\im φ	:= φ(R)$ ist ein Unterrung von $S$ (das heißt ein Ring bezügilch der eingeschränkten Verknüpfungen.)
+  5. $\im φ	:= φ(R)$ ist ein Unterring von $S$ (das heißt ein Ring bezüglich der eingeschränkten Verknüpfungen.)
   #+end_remdef
   #+begin_proof latex
   1. (I1): $0 ∈ φ^{-1}(J)$, denn $φ(0) = φ(0 + 0) = φ(0) + φ(0) ⇒ φ(0) = 0 ∈ J ⇒ 0 ∈ φ^{-1}(J)$ \\
@@ -42,9 +42,9 @@
   #+begin_defthm latex
   $I ⊆ R$ Ideal. Dann ist durch $r_1 \sim r_2 \xLeftrightarrow{\text{Def}} r_1 - r_2 ∈ I$ eine Äquivalenzrelation auf $R$ gegeben, welche die zusätzliche Eigenschaft
   \[r_1 \sim r_2, s_1 \sim s_2 ⇒ r_1 + s_1 \sim r_2 + s_2, r_1 s_1 \sim r_2 s_2\]
-  hat ("Kongruenszrelation"). Die Äquivalenzklasse von $r ∈ R$ ist durch
+  hat ("Kongruenzrelation"). Die Äquivalenzklasse von $r ∈ R$ ist durch
   \[\bar r := r + I := \{r + a \mid a ∈ I\}\]
-  gegeben und heßt die *Restklasse* von $r$ modulo $I$. Die Menge die Restklassen bezeichnen wir mit $\faktor{R}{I}$.
+  gegeben und heißt die *Restklasse* von $r$ modulo $I$. Die Menge die Restklassen bezeichnen wir mit $\faktor{R}{I}$.
   #+end_defthm
   #+begin_proof latex
   1. "$\sim$" ist Äquivalenzrelation: nachrechnen
@@ -82,7 +82,7 @@
   #+begin_proof latex
   *Wohldefiniertheit von $Φ$*: Seien $r_1, r_2 ∈ R$ mit $\bar r_1 = \bar r_2$
   \[⇒ r_1 - r_2 ∈ \ker φ ℝ φ(r_1 - r_2) = 0 ⇒ φ(r_1) = φ(r_2)\]
-  *$Φ$ ist Ringhomomorphismus:
+  *$Φ$ ist Ringhomomorphismus*:
   \[Φ(\bar r_1 + \bar r_2) = Φ(\overline{r_1 + r_2}) = φ(r_1 + r_2) = φ(r_1) + φ(r_2) = Φ(\bar r_1) + Φ(\{bar r_2\})\]
   analog für "$·$", $Φ(\bar 1) = φ(1) = 1$ \\
   *$Φ$ ist injektiv*: Sei $r ∈ R$ mit $Φ(\bar r) = 0$
@@ -143,7 +143,8 @@
 	 $⇒ r = x - q b ∈ I$. Wegen Minimalität von $b$ in $I ∩ N$ folgt $r = 0 ⇒ x = q b ∈ (b)$
   *Eindeutigkeit*: Seien $m, n ∈ ℕ_0$ mit $(m) = (n)$. Offenbar gilt: $m = 0 ⇔ n = 0$. Im Folgenden seien $m, n \neq 0$. Wegen $(m) = (n)$ ist $m ∈ (n), n ∈ (m) ⇒$ es existieren $r_1, r_2 ∈ ℤ$ mit
   $m = r_1 n$ und $n = r_2 m$
-  \[⇒ m = r_1 n = r_1 r_2 m ⇒ r_1 r_2 = 1 ⇒ r_1 = r_2 = 1 ∨ r_1 = r_2 = -1 \xRightarrow{m, n ∈ ℕ_0} r_1 = r_2 = 1 ⇒ m = n\]
+  \[⇒ m = r_1 n = r_1 r_2 m ⇒ r_1 r_2 = 1 ⇒ r_1 = r_2 = 1 ∨ r_1 = r_2 = -1 \xRightarrow{m, n ∈ ℕ_0}\] \\
+  \[ r_1 = r_2 = 1 ⇒ m = n\]
   #+end_proof
   #+begin_ex latex
   $ℤ[t]$ ist kein Hauptidealring: Es gibt $f ∈ ℤ[t]$ mit $(2, t) = (f)$, dann: Annahme: Es existiert $f ∈ ℤ[t]$ mit $2 = h f ⇒ \deg h = \deg f = 0$, das heißt $f$ ist konstantes Polynom, etwa $f = a$ für ein

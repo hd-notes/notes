@@ -120,7 +120,7 @@
   #+end_thm
   #+begin_remark latex
   Für $j = 0$ gilt: $\rot \v B = 1 / c^2 \dot{\v E}$, das heißt elektrische Wechselfelder erzeugen ein
-  magnetisches Wirbelfeld, umgekhert erzeugen wegen $\rot \v E = - \dot{\v B}$ magnetische Wechselfelder
+  magnetisches Wirbelfeld, umgekehrt erzeugen wegen $\rot \v E = - \dot{\v B}$ magnetische Wechselfelder
   ein eletrisches Wirbelfeld. $\to$ elektromagnetische Wellen (siehe unten)
   #+end_remark
   Jetzt: Verschiebungsstrom in Matrie
