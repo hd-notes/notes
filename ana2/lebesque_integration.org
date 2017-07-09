@@ -1,4 +1,4 @@
-* Das Lebesque Integral
+* Das Lebesgue Integral
 ** Inhalte von Mengen in $ℝ^n$
    Die Idee ist einen "Inhalt" ("Masse") von Mengen zu definieren, sodass
    - $\abs{M} \geq 0$ \hfill (Positivität)
@@ -15,12 +15,12 @@
    #+begin_defn latex
    1. Für *beschränkte* (nicht leere) Mengen $M ⊂ ℝ^n$ sind der inneren Inhalt $\abs{M}_i$ und der äußere Inhalt $\abs{M}_a$ definiert durch
 	  \[\abs{M}_i := \sup_{S ⊂ M} \abs{S} \leq \inf_{M ⊂ S} \abs{S} =: \abs{M}_a, \qquad \abs{\emptyset}_i = \abs{\emptyset}_a = 00\]
-	  Im Fall $\abs{M}_a = \abs{M}_i =: M$ heißt die Menge quadrierbar (messbar) im Jordanischen Sinne mit sogenanntem Jordan Inhalt.
+	  Im Fall $\abs{M}_a = \abs{M}_i =: M$ heißt die Menge quadrierbar (messbar) im Jordanischen Sinne mit sogenannten Jordan Inhalt.
    2. Mengen $M ⊂ ℝ^n$ mit $\abs{M}_a = 0$ werden Jordan-Nullmengen genannt
    #+end_defn
-   #+ATTR_LATEX: :options [Äußeres Lebesque-Maß]
+   #+ATTR_LATEX: :options [Äußeres Lebesgue-Maß]
    #+begin_defn latex
-   Das *äußere Lebesque-Maß* einer Menge $A ⊂ ℝ^n$ ist definiert durch
+   Das *äußere Lebesgue-Maß* einer Menge $A ⊂ ℝ^n$ ist definiert durch
    \[μ^{\ast}(A) := \inf\{\sum_{i} \abs{I_i}, A ⊂ ∪_i I_i\}\]
    Die Menge darf auch unbeschränkt sein und dann $μ^{\ast}(A) = ∞$. Wir setzen $μ^{\ast}(\emptyset) = 0$
    #+end_defn
@@ -28,7 +28,7 @@
    #+begin_remark latex
    $∞ - ∞$ ist undefiniert.
    #+end_remark
-   Das Lebesque Integral wird mit Hilfe von Ober- und Untersummen bezüglich endlicher oder abzählbar unendlicher Zerlegungen definiert.
+   Das Lebesgue Integral wird mit Hilfe von Ober- und Untersummen bezüglich endlicher oder abzählbar unendlicher Zerlegungen definiert.
    Wir benötigen noch Regeln für Reihen in $\bar ℝ$. Für $0 \leq a_k \leq ∞$ ist
    \[S_∞= \sum_{k = 1}^{∞} a_k\]
    wohldefiniert mit $S_∞ := ∞$ falls die Reihe divergent ist oder ein $a_k = ∞$. Für $λ ∈ \bar ℝ$ gilt
@@ -37,11 +37,11 @@
    \[\sum_{i,j = 1}^{∞} a_{ij} = \sum_{i = 1}^{π} \sum_{j = 1}^{∞} a_{ij} = \sum_{j = 1}^{∞} \sum_{i = 1}^{∞} a_{ij}\]
    sofern eine der Reihen absolut konvergent.
    #+begin_remark latex
-   Das äußere Lebesque-Maß:
+   Das äußere Lebesgue-Maß:
    \[0 \leq μ^{\ast}(A) \leq ∞, μ^{\ast}(\{a\}) = 0\]
    #+end_remark
    #+begin_lemma latex
-   Für das äußere Lebesque-Maß gelten die folgenden Aussagen
+   Für das äußere Lebesgue-Maß gelten die folgenden Aussagen
    1. Aus $A ⊂ B$ folgt $μ^{\ast}(A) \leq μ^{\ast}(B)$ \hfill (Monotonie)
    2. Für endliche oder abzählbare Mengenfolgen $(A_i)_i$ gilt
 	  \[μ^{\ast} (∪_i A_i) \leq \sum_{i} μ^{\ast} (A_i)\]
@@ -49,17 +49,17 @@
    3. Für beschränkte Mengen ist
 	  \[\abs{A}_i \leq μ^{\ast}(A) \leq \abs{A}_a\]
 	  das heißt für Jordan-quadrierbare Mengen ist $μ^{\ast}(A) = \abs{A}$.
-   4. Das äußere Lebesque-Maß ist Bewegungsinvariant gegenüber Translationen und Drehungen
+   4. Das äußere Lebesgue-Maß ist Bewegungsinvariant gegenüber Translationen und Drehungen
    #+end_lemma
    #+begin_proof latex
-   1. Da im Fall $A ⊂ B$ jede Intervallüberdeckung von $B$ auch eine solche von $A$ ist, folgt aus der Definiton
+   1. Da im Fall $A ⊂ B$ jede Intervallüberdeckung von $B$ auch eine solche von $A$ ist, folgt aus der Definition
 	  \[μ^{\ast}(A) \leq μ^{\ast}(B)\]
    2. Wir nehmen an, dass die rechte Seite in der Ungleichung ist (sonst nichts weiter zu beweisen). Es sei $ε > 0$ vorgegeben und eine Folge $(ε_i)_i$ positiver Zahlen mit
 	  $ε = \sum_i ε_i$. Dann $∀ i ∈ ℕ ∃ (I_{ij})_j$ mit $A_i ⊂ ∪_j I_{ij}$
 	  \[\sum_{j} \abs{I_{ij}} \leq μ^{\ast}(A_i) + ε_i\]
 	  Die Doppelfolge $I_{ij}$ überdeckt die Menge $A = ∪_i A_i$
 	  \[⇒ μ^{\ast}(A) \leq \sum_{i,j} \abs{I_{ij}} \leq \sum_{i} (μ^{\ast}(A_i) + ε_i) = \sum_{i} μ^{\ast}(A_i) + ε\]
-   3. Der äußere Jordan-Inhalt von $A$ ist definiert als das Infimum des Inhalts aller endlichen Intervall-Überdeckungen von $A$. Beim Lebesque-Maß	sind allgemeine abzählbare Überdeckungen zugelassen
+   3. Der äußere Jordan-Inhalt von $A$ ist definiert als das Infimum des Inhalts aller endlichen Intervall-Überdeckungen von $A$. Beim Lebesgue-Maß	sind allgemeine abzählbare Überdeckungen zugelassen
 	  $⇒ μ^{\ast}(A) \leq \abs{A}_a$
 	  Jetzt zeigen wir $∀$ endlich abgeschlossenen
 	  \[S = ∪_{i = 1}^m I_i\]
@@ -69,28 +69,28 @@
 	  $(J_i)_i$ eine offene Überdeckung der kompakten Menge $S$ und nach dem Satz von Heine Borel wird $S$ bereits von endlich vielen der $J_i$ überdeckt
 	  \[S ⊂ ∪_{i = 1}^m J_m\]
    4. Die Invarianz von $μ^{\ast}(x)$ gegenüber Translation folgt, da diese Intervalle bei Translation in solche mit demselben Inhalt überführen. Sei $S$ eine Drehung ($S$ eine orthogonale $n × n$ Matrix)
-	  Aus $A ⊂ ∪_i I_i ⇒ S(A) ∈ ∪_i S(I_i)$ mit 1., 2. und Bewegungsinvatianz von Jordan Inhalt (zeigen wir später) bekommer wir
+	  Aus $A ⊂ ∪_i I_i ⇒ S(A) ∈ ∪_i S(I_i)$ mit 1., 2. und Bewegungsinvarianz von Jordan Inhalt (zeigen wir später) bekommen wir
 	  \[μ^{\ast}(S(A)) \leq \sum_{i} μ^{\ast}(S(I)) = \sum_{i} \abs{S(I_i)} = \sum_{i} \abs{I_i}\]
 	  Da die überdeckende Intervallsumme beliebig ist, folgt
 	  \[μ^{\ast}(A) \geq μ^{\ast}(S(A))\]
 	  Dasselbe gilt auch für die transponierte $S^T$
 	  \[⇒ μ^{\ast}(S(A)) \geq μ^{\ast}(S^T S(A)) = μ^{\ast}(A) ⇒ μ^{\ast}(S(A)) = μ^{\ast}(A)\]
    #+end_proof
-   #+ATTR_LATEX: :options [Lebesque Nullmenge]
+   #+ATTR_LATEX: :options [Lebesgue Nullmenge]
    #+begin_defn latex
-   Eine Menge $A ⊂ ℝ^n$ mit äußerem Lebesque-Maß $μ^{\ast}(A) = 0$ wird (Lebesque) Nullmenge genannt. Gibt es eine Aussage
+   Eine Menge $A ⊂ ℝ^n$ mit äußerem Lebesgue-Maß $μ^{\ast}(A) = 0$ wird (Lebesgue) Nullmenge genannt. Gibt es eine Aussage
    von $A$ bis auf die aus einer Nullmenge, sagen wir, dass sie "fast überall" in $A$ gilt.
    #+end_defn
    #+begin_lemma latex
-   Die Vereinigung von abzählbar vielen Lebesque-Nullmengen ist wieder eine Lebesque-Nullmenge. Insbesondere sind abzählbare Menge Lebesque-Nullmengen
+   Die Vereinigung von abzählbar vielen Lebesgue-Nullmengen ist wieder eine Lebesgue-Nullmenge. Insbesondere sind abzählbare Menge Lebesgue-Nullmengen
    #+end_lemma
    #+begin_proof latex
    Aus der Subadditivität.
    #+end_proof
    #+begin_remark latex
    Das Konzept ist allgemeiner als bei Jordan-Inhalten, wo nur endliche Intervall-Überdeckung zugelassen wird.
-   - $ℚ^n$ ist eine Lebesque-Nullmenge in $ℝ^n$
-   - $ℝ^{n - i}$ iste eine Lebesque-Nullmenge in $ℝ^n$
+   - $ℚ^n$ ist eine Lebesgue-Nullmenge in $ℝ^n$
+   - $ℝ^{n - i}$ ist eine Lebesgue-Nullmenge in $ℝ^n$
    - Die endliche Mengen in $ℝ^n$ sind Jordan-Nullmengen
    - Für abzählbare Menge kann es der Fall sei (zum Beispiel für jede konvergente Folge $(x_k)_{k ∈ ℕ}$ in $ℝ^n$, die Menge $M = \{x_k, k ∈ ℕ\}$ Jordan-Nullmenge ist)
 	 Im Allgemeinen ist dies nicht der Fall	(zum Beispiel $M = ℚ^n ∩ [0, 1]^n ⊂ ℝ^n$), $\abs{M}_a = 1$, Aber $μ^{\ast}(M) = 0$: Für beliebiges $ε > 0$ ist jeder Punkt $x_k$
@@ -102,22 +102,22 @@
    #+end_remark
    #+ATTR_LATEX: :options [Mengenalgebra]
    #+begin_defn latex
-   DIe nicht-leere Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ heißt Albebrag auf $X$, wenn sie $X$ und $\emptyset$ enthält und wenn mit $A, B ∈ \mathcal{A}$ auf $A \setminus B, A ∪ B, A ∩ B ∈ \mathcal{A}$ sind.
+   Die nicht-leere Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ heißt Algebra auf $X$, wenn sie $X$ und $\emptyset$ enthält und wenn mit $A, B ∈ \mathcal{A}$ auf $A \setminus B, A ∪ B, A ∩ B ∈ \mathcal{A}$ sind.
    Sie heißt $σ$ -Algebra, wenn sie zusätzlich mit $A_i ∈ \mathcal{A}, i ∈ ℕ$ auch
    \[∪_{i ∈ ℕ} A_i, ∩_{i ∈ ℕ} A_i ∈ \mathcal{A}\]
    sind.
    #+end_defn
    #+begin_ex latex
-   1. $\mathcal{A} = \{\emptyset, X\}$ die kleinste $σ$ -Algebra für eine Menge $X$, $\mathcal{A} = \mathcal{P}(X)$ ist die größte $σ$ -Alebrag auf $X$
+   1. $\mathcal{A} = \{\emptyset, X\}$ die kleinste $σ$ -Algebra für eine Menge $X$, $\mathcal{A} = \mathcal{P}(X)$ ist die größte $σ$ -Algebra auf $X$
    2. Für eine Menge $X$ und Teilmenge $A ⊂ X$ ist
 	  \[\mathcal{A} = \{\emptyset, X, A, A^C = X \setminus A\}\]
 	  die kleinste $σ$ -Algebra, die $A$ enthält
    3. Für $X = ℝ^n$ heißt die kleinste $σ$ -Algebra welche die alle offene und abgeschlossene Teilmengen enthält die *Borelsche $σ$ -Algebra*.
    4. Ist $X ⊂ ℝ^n$ eine Jordan-quadrierbare Menge, so ist die Menge der Jordan-quadrierbaren Teilmengen von $X$ eine Algebra, aber keine $σ$ -Algebra
-   5. Die Lebesque-Nullmengen in $ℝ^n$ und ihre Komplemente bilden eine $σ$ -Algebra (nicht in dem Fall von Jordan-Nullmengen)
+   5. Die Lebesgue-Nullmengen in $ℝ^n$ und ihre Komplemente bilden eine $σ$ -Algebra (nicht in dem Fall von Jordan-Nullmengen)
    #+end_ex
    #+begin_lemma latex
-   Eine (nicht-leere) Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ ist bereits eine Algebra, wenn die folgenden Bedingungen erfült sind
+   Eine (nicht-leere) Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ ist bereits eine Algebra, wenn die folgenden Bedingungen erfüllt sind
    1. Mit $A ∈ \mathcal{A}$ ist $A^C = X \setminus A ∈ \mathcal{A}$
    2. Mit $A, B ∈ \mathcal{A}, A ∪ B ∈ \mathcal{A}$
    Es ist eine $σ$ -Algebra, wenn zusätzlich gilt:
@@ -133,7 +133,7 @@
    und folglich auch $A \setminus B = A ∩ B^C ∈ \mathcal{A}$. Für die $σ$ -Algebra muss zusätzlich $∩_{i ∈ ℕ} A_i ∈ \mathcal{A}$. Für $A_i ∈ \mathcal{A}, i ∈ ℕ$ gilt die disjunkte Darstellung
    \[∪_{i ∈ ℕ} A_i = ∪_{i ∈ ℕ} A_i\]
    \[B_1 := A_1, B_2 := A_2 \setminus A_1, \dots, B_j = A_j \setminus ∪_{i = 1}^{j - 1} A_i\]
-   alle $B_i ∈ \mathcal{A}$ sowit
+   alle $B_i ∈ \mathcal{A}$ sowie
    \[∪_{i ∈ ℕ} A_i = ∪_{i ∈ ℕ} B_i ∈ \mathcal{A}, ∩_{i ∈ ℕ} A_i = (∩_{i ∈ ℕ} A_i^C)^C ∈ \mathcal{A}\]
    #+end_proof
 ** Abbildungen von Mengen
@@ -160,9 +160,9 @@
    Da $D$ quadrierbar ist, muss $\abs{\partial D}_a = 0$. Nach Lemma 4.9 $\abs{ϕ(\partial D)}_a = 0$
    und damit $\abs{\partial ϕ(D)}_a = 0$. $ϕ(D)$ ist also quadrierbar. Zu $x ∈ \bar D$ gibt es eine Folge $(x_k)_{k ∈ ℕ}$ in $D$ mit $x = \lim_{k \to ∞} x_k$. $ϕ(x) = \lim_{k \to ∞} ϕ(x_k)$.
    Dies und $\overline{ϕ(D) ⊂ ϕ(\bar D)} ⇒ \overline{ϕ(D)} = ϕ(\bar D)$. \\
-   Sei nun $ϕ$ zusatzlich injektiv auf $Di$. Wir nehmen $x ∈ \partial D$ und eine Folge $(x_k)_{k ∈ ℕ}$ in $D$ mit $x = \lim_{k \to ∞} x_k$ und $ϕ(x) = \lim_{k \to ∞} ϕ(x_k)$. Wir zeigen, dass
+   Sei nun $ϕ$ zusätzlich injektiv auf $Di$. Wir nehmen $x ∈ \partial D$ und eine Folge $(x_k)_{k ∈ ℕ}$ in $D$ mit $x = \lim_{k \to ∞} x_k$ und $ϕ(x) = \lim_{k \to ∞} ϕ(x_k)$. Wir zeigen, dass
    $ϕ(x) ∈ \partial ϕ(D)$. Wäre $ϕ(x) ∈ ϕ(D)$, dass heißt es gäbe $\tilde x ∈ D$ mit $ϕ(x) = ϕ(\tilde x)$. $⇒$ Wegen der Offenheit von $ϕ(D)$ eine Umgebung
-   $V(ϕ(x)) ⊂ ϕ(D)$ und eine Umgebung $U(\tilde x) ⊂ D$ mit $ϕ(U(\tilde x)) = V(ϕ(x))$. Wegen $\lim_{k \to ∞} x_k = x ∈ \partial D$ ist dann aber $x_k \dot ∈ U(\tilde x)$ für hinreichund graßes $k$.
+   $V(ϕ(x)) ⊂ ϕ(D)$ und eine Umgebung $U(\tilde x) ⊂ D$ mit $ϕ(U(\tilde x)) = V(ϕ(x))$. Wegen $\lim_{k \to ∞} x_k = x ∈ \partial D$ ist dann aber $x_k \dot ∈ U(\tilde x)$ für hinreichend großes $k$.
    $⇒ ϕ(x_k) \not ∈ V(ϕ(x))$ \lightning zu $ϕ(\tilde x) = ϕ(x) = \lim_{k \to ∞} ϕ(x_k)$. Zusammen mit $\partial ϕ(D) ⊂ ϕ(\partial D) ⇒ \partial ϕ(D) = ϕ(\partial D)$.
    Sei $A ⊂ D$ quadrierbar. Dann ist auch das Innere $A^0 = A \setminus \partial A$ quadrierbar und mit dem vorherigen Argument, dass $ϕ(A)$ quadrierbar ist.
    Wegen $A \setminus A^0 ⊂ \partial A$ ist $A \setminus A^0$ eine Nullmenge $⇒ ϕ(A \setminus A^0)$ eine Nullmenge $⇒ ϕ(A) = ϕ(A^0) ∪ ϕ(A \setminus A^0)$ quadrierbar.
@@ -175,7 +175,7 @@
    #+begin_proof latex
    Sei $x ∈ \bar D$ mit $x = \lim_{k \to ∞} x_k, x_k ∈ D$. Aus Lipschitzstetigkeit von $ϕ$ aus $D$
    \[⇒ \norm{ϕ(x_k) - ϕ(x_i)} \leq L \norm{x_k - x_i}\]
-   das heißt $(ϕ(x_k))_{k ∈ ℕ}$ ist eine Cauchy-Folge. Sei $y = \lim ϕ(x_k)$ im Falle $x \to ∈ D$ setzen wir $\overline{ϕ(x)} := y$. Dadurch wird eine Punktion $\bar ϕ: \bar D \to ℝ^n$ definiert.
+   das heißt $(ϕ(x_k))_{k ∈ ℕ}$ ist eine Cauchy-Folge. Sei $y = \lim ϕ(x_k)$ im Falle $x \to ∈ D$ setzen wir $\overline{ϕ(x)} := y$. Dadurch wird eine Funktion $\bar ϕ: \bar D \to ℝ^n$ definiert.
    Die Definition ist eindeutig, da für zweite Folge $(ξ_k)_{~ ∈ ℕ}$ mit $x = \lim_{k \to ∞} ξ_k$, die $ϕ(ξ_k) \to y$ wegen
    \[\norm{ϕ(x_k) - ϕ(ξ_k)} \leq L \norm{x_k - ξ_k}\]
    Für $x ∈ D$ ist $\overline{ϕ(x)} = ϕ(x)$. Seinen $x, ξ ∈ \bar D$ und $(x_k)_{k ∈ ℕ}, (ξ_k)_{k ∈ ℕ}$ die Approximationen in $D$
@@ -193,7 +193,7 @@
 	  - $D^k := ∪ \{W ∈ W_k \mid W ∩ D \neq \emptyset\}$
 	  Für beschränkte Menge
 	  \[\abs{D}_i = \lim_{k \to ∞} \abs{D_k}, \abs{D}_a = \lim_{k \to ∞} \abs{D^k}\]
-   2. Sei $\det A \neq 0$, das heißt $A$ gibt eine bijektive Abbildung. Bild $ϕ(W)$ einses Würfels $W$ ist quadrierbar (Satz 4.10). Sei $W_1$ der Einheitswürfel $\abs{W_1} = 1$ und
+   2. Sei $\det A \neq 0$, das heißt $A$ gibt eine bijektive Abbildung. Bild $ϕ(W)$ eines Würfels $W$ ist quadrierbar (Satz 4.10). Sei $W_1$ der Einheitswürfel $\abs{W_1} = 1$ und
 	  $α := \abs{ϕ(W_1)}$. $∀ W = r W_1 + b$ gilt
 	  \[\abs{ϕ(W)} = \abs{ϕ(r W_1)} = r^n \abs{ϕ(W_1)} = α r^n \abs{W_1} = α \abs{W}\]
 	  Ähnlich für beliebige Würfelsummen.
@@ -203,10 +203,313 @@
       \end{align*}
       $W$ Aus
       \[ϕ(D_k) ⊂ ϕ(D) ⊂ ϕ(D^k) ⇒ α (D_k) = \abs{ϕ(D_k)} \leq \abs{ϕ(D)}_i \leq \abs{ϕ(D)}_a \leq α \abs{D^k}\]
-      $⇒ α \abs{D} = \abs{ϕ(D)}$. Um zu zeige, dass $α = \det A$ nutzen wir $A = Q_1 Λ Q_2$, wobei $Q_1, Q_2$ ortonormal, und $Λ = \diag(λ_1, \dots, λ_n)$ mit $λ_1 > 0$.
+      $⇒ α \abs{D} = \abs{ϕ(D)}$. Um zu zeige, dass $α = \det A$ nutzen wir $A = Q_1 Λ Q_2$, wobei $Q_1, Q_2$ orthonormal, und $Λ = \diag(λ_1, \dots, λ_n)$ mit $λ_1 > 0$.
       Da
       \[\abs{\det A} = \abs{\det(Q_1 Λ Q_2)} = \abs{λ_1 · \dots · λ_n}\]
       und
       \[\abs{ϕ K_1(0)} = \abs{λ_1 \dots λ_n} \abs{Q_2(K)} = \abs{λ_1 \dots λ_n} \abs{K}\]
       $K_1$: Einheitskugel. Im Fall $\det A = 0$, die beschränkte Mengen $ϕ(D)$ sind Nullmengen.
+   #+end_proof
+   #+ATTR_LATEX: :options [4.13 Lebesgue Messbarkeit]
+   #+begin_defn latex
+   Eine Menge $A ⊂ ℝ^n$ heißt Lebesgue-messbar (oder kurz messbar) wenn mit jeder Menge $E ⊆ ℝ^n$ gilt
+   \[μ^{\ast}(E) = μ^{\ast}(E ∩ E) + μ^{\ast}(E ∩ A^C)\]
+   In diesem Fall wird $μ(A) := μ^{\ast}(A)$ das Lebesgue-Maß von $A$ genannt. Die Menge der Lebesguemessbaren Mengen sei mit $Lμ$ bezeichnet.
+   #+end_defn
+   #+begin_lemma latex
+   Für die Menge $Lμ ⊂ \mathcal{P}(ℝ^n)$ gelten die folgenden Aussagen:
+   1. Jede Lebesgue-Nullmenge ist in $Lμ$ enthalten
+   2. Die Menge $Lμ$ bildet eine Algebra
+   3. $Lμ$ enthält alle Jordan-quadrierbaren Mengen
+   #+end_lemma
+   #+begin_proof latex
+   1. Mit $μ^{\ast}(A) = 0$ ist auch für jedes $E ⊂ ℝ^n$ $μ^{\ast}(A ∩ E) = 0$. Wegen der Monotonie von $μ^{\ast}$ ergibt sich:
+	  \[μ^{\ast}(E) \geq μ^{\ast}(E ∩ E^C) = μ^{\ast}(E ∩ A^C) + μ^{\ast}(E ∩ A)\]
+	  Wegen der Stabilität von $μ^{\ast}$ gilt ferner:
+	  \[μ^{\ast}(E) = μ^{\ast}((E ∩ A) ∪ (E ∩ A^C)) \leq μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C)\]
+   2. Es genügt zu zeigen, dass für $A, B ∈ Lμ$ $A^C ∈ Lμ$ und $A ∪ B ∈ Lμ$. Für $A^C$ ist die Aussage offensichtlich. Sei also $E ⊆ ℝ^n$ bel.
+	  Müssen zeigen:
+      \[μ^{\ast}(E) = μ^{\ast}(E ∩ (A ∪ B)) + μ^{\ast}(E ∩ (A ∪ B)^C)\]
+	  Da $A$ messbar gilt für $E' = E ∩ (A ∪ B)$:
+	  \begin{align*}
+	  μ^{\ast}(E ∩ (A ∪ B)) &= μ^{\ast}(E') = μ^{\ast}(E' ∩ A) + μ^{\ast}(E' ∩ A^C) \\
+	  &= μ^{\ast}(E ∩ (A ∪ B) ∩ A) + μ^{\ast}(E ∩ (A ∪ B) ∩ A^C) \\
+	  &= γ^{\ast}(E ∩ A) + μ^{\ast}(A ∩ B ∩ A^C)
+	  \end{align*}
+	  Ferner $(A ∪ B) = A^C ∪ B^C$ und somit
+	  \[μ^{\ast}(E ∩ (A ∪ B)^C) = μ^{\ast}(E ∩ A^C ∩ B^C)\]
+	  Daraus folgt
+	  \begin{align*}
+	  μ^{\ast}(E ∩ (A ∪ B)) + μ^{\ast}(E ∩ (A ∪ B)^C) &= μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C ∩ B) + μ^{\ast}(E ∩ A^C ∩ B^C) \\
+	  &= μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C) = μ^{\ast}(E)
+      \end{align*}
+   3. Sei $A ⊂ ℝ^n$ Jordan quadrierbar sowie $E ⊂ ℝ^n$ und $ε > 0$ beliebig. Wir wählen eine Intervallsumme $∪_i I_i \supset E$ mit
+	  \[\sum_{i} \abs{I_i} \leq μ^{\ast}(E) + ε\]
+	  Die Mengen $J_i := I_i ∩ A$ sowie $K_i := I_i ∩ A^C$ sind disjunkt und Jordan quadrierbar und es gilt
+	  \begin{align*}
+	  E ∩ A &⊂ ∪_i J_i \\
+	  E ∩ A^C &⊂ ∪_i K_i \\
+      \end{align*}
+	  Wegen $σ$ -Subadditivität von $μ^{\ast}$ folgt mit $\abs{I_i} = \abs{J_i} + \abs{K_i}$
+	  \[μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C) \leq \sum_{i} \abs{J_i} + \sum_{i} \abs{K_i} = \sum_{i} \abs{I_i} \leq μ^{\ast}(E) + ε\]
+	  Da $ε$ beliebig war gilt
+	  \[μ^{\ast}(A ∩ E) + μ^{\ast}(E ∩ A^C) \leq μ^{\ast}(E)\]
+	  "$\supseteq$" geht wie in $A$.
+   #+end_proof
+   #+begin_thm latex
+   1. Die Menge $Lμ$ bildet eine $σ$ -Algebra. Diese $σ$ -Algebra enthält alle Jordan-quadrierbaren Mengen.
+   2. Das Lebesgue-Maß ist auf $Lμ$ bewegungsinvariant und stimmt auf Jordan-quadrierbaren Mengen mit dem Jordan-Inhalt überein.
+	  Für $A, B, A_i . Lμ$ gilt außerdem
+	  1. $μ(A \setminus B) = μ(A) - μ(B)$, für $B ⊂ A, μ(B) < ∞$
+	  2. $μ(∪_{i ∈ ℕ} A_i) = \sum_{i ∈ ℕ} μ^{\ast}(A_i)$, für $A_i ∩ A_j = \emptyset, i \neq j$
+	  3. $μ(∪_{i ∈ ℕ} A_i) = \lim_{i \to ∞} μ(A_i)$, für $A_i ⊂ A_{i + 1} ∀ i ∈ ℕ$
+	  4. $μ(∩_{i ∈ ℕ} A_i) = \lim_{i \to ∞} μ(A_i)$, für $A_{i + 1} ⊂ A ∀ i ∈ ℕ$
+   #+end_thm
+   #+begin_proof latex
+   1. Wir haben bereits gezeigt, dass $Lμ$ eine Algebra ist. Es bleibt zu zeigen: $A_i ∈ Lμ, i ∈ ℕ$, dann ist auch
+	  \[∪_{i ∈ ℕ} A_i ∈ Lμ\]
+	  vorausgesetzt, dass $A_i ∩ A_j = \emptyset, i \neq j$. Bezeichne $S := ∪_{i ∈ ℕ} A_i$, dass gilt für beliebiges $E ⊂ ℝ^n$ und $σ$ -Subadditivität des äußeren Lebesgue-Maß
+	  \[μ^{\ast}(E ∩ S) \leq \sum_{i ∈ ℕ} μ^{\ast}(E ∩ A_i)\]
+	  Es gilt für $A, B ∈ Lμ, A ∩ B = \emptyset$ und $E' = E ∩ (A ∪ B)$
+	  \begin{align*}
+	  μ^{\ast}(E ∩ (A ∪ B)) &= μ^{\ast}(E') = μ^{\ast}(E' ∩ A) + μ^{\ast}(E' ∩ A^C) \\
+	  &= μ^{\ast}(E ∩ (A ∪ B) ∩ A) + μ^{\ast}(E ∩ (A ∪ B) ∩ A^C) \\
+	  &= μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ B ∩ A^C) = μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ B)
+      \end{align*}
+	  Mit Hilfe vollständiger Induktion erhalten wir also für
+	  \[S_m := ∪_{i = 1}^m A_i: μ^{\ast}(E ∩ S_m) = μ^{\ast}(E ∩ A_i) + \dots + μ^{\ast}(E ∩ A_m)\]
+	  weiterhin gilt $S_m ∈ Lμ$ und wegen der Monotonie von $μ^{\ast}$
+	  \[μ^{\ast}(E) = μ(E ∩ S_m) + μ^{\ast}(E ∩ S_m^C) \geq μ^{\ast}(E ∩ S) + μ^{\ast}(E ∩ S^C)\]
+	  Für $m \to ∞$ erhalten wir
+	  \[μ^{\ast}(E) \geq \sum_{i = 1}^{m} μ^{\ast}(E ∩ A_i) + μ^{\ast}(E ∩ S^C)\]
+	  Aus $σ$ -Subadditivität folgt weiter
+	  \[μ^{\ast}(E) = μ^{\ast}((E ∩ S) ∪ (E ∩ S^C)) \leq \sum_{i = 1}^{∞} μ^{\ast}(E ∩ A_i) + μ^{\ast}(E ∩ S^C)\]
+	  Und damit erhalten wir
+	  \[μ^{\ast}(E) = \sum_{i = 1}^{∞} μ^{\ast}(E ∩ A_i) + μ^{\ast}(E ∩ S^C)\]
+	  Es folgt
+	  \[μ^{\ast}(E) \geq μ^{\ast}(E ∩ S) + μ^{\ast}(E ∩ S^C)\]
+	  Die Umkehrung folgt aus $σ$ -Subadditivität, das heißt
+	  \[μ^{\ast}(E) \leq μ^{\ast}((E ∩ S) ∪ (E ∩ S^C)) \leq μ^{\ast}(E ∩ S) + μ^{\ast}(E ∩ S^C)\]
+   2. Die Bewegungsinvarianz folgt aus der Bewegungsinvarianz des äußeren Maßes, $\abs{A} = μ^{\ast}(A) = μ(A)$
+	  1. $μ(A) = μ((A \setminus B) ∪ B) = μ(A \setminus B) + μ(B) ⇔ μ(A \setminus B) = μ(A) - μ(B)$
+	  2. Setzt man $E = S$
+		 \[⇒ μ^{\ast}(E) = μ^{\ast}(S) = \sum_{i = 1}^{∞} μ^{\ast}(S ∩ A_i) + μ^{\ast}(S ∩ S^C) = \sum_{i = 1}^{∞} μ^{\ast}(A)\]
+	  3. Ist die Mengenfolge $A_i$ monoton wachsend, dann sind $B_1 := A_1, B_2 = A_2 \setminus A_1, \dots, B_m := A_m \setminus A_{m - 1}$ messbar, paarweise disjunkt.
+		 Aus $A_m = ∪_{i = 1}^m B_i$ folgt
+		 \[μ(A_m) = \sum_{i = 1}^{m} μ(B_i)\]
+		 und aus
+		 \[S = ∪_{i = 1}^∞ B_i, μ(S) = \sum_{i = 1}^{∞} μ(B_i) = \lim_{i \to ∞} μ(A_i)\]
+	  4. Sei nun $(A_i)_{i ∈ ℕ}$ monoton fallend. Für Teilmengen $A' ⊂ A_1$ definieren wir $A' = A_1 \setminus A$. Außerdem
+		 \[D := ∩_{i = 1}^∞ A_i ⊂ A_1,\quad D' = A_1 \setminus D = ∪_{i = 1}^∞ A_i'\]
+		 Also
+		 \[μ(D') = \lim_{i \to ∞} μ(A_i')\]
+		 da diese Folge monoton wachsend ist. Es gilt
+		 \[μ^{\ast}(D') = μ(A) - μ(D) = \lim_{i \to ∞} μ(A_i) = \lim_{i \to ∞} (μ(A_1) - μ(A_i)) ⇒ μ(D) = \lim_{i \to ∞} μ(A_i)\]
+   #+end_proof
+   #+begin_lemma latex
+   1. Für die Differenz beliebiger Intervalle $I, J ∈ ℝ^n$ gibt es endliche, disjunkt Darstellung
+	  \[I \setminus J = ∪_{i = 1}^m I_i\]
+	  als Intervallsumme
+   2. Jede endliche oder abzählbar unendliche Vereinigung von Intervallen $S = ∪_i I_i$ besitzt eine Darstellung als Vereinigung
+	  \[S = ∪_j J_j\]
+	  endlicher beziehungsweise abzählbar unendlich vieler paarweiser disjunkter Intervalle $J_j$
+   #+end_lemma
+   #+begin_lemma latex
+   Jede offene Menge $A ⊆ ℝ^n$ lässt sich als Vereinigung von höchstens abzählbar vielen paarweise
+   disjunkten Intervallen $I_i$ darstellen, sodass gilt
+   \[A = ∪i I_i, I_i ∩ I_j = \emptyset, i \neq j, \bar I_i ⊆ A\]
+   #+end_lemma
+   #+begin_proof latex
+   Wir betrachten $I = [a, b] = [a_1, b_1] × \dots × [a_n, b_n] ⊆ ℝ^n$ mit $a, b ∈ ℚ^n$. Es gibt abzählbar viele
+   solcher Intervalle. $∀ x ∈ A ∃ ε$ -Kugel $K_ε(x) ⊆ A$. Also gibt es auch ein rationales Intervall $I ⊆ A$
+   mit $x ∈ I$ und $A = U_i I_i$. Nach Lemma 4.16 ist dann $A$ auch Vereinigung von abzählbar vielen, paarweise
+   disjunkten Intervallen.
+   #+end_proof
+   #+begin_korollar latex
+   Die Menge $Lμ ⊂ \mathcal{P}(ℝ^n)$ enthält alle offenen und abgeschlossenen Mengen des $ℝ^n$ sowie deren abzählbare Schnitte (sogenannte $Gσ$ -Mengen) und Vereinigungen ($Fσ$ -Mengen)
+   #+end_korollar
+   #+begin_proof latex
+   $Lμ$ ist $σ$ -Algebra. Die Behauptung folgt aus Lemma 4.17.
+   #+end_proof
+   #+begin_thm latex
+   Für eine beliebige Menge $A ⊂ ℝ^n$ ist
+   \[μ^{\ast}(A) = \inf \{μ^{\ast}(O) \mid O \supset A \text{ offen}\}\]
+   Die Menge $A$ ist genau dann Lebesgue-messbar, wenn $∀ ε > 0 ∃ 0_ε \supset A$ offen mit
+   \[μ^{\ast}(O_ε \setminus A) < ε\]
+   #+end_thm
+   #+begin_proof latex
+   1. zu $ε > 0 ∃ ∪_k I_k \supset A$ mit
+	  \[∃_k \abs{I_k} \leq μ^{\ast}(A) + ε\]
+	  $∀ I_k ∃$ ein offenes Intervall $J_k \supset I_k$ mit $\abs{J_k} \leq \abs{I_k} + ε k$ und
+	  \[\sum_{k} ε_k = ε\]
+	  $G := U_k J_k$ enthält dann $A$, und es gilt
+	  \[μ^{\ast}(G) \leq \sum_{k} μ^{\ast}(J_k) \leq \sum_{k}(\abs{I_k} + ε_k) \leq μ^{\ast}(A) + ε\]
+	  Wegen der Monotonie des $μ^{\ast}$, für jede offene Obermenge $G$ von $A$ gilt
+	  \[μ^{\ast}(A) \leq μ^{\ast}(G) ⇒ μ^{\ast}(A) = \inf \{μ^{\ast}(G) \mid G \supset A\}\]
+   2. Wenn $∀ ε > ∃$ offene (messbare) Menge $G \supset A$ mit $μ^{\ast}(G \setminus A) < A$, so $∃$ eine Folge $G_k$ mit
+	  \[μ^{\ast}(G_k \setminus A) \leq \frac{1}{k}\]
+	  Für die Menge $G:= ∩_k G_k$ ist dann
+      \[μ^{\ast}(G\setminus A) \leq μ^{\ast}(G_k \setminus A) \leq \frac{1}{k} ⇒ μ^{\ast}(G \setminus A) = 0\]
+	  $⇒$ $G\setminus A$ messbar $⇒$ $A = (A\setminus G) ∪ G$ auch messbar.
+   3. Umgekehrt, sei $A$ messbar und $ε > 0$ vorgegeben. $∃ A = ∪_k A_k$, wobei $A_k$ messbar und beschränkt sind. Sei weiter $ε_k > 0$ mit
+	  \[\sum_{k} ε_k = ε ∀ k\]
+	  nach 1. existiert eine offene Menge $G_k \supset A_k$ mit
+	  \[μ^{\ast}(G_k) < μ^{\ast}(A_k) + ε_k ⇒ μ^{\ast}(G_k \setminus A_k) < ε_k\]
+	  Weil $μ^{\ast}(A_k) < ∞$, nutzen wir Satz 4.15.2. Die Menge
+	  \[G:= ∪_k G_k\]
+	  ist offen und enthält $A$. Aus $G \setminus A ⊂ U_k(G_k \setminus A)$
+	  \[μ^{\ast}(A \setminus A) \leq \sum_{k} μ^{\ast}(G_k \setminus A_k) < \sum_{k} ε_k = ε\]
+   #+end_proof
+   #+begin_remark latex
+   $Lμ \neq \mathcal{P}(ℝ^n)$ also gibt es nicht messbare Menge.
+   #+end_remark
+** Das Lebesgue Integral
+   - Analog zum Riemannintegral mit Ober- und Untersumme eingeführt
+   - Antimetrik auf $\bar ℝ$
+   - Zerlegung in abzählbar viele messbare Mengen
+   Sei $D ⊂ ℝ^n$ eine messbare Menge. Wir betrachten abzählbare Zerlegungen $Z = \{B_i\}$ von $D$ in messbare $B_i ⊂ M$, sodass
+   \[D = ∪_{i = 1} B_i, B_i ∩ B_j = \emptyset, i \neq j\]
+   $\mathcal{Z}(D)$ - Menge aller solchen Zerlegungen. Die Feinheit
+   \[\abs{Z} := \sup_{B_i ∈ Z} μ(B_i)\]
+   Eine Zerlegung $\tilde Z = \{\tilde B_i\}$ ist eine Verfeinerung von $Z = \{B_i\}$ ($\tilde Z \succ Z$), wenn alle $\tilde B_j$ Teilmengen gewisser $B_i$ sind.
+   \[Z \ast \tilde Z := \{B_i ∩ \tilde B_j\}\]
+   Sei $f: D \to \bar ℝ$ eine gegebene Funktion. Wir definieren
+   \begin{align*}
+   \ubar S_z(f) &:= \sum_{i = 1}^{∞} \inf_{x ∈ B_i} f(x) μ(B_i) \tag{Untersumme} \\
+   \bar S_z(f) &:= \sum_{i = 1}^{∞} \sup_{x ∈ B_i} f(x) μ(B_i) \tag{Obersumme} \\
+   LS_k(f, ξ) &:= \sum_{i = 1}^{∞} f(ξ_i)μ(B_i) \tag{Lebesgue Summe}
+   \end{align*}
+   (für gewisse $ξ_i ∈ B_i$)
+   #+begin_remark latex
+   Die Werte $\pm ∞$ sind zugelassen.
+   #+end_remark
+   #+begin_ex latex
+   $D = \string(0, 1], f(x) := x^{-1/2}$. $\bar S_z(f) = ∞$. Dies gilt für jede	Zerlegung welche ein Intervall der Form $\string(, b]$ enthält, insbesondere
+   also für jede endliche Zerlegung. Für die Zerlegung
+   \[Z^{\ast} = \{B_i = \string(\frac{1}{i + 1}, \frac{1}{i}] \mid i ∈ ℕ\}\]
+   \[\sup_{x ∈ B_i} f(x) = \sqrt{i + 1} \]
+   ist
+   \[\bar S_{Z^{\ast}}(f) = \sum_{i = 1}^{∞}(\frac{1}{i} - \frac{1}{i - 1})\sqrt{i + i} = \sum_{i = 1}^{∞}\frac{1}{i \sqrt{i + 1}} \leq \sum_{i = 1}^{∞} \frac{1}{i^{3/2}} < ∞\]
+   Das heißt dass für unbeschränkte Funktion brachen wir zusätzliche Bedingung.
+   #+end_ex
+   #+ATTR_LATEX: :options [Bedingung $Z$]
+   #+begin_defn latex
+   Sei $D ⊂ ℝ^n$ Lebesgue-messbar. Wir sagen, dass $fε D \to \bar ℝ$ die Eigenschaft $(Z)$ besitzt, was es eine Zerlegung
+   \[Z^{\ast} = \{B_i^{\ast}\} ∈ \mathcal{Z}(D)\]
+   gibt, sodass die zugehörige Obersumme von $\abs{f}$ endlich ist $\bar S_{Z^{\ast}}(\abs{f}) < ∞$. Damit sind auch die Ober- und Untersummen zu jeder Vereinigung $Z^{\ast}$ endlich und konvergieren absolut. Die Klasse
+   der $Z^{\ast} ∈ \mathcal{Z}(D)$ mit dieser Eigenschaft wird mit $\mathcal{Z}^{\ast}_f(D)$ bezeichnet.
+   #+end_defn
+   #+ATTR_LATEX: :options [4.22]
+   #+begin_lemma latex
+   Die Eigenschaft $(Z)$ einer Funktion $f: D \to \bar ℝ$ impliziert, dass die Menge der Singularitäten $Σ_f := \{x ∈ D \mid f(x) = \pm ∞\}$
+   eine Lebesgue-Nullmenge ist. Ferner gilt mit $Z^{\ast} ∈ \mathcal{Z}^{\ast}_f(D)$
+   1. Für Verfeinerungen $Z, \tilde Z ∈ \mathcal{Z}(D)$ von $Z^{\ast}$ mit $\tilde Z \succ Z$
+	  \[\ubar S_Z(f) \leq \ubar S_{\tilde Z}(f) \_eq \bar S_Z(f) < ∞\]
+   2. Für beliebige Verfeinerungen $Z, \tilde Z ∈ \mathcal{Z}(D)$ von $Z^{\ast}$
+	  \[\ubar S_Z(f) \leq \bar S_{\tilde Z}(f)\]
+   3. $∀$ Verfeinerungen $Z ∈ \mathcal{Z}(D)$ von $Z^{\ast}$
+	  \[\ubar S_Z(f) \leq L S_Z(f_i ξ) \leq \bar S_Z(f)\]
+	  und $∀ ε$	existieren Sätze von Punkten $ξ_i ∈ B_i^{\ast}$ und $η_i ∈ B_i^{\ast}$
+	  \begin{align*}
+	  \bar S_Z(f) - L S_Z(f, ξ) &< ε \\
+	  L S_Z(f, η) - \ubar S_Z(f) &< ε
+      \end{align*}
+   #+end_lemma
+   #+begin_proof latex
+   Ist $Z^{\ast} ∈ \mathcal{Z}_f^{\ast}(D)$ und $\sup_{x ∈ B_i^{\ast}}(f) = ∞$ für ein $B_i^{\ast} ∈ Z^{\ast}$, so muss $μ^{\ast}(B_i^{\ast}) = 0$.
+   $Σ_f$ in in der Vereinigung von höchstens abzählbar vielen Nullmengen und damit wegen $σ$ -Subadditivität von $μ^{\ast}$	bekommen wir $μ^{\ast}(Σ_f) = 0$
+   1. klar
+   2. klar
+   3. Wir nehmen $ε > 0$ mit $\sum_{i = 1}^{∞} = ε$ und $∀ i ∈ ℕ$ mit $0 < μ(B_i) < ∞$ wählen die Punkte $ξ_i, η_i ∈ B_i$, sodass
+	  \[\sup_{x ∈ B_i} f(x) - f(ξ_i) < \frac{ε}{μ(B_i)}\]
+	  Falls $μ(B_i) = ∞ ⇒ f \equiv 0$ auf $B_i$ (sonst $\bar S_Z(\abs{f}) = ∞$)
+	  \[⇒ L S_Z(f, η) - \ubar S_Z(f) = \sum_{i = 1}^{∞} (f(η_i) - \inf_{B_i} f(x)) μ(B_i) \leq \sum_{i = 1}^{∞} ε_i = ι\]
+	  (Summanden mit $μ(B_i) = 0$ oder $∞$ sind $0$)
+   #+end_proof
+   #+begin_defn latex
+   Für $f: D \to \bar ℝ$ mit Eigenschaft $(Z)$ definieren wir
+   \begin{align*}
+   \ubar J(f) &= \underline{∫_D} f(x) \d x := \sup_{\substack{Z ∈ \mathcal{Z}(D) \\ Z \succ Z^{\ast}}} \ubar S_Z \\
+   \bar J(f) &= \overline{f_D} f(x) \d x := \inf_{\substack{Z ∈ \mathcal{Z(D)} \\ Z \succ Z^{\ast}}} \bar S_Z
+   \end{align*}
+   #+end_defn
+   #+begin_remark latex
+   Es gilt
+   \begin{align*}
+   \ubar J(f) &\leq \bar J(f) \\
+   \bar J(f) &= - \ubar J(-f)
+   \end{align*}
+   Die Definition ist unabhängig von der Wahl von $Z^{\ast} ∈ \mathcal{Z}^{\ast}_f (D)$. weil $∀ Z^{\ast\ast} ∈ \mathcal{Z}_f^{\ast}(D)$ ist $Z^{\ast\ast} \ast Z^{\ast}$ gemeinsame Verfeinerung von $Z^{\ast\ast}$
+   und $Z^{\ast}$,
+   \begin{align*}
+   \sup_{Z \succ Z^{\ast}} \ubar S_Z &= \sup_{Z \succ Z^{\ast\ast}} \ubar S_Z \\
+   \inf{Z \succ Z^{\ast}} \bar S_Z &= \inf{Z \succ Z^{\ast\ast}} \bar S_Z
+   \end{align*}
+   #+end_remark
+   #+ATTR_LATEX: :options [Lebesgue Integral]
+   #+begin_defn latex
+   Sei $D ⊂ ℝ^n$ Lebesgue-messbar, sind für eine $f: D \to \bar ℝ$ mit Eigenschaft $(Z)$ das Ober- und Unterintegral gleich, so heißt die Wert das Lebesgue-Integral von $f$ über $D$
+   \[∫_D f(x) \d x := J(f) = \ubar J(f) = \bar J(f)\]
+   und die Funktion $f$ wird Lebesgue integrierbar genannt. Mit $\mathcal{L}(D)$ bezeichnen wir die Menge von Lebesgue-integrierbaren Funktionen.
+   #+end_defn
+   #+begin_remark latex
+   Das Lebesgue-Integral ist eine Erweiterung von Riemann-Integral:
+   \[f(x) = \begin{cases} 1 & x ∈ ℚ ∩ [0, 1] \\ 0 x ∈ [0, 1] {setminus ℚ}\end{cases}\]
+   nicht Riemann-Integral, aber Lebesgue-Integrierbar
+   \[∫_0^1 f(x) \d x = 0\]
+   Notationen
+   \[∫ f \d μ = ∫ f(x) \d x \text{ falls $μ$ - Lebesgue-Masse ist}\]
+   #+end_remark
+   #+begin_lemma latex
+   Das Lebesgue-Integral hat die folgenden Eigenschaften
+   1. $f ∈ \mathcal{L}(D)$ genau dann wenn Bedingung $(Z)$ gilt und $∀ ε ∃ Z_ε ∈ \mathcal{Z}(D)$, sodass
+	  \[\bar S_{Z_ε}(f) - \ubar S_{Z_ε} = ε\]
+	  (Lebesgue Integrabilitätskriterium)
+   2. Falls $f = g$ f.ü. und $f ∈ \mathcal{L}(D)$, dann $g ∈ \mathcal{L}(D)$ und $J(f) = J(g)$
+   3. Für $f \leq g \quad f, g ∈ \mathcal{L}(D)$, gilt $J(f) \leq J(g)$
+   4. $\mathcal{L}(D)$ ist ein Vektorraum, das heißt für $f, g ∈ \mathcal{L}(D), α f + β g ∈ \mathcal{L}(D)$ und
+	  \[J(α f + β g) = α J(f) + β J(g)\]
+   5. Ist $f ∈ \mathcal{L}(D)$ und $φ: ℝ \to ℝ$ Lipschitz-stetig mit $φ(0) = 0$, so ist $φ \circ f ∈ \mathcal{L}(D)$, Auch $\abs{f}, f^{+}, f^{-} ∈ \mathcal{L}(D)$ und
+	  \[∫_D f(x) \d x = ∫_D f^{+}(x) \d x + ∫_D f^{-}(x) \d x\]
+   6. Sei $Z = \{B_k\} ∈ \mathcal{Z}(D)$ eine Zerlegung (disjunkte) und $f: D \to \bar ℝ_{+} ∪ \{0\}$ eine beliebige Funktion. Ist $f ∈ \mathcal{L}(D)$, so ist auch
+	  \[f ∈ \mathcal{L}(B_k), k ∈ ℕ\qquad ∫_D f(x) \d x = \sum_{k = 1}^{∞} ∫_{B_k} f(x) \d x\]
+   #+end_lemma
+   #+begin_proof latex
+   1. Analog zum Riemann-Integrabilitätskriterium (erweitert zu $ℝ^n$) mit Verwendung der Linearität von absolut konvergenten Reihen, statt endlichen Summen.
+   2. Sei $N := \{x ∈ D \mid f(x) = g(x)\}$ ein Nullmenge. Für eine $Z = \{A_i\} \succ \{N, D \setminus N\}$ ist $A_i ⊂ N$ oder $A_i ⊂ D \setminus N$. Falls $A_i ⊂ N$, dann $μ^{\ast}(A_i) = 0$. Falls
+	  $A_i ∈ D \setminus N$ ist $f(ξ_i) = g(ξ_i)$
+	  \begin{align*}
+	  ⇒ L S_Z(f, ξ) &= L S_Z(g, ξ) \\
+	  ⇒ J(f) &= \lim_{\abs{Z} \to 0} L S_Z(f, ξ) = \lim_{\abs{Z} \to 0} L S_Z(g, ξ) = J(g)
+      \end{align*}
+   3. Analog zu Monotonie des Riemann-Integral
+   4. Sei $N := \{x ∈ D \mid \abs{f(x)} = ∞ ∨ \abs{g(x)} = ∞\}$
+	  Ähnlich wie in 2.
+   5. Ohne Beschränkung der Allgemeinheit $\abs{f(x)} < ∞$ auf $D$ (nach 2.). Aus $φ(0) = 0$ und
+	  \[\abs{φ(s) - φ(t)} \leq j \abs{s - t}\]
+	  folgt
+	  \[\abs{φ(s)} \leq j \abs{s}\]
+	  und für $Z^{\ast}$ (aus Bedingung $(Z)$)
+	  \[\bar S_{Z^{\ast}} (\abs{φ \circ f}) \leq j \bar S_{Z^{\ast}} (\abs{f}) < ∞\]
+	  Nach 1.: $∀ ε ∃ Z_ε ∈ \mathcal{Z}(D)$ mit $\bar S_{Z^{ε}}(f) - \ubar S_{Z_ε}(f) < ε$.
+	  Wegen
+	  \[\abs{φ(f(x)) - φ(f(y))} \leq j \abs{f(x) - f(y)} \leq j(\sup_{x ∈ A_i} f(x) - \inf_{x ∈ A_i} f(x))\]
+	  gilt
+	  \[\bar S_{Z_ε}(φ \circ f) - \ubar S_{Z_ε}(φ\circ f) < j ε\]
+	  \[(\sup_{x ∈ A_i}(φ \circ f)(x) - \inf_{x ∈ A_i}(φ\circ f)(x) \leq j(\sup_{x ∈ A_i} f(x) - \inf_{x ∈ A_i} f(x)))\]
+	  $⇒ φ \circ f ∈ \mathcal{L}(D)$ nach 1.. Die andere mit $φ(s) = s^{+}(s^{-}, \abs{s})$
+   6. Aus $Z_k = \{B_i^k\} ∈ \mathcal{Z}(B_k), k ∈ ℕ$, lässt sich $K = \{B_i^k\}_{ik} ∈ \mathcal{Z}(D)$ zusammensetzen. Und umgekehrt induziert jede $Z = \{A_i\} ∈ \mathcal{Z}(D)$
+	  (die Verfeinerung von $\{B_k\}$) Zerlegung $Z^k = \{A_i ∩ B_k\} ∈ \mathcal{Z}(B_k)$. Es gilt
+	  \begin{align*}
+	  \ubar S_Z(f) &= \sum_{k = 1}^{∞} \ubar S_{Z_k}(f) \\
+	  \bar S_Z(f) &= \sum_{k = 1}^{∞} \bar S(f) \\
+	  ⇒ \ubar S_Z(f) &\leq \sum_{k = 1}^{∞} \underline{∫_{B_k}} f(x) \d x \\
+	  \overline{∫_{D}} f(x) \d x &\leq \sum_{k = 1}^{∞} \underline{∫_{B_k}} f(x) \} x
+      \end{align*}
+	  $Z$ beliebig. Umgekehrt erhalten wir für beliebige $m ∈ ℕ$
+	  \[\underline{∫_D} f(x) \} x \geq \sum_{k = 1}^{m} \ubar S_{Z_k}(f)\]
+	  Die $Z_k$ sind beliebig $⇒$
+	  \[\underline{∫_D} f(x) \d x \geq \sum_{k = 1}^{m} \underline{∫_{B_k}} f(x) \d x\]
+	  \[⇒ \underline{∫_D} f(x) \d x \geq \sum_{k = 1}^{∞} \underline{∫_{B_k}} f(x) \d x \geq \underline{∫_D} f(x) \d x\]
+	  Analog für die Obersumme.
    #+end_proof

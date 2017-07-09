@@ -40,5 +40,6 @@ pdf_key
 *.pg
 *.pgm
 *.xdv
+*.new
 
 !*/cheatsheet/*.tex

@@ -2,7 +2,7 @@
 ** Mechanische Wellen
    Eine Welle ist ein Vorgang bei dem sich eine Schwingung vom Ort ihrer Erregung in Folge von Kopplungen an benachbarte schwingungsfähige Systeme im Raum ausbreitet.
    Man unterscheidet
-   - Transversale Wellen $\to$ Ausbreitung senkricht zur Schwingungsrichtung
+   - Transversale Wellen $\to$ Ausbreitung senkrecht zur Schwingungsrichtung
    - Longitudinale Wellen $\to$ Ausbreitung entlang der Schwingungsrichtung
    Eindimensionale harmonische Welle
    $\to$ harmonische Anregung
@@ -24,7 +24,7 @@
    - Wellenlänge: $λ = 2 π / k$
    - Phasengeschwindigkeit: $v_{ph} = ω / k$
    - Amplitude: $A$
-   Wesenliche Eigenschaften: \\
+   Wesentliche Eigenschaften: \\
    Superposition und Interferenz: \\
    Superposition $\longleftrightarrow$ Überlagerung von Wellen
    \[y(\v x, t) = \sum_{i = 1}^{n} y_i(\v k, t)\]
@@ -38,7 +38,7 @@
    Jetzt: $k_1 \approx k_2, ω_1 \approx ω_2$ $⇒$ Schwebung mit mittlerer Frequenz als Schwebungsfrequenz.
    #+ATTR_LATEX: :options [Fouriertheorem]
    #+begin_thm latex
-   Jede periodische und aperiodicshe Funktion kann durch harmonische ebene Wellen dargestellt werden.
+   Jede periodische und aperiodische Funktion kann durch harmonische ebene Wellen dargestellt werden.
    Fourier-Reihe:
    \[f(t) = f(t + T) = \frac{a_0}{2} + \sum_{n = 1}^{∞} a_n \cos(n ω t) + b_n \sin(n ω t)\]
    mit
@@ -55,7 +55,7 @@
    #+end_thm
    Daher genügt es oft harmonische ebene Wellen zu betrachten.
 ** Wellengleichung
-   Wegge $\to$ Ausbreitung einer Schwingung im Raum.
+   Welle $\to$ Ausbreitung einer Schwingung im Raum.
    Gesucht: Differentialgleichung die die Ausbreitung von Störungen beschreibt.
    Sich ausbreitende Störung $\estimates$ Wellenpaket.
    \begin{align*}
@@ -72,7 +72,7 @@
    \end{align*}
    $v^2$: Phasengeschwindigkeit.
    Eigenschaften:
-   - lineare Differentialgleichung $\to$ Superposition und Inferferenz
+   - lineare Differentialgleichung $\to$ Superposition und Interferenz
    - Ebene Wellen sind Lösung der Wellengleichung
    - Auftreten solcher Gleichungen weist auf Wellenchararkter der Lösung hin
 ** Wellenpakete, Phasen- und Gruppengeschwindigkeit
@@ -97,9 +97,9 @@
    Phasengeschwindigkeit kann aber für unterschiedliche $k$, das heißt unterschiedliche Wellenlängen $λ = 2 π / k$ unterschiedlich sein $\to$ Dispersion.
    Dispersionsrelation:
    \[ω(k) = ω(k_0) + \dd{ω}{k} \big|_{k_0} (k - k_0) + \dots\]
-   (Taylorentwicklung). Dispersion führt im Allgemeinen dazu, dass Wellenpakete mit der Zeit auseinanderfließen.
-   Bei schwacher Abhängigkeit der Ausbreitungsgescwindigkeit von der Wellenlänge bewegt sich
-   das Wellenpaket ein beträchtliches Stück, bevor es nicht wiederzuerkennen ist.
+   (Taylorentwicklung). Dispersion führt im Allgemeinen dazu, dass Wellenpakete mit der Zeit auseinander fließen.
+   Bei schwacher Abhängigkeit der Ausbreitungsgeschwindigkeit von der Wellenlänge bewegt sich
+   das Wellenpaket ein beträchtliches Stück, bevor es nicht wieder zuerkennen ist.
    Für Wellenpakete für die $A(k)$ nur in einem schmalen Bereich um $k_0$ von Null verschieden ist -
    was für die meisten relevanten Wellenpakete der Fall ist - kann man eine Wellenpaketgeschwindigkeit
    herleiten:
@@ -118,7 +118,7 @@
    \Div \v E = 0 &\qquad \rot \v E = - \pp{\v B}{t} \\
    \Div \v B = 0 &\qquad \rot \v B = ε_0 μ_0 \pp{\v E}{t}
    \end{align*}
-   Ableinet:
+   Ableiten:
    \begin{align*}
    \pp{}{t} \rot \v B &= ε_0 μ_0 \frac{\partial^2 \v P}{\partial t^2} \\
    \rot(\rot \v E) &= - \rot \pp{\v B}{t} = -\pp{}{t} \rot \v B \\
@@ -135,7 +135,7 @@
    \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v E \\
    \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε_0 μ_0} Δ \v B \\
    \end{align*}
-   In Matrie:
+   In Materie:
    \begin{align*}
    \frac{\partial^2 \v E}{\partial t^2} &= \frac{1}{ε μ ε_0 μ_0} Δ \v E \\
    \frac{\partial^2 \v B}{\partial t^2} &= \frac{1}{ε μ ε_0 μ_0} Δ \v B \\
@@ -155,7 +155,7 @@
    ⇒ E_x &= \const
    \end{align*}
    Wahl der Randbedingung $\to$ wähle $E_x = 0$. Fazit:
-   Im Vakuum gibt es keine longitudinalen, sondern nur transversale elektromagnetischer Wellen.
+   Im Vakuum gibt es keine longitudinalen, sondern nur transversale elektromagnetische Wellen.
    Jetzt: Verknüpfung von $E$ -und $B$ -Feld. Ansatz: Linear polarisierte Welle
    (das heißt $\v E, \v B$ zeigen immer in eine Richtung)
    \begin{align*}
@@ -197,7 +197,7 @@
    \v E &= \frac{\v E_0}{r} \sin(\v k \v r - ω t) \\
    \v B &= \frac{\v B_0}{r} \sin(\v k \v r - ω t)
    \end{align*}
-** Energietransport elektrigmagnetische Welle
+** Energietransport elektromagnetischer Welle
    Energiedichte im Vakuum:
    \begin{align*}
    ω_{em} &= \frac{1}{2} (\v E \v D + \v B \v H) = \frac{1}{2} ε_0 E^2 + \frac{1}{2 μ_0} B^2 = ε_0 E^2(t) \\
@@ -206,7 +206,7 @@
    Energiestromdichte (oder Intensität)
    \begin{align*}
    S &= \frac{\text{Strahlungsleistung}}{\text{Fläche}} = \frac{\text{Energie}}{\text{Fläche $·$ Zeit}} \\
-   &= \text{Eneriedichte} · \text{Geschwindigkeit} \\
+   &= \text{Energiedichte} · \text{Geschwindigkeit} \\
    ⇒ S = ω_{em} c = ε_0 c E^2(t) = ε_0 c^2 E B = \frac{1}{μ_0} E B = E H
    \end{align*}
    #+ATTR_LATEX: :options [Poyntingvektor]
@@ -225,21 +225,21 @@
    \v E(\v r, t) &= \frac{1}{4 π ε_0 r^3}(\v p + \frac{r}{C} \dot{\v p} + 3((\v p + \frac{r}{C}\dot{\v p})\hat r)\hat r) + \frac{1}{4 π E_0 c^2 r^2}(\ddot{\v p} × \v r) × \v r
    \end{align*}
    $⇒$ Hertzscher Dipol
-   - Nahfeld: $E \sim 1 / r^3, B \sim 1 / r^2$
-   - Fernfeld: $E \sim 1 / r, b \sim 1 / r$
+   - Nahfeld: $E \sim 1 / r^3, B \sim 1 / r^2, E, B$ phasenverschoben, $φ = \SI{90}{\degree}$
+   - Fernfeld: $E \sim 1 / r, b \sim 1 / r, \v E \perp \v B \perp \v k, φ = \SI{0}{\degree}$
    $⇒ \abs{\v S} \sim E B \sim 1 / r^2$ \\
    Symmetrie:
-   - $S = σ(r) · ξ(v)$
+   - $S = σ(r) · ξ(θ)$
    - $\v S \parallel \v r$
    - $∮ \v S \d \v A = \const$
-   \[∮σ(r)ξ(v) r^2 \d Ω = σ(r) r^2 \underbrace{∮ξ(v) \d Ω}_{\text{konstant}} = C σ(r) r^2 \overset{!}{=} \const\]
+   \[∮σ(r)ξ(θ) r^2 \d Ω = σ(r) r^2 \underbrace{∮ξ(θ) \d Ω}_{\text{konstant}} = C σ(r) r^2 \overset{!}{=} \const\]
    $⇒$ $σ(r) \sim 1 / r^2, S \sim 1 / r^2$.
    Also: Die $1 / r$ -Abhängigkeit von E, B-Feld und die $1 / r^2$ Abhängigkeit von $\abs{\v S}$ ergeben
    sich für das Fernfeld aus der Symmetrie und der Erhaltung des Energieflusses.
    Außerdem: Fernfeld $=$ reines Wellenfeld im freien Raum. Daher sind $\v E, \v B$ rein transversal, $\v E, \v B$ in Phase.
-   Nachfeld: $r \gg d ⇒$ $\v B, \v E$ phasenverschoben. Vorbemerkung: Hochfrequente Wechselspannung auf
-   einem Leiter führt zu eletromagnetischen Wellen entlang des Leiters, da sich die Oberflächenladung $σ$ nur mit endlicher Geschwindigkeit ausbreitet.
-   (Drahtwelle) $⇒$ Hertzscher Diporl: Stehende Drahtwellen:
+   Nahfeld: $r \gg d ⇒$ $\v B, \v E$ phasenverschoben. Vorbemerkung: Hochfrequente Wechselspannung auf
+   einem Leiter führt zu elektromagnetischen Wellen entlang des Leiters, da sich die Oberflächenladung $σ$ nur mit endlicher Geschwindigkeit ausbreitet.
+   (Drahtwelle) $⇒$ Hertzscher Dipol: Stehende Drahtwellen:
    \begin{align*}
    \intertext{Phasenverschiebung: $π / 2$}
    I(z, t) &= I_0(z) \sin ω t \\
@@ -252,3 +252,27 @@
    I_0(z) &= I_0 \cos(\frac{π x}{l}) \\
    U_0(z) &= U_0 \sin(\frac{π x}{l})
    \end{align*}
+   Abstrahlungscharakteristik:: \\
+   $\abs{\v S} = σ(r) · ξ(θ) \sim E B$ (Fernfeld) $⇒$ $ξ(θ) = ?, σ(r) \sim 1 / r^2$. Fernfeld:
+   \begin{align*}
+   \v E \sim \frac{1}{r^3}(\ddot{\v p} × \v r) × \v r &= - \frac{1}{r^2}(\ddot{\v p} r^2 - \v r(\ddot{p} · \v r)) \\
+   \intertext{in Kugelkoordinaten mit $\hat p = \cos θ \v e_r - \sin θ \v e_r$ folgt}
+   &= \frac{\abs{\ddot{\v p}}}{r} · (\hat r \cos θ - \hat p) \\
+   &= \frac{\ddot{\v p}}{r} \sin θ \v e_r \\
+   \abs{\v S} &\sim \frac{\sin^2 θ}{r^2} \sim \abs{\v E}^2, S = c ε_0 E^2 \\
+   \end{align*}
+   $⇒$ Strahlungsgleichung des Hertzschen Dipols:
+   \[S(r, θ) = \frac{p_0^2 ω^4 \sin^2 θ}{16 π^2 ε_0 c^3 τ^2} \sin^2(ω t - k r)\]
+** Elektromagnetisches Spektrum
+   \[λ = \frac{c}{ν}\]
+   | $ν = \SI{100}{\mega\hertz}$ | $\to$ | $λ \sim \SI{3}{\meter}$        |
+   | $ν = \SI{10}{\giga\hertz}$  | $\to$ | $λ \sim \SI{3}{\centi\meter}$  |
+   | $ν = \SI{1e14}{\hertz}$ | $\to$ | $λ \sim \SI{3}{\micro\meter}$  |
+   | $ν = \SI{1e15}{\hertz}$  | $\to$ | $λ \sim \SI{300}{\nano\meter}$ |
+   - Radiowellen
+   - Mikrowellen
+   - Infrarotstrahlung
+   - Licht
+   - Röntgenstrahlung
+   - Gammastrahlung
+   Quantenphysik: Elektromagnetische Strahlung $\estimates$ Photonen $γ$ $\to E_γ = h ν$, $h$: Plancksches Wirkungsquantum $h = \SI{6.626e-34}{\joule\second}$

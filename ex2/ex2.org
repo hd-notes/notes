@@ -11,3 +11,120 @@
 #+INCLUDE: "induction.org" :minlevel 1
 #+INCLUDE: "ac.org" :minlevel 1
 #+INCLUDE: "electromagnetic_waves.org" :minlevel 1
+* Natur des Lichts und Wellenoptik
+  Wellencharakter $\to$ Interferenz und Beugung, insbesondere zum Beispiel Poissonscher Fleck.
+** Beugung und Interferenz
+   Beugung: Ableitung von Wellen an einem Hindernis. \\
+   Inferferenz: Konstruktive und destruktive Überlagerung von Wellen. \\
+   Beruht auf: Superposition und Prinzip von Huygens. Prinzip von Hulgens: Jeder Punkt einer Wellenfront ist Ausgangspunkt einer neuen (Elementar)Welle.
+   Lage der Wellenfront ergibt sich durch Überlagerung (Superposition) sämtlicher Elementarwellen. Beachte: Elementarwellen	haben Kugel-/Kreisform $⇒$ auch rücklaufende Welle.
+   Betrachte Einzelspalt mit Breite $a$. $⇒$ Erste Nullstelle:
+   \[\frac{λ}{2} = \frac{a}{2} \sin θ, λ = a \sin θ\]
+   Weitere Nullstellen:
+   \[a \sin θ = m λ, m = ∈ ℕ\]
+   Intensitätverteilung: Betrachte $N \to ∞$ Schwinger in Einzelspalt von Breite $a$.
+   Abstand zwischen zwei Schwingern: $d = a / N \to 0$. Einzelschwingung: Amplitunde $A_0$. Phasenverschiebung zwischen zwei Schwingern:
+   \[δ = \frac{2π}{λ} d \sin θ\]
+   Vorwärtsrichtung: $θ = \SI{0}{\degree}$ $⇒$ $A = A_{max} = N A_0$
+   Richtung $θ \neq 0$
+   \begin{align*}
+   A_1 &= A_0 \cos ω t \\
+   A_2 &= A_0 \cos (ω t + δ) \\
+   A_3 &= A_0 \cos (ω t + 2δ) \\
+   &\vdots
+   \end{align*}
+   Betrachte Kreisbogen, damit
+   \begin{align*}
+   \sim \frac{1}{2} ϕ = \frac{A}{2r} &\to A = 2r \sin \frac{1}{2} ϕ \\
+   r = ϕ A_{max} &\to ϕ = \frac{A_{max}}{r} \\
+   \end{align*}
+   \begin{align*}
+   A &= 2 \frac{A_{max}}{ϕ} \sin \frac{1}{2} ϕ \\
+   \frac{A}{A_{max}} &= \frac{\sin \frac{1}{2}ϕ}{\frac{1}{2}ϕ} \\
+   ⇒ \frac{I}{I_0} &= \frac{A^2}{A_{max}^2} = (\frac{\sin \frac{1}{2} ϕ}{\frac{1}{2} ϕ})^2 \\
+   ϕ &= N δ = N d \frac{π}{λ} \sin θ
+   \end{align*}
+   $⇒$ Intensitätsverteilung für Beugung im Einzelspalt
+   \[I(θ) = I_0 (\frac{\sin(\frac{π a}{λ}\sin θ)}{\frac{π a}{λ} \sin θ})^2 = I_0 \I(θ) = I_0 (\frac{\sin(\frac{π a}{λ}\sin θ)}{\frac{π a}{λ} \sin θ})^2\]
+   Doppelspalt: Zuerst: unendlich dünne Spaltteile, Abstand $d$
+   - Interferenzminima: $d \sin θ = (m + \frac{1}{2}) λ, m = 0, 1, \dots$
+   - Interferenzmaxima: $d \sim θ = m λ, m = 0, 1, \dots$
+   - Intensitätsverteilung:
+     \begin{align*}
+	 E_1 &= A_0 \sin ω t \\
+   	 E_2 &= A_0 \sim (ω t + δ) \\
+	 δ &= \frac{2 π}{λ} d \sin θ \\
+	 E &= E_1 + E_2 = 2 A_0 \cos \frac{1}{2} δ \sin(ω t + \frac{1}{2} δ) \\
+	 \intertext{mit}
+	 \sin α + \sin β &= 2 \cos(\frac{1}{2}(α - β))\sin(\frac{1}{2}(α + β)) \\
+	 I &\sim E^2 \\
+	 I &= 4 I_0 \cos^2 \frac{1}{2}δ \\
+	 I_0 &\sim A_0^2 \\
+	 δ &= \frac{π}{λ} \sim θ d
+     \end{align*}
+   Jetzt: Doppelspalt mit Spaltbreite $a$.
+   \begin{align*}
+   I &= 4 I_0 \cos^2 \frac{1}{2} δ (\frac{\sin(\frac{1}{2}ϕ)}{\frac{1}{2}ϕ})^2 \\
+   ϕ &= \frac{2π}{λ} a \sin θ \\
+   δ &= \frac{2π}{λ} d \sin θ
+   \end{align*}
+   Frauenhofer Beugung:
+   Annahmen:
+   - Abstand $L$ groß gegen Abstand Objekt / Spalt
+   - Huygensches Prinzip
+   - Einfallende ebene Welle
+   - Kohärenz
+   #+ATTR_LATEX: :options [Kohärenzlänge]
+   #+begin_defn latex
+   Waximale Wellenlägen / Laufzeitunterschiede, die zwei Teilwellen haben dürfen, um stabil zu interferieren.
+   #+end_defn
+   #+ATTR_LATEX: :options [Kohärenzzeit]
+   #+begin_defn latex
+   Mittleres Zeitinterwall, in der sich die Phase einer Teilwelle um maximal $2 π$ ändert.
+   #+end_defn
+   Fraunhofer Beugung $\to$ Erzeugung von Kugelwellen ausgehend von jedem Punk im Objektspalt
+   \begin{align*}
+   E &\sim \frac{A_0}{r} e^{i(kr - ω t)} \sim \frac{A_0}{r} e^{ik(\sqrt{L^2 + x^{\prime 2}} + Δ(x))} e^{-iω t}
+   \end{align*}
+   Einzelspalt:
+   \[E(x, t) = A(x) e^{-i ω t}\]
+   Gangunterschied: $Δ(x) = x \sin θ = x = x' / L$
+   Phasendifferenz:
+   \begin{align*}
+   δ(x) &= k Δ(x) = \frac{2π}{λ} Δ(x) = \frac{2π}{λ} x \frac{x'}{L} \\
+   &= k x \frac{x'}{L} \\
+   E(θ, t) \sim ∫_{-∞}^{∞} A(x) e^{i δ(x)} e^{- iω t} \d r \\
+   &= e^{i ω t} ∫_{-∞}^∞ A(x) e^{i k x \frac{x'}{L}} \d x \\
+   &= e^{i ω t} ∫_{-∞}^∞ A(x) e^{i K x} \d x\quad K = k \frac{x'}{L} = k \sin θ
+   \end{align*}
+   Frauenhofer-Beugung:
+   Im Fernfeld ist die Winkelverteilung der Amplitude die Fouriertransformation der Amplitudenverteilung in der Bildebene
+   \[E(θ, t) \sim e^{-i ω t} ∫ A(x) e^{i K x} n\]
+   mit $K = k \sin θ = \frac{2 π}{λ} \sin θ$ \\
+   Damit berechne Einzelspalt (Breite $a$ von $-a/2$ nach $a/2$):
+   \begin{align*}
+   F(K) &= ∫_{-∞}^∞ A(x) e^{i K x} \d x \\
+   &= \frac{1}{a} ∫_{-a/2}^{a/2} e^{iK x} \d x = \frac{1}{r a K}\left[e^{i K x}\right]^{-a/2}_{a/2} \\
+   &= \frac{2}{Ka}\frac{e^{i K \frac{a}{2}} - e^{- i K \frac{a}{2}}}{2 i} = \frac{2}{K a} \sin(K \frac{a}{2}) \\
+   F(k) &\sim E(θ, t) \sim \frac{\sin(K \frac{a}{2})}{K \frac{a}{2}} \\
+   I(θ) &= I_0 (\frac{\sin(\frac{π a}{λ} \sin θ)}{\frac{π a}{λ} \sin θ})^2 \\
+   \intertext{mit}
+   I &\sim E^2, K = \frac{2 π}{λ} \sin θ = k \sin θ
+   \end{align*}
+   Doppelspalt, zentriert um Null, Abstand der Spaltmittelpunkte ist $d$, Spaltgröße ist $a$.
+   \begin{align*}
+   F(K) &= 2 \cos(K \frac{a}{2}) \frac{\sin(K \frac{a}{2})}{K \frac{a}{2}} \\
+   I(θ) &= 4 I_0 \cos^2 (K \frac{a}{2})(\frac{\sin(K \frac{a}{2})}{K \frac{a}{2}})^2 \\
+   K &= k \sin θ
+   &= \frac{2 π}{λ} \sin θ
+   \end{align*}
+   Gitter mit $m$ Spalte:
+   \[I(θ) \sim (\frac{\sin(m K \frac{a}{2})}{\sin(K \frac{a}{2})})^2 (\frac{\sin(K \frac{a}{2})}{K \frac{a}{2}})^2\]
+   Hauptmaxima: $\sin θ = n \frac{λ}{d}$ \\
+   Auflösungsvermögen: $\frac{λ}{Δ λ} \leq n m$
+** Reflexion und Brechung
+   Reflexion: Einfallswinkel = Ausfallswinkel, Beobachtung!
+   Ergibt sich aus Huygenschem Prinzip. Einfallende Wellenfromnt $AP$ trifft reflektierende Oberfläche zuerst im
+   Punkt $A$. Die von dort ausgehende Gugelwelle bildet zusammen mit den von $A'$ und $A''$ ausgehenden Wellen
+   zum Zeitpunkt $t$ die Wellenfront der reflektirten Welle BQ. ABP und ABQ kongruentn $\to θ_r = θ_i$.
+   Brechung:

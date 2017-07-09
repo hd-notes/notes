@@ -6,7 +6,7 @@
    \begin{align*}
    U_0 + U_{ind} &= I R \\
    U_0 - L \dot I &= I R \\
-   \intertext{Man erhält eine inhomogene, lineare Differentialgleichung erster Ordnung, Lösung: allgemeine Lösung der homogenen Differntialgleichung + spezielle Lösng der inhomogenen Differentialgleichung + Anfangsbedingungen}
+   \intertext{Man erhält eine inhomogene, lineare Differentialgleichung erster Ordnung, Lösung: allgemeine Lösung der homogenen Differentialgleichung + spezielle Lösung der inhomogenen Differentialgleichung + Anfangsbedingungen}
    ⇒ \dd{I}{t} + \frac{R}{L} I = \frac{U_0}{L} \\
    ⇒ I(t) = \frac{U_0}{R} + C e^{-\frac{R}{L}t}
    \end{align*}
@@ -56,7 +56,7 @@
 	  - Niedrige Frequenz $\to$ Lämpchen leuchtet
 	  -	Hohe Frequenz $\to$ Lämpchen aus
    $\to$ Kondensator und Spule verhalten sich wie frequenzabhängige Widerstände.
-   Quantitative Batrachtung:
+   Quantitative Betrachtung:
    1. Ohmscher Widerstand:
 	  \begin{align*}
 	  U_0(t) &= U_0 \cos ω t \\
@@ -102,8 +102,8 @@
 	  I(t) = I_0 \cos(ω t + \frac{π}{2}) \\
 	  I_0 = ω C U_0
       \end{align*}
-	  $⇒$ Strom läuft der Spannung um $\SI{90}{\degree}$ vorraus, da zuerst Ladung auf den Kondensator
-	  fließen muss, bevor Spannng an Kondensator abfällt.
+	  $⇒$ Strom läuft der Spannung um $\SI{90}{\degree}$ voraus, da zuerst Ladung auf den Kondensator
+	  fließen muss, bevor Spannung an Kondensator abfällt.
    Merke:
    - Ohmscher Widerstand: $Z_R = R, φ = \SI{0}{\degree}$
    - Induktiver Widerstand: $Z_L = ω L, φ = \SI{-90}{\degree}$
@@ -111,9 +111,9 @@
    - [@4] Blindleistung
 	  Kapazität:
 	  \[\v P = \frac{1}{T} ∫_0^T U_c(t) I_c(t) \d t = - \frac{1}{T} ∫_0^T U_0 I_0 \cos ω t \sin ω t \d t = 0\]
-	  Induktiviät:
+	  Induktivität:
       \[\v P = \frac{1}{T} ∫_0^T U_L(t) I_L(t) \d t = \frac{1}{T} ∫_0^T U_0 I_0 \underbrace{\cos ω t \sin ω t}_{\frac{1}{2} \sin 2 ω t} \d t = 0\]
-	  Die sogenannte Blindleistung verschwindet im Mittel, da die Energie zum Aufbau der (elektrischen und magnetischen) Felder wieder in den Generrator zurückfließt $\to$ Blindstrom.
+	  Die sogenannte Blindleistung verschwindet im Mittel, da die Energie zum Aufbau der (elektrischen und magnetischen) Felder wieder in den Generator zurückfließt $\to$ Blindstrom.
 	  Aber: Auch der Blindstrom macht Drähte warm und die Blindleistung muss temporär zur Verfügung gestellt werden. (Wichtig bei Auslegung von Netzwerken)
 ** Komplexe Darstellung
    Strom und Spannung im Wechselstromkreis:
@@ -161,7 +161,7 @@
    I(t)	&= ω C U_0 e^{i(ω t + π / 2)} = ω C U_0 e^{+ i π/2} e^{i ω t} \\
    &= i ω C U_0 e^{i ω t} = \hat I e^{i ω t}
    \end{align*}
-   Offenbar gilt: $\hat I = \hat U / \hat z$, wobei die Phase gegenüber der Spannug im komplexen Widerstand
+   Offenbar gilt: $\hat I = \hat U / \hat z$, wobei die Phase gegenüber der Spannung im komplexen Widerstand
    $\hat z$ steckt. $⇒$ Wechselstromwiderstände:
    \begin{align*}
    \hat Z_R &= R \\
@@ -214,7 +214,7 @@
    L \dot I + I R + Q / C &= 0 \\
    \intertext{Ableiten:}
    L \ddot I + R \dot I + \frac{1}{C} I &= 0 \\
-   \intertext{Gedämpfder harmonischer Oszillator:}
+   \intertext{Gedämpfter harmonischer Oszillator:}
    m \ddot + β \dot x + k x &= 0 \\
    \ddot x + 2 γ \dot x + ω_0^2 x = 0 \\
    ω_0^2 &= k / m \\
@@ -266,9 +266,9 @@
    U_1 &= U_0 \cos ω t \tag{Primärseite} \\
    U_1 + U_{ind,1} &= 0 \\
    U_1 &= - U_{ind,1} = N_1 \dot ϕ_m \\
-   \intertext{Magnetischer Fluß ist auf Primär und Sekundärseite gleich:}
+   \intertext{Magnetischer Fluss ist auf Primär und Sekundärseite gleich:}
    U_2 &= - U_{ind,2} = N_2 \dot ϕ_m = \frac{N_2}{N_1} U_1 \tag{Sekundärseite} \\
-   \intertext{Außerdem gilt bei Vernachlässigung vn Leistungsverlusten}
+   \intertext{Außerdem gilt bei Vernachlässigung von Leistungsverlusten}
    P &= U_1 I_1 = U_2 I_2 \\
    ⇒ I_2 &= \frac{N_1}{N_2} I_1
    \end{align*}
@@ -286,7 +286,7 @@
    Mögliche Verluste:
    - Wirbelströme
    - Streufelder
-   Konplizierter: belasteter Transformator (siehe Literatur, Übungen, Praktikum)
+   Komplizierter: belasteter Transformator (siehe Literatur, Übungen, Praktikum)
 ** Elektrische und magnetische Feldenergie
    Elektrische und magnetische Feldenergie: Elektrische Leistung im RC-Glied:
    \begin{align*}

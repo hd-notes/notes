@@ -29,3 +29,498 @@
 #+INCLUDE: "inner_product_space.org" :minlevel 1
 #+INCLUDE: "divisibility.org" :minlevel 1
 #+INCLUDE: "euclidean_rings.org" :minlevel 1
+* Normalformen von Endomorphismen
+  In diesem Abschnitt sei $K$ stets ein Körper und $n ∈ ℕ$. \\
+  Ziel: $A, B ∈ M(n × n, K)$
+  - Wann ist $A \approx B$ ?
+  - Suche möglichst einfache Vertreter der Äquivalenzklasse bezüglich "$\approx$" ($\to$ Normalformen)
+  In Termen von Endomorphismen: Gegeben sei $φ ∈ \End(V), V$ endlichdimensionaler K-Vektorraum. Wir suchen Basis $\mathcal{B}$ von $V$, sodass $M_{\mathcal{B}}(φ)$ möglichst eincah ist.
+  #+begin_defn latex
+  $A ∈ M(n × n, K)$.
+  \[P_A := t E_n - A ∈ M(n × n, K[t])\]
+  heißt die charakteristische Matrix von $A$.
+  #+end_defn
+  #+begin_note latex
+  Insbesondere ist $χ_A^{char} = \det(P_A)$.
+  #+end_note
+  #+ATTR_LATEX: :options [Satz von Frobenius]
+  #+begin_thm latex
+  $A, B ∈ M(n × n, K)$. Dann sind äquivalent:
+  1. $A \approx B$ (in $M(n × n, K)$)
+  2. $P_A \sim P_B$ (in $M(n × n, K[t])$)
+  #+end_thm
+  #+begin_proof latex
+  1. $⇒$ 2. Sei $A \approx B ⇒ ∃ S ∈ \GL(n, K): B = S A S^{-1}$
+	 \begin{align*}
+	 ⇒ P_B &= t E_n - B = t E_n - S A S^{-1} = S t E_n S {-1} - S A  S^{-1} \\
+	 &= S \underbrace{(t E_n - A)}_{= P_A} S^{-1} \\
+	 ⇒ P_B &\approx P_A ⇒ P_B \sim P_A
+     \end{align*}
+  2. $⇒$ 1. Sei	$P_A \sim P_B$:
+	 1. Wir konstruieren $R ∈ M(n × n, K)$ mit $A R = R B$: \\
+		$⇒ ∃ S, T ∈ \GL(n, K[t]): P_A = S P_B T^{-1}$, das heißt $S P_B = P_A T$
+		\[⇒ S(t E_n - B) = (t E_n - A) T\]
+		Wir schreiben $S, T$ in der folgenden Form:
+		\[S = \sum_{i = 0}^{m} t^i S_i, T = \sum_{i = 0}^{m} t^i T_i, \quad S_i, T_i ∈ M(n × n, K)\]
+		\begin{align*}
+		⇒ S(t E_n - B) &= \sum_{i = 0}^{m} t^i S_i(t E_n - B) = \sum_{i = 0}^{m} (t^{i + 1} S_i - t^i S_i B) \\
+		\string(t E_n - A\string) T &= (t E_n - A) \sum_{i = 0}^{m} t^i T_i = \sum_{i = 0}^{m} (t^{i + 1d T_i - t^i A T_i}) \\
+		⇒ \sum_{i = 0}^{m + 1} (S_{i - 1} - S_i B) t^i &= \sum_{i = 0}^{m + 1}(T_{i - 1} - A T_i) t^i \\
+		\intertext{wobei $S_{-1}, T_{-1}, S_{m + 1}, T_{m + 1} = 0$}
+		⇒ S_{i - 1} - S_i  b &= T_{i - 1} -  a T_i\qquad 0 \leq i \leq m + 1 \\
+		⇒ A^i S_{i - 1} - A^i S_i B &= A^i T_{i - 1} - A^{i + 1} T_i \qquad 0 \leq i \leq m + 1 \\
+		⇒ \sum_{i = 0}^{m + 1}(A^i S_{i - 1} - A^i S_i B) &= \sum_{i = 0}^{m + 1}(A^i T_{i - 1} - A^{i + 1} T_i) \\
+		&= (A^0 T_{-1} - A T_0) + (A T_0 - A^2 T_1) + \dots + (A^{m + 1} T_m - A^{m + 2} T_{m + 1}) \\
+		&= A^0 T_{-1} - A^{m + 2} T_{m + 1} = 0 \\
+		⇒ \sum_{i = 0}^{m + 1} A^i S_{i - 1} &= \sum_{i = 0}^{m + 1} A^i S_i B \\
+		⇒ \sum_{i = 1}^{m + 1} A^i S_{i - 1} &= \sum_{i = 0}^{m} A_i S_i B \\
+		⇒ A(\sum_{i = 0}^{m} A^i S_i) &= (\sum_{i = 0}^{m} A^i S_i) B \\
+		⇒ R &:= \sum_{i = 0}^{m} A^i S_i
+		\end{align*}
+        dann $A R = R B$.
+	 2. Wir zeigen $R ∈ \GL(n, K)$ (wegen $A R = R B$ ist dann $A = R B R^{-1}$, also $A \approx B$, fergit.)
+		Nach Vorraussetzung ist $S ∈ \GL(n, K[t])$ $⇒ ∃ M ∈ \GL(n, K[lt]): S M = E_n, M = \sum_{i = 0}^{m} t^i M_i$ mit $M_i ∈ M(n × n, K)$, ohne Einschränkung dasselbe $n$ wie vorhin.
+		Behauptung: Mit
+		\[N := \sum_{j = 0}^{m} B^j M_j ∈ M(n × n, K)\]
+		gilt $R N = E_n$ also $R ∈ \GL(n, K)$, denn: Es ist
+		\[R N = \sum_{j = 0}^{m} R B^j M_j\]
+		Wegen $R B = A R$ folgt $R B^j = R B B^{j - 1} = A R B^{j - 1} = \dots = A^j R$
+		\[⇒ R N = \sum_{j = 0}^{m} A^j R M_j = \sum_{j = 0}^{m} A^j (\sum_{i = 0}^{m} A^i S_i) M_j = \sum_{i,j = 0}^{m} A^{i + j} S_i M_j\]
+		Wegen $SM = E_n$ folgt
+		\[(\sum_{i = 0}^{m} t^i S_i)(\sum_{j = 0}^{m} t^j M_j) = E_n\]
+		\begin{align*}
+		⇒ S_0 M_0 + \sum_{k = 1}^{2m}(\sum_{i + j = k} S_i M_j) t^k &= E_n \\
+		⇒ S_0 M_0 = E_n, \sum_{i + j = k} S_i M_j &= 0 \quad k \geq 1 \\
+		⇒ R N = \sum_{i,j = 0}^{m} A^{i + j} S_i M_j &= S_0 M_0 + \sum_{k = 1}^{2m} A^k \underbrace{\sum_{i + j = k} S_i M_j}_{= 0} = S_0 M_0 = E_n
+		\end{align*}
+  #+end_proof
+  #+begin_remdef latex
+  $A ∈ M(n × n, K)$. Dann gilt:
+  1. Es gibt eindeutig bestimmte normierte Polynome $c_i(A), \dots, c_n(A) ∈ K[t]$ mit
+	 \[P_A \sim \begin{pmatrix}c_1(A) &   & 3 \\  & \ddots &   \\ 0 &   & c_n(A)\end{pmatrix}, \quad c_1(A) \mid c_2(A) \mid \dots \mid c_n(A)\]
+	 $c_1(A), \dots, c_n(A)$ heißen die *Invariantenteiler* von $A$.
+  2. Es gibt eindeutig bestimmte normierte Polynorme $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
+	 \[\Fit_l(A) = (d_l(A)) \quad l = 1, \dots, n\]
+	 Es ist \[d_l(A) = \ggT(\det(B) \mid B \text{ ist $l× l$ -Untermatrix von } P_A)\]. Insbesondere ist $d_n(A) = χ_A^{char}$.
+	 $d_1(A), \dots, d_n(A)$ heißen die *Determinantenteiler* von $A$.
+  #+end_remdef
+  #+begin_proof latex
+  1. Existenz: $K[t]$ ist ein Euklidischer Ring. Elementarteilersatz $⇒ ∃ \tilde c_1, \dots, \tilde c_r ∈ K[t]$:
+	 \[P_a \sim	 \begin{pmatrix} \tilde c_1 & & & & & \\ & \ddots & & & & \\ & & \tilde c_r & & & \\ & & & 0 & & \\ & & & & \ddots & \\ & & & & & 0\end{pmatrix}\qquad \tilde c_1 \mid \dots \mid \tilde c_r\]
+	 Es ist $\Fit_n(F_A) = (\det(P_A)) = (χ_A^{char}) \neq (0) \to r = 0$ und
+	 \[\Fit_n(P_A) = (\tilde c_1 · \dots · \tilde c_n)\]
+	 Da $\tilde c_1, \dots, \tilde c_n \neq 0$ eindeutig bis auf Assoziiertheit, existieren eindeutig bestimmte normierte Polynome $c_1(A), \dots, c_n(A)$ mit $c_1(A) \estimates \tilde c_1,  \dots, c_n(A) \estimates \tilde c_n$.
+	 \[⇒ P_A \sim \begin{pmatrix}c_1(A) &   &   \\   & \ddots &   \\   &   & c_n(A)\end{pmatrix}\]
+  2. $K[t]$ Hauptidealring $⇒ \Fit_l(P_A), l = 1, \dots, n$ sind Hauptideale und nach 27.16 ist $\Fit_l(P_A) = (c_1(A) · \dots · c_l(A))$ für $l = 1, \dots, n$, insbesondere $\Fit_l(P_a) \neq (0)$.
+	 Erzeuger der Hauptideale $\Fit_l(P_A)$ sind eindeutig bis auf Assoziiertheit. $⇒$ Es existieren eindeutig bestimmte normierte Polynome $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
+	 $\Fit_l(P_A) = (d_l(A))$ für $l = 1, \dots, n$. $
+     \[⇒ \Fit_l(P_A) = (\det(B) \mid B \text{ ist $l × l$ -Untermatrix von } A) = (d_l(A))\]
+	 mit $d_l(A)$ normiert und $\ggT(\dots)$ normiert $⇒$ Behauptung.
+  #+end_proof
+  #+begin_note latex
+  Also:
+  - Invatriantenteiler von $A$ = normierte Elementarteiler von $P_A$
+  -	Determinatenteiler von $A$ = normierte Erzeuger der Fittingideale von $P_A$.
+  #+end_note
+  #+begin_conc latex
+  $A ∈ M(n × n, K)$. Dann gilt: $d_l(A) = c_1(A) · \dots · c_l(A) ∀ l = 1, \dots, n$. Insbesondere gilt:
+  \[χ_A^{char} = d_n(A) = c_1(A) · \dots · c_n(A)\]
+  sowie
+  \[d_1(A) \mid \dots \mid d_n(A)\]
+  #+end_conc
+  #+ATTR_LATEX: :options [Invariantenteilersatz]
+  #+begin_thm latex
+  $A, B ∈ M(n × n, K)$. Dann sind äquivalent:
+  1. $A \approx B$
+  2. Die Invatiantenteiler von $A$ stimmen mit den Invariantenteilern von $B$ überein:
+     \[c_1(A) = c_1(B), \dots, c_n(A) = c_n(B)\]
+  3. Die Determinantenteiler von $A$ stimmen mit den Determinantenteilern von $B$ überein:
+     \[d_1(A) = d_1(B), \dots, d_n(A) = d_n(B)\]
+  #+end_thm
+  #+begin_proof latex
+  aus Satz von Probenius und Satz 27.18
+  #+end_proof
+  #+begin_ex latex
+  Sei
+  \[A = \begin{pmatrix}0 & 1 & 3 \\ 3 & 1 & -4 \\ -2 & 1 & 5\end{pmatrix} ∈ M(3 × 3, ℚ)\]
+  Es ist
+  \[P_A = \begin{pmatrix}t & -1 & -3 \\ -3 & t - 1 & 4 \\ 2 & -1 & t - 5\end{pmatrix} ∈ M(3 × 3, ℚ[t])\]
+  Bestimmung der Determinantenteiler von $A: d_1(A) = \ggT(-1, \dots) = 1$
+  \begin{align*}
+  d_2(A) &= \ggT((-1) · 4 - (-3)(t - 1), (-3)(-1) - 2(t-1), \dots) \\
+  &= \ggT(3t - 7, -2t + 5, \dots) = 1 \\
+  d_3(A) &= χ_A^{char} &= (t - 2)^3 \\
+  ⇒ c_1(A) &= 1, c_2(A) = 1, c_3(A) = (t - 2)^3
+  \end{align*}
+  Sei
+  \[B = \begin{pmatrix}1 & 1 & 2 \\ 1 & 1 & -2 \\ -1 & 1 & 4\end{pmatrix} ∈ M(3 × 3, ℚ) ⇒ P_B = \begin{pmatrix}t - 1 & -1 & -2 \\ -1 & t - 1 & 2 \\ 1 & -1 & t - 4\end{pmatrix}\]
+  Bestimme Invariantenteiler von $B$:
+  \begin{align*}
+  P_B &= \begin{pmatrix}t - 1 & -1 & -2 \\ -1 & t - 1 & 2 \\ 1 & -1 & t - 4\end{pmatrix} \sim \begin{pmatrix}-1 & t - 1 & 2 \\ t - 1 & -1 & -2 \\ 1 & -1 & t - 4\end{pmatrix} \\
+  &\sim \begin{pmatrix}-1 & t - 1 & 2 \\ 0 & \string(t - 1\string)^2 - 1 & -2 + 2\string(t - 1\string) \\ 0 & t - 2 & t - 2\end{pmatrix} \sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t^2 - 2t & 2t - 4 \\ 0 & t - 2 & t - 2\end{pmatrix} \\
+  &\sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & t - 2 \\ 0 & t^2 -2t & 2t - 4\end{pmatrix} \sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & t^2 - 2t & -t^2 + 3 t - 4\end{pmatrix} \\
+  &\sim \begin{pmatrix}-1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & -\string(t - 2\string)^2\end{pmatrix} \sim \begin{pmatrix}1 & 0 & 0 \\ 0 & t - 2 & 0 \\ 0 & 0 & \string(t - 2\string)^2\end{pmatrix} \\
+  ⇒ c_1(B) &= 1, c_2(B) = t - 2, c_3(B) = (t - 2)^2 \\
+  d_1(B) &= 1, d_2(B) &= t - 2, d_3(B) = (t - 2)^3
+  \end{align*}
+  #+end_ex
+  #+ATTR_LATEX: :options [28.7]
+  #+begin_remark latex
+  $A, B ∈ M(n × n, K)$, $K$ Teilkörper eines Körpers $L$, dann sind folgende Aussagen äquivalent
+  1. $A \approx B$ in $M(n × n, K)$
+  2. $A \approx B$ in $M(n × n, L)$
+  #+end_remark
+  #+begin_proof latex
+  Übung
+  #+end_proof
+  Ziel: Such möglichst einfache Matrizen, die vorgegebne Invarianten- beziehungsweise Determinantenteiler haben.
+  #+begin_defn latex
+  $g = t^2 + a_{n - 1} t^{n - 1} + \dots + a_1 t + a_0 ∈ K[t], n \geq 1$
+  \[\begin{pmatrix}0 &   &   &   & -a_0 \\ 1 & 0 &   &   & -a_1 \\   & 1 & \ddots &   & \vdots \\   &   & \ddots & 0 & -a_{n - 2} \\   &   &   & 1 & -a_{n - 1}\end{pmatrix}\]
+  heißt die *Begleitmatrix* zu $g$.
+  #+end_defn
+  #+begin_remark latex
+  $g ∈ K[t]$ nicht konstant, normiert. Dann	ist $c_1(B_g) = \dots = c_{n - 1}(B_g) = 1, c_n(B_g) = g$, also
+  \[P_{B_g} \sim \begin{pmatrix}1 &   &   &   \\   & \ddots &   &   \\   &   & 1 &   \\   &   &   & g\end{pmatrix}\]
+  $d_1(B_g) = \dots = d_{n - 1}(B_g) = 1, d_n(B_g) = χ_{B_g}^{char} = g$
+  #+end_remark
+  #+begin_proof latex
+  Sei $g = t^n + a_{n - 1} t^{n - 1} + \dots + a_0$
+  \[⇒ P_{B_g} = \begin{pmatrix}t &   &   &   & a_0  \\ -1 & t &   &   & a_1  \\   & -1 & \ddots &   & \vdots \\   &   & \ddots   & t & a_{n - 2} \\ & & & -1 & t + a_{n - 1}\end{pmatrix}\]
+  streiche erste Zeile, letzte Spalte von $P_{B_g}$, erhalte Untermatrix
+  \[C = \begin{pmatrix}-1 & t &   &   \\   & \ddots & \ddots &   \\   &   &  \ddots & t \\   &   &   & -1\end{pmatrix}\]
+  mit $\det(C) = (-1)^{n - 1} ⇒ d_{n - 1}(B_g) = 1 ⇒ d_1(B_g) = \dots = d_{n - 1}(B_g) = 1$, sowie $c_1(B_g) = \dots = c_{n - 1}(B_g) = 1$. Wir zeigen per Induktion nach $n$, dass $d_n(B_g) = χ_{B_g}^{char} = g$. \\
+  Induktionsanfang: $n = 1$: $g = t + a_0, B_g = (-a_0) ⇒ χ_{B_g}^{char} = t + a_0 = g$ \\
+  Induktionsschritt:
+  \begin{align*}
+  χ_{b_g}^{char} &= \det \begin{pmatrix}t &   &   & a_0 \\ -1 & \ddots &   & \vdots \\  & \ddots & t & a_{n - 2} \\   &   & -1 & t + a_{n - 1}\end{pmatrix} \\
+  &= t · \underbrace{\det\begin{pmatrix}t &   &   & a_1 \\ -1 & \ddots &   & \vdots \\  & \ddots & t & a_{n - 2} \\   &   & -1 & t + a_{n - 1}\end{pmatrix}}_{= a_1 + a_2 t + \dots + a_{n - 1} t^{n - 2} + t^{n - 1} =: \tilde g} + (-1)^{n + 1} a_0 \det	\underbrace{\begin{pmatrix}-1 & t &   &   \\   & \ddots & \ddots &   \\   &   &  \ddots & t \\   &   &   & -1\end{pmatrix}}_{= (-1)^{n - 1}} \\
+  &= a_1 t + a_2 t^2 + \dots + a_{n - 1} t^{n - 1} + t^n + a_0 = g
+  \end{align*}
+  #+end_proof
+  #+begin_remdef latex
+  $g_1, \dots, g_r ∈ K[t]$ normiert, nichtkonstant mit $g_1 \mid g_2 \mid \dots \mid g_r$, $n := \deg(g_1) + \dots + \deg(g_r)$
+  \[B_{g_1, \dots, g_r} := \begin{pmatrix}B_{g_1} &   &   &   \\   & B_{g_2} &   &   \\   &   & \ddots &   \\   &   &   & B_{g_r}\end{pmatrix} ∈ M(n × n K)\]
+  Dann gilt:
+  \begin{align*}
+  c_1(B_{g_1, \dots, g_r}) &= 1, \dots, c_{n - 1}(B_{g_1, \dots, g_r}) = 1 \\
+  c_{n - r + 1}(B_{g_1, \dots, g_r}) &= g_1, \dots, c_n(B_{g_1, \dots, g_r}) = g_r
+  \end{align*}
+  #+end_remdef
+  #+begin_proof latex
+  \begin{align*}
+  P_{B_{g_1, \dots, g_r}} &= \begin{pmatrix}P_{B_{g_1}} &   &   \\   & \ddots &   \\   &   & P_{B_{g_r}}\end{pmatrix} \sim \begin{pmatrix}
+  1 \\
+  & \ddots \\
+  & & 1 \\
+  & & & g_1 \\
+  & & & & \ddots \\
+  & & & & & 1 \\
+  & & & & & & \ddots \\
+  & & & & & & & 1 \\
+  & & & & & & & & g_r
+  \end{pmatrix} \\
+  &\sim \begin{pmatrix} 1 \\ & \ddots \\ & & 1 \\ & & & g_1 \\ & & & & \ddots \\ & & & & & g_r\end{pmatrix}
+  \end{align*}
+  #+end_proof
+  #+ATTR_LATEX: :options [Frobenius-Normalform]
+  #+begin_thm latex
+  $A ∈ M(n × n, K)$. Dann existiert ein eindeutig bestimmtes $r ∈ ℕ$ sowie eindeutig bestimmte normierte nichtkonstante Polynome $g_1, \dots, g_r ∈ K[t]$ mit $g_1 \mid \dots \mid g_r$ und
+  $A \approx B_{g_1, \dots, g_r}$. $g_1, \dots, g_r$ sind genau die nichtkonstanten Invariantenteiler von $A$. $B_{g_1, \dots, g_r}$ heißt die *Frobenius-Normalform* (FNF) von $A$.
+  #+end_thm
+  #+begin_proof latex
+  1. Existenz: Setze
+	 \begin{align*}
+     k &:= \max \{l ∈ \{1, \dots, n\} \mid c_l(A) = 1\} \\
+	 r &:= n - k \\
+	 g_i &:= g_{k + i}(A) ∀ i = 1, \dots, r \\
+	 ⇒ n &= \deg(χ_{A}^{char}) = \deg(d_n(A)) = \deg(c_1(A) · \dots · c_n(A)) = \deg(g_1 · \dots · g_r) \\
+  	 &= \deg(g_1) + \dots + \deg(g_r)
+     \end{align*}
+	 $⇒$ Die Invariantenteiler von $A$ stimmen mit den Invariantenteilern von $B_{g_1, \dots, g_r}$ überein $⇒ A \approx B_{g_1, \dots, g_r}$
+  2. Eindeutigkeit: $A \approx B_{g_1, \dots, g_r} \approx B_{k_1, \dots, k_s} ⇒ r = s ∧ g_1 = k_1, \dots, g_r = k_r$
+  #+end_proof
+  #+begin_ex latex
+  1. \[A = \begin{pmatrix}0 & 1 & 3 \\ 3 & 1 & -4 \\ -2 & 1 & 5\end{pmatrix} ∈ M(3 × 3, ℚ)\]
+	 $⇒ c_1(A) = 1, c_2(A) = 1, c_3(A) = (t - 2)^3 = t^3 - 6 t^2 + 12 t - 8 =: g_1$
+	 \[⇒ A \approx B_{g_1} = \begin{pmatrix}0 & 0 & 8 \\ 1 & 0 & -12 \\ 0 & 1 & 6\end{pmatrix}\]
+  2. \[A = \begin{pmatrix}1 & 1 & 2 \\ 1 & 1 & -2 \\ -1 & 1 & 4\end{pmatrix} ∈ M(3 × 3, ℚ)\]
+	 $⇒ c_1(A) = 1, c_2(A) = t - 2 =: g_1, c_3(A) = (t - 2)^2 = t^2 - 4 t + 4 =: g_2$
+	 \[⇒ A \approx B_{g_1, g_2} = \begin{pmatrix}2 & 0 & 0 \\ 0 & 0 & -4 \\ 0 & 1 & 4\end{pmatrix}\]
+  3. \[A = \begin{pmatrix}4 & -1 & -2 & -3 \\ -1 & 5 & 2 & -4 \\ 0 & 1 & 3 & -1 \\ -1 & 2 & 2 & 1\end{pmatrix} ∈ M(4 × 4, ℚ)\]
+	 $c_1(A) = 1, c_2(A) = 1, c_3(A) = t - 3 =: g_1, c_3(A) = (t - 3)^3(t - 2) = t^3 - 8t^3 + 21 t - 18 =: g_2$
+	 \[⇒ A \approx B_{g_1, g_2} = \begin{pmatrix}3 & 0 & 0 & 0 \\ 0 & 0 & 0 & 18 \\ 0 & 1 & 0 & -21 \\ 0 & 0 & 1 & 8\end{pmatrix}\]
+  #+end_ex
+  #+begin_remark latex
+  $A ∈ M(n × n, K)$. Dann ist $c_n(A) = χ_A^{min}$
+  #+end_remark
+  #+begin_proof latex
+  Übung.
+  #+end_proof
+  #+begin_remark latex
+  $g ∈ K[t], g = h_1 · \dots · h_k$ mit $h_1, \dots, h_k ∈ K[t]$ normiert, nicht konstant, paarweise teilerfremd
+  \[⇒ B_g \approx \begin{pmatrix}B_{h_1} &   &   \\   & \ddots &   \\   &   & B_{h_k}\end{pmatrix}\]
+  #+end_remark
+  #+begin_proof latex
+  1. Sei $C$ definiert als die rechte Seite, dann ist
+	 \[P_c = \begin{pmatrix}P_{B_{h_1}} &   &   \\   & \ddots &   \\   &   & B_{B_{h_k}}\end{pmatrix} \sim \begin{pmatrix} 1 \\ & \ddots \\ & & 1 \\ & & & h_1 \\ & & & & \ddots \\ & & & & & 1 \\ & & & & & & \ddots \\ & & & & & & & 1 \\ & & & & & & & & h_k\end{pmatrix} \sim \begin{pmatrix} 1 \\ & \ddots \\ & & 1 \\ & & & h_1 \\ & & & & \ddots \\ & & & & & h_k\end{pmatrix} =: H\]
+	 \[P_{B_g} \sim \begin{pmatrix}1 &   &   &   \\   & \ddots &   &   \\   &   & 1 &   \\   &   &   & g\end{pmatrix} =: G\]
+  2. $G, H$ haben dieselben Fittingideale, denn: Sei $n = \deg(g)$, insbesondere $G, H ∈ M(n × n, K[t])$
+	 - $\Fit_n(H) = (\det(H)) = (h_1 · \dots · h_k) = (g) = (\det(G)) = \Fit_n(G)$
+	 - $\Fit_1(G) = \dots = \Fit_{n - 1}(G) = (1)$
+	 - $\Fit_{n - 1}(H) \supseteq (h_1 · \dots · h_{i - 1} · h_{i + 1} · \dots · h_k \mid i = 1, \dots, k) = (1)$, also $\Fit_{n - 1}(H) = (1)$
+	   (da $h_1, \dots, h_k$) paarweise teilerfremd. Analog: $\Fit_{n - k + i}(H) = (1)$ für $i = 1, \dots, k - 2$. Klar: $\Fit_l(H) = (1)$ für $l = 1, \dots, n - k$
+  3. Wegen 2. ist $G \sim H ⇒ P_{B_g} \sim P_c ⇒ B_g \approx C$.
+  #+end_proof
+  #+ATTR_LATEX: :options [Weierstrass-Normalform]
+  #+begin_defthm latex
+  $A ∈ M(n × n, K)$. Dann existieren eindeutig bestimmte $m ∈ ℕ$, Polynome $h_1, \dots, h_m ∈ K[t]$, die Potenzen von irreduziblen, normierten Polynomen sind, sodass
+  \[A \approx B_{h_1, \dots, h_m}\]
+  $h_1, \dots, h_m$ sind bis auf Reihenfolge eindeutig bestimmt und heißen *Weierstrassteiler* von $A$. $B_{h_1, \dots, h_m}$ heißt eine *Weierstrass-Normalform* von $A$ (WNF). $h_1, \dots, h_m$ sind die	Potenzen
+  irreduzibler Polynome, die in den Primfaktorzerlegung der nichtkonstanten Invariantenteiler von $A$ auftauchen.
+  #+end_defthm
+  #+begin_proof latex
+  1. Existenz: (Algorithmus zuv Herstellung der Weierstrassnormalform) \\
+	 Seien $g_1, \dots, g_r ∈ K[t]$ die nichtkonstanten Invariantenteiler von $A$ (mit $g_1 \mid \dots \mid g_r$)
+	 \[A \approx B_{g_1, \dots, g_r} = \begin{pmatrix}B_{g_1} &   &   \\   & \ddots &   \\   &   & B_{g_r}\end{pmatrix}\]
+	 Nach 27.5 ist $K[t]$ ein faktorieller Ring, das heißt für $i = 1, \dots, r$ existieren paarweise teilerfremde Polynome
+	 $h_{i,1}, \dots, h_{i,k_i}$, deii Potenzen irreduzibler Polynome sind, sodass $g_i = h_{i,1} · \dots · h_{i,k_i}$
+	 \[\xRightarrow{28.14} A \approx \begin{pmatrix} B_{h_{1,1}} \\ & \ddots \\ & & B_{h_{1, k_1}} \\ & & & \ddots \\ & & & & B_{h_{r,1}} \\ & & & & & \ddots \\ & & & & & & B_{h_{r,k_r}}\end{pmatrix}\]
+  2. Eindeutigkeit von $m$ sowie von $h_1, \dots, h_m$ bis auf Reihenfolge. Sei
+	 \[A \approx \begin{pmatrix} B_{h_1} \\ & \ddots \\ & & B_{h_m}\end{pmatrix}\]
+	 wobei $h_1, \dots, h_m$ Potenzen irreduzibler Polynome. Wir sortieren $h_1, \dots, h_m$ so, dass $h_1 = p_1^{e_1}, \dots, b_k = p_{k}^{e_k}, p_1, \dots, p_k$ irreduzibel, normiert, paarweise verschieden,
+	 sodass alle weiteren $h_i$ Potenzen von $p_1, \dots, p_k$ sind mit kleinerem oder gleichem Exponenten. Setze $f_1 := \kgV(h_1, \dots, h_m) = h_1 · \dots · h_k, h_1, \dots, h_k$ paarweise	teilerfremd, $f_1$ normiert vom Grad $\geq 1$.
+	 \[A \approx \begin{pmatrix}B_{f_1} &   &   &   \\   & B_{h_{k + 1}} &   &   \\   &   & \ddots &   \\   &   &   & B_{h_m}\end{pmatrix}, f_1 · h_{k + 1} · \dots · h_m = h_1 · \dots · h_m\]
+	 Wende dieses Verfahren auf die Matrix
+	 \[\begin{pmatrix}B_{h_{k + 1}} &   &   \\   & \ddots &   \\   &   & B_{h_m}\end{pmatrix}\]
+	 an: Nach Umsortieren von $h_{k + 1}, \dots, h_m$ wie oben erhalten wir $f_2 ∈ K[t]$ mit
+	 \[A \approx \begin{pmatrix} B_{f_1} \\ & B_{f_2} \\ & & B_{h_l} \\ & & & \ddots \\ & & & & B_{h_m}\end{pmatrix}, f_2 \mid f_1, f_1 f_2 h_l · \dots · h_m = h_1 · \dots · h_m\]
+	 $f_2$ normiert vom Grad $\geq 1$. Iteriere dieses Verfahren, dies bricht ab, erhalte normierte Polynome $f_1, \dots, f_r$ vom Grad $\geq 1$, sodass $f_r \mid f_{r - 1} \mid \dots \mid f_1, f_1 · \dots · f_r = h_1 · \dots · h_m$ und
+	 \[A \approx \begin{pmatrix} B_{f_1} \\ & \ddots \\ & & B_{f_r} \end{pmatrix} \approx \begin{pmatrix} B_{f_r} \\ & \ddots \\ & & B_{f_1} \end{pmatrix} = B_{f_r, \dots, f_1}\]
+	 Eindeutigkeit der Frobeniusnormalform $⇒$ $f_1, \dots, f_r$ eindeutig bestimmt. Über die Faktoren von $f_1, \dots, f_r$ bekommt man $m$ und $h_1, \dots, h_n$ (bis auf Reihenfolge) zurück. $⇒ m$
+	 eindeutig bestimmt, $h_1, \dots, h_m$ eindeutig bis auf Reihenfolge.
+  #+end_proof
+  #+begin_ex latex
+  1. \[A = \begin{pmatrix}-2 & 1 & 5 \\ 1 & 1 & -2 \\ 3 & 1 & 6\end{pmatrix} ∈ M(3 × 3, ℚ)\]
+	 $⇒c_1(A) = 1, c_2(A) = 1, c_3(A) = (t - 1)(t - 2)^2$. Mit $h_1 = t - 1, h_2 = (t - 2)^2 = t^2 - 4 t + 4$ ist
+	 \[A \approx B_{h_1, h_2} = \begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & -4 \\ 0 & 1 & 4\end{pmatrix}\]
+	 (Weierstrassnormalform von $A$)
+  2. (vergleiche 28.6.2)
+	 \[A = \begin{pmatrix}4 & -1 & -2 & 3 \\ -1 & 5 & 2 & -4 \\ 0 & 1 & 3 & -1 \\ -1 & 2 & 2 & 1\end{pmatrix} ∈ M(4 × 4, ℚ)\]
+	 $⇒ c_1(A) = 1, c_2(A) = 1, c_3(A) = t - 3, c_4(A) = (t - 3)^2(t - 2)$. Mit $h_1 := t - 3, h_2 := (t - 3)^2 = t^2 - 6t + 9, h_3 := t - 2$ ist
+	 \[A = B_{h_1, h_2, h_3} = \begin{pmatrix}3 & 0 & 0 & 0 \\ 0 & 0 & -9 & 0 \\ 0 & 1 & 6 & 0 \\ 0 & 0 & 0 & 2\end{pmatrix}\]
+	 (Weierstrassnormalform von $A$)
+  #+end_ex
+  Ziel: Einfachere Normalform, falls $χ_A^{char}$ in Linearfakotren zerfällt (und damit alle Weierstrassteiler Potenzen linearer Polynome sind.)
+  #+begin_remdef latex
+  $λ ∈ K, f = (t - λ)^e ∈ K[t]$. Dann gilt:
+  \[B_f \approx \begin{pmatrix}λ &   &   & 0 \\ 1 & \ddots &   &   \\   & \ddots & \ddots &   \\ 0 &   & 1 & λ\end{pmatrix} =: J(λ, e) ∈ M(e × e, K)\]
+  ($e = 1: J(λ, 1) = (λ)$). Eine Matrix der Form $J(λ, e)$ heißt *Jordanmatrix* über $K$.
+  #+end_remdef
+  #+begin_proof latex
+  Sei $J := J(λ, e)$
+  \[⇒ P_J = \begin{pmatrix}t - λ &   &   &   \\ -1 & \ddots &   &   \\ & \ddots & \ddots &   \\   &   & -1 & t - λ\end{pmatrix} ⇒ d_e(J) = (t - λ)^e\]
+  Es ist
+  \[\det(\begin{pmatrix}t - λ &   &   &   \\ -1 & \ddots &   &   \\ & \ddots & \ddots &   \\   &   & -1 & t - λ\end{pmatrix}) = (-1)^{e - 1} ⇒ d_{e - 1} = 1\]
+  $\xRightarrow{28.4} d_1(J) = \dots = d_{e - 2}(J) = 1$. $⇒$ Determinantenteiler von $J$ stimmen mit Determinatenteilern von $B_f$ überein $\xRightarrow{\text{Invariantenteilersatz}} B_f \approx J$
+  #+end_proof
+  #+ATTR_LATEX: :options [Jordansche Normalform]
+  #+begin_defthm latex
+  $A ∈ M(n × n, K), χ_A^{char}$ zerfalle in $K[t]$ in Linearfaktoren. Dann existieren Jordanmatrixen $J_1 = J(λ_1, e_1), \dots, J_m = J(λ_m, e_m)$ über $K$, sodass
+  \[A \approx \begin{pmatrix}J_1 &   &   \\   & \ddots &   \\   &   & J_m\end{pmatrix} =: J\]
+  Hierbei sind $λ_1, \dots, λ_m$ die (nicht notwendigerweise verschiedenen) Eigenwerte von $A$ (= Nullstellen von $χ_A^{char}$). $J_1, \dots, J_m$ sind bis auf Reihenfolge eindeutig bestimmt.
+  Die Matrix $J$ heißt eine *Jordansche Normalform* (JNF) von $A$.
+  #+end_defthm
+  #+begin_proof latex
+  1. Existenz: Es ist $χ_A^{char} = d_n(A) = c_1(A) · \dots · c_n(A) ⇒ c_1(A), \dots, c_n(A)$ zerfallen alle in Linearfaktoren. $⇒$ Alle Weierstrassteiler $h_1, \dots, h_m$ von $A$ sind Potenzen von linearen Polynomen
+	 $h_i = (t - λ_i)^{e_i}$ für ein $λ_i ∈ K, e_i . ℕ$. Wegen $h_1 · \dots · h_m = c_1(A) · \dots · c_n(A) = χ_A^{char}$ sind die $λ_i$ genau die Eigenwerte von $A$. Setze $J_i := J(λ_i, e_i) \xRightarrow{28.17} B_{h_i} \approx J(λ_i, e_i) ∀ i = 1, \dots, m$.
+	 \[⇒ A \approx \begin{pmatrix}B_{h_1} &   &   \\   & \ddots &   \\   &   & B_{h_m}\end{pmatrix} \approx \begin{pmatrix}J_1 &   &   \\   & \ddots &   \\   &   & J_m\end{pmatrix}\]
+  2. Eindeutigkeit von $J_1, \dots, J_m$ bis auf Reihenfolge: folgt aus	Eindeutigkeit der Weierstrassnormalform bis auf Reihenfolge von $h_1, \dots, h_m$
+  #+end_proof
+  #+begin_note latex
+  - Üblicherweise gruppiert man in der Jordanschen Normalform	Jordanmatrizen zu gleichen Eigenwerten zusammen. (zu einem Block mit aufsteigenden $e_i$ 's)
+  -	Es gilt: $A$ diagonalisierbar $⇔$ Jordansche Normalform von $A$ ist eine Diagonalmatrix (denn: "$\impliedby$" trivial "$⇒$" da Diagonalmatrizen bereits in Jordanscher Normalform sind) (mit $1 × 1$ - Jordanmatrizen)
+  #+end_note
+  #+ATTR_LATEX: :options [Algorithmus zur Jordanschen Normalform]
+  #+begin_algrthm latex
+  *Eingabe:* $A ∈ M(n × n, K)$, sodass $χ_A^{char}$ in Linearfaktoren zerfällt. \\
+  *Ausgabe:* Jordansche Normalform von $A$. \\
+  *Durchführung:*
+  1. Bestimme die nicht konstanten Invariantenteiler von $g_1, \dots, g_r$ von $A$.
+  2. Bestimme die Primfaktorzerlegung
+	 \[g_i = (t - λ_{i,1})^{m_{i,1}} · \dots · (t - λ_{i, k_i})^{m_{i,k_i}}\]
+  3. Erhalte:
+	 \[A \approx \begin{pmatrix}J(λ_{1,1}, m_{1,1}) &   &   \\   & \ddots &   \\   &   & J(λ_{r, k_r}, m_{r, k_r})\end{pmatrix}\]
+  4. Gruppiere Jordanmatrizen zu gleichen Eigenwerten zusammen (jeweils nach aufsteigender Größe geordnet.)
+  #+end_algrthm
+  #+ATTR_LATEX: :options [28.20]
+  #+begin_ex latex
+  1. (vergleiche 28.16.2)
+	 \[A = \begin{pmatrix}4 & -1 & -2 & 3 \\ -1 & 5 & 2 & -4 \\ 0 & 1 & 3 & -1 \\ -1 & 2 & 2 & 1\end{pmatrix} ∈ M(4 × 4, ℚ)\]
+	 $⇒ c_1(A) = 1, c_2(A) = 1, c_3(A) = t - 1 =: g_1, c_4(A) = (t - 3)^2 (t - 2) =: g_2$. Weierstrassteiler von $A$: $h_1 = t - 3, h_2 = (t - 3)^2, h_3 = t -2$
+	 \[⇒ A\approx B_{h_1, h_2, h_3} = \begin{pmatrix}B_{h_1} &   &   \\   & B_{h_2} &   \\   &   & B_{h_3}\end{pmatrix} \approx \begin{pmatrix}J(3, 1) &   &   \\ & J(3, 2) & \\   &   & J(2, 1)\end{pmatrix} = \begin{pmatrix}3 & 0 & 0 & 0 \\ 0 & 3 & 0 & 0 \\ 0 & 1 & 3 & 0 \\ 0 & 0 & 0 & 2\end{pmatrix}\]
+  2. (vergleiche 28.6)
+	 \[A = \begin{pmatrix}0 & 1 & 3 \\ 3 & 1 & -4 \\ -2 & 1 & 5\end{pmatrix} ∈ M(3 × 3, ℚ) ⇒ c_1(A) = 1, c_2(A) = 1, c_3(A) = (t - 2)^3\]
+	 $⇒$ Weierstrassteiler von $A$: $h_1 = (t - 2)^3$
+	 \[⇒ A \approx B_{h_1} = J(2, 3) = \begin{pmatrix}2 & 0 & 0 \\ 1 & 2 & 0 \\ 0 & 1 & 2\end{pmatrix}\]
+  3. \[A = \begin{pmatrix}1 & 1 & 2 \\ 1 & 1 & -2 \\ -1 & 1 & 4\end{pmatrix} ∈ M(3 × 3, ℚ)\]
+	 $⇒ c_1(A) = 1, c_2(A) = t - 2, c_3(A) = (t - 2)^2$ $⇒$ Weierstrassteiler von $A$: $h_1 = t - 2, h_2 = (t - 2)^2$
+	 \[⇒ A \approx B_{h_1, h_2} = \begin{pmatrix}B_{h_1} &   \\   & B_{h_2}\end{pmatrix} \approx \begin{pmatrix}J(2, 1) &   \\   & J(2,2)\end{pmatrix} \begin{pmatrix}2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 1 & 2\end{pmatrix}\]
+  #+end_ex
+* Moduln
+  In diesem Abschnitt sei $R$ sets ein kommutativer Ring.
+  #+ATTR_LATEX: :options [Modul]
+  #+begin_defn latex
+  Eine Menge $M$ zusammen mit einer Verknüpfung
+  \[+: M × M \to M, (x, y) ↦ x + y\]
+  (genannt *Addition*) und einer äußeren Verknüpfung
+  \[·: R × M \to M, (a, x) × a x\]
+  (genannt *skalare Multiplikation*) heißt ein *R-Modul*, wenn gilt:
+  - (M1) $(M, +)$ ist eine abelsche Gruppe, Das neutrale Element bezeichnen wir mit $0$, das Inverse zu $x ∈ M$ mit $- x$.
+  - (M2) Die skalare Multiplikation ist in folgender Weise mit den Verknüpfungen auf $M$ und $R$ verträglich:
+	- $(a + b)  x = a x + b x$
+	- $a(x + y) = a x + a y$
+	- $(a b) x = a (b x)$
+	- $1 · x = x$
+	$∀ a, b ∈ R, x, y . M$
+  #+end_defn
+  #+begin_ex latex
+  1. $K$ Körper, $V$ K-Vektorraum $⇒$ $V$ ist ein K-Modul.
+  2. $(G, +)$ abelsche Gruppe wird zum $ℤ$ -Modul durch
+	 \[ℤ × G \to G, (n, g) ↦ \begin{cases} \underbrace{g + \dots + g}_{n \text{ -mal}} & n ∈ ℕ \\ 0 & n = 0 \\ -\underbrace{(g + \dots + g)}_{n \text{ -mal}} & -n ∈ ℕ\end{cases}\]
+	 Umgekhert ist jeder $ℤ$ -Modul eine abelsche Gruppe bezüglich "+".
+  3. $I ⊆ R$ Ideal $⇒$ $I$ ist ein $R$ -Modul (Addition: auf $I$ eingeschränkte Addition von $R$, skalare Multiplikation: $R × I \to I, (a, x) ↦ a x$).
+	 Insbesondere ist $R$ ein $R$ -Modul.
+  4. $I ⊆ R$ Ideal $⇒ \faktor{R}{I}$ ist ein $R$ -Modul (skalare Multiplikation: $R × \faktor{R}{I} \to \faktor{R}{I}, (a, \bar x) ↦ \overline{a x}$)
+  5. $K$ Körper, $V$ K-Vektorraum, $φ ∈ \End(V) ⇒ V$ ist $K[t]$ -Modul via skalare Multiplikation:
+	 \[K[t] × V \to V, (f, v) ↦ f(φ)(v)\]
+  #+end_ex
+  #+begin_defn latex
+  $M, N$ R-Moduln, $φ: M \to N$. $φ$ heißt R-Modul-*Homomorphisum* $\xLeftrightarrow{\text{Def}}$ Für alle $x, y ∈ M, a ∈ R$ gilt:
+  \begin{align*}
+  φ(x + y) &= φ(x) + φ(y) \\
+  φ(a x) &= a φ(x)
+  \end{align*}
+  $φ$ heißt (R-Modul)-*Isomorphimus* $\xLeftrightarrow{\text{Def}}$ $φ$ ist ein bijektiver R-Modul-Homomorphismus. $∃$ ein Isomorphismus zwischen $M, N$, so scheiben wir $M \cong N$.
+  #+end_defn
+  #+begin_defn latex
+  $M$ R-Modul, $N ⊆ M$. $N$ heißt ein *Untermodul* von $N \xLeftrightarrow{\text{Def}}$ Folgende Bedingungen sind erfüllt:
+  - (U1) $0 ∈ N$
+  - (U2) $x, y ∈ N ⇒ x + y ∈ N$
+  -	(U3) $a ∈ R, x ∈ N ⇒ a x ∈ N$
+  #+end_defn
+  #+begin_ex latex
+  1. $K$ Körper, $V$ K-Vektorraum $⇒$ Untermoduln von $V$ = Untervektorraum von $V$
+  2. $M = R$ als R-Modul $⇒$ Untermodul von $M$ = Ideale in $R$.
+  #+end_ex
+  #+begin_remdef latex
+  $M$ R-Modul, $N ⊆ M$ Untermodul. Dann gilt: Durch $x \sim y \xLeftrightarrow{\text{Def}} x - y ∈ N$ ein eine Äquivalentzrelation definiert.
+  Die Äquivalenzklasse $\bar x$ von $x ∈ M$ ist gegeben durch
+  \[\bar x = x + N = \{x + y \mid y ∈ N\}\]
+  Die Menge aller Äquivalenzklassen bezeichenn wir mit $\faktor{M}{N}$.
+  $\faktor{M}{N}$ wird mit den Verknüpfungen
+  \begin{align*}
+  &+: \faktor{M}{N} × \faktor{M}{N} \to \faktor{M}{N}, \bar x + \bar y := \overline{x + y} \\
+  &·: R × \faktor{M}{N} \to \faktor{M}{N}, a · \bar x := \overline{a x}
+  \end{align*}
+  zu einem R-Modul, dem *Faktormodul* $\faktor{M}{N}$. Die *kanonische Projektion*
+  \[π: M \to \faktor{M}{N}, x ↦ \bar x\]
+  ist ein surjektiver R-Modulhomomorphismus
+  #+end_remdef
+  #+begin_proof latex
+  analog zu K-Vektorraum, vergleiche 13.7,13.8
+  #+end_proof
+  #+begin_remdef latex
+  $M, N$ R-Moduln, $φ: M \to N$ Homomorphismus. Dann gilt:
+  1. $\ker φ := \{x ∈ M \mid φ(x) = 0\}$ ist ein Untermodul von $M$.
+  2. $φ$ ist injektiv $⇔ \ker φ = \{ 0\}$
+  3. $\im φ := φ(M)$ ist ein Untermodul von $N$.
+  4. $\coker φ := \faktor{N}{\im φ}$ heißt der *Cokern* von $φ$, es gilt: $φ$ surjektiv $⇔$ $\coker φ = \{0\}$
+  5. (Homomorphiesatz) $φ$ induziert einen Isomorphismus
+	 \[Φ: \faktor{M}{\ker φ} \to \im φ, x + \ker φ ↦ φ(x)\]
+  #+end_remdef
+  #+begin_proof latex
+  analog wie für K-Vektorraum.
+  #+end_proof
+  #+begin_remdef latex
+  $M$ R-Modul, $(M_i)_{i ∈ I}$ Familie von Untermoduln von $M$. Dann gilt:
+  1. \[\sum_{i = I} M_i := \{\sum_{i ∈ I} x_i \mid x_i ∈ M_I, x_i = 0 \text{ für fast alle } i ∈ I\}\]
+	 ist ein Untermodul von $M$ und heißt die *Summe* der $M_i, i ∈ I$.
+  2. \[∩_{i ∈ I} M_i\] ein ein Untermodul von $M$.
+  #+end_remdef
+  #+begin_proof latex
+  nachrechnen.
+  #+end_proof
+  #+begin_remdef latex
+  $(M_i)_{i ∈ I}$ Familie von R-Moduln. Dann gilt:
+  1. \[\prod_{i ∈ I} M_i := \{(x_i)_{i ∈ I} \mid x_i ∈ M_i\}\]
+	 wird mit komponentenweiser Addition und skalarer Multiplikation ein R-Modul, das *direkte Produkt* der $M_i, i ∈ I$
+  2. \[\oplus_{i ∈ I} M_i := \{(x_i)_{i ∈ I} \mid x_i ∈ M_i, x_i = 0 \text{ für fast alle } i ∈ I\}\]
+	 wird mit komponentenweiser Addiiton und skalarer Multiplikation ein R-Modul, die *direkte Summe* der $M_i, i ∈ I$
+  Falls $I$ endlich, dann ist
+  \[\prod_{i ∈ I} M_i = \oplus_{i ∈ I} M_i\]
+  Spezialfall:
+  \[R^n = \oplus_{i = 1}^n R\]
+  #+end_remdef
+  #+begin_proof latex
+  nachrechnen.
+  #+end_proof
+  #+begin_note latex
+  Zusammenhang zur direkten Summe von Untervektorräumen aus LA1: Sei $M$ R-Modul, $M_1, M_2 ⊆ M$ Untermoduln
+  \[M_1 \oplus M_2 = \{(m_1, m_2) \mid m_1 ∈ M_1, m_2 ∈ M_2\}\]
+  $⇒$ Erhaltne surjektiven Homomorphisums
+  \[φ: M_1 \oplus M_2 \to M_1 + M_2, (m_1, m_2) ↦ m_1 + m_2\]
+  ist $M_1 ∩ M_2 = \{0\}$, dann ist
+  \[\ker φ = \{(m_1, m_2) ∈ M_1 \oplus M_2 \mid m_1 + m_2 = 0\} = \{0\}\]
+  denn: $m_1 + m_2 = 0 ⇒ m_1 = - m_2 ∈ M_1 ∩ M_2 = \{0\}$, also $m_1 = m_2 = 0$.
+  das heißt wir erhalten einen Isomorphismus von R-Moduln $M_1 \oplus M_2 \cong M_1 + M_2$. Insbesondere: ist $M_1 + M_2 = M, M_1 ∩ M_2 = \{0\}$, dann
+  ist $M_1 \oplus M_2 \cong M$.
+  #+end_note
+  #+begin_remdef latex
+  $I ⊆ R$ Ideal, $M$ R-Modul, $(x_i)_{i ∈ I}$ Familie von Elementen aus	$M$. Dann gilt:
+  1. \[J M := \{\sum_{i = 1}^{n} a_i · x_i \mid a_i ∈ I, x_i ∈ M, n ∈ ℕ\}\]
+	 ist ein Untermodul von $M$.
+  2. \[\Lin((x_i)_{i ∈ I}) := \{\sum_{i ∈ I} a_i x_i \mid a_i ∈ R, a_i = 0 \text{ für fast alle } i ∈ I\}\] ist ein Untermodul von $M$, die
+	 *lineare Hülle* von $(x_i)_{i ∈ I}$.
+  #+end_remdef
+  #+begin_defn latex
+  $M$ R-Modul, $(x_i)_{i ∈ I}$ Familie von Elementen aus $M$. $(x_i)_{i ∈ I}$ heißt
+  - *Erzeugendensystem* von $M \xLeftrightarrow{\text{Def}} M = \Lin((x_i)_{i ∈ I})$.
+  - *linear unabhängig* $\xLeftrightarrow{\text{Def}}$ aus
+	\[\sum_{i ∈ I} a_i x_i = 0\]
+	wobei $a_i ∈ R, a_i = 0$ für fast alle $i ∈ I$ folgt $a_i = 0 ∀ i ∈ I$
+  - *Basis* von $M \xLeftrightarrow{\text{Def}} (x_i)_{i ∈ I}$ ist ein linear unabhängiges Erzeugendessystem von $M$.
+  $M$ heißt
+  - *endlicherzeugt* $\xLeftrightarrow{\text{Def}}$ $M$ besitzt ein endliches Erzeugendessystem
+  - *frei* $\xLeftrightarrow{\text{Def}}$ $M$ besitzt eine Basis
+  -	*endlichfrei* $\xLeftrightarrow{\text{Def}}$ $M$ besitzt eine endliche Basis
+  #+end_defn
+  #+begin_ex latex
+  1. $K$ Körper $⇒$ Jeder K-Vektorraum ist frei
+  2. $R$ ist freier R-Modul ($(1)$ ist eine Basis)
+  3. Sei $n ∈ ℕ, n > 1$
+	 - $\faktor{ℤ}{nℤ}$ ist endlicherzeugtes $ℤ$ -Modul, denn:
+	   - $\faktor{ℤ}{n ℤ}$ ist als abelsche Gruppe ein $ℤ$ -Modul.
+	   - $\Lin((\bar 1)) = \{r · \bar 1 \mid r ∈ ℤ\} = \{\bar r \mid r ∈ ℤ\} = \faktor{ℤ}{nℤ}$. $(\bar 1)$ ist ein Erzeugendessystem von $ℤ$ als $ℤ$ -Modul.
+	   - $\faktor{ℤ}{nℤ}$ ist kein freier $ℤ$ -Modul, denn: Sei $x = \bar a ∈ \faktor{ℤ}{nℤ} ⇒ n x = n \bar a = \overline{n a} = \bar 0$, aber $n \neq 0$.
+		 $⇒ (x)$ linear abhängig $⇒$ Jede Familie $\neq ()$ von $\faktor{ℤ}{nℤ}$ ist linear abhängig. Insbesondere kann $\faktor{ℤ}{nℤ}$ keine Basis als $ℤ$ -Modul haben.
+	   Beachte: Als $\faktor{ℤ}{n ℤ}$ -Modul ist $\faktor{ℤ}{nℤ}$ frei (siehe 2.)
+  #+end_ex
+  Fazit: Es gibt Moduln, die keine Basis haben.
+  #+begin_remark latex
+  $M$ freier R-Modul, $\mathcal{B} = (x_i)_{i ∈ I}$ Basis von $M$. Dann	existiert ein Modulisomorphisums
+  \[Φ_{\mathcal{B}}: \oplus_{i ∈ I} R \to M, (a_i)_{i ∈ I} ↦ \sum_{i ∈ I} a_i x_i\]
+  (beachte: $a_i = 0$ für fast alle $i ∈ I$)
+  #+end_remark
+  #+begin_proof latex
+  - $Φ_{\mathcal{B}}$ Homomorphismus: klar
+  - $Φ_{\mathcal{B}}$ surjektiv, denn: $\mathcal{B}$ Erzeugendessystem von $M$
+  -	$Φ_{\mathcal{B}}$ injektiv, denn: $\mathcal{B}$ linear unabhängig
+  #+end_proof
+  #+begin_note latex
+  - Man kann zeigen: Sind $(x_i)_{i ∈ I}, (y_j)_{j ∈ J}$ Basen des freien R-Moduls $M$, dass existiert eine Bijektion $I \to J$, das heißt $\abs{I} = \abs{J}$.
+	Wir werden obige Aussage in 30 für endlich freie Moduln über Hauptidealringe zeigen.
+  - Man kann zeigen: $M$ endlicherzeugt $⇔ M$ endlich frei
+  -	Achtung: Es gilt im Allgemeinen kein Analogon des Basisauswahlsatzes: $(2, 3)$ ist ein Erzeugendensystem des freien $ℤ$ -Moduls $ℤ$ wegen $1 = (-1) · 2 + 1 · 3$,
+	aber weder $(2)$ noch $(3)$ sind Basen von $ℤ$.
+  #+end_note

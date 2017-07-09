@@ -26,11 +26,11 @@
    Sei $D ⊂ ℝ^n$ offen, $f: D \to ℝ^n$ stetig differenzierbar. Bezeichnung: $J(x) = f'(x): ℝ^n \to ℝ^{n × n}$ (Jacobi-Matrix).
    Vorüberlegung: Taylor-Entwicklung von $f$ um eine Näherungslösung $x_k ∈ D$:
    \[f(x_k + Δ x_k) = f(x_k) + J(x_k) Δ x_k + \mathcal{o}(\norm{Δ x_k}) \overset{!}{=}\]
-   Abegleitete Iterationsvorschrift:
+   Abgeleitete Iterationsvorschrift:
    - Löse $J(x_k) Δx_k = - f(x_k)$
    - Schritt $x_{k + 1} = x_k + Δ x_k$
    Insbesondere Fall $n = 1$: $J(x_k) Δ x_k = - f(x_k)$ $\to$ $Δ x_k + x_k$ = Nullstelle der Tangente an der Stelle $x_k$.
-** Konvergenzverhalen iterativer Mathode (Spezialfall $n = 1$)
+** Konvergenzverhalten iterativer Methoden (Spezialfall $n = 1$)
    #+begin_defn latex
    Ein Iterationsverfahren zur Berechnung von
    \[x_{\ast} = \lim_{k \to ∞}  x_k\]
@@ -57,3 +57,86 @@
    #+begin_proof latex
    Skript
    #+end_proof
+   Wiederholung: $f: D ⊂ ℝ^n \to ℝ^n, J(x) = f'(x) ∈ ℝ^{n × n}$
+   Suche $x ∈ D: f(x) = 0$
+   - $n = 1$: Bisektion, (stabil)
+   - Newton-Typ-Verfahren: $x_0 ∈ D, M(x) J(x) \approx E_n$
+	 \[J(x_k) Δ x_k = - f(x_k) \mid Δ x_k = - M(x_k) f(x_k) \to x_{k + 1} = x_k + Δ k\]
+	 lokal quadratische Konvergenz für $M(x) J(x) = E_n$
+   #+ATTR_LATEX: :options [Lokaler Kontraktionssatz von Bock]
+   #+begin_thm latex
+   Sei
+   \[\mathcal{N} := \{(x, y) ∈ D^2 \mid y = x - M(x) f(x)\}\]
+   Es Existiere ein $ω < ∞$ so, dass für alle $(x, y) ∈ \mathcal{N}, t ∈ [0, 1]$
+   \[\norm{M(y)[J(x + t(y - x)) - J(x)](x - y)} \leq ω t \norm{y - x}^2\]
+   und ein $κ < 1$ so, dass für alle $(x, y) ∈ \mathcal{N}$
+   \[\norm{M(y)[E_n - J(x) M(x)]f(x)} \leq κ \norm{y - x}\]
+   Mit $c_k := κ + ω / 2 \norm{Δ x_k}$ gelte $x_0 < 1$ und
+   \[D_0 := \{y ∈ ℝ^n \mid \norm{y - x_0} \leq \frac{\norm{Δ x_0}}{1 - c_0}\} ⊂ D\]
+   Dann bleibt $x_k ∈ D_0$ und $\lim_{k \to ∞} x_k = x_{\ast}$ existiert. Weiterhin gilt:
+   \[\norm{Δ x_{k + 1}} \leq c_k \norm{Δ x_k} = κ \norm{Δ x_k} + \frac{ω}{2}\norm{Δ x_k}^2\]
+   die a-priori Fehlerabschätzung
+   \[\norm{x_{k + j} - x_{\ast}} \leq \frac{(c_k)^j}{1 - c_k} \norm{Δ x_k} \leq \frac{(c_0)^{k + j}}{1 - c_0} \norm{Δ x_0}\]
+   und $M(x_{\ast})f(x_{\ast}) = 0$. Ist $M(x)$ stetig in $x_{\ast}$ und $M(x_{\ast})$ invertierbar, so gilt $f(x_{\ast}) = 0$
+   #+end_thm
+   #+begin_proof latex
+   $c_0 < 1 ⇒ x_0, x_1 ∈ D_0$. Sei $x_{k + 1} ∈ D_0$ und $c_k < 1$. Dann gilt
+   \begin{align*}
+   \norm{Δ x_k} &= \norm{M(x_{k + 1})f(x_{k + 1})} \\
+   &= \norm{M(x_{k + 1})[f(x_k) - J(x_k)M(x_k)f(x_k)] + M(x_{k + 1})[f(x_{k + 1}) - f(x_k) + J(x_k)M(x_k)f(x_k)]} \\
+   &\leq κ \norm{x_{k + 1} - x_k} + \norm{M(x_{k + 1})∫_0^1 \dd{}{t} f(x_k + t Δ x_k) \d t - J(x_k) Δ x_k} \\
+   &\leq κ\norm{Δ x_k} + ∫_0^1 \norm{M(x_{k + 1})[J(x_k + t(x_{k + 1} - x_k)) - J(x_k)]Δ x_k} \d t \\
+   &\leq κ \norm{Δ x_k} + \frac{ω}{2} \norm{Δ x_k}^2 = c_k \norm{Δ x_k} \\
+   ⇒ c_{k + 1} &= κ + \frac{ω}{2} \norm{Δ x_{k + 1}} \leq κ + c_k \frac{ω}{2} \norm{Δ x_k} = c_k - \frac{ω}{2} \norm{Δ x_k} \\
+   ⇒ c_{k + 1} &\leq c_k - \underbrace{(1 - c_k)\frac{ω}{2} \norm{Δx_k}}_{> 0} \leq c_k \\
+   ⇒ \norm{x_{k + 2} - x_0} &= \norm{x_{k + 2} - x_{k + 1} + x_{k + 1} \dots - x_0} \\
+   &\leq \sum_{j = 0}^{k + 1} \norm{Δ x_j} \leq \sum_{j = 0}^{k + 1}(c_0)^j \norm{Δ x_0} \\
+   &\leq \frac{\norm{Δ x_0}}{1 - c_0} \\
+   ⇒ x_k ∈ D_0, k = 0, 1, \dots, \tag{Induktion}
+   \end{align*}
+   $(x_k)$ ist Cauchyfolge, wegen
+   \begin{align*}
+   \norm{x_{k + 1j} - x_k} &\leq \sum_{i = k}^{k + j - 1} \norm{Δ x_i} \leq \sum_{i = 0}^{j - 1} (c_0)^k \norm{Δ x_i}
+   &\leq (c_0)^k \frac{\norm{Δ x_0}}{1 - c_0}
+   \end{align*}
+   $⇒$ $(x_k)$ konvergiert,
+   \[\lim_{k \to ∞} x_k = x_{\ast}\]
+   \begin{align*}
+   \norm{x_{k + j} - x_{\ast}} &\leq \norm{x_{k + j} - x_{k + j + 1} + x_{k + j + 1} - \dots x_{\ast}} \\
+   &\leq \sum_{i = 0}^{∞} \norm{x_{k + j + 1 + 1} - x_{k + j + i}} = \sum_{i = 0}^{∞} \norm{Δ x_{k + j + 1}} \\
+   &\leq \sum_{i = 0}^{∞} (c_k)^i \norm{Δ x_{k + j}} \leq \frac{(c_k)^j}{1 - c_k} \norm{Δ x_k}
+   \end{align*}
+   Weiterhin $x^{\ast} = x^{\ast} - M(x^{\ast}) f(x^{\ast}) ⇒ M(x^{\ast}) f(x^{\ast}) = 0$
+   #+end_proof
+   Diskussion:
+   - Ist $f(x) = J x + b$ (affin linear) so ist $ω = 0$. $ω$ ist ein Maß für die Nichtlinearität von $f$.
+   - Für das Newton-Verfahren ($M(x)J(x) = E_n$) gilt $κ = 0$, das heißt $κ$ ist ein Maß für die Kompatibilität von $M$ und $J$
+   - Das Newton Verfahren für $f(x) = J x - b$ ($J$ invertierbar) konvergiert in einem Schritt ($ω = κ = 0$)
+   Sukzessive Approximation \\
+   Wahl: $M(x) = C^{-1}$ mit $C ∈ ℝ^{n × n}$. $κ$ -Bedingung: $x - y ∈ \mathcal{N}$, das heißt $y - x = - C_1^{-1} f(x)$
+   \[\norm{C^{-1}[E_n - J(x) C^{-1}] f(x)} = \norm{[I_n - C^{-1}J(x)](y - x)} \overset{!}{\leq} κ \norm{y - x}\]
+   ist erfüllt für
+   \[\norm{E_n - C^{-1} J(x)} \leq κ < 1\]
+   Für hinreichend kleines $\norm{Δx_0}$, das heißt in der Nähe einer Lösung gilt:
+   \[c_0 = κ + \frac{ω}{2} \norm{Δ x_0} < 1\]
+   und
+   \[\norm{x_k - a_{\ast}} \leq \frac{(c_0)^k}{1 - c_0} \norm{Δ x_0}\]
+   Betrachtung als Fixpunktiteration (FP1)
+   \begin{align*}
+   g(x) &:= x - C^{-1} f(x)	\\
+   x_{k + 1} &= g(x_k) \quad k = 0, 1, \dots \\
+   ⇒ g'(x) &= E_n - C^{-1} J(x)
+   \end{align*}
+   $⇒$ Zu jedem Fixpunkt $x_{\ast} ∈ D$ von $x$ mit $\norm{g'(x)} < 1$ gibt es eine Umgebung
+   \[K_ρ(x_{\ast}) = \{x ∈ ℝ^n \mid \norm{x - x_{\ast}} \leq ρ\} ⊂ D\]
+   sodass $κ \leq c_0 < 1$ auf $K_ρ(x_{\ast})$ (statt $D$).
+   Wiederholung: $f(x) = 0,x ∈ ℝ^n, x_{k + 1} = x_k - M(x_k) f(x)$.
+   - Lokaler Kontraktionssatz
+	 - $ω$: Maß für die Nichtlinearität
+	 - $κ$: Maß für Kompatibilität von $M$ und $f':= J$
+	 ist $\norm{Δ x_0}$ klein genug: dann konvergiert $(x_k) \to x^{\ast}$
+	 - $c_k = κ + \frac{ω}{2} \norm{Δ x_k} \overset{!}{<} 1$
+	 - $\norm{Δx_{k + 1}} \leq c_k \norm{Δ x_k}$
+	 - apriori Fehlerabschätzung
+	   \[\norm{x_k - x_x} \leq \frac{(c_0)^k}{1 - c_0} \norm{Δ x_0}\]
+   - Fixpunktiteration: $M(x) = C^{-1}$
