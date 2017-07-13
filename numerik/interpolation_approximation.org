@@ -527,7 +527,7 @@
    \[∀ f ∈ H ∃! g ∈ S: \norm{f - g} \leq \min_{φ ∈ S} \norm{f - φ}\]
    Äquivalent: $e := f - g \perp S ⇔ (f - g, φ) = 0 ∀ φ ∈ S$ \\
    Orthogonalisiere Basis $\{ψ_1, \dots, ψ_n\}$ von $S$ mit Gram-Schmidt
-   \[\tilde φ_i = \begin{cases} ψ_i & i = 1 \\ ψ_i - \sum_{j = 1}^{i - 1} \frac{(ψ_i, \tilde φ_j)}{\norm{\tilde φ_j}^2} \tilde φ_j & i = n, \dots, n\end{cases}\]
+   \[\tilde φ_i = \begin{cases} ψ_i & i = 1 \\ ψ_i - \sum_{j = 1}^{i - 1} \frac{(ψ_i, \tilde φ_j)}{\norm{\tilde φ_j}^2} \tilde φ_j & i = 2, \dots, n\end{cases}\]
    Normalisieren: $φ_k = \norm{\tilde φ_n}^{-1} \tilde φ_k$.
    $(φ_1, \dots, φ_k)$ Orthogonalbasis $⇒ (φ_i, φ_j) = δ_{ij}$
    \[⇒ g = \sum_{k = 1}^{n} (f, φ_k) φ_k\]

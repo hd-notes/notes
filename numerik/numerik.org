@@ -257,3 +257,140 @@
   \[(1 + μ)λ = -(1 - μ)\]
   \[⇒ \abs{λ} = \abs{\frac{μ - 1}{μ + 1}} < 1\]
   #+end_proof
+  Wiederholung: SOR $A x = b, A = D + L + R$
+  \[x_j^t = (1 - ω)x_j^{t - 1} + \frac{ω}{a_{jj}}(b_j - \sum_{k < j} a_{jk} x_k^t - \sum_{k > j} a_{jk} x_k^{t - 1})\quad j = 1, \dots, n\]
+  \begin{align*}
+  ⇒ x^t &= (1 - ω)x^{t - 1} + ω D^{-1}(b - L x^t - R x^{t - 1}) \\
+  ⇒ (D + ω L) x^t &= ((1 - ω)D - ω R)x^{t - 1} + ωb \\
+  ⇒ x^t &= \underbrace{(D + ω L)^{-1}((1 - ω)D - ω R)}_{H_{ω}}x^{t - 1} + ω(D + ω L)^{-1} b
+  \end{align*}
+  - SOR konvergiert für $A$ symmetrisch positiv definit $ω ∈ (0, 2)$
+  - $ω = 1$: Gauß-Seidel
+  -	$ω$ optimal ist schwer zu finden
+  *Abstiegsverfahren* \\
+  Vorraussetzung: $A$ symmetrisch, positiv definit.
+  \begin{align*}
+  ⇒ (A x, y)_2 &= (x, A y)_2 ∀ x, y ∈ ℝ^n \\
+  \string(A x, x\string)_2 &> 0 ∀ x ∈ ℝ^{n} \setminus \{0\}
+  \end{align*}
+  #+ATTR_LATEX: :options [$A$ -Skalarprodukt, $A$ -Norm]
+  #+begin_defn latex
+  \[(x, y)_A = (A x, y), \norm{x}_A = \sqrt{(A x, x)}\]
+  #+end_defn
+  Erinnerung: $A$ hat nur reelle Eigenwerte
+  \[0 < λ := λ_1 \leq \dots \leq λ_n =: Λ\]
+  und die Eigenvektoren $\{ω_1, \dots, ω_n\} ⊂ ℝ^n$
+  sind eine Orthonormalbasis von $ℝ^n$
+  \[⇒ \spr(A) = Λ, \cond_2(A) = \frac{Λ}{λ}\]
+  #+begin_thm latex
+  Sei $A ∈ ℝ^{n × n}$ symmetrisch, positiv definit. Dann gilt $A x = b$ genau dann, wenn
+  \[Q(x) \leq Q(y) ∀ y ∈ ℝ^{n} \setminus \{x\}\]
+  mit
+  \[Q(y) = \frac{1}{2}(Ay, y) - (b, y)\]
+  #+end_thm
+  #+begin_proof latex
+  1. Sei $A x = b$ für $x \neq y$ folgt
+	 \begin{align*}
+	 Q(y) - Q(x) &= \frac{1}{2}((A y, y) - 2(b, y) - (Ax, x) + 2(b, x)) \\
+	 &= \frac{1}{2}((A y, y) - 2(A x, y) + (A x, x)) \\
+	 &= \frac{1}{2}(A(x - y), x - y) > 0
+   	 \end{align*}
+  2. $x$ ist Minimum von $Q ⇒ \grad Q(x) = 0$
+	 \begin{align*}
+	 \pp{Q}{x_i}(x) &= \frac{1}{2}\pp{}{p_i} \sum_{j,k = 1}^{n} a_{jk} x_j x_k - \pp{}{x_i} \sum_{k = 1}^{n} b_k x_k \\
+	 &= \sum_{k = 1}^{n} a_{ik} x_k - b_i = 0\quad i = 1, \dots, n \\
+  	 ⇒ A x &= b \\
+	 ⇒ \grad Q(y) &= \frac{1}{2}(A + A^T) y - b = A y - b \tag{negativer Defekt}
+     \end{align*}
+  #+end_proof
+  Iteration:
+  \[x^{t + 1} = x^t + α_t r^t\]
+  mit Abstiegsrichtung $r^t ∈ ℝ^n$ \\
+  und Schrittweite $α_t ∈ ℝ$. Schrittweitenbestimmung: zum Beispiel Liniensuche
+  \begin{align*}
+  Q(x^{t + 1}) &= \min_{α ∈ ℝ} Q(x^t + α r^t) \\
+  ⇒ 0 &\overset{!}{=} \dd{}{α}Q(x^t + α r^t) \\
+  &= \grad Q(x^t + α r^t) r^t \\
+  &= (A(x^t + α r^t) - b, r^t) \\
+  &= (A x^t - B, r^t) + α (A r^t, r^t) \\
+  ⇒ αt &= - \frac{(^t, r^t)_2}{(r^t, r^t)_A} \\
+  g^t &:= \grad Q(x^t) = A x^t - b
+  \end{align*}
+  #+ATTR_LATEX: :options [Allgemeines Abstiegsverfahren]
+  #+begin_defn latex
+  Gegeben $x^0 ∈ ℝ^n$
+  - Gradint $g^t = A x^t - b$, Abstiegsrichtung $r^t$
+  - Schrittweite
+	\[α_t = - \frac{(g^t, r^t)}{(A r^t, r^t)}\]
+  - Iteration: $x^{t + 1} = x^t + α_l r^t$
+  Ökonomischer:
+  \begin{align*}
+  g^0 &= A x^0 - b \\
+  t \geq 0 : α_t &= \frac{(g^t, r^t)}{(A r^t r^t)} \\
+  x^{t + 1} &= x^t + α_t r^t \\
+  g^{t + 1} &= g^t + α_l A r^t
+  \end{align*}
+  #+end_defn
+  Beobachtung:
+  \begin{align*}
+  \norm{y - x}_A^2 - \norm{x}_A^2 = (A(y - x), y - x) - (A x, x) \\
+  &= (A(y - x), A^{-1}A(y - x)) - (A x, A^{-1} A x) \\
+  &= \norm{A y - b}_{A^{-1}}^2 - \norm{b}_{A^{-1}}^2 \\
+  &= (A y, y) - (A y, x) - (A x,y) \\
+  &= (A y, y) - 2(b, y) = 2 Q(y)
+  \end{align*}
+  $⇒$ Minimierung von $Q$ minimiert Defektnorm $\norm{A y - b}_{A^{-1}}$ und Fehlernorm $\norm{y - x}_A$. \\
+  Gradientenverfahren: Richtung des	steilsten Abstiegs
+  \[r^t = -\grad Q(x^t) = - g^t\]
+  Iteration: $x^0 ∈ ℝ^n, g^0 = A x^0 - b$. $t \geq 0$:
+  \begin{align*}
+  α_t &= \frac{\norm{g^t}^2}{(A g^t, g^t)} \\
+  x^{t + 1} &= x^t - α_t g^t \\
+  g^{t + 1} &= g^t - α_t A g^t
+  \end{align*}
+  Ist $(A g^t, g^t) = 0$ folgt $g^t = 0 ⇒ A x^t = b$.
+  #+ATTR_LATEX: :options [Gradientenverfahren]
+  #+begin_thm latex
+  Ist $A ∈ ℝ^{n × n}$ symmetrisch, positiv definit, so konvergiert das Gradientenverfahren für alle $x^0 ∈ ℝ^n$ gegen die Lösung von $A x = b$
+  #+end_thm
+  #+begin_proof latex
+  Fehlerfunktional
+  \[E(y) = \norm{y - x}_A^2 = (y - x, A[y - x]), y ∈ ℝ^n\]
+  Fehler $e^t = x^t - x$
+  \begin{align*}
+  ⇒ \frac{E(x^t) - E(x^{t + 1})}{E(x^t)} &= \frac{(e^t, A e^t) - (e^{t + 1}, A e^{t + 1})}{(e^t, A e^t)} \\
+  &= \frac{(e^t, A e^t) - (e^t - α_t g^t, A[e^t - α_t g^t])}{(e^t, A e^t)} \\
+  &= \frac{2 α_t(e^t, A g^t) - α_t^2(g^t, A g^t)}{(e^t, A e^t)} \\
+  &= \frac{2 α_t \norm{g^t}^2 - α_t^2(g^t, A g^t)}{(g^t, A^{-1} g^t)} \\
+  &= \frac{2 \frac{\norm{g^t}^2}{(A g^t, g^t)} \norm{g^t}^2 - \frac{\norm{g^t}^4}{(A g^t, g^t)}}{(g^t, A^{-1} g^t)} \\
+  &= \frac{\norm{g^t}^4}{(g^t, A g^t)(g^t, A^{-1} g^t)}
+  \end{align*}
+  $A$ symmetrisch, positiv definit $⇒ λ \norm{y}^2 \leq (y, A y) \leq Λ \norm{y}^2$
+  \[Λ^{-1} \norm{y}^2 \leq (y, A^{-1} y) \leq λ^{-1} \norm{y}^2\]
+  Ist $x^t \neq x$, das heißt $E(x^t) \neq 0$ und $g^t \neq 0$ folgt:
+  \[\frac{\norm{g^t}^4}{(g^t, A g^t)(g^t, A^{-1} g^t)} \geq \frac{\norm{g^t}^4}{Λ \norm{g^t}^2 λ^{-1} \norm{g^t}^2} = \frac{λ}{Λ}\]
+  $⇒ E(x^{t + 1}) \leq [1 - κ^{-1}] E(x^t), κ := \cond_2(A)$. Wegen $0 < 1 - κ^{-1} < 1$ konvergiert $E(x^t) \xrightarrow{t \to ∞} 0$ für alle
+  $x_0 ∈ ℝ^n ⇒ x^t \xrightarrow{t \to ∞} x$
+  #+end_proof
+  #+ATTR_LATEX: :options [Lemma vovn Kantorovich]
+  #+begin_lemma latex
+  Sei $A ∈ ℝ^{n × n}$ symmetrisch positiv definit mit $λ, Λ > 0$ kleinster / gröhter  eigenwert. Dann
+  \[4 \frac{λ Λ}{(λ + Λ)^2} \leq \frac{\norm{y^4}}{(y, A y)(y, A^{-1} y)}\]
+  #+end_lemma
+  #+begin_proof latex
+  Skript.
+  #+end_proof
+  #+ATTR_LATEX: :options [Fehlerabschätzung]
+  #+begin_thm latex
+  Für das Gradientenverfahren gilt die Fehlerabschätzung
+  \[\norm{x^t  - x}_A \leq (\frac{1 - κ^{-1}}{1 + κ^{-1}})^t \norm{x^0 - x}_A, t ∈ ℕ\]
+  #+end_thm
+  #+begin_proof latex
+  \[E(x^{t + 1}) = (1 - \frac{\norm{g^t}^4}{(g^t, A g^t)(g^t, Λ^{-1} g^t)}) E(x^t)\]
+  \begin{align*}
+  ⇒ E(x^{t + 1}) &\leq (1 - 4 \frac{λ Λ}{(λ + Λ)^2})E(x^t) \\
+  &= \frac{λ^2 + 2λ Λ + Λ^2 - 4λ Λ}{(λ + Λ)^2}E(x^t) = (\frac{λ - Λ}{λ + Λ})^2 E(x^t) \\
+  ⇒ \norm{x^t - x}_A^2 &\leq (\frac{Λ - λ}{Λ + λ})^{2t} \norm{x^0 - x}_A^2
+  \end{align*}
+  #+end_proof
+  $A x = b ⇔ \underbrace{K^{-1} A K^{-1T}}_{\tilde A} \underbrace{K^T x}_{\tilde x} = \underbrace{K^{-1} b}_{\tilde b}$

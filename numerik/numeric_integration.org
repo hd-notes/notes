@@ -138,7 +138,7 @@
    #+begin_thm latex
    Gegeben sei ein Skalarprodukt auf $C[a, b]$
    \[(f, g)_ω = ∫_a^b f(x) g(x) ω(x) \d x\]
-   mit integrierbarer Gewichtsfunktion $ω(x) \geq 0, x ∈ (a, b)$ mit höchstens endlich vielen Nullstellen. Dann haben die mittels Gram-Schmidt aus \{1, x^1, \dots\} bezüglich $(·,·)_ω$ orthogonalisierten Polynome
+   mit integrierbarer Gewichtsfunktion $ω(x) \geq 0, x ∈ (a, b)$ mit höchstens endlich vielen Nullstellen. Dann haben die mittels Gram-Schmidt aus $\{1, x^1, \dots\}$ bezüglich $(·,·)_ω$ orthogonalisierten Polynome
    $\{p_0, p_1, \dots\}$ lauter reelle, einfache Nullstellen in $[a, b]$
    #+end_thm
    #+begin_proof latex

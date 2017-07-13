@@ -430,7 +430,7 @@
    Für $f: D \to \bar ℝ$ mit Eigenschaft $(Z)$ definieren wir
    \begin{align*}
    \ubar J(f) &= \underline{∫_D} f(x) \d x := \sup_{\substack{Z ∈ \mathcal{Z}(D) \\ Z \succ Z^{\ast}}} \ubar S_Z \\
-   \bar J(f) &= \overline{f_D} f(x) \d x := \inf_{\substack{Z ∈ \mathcal{Z(D)} \\ Z \succ Z^{\ast}}} \bar S_Z
+   \bar J(f) &= \overline{∫_D} f(x) \d x := \inf_{\substack{Z ∈ \mathcal{Z(D)} \\ Z \succ Z^{\ast}}} \bar S_Z
    \end{align*}
    #+end_defn
    #+begin_remark latex
@@ -454,7 +454,7 @@
    #+end_defn
    #+begin_remark latex
    Das Lebesgue-Integral ist eine Erweiterung von Riemann-Integral:
-   \[f(x) = \begin{cases} 1 & x ∈ ℚ ∩ [0, 1] \\ 0 x ∈ [0, 1] {setminus ℚ}\end{cases}\]
+   \[f(x) = \begin{cases} 1 & x ∈ ℚ ∩ [0, 1] \\ 0 x ∈ [0, 1] {\setminus ℚ}\end{cases}\]
    nicht Riemann-Integral, aber Lebesgue-Integrierbar
    \[∫_0^1 f(x) \d x = 0\]
    Notationen
@@ -512,4 +512,80 @@
 	  \[\underline{∫_D} f(x) \d x \geq \sum_{k = 1}^{m} \underline{∫_{B_k}} f(x) \d x\]
 	  \[⇒ \underline{∫_D} f(x) \d x \geq \sum_{k = 1}^{∞} \underline{∫_{B_k}} f(x) \d x \geq \underline{∫_D} f(x) \d x\]
 	  Analog für die Obersumme.
+   #+end_proof
+   *Integrabilitätskriterien* \\
+   #+ATTR_LATEX: :options [messbare Funktion]
+   #+begin_defn latex
+   Sei $D ⊂ ℝ^n$ Lebesgue-messbar, $f: D \to \bar ℝ$ heißt Lebesgue-messbar, wenn für jedes $α ∈ ℝ$ die folgende Mengen Lebesgue-messbar sind
+   \[N_{>α} (f) := \{x ∈ D \mid f(x) > α\}\]
+   (äquivalente Definition mit $<, \leq, \geq$)
+   #+end_defn
+   #+ATTR_LATEX: :options [4.27]
+   #+begin_lemma latex
+   Sind die Funktionen $f_k: D \to \bar ℝ$ messbar, so sind die folgende Funktionen messbar:
+   \begin{align*}
+   f_{inf}(x) &:= \inf_{k} f(k)(x), \quad f_{liminf} := \liminf_k f_k(x) \\
+   f_{sup}(x) &:= \sup{k} f(k)(x), \quad f_{limsup} := \limsup_k f_k(x) \\
+   \end{align*}
+   #+end_lemma
+   #+begin_proof latex
+   Die Beziehungen
+   \[\{x ∈ D \mid f_{inf}(x) > α\} = ∩_k \{x ∈ D \mid f_k(x) > α\}\]
+   \[\{x ∈ D \mid f_{sup}(x) > α\} = ∪_k \{x ∈ D \mid f_k(x) > α\}\]
+   und die Eigenschaften der $σ$ -Algebra von $Lμ$ liefert die Messbarkeit von $f_{inf}$ und $f_{sup}$. Aus
+   \[f_{liminf} = \sup_k \inf_{i \geq k} f_i(x)\]
+   \[f_{limsup} = \inf_k \sup_{i \geq k} f_i(x)\]
+   folgt die Messbarkeit von $f_{liminf}, f_{limsup}$
+   #+end_proof
+   #+begin_lemma latex
+   Ist $f: D \to \bar ℝ$ Lebesgue integrierbar, $D$ Lebesgue Messbar, so ist $f$ messbar.
+   #+end_lemma
+   #+begin_proof latex
+   Lebesgue-Integrierbarkeit von $f$ (aufgrund von $(Z)$ Bedingung) $⇒ ∃ Z^{\ast} = \{B^{\ast}\}$ von $D$ mit $\bar S_{Z^{\ast}}(\abs{f}) < ∞$. Seien $Z_k = \{B_i^k\}$ Zerlegungen mit $Z^{\ast} \succ Z_1 \succ Z_2 \dots$ und
+   \[\bar S_{Z_k}(f) - \ubar S_{Z_k}(f) < \frac{1}{k}\]
+   Dann
+   \[\lim_{k\to ∞} \ubar S_{Z_k}(f) = J(f) < \lim_{k \to ∞} \bar S_{Z_k} < \lim_{k \to ∞} \bar S_{Z_k}(f)\]
+   Wir definieren Treppenfunktion
+   \[g_k(x) := \sum_{i = 1}^{∞} \inf_{B_i^k} f χ_{B_i^k}(x),\quad G_k(x) = \sum_{i = 1}^{∞} \sup_{B_i^k} f χ_{B_i^k}(x)\]
+   $N_{>α}(g_k)$ und $N_{>α}(G_k) ∀ α ∈ ℝ$ sind Lebesgue -messbar und
+   \begin{align*}
+   \ubar S_{Z_k}(f) &= \ubar S_{Z_k}(g_k) \\
+   \bar S_{Z_k}(f) &= \bar S_{Z_k}(G_k)
+   \end{align*}
+   $g_k, G_k$ bilden monotone Folgen. Die punktweisen Grenzen
+   \begin{align*}
+   g &:= \lim_{k \to ∞} g_k \\
+   G &:= \lim_{k \to ∞} G_k
+   \end{align*}
+   sind messbar. Es gilt $g \leq f \leq G$ und
+   \begin{align*}
+   S_{Z_k}(f) &= S_{Z_k}(g_k) \leq \ubar S_{Z_k}(g) \leq \bar S_{Z_k}(g) = \ubar S_{Z_k}(G) \\
+   &\leq \bar S_{Z_k}(G) \_eq \bar S_{Z_k}(G_k) = \bar S_{Z_k}(f)
+   \end{align*}
+   $⇒g, G ∈ \mathcal{L}(D)$ mit $J(f) = J(g) = J(G)$. Aus $0 \leq G - g ∈ \mathcal{L}(D)$ und $J(G - g) = 0$ folgt $G - g = 0$ in $D$. $⇒ f = g$ in $D$ und dann auch messbar
+   #+end_proof
+   #+begin_lemma latex
+   Ist $f: D \to \bar ℝ$ messbar und $φ: ℝ \to ℝ$ stetig, so sit die Komposition $φ \circ f$ auch messbar.
+   #+end_lemma
+   #+begin_proof latex
+   (ohne Beweis)
+   #+end_proof
+   #+begin_remark latex
+   Damit sind für messbare Funktionen $f, g:D \to \bar ℝ$ auch die folgenden Funktionen messbar: $f^{+}, f^{-}, \abs{f}^p (p > 0), α f, α < ℝ, f + g, 1/f (f \neq 0)$
+   #+end_remark
+   #+begin_thm latex
+   Ist $D ⊂ ℝ$ Lebesgue-messbar, $f: D \to \bar ℝ$ Lebesgue messbar mit der Eigenschaft $(Z)$ und $\ubar J(f) < ∞$, so ist $f$ Lebesgue-integrierbar.
+   Insbesondere $f: D \to \bar ℝ$ Lebesgue-integrierbar, wenn sie eine Lebesgue-integrierbare Majorante hat, das heißt $\abs{f} < g$.
+   #+end_thm
+   #+begin_proof latex
+   Annahme $μ(D) < ∞$. $∀ ε > 0$:
+   \begin{align*}
+   B_k^ε &:= \{x ∈ D \mid ε k \_eq f(x) < ε(k + 1)\}\quad k ∈ ℤ \\
+   B_{∞} &= \{x ∈ D \mid \abs{f(x)} = ∞\}
+   \end{align*}
+   Die Mengen $B_k^ε$ sind messbar und $B_{∞}$ ist eine Nullmenge. $B_k^ε, B_∞$ bilden eine disjunkte Zerlegung $Z_ε$ von $D$
+   \[ε k \leq \inf_{λ ∈ B_i^ε} f(x) \leq \sup_{x ∈ B_k^ε} f(x) \leq ε(k + 1)\]
+   \[\bar S_{Z_ε}(f) = \sum_{k ∈ ℤ} \sup_{x ∈ B_k^ε} f(x) μ(B_k^ε) \leq \sum_{k ∈ ℤ} (\inf_{x ∈ B_k^ε} f(x) + ε)μ(B_k^ε) \leq \ubar S_{Z_k}(f) + ε μ(D)\]
+   Vorraussetzung: $\ubar J(f) = \sup_{Z} \ubar S_{Z}(f) < ∞ ⇒ f$ ist Lebesgue-integrierbar. Im Fall $μ(D) = ∞$, nehmen wir Zerlegung $Z = \{B_i\}$ mit $μ(B_i) < ∞$. $f$ sit messbar auf $D ⇒$ messbar auf jedem $B_i ∀ i$ und $\ubar J < ∞$
+   \[⇒ f_{B_i} ∈ \mathcal{L}(B_i) ⇒ f ∈ \mathcal{L}(D)\]
    #+end_proof
