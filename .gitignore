@@ -35,11 +35,13 @@ bin
 pages
 pdfs
 *.tex
+*.tex~
 *.pdf
 pdf_key
 *.pg
 *.pgm
 *.xdv
 *.new
+*.mp4
 
 !*/cheatsheet/*.tex

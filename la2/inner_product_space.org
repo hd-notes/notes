@@ -53,12 +53,12 @@
   Eine positiv definite hermitesche Form nennt man auch ein *Skalarprodukt*.
   #+end_defn
   #+begin_ex latex
-  $V = ℂ^n, <·,·>: ℂ^n × C^n \to ℂ, <x, y> := x^T \bar y$ ist ein Skalarprodukt auf $ℂ^n$ (das *Standardskalarprodukt* auf $ℂ^n$):
-  - $<·,·>$ ist sesquilinear (vergleiche 25.2)
-  - $<·,·>$ ist hermitesch: $<y, x> = y^T \bar x = (y^T \bar x)^T = \bar x^T y = \overline{x^T \bar y} = \overline{<x, y>}$
-  - $<·,·>$ ist positiv definit:
+  $V = ℂ^n, \angl{·,·}: ℂ^n × C^n \to ℂ, \angl{x, y} := x^T \bar y$ ist ein Skalarprodukt auf $ℂ^n$ (das *Standardskalarprodukt* auf $ℂ^n$):
+  - $\angl{·,·}$ ist sesquilinear (vergleiche 25.2)
+  - $\angl{·,·}$ ist hermitesch: $\angl{y, x} = y^T \bar x = (y^T \bar x)^T = \bar x^T y = \overline{x^T \bar y} = \overline{\angl{x, y}}$
+  - $\angl{·,·}$ ist positiv definit:
 	\begin{align*}
-    <x, x> = x^T \bar x &= \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix} \begin{pmatrix}\bar x_1 \\ \vdots \\ \bar x_n\end{pmatrix} = x_1 \bar x_1 + \dots + x_n \bar x_n \\
+    \angl{x, x} = x^T \bar x &= \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix} \begin{pmatrix}\bar x_1 \\ \vdots \\ \bar x_n\end{pmatrix} = x_1 \bar x_1 + \dots + x_n \bar x_n \\
 	&= \abs{x_1}^2 + \dots + \abs{x_n}^2 > 0 \text{ für } x \neq 0
     \end{align*}
   #+end_ex
@@ -80,7 +80,7 @@
   \[h_W(φ(v_1), φ(v_2)) = h_V(v_1, v_2) ∀ v_1, v_2 ∈ V\]
   #+end_defn
   #+begin_remark latex
-  $n = \dim V, \mathcal{B}$ Orthonormalbasis von $(V, h)$. Dann ist das Koordinatensystem $Φ_{\mathcal{B}}: (ℂ^n, <·,·>) \to (V, h)$ ein unitärer Isomorphismus.
+  $n = \dim V, \mathcal{B}$ Orthonormalbasis von $(V, h)$. Dann ist das Koordinatensystem $Φ_{\mathcal{B}}: (ℂ^n, \angl{·,·}) \to (V, h)$ ein unitärer Isomorphismus.
   #+end_remark
   #+begin_remark latex
   $\mathcal{B}$ Orthonormalbasisv on $(V, h), φ ∈ \End(V), A = M_{\mathcal{B}}(φ)$. Dann sind äquivalent:
@@ -245,6 +245,6 @@
 	 $λ_1, \dots, λ_n$ Eigenwerte von $A$
   #+end_conc
   #+begin_proof latex
-  Wende 25.26 auf $(ℂ^n, <·,·>)$ und $φ = \tilde A$ an.
+  Wende 25.26 auf $(ℂ^n, \angl{·,·})$ und $φ = \tilde A$ an.
   #+end_proof
 # Kapitel 5 Ringe und Moduln

@@ -15,12 +15,12 @@
   3. Sei $v ∈ V$ mit $φ(v) = 0 ⇒ \norm{φ(v)}_W = 0 ⇒ \norm{v}_V = 0 ⇒ v = 0$
   #+end_proof
   #+begin_remark latex
-  $(V, γ)$ Euklidischer Raum, $n = \dim V, \mathcal{B}$ Orthogonalbasis von $(V, γ)$. Dann ist das Koordinatensystem $Φ_{\mathcal{B}}: (ℝ^n, <·,·>) \to (V, γ)$ ein
+  $(V, γ)$ Euklidischer Raum, $n = \dim V, \mathcal{B}$ Orthogonalbasis von $(V, γ)$. Dann ist das Koordinatensystem $Φ_{\mathcal{B}}: (ℝ^n, \angl{·,·}) \to (V, γ)$ ein
   orthogonaler Isomorphismus.
   #+end_remark
   #+begin_proof latex
   $Φ_{\mathcal{B}}$ Isomorphismus: klar. $Φ_{\mathcal{B}}$ orthogonal, denn: Sei $\mathcal{B} = (v_1, \dots, v_n)$ dann ist
-  \[γ(Φ_{\mathcal{B}}(e_i), Φ_{\mathcal{B}}(e_j)) = γ(v_1, v_j) = δ_{ij} = <e_i, e_j>\]
+  \[γ(Φ_{\mathcal{B}}(e_i), Φ_{\mathcal{B}}(e_j)) = γ(v_1, v_j) = δ_{ij} = \angl{e_i, e_j}\]
   #+end_proof
   #+begin_remark latex
   $(V, γ)$ Euklidischer Raum, $φ ∈ \End(V)$ orthogonal. Dann gilt:
@@ -47,7 +47,7 @@
   \begin{figure}[H]
 	 \centering
   \begin{tikzpicture}
-  \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {(V, γ) & (V, γ) \\ (ℝ^n,<·,·>) & (ℝ^n, <·,·>)\\};
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {(V, γ) & (V, γ) \\ (ℝ^n,\angl{·,·}) & (ℝ^n, \angl{·,·})\\};
   \path[-stealth]
   (m-1-1) edge node [left] {$φ$} (m-2-1)
   (m-1-2) edge node [below] {$Φ_{\mathcal{B}}$} (m-1-1)
@@ -62,9 +62,9 @@
   Da $Φ_{\mathcal{B}}$ orthogonaler Isomorphismus nach 23.3 folgt:
   \begin{align*}
   φ \text{ orthogonal } &⇔ \tilde A = Φ_{\mathcal{B}}^{-1} = φ\circ Φ_{\mathcal{B}} \text{ orthogonal} \\
-  &⇔ ∀ x, y ∈ ℝ^n: <Ax, Ay> = <x, y> \\
+  &⇔ ∀ x, y ∈ ℝ^n: \angl{Ax, Ay} = \angl{x, y} \\
   &⇔ ∀ x, y ∈ ℝ^n: (Ax)^T Ay = x^T y \\
-  &⇔ ∀ x, y ∈ ℝ^n: <Ax, Ay> = x^T A^T A y = x^T y \\
+  &⇔ ∀ x, y ∈ ℝ^n: \angl{Ax, Ay} = x^T A^T A y = x^T y \\
   &⇔ Δ(A^T A) = Δ(E_n) \\
   &⇔ A^T A = E_n
   \end{align*}
@@ -88,19 +88,19 @@
   1. $A ∈ O(n)$
   2. $A A^T = E_n$
   3. $A^T A = E_n$
-  4. Die Transponierten der Zeilen von $A$ bilden eine Orthogonalbasis von $(ℝ^n, <·,·>)$
-  5. Die Spalten von $A$ bilden eine Orthogonalbasis von $(ℝ^n, <·,·>)$
-  6. Die Abbildung $\tilde A: (ℝ^n, <·,·>) \to (ℝ^n, <·,·>)$ ist orthogonal
+  4. Die Transponierten der Zeilen von $A$ bilden eine Orthogonalbasis von $(ℝ^n, \angl{·,·})$
+  5. Die Spalten von $A$ bilden eine Orthogonalbasis von $(ℝ^n, \angl{·,·})$
+  6. Die Abbildung $\tilde A: (ℝ^n, \angl{·,·}) \to (ℝ^n, \angl{·,·})$ ist orthogonal
   #+end_remark
   #+begin_proof latex
   1. $⇔$ 2. $⇔$ 3. $⇔$ klar
   2. $⇔$ 4., 3. $⇔$ 5.
-  1. [@1] $⇔$ 6. aus 23.5 (setze $V = (ℝ^n, <·, ·>), \mathcal{B} = (e_1, \dots, e_n)$)
+  1. [@1] $⇔$ 6. aus 23.5 (setze $V = (ℝ^n, \angl{·, ·}), \mathcal{B} = (e_1, \dots, e_n)$)
   #+end_proof
   #+begin_thm latex
   $φ: ℝ^n \to ℝ^n$ (nicht notwendig linear) abstandstreu, das heißt
   \[\norm{φ(x) - φ(y)} = \norm{x - y} ∀ x, y ∈ ℝ^n\]
-  wobie $\norm{·}$ die Norm auf $(ℝ^n, <·,·>)$ bezeichne. Dann existieren eindeutig bestimmte $A ∈ O(n), b ∈ ℝ^n$, sodass
+  wobie $\norm{·}$ die Norm auf $(ℝ^n, \angl{·,·})$ bezeichne. Dann existieren eindeutig bestimmte $A ∈ O(n), b ∈ ℝ^n$, sodass
   \[φ(x) = Ax + b\]
   für alle $x ∈ ℝ^n$
   #+end_thm
@@ -130,7 +130,7 @@
   2. $A ∈ O(2) \setminus SO(2) ⇔ ∃! α ∈ [0, 2π]$ mit
 	 \[A = \begin{pmatrix}\cos α & \sin α \\ \sin α & -\cos α\end{pmatrix}\]
 	 In diesem Fall beschreibt $A$ eine Spiegelung an der Geraden $\Lin(\cvec{\cos \frac{α}{2}; \sin \frac{α}{2}})$. $A$ besitzt die Eigenwerte $\pm 1$, und es existiert eine Orthogonalbasis $\mathcal{B}$ von
-	 $(ℝ^2, <·,·>)$ mit
+	 $(ℝ^2, \angl{·,·})$ mit
 	 \[M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}\]
   #+end_remark
   #+begin_proof latex
@@ -140,7 +140,7 @@
   ⇒ 1 &= \norm{e_2}^2 = \norm{Ae_2}^2 = c^2 + d^2 \\
   \end{align*}
   Außerdem: $e_1 \perp e_2 ⇒ A e_1 \perp A e_2$
-  \[⇒ <\cvec{a;b}, \cvec{c; d}> = 0\]
+  \[⇒ \angl{\cvec{a;b}, \cvec{c; d}} = 0\]
   \[⇒ \begin{pmatrix}a & b\end{pmatrix} \begin{pmatrix}c \\ d\end{pmatrix} = 0 ⇒ \cvec{c; d} ∈ \Lin((\cvec{-b; a}))\]
   das heißt es existiert $λ ∈ ℝ$ mit
   \[\begin{pmatrix}c \\ d\end{pmatrix} = λ \begin{pmatrix}-b \\ a\end{pmatrix}\]
@@ -162,11 +162,11 @@
 	 $⇒ A$ beschreibt Spiegelung an der Geraden $\Lin(\cvec{\cos \frac{α}{2}; \sin \frac{α}{2}})$
 	 \[χ_A^{char} = t^2 - \Sp(A) t + \det A = t^2 - 1 = (t + 1)(t - 1)\]
 	 $⇒$ A diagonalisierbar und hat Eigenwert $\pm 1$. Sei $v_1$ Eigenvektor von $A$ zum Eigenwert $1$ mit $\norm{v_1} = 1, v_2$ Eigenvektor von $A$ zum Eigenwert $-1$ mit $\norm{v_2} = 1$
-	 \[⇒ <v_1, v_2> = <A v_1, A v_2> = <v_1, -v_2> = -<v_1, v_2> ⇒ <v_1, v_2> = 0 ⇔ v_1 \perp v_2\]
-	 Bezüglich der Orthogonalbasis $(v_1, v_2)$ des $(ℝ^2, <·, ·>)$ ist $M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$
+	 \[⇒ \angl{v_1, v_2} = \angl{A v_1, A v_2} = \angl{v_1, -v_2} = -\angl{v_1, v_2} ⇒ \angl{v_1, v_2} = 0 ⇔ v_1 \perp v_2\]
+	 Bezüglich der Orthogonalbasis $(v_1, v_2)$ des $(ℝ^2, \angl{·, ·})$ ist $M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$
   #+end_proof
   #+begin_conc latex
-  $φ: (ℝ^2, <·, ·>) \to (ℝ^2, <·, ·>)$ orthogonale Abbildung. Dann existiert eine Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, <·, ·>)$, sodass
+  $φ: (ℝ^2, \angl{·, ·}) \to (ℝ^2, \angl{·, ·})$ orthogonale Abbildung. Dann existiert eine Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, \angl{·, ·})$, sodass
   \[M_{\mathcal{B}}(φ) = \begin{pmatrix}\pm 1 & 0 \\ 0 & \pm 1\end{pmatrix} \text{ oder } M_{\mathcal{B}}(φ) = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}, α ∈ (0, π)\]
   Die Anzahl der $\pm 1$ sowie $α$ sind unabhängig von der Wahl einer solchen Orthogonalbasis $\mathcal{B}$ (das heißt sind Invarianten von $φ$).
   #+end_conc
@@ -179,11 +179,11 @@
 	 \[⇒ M_{(e_2, e_1)}(φ) = \begin{pmatrix}\cos β & \sin β \\ -\sin β & \cos β\end{pmatrix}\]
 	 Setze $α := 2π - B, \mathcal{B} := (e_2, e_1) ⇒ β = 2π - α ⇒ \cos β = \cos α, \sin β = - \sin β$
 	 \[⇒ M_{\mathcal{B}}(φ) = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}\]
-  2. $A ∈ O(2) \setminus SO(2) ⇒ ∃$ Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, <·, ·>)$ mit $M_{\mathcal{B}}(φ) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$.
+  2. $A ∈ O(2) \setminus SO(2) ⇒ ∃$ Orthogonalbasis $\mathcal{B}$ von $(ℝ^2, \angl{·, ·})$ mit $M_{\mathcal{B}}(φ) = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$.
   Eindeutigkeit: Falls $M_{\mathcal{B}}(φ) = \begin{pmatrix}\pm 1 & 0 \\ 0 & \pm -1\end{pmatrix}$, dann Anzahl der $\pm 1 = μ_{alg}$ der Eigenwirte $\pm 1$.
   Falls $M_{\mathcal{B}}(φ) = \begin{pmatrix}\cos α & -\sin α \\ \sin α & \cos α\end{pmatrix}$, dann $χ_φ^{char} = t^2 - 2\cos α t + 1 ⇒ \cos α$ ist
   unabhängig von der Wahl der Basis $\mathcal{B}$. Wegen $α ∈ (0, π)$ ist $α$ unabhängig von $\mathcal{B}$.
   #+end_proof
   #+begin_note latex
-  Verallgemeinerung von 23.12 auf $(ℝ^n, <·,·>)$ ist möglich.
+  Verallgemeinerung von 23.12 auf $(ℝ^n, \angl{·,·})$ ist möglich.
   #+end_note

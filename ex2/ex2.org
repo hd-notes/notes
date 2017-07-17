@@ -128,3 +128,220 @@
    Punkt $A$. Die von dort ausgehende Gugelwelle bildet zusammen mit den von $A'$ und $A''$ ausgehenden Wellen
    zum Zeitpunkt $t$ die Wellenfront der reflektirten Welle BQ. ABP und ABQ kongruentn $\to θ_r = θ_i$.
    Brechung:
+   Lichtlaufzeiten mi Medium größer, Verringerung der Lichtgeschwindigkeit in Materie.
+   \[c = \frac{1}{\sqrt{ε μ ε_0 μ_0}} = \frac{c_0}{\sqrt{ε μ}} = \frac{n_0}{n}\]
+   $n$: Brechzahl. Damit verändert sich im Medium auch die Wellenlänge, da die Atome das Licht mit gleicher Frequenz
+   absorbieren und abstrahlen. Es gilt:
+   \[k = \frac{ω}{c} = \frac{2π}{λ}, ω = 2 π ν ⇒ c = ν λ\]
+   Das heißt für $c \downarrow ⇒ λ \downarrow$ für $ν = \const$. Wellenlänge nimmt ebenfalls ab! Brechungsgesetz mit Huygeschen Prinzip:
+   Die einfallende Wellenfront AP trifft die Grenzfläche zuerst im Punkt A. Die
+   von dort ausgehende Kugelwelle breitet sich im Medium 2 mit $c_2 < c_1$ aus und
+   trifft im Punkt Q ein, wenn die einlaufende Wellenfront Punkt B erreicht. Die neue
+   Wellenfront BQ verläuft demnach nicht parallel zu AP und man erhält:
+   \begin{align*}
+   \sin θ_1 &= \frac{c_1 t}{\overline{A B}} \\
+   \sin θ_2 &= \frac{c_2 t}{\overline{A B}} \\
+   ⇒ \frac{c_1}{c_2} &= \frac{\sin θ_1}{\sin θ_2} = \frac{n_2}{n_1}
+   \end{align*}
+   mit $c_i = c / n_i$.
+   Gesetz von Snellius:
+   \[n_1 \sin θ_1 = n_2 \sin θ_2\]
+   Totalreflexion $⇒$ Übergang vom Licht von einem optisch dichteren in optisch dünneres Medium.
+   Kritischer Winkel:
+   \[\sin θ_k = \frac{n_1}{n_2}, n_1 < n_2\]
+** Fermatsches Prinzip
+   Der Weg, den das Licht beschreibt wenn es sich von einem Punkt zu einem anderen bewegt ist stets so, dass die Zeit, die das Licht für das Zurücklegen des Weges braucht, ein (lokales)
+   Minimum aufweist.
+   Licht wählt den kürzesten optischen Weg: $s' = n s$. \\
+   Reflexion: $⇒$ Spiegelung ist Minimum $⇒$ Einfallswinkel = Ausfallswinkel. \\
+   Brechung:
+   \[t = \frac{l_1}{c_1} + \frac{l_2}{c_2} = \frac{n_1 l_1}{c} + \frac{n_2 l_2}{c}\]
+   Minimum:
+   \[\dd{t}{x} = \frac{1}{c}(n_1 \pp{l_1}{x} + n_2 \dd{l_2}{x})\]
+   mit $l_1^2 = a^2 + x^2, l_2 = b^2 + (d - x)^2$
+   \[\dd{l_1}{x} = \frac{1}{2 l_1} 2 x = \frac{x}{l_1}\qquad \dd{l_2}{x} = \frac{d - x}{l_2}\]
+   \[n_1 \frac{x}{l_1} - \frac{d - x}{l_2} = 0\qquad \sin θ_1 = \frac{x}{l_1}, \sin θ_2 = \frac{d - x}{l_2}\]
+   \[⇒ n_1 \sin θ_1 = n_2 \sin θ_2\]
+** Polarisation	und Fresnelsche Formeln
+   Elekromagnetische Wellen sind transversal, das heißt Schwingungsebene steht senkricht auf der Ausbreitungsrichtung. Möglichkeit der Polarisation::
+   - linear polarisierte EM-Welle
+   - zirkular / elliptische polarisierte EM-Welle
+   Erzeugung von Polarisation: Apsorption, Streuung, Reflexion und Doppelbrechung. \\
+   Polarisation durch Absorption:
+   Polarisation durch die Absorption einer Schwingungsrichtung mit Hilfe dichromatischer Kristalle oder
+   polarisierender Folie aus langkettigen, ausgerichteten Kohlenwasserstoffmolekülen.
+   (Absorption des E-Felder entlang der Moleküle).
+   Gesatz von Malus (Intensität von polarisiertem Licht nach einem weiterem Polarisationsfilter):
+   \[I = I_0 \cos^2 θ\] \\
+   Polarisation durch Streuung. Streuung: Absorption + Wiederabstrahlung. Elektromagnetische Wellen:
+   - Rayleich-Streuung (Himmelblau, $ω^4$)
+   - Ramen-Streuung
+   - Mie-Streuung
+   Gestreutes Licht ist je nach Streurichtung unterschiedlich polarisiert, Ausbildung eines
+   Winkelabhängigen Polarisationsmusters. (zum Beispiel Polarisationsmuster am Himmel wird von
+   Bienen zur Orientierung genutzt). \\
+   Polarisation durch Reflexion: Reflexion beziehungsweise Transmission an
+   dielektrischer Grenzfläche
+   - transmittierter und reflektierter Strahl sind (teilweise) polarisiert,
+	 Polarisationsgrad abhängig vom Einfallswinkel $α$.
+   - Für $α = θ_{Br}, θ_{Br}$: Brewsterwinkel. Vollständige Polarisation des reflektierten
+	 Strahls in Richtung senkrecht zur Einfallsebene.
+   Fresnelsche Formeln:
+   \begin{align*}
+   \intertext{Reflexion des senkrecht zur Einfallsrichtung polarisierten Strahls}
+   R_{\perp}(α, β) &= (\frac{\sin(α - β)}{α + β})^2 \\
+   \intertext{Reflexion des parallel zur Einfallsrichtung polarisierten Strahls}
+   R_{\parallel}(α, β) &= (\frac{\tan(α - β)}{\tan(α + β)})^2 \\
+   \intertext{Transmission des senkrecht zur Einfallsrichtung polarisierten Strahls}
+   T_{\perp}(α, β) &= (\frac{2 \sin β \cos α}{sin(α + β)})^2 \\
+   \intertext{Transmission des parallel zur Einfallsrichtung polarisierten Strahls}
+   T_{\parallel}(α, β) &= (\frac{2 \sin β \cos α}{\sin(α + β) \cos(α - β)})^2 \\
+   R_{\perp} + T_{\perp} &= 1 \\
+   R_{\parallel} + T_{\parallel} &= 1 \\
+   \end{align*}
+   #+begin_remark latex
+   Herleitung der Fresnelschen Formeln mit Hilfe der Maxwellschen Gleichungen beziehungsweise den aus diesen
+   folgenden Stätigkeitsbedingungen für das E- und das D-Feld an Grenzflächen sowie
+   dem Brechungsgesetz unter Beachtung der Energieerhaltung der Lichtströme an der Grenzfläche (siehe Demtröder).
+   #+end_remark
+   Aus de Fresnel-Formeln folgt: $R_{\parallel} = 0$ für $α + β = \SI{90}{\degree}$,
+   das heißt der Brewsterwinkel $θ_{Br}$ ist der Winkel, bei dem reflektierter und gebrochener
+   Strahl senkrecht aufeinander stehen. Es folgt:
+   \[n_1 \sin θ_{Br} = n_2 \sin θ_2 = n_2 \sin(\SI{90}{\degree} - θ_{Br}) = n_2 \cos θ_{Br}\]
+   $⇒$ Gesetz von Brewster:
+   \[\tan θ_{Br} = \frac{n_2}{n_1}\]
+   Qualitative, anschauliche Erklärung für das Gesetz von Brewster:
+   Sei das E-Feld in der Einfallsebene, also parallel ($\parallel$) polarisiert.
+   Dann schwingen auch die von ihm erzeugten atomaren Dipole $\v p$ in
+   dieser Ebene. Die (kohärente) Abstrahlung dieser Dipole ist aber
+   für das Zustandekommen der reflektierten Welle verantwortlich. Ist $α = θ_{Br}$
+   beziehungsweise $α + β = \SI{90}{\degree}$ so zeigen die Dipole in Richtung des
+   reflektierten Strahlt; ein Dipol emittiert aber nicht in diese Richtung.
+   Für $α = θ_{Br}$ (Brewsterwinkel) $⇒$ vollständige Polarisation des reflektierten Strahls.
+   Für $α, β \to 0$ gilt $\sin α \approx α, \sin β \approx β$ und $α / β \approx n_2 / n_1$.
+   Damit lässt sich der Reflexionsgrad bei senkrechten Einfall herleiten:
+   \[R_{\parallel} = R_{\perp} = (\frac{n_2 - n_1}{n_2 + n_1})^2\]
+   das heißt der Reflexionsgrad ist für beide Komponenten gleich, wie man es aus Symmetriegründen
+   auch	erwartet.
+   #+begin_remark latex
+   Aufgrund der (teilweisen) Polarisation von reflektiertem Licht schützen Sonnebrillen
+   mit Gläsern aus polarisierendem Material besonders gut vor zu grellem Licht. Zum Beispiel
+   Reflektion an Wasseroberfläche $\to$ horizontale Polarisation, das heißt Sonnenbrillen haben
+   vertikale Transmissionsachse.
+   #+end_remark
+   Polarisation durch Doppelbrechung. \\
+   Wichtiger Effekt. Auftreten in optischen anisotropen Materialien (zum Beispiel Kalkspat CaCO3),
+   das heißt Materialien bei denen sich das Licht in verschiedenen Richtungenn mit
+   unterschiedlichen Geschwindigkeiten ausbreitet. Lichtgeschwindigkeit im Medium $c_{med}$ abhängig von
+   - Polarisation
+   - Ausbreitungsrichtung
+   $⇒$ Phänomen der Doppelbrechung.
+   Ausgezeichnete optische Achse.
+   - Parallel zur optischen Achse
+	 \[⇒ c_{med} = c / n_0\]
+	 $n_0$: normaler Brechungsindex
+   - Senkrecht zur optischen Achse
+	 $\perp$ Polarisation $⇒ c_0 = c / n_0$ \hfill ordentliches Verhalten \\
+	 $\parallel$ $⇒ c_{ao} = c / {n_{ao}}$ \hfill außerordentliches Verhalten \\
+	 mit $c_0 \neq c_{ao}$
+   $⇒$ 3 Fälle:
+   1. Lichteinfall parallel zur optischen Achse. $⇒$ normale Lichtausbreitung beider Polarisationsrichtung
+   2. Lichteinfall senkrecht zur optischen Achse. Unterschiedlich polarisierte Teilstrahlen breiten
+	  sich mit unterschiedlicher Geschwindigkeit aus ($⇒$ Phasenverschiebung)
+   3. Lichteinfall unter einem von Null verschiedenen Winkel. $⇒$ Aufspaltung des
+	  einfallenden Lichtes in ordentlichen und außerordentlichen Strahl
+   Doppelbrechende Kristalle erlauben Erzeugung definieter Gangunterschiede ($λ/4, λ/2$ -Plättchen)
+   (Einfall senkrecht zur optischen Achse)
+** Dispersion und Prismenwirkung
+   Dispersion: Abhängigkeit der Ausbreitungsgeschwindigkeit von der Wellenzahl $k$ beziehungsweise
+   der Wellenlänge $λ$. Snellius: $n_1 \sin θ_1 = n_2 \sin θ_2$. $\to$ Aufspaltung des
+   Lichts in Farben bei Brechung an Grenzfläche (zum Beispiel Prisma).
+   (Wichtige Anwendung: Prismenspektrograh).
+* Optische Abbildungen
+  Sehr breites Thema mit einer Fülle von Instrumenten. Zum Beispiel moderne bildgebende Methoden wie
+  Hologromme, Ultraschall, Temographie. Hier nur einige Grundprinzipien.
+** Dünne Linsen, Linsengleichung
+   das heißt: Linsendicke vernachlässigbar, schwahce Krümmung, alle Lichtbündel achsennah,
+   kleine Öffnungswinkel, $\sin α \approx \tan α \approx α$. \\
+   Linsenwirkung beruht auf	Brechung an gekrümmten Grenzflächen zwischen optische
+   dichteren und optisch dünneren Medien. Fokussierend und Defokussierend. Wichtige Begrifflichkeiten
+   - Optische Achse
+   - Brennpunkt
+   - Brennweite $f$
+   - Brennebene
+   - Gegenstand
+   - Bildpunkt, virtuelles Bild
+   Linsengleichung: Betrachte dünne Linse, $d$ vernachlässigbar. Es gilt:
+   \begin{align*}
+   \frac{\sin α}{\sin β} &= \frac{α}{β} = n \tag{Snellius} \\
+   \frac{\sin δ}{\sin γ} &= \frac{δ}{σ} = n
+   \intertext{Außerdem:}
+   α &= ε + ξ \\
+   δ &= η + κ \\
+   β + γ &= η + ξ \\
+   ⇒ \frac{α}{n} + \frac{δ}{n} &= η + ξ \\
+   \intertext{Einsetzen von $α$ und $δ$ liefert:}
+   \frac{1}{n}(ε + ξ + η + κ) &= η + ξ \\
+   ⇒ \frac{1}{n}(\frac{1}{g} + \frac{1}{r_1} + \frac{1}{r_2} + \frac{1}{b}) &= \frac{1}{r_1} + \frac{1}{r_2} \\
+   ⇒ \frac{1}{g} + \frac{1}{b} &= \underbrace{(n - 1)(\frac{1}{r_1} + \frac{1}{r_2})}_{f} \\
+   ⇒ \frac{1}{g} + \frac{1}{b} &= \frac{1}{f} \tag{Linsengleichung} \\
+   \intertext{mit}
+   f &= \frac{r_1 r_2}{(n - 1)(r_1 + r_2)} \tag{Brennweite}
+   \end{align*}
+   Diese Gleichung lässt sich mit einiger Mühe auch für	achsennahe Gegenstans- und
+   Bildpunkte herleiten $\to$ Existenz Bildebene. Damit folgt dann auch:
+   \[\frac{B}{G} = \frac{b}{g}\]
+   Ähnliche Abbildung. Folgt mit Hilfe des Strahlensatzes.
+   #+begin_remark latex
+   Linsengleichung gilt auch für sphärische Spigel, hier ligen dann Bild und Gegenstand auf der gleichen
+   Seite
+   #+end_remark
+** Einfache Anwendung des Linsegesetzes
+   Bekannt: Brennfunkte $F_1, F_2$ im Abstand $f$. Geometrische Konstruktion:
+   - Parallelstrahl $\to$ Brennstrahl
+   - Zentralstrahl $\to$ Zentralstrahl
+   - Brennstral $\to$ Parallelstrahl
+   Für $g \geq f$:  reelles Bild. \\
+   Für $g < f$: virtuelles Bild. \\
+   Virtuelles Bild kann nicht direkt auf Schirm dargestellt	werden.
+   Aber: Virtuelles Bild kann von Auge (= 2. Linse) sehr wohl auf die Netzhaut als reelles Bild fokussiert werden.
+   Bildrekunstruktion für zwei Linsen mit virtuellem Zwischenbild. (hier konkave und konvexe Linse)
+   1. Rekonstruktion des virtuellen Bildes für (konkave) Linse 1 (Hautebene $H$).
+   2. Rekonstruktion des reellen Bildes mit Hilfe des virtuellen Bildes als Gegenstand
+	  und (konvexer) Linse 2 (Hauptebene $H'$)
+** Dicke Linsen
+   Dicke der Linse nicht vernachlässigbar, das heißt $d \approx r_1, r_2$ ($r_1, r_2$: Krümmugsradius).
+   Gültigkeit des Linsengesetzes bleibt bestehen, wenn
+   dicke Linse als ein (Linsen) System mit zwei Hauptebenen betrachtet wird. Auch dann gilt:
+   \[\frac{1}{f} = \frac{1}{g} + \frac{1}{b}\]
+   mit $f = f(r_1, r_2, n, d)$, $H_1 = H_1(r_2, f, d)$, $H_2 = H_2(r_1, f, d)$.
+   Bildrekonstruktion mittels fiktiver Strahlen, die nur an den jeweiligen Hauptebenen gebrochen werden.
+** Linsenfehler
+   - Sphärische Aberration. Von optischer Achse weiter entfernte Strahlen
+	 werden stärker gebrochen; Abhilfe: asphärische Linsen.
+   - Chromatische Aberation. Unterschiedliche Fokussierung aufgrund der Dispersion. Abhilfe:
+	 achromatische Linsen
+   - Astigmatissmus. Schärfefehler für schräg einfallende Strahlenbündel
+** Optische Instrumente
+   - Mikroskop
+   - Spektrograph
+   - Auge
+   - Fernrohr
+   - Interferometer
+* Spezielle Relativitätstheorie
+  In Intertialsystemen gelten die Newtonschen Gesetze.
+  Klassisches Relativitätsprinzip: Alle relativ zu einem Intertialsystem gleichförmig bewegten Bezugssysteme sind ebenfalls Inertialsysteme und im Rahmen
+  der Newtonschen Mechanik gleichwertig. $⇒$ Galilei Transformationen
+  \begin{align*}
+  x' &= x - ut \\
+  y' &= y \\
+  z' &= z \\
+  t &= t'\\
+  ⇒ Δ x' &= Δ x \\
+  Δ y' &= Δ y \\
+  Δ z' &= Δ z \\
+  Δ t' &= Δ t \\
+  \dd{x'}{t'} &= \dd{x}{t} - \dd{}{t}(ut) \\
+  v' &= v - u
+  \end{align*}
+  Raum und Zeil sind absolut. Es gibt keine absoluten Geschwindigkeiten.

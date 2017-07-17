@@ -589,3 +589,61 @@
    Vorraussetzung: $\ubar J(f) = \sup_{Z} \ubar S_{Z}(f) < ∞ ⇒ f$ ist Lebesgue-integrierbar. Im Fall $μ(D) = ∞$, nehmen wir Zerlegung $Z = \{B_i\}$ mit $μ(B_i) < ∞$. $f$ sit messbar auf $D ⇒$ messbar auf jedem $B_i ∀ i$ und $\ubar J < ∞$
    \[⇒ f_{B_i} ∈ \mathcal{L}(B_i) ⇒ f ∈ \mathcal{L}(D)\]
    #+end_proof
+
+
+   #+begin_lemma latex
+   Sei $D ⊂ ℝ^n$ messbar und $(f_k)_{k ∈ ℕ}$ eine monotone Folge von $f_k ∈ \mathcal{L}(D)$ mit
+   \[\sup_{k ∈ ℕ} \abs{∫_D f_k(x) \d x} < ∞\]
+   Dann ist
+   \[f := \lim_{k\to ∞} f_k ∈ \mathcal{L}(D)\]
+   und
+   \[\lim_{k \to ∞} ∫_D f_k(x) \d x = ∫_D \lim_{k \to ∞} f_k(x) \d x = ∫_D f(x) \d x\]
+   #+end_lemma
+   #+begin_proof latex
+   Sei ohne Beschränkung der Allgemeinheit $(f_k)_{k ∈ ℕ}$ monoton wachsend (anderenfalls betrachten wir $(-f_k)_{k ∈ ℕ}$). Die Menge
+   \[U_1 := \{x ∈ D \mid f_1(x) = \pm ∞\}\]
+   ist eine Nullmenge. Wir setzen
+   \[\begin{cases} g_i := f_k(x) - f_1(x) & x ∈ D \setminus U_1 \\ g_k := 0 & x ∈ U_1\end{cases}\]
+   $(g_k)_{k ∈ ℕ}$ ist monoton wachsend und nichtnegativ Lebesgue-integrierbar. Die zugehörige Folge von Lebesgue-integralen
+   \[J(g_k) = J(f_k) - J(f_1)\]
+   ist beschränkt. Nach dem Satz von Beppo Levi ist
+   \[g:= \lim_{k \to ∞} g_k ∈ \mathcal{D}\]
+   und
+   \[\lim_{k \to ∞} ∫_D g_k(x) \d x = ∫_D g(x) \d x\]
+   Für $f_k = g_k + f_1$ bekommen wir
+   \[f := \lim_{k \to ∞} f_k g + f_1\]
+   und
+   \[\lim_{k \to ∞} ∫_D f_k(x) \d x = ∫_D f(x) \d x\]
+   #+end_proof
+   #+ATTR_LATEX: :options [Lemma von Fatou]
+   #+begin_korollar latex
+   Sei $D ⊂ ℝ^n$ messbar und $(f_k)_{k ∈ ℕ}$ eine Folge nicht negativer Funktionen $f_k ∈ \mathcal{D}$ mit der Eigenscaft
+   \[\sup_{k ∈ ℕ} ∫_D f_k(x) \d x < ∞\]
+   Dann gilt:
+   \[∫_D \liminf_{k \to ∞} f_k (x) \d x \leq \liminf_{k \to ∞} ∫_D f_k(x) \d x\]
+   Wenn zusätzlich
+   \[\sup_{k ∈ ℕ} f_k < g\]
+   mit $g ∈ \mathcal{L}(D)$ so gilt
+   \[∫_D \limsup_{k \to ∞} f_k(x) \d x \geq \limsup_{k \to ∞} ∫_D f_k(x) \d x\]
+   #+end_korollar
+   (ohne Beweis)
+   #+ATTR_LATEX: :options [Satz von Lebesgup zu majorisierten Konvergenz]
+   #+begin_thm latex
+   Sei $D ⊂ ℝ^n$ messbar und $(f_k)_{k ∈ n}$ eine folge von lebegue-integrierbaren Funktionen $f_k \to f$ f.ü. auf $D$. Die Folge $(f_k)_{k ∈ ℕ}$ besize eine Lebesgue-integrierbare Majorante
+   (das heißt $\abs{f_k} \leq g$) f.ü. auf $D$. Dann ist auch
+   \[\lim_{k \to ∞} f_k = f ∈ \mathcal{L}(D) \]
+   und
+   \[\lim_{k \to ∞} ∫_D f_k(x) \d x = ∫_D \lim_{k \to ∞} f_k(x) \d x\]
+   #+end_thm
+   #+begin_proof latex
+   Ohne Beschränkung der Allgemeinheit $f_k, g$ beschränkt überall in $D$ und $(f_k) \xrightarrow{k \to ∞}$ überall (sonst bekommen wir Nullmenden die Werte von Integralen nicht ändern).
+   \[\lim_{k \to ∞} f_k = f\]
+   ist messbar, beschränkt durch $g ∈ \mathcal{L}(D) ⇒ f ∈ \mathcal{L}(D)$. Die nichtnegative Funktion
+   \[h_m(x) := \sup \{\abs{f_k(x) - f(x)} \mid k \geq m\}\]
+   sind auch Lebesgue-integrierbar, weil $\abs{h_m(x)} \leq 2 g(x)$ und monoton fallend gegen Null. Nach dem Satz von Fatou folgt
+   \[\abs{J(f_k) - J(f)} = \abs{J(f_k - f)} \leq J(\abs{f_k - f}) \xrightarrow{k \to ∞} 0\]
+   #+end_proof
+
+
+   # Klausur
+   # Lipschitz-stetigkeit, Picard Lindelöf, Logistische DGL, DGL, keine großen theoretischen Sachen

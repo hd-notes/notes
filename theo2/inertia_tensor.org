@@ -96,7 +96,7 @@
    definieren die Hauptträgheitsachsen. Die Eigenwerte $I_a$ sind die entsprechenden Hauptträgheitsmomente.
 ** Eigenwerte, Eigenvektoren, Diagonlisierbarkeit
    Sei $\mathbb{V} = ℂ^n$ ein Vektorraum über $ℂ$. Definiere das Skalarprodukt $(∀x, y ∈ \mathbb{V})$
-   \[x, y ↦ <x, y> \equiv x^{\dagger} y ∈ ℂ\]
+   \[x, y ↦ \angl{x, y} \equiv x^{\dagger} y ∈ ℂ\]
    Notation: $M^{\dagger} \equiv \bar M^T$ für alle komplexenen Matrizen. Sei $H$ eine hermitesche Matrix ($n × n$), das heißt $H^{\dagger} = H$.
    Wir können $H$ wie folgt diagonalisieren:
    - Löse $\det(H - λ \mathbb{1}) = 0$. (Fundamentalsatz der Algebra)
@@ -104,8 +104,8 @@
 	 eine nichttriviale Lösung $x_1 ∈ \mathbb{V}$. (Wegen Nicht-Invertierbarkeit $(H - λ_1 \mathbb{1})$).
 	 Notation: $x_1$ heißt Eigenvektor von $H$ zum Eigenwert $λ_1$. Es gilt $Hx_1 = λ_1 x_1$
    - Behauptung: $H$ bildet $\{x_1\}_{\perp}$ auf $\{x_1\}_{\perp}$ ab.
-   - Begründung: Sei $<y, x_1> = 0$. Dann gilt
-	 \[<Hy, x_1> = (Hy)^{\dagger} x_1 = y^{\dagger} H^{\dagger} x_1 = y^{\dagger} H x_1 = λ_1 y^{\dagger} x_1 = λ_1 <y, x_1> = 0~\checkmark\]
+   - Begründung: Sei $\angl{y, x_1} = 0$. Dann gilt
+	 \[\angl{Hy, x_1} = (Hy)^{\dagger} x_1 = y^{\dagger} H^{\dagger} x_1 = y^{\dagger} H x_1 = λ_1 y^{\dagger} x_1 = λ_1 \angl{y, x_1} = 0~\checkmark\]
    Betrachte jetzt die $(n - 1) × (n - 1)$ -Matrix $H_1$ welce die Wirkung von $H$ auf $\{x_1\}_{\perp}$ beschreibt. Wiedehohle
    obiges Argument. Finde $λ_2, x_2$ und so weiter.
    - Wähle normierte Basis $e_1, \dots, e_n \sim x_1, \dots, x_n$. Diese Basis ist nach obigem auch orthogonal.
@@ -113,7 +113,7 @@
 	 Ohne Beweis: Für solche Matrizen gilt $U^{\dagger} = U^{-1}$
    - Damit haben wir Diagonalisierbarkeit vod hermitesche Matrizen durch unitäre Transformationen!
    - Behauptung: $λ_i$ sind reell.
-   - Begründung: $<H x_1, x_1> = <λ x_1, x_1> = \bar λ <x_1, x_1> = <x_1, H x_1> = λ<x_1, x_1> \checkmark$
+   - Begründung: $\angl{H x_1, x_1} = \angl{λ x_1, x_1} = \bar λ \angl{x_1, x_1} = \angl{x_1, H x_1} = λ\angl{x_1, x_1} \checkmark$
    Korollar: Reelle, symmetrische Matrizen $(H = H^{\dagger}, H_{ij} ∈ ℝ)$ können durch orthogonale Transformationen diagonalisiert werden. \\
    Dazu: Finde wie oben $λ_1 ∈ ℂ$. Wir wissen aber, dass auch $λ_1 ∈ ℝ$. Dann existiert ein reelles
    $x_1$ mit $(H - λ_1 \mathbb{1}) x_1 = 0$. Fortsetzung wie oben, nur "unitär" $\to$ "orthogonal".

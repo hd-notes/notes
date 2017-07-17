@@ -141,10 +141,10 @@
 	 $⇒ M_{\mathcal{B}}(γ') = M_{\mathcal{B}}(γ)$
   #+end_proof
   #+begin_note latex
-  Interpretation für $(ℝ^n, <·, ·>)$: Ist $A ∈ M(n × n, ℝ)$ symmetrisch, dann ist $A$
+  Interpretation für $(ℝ^n, \angl{·, ·})$: Ist $A ∈ M(n × n, ℝ)$ symmetrisch, dann ist $A$
   - Darstellungsmatrix bezüglich $(e_1, \dots, e_n)$ des selbstadjungierten Endomorphismus $\tilde A$ von $ℝ^n$
   - Darstellungsmatrix bezügilch $(e_1, \dots, e_n)$ der symmetrischen Bilinearform $γ' = Δ(A): (x, y) ↦ x^t A y$
-  Es ist $γ'(x, y) = x^t A y = x^t A^t y = (A x)^t y = <Ax, y> = <\tilde A(x), y> ∀ x, y ∈ ℝ^n$. Bezüglich jeder Orthogonalbasis von $(ℝ^n, <·,·>)$ gilt $M_{\mathcal{B}}(\tilde A) = M_{\mathcal{B}}(γ')$
+  Es ist $γ'(x, y) = x^t A y = x^t A^t y = (A x)^t y = \angl{Ax, y} = \angl{\tilde A(x), y} ∀ x, y ∈ ℝ^n$. Bezüglich jeder Orthogonalbasis von $(ℝ^n, \angl{·,·})$ gilt $M_{\mathcal{B}}(\tilde A) = M_{\mathcal{B}}(γ')$
   #+end_note
   #+begin_remark latex
   $φ ∈ \End(V)$ selbstadjungiert, $U ⊆ V$ Untervektorraum mit $φ(U) ⊆ U$. Dann gilt $φ(U^{\perp}) ⊆ U^{\perp}$
@@ -198,14 +198,14 @@
   #+begin_conc latex
   $A ∈ M(n × n, ℝ)$ symmetrisch. Dann existiert ein $T ∈ O(n)$, sodass
   \[T^{-1} A T = \begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 & & λ_n\end{pmatrix}\]
-  Hierbei sind $λ_i, \dots, λ_n$ die Eigenwerte (mit Vielfachheit) von $A$. Die Spalten von $T$ bilden eine Orthonormalbasas von $(ℝ^n, <·,·>)$ aus Eigenvektoren von $A$.
+  Hierbei sind $λ_i, \dots, λ_n$ die Eigenwerte (mit Vielfachheit) von $A$. Die Spalten von $T$ bilden eine Orthonormalbasas von $(ℝ^n, \angl{·,·})$ aus Eigenvektoren von $A$.
   #+end_conc
   #+begin_proof latex
-  $\tilde A: ℝ^n \to ℝ^n$ ist selbstadjungierter Endomorphismus von $(ℝ^n, <·, ·>)$. Spektralsatz $⇒$ es existiert eine Orthonormalbasis $\mathcal{B}$ aus Eigenvektoren von $A$ des $(ℝ^n, <·, ·>)$ mit
+  $\tilde A: ℝ^n \to ℝ^n$ ist selbstadjungierter Endomorphismus von $(ℝ^n, \angl{·, ·})$. Spektralsatz $⇒$ es existiert eine Orthonormalbasis $\mathcal{B}$ aus Eigenvektoren von $A$ des $(ℝ^n, \angl{·, ·})$ mit
   \[M_{\mathcal{B}}(\tilde A) = \begin{pmatrix}λ_1 &   & 0 \\   & \ddots &   \\ 0 &   & λ_n\end{pmatrix}\]
   Es ist
   \[M_{\mathcal{B}}(\tilde A) = \underbrace{(T_{(e_1, \dots, e_n)}^{\mathcal{B}})^{-1}}_{= T^{-1}} \underbrace{M_{(e_1, \dots, e_n)}^{(e_1, \dots, e_n)}(\tilde A)}_{A} \underbrace{T_{(e_1, \dots, e_n)}^{\mathcal{B}}}_{=: T}\]
-  Es ist $T ∈ O(n)$, da $\mathcal{B}$ Orthogonalbasis von $(ℝ^n, <·,·>)$ (vergleiche 23.7)
+  Es ist $T ∈ O(n)$, da $\mathcal{B}$ Orthogonalbasis von $(ℝ^n, \angl{·,·})$ (vergleiche 23.7)
   #+end_proof
   #+begin_note latex
   Man kann sogar stets $T ∈ SO(n)$ erreichen (indem man gegebenfalls eine Spalte $v_i$ von $T$ durch $- v_i$ ersetzt.)
@@ -222,7 +222,7 @@
   3. Bestimme mit dem Gram-Schmidt-Verfahren für $i = 1, \dots, k$ eine Orthonormalbasis $\mathcal{B}_i = (v_{i,1}, \dots, v_{i, r_i})$ von $\Eig(φ, λ_i)$
   4. Die Orthogonalbasis $\mathcal{B}_i, i = 1, \dots, k$ bilden zusammen eine Orthonormalbasis
 	 \[\mathcal{B} = (v_{1,1}, \dots, v_{1, r_1}, \dots, v_{k,1}, \dots, v_{k, r_k})\]
-	 des $(ℝ^n, <·,·>)$ aus Eigenvektoren von $A$
+	 des $(ℝ^n, \angl{·,·})$ aus Eigenvektoren von $A$
   5. Schreibe die Basisvektoren aus $\mathcal{B}$ in Spalten von $T$. Es ist dann
 	 \[T^{-1} A  T = (λ_1, \dots, λ_1, \dots, λ_k, \dots, λ_k) E_n\]
   #+end_algrthm
@@ -235,7 +235,7 @@
   Nach Beispiel 22.12 ist $(\frac{1}{\sqrt{5}} \cvec{2; 0; 1}, \frac{1}{\sqrt{30}} \cvec{-1; 5; 2})$ eine Orthonormalbasis von $\Eig(A, 3)$. \\
   $\Eig(A, -3) = \Lin(\cvec{1; 1; -2}) ⇒ (\frac{1}{\sqrt{6}} \cvec{1; 1; -2})$ ist Orthonormalbasis von $\Eig(A, -2)$.
   \[⇒ (\frac{1}{\sqrt{5}} \cvec{2; 0; 1}, \frac{1}{\sqrt{30}} \cvec{-1; 5; 2}, \frac{1}{\sqrt{6}} \cvec{1; 1; -2})\]
-  ist Orthonormalbasis von $(ℝ^3, <·,_>)$ aus Eigenvektoren von $A$. Mit
+  ist Orthonormalbasis von $(ℝ^3, \angl{·,\_})$ aus Eigenvektoren von $A$. Mit
   \[T = \begin{pmatrix}\frac{2}{\sqrt{5}} & - \frac{1}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ 0 & \frac{5}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{5}} & \frac{2}{\sqrt{30}} & - \frac{2}{\sqrt{6}}\end{pmatrix} \quad \text{ist}\quad T^{-1} A T = \begin{pmatrix}3 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & -3\end{pmatrix}\]
   Es ist $\det(T) = -1$, also $T ∈ O(3) \setminus(3)$. Setzt man
   \[T' := \begin{pmatrix}-\frac{2}{\sqrt{5}} & - \frac{1}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ 0 & \frac{5}{\sqrt{30}} & \frac{1}{\sqrt{6}} \\ -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{30}} & - \frac{2}{\sqrt{6}}\end{pmatrix} \quad \text{ist}\quad T^{-1} A T = \begin{pmatrix}3 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & -3\end{pmatrix}\]

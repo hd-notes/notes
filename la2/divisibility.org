@@ -229,7 +229,7 @@
   #+end_remark
   #+begin_proof latex
   1. Wir setzet $S := \faktor{R}{(p)}$. Behauptung $S$ ist nullteilerfrei, denn: Wegen $p \not ∈ R^{\ast}$ ist $(p) \neq R$, das heißt $S \neq 0$. Sind $\bar x, \bar y ∈ S$ mit
-	 $\bar x \bar y = \bar 0$ und $\bar y \neq \bar 0$, das heißt $x y ∈ (p)$ und $y \not ∈ (p) ⇒ p \mid x y$ und $p \not \mid p ⇒ p \mid x ⇒ \bar x = \bar 0$
+	 $\bar x \bar y = \bar 0$ und $\bar y \neq \bar 0$, das heißt $x y ∈ (p)$ und $y \not ∈ (p) ⇒ p \mid x y$ und $p \nmid p ⇒ p \mid x ⇒ \bar x = \bar 0$
   2. Sei $p = a b$ mit $a, b ∈ R$. In $s = \faktor{R}{(p)}$ ist $\bar 0 = \bar p = \bar a \bar b ⇒ \bar a = \bar 0 ∨ \bar b = \bar 0$. Ohne Einschränkung $\bar a = \bar 0 ⇒$ Es existierte $d ∈ R$ mit
 	 $a = p d ⇒ p = a b = p d b ⇒ p(1 - d b) = 0 ⇒ 1 - d b = 0 ⇒ d b = 1 ⇒ b ∈ R^{\ast}$
   #+end_proof

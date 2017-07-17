@@ -201,7 +201,7 @@
    Energiedichte im Vakuum:
    \begin{align*}
    ω_{em} &= \frac{1}{2} (\v E \v D + \v B \v H) = \frac{1}{2} ε_0 E^2 + \frac{1}{2 μ_0} B^2 = ε_0 E^2(t) \\
-   <ω_{em}> = <ω_{em}(t)> = \frac{1}{2} ε_0 E_0^2
+   \angl{ω_{em}} = \angl{ω_{em}(t)} = \frac{1}{2} ε_0 E_0^2
    \end{align*}
    Energiestromdichte (oder Intensität)
    \begin{align*}

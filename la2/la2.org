@@ -524,3 +524,210 @@
   -	Achtung: Es gilt im Allgemeinen kein Analogon des Basisauswahlsatzes: $(2, 3)$ ist ein Erzeugendensystem des freien $ℤ$ -Moduls $ℤ$ wegen $1 = (-1) · 2 + 1 · 3$,
 	aber weder $(2)$ noch $(3)$ sind Basen von $ℤ$.
   #+end_note
+  #+begin_note latex
+  Man kann zeigen: Sind $M, N$ endlich freie R-Moduln, dann kann man ananlog zu LA1 jeden Modulhomomorphismus $φ: M \to N$ nach
+  Wahl von Basen $\mathcal{A}$ von $M$, $\mathcal{B}$ von $N$ durch eine Darstellungsmatrix $M_{\mathcal{B}}^{\mathcal{A}}(φ)$ beschreiben. Es
+  gilt die Basiswechselformel
+  \[M_{\mathcal{B}'}^{\mathcal{B}'}(φ) = T_{\mathcal{B}'}^{\mathcal{B}} M^{\mathcal{A}}_{\mathcal{A}} T_{\mathcal{A}}^{\mathcal{A}'}\]
+  wobei $T_{\mathcal{A}}^{\mathcal{A}'} = M_{\mathcal{A}}^{\mathcal{A}'}(\id_M), T_{\mathcal{B}'}^{\mathcal{B}} = M_{\mathcal{B}'}^{\mathcal{B}}(\id_M)$ (Beweis analog zu LA1).
+  #+end_note
+  #+begin_remark latex
+  $M, N$ R-Moduln, $φ: M \to N$ Homomorphismus, sodass $\ker(φ), \im(φ)$ endlich erzeugt. Dann ist $M$ ein endlich erzeugtes R-Modul.
+  #+end_remark
+  #+begin_proof latex
+  Sei $(x_1, \dots, x_m)$ ein Erzeugendensystem von $\ker φ ⊆ M$, $(y_1, \dots, y_n)$ ein Erzeugendensystem von $\im φ ⊆ N$.
+  Wir wählen $\tilde y_i ∈ φ^{-1}(\{y_i\})$ für	$i = 1, \dots, n$. Behauptung: $(x_1, \dots, x_m, \tilde y_1, \dots, \tilde y_n)$ ist ein Erzeugendensystem von $M$, denn: Sei
+  $m ∈ M ⇒ φ(m) ∈ \im φ$, das heißt $∃ a_1, \dots, a_n ∈ R$, sodass
+  \begin{align*}
+  φ(m) &= a_1 y_1 + \dots + a_n y_n = a_1 φ(\tilde y_1) + \dots + a_n φ(\tilde y_n) \\
+  &= φ(a_1 \tilde y_1 + \dots + a_n \tilde y_n) \\
+  ⇒ m - (a_1 \tilde y_1 + \dots + a_n \tilde y_n) ∈ \ker φ \\
+  \end{align*}
+  \[⇒ ∃ b_1, \dots, b_m ∈ R: m - (a_1 \tilde y_1 + \dots + a_n \tilde y_n) = b_1 x_1 + \dots b_m x_m\]
+  \[⇒ m = b_1 x_1 + \dots + b_m x_m + a_1 \tilde y_1 + \dots + a_n \tilde y_n\]
+  #+end_proof
+  #+begin_remdef latex
+  $M$ R-Modul. $x ∈ M$ heißt ein *Torsionselement* von $M$ $\xLeftrightarrow{\text{Def}}$ $∃ a ∈ R$, $a$ kein Nullteiler, mit $a x = 0$.
+  \[T(M) = \{x ∈ M \mid x \text{ ist ein Torsionselement}\}\]
+  ist ein Untermodul von $M$, der *Torsionsuntermodul* von $M$. $M$ heißt \\
+  *Torsions-R-Modul* $\xLeftrightarrow{\text{Def}} T(M) = M$ \\
+  *torsionsfreier R-Modul* $\xLeftrightarrow{\text{Def}} T(M) = \{0\}$
+  #+end_remdef
+  #+begin_proof latex
+  U1: $0 ∈ T(M)$ wegen $1_R · 0 = 0$. \\
+  U2: $x, y ∈ T(M) ⇒ ∃ a, b ∈ R$, $a, b$ keine Nullteiler mit $a x = 0, b y = 0$.
+  \[⇒ a b x = 0, a b y = 0 ⇒ a b (x + y) = 0\]
+  Wegen $a, b$ keine Nullteiler ist $a b$ auch kein Nullteiler $⇒ x + y ∈ T(M)$. \\
+  U3: Sei $x ∈ T(M), a ∈ R ⇒ ∃ b ∈ R, b$ kein Nullteiler mit $b x = 0$
+  \[⇒ b (a x) = 0 = (ba) x = (a b) x = a \underbrace{(b x)}_{= 0} = 0 ⇒ a x ∈ T(M)\]
+  #+end_proof
+  #+begin_note latex
+  Falls $R$ nullteilerfrei, dann $T(M) = \{x ∈ M \mid ∃ a ∈ R, a \neq 0: a x = 0\}$
+  #+end_note
+  #+begin_ex latex
+  1. $K$ Körper, $V$ K-Vektorraum $⇒ V$ ist torsionsfreier K-Modul, denn:
+	 \[T(V) = \{x ∈ V \mid ∃ λ ∈ K, λ \neq 0: λ x = 0\} = \{0\}\]
+  2. $ℤ$ ist ein torsionsfreier $ℤ$ -Modul, denn:
+	 \[T(ℤ) = \{x ∈ ℤ \mid ∃ a ∈ ℤ, a \neq 0: a x = 0\} = \{0\}\]
+  3. Für $n ∈ ℕ, n > 1$ ist $\faktor{ℤ}{nℤ}$ ist ein Torsions- $ℤ$ -Modul, denn für alle $\bar a ∈ \faktor{ℤ}{nℤ}$ ist
+	 \[n · \bar a = \overline{n a} = \bar 0\]
+	 das heißt
+	 \[T(\faktor{ℤ}{nℤ}) = \faktor{ℤ}{nℤ}\]
+  #+end_ex
+  #+begin_remark latex
+  $F$ freier R-Modul. Dann sit $F$ torsionsfrei, das heißt $T(F) = \{0\}$
+  #+end_remark
+  #+begin_proof latex
+  Sei $(x_i)_{i ∈ I}$ eine Basis von $F, y ∈ T(F), a ∈ R$ kein Nullteiler mit $a y = 0$. $⇒ ∃ b_{i_1}, \dots, b_{i_j}: y = b_{i_1} x_{i_1} + \dots + b_{i_s} x_{i_s}$.
+  \[⇒ 0 = a y = a b_{i_1} x_{i_1} + \dots + a b_{i_s} x_{i_s} ⇒ a b_{i_1} = \dots = a b_{i_s} = 0\]
+  $⇒ b_{i_1} = \dots = b_{i_s} = 0 ⇒ y = 0$, also $T(F) = \{0\}$
+  #+end_proof
+  #+begin_note latex
+  Die Umkehrung ist falsch: $ℚ$ ist torsionsfreier $ℤ$ -Modul, aber kein freier $ℤ$ -Modul.
+  - $ℚ$ ist torsionsfreier $ℤ$ -Modul, denn: $T(ℚ) = \{x ∈ ℚ \mid ∃ a ∈ ℤ, a \neq 0: a x = 0\} = \{0\}$
+  - $ℚ$ ist kein freier $ℤ$ -Modul, denn:
+	- Sind $a, b ∈ ℚ$, dann ist die Familie $(a, b)$ $ℤ$ -linear abhängig, da: Ist $a = m_1 / n_1 \neq 0, b = m_2 / n_2 \neq 0$, dann ist
+	  \[m_2 n_1 a - m_1 n_2 b = 0\]
+	- Leere Familie, beziehungsweise einelementige Familien sind keine Erzeugendensysteme von $ℚ$ als $ℤ$ -Modul.
+  #+end_note
+  #+ATTR_LATEX: :options [Länge]
+  #+begin_defn latex
+  $M$ R-Modul.
+  \[l_R(M) := \sup \{l ∈ ℕ_0 \mid M_0 = \{0\} \subsetneq M_1 \subsetneq M_2 \subsetneq \dots \subsetneq M_l = M \text{ ist eine Kette von Untermoduln von } M\} ∈ N_0 ∪ \{∞\}\]
+  heißt die *Länge* von $M$.
+  #+end_defn
+  #+begin_ex latex
+  1. $K$ Körper, $V$ K-Vektorraum $⇒ L_K(V) = \dim_K(V)$, denn:
+	 - $\dim_K(V) = n < ∞ ⇒$ Wähle Basis $(v_1, \dots, v_n)$ von $V$, dann ist
+	   \[M_0 = \{0\} \subsetneq \Lin(v_1) \subsetneq \Lin(v_1, v_2) \subsetneq \dots \subsetneq \Lin(v_1, \dots, v_n) = V\]
+	   eine Kette von Untervektorräumen von $V ⇒ l_K(V) \geq n$. \\
+	   Ist $M_0 = \{0\} \subsetneq M_1 \subsetneq \dots \subsetneq M_l = V$ eine Kette von Untermoduln, dann ist $0 < \dim M_1 < \dots < \dim M_l = \dim V = n$, insbesondere
+	   $\dim V = \dim M_l \geq l$, also $l_ K(V) \leq n$.
+	 - $\dim_K(V) = ∞ ⇒ l_K(V) = ∞$.
+  2. $l_{ℤ}(ℤ) = ∞$, dann: für alle $n ∈ ℕ$ ist $0 \subsetneq 2^n ℤ \subsetneq 2^{n - 1} ℤ \subsetneq \dots \subsetneq 2 ℤ \subsetneq ℤ$ eine
+	 Kette von Untermoduln von $ℤ$.
+  3. $l_{ℤ}(\faktor{ℤ}{6ℤ}) = 2$, dann: Für $\bar a ∈ \faktor{ℤ}{6ℤ}$ ist
+	 \[\Lin(\bar a) = \begin{cases} \faktor{ℤ}{6ℤ} & \bar a ∈ \{\bar 1, \bar 5\} \\ \{\bar 0\} & \bar a = \bar 0 \\ \{\bar 0, \bar 3\} & \bar a = \bar 3 \\ \{\bar 0, \bar 2, \bar 4\} & \bar a ∈ \{\bar 2, \bar 4\}\end{cases}\]
+	 $⇒$ Die beiden Ketten $\{0\} \subsetneq \Lin(\{\bar 3\}) \subsetneq \faktor{ℤ}{6ℤ}, \{\bar 0\} \subsetneq \Lin(\bar 2) \subsetneq \faktor{ℤ}{6ℤ}$ können nicht weiter verfeinert werden, also
+	 $l_{ℤ}(\faktor{ℤ}{6ℤ}) = 2$
+  4. $l_R(M) = 0 ⇔ M = \{0\}$
+  #+end_ex
+  #+begin_remark latex
+  $M$ R-Modul, $N ⊆ M$ Untermodul. Dann gilt: $l_R(N) \leq l_R(M)$.
+  #+end_remark
+  #+begin_proof latex
+  Ist $0 \subsetneq N_1 \subsetneq N_2 \subsetneq \dots \subsetneq N_l = N$ eine Kette von Untermoduln von $N$, dann ist
+  $0 \subsetneq N_1 \subsetneq \dots \subsetneq N_l = N ⊆ M$ eine Kette von Untermoduln von $M$ gleicher oder gröherer Länge.
+  #+end_proof
+  #+begin_remark latex
+  $M', M''$ R-Moduln. Dann gilt: $l_R(M' \oplus M'') = l_R(M') + l_R(M'')$.
+  #+end_remark
+  #+begin_proof latex
+  1. Es genügt zu zeigen: $M$ R-Modul, $M', M'' ⊆ M$ Untermoduln mit $M = M' \oplus M''$, dann ist
+	 \[l_R(M) = l_R(M') + l_R(M'')\]
+	 (Setze $M = M' \oplus M''$, ersetze $M', M''$ durch isomorphen Moduln $M' \oplus \{0\}, \{0\} \oplus M''$, $M$ ist die direkte Summe dieser Untermoduln)
+  2. Beweis von "$\geq$" \\
+	 Seien $\{0\} \subsetneq M_1' \subsetneq \dots \subsetneq M_r' = M', \{0\} \subsetneq M_1'' \subsetneq \dots \subsetneq M_s'' = M''$ Ketten von Untermoduln von $M'$ beziehungsweise von $M''$.
+	 \[⇒ \{0\} \subsetneq M_1' \oplus \{0\} \subsetneq \dots \subsetneq M_r' \oplus \{0\} \subsetneq M_r' \oplus M_1'' \subsetneq \dots \subsetneq M_r' \oplus M_s'' = M\]
+	 ist eine Kette von Untermoduln von $M$.
+  3. Beweise von "$\leq$" \\
+	 Sei $0 \subsetneq M_1 \subsetneq \dots \subsetneq M_l = M$ eine Kette von Untermoduln von $M$. Wir betrachten die Abbildung
+	 \[π: M = M' \oplus M'' \to M'', a + b ↦ b\]
+	 Behautung: Für alle $0 \leq i < l$ gilt:
+	 \[M_i ∩ M' \subsetneq M_{i + 1} ∩ M' \text{ oder } π(M_i) \subsetneq π(M_{i + 1})\]
+	 Annahme: Es existiert $i$ mit $M_i ∩ M' = M_{i + 1} ∩ M'$ und $π(M_i) = π(M_{i + 1})$. $⇒$ Für alle $a ∈ M_{i + 1} ∃ b ∈ M_i: π(a) = π(b)$.
+	 \[⇒ a - b ∈ \ker π = M' ⇒ a - b ∈ M_{i + 1} ∈ M_{i + 1} ∩ M' = M_i ∩ M' ⊆ M_i\]
+	 \[a = (a - b) + b ∈ M_i ⇒ M_{i + 1} ⊆ M_i ⊆ M_{i + 1} ⇒ M_{i + 1} = M_i \lightning\]
+	 Wegen der Behautung gibt es in den Ketten $0 ⊆ π(M_1) ⊆ \dots ⊆ π(M_l) = M''$ und
+	 $0 ⊆ M_1 ∩ M' ⊆ \dots ⊆ M_l ∩ M' = M'$ zusammen mindestens $l$ echte Inklusionen, höchstens aber $l_R(M'') + l_R(M')$ echte Inklusionen. $⇒ l \leq l_R(M') + l_R(M'')$
+  #+end_proof
+* Moduln über Hauptidealringen
+  In diesem Abschnitt sei $R$ stets ein Hauptidealring. \\
+  Ziel: Struktursatz für endlich erzeugte R-Moduln.
+  #+begin_remdef latex
+  $F$ endlich freier R-Modul. Dann gilt: Je zwei Basen von $F$ haben dieselbe Kardinalität. Diese heißt *Rang* von $F$.
+  #+end_remdef
+  #+begin_proof latex
+  1. Falls $R$ Körper, dann $F$	endlichdimensionaler R-Vektorraum, Behautung folgt aus 9.8. Im Folgenden sei $R$ kein Körper.
+  2. Da $F$ endlich frei, existiert endliche Basis $(v_1, \dots, v_s)$ von $F$. Sei $(w_i)_{i ∈ I}$ eine beliebige Basis von $F$
+	 \[⇒ F \cong R^s, \quad F \cong \oplus_{i ∈ I} R =: M\]
+	 $⇒ ∃$ R -Modulisomorphismus $ρ:R^s \to M$.
+  3. Es	existiert irreduzibles Element $p ∈ R$. dann: $R$ kein Körper $⇒ ∃ a ∈ R \setminus (R^{\ast} ∪ \{0\}) ⇒ a$ lässt sich als Produkt irreduzibler Elemente schreiben $⇒$ es existieren irreduzible Elemente
+	 $p ∈ R$.
+  4. Wir betrachten Abbildung $\bar ρ: R^s \to \faktor{M}{pM}, x ↦ ρ(x) + p M$
+	 - $\bar ρ$ ist	Homomorphismus, da $ρ$ Homomorphismus
+	 - $\bar ρ$ ist surjektiv, da $ρ$ surjektiv
+	 - $\ker \bar ρ = p R^s$, denn:
+	   "$\supseteq$": Sei $x ∈ p R^s ∃ y ∈ R^s: x = p y ⇒ \bar ρ(x) = ρ(x) + p M = ρ(p y) + p M = \underbrace{p ρ(y)}_{∈ p M} + p M ⇒ x ∈ \ker \bar ρ$ \\
+	   "$⊆$" Sei $x ∈ \ker \bar ρ ⇒ ρ(x) ∈ p M ⇒ ∃ y ∈ M: ρ(x) = p y ⇒ ∃ \tilde y ∈ R^s:$
+	   \[y = ρ(\tilde y) ⇒ ρ(x) = p ρ(\tilde y) = ρ(p \tilde y) ⇒ x = p \tilde y ∈ p R^s\]
+	   Nach Homomorphiesatz erhalten wir einen Isomorphismus
+	   \[\faktor{R^s}{p R^s} \to \faktor{M}{p M}\]
+	   von R-Moduln
+  5. Die Abbildung $θ: \faktor{R^s}{p R^s} \to (\faktor{R}{p R})^s, (x_1, \dots, x_s) + p R^s ↦ (x_1 + p R, \dots, x_s + p R)$ ist ein Isomorphismus von R-Moduln:
+	 - $θ$ Homomorphismus: klar
+	 - $θ$ surjektiv: klar
+	 - $θ$ injektiv: Sei $θ((x_1, \dots, x_s) + p R^s) = 0 = (p R, \dots, p R) ⇒ (x_1 + p R, \dots, x_s + p R) = (p R, \dots, p R)$
+	   $⇒ x_1, \dots, x_s ∈ p R ⇒ (x_1, \dots, x_s) + p R^s = p R^s$.
+	 Analog ist
+	 \[\faktor{M}{p M} = \oplus_{i ∈ I} \faktor{R}{p \oplus_{i ∈ I} R} \cong \oplus_{i ∈ I} \faktor{R}{p R}\]
+  6. Aus 4., 5. erhalten wir Isomorphismus $Φ:(\faktor{R}{p R})^s \to \oplus_{i ∈ I} \faktor{R}{p R}$ von R-Moduln.
+	 Da $p$ irreduzibel, ist $K := \faktor{R}{p R}$ ein Körper (Anmerkung nach 26.26). Quelle / Ziel von $Φ$ sind K-Vektorräume via skalarer Multiplikation.
+	 \[K × (\faktor{R}{p R})^s \to (\faktor{R}{p R})^s, (a + p R) · (x_1 + p_R, \dots, x_s + p R) := (a x_1 + p R, \dots, a x_s + p R) = a(x_1 + p R, \dots, x_s + p R)\]
+	 analog für $\oplus_{i ∈ I} \faktor{R}{p R}$. $Φ$ ist auch ein Isomorphismus von K-Vektorräumen, denn
+  	 \begin{align*}
+	 Φ((a + p R)(x_1 + p R, \dots, x_s + p R)) &= Φ(a(x_1 + p R, \dots, x_s + p R)) = a Φ(x_1 + p R, \dots, x_s + p R) \\
+	 &= (a + p R) Φ(x_1 + p R, \dots, x_s + p R)
+     \end{align*}
+  7. Wegen 6. ist $Φ: K^s \to \oplus_{i ∈ I} K$ ein K-Vektorraum-Isomorphismus. Wegen 1. folgt $\abs{I} = s$.
+  #+end_proof
+  #+begin_defthm latex
+  $A ∈ M(m × n, R)$. Dann existeren $r ∈ ℕ_0, c_1, \dots, c_r ∈ R \setminus \{0\}$, sodass
+  \[A \sim \begin{pmatrix} c_1 \\ & \ddots \\ & & c_r \\ & & & 0 \\ & & & & \ddots \\ & & & & & 0 \end{pmatrix}\]
+  mit $c_1 \mid \dots \mid c_r$. $r$ ist eindeutig bestimmt, $c_1, \dots, c_r$ sind eindeutigb bestimmt bis auf Assoziiertheut und heißen die *Elementarteiler* von $A$.
+  #+end_defthm
+  #+begin_proof latex
+  1. Eindeutigkeit: Wie im Beweis von 27.17 über Fittingideale
+  2. Existenz: Wir gehen ähnlich vor wie bei Gauß-Diagonalisierung (vergleiche Beweis von 27.8) und modifizieren das Verfahren wie folgt: Setze $δ: R \setminus \{0\} \to ℕ_0, a ↦$ Anzahl der
+	 Primfaktoren von $a$ (mit Vielfachheit gerechnet). (insbesondere $δ(a) = 0$ für $a ∈ R^{\ast}$)
+	 1. Schritt: Erreiche durch Zeilen- und Spaltenvertauschung, dass $δ(a_11) \leq δ(a_{ij}) ∀ i, j$ mit $a_{ij} \neq 0$
+	 2. Schritt: Bringe $A$ auf die Form
+		\[(\begin{array}{c|ccc} a_{11} & & 0 & \\ \hline \\ 0 & & \ast & \\ \\ \end{array})\]
+		Falls $a_{11} \mid a_{1i}$ und $a_{11} \mid a_{j1}$ für alle $i, j$, dann erreiche obige Form durch elementare Zeilen- und Spaltenumformungen. Andernfalls: Ohne Einschränkung gelte
+		$a_{11} \nmid a_{i1}$ für ein $i > 1$. Da $R$ Hauptidealring, ist $\GGT(a_{i1}, a_{11}) \neq \emptyset$. Sei $β ∈ \GGT(a_{11}, a_{i1})$. Da $a_{11} \nmid a_{i1}$ ist
+		$δ(β) < δ(a_{11})$ ($β$ kann nicht gleich viele Primteiler wie $a_{11}$ haben, sonst $β \estimates a_{11} ⇒ a_{11} \mid a_{i1} \lightning$)
+		Nach 26.22 existieren $u, v ∈ R$ mit $β = u a_{11} + v a_{i1}$, und es existieren $\tilde u, \tilde v ∈ R$ mit
+		\[a_{11} = β \tilde u, a_{i1} = β \tilde v ⇒ β = u β \tilde u + v β \tilde v = β(u \tilde u + v \tilde v) ⇒ β(1 - (u \tilde u + v \tilde v)) = 0\]
+		$⇒ u \tilde u + v \tilde v = 1$. Es ist
+		\[\underbrace{\begin{pmatrix} u & & & & v \\ & 1 \\ & & \ddots \\ & & & 1 \\ -\tilde v & & & & \tilde u \\ & & & & & 1 \\ & & & & & & \ddots \\ & & & & & & & 1\end{pmatrix}}_{=: B} \begin{pmatrix} u & & & & -v \\ & 1 \\ & & \ddots \\ & & & 1 \\ \tilde v & & & & \tilde u \\ & & & & & 1 \\ & & & & & & \ddots \\ & & & & & & & 1\end{pmatrix} = \begin{pmatrix} 1 & & & & 0 \\ & 1 \\ & & \ddots \\ & & & 1 \\ 0 & & & & 1 \\ & & & & & 1 \\ & & & & & & \ddots \\ & & & & & & & 1\end{pmatrix}\]
+		das heißt $B ∈ \GL(n, R)$. Multiplikation von $B$ von links bewirkt folgende Zeilenoperationen:
+		- neue erste Zeile = $u$ -faches der alten ersten Zeile + $v$ -faches der alten i-ten Zeile
+		- neue i-te Zeile =	$- \tilde v$ -faches der alten ersten Zeile + $\tilde u$ -faches der alten i-ten Zeile
+		In der Matrix $B A$ steht links oben das Element $β$ mit $δ(β) < δ(a_{11})$. Erhalte durch Zeilen-/Spaltenvertauschung an $A' = BA$ eine Matrix $A'' = (a_{ij}'')$ mit $δ(a_{11}'') < δ(a_{ij}'')$
+		für alle $i, j, a_{ij}'' \neq 0$ und $δ(a_{11}'') < δ(a_{11})$.	Dieser Prozess bricht nach endlich vielen Iterationen ab. Wir erhalten eine Matrix der Form
+		\[D = (\begin{array}{c|ccc} d_{11} & & 0 & \\ \hline \\ 0 & & \ast & \\ \\ \end{array}), d_{11} \neq 0, δ(d_{11}) \leq δ(a_{11}), δ(d_{11}) \leq δ(d_{ij}) ∀ i,j, d_{ij} \neq 0\]
+	 3. Schritt: Führe das Verfahren analog zu der Gauß-Diagonalisierung über Euklidischen Ringen weiter (mit Modifikationen analog zu oben).
+  #+end_proof
+  #+begin_remark latex
+  $R$ Hauptidealring, $a ∈ R \setminus (R^{\ast} ∪ \{0\}), a = p_1 · \dots · p_r$ mit irreduziblen Elementen $p_1, \dots, p_r$ (nicht notwendig paarweise verschieden). Dann ist
+  \[l_{R}(\faktor{R}{a R}) = r\]
+  insbesondere ist $l_R(\faktor{R}{aR}) < ∞$
+  #+end_remark
+  #+begin_proof latex
+  1. Nach Übungen induziert die kanonische Projektion $π: R \to \faktor{R}{a R}$ eine Bijektion
+	 \[Φ: \{\text{Ideale } I ⊆ R, I \supseteq a R\} \to \{\text{Ideale von } \faktor{R}{a R}\}\]
+	 Hierbei: Ideale in $\faktor{R}{a R}$ = $\faktor{R}{aR}$ -Untermoduln von $\faktor{R}{a R}$ = $R$ -Untermoduln von $\faktor{R}{a R}$ (skalare Multiplikation: $R × \faktor{R}{a R} \to \faktor{R}{aR}, (b, x + a R) ↦ b x + a R$)
+  2. Aus 1. folgt:
+	 \begin{align*}
+	 l_R(\faktor{R}{a R}) &= \sup \{l ∈ ℕ_0 \mid (a) \subsetneq I_1 \subsetneq \dots \subsetneq I_l = R, I_k \text{ Ideale in } R\} \\
+	 &= \sup\{l ∈ ℕ_0 \mid (a) \subsetneq (a_1) \subsetneq \dots \subsetneq (a_l) = R, a_i ∈ R\} \\
+	 &= \sup\{l ∈ ℕ_0 \mid a_l \mid a_{l - 1} \mid \dots \mid a_1 \mid a_0 := a, a_i ∈ R, a_l ∈ R^{\ast}, a_i \not \estimates a_{i + 1}, i = 0, \dots, l - 1\}
+   	 \end{align*}
+  3. Wegen $1 \mid p_1 \mid p_1 p_2 \mid \dots \mid p_1 · \dots · p_r = a$ folgt $l_R(\faktor{R}{aR}) \geq r$ \\
+	 Da $R$ Hauptidealring und insbesondere faktoriell, hat $a$ bis auf Assoziiertheit nur endlich viele Teiler, insbesondere $l_R(\faktor{R}{aR}) < ∞$.
+	 Annahme:
+     \[l_R(\faktor{R}{a R}) = s > r ⇒ ∃ a_1, \dots, a_s ∈ R \setminus \{0\}: a_s \mid a_{s - 1} \mid \dots \mid a_{1} \mid a_0 = 0\]
+	 ohne Einschränkung $a_s = 1, a_i \not \estimates a_{i + 1}$ für $i = 0, \dots, s - 1$. $⇒ ∃ c_1, \dots, c_s ∈ R \setminus (R^{\ast} ∪ \{0\})$ mit
+	 \[a = c_1 a_1 = c_1 c_2 a_2 = \dots = c_1 · \dots · c_{s - 1} a_{s - 1} = c_1 · \dots · c_s \lightning\]
+	 zu $a = p_1 · \dots · p_r, R$ faktoriell.
+  #+end_proof

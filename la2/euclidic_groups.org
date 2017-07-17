@@ -9,10 +9,10 @@
   Eine positiv definite symmetrische Bilinearform nennt man auch ein *Skalarprodukt*.
   #+end_defn
   #+begin_ex latex
-  1. $V = ℝ^n, <·,·>:ℝ^n × ℝ^n \to ℝ, <\cvec{x_1; \vdots; x_n}, \cvec{y_1; \vdots; y_n}> := x_1 y_1 + \dots + x_n y_n$
+  1. $V = ℝ^n, \angl{·,·}:ℝ^n × ℝ^n \to ℝ, \angl{\cvec{x_1; \vdots; x_n}, \cvec{y_1; \vdots; y_n}} := x_1 y_1 + \dots + x_n y_n$
 	 ist ein Skalarprodukt auf dem $ℝ^n$. Positiv Definitheit:
-	 \[<\cvec{x_1; \vdots; x_n}, \cvec{x_1; \vdots; x_n}> = x_1^2 + \dots + x_n^2 > 0, \text{ falls } \cvec{x_1; \vdots; x_n} \neq 0\]
-	 $<·, ·>$ heißt das *Standardskalarprodukt* auf dem $ℝ^n$.
+	 \[\angl{\cvec{x_1; \vdots; x_n}, \cvec{x_1; \vdots; x_n}} = x_1^2 + \dots + x_n^2 > 0, \text{ falls } \cvec{x_1; \vdots; x_n} \neq 0\]
+	 $\angl{·, ·}$ heißt das *Standardskalarprodukt* auf dem $ℝ^n$.
   2. $V= \mathcal{C}[0, 1]$
 	 \[γ: \mathcal{C}[0, 1] × \mathcal{C}[0, 1] \to ℝ, (f, g) ↦ ∫_0^1 f(t) g(t) \d t\]
 	 ist ein Skalarprodukt.
@@ -108,7 +108,7 @@
   Insbesondere gilt für alle $v ∈ V: v - π_U(v) ∈ U^{\perp}$
   #+end_note
   #+begin_ex latex
-  $(V, γ) = (ℝ^2, <·,·>), U = \Lin(\cvec{1; 1}) ⇒ U^{\perp} = \Lin(\cvec{-1; 1})$, denn $\cvec{-1; 1} ∈ U^{\perp}$ wegen $<\cvec{-1; 1}, \cvec{1; 1}> = 0$, und es ist
+  $(V, γ) = (ℝ^2, \angl{·,·}), U = \Lin(\cvec{1; 1}) ⇒ U^{\perp} = \Lin(\cvec{-1; 1})$, denn $\cvec{-1; 1} ∈ U^{\perp}$ wegen $\angl{\cvec{-1; 1}, \cvec{1; 1}} = 0$, und es ist
   $\dim U^{\perp} = 2 - \dim U = 2 - 1 = 1$. Jedes Element aus $V$ lässt sich eindeutig schreiben als
   \[v = λ\cvec{1; 1} + μ\cvec{-1; 1}\]
   das heißt
@@ -140,12 +140,12 @@
   $⇒ (w_1, \dots, w_k)$ Orthogonalbasis von $U_k$
   #+end_proof
   #+begin_ex latex
-  Wir betrachten $(ℝ^3, <·, ·>), U = \Lin((v_1, v_2))$ mit $v_1 := \cvec{2; 0; 1}, v_2 := \cvec{-1; 1; 0}$. Gesucht ist eine Orthogonalbasis von $U$ bezüglich $<·, ·>$.
+  Wir betrachten $(ℝ^3, \angl{·, ·}), U = \Lin((v_1, v_2))$ mit $v_1 := \cvec{2; 0; 1}, v_2 := \cvec{-1; 1; 0}$. Gesucht ist eine Orthogonalbasis von $U$ bezüglich $\angl{·, ·}$.
   Setze
   \begin{align*}
   w &:= \frac{v_1}{\norm{v_1}} = \frac{1}{\sqrt{5}}\cvec{2; 0; 1} \\
-  \tilde w_2 &= v_2 - <v_2, w_1> w_1 = \cvec{-1; 1; 0} - <\cvec{-1; 1; 0}, \frac{1}{\sqrt{5}}\cvec{2; 0; 1}> \frac{1}{\sqrt{5}}\cvec{2; 0; 1} \\
-  &= \cvec{-1; 1; 0} - \frac{1}{5}<\cvec{-1; 1; 0}, \cvec{2; 0; 1}>\cvec{2; 0; 1} = \cvec{-1; 1; 0} + \frac{2}{5}\cvec{2; 0; 1} = \cvec{-\frac{1}{5}; 1; \frac{2}{5}} = \frac{1}{2} \cvec{-1; 5; 2} \\
+  \tilde w_2 &= v_2 - \angl{v_2, w_1} w_1 = \cvec{-1; 1; 0} - \angl{\cvec{-1; 1; 0}, \frac{1}{\sqrt{5}}\cvec{2; 0; 1}} \frac{1}{\sqrt{5}}\cvec{2; 0; 1} \\
+  &= \cvec{-1; 1; 0} - \frac{1}{5}\angl{\cvec{-1; 1; 0}, \cvec{2; 0; 1}}\cvec{2; 0; 1} = \cvec{-1; 1; 0} + \frac{2}{5}\cvec{2; 0; 1} = \cvec{-\frac{1}{5}; 1; \frac{2}{5}} = \frac{1}{2} \cvec{-1; 5; 2} \\
   w_2 &= \frac{\tilde w_2}{\norm{\tilde w_2}} = \frac{1}{\sqrt{30}}\cvec{-1; 5; 2}
   \end{align*}
   $⇒ (\frac{1}{\sqrt{5}}\cvec{2; 0; 1}, \frac{1}{\sqrt{30}}\cvec{-1; 5; 2})$ ist eine Orthogonalbasis von $U$.
@@ -165,7 +165,7 @@
 	 \[⇒ E_n = M_{\mathcal{B}}(Δ(A)) = \underbrace{(T_{(e_1, \dots, e_n)}^{\mathcal{B}})^T}_{= (T^{-1})^T} \underbrace{M_{(e_1, \dots, e_n)}(Δ(A))}_{= A} \underbrace{T_{(e_1, \dots, e_n)}^{\mathcal{B}}}_{= T^{-1}}\]
 	 $⇒ A = T^T T$
   2. Sei $A = T^T T$ für ein $T ∈ \GL(n, ℝ)$. Für $x ∈ ℝ^n, x \neq 0$ ist
-	 \[Δ(A)(x, x) = x^t A w = x^t T^t T x = (Tx)^T Tx = <Tx, Tx> > 0\]
+	 \[Δ(A)(x, x) = x^t A w = x^t T^t T x = (Tx)^T Tx = \angl{Tx, Tx} > 0\]
   #+end_proof
   #+begin_note latex
   1., 2. sind äquivatent zu

@@ -394,3 +394,99 @@
   \end{align*}
   #+end_proof
   $A x = b ⇔ \underbrace{K^{-1} A K^{-1T}}_{\tilde A} \underbrace{K^T x}_{\tilde x} = \underbrace{K^{-1} b}_{\tilde b}$
+  Wiederholung: Allgemeines Abstiegsverfahren für $A x = b, A ∈ ℝ^{n × n}$ symmetrisch positiv definit.
+  \[⇔ \min Q(y) = \frac{1}{2}(y, Ay) - (b, y)\]
+  \[g^t = A x^t - b, α_t = -\frac{(g^t, r^t)}{r^t A r^t}\]
+  \[x^{t + 1} = x^= + α_t r^t\]
+  Gradientenverfharen: $r^t := - g^t$. Fehlerabschätzung:
+  \[\norm{x^t - x}_A \leq (\frac{1 - κ^{-1}}{1 + κ^{-1}}) \norm{x^0 - x}_A, κ = Λ/λ = \cond_2(A)\]
+  Beobachtung:
+  \[(g^{t + 1}, g^t) = (g^t - α_t A g^t, g^t) = \norm{g^t}^2 - \underbrace{α_t (A g^t, g^t)}_{\norm{g^t}^2} = 0\]
+  $⇒$ $g^{t + 1} \perp g^t$. $⇒$ Langsame Konvergenz für $\cond_2 A \gg 1$. \\
+  *Conjugate-Gradients-Verfahren (CG)* \\
+  Idee: Wähle Abstiegsrichtung $d^t$ mit $(d^i, d^j)_A = 0 ∀ i \neq j$. ($A$ -orthogonal).
+  Ansatz: $B_t := \Lin \{d^0, \dots, d^{t - 1}\}$.
+  \[x^t = x^0 + \sum_{i = 0}^{t - 1} α_i d^i α x^0 + B_t\]
+  bestimmt durch
+  \begin{align*}
+  Q(x^t) &= \min_{y ∈ x^0 + B_t} Q(y) \\
+  ⇔	\norm{A x^t - b}_{A^{-1}} &= \min_{x^0 + B_j} ! \\
+  ⇔	\norm{x^t - x}_{A} &= \min_{x^0 + B_j} ! \\
+  ⇔ 0 &= \dd{Q}{α_i}(x^t) = (\grad Q(x^t), d^i) \\
+  ⇔ (A x^t - b, d^i) &= 0, \quad i = 0, \dots, t - 1 \\
+  ⇔ g^t &\perp B_t
+  \end{align*}
+  Wir legen	zuerst $B_t$ fest:
+  \[B_t := K_t(d^0; A), d^0 = b - A x^0\]
+  mit dem Krylov-Raum
+  \[K_t(v,; A)= \Lin \{v, A v, A^2 v, \dots, A^{t - 1} v\}\]
+  Motivation (Lucky breakdown). Wird $K_t(d^0; A)$ stationär, das heißt gilt
+  \[A^t d^0 ∈ K_t(d^0; A)\]
+  für ein $t ∈ ℕ$, so folgt
+  \[-g^t = b - A x^t = d^0 + A(x^0 - x^t) ∈ d^0 + A K_t(d^0; A) ⊂ K_t(d^0; A) ⊂ K_t(d^0 ; A)\]
+  und wegen $g^t \perp K_t(d^0; A)$ $⇒$ $g^t = 0$, das heißt $A x^t = b$. \\
+  Konstruktion der Richtungen $d^t ∈ K_{t + 1}(d^0; A)$: Ansatz:
+  \[d^t = \underbrace{-g^t}_{\not ∈ K_t(d^0; A)} + \underbrace{\sum_{j = 0}^{t - 1} β_j^{t - 1} d^j}_{∈ K_t(d^0; A)} ∈ K_{t + 1}(d^0; A)\]
+  $A$ -Orthogonalität:
+  \begin{align*}
+  0 &\overset{!}{=} (d^t, A d^i) = (-g^t, A d^i) + \sum_{j = 0}^{t - 1} β_j^{t - 1} \underbrace{(d^j, A d^i)}_{= 0, i \neq j} \\
+  &= (-g^t + β_j^{t - 1} d^i, A d^i), i = 0, \dots, t - 1
+  \end{align*}
+  Wegen $(g^t, d^i) = 0, i = 0, \dots, t - 1$ folgt
+  \[(g^t, A d^i) = 0, \quad i = 0, \dots, t - 2\]
+  $⇒$ $β_i^{t - 1} = 0, i = 0, \dots, t - 2$. $i = t - 1$:
+  \[0 = (-g^t, A d^{t - 1}) + β_{t - 1}^{t - 1}(d^{t - 1}, A d^{t - 1})\]
+  \[⇒ β_{t_ 1} := β_{t - 1}^{t - 1} = \frac{(g^t, A d^{t - 1})}{(d^{t - 1}, A d^{t - 1})}\]
+  \begin{align*}
+  ⇒ d^t &= - g^t + β_{t - 1} d^{t - 1} \\
+  ⇒ g^{t + 1} &= A x^{t + 1} - b = A x^t - b + α_t A d^t \\
+  &= g^t + α_t A d^t \\
+  ⇒ α_t &= - \frac{(g^t, d^t)}{(d^t, A d^t)} \tag{klassische Form} \\
+  ⇒ x^{t + 1} &= x^t + α_t d^t \\
+  \intertext{Vereinfachung:}
+  α_t = \frac{\norm{x^t}^2}{(d^t, A d^t)}, β_t = \frac{\norm{y^{t + 1}}^2}{\norm{g^t}^2}
+  \end{align*}
+  Beobachtung: $g^t \neq 0, t = 0, \dots, n - 1$
+  \[⇒ \Lin \{d^0, \dots, d^{n -1}\} = ℝ^n ⇒ x^n = x\]
+  (Gilt nur in exakter Arithmetik)
+  #+begin_lemma latex
+  Für ein Polynom $p ∈ P_t, p(0) = 1$ gelte auf einer Menge $S ⊂ ℝ$ mit $σ(A) ⊂ S$
+  \[\sup_{μ ∈ S} \abs{p(μ)} \leq M\]
+  Dann gilt $\norm{x^t - x}_A \leq M\norm{x^0 - x}_A$
+  #+end_lemma
+  #+begin_proof latex
+  \[\norm{x^t - x}_A = \min_{y ∈ x^0 + B_t} \norm{y - x}_A\]
+  Wegen $B_t = \Lin \{d^0,\dots, d^{t - 1}\} = \Lin \{A^0 g^0, \dots, A^{t - 1}, g^0\}$
+  \begin{align*}
+  ⇒ \norm{x^t - x}_A &= \min_{p ∈ P_{t - 1}} \norm{x_0 - x + p(A) g^0}_A \\
+  &= \min_{p ∈ P_{t - 1}} \norm{[E_n + A p(A)](x^0 - x)}_A \\
+  &\leq \min_{\substack{p ∈ P_t \\ p(0) = 1}} \norm{p(A)}_A \norm{x^0 - x}_A
+  \end{align*}
+  Orthonormalbasis $\{ω_1,\dots, ω_n\}$ aus Eigenvektoren mit Eigenwerten $λ_i$
+  \begin{align*}
+  y &= \sum_{i = 1}^{n} γ_i ω_i, \quad γ_i = (y, ω_i) \\
+  \norm{p(A) y}_A^2 &= \sum_{i = 1}^{n} λ_i p(λ_i)^2 γ_i^2 \\
+  &\leq M^2 \sum_{i = 1}^{n} λ_i γ_i^2 = M^2 \norm{y}_A^2 \\
+  ⇒ \norm{p(A)}_A &= \sup_{y ∈ ℝ^n \setminus \{0\}} \frac{\norm{p(A)y}_A}{\norm{y}_A} \leq M
+  \end{align*}
+  #+end_proof
+  #+ATTR_LATEX: :options [CG-Konvergenz]
+  #+begin_thm latex
+  Mit $κ = Λ / λ$ gilt
+  \[\norm{x^t - x}_A \leq (\frac{1 - 1/\sqrt{κ}}{1 + 1/\sqrt{κ}})^t \norm{x^0 - x}_A\]
+  #+end_thm
+  #+begin_proof latex
+  $S = [λ, Λ]$. Lemma $⇒$
+  \[\norm{x^t - x}_A \leq \min_{\substack{p ∈ P_t \\ p(0) = 1}} \sup_{μ ∈ [λ, Λ]} \abs{p(μ)}\norm{x^0 - x}_A\]
+  zu zeigen:
+  \[\min_{\substack{p ∈ P_t \\ p(0) = 1}} \sup_{μ ∈ [λ, Λ]} \abs{p(μ)}\norm{x^0 - x}_A \leq 2 (\frac{1 - \sqrt{λ/Λ}}{1 + \sqrt{λ/Λ}})^t\]
+  Problem der Bestapproximation mit Polynomen bezüglich Max-Norm!
+  Lösung: $T_t$: $t$ -tes Tschebyscheff-Polynom auf $[-1,1]$
+  \[\bar p(μ) = T_t(\frac{Λ + λ - 2μ}{Λ - λ})T(\frac{Λ + λ}{Λ - λ})^{-1}\]
+  \[⇒ \sup_{μ ∈ [λ, Λ]} \abs{\bar p(μ)} = T(\frac{Λ + λ}{Λ - λ})^{-1}\]
+  Darstellung für $\abs{μ} > 1$
+  \begin{align*}
+  T_t(μ) &= \frac{1}{2}((μ + \sqrt{μ^2 - 1})^t + (μ - \sqrt{μ^2 - 1})^t) \\
+  T_t(μ) &= \frac{1}{2}((\frac{\sqrt{κ + 1}}{\sqrt{κ} - 1})^t + (\frac{\sqrt{κ} - 1}{\sqrt{κ} + 1})^t) \geq \frac{1}{2}(\frac{\sqrt{κ} + 1}{\sqrt{κ} - 1})^t
+  \end{align*}
+  #+end_proof

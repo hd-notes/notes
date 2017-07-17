@@ -121,7 +121,7 @@
 		$d_{11} \neq 0, δ(d_{11}) \leq δ(d_{ij})$ falls $d_{ij} \neq 0, δ(d_{11}) \leq δ(a_11)$
   3. Schritt: Erreiche $d_{11} \mid d_{ij} ∀ i,j$:
 	 1. Fall: Es gilt bereits $d_{11} \mid d_{ij} ∀ i,j$, dann fertig.
-	 2. Fall: Es existiert $i,j$ mit $d_{11} \not \mid d_{ij}$
+	 2. Fall: Es existiert $i,j$ mit $d_{11} \nmid d_{ij}$
 		$⇒$ Es existiert ein $q ∈ R$ mit $d_{ij} - q d_{11} \neq 0$ und $δ(d_{ij} - q d_{11}) < d_{11}$.
 		Addiere erste Zeile von $D$ zur i-ten Zeile von $D$, erhalte:
 		\begin{equation*}

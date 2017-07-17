@@ -494,7 +494,7 @@
    \begin{align*}
    \v A &= \frac{\v F}{m} = \frac{q \v E}{m} \\
    ⇒ \v v_D(t) &= \v v_{th} + \frac{q \v E}{m}t \\
-   \v v_D &= \underbrace{<\v v_{th}>}_{= 0} + \frac{q \v E}{m}<t> = \frac{q}{\v E}m	τ = μ \v E
+   \v v_D &= \underbrace{\angl{\v v_{th}}}_{= 0} + \frac{q \v E}{m}\angl{t} = \frac{q}{\v E}m	τ = μ \v E
    \end{align*}
    Also gilt für einen ohmschen Leiter:
    \[\v v_D = μ \v E\]

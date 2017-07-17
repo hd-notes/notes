@@ -213,32 +213,32 @@
    \[V \sim \frac{1}{x} ⇒ k = -1 ⇒ \frac{T'}{T} = \frac{X'}{X}^{3/2}\]
    #+end_ex
 ** Virialsatz
-   Betrachte Zeitmittel: $<A> := \lim_{t \to ∞} \frac{1}{t} ∫_0^t \d t' A{t'}$
+   Betrachte Zeitmittel: $\angl{A} := \lim_{t \to ∞} \frac{1}{t} ∫_0^t \d t' A{t'}$
    (besonders leicht zu berechnen für totale Zeitableitungen). \\
-   Ziel: $<T>$ (kinetische Energie) \\
+   Ziel: $\angl{T}$ (kinetische Energie) \\
    Also: Versuche $T$ als totale Zeitableitung zu schreiben. (zur Vereinfachung in 1D, ein Teilchen)
    \begin{align*}
    2 T &= mv^22 = p \dot x = \dd{}{t}(p x) - \dot p x \\
    &= \dd{}{t}(p x) + x \pp{V}{x} \\
    ⇒ 2 T - x \pp{V}{x} &= \dd{}{t}(px) \\
-   ⇒ <2 T - x \pp{V}{x}> &= <\dd{}{t}(px)>  \\
+   ⇒ \angl{2 T - x \pp{V}{x}} &= \angl{\dd{}{t}(px)}  \\
    &= \lim_{t \to ∞} \frac{1}{t} (px\big|_t - px\big|_0) = 0 \tag{falls $p, x$ beschränkt}
    \end{align*}
    #+ATTR_LATEX: :options [Virialsatz]
    #+begin_defn latex
    Für Bewegungen in beschränkten Gebieten mit beschränket Geschwindigkeiten gilt:
-   \[2<T> = <\sum_{a} \v x_a \pp{V}{\v x_a}> = <\sum_{a} \sum_{i = 1}^{3}x_a^i \pp{V}{x_a^i}>\]
+   \[2\angl{T} = \angl{\sum_{a} \v x_a \pp{V}{\v x_a}} = \angl{\sum_{a} \sum_{i = 1}^{3}x_a^i \pp{V}{x_a^i}}\]
    #+end_defn
    #+ATTR_LATEX: :options [homogenes Potential]
    #+begin_ex latex
    Falls $V$ homogen von Grad $k$:
-   $2<T> = k<V>$
+   $2\angl{T} = k\angl{V}$
    #+end_ex
    #+ATTR_LATEX: :options [harmonischer Oszillator]
    #+begin_ex latex
-   $<T> = <V>$
+   $\angl{T} = \angl{V}$
    #+end_ex
    #+ATTR_LATEX: :options [Gravitation]
    #+begin_ex latex
-   $k = -1, 2<T> = -<V>$
+   $k = -1, 2\angl{T} = -\angl{V}$
    #+end_ex

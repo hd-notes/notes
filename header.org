@@ -106,6 +106,7 @@
 #+LATEX_HEADER: \renewcommand{\headfont}{\normalfont\sffamily}
 #+LATEX_HEADER: \renewcommand{\pnumfont}{\small\sffamily}
 
+#+LATEX_HEADER: \DeclarePairedDelimiter\angl{\langle}{\rangle}%
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 #+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 #+LATEX_HEADER: \DeclarePairedDelimiter\ceil{\lceil}{\rceil}

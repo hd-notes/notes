@@ -164,22 +164,22 @@
 ** Mittelwert
    Messen eine Größe $F$ mehrmals ($N$ Mal).
    #+begin_defn latex
-   \[<F> = \frac{1}{N} \sum_{i = 1}^{N} F(i) = \frac{\sum_{i = 1}^{N} F(i)}{\sum_{i = 1}^{N} 1}\]
+   \[\angl{F} = \frac{1}{N} \sum_{i = 1}^{N} F(i) = \frac{\sum_{i = 1}^{N} F(i)}{\sum_{i = 1}^{N} 1}\]
    #+end_defn
    jetzt für Gas: Meßgröße: $F = F(\v q, \v p)$, außerdem: Verteilungsfunktion $f(\v q, \v p)$
-   \[<F> = \frac{1}{N} \sum_{i =¹}^{N} F(\v q_i, \v p_i) = \frac{1}{N} \sum_{α} F(\v q_α, \v p_α) f(\v q_α · \v p_α) (Δq^3 Δ p^3)_α\]
+   \[\angl{F} = \frac{1}{N} \sum_{i =¹}^{N} F(\v q_i, \v p_i) = \frac{1}{N} \sum_{α} F(\v q_α, \v p_α) f(\v q_α · \v p_α) (Δq^3 Δ p^3)_α\]
    (Summe über kleine Zellen $α$). Grenzwert kleiner Zellen:
-   \[<F> = \frac{1}{N} ∫ \d^3 \v p \d^3 \v q f(\v q, \v p) F(\v q, \v p) = \frac{∫ \d^3 \v p \d^3 \v q f(\v q, \v p) F(\v q, \v p)}{∫\d^3 \v p \d^3 \v q f(\v q, \v p)}\]
+   \[\angl{F} = \frac{1}{N} ∫ \d^3 \v p \d^3 \v q f(\v q, \v p) F(\v q, \v p) = \frac{∫ \d^3 \v p \d^3 \v q f(\v q, \v p) F(\v q, \v p)}{∫\d^3 \v p \d^3 \v q f(\v q, \v p)}\]
    $F, f$ unabhängig von $\v q$:
-   \[<F> = \frac{∫ \d^3 \v p f(\v p) F(\v p)}{∫ \d^3 \v p f(\v p)}\]
+   \[\angl{F} = \frac{∫ \d^3 \v p f(\v p) F(\v p)}{∫ \d^3 \v p f(\v p)}\]
 \subsection*{Maxwell-Bolzmann-Verteilung - Fortsetzung}
-   Wähle Observablen $\{F_1, F_2, F_3\} \equiv \v P = \v p$. Behauptung: $<\v F> = \v p_0$. (Nachprüfen für erste Komponente reicht)
-   \[<p_1> = \frac{∫ \d^3 \v p p_1 C e^{-A(\v p - \v p_0)^2}}{∫ \d^3 \v p C e^{- A(\v p - \v p_0)^2}}\]
+   Wähle Observablen $\{F_1, F_2, F_3\} \equiv \v P = \v p$. Behauptung: $\angl{\v F} = \v p_0$. (Nachprüfen für erste Komponente reicht)
+   \[\angl{p_1} = \frac{∫ \d^3 \v p p_1 C e^{-A(\v p - \v p_0)^2}}{∫ \d^3 \v p C e^{- A(\v p - \v p_0)^2}}\]
    1. $\d^3 \v p = \d p_1 \d p_2 \d p_3$
    2. $(\v p - \v p_0)^2 = (p_1 - p_{0,1})^2 + \dots$
    Zur Vereinfachung: Boost ins Ruhesystem das Gases $\to \v p_0 = 0$ ohne Beschränkung der Allgemeinheit.
    Betrachte jetzt Observable
-   \[F(\v p) = \frac{\v p^2}{2m}, ε <\frac{\v p^2}{2m}> = \frac{3}{4 A m}\]
+   \[F(\v p) = \frac{\v p^2}{2m}, ε \angl{\frac{\v p^2}{2m}} = \frac{3}{4 A m}\]
    Definiere Temperatur $T$:
    \[\frac{1}{2} k T \equiv \frac{ε}{n_f}\]
    - $k = k_B$ - Konstante
@@ -219,7 +219,7 @@
    \[N_L \sim \frac{1}{6} n(x, y_0 - Δ y, z) Δ A Δ y\]
    $Δ A · Δ y$: Volumen des relevanten Quaders links von der Wand.
    Dies	macht nur Sinn, wenn
-   \[v \equiv <\abs{\v v}> \sim \frac{Δ y}{Δ t}\]
+   \[v \equiv \angl{\abs{\v v}} \sim \frac{Δ y}{Δ t}\]
    $⇒$ Stromdichte:
    \begin{align*}
    j_y &= \frac{N_L - N_R}{Δ A Δ t} \sim \frac{1}{6} \frac{Δ y}{Δ t}(n(y_0 - Δ y) - n(y_0 + Δ y)) \\
@@ -244,7 +244,7 @@
    Kommentar: Wir bringen keine ordentlihce Herleitung der Diffusion aus der Bolzmann-Gleichung. Wir wollen aber wenigstens sehen, dass der obige "Diffusionsterm" das richtige tut (bei $\v F = 0$, Kollisionsterm = 0). Also:
    \begin{align*}
    \pp{f}{t} &\sim - \pp{\v p}{m} \v ∇_q f, n(\v q) = ∫ \d^3 \v p f(\v q, \v p) \\
-   ⇒ \pp{n(\v q)}{t} &\sim \v ∇_q \underbrace{∫ \d^3 \v p f(\v q, \v p) \frac{\v p}{m}}_{<\v v> n = \v j} \sim \v ∇_q \v j
+   ⇒ \pp{n(\v q)}{t} &\sim \v ∇_q \underbrace{∫ \d^3 \v p f(\v q, \v p) \frac{\v p}{m}}_{\angl{\v v} n = \v j} \sim \v ∇_q \v j
    \end{align*}
    In der Tat: Änderung von $n$ durch $\v ∇_q \v j$
 * Thermodynamische Gesamtheiten
@@ -304,7 +304,7 @@
    \[ρ(q_1, \dots, q_{3N}, p_1, \dots, p_{3N}) = ρ(p_1, \dots, 3N) = \const δ(E - \sum_{i = 1}^{3N} \frac{p_i^2}{2m})\]
    Messunsicherheit: $H ∈ [E - Δ E, E]$. Für hinreichend kleine $Δ E$ ist $ρ = \const$ in einer 3N-dimensionalen Kugelschale.
    \[⇒ ∫_Γ \d^{6N} \v ξ ρ(\v ξ) = V^N ∫ \d^{3N} \v p ρ(\v p) = V^N \const V_{\text{Kugelschale}} = 1\]
-** Bolzmannverteilung als wahrschenlichste Verteilung
+** Bolzmannverteilung als wahrscheinlichste Verteilung
    Verbindung zu $f(\v q, \v p)$ und Wahrscheinlichkeitsdichten auf $N$ -Teilhen Phasenräume. Betrache Phasenräume aus Zellen aufgebaut mit diskrete Werte für $\v p, \v q$
    gegeben $f(\v q, \v p) \estimates O[f]$ in $Γ$ -Raum $⇒$ Volumen $Ω[f]$.
    Toy-model $f(\v q, \v p) \to f(x)$, $x$ nimmt zwei Werte an
@@ -331,3 +331,163 @@
    ⇒ n_j &= e^{-α - β E_i} \\
    ⇒ f_i &= \frac{1}{ω} e^{-α - β E_i}
    \end{align*}
+** Kanonisches Ensemble
+   Jetzt: Energie *nicht* fixiert. System im Gleichgewicht mit zeiwten, viel größerem System (Resevoir) mit Temperatur $T$. \\
+   Konkret: Gas, fixiert: $V, N, T$. \\
+   Betrachte: Obervable $F = F(\v p)$ des Systems. System: $p = (p_1, \dots, p_{3N})$. Reservoir: $\v P(P_1, \dots, P_{3M})$, $M \gg N \gg 1$.
+   \[\angl{F} = C ∫ \d^{3N} \v p ∫ \d^{3M} \v P F(\v p) δ(E_{tot} - H_1(\v p) - H_2(\v P))\]
+   \begin{align*}
+   H_1(\v p) &= \sum_{i = 1}^{3N} \frac{p_i^3}{2m} \\
+   H_2(\v P) &= \sum_{i = 1}^{3N} \frac{P_i^3}{2m} \\
+   \end{align*}
+   Nebenrechnung: $\v p$ sei fest, demnach $E_1 = H_1(\v p)$ fest. Integration über $\v P$ ausführen:
+   \[I \equiv ∫ \d^{3N} \v P δ(E_{tot} - E_1 - H_2(\v P))\]
+   $δ$ -Funktion erzwingt:
+   \[\v P^2 = \abs{\v P}^2 = 2m(E_{tot} - E_1)\]
+   $I$ enpspricht der Oberfläche einer $3N$ dimensionalen Sphäre von Radius $R = \sqrt{2m(E_{tot} - E_1)}$. Aus Dimensionsgründen:
+   $I \sim R^{3M - 1}$ $3M \gg 1$ $⇒$ für uns ok: $I \sim R^{3M}$.
+   \[I \sim R^{3M} \sim (E_{tot} - E_1)^{3M/2} \sim (1 - \frac{E_1}{E_{tot}})^{3M/2}\]
+   (uns interessiert nur die $E_1$ Abhängigkeit). Außerdem:	$E_1 \ll E_{tot}$.
+   \[(1 - \frac{E_1}{E_{tot}})^{3M/2} = \exp(\frac{3M}{2} \ln(1 - \frac{E_1}{E_{tot}})) = \exp(\frac{3M}{2}(-\frac{E_1}{E_{tot}} - \underarrow[\frac{1}{2}(\frac{E_1}{E_{tot}})^2]{irrelevant} + \dots))\]
+   Grenzwert:
+   \[M \to ∞, E_{tot} \to ∞, \frac{E_{tot}}{3M} = \frac{k T}{2} = \const\]
+   zweiter Summand:
+   \[M(\frac{E_1}{E_{tot}})^2 = \frac{1}{M}(\frac{E_1}{E_{tot} / M})^2 \to 0\]
+   \[⇒ I \sim \exp(-\frac{E_1}{kT})\]
+   $I$ ist gerade die Bolzmann-Verteilung.
+   \[⇒ \angl{F} \sim ∫ \d^{3N} \v p F(\v p) \exp(\frac{-H_1(\v p)}{k T})\]
+   allgemein:
+   \[\angl{F} = \frac{1}{Z} ∫_V \d^{3N} \v q ∫ \d^{3N} \v p F(\v p, \v q) \exp(\frac{-H(\v p, \v q)}{kT})\]
+   Weil $\angl{1} = 1$ folgt:
+   \[Z = Z(T, V) = ∫_V \d^{3N} \v q ∫ \d^{3N} \v p \exp(\frac{-H(\v p, \v q)}{kT})\]
+   $Z(T, V)$: "Zustandssumme". Zum Namen: In Quantenmachanik: Nur ein Zustand pro Phasenraumzelle der Größe $h^{3N}$ (planksches Wirkungsquantum).
+   \[∫ \frac{\d^{3N} \v q \d^{3N} \v p}{h^{3N}} = \sum_{\text{alle Zustände}}\]
+** Vergleich von mikrakanonischen und kanonischen Ensemble
+   Wahrscheinlichkeitsverteilung auf $Γ$ parametrisiert durch $p_1, \dots, p_{3N}, q_1, \dots, q_{3N}$.
+   \[ρ_{mikrok} \sim δ(E - H(\v p, \v q))\]
+   \[ρ_{kanon} \sim \exp(\frac{-H(\v p, \v q)}{kT})\]
+   Bei großen Systemen: beide äquivalent! Unter $\d^{3N} \v p$ -Integral:
+   \[∫ \d^{3N} \v p \dots \sim ∫ \abs{\v p}^{3N - 1} \d \abs{\v p} \dots \sim ∫ E^{3N/2} \d E\]
+   Jetzt mit Verteilungsfunktion:
+   \[∫ ρ_{kan.} \d^{3N} \v p \sim ∫ \d E E^{3N/2} e^{-E/kT} \sim ∫ \d E e^{-g(E)}\]
+   mit
+   \[g(E) \equiv \frac{E}{kT} - \frac{3N}{2} \ln(E)\]
+   $g(E)$ hit ein extrem scharfes Minimum bei $E_{max} = 3N k T / 2$.
+   1. "$E_{max}$" weil dort $e^{-g(E)}$ maximal wird.
+   2. "Extrem scharf" heißt:
+	  \[g(E_{max} + ΔE) - g(E_{max}) = 1 ⇒ ΔE/E \ll 1\]
+   3. Selbst nachprüfen: $⇒$ können $e^{-g}$ nähern:
+	  \[e^{-g(E)} \sim e^{-α(E - E_{max})^2}\]
+	  (Taylor) Für alle praktischen Zwecke ist das so gut wie $δ(E_{max} - E)$
+   $⇒$ kanonisches Ensemble enpspricht mikrokanonischen Ensemble mit Energie $E = E_{max} = 3Nk T / 2$. Intuitiver Grund:
+   Volumen einer hochdimensionalen Kugel "sitzt unter der Oberfläche".
+* Entropie und thermodynamische Potentiale
+** Erwartungswerte in gekoppelten Systemen
+   \[\angl{F} = ∫_{V(1)} \d^{3N} q ∫\d^{3N} p F(H_1(\v q, \v p)) ∫_{V(2)} \d^{3N} Q ∫\d^{3N} P δ(E_{tot} - H_1(\v q, \v p) - H_2(\v Q, \v P))\]
+   Kurznotation:
+   \[∫_{V(1)} \d^{3N} q ∫ \d^{3N} p \equiv ∫_{q,p}\]
+   \begin{align*}
+   \angl{F} &\sim ∫_{q, p} F(H_1) ∫_{Q, P} δ(E_{tot} - H_1 - H_2) \\
+   \angl{F} &\sim ∫ \d E ∫_{q, p} F(H_1) δ(E - H_1) ∫_{Q, P} δ(E_{tot} - H_1 - H_2) \\
+   \angl{F} &\sim ∫ \d E F(E) ∫_{q, p} δ(E - H_1) ∫_{Q, P} δ(E_{tot} - E - H_2) \\
+   \end{align*}
+   Definiere: Zustandsdichte eines Systems mit Variablen $q, p$
+   \[ω(E) \equiv ∫_{q, p} δ(E - H(q, p))\]
+   \[\angl{F} \sim ∫ \d E F(E) ω_1(E) ω_2(E_{tot} - E)\]
+** Zustandsdichte
+   Phasenraumvolumen $Σ(E)$ für Energie $< E$.
+   \begin{align*}
+   Σ(E) &= ∫_V \d^{3N} \v q ∫_{ℝ^{3N}} \v p θ(E - H(\v q, \v p)) \\
+   θ(x) &= \begin{cases} 0 & x \leq 0 \\ 1 & x > 0\end{cases}
+   \end{align*}
+   "$θ$" -Funktion, "Heavyside Step Funktion". \\
+   Zustandsdichte: $ω(E) \equiv \partial Σ(E) / \partial E$
+   \[⇒ ∫_{q,p} δ(E - H(\v q, \v p))\]
+   weil:
+   \[\dd{θ(x)}{x} = δ(x)\]
+   Genauer: $δ$ -Funktion:
+   \[∫_{-a}^{a} δ(x) \d x = 1, δ(x) = 0 ∀ x \neq 0\]
+   \[⇒ ∫_{-a}^{a} θ'(x) \d x = θ(x)\mid_{-a}^{a} = 1 - 0 = 1 \checkmark\]
+   Weiterer Begriff: Phasenrauvolumen für Energieintervall $E \to E + Δ E$: Zustandszahl:
+   \[Γ(E): Σ(E + Δ E) - Σ(E) \simeq ω(E) Δ E\]
+** Entropie
+   $\angl{F} \sim ∫ \d E \dots$ bekommt Hauptbeitrag aus dem Bereich wo $ω_1 · ω_2$ maximal wird. $⇒$ Bereich wo $Γ_1 · Γ_2$ maximal wird $⇒$ wo $\ln(Γ_1) + \ln(Γ_2)$ maximal wird
+   $⇒$ Ableitung nach $E$ verschwindet. $⇒$ Es muss gelten:
+   \begin{align*}
+   \partial_{E_1} \ln Γ(E_1) &= - \partial_{E_1} \ln Γ(E_{tot} - E_1) \\
+   ⇒ \partial_{E_1} \ln Γ(E_1) &= - \partial_{E_2} \ln Γ(E_2) \\
+   \end{align*}
+   Dies ist die Gleichgewichts-Bedingung ($\equiv$ Energieaufteilung). $⇒$ legt Definition nahe:
+   \[S(E, V) \equiv k \ln Γ(E, V)\]
+   Gleichgewichts-Bedingung:
+   \[\partial_{E_1} S_1(E_1) = \partial_{E_2} S_2(E_2)\]
+   $⇒$ Definition von $T$:
+   \[\frac{1}{T} \equiv \pp{S(E,V)}{E}\]
+   äquivalent: $S = k \ln ω, S = k \ln Σ$
+   $⇒$ Entropie $\sim$ $\ln(\text{Zahl der Zustände})$. Konsistenzcheck:
+   \begin{align*}
+   S &= k \ln(E^{3N/2}) \\
+   ⇒ \frac{1}{T} &= \pp{S}{E} = k \partial_E \ln E^{3N/2} = k \frac{3N}{2} \frac{1}{E} \\
+   ⇒ \frac{E}{3N} &= \frac{kT}{2} \checkmark
+   \end{align*}
+** Die innere Enegie als thermodynamisches Potential das mikrokanonischen Ensembles
+   Können $S(E, V)$ berechnen. Wir haben also:
+   \[\d S = \pp{S}{E} \d E + \pp{S}{V} \d V = \frac{\d E}{T} + \pp{S}{V} \d V\]
+   auch:
+   \[\d E = T \d S - T \pp{S}{V} \d V\]
+   ($E \equiv$ innere Energie, auch "$U$")
+   #+ATTR_LATEX: :options [1. Hauptsatz der Thermodynamik]
+   #+begin_thm latex
+   \[\d E = \d Q - p \d V\]
+   #+end_thm
+   Naheliegend:
+   \[\d Q = T \d S,\quad \pp{S}{V} = \frac{1}{T} p\]
+   Zur Begründung: Berechne $\partial S / \partial V$
+   \begin{align*}
+   - \pp{S}{V} &= k \pp{}{V} \ln Σ(E, V) = -k \pp{}{V} \ln(∫_Γ θ(E - H)) \\
+   &= -k \frac{∫_Γ \partial θ(E - H)}{∫_Γ θ(E - H)} \\
+   \end{align*}
+   Vorstellung: $H(\v q, \v p) \to H(\v q, \v p, V)$. Berechne:
+   \begin{align*}
+   \angl{\partial_V H} &= ∫_Γ δ(E - H) \partial_V H \\
+   - \pp{S}{V} &= - k \frac{∫_Γ δ(E - H) (-\partial H)}{∫_Γ θ(E - H)} = k \angl{\partial_V H} \frac{∫_Γ δ(E - H)}{∫_Γ θ(E - H)} \\
+   &= k \angl{\partial_V H} \partial_E \ln(∫_Γ θ(E - H)) = \angl{\partial_V H} \partial E(k \ln Σ(E, V)) \\
+   &= \angl{\partial_V H} \partial_E S = \frac{1}{T}\angl{\partial_V H} = - \frac{p}{T} \checkmark
+   \end{align*}
+   Weiterhin:
+   \[p = T \pp{S(E, V)}{V}, \quad \frac{1}{T} = \pp{S(E, V)}{E}\]
+   $⇒$ $E$ eliminieren $⇒$
+   \[p = p(V, t)\]
+   Zustandsgleichung! Weiter:
+   \begin{align*}
+   S &= S(E, V) \to E = E(S, V) \tag{Auflösen} \\
+   \d E &= \pp{E}{S} \d S + \pp{E}{V} \d V,\quad \pp{E}{S} = T, \pp{E}{V} = -p
+   \end{align*}
+   Lösen wir jetzt
+   \[\frac{1}{T} = \pp{S(E, V)}{E}\]
+   nach $E$ auf.
+   \[⇒ E =  E(T, V) ⇒ \pp{E(T, V)}{T} \equiv c_V\]
+   $⇒$ Viele weitere Größen:
+   \begin{align*}
+   S &= k \ln Σ \\
+   \frac{1}{T} &= \pp{S}{E} \\
+   p &= T \pp{S}{V}
+   \end{align*}
+** Die freie Energie als thermodynamisches Potential des kanonischen Ensembles
+   #+ATTR_LATEX: :options [Freie Energie]
+   #+begin_defn latex
+   $E = E(S, V)$ $\to$ Legendre-Transformation in $S$ $\to$
+   \[-F = -F(T, V)\]
+   \[⇒ T \equiv \pp{E(S, V)}{S} ⇒ S = S(T, V)\]
+   \[⇒ F \equiv E(S(T, V), V) - T S(T, V)\]
+   \[\d F = \underbrace{- S \d T}_{\pp{F}{T}} - \underbrace{p \d V}_{\pp{F}{V}}\]
+   #+end_defn
+   mikrokanonisch: $S$ aus $Γ(E, V) \to E = E(S, V)$ \\
+   kanonische: $F$ aus $Z(T, V)$
+   Fakt:
+   \[F = - k T \ln(Z(T, V))\]
+** "Makroskopischer Zugang"
+   #+ATTR_LATEX: :options [2. Hautsatz]
+   #+begin_defn latex
+   \[\d S = \frac{\d Q}{T}\]
+   #+end_defn
