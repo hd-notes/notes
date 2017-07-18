@@ -490,3 +490,97 @@
   T_t(μ) &= \frac{1}{2}((\frac{\sqrt{κ + 1}}{\sqrt{κ} - 1})^t + (\frac{\sqrt{κ} - 1}{\sqrt{κ} + 1})^t) \geq \frac{1}{2}(\frac{\sqrt{κ} + 1}{\sqrt{κ} - 1})^t
   \end{align*}
   #+end_proof
+  Wiederholung: CG, Abstiegsverfahren. $(d^i, A d^j) = 0, i \neq j$.
+  - 2 Parameter
+	\begin{align*}
+	α_t &= \frac{\norm{g^t}^2}{(d^t, A d^t)} \\
+	β_t &= \frac{\norm{g^{t + 1}}^2}{\norm{g^t}^2} \\
+	x^{t + 1} &= x^t + α_t d^t \\
+	g^{t + 1} &= g^t + α_t A d^t \\
+	d^{t + 1} &= - g^{t + 1} + β_t d^t \\
+	d^ &= - g^0 = b - A x^0
+   	\end{align*}
+  - Axakte Arithmetik: Lösung nach spätestens $n + 1$ Schritten.
+  -	\[\norm{x^t - x}_A \leq \min_{\supstack{p ∈ P_t \\ p(0) = 1}} \max_{λ ∈ σ(A)} \abs{p(λ)} · \norm{x^0 - x}_A \leq 2 (\frac{1 - 1/\sqrt{κ}}{1 + 1 / \sqrt{κ}})^t \norm{x^0 - x}_A\]
+* Matrizeneigenwertaufgaben
+  $A ∈ \mathbb{K}^{n × n}, \mathbb{K} = ℝ$ oder $ℂ$. Suche $(λ, ω) ∈ \mathbb{K} × (\mathbb{K}^n \setminus \{0\})$, sodass
+  \[A ω = λ ω\]
+** Konditionierung des Eigenwert-Problems.
+   #+ATTR_LATEX: :options [Stabilität]
+   #+begin_lemma latex
+   Sei $A, B ∈ \mathbb{K}^{n × n}, \norm{·}$ die natürliche Matrizennorm, $λ ∈ σ(A) \setminus σ(B)$. Dann gilt
+   \[\norm{(λ E_n - B)^{-1} (A - B)} \geq 1\]
+   #+end_lemma
+   #+begin_proof latex
+   \begin{align*}
+   A ω &= λ ω \\
+   ⇒ (A - B)ω &= (λE_n - B)ω \\
+   ⇒ (λ E_n - B)^{-1} (A - B) ω &= ω \\
+   ⇒ 1 &= \frac{\norm{(λ E_n - B)^{-1}(A - B) ω}}{\norm{ω}} \\
+   &\leq \sup_{x ∈ \mathbb{K}^n \setminus \{0\}}	\frac{\norm{(λ E_n - B)^{-1}(A - B) x}}{\norm{x}} \\
+   &= \norm{(λ E_n - B)^{-1} (A - B)}
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [Satz von Gerschgorin]
+   #+begin_thm latex
+   Alle Eigenwerte von $A ∈ \mathbb{K}^{n × n}$ liegen in der Vereinigung der sogenannten Gerschgorin-Kreise $(j = 1, \dots, n)$
+   \[K_j = \{z ∈ ℂ \mid \abs{z - a_{jj}} \leq \sum_{\substack{k = 1\\ k \neq j}}^{n} \abs{a_{jk}}\}\]
+   Sind $U = ∪_{i = 1}^m K_{ji}$ und $V = ∪_{j = 1}^n K_j \setminus U$ disjunkt, so liegen in $U$ genau $m$ und in $V$ genau $n - m$ Eigenwerte.
+   #+end_thm
+   #+begin_proof latex
+   1. $B = D = \diag(a_{11}, \dots, a_{nn})$. Maximale Zeilensummennorm:
+	  \begin{align*}
+	  1 &\leq \norm{(λ E_n - D)^{-1} (A - D)}_∞ \\
+	  &= \max_{j = 1, \dots, n} \frac{1}{\abs{λ - a_{jj}}} \sum_{\substack{k = 1\\ k \neq j}}^{n} \abs{a_{jk}}
+   	  \end{align*}
+	  für $λ \neq a_{jj}, j = 1, \dots, n ⇒ λ ∈ K_{j^{\ast}}$ mit $j^{\ast} = \argmax \{\dots\}$.
+   2. Für $t ∈ [0, 1]$ setze $A_t = (1 - t)D + t A$. $m$ Eigenwerte von $A_0$ liegen in $U$ und $n - m$ Eigenwerte in $V$. Wegen Stetigkeit der Eigenwerte von $A_t$ bezüglich $t$ folgt
+	  die Behauptung für $A_1 = A$
+   #+end_proof
+   #+ATTR_LATEX: :options [Stabilitätssatz]
+   #+begin_thm latex
+   Sei $A ∈ \mathbb{K}^{n × n}$ mit $n$ linear unabhängigen Eigenvektoren $\{ω_1, \dots, ω_n\}$ und $B ∈ \mathbb{K}^{n × n}$. Dann
+   gibt es zu jedem Eigenvert $λ(B)$ von $B$ einen Eigenwert $λ(A)$ von $A$ mit
+   \[\abs{λ(A) - λ(B)} \leq \cond_2(W) \norm{A - B}_2\]
+   wobei $W = (ω_1, \dots, ω_n) ∈ \mathbb{K}^{n × n}$
+   #+end_thm
+   #+begin_proof latex
+   $A W = W Λ, Λ = \diag(λ_1, \dots, λ_n) ⇒ A = W Λ W^{-1}$. Sei $λ ∈ σ(B) \setminus σ(A)$
+   \begin{align*}
+   ⇒ \norm{(λ E_n - A)^{-1}}_2 &= \norm{W(λ E_n - Λ)^{-1} W^{-1}}_2 \\
+   &\leq \norm{W}_2 \norm{W^{-1}}_2 \norm{(λ E_n - Λ)^{-1}}_2 \\
+   &= \cond_2(W) \max_{i = 1, \dots, n} \abs{λ - λ_i}^{-1} \\
+   ⇒ 1 &\leq \norm{(λ E_n - A)^{-1}}_2 \norm{A - B}_2 \\
+   &\leq \cond_2(W) \norm{A - B}_2 \max_{i = 1, \dots, n} \abs{λ - λ_i}^{-1} \\
+   ⇒ \mid_{i = 1, \dots, n} \abs{λ - λ_i} &\leq \cond_2(W) \norm{A - B}_2
+   \end{align*}
+   #+end_proof
+   $A$ hermitesch: $W$ orthonormal $⇒ \cond_2(W) = 1$. Regel: Das Eigenwert-Problem hermitescher Matrizen ist gut konditioniert, während das allgemeine ja nach $\cond_2(W)$
+   beliebig schlecht konditioniert ist.
+** Iterative Methoden
+   Verfahren um einen (nicht alle) Eigenwert zu finden.
+   Potenzmethode (von Mises)
+   $z^0 ∈ ℂ^n, \norm{z^0} = 0$. $t \geq 1$:
+   \begin{align*}
+   \tilde z^t &= A z^{t - 1}, z^t = \frac{\tilde z^t}{\norm{\tilde z}^t} \\
+   λ^{(t)} &:= \frac{\tilde z_k^t}{z_k^t}, z_k^t \neq 0
+   \end{align*}
+   #+begin_thm latex
+   Sei $A$ diagonalisierbar mit $\abs{λ_n} > \abs{λ_i}, i = 1, \dots, n$. $z^0$ habe eine nichtverschwindende Komponente bezüglich Eigenvektor $ω_n$.
+   Dann gibt es $σ_t ∈ ℂ, \abs{σ_t} = 1$, sodass
+   \[\norm{z^t - σ_t ω_n} \xrightarrow{t \to ∞} 0\]
+   und
+   \[λ^{(t)} - λ_n = \mathcal{O}(\abs{\frac{λ_{n - 1}}{λ_n}}^t)\]
+   #+end_thm
+   #+begin_proof latex
+   Skript.
+   #+end_proof
+   Hermitesches $A$:
+   \[λ^{(t)} = \frac{(z^t, A z^t)_2}{(z^t, z^t)}_2\]
+   (Rayleigh-Quotient)
+   \[\to λ^{(t)} = λ_n + \mathcal{O}(\abs{\frac{λ_{n + 1}}{λ_n}}^{2t})\]
+   Inverse Iteration. \\
+   Annahme: Gute Näherung $\tilde λ$ für $λ_k$ verfügbar. Beobachtung: Ist $\tilde λ \not ∈ σ(A)$ so hat
+   $(A - \tilde λ E_n)^{-1}$ die Eigenwerte $μ_i = (λ_i - \tilde λ)^{-1}$. Idee:
+   Potenzmethode für $(A - \tilde λ E_n)^{-1}$. Löse $(A - \tilde λ E_n) \tilde z^t = z^{t - 1}$. Normiere
+   \[z^t = \frac{\tilde z^t}{\norm{\tilde z^t}}\]

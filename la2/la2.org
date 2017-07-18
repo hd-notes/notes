@@ -731,3 +731,91 @@
 	 \[a = c_1 a_1 = c_1 c_2 a_2 = \dots = c_1 · \dots · c_{s - 1} a_{s - 1} = c_1 · \dots · c_s \lightning\]
 	 zu $a = p_1 · \dots · p_r, R$ faktoriell.
   #+end_proof
+  #+begin_remark latex
+  $c_1, \dots, c_r ∈ R \setminus (R^{\ast} ∪ \{0\})$ mit $c_1 \mid c_2 \mid \dots \mid c_r$. $M$ R-Modul mit
+  \[M \cong \oplus_{i = 1}^r \faktor{R}{c_i R}\]
+  Dann gilt: $r$ ist eindeutig bestimmt, $c_1, \dots, c_r$ sind eindeutig bestimmt bis auf Assoziertheit durch $M$.
+  #+end_remark
+  #+begin_proof latex
+  Sei
+  \[M\cong \oplus_{i = 1}^s \faktor{R}{(α_i)} \cong \oplus_{j = 1}^t \faktor{R}{(β_j)}\]
+  mit \\
+  $α_s \mid α_{s - 1} \mid \dots \mid α_1, α_i ∈ R \setminus (R^{\ast} ∪ \{0\})$ \\
+  $β_t \mid β_{t - 1} \mid \dots \mid β_1, β_i ∈ R \setminus (R^{\ast} ∪ \{0\})$
+  1. Behautung: Für alle $k \leq \min \{s, t\}$ ist $(α_k) = (β_k)$, das heißt $α_k \estimates β_k$, denn: \\
+	 Annahme: Dies gilt nicht, ohne Einstränkung sei $k\leq \min \{s, t\}$ mit $(α_k) \neq (β_k)$. $⇒$ für $1 \leq i \leq k$ ist $(α_i) = (β_i)$.
+	 \[⇒ α_k M \cong \oplus_{i = 1}^s α_k \faktor{R}{(α_i)} = \oplus_{i = 1}^{k - 1} α_k \faktor{R}{(α_i)}\]
+	 denn für $i = k, \dots, s$ ist $α_i \mid α_k$ und somit $(α_k) ⊆ (α_i)$. Andererseits:
+	 \begin{align*}
+	 α_k M \cong \oplus_{j = 1}^t α_k \faktor{R}{(β_j)} &= \oplus_{j = 1}^{k - 1} α_k \faktor{R}{(β_j)} \oplus \oplus_{j = k}^t α_k \faktor{R}{(β_j)} \\
+	 &= \oplus_{j = 1}^{k - 1} α_k \faktor{R}{(α_j)} \oplus \oplus_{j = k}^t α_k \faktor{R}{(β_j)}
+   	 \end{align*}
+	 Es ist
+	 \[l_R(α_k M) \leq l_R(M) = \sum_{i = 1}^{r} l_R(\faktor{R}{c_i R}) < ∞\]
+	 $⇒$ Längen aller auftretenden Moduln sind endlich. Es ist
+	 \[l_R(α_k M) = \sum_{i = 1}^{k - 1} l_R(α_k \faktor{R}{(α_i)}) = \sum_{j = 1}^{k - 1} l_R(α_k \faktor{R}{(α_j)}) + \sum_{j = k}^{t} l_R(α_k \faktor{R}{(β_j)})\]
+	 \[⇒ l_R(α_k \faktor{R}{(β_j)}) = 0, \quad j = k, \dots, t\]
+	 \[⇒ α_k \faktor{R}{(β_j)} = 0\quad j = k, \dots, t\]
+	 insbesondere $α_k \faktor{R}{(β_k)} = 0 ⇒ (α_k) ⊆ (β_k)$
+	 Durch Vertauschen der Rollen von $α_i, β_i$ im obigen Beweis erhalten wir $(β_k) ⊆ (α_k) ⇒ (α_k) = (β_k) \lightning$
+  2. Nach 1. ist $(α_i) = (β_i)$, das heißt $α_i \estimates β_i ∀ 1 \leq i \leq min \{s, t\}$, ohne Einschränkung $s \leq t$. Annahme: $s < t$
+	 \[⇒ M \cong \oplus_{i = 1}^s \faktor{R}{(α_i)} \oplus \oplus_{j = s + 1}^k \faktor{R}{(β_i)} \cong \oplus_{i = 1}^s \faktor{R}{(α_i)}\]
+	 \[⇒ 0 = l_R(\oplus_{j = s + 1}^t \faktor{R}{(β_j)}) = \sum_{j = s + 1}^{t} l_R(\faktor{R}{(β_j)}) ⇒ \faktor{R}{(β_j)} = 0\quad j = s + 1, \dots, t\]
+	 $⇒ β_{s + 1}, \dots, β_t ∈ R^{\ast} \lightning$. Also $s = t$.
+  #+end_proof
+  #+ATTR_LATEX: :options [Elementarteilersatz]
+  #+begin_defthm latex
+  $F$ endlich freier R-Modul, $M ⊆ R$ Untermodul. Dann existiert eine Basis $(x_1, \dots x_m)$ von $F$ sowie $s ∈ ℕ_0, c_1, \dots, c_s ∈ R \setminus \{0\}$ mit folgenden Eigenschaften
+  1. $(c_1 x_1, \dots, c_s x_s)$ ist eine Basis von $M$.
+  2. $c_1 \mid c_2 \mid \dots \mid c_s$
+  $s$ ist eindeutig, $c_1, \dots, c_s$ sind eindeutig bis aus Assoziiertheit durch $M$ bestimmt. (sind insbesondere unabhängig von der Wahl der Basis $(x_1, \dots, x_m)$)
+  und heißen die *Elementarteiler* von $M ⊆ F$.
+  #+end_defthm
+  #+begin_proof latex
+  *Existenz*: Sei $(y_1, \dots, y_m)$ eine Basis von $F$.
+  1. Behauptung: $M$ ist endlich erzeugt, denn: Beweis per Induktion nach $m$ \\
+	 $m = 1$: dann existiert ein Isomorphismus $φ: F \to R, φ(M) ⊆ R$ ist ein Untermodul, insbesondere endlich erzeugt, da $R$ Hauptidealring $⇒$ $M$ endlich erzeugt. \\
+	 $m > 1$: Wir setzen $F' := \Lin((y_1, \dots, y_{m - 1})), F'' := \Lin((y_m))$. Wir betrachten die Projektiosabbildung $π: F = F' \oplus F'' \to F'', a + b \to b$ sowie $π \big|_M$.
+	 Es ist $\ker(π\big|_M) = \ker(π) ∩ M = F' ∩ M ⊆ F', \im(π \big|_M) = π(M) ⊆ F''$. Nach Induktionsvorrausetzung sind die Untermoduln $\ker(π\big|_M) ⊆ F'$, sowie
+	 $\im(π\big|_M) ⊆ F''$ endlich erzeugt $⇒$ $M$ endlich erzeugt.
+  2. Sei $(z_1, \dots, z_n)$ ein endliches Erzeugendensystem von $M$. Wir betrachten den R-Modulhomomorphismus $φ:R^n \to F, e_j ↦ z_j, j = 1, \dots, n$ mit $e_1, \dots, e_n$ wie üblich.
+	 $\im φ = \Lin((z_1, \dots, z_n)) = M$. Setze
+	 \[A := M_{(y_1, \dots, y_m)}^{(e_1, \dots, e_n)}(φ) = (α_{ij}) ⇒ z_j = \sum_{i = 1}^{m} α_{ij} y_i \quad j = 1, \dots, n\]
+	 nach 30.2 existieren $S, T$ invertierbare Matrizen	über $R, c_1, \dots, c_s ∈ R \setminus \{0\}$ mit
+	 \[S A T^{-1} = (\begin{array}{ccc|c} c_1 \\ & \ddots & & 0 \\ & & c_s \\ \hline \\ & 0 & & 0 \end{array}), \quad c_1 \mid \dots \mid c_s\]
+	 $⇒$ Es existieren Basen $(x_1, \dots, x_m)$ von F, $(v_1, \dots, v_n)$ von $R^n$ mit
+	 \[M_{(x_1, \dots, x_m)}^{v_1, \dots, v_n}(φ) = (\begin{array}{ccc|c} c_1 \\ & \ddots & & 0 \\ & & c_s \\ \hline \\ & 0 & & 0 \end{array})\]
+	 $⇒ (c_1 x_1, \dots, c_s x_s)$ ist ein Erzeugendensystem von $\im φ = M$.
+  3. $(c_1 x_1, \dots, c_s x_s)$ ist linear unabhängig, denn: Sei
+	 \[λ_1 c_1 x_1 + \dots + l_s c_s x_s = 0 ⇒ λ_1 c_1 = \dots = λ_s c_s = 0\]
+	 $R$ nullteilerfrei $⇒ λ_1 = \dots = λ_s = 0$. Somit: $(c_1 x_1, \dots, c_s x_s)$ ist eine Basis von $M$.
+  *Eindeutigkeitsaussage: Setze $T' := \Lin((x_1, \dots, x_s))$
+  1. Behauptung: $F' = \{a ∈ F \mid ∃ λ ∈ R \setminus \{0\}: λ a ∈ M\}$, insbesondere hängt $F'$ nur von $M$ ab, denn: \\
+	 "$⊆$" Sei $x ∈ \Lin((x_1, \dots, x_s)) = F'$, etwa $x = λ_1 x_1 + \dots + λ_s x_s$. $⇒ c_s x = λ_1 c_s x_1 + \dots + λ_s c_s x_s$. Wegen $c_1 \mid c_2 \mid \dots \mid c_s$ existiert $μ_i ∈ R$
+	 mit $c_s = μ_i c_i, i = 1, \dots, s$.
+	 \[⇒ c_s x = λ_1 μ_1 c_1 x_1 + \dots + λ_{s_ 1} μ_{s - 1} c_{s - 1} x_{s - 1} + λ_s c_s x_s ∈ \Lin((c_1 x_1, \dots, c_s x_s)) = M\]
+	 "$\supseteq$" Sei $a ∈ F$, etwa $a = μ_1 x_1 + \dots + μ_m x_m$ und $λ ∈ R \setminus \{0\}$, sodass $λ a ∈ M$.
+	 \[⇒ λ a = λ μ_1 x_1 + \dots + λ μ_m x_m ∈ M = \Lin((c_1 x_1, \dots, c_s x_s)) ⊆ \Lin((x_1, \dots, x_s)) = F'\]
+	 $⇒ ∃ δ_1, \dots, δ_s ∈ R$ mit
+	 \[λ a = δ_1 x_1 + \dots + δ_s x_s\]
+	 \[⇒ 0 = (λ μ_1 - δ_1) x_1 + \dots + (λ μ_s - δ_s) x_s + λ μ_{s + 1} x_{s + 1} + \dots + λ μ_m x_m\]
+	 \[⇒ λ μ_{s + 1} = \dots = λ μ_m = 0 ⇒ μ_{s + 1} = \dots = μ_m = 0 ⇒ a = μ_1 x_1 + \dots + μ_s x_s ∈ F'\]
+  2. Wir betrachten die Abbildung
+	 \[ψ: F' = \Lin((x_1, \dots, x_s)) \to \oplus_{i = 1}^s \faktor{R}{c_i R}, α_1 x_1 + \dots + α_s x_s ↦ (α_1 + c_1 R, \dots, α_s + c_s R)\]
+	 $ψ$ ist ein wohldefinierter Homomorphimus, $ψ$ ist surjektiv.
+	 \[\ker ψ = \{α_1 x_1 + \dots + α_s x_s ∈ F'1 \mid c_1 \mid α_1, \dots, c_s \mid a_s\} \Lin((c_1 x_1, \dots, c_s x_s)) = M\]
+	 $⇒$ Erhalten Isomorphismus
+	 \[\bar ψ: \faktor{F'}{M} \to \oplus_{i = 1}^{s} \faktor{R}{c_i R}\]
+	 von R-Moduln, die linke Seite ist wegen 1. nur von $M$ abhängig. Ist $c_1 ∈ R^{\ast}$, dann ist $c_1 R = R$, also $\faktor{R}{c_i R} = 0$. Wegen 30.4 sind damit die
+	 Nichteinheiten unter $c_1, \dots, c_s$ eindeutig bestimmt bis auf Asoziiertheit, ihre Anzahl ist eindeutig bestimmt. Da $(c_1 x_1, \dots, c_s x_s)$ Basis von $M$, ist
+	 $s = \Rans(M)$ eindeutig bestimmt. $⇒$ Anzahl der Einheiten unter $c_1, \dots, c_s$ eindeutig bestimmt, Einheiten unter $c_1, \dots, c_s$ sind eindeutig bis aus Asoziiertheit.
+  #+end_proof
+  #+begin_conc latex
+  $F$ endlich freier R-Modul, $M ⊆ F$ Untermodul. Dann ist $M$ endlich frei und $\Rang(M) \leq \Rang(F)$.
+  #+end_conc
+  #+begin_note latex
+  - Aus $M \subsetneq$ folgt nicht $\Rang(M) < \Rang(F)$: zum Beispiel ist $ℤ$ ein freier $ℤ$ -Modul vom Rang 1, $2 ℤ \subsetneq ℤ$ ist ein freier $ℤ$ -Modul, aber $\Rang(2ℤ) = 1 = \Rang(ℤ)$.
+  - Man kann zeigen (unter Verwendung des Auswahlaxiom): $F$ freier R-Modul, $M ⊆ F$ Untermodul $⇒$ $M$ frei ($R$ Hauptidealring!)
+  -	ohne die Vorraussetzung, dann $R$ ein Hauptidealring ist, wird 30.6 falsch:
+	Beispiel: $F = ℚ[X,Y]$ als $F = ℚ[X, Y]$ -Modul ($R$ ist kein Hauptidearing!), $M = \Lin((X, Y))$ ist *nicht* frei als R-Modul.
+  #+end_note

@@ -1,0 +1,380 @@
+\documentclass[10pt, landscape,a4paper]{extarticle}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+
+\usepackage{microtype}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{mathspec}
+\usepackage{nath}
+%\usepackage{unicode-math}
+\usepackage{stmaryrd}
+\usepackage{stackengine}
+\usepackage{polyglossia}
+\usepackage{newunicodechar}
+\newunicodechar{α}{\alpha}
+\newunicodechar{β}{\beta}
+\newunicodechar{γ}{\gamma}
+\newunicodechar{δ}{\delta}
+\newunicodechar{ε}{\varepsilon}
+\newunicodechar{Ε}{\varepsilon}
+\newunicodechar{ζ}{\zeta}
+\newunicodechar{η}{\eta}
+\newunicodechar{θ}{\theta}
+\newunicodechar{ι}{\iota}
+\newunicodechar{κ}{\kappa}
+\newunicodechar{λ}{\lambda}
+\newunicodechar{μ}{\mu}
+\newunicodechar{Μ}{\Mu}
+\newunicodechar{ν}{\nu}
+\newunicodechar{ξ}{\xi}
+\newunicodechar{ο}{\omicron}
+\newunicodechar{π}{\pi}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ρ}{\rho}
+\newunicodechar{Ρ}{\Rho}
+\newunicodechar{σ}{\sigma}
+\newunicodechar{τ}{\tau}
+\newunicodechar{Τ}{\Tau}
+\newunicodechar{υ}{\upsilon}
+\newunicodechar{φ}{\varphi}
+\newunicodechar{χ}{\chi}
+\newunicodechar{ψ}{\psi}
+\newunicodechar{ω}{\omega}
+\newunicodechar{∀}{\forall}
+\newunicodechar{×}{\times}
+\newunicodechar{Γ}{\Gamma}
+\newunicodechar{Δ}{\Delta}
+\newunicodechar{∃}{\exists}
+\newunicodechar{ℤ}{\mathbb{Z}}
+\newunicodechar{∧}{\wedge}
+\newunicodechar{Θ}{\Theta}
+\newunicodechar{⇒}{\implies}
+\newunicodechar{∩}{\cap}
+\newunicodechar{Λ}{\Lambda}
+\newunicodechar{∫}{\int}
+\newunicodechar{ℕ}{\mathbb{N}}
+\newunicodechar{Ξ}{\Xi}
+\newunicodechar{∇}{\nabla}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ℝ}{\mathbb{R}}
+\newunicodechar{Σ}{\Sigma}
+\newunicodechar{⇔}{\iff}
+\newunicodechar{Υ}{\Upsilon}
+\newunicodechar{Φ}{\Phi}
+\newunicodechar{ℂ}{\mathbb{C}}
+\newunicodechar{Ψ}{\Psi}
+\newunicodechar{Ω}{\Omega}
+\newunicodechar{ϑ}{\vartheta}
+\newunicodechar{∞}{\infty}
+\newunicodechar{∈}{\in}
+\newunicodechar{⊂}{\subset}
+\newunicodechar{ϰ}{\varkappa}
+\newunicodechar{ϕ}{\phi}
+\newunicodechar{∨}{\vee}
+\newunicodechar{∮}{\oint}
+\newunicodechar{↦}{\mapsto}
+\newunicodechar{ℚ}{\mathbb{Q}}
+\newunicodechar{⊆}{\subseteq}
+\newunicodechar{⊊}{\subsetneq}
+\newunicodechar{∪}{\cup}
+\newunicodechar{·}{\cdot}
+\setdefaultlanguage[spelling=new, babelshorthands=true]{german}
+\makeatletter
+\let\mathop\o@mathop
+\makeatother
+
+%\definecolor{myblue}{cmyk}{1,.72,0,.38}
+\definecolor{myblue}{cmyk}{1,1,1, 1}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\everymath\expandafter{\the\everymath \color{myblue}}
+\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+\setlength{\mathindent}{0pt}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+
+
+
+\def\multi@column@out{%
+   \ifnum\outputpenalty <-\@M
+   \speci@ls \else
+   \ifvoid\colbreak@box\else
+     \mult@info\@ne{Re-adding forced
+               break(s) for splitting}%
+     \setbox\@cclv\vbox{%
+        \unvbox\colbreak@box
+        \penalty-\@Mv\unvbox\@cclv}%
+   \fi
+   \splittopskip\topskip
+   \splitmaxdepth\maxdepth
+   \dimen@\@colroom
+   \divide\skip\footins\col@number
+   \ifvoid\footins \else
+      \leave@mult@footins
+   \fi
+   \let\ifshr@kingsaved\ifshr@king
+   \ifvbox \@kludgeins
+     \advance \dimen@ -\ht\@kludgeins
+     \ifdim \wd\@kludgeins>\z@
+        \shr@nkingtrue
+     \fi
+   \fi
+   \process@cols\mult@gfirstbox{%
+%%%%% START CHANGE
+\ifnum\count@=\numexpr\mult@rightbox+2\relax
+          \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+% \setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\else
+      \setbox\count@\vsplit\@cclv to \dimen@
+\fi
+%%%%% END CHANGE
+            \set@keptmarks
+            \setbox\count@
+                 \vbox to\dimen@
+                  {\unvbox\count@
+                   \remove@discardable@items
+                   \ifshr@nking\vfill\fi}%
+           }%
+   \setbox\mult@rightbox
+       \vsplit\@cclv to\dimen@
+   \set@keptmarks
+   \setbox\mult@rightbox\vbox to\dimen@
+          {\unvbox\mult@rightbox
+           \remove@discardable@items
+           \ifshr@nking\vfill\fi}%
+   \let\ifshr@king\ifshr@kingsaved
+   \ifvoid\@cclv \else
+       \unvbox\@cclv
+       \ifnum\outputpenalty=\@M
+       \else
+          \penalty\outputpenalty
+       \fi
+       \ifvoid\footins\else
+         \PackageWarning{multicol}%
+          {I moved some lines to
+           the next page.\MessageBreak
+           Footnotes on page
+           \thepage\space might be wrong}%
+       \fi
+       \ifnum \c@tracingmulticols>\thr@@
+                    \hrule\allowbreak \fi
+   \fi
+   \ifx\@empty\kept@firstmark
+      \let\firstmark\kept@topmark
+      \let\botmark\kept@topmark
+   \else
+      \let\firstmark\kept@firstmark
+      \let\botmark\kept@botmark
+   \fi
+   \let\topmark\kept@topmark
+   \mult@info\tw@
+        {Use kept top mark:\MessageBreak
+          \meaning\kept@topmark
+         \MessageBreak
+         Use kept first mark:\MessageBreak
+          \meaning\kept@firstmark
+        \MessageBreak
+         Use kept bot mark:\MessageBreak
+          \meaning\kept@botmark
+        \MessageBreak
+         Produce first mark:\MessageBreak
+          \meaning\firstmark
+        \MessageBreak
+        Produce bot mark:\MessageBreak
+          \meaning\botmark
+         \@gobbletwo}%
+   \setbox\@cclv\vbox{\unvbox\partial@page
+                      \page@sofar}%
+   \@makecol\@outputpage
+     \global\let\kept@topmark\botmark
+     \global\let\kept@firstmark\@empty
+     \global\let\kept@botmark\@empty
+     \mult@info\tw@
+        {(Re)Init top mark:\MessageBreak
+         \meaning\kept@topmark
+         \@gobbletwo}%
+   \global\@colroom\@colht
+   \global \@mparbottom \z@
+   \process@deferreds
+   \@whilesw\if@fcolmade\fi{\@outputpage
+      \global\@colroom\@colht
+      \process@deferreds}%
+   \mult@info\@ne
+     {Colroom:\MessageBreak
+      \the\@colht\space
+              after float space removed
+              = \the\@colroom \@gobble}%
+    \set@mult@vsize \global
+  \fi}
+
+\setlength{\parindent}{0pt}
+\newcommand\ubar[1]{\stackunder[1.2pt]{\(#1\)}{\rule{1.25ex}{.08ex}}}
+
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{-100pt}
+    \setlength\belowdisplayskip{-100pt}
+    \setlength\abovedisplayshortskip{-100pt}
+    \setlength\belowdisplayshortskip{-100pt}
+%    \setlength\beloweqnsskip{-100pt}
+%    \setlength\displaybaselineskip{-100pt}
+%    \setlength\displaylineskip{-100pt}
+}
+
+\renewcommand\v[1]{\vec{#1}}
+\renewcommand\d{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand*\abs[1]{\lvert#1\rvert}
+\newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\const}{\ensuremath{\text{const.}}}%
+
+\raggedbottom
+\begin{document}
+\small
+\begin{multicols*}{4}
+\raggedcolumns
+\section{Elektrostatik}
+Coulombsches Gesetz:
+$\displayed{\v F_C = \frac{1}{4πε_0} \frac{q_1 q_2}{r_{12}^2} \hat r_{12}}$ \\
+Elektrisches Feld: \\ $\v E(\v r) := \frac{\v F_C(\v r)}{q}, \v F(\v r) = q \v E(\v r)$ \\
+Elekrische Feldstärke:
+$\displayed{\v E(\v r) = \frac{1}{4πε_0} \frac{Q}{r^2} \hat r}$ \\
+Superposition:
+$\displayed{\v E(\v R) = \frac{1}{4π ε_0} ∫ \frac{\v R - \v r}{\abs{\v R - \v r}^3} ρ(\v r) \d V}$ \\
+mit $Q = ∫ ρ(\v r) \d^3 r$, diskrete Landungsverteilung: \\
+$\displayed{\v E = \frac{1}{4 π ε_0} \sum \frac{q_i}{r_i^2} \hat r_i}$ \\
+Elektrischer Fluss $ϕ_E := ∫ \v E \d \v A$: \\
+$Q_{\text{innen}} = 0 \to ϕ_E = 0$ \\
+$Q_{\text{innen}} > 0 \to ϕ_E > 0$ (Quelle) \\
+$Q_{\text{innen}} < 0 \to ϕ_E < 0$ (Senke) \\
+Gaußsches Gesetz:
+$\displayed{∮ \v E \d \v A = \frac{Q_{\text{innen}}}{ε_0}}$ \\
+Feld einer Linienladung: $E(r) = \frac{λ}{2π ε_0 r}$ \\
+Feld einer Flächenladung: $E(r) = \frac{Γ}{2 ε_0}$ \\
+Innerhalb von Leitern (auch in Hohlräumen): $\v E = 0, Q = 0$ \\
+Gaußscher Satz:
+$\displayed{∮_A \v E \d \v A = ∫_V \v ∇ · \v E \d V}$ \\
+Gaußsches Gesetz (differentielle Form): $\v ∇ \v E = \frac{ρ}{ε_0}$ \\
+Potentielle Energie: $E_{pot}(\v r) = - ∫_{∞}^{r} \v F_C \d \v s$ \\
+Coulombpotential (Punktladung): $E_{pot}(\v r) = \frac{Q q}{4 π ε_0 r}$ \\
+Zirkulationsgesetz: $∮ \v E \d \v s = 0$ \\
+Elektrisches Potential: $\displayed{φ(\v r) = \frac{E_{pot}(\v r)}{q} = -∫_{∞}^{\v r} \v E \d \v s}$ \\
+$\v E(\v r) = -\v ∇ φ(\v r)$ \\
+Allgemeine Ladungsverteilung:
+$\displayed{φ(\v R) = \frac{1}{4 π ε_0} ∫ \frac{ρ(\v r)}{\abs{\v R - \v r}} \d V}$ \\
+Elektrische Spannug: $U_{12} = Δ φ_{12} = φ_2 - φ_1 = - ∫_1^2 \v E \d \v s$ \\
+Poisson Gleichung: $Δ φ = - \frac{ρ}{ε_0}$ \\
+Dipolmoment: $\v p = q · \v d$ \\
+Dipol: $\displayed{φ(\v r) = \frac{1}{4π ε_0}(\frac{q}{\abs{\v r - \v d / 2}} + \frac{-q}{\abs{\v r + \v d / 2}})}$ \\
+$r \gg d$: $\displayed{φ(\v r) = \frac{\v p · \hat r}{4 π ε_0 r^2}}$ \\
+Feld für $r \gg d$: $\displayed{\v E(\v r) = \frac{3(\v p · \v r) \v r - r^2 \v p}{r^5}}$ \\
+Homogenes Feld: $\v M = \v D × \v F = \v p × \v E$ \\
+$E_{pot} = - \v p · \v E$ \\
+Kugelkonduktoren: $\displayed{Δ φ = - ∫_∞^R \v E \d \v r = \frac{Q}{4π ε_0 R}} \to Q = 4 π ε_0 R U$ \\
+Kapazität: $C := \frac{Q}{U}$ \\
+Plattenkondensator: $E = \frac{σ}{ε_0} = \frac{Q}{A ε_0}$ \\
+$C = \frac{Q}{U} = \frac{ε_0 A}{d}$ \\
+Kugelkondensator: $C= 4π ε_0 {\frac{R_{2} R_{1}}{R_{2} - R_{1}}}$ \\
+Parallelschaltung: $C_{ges} = \sum_{i = 1}^n C_i$ \\
+Reihenschaltung: $\frac{1}{C_{ges}} = \sum_{i = 1}^n \frac{1}{C_i}$ \\
+Energie gepeichert im Kondensator: $E_C = \frac{1}{2} C U^2$ \\
+Plattenkondensator: $E_C = \frac{1}{2} ε_0 V E^2$ \\
+Energiedichte: $ω_C = \frac{1}{2} ε_0 E^2$ \\
+Permittivität $ε_r$: $C_{\text{Diel}} = ε_r C_{\text{Vakuum}} = ε_r C_0$ \\
+$\displayed{E_{\text{Diel}} = \frac{E_{\text{Vak}}}{ε_r}}$
+Polarisation: $\v P = \frac{1}{V} \sum_{i = 1}^{n} \v p_i$ \\
+$\v P = χ ε_0 \v E_{Diel}$
+elektrische Suszeptibilität $χ = ε_r - 1$ \\
+Dielektrische Verschiebung: $\v D = ε_0 \v E_{\text{Diel}} + \v P = ε_r ε_0 \v E_{\text{Diel}} = ε_0 \v E_{\text{Vak}}$ \\
+1. Maxwellsche Gleichungen in Materie:
+$\displayed{∮ \v D \d \v A = Q_{\text{frei}}}$ \\
+$\displayed{∮ \v E \d \v A = \frac{Q_{\text{frei}}}{ε_r ε_0}}$ \\
+Elektrische Feldenergie: $W_e = \frac{Q^2}{2 ε_r C_0}$ \\
+Energiedichte: $ω_e = \frac{1}{2} ε_r ε_0 \v E^2 = \frac{1}{2} \v E \v E$ \\
+\section{Elektrische Gleichströme}
+Elektrischer Strom: $I := \dd{Q}{t}$ \\
+Elektrische Stromdichte: $\abs{\v j} = \frac{I}{A} = \frac{\d Q}{A \d t}$ \\
+Technische Stromrichtung: Flußrichtung der positiven Ladungsträger! \\
+Ladungsfluss: $U = φ_b - φ_a = E Δl$ \\
+Differentieller Widerstand: $r = \dd{U}{I}$ \\
+Differentielle Leitfähigkeit: $S = \dd{I}{U}$ \\
+Ohmscher Leiter $\to r = \const$ \\
+Ohmsches Gesetz: $U = R I$ \\
+$\v j = σ \v E = n q_e \v v_D$ \\
+Spezifische Leitfähigkeit: $σ = \frac{l}{RA} = S \frac{l}{A}$ \\
+Spezifische Widerstand: $ρ = \frac{1}{ρ} = R \frac{A}{l}$ \\
+ohmsche Leiter: $\v v_D = μ \v E$ \\
+Elektronenbeweglichkeit $μ = \frac{q τ}{m}$ \\
+Mittlere Zeit zwischen zwei Wechselwirkungen: $τ$ \\
+Elektrische Leistung: $P = U · I$ \\
+Ohmscher Leiter: $F = R I^2, F = \frac{U^2}{R}$ \\
+Kirchhoffsche Regeln: \\
+Knotenregel: An jedem Konten gilt: $\sum I_k = 0$ \\
+Maschenregel: Für jede Masche gilt: $\sum U_k = 0$ \\
+Reihenschaltung: $R = \sum_{i = 1}^n R_i$ \\
+Parallelschaltung: $\frac{1}{R} = \sum_{i = 1}^n \frac{1}{R_i}$ \\
+Spannungsquelle ($R_i$: Innewiderstand): $U_{kl} = U_0 - I R_i$ \\
+Stromquelle: $R_i \to ∞$
+\section{Magnetostatik}
+$H$: magnetische Erregung \\
+$B$: Magnetfeld und magnetische Flussdichte \\
+Magnetischer Kraftfluss: $ϕ_m = ∫ \v B \d \v A$ \\
+Lorentzkraft: $\v F = q(\v E + \v v × \v B)$ \\
+Leiter: $\displayed{B = \frac{μ_0 I}{2 π r}}$ \\
+$\v F = I (\v l × \v B)$ \\
+Zyklotronfrequenz: $ω = \frac{q}{w} B$ \\
+Leiterschleife: Magnetisches Moment: $\v μ = I \v A = I A \v n$ \\
+Drehmoment auf einen magnetischen Dipol: $\v M = \v μ × \v B$ \\
+Hallspannung: $U_H = \frac{1}{nq} \frac{I}{d} B = R_H \frac{I}{d} B$ \\
+Leiter vekoriell: $\displayed{\v B(\v r) = \frac{μ_0 I}{2 π r}(\hat l × \hat r)}$ \\
+Quellfreiheit: $∮_A \v B \d \v A = 0$ \\
+Ampersches Durchflutungsgesetz: $∮ \v B \d \v s = μ_0 \sum_k I_k = μ_0 I_{\text{innen}}$ \\
+Spule: $B = μ_0 n I$ \\
+Biot-Savart-Gesetz: \\
+$\displayed{\v B(\v r) = \frac{μ_0}{4π} ∫ \frac{\v j(\v r') × (\v r - \v r')}{\abs{\v r - \v r'}^3} \d V'}$ \\
+$\displayed{\v B(\v r) = \frac{μ_0 I}{4 π} ∫ \frac{\d \v s' × (\v r - \v r ')}{\abs{\v r - \v r'}^3}}$ \\
+Z-Feld einer Stromschleife: $\displayed{B_z = \frac{μ_0 I}{4π} \frac{2π R^2}{(z^2 + R^2)^{3/2}}}$ \\
+Leiterschleife ($r \gg R$): $\displayed{\v B(\v r) = \frac{μ_0}{4π}(3 \frac{\v μ · \v r}{r^5} \v r - \frac{1}{r^5} \v μ)}$ \\
+Magnetisierung: $\v M = \frac{1}{V} \sum_i \v μ_i$ \\
+Magnetfeld aufgrund der Magnetisierung $M$: $\v B_{mag} = μ_0 \frac{I_m}{l} \hat n = μ_0 \v M$ \\
+$\v  b = \v B_0 + \v B_{mag} = \v B_0 + μ_0 \v M$ \\
+Magnetische Erregung: $\v H := \frac{1}{μ_0} \v B - \v M$ \\
+$\v B = μ_0(\v H + \v M)$ \\
+$∮ \v H \d \v s = I_{\text{frei}}$ \\
+Magnetische Suszeptibililät: $χ_m$ \\
+Magnetisierung: $\v M = χ_m \v H$ \\
+$μ_0 \v H = \v B - μ_0 \v M$ \\
+Relative Permeabilität: $μ = χ_m + 1$ \\
+$\v B = μ_0 μ \v H$ \\
+$χ_m > 0, μ > 1$: Paramagnetismus \\
+$χ_m < 0, μ < 1$: Diamagnetismus \\
+$χ_m \gg 0, μ \gg 1$: Ferromagnetismus \\
+Sättigungsmagnetisierung: $\v M_s$ \\
+Curie-Gesetz: $\displayed{\v M = \frac{1}{3} \frac{μ B_{ext}}{k_B T} \v M_s \sim \frac{1}{T}}$ \\
+Grenzflächen mit unterschiedlichen $μ$: \\
+\[\begin{array}{ll}H_{\parallel}^{(1)} = H_{\parallel}^{2} & \frac{B^{(1)}_{\parallel}}{μ_1} = \frac{B^{(2)}_{\parallel}}{μ_2} \\ B_{\perp}^{(1)} = B_{\perp}^{2} & μ_1 H^{(1)}_{\perp} = μ_2 H^{(2)}_{\perp} \end{array}\]
+\section{Werte}
+$ε_0 = \SI{8.85416e-12}{\coulomb\squared\per{\newton\meter\squared}}$ \\
+$μ_0 = π · \SI{4 e-7}{\volt\second\per{\ampere\meter}}$
+\end{multicols*}
+\end{document}
