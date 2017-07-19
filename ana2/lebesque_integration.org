@@ -643,7 +643,88 @@
    sind auch Lebesgue-integrierbar, weil $\abs{h_m(x)} \leq 2 g(x)$ und monoton fallend gegen Null. Nach dem Satz von Fatou folgt
    \[\abs{J(f_k) - J(f)} = \abs{J(f_k - f)} \leq J(\abs{f_k - f}) \xrightarrow{k \to ∞} 0\]
    #+end_proof
-
+   *Parameterabhängige Integrale* \\
+   #+ATTR_LATEX: :options [Integration erhält Stetigkeit in Parameter]
+   #+begin_thm latex
+   Seien $a, b ∈ R, a < b, U ⊂ ℝ^n, f ∈ C^0([a, b] β U, ℝ^m)$. Dann ist die Funktion $φ: U \to ℝ^m, φ(x) = ∫_a^b f(t, x) \d t$ stetig,
+   das heißt $φ ∈ C^0(U, ℝ^m)$.
+   #+end_thm
+   #+begin_proof latex
+   Sei $x ∈ Ω$ und $x_n ∈ Ω$ mit $x_n \to x$. Sei $r > 0$ hinreichend klein,sodass $\bar B_R(x) ⊂ U$, sei $Q = [a, b] × \bar B_r(x)$. Dann ist $f$ gleichmäßig stetig auf der
+   kompakten Menge $Q$, das heißt zu $ε > 0 ∃ δ > 0$ mit
+   \[\abs{f(t_1, x_1) - f(t_2, x_2)} < ε ∀ (t_1, x_1), (t_2, x_2) ∈ Q, \abs{(t_1, x_1) - (t_2, x_2)} < δ\]
+   Zu $δ > 0 ∃ n^{\ast} ∈ ℕ$ , sodass $\abs{x_n - x} < δ ∀ n \geq n^{\ast}$.
+   Wir bezeichnen $F_n(t) := f(t, x_n), F := f(t, x)$. Es gilt
+   \[\abs{F_n(t) - F(t)} < ε ∀ n \geq n^{\ast}\]
+   \[⇒ \abs{φ(x_n) - φ(x)} = ∫_a^b \abs{F_n(t) - F(t)} \d t \leq \abs{b - a} ε ∀ n \geq n^{\ast}\]
+   das heißt $φ(x_n) \to φ(x)$ gleichmäßig $⇒$ $φ$ stetig.
+   #+end_proof
+   #+ATTR_LATEX: :options [Integration erhält Differenzierbarkeit in Parameter]
+   #+begin_thm latex
+   Seien $a, b ∈ ℝ, a < b, U ⊂ ℝ^n$ und $f ∈ C^0([a, b] × U, ℝ^m)$. Die Fuktion $f$ sei partiell in $x_j$ differenzierbar und $\partial_{x_j} f$ sei stetig auf $[a, b] × U$.
+   Dann ist die Funktion $φ: U \to ℝ$
+   \[φ(x) := ∫_a^b f(t, x) \d x\]
+   partiell in $x_j$ differenzierbar und es gilt
+   \[\partial_{x_j} φ(x) = ∫a^b \partial_{x_j} f(t, x) \d t\]
+   #+end_thm
+   #+begin_proof latex
+   Ohne Beschränkung der Allgemeinheit sei $m = 1$ (sonst wiederhole das Argument für alle Komponente von $f$). Sei $x ∈ U$ fest gewählt und sei $ε > 0$, sodass $\bar B_ε(x) ⊂ U$.
+   Wir berechnen
+   \[\frac{1}{h}(φ(x + h e_j) - φ(x)) = ∫_a^b \frac{1}{h}(f(t, x + h e_j) - f(t, x)) \d t\]
+   Nach dem Mittelwertsatz gibt es zu $h > 0$ und $t ∈ [a, b]$ ein $s = s(t, h, x)$ mit $\abs{s} \leq \abs{h}$, sodass
+   \[\frac{1}{h}(f(t, x + h e_j) - f(t, x)) = \partial_{x_j} f(t, x + s e_j)\]
+   und daher
+   \[\abs{\frac{1}{h}(φ(x + h e_j) - φ(x)) - ∫_a^b \partial_{x_j} f(t, x) \d t} = \abs{∫_a^b (\partial_{x_j} f(t, x + s e_j) - \partial_{x_j} f(t, x)) \d t}\]
+   mit $\abs{s} \leq \abs{h}$. Nach Vorraussetzung ist $\partial_{x_j} f$ stetig und insbesondere gleichmäßig stetig auf $Q$ (kompakte Menge). Daher konvergiert der Integrad auf der rechte Seite
+   gleichmäßig in $(x, t)$ gegen $0$ für $h \to 0 ⇒$ auch das Integral gegen Null konvergiert.
+   #+end_proof
+   #+ATTR_LATEX: :options [Satz von Fubini]
+   #+begin_thm latex
+   Seien $I_x ⊂ ℝ^n$ und $I_y ⊂ ℝ^m$ kompakte Intervalle mit dem kartesischen Produkt $I = I_x × I_y ⊂ ℝ^{n + m}$ und $f ∈ R(I)$.
+   Ferner seien für jedes feste $y ∈ I_y$ und $x ∈ I_x$ die Funktion $f(·, y)$ beziehungsweise $f(x, ·)$ Riemann-integrierbar über $I_x$ beziehungsweise $I_y$.
+   Dann sind auch
+   \[F_x(y) := ∫_{I_x} f(x, y) \d x, \quad F_y(x) := ∫_{I_y} f(x, y) \d y\]
+   Riemann-integrierbar über $I_y$ beziehungsweise $I_x$ und es gilt:
+   \[∫_i f(x, y) \d (x, y) = ∫_{I_y} (∫_{I_x} f(x, y) \d x) \d y = ∫_{I_x}(∫_{I_y} f(x, y) \d y) \d x\]
+   #+end_thm
+   #+begin_proof latex
+   Wir betrachten Zerlegungen $Z_x = \{I_i\}$ von $I_x$ und $Z_y = \{K_j\}$ von $I_y$, welche Zerlegungen $Z = \{I_i × K_j\}$ erzeugen. Wir setzen
+   \[m_{ij} := \inf_{I_i × K_j} f, \quad M_{ij} := \sup_{I_i × K_j} f\]
+   \[⇒ m_{ij} \abs{I_i} \leq ∫_{I_i} f(x, y) \d x, \quad y ∈ K_j\]
+   \[⇒ \sum_{i} m_{ij} \abs{I_i} \leq ∫_{I_x} f(x, y) \d x = F_x(y), \quad y ∈ K_y\]
+   \[⇒ \sum_{i} m_{ij} \abs{I_i} \abs{K_j} \leq \underline{∫_{K_j}} F_x(y) \d y = \underline{∫_{K_j}}(∫_{I_x} F(x, y) \d x) \d y\]
+   Summation über $j$:
+   \[⇒ \ubar S_Z(f) = \sum_{i,j}^{m_{ij}} \abs{I_i × K_j} \leq ∫_{-I_y}(∫_{I_x} f(x, y) \d x) \d y\]
+   Anwendung der ähnlichen Überlegungen mit der Obersumme liefert:
+   \[\overline{∫_{I_y}}(∫_{I_x} f(x, y) \d x) \d y \leq \sum_{ij} M_{ij} \abs{I_i × K_j} = \bar S_Z(f)\]
+   In der Limes (bezüglich der Zerlegung $Z$) zum Supremum und Infimum
+   \begin{align*}
+   ⇒ \underline{∫_{-I}} f(x, y) \d (x, y) &\leq ∫_{-I_y}(∫_{I_x} f(x, y) \d x) \d y \leq \overline{∫_{I_y}}(∫_{I_x} f(x, y) \d x) \d y \\
+   &\leq \bar ∫_{I} f(x, y) \d (x, y)
+   \end{align*}
+   $f$ Riemann-integrierbar über $I$ $⇒ \ubar S_I f = \bar S_I f$
+   #+end_proof
+   #+begin_remark latex
+   Die Aussage lässt sih verallgemeinern für Funktion $f(x_1, \dots, x_m)$
+   \[∫_I f(x_1, \dots, x_m) \d (x_1, \dots, x_m) = ∫_{I_{σ(1)}} \dots (∫_{I_{σ(m)}} f(x_1, \dots, x_m) \d x_{σ(m)}) \dots \d x_{σ(1)}\]
+   wobei $σ$ eine Permutation von $\{1, \dots, m\}$ ist.
+   #+end_remark
+   #+begin_ex latex
+   1. $J = ∫_I \frac{1}{(x + y)^2} \d (x, y)$. $I = [1, 2] × [3, 4]$. Es gilt
+	  \begin{align*}
+	  J &= ∫_{1}^2(∫_3^4 \frac{1}{(x + y)^2 \d y}) \d x = ∫_1^2 (-\frac{1}{x + y})^4_3 \d x \\
+	  &= ∫_1^2(\frac{1}{x + 3} - \frac{1}{x + 4} \d) \d x = (\ln(x + 3) - \ln(x + 4))_1^2 = \ln(\frac{25}{24})
+      \end{align*}
+   2. $∫_D \frac{1}{(x + y)^2} \d (x, y)$. $D := \{(x, y) ∈ ℝ^2 \mid 1 \leq x \leq 2, 3 \leq y \leq 2 + x\}$.
+      Wir definieren
+	  \[\tilde f(x, y) := \begin{cases} \frac{1}{(x + y)^2} & \string(x, y\string) ∈ D \\ 0 & \string(x, y\string) ∈ [1, 2] × [3, 4] \setminus D \end{cases}\]
+	  Aus Fubini Satz:
+	  \begin{align*}
+	  J &= ∫_1^2(∫_3^4 \tilde f(x , y) \d y) \d x = ∫_3^4 (∫_1^2 \tilde f(x, y) \d x) \d y \\
+	  &= ∫_1^2 (∫_3^{2 + x}) = ∫_3^4(∫_{y - 2}^2 \tilde f(x, y) \d x) \d y \\
+	  J &= ∫_1^2 (- \frac{1}{x + y})_3^{2 + x} \d x = ∫_1^2 (-\frac{1}{2x + 2} + \frac{1}{x + 3}) \d x = (\ln(x + 3) - \frac{1}{2} \ln(2 x + 2))_1^2
+   	  \end{align*}
+   #+end_ex
 
    # Klausur
-   # Lipschitz-stetigkeit, Picard Lindelöf, Logistische DGL, DGL, keine großen theoretischen Sachen
+   # Lipschitz-stetigkeit, Picard Lindelöf, Logistische DGL, DGL, Stabilität von DGL, Metrik, Norm, Die 3 Konvergenzsätze, keine großen theoretischen Sachen

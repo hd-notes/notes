@@ -808,7 +808,7 @@
 	 \[\bar ψ: \faktor{F'}{M} \to \oplus_{i = 1}^{s} \faktor{R}{c_i R}\]
 	 von R-Moduln, die linke Seite ist wegen 1. nur von $M$ abhängig. Ist $c_1 ∈ R^{\ast}$, dann ist $c_1 R = R$, also $\faktor{R}{c_i R} = 0$. Wegen 30.4 sind damit die
 	 Nichteinheiten unter $c_1, \dots, c_s$ eindeutig bestimmt bis auf Asoziiertheit, ihre Anzahl ist eindeutig bestimmt. Da $(c_1 x_1, \dots, c_s x_s)$ Basis von $M$, ist
-	 $s = \Rans(M)$ eindeutig bestimmt. $⇒$ Anzahl der Einheiten unter $c_1, \dots, c_s$ eindeutig bestimmt, Einheiten unter $c_1, \dots, c_s$ sind eindeutig bis aus Asoziiertheit.
+	 $s = \Rang(M)$ eindeutig bestimmt. $⇒$ Anzahl der Einheiten unter $c_1, \dots, c_s$ eindeutig bestimmt, Einheiten unter $c_1, \dots, c_s$ sind eindeutig bis aus Asoziiertheit.
   #+end_proof
   #+begin_conc latex
   $F$ endlich freier R-Modul, $M ⊆ F$ Untermodul. Dann ist $M$ endlich frei und $\Rang(M) \leq \Rang(F)$.

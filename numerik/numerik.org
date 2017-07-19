@@ -498,10 +498,10 @@
 	x^{t + 1} &= x^t + α_t d^t \\
 	g^{t + 1} &= g^t + α_t A d^t \\
 	d^{t + 1} &= - g^{t + 1} + β_t d^t \\
-	d^ &= - g^0 = b - A x^0
+	d^0 &= - g^0 = b - A x^0
    	\end{align*}
   - Axakte Arithmetik: Lösung nach spätestens $n + 1$ Schritten.
-  -	\[\norm{x^t - x}_A \leq \min_{\supstack{p ∈ P_t \\ p(0) = 1}} \max_{λ ∈ σ(A)} \abs{p(λ)} · \norm{x^0 - x}_A \leq 2 (\frac{1 - 1/\sqrt{κ}}{1 + 1 / \sqrt{κ}})^t \norm{x^0 - x}_A\]
+  -	\[\norm{x^t - x}_A \leq \min_{\substack{p ∈ P_t \\ p(0) = 1}} \max_{λ ∈ σ(A)} \abs{p(λ)} · \norm{x^0 - x}_A \leq 2 (\frac{1 - 1/\sqrt{κ}}{1 + 1 / \sqrt{κ}})^t \norm{x^0 - x}_A\]
 * Matrizeneigenwertaufgaben
   $A ∈ \mathbb{K}^{n × n}, \mathbb{K} = ℝ$ oder $ℂ$. Suche $(λ, ω) ∈ \mathbb{K} × (\mathbb{K}^n \setminus \{0\})$, sodass
   \[A ω = λ ω\]
