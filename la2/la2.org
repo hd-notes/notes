@@ -819,3 +819,147 @@
   -	ohne die Vorraussetzung, dann $R$ ein Hauptidealring ist, wird 30.6 falsch:
 	Beispiel: $F = ℚ[X,Y]$ als $F = ℚ[X, Y]$ -Modul ($R$ ist kein Hauptidearing!), $M = \Lin((X, Y))$ ist *nicht* frei als R-Modul.
   #+end_note
+  #+ATTR_LATEX: :options [Hautsatz für endlich erzeugte Modult über Hauptidealringen, Variante 1]
+  #+begin_defthm latex
+  $M$ eindlich erzeugt. Dann gilt:
+  1. Es gibt einen endlich freien Untermodul $F ⊆ M$, etwa $F \cong R^d$ mit $M = F \oplus T(M)$. Hiebei ist $d = \Rang F$ eindeutig bestimmt.
+  2. Es gibt $s ∈ ℕ_0, c_1, \dots, c_s ∈ R \setminus(R^{\ast} ∪ \{0\})$ mit
+	 \[T(M) \cong \oplus_{j = 1}^s \faktor{R}{c_j R}\]
+	 mit $c_1 \mid c_2 \mid \dots \mid c_s$
+  3. Die Zahl $s$ ist eindeutig bestimmt, $c_1, \dots, c_s$ sind eindeutig bestimmt bis auf Assoziiertheit und heißen die *Elementarteiler* von $M$.
+  Also:
+  \[M \cong R^d \oplus \faktor{R}{c_1 R} \oplus \dots \oplus \faktor{R}{c_s R}\]
+  #+end_defthm
+  #+begin_proof latex
+  1. Existenz: Setze $(z_1, \dots, z_m)$ ein endliches Erzeugendensystem von $M$. Wir betrachten den $R$ -Modulhomomorphismus
+	 \[φ: R^m \to M, e_i ↦ z_i, i = 1, \dots, m\]
+	 $φ$ ist surjektiv $⇒$
+	 \[M \cong \faktor{R^m}{\ker φ}\]
+	 Nach Elementarteiler-Satz für $\ker φ ⊆ R^m$ existiert eine Basis $(x_1, \dots, x_m)$ vom $R^m$, sowie $c_1, \dots, c_t ∈ R \setminus \{0\}$, sodass $(c_1 x_1, \dots, c_t x_t)$ eine Basis von $\ker φ$ ist.
+	 Setze $c_{t + 1} = \dots = c_m := 0$, außerdem
+	 \[ρ: R^m \to \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_m)}, α_1 x_1 + \dots + α_m x_m ↦ (α_1 + (c_1), \dots, α_m + (c_m))\]
+	 $⇒ ρ$ ist wohldefinierter R-Modulhomomorphismus, $ρ$ ist surjektiv mit $\ker ρ = \Lin((c_1 x_1, \dots, c_t x_t)) = \ker φ$.
+	 \[⇒ M \cong \faktor{R^m}{\ker φ} = \faktor{R^m}{\ker ρ} \cong \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_m)} \cong \faktor{R}{(c_1)} \oplus \faktor{R}{(c_t)} \oplus R^{m - t}\]
+	 Setze $d := m - t$. Für $c_i ∈ R^{\ast}$ ist $c_i R = R$, also $\faktor{R}{(c_i)} = 0$. Nach Weglassen der Einheiten aus $c_1, \dots, c_t$ und Umordnen zu $c_1, \dots, c_s ∈ R \setminus (R^{\ast} ∪ \{0\})$
+	 mit $c_1 \mid \dots \mid c_s$ ist
+	 \[M \cong R^d \oplus \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)}\]
+  2. Eindeutigkeit: Wir betrachten die Abbildung:
+	 \[δ: M \xrightarrow[γ]{\cong} R^d \oplus \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)} \xrightarrow[\text{kan. Proj.}]{π} R^d\]
+	 $σ$ ist surjektiver R-Modulhomomorphismus mit
+	 \begin{align*}
+	 \ker(δ) &= γ^{-1} (\ker π) = γ^{-1} (\faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)}) γ^{-1}(T(\faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)} \oplus R^d)) \\
+	 &= T(M)
+   	 \end{align*}
+	 Homomorphiesatz: $\faktor{M}{T(M)} \cong R^d ⇒$ d eindeutig bestimmt. Wegen $T(M) \cong \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)}$ sind nach 30.4 auch $s$ eindeutig bestimmt sowie $c_1, \dots, c_s$
+	 eindeutig bis auf Assoziiertheit.
+  3. Existenz (Teil 2): Es ist
+	 \[M = γ^{-1}(R^d \oplus \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)}) = \underbrace{γ^{-1}(R^d)}_{=: F} \oplus \underbrace{γ^{-1}(\faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)})}_{= T(M)}\]
+  #+end_proof
+  #+begin_note latex
+  Ohne Vorraussetzung "M endlich erzeugt" wird die Aussage falsch: $ℚ$ ist ein (nicht endlich erzeugter) $ℤ$ -Modul mit $T(ℚ) = \{0\}$, aber $ℚ$ ist kein freier $ℤ$ -Modul (vergleiche Annahme nach 29.17)
+  #+end_note
+  #+begin_conc latex
+  $M$ R-Modul. Dann sind äquivalent:
+  1. $M$ ist endlich erzeugt und frei
+  2. $M$ ist endlich frei
+  #+end_conc
+  #+begin_proof latex
+  2. [@2] $⇒$ 1. trivial
+  3. [@1] $⇒$ 2. Nach Hautsatz existiert eindlich freier Untermodul $F ⊆ M$ mit $M = F \oplus T(M)$. Wegen 29.17 ist $T(M) = \{0\}$, also $M = F ⇒ M$ endlich frei.
+  #+end_proof
+  #+ATTR_LATEX: :options [Hautsatz über endich erzeugte abersche Gruppen, Variante 1]
+  #+begin_conc latex
+  $G$ endlich erzeugte abersche Gruppe (= endlich erzeugter $ℤ$ -Modul). Dann existiert ein Isomorphismus
+  \[G \cong ℤ^d \oplus \faktor{ℤ}{c_1 ℤ} \oplus \dots \oplus \faktor{ℤ}{c_s ℤ}\]
+  mit $d ∈ ℕ_0, c_1, \dots, c_s ∈ ℕ_{> 1}, c_1, \dots, c_s$. $d$ sowie $s, c_1, \dots, c_s$ sind eindeutig bestimmt. Es ist $G$ endlich $⇔$ $d = 0$. In diesem Fall ist $\abs{G} = c_1 · \dots · c_s$
+  #+end_conc
+  #+begin_ex latex
+  1. abelsche Grueen mit 4 Elementen bus auf Isomorphie:
+	 1. Fall: $s = 1, c_1 = 4: \faktor{ℤ}{4ℤ}$
+	 2. Fall: $s = 2, c_1 = 2, c_2 = 2: \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{2ℤ}$
+     $⇒$ bis auf Isomorphie gibt es 2 abelsche Gruppen mit 4 Elementen.
+  2. abelsche Gruppen mit 24 Elementen bis auf Isomorphie
+	 1. Fall: $s = 1, c_1 = 24: \faktor{ℤ}{24ℤ}$
+	 2. Fall: $s = 2, c_1 = 2, c_2 = 12$: $\faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{12ℤ}$
+	 3. Fall: $s = 3, c_1 = 2, c_2 = 2, c_3 = 6$: $\faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{6ℤ}$
+  $⇒$ Bis auf Isomorphie gibt es 3 abelsche Gruppen mit 24 Elementen.
+  #+end_ex
+  Frage: $\faktor{ℤ}{3ℤ} \oplus \faktor{ℤ}{8ℤ}$ ist ebenfalls eine abelsche Gruppe mit 24 Elementen. Zu welcher der Gruppen aus der Liste von 30.16.b ist diese isomorph?
+  #+ATTR_LATEX: :options [Spezialfall des Chinesischen Restsatzes]
+  #+begin_remark latex
+  $a ∈ R \setminus (R^{\ast} ∪ \{0\}), a = c p_1^{n_1} · \dots · p_r^{n_r}$ mit $c ∈ R^{\ast}, p_1, \dots, p_r$ irreduzibel, paarweise nicht-assoziiert.
+  \[π_i: R \to \faktor{R}{(p_i^{n_i})}, b ↦ b + (p_i^{n_1})\]
+  kanonische Projektion für $i = 1, \dots, r$. Dann ist die Abbildung
+  \[φ: R \to \faktor{R}{(p_i^{n_1})} × \dots × \faktor{R}{(p_r^{n_r})}, b ↦ (π_1(b), \dots, π_r(b))\]
+  ein surjektiver Ringhomomorphismus mit $\ker φ = (a)$, das heißt wir erhalten einen Ringisomorphismus
+  \[Φ: \faktor{R}{(a)} \xrightarrow{\cong} \faktor{R}{(c_1^{n_1})} × \dots × \faktor{R}{(p_r^{n_r})}\]
+  Hierbei ist $\faktor{R}{(c_1^{n_1})} × \dots × \faktor{R}{(p_r^{n_r})}$ via komponentenweiser Addition und Multiplikation ein Ring. Insbesondere erhalten wir einen Isomorphismus von R-Moduln
+  \[\faktor{R}{(a)} \cong \faktor{R}{(p_1^{n_1})} × \dots × \faktor{R}{(p_r^{n_r})}\]
+  #+end_remark
+  #+begin_proof latex
+  1. $φ$ Ringhomomorphismus, da $π_1, \dots, π_r$ Ringhomomorphismus
+  2. $φ$ surjektiv: Es ist $1 ∈ \GGT(p_j^{n_j}, p_i^{n_1} · \dots · p_{j_ 1}^{n_{j - 1}} p_{j + 1}^{n_{j + 1}} · \dots · p_r^{n_r})$.
+	 \[⇒ ∃ u_j, v_j ∈ R: 1 = \underbrace{u_j p_j^{n_j}}_{=: d_j} + \underbrace{v_j p_i^{n_1} · \dots · p_{j_ 1}^{n_{j - 1}} p_{j + 1}^{n_{j + 1}} · \dots · p_r^{n_r}}_{e_j}\]
+	 \begin{align*}
+	 ⇒ π_i(e_j) &= \bar 0 \text{ für } i \pm j, π_j(e_j) = π_j(1 - d_j) = π_j(1) - π_j(d_j) = \bar 1 - \bar 0 = \bar 1 \\
+	 ⇒ φ(e_j) &= (\bar 0, \dots, \bar 0, \bar 1, \bar 0, \dots, \bar 0)
+   	 \end{align*}
+	 Für $(\bar a_1, \dots, \bar a_r) ∈ \faktor{R}{(p_1^{n_1})} × \dots × \faktor{R}{p_r^{n_r}}$ ist
+	 \[φ(a_1 e_1 + \dots + a_r e_r) = \underbrace{φ(a_1) φ(e_1)}_{(\bar a_1, \bar 0, \dots, \bar 0)} + \dots + \underbrace{φ(a_r) φ(e_r)}_{=(\bar 0, \dots, \bar 0 \bar a_r)} = (\bar a_1, \dots, \bar a_r)\]
+  3. \[\ker φ = \{a ∈ R \mid p_1^{n_1} \mid a, \dots, p_r^{n_r} \mid a\} = \{a ∈ R \mid p_1^{n_1} · \dots · p_r \mid a\} = (p_1^{n_1} · \dots · p_r^{n_r}) = (p p_1^{n_1} · \dots · p_r^{n_r}) = (a)\]
+  4. Rest aus Homomorphiesatz für Ringe
+  #+end_proof
+  #+begin_ex latex
+  Nach 30.11 ist $\faktor{ℤ}{24ℤ} \cong \faktor{ℤ}{3ℤ} \oplus \faktor{ℤ}{8ℤ}$
+  #+end_ex
+  #+ATTR_LATEX: :options [Hautsatz für endlich erzeugte Moduln über Hauptidealringen, Variante 2]
+  #+begin_thm latex
+  $M$ endlich erzeugter R-Modul, $\mathbb{P}$ sei ein Vertretersystem der Primelelemente von $R$ bis auf Assoziiertheit, für $p ∈ \mathbb{P}$ sei
+  \[M_p := \{x ∈ M \mid ∃ n ∈ ℕ: p^n x = 0\} ⊆ T(M)\]
+  (ist offenbar ein Untermodul). Dann gilt:
+  1. Es gibt einen endlich erzeugten freien Untermodul $F ⊆ M$, sodass $M = F \oplus T(M)$, $d := \Rang F$ ist eindeutig bestimmt.
+  2. $T(M) = \oplus_{p ∈ \mathbb{P}} M_p$, wobei $M_p = 0$ für fast alle $p ∈ \mathbb{P}$
+  3. Für jedes $p ∈ \mathbb{P}$ mit $M_p \neq 0$ gibt es eindeutig bestimmte natürliche Zahlen $1 \leq n_{p,1} \_eq \dots \leq n_{p, s_p}$ mit
+	 \[M \cong R^d \oplus \oplus_{p ∈ \mathbb{P}}(\faktor{R}{p^{n_{p,1}} R} \oplus \dots \oplus \faktor{R}{p^{n_{p,s_p}} R})\]
+  #+end_thm
+  #+begin_proof latex
+  1. folgt aus 30.10
+  2., 3.:
+  1. Nach Hauptsatz für endlich erzeugte R-Moduln (Variante 1) ist $M = F \oplus T(M), T(M) \cong \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)}$ mit $c_1, \dots, c_s ∈ R \setminus (R^{\ast} ∪ \{0\}), c_1 \mid \dots \mid c_s$.
+	 Wir faktorisieren $c_1, \dots, c_s$ in $R$: $\{p_1, \dots, p_r\} ⊆ \mathbb{P}$ sei die Menge der Primteiler von $c_s$ (bis auf Assoziiertheit). Sei $c_j = ε_j p_1^{n_{1,j}} · \dots · p_r^{n_{r,j}}, ε_j ∈ R^{\ast}, n_{1,j}, \dots, n_{r,j} ∈ ℕ_0$ ($j = 1, \dots, r$).
+	 \[⇒ T(M) \cong \oplus_{j = 1}^s \faktor{R}{(c_j)} \cong \oplus_{j = 1}^s \oplus_{i = 1}^r \faktor{R}{p_i^{n_{i,j}}} \cong \oplus_{i = 1}^r \oplus_{j = 1}^s \faktor{R}{(p_i^{n_{i,j}})}\]
+  2. Es sei ein Isomorphismus $γ: T(M) \to \oplus_{i = 1}^r \oplus_{j = 1}^s \faktor{R}{(p_i^{n_{i,j}})}$ fixiert. Behauptung:
+	 \[γ(M_{p_i}) = \oplus_{j = 1}^s \faktor{R}{(p_i^{n_{i,j}})}\]
+	 denn: "$⊆$" Sei $a ∈ M_{p_i}$, etwa $p_i^m a = 0 ⇒ γ(p_i^m a) = 0 ⇒ p_i^m γ(a) = 0$. Es ist $γ(a)$ von der Form
+	 \[γ(a) = (\underarrow[\bar x_{1,1}]{\(\faktor{R}{(p_i^{n_{1,1}})}\)}, \dots, \underarrow[\bar x_{1,s}]{\(\faktor{R}{(p_i^{n_{1,s}})}\)}, \dots, \underarrow[\bar x_{r,1}]{\(\faktor{R}{(p_i^{n_{r,1}})}\)}, \dots, \underarrow[\bar x_{r,s}]{\(\faktor{R}{(p_i^{n_{r,s}})}\)})\]
+	 Für $j \neq i$ ist $1 ∈ \GGT(p_i^m, p_j^{n_{j,k}}), k ∈ \{1, \dots, r\}$. $⇒ ∃ u_1, v_i ∈ R: 1 = u_i p_i^m + v_i p_j^{n_{j,k}}$. In $\faktor{R}{(p_j^{n_{j, k}})}$ ist $\bar 1 = \bar u_i \bar p_i^m$,
+	 das heißt $\bar p_i^m$ ist Einheit in $\faktor{R}{(p_j^{n_{j,k}})}$. Aus $p_i^m γ(a) = 0$ folgt für $j \neq i, k = 1, \dots, s: p_i^m \bar x_{j, k} = 0 ⇒ \bar p_i^m \bar x_{j, k} = 0 ⇒ \bar x_{j,k} = 0$
+	 \[⇒ γ(a) ∈ \oplus_{j = 1}^s \faktor{R}{(p_i^{n_{i,j}})}\]
+	 "$\supseteq$" Sei $x ∈ \oplus_{j = 1}^s \faktor{R}{(p_i^{n_{i,j}})}$. Setze $m := \max \{n_{i, 1}, \dots, n_{i, s}\} = n_{i, s}$, dann $p_i^m x = 0$.
+	 Setze $y := γ^{-1}(x)$. Dann ist $p_i^m y = p_i^m y^{-1}(x) = γ^{-1}(p_i^m x) = 0$. $⇒ y ∈ M_{p_i}$ und $γ(y) = x$, das heißt $x ∈ γ(M_{p_i})$.
+  3. Aus 2. folgt:
+	 \[T(M) = γ^{-1}(\oplus_{i = 1}^r \oplus_{j = 1}^s \faktor{R}{(p_i^{n_{i,j}})}) = γ^{-1}(\oplus_{i = 1}^r γ(M_{p_i})) = \oplus_{i = 1}^r M_{p_i}\]
+	 Behauptung: $M_p = 0$ für $p \neq p_1, \dots, p_r$, denn: Sei $p \neq p_1, \dots, p_r ⇒ 1 ∈ \GGT(p^m, c_j)$ für $j = 1, \dots, s, m ∈ ℕ$.
+	 $⇒$ $p^m + (c_j) ∈ (\faktor{R}{(c_j)})^{\ast}$ für $j = 1, \dots, s$ \\
+	 $⇒$ Aus $p^m x = 0$ für $x ∈ \oplus_{j = 1}^s \faktor{R}{(c_j)}$ folgt $x = 0$ \\
+	 $⇒$ Aus $p^m x = 0$ für $x ∈ T(M)$ folgt $x = 0$ \\
+	 $⇒$ Aus $p^m x = 0$ für $x ∈ M$ folgt $x = 0$ \\
+	 $⇒$ $M_p = 0$ für $p \neq p_1, \dots, p_r, p ∈ \mathbb{P} ⇒ M_p = 0$ für fast alle $p ∈ \mathbb{P}$ und $T(M) = \oplus_{p ∈ \mathbb{P}} M_p$
+  4. Nach Umbenennung erhalten wir
+	 \[M_p \cong \oplus_{j = 1}^{s_p} \faktor{R}{(p^{n_{p,j}})}\]
+	 mit $1 \leq n_{p,1} \leq \dots \leq n_{p, s_p}$, falls $s_p \neq 0$. $M_p$ mit $p \neq 0$ hängt nur von $M, p$ b. Die Zahlen $n_{p_1}, \dots, n_{p, s_p}$ sind wegen 30.4 eindeutig bestimmt.
+  #+end_proof
+  #+ATTR_LATEX: :options [Haupsatz für endlicherzeugte abelsche Gruppen, Variante 2]
+  #+begin_conc latex
+  $G$ endlich erzeugte Gruppe, $\mathbb{P}$ Menge der Primzahlen in $ℕ$. Dass existiert ein Isomorphismus
+  \[G \cong ℤ^d \oplus \oplus_{p ∈ \mathbb{P}}(\faktor{ℤ}{(p^{n_{p, 1}})} \oplus \dots \oplus \faktor{ℤ}{(p^{n_{p, s_p}})}), 1 \leq n_{p,1} \leq \dots \leq n_{p, s_p}\]
+  Die Zahlen $d, s_p, n_{p_i}$ sind eindeutig bestimmt. Es ist $s_p = 0$ für fast alle $p ∈ \mathbb{P}$. Es ist $G$ endlich $⇔$ $d = 0$. In diesem Fall ist $\abs{G} = \prod_{p ∈ \mathbb{P}} p^{n_{p, 1} + \dots + n_{p, s_p}}$.
+  #+end_conc
+  #+begin_ex latex
+  Endliche abelsche Gruppen mit 24 Elementen, bis auf Isomorphie: Es ist $24 = 2^3 · 3 = 2 · 2^2 · 3 = 2 · 2 · 2 · 3$ $⇒$ Isomorphietypen:
+  \[\faktor{ℤ}{8ℤ} \oplus \faktor{ℤ}{3ℤ}, \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{4ℤ} \oplus \faktor{ℤ}{3ℤ}, \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{3ℤ}\]
+  Es ist
+  \[\faktor{ℤ}{8ℤ} \oplus \faktor{ℤ}{3ℤ} \cong \faktor{ℤ}{24ℤ}\]
+  \[\faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{4ℤ} \oplus \faktor{ℤ}{3ℤ} \cong \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{12ℤ}\]
+  \[\faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{3ℤ} \cong \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{2ℤ} \oplus \faktor{ℤ}{6ℤ}\]
+  #+end_ex

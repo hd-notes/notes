@@ -1,0 +1,60 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Experimentalphysik III (M. Oberthaler)
+#+INCLUDE: "../header.org" :minlevel 1
+
+# 60% Punkte aus Übungaufgaben
+# Übungsblatt: jeden Dientstag ab 14:00 Uhr
+# Abgabe der Übungen: nach der Vorlesung am Montag (ab 23. Oktorber) in der Vorlesung
+# Klausur: voraussichtlich am 5.2.2018
+# Experimentierraum: Do + Fr 14-18 Uhr, 3D-Drucker!
+
+# Quantenphysik und Atome
+# Ziele:
+# Einführen der Grundkonzepte der Quantenmechanik
+# Anwendung der QM für quanitiatives Verstehen der Natur
+#   Verstehen der Struktur der Atome & Atom-Licht Wechselwirkung
+#   Verbindung zur Thermodynamik - Bose und Fermi Gase
+# Neueste Entwicklungen
+#   Laserkühlung (N.P. 1996)
+#   Ultrakalte Quantengase (N.P.)
+#
+
+* Vorspann
+** Ein Experiment mit klassischen Teilchen
+   1. Fall: Quelle von nicht weiter zerteilbaren Teilchen mit zufälliger Richtung. Es werden die Anzahl der Teilchen auf einem Raster $x$ mit Gitterkonstante $Δx$ gemessen.
+	  Dann werden in der Mitte die meißten Teilchen ankommen. Die diskrete Verteilung kann mit einer kontinuierlichen Wahrscheinlichkeitsverteilung beschrieben werden. Die
+	  wichtigen Größen sind hier die Position der maximalen Wahrscheinlichkeit und die Breite (FWHM - full width half maximum)
+   2. Fall: 2 Quellen (mittels Doppelspalt der Breite $d$, $d \ll \text{FWHM}$)
+   Wichtig: Diskrete Zahlen. Die theoretische Wahrscheinlichkeitsverteilung kann nur annähernd gemessen werden! Anzahl der Teilchen $\to ∞ ⇒ P_1(x)$.
+** Ein Experiment mit klassischen Wellen
+   Quelle sendet Kugelwellen aus (fixe Frequenz, fixe Amplitude), Doppelspalt. Ein Detektor misst Strom $\propto$ Intensität. Man erhält das Intensisätsmuster $I_{12}$ eines Doppelspalts.
+   Bei blockieren eines der Öffnungen des Doppelspalt erhält man einen Einzelspalt und somit nurnoch das Intensitätsmuster eines Einzelspalts, mit Maximum bei dem nicht blockierten Spalt.
+   Wichtig: Intensität ist kontinuierlich $I_{12}$ kann genau gemessen werden. \\
+
+   Warum hat $I_{12}$ die angegebene Form
+   \begin{align*}
+   I(x) &= c ε_0 \frac{1}{2T} ∫_{-T}^T E(x, t) \d t \\
+   E(x, t) &= E_1 \cos(ω t + \v k \v R_1) + E_2 \cos(ω t + \v k \v R_2)
+   \end{align*}
+   mit Hilfe von komplexer Schreibweise
+   \begin{align*}
+   E(x, t) &= \Re \{\underarrow[E_1]{reell} e^{i(ω t - \v k \v R_1)} + \underarrow[E_2]{reell} e^{i(ω t - \v k \v R_2)}\} \\
+   &= \Re \{(E_1 \underbrace{e^{-i(\v k \v R_1)}}_{a_1} + \underbrace{E_2 e^{-i \v k \v R_2}}_{a_2}) e^{i ω t}\} \\
+   ⇒ I_{12}(x) &\propto \abs{a_1 + a_2}^2 \\
+   \intertext{Wir interessieren uns nur für $x$ -Abhängigkeit, nicht für absolute Werte}
+   I_{12}(x) \propto \abs{a_1 + a_2}^2 &= (a_1^{\ast} + a_2^{\ast})(a_1 + a_2) \\
+   &= \abs{a_1}^2 + \abs{a_2}^2 + a_1^{\ast} a_2 + a_2^{\ast} a_1 \\
+   \abs{a_1}^2 &= E_1 e^{i k R_1} E_1 e^{-k R_1} = E_1^2 \sim I_1 \\
+   \abs{a_2}^2 &= E_2 e^{i k R_2} E_2 e^{-k R_2} = E_2^2 \sim I_2 \\
+   a_1^{\ast} a_2 + a_2^{\ast} a_1 &= a_1^{\ast} a_2 + \cc \\
+   &= 2 \Re \{a_1^{\ast} a_2\} = 2\Re\{E_1 E_2 e^{i k(\v R_2 - \v R_1)}\} \\
+   &= 2 \sqrt{I_1 I_2} \cos\underbrace{(\v k(\v R_2 - \v R_1))}_{ϕ} \\
+   ⇒ \Aboxed{I_{12} &= I_1 + I_2 + 2 \sqrt{I_1 I_2} \cos ϕ}
+   \end{align*}
+   Maximale Intensität $ϕ = 0 \quad \abs{\v R_1} = \abs{\v R_2}$. Für $I_1 = I_2 = I_0$:
+   \begin{align*}
+   I_{\text{MAX}} &= I_1 + I_2 + 2 \sqrt{I_1 I_2} = 4 I_0 \\
+   I_{\text{MIN}} &= I_1 + I_2 = 2 \sqrt{I_1 I_2} = 0
+   \end{align*}
+   Intensität wird räumlich	umverteilt,	gesamt Intensistät bleibt erhalten
+   \[I_1 + I_2 \estimates \text{Energieerhaltung}\]

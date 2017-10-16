@@ -584,3 +584,92 @@
    $(A - \tilde λ E_n)^{-1}$ die Eigenwerte $μ_i = (λ_i - \tilde λ)^{-1}$. Idee:
    Potenzmethode für $(A - \tilde λ E_n)^{-1}$. Löse $(A - \tilde λ E_n) \tilde z^t = z^{t - 1}$. Normiere
    \[z^t = \frac{\tilde z^t}{\norm{\tilde z^t}}\]
+   Wiederholung: $A x = λ x$ \\
+   - Potenzmethode: $z^0 ∈ ℂ^n$
+	 \begin{align*}
+	 \tilde z^{(t)} &= A z^{(t)} \\
+     \quad z^{(t + 1)} &= \frac{\tilde z^{(t)}}{\norm{\tilde z^{(t)}}} \\
+	 λ^{(t)} &= \frac{\tilde z^{(t)}_t}{z^{(t)}_k} \\
+	 λ^{(t)} &= λ_n + \mathcal{O}(\abs{\frac{λ_{n - 1}}{λ_n}}^t)
+     \end{align*}
+   - Inverse Iteration = Potentzmethode auf $(A - \tilde λ E_n)^{-1}$
+** Reduktionsmethoden
+   #+begin_defn latex
+   $A, B ∈ ℂ^{n × n}$ heißen ähnlich $(A \sim B)$, wenn $∃ T ∈ C^{n × n}$ invertierbar mit $A = T^{-1} B T$.
+   #+end_defn
+   Beobachtungen:
+   \begin{align*}
+   \det(A - z E_n) = \det(T^{-1}(B - z E_n) T) \\
+   &= \det(T^{-1}) \det(B - z E_n) \det(T) \\
+   &= \det(B - z E_n) \\
+   ⇒ σ(A) &= σ(B)
+   \end{align*}
+   \[A ω = λ ω ⇒ T^{-1} B T ω = λ W ⇒ B \underbrace{T ω}_{\tilde ω} = λ \underbrace{T ω}_{\tilde ω}\]
+   Reduktionsmethode: Benutze Ähnlichkeitstransformationen, um $A$ auf eine Gestalt zu bringen, in der men die Eigenwerte leicht
+   ablesen kann:
+   \[A =: A^{(0)} = T_1^{-1} A^{(1)} T_1 = \dots = T_i^{-1} A^{-1} T_i = \dots\]
+   #+ATTR_LATEX: :options [Jordansche Normalform]
+   #+begin_defn latex
+   Jede	Matrix $A ∈ ℂ^{n × n}$ ist ähnlich zu einer Blockmatrix der Form ($λ_i \neq λ_j, i \neq j$)
+   \[\diag(C_{r_1^{(1)}}(λ_1),\dots, C_{r_{ρ_1}^{(1)}}(λ_1), \dots, C_{r_1^{(m)}}(λ_m)), \dots, C_{r_{ρ_m}^{(m)}}(λ_m)\]
+   mit Jordan-Blöcken
+   \[C_r(λ) = \begin{pmatrix}λ & 1 &   & 0 \\   & \ddots & \ddots &   \\   &   & \ddots & 1 \\   &   &   & λ\end{pmatrix} ∈ C^{r × r}\]
+   #+end_defn
+   Beobachtung:
+   - $σ(C_r(λ)) = \{λ\}$
+   - $\ker(C_r(λ) - λ E_n) = \Lin \{e_1\}$
+   $⇒$
+   - Algebraische Vielfachkeit von $λ_i$:
+	 \[\sum_{j = 1}^{ρ_i} r_j^{(i)} = σ_i\]
+   - Geometrische Vielfachheit von $λ_i: ρ_i$
+   Achtung: Jordan-Zerlegung numerisch nicht sinnvoll ($\cond(T) \gg 1 / eps$)
+   #+begin_lemma latex
+   Für $A ∈ ℂ^{n × n}$ ist äquivalent:
+   1. $A$ ist diagonalisierbar
+   2. $∃$ Basis von $ℂ^n$ aus Eigenvektoren von $A$
+   3. $σ_i = ρ_i, i = 1, \dots, m$
+   #+end_lemma
+   *Schursche Normalform* \\
+   Sei $A ∈ ℂ^{n × n}$. Dann $∃ U ∈ ℂ^{n × n}$ unitär, sodass
+   \[\bar U^T A U = \begin{pmatrix}λ_1 &   &   \\   & \ddots & \ast \\ 0 &   & λ_n\end{pmatrix}\]
+   Folgerung: Wenn $A = \bar A^T$, dann ist $\bar U^T A U$ hermitesch. $⇒ A$ diagonalisierbar.
+   Fehlefortpflanzung bei Reduktionsmethoden. Sei $B \sim A$, das heißt $B = T^{-1} A T$
+   \begin{align*}
+   B + δ B &= T^{-1}(A + δ A) T \\
+   ⇒ δ A &= T δ B T^{-1} \\
+   ⇒ \norm{B} &\leq \cond{T}\norm{A} \\
+   \norm{δA} &\leq \cond(T) \norm{δB} \\
+   ⇒ \frac{\norm{δA}}{\norm{A}} &\leq \cond(T)^2 \frac{\norm{δB}}{\norm{B}}
+   \end{align*}
+   Wegen $\cond(T) = \cond(T_1 \dots T_m) \leq \cond(T_1) · \dots · \cond(T_m)$ muss $\cond(T_i)$ klein gewährleistet sei.
+   $T$ unitär $⇒ \cond_2(T_i) = 1$.
+   Reeller Fall
+   #+begin_defn latex
+   $A ∈ ℝ^{n × n}$ heißt Hessenberg-Matrix, wenn $a_{ij} = 0 ∀ i > j + 1$
+   #+end_defn
+   #+ATTR_LATEX: :options [Hessenbergsche Normalform]
+   #+begin_thm latex
+   Für jede Matrix $A ∈ ℝ^{n × n}$ existieren Hauseholdertransformationen $T_1, \dots, T_{n - 2}$ so, dass mit $T = T_{n - 2} · \dots · T_1$ die Matriz
+   $T A T^T$ Hessenberg ist. Für $A = A^T$ ist $T A T^T$ tridiagonal.
+   #+end_thm
+   #+begin_proof latex
+   $A = [a_1, \dots, a_n]$. Wähle $a_1 = (0, u_{12}, \dots, 2_{1n})^T ∈ ℝ^n, \norm{u_1}_2 = 1$ sodass
+   \begin{align*}
+   T_1 a_1 &= (E_n - 2 u_1 u_1^T) a_1 ∈ \Lin \{e_1, e_2\} \\
+   ⇒ A^{(1)} &= T_1 A T_1^T = (\begin{array}{c|ccc} a_{11} & a_{12} & \dots & a_{1n} \\ \hline  \ast & & & \\ 0 & & & \\ \vdots & &\ast & \\ 0 & & & \end{array}) · (\begin{array}{c|ccc}1 & & 0 & \\ \hline & & & \\ 0 & & \ast & \\ & & & \\\end{array}) \\
+   &= (\begin{array}{c|ccc} a_{11} & \ast & \dots & \ast \\ \hline  \ast & & & \\ 0 & & & \\ \vdots & &\tilde A^{(1)} & \\ 0 & & & \end{array})
+   \end{align*}
+   Fahre fort auf $\tilde A^{(1)}$ für $n - 2$ Schritte $⇒ A^{(n - 2)}$ Hessenberg.
+   #+end_proof
+   Verfahren für Hessenberg-/Tridiagonalmatrizen:
+   QR-Verfahren:
+   \begin{align*}
+   A^{(t)} &=: Q^{(t)} R^{(t)}, A^{(t + 1)} = R^{(t)} Q^{(t)} \\
+   A^{(t + 1)} &= \underbrace{(Q^{(t)})^T (Q^{(t)})}_{E_n} R^{(t)} Q^{(t)} = (Q^{(t)})^T A^{(t)} Q^{(t)} \\
+   ⇒ A^{(t + 1)} &\sim A^{(t)}
+   \end{align*}
+   #+begin_thm latex
+   Für die Eigenwerte $λ_i$ von $A$ gelte $\abs{λ_1} > \abs{λ_2} > \dots > \abs{λ_n}$.
+   Dann gilt für $A^{(t)} = (a_{jk}^{(t)})$ aus dem QR-Verfahren
+   \[\lim_{t \to ∞} a_{jj}^{(t)} = λ_j, \quad j = 1, \dots, n\]
+   #+end_thm

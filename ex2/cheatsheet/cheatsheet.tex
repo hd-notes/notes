@@ -1,4 +1,4 @@
-\documentclass[10pt, landscape,a4paper]{extarticle}
+\documentclass[9pt, landscape,a4paper]{extarticle}
 \usepackage{tikz}
 \usepackage{multicol}
 \usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
@@ -16,7 +16,9 @@
 \usepackage{polyglossia}
 \usepackage{newunicodechar}
 \newunicodechar{α}{\alpha}
+\newunicodechar{Α}{\alpha}
 \newunicodechar{β}{\beta}
+\newunicodechar{Β}{\beta}
 \newunicodechar{γ}{\gamma}
 \newunicodechar{δ}{\delta}
 \newunicodechar{ε}{\varepsilon}
@@ -246,7 +248,8 @@
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand*\abs[1]{\lvert#1\rvert}
 \newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
-\newcommand{\const}{\ensuremath{\text{const.}}}%
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\const}{\ensuremath{\text{ const.}}}%
 
 \raggedbottom
 \begin{document}
@@ -261,7 +264,8 @@ Elekrische Feldstärke:
 $\displayed{\v E(\v r) = \frac{1}{4πε_0} \frac{Q}{r^2} \hat r}$ \\
 Superposition:
 $\displayed{\v E(\v R) = \frac{1}{4π ε_0} ∫ \frac{\v R - \v r}{\abs{\v R - \v r}^3} ρ(\v r) \d V}$ \\
-mit $Q = ∫ ρ(\v r) \d^3 r$, diskrete Landungsverteilung: \\
+mit $Q = ∫ ρ(\v r) \d^3 r$ \\
+diskrete Landungsverteilung: \\
 $\displayed{\v E = \frac{1}{4 π ε_0} \sum \frac{q_i}{r_i^2} \hat r_i}$ \\
 Elektrischer Fluss $ϕ_E := ∫ \v E \d \v A$: \\
 $Q_{\text{innen}} = 0 \to ϕ_E = 0$ \\
@@ -278,11 +282,13 @@ Gaußsches Gesetz (differentielle Form): $\v ∇ \v E = \frac{ρ}{ε_0}$ \\
 Potentielle Energie: $E_{pot}(\v r) = - ∫_{∞}^{r} \v F_C \d \v s$ \\
 Coulombpotential (Punktladung): $E_{pot}(\v r) = \frac{Q q}{4 π ε_0 r}$ \\
 Zirkulationsgesetz: $∮ \v E \d \v s = 0$ \\
-Elektrisches Potential: $\displayed{φ(\v r) = \frac{E_{pot}(\v r)}{q} = -∫_{∞}^{\v r} \v E \d \v s}$ \\
+Elektrisches Potential: \\
+$\displayed{φ(\v r) = \frac{E_{pot}(\v r)}{q} = -∫_{∞}^{\v r} \v E \d \v s}$ \\
 $\v E(\v r) = -\v ∇ φ(\v r)$ \\
-Allgemeine Ladungsverteilung:
+Allgemeine Ladungsverteilung: \\
 $\displayed{φ(\v R) = \frac{1}{4 π ε_0} ∫ \frac{ρ(\v r)}{\abs{\v R - \v r}} \d V}$ \\
-Elektrische Spannug: $U_{12} = Δ φ_{12} = φ_2 - φ_1 = - ∫_1^2 \v E \d \v s$ \\
+Elektrische Spannug: \\
+$U_{12} = Δ φ_{12} = φ_2 - φ_1 = - ∫_1^2 \v E \d \v s$ \\
 Poisson Gleichung: $Δ φ = - \frac{ρ}{ε_0}$ \\
 Dipolmoment: $\v p = q · \v d$ \\
 Dipol: $\displayed{φ(\v r) = \frac{1}{4π ε_0}(\frac{q}{\abs{\v r - \v d / 2}} + \frac{-q}{\abs{\v r + \v d / 2}})}$ \\
@@ -290,27 +296,30 @@ $r \gg d$: $\displayed{φ(\v r) = \frac{\v p · \hat r}{4 π ε_0 r^2}}$ \\
 Feld für $r \gg d$: $\displayed{\v E(\v r) = \frac{3(\v p · \v r) \v r - r^2 \v p}{r^5}}$ \\
 Homogenes Feld: $\v M = \v D × \v F = \v p × \v E$ \\
 $E_{pot} = - \v p · \v E$ \\
-Kugelkonduktoren: $\displayed{Δ φ = - ∫_∞^R \v E \d \v r = \frac{Q}{4π ε_0 R}} \to Q = 4 π ε_0 R U$ \\
+Kugelkonduktoren: \\
+$\displayed{Δ φ = - ∫_∞^R \v E \d \v r = \frac{Q}{4π ε_0 R}} \to Q = 4 π ε_0 R U$ \\
 Kapazität: $C := \frac{Q}{U}$ \\
 Plattenkondensator: $E = \frac{σ}{ε_0} = \frac{Q}{A ε_0}$ \\
 $C = \frac{Q}{U} = \frac{ε_0 A}{d}$ \\
 Kugelkondensator: $C= 4π ε_0 {\frac{R_{2} R_{1}}{R_{2} - R_{1}}}$ \\
-Parallelschaltung: $C_{ges} = \sum_{i = 1}^n C_i$ \\
-Reihenschaltung: $\frac{1}{C_{ges}} = \sum_{i = 1}^n \frac{1}{C_i}$ \\
-Energie gepeichert im Kondensator: $E_C = \frac{1}{2} C U^2$ \\
+Parallelschaltung: $C_{\text{ges}} = \sum_{i = 1}^n C_i$ \\
+Reihenschaltung: $\frac{1}{C_{\text{ges}}} = \sum_{i = 1}^n \frac{1}{C_i}$ \\
+Energie gepeichert im Kondensator: \\
+$E_C = \frac{1}{2} C U^2$ \\
 Plattenkondensator: $E_C = \frac{1}{2} ε_0 V E^2$ \\
 Energiedichte: $ω_C = \frac{1}{2} ε_0 E^2$ \\
 Permittivität $ε_r$: $C_{\text{Diel}} = ε_r C_{\text{Vakuum}} = ε_r C_0$ \\
-$\displayed{E_{\text{Diel}} = \frac{E_{\text{Vak}}}{ε_r}}$
+$\displayed{E_{\text{Diel}} = \frac{E_{\text{Vak}}}{ε_r}}$ \\
 Polarisation: $\v P = \frac{1}{V} \sum_{i = 1}^{n} \v p_i$ \\
-$\v P = χ ε_0 \v E_{Diel}$
+$\v P = χ ε_0 \v E_{Diel}$ \\
 elektrische Suszeptibilität $χ = ε_r - 1$ \\
-Dielektrische Verschiebung: $\v D = ε_0 \v E_{\text{Diel}} + \v P = ε_r ε_0 \v E_{\text{Diel}} = ε_0 \v E_{\text{Vak}}$ \\
+Dielektrische Verschiebung: \\
+$\v D = ε_0 \v E_{\text{Diel}} + \v P = ε_r ε_0 \v E_{\text{Diel}} = ε_0 \v E_{\text{Vak}}$ \\
 1. Maxwellsche Gleichungen in Materie:
 $\displayed{∮ \v D \d \v A = Q_{\text{frei}}}$ \\
 $\displayed{∮ \v E \d \v A = \frac{Q_{\text{frei}}}{ε_r ε_0}}$ \\
 Elektrische Feldenergie: $W_e = \frac{Q^2}{2 ε_r C_0}$ \\
-Energiedichte: $ω_e = \frac{1}{2} ε_r ε_0 \v E^2 = \frac{1}{2} \v E \v E$ \\
+Energiedichte: $ω_e = \frac{1}{2} ε_r ε_0 \v E^2 = \frac{1}{2} \v E \v D$ \\
 \section{Elektrische Gleichströme}
 Elektrischer Strom: $I := \dd{Q}{t}$ \\
 Elektrische Stromdichte: $\abs{\v j} = \frac{I}{A} = \frac{\d Q}{A \d t}$ \\
@@ -321,6 +330,7 @@ Differentielle Leitfähigkeit: $S = \dd{I}{U}$ \\
 Ohmscher Leiter $\to r = \const$ \\
 Ohmsches Gesetz: $U = R I$ \\
 $\v j = σ \v E = n q_e \v v_D$ \\
+$I = \v j A$ \\
 Spezifische Leitfähigkeit: $σ = \frac{l}{RA} = S \frac{l}{A}$ \\
 Spezifische Widerstand: $ρ = \frac{1}{ρ} = R \frac{A}{l}$ \\
 ohmsche Leiter: $\v v_D = μ \v E$ \\
@@ -333,7 +343,8 @@ Knotenregel: An jedem Konten gilt: $\sum I_k = 0$ \\
 Maschenregel: Für jede Masche gilt: $\sum U_k = 0$ \\
 Reihenschaltung: $R = \sum_{i = 1}^n R_i$ \\
 Parallelschaltung: $\frac{1}{R} = \sum_{i = 1}^n \frac{1}{R_i}$ \\
-Spannungsquelle ($R_i$: Innewiderstand): $U_{kl} = U_0 - I R_i$ \\
+Spannungsquelle ($R_i$: Innewiderstand): \\
+$U_{kl} = U_0 - I R_i ⇒ R_i \to 0$ \\
 Stromquelle: $R_i \to ∞$
 \section{Magnetostatik}
 $H$: magnetische Erregung \\
@@ -343,21 +354,27 @@ Lorentzkraft: $\v F = q(\v E + \v v × \v B)$ \\
 Leiter: $\displayed{B = \frac{μ_0 I}{2 π r}}$ \\
 $\v F = I (\v l × \v B)$ \\
 Zyklotronfrequenz: $ω = \frac{q}{w} B$ \\
-Leiterschleife: Magnetisches Moment: $\v μ = I \v A = I A \v n$ \\
+Leiterschleife: Magnetisches Moment: \\
+$\v μ = I \v A = I A \v n$ \\
 Drehmoment auf einen magnetischen Dipol: $\v M = \v μ × \v B$ \\
-Hallspannung: $U_H = \frac{1}{nq} \frac{I}{d} B = R_H \frac{I}{d} B$ \\
+Hallspannung: \\
+$U_H = \frac{I B}{nqd} = R_H \frac{I B}{d} $ \\
 Leiter vekoriell: $\displayed{\v B(\v r) = \frac{μ_0 I}{2 π r}(\hat l × \hat r)}$ \\
 Quellfreiheit: $∮_A \v B \d \v A = 0$ \\
-Ampersches Durchflutungsgesetz: $∮ \v B \d \v s = μ_0 \sum_k I_k = μ_0 I_{\text{innen}}$ \\
+Ampersches Durchflutungsgesetz: \\
+$∮ \v B \d \v s = μ_0 \sum_k I_k = μ_0 I_{\text{innen}}$ \\
 Spule: $B = μ_0 n I$ \\
 Biot-Savart-Gesetz: \\
 $\displayed{\v B(\v r) = \frac{μ_0}{4π} ∫ \frac{\v j(\v r') × (\v r - \v r')}{\abs{\v r - \v r'}^3} \d V'}$ \\
 $\displayed{\v B(\v r) = \frac{μ_0 I}{4 π} ∫ \frac{\d \v s' × (\v r - \v r ')}{\abs{\v r - \v r'}^3}}$ \\
-Z-Feld einer Stromschleife: $\displayed{B_z = \frac{μ_0 I}{4π} \frac{2π R^2}{(z^2 + R^2)^{3/2}}}$ \\
-Leiterschleife ($r \gg R$): $\displayed{\v B(\v r) = \frac{μ_0}{4π}(3 \frac{\v μ · \v r}{r^5} \v r - \frac{1}{r^5} \v μ)}$ \\
+Z-Feld einer Leiterschleife: \\
+$\displayed{B_z = \frac{μ_0 I}{4π} \frac{2π R^2}{(z^2 + R^2)^{3/2}}}$ \\
+Leiterschleife ($r \gg R$): \\
+$\displayed{\v B(\v r) = \frac{μ_0}{4π}(3 \frac{\v μ · \v r}{r^5} \v r - \frac{1}{r^5} \v μ)}$ \\
 Magnetisierung: $\v M = \frac{1}{V} \sum_i \v μ_i$ \\
-Magnetfeld aufgrund der Magnetisierung $M$: $\v B_{mag} = μ_0 \frac{I_m}{l} \hat n = μ_0 \v M$ \\
-$\v  b = \v B_0 + \v B_{mag} = \v B_0 + μ_0 \v M$ \\
+Magnetfeld aufgrund der Magnetisierung $M$: \\
+$\v B_{mag} = μ_0 \frac{I_m}{l} \hat n = μ_0 \v M$ \\
+$\v B = \v B_0 + \v B_{mag} = \v B_0 + μ_0 \v M$ \\
 Magnetische Erregung: $\v H := \frac{1}{μ_0} \v B - \v M$ \\
 $\v B = μ_0(\v H + \v M)$ \\
 $∮ \v H \d \v s = I_{\text{frei}}$ \\
@@ -373,8 +390,246 @@ Sättigungsmagnetisierung: $\v M_s$ \\
 Curie-Gesetz: $\displayed{\v M = \frac{1}{3} \frac{μ B_{ext}}{k_B T} \v M_s \sim \frac{1}{T}}$ \\
 Grenzflächen mit unterschiedlichen $μ$: \\
 \[\begin{array}{ll}H_{\parallel}^{(1)} = H_{\parallel}^{2} & \frac{B^{(1)}_{\parallel}}{μ_1} = \frac{B^{(2)}_{\parallel}}{μ_2} \\ B_{\perp}^{(1)} = B_{\perp}^{2} & μ_1 H^{(1)}_{\perp} = μ_2 H^{(2)}_{\perp} \end{array}\]
+\section{Induktion}
+Farardaysches Induktionsgesetz: \\
+$\displayed{U_{ind} = ∮ \v E_{ind} \d \v s = - \dot ϕ_m}$ \\
+Leiterschleife: $U_{ind} = v B l$ \\
+Induktionsgesetz: $\displayed{∮ \v E \d \v s = - \dd{}{t} ∫ \v B \d \v A}$ \\
+Lenzsche Regel: Induktion wirkt der Ursache stets entgegen. \\
+Rotierende Leiterschleife: \\
+$\displayed{ϕ_m = ∫ \v B \d \v A = B A \cos{ω t}}$ \\
+$U_{ind} = - \dot ϕ_m(t) = ω B A \sin{ω t}$ \\
+Induktivität $L$: $ϕ_m = L · I$ \\
+Induktivitäten: \\
+Spule: $L = μ μ_0 \frac{N^2}{l} A$ \\
+Drahtschleife: $L = μ_0 R \ln \frac{R}{r}$ \\
+Doppelleitung: $L = \frac{μ_0 l}{π} \ln \frac{a}{r}$ \\
+Koaxialkabel: $L = \frac{μ_0 l}{2 π} \ln \frac{r_a}{r_i}$ \\
+Selbstinduktion: $U_{ind} = - ϕ_m = - L \dot I$ \\
+Ampere-Maxwell-Gesetz: \\
+$\displayed{∮ \v B \d \v s = μ_0 ∫ \v j \d \v A + μ_0 ε_0 ∫ \pp{\v E}{t} \d \v A}$ \\
+In Materie: $\displayed{∮ \v H \d \v s = μ_0 ∫ \v j \d \v A + μ_0 ε_0 ∫ \pp{\v D}{t} \d \v A}$
+\section{Schaltungen}
+\subsection{Gleichstrom}
+LR-Glied: \\
+Einschalten: $\displayed{I(t) = \frac{U_0}{R}(1 - e^{-\frac{tR}{L}})}$ \\
+Auschalten: $\displayed{I(t) = \frac{U_0}{R} e^{-\frac{tR}{L}}}$ \\
+RC-Glied: \\
+Einschalten: $\displayed{I(t) = \frac{U_0}{R} e^{-\frac{t}{RC}}}$ \\
+Ausschalten: $\displayed{I(t) = -\frac{U_0}{R} e^{-\frac{t}{RC}}}$ \\
+\subsection{Wechselstrom}
+Wirkleistung: \\
+$P = U_{\text{eff}} I_{\text{eff}} = \frac{1}{2} U_0 = \frac{1}{T} ∫_0^T P(t) \d t$ \\
+Blindleistung: $Q$ \\
+Scheinleistung: $S^2 = P^2 + Q^2$ \\
+Induktiver Widerstand: \\
+$U(t) = U_0 \cos ω t$ \\
+$I(t) = I_0 \cos(ω t - \frac{π}{2})$ \\
+$I_0 = \frac{U_0}{ω L}$ \\
+Kapazitiver Widerstand: \\
+$U(t) = U_0 \cos ω t$ \\
+$I(t) = I_0 \cos(ω t + \frac{π}{2})$ \\
+$I_0 = ω C U_0$ \\
+Ohmscher Widerstand: $Z_R = R, φ = \SI{0}{\degree}$ \\
+Induktiver Widerstand: $Z_L = ω L, φ = \SI{-90}{\degree}$ \\
+Kapazitiver Widerstand: $Z_C = \frac{1}{ω C}, φ = \SI{90}{\degree}$
+\subsection{Komplexe Darstellung}
+$U(t) = U_0 e^{i ω t}$ \\
+$I(t) = I_0 e^{i( ω t + φ)} = I_0 e^{i φ} e^{i ω t}$ \\
+Ohmscher Widerstand: \\
+$U(t) = U_0 e^{i ω t}$ \\
+$I(t) = \frac{U_0}{R} e^{i ω t} = \hat I e^{i ω t}$ \\
+Induktiver Widerstand: \\
+$U(t) = U_0 e^{i ω t}$ \\
+$I(t) = \frac{U_0}{i ω L} e^{i ω t} = \hat I e^{i ω t}$ \\
+Kapazitiver Widerstand: \\
+$U(t) = U_0 e^{i ω t}$ \\
+$I(t) = i ω C U_0 e^{i ω t} = \hat I e^{i ω t}$ \\
+Impedanzen: \\
+$\hat Z_R = R$ \\
+$\hat Z_L = i ω L = ω L e^{i \frac{π}{2}}$ \\
+$\hat Z_C = \frac{1}{i ω C} = \frac{1}{ω C} e^{- i \frac{π}{2}}$ \\
+Ohmsches Gesetz: $\hat U = \hat Z · \hat I$ \\
+RC-Serienschaltung: \\
+$I(t) = I_0 e^{i ω t}$ \\
+$U(t) = \hat Z I_0 e^{i ω t}$ \\
+$\hat Z = (R + \frac{1}{i ω C})$ \\
+RC-Parallelschaltung: \\
+$U(t) = U_0 e^{i ω t}$ \\
+$I(t) = U_0 \frac{1}{\hat Z} e^{i ω t}$ \\
+$\frac{1}{\hat Z} = \frac{1}{R} + i ω C$ \\
+Erweiterte Kirchhoffsche Regeln: \\
+Knotenregel: $\sum \hat I = 0$ \\
+Maschenregel: $\sum \hat U = 0$ \\
+Reihenschaltung: $\hat Z = \sum \hat Z_i$ \\
+Parallelschaltung: $\hat Z^{-1} = \sum \hat Z_i^{-1}$ \\
+RLC-Schwingkreis ohne Stromquelle: \\
+$\displayed{I(t) = C_1 e^{- γ t} e^{i ω_R t} + C_2 e^{-γt} e^{-i  ω_R t}}$ \\
+$ω_R = (ω_0^2 - γ^2), ω_0^2 = \frac{1}{LC}, γ = \frac{R}{2L}$ \\
+$γ < ω_0$: Schwingfall \\
+$γ > ω_0$: Kriechfall \\
+$γ = ω_0$: aperiodischer Grenzfall \\
+Mit Stromquelle: \\
+$\displayed{I(t) = U_0 \frac{1}{\hat Z} e^{i ω t} = e^{i ω t}·}$ \\
+$\displayed{(\frac{U_0 R}{R^2 + (ω L - \frac{1}{ωC})^2} - i \frac{U_0(ω L - \frac{1}{ω C})}{R^2 + (ω L - \frac{1}{ω C})^2})}$ \\
+Unbelasteter (verlustfreier) Transformator: \\
+$\displayed{U_2 = \frac{N_2}{N_1} U_1}$ \\
+$\displayed{I_2 = \frac{N_1}{N_2} I_1}$ \\
+Elektrische Leistung im RC-Glied / elektrische Feldenergie: $W_{\text{el}} = \frac{1}{2} C U(t)^2$ \\
+Elektrische Leistung im LR-Glied / magnetische Feldenergie: $W_{\text{el}} = \frac{1}{2} L I(t)^2$ \\
+Energiedichte des elektrischen Feldes: \\
+$ω_{\text{el}} = \frac{1}{2} ε ε_0 E^2 = \frac{1}{2} E D$ \\
+Energiedichte des magnetischen Feldes: \\
+$ω_{\text{m}} = \frac{1}{2} μ μ_0 H^2 = \frac{1}{2} B H$ \\
+Allgemein: $ ω_{\text{elektromag}} = \frac{1}{2}(\v E · \v E + \v B · \v H)$
+\section{Elektromagnetische  Wellen}
+Transversale Wellen \\
+$\to$ Ausbreitung senkrecht zur Schwingungsrichtung \\
+Longitudianle Wellen \\
+$\to$ Ausbreitung entlang der Schwhingungsrichtung \\
+Harmonische Ebene Welle: \\
+$y(x, t) = A \sin(k x \pm ω t)$ \\
+$y(\v x, t) = A \sin(\v k \v x \pm ω t)$ \\
+Wellenzahl: $k = \frac{2π}{λ}$ \\
+Wellenlänge: $λ = \frac{2π}{k}$ \\
+Phasengeschwindigkeit: $v_{ph} = \frac{ω}{k}$ \\
+Amplitude $A$ \\
+Winkelgeschwindigkeit: $ω = 2 π v = \frac{2 π}{T}$ \\
+Fourier-Reihe: \\
+$\displayed{f(t) = f(t + T)}$ \\
+$\displayed{\to f(t) = \frac{a_0}{2} + \sum_{n = 1}^{∞} a_n \cos(n ω t) + b_n \sin(n ω t)}$ \\
+$\displayed{a_i = \frac{2}{T} ∫_{-T/2}^{T/2} f(t) \cos(i ω t) \d t}$ \\
+$\displayed{b_i = \frac{2}{T} ∫_{-T/2}^{T/2} f(t) \sin(i ω t) \d t}$ \\
+Fourier-Integral: \\
+$\displayed{f(t) = \frac{1}{π} ∫_0^∞(a(ω) \cos(ω t) + b(ω) \sin(ω t)) \d ω}$ \\
+$\displayed{a(ω) = ∫_{-∞}^∞ f(t) \cos(ω t) \d t}$ \\
+$\displayed{b(ω) = -∫_{-∞}^∞ f(t) \sin(ω t) \d t}$ \\
+Klassische Wellengleichung: \\
+$\displayed{\frac{\partial^2 ψ}{\partial t^2} = v^2 \frac{\partial^2 ψ}{\partial x^2}}$ \\
+$\displayed{\frac{\partial^2 ψ}{\partial t^2} = v^2 Δ ψ}$ \\
+Wellenpaket: \\
+$\displayed{ψ(x, t) = \frac{1}{\sqrt{2π}} ∫_{-∞}^{+∞} A(k) e^{i(k x - ω t)} \d k}$ \\
+$\displayed{A(k) = \frac{1}{\sqrt{2π}} ∫_{-∞}^{+∞} ψ(x, 0) e^{-i(kx)}} \d x$ \\
+Phasengeschwindigkeit: $v_{ph} = \frac{ω}{k}$ \\
+Dispersionsrelation: \\
+$\displayed{ω = ω(k) = ω(k_0) + \dd{ω}{k}|_{k_0} (k - k_0) + \dots}$ \\
+Gruppengeschwindigkeit: $v_{\text{gr}} = \dd{ω}{k}$ \\
+Elektromagnetische Wellengleichungen:
+\[\begin{array}{cc}
+    \frac{\partial^2 \v E}{\partial t^2} = \frac{1}{ε_0 μ_0} Δ \v E & \frac{\partial^2 \v E}{\partial t^2} = \frac{1}{ε μ ε_0 μ_0} Δ \v E \\
+    \frac{\partial^2 \v B}{\partial t^2} = \frac{1}{ε_0 μ_0} Δ \v B & \frac{\partial^2 \v B}{\partial t^2} = \frac{1}{ε μ ε_0 μ_0} Δ \v B
+  \end{array}\]
+Linear polarisierte, ebene Wellen:
+$\v E(\v x, t) = \hat e_y E_0 \sin(k x - ω t)$ \\
+$\v B(\v x, t) = \hat e_z \frac{E_0}{c} \sin(k x - ω t)$ \\
+$\v E \perp \v B, \v E, \v B \perp \v k$ \\
+$\v E, \v B$ in Phase \\
+$\abs{\v B} = \frac{\abs{\v E}}{c}$ \\
+$\v B = \frac{1}{ω}(\v k × \v E)$ \\
+$c = \frac{ω}{k}$ \\
+Zirkular polarisierte, ebene Wellen: \\
+$E_{0,x} = E_{0, y}; φ = \SI{90}{\degree}$ \\
+Elliptisch polarisierte, ebene Wellen: \\
+$E_{0, x} \neq E_{0, y}; φ = \SI{90}{\degree}$ \\
+Kugelwellen: $\v E = \frac{\v E_0}{r} \sin(\v k \v r - ω t), \v B = \frac{\v B_0}{r} \sin(\v k \v r - ω t), \v k \parallel \v r$ \\
+Poynting-Vektor: $\v S = \frac{1}{μ_0}(\v E × \v B) = \v E × \v H$ \\
+Hertzer Dipol: \\
+Eigenfrequenz: $\frac{1}{\sqrt{L C}}$ \\
+Nahfeld: $E \sim \frac{1}{r^3}, B \sim \frac{1}{r^2}, φ = \SI{90}{\degree}$ \\
+Fernfeld: $E \sim \frac{1}{r}, B \sim \frac{1}{r}, \v E \perp \v B \perp \v k$ \\
+Drahtwelle: \\
+$I_0(z) = I_0 \cos(\frac{π x}{e})$ \\
+$U_0(z) = I_0 \sin(\frac{π x}{e})$ \\
+Strahlungsgleichung: \\
+$\displayed{S(r, v) = \frac{p_0^2 ω^4 \sin^2 θ}{16 π^2 e_0 c^3 r^2} \sin^2(ω t - k r)}$ \\
+$λ = c / ν$
+\section{Optik}
+Phasengeschwindigkeit: \\
+$\displayed{c = \frac{1}{\sqrt{ε_0 μ_0}}, c' = \frac{1}{\sqrt{ε μ ε_0 μ_0}}}$ \\
+Amplitude: $E = c B$ \\
+Energiefluss: $\v S = \frac{1}{μ_0}(\v E × \v B)$ \\
+Intensität: $I = \abs{\v S} = ε_0 c E^2$ \\
+Spalt, Nullstellen: $a \sin θ = m λ, m ∈ ℕ$ \\
+Intensitätsverteilung für Beugung am Einzelspalt: \\
+$\displayed{I = I_0 (\frac{\sin(\frac{π a}{λ} \sin θ)}{\frac{π a}{λ} \sin θ})^2}$ \\
+Doppelspalt mit unendlich dünne Spaltbreite: \\
+Interferenzmaxima: $d \sin θ = m λ, m ∈ ℕ_0$ \\
+Interferenzminima: $d \sin θ = (m + \frac{1}{2}) λ, m ∈ ℕ_0$ \\
+Intensitätsverteilung: $I = 4 I_0 \cos^2 \frac{1}{2} δ$ \\
+$δ = \frac{2π}{λ} d \sin θ$ \\
+Doppelspalt mit Spaltbreite $a$: \\
+$\displayed{I = 4 I_0 (\frac{\sin \frac{1}{2} ϕ}{\frac{1}{2} ϕ})^2 \cos^2 \frac{1}{2} δ}$ \\
+$\displayed{ϕ = \frac{2 π}{λ} a \sin θ}$ \\
+Fraunhofer-Beugung: \\
+$\displayed{E(θ, t) \sim e^{i ω t} ∫ A(x) e^{i K x} \d x, K = k \sin θ}$ \\
+Mehrfachspalt: \\
+$\displayed{I(θ) \sim (\frac{\sin(M k \frac{d}{2})}{\sin(k \frac{d}{2})})^2 (\frac{\sin(k \frac{a}{2})}{k \frac{a}{2}})^2}$ \\
+Hauptmaxima: $\sin ϕ_n = n \frac{λ}{d}, m ∈ ℕ_0$ \\
+Auflösungsvermögen: $\frac{λ}{Δ λ} \leq n m$ \\
+Anzahl Spalte: $m$ \\
+Ordnung: $n$ \\
+Gesetz von Snellius: $n_1 \sin θ_1 = n_2 \sin θ_2$ \\
+Kritischer Winkel: $\sin θ_k = \frac{n_1}{n_2}$ \\
+Gesetz von Malus: $I = I_0 \cos^2 θ$ \\
+Fresnelsche Formeln: \\
+$\displayed{R_{\perp}(α, β) = (\frac{\sin(α - β)}{\sin(α + β)})^2}$ \\
+$\displayed{R_{\parallel}(α, β) = (\frac{\tan(α - β)}{\tan(α + β)})^2}$ \\
+$\displayed{T_{\perp}(α, β) = (\frac{2 \sin β \cos α}{\sin(α + β)})^2}$ \\
+$\displayed{T_{\parallel}(α, β) = (\frac{2 \sin β \cos α}{\sin(α + β)})^2}$ \\
+Gesetz von Brewster: $\tan θ_{Br} = \frac{n_2}{n_1}$ \\
+Reflexionskoeffizient bei senkrechten Einfall: \\
+$\displayed{R_{\parallel} = R_{\perp} = (\frac{n_2 - n_1}{n_2 + n_1})^2}$ \\
+Linsengleichung: $\frac{1}{g} + \frac{1}{b} = \frac{1}{f}$ \\
+Brennweite: $\displayed{f = \frac{r_1 r_2}{(n - 1)(r_1 + r_2)}}$ \\
+$\frac{B}{G} = \frac{b}{g}$ \\
+Parallelstrahl $\to$ Brennstrahl \\
+Zentralstrahl $\to$ Zentralstrahl \\
+Brennstrahl $\to$ Parallelstrahl
 \section{Werte}
 $ε_0 = \SI{8.85416e-12}{\coulomb\squared\per{\newton\meter\squared}}$ \\
-$μ_0 = π · \SI{4 e-7}{\volt\second\per{\ampere\meter}}$
+$μ_0 = \SI{1.2566e-6}{\volt\second\per{\ampere\meter}}$ \\
+$h = \SI{6.626e-34}{\joule\second}$ \\
+$e = \SI{1.602}{\coulomb}$
+\section{Extras}
+$μ_0 ε_0 = \frac{1}{c^2}$ \\
+$\hat Z = \abs{\hat Z} · e^{i φ}$
+$\abs{\hat Z} = \sqrt{(\Re \hat Z)^2 + (\Im \hat Z)^2}$ \\
+$φ = \arctan{\frac{\Im \hat Z}{\Re \hat Z}}$
+Maxwell-Gleichungen: \\
+$\displayed{\v ∇ · \v E = \frac{ρ}{ε_0}}$ \\
+$\displayed{\v ∇ · \v B = 0}$ \\
+$\displayed{\v ∇ × \v E = - \pp{\v B}{t}}$ \\
+$\displayed{\v ∇ × \v B = μ_0 \v j + μ_0 ε_0 \pp{\v E}{t}}$ \\
+Makroskopische: \\
+$\displayed{\v ∇ · \v D = ρ_{\text{frei}}}$ \\
+$\displayed{\v ∇ · \v B = 0}$ \\
+$\displayed{\v ∇ × \v E = - \pp{\v B}{t}}$ \\
+$\displayed{\v ∇ × \v H = \v j + \pp{\v D}{t}}$ \\
+$ρ_{frei} = ρ - ρ_{pol} = ρ + \div \v P$ \\
+Integrale Form: \\
+$\displayed{∮_{\partial V} \v D \d \v A = ∫_V ρ \d V = Q(V)}$ \\
+$\displayed{∮_{\partial V} \v B \d \v A = 0}$ \\
+$\displayed{U_{\text{ind}} = ∮_{\partial A} \v E \d \v s = - ∫_A \pp{\v B}{t} \d \v A}$ \\
+$\displayed{∮_{\partial A} \v H \d \v s = ∫_A \v j \d \v A + ∫_A \pp{\v D}{t} \d \v A}$ \\
+Tiefpass: \\
+$\hat U_e = \hat U_R + \hat U_C, \hat U_C = \hat U_a, \hat I_R = \hat I_C = \hat I_0$ \\
+$\to \hat U_e = \hat Z_R \hat I_0 + \hat Z_C \hat I_0$ \\
+$\to \hat I_0 = \frac{\hat U_e}{\hat Z_R + \hat Z_C}$ \\
+$\to \hat U_C = \hat U_a = \hat U_e \frac{\hat Z_C}{\hat Z_R + \hat Z_C}$ \\
+Ringspule mit Lücke: \\
+$μ_1 H_{\perp}^{(1)} = μ_2 H_{\perp}^{(2)} \to μ_{\text{Fe}} H_{\text{Fe}} = H_{\text{Luft}}$ \\
+$∮ \v H \d \v s = I_i = N I$ \\
+$∮ \v H \d \v s = ∫_{\text{Luft}} H_{\text{Luft}} \d \v s + ∫_{\text{Fe}} H_{\text{Fe}} \d \v s$ \\
+$∮ \v H \d \v s = ∫_{\text{Luft}} H_{\text{Luft}} \d \v s + ∫_{\text{Fe}} \frac{H_{\text{Luft}}}{μ_{\text{Fe}}} \d \v s$ \\
+$N I = H_{\text{Luft}} d + \frac{H_{\text{Luft}}}{μ_{\text{Fe}}}(2 π R - d)$ \\
+$\displayed{\to H_{\text{Luft}} = \frac{μ_{\text{Fe}} N I}{2 π R + (μ_{\text{Fe}} - 1) d}}$ \\
+$B_{\text{Luft}} = μ_0 H_{\text{Luft}} = B_{\text{Fe}}$ \\
+Ring mit Paramagnet: \\
+$B_{\text{Fe}} = μ_0 μ_{\text{Fe}} H_{\text{Fe}} = B_{\text{Para}}$ \\
+$H_{\text{Para}} = \frac{B_{\text{Para}}}{μ_0} - M$
+$∮ \v H \d \v s = 0 = ∫_{\text{Fe}} H_{\text{Fe}} \d \v s + ∫_{\text{Para}} H_{\text{Para}} \d \v s$ \\
+$0 = H_{\text{Fe}}(2 π R - d) + (\frac{B_{\text{Para}}}{μ_0} - M) d$ \\
+$0 = H_{\text{Fe}}(2 π R - d) + (μ_{\text{Fe}} H_{\text{Fe}} - M) d$ \\
+$\displayed{\to H_{\text{Fe}} = \frac{d M}{2 π R + (μ_{\text{Fe}} - 1) d}}$
 \end{multicols*}
 \end{document}

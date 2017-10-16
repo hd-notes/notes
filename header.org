@@ -154,6 +154,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\kgV}{kgV}
 #+LATEX_HEADER: \DeclareMathOperator{\coker}{coker}
 #+LATEX_HEADER: \DeclareMathOperator{\argmax}{argmax}
+#+LATEX_HEADER: \DeclareMathOperator{\cc}{c.c.}
 
 
 #+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}
