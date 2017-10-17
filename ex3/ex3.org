@@ -24,14 +24,152 @@
    1. Fall: Quelle von nicht weiter zerteilbaren Teilchen mit zufälliger Richtung. Es werden die Anzahl der Teilchen auf einem Raster $x$ mit Gitterkonstante $Δx$ gemessen.
 	  Dann werden in der Mitte die meißten Teilchen ankommen. Die diskrete Verteilung kann mit einer kontinuierlichen Wahrscheinlichkeitsverteilung beschrieben werden. Die
 	  wichtigen Größen sind hier die Position der maximalen Wahrscheinlichkeit und die Breite (FWHM - full width half maximum)
+	  #+begin_export latex
+      \catcode`(=12
+      \catcode`)=12
+      \begin{center}
+      \newcommand\gauss[2]{1/(#2*sqrt(2*pi))*exp(-((\x-#1)^2)/(2*#2^2))}
+      \begin{tikzpicture}[
+            source/.style={draw=black,fill=black!10},
+            ray/.style={>=latex,draw=black,fill=blue},
+            axis/.style={black,font=\small},
+            bin/.style={black,font=\small},
+        ]
+      \draw[source] (0,0) coordinate (base)
+                           -- (0,-1) -- (-1,-1) coordinate[pos=0.5] (mid)
+                           -- (-1, 0)
+                           -- (base) -- cycle;
+      \foreach \x in {-10,...,10}
+          \draw[ray,->] ({0.03*\x - 0.5},-1) -- ++({2*sin(4*\x)},{-2*cos(4*\x)});
+      \begin{scope}[shift={(0,-2)}]
+      \draw[axis,->] (-5,-5) -- (4,-5) node[right] {Ort $x$};
+      \foreach \x in {-9,...,7}
+          \draw[bin] ({0.5*\x},-5) -- ++(0,1.5);
+      \foreach \count/\x\ in {2/0, 1/2, 2/3, 2/4, 3/5, 4/6, 7/7, 8/8, 6/9, 6/10, 5/11, 3/12, 2/14, 1/15}
+          \foreach \y in {1,...,\count}
+              \filldraw (0.5*\x - 4.25, 0.2*\y - 5.1) circle (2pt);
+      \node[font=\scriptsize] at (-4.5,-5.2) {$x$};
+      \node[font=\scriptsize] at (-4,-5.2) {$x\!\!+\!\!Δx$};
+      \draw[domain=-4.5:4.5,smooth,variable=\x,red,shift={(-.5,-5)}] plot ({\x},{1.5*exp(-0.5*\x*\x)});
+      \draw[axis,->,red, font=\tiny] (3.75, -5) -- ++(0,2) node[midway, above, rotate=-90] {Wahrscheinlichkeit};
+      \node[font=\scriptsize,font=\tiny, red] at (-1,-3.4) {$P_1(x)$};
+      \draw[axis,->,red] (-2.25,-4.08) -- (-1.5, -4.08) node[font=\tiny, above, midway, yshift=-2pt] {FWHM};
+      \draw[axis,->,red] (1.25,-4.08) -- (0.5, -4.08);
+      \end{scope}
+      \end{tikzpicture}
+      \end{center}
+      \catcode`(=\active
+      \catcode`)=\active
+	  #+end_export
    2. Fall: 2 Quellen (mittels Doppelspalt der Breite $d$, $d \ll \text{FWHM}$)
+	  #+begin_export latex
+      \catcode`(=12
+      \catcode`)=12
+      \begin{center}
+      \newcommand\gauss[2]{1/(#2*sqrt(2*pi))*exp(-((\x-#1)^2)/(2*#2^2))}
+      \begin{tikzpicture}[
+            source/.style={draw=black,fill=black!10},
+            ray/.style={>=latex,draw=black,fill=blue},
+            axis/.style={black,font=\small},
+            bin/.style={black,font=\small},
+        ]
+      \draw[source] (0,0) coordinate (base)
+                           -- (0,-1) -- (-1,-1) coordinate[pos=0.5] (mid)
+                           -- (-1, 0)
+                           -- (base) -- cycle;
+      \foreach \x in {-10,...,10}
+          \draw[ray,->] ({0.03*\x - 0.5},-1) -- ++({2*sin(4*\x)},{-2*cos(4*\x)});
+
+      \draw[source,green,fill=green!10] (-4,-3.8) -- (-4,-4) -- (-1.5, -4) -- (-1.5,-3.8) -- cycle;
+      \draw[source,green,fill=green!10] (3,-3.8) -- (3,-4) -- (0.5, -4) -- (0.5,-3.8) -- cycle;
+      \draw[source,green,fill=green!10] (-1,-3.8) -- (-1,-4) -- (0, -4) -- (0,-3.8) -- cycle;
+      \draw[<->,green] (-1.25, -3.5) -- (0.25, -3.5) node[midway, above,font=\tiny] {$d$};
+      \node[green] at (4, -3.5) {$d \ll\text{FWHM}$};
+
+      \foreach \x in {-3,...,3}
+          \draw[ray,->,green] ({0.075*\x - 1.25},-4) -- ++({2*sin(4*\x)},{-2*cos(4*\x)});
+
+      \foreach \x in {-3,...,3}
+          \draw[ray,->,green] ({0.075*\x + 0.25},-4) -- ++({2*sin(4*\x)},{-2*cos(4*\x)});
+
+      \begin{scope}[shift={(0,-4)}]
+      \draw[axis,->] (-5,-5) -- (4,-5) node[above right] {Ort $x$};
+      \foreach \x in {-9,...,7}
+          \draw[bin] ({0.5*\x},-5) -- ++(0,1.5);
+      \foreach \count/\x\ in {1/1, 2/3, 2/4, 3/5, 4/6, 6/7, 7/8, 6/9, 4/10, 5/11, 2/14, 1/15}
+          \foreach \y in {1,...,\count}
+              \filldraw[green] (0.5*\x - 4.25, 0.2*\y - 5.1) circle (2pt);
+
+      \node[font=\scriptsize] at (-4.5,-5.2) {$x$};
+      \node[font=\scriptsize] at (-4,-5.2) {$x\!\!+\!\!Δx$};
+      \draw[domain=-4.5:4.5,smooth,variable=\x,green,shift={(-1.25,-5)}] plot ({\x},{1.5*exp(-0.5*\x*\x)});
+      \draw[domain=-4.5:4.5,smooth,variable=\x,green,shift={(.25,-5)}] plot ({\x},{1.5*exp(-0.5*\x*\x)});
+      \draw[domain=-4.5:4.5,smooth,variable=\x,black,shift={(-.5,-5)}] plot ({\x},{1.5*exp(-0.5*\x*\x)});
+      \draw[axis,->,green, font=\tiny] (3.75, -5) -- ++(0,2) node[midway, above, rotate=-90] {Wahrscheinlichkeit};
+      \node[font=\scriptsize,font=\tiny, green] at (-1.45,-3.4) {$P_1$};
+      \node[font=\scriptsize,font=\tiny, green] at (.45,-3.4) {$P_2$};
+      \node[font=\scriptsize,font=\tiny, black] at (-.5,-3.3) {$(P_1 + P_2)/2$};
+      \end{scope}
+
+      \end{tikzpicture}
+      \end{center}
+      \catcode`(=\active
+      \catcode`)=\active
+	  #+end_export
    Wichtig: Diskrete Zahlen. Die theoretische Wahrscheinlichkeitsverteilung kann nur annähernd gemessen werden! Anzahl der Teilchen $\to ∞ ⇒ P_1(x)$.
 ** Ein Experiment mit klassischen Wellen
    Quelle sendet Kugelwellen aus (fixe Frequenz, fixe Amplitude), Doppelspalt. Ein Detektor misst Strom $\propto$ Intensität. Man erhält das Intensisätsmuster $I_{12}$ eines Doppelspalts.
    Bei blockieren eines der Öffnungen des Doppelspalt erhält man einen Einzelspalt und somit nurnoch das Intensitätsmuster eines Einzelspalts, mit Maximum bei dem nicht blockierten Spalt.
    Wichtig: Intensität ist kontinuierlich $I_{12}$ kann genau gemessen werden. \\
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}[
+         source/.style={draw=black,fill=black!10},
+         ray/.style={>=latex,draw=black,fill=blue},
+         axis/.style={black,font=\small},
+         bin/.style={black,font=\small},
+     ]
+   \filldraw (-.5,-.5) circle (2pt);
+   \draw (-.5,-.5) circle (7pt);
+   \draw (-.5,-.5) circle (12pt);
+   \centerarc[](-.5,-.5)(220:320:17pt);
+   \centerarc[](-.5,-.5)(220:320:22pt);
+   \centerarc[](-.5,-.5)(220:320:27pt);
 
-   Warum hat $I_{12}$ die angegebene Form
+   \draw[source,green,fill=green!10] (-4,-3.8) -- (-4,-4) -- (-1.5, -4) -- (-1.5,-3.8) -- cycle;
+   \draw[source,green,fill=green!10] (3,-3.8) -- (3,-4) -- (0.5, -4) -- (0.5,-3.8) -- cycle;
+   \draw[source,green,fill=green!10] (-1,-3.8) -- (-1,-4) -- (0, -4) -- (0,-3.8) -- cycle;
+   \draw[<->,green] (-1.25, -3.5) -- (0.25, -3.5) node[midway, above,font=\tiny] {$d$};
+
+   \foreach \x in {1,...,4}
+       \centerarc[]({-1.25},-4)(180:360:\x*7.5pt);
+   \foreach \x in {1,...,4}
+       \centerarc[]({.25},-4)(180:360:\x*7.5pt);
+
+   \draw[source,red,fill=red!10] (-.1,-4.2) -- (-.1,-4.4) -- (.6, -4.4) -- (.6,-4.2) -- cycle;
+   \node[red,font=\small,right] at (0.8, -4.3) {Blockierte Position 2};
+   %    \draw[ray,->,green] ({0.075*\x - 1.25},-4) -- ++({2*sin(4*\x)},{-2*cos(4*\x)});
+   \begin{scope}[shift={(0,-4)}]
+   \draw[axis,->] (-5,-5) -- (4,-5) node[right] {Ort $x$};
+   \draw[axis,->,green, font=\small] (3.75, -5) -- ++(0,2) node[midway, above, rotate=-90] {Intensität $I_{12}$};
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,green,shift={(-0.5,-5)}] plot ({\x},{4/sqrt(\x*\x + 4) * cos(\x/(0.0015*sqrt(\x*\x + 4)))^2});
+   \draw[domain=-4.5:4.5,smooth,variable=\x,red,shift={(-1.25,-5)}] plot ({\x},{0.65*exp(-0.5*\x*\x)});
+   \draw[source,black,fill=black!10] (-3,-4.8) -- (-3,-5) -- (-3.2, -5) -- (-3.2,-4.8) -- cycle;
+   \node[font=\small,below] at (-3, -5) {Detektor};
+   \draw[green] (-.40, -3.03) -- (-.60, -3.03);
+   \draw[dotted] (-.5, -2.5) -- (-.5, -5);
+   \node[green] at (-.40, -2.85) {1};
+   \filldraw[red] (-.50, -4.5) circle (1pt);
+   \node[red] at (-.20, -4.25) {1/4};
+   \end{scope}
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   Warum hat $I_{12}$ die angegebene Form?
    \begin{align*}
    I(x) &= c ε_0 \frac{1}{2T} ∫_{-T}^T E(x, t) \d t \\
    E(x, t) &= E_1 \cos(ω t + \v k \v R_1) + E_2 \cos(ω t + \v k \v R_2)

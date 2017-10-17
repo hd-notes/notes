@@ -202,6 +202,8 @@
 #+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER: \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
 #+LATEX_HEADER: \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
+#+LATEX_HEADER: \def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+#+LATEX_HEADER:     { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
 #+LATEX_HEADER: \def\iddots{\mathinner{\mkern1mu\raise\p@
 #+LATEX_HEADER: \vbox{\kern7\p@\hbox{.}}\mkern2mu
 #+LATEX_HEADER: \raise4\p@\hbox{.}\mkern2mu\raise7\p@\hbox{.}\mkern1mu}}
