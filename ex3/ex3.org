@@ -1,5 +1,5 @@
 #+AUTHOR: Robin Heinemann
-#+TITLE: Experimentalphysik III (M. Oberthaler)
+#+TITLE: Experimentalphysik III (Oberthaler)
 #+INCLUDE: "../header.org" :minlevel 1
 
 # 60% Punkte aus Übungaufgaben

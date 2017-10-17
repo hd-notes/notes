@@ -1,0 +1,91 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Theoretische Physik III (Schäfer)
+
+#+INCLUDE: "../header.org" :minlevel 1
+
+#+LATEX_HEADER:	\renewcommand\raggedpart\centering
+#+LATEX_HEADER:	\renewcommand\thepart{\Alph{part}}
+#+LATEX_HEADER:	\renewcommand\thesection{\thepart.\arabic{section}}
+#+LATEX_HEADER:
+#+LATEX_HEADER:	\renewcommand*{\partheadstartvskip}{%
+#+LATEX_HEADER:	\pagebreak\thispagestyle{empty}\vspace*{\fill}\begin{center}
+#+LATEX_HEADER:	}
+#+LATEX_HEADER:	\renewcommand*{\partheadmidvskip}{%
+#+LATEX_HEADER:	\par\nobreak
+#+LATEX_HEADER:	}
+#+LATEX_HEADER:	\renewcommand*{\partheadendvskip}{%
+#+LATEX_HEADER:	\end{center}\vfill\newpage
+#+LATEX_HEADER:	}
+# Klausurzulassung: 60% der Punkte der Übungsaufgaben
+# Klausur 8.2
+
+# Elektrodynamik
+# --------------
+# Einleitung
+# Inhalt:
+# Phänomenologie der Maxwell-Gleichungen
+#  Maxwell-Gleichungen, differentielle+integrale Formulierung, Ladungserhaltung, Dynamik in Materie, Potentiale
+# Potenzialtheorie
+#  Poisson-Gleichung, Punktquellen+Suerposition, Green-Theoreme, Multipol-Entwicklung
+# Dynamik des elektromagnetischen Felds
+#  elektromagnetische Wellen, Polarisation, Wellengleichung, Energie + Impulstransport, Hertz-Dipol
+# Lorentz-Geometrie + spezielle Relativitätstheorie
+#  Lorentz-Transformation, relativistische Effekte, Raumzeit-Diagramme, kovariante Formulierung der Elektrodynamik
+# relativistische Feldtheorie
+#  Axiome der Elektrodynamik, Bianchi-identität, Dualität, Variationsprinzipien
+# Bewegung von Ladungen
+#  minimale Kopplung, Variation+Bewegungsgleichungen, geometrische Interpretation der Lagrangefunktion
+
+\part{Phänomenologie der Maxwell-Gleichungen}
+* elektrisches Feld
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{center}
+  \begin{tikzpicture}
+  \node[draw, circle, left] (q1) at (0,0) {$q_1$};
+  \node[draw, circle, left] (q2) at (2,0) {$q_2$};
+  \draw[->] (-1,-2)	-- (q1) node[above left,midway] {$\v r_1$};
+  \draw[->] (-1,-2)	-- (q2) node[below,midway] {$\v r_2$};
+  \end{tikzpicture}
+  \end{center}
+  \begin{align*}
+  F &= k \frac{q_1 q_2}{\abs{\v r_1 - \v r_2}^2} \\
+  k &= \frac{1}{4 π ε_0} \\
+  ε_0 &= \SI{8654e-12}{\ampere\second\per\volt\meter} \simeq \frac{1}{4π \num{9e9}}\si{\ampere\second\per\volt\meter}
+  \end{align*}
+  im SI-System.
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  \[q \to \frac{q}{\sqrt{4πε_0}} \to k = 1, F = \frac{q_1 q_2}{\abs{\v r_1 - \v r_2}^2}\]
+  $q$ wird gemessen in $\sqrt{\si{\erg\centi\meter}} = \SI{1}{\esu}$ "elektrostatic unit".
+* elektrische Feldstärke
+  \[\v E(\v r) = \frac{\v F(\v r)}{q}\]
+  \begin{attention}
+  viele Bücher verlangen:
+  \[\v E(\v r) = \lim_{Δq \to 0} \frac{Δ\v F}{Δq}\]
+  dies ist nicht notwending $\to$ Linearität der Elektrodynamik
+  \end{attention}
+  analog: Lorentz-Kraft auf bewegte Ladungen $\to$ magnetische Felder
+* Maxwell-Gleichungen
+  $\to$ axiomatisch für die Elektrodynamik. Verbindung zwischen Ladungsdichte $ρ$, elektrischen Stromdichte $\v j$ und den Feldern $\v E, \v D, \v H$ und $\v B$.
+  In einem Inertialsystem nehmen die Maxwell-Gleichungen diese Form an:
+  1. $\Div \v D = ∇ · \v D = 4π ρ$ Gesetz von Grauß. \\
+	 elektrische Ladungen sind Quellen des elektrischen Feldes
+	 \[∫_V \d^3 r \Div \v D \overarrow[=]{Satz von Gauß} ∫_{\partial D} \d \v S \v D = \underarrow[ψ]{el. Fluss} = ∫_v \d^3 r 4 π ρ = 4 π \overarrow[q]{eingschl. Ladung}\]
+  2. $\Div \v B = ∇ \v B = 0$ \\
+	 \[∫_v \d^3 r \Div \v B = ∫_{\partial V} \d \v S \v B = ϕ = 0\]
+  3. $\rot \v E = ∇ × \v E = \underarrow[-]{Lenz.-Regel.} \partial_{ct} \v B$ Faraday-Induktionsgesetz. \\
+	 \[\partial_{ct} = \pp{}{(ct)} = \frac{1}{c} \pp{}{t}\]
+	 \[∫_S \d \v S · \rot \v E = \underbrace{∫_{\partial S} \d \v r \v E}_{U} = -\dd{}{(ct)} \underbrace{∫_s \d \v S · \v B}_{ϕ}\]
+  4. $\rot \v B = ∇ × \v B = \partial_{ct} \v E + \frac{4π}{c} \v j$ \\
+	 \[∫_s \d \v S \rot \v B = ∫_{\partial S} \d \v r \v B = \frac{d}{(ct)} \underbrace{∫_S \d \v S \v E}_{ψ} + \frac{4π}{c} \underbrace{∫_S \d \v S \v j}_{I}\]
+  im Vakuum: $ρ = 0, \v j = 0$: $ε = 1 = μ \to \v D = \v E, \v H = \v B$.
+  \begin{align*}
+  \Div \v E &= 0 \\
+  \Div \v B &= 0 \\
+  \rot \v E &= -\partial_{ct} \v B \\
+  \rot \v B &= -\partial_{ct} \v E \\
+  \end{align*}
+  Wenn man $\v E \to \v B, \v B \to -\v E$ vertauscht, dann ändern sich die Gleichungen nicht $\to$ *elektromagnetische Dualität*.

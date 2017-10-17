@@ -1,5 +1,5 @@
 #+AUTHOR: Robin Heinemann
-#+TITLE: Experimentalphysik II (H.-C. Schulz-Coulon)
+#+TITLE: Experimentalphysik II (Schulz-Coulon)
 #+INCLUDE: "../header.org" :minlevel 1
 #+LATEX_HEADER:	\setcounter{section}{10}
 

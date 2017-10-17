@@ -18,6 +18,7 @@
 #+LATEX_HEADER: \usepackage{textcase}
 #+LATEX_HEADER: \usepackage{scrpage2}
 #+LATEX_HEADER: \usepackage{soul}
+#+LATEX_HEADER: \usepackage[blur]{bclogo}
 #+LATEX_HEADER: \pagestyle{scrheadings}
 #+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
@@ -25,6 +26,8 @@
 #+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
 #+LATEX_HEADER: \DeclareSIUnit{\calories}{cal}
 #+LATEX_HEADER: \DeclareSIUnit{\year}{a}
+#+LATEX_HEADER: \DeclareSIUnit{\erg}{erg}
+#+LATEX_HEADER: \DeclareSIUnit{\esu}{esu}
 #+LATEX_HEADER:	\usepackage{newunicodechar}
 #+LATEX_HEADER: \newunicodechar{α}{\alpha}
 #+LATEX_HEADER: \newunicodechar{β}{\beta}
@@ -208,7 +211,10 @@
 #+LATEX_HEADER: \vbox{\kern7\p@\hbox{.}}\mkern2mu
 #+LATEX_HEADER: \raise4\p@\hbox{.}\mkern2mu\raise7\p@\hbox{.}\mkern1mu}}
 #+LATEX_HEADER: \makeatother
-
+#+LATEX_HEADER: \newcommand\dangersign[1][5ex]{%
+#+LATEX_HEADER:   \renewcommand\stacktype{L}%
+#+LATEX_HEADER:   \scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\tiny !}}{#1}%
+#+LATEX_HEADER: }
 #+LATEX_HEADER: \theoremstyle{plain}
 #+LATEX_HEADER: \theorembodyfont{\normalfont}
 #+LATEX_HEADER: \newtheorem{defn}{Definition}[section]
@@ -226,7 +232,7 @@
 #+LATEX_HEADER: \newtheorem{proof}{Beweis}
 # #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 # #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
-
+#+LATEX_HEADER: \newenvironment{attention}{\begin{bclogo}[logo=\dangersign, couleurBarre=orange, noborder=true, couleur=white]{\hspace{.2cm}Achtung}}{\end{bclogo}}
 #+LATEX_HEADER: \usetikzlibrary{arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
 
 # #+LATEX_HEADER: \makeatletter
