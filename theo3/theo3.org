@@ -71,9 +71,9 @@
 * Maxwell-Gleichungen
   $\to$ axiomatisch für die Elektrodynamik. Verbindung zwischen Ladungsdichte $ρ$, elektrischen Stromdichte $\v j$ und den Feldern $\v E, \v D, \v H$ und $\v B$.
   In einem Inertialsystem nehmen die Maxwell-Gleichungen diese Form an:
-  1. $\Div \v D = ∇ · \v D = 4π ρ$ Gesetz von Grauß. \\
+  1. $\Div \v E = ∇ · \v E = 4π ρ$ Gesetz von Grauß. \\
 	 elektrische Ladungen sind Quellen des elektrischen Feldes
-	 \[∫_V \d^3 r \Div \v D \overarrow[=]{Satz von Gauß} ∫_{\partial D} \d \v S \v D = \underarrow[ψ]{el. Fluss} = ∫_v \d^3 r 4 π ρ = 4 π \overarrow[q]{eingschl. Ladung}\]
+	 \[∫_V \d^3 r \Div \v E \overarrow[=]{Satz von Gauß} ∫_{\partial V} \d \v S \v E = \underarrow[ψ]{el. Fluss} = ∫_v \d^3 r 4 π ρ = 4 π \overarrow[q]{eingschl. Ladung}\]
   2. $\Div \v B = ∇ \v B = 0$ \\
 	 \[∫_v \d^3 r \Div \v B = ∫_{\partial V} \d \v S \v B = ϕ = 0\]
   3. $\rot \v E = ∇ × \v E = \underarrow[-]{Lenz.-Regel.} \partial_{ct} \v B$ Faraday-Induktionsgesetz. \\
@@ -81,11 +81,101 @@
 	 \[∫_S \d \v S · \rot \v E = \underbrace{∫_{\partial S} \d \v r \v E}_{U} = -\dd{}{(ct)} \underbrace{∫_s \d \v S · \v B}_{ϕ}\]
   4. $\rot \v B = ∇ × \v B = \partial_{ct} \v E + \frac{4π}{c} \v j$ \\
 	 \[∫_s \d \v S \rot \v B = ∫_{\partial S} \d \v r \v B = \frac{d}{(ct)} \underbrace{∫_S \d \v S \v E}_{ψ} + \frac{4π}{c} \underbrace{∫_S \d \v S \v j}_{I}\]
-  im Vakuum: $ρ = 0, \v j = 0$: $ε = 1 = μ \to \v D = \v E, \v H = \v B$.
+* Eigenschaften der Maxwell-Gleichungen
+  - zwei skalare und zwei vektoriell Gleichungen
+  - lineare, partielle Differenzialgleichungen erster Ordnung
+  - für vorgegebene	$ρ$ und $\v j$ lassen sich $\v E$ und $\v B$ berechnen
+  - *oder* aus einer Feldkonfiguration $\v E$ und $\v B$ lassen sich Ladungen $ρ$ und $\v j$ finden
+  - Maxwell-Gleichungen gelten in einem Inertialsystem: erst die Definitonen aus Bezugssystem bestimmt, was $ρ$ und $\v j$ ist, und damit $\v E$ und $\v B$ \\
+	darüber hinaus ist mit Wahl des Systems klar, was xvolt ist, und damit $\partial_{ct}$ und $∇$.
+  - nur eine Skala enthalten: $c \sim$ Lichtgeschwindigkeit
+  - im Vakuum: $ρ = 0, \v j = 0$: $ε = 1 = μ \to \v D = \v E, \v H = \v B$.
+  	\begin{align*}
+    \Div \v E &= 0 \\
+    \Div \v B &= 0 \\
+    \rot \v E &= -\partial_{ct} \v B \\
+    \rot \v B &= -\partial_{ct} \v E \\
+    \end{align*}
+    Wenn man $\v E \to \v B, \v B \to -\v E$ vertauscht, dann ändern sich die Gleichungen nicht $\to$ *elektromagnetische Dualität*.
+  - seltsame Asymmetrie, es gibt kein $ρ_{\text{mag}}$ oder $\v j_{\text{mag}}$
+	\begin{align*}
+	\Div \v B &= 4 π ρ_{\text{mag}} = 0 \\
+	\rot \v E &= -\partial_{ct} \v B + \underbrace{\frac{4π}{c} \v j_{\text{mag}}}_{= 0}
+    \end{align*}
+* Erhaltung der elektrischen Ladung
   \begin{align*}
-  \Div \v E &= 0 \\
-  \Div \v B &= 0 \\
-  \rot \v E &= -\partial_{ct} \v B \\
-  \rot \v B &= -\partial_{ct} \v E \\
+  \rot \v B &= \partial_{ct} \v E + \frac{4π}{c} \v j \\
+  \Div\rot \v B &= ε_{ijk} \partial_i \partial_j B_k = 0 = \partial_{ct} \underbrace{\Div \v E}_{=4πρ} + \frac{4π}{c} \Div \v j \\
+  &= \frac{4π}{c}(\partial_t ρ + \Div \v j) \\
+  ⇒ \partial_t ρ + \Div \v j &= 0 \tag{Kontinuitätsgleichung}
+  \intertext{Aus der Kontinuitätsgleichung folgt die Ladungserhaltung}
+  ∫_V \d^3 r ρ &= \frac{}{t} \underbrace{∫_V \d^3 r ρ}_{q} = -∫_V \d^3 r \Div \v j = -∫_{\partial V} \d \v S \v j
   \end{align*}
-  Wenn man $\v E \to \v B, \v B \to -\v E$ vertauscht, dann ändern sich die Gleichungen nicht $\to$ *elektromagnetische Dualität*.
+* Elektrodynamik in Materie
+  \begin{align*}
+  ε: \v D &= ε \v E \\
+  μ: \v B &= μ \v H
+  \end{align*}
+  Im Vakuum: $ε = 1, μ = 1$, in Materie: $ε \neq 1, μ \neq 1$
+  \begin{equation*}
+  \begin{aligned}
+  \Div \v E &= 4πρ \\
+  \Div \v B &= 0 \\
+  \rot \v E &= - \partial_{pt} \v B \\
+  \rot \v B &= \partial_{ct} \v E + \frac{4π}{c} \v j
+  \end{aligned}
+  \hfill
+  \begin{aligned}
+  \Div \v D &= 4πρ \\
+  \Div \v B &= 0 \\
+  \rot \v E &= - \partial_{pt} \v B \\
+  \rot \v H &= \partial_{ct} \v D + \frac{4π}{c} \v j
+  \end{aligned}
+  \end{equation*}
+* elektrisches Potenzial $\to$ Elektrostatik
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{center}
+  \begin{tikzpicture}
+  \node[draw, circle, left] (q1) at (0,0) {$q_1$};
+  \node[draw, circle, left] (q2) at (2,0) {$q_2$};
+  \draw[->] (-1,-2)	-- (q1) node[above left,midway] {$\v r_1$};
+  \draw[->] (-1,-2)	-- (q2) node[below,midway] {$\v r_2$};
+  \draw[->] (-1,-2)	-- (-.5, 2.5) node[below,midway] {$\v r$};
+  \node[right,every text node part/.style={align=center}] at (-.5, 2.5) {Beobachter \\ mit Probeladung}
+  \end{tikzpicture}
+  \end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  \begin{align*}
+  \v E(\v r) &= q_1 \frac{\v r - \v r_1}{\abs{\v r - \v r_1}^3} \\
+  \v E(\v r) &= \sum_{i} q_i \frac{\v r - \v r_i}{\abs{\v r - \v r_i}^3} \\
+  \end{align*}
+  Superposition wegen der Linearität der Maxwell-Gleichnug. \\
+  $\to$ Kontinuumslimit: ersetze $q \to ρ$
+  \begin{align*}
+  \v E(\v r) &= ∫_V \d^3 r' ρ(\v r) \frac{\v r - \v r'}{\abs{\v r - \v r'}^3} = - ∫_V \d^3 r' ρ(\v r) ∇ \frac{1}{\abs{r - r'}} \\
+  &= - ∇ \underbrace{∫_V \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}}}_{=ϕ(\v r)} \\
+  \to \Aboxed{\v E(\v r) &= -∇ ϕ(\v r)} \\
+  ϕ(\v r) &= ∫_V \d^3 r' \frac{ρ(\v q')}{\abs{\v r - \v r'}}
+  \end{align*}
+  $\rot \v E = 0$ falls $\partial_{ct} \v B = 0$. Auf der anderen Seite $\rot \v E = \rot ∇ ϕ = 0$
+  \begin{align*}
+  \Div \v E &= 4πρ \\
+  \to \Aboxed{Δ ϕ &= - 4πρ} \tag{Poisson-Gleichung}
+  \end{align*}
+  \begin{align*}
+  ϕ(\v r) &= \frac{1}{\abs{r - r'}} \\
+  \intertext{Für quelle mit $q = 1$ an der Stelle $\v r' = \v 0$:}
+  Δϕ &= Δ \frac{1}{r} = \frac{1}{r} \frac{\partial^2}{\partial r^2}(r \frac{1}{r}) = 0 \\
+  \intertext{klar, bei $\v r$ ist die Ladung nicht, sondern bei $\v 0$}
+  ∫_V \d^3 r Δϕ &= ∫_V \d^3 r ∇(∇ϕ) \underarrow[=]{Satz von Gauß} ∫_{\partial V} \d \v S ∇ ϕ \\
+  &= ∫ r^2 \d Ω \underbrace{\pp{}{r}ϕ}_{=-\frac{1}{r^2}} = -∫ \d Ω = -4π \\
+  Δ \frac{1}{\abs{\v r - \v r'}} &= -4π δ_D(\v r - \v r') \\
+  q δ_D(\v r - \v r') &= ρ(\v r) \\
+  j \d^n x δ_D(\v x) &= 1 \\
+  Δ ϕ(\v r) = Δ ∫ \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r) Δ \frac{1}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r')(-4π) δ_D(\v r - \v r') \\
+  &= -4π ρ(\v r) \tag{Poisson-Gleichung}
+  \end{align*}

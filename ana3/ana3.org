@@ -1,0 +1,101 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Analysis III (Marciniak-Czochra)
+
+#+INCLUDE: "../header.org" :minlevel 1
+#+LATEX_HEADER:	\theoremsymbol{}
+#+LATEX_HEADER: \theoremstyle{nonumberplain}
+#+LATEX_HEADER: \renewtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \theoremstyle{}
+#+LATEX_HEADER: \renewtheorem*{ex*}{Beispiel}
+
+# Klausur 20.2.18
+# Nachklausur 10.4.18
+
+# Forster: Analysis 3 (Springer 2012)
+# Elstrodt: Maß- und Integrationstheorie (Springer 2011)
+# Bauer: Maß- und Integrationstheorie (De Gruyter 2011)
+# Rudin
+# Amman
+# Hildebrandt
+
+* Grundlagen der Maß- und Integrationstheorie
+  Motivation: Erweiterung des Riemannintegrals auf einen größeren Bereich von Funktionen
+  #+ATTR_LATEX: :options [1.1 Kriterium für Riemann Integrierbarkeit]
+  #+begin_thm latex
+  Sei $f:[a,b] \to ℝ$ beschränkt. Dann ist $f$ genau dann Riemann integrierbar, falls die Menge $S$ der Unstetigkeiten von $f$ eine Nullmenge ist, im Sinne, dass es
+  für jedes für jedes $ε > 0$ eine abzählbare Familie von Intervallen $I_i$ gibt, mit
+  \begin{align*}
+  S &⊂ \bigcup_{i = 1}^∞ I_i \\
+  \sum_{i = 1}^{∞} \abs{I_i} &< ε
+  \end{align*}
+  #+end_thm
+  #+begin_remark latex
+  Insbesondere ist die Funktion
+  \[f:[0,1] \to ℝ, f(x) = \begin{cases} 1 & x ∈ ℚ \\  0 & x ∈ ℝ \setminus ℚ \end{cases}\]
+  nicht Riemann integrierbar.
+  #+end_remark
+  Das Riemann-Integral der Funktion ist definiert über eine Zerlegnug des Definitionsbereiches in kleine Intervalle.
+  Beim Lebesgue Integral wird stattdessen der Bildbereich zerlegt! Für eine nichtnegative $f: Ω \to [0, ∞], Ω ⊂ ℝ^n$
+  betrachten wir die Mengen
+  \[E_k := f^{-1}(\string(t_k, t_{k + 1}]) ⊂ ℝ^n\]
+  wobei $t_k = h k$ für ein vorgegebenens $h > 0$, und approximieren dann das Integral von $f$ durch
+  \begin{equation*}
+  \sum_{i = 1}^{∞} t_k^{(h)} μ(E_k) \leq ∫ f(x) \d x \leq \sum_{i = 1}^{∞} t_{k + 1}^{(h)} μ(E_k) \tag{$\ast$}
+  \end{equation*}
+  wobei das *Maß* $μ: \mathcal{P}(ℝ^n) \to [0, ∞]$ eine Abbildung ist, welche das Maß
+  der Menge $E = \mathcal{P}(ℝ^n)$ misst. Das Integral ergibt sich aus $(\ast)$ im Limes $h \to 0$.
+  Für das Lebesgue-Integral müssen wir ein geeignetes Maß definieren $\to$ Lebesguemaß $\mathcal{L}^n$
+  \[∫_0^1 f(x) \d \mathcal{L}^1(x) = \underbrace{\mathcal{L}^1(ℚ)}_{0} · 1 + \underbrace{\mathcal{L}^2(ℝ\setminus ℚ)}_{1} · 0 = 0\]
+  #+ATTR_LATEX: :options [Maßproblem]
+  #+begin_defn latex
+  Wir suchen eine Abbildung $μ:\mathcal{P}(ℝ^n) \to [0, ∞]$ mit den folgenden Eigenschaft
+  1. $μ(A) ⊆ μ(B) ∀ A ⊂ B$ \hfill (Monotonie)
+  2. $\displaystyle{μ(\bigcup_{i = 1}^∞ A_i) = \sum_{i = 1}^{∞}μ(A_i)}$ falls $A_i \cap A_j = \emptyset ∀ i \neq j$ \hfill (\(σ\)-Additivität)
+  3. $μ([0,1]^n) = 1$ \hfill (Normierung)
+  4. $μ(Q A + y) = μ(A)$ falls $Q ∈ O(n), y ∈ ℝ^n$ \hfill (Euklidische Invarianz)
+  Dieses Problem heißt Maßproblem. In einer etwas schwächeren Version kann man auch fordern
+  2. [@2] $\displaystyle{μ(\bigcup_{i = 1}^k A_i) = \sum_{i = 1}^{k} μ(A_i)}$
+  4. [@4] $μ(A + y) = μ(A)$ für $y ∈ ℝ^n$
+  #+end_defn
+  #+ATTR_LATEX: :options [Vitali: 1908]
+  #+begin_thm latex
+  Es gibt keine Abbildung $μ:\mathcal{P}(ℝ^n) \to [0, ∞]$ welche die Forderungen des Maßproblems erfüllt.
+  #+end_thm
+  #+begin_proof latex
+  Sei $μ: \mathcal{P}(ℝ^n) \to [0, ∞]$ eine Abbildung die die Forderungen des Maßproblems erfüllt.
+  Sei $q_i, i ∈ ℕ$ eine Abzählung von $[0, 1]^n \cap ℚ^n$. Wir definieren die Äquivalenzrelation
+  $x \sim y$ auf $E := [0, 1]^n$ durch $x \sim y ⇔ x - y ∈ ℚ$. Nach dem Auswahlaxiom gibt es eine
+  Menge $M_0 ⊂ [0,1]^n$, welche aus jeder Äquivalenzklasse genau ein Element enthält, das heißt es
+  gilt:
+  1. $∀ y ∈ [0, 1]^n ∃ x ∈ M_0: x \sim y ∈ ℚ$
+  2. Aus $x, y ∈ M_0, x - y ∈ ℚ ⇒ x = y$
+  Wir definieren $M_i = M_0 + q_i$. Aus der	Definition von $M_i$ folgt $M_i \cap M_j = \emptyset ∀ i \neq j$.
+  In der Tat falls $x ∈ M_i \cap M_j$, dann $x - q_i ∈ M_0$ und $x - q_j ∈ M_0 \xRightarrow{1.} q_i = q_j$.
+  Außerdem gilt $[0, 1]^n ⊂ \bigcup_{i = 1}^∞ M_i ⊂ [0, 2]^n$. Die erste Einbettung folgt aus 1., die zweite
+  Einbettung gilt, da $y + q_j ∈ [0, 2]^n ∀ y ∈ M_0$ und $y ∈ [0, 1]^n$ schließlich gilt
+  $μ(M_j) = μ(M_0) ∀ j ∈ ℕ$. Dies folgt aus den Forderungen 1., 3., 4. (abgeschwächte Version reicht).
+  \[⇒ 1 = μ([0, 1]^n) \leq μ(\bigcup_{j = 0}^∞ M_j) = \sum_{i = 0}^{∞}μ(M_i) = \sum_{i = 0}^{∞} μ(M_0) ⇒ μ(M_i) = μ(M_0) > 0\]
+  und
+  \[μ(\bigcup_{i = 0}^∞ M_i) = ∞\]
+  Aus 3. und 4. folgt andererseits
+  \begin{align*}
+  μ([0,2]^n) &= 2^n μ([0,1]^n) = 2^n \\
+  \xRightarrow{(\ast)} μ(\bigcup_{i = 0}^∞ M_i) &\leq μ([0,2]^n) = 2^n < ∞ \lightning
+  \end{align*}
+  #+end_proof
+  #+begin_remark latex
+  Jedes Maß, welche die Eigenschaften des Maßproblems erfüllt, kann also nicht auf der ganzen
+  $\mathcal{P}(ℝ^n)$ definiert sein, sondern auf einer Untermenge der $\mathcal{P}(ℝ^n)$.
+  #+end_remark
+  Frage: Welche ist die "größte" (eine "gute") Untermenge $\mathcal{A} ⊂ \mathcal{P}(ℝ^n)$, sodass
+  es eine Lösung des Maßproblems gibt?
+  #+ATTR_LATEX: :options [Algebra und \(σ\)-Algebra]
+  #+begin_defn latex
+  Eine Algebra $\mathcal{A}$ ist die Familie von Teilmengen einer gegebenen Menge $X$ mit
+  - $x ∈ \mathcal{A}$
+  - $A ∈ \mathcal{A} ⇒ A^C := X \setminus A ∈ \mathcal{A}$
+  - $A, B ∈ \mathcal{A} ⇒ A \cup B ∈ \mathcal{A}$
+  Falls
+  \[(A_k)_{k ∈ ℕ} ⊂ \mathcal{A} ⇒ \bigcup_{k ∈ ℕ} A ∈ \mathcal{A}\]
+  so spricht man von einer \(σ\)-Algebra.
+  #+end_defn

@@ -18,7 +18,8 @@
 #+LATEX_HEADER: \usepackage{textcase}
 #+LATEX_HEADER: \usepackage{scrpage2}
 #+LATEX_HEADER: \usepackage{soul}
-#+LATEX_HEADER: \usepackage[blur]{bclogo}
+#+LATEX_HEADER: \usepackage[tikz,blur]{bclogo}
+#+LATEX_HEADER: \usepackage[backend=bibtex]{biblatex}
 #+LATEX_HEADER: \pagestyle{scrheadings}
 #+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
@@ -91,7 +92,8 @@
 #+LATEX_HEADER: \newunicodechar{⊊}{\subsetneq}
 #+LATEX_HEADER: \newunicodechar{∪}{\cup}
 #+LATEX_HEADER: \newunicodechar{·}{\cdot}
-
+#+LATEX_HEADER:	\newcommand*\circled[2][black]{\tikz[baseline=(char.base)]{
+#+LATEX_HEADER:	            \node[shape=circle,draw,inner sep=2pt,#1] (char) {#2};}}
 #+LATEX_HEADER: \renewcommand{\sectionmark}[1]{\markright{\thesection~#1}}
 # #+LATEX_HEADER: \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}
 # #+LATEX_HEADER: \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
@@ -108,6 +110,14 @@
 #+LATEX_HEADER: \cofoot{}
 #+LATEX_HEADER: \renewcommand{\headfont}{\normalfont\sffamily}
 #+LATEX_HEADER: \renewcommand{\pnumfont}{\small\sffamily}
+#+LATEX_HEADER: \newcommand{\eye}[4]% size, x, y, rotation
+#+LATEX_HEADER: {   \draw[rotate around={#4:(#2,#3)}] (#2,#3) -- ++(-.5*55:#1) (#2,#3) -- ++(.5*55:#1);
+#+LATEX_HEADER:     \draw (#2,#3) ++(#4+55:.75*#1) arc (#4+55:#4-55:.75*#1);
+#+LATEX_HEADER:     % IRIS
+#+LATEX_HEADER:     \draw[fill=gray] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+180-55:#4+180+55:.28*#1);
+#+LATEX_HEADER:     %PUPIL, a filled arc
+#+LATEX_HEADER:     \draw[fill=black] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+55/3:#4-55/3:.75*#1);
+#+LATEX_HEADER: }
 
 #+LATEX_HEADER: \DeclarePairedDelimiter\angl{\langle}{\rangle}%
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
@@ -233,6 +243,18 @@
 # #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
 # #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
 #+LATEX_HEADER: \newenvironment{attention}{\begin{bclogo}[logo=\dangersign, couleurBarre=orange, noborder=true, couleur=white]{\hspace{.2cm}Achtung}}{\end{bclogo}}
+#+LATEX_HEADER: \newenvironment{important}{\begin{bclogo}[logo=\bcinfo, couleurBarre=green, noborder=true, couleur=white]{\hspace{.2cm}Wichtig}}{\end{bclogo}}
+#+LATEX_HEADER: \newenvironment{ibox}[1]
+#+LATEX_HEADER:   {\mdfsetup{
+#+LATEX_HEADER:     frametitle={\colorbox{white}{\space#1\space}},
+#+LATEX_HEADER:     innertopmargin=10pt,
+#+LATEX_HEADER:     frametitleaboveskip=-\ht\strutbox,
+#+LATEX_HEADER:     frametitlealignment=\center
+#+LATEX_HEADER:     }
+#+LATEX_HEADER:   \begin{mdframed}%
+#+LATEX_HEADER:   }
+#+LATEX_HEADER:   {\end{mdframed}}
+# #+LATEX_HEADER: \newenvironment{box}{}
 #+LATEX_HEADER: \usetikzlibrary{arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
 
 # #+LATEX_HEADER: \makeatletter
@@ -255,3 +277,6 @@
 # #+LATEX_HEADER: \usemintedstyle{tango}
 #+LATEX_HEADER: \usemintedstyle{friendly}
 #+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines,mathescape=true}
+#+LATEX_HEADER:	\addbibresource{../bib.bib}
+#+LATEX_HEADER:
+#+LATEX_HEADER:

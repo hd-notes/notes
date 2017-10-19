@@ -28,7 +28,6 @@
       \catcode`(=12
       \catcode`)=12
       \begin{center}
-      \newcommand\gauss[2]{1/(#2*sqrt(2*pi))*exp(-((\x-#1)^2)/(2*#2^2))}
       \begin{tikzpicture}[
             source/.style={draw=black,fill=black!10},
             ray/.style={>=latex,draw=black,fill=blue},
@@ -66,7 +65,6 @@
       \catcode`(=12
       \catcode`)=12
       \begin{center}
-      \newcommand\gauss[2]{1/(#2*sqrt(2*pi))*exp(-((\x-#1)^2)/(2*#2^2))}
       \begin{tikzpicture}[
             source/.style={draw=black,fill=black!10},
             ray/.style={>=latex,draw=black,fill=blue},
@@ -195,4 +193,292 @@
    I_{\text{MIN}} &= I_1 + I_2 = 2 \sqrt{I_1 I_2} = 0
    \end{align*}
    Intensität wird räumlich	umverteilt,	gesamt Intensistät bleibt erhalten
-   \[I_1 + I_2 \estimates \text{Energieerhaltung}\]
+   \[I_1 + I_2 = \text{Energieerhaltung}\]
+** Ein Experiment mit Elektronen/Atomen
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}[
+         source/.style={draw=black,fill=black!10},
+         ray/.style={>=latex,draw=black,fill=blue},
+         axis/.style={black,font=\small},
+         bin/.style={black,font=\small},
+     ]
+   \draw[source] (0,0) coordinate (base)
+                        -- (0,-1) -- (-0.5, -2)-- (-1,-1) coordinate[pos=0.5] (mid)
+                        -- (-1, 0)
+                        -- (base) -- cycle;
+
+   \foreach \x in {-10,...,10}
+       \draw[ray,->] ({-.5 + 0.5*sin(4*\x)},{-2*cos(4*\x)}) -- ++({sin(4*\x)},{-cos(4*\x)});
+   \node at (0.2,-1.4) {$e^-$};
+   \draw[source,black,fill=black!10] (-4,-3.8) -- (-4,-4) -- (-1.5, -4) -- (-1.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (3,-3.8) -- (3,-4) -- (0.5, -4) -- (0.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (-1,-3.8) -- (-1,-4) -- (0, -4) -- (0,-3.8) -- cycle;
+   \node at (-1.5, -3.5) {\circled{1}};
+   \node at (0.5, -3.5) {\circled{2}};
+
+   \begin{scope}[shift={(0,-3)}]
+   \draw[axis,->] (-5,-5) -- (4,-5) node[above right] {Ort $x$};
+   \foreach \x in {-9,...,7}
+       \draw[bin] ({0.5*\x},-5) -- ++(0,1.5);
+   \foreach \count/\x\ in {1/1, 3/2, 2/5, 6/6, 7/6, 6/7, 5/8, 5/9, 3/10, 2/13, 2/14}
+       \foreach \y in {1,...,\count}
+           \filldraw[black] (0.5*\x - 4.25, 0.2*\y - 5.1) circle (2pt);
+
+   \draw[axis,->,black, font=\tiny] (3.75, -5) -- ++(0,2) node[midway, above, rotate=-90] {Wahrscheinlichkeit};
+
+   \node[font=\scriptsize] at (-4.5,-5.2) {$x$};
+   \node[font=\scriptsize] at (-4,-5.2) {$x\!\!+\!\!Δx$};
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,red,shift={(-.5,-5)}] plot ({\x},{(cos(120*\x) + 1)*.7*exp(-0.1*\x*\x)});
+   \node[red] at (2.7, -4.2) {$P_{12} = ?$};
+   \end{scope}
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   Quelle: Metallspitze aus hohem negativen Potential.
+   Wieder diskrete Detektoren, Messung über Elektronenvervielfacher: durch anliegende Spannung löst
+   ein Elektron aus einer Metallplatte weitere Elektronen aus, die wieder weiter auslösen. Es entsteht
+   ein kurzer Strom-Peak, der gemessen werden kann. \\
+   Annahmen:
+   \begin{enumerate}
+   \item Das Elektron geht entweder durch Blende \circled{1}, oder Blende \circled{2}
+   \item Mit "`komplizierter"' Dynamik
+   \end{enumerate}
+
+   Einfacher Test für Annahme 2.: Blockieren einer Blende (hier \circled{2}). Man würde
+   eine Verteilung ähnlich der mit zwei Blendern erwarten.
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}[
+         source/.style={draw=black,fill=black!10},
+         ray/.style={>=latex,draw=black,fill=blue},
+         axis/.style={black,font=\small},
+         bin/.style={black,font=\small},
+     ]
+   \draw[source] (0,0) coordinate (base)
+                        -- (0,-1) -- (-0.5, -2)-- (-1,-1) coordinate[pos=0.5] (mid)
+                        -- (-1, 0)
+                        -- (base) -- cycle;
+
+   \foreach \x in {-10,...,10}
+       \draw[ray,->] ({-.5 + 0.5*sin(4*\x)},{-2*cos(4*\x)}) -- ++({sin(4*\x)},{-cos(4*\x)});
+   \node at (0.2,-1.4) {$e^-$};
+   \draw[source,black,fill=black!10] (-4,-3.8) -- (-4,-4) -- (-1.5, -4) -- (-1.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (3,-3.8) -- (3,-4) -- (0.5, -4) -- (0.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (-1,-3.8) -- (-1,-4) -- (0, -4) -- (0,-3.8) -- cycle;
+   \node at (-1.5, -3.5) {\circled{1}};
+   \node at (0.5, -3.5) {\circled{2}};
+
+   \draw[source,red,fill=red!10] (-.1,-4.2) -- (-.1,-4.4) -- (.6, -4.4) -- (.6,-4.2) -- cycle;
+   \node[red,font=\small,right] at (0.8, -4.3) {blockieren \circled{2}};
+   \begin{scope}[shift={(0,-3)}]
+   \draw[axis,->] (-5,-5) -- (4,-5) node[above right] {Ort $x$};
+   \draw[axis,->,black, font=\tiny] (3.75, -5) -- ++(0,2) node[midway, above, rotate=-90] {Wahrscheinlichkeit};
+
+   \node[font=\scriptsize] at (-4.5,-5.2) {$x$};
+   \node[font=\scriptsize] at (-4,-5.2) {$x\!\!+\!\!Δx$};
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,black,shift={(-.5,-5)}] plot ({\x},{(cos(120*\x) + 1)*.7*exp(-0.1*\x*\x)});
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,red,shift={(-.5,-5)}] plot ({\x},{.35*exp(-0.1*\x*\x)});
+   \node[red] at (-2.5, -4.5) {$P_{1}$};
+   \node[black] at (2.7, -4.2) {$P_{12}$};
+
+   \filldraw[black] (-.50, -3.60) circle (1pt);
+   \node[black] at (-.20, -3.45) {1};
+   \filldraw[red] (-.50, -4.65) circle (1pt);
+   \node[red] at (-.20, -4.35) {\(\frac{1}{4}\)};
+   \end{scope}
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   Teilchen verschwinden in den Minima bei der $P_{12}$, obwohl sie nach der Verteilung für eine Blende
+   auch dort ankommen müssten.
+   \[⇒P_{12} \neq \frac{1}{2} \{P_1 + P_2\}\]
+   Mathematische "`einfach"': Einführen der komplexen Wahrscheinlichkeitsamplitude \(ϕ\). Wahrscheinlichkeiten sind gegeben durch
+   \begin{align*}
+   P_1 &= \abs{ϕ_1}^2 \\
+   P_2 &= \abs{ϕ_2}^2 \\
+   P_{12} &= \abs{ϕ_1 + ϕ_2}^2
+   \end{align*}
+
+   \begin{important}
+   Elektronen werden einzeln gezählt. Es gibt keine "halben" Elektronen. Wahrscheinlichkeitsverteilung kann nur annähernd gemessen werden. $P_{12} \estimates$ unendlich viele Experimente.
+   \end{important}
+
+   \begin{ibox}{Welle-Teilchen Dualismus}
+   Elektronen werden nur als Einheiten detektiert, die räumliche Verteilung	kann als Interferenz von Wahrscheinlichkeits-Amplituden (komplexes $ϕ$) beschrieben werden.
+   \end{ibox}
+   Beobachtung der Elektronen an jedem Spalt.
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}[
+         source/.style={draw=black,fill=black!10},
+         ray/.style={>=latex,draw=black,fill=blue},
+         axis/.style={black,font=\small},
+         bin/.style={black,font=\small},
+     ]
+   \draw[source,black,fill=black!10] (-4,-3.8) -- (-4,-4) -- (-1.5, -4) -- (-1.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (3,-3.8) -- (3,-4) -- (0.5, -4) -- (0.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (-1,-3.8) -- (-1,-4) -- (0, -4) -- (0,-3.8) -- cycle;
+   \node at (-1.5, -3.5) {\circled{1}};
+   \node at (0.5, -3.5) {\circled{2}};
+   \draw[orange,fill=orange!10] (-.5, -4.8) circle (6pt);
+   \foreach \x in {0,...,10}
+       \draw[ray,orange,->,fill=orange!10] ({-.5 + 0.22*sin(36*\x)},{-0.22*cos(36*\x) - 4.8}) -- ++({0.5*sin(36*\x)},{-0.5*cos(36*\x)});
+   \node[orange] at (-.5, -5.6) {Lichtquelle};
+   \filldraw[black] (-1.25, -4.5) circle (1pt);
+   \draw[->,decoration={snake,pre length=3pt, post length=3pt,amplitude=5,segment length=20},decorate,orange] (-1.35, -4.5) -- (-4.5, -5);
+   \eye{.7}{-5.5}{-5}{0}
+   \node[black,every text node part/.style={align=center}] at (-5.5, -6.3) {Lichtblitz \\ durch gestreutes \\ Licht};
+
+   \begin{scope}[shift={(0,-3)}]
+   \draw[axis,->] (-5,-5) -- (4,-5) node[above right] {Ort $x$};
+   \draw[axis,->,black, font=\tiny] (3.75, -5) -- ++(0,2) node[midway, above, rotate=-90] {Wahrscheinlichkeit};
+
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,orange,shift={(-1.25,-5)}] plot ({\x},{1.5*exp(-0.3*\x*\x)});
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,orange,dashed,shift={(.25,-5)}] plot ({\x},{1.5*exp(-0.3*\x*\x)});
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,black,shift={(-.5,-5)}] plot ({\x},{1.5*exp(-0.3*\x*\x)});
+   \node[orange] at (2.3, -4.2) {$P_{2}$};
+   \node[orange] at (-3.3, -4.2) {$P_{2}$};
+   \node[font=\scriptsize,black] at (-.5,-3.3) {$(P_1 + P_2)/2$};
+   \end{scope}
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   Es entstehen Lichtblitze durch gestreutes Licht. \(P_1\): Blitz bei \circled{1}, \(P_2\): Blitz bei \circled{2}. Blitz bei \circled{1} und	\circled{2} wird nie beobachtet.
+   Dies bestätigt Annahme \circled{1}.
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}[
+         source/.style={draw=black,fill=black!10},
+         ray/.style={>=latex,draw=black,fill=blue},
+         axis/.style={black,font=\small},
+         bin/.style={black,font=\small},
+     ]
+   \draw[source,black,fill=black!10] (-4,-3.8) -- (-4,-4) -- (-1.5, -4) -- (-1.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (3,-3.8) -- (3,-4) -- (0.5, -4) -- (0.5,-3.8) -- cycle;
+   \draw[source,black,fill=black!10] (-1,-3.8) -- (-1,-4) -- (0, -4) -- (0,-3.8) -- cycle;
+   \node at (-1.5, -3.5) {\circled{1}};
+   \node at (0.5, -3.5) {\circled{2}};
+   \draw[red,fill=orange!10] (-.5, -4.8) circle (6pt);
+   \foreach \x in {0,1,2,3,7,8,9}
+       \draw[->,red,decoration={snake,pre length=3pt, post length=3pt,amplitude=5,segment length=20},decorate] ({-.5 + 0.22*sin(36*\x)},{-0.22*cos(36*\x) - 4.8}) -- ++({1.5*sin(36*\x)},{-1.5*cos(36*\x)});
+   \foreach \x in {0.5,1.5,2.5,7.5,8.5,9.5}
+       \draw[->,green,decoration={snake,pre length=3pt, post length=3pt,amplitude=5,segment length=10},decorate] ({-.5 + 0.22*sin(36*\x)},{-0.22*cos(36*\x) - 4.8}) -- ++({1.5*sin(36*\x)},{-1.5*cos(36*\x)});
+
+   \filldraw[black] (-1.25, -4.5) circle (1pt);
+   \draw[->,decoration={snake,pre length=3pt, post length=3pt,amplitude=5,segment length=20},decorate,red] (-1.35, -4.5) -- (-4.5, -5);
+   \eye{.7}{-5.5}{-5}{0}
+   \node[red] at (1.7, -4.2) {$λ \gg d$};
+   \node[green] at (1.7, -4.7) {$λ \sim d$};
+   \draw[<->,black] (-1.25, -3.5) -- (0.25, -3.5) node[midway, above] {$d$};
+   \begin{scope}[shift={(0,-4)}]
+   \draw[axis,->] (-5,-5) -- (4,-5) node[above right] {Ort $x$};
+   \draw[axis,->,black, font=\tiny] (3.75, -5) -- ++(0,2) node[midway, above, rotate=-90] {Wahrscheinlichkeit};
+
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,red,shift={(-.5,-5)}] plot ({\x},{(cos(240*\x) + 1)*.7*exp(-0.1*\x*\x)});
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,green,shift={(-.5,-5)}] plot ({\x},{(cos(240*\x) + 1)*.7*exp(-0.1*\x*\x) + .35*exp(-0.1*\x*\x)});
+   \draw[domain=-4.5:4.5,samples=500,smooth,variable=\x,green,dashed,shift={(-.5,-5)}] plot ({\x},{.35*exp(-0.1*\x*\x)});
+   \end{scope}
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   Bei $λ > d$ ist nicht mehr feststellbar, ob das Elektron durch \circled{1} oder \circled{2} kommt.
+   Bei $λ \sim d$ erhält man eine Überlagerung von $\abs{ϕ_1 + ϕ_2}$ und $\frac{1}{2}(P_1 + P_2)$
+
+   Quantenmechanik kann das beschreiben, weil das prinzipiell mögliche Wissen einer physikalischen
+** Zusammenfassung
+   Für fundierte Diskussion eines Quantenmechanischen Experiments mus definiert werden
+   1. Präpration de Anfangszustand
+   2. Wechselwirkung / Zeitlich Entwicklung
+   3. Detektion - Was wird beobachtet
+   Ein *Ereignis* ist definiert als ein spezielles Set von 1. bis 3..
+   #+begin_ex latex
+   Ein $e^-$ verlässt die Quelle kann nicht alle Orte in Raum erreichen (Blenden), $e^-$ wird
+   in einem Ortsintervall $[x, x + Δx]$ detektiert.
+   #+end_ex
+   Vorhersagen nach folgenden Regeln
+   1. Die Wahrscheinlichkeit eines Ereignisses in einem idealen Experiment ist gegeben als
+	  das Quadrat des Absolutbetrages einer im allgemeinen komplexen Wahrscheinlichkeitsamplitude \\
+	  $P\dots$ Wahrscheinlichkeit \\
+	  $ϕ\dots$ Wahrscheinlichkeits-Amplitude \\
+	  $P = \abs{ϕ}^2 = ϕ^{\ast} ϕ$
+   2. Wenn ein Ereignis in verschiedener Art und Weise stattfinden kann, dann ist
+	  die Wahrscheinlichkeits-Amplitude gegeben als Summe der einzelnen Wahrscheinlichkeits-Amplituden
+	  der Möglichkeiten.
+      #+begin_ex latex
+	  $e^- \to$ Detektor über
+	  - Blende \circled{1}
+	  - Blende \circled{2}
+	  \begin{align*}
+	  ϕ &= ϕ_1 + ϕ_2 \tag{Superposition} \\
+	  P &= \abs{ϕ}^2 = \abs{ϕ_1 + ϕ_2}^2
+      \end{align*}
+      #+end_ex
+   3. Kann man die einzelnen Möglichkeiten prinzipiell unterscheiden, addieren sich die Wahrscheinlichkeiten
+	  \[P = (P_1 + P_2) / 2\]
+* Materiewellen
+** Historische Herleitung von de Broglie
+  \fullcite{broglie1924xxxv} \\
+  3 Grundlegende Hypothesen ($3×$ Einstein)
+  1. $E = m_0 c^2$ Masse = Energie, $m_0$: Ruhemasse, $c$: Lichtgeschwindigkeit
+  2. $E = h ν_0$ Photoeffekt, $h = \SI{6.626069934+-0.000000089e-34}{\joule\second}$ Planck Konstante, $ν_0$: Frequenz
+  3. Gleichmäßig bewegte Bezugssysteme sind mit Lorenzt Transformation verknüpft
+  Aus 1. und 2. folgt, dass man jedem Teilchen im Ruhesystem eine Frequenz zuordnen kann
+  \[ν_0 = \frac{m_0 c^2}{h}\]
+  Sei $S$ ein ruhendes Bezugssystem, betrachte ein ruhendes	Teilchen ($v = 0$). Man erhält
+  \[ψ = e^{i ν_0 2π t}\]
+  Nun betrachte ein bewegtes Bezugssystem $S'$ mit $v_x = v, v_{y,z} = 0$. Man erhält
+  \[ψ = e^{i ν_0 2π t'}\]
+
+  \[t' = \frac{t - \frac{v}{c^2}x}{\sqrt{1 - (\frac{v}{c})^2}}\]
+  Die Zeit wird ortsabhängig!
+  \begin{align*}
+  S'&: e^{i2πν_0 t'} \\
+  S&: e^{i2πν_0 (\frac{t - \frac{v}{c^2}x}{\sqrt{1 - (\frac{v}{c})^2}})} = e^{i(ω_{dB}t - k_{dB}x)} \tag{die de Broglie Welle} \\
+  \intertext{mit}
+  ω_{dB} &= \frac{2π ν_0}{\sqrt{1 - (\frac{v}{c})^2}} = \frac{2π}{h}\frac{m_0 c^2}{\sqrt{1 - (\frac{v}{c})^2}} = \frac{E_{\text{ges}^{\text{Ruhe}}}}{\hbar} \\
+  \hbar &= \frac{h}{2π} \\
+  \v k_{dB} &= \frac{2π ν_0 \v v}{c^2 \sqrt{1 - (\frac{\v v}{c})^2}} = \frac{2π}{h} \frac{m_0 c^2 \v v}{c^2 \sqrt{1 - (\frac{\v v}{c})^2}} = \frac{\v P_{\text{mel}}}{\hbar}
+  \end{align*}
+  \begin{ibox}{nicht relativistischer Limes $v \ll c$}
+  \begin{align*}
+  ω_{dB} &= \frac{1}{\hbar}(m_0 c^2 + \frac{m_0 \v v^2}{2} + \dots) \\
+  \v k_{dB} &= \frac{1}{\hbar} m_0 \v v
+  \end{align*}
+  \end{ibox}
+  \[ψ(x, t) = e^{i(ω_{dB}t - \v k_{dB} \v x)} = e^{i \frac{m_0 c^2}{\hbar}t} e^{i(\underbrace{\frac{m_0 \v v^2}{2\hbar}}_{ω}t - \underbrace{\frac{m_0 \v v}{\hbar}}_{\v k} \v x)}\]
+  \begin{ibox}{Materiewelle}
+  \[ψ(x,t) = e^{i(ω t - k x)}\]
+  mit
+  \begin{align*}
+  ω &= \frac{\hbar k^2}{2m} \\
+  \hbar k = m v
+  \end{align*}
+  Beschreibt ein massives Teilchen mit Masse $m$, das sich mit wohldefinierter Geschwindigkeit
+  $v \ll c$ bewegt (Impuls Eigenzustand)
+  \end{ibox}
+  Den Zusammenhang $ω(k) = f(k)$ nennt man Dispersionsrelation.
+  \begin{important}
+  Unterschied zu elektromagnetischen Wellen im Vakuum:
+  \[λν = c ⇒ ω = c k\]
+  Materiewellen
+  \[ω = \frac{\hbar}{2m} k^{\circled[red]{2}}\]
+  \end{important}
+
+\printbibliography
