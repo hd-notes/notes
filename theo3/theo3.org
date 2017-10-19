@@ -124,7 +124,7 @@
   \rot \v E &= - \partial_{pt} \v B \\
   \rot \v B &= \partial_{ct} \v E + \frac{4π}{c} \v j
   \end{aligned}
-  \hfill
+  \qquad\qquad
   \begin{aligned}
   \Div \v D &= 4πρ \\
   \Div \v B &= 0 \\
@@ -141,9 +141,9 @@
   \node[draw, circle, left] (q1) at (0,0) {$q_1$};
   \node[draw, circle, left] (q2) at (2,0) {$q_2$};
   \draw[->] (-1,-2)	-- (q1) node[above left,midway] {$\v r_1$};
-  \draw[->] (-1,-2)	-- (q2) node[below,midway] {$\v r_2$};
-  \draw[->] (-1,-2)	-- (-.5, 2.5) node[below,midway] {$\v r$};
-  \node[right,every text node part/.style={align=center}] at (-.5, 2.5) {Beobachter \\ mit Probeladung}
+  \draw[->] (-1,-2)	-- (q2) node[above left,midway] {$\v r_2$};
+  \draw[->] (-1,-2)	-- (2.5, -.5) node[below,midway] {$\v r$};
+  \node[right,every text node part/.style={align=center}] at (2.5, -.5) {Beobachter \\ mit Probeladung};
   \end{tikzpicture}
   \end{center}
   \catcode`(=\active
@@ -164,18 +164,18 @@
   $\rot \v E = 0$ falls $\partial_{ct} \v B = 0$. Auf der anderen Seite $\rot \v E = \rot ∇ ϕ = 0$
   \begin{align*}
   \Div \v E &= 4πρ \\
-  \to \Aboxed{Δ ϕ &= - 4πρ} \tag{Poisson-Gleichung}
+  \to \Aboxed{\Laplace ϕ &= - 4πρ} \tag{Poisson-Gleichung}
   \end{align*}
   \begin{align*}
   ϕ(\v r) &= \frac{1}{\abs{r - r'}} \\
-  \intertext{Für quelle mit $q = 1$ an der Stelle $\v r' = \v 0$:}
-  Δϕ &= Δ \frac{1}{r} = \frac{1}{r} \frac{\partial^2}{\partial r^2}(r \frac{1}{r}) = 0 \\
+  \intertext{Für Quelle mit $q = 1$ an der Stelle $\v r' = \v 0$:}
+  \Laplaceϕ &= \Laplace \frac{1}{r} = \frac{1}{r} \frac{\partial^2}{\partial r^2}(r \frac{1}{r}) = 0 \\
   \intertext{klar, bei $\v r$ ist die Ladung nicht, sondern bei $\v 0$}
-  ∫_V \d^3 r Δϕ &= ∫_V \d^3 r ∇(∇ϕ) \underarrow[=]{Satz von Gauß} ∫_{\partial V} \d \v S ∇ ϕ \\
+  ∫_V \d^3 r \Laplaceϕ &= ∫_V \d^3 r ∇(∇ϕ) \underarrow[=]{Satz von Gauß} ∫_{\partial V} \d \v S ∇ ϕ \\
   &= ∫ r^2 \d Ω \underbrace{\pp{}{r}ϕ}_{=-\frac{1}{r^2}} = -∫ \d Ω = -4π \\
-  Δ \frac{1}{\abs{\v r - \v r'}} &= -4π δ_D(\v r - \v r') \\
+  \Laplace \frac{1}{\abs{\v r - \v r'}} &= -4π δ_D(\v r - \v r') \\
   q δ_D(\v r - \v r') &= ρ(\v r) \\
   j \d^n x δ_D(\v x) &= 1 \\
-  Δ ϕ(\v r) = Δ ∫ \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r) Δ \frac{1}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r')(-4π) δ_D(\v r - \v r') \\
+  \Laplace ϕ(\v r) &= \Laplace ∫ \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r) \Laplace \frac{1}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r')(-4π) δ_D(\v r - \v r') \\
   &= -4π ρ(\v r) \tag{Poisson-Gleichung}
   \end{align*}

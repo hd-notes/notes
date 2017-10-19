@@ -278,5 +278,6 @@
 #+LATEX_HEADER: \usemintedstyle{friendly}
 #+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines,mathescape=true}
 #+LATEX_HEADER:	\addbibresource{../bib.bib}
-#+LATEX_HEADER:
-#+LATEX_HEADER:
+# #+LATEX_HEADER: \newcommand*\Laplace{\mathop{{}\triangle}\nolimits}
+#+LATEX_HEADER: \newcommand*\Laplace{\mathop{}\!\mathbin\triangle}
+#+LATEX_HEADER: \newcommand*\DAlambert{\mathop{{}\Box}\nolimits}
