@@ -281,3 +281,7 @@
 # #+LATEX_HEADER: \newcommand*\Laplace{\mathop{{}\triangle}\nolimits}
 #+LATEX_HEADER: \newcommand*\Laplace{\mathop{}\!\mathbin\triangle}
 #+LATEX_HEADER: \newcommand*\DAlambert{\mathop{{}\Box}\nolimits}
+#+LATEX_HEADER: \newcommand*\dcup{\mathbin{\dot\cup}}
+#+LATEX_HEADER: \newcommand*\dcap{\mathbin{\dot\cap}}
+#+LATEX_HEADER: \newcommand*\bigdcup{\mathop{\dot\bigcup}}
+#+LATEX_HEADER: \newcommand*\bigdcap{\mathop{\dot\bigcap}}

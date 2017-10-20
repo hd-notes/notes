@@ -20,7 +20,7 @@
 
 * Grundlagen der Maß- und Integrationstheorie
   Motivation: Erweiterung des Riemannintegrals auf einen größeren Bereich von Funktionen
-  #+ATTR_LATEX: :options [1.1 Kriterium für Riemann Integrierbarkeit]
+  #+ATTR_LATEX: :options [Kriterium für Riemann Integrierbarkeit]
   #+begin_thm latex
   Sei $f:[a,b] \to ℝ$ beschränkt. Dann ist $f$ genau dann Riemann integrierbar, falls die Menge $S$ der Unstetigkeiten von $f$ eine Nullmenge ist, im Sinne, dass es
   für jedes für jedes $ε > 0$ eine abzählbare Familie von Intervallen $I_i$ gibt, mit
@@ -99,3 +99,129 @@
   \[(A_k)_{k ∈ ℕ} ⊂ \mathcal{A} ⇒ \bigcup_{k ∈ ℕ} A ∈ \mathcal{A}\]
   so spricht man von einer \(σ\)-Algebra.
   #+end_defn
+  #+begin_lemma latex
+  Sei $X$ eine Menge, $\mathcal{A}$ eine $σ$ Algebra und $(A_k)_{k ∈ ℕ} ⊂ \mathcal{A}$. Dann gehören $\emptyset, \bigcap_{k ∈ ℕ} A_k$ und $A_1 \setminus A_2$ zu $\mathcal{A}$.
+  #+end_lemma
+  #+begin_proof latex
+  (Übung)
+  #+end_proof
+  #+ATTR_LATEX: :options [Erzeugte und relative $σ$ -Algebra]
+  #+begin_defn latex
+  Für $S ⊂ \mathcal{P}(X)$ wird
+  \[Σ(S) = Σ(S \mid X) := \bigcap \{\mathcal{A} ⊂ \mathcal{P}(X) \mid \mathcal{A} \text{ ist eine \(σ\)-Algebra mit \(S ⊆ \mathcal{A}\)}\}\]
+  als die von $S$ erzeugte \(σ\)-Algebra bezeichnet.
+  $∀ Y ⊂ X$ definieren wir die relative \(σ\)-Algebra
+  \[\mathcal{A} \cap Y := \{A \cap Y \mid A ∈ \mathcal{A}\}\]
+  #+end_defn
+  #+begin_lemma latex
+  Die erzeugte relative \(σ\)-Algebra sind wohldefiniert. Für alle Mengen $S ⊂ \mathcal{P}(X), Y ⊂ X$ gilt
+  \[Σ(S \cap Y \mid Y) = Σ(S \mid X) \cap Y\]
+  #+end_lemma
+  #+begin_proof latex
+  (Übungen)
+  #+end_proof
+  #+ATTR_LATEX: :options [Topologischer Raum]
+  #+begin_defn latex
+  Ein topologischer Raum ist ein Paar $(X,\mathcal{O})$ bestehend aus Menge $X$ und $\mathcal{O} ⊂ \mathcal{P}(X)$ mit
+  - $\emptyset, X ∈ \mathcal{O}$
+  - $U, V ∈ \mathcal{O} ⇒ U \cap V ∈ \mathcal{O}$
+  - $(U_k)_{k ∈ I} ⊂ \mathcal{O} ⇒ \bigcup_{k ∈ I} U_k ∈ \mathcal{O}$ für eine beliebige Indexmenge $I$.
+  Die Elemente von $\mathcal{O}$ werden als *offene Menge* bezeichnet.
+  #+end_defn
+  #+begin_remark latex
+  Topologische Raum ist abgeschlossen unter endlichen Schnitten und abzählbaren Vereinigungen.
+  #+end_remark
+  #+ATTR_LATEX: :options [Borel-\(σ\)-Algebra, Borel Menge]
+  #+begin_defn latex
+  Ist $X$ ein topologischer Raum, so ist die Borel-\(σ\)-Algebra $\mathcal{B}(X)$ diejenige \(σ\)-Algebra, die von den offenen Mengen erzeugt wird. Ihre Elemente heißen Borel-Mengen.
+  \begin{align*}
+  \mathcal{B}^n &:= \mathcal{B}(ℝ^n) \\
+  \mathcal{B} &:= \mathcal{B}^1 \\
+  \end{align*}
+  #+end_defn
+  #+begin_remark latex
+  Die \(σ\)-Algebra die von den abgeschlossenen Wengen erzeugt wird, ist ebenfalls identisch mit der Borel \(σ\)-Algebra.
+  #+end_remark
+  #+ATTR_LATEX: :options [Messraum, Maß, Maßraum]
+  #+begin_defn latex
+  Eine Menge $X$ mit einer \(σ\)-Algebra $\mathcal{A} ⊂ \mathcal{P}(X)$ heißt *Messraum*. Ein *Maß* ist eine Abbildung $μ: \mathcal{A} \to [0, ∞]$ mit
+  - $μ(\emptyset) = 0$
+  - $μ(\bigcup_{k ∈ ℕ} A_k) = \sum_{k ∈ ℕ} μ(A_k)$ für disjunkte Mengen \hfill\(σ\)-Additivität
+  Die Elemente in $\mathcal{A}$ heißen messbar, und $(X, \mathcal{A}, μ)$ heißt *Maßraum*.
+  #+end_defn
+  #+ATTR_LATEX: :options [\(σ\)-Finitheit]
+  #+begin_defn latex
+  Ein Mah heißt \(σ\)-finit, falls es eine abzählbare Überdeckung $\{X_k\}_{k ∈ ℕ} ⊂ \mathcal{A}$ von $X$ gibt, also
+  \[X = \bigcup_{k ∈ ℕ} X_k\]
+  sodass $μ(X_k) < ∞ ∀ k$. \\
+  $μ$ heißt endlich falls $μ(X) < ∞$. Bei Wahrscheinlichkeitsmaß $μ(X) = 1$.
+  #+end_defn
+  #+begin_ex latex
+  1. Zählmaß: Für $X$ und $\mathcal{A} = \mathcal{P}(X)$ setze für $A ∈ \mathcal{A}$:
+	 \[μ(A) = \begin{cases} \# A & A \text{ endlich} \\ ∞ & \text{sonst}\end{cases}\]
+	 $μ$ ist endlich falls $X$ endlich und \(σ\)-finit wenn $X$ abzählbar.
+  2. Dirac-Maß: Für einen fest gewählten $x_0 ∈ X$ und $\mathcal{A} = \mathcal{P}(X)$ setzen wir für $A ⊂ X$
+	 \[μ(A) := \begin{cases} 0 & x_0 \not∈ A \\ 1 & x_0 ∈ A\end{cases}\]
+  3. Positive Linearkombination: $μ_1, μ_2$ Maße auf $(X, \mathcal{A})$. Dann ist $μ := α_1 μ_1 + α_2 μ_2$ für $α_1, α_2 \geq 0$ wieder
+	 ein Maß
+  #+end_ex
+  #+begin_lemma latex
+  Sei $(X, \mathcal{A}, μ)$ ein Maßraum und $Y ∈ \mathcal{A}$. Dann ist $μ\mid_Y(A) := μ(A \cap Y) ∀ A ∈ \mathcal{A}$ wieder ein Maß auf $(X, \mathcal{A})$.
+  Durch Einschränken der \(σ\)-Algebra $\mathcal{A}$ auf $\mathcal{A}\mid_Y := \{A ∈ \mathcal{A} \mid A ⊂ Y\}$ wird $(Y, \mathcal{A}\mid_Y, μ\mid_Y)$ auch ein Maßraum.
+  Falls $(X, \mathcal{A}, μ)$ \(σ\)-finit, dann $(Y, \mathcal{A}\mid_Y, μ\mid_Y)$ auch.
+  #+end_lemma
+  *Notation*: Zu $(A_k)_{k ∈ ℕ} ⊂ X$ schreiben wir
+  - $A_k \nearrow A (k \to ∞)$ falls $A_k ⊂ A_{k + 1} ∀ k ∈ ℕ$ und $A = \bigcup_{k ∈ ℕ} A_k$
+  - $A_k \searrow A (k \to ∞)$ falls $A_k \supset A_{k + 1} ∀ k ∈ ℕ$ und $A = \bigcap_{k ∈ ℕ} A_k$
+
+  #+begin_thm latex
+  Für jeden Maßraum $(X, \mathcal{A}, μ)$ und $(A_k)_{k ∈ ℕ} ⊂ \mathcal{A}$ gilt
+  1. $A_1 ⊂ A_2 ⇒ μ(A_1) \leq μ(A_2)$ \hfill (Monotonie)
+  2. $μ(\bigcup_{k ∈ ℕ} A_k) \leq \sum_{k ∈ ℕ} μ(A_k)$ \hfill (\(σ\)-Subadditivität)
+  3. $A_k \nearrow A ⇒ μ(A_k) \nearrow μ(A)$ für $(k \to ∞)$ \hfill (Stetigkeit von Unten)
+  4. $A_k \searrow A ⇒ μ(A_k) \searrow μ(A)$ für $(k \to ∞)$ und $μ(A_1) < ∞$ \hfill (Stetigkeit von Oben)
+  #+end_thm
+  #+begin_proof latex
+  1. $A, B ∈ \mathcal{A}, A ⊂ B ⇒ B = A \dcup (B \setminus A), B \setminus A ∈ \mathcal{A} ⇒ μ(B) = μ(A) + μ(B\setminus A) \geq μ(A)$
+  2. Wir definieren $(B_k)_{k ∈ ℕ} ⊂ \mathcal{A}$ durch
+	 \begin{align*}
+	 B_1 &:= A_1, B_{k + 1} := A_{k + 1} \setminus \bigcup_{j = 1}^k A_k
+	 ⇒ \bigdcup_{k ∈ ℕ} B_k &= \bigcup_{k ∈ ℕ} A_k
+	 \end{align*}
+	 Nach Definition gilt
+	 \[μ(\bigcup_{k ∈ ℕ} A_k) = μ(\bigcup_{k ∈ ℕ} B_k) = \sum_{k ∈ ℕ}μ(B_k) \leq \sum_{k ∈ ℕ} μ(A_k)\]
+  3. Definieren $(C_k)_{k ∈ ℕ} ⊂ \mathcal{A}$ durch
+	 \begin{align*}
+	 C_1 &:= A_1 \\
+	 C_{k + 1} &:= A_{k + 1} \setminus A_k
+   	 \end{align*}
+	 Es gilt
+	 \begin{align*}
+	 ⇒ \bigdcup_{k ∈ ℕ} C_k &= \bigcup_{k ∈ ℕ} A_k = A
+	 μ(A_k) &= \sum_{j = 1}^{k} μ(C_j) \xrightarrow{k \to ∞} \sum_{k ∈ ℕ} μ(C_k) = μ(A) \leq \sum_{k ∈ ℕ} μ(A_k)
+   	 \end{align*}
+  4. $D_k := A_1 \setminus A_k ∀ k ∈ ℕ$. Damit ist $D_k \nearrow A_1 \setminus A$ und
+	 \[μ(A_1) - μ(A_k) = μ(A_1 \setminus A_k) \xrightarrow{k \to ∞}[3.] μ(A_1 \setminus A) = μ(A_1) - μ(A)\]
+	 Subtraktion von $μ(A_1) < ∞$ liefert die Behaptung.
+  #+end_proof
+  #+begin_ex latex
+  $μ: \mathcal{P}(ℕ) \to [0, ∞], μ(A) := \# A$. Die Mengenfolge $A_n := \{n, n + 1, n + 2, \dots\}$ ist fallend gegen die leere Menge, aber es ist
+  \[0 = μ(\emptyset) \neq \lim_{n \to ∞} μ(A_n) = ∞\]
+  #+end_ex
+  #+ATTR_LATEX: :options [Borel-Maß]
+  #+begin_defn latex
+  Set $X$ ein topologischer Raum. Ein Maß auf einer Borel-\(σ\)-Algebra $\mathcal{B}(X)$ heißt Borel-Maß, falls es auf Kompakta stets endlich Werte annimmt.
+  #+end_defn
+  #+begin_ex latex
+  Für $X = ℝ$ ist das Dirac-Maß ein Brel-Maß, aber nicht das Zählmaß.
+  #+end_ex
+  #+ATTR_LATEX: :options [Regularität]
+  #+begin_defn latex
+  Sei $X$ ein topologischer Raum, $(X, \mathcal{A}, μ)$ ein Maßraum. Das Maß $μ$ heißt *regulär von außen*, wenn für $A ∈ \mathcal{A}$ gilt
+  \[μ(A) = \inf \{μ(U) \mid A ⊂ U, U \text{ offen}\}\]
+  $μ$ heißt *regulär von innen*, wenn für $A ∈ \mathcal{A}$ gilt
+  \[μ(A) = \sup\{μ(K) \mid K ⊂ A, K \text{kompakt}\}\]
+  #+end_defn
+  #+begin_ex latex
+  Das Zählmaß mit $X = ℝ, \mathcal{A} = \mathcal{B}$, ist regulär von inne, aber nicht von außen. Das Dirac-Maß ist regulär.
+  #+end_ex
