@@ -3,7 +3,7 @@
 #+OPTIONS: ':t
 #+LANGUAGE: de
 #+LATEX_CLASS: koma-article
-#+LATEX_CLASS_OPTIONS: [a4paper]
+#+LATEX_CLASS_OPTIONS: [a4paper,DIV=14]
 #+LATEX_COMPILER: xelatex
 #+LATEX_HEADER: \usepackage{amsmath}
 #+LATEX_HEADER: \usepackage{mathtools}
@@ -20,6 +20,7 @@
 #+LATEX_HEADER: \usepackage{soul}
 #+LATEX_HEADER: \usepackage[tikz,blur]{bclogo}
 #+LATEX_HEADER: \usepackage[backend=bibtex]{biblatex}
+#+LATEX_HEADER: \usepackage{tocloft}
 #+LATEX_HEADER: \pagestyle{scrheadings}
 #+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
@@ -30,6 +31,7 @@
 #+LATEX_HEADER: \DeclareSIUnit{\erg}{erg}
 #+LATEX_HEADER: \DeclareSIUnit{\esu}{esu}
 #+LATEX_HEADER:	\usepackage{newunicodechar}
+#+LATEX_HEADER:	\sisetup{math-micro=\text{µ},text-micro=µ}
 #+LATEX_HEADER: \newunicodechar{α}{\alpha}
 #+LATEX_HEADER: \newunicodechar{β}{\beta}
 #+LATEX_HEADER: \newunicodechar{γ}{\gamma}
@@ -255,7 +257,7 @@
 #+LATEX_HEADER:   }
 #+LATEX_HEADER:   {\end{mdframed}}
 # #+LATEX_HEADER: \newenvironment{box}{}
-#+LATEX_HEADER: \usetikzlibrary{arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
+#+LATEX_HEADER: \usetikzlibrary{math, arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
 
 # #+LATEX_HEADER: \makeatletter
 # #+LATEX_HEADER: \def\resetMathstrut@{%
@@ -285,3 +287,22 @@
 #+LATEX_HEADER: \newcommand*\dcap{\mathbin{\dot\cap}}
 #+LATEX_HEADER: \newcommand*\bigdcup{\mathop{\dot\bigcup}}
 #+LATEX_HEADER: \newcommand*\bigdcap{\mathop{\dot\bigcap}}
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \pretocmd\start@align{%
+#+LATEX_HEADER:   \if@minipage\kern-\topskip\kern-\abovedisplayskip\fi
+#+LATEX_HEADER: }{}{}
+#+LATEX_HEADER: \makeatother
+#+LATEX_HEADER: \tikzset{every picture/.style={>=latex}}
+#+LATEX_HEADER: \catcode`(=12
+#+LATEX_HEADER: \catcode`)=12
+#+LATEX_HEADER: \tikzmath{
+#+LATEX_HEADER:   function sinc(\x) {
+#+LATEX_HEADER:     if  abs(\x) < .001 then { % (|x| < .001) ~ (x = 0)
+#+LATEX_HEADER:       return 1;
+#+LATEX_HEADER:     } else {
+#+LATEX_HEADER:       return sin(\x r)/\x;
+#+LATEX_HEADER:     };
+#+LATEX_HEADER:   };
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \catcode`(=\active
+#+LATEX_HEADER: \catcode`)=\active

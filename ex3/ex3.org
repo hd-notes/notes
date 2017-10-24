@@ -434,51 +434,275 @@
 	  \[P = (P_1 + P_2) / 2\]
 * Materiewellen
 ** Historische Herleitung von de Broglie
-  \fullcite{broglie1924xxxv} \\
-  3 Grundlegende Hypothesen ($3×$ Einstein)
-  1. $E = m_0 c^2$ Masse = Energie, $m_0$: Ruhemasse, $c$: Lichtgeschwindigkeit
-  2. $E = h ν_0$ Photoeffekt, $h = \SI{6.626069934+-0.000000089e-34}{\joule\second}$ Planck Konstante, $ν_0$: Frequenz
-  3. Gleichmäßig bewegte Bezugssysteme sind mit Lorenzt Transformation verknüpft
-  Aus 1. und 2. folgt, dass man jedem Teilchen im Ruhesystem eine Frequenz zuordnen kann
-  \[ν_0 = \frac{m_0 c^2}{h}\]
-  Sei $S$ ein ruhendes Bezugssystem, betrachte ein ruhendes	Teilchen ($v = 0$). Man erhält
-  \[ψ = e^{i ν_0 2π t}\]
-  Nun betrachte ein bewegtes Bezugssystem $S'$ mit $v_x = v, v_{y,z} = 0$. Man erhält
-  \[ψ = e^{i ν_0 2π t'}\]
+   Ziel:
+   - Dispersionsrelation für massive Teilchen
+   - Superpositionen von unphysikalischen Wellen können Natur beschreiben
+   -	Zerlegungin de Broglie-Wellen erlaubt vorhersagen
+   \fullcite{broglie1924xxxv} \\
+   3 Grundlegende Hypothesen ($3×$ Einstein)
+   1. $E = m_0 c^2$ Masse = Energie, $m_0$: Ruhemasse, $c$: Lichtgeschwindigkeit
+   2. $E = h ν_0$ Photoeffekt, $h = \SI{6.626069934+-0.000000089e-34}{\joule\second}$ Planck Konstante, $ν_0$: Frequenz
+   3. Gleichmäßig bewegte Bezugssysteme sind mit Lorenzt Transformation verknüpft
+   Aus 1. und 2. folgt, dass man jedem Teilchen im Ruhesystem eine Frequenz zuordnen kann
+   \[ν_0 = \frac{m_0 c^2}{h}\]
+   Sei $S$ ein ruhendes Bezugssystem, betrachte ein ruhendes	Teilchen ($v = 0$). Man erhält
+   \[ψ = e^{i ν_0 2π t}\]
+   Nun betrachte ein bewegtes Bezugssystem $S'$ mit $v_x = v, v_{y,z} = 0$. Man erhält
+   \[ψ = e^{i ν_0 2π t'}\]
 
-  \[t' = \frac{t - \frac{v}{c^2}x}{\sqrt{1 - (\frac{v}{c})^2}}\]
-  Die Zeit wird ortsabhängig!
-  \begin{align*}
-  S'&: e^{i2πν_0 t'} \\
-  S&: e^{i2πν_0 (\frac{t - \frac{v}{c^2}x}{\sqrt{1 - (\frac{v}{c})^2}})} = e^{i(ω_{dB}t - k_{dB}x)} \tag{die de Broglie Welle} \\
-  \intertext{mit}
-  ω_{dB} &= \frac{2π ν_0}{\sqrt{1 - (\frac{v}{c})^2}} = \frac{2π}{h}\frac{m_0 c^2}{\sqrt{1 - (\frac{v}{c})^2}} = \frac{E_{\text{ges}^{\text{Ruhe}}}}{\hbar} \\
-  \hbar &= \frac{h}{2π} \\
-  \v k_{dB} &= \frac{2π ν_0 \v v}{c^2 \sqrt{1 - (\frac{\v v}{c})^2}} = \frac{2π}{h} \frac{m_0 c^2 \v v}{c^2 \sqrt{1 - (\frac{\v v}{c})^2}} = \frac{\v P_{\text{mel}}}{\hbar}
-  \end{align*}
-  \begin{ibox}{nicht relativistischer Limes $v \ll c$}
-  \begin{align*}
-  ω_{dB} &= \frac{1}{\hbar}(m_0 c^2 + \frac{m_0 \v v^2}{2} + \dots) \\
-  \v k_{dB} &= \frac{1}{\hbar} m_0 \v v
-  \end{align*}
-  \end{ibox}
-  \[ψ(x, t) = e^{i(ω_{dB}t - \v k_{dB} \v x)} = e^{i \frac{m_0 c^2}{\hbar}t} e^{i(\underbrace{\frac{m_0 \v v^2}{2\hbar}}_{ω}t - \underbrace{\frac{m_0 \v v}{\hbar}}_{\v k} \v x)}\]
-  \begin{ibox}{Materiewelle}
-  \[ψ(x,t) = e^{i(ω t - k x)}\]
-  mit
-  \begin{align*}
-  ω &= \frac{\hbar k^2}{2m} \\
-  \hbar k = m v
-  \end{align*}
-  Beschreibt ein massives Teilchen mit Masse $m$, das sich mit wohldefinierter Geschwindigkeit
-  $v \ll c$ bewegt (Impuls Eigenzustand)
-  \end{ibox}
-  Den Zusammenhang $ω(k) = f(k)$ nennt man Dispersionsrelation.
-  \begin{important}
-  Unterschied zu elektromagnetischen Wellen im Vakuum:
-  \[λν = c ⇒ ω = c k\]
-  Materiewellen
-  \[ω = \frac{\hbar}{2m} k^{\circled[red]{2}}\]
-  \end{important}
+   \[t' = \frac{t - \frac{v}{c^2}x}{\sqrt{1 - (\frac{v}{c})^2}}\]
+   Die Zeit wird ortsabhängig!
+   \begin{align*}
+   S'&: e^{i2πν_0 t'} \\
+   S&: e^{i2πν_0 (\frac{t - \frac{v}{c^2}x}{\sqrt{1 - (\frac{v}{c})^2}})} = e^{i(ω_{dB}t - k_{dB}x)} \tag{die de Broglie Welle} \\
+   \intertext{mit}
+   ω_{dB} &= \frac{2π ν_0}{\sqrt{1 - (\frac{v}{c})^2}} = \frac{2π}{h}\frac{m_0 c^2}{\sqrt{1 - (\frac{v}{c})^2}} = \frac{E_{\text{ges}^{\text{Ruhe}}}}{\hbar} \\
+   \hbar &= \frac{h}{2π} \\
+   \v k_{dB} &= \frac{2π ν_0 \v v}{c^2 \sqrt{1 - (\frac{\v v}{c})^2}} = \frac{2π}{h} \frac{m_0 c^2 \v v}{c^2 \sqrt{1 - (\frac{\v v}{c})^2}} = \frac{\v P_{\text{mel}}}{\hbar}
+   \end{align*}
+   \begin{ibox}{nicht relativistischer Limes $v \ll c$}
+   \begin{align*}
+   ω_{dB} &= \frac{1}{\hbar}(m_0 c^2 + \frac{m_0 \v v^2}{2} + \dots) \\
+   \v k_{dB} &= \frac{1}{\hbar} m_0 \v v
+   \end{align*}
+   \end{ibox}
+   \[ψ(x, t) = e^{-i(ω_{dB}t - \v k_{dB} \v x)} = \underbrace{e^{i \frac{m_0 c^2}{\hbar}t}}_{\mathclap{\const\text{ hängt nur von der Masse ab}}} e^{i(\underbrace{\frac{m_0 \v v^2}{2\hbar}}_{ω}t - \underbrace{\frac{m_0 \v v}{\hbar}}_{\v k} \v x)}\]
+   \begin{ibox}{Materiewelle}
+   \[ψ(x,t) = e^{-i(ω t - k x)}\]
+   mit
+   \begin{align*}
+   ω &= \frac{\hbar k^2}{2m} \\
+   \hbar k &= m v
+   \end{align*}
+   Beschreibt ein massives Teilchen mit Masse $m$, das sich mit wohldefinierter / scharf definerter Geschwindigkeit $v \ll c$ bewegt (Impuls Eigenzustand).
+   \end{ibox}
+   Den Zusammenhang $ω(k) = f(k)$ nennt man Dispersionsrelation.
+   #+begin_important latex
+   Unterschied zu elektromagnetischen Wellen im Vakuum:
+   \[λν = c ⇒ ω = c k\]
+   Materiewellen
+   \[ω = \frac{\hbar}{2m} k^{\circled[red]{2}}\]
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{tikzpicture}
+   \draw[->] (0,0) -- (6,0) node[anchor=north] {$k = \frac{p}{\hbar}$};
+   \draw[->] (0,0) -- (0,4) node[anchor=east] {$ω=\frac{E}{\hbar}$};
+   \draw (0,0) -- (6,3);
+   \draw [red] (0,1) to [bend right=10] (6,3.2);
+   \draw [red,decorate,decoration={brace,amplitude=3pt},xshift=-4pt,yshift=0pt] (0, 0) -- (0, 1)node [red,midway,xshift=-14pt] {\footnotesize $m_0 c^2$};
+   \draw[<-] (3.9,1.9) to [bend left] (4.9,0.9) node[xshift=5pt,yshift=-10pt,every text node part/.style={align=center}] {Masseloses \\ Teilchen - Photonen};
+   \draw[<-,red] (3.9,2.3) to [bend right=10] (2.9,2.9) node[xshift=-28pt,yshift=0pt,every text node part/.style={align=center}] {Dispersion \\ eines Atoms};
+   \end{tikzpicture} \\
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   #+end_important
+** Wie sieht die Materiewelle aus?
+   \begin{align*}
+   t = 0\quad ψ(x, t = 0) &= e^{ik_{dB} x} \\
+   &= \cos(k_{dB} x) + i \sin(k_{dB} x) \\
+   k_{dB} &= \frac{2π}{λ_{dB}} \\
+   E &= \frac{\hbar^2 k_{dB}^2}{2m} = \frac{m v^2}{2} \\
+   ⇒ \Aboxed{λ_{dB} &= \frac{h}{m v}} \tag*{de Broglie Beziehung}
+   \end{align*}
+   *Größenordnung* \\
+   Thermisches Gas:
+   \begin{align*}
+   \bar v &= \sqrt{\frac{8 k_{B} T}{π m}} \tag*{mittlere Geschwindigkeit} \\
+   \hat v &= \sqrt{\frac{2 k_{B} T}{m}} \tag*{wahrscheinlichste Geschwindigkeit}
+   \end{align*}
+   | $T$                      | $\hat v$                                | $\hat λ_{dB}$            |
+   | $\SI{300}{\kelvin}$      | $\sim\SI{240}{\meter\per\second}$       | $\SI{19}{\pico\meter}$   |
+   | $\SI{10}{\micro\kelvin}$ | $\sim\SI{4}{\centi\meter\per\second}$   | $\SI{0.1}{\micro\meter}$ |
+   | $\SI{10}{\nano\kelvin}$  | $\sim\SI{1.4}{\centi\meter\per\second}$ | $\SI{3.3}{\micro\meter}$ |
+   \[λ_{dB} \propto \frac{1}{\sqrt{T}}\]
+   $ψ(x, t)$ ist ein komplexes Feld: \\
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{minipage}{0.45\linewidth}
+   Zeit $t = 0$
+   \[\displaystyle{ψ(x,t = 0) = e^{i k_{dB} x}}\] \\
+   \end{minipage}
+   \hfill%
+   \begin{minipage}{0.45\linewidth}
+   \begin{center}
+   \begin{tikzpicture}
+       \draw[->] (0,0) -- (6,0) node[anchor=north] {$x$};
+       \draw[->] (0,0) -- (0,3) node[anchor=east] {$\Re(ψ)$};
+       \draw[red,->] (6,0) -- (6,3) node[anchor=east] {$\Im(ψ)$};
+       \draw[red] (0,0) sin (1,2) cos (2,0) sin (3,-2) cos (4,0)
+              sin (5,2) cos (6,0);
+       \begin{scope}[shift={(-1,0)}]
+       \draw[black] (1,2) cos (2,0) sin (3,-2) cos (4,0)
+              sin (5,2) cos (6,0) sin (7, -2);
+       \end{scope}
+   \end{tikzpicture}
+   \end{center}
+   \end{minipage} \\
+   \begin{minipage}{0.45\linewidth}
+   Zeit t
+   \[\displaystyle{ψ(x,t) = e^{-i(ω_{dB} t - k_{dB} x)}}\] \\
+   \end{minipage}
+   \hfill%
+   \begin{minipage}{0.45\linewidth}
+   \begin{center}
+   \begin{tikzpicture}
+       \draw[->] (0,0) -- (6,0) node[anchor=north] {$x$};
+       \draw[->] (0,0) -- (0,3) node[anchor=east] {$\Re(ψ)$};
+       \draw[red,->] (6,0) -- (6,3) node[anchor=east] {$\Im(ψ)$};
+       \draw[black] (0,0) sin (1,2) cos (2,0) sin (3,-2) cos (4,0)
+              sin (5,2) cos (6,0);
+       \begin{scope}[shift={(1,0)}]
+           \draw[red] (-1, -2) cos (0, 0) sin (1,2) cos (2,0) sin (3,-2) cos (4,0)
+              sin (5,2);
+       \end{scope}
 
+       \draw (1,.1) -- (1,-.1) node[below] {$x_m$};
+       \draw[->] (0,2.1) -- (1,2.1);
+       \draw (1,2.1) -- (1,1.975);
+       \draw (0.95,2) -- (1.05,2) node[above,xshift=7pt] {$ω_{dB} t = k_{dB} x_m$};
+   \end{tikzpicture}
+   \end{center}
+   \end{minipage}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   # \begin{align*}
+   # ψ(x, t) &= e^{i(ω_{dB} t - k_{dB} x)} = \underbrace{e^{i \frac{m_0 c^2}{\hbar}t}}_{\mathclap{\text{hängt nicht von } x, v \text{ ab}}} e^{-i(\frac{m_0 \v v^2}{2\hbar}t - \frac{m_0 \v v}{\hbar}x)} \\
+   # P &= \abs{ψ}^2 = \abs{e^{iϕ_0} ψ}^2
+   # \end{align*}
+   - globale Phase spielt keine Rolle
+   - Energienullpunkt $E = m_0 c^2$
+   $ψ(x, t)$ ist ein komplexes Feld:
+   \begin{align*}
+   ω_{dB} t &= k_{dB} x_m \\
+   x_m &= \underbrace{\frac{ω_{dB}}{k_{dB}}}_{v_{ph}^{dB}} t \\
+   v_{ph}^{dB} &= \frac{m v^2}{2\hbar}\frac{\hbar}{mv} = \frac{v}{2} \tag*{Phasengeschwindigkeit}
+   \end{align*}
+   Phasengeschwindigkeit ist nicht physikalisch! Gegeben eine de Broglie Welle mit $k_{dB} = k$.
+   Wie groß ist die Wahrscheinlichkeit das Teilchen irgendwo zu finden?
+   \[P = ∫_{∞}^∞ \underarrow[p]{W.-Dichte}(x) \d x = ∫_{-∞}^∞ \abs{ψ(x)}^2 \d x = ∫_{-∞}^∞ e^{i k x} e^{ - i k x} \d x = ∫_{-∞}^∞ \d x = ∞\]
+   Eine de Broglie Welle ist nicht normierbar! Analoges Problem:	Energieinhalt in einer ebenen Elektromagnetischen Welle. \\
+   $⇒$ Lösung: Superposition (Überlagerung) von ebenen (unphysikalischen) Wellen erlaubt, um
+   physikalischen Situation zu beschreiben. \\
+   Zusammenfassung: Neue Beschreibung der Bewegung von Teilchen $⇒$ Wellenoptik. Für
+   $ψ(x, t) ⇒ \abs{ψ(x, t)^2} \d x$ ist die Wahrscheinlichkeit, ein Teilchen zur Zeit $t$ im
+   Intervall $[x, x + \d x]$ zu beobachten. Klassische Teilchenmechanik entspricht dem geometrischen
+   "Optik-Limit" der Wellenmechanik. \\
+   \begin{ibox}{Fermat'sches Prinzip in der Wellenoptik}
+   Licht breitet sich entlang des kürzesten optischen Weges aus
+   \[\underarrow[δ]{Variation} ∫ \frac{\d s}{λ} = 0 = δ ∫ \frac{\d s}{\frac{h}{m v}} = \frac{1}{h} \underbrace{δ ∫ m v \d s = 0}_{\mathclap{\text{Maupertuis Prinzip der kleinsten Wirkung}}}\]
+   \end{ibox}
+** Das Wellenpaket - physikalische Wellenfunktion durch Überlagerung (Superposition von ebenen Wellen)
+   Das Wellenpaket (ruhend) \\
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{minipage}{.45\linewidth}
+   $t = 0$ \\
+   \begin{center}
+   \begin{tikzpicture}
+    \draw[->] (0,0) -- (6,0) node[anchor=north] {$x$};
+    \draw[->] (3,0) -- (3,3) node[anchor=east] {$ψ$};
+    \draw[color=black, domain=-3:3, samples=100,shift={(3,0)}] plot (\x,{(2*exp(-\x*\x)});
+    \filldraw (3,2) circle (1.5pt);
+    \node[above right] at (3,2) {$ψ_0$};
+    \draw[<-] (4, .72) -- (5.5, .72) node[above] {$\frac{ψ_0}{e}$};
+    \draw[<-] (2, .72) -- (0.5, .72);
+    \draw (2,.72) -- (2,0) node[below] {$-a$};
+    \draw (4,.72) -- (4,0) node[below] {$a$};
+    \draw (2.9,0.72) -- (3.1,0.72) node[right,font=\scriptsize,xshift=-3pt] {$0,36$};
+   \end{tikzpicture}
+   \end{center}
+   \end{minipage}
+   \hfill%
+   \begin{minipage}{.45\linewidth}
+   \begin{align*}
+   ψ(x, t= 0) &= \underbrace{(\frac{2}{π a^2})^{1/4}}_{\mathclap{\text{Normierung}}} e^{- \frac{x^2}{a^2}} \\
+   ∫_{-∞}^∞ \abs{ψ}^2 \d x &= 1 \tag*{Quadrat-Integrabel}
+   \end{align*}
+   \end{minipage}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   $t = T?$ Wir wissen "nur" wie sich de Broglie Wellen ausbreiten $⇒$ zerlege $ψ(x, t = 0)$ in
+   ebene Wellen mit Wellenvektor $k_{dB}$. Jede Welle wird sich entsprechend
+   \[ω_{dB} = \frac{\hbar k^2_{dB}}{2m}\]
+   ausbreiten.
+   \begin{align*}
+   ψ(x, t = 0) &= ∫_{-∞}^∞ \underarrow[\tilde ψ(k)]{Amplitude der Welle} \overarrow[e^{i k x}]{de Broglie Welle $t = 0$} \d k
+   \intertext{$⇒$ triviale Zeitentwicklung}
+   ψ(x, t = T) &= ∫_{-∞}^∞ \tilde ψ(k) e^{i k x} e^{-i ω T} \d k \\
+   &= ∫_{-∞}^∞ \underbrace{\tilde ψ(k) e^{-i \frac{\hbar}{2m} k^2 T}}_{\text{Phase}} e^{i k x} \d k
+   \end{align*}
+   Nur die Phase der komplexen Wahrscheinlichkeits-Amplitude ändert sich. Die zeitliche Änderung ist *linear* in
+   der Zeit, aber quadratisch in $k$. \\
+   Da
+   \[Ψ = \tilde ψ(k) e^{i(k x - ω t)}\]
+   einer de Broglie Welle und damit einem Teilchen mit scharf definiertem Impuls $p = m v = \hbar k$
+   entspricht, bezeichnet man $\tilde ψ(k)$ als Impulsdarstellung / Impulsamplitude. Entsprechend
+   $Ψ(x)$ ist die Ortsdarstellung / Ortsamplitude des Quantenmechanischen-Zustandes.
+   Die Ausbreitung im Impulsraum ist trivial
+   \[\underbrace{\tilde ψ(k)}_{t = 0} \to \underbrace{\tilde ψ(k)}_{t} \underarrow[e^{-i \frac{\hbar k^2}{2m}t}]{Rotation in komplexer Zahlenebene}\]
+   Aber wie sieht die räumlich Wahrscheinlichkeitsverteilung aus? \\
+   Wiederholung: Fourier-Transformation. \\
+   \begin{ibox}{Periodische Funktionen (Fourier 1822)}
+   \begin{align*}
+   f(x + d) &= f(x) \tag*{$d$: Periode} \\
+   f(x) &= \sum_{n = -∞}^{∞} g_n e^{i n G x} \tag*{$G= \frac{2π}{d}$} \\
+   g_n &= \frac{1}{d} ∫_{x}^{x + d} f(x) e^{- in G x} d x
+   \end{align*}
+   \end{ibox}
+   \begin{align*}
+   ∫_0^d f(x) e^{- i m G x} &= ∫_0^d \sum_{n = -∞}^{∞} g_n e^{i(n - m)G x} = g_m d \\
+   ∫_{-∞}^∞ \abs{f(x)}^2 \d x &= ∫_{-∞}^∞ \sum_{n = -∞}^{∞} g_n^{\ast} e^{-i n G x} \sum_{m = -∞}^{∞} g_m e^{i m G x} \d x \\
+   &= ∫_{- ∞}^∞ \sum_{n} \sum_{m} g_n^{\ast} g_m e^{i(m - n) G x} \d x \\
+   &= \sum_{n = -∞}^{∞} \abs{g_n}^2 = 1 \tag*{Normierung}
+   \end{align*}
+   $f(x)$ reell $\to g_n = g_n^{\ast}$
+   \begin{align*}
+   \sum_{n = -∞}^{∞} g_n e^{i n G x} &= g_0 + \sum_{n = -∞}^{-1} g_n e^{i n G x} + \sum_{n = 1}^{∞} g_n e^{i n G x} \\
+   &= g_0 +	\{\sum_{n = 1}^{∞} g_n^{\ast} e^{- i n G x} + \sum_{n = 1}^{∞} g_n e^{i n G x}\} \\
+   z^{\ast} + z &= (a + i b)^{\ast} + (a + i b) = 2 \Re \{z\}
+   \end{align*}
+   Einfache Beispiele
+   \[f(x) = \cos(G x) = \frac{1}{2} e^{-i G x} + \frac{1}{2} e^{i G x}\]
+   Fouriertransformierte
+   \[g_{-1} = \frac{1}{2} \qquad g_0 = 0 \qquad g_1 = \frac{1}{2} \qquad g_{\abs{n} > 1} = 0\]
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \[
+       f(x) = \dots
+       \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+           \draw (0.5, 0) -- (1, 0) -- (1, 1) -- (2, 1)
+                        -- (2, 0) -- (3, 0) -- (3, 1)
+                        -- (4, 1) -- (4, 0) -- (4.5, 0);
+           \draw[|-|] (1, 1.3) -- (2,1.3) node[midway,fill=white] {B};
+           \draw[|-|] (1, -.3) -- (3,-.3) node[midway,fill=white] {d};
+           \draw (.6, 1) node[left] {$1$} -- (.8, 1);
+       \end{tikzpicture}
+       \dots
+   \]
+   \begin{center}
+   \begin{tikzpicture}
+   \draw[->] (-4, 0) -- (4, 0) node[right] {$n$};
+   \draw[->] (0, 0) -- (0, 3);
+   \draw[domain=-4:4,smooth,variable=\x,red] plot ({\x},{2*sinc(1.8*\x)});
+   \foreach \x in {-7,...,7}
+       \draw ({.5*\x}, 0) -- ({.5*\x},{2*sinc(1.8*.5*\x)});
+   \foreach \x in {0,...,7}
+       \draw ({.5*\x}, 0) -- ({.5*\x}, -.1) node[below] {\x};
+   \draw[red,<-] (1.75, -.1) -- (1.75, -.6) node[below] {$\frac{d}{B}$};
+   \node[red,right] at (.5,3) {$n \neq 0\quad g_n = \frac{1}{nπ} \sin(n \frac{πB}{d})$};
+   \node[red,right] at (2.5,2.5) {$g_0 = \frac{B}{a}$};
+   \draw[->,red] (2,2.6) -- (1,1.3);
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Je kleiner die Struktur im Ortsraum, umso breiter wird die Verteilung im Impulsraum.
 \printbibliography

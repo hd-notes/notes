@@ -5,7 +5,7 @@
 
 #+LATEX_HEADER:	\renewcommand\raggedpart\centering
 #+LATEX_HEADER:	\renewcommand\thepart{\Alph{part}}
-#+LATEX_HEADER:	\renewcommand\thesection{\thepart.\arabic{section}}
+#+LATEX_HEADER:	\renewcommand\thesection{\thepart.\arabic{section}\ }
 #+LATEX_HEADER:
 #+LATEX_HEADER:	\renewcommand*{\partheadstartvskip}{%
 #+LATEX_HEADER:	\pagebreak\thispagestyle{empty}\vspace*{\fill}\begin{center}
@@ -16,8 +16,22 @@
 #+LATEX_HEADER:	\renewcommand*{\partheadendvskip}{%
 #+LATEX_HEADER:	\end{center}\vfill\newpage
 #+LATEX_HEADER:	}
+#+LATEX_HEADER:	\let\oldpart\part
+#+LATEX_HEADER: \renewcommand{\part}[1]{\oldpart{#1}\setcounter{section}{0}}
+#+LATEX_HEADER:	\setlength{\cftsecnumwidth}{2em}
+
 # Klausurzulassung: 60% der Punkte der Übungsaufgaben
 # Klausur 8.2
+# Nachklausur 15.2 lol, wird /vielleicht/ noch geändert
+
+# Modalitäten
+# -----------
+# 60% der Punkte
+# 2×vorrechnen
+# Aufgaben mit Stern sind Zusatzaufgaben
+# paarweise	abgeben
+# nur ganze Punkte
+# übliches bla bla
 
 # Elektrodynamik
 # --------------
@@ -109,16 +123,22 @@
   &= \frac{4π}{c}(\partial_t ρ + \Div \v j) \\
   ⇒ \partial_t ρ + \Div \v j &= 0 \tag{Kontinuitätsgleichung}
   \intertext{Aus der Kontinuitätsgleichung folgt die Ladungserhaltung}
-  ∫_V \d^3 r ρ &= \frac{}{t} \underbrace{∫_V \d^3 r ρ}_{q} = -∫_V \d^3 r \Div \v j = -∫_{\partial V} \d \v S \v j
+  ∫_V \d^3 r \partial_t ρ &= \dd{}{t} \underbrace{∫_V \d^3 r ρ}_{q} = -∫_V \d^3 r \Div \v j = -∫_{\partial V} \d \v S · \v j
   \end{align*}
+  - Änderung der Ladung in einem Volumen = Fluss der Ladung durch die Oberfläche.
+  - Dynamik der Felder ist konsistent zur Bewegung der Ladungen
+  - gilt auch in Materie! Ampere-Gesetz und Gauß-Gesetz enthalten falls $ε \neq 1$ die dielektrische Verschiebung $\v D$.
+  -	es existiert implizit eine zweite Erhaltungsgleichung für die magnetische Ladungen, die nicht existieren.
+	$2(1 + 3)$ Maxwell-Gleichungen für $2·2·3$ Felder!
 * Elektrodynamik in Materie
-  \begin{align*}
-  ε: \v D &= ε \v E \\
-  μ: \v B &= μ \v H
-  \end{align*}
+  Wechselwirkungen zwischen dem elektromagnetischen Feld und Materie ist *sehr* kompliziert im Mikroskopischen
+  $\to$ in vielen Fällen ist es trotzdem möglich, mit zwei Konstatnen eine einfach *effektive* Beschreibung zu finden.
+  - $ε$: Dielektrizitätskonstante $\to \v D = ε \v E$
+  -	$μ$: Permeabilitätskonstante $\to \v B = μ \v H$
   Im Vakuum: $ε = 1, μ = 1$, in Materie: $ε \neq 1, μ \neq 1$
   \begin{equation*}
   \begin{aligned}
+  \text{im Vakuum} \\
   \Div \v E &= 4πρ \\
   \Div \v B &= 0 \\
   \rot \v E &= - \partial_{pt} \v B \\
@@ -126,16 +146,27 @@
   \end{aligned}
   \qquad\qquad
   \begin{aligned}
+  \text{in Materie} \\
   \Div \v D &= 4πρ \\
   \Div \v B &= 0 \\
   \rot \v E &= - \partial_{pt} \v B \\
   \rot \v H &= \partial_{ct} \v D + \frac{4π}{c} \v j
   \end{aligned}
   \end{equation*}
+  (wir brauchen noch zwei Konzepte, Dipolfelder und das elektrische Potenzial um ein Modell für $ε$ aufstellen zu können).
 * elektrisches Potenzial $\to$ Elektrostatik
   #+begin_export latex
+  \begin{minipage}{.45\linewidth}
+  \begin{align*}
+  \v E(\v r) &= q_1 \frac{\v r - \v r_1}{\abs{\v r - \v r_1}^3} \\
+  \v E(\v r) &= \sum_{i} q_i \frac{\v r - \v r_i}{\abs{\v r - \v r_i}^3} \\
+  \end{align*}
+  (Definiton: Probeladung ist positiv $\to$ abstoßende Coulomb-Kraft falls $q_1 > 0$.)
+  \end{minipage}
+  \hfill%
   \catcode`(=12
   \catcode`)=12
+  \begin{minipage}{.45\linewidth}
   \begin{center}
   \begin{tikzpicture}
   \node[draw, circle, left] (q1) at (0,0) {$q_1$};
@@ -146,36 +177,131 @@
   \node[right,every text node part/.style={align=center}] at (2.5, -.5) {Beobachter \\ mit Probeladung};
   \end{tikzpicture}
   \end{center}
+  \end{minipage}
   \catcode`(=\active
   \catcode`)=\active
   #+end_export
-  \begin{align*}
-  \v E(\v r) &= q_1 \frac{\v r - \v r_1}{\abs{\v r - \v r_1}^3} \\
-  \v E(\v r) &= \sum_{i} q_i \frac{\v r - \v r_i}{\abs{\v r - \v r_i}^3} \\
-  \end{align*}
   Superposition wegen der Linearität der Maxwell-Gleichnug. \\
-  $\to$ Kontinuumslimit: ersetze $q \to ρ$
+  Kontinuumslimit: ersetze $q \to ρ$
   \begin{align*}
   \v E(\v r) &= ∫_V \d^3 r' ρ(\v r) \frac{\v r - \v r'}{\abs{\v r - \v r'}^3} = - ∫_V \d^3 r' ρ(\v r) ∇ \frac{1}{\abs{r - r'}} \\
   &= - ∇ \underbrace{∫_V \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}}}_{=ϕ(\v r)} \\
   \to \Aboxed{\v E(\v r) &= -∇ ϕ(\v r)} \\
-  ϕ(\v r) &= ∫_V \d^3 r' \frac{ρ(\v q')}{\abs{\v r - \v r'}}
+  ϕ(\v r) &= ∫_V \d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}}
   \end{align*}
-  $\rot \v E = 0$ falls $\partial_{ct} \v B = 0$. Auf der anderen Seite $\rot \v E = \rot ∇ ϕ = 0$
+  und es gilt automatisch in diesem Fall:
+  \[\rot \v E = -\rot ∇ ϕ = 0;\qquad (\rot E)_i = ε_{ijk} \partial_j \partial_k ϕ = 0\]
+  Substitution in das Gauß-Gesetz:
   \begin{align*}
   \Div \v E &= 4πρ \\
   \to \Aboxed{\Laplace ϕ &= - 4πρ} \tag{Poisson-Gleichung}
   \end{align*}
+  Falls keine Ladungen vorliegen, muss $\Laplace ϕ = 0$ gelten.
   \begin{align*}
   ϕ(\v r) &= \frac{1}{\abs{r - r'}} \\
   \intertext{Für Quelle mit $q = 1$ an der Stelle $\v r' = \v 0$:}
-  \Laplaceϕ &= \Laplace \frac{1}{r} = \frac{1}{r} \frac{\partial^2}{\partial r^2}(r \frac{1}{r}) = 0 \\
+  \Laplaceϕ &= (\partial_x^2 + \partial_y^2 + \partial_z^2)ϕ \underarrow[=]{Kugelkoordinaten, Winkel fallen weg, da sie nicht in $ϕ$ vorkommen} \Laplace \frac{1}{r} = \frac{1}{r} \frac{\partial^2}{\partial r^2}(r \frac{1}{r}) = 0 \\
   \intertext{klar, bei $\v r$ ist die Ladung nicht, sondern bei $\v 0$}
   ∫_V \d^3 r \Laplaceϕ &= ∫_V \d^3 r ∇(∇ϕ) \underarrow[=]{Satz von Gauß} ∫_{\partial V} \d \v S ∇ ϕ \\
-  &= ∫ r^2 \d Ω \underbrace{\pp{}{r}ϕ}_{=-\frac{1}{r^2}} = -∫ \d Ω = -4π \\
+  &= ∫ r^2 \d Ω \underbrace{\pp{ϕ}{r}}_{=-\frac{1}{r^2}} = -∫ \d Ω = -4π \\
+  \intertext{Zusammenfassung beider Fälle}
   \Laplace \frac{1}{\abs{\v r - \v r'}} &= -4π δ_D(\v r - \v r') \\
-  q δ_D(\v r - \v r') &= ρ(\v r) \\
-  j \d^n x δ_D(\v x) &= 1 \\
-  \Laplace ϕ(\v r) &= \Laplace ∫ \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r) \Laplace \frac{1}{\abs{\v r - \v r'}} = ∫ \d^3 r' ρ(\v r')(-4π) δ_D(\v r - \v r') \\
-  &= -4π ρ(\v r) \tag{Poisson-Gleichung}
+  \intertext{analog für Gravitation}
+  \Div \v g &= 4π ρ \\
+  \Laplace ϕ &= 4πGρ
+  \end{align*}
+* Dirac-Funktion $δ_D$
+  Elektrodynamik ist eine Kontinuumstheorie $\to$ $ρ$ ist eine Ladungsdichte:
+  \begin{equation*}
+  ∫_V \d^3 r ρ = q\tag{im Volumen $V$}
+  \end{equation*}
+  $qδ_D(\v r - \v r')$ repräsentiert eine Punktladung $q$ an der Stelle $\v r'$.
+  \begin{align*}
+  ρ(\v r) &= \sum_{i} q_i δ_D(\v r - \v r_i) \\
+  ϕ(\v r) &= ∫ \d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}} \\
+  \intertext{denn}
+  \Laplace ϕ(\v r) &= ∫ \d^3 r' ρ(\v r') \Laplace \frac{1}{\abs{\v r - \v r'}} = ∫ \d^3 r'ρ(\v r') (-4π) δ_D(\v r - \v r') \\
+  \Laplace ϕ(\v r) &= -4π σ(\v r) \tag*{Poisson-Gleichung} \\
+  \intertext{im diskreten Fall:}
+  ϕ(\v r) &= \sum_{i} \frac{q_i}{\abs{\v r - \v r_i}} \\
+  \Laplace ϕ(\v r) &= \sum_{i} q_i \Laplace \frac{1}{\abs{\v r - \v r'}} = \sum_{i} q_i (-4π) δ_D(\v r - \v r_i) \\
+  &= -4π \sum_{i} q_i σ_D(\v r - \v r') = -4π ρ(\v r)
+  \end{align*}
+* potenzielle Energie und das elektrostatische Potenzial
+  \begin{attention}
+  bitte seid super vorsichtig mit Energieinterpretationen von allem, was mit Relativität zutun hat!
+  \end{attention}
+  Coulomb-Kraft $\v F$:
+  \[\v F(\v r) = q \v E(\v r)\]
+  Verschiebearbeit $W$:
+  \begin{align*}
+  W &= ∫_A^B \d \v r · \v F = -q ∫_A^B \d \v r \v E \underarrow[=]{$\v E = - ∇ϕ$} g ∫_A^B \underbrace{\d \v r ∇ ϕ}_{= \pp{}{\v r}ϕ} \\
+  \intertext{mit $\d \v r · \pp{}{\v r}ϕ = \d ϕ$ (totales Differenzial)}
+  W &= q ∫_A^B \d ϕ = q(ϕ(B) - ϕ(A))
+  \end{align*}
+  - Potenzialdifferenz entspricht der Verschiebearbeit pro Ladung
+  -	Verschiebung muss extrem langsam erfolgen, dass $E \to B$ nicth transformiert (Lorentz!)
+* Eigenschaften der \(δ_D\)-Funktion
+  Zur Beschreibung wir die Dirac-Delta-Funktion verwendet:
+  \begin{align*}
+  \intertext{Normierung}
+  ∫ \d^n x δ_D(x) &= 1
+  \intertext{Lokalisierung}
+  ∫ \d^n x g(x) δ_D(x - y) &= g(y)
+  \end{align*}
+* Feldänderung an einer Oberfläche
+  Betrachte Oberfläche mit Oberflächenladung $σ$
+  \[σ = \lim_{ΔS \to 0} \frac{Δq}{ΔS}\]
+  wie wird ein elektrischen Feld durch diese Oberfläche beeinflusst? (vor Oberfläche: $\v E_1$, nach Oberfläche $\v E_2$) \\
+  Dazu wählen Zylinder mit den Mantelflächen parallel zur Oberfläche und Volumen $ΔV$.
+  \begin{align*}
+  ∫_{ΔV} \d^3 r' \Div \v E &\underarrow[=]{Gauß} ∫_{ΔS} \d \v S · \v E = 4π q = 4π \overbrace{∫_{\partial V} \d \v S σ}^{ΔS · σ} = ΔS(E_2^{\perp} - E_1^{\perp}) \\
+  ⇒ E_2^{\perp} = E_1^{\perp} + 4πσ
+  \end{align*}
+  Wenn das Feld tangential zur Oberfläche ist, kann man stattdessen eine Schleife wählen und den Satz von Stokes benutzen:
+  \[∫_{\partial} \d \v r \v E \underarrow[τ]{Stokes} ∫_S \d \v S \rot \v E = (E_2^{\parallel} - E_1^{\parallel}) Δr \to E_2^{\parallel} = E_1^{\parallel}\]
+* Energie einer	statischen Ladungsverteilung
+  \begin{tabular}{cccl}
+  1. & $q_1$ an einer Stelle $\v r_1$ & $\to$ & Potential $ϕ_1 = \frac{q_1}{\abs{\v r - \v r_1}}$ \\
+  2. & $q_2$ an einer Stelle $\v r_2$ & $\to$ & $W_2 = q_2 · ϕ_1(\v r_2)$ \\
+  3. & $q_3$ an einer Stelle $\v r_3$ & $\to$ & $W_3 = q_3 · (ϕ_1(\v r_2) + ϕ_2(\v r_3))$ \\
+  \vdots & & & \\
+  n. & $q_n$ an einer Stelle $\v r_n$ & $\to$ & $W_n = q_n · \sum_{i}^{n - 1} ϕ_i(\v r_n)$ \\
+  \end{tabular}
+  Man erkennt
+  \begin{align*}
+  W &= \sum_{n}^{N} W_n = \sum_{n}^{N} q_n \sum_{i}^{n - 1} ϕ_i(\v r_n) \\
+  W &= \sum_{n}^{N} q_n \sum_{i}^{n - 1} \frac{q_1}{\abs{\v r_1 - \v r_n}} = \frac{1}{2} \sum_{n}^{N} \sum_{\substack{i\\i\neq n}}^{N} \frac{q_i q_n}{\abs{\v r_1 - \v r_n}}
+  \end{align*}
+  Kontinuums-Limes
+  \begin{align*}
+  \sum_{i} q_i &\to ∫ \d^3 r' ρ(\v r') \\
+  W &= \frac{1}{2} ∫\d^3 r ∫ \d^3 r' \frac{ρ(\v r) ρ(\v r')}{\abs{\v r - \v r'}} = \frac{1}{2} ∫ \d^3 r ρ(\v r) \underbrace{∫\d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}}}_{=ϕ(\v r)} \\
+  &= \frac{1}{2} ∫ \d^3 r ρ(\v r) ϕ(\v r) \\
+  W &\underarrow[=]{Poisson-Gleichung $\Laplace ϕ = - 4π ρ$} -\frac{1}{8π} ∫\d^3 r \Laplace ϕ ϕ = - \frac{1}{8π} ∫\d^3 r^3 ϕ \Laplace ϕ  \\
+  \intertext{Es gilt: $ϕ \Laplace ϕ = ϕ ∇·(∇ϕ) = ∇(ϕ ∇ ϕ) - ∇ϕ∇ϕ$}
+  W &= -\frac{1}{8π} ∫ \d^3 r ∇(ϕ∇ϕ) + \frac{1}{8π} ∫ \d^3 r (∇ ϕ)^2 \\
+  &= -\frac{1}{8π} ∫ \d \v S (ϕ ∇ ϕ) + \frac{1}{8π} ∫ \d^3 r \underbrace{(∇ ϕ)^2}_{\v E = - ∇ ϕ} \\
+  \intertext{$∫ \d \v S (ϕ ∇ ϕ) = 0$ für große Volumen, da $ϕ \sim 1/r$, $∇ϕ \sim 1/r^2 ⇒ ϕ ∇ ϕ \sim 1/r^3$, aber $\d \v S \sim r^2$} \\
+  &= ∫\d^3 r \frac{\v E^2}{8π}
+  \end{align*}
+  \begin{attention}
+  Selbstenergie für $\v r' = \v r$ - keine Lösung in der klassischen Elektrodynamik.
+  \end{attention}
+\part{Potentialtheorie}
+Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
+3 Probleme
+1. Inversion des Differenzialoperators $\to$ Green-Funktion
+2. Geometrie der Ladungsverteilung $\to$ Multipolentwicklung
+3. Randbedingungen $\to$ Green-Theorie
+* Green-Theoreme
+  Es gilt für $\v A(\v r) = φ ∇ ψ$
+  \begin{align*}
+  \Div \v A - \Div(φ ∇ ψ) = ∇φ∇ψ + φ \Laplace ψ
+  \intertext{Satz von Gauß:}
+  ∫_V \d^3 \Div \v A &= ∫_{\partial V} \d \v S \v A \\
+  \intertext{$\v S = \d S \v n, \v n \sim$ Normalenvektor} \\
+  ∫_V \d^3 r'(∇' φ ∇' ψ + φ \Laplace' ψ) &= ∫_{\partial V} \d S φ ∇' ψ · \v n = ∫_{\partial V} \d S φ \pp{ψ}{n} \tag*{Erste greensche Identität} \\
+  \intertext{$φ \rightleftharpoons ψ$ und Subtraktion der Gleichungen}
+  ∫_V \d^3 r'(φ \Laplace' ψ - ψ \Laplace' φ) &= ∫_{\partial U} \d S (φ \pp{ψ}{n} - ψ \pp{ϕ}{n})
   \end{align*}
