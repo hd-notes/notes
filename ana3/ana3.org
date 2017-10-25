@@ -225,3 +225,91 @@
   #+begin_ex latex
   Das Zählmaß mit $X = ℝ, \mathcal{A} = \mathcal{B}$, ist regulär von inne, aber nicht von außen. Das Dirac-Maß ist regulär.
   #+end_ex
+  \begin{defn*}[Kompaktheit]
+  Sei $X$ ein topologischer Raum und $A ⊂ X$. Dann nennt man $A$ kompakt, wenn *jede* offene Überdeckung von $A$ eine *endliche* Teilüberdeckung besitzt.
+  Das beutet:
+  \[∀ I ∃ I' ⊂ I, \abs{I'} < ∞: A ⊂ \bigcup_{i ∈ I} A_i ⇒ A ⊂ \bigcup_{i ∈ I'} A_i\]
+  \end{defn*}
+  #+begin_remark latex
+  In einem metrischen Raum isnd die bisherigen Definitionen der Kompaktheit mit der neu eingeführten äquivalent.
+  #+end_remark
+  *Konstruktion von Maßen* \\
+  Strategie:
+  1. Starte mit einem Prämaß $λ$ auf einer Algebra endlichen, disjunkten Vereinigungen von Intervallen, $λ$ = Summe der Längen
+  2. Dieses Prämaß kann zu einem äußeren Maß auf $\mathcal{P}(ℝ)$ fortgesetzt werden (keine \(σ\)-Additivität)
+  3. Einschränkung auf Borel-\(σ\)-Algebra liefert ein Maß.
+
+  #+ATTR_LATEX: :options [Dynkin-System]
+  #+begin_defn latex
+  Eine Familie $\mathcal{D} ⊂ \mathcal{P}(X)$, $X$ Menge, heißt Dynkin-System, falls gilt:
+  1. $X ∈ \mathcal{D}$
+  2. $A ∈ \mathcal{D} ⇒ A^C ∈ \mathcal{D}$
+  3. $\displaystyle{(A_k)_{k ∈ ℕ} ⊂ \mathcal{D}, A_k ∩ A_l = \emptyset ∀ k, l ∈ ℕ, k \neq l ⇒ \bigcup_{k ∈ ℕ A_k ∈ \mathcal{D}}}$
+  #+end_defn
+  #+begin_remark latex
+  1. Ein Dynkin-System it abgeschlossen bezüglich Mengensubtraktion:
+	 \[A, B ∈ \mathcal{D}, B ⊂ A ⇒ A \setminus B = A ∩ B^C = (A^C ∪ B)^C ∈ \mathcal{D}\]
+  2. Ist $S ⊂ \mathcal{P}(X)$, so ist
+	 \[\mathcal{D}(S) = \bigcap \{\mathcal{D} \mid \mathcal{D} \text{ Dynkin-System}, S ⊂ \mathcal{D}\}\]
+	 das von $S$ erzeugte Dynkin-System
+  3. Das von $S$ erzeugte Dynkin-System ist	wohldefinieret, dass heiß, es ist eindeutig und tatsächlich ein Dynkin-System.
+  #+end_remark
+  #+begin_lemma latex
+  Ist $\mathcal{D}$ ein Dynkin-System und abgeschlossen bezüglich endlicher Schnitte oder alternativ bezüglich beliebiger (also nicht disjunkter)
+  endlicher Vereinigung, so ist $\mathcal{D}$ eine \(σ\)-Algebra
+  #+end_lemma
+  #+begin_proof latex
+  Übungen
+  #+end_proof
+  #+begin_lemma latex
+  Sei $S$ eine (nicht leere) Familie von Teilmengen einer Menge $X$, die abgeschlossen ist unter endlichen Schnitten sind, dann folgt $\mathcal{D}(S) = Σ(S)$
+  #+end_lemma
+  #+begin_proof latex
+  Nach Definition gilt $\mathcal{D} ⊂ Σ(S)$. Die andere Inklusion folgt sofort, wenn wir zeigen, dass $\mathcal{D}(S)$ \(σ\)-Algebra ist.
+  Nach Lemma 1.21 genügt es zu zeigen, dass $\mathcal{D}(S)$ abgeschlossen ist unter endlichen Schnitten. Definiere für ein	beliebiges $A ∈ \mathcal{D}(S)$
+  \[D(A) := \{B ∈ \mathcal{D} \mid A ∩ B ∈ \mathcal{D}\} ⊂ \mathcal{D}\]
+  wir müssen beweisen $D(A) = \mathcal{D}$ für alle $A ∈ \mathcal{D}$. Es gilt
+  1. $X ∈ \mathcal{D}, A ∩ X = A ∈ \mathcal{D} ⇒ X ∈ D(A)$
+  2. $B ∈ D(A) ⇒ B ∈ \mathcal{D}, A ∩ B ∈ \mathcal{D}$ woraus folgt
+	 \[A ∩ B^C = A \setminus (B ∩ A) ∈ \mathcal{D} ⇒ B^C ∈ D(A)\]
+  3. $B = \bigcup_{k ∈ ℕ} B_k, B_k ∈ D(A) ⇒ B_k ∈ \mathcal{D}, A ∩ B_k ∈ \mathcal{D}$ woraus folgt, dass $B ∈ \mathcal{D}$ und
+	 \[B ∩ A = \bigcup_{k ∈ ℕ} (B_k ∩ A) ∈ \mathcal{D} ⇒ B ∈ D(A)\]
+  Behauptung: $A ∈ S ⇒ S ⊂ D(A)$, denn: $B ∈ S ⇒ A ∩ B ∈ S ⇒ B ∈ D(A)$.
+  Da $\mathcal{D} = D(S)$ das kleinste Dynkin-System ist, das $S$ enthätlt folgt $\mathcal{D} ⊂ D(A) ⇒ \mathcal{D} = D(A)$.
+  Für beliebiges $U ∈ S, V ∈ \tilde{\mathcal{D}} = D(U)$ folgt nach Definition $U ∩ V ∈ \mathcal{D}$. Dies impliziert $U ∈ D(V)$, also $S ⊂ D(V) ∀ V ∈ \mathcal{D}$.
+  Wie eben ist $D(V) ⊂ \mathcal{D}$, also $D(V) = \mathcal{D} ∀ V ∈ \mathcal{D}$.
+  #+end_proof
+  #+begin_remark latex
+  Lemma 1.22 lässt sich wie folgt anwenden:
+  1. Verifiziere eine Eigenschaft $ε$ auf einer Menge $S ⊂ \mathcal{P}(X)$, die abgeschlossen ist unter endlichen Schnitten ist.
+  2. Zeige, dass die Menge aller Mengen, die $ε$ erfüllen ein Dynkin-System ist.
+  3. Schließe, dass $ε$ auf $Σ(S)$ gilt.
+  #+end_remark
+  #+ATTR_LATEX: :options [Eindeutigkeit von Maßen]
+  #+begin_thm latex
+  Sei $(X, Σ, μ)$ ein Maßraum und $S ⊂ \mathcal{P}(X)$ Familie von Menge, die abgeschlossen unter endlichen Schnitten und $Σ = Σ(S)$.
+  Weiter enthalte $S$ eine Folge aufsteigender Mengen $(X_k)_{k ∈ ℕ} ⊂ S$ mit $X_k \nearrow X$ und $μ(X_k) < ∞$ für alle $k ∈ ℕ$. Dann ist $μ$ auf $Σ = Σ(S)$ durch die Werte auf $S$ eindeutig bestimmt.
+  #+end_thm
+  #+begin_proof latex
+  Sei $\tilde μ$ ein weiteres Maß mit $\tilde μ = μ$ auf $S$. Dann gilt
+  \[\tilde μ(X) = \lim_{k \to ∞} \tilde μ(X_k) = \lim_{k \to ∞} μ(X_k) = μ(X)\]
+  zunächst $μ(X) < ∞$. Idee:
+  \[\mathcal{D}= \{A ∈ Σ \mid \tilde μ(A) = μ(A)\}\]
+  ist ein Dynkin-System. \\
+  $X ∈ \mathcal{D}$ bereits gezeigt. Für $A ∈ \mathcal{D}$ ist
+  \[\tilde μ(A^C) = \tilde μ(X) - \tilde μ(A) = μ(X) - μ(A) = μ(A^C)\]
+  $⇒ A^C ∈ \mathcal{D}$. Betrachte $(B_k)_{k ∈ ℕ}, B_k ∩ B_l = \emptyset ∀ k, l ∈ ℕ, k \neq l$ und $B_k ∈ \mathcal{D}$ sowie $B = \bigcup_{k ∈ ℕ} B_k$. Dann gilt
+  \[\tilde μ(B) = \sum_{k ∈ ℕ} \tilde μ(B_k) = \sum_{k ∈ ℕ} μ(B_k) = μ(B)\]
+  Nach Lemma 1.22 folgt also $Σ = Σ(S) = \mathcal{D}(S) ⊂ \mathcal{D} ⊂ Σ ⇒ \mathcal{D} = Σ$. \\
+  Im allgemeinen Fall erhalten wir für $A ∈ Σ$:
+  \[\tilde μ(A) = \lim_{k \to ∞}  \tilde μ(A ∩ X_k) = \lim_{k \to ∞} μ(X_k ∩ A)\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Prämaß]
+  #+begin_defn latex
+  Sei $X$ eine Menge und $\mathcal{A} ⊂ \mathcal{P}(X)$ eine Algebra. Ein *Prämaß* auf $X$ ist eine \(σ\)-additive Abbildung $μ: \mathcal{A} \to [0, ∞]$ mit $μ(\emptyset) = 0$.
+  #+end_defn
+  #+begin_remark latex
+  Man braucht nur die \(σ\)-Additivität für solche (paarweise disjunkte) Folgen $(A_k)_{k ∈ ℕ} ⊂ \mathcal{A}$ gewährleisten, deren Vereinigung
+  \[\bigcup_{k ∈ ℕ} A_k ∈ \mathcal{A}\]
+  Ein Prämaß auf einer \(σ\)-Algebra ist ein Maß.
+  #+end_remark

@@ -230,6 +230,7 @@
 #+LATEX_HEADER: \theoremstyle{plain}
 #+LATEX_HEADER: \theorembodyfont{\normalfont}
 #+LATEX_HEADER: \newtheorem{defn}{Definition}[section]
+#+LATEX_HEADER: \renewtheorem*{defn*}{Definition}
 #+LATEX_HEADER: \newtheorem{thm}[defn]{Satz}
 #+LATEX_HEADER: \newtheorem{lemma}[defn]{Lemma}
 #+LATEX_HEADER: \newtheorem{remark}[defn]{Bemerkung}
