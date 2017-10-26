@@ -242,25 +242,34 @@
   - Potenzialdifferenz entspricht der Verschiebearbeit pro Ladung
   -	Verschiebung muss extrem langsam erfolgen, dass $E \to B$ nicth transformiert (Lorentz!)
 * Eigenschaften der \(δ_D\)-Funktion
-  Zur Beschreibung wir die Dirac-Delta-Funktion verwendet:
   \begin{align*}
   \intertext{Normierung}
-  ∫ \d^n x δ_D(x) &= 1
+  ∫ \d^n x δ_D(x) &= 1 \\
   \intertext{Lokalisierung}
-  ∫ \d^n x g(x) δ_D(x - y) &= g(y)
+  ∫ \d^n x g(x) δ_D(x - y) &= g(y) \\
+  ∫_a^b \d x δ_D(x - c) &= \begin{cases} 1 & a \leq c \leq b \\ 0 & \text{sonst} \end{cases} \\
+  \intertext{Durch Substitution}
+  ∫ \d x δ_D(a x) &= \frac{1}{a} \\
+  \intertext{Durch partielle Integration}
+  ∫ \d x g(x) δ_D'(x - a) &= g(x) δ_D(x - a) \Big|_{-∞}^{+∞} - ∫ \d x g'(x) δ_D(x - a) \\
+  &= 0 - g'(a)
   \end{align*}
 * Feldänderung an einer Oberfläche
   Betrachte Oberfläche mit Oberflächenladung $σ$
   \[σ = \lim_{ΔS \to 0} \frac{Δq}{ΔS}\]
   wie wird ein elektrischen Feld durch diese Oberfläche beeinflusst? (vor Oberfläche: $\v E_1$, nach Oberfläche $\v E_2$) \\
-  Dazu wählen Zylinder mit den Mantelflächen parallel zur Oberfläche und Volumen $ΔV$.
+  Dazu wählen Zylinder mit den Mantelflächen parallel zur Oberfläche und Volumen $ΔV$ und, dass der elektrische Full durch die Seitenwände sehr klein ist und nicht zum Integral beiträgt.
   \begin{align*}
   ∫_{ΔV} \d^3 r' \Div \v E &\underarrow[=]{Gauß} ∫_{ΔS} \d \v S · \v E = 4π q = 4π \overbrace{∫_{\partial V} \d \v S σ}^{ΔS · σ} = ΔS(E_2^{\perp} - E_1^{\perp}) \\
   ⇒ E_2^{\perp} = E_1^{\perp} + 4πσ
   \end{align*}
   Wenn das Feld tangential zur Oberfläche ist, kann man stattdessen eine Schleife wählen und den Satz von Stokes benutzen:
   \[∫_{\partial} \d \v r \v E \underarrow[τ]{Stokes} ∫_S \d \v S \rot \v E = (E_2^{\parallel} - E_1^{\parallel}) Δr \to E_2^{\parallel} = E_1^{\parallel}\]
+  Außerdem: $\v E = -∇ ϕ ⇒ \rot \v E = - \rot ∇ ϕ = 0$.
 * Energie einer	statischen Ladungsverteilung
+  \begin{attention}
+  Energie + Relativitätstheorie: supervorsichtig!
+  \end{attention}
   \begin{tabular}{cccl}
   1. & $q_1$ an einer Stelle $\v r_1$ & $\to$ & Potential $ϕ_1 = \frac{q_1}{\abs{\v r - \v r_1}}$ \\
   2. & $q_2$ an einer Stelle $\v r_2$ & $\to$ & $W_2 = q_2 · ϕ_1(\v r_2)$ \\
@@ -271,7 +280,7 @@
   Man erkennt
   \begin{align*}
   W &= \sum_{n}^{N} W_n = \sum_{n}^{N} q_n \sum_{i}^{n - 1} ϕ_i(\v r_n) \\
-  W &= \sum_{n}^{N} q_n \sum_{i}^{n - 1} \frac{q_1}{\abs{\v r_1 - \v r_n}} = \frac{1}{2} \sum_{n}^{N} \sum_{\substack{i\\i\neq n}}^{N} \frac{q_i q_n}{\abs{\v r_1 - \v r_n}}
+  W &= \sum_{n}^{N} q_n \sum_{i}^{n - 1} \frac{q_1}{\abs{\v r_1 - \v r_n}} = \underarrow[\frac{1}{2}]{Korrektur der doppelten Zählung} \sum_{n}^{N} \sum_{\substack{i\\i\neq n}}^{N} \frac{q_i q_n}{\abs{\v r_1 - \v r_n}}
   \end{align*}
   Kontinuums-Limes
   \begin{align*}
@@ -282,9 +291,11 @@
   \intertext{Es gilt: $ϕ \Laplace ϕ = ϕ ∇·(∇ϕ) = ∇(ϕ ∇ ϕ) - ∇ϕ∇ϕ$}
   W &= -\frac{1}{8π} ∫ \d^3 r ∇(ϕ∇ϕ) + \frac{1}{8π} ∫ \d^3 r (∇ ϕ)^2 \\
   &= -\frac{1}{8π} ∫ \d \v S (ϕ ∇ ϕ) + \frac{1}{8π} ∫ \d^3 r \underbrace{(∇ ϕ)^2}_{\v E = - ∇ ϕ} \\
-  \intertext{$∫ \d \v S (ϕ ∇ ϕ) = 0$ für große Volumen, da $ϕ \sim 1/r$, $∇ϕ \sim 1/r^2 ⇒ ϕ ∇ ϕ \sim 1/r^3$, aber $\d \v S \sim r^2$} \\
-  &= ∫\d^3 r \frac{\v E^2}{8π}
+  \intertext{Satz von Gauß: $∫ \d \v S (ϕ ∇ ϕ) = 0$ für große Volumen, da typischerweise $ϕ \sim 1/r$, $∇ϕ \sim 1/r^2 ⇒ ϕ ∇ ϕ \sim 1/r^3$, aber $\d \v S \sim r^2$} \\
+  W &= \frac{1}{8π} ∫\d^3 r E^2
   \end{align*}
+  Energiedichte des elektrischen Felds:
+  \[ρ_{el} = \frac{\v E^2}{8π}\]
   \begin{attention}
   Selbstenergie für $\v r' = \v r$ - keine Lösung in der klassischen Elektrodynamik.
   \end{attention}
@@ -303,5 +314,5 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   \intertext{$\v S = \d S \v n, \v n \sim$ Normalenvektor} \\
   ∫_V \d^3 r'(∇' φ ∇' ψ + φ \Laplace' ψ) &= ∫_{\partial V} \d S φ ∇' ψ · \v n = ∫_{\partial V} \d S φ \pp{ψ}{n} \tag*{Erste greensche Identität} \\
   \intertext{$φ \rightleftharpoons ψ$ und Subtraktion der Gleichungen}
-  ∫_V \d^3 r'(φ \Laplace' ψ - ψ \Laplace' φ) &= ∫_{\partial U} \d S (φ \pp{ψ}{n} - ψ \pp{ϕ}{n})
+  ∫_V \d^3 r'(φ \Laplace' ψ - ψ \Laplace' φ) &= ∫_{\partial U} \d S (φ \pp{ψ}{n} - ψ \pp{ϕ}{n}) \tag*{Zweite greensche Identität}
   \end{align*}
