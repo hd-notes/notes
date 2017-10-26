@@ -305,5 +305,16 @@
 #+LATEX_HEADER:     };
 #+LATEX_HEADER:   };
 #+LATEX_HEADER: }
+#+LATEX_HEADER: \tikzset{
+#+LATEX_HEADER:     mark position/.style args={#1(#2)}{
+#+LATEX_HEADER:         postaction={
+#+LATEX_HEADER:             decorate,
+#+LATEX_HEADER:             decoration={
+#+LATEX_HEADER:                 markings,
+#+LATEX_HEADER:                 mark=at position #1 with \coordinate (#2);
+#+LATEX_HEADER:             }
+#+LATEX_HEADER:         }
+#+LATEX_HEADER:     }
+#+LATEX_HEADER: }
 #+LATEX_HEADER: \catcode`(=\active
 #+LATEX_HEADER: \catcode`)=\active

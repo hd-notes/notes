@@ -515,7 +515,7 @@
    | $T$                      | $\hat v$                                | $\hat λ_{dB}$            |
    | $\SI{300}{\kelvin}$      | $\sim\SI{240}{\meter\per\second}$       | $\SI{19}{\pico\meter}$   |
    | $\SI{10}{\micro\kelvin}$ | $\sim\SI{4}{\centi\meter\per\second}$   | $\SI{0.1}{\micro\meter}$ |
-   | $\SI{10}{\nano\kelvin}$  | $\sim\SI{1.4}{\centi\meter\per\second}$ | $\SI{3.3}{\micro\meter}$ |
+   | $\SI{10}{\nano\kelvin}$  | $\sim\SI{1.4}{\milli\meter\per\second}$ | $\SI{3.3}{\micro\meter}$ |
    \[λ_{dB} \propto \frac{1}{\sqrt{T}}\]
    $ψ(x, t)$ ist ein komplexes Feld: \\
    #+BEGIN_EXPORT latex
@@ -606,7 +606,7 @@
    \begin{tikzpicture}
     \draw[->] (0,0) -- (6,0) node[anchor=north] {$x$};
     \draw[->] (3,0) -- (3,3) node[anchor=east] {$ψ$};
-    \draw[color=black, domain=-3:3, samples=100,shift={(3,0)}] plot (\x,{(2*exp(-\x*\x)});
+    \draw[color=black, domain=-3:3, samples=100,shift={(3,0)}] plot (\x,{2*exp(-\x*\x)});
     \filldraw (3,2) circle (1.5pt);
     \node[above right] at (3,2) {$ψ_0$};
     \draw[<-] (4, .72) -- (5.5, .72) node[above] {$\frac{ψ_0}{e}$};
@@ -704,5 +704,255 @@
    \catcode`(=\active
    \catcode`)=\active
    #+END_EXPORT
-   Je kleiner die Struktur im Ortsraum, umso breiter wird die Verteilung im Impulsraum.
+   Je kleiner die Struktur im Ortsraum, umso breiter wird die Verteilung im Impulsraum. \\
+   \begin{ibox}{Aperiodische Funktionen}
+   \begin{align*}
+   f(x) &= \frac{1}{\sqrt{2π}}∫_{-∞}^∞ g(k) e^{ikx} \d k \\
+   g(k) &= \frac{1}{\sqrt{2π}}∫_{-∞}^∞ f(x) e^{-ikx} \d x \\
+   \end{align*}
+   \end{ibox}
+   Normierung:
+   \[∫_{-∞}^∞ f(x) f^{\ast}(x) \d x = ∫_{-∞}^{∞} g(k) g^{\ast}(k) \d k = 1\]
+   In der Quantenmechanik hat man
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{align*}
+   ψ(x) &⇔ f(x) \\
+   \tilde ψ(k) &⇔ g(k) \\
+   \end{align*}
+   Dirca-Delta Fuktion \\
+   \begin{align*}
+   f(x) &= δ(x) =
+   \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+   \draw[->] (0,0) -- (2,0) node[right] {$x$} node[below,midway] {$0$} ;
+   \draw[very thick] (1,0) -- (1,1) node[right] {$∞$};
+   \end{tikzpicture} \\
+   ∫_{-∞}^∞ h(x) δ(x - x_0) \d x &= h(x_0) \\
+   \intertext{Darstellung der Dirac \(δ\)-Funktion über Fourier-Transformation}
+   g(k) &= \frac{1}{\sqrt{2π}}∫_{-∞}^{∞} δ(x) e^{-ikx} \d x = \frac{1}{\sqrt{2π}} \\
+   δ(x) &= \frac{1}{2π} ∫_{-∞}^∞ e^{ikx} \d x
+   \end{align*}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+
+   Darstellung von komplexen Zahlen:
+   \begin{align*}
+   ψ &= \abs{ψ} e^{iϕ}\\
+   ψ(x) &= ∫_{-∞}^{∞} \tilde ψ(k) e^{ikx} \d k
+   \end{align*}
+
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{equation*}
+  \begin{array}{cc}
+    \text{Ort} & \text{Impuls} \\
+    ψ(x, t = 0) = (\frac{2}{πa^2})^{1/4} e^{-\frac{x^2}{a^2}} & \tilde ψ(k, t = 0) = \frac{\sqrt{a}}{(2π)^{3/4}} e^{-\frac{a^2}{4} k^2} \\
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+      \draw[->] (-3.5, 0) -- ++(0, 6) node[left] {$\abs{ψ}^{\circled[red]{$2$}}$};
+      \draw (0,.1) -- (0,-.1) node[below] {$0$};
+      \draw[variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {3*exp(-\x*\x)});
+      \draw[green,variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {6*exp(-4*\x*\x)});
+      \draw[->] (-2,{3*exp(-1)}) -- ++(1,0);
+      \draw[->] (2,{3*exp(-1)}) node[right, above] {$\frac{1}{\sqrt{e}}$-Breite} -- ++(-1,0);
+      \draw (1,{3*exp(-1) + .5}) -- ++(0,-1.9) node[below right,xshift=-2.7mm] {$Δx = \frac{a}{2}$};
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$k$};
+      \draw[->] (-3.5, 0) -- ++(0, 6) node[left] {$\tilde{\abs{ψ}}^{2}$};
+      \draw (0,.1) -- (0,-.1) node[below] {$0$};
+      \draw[variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {3*exp(-\x*\x)});
+      \draw[green,variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {1.5*exp(-.25*\x*\x)});
+      \draw[->] (-2,{3*exp(-1)}) -- ++(1,0);
+      \draw[->] (2,{3*exp(-1)}) node[right, above] {$\frac{1}{\sqrt{e}}$-Breite} -- ++(-1,0);
+      \draw (1,{3*exp(-1) + .5}) -- ++(0,-1.9) node[below right,xshift=-2.7mm] {$Δx = \frac{1}{k}$};
+    \end{tikzpicture}
+    \\
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+      \draw[->] (-3.5, 0) -- ++(0, 6) node[left] {$ϕ$};
+      \draw (-3.6, 3) node[left] {$0$} -- (-3.4,3);
+      \draw (-3.2, 3) -- (3.3,3);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$k$};
+      \draw[->] (-3.5, 0) -- ++(0, 6) node[left] {$\tilde ϕ$};
+      \draw (-3.6, 3) node[left] {$0$} -- (-3.4,3);
+      \draw (-3.2, 3) -- (3.3,3);
+    \end{tikzpicture}
+  \end{array}
+   \end{equation*}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+
+   \begin{ibox}{Heisenberg Unschärfe}
+   \[Δ x · Δ p = \hbar \underarrow[Δ x]{$\frac{1}{\sqrt{l}}$ Wert der W.-Verteilung} Δ k = \hbar \frac{a}{2} \frac{1}{a} = \frac{\hbar}{2}\]
+   $Δ x = \underarrow[\text{RMS}]{Root Mean Square} = \sqrt{\angl{x^2} - \angl{x}^2}$
+   \end{ibox}
+   folgt aus der Beschreibung eines Teilchens mit Gewschwindigkeit $\v v$ / Impuls $m \v v$ durch
+   $e^{i \v k \v x} ⇔$ de Broglie Welle und dem Superpositionsprinzip. \\
+   Extremfall: Teilchen am Ort $x_0$:
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+  \begin{equation*}
+  \begin{array}{cc}
+    \text{Ort} & \text{Impuls} \\
+    ψ(x, t = 0) = δ(x - x_0) & \tilde ψ(k, t = 0) = \frac{1}{2π}∫_{-∞}^{∞} e^{i k (x - x_0)} \d k \\
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+      \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\abs{ψ(x)}$};
+      \draw[red] (0,0) node[below] {$x_0$} -- ++(0,3.5);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$k$};
+      \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\abs{ψ(k)}$};
+      \draw[red] (-3.5,2) -- ++(7,0);
+    \end{tikzpicture}
+    \\
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+      \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$ϕ$};
+      \draw (-3.6, 1) node[left] {$0$} -- (-3.4,1);
+      \draw[red] (-3.2, 1) -- (3.3,1);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}
+      \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+      \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\tilde ϕ$};
+      \draw[red] (-3.4,2) node[left] {$-k x_0$} -- (3.4,2);
+    \end{tikzpicture}
+  \end{array}
+  \end{equation*}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   $⇒$ Impuls maximal $[-∞,∞]$ unscharf. \\
+   Analog: Ein Teilchen mit wohldefiniertem Impuls ist vollständig delokalisiert. \\
+   # Impuls ist: $e^{ik_0 x}$
+   Ausbreitung eines Wellenpakets:
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{alignat*}{2}
+  \intertext{$t = 0$}
+  &\begin{tikzpicture}
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\abs{ψ}$};
+    \draw (0,.1) -- (0,-.1) node[below] {$0$};
+    \draw[variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {4*exp(-4*\x*\x)});
+  \end{tikzpicture}
+  &&
+  \begin{tikzpicture}
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$k$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\tilde{\abs{ψ}}$};
+    \draw (0,.1) -- (0,-.1) node[below] {$0$};
+    \draw[variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {3*exp(-\x*\x)});
+  \end{tikzpicture}
+  \\
+  &\begin{tikzpicture}
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$ϕ$};
+    \draw (-3.6, 1) node[left] {$0$} -- (-3.4,1);
+    \draw (-3.2, 1) -- (3.3,1);
+  \end{tikzpicture}
+  &&
+  \begin{tikzpicture}
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$k$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\tilde ϕ$};
+    \draw (-3.6, 3) node[left] {$0$} -- (-3.4,3);
+    \draw (-3.2, 3) -- (3.3,3);
+  \end{tikzpicture}
+  \\
+  \intertext{{$\color{blue}t=T$}}
+  &\begin{tikzpicture}
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\abs{ψ}$};
+    \draw (0,.1) -- (0,-.1) node[below] {$0$};
+    \draw[variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {4*exp(-4*\x*\x)});
+    \draw[blue,variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {2*exp(-\x*\x)});
+    \draw[blue,<-] (1,1.5) -- (2,2.5) node[align=center,above right,xshift=-.5cm] {Wellenpaket \\ zerläuft};
+  \end{tikzpicture}
+  &&
+  \begin{tikzpicture}
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$k$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\tilde{\abs{ψ}}$};
+    \draw (0,.1) -- (0,-.1) node[below] {$0$};
+    \draw[variable=\x,smooth,domain=-3.5:3.5,samples=100] plot ({\x}, {3*exp(-\x*\x)});
+    \draw[<-] (1,1.5) -- (2,2.5) node[align=center,above right,xshift=-.5cm] {Keine Kraft \\ Impuls kann sich \\ nicht ändern};
+  \end{tikzpicture}
+  \\
+  &\begin{tikzpicture}
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$x$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$ϕ$};
+    \draw (-3.6, 1) node[left] {$0$} -- (-3.4,1);
+    \draw (-3.2, 1) -- (3.3,1);
+    \draw[mark position=.15(a),blue,domain=-3.5:3.5,variable=\x,samples=100,shift={(0,1)}] plot ({\x},{0.1*\x*\x});
+    \node[blue,below left,xshift=7pt] at (a) {$ϕ\propto x^2$};
+  \end{tikzpicture}
+  &&
+  \begin{tikzpicture}[remember picture]
+    \draw[->] (-3.5, 0) -- ++(7, 0) node[below] {$k$};
+    \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$\tilde ϕ$};
+    \draw (-3.6, 3) node[left] {$0$} -- (-3.4,3);
+    \draw (-3.2, 3) -- (3.3,3);
+    \draw[mark position=.75(a),mark position=.80(b),blue,domain=-3.5:3.5,variable=\x,samples=100,shift={(0,3)}] plot ({\x},{-0.15*\x*\x});
+    \node[right,blue,xshift=7pt] at (a) {$ϕ \propto -k^2$};
+%    \draw (0,0) -- (m-sq);
+  \end{tikzpicture}
+  \\
+  & && \qquad\tilde ψ(k, t) = \tilde ψ(k) e^{-iω_{dB} t} = \tilde ψ(k) e^{-i \frac{\hbar k^{
+        \text{\tikz[remember picture,overlay,baseline,anchor=base,inner sep=0pt]{
+            \node[shape=circle,draw,inner sep=0,thin,blue,text=black] (m-sq) at (0,0) {$2$};
+            \draw[->, blue] ([xshift=1pt,yshift=1pt]m-sq) to [bend left=5] ([yshift=-2pt,xshift=1pt]b);
+          }
+        }}}{2m}t}
+\end{alignat*}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   \begin{align*}
+   ψ(x, t) &= \frac{\sqrt{a}}{(2π)^{3/4}} ∫_{-∞}^∞ e^{-\frac{a^2}{4}(k - k_0)^2} e^{i(k x - ω(k)t)} \d k \\
+   \text{mit} \quad ω(k) &= \frac{\hbar k^2}{2m} \\
+   ψ(x, t) &= (\frac{2a^2}{π})^{1/4} \frac{e^{iφ}}{(a^4 + \frac{4\hbar^2 t^2}{m^2})^{1/4}} e^{i k_ 0 x} e^{- \frac{(x - \frac{\hbar k_0}{m}t)^2}{a^2 + \frac{2 i \hbar t}{m}}} \\
+   \text{mit} \quad φ &= -θ - \frac{\hbar k_0^2}{2m}t \\
+   \tan 2θ &= \frac{2\hbar t}{m a^2}
+   \end{align*}
+   Für die Breite $Δx(t)$ ergibt sich
+   \begin{align*}
+   Δx(t) &= \frac{a}{2}	\sqrt{1 + \frac{4\hbar^2 t^2}{m^2 a^4}} \\
+   \intertext{Für kurze Zeiten:}
+   Δx(t) &\sim \frac{a}{2} \frac{\hbar^2}{m^2 a^3}t^2 + \dots \tag*{Quadratisch} \\
+   \intertext{Für lange Zeiten:}
+   Δx(t) &\sim \frac{\hbar}{m a}t \tag*{Linear} \\
+   \intertext{Bemerkung:}
+   λ_{dB} &= 2 a  ⇔ v = \frac{\hbar}{m} \frac{2π}{λ_{dB}} = 2π \frac{\hbar}{m a}
+   \end{align*}
+   #+BEGIN_EXPORT latex
+\begin{minipage}{.4\linewidth}
+\begin{center}
+\catcode`(=12
+\catcode`)=12
+\begin{tikzpicture}
+  \draw[->] (-3.5, 0) -- ++(5, 0) node[below] {$t$};
+  \draw[->] (-3.5, 0) -- ++(0, 4) node[left] {$Δx$};
+  \draw[blue,domain=0:4.3,variable=\x,samples=100,shift={(-3.5,2)},smooth] node[left] {$2Δx_1$} plot ({\x},{0.1*\x*\x});
+  \draw[red,domain=0:3.5,variable=\x,samples=100,shift={(-3.5,1)},smooth] node[left] {$Δx_1$} plot ({\x},{0.25*\x*\x}) node[right] {$\propto t^2$};
+\end{tikzpicture}
+\catcode`(=\active
+\catcode`)=\active
+\end{center}
+\end{minipage}
+\hfill%
+\begin{minipage}{.6\linewidth}
+Stärkere Logalisierung führt zum schnellerem zerfließen!
+\end{minipage}
+   #+END_EXPORT
 \printbibliography
