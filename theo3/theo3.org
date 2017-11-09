@@ -468,7 +468,7 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   - Hexadekupol $l = 3 ⇒$ 7 Zahlen, $m = -3,-2,-1,0,+1,+2,+3$
   - \(\)-Multipol $⇒ 2l + 1$ Zahlen, von $-l$ bis $l$
   Hermitizität:
-  \[Y_{lm}^{\ast} &= (-1)^m Y_{lm}\]
+  \[Y_{lm}^{\ast} = (-1)^m Y_{lm}\]
   \begin{align*}
   ⇒ q^{\ast}_{lm} &= ∫ \d^3 r' ρ(\v r') r^{\prime l} Y_{lm}^{\ast}(θ', φ') = (-1)^m ∫ \d^3 r' ρ(\v r') Y_{l,rm}(θ,φ) \\
   q^{\ast}_{lm} &= (-1)^m q_{lm}
