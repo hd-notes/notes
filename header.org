@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \usepackage{polyglossia}
 #+LATEX_HEADER: \setdefaultlanguage[spelling=new, babelshorthands=true]{german}
 # #+LATEX_HEADER: \usepackage[german]{translator}
-#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor}
+#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket}
 #+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
@@ -144,6 +144,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\Sp}{sp}
 #+LATEX_HEADER: \DeclareMathOperator{\Aut}{Aut}
 #+LATEX_HEADER: \DeclareMathOperator{\im}{im}
+#+LATEX_HEADER: \DeclareMathOperator{\sinc}{sinc}
 #+LATEX_HEADER: \DeclareMathOperator{\id}{id}
 #+LATEX_HEADER: \DeclareMathOperator{\Rang}{Rang}
 #+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
@@ -258,7 +259,7 @@
 #+LATEX_HEADER:   }
 #+LATEX_HEADER:   {\end{mdframed}}
 # #+LATEX_HEADER: \newenvironment{box}{}
-#+LATEX_HEADER: \usetikzlibrary{math, arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel}
+#+LATEX_HEADER: \usetikzlibrary{math, arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel,external}
 
 # #+LATEX_HEADER: \makeatletter
 # #+LATEX_HEADER: \def\resetMathstrut@{%
@@ -315,6 +316,9 @@
 #+LATEX_HEADER:             }
 #+LATEX_HEADER:         }
 #+LATEX_HEADER:     }
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \newcommand{\wigglecircle}[5]{
+#+LATEX_HEADER:   \draw[shift={(#4,#5)}] plot[smooth cycle,samples=#3,domain=0:360] ({#1*cos(\x)+#2*rnd},{#1*sin(\x) + #2*rnd});
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \catcode`(=\active
 #+LATEX_HEADER: \catcode`)=\active

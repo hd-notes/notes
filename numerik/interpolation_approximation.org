@@ -292,7 +292,7 @@
    Gegeben $x_i, i = 0, \dots, m$ (paarweise verschieden),
    $y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i, μ \geq 0$. \\
    Gesucht: $p ∈ P_n, n = m + \sum_{i = 0}^{m} μ_i, p^{(k)}(x_j) = y_i^{(k)}, i = 0, \dots, m, k = 0, \dots, μ_i$,
-   $(μ_i + 1)$ -fache Stützstellen.
+   \((μ_i + 1)\)-fache Stützstellen.
    #+end_defn
    #+begin_ex latex
    $x_0 = -1, x_1 = 1, m = 1, y_0^{(0)} = 0, y^{(0)}_1 = 1, y_1^{(1)} = 2 ⇒ μ_0 = 0, μ_1 = 1 ⇒ n = 1 + 0 + 1 = 2 ⇒ p(x) = x^2$
@@ -438,7 +438,7 @@
    Ohne Beweis.
    #+end_thm
 ** Gauß Approximation
-   Wir betrachten $C[a, b]$, die Menge der stetigen Funktionen auf $[a, b]$ über dem Zahlenkörper $\mathbb{K} = ℝ$ oder $\mathbb{K} = ℂ$, als $\mathbb{K}$ -Vektorraum.
+   Wir betrachten $C[a, b]$, die Menge der stetigen Funktionen auf $[a, b]$ über dem Zahlenkörper $\mathbb{K} = ℝ$ oder $\mathbb{K} = ℂ$, als \(\mathbb{K}\)-Vektorraum.
    Für $f, g ∈ [a, b]$ erfüllt
    \[(f, g) := ∫_a^b f(t) \overline{g(t)} \d t\]
    die Eigenschaften eines Skalarproduktes:

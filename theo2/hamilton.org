@@ -80,9 +80,9 @@
    \dot p_i &= -\pp{H}{q_i}
    \end{align*}
    Vergleich:
-   1. Lagrange - $\{q_i\}$ - Lage im Konfigurationsraum, $\{\dot q_i\}$ - momentane Geschwindigkeiten $⇒$ Zustand des Systems
+   1. Lagrange - \(\{q_i\}\)- Lage im Konfigurationsraum, \(\{\dot q_i\}\)- momentane Geschwindigkeiten $⇒$ Zustand des Systems
 	  Bewegung: Differentialgleichungen 2. Ordnung
-   2. Hamilton - $\{ξ_a\} \equiv \{q_i, p_i\}$ - Lage im Phasenraum $⇒$ Zustand des Systems
+   2. Hamilton - \(\{ξ_a\} \equiv \{q_i, p_i\}\)- Lage im Phasenraum $⇒$ Zustand des Systems
 	  Bewegung: Differentialgleichungen 1. Ordnung (2n Stück): $\dot ξ_a = f_a(ξ_1, \dots, ξ_{2n})$
    Zur Intuition:
    \[H = \frac{p^2}{2 m} + V(q)\]

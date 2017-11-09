@@ -1,6 +1,6 @@
 * Hamilton-Machanik in Differentialformen
 ** Tangential- und Cotangentialraum
-   Sei $M$ ein $d$ -dimensionaler Raum, zum Beispiel für $d = 2$ ein Sphäre. Solch ein Raum ist "real" unabhängig von den Koordianten.
+   Sei $M$ ein \(d\)-dimensionaler Raum, zum Beispiel für $d = 2$ ein Sphäre. Solch ein Raum ist "real" unabhängig von den Koordianten.
    #+ATTR_LATEX: :options [Ebene]
    #+begin_ex latex
    Koordiantenwechsel wird durch wohlbekannte Ausdrücke für $x^1 = x^1(r, φ), x^2 = x^2(r, φ)$ beschrieben. Auch Vektorfeld auf $M$ ist real unabhänigig von den Koordianten: Zum Beispiel sieht man dies,
@@ -94,7 +94,7 @@
    $⇒$ Man sieht explizit, wie $H$ das Vektorfeld $ξ^i$ definiert. Das geht mit jeder Observablen und wir nennen den entsprechenden Vektor (Vektorfeld) $V(F), V(G)$, etc.
    \[⇒ \{F, G\} = ω(V(F), V(G))\]
 ** Integration von Differentialformen
-   Behauptung: $p$ -Form kann über $p$ -dimensionale Hyperfläche $C_p$ integriert werden:
+   Behauptung: \(p\)-Form kann über \(p\)-dimensionale Hyperfläche $C_p$ integriert werden:
    \[∫_{C_p} ω P = \text{ Zahl}\]
    Man zerlege dazu die Fläche in kleine Parallelepipede.
    Definiere

@@ -5,7 +5,7 @@
 
 #+LATEX_HEADER:	\renewcommand\raggedpart\centering
 #+LATEX_HEADER:	\renewcommand\thepart{\Alph{part}}
-#+LATEX_HEADER:	\renewcommand\thesection{\thepart.\arabic{section}\ }
+#+LATEX_HEADER:	\renewcommand\thesection{\thepart.\arabic{section}}
 #+LATEX_HEADER:
 #+LATEX_HEADER:	\renewcommand*{\partheadstartvskip}{%
 #+LATEX_HEADER:	\pagebreak\thispagestyle{empty}\vspace*{\fill}\begin{center}
@@ -297,8 +297,10 @@
   Energiedichte des elektrischen Felds:
   \[ρ_{el} = \frac{\v E^2}{8π}\]
   \begin{attention}
-  Selbstenergie für $\v r' = \v r$ - keine Lösung in der klassischen Elektrodynamik.
+  Selbstenergie für \(\v r' = \v r\)- keine Lösung in der klassischen Elektrodynamik.
   \end{attention}
+
+
 \part{Potentialtheorie}
 Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
 3 Probleme
@@ -315,4 +317,320 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   ∫_V \d^3 r'(∇' φ ∇' ψ + φ \Laplace' ψ) &= ∫_{\partial V} \d S φ ∇' ψ · \v n = ∫_{\partial V} \d S φ \pp{ψ}{n} \tag*{Erste greensche Identität} \\
   \intertext{$φ \rightleftharpoons ψ$ und Subtraktion der Gleichungen}
   ∫_V \d^3 r'(φ \Laplace' ψ - ψ \Laplace' φ) &= ∫_{\partial U} \d S (φ \pp{ψ}{n} - ψ \pp{ϕ}{n}) \tag*{Zweite greensche Identität}
+  \end{align*}
+  Wahl der Funktionen
+  \begin{align*}
+  ψ &= \frac{1}{\abs{\v r - \v r'}} \\
+  φ &= ϕ(\v r') \tag*{elektrostatisches Potential} \\
+  ⇒ \Laplace' ψ &= \Laplace' \frac{1}{\abs{\v r - \v r'}} = -4π δ_D(\v r - \v r') \\
+  \Laplace' φ &= \Laplace ϕ = -4π ρ(\v r')
+  -4π ∫_V \d^3 r' ϕ(\v r) δ(\v r - \v r') + 4π ∫_V \d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}} \\
+  &= ∫_{\partial V} \d S' ϕ(\v r') \pp{}{n'} \frac{1}{\abs{\v r - \v r'}} - \frac{1}{\abs{\v r - \v r'}} \pp{}{n'} ϕ(\v r') \\
+  \intertext{Falls $\v r$ innerhalb von $V$ liegt:}
+  ∫_V \d^3 r' ϕ(\v r') δ_D(\v r - \v r') &= ϕ(\v r) \\
+  ⇒ ϕ(\v r) &= \underbrace{∫_V \d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}}}_{\mathclap{\text{Potenzial aus}\atop\text{der Ladungsverteilung}}}  + \frac{1}{4π} ∫_{\partial V} \d S'\Big{\string(}\overbrace{\frac{1}{\abs{\v r - \v r'}} \pp{}{n'}ϕ}^{\mathclap{{{\text{Neumann-}}\atop{\text{Raundbedingungen}}}\atop{\pp{ϕ}{n} \text{ auf } \partial V}}} - \underbrace{ϕ(\v r') \pp{}{n'} \frac{1}{\abs{\v r - \v r'}}}_{\mathclap{{\text{Dirichlet-}\atop\text{Randbedingung}}\atop{ϕ\text{ auf }\partial V}}}\Big{\string)}
+  \end{align*}
+  $\partial V$ unendlich weit weg:
+  \begin{align*}
+  \frac{1}{\abs{\v r - \v r'}} \pp{}{n}ϕ &\sim \frac{1}{r^3} \to 0 \\
+  ϕ \pp{}{n} \frac{1}{\abs{\v r - \v r'}} &\sim \frac{1}{r^3} \to 0
+  \end{align*}
+  $⇒$ nur der erste Term bleibt übrig:
+  \[ϕ(\v r) = ∫_V \d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}}\]
+  $ρ(\v r) = 0$ innerhalb von $V$: $ϕ$ bestimmt durch $ϕ$ und $\pp{ϕ}{n}$ auf der Oberfläche $\partial V$.
+* Eindeutigkeit des Potenzials
+  #+begin_thm latex
+  Potenzial $ϕ$ ist eindeutig mit der Vorgabe von Dirichlet *oder* Neumann-Randbedingungen.
+  #+end_thm
+  #+begin_proof latex
+  Annahme für Widerspruchsbeweis: 2 Potenziale $ϕ_1(\v r)$ und $ϕ_2(\v r)$, beide Lösungen der Poisson-Gleichnug:
+  \begin{align*}
+  \begin{rcases*}
+  \Laplace ϕ_1 = -4π ρ \\
+  \Laplace ϕ_2 = -4π ρ \\
+  \end{rcases*}
+  \Laplace\underbrace{(ϕ_1 - ϕ_2)}_{U} &= 0
+  \intertext{Randbedingungen:}
+  ϕ_1 \big|_{\partial V} &= ϕ_2 \big|_{\partial V} \\
+  \pp{ϕ_1}{n} \big|_{\partial V} &= \pp{ϕ_2}{n} \big|_{\partial V} \\
+  \end{align*}
+  1 Green-Theorem mit $U = ϕ_1 - ϕ_2$ und $φ = ψ = U$
+  \begin{align*}
+  ∫_V \d^3 r'\string(\underbrace{U \Laplace' U}_{= 0} + (∇' U)^2\string) &= ∫_{\partial V} \d S U \pp{U}{n} \\
+  \intertext{wenn $n = 0$ (Dirichlet) oder $\pp{U}{n'}$ (Neumann)}
+  ∫_{\partial V} \d S U \pp{U}{n} &= 0 \\
+  ⇒ ∫_V \d^3 r'(∇' U)^2 &= 0
+  \end{align*}
+  $⇒ U$ ist konstant un $V$, $ϕ_1 = ϕ_2 + \const$. Die Potenziale unterscheiden sich nur um eine additive Konstante.
+  #+end_proof
+* Green-Funktion $\to$ Potenzial einer Punktladung
+  Potenzial einer Punktladung:
+  \[\Laplace \underbrace{\frac{1}{\abs{\v r - \v r'}}}_{\mathclap{\text{Green-Funktion von } \Laplace}} = -4π δ_D(\v r - \v r')\]
+  Verallgemeinerung:
+  \begin{align*}
+  \Laplace G(\v r, \v r') &= -4π δ_D(\v r - \v r') \\
+  \text{mit } G(\v r, \v r') &= \frac{1}{\abs{\v r - \v r'}} + \underbrace{F(\v r, \v r')}_{\Laplace F(\v r, \v r') = 0} \\
+  \intertext{$F(\v r, \v r')$ erfüllt die vakuum-Feldgleichngug $\Laplace F = 0\to F$ kann benutzt werden, um Randbedingungen zu erfüllen. "Spiegelladungen", Superpositionsprinzip (Elektrodynamik ist linear)}
+  \Laplace G(\v r, \v r') &= \Laplace \frac{1}{\abs{\v r - \v r'}} = -4π δ_D(\v r - \v r') \\
+  ⇒ ∫ \d^3 r' \Laplace G(\v r, \v r') ρ(\v r') &= \Laplace ∫ \d^3 r' G(\v r, \v r') ρ(\v r') \\
+  &= \Laplace ∫ \d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}} \\
+  &= \Laplace ϕ = -4π ∫ \d^3 r' δ_D(\v r - \v r') ρ(\v r') \\
+  &= -4π ρ(\v r) \\
+  ⇒ ϕ &= ∫ \d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}} \text{ invertiert } \Laplace ϕ = -4πρ
+  \end{align*}
+  Konstruktion von Green-Funktionen im Fourier-Raum
+  \begin{align*}
+  \Laplace ϕ(\v r) &= -4π ρ(\v r) \to \text{Fourier-Transformation (Poisson-Gleichnug ist linear)} \\
+  \Laplace ϕ(\v r) &= \Laplace ∫ \d^3 k ϕ(\v k) \exp(i \v k \v r) = ∫ \d^3 k ϕ(\v k) \Laplace \exp(i \v k \v r) \\
+  &= ∫ \d^3 k ϕ(\v k) (i \v k)^2 \exp(i \v k \v r) = -4π ∫ \d^3 k ρ(\v k) \exp(i \v k \v r) \\
+  ⇒ (i \v k)^2 ϕ(\v k) &= -k^2 ϕ(\v k) = -4π ρ(\v k) \\
+  ⇒ ϕ(\v k) &= \frac{4π}{k^2}ρ(\v k)
+  \end{align*}
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  #+end_export
+  \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=5em, minimum width=3em] {ρ(\v k) & ϕ(\v k) \\ ρ(\v r) & ϕ(\v r)\\};
+  \path[-stealth]
+  (m-1-1) edge node [above] {$-\frac{1}{k^2}$} (m-1-2)
+  (m-1-2) edge node [right] {$\mathcal{F}^{-1}$} (m-2-2)
+  (m-2-2) edge node [above] {$\Laplace$} (m-2-1)
+  (m-2-1) edge node [left] {$\mathcal{F}$} (m-1-1);
+  \end{tikzpicture}
+  \end{figure}
+  #+begin_export latex
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  für numerische Berechnungen ist es extrem	vorteilhaft, die Fourier-Methode zu benutzen $\to$ "Fast-Fourier-Transform (FFT)". \\
+  Faltung der Ladungsverteilung mit der Green-Funktion $\to$ Multiplikation im Fourier-Raum.
+  \[ϕ(\v r) = ∫ \d^3 r' \underarrow[G(\v r, \v r')]{$\displaystyle{\frac{1}{\abs{\v r - \v r'}}}$ für $\Laplace$} ρ(\v r') \to ϕ(\v k) = \underarrow[G(\v k)]{$\displaystyle{-\frac{1}{k^2}}$} ρ(\v k)\]
+  Bestimmung von Green-Funktionen aus dem Differenzialoperator.
+  \begin{align*}
+  \Laplace G(\v r, \v r') &= -4π δ(\v r - \v r') \to \text{ Fourier-Transformation} \\
+  \Laplace G(\v r, \v r') &= ∫ \d^3 k G(k) \underbrace{\Laplace \exp(i \v k(\v r - \v r'))}_{\mathclap{= (i \v k)^2 = - k^2 \to G(k) = - \frac{1}{k^2}}} = 4π ∫ \d^3 k \exp(i \v k(\v r - \v r')) \\
+  G(\v r, \v r') &= ∫ \d^3 k G(k) \exp(i\v k \v r) ∫ \d^3 k (-\frac{1}{k^2}) \exp(i \v k \v r) \text{ mit } \v r' =	\v 0 \\
+  &= ∫ k^2 \d k ∫ \sin θ \d θ ∫ \d φ \frac{1}{k^2} \exp(i k r \cos θ) = 2π ∫ \d k ∫_{-1}^{+1} \d μ \exp(i k r μ) \\
+  &= 2π ∫ \d k \sinc(k r) = \frac{2π}{r} ∫ \d y \sinc(y) \\
+  &= \frac{1}{r}
+  \end{align*}
+* Multipolentwicklung
+  Idee: Von "weit weg" sieht man nur sphärische Ladungsverteilung. Also zerlege Potenzial in sphärischen Anteil und kleine Korrekturen.
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{center}
+  \begin{tikzpicture}
+  \wigglecircle{.75}{.25}{20}{0}{0}
+  \node at (0,.4) {$ρ(\v r)$};
+  \draw[->] (-1,-1) --++(1,1) node[midway,above] {$\v r'$};
+  \draw[->] (-1,-1) --++(4,1) node[midway,below] {$\v r$};
+  \filldraw (-1,-1) circle (1pt);
+  \filldraw (3,0) circle (1pt);
+  \draw[domain=15:45,smooth,shift={(-1,-1)}] plot ({.5*cos(\x)},{.5*sin(\x)});
+  \node[below right,yshift=3pt] at (-1,-1) {$α$};
+  \end{tikzpicture}
+  \end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  \begin{align*}
+  ϕ(\v r) &= ∫ \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} \\
+  \frac{1}{\abs{\v r - \v r'}} &= \frac{1}{\sqrt{r^2 - 2r r' \cos α + r^2}} \\
+  \intertext{mit $μ\cos α$:}
+  &= \frac{1}{r} \frac{1}{\sqrt{1 - 2 \frac{r'}{r}μ + (\frac{r'}{r})^2}} \overarrow[=]{Annahme $r > r'$, $\v r$ ist weit weg von der Ladungsverteilung an $\v r'$} \frac{1}{r}(\mathcal{P}_0(μ) + \frac{r'}{r} \mathcal{P}_1(μ) + (\frac{r'}{r})^2 \mathcal{P}_2(μ) + \dots) \\
+  &= \sum_{l = 0}^{∞} \frac{r^{l + 1}}{r^{\prime l}} \mathcal{P}_l (μ) \\
+  \intertext{$\mathcal{P}_l \sim$ Legendre Polynome, erzeugende Funktion:}
+  \frac{1}{\sqrt{1 - 2z x + z^2}} &= \sum_{l} \mathcal{P}_l(x) z^l = \mathcal{P}_0(x) + \mathcal{P}_1(x) z + \mathcal{P}_2(x) z^2 + \dots \\
+  \intertext{Durch sukksesives Differenzieren kann man durch auswerten an $z = 0$ die $\mathcal{P}_l$ bestimmen:}
+  ⇒ \mathcal{P}_l(μ) &= \frac{1}{2^l l!} \frac{\d^l}{\d μ^l}(μ^2 - 1)^l \tag*{Formel von Rodrigues} \\
+  \mathcal{P}_0(μ) &= 1 \\
+  \mathcal{P}_1(μ) &= μ \\
+  \mathcal{P}_2(μ) &= \frac{1}{2}(3μ^2 - 1) \\
+  \mathcal{P}_3(μ) &= \frac{1}{2}(5 μ^5 - 3μ^2) \\
+  \intertext{Legendre Polynome sind ein Satz orthogonaler Polynome:}
+  ∫_{-1}^{+1} \d μ \mathcal{P}_l(μ) \mathcal{P}_{l'}(μ) &= \frac{2}{2l + 1} δ_{l l'} \\
+  \intertext{Additionstheorem: $Y_{lm}$: spärische-harmonische Funktionen}
+  \mathcal{P}_l(μ) &= \frac{4π}{2l + 1} \sum_{m = -l}^{l} Y_{lm}(θ, φ) Y_{lm}^{\ast}(θ', φ') \\
+  \frac{1}{\abs{\v r- \v r'}} &= \sum_{l} \sum_{m = -l}^{+l} \frac{4π}{2l + 1} \frac{r^{\prime l}}{r^{l + 1}} Y_{lm}(θ,φ) Y^{\ast}_{lm}(θ',φ') \\
+  ϕ(\v r) &= ∫\d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} \\
+  ⇒ ϕ(\v r) ∫ \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} &= \sum_{l = 0}^{∞} \sum_{m = -l}^{+l} \frac{4π}{2 l + 1} \frac{1}{r^{l + 1}} Y_{lm}(θ, φ) \underbrace{∫ \d^3 r' ρ(\v r ') r^{\prime l} Y^{\ast}_{lm}(θ', φ')}_{q_{lm}} \\
+  \intertext{$q_{lm}$: Multipol-Moment}
+  \end{align*}
+  Beitrag von $q_{lm}$ zu $ϕ$ ist $\propto \frac{1}{r^{l + 1}}$ $⇒$ höhere Multipolmomente haben Beiträge nur auf kleinen Skalen.
+  - Monopol: $l = 0 ⇒$ 1 Zahl, $m = 0$
+	\[q_{00} = ∫ \d^3 ρ(\v r') r^{\prime 0} Y_{00}(θ',φ') = \frac{1}{\sqrt{4π}} ∫ \d^3 r' ρ(\v r') = \frac{Q}{\sqrt{4π}}\]
+  - Dipol $l = 1 ⇒$ 3 Zahlen, $m = -1,0,+1$
+  - Oktupol $l = 2 ⇒$ 5 Zahlen, $m = -2,-1,0,+1,+2$
+  - Hexadekupol $l = 3 ⇒$ 7 Zahlen, $m = -3,-2,-1,0,+1,+2,+3$
+  - \(\)-Multipol $⇒ 2l + 1$ Zahlen, von $-l$ bis $l$
+  Hermitizität:
+  \[Y_{lm}^{\ast} &= (-1)^m Y_{lm}\]
+  \begin{align*}
+  ⇒ q^{\ast}_{lm} &= ∫ \d^3 r' ρ(\v r') r^{\prime l} Y_{lm}^{\ast}(θ', φ') = (-1)^m ∫ \d^3 r' ρ(\v r') Y_{l,rm}(θ,φ) \\
+  q^{\ast}_{lm} &= (-1)^m q_{lm}
+  \end{align*}
+  Ladungsverteilung $ρ(\v r)$ ist reell $⇒$ nur $l + 1$ unabhängige Momente.
+* sphärisch-harmonische Funktionen
+  Lineares Funktionensystem auf der Kugel $(θ,φ)$ nach dem alle skalaren Funktionen entwickelt werden können.
+  \begin{align*}
+  Y_{lm}(θ, φ) &= \sqrt{\frac{2l + 1}{4π}}\sqrt{\frac{(l - m)!}{(l + m)!}} \mathcal{P}_{lm}(\cos θ) e^{i m φ} \\
+  Y_{00}(θ, φ) &= \frac{1}{\sqrt{4π}} ⇒ ϕ(\v r) = \frac{Q}{r}, Q = q_{00}, l = m - 0 \\
+  Y_{10}(θ, φ) &= \sqrt{\frac{3}{4π}} \cos θ \\
+  Y_{11}(θ, φ) &= \sqrt{\frac{3}{8π}} \sin θ e^{i φ} \\
+  \intertext{$\mathcal{P}_{lm}(\cos θ)$: assoziierte Legendre Polynome}
+  \mathcal{P}_{lm}(μ) &= (-1)^m (1 - μ^2)^{\frac{m}{2}} \frac{\d^m}{\d μ^m} \mathcal{P}_l(μ) \\
+  \mathcal{P}_{lm}(μ) &= \frac{(-1)^m}{2^l l!} (1 - μ^2)^{m/2} \frac{\d^{l + m}}{\d μ^{l + m}}(μ^2 - 1)^l \\
+  ∫_{-1}^{+1} \d μ \mathcal{P}_{lm}(μ) P_{l'm'}(μ) &= \frac{2}{2l + 1} \frac{(l + m)!}{(l - m)!} δ_{ll'} \\
+  \intertext{$⇒$ sphärisch harmonische Funktionen}
+  ∫_{0}^{2π} \d φ ∫_{0}^{π} \sin θ \d θ Y_{lm}(θ,φ) Y_{l'm'}^{\ast} (θ,φ) &= δ_{ll'} δ_{mm'} \tag{Orthogonalität} \\
+  \sum_{l = 0}^{∞} \sum_{m = -l}^{+l} Y_{lm}(θ,φ) Y^{\ast}_{lm}(θ',φ') &= δ_D(φ - φ')\underbrace{δ_D(\cos θ - \cos θ')}_{= δ_D(θ - θ')} \\
+  \mathcal{P}_l(\cos α) &= \frac{4π}{2l + 1} \sum_{m = -l}^{+l} Y_{lm}^{\ast}(θ,φ) Y_{lm}(θ',φ') \\
+  \intertext{in karthesischen Koordinaten:}
+  q_{10} &= ∫\d^3 r' ρ(\v r) r' Y_{10}(θ', φ') = ∫ \d^3 r' ρ(\v r) r' \frac{3}{4π} \cos θ \\
+  q_{11} &= ∫\d^3 r' ρ(\v r) r' Y_{10}(θ', φ') = ∫ \d^3 r' ρ(\v r) r' \frac{3}{8π} \sin θ(\cos φ + i \sin φ) \\
+  \intertext{intuitives System, Dipolmoment $\v p = q \v a$}
+  ρ(\v r) &= q(δ_D(\v r - \frac{1}{2} \v a) - δ_D(\v r + \frac{1}{2} \v a)) \\
+  \v p &= ∫ \d^3 r' ρ(\v r') \v r' = q ∫ \d^3 r'(δ_D(\v r' - \frac{\v a}{2}) - δ_D(\v r' + \frac{\v a}{2}))\v r'= q \v a \tag{Dipolmoment} \\
+  q_{10} &= ∫ \d^3 r' δ(\v r) \sqrt{\frac{3}{4π}} r' \cos θ' = \sqrt{\frac{3}{4π}} p_z \\
+  q_{11} &= ∫ \d^3 r' δ(\v r) \sqrt{\frac{3}{8π}} r' \sin θ'(\cos φ' + i \sin φ') = \sqrt{\frac{3}{8π}}(p_x + i p_y) \\
+  \intertext{Quadrupolmomente ($l = 2$)}
+  q_{20} &= ∫ \d^3 r' ρ(\v r') r^{\prime 2} \sqrt{\frac{5}{4π}}(\frac{3}{2} \cos^2 θ' \frac{1}{2}) \\
+  q_{21} &= -∫ \d^3 r' ρ(\v r') r^{\prime 2} \sqrt{\frac{15}{8π}} \sin θ \cos θ e^{iφ} \\
+  q_{22} &= ∫ \d^3 r' ρ(\v r') r^{\prime 2}	\frac{1}{4} \sqrt{\frac{15}{2π}} \sin^2 θ e^{2iφ}
+  \end{align*}
+  Monopol:
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{tikzpicture}
+  \node[circle,draw] at (0, 0) {$+$};
+  \node at (0, -1.5) {$ϕ \sim \frac{Q}{r}$};
+  \end{tikzpicture}
+  Dipol
+  \begin{tikzpicture}
+  \node[circle,draw] at (0, -.5) {$+$};
+  \node[circle,draw] at (0, +.5) {$-$};
+  \node at (0, -1.5) {$ϕ \sim \frac{Q}{r^2}$};
+  \end{tikzpicture}
+  Quadropol
+  \begin{tikzpicture}
+  \node[circle,draw] at (.5, -.5) {$-$};
+  \node[circle,draw] at (-.5, .5) {$-$};
+  \node[circle,draw] at (-.5, -.5) {$+$};
+  \node[circle,draw] at (.5, .5) {$+$};
+  \node at (0, -1.5) {$ϕ \sim \frac{Q}{r^3}$};
+  \end{tikzpicture}
+  Oktopol
+  \begin{tikzpicture}
+  \node[circle,draw] at (.5, -.5, .5) {$-$};
+  \node[circle,draw] at (-.5, .5, .5) {$-$};
+  \node[circle,draw] at (-.5, -.5, .5) {$+$};
+  \node[circle,draw] at (.5, .5, .5) {$+$};
+  \node[circle,draw] at (.5, -.5, -.5) {$+$};
+  \node[circle,draw] at (-.5, .5, -.5) {$+$};
+  \node[circle,draw] at (-.5, -.5, -.5) {$-$};
+  \node[circle,draw] at (.5, .5, -.5) {$-$};
+  \node at (0, -1.5) {$ϕ \sim \frac{Q}{r^4}$};
+  \end{tikzpicture}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+#  \begin{align*}
+#  \frac{1}{\abs{\v r - \v r'}} &= \frac{1}{\sqrt{r^2 - 2\v r \v r' + \v r^{\prime 2}}} = \frac{1}{r} \frac{1}{\sqrt{1 - 2\frac{r'}{r}μ + (\frac{r'}{r})^2}} \\
+#  \intertext{Taylorentwicklung:}
+#  &= \frac{1}{r} \sum_{l} (\frac{r'}{r})^l P_l(μ) \\
+#  P_l(μ) &= \frac{4π}{2l + 1} \sum_{m = -l}^{+l} Y_{lm}(θ, φ) Y_{lm}(θ', φ')
+#  \end{align*}
+* Alternativer Zugang zur Multipolentwicklung $\to$ Taylor-Reihe in	kartesischen Koordinaten
+  Green-Funktion
+  \begin{align*}
+  G(\v r') &= \frac{1}{\abs{\v r - \v r'}} \\
+  \intertext{Taylorentwicklung bei $\v r' = 0$}
+  G(\v r') &= G(\v r ' = \v 0) + \sum_{i} \pp{G}{x'_i}\big|_{\v r' = \v 0} · x_i' + \frac{1}{2!} \sum_{ij} \frac{\partial G}{\partial x_i' \partial x_j'} \big|_{\v r' = \v 0} · x_i' x_j' + \dots \\
+  &= \sum_{n} \frac{1}{n!} (\sum_{i} x_i' \pp{}{x_i'})^n G \big|_{\v r' = 0} = \sum_{n} \frac{1}{n!}·(\v r' ∇')^nG \big|_{\v r' = \v 0} \\
+  G(\v r') &= \frac{1}{\abs{\v r - \v r'}} = \left[\sum_{i}(x_i - x_i')^2\right]^{-1/2} \\
+  G(\v r')\big|_{\v r' = \v 0} &= \frac{1}{r} \\
+  \pp{}{x_i'} G(\v r') \big|_{\v r' = \v 0} &= \frac{x_i}{r^3} \\
+  \frac{\partial^2}{\partial x_i' \partial x_j'} G(\v r') \big|_{\v r' = 0} &= \frac{3 x_i x_j - r^2 δ_{ij}}{r^5} \\
+  ϕ(\v r) &= ∫\d^3 r' ρ(\v r') G(\v r, \v r') \\
+  &= ∫ \d^3 r' ρ(\v r') (\frac{1}{r} + \sum_{i} \frac{x_i x_i'}{r^3} + \frac{1}{2} \sum_{ij} \frac{3 x_i x_j - r^2 δ_{ij}}{r^5} x_i' x_j' + \dots) \\
+  &= \frac{1}{r} ∫\d^3 r' ρ(\v r') + \sum_{i} \frac{x_i}{r^3} ∫\d^3 r' ρ(\v r') x_i' + \frac{1}{2} \sum_{ij} ∫\d^3 r' ρ(\v r') \frac{3 x_i x_j - r^2 δ_{ij}}{r^5} x_i' x_j' + \dots
+  \end{align*}
+  \begin{ibox}{Umschreiben des Quadrupolterms}
+  Quadrupolterm	$×3$:
+  \begin{align*}
+  &= \sum_{ij} \frac{3 x_i x_j - r^2 δ_{ij}}{r^5} ∫ \d^3 r' ρ(\v r') 3 x_i' x_j' \underbrace{- r^{\prime 2} δ_{ij} + r^{\prime 2} δ_{ij}}_{= 0} \\
+  &= \sum_{ij} \frac{3 x_i x_j - r^2 δ_{ij}}{r^5} (∫ \underbrace{\d^3 r' ρ(\v r')(3x_i' x_j' - r^{\prime 2} δ_{ij})}_{Q_{ij}} + ∫ \d^3 r' ρ(\v r') r^{\prime 2} δ_{ij}) \\
+  \intertext{2. Term verschwindet:}
+  \sum_{ij} \frac{3 x_i x_j - r^2 δ_{ij}}{r^5} δ_{ij} &= 0 \\
+  \circled{1}\quad \sum_{ij} x_i x_j δ_{ij} &= \sum_{i} x_i^2 = r^2 \\
+  \circled{2}\quad \sum_{ij} δ_{ij}δ_{ij} &= \sum_{i} δ_{ii} = 3
+  \end{align*}
+  \end{ibox}
+  \[⇒ ϕ(\v r) = \frac{Q}{r} + \frac{\v r \v p}{r^3} + \frac{1}{6} \sum_{ij} Q_{ij} \frac{3x_i x_j - r^2 δ_{ij}}{r^5} + \dots\]
+  $Q_{ij} = Q_{ji} ⇒$ symmetrische Matrix $⇒ 6$ Einträge! Aber:	in sphärischen Koordinaten: $q_{-2,-2} q_{2,-1}, q_{2,0}, q_{2,1}, q_{22} ⇒$ 5 Einträge.
+  Es gilt: $Q_{ij}$ ist spurfrei:
+  \begin{align*}
+  \sum_{i} Q_{ij} &= \sum_{i} ∫ \d^3 r' ρ(\v r') (3x_i' x_i' - r^{\prime 2} δ_{ij}) \\
+  &= ∫ \d^3 r' ρ(\v r') (3 \sum_{i} x_i^{\prime 2} - r^{\prime 2} \sum_{i} δ_{ii}) = 0
+  \end{align*}
+* Wechselwirkung einer Ladunsverteilung mit einem externen Feld
+  \begin{align*}
+  W &= ∫ \d^3 r ρ(\v r) ϕ(\v r) \\
+  ϕ(\v r) &= ϕ(\v r = 0) + \sum_{i} x_i \pp{ϕ}{x_i} \big|_{\v r = \v 0} + \frac{1}{2} \sum_{ij} \overarrow[x_i x_j]{Subtraktion von $\Laplace ϕ = 0$, weil die felderzeugende Ladung woanders ist!} \frac{\partial^2 ϕ}{\partial x_i \partial x_j} + \dots \\
+  \Laplace ϕ &= \sum_{i} \frac{\partial^2}{\partial x_i^2}ϕ = \sum_{ij} δ_{ij} \frac{\partial^2}{\partial x_i \partial x_j} ϕ \\
+  ϕ(\v r) &= ϕ(\v r = 0) + \sum_{i} x_i \pp{ϕ}{x_i} \big|_{\v r = \v 0} + \frac{1}{3!} \sum_{ij}(3x_i x_j - r^2 δ_{ij}) \frac{\partial^2 ϕ}{\partial x_i \partial x_j}\big|_{\v r = 0} + \dots \\
+  W &= \underbrace{∫ \d^3 r ρ(r)}_{Q} ϕ(\v r = 0) + \sum_{i} \underbrace{∫ \d^3 r ρ(r) x_i}_{p_i} ·	\pp{ϕ}{x_i}\big|_{\v r = \v 0} + \frac{1}{3!} \sum_{ij} \underbrace{∫\d^3 r ρ(r)(3 x_i x_j - r^2 δ_{ij}) · \frac{\partial^2}{\partial x_i \partial x_j}}_{Q_{ij}} \big|_{\r v = \v 0} + \dots \\
+  &= qϕ(\v r = 0) + \v p ∇ ϕ \big|_{\v r = 0} + \sum_{ij} Q_{ij} \frac{\partial^2 ϕ}{\partial x_i \partial x_j} \big|_{\v r = 0} + \dots
+  \end{align*}
+  $l$ Multipol wechselwirkt mit der \(l\)-fachen Ableitung von $ϕ$.
+* Polarisation und Modelle für Dielektrika
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \draw[rotate=-45,black,pattern=north west lines, pattern color=black] (-3,0) ellipse (1 and 1.5) node[above left, xshift=-15pt,yshift=25pt] {Molekül $\v i$};
+    \draw[rotate=45,black,pattern=north east lines, pattern color=black] (3,0) ellipse (1 and 1.5) node[above right, xshift=15pt,yshift=25pt] {Molekül $\v j$};
+    \filldraw (0,-3) circle (1pt) node[below] {Ursprung};
+    \draw[->] (0,-3) -- ++(0,7) node[above] {$P$} node[midway,right] {$\v r$};
+    \draw[->] (0,-3) -- ++(2.5,4.5) node[below,midway] {$\v r_j$};
+    \draw[->] (0,-3) -- ++(-2.5,4.5) node[below,midway] {$\v r_i$};
+    \draw[red,->] (0,-3) ++(2.5,4.5) -- ++(.1,.5) node[right,midway] {$\v r'$};
+    \draw[red,->] (0,-3) ++(-2.5,4.5) -- ++(-.1,.5) node[left,midway] {$\v r'$};
+    \draw (0,-3) ++(-2.5,4.5) ++(-.1,.5) -- (0,4);
+    \draw (0,-3) ++(2.5,4.5) ++(.1,.5) -- (0,4);
+    \draw (0,-3) ++(-2.5,4.5) -- (0,4) node[below,midway,xshift=10pt] {$\v r - \v r_i$};
+    \draw (0,-3) ++(2.5,4.5) -- (0,4) node[below,midway,xshift=-10pt] {$\v r - \v r_j$};
+  \end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  \begin{align*}
+  \intertext{Feld $\v E_j$ an der Stelle $\v r$, hervorgerufen durch Molekül $j$}
+  \v E_j(\v r) &= ∫\d^3 r' ρ_j(\v r') \frac{\v r - \v r_j -\v r'}{\abs*{\v r - \v r_j - \v r'}^3} = -∇ ∫\d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r_j - \v r'}} \\
+  \intertext{Multipolentwickulng}
+  \frac{1}{\abs*{\v r - \v r'_j - \v r'}} &= \frac{1}{\abs{\v r - \v r_j}} + (\v r' ∇_j) \frac{1}{\abs{\v r - \v r_j}} + \frac{1}{2} (\v r' ∇_j)^2 \frac{1}{\abs{\v r - \v r_j}} + \dots \\
+  ⇒ \v E_j(\v r) &= -∇(∫ \d^3 r' \frac{ρ_j(\v r')}{\abs{\v r - \v r_j}} + ∫\d^3 r' ρ_j(\v r') \v r' ∇_j \frac{1}{\abs{\v r - \v r_j}} + \dots) \\
+  &= -∇(\frac{q_j}{\abs{\v r - \v r_j}} + \v p_j ∇_j \frac{1}{\abs{\v r - \v r_j}} + \dots) \\
+  \intertext{Ladungsdichte:}
+  ρ(\v r) &= \sum_{j} q_j δ_D(\v r - \v r_j) \\
+  \intertext{Polarisationsdichte:}
+  \v π(\v r) &= \sum_{j} \v p_j δ_D(\v r - \v r_j) \\
+  \intertext{Summation der Felder zum Kontinuums-Limes:}
+  \v E(\v r) &= \sum_{j} \v E_j(\v r) = -∇(\sum_{j} \frac{q_j}{\abs{\v r - \v r_j}} + \v p_j ∇_j \frac{1}{\abs{\v r - \v r_j}}) \\
+  &= -∇(∫\d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}} + \v π(\v r') ∇' \frac{1}{\abs{\v r - \v r'}}) \\
+  \Div \v E &= - \Laplace (∫\d^3 r' \frac{ρ(\v r')}{\abs{\v r - \v r'}} + \v π(\v r) ∇' \frac{1}{\abs{\v r - \v r'}}) \\
+  &= -∫ \d^3 r' ρ(\v r') \underbrace{\Laplace \frac{1}{\abs{\v r - \v r'}}}_{\mathclap{-4π δ_D(\v r - \v r')}} + \v π(\v r') \underbrace{∇' \underbrace{\Laplace \frac{1}{\abs{\v r - \v r'}}}_{\mathclap{=-4πδ_D(\v r - \v r')}}}_{\mathclap{ = -∇δ_D(\v r - \v r')}} \\
+  \Div \v E &= 4π ∫ \d^3 r' ρ(\v r') δ_D(\v r - \v r') - 4π ∇ ∫ \d^3 r' \v π(\v r') δ_D(\v r - \v r') \\
+  \Div \v E &= 4πρ - 4π \Div \v π \\
+  \Div \underbrace{(\v E + 4π \v π)}_{\v D} &= 4πρ \\
+  \intertext{$\v π$ ist oft abhängig von dem externen Feld (da das externe Feld die Moleküle ausrichtet), dann gilt:}
+  \v π &= ϰ \v E, \quad ϰ: \text{ Suszeptibilität} \\
+  \v D &= ε \v E, ε = 1 + 4π ϰ
   \end{align*}

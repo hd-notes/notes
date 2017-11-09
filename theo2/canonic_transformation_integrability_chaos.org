@@ -62,7 +62,7 @@
    1. Zeige Wegunabhängigkeit mit Stokes (nicht hier)
    2. Wollen prüfen:
 	  \[p_α = \pp{F_Z}{q^α}!\]
-	  Dazu: wähle letztes Wegstück parallel zu $q^α$ -Achse
+	  Dazu: wähle letztes Wegstück parallel zu \(q^α\)-Achse
 	  \[\pp{F_Z}{q^α} = \pp{}{q^α} ∫^{q^α} \not \sum \d q^{\prime α} p_α(q^{\prime 1}, \dots, q^{\prime α}, \dots, q^{\prime n}, P) = p_α\]
    Definiere $Q_α \equiv \pp{P_Z}{P_α}$. Damit ist klar, dass unsere $F_Z$ die Bedingungen erfüllt. $\to$ Theorem von Lioville / Arnold.
    (Auch: falls $Σ$'s kompakt sind und zusammenhängend, so sind sie Tori, $Σ \sim T^n \sim (S^1)^n$)

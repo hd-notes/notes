@@ -74,7 +74,7 @@
 ** Die Drehimpuls Lie-Algebra in die Hamilton-Mechanik
    Aus TP1:
    \[R(ξ)= \mathbb{1} + ε_i T_i; \quad (T_i)_{jk} = ε_{ijk}\]
-   Schon erwähint: $T_i$ - Basis von $SO(3) = \Lie(SO(3))$
+   Schon erwähint: \(T_i\)- Basis von $SO(3) = \Lie(SO(3))$
    Kommutator macht $SO(3)$ zur Lie-Algebra:
    \[[\frac{1}{2} T_I, \frac{1}{2} T_j] = ε_{ijk}(\frac{1}{2} T_k)\]
    Noether-Theorem ordnet den durch die $T_i$ generierten Symmetrien Erhaltungsgröhen zu, und zwar die Drehimpulskomponenten:

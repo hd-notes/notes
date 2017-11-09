@@ -4,7 +4,7 @@
    *Bisher:* \\
    Immer feste Basis
    \[\v x = \cvec{x^1 ; x^2 ; x^3} = x^1 \cvec{1 ; 0 ; 0} + x^2 \cvec{0 ; 1 ; 0} + x^3 \cvec{0 ; 0 ; 1} = x^i \v e^i\]
-   $\{e^i\}$ - durch "$i$" nummerierte Basisvektoren. \\
+   \(\{e^i\}\)- durch "$i$" nummerierte Basisvektoren. \\
    *Wichtig*:
    - In Physik gibt es keine ausgezeichnete Basis.
    - können Basis / Koordinatensystem wechseln

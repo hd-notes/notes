@@ -157,7 +157,7 @@
   #+end_remark
   #+begin_proof latex
   Sei $\mathcal{B}$ eine Orthonormalbasis von $(V, γ), A = M_{\mathcal{B}}(φ) ⇒ χ_φ^{char} = χ_A^{char}, A = A^T$ wegen $φ$ selbstadjungiert.
-  Wir betrachet die $ℂ$ -lineare Abbildung $\tilde A_{ℂ}: ℂ^n \to ℂ^n, z ↦ Az$. Es ist
+  Wir betrachet die \(ℂ\)-lineare Abbildung $\tilde A_{ℂ}: ℂ^n \to ℂ^n, z ↦ Az$. Es ist
   \[χ_A^{char} = χ_{\tilde A_{ℂ}}^{char} = (t - λ_1) · \dots · (t - λ_n), λ_1, \dots, λ_n ∈ ℂ\]
   Behauptung: $λ_i ∈ ℝ ∀ i = 1, \dots, n$, denn: Sei $z = \cvec{z_1; \vdots; z_n} ∈ ℂ^n$ ein Eigenvektor zum Eigenwert $λ_i$ von $\tilde A_{ℂ}$.
   Wir setzen $\bar z := \cvec{\bar z_1; \vdots; \bar z_n}$ und erhalten

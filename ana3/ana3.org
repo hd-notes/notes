@@ -92,7 +92,7 @@
   #+ATTR_LATEX: :options [Algebra und \(σ\)-Algebra]
   #+begin_defn latex
   Eine Algebra $\mathcal{A}$ ist die Familie von Teilmengen einer gegebenen Menge $X$ mit
-  - $x ∈ \mathcal{A}$
+  - $X ∈ \mathcal{A}$
   - $A ∈ \mathcal{A} ⇒ A^C := X \setminus A ∈ \mathcal{A}$
   - $A, B ∈ \mathcal{A} ⇒ A \cup B ∈ \mathcal{A}$
   Falls
@@ -105,7 +105,7 @@
   #+begin_proof latex
   (Übung)
   #+end_proof
-  #+ATTR_LATEX: :options [Erzeugte und relative $σ$ -Algebra]
+  #+ATTR_LATEX: :options [Erzeugte und relative \(σ\)-Algebra]
   #+begin_defn latex
   Für $S ⊂ \mathcal{P}(X)$ wird
   \[Σ(S) = Σ(S \mid X) := \bigcap \{\mathcal{A} ⊂ \mathcal{P}(X) \mid \mathcal{A} \text{ ist eine \(σ\)-Algebra mit \(S ⊆ \mathcal{A}\)}\}\]
@@ -140,7 +140,7 @@
   \end{align*}
   #+end_defn
   #+begin_remark latex
-  Die \(σ\)-Algebra die von den abgeschlossenen Wengen erzeugt wird, ist ebenfalls identisch mit der Borel \(σ\)-Algebra.
+  Die \(σ\)-Algebra die von den abgeschlossenen Mengen erzeugt wird, ist ebenfalls identisch mit der Borel \(σ\)-Algebra.
   #+end_remark
   #+ATTR_LATEX: :options [Messraum, Maß, Maßraum]
   #+begin_defn latex
@@ -197,7 +197,7 @@
    	 \end{align*}
 	 Es gilt
 	 \begin{align*}
-	 ⇒ \bigdcup_{k ∈ ℕ} C_k &= \bigcup_{k ∈ ℕ} A_k = A
+	 ⇒ \bigdcup_{k ∈ ℕ} C_k &= \bigcup_{k ∈ ℕ} A_k = A \\
 	 μ(A_k) &= \sum_{j = 1}^{k} μ(C_j) \xrightarrow{k \to ∞} \sum_{k ∈ ℕ} μ(C_k) = μ(A) \leq \sum_{k ∈ ℕ} μ(A_k)
    	 \end{align*}
   4. $D_k := A_1 \setminus A_k ∀ k ∈ ℕ$. Damit ist $D_k \nearrow A_1 \setminus A$ und
@@ -226,7 +226,7 @@
   Das Zählmaß mit $X = ℝ, \mathcal{A} = \mathcal{B}$, ist regulär von inne, aber nicht von außen. Das Dirac-Maß ist regulär.
   #+end_ex
   \begin{defn*}[Kompaktheit]
-  Sei $X$ ein topologischer Raum und $A ⊂ X$. Dann nennt man $A$ kompakt, wenn *jede* offene Überdeckung von $A$ eine *endliche* Teilüberdeckung besitzt.
+  Sei $X$ ein topologischer Raum und $A ⊂ X$. Dann nennt man $A$ kompakt, wenn \textbf{jede} offene Überdeckung von $A$ eine \textbf{endliche} Teilüberdeckung besitzt.
   Das beutet:
   \[∀ I ∃ I' ⊂ I, \abs{I'} < ∞: A ⊂ \bigcup_{i ∈ I} A_i ⇒ A ⊂ \bigcup_{i ∈ I'} A_i\]
   \end{defn*}
@@ -247,7 +247,7 @@
   3. $\displaystyle{(A_k)_{k ∈ ℕ} ⊂ \mathcal{D}, A_k ∩ A_l = \emptyset ∀ k, l ∈ ℕ, k \neq l ⇒ \bigcup_{k ∈ ℕ A_k ∈ \mathcal{D}}}$
   #+end_defn
   #+begin_remark latex
-  1. Ein Dynkin-System it abgeschlossen bezüglich Mengensubtraktion:
+  1. Ein Dynkin-System ist abgeschlossen bezüglich Mengensubtraktion:
 	 \[A, B ∈ \mathcal{D}, B ⊂ A ⇒ A \setminus B = A ∩ B^C = (A^C ∪ B)^C ∈ \mathcal{D}\]
   2. Ist $S ⊂ \mathcal{P}(X)$, so ist
 	 \[\mathcal{D}(S) = \bigcap \{\mathcal{D} \mid \mathcal{D} \text{ Dynkin-System}, S ⊂ \mathcal{D}\}\]
@@ -313,3 +313,320 @@
   \[\bigcup_{k ∈ ℕ} A_k ∈ \mathcal{A}\]
   Ein Prämaß auf einer \(σ\)-Algebra ist ein Maß.
   #+end_remark
+  #+begin_korollar latex
+  Sei $μ$ ein \(σ\)-finites Prämaß auf einer Algebra $\mathcal{A}$, dann gibt es höchstens eine Fortsetzung auf $Σ(\mathcal{A})$.
+  #+end_korollar
+  #+begin_proof latex
+  Setze $S = \mathcal{A}$ wie im Satz 1.23. Offenbar ist abgeschlossen unter endlichen Schnitten. Da $X$ \(σ\)-finit ist, gibt es eine
+  Folge $(X_k)_{k ∈ ℕ}$ mit $X = \bigcup_{k ∈ ℕ} X_k$ und $μ(X_k) < ∞ ∀ k ∈ ℕ$. Für $A_k := \bigcup_{j = 1}^k X_j$ ist $A_k \nearrow X$ und
+  \[μ(A_k) \leq \sum_{j = 1}^{k} μ(X_k) < ∞\]
+  Nach dem Setz 1.23 ist das auf $(X, Σ)$, so es denn existiert, eindeutig.
+  #+end_proof
+  #+begin_ex latex
+  Die Menge $S$, sei die Menge, die alle Intervalle $[a, b\string), -∞ \leq a \_eq b \leq ∞$ erzeugt dann unter endlichen Vereinigungen eine Algebra $\mathcal{A}$.
+  Wir setzen
+  \begin{align*}
+  μ(\emptyset) &= 0 \\
+  μ([a, b\string)) &= ∞ \\
+  \end{align*}
+  Dieses $μ$ ist Prämaß auf $\mathcal{A}$. Es gibt (mindestens) zwei Fortsetzungen:
+  1. Zählmaß ist eine Fortsetzung
+  2. $μ(A) = ∞ ∀ A \neq \emptyset$
+  #+end_ex
+  #+ATTR_LATEX: :options [äußeres Maß]
+  #+begin_defn latex
+  EIne Funktion $μ^{\ast}: \mathcal{P}(X) \to [0, ∞]$ ist ein äußeres Maß auf $X$, falls für alle $(A_k)_{k ∈ ℕ} ⊂ \mathcal{P}(X)$ die folgenden Eigenschaften erfüllt sind:
+  1. $μ^{\ast}(\emptyset) = 0$
+  2. $μ^{\ast}(A_1) \leq μ(A_2)$, falls $A_1 ⊂ A_2$ \hfill (Monotonie)
+  3. $\displaystyle{μ^{\ast}(\bigcup_{k ∈ ℕ} A_k) \leq \sum_{k ∈ ℕ} μ^{\ast}(A_k)}$ \hfill (\(σ\)-Subadditivität)
+  #+end_defn
+  #+begin_thm latex
+  Sei $μ^{\ast}$ ein äußeres Maß auf eine Menge $X$. Wir sagen, die Menge $A ⊂ X$ erfüllt die Caratheodory-Bedingung (CB) falls
+  \[μ^{\ast}(E) = μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C) ∀ E ⊂ X\]
+  Die Familie $Σ$ aller Mengen, die die Caratheodory-Bedingung erfüllen bildet eine \(σ\)-Algebra und $μ^{\ast}|_Σ$ ist ein Maß.
+  #+end_thm
+  #+begin_proof latex
+  Wir zeigen zunächst, dass $Σ$ eine Algebra ist. Offenbar $X ∈ Σ$. Abgeschlossen unter Komplementbildung ist klar. Für endliche Vereinigungen wähle $A, B ∈ Σ$. Sei $E ⊂ X$ beliebig.
+  \begin{align*}
+  μ^{\ast}((A ∪ B) ∩ E) &\leq μ^{\ast}(A ∩ B^C ∩ E) + μ^{\ast}(A^C ∩ B ∩ E) + μ^{\ast}(A ∩ B ∩ E) \\
+  \intertext{Nun wird die Caratheodory-Bedingung zweimal angewandt}
+  μ^{\ast}(E) &= μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C) \\
+  &= μ^{\ast}(E ∩ A ∩ B) + μ^{\ast}(E ∩ A ∩ B^C) + μ^{\ast}(E ∩ A^C ∩ B) + μ^{\ast}(E ∩ A^C ∩ B^C) \\
+  \intertext{Mit obiger Abschätzung erhalten wir}
+  μ^{\ast}(E) &\geq μ^{\ast}((A ∪ B) ∩ E) + μ^{\ast}(E ∩ A^C ∩ B^C) = μ^{\ast}((A ∪ B) ∩ E) + μ^{\ast}((A ∪ B)^C ∩ E) \\
+  \end{align*}
+  Die andere Richtung folgt aus der \(σ\)-Subadditivität \\
+  Sei nun also $(A_k)_{k ∈ ℕ} ⊂ Σ$. Wir können ohne Beschränkung der Allgemeinheit annehmen, dass die $A_k$ paarweise disjunkt sind. Nun ist für jedes $E ⊂ X$ und
+  \begin{align*}
+  B_k &= \bigcup_{j = 1}^k A_k ∈ Σ,\qquad B_k \nearrow \bigcup_{k ∈ ℕ} A_k \\
+  μ^{\ast}(B_k ∪ E) &= μ^{\ast}(B_k ∩ E ∩ A_k) + μ^{\ast}(B_k ∩ E ∩ A_k^C) \\
+  &= \sum_{j = 1}^{k} μ^{\ast}(E ∩ A_j) \\
+  \intertext{Also haben wir}
+  μ^{\ast}(E) &= μ^{\ast}(E ∩ B_k) + μ^{\ast}(E ∩ B_k^C) \\
+  \intertext{Mit $k \to ∞$ erhält man}
+  μ^{\ast}(E) &\geq \sum_{k ∈ ℕ} μ^{\ast}(E ∩ A_k) + μ^{\ast}(E ∩ A^C) \geq μ^{\ast}(\bigcup_{k ∈ ℕ} (A_k ∩ E) + μ^{\ast}(E ∩ A^C)) \\
+  & \geq μ^{\ast}(E) \\
+  \intertext{Also gilt}
+  A &= \bigcup_{k ∈ ℕ} A_k ∈ Σ
+  \end{align*}
+  Damit $μ^{\ast}|_{Σ}$ ein Maß ist, betrachte Folge $(A_k)_{k ∈ ℕ}$ paarweise disjunkt. Da $Σ$
+  eine \(σ\)-Algebra ist wähle in der Caratheodory-Bedingung $E = A = \bigcup_{k ∈ ℕ}A_k$.
+  \begin{align*}
+  μ^{\ast}(E) = μ^{\ast}(A) = \sum_{k ∈ ℕ} μ^{\ast}(A ∩ A_k) + μ^{\ast}(A ∩ A^C) = \sum_{k ∈ ℕ} μ^{\ast}(A_k)
+  \end{align*}
+  $μ^{\ast}(\emptyset) = 0$ gilt nach Definition des äußeren Maßes.
+  #+end_proof
+  #+begin_remark latex
+  Das soeben konstruierte Maß $μ^{\ast}\mid_{Σ}$ ist vollständig, jede Teilmenge einer Nullmenge ist messbar.
+  #+end_remark
+  #+begin_proof latex
+  Sei $A ∈ Σ$, $μ^{\ast}(A) = 0$ und $B ⊂ A$. Es gilt für $E = X$ in der Caratheodory-Bedingung
+  \[μ^{\ast}(E ∩ B) \leq μ^{\ast}(A) + μ^{\ast}(E ∩ B^C) \leq μ^{\ast}(E)\]
+  Insofern ist $B ∈ Σ$
+  #+end_proof
+  *Fahrplan für das Lebesgue-Maß* \\
+  Für ein verallgemeinertes Intervall $I$ der Form $(a, b), \string(a,b], [a,b\string), [a, b]$ mit $-∞ \leq a \leq b \leq ∞$ setzen wir $λ(I) := b - a ∈ [0, ∞]$
+  \begingroup
+  \def\thedefn{1.31}
+  #+begin_lemma latex
+  Dies ergibt ein eindeutiges \(σ\)-finites Prämaß auf der Algebra $\mathcal{A}$, die aus endliches Vereinigungen disjunkter Intervalle besteßt
+  \[λ(\bigcup_{j = 1}^k I_j) = \sum_{j = 1}^{k} λ(I_j)\]
+  #+end_lemma
+  Wir erhalten zunechst eine Fortsetzung von $λ$ zu einem äußeren Maß $λ^{\ast}$, also $λ = λ^{\ast}$ auf $\mathcal{A}$, wobei jede Menge aus $\mathcal{A}$ die Caratheodory-Bedingung erfüllt.
+  Satz 1.27 liefert eine \(σ\)-Algebra $Λ \supset \mathcal{A}$, sodass $λ := λ^{\ast}\mid_Λ$ ein Maß ist
+  \def\thedefn{1.32}
+  #+begin_defn latex
+  Die Elemente von $Λ$ nennt man Lebesque-messbare Mengen und $λ$ das Lebesque-Maß.
+  #+end_defn
+  \endgroup
+  \begingroup
+
+  #+begin_lemma latex
+  Sei $μ$ ein Prämaß auf einer Algebra $\mathcal{A} ⊂ \mathcal{P}(X)$. Wir setzen für $A ⊂ X$
+  \[μ^{\ast}(A) = \inf \{\sum_{k ∈ ℕ} μ(A_k) \mid (A_k)_{k ∈ ℕ} ⊂ \mathcal{A}, A ⊂ \bigcup_{k ∈ ℕ} A_k\}\]
+  Dies ist ein äußeres Maß mit $μ^{\ast} = μ$ auf $\mathcal{A}$	und jede Menge aus $\mathcal{A}$ erfüllt die Caratheodory-Bedingung.
+  #+end_lemma
+  #+ATTR_LATEX: :options [Caratheodory-Eigenschaft]
+  #+begin_proof latex
+  Sei $E ⊂ X$ und $A ⊂ \mathcal{A}$. Zu zeigen:
+  \[μ^{\ast}(E) = μ^{\ast}(E ∩ A^C) + μ^{\ast}(E ∩ A)\]
+  "$\leq$" folgt aus Subadditivität. Noch zu zeigen: $\geq$. Wir betrachten eine beliebige Überdeckung von $E$ durch $(B_k)_{k ∈ ℕ} ⊂ \mathcal{A}, B := \bigcup_{k ∈ ℕ} B_k \supset E$.
+  Dann ist zunächst auch $(B_k ∩ A)_{k ∈ ℕ}$ eine Überdeckung von $E ∩ A$ und entsprechend $(B_k ∩ A^C)_{k ∈ ℕ}$ von $E ∩ A^C$. Wir erhalten
+  \begin{align*}
+  \sum_{k ∈ ℕ} μ(B_k) &= \sum_{k ∈ ℕ} μ(B_k ∩ A) + \sum_{k ∈ ℕ} μ(B_k ∩ A^C) \\
+  &\geq μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C)
+  \end{align*}
+  Infimum über $(B_k)_{k ∈ ℕ}$ mit $\bigcup_{k ∈ ℕ} \supset E$ liefert
+  \[μ(E^{\ast}) \geq μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C)\]
+  #+end_proof
+  #+ATTR_LATEX: :options [von Lemma 1.31]
+  #+begin_proof latex
+  - $\mathcal{A}$ ist Algebra ($ℝ = (-∞, ∞)$, das Komplement einer endlichen Vereinigung disjunkter Intervalle besitzt wieder diese Form)
+  -	Offenbar gilt $λ(\emptyset) = 0$
+  zu zeigen (für \(σ\)-Algebra): für alle paarweise disjunkten Folgen $(I_k)_{k ∈ ℕ} ⊂ \mathcal{A}$
+  \begin{align*}
+  λ(\bigcup_{k ∈ ℕ} I_k) &= \sum_{k ∈ ℕ} λ(I_k) \\
+  \intertext{Wir bekommen}
+  \sum_{j= 1}^{k} λ(I_j) \underarrow[=]{Additivität} λ(\bigcup_{j = 1}^k I_j) \overarrow[\leq]{Monotonie} λ(\bigcup_{j = 1}^∞ I_j) = λ(I) \\
+  \end{align*}
+  "$\geq$": wür wählen $∀ k ∈ ℕ$ ein offenes $J_k \supset I_k$ mit
+  \[λ(J_k) \leq λ(I_k) + \frac{ε}{2^k}\qquad \text{für ein } ε > 0\]
+  Sei zunächst $I$ kompakt. Dann können wir endlich viele $J_k$ auswählen, sodass diese $I$ überdecken. Wir nehmen an, dass dies die ersten $K$ Elemente sind (Umnummerierung). Es
+  gilt
+  \[λ(I) \overarrow[=]{Monotonie} λ(\bigcup_{j = 1}^k J_j) \leq	\underarrow[=]{Subadditivität} \sum_{j = 1}^{k} λ(J_j) \overarrow[\leq]{aus Konstruktion} \sum_{j = 1}^{k} λ(I) + ε\]
+  Mit $ε \searrow 0$ folgt \(σ\)-Additivität für kompakte $I$. Die Behauptung folgt auch für beschränkte $I$ (weil mit Additivität und $λ(\{x\}) = λ([x, x]) = 0 ∀ x ∈ ℝ$ können wir
+  die Endpunkte an Intervalle hinzufügen oder entfernen).
+  Sei $I$ ein unbeschränkts Intervall $λ(I) = ∞$. Zu zeigen
+  \[\sum_{j = 1}^{∞} λ(I_j) = ∞\]
+  Sei $ξ ∈ I, I ∩ [ξ - x, ξ + x]$ kompakt. $∀ x ∈ ℝ$ und von den ersten $K$ Elementen überdeckt. $K = K(ξ)$. Wir bekommen
+  \begin{align*}
+  \sum_{j = 1}^{∞} λ(I_j) &\geq \sum_{j = 1}^{k} λ(I_j) \underarrow[\geq]{Konstruktion} \sum_{j = 1}^{k} λ(J_i) - ε \\
+  &\geq λ(I ∩ [ξ - x, ξ + x]) - ε \geq	x - \abs{ξ} - ε \\
+  ⇒ \sum_{j = 1}^{∞} λ(I_j) &\geq x - \abs{ξ} - ε \xrightarrow{x \to ∞} ∞
+  \end{align*}
+  #+end_proof
+** Messbare Funktionen
+  #+begin_defn latex
+  Seien $(X, Σ_X), (Y, Σ_Y)$, $f: X \to Y$ heißt *messbar* ($Σ_X - Σ_Y$ messbar) falls
+  \[∀ A ∈ Σ_Y f^{-1}(A) ∈ Σ_X\]
+  Ist $X$ ein topologischer Raum und $Σ_X$ die entsprechende Borel-\(σ\)-Algebra so nennen wir eine messbare Funktion die Borel-Funktion.
+  #+end_defn
+  #+begin_remark latex
+  Es genügt, Messbarkeit für ein Messsystem $S ⊂ \mathcal{P}(Y)$ mit $Σ(S) = Σ_Y$ zu überprüfen. In der Tat ist $f^{-1}(A) ∈ Σ_X ∀ A ∈ S$ so folgt
+  \begin{align*}
+  f^{-1}(A^C) &= f^{-1}(Y \setminus A) = X \setminus f^{-1}(A) = (f^{-1}(A))^C ∈ Σ_x \\
+  \intertext{weiter ist}
+  f^{-1}(\bigcup_{k ∈ ℕ} A_k) &= \bigcup_{k ∈ ℕ} f^{-1}(A_k) ∈ Σ_x
+  \end{align*}
+  #+end_remark
+  Wir werden häufig nutzen $(Y, Σ) = (ℝ^n, \mathcal{B}^n)$
+  #+begin_lemma latex
+  $f: (X, Σ) \to (ℝ^n, \mathcal{B}^n)$ ist genau dann messbar, wenn
+  \[f^{-1}(I) ∈ Σ ∀ I = \bigtimes_{j = 1}^n (a_j, ∞), a_j ∈ ℝ\]
+  insbesondere ist $f$ genau dann messbar, wenn jede seiner Komponenten $x \to \angl{f(x), e_i}, i = 1, \dots, n$ messbar ist
+  und eine komplexwertige Funktion ist messbar genau dann wenn Real- und Imaginärteil messbar sind.
+  #+end_lemma
+  #+begin_proof latex
+  Die \(σ\)-Algebra die von den verallgemeinerten Quadern erzeugt wird enthält die Quader der Form
+  \[\bigtimes_{j = 1}^n (a_j, b_j)\]
+  Diese bilden eine	Basis für die Topologie $⇒$ führen auf $\mathcal{B}^n$.
+  #+end_proof
+  #+begin_lemma latex
+  Seien $(X, Σ_X), (Y, Σ_Y), (Z,Σ_Z)$ Messräume. Sind $f: X \to Y, g: Y \to Z$ messbar , dann ist auch $g \circ f: X \to Z$ messbar.
+  Sind $X, Y$ topologische Räume, $Σ_X, Σ_Y$ \(\mathcal{B}\)-\(\mathcal{σ}\)-Algebren so ist jede stetige Funktion $f: X \to Y$ messbar.
+  #+end_lemma
+  #+begin_proof latex
+  Das Urbild offener Mengen (diese erzeugen \(\mathcal{B}\)-\(σ\)-Algebra $Σ_Y$) ist aufgrund der stetigkeit offen, also messbar.
+  Ist $C ∈ Σ_Z$ messbar, so ist es auch $B := g^{-1}(C) ∈ Σ_y$ und $A := f^{-1}(B) ∈ Σ_x$
+  #+end_proof
+  #+ATTR_LATEX: :options [1.36]
+  #+begin_lemma latex
+  Sind $f, g: (X, Σ) \to (ℝ, \mathcal{B})$ messbar, so auch $f + g, f - g$.
+  #+end_lemma
+  #+begin_proof latex
+  Aus Stetigkeit von Addition und Subtraktion auf $(ℝ, \mathcal{B}) × (ℝ, \mathcal{B}) \to (ℝ, \mathcal{B})$ und Lemma 1.36.
+  #+end_proof
+  #+begin_remark latex
+  Für $\bar ℝ := ℝ ∪ \{-∞, ∞\}$ ist $f: X \to \bar ℝ$ eine Borel-Funktion, wenn $f^{-1}(\{-∞;∞\})$ beiden Borel-Mengen sind und $f\big|_{X \setminus f^{-1}(\{\pm ∞\})}$ eine Borel-Funktion.
+  #+end_remark
+  #+ATTR_LATEX: :options [1.40]
+  #+begin_lemma latex
+  Sei $(f_k)$ eine Folge messbarer Funktionen $(X, \bar Z) \to (\bar ℝ, \bar{\mathcal{B}})$. Dann sind auch
+  \[\sup_{k ∈ ℕ} f_k, \inf_{k ∈ ℕ} f_k, \limsup_{k \to ∞} f_k, \liminf_{k \to ∞} f_k\]
+  messbar.
+  #+end_lemma
+** Integration
+   #+begin_defn latex
+   Eine messbare Funktion $f:(X, Σ) \to (ℝ, \mathcal{B})$ heißt *einfach*, wenn ihr Bild endlich ist, das heiß $∃ A_1, \dots, A_m ∈ Σ, α_1, \dots, α_m ∈ ℝ$ mit
+   \[f = \sum_{j = 1}^{m} α_j χ_{A_j}\]
+   wobei $χ_M$ die charakteristische Funktion ist.
+   \[χ_M(x) = \begin{cases} 1 & x ∈ M \\ 0 & x \not ∈ M\end{cases}\]
+   Wir können fordern, dass $A_j$ paarweise disjunkt	sind, $α_i \neq α_j, i \neq j$ und $\bigcup A_j = X$ gilt.
+   \[⇒ f(x) = \{α_1, \dots, α_m\}, \qquad f^{-1}(\{α_j\})= A_j\quad ∀ j = 1, \dots, m\]
+   und diese Darstellung ist eindeutig.	\\
+   Den Vektorraum einfacher Funktionen bezeichnen wir mit $S(X,μ)$
+   #+end_defn
+   #+ATTR_LATEX: :options [Integral auf $S(X,μ)$]
+   #+begin_defn latex
+   Das Integral	einer nicht negativen einfachen	Funktion über die Menge $A ∈ Σ$ wird durch
+   \[∫_A f \d μ := \sum_{j= 1}^{n} α_j μ(A_j ∩ A)\]
+   erklärt, wobei wir $0 · ∞ = 0$ vereinbaren.
+   #+end_defn
+   #+begin_lemma latex
+   Das Integral hat die folgenden Eigenschaften
+   \begin{alignat*}{2}
+   &1. \qquad ∫_A f \d ψ &&= ∫_X χ_A f \d μ \qquad \text{für } f ∈ S(X, μ) \\
+   &2. \qquad ∫_{\bigcup_{k ∈ ℕ} B_k} f\d μ &&= \sum_{k ∈ ℕ} ∫_{B_k} f \d μ \qquad B_k \text{ paarweise disjunkt}, (B_k)_{k ∈ ℕ} ∈ Σ \\
+   &3. \qquad ∫_A α f \d μ &&= α ∫_A f \d μ \qquad \text{für } α \geq 0 \\
+   &4. \qquad ∫_A (f + g) \d μ &&= ∫_A f \d μ + ∫_A g \d μ \qquad \text{für } g \geq S(X,μ) \\
+   &5. \qquad A ⊂ B, B ∈ Σ ⇒ ∫_A f \d μ &&\leq ∫_B f \d μ \\
+   &6. \qquad f \leq g ⇒ ∫_A f \d μ &&\leq ∫_A g \d μ, g ∈ S(Σ,μ), g \geq 0
+   \end{alignat*}
+   #+end_lemma
+   #+begin_proof latex
+   1. aus Definition
+   2. $\displaystyle{μ(A_j ∩ \bigcup_{n ∈ ℕ} B_n) = \sum_{k ∈ ℕ} μ(A_j ∩ B_k)}$ (man darf die Reihe über nichtnegative Zahlen umsortieren)
+   3. klar
+   4. Für
+      \begin{align*}
+	  f &= \sum_{j = 1}^{n} α_j χ_{A_j} \\
+      g &= \sum_{k = 1}^{n} β_k χ_{B_k} \\
+	  \intertext{gilt mit $C_{jk} = A_j ∩ B_k$}
+	  ∫_A (f + g) \d μ &= \sum_{j,k} ∫_{C_{jk}} (f + g) \d μ = \sum_{j,k} (α_j + β_k) μ(C_{jk}) \\
+	  &= \sum_{j,k} α_j μ(C_{jk}) + \sum_{j,k} β_k μ(C_{jk}) = ∫_A f\d μ + ∫_A g \d μ
+      \end{align*}
+   5. Aus Monotonie von $μ$
+   6. Wie in 4. mit
+	  \[∫_A f \d μ = \sum_{j,k} α_j μ(C_{jk}) \leq \sum_{j,k} β_k μ(C_{jk}) = ∫_A g \d μ\]
+   #+end_proof
+   #+ATTR_LATEX: :options [Integral  von nichtnegativen Funktionen]
+   #+begin_defn latex
+   Sei $(X, Σ, μ)$ Maßraum, $A ∈ Σ, f:(X,Σ) \to (ℝ, \mathcal{B})$ messbar und nichtnegtiv. Dann ist
+   \[∫_A f \d μ := \sup \{∫_a g \d μ \mid g ∈ S(X, μ), g \leq f, g \geq 0\}\]
+   #+end_defn
+   #+begin_remark latex
+   Bis auf 2. und 4. übertragen sich die Eigenschaften des Integrals über einfache Funktionen.
+   #+end_remark
+   #+ATTR_LATEX: :options [Monotone Konvergenz / Beppo Levi]
+   #+begin_thm latex
+   Sei $(f_k)_{k ∈ ℕ}$ eine Folge messbarer nichtnegativer Funktionen
+   \[f_k:(X, Σ) \to (ℝ, \mathcal{B}) \quad\text{mit}\quad f_k \nearrow f\]
+   ($f_k \nearrow f ⇒ f_k \xrightarrow{k \to ∞} f$ punktweise und (implizit aus Nichtnegativität) $\sum_{k = 1}^n f_k$ monoton) \\
+   Dann ist für $A ∈ Σ$
+   \[∫_A f_k \d μ \to ∫_A f \d μ\]
+   #+end_thm
+   #+begin_proof latex
+   $f$ messbar,	damit erhält man die Monotonie von
+   \[∫_A f_k \d μ\]
+   und hieraus Konvergenz gegen $φ ∈ [0, ∞]$. Aus $f_k \leq f$ und Monotonie den Integral:
+   \[φ \leq ∫_A f \dμ\]
+   Für "\(\geq\)" nehmen wir $g ∈ S(X, μ), g \geq 0, g \leq f$ mit
+   \[A_k := \{x ∈ A \mid f_k(x) \geq θ · g(x)\}\]
+   für ein festes $θ ∈ (0,1)$ und hierraus
+   \begin{align*}
+   φ \xleftarrow{k \to ∞} ∫_A f_k \d μ &\geq ∫_{A_k} f_k \d μ \geq ∫_A θ g \d μ \\
+   &\geq θ ∫_{A_k} g \d μ \to θ ∫_A g \d μ
+   \end{align*}
+   Insbesondere gilt für $θ = 1$
+   \begin{align*}
+   ⇒ φ &\geq ∫_A g \d μ \\
+   ⇒ φ &= ∫_A f \d μ
+   \end{align*}
+   #+end_proof
+   #+begin_remark latex
+   $∀ f \geq 0$, mit einer monoton steigenden Folge nicht negativer einfacher Funktionen $(g_k)_{k ∈ ℕ}, g_k \nearrow f$ ist
+   \[∫_A g_k \d μ \nearrow ∫_A f \d μ\]
+   Eine geeignete Funktion ist
+   \begin{align*}
+   g_k(x) &:= \sum_{j = 0}^{k 2^k} \frac{j}{2^k} χ_{f^{-1}(A_j)}(x)
+   \intertext{mit}
+   A_j &= \{[\frac{j}{2^k}, \frac{j + 1}{2^k}\string) \mid j = 0, \dots, k 2^k - 1\}
+   \end{align*}
+   Ist $f$ gleichmäßig beschränkt $⇒$ $(g_k)_{k ∈ ℕ}$ konvergiert gleichmäcßig (denn $0 \leq f - g_k \leq \frac{1}{2^k}$ für $k$ groß genug)
+   Mit Satz von Beppo Levi erhält man somit
+   \begin{align*}
+   2. \qquad ∫_{\bigcup_{k ∈ ℕ} B_k} f\d μ &= \sum_{k ∈ ℕ} ∫_{B_k} f \d μ \qquad B_k \text{ paarweise disjunkt}, (B_k)_{k ∈ ℕ} ∈ Σ \\
+   4. \qquad ∫_A (f + g) \d μ &= ∫_A f \d μ + ∫_A g \d μ \qquad \text{für } g \geq S(X,μ) \\
+   \end{align*}
+   #+end_remark
+   #+begin_lemma latex
+   Ist $f \geq 0$ messbar, so wird durch
+   \[ν(A) := ∫ f \d μ\]
+   ein Maß mit
+   \[∫ d \d ν = ∫ g f \d μ\]
+   für jedes messbare $g \geq 0$ definiert (Bezeichnung: $\d ν = f \d μ$)
+   #+end_lemma
+   #+begin_proof latex
+   \begin{align*}
+   ν(\emptyset) &= ∫_{\emptyset} f \d μ = ∫ χ_{\emptyset} f \d μ = 0 · ∫ f \d μ = 0 \\
+   ν(A ∪ B) &= ∫_{A ∪ B} f \d μ = ∫_A f \d μ + ∫_B \d μ = ν(A) + ν(B) \quad\text{für } A ∩ B = \emptyset \\
+   \intertext{Für abzählbare Vereinigungen äquivalent}
+   ν(\bigdcup_{k ∈ ℕ} A_k) &= \sum_{k ∈ ℕ} ν(A_k) \\
+   \end{align*}
+   Ist $g$ einfach und $\geq 0$
+   \[⇒ g = \sum_{i = 1}^{n} α_j χ_{B_j}\]
+   für disjunkte $B_j ∈ Σ, \bigcup B_j = X, α_j \geq 0$
+   \begin{align*}
+   ∫ g \d ν &= \sum_{j = 1}^{n} α_j ν(A_j) = \sum_{j = 1}^{n} α_j ∫_{B_j} f \d μ = \sum_{j = 1}^{n} ∫ α_j f χ_{B_j} \d μ \\
+   &= ∫ \sum_{j = 1}^{n} \underbrace{(α_j χ_{B_j})}_{= g} f \d μ = ∫ g f \d μ
+   \end{align*}
+   Appoximation liefert die Behauptung für beliebigte $g \geq 0$.
+   #+end_proof
+   #+ATTR_LATEX: :options [Fatou Lemma]
+   #+begin_thm latex
+   Sei $(X, Σ, μ)$ ein Maßraum. Ist $f_k$ eine Folge nicht-negativer Funktionen $(X, Σ) \to (ℝ, \mathcal{B})$ so gilt $∀ A ∈ Σ$
+   \begin{align*}
+   ∫_A \liminf_{k \to ∞} f_k \d μ &\leq \liminf_{k \to ∞} ∫_A f_k \d μ
+   \end{align*}
+   #+end_thm
+   #+begin_proof latex
+   Wir setzen $g_k := \inf_{j \geq k} f_j$, also
+   \[g_k \nearrow \lim_{j \to ∞} \inf f_j\]
+   Weiterhin $g_k \leq f_k ∀ k ∈ ℕ$
+   \[⇒ ∫_A g_k \d μ \leq ∫_A f_k \d μ\]
+   Übergang zum $\liminf$
+   \begin{align*}
+   ⇒ \liminf ∫ g_k \d μ &= \lim_{k \to ∞} ∫ g_k \d μ = ∫_A \lim_{k \to ∞} g_k \d μ \\
+   &= ∫_A \liminf_{k \to ∞} f_k \d μ
+   \end{align*}
+   #+end_proof

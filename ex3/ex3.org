@@ -8,6 +8,9 @@
 # Klausur: voraussichtlich am 5.2.2018
 # Experimentierraum: Do + Fr 14-18 Uhr, 3D-Drucker!
 
+
+# Montag 13.11 13:30 Fragen
+
 # Quantenphysik und Atome
 # Ziele:
 # Einführen der Grundkonzepte der Quantenmechanik
@@ -18,6 +21,8 @@
 #   Laserkühlung (N.P. 1996)
 #   Ultrakalte Quantengase (N.P.)
 #
+
+# \tikzexternalize
 
 * Vorspann
 ** Ein Experiment mit klassischen Teilchen
@@ -177,7 +182,7 @@
    E(x, t) &= \Re \{\underarrow[E_1]{reell} e^{i(ω t - \v k \v R_1)} + \underarrow[E_2]{reell} e^{i(ω t - \v k \v R_2)}\} \\
    &= \Re \{(E_1 \underbrace{e^{-i(\v k \v R_1)}}_{a_1} + \underbrace{E_2 e^{-i \v k \v R_2}}_{a_2}) e^{i ω t}\} \\
    ⇒ I_{12}(x) &\propto \abs{a_1 + a_2}^2 \\
-   \intertext{Wir interessieren uns nur für $x$ -Abhängigkeit, nicht für absolute Werte}
+   \intertext{Wir interessieren uns nur für \(x\)-Abhängigkeit, nicht für absolute Werte}
    I_{12}(x) \propto \abs{a_1 + a_2}^2 &= (a_1^{\ast} + a_2^{\ast})(a_1 + a_2) \\
    &= \abs{a_1}^2 + \abs{a_2}^2 + a_1^{\ast} a_2 + a_2^{\ast} a_1 \\
    \abs{a_1}^2 &= E_1 e^{i k R_1} E_1 e^{-k R_1} = E_1^2 \sim I_1 \\
@@ -952,7 +957,702 @@
 \end{minipage}
 \hfill%
 \begin{minipage}{.6\linewidth}
-Stärkere Logalisierung führt zum schnellerem zerfließen!
+Stärkere Lokalisierung führt zum schnellerem Zerfließen!
 \end{minipage}
    #+END_EXPORT
+** Allgemeine Ausbreitung eines Wellenpakets
+   \[ψ(x, t) = ∫_{-∞}^∞ \tilde ψ(k) e^{i(k x - ω(k) t)} \d k\]
+   $ω(k)$: Dispersionsrelation \\
+   Wenn $\tilde ψ(k)$ im \(k\)-Raum (Impuls Raum) um $k_0$ konzentriert ist, kann
+   die Dispersionsrelation $ω(k)$ durch eine Taylor Reihe genährert werden.
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (-5, 0) -- ++(10, 0) node[right] {$k$};
+  \draw[->] (-5, 0) -- ++(0, 7) node[left] {$ω$};
+  \draw (-5.1, 5) node[left] {$ω_0$} -- ++(0.2, 0);
+  \draw[red] (0, -.1) node[below] {$k_0$} -- ++(0, 0.2);
+  \draw[samples=100,smooth,red,variable=\x] plot ({\x},{4*exp(-\x*\x)});
+  \draw[black,variable=\x,smooth,samples=100] plot ({\x},{0.02*\x*\x*\x - 0.05*\x*\x + 0.2*\x + 5});
+  \draw[variable=\x,smooth,samples=100,orange] plot ({\x},{0.2*\x + 5});
+  \draw[variable=\x,smooth,samples=100,blue] plot ({\x},{-0.05*\x*\x + 5});
+  \draw[variable=\x,smooth,samples=100,green] plot ({\x},{0.02*\x*\x*\x + 5});
+%  \foreach \color/\name/\x\ in {red/$\abs*{\tilde ψ(k)}$/0, black/$ω(k)$/1, orange/$\propto k$/2, blue/$\propto k^2$/3, green/$\propto k^2$/4}
+%     \filldraw[\color] (4, 1+0.5*\x) -- ++(0.4, 0) node[right] {\name};
+  \foreach \c/\n\ [count=\i] in {red/$\abs*{\tilde ψ(k)}$, black/$ω(k)$, orange/$\propto k$, blue/$\propto k^2$, green/$\propto k^3$}
+      \draw[\c] (4, .5*\i) -- ++(.5, 0) node[right,black] {\n};
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   Taylor Reihe für $ω(k)$:
+   \begin{align*}
+   ω(k) &= ω(k) \big|_{k_0} + \pp{ω}{k}\big|_{k_0}(k - k_0) + \frac{\partial^2 ω}{\partial k^2}\big|_{k_0} \frac{(k - k_0)^2}{2} + \dots \\
+   ⇒ ψ(x, t) &= ∫_{-∞}^∞ \tilde ψ(k) e^{-i (ω_0 + ω_0'(k - k_0) + ω_0'' \frac{(k - k_0)^2}{2})t - k x} \d k \\
+   \intertext{Definiere $κ= k - k_0 ⇒ k = κ + k_0$, damit}
+   ψ(x, t) &= \underbrace{e^{i(k_0 x - ω_0 t)}}_{\mathclap{\text{de Broglie Welle}}} \underbrace{∫_{-∞}^∞ \tilde ψ(κ + k_0) e^{-i \underbrace{(ω_0' t - x)}_{x' = v_g t - x} κ + \frac{ω_0''}{2}κ^2 t} \d κ}_{\mathclap{\text{Einhüllende}}} \\
+   \intertext{Einhüllende bewegt sich mit}
+   v_g &= \pp{ω}{k} \big|_{k_0} \\
+   \end{align*}
+   $ω_0'' = 0$:
+   #+begin_export latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-4,0) -- ++(8,0) node[right] {$x$};
+\draw[->] (-4,0) -- ++(0,3) node[left] {$\Re ψ$};
+\draw[variable=\x,smooth,samples=100,black!30!green,domain=-4:4] plot ({\x},{3*exp(-0.4*\x*\x)});
+\draw[variable=\x,smooth,samples=500,red,domain=-4:4] plot ({\x},{3*exp(-0.4*\x*\x)*sin(400*\x)});
+\draw[->,black!30!green] (0,3) |- (2,3.5) node[right] {$v_g$};
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+end_export
+   $ω_0'' \neq 0 ⇒$ Phase $\propto κ^2 t ⇒$ zerfließen. Interpretation:
+   \[ω \sim ω_0 + \frac{ω''}{2} k^2 = ω_0 + \frac{\hbar}{2m^{\ast}} k^2\]
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{minipage}{.45\textwidth}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-3.5,0) -- ++(7,0) node[right] {$k$};
+      \draw[->] (-3.5,0) -- ++(0,4) node[left] {$ω$};
+      \draw[black,variable=\x,samples=100,smooth,domain=-3.5:3.5]
+      plot ({\x},{3*(.5*\x*\x + .5)/(2*(\x - 1)*\x + 1) + .1*(\x + 5) + 0.002*(\x - .5)*(\x - .5)*(\x - .5)*(\x - .5) - .7});
+      \draw[red,dashed,variable=\x,samples=100,smooth,domain=-3:-0.5]
+      plot ({\x},{.1738*(\x + 1.75)*(\x + 1.75) + .25});
+      \draw[red,dashed,variable=\x,samples=100,smooth,domain=.3:.94]
+      plot ({\x},{-15.8*(\x - 0.62)*(\x - 0.62) + 3.79});
+      \draw [red,<-,every text node part/.style={align=center}] (.4, 2.2) -- ++(.5,-1) node[below] {negative \\ $\text{Masse}^{\ast}\ m_2^{\ast}$};
+      \draw [red,<-,every text node part/.style={align=center}] (-2.9, 0.6) -- ++(.5,+1) node[above] {positive \\ $\text{Masse}^{\ast}\ m_1^{\ast}$};
+    \end{tikzpicture}
+  \end{center}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+  Effektive Masse $m^{\ast}$ ist invers proportional zur Krümmung
+  der Dispersionsrelation $ω(k)$. \\ {\color{red}$\abs*{m_1^{\ast}} > \abs*{m_2^{\ast}}$}
+\end{minipage}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   Gauss'sches Wellenpaket:
+   \[\tilde ψ(k) \sim e^{-\frac{a^2}{4}k^2}\]
+   $⇒ω''$ Term führt zum zerfließen des Pakets $⇒$ Gauss bleibt Gauss. Hähere Ableitungen von $ω(k)$
+   führen zur Verzerrung des Grauss'schen Wellenpakets.
+** Beugung von Materiewellen
+   Doppelspalt \(\to N\)-Spalten $=$ Gitter. (vergleiche Abschnitt 2.3 Fourier)
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (-5,0) -- ++(1,0) node[above] {$x$};
+  \draw[->] (-5,0) -- ++(0,-1) node[left] {$z$};
+  \draw (-5, -2) node[left] {$z = 0$} -- (-4.25,-2);
+  \foreach \x in {1,...,6}
+    \draw[very thick] (1.5*\x - 5.5, -2) -- ++(1,0);
+  \draw[->] (-5,-4) -- ++(10,0) node[below] {$x$};
+  \draw[->] (-5,-4) -- ++(0,1) node[left] {$ψ(x)$};
+  \foreach \x in {1,...,5}
+    \draw[blue] (1.5*\x - 5, -4) -- ++(.5, 0) -- ++(0,1) -- ++(.5,0) -- ++(0,-1) -- ++(.5,0);
+  \draw[->] (-2.5,-.5) -- ++(0,-1) node[midway,right] {$k_z$};
+  \foreach \x in {1,2,3}
+    \draw (-3.5,-1 -.25*\x) -- ++(2, 0);
+  \draw[|-|] (1.75, -1.75) -- ++(1.5, 0) node[midway, above] {$d$};
+  \draw[|-|] (1.5, -2.25) -- ++(.5, 0) node[midway, below] {$B$};
+  \node at (4, -2.25) {Gitter};
+  \node[right] at (-2, -.5) {Doppelspalt $\to$ \(N\)-Spalten = Gitter};
+\end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   \begin{align*}
+   \intertext{$ψ(x)$ dirket nach dem Gitter}
+   ψ(x, z = 0) &= N \sum_{n = -∞}^{∞} g_n e^{in G x} \qquad G = \frac{2π}{d} \\
+   \text{mit } g_n &= \frac{1}{nπ} \sin(n \frac{πB}{d}) \\
+   \end{align*}
+   Wie breitet sich $ψ(x, k, t)$ aus?
+   1. Energieerhaltung: $ω_{dB}$ ändert sich nicht
+   2. Impuls ändert die Richtung weil nach dem Gitter gilt:
+	  \begin{align*}
+      ψ(x, z, t) &= N \sum_{n = -∞}^{∞} g_n \underbrace{e^{i n G x} e^{i(k'_z z - ω t)}}_{\v k_n = \cvec{n G; k'_z}} \\
+      &= N \sum_{n = -∞}^{∞} g_n e^{i(\v k_n \v x - ω t)} \\
+      \end{align*}
+      $k_z'$ folgt aus der Energieerhaltung
+	  \[n^2 G^2 + \underarrow[k^{\prime 2}_z]{nach dem Gitter} = \overarrow[k_z^2]{vor dem Gitter}\]
+   Wahrscheinlichkeit sich in Richtung $\v k_1 = \cvec{G; k_z'}$ auszubreiten /	gebeugt	zu werden:
+   \[P(k_x = G) = \abs{N}^2 g_1^{\ast} g_1\]
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{minipage}{.35\textwidth}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (0,0) -- ++(0,-1.5) node[midway,right,every text node part/.style={align=left}] {einfallender \\ Wellenvektor $\v k = \cvec{0; k}$};
+      \draw[->] (0,-1.7) -- ++(-90:1.5);
+      \draw[->] (0,-1.7) -- ++(-60:1.5);
+      \draw[->] (0,-1.7) -- ++(-120:1.5);
+      \draw [domain=-60:-90,shift={(0,-1.7)}] plot ({cos(\x)}, {sin(\x)}) node[above,xshift=6pt,font=\small] {$α$};
+      \draw[red,->] (0, {-1.7-1.5*sin(60)}) -- ++({1.5*cos(60)},0) node[below,midway] {$G$};
+      \draw[decoration={brace,mirror,raise=2pt},decorate] (0,-1.7) -- node[left,yshift=5pt,xshift=-2pt] {$k$} ++(-120:1.5);
+      \draw[red,decoration={brace,raise=2pt},decorate]  ({1.5*cos(60)},-1.7) -- node[right,xshift=2pt] {$k_z'$} ++(0,{-1.5*sin(60)});
+      \draw [dashed,domain=-40:-140,shift={(0,-1.7)}] plot ({1.5*cos(\x)}, {1.5*sin(\x)});
+      \draw[<-,bend left] (-1.1,-2.75) to [out=-80,in=-230] ++(1,-1) node[below,every text node part/.style={align=center}] {In\\Festkörperphysik:\\Ewald Kugel};
+    \end{tikzpicture}
+  \end{center}
+\end{minipage}
+\hfill%
+\begin{minipage}{.55\textwidth}
+  $\abs{\v k}$ ist erhalten aber die Richtung ändert sich durch Gittervektor $\v G$. \\
+  Nur diskrete Impulse weil periodische Struktur im Raum.
+\end{minipage}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   Für $\frac{G}{k} \ll 1$:
+   Ergebnis wie in Beugung von elektromagnetischen Wellen an periodischen Strukturen.
+   \[α = \frac{G}{k} = \frac{2π}{d} \frac{λ_{dB}}{2π} = \frac{λ_{dB}}{d}\]
+*** Elektronen
+	Beobachtung: Davisson & Germer (1927) $e^{-}$ Strahl mit $\SI{75}{\electronvolt}, λ_{dB} = \SI{1.4e-10}{\meter}$
+	fällt auf NI-Kristall.
+	#+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}] node[left] {$e^{-}$} (0,0) -- ++(2,0);
+    \draw[->] (2,-.3) -- ++(210:1.5);
+    \draw [domain=180:212.5,shift={(2.4,0)}] plot ({1.5*cos(\x)}, {1.5*sin(\x)});
+    \node at (1.5,-.3) {$α$};
+    \begin{scope}[xshift=10pt,yshift=-5pt]
+    \foreach \x in {1,...,5}
+      \foreach \y in {1,...,5}
+        \filldraw (.5*\x + 1.5, -.5*\y + 1) circle (1pt);
+    \draw[|-|] (4.25,.5) -- ++(0,-.5) node[midway,right] {$d = \SI{3.52e-10}{\meter}$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+	\[⇒ α = \frac{λ_{dB}}{d} = 0.4 \estimates \sim \frac{\SI{40}{\centi\meter}}{\SI{1}{meter}} \sim \SI{23}{\degree}\]
+	Die	Beugungswinkel sind vergleichbar zu Röntgenstrahlen, aber die Eindringtiefe für $e^{-}$
+	ist geringer (Coulomb WW) $⇒$ werden heute standardmäßig eingesetzt um bei Molekularstrahl Epitaxie
+	kristallines Wachsen nachzuweisen.
+	#+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \draw (-3,0) -- ++(6,0);
+    \foreach \x in {1,...,10}
+       \draw ({(1cm/3pt)*\x - 50pt}, 3pt) circle (3pt);
+    \foreach \x in {1,...,9}
+       \draw ({(1cm/3pt)*\x + 4pt - 50pt}, 9pt) circle (3pt);
+    \draw[->] (-4,2) -- ++(3,-1.5) node[midway,below left] {$e^{-}$-Strahl};
+    \foreach \x/\y\ in {0/3, .5/2.5, -.5/2.5, 0/2} {
+       \draw (\x, \y) circle (3pt);
+       \draw[->] (\x, {\y - .1}) -- ++(0, -.3);
+    }
+    \draw[->] (0,.5) -- ++(10:3);
+    \draw[->] (0,.5) -- ++(20:3);
+    \draw[->] (0,.5) -- ++(30:3);
+    \draw[line width=2] (3.2, 3) -- ++(0,-2.5) node[above right,every text node part/.style={align=left}] {Beugung \\ wird auf\\ Phosphor-\\schirm\\beobachtet};
+  \end{tikzpicture}\\
+\end{center}
+Kristallines Wachstum \\
+Klare Beugungsstruktur:\
+\begin{tikzpicture}[anchor=base,baseline]
+  \filldraw (0,0) circle (2pt);
+  \filldraw (-.5,0) circle (2pt);
+  \filldraw (.5,0) circle (2pt);
+  \filldraw (0,.5) circle (2pt);
+  \filldraw (0,-.5) circle (2pt);
+  \filldraw (-.3,-.3) circle (1pt);
+  \filldraw (.3,-.3) circle (1pt);
+  \filldraw (-.3,.3) circle (1pt);
+  \filldraw (.3,.3) circle (1pt);
+\end{tikzpicture}\\
+Amorphe Strukturen\\
+Diffuse Beugungsstruktur:
+\begin{tikzpicture}[anchor=base,baseline]
+\foreach \x in {1,...,20}{
+   \draw[decorate, decoration={random steps,segment length=1pt,amplitude=3pt}] (rand*.5,rand*.5) -- (rand*.5,rand*.5);
+}
+\end{tikzpicture}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+*** Moleküle an einem Transmissionsgitter
+	Beispiel: $Na_2$ Pritchard Group am MIT.
+	#+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (0,0) -- ++(2,0) node[below,midway] {$\SI{800}{\meter\per\second}$} node[above,midway] {$Na$ Ofen};
+    \draw (2.5, 1) -- ++(0,-0.75);
+    \draw (2.5, -1) -- ++(0,0.75);
+    \draw (5.5, 1) -- ++(0,-0.75);
+    \draw (5.5, -1) -- ++(0,0.75);
+    \foreach \y in {1,...,6}
+      \draw (6,.5*\y - 1.875) -- ++(0,.25);
+    \draw[<-] (6.2, -1) -- ++(1,-.5) node[right,every text node part/.style={align=left}] {Nanometer\\Gitter\\$d = \SI{160}{\nano\meter}$};
+    \draw[->] (6.2, 0.1) -- ++(20:2);
+    \draw[->] (6.2, 0) -- ++(0:2) node[right] {Beugung};
+    \draw[->] (6.2, -0.1) -- ++(-20:2);
+  \end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+	\begin{align*}
+	Na: \qquad λ_{dB} &= \SI{20}{\pico\meter} ⇒ θ = \frac{λ_{dB}}{d} \sim \SI{1.25e-4}{} \estimates \SI{125}{\micro\meter\per\meter} \\
+	Na_2: \qquad λ_{dB} &= \SI{10}{\pico\meter} ⇒ θ = \frac{1}{2}\SI{125}{\micro\meter\per\meter}
+	\end{align*}
+*** Nachweis von sehr "fragilen" Molekülen
+	Beispiel: $He_2$ \\
+	Übliche Methode:
+	#+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+\wigglecircle{1}{.25}{20}{0}{0}
+\draw[<-] (-.8,.8) -- ++(-1,1) node[above right,midway] {$e^{-}$};
+\draw[<-] (.9,.9) -- ++(.5,.5) node[above] {Molekül};
+\draw[->] (0,0) -- ++(2,0);
+\node at (3,0) {\Huge$\Rightarrow$};
+\wigglecircle{1}{.25}{20}{5}{0}
+\node at (5,0) {\Huge$+$};
+\filldraw (6.5,1.5) circle (.5pt);
+\draw (6.5,1.5) circle (5pt) node[above right] {$\v B$};
+\draw[->] (6.5, 0) to [in=130,out=0] ++(2,-1);
+\draw[decoration={ticks},decorate] (8,-2) -- ++(2,2);
+\draw (8,-2) -- ++(2,2) node[below right,every text node part/.style={align=center},midway] {Proportional\\zur Masse};
+\draw[decoration={mirror,brace},decorate] (6.5,-2.2) -- node[midway,below] {Massenspektrometer} ++(2.5,0);
+%\draw[<-] ()
+\end{tikzpicture}
+\end{center}
+\begin{tikzpicture}
+\draw[->] (-.8,.8) -- ++(.5,-.5) node[above right,midway] {$e^{-}$} node[below right] {$He_2$};
+\draw[->] (.7,0) -- ++(.7,0);
+\node[align=left,right] at (1.5, .3) {$He + He + e^{-}$};
+\node[align=left,right] at (1.5, -.3) {$He + He^{+} + 2e^{-}$};
+\node at (5, 0) {\Huge$\Rightarrow$};
+\node[align=left,right] at (5.7, .15) {misst immer};
+\node[align=left,right] at (5.7, -.15) {nur $He$ Masse};
+\end{tikzpicture}\\
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+	Verwendung von nanometer Transmissionsgitter $\to$ Analyse der Beugungswinkel\\
+	#+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{minipage}{.45\textwidth}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (0,0) -- ++(1,0) node[above,midway,every text node part/.style={align=left}] {{\color{blue}$He$}\\{\color{red}$He_2$}};
+    \foreach \y in {1,...,6}
+      \draw (1.5,.5*\y - 1.875) -- ++(0,.25);
+    \draw[->,red] (2, 0) -- ++(-10:1.5);
+    \draw[->,red] (2, 0) -- ++(10:1.5);
+    \draw[->,red] (2, 0) -- ++(0:1.5);
+    \draw[->,blue] (2, 0) -- ++(-20:1.5);
+    \draw[->,blue] (2, 0) -- ++(20:1.5);
+    \draw[<->,blue] (2,0) ++(20:1.7) to [out=-70,in=90] (3.7,0);
+    \node[blue] at (3.9,.3) {$α$};
+  \end{tikzpicture}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+${\color{blue} α_{He}} = 2 × {\color{red}α_{He_2}}$
+\end{minipage}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+*** Beugung von Makro-Molekülen
+	Beispile: $C_{60}, C_{60}F_{40}$
+	#+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \node[rectangle,draw,every text node part/.style={align=left},right] at (0,0) {Ofen\\ $\SI{900}{\kelvin}$};
+    \node[white] at (1.2,0) {$\bullet$};
+    \draw (2.5, 1) -- ++(0,-0.75);
+    \draw (2.5, -1) -- ++(0,0.75);
+    \draw (5.5, 1) -- ++(0,-0.75);
+    \draw (5.5, -1) -- ++(0,0.75);
+    \node at (4, 1.2) {Kollimation};
+    \foreach \y in {1,...,6}
+      \draw (6,.5*\y - 1.875) -- ++(0,.25);
+    \draw[<-] (6.2, -1) -- ++(1,-.5) node[right,every text node part/.style={align=left}] {Beugungsgitter\\$d \sim \SI{100}{\nano\meter}$};
+    \draw[->] (6.2, 0.1) -- ++(20:2);
+    \draw[->] (6.2, 0) -- ++(00:2) node[above right] {$α=\frac{λ_{dB}}{d} = \SI{30e-6}{}$};
+    \draw[->] (6.2, -0.1) -- ++(-20:2);
+  \end{tikzpicture}
+  \begin{align*}
+    m &= 60·^{12}C \\
+    λ_{dB} &\sim \SI{3}{\pico\meter} \\
+    \SI{30e-6}{} &\estimates \frac{\SI{30}{\micro\meter}}{\si{\meter}} \sim \frac{\SI{3}{\centi\meter}}{\si{\kilo\meter}}
+  \end{align*}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+	Fundamentale Frage: Gibt es eine kritische Größe, ab der Quantenmechanik klassisch wird?
+** Atom Interferometer
+   1. Atom Interferometer - Doppelspalt aus dünnen Goldfolien \\
+	  Gruppe-Mlynek: 1991 Konstanz
+   2. Atom Interferometer - 3 Gitter Aufbau \\
+	  Gruppe Pritchard: 1991 MIT/Boston
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \y in {1,...,6}
+      \draw (2,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (4,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (6,.5*\y - 1.875) -- ++(0,.25);
+
+    \draw[->] (0,.1) -- ++(1.5,0);
+    \foreach \a in {-20,0,20}
+      \draw[->] (2.1, .1) -- ++(\a:1.2);
+
+    \foreach \y in {-1,0,1}
+      \foreach \a in {-20,0,20}
+        \draw[->] (4.1, \y+.1) -- ++(\a:1.2);
+    \draw[green] (0,0) -- ++(2,0) -- ++(2,1) -- ++(4,0);
+    \draw[green] (0,0) -- ++(4,0) -- ++(4,2);
+    \filldraw (8.2,1) circle (3pt) node[right] {Atomdetektor};
+    \node[green,draw,circle,inner sep=1pt] at (5.5, .5) {$1$};
+    \node[green,draw,circle,inner sep=1pt] at (5.5, 1.25) {$2$};
+    \draw[->] (3, -2.2) -- (2,-1.4);
+    \draw[->] (3, -2.2) node[below] {Nanometer Gitter} -- (4,-1.4);
+    \draw[->] (3, -2.2) -- (6,-1.4);
+    \draw[->,green] (2.3,1) node[above,yshift=11pt,xshift=-5pt,every text node part/.style={align=left},right] {Beugungs-\\effizienz} -- ++(-.1,-.4) node[below] {$η$};
+  \end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   Die Wahrscheinlichkeit das Atom zu detektieren ist $\abs{ψ}^2$ mit
+   \begin{align*}
+   ψ &= ψ_{1} + ψ_{2} = η^2 e^{ik l_1} + η^2 e^{ikl_2} \\
+   &= η^2 \underarrow[e^{ik l_2}]{globale Phase}(1 + e^{ik(l_2 - l_1)}) \\
+   Δl &= l_2 - l_1 = 0 ⇒ \abs{ψ}^2 = 4η^4
+   \end{align*}
+   Beobachtung des Interfernzmusters $\abs{ψ}^2 = 0$?\\
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{minipage}{.6\textwidth}
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \y in {1,...,6}
+      \draw (2,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (4,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (6,.5*\y - 1.875) -- ++(0,.25);
+    \draw[->] (0,0) -- ++(2,0) -- ++(2,1) -- ++(4,0) node[right] {$\abs{ψ}^2$};
+    \draw[->] (0,0) -- ++(4,0) -- ++(4,2);
+    \draw[->] (2,-1.4) -- ++(+.5,-.5) node[below] {Gitterperiode $d$};
+    \draw[<->] (6.2, -1) -- ++(0,-.5) node[midway,right] {Verschiebe Gitter um $Δx$};
+  \end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{.35\textwidth}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (0,0) -- ++(5, 0) node[below right] {$Δx$};
+    \draw[->] (0,0) -- ++(0, 3) node[above left] {$\abs{ψ}^2$};
+    \draw[samples=100,smooth,domain=0:5] plot ({\x},{1-cos(360*\x)});
+    \draw (.5,.1) -- ++(0, -.2) node[below] {$0$};
+    \draw (1,.1) -- ++(0, -.2) node[below] {};
+    \draw (1.5,.1) -- ++(0, -.2) node[below] {$d$};
+    \draw (2,.1) -- ++(0, -.2) node[below] {};
+    \draw (2.5,.1) -- ++(0, -.2) node[below] {$2d$};
+  \end{tikzpicture}
+\end{center}
+\end{minipage}\\
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   Warum:
+   #+BEGIN_EXPORT latex
+\catcode`(=12
+\catcode`)=12
+\begin{align*}
+ψ(x) &= \sum_{n = -∞}^{∞} g_n e^{inGx} \\
+x ↦ x + Δ x \qquad &= \sum_{n = -∞}^{∞} \underbrace{g_n e^{inG Δ x}}_{g_n e^{i2π n \frac{Δ x}{d}}} e^{inG x} \\
+Δ x = d ⇒ e^{i 2π n} &= 1 ⇒ \text{keine Änderung} \\
+\intertext{Letztes Gitter:}
+&\begin{tikzpicture}
+\draw[->] (0,0) -- ++(1,0) node[midway,draw,circle,inner sep=.5pt,above,yshift=2pt] {2};
+\draw[green,->] (0,-1) -- ++(1,.8) node[midway,draw,circle,inner sep=.5pt,below,yshift=-2pt,xshift=2pt] {1};
+\draw[->] (1.1, 0) -- ++(1,0) node[right] {$g_0$};
+\draw[green,->] (1.1, -.2) --++(1,0) node[right] {$g_1 e^{i \frac{2π Δ x}{d}}$};
+\end{tikzpicture} \\
+\catcode`(=\active
+\catcode`)=\active
+⇒ ψ &= η^2 e^{i k l_1} e^{i \frac{2π Δ x}{d}} + η^2 e^{ik l_2} \\
+\intertext{mit $l_1 = l_2 = l$} \\
+ψ &= η^2 e^{i k l} (e^{i \frac{2π Δ x}{d}} + 1) \\
+\abs{ψ}^2 &= η^4 ((e^{-i \frac{2π Δ x}{d}} + 1)(e^{i \frac{2π Δ x}{d}} + 1)) \\
+&= η^4 \{2 + \underbrace{e^{-i \frac{2π Δ x}{d}} + e^{i \frac{2π Δ x}{d}}}_{= 2 \cos \frac{2π Δ x}{d}}\} \\
+⇒ \abs{ψ}^2 &\propto 1 + \cos(\frac{2π}{d} Δ x)
+\end{align*}
+   #+END_EXPORT
+   *Messen von Potentialen* \\
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \y in {1,...,6}
+      \draw (2,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (4,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (6,.5*\y - 1.875) -- ++(0,.25);
+    \node[draw,circle,inner sep=1pt] at (5.7, .5) {$1$};
+    \node[draw,circle,inner sep=1pt] at (5.7, 1.25) {$2$};
+    \draw[->] (0,0) -- ++(2,0) -- ++(2,1) -- ++(4,0);
+    \draw[->] (0,0) -- ++(4,0) -- ++(4,2);
+    \draw[green,pattern=north west lines, pattern color=green] (4.1,0.8) rectangle (5.4,1.2) node[above,midway,yshift=5pt] {$V$};
+  \end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   Potential am Weg 2:
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \x/\xl/\yl\ in {3/Weg 2/$V$, 2/Weg 2/{Gesamt-\\energie}, 1/Weg 2/{Kintetische\\Energie\\$\frac{p^2}{2m}$}}{
+      \draw[->] (0, 4*\x) -- ++(7,0) node[below,right] {\xl};
+      \draw[->,every text node part/.style={align=center}] (0, 4*\x) -- ++(0,3) node[above,left] {\yl};
+    }
+    \draw[dashed] (5,4) -- ++(0,8);
+    \draw[dashed] (3,4) -- ++(0,8);
+    \draw[red] (0, 12) -- ++(3,0) -- ++(0,1) -- ++(2,0) -- ++(0,-1) -- ++(2,0);
+    \draw (0,9.5) -- ++(7,0) node[right,every text node part/.style={align=center}] {Konstant \\ Zeit-Unabängig\\Energieerhaltung};
+    \draw (0, 6) -- ++(3,0) -- ++(0,-1) -- ++(2,0) -- ++(0,+1) -- ++(2,0);
+    \draw[black,pattern=north west lines, pattern color=black] (0,3.8) rectangle (3,4) node[above,midway,yshift=5pt,circle,draw,inner sep=1pt] {1};
+    \draw[black,pattern=north west lines, pattern color=black] (5,3.8) rectangle (7,4) node[above,midway,yshift=5pt,circle,draw,inner sep=1pt] {3};
+    \node[yshift=5pt,circle,draw,inner sep=1pt] at (4,4.09) {2};
+  \end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   \begin{align*}
+   1+3: &\qquad \frac{\hbar^2 k_{dB}^2}{2m} \\
+   2: &\qquad \frac{p'^2}{2m} + V = \frac{p^2}{2m} \\
+    &\qquad \frac{\hbar^2 k^{\prime 2}}{2m} + V = \frac{\hbar^2 k^2}{2m} \\
+   \end{align*}
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \x/\xl/\yl\ in {1/$x$/$V$, 0/$x$/$\Re\{ψ\}$}{
+      \draw[->] (0, 4*\x) -- ++(7,0) node[below,right] {\xl};
+      \draw[->,every text node part/.style={align=center}] (0, 4*\x) -- ++(0,3) node[above,left] {\yl};
+    }
+    \draw (0,4) node[left] {$0$} -- ++(.5,0) -- ++(2,1) -- ++(2,0) -- ++(2,-1) -- ++(.5,0);
+    \draw[samples=100,domain=-.5:0,smooth,shift={(.5,1.5)}] plot ({\x},{sin(720*\x)});
+    \draw[samples=300,domain=0:2,smooth,shift={(.5,1.5)}] plot ({\x},{sin(-(600/4)*\x*\x + 720*\x)});
+    \draw[samples=100,domain=2.5:4.5,smooth,shift={(0,1.5)}] plot ({\x},{-sin(120*\x)});
+    \draw[samples=300,domain=0:2,smooth,shift={(4.5,1.5)}] plot ({\x},{sin(+(600/4)*\x*\x + 120*\x)});
+    \draw (-.1,1.5) node[left] {$0$} -- ++(.2,0);
+    \draw[dashed] (0.5,4) -- ++(0,-4);
+    \draw[dashed] (2.5,5) -- ++(0,-5);
+    \draw[dashed] (4.5,5) -- ++(0,-5);
+    \draw[dashed] (6.5,4) -- ++(0,-4);
+    \draw[every text node part/.style={align=center},decoration={mirror,brace},decorate] (0,-.1) -- node[midway,below] {Freies\\Teilchen} ++(.5,0);
+    \draw[every text node part/.style={align=center},decoration={mirror,brace},decorate] (.5,-.1) -- node[midway,below] {$v$\\wird\\kleiner\\$⇒ λ_{dB} \uparrow$} ++(2,0);
+    \draw[every text node part/.style={align=center},decoration={mirror,brace},decorate] (2.5,-.1) -- node[midway,below] {$v=\const$\\$λ_{dB} = \const$} ++(2,0);
+    \draw[every text node part/.style={align=center},decoration={mirror,brace},decorate] (4.5,-.1) -- node[midway,below] {$v$\\wird\\größer\\$⇒ λ_{dB} \downarrow$} ++(2,0);
+  \end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   Die Kraft verändert die Geschwindigkeit $⇒$ die de Broglie Wellenlänge ändert sich entsprechend
+   $⇒ ϕ = k_{dB}^v · x$ die Phasenakkumulation ändert sich im Potential $⇒$ Phasenshift kann
+   gemessen werden. Die de Broglie-Wellenlänge ändert sich $⇒$ sie wird im Bereich 2 länger, weil Atom langsamer wird.
+   Einfach Beschreibung durch Einführung eines "Brechungs Index"
+   \[n = \frac{k_{\text{Medium}}}{k_{\text{Vakuum}}} = \frac{k'_{\text{Potential}}}{k_{\text{frei}}} = \frac{λ_{dB}^{\text{frei}}}{λ_{dB}^{\text{Potential}}}\]
+   Mit $2$:
+   \begin{align*}
+   k^{\prime 2} &= k^2 - \frac{2mV}{\hbar^2} \\
+   k' &= k \sqrt{1 - \frac{2m}{\hbar^2 k^2} V} = k \underbrace{\sqrt{1 - \frac{V}{E_{\text{ges}}}}}_{n_{dB}} \\
+   \intertext{Für $V \ll E_{\text{ges}}$}
+   n_{dB} &\approx 1 - \frac{V}{2E_{\text{ges}}}
+   \end{align*}
+   Im Atom Interferometer: Empfindlichkeit abschätzen $\to$ welche Potentialhöhe
+   führt zu einer Phasenverschiebung von $π \estimates$ Maxima des Interferenzmusters
+   verschieben sich um eine halbe Periode.
+   \begin{align*}
+   Δ ϕ &= -π = (n - 1) k_{dB} · L = - \frac{V}{2E} k_{dB} L \\
+   V &= \frac{\hbar^2 k_{dB}}{m} \frac{π}{L} \\
+   \intertext{$m = Na, λ_{dB} \sim \SI{20}{\pico\meter}, L = \SI{1}{\centi\meter}$}
+   V &= \SI{3e-29}{\joule} \estimates \SI{0.18}{\nano\electronvolt}
+   \end{align*}
+   Anwendungen: Messung der Erdbeschleunigung.
+   #+begin_export latex
+\catcode`(=12
+\catcode`)=12
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \y in {1,...,6}
+      \draw (2,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (4,.5*\y - 1.875) -- ++(0,.25);
+    \foreach \y in {1,...,6}
+      \draw (6,.5*\y - 1.875) -- ++(0,.25);
+    \draw[->] (0,0) -- ++(2,0) -- ++(2,1) -- ++(4,0);
+    \draw[->] (0,0) -- ++(4,0) -- ++(4,2);
+    \node[below] at (3,0) {$m g h_1$};
+    \node[above] at (5,1) {$m g h_2$};
+    \draw[->] (1,1.2) node[above] {$\v g$} -- ++(0,-1);
+  \end{tikzpicture}
+\end{center}
+\catcode`(=\active
+\catcode`)=\active
+#+end_export
+   $⇒$ Potentialdifferenz, für $m: Cs, Δ h = \SI{1}{\meter}$
+   \[m g Δ h \sim \SI{13}{\micro\electronvolt}\]
+   Gravitationsmessung mit Atomeren Fountain $⇒ g \pm 10^{-9} g$. Erste Messung mit Neutronen.
+** Zusammenfassung
+   Historische Herleitung von de Brogliewellen = $3×$ Einstein \\
+   De Brocliewelle: Quantenmechanischer Zustand mit scharfen Impuls \\
+   Dispersionsrelation für massive Teilchen \\
+   Superposition von ebenen Wellen können physikalische (normierbare) Zustände beschreiben - $\abs{ψ(x)}^2 \d x$ ist die Wahlscheinlichkeit ein Teilchen im Intervall $[x,x + \d x]$ zu detektieren. \\
+   Zerlegung einer allgemeinen Einteilchenwellenfunktion in de Broglie Wellen erlaubt Vorhersage der Dynamik \\
+   Viele Experimente in Quantenmechanik mit einzelnen Teilchen, können mit diesen minimalen	Vorraussetzungen verstanden werden
+* Allgemeine Quantenmechanik
+** Quantenmechanischer Zustand und dessen Darstellung
+   Besher nur den Fall der Ausbreitung eines massiven Teilchens $\to$ Wellenmechanik. Quantenmechanik ist allgemeiner!
+   \begin{ibox}{}
+   Das System (zum Beispiel Teilchen, drehendes Molekül, $\dots$) wird beschrieben durch einen Quantenmechanischen Zustand $\ket{ψ}$. Er beinhaltet alles,
+   was wir vom System wissen können.
+   \end{ibox}
+   $\ket{ψ}$ nennt man "ket", eingeführt von Dirac. \\
+   $\ket{ψ}^{\ast} = \bra{ψ}$ nennt man "bra". \\
+   Skalarprodukt: $\braket{ψ|ψ}$ \\
+#+BEGIN_EXPORT latex
+\catcode`(=12
+\catcode`)=12
+   \begin{minipage}[t]{.45\textwidth}
+   2D Raum:\\
+   \begin{center}
+   \begin{tikzpicture}
+   \draw (-2,0) -- ++(5,0) -- ++(2,3) -- ++(-5,0) -- cycle;
+   \draw[->] (.5,1) -- ++(1.5,0) node[below right] {$x$};
+   \draw[->] (.5,1) -- ++(1,1.5) node[below right] {$y$};
+   \draw[->] (.5,1) -- ++(1.5,.5) node[above, midway] {$r$};
+   \draw[smooth,samples=20,domain=90:72,shift={(.5,1)}] plot ({sin(\x)},{cos(\x)}) node[right,yshift=-3pt] {$φ$};
+   \filldraw[->] (.5,1) ++(1.5,.5) circle (1pt);
+   \draw (2.1,1.6) -- ++(1,1.5) node[above] {Punkt $p$};
+   \end{tikzpicture}
+   \end{center}
+   Darstellung des Punktes in einem Koordinatensystem durch einen Vektor: \\
+   kartesich: $(x,y)$ \\
+   polar: $(r, φ)$ \\
+   \begin{align*}
+   \v P &= x \v e_x + y \v e_y \\
+   \intertext{$x, y$: Koordinaten, $\v e_x, \v e_y$: Basisvektoren, alternativ}
+   \v P &= r \v e_r + φ + \v e_φ \\
+   \end{align*}
+   \vfill
+   \end{minipage}
+   \hfill
+   \begin{minipage}[t]{.45\textwidth}
+   Quantenmechanik \\
+   \begin{center}
+   \begin{tikzpicture}
+   \wigglecircle{2.5}{.5}{20}{0}{0}
+   \draw[->] (-2,2) node[every text node part/.style={align=center},left] {Raum\\aller\\Zustände}  -- ++(1,-1);
+   \draw[->] (2,2) node[every text node part/.style={align=center},right] {Zustand\\$\ket{ψ}$}  -- ++(-.9,-.9);
+   \filldraw (1,1) circle (1pt) node[right] {$\ket{ψ}$};
+   \end{tikzpicture}
+   \end{center}
+   Darstellung des Zustandes $\ket{ψ}$ in einer Basis. \\
+   Bisher: $\ket{\text{Wellenpaket}}$. \\
+   Ortsdarstellung: $ψ(x) = \abs{ψ} e^{iϕ}$ \\
+   \begin{center}
+   \begin{tikzpicture}
+     \draw[->] (-2,0) -- ++(4,0) node[below right] {$x$};
+     \draw[->] (-2,0) -- ++(0,1.5) node[above left] {$\abs{ψ(x)}$};
+     \draw[domain=-2:2,smooth] plot ({\x},{exp(-2*\x*\x)});
+     \draw[red,->] (1.5,0) --++(0,1.5) node[above right] {$ϕ(x)$};
+     \draw[red] (-2,.5) -- ++(3.6,0) node[right] {$0$};
+   \end{tikzpicture}
+   \end{center}
+   Impulsdarstellung: $\tilde ψ(k) = \abs*{\tilde ψ} e^{iϕ}$ \\
+   \begin{center}
+   \begin{tikzpicture}
+     \draw[->] (-2,0) -- ++(4,0) node[below right] {$\hbar k = p$};
+     \draw[->] (-2,0) -- ++(0,1.5) node[above left] {$\abs*{\tilde ψ(k)}$};
+     \draw[domain=-2:2,smooth] plot ({\x},{1.5*exp(-3*\x*\x)});
+     \draw[red,->] (1.5,0) --++(0,1.5) node[above right] {$\tildeϕ(x)$};
+     \draw[red] (-2,.5) -- ++(3.6,0) node[right] {$0$};
+   \end{tikzpicture}
+   \end{center}
+   \vfill
+   \end{minipage}\\
+   Skalarprodukt\\
+   \begin{minipage}{.45\textwidth}
+   \begin{align*}
+   \angl{\v e_x, \v e_x} &= \v e_x · \v e_x = 1 \tag*{Normiert} \\
+   \angl{\v e_x, \v e_y} &= 0 \tag*{Orthogonal} \\
+   \angl{\v v, a \v w + b \v x} &= a \angl{\v v, \v w} + b \angl{\v v, \v x} \\
+   \intertext{"`nützlich"' um Koordinaten zu extrahieren:}
+   \angl{\v e_x, \v P} &= \v e_x · (x \v e_x + y \v e_y) = x
+   \end{align*}
+   \end{minipage}
+   \hfill
+   \begin{minipage}{.45\textwidth}
+   \begin{align*}
+   \braket{φ|ψ} &\underarrow[=]{Ortsdarstellung} ∫ φ^{\ast}(\v x) ψ(\v x) \d^3 x \\
+   &\underarrow[=]{Impulsdarstellung} ∫ \tilde φ^{\ast}(\v k) \tilde ψ(\v k) \d^3 k \\
+   \intertext{"`nützlich"' um Wahrscheinlichkeitsamplituden zu extrahieren}
+   \end{align*}
+   \end{minipage}
+\catcode`(=\active
+\catcode`)=\active
+#+END_EXPORT
+   #+ATTR_LATEX: :options [1D-Wellenpaket]
+   #+begin_ex latex
+   Basis: Zustände mit wohldefiniertem Impuls $\hbar k$
+   \[\ket{k} \estimates \text{ de Broglie Wellen}\]
+   Wellenpaket ist eine Summe (Superposition) von de Broglie Wellen
+   \[\ket{\text{Wellenpaket}} = \ket{ψ_{WP}} = ∫_{-∞}^{+∞} \underarrow[\tilde ψ(k)]{Koordinate} \overarrow[\ket{k}]{Basisvektor / Impuls Basis} \d k\]
+   $\estimates$ Darstellung von $\ket{ψ_{WP}}$ in Impulsbasis. \\
+   Korrdinate / Wahrscheinlichkeits-Amplitude von $\ket{k'} \to$ Impuls $\hbar k'$ zu messen:
+   \begin{align*}
+   \braket{k'|ψ_{WP}} &= \bra{k'} ∫ \tilde ψ(k) \ket{k} \d k = ∫ \bra{k'} \tilde ψ(k) \ket{k} \d k \\
+   &= ∫ \tilde ψ(k) \braket{k'|k} \d k \\
+   \braket{k'|k} &= ∫ \frac{1}{\sqrt{2π}} e^{-ik' x} \frac{1}{\sqrt{2π}} e^{ikx} \d x = \frac{1}{2π} ∫ e^{i(k - k')x} \d x = δ(k - k') \\
+   \braket{k'|ψ_{WP}} &= ∫ \tilde ψ(k) δ(k - k') \d k = \tilde ψ(k')
+   \end{align*}
+   #+end_ex
+
 \printbibliography

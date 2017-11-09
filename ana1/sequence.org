@@ -4,7 +4,7 @@
 
   Topologische Struktur auf Mengen.
   - Abstände in $\mathbb{R}^1$ Betrag $\abs{x - y}$ $\xrightarrow{\text{Verallgemeinerung}}$ Norm / Metrik
-  - Umgebung in $\mathbb{R}^1$ $\eps$ -Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
+  - Umgebung in $\mathbb{R}^1$ \(\eps\)-Intervall $\xrightarrow{\text{Verallgemeinerung}}$ Kugel Umgebung
 
   Wir betrachten Folgen $\mathbb{N}\to\mathbb{R}, n\mapsto a_n$ (oder $\mathbb{C}$)
 ** Definition 2.1 Konvergenz
@@ -314,7 +314,7 @@
    \Forall \eps > 0 I_\eps(a) \cap \string(a,b] \neq \emptyset \\
    I_\eps (a) \cap \mathbb{R} \setminus \string(a,b] \neq \emptyset
    \end{align*}
-   Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem $\eps$ -Intervall um eine rationale Zahl gibt es sowohl rationale als auch irrationale Zahlen
+   Sei $A = \mathbb{Q}$, dann $\bar A =\mathbb{\mathbb{R}}$, $\partial A =\mathbb{R}$ denn in jedem \(\eps\)-Intervall um eine rationale Zahl gibt es sowohl rationale als auch irrationale Zahlen
    #+end_ex
    #+begin_remark latex
    \mbox{}

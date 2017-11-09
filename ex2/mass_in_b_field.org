@@ -99,7 +99,7 @@
    - kleine Koerzitiv
    Ferromagnetismus ist Temperaturabhäsgig
    - geht oberhalb $T_C$ verloren
-   - $T_C$ - kritische Temperatur
+   - \(T_C\)- kritische Temperatur
    Oberhalb von $F_C ⇒$ Curie-Weiß Gesetz
    \[χ(T) = \frac{C}{T - T_C}\]
 ** Feldgleichungen in Materie

@@ -106,7 +106,7 @@
    - Behauptung: $H$ bildet $\{x_1\}_{\perp}$ auf $\{x_1\}_{\perp}$ ab.
    - Begründung: Sei $\angl{y, x_1} = 0$. Dann gilt
 	 \[\angl{Hy, x_1} = (Hy)^{\dagger} x_1 = y^{\dagger} H^{\dagger} x_1 = y^{\dagger} H x_1 = λ_1 y^{\dagger} x_1 = λ_1 \angl{y, x_1} = 0~\checkmark\]
-   Betrachte jetzt die $(n - 1) × (n - 1)$ -Matrix $H_1$ welce die Wirkung von $H$ auf $\{x_1\}_{\perp}$ beschreibt. Wiedehohle
+   Betrachte jetzt die \((n - 1) × (n - 1)\)-Matrix $H_1$ welce die Wirkung von $H$ auf $\{x_1\}_{\perp}$ beschreibt. Wiedehohle
    obiges Argument. Finde $λ_2, x_2$ und so weiter.
    - Wähle normierte Basis $e_1, \dots, e_n \sim x_1, \dots, x_n$. Diese Basis ist nach obigem auch orthogonal.
    - Wir nennen Matrizen welche eine Orthonormalbasis in eine Orthonormalbasis überführen unitär.

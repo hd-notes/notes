@@ -36,7 +36,7 @@
   #+end_proof
   #+ATTR_LATEX: :options [13.3]
   #+begin_ex latex
-  - UVR $U$ im $\mathbb{R}$ -Vektorraum $\mathbb{R}^2$:
+  - UVR $U$ im \(\mathbb{R}\)-Vektorraum $\mathbb{R}^2$:
 	- $\dim U = 0: \{0\}$
 	- $\dim U = 1: \Lin((v)), v\neq 0$ \hfill (Ursprungsgeraden)
 	- $\dim U = 2: \mathbb{R}^2$

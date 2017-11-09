@@ -5,7 +5,7 @@
    - $\abs{M} = \abs{M'}$ falls $M$ und $M'$ isometrisch (durch Abstandserhaltende Transformation) sind. \hfill (Bewegungsinvarianz)
    - $M ∩ N = \emptyset ⇒ \abs{M ∪ N} = \abs{M} + \abs{N}$
    In $ℝ^1$ oder $ℝ^2$ können wir $∀ M ⊂ ℝ^2$ einen "Inhalt" mit solchen Eigenschaften zuordnen (Banach), aber nicht in $ℝ^3$ (Hausdorff)
-   Wir beginnen mit $n$ -dimensionalen (abgeschlossenen) Intervallen $I := I_1 × \dots × I_n$, wobei $I_i = [a_1, b_i], i = 1, \dots, n, a_i < b_i, a_i, b_i ∈ ℝ$.
+   Wir beginnen mit \(n\)-dimensionalen (abgeschlossenen) Intervallen $I := I_1 × \dots × I_n$, wobei $I_i = [a_1, b_i], i = 1, \dots, n, a_i < b_i, a_i, b_i ∈ ℝ$.
    \[\abs{I} := \prod_{i = 1}^n (b_i - a_i)\]
    Für Intervallsummen $S$ mit einer nicht überlappenden Darstellung
    \[S = ∪_{k = 1, \dots, m} I_k\]
@@ -98,29 +98,29 @@
 	 \[⇒ μ^{\ast}(A) \leq \sum_{k = 1}^{∞} \abs{I_k} = \sum_{k = 1}^{∞} ε 2^{-nk} = \frac{ε}{1 - 2^n} ⇒ μ^{\ast}(A) = 0\]
    #+end_remark
    #+begin_remark latex
-   $μ^{\ast}$ ist nicht $σ$ -additiv auf allen Mengen in $ℝ^n$. Dafür brauchen wir eine geeignete Klasse von Mengen in $ℝ^n$.
+   $μ^{\ast}$ ist nicht \(σ\)-additiv auf allen Mengen in $ℝ^n$. Dafür brauchen wir eine geeignete Klasse von Mengen in $ℝ^n$.
    #+end_remark
    #+ATTR_LATEX: :options [Mengenalgebra]
    #+begin_defn latex
    Die nicht-leere Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ heißt Algebra auf $X$, wenn sie $X$ und $\emptyset$ enthält und wenn mit $A, B ∈ \mathcal{A}$ auf $A \setminus B, A ∪ B, A ∩ B ∈ \mathcal{A}$ sind.
-   Sie heißt $σ$ -Algebra, wenn sie zusätzlich mit $A_i ∈ \mathcal{A}, i ∈ ℕ$ auch
+   Sie heißt \(σ\)-Algebra, wenn sie zusätzlich mit $A_i ∈ \mathcal{A}, i ∈ ℕ$ auch
    \[∪_{i ∈ ℕ} A_i, ∩_{i ∈ ℕ} A_i ∈ \mathcal{A}\]
    sind.
    #+end_defn
    #+begin_ex latex
-   1. $\mathcal{A} = \{\emptyset, X\}$ die kleinste $σ$ -Algebra für eine Menge $X$, $\mathcal{A} = \mathcal{P}(X)$ ist die größte $σ$ -Algebra auf $X$
+   1. $\mathcal{A} = \{\emptyset, X\}$ die kleinste \(σ\)-Algebra für eine Menge $X$, $\mathcal{A} = \mathcal{P}(X)$ ist die größte \(σ\)-Algebra auf $X$
    2. Für eine Menge $X$ und Teilmenge $A ⊂ X$ ist
 	  \[\mathcal{A} = \{\emptyset, X, A, A^C = X \setminus A\}\]
-	  die kleinste $σ$ -Algebra, die $A$ enthält
-   3. Für $X = ℝ^n$ heißt die kleinste $σ$ -Algebra welche die alle offene und abgeschlossene Teilmengen enthält die *Borelsche $σ$ -Algebra*.
-   4. Ist $X ⊂ ℝ^n$ eine Jordan-quadrierbare Menge, so ist die Menge der Jordan-quadrierbaren Teilmengen von $X$ eine Algebra, aber keine $σ$ -Algebra
-   5. Die Lebesgue-Nullmengen in $ℝ^n$ und ihre Komplemente bilden eine $σ$ -Algebra (nicht in dem Fall von Jordan-Nullmengen)
+	  die kleinste \(σ\)-Algebra, die $A$ enthält
+   3. Für $X = ℝ^n$ heißt die kleinste \(σ\)-Algebra welche die alle offene und abgeschlossene Teilmengen enthält die *Borelsche \(σ\)-Algebra*.
+   4. Ist $X ⊂ ℝ^n$ eine Jordan-quadrierbare Menge, so ist die Menge der Jordan-quadrierbaren Teilmengen von $X$ eine Algebra, aber keine \(σ\)-Algebra
+   5. Die Lebesgue-Nullmengen in $ℝ^n$ und ihre Komplemente bilden eine \(σ\)-Algebra (nicht in dem Fall von Jordan-Nullmengen)
    #+end_ex
    #+begin_lemma latex
    Eine (nicht-leere) Teilmenge $\mathcal{A} ⊂ \mathcal{P}(X)$ ist bereits eine Algebra, wenn die folgenden Bedingungen erfüllt sind
    1. Mit $A ∈ \mathcal{A}$ ist $A^C = X \setminus A ∈ \mathcal{A}$
    2. Mit $A, B ∈ \mathcal{A}, A ∪ B ∈ \mathcal{A}$
-   Es ist eine $σ$ -Algebra, wenn zusätzlich gilt:
+   Es ist eine \(σ\)-Algebra, wenn zusätzlich gilt:
    3. [@3] Für beliebige, paarweise disjunkte Mengen $A_i ∈ \mathcal{A}_i, i ∈ ℕ$ ist
 	  \[∪_{i ∈ ℕ} A_i ∈ \mathcal{A}\]
    #+end_lemma
@@ -130,7 +130,7 @@
    \[X = (X\setminus A) ∪ A = A^C ∪ A ∈ \mathcal{A}\]
    sowie $X^C = \emptyset ∈ \mathcal{A}$. Mit $A, B ∈ \mathcal{A}$ ist $A^C, B^C ∈ \mathcal{A}$
    \[⇒ A ∩ B = (A^C ∪ B^C) ∈ \mathcal{A}\]
-   und folglich auch $A \setminus B = A ∩ B^C ∈ \mathcal{A}$. Für die $σ$ -Algebra muss zusätzlich $∩_{i ∈ ℕ} A_i ∈ \mathcal{A}$. Für $A_i ∈ \mathcal{A}, i ∈ ℕ$ gilt die disjunkte Darstellung
+   und folglich auch $A \setminus B = A ∩ B^C ∈ \mathcal{A}$. Für die \(σ\)-Algebra muss zusätzlich $∩_{i ∈ ℕ} A_i ∈ \mathcal{A}$. Für $A_i ∈ \mathcal{A}, i ∈ ℕ$ gilt die disjunkte Darstellung
    \[∪_{i ∈ ℕ} A_i = ∪_{i ∈ ℕ} A_i\]
    \[B_1 := A_1, B_2 := A_2 \setminus A_1, \dots, B_j = A_j \setminus ∪_{i = 1}^{j - 1} A_i\]
    alle $B_i ∈ \mathcal{A}$ sowie
@@ -250,14 +250,14 @@
 	  E ∩ A &⊂ ∪_i J_i \\
 	  E ∩ A^C &⊂ ∪_i K_i \\
       \end{align*}
-	  Wegen $σ$ -Subadditivität von $μ^{\ast}$ folgt mit $\abs{I_i} = \abs{J_i} + \abs{K_i}$
+	  Wegen \(σ\)-Subadditivität von $μ^{\ast}$ folgt mit $\abs{I_i} = \abs{J_i} + \abs{K_i}$
 	  \[μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C) \leq \sum_{i} \abs{J_i} + \sum_{i} \abs{K_i} = \sum_{i} \abs{I_i} \leq μ^{\ast}(E) + ε\]
 	  Da $ε$ beliebig war gilt
 	  \[μ^{\ast}(A ∩ E) + μ^{\ast}(E ∩ A^C) \leq μ^{\ast}(E)\]
 	  "$\supseteq$" geht wie in $A$.
    #+end_proof
    #+begin_thm latex
-   1. Die Menge $Lμ$ bildet eine $σ$ -Algebra. Diese $σ$ -Algebra enthält alle Jordan-quadrierbaren Mengen.
+   1. Die Menge $Lμ$ bildet eine \(σ\)-Algebra. Diese \(σ\)-Algebra enthält alle Jordan-quadrierbaren Mengen.
    2. Das Lebesgue-Maß ist auf $Lμ$ bewegungsinvariant und stimmt auf Jordan-quadrierbaren Mengen mit dem Jordan-Inhalt überein.
 	  Für $A, B, A_i . Lμ$ gilt außerdem
 	  1. $μ(A \setminus B) = μ(A) - μ(B)$, für $B ⊂ A, μ(B) < ∞$
@@ -268,7 +268,7 @@
    #+begin_proof latex
    1. Wir haben bereits gezeigt, dass $Lμ$ eine Algebra ist. Es bleibt zu zeigen: $A_i ∈ Lμ, i ∈ ℕ$, dann ist auch
 	  \[∪_{i ∈ ℕ} A_i ∈ Lμ\]
-	  vorausgesetzt, dass $A_i ∩ A_j = \emptyset, i \neq j$. Bezeichne $S := ∪_{i ∈ ℕ} A_i$, dass gilt für beliebiges $E ⊂ ℝ^n$ und $σ$ -Subadditivität des äußeren Lebesgue-Maß
+	  vorausgesetzt, dass $A_i ∩ A_j = \emptyset, i \neq j$. Bezeichne $S := ∪_{i ∈ ℕ} A_i$, dass gilt für beliebiges $E ⊂ ℝ^n$ und \(σ\)-Subadditivität des äußeren Lebesgue-Maß
 	  \[μ^{\ast}(E ∩ S) \leq \sum_{i ∈ ℕ} μ^{\ast}(E ∩ A_i)\]
 	  Es gilt für $A, B ∈ Lμ, A ∩ B = \emptyset$ und $E' = E ∩ (A ∪ B)$
 	  \begin{align*}
@@ -282,13 +282,13 @@
 	  \[μ^{\ast}(E) = μ(E ∩ S_m) + μ^{\ast}(E ∩ S_m^C) \geq μ^{\ast}(E ∩ S) + μ^{\ast}(E ∩ S^C)\]
 	  Für $m \to ∞$ erhalten wir
 	  \[μ^{\ast}(E) \geq \sum_{i = 1}^{m} μ^{\ast}(E ∩ A_i) + μ^{\ast}(E ∩ S^C)\]
-	  Aus $σ$ -Subadditivität folgt weiter
+	  Aus \(σ\)-Subadditivität folgt weiter
 	  \[μ^{\ast}(E) = μ^{\ast}((E ∩ S) ∪ (E ∩ S^C)) \leq \sum_{i = 1}^{∞} μ^{\ast}(E ∩ A_i) + μ^{\ast}(E ∩ S^C)\]
 	  Und damit erhalten wir
 	  \[μ^{\ast}(E) = \sum_{i = 1}^{∞} μ^{\ast}(E ∩ A_i) + μ^{\ast}(E ∩ S^C)\]
 	  Es folgt
 	  \[μ^{\ast}(E) \geq μ^{\ast}(E ∩ S) + μ^{\ast}(E ∩ S^C)\]
-	  Die Umkehrung folgt aus $σ$ -Subadditivität, das heißt
+	  Die Umkehrung folgt aus \(σ\)-Subadditivität, das heißt
 	  \[μ^{\ast}(E) \leq μ^{\ast}((E ∩ S) ∪ (E ∩ S^C)) \leq μ^{\ast}(E ∩ S) + μ^{\ast}(E ∩ S^C)\]
    2. Die Bewegungsinvarianz folgt aus der Bewegungsinvarianz des äußeren Maßes, $\abs{A} = μ^{\ast}(A) = μ(A)$
 	  1. $μ(A) = μ((A \setminus B) ∪ B) = μ(A \setminus B) + μ(B) ⇔ μ(A \setminus B) = μ(A) - μ(B)$
@@ -321,15 +321,15 @@
    #+end_lemma
    #+begin_proof latex
    Wir betrachten $I = [a, b] = [a_1, b_1] × \dots × [a_n, b_n] ⊆ ℝ^n$ mit $a, b ∈ ℚ^n$. Es gibt abzählbar viele
-   solcher Intervalle. $∀ x ∈ A ∃ ε$ -Kugel $K_ε(x) ⊆ A$. Also gibt es auch ein rationales Intervall $I ⊆ A$
+   solcher Intervalle. \(∀ x ∈ A ∃ ε\)-Kugel $K_ε(x) ⊆ A$. Also gibt es auch ein rationales Intervall $I ⊆ A$
    mit $x ∈ I$ und $A = U_i I_i$. Nach Lemma 4.16 ist dann $A$ auch Vereinigung von abzählbar vielen, paarweise
    disjunkten Intervallen.
    #+end_proof
    #+begin_korollar latex
-   Die Menge $Lμ ⊂ \mathcal{P}(ℝ^n)$ enthält alle offenen und abgeschlossenen Mengen des $ℝ^n$ sowie deren abzählbare Schnitte (sogenannte $Gσ$ -Mengen) und Vereinigungen ($Fσ$ -Mengen)
+   Die Menge $Lμ ⊂ \mathcal{P}(ℝ^n)$ enthält alle offenen und abgeschlossenen Mengen des $ℝ^n$ sowie deren abzählbare Schnitte (sogenannte \(Gσ\)-Mengen) und Vereinigungen (\(Fσ\)-Mengen)
    #+end_korollar
    #+begin_proof latex
-   $Lμ$ ist $σ$ -Algebra. Die Behauptung folgt aus Lemma 4.17.
+   $Lμ$ ist \(σ\)-Algebra. Die Behauptung folgt aus Lemma 4.17.
    #+end_proof
    #+begin_thm latex
    Für eine beliebige Menge $A ⊂ ℝ^n$ ist
@@ -369,7 +369,7 @@
    - Zerlegung in abzählbar viele messbare Mengen
    Sei $D ⊂ ℝ^n$ eine messbare Menge. Wir betrachten abzählbare Zerlegungen $Z = \{B_i\}$ von $D$ in messbare $B_i ⊂ M$, sodass
    \[D = ∪_{i = 1} B_i, B_i ∩ B_j = \emptyset, i \neq j\]
-   $\mathcal{Z}(D)$ - Menge aller solchen Zerlegungen. Die Feinheit
+   \(\mathcal{Z}(D)\)- Menge aller solchen Zerlegungen. Die Feinheit
    \[\abs{Z} := \sup_{B_i ∈ Z} μ(B_i)\]
    Eine Zerlegung $\tilde Z = \{\tilde B_i\}$ ist eine Verfeinerung von $Z = \{B_i\}$ ($\tilde Z \succ Z$), wenn alle $\tilde B_j$ Teilmengen gewisser $B_i$ sind.
    \[Z \ast \tilde Z := \{B_i ∩ \tilde B_j\}\]
@@ -417,7 +417,7 @@
    #+end_lemma
    #+begin_proof latex
    Ist $Z^{\ast} ∈ \mathcal{Z}_f^{\ast}(D)$ und $\sup_{x ∈ B_i^{\ast}}(f) = ∞$ für ein $B_i^{\ast} ∈ Z^{\ast}$, so muss $μ^{\ast}(B_i^{\ast}) = 0$.
-   $Σ_f$ in in der Vereinigung von höchstens abzählbar vielen Nullmengen und damit wegen $σ$ -Subadditivität von $μ^{\ast}$	bekommen wir $μ^{\ast}(Σ_f) = 0$
+   $Σ_f$ in in der Vereinigung von höchstens abzählbar vielen Nullmengen und damit wegen \(σ\)-Subadditivität von $μ^{\ast}$	bekommen wir $μ^{\ast}(Σ_f) = 0$
    1. klar
    2. klar
    3. Wir nehmen $ε > 0$ mit $\sum_{i = 1}^{∞} = ε$ und $∀ i ∈ ℕ$ mit $0 < μ(B_i) < ∞$ wählen die Punkte $ξ_i, η_i ∈ B_i$, sodass
@@ -458,7 +458,7 @@
    nicht Riemann-Integral, aber Lebesgue-Integrierbar
    \[∫_0^1 f(x) \d x = 0\]
    Notationen
-   \[∫ f \d μ = ∫ f(x) \d x \text{ falls $μ$ - Lebesgue-Masse ist}\]
+   \[∫ f \d μ = ∫ f(x) \d x \text{ falls \(μ\)- Lebesgue-Masse ist}\]
    #+end_remark
    #+begin_lemma latex
    Das Lebesgue-Integral hat die folgenden Eigenschaften
@@ -532,7 +532,7 @@
    Die Beziehungen
    \[\{x ∈ D \mid f_{inf}(x) > α\} = ∩_k \{x ∈ D \mid f_k(x) > α\}\]
    \[\{x ∈ D \mid f_{sup}(x) > α\} = ∪_k \{x ∈ D \mid f_k(x) > α\}\]
-   und die Eigenschaften der $σ$ -Algebra von $Lμ$ liefert die Messbarkeit von $f_{inf}$ und $f_{sup}$. Aus
+   und die Eigenschaften der \(σ\)-Algebra von $Lμ$ liefert die Messbarkeit von $f_{inf}$ und $f_{sup}$. Aus
    \[f_{liminf} = \sup_k \inf_{i \geq k} f_i(x)\]
    \[f_{limsup} = \inf_k \sup_{i \geq k} f_i(x)\]
    folgt die Messbarkeit von $f_{liminf}, f_{limsup}$

@@ -20,7 +20,7 @@
    #+end_defn
    #+ATTR_LATEX: :options [$b = 10$]
    #+begin_ex latex
-   - $m_i$: $i$ -te Nachkommastelle der Mantisse
+   - $m_i$: \(i\)-te Nachkommastelle der Mantisse
    - $e$: Verschiebt das Komma um $e$ Stellen.
    \begin{align*}
    \num{0.314e1} &= \num{3.14} \\

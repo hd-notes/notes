@@ -300,8 +300,8 @@
    ⇒ W_m &= ∫_0^t P(t) \d t = ∫_0^t L I \d I = \frac{1}{2} L I(t)^2
    \end{align*}
    Also:
-   - $W_{el} = \frac{1}{2} C U^2$ - gespeicherte Energie im Kondensator, elektrische Feldenergie
-   - $W_{m} = \frac{1}{2} L I^2$ - gespeicherte Energie in Induktivität, magnetische Feldenergie
+   - \(W_{el} = \frac{1}{2} C U^2\)- gespeicherte Energie im Kondensator, elektrische Feldenergie
+   - \(W_{m} = \frac{1}{2} L I^2\)- gespeicherte Energie in Induktivität, magnetische Feldenergie
    Energiedichte des elektrischen Feldes
    \begin{align*}
    W_{el} &= \frac{1}{2} C U^2 = \frac{1}{2} ε ε_0 \frac{A}{d} U^2 \\

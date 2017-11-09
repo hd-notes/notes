@@ -101,7 +101,7 @@
 	 $c_1(A), \dots, c_n(A)$ heißen die *Invariantenteiler* von $A$.
   2. Es gibt eindeutig bestimmte normierte Polynorme $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
 	 \[\Fit_l(A) = (d_l(A)) \quad l = 1, \dots, n\]
-	 Es ist \[d_l(A) = \ggT(\det(B) \mid B \text{ ist $l× l$ -Untermatrix von } P_A)\]. Insbesondere ist $d_n(A) = χ_A^{char}$.
+	 Es ist \[d_l(A) = \ggT(\det(B) \mid B \text{ ist \(l× l\)-Untermatrix von } P_A)\]. Insbesondere ist $d_n(A) = χ_A^{char}$.
 	 $d_1(A), \dots, d_n(A)$ heißen die *Determinantenteiler* von $A$.
   #+end_remdef
   #+begin_proof latex
@@ -114,7 +114,7 @@
   2. $K[t]$ Hauptidealring $⇒ \Fit_l(P_A), l = 1, \dots, n$ sind Hauptideale und nach 27.16 ist $\Fit_l(P_A) = (c_1(A) · \dots · c_l(A))$ für $l = 1, \dots, n$, insbesondere $\Fit_l(P_a) \neq (0)$.
 	 Erzeuger der Hauptideale $\Fit_l(P_A)$ sind eindeutig bis auf Assoziiertheit. $⇒$ Es existieren eindeutig bestimmte normierte Polynome $d_1(A), \dots, d_n(A) ∈ K[t]$ mit
 	 $\Fit_l(P_A) = (d_l(A))$ für $l = 1, \dots, n$. $
-     \[⇒ \Fit_l(P_A) = (\det(B) \mid B \text{ ist $l × l$ -Untermatrix von } A) = (d_l(A))\]
+     \[⇒ \Fit_l(P_A) = (\det(B) \mid B \text{ ist \(l × l\)-Untermatrix von } A) = (d_l(A))\]
 	 mit $d_l(A)$ normiert und $\ggT(\dots)$ normiert $⇒$ Behauptung.
   #+end_proof
   #+begin_note latex
@@ -339,7 +339,7 @@
   #+end_proof
   #+begin_note latex
   - Üblicherweise gruppiert man in der Jordanschen Normalform	Jordanmatrizen zu gleichen Eigenwerten zusammen. (zu einem Block mit aufsteigenden $e_i$ 's)
-  -	Es gilt: $A$ diagonalisierbar $⇔$ Jordansche Normalform von $A$ ist eine Diagonalmatrix (denn: "$\impliedby$" trivial "$⇒$" da Diagonalmatrizen bereits in Jordanscher Normalform sind) (mit $1 × 1$ - Jordanmatrizen)
+  -	Es gilt: $A$ diagonalisierbar $⇔$ Jordansche Normalform von $A$ ist eine Diagonalmatrix (denn: "$\impliedby$" trivial "$⇒$" da Diagonalmatrizen bereits in Jordanscher Normalform sind) (mit \(1 × 1\)- Jordanmatrizen)
   #+end_note
   #+ATTR_LATEX: :options [Algorithmus zur Jordanschen Normalform]
   #+begin_algrthm latex
@@ -386,13 +386,13 @@
   #+end_defn
   #+begin_ex latex
   1. $K$ Körper, $V$ K-Vektorraum $⇒$ $V$ ist ein K-Modul.
-  2. $(G, +)$ abelsche Gruppe wird zum $ℤ$ -Modul durch
+  2. $(G, +)$ abelsche Gruppe wird zum \(ℤ\)-Modul durch
 	 \[ℤ × G \to G, (n, g) ↦ \begin{cases} \underbrace{g + \dots + g}_{n \text{ -mal}} & n ∈ ℕ \\ 0 & n = 0 \\ -\underbrace{(g + \dots + g)}_{n \text{ -mal}} & -n ∈ ℕ\end{cases}\]
-	 Umgekhert ist jeder $ℤ$ -Modul eine abelsche Gruppe bezüglich "+".
-  3. $I ⊆ R$ Ideal $⇒$ $I$ ist ein $R$ -Modul (Addition: auf $I$ eingeschränkte Addition von $R$, skalare Multiplikation: $R × I \to I, (a, x) ↦ a x$).
-	 Insbesondere ist $R$ ein $R$ -Modul.
-  4. $I ⊆ R$ Ideal $⇒ \faktor{R}{I}$ ist ein $R$ -Modul (skalare Multiplikation: $R × \faktor{R}{I} \to \faktor{R}{I}, (a, \bar x) ↦ \overline{a x}$)
-  5. $K$ Körper, $V$ K-Vektorraum, $φ ∈ \End(V) ⇒ V$ ist $K[t]$ -Modul via skalare Multiplikation:
+	 Umgekhert ist jeder \(ℤ\)-Modul eine abelsche Gruppe bezüglich "+".
+  3. $I ⊆ R$ Ideal $⇒$ $I$ ist ein \(R\)-Modul (Addition: auf $I$ eingeschränkte Addition von $R$, skalare Multiplikation: $R × I \to I, (a, x) ↦ a x$).
+	 Insbesondere ist $R$ ein \(R\)-Modul.
+  4. $I ⊆ R$ Ideal $⇒ \faktor{R}{I}$ ist ein \(R\)-Modul (skalare Multiplikation: $R × \faktor{R}{I} \to \faktor{R}{I}, (a, \bar x) ↦ \overline{a x}$)
+  5. $K$ Körper, $V$ K-Vektorraum, $φ ∈ \End(V) ⇒ V$ ist \(K[t]\)-Modul via skalare Multiplikation:
 	 \[K[t] × V \to V, (f, v) ↦ f(φ)(v)\]
   #+end_ex
   #+begin_defn latex
@@ -499,12 +499,12 @@
   1. $K$ Körper $⇒$ Jeder K-Vektorraum ist frei
   2. $R$ ist freier R-Modul ($(1)$ ist eine Basis)
   3. Sei $n ∈ ℕ, n > 1$
-	 - $\faktor{ℤ}{nℤ}$ ist endlicherzeugtes $ℤ$ -Modul, denn:
-	   - $\faktor{ℤ}{n ℤ}$ ist als abelsche Gruppe ein $ℤ$ -Modul.
-	   - $\Lin((\bar 1)) = \{r · \bar 1 \mid r ∈ ℤ\} = \{\bar r \mid r ∈ ℤ\} = \faktor{ℤ}{nℤ}$. $(\bar 1)$ ist ein Erzeugendessystem von $ℤ$ als $ℤ$ -Modul.
-	   - $\faktor{ℤ}{nℤ}$ ist kein freier $ℤ$ -Modul, denn: Sei $x = \bar a ∈ \faktor{ℤ}{nℤ} ⇒ n x = n \bar a = \overline{n a} = \bar 0$, aber $n \neq 0$.
-		 $⇒ (x)$ linear abhängig $⇒$ Jede Familie $\neq ()$ von $\faktor{ℤ}{nℤ}$ ist linear abhängig. Insbesondere kann $\faktor{ℤ}{nℤ}$ keine Basis als $ℤ$ -Modul haben.
-	   Beachte: Als $\faktor{ℤ}{n ℤ}$ -Modul ist $\faktor{ℤ}{nℤ}$ frei (siehe 2.)
+	 - $\faktor{ℤ}{nℤ}$ ist endlicherzeugtes \(ℤ\)-Modul, denn:
+	   - $\faktor{ℤ}{n ℤ}$ ist als abelsche Gruppe ein \(ℤ\)-Modul.
+	   - $\Lin((\bar 1)) = \{r · \bar 1 \mid r ∈ ℤ\} = \{\bar r \mid r ∈ ℤ\} = \faktor{ℤ}{nℤ}$. $(\bar 1)$ ist ein Erzeugendessystem von $ℤ$ als \(ℤ\)-Modul.
+	   - $\faktor{ℤ}{nℤ}$ ist kein freier \(ℤ\)-Modul, denn: Sei $x = \bar a ∈ \faktor{ℤ}{nℤ} ⇒ n x = n \bar a = \overline{n a} = \bar 0$, aber $n \neq 0$.
+		 $⇒ (x)$ linear abhängig $⇒$ Jede Familie $\neq ()$ von $\faktor{ℤ}{nℤ}$ ist linear abhängig. Insbesondere kann $\faktor{ℤ}{nℤ}$ keine Basis als \(ℤ\)-Modul haben.
+	   Beachte: Als \(\faktor{ℤ}{n ℤ}\)-Modul ist $\faktor{ℤ}{nℤ}$ frei (siehe 2.)
   #+end_ex
   Fazit: Es gibt Moduln, die keine Basis haben.
   #+begin_remark latex
@@ -521,7 +521,7 @@
   - Man kann zeigen: Sind $(x_i)_{i ∈ I}, (y_j)_{j ∈ J}$ Basen des freien R-Moduls $M$, dass existiert eine Bijektion $I \to J$, das heißt $\abs{I} = \abs{J}$.
 	Wir werden obige Aussage in 30 für endlich freie Moduln über Hauptidealringe zeigen.
   - Man kann zeigen: $M$ endlicherzeugt $⇔ M$ endlich frei
-  -	Achtung: Es gilt im Allgemeinen kein Analogon des Basisauswahlsatzes: $(2, 3)$ ist ein Erzeugendensystem des freien $ℤ$ -Moduls $ℤ$ wegen $1 = (-1) · 2 + 1 · 3$,
+  -	Achtung: Es gilt im Allgemeinen kein Analogon des Basisauswahlsatzes: $(2, 3)$ ist ein Erzeugendensystem des freien \(ℤ\)-Moduls $ℤ$ wegen $1 = (-1) · 2 + 1 · 3$,
 	aber weder $(2)$ noch $(3)$ sind Basen von $ℤ$.
   #+end_note
   #+begin_note latex
@@ -567,9 +567,9 @@
   #+begin_ex latex
   1. $K$ Körper, $V$ K-Vektorraum $⇒ V$ ist torsionsfreier K-Modul, denn:
 	 \[T(V) = \{x ∈ V \mid ∃ λ ∈ K, λ \neq 0: λ x = 0\} = \{0\}\]
-  2. $ℤ$ ist ein torsionsfreier $ℤ$ -Modul, denn:
+  2. $ℤ$ ist ein torsionsfreier \(ℤ\)-Modul, denn:
 	 \[T(ℤ) = \{x ∈ ℤ \mid ∃ a ∈ ℤ, a \neq 0: a x = 0\} = \{0\}\]
-  3. Für $n ∈ ℕ, n > 1$ ist $\faktor{ℤ}{nℤ}$ ist ein Torsions- $ℤ$ -Modul, denn für alle $\bar a ∈ \faktor{ℤ}{nℤ}$ ist
+  3. Für $n ∈ ℕ, n > 1$ ist $\faktor{ℤ}{nℤ}$ ist ein Torsions- \(ℤ\)-Modul, denn für alle $\bar a ∈ \faktor{ℤ}{nℤ}$ ist
 	 \[n · \bar a = \overline{n a} = \bar 0\]
 	 das heißt
 	 \[T(\faktor{ℤ}{nℤ}) = \faktor{ℤ}{nℤ}\]
@@ -583,12 +583,12 @@
   $⇒ b_{i_1} = \dots = b_{i_s} = 0 ⇒ y = 0$, also $T(F) = \{0\}$
   #+end_proof
   #+begin_note latex
-  Die Umkehrung ist falsch: $ℚ$ ist torsionsfreier $ℤ$ -Modul, aber kein freier $ℤ$ -Modul.
-  - $ℚ$ ist torsionsfreier $ℤ$ -Modul, denn: $T(ℚ) = \{x ∈ ℚ \mid ∃ a ∈ ℤ, a \neq 0: a x = 0\} = \{0\}$
-  - $ℚ$ ist kein freier $ℤ$ -Modul, denn:
-	- Sind $a, b ∈ ℚ$, dann ist die Familie $(a, b)$ $ℤ$ -linear abhängig, da: Ist $a = m_1 / n_1 \neq 0, b = m_2 / n_2 \neq 0$, dann ist
+  Die Umkehrung ist falsch: $ℚ$ ist torsionsfreier \(ℤ\)-Modul, aber kein freier \(ℤ\)-Modul.
+  - $ℚ$ ist torsionsfreier \(ℤ\)-Modul, denn: $T(ℚ) = \{x ∈ ℚ \mid ∃ a ∈ ℤ, a \neq 0: a x = 0\} = \{0\}$
+  - $ℚ$ ist kein freier \(ℤ\)-Modul, denn:
+	- Sind $a, b ∈ ℚ$, dann ist die Familie $(a, b)$ \(ℤ\)-linear abhängig, da: Ist $a = m_1 / n_1 \neq 0, b = m_2 / n_2 \neq 0$, dann ist
 	  \[m_2 n_1 a - m_1 n_2 b = 0\]
-	- Leere Familie, beziehungsweise einelementige Familien sind keine Erzeugendensysteme von $ℚ$ als $ℤ$ -Modul.
+	- Leere Familie, beziehungsweise einelementige Familien sind keine Erzeugendensysteme von $ℚ$ als \(ℤ\)-Modul.
   #+end_note
   #+ATTR_LATEX: :options [Länge]
   #+begin_defn latex
@@ -701,8 +701,8 @@
 		$⇒ u \tilde u + v \tilde v = 1$. Es ist
 		\[\underbrace{\begin{pmatrix} u & & & & v \\ & 1 \\ & & \ddots \\ & & & 1 \\ -\tilde v & & & & \tilde u \\ & & & & & 1 \\ & & & & & & \ddots \\ & & & & & & & 1\end{pmatrix}}_{=: B} \begin{pmatrix} u & & & & -v \\ & 1 \\ & & \ddots \\ & & & 1 \\ \tilde v & & & & \tilde u \\ & & & & & 1 \\ & & & & & & \ddots \\ & & & & & & & 1\end{pmatrix} = \begin{pmatrix} 1 & & & & 0 \\ & 1 \\ & & \ddots \\ & & & 1 \\ 0 & & & & 1 \\ & & & & & 1 \\ & & & & & & \ddots \\ & & & & & & & 1\end{pmatrix}\]
 		das heißt $B ∈ \GL(n, R)$. Multiplikation von $B$ von links bewirkt folgende Zeilenoperationen:
-		- neue erste Zeile = $u$ -faches der alten ersten Zeile + $v$ -faches der alten i-ten Zeile
-		- neue i-te Zeile =	$- \tilde v$ -faches der alten ersten Zeile + $\tilde u$ -faches der alten i-ten Zeile
+		- neue erste Zeile = \(u\)-faches der alten ersten Zeile + \(v\)-faches der alten i-ten Zeile
+		- neue i-te Zeile =	\(- \tilde v\)-faches der alten ersten Zeile + \(\tilde u\)-faches der alten i-ten Zeile
 		In der Matrix $B A$ steht links oben das Element $β$ mit $δ(β) < δ(a_{11})$. Erhalte durch Zeilen-/Spaltenvertauschung an $A' = BA$ eine Matrix $A'' = (a_{ij}'')$ mit $δ(a_{11}'') < δ(a_{ij}'')$
 		für alle $i, j, a_{ij}'' \neq 0$ und $δ(a_{11}'') < δ(a_{11})$.	Dieser Prozess bricht nach endlich vielen Iterationen ab. Wir erhalten eine Matrix der Form
 		\[D = (\begin{array}{c|ccc} d_{11} & & 0 & \\ \hline \\ 0 & & \ast & \\ \\ \end{array}), d_{11} \neq 0, δ(d_{11}) \leq δ(a_{11}), δ(d_{11}) \leq δ(d_{ij}) ∀ i,j, d_{ij} \neq 0\]
@@ -716,7 +716,7 @@
   #+begin_proof latex
   1. Nach Übungen induziert die kanonische Projektion $π: R \to \faktor{R}{a R}$ eine Bijektion
 	 \[Φ: \{\text{Ideale } I ⊆ R, I \supseteq a R\} \to \{\text{Ideale von } \faktor{R}{a R}\}\]
-	 Hierbei: Ideale in $\faktor{R}{a R}$ = $\faktor{R}{aR}$ -Untermoduln von $\faktor{R}{a R}$ = $R$ -Untermoduln von $\faktor{R}{a R}$ (skalare Multiplikation: $R × \faktor{R}{a R} \to \faktor{R}{aR}, (b, x + a R) ↦ b x + a R$)
+	 Hierbei: Ideale in $\faktor{R}{a R}$ = \(\faktor{R}{aR}\)-Untermoduln von $\faktor{R}{a R}$ = \(R\)-Untermoduln von $\faktor{R}{a R}$ (skalare Multiplikation: $R × \faktor{R}{a R} \to \faktor{R}{aR}, (b, x + a R) ↦ b x + a R$)
   2. Aus 1. folgt:
 	 \begin{align*}
 	 l_R(\faktor{R}{a R}) &= \sup \{l ∈ ℕ_0 \mid (a) \subsetneq I_1 \subsetneq \dots \subsetneq I_l = R, I_k \text{ Ideale in } R\} \\
@@ -814,10 +814,10 @@
   $F$ endlich freier R-Modul, $M ⊆ F$ Untermodul. Dann ist $M$ endlich frei und $\Rang(M) \leq \Rang(F)$.
   #+end_conc
   #+begin_note latex
-  - Aus $M \subsetneq$ folgt nicht $\Rang(M) < \Rang(F)$: zum Beispiel ist $ℤ$ ein freier $ℤ$ -Modul vom Rang 1, $2 ℤ \subsetneq ℤ$ ist ein freier $ℤ$ -Modul, aber $\Rang(2ℤ) = 1 = \Rang(ℤ)$.
+  - Aus $M \subsetneq$ folgt nicht $\Rang(M) < \Rang(F)$: zum Beispiel ist $ℤ$ ein freier \(ℤ\)-Modul vom Rang 1, $2 ℤ \subsetneq ℤ$ ist ein freier \(ℤ\)-Modul, aber $\Rang(2ℤ) = 1 = \Rang(ℤ)$.
   - Man kann zeigen (unter Verwendung des Auswahlaxiom): $F$ freier R-Modul, $M ⊆ F$ Untermodul $⇒$ $M$ frei ($R$ Hauptidealring!)
   -	ohne die Vorraussetzung, dann $R$ ein Hauptidealring ist, wird 30.6 falsch:
-	Beispiel: $F = ℚ[X,Y]$ als $F = ℚ[X, Y]$ -Modul ($R$ ist kein Hauptidearing!), $M = \Lin((X, Y))$ ist *nicht* frei als R-Modul.
+	Beispiel: $F = ℚ[X,Y]$ als \(F = ℚ[X, Y]\)-Modul ($R$ ist kein Hauptidearing!), $M = \Lin((X, Y))$ ist *nicht* frei als R-Modul.
   #+end_note
   #+ATTR_LATEX: :options [Hautsatz für endlich erzeugte Modult über Hauptidealringen, Variante 1]
   #+begin_defthm latex
@@ -831,7 +831,7 @@
   \[M \cong R^d \oplus \faktor{R}{c_1 R} \oplus \dots \oplus \faktor{R}{c_s R}\]
   #+end_defthm
   #+begin_proof latex
-  1. Existenz: Setze $(z_1, \dots, z_m)$ ein endliches Erzeugendensystem von $M$. Wir betrachten den $R$ -Modulhomomorphismus
+  1. Existenz: Setze $(z_1, \dots, z_m)$ ein endliches Erzeugendensystem von $M$. Wir betrachten den \(R\)-Modulhomomorphismus
 	 \[φ: R^m \to M, e_i ↦ z_i, i = 1, \dots, m\]
 	 $φ$ ist surjektiv $⇒$
 	 \[M \cong \faktor{R^m}{\ker φ}\]
@@ -856,7 +856,7 @@
 	 \[M = γ^{-1}(R^d \oplus \faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)}) = \underbrace{γ^{-1}(R^d)}_{=: F} \oplus \underbrace{γ^{-1}(\faktor{R}{(c_1)} \oplus \dots \oplus \faktor{R}{(c_s)})}_{= T(M)}\]
   #+end_proof
   #+begin_note latex
-  Ohne Vorraussetzung "M endlich erzeugt" wird die Aussage falsch: $ℚ$ ist ein (nicht endlich erzeugter) $ℤ$ -Modul mit $T(ℚ) = \{0\}$, aber $ℚ$ ist kein freier $ℤ$ -Modul (vergleiche Annahme nach 29.17)
+  Ohne Vorraussetzung "M endlich erzeugt" wird die Aussage falsch: $ℚ$ ist ein (nicht endlich erzeugter) \(ℤ\)-Modul mit $T(ℚ) = \{0\}$, aber $ℚ$ ist kein freier \(ℤ\)-Modul (vergleiche Annahme nach 29.17)
   #+end_note
   #+begin_conc latex
   $M$ R-Modul. Dann sind äquivalent:
@@ -869,7 +869,7 @@
   #+end_proof
   #+ATTR_LATEX: :options [Hautsatz über endich erzeugte abersche Gruppen, Variante 1]
   #+begin_conc latex
-  $G$ endlich erzeugte abersche Gruppe (= endlich erzeugter $ℤ$ -Modul). Dann existiert ein Isomorphismus
+  $G$ endlich erzeugte abersche Gruppe (= endlich erzeugter \(ℤ\)-Modul). Dann existiert ein Isomorphismus
   \[G \cong ℤ^d \oplus \faktor{ℤ}{c_1 ℤ} \oplus \dots \oplus \faktor{ℤ}{c_s ℤ}\]
   mit $d ∈ ℕ_0, c_1, \dots, c_s ∈ ℕ_{> 1}, c_1, \dots, c_s$. $d$ sowie $s, c_1, \dots, c_s$ sind eindeutig bestimmt. Es ist $G$ endlich $⇔$ $d = 0$. In diesem Fall ist $\abs{G} = c_1 · \dots · c_s$
   #+end_conc

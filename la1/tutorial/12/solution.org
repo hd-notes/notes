@@ -134,7 +134,7 @@ A = (a_{ij}) \in M(2\times 2, \mathbb{C}) = V
 \begin{equation}
 \Phi_A:V \to V, X\mapsto AX - XA = [A, X]
 \end{equation}
-zu zeigen: $\Phi_A$ ist $\mathbb{C}$ -linear: \\
+zu zeigen: $\Phi_A$ ist \(\mathbb{C}\)-linear: \\
 Seien $X,Y \in V, \lambda \in \mathbb{C}$:
 \begin{gather}
 \Phi_A(X + Y) = A(X + Y) - (X + Y)A = \Phi_A(X) + \Phi_A(Y) \\
@@ -183,7 +183,7 @@ S_3 = \{\sigma_1, \ldots, \sigma_6\} = \left\{\begin{pmatrix} 1 & 2 & 3 \\ 1 & 2
 \eps: V \to W \\
 \eps(f)(r) = \sum_{\sigma \in S_3} f(\sigma)\sigma(r)
 \end{gather}
-zu zeigen: $\eps$ ist $\mathbb{C}$ -linear \\
+zu zeigen: $\eps$ ist \(\mathbb{C}\)-linear \\
 Seien $f, g\in V, \lambda \in\mathbb{C}, r \in \{1, 2, 3\}$
 \begin{align}
 \eps(f + g)(r) &= \sum_{\sigma \in S_3} (f + g)(\sigma)\sigma(r) = \sum_{\sigma \in S_3}f(\sigma) \sigma(r) + \sum_{\sigma \in S_3} g(\sigma) \sigma(r) = \eps(f)(r) + \eps(g)(r) \\

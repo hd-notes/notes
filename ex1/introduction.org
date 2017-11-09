@@ -27,7 +27,7 @@
 **** Meter
 	 Strecke, die das Licht im Vakuum während der Dauer von $\frac{1}{299792458}\si{\second}$ durchläuft.
 **** Sekunde
-	 Das $\SI{9192631770}{}$ -fache  der Periodendauer der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
+	 Das \(\SI{9192631770}{}\)-fache  der Periodendauer der am Übergang zwischen den beiden Hyperfeinstukturniveaus des Grundzustandes von Atomen des Nukulids $Cs_{133}$ entsprechenden Strahlung.
 **** Kilogramm
 	 Das Kilogramm ist die Einheit der Masse, es ist gleich der Masse des internationalen Kilogrammprototyps (ist scheiße).
 ***** Avogadroprojekt

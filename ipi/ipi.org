@@ -254,7 +254,7 @@
 	Bei effiziente Algorithmen steigt der Aufwand mit $n$ nur langsam (oder bestenfalls gar nicht) \\
 	Grundidee:
 	1. berechne, wie viele elementare Schritte der Algorithmus in Abhängigkeit von $n$ benötigt $\implies$ komplizierte Formel $f(n)$
-	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *$O$ -Notation* und ihren Verwandten
+	2. vereinfache $f(n)$ in eine einfache Formel $g(n)$, die dasselbe wesentliche Verhalten hat. Die Vereinfachung erfolgt mittels *\(O\)-Notation* und ihren Verwandten
 	   Gegeben: $f(n)$ und $g(n)$
 	   1. $g(n)$ ist eine asymptotische (für große $n$) obere Schranke für $f(n)$ ("f(n) \leq g(n)"), $f(n) \in \mathcal{O}(g(n))$ "$f(n)$ ist in der Komplexitätsklasse $g(n)$", wenn es ein $n_0$ (Mindestgröße) gibt
 		  und $C$ (Konstante) gibt, sodass $\Forall n > n_0: f(n) \leq C g(n) \iff f(n) \in \mathcal{O}(g(n))$
@@ -393,7 +393,7 @@
 **** Multiplikation
 	 Neue Operationen: $\ll$  und $\gg$ (left und right shift). Verschiebt die Bits um $k$ Positionen nach
 	 links oder rechts. Die herausgeschobenen Bits werden vergessen und auf der anderen Seite durch
-	 $0$ -Bits ersetzt.
+	 \(0\)-Bits ersetzt.
 
 	 #+begin_src cpp
 	 // m = 8
@@ -1871,7 +1871,7 @@
    a                = gg.getX(); // Kumulier: int tmp7 = gg.x; a = tmp7;
    #+end_src
 ** Wiederholung Komplexität:
-   $\mathcal{O}$ -Notation
+   \(\mathcal{O}\)-Notation
    komplizierte Formen $f(n)$, einfache Formel $g(n)$, die das gleiche *wesentliche* Verhalten
    wie $f(n)$ hat. Asymptotische für große $n$ ununterscheidbar
    \[f(n) \in \mathcal{O}(g(n)) \iff \Exists n_0, c: \Forall n > n_0: f(n) \leq c g(n)\]

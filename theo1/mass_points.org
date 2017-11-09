@@ -92,7 +92,7 @@
 
    \[x : V\times V \rightarrow V\]
    \[\text{Multiplikation}: \mathbb{R}\times V \rightarrow V\]
-   $V\times V$ - Produktmenge $\equiv$ Menge aller Paare
+   \(V\times V\)- Produktmenge $\equiv$ Menge aller Paare
    so dass gilt:
    \[v + (w + u) = (v + w) + u\quad u,v,w\in V\hfill\text{Assoziativität}\]
    \[v+w = w+v\hfill\text{Kommutativität}\]

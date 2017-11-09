@@ -79,7 +79,7 @@
    *collision kernel* oder *Integrationskern* $τ$, der sich allerdings noch geringsfügig von unserem $\tilde τ$ unterscheidet.
 ** Die Delta-Funktion
    Um diesen Unterschie zwischen $τ$ und $\tilde τ$ konkretisieren zu können, brauchen wir
-   zumindest grobe Vorstellung von der sogenannten $δ$ -*Funktion*:
+   zumindest grobe Vorstellung von der sogenannten \(δ\)-*Funktion*:
    Sei dazu die Funktion $δ_ε(x)$ als ein Rechteck von $-ε$ nach $ε$ mit der Höhe $1/(2ε)$.
    Diese ist speziell so gebaut, dass
    \[∫ δ_ε(x) \d x = 1 \quad \lim_{ε \to 0} δ_ε, ∀ x \neq 0\]
@@ -109,7 +109,7 @@
    Für "Teil a" des Stohterms kann man nun schreiben
    \[(\dd{f_1}{t})^{(a)}(\v q, \v p_1, t) = -∫ \d^3 \v p_2 \d^3 \v p_1' \d^3 \v p_2' δ^4(P_f - P_i) · τ(\v p_1, \v p_2, \v p_1', \v p_2') · f(\v q, \v p_1, t) f(\v q, \v p_2, t)\]
    Dabei haben wir von der sehr wichtigen Größe, dem Integrationskern oder *Collision kernel*, den
-   prozessunabhängigen Energie- und Impulserhaltungs Constraint in Form der $δ^4$ -Funktion abgetrennt.
+   prozessunabhängigen Energie- und Impulserhaltungs Constraint in Form der \(δ^4\)-Funktion abgetrennt.
 
    Es ist jetzt offesichtlich wie "Teil b" aussieht, welcher die Streuung eines "fremden"
    Teilchen in "unser" Phasenraumvolumen $Δ q^3 Δp^3$ beschreibt:
@@ -144,11 +144,11 @@
    und sogar
    \[\dd{H}{t} = 0 ⇔ f_1' f_2' = f_1 f_2\]
    Herleitung, welche im wesentlichen nur aus algebraischen Manipulationen besteht findet sich
-   zum Beispiel in Fasano/Marmi, Huang. $H$ ist eng mit der Entropie und das $H$ -Theorem mit dem 2. Hauptsatz der
+   zum Beispiel in Fasano/Marmi, Huang. $H$ ist eng mit der Entropie und das \(H\)-Theorem mit dem 2. Hauptsatz der
    Thermodynamik verbunden. Für uns impliziert es vor allem, dass die Bedingung $f_1' f_2' - f_1 f_2 = 0$ notwendig für das Vorliegen von Gleichgewicht ist.
    Eine äquivalente Schreibweise der Gleichgewichtsbedingung ist
    \[\ln f(\v p_1) + \ln f(\v p_2) = \ln f(\v p_1') + \ln f(\v p_2')\]
-   Dies hat die Form eines Erhaltungssatzes für $2 \to 2$ -Prozesse (man denke zum Beispiel an $E_1 + E_2 = E_1' + E_2'$). Wenn wir also
+   Dies hat die Form eines Erhaltungssatzes für \(2 \to 2\)-Prozesse (man denke zum Beispiel an $E_1 + E_2 = E_1' + E_2'$). Wenn wir also
    eine Erhaltungsgröhe $χ(\v p)$ kennen und $f$ durch
    \[\ln f(\v p) \equiv \const · χ(\v p)\]
    definieren, erhalten wir stets eine Gleichgewichtsverteilung. Der allgemeine Ansatz für $f$ ist also
@@ -182,7 +182,7 @@
    \[F(\v p) = \frac{\v p^2}{2m}, ε \angl{\frac{\v p^2}{2m}} = \frac{3}{4 A m}\]
    Definiere Temperatur $T$:
    \[\frac{1}{2} k T \equiv \frac{ε}{n_f}\]
-   - $k = k_B$ - Konstante
+   - \(k = k_B\)- Konstante
    - $n_f$: Zahl der Freiheitsgrade
    \[⇒ f(\v p) = C e^{- A \v p^2} = C e^{-(\v p^2 / (2m) / (k T))} = C e^{- \frac{E(\v p)}{k T}}\]
    außerdem:
@@ -198,7 +198,7 @@
    \[f(\v q, \v p) = f_0(\v p) g(\v q)\]
    $f 0$ sei das eben graduierte $f(\v p)$. Es gilt:
    \[\pp{f_1}{t} = - \frac{\v p_1}{m} \v ∇_q f_1 - \v F · \v ∇_p f_1 + ∫ δ^4 (\dots) τ(f_1' f_2' - f_1 f_2)\]
-   (Notation: $f_1' t f(\v p_1', \v q_1) \equiv f(\v p_1', \v q)$). Kollisions-Term bleibt mit unserem Ansatz Null. DAs liegt an der Stillschweigenden Annahme, das die mittlere frei Weglänge klein ist gegen typische $\v q$ -Skala.
+   (Notation: $f_1' t f(\v p_1', \v q_1) \equiv f(\v p_1', \v q)$). Kollisions-Term bleibt mit unserem Ansatz Null. DAs liegt an der Stillschweigenden Annahme, das die mittlere frei Weglänge klein ist gegen typische \(\v q\)-Skala.
    Gegeben:
    \[0 = - \v p_m \v ∇_q(f_0(\v p) g(\v q)) + (\v ∇_q V) · \v ∇_p(f_0(\v p) g(\v p))\]
    Nebenrechnung:
@@ -249,11 +249,11 @@
    In der Tat: Änderung von $n$ durch $\v ∇_q \v j$
 * Thermodynamische Gesamtheiten
   Thermodynamische Gesamtheiten: Ensembles = Gibbs stes
-** Der $Γ$ -Raum
-   Bisher haben wir unser (nur schwach wechselwirkendes, verdünntes) Gas beschrieben durch Verteilungsfunkion $f(\v q, \v p)$ im 1-Teilchen Phasenraum (der $μ$ -Raum) beschrieben.
-   Jetzt: Wechsel zum $N$ -Teilchen-Phasenraum (der $Γ$ -Raum). Dieser Raum ist $6N$ -dimensional mit Koordianten: $\v q_1, \dots, \v q_N, \v p_1, \dots, \v p_N$.
-   Ein bestimmter Zustand unseres gesamten Gases entspricht nur einem einzigen Punkt im $Γ$ -Raum! (Vergleiche $μ$ -Raum: $N$ Punkte in $6$ Dimensionen, $Γ$ -Raum: 1 Punkt in $6N$ Dimensionen).
-   Zur Erinnerung: $N \sim 10^{23}$ ud die Dynamik im $Γ$ -Raum schließt die freie Bewegung und die Stöße aller $\sim 10^{23}$ Teilchen ein. Eine explizite Kenntnis des relevanten Punktes im $Γ$ -Raum
+** Der \(Γ\)-Raum
+   Bisher haben wir unser (nur schwach wechselwirkendes, verdünntes) Gas beschrieben durch Verteilungsfunkion $f(\v q, \v p)$ im 1-Teilchen Phasenraum (der \(μ\)-Raum) beschrieben.
+   Jetzt: Wechsel zum \(N\)-Teilchen-Phasenraum (der \(Γ\)-Raum). Dieser Raum ist \(6N\)-dimensional mit Koordianten: $\v q_1, \dots, \v q_N, \v p_1, \dots, \v p_N$.
+   Ein bestimmter Zustand unseres gesamten Gases entspricht nur einem einzigen Punkt im \(Γ\)-Raum! (Vergleiche \(μ\)-Raum: $N$ Punkte in $6$ Dimensionen, \(Γ\)-Raum: 1 Punkt in $6N$ Dimensionen).
+   Zur Erinnerung: $N \sim 10^{23}$ ud die Dynamik im \(Γ\)-Raum schließt die freie Bewegung und die Stöße aller $\sim 10^{23}$ Teilchen ein. Eine explizite Kenntnis des relevanten Punktes im \(Γ\)-Raum
    und dessen Bewegung ist aussichtslos. Uns interessiert der makroskopische Zustand eines Systems mit vielen Freiheitsgraden. Wir denken weiter primär an unser Gas in einem Kasten, aber andere Systeme,
    zum Beispiel Festkörper sind auch beschrieben.
    #+ATTR_LATEX: :options [Makroskopische Zustand]
@@ -283,7 +283,7 @@
 	  \[⇒ P(∪_{i ∈ I} A_i) = \sum_{i ∈ I} P(A_i)\]
    #+end_defn
 ** Maß
-   Menge $M \neq \emptyset, \mathcal{A}$ Familie von Untermengen von $M$. $\mathcal{A}$ heißt $σ$ -Algebra falls
+   Menge $M \neq \emptyset, \mathcal{A}$ Familie von Untermengen von $M$. $\mathcal{A}$ heißt \(σ\)-Algebra falls
    1. $A ⊂ \mathcal{A} ⇒ M \setminus A ∈ \mathcal{A}$
    2. $∀ \{A_i\}, i ∈ ℕ, A_i ∈ \mathcal{A}$ gilt
 	  \[∪_{i ∈ ℕ} A_i ∈ \mathcal{A}\]
@@ -305,11 +305,11 @@
    Messunsicherheit: $H ∈ [E - Δ E, E]$. Für hinreichend kleine $Δ E$ ist $ρ = \const$ in einer 3N-dimensionalen Kugelschale.
    \[⇒ ∫_Γ \d^{6N} \v ξ ρ(\v ξ) = V^N ∫ \d^{3N} \v p ρ(\v p) = V^N \const V_{\text{Kugelschale}} = 1\]
 ** Bolzmannverteilung als wahrscheinlichste Verteilung
-   Verbindung zu $f(\v q, \v p)$ und Wahrscheinlichkeitsdichten auf $N$ -Teilhen Phasenräume. Betrache Phasenräume aus Zellen aufgebaut mit diskrete Werte für $\v p, \v q$
-   gegeben $f(\v q, \v p) \estimates O[f]$ in $Γ$ -Raum $⇒$ Volumen $Ω[f]$.
+   Verbindung zu $f(\v q, \v p)$ und Wahrscheinlichkeitsdichten auf \(N\)-Teilhen Phasenräume. Betrache Phasenräume aus Zellen aufgebaut mit diskrete Werte für $\v p, \v q$
+   gegeben $f(\v q, \v p) \estimates O[f]$ in \(Γ\)-Raum $⇒$ Volumen $Ω[f]$.
    Toy-model $f(\v q, \v p) \to f(x)$, $x$ nimmt zwei Werte an
    \[f(x) = \frac{1}{Δ x}\]
-   Nummeriere Zellen im $μ$ -Raum. $k$ Stück $(k \gg 1), ω = Δq^2 Δp^2$
+   Nummeriere Zellen im \(μ\)-Raum. $k$ Stück $(k \gg 1), ω = Δq^2 Δp^2$
    \[n_i = ∫_{\text{Zelle i}} \d^3 \v p \d^3 \v q f(\v q, \v p) = f_i ω\]
    \[Ω[f] = ω^N \frac{N!}{n_1! n_2! \dots n_k!}\]
    (Anzahl Möglichkeiten $N$ Teilchen auf $k$ Zellen zu verteilen, sodass $n_i$ in Zelle $i$ sind)
@@ -342,7 +342,7 @@
    \end{align*}
    Nebenrechnung: $\v p$ sei fest, demnach $E_1 = H_1(\v p)$ fest. Integration über $\v P$ ausführen:
    \[I \equiv ∫ \d^{3N} \v P δ(E_{tot} - E_1 - H_2(\v P))\]
-   $δ$ -Funktion erzwingt:
+   \(δ\)-Funktion erzwingt:
    \[\v P^2 = \abs{\v P}^2 = 2m(E_{tot} - E_1)\]
    $I$ enpspricht der Oberfläche einer $3N$ dimensionalen Sphäre von Radius $R = \sqrt{2m(E_{tot} - E_1)}$. Aus Dimensionsgründen:
    $I \sim R^{3M - 1}$ $3M \gg 1$ $⇒$ für uns ok: $I \sim R^{3M}$.
@@ -366,7 +366,7 @@
    Wahrscheinlichkeitsverteilung auf $Γ$ parametrisiert durch $p_1, \dots, p_{3N}, q_1, \dots, q_{3N}$.
    \[ρ_{mikrok} \sim δ(E - H(\v p, \v q))\]
    \[ρ_{kanon} \sim \exp(\frac{-H(\v p, \v q)}{kT})\]
-   Bei großen Systemen: beide äquivalent! Unter $\d^{3N} \v p$ -Integral:
+   Bei großen Systemen: beide äquivalent! Unter \(\d^{3N} \v p\)-Integral:
    \[∫ \d^{3N} \v p \dots \sim ∫ \abs{\v p}^{3N - 1} \d \abs{\v p} \dots \sim ∫ E^{3N/2} \d E\]
    Jetzt mit Verteilungsfunktion:
    \[∫ ρ_{kan.} \d^{3N} \v p \sim ∫ \d E E^{3N/2} e^{-E/kT} \sim ∫ \d E e^{-g(E)}\]
@@ -405,7 +405,7 @@
    \[⇒ ∫_{q,p} δ(E - H(\v q, \v p))\]
    weil:
    \[\dd{θ(x)}{x} = δ(x)\]
-   Genauer: $δ$ -Funktion:
+   Genauer: \(δ\)-Funktion:
    \[∫_{-a}^{a} δ(x) \d x = 1, δ(x) = 0 ∀ x \neq 0\]
    \[⇒ ∫_{-a}^{a} θ'(x) \d x = θ(x)\mid_{-a}^{a} = 1 - 0 = 1 \checkmark\]
    Weiterer Begriff: Phasenrauvolumen für Energieintervall $E \to E + Δ E$: Zustandszahl:

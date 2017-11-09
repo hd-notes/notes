@@ -156,7 +156,7 @@
    \end{align*}
    Wahl der Randbedingung $\to$ wähle $E_x = 0$. Fazit:
    Im Vakuum gibt es keine longitudinalen, sondern nur transversale elektromagnetische Wellen.
-   Jetzt: Verknüpfung von $E$ -und $B$ -Feld. Ansatz: Linear polarisierte Welle
+   Jetzt: Verknüpfung von \(E\)-und \(B\)-Feld. Ansatz: Linear polarisierte Welle
    (das heißt $\v E, \v B$ zeigen immer in eine Richtung)
    \begin{align*}
    \v E(x, t) &= (0, E_y(x, t), 0) \\
@@ -234,7 +234,7 @@
    - $∮ \v S \d \v A = \const$
    \[∮σ(r)ξ(θ) r^2 \d Ω = σ(r) r^2 \underbrace{∮ξ(θ) \d Ω}_{\text{konstant}} = C σ(r) r^2 \overset{!}{=} \const\]
    $⇒$ $σ(r) \sim 1 / r^2, S \sim 1 / r^2$.
-   Also: Die $1 / r$ -Abhängigkeit von E, B-Feld und die $1 / r^2$ Abhängigkeit von $\abs{\v S}$ ergeben
+   Also: Die \(1 / r\)-Abhängigkeit von E, B-Feld und die $1 / r^2$ Abhängigkeit von $\abs{\v S}$ ergeben
    sich für das Fernfeld aus der Symmetrie und der Erhaltung des Energieflusses.
    Außerdem: Fernfeld $=$ reines Wellenfeld im freien Raum. Daher sind $\v E, \v B$ rein transversal, $\v E, \v B$ in Phase.
    Nahfeld: $r \gg d ⇒$ $\v B, \v E$ phasenverschoben. Vorbemerkung: Hochfrequente Wechselspannung auf

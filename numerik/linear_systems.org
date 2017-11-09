@@ -17,12 +17,12 @@
   \[\norm{x}_2 = (\sum_{i = 1}^{n} \abs{x_i}^2)^{1/2}\]
   Maximumsnorm $(l_∞)$
   \[\norm{x}_∞ = \max_{i = 1, \dots, n} \abs{x_i}\]
-  $l_1$ -Norm:
+  \(l_1\)-Norm:
   \[\norm{x}_1 = \sum_{i = 1}^{n} \abs{x_i}\]
-  $l_p$ -Norm, $p \geq 1, p < ∞$
+  \(l_p\)-Norm, $p \geq 1, p < ∞$
   \[\norm{x}_p = (\sum_{i = 1}^{n} \abs{x_i}^p)^{1/p}\]
   #+end_ex
-  Betrachte Vektorraum der $n × n$ -Matrizen $A ∈ \mathbb{K}^{n × n}$
+  Betrachte Vektorraum der \(n × n\)-Matrizen $A ∈ \mathbb{K}^{n × n}$
   #+begin_defn latex
   Eine Norm $\norm{·}$ auf $\mathbb{K}^{n × n}$ heißt verträglich mit einer Vektornorm $\norm{·}$ auf $\mathbb{K}^n$, wenn gilt:
   \[\norm{A x} \leq \norm{A} \norm{x} ∀ x ∈ \mathbb{K}^n, A ∈ \mathbb{K}^{n × n}\]
@@ -179,7 +179,7 @@
 	  mal der ersten Zeile von den Zeilen $2, \dots, n$:
       \[\left[\begin{array}{cccc|c} \tilde a_{11}^{(0)} & \tilde a_{12}^{(0)} \dots & \tilde a_{1n}^{(0)} & \tilde b_{1}^{(0)} \\ 0 & \tilde a_{22}^{(1)} \dots & \tilde a_{2n}^{(1)} & \tilde b_{2}^{(1)} \\ \vdots & \vdots & & \vdots & \vdots \\ 0 & \tilde a_{n2}^{(1)} & \dots & \tilde a_{nn}^{(1)} & \tilde b_{n}^{(1)}\end{array}\right] := [A^{(1)} \mid b^{(1)}]\]
 	  Fahre fort auf kleinerem System $⇒ [A^{(0)} \mid b^{(0)}] \to [A^{(1)}\mid b^{(1)}] \to \dots \to [A^{(n - 1)} \mid b^{(n - 1)}] =: [R\mid c]$
-   Wird im $k$ -ten Schritt $[A^{(k - 1)} \mid b^{(n - 1)}] \to [\tilde A^{(k - 1)} \mid \tilde b^{(n - 1)}] \to [A^{(k)} \mid b^{(k)}]$ das Pivot-Element $q_{r_k k}^{k - 1}$ gewählt, so gilt
+   Wird im \(k\)-ten Schritt $[A^{(k - 1)} \mid b^{(n - 1)}] \to [\tilde A^{(k - 1)} \mid \tilde b^{(n - 1)}] \to [A^{(k)} \mid b^{(k)}]$ das Pivot-Element $q_{r_k k}^{k - 1}$ gewählt, so gilt
    $[\tilde A^{(k -1 )} \mid \tilde b^{(k - 1)}] = P_k[A^{(k - 1)} \mid b^{(k - 1)}]$ mit der Permutationsmatrix
    \begin{equation*}
    P_k = \begin{pmatrix}
@@ -285,7 +285,7 @@
    Eindeutigkeit: Übung.
    #+end_proof
    Aufwand:
-   $k$ -ter Eliminationsschritt
+   \(k\)-ter Eliminationsschritt
    \begin{align*}
    a_{ij}^{(k)} &= a_{ij}^{(k - 1)} - \frac{a_{ik}^{(k - 1)}}{a_{kk}^{(k - 1)}} a_{kj}^{(k - 1)} \\
    b_i^{(k)} &= b_i^{(k - 1)} - \frac{a_{ik}^{(k - 1)}}{a_{kk}^{(k - 1)}} b_k^{(k - 1)}
@@ -393,7 +393,7 @@
    Bei $k$ Vertauschungen von Zeilen ist das Vorzeichen $(-1)^k$.
 ** Rangbestimmung
    $\to$ Totalpivotierung $P A Q^T= LR$
-   Gilt nach dem $i$ -ten Eliminationsschritt
+   Gilt nach dem \(i\)-ten Eliminationsschritt
    \[a_{k,j}^{(i)} = 0 ∀ j, k= i + 1, \dots, n\]
    so ist $\Rang(A) = i$ (Geht auch bei nicht quadratischen Matrizen, einfach mit Nullen auffüllen)
 ** Spezielle Gleichungssysteme

@@ -38,13 +38,13 @@
 	 Mit dem Distributivgesetz in $K$ folgt:
 	 \[(\lambda x_1,\ldots,\lambda x_n) + (\mu x_1,\ldots,\mu x_n) = \lambda(x_1,\ldots,x_n) + \mu(x_1,\ldots,x_n)\]
 	 Der Nullvektor ist gegeben durch $0_{K^n} = (0,\ldots,0)$, für $x =(x_1,\ldots,x_n)$ ist $-x = (-x_1,\ldots,-x_n)$
-  2. $\mathbb{C}$ ist ein $\mathbb{R}$ -VR bezüglich
+  2. $\mathbb{C}$ ist ein \(\mathbb{R}\)-VR bezüglich
 	 - $+$ = übliche Addition auf $\mathbb{C}$
 	 - skalare Multiplikation $\cdot:\mathbb{R}\times\mathbb{C} \to \mathbb{C}, \lambda (a + \I b) := \lambda a + \I \lambda b$
-  3. $K[t]$ Polynomring über $K$ in der Variablen $t$ wird zum $K$ -VR durch
+  3. $K[t]$ Polynomring über $K$ in der Variablen $t$ wird zum \(K\)-VR durch
 	 - $+$ = Addition von Polynomen
 	 - skalare Multiplikation, $\cdot: K\times K[t] \to K[t]: \lambda \cdot \sum_{k = 0}^n a_k t^k := \sum_{k = 0}^n \lambda a_k t^k$
-  4. $M$ Menge, $\Abb(M,K):= \{f: M \to K~\text{Abbildung}\}$ wird zum $K$ -Vektorraum durch die folgende Verknüpfungen:
+  4. $M$ Menge, $\Abb(M,K):= \{f: M \to K~\text{Abbildung}\}$ wird zum \(K\)-Vektorraum durch die folgende Verknüpfungen:
 	 - Addition: Zu $f,g\in \Abb(M,K)$ wird $f + g: M \to K$ definiert über
 	   \[(f + g)(x) := f(x) + g(x), x\in M\]
 	 - skalare Multiplikation: Zu $\lambda \in K, f\in \Abb(M,K)$ wird $\lambda f: M \to K$ definiert über
@@ -53,7 +53,7 @@
   #+end_ex
   #+ATTR_LATEX: :options [8.3]
   #+begin_remark latex
-  $V~K$ -VR. Dann gilt:
+  \(V~K\)-VR. Dann gilt:
   1. $0_K \cdot v = 0_V \Forall v\in V$
   2. $\lambda \cdot 0_V = 0_V \Forall \lambda\in K$
   3. $\lambda v = 0_V \implies \lambda = 0_K \vee v = 0_V$
@@ -71,18 +71,18 @@
   #+end_proof
   #+ATTR_LATEX: :options [8.4]
   #+begin_defn latex
-  $V~K$ -VR, $U\subseteq V$ \\
-  $U$ heißt Untervektorraum ($K$ -Untervektorraum), kurz UVR von $V$ $\xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt
+  \(V~K\)-VR, $U\subseteq V$ \\
+  $U$ heißt Untervektorraum (\(K\)-Untervektorraum), kurz UVR von $V$ $\xLeftrightarrow{\text{Def}}$ Die folgenden Bedingungen sind erfüllt
   - (U1) $U\neq \emptyset$
   - (U2) $v,w \in U \implies v + w \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich Addition)
   - (U3) $v\in U, \lambda \in K \implies \lambda v \in U$ \hfill (das heißt $U$ ist abgeschlossen bezüglich skalarer Multiplikation)
   #+end_defn
   #+ATTR_LATEX: :options [8.5]
   #+begin_remark latex
-  $V~K$ -VR, $U\subseteq V$ \\
+  \(V~K\)-VR, $U\subseteq V$ \\
   Dann sind äquivalent
   1. $U$ ist ein UVR von $V$
-  2. Addition und skalare Multiplikation auf $V$ induzieren durch Einschränkung auf $U$ Verknüpfung $+: U\times U\to U, \cdot:K\times U \to U$, und bezüglich dieser Verknüpfung ist $U$ ein $K$ -VR
+  2. Addition und skalare Multiplikation auf $V$ induzieren durch Einschränkung auf $U$ Verknüpfung $+: U\times U\to U, \cdot:K\times U \to U$, und bezüglich dieser Verknüpfung ist $U$ ein \(K\)-VR
   #+end_remark
   #+begin_proof latex
   (1.) $\implies$ (2.): Sei $U$ ein UVR von $V$ \\

@@ -113,7 +113,7 @@
    - Für das Newton-Verfahren ($M(x)J(x) = E_n$) gilt $κ = 0$, das heißt $κ$ ist ein Maß für die Kompatibilität von $M$ und $J$
    - Das Newton Verfahren für $f(x) = J x - b$ ($J$ invertierbar) konvergiert in einem Schritt ($ω = κ = 0$)
    Sukzessive Approximation \\
-   Wahl: $M(x) = C^{-1}$ mit $C ∈ ℝ^{n × n}$. $κ$ -Bedingung: $x - y ∈ \mathcal{N}$, das heißt $y - x = - C_1^{-1} f(x)$
+   Wahl: $M(x) = C^{-1}$ mit $C ∈ ℝ^{n × n}$. \(κ\)-Bedingung: $x - y ∈ \mathcal{N}$, das heißt $y - x = - C_1^{-1} f(x)$
    \[\norm{C^{-1}[E_n - J(x) C^{-1}] f(x)} = \norm{[I_n - C^{-1}J(x)](y - x)} \overset{!}{\leq} κ \norm{y - x}\]
    ist erfüllt für
    \[\norm{E_n - C^{-1} J(x)} \leq κ < 1\]

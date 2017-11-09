@@ -87,8 +87,8 @@
   std::vector<double> v = {4, 2, 3, 5 ,1};
   std::sort(v.begin(), v.end()); // v == {1, 2, 3, 4, 5}
   #+END_SRC
-  \code{std::sort} ruft intern den $<$ -Operator des Elementtyps auf, um Reihenfolge zu bestimmen.
-  Die $<$ -Operation muss eine totale Ordnung der Elemente definieren:
+  \code{std::sort} ruft intern den \(<\)-Operator des Elementtyps auf, um Reihenfolge zu bestimmen.
+  Die \(<\)-Operation muss eine totale Ordnung der Elemente definieren:
   - $a < b$ muss für beliebige $a,b$ ausführbar sein
   - transitiv: $(a < b) \wedge (b < c) \implies (a < c)$
   - anti-symmetrisch: $\neg(a < b) \wedge \neg(b < a) \implies a == b$

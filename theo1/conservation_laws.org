@@ -20,7 +20,7 @@
 
    mit äußeren Kräften:
    \[\dot{\v p} = \sum_a \v F_{a,ext.} \equiv \v F_{ext}\]
-   Falls zum Beispiel die äußere Kraft nicht in $x^1$ -Richtung wirkt (F^1_{ext} = 0), so gilt immer noch $p^1 = \text{const}$
+   Falls zum Beispiel die äußere Kraft nicht in \(x^1\)-Richtung wirkt (F^1_{ext} = 0), so gilt immer noch $p^1 = \text{const}$
    (eigentlich drei Erhaltungssätze für $p^1, p^2,p^3$, manchmal gelten nur einige davon)
 ** Drehimpulserhaltung
    Oft: Kräfte wirken parallel zur Verbindungslinie zweier Massenpunkte:

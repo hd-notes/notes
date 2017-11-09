@@ -376,5 +376,5 @@
 	   - $\implies F_W \approx A \Delta p = A \frac{1}{2} \rho \v v_K^2 = A \frac{1}{2} \rho \overline{\v v^2}$
 	Strömungswiderstand = Staudruck $\times$ Konturfläche!! \\
 	Aber: Der Strömungswiderstand hängt auch von der Form des Körpers ab. $\implies$ Einführung
-	des "$c_W$ -Wertes" für quantitative Beschreibung:
+	des "\(c_W\)-Wertes" für quantitative Beschreibung:
 	\[F_W = v_W \frac{1}{2}\rho v^2 A\]

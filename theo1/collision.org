@@ -31,7 +31,7 @@
    Teilchenstrahldichte:
    \[n = \frac{\text{Teilchenzahl}}{\text{Fläche}\cdot\text{Zeit}}, [n] = \si{\per\meter\squared\per\second}\]
    $\implies \overarrow[Zahl der gestreuten Teilchen pro Zeit]{N}= n \cdot \underarrow[\sigma_{tot}]{Querschnittsfläche des Targets}, [N] = \si{\per\second}$ \\
-   $\sigma_{tot}$ -totaler Wirkungsquerschnitt, $\sigma_{tot} \equiv \frac{N}{n}$ \\
+   \(\sigma_{tot}\)-totaler Wirkungsquerschnitt, $\sigma_{tot} \equiv \frac{N}{n}$ \\
 *** Differentieller Wirkungsquerschnitt
 	\begin{align*}
 	\d N &= n(\dd{\sigma}{\theta}(\theta)) \\

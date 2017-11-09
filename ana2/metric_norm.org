@@ -22,7 +22,7 @@
 	  \[d(x, y) = \sum_{k = 0}^{∞} 2^{-k} \frac{\abs{x_k - y_k}}{1 + \abs{x_k - y_k}}\]
    #+end_ex
    #+begin_defn latex
-   Sei $M$ eine Menge mit Metrik $d$. Wir definieren für $x ∈ M, ε > 0$, die offene $ε$ -Kugel um $x$ durch
+   Sei $M$ eine Menge mit Metrik $d$. Wir definieren für $x ∈ M, ε > 0$, die offene \(ε\)-Kugel um $x$ durch
    \[K_ε(x):=\{y ∈ M \mid d(x, y) < ε\}\]
    und eine abgeschlossene Kugel durch
    \[K_ε(x):=\{y ∈ M \mid d(x, y) \leq ε\}\]
@@ -43,7 +43,7 @@
    #+end_defn
 ** Normierte Räume
    #+begin_defn latex
-   Ein normierter Raum $(X, \norm{·})$ ist ein Paar bestehend aus einem $\mathbb{K}$ -Vektorraum $X$ und einer Abbildung $\norm{·}: X \to [0, ∞\string)$ mit
+   Ein normierter Raum $(X, \norm{·})$ ist ein Paar bestehend aus einem \(\mathbb{K}\)-Vektorraum $X$ und einer Abbildung $\norm{·}: X \to [0, ∞\string)$ mit
    1. $\norm{x} = 0 ⇔ x = 0$
    2. $\norm{λx} = \abs{λ}\norm{x} ∀ λ ∈ \mathbb{K}, x ∈ X$
    3. $\norm{x + y} \leq \norm{x} + \norm{y} ∀x, y ∈ X$

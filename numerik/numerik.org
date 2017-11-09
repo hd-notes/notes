@@ -273,7 +273,7 @@
   ⇒ (A x, y)_2 &= (x, A y)_2 ∀ x, y ∈ ℝ^n \\
   \string(A x, x\string)_2 &> 0 ∀ x ∈ ℝ^{n} \setminus \{0\}
   \end{align*}
-  #+ATTR_LATEX: :options [$A$ -Skalarprodukt, $A$ -Norm]
+  #+ATTR_LATEX: :options [\(A\)-Skalarprodukt, \(A\)-Norm]
   #+begin_defn latex
   \[(x, y)_A = (A x, y), \norm{x}_A = \sqrt{(A x, x)}\]
   #+end_defn
@@ -404,7 +404,7 @@
   \[(g^{t + 1}, g^t) = (g^t - α_t A g^t, g^t) = \norm{g^t}^2 - \underbrace{α_t (A g^t, g^t)}_{\norm{g^t}^2} = 0\]
   $⇒$ $g^{t + 1} \perp g^t$. $⇒$ Langsame Konvergenz für $\cond_2 A \gg 1$. \\
   *Conjugate-Gradients-Verfahren (CG)* \\
-  Idee: Wähle Abstiegsrichtung $d^t$ mit $(d^i, d^j)_A = 0 ∀ i \neq j$. ($A$ -orthogonal).
+  Idee: Wähle Abstiegsrichtung $d^t$ mit $(d^i, d^j)_A = 0 ∀ i \neq j$. (\(A\)-orthogonal).
   Ansatz: $B_t := \Lin \{d^0, \dots, d^{t - 1}\}$.
   \[x^t = x^0 + \sum_{i = 0}^{t - 1} α_i d^i α x^0 + B_t\]
   bestimmt durch
@@ -427,7 +427,7 @@
   und wegen $g^t \perp K_t(d^0; A)$ $⇒$ $g^t = 0$, das heißt $A x^t = b$. \\
   Konstruktion der Richtungen $d^t ∈ K_{t + 1}(d^0; A)$: Ansatz:
   \[d^t = \underbrace{-g^t}_{\not ∈ K_t(d^0; A)} + \underbrace{\sum_{j = 0}^{t - 1} β_j^{t - 1} d^j}_{∈ K_t(d^0; A)} ∈ K_{t + 1}(d^0; A)\]
-  $A$ -Orthogonalität:
+  \(A\)-Orthogonalität:
   \begin{align*}
   0 &\overset{!}{=} (d^t, A d^i) = (-g^t, A d^i) + \sum_{j = 0}^{t - 1} β_j^{t - 1} \underbrace{(d^j, A d^i)}_{= 0, i \neq j} \\
   &= (-g^t + β_j^{t - 1} d^i, A d^i), i = 0, \dots, t - 1
@@ -481,7 +481,7 @@
   zu zeigen:
   \[\min_{\substack{p ∈ P_t \\ p(0) = 1}} \sup_{μ ∈ [λ, Λ]} \abs{p(μ)}\norm{x^0 - x}_A \leq 2 (\frac{1 - \sqrt{λ/Λ}}{1 + \sqrt{λ/Λ}})^t\]
   Problem der Bestapproximation mit Polynomen bezüglich Max-Norm!
-  Lösung: $T_t$: $t$ -tes Tschebyscheff-Polynom auf $[-1,1]$
+  Lösung: $T_t$: \(t\)-tes Tschebyscheff-Polynom auf $[-1,1]$
   \[\bar p(μ) = T_t(\frac{Λ + λ - 2μ}{Λ - λ})T(\frac{Λ + λ}{Λ - λ})^{-1}\]
   \[⇒ \sup_{μ ∈ [λ, Λ]} \abs{\bar p(μ)} = T(\frac{Λ + λ}{Λ - λ})^{-1}\]
   Darstellung für $\abs{μ} > 1$

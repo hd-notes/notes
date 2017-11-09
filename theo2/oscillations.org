@@ -85,7 +85,7 @@
    Zelle klein:
    \[⇒ ρ(\pp{\v v}{t} + (\v v · \v ∇)\v v) = \frac{\v F_{äußh}}{V_{Zelle}} - \v ∇ p\]
    #+begin_defn latex
-   $\v f_{äuß} = \v P_{äuß} / V_{Zelle}$ - "Äußere Kraftdichte". $⇒$ Eulergleichung:
+   \(\v f_{äuß} = \v P_{äuß} / V_{Zelle}\)- "Äußere Kraftdichte". $⇒$ Eulergleichung:
    \[⇒ \pp{\v v}{t} + (\v v · \v ∇) \v v = - \frac{\v ∇ p + \v f_{äuß}}{ρ}\]
    #+end_defn
    Außerdem: Kontinuitätsgleichung. Dazu: Massenstrom $\equiv ρ · \v v \equiv \v j$.

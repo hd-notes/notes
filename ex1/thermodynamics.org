@@ -187,7 +187,7 @@
    &= 2m v_x \cdot \frac{\text{Stöße}}{\text{Zeit}}
    \end{align*}
    Aber $v_x$ ist nicht für alle Gasteilchen gleich, sondern statistisch verteilt.
-   Erwartung: Verteilungsfunktion der $v_x$ -Werte muss symmetrisch um $v_x = 0$ sein, da Gas ruht!
+   Erwartung: Verteilungsfunktion der \(v_x\)-Werte muss symmetrisch um $v_x = 0$ sein, da Gas ruht!
    Es gilt:
    \begin{align*}
    N &= \int_{-\infty}^{\infty} n(v_x) \d v_x \\
@@ -339,7 +339,7 @@
    \d W &> 0 ~\text{für}~ \d V < 0
    \implies W &= -\int_{v_1}^{v_2}p \d V
    \end{align*}
-   $pV$ -Diagramm: \\
+   \(pV\)-Diagramm: \\
    $pV = n R T$
    - Isotherme Zustandsänderung: $T = ~\text{const}$
 	 - $T = ~\text{const}$

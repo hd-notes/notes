@@ -16,20 +16,20 @@
    Insbesondere: $\eps^{12\ldots n} = 1$
    #+end_defn
 
-   - Eine $(n\times m)$ -Matrix ist ein Schema $A^{ij}$ von Zahlen, die jeweils Eintrag $i$ in Zeile $i$ und Spalte $j$ bezeichnen.
-   - Man kann eine $(n\times m)$ -Matrix mit einer $(m\times p)$ -Matrix multiplizieren:
+   - Eine \((n\times m)\)-Matrix ist ein Schema $A^{ij}$ von Zahlen, die jeweils Eintrag $i$ in Zeile $i$ und Spalte $j$ bezeichnen.
+   - Man kann eine \((n\times m)\)-Matrix mit einer \((m\times p)\)-Matrix multiplizieren:
 	 \[(AB)^{ij} = \sum_{k = 1}^{m}A^{ik} B^{kj}\]
-	 das Ergebnis ist eine $(n\times p)$ -Matrix
+	 das Ergebnis ist eine \((n\times p)\)-Matrix
 
    #+ATTR_LATEX: :options [Determinante]
    #+begin_defn latex
-   Für quadratische ($(n\times n)$ -Matrizen) definieren wir die *Determinante*:
+   Für quadratische (\((n\times n)\)-Matrizen) definieren wir die *Determinante*:
    \[\det A = \frac{1}{n!} \underarrow[\eps]{n-dim. Levi-Civita-Symbol}^{i_1 \ldots i_n} A^{i_1 j_1} A^{i_2 j_2} \ldots A^{i_n j_n} \eps^{j_1 \ldots j_n} \]
 
    Damit erhält man: \\
-   Determinante einer $(1\times 1)$ -Matrix: die Zahl selbst.
+   Determinante einer \((1\times 1)\)-Matrix: die Zahl selbst.
 
-   Erstes nicht triviales Beispiel: $(2\times 2)$ -Matrix
+   Erstes nicht triviales Beispiel: \((2\times 2)\)-Matrix
    \begin{align*}
    \det A &= \det \begin{pmatrix} A^{11} & A^{12} \\ A^{21} & A^{22}\end{pmatrix} = \frac{1}{2!} \eps^{ij} A^{ik} A^{jl} \eps^{kl} \\
    &= \frac{1}{2!}(\eps^{12}A^{11}A^{22}\eps^{12} + \eps^{12}A^{12}A^{21}\eps^{21} + \eps^{21}A^{21}A^{12}\eps^{12} + \eps^{21}A^{22}A^{11}\eps^{21}) \\
@@ -169,8 +169,8 @@
    Symmetrien in Physik und Mathe \rightarrow Gruppen \\
    Bisher:
    - Matrixgruppen
-	 - $GL(n)$ - Symmetriegruppe des Vektorraums $\mathbb{R}^n$
-	 - $O(n)$ - Symmetriegruppe des euklidischen Raumes
+	 - \(GL(n)\)- Symmetriegruppe des Vektorraums $\mathbb{R}^n$
+	 - \(O(n)\)- Symmetriegruppe des euklidischen Raumes
 
    Allgemeiner: Eine Gruppe ist eine Menge $G$ mit einer Binären Operation $G \times G \to G$ für die gilt:
    - $(a \cdot b) \cdot c = a \cdot (b\cdot c)$
@@ -195,7 +195,7 @@
    $GL(n)$ ist eine (nicht abelsche) Gruppe. Müssen prüfen: $A,B$ invertierbar $\implies A\cdot B$ invertierbar. Wir geben das Inverse zu $A\cdot B$ einfach an:
    \[(B^{-1}A^{-1})(AB) = B^{-1}(A A^{-1}) B = B^{-1} B = \mathbb{1}\]
 
-   $GL^+ (n)$ - orientierungserhaltende Untergruppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
+   \(GL^+ (n)\)- orientierungserhaltende Untergruppe $\equiv$ alle $A$ in  $GL(n)$ mit $\det A > 0$ \\
    $O(n)$ ist Untergruppe von $GL(n)$. Müssen prüfen dass $A,B$ orthogonal $\implies A\cdot B$ orthogonal. Dazu:
    \[(A\cdot B)^{T} (A\cdot B) = B^{T} A^{T} A B = B^{T} B = \mathbb{1}\]
 

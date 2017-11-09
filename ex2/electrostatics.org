@@ -60,7 +60,7 @@
    \[\v E = \frac{1}{4 π ε_0} \sum_{i} \frac{q_i}{r_i^2} \hat r\]
    Die Anwesenheit von Ladungen verändern den Raum. Es entsteht in Vektorfeld, dessen Stärke und Richtung in jedem Raumpunkt die normierte Kraft $\frac{\v F}{q}$ auf eine Probeladung angibt. \\
    Eigenschaften der Feldlinien
-   1. Das $\v E$ -Feld zeigt tangential zu den Feldlinien
+   1. Das \(\v E\)-Feld zeigt tangential zu den Feldlinien
    2. Feldlinien zeigen weg von positiven Ladungen
    3. Feldliniendichte entspricht Stärke des Feldes.
 ** Elektrischer Fluss

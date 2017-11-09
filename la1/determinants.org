@@ -533,7 +533,7 @@
   #+end_proof
   #+begin_note latex
   Ist $R$ ein kommutativer Ring, dann kann man (in Analogie zu $M(n\times n, K)$ für einen Körper $K$)
-  den Ring $M(n\times n, R)$ der $n\times n$ -Matrizen mit Einträgen in $R$ betrachten. Im Beweis von 17.12 wird nicht dividiert.
+  den Ring $M(n\times n, R)$ der \(n\times n\)-Matrizen mit Einträgen in $R$ betrachten. Im Beweis von 17.12 wird nicht dividiert.
   Somit: Definiert man
   \[\det: M(n\times n, R) \to R, \det(A) = \sum_{\sigma\in S_n}\sgn(\sigma) a_{1\sigma(1)} \cdot \ldots \cdot A_{n\sigma(n)}, A = (a_{ij})\]
   dann sind D1-D3 (für $R$ statt $K$) erfüllt. (und man kann zeigen: D4 - D9, D11 sind erfüllt, $\det(A) = \det(A^T), A\cdot A^\# = A^\# \cdot A = \det(A) E_n$, Entwicklungssatz von Laplace)

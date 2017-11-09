@@ -158,7 +158,7 @@
    #+ATTR_LATEX: :options [Gauß-Quadratur]
    #+begin_thm latex
    Es gibt genau eine interpolatorische Quadraturformel zu $n + 1$ paarweise verschiedenen Stützstellen auf $[-1, b]$ mit Ordnung $2n + 2$. Ihre Stützstellen sind gerade die Nullstellen.
-   $λ_0, \dots, λ_n ∈ (-1, 1)$ das $(n + 1)$ - ten Legendre Polynom $L_{n + 1} ∈ P_{n + 1}$ und die Gewichte erfüllen
+   $λ_0, \dots, λ_n ∈ (-1, 1)$ das \((n + 1)\)- ten Legendre Polynom $L_{n + 1} ∈ P_{n + 1}$ und die Gewichte erfüllen
    \[α_i = ∫_{-1}^1 \prod_{\substack{j = 0 \\ j \neq i}} (\frac{x - λ_j}{λ_i - λ_j})^2 \d x > 0, i = 0, \dots, n\]
    Für $f ∈ C^{2 n + 2}[-1, 1]$ besitzt des Restglied die Darstellung
    \[R^{(n)} = \frac{f^{(2n + 2)}(ξ)}{(2n + 2)!} ∫_{-1}^1 \prod_{j = 0}^n (x - λ_j)^2 \d x, ξ ∈ (-1, 1)\]

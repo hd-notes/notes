@@ -250,7 +250,7 @@
 	  sich mit unterschiedlicher Geschwindigkeit aus ($⇒$ Phasenverschiebung)
    3. Lichteinfall unter einem von Null verschiedenen Winkel. $⇒$ Aufspaltung des
 	  einfallenden Lichtes in ordentlichen und außerordentlichen Strahl
-   Doppelbrechende Kristalle erlauben Erzeugung definieter Gangunterschiede ($λ/4, λ/2$ -Plättchen)
+   Doppelbrechende Kristalle erlauben Erzeugung definieter Gangunterschiede (\(λ/4, λ/2\)-Plättchen)
    (Einfall senkrecht zur optischen Achse)
 ** Dispersion und Prismenwirkung
    Dispersion: Abhängigkeit der Ausbreitungsgeschwindigkeit von der Wellenzahl $k$ beziehungsweise

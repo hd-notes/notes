@@ -91,7 +91,7 @@
   #+ATTR_LATEX: :options [Gauß-Diagonalisierung für Euklidische Ringe]
   #+begin_thm latex
   $R$ Euklidischer Ring, $A ∈ M(m × n, R)$. Dann gilt: $A$ lässt sich durch wiederholte Anwendung von elementaren
-  Zeilen- und Spaltenoperationen vom Typ 3 (Addition des $λ$ -fachen einer Zeile/Spalte zu einer anderen Zeile / Spalte, $λ ∈ R$)
+  Zeilen- und Spaltenoperationen vom Typ 3 (Addition des \(λ\)-fachen einer Zeile/Spalte zu einer anderen Zeile / Spalte, $λ ∈ R$)
   sowie des Typ 4 (Zeilen / Spaltenvertauschung) in eine Matrix der Gestalt
   \begin{equation*}
   \begin{array}{ccc|c}
@@ -113,7 +113,7 @@
 	 \[\begin{array}{c|ccc}\ast & & 0 & \\ \hline & & & \\ 0 & & \ast & \\ & & &\end{array}\]
 	 1. Fall: In der ersten Spalte / Zeile stehen keine Elemente $\neq 0$ außer $a_{11}$, dann fertig.
 	 2. Fall: In der ersten Spalte / Zeile stehen noch Elemente $\neq 0$, ohne Einschränkung $a_{21} \neq 0$ $⇒ ∃ q ∈ R: a_{21} = q a_{11}$ oder $δ(a_{21} - q a_{11}) < δ(a_11)$.
-		Addiere das $(-q)$ -fache der 1. Zeile zur 2. Zeile $⇒$ Erhalte Matrix $A' = (a_{ij}')$ mit $a_{21}' = 0$ oder $δ(a_{21}') < δ(a_{11})$.
+		Addiere das \((-q)\)-fache der 1. Zeile zur 2. Zeile $⇒$ Erhalte Matrix $A' = (a_{ij}')$ mit $a_{21}' = 0$ oder $δ(a_{21}') < δ(a_{11})$.
 		Falls $a_{21}' \neq 0$, dann erhalte durch Zeilen sowie gegebenenfalls Spaltenvertauchung eine Matrix
 		$A'' = (a_{ij}'')$ mit $a_{11}'' \neq 0, δ(a_{11}'') \leq δ(a_{ij}'')$ für alle $i,j$ mit $a_{ij}'' \neq 0$, mit $δ(a_{11}'') < δ(a_11)$.
 		Dieser Prozess bricht nach endlich vielen Iterationen ab und wir erhalten eine Matrix der From
@@ -137,7 +137,7 @@
 		0 & & & \ast & &
 		\end{array}
 		\end{equation*}
-		Subtrahiere das $q$ -fache der ersten Spalte von der j-ten Spalte diser Matrix, erhalte:
+		Subtrahiere das \(q\)-fache der ersten Spalte von der j-ten Spalte diser Matrix, erhalte:
 		\begin{equation*}
 	 	\begin{array}{c|cccccccc}
 	 	d_{11} & 0 & \dots & 0 & - q d_{11} & 0 &\dots & \dots & 0 \\
@@ -204,9 +204,9 @@
   *Ziel:* Klassifikation von Matrizen aus $M(m × n, R), R$ Euklidischer Ring bis auf Äquivalenz.
   #+begin_defn latex
   $A ∈ M(m × n, R), 1 \leq k \leq m, 1 \leq l \leq n$. $B ∈ M(k × l, R)$ heißt eine *Untermatrix* von $A$ $\xLeftrightarrow{\text{Def}}$ aus $A$ durch Streichen von $m - k$ Zeilen und $n - l$ Spalten.
-  Ist $B ∈ M(l × l, R)$ eine quadratische Untermatrix von $A$, dann heißt $\det(B)$ ein *Minor* $l$ -ter Stufe von $A$.
+  Ist $B ∈ M(l × l, R)$ eine quadratische Untermatrix von $A$, dann heißt $\det(B)$ ein *Minor* \(l\)-ter Stufe von $A$.
   \[\Fit_l(A) = (\det(B) \mid B \text{ ist } l × l \text{-Untermatrix von } A) ⊆ R\]
-  (das von allen Minoren $l$ -ter Stufe von $A$ erzeugte Ideal in $R$) heißt das *$l$ -te Fittingideal von $A$*.
+  (das von allen Minoren \(l\)-ter Stufe von $A$ erzeugte Ideal in $R$) heißt das *\(l\)-te Fittingideal von $A$*.
   #+end_defn
   #+begin_ex latex
   \[A = \begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix} ∈ M(2 × 2, ℤ)\]
@@ -221,14 +221,14 @@
   #+begin_proof latex
   1. $\Fit_l(SA) ⊆ \Fit_l(A)$, denn:
 	 $A = (a_{ij}) ∈ M(m × n, R), S = (s_{ij}) ∈ \GL(m, R), SA = (b_{ij}) ∈ M(m × n, R)$. Seinen $1 \leq 1_1 < i_2 < \dots < i_l \leq m, 1 \leq j_1 < j_2 < \dots < j_l \leq n$. Wir betrachten die
-	 $l × l$ -Untermatrix
+	 \(l × l\)-Untermatrix
 	 \[B = \begin{pmatrix}b_{i_1,j_1} & \dots & b_{i_1,j_l} \\ \vdots &   & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix}\]
 	 von $SA$.
 	 \begin{align*}
 	 ⇒ \det B &= \det \begin{pmatrix}\sum_{r_1 = 1}^{m} s_{i_1, r_1} a_{r_1,j_1} & \dots &  \sum_{r_1 = 1}^{m} s_{i_1, r_1} a_{r_1,j_l}\\ b_{i_2, j_1} & \dots & b_{i_2, j_l} \\ \vdots & 8 & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix} \\
 	 &= \sum_{r_1 = 1}^{s_{i_1, r_1}} \det \begin{pmatrix}a_{r_1,j_1} & \dots & a_{r_1,j_l}\\ b_{i_2, j_1} & \dots & b_{i_2, j_l} \\ \vdots & 8 & \vdots \\ b_{i_l, j_1} & \dots & b_{i_l, j_l}\end{pmatrix} \\
 	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{pmatrix}a_{r_1, j_1} & \dots & a_{r_1, j_l} \\ \vdots &   & \vdots \\ a_{r_l, j_1} & \dots & a_{r_l, j_l}\end{pmatrix} \\
-	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{cases} 0 \text{falls $i \neq j$ existiert mit $r_i = r_j$} \\ I \text{ ein Minor $l$ -ter Stufe von $A$}\end{cases} \\
+	 &= \sum_{r_l = 1}^{m} \dots \sum_{r_1 = 1}^{m} s_{i_1, r_1} · \dots · s_{i_l, r_l} \det \begin{cases} 0 \text{falls $i \neq j$ existiert mit $r_i = r_j$} \\ I \text{ ein Minor \(l\)-ter Stufe von $A$}\end{cases} \\
 	 &∈ \Fit_l(A)
      \end{align*}
   2. Wende 1. auf $S^{-1} ∈ \GL(m, R), S A ∈ M(m × n, R)$ an: $⇒ \Fit_l(S^{-1}(S A)) ⊆  \Fit_l(S A)$, also $\Fit_l(A) ⊆ \Fit_l(SA)$. Außerdem: $\Fit_l(A) = \Fit_l(A^T)$, also
@@ -250,7 +250,7 @@
   Insbesondere gilt: $\Fit_l(A) ⊆ \Fit_{r - 1}(A) ⊆ \dots ⊆ \Fit_1(A)$
   #+end_remark
   #+begin_proof latex
-  Für $l > r$ enthält jede $l × l$ -Untermatrix von $A$ stets eine Nullzeile, das heißt $\Fit_l(1) = (0)$. \\
+  Für $l > r$ enthält jede \(l × l\)-Untermatrix von $A$ stets eine Nullzeile, das heißt $\Fit_l(1) = (0)$. \\
   $l \leq r$: Die einzige $l × l$ Untermatrix von $A$, die keine Nullzeile enthalten, sind von der Form
   \[\begin{pmatrix}c_{i_1} &   & 0 \\   & \ddots &   \\ 0 &   & c_{i_l}\end{pmatrix}\]
   mit $1 \leq i_1 < i_2 < \dots < i_l \leq r$.

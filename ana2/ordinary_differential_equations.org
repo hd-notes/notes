@@ -281,7 +281,7 @@
   1. Ein nicht autonomes System $x' = f(t, x), x ∈ ℝ^n$ kann immer zu einem autonomen System in $ℝ^{n + 1}$ durch hinzufügen von $x_{n + 1}(t) := t$
 	 (beziehungsweise $x'_{n + 1} = 1$) \\
 	 gemacht werden.
-  2. ein System $m$ -ter Ordnung für $x(t) ∈ ℝ^n$
+  2. ein System \(m\)-ter Ordnung für $x(t) ∈ ℝ^n$
 	 \begin{align*}
 	 x^{(n)}(t) &= f(t, x, x'(t), \dots, x^{(n - 1)}(t)) \\
 	 x(t_0) &= x_0, x'(t_0) = x_1, \dots, x^{(n - 1)}(t_0) = x_{n - 1}

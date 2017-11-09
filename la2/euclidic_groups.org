@@ -1,6 +1,6 @@
 * Euklidische Räume
   #+begin_defn latex
-  $V ℝ$ -VR, $γ: V × V \to ℝ$ symmetrische Bilinearform. $γ$ heißt
+  \(V ℝ\)-VR, $γ: V × V \to ℝ$ symmetrische Bilinearform. $γ$ heißt
   - *positiv definit* $\xLeftrightarrow{\text{Def}} γ(v, v) > 0 ∀ v ∈ V \setminus\{0\}$
   - *positiv semidefinit* $\xLeftrightarrow{\text{Def}} γ(v, v) \geq 0 ∀ v ∈ V \setminus\{0\}$
   - *negativ definit* $\xLeftrightarrow{\text{Def}} γ(v, v) < 0 ∀ v ∈ V \setminus\{0\}$
@@ -28,7 +28,7 @@
   das heißt $γ$ ist indefinit.
   #+end_note
   #+begin_defn latex
-  Ein *Euklidischer Raum* ist ein Paar $(V, γ)$, bestehend aus einem endlichdimensionalen $ℝ$ -VR $V$ und einem Skalarprodukt $γ$ auf $V$.
+  Ein *Euklidischer Raum* ist ein Paar $(V, γ)$, bestehend aus einem endlichdimensionalen \(ℝ\)-VR $V$ und einem Skalarprodukt $γ$ auf $V$.
   Für den Rest dieses Abschsittes sei $(V, γ)$ ein Euklidischer Raum.
   #+end_defn
   #+begin_defn latex

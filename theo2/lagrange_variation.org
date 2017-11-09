@@ -192,5 +192,5 @@
    In der Quantenmechanik ist die Wahrscheinlichkeit $w$ für den Übergang von $(q^{(1)}, t_1)$ zu $(q^{(2)}, t_2)$ gegeben durch
    \[w \sim \abs{A}^2\], $A ∈ ℂ$ ist "Amplitude", mit
    \[A \sim ∫ D q e^{\frac{i S[q]}{\hbar}}\]
-   $∫D q$ - Summe über alle mögliche Trajektorien ("Wege"), ("Pfade"). \\
+   \(∫D q\)- Summe über alle mögliche Trajektorien ("Wege"), ("Pfade"). \\
    Im Limes $\hbar \to 0$ dominiert klassischer Weg. Grund: $S$ ist an dieser Stelle stationär. Beiträge von "ganz anderen" Wegen heben sich wegen schneller Oszillation von $\exp[i S / \hbar]$ weg.

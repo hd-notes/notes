@@ -165,7 +165,7 @@
    #+begin_defn latex
    Die Funktion $f:D\to\mathbb{R}$ hat in einem Punkt $x_0 \in D$ ein *globales Extremum* (Minimum oder Maximum), wenn gilt
    \[f(x_0) \leq f(x), x\in D \vee f(x_0) \geq f(x) \Forall x \in D\]
-   Es handelt sich um ein *lokales Extremum* (Minimum oder Maximum), wenn auf einer $\delta$ -Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
+   Es handelt sich um ein *lokales Extremum* (Minimum oder Maximum), wenn auf einer \(\delta\)-Umgebung von $x_0$ (das heißt $U_\delta(x_0) = \{x\in D\mid\abs{x - x_0} < \delta\}$)
    gilt $f(x_0) \geq f(x) \Forall x\in U_\delta(x_0) \vee f(x_0) \leq f(x) \Forall x\in U_\delta(x_0)$
    Ein Extremum (globales oder lokales) heißt strikt, wenn es das isolierteste Punkt in $D$ beziehungsweise in $U_\delta(x_0)$ ist, das heißt $f(x_0) > f(x) \vee f(x_0) < f(x)$
    #+end_defn
@@ -349,7 +349,7 @@
    Wir wollen untersuchen unter welchen Bedingungen solche Potenzreihe für eine Funktion möglich ist
    und wie man diese aus der Funktion bestimmen kann. Wir haben schon in Übung für die Darstellung für Polynome gezeigt:
    \[p(x) = \sum_{k = 0}^{n} \frac{p^{(k)}(x_0)}{k!}(x - x_0)^k\]
-   $p$ -Polynom. Wie ist das bei allgemeinen Funktionen
+   \(p\)-Polynom. Wie ist das bei allgemeinen Funktionen
    #+ATTR_LATEX: :options [4.25]
    #+begin_defn latex
    Für $f:(a, b) \to\mathbb{R}, f$ n-mal stetig differenzierbar definieren wir das n-te Taylor Polynom
@@ -359,7 +359,7 @@
    #+end_defn
    #+ATTR_LATEX: :options [4.26]
    #+begin_thm latex
-   Sei $f: (a, b) \to \mathbb{R}~(n + 1)$ -mal stetig differenzierbar und $t_n(x_0, \cdot)$  ihr
+   Sei \(f: (a, b) \to \mathbb{R}~(n + 1)\)-mal stetig differenzierbar und $t_n(x_0, \cdot)$  ihr
    n-tes Taylor Polynom um ein $x_0\in n(a,b)$. Dann gibt es zu jeden $x\in (a,b)$ ein $\xi$ zwischen
    $x$ und $x_0$, so dass gilt
    \[f(x) = t_n(x_0, x) + \frac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}\]
@@ -383,7 +383,7 @@
    #+end_proof
    #+ATTR_LATEX: :options [4.27]
    #+begin_defn latex
-   1. $f:(a,b)\to\mathbb{R}$ heißt glatt (oder $C^\infty$ -Funktion) wenn sie beliebig oft
+   1. $f:(a,b)\to\mathbb{R}$ heißt glatt (oder \(C^\infty\)-Funktion) wenn sie beliebig oft
 	  differenzierbar ist, das heißt $\Forall k\in\mathbb{N}$ ihre k-te Ableitung $f^{(k)}$ existiert
    2. Die Taylorreihe von $f$ und ein $x_0 \in (a,b)$ ist dann definiert durch
 	  \[t_\infty(x_0, x):= \sum_{k = 0}^{\infty} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k\]
@@ -440,14 +440,14 @@
 ** Anwendung von Taylor-Entwicklung
    #+ATTR_LATEX: :options [4.29]
    #+begin_korollar latex
-   Sei $f:(a, b)\to \mathbb{R}$ eine $n$ -mal $(n \geq 2)$ stetig differenzierbare Funktion mit
+   Sei $f:(a, b)\to \mathbb{R}$ eine \(n\)-mal $(n \geq 2)$ stetig differenzierbare Funktion mit
    \[f'(x_0) = f''(x_0) = \ldots = f^{n - 1}(x_0)= 0, f^{(n)}(x_0) \neq 0\]
    für ein $x_0 \in (a, b)$
    Ist $n$ gerade, so hat $f$ in $x_0$ ein striktes lokales Minimum oder Maximum (je nachdem ob $f^{(n)}(x_0) > 0$ oder $f^{(n)}(x_0) < 0$ ist).
    Ist $n$ ungerade, so hat $f$ in $x_0$ einen Wendepunkt.
    #+end_korollar
    #+begin_proof latex
-   Ist $f$ $n$ -mal differenzierbar in $(a, b)$ und gilt die Bedingung, so folgt mit der Taylor-Entwicklung
+   Ist $f$ \(n\)-mal differenzierbar in $(a, b)$ und gilt die Bedingung, so folgt mit der Taylor-Entwicklung
    \[f(x) = \sum_{k = 0}^{n - 1} \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k + \frac{f^{(n)}(\xi)}{n!}(x - \xi)^n = f(x_0) + \frac{f^{(n)}(\xi)}{n!}(x - \xi)^n\]
    mit einem $\xi \in (a, b)$ zwischen $x$ und $x_0$. Die Funktion
    \[\Delta_n(x) := \frac{f(x) - f(x_0)}{(x - x_0)^n}, x \neq x_0\]
@@ -455,8 +455,8 @@
    \[\Delta_n(x) \to \frac{f^{(n)}(x_0)}{n!}\]
    Folglich kann die Funktion $\Delta_n$ zu einer auf $(a, b)$ stetigen Funktion fortgesetzt werden. Für diese gilt
    \[f(x) - f(x_0) = \Delta_n(x)(x - x_0)^n, \Delta_n(x_0) = \frac{f^{(n)}(x_0)}{n!}\]
-   Falls $\Delta_n(x_0) > 0$, existiert wegen der Stetigkeit von $\Delta_n$ eine $\eps$ -Umgebung, $\eps > 0$,
-   von $x_0$, in der $\Delta_n > 0$. Auf dieser $\eps$ -Umgebung gilt daher für gerades $n$:
+   Falls $\Delta_n(x_0) > 0$, existiert wegen der Stetigkeit von $\Delta_n$ eine \(\eps\)-Umgebung, $\eps > 0$,
+   von $x_0$, in der $\Delta_n > 0$. Auf dieser \(\eps\)-Umgebung gilt daher für gerades $n$:
    \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \implies f(x) > f(x_0)\]
    $\implies f(x_0)$ ist ein lokales Minimum. Analog argumentieren wir für $\Delta_n(x_0) < 0$.
    Für ungerades $n$ dagegen \[f(x) - f(x_0) = \underbrace{\Delta_n(x)}_{> 0}(x - x_0)^n \begin{cases} > 0 & x > x_0 \\ < 0 & x < x_0 \end{cases}\]
