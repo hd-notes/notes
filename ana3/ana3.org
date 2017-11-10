@@ -337,7 +337,7 @@
   #+begin_defn latex
   EIne Funktion $μ^{\ast}: \mathcal{P}(X) \to [0, ∞]$ ist ein äußeres Maß auf $X$, falls für alle $(A_k)_{k ∈ ℕ} ⊂ \mathcal{P}(X)$ die folgenden Eigenschaften erfüllt sind:
   1. $μ^{\ast}(\emptyset) = 0$
-  2. $μ^{\ast}(A_1) \leq μ(A_2)$, falls $A_1 ⊂ A_2$ \hfill (Monotonie)
+  2. $μ^{\ast}(A_1) \leq μ^{\ast}(A_2)$, falls $A_1 ⊂ A_2$ \hfill (Monotonie)
   3. $\displaystyle{μ^{\ast}(\bigcup_{k ∈ ℕ} A_k) \leq \sum_{k ∈ ℕ} μ^{\ast}(A_k)}$ \hfill (\(σ\)-Subadditivität)
   #+end_defn
   #+begin_thm latex
@@ -621,7 +621,7 @@
    #+end_thm
    #+begin_proof latex
    Wir setzen $g_k := \inf_{j \geq k} f_j$, also
-   \[g_k \nearrow \lim_{j \to ∞} \inf f_j\]
+   \[g_k \nearrow \liminf_{j \to ∞} f_j\]
    Weiterhin $g_k \leq f_k ∀ k ∈ ℕ$
    \[⇒ ∫_A g_k \d μ \leq ∫_A f_k \d μ\]
    Übergang zum $\liminf$
@@ -629,4 +629,96 @@
    ⇒ \liminf ∫ g_k \d μ &= \lim_{k \to ∞} ∫ g_k \d μ = ∫_A \lim_{k \to ∞} g_k \d μ \\
    &= ∫_A \liminf_{k \to ∞} f_k \d μ
    \end{align*}
+   #+end_proof
+   #+begin_remark latex
+   Im Allgemeinen können wir keine Gleichheit erwarten. Zum Beispiel ist für $f_x := χ_{(k,k + 1)}, k ∈ ℕ$ einerseits $f_k(x) \to 0$ punktweise,
+   andererseits
+   \[∫_ℝ f_k \d x = 1, f_k = k χ_{(0,\frac{1}{k})} \text{ und } f_k = \frac{1}{k} χ_{(0,k)}\]
+   #+end_remark
+   #+begin_defn latex
+   Sei $(X, Σ, μ)$ ein Maßraum, $A ∈ Σ$ und $f:(X, Σ) \to (ℝ, \mathcal{B})$ messbar. Ist
+   \[∫_A f^{\pm} \d μ < ∞\]
+   so nennen wir $f$ integrierbar über $A$ und wir setzen
+   \[∫A f \d μ = ∫_A f^{+} \d μ - ∫_A f^{-} \d μ ∈ ℝ\]
+   Die Menge der über $A$ integrierbaren Funktionen bezeichnen wir mit $\mathcal{L}^1(A,μ)$
+   #+end_defn
+   #+begin_lemma latex
+   Unter den Bedingungen der Defininiton ist das Integral linear und es erfüllt sämtlich Eigenschaften von Lemma 1.39.
+   Eine	Funktion ist genau dann integrierbar, wenn ihr Betrag integrierbar ist. Darüber hinaus gilt für integrierbare Funktionen $f,g: X \to ℝ$
+   \[\abs{∫_A f \d μ} \leq ∫_A \abs{f} \d μ \quad\text{und}\quad ∫_A \abs{f + g} \d μ \leq ∫_A \abs{f} \d μ + ∫_A \abs{g} \d μ\]
+   #+end_lemma
+   #+begin_proof latex
+   Die Linearität und die Eigenschaften aus dem Lemma 1.39 wird dem geneigten Leser überlassen. Setze $φ := ∫_A f \d μ$, dann ist
+   \[\abs{φ} = (\sgn φ) φ = ∫_A (\sgn φ) f \d μ \leq ∫_A \abs{f} \d μ\]
+   Die Dreiecksungleichung folgt aus $\abs{f + g} \leq \abs{f} + \abs{g}$ und der Linearität des Integrals.
+   #+end_proof
+   #+begin_lemma latex
+   Sei $(X, Σ, μ)$ ein Maßraum, $f: X \to ℝ$ messbar.
+   1. $∫_X \abs{f} \d μ = 0 ⇔ f(x) = 0$ für \(μ\)-fast alle $x ∈ X$
+   2. Ist $f$ außerdem integrierbar oder nicht negativ  und $A ∈ Σ$ so gilt
+	  \[μ(A) = 0 ⇒ ∫_A f \d μ = 0\]
+   #+end_lemma
+   #+begin_proof latex
+   Übungen.
+   #+end_proof
+   #+begin_lemma latex
+   Sei $(X, Σ, μ)$ ein Maßraum, $A ∈ Σ, (f_k)_{k ∈ ℕ}$ eine Folge aus messbaren Funktionen mit $f_k: X \to ℝ ∀ k ∈ ℕ$ und $g: X \to ℝ$ integrierbar, dann gilt
+   \begin{align*}
+   ∫_A \liminf_{k \to ∞} f_k \d μ &\leq \liminf_{k ∈ ∞} ∫_A f_k \d μ \quad\text{falls } g \leq f_k ∀ k ∈ ℕ \\
+   \limsup_{k \to ∞} f_k \d μ &\leq ∫_A \limsup_{k ∈ ∞} f_k \d μ \quad\text{falls } f_k \leq g ∀ k ∈ ℕ \\
+   \end{align*}
+   #+end_lemma
+   #+begin_proof latex
+   Man wende für die erste Ungleichung das Fatou-Lemma auf $f_k - g$ an und subtrahiere $∫_A g \d μ$ auf beiden Seiten. Die zweite Ungleichung folgt mit $\liminf(-f_k) = - \limsup f_k$.
+   #+end_proof
+   #+ATTR_LATEX: :options [Satz von der dominierten Konvergenz]
+   #+begin_thm latex
+   Sie $(X, Σ, μ)$ ein Maßraum, $A ∈ Σ, (f_k)$ ein Folge messbarer Funktionen von $X$ nach $ℝ$, die punktweise fast überall gegen ein $f: X \to ℝ$ konvergiere.
+   (Punktweise fast überall bedeutet: $f_k(x) \to f(x)$ für \(μ\)-fast alle von $X$).
+   Gibt es eine Majorante, dah heißt eine integrierbare Funktion $g: X \to ℝ$ mit $\sup_{k ∈ ℕ} \abs{f_k} \leq g$ so ist auch $f$ integrierbar und wir erhalten
+   \[∫_A f_k \d μ \xrightarrow{k \to ∞} ∫_A f \d μ\]
+   #+end_thm
+   #+begin_proof latex
+   Nach Vorraussetzung ist $-g \leq f_k \leq g$ für alle $k ∈ ℕ$ und folglich erhalten wir mit dem erweiterten Fatou-Lemma
+   \[∫_A f = ∫A \liminf_{k \to ∞} f_k \d μ \leq \liminf_{k \to ∞} ∫_a f_k \d μ \leq \limsup_{k \to ∞} ∫_A f_k \leq ∫_A \limsup_{k \to ∞} f_k \d μ = ∫_A f \d μ\]
+   #+end_proof
+   #+begin_remark latex
+   Für stetige und Lebesgue-integrierbare Funktionen auf reellen Intervallen stimmen Riemann- und Lebesgue-Integrierbarkeit überein. Ist $f$ stetig auf einem kompakten Intervall, so ist $f$
+   beschränkt und messbar, also Lebesgue-Integrierbar. \\
+   Allgemeiner ist jede beschränkte, messbare Funktion auf einem kompakten Intervall genau dann Riemann-integrierar, wenn die Menge ihrer Unstetigkeiten eine Lebesgue-Nullmenge ist.
+   In diesem Fall stimmen die beiden Integralbegriffe überein. Diese Aussage gilt nicht für verallgemeinerte Intervalle.
+   #+end_remark
+   #+begin_ex latex
+   \[∫_0^∞ \frac{\sin(x)}{x}\d x\]
+   existiert als Riemann-Integral
+   \[\lim_{R \to ∞} ∫_0^R \frac{\sin(x)}{x} \d x\]
+   andererseits
+   \[∫_0^∞ \abs{\frac{\sin(x)}{x}} \d x = ∞\]
+   also keine Lebesgue-Integrierbarkeit.
+   #+end_ex
+** Produktmaße
+   Notation: Für Messräume $(X_1, Σ_1),(X_2,Σ_2)$ bezeichnen wir die \(σ\)-A-gebra, die alle "Rechtecke" der $A_1 × A_2$ mit $A_1 ∈ Σ_1, A_2 ∈ Σ_2$ enthält mit $Σ_1 \otimes Σ_2$.
+   #+begin_lemma latex
+   Für Messräume $(X_1, Σ_1), (X_1, Σ_2)$ und $A ∈ Σ_1 \otimes Σ_2$ liegen die Schnitte
+   \begin{align*}
+   A_1(x_2) &:= \{x_1 ∈ X_1 \mid (x_1, x_2) ∈ A\} \\
+   A_2(x_1) &:= \{x_2 ∈ X_2 \mid (x_1, x_2) ∈ A\}
+   \end{align*}
+   in $Σ_1$	beziehungsweise $Σ_2$
+   #+end_lemma
+   #+begin_proof latex
+   Setze $S := \{A ∈ Σ_1 \otimes Σ_2 \mid A_1(x_2) ∈ Σ_1\}$. Natürlich gilt $A_1 × A_2 ∈ S$ für
+   alle $A_1 ∈ Σ_1, A_2 ∈ Σ_2$. Isofern genügt es zu zeigen, dass $S$ eine \(σ\)-Algebra bildet. In der Tat ist $X_1 × X_2 ∈ S$ und für $A ∈ S$ ist
+   \[(A^C)_1 (x_2) = \{x_1 ∈ X_1 \mid (x_1, x_2) ∈ A^C\} = \{x_1 ∈ X_1 \mid (x_1, x_2) ∈ A\}^C = (A_1(x_2))^C ∈ Σ_1\]
+   Für $(A_k)_{k ∈ ℕ} ⊂ S$ haben wir
+   \[(\bigcup_{k ∈ ℕ} A_k)_1 (x_2) = \{x_1 ∈ X_1 \mid (x_1, x_2) ∈ \bigcup_{k ∈ ℕ} A_k\} = \bigcup_{k ∈ ℕ} \{x_1 ∈ X_1 \mid (x_1, x_2) ∈ A_k\} = \bigcup_{k ∈ ℕ} (A_k)_1(x_2) ∈ Σ_1\]
+   Für $A_2(x_1)$ argumentiert man analog.
+   #+end_proof
+   #+begin_korollar latex
+   Seien $(X_1, Σ_2), (X_2, Σ_2)$ Messräume und sei $f:(X_1 × X_2, Σ_1 \otimes Σ_2) \to (ℝ, \mathcal{B})$ messbar. Dann ist auch $x_1 ↦ f(x_1, x_2)$ für jedes $x_2 ∈ X_2$ auf $X_1$ messbar und
+   entsprechend $x_2 ↦ f(x_1, x_2)$ für jedes $x_1 ∈ X_1$ auf $X_2$
+   #+end_korollar
+   #+begin_proof latex
+   Für $B ∈ \mathcal{B}$ und $x_2 ∈ X_2$ ist $f^{-1}(·,x_2)(B) ∈ Σ_1$, denn für $A = f^{-1}(B), A ∈ Σ_1 \otimes Σ_2$ ist
+   \[f^{-1}(·,x_2)(B) = \{x_1 ∈ X_1 \mid f(x_1, x_2) ∈ B\} = \{x_1 ∈ X_1 \mid (x_1, x_2) ∈ A\} = A_1(x_2)\]
    #+end_proof

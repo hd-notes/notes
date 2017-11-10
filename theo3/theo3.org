@@ -16,8 +16,10 @@
 #+LATEX_HEADER:	\renewcommand*{\partheadendvskip}{%
 #+LATEX_HEADER:	\end{center}\vfill\newpage
 #+LATEX_HEADER:	}
+#+LATEX_HEADER: \makeatletter
 #+LATEX_HEADER:	\let\oldpart\part
-#+LATEX_HEADER: \renewcommand{\part}[1]{\oldpart{#1}\setcounter{section}{0}}
+#+LATEX_HEADER: \renewcommand{\part}{\setcounter{section}{0}\oldpart}
+#+LATEX_HEADER: \makeatother
 #+LATEX_HEADER:	\setlength{\cftsecnumwidth}{2em}
 
 # Klausurzulassung: 60% der Punkte der Übungsaufgaben
@@ -633,4 +635,102 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   \intertext{$\v π$ ist oft abhängig von dem externen Feld (da das externe Feld die Moleküle ausrichtet), dann gilt:}
   \v π &= ϰ \v E, \quad ϰ: \text{ Suszeptibilität} \\
   \v D &= ε \v E, ε = 1 + 4π ϰ
+  \end{align*}
+\setcounter{part}{23}
+\part{orthogonale Funktionensysteme}
+* orthogonale Funktionensysteme
+  Satz von Funktionen $\{u_1, \dots, u_n(x)\}$. Für komplexe Funktionen definiert
+  \[\angl{u_i,u_j} = ∫_A^b \d x u_i(x) u_j^{\ast}(x) = A_i \underarrow[δ_{ij}]{Orthogonalitätsrelation $A_i = 1 ⇒$ orthonormal.}\]
+  ein Skalarprodukt.(symmetrisch, bilinear und positiv definit). Norm von $u_i(x):$
+  \[∫_a^b \d x u_i(x) u_i^{\ast}(x) = A_i\]
+  $⇒$ normalisiere $u_i$:
+  \[u_i'(x) = \frac{u(x)}{\sqrt{∫_a^b \d x u_i(x) u_i^{\ast}(x)}}\]
+  Bilden die orthonomalen Funktionen eine Basis?
+  \begin{align*}
+  g(x) &\overset{?}{=} \sum_{i}^{n} g_i u_i(x) \\
+  0 &\leq Δn = ∫_a^b \d x \abs{g(x) - \sum_{i}^{n} g_i u_i(x)}^2 \\
+  &= ∫_a^b \d x g(x) g^{\ast}(x) - ∫_a^b \d x g(x) \sum_{i} g_i^{\ast} u_i^{\ast}(x) - ∫_a^b \d x \sum_{i} g_i u_i(x) g^{\ast}(x) + ∫_a^b \d x \sum_{ij} g_i u_i(x) g_j^{\ast} u_j^{\ast} \\
+  &= ∫_a^b \d x g(x) g^{\ast}(x) - \sum_{i} g_i^{\ast} ∫_a^b \d x g(x) u_i^{\ast}(x) - \sum_{i} g_i ∫_a^b \d x u_i(x) g^{\ast}(x) + \sum_{ij} g_i g_j^{\ast} ∫_a^b \d x u_i(x) u_j^{\ast} \\
+  \intertext{Minimierung von $Δn$:}
+  \pp{Δ}{g_i} &\overset{!}{=} 0 = g_i^{\ast} - ∫_a^b \d x g^{\ast}(x) u_i(x) \\
+  \pp{Δ}{g_i^{\ast}} &= g_i - ∫_a^b \d x g(x) u_i^{\ast}(x) \\
+  ⇒ g_i &= ∫_a^b \d x g(x) u_i^{\ast}(x) \\
+  \intertext{Minimum:}
+  Δ &= ∫_a^b \d x g(x) g^{\ast}(x) - \sum_{i} g_i g_i^{\ast} \\
+  \intertext{Konvergenz im quadratischen Mittel}
+  \lim_{n \to ∞} Δ_n \big|_{min} &= \lim_{n \to ∞}  ∫_a^b \abs{\sum_{i}^n g_i u_i(x) - g(x)}^2 = 0 \\
+  \intertext{Konvergenz gesichert, falls: (Parseval-Reltation/Vollständigkeitsrelation)}
+  ∫_a^b \d x g(x) g^{\ast}(x) &= \sum_{i} g_i g_i^{\ast} \\
+  \intertext{Bessel-Ungleichnug:}
+  ∫_a^b \d x g(x) g^{\ast}(x) &\geq \sum_{i} g_i g_i^{\ast} \\
+  \intertext{denn:}
+  0 &\leq ∫_a^b \d x \abs{g(x) - \sum_{i}^{n} g_i u_i(x)}^2 \\
+  &= ∫_a^b \d x g(x) g^{\ast}(x) - 2 \sum_{i} g_i ∫_a^b \d x g^{\ast}(x) u_i(x) + \sum_{ij} g_i g_j^{\ast} \underbrace{∫_a^b \d x u_i(x) u_i^{\ast}(x)}_{=δ_{ij}} \\
+  \intertext{Im Fall $Δn = 0$ für $n \to ∞$:}
+  ∫_a^b \d x g(x) g^{\ast}(x) &= \sum_{i}^{n} g_i g_i^{\ast} \\
+  \intertext{Was bedeutet das für das Basissystem?}
+  \sum_{i} g_i g_i^{\ast} &= \sum_{i} ∫ \d x g(x) u_i^{\ast}(x) ∫ \d x' g^{\ast}(x') u_i(x') \\
+  &= ∫_a^b \d x g(x) ∫_a^b \d x' g^{\ast}(x') \underbrace{\sum_{i} u_i^{\ast}(x) u_i(x')}_{δ_D(x - x')} \overset{?}{=} ∫_a^b \d x g(x) g^{\ast}(x) \\
+  &= ∫_a^b g(x) ∫_a^b g^{\ast}(x') δ_D(x - x') = ∫_a^b g(x) g^{\ast}(x) \\
+  \intertext{dies gilt, wenn: (Anforderung an das Basissystem)}
+  \sum_{i} u_i^{\ast}(x) u_i(x') &= δ_D(x - x')
+  \end{align*}
+  Basissystem muss in der Lage sein, die \(δ_D\)-Funktion darzustellen. \\
+  Cauchy-Schwarz-Ungleichung $\sim$ Eindeutigkeit der Linearzerlegung:
+  \begin{align*}
+  \big{\string(}\sum_{i} a_i b_i\big{\string)}^2 &\leq \sum_{i} a_i^2 \sum_{j} b_j^2 \\
+  ⇒ \abs*{\v a \v b}^2 &\leq \v a^2 \v b^2 \\
+  \abs*{\v a - λ \v b}^2 &= 0 \quad\text{kann nur } \begin{cases} \text{1 Lösung haben} & \text{falls } \v a \parallel \v b \\ \text{keine Lösung haben} & \text{falls } \v a \not\parallel \v b \end{cases} \\
+  &= \v a^2 - 2 λ \v a \v b + λ^2 \v b^2 \\
+  ⇒ λ_{\pm} &= 2 \v a \v b \pm \sqrt{4\string(\v a \v b\string)^2 - 4 \v a^2 \v b^2} \\
+  \sqrt{4\string(\v a \v b\string)^2 - 4 \v a^2 \v b^2} &\begin{cases} \text{hat eine Lösung} & \text{falls } \string(\v a \v b\string)^2 = \v a^2 \v b^2 \\ \text{hat keine Lösung} & \text{falls } \string(\v a \v b\string)^2 < \v a^2 \v b^2\end{cases} \\
+  \intertext{falls $\string(\v a \v b\string)^2 = \v a^2 \v b^2$ ist, sind $\v a \parallel \v b$ und $\v a$ lässt sich durch den Vektor $\v b$ darstellen:}
+  \bigg{\string(}∫ \d x g(x) h^{\ast}(x)\bigg{\string)}^2 &\leq ∫_a^b \d x g(x) g^{\ast}(x) ∫_a^b \d x h(x) h^{\ast}(x) \\
+  ∫_a^b \d x(g(x) - λ h(x))^2 &= ∫_a^b \d x g(x) g^{\ast}(x) - 2λ ∫_a^b \d x g(x) h^{\ast}(x) + λ^2 ∫_a^b \d x h(x) h^{\ast}(x) \\
+  \intertext{dann gleiches Argument}
+  \end{align*}
+  Mögliche Wahlen von orthonormalen Systemen: \\
+  $\Laplace ϕ = \const ϕ$ \\
+  Sinus (ungerade) und Konsinus (gerade):
+  \begin{align*}
+  \frac{1}{π} ∫_{-π}^π \d x \sin(n x) \sin(m x) &= δ_{mn} \\
+  \frac{1}{π} ∫_{-π}^π \d x \cos(n x) \cos(m x) &= δ_{mn} \\
+  \intertext{$⇒$ orthonormale Funktionen:}
+  u_m(x) &= \frac{1}{\sqrt{π}} \sin(m x) \\
+  v_m(x) &= \frac{1}{\sqrt{π}} \sin(m x) \\
+  \intertext{Man erhält die Fourier-Reihe}
+  ⇒ g(x) = \frac{a_0}{2} + \sum_{m = 1} a_m \cos(m x) + b_m \sin(m x) \\
+  a_m &= \frac{1}{π} ∫_{-π}^{+π} \d x' g(x') \cos(m x') \\
+  b_m &= \frac{1}{π} ∫_{-π}^{+π} \d x' g(x') \sin(m x') \\
+  \intertext{Kontinuumslimit}
+  ∫_{-∞}^∞ \d x \exp(i k x) \exp(i k' x)^{\ast} &= δ_D(k - k')
+  δ_D(x - x') &= \sum_{i} u_i(x) u_i^{\ast}(x') \\
+  \text{Wellen } \sum_{n} \cos(n x) \cos(n x') &= δ_D(x - x') \\
+  \sum_{n} \exp(i n x) \exp(i n x') &= δ_D(x - x')
+  \end{align*}
+* Kugelflächenfunktionen (spherical harmonics)
+  $\Laplace$ in Kugelkoordinaten (in 3D), Laplace-Gleichung: $\Laplace ϕ = 0$:
+  \begin{align*}
+  \Laplace ϕ &= \frac{1}{r^2} \pp{}{r}(r^2 \pp{}{r}ϕ) + \frac{1}{r^2 \sin^2 θ} \pp{}{θ}(\sin θ \pp{ϕ}{θ}) + \frac{1}{r^2 \sin^2 θ} \frac{\partial^2}{\partial φ^2} ϕ \\
+  \intertext{Separation der Variablen}
+  ϕ(r, θ, φ) &= R(r) · Y(θ,φ) \\
+  \intertext{Radialteil:}
+  \dd{}{r}(r^2 \dd{R}{r}) &= λ R \\
+  \intertext{Lösungen:}
+  R(r) &= A r^λ + B r^{-(1 + λ)} \\
+  \intertext{Winkelteil:}
+  \frac{1}{\sin θ} \pp{}{θ} (\sin θ \pp{Y}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2} Y &= λ Y \\
+  \intertext{Separation:}
+  Y(θ,φ) &= P(θ) Q(φ) \\
+  \intertext{in \(φ\)-Richtung, harmonische Differentialgleichung:}
+  \frac{\d^2 Q}{\d θ^2} &= - m^2 Q \\
+  \intertext{in \(θ\)-Richtung}
+  λ \sin^2 θ + \frac{\sin θ}{P} \dd{}{θ}(\sin θ \dd{P}{θ}) &= m^2 \\
+  \intertext{Wellen in \(φ\)-Richtung, Periodizität $2π$}
+  ⇒ Q(φ) &\sim \exp( \pm i m φ)
+  \intertext{$λ$ muss gleich $l(l + 1)$ mit $l \geq \abs{m}$ sein, damit Lösungen für $P$ existieren. Substitution $μ = \cos θ \to$ Legendre-Differentialgleichung}
+  ⇒ 0 &= (1 - μ^2) \frac{\d^2}{\d μ^2} P_{lm}(μ) - 2 \dd{}{μ} P_{lm}(μ) + (l(l + 1) - \frac{m^2}{1 - μ^2}) P_{lm}(μ) \\
+  \intertext{Zusammensetzen der Winkellösung}
+  Y_{lm}(θ,φ) &= \sqrt{\frac{2l + 1}{4π}} \sqrt{\frac{(l - m)!}{(l + m)!}} \underbrace{P_{lm} \cos(θ)}_{= P} \underbrace{\exp(-imφ)}_{= Q} \\
+  \text{mit } ∫ \d Ω Y_{lm} Y_{l'm'} &= δ_{ll'} δ_{mm'}
   \end{align*}
