@@ -1655,4 +1655,173 @@ x ↦ x + Δ x \qquad &= \sum_{n = -∞}^{∞} \underbrace{g_n e^{inG Δ x}}_{g_
    \end{align*}
    #+end_ex
 
+#   \begin{tikzpicture}
+#   \wigglecircle{2.5}{.5}{20}{0}{0}
+#   \draw[->] (2,2) node[every text node part/.style={align=center},right] {Zustand\\$\ket{ψ}$}  -- ++(-.9,-.9);
+#   \filldraw (1,1) circle (1pt);
+#   #################### Bloch Kugel an Stelle x
+#   \begin{align*}
+#   \braket{x | ψ} &= f(x) = e^{i k x} \\
+#   (\underarrow[v]{\ket{ψ}}, \underarrow[w]{\ket{φ}}) &↦ \uarrow[\text{Zahl}]{\braket{ψ | φ}} \\
+#   \ket{ψ} &= a \ket{\uparrow} + b \ket{\downarrow} \\
+#   \intertext{Bloch Kugel:}
+#   ###################
+#   \ket{ψ_{WP}} &= ∫_{-∞}^{+∞} \tilde ψ(k) \ket{k} \d k \\
+#   \intertext{$φ, ψ$ Basiselemente $⇒$ orthonormal:}
+#   \braket{ψ|φ} &= 0 \\
+#   \braket{φ|φ} &= \braket{ψ|ψ} = 1 \\
+#   \end{align*}
+   Ortsdarstellung von $\ket{ψ_{WP}}$ \\
+   "Ortskoordinate": $\braket{x | ψ_{WP}}$
+   \begin{align*}
+   \braket{x | ψ_{WP}} &= ψ_{WP}(x) = \bra{x} ∫_{-∞}^{+∞} \tilde ψ(k) \ket{k} \d k = ∫_{-∞}^{+∞} \tilde ψ(k) \underbrace{\braket{x|k}}_{\frac{1}{\sqrt{2π}} e^{i k x}} \d k \\
+   &= \frac{1}{\sqrt{2π}} ∫_{-∞}^{+∞} \tilde ψ(k) e^{i k x} \d k \\
+   \end{align*}
+   Ortswellenfunktion $ψ(x)$ ist eine Darstellung von $\ket{ψ_{WP}} \estimates$ Ortsdarstellung. \medskip
+   $\tilde ψ(k)$ ist eine andere Darstellung vom Zustand $\ket{ψ_{WP}} \estimates$ Impulsdarstellung. \medskip
+   Das Ergebnis von Rechnungen hängt nicht ab von der Darstellung / Basis ab $\to$ die Berechnung kann in einer
+   bestimmten Basis sehr einfach sein. Zum Beispiel: Wellenpaket Dynamik ist in der Impulsdarstellung einfach.
+** Observable (beobachtbare Gröhen) und Operatoren
+   Observablen können mit Hilfe von Operatoren extrahiert werden.
+   #+ATTR_LATEX: :options [Impuls-Operator]
+   #+begin_ex latex
+   $\hat p$. Das $\hat{}$ symbolisiert Operator $\ket{ψ} ↦ \ket{ψ'}$. \\
+   Eingenschaften:
+   \[\hat p \underarrow[\ket{k}]{Ortsdarstelung\\de Broglie Welle} = \overarrow[\hbar k]{Zahl\\entspricht Impuls [$\si{\kilogram\meter\per\second}$]} \ket{k}\]
+   $\ket{k}$ ist ein /spezieller/ Zustand, weil der Impulsoperator den Zustand nicht "ändert", sondern nur mit einer Zahl multipliziert.
+   Daraus Folgt, dass der Zustand $\ket{k}$ einem wohldefiniereten/scharfen Impuls entspricht. $\ket{k}$ nennt man Impuls-Eigenzustand. \medskip
+   Erwartungswert: Was erwarten man für den Mittelwert des Impulses?
+   \[\overarrow[\bar p]{Mittelwert} = ∫_{-∞}^{+∞} p \underarrow[P(p)]{Probability\\Wahrscheinlichkeit} \d p = \hbar ∫_{-∞}^{+∞} k' \overbrace{\abs{\tilde ψ(k')}^2}^{\mathclap{\text{Für de Broglie Welle: }\tilde ψ(k) = δ(k' - k)}} \d k' = \hbar k\]
+   In Dirac Notation
+   \[\braket{k | \hat p | k} = \braket{k | \hbar k | k} = \hbar k \underbrace{\braket{k | k}}_{\mathbb{1}}\]
+   Erwartungswert / Mittelwert ist $\v p = \hbar k ⇒$ zwei Möglichkeiten:
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \foreach \x in {0,8}{
+    \draw[->] (\x, 0) -- ++(7, 0) node[below] {\#Experimente};
+    \draw[->] (\x, 0) -- ++(0, 3) node[above left] {Impuls};
+    \draw (\x, 1.5) -- ++(7,0);
+    \foreach \c in {1,...,5}{
+      \draw (\x + 0.5*\c, .1) -- ++(0,-.2) node[below] {$\c$};
+      }
+  }
+  \node[left] at (0,1.5) {$\bar p = \braket{\hat p}$};
+  \foreach \x in {1,...,13}{
+    \node[cross out, draw=black, minimum size=4pt,inner sep=0pt,outer sep=0pt] at (.5*\x, 1.5 + .3*rand) {};
+    }
+  \foreach \x in {1,...,13}{
+    \node[cross out, draw=black, minimum size=4pt,inner sep=0pt,outer sep=0pt] at (.5*\x + 8, 1.5) {};
+  }
+  \node[red] at (3.5,-1) {Unscharf};
+  \node[green] at (11.5,-1) {Scharf};
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Obwohl beide	den gleichen Mittelwert	können diese Messreihen nicht das gleiche System beschreiben. $\to$ Berechne Varianz:
+   \[\VAR(p) = \braket{\v p^2} - \braket{\hat p}^2\]
+   Für Impulseigenzustand $\ket{k}$ \\
+   Notation $\braket{\hat p} := \braket{ψ|\hat p| ψ}$ \\
+   Jetzt speziell $\ket{ψ} = \ket{k}$
+   \begin{align*}
+   \braket{\hat p^2} &= \braket{k | \hat p \hat p | k} = \braket{k | \hat p \hbar | k} = \hbar k \braket{k | \hat p | k} = \hbar^2 k^2 \underbrace{\braket{k | k}}_{\mathbb{1}} \\
+   \braket{\hat p}^2 &= (\braket{k | \hat p | k})^2 = (\hbar k)^2 \underbrace{\braket{k | k}}_{\mathbb{1}} \\
+   \Aboxed{\VAR(p) &= 0 \qquad \text{für Zustand } \ket{k}}
+   \end{align*}
+   Alle Messungen ergeben exakt den gleichen Wert; es gibt keine Streuung der Messwerte $⇒$ Impuls scharf / wohldefiniert.
+   #+end_ex
+   #+begin_remark latex
+   Dieser Zustand existiert nur in beliebig guter Nährung!
+   #+end_remark
+   \medskip Darstellung von Operatoren
+   \[\hat p \ket{k} = \hbar k \ket{k}\]
+   Darstellung des Impulsoperator in Impulsdarstellung $\estimates$ einfach nur Zahl. \medskip
+   Wie sieht das in Ortsdarstellung aus?
+   \begin{align*}
+   \ket{k} &\mapsto e^{i k x} \ket{x} \\
+   \hat p \ket{k} = \hbar k \ket{k} &\mapsto \hbar k (e^{i k x} \ket{x}) = -i \hbar \pp{}{x} (e^{i k x} \ket{x}) \\
+   \intertext{Impulsoperator in Ortsdarstellung:}
+   \hat p \underarrow[:=]{Ortsdarstellung} - i \hbar \pp{}{x} \\
+   \end{align*}
+   #+begin_remark latex
+   \begin{align*}
+   \braket{x | \hat p | ψ} = ∫ \d p \braket{x|p} \braket{p|\hat p | ψ} \\
+   &= \frac{1}{\sqrt{2π}} ∫ \d k e^{i k x} \hbar k ψ(k) = -i \hbar \pp{}{x} ψ(x)
+   \end{align*}
+   #+end_remark
+   Impuls Erwartungswert für allgemeine Wellenfunktion $ψ(x)$ für ein Teilchen:
+   \begin{align*}
+   \overarrow[\bar p_x]{Bezüglich einem $ket{ψ}$} &= \braket{ψ | \hat p_x | ψ}	\underarrow[=]{Ortsdarstellung} ∫_{-∞}^{+∞} ψ^{\ast}(x) (\frac{\hbar}{i} \pp{}{x}) ψ(x) \d x \\
+   &= ∫_{-∞}^{+∞} \underbrace{\frac{1}{\sqrt{2π}} ∫ \tilde ψ^{\ast}(k') e^{i k' x} \d k'}_{ψ^{\ast}(x)} \frac{\hbar}{i} \pp{}{x} \underbrace{\frac{1}{\sqrt{2π}} ∫ \tilde ψ(k'') e^{i k'' x} \d k''}_{ψ(x)} \\
+   &= ∫_{-∞}^{+∞}\d k' ∫_{-∞}^{+∞} \d k'' \tilde ψ^{\ast}(k') \tilde ψ(k'') \hbar k'' \underbrace{\frac{1}{2π} ∫ e^{i(k'' - k') x} \d x}_{δ(k'' - k')} \\
+   &= ∫_{-∞}^{+∞} \d k' \underbrace{\tilde ψ^{\ast}(k') \tilde ψ(k')}_{P(k')} \hbar k' = ∫_{-∞}^{+∞} \d k' (\hbar k') P(k') = \braket{\hbar k}
+   \end{align*}
+   \medskip
+   Gleichzeitige Messung von 2 Observablen $\hat A$ und $\hat B$. Wenn es einen Eigenzustand zu $\hat A$ und $\hat B$ gibt, dann ist das möglich:
+   \begin{align*}
+   \hat A \ket{a, b} &= a \ket{a, b} \\
+   \hat B \ket{a, b} &= b \ket{a, b} \\
+   \intertext{aber auch:}
+   \hat A \hat B \ket{a, b} &= \hat A b \ket{a, b} = a b \ket{a, b} \\
+   \hat B \hat B \ket{a, b} &= \hat B a \ket{a, b} = b a \ket{a, b} \\
+   \hat A \hat B - \hat B \hat A \ket{a, b} &= 0 \\
+   \intertext{$\hat A \hat B - \hat B \hat A$ Kommutator, Kurzschreibweise:}
+   [A, B] &= 0
+   \end{align*}
+   Für vertauschende Operatoren gibt es gemeinsame scharfe Observablen. \\
+   Heisenberg Unschärfe für Ort und Impuls
+   \begin{align*}
+   [\hat x, \hat p] &= \hat x \hat p - \hat p \hat x \\
+   &= [x (-i \hbar) \pp{}{x} + i \hbar \pp{}{x} x] \\
+   &= [-i \hbar x \pp{}{x} + i \hbar + i \hbar x \pp{}{x}] \\
+   &= i \hbar
+   \end{align*}
+   $⇒$ Operatoren vertauschen nicht! $⇒$ es gibt keinen Eigenzustand zu $\hat x$ und $\hat p$! \\
+   Theo-Quanten: $[A, B] = i\const$
+   \[⇒ \VAR(A) VAR(B) \geq \frac{\const}{2}\]
+   Energie-Operator für ein freies Teilchen, klassisch:
+   \[\text{klassisch: } H = \frac{p^2}{2m} \to \text{Quantenmechanik: } \hat H = \frac{{\hat p}^2}{2m}\]
+   Erwartungswert der Energie für Impuls Eigenzustand:
+   \[\hat H \ket{k} = \frac{1}{2m} \hat p \hat p \ket{k} = \frac{\hbar^2 k^2}{2m} \ket{k}\]
+   Auch hier: Zustand unverändert, die ZAhl gibt die Energie [$\si{\joule}$] an. \medskip
+   $\hat H$ in Ortsdarstellung:
+   \[\frac{\hat p \hat p}{2m} \xrightarrow{\text{Ortsdarstellung}} \frac{1}{2m}(- i \hbar \pp{}{x} - i \hbar \pp{}{x}) = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}\]
+   Energie Eigenzustand:
+   \[\hat E \ket{ψ_E} = E \ket{ψ_E}\]
+   #+ATTR_LATEX: :options [de Broglie Welle]
+   #+begin_ex latex
+   \[e^{i(k_{dB} x - ω_{dB} t)} \underarrow[↦]{$\hat E = i\hbar \pp{}{t}$} \underbrace{\hbar ω_{dB}}_{\mathclap{\text{Energie}}} e^{i k_{dB} x - ω_{dB} t}\]
+   #+end_ex
+   Allgemein auch gültig, das heißt Energie Eigenzustände haben die einfache Zeitentwicklung
+   \[e^{-i \frac{E}{\hbar}t}\]
+   Deshalb sind diese Zustände eine gute Basis, um Zeitdynamik zu beschreiben. \medskip
+   Generell: Jede klassische Größe
+   \[a = f(\v x, \v p) ⇒ \hat a = f(\v x, \v p)\]
+   (zum Beispiel Drehimpuls: $\v L = \v x × \v p$). Es gibt aber auch nicht-klassische Größen (zum Bespiel Spin).
+** Die Schrödiger Gleichung (nicht relativistische Quantenmechanik)
+   Gesamtenergie: $E$
+   \[E = E_{\text{kin}} + E_{\text{pot}}\]
+   Allgemeiner: $H$ Hamiltonfunktion
+   \[H = \frac{\v p^2}{2m} + V(\v x) ↦ \hat H = \frac{{\hat{\v p}}^2}{2m} + V(\hat{\v x})\]
+   \begin{ibox}{}
+   Operator	Gleichung:
+   \[i \hbar \pp{}{t} \ket{ψ} = \hat H \ket{ψ}\]
+   \end{ibox}
+   Darstellung im Ortsraum:
+   \begin{align*}
+   \hat{\v x} &↦ \v x \\
+   \hat{\v p} &↦ -i \hbar \cvec{\pp{}{x}; \pp{}{y}; \pp{}{z}} = -i \hbar \v ∇ \\
+   {\hat{\v p}}^2 &= - \hbar^2 \v ∇^2 = - \hbar^2 \Laplace
+   \end{align*}
+   \begin{important}
+   Schrödinger Gleichung für nicht-relativischische Quantenmechanik:
+   \[i\hbar \pp{}{t} ψ(\v x, t) = - \frac{\hbar^2}{2m} \Laplace ψ(\v x, t) + V(\v x) ψ(\v x, t)\]
+   \end{important}
+   Damit wird die Dynamik in allgemeinen Potentialen beschrieben. Die Zeitdynamik kann als Interferenz verstanden werden, wenn
+   man die Energie-Eigenzustände $\hat H \ket{ψ_E} = E \ket{ψ_E}$ als Basis verwendet $\to$	Zeitabhängigkeit kommt nur durch die verschiedene Phasenentwicklung der Energie-Eigenzustände zustande.
+
 \printbibliography

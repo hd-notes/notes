@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \usepackage{polyglossia}
 #+LATEX_HEADER: \setdefaultlanguage[spelling=new, babelshorthands=true]{german}
 # #+LATEX_HEADER: \usepackage[german]{translator}
-#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket}
+#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket, bbm}
 #+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{textcase}
@@ -171,6 +171,7 @@
 #+LATEX_HEADER: \DeclareMathOperator{\coker}{coker}
 #+LATEX_HEADER: \DeclareMathOperator{\argmax}{argmax}
 #+LATEX_HEADER: \DeclareMathOperator{\cc}{c.c.}
+#+LATEX_HEADER: \DeclareMathOperator{\VAR}{VAR}
 
 
 #+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}
@@ -322,3 +323,4 @@
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \catcode`(=\active
 #+LATEX_HEADER: \catcode`)=\active
+#+LATEX_HEADER:	\let\mathbb\mathbbm
