@@ -729,8 +729,116 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   \intertext{Wellen in \(φ\)-Richtung, Periodizität $2π$}
   ⇒ Q(φ) &\sim \exp( \pm i m φ)
   \intertext{$λ$ muss gleich $l(l + 1)$ mit $l \geq \abs{m}$ sein, damit Lösungen für $P$ existieren. Substitution $μ = \cos θ \to$ Legendre-Differentialgleichung}
-  ⇒ 0 &= (1 - μ^2) \frac{\d^2}{\d μ^2} P_{lm}(μ) - 2 \dd{}{μ} P_{lm}(μ) + (l(l + 1) - \frac{m^2}{1 - μ^2}) P_{lm}(μ) \\
+  ⇒ 0 &= (1 - μ^2) \frac{\d^2}{\d μ^2} \underbrace{P_{lm}(μ)}_{\mathclap{\text{assoziirte Legendre Polynome}}} - 2 \dd{}{μ} P_{lm}(μ) + (l(l + 1) - \frac{m^2}{1 - μ^2}) P_{lm}(μ) \\
   \intertext{Zusammensetzen der Winkellösung}
   Y_{lm}(θ,φ) &= \sqrt{\frac{2l + 1}{4π}} \sqrt{\frac{(l - m)!}{(l + m)!}} \underbrace{P_{lm} \cos(θ)}_{= P} \underbrace{\exp(-imφ)}_{= Q} \\
   \text{mit } ∫ \d Ω Y_{lm} Y_{l'm'} &= δ_{ll'} δ_{mm'}
+  \end{align*}
+\setcounter{part}{1}
+\part{Fortsetzung Potentialtheorie}
+\setcounter{section}{9}
+* Helmholtz-Zerlegung
+  $\v X = - ∇ ψ + \rot \v Q \sim$ allgemeine Darstellung eines Vektorfelds $\v X$, mit
+  \begin{align*}
+  ψ &= \frac{1}{4π} ∫_V \d^3 r' \frac{∇' X(\v r')}{\abs{\v r - \v r'}} - \frac{1}{4π} ∫_{\partial V} \d \v S' \frac{\v X(\v r')}{\abs{\v r - \v r'}} \\
+  \v Q &= \frac{1}{4π} ∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}} - \frac{1}{4π} ∫_{\partial V} \d \v S' × \frac{\v X(\v r')}{\abs{\v r - \v r'}} \\
+  \v X(\v r) &= ∫_V \d^3 r' \v X(\v r') δ_D(\v r - \v r') = \frac{1}{4π} ∫_V \d^3 r' \v X(\v r') \Laplace \frac{1}{\abs{\v r - \v r'}} = - \frac{1}{4π} \Laplace ∫_V \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}} \\
+  \Laplace \v A &= ∇(∇ · \v A) - ∇ × (∇ × \v A) \\
+  \to \v X(\v r) &= -\frac{1}{4π} (∇ \Div ∫ \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}} + \rot \rot ∫ \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}}) \\
+  &= - \frac{1}{4π}(∇ ∫ \d^3 r' \v X(\v r') ∇ \frac{1}{\abs{\v r - \v r'}} + \rot ∫ \d^3 r' \v X(\v r') × ∇ \frac{1}{\abs{\v r - \v r'}})
+  \intertext{Umschreiben von $∇$: $∇ \frac{1}{\abs{\v r - \v r'}} = \frac{\v r - \v r'}{\abs{\v r - \v r'}^3} = - ∇' \frac{1}{\abs{\v r - \v r'}}$}
+  \to \v X(\v r) &= - \frac{1}{4π}(- ∇ ∫_V \d^3 r' \v X(\v r') ∇' \frac{1}{\abs{\v r - \v r'}} - \rot ∫_V \d^3 r' \v X(\v r') × ∇' \frac{1}{\abs{\v r - \v r'}}) \\
+  \Div (φ \v X) &= ∇ φ \v X + φ \Div \v X \\
+  \rot (φ \v X) &= ∇ φ × \v X + φ \rot \v X = - \v X × ∇ φ + φ \rot \v X \\
+  \to \v X(\v r) &= - \frac{1}{4π}\vast{\string(}-∇(- ∫ \d^3 r' ∇' \frac{\v X(\v r)}{\abs{\v r - \v r'}} - ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}}) \\
+  &\hphantom{{}={}} {+} \rot(∫_V \d^3 r' ∇' × \frac{\v X(\v r')}{\abs{\v r - \v r'}} - ∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}})\vast{\string)} \\
+  &= - \frac{1}{4π}\vast{\string(}-∇\Bigg{\string(}- \underbrace{∫_{\partial V} \d \v S' \frac{\v X(\v r')}{\abs{\v r - \v r'}}}_{\to 0} - ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}}\Bigg{\string)} \\
+  &\hphantom{{}={}} {+} \rot\Bigg{\string(}\underbrace{∫_{\partial V} \d \v S' × \frac{\v X(\v r')}{\abs{\v r - \v r'}}}_{\to 0} - ∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}}\Bigg{\string)}\vast{\string)} \\
+  \intertext{Die Terme gehen gegen null, weil die Felder in der Elektrodynamik schnell genug abfallen (Fläche $\sim r^2$, Feld $\sim 1/r^2$, mit $1/\abs{\v r - \v r'}$: $\sim 1/r^3$)}
+  &= -∇\underbrace{(\frac{1}{4π}  + ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}} - ∫_{\partial V} \d \v S' \frac{\v X(\v r')}{\abs{\v r - \v r'}})}_{= ψ(\v r)}
+  \hphantom{{}={}} + \rot \underbrace{(\frac{1}{4π}∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}} - ∫_{\partial V} \d \v S' × \frac{\v X(\v r')}{\abs{\v r - \v r'}})}_{= \v Q(\v r)} \\
+  \to \v X &= - ∇ ψ + \rot \v Q \\
+  \intertext{Maxwell-Gleichung: statisch, also $\partial_{ct}(\dots) = 0$}
+  \Div \v E &= 4 π ρ, \Div \v B = 0, \rot \v E = - \partial_{ct} \v E = 0, \rot \v B = \partial_{ct} \v E + \frac{4π}{2} \v j \\
+  \v E(\v r) &= \frac{1}{4π}\Bigg{\string(}-∇ ∫_V \d^3 r' \frac{\overbrace{\Div' \v E'}^{= 4πρ}}{\abs{\v r - \v r'}} + \rot ∫_V \d^3 r' \frac{\overbrace{\rot' \v E'}^{= 0}}{\abs{\v r -\v r'}}\Bigg{\string)} = - ∇ ∫_V \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} = - ∇ ϕ \\
+  \v B(\v r) &= \frac{1}{4π}\Bigg{\string(}-∇ ∫_V \d^3 r' \frac{\overbrace{\Div' \v B'}^{= 0}}{\abs{\v r - \v r'}} + \rot ∫_V \d^3 r' \frac{\overbrace{\rot' \v B'}^{= \frac{4π}{c} \v j}}{\abs{\v r -\v r'}}\Bigg{\string)} = \rot	\frac{1}{c} ∫ \d^3 r' \frac{\v j(\v r')}{\abs{\v r - \v r'}} \\
+  \to \v E &= - ∇ ϕ \\
+  \v B &= \rot \v A \\
+  \intertext{mit Vektorpotenzial $\v A$:}
+  \v A &= \frac{1}{c} ∫ \d^3 r' \frac{\v j(\v r')}{\abs{\v r - \v r'}}
+  \end{align*}
+* Biot-Savart-Gesetz
+  \begin{align*}
+  \v B &= \rot \v A = \frac{1}{c} ∫_V \d^3 r' \v j(\v r') × \frac{\v r - \v r'}{\abs{\v r - \v r'}^3}
+  \intertext{und gleichzeitig}
+  \Laplace \v A &= -\frac{4π}{c} \v j \\
+  \rot \v B &= \rot \rot \v A = ∇ \Div \v A - \Laplace \v A = \frac{4π}{c} \v j
+  \end{align*}
+  Wenn $\Div \v A = 0$, dann komplette Symmetrie zu $ϕ$:
+  \begin{align*}
+  \Laplace \v A &= - \frac{4π}{c} \v j \\
+  \Laplace ϕ &= - 4π ρ \\
+  \v A &= \frac{1}{c} ∫ \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}} \\
+  ϕ &= ∫ \d^3 r' \frac{ρ'}{\abs{\v r - \v r'}}
+  \end{align*}
+  $⇒$ Eichtransformation: $\v B$ ändert sich nicht, falls $\v A \to \v A + ∇ χ, χ \sim$ Eichfeld}
+  \begin{align*}
+  \v B &= \rot \v A \to \rot(\v A + ∇ χ) = \rot(\v A + \rot ∇ χ) = \rot \v A = \v B \\
+  \intertext{Wahl von $χ$:}
+  \Div \v A &\to \Div(\v A + ∇ χ) = \Div \v A + \Laplace χ \overset{=}{!} 0 \\
+  \intertext{$⇒$ wähle $\Laplace χ = -\Div \v A$}
+  \rot \v B &= \rot \rot \v A = ∇ \Div \v A - \Laplace \v A = ∇ \Div (\v A + ∇ χ) - \Laplace (\v A + ∇ χ) \\
+  &= ∇ \Div \v A + ∇ \Div ∇ χ - \Laplace \v A - ∇ \Laplace χ = ∇ \Div \v A - \Laplace \v A \underarrow[=]{$\Laplace ∇ χ = ∇ \Laplace χ$} \rot \v B
+  \end{align*}
+  $\Div \v A =0$ Coulomb-Eichung
+  \begin{align*}
+  \Div \v A &= \Div \frac{1}{c} ∫ \d^3 r' \frac{\v j}{\abs{\v r - \v r'}} = \frac{1}{c} ∫_V \d^3 r' \v j' ∇ \frac{1}{\abs{\v r - \v r'}} = - \frac{1}{c} ∫_V \d^3 r' \v j' ∇' \frac{1}{\v r - \v r'} \\
+  &= \frac{1}{c} ∫_V \d^3 r' \frac{∇' \v j'}{\abs{\v r - \v r'}} = - \frac{1}{c} ∫_V \d^3 r' \frac{\partial_t ρ'}{\abs{\v r - \v r'}} = - \frac{1}{c} \partial_t ∫_V \d^3 r' \frac{ρ'}{\abs{\v r - \v r'}} = - \partial_{ct} ϕ
+  \end{align*}
+  zeitabhängige Maxwell-Gleichungen
+  \begin{align*}
+  \Div \v E &= 4π ρ \\
+  \Div \v B &= 0 \\
+  \rot \v E &= -\partial_{ct} \v B \\
+  \rot \v B &= \partial_{ct} \v E + \frac{4π}{c}\v j \\
+  \v E &= - ∇ \underbrace{\frac{1}{4π} ∫_V \d^3 r' \frac{\Div' \v E'}{\abs{\v r - \v r'}}}_{= ϕ} + \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\overbrace{\rot' \v E'}^{-\partial_{ct} \v B'}}{\abs{\v r - \v r'}} \\
+  \v B &= - ∇ \frac{1}{4π} ∫_V \d^3 r' \frac{\overbrace{\Div' \v B'}^{= 0}}{\abs{\v r - \v r'}} + \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\overbrace{\rot' \v B'}^{\mathclap{= \partial_{ct} \v E' + \frac{4π}{c} \v j'}}}{\abs{\v r - \v r'}} \\
+  \v B &= \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\rot ' \rot ' \v A}{\abs{\v r - \v r'}} \underarrow[=]{$\rot' \rot' \v A = ∇' \Div' \v A' - \Laplace' \v A' = - \Laplace' \v A'$, mit Coulomb-Eichung} - \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\Laplace' \v A'}{\abs{\v r - \v r'}}	\overarrow[=]{$\Laplace \v A = - \frac{4π}{c} \v j$} \rot \frac{1}{c} ∫_V \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}} = \rot \v A \\
+  \v E &= - ∇ ϕ + \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\rot' \v E'}{\abs{\v r - \v r'}} = - ∇ ϕ - \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\partial_{ct} \v B}{\abs{\v r - \v r'}} \\
+  &= - ∇ ϕ - \frac{\partial_{ct}}{4π} ∫_V \d^3 r' \frac{\rot \v B'}{\abs{\v r - \v r'}} \underarrow[=]{$∫ \d^3 r' \frac{\rot \v B'}{\abs{\v r - \v r'}} = - ∫ \d^3 r' \v B' × ∇ \frac{1}{\abs{\v r - \v r'}} = ∫ \d^3 r' \frac{\rot' \v B'}{\abs{\v r - \v r'}}$} - ∇ ϕ - \frac{\partial_{ct}}{4π} ∫ \d^3 r' \frac{\rot' \v B'}{\abs{\v r - \v r'}} \\
+  &= - ∇ ϕ - \frac{\partial_{ct}}{4π} ∫_V \d^3 r' \frac{\rot' \rot' \v A'}{\abs{\v r - \v r'}} = - ∇ ϕ - \partial_{ct} \underbrace{∫_V \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}}}_{= \v A} = - ∇ ϕ - \partial_{ct} \v A \\
+  \to \v B &= \rot \v A \\
+  \v E &= - ∇ ϕ - \partial_{ct} \v A
+  \end{align*}
+* Potenziale und Eichung $\to$ allgemeiner Form
+  \begin{align*}
+  \Div \v B = 0 &\to \v B = \rot \v A \\
+  \rot \v E + \partial_{ct} \v B = 0 &\to \rot(\v E + \partial_{ct} \v A) = 0 \to \v E + \partial_{ct} \v A = - ∇ ϕ \\
+  \end{align*}
+  \begin{gather*}
+  \left.
+  \begin{matrix}
+  \Div \v B = 0 \\
+  \rot \v E + \partial_{ct} \v B = 0 \\
+  \end{matrix}\right\} \text{homogene Maxwell Gleichungen} \\
+  \left.
+  \begin{matrix}
+  \Div \v E = 4πρ \\
+  \rot \v B - \partial_{ct} \v E = \frac{4π}{c} \v j
+  \end{matrix}\right\} \text{inhomogene Maxwell Gleichungen} \\
+  \end{gather*}
+  \begin{align*}
+  \Div \v E &= \Div(- ∇ ϕ - \partial_{ct} \v A) = - \Laplace ϕ - \partial_{ct} \Div \v A = 4π ρ \\
+  \rot \v B &= \rot \rot \v A = \partial_{ct}(-∇ ϕ - \partial_{ct} \v A) + \frac{4π}{c} \v j \\
+  ⇒ \Laplace ϕ + \partial_{ct} \Div \v A &= - 4π ρ \\
+  \Laplace \v A - \partial_{ct}^2 \v A &= - \frac{4π}{c} \v j + ∇(\Div \v A + \partial_{ct} ϕ) \\
+  \v B &= \rot \v A \text{ unverändert, falls } \v A \to \v A + ∇ χ \text{, weil } \rot ∇ χ = 0 \\
+  \v E &= - ∇ ϕ - \partial_{ct} \v A \text{ impliziert, dass } ϕ \to ϕ - \partial_{ct} χ \\
+  \v E &\to - ∇ (ϕ - \partial_{ct} χ) - \partial_{ct}(\v A + ∇ χ) = -∇ϕ - \partial_{ct} \v A = \v E
+  \end{align*}
+  Wahl der Eichung zum Entkoppeln der Gleichungen
+  \begin{align*}
+  \Div \v A + \partial_{ct} ϕ &= 0 \tag{Lorenz-Eichung} \\
+  \Laplace ϕ - \partial_{ct}^2 ϕ &= - 4π ρ \\
+  \Laplace \v A - \partial_{ct}^2 A &= - \frac{4π}{c} \v j \\
   \end{align*}

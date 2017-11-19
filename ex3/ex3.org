@@ -1773,7 +1773,8 @@ x ↦ x + Δ x \qquad &= \sum_{n = -∞}^{∞} \underbrace{g_n e^{inG Δ x}}_{g_
    [A, B] &= 0
    \end{align*}
    Für vertauschende Operatoren gibt es gemeinsame scharfe Observablen. \\
-   Heisenberg Unschärfe für Ort und Impuls
+   Heisenberg Unschärfe für Ort und Impuls \\
+   Ortsdarstellung:
    \begin{align*}
    [\hat x, \hat p] &= \hat x \hat p - \hat p \hat x \\
    &= [x (-i \hbar) \pp{}{x} + i \hbar \pp{}{x} x] \\
@@ -1781,47 +1782,172 @@ x ↦ x + Δ x \qquad &= \sum_{n = -∞}^{∞} \underbrace{g_n e^{inG Δ x}}_{g_
    &= i \hbar
    \end{align*}
    $⇒$ Operatoren vertauschen nicht! $⇒$ es gibt keinen Eigenzustand zu $\hat x$ und $\hat p$! \\
-   Theo-Quanten: $[A, B] = i\const$
+   Theoretische Quantenmechnik: $[A, B] = i\const$
    \[⇒ \VAR(A) VAR(B) \geq \frac{\const}{2}\]
-   Energie-Operator für ein freies Teilchen, klassisch:
+   Energie-Operator für ein freies Teilchen, klassisch: \\
+   Impulsdarstellung (in Impulsdarstellung: $\hat p \to p$):
    \[\text{klassisch: } H = \frac{p^2}{2m} \to \text{Quantenmechanik: } \hat H = \frac{{\hat p}^2}{2m}\]
    Erwartungswert der Energie für Impuls Eigenzustand:
-   \[\hat H \ket{k} = \frac{1}{2m} \hat p \hat p \ket{k} = \frac{\hbar^2 k^2}{2m} \ket{k}\]
-   Auch hier: Zustand unverändert, die ZAhl gibt die Energie [$\si{\joule}$] an. \medskip
+   \begin{align*}
+   \hat H \ket{k} &= \frac{1}{2m} \hat p \hat p \ket{k} = \frac{\hbar^2 k^2}{2m} \ket{k} \\
+   \hbar H &= \braket{k | \hat H | k} = \frac{\hbar^2 k^2}{2m} \braket{k | k} = \hbar ω_{dB} \\
+   [\hat p^2, \hat p] &= \hat p^3 - \hat p^3 = 0
+   \end{align*}
+   Auch hier: Zustand unverändert, die Zahl gibt die Energie [$\si{\joule}$] an.
+   $⇒$ $\ket{k} ist Energie Eigenzustand$
+   \[\hat E \ket{ψ_E} = E \ket{ψ_E}\]
    $\hat H$ in Ortsdarstellung:
    \[\frac{\hat p \hat p}{2m} \xrightarrow{\text{Ortsdarstellung}} \frac{1}{2m}(- i \hbar \pp{}{x} - i \hbar \pp{}{x}) = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}\]
-   Energie Eigenzustand:
-   \[\hat E \ket{ψ_E} = E \ket{ψ_E}\]
    #+ATTR_LATEX: :options [de Broglie Welle]
    #+begin_ex latex
    \[e^{i(k_{dB} x - ω_{dB} t)} \underarrow[↦]{$\hat E = i\hbar \pp{}{t}$} \underbrace{\hbar ω_{dB}}_{\mathclap{\text{Energie}}} e^{i k_{dB} x - ω_{dB} t}\]
+   $⇒$ damit der Energie-Operator die Energie "liefert" muss er als
+   \[\hat E = i \hbar \pp{}{t}\]
+   definiert sein.
    #+end_ex
    Allgemein auch gültig, das heißt Energie Eigenzustände haben die einfache Zeitentwicklung
    \[e^{-i \frac{E}{\hbar}t}\]
    Deshalb sind diese Zustände eine gute Basis, um Zeitdynamik zu beschreiben. \medskip
    Generell: Jede klassische Größe
    \[a = f(\v x, \v p) ⇒ \hat a = f(\v x, \v p)\]
-   (zum Beispiel Drehimpuls: $\v L = \v x × \v p$). Es gibt aber auch nicht-klassische Größen (zum Bespiel Spin).
+   zum Beispiel Drehimpuls: $\v L = \v x × \v p$
+   \[H = κ \v L^2 \to \hat H = κ(\hat{\v x} × \hat{\v p})^2, \qquad [L_x, L_y] = i L_z\]
+   Es gibt aber auch nicht-klassische Größen (zum Bespiel Spin).
 ** Die Schrödiger Gleichung (nicht relativistische Quantenmechanik)
-   Gesamtenergie: $E$
+   Klassische Gesamtenergie: $E$
    \[E = E_{\text{kin}} + E_{\text{pot}}\]
    Allgemeiner: $H$ Hamiltonfunktion
    \[H = \frac{\v p^2}{2m} + V(\v x) ↦ \hat H = \frac{{\hat{\v p}}^2}{2m} + V(\hat{\v x})\]
-   \begin{ibox}{}
+   \begin{ibox}{Axiom der nicht-relativisitischen Quantenmechanik}
    Operator	Gleichung:
    \[i \hbar \pp{}{t} \ket{ψ} = \hat H \ket{ψ}\]
    \end{ibox}
-   Darstellung im Ortsraum:
+   Darstellung im Ortsraum: $\hat x \ket{x} = x \ket{x}$
    \begin{align*}
    \hat{\v x} &↦ \v x \\
    \hat{\v p} &↦ -i \hbar \cvec{\pp{}{x}; \pp{}{y}; \pp{}{z}} = -i \hbar \v ∇ \\
    {\hat{\v p}}^2 &= - \hbar^2 \v ∇^2 = - \hbar^2 \Laplace
    \end{align*}
-   \begin{important}
-   Schrödinger Gleichung für nicht-relativischische Quantenmechanik:
-   \[i\hbar \pp{}{t} ψ(\v x, t) = - \frac{\hbar^2}{2m} \Laplace ψ(\v x, t) + V(\v x) ψ(\v x, t)\]
-   \end{important}
+   \begin{ibox}{Schrödinger Gleichung für nicht-relativischische Quantenmechanik}
+   \begin{center}
+   $\displaystyle{i\hbar \pp{}{t} ψ(\v x, t) = - \frac{\hbar^2}{2m} \Laplace ψ(\v x, t) + V(\v x) ψ(\v x, t)}$ \\
+   \end{center}
+   Randbedingung:
+   \[∫ \abs{ψ}^2 \d V = 1\]
+   \end{ibox}
    Damit wird die Dynamik in allgemeinen Potentialen beschrieben. Die Zeitdynamik kann als Interferenz verstanden werden, wenn
    man die Energie-Eigenzustände $\hat H \ket{ψ_E} = E \ket{ψ_E}$ als Basis verwendet $\to$	Zeitabhängigkeit kommt nur durch die verschiedene Phasenentwicklung der Energie-Eigenzustände zustande.
-
+   
+   #+ATTR_LATEX: :options [Drei Zustandsystem]
+   #+begin_ex latex
+   $\ket{a}, \ket{b}, \ket{c}$ Basiszustände, Eigenschaften:
+   \begin{align*}
+   \braket{a | b} &= \braket{ a | c} = \braket{b | c} = 0 \tag{Orthonormalität} \\
+   \braket{a | a} &= \braket{b | b} = \braket{c | c} = 1 \tag{Normierung}
+   \end{align*}
+   Operatoren:
+   \begin{align*}
+   \hat A \ket{a} &= a \ket{a} \\
+   \hat B \ket{b} &= b \ket{b} \\
+   \hat C \ket{c} &= c \ket{c} \\
+   \end{align*}
+   Mögliche Definitionen:
+   \begin{align*}
+   \hat A &= a \ket{a} \bra{a} + \ket{b} \bra{c} + \ket{c} \bra b \\
+   \hat B &= b \ket{b} \bra{b} \\
+   \hat C &= c \ket{c} \bra{c} \\
+   \end{align*} \\
+   Anwenden auf die Basiszustände:
+   \begin{align*}
+   \hat A \ket{a} &= (a \ket{a} \bra{a} + \ket{b} \bra{c} + \ket{c} \bra b) \ket{a} = a \ket{a} \\
+   \hat A \ket{b} &= (a \ket{a} \bra{a} + \ket{b} \bra{c} + \ket{c} \bra b) \ket{b} = \ket{c} \\
+   \hat B \ket{b} &= (b\ket{b}\bra{b}) \ket{b} = b \ket{b} \\
+   \intertext{Erwartungswert für $a$:}
+   \braket{\hat A}_{\ket{a}} &= \braket{a | \hat A | a} = \braket{a | a | a} = a \braket{a | a} = a \\
+   \VAR(A)_{\ket{a}} &= \braket{\hat A^2} - \braket{\hat A}^2 = \braket{a | \hat A a | a} - a^2 = 0 \\
+   \braket{b | \hat A | b} &= \braket{b | c} = 0  \\
+   \VAR(A)_{\ket{b}} &= \braket{b | \hat A^2 | b} - \braket{b | \hat A | b}^2 = 1 \\
+   \end{align*}
+   \[[\hat A, \hat B] = \hat A \hat B - \hat B \hat A = b \{\ket{c} \bra{b} + \ket{b} \bra{c}\} \neq 0\]
+   #+end_ex
+* Beispiele für Einteilchen Quantenmechanik
+** Streuung von freien Teilchen an einer Potentialstufe
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}
+   \draw[->] (0,0) -- ++(7,0) node[below] {$x$};
+   \draw[->] (0,0) -- ++(0,3) node[left] {$E$};
+   \draw (7,1.5) -- ++(-4,0) -- ++(0,-1.6) node[below] {$0$};
+   \draw[<->] (5.5, 1.5) -- ++(0,-1.5) node[midway, right] {$V_0$};
+   \draw[->] (.5, 1) -- ++(2,0) node[midway,above] {$E_{kin} < V_0$};
+   \node[below] at (1.5, 0) {Bereich $\text{I}$};
+   \node[below] at (5, 0) {Bereich $\text{II}$};
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Lösen Schrödinger Gleichung in *einer* Dimension in Ortsdarstellung: $\v x \to x$
+   \[\v x ↦ x: \qquad i \hbar \pp{}{t} ψ(x, t) = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ψ(x,t) + V(x) ψ(x, t)\]
+   Suchen Lösungen mit Separationsansatz
+   \[ψ(x, t) = e^{-i \frac{E}{\hbar}t} ϕ(x)\]
+   Warum: Die Zeitentwickung ist "`nur"' Rotation in komplexen Zahlenebene, dieser Zustand $\ket{ψ_E}$ in	Ortsdarstellung $ψ(x, t)$ ist Energie-Eigenzustand.
+   \begin{align*}
+     \hat E \ket{ψ_E} &= E \ket{ψ_E} \to i \hbar \pp{}{t} ψ(x, t) = i\hbar ϕ(x) (-i \frac{E}{\hbar} e^{i \frac{E}{\hbar}t}) = E e^{-i \frac{E}{\hbar}t} ϕ(x) = E ψ(x, t)\ \checkmark \\
+   E &= E_{\text{ges}} = E_{\text{kin}}^{\text{I}} \\
+   \intertext{Gleichung für $ϕ(x)$ folgt aus Einsetzen von $ψ(x, t)$ in Schrödinger Gleichung:}
+   E e^{-i \frac{E}{\hbar}t} ϕ(x) &= - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} e^{-i \frac{E}{\hbar}} ϕ(x) + V(x) e^{-i \frac{E}{\hbar}t} ϕ(x) \\
+   \intertext{Man erhält eine Differentialgeilchung zweiter Ordnung}
+   E ϕ(x) &= - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ϕ(x) + V(x) ϕ(x) \\
+   \end{align*}
+   Fall 1: $E_{\text{kin}} < V_0$, klassisch wird das Teilchen reflektiert
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}
+   \draw[->] (0,0) -- ++(7,0) node[below] {$x$};
+   \draw[->] (0,0) -- ++(0,3) node[left] {$E$};
+   \draw (7,1.5) -- ++(-4,0) -- ++(0,-1.6) node[below] {$x = 0$};
+   \draw[<->] (5.5, 1.5) -- ++(0,-1.5) node[midway, right] {$V_0$};
+   \draw[->] (.5, 1) -- ++(2,0) node[midway,above] {$E_{kin} < V_0$};
+   \node[below] at (1.5, 0) {Bereich $\text{I}$};
+   \node[below] at (5, 0) {Bereich $\text{II}$};
+   \end{tikzpicture}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   \end{center}
+   \text{Bereich I}:
+   \[V(x) = 0 ⇒ E ϕ_{\text{I}}(x) = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ϕ_{\text{I}}(x) \quad E = E_{\text{kin}} = \frac{\hbar^2 k^2}{2m}\]
+   kennen Lösung:
+   \[ϕ_{\text{I}}(x) = A e^{i k x} + B e^{- i k x}\]
+   Check:
+   \begin{align*}
+     - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ϕ_{\text{I}}(x) &= - \frac{\hbar^2}{2m} (A (-k^2) e^{i k x} + B (-k^2) e^{-ikx}) \\
+                                                                          &= \underbrace{\frac{\hbar^2 k^2}{2m}}_{E_{\text{kin}}^{\text{I}}} ϕ_{\text{I}}(x) = \hbar ω_{dB} ϕ_{\text{I}} ϕ_{\text{I}}(x) = E ϕ_{\text{I}}(x) \checkmark
+   \end{align*}
+   Man erhält die Superposition von zwei Wellen, eine in positive \(x\)-Richtung und eine in negative \(x\)-Richtung
+   \[ψ_{\text{I}} (x,t) = e^{-i \frac{E}{\hbar}t} ϕ(x) \underarrow[=]{$E = \frac{\hbar^2 k^2}{2m} = ω_{dB} \hbar$} A e^{i(k x - ω_{dB} t)} + B e^{i(-k x - ω_{dB} t)}\]
+   Bereich II:
+#   \begin{tikzpicture}
+#   \draw[->] (0,0) -- ++(7,0) node[below right] {$x$};
+#   \draw[->] (0,0) -- ++(0,3) node[above left] {$E$};
+#   \draw[patter = stripen] (7,1.5) -- ++(-4,0) -- ++(0,-1.6) node[below] {$0$};
+#   \draw[<->] (5.5, 1.5) -- ++(0,-1.5) node[midway, right] {$V_0$};
+#   \draw (-.1,1) node[left] {$E_{\text{kin}}$};
+#   \end{tikzpicture}
+   \[E ϕ_{\text{II}} (x) = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ϕ_{\text{II}}(x) + V_0 ϕ_{\text{II}}(x)\]
+   Allgemeine Lösung:
+   \[ϕ_{\text{II}}(x) = C e^{-α x} + D e^{α x} \quad\text{mit}\quad α^2 = \frac{2m}{\hbar^2}(V_0 - E)\]
+   Für den Fall $V_0 > E$ ist $α$ reell und, Kopffizient $D = 0$ macht $ϕ_{\text{II}}$ quadratintegrabel
+   \[∫_0^∞ \abs{ϕ}^2 \d x = 0\]
+   Bemerkung: Für $V_0 = 0 \to α$ imaginär, wie in Bereich I besprochen.
+   Die spezielle Lösung des Problems folgt aus Randbedingungen bei $x = 0$:
+   \[ψ_{\text{I}}(x = 0, t) = ψ_{\text{II}}(x = 0, t)\]
+   1. Die zeitliche Entwicklung ist für beide Bereiche gleich, weil Energie-Eigenzustand zur gleichen
+      Energie, rotieren gleich schnell in der komplexen Zahlebene.
+   2. Für die Räumlische Wellenfunktion muss gelten:
 \printbibliography

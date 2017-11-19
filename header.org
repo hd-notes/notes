@@ -324,3 +324,13 @@
 #+LATEX_HEADER: \catcode`(=\active
 #+LATEX_HEADER: \catcode`)=\active
 #+LATEX_HEADER:	\let\mathbb\mathbbm
+#+LATEX_HEADER:	\makeatletter
+#+LATEX_HEADER:	\newcommand{\vast}{\bBigg@{4}}
+#+LATEX_HEADER:	\newcommand{\Vast}{\bBigg@{5}}
+#+LATEX_HEADER:	\newcommand{\vastl}{\mathopen\vast}
+#+LATEX_HEADER:	\newcommand{\vastm}{\mathrel\vast}
+#+LATEX_HEADER:	\newcommand{\vastr}{\mathclose\vast}
+#+LATEX_HEADER:	\newcommand{\Vastl}{\mathopen\Vast}
+#+LATEX_HEADER:	\newcommand{\Vastm}{\mathrel\Vast}
+#+LATEX_HEADER:	\newcommand{\Vastr}{\mathclose\Vast}
+#+LATEX_HEADER:	\makeatother

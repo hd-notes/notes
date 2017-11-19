@@ -697,7 +697,7 @@
    also keine Lebesgue-Integrierbarkeit.
    #+end_ex
 ** Produktmaße
-   Notation: Für Messräume $(X_1, Σ_1),(X_2,Σ_2)$ bezeichnen wir die \(σ\)-A-gebra, die alle "Rechtecke" der $A_1 × A_2$ mit $A_1 ∈ Σ_1, A_2 ∈ Σ_2$ enthält mit $Σ_1 \otimes Σ_2$.
+   Notation: Für Messräume $(X_1, Σ_1),(X_2,Σ_2)$ bezeichnen wir die \(σ\)-Algebra, die alle "Rechtecke" der $A_1 × A_2$ mit $A_1 ∈ Σ_1, A_2 ∈ Σ_2$ enthält mit $Σ_1 \otimes Σ_2$.
    #+begin_lemma latex
    Für Messräume $(X_1, Σ_1), (X_1, Σ_2)$ und $A ∈ Σ_1 \otimes Σ_2$ liegen die Schnitte
    \begin{align*}
@@ -722,3 +722,216 @@
    Für $B ∈ \mathcal{B}$ und $x_2 ∈ X_2$ ist $f^{-1}(·,x_2)(B) ∈ Σ_1$, denn für $A = f^{-1}(B), A ∈ Σ_1 \otimes Σ_2$ ist
    \[f^{-1}(·,x_2)(B) = \{x_1 ∈ X_1 \mid f(x_1, x_2) ∈ B\} = \{x_1 ∈ X_1 \mid (x_1, x_2) ∈ A\} = A_1(x_2)\]
    #+end_proof
+   Ziel: Definition Produktmaß $μ_1 \otimes μ_2$ auf $Σ_1 \otimes Σ_2$ mit
+   \[(μ_1 \otimes μ_2)(A_1 × A_2) = μ_1(A_1) · μ_2(A_2) ∀ A_1 ∈ Σ_1, A_2 ∈ Σ_2\]
+   #+begin_thm latex
+   Sind $(X_1, Σ_1, μ_1), (X_2, Σ_2, μ_2)$ Maßräume mit \(σ\)-finiten Maßen und $A ∈ Σ_1 \otimes Σ_2$. Dann sind die Abbildungen
+   \begin{align*}
+   x_1 &↦ μ_2(A_2(x_1)) \\
+   x_2 &↦ μ_2(A_1(x_2)) \\
+   \end{align*}
+   messbar und
+   \[∫_{X_1} μ_2(A_2(x_1)) \d μ_1(x_1) = ∫_{X_2} μ_1(A_1(x_2)) \d μ_2(x_2)\]
+   #+end_thm
+   #+begin_proof latex
+   ohne Beweis
+   #+end_proof
+   #+begin_defn latex
+   Seien $(X_1, Σ_1, μ_1), (X_2, Σ_2, μ_2)$ Maßräume mit \(σ\)-finiten Maßen, für $A ∈ Σ_1 \otimes Σ_2$ setzen wir
+   \[(μ_1 \otimes μ_2)(A) := ∫_{X_1} \underbrace{μ_2(A_2(x_1)) \d μ_1(x_1)}_{∫_{X_2} χ_A(x_1, x_2) \d μ_2(x_2)} = ∫_{X_2} \underbrace{μ_1(A_1(x_2)) \d μ_2(x_2)}_{∫_{X_1} χ_A(x_1, x_2) \d μ_1(x_1)}\]
+   #+end_defn
+   #+begin_proof latex
+   \[χ_{A_1(x_2)}(x_1) = χ_A(x_1, x_2) = χ_{A_2(x_1)}(x_2)\]
+   #+end_proof
+   #+begin_lemma latex
+   Das Produktmaß ist für \(σ\)-finite Maße ebenfalls ein Maß und es ist eindeutig bezüglich
+   \[(μ_1 \otimes μ_2)(A_1 × A_2) = μ_1(A_1) · μ_2(A_2) ∀ A_1 ∈ Σ_1, A_2 ∈ Σ_2\]
+   #+end_lemma
+   #+begin_proof latex
+   - Eindeutigkeit aus Satz 1.23
+   - $(μ_1 \otimes μ_2)(\emptyset) = 0$ klar
+   - \(σ\)-Additivität folgt aus dem Satz über monotone Konvergenz
+   \begin{align*}
+   \string(μ_1 \otimes μ_2\string)(\bigdcup_{k = 1}^τ A_k) &:= ∫_{X_1} μ_2((\bigdcup_{k = 1}^τ)_2(x_1)) \d μ_1(x_1) \\
+   &= ∫_{X_1} μ_2(\bigdcup_{k = 1}^τ (A_k)_2(x_1)) \d μ_1(x_1) \\
+   &= ∫_{X_1} \sum_{k = 1}^{τ} μ_2((A_k)_2(x_1)) \d μ_1(x_1) = \sum_{k = 1}^{τ} (μ_1 \otimes μ_2)(A_k)
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [Fubini]
+   #+begin_thm latex
+   Seien $(X_1, Σ_1, μ_1), (X_2, Σ_2, μ_2)$ Maßräume mit \(σ\)-finiten Maßen und $f:(X_1 × X_2, Σ_1 \otimes Σ_2) \to (ℝ, \mathcal{B})$ messbar.
+   1. (Tonelli) Ist $f$ nicht-negativ, so sind
+	  \begin{align*}
+	  &∫_{X_2} f(·, x_2) \d μ_2(x_2) \\
+	  \text{und } &∫_{X_1} f(x_1, ·) \d μ_1(x_1)
+      \end{align*}
+	  als Funktion auf $X_1$ beziehungsweise $X_2$ messbar und es gilt
+	  \begin{align*}
+	  ∫_{X_1 × X_2} f(x_1, x_2) \d (μ_1 \otimes μ_2) (x_1, x_2) &= ∫_{X_1} (∫_{X_2} f(x_1, x_2) \d μ_2(x_2)) \d μ_1(x_1) \\
+	  &= ∫_{X_1}(∫_{X_1} f(x_1, x_2) \d μ_1(x_1)) \d μ_2(x_2)
+      \end{align*}
+   2. Allgemein ist $f ∈ \mathcal{L}(X_1 × X_2, μ_1 \otimes μ_2)$ äquivalent zu
+	  \begin{align*}
+	  ∫_{X_1} \abs{f(x_1, ·)} \d μ_1(x_1) & ∈ \mathcal{L}(X_2, μ_2) \\
+	  ∫_{X_2} \abs{f(·, x_2)} \d μ_2(x_2) & ∈ \mathcal{L}(X_1, μ_1) \\
+      \end{align*}
+	  und 1. gilt.
+   #+end_thm
+   #+begin_proof latex
+   Aufgrund deer Linearität bekommen wir für eine einfach Funktion
+   \[f = \sum_{j = 1}^{k} α_j χ_{A_j}, α_j \geq 0, A_j ∈ Σ_1 \otimes Σ_2, A_i ∩ A_j = \emptyset, X = \bigcup_{j = 1}^k A_j\]
+   \begin{align*}
+   ∫_{X_2} f(·, x_2) \d μ_2(x_2) &= \sum_{j = 1}^{k} α_j μ_2((A_j)_2(·)) \\
+   \intertext{Weiterhin,}
+   ∫_{X_1 × X_2} f(x_1, x_2) \d (μ_1 \otimes μ_2)(x_1, x_2) &= \sum_{j = 1}^{k} α_j ∫_{X_1 × X_2} χ_{A_j} (x_1, x_2) \d (μ_1 \otimes μ_2)(x_1, x_2) \\
+   &= \sum_{j = 1}^{k} α_j ∫_{X_1}(∫_{X_2} χ_{A_j}(x_1, x_2) \d μ_2(x_2)) \d μ_1(x_1) \\
+   &= ∫_{X_1} (∫_{X_2} f(x_1, x_2) \d μ_2(x_2)) \d μ_1(x_1) \\
+   \text{analog: } &= ∫_{X_2} ∫_{X_1} \dots
+   \end{align*}
+   Sei $(f_k)_{k ∈ ℕ} ⊂ S(X_1 × X_2, μ_1 \otimes μ_2)$ mit $0 \leq f_k \nearrow f$.
+   \begin{align*}
+   ⇒ ∫_{X_2} f_k(·, x_2) \d μ_2(x_2) &\leq ∫_{X_2} f(·,x_2) \d μ_2(x_2) ∀ k ∈ ℕ \\
+   \text{und } \lim_{k \to ∞} ∫_{X_2} f_k(·, x_2) \d μ_2(x_2) &\underarrow[=]{Beppo-Levi} ∫_{X_2} f(·, x_2) \d μ_2(x_2)
+   \end{align*}
+   Wir erhalten auch
+   \begin{align*}
+   \lim_{k \to ∞}  ∫_{X_1} ∫_{X_2} f_k(x_1, x_2) \d μ_2(x_2) \d μ_1(x_1) = ∫_{X_1} ∫_{X_2} f(x_1, x_2) \d μ_2(x_2) \d μ_1(x_1) \\
+   \intertext{Genauso mit $1$ und $2$ vertauscht, auch}
+   \lim_{k \to ∞} ∫_{X_1 × X_2} f_k(x_1, x_2) \d (μ_1 \otimes μ_2)(x_1, x_2) = ∫_{X_1 × X_2} f(x_1, x_2) \d (μ_1 \otimes μ_2)(x_1, x_2)
+   \end{align*}
+   Man erhält 2. aus 1. mit $f = f^{+}  - f^{-}$ und $\abs{f} = f^{+} + f^{-}$.
+   \[f ∈ \mathcal{L}^1 (X_1 × X_2) ⇔ ∫_{X_1 × X_2} \abs{f} \d (μ_1 \otimes μ_2) (x_1, x_2) < ∞\]
+   #+end_proof
+   #+begin_ex latex
+   \[X = ℝ^2, Σ = \mathcal{B}^2, f(x, y) = \frac{x - y}{(x + y)^3}\]
+   Wir betrachten das Riemann-Integral
+   \[∫_0^1 ∫_0^1 f(x, y) \d x \d y\]
+   Dazu
+   \begin{align*}
+   \dd{}{x}(\frac{x}{(x + y)^2}) &= \frac{1}{(x + y)^2} - 2 \frac{x}{(x + y)^3} = \frac{x - y}{(x + y)^3} \\
+   ⇒ ∫_0^1 ∫_0^1 f(x, y) \d x \d y &= ∫_0^1 \frac{1}{(1 + y)^2} \d y = - \frac{1}{2} \\
+   \intertext{aber}
+   ∫_0^1 ∫_0^1 f(x, y) \d y \d x = \frac{1}{2}
+   \end{align*}
+   Wäre $f ∈ \mathcal{L}^1 ([0, 1]^2)$, so folge aus Satz von Fubini die Integrierbarkeit
+   \[∫_{(0,1)} f(x_1, ·) \d λ(x_1), ∫_{(0,1)} f(·, x_2) \d λ(x_2)\]
+   $f$ auf $(0,1) × (0,1)$ stetig ist, erhalten wir Übereinstimmung von \(\mathcal{L}\)-Integral und Riemann-Integral und
+   \[∫_{X_2} ∫_{X^1} f \d x_1 \d x_2 = ∫_{X_1} ∫_{X_2} f \d x_2 \d x_1 \lightning\]
+   #+end_ex
+   #+begin_lemma latex
+   Seien $(X_1, Σ_1), (X_2, Σ_2)$ Messräume und $S_1 ⊂ Σ_1, S_2 ⊂ Σ_2$ mit $Σ_{X_1}(S_1) = Σ_1, Σ_{X_2}(S_2) = Σ_2$. Dann gilt
+   \[Σ_1 \otimes Σ_2 = Σ_{X_1 × X_2}(S_1 × S_2) =: Σ\]
+   wobei
+   \[S_1 × S_2 = \{A_1 × A_2 \mid A_1 ∈ S_1, A_2 ∈ S_2\}\]
+   #+end_lemma
+   #+begin_lemma latex
+   Gegeben sind $(X_j, Σ_j, μ_j), j = 1, 2, 3$ mit \(σ\)-finiten Maßen. Dann gilt
+   \begin{align*}
+   \string(Σ_1 \otimes Σ_2\string) \otimes Σ_3 &= Σ_1 \otimes (Σ_2 \otimes Σ_3) \\
+   \text{und } (μ_1 \otimes μ_2) \otimes μ_3 &= μ_1 \otimes (μ_2 \otimes μ_3)
+   \end{align*}
+   #+end_lemma
+   #+ATTR_LATEX: :options [Lebesgue-Maß]
+   #+begin_lemma latex
+   Das durch $λ^n := λ_1 \otimes \dots \otimes λ_n$ definierte Lebesgue-Maß auf $ℝ^n$ besitzt die Eigenschaften.
+   1. Durch die Werte auf der Menge $I$
+	  \[I = \bigtimes_{j = 1}^n I_j\]
+	  wobei $I_j$ Intervalle sind, ist es eindeutig definiert.
+   2. $∀ B ∈ \mathcal{B}^n$ gilt
+	  \[λ^n(B) = \inf \{\sum_{k ∈ ℕ} λ^n(A_k) \mid (A_k)_{k ∈ ℕ} ⊂ I, B ⊂ \bigcup_{k ∈ ℕ} A_k\}\]
+   3. $λ^n$ ist translationsinvariant und bis auf Normierung das einzige Borelmaß mit diesen Eigenschaften:
+   #+end_lemma
+   #+begin_remark latex
+   Produktmaß zweier vollständiger Maße	ist im Allgemeinen nicht vollständig. \\
+   \(A\)-nichtmessbar in $ℝ$, \(1\)-Nullmenge in $ℝ$ \\
+   $A × \{1\}$ ist eine	Teilmenge der Nullmenge $ℝ × \{1\}$
+   #+end_remark
+   #+ATTR_LATEX: :options [Cantormenge]
+   #+begin_ex latex
+   Wir behalten $I_0 = [0,1]$. Wir entfernen aus $I_0$ das mittleren offene Intervall $J_{1,1} = (1/3, 2/3)$. Wir bekommen
+   $I_{1,2} = [0, 1/3], I_{1,2} = [2/3, 1]$. Dann entfernen wir $(1/9,2/9)$ und $(7/9,8/9)$, usw. Induktiv erhalten wir die kompakte Intervalle $I_{n,k}$ $n ∈ ℕ, k = 1, \dots, 2^n$. Wir definieren
+   \[C_0 := I_0, C_n := \bigcup_{k = 1}^{2^n} I_k, C := \bigcap_{n = 0}^∞ C_n\]
+   $C$ heißt *Cantormenge*. Es  gilt
+   1. $C ⊂ [0,1]$ ist kompakt (und damit Borelmenge)
+   2. $λ^n(C) = 0$
+   3. $C$ ist gleichmächtig mit $ℝ$ (insbesondere überabzählbar)
+   #+end_ex
+   #+begin_proof latex
+   1. $C$ ist offenbar beschränkt und abgeschlossen (als Vereinigung abgeschlossener Mengen) $⇒ C$ kompakt
+   2. $C_n$ ist die Vereinigung von $2^n$ disjunkten Intervallen der Länge $3^{-n}$
+	  \[⇒ λ^n(C_n) = 2^n e^{-m} = (\frac{2}{3})^n\]
+	  Aus der Monotonie des Lebesguemaßen
+	  \[⇒ λ^n(C) \leq \lim_{n \to ∞} λ^n (C_n) = 0\]
+   #+end_proof
+   #+begin_korollar latex
+   Sei $n \geq 1$. Dann gibt es überabzählbare \(λ^n\)-Nullmengen in $ℝ^n$
+   #+end_korollar
+   #+begin_proof latex
+   Für $n > 1$ zeigt man leicht, dass die Menge $\{0\} × R^{n - 1} ⊂ ℝ^n$ eine überabzählbare Nullmenge ist. Für $n = 1 \to$ Cantormenge $C ⊂ ℝ$
+   #+end_proof
+   #+begin_remark latex
+   Das Lebesgque-Maß $λ^n$ ist vollständig.
+   #+end_remark
+** Transformation
+   #+ATTR_LATEX: :options [Bildmaß]
+   #+begin_lemma latex
+   Sei $(X, Σ_X), (Y,Σ_Y)$ Messräume, $f: X \to Y$ messbar. Ist $μ$ ein Maß auf $(X, Σ_X)$ so wird durch
+   \[(f \ast μ)(B) := μ(f^{-1}(B)), B ∈ Σ_Y, f^{-1}(B) := \{x ∈ X \mid f(x) ∈ B\}\]
+   ein Maß auf $Y$ definiert (Bildmaß von $μ$ bezüglich $f$). Es gilt $(f \ast μ)(B) = 0 ∀ B ∈ Σ_Y$ mit $B ∩ f(x) = \emptyset$
+   #+end_lemma
+   #+begin_proof latex
+   Es gilt $f \ast μ(\emptyset) = μ(f^{-1}(\emptyset)) = 0$, da $f^{-1}(\emptyset) = \emptyset$ und
+   \[(f \ast μ)(\bigdcup_{k ∈ ℕ} B_k = μ(f^{-1} \bigdcup_{k ∈ ℕ} B_k))\]
+   für $(B_k)_{k ∈ ℕ} ∈ Σ_Y$, paarweise disjunkte $⇒ f^{-1}(B_k) =: A_k$ ebenfalls eine Folge paarweise disjunkter Mengenu und
+
+   \[(f \ast μ)(\bigdcup_{k ∈ ℕ} B_k) = μ(\bigdcup_{k ∈ ℕ} f^{-1}(B_k)) = \sum_{k ∈ ℕ} μ(f^{-1}(B_k)) = \sum_{k ∈ ℕ} (f \ast μ)(B_k)\]
+   Ist $B ∈ Σ_Y$ mit $B ∩ f(x) = \emptyset$
+   \[⇒ (f \ast μ)(B) = μ(f^{-1}(B)) = μ(\emptyset) = 0\]
+   #+end_proof
+   #+begin_thm latex
+   Sei $(X, Σ, μ)$ ein Maßraum, $Y$ topologischer Raum. $f: (X, Σ) \to (Y, \mathcal{B}(Y)), g:(Y, \mathcal{B}(Y)) \to (ℝ, \mathcal{B}(ℝ))$ messbar.
+   $g \circ f: X \to ℝ$ genau dann \(μ\)-fast überall nicht negativ oder integrierbar, wenn das auf $g$ bezüglich $f \ast μ$ zutrifft und in diesem Fall gilt:
+   \[∫_Y g \d (f \ast μ) = ∫_X (g \circ f) \d μ\]
+   #+end_thm
+   #+begin_proof latex
+   Für $A := \{x ∈ X \mid (g \circ f) > 0\}$ und $B = \{y ∈ Y \mid g(y) > 0\}$ gilt
+   \[(f \ast μ)(B) = μ(f^{-1}(B)) = μ(\{x ∈ X \mid f(x) ∈ B\}) = μ(A)\]
+   Also $(f \ast μ)(B^C) = μ(A^C)$. Für das Integal nehmen wir zuerst einfache Funktion
+   \begin{align*}
+   g &= \sum_{j = 1}^{k} α_j χ_{B_j}, α_j \geq 0, B_j ∈ \mathcal{B}(Y), B_i ∩ B_j = \emptyset ∀ i \neq j, Y = \bigcup_{j = 1}^k B_j \\
+   χ_{B_j} \circ f &= χ_{f^{-1}(B_j)} \\
+   ⇒ ∫_Y g \d (f \ast μ) &= \sum_{j = 1}^{k} α_j ∫_Y χ_{B_j} \d (f \ast μ) = \sum_{j = 1}^{k} α_j μ(f^{-1}(B_j)) \\
+   &= \sum_{j = 1}^{k} α_j ∫_X χ_{f^{-1}(B_j)} \d μ = \sum_{j = 1}^{k} α_j ∫_X χ_{B_j} \circ f \d μ ∫_X (g \circ f) \d μ
+   \end{align*}
+   Sei $g$ eine	messbare nichtnegative Funktion. Wir konstruieren Folge nicht genativer Funktionen $(g_k)_{k ∈ ℕ} ⊂ \mathcal{S}(Y, f \ast μ)$ mit $g_k \nearrow g$.
+   Dann ist auch $g \circ f$ eine Folge nichtnegativer Funktionen mit $g_k \circ f \nearrow g \circ f$. Satz von Beppo-Levi liefert
+   \begin{align*}
+   ∫_X g_k \circ f \d μ \circ f \d μ &\nearrow ∫_X g \circ f \d μ \\
+   ∫_Y g_k \d (f \ast μ) &\nearrow ∫_Y g \d (f \ast μ)
+   \end{align*}
+   Mit $g = g^{+} - g^{-}$ folgt der allgemeine Fall.
+   #+end_proof
+   #+begin_remark latex
+   1. Verkettung von Bildmaßen $f: X \to Y, g: Y \to Z$
+	  \begin{align*}
+	  \string(g \circ f\string) \ast μ(C) &= μ((g \circ f)^{-1})(C) = μ((f^{-1} \circ g^{-1})(C))	\\
+	  &= μ(f^{-1}(g^{-1}(C))) = f \ast μ(g^{-1}(C)) = g \ast f \ast μ(C)
+      \end{align*}
+   2. Sei $f: X \to M x + b ∈ ℝ^{n × m}$ invertierbar. Für $b ∈ ℝ$ gilt
+	  \[f \ast λ^n = \frac{1}{\abs{\det M}} λ^n\]
+	  Zunächst $f \ast λ^n$ ist translationsinvariant und damit	ist $f \ast λ^n$ ein Vielfaches von $λ^n$. Weiter nutzt man, dass da $M$ invertierbar $∃ V_1, V_2 ∈ O(n)$, $D$ Diagonalmatrix sodass
+	  $M = V_1 D V_2$
+   3.
+      \begin{align*}
+	  ∫_A g \underbrace{(M x + b)}_{=: f} \d λ^n &= ∫_A (g \circ f) \d λ^n = ∫_{M A + b} g \circ f_x \d λ^n \\
+	  &= \frac{1}{\abs{\det M}} ∫_{M A + b} g \d λ^n
+      \end{align*}
+   #+end_remark
+   #+ATTR_LATEX: :options [Trasformationssatz]
+   #+begin_thm latex
+   Seien $U, V ⊂ ℝ$ und $f ∈ C^1 (U, V)$, $f:$ Diffeomorphismus. Dann gilt
+   \[f^{-1} \ast λ^n = \abs{J f} λ^n, J f = \det\underarrow[(J)]{Jacobi Matrix} f\]
+   Es gilt
+   \[∫_U (g \circ f) \abs{J f} \d λ^n = M_V g \d λ^n\]
+   $∀$ nichtnegative Funktionen $g: V \to ℝ$
+   #+end_thm
