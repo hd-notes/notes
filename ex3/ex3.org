@@ -1768,7 +1768,7 @@ x ↦ x + Δ x \qquad &= \sum_{n = -∞}^{∞} \underbrace{g_n e^{inG Δ x}}_{g_
    \intertext{aber auch:}
    \hat A \hat B \ket{a, b} &= \hat A b \ket{a, b} = a b \ket{a, b} \\
    \hat B \hat B \ket{a, b} &= \hat B a \ket{a, b} = b a \ket{a, b} \\
-   \hat A \hat B - \hat B \hat A \ket{a, b} &= 0 \\
+   \string(\hat A \hat B - \hat B \hat A\string) \ket{a, b} &= 0 \\
    \intertext{$\hat A \hat B - \hat B \hat A$ Kommutator, Kurzschreibweise:}
    [A, B] &= 0
    \end{align*}
@@ -1946,8 +1946,1193 @@ x ↦ x + Δ x \qquad &= \sum_{n = -∞}^{∞} \underbrace{g_n e^{inG Δ x}}_{g_
    \[∫_0^∞ \abs{ϕ}^2 \d x = 0\]
    Bemerkung: Für $V_0 = 0 \to α$ imaginär, wie in Bereich I besprochen.
    Die spezielle Lösung des Problems folgt aus Randbedingungen bei $x = 0$:
-   \[ψ_{\text{I}}(x = 0, t) = ψ_{\text{II}}(x = 0, t)\]
-   1. Die zeitliche Entwicklung ist für beide Bereiche gleich, weil Energie-Eigenzustand zur gleichen
-      Energie, rotieren gleich schnell in der komplexen Zahlebene.
-   2. Für die Räumlische Wellenfunktion muss gelten:
+   \begin{gather*}
+   \begin{aligned}
+   \intertext{Wahrscheinlichkeit muss eindeutig sein}
+   ϕ_{\text{I}}(x = 0, t) &= ϕ_{\text{II}}(x = 0, t) \\
+   \intertext{Impuls muss eindeutig sein}
+   \dd{ϕ_{\text{I}}}{x}\Big|_{x = 0} &= \dd{ϕ_{\text{II}}}{x}\Big|_{x = 0} \\
+   \end{aligned} \\
+   \left.\begin{matrix}
+   ⇒ A + B = C \\
+   ⇒ A ik - B ik = - C α \\
+   \end{matrix}\right\}
+   \begin{matrix}
+   B = A \frac{i k + α}{i k - α} \\
+   C = A \frac{2i k}{i k - α} \\
+   \end{matrix}
+   \end{gather*}
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- ++(10,0) node[below] {$x$};
+  \draw[->] (0,0) -- ++(0,3) node[left] {$\Re\{ψ\}$};
+  \draw[green, domain=0:5.5, smooth, samples=100] plot ({\x},{2.5*sin(108*\x + 90)});
+  \draw[domain=0:5.5, smooth, samples=100] plot ({\x},{-2.5*sin(108*\x + 90)});
+  \draw[smooth, domain=0:4, shift={(5.5, 0)}] plot ({\x}, {1.46946*exp{-3.81240*\x}});
+  \draw[green, smooth, domain=0:4, shift={(5.5, 0)}] plot ({\x}, {-1.46946*exp{-3.81240*\x}});
+  \draw (5, 3) node[above] {$V_0 = 0$} -- ++(0, -6);
+  \filldraw (5, 2.5) circle (1pt);
+  \filldraw[green] (5, -2.5) circle (1pt);
+  \draw (5.5, 0) node[below] {$x = 0$} -- ++(0,3);
+  \foreach \y in {0,1,2,3,4}
+    \draw (5.5, 3 - .1*\y) -- ++(.3,.3);
+  \node[right, every text node part/.style={align=left}] at (6, 3) {$V_0 > E_{\text{kin}}$ \\ klassich verboten};
+  \node[right] at (7,1.0) {$t = 0$};
+  \draw (6, .5) edge[<-,out=40, in=180] (7,1.0);
+  \draw[|-|] (0,-3) -- ++(3.333, 0) node[fill=white,midway] {$λ_{dB}$};
+  \node[green, right] at (7, -1.5) {$\displaystyle{t = \frac{h}{2E}\quad e^{- \frac{iE}{\hbar}t} = e^{-iπ}}$};
+  \begin{scope}[shift={(7, -5.5)}]
+    \draw(-.3, -.3) rectangle (5.3,3.45);
+    \draw[->] (0, 1) -- ++(3,0) node[below] {$\Re \{ψ\}$};
+    \draw[->] (1, 0) -- ++(0,3) node[left] {$\Im \{ψ\}$};
+    \draw[green] (1,1) --++(-1,-1);
+    \filldraw[green] (0,0) circle (1pt);
+    \draw (1,1) --++(1,1);
+    \filldraw (2,2) circle (1pt);
+    \draw (2,2) edge[->, out=135, in=45] (0,2);
+    \draw (1.8, 2.3) edge[out=60, in=40] (2.2,2.7);
+    \node[right,every text node part/.style={align=left}] at (2.2, 2.7) {rotiert proportional \\ zu Energie};
+  \end{scope}
+  \draw (5.2, -2.6) edge[->, out=-40, in=170] (6.5, -3.2);
+  \begin{scope}[shift={(0,-8)}]
+  \draw[->] (0,0) -- ++(10,0) node[below] {$x$};
+  \draw[->] (0,0) -- ++(0,3) node[left] {$\Re\{ψ\}$};
+  \draw[domain=0:5.5, smooth, samples=100] plot ({\x},{2.5*(sin(108*\x + 90))*(sin(108*\x + 90))});
+  \draw[smooth, samples=100,domain=0:4, shift={(5.5, 0)}] plot ({\x}, {0.86372*exp{-5.18889*\x}});
+  \draw (5, 3) node[above] {$V_0 = 0$} -- ++(0, -3);
+  \filldraw (5, 2.5) circle (1pt);
+  \draw (5.5, 0) node[below] {$x = 0$} -- ++(0,3);
+  \foreach \y in {0,1,2,3,4}
+    \draw (5.5, 3 - .1*\y) -- ++(.3,.3);
+  \draw[|-|] (1.6666,-.5) -- ++(1.6666, 0) node[fill=white,midway] {$\displaystyle{\frac{λ_{dB}}{2}}$};
+  \node[every text node part/.style={align=center}] at (2.5, -1.5) {Interferenz zwischen\\einlaufender und reflektierter\\Welle};
+  \node[every text node part/.style={align=center}] at (9, 1) {Teilchen kann im\\klassisch verbotenen Bereich\\detektiert werden; nimmt\\aber exponentiell ab.};
+  \draw (5.625, .125) edge[->, out=65, in=210] (6.9, 1.20);
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Fall 2: $E_{kin} > V_0$, Fall $E_{kin} \gg V$ wurde im Abschnitt 2.7 - Interferometer diskutiert.
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+ \draw[->] (0,0) -- ++(7,0) node[below] {$x$};
+ \draw[->] (0,0) -- ++(0,3) node[left] {$E$};
+ \draw (7,1.5) -- ++(-4,0) -- ++(0,-1.6) node[below] {$x = 0$};
+ \draw[<->] (5.5, 1.5) -- ++(0,-1.5) node[midway, right] {$V_0$};
+ \draw[->] (.5, 2) -- ++(2,0) node[midway,above] {$E_{kin} > V_0$};
+ \node[below] at (1.5, 0) {Bereich $\text{I}$};
+ \node[below] at (5, 0) {Bereich $\text{II}$};
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Analoge Vorgehensweise; Im Bereich II findet man propangierende Lösungen $\estimates$ de Broglie Wellen:
+   \[ϕ_{\text{II}}(x) = C e^{i k_2 x} \quad\text{mit}\quad \frac{\hbar^2 k_2^2}{2m} = E - V_0, k_2 \text{ reell}\]
+   Randbedingung bei $x = 0$:
+   \[B = \frac{k - k_2}{k + k_2} \qquad C = \frac{2k}{k + k_2} A\]
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- ++(10,0) node[below] {$x$};
+  \draw[->] (0,0) -- ++(0,2) node[left] {$\Re\{ψ\}$};
+  \draw[smooth, samples=100, domain=0:5.5] plot ({\x}, {1.5*sin(180*\x)});
+  \draw[smooth, samples=100, domain=5.5:10] plot ({\x}, {-1.5*sin(90*\x - 45)});
+  \draw (5.5, .1) -- ++(0, -.2) node[below] {$x = 0$};
+  \draw[|-|] (1.5, -1.75) -- ++(2, 0) node[midway, fill=white] {$λ_{dB}$};
+  \draw[|-|] (5.5, -1.75) -- ++(4, 0) node[midway, fill=white] {$λ_{dB}$};
+  \draw[dashed] (5.5, 2) --++(0, -6);
+  \begin{scope}[shift={(0,-4)}]
+    \draw[->] (0,0) -- ++(10,0) node[below] {$x$};
+    \draw[->] (0,0) -- ++(0,2) node[left] {$\abs{ψ}^2$};
+    \draw (5.5, .1) -- ++(0, -.2) node[below] {$x = 0$};
+    \draw[domain=0:5.5, smooth, samples=100] plot ({\x}, {.3*sin(\x*278) + 1});
+    \draw[domain=5.5:10] plot ({\x}, {1.3});
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+** Tunneleffekt durch eine Potentialbarriere
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (-3, 0) -- ++(2, 0) node[below] {$x$};
+  \draw[->] (-3, 0) -- ++(0, 3) node[left] {$E$};
+  \draw[->] (0, 0) -- ++(4, 0) node[midway, below] {$\text{Bereich I}$} -- ++(0, 2) -- ++(3, 0) -- ++(0, -2) -- ++(4, 0) node[midway, below] {$\text{Bereich III}$};
+  \draw[<->] (.5, 0) -- ++(0, 1.25) node[midway, right] {$E_{kin}$};
+  \draw[->] (0, 1.25) -- ++ (1.5, 0);
+  \draw[|-|] (4, 2.3) -- ++(3, 0) node[midway, fill=white] {$d$};
+  \draw[<->] (5.5, 2) -- ++(0, -2) node[midway, right] {$V_0$} node[below] {$\text{Bereich II}$};
+  \node[right] at (-3, -1) {Lösung: Ansätze wie vorher, 4 Randbedingungen};
+  \draw (4, 0) -- ++(0, -8);
+  \draw (7, 0) -- ++(0, -8);
+  \begin{scope}[shift={(0, -4)}]
+    \draw[->] (0,0) -- ++(11, 0);
+    \draw[->] (0,0) -- ++(0, 2) node[left] {$\Re\{ψ\}$};
+    \draw[domain=1.5:5.5, shift={(-1.5,0)}, smooth, samples=100] plot ({\x},{-1.5*sin(103.5*\x + 90)});
+    \draw[smooth, domain=0:3, shift={(4, 0)}] plot ({\x}, {1.3*exp{-1*\x}});
+    \draw[domain=0:4, shift={(7,0)}, smooth, samples=100] plot ({\x},{.065*sin(103.5*\x + 90)});
+    \filldraw (4, 1.3) circle (1pt);
+    \filldraw (7, .065) circle (1pt);
+    \draw[|-|] (0.25, 1.7) -- ++(3.47, 0) node[midway, fill=white] {$λ_{dB}$};
+    \draw[|-|] (7, .3) -- ++(3.47, 0) node[midway, fill=white] {$λ_{dB}$};
+    \draw[<-] (5.3, .5) -- ++ (.5, 1) node[above, every text node part/.style={align=center}] {exponentieller\\Abfall};
+    \draw[<-] (1, -.5) -- ++(-1, -.5) node[left, every text node part/.style={align=left}] {Interferenz von\\ein- und auslaufender\\ Welle};
+    \node[below, every text node part/.style={align=left}] at (9, 0) {transmittierte\\de Broglie Welle};
+  \end{scope}
+  \begin{scope}[shift={(0, -8)}]
+    \draw[dotted] (1.11, 0) -- ++(0, 4);
+    \draw[dotted] (2.85, 0) -- ++(0, 4);
+    \draw[->] (0,0) -- ++(11, 0);
+    \draw[->] (0,0) -- ++(0, 2) node[left] {$\abs{ψ}^2$};
+    \draw[smooth, samples=100, domain=1.5:5.33, shift={(-1.5, 0)}] plot ({\x}, {1.5*sin(103.5*\x + 90)*sin(103.5*\x + 90)});
+    \draw[smooth, domain=0:3.17, shift={(3.83, 0)}] plot ({\x}, {1.44*exp(-.8*\x)});
+    \draw[domain=0:4, shift={(7,0)}, smooth, samples=100] plot ({\x},{.116});
+    \node[below, every text node part/.style={align=left}] at (9, 0) {Transmissions-Wahrscheinlichkeit\\konstant, weil nur auslaufende Welle};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Bereich II:
+   \[\abs{ψ_{\text{II}}}^2 = \frac{4k^2}{k^2 + α^2}\abs{ψ(0)}^2 e^{-2α x}\qquad \hbar α = \sqrt{2m(V_0 - E_{\text{kin}})}\]
+   Transmissions Wahrscheinlichkeit:
+   \[T = \frac{\abs{ψ_{\text{II}}(d)}^2}{\abs{ψ_{\text{II}}(0)}^2} \propto e^{-2αd}\]
+   Exponentiell empfindlich auf Änderungen von Barrierenbreite $d$.
+   Anwendung: Scanning tunneling microscope ((STM) - Rastertunnelmikroskop)
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw (0,0) -- ++(4,0);
+  \foreach \x in {0,...,20}
+    \draw (\x / 5,0) -- ++(-.1,-.2);
+  \node[below,yshift=-3pt] at (2, 0) {Substrat};
+  \draw (0,0) -- ++(0,1) ++(0,.2) -- ++(0,2) -- ++(.5, 0);
+  \draw (.9,3.2) circle (.4) node[above,yshift=9pt] {$I$};
+  \draw[->] (.5,2.8) -- ++(.9,.9);
+  \draw (-.2,1) -- ++(.4,0);
+  \draw (.4,1.2) -- ++(-.8,0) node[left] {$\sim \SI{4}{\volt}$};
+  \draw (1.3, 3.2) -- ++(1, 0);
+  \draw[red] (2.3, 3.5) -- ++(1,0) -- ++(0,-2) -- ++(-.5,-1.4) -- ++(-.5,1.4) -- ++(0,2);
+  \draw (2.8, 3.2) circle (3pt) node[below,yshift=-1pt] {$x$};
+  \draw [->] (2.8, 3.2) -- ++(1,0) node[below] {$y$};
+  \draw [->] (2.8, 3.2) -- ++(0,1) node[left] {$z$};
+  \node[right] at (2.9, 3.9) {verschiebbar};
+  \node[red,right] at (3.3, 2) {Spitze};
+  \begin{scope}[shift={(6,0)}]
+    \foreach \y/\n/\o in {1/10/0,2/9/.5,3/10/0}{
+      \foreach \x in {1,...,\n}
+        \draw ({.23*(\x + \o)}, .22*\y) circle (3pt);
+    }
+
+    \foreach \y/\n/\o in {1/1/2,2/2/1.5,3/3/1,4/4/.5,5/5/0}{
+      \foreach \x in {1,...,\n}
+        \draw[red] ({.23*(\x + \o) + .23*2.5}, .22*\y + 1) circle (3pt);
+    }
+    \draw[|-|] (.23*7,.22*3.5) -- (.23*7,1.11) node[right,midway] {$d$};
+    \draw[red] (.23*3, 1+.22*5.7) -- ++(0,1);
+    \draw[red] (.23*8, 1+.22*5.7) -- ++(0,1);
+    \draw[<-] (1.5, 2.5) -- ++(.5,.5) node[right] {ein Atom an der Spitze};
+    \node[above,right] at (2.5, .4) {zum Beispiel Grahpit};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Elektronen können zur Spitze tunneln $⇒$ Strom $\sim \SI{1}{\nano\ampere}$
+   \begin{alignat*}{2}
+     I &\propto T \propto e^{-2α d} &&\qquad α \sim \SI{1e10}{\per\meter} \\
+     d &= \SI{.1}{\nano\meter} &&\qquad T \sim \SI{.13}{} \\
+     d &= \SI{1}{\nano\meter} &&\qquad T \sim \SI{2e-9}{} \\
+   \end{alignat*}
+   extrem empfindlich auf $d ⇒$ atomare Auflösung.
+** Kasten-Potential
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- ++(15,0) node[below] {$x$};
+  \draw[->] (-1,.5) -- ++(0,3) node[left] {$E$};
+  \draw[red] (0,4) -- ++(4, 0) node[midway,below] {$V_0 \gg 0$} node[below right] {$V = 0$} -- ++(0,-4) -- ++(7,0) -- ++(0,4) -- ++(4,0) node[midway,below] {$V_0 \gg 0$};
+  \node[below] at (2,0) {Bereich I};
+  \node[below] at (7.5,0) {Bereich II};
+  \node[below] at (13,0) {Bereich III};
+  \draw (4,0) -- ++(0,-.2) node[below] {$x = 0$};
+  \draw (11,0) -- ++(0,-.2) node[below] {$x = d$};
+  \draw[dashed] (4,-.7) -- ++(0,-9.3);
+  \draw[dashed] (11,-.7) -- ++(0,-9.3);
+  \begin{scope}[shift={(0,-5)}]
+  \draw[->] (0,0) -- ++(15,0) node[below] {$x$};
+  \draw[domain=0:7, shift={(4,0)}, smooth, samples=100] plot ({\x},{2*cos(95*\x - 31)});
+  \draw[smooth, domain=-4:0, shift={(4, 0)}] plot ({\x}, {1.72*exp(\x)});
+  \draw[smooth, domain=0:4, shift={(11, 0)}] plot ({\x}, {1.333*1.08*exp(-\x)});
+  \draw[|-|] (3.8 * 31 / 360 + 4, 2.2) -- ++(360 / 95, 0) node[midway,fill=white] {$λ_{dB}$} node[above, midway,yshift = 5pt] {freie Welle};
+  \node[every text node part/.style={align=left}] at (1,2) {Raten falsche Lösung der\\Schrödinger Gleichung};
+  \node[red,every text node part/.style={align=left},right] at (12,1.2) {?\lightning\ Diese Welle "`passt"' nicht\\ $\estimates$ Randbedingungen kann\\ erfüllt werden};
+  \draw[red] (11, .75) circle (1);
+  \end{scope}
+  \begin{scope}[shift={(0,-10)}]
+  \draw[->] (0,0) -- ++(15,0) node[below] {$x$};
+  \draw[domain=-3.5:3.5, shift={(7.5,0)}, smooth, samples=100] plot ({\x},{-2*cos(64*\x)});
+  \draw[smooth, domain=-4:0, shift={(4, 0)}] plot ({\x}, {1.333*1.08*exp(\x)});
+  \draw[smooth, domain=0:4, shift={(11, 0)}] plot ({\x}, {1.333*1.08*exp(-\x)});
+  \draw (4,0) -- ++(0,-.2) node[below] {$0$};
+  \draw (11,0) -- ++(0,-.2) node[below] {$d$};
+  \node[every text node part/.style={align=left}] at (1,2) {eine möglich Lösung\\der Schrödinger Gleichung};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Limes $V_0 \to ∞ ⇒$ Lösung in Bereich I + Bereich III $e^{-α x} \to 0$ $⇒$ Randbedingungen für Bereich II:
+   \[ψ_{\text{II}}(0) = ψ_{\text{II}}(d) = 0\]
+   Suchen Energie-Eigenzustände
+   \begin{align*}
+     ψ_ε(x, t) &= e^{-i \frac{E}{\hbar}t} ϕ(x) \\
+     \intertext{mit}
+     ϕ(0) &= ϕ(d) = 0 \\
+     - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ϕ(x) &= E ϕ(x)
+   \end{align*}
+   Lösung:
+   \begin{alignat*}{2}
+     ϕ(x) &= A e^{i k x} + B e^{-i k x} \\
+     \intertext{mit}
+     ϕ(x) &= A + B = 0 &&\qquad\to A = - B \\
+     ϕ(d) &= A e^{i k d} + B e^{-i k d} = 0 &&\qquad\to A(e^{i k d}  - e^{-i k d}) = 2 A i \sin k d = 0
+   \end{alignat*}
+   $⇒ k$ kann nur ganz bestimmte / diskrete Werte annehmen: $k d = n π, n ∈ ℕ, n$: Quantenzahlen. \\
+   $A$: folgt aus Normierungsbedingung. Lösung für Energie-Eigenzustände in Ortsdarstellung:
+   \[ϕ_n(x) = \sqrt{\frac{2}{d}} \sin(\frac{n π}{d}x) \quad\text{mit Energie}\quad E_n = \frac{\hbar^2 π^2}{2md^2} n^2\]
+   In Dirac Schreibweise:
+   \begin{align*}
+     \hat H \ket{ψ_E} &= E \ket{ψ_E} \to \ket{ψ_E} = \ket{n} \\
+     \intertext{Definiere $E_G$ für den Grundzustand:}
+     E_n &= \frac{\hbar^2 π^2}{2m d^2} n^2 = E_G n^2 \\
+     \to \hat H\ket{n} &= E_G n^2 \ket{n}
+   \end{align*}
+   für den energetisch niedrigsten Zustand = Grundzustand erhält man $E = E_G$
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (-.25, 0) -- ++(6,0) node[below] {$x$};
+  \draw[->] (0, -.25) -- ++(0,4) node[left] {$E$};
+  \draw[->] (1.9,0) -- ++(0,3.5) node[above] {$∞$};
+  \draw[->] (4.5,0) -- ++(0,3.5) node[above] {$∞$};
+  \foreach \y/\c [count=\i] in {1/1,4/3,9/5}{
+    \draw (1.9, \y / 3) node[left] {$E_{\i} = \y E_G$} -- ++(2.6,0) node[right] {$n = \i$};
+    \foreach \a in {1,...,\c}
+      \draw[<->] (2.2,\y / 3 - \a / 3) -- ++(0,1/3);
+  }
+  \draw[->,every text node part/.style={align=left}] (6,2) -- ++(3, 0) node[midway,below] {Ortsdarstellung\\ des Zustands} node[midway,above] {zu jeder Energie\\gehört eine\\räumliches\\Wellenpaket};
+  \begin{scope}[shift={(10, 0)}]
+  \draw[->] (-.25, 0) -- ++(6,0) node[below] {$x$};
+  \draw[->] (0, -.25) -- ++(0,4) node[left] {$ψ$};
+  \draw[smooth,domain=0:5,samples=100] plot ({\x},{sin(\x*540/5) + 1.5});
+  \draw[dotted] (0,1.5) -- ++(5,0);
+  \draw (0,1.5) -- ++(-.2,0) node[left] {$0$};
+  \draw (5,.2) -- ++(0,-.4) node[below] {$d$};
+  \node[right] at (.5,3) {zum Beispiel $n = 3\quad ϕ_3(x)$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+Typische Darstellung:
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (1.5, 0) -- ++(4,0) node[below] {$x$};
+  \draw[->] (.75, 2) -- ++(0,2) node[left] {$E$};
+  \draw[->] (1.9,-.2) node[below] {$0$} -- ++(0,3.9) node[above] {$∞$};
+  \draw[->] (4.5,-.2) node[below] {$d$} -- ++(0,3.9) node[above] {$∞$};
+  \foreach \y/\c [count=\i] in {1/1,4/3,9/5}{
+    \draw (1.9, \y / 3) node[left] {$\y E_G$} -- ++(2.6,0);
+    \draw[red,smooth, domain=0:2.6,shift={(1.9, \y / 3)}] plot ({\x}, {.4*sin(\i*\x*180/2.6)});
+    \draw[red,->] (4.6, \y / 3) -- ++(0,.5) node[midway,right] {$ψ_{\i}(t = 0)$};
+  }
+  \draw[->] (7, 2) -- ++(2,0) node[midway,above,green] {$P(x) = \abs{ψ}^2$};
+  \begin{scope}[shift={(9, 0)}]
+  \draw[->] (1.5, 0) -- ++(4,0);
+  \draw[->] (1.9,-.2) node[below] {$0$} -- ++(0,3.9) node[above] {$∞$};
+  \draw[->] (4.5,-.2) node[below] {$d$} -- ++(0,3.9) node[above] {$∞$};
+  \foreach \y/\c [count=\i] in {1/1,4/3,9/5}{
+    \draw (1.9, \y / 3) -- ++(2.6,0);
+    \draw[green,smooth, domain=0:2.6,shift={(1.9, \y / 3)}] plot ({\x}, {.4*sin(\i*\x*180/2.6)*sin(\i*\x*180/2.6)});
+    \draw[green,->] (4.6, \y / 3) -- ++(0,.5) node[midway,right] {$P$};
+  }
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+Vorhersage für ein Teilchen anfänglich lokalisiert: \\
+\begin{minipage}{.4\textwidth}
+ \begin{center}
+ \begin{tikzpicture}
+  \draw[->] (1.5, 0) -- ++(4,0) node[below] {$x$};
+  \draw[->] (.75, 2) -- ++(0,2) node[left] {$E$};
+  \draw[->] (1.9,-.2) node[below] {$0$} -- ++(0,3.9) node[above] {$∞$};
+  \draw[->] (4.5,-.2) node[below] {$d$} -- ++(0,3.9) node[above] {$∞$};
+  \draw[shift={(3.2,0)},smooth,domain=-1.3:1.3] plot ({\x}, {2*exp(-6*\x*\x)});
+  \draw (3.2,.2) -- ++(0,-.4) node[below] {$\frac{d}{2}$};
+  \draw (3.5,1.5) edge[->, out=65, in=200] (5,2.5);
+  \node[right] at (5,2.5) {$ψ_{WP}(x, t = 0)$};
+ \end{tikzpicture}
+ \end{center}
+\end{minipage}
+\hfill\begin{minipage}{.50\textwidth}
+  $\to$ später?
+  \begin{align*}
+    \ket{ψ_{WP}}_t &= \sum_{n = 1}^{∞} c_n e^{-i \frac{E_n}{\hbar}t} \ket{n} \\
+    \to \text{finde } c_n: \braket{n | ψ_{WP}} &= c_n \\
+    \text{Ortsdarstellung: } \ket{n} &= \sin(\frac{nπ}{d}x)
+  \end{align*}
+\end{minipage}
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-.25, 0) -- ++(5, 0) node[below] {$x$};
+    \draw[->] (0,-.25) node[below] {$0$} -- ++(0, 3);
+    \draw[shift={(2,0)},smooth,domain=-2:2] plot ({\x}, {2*exp(-8*\x*\x)});
+    \node[right] at (5,1.5) {$\displaystyle{ψ(x,t=0) = (\frac{2}{π d^2})^{1/4} e^{-\frac{x^2}{d^2}}}$};
+    \node[right] at (5.5,0) {\rotatebox{90}{$=$}$\leftarrow$ Summe von Energie Eigenzuständen};
+    \node[right] at (5.5,-1.2) {$\vdots$};
+    \draw (4,.1) -- ++(0,-.2);
+    \begin{scope}[shift={(0,-7.5)}]
+        \draw[->] (0, 0) -- ++(4.5,0) node[below] {$x$};
+        \draw[->] (0,-.2) node[below] {$0$} -- ++(0,6.5) node[left] {$E$};
+        \draw (4,-.2) node[below] {$d$} -- ++(0,6.5);
+        \foreach \n/\q in {1/\sin(\frac{π}{d}x),2/0,3/\sin(\frac{3π}{d}),4/0}{
+            \draw (0, \n*\n / 3) node[left] {$n = \n$} -- ++(4,0);
+            \draw[shift={(0,\n*\n / 3)},smooth,samples=100,domain=0:4] plot ({\x},{.25*\n*sin(\x * \n * 180 / 4)});
+            \node[right] at (5,\n*\n / 3) {$c_{\n} = \q$};
+        }
+    \filldraw (2,1/3) circle (2pt);
+    \filldraw (2,3) circle (2pt);
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+$ϕ_2$ ungerade und $ψ(x, t = 0)$ gerade
+\[⇒ ∫ ϕ_2 ψ \d x = 0\]
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-.1, 0) -- ++(10,0) node[below] {$n$};
+        \draw[->] (0,-.1) -- ++(0,5) node[left] {$c_n$};
+        \foreach \n in {1,...,9}
+            \draw (\n,.1) -- ++(0,-.2) node[below] {$\n$};
+        \foreach \n in {1,3,5,7,9}
+            \filldraw (\n,{4*exp(-.03*\n*\n)}) circle (1.5pt);
+        \foreach \n in {2,4,6,8}
+            \filldraw (\n,0) circle (1.5pt);
+        \draw[domain=1:10,smooth] plot ({\x},{4*exp(-.03*\x*\x)});
+        \draw[<-] (1.1,4.05) -- ++(1,.5) node[right] {$\abs{c_1}^2$ Besetzung von Zustand $\ket{n = 1}$};
+        \draw[<-] (4,2.6) -- ++(1,.5) node[right] {gaussförmig};
+    \end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   $⇒$ Anfangsdynamik wie freies Wellenpaket $⇒$ Reflexionen am Rand $⇒$ lange Zeiten "`Revival"' = der Anfangszustand wird wieder erreicht.
+** "Revival" in der Quantenmechanik
+   Die Quantenmechanik in Systemen mit diskreten Energieen zeigt das Phänomen des "`rephasieren"' das heißt die Phasenunterschiede zwischen allen Energieeigenzuständen sind $n·2π$ mit $n ∈ ℤ$.
+   Im Fall des Wellenpakets im Kastenpotential:
+   \[e^{i \frac{E_n - E_{n'}}{\hbar} t} = 1\]
+   Revival wenn $\frac{E_n - E_{n'}}{\hbar} t = m 2π, m ∈ ℤ$
+   \(⇒ 1.\) Revival:
+   \[\frac{E_3 - E_1}{\hbar} · T_{\text{Revival}} = 2π \to \frac{E_G}{\hbar}(3^2 - 1^2) T_{\text{Revival}} = 2π ⇒ T_{\text{Revival}} = \frac{h}{E_G} \frac{1}{(9-1)} = \frac{h}{E_G}\frac{1}{8}\]
+   Allgemeine Energiedifferenz:
+   \begin{align*}
+       Δ E &= E_G(n^2 - n^{\prime 2}) = E_G(n - n')(n + n') \\
+       ⇒ Δ E_{min} &= E_G(3^2 - 1) \\
+       \intertext{wenn Phasendifferenz für Grund- und 2. angeregter Zustand $2π$ ist, sind alle anderen Phasendifferenzen ein gerades Vielfaches davon}
+   \end{align*}
+   mit $d \to ∞$ geht die Grundzustandsenergie $E_G = \frac{\hbar^2 π^2}{2m d^2} \to 0$, damit wird die "`revival"' Zeit $T_{\text{Revival}} \to ∞$ unendlich lang. Deshalb zerfließt ein Wellenpaket im
+   freien Raum ($d \to ∞$) für immer.
+** Harmonischer Oszillator
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+Klassisch:
+\begin{minipage}{.3\textwidth}
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,0) rectangle (2,1) node[above,midway,yshift=12pt] {$m$};
+    \draw[<->] (-.1,-.2) -- ++(2.2,0) node[below,midway] {oszilliert mit $ω$};
+    \draw[->,decorate,decoration={zigzag,amplitude=1mm,segment length=1.5mm,pre length=2mm,post length=2mm}] (2,.5) -- ++(2,0) node[midway,above] {$k$};
+    \draw (4,0) -- ++(0,1.5);
+    \foreach \y in {1,...,12}
+        \draw (4,\y / 8 - .066) -- ++(.1,.1);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{.65\textwidth}
+    \begin{equation*}
+        \left.
+        \begin{matrix}
+            \begin{aligned}
+                F &= - k x \\
+                V &= \frac{k}{2} x^2
+            \end{aligned}
+        \end{matrix}
+        \right\}
+        ⇒\begin{matrix}
+            \begin{aligned}
+                x &= x_0 \sin(ω_0 t) \\
+                ω_0^2 &= \frac{k}{m}
+            \end{aligned}
+        \end{matrix}
+    \end{equation*}
+\end{minipage}
+$⇒$ schreiben harmonisches Potential so, dass man die Frequenz ablesen kann
+\[V(x) = \frac{m ω^2}{2} x^2\]
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-4, 0) -- ++(8,0) node[below] {$x$};
+        \draw[->] (0,0) -- ++(0,4) node[left] {$E$};
+        \draw[smooth,domain=-2:2] plot ({\x},{.75*\x*\x});
+        \draw[->,smooth,domain=-1.5:1] plot ({\x},{.75*\x*\x +.2});
+        \node at (2.2,2) {$V(x)$};
+        \filldraw (-1.5,1.5*1.5*.75 + .2) circle (1pt);
+        \draw[<-] (-1.65, 1.89) -- ++(-.5,0) node[left,every text node part/.style={align=left}] {Teilchen mit Masse $m$\\schwingt mit Frequenz $ω$};
+    \end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Quantenmechanische Beschreibung: $ψ(x,t) \to$ suchen Energie-Eigenzustände:
+   \[ψ_E(x,t) = e^{-i \frac{E}{\hbar} t} ϕ(x)\]
+   Schrödinger Gleichung:
+   \[-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ϕ(x) + \frac{1}{2} m ω^2 x^2 ϕ(x) = E ϕ(x)\]
+   Suche Lösung der Form:
+   \[ϕ(x) = N e^{- \frac{b}{2} x^2} \underbrace{(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \dots)}_{\text{Potenzreihenansatz}}\]
+   Polynome haben die Form:
+   \begin{align*}
+       \tilde H_0(x) &= 1 \\
+       \tilde H_1(x) &= 2 \sqrt{b} x \\
+       \tilde H_{n+1}(x) &= 2 \sqrt{b} x \tilde H_n(x) - 2n \tilde H_{n - 1}(x)
+   \end{align*}
+   Was sind die Eigenenergieen $\to$ einsetzen in Schrödinger Gleichung:
+   \begin{align*}
+       ϕ_0 &= N e^{-\frac{b}{2} x^2} \\
+       ϕ_0'' &= N(b^2 x^2 - b) e^{-\frac{b}{2} x^2} \\
+       -\frac{\hbar^2}{2m}(b^2 x^2 - b) + \frac{m ω^2}{2} = E_0 \\
+       \intertext{die \(x\)-Abhängigkeit muss verschwinden, weil $E$ eine Konstante ist (hängt nicht von $x$ ab)}
+       ⇒ \frac{\hbar^2}{2m} b^2 &= \frac{m ω^2}{2} \\
+       b &= \frac{m ω}{\hbar} \\
+       ϕ_0 &= N e^{-\frac{b}{2} x^2} = N e^{-\frac{1}{2} (\frac{x}{a_{ho}})^2} \\
+       \intertext{$a_{ho}$: charakteristische Länge; harmonic oscillator length}
+       a_{ho} &= \sqrt{\frac{\hbar}{m ω}} \\
+       E_0 &= \frac{\hbar^2}{2m} b = \frac{\hbar^2}{2m} \frac{m ω}{\hbar} = \frac{\hbar ω}{2} \\
+       \intertext{weitere Beispiele:}
+       ϕ_1 &= N 2 \sqrt{b} x e^{-\frac{b}{2} x^2} \\
+       ϕ_1'' &= N 2(-3bx + b^2 x^3) \sqrt{b} x e^{-\frac{b}{2} x^2} \\
+       E_1 2 N \sqrt{b} x &= -\frac{\hbar^2}{2m} 2N \sqrt{b} (-2bx + b^2 x^3) + 2N \sqrt{b} \frac{m ω^2}{2} x^3 \\
+       x^3: &\text{ Koeffizient ist null, weil } b = \frac{m ω}{\hbar} \\
+       x: &+\frac{\hbar^2}{2m} 2b = E_1 = \hbar ω \frac{3}{2} = \hbar ω(1 + \frac{1}{2})
+   \end{align*}
+   $N$: folgt aus Normierungsbedingung. \\
+   Allgemeine Lösung:
+   \begin{gather*}
+       ϕ_n = \sqrt{\frac{1}{\sqrt{π} a_{ho}}} \frac{1}{\sqrt{2^n n!}} H_n(\frac{x}{a_{ho}}) e^{-\frac{1}{2}(\frac{x}{a_{ho}})^2} \\
+       \text{mit}\quad E_n = \hbar ω(n + \frac{1}{2}) \qquad a_{ho} = \sqrt{\frac{\hbar}{m ω}} \\
+       \text{mit}\quad H_0(x) = 1\qquad H_1(x) = 2x \qquad H_{n + 1}(x) = 2x H_n(x) - 2n H_{n - 1}(x)
+   \end{gather*}
+   $H_n$: Hermitesche Polynome.
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-4,0) -- ++(10,0) node[below] {$x$};
+    \draw[->] (-4,0) -- ++(0,5) node[left] {$E$};
+    \draw[smooth,domain=-3:3] plot ({\x},{.5*\x*\x});
+    \foreach \i in {0,...,3}
+        \draw (-3,.5 + \i) node[left] {$ϕ_\i$} -- ++(6,0) node[right] {$E_\i = (\i + \frac{1}{2}) \hbar ω$};
+    \draw[domain=-3:3,shift={(0,.5)},smooth] plot ({\x},{(.5/sqrt(sqrt(3.1415)))*exp(-.5*\x*\x)});
+    \draw[domain=-3:3,shift={(0,1.5)},smooth] plot ({\x},{(.5/sqrt(sqrt(3.1415)*2))*2*\x*exp(-.5*\x*\x)});
+    \draw[domain=-3:3,shift={(0,2.5)},smooth] plot ({\x},{(.5/sqrt(sqrt(3.1415)*8))*(4*\x*\x - 2)*exp(-.5*\x*\x)});
+    \draw[domain=-3:3,shift={(0,3.5)},smooth] plot ({\x},{(.5/sqrt(sqrt(3.1415)*48))*(8*\x*\x*\x - 12*\x)*exp(-.5*\x*\x)});
+    \draw[<-] (-.9,3.8) -- ++(-.5,.5) node[above] {$ϕ_n$ hat $n$ Knoten};
+\end{tikzpicture}
+\end{center}
+\[ψ_n(x,t) = e^{-i\frac{E_n}{\hbar} t ϕ_n(x) \to \abs{ψ_n}^2} = \abs{ϕ_n(x)}^2\]
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-4,0) -- ++(10,0) node[below] {$x$};
+    \draw[->] (-4,0) -- ++(0,5) node[left] {$E$};
+    \draw[smooth,domain=-3:3] plot ({\x},{.5*\x*\x});
+    \foreach \i in {0,...,3}
+        \draw (-3,.5 + \i) node[left] {$\abs{ψ_\i}^2$} -- ++(6,0) node[right] {$n = \i$};
+    \draw[domain=-3:3,shift={(0,0.5)},smooth,samples=100] plot ({\x},{((1.2/sqrt(sqrt(3.1415)))*exp(-.5*\x*\x))^2});
+    \draw[domain=-3:3,shift={(0,1.5)},smooth,samples=100] plot ({\x},{((1.2/sqrt(sqrt(3.1415)*2))*2*\x*exp(-.5*\x*\x))^2});
+    \draw[domain=-3:3,shift={(0,2.5)},smooth,samples=100] plot ({\x},{((1.2/sqrt(sqrt(3.1415)*8))*(4*\x*\x - 2)*exp(-.5*\x*\x))^2});
+    \draw[domain=-3:3,shift={(0,3.5)},smooth,samples=100] plot ({\x},{((1.2/sqrt(sqrt(3.1415)*48))*(8*\x*\x*\x - 12*\x)*exp(-.5*\x*\x))^2});
+\end{tikzpicture}
+\end{center}
+$n \estimates$ Quantenzahl.
+\[\hat H_{\text{Harmonischer Oszillator}} \ket{n} = \hbar ω (n + \frac{1}{2}) \ket{n}\]
+Grundzustand: $E_G = E_0 = \frac{1}{2} \hbar ω$ \\
+\begin{minipage}{.45\textwidth}
+\begin{center}
+Klassisch:\\
+\begin{tikzpicture}
+    \draw[->] (-.1,0) node[left] {$0$} -- ++(1,0) node[below] {$x$};
+    \draw[->] (0,-.1) -- ++(0,3) node[left] {$E$};
+    \draw[shift={(3,0)},smooth,domain=-2:2] plot ({\x},{.75*\x*\x});
+    \filldraw (3,2pt) circle (2pt) node[below] {$x = 0$};
+    \draw[dotted] (1,0) -- ++(2,0);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\hfill\begin{minipage}{.45\textwidth}
+\begin{center}
+Quantenmechanisch:\\
+\begin{tikzpicture}
+    \draw[shift={(3,0)},smooth,domain=-2:2] plot ({\x},{.75*\x*\x});
+    \draw (3,.1) -- ++(0,-.2) node[below] {$x = 0$};
+    \draw (2,.5) -- ++(2,0) node[right] {$E_G$};
+    \draw[shift={(3,.5)},smooth,domain=-2.2:2.2] plot ({\x},{exp(-8*\x*\x)});
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Grundzustand: \\
+   Quantenmechanischer Zustand kann nicht beliebig räumlich lokalisiert sein. Heisenberg Unschärfe
+   gibt
+   \[\VAR(x) · \VAR(p) \geq \frac{\hbar^2}{4}\]
+   kinetische Energie steigt mit Lokalisierung. \\
+   Allgemeiner Grundzustand ergibt sich aus dem "`Gleichgewicht"' zwischen potentieller Energie und kinetischer Energie (nennt man auch Quantendruck) \\
+   Der Grundzustand des harmonischen Oszillators erfüllt minimale Heisenberg Unschärfe.
+   Harmonischer Oszillator:
+   \begin{align*}
+       \hat H &= \frac{1}{2m} \hat p^2 + \frac{m ω^2}{2} \hat x^2 \\
+       \braket{\hat H} &= \frac{1}{2m} \braket{\hat p^2} + \frac{m ω^2}{2} \braket{\hat x^2} \\
+       \intertext{harmonischer Oszillator symmetrisch in $x,p ⇒ \braket{\hat x} = \braket{p} = 0$}
+       \VAR(x) &= \braket{\hat x^2} - \braket{\hat x}^2 = \braket{\hat x^2} \\
+       \VAR(p) &= \braket{\hat p^2} \\
+       \braket{\hat H} &= \frac{1}{2m} \VAR(p) + \frac{m ω^2}{2} \VAR(x) \\
+       V_x &:= \VAR(x) \\
+       \braket{\hat H} &= \frac{\hbar^2}{8m} \frac{1}{V_x} + \frac{m ω^2}{2} V_x \\
+       \intertext{suchen Minimum}
+       \dd{\braket{\hat H}}{V_x} &= -\frac{\hbar^2}{8m} \frac{1}{V_x^2} + \frac{m ω^2}{2} \overset{!}{=} 0 \\
+       ⇒ V_x &= \frac{\hbar}{2mω} \\
+       ⇒ \braket{\hat H}_{\text{min}} &= \hbar ω(\frac{1}{4} + \frac{1}{4}) = \frac{1}{2}\hbar ω \checkmark
+   \end{align*}
+   Grundzustand ist Zustand minimaler Heisenberg-Unschärfe.
+** Klassische Korrespondenz beim harmonischen Oszillator
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{minipage}{.45\textwidth}
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- ++(1,0) node[below] {$x$};
+    \draw[->] (0,0) -- ++(0,1) node[left] {$E$};
+    \begin{scope}[shift={(1,0)}]
+    \draw[smooth, domain=-2.6:2.6,shift={(3,-3)}] plot ({\x},{1*\x*\x});
+    \draw[smooth, samples=50, domain=-3:3,shift={(3,-6)}] plot ({\x},{2*exp(-4*\x*\x)});
+    \begin{scope}[shift={(-.45,-10)}]
+    \begin{axis}[at={(3,-7)},axis lines=middle,hide axis,ymin=-.001,ymax=.3]
+        \addplot[at={(3,-7)},smooth,samples=200,domain=-6:6]{.5*((1/sqrt(sqrt(3.14) * 10321920)) * (256*\x^8 - 3584*\x^6 + 13440*\x^4 - 13440*\x^2 + 1680)*exp(-.5*\x^2))^2};
+    \end{axis}
+    \end{scope}
+    \end{scope}
+    \draw[dotted] (1.7,2.3^2 - 3) -- ++(0,-2.3^2 - 7.12);
+    \draw[dotted] (6.3,2.3^2 - 3) -- ++(0,-2.3^2 - 7.12);
+    \draw (1.7, 2.3^2 - 3) node[left] {$(8 + \frac{1}{2}) \hbar ω$} -- ++ (4.6, 0) node[right] {$n = 8$};
+    \draw (3.44, .311 - 3) node[left] {$\frac{\hbar ω}{2}$} -- ++ (1.12, 0) node[right] {$n = 0$};
+    \draw (3, -3) -- ++ (2, 0);
+    \draw (3.44, .2 - 3) -- ++ (0, -.3);
+    \draw (4.56, .2 - 3) -- ++ (0, -.3);
+    \draw[dotted] (3.44,.311 - 3) -- ++(0,-.311 - 3);
+    \draw[dotted] (4.56,.311 - 3) -- ++(0,-.311 - 3);
+    \draw[->] (1, -6) -- ++ (6,0) node[below] {$x$};
+    \draw[->] (1, -6) -- ++ (0,3);
+    \draw (.9, 0.57 - 6) node[left] {$\frac{1}{e}$} -- ++ (.2, 0);
+    \draw (.9, 2 - 6) node[left] {$1$} -- ++ (.2, 0);
+    \draw (4.56, -5.9) -- ++(0,-.2) node[below,xshift=3pt,yshift=2pt] {$x_u^{n = 0}$};
+    \draw (4, -5.9) -- ++(0,-.2) node[below] {$0$};
+    \draw[<-] (4.7, -5.5) -- ++(.5,.5) node[above right,xshift=-2pt,yshift=-6pt] {$\abs{ψ_{n = 0}}^2$};
+    \draw[->] (1, -10.12) -- ++ (6,0) node[below] {$x$};
+    \draw[->] (1, -10.12) -- ++ (0,3);
+    \draw (6.3, -10.02) -- ++(0,-.2) node[below,xshift=3pt,yshift=2pt] {$x_u$};
+    \draw (4, -10.02) -- ++(0,-.2) node[below] {$0$};
+    \foreach \x in {1,...,8}
+        \node[font=\footnotesize] at ({.483*(\x - 1) + 2.30}, -10.25) {$\x$};
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\hfill\begin{minipage}{.5\textwidth}
+    $x_u$: klassischer Umkehrpunkt
+    \begin{align*}
+        E &= \frac{m ω^2}{2} x_u^2  \\
+        x_u &= \sqrt{\frac{2E}{m}} \frac{1}{ω} \\
+        \text{für } n = 0\quad E &= \frac{\hbar ω}{2} \\
+        x_u &= \sqrt{\frac{\hbar}{mω}} = A_{ho} \\
+        \text{mit } ψ_{n = 0} &= e^{-i \frac{ω}{2} t} e^{-\frac{1}{2}(\frac{x}{a_{ho}})^2} \\
+        \abs{ψ_{n = 0}(x_u)}^2 &= \frac{1}{e} \abs{ψ_{n = 0}(x = 0)}^2
+    \end{align*}
+\end{minipage}
+Die Quantenmechanische Wahrscheinlichkeitsdichte nähert sich der klassischen
+Wahrscheinlichkeitsdichte für $n \to ∞$ an.
+
+Was entspricht einem klassisch oszilierenden Teilchen?
+\begin{center}
+\begin{tikzpicture}
+    \draw[domain=-2.5:2.5, samples=50,smooth] plot ({\x}, {.5*\x*\x});
+    \draw[domain=-2.5:2.5, samples=50,smooth,shift={(2.5,0)}] plot ({\x}, {.5*\x*\x});
+    \foreach \x in {1,...,16}
+        \draw ({2.5 - sqrt(.4*(\x - .5))}, {.2*(\x - .5)}) -- ++({2 * sqrt(.4*(\x - .5))}, 0);
+    \draw[domain=-1:1, samples=50,smooth] plot ({\x}, {exp(-16*\x*\x) + .2*.5});
+    \draw (-1, +.2*.5) -- ++(2,0);
+    \draw[->] (-1.5,.5) node[left] {$ψ_0$} -- ++(1,0);
+    \draw[<-] (5,2) -- ++(1,0) node[right,every text node part/.style={align=left}] {verschobenes harmonisches Potential; \\ Kreisfrequenz $ω$ führt zur Oszillationsdauer $T = \frac{2π}{ω}$};
+    \begin{scope}[shift={(-1, -4)}]
+        \draw[->] (0,0) -- ++(10, 0) node[below] {$x$};
+        \draw[->] (0,0) -- ++(0, 3) node[left] {$\abs{ψ}^2$};
+        \draw[domain=-1:2, samples=50,smooth,shift={(1,0)}] plot ({\x}, {1.5*exp(-16*\x*\x)});
+        \draw[domain=-2:2, samples=50,smooth,shift={(3.5,0)}] plot ({\x}, {1.5*exp(-16*\x*\x)});
+        \draw[domain=-2:2, samples=50,smooth,shift={(6,0)}] plot ({\x}, {1.5*exp(-16*\x*\x)});
+        \draw[dotted] (3.5,4) -- ++(0,-4);
+        \draw[->] (1,1.6) node[above] {$t = 0$} -- ++(1,0);
+        \draw[->] (3.5,1.6) node[above] {$t = \frac{T}{4}$} -- ++(1,0);
+        \draw[->] (6,1.6) node[above] {$t = \frac{T}{2}$} -- ++(-1,0);
+    \end{scope}
+\end{tikzpicture}
+Oszillierendes, nicht zerfließendes Wellenpaket.
+\end{center}
+Quadratisches Potential in $x$ kompensiert quadratische Phasenentwicklung in $x$ des expandierenden Wellenpakets $⇒$ Paket zerfließt nicht und oszilliert mit der Kreisfrequenz $ω$.
+Dieses Wellenpaket nennt man auch "`verschobenes Vakuum ($n = 0$)"' beziehungsweise kohärenten Zustand $\ket{α}$. Wahrscheinlichkeit $P$:
+\[P(n) = \abs{\braket{n|α}}^2 = \frac{\abs{α}^{2n}}{n!} e^{-\abs{α}^2}\]
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+* Wasserstoff
+** Ausgestrahltes Licht einer H2 Gasentladung
+** Wasserstoff ist mehr als zusammengesetztes ein negatives Teilchen gebunden an ein positives Teilchen
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+Man könnte meinen ein einfachen zwei-Körper Problem mit Coulomb-Anziehung, aber: \\
+\begin{minipage}{.48\textwidth}
+\[\estimates V(\v x) = \frac{-e^2}{2π ε_0 \abs{r}}\]
+\begin{center}
+\begin{tikzpicture}
+    \pgfdeclareverticalshading{myshading}{100bp}{color(0bp)=(red); color(50bp)=(red); color(50bp)=(blue); color(100bp)=(blue)}
+    \draw (0,0) circle (3);
+    \node[draw,circle, inner sep=.4pt] (p) at (0,0) {\phantom{$+$}};
+    \draw[->] (p) -- (55:2.4) node[midway,left] {$\v r$};
+    \node[draw, shading=myshading, transform shape, rotate=55, shading angle=90+60, minimum width=1cm] at (0,0) {};
+    \node[thick,inner sep=1pt] at (0,0) {$\mathbf{+}$};
+    \node[draw, shading=myshading, transform shape, rotate=100, shading angle=183, inner sep=0pt, minimum width=.7cm, minimum height=.1cm] at (55:2.4) (e) {};
+    \node[right] at (e) {$-$};
+    \node[below right] at (e) {Elektron};
+    \node[below right] at (p) {Proton};
+    \draw[->] (0,-3) -- ++(0,-.5) -- ++(-4,0) node[midway, below] {$v$};
+    \draw[<-] (2.2,-2.2) -- ++(.5,-.5) node[below] {Wasserstoff};
+\end{tikzpicture}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}{.48\textwidth}
+\begin{enumerate}
+\item Atom bewegt sich konstant mit Geschwindigkeit $v$
+\item Das Proton bewirkt ein Potential:
+    \[V = \frac{-q^2}{2π ε_0 \abs{\v r}} = \frac{-e^2}{2π ε_0 \abs{\v r}}\]
+\item Elektron hat Spin (folgt aus relativistischer Behandlung). Damit verbunden hat das
+Elektron ein magnetisches Moment
+\begin{center}
+\begin{tikzpicture}
+\pgfdeclareverticalshading{myshading}{100bp}{color(0bp)=(red); color(50bp)=(red); color(50bp)=(blue); color(100bp)=(blue)}
+\filldraw (0, 0) circle (1pt);
+\draw[<-] (0, -.1) -- ++(0,-.5) node[below] {Punkt};
+\draw[->] (.25, 0) -- ++(.75, 0);
+\draw[->] (1.25, -.35) -- ++(0,.7);
+\draw[<-] (1.25, -.45) -- ++(0,-.5) node[below] {Teilchen};
+\node[right] at (1.5, 0) {$\estimates$};
+\node[draw, shading=myshading, transform shape, rotate=90, shading angle=180, minimum width=1cm] at (2.30,-.05) {};
+\node at (2.7, 0) {$\v μ_e$};
+\end{tikzpicture}
+\end{center}
+$⇒$ Feinstruktur, weil zusätzliche Energie
+\begin{align*}
+E &= - \v μ_e · \v B \\
+Δ E &\sim \SI{e-4}{\eV}
+\end{align*}
+\item Proton ist zusammengesetztes Teilchen mit Spin $⇒$ gesamt Spin $⇒$ Magnetisches Moment
+$\v μ_p$ $⇒$ Energie durch $\v μ_p · \v μ_e$. Hyper-Feinstruktur $ΔE \sim \SI{e-6}{\eV}$
+\item Vakuum ist nicht leer $⇒$ Vielteilchen-Problem, $Δ E \sim \SI{e-6}{\eV}$
+\end{enumerate}
+\end{minipage}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Aber:
+   \begin{enumerate}
+   \item Atom bewegt sich; Lösung: Einführen von Schwerpunktsbewegung ($λ_{dB}$ wie bisher) und Relativbewegung (analog wie in Mechanik) $⇒$
+   \item Schrödinger Gleichnug. 3D und $1/r$ Potential
+   \end{enumerate}
+** Wasserstoff - ein einfaches Modell
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{minipage}{.48\textwidth}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- ++(1.5,0) node[below] {$y$};
+\draw[->] (0,0) -- ++(0,1.5) node[left] {$z$};
+\draw[->] (0,0) -- ++({-.5*sqrt(2)},{-.5*sqrt(2)}) node[below] {$x$};
+\node[fill=black,circle,draw,inner sep=2.5pt] (p) at (2.5, .7) {};
+\node[fill=black,circle,draw,inner sep=.7pt] (e) at (2.7, -1.4) {};
+\node[right, xshift=3pt,every text node part/.style={align=left}] at (p) {positiv geladener Kern;\\ zum Beispiel Proton};
+\node[right,xshift=3pt,every text node part/.style={align=left}] at (e) {negativ geladenes Teilchen;\\ zum Beispiel Elektron};
+\node[inner sep=0pt] at (0,0) (o) {};
+\draw[->] (o) -- (p) node[midway,above] {$\v r_2$};
+\draw[->] (o) -- (e) node[midway,below] {$\v r_1$};
+\draw[->] (p) -- (e) node[midway,right] {$\v r$};
+\draw[->] (o) -- ($(p)!.2!(e)$) node[below,pos=.75] {$\v r_s$};
+\end{tikzpicture}
+\end{center}
+$\v μ_2$: Ort des positiven Kerns \\
+$\v μ_1$: Ort des negativen Teilchens \\
+$\v μ_s$: Ort des Schwerpunkts \\
+\end{minipage}\hfill
+\begin{minipage}{.48\textwidth}
+Wasserstoff: Kern $\estimates$ Proton
+\begin{align*}
+    m_p &= \SI{1.67e-27}{\kilo\gram} \\
+    &= \SI{938}{\mega\eV} \\
+    &= \SI{1}{\amu} \text{ (atomic mass unit)}
+\end{align*}
+negativ geladenes Teilchen $\estimates$ Elektron
+\begin{align*}
+    m_e &= \SI{9.1e-31}{\kilo\gram} \\
+    &= \SI{510}{\kilo\eV} \\
+    &= \SI{1/1835}{\amu}
+\end{align*}
+\end{minipage}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Suchen Energie-Eigenzustände
+   \begin{align*}
+       \hat H \ket{ψ} &= E \ket{ψ} \\
+       \hat H &= \hat E_{\text{kin}} + \hat E_{\text{pot}} = \underbrace{\frac{\hat p_2^2}{2m_k}}_{\mathclap{\text{Kern}}} + \overbrace{\frac{\hat p_1^2}{2m_e}}^{\mathclap{\text{Elektron}}} - \underbrace{\frac{Z e^2}{2πε_0 \abs{\v r}}}_{\mathclap{\text{Wechselwirkung}}} \\
+       \intertext{in Ortsdarstellung}
+       E_{\text{ges}}ψ(\v r_1, \v r_2) &= -\frac{\hbar^2}{2m_k} \Laplace_2 ψ(\v r_1, \v r_2) - \frac{\hbar^2}{2m_e} \Laplace_1 ψ(\v r_1,\v r_2) - \frac{Z e^2}{4πε_0 \abs{r}} ψ(\v r_1, \v r_2)\\
+   \end{align*}
+   Zu Frage 1: Vereinfachung durch Trennung von Schwerpunkts- ($\v r_s$) und Relativbewegung ($\v r$)
+   \begin{align*}
+       \v r_s &= \frac{m_k \v r_2 + m_e \v r_2}{\underbrace{m_k + m_e}_{M}} = \cvec{x_s;y_s;z_s} \qquad \v r = \v r_1 - \v r_2 = \cvec{x;y;z} \\
+       ψ(\v r_1, \v r_2) &= Ψ(\v r_s, \v r) \\
+       \text{mit}\quad \pp{}{x_1} Ψ(x_s, x) &= \pp{Ψ}{x_s} \pp{x_s}{x_1} + \pp{Ψ}{x} \pp{x}{x_1} = (\frac{m_e}{M} \pp{}{x_s} + \pp{}{x})Ψ(x_s, x) \\
+       \intertext{analog: $y_1, z_1$}
+       ⇒ E_{\text{ges}} Ψ(\v r_s, \v r) &= - \frac{\hbar^2}{2M} \Laplace_s Ψ(\v r_s, \v r) +
+       \string(-\frac{\hbar^2}{2μ} \Laplace_r - \frac{Z e^2}{4π ε_0 \abs{\v r}}\string)Ψ(\v r_s, \v r) = E_{\text{ges}} Ψ(\v r_s, \v r) \\
+       μ &= \frac{m_k m_e}{m_k + m_e}
+   \end{align*}
+   Dabei erhälte man für die kinetische Energie des Schwerpunkts:
+   \[-\frac{\hbar^2}{2M} \Laplace_s Ψ(\v r_s, \v r)\]
+   dies ist entkoppelt von $\v r$ $⇒$ Atom als ganzes verhält sich wie eine De-Broglie-Welle. Zum Beispiel: Doppelspalt, Atom-Molekülinterferometer. $\estimates$ externe Dynamik. \\
+   Für die kinetische und potentielle Energie der Relativbewegung erhält man:
+   \[(-\frac{\hbar^2}{2μ} \Laplace_r - \frac{Z e^2}{4π ε_0 \abs{\v r}})Ψ(\v r_s, \v r)\]
+   $\estimates$ interne Dynamik. \\
+   Löse mit Separationsansatz
+   \[Ψ(\v r_s, \v r) = Ψ_s(\v r_s) Ψ(\v r) \quad \text{und}\quad E_{\text{ges}} = E_s + E\]
+   $⇒$ Externe Dynamik:
+   \[-\frac{\hbar^2}{2M} \Laplace_s ψ_s(\v r_s) = E_s ψ_s(\v r_s)\]
+   Lösung: de-Broglie Welle für das Atom mit
+   \[λ_s = \frac{h}{\sqrt{2M E_s}}\]
+   $⇒$ Interne Dynamik: Lösung etwas langwieriger. \\
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{minipage}{.45\textwidth}
+Zentral Potential $⇒$ sinnvoll in Kugelkoordinaten
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- ++(1.5,0) node[below] {$y$};
+\draw[->] (0,0) -- ++(0,1.5) node[left] {$z$};
+\draw[->] (0,0) -- ++({-.5*sqrt(2)},{-.5*sqrt(2)}) node[below] {$x$};
+\node[fill=black,draw,circle,inner sep=1pt] (p) at (1,1) {};
+\draw[->] (0,0) -- (p);
+\draw (0,.45) arc[radius=.45cm,start angle=90,end angle=45] node[midway,xshift=2pt,above,font=\small] {$θ$};
+\draw[dotted] (p) -- ++(0,-1.5);
+\draw[dotted] (0,0) -- ($(p) + (0,-1.5)$);
+\draw (-.25,-.25) arc[radius=.45cm,start angle=225,end angle=322] node[midway,xshift=2pt,below,font=\small] {$φ$};
+\end{tikzpicture}
+\end{center}
+\end{minipage} \\
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   \[-\frac{\hbar^2}{2μ} \Laplace_r = \underbrace{-\frac{\hbar^2}{2μ} \frac{1}{r^2}\pp{}{r}(r^2 \pp{}{r})}_{\mathclap{\text{hängt nur von $r$ ab}}} - \underbrace{\frac{\hbar^2}{2μr^2} (\frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2})}_{\mathclap{\text{hängt nur von \(θ\)-Polarwinkel und \(φ\)-Azimutwinkel ab}}}\]
+   $⇒$ Separationsansatz:
+   \[ψ(r,θ,φ) = R(r)P(θ)Q(φ)\]
+   3 gewöhnliche Differentialgleichnugen 2. Grades für $R(r), P(θ), Q(φ)$. Zusätzliche Bedingung
+   \[∫ \abs{ψ}^2 \d V = 1\]
+   grenzt die Lösungen der Differentialgleichnugen stark ein.
+   \begin{ibox}{}
+   \begin{align*}
+   ψ_{n,l,m} (r,θ,φ) &= R_{n,e}(r) P_l^m (\cos θ) e^{imφ} \\
+   E_n &= - \frac{μ e^4}{8h^2 ε_0^2} \frac{z^2}{n^2} = -R_y^{\ast} \frac{z^2}{n^2}
+   \end{align*}
+   $R_y^{\ast}$: reduzierte Rydberg Konstante $\approx \SI{13.6}{\eV}$ \\
+   $n = 1,2,3, \dots$ Hauptquantenzahl \\
+   Für gegebenens $n$ ist $l = 0,0,2, \dots, (n - 1)$ \\
+   Für gegebenes $l$ ist $m = -l, -l + 1, \dots, l - 1, l$
+   \end{ibox}{}
+   \[\hat H \ket{ψ} = E\ket{ψ} \to \ket{n,l,m}\qquad ψ_{n,l,m} = \braket{x|n,l,m}\]
+   Wichtig: Energie = $-\SI{13.6}{\eV} · 1/n^2$
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+\draw[<->] (0,3.5) node[left] {$∞$} -- ++(0,-3.5) -- ++(2.5,0) -- ++(0,3.5) node[right] {$∞$};
+\foreach \i in {1,2,3}
+\draw (0,\i*\i / 3) -- ++(2.5, 0);
+\node[right,every text node part/.style={align=left}] at (2.7,2) {$E_n \propto n^2$\\$n= 1,2,\dots$};
+\begin{scope}[shift={(5,0)}]
+    \draw[smooth,domain=-1.25:1.25,shift={(1.25,0)}] plot ({\x},{\x*\x*2.1});
+    \foreach \i in {0,...,6}
+        \draw ({1.25-sqrt(.5*(\i + .5)/2.1)},{.5*(\i + .5)}) -- ({1.25+sqrt(.5*(\i + .5)/2.1)},{.5*(\i + .5)});
+    \node[right,every text node part/.style={align=left}] at (2.7,2) {$E_n \propto (n + 1/n)$\\$n =0,1,2,\dots$};
+\end{scope}
+\begin{scope}[shift={(11,0)}]
+\draw[->] (-.1,3) -- ++(2.6,0);
+\draw (0,3.1) -- ++(0,-3.1);
+    \draw[smooth,domain=0.09:2.5] plot ({\x},{-.27/\x + 3});
+    \foreach \i in {1,...,9}
+        \draw (0,{3 - 2.5/(\i*\i)}) -- ++({min(-.27/(-2.5/(\i*\i)),2.5)},0);
+    \draw[<-] (.3,2) -- ++(.5,-.5) node[right,yshift=-1pt,xshift=-2.5pt] {$\frac{1}{r}$};
+    \node[right,every text node part/.style={align=left}] at (1.1,2) {$E_n \propto \frac{1}{n^2}$\\$n = 1,2,\dots$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+** Wasserstoff - radiale Wellenfunktion
+   Radiale Wellenfunktion: \\
+   $R_{nl}$: skalierter Radius
+   \[ρ = 2 Z \frac{r}{na_B'}\]
+   Mit Bohrschem Radius $a_B'$:
+   \[a_B' \frac{4πε_0 \hbar^2}{μ e^2}\]
+   (normaler Bohrscher Radius ist mit Elektronmasse anstatt $μ$ definiert).
+   $L_m^n(ρ)$: zugeordnete Laguere Polynome. \\
+   \[R_{nl}(r) = \sqrt{(\frac{Z}{n A_B'})^3 \frac{(n - l - 1)!}{2n(n + l)!}} e^{-\frac{ρ}{2}} ρ^l \underbrace{L_{n - l - 1}^{2l + 1}}_{\mathclap{\text{Polynom $n - l - 1$ Grades $\estimates$ Anzahl der Nullstellen}}} (ρ)\]
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+    \draw [->] (-.1,0) -- ++(8.1,0) node[above] {$r$};
+    \draw [->] (0,+.1) -- ++(0,-8.1) node[left] {$E$};
+    \draw[samples=50,smooth,domain=1.0:8] plot ({\x},{-8/\x});
+    \foreach \i in {1,...,25}
+        \draw (0,{-7/(\i*\i)}) -- ++({min(8/(7/(\i*\i)),8)},0);
+    \draw[smooth,domain=0:8,shift={(0,-7)}] plot ({.5*\x},{exp(-\x/2)});
+    \draw[smooth,domain=0:12,shift={(0,-7/4)}] plot ({.5*\x},{exp(-\x/2)*(-\x + 1)});
+    \draw[smooth,domain=0:12,shift={(0,-7/4)}] plot ({.5*\x},{exp(-\x/2)*\x});
+    \draw[->] (0,-7) -- ++(5, 0) node[below] {$r$};
+    \node[left] at (0,-7) {$\SI{-13.6}{\eV}\ \ n = 1$};
+    \node[left] at (0,-7/4) {$\SI{-3.4}{\eV}\ \ n = 2$};
+    \node[yshift=-3pt,below left] at (0,-7/4) {$l = 0,1$};
+    \node[left] at (0,-7/9) {$\SI{-1.5}{\eV}\ \ n = 3$};
+    \node[above left] at (-1,-7/16) {$(\frac{-13.6}{n^2})$};
+    \draw[->] (0,-7/4) -- ++(7, 0) node[below] {$r$};
+    \node[left] at (0,-6) {$ψ_{10,0}$};
+    \draw[<-] (2,-6.8) -- ++(.5,.5) node[right,xshift=-1pt] {$R_{10}(r)$};
+    \draw[<-] (1.3,-2.3) -- ++(0,-.5) node[below] {$R_{20}(r)$};
+    \draw[<-] (3.5, -1.6) -- ++(.5,-1) node[below right,every text node part/.style={align=left}] {$R_{21}(r)$ nur Nullstelle bei $r = 0$;\\trotzdem gleiche Energie\\$⇒$ in Winkelkoordinaten gibt\\es Nullstelle};
+    \draw[<-] (2.1, -4.1) -- ++(.5,-.5) node[below right,yshift=7pt,xshift=-9pt] {$\displaystyle{-\frac{Z e^2}{4π ε_0 r}}$};
+\end{tikzpicture}
+\end{center}
+\begin{minipage}{.3\textwidth}
+\begin{center}
+\begin{tikzpicture}
+\node[fill=black,draw,circle,inner sep=3pt] (p) at (0,0) {};
+\node[fill=black,draw,circle,inner sep=.5pt] (e) at (2,.5) {};
+\node[below,yshift=-2pt] at (p) {$p^{+}$};
+\node[below] at (e) {$e^{-}$};
+\draw (p) -- (e) node[midway,above] {$r$};
+\begin{scope}[shift={(0,-3.5)}]
+\draw[black,pattern=north east lines, pattern color=black] (0,0) circle (1.5);
+\filldraw[black,fill=white] (0,0) circle (1.3);
+\draw[->] (0,0) -- ++(2.3,0) node[below] {$y$};
+\draw[->] (0,0) -- ++(0,2.3) node[left] {$z$};
+\draw[->] (0,0) -- ++({-2.3/sqrt(2)},{-2.3/sqrt(2)}) node[below] {$x$};
+\draw[->] (0,0) -- (300:1.3) node[midway,below left,xshift=2pt,yshift=2pt] {$r$};
+\draw[->] (300:2.0) -- (300:1.5) node[midway,above right,xshift=0pt,yshift=-4pt] {$\d r$};
+\draw  (1.15,1.15) -- ++(.6,.4) node[right,yshift=1pt] {Volumen: $4π r^2 \d r$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}{.6\textwidth}
+Wie groß ist die Wahrscheinlichkeit das Elektron im Abstand $[r, r + \d r]$ zu finden?
+\[\d P = \abs{R_{n,l}(r)}^2 r^2 \d r\]
+$⇒ \abs{R_{n,l}(r)}^2 r^2$ ist eine sinnvolle Größe um Aufentaltswahrscheinlichkeit darzustellen.
+\end{minipage}
+\begin{center}
+%\pgfkeys{/pgf/fpu=true}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- ++(7,0) node[below] {$r$};;
+    \draw[->] (0,0) -- ++(0,3) node[left] {$r^2 \abs{R}^2$};
+    \draw[smooth,samples=50,domain=0:7] plot ({\x}, {5*\x*\x*exp(-\x)});
+    \node[left,every text node part/.style={align=left}] at (0,2) {$n = 1$ \\ $l = 0$};
+    \draw (2,2.8) -- ++(0,-.2);
+    \draw (2,.1) -- ++(0,-.2) node[below] {$\frac{a_b'}{z}$};
+    \draw (3,2.4) -- ++(0,-2.5) node[below] {$\frac{a_b'}{z} \frac{3}{2}$};
+    \draw[<-] (3.1,2.5) -- ++(.5,.5) node[right,every text node part/.style={align=left}] {Erwartungswert $\estimates$ mitlerer Abstand\\$\displaystyle{\braket{r}_{\ket{n,l,m}} = \frac{a_b'}{z} n^2 (1 + \frac{1}{2}(1 - \frac{l(l + 1)}{n^2}))}$};
+    \begin{scope}[shift={(0,-5)}]
+        \node[left,every text node part/.style={align=left}] at (0,2) {$n = 2$ \\ $l = 0$ \\{\color{red}$l = 1$}};
+    \draw[->] (0,0) -- ++(12,0) node[below] {$r$};
+    \draw[->] (0,0) -- ++(0,3) node[left] {$r^2 \abs{R}^2$};
+    \begin{axis}[x=1cm,axis lines=middle,hide axis,ymin=-.0,ymax=.6]
+        \addplot[smooth,samples=80,domain=0:12] {2.8*.583*.583*\x*\x*exp(-1.5*\x*.583)*(-0.65*.583*\x + 1)^2};
+        \addplot[red,smooth,samples=80,domain=0:12] {1*\x*\x*.583*.583*.583*.583*exp(-2*\x*.583)*\x*\x};
+    \end{axis}
+    \draw[red] (3.42,2.9) -- ++(0,-.2);
+    \draw[red] (3.42,.1) -- ++(0,-.2) node[below] {$4\frac{a_b'}{z}$};
+    \draw (8.6,.1) -- ++(0,-.2) node[below] {$4\frac{a_b'}{z}\frac{3}{2}$};
+    \draw[dotted] (8.6,2.3) -- ++(0,-2.4);
+    \draw[dotted] (8.6,2.3) -- ++(0,-2.4);
+    \draw (8.6,2.3) -- ++(0,-0.4);
+    \draw[<-] (8.7,2.4) -- ++(.5,.5) node[right,yshift=1pt] {Mittlerer Abstand};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+Allgemein: $l = n - 1$
+\[r_{\text{max}} = n^2 \frac{a_b'}{Z}\]
+(ergibt auch Bohr Modell)
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+** Wasserstoff - Winkelanteil der elektronischen Wellenfunktion
+   Winkelanteil der Wellenfunktion:
+   \[P_l^m(\cos θ) e^{i m φ}\]
+   $P_l^m(x)$: Legendre-Polynome. Klassischer Drehimpuls:
+   \[\v L = \v x × \v p = \cvec{y p_z - z p_y;z p_x - x p_z;x p_y - y p_x} = \cvec{L_x;L_y;L_z}\]
+   Quantenmechanische Beschreibung
+   \[\v x \to \hat{\v x} \qquad \v p \to \hat{\v p}; \qquad \hat{\v L} = \hat{\v x} × \hat{\v p}\]
+   In Ortsdarstellung: $\hat x ↦ x\qquad \hat p_x × - i \hbar \pp{}{x}$
+   \[\to \hat L_z ↦ - i \hbar (x \pp{}{y} - y \pp{}{x}) = -i\hbar \pp{}{φ} \text{ in Kugelkoordinaten}\]
+   $\hat L_Z \ket{n,l,m}$: Ortsdarstellung
+   \begin{align*}
+   -i\hbar \pp{}{φ} (R_{n,l}(r) P_l^m(\cos θ) e^{im φ}) &= -i\hbar (i m) R_{n,l}(r) P_l^m(\cos θ) e^{im φ} \\
+   ⇒ \hat L_z \ket{n,l,m} &= m \hbar \ket{n,l,m}
+   \end{align*}
+   das heißt Eigenzustand zu $\hat L_z$ Operator! Damit ist die \(z\)-Komponente des Drehimpulses des Elektrons scharf definiert. $\braket{L_z^2} - \braket{L_z}^2 = 0$ \\
+   Teilchen im Zustand $\braket{5,3,2}$ messen wir mit Wahrscheinlichkeit $1$ für die Drehimpulskomponente in z-Richtung $2\hbar$. Das gilt nicht für \(x,y\)-Richtung:
+   \[[\hat L_x, \hat L_y] = i \hat L_z\]
+   Quadrat des Beitrages des Drehimpulses: $\v L^2 = L_x^2 + L_y^2 L_z^2$
+   \begin{align*}
+       \hat{\v L}^2 \ket{n,l,m} &= \underbrace{-\hbar^2 (\frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2})}_{\mathclap{\text{Ortsdarstellung von $\hat{\v L}^2$ in Kugelkoordinaten}}} ψ_{n,l,m} \\
+       &= -\hbar^2 (\frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2}) R_{n,l}(r) P_l^m(\cos θ) e^{imφ} = \hbar^2 l(l + 1) ψ_{n,l,m} \\
+   \hat{\v L}^2 \ket{n,l,m} &= \hbar^2 l(l + 1) \ket{n,l,m}
+   \end{align*}
+   Allgemeine Drehimpuls-Eigenzustände: Drehimpuls ist gequantelt: $\abs{\v L}$ kann nur diskrete $\hbar\sqrt{l(l + 1)}$ Werte annehmen. \\
+   Für gegebenen Betrag des Drehimpulses gibt es $2 l + 1$ Einstellmöglichkeiten in \(z\)-Richtung
+   $m = -l, -l + 1, \dots, l - 1, l$; Der Wert in \(x\)- und in \(y\)-Richtung ist unbestimmt.
+   Typische Darstellung:
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+    \node at (3,2) {$l = 1$};
+    \draw[->] (0,0) -- ++(3,0) node[below] {$y$};
+    \draw[->] (0,-3) node[left] {$0$} -- ++(0,6) node[left] {$L_z$};
+    \draw[dotted] (0,-2) arc[radius=2cm,start angle=270,end angle=450];
+    \draw[->] (0,0) -- (0:2) node[above right] {$\ket{l = 1, m = 0}$};
+    \draw[->] (0,0) -- (45:2) node[above right] {$\ket{l = 1, m = 1}$};
+    \draw[->] (0,0) -- (-45:2) node[below right] {$\ket{l = 1, m = -1}$};
+    \draw[<-] ({2/sqrt(2)},.1) -- ++(1,1) node[right] {$\hbar \sqrt{l(l + 1)}$ mit $l= 1$};
+    \draw[red] (45:2) -- (135:2);
+    \draw[red] (0:2) -- (180:2);
+    \draw[red] (-45:2) -- (-135:2);
+    \draw[dotted] (45:2) -- (0,{2/sqrt(2)}) node[left] {$\hbar$};
+    \draw[red,<-] ({-2/sqrt(2) - .1},{2/sqrt(2) -.1}) -- (-2.0,-3.1);
+    \draw[red,<-] ({-2 - .1},0) -- (-2.0,-3.1);
+    \draw[red,<-] ({-2/sqrt(2) - .1},{-2/sqrt(2) -.1}) -- (-2.0,-3.1) node[below,every text node part/.style={align=left}] {Quantenmechanisch ist $x$ - und $y$-Richtung nicht festgelegt, das heißt unscharf. $[\hat L_x, \hat L_y] = i \hat L_z$ in 3D Darstellung $\estimates$ Kegel};
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   \begin{align*}
+       \hat L_z \ket{l,m} &= \hbar m \ket{l,m} \\
+       \hat{\v L}^2 \ket{l,m} &= \hbar l(l + 1) \ket{l,m}
+   \end{align*}
+   $\ket{l,m}$ sind Drehimpulseigenzustände. In Ortsdarstellung (Kugelkoordinaten):
+   \[\ket{l,m} = \frac{1}{\sqrt{2π}} P_l^m (\cos θ) e^{i m φ} = N_{l,m} Y_l^m (θ,φ)\]
+   $N$: Normierung. $Y_l^m$: Kugelflächen-Funktion. $⇒$ Funktion definiert auf einer Kugeloberfläche definiert auf einer Kugeloberfläche kann in $Y_l^{m_l}$ zerlegt werden "`Fourierzerlegung auf einer Kugel"'. $Y_l^{m_l}$ sind
+   \begin{align*}
+   \text{normiert}\quad ∫_0^{2π} \d φ ∫_0^π \sin θ \d θ \abs{Y_l^{m_l}}^2 &= 1 \\
+   \text{orthogonal}\quad ∫_0^{2π} \d φ ∫_0^∞ \sin θ \d θ Y_l^{m\ast} Y_{l'}^{m'} &= δ_{ll'} δ_{mm'}
+   \end{align*}
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+    \begin{tikzpicture}[declare function={Y00(\x)=1/(2*sqrt(pi));Y10(\x)=.5*sqrt(3/pi)*sin(\x);Y20(\x)=.25*sqrt(5/pi)*(2*sin(\x)^2 - cos(\x)^2;Y11(\x)=.5*sqrt(1.5/pi)*cos(\x);Y11r(\x)=.5*sqrt(1.5/pi)*sin(\x);Y11i(\x)=-.5*sqrt(1.5/pi)*cos(\x);}]
+    \begin{scope}
+    \begin{scope}
+        \node[right] at (-1,2.4) {$\displaystyle{\ket{l,m_l} = \ket{0,0} \xrightarrow{\text{Ortsdarstellung}} Y_{l = 0}^{m_l = 0} = \frac{1}{2\sqrt{π}}}$};
+        \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
+        \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1 + Y00(\x)});
+        \draw[->] (0,0) -- ++(1.8,0) node[below] {$x$};
+        \draw[->] (0,0) -- ++(0,1.8) node[left] {$z$};
+        \draw (0,0) node[cross out, draw, minimum size=.2cm, inner sep=0pt, outer sep=0pt] {} node[left,xshift=-2pt] {$y$};
+        \draw (0,0) circle (.135cm);
+        \draw[->] (2.4,0) -- ++(2,0) node[midway,above] {abrollen};
+    \end{scope}
+    \begin{scope}[shift={(5,-1)}]
+        \draw[->] (0,0) -- ++(5.3,0);
+        \draw[->] (0,0) -- ++(0,2);
+        \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x*2.5/180},{4*Y00(\x + 90)});
+        \foreach \i/\l in {1/$\frac{π}{2}$,2/$π$,3/$\frac{3π}{2}$,4/$2π$}
+            \draw (\i*pi/2.5, .1) -- ++(0, -.2) node[below] {\l};
+        \draw[->] (5.2,1) -- ++(2.5,0) node[midway,above] {Polardiagramm};
+    \end{scope}
+    \begin{scope}[shift={(14,0)}]
+    \draw[->] (0,0) -- ++(0,1.8);
+    \draw[-latex] (0,1.6) [partial ellipse=400:120:.3cm and .15cm];
+    \draw[->,black!50!white] (0,0) -- (45:{4/(2*sqrt(pi))});
+    \draw (0,.45) arc[radius=.45cm,start angle=90,end angle=45] node[midway,xshift=-2pt,yshift=2pt,below,font=\small] {$θ$};
+    \draw [scale=4,domain=0:360, samples=201, smooth] plot ({\x}:{Y00(\x)});
+    \end{scope}
+    \end{scope}
+
+    \begin{scope}[shift={(0,-5)}]
+    \begin{scope}
+    \node[right] at (-1,2.4) {$\displaystyle{\ket{l,m_l} = \ket{1,0} \xrightarrow{\text{Ortsdarstellung}} Y_{1}^{0} = \frac{1}{2}\sqrt{\frac{3}{π}}\cos θ}$};
+    \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
+    \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1 + Y10(\x)});
+        \draw[->] (0,0) -- ++(1.8,0) node[below] {$x$};
+        \draw[->] (0,0) -- ++(0,1.8) node[left] {$z$};
+        \draw (0,0) node[cross out, draw, minimum size=.2cm, inner sep=0pt, outer sep=0pt] {} node[left,xshift=-2pt] {$y$};
+        \draw (0,0) circle (.135cm);
+        \draw[->] (2.4,0) -- ++(2,0) node[midway,above] {abrollen};
+    \end{scope}
+    \begin{scope}[shift={(5,-1)}]
+        \draw[->] (0,0) -- ++(5.3,0);
+        \draw[->] (0,0) -- ++(0,2);
+        \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x*2.5/180},{3*Y10(\x + 90)});
+        \foreach \i/\l in {1/$\frac{π}{2}$,2/$π$,3/$\frac{3π}{2}$,4/$2π$}
+            \draw (\i*pi/2.5, .1) -- ++(0, -.2) node[below] {\l};
+        \draw[->] (5.2,1) -- ++(2.5,0) node[midway,above] {Polardiagramm};
+        \draw[white,pattern=north east lines, pattern color=black] (2.5,2) rectangle (5,-2);
+        \draw (2.5,2) -- ++(0,-4);
+        \draw[<-] (4,1.5) -- ++(.5,.7) node[right] {$θ ∈ [0,π]$};
+    \end{scope}
+    \begin{scope}[shift={(14,0)}]
+    \draw[->] (0,0) -- ++(0,2.4);
+    \draw[-latex] (0,2.2) [partial ellipse=400:120:.3cm and .15cm];
+    \draw[->,black!50!white] (0,0) -- (45:{4*Y10(45)});
+    \draw (0,.45) arc[radius=.45cm,start angle=90,end angle=45] node[midway,xshift=-2pt,yshift=2pt,below,font=\small] {$θ$};
+    \draw [scale=4,domain=0:360, samples=201, smooth] plot ({\x}:{Y10(\x)});
+    \draw [scale=4,domain=0:360, samples=201, smooth] plot ({\x}:{-Y10(\x)});
+    \end{scope}
+    \end{scope}
+
+    \begin{scope}[shift={(0,-11)}]
+    \begin{scope}
+    \node[right] at (-1,2.4) {$\displaystyle{\ket{l,m_l} = \ket{2,0} \xrightarrow{\text{Ortsdarstellung}} Y_{2}^{0} = \frac{1}{4}\sqrt{\frac{5}{π}}(2 \cos^2 θ - \sin^2 φ)}$};
+    \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
+    \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1 + Y20(\x)});
+        \draw[->] (0,0) -- ++(1.8,0) node[below] {$x$};
+        \draw[->] (0,0) -- ++(0,1.8) node[left] {$z$};
+        \draw (0,0) node[cross out, draw, minimum size=.2cm, inner sep=0pt, outer sep=0pt] {} node[left,xshift=-2pt] {$y$};
+        \draw (0,0) circle (.135cm);
+        \draw[->] (2.4,0) -- ++(2,0) node[midway,above] {abrollen};
+    \end{scope}
+    \begin{scope}[shift={(5,-1)}]
+        \draw[->] (0,0) -- ++(5.3,0);
+        \draw[->] (0,0) -- ++(0,2);
+        \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x*2.5/180},{2*Y20(\x + 90)});
+        \foreach \i/\l in {1/$\frac{π}{2}$,2/$π$,3/$\frac{3π}{2}$,4/$2π$}
+            \draw (\i*pi/2.5, .1) -- ++(0, -.2) node[below] {\l};
+        \draw[white,pattern=north east lines, pattern color=black] (2.5,2) rectangle (5,-2);
+        \draw (2.5,2) -- ++(0,-4);
+        \draw[<-] (4,1.5) -- ++(.5,.7) node[right] {$θ ∈ [0,π]$};
+        \draw[->] (5.2,1) -- ++(2.5,0) node[midway,above] {Polardiagramm};
+    \end{scope}
+    \begin{scope}[shift={(14,0)}]
+    \draw[->] (0,0) -- ++(0,3.0);
+    \draw[-latex] (0,2.8) [partial ellipse=400:120:.3cm and .15cm];
+    \draw[black!50!white] (0,0) -- (36:1.5);
+    \draw (0,.7) arc[radius=.7cm,start angle=90,end angle=36] node[midway,xshift=1pt,yshift=2pt,above,font=\small] {$\sim\!\!.3 π$};
+    \draw [scale=4,domain=0:360, samples=201, smooth] plot ({\x}:{Y20(\x)});
+    \end{scope}
+    \end{scope}
+
+    \begin{scope}[shift={(0,-17.7)}] % -18 insert empty page
+        \node[right,every text node part/.style={align=left}] at (-1,2.9) {$⇒ Y_{l}^{0}$ erlaubt Polarwinkel-Abhängigkeiten zu beschreiben; $Y_l^{m_l}$ mit $m_l \neq 0 ⇒$ Azimut-Abhängigkeiten zum Beispiel:\\ $\displaystyle{\ket{l,m_l} = \ket{1,\mp 1} \xrightarrow{\text{Ortsdarstellung}} Y_{1}^{\pm 1} = \mp \frac{1}{2}\sqrt{\frac{3}{π}}\sin θ e^{\pm i φ}}$};
+    \begin{scope}
+    \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
+        \draw [black!50!white,scale=1,domain=0:360, samples=101, smooth] plot ({cos(\x) + Y11(\x)},{sin(\x)});
+        \draw[->] (0,0) -- ++(1.8,0) node[below] {$x$};
+        \draw[->] (0,0) -- ++(0,1.8) node[left] {$z$};
+        \draw (0,0) node[cross out, draw, minimum size=.2cm, inner sep=0pt, outer sep=0pt] {} node[left,xshift=-2pt] {$y$};
+        \draw (0,0) circle (.135cm);
+        \draw[->] (2.4,0) -- ++(2,0) node[midway,above] {abrollen};
+    \end{scope}
+    \begin{scope}[shift={(5,-1)}]
+        \draw[->] (5.2,1) -- ++(2.3,0) node[midway,above] {Polardiagramm};
+        \begin{scope}[shift={(0,1.2)}]
+        \draw[->] (0,0) -- ++(5.3,0);
+        \draw[->] (0,0) -- ++(0,2);
+        \draw [black!50!white,scale=1,domain=0:180, samples=201, smooth] plot ({\x*5/180},{4*Y11(\x - 90)});
+        \foreach \i/\l in {1/$\frac{π}{2}$,2/$π$}
+            \draw (\i*pi/1.25, .1) -- ++(0, -.2) node[below] {\l};
+        \node at (4.5,1.3) {$φ = 0$};
+        \end{scope}
+        \begin{scope}[shift={(0,-1.2)}]
+        \draw[->] (0,0) -- ++(5.3,0);
+        \draw[->] (0,0) -- ++(0,2);
+        \draw [black,scale=1,domain=0:360, samples=201, smooth] plot ({\x*2.5/180},{4*Y11r(\x + 90)});
+        \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x*2.5/180},{4*Y11i(\x - 90)});
+        \foreach \i/\l in {1/$\frac{π}{2}$,2/$π$,3/$\frac{3π}{2}$,4/$2π$}
+            \draw (\i*pi/2.5, .1) -- ++(0, -.2) node[below] {\l};
+        \node at (4.5,1.6) {$φ = \frac{π}{2}$};
+        \node[black!50!white,left] at (0,0) {$\Im \{Y_1^{-1}\} \propto -\sin φ$};
+        \node[left] at (0,1.4) {$\Re \{Y_1^{-1}\} \propto \cos φ$};
+        \end{scope}
+    \end{scope}
+    \begin{scope}[shift={(14,0)}]
+        \draw[->] (0,0) -- ++(0,1.8);
+        \draw[-latex] (0,1.6) [partial ellipse=400:120:.3cm and .15cm];
+        \draw[->,black!50!white] (0,0) -- (45:{4*Y11(45)});
+        \draw [scale=4,domain=0:360, samples=201, smooth] plot ({\x}:{Y11(\x)});
+        \draw [scale=4,domain=0:360, samples=201, smooth] plot ({\x}:{-Y11(\x)});
+    \end{scope}
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+
 \printbibliography

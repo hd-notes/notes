@@ -877,15 +877,15 @@
    #+begin_lemma latex
    Sei $(X, Σ_X), (Y,Σ_Y)$ Messräume, $f: X \to Y$ messbar. Ist $μ$ ein Maß auf $(X, Σ_X)$ so wird durch
    \[(f \ast μ)(B) := μ(f^{-1}(B)), B ∈ Σ_Y, f^{-1}(B) := \{x ∈ X \mid f(x) ∈ B\}\]
-   ein Maß auf $Y$ definiert (Bildmaß von $μ$ bezüglich $f$). Es gilt $(f \ast μ)(B) = 0 ∀ B ∈ Σ_Y$ mit $B ∩ f(x) = \emptyset$
+   ein Maß auf $Y$ definiert (Bildmaß von $μ$ bezüglich $f$). Es gilt $(f \ast μ)(B) = 0 ∀ B ∈ Σ_Y$ mit $B ∩ f(X) = \emptyset$
    #+end_lemma
    #+begin_proof latex
-   Es gilt $f \ast μ(\emptyset) = μ(f^{-1}(\emptyset)) = 0$, da $f^{-1}(\emptyset) = \emptyset$ und
-   \[(f \ast μ)(\bigdcup_{k ∈ ℕ} B_k = μ(f^{-1} \bigdcup_{k ∈ ℕ} B_k))\]
-   für $(B_k)_{k ∈ ℕ} ∈ Σ_Y$, paarweise disjunkte $⇒ f^{-1}(B_k) =: A_k$ ebenfalls eine Folge paarweise disjunkter Mengenu und
+   Es gilt $(f \ast μ)(\emptyset) = μ(f^{-1}(\emptyset)) = 0$, da $f^{-1}(\emptyset) = \emptyset$ und
+   \[(f \ast μ)(\bigdcup_{k ∈ ℕ} B_k) = μ(f^{-1} (\bigdcup_{k ∈ ℕ} B_k))\]
+   für $(B_k)_{k ∈ ℕ} ∈ Σ_Y$, paarweise disjunkt $⇒ f^{-1}(B_k) =: A_k$ ebenfalls eine Folge paarweise disjunkter Mengen und
 
    \[(f \ast μ)(\bigdcup_{k ∈ ℕ} B_k) = μ(\bigdcup_{k ∈ ℕ} f^{-1}(B_k)) = \sum_{k ∈ ℕ} μ(f^{-1}(B_k)) = \sum_{k ∈ ℕ} (f \ast μ)(B_k)\]
-   Ist $B ∈ Σ_Y$ mit $B ∩ f(x) = \emptyset$
+   Ist $B ∈ Σ_Y$ mit $B ∩ f(X) = \emptyset$
    \[⇒ (f \ast μ)(B) = μ(f^{-1}(B)) = μ(\emptyset) = 0\]
    #+end_proof
    #+begin_thm latex
@@ -896,7 +896,7 @@
    #+begin_proof latex
    Für $A := \{x ∈ X \mid (g \circ f) > 0\}$ und $B = \{y ∈ Y \mid g(y) > 0\}$ gilt
    \[(f \ast μ)(B) = μ(f^{-1}(B)) = μ(\{x ∈ X \mid f(x) ∈ B\}) = μ(A)\]
-   Also $(f \ast μ)(B^C) = μ(A^C)$. Für das Integal nehmen wir zuerst einfache Funktion
+   Also $(f \ast μ)(B^C) = μ(A^C)$. Für das Integral nehmen wir zuerst einfache Funktion
    \begin{align*}
    g &= \sum_{j = 1}^{k} α_j χ_{B_j}, α_j \geq 0, B_j ∈ \mathcal{B}(Y), B_i ∩ B_j = \emptyset ∀ i \neq j, Y = \bigcup_{j = 1}^k B_j \\
    χ_{B_j} \circ f &= χ_{f^{-1}(B_j)} \\
@@ -920,18 +920,434 @@
    2. Sei $f: X \to M x + b ∈ ℝ^{n × m}$ invertierbar. Für $b ∈ ℝ$ gilt
 	  \[f \ast λ^n = \frac{1}{\abs{\det M}} λ^n\]
 	  Zunächst $f \ast λ^n$ ist translationsinvariant und damit	ist $f \ast λ^n$ ein Vielfaches von $λ^n$. Weiter nutzt man, dass da $M$ invertierbar $∃ V_1, V_2 ∈ O(n)$, $D$ Diagonalmatrix sodass
-	  $M = V_1 D V_2$
-   3.
-      \begin{align*}
-	  ∫_A g \underbrace{(M x + b)}_{=: f} \d λ^n &= ∫_A (g \circ f) \d λ^n = ∫_{M A + b} g \circ f_x \d λ^n \\
-	  &= \frac{1}{\abs{\det M}} ∫_{M A + b} g \d λ^n
-      \end{align*}
+	  $M = V_1 D V_2$. Jede invertierbare Matirx $M$ kann man als Produkt $U_1 D U_2$ mit $U_1, U_2 ∈ \mathcal{O}(n)$ und $D$ diagonal schreiben. ($M$ invertierbar $⇒$ $M^T M$ symmetrisch, positiv definit
+      $⇒$ $∃  U ∈ \mathcal{O}(n), D$ diagonal mit positiven Einträgen $M^T M = U^T D^2 U$). Setze $U_1 := M U^T D^{-1}, U_2 := U ∈ \mathcal{O}(n)$
+	  \[⇒ U_1^T U_1 = (D^{-1})^T U M^T M U^T D^{-1} = D^{-1} D^{2} D^{-1} = \mathbb{1}\]
+	  $⇒ U_1 ∈ \mathcal{O}(n)$ und $U_1 D U_2 = M U^T D^{-1} D U = M$
+   4.
+       \begin{align*}
+	   ∫_A g \underbrace{(M x + b)}_{=: f} \d λ^n &= ∫_A (g \circ f) \d λ^n = ∫_{M A + b} g \circ f_x \d λ^n \\
+	   &= \frac{1}{\abs{\det M}} ∫_{M A + b} g \d λ^n
+       \end{align*}
    #+end_remark
-   #+ATTR_LATEX: :options [Trasformationssatz]
+   #+ATTR_LATEX: :options [Transformationssatz]
    #+begin_thm latex
    Seien $U, V ⊂ ℝ$ und $f ∈ C^1 (U, V)$, $f:$ Diffeomorphismus. Dann gilt
    \[f^{-1} \ast λ^n = \abs{J f} λ^n, J f = \det\underarrow[(J)]{Jacobi Matrix} f\]
    Es gilt
-   \[∫_U (g \circ f) \abs{J f} \d λ^n = M_V g \d λ^n\]
+   \[∫_U (g \circ f) \abs{J f} \d λ^n = ∫_V g \d λ^n\]
    $∀$ nichtnegative Funktionen $g: V \to ℝ$
    #+end_thm
+   #+begin_proof latex
+   zu zeigen:
+   \[∫_U (g \circ f) \abs{J f} \d λ^n = ∫_V g \d λ^n\]
+   Vorraussetzung: $f$ ist *Diffeomorphismus*:
+   \[f ∈ C^1(U, V), f^{-1} ∈ C^1 (V, U)\]
+   (also auch $f$ bijektiv) \\
+   Schritt 1: Wir betrachten $g = 1$ und offene Quader $R ⊂ U$.	Zu zeigen:
+   \[∫_R \abs{J f} f \d λ^n = ∫_{f(R)} \d λ^n = λ^n(f(R))\]
+   Wir setzen
+   \[φ = \frac{χ_{B_1}(0)}{λ^n (B_1(0))}\]
+   und damit
+   \[φ_ε(y) = ε^{-n} φ(\frac{y}{n})\]
+   \[∫_{ℝ^n} φ_ε(y) \d λ^n (y) = 1\]
+   nach Translationsinvarianz, mit $M = \begin{pmatrix} \frac{1}{ε} & 0 \\ 0 & \frac{1}{ε} \end{pmatrix}$. Wir definieren
+   \begin{align*}
+   I_ε :&= ∫_{f(R)} \abs{Jf (f^{-1} y)} \underbrace{∫_R φ_ε(f(z) - y) \d λ^n z}_{h_ε(y)} \d λ^n y \\
+   &= ∫_{f(R)} \abs{J f(f^{-1}(y))}	h_ε(y) \d λ^n y \\
+   \end{align*}
+   Für $ε < ε_0$ ist $h_ε \neq 0$ nur für $z ∈ K := f^{-1}(\overline{B_ε(y)})$ kompakt. Setze $x := f^{-1}(y) ∈ K$, dann erhalten wir mit Transformation $z \to x + ε z$ und $W_ε(x) := \{\frac{1}{ε}(y - x) \mid y ∈ K\}$
+   \begin{align*}
+   ⇒ h_ε(y) &= ∫_K φ_ε(f(z) - y) \d λ^n (z) = ε^{-n} ∫_K φ(\frac{f(z) - y}{ε}) \d λ^n(z) \\
+   &= ∫_{W_ε(x)} φ(\frac{f(x + ε z) - f(x)}{ε}) \\
+   \text{wegen} \quad \abs{\frac{f(x + ε z) - f(x)}{ε}} &\geq \frac{\abs{z}}{c} \quad\text{für}\quad c := \sup_{K} \abs{D(f^{-1})} \\
+   \intertext{$x + ε z ∈ U$ ist der Integrand nur für $B_C(0)$ von Null verschieden. Mit $ε \searrow 0$ wird das Gebiet $B_C(0)$ überdecken}
+   ⇒ \lim_{ε \to 0} h_ε(y) &= \lim_{ε \to 0} ∫_{B_C(0)} φ(\frac{f(x + ε z) - f(x)}{ε}) \d λ^n(z) \\
+   &= ∫_{B_C(0)} \lim_{ε \to 0} φ(\frac{f(x + ε z) - f(x)}{ε}) \d λ^n(z) \\
+   \frac{f(x + ε z) - f(x)}{ε} &\to D f(x) z ⇒ φ(\frac{f(x + ε z) - f(x)}{ε}) \to φ(D f(x) z)
+   \end{align*}
+   $∀ z ∈ B_C(0)$ mit $\abs{D f(x) z} \neq 1$ (wegen Unstetigkeit von $φ$). \\
+   Da $\{z ∈ ℝ^n \mid \abs{D f(x) z} = 1\}$ eine Nullmenge ist, gilt die Konvergenz fast überall.
+   \[\lim_{ε \to 0} I_ε = ∫_{f(R)} 1 \d λ^n = λ^n (f(R))\]
+   \begin{align*}
+   \lim_{ε \to 0} I_ε &= \lim_{ε \to 0} \abs{∫_{f(R)} Jf(f^{-1}(y))} φ_ε(f(z) - y) \d λ^n (z) \\
+   &= \lim_{ε \to 0} ∫_{B_ε(F(z))} (\abs{J f(f^{-1}(y))}  - \abs{J f(f^{-1}(f(z)))} + \abs{J_f f^{-1}(f(z))}) φ_ε(f(z) - y) \d λ^n(z) \\
+   &= \lim_{ε \to 0} (\abs{Jf(f^{-1}(f(z)))} + ∫_{B_ε(f(z))} \abs{Jf(f^{-1}(y))} - \abs{Jf(f^{-1}(f(z)))}) φ_ε(f(z) - y) \d λ^n y \\
+   \abs{Jf(f^{-1}(y))} - &\abs{Jf(f^{-1}(f(z)))} \leq \sup_{\mathclap{η ∈ B_ε(f(x))}} \abs{J f(f^{-1}(n))} - \abs{Jf(f^{-1}(f(z)))} \\
+   \lim_{ε \to 0}  I_ε &= ∫_R \abs{J f(z)} \d λ^n(z)
+   \end{align*}
+   Schritt 2: Für $B ∈ \mathcal{B}(U), μ(B) = ∫_B \abs{J f} \d λ^n$ definiert ein neues Maß.
+   \[⇒ μ(·) = λ^n(f(·)) = (f^{-1}) \ast (λ^n) \text{ auf } B(U)\]
+   Dann gilt Transformationssatz für $g = χ_B, B ∈ \mathcal{B}(U)$ $⇒$ Für einfache Funktionen $⇒$ nichtnegative messbare Funktionen $⇒$ $g = g^{+} - g^{-}$
+   #+end_proof
+
+   $f^{-1} ∈ C^1$
+   \begin{align*}
+   \abs{x + ε z - x} &\leq \sup \abs{D f^{-1}} \abs{f(x + ε z) - f(x)} \\
+   \frac{\abs{z}}{c} &\leq \frac{\abs{f(x + ε z) - f(x)}}{ε}
+   \end{align*}
+* \(L^p\)-Räume
+  #+ATTR_LATEX: :options [\(L^p\)-Norm]
+  #+begin_defn latex
+  Für einen Maßraum $(X, Σ, μ)$ definieren wir \(L^p\)-Norm einer messbaren	Funktion $f: (X, Σ) \to (ℝ, \mathcal{B})$ durch
+  \[\norm{f}_{L^p} = (∫_X \abs{f}^p \d μ)^{1/p} \quad p ∈ [1,∞\string)\]
+  und mit $\mathcal{L}^p(X,μ)$ bezeichnen wir die Menge aller reelwertigen messbaren Funktionen, deren
+  \(L^p\)-Norm endlich ist.
+  - $\mathcal{L}^p(X, μ)$ ist ein Vektorraum:
+	\[\abs{f + g}^p \leq 2^p \max(\abs{f}^p, \abs{g}^p) \leq 2^p (\abs{f}^p + \abs{g}^p)\]
+  zu zeigen: $\norm{·}_{L^p}$ ist eine Norm (Problem: Nullmenge, Lösung: einfach rausteilen)
+  - Dreiecksungleichnug ($\leftarrow$ Minkowski Ungleichung) $\to$ \(L^p\)-Räume
+  -	\(L^p\)-Räume sind Banachräume (vollständig)
+  #+end_defn
+  #+begin_lemma latex
+  Sei $f: (X, Σ) \to (ℝ, \mathcal{B})$ messbar. Dann gilt
+  \[∫ \abs{f}^p \d μ = 0 ⇔ f = 0 \quadμ\text{-fast überall}\]
+  #+end_lemma
+  #+begin_proof latex
+  Mit $g:= \abs{f}^p$
+  \[⇒ ∫_X g \d μ = 0 ⇔ g = 0 \quad μ\text{-fast überall } ⇔ f = 0 \quad μ\text{-fast überall}\]
+  #+end_proof
+  Wir setzen $\mathcal{N}(X, μ) = \{f: (X, Σ) \to (ℝ, \mathcal{B}) \mid f\text{ messbar, } f(x) = 0\quad μ\text{-fast überall}\}$.
+  $\mathcal{N}(X, μ)$ ist ein linearer Unterraum von $\mathcal{L}^p$. Wir bilden den Quotientenraum
+  \[L^p (X, μ) := \faktor{\mathcal{L}^p(X, μ)}{\mathcal{N}(X, μ)}\]
+  Für $X ⊂ ℝ^n, L^p(X) := L^p(X, λ^n)$. Die Elemente von $L^p(X, μ)$ sind Äquivalenzklassen von Funktionen. Wohldefiniertheit der \(L^p\)-Norm auf $L^p(X, μ)$ folgt aus Lemma 2.2.
+  - Im Fall	$p = 2$ haben wir einen Hilbertraum, das heißt einen vollständig normierten Raum (Banach Raum) mit Skalarprodukt
+	\[\angl{f, g}_{L^2(X, μ)} := ∫_X f(x) \overline{g(x)} \d μ(x)\]
+  -	Wir können auch $p = ∞$	betrachten,
+	\begin{align*}
+	\norm{f}_{L^∞(X, μ)} &= \inf \{s > 0 \mid μ(\{x ∈ X \mid \abs{f(x)} \geq s\}) = 0\} \\
+	&= \sup \{s \geq 0 \mid μ(\{x ∈ X \mid \abs{f(x)} \geq s\}) > 0\}
+   	\end{align*}
+  Wir bezeichnen mit $B(X, μ)$ die Menge der essentiell beschriebenen Funktionen und setzen $L^∞(X, μ) = \faktor{B(X, μ)}{\mathcal{N}(X, μ)}$
+  #+begin_ex latex
+  \begin{align*}
+  \norm{χ_{ℚ}}_{L^∞(ℝ, λ)} &= 0 \\
+  \norm{χ_{ℚ}}_{L^∞(ℝ, δ_0)} &= 1 \\
+  δ_0(\{x ∈ ℝ \mid χ_ℚ(x) \geq s\}) &= 1
+  \end{align*}
+  #+end_ex
+  #+begin_defn latex
+  Sei $X$ ein metrischer Raum, der lokal kompakt ist (das heißt jeder Punkt aus $X$ besitzt eine kompakte Umgebung). Dann heißt $f: (X, Σ) \to (ℝ, \mathcal{B})$ *lokal \(p\)-integrierbar* falls
+  \[f ∈ L^p(K, μ) ∀ K ⊂ X\]
+  Bezeichnung: $L^p_{\text{loc}}(X, μ)$
+  #+end_defn
+  *Ungleichnugen (Jemen, Hölder, Minkowski)* \\
+  *Erinnerung*: Konvexe Funktion:
+  \[f:(a, b) \to ℝ: φ(λ x + (1 - λ) y) \leq λφ(x) + (1 - y) φ(y) ∀ x, y ∈ (a, b), λ ∈ (0, 1)\]
+  strikt konvex für "$<$". \\
+  Jede Norm auf einem Vektorraum ist konvex. denn für $f, g ∈ X, λ ∈ (0,1)$ gilt:
+  \[\norm{λ f + (1 - λ) g}_X \leq λ\norm{f}_X + (1 - λ) \norm{g}_X\]
+  $∀$ konvexe $φ$ auf $a < x < z < y < b$ ($z = λ x + (1 - λ)y$ für ein $λ ∈ (0,1)$)
+  \begin{align*}
+  \frac{φ(z) - φ(x)}{z - x} &\leq \frac{φ(y) - φ(x)}{y - x} \leq \frac{φ(y) - φ(z)}{y - z} \tag{\(\ast\)} \\
+  \frac{φ(λ x + (1 - λ)y) - φ(x)}{(λ - 1)x + (1 - λ)y} &\leq \frac{(λ - 1)φ(x) + (1 - λ)φ(y)}{(1 - λ)(y - x)} = \frac{φ(y) - φ(x)}{y - x} \\
+  \end{align*}
+  Wir erhalten "$<$" für strikte Konvexität.
+  #+begin_lemma latex
+  Die folgende Aussagen gelten für alle konvexe $φ:(a, b) \to ℝ$:
+  1. $φ$ ist lokal Lipschitz-stetig, das heißt für alle kompakte $I ⊂ (a, b) ∃ L_1 < ∞$ mit
+	 \[\abs{φ(x) - φ(y)} \leq L_1 \abs{x - y} ∀ x, y ∈ I\]
+  2. Die Ableitungen
+	 \[φ'_{\pm} = \lim_{h\searrow 0} \frac{φ(x + h) - φ(x)}{\pm h}\]
+	 existieren und sind monoton fallend.
+	 Darüber hinaus existiert $φ'$ bis auf Nullmenge.
+  3. Für ein festes $\bar x ∈ (a, b) ∀ α ∈ [φ'_{-}(\bar x), φ'_{+}(\bar x)]$ gilt
+	 \[φ(y) \geq φ(\bar x) + α(y - \bar x) \quad ∀ y ∈ (a, b)\]
+	 "$>$" für strikte Konvexität von $φ$ und $y \neq \bar x$
+  #+end_lemma
+  #+begin_proof latex
+  Wir setzen
+  \begin{align*}
+  \frac{φ(y) - φ(x)}{y - x} &=: D(x, y) = D(y, x) \\
+  \xRightarrow{(\ast)} D(x, z) &\leq D(x, y) \leq D(y, z) \quad\text{für } x < z < y
+  \end{align*}
+  Damit ist $ε \to D(x + ε, x)$ monoton steigend (und beschränkt) (Für $ε_1 < ε_2 ⇒ D(x + ε_1, x) \leq D(x + ε_2, x)$) \\
+  $⇒ ∃ φ_{+}'(x)$ und $φ_{-}'(x)$
+  \begin{align*}
+  D(x - ε, x) \leq D(x+ ε, x) ⇒ φ_{-}'(x) &\leq φ'_{+}(x) \\
+  φ_{+}'(x) &\leq φ_{-}'(y) \text{ für } x < y \\
+  ⇒ φ_{-}'(x) &\leq φ_{+}'(x) \leq φ_{-}'(y) \leq φ_{+}'(y) \quad\text{für}\quad x < y
+  \end{align*}
+  Da eine monotone Funktione nur eine abzählbare Anzahl von Sprüngen enthalten kann (jedes Sprungintervall enthält eine rationale Zahl und sie sind paarweise disjunkt) $⇒$ 2.
+  Aus $(\ast)$ $⇒$
+  \begin{gather*}
+  φ_{+}'(x) \leq D(x, y) \leq φ_{-}'(y) \quad\text{für}\quad x < y \\
+  \begin{aligned}
+  ⇒ y > x &⇒ φ(y) \geq φ(x) + φ_{+}'(x)(y - x) \\
+  y < x &⇒ φ(y) \geq φ(x) + φ_{-}'(x)(y - x)
+  \end{aligned} \\
+  φ_{-}'(x)(y - x),	φ_{+}'(x)(y - x) \to α (y - x)
+  \end{gather*}
+  $⇒$ 3. \\
+  Für $a < α < x < y < β$ ist $φ_{+}'(α) \leq D(x, y) \leq φ_{-}'(β)$ $⇒$ 1. mit
+  \[L_{[α, β]} := \max(\abs{φ_{+}'(α)}, \abs{φ_{-}'(β)})\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Jensen'sche Ungleichung]
+  #+begin_thm latex
+  Sei $ϕ: (a, b) \to ℝ$ konvex für $- ∞ \leq a < b \leq ∞$. Ist $μ$ ein W'maß auf $(X, Σ)$ mit $μ(X) = 1, f ∈ \mathcal{L}^1(X, μ)$ mit $a < f(x) < b$ für alle $x ∈ X$, dann
+  ist der negtive Teil von $ϕ \circ f$ integrierbar und
+  \[ϕ(∫_X f \d μ) \leq ∫_X (ϕ \circ f) \d μ\]
+  Ist $ϕ \geq 0$ nicht fallend, $f \geq 0$ und
+  \[ϕ(b) := \lim_{x \to b} ϕ(x)\]
+  so gilt die Aussage für nicht	integrierbare $f$.
+  #+end_thm
+  #+begin_proof latex
+  Eigenschaft 3. des Lemma 2.5 impliziert
+  \[ϕ(f(x)) \geq ϕ(\bar x) + α(f(x) - \bar x) ∀ x ∈ X, \bar x = ∫_X f \d μ ∈ (a, b)\]
+  Damit ist $(ϕ \circ f)_{-}$ integrierbar und wir erhalten
+  \[∫_X ϕ(f(x)) \d μ(x) \geq ϕ(\bar x) + α (∫_X f(x) \d μ(x) - \bar x) = ϕ(\bar x)\]
+  Sei nun $f \geq 0$, aber $f \not ∈ \mathcal{L}^1(X, μ)$, so setze
+  \[X_n := \{x ∈ X \mid f(x) \leq n\}\]
+  und erhalten wir aus dem bisher gezeigten
+  \[ϕ(\frac{1}{μ(X_n)} ∫_{X_n} f \d μ) \leq \frac{1}{μ(X_n)} ∫_{X_n} ϕ \circ f \d μ\]
+  für $n \to ∞$ erhlaten wir $X_n \nearrow X$ einerseits und $μ(X_n) \nearrow μ(X)$ andererseits. Die Konvergenz der Integrale erhalten wir mit dem Satz über monotone Konvergenz.
+  #+end_proof
+  #+ATTR_LATEX: :options [Hölder-Ungleichung]
+  #+begin_thm latex
+  Seien $p, p' ∈ [1, ∞]$ dual, das heißt
+  \[\frac{1}{p} + \frac{1}{p'} = 1\]
+  Ist $f ∈ L^p(X, μ)$ und $g ∈ L^{p'}(X, μ)$, so folgt $f · g ∈ L^1(X, ψ)$ und es gilt
+  \[\norm{f · g}_{L_1} \leq \norm{f}_{L^p} \norm{g}_{L^{p'}}\]
+  #+end_thm
+  #+begin_proof latex
+  Übungen
+  #+end_proof
+  #+begin_korollar latex
+  Für jedes $f ∈ L^p(X, μ)$ mit $p ∈ [1, ∞\string)$ gilt
+  \[\norm{f}_{L^p} = \sup \{∫_X f · g \d μ \mid g ∈ L^{p'}(X, μ), \norm{g}_{L^{p'}} = 1\}\]
+  #+end_korollar
+  #+begin_proof latex
+  "$\geq$" folgt unmittelbar aus Hölder. \\
+  "$\leq$" Wähle geeignetes $g$, nämlich
+  \[g := \frac{\sgn(f) \abs{f}^{p - 1}}{\norm{\abs{f}^{p - 1}}_{L^p}}, f \neq 0\]
+  Für $p = 1$ wähle $g = \sgn (f)$
+  #+end_proof
+  #+begin_lemma latex
+  Sei $μ$ ein \(σ\)-finites Maß, $f:(X, Σ) \to (ℝ, \mathcal{B})$ messbar und $p ∈ [1, ∞\string)$.
+  Gilt $f · s ∈ L^1(X, μ)$ für jedes $s ∈ S(X, μ) ∩ \mathcal{L}^1(X, μ)$ so folgt $f ∈ L^p(X, μ)$ und
+  \[\norm{f}_{L^p} = \sup \{∫_X f · s \d μ \mid s ∈ S(X, μ) ∩ \mathcal{L}^1(X, μ), \norm{s}_{L^{p'}} = 1\}\]
+  #+end_lemma
+  #+ATTR_LATEX: :options [Minkowski-Ungleichnug]
+  #+begin_thm latex
+  Seien $μ, ν$ zwei \(σ\)-finite Maße auf den Maßräumen $(X, Σ, μ), (Y, Υ, ν)$ und $f$ sei \((μ \otimes ν)\)-messbar. Dann haben wir für $p ∈ [1, ∞\string)$
+  \[\norm{∫_Y f(·, y) \d ν(y)}_{L^p} \leq ∫_Y \norm{f(·, y)}_{L^p} \d ν(y)\]
+  #+end_thm
+  #+begin_proof latex
+  Sei $g ∈ L^p(X, μ)$ mit $g \geq 0$ und $\norm{g}_{L^{p'}} = 1$. Aus Fubini folgt
+  \[∫_X g(x) ∫_Y \abs{f(x, y)} \d ν(y) \d μ(x) \overarrow[=]{Fubini} ∫_Y ∫_X \abs{f(x, y)} g(x) \d μ(x) \d ν(y)\]
+  Durch Anwendung des Korollar 2.8 schließen wir, dass die linke Seite gerade die \(L^p\)-Norm von
+  \[∫_Y f(·, y) \d ν(y)\]
+  ist. Außerdem gilt mit Hölder
+  \[∫_Y ∫_X \abs{f(x, y)} g(x) \d μ(x) \d ν(y) \leq ∫_Y \norm{f(·, y)}_{L^p} \norm{g}_{L^{p'}} \d ν(y)\]
+  #+end_proof
+  #+begin_remark latex
+  Aus Fatous Lemma erhalten wir die Unterhalbsstetigkeit der \(L^p\)-Normen. Gilt $f_n \to f$ punktweise \(μ\)-fast überall so haben wir
+  \[\norm{f}_{L^p}^p = ∫_X \liminf_{k \to ∞} \abs{f_k}^p \d μ \leq \liminf_{k \to ∞} ∫_X \abs{f_k}^p \d μ = \liminf_{k \to ∞} \norm{f_k}_{L^p}^p\]
+  #+end_remark
+  #+begin_lemma latex
+  Sei $p ∈ [1, ∞\string)$ und $(f_k)_{k ∈ ℕ} ⊂ L^p(X, μ)$ konvergiere punktweise \(μ\)-fast überall gegen ein $f$. Gibt es also eine Funktion $g ∈ L^p(X, μ), \abs{f_k} \leq g$ für jedes $k ∈ ℕ$,
+  so ist auch $f ∈ L^p(X, μ)$ und die Folge $(f_k)_{k ∈ ℕ}$ konvergiert in $L^p(X, μ)$.
+  #+end_lemma
+  #+begin_proof latex
+  Zunächst ist $\abs{f} \leq g$ und damit
+  \[\norm{f}_{L^p}^p = ∫_X \abs{f}^p \d μ \leq ∫_X g^p \d μ < ∞\]
+  Da die Folge $(f_k)_{k ∈ ℕ}$ punktweise \(μ\)-fast überall gegen $f$ konvergiert
+  \[\abs{f_k - f}^p \xrightarrow{k \to ∞} 0\]
+  \(μ\)-fast überall. Außerdem ist $\abs{f_k - f}^p \leq 2^p g^p$. $2^p g^p$ ist integrierbar
+  und so liefert der Satz von Lebesgue
+  \[\lim_{k \to ∞} \norm{f_k - f}_{L^p} = \lim_{k \to ∞}(∫_X \abs{f_k - f}^p \d μ)^{\frac{1}{p}} = 0\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Fischer-Riesz (Vollständigkeit)]
+  #+begin_thm latex
+  Der Raum $L^p(X, μ)$ ist für $p ∈ [1, ∞]$ vollständig und somit ein Banachraum.
+  #+end_thm
+  #+begin_proof latex
+  Wir verwenden die Vollständigkeit von $ℝ$. Sei $p < ∞$ und $(f_k)_{k ∈ ℕ} ⊂ L^p(X, μ)$ sei eine Cauchyfolge, das heißt
+  \[∀ ε > 0 ∃ k = k(ε) ∀ t, k \geq K: \norm{f_j -  f_k}_{L^p} < ε\]
+  Wir möchten zeigen, dass es ein $f ∈ L^p(X, μ)$ gibt mit $\norm{f_k - f}_{L^p} \to 0$. Es genügt dies für eine Teilfolge zu verifizieren.	Durch
+  Auswahl von Elementen der Folge können wir
+  \[\norm{f_{k + 1} - f_k} \leq 2^{-k} ∀ k ∈ ℕ\]
+  erreichen. Mit $f_0 = 0, g_k := f_k - f_{k - 1} ∀ k ∈ ℕ$ und
+  \[G := \sum_{k ∈ ℕ} \abs{g_k}\]
+  erhalten wir
+  \[\norm{\sum_{j = 1}^{k} \abs{g_j}}_{L^p} \leq \sum_{j = 1}^{k} \norm{g_j}_{L^p} \leq \norm{g_1}_{L^p} + \sum_{j = 1}^{k} 2^{-j} \leq \norm{g_1}_{L^p} + 1\]
+  Aus dem Satz über monotone Konvergenz gewinnen wir $G ∈ L^p$ und wir erhalten insbesondere $G(x) < ∞$ für fast alle $x ∈ X$. An diesen Punkten konvergiert
+  \[\tilde f = \sum_{k ∈ ℕ} g_k = \lim_{k \to ∞} \sum_{j = 1}^{k} g_j = \lim_{k \to ∞} f_k\]
+  absolut. Dort ist
+  \[\abs{f_k(x) - \tilde f(x)}^p \xrightarrow{k \to ∞} 0\]
+  und zusätzlich in den Punkten wo $G(x) < ∞$
+  \[\abs{f_k - \tilde f}^p = \abs{\sum_{j = 1}^{k} g_j - \sum_{j = 1}^{∞} g_j}^p = \abs{\sum_{j = k + 1}^{∞} g_j}^p \leq \abs{\sum_{j = 1}^{∞} \abs{g_j}}^p \leq \abs{G}^p\]
+  Nun ist $\abs{G}^p ∈ L^1(X, μ)$ mit $f= \liminf_{k \to ∞} f_k$ erhalten wir eine messbare Funktion $f = \tilde f$ \(μ\)-fast überall. Nun folgt aus dem Satz über dominierte Konvergenz
+  \[\norm{f_k - f}_{L^p}^p = ∫_X \abs{f_k - f}^p \d μ \xrightarrow{k \to ∞} 0\]
+  Im Fall $p = ∞$ gilt für die Cauchyfolge $(f_k)_{k . ℕ} ⊂ L^∞$
+  \[∀ m ∈ ℕ ∃ M(m) ∈ ℕ ∀ j, k \geq M: \norm{f_k - f_j}_{L^∞} < \frac{1}{m}\]
+  Also existiert eine Nullmenge $A_{j,k,m} ∈ Σ$ mit
+  \[\abs{f_j(x) - f_k(x)} \leq \frac{1}{m} ∀ x ∈ X \setminus A_{j,k,m}\]
+  Definiere
+  \[A = \bigcup_{m ∈ ℕ} \bigcup_{j,k \geq M} A_{j,k,m}\]
+  $A$ ist eine Nullmenge. Folglich ist $(f_k(x))_{k ∈ ℕ} ⊂ ℝ$ für jedes $x ∈ X \setminus A$ eine Cauchyfolge. Somit
+  \[f(x) := \liminf_{k \to ∞} f_k(x)\]
+  Damit haben wir $\abs{f_j(x) - f(x)} \leq \frac{1}{m} ∀ x ∈ X \setminus A, j \geq M$. Weiterhin ist $f$ messbar. Nun gilt
+  \begin{align*}
+  \norm{f_k - f}_{L^∞} &= \sup \{s \geq 0 \mid μ(\{x ∈ S \mid \abs{f_k(x) - f(x)} \geq 0\}) > 0\} \\
+  &= \sup \{s \geq 0 \mid μ(\{x ∈ X \setminus A \mid \abs{f_k(x) - f(x)} \geq s\}) > 0\} \\
+  &\leq \frac{1}{m} \quad\text{für } k = M
+  \end{align*}
+  Also folgt
+  \[\norm{f_k - f}_{L^∞} \xrightarrow{k \to ∞} 0\]
+  #+end_proof
+  #+begin_korollar latex
+  Konvergiert eine Folge in $L^P(X, μ), p ∈ [1, ∞\string)$, so gibt es eine Teilfolge, die punktweise \(μ\)-fast überall konvergiert. Die Grenzwerte einer in $L^p$ und $L^q, p, q ∈ [1,∞]$ konvergierende Folge
+  stimmen fast überall überein.
+  #+end_korollar
+  #+begin_ex latex
+  $\underbrace{χ_{[0, \frac{1}{2}]}, χ_{[\frac{1}{2}, 1]}}_{\norm{·}_{L^p} = \frac{1}{2}}, \underbrace{χ_{[0, \frac{1}{3}]}, χ_{[\frac{1}{3}, \frac{2}{3}]}, χ_{[\frac{2}{3}, 1]}}_{\norm{·}_{L^p} = \frac{1}{3}}, \dots$
+  Also konvergiert diese Folge in $L^p$ gegen $0$, aber nicht punktweise fast überall.
+  #+end_ex
+** Approximation
+  #+ATTR_LATEX: :options [Dichtheit]
+  #+begin_defn latex
+  Eine Teilmenge $A$ eines topologischen Raums $X$ heißt *dicht*, falls es zu jedem Punkt $x ∈ X$ eine Folge $(x_n)_{n ∈ ℕ}$ aus $A$ gibt mit $x_n \to x$.
+  #+end_defn
+  #+begin_thm latex
+  Sei $X$ ein lokal kompakter, metrischer Raum (jeder Punkt liegt in einer kompakten Umgebung) und $μ$ ein reguläres Borelmaß (endliche Werte auf Kompakta).
+  - Regulär von innen: $μ(A) = \sup\{μ(K) \mid K ⊂ A \text{ kompakt}\}$
+  - Regulär von außen: $μ(A) = \inf\{μ(K) \mid A ⊂ U \text{ offen}\}$
+  Dann ist die Menge $C_c^0(X)$ aller stetigen Funktionen mit kompakten Träger dicht in $L^p(X, μ)$.
+  Dabei ist der Träger eine Funktion $f: A \to ℝ$ $\supp(f)$ definiert als
+  \[\succ(f) = \overline{\{x ∈ A\mid f(x) \neq 0\}}\]
+  #+end_thm
+  #+begin_proof latex
+  Wir können nicht-negative Funktionen durch eine Folge von einfachen Funktionen bezüglich der \(L^1\)-Norm approximieren. Man überträgt leicht dieses Argument auf beliebige integrierbare Funktionen
+  und Funktionen aus $\mathcal{L}^p$ beziehungsweise $L^p, p ∈ [1, ∞\string)$. Da die einfachen Fuktionen durch die Linearkombination von charakteristischen Funktionen auf Urbilder halboffener Mengen
+  und da das Maß regulär ist von innen können wir diese Mengen beliebig gut durch Kompakta approximieren. Folglich genügt es zu zeigen, dann $χ_K, K ⊂ X$ kompakt bezüglich der \(L^p\)-Norm beliebig gut
+  durch stetige Funktionen approximierbar ist. Ausgrund der äußeren Regularität des Maßes finden wir für $ε > 0$ eine offene Menge $U$ mit $K ⊂ U$ und $μ(U \setminus K) = μ(U) - μ(K) < ε$. Wir setzen
+  \[f_ε(x) := \frac{\dist(x, U^C)}{\dist(x, K) + \dist(x, U^C)}\]
+  Dies liefert eine stetige Funktion mit $f_ε(x) ∈[0, 1]$ und
+  \begin{align*}
+  \dist(x, A) := \inf_{y ∈ A} \abs{x - y} \\
+  f_ε(x) &= 0 ⇔ \dist(x, U^C) = 0 ⇔ x ∈ U^C \\
+  f_ε(x) &= 1 ⇔ \dist(x, K) = 0 ⇔ x ∈ K \\
+  ∫_X \abs{f_ε(x) - χ_K(x)}^p \d μ(x) &= ∫_{U \setminus K} \abs{(f_ε(x) - χ_k)}^p \d μ(x) \leq μ(U \setminus K) < ε
+  \end{align*}
+  #+end_proof
+  #+begin_remark latex
+  Diese Aussage gilt nicht für $p = ∞$, da für stetige Funktionen die \(L^∞\)-Norm der Supremumsnorm entspricht und somit die Grenzfunktion stetig ist.
+  #+end_remark
+  #+ATTR_LATEX: :options [Faltung]
+  #+begin_defn latex
+  Für integrierbare Funktionen $f, g: ℝ^n \to ℝ$ setzen wir
+  \[(f \ast g)(x) = ∫_{ℝ^n} f(x - y) g(y) \d λ^n(y) = ∫_{ℝ^n} g(x - y) f(y) \d λ^n(y)\]
+  und bezeichnen den Ausdruck $f \ast g$ als Faltung. Die Faltung selbst ist integrierbar, denn es gilt
+  \begin{align*}
+  ∫_{ℝ^n} \abs{f \ast g} \d λ^n &\leq ∫_{ℝ^n} ∫_{ℝ^n} \abs{f(x - y)}\abs{g(y)} \d λ^n(y) \d λ^n(x) \\
+  &= ∫_{ℝ^n} ∫_{ℝ^n} \abs{f(x - y)} \d λ^n(x) \abs{g(y)} \d λ^n(y) = \norm{f}_{L^1} \norm{g}_{L^1} < ∞
+  \end{align*}
+  #+end_defn
+  #+begin_lemma latex
+  Die Faltung besitzt folgende Eigenschaften:
+  1. Für $x ∈ ∮ℝ^n$ ist die Funktion $f(x - ·) g(·)$ genau dann integrierbar, wenn $f(·)g(x - ·)$ integrierbar ist und es gilt in diesem Fall $(f \ast g)(x) = (g \ast f)(x)$
+  2. Für $ϕ ∈ C_c^k(ℝ^n), k ∈ ℕ$ und $f ∈ L^1_{\text{loc}}(ℝ^n)$ folgt $f \ast ϕ ∈ C^k(ℝ^n)$ und $\partial_α (ϕ \ast f) = \partial_α ϕ \ast f$ für jede partielle Ableitung einer Ordnung $\leq k$.
+  3. Für $ϕ ∈ C_c^k(ℝ^n), k ∈ ℕ$ und $f ∈ L_c^1$ (es gibt einen Repräsentanten mit kompaktem Träger) ist $ϕ \ast f ∈ C_c^k(ℝ^n)$
+  4. Für $ϕ ∈ L^1(ℝ^n), f ∈ L^p(ℝ^n), p ∈ [1, ∞]$ gilt auch $f \ast ϕ ∈ L^p(ℝ^n)$ und wir haben die Young-Ungleichnug:
+	 \[\norm{f \ast ϕ}_{L^p} \leq \norm{ϕ}_1 \norm{f}_1\]
+  #+end_lemma
+  #+begin_proof latex
+  1. Folgt unmittelbar aus dem Transformationssatz
+  2. Folgt induktiv durch vertauschen von Differentation und Integration.
+  3. Ist $\supp f ∪ \supp ϕ ⊂ B_R(0)$ für $R > 0$, so erhalten wir für $x ∈ ℝ^n$:
+	 \begin{align*}
+	 \string(f \ast ϕ\string)(x) &= ∫_{ℝ^n} f(y) ϕ(x - y) \d λ^n(y) \neq 0 \\
+	 ⇒ y, x - y &\overset{!}{∈} B_R(0) ⇒ x = (x - y) + y ∈ B_{2R}(0)
+   	 \end{align*}
+	 Demnach ist $\supp f \ast ϕ ⊂ B_{2R}(0)$.
+  4. $p = ∞$
+	 \[\norm{f \ast ϕ}_{L^∞} = \norm{∫_{ℝ^n} f(y) g(x - y) \d λ^n(y)} \leq \norm{f}_{L^∞} \norm{ϕ}_{L^1}\]
+	 Sei nun $p < ∞$. Wir können ohne Beschränkung der Allgemeinheit annehmen $\norm{ϕ}_{L^1} = 1$. Anwendung der Jensen-Ungleichnug (mit $φ(ξ) = \abs{ξ}^p, \d μ = \abs{ϕ} \d λ^n$)
+	 \begin{align*}
+	 \norm{f \ast ϕ}_{L^p}^p &\leq ∫_{ℝ^n} \abs{∫_{ℝ^n} \abs{f(x - y)}\abs{ϕ(y)} \d λ^n(y)}^p \d λ^n(x) \\
+	 &= ∫_{ℝ^n} φ(∫_{ℝ^n} \abs{f(x - y)} \abs{ϕ(y)} \d λ^n(y)) \d λ^n(x) \leq ∫_{ℝ^n} ∫_{ℝ^n} \abs{f(x - y)}^p \abs{ϕ(y)}^p \d λ^n(y) \d λ^n(x) \\
+   	 &\leq ∫_{ℝ^n} ∫_{ℝ^n} \abs{f(x - y)}^p \d λ^n(x) = \norm{f}_{L^p}^p
+   	 \end{align*}
+  #+end_proof
+  #+begin_defn latex
+  Eine Familie $(ϕ_ε)_{ε >}$ integrierbarer Fuktionen von $ℝ^n$ nach $ℝ$ heißt *approximative Identität* falls
+  1. $\displaystyle{\sup_{ε > 0} \norm{ϕ_ε}_{L^1} < ∞}$ (manchmal wir auch $ϕ_ε \geq 0 ∀ ε > 0$ vorrausgesetzt)
+  2. $\displaystyle{∫_{ℝ^n} ϕ_ε \d λ^n = 1 ∀ ε > 0}$
+  3. $∫_{ℝ^n \setminus B_R(0)} \abs{ϕ_ε} \d λ^n \xrightarrow{ε \to 0} 0 ∀ r > 0$
+  Ein Glättungskern ist eine nicht-negative Funktion $ϕ ∈ C_c^∞(ℝ^n)$ mit $\norm{ϕ}_{L^1} = 1$.
+  #+end_defn
+  #+begin_remark latex
+  Aus jedem Glättungskern $ϕ ∈ C_c^∞(ℝ^n)$ erhält man durch
+  \[ϕ_ε(x) := ε^{-n} ϕ(\frac{x}{ε})\]
+  eine appoximative Identität. Standard-Glättungskern
+  \[x ↦ \begin{cases} \exp(\frac{1}{\abs{x}^2 - 1}) & \abs{x} < 1 \\ 0 & \text{sonst}\end{cases}\]
+  #+end_remark
+  #+ATTR_LATEX: :options [2.20]
+  #+begin_lemma latex
+  Sei $(ϕ_ε)_{ε > 0}$ eine approximative Identität und $f ∈ L^p(ℝ^n), p ∈ [1, ∞\string)$. Dann gilt
+  \[\norm{f \ast ϕ_ε - f}_{L^p} \xrightarrow{ε \to 0} 0\]
+  #+end_lemma
+  #+begin_proof latex
+  Sei $f ∈ C_c^0(ℝ^n)$. Wir nehmen ein $δ$. \\
+  $\abs{f(x - y) - f(x)} \xrightarrow{\abs{y} \searrow 0} 0$ gleichmäßig in $x$ aufgrund von gleichmäßiger Stetigkeit (nach dem Satz von Heine). Weiterhin, aufgrund des
+  kompakten Trägers für $\abs{y} < r$ ($r$ hinreichend klein)
+  \begin{align*}
+  \norm{f(· - y) - f(·)}_{L^p} &= (∫_{B_r(\supp f)} \abs{f(x - y) f(x)}^p \d λ^n)^{1/p} \\
+  B_r(E) &:= \bigcup_{ξ ∈ E} B_r(ξ) \\
+  \norm{f(· - y) - f(·)}_{L^p} &\leq \norm{f(· - y) - f(·)}_{L^∞} (∫_{B_r(\supp f)} 1^p \d λ^n(x))^{1/p} &\leq \frac{δ}{2 \sup_{ε > 0} \norm{ϕ_ε}_{L^1}}
+  \end{align*}
+  (für $r$ hinreichend klein). Mit Minkowski Ungleichung:
+  \begin{align*}
+  \string(f \ast ϕ_ε\string)(x) - f(x) &= ∫_{ℝ^n} ϕ_ε(y)(f(x - y) - f(x)) \d λ^n(y) \\
+  \norm{(f \ast ϕ_ε) - f}_{L^p} &\leq \norm{∫_{B_r(0)} ϕ_ε(y)(f(· - y) - f(·)) \d λ^n(y)}_{L^p} +	\norm{∫_{ℝ^n \setminus B_r(0)} ϕ_ε(y)(f(· - y) - f(·)) \d λ^n(y)}_{L^p} \\
+  &\leq ∫_{B_r(0)} \abs{ϕ_ε(y)} \underbrace{\norm{f(· - y) - f(·)}_{L^p}}_{\leq \frac{δ}{2 \sup \norm{ϕ_ε}_{L^1}}} \d λ^n(y) + ∫_{ℝ^n \setminus B_r(0)} \abs{ϕ_ε(y)} \norm{f(· - y) - f(·)}_{L^p} \d λ^n(y) \\
+  &\leq \frac{δ}{2} + \underbrace{2	\norm{f}_{L^p} ∫_{ℝ^n \setminus B_r(0)} \abs{ϕ_ε(y)} \d λ^n(y)}_{\leq \frac{δ}{2} \text{ für hinreichend kleine } ε > 0}
+  \end{align*}
+  Somit ist die Behauptung für $f ∈ C_c^0(ℝ^n)$ gezeigt. Da $C_c^0(ℝ^n)$ dicht in $L^p(ℝ^n)$ sind (Satz 2.16), wählen wir für ein $f ∈ L^p(ℝ^n)$ eine Folge $(f_k)_{k ∈ ℕ} ∈ C_c^0(ℝ^n)$ mit $\norm{f_k - f}_{L^p} \xrightarrow{k \to ∞} 0$
+  \begin{align*}
+  ⇒ \norm{f\ast ϕ_ε - f}_{L^p} &\leq \overbrace{\norm{f\ast ϕ_ε - f_k \ast ϕ_ε}_{L^p}}^{\norm{(f - f_k) \ast ϕ_ε}} + \underbrace{\norm{f_k \ast ϕ_ε - f_k}_{L^p}}_{ε \to 0 \nearrow 0 \text{ für festes } k} + \underbrace{\norm{f_k - f}_{L^p}}_{\xrightarrow{k\to ∞} 0} \\
+  &\leq \underbrace{\norm{f - f_k}_{L^p}}_{\xrightarrow{k \to ∞} 0} \underbrace{\norm{ϕ_ε}_{L^1}}_{\leq M}
+  \end{align*}
+  Wir nehmen $k$ hinreichend groß und dann $ε$ hinreichend klein.
+  #+end_proof
+  #+begin_thm latex
+  Sei $Ω ⊂ ℝ^n$ offen. Dann liegt die Menge $C_c^∞(Ω)$ aller glatten Funktionen mit kompakten Träger dicht in $L^p(Ω)$ für $p ∈ [1, ∞\string)$.
+  #+end_thm
+  #+begin_proof latex
+  Nach dem Satz 2.16 genügt es zu zeigen, dass $C_c^∞(ℝ^n)$ dicht in $C_c^0(ℝ^n)$ ist. (denn wir können $f\big|_{ℝ^n \setminus Ω} = 0$ setzen). Wir wählen einen Glättungskern $ϕ$
+  $⇒ f\ast ϕ_ε$ kompakter Träger und $C^∞$ $⇒$ mit Lemma 2.18.3 und aus Satz 2.20 folgt die Behauptung.
+  #+end_proof
+* Fourier-Transformation
+  #+begin_defn latex
+  Für $f ∈ L^1(ℝ^n)$ definieren wir
+  \[\hat f(p) = \frac{1}{(2π)^{n/2}} ∫_ℝ e^{-i\braket{p,x}} f(x) \d λ^n(x) \qquad p ∈ ℝ^n\]
+  mit $\braket{·,·}$: Skalarprodukt. \\
+  $\mathcal{F}: f \to \hat f$ heißt Fourier-Transformation. $\mathcal{F}$ ist eine lineare Abbildung die beschränkt ist.
+  Eine lineare Abbildung \(A: X \to Y, X, Y\)-normierte Räume, heißt beschränkt falls $∃ C > 0, \text{ sodass } \norm{A x}_Y \leq C \norm{x}_X$
+  \[\norm{A} := \sup_{\norm{x}_X} \frac{\norm{A x}_Y}{\norm{x}_X} \leq C\]
+  Mit $C_b^0$ bezeichnen wir den Raum der stetigen und beschränkten Funktionen. (also $C_b^0 = C^0 ∩ L^∞$)
+  #+end_defn
+  #+begin_lemma latex
+  Die Fourier-Transformation $\mathcal{F}$ ist eine beschränkte Abbildung $L^1(ℝ)\to C_b^0(ℝ^n)$ mit
+  \[\norm{\hat f}_{L^∞} \leq \frac{1}{(2π)^{n/2}}\norm{f}_{L^1}\]
+  "$=$" für $f$ nichtnegativ.
+  #+end_lemma
+  #+begin_proof latex
+  Die Abschätzung aus der Definition. Stetigkeit von $\hat f$: Wir wählen eine Folge $(p_k)_{k ∈ N} ⊂ ℝ^n, p_k \to p$ für $k \to ∞$. Wegen
+  \[\abs{e^{-i\braket{p,x}}} = 1\]
+  ist $\abs{f}$ eine Majorante. Ausdem Satz über dominierte Konvergenz folgt die Behauptung. Ist $f \geq 0$
+  \begin{align*}
+  ⇒ \norm{f}_{L^1} &= ∫_{ℝ^n} \abs{f} \d λ^n = ∫_{ℝ^n} e^{-i\braket{0,x}} f(x) \d λ^n(x) \\
+  &= (2π)^{n/2} \hat f(0) \leq (2π)^{n/2} \norm{\hat f}_{L^∞} \leq \norm{f}_{L^1}
+  \end{align*}
+  #+end_proof
+  #+begin_lemma latex
+  Für $g, g ∈ L^1(ℝ^n), a,p ∈ ℝ^n, λ > 0$ gilt
+  1. $\widehat{f(· + a)}(p) = e^{-i\braket{a,p}} \hat f(p)$
+  2. $\widehat{e^{-i\braket{·,a}}f}(p) = \hat f(p - a)$
+  3. $\widehat{f(λ ·)}(p) = \frac{1}{λ^n} \hat f(\frac{p}{λ})$
+  4. $\widehat{f(-·)}(p) = \hat f(-p)$
+  5. $\hat f g, f\hat g ∈ L^1$ mit
+	 \[∫ \hat f g = ∫ f \hat g\]
+  #+end_lemma

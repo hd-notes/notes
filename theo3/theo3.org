@@ -742,36 +742,49 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   \begin{align*}
   ψ &= \frac{1}{4π} ∫_V \d^3 r' \frac{∇' X(\v r')}{\abs{\v r - \v r'}} - \frac{1}{4π} ∫_{\partial V} \d \v S' \frac{\v X(\v r')}{\abs{\v r - \v r'}} \\
   \v Q &= \frac{1}{4π} ∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}} - \frac{1}{4π} ∫_{\partial V} \d \v S' × \frac{\v X(\v r')}{\abs{\v r - \v r'}} \\
+  \intertext{falls $\v X$ schneller als $1/r$ gegen Null strebt:}
+  \frac{1}{4π} ∫_{\partial V} \d \v S' × \frac{\v X(\v r')}{\abs{\v r - \v r'}} &\to 0
+  \end{align*}
+  Greenfunktion von $\Laplace$:
+  \begin{align*}
+  \Laplace \frac{1}{\abs{\v r - \v r'}} &= - 4π δ_D(\v r - \v r')
   \v X(\v r) &= ∫_V \d^3 r' \v X(\v r') δ_D(\v r - \v r') = \frac{1}{4π} ∫_V \d^3 r' \v X(\v r') \Laplace \frac{1}{\abs{\v r - \v r'}} = - \frac{1}{4π} \Laplace ∫_V \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}} \\
   \Laplace \v A &= ∇(∇ · \v A) - ∇ × (∇ × \v A) \\
-  \to \v X(\v r) &= -\frac{1}{4π} (∇ \Div ∫ \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}} + \rot \rot ∫ \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}}) \\
-  &= - \frac{1}{4π}(∇ ∫ \d^3 r' \v X(\v r') ∇ \frac{1}{\abs{\v r - \v r'}} + \rot ∫ \d^3 r' \v X(\v r') × ∇ \frac{1}{\abs{\v r - \v r'}})
-  \intertext{Umschreiben von $∇$: $∇ \frac{1}{\abs{\v r - \v r'}} = \frac{\v r - \v r'}{\abs{\v r - \v r'}^3} = - ∇' \frac{1}{\abs{\v r - \v r'}}$}
+  \to \v X(\v r) &= -\frac{1}{4π} (∇ \Div ∫_V \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}} + \rot \rot ∫_V \d^3 r' \frac{\v X(\v r')}{\abs{\v r - \v r'}}) \\
+  &= - \frac{1}{4π}(∇ ∫_V \d^3 r' \v X(\v r') ∇ \frac{1}{\abs{\v r - \v r'}} + \rot ∫_V \d^3 r' \v X(\v r') × ∇ \frac{1}{\abs{\v r - \v r'}})
+  \intertext{Umschreiben von $∇$:}
+  ∇ \frac{1}{\abs{\v r - \v r'}} &= \frac{\v r - \v r'}{\abs{\v r - \v r'}^3} = - ∇' \frac{1}{\abs{\v r - \v r'}} \\
   \to \v X(\v r) &= - \frac{1}{4π}(- ∇ ∫_V \d^3 r' \v X(\v r') ∇' \frac{1}{\abs{\v r - \v r'}} - \rot ∫_V \d^3 r' \v X(\v r') × ∇' \frac{1}{\abs{\v r - \v r'}}) \\
   \Div (φ \v X) &= ∇ φ \v X + φ \Div \v X \\
   \rot (φ \v X) &= ∇ φ × \v X + φ \rot \v X = - \v X × ∇ φ + φ \rot \v X \\
-  \to \v X(\v r) &= - \frac{1}{4π}\vast{\string(}-∇(- ∫ \d^3 r' ∇' \frac{\v X(\v r)}{\abs{\v r - \v r'}} - ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}}) \\
+  \to \v X(\v r) &= - \frac{1}{4π}\vast{\string(}-∇(- ∫_V \d^3 r' ∇' \frac{\v X(\v r)}{\abs{\v r - \v r'}} - ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}}) \\
   &\hphantom{{}={}} {+} \rot(∫_V \d^3 r' ∇' × \frac{\v X(\v r')}{\abs{\v r - \v r'}} - ∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}})\vast{\string)} \\
   &= - \frac{1}{4π}\vast{\string(}-∇\Bigg{\string(}- \underbrace{∫_{\partial V} \d \v S' \frac{\v X(\v r')}{\abs{\v r - \v r'}}}_{\to 0} - ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}}\Bigg{\string)} \\
   &\hphantom{{}={}} {+} \rot\Bigg{\string(}\underbrace{∫_{\partial V} \d \v S' × \frac{\v X(\v r')}{\abs{\v r - \v r'}}}_{\to 0} - ∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}}\Bigg{\string)}\vast{\string)} \\
   \intertext{Die Terme gehen gegen null, weil die Felder in der Elektrodynamik schnell genug abfallen (Fläche $\sim r^2$, Feld $\sim 1/r^2$, mit $1/\abs{\v r - \v r'}$: $\sim 1/r^3$)}
-  &= -∇\underbrace{(\frac{1}{4π}  + ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}} - ∫_{\partial V} \d \v S' \frac{\v X(\v r')}{\abs{\v r - \v r'}})}_{= ψ(\v r)}
+  &= -∇\underbrace{(\frac{1}{4π}  + ∫_V \d^3 r' \frac{∇' · \v X(\v r)}{\abs{\v r - \v r'}} - ∫_{\partial V} \d \v S' \frac{\v X(\v r')}{\abs{\v r - \v r'}})}_{= ψ(\v r)} \\
   \hphantom{{}={}} + \rot \underbrace{(\frac{1}{4π}∫_V \d^3 r' \frac{∇' × \v X(\v r')}{\abs{\v r - \v r'}} - ∫_{\partial V} \d \v S' × \frac{\v X(\v r')}{\abs{\v r - \v r'}})}_{= \v Q(\v r)} \\
   \to \v X &= - ∇ ψ + \rot \v Q \\
-  \intertext{Maxwell-Gleichung: statisch, also $\partial_{ct}(\dots) = 0$}
-  \Div \v E &= 4 π ρ, \Div \v B = 0, \rot \v E = - \partial_{ct} \v E = 0, \rot \v B = \partial_{ct} \v E + \frac{4π}{2} \v j \\
-  \v E(\v r) &= \frac{1}{4π}\Bigg{\string(}-∇ ∫_V \d^3 r' \frac{\overbrace{\Div' \v E'}^{= 4πρ}}{\abs{\v r - \v r'}} + \rot ∫_V \d^3 r' \frac{\overbrace{\rot' \v E'}^{= 0}}{\abs{\v r -\v r'}}\Bigg{\string)} = - ∇ ∫_V \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} = - ∇ ϕ \\
-  \v B(\v r) &= \frac{1}{4π}\Bigg{\string(}-∇ ∫_V \d^3 r' \frac{\overbrace{\Div' \v B'}^{= 0}}{\abs{\v r - \v r'}} + \rot ∫_V \d^3 r' \frac{\overbrace{\rot' \v B'}^{= \frac{4π}{c} \v j}}{\abs{\v r -\v r'}}\Bigg{\string)} = \rot	\frac{1}{c} ∫ \d^3 r' \frac{\v j(\v r')}{\abs{\v r - \v r'}} \\
+  \intertext{Maxwell-Gleichung für eine statische Situation, also $\partial_{ct}(\dots) = 0$}
+  \Div \v E &= 4π ρ \\
+  \Div \v B &= 0 \\
+  \rot \v E &= 0 \\
+  \rot \v B &= \frac{4π}{c} \v j \\
+  \v E(\v r) &= \frac{1}{4π}\Bigg{\string(}-∇ ∫_V \d^3 r' \frac{\overbrace{\Div' \v E'}^{= 4πρ}}{\abs{\v r - \v r'}} + \rot ∫_V \d^3 r' \frac{\overbrace{\rot' \v E'}^{= 0}}{\abs{\v r -\v r'}}\Bigg{\string)} = - ∇ ∫_V \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} = - ∇ ϕ(\v r) \\
+  \v B(\v r) &= \frac{1}{4π}\Bigg{\string(}-∇ ∫_V \d^3 r' \frac{\overbrace{\Div' \v B'}^{= 0}}{\abs{\v r - \v r'}} + \rot ∫_V \d^3 r' \frac{\overbrace{\rot' \v B'}^{= \frac{4π}{c} \v j}}{\abs{\v r -\v r'}}\Bigg{\string)} = \rot	\frac{1}{c} ∫ \d^3 r' \frac{\v j(\v r')}{\abs{\v r - \v r'}} = \rot \v A(\v r) \\
   \to \v E &= - ∇ ϕ \\
   \v B &= \rot \v A \\
   \intertext{mit Vektorpotenzial $\v A$:}
-  \v A &= \frac{1}{c} ∫ \d^3 r' \frac{\v j(\v r')}{\abs{\v r - \v r'}}
+  \v A &= \frac{1}{c} ∫ \d^3 r' \frac{\v j(\v r')}{\abs{\v r - \v r'}} \\
+  \intertext{und Potenzial $ϕ$:}
+  ϕ &= ∫_V \d^3 r' \frac{ρ(\v r)}{\abs{\v r - \v r'}} \\
   \end{align*}
 * Biot-Savart-Gesetz
   \begin{align*}
   \v B &= \rot \v A = \frac{1}{c} ∫_V \d^3 r' \v j(\v r') × \frac{\v r - \v r'}{\abs{\v r - \v r'}^3}
   \intertext{und gleichzeitig}
   \Laplace \v A &= -\frac{4π}{c} \v j \\
+  \intertext{als Umkehrung, da}
   \rot \v B &= \rot \rot \v A = ∇ \Div \v A - \Laplace \v A = \frac{4π}{c} \v j
   \end{align*}
   Wenn $\Div \v A = 0$, dann komplette Symmetrie zu $ϕ$:
@@ -781,40 +794,42 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   \v A &= \frac{1}{c} ∫ \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}} \\
   ϕ &= ∫ \d^3 r' \frac{ρ'}{\abs{\v r - \v r'}}
   \end{align*}
-  $⇒$ Eichtransformation: $\v B$ ändert sich nicht, falls $\v A \to \v A + ∇ χ, χ \sim$ Eichfeld}
+  $⇒$ Eichtransformation: $\v B$ ändert sich nicht, falls $\v A \to \v A + ∇ χ, χ \sim$ Eichfeld
   \begin{align*}
   \v B &= \rot \v A \to \rot(\v A + ∇ χ) = \rot(\v A + \rot ∇ χ) = \rot \v A = \v B \\
   \intertext{Wahl von $χ$:}
-  \Div \v A &\to \Div(\v A + ∇ χ) = \Div \v A + \Laplace χ \overset{=}{!} 0 \\
+  \Div \v A &\to \Div(\v A + ∇ χ) = \Div \v A + \Laplace χ \overset{!}{=} 0 \\
   \intertext{$⇒$ wähle $\Laplace χ = -\Div \v A$}
   \rot \v B &= \rot \rot \v A = ∇ \Div \v A - \Laplace \v A = ∇ \Div (\v A + ∇ χ) - \Laplace (\v A + ∇ χ) \\
   &= ∇ \Div \v A + ∇ \Div ∇ χ - \Laplace \v A - ∇ \Laplace χ = ∇ \Div \v A - \Laplace \v A \underarrow[=]{$\Laplace ∇ χ = ∇ \Laplace χ$} \rot \v B
   \end{align*}
-  $\Div \v A =0$ Coulomb-Eichung
+  Warum ist das möglich? $\Laplace χ = - \Div \v A$ hat eine eindeutige Lösung als Potenzialgleichung, wegen des 1.	Green-Theorems. \\
+  Wahl von $\Div \v A =0$: Coulomb-Eichung, physikalische Bedeutung:
   \begin{align*}
   \Div \v A &= \Div \frac{1}{c} ∫ \d^3 r' \frac{\v j}{\abs{\v r - \v r'}} = \frac{1}{c} ∫_V \d^3 r' \v j' ∇ \frac{1}{\abs{\v r - \v r'}} = - \frac{1}{c} ∫_V \d^3 r' \v j' ∇' \frac{1}{\v r - \v r'} \\
   &= \frac{1}{c} ∫_V \d^3 r' \frac{∇' \v j'}{\abs{\v r - \v r'}} = - \frac{1}{c} ∫_V \d^3 r' \frac{\partial_t ρ'}{\abs{\v r - \v r'}} = - \frac{1}{c} \partial_t ∫_V \d^3 r' \frac{ρ'}{\abs{\v r - \v r'}} = - \partial_{ct} ϕ
   \end{align*}
-  zeitabhängige Maxwell-Gleichungen
+  falls $\Div \v A = 0$ gewählt wird, ist das elektirsche Potenzial	konstant als Folge aus der Kontinuität der Ladung.
+  zeitabhängige Maxwell-Gleichungen:
   \begin{align*}
   \Div \v E &= 4π ρ \\
   \Div \v B &= 0 \\
   \rot \v E &= -\partial_{ct} \v B \\
   \rot \v B &= \partial_{ct} \v E + \frac{4π}{c}\v j \\
+  \intertext{$\to \v B$ ist ein reines Wirbelfeld, $\v B = \rot \v A \to$ Substitution in die Helmholtz-Zerlegung:}
   \v E &= - ∇ \underbrace{\frac{1}{4π} ∫_V \d^3 r' \frac{\Div' \v E'}{\abs{\v r - \v r'}}}_{= ϕ} + \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\overbrace{\rot' \v E'}^{-\partial_{ct} \v B'}}{\abs{\v r - \v r'}} \\
   \v B &= - ∇ \frac{1}{4π} ∫_V \d^3 r' \frac{\overbrace{\Div' \v B'}^{= 0}}{\abs{\v r - \v r'}} + \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\overbrace{\rot' \v B'}^{\mathclap{= \partial_{ct} \v E' + \frac{4π}{c} \v j'}}}{\abs{\v r - \v r'}} \\
-  \v B &= \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\rot ' \rot ' \v A}{\abs{\v r - \v r'}} \underarrow[=]{$\rot' \rot' \v A = ∇' \Div' \v A' - \Laplace' \v A' = - \Laplace' \v A'$, mit Coulomb-Eichung} - \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\Laplace' \v A'}{\abs{\v r - \v r'}}	\overarrow[=]{$\Laplace \v A = - \frac{4π}{c} \v j$} \rot \frac{1}{c} ∫_V \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}} = \rot \v A \\
+  \intertext{zwei Effekte: $\v E$ und $\v B$ sind gekoppelt und $\v B$ ist immernoch ein reines Wirbelfeld}
+  \v B &= \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\rot ' \rot ' \v A}{\abs{\v r - \v r'}} \underarrow[=]{$\rot' \rot' \v A = ∇' \Div' \v A' - \Laplace' \v A' = - \Laplace' \v A'$, mit Coulomb-Eichung} - \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\Laplace' \v A'}{\abs{\v r - \v r'}}	\overarrow[=]{$\Laplace \v A = - \frac{4π}{c} \v j$ in Coulomb-Eichung} \rot \frac{1}{c} ∫_V \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}} = \rot \v A \\
+  \intertext{immerhin sind $\v B$ und $\v A$ konsistent zueinander, selbst wenn die Felder zeitabhängig sind.}
   \v E &= - ∇ ϕ + \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\rot' \v E'}{\abs{\v r - \v r'}} = - ∇ ϕ - \rot \frac{1}{4π} ∫_V \d^3 r' \frac{\partial_{ct} \v B}{\abs{\v r - \v r'}} \\
   &= - ∇ ϕ - \frac{\partial_{ct}}{4π} ∫_V \d^3 r' \frac{\rot \v B'}{\abs{\v r - \v r'}} \underarrow[=]{$∫ \d^3 r' \frac{\rot \v B'}{\abs{\v r - \v r'}} = - ∫ \d^3 r' \v B' × ∇ \frac{1}{\abs{\v r - \v r'}} = ∫ \d^3 r' \frac{\rot' \v B'}{\abs{\v r - \v r'}}$} - ∇ ϕ - \frac{\partial_{ct}}{4π} ∫ \d^3 r' \frac{\rot' \v B'}{\abs{\v r - \v r'}} \\
-  &= - ∇ ϕ - \frac{\partial_{ct}}{4π} ∫_V \d^3 r' \frac{\rot' \rot' \v A'}{\abs{\v r - \v r'}} = - ∇ ϕ - \partial_{ct} \underbrace{∫_V \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}}}_{= \v A} = - ∇ ϕ - \partial_{ct} \v A \\
+  &= - ∇ ϕ - \frac{\partial_{ct}}{4π} ∫_V \d^3 r' \frac{\rot' \rot' \v A'}{\abs{\v r - \v r'}} \underarrow[=]{$\rot' \rot' \v A = - \Laplace \v a' = \frac{4π}{c} \v j'$} - ∇ ϕ - \partial_{ct} \underbrace{∫_V \d^3 r' \frac{\v j'}{\abs{\v r - \v r'}}}_{= \v A} = - ∇ ϕ - \partial_{ct} \v A \\
   \to \v B &= \rot \v A \\
   \v E &= - ∇ ϕ - \partial_{ct} \v A
   \end{align*}
+  Rechnung: in Coulomb-Eichung, aber die Wahl der Eichung beeinflusst die Felder nicht.
 * Potenziale und Eichung $\to$ allgemeiner Form
-  \begin{align*}
-  \Div \v B = 0 &\to \v B = \rot \v A \\
-  \rot \v E + \partial_{ct} \v B = 0 &\to \rot(\v E + \partial_{ct} \v A) = 0 \to \v E + \partial_{ct} \v A = - ∇ ϕ \\
-  \end{align*}
   \begin{gather*}
   \left.
   \begin{matrix}
@@ -826,19 +841,284 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   \Div \v E = 4πρ \\
   \rot \v B - \partial_{ct} \v E = \frac{4π}{c} \v j
   \end{matrix}\right\} \text{inhomogene Maxwell Gleichungen} \\
-  \end{gather*}
-  \begin{align*}
+  \intertext{Aus den 2 homogenen Maxwell-Gleichungen:}
+  \begin{aligned}
+  \Div \v B = 0 &\to \v B = \rot \v A \\
+  \rot \v E + \partial_{ct} \v B = 0 &\to \rot(\v E + \partial_{ct} \v A) = 0 \to \v E + \partial_{ct} \v A = - ∇ ϕ \\
+  \end{aligned} \\
+  \intertext{Aus den 2 inhomogenen Maxwell-Gleichungen:}
+  \begin{aligned}
   \Div \v E &= \Div(- ∇ ϕ - \partial_{ct} \v A) = - \Laplace ϕ - \partial_{ct} \Div \v A = 4π ρ \\
   \rot \v B &= \rot \rot \v A = \partial_{ct}(-∇ ϕ - \partial_{ct} \v A) + \frac{4π}{c} \v j \\
   ⇒ \Laplace ϕ + \partial_{ct} \Div \v A &= - 4π ρ \\
   \Laplace \v A - \partial_{ct}^2 \v A &= - \frac{4π}{c} \v j + ∇(\Div \v A + \partial_{ct} ϕ) \\
+  \intertext{$⇒$ gekoppelte Gleichungen, Entkopplung durch Eichung!}
   \v B &= \rot \v A \text{ unverändert, falls } \v A \to \v A + ∇ χ \text{, weil } \rot ∇ χ = 0 \\
   \v E &= - ∇ ϕ - \partial_{ct} \v A \text{ impliziert, dass } ϕ \to ϕ - \partial_{ct} χ \\
   \v E &\to - ∇ (ϕ - \partial_{ct} χ) - \partial_{ct}(\v A + ∇ χ) = -∇ϕ - \partial_{ct} \v A = \v E
-  \end{align*}
+  \end{aligned}
+  \end{gather*}
   Wahl der Eichung zum Entkoppeln der Gleichungen
   \begin{align*}
   \Div \v A + \partial_{ct} ϕ &= 0 \tag{Lorenz-Eichung} \\
   \Laplace ϕ - \partial_{ct}^2 ϕ &= - 4π ρ \\
   \Laplace \v A - \partial_{ct}^2 A &= - \frac{4π}{c} \v j \\
   \end{align*}
+* elektromagnetische Wellen
+  \begin{align*}
+  \Laplace ϕ - \partial_{ct}^2 ϕ &= (∇ - \partial_{ct})(∇ + \partial_{ct})ϕ = - 4π ρ \\
+  \Laplace \v A - \partial_{ct}^2 \v A &= (∇ - \partial_{ct})(∇ + \partial_{ct}) \v A = - \frac{4π}{c} \v j
+  \end{align*}
+  im Vakuum: $ρ = 0, \v j = 0$ \\
+  \begin{align*}
+  ϕ &= ϕ_0 \exp(\pm i(\v k \v x - ω t)) \\
+  \to ∇ ϕ &= \pm i \v k ϕ \\
+  \Laplace ϕ &= - \v k^2 \\
+  \partial_{ct} ϕ &= \mp i \frac{ω}{c}ϕ \\
+  \partial_{ct}^2 ϕ &= - \frac{ω^2}{c^2} ϕ \\
+  \Laplace ϕ - \partial_{ct}^2 ϕ &= 0 = (- k^2 + \frac{ω^2}{c^2})ϕ \to ω = \pm ck
+  \end{align*}
+  analog für
+  \[\v A = \v A_0 \exp(\pm i(\v k \v x - ω t))\]
+  Phasen- und Gruppengeschwindigkeit:
+  \[c_{ph} = \frac{ω}{k} = c = \pp{ω}{k} = c_{gr}\]
+  $\to$ identisch, keine Dispersion. \\
+  \begin{align*}
+  \Laplace ϕ + \partial_{ct} \Div \v A &= -4πρ \\
+  \Laplace \v A - \partial_{ct}^2 \v A &= - \frac{4π}{c} \v j + ∇(\Div \v A + \partial_{ct} ϕ) \\
+  \intertext{Coulomb-Eichbedingung:}
+  \Laplace ϕ &= -4πρ \\
+  \Laplace \v A - \partial_{ct}^2 \v A &= - \frac{4π}{c} \v j + ∇ \partial_{ct} ϕ \\
+  \end{align*}
+  neue Quelle für $\v A$: $\partial_{ct} ∇ ϕ = - \v E$
+  \[\Div \v A = \pm i \underbrace{\v k \v A_0}_{= 0} \exp(\pm i(\v k \v x - ω t)) = 0\]
+  $\to \v A$ steht (in Coulomb-Eichung)	senkrecht auf der Ausbreitungsrichtung: "transversale Eichung" \\
+  $\to ϕ$ wird tatsächlich dann durch die Ladungsverteilung $ρ$ instantan erzeugt.
+\part{elektromagnetische Wellen}
+* Wellen im Vakuum: $ρ = 0, \vec{j} = 0, ε = μ = 1$
+  $\to \Div \v E = 0, \Div \v B = 0, \rot \v E = -\partial_{ct} \v B, \rot \v B = \partial_{ct} \v E$ eine Dualität $\v E \to \v B$ und $\v B \to - \v E$ im Vakuum lässt die Maxwell-Gleichnugen
+  invariant.
+  \begin{align*}
+  \rot \rot \v E &= \underbrace{∇ \Div \v E}_{= 0} - \Laplace \v E = - \partial_{ct} \underbrace{\rot \v B}_{= \partial_{ct}} = - \partial_{ct}^2 \v E \\
+  \to \Laplace \v E - \partial_{ct}^2 \v E &= 0 \\
+  \text{analog für $\v B$:}\quad \Laplace \v B - \partial_{ct}^2 \v B &= 0 \\
+  \intertext{Lösung: mache Ansatz}
+  \v E &= \v E_0 \exp(\pm i(\v k \v x - ω t)) \\
+  \to \v E &= - k^2 \v E \\
+  \partial_{ct}^2 \v E = -(\frac{ω}{c})^2 \v E \\
+  \Laplace \v E - \partial_{ct}^2 \v E &= (-k^2 + (\frac{ω}{c})^2) \v E = 0 \to c \abs{k} = \pm ω
+  \end{align*}
+  Dispersionsfreiheit:
+  \begin{align*}
+  v_{ph} &= \frac{ω}{k} = c \\
+  v_{gr} &= \pp{ω}{k} = c \\
+  \to v_{ph} v_{gr} &= c^2
+  \end{align*}
+  Flächen gleicher Phase:
+  \[k x - ω t = k(x - \frac{ω}{k}t) = k(x - ct) = \const \text{ falls } x - ct = \const\]
+  elektromagnetische Wellen sind transversal:
+  \begin{align*}
+  \intertext{aus dem Gauß-Gesetz}
+  \Div \v E &= \v k \v E = 0 ⇒ \v k \perp \v E \\
+  \intertext{genauso aus der 2. Maxwell-Gleichung}
+  \Div \v B &= \v k \v E = 0 ⇒ \v k \perp \v B \\
+  \intertext{$\v E$ und \(\v B\)-Felder sind gleichphasig}
+  \rot \v E &= \v k × \v E = -\partial_{ct} \v B  ⇒ \v E \perp \v B
+  \end{align*}
+  $\to \v k, \v B_0$ und $\v E_0$ bilden ein Rechtssystem + $\v E$ und $\v B$ sind gleichphasig.
+
+  Wie schaut das für die Potenziale aus?
+  \begin{align*}
+  ρ &= 0, \v q = 0 \\
+  ϕ &= ϕ_0 \exp(\pm i(\v k \v x - ω t)) \\
+  \to (\Laplace - \partial_{ct}^2)ϕ &= (- k^2 + (\frac{ω}{2})^2)ϕ = 0 \quad\text{alles ist völlig analog}
+  \end{align*}
+* Polarisation
+  Superposition von 2 ebenen Wellen *ohne* Phasenverschiebung $\to$ lineare Polarisation:
+  \[\left.\begin{matrix} \v E_1 = \v ε_1 \exp(i(\v k \v x - ω t)) \\ \v E_2 = \v ε_2 \exp(i(\v k \v x - ω t))\end{matrix}\right\} \to \v E_1 + \v E_2 = (\v ε_1 + \v ε_2)\exp(i(\v k \v x - ω t))\]
+  Superposition von 2 ebenen Wellen *mit* Phasenverschiebung $\to$ zirkulare Polarisation
+  \[\left.\begin{matrix} \v E_1 = \v ε_1 \exp(i(\v k \v x - ω t)) \\ \v E_2 = \v ε_2 \exp(i(\v k \v x - ω t - φ_0))\end{matrix}\right\} \to \v E_1 + \v E_2 = (\v ε_1 + i\v ε_2)\exp(i(\v k \v x - ω t))\]
+  falls $φ_0 = π/2$: $\exp(i π/2) = i$
+* Energietransport durch das elektrische Feld
+  \begin{gather*}
+  \begin{cases}\rot \v E = - \partial_{ct} \v B \\ \rot \v B = \partial_{ct} \v E + \frac{4π}{c} \v j \end{cases} \\
+  \begin{aligned}
+  \Div (\v E × \v B) &= \v B \rot \v E - E \rot \v B \\
+  \v E \rot \v B &= \v B \rot \v E - \frac{4π}{c} \v j \v E + \v E \partial_{ct} \v E + \v B \partial_{ct} \v B \\
+  \underbrace{\frac{c}{4π} \Div(\v E × \v B)}_{\text{Energiefluss}} + \underbrace{\v j \v E}_{\text{Ohm}} &= - \frac{1}{8π} \partial_{t}(\v E^2 + \v B^2) \\
+  \intertext{mit}
+  W_{el} &= \frac{\v E^2}{8π} = \frac{1}{2} ρ ϕ = \frac{1}{8π}ϕ \Laplace ϕ \\
+  W_{mag} &= \frac{\v B^2}{8π}
+  \end{aligned} \\
+  \to \underbrace{\frac{c}{4π} \Div (\v E × \v B)}_{\text{Energiefluess}} + \overbrace{\v j \v E}^{\mathclap{\text{Ohm-Arbeit}}} = \underbrace{-\partial_{t}(W_{el} + W_{mag})}_{\mathclap{\text{Änderung der Energiedichte}}}
+  \end{gather*}
+  Poynting-Vektor $\sim$ Energieflussdichte
+  \[\v S = \frac{c}{4π} \v E × \v B\]
+  ebene Welle: $\v S \parallel \v k, \v k$ steht senkrecht auf $\v E$ und $\v B$ \\
+  Ohm-Arbeit $\sim$ Arbeit, die das Feld an der Stromdichte verrichtet: $\v j = σ \v E$ (Ohm-Gesetz mit Leitfähigkeit $σ$)
+  \begin{align*}
+  ⇒ \v j \v E &= σ \v E^2 \\
+  ∫_V \d^3 r \v j \v E &= σ ∫_V \d^3 r \v E^2 = σ E^2 ΔV = σ E^2 A \frac{l^2}{l} = \frac{σ A}{l} (E l)^2 = \frac{U^2}{R}
+  \end{align*}
+  Erhaltungsgleichung "Poynting-Satz"
+  \[\underbrace{∫_{\partial V} \d \v A \v S}_{\mathclap{\text{Energietransport durch $\partial V$}}} = \overbrace{∫_V \d^3 r \v j \v E}^{\mathclap{\text{Ohm-Arbeit in $V$}}} + \underbrace{\dd{}{t} ∫_V \d^3 r (W_{el} + W_{mag})}_{\mathclap{\text{Änderung der Feldenergie in $V$}}}\]
+* Implustransport durch das elektromagnetische Feld
+  \begin{align*}
+  \v F &= q \v e + \frac{1}{c} ∇ × \v B \\
+  \intertext{Integriere über kleines Volumen, um die Lorentz-Kraftdichte $\v f$ zu erhalten}
+  \to \v f &= ρ \v E + \frac{1}{c} \v j × \v B \\
+  ⇒ \v F &= ∫_V \d r^2 \v f = ∫_V \d^3 r (ρ \v E + \frac{1}{c}\v j × \v B) = \dd{}{t} \v p \\
+  \to \dd{\v p}{t} &= \frac{1}{4π} ∫_V \d^3 r \Div \v E \v E + \rot \v B × \v B - \partial_{ct} \v E × \v B \\
+  \partial_{ct}\v E × \v B &= \partial_{ct} (\v E × \v B) - \v E × \partial_{ct} \v B =	\partial_{ct} (\v E × \v B) - \rot \v E × \v E \\
+  \dd{\v p}{t} &= ∫_V \d^3 r(\Div \v E \v E + \Div \v B \v B + \rot \v B × \v B - \v E × \rot \v E - \partial_{ct} (\v E × \v B)) \\
+  \to \dd{}{t}(\v p + \frac{1}{c^2} ∫_V \d^3 r \v S) &= \frac{1}{4π} ∫_V \d^3 r(\Div \v E \v E + \Div \v B \v B + \rot \v B × \v B + \rot \v E \v E)
+  \end{align*}
+  Kann man das Integral auf der rechten Seite auls Divergenz schreiben? \\
+  $\to$ ja: Maxwell-Spannungstensor
+  \begin{align*}
+  \string(\v E \Div \v E\string)_i &= E_i \partial_j E_j \\
+  \string(\v E × \rot \v E\string)_i &= ε_{ijk} E_j ε_{klm} \partial_l E_m = ε_{ijk} ε_{klm} E_j \partial_l E_m = (-δ_{il} δ_{jm} + δ_{im} δ_{jl}) E_j \partial_{l} E_m \\
+  &= - E_j \partial_i E_j + E_j \partial_j E_i \\
+  \to (\Div \v E \v E + \rot \v E × \v E)_i &= E_i \partial_j E_j + E_j \partial_j E_i - E_j \partial_i E_j = \partial_j (E_i E_j) - \frac{1}{2} \partial_i (E_j E_j) = \partial_j (E_i E_j - \frac{1}{2} δ_{ij} E_k E_k) \\
+  \to \dd{}{t}(\v p + \frac{1}{c^2} ∫_V \d^3 r \v ρ)_i &= \frac{1}{4π} ∫_V \d^3 r \underarrow[\partial_j]{Divergenz} (E_i E_j + B_i B_j - \frac{1}{2} δ_{ij}(E_k E_k + B_k B_k)) \\
+  \intertext{Definiere den Maxwell-Spannungstensor $T_{ij}$:}
+  T_{ij} &=	(E_i E_j + B_i B_j - \frac{1}{2} δ_{ij}(E_k E_k + B_k B_k)) \\
+  \tr (T_{ij}) &= \sum_{i} T_{ii} = \frac{1}{4π}(\v E^2 + \v B^2 - \frac{3}{2}(\v E^2 \v B^2)) = \frac{\v E^2 + \v B^2}{8π} = - \frac{\v E + \v B}{8π} = -(W_{el} + W_{mag}) \\
+  W_{el} + W_{mag} + \tr(T_{ij}) &= 0 = T_{μ}^{μ} \\
+  \to \dd{}{t}(p_i + \frac{1}{c^2} ∫ \d^3 r S_i) &= ∫_V \d^3 r \partial_j T_{ij} = ∫_{\partial V} \sum_{j} \d A_j T_{ij} \\
+  \end{align*}
+  $\d A_j T_{ij}$: Kraft auf ein Oberflächenelement $\d A_j ⇒ T_{ij}$ muss sich wie ein "`Druck"' verhalten $\to$ Analogie zur Fluidmechanik.
+* Elektromagnetische Wellen in Materie
+  \begin{align*}
+  \v D &= ε \v E \\
+  \v B &= μ \v H \\
+  \v j &= σ \v E \\
+  \rot H &= \partial_{ct} \v D + \frac{4π}{c} (\v σ \v E) \\
+  \rot \v E &= - μ \partial_{ct} \v H \\
+  \Div \v H &= 0 \\
+  \Div \v E &= 0 \\
+  \to \rot \rot \v H &= ∇ \Div \v H - \Laplace \v H = ε μ \partial_{ct}^2 \v H \\
+  \to \rot \rot \v E &= ∇ \Div \v E - \Laplace \v H = ε μ \partial_{ct}^2 \v E \\
+  \frac{ε μ}{c^2} \partial_{t}^2 &= \frac{1}{c^{\prime 2}} \partial_{t}^2 \\
+  \intertext{man erhält eine effektive Ausbreitungsgeschwindigkeit $c'$:}
+  c' &= \frac{c}{\sqrt{ε μ}} \\
+  \intertext{definiere Brechungsindex $n$:}
+  n &= \frac{c}{c'} = \sqrt{ε μ} \underarrow[\approx]{wenn $μ$ fast immer $\approx$ 1 ist} \sqrt{ε}
+  \end{align*}
+  man würde erwarten, dass $ε$ und $μ$ frequenzabhängig sind, die molekularen Dipole benögitgen eine gewisse Zeit um
+  sich auszurichten: Wasser: $ε \approx 81$, aber $n \simeq 1.3$ für optisches Licht.
+  \begin{align*}
+  \intertext{für $σ \neq 0, ebene Welle:$}
+  \rot \rot \v H &= - \Laplace \v H = ε μ \partial_{ct}^2 \v H + \frac{4π}{c} μ σ \partial_{ct} \v H, \v H = \v H_0 \exp(i(\v k \v x - ω t)) \\
+  \rot \rot \v E &= - \Laplace \v E = ε μ \partial_{ct}^2 \v E + \frac{4π}{c} μ σ \partial_{ct} \v E, \v E = \v E_0 \exp(i(\v k \v x - ω t)) \\
+  \to \rot \v H &= -i ε \frac{ω}{c} \v E + \frac{4π}{c} σ \v E = -i(ε + \frac{4π σ}{ω}i) \frac{ω}{c} \v E \\
+  \intertext{Definiere Permittivität $η$:}
+  η :&= ε + \frac{4π σ}{ω}i
+  \end{align*}
+  Vergleich mit
+  \[\rot \v H = - i ε \frac{ω}{c} \v E\]
+  ohne Leitfähigkeit. \\
+  Dispersion in Materie-Wellen aus den Maxwell-Gleichungen
+  \begin{align*}
+  \v k × \v H &= - \frac{ω}{c}η \v E \\
+  \v k × \v E &= \frac{ω}{c} η \v H	\\
+  \v k · \v E &= 0 \\
+  \v k · \v B &= 0 \\
+  \to \v k × \v k × \v H &= (\v k \v H) \v k - k^2 \v H = - \frac{ω}{c} η \v k × \v E = - (\frac{ω}{c})^2 η \v H \\
+  \intertext{man erhält eine komplexe Dispersionsrelation}
+  k^2 &= \frac{ω^2}{c^2} η ε(1 + \frac{4π σ}{ω ε}i) \\
+  \intertext{allgemeiner Ansatze}
+  k &= α + i β \\
+  \to k^2 &= α^2 - β^2 + 2 i α β \\
+  \to α^2 - β^2 &= μ ε \frac{ω^2}{c^2} \\
+  2 α β &= \frac{4π σ}{ω} μ \frac{ω^2}{c^2} \\
+  ⇒ α &= \frac{1}{2β}(\frac{4π σ}{ω}μ \frac{ω^2}{c^2}) \\
+  \frac{1}{4β^2} (·)^2 - β^2 &= μ ε \frac{ω^2}{c^2} \\
+  ⇒ β &= \pm \sqrt{ε μ} \frac{ω}{c} \sqrt{\frac{1}{2}(\sqrt{(\frac{4πσ}{ω ε})^2}) - 1} \\
+  ⇒ α &= \pm \sqrt{ε μ} \frac{ω}{c} \sqrt{\frac{1}{2}(\sqrt{(\frac{4πσ}{ω ε})^2}) + 1} \\
+  k &= α + i β \to \abs{k} = \sqrt{α^2 - β^2} = \sqrt{εμ} \frac{ω}{c} \sqrt[4]{1 + (\frac{4πσ}{ωε})^2} \\
+  φ &= \arctan \frac{β}{α} = \frac{1}{2}(2 \arctan \frac{β}{α}) = \frac{1}{2} \arctan \frac{2 \frac{β}{α}}{1 - \frac{β^2}{α^2}} \\
+  &= \dots = \frac{1}{2} \arctan \frac{2α β}{α^2 - β^2} = \frac{1}{2} \arctan(\frac{4πσ}{ωε})
+  \intertext{veralgemeinerter Brechungsindex}
+  n &= \frac{c}{ω} α + i \frac{c}{ω} β, k = α + i β = \frac{ω}{c}n = \frac{ω}{c}(\Re(n) + i \Im(n)) \\
+  \exp(i (\v k \v x - ω t)) &= \exp(i ω (\frac{n x}{c} - t)) \\
+  &= \exp(i ω (\Re (n)) \frac{x}{c} - t) \exp(-\frac{ω}{c} \Im(n) x)
+  \end{align*}
+* Wellengleichungen + retardierte Potentiale: Helmholtz
+  \begin{align*}
+  \string(\Laplace \partial^2_{ct}\string)ϕ &= -4πρ \\
+  \string(\Laplace \partial^2_{ct}\string)A &= -\frac{4π}{c}\v q \\
+  \intertext{mit Lorentzeichung:}
+  \Div \v A + \partial_{ct} ϕ &= 0 \\
+  \intertext{Definiere neuen Operator mit $\dalem = \Laplace - \partial_{ct}^2$}
+  \to \dalem ϕ &= 4πρ \\
+  \dalem \v A &= \frac{4π}{c} \v j \\
+  \string(\Laplace - \partial_{ct}^2\string) \underbrace{ψ(\v x, t)}_{\mathclap{\text{Potenziale}}} &= - 4π \overbrace{Q(\v x, t)}^{\mathclap{\text{Quellen}}} \\
+  \intertext{Fourier-Entwicklungen:}
+  ψ(\v x, t) &= ∫ \frac{\d ω}{2π} ψ(\v x, ω) e^{-i ω t} \\
+  Q(\v x, t) &= ∫ \frac{\d ω}{2π} Q(\v x, ω) e^{-i ω t} \\
+  \string(\Laplace - \partial_{ct}^2\string) ψ(\v x, t) &= ∫ \frac{\d ω}{2π} (\Laplace - \partial_{ct}^2) ψ(\v x, ω) e^{- i ω t} \\
+  &= ∫ \frac{\d ω}{2π}(\Laplace - (\frac{ω}{c})^2)ψ(\v x, ω) e^{- i ω t} \\
+  &= ∫ \frac{\d ω}{2π} (-4π) (\v x, ω) e^{- i ω t}
+  &= - 4π (\ x, t) \\
+  \intertext{Man erhält die Helmholtz-Differentialgleichnug}
+  \to (\Laplace + (\frac{ω}{c})^2) ψ &= - 4π Q \\
+  \string(\Laplace + k^2\string) G(\v x, \v x') &= δ_D(\v x - \v x ') = (\Laplace + k^2) G(r) = \frac{1}{r^2} \pp{}{r}(r^2 \pp{G}{r}) + k^2 G \quad\text{mit}\quad r = \abs{\v x - \v x'} \\
+  r \neq 0: \frac{\d^2}{\d r^2}(r G) + k^2 (r G) &= 0, \quad\text{denn:} \\
+  \frac{1}{r^2} \dd{}{r}(r^2 \dd{G}{r}) &= \frac{1}{r^2}(r^2 \frac{\d^2 G}{\d r^2}) + \frac{2}{r} \dd{G}{r} = \frac{\d G}{\d r^2} + \frac{2}{r} \dd{G}{r} = \frac{1}{r} \frac{\d^2}{\d r^2} (r G) = \frac{1}{r} \dd{}{r}(G + r \dd{G}{r}) \\
+  \intertext{Lösung harmonische Differentialgleichung:}
+  r G &= a_{+} \exp(i k r) + a_{-} \exp(-i k r)
+  \text{falls } r \to 0: G \sim \frac{1}{r}, r G &= r \frac{1}{r} = 1 = a_{+} + a_{-} \to a_{+} + a_{-} = 1
+  \lim_{kr \ll 1} G(r) &= -\frac{1}{4π} \frac{1}{r}, \text{ als Lösung von $\Laplace G = 0$, anstatt } (\Laplace + k^2) G = 0 = \frac{1}{r^2} \pp{}{r}(r^2 \pp{G}{r}) \\
+  \to G^{+}(\abs{\v x - \v x'}) &= - \frac{1}{4π} \frac{\exp(+ ik \abs{\v x - \v x'})}{\abs{\v x - \v x'}} \\
+  \to G^{-}(\abs{\v x - \v x'}) &= - \frac{1}{4π} \frac{\exp(- ik \abs{\v x - \v x'})}{\abs{\v x - \v x'}} \\
+  \intertext{volle Green-Funktion inklusive Zeitabhängigkeit:}
+  \v G(\v x, t, \v x', t') &= ∫ \frac{\d ω}{2π} G(\v x, ω, \v x', t') \exp(- i ω t) \\
+  \string(\Laplace - \partial_{ct}^2\string) G &= ∫ \frac{\d ω}{2π} (\Laplace + k^2) G \exp(- i ω t) = δ_D(\v x - \v x') ∫ \frac{\d ω}{2π} \exp(- i ω(t - t')) \\
+  \to (\Laplace + k^2) G &= δ_D(\v x - \v x') \exp(+ i ω t') \\
+  \to G^{\pm}(\v x, t, \v x', t') &= - ∫ \frac{\d ω}{2π} \frac{1}{4π} \frac{1}{\abs{\v x - \v x'}} \exp(- i ω(t - t' \pm \frac{\v x - \v x'}{c})) \\
+  &= -\frac{1}{4π} \frac{1}{\abs{\v x - \v x'}} δ_D(t - t' \mp \frac{\abs{\v x - \v x'}}{c}) \\
+  ψ^{\pm}(\v x, t') &= -4π ∫ \d t' ∫ \d^3 x' G^{\pm}(\v x, t, \v x', t') Q(\v x', t)
+  \end{align*}
+* Wellenfunktion und retardierte Potenziale:  allgemeine Herleitung der Green-Funktion:
+  \begin{align*}
+  \string(\Laplace - \partial_{ct}^2\string)G(\v x, t, \v x', t') &= -4π δ_D(\v x - \v x') δ_D(t - t') \\
+  ρ &= \abs{\v x - \v x'}, \v ρ = \v x - \v x' \\
+  τ &= t - t' \\
+  \intertext{Darstellung im Fourier-Raum:}
+  δ_D(\v x - \v x') δ_D(t - t') &= ∫ \frac{\d^3 k}{(2 π)^3} ∫ \frac{\d ω}{2π} \exp(i \v k (\v x - \v x')) \exp(-i ω(t - t')) \\
+  G(\v x, t, \v x', t') &= ∫ \frac{\d^3 k}{(2π)^3} ∫ \frac{\d ω}{2π} G(\v k, ω) \exp(i \v k(\v x - \v x')) \exp(- i ω(t - t')) \\
+  \intertext{mit $\dalem G = -4π δ_D$}
+  \dalem G(\v x, t, \v x', t) &= ∫ \frac{\d^k}{(2π)^3} ∫ \frac{\d ω}{2π} G(\v k, ω) (- k^2 + \frac{ω^2}{c^2}) \exp(i \v k(\v x - \v x')) \exp(-i ω t(t - t')) \\
+  \to G(\v k, ω) &= \frac{1}{4π} \frac{1}{k^2 - (\frac{ω}{c})^2} = \frac{1}{4π}	\frac{c^2}{(c k)^2 + ω^2} \quad\text{nur definiert, falls } c k \neq ω \\
+  \to G(\v x, t, \v x', t') &= ∫ \frac{\d^3 k}{(2π^3)} ∫ \frac{\d ω}{2π} \frac{c^2}{(c k - ω)(c k + ω)} \exp(i k(\v x - \v x'))\exp(-i ω(t - t')) \\
+  \end{align*}
+  \(∫ \d ω\)-Integration hat 2 Pole bei $n = \pm c k \to$ analytische Fortsetzung nach $ℂ$
+  - $G(\v k, z)$ komplex differenzierbar $\sim$ holomorph
+  - $∮_C \d z G(z) = 0$, falls $G \sim$ holomorph + kein Pol von $C$ umschlossen ist.
+  - $∮ \d z \frac{G(z)}{z - ξ} = g(ξ)$
+  - Pol an einer Stelle $ξ$ (Pol erster Ordnung)
+	\[\lim_{z \to ξ} G(z) (z - ξ) = \Res G(ξ)\]
+  - $\displaystyle{∮_C \d z G(z) = 2π i \sum_{n}^{} \Res G(ξ_n)}$ (mit den Polen $ξ_n$ in $C$)
+  \begin{align*}
+  G(\v x, t, \v x', t') &= \frac{c^4}{4π} ∫ \frac{\d^3 k}{(2π)^3} ∫ \frac{\d ω}{2π} \frac{\exp(i \v k ρ + i ω τ)}{(ck)^2 - (ω + i ε)^2} \\
+  c^2 k ^2 - ω^2 - 2 i ε ω + ε^2 &= -(ω^2 + 2 i ε ω - c^2 k^2 - ε^2) = -(ω^2 + 2 i ε ck - c^2 k^2 - ε^2) \\
+  &= -(ω + (ck - iε))(ω - (ck -iε))
+  \intertext{Damit und mit dem Residuensatz erhält man für dann}
+  ∮_C \d ω \frac{\exp(-iωτ)}{c^2 k^2 - (ω + iε)^2} &= -∮_C \d ω \frac{\exp(-iωτ)}{(ω + (c k - iε))(ω - (c k - iε))} \\
+  \intertext{Dies hat zwei Pole: bei $ω_1 = c k - i ε$ und $ω_2 = - c k - i ε$}
+  \Res(ω_1) &= c^2 \exp(-iω_1 τ) \lim_{ω \to ω_i} \frac{ω - ck + iε}{c^2 k^2 - (ω + iε)^2} \\
+  &= c^2 \exp(-i ω_1 τ) \lim_{ω\to ω_1}  \frac{ω - ck + iε}{(c k + ω + i ε)(ck - ω + iε)} \\
+  &= c^2 \exp(- i ω_1 τ) \lim_{ω \to ω_1} \frac{ω - ω_1}{2 ck (ω_1 - ω)} = - \frac{c}{2k} \exp(- i ck τ) \\
+  \Res(ω_2) &= \frac{c}{2k} \exp(+ i ck τ) \\
+  ∮_C \d ω (\dots) &= 2 π i (\Res(ω_1) + \Res(ω_2)) = -2π(-\frac{c}{2k} \exp(- i c k τ) + \frac{c}{2k} \exp( i c k τ)) = \frac{2π c}{k} \sin(c k τ) \\
+  \intertext{$∫ \d^3 k$: integration in Kugelkoordinaten:}
+  \d^3 k &= k^2 \d k \d (\cos θ) \d φ, u = \cos θ, θ = \angle(\v k, \v ρ), \v k · \v ρ = k ρ \cos θ = k ρ μ \\
+  G(\v ρ, τ) &= \frac{c}{π} ∫ k^2 \d k ∫ \d μ \exp(i k ρ μ) \frac{\sin(c k τ)}{k} = \frac{c}{π}∫ k^2 \d k \frac{\sin(c k τ)}{k} ∫_{-1}^{+1} \d μ \exp(i k ρ μ) \\
+  &= \frac{2c}{πρ} ∫ \d k \sin(c k τ) \sin(k ρ) \\
+  \intertext{Substitution $x = c k, \d x = c \d k$}
+  G(ρ, τ) &= \frac{2}{πρ} ∫ \d x \sin(x τ) \sin(\frac{x}{c} ρ) = \frac{1}{ρ} \Big{\string(}δ_D\underarrow[(τ - \frac{ρ}{c})]{$t - t' - \frac{\abs{\v x - \v x'}}{c}$} - δ_D\overarrow[(τ + \frac{ρ}{c})]{$t + t' + \frac{\abs{\v x - \v x'}}{c}$}\Big{\string)} \\
+  G(\v x, t, \v x', t') &= \frac{1}{\abs{r - r'}} δ_D(ut - t' - \frac{\abs{\v x - \v x'}}{c}) \\
+  ψ(\v x, t) &= ∫ \d^3 x' ∫ \d t' \frac{Q(\v x', t')}{\abs{\v x - \v x'}} δ_D(t - t' - \frac{\abs{\v x - \v x'}}{c})
+  \end{align*}
+  (liefert keinen Beitrag für $t > t'$)
