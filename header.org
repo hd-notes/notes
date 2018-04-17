@@ -180,6 +180,8 @@
 #+LATEX_HEADER: \DeclareMathOperator{\VAR}{VAR}
 #+LATEX_HEADER: \DeclareMathOperator{\dist}{dist}
 #+LATEX_HEADER: \DeclareMathOperator{\supp}{supp}
+#+LATEX_HEADER: \DeclareMathOperator{\vol}{vol}
+#+LATEX_HEADER: \DeclareMathOperator{\Alt}{Alt}
 
 
 #+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}
@@ -249,6 +251,7 @@
 #+LATEX_HEADER: \newtheorem{algrthm}[defn]{Algorithmus}
 #+LATEX_HEADER: \newtheorem{ex}[defn]{Beispiel}
 #+LATEX_HEADER: \newtheorem{korollar}[defn]{Korollar}
+#+LATEX_HEADER: \newtheorem{proposition}{Proposition}
 #+LATEX_HEADER: \theoremstyle{nonumberplain}
 #+LATEX_HEADER:	\theoremsymbol{\ensuremath\square}
 #+LATEX_HEADER:	\qedsymbol{\ensuremath\square}
@@ -268,7 +271,7 @@
 #+LATEX_HEADER:   }
 #+LATEX_HEADER:   {\end{mdframed}}
 # #+LATEX_HEADER: \newenvironment{box}{}
-#+LATEX_HEADER: \usetikzlibrary{math, arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel,external}
+#+LATEX_HEADER: \usetikzlibrary{math, arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel,external,arrows.meta}
 
 # #+LATEX_HEADER: \makeatletter
 # #+LATEX_HEADER: \def\resetMathstrut@{%

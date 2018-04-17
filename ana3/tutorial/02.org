@@ -1,0 +1,129 @@
+Nachtrag zum Integralbegriff.
+*Einfache Funktionen auf $(X, \mathcal{A}, μ)$*. \\
+$f$ heißt einfach, falls es eine Zerlegung
+\[X = \bigdcup_{\text{endlich}} X_i, X_i ∈ \mathcal{A}, f \big|_{X_i} = \const\]
+gibt \\
+*Treppenfunktionen* \\
+$f$ heißt Treppenfunktion, falls es ein $A ∈ \mathcal{A}$ mit $μ(A) < ∞$, sodass $f \big|_{X \setminus A} = 0$ und
+\[A = \bigdcup_{\text{endlich}} A_i\]
+$A_i ∈ \mathcal{A}$ mit $f \big|_{A_i} = \const$ \\
+*Integral für einfache Funktionen* \\
+\[∫_X f\d μ := \sum_{\text{endlihc}} μ(X_i) · f(X_i)\]
+mit der Konvention "$0 · ∞ = 0$"
+*Integral für positive messbare Funktionen* \\
+$f$ lässt sich schreibenAls punktweiser Grenzwert einer monoton	wachsendes Folge $(f_n)_{n ∈ ℕ}$
+wobei $f_n ∀ n$ einfach ist
+\[\to ∫_X f \d μ := \lim_{n \to ∞} ∫_X f_n \d μ = \sup \{∫_X g \d μ \mid g \text{ einfach}, g \leq f\}\]
+*Integrierbarkeit mit einfachen Funktionen* \\
+$f$ messbar heißt integrierbar, falls
+\[∫_X f^{\pm} \d μ < ∞, ∫_X f \d μ := ∫_X f^{+} \d μ - ∫_X f^{-} \d μ\]
+*Integrierbarkeit mit Treppenfunktionen* \\
+$f$ integrierbar, falls eine \(\mathcal{L}^1\) Cauchy-Folge $(t_n)_{n ∈ ℕ}$ existiert von Treppenfunktionen, die fast-überall punktweise gegen $f$ konvergiert.
+\[∫_X f \d μ := \lim_{n \to ∞} ∫_X t_n \d μ\]
+\\\hline \\
+Betrachte $V_n$ die Vitaly-Menge in $ℝ^n$, nicht messbar
+\[V_n × \{0\} ⊆ ℝ^{n + 1}\]
+ist nicht messbar, aber
+\[V_n × \{0\} ⊆ ℝ^n × \{0\}\]
+Nullmenge
+\\\hline \\
+\begin{gather*}
+χ_{V_n × \{0\}} (x) = \lim_{n \to ∞} χ_{ℝ^n × \{0\}}(x) \text{ fast überall} \\
+⇒ ∫_X χ_{V_n × \{0\}} \d μ = \lim_{m \to 0} ∫_X χ_{ℝ^n × \{0\}} \d μ = 0
+\end{gather*}
+
+
+
+2.1
+Algebra $\mathcal{A}$ mit Prämaß $μ$
+\[\to μ^{\ast}(A) := \inf \{\sum_{n ∈ ℕ} μ(A_n) \mid (A_n)_{n ∈ ℕ} ⊆ \mathcal{A}, A ⊆ \bigcup_{n ∈ ℕ} A_n\}\]
+zz. $μ^{\ast}$ ist äußeres Maß und $μ^{\ast} \big|_{\mathcal{A}} = μ$.
+#+begin_proof latex
+*Wohldefiniertheit*: $X ∈ \mathcal{A}$ und $μ$ ist Prämaß \\
+$A ∈ \mathcal{A}$, dann ist $A_1:= A, A_k = \emptyset$ Folge in $\mathcal{A}$ mit
+\[A ⊆ \bigcup_{n ∈ ℕ} A_n ⇒ μ^{\ast}(A) \leq μ(A)\]
+Umgekhert ist jede beliebige Überdeckung $(A_n)_{n ∈ ℕ} ⊆ \mathcal{A}, A ⊂ \bigcup_{n ∈ ℕ} A_n$
+\begin{align*}
+(A ∩ A_n)_{n ∈ ℕ} &⊆ \mathcal{A} \quad\text{und}\quad A = \bicgup_{n ∈ ℕ} (A ∩ A_n) \\
+⇒ μ(A) &= μ(\bigcup_{n ∈ ℕ}(A ∩ A_n)) \leq \sum_{n ∈ ℕ} μ(A_n) \\
+⇒ μ(A) &\leq μ^{\ast}(A) ⇒ μ^{\ast}\big_{\mathcal{A}} = μ
+\end{align*} \\
+$μ^{\ast}(\emptyset) = μ(\emptyset)$, denn $\emptyset ∈ \mathcal{A}$ \\
+Sei $(A_n)_{n ∈ ℕ} ⊂ \mathcal{P}(X), ε > 0$, dann existiert zu $n ∈ ℕ$ eine Folge $(B_n^j)_{j ∈ ℕ} ⊆ \mathcal{A}$ mit
+\[\sum_{j ∈ ℕ} (B_n^j) < μ^{\ast}(A_n) + \frac{ε}{2^n}\]
+denn $μ^{\ast}(A)$ ist Infimum
+\begin{align*}
+\bigcup_{n ∈ ℕ} A_n ⊆ \bigcup_{n ∈ ℕ} \bigcup_{j ∈ ℕ} B_n^j \qquad\qquad μ^{\ast}(\bigcup_{n ∈ ℕ} A_n) &\leq \sum_{n ∈ ℕ} \sum_{j ∈ ℕ} μ(B_n^j) \\
+&\leq \sum_{n ∈ ℕ} \sum_{j ∈ ℕ} (μ^{\ast}(A_n) + \frac{ε}{2^n}) \\
+&= \sum_{n ∈ ℕ} μ^{\ast}(A_n) + ε
+\end{align*}
+Da $ε > 0$ beliebig vorgegeben
+\[⇒ μ^{\ast}(\bigcup_{n ∈ ℕ} A_n) \leq \sum_{n ∈ ℕ}^{μ^{\ast}(A_n)}\]
+$A ⊆ B ⊆ X$ und
+\begin{gather*}
+B ⊆ \bigcup_{n ∈ ℕ} A_n \\
+A_n ∈ \mathcal{A} ∀ n ∈ ℕ ⇒ A ⊆ \bigcup_{n ∈ ℕ} A_n \\
+⇒ μ^{\ast}(A) \leq μ^{\ast}(B) \\
+\end{gather*}
+#+end_proof
+
+2.2
+$X \neq \emptyset$
+\[μ^{\ast}: \mathcal{P}(X) \to ℝ, A ↦ \begin{cases} 0 & A = \emptyset \\ 1 & A \neq \emptyset\end{cases}\]
+zz: $μ^{\ast}$ ist äuheres Maß
+#+begin_proof latex
+- $μ(A) \geq 0 ∀ A ∈ \mathcal{P}(X)$
+- $μ^{\ast}(\emptyset) = 0$ nach Definition
+- $A ⊆ B ⊆ X$:
+  \begin{gather*}
+  A = \emptyset ⇒ μ^{\ast}(A) = 0 \leq μ^{\ast}(B) \\
+  A \neq \emptyset ⇒ B \neq \emptyset ⇒ μ^{\ast}(A) = 1 \leq 1 = μ^{\ast}(B)
+  \end{gather*}
+- $(A_n)_{n ∈ ℕ} ⊆ \mathcal{P}(X)$ mit
+  \begin{gather*}
+  A_n = \emptyset ∀ n ∈ ℕ ⇒ μ^{\ast}(\bigcup_{n ∈ ℕ} A_n) = 0 \leq \sum_{n ∈ ℕ} μ^{\ast}(A_n) = 0 \\
+  ∃ k ∈ ℕ: A_n \neq \emptyset ⇒ μ^{\ast}(\bigcup_{n ∈ ℕ} A_n) = 1 = μ^{\ast}(A_k) \leq \sum_{n ∈ ℕ} μ^{\ast}(A_n)
+  \end{gather*}
+#+end_proof
+zz: die \(μ^{\ast}\)-messbaren Mengen sind $\{\emptyset, X\}$
+#+begin_proof latex
+$∀ E ∈ \mathcal{P}(X)$ muss gelten
+\[μ^{\ast}(E) = μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C)\]
+damit $A$ \(μ^{\ast}\)-messbar ist. Gilt für $\emptyset, X$ offensichtlich, sei also $\emptyset ⊊ A ⊊ X ⇒ A^C \neq \emptyset, A^C \neq X$.
+Wähle $x ∈ A^C$ und setze $E := A ∪ \{x\}$, dann gilt
+\[1 = μ^{\ast}(E) = μ^{\ast}(E ∩ A) + μ^{\ast}(E ∩ A^C) = 1 + 1 = 2 \lightning\]
+$⇒$ $A$ kann unmöglich \(μ^{\ast}\)-messbar sein.
+#+end_proof
+2.3
+Sei $f:(ℝ, \mathcal{B}(ℝ)) \to (ℝ, \mathcal{B}(ℝ))$ monoton wachsend. \\
+zz: $f$ ist messbar
+#+begin_proof latex
+Langt zz: $∀ a ∈ ℝ$ mit $I_a := (-∞, a)$ gilt
+\[f^{-1} ((-∞, a)) ∈ \mathcal{B}(ℝ)\]
+- $f(x) \geq a ∀ x ∈ ℝ ⇒ f^{\ast}(I_a) = \emptyset ∈ \mathcal{B}(ℝ)$
+- $∃ x ∈ ℝ$ mit $f(x) < a ⇒ ∀ y \leq x$ ist $f(y) \leq f(x) < a$
+  \[⇒ \string(-∞, x] ⊆ f^{-1}(I_a) ⇒ \bigcup_{x ∈ f^{-1}(I_a)} \string(-∞, x]\]
+  1. $f^{-1}(I_a)$ ist nach oben unbeschränkt $⇒ f^{-1}(I_a) = ℝ ∈ \mathcal{B}(ℝ)$
+  2. $f^{-1}(I_a)$ ist nach	oben beschränkt, setze $b := \sup \{x ∈ f^{-1}(I_a)\}$
+	 \[⇒ f^{-1}(I_a) = \string(-∞,b] ∈ \mathcal{B}(ℝ) \quad\text{oder}\quad f^{-1}(I_a) = (-∞, b) ∈ \mathcal{B}(ℝ)\]
+#+end_proof
+2.4
+$a ∈ ℝ^n \setminus \{0\}$ fest und $f: ℝ^n \to ℝ$ messbar mit $f(x) = f(x + a)$ für fast alle $x ∈ ℝ^n$ \\
+zz: es gibt $g: ℝ^n \to ℝ$ mit $g(x) = g(x + a) ∀ x ∈ ℝ$ und $g(x) = f(x)$ für fast alle $x ∈ ℝ^n$
+#+begin_proof latex
+Betrachte $A := \{x ∈ ℝ^n \mid f(x) \neq f(x + a)\}$ definitionsgemäß ist $A$ Nullmenge $⇒ ∀ k ∈ ℤ$ ist
+\[A_k := \{x ∈ ℝ^n \mid x - k a ∈ A\}\]
+eine Nullmenge wegen der Translationsinvarianz. Offenbar git $A = A_0$ und $B := \bigcup_{k ∈ ℤ} A_k$
+ist Nullmenge mit $A ⊆ B$. Ferner gilt für $x ∈ B$ auch $x + a ∈ B$, denn
+\begin{align*}
+x ∈ B &⇒ ∃ y ∈ A: x = y + k a \\
+&⇒ x + a = y + (k + 1) a \\
+&⇒ x ∈ A_{k + 1}
+\end{align*}
+und umgekhert $x \not ∈ B \to x + a ∈ B$ ($x + a = y + k a ⇒ x = y + (k - 1) a ⇒ x ∈ A_{k - 1} ⊆ B \lightning$)
+\[g(+) := \begin{cases} f(x) & x ∈ ℝ^n \setminus B \\ 0 & x ∈ B\end{cases}\]
+dann ist $g = f$ fast überall und für $x ∈ B$ ($⇒ x + a ∈ B$)
+\[g(x) = 0 = g(x + a)\]
+sowie $x \not ∈ B$ ($⇒ x + a \not ∈ B ⇒ x \not ∈ A$)
+\[g(x) = f(x) = f(x + a) = g(x + a)\]
+#+end_proof

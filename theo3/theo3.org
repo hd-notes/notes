@@ -1044,81 +1044,900 @@ Lösungen der Poisson-Gleichung $\Laplace ϕ = - 4πρ$.
   \exp(i (\v k \v x - ω t)) &= \exp(i ω (\frac{n x}{c} - t)) \\
   &= \exp(i ω (\Re (n)) \frac{x}{c} - t) \exp(-\frac{ω}{c} \Im(n) x)
   \end{align*}
-* Wellengleichungen + retardierte Potentiale: Helmholtz
+* Wellengleichungen + retardierte Potentiale: Helmholtz Differentialgleichung
+  Verbindung zwischen Potenzialen $ϕ, \v A$ und Quellen $ρ, \v j$
   \begin{align*}
   \string(\Laplace \partial^2_{ct}\string)ϕ &= -4πρ \\
   \string(\Laplace \partial^2_{ct}\string)A &= -\frac{4π}{c}\v q \\
-  \intertext{mit Lorentzeichung:}
+  \intertext{in Lorenzeichung:}
   \Div \v A + \partial_{ct} ϕ &= 0 \\
-  \intertext{Definiere neuen Operator mit $\dalem = \Laplace - \partial_{ct}^2$}
+  \end{align*}
+  Definiere neuen Operator: D'Alembert-Operator $\dalem = \Laplace - \partial_{ct}^2 = (∇ + \partial_{ct})(∇ - \partial_{ct})$. \\
+  \begin{align*}
   \to \dalem ϕ &= 4πρ \\
   \dalem \v A &= \frac{4π}{c} \v j \\
-  \string(\Laplace - \partial_{ct}^2\string) \underbrace{ψ(\v x, t)}_{\mathclap{\text{Potenziale}}} &= - 4π \overbrace{Q(\v x, t)}^{\mathclap{\text{Quellen}}} \\
-  \intertext{Fourier-Entwicklungen:}
+  \end{align*}
+  Änderung in $r, \v j$ pflanzt sich mit Geschwindigkeit $c$ fort $\to$ Potenziale $ϕ, \v A$ können sich im
+  Abstand $R$ erst nach $R/c$ ändert. $\to$ zeitabhängige Green-Funktion. \\
+  Feldgleichungen haben die Form der Helmholtz-Differentialgleichung:
+  \[(\Laplace - \partial_{ct}^2) \underbrace{ψ(\v x, t)}_{\mathclap{\text{Potenzial}}} = - 4π \overbrace{Q(\v x, t)}^{\mathclap{\text{Quelle}}}\]
+  Fourier-Entwicklung:
+  \begin{align*}
   ψ(\v x, t) &= ∫ \frac{\d ω}{2π} ψ(\v x, ω) e^{-i ω t} \\
   Q(\v x, t) &= ∫ \frac{\d ω}{2π} Q(\v x, ω) e^{-i ω t} \\
   \string(\Laplace - \partial_{ct}^2\string) ψ(\v x, t) &= ∫ \frac{\d ω}{2π} (\Laplace - \partial_{ct}^2) ψ(\v x, ω) e^{- i ω t} \\
   &= ∫ \frac{\d ω}{2π}(\Laplace - (\frac{ω}{c})^2)ψ(\v x, ω) e^{- i ω t} \\
-  &= ∫ \frac{\d ω}{2π} (-4π) (\v x, ω) e^{- i ω t}
-  &= - 4π (\ x, t) \\
+  &= ∫ \frac{\d ω}{2π} (-4π) Q(\v x, ω) e^{- i ω t} \\
+  &= - 4π Q(\ x, t) \\
   \intertext{Man erhält die Helmholtz-Differentialgleichnug}
-  \to (\Laplace + (\frac{ω}{c})^2) ψ &= - 4π Q \\
-  \string(\Laplace + k^2\string) G(\v x, \v x') &= δ_D(\v x - \v x ') = (\Laplace + k^2) G(r) = \frac{1}{r^2} \pp{}{r}(r^2 \pp{G}{r}) + k^2 G \quad\text{mit}\quad r = \abs{\v x - \v x'} \\
+  \to (\Laplace + (\frac{ω}{c})^2) ψ &= - 4π Q(\v x, t) \\
+  \end{align*}
+  Green-Funktion:
+  \[(\Laplace + k^2)G(\v x, \v x') = δ_D(\v x - \v x') δ_D(t - t')\]
+  $\sim$ löst Wellengleichung für eine Punktquelle bei $\v x'$ zur Zeit $t'$. \\
+  Green-Funktion für die Helmholtz-Differentialgleichung: \\
+  keine Randbedingungen: $G(\v x, \v x')$ hängtnur von $r$: $r = \abs{\v x - \v x'}$
+  \begin{align*}
+  \string(\Laplace + k^2\string) G(\v x, \v x') &= δ_D(\v x - \v x ') = (\Laplace + k^2) G(r) = \frac{1}{r^2} \pp{}{r}(r^2 \pp{G}{r}) + k^2 G = δ_D(r)  \\
   r \neq 0: \frac{\d^2}{\d r^2}(r G) + k^2 (r G) &= 0, \quad\text{denn:} \\
   \frac{1}{r^2} \dd{}{r}(r^2 \dd{G}{r}) &= \frac{1}{r^2}(r^2 \frac{\d^2 G}{\d r^2}) + \frac{2}{r} \dd{G}{r} = \frac{\d G}{\d r^2} + \frac{2}{r} \dd{G}{r} = \frac{1}{r} \frac{\d^2}{\d r^2} (r G) = \frac{1}{r} \dd{}{r}(G + r \dd{G}{r}) \\
-  \intertext{Lösung harmonische Differentialgleichung:}
-  r G &= a_{+} \exp(i k r) + a_{-} \exp(-i k r)
-  \text{falls } r \to 0: G \sim \frac{1}{r}, r G &= r \frac{1}{r} = 1 = a_{+} + a_{-} \to a_{+} + a_{-} = 1
-  \lim_{kr \ll 1} G(r) &= -\frac{1}{4π} \frac{1}{r}, \text{ als Lösung von $\Laplace G = 0$, anstatt } (\Laplace + k^2) G = 0 = \frac{1}{r^2} \pp{}{r}(r^2 \pp{G}{r}) \\
+  \end{align*}
+  Lösung der harmonischen Differenzialgleichnug:
+  \begin{gather*}
+  r G = a_{+} \exp(i k r) + a_{-} \exp(-i k r) \\
+  a_{+} + a_{-} = 1 \to a_{-} = 1 - a_{+}
+  \end{gather*}
+  für Grenzfall $r \to 0$: $G \sim 1/r$ \\
+  \[\to G(r) = G(\abs{\v x - \v x'}) = a_{+} G^{+}(\abs{\v x - \v x'}) + a_{-} G^{-}(\abs{\v x - \v x'})\]
+  Falls $r \to 0$:
+  \[\frac{1}{r^2} \pp{}{r}( r^2 \pp{G}{r}) + k^2 G = δ_D(r)\]
+  Physikalisches Argument: bei kleinen Abständen kann Retardation keine Rolle spielen; die Helmholtz-Differentialgleichung
+  muss in Poisson-Differentialgleichung übergehen.
+  \begin{align*}
+  \lim_{kr \ll 1} G(r) &= -\frac{1}{4π} \frac{1}{r}, \text{ als Lösung von: } \frac{1}{r^2} \pp{}{r}(r^2 \pp{G}{r}) = δ_D(r) \\
   \to G^{+}(\abs{\v x - \v x'}) &= - \frac{1}{4π} \frac{\exp(+ ik \abs{\v x - \v x'})}{\abs{\v x - \v x'}} \\
   \to G^{-}(\abs{\v x - \v x'}) &= - \frac{1}{4π} \frac{\exp(- ik \abs{\v x - \v x'})}{\abs{\v x - \v x'}} \\
   \intertext{volle Green-Funktion inklusive Zeitabhängigkeit:}
-  \v G(\v x, t, \v x', t') &= ∫ \frac{\d ω}{2π} G(\v x, ω, \v x', t') \exp(- i ω t) \\
+  G(\v x, t, \v x', t') &= ∫ \frac{\d ω}{2π} G(\v x, ω, \v x', t') \exp(- i ω t) \\
   \string(\Laplace - \partial_{ct}^2\string) G &= ∫ \frac{\d ω}{2π} (\Laplace + k^2) G \exp(- i ω t) = δ_D(\v x - \v x') ∫ \frac{\d ω}{2π} \exp(- i ω(t - t')) \\
   \to (\Laplace + k^2) G &= δ_D(\v x - \v x') \exp(+ i ω t') \\
   \to G^{\pm}(\v x, t, \v x', t') &= - ∫ \frac{\d ω}{2π} \frac{1}{4π} \frac{1}{\abs{\v x - \v x'}} \exp(- i ω(t - t' \pm \frac{\v x - \v x'}{c})) \\
   &= -\frac{1}{4π} \frac{1}{\abs{\v x - \v x'}} δ_D(t - t' \mp \frac{\abs{\v x - \v x'}}{c}) \\
   ψ^{\pm}(\v x, t') &= -4π ∫ \d t' ∫ \d^3 x' G^{\pm}(\v x, t, \v x', t') Q(\v x', t)
   \end{align*}
-* Wellenfunktion und retardierte Potenziale:  allgemeine Herleitung der Green-Funktion:
+  Retardierung:
+  \[t = t' + \underarrow[\frac{\abs{\v x - \v x'}}{c}]{zusätzliche Zeit, die das Feld von $\v x$ zu $\v x$ benötigt}\text{ für "`$+$"': } t > t'\]
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+ \catcode`)=12
+ \begin{center}
+\begin{tikzpicture}
+\draw[->] (-.1,0) -- ++(6.1, 0) node[below] {$x$};
+\draw[->] (0,-.1) -- ++(0,6.1) node[left] {$c t$};
+\filldraw (4,0) circle (2pt);
+\filldraw (0,4) circle (2pt);
+\draw (4,0) -- (0,4);
+\node[left] at (0,2) {$t - t'$};
+\node[below] at (2,0) {$\abs{x - x'}$};
+\node[below] at (0,0) {Beobachter};
+\node[below] at (4,0) {Ladung};
+\draw[dashed] (4,0) -- ++(0,6);
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+* Wellenfunktion und retardierte Potenziale: allgemeine	Konstruktion
+  Wellengleichung:
+  \[(\Laplace - \partial_{ct}^2) ψ = -4π Q(\v x, t)\]
+  Green-Funktion für eine Punktquelle an der Stelle $(\v x', t')$
   \begin{align*}
   \string(\Laplace - \partial_{ct}^2\string)G(\v x, t, \v x', t') &= -4π δ_D(\v x - \v x') δ_D(t - t') \\
+  \intertext{$G(\v x, t, \v x', t')$ hängt nur von den Koordinatenabständen ab:}
   ρ &= \abs{\v x - \v x'}, \v ρ = \v x - \v x' \\
   τ &= t - t' \\
-  \intertext{Darstellung im Fourier-Raum:}
-  δ_D(\v x - \v x') δ_D(t - t') &= ∫ \frac{\d^3 k}{(2 π)^3} ∫ \frac{\d ω}{2π} \exp(i \v k (\v x - \v x')) \exp(-i ω(t - t')) \\
+  \intertext{durch Superposition:}
+  ψ(x,t) &=	∫ \d^2 x' ∫ \d t G(\v x, t, \v x', t') Q(\v x', t)
+  \end{align*}
+  Darstellung von $G$ und $δ$ im Fourier-Raum:
+  \begin{align*}
+  δ_D(\v x - \v x') δ_D(t - t') &= 4π∫ \frac{\d^3 k}{(2 π)^3} ∫ \frac{\d ω}{2π} \exp(i \v k (\v x - \v x')) \exp(-i ω(t - t')) \\
   G(\v x, t, \v x', t') &= ∫ \frac{\d^3 k}{(2π)^3} ∫ \frac{\d ω}{2π} G(\v k, ω) \exp(i \v k(\v x - \v x')) \exp(- i ω(t - t')) \\
   \intertext{mit $\dalem G = -4π δ_D$}
-  \dalem G(\v x, t, \v x', t) &= ∫ \frac{\d^k}{(2π)^3} ∫ \frac{\d ω}{2π} G(\v k, ω) (- k^2 + \frac{ω^2}{c^2}) \exp(i \v k(\v x - \v x')) \exp(-i ω t(t - t')) \\
+  \dalem G(\v x, t, \v x', t) &= ∫ \frac{\d^k}{(2π)^3} ∫ \frac{\d ω}{2π} G(\v k, ω) (- k^2 + \frac{ω^2}{c^2}) \exp(i \v k(\v x - \v x')) \exp(-i ω t(t - t')) \overset{!}{=} -4π δ_D \\
   \to G(\v k, ω) &= \frac{1}{4π} \frac{1}{k^2 - (\frac{ω}{c})^2} = \frac{1}{4π}	\frac{c^2}{(c k)^2 + ω^2} \quad\text{nur definiert, falls } c k \neq ω \\
   \to G(\v x, t, \v x', t') &= ∫ \frac{\d^3 k}{(2π^3)} ∫ \frac{\d ω}{2π} \frac{c^2}{(c k - ω)(c k + ω)} \exp(i k(\v x - \v x'))\exp(-i ω(t - t')) \\
   \end{align*}
-  \(∫ \d ω\)-Integration hat 2 Pole bei $n = \pm c k \to$ analytische Fortsetzung nach $ℂ$
-  - $G(\v k, z)$ komplex differenzierbar $\sim$ holomorph
+  \(∫ \d ω\)-Integration hat 2 Pole bei $n = \pm c k \to$ analytische Fortsetzung nach $ℂ$ zum Lösen des $∫ \d ω$ Integrals
+  - $G(\v k, z)$ komplex differenzierbar $\sim$ holomorph ($z$: komplexes $ω$)
   - $∮_C \d z G(z) = 0$, falls $G \sim$ holomorph + kein Pol von $C$ umschlossen ist.
-  - $∮ \d z \frac{G(z)}{z - ξ} = g(ξ)$
-  - Pol an einer Stelle $ξ$ (Pol erster Ordnung)
+  - Pol erster Ordnung an einer Stelle $ξ$:
 	\[\lim_{z \to ξ} G(z) (z - ξ) = \Res G(ξ)\]
-  - $\displaystyle{∮_C \d z G(z) = 2π i \sum_{n}^{} \Res G(ξ_n)}$ (mit den Polen $ξ_n$ in $C$)
+  - $\displaystyle{∮_C \d z G(z) = 2π i \sum_{n}^{} \Res G(ξ_n)}$ (mit den Polen $ξ_n$ umschlossen von $C$)
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+Integration $∫ \d ω$ in der komplexen Ebene
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-4,0) -- ++(8,0) node[below] {$ℝ$};
+\draw[->] (0,-2) -- ++(0,6) node[right] {$iℝ$};
+\draw[dashed] (4,0) arc[radius=4cm,start angle=0,end angle=180];
+\filldraw (-3,.2) circle (2pt) node[above] {$ω = - c k$};
+\filldraw (3,.2) circle(2pt) node[above] {$ω = +c k$};
+\draw[->] (-3.5,.2) -- ++(7,0);
+\draw[<-] (2.9,2.9) -- ++(.5,.5) node[right,every text node part/.style={align=left}] {Integration kann durch einen\\Halbkreis geschlossen werden.\\Integrand $\sim 1/ω^2$ für große $ω$, Halbkreis $\sim ω$};
+\end{tikzpicture}
+\end{center}
+Integrationsweg für $∫ \d ω \dots$. Möglichkeiten:
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-3.2,0) -- ++(6.4,0) node[below] {$ℝ$};
+\draw[->] (0,-3.2) -- ++(0,6.4) node[right] {$iℝ$};
+\draw[-{Latex[length=2mm]}] (3,0) arc[radius=3cm,start angle=0,end angle=45];
+\draw[-{Latex[length=2mm]}] (45:3) arc[radius=3cm,start angle=45,end angle=135];
+\draw (135:3) arc[radius=3cm,start angle=135,end angle=180];
+\draw[-{Latex[length=2mm]}] (-3,0) -- ++(0.5, 0);
+\draw[-{Latex[length=2mm]}] (-2.5, 0) -- ++(2.5, 0);
+\draw[-{Latex[length=2mm]}] (0,0) -- ++(2.5, 0);
+\draw[->] (-2, 0) -- ++(0,.6) node[above,yshift=-6pt] {$×$};
+\draw[->] (2, 0) -- ++(0,.6) node[above,yshift=-6pt] {$×$};
+\node at (2,-1) {$\neq 0$};
+\begin{scope}[shift={(7,0)}]
+\draw[->] (-3.2,0) -- ++(6.4,0) node[below] {$ℝ$};
+\draw[->] (0,-3.2) -- ++(0,6.4) node[right] {$iℝ$};
+\draw[-{Latex[length=2mm]}] (3,0) arc[radius=3cm,start angle=0,end angle=-45];
+\draw[-{Latex[length=2mm]}] (-45:3) arc[radius=3cm,start angle=-45,end angle=-135];
+\draw (-135:3) arc[radius=3cm,start angle=-135,end angle=-180];
+\draw[-{Latex[length=2mm]}] (-3,0) -- ++(0.5, 0);
+\draw[-{Latex[length=2mm]}] (-2.5, 0) -- ++(2.5, 0);
+\draw[-{Latex[length=2mm]}] (0,0) -- ++(2.5, 0);
+\draw[->] (-2, 0) -- ++(0,.6) node[above,yshift=-6pt] {$×$};
+\draw[->] (2, 0) -- ++(0,.6) node[above,yshift=-6pt] {$×$};
+\node at (2,-1) {$= 0$};
+\node at (3, 1.5) {Verschiebung um $-i ε, ε > 0$};
+\end{scope}
+
+\begin{scope}[shift={(0,-7)}]
+\draw[->] (-3.2,0) -- ++(6.4,0) node[below] {$ℝ$};
+\draw[->] (0,-3.2) -- ++(0,6.4) node[right] {$iℝ$};
+\draw[-{Latex[length=2mm]}] (3,0) arc[radius=3cm,start angle=0,end angle=45];
+\draw[-{Latex[length=2mm]}] (45:3) arc[radius=3cm,start angle=45,end angle=135];
+\draw (135:3) arc[radius=3cm,start angle=135,end angle=180];
+\draw[-{Latex[length=2mm]}] (-3,0) -- ++(0.5, 0);
+\draw[-{Latex[length=2mm]}] (-2.5, 0) -- ++(2.5, 0);
+\draw[-{Latex[length=2mm]}] (0,0) -- ++(2.5, 0);
+\draw[->] (-2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\draw[->] (2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\node at (2,-1) {$= 0$};
+\begin{scope}[shift={(7,0)}]
+\draw[->] (-3.2,0) -- ++(6.4,0) node[below] {$ℝ$};
+\draw[->] (0,-3.2) -- ++(0,6.4) node[right] {$iℝ$};
+\draw[-{Latex[length=2mm]}] (3,0) arc[radius=3cm,start angle=0,end angle=-45];
+\draw[-{Latex[length=2mm]}] (-45:3) arc[radius=3cm,start angle=-45,end angle=-135];
+\draw (-135:3) arc[radius=3cm,start angle=-135,end angle=-180];
+\draw[-{Latex[length=2mm]}] (-3,0) -- ++(0.5, 0);
+\draw[-{Latex[length=2mm]}] (-2.5, 0) -- ++(2.5, 0);
+\draw[-{Latex[length=2mm]}] (0,0) -- ++(2.5, 0);
+\draw[->] (-2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\draw[->] (2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\node at (2,-1) {$\neq 0$};
+\node at (3, 1.5) {Verschiebung um $+i ε, ε > 0$};
+\end{scope}
+\end{scope}
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  1. Integration liefert $= 0$, falls keine Pole umsclossen werden $\to$ würde den Fall $t < t'$ beschreiben $\to$ avancierte Potentiale
+  2. Integration liefert $\neq 0$, falls beide Pole umsclossen werden $\to$ würde den Fall $t > t'$ beschreiben $\to$ retardierte Potentiale
+  Wert der Integration $\sim$ Summe der Residuen: um Holomorphiegebiet kann die Integrationskontur beliebig verformt werden, das Ergebnis hängt nur von den eingeschlossenen Polen ab.
+  Verformung der Integrationskontur:
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+ \begin{center}
+\begin{tikzpicture}
+\draw[->] (-3.2,0) -- ++(6.4,0) node[below] {$ℝ$};
+\draw[->] (0,-3.2) -- ++(0,6.4) node[right] {$iℝ$};
+\draw[-{Latex[length=2mm]}] (3,0) arc[radius=3cm,start angle=0,end angle=-45];
+\draw[-{Latex[length=2mm]}] (-45:3) arc[radius=3cm,start angle=-45,end angle=-135];
+\draw (-135:3) arc[radius=3cm,start angle=-135,end angle=-180];
+\draw[-{Latex[length=2mm]}] (-3,0) -- ++(0.5, 0);
+\draw[-{Latex[length=2mm]}] (-2.5, 0) -- ++(2.5, 0);
+\draw[-{Latex[length=2mm]}] (0,0) -- ++(2.5, 0);
+\draw[->] (-2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\draw[->] (2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\draw[black!50!white] (-2.7, -.2) -- ++(5.4, 0);
+\draw[black!50!white] (2.7,-.2) arc[radius=2.7cm,start angle=0,end angle=-180];
+\draw[black!50!white] (-1.76,-.715) arc[radius=0.25cm,start angle=-20,end angle=-340];
+\draw[black!50!white] (1.76,-.535) arc[radius=0.25cm,start angle=160,end angle=-160];
+\draw[black!50!white] (-1.76,-.715) -- (1.76,-.715);
+\draw[black!50!white] (-1.76,-.535) -- (1.76,-.535);
+\draw[black!50!white,-{Latex[length=2mm]}] (-1.76,-.535) -- (.125,-.535);
+\draw[black!50!white,-{Latex[length=2mm]}] (1.76,-.715) -- (-.125,-.715);
+\draw (3, .5) edge[->,out=45, in=135] (5,0.5);
+\begin{scope}[shift={(8,0)}]
+\draw[->] (-3.2,0) -- ++(6.4,0) node[below] {$ℝ$};
+\draw[->] (0,-3.2) -- ++(0,6.4) node[right] {$iℝ$};
+\draw[-{Latex[length=2mm]}] (3,0) arc[radius=3cm,start angle=0,end angle=-45];
+\draw[-{Latex[length=2mm]}] (-45:3) arc[radius=3cm,start angle=-45,end angle=-135];
+\draw (-135:3) arc[radius=3cm,start angle=-135,end angle=-180];
+\draw[-{Latex[length=2mm]}] (-3,0) -- ++(0.5, 0);
+\draw[-{Latex[length=2mm]}] (-2.5, 0) -- ++(2.5, 0);
+\draw[-{Latex[length=2mm]}] (0,0) -- ++(2.5, 0);
+\draw[->] (-2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\draw[->] (2, 0) -- ++(0,-.6) node[below,yshift=+6pt] {$×$};
+\draw[black!50!white,->] (1.75,-.625) arc[radius=0.25cm,start angle=180,end angle=-180];
+\draw[black!50!white,->] (-2.25,-.625) arc[radius=0.25cm,start angle=180,end angle=-180];
+\end{scope}
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  \[G(\v x, t, \v x', t') = \frac{c^2}{4π} ∫ \frac{\d^3 k}{(2π)^3} ∫ \frac{\d ω}{2π} \frac{\exp(i \v k ρ + i ω τ)}{(ck)^2 - (ω + i ε)^2}\]
+  Anwendung des Residuensatzes:
   \begin{align*}
-  G(\v x, t, \v x', t') &= \frac{c^4}{4π} ∫ \frac{\d^3 k}{(2π)^3} ∫ \frac{\d ω}{2π} \frac{\exp(i \v k ρ + i ω τ)}{(ck)^2 - (ω + i ε)^2} \\
   c^2 k ^2 - ω^2 - 2 i ε ω + ε^2 &= -(ω^2 + 2 i ε ω - c^2 k^2 - ε^2) = -(ω^2 + 2 i ε ck - c^2 k^2 - ε^2) \\
-  &= -(ω + (ck - iε))(ω - (ck -iε))
-  \intertext{Damit und mit dem Residuensatz erhält man für dann}
-  ∮_C \d ω \frac{\exp(-iωτ)}{c^2 k^2 - (ω + iε)^2} &= -∮_C \d ω \frac{\exp(-iωτ)}{(ω + (c k - iε))(ω - (c k - iε))} \\
-  \intertext{Dies hat zwei Pole: bei $ω_1 = c k - i ε$ und $ω_2 = - c k - i ε$}
-  \Res(ω_1) &= c^2 \exp(-iω_1 τ) \lim_{ω \to ω_i} \frac{ω - ck + iε}{c^2 k^2 - (ω + iε)^2} \\
+  &= -(ω + (ck - iε))(ω - (ck -iε)) \\
+  ∮_C \d ω \frac{\exp(-iωτ)}{c^2 k^2 - (ω + iε)^2} &= -∮_C \d ω \frac{\exp(-iωτ)}{(ω + (c k - iε))(ω - (c k - iε))}
+  \end{align*}
+  Dies hat zwei Pole: bei $ω_1 = c k - i ε$ und $ω_2 = - c k - i ε$
+  \begin{align*}
+  \Res(ω_1) &= c^2 \exp(-iω_1 τ) \lim_{ω \to ω_1} \frac{ω - ck + iε}{c^2 k^2 - (ω + iε)^2} \\
   &= c^2 \exp(-i ω_1 τ) \lim_{ω\to ω_1}  \frac{ω - ck + iε}{(c k + ω + i ε)(ck - ω + iε)} \\
-  &= c^2 \exp(- i ω_1 τ) \lim_{ω \to ω_1} \frac{ω - ω_1}{2 ck (ω_1 - ω)} = - \frac{c}{2k} \exp(- i ck τ) \\
+  &= c^2 \exp(- i ω_1 τ) \lim_{ω \to ω_1} \frac{ω - ω_1}{2 ck (ω_1 - ω)} = - \frac{c}{2k} \exp(- i ck τ) \text{ mit $ε \to 0$} \\
   \Res(ω_2) &= \frac{c}{2k} \exp(+ i ck τ) \\
-  ∮_C \d ω (\dots) &= 2 π i (\Res(ω_1) + \Res(ω_2)) = -2π(-\frac{c}{2k} \exp(- i c k τ) + \frac{c}{2k} \exp( i c k τ)) = \frac{2π c}{k} \sin(c k τ) \\
-  \intertext{$∫ \d^3 k$: integration in Kugelkoordinaten:}
-  \d^3 k &= k^2 \d k \d (\cos θ) \d φ, u = \cos θ, θ = \angle(\v k, \v ρ), \v k · \v ρ = k ρ \cos θ = k ρ μ \\
+  ∮_C \d ω (\dots) &= -2 π i (\Res(ω_1) + \Res(ω_2)) = -2π(-\frac{c}{2k} \exp(- i c k τ) + \frac{c}{2k} \exp( i c k τ)) = \frac{2π c}{k} \sin(c k τ) \\
+  \end{align*}
+  Zeitabhängige Green-Funktion
+  \[G(\v ρ, τ) = \begin{cases} 0 & t < t' \\ \frac{c}{2π^2} ∫ \frac{\d^3 k}{(2π)^3} \exp(i \v k \v ρ) \frac{\sin(c k τ)}{k} & t > t'\end{cases}\]
+  $∫ \d^3 k$: Integration in Kugelkoordinaten;
+  \begin{align*}
+  \d^3 k &= k^2 \d k \d (\cos θ) \d φ, μ = \cos θ, θ = \angle(\v k, \v ρ), \v k · \v ρ = k ρ \cos θ = k ρ μ, \d φ = 2π \\
   G(\v ρ, τ) &= \frac{c}{π} ∫ k^2 \d k ∫ \d μ \exp(i k ρ μ) \frac{\sin(c k τ)}{k} = \frac{c}{π}∫ k^2 \d k \frac{\sin(c k τ)}{k} ∫_{-1}^{+1} \d μ \exp(i k ρ μ) \\
   &= \frac{2c}{πρ} ∫ \d k \sin(c k τ) \sin(k ρ) \\
-  \intertext{Substitution $x = c k, \d x = c \d k$}
-  G(ρ, τ) &= \frac{2}{πρ} ∫ \d x \sin(x τ) \sin(\frac{x}{c} ρ) = \frac{1}{ρ} \Big{\string(}δ_D\underarrow[(τ - \frac{ρ}{c})]{$t - t' - \frac{\abs{\v x - \v x'}}{c}$} - δ_D\overarrow[(τ + \frac{ρ}{c})]{$t + t' + \frac{\abs{\v x - \v x'}}{c}$}\Big{\string)} \\
-  G(\v x, t, \v x', t') &= \frac{1}{\abs{r - r'}} δ_D(ut - t' - \frac{\abs{\v x - \v x'}}{c}) \\
+  \intertext{Substitution $x = c k \to \d x = c \d k$}
+  G(ρ, τ) &= \frac{2}{πρ} ∫ \d x \sin(x τ) \sin(\frac{x}{c} ρ) \\
+  &= \frac{1}{πρ} ∫ \d x \cos(τ + \frac{R ρ}{c}) \cos(τ x - \frac{Rρ}{c}) \\
+  &= \frac{1}{2πρ} ∫ \d x (\exp(i(τ - \frac{R}{c} ρ)) + \exp(-i(τ - \frac{R}{c}ρ))) \\
+  &\hphantom{{}={}}{-} (\exp(i(τ + \frac{R}{c} ρ)) + \exp(-i(τ + \frac{R}{c}ρ))) \\
+  &= \frac{1}{ρ} \Big{\string(}δ_D\underarrow[(τ - \frac{ρ}{c})]{$t - t' - \frac{\abs{\v x - \v x'}}{c}$} - δ_D\overarrow[(τ + \frac{ρ}{c})]{$t + t' + \frac{\abs{\v x - \v x'}}{c}$}\Big{\string)} \\
+  G(\v x, t, \v x', t') &= \frac{1}{\abs{r - r'}} δ_D(t - t' - \frac{\abs{\v x - \v x'}}{c}) \\
   ψ(\v x, t) &= ∫ \d^3 x' ∫ \d t' \frac{Q(\v x', t')}{\abs{\v x - \v x'}} δ_D(t - t' - \frac{\abs{\v x - \v x'}}{c})
   \end{align*}
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{center}
+  \begin{tikzpicture}
+  \draw[->] (-.1,0) -- ++(6.1, 0) node[below] {$ρ$};
+  \draw[->] (0,-.1) -- ++(0,6.1) node[left] {$τ$};
+  \draw[<->] (4,2) -- (0,4);
+  \node[left] at (0,3) {$τ = t - t'$};
+  \node[below] at (2,0) {$ρ= \abs{x - x'}$};
+  \node[right] at (0,5) {Beobachter};
+  \node[right] at (4,5) {Quelle};
+  \draw[dashed] (4,0) -- ++(0,6);
+  \draw (.1, 2) -- ++(-.2, 0) node[left] {$t'$};
+  \draw (.1, 4) ++(-.2, 0) node[left] {$t > t'$};
+  \draw[<-] (3.5, 2.25) -- ++(1,.5) node[right] {Retardierung um $\displaystyle{\frac{\abs{\v x - \v x'}}{c}}$};
+  \end{tikzpicture}
+  \end{center}
   (liefert keinen Beitrag für $t > t'$)
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+\setcounter{part}{24}
+\part{Differenziation und Integration komplexer Funktionen}
+komplexe Funktionen $z = x + i y \to g(z) = u(x,y) + i v(x, y)$ \\
+*Stetigkeit*: $g(z)$ ist stetig in $ξ$, falls für jedes $ε > 0$ ein $δ(ε) > 0$ existiert, sodass aus $\abs{z - ξ} < δ$ folgt $\abs{g(z) - g(ξ)} < ε$. \\
+*Differenzierbarkeit*: $g(z)$ ist komplex differenziebar in $ξ$, falls
+\[\lim_{z \to ξ} \frac{g(z) - g(ξ)}{z - ξ}\]
+existiert und eideutig ist $\equiv$ $\dd{g}{z}\big|_{ξ}$.
+Differenziebarkeit von komplexen Funktionen hat viele Aspekte
+- komplex differenziebar: $\displaystyle{\dd{g}{z}\big|_ξ}$ existiert und ist eindeutig
+- analytisch: Cauchy-Riemann-Differentialgleichungen gelten
+- regulär: $\displaystyle{∮_C \d z g(z) = 0}$ für eine geschlossene Kurve $C$
+- holomorph: $\displaystyle{∮_C \d z \frac{g(z)}{z - ξ} = g(ξ)}$
+* Cauchy-Riemann-Differentialgleichungen
+  \begin{align*}
+  \dd{g}{z} &= \lim_{Δz \to 0} \frac{g(z + Δ z) - g(z)}{Δz} \text{ muss unabhängig von der Richtung von $Δz$ sein} \\
+  \dd{g}{z} &= \lim_{Δz \to 0} \frac{g(z + Δx) - g(z)}{Δx} = \pp{g}{x} \\
+  \dd{g}{z} &= \lim_{Δz \to 0} \frac{g(z + iΔy) - g(z)}{iΔy} = \frac{1}{i}\pp{g}{x} \\
+  \intertext{mit $g(z) = g(x + iy) = u(x,y) + i v(x,y)$:}
+  \pp{g}{x} &= \pp{u}{x} + i \pp{v}{x} = \frac{1}{i} \pp{g}{y} = \frac{1}{i}(\pp{u}{y} + i \pp{v}{y}) = \pp{v}{y} - i \pp{u}{y} \\
+  \intertext{Cauchy-Riemann-Differentialgleichungen:}
+  \pp{u}{x} &= \pp{v}{y} \\
+  \pp{v}{x} &= - \pp{u}{y} \\
+  \Big{\string(}\pp{}{x} + i \pp{}{y}\Big{\string)} g &= 0
+  \end{align*}
+* Linienintegrale
+  \begin{align*}
+  \intertext{mit Parametrisierung $z(λ)$}
+  ∫_C \d z g(z) &= ∫_a^b \d λ g(z(λ)) \dd{z}{λ} \\
+  ∫_{-C} \d z g(z) &= ∫_b^a \d λ g(z(λ)) \dd{z}{λ} = - ∫_a^b \d λ g(z(λ)) \dd{z}{λ} = - ∫_C \d z g(z)
+  \intertext{geschlossene Kurve: $z(λ = a) = z(λ = b)$. Für analytische Funktionen}
+  ∮ \d z g(z) &= ∫_{C_1} \d z g(z) + ∫_{-C_2} \d z g(z) = 0 \\
+  \intertext{geschlossene Integrale $= 0 ⇔$ Wegunabhängigkeit $\to$ Cauchy-Theorem}
+  ∮ \d z g(z) &= ∮(\d x + i \d y)(u + iv) \\
+  &= ∮ (\d x u - \d y v) + i∮(\d x v + \d y u) \\
+  \intertext{lustiges Argument: Satz von Stokes}
+  \v R &= (u, -v, 0), \v I = (v, u, 0) \quad\text{und}\quad \d \v r = (\d x, \d y, \d z) \\
+  ∮_{\partial S} \d z g(z) &= ∮ \d \v r · \v R + i ∮ \d \v r · \v I \\
+  \intertext{mit 1. Cauchy-Riemann-Differentialgleichnug:}
+  ∮ \d \v r · \v R &= ∫_S \d \v S \rot \v R = - ∫_S \d x \d y (\pp{v}{x} + \pp{u}{y}) = 0 \\
+  \intertext{mit 2. Cauchy-Riemann-Differentialgleichnug:}
+  ∮ \d \v r · \v I &= ∫_S \d \v S \rot \v R = - ∫_S \d x \d y (\pp{u}{x} - \pp{v}{y}) = 0 \\
+  \end{align*}
+* Cauchy-Theorem und holomorphe Funktionen
+  \[g(z) = \frac{1}{2π} ∮_C \d ξ \frac{g(ξ)}{ξ - z}\]
+  Werte von
+  \[\frac{g(ξ)}{ξ - z}\]
+  auf $C$ ausreichend um $g(z)$ zu bestimmen "holomorph"
+  \begin{align*}
+  \frac{1}{2πi} ∮_C \d ξ \frac{g(ξ)}{ξ - z} &= \frac{1}{2πi} ∮_C \frac{g(z) + g(ξ) - g(z)}{ξ - z} \\
+  &= \frac{1}{2πi} ∮_C \d ξ \frac{g(z)}{ξ - z} + \frac{1}{2πi} ∮_C \d ξ \frac{g(ξ) - g(z)}{ξ - z} \\
+  &= \frac{g(z)}{2πi} \underbrace{∮_C \d ξ \frac{1}{ξ - z}}_{1.} + \underbrace{\frac{1}{2πi} ∮_C \d ξ \frac{g(ξ) - g(z)}{ξ - z}}_{2.} \\
+  \intertext{1. Integral: $ξ \to ξ - z, \d ξ \to \d(ξ - z)$. Substitution und Integration entlang Einheitskreis} \\
+  ∫ \frac{\d ξ}{ξ} &= ∫_0^{2π} \d λ \frac{-\sin λ + i \cos λ}{\cos λ + i \sin λ} = ∫_0^{2π} \d λ \frac{-\sin λ + i \cos λ}{\cos λ + i \sin λ} \frac{\cos λ - i \sin λ}{\cos λ - i \sin λ} \\
+  &= ∫_0^{2π} \d λ (- \sin λ \cos λ + \cos λ \sin λ) + i(\sin^2 λ + \cos^2 λ) = 2πi \\
+  \intertext{2. Integral}
+  \abs{\frac{1}{2πi} ∮_C \d ξ \frac{g(ξ) - g(z)}{ξ - z}} &\leq \frac{1}{2πi} \abs{∮_C \d ξ \frac{\abs{g(ξ) - g(z)}}{ξ - z}} \\
+  &\leq \frac{ε}{2πi} \abs{∮_C \frac{\d ξ}{ξ - z}} = \frac{ε}{\abs{2πi}}, \text{ falls $\abs{g(ξ) - g(z)} < ε$ (Stetigkeit)} \\
+  \intertext{insgesamt erhält man}
+  \frac{1}{2πi} ∮_C \d ξ \frac{g(ξ)}{ξ - z} &= \frac{g(z)}{2πi} 2πi + \frac{ε}{\abs{2πi}} = g(z) \text{ falls $ε$ klein genug gewählt wird}
+  \end{align*}
+  Verallgemeinerung des Cauchy-Theorems durch Induktion
+  \[\frac{\d^n g}{\d z^n} = \frac{n!}{2πi} ∮_C \d ξ \frac{g(ξ)}{(ξ - z)^n}\]
+  aus Taylor-Entwicklung
+  \[g(z) = g(ξ) + \dd{g}{z}(z - ξ) + \dots\]
+* Laurent-Reihen - komplexe Potenzreihen
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+    \begin{scope}[scale = 2, rotate=-45]
+        \draw[rounded corners=.1cm] (-.2, 0) arc[radius=2cm, start angle=-84.26, end angle=264.26]
+        -- ++(0,.980) arc[radius=1cm, start angle={270 - 11.54}, end angle={-90 + 11.54}] -- cycle;
+        \draw[->] (-.2, .2) -- ++(0,.33);
+        \draw[->] (-.6, .8) -- ++(0,-.36);
+        \draw[->] (1.6, 1.95) -- ++(0,-0.01);
+        \draw[->] (-2.4, 2.01) -- ++(0,+0.01);
+        \draw[->] (-.37, 3.987) -- ++(+0.01,0);
+        \draw[->] (-1.4, 1.95) -- ++(0,-0.01);
+        \draw[->] (0.6, 2.01) -- ++(0,+0.01);
+        \draw[->] (-.43, 2.958) -- ++(-0.01,0);
+        \wigglecircle{.45}{.15}{25}{-.4}{1.93}
+        \coordinate (o) at (-.4,1.93);
+        \filldraw (o) circle (1pt) node[below right] {$z_0$};
+        \draw (o) -- ++(140:1.021) node[above] {$r_1$};
+        \draw (o) -- ++(120:2.050) node[pos=.75,right] {$r_2$};
+        \draw[dotted] (o) -- ++(60:1.5) coordinate (z);
+        \filldraw (z) circle (1pt) node[below right] {$z$};
+        \begin{scope}[rotate=8]
+        \draw[->] (z) ++ (60:.25) arc[radius=.25cm,start angle=60, end angle=242];
+        \draw[->] (z) ++ (60:-.25) arc[radius=.25cm,start angle=240, end angle=422];
+        \end{scope}
+        \node at ([shift=(160:1.1)] o) {$c_1$};
+        \node at ([shift=(110:2.15)] o) {$c_2$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  \[r_1 < \abs{z - z_0} \equiv r < v_2\]
+  \[g(z) = \underbrace{\frac{1}{2πi} ∮_{C_1} \d ξ \frac{g(ξ)}{ξ - z}}_{\mathclap{\text{Cauchy-Theorem: $C_2$ enthält $z$}}\qquad} \overarrow[-]{umgekehrter Umlaufsinn} \underbrace{\frac{1}{2πi} ∮_{C_1} \d ξ \frac{g(ξ)}{ξ - z}}_{\qquad\mathclap{\text{$= 0, C_1$ enthält $z$ nicht, kein Pol}}}\]
+  Konstruktion einer Reihe ausgehend von $ξ$ auf $C_1$ (1. Integral):
+  \begin{align*}
+  \frac{1}{ξ - z} &= \frac{1}{ξ - z_0}\frac{1}{1 - \frac{z - z_0}{ξ - z_0}} \underarrow[=]{geometrische Reihe} \frac{1}{ξ - z_0} \sum_{n} (\frac{z - z_0}{ξ - z_0})^n \\
+  q &= \abs{\frac{z - z_0}{ξ - z_0}} = \frac{r}{r_2} < 1 \to \sum_{n} q^n = \frac{1}{1 - q}
+  \end{align*}
+  Konstruktion einer Reihe ausgehend von $ξ$ auf $C_1$ (2. Integral)
+  \begin{align*}
+  \frac{1}{ξ - z} &= \frac{1}{z - z_0} \frac{1}{1 - \frac{ξ - z_0}{z - z_0}} = \frac{1}{z - z_0} \sum_{n} (\frac{ξ - z_0}{z - z_0})^n
+  \intertext{wieder geometrische Reihe:}
+  q &= \abs{\frac{ξ - z_0}{z - z_0}} = \frac{r_1}{r} < 1 \to \sum_{n} q^n = \frac{1}{1 - q} \\
+  g(z) &= \frac{1}{2πi} ∮_{C_2} \d ξ g(ξ) \sum_{n} \frac{(z - z_0)^n}{(ξ - z_0)^{n + 1}} - \frac{1}{2πi} ∮_{C_1} \d ξ g(ξ) \sum_{n} \frac{(ξ - z_0)^n}{(z - z_0)^{n - 1}} \\
+  &= \sum_{n} (z - z_0)^n \underbrace{\frac{1}{2πi}	∮_{C_2} \d ξ \frac{g(ξ)}{(ξ - z_0)^{n + 1}}}_{= a_{-(n + 1)}} - \sum_{n} (z - z_0)^{-(n + 1)} \underbrace{\frac{1}{2πi} ∮_{C_1} \d ξ g(ξ) (ξ - z_0)^n}_{= a_n} \\
+  \to g(z) &= \sum_{n = -∞}^{+∞} a_n (z - z_0)^n \quad\text{Laurent-Reihe}
+  \intertext{mit den Koeffizienten}
+  a_n &= \frac{1}{2πi} ∮_C \d ξ g(ξ) (ξ - z_0)^{-(n + 1)} \\
+  \intertext{falls $n = -1$:}
+  a_{-1} &= \frac{1}{2πi} ∮_{C_2} \d ξ g(ξ) = \Res g(z_0) \quad\text{"`Residuum"'}
+  \intertext{egal ob Integral über $C_1$ oder $C_2$, beide enthalten Punkte $z_0$}
+  \to g(z) &= - \dots - \frac{a_{-n}}{(z - z_0)^n} - \dots - \frac{a_{-1}}{z - z_0} + a_0 + a_1(z - z_0) + \dots + a_n (z - z_0)^n + \dots
+  \end{align*}
+  falls die Laurent-Reihe bei einem $n$ abbricht, spricht man von einen Pol der Ordnung $n$.
+* Residuensatz $\to$ Berechnung von $a_{-1}$
+  \begin{align*}
+  \intertext{wir nehmen eine Reihe, die bei $n$ abbricht}
+  g(z) &= - \frac{a_{-n}}{(z - z_0)^n} - \dots - \frac{a_{-1}}{z - z_0} + a_0 + a_1 (z - z_0) + \dots \\
+  g(z) (z - z_0)^n &= - a_n - \dots - a_{-1} (z - z_0)^{n - 1} + a_0 (z - z_0) + \dots \\
+  \frac{\d^{n - 1}}{\d z^{n - 1}} (g(z) (z - z_0)^n) &= \underbrace{0 - \dots -}_{\text{alle } = 0} \underbrace{a_{-1} (n - 1)!}_{\text{endlich}} + \underbrace{a_0 (z - z_0)^n (n - 1)!}_{= 0 \text{ falls } z = z_0} + \dots \\
+  \to a_{-1} &= \frac{1}{(n - 1)!} \frac{\d^{n - 1}}{\d z^{n - 1}} ((z - z_0)^n g(z))\big|_{z = z_0} \\
+  \text{anstatt } a_{-1} &= \frac{1}{2πi} ∮_C \d ξ g(ξ)
+  \end{align*}
+  Berechnung von Residuen: $g(z) = 1/z$ (Klassiker) an der Stelle $0$:
+  \begin{align*}
+  ∮_C \d ξ g(ξ) &= ∮_C \frac{\d ξ}{ξ} = i ∫_0^{2π} \d λ \frac{\exp(iλ)}{\exp(iλ)} = 2πi \quad\text{(oder kartesisch)} \\
+  a_{-1} &= \frac{1}{(n - 1)!} \frac{\d^{n - 1}}{\d z^{n - 1}}((z - z_0)^n g(z)) \big|_{z = z_0} \\
+  \intertext{Potenzen von $z$ zum "`Killen"' der Singularität}
+  n = 1: &\frac{1}{0!} \frac{\d^0}{\d z^0}(z \frac{1}{z}) \big|_{z = 0} = 1 \\
+  n = 2: &\frac{1}{1!} \frac{\d^1}{\d z^1}\underbrace{(z^2 \frac{1}{z})}_{= z}\big|_{z = 0} = 1 \\
+  n = 3: &\frac{1}{2!} \frac{\d^2}{\d z^2}\underbrace{(z^3 \frac{1}{z})}_{= z^2}\big|_{z = 0} = 1\,\checkmark \\
+  \end{align*}
+* Laplace-Gleichungin 2D
+  Komplexe Funktion $g(z) = u(x + i y) + i v(x + i y)$
+  \begin{align*}
+  \frac{\partial^2 u}{\partial x^2} &\underarrow[=]{Cauchy Riemann 1} \pp{}{x} \pp{v}{y} \overarrow[=]{$\partial_x \partial_y = \partial_y \partial_x$} \pp{}{y} \pp{v}{x} \underarrow[=]{Cauchy Riemann 2} - \frac{\partial^2 u}{\partial y^2} \to \underbrace{(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2})}_{= \Laplace \text{ in 2D}} u = 0 \\
+  \frac{\partial^2 1}{\partial x^2} &\underarrow[=]{Cauchy Riemann 2} \pp{}{x} (-\pp{u}{y}) \overarrow[=]{$\partial_x \partial_y = \partial_y \partial_x$} -\pp{}{y} \pp{u}{x} \underarrow[=]{Cauchy Riemann 2} - \frac{\partial^2 v}{\partial y^2} \to \underbrace{(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2})}_{= \Laplace \text{ in 2D}} v = 0 \\
+  \end{align*}
+  Anwendung in Potezialproblemen mit Dirilecht-Randbedingungen: $u = \const = ϕ$. Abbildungen für "komplexe" Geometrie. \\
+  $\Laplace ϕ = 0$ ist in 2D invariant unter Abbildungen
+  \begin{equation*}
+  \begin{matrix}
+  z = x + i y \xrightarrow{g} W = u + i v \\
+  z = G(w) \xrightarrow{}[G] W = g(z) \\
+  \end{matrix} : g(x,y) = G(u(x,y),v(x,y))
+  \end{equation*}
+  $g$ ist analytisch (Cauchy-Riemann-Differentialgleichungen gelten) und umkehrbar
+  \begin{align*}
+  \pp{g}{x} &= \pp{u}{x} \pp{G}{u} + \pp{v}{x} \pp{G}{v} \\
+  \frac{\partial^2 g}{\partial x^2} &= \pp{}{x}(\pp{u}{x} \pp{G}{u}) + \pp{}{x}(\pp{v}{x} \pp{G}{v}) \\
+  &= (\pp{u}{x})^2 \frac{\partial^2 G}{\partial u^2} + \pp{u}{x} \pp{v}{x} \frac{\partial^2 G}{\partial u \partial v} + \frac{\partial^2 u}{\partial x^2} \pp{G}{u} \\
+  &\hphantom{{}={}}{+} (\pp{v}{x})^2 \frac{\partial^2 G}{\partial v^2} + \pp{v}{x} \pp{u}{x} \frac{\partial^2 G}{\partial u \partial v} + \frac{\partial^2 v}{\partial x^2} \pp{G}{v} \\
+  \pp{g}{y} &= \pp{u}{y} \pp{G}{u} + \pp{v}{y}\pp{G}{v} \\
+  \frac{\partial^2 g}{\partial y^2} &= \pp{}{y}(\pp{u}{y} \pp{G}{u}) + \pp{}{y}(\pp{v}{y} \pp{G}{v}) \\
+  &= (\pp{v}{x})^2 \frac{\partial^2 G}{\partial u^2} + \pp{v}{y} \pp{u}{y} \frac{\partial^2 G}{\partial u \partial v} + \frac{\partial^2 u}{\partial y^2} \pp{G}{u} \\
+  &\hphantom{{}={}}{+} (\pp{v}{y})^2 \frac{\partial^2 G}{\partial v^2} + \pp{u}{y} \pp{v}{y} \frac{\partial^2 G}{\partial u \partial v} + \frac{\partial^2 v}{\partial y^2} \pp{G}{v} \\
+  \frac{\partial^2 g}{\partial x^2} + \frac{\partial^2 g}{\partial y^2} &= \frac{\partial^2 G}{\partial u^2}((\pp{u}{x})^2 + (\pp{u}{y})^2) + \frac{\partial^2 G}{\partial v^2}((\pp{v}{x})^2 + (\pp{v}{y})^2) \\
+  &\hphantom{{}={}}{+} 2 \frac{\partial^2 G}{\partial u \partial v} \underbrace{\bigg{\string(}\pp{u}{x} \overbrace{\pp{v}{x}}^{= - \partial u / \partial y} + \pp{u}{y} \overbrace{\pp{v}{y}}^{\mathclap{= \partial u/\partial x}}\bigg{\string)}}_{\to 0} \\
+  &\hphantom{{}={}}{+} \pp{G}{u}\underbrace{\bigg{\string(}\overbrace{\frac{\partial^2 u}{\partial x^2}}^{\mathclap{= - \frac{\partial^2 v}{\partial x \partial y}}} + \overbrace{\frac{\partial^2 u}{\partial y^2}}^{\mathclap{= - \frac{\partial^2 v}{\partial x \partial y}}}\bigg{\string)}}_{\to 0} + \pp{G}{v}\underbrace{\bigg{\string(}\overbrace{\frac{\partial^2 v}{\partial x^2}}^{\mathclap{= - \frac{\partial^2 u}{\partial x \partial y}}} + \overbrace{\frac{\partial^2 v}{\partial y^2}}^{\mathclap{= - \frac{\partial^2 u}{\partial x \partial y}}}\bigg{\string)}}_{\to 0} \\
+  &= ((\pp{u}{x})^2 + (\pp{u}{y})^2)(\frac{\partial^2 G}{\partial u^2} + \frac{\partial^2 G}{\partial v^2})
+  \end{align*}
+  $\Laplace g = 0 \to \Laplace G = 0$, Laplace-Gleichung wird in dem Koordinaten $z$ und $ω$ gelöst.
+\setcounter{part}{2}
+\part{Fortsetzung elektromagnetische Wellen}
+\setcounter{section}{7}
+* Dispersion von Wellen
+  Dispersionsrelation von Wellen in einem Medium:
+  \[ω(k) = \frac{ck}{u(k)}, k(ω) = \frac{ω}{n(ω) c}\]
+  $\to$ Phasengeschwindigkeit: $\displaystyle{v_{ph} = \frac{ω(k)}{k} = \frac{c}{u(k)}}$
+  \begin{align*}
+  \to \text{ Gruppengeschwindigkeit: } v_{gr} &= \pp{ω}{k} = (\pp{k}{ω})^{-1} = (\pp{}{ω} (\frac{n(ω) ω}{c}))^{-1} \\
+  &= (\pp{u}{ω} \frac{ω}{c} + \frac{n(ω)}{c})^{-1} \\
+  v_{gr} &= \frac{c}{n(ω) + ω \pp{u}{ω}}
+  \end{align*}
+  Normale Dispersion:
+  \[\dd{u}{ω} > 0 \to \dd{ω}{k} < \frac{ω}{k}\]
+  alles in Ordnung, Energiefluss ist langsamer als $c$.
+* Liénard-Wiechert-Potential
+  retardierte Potenziale von Punktladungen \\
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{minipage}{.45\textwidth}
+  \begin{align*}
+  ρ(\v r, t) &= q δ_D(\v r - \v r_0(t)) \\
+  \v j(\v r, t) &= q\v v(t) δ_D(\v r - \v r_0(t))
+  \end{align*}
+  \end{minipage}\hfill
+  \begin{minipage}{.45\textwidth}
+  \begin{center}
+\begin{tikzpicture}
+\filldraw (0,0) circle (1pt) coordinate (o);
+\filldraw (2,1) circle (1pt) coordinate (l) node[below right] {Ladung};
+\draw[->] (o) -- (l) node[midway,below right,yshift=2pt,xshift=-2pt] {$\v r_0(t)$};
+\draw[->] (l) -- ++(1.5, .2) node[right] {$\v v(t)$};
+\coordinate (b) at (1.5, 3);
+\node[above] at (b) {Beobachter};
+\draw[->] (o) -- (b) node[midway,above] {$\v r(t)$};
+\draw[->] (l) -- ($(l)!.5!(b)$) node[right] {$\v u$};
+\draw[dotted] (l) -- (b);
+\end{tikzpicture}
+\end{center}
+  \end{minipage}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  \begin{align*}
+  ϕ(\v r, t) &= q ∫ \d t' ∫ \d^3 r' \frac{1}{\abs{\v r - \v r'}} δ_D(\v r' - \v r_0) δ_D(t' - t + \frac{\abs{\v r - \v r'}}{c}) \\
+  \text{aus } ψ(\v r, t) &= ∫ \d t' ∫ \d^3 r' \frac{Q(\v r', t')}{\abs{\v r - \v r'}} δ_D(t - t' - \frac{\abs{\v r - \v r'}}{c}) \\
+  ϕ(\v r, t) &= q ∫ \d t \frac{1}{\abs{\v r - \v r_0(t')}} δ_D \underbrace{(t - t' + \frac{\abs{\v r - \v r_0(t')}}{c})}_{\equiv u} \\
+  \dd{u}{t'} &= 1 - \frac{\v u(t') \v v(t')}{c} \text{ mit } \v u(t') = \frac{\v r - \v r_0(t')}{\abs{\v r - \v r_0(t')}}
+  \intertext{fixiert $u = 0$ oder $t = t' + \abs{r - r_0}/c$}
+  \d t' &= \frac{\d u}{1 - \frac{\v u(u) · \v v(u)}{c}} \\
+  ϕ(\v r, t) &= q ∫ \d u \frac{1}{\abs{\v r - \v r_0(u)}} \frac{1}{1 - \frac{\v u(u) · \v v(u)}{c}} δ(u) \text{ Feld einer bewegten Punktladung}
+  \end{align*}
+  Ausdurck für die retardierten Potenziale
+  \begin{align*}
+  ϕ(\v r, t) &= q \frac{1}{\abs{\v r - \v r_0(t')}} \frac{1}{1 - \frac{\v u(t') · \v v(t')}{c}}\Big|_{t' = t - \frac{\abs{\v r - \v r_0(t')}}{c}} \\
+  \v A(\v r, t) &= q \frac{\v v(t)}{c} \frac{1}{\abs{\v r - \v r_0(t')}} \frac{1}{1 - \frac{\v u(t') · \v v(t')}{c}} \Big|_{t' = t - \frac{\abs{\v r - \v r_0(t')}}{c}}
+  \end{align*}
+* Hertz-Dipol $\to$ Feld eines zeitabhängigen Dipols
+  kleine Umformung der Liénard-Wiechert-Potentiale
+  \begin{align*}
+  ϕ(\v r, t) &= \frac{q}{\abs{\v r - \v r_0(t')} - \frac{\v r - \v r_0(t')}{\abs{\v r - \v r_0(t')}} \frac{\v v(t')}{c}}\Big|_{t' = t - \frac{\abs{\v r - \v r_0(t')}}{c}} \\
+  A(\v r, t) &= \frac{q \frac{\v v(t')}{c}}{\abs{\v r - \v r_0(t')} - \frac{\v r - \v r_0(t')}{\abs{\v r - \v r_0(t')}} \frac{\v v(t')}{c}}\Big|_{\underbrace{t' = t - \frac{\abs{\v r - \v r_0(t')}}{c}}_{\mathclap{\text{Bedingung für die retardierte Zeit implizit gegeben}}}} \\
+  \end{align*}
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+\filldraw (0,-1.5) circle (1.5pt) coordinate (n) node[right] {$-$};
+\filldraw (0,+1.5) circle (1.5pt) coordinate (p) node[right] {$+$};
+\draw[<->] (n) -- ++(0,4) node[right] {$z$};
+\draw (-2, 0) -- ++(2,0);
+\draw[->] (0,0) -- ++(2,0) node[right] {$x,y$};
+\filldraw (25:2) circle (1pt) coordinate (b);
+\draw[->] (0,0) -- (b) node[midway,below right,yshift=4pt] {$\v r$} node[right] {Beobachter};
+\draw (0,.5) arc[radius=.5cm, start angle=90, end angle=25] node[midway,above] {$θ$};
+\draw[->] (-.3, 0) -- ++(0,-1.5) node[left,midway] {$\displaystyle{+\frac{\v r_0}{2}}$};
+\draw[->] (-.3, 0) -- ++(0,1.5) node[left,midway] {$\displaystyle{-\frac{\v r_0}{2}}$};
+\node[right] at (0,-.75) {$\v p$};
+\draw[<-] (0,-1.55) ++ (.2,.2) -- ++(1,.5) node[right] {negative Ladung};
+\draw[<-] (0,+1.45) ++ (.2,.2) -- ++(1,.5) node[right] {positive Ladung};
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  \[q \v v(t) = - \frac{q}{2} \dot{\v r_0} + \frac{q}{2}(- \dot{\v r_0}) = - q \dot{\v r_0} = \dot{\v p}\]
+  mit Dipolmoment $\v p = - q \dot{\v r_0}$. Kanonische Schwingung mit der Frequenz:
+  \[\frac{v}{c} = \frac{2 r_{0,\text{max}}}{Δ t c} = \frac{r_{0,\text{max}} ω}{π c} \to \frac{v}{c} = \frac{2}{λ} r_{0,\text{max}}\]
+  #+BEGIN_EXPORT latex
+  \begin{minipage}{.45\textwidth}
+  \begin{gather*}
+  \begin{cases}
+  Δ \v r_{-}(t') = \v r - \frac{1}{2} \v r_0(t') \\
+  Δ \v r_{+}(t') = \v r + \frac{1}{2} \v r_0(t')
+  \end{cases} \\
+  \begin{cases}
+  Δ \v r_{-}(t') + \v r_{+}(t') = 2 \v r \\
+  Δ \v r_{-}(t') - \v r_{+}(t') = -\v r_0 \\
+  \end{cases}
+  \end{gather*}
+  \end{minipage}\hfill
+  \begin{minipage}{.5\textwidth}
+  \catcode`(=12
+  \catcode`)=12
+  \begin{center}
+\begin{tikzpicture}
+\draw[->] (0, 0) -- ++(0,-1) node[left,midway] {$\displaystyle{+\frac{\v r_0}{2}}$};
+\draw[->] (0, 0) -- ++(0,1) node[left,midway] {$\displaystyle{-\frac{\v r_0}{2}}$};
+\draw[->] (-1,0) -- ++(4,0) node[right] {$x,y$};
+\draw[->] (0,-2) -- ++(0,4) node[right] {$z$};
+\filldraw (2.5, 1.55) circle (.5pt) coordinate (r) node[right] {$\v r$};
+\draw[dashed] (0,0) -- (r);
+\draw[dashed] (0,-1) -- (r) node[midway,below right,yshift=5pt] {$Δr_{-}$};
+\draw[dashed] (0,1) -- (r) node[midway,above] {$Δ r_{+}$};
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+\end{minipage}
+  #+END_EXPORT
+  Substitution in die Ausdrücke für die Liénard-Wiechert-Potentiale
+  \begin{align*}
+  ϕ(\v r, t) &= \frac{-q}{Δ \v r_{-}(t') - \frac{Δ \v r_{-}(t')}{\abs{Δ \v r_{-}(t')}} \frac{\dot{\v r_0}(t')}{2c}}\Big|_{t' = t - \frac{\abs{Δ \v r_{-}(t')}}{c}} + \frac{-q}{Δ \v r_{+}(t') - \frac{Δ \v r_{+}(t')}{\abs{Δ \v r_{+}(t')}} \frac{\dot{\v r_0}(t')}{2c}}\Big|_{t' = t - \frac{\abs{Δ \v r_{+}(t')}}{c}} \\
+  \v A(\v r, t) &= \text{ analoger Ausdruck mit Strom } \pm q \frac{\dot{\v r_0}}{2c} = \v j
+  \end{align*}
+  - falls der Beobachter *weit* von der Quelle entfernt ist, gilt
+    \[Δ \v r_{\pm} = \v r \pm \frac{1}{2} \v r_0 \approx \v r\]
+	überall, wo $Δ r_{\pm}$ vorkommt. $\to$ Skala: Dipol $\v r_0$; Abstand $\gg$ Länge des Dipols.
+  - langsame Bewegung des Dipols $\frac{v}{c} \ll 1$ (wegen der $\dot{\v r_0}$ im Zähler) $\to$ Skala
+	\[λ = \frac{2π}{ω}c \ll r_0\]
+	Wellenlänge $\ll$ Länge des Dipols
+	\[\v A(\v r, t) = \frac{-q \frac{\dot{\v r_0}(t')}{c}}{\abs{r}} = \frac{\dot{\v p}(t')}{cr}\Big|_{t' = t - \frac{\abs{\v r}}{c}}\]
+	weil:
+	1. $\abs{Δ \v r_{-}} = \abs{Δ \v r_{+}} \approx r$ und
+	2. $\dot{\v r_0}$ im Zähler Terme der Ordnung $(\frac{v}{c})^2$ erzeugt.
+  Lorenz-Eichbedingung: $\Div \v A + \partial_{ct} ϕ = 0 \to$
+  \begin{align*}
+  \partial_{ct} ϕ &= - \Div (\frac{\dot{\v p}(t - \frac{r}{c})}{c r}) \\
+  ϕ &= - ∫ \d t \Div (\frac{\dot{\v p}(t - \frac{r}{c})}{r}) = - \Div(\frac{1}{r} ∫ \d t \dot{\v p}(t - \frac{r}{c})) = -\Div (\frac{\v p}{r}) \\
+  &= \overbrace{\frac{\dot{\v p} \v r}{cr^2}}^{\propto \frac{1}{r}} + \underbrace{\frac{\v p \v r}{r^3}}^{\propto \frac{}{r^2}} \\
+  \v p(t(\v r)), t(r) &= t - \frac{\abs{\v r}}{c} \\
+  ∇ \v p &= \pp{t}{r} \pp{\v p}{t} = \frac{1}{c} \frac{\v r}{r} \dot{\v p}
+  \end{align*}
+  \begin{minipage}{.45\textwidth}
+  Nahbereich um den Dipol \\
+  $r \ll λ$
+  \[ϕ = \frac{\v p · \v r}{r^3}, \quad\frac{\dot{\v p} \v r}{c r^2} \text{ vernachlässigt}\]
+  Dipolpotenzial mit $ϕ \sim 1/r^2$ proportional zu $\v p$
+  \end{minipage}\hfill
+  \begin{minipage}{.45\textwidth}
+  Fernbereich um den Dipol \\
+  $r \gg λ$
+  \[ϕ = \frac{\dot{\v p} \v r}{c r^2}, \quad \frac{\v p \v r}{r^3}\text{ vernachlässigt}\]
+  zeitabhängiger Dipol mit $ϕ \sim 1/r$ proportional zu $\dot{\v p}$
+  \end{minipage}
+  Felder: $\v B = \rot \v A$ und $\v E = - \partial_{ct} \v A - ϕ$. Nach längerer Rechnung erhält man
+  \begin{align*}
+  \v E &= - \frac{\ddot{\v p}}{c^2 r} - \frac{\dot{\v p}}{cr} + \frac{3(\dot{\v p} · \v r) \v r}{c r^4} + \frac{(\ddot{\v p}) \v r}{c^2 r^3} + \frac{3(\v p \v r) \v r}{r^5} - \frac{\v p}{r^3} \\
+  \v B &= \frac{\ddot{\v p} × \v r}{c^2 r^2} + \frac{\dot{\v p} × \v r}{c r^3}
+  \end{align*}
+  Es existiert kein statischer Anteil in $B$! \\
+  Nahbereich (keine Retardierung $\to$ Feld folgt instantan)
+  \begin{align*}
+  \v E &= \frac{3(\v p \v r)\v r}{r^5} - \frac{\v p}{r^3} \\
+  \v B &= \frac{\dot{\v p} × \v r}{c r^3}
+  \end{align*}
+  Fernbereich (führende Terme in $1/r$):
+  \begin{align*}
+  \v E &= - \frac{\ddot{\v p}}{cr} + \frac{(\ddot{\v p} · \v r) \v r}{c^2 r^3} = \frac{1}{c^2 r^3} (\ddot{\v p} × \v r) × \v r \quad\text{wegen Grassman-Identität} \\
+  \v B &= \frac{\ddot{\v p} × \v r}{c^2 r^2} \\
+  \to \v E &= \frac{\v B × \v r}{r}
+  \end{align*}
+  wechselseitig	orthogonal im Fernbereich. Felder $\sim 1/r \to$ Energiedichte $\sim 1/r^2$ \\
+  Poynting-Vektor des Hertz-Dipols $\to$ Energietransport.
+  \[\v S = \frac{c}{4π} \v E × \v B = \frac{c}{4π}(\v B × \frac{\v r}{r}) × \v B = \frac{c}{4π}(\v B^2 \frac{\v r}{r} - \frac{\v B \v r}{r} \v B)\]
+  Orthogonalität: $\v B \v r = 0$ im Fernbereich
+  \[\v S = \frac{c}{4π} \v B^2 \frac{\v r}{r} = \frac{c}{4π} \frac{(\ddot{\v p} × \v r)^2}{c^4 r^4} \frac{\v r}{r} = \frac{\abs{\ddot{\v p}}^2}{4π c^3 r^2} \sin^2 θ\]
+  Nahbereich: Orthogonalität nicht gegeben: \\
+  #+BEGIN_EXPORT latex
+  \begin{minipage}{.45\textwidth}
+  \begin{align*}
+  \v S &= \frac{c}{4π}(\frac{3(\v p \v r) \v r}{r^5} - \frac{\v p}{r^3}) × (\frac{\dot{\v p} × \v r}{c r^3}) \\
+  &= \frac{1}{4π r^8}(3(\v p · \v r) \v r - r^2 \v p) × (\dot{\v p} × \v r) \\
+  &= \frac{1}{4π r^8}\string(3(\v p · \v r) \v r (r^2 \dot{\v p} - (\v r \dot{\v p}) \v r) \\
+  &\hphantom{{}={}}{-} r^2 ((\v r · \v p)\dot{\v p} - (\v p · \dot{\v p}) \v r)\string) \\
+  &= \frac{1}{4π r^8} (2(\v p · \v r) r^2 \dot{\v p} \mp p \dot p r^2(3 \cos θ + 1) \v r)
+  \end{align*}
+  \end{minipage}\hfill
+  \begin{minipage}{.45\textwidth}
+  \begin{center}
+  \catcode`(=12
+  \catcode`)=12
+\begin{tikzpicture}
+\draw[->] (-1,0) -- ++(4,0) node[right] {$x,y$};
+\draw[->] (0,-2) -- ++(0,4) node[right] {$z$};
+\filldraw (0,-1) circle (1.2pt);
+\filldraw (0,1) circle (1.2pt);
+\node[left] at (0,.65) {$\v p$};
+\filldraw (0,0) -- (30:2.8) circle (.5pt) coordinate (r) node[right] {$\v r$};
+\draw (0,.5) arc[radius=.5cm, start angle=90, end angle=30] node[midway,above] {$θ$};
+\draw[->] (0,0) -- ++(0,-2) node[below,align=left] {keine Strahlung um\\ die Dipolachse!};
+\end{tikzpicture}
+  \catcode`(=\active
+  \catcode`)=\active
+\end{center}
+  \end{minipage}
+  #+END_EXPORT
+  abgestrahlte Energie: Integration über eine Kugel mit Radius $R$
+  \begin{align*}
+  E &= \frac{1}{Δ t} ∫_0^{Δ t} \d t ∫ \d Ω R^2 S = \frac{1}{Δ t} ∫_0^{Δ t} \d t ∫_{-1}^{+1} \d μ \underbrace{∫_0^{2t}\d φ}_{=2π} \frac{\ddot p^2}{4π c^3 R^2} \underbrace{(1 - μ^2)}_{\sin^2 θ} R^2 \\
+  &= \frac{1}{Δt} ∫_0^{Δ t} 2π · \frac{\ddot p^2}{4π c^3} ∫_{-1}^{+1} \d μ (1 - μ^2) \\
+  &= \frac{2}{3 c^3} \frac{1}{Δt} ∫_0^{Δ t} \d t \ddot p^2 \\
+  \intertext{falls $p = p_0 \sin(ω t) ⇒ \ddot p = - p_0 ω^2 \sin(ω t)$}
+  E &= \frac{2}{3 c^3} p_0^2 ω^4 \frac{1}{Δt} ∫_0^{Δt} \d t \sin(ω t)^2 = \frac{p_0^2 ω^4}{3c^2} \quad\text{Rayleigh-Streuung + Himmelblau.}
+  \end{align*}
+\part{Lorentz-Geometrie und spezielle Relativität}
+* Lorentz- und Galilei Transformationen
+  Transformationen müssen lienar sei, falls sie die Homogenität des Raums (beziehungsweise der Raumzeit) erhalten sollen
+  \[\text{2 Bezugssysteme } \begin{cases} S: (t, x^i) = x^{μ} \\ S': (t', x^{\prime i}) = x^{\prime μ}\end{cases}\]
+  $S \xleftrightarrow{lineare Transformationen} S'$
+  - eine Uhr bewegt sich frei durch $S$ und $S'$: Trajektorie $x^i(τ)$, Geschwindigkeit $\partial_τ x^i = \const$, "Inertialsystem"
+  - $τ$ ist die von der Uhr angezeigte Zeit $\sim$ Eigenzeit
+  - Homogenität: gleiche Zeitintervalle $\dd{t}{τ}$ überall
+	\begin{align*}
+	\dd{x^{μ}}{τ} &= \const \to	\frac{\d^2 x^μ}{\d τ^2} = 0 \quad\text{,genauso in $S'$:}\quad \frac{\d^2 x^{\prime μ}}{\d τ^2} = 0 \\
+	\dd{x^{\prime μ}}{τ} &= \underbrace{\dd{x^{\prime μ}}{x^{ν}}}_{\mathclap{\text{Jacobi-Matrix}}} \dd{x^ν}{\d τ} \to \frac{\d^2 x^{\prime μ}}{\d τ^2} = \underbrace{\pp{x^{\prime μ}}{\d x^ν}}_{\mathclap{\text{Jacobi-Matrix}}} \frac{\d^2 x^ν}{\d τ^2} + \frac{\partial^2 x^{\prime μ}}{\partial x^ν \partial x^σ} \dd{x^ν}{\d τ} \dd{x^σ}{τ}
+	\intertext{Falls die Terme mit zwei Ableitungen nach verschiedene Richtungen $= 0$ sind, ist die Transformation linear. Nur lineare Transformationen können die Homogenität erhalten:}
+	⇒ \frac{\partial^2 x^{\prime μ}}{\partial x^ν \partial x^σ} &= 0 \to \pp{x^{\prime μ}}{x^ν} = a^μ ν \to x^{\prime μ} = a^{μ} ν x^ν + b^μ
+   	\end{align*}
+* allgemeinste lineare Transformationen	zwischen 2 Bezugssystemen
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-.2, 0) -- ++(2.2,0) node[below] {$x$} node[above right, xshift=-6pt] {$x = vt ⇔ x' = - vt'$};
+\draw[->] (0,-.2) -- ++(0,2.2) node[right] {$S:(t,x^i) = x^μ$};
+\draw[dotted] (2,0) -- ++(6,0);
+\begin{scope}[shift={(6,0)}]
+\draw[->] (-.2, 0) -- ++(2.2,0) node[below] {$x'$};
+\draw[->] (0,-.2) -- ++(0,2.2) node[right] {$S':(t',x') = x^{\prime μ}$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  $S$ und $S'$ bewegen sich mit der Relativgeschwindigkeit $v$. Allgemeiner Ansatz für eine lineare Transformation
+  1. $x' = a x + b t$, aber $x = vt$ bedeutet $x' = 0$:
+	 \[x' = 0 = a v t + b t = (a v + b) t\]
+	 $\to$ $b = - av$, also $x' = a(x - vt)$
+  2. $x = a x' + bt'$, aber $x' = - vt$ bedeutet $x = 0$:
+	 \[x = 0 = - av x' + bt' = (-av + b) t'\]
+	 $\to$ $b = + av$, also $x = a(x' + vt')$
+  2 Möglichkeiten: \\
+  \begin{minipage}{.45\textwidth}
+  \textbf{Galilei} universelle Zeit $t = t'$
+  \[\begin{cases} x' = a(x - vt) \\ x = a(x' + vt) & \text{falls } t = t'\end{cases}\]
+  nur konsistent falls $a = 1$:
+  \[\begin{cases} x' = x - vt \\ x = x' + vt\end{cases}\]
+  \end{minipage}\hfill
+  \begin{minipage}{.45\textwidth}
+  \textbf{Lorentz}: universelle Lichtgeschwindigkeit \\
+  $x = ct$ und $x' = c t'$
+  \[\begin{cases} ct = a(ct' + vt') \\ ct' = a(ct - vt)\end{cases} \qquad (\ast)\]
+  \end{minipage}
+  \linebreak
+  Multiplikation beider Gleichungen in $(\ast)$
+  \begin{align*}
+  c^2 tt' &= a^2 (c t' + vt')(c t - v t) = a^2 t t' (c + v)(c - v) = a^2 tt' (c^2 - v^2) \\
+  a &\equiv γ= \sqrt{\frac{c^2}{c^2 - v^2}} = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} = \frac{1}{\sqrt{1 - β^2}} \text{ ,mit } β = \frac{v}{c}
+  \end{align*}
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-.2, 0) -- ++(6.2,0) node[below] {$β$};
+\draw[->] (0,-.2) -- ++(0,4.2) node[left] {$γ$};
+\draw[domain=0:1.938,smooth,samples=100] (0,0) plot ({2.5*\x},{1/sqrt(1 - (\x/2)^2)});
+\draw[dashed] (5,4) -- ++(0,-4) node[below] {$1$};
+\draw[<-] (4.9,4.1) -- ++(1,.2) node[right] {divergiert mit $β \to 1$};
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  \[β\ll 1: \qquad γ \simeq 1 + \underbrace{\pp{γ}{β}\Big|_{β = 0}}_{= 0} β + \frac{1}{2} \underbrace{\frac{\partial^2 γ}{\partial β^2} \Big|_{β = 0}}_{=1} β^2 + \dots = 1 + \frac{β^2}{2}\]
+  Standardform der Lorentz-Transformation
+  \begin{align*}
+  x' &= γ(x - v t) = γ(x - β ct) \\
+  c t' &= γ(c t - β x)
+  \end{align*}
+  (aus $x' = γ(x - vt)$ und $x = γ(x' + v t')$ durch Eliminieren von $x'$, mit $\displaystyle{\frac{1 - γ^2}{γ} = - β^2}$)
+  Matrix-Schreibweise
+  \[\underbrace{\cvec{ct';x'}_{x^{\prime μ}}} = \underbrace{\begin{pmatrix} γ & - γ β \\ - γ β & y\end{pmatrix}}_{Λ^μ_ν} \underbrace{\cvec{c t; x}}_{x^ν}\]
+  $\sim$ gemeinsame Transformation von $x$ und $t$ \\
+  $c \simeq \SI{3e8}{\meter\per\second}$, "Lichtgeschwindikgeit" $\sim$ naja, können wir jetzt noch nicht wissen! \\
+* Lorentz-Invarianten
+  Idee: Rotation lassen $x_i x^i = x^2$ invariant
+  \begin{align*}
+  \string(c t'\string)^2 - x^{\prime 2} &= γ^2 ((ct)^2 - 2ct β x + β^2 x^2 - x^2 + 2 x β c t - β^2 c^2 t^2) \\
+  &= γ^2 ((ct)^2 (1 - β^2) - x^2(1 - β^2)) \\
+  &= γ^2 (1 - β^2) ((ct)^2 - x^2) = \frac{1}{\sqrt{1 - β^2}^2}(1 - β^2) ((ct)^2 - x^2) = ((ct)^2 - x^2)
+  \end{align*}
+  $s^2 = (ct)^2 - x^2$ ist invariant unter Lorentz-Transformationen. Minkowski-Metrik
+  \[η_{μν} = \begin{pmatrix} 1 & & & 0 \\ & -1 & & \\ & & -1 & \\ 0 & & & -1\end{pmatrix}\]
+  \begin{align*}
+  s^2 &= η_{μν} x^μ x^ν = x_μ x^μ \quad\text{mit}\quad x_μ = η_{μ ν} x^ν \\
+  s^2 &= η_{μν} x^μ x^ν = c^2 t^2 - \underbrace{x_i x^i}_{\mathclap{\text{invariant unter Rotation}}} \sim \text{identisch in allen Systemen}
+  \end{align*}
+* Rapidität und hyperbolische Rotation
+* Vergleicht zwischen Lorentz-Transformationen und Drehungen
+* Symmetrie der Raumzeit
+* Additionstheorem für Geschwindigkeiten
+* relativisitsche Effekte
+* Eigenzeitintegral
+  \begin{align*}
+  \d s^2 &= η_{μν} \d x^μ \d x^ν
+  \intertext{mit $x^μ = \cvec{c t; x^i}$}
+  &= c^2 \d t^2 - \d x_i \d x^i = c^2 \d t^2 \tag{Eigenzeit}
+  \end{align*}
+  \(4\)-Geschwindigkeit: Tangente an der Weltlinie $x^μ(τ)$
+  \begin{align*}
+  u^μ(τ) &= \dd{}{τ} x^μ	= \dd{t}{τ} \dd{}{t} x^μ = γ \cvec{c;v^i} \\
+  η_{μν} u^μ u^ν &= γ^2 (c^2 - v_i v_i) = c^2  γ^2 (1 - β^2) = c^2 \tag{Normierung} \\
+  \to c^2 \d τ^2 &= c^2 \d t^2 - \d x_i \d x^i \\
+  \d τ &= \sqrt{\d t^2 - \frac{\d x_i \d x^i}{c^2}} = \sqrt{1 - \frac{1}{c^2}\frac{x_i}{\d t}\frac{\d x^i}{\d t}} \d t \\
+  &= \sqrt{1 - β^2} \d t = \frac{\d t}{γ} \\
+  \end{align*}
+  Zeitintervall, das von der Uhr angezeigt wird:
+  \[Δτ &= ∫_A^B \d τ = ∫_A^B \frac{\d t}{γ}\]
+  \begin{align*}
+  S &= - m c ∫ \d s = - m c ∫ \d t \sqrt{η_{μν} \dd{x^μ}{t} \dd{x^ν}{t}} = - m c ∫ \d t \sqrt{c^2 - v_i v^i} \\
+  &= - m c^2 ∫ \d t \sqrt{1 - \frac{v_i v^i}{c^2}} \approx ∫ \d t \underbrace{\frac{m}{2} v_i v^i}_{\mathclap{T \sim \text{ kinetische Energie}}} + \const
+  \end{align*}
+  *relativistische Bewegung* \\
+  klassische Mechanik $\mathcal{L}(x_i \dot x_i) = \frac{1}{2} \dot x_i \dot x^i - ϕ(x_i)$ \\
+  invariante Langrange-Funktion $\xrightarrow{\text{Variation}}$ kovariante Bewegungsgleichung
+  Variation $δ S = 0 \to \ddot x^i = - \partial^i ϕ$
+  - keine offensichtliche Interpretation von $\mathcal{L}$ oder $S$
+  - $\mathcal{L}$ oder $S$ nicht messbar
+  - Invarianz $\to$ Kovariant-Argument funktioniert nicht:
+	\[\dot x_i \to \dot x_i + v_i, \mathcal{L} \to \frac{1}{2}(\dot x_i + v_i)(\dot x^i + v^i) = \overbrace{\frac{1}{2} \dot x_i \dot x^i}^{= \mathcal{L}} + \underbrace{\dot x_i v^i + \frac{1}{2} v_i v^i}_{\mathclap{\dd{}{t}(x_i v^i + \frac{1}{2} v_i v^i t)}}\]
+  $\to$ wir brauchen eine Lorentz-invariantet relativisitsche Lorentz-Funktion
+  - $\mathcal{L}$ soll konvex sein
+  - Legendre-Transformation $\displaystyle{\mathcal{H} = \dot x^i \pp{\mathcal{L}}{\dot x^i} - \mathcal{L}$}
+  - $\mathcal{H}$ ist dann nach unten beschränkt
+  - am besten aus maximal ersten Ableitungen
+	\begin{align*}
+	\mathcal{L} &= \mathcal{L}(x_i \dot x_i, \ddot x_i, \dots) \\
+	δ S &= 0 = ∫ \d t (\pp{\mathcal{L}}{x}δ x^i + \pp{\mathcal{L}}{x_i}δ \dot x_i + \pp{\mathcal{L}}{\ddot x_i} δ \ddot x_i + \dots) \\
+	\dd{}{t}(\mathcal{L} - \dot x_i \pp{\mathcal{L}}{\dot x_i}) = \pp{\mathcal{L}}{x_i} \dot x^i + \pp{\mathcal{L}}{\dot x^i} \ddot x^i + \dots - \ddot x^i \pp{\mathcal{L}}{x_i} - \dot x^i \dd{}{t} \pp{\mathcal{L}}{x^i} = 0 \text{ für } \mathcal{L} = \mathcal{L}(x^i, \dot x^i)
+   	\end{align*}
+  Idee: klasische Lagrange Funktion $\to$ relativistische Eigenzeit?
+  - intuitiv (kein Unterschie von Fermat und Hamilton)
+  - messbar
+  - Lorentz-invariant
+  - konvex
+  - Möglichkeit zur Einbeziehung der Gravitation
+  \begin{align*}
+  S &= - m c ∫ \d s = - m c^2 ∫ \d τ = - m c^2 ∫ \frac{\d t}{γ}
+  \intertext{vergleiche mit mit}
+  S &= ∫ \d t \mathcal{L} \\
+  \to \mathcal{L}(\dot x) &= - \frac{mc^2}{γ}
+  \end{align*}
+* relativistische Energie-Impuls-Beziehung
+  \begin{align*}
+  \mathcal{L} &= - \frac{1}{γ} = \sqrt{c^2 - v^2} \\
+  \to p &= \pp{\mathcal{L}}{v} = \frac{v}{\sqrt{c^2 - v^2}} \\
+  p^2 (c^2 - v^2) = v^2, p^2 c^2 = v^2 (1 + p^2), v = c \frac{p}{\sqrt{1 + p^2}} \\
+  \mathcal{H} &= v \pp{L}{v} - \mathcal{L} = v \frac{v}{\sqrt{c^2 - v^2}} + \sqrt{c^2 - v^2} = v p + \frac{v}{p} = v(p + \frac{1}{p}) \\
+  \to \mathcal{H} &= c \frac{p}{\sqrt{1 + p}} \frac{p^2 + 1}{p} = c \sqrt{1 + p^2} \\
+  \intertext{mit $m c^2$:}
+  \mathcal{H} &= \sqrt{(mc)^2 + c^2 p^2} \\
+  \d S^2 &= (1 + \frac{2ϕ}{c^2}) c^2 \d t^2 - (1 - \frac{2ϕ}{c^2}) \d x_i \d x^i, \abs{ϕ} < c^2,	\text{ größer in der Schwarzschild-Metrik} \\
+  S &= - m c ∫ \d s = - m c^2 ∫ \d t \sqrt{(1 + \frac{2ϕ}{c^2}) c^2 (1 - \frac{2ϕ}{c^2}) v^2} \\
+  \d S^2 &\to g_{μν} \underbrace{\dd{x^μ}{t}}_{= \cvec{c; v_i}} \underbrace{\dd{x^ν}{t}}_{\cvec{c; v_i}} \d t^2 \\
+  S &= - m c^2 ∫ \d t \sqrt{c^2(1 + \frac{2ϕ}{c} - β^2)} \simeq m c^2 ∫ \d t (1 + \frac{ϕ}{c^2} - \frac{β}{c^2}) \\
+  \to S &= ∫ \d t (\underbrace{\frac{m}{2} v^2}_{T} - \underbrace{m ϕ}_{V})
+  \end{align*}
+
+
+  \begin{align*}
+  E^2 &= p^2 + m^2, c = 1, E = \sqrt{p^2 + m^2} \\
+  v_{ph} &= \frac{E}{p} = \frac{\sqrt{p^2 + m^2}}{p} \\
+  v_{gr} &= \pp{E}{p} &= \frac{p}{\sqrt{p^2 + m^2}} \\
+  v_{ph} v_{gr} &= \frac{\sqrt{p^2 + m^2}}{p} \frac{p}{\sqrt{p^2 + m^2}} = 1 \\
+  c &= \sqrt{v_{ph} v_{gr}}
+  \end{align*}
+* geometrische Sicht auf Bewegung
+  \begin{align*}
+  δS &= - m c^2 δ ∫_A^B \d τ = - m c^2 ∫_A^B \frac{η_{μν}}{2 \d t}(\d x^μ δ \d x^ν + δ \d x^μ \d x^ν) \\
+  &\underarrow[=]{Symmetrie $μ \leftrightarrow ν$} - m c^2 ∫ η_{μν} \dd{x^μ}{\d τ} δ δ x^ν \underarrow[=]{Partielle Integration} m c^2 ∫ η_{μν} \frac{\d^2 x^μ}{\d τ^2} \d τ δx^ν \overset{!}{=} 0 \\
+  \to \text{Lösung:} x^μ(τ) &= a^μ τ + b^μ, \dd{x^μ}{τ} = a^μ, \const
+  \end{align*}
+  Prinzip der extremen Eigenzeit $\to$ Graden im kräftefreien Fall. \\
+  mechanische Ähnlichkeit:
+  \begin{align*}
+  x &\to α x \\
+  t &\to β t \\
+  \intertext{für viele Fälle sieht die Larange Funktion so aus:}
+  \mathcal{L} &= \frac{x^2}{2} - x^q \\
+  \dd{}{t} \pp{\mathcal{L}}{\dot x} - \pp{\mathcal{L}}{x} &= 0 \\
+  \dd{t}{τ} &= \const, \dd{x^μ}{τ} = \const
+  \end{align*}
+* Loretz-Kräfte und Feldstärketensor
+  \begin{align*}
+  \dd{\v p}{t} &= q(\v E + \v β × \v B), \v β = \frac{\v v}{c}, \v p = γ m \v v \\
+  \v β γ \dd{\v p}{t} &= c \v β γ \dd{}{t}(m γ \v β) = \dots = m γ \dd{}{t}(γ c) = q \v β γ \v E \\
+  γ \dd{\v β}{t} &= c m γ \dd{}{t}(γ \v β) = q γ(\v E + \v β × \v B) \\
+  m \dd{u^μ}{τ} &= \underbrace{\begin{pmatrix}0 & -E_x & -E_y & -E_z \\ E_x & 0 & -B_x & B_y \\ E_y & B_x & 0 & B_z \\ E_z & -B_y & B_z & 0\end{pmatrix}}_{\mathclap{F^{μν} \sim \text{ Feldstärketensor}}} u_ν \\
+  \intertext{Erhaltung der Normierung von $u_μ u^μ = c^2$}
+  \frac{1}{2} \dd{}{τ}(u_μ u^μ) &= u_μ \dd{u^μ}{τ} = \frac{q}{m} u_μ F^{μν} u_ν = \frac{q}{m} \underbrace{u_μ u_ν}_{\mathclap{\text{symmetrisch}}} \overbrace{F^{μν}}^{\mathclap{\text{antisymmetrisch}}} \\
+  F^{μν} \to Λ^μ_ρ Λ^ν_σ F^{ρσ} \quad\text{Lorentztransformation}
+  \end{align*}
+\part{kovariante Elektrodynamik}
+* homogene Maxwell-Gleichungen
+  \begin{align*}
+  x^μ &= \cvec{c t; x^i} \to \partial_μ = \pp{}{x^μ} = (\partial_{ct}, \partial_i) \to \partial_μ x^μ = 4 \\
+  x_ν &= η_{μν} x^μ = (ct, - x_i) \\
+  \partial^λ F^{μν} + \partial^μ F^{νλ} + \partial^ν F^{λ μ} &= 0 \quad\text{Bianchi-Identität} \\
+  ε_{μνρσ} \partial^ν F^{ρσ} &= 0 \\
+  \partial^ν(ε_{μνρσ} F^{ρσ}) &= 0 \\
+  \partial^ν \tilde F_{μν} &= 0 \qquad \tilde{F} \text{ dualer Feldtensor} \\
+  μ = 0 (\text{nur \(B\)-Komponenten}): \partial^ν \tilde F_{0ν} &= \partial^i B_i = \Div \v B = 0 \checkmark \\
+  μ = 1 (\(E\)- und \(B\)-Komponenten): \partial^ν \tilde F_{1ν} &= - \partial_0 B_x - \partial_y E_z + \partial_z E_y \to \rot \v E = - \partial_{ct} \v B
+  \end{align*}
+* Kontinuität der Ladungsdichte
+  \begin{align*}
+  j^μ = \cvec{ρ c; j^i} = ρ_0 γ \cvec{c; v^i} \to \partial_μ j^μ = \partial_t (ρ c) + \partial_i j^i = \partial_t ρ + \Div \v j = 0
+  \end{align*}
+  $\partial_μ j^μ \sim$ Lorentz-Invariante, in allen Systemen gleich!
+  \[(\partial t ∫_V \d^3 r ρ = - ∫_{\partial V} \d \v S \v j)\]
+  \begin{align*}
+  \partial_μ F^{μν} &= \frac{4π}{c} j^ν \\
+  \partial_ν \partial_μ F^{μν} &= \frac{4π}{c} \partial_ν j^ν
+  \end{align*}

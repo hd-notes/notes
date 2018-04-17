@@ -1,0 +1,258 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Methoden der mathematischen Physik I (Salmhofer)
+
+#+INCLUDE: "../header.org" :minlevel 1
+
+# "Beipackzettel"
+# Anwendung mehr im Vordergrund, aber Präzise
+
+# Übungszettel Abgabe + Ausgabe Mittwoch 9:15, 2er-Teams
+
+* Komplexe Analysis
+** Kurven und Wegintegrale in der Ebene
+*** Orientierte Kurven
+	$ℝ^d, d \geq 1$
+	#+ATTR_LATEX: :options [Kurve]
+	#+begin_defn latex
+	Eine Abbildung $γ:[t_a, t_b] \to ℝ^d, t ↦ γ(t)$ mit $γ\big|_{(t_a, t_b)} ∈ C^1$ und
+	\[\dot γ(t) := \dd{γ}{t}(t)\]
+	bezeichnen wir als *parametrisierte Kurve* mit der *Bahn* $γ([t_a, t_b])$
+	#+end_defn
+	#+ATTR_LATEX: :options [Umparametrisierung]
+	#+begin_defn latex
+	$θ_a < θ_b, φ:[θ_a, θ_b] \to [t_a, t_b]$ Homomorphismus, $φ\big|_{(θ_a, θ_b)}$ \(C^1\)-Diffeomorphismus. Die Umparametrisierte Kurve ist definiert als $γ':[θ_a, θ_b] \to ℝ^d$
+	\begin{align*}
+	γ' &= γ \circ φ \\
+	γ'(θ) &= γ(φ(θ)) \\
+	\dd{γ'}{θ} &= φ'(θ) γ'(φ(θ))
+	\end{align*}
+	#+end_defn
+	#+ATTR_LATEX: :options [Orientierte Kurven]
+	#+begin_defn latex
+	$γ \sim γ' ⇔ γ'$ geht aus $γ$ durch eine *orientierungserhaltende* Umparametrisierung hervor. Dabei bedeutet orientierungserhaltend
+	\begin{align*}
+	φ(θ_a) &= t_a, φ(θ_b) = t_b \\
+	φ'(θ) &>0 ∀ θ ∈ (θ_a, θ_b)
+	\end{align*}
+	Orientierte Kurven sind Äquivalenzklassen bezüglich $\sim$, $\mathcal{C} = [γ]$, $- \mathcal{C} =$ die Kurve, di umgekhert orientiert ist.
+	\begin{align*}
+	γ: [0, 1] &\to ℝ^d, \mathcal{C} = [γ] \\
+	⇒ \tilde γ:[0, 1] &\to ℝ^d \tilde γ(t) = γ(1 - t) \\
+	- \mathcal{C} &:= [\tilde γ]
+	\end{align*}
+	#+end_defn
+	#+ATTR_LATEX: :options [Zusammensetzung]
+	#+begin_defn latex
+	$γ_1: [0, 1] \to ℝ^d, γ_2[0, 1] \to ℝ^d$ und $γ_1(1) = γ_2(0)$. Dann ist die zusammengesetze Kurve definiert als $\tilde γ:[0, 1] \to ℝ^d$
+	\begin{align*}
+	\tilde γ(t) &= γ_1(2t) \quad t ∈ [0, \frac{1}{2}] \\
+	\tilde γ(t) &= γ_2(2t - 1) \quad t ∈ [\frac{1}{2}, 1] \\
+	\end{align*}
+	#+end_defn
+*** Linienintegrale (Wegintegrale)
+	$Ω ⊂ ℝ^d$ offen, $γ:[t_a, t_b] \to ℝ^d, γ([t_a, t_b]) ⊂ Ω$. Vektorfeld $F: Ω \to ℝ^d$
+	\begin{align*}
+	x &= \cvec{x_1; \vdots; x_d} ↦ F(x) \\
+	I_γ(F) := ∫_{t_a}^{t_b} F(γ(t)) · \dot γ(t) \d t = ∫_{[γ]} F(x) \d x
+	\end{align*}
+	#+begin_lemma latex
+	$I_γ(F)$ ist reparametrisierungsinvarant.
+	#+end_lemma
+	#+begin_proof latex
+	Übungen (Kettenregel + Transformationsatz)
+	#+end_proof
+
+	\begin{align*}
+	\intertext{Mit einer beliebigen Parametrisierung von $\mathcal{C}$}
+	W(F, \mathcal{C}) &:= ∫_{t_a}^{t_b} F(γ(t)) · \dot γ(t) \d t \\
+	W(F, - \mathcal{C}) &= - W(F, \mathcal{C})
+	\end{align*}
+*** Die Green'sche Formel
+	$d = 2, Ω ⊂ ℝ^2$ offen
+	\[F: W \to ℝ^2 \quad x = \cvec{x_1; x_2} ↦ F(x) = \cvec{F_1(x_1, x_2); F_2(x_1, x_2)}\]
+	$Ω$ enthalte $\bar Δ$
+	\[Δ = \{(x_1, x_2) ∈ (0, a) × (0, b) : x_2 \leq f(x_1)\}\]
+	$f$ strikt monoton fallend, $C^1$. $f'(x_1) < 0 ∀ x_1 ∈ (0, a)$
+	\begin{align*}
+	\iint_{Δ} \d x_1 \d x_2 (\pp{F_2}{x_1} - \pp{F_1}{x_2})	&= ∫_0^b \d x_2 ∫_0^{f^{-1}(x_2)} \d x_1 \pp{F_2}{x_1} - ∫_0^a \d x_1 ∫_0^{f(x_1)} \d x_2 \pp{F_1}{x_2} \\
+	&= ∫_0^b \d x_2 (F_2(f^{-1}(x_2), x_2) - F_2(0, x_2)) - ∫_0^a \d x_1(F_1(x_1, f(x_1)) - F_1(x_1, 0)) \\
+	&= ∫_0^a \d x_1 F(x_1, 0) - ∫_0^b \d x_2 F_2(0, x_2) + ∫_0^b \d x_2 F_2(f^{-1}(x_2), x_2) - ∫_0^a \d x_1 F_1(x_1, f(x_1)) \\
+	&= ∫_{\mathcal{C}_1} F · \d x + ∫_{\mathcal{C}_2} F · \d x - \underbrace{∫_0^b \d x_1 (F_1, F_2)(x, f(x_1)) · \cvec{1; f'(x_1)}}_{∫_{\mathcal{C}_3} F · \d x} \\
+	&=: ∫_{\partial Δ} F · \d x
+	\end{align*}
+	Dabei ist $\mathcal{C}_1$ die Kurve (Gerade) $0$ bis $a$ entlang der \(x_1\)-Achse, entsprechend $\mathcal{C}_2$ die Kurve (Gerade)	von $0$ bis $b$ entlang der \(x_2\)-Achse und
+	$\mathcal{C}_3$ die Kurve entlang $f(x)$
+	#+begin_ex latex
+	\begin{align*}
+	f(x_1) &= b(1 - \frac{x_1}{a}) \tag{Dreieck} \\
+	f(x_1) &t b \sqrt{1 - (\frac{x_1}{a})^2} \tag{Viertelkreis} \\
+	\end{align*}
+	Rechteck kann man in zwei Dreiecke zerlegn,	einen Kreis in vier Viertelkreise. Ein beliebiges Kreissegment in ein Dreieck und eine Viertelellipse.
+	#+end_ex
+	#+ATTR_LATEX: :options ["Endlich zerlegbare Menge"]
+	#+begin_defn latex
+	$A ⊂ ℝ^2$, $A$ endlich zerlegbar $:⇔$ $A$ ist offen und $\bar A$ ist kompakt, $\bar A$ kann durch Schnitte längs Geraden in endlich viele Menge der Art wie $Δ$ zerlegt werden.
+	#+end_defn
+*** Satz von Green und Stoken
+	$A ⊂ ℝ^2$ zergelbar, $F$ ein \(C^1\)-Vektorfeld, das auf einer offenen Umgebung von $A$ definiert ist
+	\[⇒ \iint_{A} \d x_1 \d x_2 (\pp{F_2}{x_1} - \pp{F_1}{x_2}) = ∫_{\partial A} F · \d x\]
+*** Komplexe Zahlen
+	Körper auf $ℝ^2$ definiert durch
+	\begin{align*}
+	(a, b) + (c, d) &:= (a + c, b + d) \\
+	(a, b) · (c, d) &:= (ac - bd, ad + bc) \\
+	⇒ (0, 1) · (0, 1) &= (-1, 0) \\
+	⇒ (x, 0) · (\tilde x, 0) &= (\tilde x, 0) \\
+	⇒ i &:= (0, 1)
+	\end{align*}
+	Offensichtliche Einbettung von $z = x + i y$ in den 2d Raum durch
+	\begin{align*}
+	x &= \Re z \\
+	y &= \Re z \\
+	\end{align*}
+	Komplexe Konjugation:
+	\begin{align*}
+	\bar z &= x - iy \\
+	\overline(z + w) &= \bar z + \bar w \\
+	\overline(z · w) &= \bar z · \bar w \\
+	\end{align*}
+	$⇒ ℂ \cong ℝ^2$
+*** Komplexe Funktionen
+	allgemeine Funktionen zweier reeller Variablen $(x, y)$. Euklidische Norm auf $ℝ^2 \leftrightarrow$ Absolutbetrag komplexer Zahlen
+	\[\abs{z} = (x^2 + y^2)^{1/2} \quad z = x + i y\]
+	Kovention: $A ⊂ ℂ$ \\
+	- $\bar A =$ Abschluss von $A$ in $\abs{·}$
+	- $A^{\ast} = \{\bar z \mid z ∈ A\}$
+	#+ATTR_LATEX: :options [Linearität]
+	#+begin_defn latex
+	$L : ℂ \to ℂ, z ↦ L(z)$. \\
+	$L$ ist \(ℝ\)-linear, wenn $L$ additiv ist und $∀ λ ∈ ℝ: L(λ z) = λ L(z)$.
+	$L$ ist \(ℂ\)-linear, wenn $L$ additiv ist und $∀ λ ∈ ℂ: L(λ z) = λ L(z)$.
+	#+end_defn
+	#+begin_ex latex
+	$z ↦ w z$ mit festem $w ∈ ℂ$ ist $ℂ$ linear.
+	#+end_ex
+	#+begin_lemma latex
+	$L$ \(ℝ\)-linear $⇒ ∃! w, \tilde w ∈ ℂ ∀ z ∈ ℂ:$
+	\[L(z) = w z + \tilde w \bar z\]
+	$L$ \(C\)-linear $⇔$ $\tilde w = 0$
+	#+end_lemma
+	#+begin_proof latex
+	Bewersidee: $ℂ \cong ℝ^2$, $l$ hat bezüglich $\cvec{1; 0}, \cvec{0, 1}$ Matrixgestalt
+	\begin{gather*}
+	A = \begin{pmatrix}a & b \\ c & d\end{pmatrix} \quad a, b, c, d ∈ ℝ \\
+	\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}, \begin{pmatrix}0 & -1 \\ 1 & 0\end{pmatrix}, \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}, \begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix} \\
+	A \cvec{x; y} = \begin{pmatrix}u & -v \\ v & u\end{pmatrix} \cvec{x; y} + \begin{pmatrix}\tilde u & \tilde v \\ \tilde v & -\tilde u\end{pmatrix} \cvec{x; - y} \\
+	u = \frac{a + d}{2}, \tilde u = \frac{a - d}{2}, v = \frac{c - b}{2}, \tilde v \frac{c + b}{2} \\
+	\to (u x - v y, vx + u y)
+	\end{gather*}
+	#+end_proof
+	#+ATTR_LATEX: :options [komplexe Funktionen]
+	#+begin_ex latex
+	\begin{align*}
+	e^{z} &= \sum_{n = 0}^{∞} \frac{z^n}{n!}\qquad z ∈ ℂ \\
+	e^{z + w} &= e^z e^w \\
+	\cos z &= \frac{1}{2}(e^{i z} + e^{-iz}) \\
+	\sin z &= \frac{1}{2i}(e^{i z} - e^{-iz}) \\
+	\cosh z &= \frac{1}{2}(e^{z} + e^{-z}) \\
+	\sinh z &= \frac{1}{2}(e^{z} - e^{-z}) \\
+	⇒ e^{iφ} &= \cos φ + i \sin φ \\
+	z &= \abs{z} e^{i φ} \\
+	\log z &= \ln \abs(z) + i φ
+	\end{align*}
+	#+end_ex
+*** reelle und komplexe Differenzierbarkeit
+	$Ω ⊂ ℂ$ offen
+	#+ATTR_LATEX: :options [reelle Differenzierbarkeit]
+	#+begin_defn latex
+	$f: Ω \to ℂ$ int in $z_0 ∈ Ω$ reell differenzierbar, wenn $∃ L : ℂ \to ℂ$, \(ℝ\)-linear, sodass
+	\[∀ δ ∈ ℂ, δ \to 0 \quad f(z_0 + δ) - f(z_0) = L(δ) + \mathcal{o}(\abs{δ})\]
+	$f$ auf $Ω$ reell differenzierbar, wenn $f$ in jedem $z_0 ∈ Ω$ reell differenzierbar ist.
+	\begin{align*}
+	f(z) &= r(z) + i s(z) \leftrightarrow \cvec(r(x, y); s(x, y)) \\
+	L &= \begin{pmatrix}\pp{r}{x}(x_0, y_0) & \pp{r}{y}(x_0, y_0) \\ \pp{s}{x}(x_0, y_0) & \pp{s}{y}(x_0, y_0)\end{pmatrix}
+	\end{align*}
+	#+end_defn
+	#+ATTR_LATEX: :options [komplexe Differenzierbarkeit]
+	#+begin_defn latex
+	$f$ komplex differenzieibar in $z_0 ∈ W$
+	\[:⇔ ∃ w ∈ ℂ ∀ δ ∈ ℂ, δ \to 0: f(z_0 + δ) - f(z_0) = w δ + \mathcal{o}(\abs{δ})\]
+	$f'(z_0) := w$. $f$ heißt auf $Ω$ holomorph, wenn $f$ in jedem $z_0 ∈ Ω$ komplex differenzierbar ist und $z_0 ↦ f'(z_0)$ stetig. Die Stetigkeitsbedingung kann man weglassen, dies wird hier haber nicht
+	getan, da es nicht notwendig ist für den Stoff der Vorlesung und der Weglassen der Stetigkeit das weitere Vorgehen damit nur unnötig erschwert.
+	Komplexe Differenzierbarkeit $\leftrightarrow$
+	\[f'(z_0) = \lim_{δ \to 0} \frac{f(z_0 + δ) - f(z_0)}{δ}\]
+	#+end_defn
+	#+ATTR_LATEX: :options [Cauchy-Riemannsche Differentialgleichungen]
+	#+begin_lemma latex
+	$f = r + i s$ ist in $z = x + i y$ komplex differenzierbar
+	\begin{align*}
+	⇔ \pp{r}{x}(x, y) &= \pp{s}{y}(x, y) \\
+	\text{und}\quad	\pp{r}{y}(x, y) &= - \pp{s}{x}(x, y)
+	\end{align*}
+	#+end_lemma
+	#+begin_thm latex
+	Es gelten die üblischen Differentiationsregeln.
+
+	#+end_thm
+	#+begin_ex latex
+	$z ↦ z^2$
+	\[(z + δ)^2 - z^2 = 2z δ + δ ^2\]
+	$z ↦ \abs{z}^2 = \bar z z = x^2 + y^2$. Für $z = 1$ betrachte zunächst $δ = ih, h ∈ ℝ$
+	\begin{align*}
+	\abs{1 + ih}^2 - \abs{1}^2 &= 1 + h^2 - 1 = h^2  \\
+ 	⇒ \lim_{h \to 0} \frac{\abs{1 + i h}^2 - \abs{1}^2}{h} &= 0
+	\intertext{nur sei $δ = h, h ∈ ℝ$}
+	\frac{\abs{1 + h}^2 - \abs{1}^2}{h}	&= \frac{1 + 2h + h^2 - 1}{h} = 2 + h \overset{!}{=} 0
+	\end{align*}
+	#+end_ex
+** Der Cauchy'sche Integralsatz
+*** komplexe Linienintegrale
+	$γ:[t_a, t_b] \to ℂ$ \(C^2\)-Kurve
+	\[\dot γ(t) = \dd{γ}{t} ∈ ℂ\]
+	$Ω ⊂ ℂ$ offen, $f: Ω \to ℂ$ stetig, $γ([t_a, t_b]) ⊂ Ω$
+	\[∫_{[γ]} f(z) \d z := ∫_{t_a}^{t_b} f(γ(t)) · \dot γ(t) \d t\]
+	$·$ ist hierbei *nicht* das Skalarprodukt, sondern das komplexe	Produkt.
+
+	\begin{align*}
+	f &= r + is \\
+	f(x, y) &= \cvec{r(x, y); s(x, y)} \\
+	γ(t) &= x(t) + i y(t) \\
+	γ(t) &= \cvec{x(t); y(t)} \\
+	f \dot γ &= (r + is)(\dot x + i \dot y) = (r \dot x - s \dot y) + i(s \dot x + r \dot y) \\
+	&= (r, -s) \cvec{\dot x; \dot y} + i(s, r) \cvec{\dot x; \dot y} \\\
+	∫_{t_a}^{t_b} f · \dot γ \d t &= ∫_{[γ]} (r, -s) · \d x + i ∫_{[γ]} (s, r) · \d x
+	\end{align*}
+	Wenn $f ∈ C^1(Ω, ℂ)$ (das heißt reell differenzierbar und Ableitung stetig), $A ⊂ Ω$, endlich zerlegbar
+	\begin{align*}
+	∫_{\partial A} f(z) \d z &= ∫_{\partial A} (r, -s) \d x + i ∫_{\partial A} (s, r) \d x \\
+	&\underarrow[=]{Green} \iint_A \d x \d y(\pp{(-s)}{x} - \pp{r}{y}) + i \iint_{A} \d x \d y (\pp{r}{x} - \pp{s}{y}) \\
+	&= 0 \quad\text{wenn $f$ \textbf{komplex} differenzierbar ist!}
+	\end{align*}
+	#+begin_thm latex
+	Wenn $Ω ⊂ ℂ$ offen ist, $f: Ω \to ℂ$ holomorph dann gilt für jedes endliche zerlegbare $A ⊂ ℂ$ mit $\bar A ⊂ Ω$
+	\[∫_{\partial A} f(z) \d z = 0\]
+	#+end_thm
+	#+begin_ex latex
+	\begin{align*}
+	∫_{\abs{z - z_0} &= r f(z) \d z := ∫_{\partial B_r(z_0)} f(z) \d z} \\
+	B_r(z_0) &= \{z \mid \abs{z - z_0} < r\} \\
+	\abs{z - z_0} &= r \\
+	⇒ z - z_0 &= r e^{iθ} \\
+	⇒ z = z_0 + r e^{iθ} = z(θ)
+	∫_{\abs{z - z_0} = r} f(z) \d z ∫_0^{2π} \d θ f(z(θ)) · \dot z(θ) &= ∫_0^{2π} i r e^{iθ} f(z_0 r e^{iθ}) \d θ
+	\end{align*}
+	#+end_ex
+	#+begin_lemma latex
+	$A ⊂ ℂ$ endlich zerlegbar und $0 \not ∈ \bar A$. Dann gilt
+	\[∫_{\partial A} \frac{\d z}{z^n} = 0 \quad∀ n ∈ ℕ\]
+	Wenn $0 ∈ A$, dann
+	\[∫_{\partial A} \frac{\d z}{z^n} = \begin{cases} 2 π i & n = 0 \\ 0 \text{sonst}\end{cases}\]
+	#+end_lemma
+	#+begin_proof latex
+	$z_0 = 0$
+	\begin{align*}
+	∫_{\abs{z} = r} \frac{\d z}{z^n} &= ∫_0^{2π} i r e^{iθ} \frac{1}{(r e^{iθ})^n} \d θ \\
+	&= i r^{1 - n} ∫_0^{2π} e^{-iθ(n - 1)} \d θ \\
+	&= \begin{cases} 2πi & n = 1 \\ 0 & \text{sonst} \end{cases}
+	\end{align*}
+	#+end_proof

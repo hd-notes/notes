@@ -1,0 +1,86 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Theoretische Physik 4 - Quantenmechanik (Hebecker)
+
+#+INCLUDE: "../header.org" :minlevel 1
+
+# Webseite -> Übungsgruppen
+# Aufgabe heute 14:00
+# Zu zweit, abchseln aufschreiben 60%, 1× Vorrechnen
+# Terminprobleme
+
+* Materiewellen und	Schrödinger-Gleichung
+** Motivation
+   Quantenmechanik ist experimentell motiviert. Trotzdem gibt es rein theoretisch argumentierbare Probleme mit dem klassischen Weltbild.
+   1. Gleichverteilung der Energie, zum Beispie im Hohlraum; unendlich viele Moden mit kurzer Wellenlänge $1/2 k T$ pro Freiheitsgrad $\to$ "Ultraviolett Katastrophe"
+   2. Selbstwechselwirkung des Elektrons "Radiation reaction" (eigenes Feld "beschleunigt" immer weiter)
+   Experimentelle Befunde:
+   1. Quantisierung (der Energie) des Lichtes: $E = \hbar ω$ (photoelektrischer Effekt)
+   2. Sabilität und Energiequatisierung von $H$
+   3. Stern-Gerlach (Spin-Quantisierung)
+   4. Doppelspalt
+** Materiewellen
+   *Befund*: Teilchenstrahlen interferieren wie Wellen $\to$
+   1. Teilchen werden durch Wellen beschrieben
+      \[ψ(\v x, t) \sim e^{i(\v k \v x - ω t)}\]
+   2. Superpositions-Prinzip
+	  \[ψ_{\text{ges}} = ψ_1 + ψ_2\]
+   3. Intensitätkurve $\sim$ Aufentalswahrscheinlichkeit $\sim \abs{ψ(\v x, t)}^2$
+	  (Ausschluss: $\abs{ψ}^α$, \(\sin\)-Welle)
+
+   Hinzu kommt: $E = \hbar ω$. \\
+   Teilchen: 3 Parameter ($\v p$), Welle: 4 Parameter: $\v k, ω$. Erwartung: $ω = ω(\v k), \v k \leftrightarrow \v p$ eindeutig. Beschreibe (lokalierte) Teilchen durch Wellenpakete:
+   \[ψ(\v x, t) = ∫ \d^3 k f_{\v k_0}(\v k) e^{i(\v k \v x - ω(\v k) t)}\]
+   Maxima bei $\v k_0$ zum Beispiel 3d-Gauß-Kurve \\
+   $\to$ $ψ$ bei $t = 0$ ist Fouriertransformation zu $f$, zum Beispiel auch Gauß-Kurve \\
+   $\to$ lokalisiertes Teilchen mit Impuls $\sim$ $\v p(\v k_0)$ \\
+   Geschwindigkeit des Wellenpakets (beziehungsweise Teilchen):
+   \[\text{\textbf{Gruppengeschwindigkeit:}}\quad \v v = \v ∇_{\v k} ω; \quad ω = \frac{E}{\hbar} = \frac{\v p^2}{2m \hbar}\]
+   Außerdem: $\v p = \v p(\v k)$; Wir rechnen:
+   \begin{align*}
+   \frac{p_i}{m} &= v_i = \pp{ω}{k_i} = \pp{ω}{p_j} \pp{p_j}{k_i} = \frac{p_j}{m \hbar} \pp{p_j}{k_i}
+   \intertext{⇒ damit die Gleichheit gilt muss gelten}
+   \pp{p_j}{k_i} &= \hbar δ_{ij} ⇒ \v p = \hbar \v k + \const
+   \intertext{Dabei wählen wir sinnvoller Weise $\const$ als $0$, damit $k = 0 ⇒ p = 0$. Wir erhalten die Dispersionsrelation:}
+   ω &= \frac{\hbar}{2m} \v k^2
+   \end{align*}
+   Zurück zur einzelnen ebenen Welle:
+   \[ψ(\v x, t) \sim e^{i(\v k \v - ω t)}\]
+   Diese löst die Differentialgleichungen:
+   \begin{align*}
+   -i\hbar \v ∇ ψ(\v x, t) &= \v p ψ(\v x, t) \\
+   \text{beziehungsweise}\quad -i \hbar \pp{}{x^i} ψ(\v x, t) &= p_i ψ(x, t) \quad i = 1,2,3
+   \end{align*}
+   Ab jetzt zur Einfachheit $d = 1$:
+   \begin{align*}
+   ψ(x, t) &\sim e^{i(k x - ω t)} \\
+   -i \hbar \pp{}{x}ψ(x, t) = p ψ(x, t)
+   \end{align*}
+   Dies ist eine Eigenwertgleichung, analog zu
+   \[M_{ij} y_j &= λ y_i \quad i,j ∈ \{1, \dots, n\}\]
+   $\v y$ ist der Eigenvektor zur Matrix ("Operator") $M$ zum Eigenwert $λ$. Unserer Fall:
+   - Operator ist Differentialoperator
+   - Vektorraum ist Raum der Funktionen $ψ$
+   Merke: Operator $i \hbar \pp{}{x}$ eng verbunden mit Impuls $p$. (in $d = 3$: $-i \hbar \v ∇ \leftrightarrow \v p$)
+** Schrödingergleichnug
+   obige Differentialgleichung zu einfach, brauchen Zeitentwicklung (Ableitung nach $t$ in Differentialgleichnug). Unsere Welle
+   genügt einer solchen, "interessanteren" Differentialgleichung, der *Wellengleichung*:
+   \[i\hbar \pp{}{t} ψ(x, t) = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ψ(x, t)\]
+   Dies ist schlicht die in Differentialgleichungsform gegossene Dispersionsrelation:
+   \[\hbar ω = \frac{\hbar^2 k^2}{2m} \quad\text{beziehungsweise}\quad E = \frac{p^2}{2m}\]
+   Verallgemeinerung: Potential $V \neq 0$ zulassen. Erwartung: im Bereich $V > 0$ ist kinetische Energie kleiner: $E - V$. $⇒ p$ kleiner $⇒ k$ kleiner.
+   Einbau in unsere Differentialgleichnug:
+   \begin{align*}
+   \frac{p^2}{2m} &\to \frac{p^2}{um} + V(x) \\
+   \intertext{entspricht}
+   - \frac{\hbar^2}{2m} \frac{\partial^2}{x^2} &\to - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+   \end{align*}
+   Auch zurück zu 3d:
+   \begin{ibox}{Schrödingergleichung}
+   \[i \hbar \pp{}{t} ψ(\v x, t) &= (- \frac{\hbar^2}{2m} \v ∇^2 + V(x))ψ(\v x, t)\]
+   \end{ibox}
+   Diese Gleichung + Interpretation von $\abs{ψ(\v x, t)}^2$ als Aufenhaltwahrscheinlichkeit definiert bereits die Quantenmechanik. \\
+   Es fehlt:
+   - mathematischer Formalismus (Hilbertraum, Operatoren, \dots)
+   - Anwendungen (Oszillator, Wasserstoffatom, Tunneleffekt, \dots)
+   - Verallgemeinerungen (Teilchen mit Spin, viele Teilchen)
+   Besser: Fermat-Prinzip für Wellen, Zusammenhang mit Wirkungsprinzip

@@ -1,0 +1,70 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Experimentalphysik 4 - Kern- und Teilchenphysik (Uwer)
+
+#+INCLUDE: "../header.org" :minlevel 1
+
+# Übungen: Donnerstag und Freitags, beginn diese Woche
+# Übungsblätter	Mittwochs
+# Keine Korrektur der Einzellösungen, muss in Übuncgen vobrrechnen können -> Anwesenheitspflicht
+# 60% der Übungsblätter
+
+# Inhalt der Vorlesung
+# 1  Mehrelektronenatome
+# 2  Fundamentale Bausteine und Wechselwirkungen
+# 3  Beschreibung von Streuprozessen
+# 4  Wechselwirkung von Teilchen mit Materie
+# 5  Symmetrien
+# 6  Kern- und Nukleonstruktur
+# 7  Starke Wechselwirkung
+# 8  Schwache Wechselwirkung
+# 9  Kerne, Kernzerfälle und Kernmodelle
+# 10 Elementsynthese
+
+# lol: \hbar = c = i = π = 1
+# fermi = femptometer
+# \hbar c = 197 eV · nm
+
+* Mehrelektronensysteme
+** Wasserstoff - kurze Wiederholung
+   Stationäre 3d Schrödinger-Gleichung für kugelsymmetrisches Potential
+   \begin{align*}
+   - \frac{\hbar^2}{2m}∇^2 ψ(\v r) + V(\v r) ψ(\v r) &= E ψ(\v r) \\
+   V(\v r) &= - \frac{Z e^2}{4π ε_0} \frac{1}{\abs{\v r}}
+   \end{align*}
+   $\v r =$ Relativkoordinate. Lösung: $ψ_{nlm}(\v r)$ mit Radialanteil $R(r)$ und Winkelanteil $Y_{lm}(φ, θ)$. Lösungen werden durch die 3 Quantenzahlen $\{n,l,m\}$ vollständig bestimmt.
+   $ψ_k$ mit $k = \{n,l,m\}, \ket{ψ_k}$ oder $\ket{k}$. Energieeigenwerte $E_n$ hängen nur von $n$ ab. ($\to$ Entartung: $n^2$ Niveaus)
+   \[E_n = - \frac{1}{n^2} μ \frac{Z^2 e^2}{8 ε_0^2 h^2} = - R_y^{\ast} · \frac{Z^2}{n^2}\]
+   $μ =$ reduzierte Masse, mit
+   \begin{align*}
+   R_y^{\ast} &= \frac{μ e^4}{8 ε_0^2 h^2} = R_y h c = R_{y∞} \frac{μ}{m_e} h c \\
+   R_y^{\ast} &= \SI{13.605698}{\electronvolt}
+   R_{y∞}^{\ast} &= \SI{1097373.15}{\speedoflight\per\meter} \\
+   E_n &= - \frac{1}{n^2} \frac{m_e c^2}{2} α^2
+   \end{align*}
+   Spektrallinien für Übergang $ψ_m \to μ_n$ ($m,n$ Hauptquantenzahlen)
+   \[\frac{1}{λφ} = R_y (\frac{1}{n^2} - \frac{1}{m^2})\]
+   Auswahlregel für elektronischen Dipolübergang: $Δl = \pm 1$ \\
+   Elektronenspin: $s = 1/2, s_z = \pm 1 / 2$ $\to$ Gesamtwellenfunktion:
+   \[ψ_{nlm m_s} = ψ_{nlm} χ_{m_s}\]
+   Feinstrukturaufspaltung: Magnetischer Moment des Spins koppelt mit magnetischem Moment des Bahndrehimpulses $\sim \v l, \v s$, Ersatzdrehimpuls $\v J = \v l + \v l$
+   Für Einelektronensystem $(s = 1/2) ⇒$ $j = l + 1/2$ oder $j = l - 1/2$ \\
+   Berücksichtigung der relativistischen Massenzunahme \\
+   $\to$ Energieniveaus hängen nur noch von $n$ und $j$ ab $(E_{nj})$ \\
+   $\to$ sind in $l$ entartet: \\
+   $2s \frac{1}{2} (n = 2, l = 0, j = \frac{1}{2})$
+   $2p \frac{1}{2} (n = 2, l = 1, j = \frac{1}{2})$ \\
+   Lamb-Shift
+   QED-Korrekturen = Austaush Photon / Elektronen. \\
+   Die Korrekturen sind	umso stärker, ja näher die Elektronen am Kern sind, das heißt sie hängen von $n$ und $l$ ab $⇒$	Aufhebung der \(l\)-Entartung. \\
+   Hyperfeinstrukutur
+   Kopplung der Mangnetische Momnete des Elektrons $\v j (= \v l  + \v s)$
+   und des magnetischen Moments desKernts/Protons $\v I$
+   $\to$ energiaufspaltung $\sim \v j I$
+   Kopplung der Drehimpulse zur Ortskomponente
+** Heliumatom "in a nutshell"
+   $\to$ Komplikationen gegenüber $H$:
+   1. Elektronen-Coulomb-Abstoßung
+   2. Ununterscheidbarkeit der $e^{-}$
+*** Wechselwirkung der Elektronen
+	$=$ gegenseitige Abstohung der beiden Elektronen $⇒$ Hamilton-Operator
+	\[\hat H = \sum_{i = i}^{2}(\frac{\v p^2}{2m} - \frac{Ze}{4π ε_0 r_i}) + \sum_{\substack{i,j\\i < j}} \frac{e^2}{4π ε_0 \abs{\v r_i - \v r_j}} + \hat O(\v l_1, \v l_2, \v s_1 \v s_2, \hat I)\]

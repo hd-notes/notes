@@ -5,6 +5,7 @@
 #+LATEX_HEADER:	\theoremsymbol{}
 #+LATEX_HEADER: \theoremstyle{nonumberplain}
 #+LATEX_HEADER: \renewtheorem{remark}{Bemerkung}
+#+LATEX_HEADER: \newtheorem{notation}{Notation}
 #+LATEX_HEADER: \theoremstyle{}
 #+LATEX_HEADER: \renewtheorem*{ex*}{Beispiel}
 
@@ -1343,7 +1344,7 @@
   \end{align*}
   #+end_proof
   #+begin_lemma latex
-  Für $g, g ∈ L^1(ℝ^n), a,p ∈ ℝ^n, λ > 0$ gilt
+  Für $f, g ∈ L^1(ℝ^n), a,p ∈ ℝ^n, λ > 0$ gilt
   1. $\widehat{f(· + a)}(p) = e^{-i\braket{a,p}} \hat f(p)$
   2. $\widehat{e^{-i\braket{·,a}}f}(p) = \hat f(p - a)$
   3. $\widehat{f(λ ·)}(p) = \frac{1}{λ^n} \hat f(\frac{p}{λ})$
@@ -1351,3 +1352,907 @@
   5. $\hat f g, f\hat g ∈ L^1$ mit
 	 \[∫ \hat f g = ∫ f \hat g\]
   #+end_lemma
+  #+begin_remark latex
+  $\mathcal{F}: L^1(ℝ^n) \to C_b^0(ℝ^n)$
+  $ℝ^1$
+  \begin{align*}
+  \hat f(p) &= ∫_{ℝ} e^{-ipx} f(x) \d λ(x) \qquad \hat f(p) = \widehat{\hat f(p)} \\
+  \intertext{wenn $f(x) = \overline{-f(-x)}$:}
+  \overline{\hat f(p)} ∫_{ℝ} e^{ipx} \overline{f(x)} \d λ(x) = - ∫ e^{-ipx} f(-x) \d λ(x)
+  \end{align*}
+  #+end_remark
+  #+begin_lemma latex
+  Sei $f ∈ C^1(ℝ^n)$ mit $\lim_{\abs{x} \to ∞} f(x) = 0$ und $f, \partial_j f ∈ L^1(ℝ^n)$ für ein $j ∈ \{1, \dots, n\}$. Dann ist
+  \[\widehat{\partial_j f}(p) = i p_j \hat{f}(p) ∀ p ∈ ℝ^n\]
+  Sind umgekehrt $f$ und $x \to x_j f(x)$ integrierbar, so ist $\hat f$ nach $p_j$ partiell differenzierbar und es gilt
+  \[\widehat{·_j f(·)}(p) = i \partial_j \hat f (p) ∀ p ∈ ℝ^n\]
+  #+end_lemma
+  #+begin_proof latex
+  \begin{align*}
+  \string(2π\string)^{n/2} \widehat{\partial_j f}(p) &= ∫_{ℝ^n} e^{-i \braket{p,x}} \pp{f}{x_j}(x) \d λ^n(x) = -∫_{ℝ^n} \pp{e^{-i \braket{p,x}}}{x_j} f(x) \d λ^n(x) \\
+  &= i p_j ∫_{ℝ^n} e^{-i \braket{p,x}} f(x) \d λ^n(x) &= (2π)^{n/2} i p_j \hat f(p) \\
+  \widehat{·_j f(·)}(p)&= \frac{1}{(2π)^{n/2}} ∫_{ℝ^n} x_j f(x) e^{-i\braket{x,p}} \d λ^n (x) \\
+  &= \frac{1}{(2π)^{n/2}} ∫_{ℝ^n} i \pp{e^{-i\braket{x,p}}}{p_j} f(x) \d λ^n(x) = i \pp{}{p_j} \hat f(p)
+  \end{align*}
+  #+end_proof
+  #+begin_remark latex
+  Partielle	Differenzierbarkeit gilt auch für höhere Ableitungen (Beweis induktiv) für $f ∈ C^k(ℝ^n)$
+  \[\partial_{α} f:= \frac{\partial^{\abs{α}} f}{\partial_{x_1}^{α_1} \dots \partial_{x_n}^{α_n}}\]
+  wobei $\abs{α} = α_1 + \dots + α_n, α ∈ (ℕ ∪ \{0\})^n$, \(α\)-Multiindex, $\abs{α} \leq k$
+  #+end_remark
+  #+ATTR_LATEX: :options [Schwartz-Raum]
+  #+begin_defn latex
+  \[S(ℝ^n) := \{f ∈ C^∞(ℝ^n) \mid ∀ α, β ∈ (ℕ ∪ \{0\})^n: \sup_{x ∈ ℝ^n} \abs{x^α (\partial_β f)(x)} < ∞\}\]
+  $x^α := x_1^{α_1} x_2^{a_2} \dots x_n^{α_n}$. $f ∈ S(ℝ^n)$ heißen schnell-fallende (Schwartz) Funktion.
+  #+end_defn
+  #+begin_remark latex
+  - $S(ℝ^n) ⊂ L^p(ℝ^n)$ für $p ∈ [1, ∞]$
+  - $S(ℝ^n)$ ist dicht in $L^p(ℝ^n)$ für $p ∈ [1,∞\string)$ weil
+	\[C_c^∞(ℝ^n) ⊂ S(ℝ^n)\]
+	(insbesondere $S(ℝ^n) \neq \emptyset$)
+  -	Mit $f ∈ S(ℝ^n)$, auch $x \to x^α f(x)$ und $\partial_α f ∈ S(ℝ^n)$
+  #+end_remark
+  #+begin_lemma latex
+  Die Fourier-Transformation ist ein Operator
+  \[\mathcal{F}: S(ℝ^n) \to S(ℝ^n)\]
+  Insbesondere gilt $∀ α ∈ (ℕ_0)^n, f ∈ S(ℝ^n), p ∈ ℝ^n$.
+  \[\widehat{\partial_α f}(p) = (ip)^α \hat f(p) \quad\text{und}\quad \widehat{·^α f(·)}(p) = i^{\abs{α}} \partial_α \hat f(p)\]
+  #+end_lemma
+  #+begin_proof latex
+  Die Formeln erhält man induktiv aus Lemma 3.4. Zu zeigen $\hat f ∈ C_c^∞(ℝ)$, verwenden wir zunächst das $\hat f$ beschränkt ist (Lemma 3.2). Da mit $f ∈ S(ℝ^n)$ laut Bewerkung 3.7 auch
+  $x \to \partial_{α} (x^β f(x)) ∈ S(ℝ^n)$ gilt und dessen Fourier-Transformation auch beschränkt ist, bekommen wir eine gleichmäßige Schranke aus
+  \[p^α \partial_{β} \hat f(p) = i^{-\abs{β}} p^α \widehat{·^β f(·)}(p) = i^{-\abs{β} - \abs{α}} \underbrace{\partial_α (\widehat{·^β f(·)})(p)}_{\mathclap{∈ S(ℝ^n) \text{ gleichmäßig beschränkt in $p$ nach Lemma 3.2}}}\]
+  $∀ α,β ∈ (ℕ_0)^n$
+  #+end_proof
+  #+begin_remark latex
+  Das Abklingverhalten einer Funktion $f$ korrespondiert mit der Glattheit der Fourier-Transformation $\hat f$ und umgekehrt. Insbesondere verschwindet die Fourier-Transformation einer $L^1$ Funktion
+  in $\pm ∞$
+  #+end_remark
+  #+ATTR_LATEX: :options [Riemann-Lebesgue]
+  #+begin_korollar latex
+  Die Fourier-Transformation bildet $L^1(ℝ^n)$ auf $C_0^0(ℝ^n)$
+  \[C_0^0(ℝ^n) = \{f ∈ C^0(ℝ^n) \mid \lim_{\abs{x} \to ∞} f(x) = 0\}\]
+  #+end_korollar
+  #+begin_proof latex
+  Sei $f ∈ C_c^∞(ℝ^n)$. Dann ist für $p ∈ ℝ$ mit $p_j \neq 0$
+  \begin{align*}
+  \abs*{\hat f(p)} &= \abs{\frac{1}{i p_j} \widehat{\partial_j f}(p)} \leq \frac{\norm{\partial_j f}_{L^1}}{(2π)^{n/2} \abs{p_j}} \\
+  ⇒ \abs*{\hat f(p)} &\leq \min{\substack{j ∈ \{1, \dots, n\} \\ p_j \neq 0}} \frac{\norm{p_j f}_{L^1}}{(2π)^{n/2} \max \abs{p_j}} \xrightarrow{\norm{p} \to ∞} 0
+  \end{align*}
+  Für beliebiges $f ∈ L^1(ℝ)$ finden wir eine Folge
+  \[(f_k)_{k ∈ ℕ} ⊂ C_c^∞(ℝ^n)\]
+  (nach Satz 2.21)
+  \begin{align*}
+  \norm{f_k - f}_{L^1} \xrightarrow{k \to ∞} 0 ⇒ \abs*{\hat f(p)} &\leq \underbrace{\abs*{\hat{f_k} (p)}}_{\xrightarrow{\abs{p} \to ∞} 0} + \norm*{\hat{f_k}(p) - \hat f(p)}_{L^∞} \\
+  &= \norm*{\widehat{f_k - f}}_{L^∞} \leq C \norm{f_k - f}_{L^1} \xrightarrow{k \to ∞} 0
+  \end{align*}
+  #+end_proof
+  #+ATTR_LATEX: :options [Fourierinversion]
+  #+begin_thm latex
+  Die Fourier-Transformation $\mathcal{F}: L^1(ℝ^n) \to C_0^0(ℝ^n)$ iste ine invertierbare Abbildung. Die Inverse its durch
+  \[f(x) = \lim_{ε \to 0} \frac{1}{(2π)^{n/2}} ∫_{ℝ^n} e^{i\braket{p,x} - ε^2 \abs{p}^2 / 2} \hat f(p) \d λ^n (p)\]
+  wobei der Grenzwert bezüglich der \(L^1\)-Norm zu verstehen ist.
+  #+end_thm
+  #+begin_proof latex
+  Wir betrachten $ϕ ∈ C^∞(ℝ^n)$,
+  \[ϕ(x) = \frac{1}{(2π)^{n/2}} e^{- \frac{x^2}{2}} \quad\text{und}\quad ϕ_ε = \frac{1}{ε^n} ϕ(\frac{·}{x})\]
+  $(ϕ_ε)_{ε>0}$ ist eine approximative Identität $∫ ϕ \d x = 1$
+  \[\widehat{ϕ(ε ·)}(p) = \frac{1}{ε^n} \hat ϕ( \frac{p}{ε}) = \frac{1}{ε_n} ϕ(\frac{p}{ε}) = ϕ_ε(p)\]
+  Wir bekommen $∀ x ∈ ℝ^n$
+  \begin{align*}
+  \frac{1}{(2π)^{n / 2}} ∫_{ℝ^n} e^{i \braket{x, p} - ε^2 \abs{p}^2 / 2} \hat f(p) \d λ^n (p) &= ∫_{ℝ^n} e^{i \braket{x,p}} ϕ(ε p) \hat f(p) \d λ^n (p) \\
+  &= ∫_{ℝ^n} \widehat{f(· + x)}(p) ϕ(ε p) \d λ^n(p) \\
+  &= ∫_{ℝ^n} f(p + x) \widehat{ϕ(ε · )}(p) \d λ^n (p) \\
+  \intertext{Sei $y= - p$}
+  ∫_{ℝ^n} f(x - y) \underbrace{ϕ_ε(-y)}_{= ϕ_ε(y)} \d λ^n(y) &= (f \ast ϕ_ε) (x)
+  \end{align*}
+  Nach Lemma 2.20 konvergiert $f \ast ϕ_ε \xrightarrow[L^1]{ε \to 0} f$
+  #+end_proof
+  #+begin_korollar latex
+  Für $f ∈ L^1(ℝ^n)$ mit $\hat f ∈ L^1 (ℝ^n)$ gilt
+  \[\string(\check{\hat{f}}\string) = f\]
+  wobei
+  \[\check f(p) := \hat f(-p)\]
+  Also
+  \[\check f(p) = \frac{1}{(2π)^{n/2}} ∫_{ℝ^n} e^{i \braket{p,x}} f(x) \d λ^n(x)\]
+  $\mathcal{F}$ ist eine Bijkektion auf $F^1(ℝ^n) = \{f ∈ L^1(ℝ^n) \mid \hat f ∈ L^1(ℝ^n)\}$
+  und insbesondere ist $\mathcal{F}\big|_{S(ℝ^n)}: S(ℝ^n) \to S(ℝ^n)$ eine Bijektion
+  #+end_korollar
+  #+begin_proof latex
+  \begin{gather*}
+  ϕ(ε p) \xrightarrow{ε \to 0} \frac{1}{(2π)^{n/2}} ∀ p ∈ ℝ^n \\
+  ⇒ \abs{e^{i \braket{p,x}} ϕ(ε p) \hat f(p)} \leq \frac{\abs*{\hat f(p)}}{(2π)^{n/2}}
+  \end{gather*}
+  Dies leifert eine integrierbare Majorante für die Formel aus Satz 3.10 $⇒$ wir dürfen in der Formel Genzwert und Integral vertauschen. Die punktweise Konvergenz folgt zunächst aus Konvergenz
+  einer Teilfolge ($L^p$ Konvergenz $⇒$ punktweise Konvergenz) und dann unabhängig von Teilfolge aus Teilfolgenprinzip
+  \[⇒ \string(\check{\hat f}\string) = f\]
+  #+end_proof
+  #+ATTR_LATEX: :options [Plancherel Identiät]
+  #+begin_lemma latex
+  Sei $f ∈ F^1(ℝ^n)$. Dann ist $f, \hat f ∈ L^2(ℝ^n)$ und
+  \[\norm{f}^2_{L^2} = \norm*{\hat f}_{L^2}^2 \leq (2π)^{- n/2} \norm{f}_{L^1} \norm*{\hat f}_{L^1}\]
+  #+end_lemma
+  #+begin_proof latex
+  \begin{align*}
+  ∫_{ℝ^n} \abs*{\hat f(p)}^2 \d λ^n(p) &= \frac{1}{(2π)^{n/2}} ∫_{ℝ^n} ∫_{ℝ^n} f(x) e^{-i \braket{p,x}} \overline{\hat f(p)} \d λ^n(x) \d λ^n(p) \\
+  &\underarrow[=]{Fubini} \frac{1}{(2π)^{n/2}} ∫_{ℝ^n} f(x) \underbrace{∫_{ℝ^n} \overline{e^{i\braket{p,x}} \hat f(p)} \d λ^n(p)}_{= (2π)^{n/2} \overline{\string(\check{\hat f}\string)} = (2π)^{n/2} \overline{f(x)}} \d λ^n(x) \\
+  &= ∫_{ℝ^n} f(x) \overline{f(x)} \d λ^n(x) = ∫_{ℝ^n} \abs{f(x)}^2 \d λ^n(x) \\
+  \intertext{Insbesondere:}
+  \norm*{\hat f}_{L^2}^2 &\leq \frac{1}{(2π)^{n/2}} ∫_{ℝ^n} \abs{f(x)} \d λ^n(x) ∫_{ℝ^n} \underbrace{\abs{e^{i\braket{p,x}}}}_{=1} \abs*{\hat f(p)} \d λ^n(p) = \frac{1}{(2π)^{n/2}} \norm{f}_{L^1} \norm*{\hat f}_{L^1}
+  \end{align*}
+  #+end_proof
+  *Fortsetzbarkeit auf $L^2$*
+  #+ATTR_LATEX: :options [Fortsetzung linearer Abbildungen]
+  #+begin_thm latex
+  Sei $X$ ein normierter Raum mit dichter Teilmenge $U$ und $Y$ ein Banachraum. Ist $A: O \to Y$ eine lineare und beschränkte Abbildung, das heißt $∃ C_A > 0:$
+  \[\norm{A(x)}_Y \leq C_A \norm{x}_X ∀ x ∈ O\]
+  so gibt es genau eine Fortsetzung $\tilde A$, das heißt eine lineare und beschränkte Abbildung $\tilde A: X \to Y$ mit $\tilde A\big|_O = A$ und dem selben $C_A ∀ x ∈ X$.
+  #+end_thm
+  #+begin_proof latex
+  Sei $(X_k)_{k ∈ ℕ} ⊂ O$ eine Cauchy-Folge. Dann ist $(A x_k)_{k ∈ ℕ} ⊂ Y$ eine Cauchy-Folge in $Y$, weil
+  \[\norm{A x_j - A x_k}_Y= \norm{A(x_j - x_k)}_Y \leq C_A \underbrace{\norm{x_j - x_k}_X}_{\to 0} \to 0\]
+  und diese besitzt einen eindeutigen Grenzwert.
+  \[\tilde A x_0 := \lim_{k \to ∞} A x_k \quad\text{sofern}\quad x_0 := \lim_{k \to ∞} x_k \text{ existiert}\]
+  Damit ist $\tilde A: X \to Y$ eindeutig gegeben, denn für Folgen $(x_k)_{k ∈ ℕ}, (y_k)_{k ∈ ℕ} ⊂ U$ mit $x_k \xrightarrow{k \to ∞} x_0, y_k \rightarrow{k \to ∞} x_0$
+  \[\norm{A x_k - A y_k}_Y = \norm{A(x_k - y_k)}_Y \leq C_A \norm{x_k - x_0} + C_A \norm{y_k - k_0} \xrightarrow{k \to ∞} 0\]
+  Linearität von $\tilde A$ bekommen wir aus der Stetigkeit von Vektoraddition und skalarer Multiplikation. Stetigkeit der Normen liefert die Behauptung.
+  #+end_proof
+  #+ATTR_LATEX: :options [Plancherel]
+  #+begin_thm latex
+  Die Fourier Transformation $\mathcal{F}$ lässt sich zu einer beschränkten Abbildung $\mathcal{F}:L^2(ℝ^n) \to L^2(ℝ^n)$ fortsetzen, die unitär ist, das heißt $\braket{\tilde{\mathcal{F}}(f), \tilde{\mathcal{F}}(g)}_{L^2} = \braket{f,g}_{L^2} ∀ f,g ∈ L^2(ℝ^n)$
+  #+end_thm
+  #+begin_proof latex
+  Nach Satz 2.31 liegt $C_c^∞(ℝ^n) ⊂ S(ℝ^n)$ dicht in $L^2(ℝ^n)$. Nach Korollar 3.11 ist $\mathcal{F}$ eine lineare bijektive Selbstabbildung des $S(ℝ^n) ⊂ F^1(ℝ^n) ⇒$ Beschränktheit aus der Plancherel Identität.
+  Nach Satz 3.13 existiert eine eindeutige Fortsetzung $\tilde{\mathcal{F}}: L^2(ℝ^n) \to L^2(ℝ^n)$ mit
+  \[\norm*{\tilde{\mathcal{F}}(f)}_{L^2} \leq \norm{f}_{L^2}\]
+  $\tilde{\mathcal{F}}$ ist unitär nach Lemma 3.12, weil $∀ f,g ∈ L^2(ℝ^n)$
+  \begin{align*}
+  4 \braket{f,g}_{L^2} &= 4 ∫_{ℝ^n} f(x) \overline{g(x)} \d λ^n(x) \\
+  &= \norm{f + g}_{L^2}^2 - \norm{f - g}_{L^2}^2 + i \norm{f - ig}_{L^2}^2 - i \norm{f + ig}_{L^2}^2 \\
+  &= 4 \braket{\tilde{\mathcal{F}}(f), \tilde{\mathcal{F}}(g)}_{L^2}
+  \end{align*}
+  #+end_proof
+  #+begin_remark latex
+  Solange der Integrand von $\hat f$ in $L^1(ℝ^n)$ liegt lässt sich $\tilde{\mathcal{F}}(f)$ direkt mit der Formel aus Definition 3.1 ausdrücken. In der Regel lässt sich $\tilde{\mathcal{F}}$ für $f ∈ L^2(ℝ^n)$
+  nur als Grenzwert einer Folge \(\hat f_k, (f_k)_{k ∈ ℕ} ⊂ S(ℝ^n), f_k \xrightarrow{k \to ∞}[\text{in $L^2$}]\) darstellen.
+  #+end_remark
+  #+ATTR_LATEX: :options [3.15]
+  #+begin_lemma latex
+  Es gilt
+  \[\norm*{\tilde{\mathcal{F}}(f)}_{L^∞} \leq (2π)^{-n/2} \norm{f}_{L^1} ∀ f ∈ L^1 ∩ L^2\]
+  #+end_lemma
+  #+begin_proof latex
+  Sofern $f ∈ L^1_c(ℝ^n)$, folgt $f ∈ L^2(ℝ^n)$ und nach Lemma 2.20 $f \ast ϕ_ε$ konvergiert für eine geeignetes $ϕ$ in $C_c^∞(ℝ^n)$ ($f \ast ϕ_ε ∈ C_c^∞(ℝ^n) ⊂ S(ℝ^n)$)
+  bezüglich $L^1$ und $L^2$ Norm gegen $f$.
+  \[\norm{f \ast ϕ_ε -  f}_{L^2} \to 0\]
+  Die Abschätzung gilt für $f \ast ϕ_ε$ nach Lemma 3.2. Die Behauptung folgt für $ε \searrow 0$ aus Stetigkeit der Norm. Für allgemeine $f ∈ L^1(ℝ^n) ∩ L^2(ℝ^n)$ betrachten wir $f_R = f χ_{B_R(0)}$.
+  Dann $f_R \nearrow f$ in $L^1$ und $L^2$ (dominierte Konvergenz) und wir erhalten die Behauptung durch Approximation.
+  #+end_proof
+  #+begin_remark latex
+  Insbesondere gilt für $f ∈ L^2(ℝ^n)$ ($⇒ f_R ∈ L^2$)
+  \[\tilde{\mathcal{F}}(f)(p) = \lim_{R \nearrow ∞} \frac{1}{(2π)^{n/2}} ∫_{B_R(0)} e^{-i \braket{p,x}} f(x) \d λ^n(x)\]
+  (wobei der Grenzwert bezüglich \(L^2\)-Norm zu verstehen ist)
+  #+end_remark
+* Differenzierbare Mannigfaltigkeiten
+** Implizite Funktionen und Untermannigfaltigkeiten
+   #+begin_defn latex
+   1. Seien $X, Y$ topologische Räume. Eine stetige Funktion $f:X \to Y$ die bijektiv ist und deren Inverse ebenfalls stetig ist, heißt Homöomporphismus.
+   2. Seien $X, Y$ normierte Räume. EIn Homöomorphismus $f: X \to Y$ heißt (\(C^1\)-)Diffeomorphismus, wenn $f ∈ C^1(X, Y)$ und $f^{-1} ∈ C^1(Y, X)$. Entsprechend \(C^k\)-Diffeomorphismus falls
+   	 $f, f^{-1} ∈ C^k$
+   #+end_defn
+   #+ATTR_LATEX: :options [Umkehrsatz]
+   #+begin_thm latex
+   Sei $Ω ⊂ ℝ^n$ eine nichtleere, offene Menge und $f ∈ C^1(Ω, ℝ^n)$. Dann ist die Invertierbarkeit der Jacobimatrix $D f(ξ)$ in $ξ ∈ Ω$ äquivalent zur Existienz einer *lokalen* \(C^1\)-Umkehrfunktion
+   von $f$ in der Umgebung von $f(ξ)$. Genauer, gibt es eine offene Teilmenge $O ⊂ Ω, W ⊂ ℝ^n$ mit $ξ ∈ O$ und $f(ξ) ∈ W$ sodass $f\big|_{O}$ ein Diffeomorphismus $O \to W$ ist. Insbesondere gilt
+   \[(D(f\big|_{O})^{-1})(f(x)) = (D f(x))^{-1} ∀ x ∈ O\]
+   #+end_thm
+   #+begin_proof latex
+   Analysis 2
+   #+end_proof
+   #+ATTR_LATEX: :options [Globaler Umkehrsatz]
+   #+begin_korollar latex
+   Sei $Ω ⊂ ℝ^n$ offen und nichtleer, $f ∈ C^1(Ω, ℝ^n)$. Ist die Jacobimatrix $D f(x) ∀ x ∈ Ω$ invertierbar und ist $f$ injektiv, so liefert $f$ einen
+   Diffeomorphismus $Ω \to W = \im f ⊂ ℝ^n$. Insbesondere ist $W$ offen und die Idetität aus Satz 4.2 gilt $∀ x ∈ Ω$
+   #+end_korollar
+   #+begin_proof latex
+   Nach Vorraussetzung und $f:Ω \to W$ bijektiv und und $C^1$. Satz 4.2 impliziert, dann $D f(x) ∀ x ∈ Ω$ invertierbar und dass $f^{-1}$ in jedem Punkt
+   \[y = f(f^{-1}(y)) = W\]
+   stetig differenzierbar ist.
+   #+end_proof
+   #+begin_remark latex
+   Wir können die Sphere
+   \[\mathbb{S} = \{(x_1, x_2, x_3) \mid x_1^2 + x_2^x + x_3^2= 1\}\]
+   mit $x_3 > 0$ als Graph die Funktion
+   \[x_3 = g(x_1, x_2) = \sqrt{1 - x_1^2-  x_2^2} \quad (x_1, x_2) ∈ B_1(0) ∈ ℝ^2\]
+   darstellen. \\
+   Allgemein möchten wir eine (Hyper-) Fläche der Form
+   \[M = \{(x, y) ∈ ℝ^{k + m} \mid f(x, y) = 0\}\]
+   lokal als Graph einer Funktion $x \to g(x) ∈ ℝ^m$ schreiben ($(x, g(x)) ∈ M$)
+   #+end_remark
+   #+ATTR_LATEX: :options [Implizite Funktionen Satz]
+   #+begin_thm latex
+   Seien $k, m ∈ ℕ, Ω ⊂ ℝ^{k + m}$ eine offene Menge und $f ∈ C^1(Ω, ℝ^m)$. Es gibt ein $(ξ, η) ∈ Ω$ und $f(ξ, η) = 0$ und $D_y f(ξ, η) \neq 0$, wobei
+   \[D_y f(x, y) = (\pp{f_j}{y_i} (x, y))_{j,l = 1, \dots, m}\]
+   Dann gibt es offene Umgebungen $U ⊂ ℝ^n$ von $ξ$, und $V ⊂ ℝ^m$ von $η$ und ein $ϕ ∈ C^1(U, V)$ mit
+   \[\{(x, y) ∈ U × V \mid f(x, y) = 0\} = \{(x, ϕ(x)), x ∈ M\}\]
+   und
+   \[D ϕ(x) = -(D_y f(x, ϕ(x)))^{-1} D_x f(x, ϕ(x)) \quad x ∈ U\]
+   #+end_thm
+   #+begin_proof latex
+   Analysis 2
+   #+end_proof
+   #+ATTR_LATEX: :options [Immersion]
+   #+begin_defn latex
+   Seien $Ω ⊂ ℝ^n$ nichtleer und offen, $ϕ ∈ C^1(Ω, ℝ^m), m \geq n$. Die Abbildung $ϕ$ heißt Immersion, falls der Rand von $Dϕ(x) ∀ x ∈ Ω$ maximal ist
+   (Alternativ: $D ϕ(x): ℝ^n \to ℝ^m$ linear und injektiv)
+   #+end_defn
+   #+ATTR_LATEX: :options [Untermannigfaltigkeit]
+   #+begin_defn latex
+   Seien $m, n ∈ ℕ ∪ \{0\}, m \leq n$. Eine \(C^1\)-Untermannigfaltigkeit mit der Dimension $m$ ist eine nichtleere Menge $M ⊂ ℝ^n$ mit der folgenden Eigenschaft:
+   $∀ ξ ∈ M ∃$ eine offene Umgebung $Ω ⊂ ℝ^n$ von $ξ ∈ Ω$ eine offene Menge $U ⊂ ℝ^m$ und eine Immersion $ϕ ∈ C^1(U, ℝ^n)$ die $U$ homöomorph auf $\im ϕ = M ∩ Ω$ abbildet.
+   Die Abbildung $ϕ$ heißt (lokale) Parametrisierung von $M$ und $ξ$, ihre Umkehrung $ϕ^{1}: M ∩ Ω \to U$ beziehungsweise das Paar $(ϕ^{-1}, U)$ heißt Karte und eine Familie von Karten deren Urbild ganz $M$ überdecken bildet einen Atlas.
+   #+end_defn
+   #+begin_remark latex
+   Die Dimensionei ner Untermannigfaltigkeit ist wohldefiniert. Eine nichtleere Teilmenge des $ℝ^n$ sti genau dann ein \(m\)-dimensionale Untermannigfaltigkeit, wenn  sie offen ist.
+   Jede abzählbare nichtleere Menge von Punkten in $ℝ^n$ ohne Häufingspungkt ist dann eine \(0\)-dimensionale Untermannigfaltigkeit.
+   #+end_remark
+   #+begin_notation latex
+   Sei $X$ eine endlich-dimensionaler Vektorraum mit innerem	Produkt $\braket{·,·}$. Wir definieren das orthogonale Komplement eines Untervektorraums $V ⊂ X$
+   \[V^{\perp} = \{x ∈ V \mid \braket{x, v} = 0 ∀ v ∈ V\}\]
+   Es gilt
+   \[V \oplus V^{\perp} = X\]
+   Ist $Y$ ein weiterer endlichdimensionaler Vektorraum und $A: X \to Y$ linear, dann
+   \[\ker A = \{x ∈ X \mid A x = 0\} ⊂ X \qquad \im A = \{A x \mid x = X\} ⊂ Y\]
+   #+end_notation
+   #+begin_thm latex
+   Für $m, n ∈ ℕ, m \leq n$ und eine nichtleere Menge $M ⊂ ℝ^n$ sind die folgenden Aussagen äquivalent:
+   1. (Untermannig) $∀ ξ ∈ M ∃$ offene Menge $Ω ⊂ ℝ^n$ von $ξ$, eine Menge $U ⊂ ℝ^n$ und Immersion $ϕ ∈ C^1(U, ℝ^n)$, die $U$ homöomorph auf $M ∩ Ω = ϕ(U)$ abbildet.
+   2. (Gleichungsdefinierte Mannigfaltigkeit) $∀ ξ ∈ M ∃$ Umgebung $U ⊂ ℝ^n$ von $ξ$ und eine Abbildung $f ∈ C^1(Ω, ℝ^{n - m})$ mit $\Rang D f(x) = n - m ∀ x ∈ Ω$ und $M ∩ W = f^{-1}(\{0\})$
+   3. (Graphendarstellung) Zu jedem $ξ ∈ M$ gibt es eine offene Umgebung $Ω ⊂ ℝ^n$ von $ξ$, eine offene Menge $U ⊂ ℝ^m$ und ein $g ∈ C^1(U, ℝ^{n - m})$ mit
+   	 \[M ∩ W = π(\Graph g)\]
+   	 wobei $π ∈ \GL(n)$ eine Permutationsmatrix ist.
+   #+end_thm
+   #+begin_proof latex
+   1. $⇒$ 2.: Wir konstruieren eine Funktion $f$ mithilfe des Umkehrsatzes. Sei also $M$ eine \(m\)-dimensionale Untermannigfaltigkeit des $ℝ^n$ wie in 1. und
+   	 $η = ϕ^{-1}(ξ) ∈ U$. Da $ϕ$ eine Immersion ist, besitzt $Dϕ(η)$ eine vollen Rang und die Spalten von
+   	 $D ϕ$ spannen eine linearen Unterraum $T$ auf. Mit $P_T$ bezeichnen wir die orthogonale Projektion $ℝ^n \to T ⊂ ℝ^n$. Weiterhin setzen wir
+   	 $ϕ_T := P_T \circ ϕ: U \to T ⊂ ℝ^n$. Insbesondere gilt $\Rang ϕ_T = m$, denn
+   	 \[D ϕ_T = D(P_T \circ ϕ) = \underbrace{((D P_T) \circ ϕ)}_{= P_T} D ϕ\]
+   	 Entsprechend ist
+   	 \[D ϕ_T(ℝ^n) = P_T \underbrace{Dϕ(R^n)}_{=T} = T\]
+   	 Nach einem Koordinatenwechsel können wir $T = R^m × \{0\}$ annehmen und setzen außerdem $N = \{0\} × ℝ^{n - m}$ und $ϕ_N = P_N \circ ϕ: U \to N$, wobei $P_N$
+   	 die orthogonale Projektion auf $N$ bezeichnet. Der Umkehrsatz liefert nun eine offene Umgebung $\tilde U ⊂ U$ von $η$, sodass
+   	 \[ϕ_T \big|_{\tilde U}: \tilde U \to ϕ_T(\tilde U) =: \tilde V\]
+   	 ein Diffeomorphismus ist. Insbesondere gibt es eine inverse Abbildung
+   	 \[ψ := (ϕ_T \big|_{\tilde U})^{-1} ∈ C^1(\tilde V, \tilde U)\]
+   	 Wir wählen $\tilde Ω ⊂ Ω$ mit $ξ ∈ Ω$ und $ϕ^{-1}(\tilde Ω ∩ M) ⊂ \tilde U$. Weiter setzen wir
+   	 $Ω^{\ast} = (\tilde V \oplus N) ∩ \tilde Ω ⊂ Ω$, das heißt für jedes $x ∈ Ω^{\ast}$ gibt es eine Zerlegung $x = x_T + x_N$ wobei $x_T ∈ \tilde V ⊂ T$ und
+   	 $x_N ∈ N$. Mit
+   	 \[f(x) = f(x_T + x_N) = x_N - ϕ_N(ψ(x_T))\]
+   	 erhalten wir eine Abbildung $f ∈ C^1(Ω^{\ast}, N)$. Aus $D_N f = \mathcal{1}_{n - m}$ erhalten
+   	 wir $\Rang D ψ(x) = \dim N = n - m ∀ x ∈ Ω^{\ast}$. Somit bleibt $Ω^{\ast} ∩ M = \{x ∈ Ω^{\ast} | f(x) = 0\}$ zu zeigen.
+   	 Sei hierzu $x ∈ Ω^{\ast}$, das heißt $x ∈ \tilde Ω$ mit $x = x_T + x_N, x_T ∈ \tilde V ⊂ T, x_N ∈ N$. Nun setzen wir $u = ψ(x_T) ∈ \tilde U$, also
+   	 $x_T = ϕ_T(u)$. Wir haben $f(x) = 0 ⇔ x_N = ϕ_N(u) ⇔ x = ϕ(u) ∈ M ∩ Ω$.
+   2. $⇒$ 3.: Sei $M$ eine gleichungsdefinierte Mannigfaltigkeit. Zu $x ∈ M$ wählen wir $Ω$ und $f$ aus 2. Nach Umnummerierung der Koordinaten
+   	 (was auf die Permutationsmatrix $π$ führt) erhalten wir $D_z f(ξ) ∈ \GL(n - m)$, wobei $x = (y, z) ∈ ℝ^m × ℝ^{n - m}$.
+   	 Aus dem Satz über implizite Funktionen gewinnen wir eine offene Umgebung $U × V ⊂ ℝ^m × ℝ^{n - m}$ von $ξ = (η, ζ)$ und eine Funktion $g ∈ C^1(U, V)$ mit
+   	 \[\Graph g = \{(y, z) ∈ U × V | f(y, z) = 0\} = M ∩ (U × V)\]
+   3. $⇒$ 1.: Unter den Voraussetzungen von 3. erhalten wir mit $ϕ: y ↦ π(y,g(y))$ eine Abbildung
+   	 aus $C^1(U, ℝ^n)$. Folgilch ist $ϕ(U) = M ∩ Ω$ und es bleibt zu zeigen, dass $ϕ$ eine Immersion ist und einen Homöomorphismus liefert.
+   	 Aus der Definition liest man unmittelbar die Injektivität von $ϕ$ sowie $\Rang Dϕ = m$ ab.
+   	 Nach Vorraussetzung ist $ϕ$ stetig und die Stetigkeit von $ϕ^{-1}$ sieht man wie folgt:
+   	 Eine konvergente Folge in $\im ϕ$ lässt sich durch eine Folge $(y_k)_{k ∈ ℕ} ⊂ U$ mit
+   	 \[ϕ(y_k) = π(y_k, g(k_y)) \to w ∈ \im ϕ ⊂ ℝ^n\]
+   	 darstellen. Mit $(y, z) = π^{-1}(w)$ ergibt sich $(y_k, g(y_k)) \to (y, z)$ und insbesondere $y_k \to y$.
+   	 Somit ist $M$ eine Mannigfaltigkeit.
+   #+end_proof
+   #+ATTR_LATEX: :options [Tangentialraum und Normalraum]
+   #+begin_defn latex
+   Sei $M ⊂ ℝ^n$ eine \(m\)-dimensionale Mannigfaltigkeit und $ξ ∈ M$. Ein Vektor $v ∈ ℝ^n$ heißt
+   *Tangentialvektor* an $M$ im Punkt $ξ$, falls es eine Kurve $γ ∈ C^1((-ε, ε), M), ε > 0$ mit $γ(0) = ξ, ξ'(0) = v$ gibt.
+   Die Menge aller Tangetialvektoren wird *Tangentialraum* an $M$ im Punkt $ξ ∈ M$ genannt und mit $T_ξ M$ bezeichnet.
+   Der Normalraum an $M$ in $ξ$ ist das orthogonale Komplement $N_ξ M = (T_ξ M)^{\perp}$
+   #+end_defn
+   #+begin_thm latex
+   Sei $M ⊂ r^n$ eine \(m\)-dimensionale Mannigfaltigkeit, $ξ ∈ M, m \leq n$. Sei $ϕ ∈ C^1(U, ℝ^n)$ eine
+   lokale Parametrisierung von $M$ um $ξ$ mit $ϕ(0) = ξ$ und sei $f$ wie in Satz 4.6.2. Dann gilt
+   \begin{align*}
+   T_ξ M &= \im D ϕ(0) = \ker D f(ξ) \\
+   N_ξ M &= (\im D ϕ(0))^{\perp} = \Lin(∇ f_1(ξ), \dots, ∇ f_{n - m}(ξ))
+   \end{align*}
+   Insbesondere ist $T_ξ M$ wirklich ein Vektorraum und wir haben
+   \begin{align*}
+   \dim T_ξ M &= m \\
+   \dim N_ξ M &= n - m
+   \end{align*}
+   #+end_thm
+   #+begin_proof latex
+   Wir können ohne Beschränkung der Allgemeinheit $ϕ(0) = ξ$ annehmen. Wir zeigen zunächst $\im D ϕ(0) ⊂ T_ξ M$.
+   Für $w ∈ \im D ϕ(0)$ gibt es ein $u ∈ ℝ^m$ mit $w = D ϕ(0) u$. Für $γ(t) = ϕ(t u)$ gilt $γ(0) = ϕ(0) = ξ$ und $γ'(0) = D ϕ(0)u = w$.
+   Damit ist $w ∈ T_ξ M$. Weiterhin ist $T_ξ M ⊂ \ker D f(ξ)$. Sei hierzu $v ∈ T_ξ M$. Definitionsgemäß gibt es eine Kurve $γ: (-ε, ε) \to M$ mit $γ(0) = ξ$
+   und $γ'(0) = v$. Wir können $ε > 0$ so klein wählen, dass $\im γ$ in $M ∩ Ω$ enthalten ist, wobei $Ω$ die in Satz	4.6.2 angegebene offene Menge bezeichnet.
+   Wegen $\im γ ⊂ M$ gilt insbesondere $f \circ γ \equiv 0$, also
+   \[0 = (f \circ γ)'(0) = D f(γ(0)) γ'(0) = D f(ξ) v\]
+   folglich ist $v ∈ \ker D f(ξ)$. Damit haben wir insgesamt:
+   \[\im D ϕ(0) ⊂ T_ξ M ⊂ \ker D f(ξ)\]
+   Wegen $\dim \im D ϕ(0) = \Rang D ϕ(0) = m$ und
+   \[\dim \ker D f(ξ) = n - \Rang D f(ξ) = n - (n - m) = m\]
+   folgt die behauptete Identität. Insbesondere ist $T_ξ M$ ein \(m\)-dimensionaler Vektorraum. Wir erhalten nach Definition
+   $N_ξ M = (T_ξ M)^{\perp} = (\im D ϕ(0))^{\perp}$. Sei nun $w = ∇ f_j (ξ)$ für $j = 1, \dots, n - m$ und $v ∈ T_ξ M$. Wir erhalten
+   \[\braket{w, v} = \sum_{k = 1}^n \pp{f_j}{x_k}(ξ) v_k = (D f(ξ) v)_j = 0\]
+   da $T_ξ M = \ker D f(ξ)$. Nun folgt $w \perp  T_ξ M$, also $w ∈ N_ξ M$ und mithin
+   \[\Lin(∇ f_i(ξ), \dots, ∇ f_{n - m}(ξ)) ⊂ N_ξ M\]
+   Wegen $\Rang D f(ξ) = n - m$ handelt es sich bei beiden Mengen um Vektorräume der Dimension $n - m$ und diese sind folglich gleich.
+   #+end_proof
+   #+ATTR_LATEX: :options [Tangetialebene]
+   #+begin_thm latex
+   Für jeden Punkt $ξ$ einer Mannigfaltigkeit $M$ ist mit $Ξ = ξ + T_ξ M$
+   \[\frac{1}{r} \sup \{\dist(x, Ξ) | x ∈ M ∩ B_r(ξ)\} \xrightarrow{x \searrow 0} 0\]
+   #+end_thm
+   *Motivationsfragen*:
+   - Was ist oben und was ist unten? (Orientierbarkeit)
+   -	Wie sieht es mit Rändern aus, wann sind sie "glatt", wass sind sie selbst Mannigfaltigkeiten
+** Integration auf Mannigfaltigkeiten
+   Ziel: Verallgemeinerung des Lebesgue-Integrals auf Mannigfaltigkeiten. \\
+   Strategie:
+   1. Nach Definition können wir uns eine Mannigfaltigkeit $M$ lokal mit einer Immersion $φ: U ⊂ ℝ^n \to ℝ^n$ parametrisieren - also betrachten wir zunächst Stücke von
+	  Mannigfaltigkeiten.
+   2. Eine "beliebige" Mannigfaltigkeit zerlegen wir in endlich viele überlappende Teilstücke mit lokalen Parametrisierungen (wir setzen also voraus, dass $M$ einen endlichen Atlas besitzt).
+	  Der Wert des Integrals ist unabhängig vom gewählten Atlas. Wichtigstes Hilfsmittel: Partition der Eins.
+  Zunächst der lineare Fall. Für eine lineare  abbildung $T: ℝ^m \to ℝ^n, n \geq m$ und eine messbare Menge $U ⊂ ℝ^m$ möchten mir den "\(m\)-dimensionalen Flächeninhalt" von $T(U)$ angeben.
+  Wir erwarten, dass der "\(n\)-dimensionale Flächeninhalt" von $T(U)$ im Fall $m \geq n$ Null beträgt.
+  #+begin_lemma latex
+  Sei $T ∈ ℝ^{n × m}$ (charaktisiert lineare Abbildung $(ℝ^m \to ℝ^n)$) mit Rang $m, n \geq m$. Dann gibt es $Q ∈ ℝ^{n × m}$ und $S ∈ ℝ^{m × m}$ mit $T = Q S$, wobei $Q$
+  eine Isometrie ist, das heißt
+  \[\abs{Q v}= \abs{v} ∀ v ∈ ℝ\]
+  und $\abs{\det S} = \sqrt{T^T T}$
+  #+end_lemma
+  #+begin_proof latex
+  Mit $e_1, \dots, e_m$ bezeichnen wir die Standard-Einheitsbasis des $ℝ^m$. Weiter wählen wir eine Orthonormalbasis $\{f_1, \dots, f_n\}$ des $R^n$ mit $T(ℝ^m) = \Lin\{f_1, \dots, f_m\}$.
+  Nun können wir $Q ∈ ℝ^{n × m}$ durch $Q e_j = f_j, j = 1,\dots,m$ eindeutig definieren und für
+  \[v = \sum_{j = 1}^m v_j e_j, w = \sum_{k = 1}^m w_k e_k\]
+  erhalten wir
+  \[\braket{Q v, Q w} = \sum_{j,k} v_j v_k δ_{jk} = \sum_{j = 1}^m v_j w_j = \braket{v, w}\]
+  also $\abs{Q v} = \abs{v} ∀ v ∈ ℝ^m$ und
+  \[\braket{Q^T Q v, w} = w^T Q^T Q v = (Q w)^T Q v = \braket{Q v, Q w} = \braket{v, w}\]
+  woraus $Q^T Q = \id$ ersichtlich ist. Nach Konstruktion ist $Q$ auf $T(ℝ^m)$ invertierbar, somit $S = Q^{-1} T ∈ ℝ^{m × n}$ wohldefiniert, und $\Rang S = m$. Wir haben $Q S = T$ und
+  \begin{align*}
+  \det(T^T T) &=	\det((Q S)^T Q S) = \det(S^T Q^T Q S) = \det(S^T S) \\
+  &= \det(S) \det(S^T) = \abs{\det S}^2
+  \end{align*}
+  #+end_proof
+  Wir möchten einen Flächeninhalt definieren, der invariant unter Isometrien (Translation, Rotation, Spiegelung) ist. Insofern sollte der Flächeninhalt von $T(U)$
+  mit dem von $Q^{-1} T(U) = S(U)$ übereinstimmen. Wegen $S(U) ⊂ ℝ^m$ können wir das \(m\)-dimensionale Lebesgue-Maß verwenden und erhallten:
+  \[λ^m(S(U)) = ∫_{S(U)} \mathbb{1} \d λ^m = \abs{\det S} ∫_U \mathbb{1} \d λ^m = \sqrt{\det(T^T T)} λ^m(U)\]
+
+  #+ATTR_LATEX: :options [Integral auf lokaler Parametrisierung]
+  #+begin_defn latex
+  Seien $m,n ∈ ℕ, m \leq n, U ⊂ ℝ^n$ offen, $φ ∈ C^1(U, ℝ^n)$ eine Immersion, die $U$ homöomphr auf $\im φ$ abbildet. Der Flächeninhalt von von $\im φ$ definieren wir durch
+  \[\vol^m(\im φ) = ∫_U \sqrt{\det((Dφ)^T (Dφ))} \d λ^m\]
+  wobei $\det((Dφ)^T (Dφ))$ als Gram-Determinante bezeichnet wird.
+
+  Eine Funktion $f:\im φ \to ℝ$ heißt *integrierbar*, falls
+  \[(f \circ φ) \sqrt{\det((Dφ)^T(Dφ))}\]
+  auf $U$ integrierbar ist.
+  \[∫_{\im φ} f \underarrow[\d A^m]{Flächeninhalt} := ∫_U (f \circ φ) \sqrt{\det((Dφ)^T(Dφ))} \d λ^m\]
+  #+end_defn
+  #+begin_remark latex
+  Falls $m = n$
+  \[∫_U f \d A^n = ∫ f \d λ^n\]
+  #+end_remark
+  #+ATTR_LATEX: :options [Wohldefiniertheit des Flächeninhalts]
+  #+begin_lemma latex
+  Seien $n, m . N, m \leq n, U_1, U_2 . ℝ^m$ offen, $φ_1 ∈ C^1(U_1, ℝ^n), φ_2 ∈ C^1(U_2, ℝ^n)$ Immersionen, die $U_1$ (beziehungsweise $U_2$) homöomorph auf eine Menge $W ⊂ ℝ^n$ abbilden.
+  $f: W \to ℝ$ messbar. Dann ist
+  \[(f \circ φ_1) \sqrt{\det((Dφ_1)^F(Dφ_1))}\]
+  integrierbar genau dann wenn
+  \[(f \circ φ_2) \sqrt{\det((Dφ_2)^F(Dφ_2))}\]
+  integrierbar ist und
+  \[∫_{U_1} (f\circ φ_1) \sqrt{\det((Dφ_1)^T(D φ_1))} \d λ^m = ∫_{U_2} (f\circ φ_2) \sqrt{\det((D φ_2)^T (D φ_2))} \d λ^m\]
+  #+end_lemma
+  #+begin_proof latex
+  Wir setzen $ψ = φ_1^{-1} \circ φ_2: U_2 \to U_1$. Zu zeigen: $ψ$ ist ein Diffeomorphismus. Dann mit Transformationssatz folgt
+  \[∫_{U_1} (f\circ φ_1) \sqrt{\det((Dφ_1)^T(D φ_1))} \d λ^m = ∫_{U_2} (f\circ φ_2) \sqrt{\det((D φ_2)^T (D φ_2))} \abs{\det Dψ} \d λ^m\]
+  Es gilt
+  \begin{align*}
+  D φ_2 &= D(φ_1 \circ ψ) = (Dφ_1 \circ ψ) D ψ \\
+  ⇒ \det((Dφ_2)^T D φ_2) &= \det((Dψ)^T(Dφ_1\circ ψ)^T(Dφ_1 \circ ψ)(Dψ)) \\
+  &= \det(Dψ) \det((Dφ_1 \circ ψ)^T (Dφ_1 \circ h)) \det(Dψ) \\
+  &= (\det(Dψ))^2 \det((Dφ_1 \circ ψ)^T (D φ_1 \circ ψ))
+  \end{align*}
+  $ψ$ ist ein Diffeomorphismus, weil:
+  - $ψ$ ist Homöomorph (als Verkettung von Homöomorphismen)
+  Wir nehmen ein $u_2 ∈ U_2$ und $x := φ_2(u_2), u_1 :t φ_1^{-1}(x) = ψ(u_2)$. Mit $P: ℝ^n \to T_x W \simeq ℝ^m$ (Projection
+  \begin{align*}
+  D(P \circ φ_1)(u_1) &= D P(\underbrace{φ(u_1)}_{= x}) D φ_1(u_1) = P(Dφ_1(u_1)) \underarrow[=]{Die Spalten von $D φ_1(u_1)$ spannen $T_x W$} D φ_1(u_1)
+  \end{align*})
+  Insbesondere
+  \[\Rang D(P \circ φ_1)(u_1) = \Rang D φ_1(u_1) = m\]
+  Aus dem Umkehrsatz ist $P \circ φ_1$ invertierbar in einer Umgebung $\tilde U_1 \supset u_1$ $⇒ ∃ \tilde U_1 ⊂ ℝ^m, \tilde W ⊂ T x W$ mit $u_1 ∈ \tilde U_1$ und $g . C^1(\tilde W, \tilde U_1)$ sodass
+  $g \circ P \circ \id_{\tilde U_1}$. Wir setzen $\tilde U_2 = φ_2^{-1}(\tilde W)$
+  \[⇒ ω = φ_1^{-1} \circ φ_2 = g \circ P \circ φ_2\]
+  auf $\tilde U_2, ψ ∈ C^1(\tilde U_2, ℝ^m)$. Weil die Konstruktion für beliebige $u_2$ gilt $⇒ ψ ∈ C^1(U_2, ℝ^m)$
+  #+end_proof
+  #+ATTR_LATEX: :options [Partition der Eins]
+  #+begin_defn latex
+  Gegeben sei eine Überdeckung der Mannigfaltigkeit $M ⊂ ℝ^n$ durch Mengen $W_1, \dots, W_l$, das heißt
+  \[M = \bigcup_{j = 1}^l W_j\]
+  Eine Familie $(α_j)_{j = 1, \dots, l}$ messbarer FUnktionen $α_i: M \to ℝ$ heißt eine der Überdeckung $(W_j)_{j = 1, \dots, l}$ untergeordnete Partition der Eins, wenn
+  1. $\im α_j ⊂ [0,1]$ für $j = 1, \dots, l$
+  2. $α_j \cong 0$ auf $M \setminus W_j\quad j = 1, \dots, l$
+  3. $\sum_{j = 1}^{l} a_j = 1$ auf $M$
+  #+end_defn
+  #+ATTR_LATEX: :options [Integral auf Mannigfaltigkeit]
+  #+begin_defn latex
+  Sei $M ⊂ ℝ^n$ eine \(m\)-dimensionale Mannigfaltigkeit mit endlichen Atlas $(φ_{j}^{-1}: W_j \to U_j)_{j = 1, \dots, d}$. Eine Funktion $f: M \to ℝ$ heißt integrierbar, wenn
+  $f χ_{W_j}$ integrierbar $∀ j = 1, \dots, d$ (im Sinne von Definiton 4.14). Ist $(α_j)_{j = 1, \dots, d}$ eine Partition der Eins (für Überdeckung $(W_j)_{j = 1, \dots j}$)
+  und $α_j \circ φ_j$ messbar $∀ j = 1, \dots, d$, so definieren wir das Integral von $f$ über $M$ durch
+  \[∫_M f \d A^n = \sum_{j = 1}^{l} ∫_M α_j f \d A^M = \sum_{j = 1}^{l} ∫_{U_j} (α_j \circ φ_j)(f \circ φ_j)\sqrt{\det((D φ_j)^T (Dφ_j))} \d λ^m\]
+  #+end_defn
+  #+begin_lemma latex
+  Das Integral auf Mannigfaltigkeiten ist wohldefiniert und hängt insbesondere nicht vom gewählten Atlas ab.
+  #+end_lemma
+  #+begin_proof latex
+  $α_j f χ_{W_j} = α_j f$ integrierbar (weil $f χ_{W_j}$ integrierbar, $α ∈ [0,1]$). Sei $(φ_{j}^{-1}: W_j \to U_j)_{j = 1, \dots, d}$ und $(\tilde φ_{k}^{-1}: \tilde W_k \to \tilde U_k)_{k = 1, \dots, \tilde d}$ Atlasen
+  und $(α_j)_{j = 1, \dots, d}$ beziehungsweise $(\tilde α_k)_{k = 1, \dots, \tilde d}$ eine Partition der Eins. Nach Definition 4.14 ist auch
+  \[f χ_{\tilde W_k} = \sum \tilde a_k f χ_{W_k}\]
+  integrierbar und
+  \[\sum_{j = 1}^{d} ∫_M α_j f \d A^m = \sum_{j = 1}^{d} \sum_{k = 1}^{\tilde d} ∫_M α_j \tilde α_j f \d A^m = \sum_{k = 1}^{\tilde d} ∫_M \tilde α_k f \d A^m\]
+  #+end_proof
+  #+begin_defn latex
+  Sei $M ⊂ ℝ^n$ eine \(m\)-dimensionale Mannigfaltigkeit mit endlichen Atlas. Ist $S ⊂ ℝ^n$ eine Teilmenge und $χ_S$ integrierbar so nennen wir $S$ integrierbar und definieren
+  \[\vol^m(S) = ∫_M χ_S \d A^m\]
+  Falls $\vol^M(S) = 1$ ist $S$ eine \(n\)-dimensionale Nullmenge.
+  und $f:S \to ℝ$ heißt über $S$ integrierbar falls $f χ_S$ integrierbar ist und
+  \[∫_S f \d A^m = ∫_M χ_s \d A^m\]
+  #+end_defn
+  #+begin_lemma latex
+  Sei $M ⊂ ℝ^n$ eine \(m\)-dimensionale Nullmenge. ist $f$ integrierbar, so ist auch $\hat f$ integrierbar und wir haben
+  \[∫_M f \d A^m = ∫_M \hat f \d A^m\]
+  #+end_lemma
+  #+begin_proof latex
+  Ist $S ⊂ M$ eine \(m\)-dimensionale Nullmenge, so gilt für jede Karte $φ^{-1}: W \to U$
+  \begin{align*}
+  0 &= \vol^m(S) &\geq ∫_M χ_{S ∩ W} \d A^m = ∫_U (χ_S \circ φ) \sqrt{\det((D φ)^T Dφ)} \d λ^m \\
+  &= ∫_{U ∩ φ^{-1}(S)} \sqrt{\det((D φ)^T D φ)} \d λ^m
+  \end{align*}
+  Da der Radikand positiv ist ($φ$ ist Immersion) folgt $λ^m(U ∩ φ^{-1}(S)) = 0$. Gilt nun $f = \hat f$ auf $M \setminus S$ so haben wir $\hat f \circ φ = f \circ φ$ fast überall in $U$ für jede Karte $φ^{-1}: W \to U$.
+  #+end_proof
+  Motivation \\
+  Oft ist bei Integration wichtig eine Orientierung des Integrationsbereich zu berücksichtigen \\
+  $∫_i f = F \big|_{\partial F}$
+** Orientierung
+   #+begin_defn latex
+   Sei $M$ eine \(m\)-dimensionale Mannigfaltigkeit in $ℝ^n, n \geq m \geq 1$. Zwei Karten $φ_1^{-1}: W_1 \to U_1, φ_2^{-1}: W_2 \to U_2$ heißen *gleichorientiert*, wenn für $W_1 ∩ W_2 \neq \emptyset$ der
+   Kartenwechsel
+   \[ψ := φ_2^{-1} \circ φ_1: φ_1^{-1}(W_1 ∩ W_2) \to φ_2^{-1}(W_1 ∩ W_2)\]
+   die Eigenschaft $\det D ψ > 0$ auf $φ_1^{-1}(W_1 ∩ W_2)$ besitzt. $ψ$ ist dann *orientieungserhaltend / orientierungstreu* \\
+   $M$ heißt *orientierbar* wenn es einen Atlas aus gleichorientierten Karten gibt und dieser heißt dann *orientiert*.
+   #+end_defn
+   #+begin_ex latex
+   1. Jede Mannigfaltigkeit, die durch eine einzige	Karte parametrisiert werden kann, ist orientierbar.
+   2. Sei $γ: I \to ℝ^n$ eine \(C^1\)-Kurve, $I ⊂ ℝ$ ein offenes, beschränktes Intervall, $γ' \neq 0$, sodass $γ: I \to \im γ$ ein Homöomorphismus ist.
+	  Dann ist $\im γ$ eine Mannigfaltigkeit und die Parametrisierung $γ$ induziert eine Orientierung of $\im γ$. Diese Orientierung korresponiert mit Orientierung von $T_{γ(t)} \im γ = \{c γ'(t) \mid c ∈ ℝ\}$
+   #+end_ex
+   #+begin_ex latex
+   Es gibt in $ℝ^3$ ein nicht-orientiete zweidimensionale Fläche: *Möbius Band* (mit Rand). Ein Beispiel für eine geschlossene (ohne Rand) zweidimensionale Fläche in $ℝ^4$ stellt die Kleinsche Flasche dar. stellt die Kleinsche Flasche dar. stellt die Kleinsche Flasche dar.
+   #+end_ex
+   #+begin_remark latex
+   1. Sei $\mathcal{A}$ ein orientierter Atlas. Sind Karten $φ_1^{-1}:W_1 \to U_1, φ_2^{-1}: W_2 \to U_2$ (nicht aus \(\mathcal{A}\)) jeweils gleichorientiert zu allen Karten aus $\mathcal{A}$, so sind auch
+	  $φ_1^{-1}$ und $φ_2^{-1}$ gleichorientiert und $\mathcal{A} ∪ \{φ_1^{-1}, φ_2^{-1}\}$ ist auch ein orientierter Atlas (weil $∀ ξ ∈ W_1 ∩ W_2 ∃ φ_0^{-1}: W_0 \to U_0, ξ ∈ W_0$ aus $\mathcal{A}$ mit
+      \[φ_2^{-1} \circ φ_1 = \underbrace{(φ_2^{-1} \circ φ_0)}_{\mathclap{\text{orientierungstreu}}} \circ \underbrace{(φ_0^{-1} \circ φ_1)}_{\mathclap{\text{orientierungstreu}}}\]
+      in einer hinreichend kleinen Umgebung von $φ^{-1}(ξ) ∈ U_1$. Aus der Kettenregel folgt, dass $φ_2^{-1} \circ φ_1$ orientierungstreu ist)
+   2. Orientierung auf $M$ $⇒$ Orientierung der Tangentialräume $T_p M$. Auf $M$ ist die Orientierung durch einen Atlas $\mathcal{A}$ gegeben. Sei $φ^{-1}: W \to U$ eine Karte aus $\mathcal{A}$ mit
+	  $φ(0) = p$
+	  \[(\pp{φ}{x_1}(u), \dots, \pp{φ}{x_m}(u))\]
+	  gibt eine Orientierung von $T_p M$. Diese ist von der speziellen Wahl von $φ$ unabhängig.
+   #+end_remark
+   #+begin_proposition latex
+   Eine Hyperfläche in $ℝ^n$ (\(n - 1\)-dimensionale Mannigfaltigkeit in $ℝ^n$) ist genau dann orientierbar, wenn as auf $M$ ein stetiges Normalenfeld gibt, das heißt eine stetige Abbildung $ν: M \to \mathbb{S}^{n - 1}$ und
+   $ν(p) ∈ N_p M ∀ p ∈ M$.
+   #+end_proposition
+** Glatte Ränder
+   #+ATTR_LATEX: :options [Relativtopologie und Rand]
+   #+begin_defn latex
+   Sei $(X, \mathcal{O})$ ein topologischer Raum, $Y ⊂ X$ eine nichtleere Teilmenge von $X$
+   \[\mathcal{O} ∩ Y := \{U ∩ Y \mid U ∈ \mathcal{O}\}\]
+   gibt eine *Relativtopologie*: Der Rand $\partial Y$ ist die Menge aller Punkte $x ∈ X$, sodass $∀ U ∈ \mathcal{O}$ mit $x ∈ U ∃ y ∈ U$ sodass $y ∈ Y$ und $∃ \tilde y ∈ U$ sodass $\tilde y ∈ Y^C = X \setminus Y$ \\
+   $(Y, \mathcal{O} ∩ Y)$ ist ein topologischer Raunm.
+   #+end_defn
+   #+ATTR_LATEX: :options [Glatte Ränder und adaptierte Karten]
+   #+begin_defn latex
+   Sei $M ⊂ ℝ^n$ eine \(m\)-dimensionale Mannigfaltigkeit und $Ω ⊂ M$. Wir sagen dass $Ω$ einen *glatten Rand* hat, falls es für jedes $p ∈ \partial Ω$ eine Karte $φ^{-1}: W \to U, p ∈ W$ und $φ(U ∩ \{x_1 \leq 0\}) = Ω ∩ W$ sowie $φ(U ∩ \{x_1 = 0\}) = \partial Ω ∩ W$ gibt.
+   Eine solche Karte heißt \(Ω\)-adaptiert. Ein Atlas heißt \(Ω\)-adaptiert, falls sämtliche seiner Karten deren definitionsbereich $\partial \mathcal{A}$ schneidet \(Ω\)-adaptiert sind.
+   #+end_defn
+   #+begin_lemma latex
+   Sei $M$ eine \(m\)-dimensionale Mannigfaltigkeit in $ℝ^n, Ω ⊂ M$ eine Teilmenge mit glattem Rand. Dann gibt es einen \(Ω\)-adaptierten Atlas. Ist $M$ orientiert und $m \geq 2$ dann kann man erreichen, dass dieser
+   \(Ω\)-adaptierte Atlas orientiert ist.
+   #+end_lemma
+   #+ATTR_LATEX: :options [Ränder als Mannigfaltigkeit]
+   #+begin_thm latex
+   Sei $M$ eine \(m\)-dimensionale Mannigfaltigkeit im $ℝ^m, m \leq n$ ist $Ω ⊂ M$ eine Teilmenge mit glattem Rand, so ist $\partial Ω$ eine \((m - 1)\)-dimensionale Mannigfaltigkeit im $ℝ^n$. Ist $M$ orientierbar, so ist auch $\partial Ω$
+   #+end_thm
+   #+begin_proof latex
+   Sei $\mathcal{A}$ ein \(Ω\)-adaptierter Atlas. Die Karten $φ^{-1}:W \to U$ mit $\partial Ω ∩ W \neq \emptyset$ definieren wir eine stetige, bijektive Abbildung $\tilde φ^{-1}: \partial Ω ∩ W \to \tilde U$, wobei
+   \[\tilde U := \{\tilde X ∈ ℝ^{m - 1} \mid (0, \tilde x) ∈ U ⊂ ℝ^m\}\]
+   $\tilde φ(\tilde x) = φ(0, \tilde x), \tilde x ∈ \tilde U$. \\
+   $U$ offen $⇒ \tilde U$ offen in $ℝ^{m - 1}$ mit $\partial Ω ∩ W$ offen in $\partial W$. $\tilde φ$ ist ein Homöomorphismus, weil $\tilde φ^{-1} = P \circ φ^{-1} \big|_{\partial Ω ∩ W}$ ($P: (x_1, \tilde x) \to \tilde x$) stetig ist.
+   $⇒ \Rang D φ = m ⇒ D \tilde φ$ hat vollen Rand $⇒ D \tilde φ = m - 1 ⇒ \partial Ω$ ist eine Mannigfaltigkeit. \\
+   $M$ orientieert, $m \geq 2$ $⇒$ $\mathcal{A}$ besteht aus gleichorientierten \(Ω\)-adaptierten Karten. Wir nehmen $φ_1^{-1}, φ_2^{-1}$ aus $\mathcal{A_0}$ ($W_1 ∩ W_2 ∩ \partial Ω \neq \emptyset$)
+   $⇒$ wir bekommen $\tilde φ_1^{-1}, \tilde φ_2^{-1}$ und Kartenwechsel $ψ := \tilde φ_2^{-1} \circ φ_2$
+   \begin{align*}
+   \det D ψ(0, \tilde x) &= \det \begin{pmatrix}\pp{ψ_1}{x_1} & 0 \\ \ast & D \tilde ψ(\tilde x)\end{pmatrix} = \pp{ψ_1}{x_1} \det D \tilde ψ(\tilde x) > 0 \\
+   \text{weil } \pp{ψ_1}{x_j}(0, x_2, \dots, x_m) = \begin{cases} \geq 0 & j = 1 \\ = 0 & j = 2, \dots, m\end{cases} \\
+   \end{align*}
+   #+end_proof
+* Differentialformen und der Satz von Stokes
+  Hier: $ω$ definiert auf offerner Umgebung von $M$ im $ℝ^n$, Differentialformen wirken auf ganz $ℝ^n$
+  1. Alternierende \(k\)-Formen auf endlich-dimensionalen Vektorräumen
+  2. Differentialformen, ordne jedem Punkt $p ∈ M$ eine alternierende \(k\)-Form zu.
+  3. Integration von Differntialformen auf Mannigfaltigkeiten (Satz von Stokes)
+  4. Anwendung (Satz von Gauß)
+** Multilineare Algebra
+   Multilinearität heißt: Messen des \(k\)-dimensionalen Volumens kleiner Maschen.
+   #+ATTR_LATEX: :options [\(k\)-Formen]
+   #+begin_defn latex
+   Eine	*(alternierende) \(k\)-Form* auf einem \(n\)-dimensionalem Vektorraum ist eine in jedem Argument linear Abbildung $ω: V^k \to ℝ$, die bei der Vertauschung zweier Einträge das Vorzeichung wechselt.
+   Den Vektorraum der \(k\)-Form bezeichnen mir mit $\Alt^k V, k ∈ ℕ$
+   #+end_defn
+   #+begin_ex latex
+   Die Determinante
+   \[(v_1, \dots, v_k) \to \det(v_1, \dots, v_k), v_1, \dots, v_k ∈ ℝ^k\]
+   ist eine \(k\)-Form \\
+   Für $k = 1$ ist dei Bedingung des Alternierens lerr. $\Alt^1 V = V^1 \simeq V$ ($V^1$ Dualraum zu $V$)
+   #+end_ex
+   #+begin_remark latex
+   Für eine lineare Abbildung $ω: V^k \to ℝ$ sind die forgenden Eigenschaften äquivalent:
+   1. $ω$ wechselt das Vorzeichen beim Vertausch zweier Einträge
+	  \[ω(v_1, \dots, v_j, \dots v_i, \dots v_k) = - ω(v_1, \dots, v_i, \dots, v_j, \dots, v_k)\]
+   2. $ω$ verschwindet wenn zwei Eintränge gleich sind
+   3. $ω$ verschwindet, wenn die Eintränge linear abhängig sind
+   4. Für eine Permutation $π ∈ σ_k$ (Symmetrische Grupppe) auf $\{1, \dots, k\}$ gilt
+	  \[ω(v_{1}, \dots, v_{k}) = \sgn π ω(v_{π(1)}, \dots, v_{π(k)})\]
+   #+end_remark
+   #+ATTR_LATEX: :options [Äußeres Produkt]
+   #+begin_defn latex
+   Zu $ω ∈ \Alt^k V$ und $η ∈ \Alt^l V, k, l ∈ ℕ$, definieren wir das äußere Produkt (Dachprodukt) $ω ∧ η ∈ \Alt^{k + l} V$ durch
+   \[(ω ∧ η)(v_1, \dots, v_{k + l}) := \frac{1}{k! l!} \sum_{π ∈ σ_{k + l}} \sgn π ω(v_{π(1)}, \dots, v_{π(k)}) η(v_{π(k + 1)}, \dots, v_{π(k + l)})\]]
+   Mit Hilfe von Bemerkung 5.3 bekommen wir, dass $ω ∧ η$ ein Element aus $\Alt^{k + l}$ darstellt.
+   #+end_defn
+   #+begin_lemma latex
+   Das äußere Produkt $∧: \Alt^k V × \Alt^l V \to \Alt^{k + l} V$ ist bilinear, assoziativ und antikommutativ. Das heißt $η ∧ ω = (-1)^{kl} (ω ∧ η)$ für $ω ∈ \Alt^k V, η ∈ \Alt^l V$.
+   Für $ω ∈ \Alt^k V, 1 ∈ \Alt^{0} V$ ($=ℝ$) gilt $1 ∧ ω = ω ∧ 1$
+   #+end_lemma
+   #+begin_proof latex
+   Bilinearität und $1 ∧ ω = ω ∧ 1 = ω$ sind klar \\
+   Antikommutativität kommt aus den Eigenschaften von Permutationen
+   \[π:(1, \dots, k + l) \to (k + 1, \dots, k + l, 1, \dots, k) ⇒ \sgn(π) = (-1)^{kl}\]
+   zu zeigen: Für $ω . \Alt^k V, η ∈ \Alt^l V, ξ ∈ \Alt^m V$ gilt
+   \begin{align*}
+   \string((ω ∧ η) ∧ ξ\string)(v_1, \dots, v_{k + l + m}) &= (ω ∧ (η, ξ))(v_1, \dots, v_{k + l + m}) \\
+   &= \sum_{π ∈ σ_{k + l + m}} \frac{\sgn π}{k! l! m!} ω(v_{π(1)}, \dots, v_{π(k)}) η(v_{π(k + 1)}, \dots, v_{π(k + l)}) ξ(v_{π(k + l + 1)}, \dots, v_{π(k + l + m)})
+   \end{align*}
+   Wir betrachten $ω ∧ (η ∧ ξ)$ (für $(ω ∧ η) ∧ ξ$ analog)
+   \begin{align*}
+   \string(ω ∧ (η ∧ ξ)\string)(v_1, \dots, v_{k + l + m}) &= \sum_{π ∈ σ} \frac{\sgn π}{k! (l + m)!} ω(v_{π(1)}, \dots, v_{π(k)}) (η ∧ ξ)(v_{π(k + 1)}, \dots, v_{π(k + l + m)}) \\
+   \end{align*}
+   Wir betrachten $a = (a_1, \dots, a_k), a_j ∈ \{1, \dots, k + l + m\}$ paarweise verschieden. Jede Permutation $π ∈ σ_{k + l + m}$ mit $π(j) = a_j ∀ j = 1, \dots, k$ lässt sich durch
+   \[π(j) = \begin{cases}  a_j & j = 1, \dots, k \\ τ_a(k + π(j - k)) & j = k + 1, \dots, k + l + m\end{cases}\]
+   Wobei $τ_a ∈ σ_{k + l + m}$ eine entsprechend gewählt Permutation ist imt $a_j = τ_a(j), j = 1, \dots, k$.
+   Wir bezeichnen $\tilde π ∈ σ_{l + m}$
+   \begin{gather*}
+   ⇒ \sum_{a} \frac{\sgn τ_a}{k!}ω(v_{a_1}, \dots, v_{a_k}) \sum_{\tilde π ∈ σ_{l + m}} \frac{\sgn \tilde π}{l! m!} η(v_{τ_a(k + \tilde π(1))}, \dots, v_{τ_a(k + \tilde π(l))}) ξ(v_{τ_a(k + \tilde π(l + 1))}, \dots, v_{τ_a(k + \tilde π(l + m))}) \\
+   \sum_{a} \frac{\sgn τ_a}{k!} ω(v_{a_1}, \dots, v_{a_k}) \sum_{\tilde π ∈ σ_{l + m}} \frac{\sgn \tilde π}{(l + m)!}(η ∧ ξ)(v_{τ_a(k + \tilde π(1))}, \dots, v_{τ_a(k + \tilde π(l + m))}) \\
+   \end{gather*}
+   Aus
+   \[(η ∧ ξ)(v_{τ_a(k + \tilde π(1))}, \dots, v_{τ_a(k + \tilde π(l + m))}) = (\sgn \tilde π)(η ∧ ξ)(v_{τ_a(k + 1), \dots, v_{τ_a(k + l + m)}})\]
+   und $(l + m! = \# σ_{l + m})$, folgt die	Gleichheit
+   #+end_proof
+   #+begin_remark latex
+   Durch Induktion bekommt man für $ω_j ∈ \Alt^{k_j} V, j = 1, \dots, N$
+   \[(ω_1 ∧ \dots ∧ ω_N)(v_1, \dots, v_{k_1 + \dots + k_N}) = \sum_{π ∈ σ_{k_1 + \dots + k_N}} \frac{\sgn π}{k_1! \dots k_N!} \prod_{j = 1}^N ω_j(v_{π(k + \dots + k_{j - 1} + 1)}, \dots, v_{π(k_1 + \dots + k_j)})\]
+   Für $k_1 = \dots = k_N = 1, ω_1, \dots, ω_N ∈ \Alt^1 V = V^1, v_1, \dots, v_N ∈ V$ bekommen wir die Determinantenformel
+   \[(ω_1 ∧ \dots ∧ ω_N)(v_1, \dots, v_N) = \det ((ω_j(v_l)))_{j,l = 1, \dots, N}\]
+   #+end_remark
+   #+begin_thm latex
+   Für eine Basis $(δ_1, \dots, δ_n)$ des Dualraums	$V'$ ist $(δ_{j_1} ∧ \dots ∧ δ_{j_k} \mid 1 \leq j_1 < j_2 < \dots < j_k < n)$ eine Basis der $\Alt^k V$. Ist $(e_1, \dots, e_n)$ die zu $(δ_1, \dots, δ_n)$
+   duale Basis von $V$ ($δ_j(e_k) = δ_{jk}$) so haben wir
+   \[ω = \sum_{j_1 < \dots < jj_k} a_{j_1, \dots, j_k} δ_{j_1} ∧ \dots ∧ δ_{j_k}\]
+   mit $a_{j_1, \dots, j_k} = ω(e_{j_1}, \dots, e_{j_k}) ∈ ℝ$. Mithin ist $\dim \Alt^k V = \cvec{n;k}$, insbesondere $\Alt^k V = \{0\}$ für $k > n$.
+   #+end_thm
+   #+begin_proof latex
+   Indem wir auf beiden Seiten der behaupteten Gleichungen die Argumente $(e_{j_1}, \dots, e_{j_k})$ einsetzen ergibt sich $ω(e_{j_1}, \dots, e_{j_k}) = a_{j_1,\dots,j_k}$, was nach Definition korrekt ist.
+   Da wir mit alternierenden \(k\)-Formen arbeiten, gilt die Gleichung für beliebige Argumente. Ist
+   \[\sum_{j_1 < \dots j_k} b_{j_1, \dots, j_k} δ_{j_1} ∧ \dots ∧ δ_{j_k} = 0\]
+   so erhält man durch Einsetzen von $(e_{j_1}, \dots, e_{j_k})$ mit $j_1 < \dots < j_k$ sofort $b_{j_1, \dots, j_k} = 0$ und somit lineare Unabhängigkeit.
+   #+end_proof
+   #+begin_defn latex
+   Für eine lineare Abbildung $f: V \to W$ zwischen	endlich-dimensionalen Vektorräumen und $ω ∈ \Alt^k W$ erhalten wir durch
+   \[(f^{\ast} ω)(v_1, \dots, v_k) = ω(f(v_1), \dots, f(v_k))\]
+   die zurückgeholte Form $f^{\ast}ω ∈ \Alt^k V$. Dabei ist $f^{\ast}: \Alt^k W \to \Alt^k V$.
+   #+end_defn
+   #+begin_lemma latex
+   Für eine lineare Abbildung $f: V \to W$ zwischen	endlich-dimensionalen reellen Vektorräumen und $ω ∈ \Alt^k W, η ∈ \Alt^l W$ gilt:
+   \[f^{\ast}(ω ∧ η) = (f^{\ast} ω) ∧ (f^{\ast} η)\]
+   #+end_lemma
+   #+begin_proof latex
+   Wir haben
+   \begin{align*}
+   f^{\ast}(ω ∧ η) (v_1, \dots, v_{k + l}) &= \\frac{1}{k! l!} \sum_{π ∈ σ_{k + l}} (\sgn π) ω(f(v_{π(1)}, \dots, v_{π(k)}))η(f(v_{π(k + 1)}, \dots, v_{π(k + l)})) \\
+   &= \frac{1}{k! l!} \sum_{π ∈ σ_{k + l}} (\sgn π)(f^{\ast} ω)(v_{π(1)}, \dots, v_{π(k)})(f^{\ast} η)(v_{π(k + 1)}, \dots, v_{π(k + l)}) \\
+   &= ((f^{\ast} ω) ∧ (f^{\ast} η))(v_1, \dots, v_{k + l})
+   \end{align*}
+   #+end_proof
+   #+begin_lemma latex
+   Ist $V$ ein endlich-dimensionaler, reeller Vektorraum $f: V \to V$ linear, sowie $ω ∈ \Alt^k V, n = \dim V$, so erhalten wir $f^{\ast} ω = (\det f) ω$.
+   #+end_lemma
+   #+begin_proof latex
+   $\dim \Alt^n V = 1$ und wegen der Linearität von $f^{\ast}: \Alt^n V \to \Alt^n V$ gibt es ein $λ ∈ ℝ$ mit $f^{\ast} ω = λ ω ∀ ω ∈ \Alt^n V$. Mit einem Isomorphismus $Φ: V \to ℝ^n$
+   und $\tilde ω = Φ^{\ast} \det$ ergibt sich für die Standardeinheitsbasis $(e_1, \dots, e_n) ⊂ ℝ^n$:
+   \begin{align*}
+   λ &= λ\det(e_1, \dots, e_n) = λ \tilde ω(Φ^{-1}(e_1), \dots, Φ^{-1}(e_n)) = f^{\ast} \tilde ω(Φ^{-1}(e_1), \dots, Φ^{-1}(e_n)) \\
+   &= \tilde ω(f Φ^{-1}(e_1), \dots, f Φ^{-1}(e_n)) = \det(Φ f Φ^{-1}(e_1), \dots, Φ f Φ^{-1}(e_n)) = \det f
+   \end{align*}
+   #+end_proof
+** Differentialformen
+   #+ATTR_LATEX: :options [Differentialform]
+   #+begin_defn latex
+   Eine Differentialform der Ordnung $k, k ∈ ℕ ∩ \{0\}$, auf einer offenen Menge $Ω ⊂ ℝ^n$ ist eine Abbildung $ω: Ω \to \Alt^k ℝ^n$.
+   #+end_defn
+   #+ATTR_LATEX: :options [Differentiale und Differentialform]
+   #+begin_ex latex
+   Differnitalformen der Ordnung $0$ sind wegen $\Alt^0 ℝ^n = ℝ$ gerade die reellwertigen Funktionen auf $Ω$. Ist $f ∈ C^1(Ω)$, so liefert $x ↦ \d f(x) ∈ (ℝ^n)' \simeq ℝ^n$ eine
+   Differentialform der Ordnnug $1$ (mit $(ℝ^n)'$ bezeichnen wir den Dualraum zu $ℝ^n$). ($f(x + h) - f(x) = (L x)h + o(\abs{h}), Lx: ℝ^n \to ℝ, L x$ oder $\d f(x), D f(x)$).
+   Die Menge der Differentialformen der Ordnung $k$ wird mit punktweiser Addition und punktweiser skalaren Multiplikation zu einem Vektorraum. Auch das äußere Produkt definiert man punktweise.
+   #+end_ex
+   #+begin_notation latex
+   Wir betrachten die Projektionsabbildung $x_j: Ω ⊂ ℝ^n \to ℝ, x ↦ \braket{x, e_j} = x_j, j = 1, \dots, n$. Nun erhält man
+   \[∇ x_j(x) e_k = \braket{e_j, e_k} = δ_{jk}, j,k = 1, \dots, k\]
+   sodass $(\d x_j)_{j = 1, \dots, n}$ die zur Standardbasis $(e_1, \dots, e_n)$ des $ℝ^n$ duale Basis des $(ℝ^n)'$ ist. Jede Differentialform der Ordnnug $k$ lässt sich eindeutig durch
+   \[ω = \sum_{\mathclap{1\leq j_1 < \dots < j_k < n}} a_{j_1, \dots, j_k} \d x_{j_1} ∧ \dots ∧ \d x_{j_n}\]
+   darstellen, wobei $a_{j_1, \dots, j_k} = ω(e_{j_1}, \dots, e_{j_n})$ ist. Für $f ∈ C^1(Ω)$ haben wir
+   \[\d f(x) = \sum_{j = 1}^{n} \pp{f}{x_j}(x) \d x_j\]
+   denn
+   \[\sum_{j = 1}^{n} \pp{f}{x_j}(x) \d x_j(e_k) = \pp{f}{x_k}(x) = \d f(x) e_k\]
+   da $\d x_j(e_k) = δ_{jk}$.
+   #+end_notation
+   #+ATTR_LATEX: :options [Zurückgeholte Form]
+   #+begin_defn latex
+   Für offene Mengen $Ω_1 ⊂ ℝ^m, Ω_2 ⊂ ℝ^n, f ∈ C^1(Ω_1, Ω_2)$ und eine Differentialform $ω$ der Ordnung $k$ auf $Ω_2$ ist die auf $Ω_1$ zurückgeholte Form $f^{\ast} ω$ durch
+   \[(f^{\ast}ω)(x)(v_1, \dots, v_k) = ω(f(x))(\d f(x) v_1, \dots, \d f(x) v_k)\]
+   erklärt.
+   #+end_defn
+   #+ATTR_LATEX: :options [Äußere Ableitung]
+   #+begin_thm latex
+   Für $k ∈ ℕ ∪ \{0\}$ gibt es genau eine Abbildung $d$ von der Menge der differenziebaren \(k\)-Formen nach $\Alt^{k + 1} ℝ^n$ die
+   1. linear ist
+   2. im Fall $k = 0$, für eine differenzierbare Abbildung $f: Ω \to ℝ$, das Differential $\d f$ liefert
+   3. für jede differenzierbare Differentialform $ω$ der Ordnung $k$ und eine differenzierbare Differentialform $η$ der Ordnung $0$ die Produktregel
+	  \[\d(ω ∧ η) = (\d ω) ∧ η + (-1)^k ω ∧ (\d η)\]
+	  erfüllt und
+   4. für $ω ∈ C^2(Ω, \Alt^k ℝ^n)$ der Exaktheitsbedingung $\d \d ω = 0$ genügt
+   Ist
+   \[ω = \sum_{\mathclap{j_1 < \dots < j_k}} a_{j_1, \dots, j_k} \d x_{j_1} ∧ \dots ∧ \d x_{j_k}\]
+   so erhälten wir
+   \[\d ω = \sum_{\mathclap{j_1 < \dots < j_k}} \d a_{j_1, \dots, j_k} ∧ \d x_{j_1} ∧ \dots ∧ \d x_{j_k}\]
+   #+end_thm
+   #+begin_defn latex
+   Für eine differenzierbare Differentialform $ω$ wird $\d$ die äußere Ableitung, Cartan-Ableitung oder Differential genannt.
+   #+end_defn
+   #+begin_ex latex
+   1. Jede differenziebare Differentialform $ω$ der Ordnung $(n - 1)$ auf $ℝ^n$ kann als
+	  \[ω = \sum_{j = 1}^{n} (-1)^{j - 1} f_j \d x_1 ∧ \dots ∧ \d x_{j - 1} ∧ \d x_{j + 1} ∧ \dots ∧ \d x_n\]
+	  dargestellt werden, wobei $f_1, \dots, f_n$ geeignete reelle differenzierbare Funktionen sind. Wir haben dann
+	  \begin{align*}
+	  \d ω &= \sum_{j = 1}^{n} (-1)^{j - 1} (\d f_j) ∧ \d x_1 ∧ \dots ∧ \d x_{j - 1} ∧ \d x_{j + 1} ∧ \dots ∧ \d x_n
+	  \d f_j &= \sum_{l = 1}^{k} \pp{f}{x_l} \d x_l = \pp{f}{x_j} \d x_j ∧ \d x_1 ∧ \dots ∧ \d x_{j - 1} ∧ \d x_{j + 1} ∧ \dots ∧ \d x_n \\
+	  \d ω &= \underbrace{\sum_{j = 1}^{n} \pp{f}{x_j}}_{=\Div f} \d x_1 ∧ \dots ∧ \d x_n
+      \end{align*}
+   2. Für $n = 3$ können wir eine Differentialform der Ordnung $1$ als $ω = f_1 \d x_1 + f_2 \d x_2 + f_3 \d x_3$ mit skalaren Funktionen $f_1, f_2, f_3$ schreiben. Sofern sie differenzierbar sind folgt
+	  \begin{align*}
+	  \d ω &= \d f_1 ∧ \d x_1 + \d f_2 ∧ \d x_2 + \d f_3 η \d x_3 \\
+	  &= \pp{f_1}{x_2} \d x_2 ∧ \d x_1 + \pp{f_1}{x_3} \d x_3 ∧ \d x_1 + \pp{f_2}{x_1} \d x_1 ∧ \d x_2 + \pp{f_2}{x_3} \d x_3 ∧ \d x_2 + \pp{f_3}{x_2} \d x_2 ∧ \d x_3 + \pp{f_3}{x_1} \d x_1 ∧ \d x_3 \\
+	  &= (\pp{f_2}{x_1} - \pp{f_1}{x_2}) \d x_1 ∧ \d x_2 + (\pp{f_3}{x_2} - \pp{f_2}{x_3}) \d x_2 ∧ \d x_3 + (\pp{f_1}{x_3} - \pp{f_3}{x_1}) \d x_3 ∧ \d x_1 \\
+	  &= \rot f · \d \v F
+      \end{align*}
+	  wobei
+	  \[\d \v F = \cvec{\d x_2 ∧ \d x_3; \d x_3 ∧ \d x_1; \d x_1 ∧ \d x_2}\]
+	  das vektorielle Flächenelement ist,
+	  \[\d \v S = \cvec{\d x_1; \d x_2; \d x_3}\]
+	  das vektorielle Linienelement, $\d V = \d x_1 ∧ \d x_2 ∧ \d x_3$ das Volumenelement ist. Wir haben
+	  \[\d f = ∇ f · \d \v S, \d(g · \d \v S) = (\rot g) · \d \v F, \d (h · \d \v F) = (\Div f) \d V\]
+   #+end_ex
+   #+begin_thm latex
+   Für offene Mengen $Ω_1 ⊂ ℝ^n, f ∈ C^2(Ω_1, Ω_2)$ und eine differenzierbare Differenzialform auf $Ω_2$ ist auch die auf $Ω_1$ zurückgeholte Form $f^{\ast}ω$ differenzierbar und es gilt
+   \[\d (f^{\ast} ω) = f^{\ast}(\d ω)\]
+   #+end_thm
+   #+begin_proof latex
+   Für eine differenzierbare Differentialform der Ordnung $0$ ist $f^{\ast} g = g \circ f$ differenzierbar und für $x ∈ Ω_1$ und $v ∈ ℝ^m$ haben wir
+   \[\d (f^{\ast} g)(v) = \d (g \circ f)(v) = \d g(f(x)) \d f(x) v = f^{\ast}(\d ω)(x)(v)\]
+   Für allgemeine
+   \[ω = \sum_{\mathclap{j_1 < \dots < j_k}} a_{j_1, \dots, j_k} \d x_{j_1} ∧ \dots ∧ \d x_{j_k}\]
+   erhalten wir
+   \begin{align*}
+   f^{\ast} \d ω &= \sum_{\mathclap{j_1 < \dots < j_k}} \underbrace{f^{\ast} \d a_{j_1, \dots, j_k}}_{\mathclap{=\d (f^{\ast} a_{j_1, \dots, j_k})}} ∧ \overbrace{f \d x_{j_1}}^{\mathclap{\d (f^{\ast} x_{j_1})}} ∧ \dots ∧ \underbrace{f^{\ast} \d x_{j_k}}_{\mathclap{\d(f^{\ast} x_{j_k})}} \\
+   &= \d(\sum_{\mathclap{j_1 < \dots < j_k}}(f^{\ast} a_{j_1, \dots, j_k})) ∧ \d(f^{\ast} x_{j_1}) ∧ \dots ∧ \d(f^{\ast} x_{j_k}) = \d (f^{\ast} ω)
+   \end{align*}
+   #+end_proof
+** Integration von Differentialformen
+   #+begin_defn latex
+   Sei $Ω ⊂ ℝ^n$ offen. Eine Differentialform $ω = f \d x_1 ∧ \dots ∧ \d x_n$ heißt integrierbar über $A ⊂ Ω$ falls $f$ über $A$ integrierbar ist. Wir setzen
+   \[∫_A ω = ∫_A f \d λ^n\]
+   #+end_defn
+   #+ATTR_LATEX: :options [Transformationsformel]
+   #+begin_thm latex
+   Sind $U, V ⊂ ℝ^n$ offen, $φ: V \to U$ ein orientierungstreuer \(C^1\)-Diffeomorphismus und $ω$ eine integrierbare Differentialform der Ordnung $n$ auf $U$ so gilt
+   \[∫_V φ^{\ast} ω = ∫_U ω\]
+   Im allgemeinen Fall $k ∈ \{1, \dots, n\}$ definieren wir Integrale zunächst über lokale Parametrisierung.
+   #+end_thm
+   #+begin_proof latex
+   Für $ω = f \d x_1 ∧ \dots ∧ \d x_n$ erhalten wir zunächst
+   \begin{align*}
+   \string(φ^{\ast} ω\string)(x)(v_1, \dots, v_n) &= ω(φ(x))(\d φ(x) v_1, \dots, \d φ(x) v_n) \\
+   &= f(φ(x))(\d x_1 ∧ \dots ∧ \d x_n)(\d φ(x) v_1, \dots, \d φ(x) v_n) \\
+   &= f(φ(x))\underbrace{(\d φ(x))^{\ast}}_{\mathclap{\det \d φ(x)}}(\d x_1 ∧ \dots ∧ \d x_n)(v_1, \dots, v_n)
+   \end{align*}
+   also
+   \[∫_V φ^{\ast} ω = ∫_V f φ \underbrace{\det \d φ(·)}_{> 0} \d λ^n = ∫_U f \d λ^n = ∫_U ω\]
+   #+end_proof
+   #+begin_defn latex
+   Sei $Ω ü ℝ^n$ und $M ⊂ Ω$ eine \(k\)-dimensionale orientierte Mannigfaltigkeit sowie $φ^{-1}:W \to U$ eine Karte eines orientierte Atlanten. Eine auf $M \setminus W$ verschwindende Differnetialform $φ^{\ast} ω$ auf $U$ ist integrierbar und wir setzen
+   \[∫_M ω = ∫_U φ^{\ast} ω\]
+   Wie bei der Definition von Flächenintegralen muss man sich von der Unabhängigkeit dieser Definition von der gewählten Karte überzeugen. Dies folgt aus der angegebenen Transformationsformel. Entsprechendes gilt für die folgende Konvention.
+   #+end_defn
+   #+begin_defn latex
+   Sei $Ω ü ℝ^n$ offen, $M ⊂ Ω$ eine \(k\)-dimensionale Mannigfaltigkeit mit orientiertem Atlas $(φ^{-1}_j: W_j \to U_j)_{j = 1, \dots, N}$. Eine Differentialform $ω: W \to \Alt^k ℝ^n$ heißt
+   integrierbar, falls $χ_{W_j} ω$ für alle $j = 1, \dots, N$ im Sinne von vorheriger Definition integrierbar ist. Ist $(α_j)_{j = 1,\dots,N}$ eine der Überdeckung $(W_j)_{j = 1, \dots, N}$
+   untergeordnete Partition der Eins und $α_j \circ φ_j$ messbar für $j = 1,\dots, N$ so definieren wir das Integral von $ω$ über $M$ durch
+   \[∫_M = \sum_{j = 1}^{N} ∫_M a_j ω\]
+   wobei auf der rechten Seite die in vorheriger Definition erklärten Integrale stehen.
+   #+end_defn
+   #+ATTR_LATEX: :options [Kurvenintegrale]
+   #+begin_ex latex
+   Sei $γ ∈ C^1(I, ℝ^n)$ für endliches Intervall $I = (a, b), 0 < c \leq \abs{γ'} \leq C < ∞$ auf $I$ und $γ: I \to \im γ$ ein Homöomorphismus, so ist das $\im γ$ eine
+   eindimensionale Mannigfaltigkeit und für eine Differentialform
+   \[ν = \sum_{j = 1}^{n} f_j \d x_j\]
+   erhalten wir die zurückgeholte Form
+   \[γ^{\ast} ν = \sum_{j = 1}^{n} (f_j \circ γ) \d γ_j\]
+   Ist $ν$ integrierbar, so folgt
+   \[∫_{\im γ} ν = ∫_i γ^{\ast} ν = ∫_I \braket{f(γ(t)), γ'(t)} \d t\]
+   Sei nun $ω$ eine stetig differenzierbare Funktion auf einer Umgebung von $\im γ$. Dann haben wir für
+   \begin{align*}
+   ν &= \d ω = \sum_{j = 1}^{n} \pp{ω}{x_j} \d x_j \\
+   ∫_{\im γ} \d ω &= ∫_I \braket{∇ ω(γ(t)), γ'(t)} \d t = ω(γ(b)) - ω(γ(a))
+   \end{align*}
+   #+end_ex
+   #+ATTR_LATEX: :options [Stokes]
+   #+begin_thm latex
+   Sei $Ω ⊂ ℝ^n$ offen, $M ⊂ Ω$ eine \(k\)-dimensionale \(C^2\)-Mannigfaltigkeit, $K ⊂ M$ eine kompakte Teilmenge mit glattem Rand und $ω$ eine stetig differenzierbare Differentialform der
+   Ordnung $k - 1$ auf $Ω$ mit $k \geq 2$. Der Rand $\partial K$ sei mit der von $K$ induzierten Ordnung ausgestattet. Dann gilt
+   \[∫_K \d ω = ∫_{\partial K} ω\]
+   #+end_thm
+   #+begin_proof latex
+   Sei $\mathcal{A}$ ein orientierter Atlas aus \(K\)-adaptierten Karten. Da $K$ kompakt ist, gibt es endlich viele Karten $(φ_j^{-1}: W_j \to U_j)_{j = 1, \dots, N}$ mit $K ⊂ \bigcup_{j = 1}^N W_j$.
+   Nun sei $(α_j)_{j = 1, \dots, N}$ eine der Überdeckungen $(W_j)_{j = 1, \dots, N}$ untergeordnete Partition der Eins. Nun können wir $φ^{\ast}_j (α_j ω)$ durch Null stetig differenzierbar auf ganz
+   $ℝ^n$ fortsetzen. Dann gilt
+   \[∫_k \d(α_j ω) = ∫_{K ∩ W_j} \d (α_j ω) = ∫_{\{x_1 \leq 0\} ∩ U_j} φ^{\ast}(\d(α_j ω)) = ∫_{\{x_1 \leq 0\}} \d(φ^{\ast}(α_j ω))\]
+   Wir haben hier $W_j ∩ \partial K \neq \emptyset$ angenommen, anderenfalls sieht man, dass das entsprechende Integral verschwindet. Sei nun $\tilde φ_j = φ_j \circ P: \tilde U_j \to W_j$ die vo
+   $φ_j$ induzierte Randkarte, wo $P(x') = (0, x'), x' ∈ ℝ^{n - 1}$. Dann haben wir
+   \[∫_{\partial K} α_j ω = ∫_{\partial K ∩ W_j} α_j ω = ∫_{\tilde U_j} \tilde φ_j^{\ast}(α_j ω) = ∫_{\tilde U_j} P^{\ast} φ_j^{\ast} (α_j ω) = ∫_{\{x_1 = 0\}} φ_j^{\ast}(α_j ω)\]
+   Man erhält
+   \[∫_K \d (α_j ω) = ∫_{\{x_1 \leq 0\}} \d(φ^{\ast}(α_j ω)) = ∫_{\partial \{x_1 \leq 0\}} φ^{\ast}(α_j ω) = ∫_{\partial K} α_j ω\]
+   Summation über $j = 1, \dots, N$ liefert das Gewünschte.
+   #+end_proof
+   #+begin_lemma latex
+   Für eine stetig differenzierbare Differentialform $ω$ der Ordnnug $k - 1$ mit kompaktem Träger auf $ℝ^k, k \geq 2$ ist
+   \[∫_{\{x_1 \leq 0\}} \d ω = ∫_{\partial \{x_1 \leq 0\}} ω\]
+   #+end_lemma
+   #+begin_proof latex
+   Für
+   \[ω = \sum_{j = 1}^{k} (-1)^{j - 1} f_j \d x_1 ∧ \dots ∧ \d x_{j - 1} \d x_{j + 1} ∧ \dots ∧ \d x_k\]
+   mit $f_j ∈ C^1(ℝ^k)$ folgt
+   \[∫_{\{x_1 \leq 0\}} \d ω = ∫_{\{x_1 \leq 0\}} (\Div f) \d x_1 ∧ \dots ∧ \d x_k = ∫_{\{x_1 \leq 0\}} \Div f \d λ^n\]
+   Mit dem Satz von Fubini können wir den \(j\)-ten Summanden in der Divergenz
+   \[\Div f = \sum_{j = 1}^{n} \pp{f}{x_j}\]
+   zunächst um $x_j$ integrieren. Wir erhalten
+   \begin{align*}
+   ∫_{-∞}^{∞} \pp{f}{x_j}(x) \d λ(x_j) &\underarrow[=]{kompakter Träger} \quad ∀ j = 2, \dots, k \\
+   ∫_{-∞}^{∞} \pp{f}{x_1}(x) \d λ(x_1) &= f_1(0, \underbrace{x_2, \dots, x_k}_{x' ∈ ℝ^{k - 1}})
+   \end{align*}
+   also
+   \[∫_{\{x_1 \leq 0\}} \d ω = ∫_{ℝ^{k - 1}} \d ω = ∫_{ℝ^{k - 1}} f_1(0, x') \d^{k - 1}(x')\]
+   Für die Berechnung des Randintegrals bezeichnen wir die Elemente aus $ℝ^{k - 1}$ wieder mit $x' = (x'_1, \dots, x'_{k - 1})$ und schreiben dementsprechend $\d x_j', j = 1, \dots, k - 1$. Die
+   Identität $ψ = \id_{ℝ^k}$ induziert die lokale Parametrisierung.
+   \[\tilde φ: ℝ^{k - 1} \to \partial \{x_1 \leq 0\} = \{x_1 = 0\} ⊂ ℝ^k, x' ↦ (0, x')\]
+   Man erhält
+   \begin{align*}
+   \tilde φ^{\ast} \d x_j = \d \tilde φ^{\ast} = \d(x_j \circ φ) = \begin{cases} 0 & j = 1 \\ \d x_{j - 1} & j = 2, \dots, k \end{cases}
+   \end{align*}
+   Schließlich erhält man
+   \begin{align*}
+   ∫_{\partial \{x_1 \leq 0\}} ω &= ∫_{ℝ^{k - 1}} \tilde φ^{\ast} ω = ∫_{ℝ^{k - 1}} f_1 \abs{\tilde φ(x')} \d x_1' ∧ \dots ∧ \d x_{k - 1}' \\
+   &= ∫_{ℝ^{k - 1}} f_1(0, x') \d λ^{k - 1}(x')
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [Glatte Partition der Eins]
+   #+begin_thm latex
+   Sei $K ⊂ ℝ^n$ kompakt und $(U_j)_{j = 1, \dots, N}$ eine offene Überdeckung von $K$, also $K ⊂ \bigcup_{j = 1}^N U_j$. Dann gibt es eine Überdeckung $(U_j)_{j = 1, \dots, N}$ untergeordnete Partition der Eins $(α_j)_{j = 1, \dots, N}$ mit $α_j ∈ C^{∞} (ℝ^n)$
+   und $\supp α_j ⊂ U_j, j = 1, \dots, N$
+   #+end_thm
+   #+ATTR_LATEX: :options [Satz von Stokes, klassisch]
+   #+begin_thm latex
+   Sei $Ω ⊂ ℝ^3$ offen, $M ⊂ Ω$ eine orientierte zweidimensionale \(C^2\)-Mannigfaltigkeit, $K ⊂ M$ eine kompakte Teilmene mit glattem Rand $\partial K$ und
+   $g ∈ C^1(Ω, ℝ^3)$ ein Vektorgelt, Dann definiert $ω = g · \d \v s$ eine stetig differenzierbare Differntialform der Ordnung $1$ auf $Ω$, und wir haben
+   \[∫_K \rot g · ν \d A^2 = ∫_{\partial K} g · τ \d A^1\]
+   wobei $ν$ das äußere Normalenfeld auf $K$ bezeichnet und $τ$ das positiv orientierte Tangentialfeld, das von der $K$ induzierten Orientierung auf $\partial K$ bestimmt wird, ist.
+   #+end_thm
+   #+begin_proof latex
+   Natürlich ist $g · \d \v s = g_1 \d x_1 + g_2 \d x_2 + g_3 \d x_3$ eine stetig differenzierbare Differentialform der Ordnung $1$ auf $Ω$. Nach Satz von Stokes haben wir:
+   \[∫_K (\rot g) \d \v F = ∫_K \d(g · \d \v s) = ∫_{\partial K} g · \d \v s\]
+   Wir nehmen nun an, dass $\partial K$ wie im Beispiel durch Kurvenintegrale durch eine Karte parametrisiert wird. Wir haben (hier: $I = \mathbb{S}^1 \simeq ℝ \setminus ℤ$)
+   \begin{align*}
+   ∫_{\partial K} g \d \v s = ∫_{\im γ} g \d \v s = ∫I γ^{\ast} (g · \d \v s) = ∫_I g(γ(t)) · γ'(t) \d t \\
+   &= ∫_I g(γ(t)) · \underbrace{\frac{γ'(t)}{\abs{γ'(t)}}}_{τ(t)} \abs{γ'(t)} \d t = ∫_{\tilde I} g(\tilde γ(s)) \tilde τ(s) \d s
+   \end{align*}
+   wobei wir im letzten Schritt eine Reparametrisierung nach der Bogenlänge vorgenommen haben. Die Reparametrisierung ist ebenfalls eine Parametrisierung von $\partial K$, also
+   \[∫_{\partial K} g \d \v s = ∫_{\partial K} g τ \d A^1\]
+   Zu zeigen bleibt
+   \[∫_K f \d \v F = ∫_K f · ν \d A^2\]
+   für integrierbares $f$. Dieser Beweis wird hier an dieser Stelle ausgelassen. Mit $f = \rot g$ folgt die Behauptung.
+   #+end_proof
+   #+ATTR_LATEX: :options [Satz von Gauß, klassisch]
+   #+begin_thm latex
+   Sei $Ω ⊂ ℝ^3$ offen, $K ⊂ Ω$ kompakt mit glattem Rand $\partial K$ auf dem das äußere Normalenfeld $ν$
+   definiert ind und $h ∈ C^1(Ω, ℝ^3)$ ein Vektorfeld. Dann definiert $ω = h · \d \v F$ eine stetig
+   differenzierbare Differntialform der Ordnung 2 auf $Ω$ und wir haben
+   \[∫_k \Div h \d λ^3 = ∫_{\partial K} h · ν \d A^2\]
+   #+end_thm
+   #+ATTR_LATEX: :options [Satz von Gauß (Divergenzsatz)]
+   #+begin_thm latex
+   Für $Ω ⊂ ℝ^n$ offen, ein Vektorfeld $h ∈ C^1(Ω, ℝ^n), K ⊂ Ω$ kompakt und glattem Rand und äußerem Normalenfeld $ν$
+   gilt:
+   \[∫_K \Div h \d λ^n = ∫_{\partial K} h · ν \d A^{n - 1}\]
+   #+end_thm
+   #+begin_proof latex
+   Offenbar ist $h · \d \v F$ eine differenzierbare Differentialform der Ordnung $2$. Ansonsten ist
+   Der erste Satz ein Spezialfall von letzten Satz für $n = 3$. Wir verwenden die Differentialform $\d \v F = (\d F_1, \dots, \d F_n)^T$ mit
+   \[\d F_j = (-1)^{j - 1} \d x_1 ∧ \dots ∧ \d x_{j - 1} ∧ \d x_{j + 1} ∧ \dots ∧ \d x_n\]
+   und
+   \[∫_K f · \d \v F = ∫_K f · ν \d A^{n - 1}\]
+   für integrierbare $f: Ω \to ℝ$. Wer erhalten:
+   \begin{align*}
+   ∫_K \Div h \d λ^n &= ∫_K \Div h \d x_1 ∧ \dots ∧ \d x_n = ∫_K \d (h · \d \v F) \\
+   &= ∫_{\partial K} h · \d \v F = ∫_K h · ν \d A^{n - 1}
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [Partielle Integration]
+   #+begin_korollar latex
+   Für $Ω ⊂ ℝ^n$ offen, $u,v ∈ C^1(Ω), K ⊂ Ω$ kopakt mit glattem Rand und äußerem Normalenfeld $ν$ gilt
+   \[∫_K \pp{u}{x_j} v \d λ^n = ∫_{\partial K} u v ν_j \d A^{n - 1} - ∫_K u \pp{v}{x_j} \d λ^n, \quad j = 1, \dots, N\]
+   Insbesondere ist auch
+   \[∫_K \pp{u}{x_j} \d λ^n = ∫_{\partial K} u ν_j \d A^{n - 1}\]
+   #+end_korollar
+   #+begin_proof latex
+   Mit $h = u v e_j$ erhalten wir aus dem Divergenzsatz:
+   \[∫_K (v \pp{u}{x_j} + u \pp{v}{x_j}) \d λ^n = ∫_K \Div h = ∫_{\partial K} h · ν \d A^{n - 1} ∫_{\partial K} u v ν_j \d A^{n - 1}\]
+   mit $ν \equiv 1$ folgt die 2te Formel.
+   #+end_proof
+   #+ATTR_LATEX: :options [Green'sche Formeln]
+   #+begin_korollar latex
+   Für $Ω ⊂ R^n$ offen, $u, v ∈ C^2(Ω), K ⊂ Ω$ kompakt mit glattem Rand und äußerem Normalenfeld $ν$ gilt
+   \begin{align*}
+   ∫_K \Laplace u \d λ^n &= ∫_{\partial K} \pp{u}{ν} \d A \\
+   ∫_K ∇ u · ∇ v \d λ^n &= ∫_{\partial K} u \pp{v}{ν} \d A - ∫_K u \Laplace v \d λ^n \\
+   ∫_K (u \Laplace v - v \Laplace u) \d λ^n &= ∫_{\partial K}(u \pp{v}{ν} - v \pp{u}{ν}) \d A
+   \end{align*}
+   #+end_korollar
+   #+begin_proof latex
+   Wir setzen zunächst $h = ∇ u$, dann ist
+   \[∫_K \Laplace u \d λ^n = ∫_K ∇ ∇ u \d λ^n = ∫_K \Div ∇ u = ∫_{\partial K} ∇ u · ν \d A^{n - 1} = ∫_{\partial K} \pp{u}{ν} \d A^{n - 1}\]
+   Mit $h = u ∇ v$ ist
+   \[\Div h = \sum_{j = 1}^{k} \pp{h}{x_j} = ∇u · ∇ v + u \Laplace v\]
+   woraus sich
+   \[∫_K(∇ u · ∇ v + u \Laplace v) \d λ^n = ∫_{\partial K} u \underbrace{∇ v · ν}_{\pp{u}{ν}} \d A^{n - 1}\]
+   ergibt. Durch Vertauschen von $u, v$ in der letzten Gleichung und Subtraktion erhalten wir
+   \[∫_K(u \Laplace v - v \Laplace u) \d λ^n = ∫_{\partial K}(u \pp{v}{ν} - v \pp{u}{ν}) \d A^{n - 1}\]
+   #+end_proof

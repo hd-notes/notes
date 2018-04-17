@@ -1,0 +1,89 @@
+
+1
+a
+\[X = \{1,2,3,4\}\]
+\[\mathcal{D} = \{\emptyset, X, \{1,2\}, \{3,4\}, \{1,3\}, \{2,4\}\}\]
+b
+$Ω := ℕ$
+\[\mathcal{A}:= \{A ⊆ Ω \mid A \text{ endlich oder } A^C \text{ endlich}\}\]
+zz. $\mathcal{A}$ ist Algebra aber keine \(σ\)-Algebra
+#+begin_proof latex
+- $ℕ ∈ \mathcal{A}$, denn $ℕ^C = \emptyset$ endlich
+- $A ∈ \mathcal{A} ⇒ A^C ∈ A$ trivial
+- $A, B ∈ \mathcal{A}$, dann ist
+  - für $A, B$ endlich auch $(A ∪ B)$ endlich
+  - für (ohne Beschränkung der Allgemeinheit) $A^C$ endlich ist
+    \[(A ∪ B) = (\underbrace{A^C ∩ B^C}_{\text{endlich}})^C\]
+  $⇒$ $A ∪ B ∈ \mathcal{A}$
+$⇒$ $\mathcal{A}$ ist Algebra. \\
+Aber betrachte die Folgle
+\[(A_n)_{n ∈ ℕ} = (\{2n\}_{n ∈ ℕ}) ⊆ \mathcal{A}\]
+$⇒ \bigcup_{n ∈ ℕ} A_n = 2ℕ$ ist unendlich und $(2ℕ)^C$ ist ebenfalls unendlich. Also ist $A$ keine \(σ\)-Algebra
+#+end_proof
+c
+\(f: Ω \to Ω', \mathcal{A}' σ\)-Algebra auf $Ω'$ \\
+zz:
+\[f^{-1}(\mathcal{A}') := \{f^{-1}(A) \mid A ∈ \mathcal{A}'\}\]
+ist \(σ\)-Algebra auf $Ω$.
+#+begin_proof latex
+- $Ω ∈ f^{-1}(\mathcal{A}')$, denn $Ω = f^{-1}(Ω')$ und $Ω' ∈ \mathcal{A}'$ (\(σ\)-Algebra)
+- $A ⊂ f^{-1}(\mathcal{A}') ⇒ ∃ A' ∈ \mathcal{A}': A = f^{-1}(A')$
+  \[⇒ A^C = f^{-1}(A')^C = f^{-1}(A^{\prime C}) ∈ f^{-1}(\mathcal{A}')\]
+  denn $A^{\prime C} ⊂ \mathcal{A}'$
+- $(A_k)_{k ∈ ℕ} ⊆ f^{-1}(\mathcal{A'}) ⇒ ∃ (A'_k)_{k ∈ ℕ} ⊆ \mathcal{A}': A_k = f^{-1}(A_k')$
+  \[⇒ \bigcup_{k ∈ ℕ} A_k = \bigcup_{k ∈ ℕ} f^{-1}(A_k') = f^{-1}(\bigcup_{k ∈ ℕ} A_k') ∈ f^{-1}(\mathcal{A}')\]
+#+end_proof
+2
+$X, Ω ⊆ \mathcal{P}(X), \mathcal{D}(Ω)$ erzeugendes Dynkin-System \\
+zz: wenn $\mathcal{D}(Ω)$ stabil gegeüber $\bigcap$ beziehungsweise $\bigcup$ ist, dann ist $\mathcal{D}(Ω)$ eine \(σ\)-Algebra
+#+begin_proof latex
+$X ∈ \mathcal{D}(Ω), A ∈ \mathcal{D}(Ω) ⇒ A^C ∈ \mathcal{D}(Ω)$ klar. $(A_n)_{n ∈ ℕ} ⊆ \mathcal{D}(Ω)$, setze
+\[B_i := \begin{cases} A_1 & i = 1\\ A_{i} \setminus \bigcup_{k = 1}^{i - 1} A_k \end{cases}\]
+dann ist $(B_n)_{n ∈ ℕ}$ eine paarweise disjunkte Folge und
+\[\bigcup_{n ∈ ℕ} A_n = \bigcup_{n ∈ ℕ} B_n\]
+damit genügt es zu zeigen, dass $B_n ∈ \mathcal{D}(Ω) ∀ n ∈ ℕ$
+\begin{align*}
+B_n &= A_n \setminus (\bigcup_{n = 1}^{n - 1} A_k) = A_n ∩ (\bigcup_{n = 1}^{n - 1})^C \\
+	&= A_n ∩ (\bigcap_{k= 1}^{n - 1} A_k^C) ∈ \mathcal{D}(Ω), \text{wenn stabil gegenüber } \bigcap \\
+	&= (A_n^C ∪ (\bigcap_{k= 1}^{n - 1} A_k))^C ∈ \mathcal{D}(Ω), \text{wenn stabil gegenüber } \bigcup \\
+\end{align*}
+#+end_proof
+3
+$X, \mathcal{E} ⊆ \mathcal{P}(X), \emptyset, X ∈ \mathcal{E}$, \\
+$ρ: \mathcal{E} \to [0, ∞], ρ(\emptyset) = 0$
+\[\to μ^{\ast}(A) = \inf \{\sum_{k ∈ ℕ} ρ(A_k) \mid (A_k)_{k ∈ ℕ} ⊆ \mathcal{E}, A ⊆ \bigcup_{k ∈ ℕ} A_k\}\]
+a
+zz: $μ^{\ast}\mid_{\mathcal{E}} \leq ρ$
+#+begin_proof latex
+$A ⊂ \mathcal{E}, A_1 := A, A_k = \emptyset, k \geq 2$
+\begin{align*}
+⇒ A &⊆ \bigcup_{k ∈ ℕ} A_k \\
+⇒ μ^{\ast}(A) &\leq \sum_{k ∈ ℕ} ρ(A_k) = ρ(A)
+\end{align*}
+#+end_proof
+b
+Sei $τ$ ein äußeres Maß auf $X$ mit $τ|_{\mathcal{E}} \leq ρ$
+zz: $τ \leq μ^{\ast}$
+#+begin_proof latex
+$A ⊆  X$ und $(A_k)_{k ∈ ℕ} ⊆ \mathcal{E}$, sodass
+\[A ⊆ \bigcup_{k ∈ ℕ} A_k\]
+dann ist
+\begin{align*}
+τ(A) &\leq τ(\bigcup_{k ∈ ℕ} A_k) \leq \sum_{k ∈ ℕ} τ(A_k) \leq \sum_{k ∈ ℕ} ρ(A_k) \\
+\text{aber } μ^{\ast}(A) &= \inf \{\sum_{k ∈ ℕ} ρ(A_k) \mid (A_k)_{k} ⊆ \mathcal{E}, A ⊆ \bigcup_{k ∈ ℕ} A_k\} \\
+⇒ τ(A) &\leq μ^{\ast}(A)
+\end{align*}
+#+end_proof
+4
+$Ω, \mathcal{A}$ \(σ\)-Algebra, $μ: \mathcal{A} \to [0,∞]$ mit $μ(\emptyset) = 0, A, B ∈ \mathcal{A}$ disjunkt gilt
+\[μ(A ∪ B) = μ(A) + μ(B)\]
+und $μ$ ist \(σ\)-subadditiv gegenüber parweiser disjunkter Folgen. \\
+zz: $μ$ ist ein Maß
+#+begin_proof latex
+Sei $(A_k)_{k ∈ ℕ} ⊆ \mathcal{A}$ mit $A_i ∩ A_j = \emptyset$ für $i = j$ und betrachte zu festem $m ∈ ℕ$
+\begin{align*}
+\sum_{k ∈ ℕ} μ(A_k) &\geq μ(\bigcup_{k ∈ ℕ} A_k) = μ(\bigcup_{k \leq m} A_k ∪ \bigcup_{k > m} A_k) = μ(\bigcup_{k \leq m} A_k) + μ(\bigcup_{k > m) A_k) \\
+&\geq μ(\bigcup_{k \leq m}) A_k = \sum_{k = 1}^{m} μ(A_k)
+\end{align*}
+Somit folgt die Behauptung mit $m \to ∞$.
+#+end_proof

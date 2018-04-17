@@ -2798,7 +2798,7 @@ Zentral Potential $⇒$ sinnvoll in Kugelkoordinaten
    \end{align*}
    $R_y^{\ast}$: reduzierte Rydberg Konstante $\approx \SI{13.6}{\eV}$ \\
    $n = 1,2,3, \dots$ Hauptquantenzahl \\
-   Für gegebenens $n$ ist $l = 0,0,2, \dots, (n - 1)$ \\
+   Für gegebenens $n$ ist $l = 0,1,2, \dots, (n - 1)$ \\
    Für gegebenes $l$ ist $m = -l, -l + 1, \dots, l - 1, l$
    \end{ibox}{}
    \[\hat H \ket{ψ} = E\ket{ψ} \to \ket{n,l,m}\qquad ψ_{n,l,m} = \braket{x|n,l,m}\]
@@ -2936,7 +2936,7 @@ Allgemein: $l = n - 1$
    \[\v L = \v x × \v p = \cvec{y p_z - z p_y;z p_x - x p_z;x p_y - y p_x} = \cvec{L_x;L_y;L_z}\]
    Quantenmechanische Beschreibung
    \[\v x \to \hat{\v x} \qquad \v p \to \hat{\v p}; \qquad \hat{\v L} = \hat{\v x} × \hat{\v p}\]
-   In Ortsdarstellung: $\hat x ↦ x\qquad \hat p_x × - i \hbar \pp{}{x}$
+   In Ortsdarstellung: $\hat x ↦ x\qquad \hat p_x ↦ - i \hbar \pp{}{x}$
    \[\to \hat L_z ↦ - i \hbar (x \pp{}{y} - y \pp{}{x}) = -i\hbar \pp{}{φ} \text{ in Kugelkoordinaten}\]
    $\hat L_Z \ket{n,l,m}$: Ortsdarstellung
    \begin{align*}
@@ -2946,13 +2946,13 @@ Allgemein: $l = n - 1$
    das heißt Eigenzustand zu $\hat L_z$ Operator! Damit ist die \(z\)-Komponente des Drehimpulses des Elektrons scharf definiert. $\braket{L_z^2} - \braket{L_z}^2 = 0$ \\
    Teilchen im Zustand $\braket{5,3,2}$ messen wir mit Wahrscheinlichkeit $1$ für die Drehimpulskomponente in z-Richtung $2\hbar$. Das gilt nicht für \(x,y\)-Richtung:
    \[[\hat L_x, \hat L_y] = i \hat L_z\]
-   Quadrat des Beitrages des Drehimpulses: $\v L^2 = L_x^2 + L_y^2 L_z^2$
+   Quadrat des Beitrages des Drehimpulses: $\v L^2 = L_x^2 + L_y^2 + L_z^2$. Es gilt $[\hat \v L^2, \hat L_z] = 0$
    \begin{align*}
        \hat{\v L}^2 \ket{n,l,m} &= \underbrace{-\hbar^2 (\frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2})}_{\mathclap{\text{Ortsdarstellung von $\hat{\v L}^2$ in Kugelkoordinaten}}} ψ_{n,l,m} \\
        &= -\hbar^2 (\frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2}) R_{n,l}(r) P_l^m(\cos θ) e^{imφ} = \hbar^2 l(l + 1) ψ_{n,l,m} \\
    \hat{\v L}^2 \ket{n,l,m} &= \hbar^2 l(l + 1) \ket{n,l,m}
    \end{align*}
-   Allgemeine Drehimpuls-Eigenzustände: Drehimpuls ist gequantelt: $\abs{\v L}$ kann nur diskrete $\hbar\sqrt{l(l + 1)}$ Werte annehmen. \\
+   Allgemeine Drehimpuls-Eigenzustände: Drehimpuls ist gequantelt: $\abs*{\v L}$ kann nur diskrete $\hbar\sqrt{l(l + 1)}$ Werte annehmen. \\
    Für gegebenen Betrag des Drehimpulses gibt es $2 l + 1$ Einstellmöglichkeiten in \(z\)-Richtung
    $m = -l, -l + 1, \dots, l - 1, l$; Der Wert in \(x\)- und in \(y\)-Richtung ist unbestimmt.
    Typische Darstellung:
@@ -2961,7 +2961,7 @@ Allgemein: $l = n - 1$
    \catcode`)=12
 \begin{center}
 \begin{tikzpicture}
-    \node at (3,2) {$l = 1$};
+    \node at (3,2.5) {$l = 1$};
     \draw[->] (0,0) -- ++(3,0) node[below] {$y$};
     \draw[->] (0,-3) node[left] {$0$} -- ++(0,6) node[left] {$L_z$};
     \draw[dotted] (0,-2) arc[radius=2cm,start angle=270,end angle=450];
@@ -2981,13 +2981,21 @@ Allgemein: $l = n - 1$
    \catcode`(=\active
    \catcode`)=\active
    #+END_EXPORT
+   Nomenkatur:
+   \begin{align*}
+   l &= 0 &\text{s - Zustand} \\
+   l &= 1 &\text{p - Zustand} \\
+   l &= 2 &\text{d - Zustand} \\
+   l &= 3 &\text{f - Zustand} \\
+   \end{align*}
    \begin{align*}
        \hat L_z \ket{l,m} &= \hbar m \ket{l,m} \\
        \hat{\v L}^2 \ket{l,m} &= \hbar l(l + 1) \ket{l,m}
    \end{align*}
    $\ket{l,m}$ sind Drehimpulseigenzustände. In Ortsdarstellung (Kugelkoordinaten):
    \[\ket{l,m} = \frac{1}{\sqrt{2π}} P_l^m (\cos θ) e^{i m φ} = N_{l,m} Y_l^m (θ,φ)\]
-   $N$: Normierung. $Y_l^m$: Kugelflächen-Funktion. $⇒$ Funktion definiert auf einer Kugeloberfläche definiert auf einer Kugeloberfläche kann in $Y_l^{m_l}$ zerlegt werden "`Fourierzerlegung auf einer Kugel"'. $Y_l^{m_l}$ sind
+   $N$: Normierung. $Y_l^m$: Kugelflächen-Funktion.
+   $⇒$ Funktion definiert auf einer Kugeloberfläche kann in $Y_l^{m_l}$ zerlegt werden "Fourierzerlegung auf einer Kugel". $Y_l^{m_l}$ sind
    \begin{align*}
    \text{normiert}\quad ∫_0^{2π} \d φ ∫_0^π \sin θ \d θ \abs{Y_l^{m_l}}^2 &= 1 \\
    \text{orthogonal}\quad ∫_0^{2π} \d φ ∫_0^∞ \sin θ \d θ Y_l^{m\ast} Y_{l'}^{m'} &= δ_{ll'} δ_{mm'}
@@ -3025,7 +3033,7 @@ Allgemein: $l = n - 1$
     \end{scope}
     \end{scope}
 
-    \begin{scope}[shift={(0,-5)}]
+    \begin{scope}[shift={(0,-4.8)}]
     \begin{scope}
     \node[right] at (-1,2.4) {$\displaystyle{\ket{l,m_l} = \ket{1,0} \xrightarrow{\text{Ortsdarstellung}} Y_{1}^{0} = \frac{1}{2}\sqrt{\frac{3}{π}}\cos θ}$};
     \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
@@ -3057,7 +3065,7 @@ Allgemein: $l = n - 1$
     \end{scope}
     \end{scope}
 
-    \begin{scope}[shift={(0,-11)}]
+    \begin{scope}[shift={(0,-10.8)}]
     \begin{scope}
     \node[right] at (-1,2.4) {$\displaystyle{\ket{l,m_l} = \ket{2,0} \xrightarrow{\text{Ortsdarstellung}} Y_{2}^{0} = \frac{1}{4}\sqrt{\frac{5}{π}}(2 \cos^2 θ - \sin^2 φ)}$};
     \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
@@ -3088,11 +3096,12 @@ Allgemein: $l = n - 1$
     \end{scope}
     \end{scope}
 
-    \begin{scope}[shift={(0,-17.7)}] % -18 insert empty page
+    \begin{scope}[shift={(0,-17.5)}] % -18 insert empty page
         \node[right,every text node part/.style={align=left}] at (-1,2.9) {$⇒ Y_{l}^{0}$ erlaubt Polarwinkel-Abhängigkeiten zu beschreiben; $Y_l^{m_l}$ mit $m_l \neq 0 ⇒$ Azimut-Abhängigkeiten zum Beispiel:\\ $\displaystyle{\ket{l,m_l} = \ket{1,\mp 1} \xrightarrow{\text{Ortsdarstellung}} Y_{1}^{\pm 1} = \mp \frac{1}{2}\sqrt{\frac{3}{π}}\sin θ e^{\pm i φ}}$};
     \begin{scope}
-    \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
-        \draw [black!50!white,scale=1,domain=0:360, samples=101, smooth] plot ({cos(\x) + Y11(\x)},{sin(\x)});
+        \draw [scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1});
+%\draw [black!50!white,scale=1,domain=0:360, samples=101, smooth] plot ({cos(\x) + Y11(\x)},{sin(\x)});
+        \draw [black!50!white,scale=1,domain=0:360, samples=201, smooth] plot ({\x}:{1 - Y11(\x)});
         \draw[->] (0,0) -- ++(1.8,0) node[below] {$x$};
         \draw[->] (0,0) -- ++(0,1.8) node[left] {$z$};
         \draw (0,0) node[cross out, draw, minimum size=.2cm, inner sep=0pt, outer sep=0pt] {} node[left,xshift=-2pt] {$y$};
@@ -3134,5 +3143,127 @@ Allgemein: $l = n - 1$
    \catcode`(=\active
    \catcode`)=\active
    #+END_EXPORT
+** Zusammenfassung des Modells für Wasserstoff
+** Optische Übergänge
+  Lich aus Gasentladung von $H_2$ Gas zeigt charakteristische Frequenzen, die bestimmten Energie-Differenzen im Energieeigenwert Spektrum entsprechen. \\
+  Behauptung: Die Emission von Licht folgt aus der Superposition von verschiedenen Energieeigenzuständen $n$ und $n'$ mit der zusätzlichen Bedingung $\abs{l - l'} = Δ l = 1$
+  (Dipol Auswahlregel)
+  Plausibilisierung:
 
+  klassische Elektrodynamik: oszillierender Dipol strahl ab
+  \[\v d = q \v x \qquad \v x = \cvec{0;0;z_0 \cos ω t}\]
+  $⇒$ Quantenmechanik: $\v d \to \hat{\v d}$, Erwartungswert
+  \[\braket{\hat{\v d}} = \braket{ψ | \hat{\v d} | ψ}\]
+  1D-lineare Emmision $\v d \to d_z = e z$ \\
+  Grundzustand:
+  \[\braket{1\,0\,0| e \hat z | 1\,0\,0} = ∫ \underbrace{ψ^{\ast}_{100}(r,θ,φ)}_{\mathclap{\text{gerade}}} \overbrace{e z \underbrace{ψ_{100}(r,θ,φ)}_{\mathclap{\text{gerade}}}}^{\mathclap{\text{ungerade}}} \d V = 0\]
+  $⇒$ Zustand hat kein elektrisches Dipolmoment
+  \[\braket{ψ_{nlm} | e \hat{\v x} | ψ_{nlm}} = 0 ∀ n,l,m\]
+  Das Elektron ist eine Superposition von zwei Zuständen
+  \begin{align*}
+  \ket{ψ}_{t = 0} &= \frac{1}{\sqrt{2}} \{\underbrace{\ket{n,l,m}}_{\ket{ϕ}} + \underbrace{\ket{n',l',m'}}_{\ket{ϕ'}}\} \\
+  \braket{\hat{\v d}} &= \frac{e}{2} ((\bra{ϕ} + \bra{ϕ'}) \hat{\v d} (\ket{ϕ} + \ket{ϕ'})) \\
+  &= \frac{e}{2} (\underbrace{\braket{ϕ|\hat{\v d}|ϕ}}_{= 0} + \underbrace{\braket{ϕ'|\hat{\v d}|ϕ'}}_{= 0} + \underbrace{\braket{ϕ | \hat{\v d} | ϕ'} + \braket{ϕ' | \hat{\v d} | ϕ}}_{\mathclap{c + c^{\ast} ⇒ \text{ reelle Zahl}}})
+  \end{align*}
+  \begin{align*}
+  \ket{ψ_t} &= e^{-i \frac{E_1}{\hbar}t} \frac{1}{\sqrt{2}} (\ket{ϕ_s} + e^{-i \frac{E_2 - E_1}{\hbar}t} \ket{ϕ_p}) \\
+  \braket{\hat d}_ψ &= \Re (\bra{ϕ_s} e \hat{\v x} e^{-i \frac{E_2 - E_1}{\hbar}t} \ket{ϕ_p}) \\
+  &= e \Re (e^{-i ω_{12} t} \underbrace{\braket{ϕ_s | \hat z | ϕ_p}}_{\mathclap{\neq 0 \text{ für $Δ l = \pm 1$, Dipolmatrix Element $D_z$}}}) \\
+  &= e \underarrow[D_z]{Dipol in \(z\)-Richtung} \overarrow[\cos{ω_{12} t}]{Oszilliert mit der Frequenz, die der Energie-Differenz entspricht}
+  \end{align*}
+  Licht emission mit Polarisation in \(z\)-Richtung in \(x\)-\(y\)-Richtung; keine Emission in \(z\)-Richtung; $\v ∇ · \v E = 0$ transversale elektromagnetische Welle.
+
+  Quantitative siehe Lehrbücker zu Quanten-Elektrodynamik (QED) $\estimates$ Photon Konzept; als Ergebnis findet man, dass die Superposition exponentiell zerfällt $\to$ natürliche Lebensdauer.
+
+  Welche Energie hat das Photon? \\
+  Der Erwartungswert des Diplos $\v D \propto \braket{a | \hat{\v d} | g}$ zerfällt auch exponentiell
+
+  Welche Frequenzen hat das Licht? \\
+  Äquivalent: was misst man in einem Spektrometer? \\
+  Lösung: zerlegen elektromagnetisches Feld in $e^{iωt}$
+  \begin{align*}
+  \to E(t) &= \frac{1}{\sqrt{2π}} ∫_{-∞}^{+∞} E(ω) e^{i ω t} \d ω \\
+  ⇒ E(ω) &= \frac{1}{\sqrt{2π}} ∫_{-∞}^{+∞} E(t) e^{-i ω t} \d t
+  \end{align*}
+  Spektrometer misst $I(ω) = E^{\ast}(ω) E(ω) = \abs{E(ω)}^2$
+
+  \begin{align*}
+  ⇒ i \hbar \pp{ψ}{t} &= - \frac{\hbar^2}{2m} \pp{}{x^2} ψ \\
+  i \hbar \dd{}{t} \ket{ψ} &= \hat H \ket{ψ} \\
+  \ket{ψ} \to \ket{ψ}_{t + \d t} &= e^{-i \frac{\hat H^2}{\hbar}} \ket{ψ}_t
+  \end{align*}
+  Split-Step-Fourier
+** Externe Felder - Zeeman-Effekt (1896)
+   Klassisch:
+   \[H = \frac{1}{2m_e}(\v p + e \v A(\v x))^2 + V(\v x)\]
+   mit $\v A$: Vektorpotential, $\v B = \v ∇ × \v A$
+   Quantenmechanik:
+   \begin{align*}
+   \hat H &= \frac{1}{2m_e}(\hat{\v p}^2 + e \hat{\v p} \hat{\v A} + e \hat{\v A} \hat{\v p} + e^2 \hat{\v A}^2) + V(\hat{\v x}) \\
+   \intertext{in Ortsdarstellung mit}
+   \v B &= \vcec{0;0;B_z} \estimates \v A = \frac{B_z}{2} \cvec{-y;x;0} \\
+   \hat{\v p} \hat{\v A} + \hat{\v A} \hat{\v p} &= -i \hbar \frac{B_z}{2}(\cvec{\partial_x;\partial_y;\partial_z} · \cvec{-y;x;0} + \cvec{-y;x;0}\cvec{\partial_x;\partial_y;\partial_z})
+   &= -i \hbar \frac{B_z}{2} (-\partial_x y + \partial_y x - y \partial_x + x \partial_y) = -i \hbar B_z (x \partial_y - y \partial_x)= B_z \hat L_z \\
+   \hat H &\underarrow[=]{in Ortsdarstellung} \underbrace{\frac{1}{2m_e} \Laplace + V(\v x)}_{\mathclap{\text{Wasserstoff ohne Magnetfeld}}} + \frac{e}{2m_e} \underbrace{\frac{\hbar}{i}(x \partial_y - y \partial_x)}_{\hat L_z} + \underbrace{\frac{e^2}{2 m_e} \frac{B_z^2}{4}(x^2 + y^2)}_{\mathclap{\sim \SI{1e-6}{\per\tesla}B_z}\text{ kleiner als $\braket{B_z · \hat L_z}$ Term in "`standard"' Labor $B\sim \SI{10}{\tesla}$}}
+   \end{align*}
+   Der $\hat L_z$ Term ist nur in \(z\)-Richtung, das legt das Koordinatensystem fest.
+   \begin{align*}
+   \hat H &= \hat H_0 + \frac{e}{2 m_e} B_z \hat L_z \\
+   \hat H_0 \ket{n\, l\, m} &= E_n \ket{n\,l\,m} \\
+   \intertext{mit $m \estimates z$-Komponente des Drehimpulses, wird auch Magnet-Quantenzahl genannt}
+   ⇒ \hat H \ket{n\, l\, m} &= E_n + \frac{e\hbar}{2m_e} m B_z \ket{n\, l\, m}
+   \intertext{wir definieren $μ_B$ - Bohrsches Magneton}
+   μ_B &= \frac{e \hbar}{2 m_e}
+   \end{align*}
+* Spin
+   Darwin Term ist nur für Zustände mit	$l = 0$ nicht null
+   \[ΔE_D = \frac{π \hbar^2}{2m^2 c^2} \frac{Z e^2}{4π ε_0} \underbrace{∫ ψ_{n00}^{\ast} (n) δ(n) μ_{n00}(n) \d V}_{= \abs{Ψ_{n00}(0)}} = - E_n \frac{(2α)^2}{n}\]
+   Alle Terme bis $\mathcal{O}(\frac{v}{c})^2$
+   \begin{align*}
+   E_{nj} &= E_n (1 + \frac{Z^2 α^2}{n^2}(\frac{n}{j + \frac{1}{2}} - \frac{3}{4}))
+   \end{align*}
+
+   $\v S$ und $\v L$ liegen in unterschiedlichen Vektorräumen $⇒$
+   \[[\v L, \v S] = 0\]
+* 2 Elektronen System am Beispiel Helium
+** Helium - $2p, 2n, 2e^{-}$: Modell: $Z = 2$
+   Wichtig:	Zusätzlich zur anziehenden Wechselwirkung (\(e^{-}\)-Kern) gibt es abstoßende Wechselwirkungen (\(e^{-}\)-\(e^{-}\)) \\
+   Ortsdarstellung:
+   \begin{align*}
+   H &= \underbrace{-\frac{\hbar^u}{2μ}(\Laplace_1 + \Laplace_2)}_{\mathclap{\text{kinetische Energie}}} - \overbrace{\frac{Z e^2}{4π ε_0 \abs{\v r_1}} - \frac{Z e^2}{4π ε_0 \abs{\v r_2}}}^{\mathclap{\text{Elektron-Kern Wechselwirkung}}} + \underbrace{\frac{e^2}{4π ε_0 \abs{\v r_{12}}}}_{Elektron Elektron Wechselwirkung} \\
+   μ &= \frac{m_e m_k}{m_e + m_k} \sim m_e
+   \end{align*}
+   Grundzustandsenergie ohne Elektron-Elektron-Wechselwirkung: $2×$	 Wasserstoff mit $Z = 2$
+   \[E_{n - 1} = 2 × Z^2 (\SI{-13.6}{\electronvolt}) = \SI{-108.8}{\electronvolt}\]
+   Beobachtet wird, dass die vollständige Ionisierung
+   \[H_e \to H_e^{++} + e^{-} \]
+   $\SI{79}{\electronvolt}$ benötigt wird.
+   kleinere Bindungsenergie folgt aus Elektron-Elektron-Wechselwirkung. Schätzen Elektron-Elektron-Wechselwirkung mit Störungstheorie (1. Ordnung) ab:
+   \[\Laplace E_{e^{-} - e^{-}-\text{WW}} = \frac{e^2}{4π ε_0} \braket{ψ | \frac{1}{\abs{\v r_{12}}} | ψ}\]
+   $\ket{ψ}$ ist ein zwei-Elektronen Zustand. Nehmen zwei unabhängig gebundene $e^{-}$ an $⇒$ $\ket{ψ}$ in Ortsdarstellung
+   \[ψ_n(\v r_1, \v r_2) = \underbrace{ψ_n(\v r_1)}_{\mathclap{\text{Lösung von Wasserstoff mit $Z = 2$}}} ψ_n(\v r_2) \]
+   Für Grundzustand: $ψ_{n = 1}^1(\v r) = ψ_{n = 1}^2(\v r) = ψ_{100}(\v r)$
+   \[⇒ ψ(\v r_1, \v r_2) = \frac{1}{π} \frac{Z^3}{a_B^3} e^{- \frac{Z}{a_B}}\]
+** Spin Feiheitsgrad
+   $⇒$ Energie-Eigenzustände werden Gesamtspin haben $hat{\v S} = \hat{\v S_1} + \hat{\v S_2}$ \\
+   Analog zu $\v j ⇒ \hat{\v S}^2, \hat S_{z}$ Eigenzustände $\ket{s, r_s}$.
+   \begin{align*}
+   \hat{\v S}^2 &: s_1 - s_2 \leq S \leq s_1 + s_2 \\
+   \hat{S_z}&: - s \leq r_s \leq s
+   \end{align*}
+   Beispiel:
+   \begin{align*}
+   s_1 &= \frac{1}{2} \\
+   s_2 &= \frac{1}{2} \\
+   s &= 0, r_s = 0 \tag{Singulett} \\
+   s &= 1, r_s = -1, 0, 1 \tag{Triplett}
+   \end{align*}
+   Wie sehen die Eigenzustände zu $S = 0$ und $S = 1$ aus? \\
+   Wähle Basis $\ket{\uparrow \downarror}$ Teilchen $1$ und $\ket{\uparrow}$, Teilchen 2 ind $\ket{\downarrw}$, $\ket{\downarrow,\uparrow}, \ket{\downarrow, \downarrow}, \ket{\uparrow, \uparrow}$
+   \[\hat{\v S}^2 \ket{ψ} &= (\hat{\v S_1} + \hat{\v S_2})^2 \ket{ψ} = \hat{\v S_1}^2 + \hat{\v S_2}^2 + 2 \hat{\v S_1} \hat{\v S_2} \ket{ψ} = \hbar^2 s(s + 1) \ket{ψ}\]
+   \begin{alignat*}{3}
+   S^x \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} && S^y \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} && S^z \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} \\
+   S^x \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} && S^y \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} && S^z \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} \\
+   \ket{ψ} &= \ket{\uparrow \downarrow}
+   \end{alignat*}{3}
 \printbibliography
