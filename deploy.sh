@@ -23,7 +23,7 @@ else
 	export PATH="${HOME}/texlive/bin/x86_64-darwin:${PATH}"
 fi
 
-git clone git://orgmode.org/org-mode.git
+git clone https://code.orgmode.org/bzg/org-mode.git
 cd org-mode
 make autoloads
 make 

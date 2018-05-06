@@ -2946,7 +2946,7 @@ Allgemein: $l = n - 1$
    das heißt Eigenzustand zu $\hat L_z$ Operator! Damit ist die \(z\)-Komponente des Drehimpulses des Elektrons scharf definiert. $\braket{L_z^2} - \braket{L_z}^2 = 0$ \\
    Teilchen im Zustand $\braket{5,3,2}$ messen wir mit Wahrscheinlichkeit $1$ für die Drehimpulskomponente in z-Richtung $2\hbar$. Das gilt nicht für \(x,y\)-Richtung:
    \[[\hat L_x, \hat L_y] = i \hat L_z\]
-   Quadrat des Beitrages des Drehimpulses: $\v L^2 = L_x^2 + L_y^2 + L_z^2$. Es gilt $[\hat \v L^2, \hat L_z] = 0$
+   Quadrat des Beitrages des Drehimpulses: $\v L^2 = L_x^2 + L_y^2 + L_z^2$. Es gilt $[\hat{\v L}^2, \hat L_z] = 0$
    \begin{align*}
        \hat{\v L}^2 \ket{n,l,m} &= \underbrace{-\hbar^2 (\frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2})}_{\mathclap{\text{Ortsdarstellung von $\hat{\v L}^2$ in Kugelkoordinaten}}} ψ_{n,l,m} \\
        &= -\hbar^2 (\frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2}) R_{n,l}(r) P_l^m(\cos θ) e^{imφ} = \hbar^2 l(l + 1) ψ_{n,l,m} \\
@@ -3201,7 +3201,7 @@ Allgemein: $l = n - 1$
    \begin{align*}
    \hat H &= \frac{1}{2m_e}(\hat{\v p}^2 + e \hat{\v p} \hat{\v A} + e \hat{\v A} \hat{\v p} + e^2 \hat{\v A}^2) + V(\hat{\v x}) \\
    \intertext{in Ortsdarstellung mit}
-   \v B &= \vcec{0;0;B_z} \estimates \v A = \frac{B_z}{2} \cvec{-y;x;0} \\
+   \v B &= \cvec{0;0;B_z} \estimates \v A = \frac{B_z}{2} \cvec{-y;x;0} \\
    \hat{\v p} \hat{\v A} + \hat{\v A} \hat{\v p} &= -i \hbar \frac{B_z}{2}(\cvec{\partial_x;\partial_y;\partial_z} · \cvec{-y;x;0} + \cvec{-y;x;0}\cvec{\partial_x;\partial_y;\partial_z})
    &= -i \hbar \frac{B_z}{2} (-\partial_x y + \partial_y x - y \partial_x + x \partial_y) = -i \hbar B_z (x \partial_y - y \partial_x)= B_z \hat L_z \\
    \hat H &\underarrow[=]{in Ortsdarstellung} \underbrace{\frac{1}{2m_e} \Laplace + V(\v x)}_{\mathclap{\text{Wasserstoff ohne Magnetfeld}}} + \frac{e}{2m_e} \underbrace{\frac{\hbar}{i}(x \partial_y - y \partial_x)}_{\hat L_z} + \underbrace{\frac{e^2}{2 m_e} \frac{B_z^2}{4}(x^2 + y^2)}_{\mathclap{\sim \SI{1e-6}{\per\tesla}B_z}\text{ kleiner als $\braket{B_z · \hat L_z}$ Term in "`standard"' Labor $B\sim \SI{10}{\tesla}$}}
@@ -3259,8 +3259,8 @@ Allgemein: $l = n - 1$
    s &= 1, r_s = -1, 0, 1 \tag{Triplett}
    \end{align*}
    Wie sehen die Eigenzustände zu $S = 0$ und $S = 1$ aus? \\
-   Wähle Basis $\ket{\uparrow \downarror}$ Teilchen $1$ und $\ket{\uparrow}$, Teilchen 2 ind $\ket{\downarrw}$, $\ket{\downarrow,\uparrow}, \ket{\downarrow, \downarrow}, \ket{\uparrow, \uparrow}$
-   \[\hat{\v S}^2 \ket{ψ} &= (\hat{\v S_1} + \hat{\v S_2})^2 \ket{ψ} = \hat{\v S_1}^2 + \hat{\v S_2}^2 + 2 \hat{\v S_1} \hat{\v S_2} \ket{ψ} = \hbar^2 s(s + 1) \ket{ψ}\]
+   Wähle Basis $\ket{\uparrow \downarrow}$ Teilchen $1$ und $\ket{\uparrow}$, Teilchen 2 ind $\ket{\downarrow}$, $\ket{\downarrow,\uparrow}, \ket{\downarrow, \downarrow}, \ket{\uparrow, \uparrow}$
+   \[\hat{\v S}^2 \ket{ψ} = (\hat{\v S_1} + \hat{\v S_2})^2 \ket{ψ} = \hat{\v S_1}^2 + \hat{\v S_2}^2 + 2 \hat{\v S_1} \hat{\v S_2} \ket{ψ} = \hbar^2 s(s + 1) \ket{ψ}\]
    \begin{alignat*}{3}
    S^x \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} && S^y \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} && S^z \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} \\
    S^x \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} && S^y \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} && S^z \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} \\

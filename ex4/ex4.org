@@ -38,7 +38,7 @@
    \begin{align*}
    R_y^{\ast} &= \frac{μ e^4}{8 ε_0^2 h^2} = R_y h c = R_{y∞} \frac{μ}{m_e} h c \\
    R_y^{\ast} &= \SI{13.605698}{\electronvolt}
-   R_{y∞}^{\ast} &= \SI{1097373.15}{\speedoflight\per\meter} \\
+   R_{y∞}^{\ast} &= \SI{1097373.15}{\clight\per\meter} \\
    E_n &= - \frac{1}{n^2} \frac{m_e c^2}{2} α^2
    \end{align*}
    Spektrallinien für Übergang $ψ_m \to μ_n$ ($m,n$ Hauptquantenzahlen)
@@ -51,7 +51,7 @@
    Berücksichtigung der relativistischen Massenzunahme \\
    $\to$ Energieniveaus hängen nur noch von $n$ und $j$ ab $(E_{nj})$ \\
    $\to$ sind in $l$ entartet: \\
-   $2s \frac{1}{2} (n = 2, l = 0, j = \frac{1}{2})$
+   $2s \frac{1}{2} (n = 2, l = 0, j = \frac{1}{2})$ \\
    $2p \frac{1}{2} (n = 2, l = 1, j = \frac{1}{2})$ \\
    Lamb-Shift
    QED-Korrekturen = Austaush Photon / Elektronen. \\
@@ -67,4 +67,244 @@
    2. Ununterscheidbarkeit der $e^{-}$
 *** Wechselwirkung der Elektronen
 	$=$ gegenseitige Abstohung der beiden Elektronen $⇒$ Hamilton-Operator
-	\[\hat H = \sum_{i = i}^{2}(\frac{\v p^2}{2m} - \frac{Ze}{4π ε_0 r_i}) + \sum_{\substack{i,j\\i < j}} \frac{e^2}{4π ε_0 \abs{\v r_i - \v r_j}} + \hat O(\v l_1, \v l_2, \v s_1 \v s_2, \hat I)\]
+	\[\hat H = \sum_{i = i}^{2}(\frac{\v p^2}{2m} - \frac{Ze}{4π ε_0 r_i}) + \sum_{\substack{i,j\\i < j}} \frac{e^2}{4π ε_0 \abs{\v r_i - \v r_j}} + \hat{\mathcal{O}}(\v l_1, \v l_2, \v s_1 \v s_2, \hat I)\]
+	Näherungen: Zentralfeldnäherung. Elektron $i$ sieht ein effektives Zentralpotential
+	\[V_{\text{eff}}(r_i)\]
+	Produktansatz:
+	\[ψ(\v r_1, \v r_2) = ψ(\v r_1) ψ(\v r_2)\]
+	Extrem-Betrachtung
+	1. Vernachlässige Abschirmung des Kerns durch Elektron $j$ $\to$ Wasserstoff-Lösung mit beiden Elektronen im Grundzustand $n = 1$. Bindungsenergi:
+	   \[E_{He} = 2 Z^2(\SI{-13.6}{\electronvolt}) = \SI{-108}{\electronvolt}\]
+	2. Zweites Elektron schirmt Potential ab, sodass $e_i$ nur noch $Z = 1$ sieht
+	   \[E_{He} = - Z^2 \SI{13.6}{\electronvolt} - (Z - 1)^2 \SI{13.6}{\electronvolt} = \SI{-67.5}{\electronvolt}\]
+	Experimententell findet man für	Grundzustand $E_{He} = \SI{-79.93}{\electronvolt}$. Zweites Elektron schirmt Potential teilweise ab:
+	\[E_{He} = - Z^2 \SI{13.6}{\electronvolt} - (Z - Σ)^2 \SI{13.6}{\electronvolt}\]
+	$⇒$ Abschirmungsparameter $Σ = 0.655$. \\
+	Einteilchen-Lösung: $ψ_{nlm}(\v r_i)$ werden wie beim Wasserstoff klassifiziert. Effektives Potential ist zwar Kugelsymmetrisch aber kein \(1/r\)-Potential $\to$ Aufhebung der \(l\)-Entartung
+	(größere $l \to$ schächer gebunden)
+*** Ununterscheidbarkeit der Elektronen
+	Elektronen $=$ Spin $\frac{1}{2}$ - Fermion. Sind ununterscheidbar: Ich weiß nicht, welches Elektron im Zustand $a \{n_1, l_1, m_1\}$ oder im Zustand $b = \{n2, l_2, m_2\}$ ist!
+	\begin{align*}
+	ψ_{ab}^{\text{I}}(\v r_1, \v r_2) &= ψ_a(\v r_1) ψ_B(\v r_2) \\
+	ψ_{ab}^{\text{I}}(\v r_1, \v r_2) &= ψ_a(\v r_2) ψ_B(\v r_1)
+	\end{align*}
+	$\to$ für ununterscheidbare Teilchen sin Zustände äquivalent und müssen die gleiche Aufentaltswahrscheinlichkeit ergeben.
+	\[\abs{ψ_{ab}^{\text{I}}}^2 = \abs{ψ_{ab}^{\text{II}}}^2 ⇒ ψ_{ab}^{\text{I}} = \pm ψ_{ab}^{\text{II}}\]
+	\begin{ibox}{Verallgemeinertes Pauli-Prinzip}
+	Gesamtwellenfunkion eines Systems aus mehreren Fermionen ist antisymmetrisch gegenüber der Vertauschung zweier Fermionen.
+	$⇒$ In einem System können deshalb keine zwei Fermionen die gleiche Quantenzahl haben.
+	\end{ibox}
+	Bei Anwendung auf Helium muss berücksichtigt werdes, dass Gesamtwellenfuktion Ortsanteil $ψ_{nlm}$ und einen Spinanteil $χ_{m_s}$ hat.
+	$\to$ Elektronenspins im Helium können zu zwei verschiedenen Gesamtspins $S$ koppeln.
+	1. Symmetrisches Triplett $(S = 1, s_s = 0, \pm 1)$
+	   \begin{align*}
+	   χ_S^{-1} &= χ_1(\downarrow) χ_2(\downarrow) \\
+	   χ_S^0 &= \{χ_2(\uparrow) χ_2(\downarrow) + χ_1(\downarrow) χ_2(\uparrow)\} \frac{1}{\sqrt{2}}
+	   χ_S^{1} &= χ_1(\uparrow) χ_2(\uparrow) \\
+	   \end{align*}
+	2. Antisymmetirsches Singlett $(S = 0, m_s = 0)$
+	   \begin{align*}
+	   χ_a^0 &= \{χ_1(\uparrow) χ_2(\downarrow) - χ_1(\downarrow) χ_2(\uparrow)\} \frac{1}{\sqrt{2}}
+	   \end{align*}
+    Befinden sich die beiden Elektronen in einem symmetrischen (antisymmetischen) Spinzustand, so muss die Ortswellenfunktion entsprechend antisymmetrisch (symmetrisch) sein. \\
+	Antisymmetrisierung von $ψ(\v r_1, \dots, \v r_n) = ψ_1(\v r_1) · \dots · ψ_n(\v r_n)$. Für Mehrelektronensysteme erhält man die antisymmetrische Wellenfunktion mittels der Slater-Determinante
+	\[ψ(\v r_1, \dots, \v r_n) = \frac{1}{\sqrt{n!}} \begin{vmatrix} ψ_{k_1}(\v r_1) & \dots & ψ_{k_1}(\v r_n) \\ \vdots & & \vdots \\ ψ_{k_n}(\v r_1) & & ψ_{k_n}(\v r_n)\end{vmatrix}\]
+*** Term-Schema von Helium
+	Im Grundzustand des Helium sind beide Elektronen im tiefstmöglischenZustand: $n_1 = n_2 = 1, l_1 = l_2 = 0$ (symmetrisch). Die Spins *müssen* dann antiparallel beziehungsweise im antisymmetrischen Singlett Zustand sein.
+	Für angeregtes Helium existieren dann zwei Term-Systeme:
+	- Zustände mit $S = 0$: Para-Helium
+	- Zustände mit $S = 1$: Ortho-Helium
+    Die angeregten Singlett-Zustände liegen jeweils höher als die entsprechenden Triplett Zustände: Coulomb-Abstoß ist im Falle antisymmetrischer Spinwellenfunktion ($=$ symmetrische Ortswellenfunktion) größer
+	$\to$ weniger stark gebunden $\estimates$ "höhere Niveaus". Spektroskopische Notation:
+	\[\prescript{2\text{S} + 1}{}{\text{L}}_{\text{J}}\]
+** Mehreektronensysteme $(Z > 2)$
+*** Numerische Näherungsverfahren
+   nicht Kugelsymmetrische Wechselwirkung zwischen Elektronen $\to$ keine analytsiche Lösung $⇒$ iterativep Näherungsverfahren. \\
+   *Modell unabhängiger Elektronen*: \\
+   Kernladung $Z_e$ und die zeitlich gemittelte Verteilung der anderen $(Z - 1)$ Elektronen resultieren für ein Elektron $i$ in ein effektives kugelsymmetrisches Potential $V_{\text{eff}}(r_i)$
+   Einteilchenproblem mit Energiezuständen $E_i(n_i, l_i, m_i)$ und mit Einteilchenlösungen $ψ_{n_i l_i m_i}$. Da $V_{\text{eff}}(r_i)$ zwar kugelsymmetrisch aber kein
+   \(1/r\)-Potential $\to$ Aufhebung der \((n,l)\)-Entartung. $⇒$ nach Pauli-Prinzip werden $E_{n,l}$ sukzessive besetzt. Gesamtwellenfunktion $=$ Produkt der Einteilchenlösungen
+   \[ψ(\v r_1, \dots, \v r_Z) = ψ_1(\v r_1) ψ_2(\v r_2) \dots ψ_Z(\v r_Z)\]
+   $\to$ Antisymmetrisierung mittels Slater-Determinante. Mit dieser gesamtwellenfunktion kann das zeitliche gemittelte effektive Potential $V_{eff}$ neu berechnet werden:
+   \[V_{eff}(r_i) \sim - e^2(\frac{Z}{r_i} - \sum_{i \neq j} ∫ \frac{1}{\abs{\v r_i - \v r_j}} \abs{ψ_i(r_i)}^2 d^3 r_j)\]
+   Mit diesem verbesserten Potential startet die nächste Iteration zur Berechnung der Einteilchenzustände $E_i(n_i, l_i, m_i)$
+   Hartree-Verfahren.
+
+   #+begin_remark latex
+   Neben der Coulomb Wechselwirkung müssen auch die magnetische Wechselwirkung zwischen den magnetischen Momenten der Elektronen (Bahndrehimpuls + Spin) berücksichtigt werden $\to$ "Feinstruktur".
+   Relativ zu Wasserstoff sind komplexere Drehimpulskopplungen möglich.
+   #+end_remark
+*** Drehimpulskopplung und Gesamtdrehimpuls
+	Gesamtdrehimpuls eines Mehrelektronensystems hängt davon ab, wie Drehimpulse und Spins koppeln. \\
+	$\v L, \v S, \v J =$ Gesamt Bahn-, Spin-, totaler Drehimplus \\
+	$L, S, J =$ zugehörige Quantenzahlen \\
+	$\v l_i, \v s_i, \v j_i =$ Bahn-, Spin, totaler Drehimpuls des Elektron $i$ \\
+	$l_i, s_i, j_i =$ zughörige Quantenzahlen
+    1. \(L\)-\(S\)-Kopplung (Russel-Sanders-Kopplung) \\
+	   falls Kopplungsenergie zwischen Bahdrehimpulsen und zwischen Spins groh
+	   \begin{align*}
+	   \v L &= \sum_{i} \v l_i \qquad \abs{\v L} = \sqrt{L(L + 1)} \\
+	   \v S &= \sum_{i} \v s_i \qquad \abs{\v S} = \sqrt{S(S + 1)} \\
+	   \v J &= \sum_{i} \v j_i \qquad \abs{\v J} = \sqrt{J(J + 1)} \\
+	   \end{align*}
+	   #+begin_ex latex
+	   Kopplung zweiter \(p\)-Elektronen $(p^2)$ ($l_1 = l_2 = 1, s_1 = s_2 = 1/2$) \\
+	   L: $\abs{l_1 - l_2} \leq L \leq l_1 + l_2 ⇒ L = 0, 1, 2$ \\
+	   S: $\abs{s_1 - s_2} \leq S \leq s_1 + s_2 ⇒ S = 0, 1$
+	   #+end_ex
+	   $⇒$ bereits 10 verschiedene Drehimpulskopplungen $\abs{S - L} \leq J \leq S + L$ mit $J = 0, 1, 2, 3$
+	2. \(JJ\)-Kopplung \\
+	   Falls Energiegewinn der Kopplung der einzelnen Spins beziehungsweise Bahndrehimpulse klein gegenüber der Kopplung von $l_i$ und $s_i$ ist ($\sim \v l_i \v s_i$ groß gegenüber der Coulomb):
+	   \[\v j_i = \v l_i + \v s_i \to \v J = \sum_{i} \v j_i\]
+	   JJ tritt vor allem bei schweren Atomen auf. Im Folgenden nur Diskussion von LS-Kopplung.
+	3. Termschemata $(LS)$ \\
+	   Elektronekonfiguration mit Gesamtdrehimpuls $\v L$ und Gesamtspin $\v S$ führen je nach Kopplung von $\v L$ und $\v S$ zu verschiedenen Feinstrukturkompensationen mit verschiedenen
+	   $\v J$:
+	   \[\abs{L - S} \leq J \leq L + S\]
+	   Multiplizität: $2S + 1$ für $S < L$, $2L + 1$ für $L \leq S$
+	   #+ATTR_LATEX: :options []
+	   #+begin_ex latex
+	   Mögliche Feistruktur für \(p^2\)-Konfiguration. Aufspaltung von $\prescript{3}{}{P}$ aufgrund der Feinstruktur durch $\v L \v S: \sim c \v L \sim S$
+	   \begin{align*}
+	   c \v L \v S &= c (J(J + 1) - L(L + 1) - S(S + 1)) \\
+	   \v L \v S \text{ für } \prescript{3}{}{P}(L = 1, S = 1) &: \begin{cases} J = 2 & 6 - 2 - 2 = +2 \\ J = 1 & 2 - 2 - 2 = - 2 \\ J = 0 & 0 - 2 - 2 = 4\end{cases}
+	   \end{align*}
+	   #+end_ex
+*** Struktur der Elektronenhülle
+	Aufgrund des Pauli-Prinzips darf Zustand mit $\{n,l,m\}$ nur mit maximal 2 Elektronen $(m_s = \pm 1/2)$ besetzt werden. Für Hauptquantenzahl $n$:
+	\[k = \sum_{l = 0}^{n - 1} (2l + 1) = n^2\]
+	Zustände die mit insgesamt $2 n^2$ Elektronen besetzt werden können. Die energetische Reihenfolge der Energiezustände $E_{nl}$:
+	\[1s, 2s, 2p, 3s, 3p, [4s, 3d], 4p, [5s, 4d], 5p, [6s, 5d, 4f], 6p, [7s, 6d, 5f]\]
+	Elektron / Ladungsdichte (sehr kurz)
+	\[ρ_n \sim \sum_{e} r^2 \abs{R_{nl}(r)}^2 2 n^2 e\]
+	Dar Hauptteil der Ladungsverteilung bei gegebener Hauptquatenzahl $n$ ist in einer Kugelschale konzentriert.
+	- $n = 1$ K-Schale
+	- $n = 2$ L-Schale
+	- $n = 3$ M-Schale
+	- $n = 4$ N-Schale
+	- $n = 5$ O-Schale
+	- $n = 6$ P-Schale
+	- $n = 7$ Q-Schale
+    Der mittlere Radius der Elektronenverteilung nimmt mit steigendem $n$ zu. Die intrinsische Längenskala $a_0 / Z$ kompensiert (durch größere Coulomb-Anziehung).
+	Die radiale Wellenfunktion, $R_{ln}$ hängt von $l$ ab $\to$ verschiedene \(l\)-Werte bilden Unterschalen $(s,p,d,f)$ zur Hauptschale. Frage: Was ist die energetisch günstigte Konfiguration, bei
+	nicht völlig besetzten Unterschalen?
+*** Grundzustand des Mehrelektronensystem und Hund'sche Regel
+	Aus Beispiel der verschiedenen Drehimpulskopplung für die $p^2$ Elektronenkonfiguration wurde gezeigt, das für eine feste Elektronenkonfiguration eine Vielzahl von	Termen gibt. Eine dieser Zustände sollte
+	das energetisch tiefste Zustand sein, den das Atom im Grundzustnad einnimmt. Aus spektroskopischen Daten vieler Atome wurden von F. Hund die folgenden empirischen Regeln aufgestellt.
+	1. Für alle abgeschlossenen Schalen und Unterschalen gilt $L = 0, S = 0 \to J = 0$. Die Überlagerung der Wellenfunktionen abgeschlossener Schalen führt auf eine kugelsymmetrische Ladungsverteilung.
+	   Spektroskopische Notation: $(\prescript{2\text{S} + 1}{}{L}_J): \prescript{1}{}{S}_0$ (Singlett ohne Feinstruktur). $⇒$ Es genügt, für die spektroskopischen Eigenschaften sich auf die Elektronen außerhalb
+	   der abgeschlossenen Schalen zu beschränken. Beispiel: Natrium (Z = 11): $1s^2 2s^2 2p^6 3s^1$, Neon: $3s^1$
+	2. In einer nicht-abgeschlossenen $s, p, d, f$ Unterschale liegen die Zustände mit maximalen Spin energetisch am tiefsten. (symmetrische Spinwellenfunktion $\to$ maximaler Abstand $\to$ minimale Coulombenergie.)
+	3. Für Terme mit maximalem Spin liegen die Terme mit maximalem $L$ am tiefsten. Die zu einer Unterschale gehörenden \(m\)-Zustände werden so gefüllt, dass die Spin $\uparrow$ erst $m = l, m = l - 1, \dots$ Orbitale besezten.
+	   Beispiel: $C(Z = 6)[1 s^2 2s^2] 2 p^2; p = \{m = 1: \uparrow, m = 0:\uparrow\} ⇒ L = 1, S = 1$
+	4. Ist die $s,p,d,f$ Unterschale
+	   - Weniger als halb gefüllt: Term $J = \abs{L - S}$ ist Grundzustand
+	   - mehr als halb gefüllt: Term mit $J = L + S$ ist Grundzustand
+       Beispiel $C$: Spin $S = 1$ mit $L = 1$ kopplen zu $J = 2, 1, 0$ $⇒$ entspricht Triplett $\prescript{3}{}{P}_2, \prescript{3}{}{P}_1, \prescript{3}{}{P}_0 ⇒$ Zustand	$\prescript{3}{}{P}_0$ ist
+	   Grundzustand. Entspricht Antiparallelzustand von $\v l$ und $\v s$ im Wasserstoff-Atom. \\
+	   Bei mehr als halbgefüllten Schalen: Fehlende Elektronen können als Löcher mit positiver Ladung angesehen werden $\to$ parallele Ausrichtung von $\v L$ und $\v S$ minimiert Energie.
+** Ordnung der Elemente
+*** Aufbau in der Atomhülle
+	Durch sukzessives Aufüllen der Schalen und Unterschalen erhält man die Elektronen-Konfiguration der Elemente für $Z > 2$. Nach $Z = 18$ wird mit dem nächsten Element nicht die \(3d\)-Unterschale
+	gefüllt (siehe Merkregel, Abbildung), sondern es wird erst die $4s$ Unterschale gefüllt. Da die $3d$ Unterschale innerhalb der $4s$ Unterschale liegt werden die chemischen Eigenschaften dieser Elemente vor allem durch
+	die $4s$ Elektronen bestimmt ("Übergangselemente"). Die nächste Unregelmäßigkeit findet nach Krypton $(Z = 36)$ statt. Mit Rubidium ($Z = 37$) wird erst die $5s$ Schale gefüllt.
+	Die $4d$ Unterschale wir zwischen $Z = 39$ (Yttrium) und $Z = 48$ (Cadmium) gefüllt. Nach Xeon $(Z = 54)$: $4f$-Unterschale, $5d$ Unterschale und nach Radon ($Z = 86$) $5f$ Unterschale, $6d$ Unterschale.
+	Da der Radius der Unterschalen mit $n$ anwächst, wird mit dem Einbau in die $d,f$ Unterschalen Z besetzt, die einen geringeren mittleren Abstand zum Kern aufweisen, als die bereits besetztne, $s, p$ Orbitale bei
+	größeren $n$ ("innere Schalen") $3d, 4d, 5d, 4f, 5f$
+*** Ionisationsenergie und Atomradien
+	Gemessenen Atomradien belegen die Schalenstruktur. Radien weisen eine Periodizität auf: Immer wen ein Elektron in neue Schale eingebaut wird $(n \to n + 1)$
+	Steigt der Radius stark an. Gleiche Periodizität auch bei Ionsiierungsenergie $=$ Energie um das am schwächsten gebundene Elektron mit mittlerem Radius $\braket{r} = r_n$ ins Unendliche zu bringen:
+	\[E_{\text{ION}} = ∫_{r_n}^{∞} \frac{Z_{eff} e^2}{4π ε_0 r^2} \d r = \frac{Z_{eff} e^2}{4π ε_0 r_n} = R_y^{\ast} \frac{Z_{eff}^2}{n^2}\]
+	$Z_{eff}$: effektive Kernladung für das äußerste Elektron.
+	- Edelgase besitzen die kleinsten Werte von $r_n$ und sehen damit die größte effektive Ladung $\to$ maximale Ionisationsenergie.
+	- Alkali-Atome besitzen die kleinste Ionsiationsenergie (das einzelne Elektron befindet sich weit außen)
+*** Periodensystem
+	Die Elemente werden nach steigendem $Z$ geordnet (ursprünglich Masse) geordnet und in eine Tabelle mit $7$ Zeilen (Perioden) und $18$ (ursprünglich 8) Spalten $=$ $8$ Hauptgruppen $+$ $10$ Nebengruppen
+	eingetragen, wobei die Ordnung in Spalten aus den chemischen Eigenschaften rührt. Schwerstes bekannte Element: $\prescript{294}{118}{Og}$ (Oganesson). Chemische Eigenschaften werden
+	durch die äußeren Elektronen in nicht-vollständig besetzten Schalen bestimmt: Valenz-Elektronen
+	1. Gruppe: Alkali-Metalle - einzelnes Elektron, leicht ionisierbar
+	2. Gruppe: Erdalkali-Metalle - $s^2$ Elektronen
+	7. [@7] Gruppe: Halogene: ein freiter Platz in äußerster Schale $\to$ verbinden sich gerne mit Alkali-Metallen
+	8. [@8] Gruppe: Edelgase: volle $s + p$ Unterschale $\to$ hohe Ionisationsenergie $\to$ chemisch inert.
+    Nebengruppe: Überlagerung der \(s\)- und \(d\)-Zustände \\
+	$\to$ Teilnahme der \(d\)-Elektronen an den Bindungen \\
+	$\to$ unterschiedliche chemische Eigenschaften \\
+
+	\(f\)-Übergangselemente: \(f\)-Unterschale liegt weit innerhalb der äußeren \(s\)-Elektronen $⇒$ chemische Eigenschaften sind ähnlich.
+	Lanthanide (seltene Erden) und Actiniden werden im Periodensystem als ein Element behandelt.
+** Angeregte Zustände und Spektren
+*** Lebensdauer angeregter Zustände
+	Durch Absorption von Photonen oder durch inelastische Stöße kann Elektron in ein höheres Niveau angeregt werden. Angeregte Zustände sind in der Regel instabl und zerfallen mit
+	Lebensdauer $τ$. Zerfallsgesetz:
+	\[N(t) = N_0 \exp(-\frac{t}{τ})\]
+	$N(t)$ $=$ Zahl der noch angeregten Atome, $N_0$ $=$ der ursprünglich $t = 0$ angeregten Atome. Für einen spezifischen Übergang $\ket{i}$ und $\ket{k}$ mit Energien
+	$E_i$ und $E_k$ bestimmt das Übergangsmatrixelement $M_{ki}$ beziehungsweise dessen Betragsquadrat $\abs{M_{ki}}^2$ der Wahrscheinlichkeit / Stärke des Übergangs:
+	\begin{align*}
+	\abs{M_{ki}}^2 &= \abs{\braket{k | \underarrow[\hat H_{WW}]{Wechselwirkung mit elektromagnetischem Potential} | i}}^2 \overarrow[\approx]{elektrische Dipolnäherung} e^2 \abs{∫ ψ_k^{\ast} \hat r ψ_i \d V}^2
+	\end{align*}
+	Aus den Bedingungen, dass das Integral nicht verschwindet ergeben sich die Auswahlregeln für Mehrelektronensysteme bezüglich elektrischer Dipol Strahlung.
+	Auswahlregeln: $Δ l = \pm 1, Δ m_L = 0, \pm 1, Δ S = 0, Δ J = 0, \pm 1$ ($\leftarrow Δ J = 0$ möglich für $Δ L = \pm 1$ und $Δ m_l = \mp 1$ aber kein $J = 0 \to J = 0$!!)
+	#+begin_remark latex
+	- emmitiertes Photon besitzt Drehimpuls $\pm \hbar$
+	- zum gleichen Schluss kommt man mit anderer Überlegung
+    *Parität* - Verhalten eines Zustandes unter Operation $\v r \to - \v r$
+	Man unterschiedet Zustände mit gerader und ungerader Partät
+	\[ψ(\v r) ⇒ ψ(- \v r) = \pm ψ(\v r)\]
+	- $+ =$ gerade Parität
+	- $- =$ ungerade Parität
+	für Wasserstoff-Lösung $\mathbb{P}(ψ) = (-1)^l$
+	1. Damit der Integrand für $M_{ki}$ nicht verschwindet muss Integrand insgemat symmetrisch in $\v r$ sein, das heißt positive Parität besitzen
+	2. Da $\v r$ eine ungerade Funktion ist, muss Produkt aus $ψ_i$ und $ψ_k^{\ast}$ ebenfalls ungerade sein. Das ist aber nur der Fall für	"ungerade-gerade" Produktkombinationen, und
+	   zusammen mit $P(ψ_j) = (-1)^{l_j}$ folgt, dass der Drehimpuls $ΔL$ sich um $\pm 1$ ändert. Betrachßtet man den Ausgangszustand $ψ_i$ und dem Endzustand
+	   $(ψ_k + γ)$, dann muss (Paritätserhaltung): $P(ψ_i) = P(ψ_k) P(γ) ⇒ P(γ) = -1$
+	#+end_remark
+	Typische Lebensdauren für elektrische Dipolübergänge:
+	\[\mathcal{O}(\SI{1e-9}{\second}) \qquad H(2\prescript{2}{}{P}_{1/2}): τ = \SI{1.5e-9}{\second}\]
+*** Natürliche Linienbreite
+	Mit endlicher Lebensdauer $τ$ ist eine natürlich Energiebreite der Zustände verbungen: $Δ E · τ \geq \hbar$. Damit verbunden ist eine endliche Frequenzbreite
+	\[Δ ω = \frac{1}{τ}\]
+	für den Überganz zwischen 2 Niveaus. Im Frequenzraum wird die natürlich Linienbreite durch Lorentzprofil beschrieben. Leistungsdichte $P(ω)$:
+	\[P(ω) = P_0 \frac{γ / (2π)}{(ω - ω_0)^2 + (γ/2)^2}\]
+	wobei $γ$ für einen Übergang $\ket{i} \to \ket{k}$ gegeben ist durch
+	\[γ = \frac{1}{τ_i} + \frac{1}{τ_k}\]
+	($τ_j$ ist dabei die Lebensdauer für Zustand $\ket{j}$). Für kurzlebige Zustände ($τ \to 0$) ist die natürlich Linienbreite sehr groß.
+	Neben der natürlichen Linienbreite führt die Bewegung der Atome (Doppler-Effekt) sowie die Stöße zwischen Atomen (Druck) zu einer weiteren Verbreitung.
+*** Spektren
+	Aufgrund der komplexen Multiplettstruktur sind die Spektren der Mehrelektronen-Systeme kompliziert.
+	#+ATTR_LATEX: :options [Natrium]
+	#+begin_ex latex
+	Aufhebung der \(l\)-Entartung bewirkt, dass die Energiedifferenz $ΔE$ für zwei benachbarte $n$ in der gleichen Größenordnungwie das \(l\)-splitting ist.
+	Abei Alkali-Atomen mit einzelnem Valenzelektron  ($S = 1/2$) findet man Dupletts: $J = L \pm 1/2, \prescript{2}{}{P}_{1/2}, \prescript{2}{}{P}_{3/2}, \prescript{2}{}{D}_{3/2}, \prescript{2}{}{D}_{5/2}$.
+	Übergang von $3P$ (Duplett) nach $3S$ (Singlett) $\to$ Doppellinie.
+	#+end_ex
+*** Innerschalen Anregung und Auger-Elekrtonen
+	Anregung eines "inneren" Elektrons dbedarf hoher Energie (Effektive Kernladung $Z_{\text{eff}} e$ groß) $\to$ Anregung nur mittels Röntgenstrahl
+	(UV-LIcht) oder durch direkt Elektronen Stöße möglich. In das entsprechende Loch kann ein äußeres Elektron nachfallen $\to$ Photon $\hbar ν$ typischer Weise im $\si{\kilo\electronvolt}$ Bereich.
+	- charakteristisches Röntgen-Photon
+	- Energie kann auf äußeres Elektron übertragen werden
+** Röntgenstrahlung
+   Prinzip einer Röntgenröhre: Elektronen werde durch einen Heizwedel auf eine Annode geschossen. Kinetische Energie $E_{\text{kin}} = e U_B$.
+   Beim Auftreffen auf Anode verlieren die Elekrtonen einen Teil ihrer Energie durch Abstrahlung.
+   Zwei verschiedene Mechanismen zur Erzeugung von Röntgen-Strahlung
+   1. Abbremsen der Elektronen im Feld des Kerne der Anoden-Atome
+	  $\to$ Bremsstrahllung (aufgrund der Beschleunigung): kontinuierliches Spektrum mit $E_{\text{max}} = e U_B$
+   2. Ionisation beziehungsweise Stoßanregung von Elektronen der inneren Schalen $k$ hinterlassen freie Plätze die von äußeren Elektronen $i$ besetzt werden.
+	  \[Δ E = E_k - E_i = h ν_{ki} = (Z - Σ)^2 R_y h c (\frac{1}{n_k^2} - \frac{1}{n_i^2})\]
+	  $⇒$ $i,k$ sind diskrete Übergänge $\to$ charakteristisches Spektrum.
+   Bei den beiden Strahlungsanteilen handelt es sich tatsächlich um elektromagnetische Strahlung (Messung der Polarisation, Beugungs + Interferenzeffekte (Laue, W. H + W.L Bragg)). \\
+   \begin{align*}
+   E_{\text{max}} &= e U_B \\
+   h ν_G &= e U_B ⇔ λ \geq λ_G = \frac{hc}{e U_B} \\
+   λ_G &= \frac{\SI{1234.5}{\nano\meter}}{U[\si{\volt}]}
+   \to λ_G &= \SI{0.12}{\nano\meter}[\SI{10}{\kilo\volt}]
+   \end{align*}
+   Absorption:
+   \[\d I = - μ I_0 \d x\]
+   $⇒$ Dicke $d$:
+   \[I(d) = I_0 e^{-μd}\]
+   $μ$ $=$ Absorptionskoeffizient
+   \[μ = μ_s + α\]
+   $μ_s$: Streuung, $α$: Absorption. Für Röntgenstrahlen ist die Absorption bestimmt durch das Anregungs- und Ionisationsspekturm des Absorbermaterial.
+   Absorptionskanten entspricht gerade der Energie um Elektron aus $K, L, M$ Schale zu ionisiren.
+   \[U(K-\text{Kante}) = R_y h c (Z - Σ)^2 (\frac{1}{1^2} - \frac{1}{∞^2})\]
+   Absorptionskante $ν_{k,l,m} \sim (Z - Σ)^2$

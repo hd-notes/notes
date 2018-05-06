@@ -6,7 +6,8 @@
 # Webseite -> Übungsgruppen
 # Aufgabe heute 14:00
 # Zu zweit, abchseln aufschreiben 60%, 1× Vorrechnen
-# Terminprobleme
+
+# Literature - Messiah
 
 * Materiewellen und	Schrödinger-Gleichung
 ** Motivation
@@ -37,9 +38,9 @@
    \[\text{\textbf{Gruppengeschwindigkeit:}}\quad \v v = \v ∇_{\v k} ω; \quad ω = \frac{E}{\hbar} = \frac{\v p^2}{2m \hbar}\]
    Außerdem: $\v p = \v p(\v k)$; Wir rechnen:
    \begin{align*}
-   \frac{p_i}{m} &= v_i = \pp{ω}{k_i} = \pp{ω}{p_j} \pp{p_j}{k_i} = \frac{p_j}{m \hbar} \pp{p_j}{k_i}
-   \intertext{⇒ damit die Gleichheit gilt muss gelten}
-   \pp{p_j}{k_i} &= \hbar δ_{ij} ⇒ \v p = \hbar \v k + \const
+   \frac{p_i}{m} &= v_i = \pp{ω}{k_i} = \pp{ω}{p_j} \pp{p_j}{k_i} = \frac{p_j}{m \hbar} \pp{p_j}{k_i} \\
+   \intertext{$⇒$ damit die Gleichheit gilt muss gelten}
+   \pp{p_j}{k_i} &= \hbar δ_{ij} ⇒ \v p = \hbar \v k + \const  \\
    \intertext{Dabei wählen wir sinnvoller Weise $\const$ als $0$, damit $k = 0 ⇒ p = 0$. Wir erhalten die Dispersionsrelation:}
    ω &= \frac{\hbar}{2m} \v k^2
    \end{align*}
@@ -56,7 +57,7 @@
    -i \hbar \pp{}{x}ψ(x, t) = p ψ(x, t)
    \end{align*}
    Dies ist eine Eigenwertgleichung, analog zu
-   \[M_{ij} y_j &= λ y_i \quad i,j ∈ \{1, \dots, n\}\]
+   \[M_{ij} y_j = λ y_i \quad i,j ∈ \{1, \dots, n\}\]
    $\v y$ ist der Eigenvektor zur Matrix ("Operator") $M$ zum Eigenwert $λ$. Unserer Fall:
    - Operator ist Differentialoperator
    - Vektorraum ist Raum der Funktionen $ψ$
@@ -70,17 +71,362 @@
    Verallgemeinerung: Potential $V \neq 0$ zulassen. Erwartung: im Bereich $V > 0$ ist kinetische Energie kleiner: $E - V$. $⇒ p$ kleiner $⇒ k$ kleiner.
    Einbau in unsere Differentialgleichnug:
    \begin{align*}
-   \frac{p^2}{2m} &\to \frac{p^2}{um} + V(x) \\
+   \frac{p^2}{2m} &\to \frac{p^2}{2m} + V(x) \\
    \intertext{entspricht}
    - \frac{\hbar^2}{2m} \frac{\partial^2}{x^2} &\to - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
    \end{align*}
    Auch zurück zu 3d:
    \begin{ibox}{Schrödingergleichung}
-   \[i \hbar \pp{}{t} ψ(\v x, t) &= (- \frac{\hbar^2}{2m} \v ∇^2 + V(x))ψ(\v x, t)\]
+   \[i \hbar \pp{}{t} ψ(\v x, t) = (- \frac{\hbar^2}{2m} \v ∇^2 + V(x))ψ(\v x, t)\]
    \end{ibox}
    Diese Gleichung + Interpretation von $\abs{ψ(\v x, t)}^2$ als Aufenhaltwahrscheinlichkeit definiert bereits die Quantenmechanik. \\
    Es fehlt:
    - mathematischer Formalismus (Hilbertraum, Operatoren, \dots)
    - Anwendungen (Oszillator, Wasserstoffatom, Tunneleffekt, \dots)
    - Verallgemeinerungen (Teilchen mit Spin, viele Teilchen)
-   Besser: Fermat-Prinzip für Wellen, Zusammenhang mit Wirkungsprinzip
+   Besser: Fermat-Prinzip für Wellen, Zusammenhang mit Wirkungsprinzip. \\
+   Andere Schreibweise für Schrödingergleichung:
+   \begin{align*}
+   i \hbar \pp{}{t}ψ(\v x, t) &= \hat H ψ(\v x, t) \\
+   \text{mit } \hat H &= \frac{\v p^2}{2m} V(\v x), \v p \equiv i \hbar \v ∇
+   \end{align*}
+   $\v p$: Zusammenfassung von 3 Differentialoperatoren $\to$ Differentialoperator für $\hat T$ $\to$ Differentialoperator für Energie $\hat H = \hat T - \hat V$. Dabei ist $\hat V$ ein "Differentialoperator" nullter Ordnung
+   und $\hat H$ bezeichnen wir mit $\hat H$ (bestimmt Zeitentwicklung der Wellenfunktion)
+** Die neue Weltsicht der Quantenmechanik
+   Hamilton-Mechanik
+   - Physikalischer Zustand: Punkt im Phasenraum (zu Koordinaten)
+   - zeitliche Entwicklung: System von nichtlineare, gewöhnlichen Differentialgleichungen 1. Ordnung (Definiton durch Hamilton-Funktion)
+   Quantenmechanik
+   - Physikalischer Zustand: Schrödinger-Wellenfunktion $ψ(\v x, t)$ bei festem $t$ (nur auf Konfigurationsraum). Konfigurationsraum $\equiv$  Raum der $x^i$ (ohne $p^i$).
+   - zeitliche Entwicklung: lineare (allerdincgs partielle) Differentialgleichung (Definition durch den aus der Hamilton-Funktion folgenden ($p_i \to i \hbar \partial_i$)Hamilton-Operator $\hat H$.)
+   Linearität der Schrödingergleichung $⇒$ Summen von Lösungen und Produkte	mit Zahlen aus $ℂ$ sind wieder Lösungen. $\to$ se ist nützlich, die lineare Struktur des Raumes der $ψ$ zu betonen.
+   Fokus auf Zustände (ohne $t$): $d = 1$
+   \begin{align*}
+   &ψ(·, t): ℝ \to ℂ, x ↦ ψ(x, t) \\
+   \text{oder } &ψ_t: ℝ \to ℂ, x ↦ ψ_t(x) \equiv ψ(x, t)
+   \end{align*}
+   Betrachte den Vektorraum $\mathcal{H}$ der Funktionen $ψ_t$:
+   \[ψ_t ∈ \mathcal{H}\]
+   im Moment: $\mathcal{H}$ (Hilbert-Raum) \to Raum der erlaubten Funktionen. \\
+   Ab sofort: Denken sie an die $ψ_t$ als Vektoren in einem unendlichdimensionalen Raum. (Denken sie sich zum Beispiel $x$ als diskrete Variable)
+   Zeintentwicklung ist die Bewegung des Vektors $ψ_t$ auf Grund der Schrödingergleichung $ψ_t \to ψ_{t + Δ t}$ \\
+   Neuer Schritt: Definiere auf $\mathcal{H}$ ein (komplexes) Skalarprodukt
+   \[\mathcal{H} × \mathcal{H} \to ℂ, (ψ, χ) ↦ ∫_{-∞}^{+∞} \d x ψ^{\ast}(x) χ(x) \equiv \braket{ψ | χ}\]
+   (Bra-ket Notation). Skalarprodukt respektiert lineare Struktur von $\mathcal{H}$ (Sesquilinearform):
+   \begin{align*}
+   \braket{ψ | α_1 χ_1 + α_2 χ_2} &= α_1 \braket{ψ | χ_1} + α_2 \braket{ψ | χ_2} \quad α_1, α_2 ∈ ℂ \\
+   \braket{α_1 ψ_1 + α_2 ψ_2 | χ} &= α_1^{\ast} \braket{ψ_1 | χ} + α_2^{\ast} \braket{ψ_2 | χ} \quad α_1, α_2 ∈ ℂ
+   \end{align*}
+   Sesquilinearität notwendig für reelle Norm:
+   \[\norm{ψ} \equiv \sqrt{\braket{ψ | ψ}}\]
+   $⇒$ erster und wichtigster Schritt zur Definition von $\mathcal{H}$:
+   - $ψ$ soll quadratintegrabel sein ($ψ ∈ L_2(ℝ)$, hier wirklich Lebesgue-Integral, die $2$ im Index wegen $∫ \d x \abs{ψ}^2$)
+   Bedeutung des Skalarproduktes: kommt aus Annahme dass $\abs{ψ(x)}^2$ die Aufenthaltswahrscheinlichkeit des Teilchen ist.
+   Zunächst: physikalische Zustände sollen stets auf $1$ normiert sein: $\norm{ψ} = 1 ⇔ \braket{ψ | ψ} = 1$. (Falls sie $ψ_1$ mit $\braket{ψ|ψ} \neq 1$ betrachten sollen, dann ein $ψ(x) = ψ_1(x) \norm{ψ_1}^{-1}$). Definiere Wahrscheinlichkeitsdichte:
+   \[ρ(x) \equiv ψ^{\ast}(x) ψ(x)\]
+   $⇒$ Normierungsbedingung $\norm{ψ} = 1 \estimates$ 2. Kolmogorov-Axiom
+   \[∫_{-∞}^{+∞} \d x ρ(x) = ∫_{-∞}^{+∞} \d x ψ^{\ast}(x) ψ(x) \equiv \norm{ψ}^2 = 1\]
+   Präzisierung des anfas gesagten:
+   \[W([a, b]) = ∫_a^b \d x ρ(x) = ∫_a^b \d x \abs{ψ(x)}^2\]
+   $\to$ Wahrscheinlichkeit für Auffinden im Interval $[a, b]$ (stets $\leq 1$). Wir stellen jetzt Verbindung zum Begriff des Skalarproduktes her.
+   Betrachte Wahrscheinlichkeit für Teilchen in kleinem Intervall $[a, a + Δa]$. Dies ist Spezialfall zur obigen Formel. Anders Schreiben: Definition neuer	Wellenfunktion
+   $χ$:
+   \[χ(x) = \begin{cases} χ(x) = \frac{1}{\sqrt{Δa}} & x ∈ [a, a + Δ a] \\ 0 & \text{nonst}\end{cases}\]
+   Dieser Zustand beschreibt ein bei $a$ lokalisiertes Teilchen. Berechne
+   \begin{align*}
+   \braket{χ, ψ} &= ∫_{-∞}^{+∞} \d x χ^{\ast}(x) ψ(x) = ∫_a^{a + Δ a} \d x \frac{ψ(x)}{\sqrt{Δa}} \approx \sqrt{Δ a} ψ(x) \\
+   \abs{\braket{χ | ψ}}^2 &\approx Δ a \abs{ψ(x)}^2
+   \end{align*}
+   Das ist gerade die mit $ρ(x)$ berechntete Wahrscheinlichkeit Teilchen im Intervall $[a, a, + Δ a]$ zu finden. $\to$ Motivation für
+   \begin{ibox}{Bournsche Regel}
+   Sei ein physikalisches System in Zustand $ψ ∈ \mathcal{H}$. Seit $χ ∈ \mathcal{H}$ ein anderer Zustand. Dann ist die Wahrscheinlichkeit dafür, das System im
+   Zustand $χ$ anzustreffen gegeben durch
+   \[W = \abs{\braket{χ | ψ}}^2\]
+   \end{ibox}
+   Kommentar zur Notation: Bisher: Bra-Ket nur Notation für Skalarprodut. Aber: Braket universeller einsetzbar: statt
+   \[ψ, χ ∈ \mathcal{H} \to \ket{ψ}, \ket{χ} ∈ \mathcal{H}\]
+   Des weiteren nutzen wi die Notation
+   \[\bra{ψ}, \bra{χ} ∈ \mathcal{H}^{\ast}\]
+   das heißt $\bra{ψ}$ ist ein lineare Funktional auf $\mathcal{H}$
+   \[\bra{ψ}: \ket{χ} ↦ \braket{ψ | χ} ∈ ℂ\]
+   Man kann auch schreiben
+   \[\braket{ψ | χ} \equiv \bra{ψ} \ket{χ}\]
+   Anwendung durch
+   \[∫ \d x ψ^{\ast}(x) χ(x)\]
+** Wahrscheinlichkeitsstromdichte
+   Jetzt $ψ(x) \to ψ(\v x, t)$ Zeitentwicklung! (außerdem $x \to \v x$)
+   \begin{align*}
+   ρ(\v x, t) &= ψ^{\ast}(\v x, t) ψ(\v x, t) \\
+   W(V, t) &= ∫_V \d^3 x ρ(\v x, t) \quad V ⊂ ℝ^3
+   \end{align*}
+   Wie sieht die zeitliche Änderung von $ρ(\v x, t)$ aus?
+   \begin{align*}
+   \pp{}{t}ρ(\v x, t) &= (\pp{}{t} ψ^{\ast}(\v x, t)) ψ(\v x, t) + ψ^{\ast}(\v x t) (\pp{}{t}ψ(\v x, t)) = (ψ^{\ast}(\v x, t))(\pp{}{t} ψ(\v x, t)) + \cc \\
+   \intertext{benutze Schrödingergleichung um $\partial_t ψ(\v x, t)$ zu erhalten}
+   \pp{}{t} ψ(\v x, t) &= \frac{1}{i\hbar}(- \frac{\hbar^2}{2m} \v ∇^2 + V(\v x))ψ(\v x, t) \\
+   \pp{}{t} ρ(\v x, t) &= (\frac{i\hbar}{2m} ψ^{\ast} \v ∇^2 ψ - \frac{i}{\hbar}Vψ^{\ast}ψ) + \cc \\
+   \intertext{Der zweite Term ist rein imaginär $⇒$ kann weggelassen werden}
+   \pp{}{t}(ρ(\v x, t)) &= \frac{i\hbar}{2m}(\v ∇(ψ^{\ast}\v ∇ ψ) - (∇ψ^{\ast})(\v ∇ ψ)) + \cc
+   &= \frac{i\hbar}{2m}(\v ∇ (ψ^{\ast} \v ∇ ψ) - \v ∇((\v ∇ ψ^{\ast}) ψ)) \\
+   \intertext{Man erhält eine Kontinuitäts-Gleichung}
+   \pp{}{t} ρ + \v ∇ \v j &= 0 \\
+   \intertext{mit Wahrscheinlichkeitsstromdichte $\v j$}
+   \v j &= \frac{i \hbar}{2m}((\v ∇ ψ^{\ast}) ψ - ψ^{\ast}(\v ∇ ψ^{\ast}))
+   \end{align*}
+   (Wahrscheinlichkeit ist erhalten, so wie zum Beispiel Gesamtmasse einer strömenden Flüssigkeit). Wichtige Rechnung:
+   Integration der Kontinuitätsgleichung über den gesamten Raum, Anwendung von Gauß, Vernachlässigung von Randtermen $\to$ Gesamtwahrscheinlichkeit konstant.
+   Technisch: Haben gezeigt, dass Zeitentwicklung die Norm von $\ket{ψ}$ (des Vektors $ψ$) respektiert. Geladenes Teilchen: \(ρ\) - Ladungsdichte ´/ \(\v j\) - Stromdichte.
+   Wichtiger Spezialfall: Ebene Welle
+   \begin{align*}
+   ψ &\sim e^{i \v k \v x} ⇒ \v ∇ ψ = \v i k ψ \\
+   ⇒ \v j &= -\frac{i\hbar}{2m}2(-i\v k) ψ^{\ast}ψ = \frac{\v ρ}{m} ρ = \v v · ρ
+   \end{align*}
+** Erwartungswert von Observablen
+   In Quantenmechanik: oft nur Statistische- beziehungsweise Wahrscheinlichkeitsaussagen.
+   Unser Beispiel: Detektionsort des Teilchens auf Schirm des Doppelspaltexperiments. Zur Vereinfachung: Sei Ort diskret: Zahl von Punkten $x_i$ ($i = 1, \dots, N$).
+   Bereiten viele Teilchen genau gleich vor, Messung $⇒$ Mittelwert des Ortes:
+   \[\v x \equiv \frac{\sum_{i} n_i x_i}{\sum_{i} n_i}\]
+   $n_i$ ist Zahl der Versuchen mit Ergebnis $x_i$. Theorie: Wahrscheinlichkeiten, Erwartungswerte
+   \begin{align*}
+   \braket{x} = \sum_{i} w_i x_i \quad\text{mit}\quad \sum_{i} w_i = 1
+   \end{align*}
+   Mittelwert sehr groher Messreihen $\simeq$ Erwartungswert. Quantenmechanik liefert die $w_i$, in unserem Spielzeugmodell mit diskretem Ort: $w_i = \abs{ψ_i}^2$.
+   Wobei
+   \[\ket{ψ} \equiv \{ψ_1, \dots, ψ_n\}^T ∈ \mathcal{H} \equiv ℂ^N\]
+   Unsere Normierung auf Eins:
+   \[\sum_{i} ψ_i^{\ast} ψ_i = 1\]
+   (auf Eins normierter komplexer Vektor). Erwartungswert:
+   \[\braket{x} = \sum_{i} x_i w_i = \sum_{i} x_i ψ^{\ast}_i ψ_i\]
+   Übergang zum Kontinuumsfall ist offensichtlich:
+   \[\braket{x} = ∫ \d x x ρ(x) = ∫ \d x ψ^{\ast}(x) x ψ(x)\]
+   $x$ ist hier bewusst in der Mitte $\to$
+   \[\braket{x} = \braket{ψ | \hat x | ψ}\]
+   $\hat x$ ist hier ein Operator, welcher die komplexe Funktion $ψ(x)$ mit $x$ multipliziert:
+   \begin{align*}
+   \hat x : \mathcal{H} \to \mathcal{H}, \ket{ψ} ↦ \hat x \ket{ψ} \\
+   \hat x \ket{ψ}: ℝ \to ℂ, x ↦ x ψ(x) \\
+   \intertext{Braket-Notation}
+   \braket{ψ | \hat x | ψ} = ∫ \d x ψ^{\ast}(x) (x ψ(x)) = ∫ \d x ψ^{\ast} x ψ(x)
+   \end{align*}
+   Neue Denk- und Sprechweise: Der Observablen "Ort" wir der Operator $\hat x$ auf $\mathcal{H}$ zugeordnet. Der Erwartungswert der Mepssgröße ist
+   \[\braket{\hat x} = \braket{\hat x}_ψ = \braket{ψ | \hat x | ψ}\]
+   Überganz zu $ℝ^2$
+   \[\braket{ψ | \hat{\v x} | ψ} = ∫ \d^3 x ψ^{\ast}(\v x) \v x ψ(\v x)\]
+   $\hat{\v x}$ 3 Operatoren, zusammengefasst zu einem Vektor. Operator zur Observablen Impuls: $\hat{\v p} = - i \hbar \v ∇$. Berechne
+   \[\braket{ψ | \hat{\v p} | ψ}\]
+   in ebener Welle. Problem: $\ket{ψ}$ für Welle nicht normierbar $\sim$ betrachte stattdessen ein Wellenpaket
+   \[\to ψ(\v x) = ∫ \d^3 k f(k) e^{i\v k \v x}\]
+   $f(k)$ konkentriert bei $\v k_0$. Zeigen, dass $ψ(\v x)$ normierbar ist:
+   \begin{align*}
+   \braket{ψ | ψ} &= ∫ \d^3 x ψ^{\ast}(\v x) ψ(\v x) \\
+   &= ∫ \d^3 x ∫ \d^3 k f^{\ast}(\v k) e^{-i \v k \v x} ∫ \d^3 q f(\v q) e^{i \v q \v x} \\
+   &= ∫ \d^3 k ∫ \d^3 q f^{\ast}(\v k) f(\v q) \underbrace{∫ \d^3 x e^{i(\v q - \v k) \v x}}_{(2π)^3 δ^3(\v q - \v k)} \\
+   &= (2π)^3 δ^3(\v q - \v k) ∫ \d^3 k \abs{f(\v k)}^2
+   \end{align*}
+   Für passendes $f$ kann das offensichtlich endlich sein. Widerhole Rechnung mit $\braket{ψ | \hat{\v p}}$. Dies erzeugt Faktor $-i \hbar i \v q = \hbar \v q$.
+   \begin{align*}
+   \braket{ψ | \hat{\v p} | ψ} &= (2π)^3 ∫ \d k \hbar \v k \abs{f(\v k)}^2 \\
+   &\approx \hbar \v k_0 \underbrace{(2π)^3 ∫ \d^3 k \abs{f(\v k)}^2}_{\text{normiert per Annahme}} \\
+   &\approx \hbar \v k_0
+   \end{align*}
+   Ort $\to$ Operator $\hat x$ (Multiplikation mit $x_i$) \\
+   Impuls $\to$ Operator $-i \hbar \v ∇$ \\
+   Energie $\to$ Operator $\hat H = \hat{\v p}^2 / (2m) + V(\hat{\v x})$, $V(\hat{\v x})$: Multiplikations-Operator wie $\v x$ beziehungsweise Taylor-Reihe in $\hat{\v x}$
+* Das Zwei-Zustands-System und andere endlichdimensionale Modelle
+  Problem: $ψ(x)$ mit Operatoren $\hat x, \hat p$ ist sehr anschlaulich, aber mathematisch kompliziert (wegen $\mathcal{H} = L_2(ℝ)$).
+  Deshalb: Toy-Modell (das auch sonst wichtig ist) mit einfachem Hilbert-Raum: ("Spin-\(1/2\)-System") Zwei-Zustands-System
+** 2-und mehr-Zustands-Systeme
+   Idee: Betrachte System mit nur zwei linear unabhängigen (zum Beispiel unser "diskreter" Ortsraum oben) Zuständen
+   \[ψ = \{ψ_1, ψ_2\}^T ∈ \mathcal{H} = ℂ^2\]
+   Populärstes und praktisch interesanntestes System: Teilchen mit Spin (mit 2 Zuständen); $ψ = \{ψ_1, ψ_2\} ∈ \mathcal{H} \equiv ℂ^2$.
+   Konkret:
+   \[ψ = α \ket{\uparrow} + β \ket{\downarrow} \leftrightarrow \{α, β\}^T ∈ ℂ^2\]
+   Verallgemeinerung $N > 2$:
+   \[\ket{ψ} = α \ket{1} + β \ket{2} + γ \ket{3} \leftrightarrow \{α, β, γ\}^T ∈ ℂ^3\]
+   (und so weiter für $N > 3$). \\
+   Für jedes $N$ ist dieses System (im Sinne von $\mathcal{H} = ℂ^N$) eindeutig. (Weil es bis auf Isomorphie nur einen endlichdimensionalen Vektorraum zu jedem $N$ gibt).
+   Die Dynamik kann jedoch sehr verschieden sein! ($\to$ viele mögliche $\hat H$!)
+** Endlichdimensionale komplexe Vektorräume mit Skalarprodukt
+   ("endlich dimensionale Hilbert-Räume"). Skalarprodukt
+   - Begriff Vektorraums ($\to$ Axiome), hier immer über $ℂ$
+   - Basis, Dimension $=$ Zahl der Basis-Elemente
+   - für jedes $N$ (Dimension): Isomorph zu $C^N$
+   Die Quantenmechanische Interpretation braucht Skalarprodukt. Das Skalarprodukt ist eine Abbildung
+   \[\mathcal{H} × \mathcal{H} \to ℂ, \{ψ, χ\} \to \braket{ψ | χ}\]
+   welche im 1. / 2. Argument antilinear / linear und *hermitesch* ($\braket{ψ | χ}^{\ast} = \braket{χ | ψ}$) ist. Es folgt: $\braket{ψ, ψ} ∈ ℝ$.
+   Wir brauchen auch: positiv definit. Ein Skalarprodukt heißt positiv definit, wenn
+   \[\braket{ψ | ψ} \geq 0 \quad\text{und}\quad \braket{ψ | ψ} = 0 ⇒ \ket{ψ} = \v 0\]
+   Fakt: In solche Räumen gibt es Orthonormalbasen ($\to$ Gram-Schmidt-Verfahren). Eine Orthonormalbasis erfüllt
+   \[\braket{e_i | e_j} = δ_{ij}\]
+   Falls $\ket{ψ} = ψ^i \ket{e_i}$ und $\ket{e_i}$ ortonormal, dann
+   \[\braket{ψ | χ} = ψ^{\ast i} χ^j δ_{ij} = \v ψ^{\ast} · \v χ\]
+   Wie schon erwähnt, wollen wir die Notation
+   \[\bra{ψ} ∈ \mathcal{H}^{\ast}\]
+   benutzen. $\bra{ψ}$ ist definiert durch:
+   \[\bra{ψ}: \mathcal{H} \to ℂ, \ket{x} ↦ \braket{ψ, χ}\]
+   Bequem: Denke $\ket{ψ}$ als Spaltenvektor und $\bra{ψ}$ als Zeilenvektor in $ℂ^N$ \\
+   Kommentar: für $N < ∞$ ist $\mathcal{H}^{\ast}$ stets isomorph zu $\mathcal{H}$, aber im	Allgemeinen gibt es keine kanonische Abildung $\mathcal{H} \to \mathcal{H}^{\ast}$.
+   Aber mit Skalarprodukt gibt se eine: $\ket{ψ} \to \bra{ψ}$. \\
+   Nützlich: *Schwarzsche Ungleichung*
+   \[\abs{\braket{ψ | χ}} \leq \norm{ψ} \norm{χ}\qquad \norm{χ} = \sqrt{\braket{χ, χ}}\]
+   Herleitung: Betrachte Projektion eines Vektors auf den anderen und vergleiche mit ursprünglichen Vektor
+   \begin{align*}
+   \ket{ψ} - \frac{\ket{χ}}{\norm{χ}} \frac{\braket{χ | ψ}}{\norm{χ}} \\
+   \intertext{Betrachte Betragsquadrat}
+   \string(\bra{ψ} - \frac{\braket{ψ | χ}}{\braket{χ | χ}} \frac{\bra{ψ}}{\braket{χ | c}}\string) (\ket{ψ} - \frac{\ket{χ}}{\braket{ψ | ψ}} \frac{\braket{χ | ψ}}{\braket{ψ | ψ}}) &\geq 0 \\
+   ⇒ \braket{ψ | ψ} - \frac{\braket{χ | ψ} \braket{ψ | χ}}{\braket{χ | χ}} &\geq 0
+   \end{align*}
+   Fakt: Dreiecksungleichung:
+   \[\norm{ψ + χ} \leq \norm{ψ} + \norm{χ}\]
+   Herleitung: betrachte
+   \begin{align*}
+   \norm{ψ + χ}^2 &= \braket{ψ + χ | ψ + χ} (\ket{ψ} + \ket{χ}) \tag{Ausmultiplizieren!}
+   \end{align*}
+   Benutze
+   \[\braket{ψ | χ} + \braket{χ | ψ} = 2\Re \braket{ψ | χ} \leq 2 \abs{\braket{ψ | χ}}\]
+   Dann Benutze Schwarze Ungleichung $\to$ Rest Übungen. \\
+   #+ATTR_LATEX: :options [lineare Operator auf $\mathcal{H}$]
+   lineare Abbildung: $A : \mathcal{H} \to \mathcal{H}, \ket{h} ↦ A \ket{ψ}$
+   #+begin_defn latex
+
+   #+end_defn
+   Man kann Operatoren durch "Hintereinanderausführen" multipliziren:
+   \[(A B): \ket{ψ} × A (B(\ket{ψ}))\]
+   (entspright in Basis der Matrix Multiplikation). Begriff: Algebra $\equiv$ Vektorraum mit (assoziativer) Multiplikation. (Operatoren auf $\mathcal{H}$ bilden eine Algebra)
+** Erste Schritte zur Physik des 2-Zustand-Systems
+   Erinnerung: $\abs{ψ(x)}^2 \estimates$ "Wahrscheinlichkeit". Hier: $x$ (kontinuierlich) $\to$ $i$ (diskret). Erwarte: $\abs{ψ_i}^2 \estimates$ Wahrscheinlichkeit. Unser $N = 2$ Fall:
+   \begin{align*}
+   \ket{ψ} &= α \ket{\uparrow} + β \ket{\downarrow} \\
+   \intertext{Wahrscheinlichkeit entsprechenden Zustand "zu finden"}
+   W_{\uparrow} &= \abs{α}^2 \\
+   W_{\downarrow} &= \abs{β}^2
+   \end{align*}
+   Unter der Vorraussetzung
+   \[\braket{\uparrow | \uparrow} = \braket{\downarrow| \downarrow} = 1, \braket{\uparrow | \downarrow} = \braket{\downarrow | \uparrow} = 0\]
+   Für welche Obervable / Messgröße sind dies die Wahrscheinlichkeiten? \\
+   Sagen wir wiRmessen $1/2$ falls $\ket{\uparrow}$ und $-1/2$ falls $\ket{\downarrow}$. Such Operator, der dies realisiert. Dazu Komponenten-Schreibweise
+   \[\ket{ψ} = \cvec{α; β}\]
+   und definiere
+   \[S = \begin{pmatrix}1/2 & 0 \\ 0 & -1/2\end{pmatrix}\]
+   Man rechnet sofort nach:
+   \[\braket{ψ | S | ψ} = (α^{\ast}, β^{\ast}) \begin{pmatrix}1/2 & 0 \\ 0 & -1/2\end{pmatrix} \cvec{α; β} = \frac{1}{2} \abs{α}^2 - \frac{1}{2} \abs{β}^2 = \frac{1}{2} W_{\uparrow} - \frac{1}{2} W_{\downarrow}\]
+   Wir sehen: Spin-Messung liefert $1/2$ mit Wahrscheinlichkeit $W_{\uparrow} = \abs{α}^2$ und $-1/2$ mit Wahrscheinlichkeit $W_{\downarrow} = \abs{β}^2$ \\
+   Also: Wir haben hier ein weiteres Beispiel für die Grundregel, dass der "Operater zu Bra und Ket" den Erwartungswert einer Messung liefert. \\
+   Wichtig: Nach Messung, kennen wir den Zustand under ist *nicht mehr* $α \ket{\uparrow} + β \ket{\downarrow}$.
+   Erinnerung: Teilchen, Kollaps der Wellenfunktion.  \\
+   Hier: Wissen nach Messung mit Ergebnis $1/2$, dass $\ket{ψ} = \ket{\uparrow}$. $⇒$ Messprozess beeinzlusst *zwingend* den Zustand. \\
+   Genauer: Messung $\estimates$ Projektion auf den zum Messwert gehörenden *Eigenvektor des Operators* \\
+   Erinnerung: falls $A \ket{a} = a \ket{a}$, dann sagt man $A$ hat Eigenvektor $\ket{a}$ zum Eigenwert $a$. Demnach: $S$ hat zwei Eigenvektoren
+   $\ket{\uparrow}, \ket{\downarrow}$ zu $1/2$ und $-1/2$.
+   \begin{align*}
+   S \ket{\uparrow} &= \frac{1}{2} \ket{\uparrow} \\
+   S \ket{\downarrow} &= \frac{1}{2} \ket{\downarrow} \\
+   \end{align*}
+   Vor Messung:
+   \[\ket{ψ} = α \ket{\uparrow} + β \ket{\downarrow}\]
+   Nach Messung:
+   \[\ket{ψ} = \ket{\uparrow} \quad\text{oder}\quad \ket{\downarrow}\]
+   Ein Operator $P$ heißt Projektor, falls $P^2 = P$. Beispiel:
+   \[P_{12} = \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{pmatrix}\]
+   ist auf $ℝ^3$ Projektor auf \(x\)-\(y\)-Ebene. Können $S$ als Linearkombination von Projektionen schreiben:
+   \[S = \frac{1}{2} \begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix} - \frac{1}{2} \begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix} \equiv \frac{1}{2} P_{\uparrow} - \frac{1}{2} P_{\downarrow}\]
+   Also $\ket{ψ} = α \ket{\uparrow} + β \ket{\downarrow}$ $\to$ Messung mit Ausgang $1/2$ $\to$ $P_\uparrow \ket{ψ} = a \ket{\uparrow}$
+   Danach: Neu normiern $↦ \ket{\uparrow}$. Nützliche Schreibweie für Projektor auf $\ket{ψ}$:
+   \[P_ψ = \ket{ψ} \bra{ψ}\]
+   $P_ψ$ ist als Operator aufzufassen wie folgt:
+   \[P_ψ: \ket{χ} ↦ \ket{ψ} \braket{ψ | χ}\]
+   $P_ψ$ ist Projektor:
+   \[P_ψ^2 \ket{χ} = P_ψ (\ket{ψ} \braket{ψ | χ}) = \ket{ψ} \underbrace{\braket{ψ | ψ}}_{\mathbb{1}} \braket{ψ | χ} = P_ψ \ket{χ} \checkmark\]
+   $⇒$ Sehr intuitive Schreibweise für $S$ (aber auch allgemein)
+   \[S = \frac{1}{2} \ket{\uparrow} \bra{\downarrow} - \frac{1}{2} \ket{\downarrow} \bra{\uparrow}\]
+   Andere Observable: $\hat H$, zum Beispiel
+   \[H = \begin{pmatrix}E_{\uparrow} & 0 \\ 0 & E_{\downarrow}\end{pmatrix}\]
+   Klarerweise: $\hat H = E_{\uparrow} \ket{\uparrow} \bra{\uparrow} + E_{\downarrow} \ket{\downarrow} \bra{\downarrow}$.
+   Schrödingergleichung:
+   \[i \hbar \dd{}{t} \ket{ψ(t)} = \hat H \ket{ψ(t)}\]
+   Allgemeiner Ansatz:
+   \begin{align*}
+   \ket{ψ(k)} &= α(t) \ket{\uparrow} + β(t) \ket{\downarrow} \\
+   i \hbar(\dot α \ket{\uparrow} + \dot β \ket{\downarrow}) &= E_{\uparrow} α \ket{\uparrow} + E_{\downarrow} β \ket{\downarrow} \\
+   \intertext{Aufgrund der Eindeutigkeit der Zerlegung in eine Basis erhält man zwei Gleichungen}
+   i \hbar \dot α &= E_{\uparrow} α \\
+   i \hbar \dot β &= E_{\uparrow} β \\
+   \end{align*}
+   $⇒$ Lösungen sind Exponentialfunktionen. Zusammenbauen:
+   \[\ket{ψ(t)} = α(0) e^{-i \frac{E_{\uparrow}}{\hbar}t} \ket{\uparrow} + β(0) e^{-i \frac{E_{\downarrow}}{\hbar}t} \ket{\downarrow}\]
+   (Wiedererkennung: $E = \hbar ω$!). Wichtig: $\abs{α}$ und $\abs{β}$ bleiben in Zeitentwicklung konstant. Übergang zum \(N\)-dimensionalen System (Hilbert-Raum) offensichtlich:
+   (solange Basis $\ket{i}$ ($i = 1, \dots, N$) von Eigenvektoren von $H$ bekannt)
+   \[\ket{ψ(t)} = \sum_{i} α_i(0) e^{-i \frac{E_i}{\hbar}t} \ket{i} \qquad H \ket{i} = E_i \ket{i}\]
+** Adjungierte und hermitesche Operatoren
+   $\mathcal{H}$ endlichdimensionaler Hilbertraum, betrachte linearen Operator $A: \mathcal{H} \to \mathcal{H}$.
+   Der zu $A$ adjungierte Operator $A^{\dagger}$ ist durch die Eigenschaft
+   \[\braket{A^{\dagger} ψ | χ} = \braket{ψ \mid A χ}\]
+   Definiert dies tatsächlich einen Operator? Ja weil rechts lineares Funktional auf $\mathcal{H}$ definiert ist.
+   Element von $\mathcal{H}^{\ast}$ $\to$ Element von $\mathcal{H}$: dieses ist
+   \[A^{\dagger} \ket{ψ}\]
+   Äquivalente Definition: \\
+   Vorbereitung: Definiere Wirkung von beliebigen Operator auf Bra-Vektoren von rechts:
+   \[A: \mathcal{H}^{\ast} \to \mathcal{H}^{\ast}, \bra{ψ} ↦ \bra{ψ} A\]
+   Dabei ist $\bra{ψ}A ∈ \mathcal{H}^{\ast}$ definiert durch
+   \[\bra{ψ} A: \mathcal{H} \to ℂ, \ket{χ} ↦\braket{ψ| A | χ}\]
+   Jetzt definiern wir $A^{\dagger}$ als den Operator der folgende Aussage wahr macht:
+   \[A \ket{ψ} = \ket{χ} ⇔ \bra{ψ} A^{\dagger} = \bra{ψ}\]
+   In Worten: Wirkung von $A$ von linkts auf $\mathcal{H}$ entspricht (mit kanonischen Isomorphismus) der Wirkung von $A^{\dagger}$ von rechts auf $\mathcal{H}^{\ast}$. \\
+   Jetzt: Übersetzung in Matrixsprache. Dazu: Orthonormalbasis $\ket{e_i} = \ket{i}$
+   \[\ket{ψ} = \sum_{i} ψ_i \ket{i}\]
+   Behauptung: Die oben	definierten Komponenten $ψ_i$ gewinnt man als
+   \[ψ_i = \braket{i | ψ}\]
+   Nachrechnen durch Projektion von
+   \[\ket{ψ} = \sum_{i} ψ_i \ket{i}\]
+   auf $\bra{j}$:
+   \[\braket{j | ψ} = \braket{j | \sum_{i} ψ_i \ket{i}} = \sum_{i} ψ_i δ_{ij} = ψ_j \checkmark\]
+   Behauptung: Jeder Operator entspricht Matrix:
+   \[A \leftrightarrow A_{ij} = \braket{i | A | j}\]
+   Bazu: Bestimme Komponenten von $A \ket{ψ}$:
+   \[\braket{i | A | ψ} = \braket{i | A \sum_{j} | j} ψ_j = \underbrace{\sum_{j} A_{ij} ψ_j}_{\mathclap{\text{Matrix $(A_{ij})$ mal Spaltenvektor $\{ψ\}^T$}}}\]
+   Jetzt zurück zur Definition von $A^{\dagger}$:
+   \[\braket{A^{\dagger} ψ | χ} = \braket{ψ | A | χ}\]
+   Werte dies auf für $\ket{ψ} = \ket{l}, \ket{χ} = \ket{k}$ (Basisvektoren). Zunächst:
+   \begin{align*}
+   A^{\dagger} \ket{ψ} &= (A^{\dagger})_{ij} ψ_j \ket{i} = (A^{\dagger})_{ij} δ_{lj} \ket{i} = (A^{\dagger})_{il} \ket{i} \\
+   \braket{A^{\dagger} ψ| χ} &= (A^{\dagger})^{\ast}_{il} \braket{i | k} (A^{\dagger})^{\ast}_{kl} = \braket{ψ | A | χ} = \braket{l | A | k} = A_{lk} \\
+   ⇒ (A^{\dagger})_{ij} &= A^{\ast}_{ji} ⇔ A^{\dagger} = (A^{\ast})^T
+   \end{align*}
+   Ab sofort $\hat A^{\dagger}$ $\equiv$ adjungierter Operator. $A^{\dagger}$ $\equiv$ "adjungierter" beziehungsweise "hermitesch konjugiertee Matrix".
+   #+begin_defn latex
+   Auf endlich dimensionalen Hilbertraum heißt Operator $\hat A$ hermitesch, falss
+   \[\hat A^{\dagger} = \hat A\]
+   (entspricht hermitescher Matrix $A^{\dagger} = A$)
+   #+end_defn
+   Wichtig für Quantenmechanik: hermitesche Operatoren haben reelle Erwartungswerte $⇒$ Nutze diese zur Beschreibung von Observablen. Nutze zweite Definition:
+   \begin{align*}
+   A \ket{ψ} &= \ket{χ} ⇔ \bra{ψ} A^{\dagger} = \bra{χ} \\
+   ⇒ \braket{ρ | A | ψ} &= \braket{ρ | χ} \\
+   \braket{ψ | A^{\dagger} | ρ} &= \braket{χ | ρ} \\
+   ⇒ \braket{ρ | A | ψ}^{\ast} &= \braket{ψ | A^{\dagger} | ρ} \\
+   \intertext{Benutze nun $A = A^{\dagger}$ und setze $\ket{ρ} \equiv \ket{ψ}$}
+   ⇒ \braket{ψ | A | ψ}^{\ast} &= \braket{ψ | A | ψ}
+   \end{align*}
+** Eigenwerte, Diagonalisierbarkeit, unitäre Operatoren
+   $\ket{ψ}$ heißt Eigenvektor zu $A$ falls
+   \begin{align*}
+   \hat A \ket{ψ} &= λ \ket{ψ} \\
+   ⇔ A_{ij} ψ_j &= λ ψ_i
+   \end{align*}
+   \begin{ibox}{}
+   Entscheidend: hermitesche Operatoren haben stets Basis aus Eigenvektoren.
+   ($\to$ sind als Matrizen in dieser Basis diagonal)
+   \end{ibox}
+   Herleitung: Kapitel 3.3 von Theo 2. Idee: Sei $\hat H$ der hermitesche Operator, sei $H$ die entsprechende Matrix. Löse $\det(H - λ \mathbb{1}) = 0$. Sei $λ_1$ Lösung.
+   Löse Gleichung $(H - λ_1 \mathbb{1}) x = 0$ $⇒$ Lösungsvektor $x_1$.
+   Zeige, dass $H$ das orthogonale Komplement von $x_1$ auf sich selbst abbildet und auf diesem hermitesch ist. Widerhole Argument oben, finde $λ_2, x_2$ und so weiter und so fort.
+   $⇒$ Basis $\{\ket{λ_i}\}$ mit Eigenwerten $λ_i$.	Zerlege neue Basis in alte Basis:
+   \[\ket{λ_i} = \ket{j} U_{ji}\]
+   Berechne
+   \[δ_{ij} = \braket{λ_i | λ_j} = U_{ki}^{\ast} \braket{k | l} U_{lj} = U_{ki}^{\ast} U_{kj} = (U^{\dagger})_{ik} U_{kj} = (U^{\dagger} U)_{ij}\]
+   Dies definiert gerade eine *unitäre Matrix*:
+   \[U^{\dagger} = U^{-1}\]
+   Wir benutzen die gleiche Definition für einen *unitären Operator*:
+   \[\hat U^{\dagger} = \hat U^{-1}\]
+   Entscheidende Eigenschaft des unitären Operators: *Kompatibilität mit Skalarprodukt*: betrachte unitären Operator $\hat O$
+   \[\braket{\hat O ψ | \hat O χ} = \braket{ψ | \hat O^{\dagger} \hat O | χ} = \braket{ψ | χ}\]

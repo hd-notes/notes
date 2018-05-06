@@ -1,0 +1,6 @@
+*
+!*/
+!*.pdf
+!*.org
+!header.org
+!.gitignore

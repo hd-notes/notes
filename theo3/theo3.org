@@ -1834,7 +1834,7 @@ Differenziebarkeit von komplexen Funktionen hat viele Aspekte
   &= \sqrt{1 - β^2} \d t = \frac{\d t}{γ} \\
   \end{align*}
   Zeitintervall, das von der Uhr angezeigt wird:
-  \[Δτ &= ∫_A^B \d τ = ∫_A^B \frac{\d t}{γ}\]
+  \[Δτ = ∫_A^B \d τ = ∫_A^B \frac{\d t}{γ}\]
   \begin{align*}
   S &= - m c ∫ \d s = - m c ∫ \d t \sqrt{η_{μν} \dd{x^μ}{t} \dd{x^ν}{t}} = - m c ∫ \d t \sqrt{c^2 - v_i v^i} \\
   &= - m c^2 ∫ \d t \sqrt{1 - \frac{v_i v^i}{c^2}} \approx ∫ \d t \underbrace{\frac{m}{2} v_i v^i}_{\mathclap{T \sim \text{ kinetische Energie}}} + \const
@@ -1849,7 +1849,7 @@ Differenziebarkeit von komplexen Funktionen hat viele Aspekte
 	\[\dot x_i \to \dot x_i + v_i, \mathcal{L} \to \frac{1}{2}(\dot x_i + v_i)(\dot x^i + v^i) = \overbrace{\frac{1}{2} \dot x_i \dot x^i}^{= \mathcal{L}} + \underbrace{\dot x_i v^i + \frac{1}{2} v_i v^i}_{\mathclap{\dd{}{t}(x_i v^i + \frac{1}{2} v_i v^i t)}}\]
   $\to$ wir brauchen eine Lorentz-invariantet relativisitsche Lorentz-Funktion
   - $\mathcal{L}$ soll konvex sein
-  - Legendre-Transformation $\displaystyle{\mathcal{H} = \dot x^i \pp{\mathcal{L}}{\dot x^i} - \mathcal{L}$}
+  - Legendre-Transformation $\displaystyle{\mathcal{H} = \dot x^i \pp{\mathcal{L}}{\dot x^i} - \mathcal{L}}$
   - $\mathcal{H}$ ist dann nach unten beschränkt
   - am besten aus maximal ersten Ableitungen
 	\begin{align*}
@@ -1929,7 +1929,7 @@ Differenziebarkeit von komplexen Funktionen hat viele Aspekte
   \partial^ν(ε_{μνρσ} F^{ρσ}) &= 0 \\
   \partial^ν \tilde F_{μν} &= 0 \qquad \tilde{F} \text{ dualer Feldtensor} \\
   μ = 0 (\text{nur \(B\)-Komponenten}): \partial^ν \tilde F_{0ν} &= \partial^i B_i = \Div \v B = 0 \checkmark \\
-  μ = 1 (\(E\)- und \(B\)-Komponenten): \partial^ν \tilde F_{1ν} &= - \partial_0 B_x - \partial_y E_z + \partial_z E_y \to \rot \v E = - \partial_{ct} \v B
+  μ = 1 (\text{\(E\)- und \(B\)-Komponenten}): \partial^ν \tilde F_{1ν} &= - \partial_0 B_x - \partial_y E_z + \partial_z E_y \to \rot \v E = - \partial_{ct} \v B
   \end{align*}
 * Kontinuität der Ladungsdichte
   \begin{align*}

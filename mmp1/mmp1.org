@@ -5,6 +5,7 @@
 
 # "Beipackzettel"
 # Anwendung mehr im Vordergrund, aber Präzise
+# Mittwoch 2.5 Vorlesung - findet im "Neuen Hörsaal" statt
 
 # Übungszettel Abgabe + Ausgabe Mittwoch 9:15, 2er-Teams
 
@@ -99,8 +100,8 @@
 *** Komplexe Zahlen
 	Körper auf $ℝ^2$ definiert durch
 	\begin{align*}
-	(a, b) + (c, d) &:= (a + c, b + d) \\
-	(a, b) · (c, d) &:= (ac - bd, ad + bc) \\
+	\string(a, b\string) + (c, d) &:= (a + c, b + d) \\
+	\string(a, b\string) · (c, d) &:= (ac - bd, ad + bc) \\
 	⇒ (0, 1) · (0, 1) &= (-1, 0) \\
 	⇒ (x, 0) · (\tilde x, 0) &= (\tilde x, 0) \\
 	⇒ i &:= (0, 1)
@@ -113,8 +114,8 @@
 	Komplexe Konjugation:
 	\begin{align*}
 	\bar z &= x - iy \\
-	\overline(z + w) &= \bar z + \bar w \\
-	\overline(z · w) &= \bar z · \bar w \\
+	\overline{z + w} &= \bar z + \bar w \\
+	\overline{z · w} &= \bar z · \bar w \\
 	\end{align*}
 	$⇒ ℂ \cong ℝ^2$
 *** Komplexe Funktionen
@@ -169,7 +170,7 @@
 	\[∀ δ ∈ ℂ, δ \to 0 \quad f(z_0 + δ) - f(z_0) = L(δ) + \mathcal{o}(\abs{δ})\]
 	$f$ auf $Ω$ reell differenzierbar, wenn $f$ in jedem $z_0 ∈ Ω$ reell differenzierbar ist.
 	\begin{align*}
-	f(z) &= r(z) + i s(z) \leftrightarrow \cvec(r(x, y); s(x, y)) \\
+	f(z) &= r(z) + i s(z) \leftrightarrow \cvec{r(x, y); s(x, y)} \\
 	L &= \begin{pmatrix}\pp{r}{x}(x_0, y_0) & \pp{r}{y}(x_0, y_0) \\ \pp{s}{x}(x_0, y_0) & \pp{s}{y}(x_0, y_0)\end{pmatrix}
 	\end{align*}
 	#+end_defn
@@ -222,23 +223,46 @@
 	&= (r, -s) \cvec{\dot x; \dot y} + i(s, r) \cvec{\dot x; \dot y} \\\
 	∫_{t_a}^{t_b} f · \dot γ \d t &= ∫_{[γ]} (r, -s) · \d x + i ∫_{[γ]} (s, r) · \d x
 	\end{align*}
+*** Der Cauchy'sche Integralsatz
 	Wenn $f ∈ C^1(Ω, ℂ)$ (das heißt reell differenzierbar und Ableitung stetig), $A ⊂ Ω$, endlich zerlegbar
 	\begin{align*}
 	∫_{\partial A} f(z) \d z &= ∫_{\partial A} (r, -s) \d x + i ∫_{\partial A} (s, r) \d x \\
 	&\underarrow[=]{Green} \iint_A \d x \d y(\pp{(-s)}{x} - \pp{r}{y}) + i \iint_{A} \d x \d y (\pp{r}{x} - \pp{s}{y}) \\
 	&= 0 \quad\text{wenn $f$ \textbf{komplex} differenzierbar ist!}
 	\end{align*}
+	#+ATTR_LATEX: :options [Cauchy'scher Integralsatz]
 	#+begin_thm latex
 	Wenn $Ω ⊂ ℂ$ offen ist, $f: Ω \to ℂ$ holomorph dann gilt für jedes endliche zerlegbare $A ⊂ ℂ$ mit $\bar A ⊂ Ω$
 	\[∫_{\partial A} f(z) \d z = 0\]
 	#+end_thm
+*** Stammfunktionen und Linienintegrale
+	#+begin_thm latex
+	$Ω ⊂ ℂ$ offen, $F: Ω \to ℂ$ holomorph und $f = F'$. Dann gilt für jede stückweise \(C^1\)-Kurve $[γ]$
+	\[∫_{[γ]} f(z) \d z = F(z_1) - F(z_0)\]
+	wenn $z_0$ der Anfangspunkt und $z_1$ der Endpunkt von $[γ]$ ist.
+	#+end_thm
+	#+begin_proof latex
+	Sei zunächst $[γ]$ eine \(C^1\)-Kurve und $γ:[t_0, t_1] \to G$ eine Parametrisierung von $[γ]$, wobei
+	$γ(t_0) = z_0$ und $γ(t_1) = z_1$. Dann ist
+	\begin{align*}
+	∫_{[γ]} f(z) \d z &= ∫_{t_0}^{t_1} f(γ(t)) \dot γ(t) \d t \\
+	&= ∫_{t_0}^{t_1} F'(γ(t)) \dot γ(t) \d t \\
+	&= ∫_{t_0}^{t_1} \dd{}{t} F(γ(t)) \d t \\
+	&= F(γ(t_1)) - F(γ(t_0)) \\
+	&= F(z_1) - F(z_0)
+ 	\end{align*}
+	#+end_proof
+	wobei im dritten Schritt die Kettenrigel verwendet wurde. Im allgemeinen Fall besteht $[γ]$ aus
+	mehreren Stücken, die zusammengesetzt werden und auf obiges Argument anwendbar ist. Da
+	der Endpunkt des \(k\)-ten Stücks der Anfangspunkt des \(k + 1\)-ten ist, erhält man eine Teleskopsumme.
+*** Grundlegende Beispiele
 	#+begin_ex latex
 	\begin{align*}
-	∫_{\abs{z - z_0} &= r f(z) \d z := ∫_{\partial B_r(z_0)} f(z) \d z} \\
+	∫_{\abs{z - z_0}} &= r f(z) \d z := ∫_{\partial B_r(z_0)} f(z) \d z \\
 	B_r(z_0) &= \{z \mid \abs{z - z_0} < r\} \\
 	\abs{z - z_0} &= r \\
 	⇒ z - z_0 &= r e^{iθ} \\
-	⇒ z = z_0 + r e^{iθ} = z(θ)
+	⇒ z &= z_0 + r e^{iθ} = z(θ) \\
 	∫_{\abs{z - z_0} = r} f(z) \d z ∫_0^{2π} \d θ f(z(θ)) · \dot z(θ) &= ∫_0^{2π} i r e^{iθ} f(z_0 r e^{iθ}) \d θ
 	\end{align*}
 	#+end_ex
@@ -256,3 +280,741 @@
 	&= \begin{cases} 2πi & n = 1 \\ 0 & \text{sonst} \end{cases}
 	\end{align*}
 	#+end_proof
+*** Die Cauchy'sche Integralformel
+	#+ATTR_LATEX: :options [Cauchy'sche Formel]
+	#+begin_thm latex
+	$Ω ⊂ ℂ$ offen, $f: Ω \to ℂ$ holomorph, $A$ endlich zerlegbar mit $\bar A ⊂ Ω$. Dann ist für jedes $z_0 ∈ A$
+	\[f(z_0) = \frac{1}{2πi} ∫_{\partial A} \frac{f(z)}{z - z_0} \d z\]
+	#+end_thm
+	#+begin_proof latex
+	Sei $z_0 ∈ A$ und $B_{r_0}(z_0) = \{z ∈ ℂ \mid \abs{z - z_0} < r_0\}$. Da $A$ offen ist,
+	existiert $r_0 > 0$ mit $\bar B_r(z_0) ⊂ A$ für alle $r \leq r_0$. Sei $r \leq r_0$,
+	\[z ↦ \frac{f(z)}{z - z_0}\]
+	ist auf $M = A \setminus \overline{B_r(z_0)}$ holomorph. $M$ ist endlich zerlegbar, also
+	folgt aus Cauchy'schen Integralsatz
+	\[∫_{\partial M} \frac{f(z)}{z - z_0} \d z = 0\]
+	wobei $\partial M = \partial A - \partial B_{r}(z_0)$, somit
+	\[∫_{\partial A} \frac{f(z)}{z - z_0} \d z = ∫_{\partial B_r(z_0)} \frac{f(z)}{z - z_0} \d z\]
+	$\partial B_r(z_0)$ lässt sich als $z = γ(θ) = z_0 + r e^{iθ}, θ ∈ [0, 2π]$ parametrisieren. Dann
+	ist $\dot γ(θ) = i r e^{iθ}$, also
+	\begin{align*}
+	\frac{1}{2πi} ∫_{\partial B_r(z_0)} \frac{f(z)}{z - z_0} \d z &= \frac{1}{2πi} ∫_0^{2π} \frac{f(z_0 + r e^{iθ})}{r e^{iθ}} i r e^{iθ} \d θ \\
+	&= \frac{1}{2π} ∫_0^{2π} f(z_0 + r e^{iθ}) \d θ
+	\end{align*}
+	$∀ 0 < r \leq r_0$. Auf der rechten	Seite kann nun der Limes $r \to 0$ genommen werden. Da
+	$f$ als differenzierbare Funktion stetig und das Integrationsintervall $[0, 2π]$ kompakt ist,
+	kann man den Grenzwert mit dem Integral vertauschen und erhält insgesamt
+	\[\frac{1}{2πi} ∫_{\partial A} \frac{f(z)}{z - z_0} \d z = \frac{1}{2π} ∫_0^{2π} \d θ f(z_0) = f(z_0)\]
+	#+end_proof
+	#+ATTR_LATEX: :options [Mittelwerteigenschaft holomorpher Funktionen]
+	#+begin_thm latex
+	$Ω ⊂ ℂ$ offen, $f: Ω \to ℂ$ holomorph, $z_0 ∈ Ω$ und $r > 0$, so gewählt, dass $B_r(z_0) ⊂ Ω$. Dann ist
+	\[f(z_0) = \frac{1}{2π} ∫_0^{2π} \d θ f(z_0 + r e^{iθ})\]
+	#+end_thm
+	#+begin_proof latex
+	Sofort aus Cauchy'scher Formel.
+	#+end_proof
+** Potenzreihen und analytische Funktionen
+*** Erinnerung an unendliche Reihen
+	Es sei $(a_n)_{n ∈ ℕ_0}$ eine Folge in $ℂ$, das heißt $a_n ∈ ℂ$ für alle $N$. Für $N ∈ ℕ_0$ definieren wir
+	\[S_N = \sum_{n = 0}^{N} a_n \quad\text{und}\quad A_N = \sum_{n = 0}^{N} \abs{a_n}\]
+	$S_N$ heißt die \(N\)-te Partialsumme der unendlichen Reihe
+	\[\sum_{n = 0}^{∞} a_n\]
+	$A_N$ ist die \(N\)-te Partialsumme der unendlichen Reihe der Absolutbeträge. Die unendliche
+	Reihe ist
+	- konvergent, wenn die Folge der Partialsummen $(S_N)_{N ∈ ℕ_0}$ konvergiert
+	- absolut konvergent, wenn die Folge $(A_N)_{N ∈ ℕ_0}$ konvergiert
+	Die Folge der $A_N$ ist monoton steigend, $A_{N + 1} \geq A_N$ für all$ N$, somit konvergent, wenn sie
+	nach oben beschränkt ist. Aus der Dreiecksungleichung $\abs{S_{N + M} - S_n} \leq A_{N + M} - A_N$
+	und der Vollständigkeit von $ℂ \simeq ℝ^2$ folgt,  dass jede absolut konvergente Reihe auch konvergent ist.
+	Da $a_n = S_n - S_{n - 1}$ ist folgt aus der Konvergenz der unendlichen Reihe, dass
+	$(a_n)_{n ∈ ℕ_0}$ eine Nullfolge, somit insbesondere beschränkt ist:
+	\[∃ K > 0 ∀ n ∈ ℕ_0 : \abs{a_n} \leq K\]
+	Konvergente Reihen können gliedweise addiert werden, absolut konvergente Reihen auch beliebig umgeordnet.
+	Beim Umordnen von nicht absolut konvergenten Reihen können beliebige Werte herauskommen.
+*** Die geometrische Reihe
+	Ein einfaches Beispiel ist die geometrische Reihe. Da sie im folgenden immer wieder verwendet wird,
+	erinnern wir kurz daran: wenn $X$ eine Unbestimmte ist, gilt die Polynomidenität
+	\[(1 - X) \sum_{n = 0}^{N} X^n = (1 - X)(1 + X^2 + \dots + X^N) = 1 - X^{N + 1}\]
+	Sei $q ∈ ℂ \setminus \{1\}$, dann folgt also
+	\[\sum_{n = 0}^{N} q^n = 1 + q + q^2 + \dots + q^N = \frac{1 - q^{N + 1}}{1 - q}\]
+	#+begin_lemma latex
+	Die geometrische Reihe konvergiert für alle $q ∈ ℂ$ mit $\abs{q} < 1$ absolut, und gibt
+	\[\sum_{n = 0}^{∞} q^n = \frac{1}{1 - q}\]
+	Wenn $\abs{q} > 1$ ist, dann divergiert die geometrische Reihe. Für $\abs{q} < 1$ und
+	jedes $k ∈ ℕ$ konvergiert außerdem die Reihe
+	\[\sum_{n = 0}^{∞} n^k q^n\]
+	absolut.
+	#+end_lemma
+	#+begin_proof latex
+	Für $\abs{q} > 1$ divergiert die Reihe, da die $q^n$ keine Nullfolge bilden.
+	Wenn $\abs{q} < 1$ geht $q^{N + 1} \xrightarrow{N \to ∞} 0$, somit konvergiert die Folge der Partialsummen $S_N$.
+	Dasselbe gilt für die Partialsummen $A_N$ der Reihe der Absolutbetriäge, das $\abs{q^n} = \abs{q}^n$ ist. Sei $k ∈ ℕ$. Es ist
+	\[\abs{n^k q^n} = e^{k \ln n - n \ln \frac{1}{\abs{q}}}\]
+	und $\ln \frac{1}{\abs{q}} > 0$. Da $\frac{\ln n}{n} \to 0$ für $n \to ∞$, dominiert für große $n$ der zweite Term im Exponenten, also gibt es ein
+	$n_0(k, \abs{q})$, sodass für alle $n \geq n_0$ gilt
+	\[n \ln \frac{1}{\abs{q}} - k \ln n \geq \frac{n}{2} \ln \frac{1}{\abs{q}}\]
+	Für $n \geq n_0$ ist also
+	\[\abs{n^k q^n} \leq \abs{q}^{n/2}\]
+	somit hat die Reihe
+	\[\sum_{n \geq n_0} \abs{n^k q^n}\]
+	die Majorante
+	\[\sum_{n \geq n_0} \abs{q}^{n/2}\]
+	die für jedes $\abs{q} < 1$ konvergiert.
+	#+end_proof
+*** Potenzreihen
+	Sei $z$ zunächst eine formale Variable. Der Ausdurck
+	\[\sum_{n = 0}^{∞} a_n z^n\]
+	heißt formale Potenzreihe. Er ist zunächst nur eine mnemotechnische Notation -
+	eine formale Potenzreihe ist einfach gegeben durch die Koeffizientefolge $(a_n)_{n ∈ ℕ_0}$.
+	Addition zweier solcher Folgen ist gliedweise definiert, das Produkt hat die Folgenglieder
+	\[c_n = \sum_{k = 0}^{n} a_{n - k} b_k\]
+	Die formalen Potenzreihen bilden einen Ring. Es gibt eine natürliche Topologie auf dem formalen
+	Potenzreihenring.
+	#+begin_lemma latex
+	Sei $(a_n)_{n ∈ ℕ_0}$ eine Folge in $ℂ$. Es gebe ein $z_0 ∈ ℂ$, sodass die unendliche Reihe
+	\[\sum_{n = 0}^{∞} a_n z_0^n\]
+	konvergiert. Setze $r_0 = \abs{z_0}$ und $D_0 = \{z ∈ ℂ \mid \abs{z} < r_0\}$. Dann konvergiert für jedes $z ∈ D_0$ die
+	unendliche Reihe
+	\[\sum_{n = 0}^{∞} a_n z^n\]
+	absolut. Die Konvergenz ist auf kompakten Teilmengen von $D_0$, insbesondere für jedes $r < r_0$ auf
+	der Kreisscheibe $\bar D_r = \{z ∈ ℂ \mid \abs{z} \leq r\}$ gleichmäßig.
+	#+end_lemma
+	#+begin_proof latex
+	Bezeihne $t_n = a_n z_0^n$. Nach Voraussetzung konergviert die unendliche Reihe
+	\[\sum_{n = 0}^{∞} t_n\]
+	also gibt es $K > 0$, sodass für alle $n ∈ ℕ_0: \abs{t_n} < K$. Sei $z ∈ D_0$, dann ist
+	$q = \frac{\abs{z}}{r_0} < 1$, und somit ist die geometrische Reihe
+	\[\sum_{k = 0}^{∞} q^k\]
+	konvergent mit Summe $(1 - q)^{-1}$. Es folgt
+	\begin{align*}
+	a_n z^n &= t_n (\frac{z}{z_0})^n \\
+	⇒ \abs{a_n z^n} &\leq K q^n \\
+	⇒ \sum_{n = 0}^{N} \abs{a_n z^n} &\leq K \sum_{n = 0}^{N} q^n \leq K \sum_{n = 0}^{∞} q^n = \frac{1}{1 - q}
+	\end{align*}
+	also konvergiert die Potenzreihe
+	\[\sum_{n ∈ ℕ_0} a_n z^n\]
+	absolut. Sei $r < r_0$. Für alle $z ∈ \bar D_r$ gilt
+	\[\abs{\frac{z}{r_0}} \leq \frac{r}{r_0} = q_r < 1\]
+	und der Reihenrest erfüllt die Abschätzung
+	\[\abs{\sum_{n = N}^{∞} a_n z^n} \leq \sum_{n = N}^{∞} \abs{a_n z^n} \leq K \sum_{n = N}^{∞} q_r^n \leq K \frac{q_r^N}{1 - q_r}\]
+	Da diese Schranke nur von $r$ abhängt, ist die Konvergenz in $\bar D_r$ gleichmäßig. Wenn
+	$M ⊂ D_0$ kompakt ist, gibt es (mit dem üblichen Argument einer endlichen Teilüberdeckung) ein
+	$r < r_0$ mit $M ⊂ \bar D_r$, sodass sich die Gleichmäßgikeit überträgt.
+	#+end_proof
+	#+begin_lemma latex
+	Vorraussetzungen wie im vorigen Lemma. Dann gilt:
+	1. Für jedes $k ∈ ℕ$ ist die unendliche Reihe
+	   \[\sum_{n = 0}^{∞} n^k a_n z^n\]
+	   absolut konvergent, gleichmäßig auf kompakten Teilmengen von $D_0$
+	2. Die dadurch auf $D_0$ definierte Funktion
+	   \[f(z) = \sum_{n = 0}^{∞} a_n a^k\]
+	   ist beliebig oft stetig differenzierbar und die Ableitung ist durch gliedweise Differentation gegeben, das heißt durch die konvergente Reihe
+	   \[\frac{\d^k f}{\d z^k}(z) = \sum_{n = k}^{∞} n(n - 1) \dots (n - k + 1) a_n z^{n - k}\]
+	3. Die Potenzreihe ist die Tayorreihe der Funktion $f(z)$ um $z = 0$
+    4. $f(z)$ hat eine Stammfunktion auf $D_0$, die durch gliedweise Integration erhalten wird:
+	   \[F(z) = C + \sum_{n = 0}^{∞} \frac{a_n}{n + 1} z^{n + 1}\]
+	   mit $C ∈ ℂ$
+	#+end_lemma
+	#+begin_proof latex
+	Wie vorher folgt $\abs{n^k a_n z^n} < K n^k q^n$ mit $0 < q < 1$ und die Summe
+	\[\sum_{n = 0}^{∞} n^k q^n\]
+	konvergiert für jedes $k ∈ ℕ$. Also konvergiert
+	\[\sum_{n = 0}^{∞} n^k a_n z^n\]
+	absolut und gleichmäßig auf Kompakta, im selben Konvergenzkreis. Aufgrund der absoluten Konvergenz ist
+	\[f(z + h) - f(z) = \sum_{n = 0}^{∞} a_n ((z + h)^n - z^n)\]
+	Taylorentwicklungmit Rest gibt
+	\[(z + h)^n - z^n = n z^{n - 1}h + n(n - 1)h^2 ∫_0^1 \d s(1 - s)(z + sh)^{n - 2}\]
+	Da wir am Ende den Grenzwert $h \to 0$ nehmen wollen können wir $\abs{h}$ so klein wählen, dass
+	\[\tilde q = \frac{\abs{z} + \abs{h}}{r_0} < 1\]
+	ist. Für diese $h$ folgt
+	\[\abs{a_n((z + h)^n - z^n - n z^{n - 1}h)} \leq \abs{a_n r_0^{n - 2}} n (n - 1) \abs{h}^2 \tilde q^{n - 2} \leq \frac{K}{(\tilde q r_0)^2} \abs{h}^2 n^2 \tilde q^n\]
+	Der Restterm gibt also $\abs{h}^2$ mal einer absolut konvergenten Reihe. Da der Differentialquotient durch
+	eine im gleichen Kreis konvergente Potenzreihe gegeben ist, kann dies Prozedur bei jeder Ableitung wiederholt werden.
+	Da jede Ableitung differenzierbar ist, ist sie auch stetig. Wenn man $z = 0$ setzt bekommt man
+	$f^{(k)}(0) = k! a_k$. Die Aussage über die Stammfunktion ergibt sich direkt aus gliedweiser Differentiation.
+	Die absolute Konvergenz der Reihe ist offensichtilch, da $(n + 1)^{-1} \leq 1$ ist.
+	#+end_proof
+	#+ATTR_LATEX: :options [Konvergenzradius]
+	#+begin_defn latex
+	Der *Konvergenzradius* einer Potenzreihe ist der größte Wert von $r$, sdass die Reihe für alle
+	$z$ mit $\abs{z} < r$ konvergiert.
+	#+end_defn
+*** Analytische Funktionen
+	#+begin_defn latex
+	Eine Funktion $f: Ω \to ℂ$ heißt analytisch, wenn es zu jedem $z_0 ∈ Ω$ ein $r_0 > 0$ gibt, sodass
+	für alle $z ∈ Ω$ mit $\abs{z - z_0} < r_0$ gilt
+	\[f(z) = \sum_{n = 0}^{∞} a_n (z - z_0)^n\]
+	mit $a_n ∈ ℂ$ und die Potenzreihe für $\abs{z - z_0} < r_0$ konveriert. In Worten:
+	Eine Funktion ist analytisch, wenn sie sich in Umgebung jedes Punkts ihres Definitonsbereichs durch
+	eine konvergente Taylorreihe darstellen lässt.
+	#+end_defn
+** Grundlegende Sätze über holomorphe Funktionen
+*** Holomorphe Funktionen sind analytische
+	Wir haben gezeigt, dass eine durch eine konvergente Potenzreihe gegebene Funktion beliebig oft stetig komplex differenzierbar ist.
+	Somit gilt: eine auf $Ω$ analytische Funktion $f$ ist auf $Ω$ holomorph. Es gilt aber auch die Umkehrung:
+	#+begin_thm latex
+	Sei $Ω ⊂ ℂ$ offen, $f: Ω \to ℂ$ holomorph. Dann ist $f$ auf $Ω$ analytisch. Es gilt nämlich für
+	jedes $z_0 ∈ Ω$: wenn $r_0 > 0$ so gewählt ist, dass $B_{r_0}(z_0) ⊂ Ω$ ist, dann hat $f$ für alle
+	$z_0 ∈ B_{r_0}(r_0)$ die Darstellung durch die konvergente Potenzreihe
+	\[f(z) = \sum_{n = 0}^{∞} a_n (z - z_0)^n\]
+	mit
+	\[a_n = \frac{1}{2πi} ∫_{\abs{w - z_0} = r} \frac{f(w)}{(w - z_0)^{n + 1}} \d w\]
+	wobei das Integral für jeden Radius $r$ mit der Eigenschaft $0 < r < r_0$ existiert und für
+	diese $r$ unabhängig von $r$ ist. Die Reihe konvergiert gleichmäßig auf kompakten Teilmengen von $B_{r_0}(z_0)$.
+	#+end_thm
+	#+begin_proof latex
+	Sei $z ∈ B_{r_0}(z_0)$, das heißt $\abs{z - z_0} < r_0$. Es existiert also $r_1$ mit $\abs{z - z_0} < r_1 r_0$
+	und es gilt $B_{r_1}(z_0) ⊂ Ω$. Nach der Cauchy'schen Formel gilt
+	\[f(z) = \frac{1}{2πi} ∫_{\mathclap{\abs{w - z_0} = r_1}} \frac{f(w)}{w - z} = \frac{1}{2πi} ∫_{\mathclap{\abs{w - z_0} = r_1}} \frac{f(w)}{w - z_0} \frac{1}{1 - ζ}\]
+	mit
+	\[ζ = \frac{z - z_0}{w - z_0}\]
+	Da
+	\[\abs{ζ} = \abs{\frac{z - z_0}{w - z_0}} = \frac{z - z_0}{r_1} < 1\]
+	ist konvergiert die geometrische Reihe
+	\[\frac{1}{1 - ζ} = \sum_{n = 0}^{∞} ζ^n\]
+	absolut und gleichmäßig in $w ∈ \partial B_{r_1}(z_0)$. Integral und Reihe lassen sich also vertauschen und
+	wir erhalten die konvergente Entwicklung
+	\[f(z) = \sum_{n = 0}^{∞}(z - z_0)^n \frac{1}{2πi} ∫_{\mathclap{\abs{w - z_0} = r_1}} \frac{f(w)}{(w - z_0)^{n + 1}} \d w\]
+	Daraus folgt also die Analytizität von $f$ bei $z_0$, wobei aber $r = r_1$ ist. Andererseits ist aber die Funktion
+	\[w ↦ \frac{f(w)}{(w - z_0)^{n + 1}}\]
+	holomorph auf $B_{r_0}(z_0) \setminus \{z_0\}$, als kann der Radius des	Kreises mit dem
+	Deformationsargument beliebig in $(0, r_0)$ gewählt werden.
+	#+end_proof
+	Für jede analytische Funktion sind die Entwicklungskoeffizienten auch die Taylorkoeffizienten, das heißt
+	bei Entwicklung um $z_0$ gilt
+	\[a_n = \frac{f^{(n)}(z_0)}{n!}\]
+	Man erhält also	eine Integraldarstellung für die Ableitungen von $f$ bei $z_0$:
+	\[f^{(n)}(z) = \frac{n!}{2πi} ∫_{\mathclap{\abs{w - z_0} = r_0}} \frac{f(w)}{(w - z_0)^{n + 1}} \d w\]
+	Durch einfache Abschätzungen des Integranden erhält man
+	\begin{align*}
+	\abs{a_n} &= \frac{1}{2π} \abs{∫_{\mathclap{\abs{w - z_0} = r_0}} \frac{f(w)}{(w - z_0)^{n + 1}} \d w} \\
+	&\leq \frac{1}{2π} ∫_0^{2π} \frac{\abs{f(z_0 + r_0 e^{iθ})}}{r_0^{n + 1}} r_0 \d θ \\
+	&\leq \frac{\sup \{\abs{f(w)} \mid w ∈ \partial B_{r_0}(z_0)\}}{r_0^n}
+	\end{align*}
+	Es gilt also
+	#+begin_thm latex
+	Sei $Ω ⊂ ℂ$ offen, $f: Ω \to ℂ$ holomorph und $z_0 ∈ Ω$. Für jedes $r$, für das $B_r(z_0) ⊂ Ω$, gilt
+	\[\abs{\frac{f^{(n)}(z_0)}{n!}} \leq \frac{1}{r^n} \sup \{\abs{f(w)} \mid w ∈ \partial B_r(z_0)\}\]
+	#+end_thm
+	Die lässt sich folgendermahen formulieren: der Analyzitätsradius bei enem $z_0$ im Holomorphiegebiet $Ω$
+	der Funktion $f$ ist mindestens so groß wie der Radius der größten offenen Kreisscheibe mit Mittelpunkt $z_0$,
+	die noch in $Ω$ hineinpasst. Der Konvergenzradius kann größer als $ρ_0$ sei, nämlich wenn man Rand des Kreises
+	gar keine Singularitäten von $f$ sind.Wenn es eine Singularität irgendwo am Rand gibt, ist der Konvergenzradius natürlich
+	gleich $ρ_0$. Der Konvergenzradius der Entwicklung um $z_0$ ist also gerade gleich dem Abstand zu der Singularität,
+	die am nächsten zu $z_0$ liegt.
+	#+begin_ex latex
+	$g: ℝ \to ℝ, x ↦ \frac{1}{1 + x^2}$, mit der Reihenentwicklung um $x = 0$
+	\[g(x) = \sum_{n = 0}^{∞} (-1)^n x^{2n}\]
+	Die Reihe besitzt Konvergenzradius $ρ = 1$. Da die Funktion ein Maximum bei $x = 0$ hat,
+	auf ganz $ℝ$ beliebig oft differenzierbar ist und für $x \to \pm ∞$ gegen $0$ abfällt, kann man sich fragen,
+	warum der Konvergenzradius "nur" $1$ ist. Den Grund dafür sehen wir jetzt im Komplexen. Die Funktion
+	\[z ↦ \frac{1}{1 + z^2}\]
+	ist holomorph auf $ℂ \setminus \{-i, i\}$. Der Einheitskreis $\{z \mid \abs{z} < 1\}$ liegt
+	vollständig in $ℂ \setminus \{-i, i\}$. Somit gilt $ρ \geq 1$. Die beiden Pole $-i, i$, an
+	denen die Reihenentwicklung nicht konvergieren kann, haben Betrag 1. Also muss $ρ = 1$ sein.
+	#+end_ex
+	Damit folgt auch das zunächst selbstverständlich klindende
+	#+begin_korollar latex
+	Jede konvergente Potenzreihe
+	\[\sum_{n = 0}^{∞} a_n z^n\]
+	definert eine auf ihrem Konvergenzkreis analytische Funktion $f(z)$.
+	#+end_korollar
+	#+begin_proof latex
+	Zu zeigen ist hier, dass nicht nur die Potenzreihe um $z = 0$, sondern auch die Taylorreihe um jedes $z_0$
+	im Konvergenzkreis einen positiven Radius hat. Da $f$ holomorph ist folgt dies unmittelbar
+	aus dem Satz, dass holomorphe Funktionen analytisch sind.
+	#+end_proof
+*** Der Satz von Liouville
+	#+begin_defn latex
+	Eine Funktion $f$ heißt ganz analytisch oder einfach "ganz", wenn $f: ℂ \to ℂ$ holomorph ist.
+	#+end_defn
+	Ein Beispiel für eine ganze Funktion ist die Exponentialfunktion.
+	#+ATTR_LATEX: :options [Satz von Liouville]
+	#+begin_thm latex
+	Sei $f: ℂ \to ℂ$ ganz. Wenn $f$ beschränkt ist, ist $f$ konstant.
+	#+end_thm
+	#+begin_proof latex
+	Sei
+	\[\sum_{n = 0}^{∞} a_n z^n\]
+	Die Reihenentwicklung von $f$ um $z_0 = 0$. Diese Reihe konvergiert für alle $z$, da jeder Kreis
+	in $ℂ$ hineinpasst. Da
+	\[M = \norm{f}_{∞} = \sup \{\abs{f(z)} \mid z ∈ ℂ\}\]
+	nach Vorraussetzung endlich gilt
+	\[\abs{a_n} \leq \frac{M}{r^n}\]
+	für alle $r > 0$. Daraus folgt mit $r \to ∞$, dass $a_n = 0$ für alle $n \geq 1$. Daher ist
+	$f(z) = a_0 ∀ z ∈ ℂ$.
+	#+end_proof
+	#+ATTR_LATEX: :options [Fundamentalsatz der Algebra]
+	#+begin_thm latex
+	Sei $P$ ein nicht konstantes Polynom von Grad $n ∈ ℕ, n \geq 1$. Dann hat $P$ eine Nullstelle
+	in $ℂ$.
+	#+end_thm
+	#+begin_proof latex
+	Da $P$ nicht konstant ist, gibt es ein $n \geq 1$, sodass
+	\begin{align*}
+	P(z) &= p_0 + p_1 z + \dots + p_n z^n \\
+	&= z^n (p_n + p_{n - 1} z^{-1} + \dots + p_0 z^{-n}) \\
+	&=: z^n π(z)
+	\end{align*}
+	wobei $p_n \neq 0$ ist. Wenn $\abs{z} \geq R$ ist, gilt
+	\[\abs{π(z) - p_n} \leq \abs{p_{n - 1}} R^{-1} + \abs{p_{n - 2}} R^{-2} + \dots +\abs{p_0} R^{-n}\]
+	Es gibt also ein $R_0 > 0$, sodass für $\abs{z} \geq R_0$ gilt
+	\[\abs{π(z)} \geq \frac{p_n}{2}\]
+	und somit ist $z ↦ P(z)^{-1}$ auf $\{z ∈ ℂ \mid \abs{z} > R_0\}$ holomorph und beschränkt:
+	\[\abs{P(z)}^{-1} \leq \frac{2}{\abs{p_n}} R_0^{-n}\]
+	Wenn $P$ keine Nullstellen hätte dann auch keine auf der kompakten Menge $\{z ∈ ℂ \mid \abs{z} \leq R_0 + 1\}$. Dann
+	wäre $P^{-1}$ dort stetig und somit beschränkt und in der offenen k reisseihcbe holomorph. Also
+	wäre $P^{-1}$ als beschränkte ganze Funktion konstant, im Widerspruch zur Annahme $p_n \neq 0$.
+	#+end_proof
+*** Satz von Morera
+	Der Satz von Morera ist die	Umkehrung des des Satzes von Cauchy. Er besagt, dass
+	eine stetige Funktion deren komplexes Linienintegral über Dreiecksränder verschwindet holomorph ist.
+	#+ATTR_LATEX: :options [Satz von Morera]
+	#+begin_thm latex
+	Sei $Ω ⊂ ℂ$ offen und $f: Ω \to ℂ$ stetig. Für jedes abgeschlossene Dreieck $\triangle ⊂ Ω$ gelte
+	\[∫_{\triangle} f(z) \d z = 0\]
+	Dann ist $f$ auf $Ω$ holomorph.
+	#+end_thm
+	#+begin_proof latex
+	Da $Ω$ um jeden Punkt einer Kreisscheibe enthält und Differenziebarkeit eine lokale Eigenschaft ist,
+	genügt es, sich auf dies Kreisscheibe zu beschränken, das heißt ohne Einschränkung sei $Ω = B_r(0)$.
+	Für $z ∈ Ω$ sei $γ_z: [0, 1] \to Ω, t \to t z$ und
+	\[F(z) = ∫_{γ_z} f(w) \d w\]
+	Dann ist
+	\begin{align*}
+	F(z) - F(z_0) &= ∫_{[γ_z]} f(w) \d w - ∫_{[γ_{z_0}]} f(w) \d w \\
+	&= - ∫_{[γ_{z_0}] - [γ_z]} f(w) \d w = \mp ∫_{\partial \triangle} f(w) \d w + ∫_{[η]} f(w) \d w
+	\end{align*}
+	wobei $\triangle$ das von $0, z_0$ und $z$ gebildete Dreieck ist, und $η: [0, 1] \to Ω$ als
+	\[s ↦ (1 - s) · z_0 + s · z = z_0 + s(z - z_0)\]
+	die fehlende Seite des Dreiecks ist. Das Vorzeichen vor dem Integral über $\partial \triangle$ hängt davon
+	ab, wie $z$ und $z_0$ relativ zueinander liegen, da dies bestimmt, was der positive Orientierungssinn von
+	$\partial \triangle$ ist. Es ist aber irrelevant, da nach Vorraussetzung dieses Integral verschwindet.
+	Wir berechnen das Integral über $[η]$ in der gegebenen Parametrisierung, für die
+	$\dot ϕ(s) = z - z_0$ ist, somit
+	\[∫_{[η]} f(w) \d w = ∫_0^1 \d s f(η(s)) \dot η(s) = (z - z_0) ∫_0^1 \d s f(z_0 + s(z - z_0))\]
+	Somit wird
+	\[\frac{F(z) - F(z_0)}{z - z_0} = f(z_0) + ∫_0^1 \d s (f(z_0 + s · (z - z_0)) - f(z_0))\]
+	Da $f$ stetig ist konvergiert der Integrand im letzten Integral gegen Null. Da
+	die Menge $\{z_0 + s · (z - z_0) \mid s ∈ [-1, 1]\}$ kompakt ist, diese Konvergenz gleichmäßig. Also
+	konvergiert auch das Integral im Limes $z \to z_0$ gegen Null, und wir erhalten
+	\[\lim_{z \to z_0} \frac{F(z) - F(z_0)}{z - z_0} = f(z_0)\]
+	Also ist $F$ komplex differenzierbar, mit Ableitung $f$. Da $f$ stetig ist, folgt, dass
+	$F$ holomorph ist, also analytisch, das heißt beliebig oft komplex differenzierbar. Somit ist
+	auch $f$ analytisch auf $Ω$.
+	#+end_proof
+	#+ATTR_LATEX: :options [Schwarz'sches Spiegelungsprinzip]
+	#+begin_thm latex
+	Sei $Ω$ Durchschnitt einer offenen Teilmenge von $ℂ$ mit der abgeschlossenen oberen Halbebene
+	$\bar{\mathbb{H}} = \{z \mid \Im z \geq 0\}$, und es gelte $Ω ∩ ℝ \neq \emptyset$. Sei $f: Ω \to ℂ$
+	eine stetige Funktion, die auf $\mathring{Ω}$ holomorph ist und auf $Ω ∩ ℝ$ nur reelle Werte annimmt. Dann gilt
+	\[\tilde f(z) = \begin{cases} f(z) & z ∈ Ω \\ \overline{f(\bar z)} & z ∈ Ω^{\ast} = \{\bar z \mid z ∈ Ω\}\end{cases}\]
+	ist wohldefiniert auf $Ω ∪ Ω^{\ast}$ holomorph.
+	#+end_thm
+	#+begin_proof latex
+	Man muss zunächst zeigen, dass die Funktion wohldefiniert ist, da man für $z ∈ Ω ∩ Ω^{\ast} ⊂ ℝ$ zwei
+	Definitionen hat. Diese $z$ sind aber reell, $\bar z = z$ und nach Vorraussetzung gilt dann
+	$\overline{f(z)} = f(z)$, also auch $\overline{f(\bar z)} = f(z)$. Deshaltb ist $\tilde f$ wohldefinert.
+	$\tilde f$ ist stetig. Es bleibt zu zeigen, dass $\tilde f$ holomorph ist, insbesondere, dass
+	die Funktion keinen "Knick" hat, wenn man über die reelle Achse geht. Klarerweise ist
+	$\tilde f$ auf $\mathring{Ω} = Ω ∩ \mathbb{H}$ holomorph, da $\tilde f$ dort mit der
+	als holomorph angenommenen Funktion $f$ übereinstimmt. Wir zeigen zunächst, dass $f$ auch
+	auf der	an der reellen Achse gespiegelten Menge $\mathring{Ω}^{\ast} = (Ω ∩ \mathbb{H})^{\ast} = \{\bar z \mid z ∈ Ω ∩ \mathbb{H}\}$
+	holomorph ist. Sei $z ∈ \mathring{Ω}^{\ast}$. Dann ist $\bar z$ in $\mathring{Ω}^{\ast}$, und
+	somit gibt es ein $r > 0$ und eine Folge $(a_n)_{n ∈ ℕ}$ komplexer Zahler, sodass
+	für $ω ∈ B_r(\bar z)$ die Reihe
+	\[f(ω) = \sum_{n = 0}^{∞} a_n (ω - \bar z)^n\]
+	konvergiert. Dann gilt für alle $w ∈ B_r(z): \bar w ∈ B_r(\bar z)$, also
+	\[\tilde f(w) = \overline{f(\bar w)} = \overline{\sum_{n = 0}^{∞} a_n(\bar w - \bar z)^n} = \sum_{n = 0}^{∞} \bar a_n (w - z)^n\]
+	wobei das Vertauschen der Komplexkonjugation mit der Reihensummation aufgrund der absoluten Konvergenz erlaubt ist.
+	Da die Reihe für $\abs{w - z} < r$ konvergiert, ist $\tilde f$ analytisch in $z$. Um zu zeigen, dass
+	die Holomorphie auch in Umgebung der reellen Achse gilt verwenden wir den Satz von Morera. Wenn
+	Das Dreieick $\triangle$ mit $ℝ$ disjunkt ist, folgt aus der eben gezeigten Holomorphie, dass
+	das Konturintegral gleich Null ist. Ansonsten schneidet man aus $\triangle$ einen Streifen $\{z \mid \abs{\Im z} < ε\}$ heraus.
+	Die Differenz zum Integral über das ursprüngliche Dreieck besteht aus zwei Integralen
+	über Wege der Länge $O(ε)$, die die reelle Achse kreuzen, und Integralen über die horizontalen Teilstücke mit
+	$\Im z = \pm ε$. Da $f$ stetig ist, ist es auf diese kompakten Mengen beschränkt und somit gehen
+	diese Beiträge für $ε \to 0$ linear in $ε$ gegen Null. Die Integrale über die beiden horizontalen Teilstücke haben sich im Limes $ε \to 0$ auf, da $\tilde f$ stetig ist
+	und die beiden Wege im Limes gleich werden, bis auf die entgegengesetzte Orientierung.
+	#+end_proof
+*** Der Identitätssatz
+	#+ATTR_LATEX: :options [Gebiet]
+	#+begin_defn latex
+	$G ⊂ ℂ$ ist ein Gebiet $:⇔ G$ ist offen und zusammenhängend
+	#+end_defn
+	#+ATTR_LATEX: :options [Identitätssatz]
+	#+begin_thm latex
+	$G ⊂ ℂ$ Gebiet, $f: G \to ℂ$ und $g: G \to ℂ$ holomorph. Dann sind die folgenden Aussagen äquivalent.
+	1. $f = g$, das heißt $∀ z ∈ G: f(z) = g(z)$
+	2. $\{w ∈ G: f(w) = g(w)\}$ hat einen Häufungspunkt
+	3. $∃ z_0 ∈ G: f^{(k)}(z_0) = g^{(k)}(k_0) ∀ k ∈ ℕ_0$
+	#+end_thm
+	#+begin_proof latex
+	1. $⇒$ 2. (jeder Punkt einer offenen Menge ist Häufungspunkt dieser Menge)
+	2. $⇒$ 3. $h := f - g$ ist holomorph auf $G$.
+	   \[N = \{w ∈ G: h(w) = 0\}\]
+	   hat Häufungspunkt $α ∈ G$. Annahme
+	   \begin{gather*}
+	   ∃ l ∈ ℕ_0: ∀ k < l h^{(k)}(α) = 0 \quad\text{aber}\quad h^{(l)}(α) \neq 0 \\
+	   ⇒ h(z) = (z - α)^l \underbrace{\sum_{n = l}^{∞} \frac{h^{(n)}(α)}{n!}(z - α)^{n - l}}_{φ(z)}
+	   \end{gather*}
+	   $z ↦ φ(z)$ ist analytisch
+	   \[φ(α) = \frac{h^{(l)}(α)}{l!} \neq 0\]
+	   $φ$ ist stetig
+	   \[⇒ ∃ ρ > 0 ∀ z : \abs{z - α} < ρ: g(z) \neq 0\]
+	   $⇒ α$ ist \(l\)-fache Nullstelle, also kein Häufungspunkt von Nullstellen $\lightning$.
+	3. $⇒$ 1. $h = f - g$
+	   \[N_k = \{w ∈ G: h^{(k)}(w) = 0\} \quad (k ∈ ℕ_0)\]
+	   ($φ$ stetig $⇒ \mathcal{N}_φ = \{x: φ(x) = 0\}$ ist abgeschlossen
+	   $(x_n)_{n ∈ ℕ}$ Folge in $\mathcal{N_φ}$, das heißt $φ(x_n) = 0 ∀ n$. $x_n \to x ⇒ φ(x_n) \xrightarrow{x \to ∞} φ(x)$ da $φ$ stetig $⇒ x ∈ \mathcal{N}_φ$) \\
+	   \[N = \bigcap_{k = 0}^{∞} N_k\]
+	   ist abgeschlossen. Ist $z_0 ∈ N_k ∀ k ⇒ z_0 ∈ N, N \neq \emptyset$ \\
+	   Behauptung $N$ ist offen in $G$. Sei $w ∈ N$, das heißt $∀ k ∈ ℕ_0: h^{(k)}(w) = 0$. $w ∈ G ⇒$ die Reihe
+	   \[h(z) = \sum_{k = 0}^{∞} \frac{h^{(k)}(w)}{k!}(z - w)^k\]
+	   hat positiven Konvergenzradius $ρ > 0$. alle Koeffizienten $ = 0$
+	   \[⇒ ∀ z ∈ B_ρ(w): h(z) = 0 ⇒ ∀ k ∈ ℕ_0 h^{(k)}(z) = 0\]
+	   $⇒ B_ρ(w) ⊂ N$, $N$ ist offen. Da $G$ zusammenhängend ist, folgt $N = G$, das heißt $f = g$.
+	#+end_proof
+	#+ATTR_LATEX: :options [Maximumsprinzip]
+	#+begin_thm latex
+	$G$ Gebiet, $f: G \to ℂ$ holomorph. $∃ z_0 ∈ G: \abs{f}$ hat bei $z_0$ ein lokales Maximum. $⇒ f$ it konstant.
+	#+end_thm
+	#+begin_proof latex
+	$∃ r_0 > 0: B_{r_0}(z_0) ⊂ G$ und
+	\begin{align*}
+	f(z_0) &\geq f(z) ∀ z ∈ B_{r_0}(z_0) \\
+	M &:= \abs{f(z_0)} \underarrow[=]{Mittelwerteigenschaft da $f$ holomorph} \abs{\frac{1}{2π}∫_0^{2π} f(z_0 + r e^{iθ}) \d θ} \\
+	&\_eq \frac{1}{2π} ∫_0^{2π} \underbrace{\abs{f(z_0 + r e^{iθ})}}_{\leq M} \d θ \leq M \\
+	\frac{1}{2π} ∫_0^{2π} \underbrace{(M - \abs{f(z_0 + r e^{iθ})})}_{\geq 0, \text{ stetig}} \d θ &= 0 \\
+	⇒ M - \abs{f(z + r e^{iθ})} &= 0 ∀ θ, r < r_0 \\
+	\end{align*}
+	$\abs{f}$ ist konstant auf $B_{r_0}(z_0)$.
+	#+end_proof
+	#+begin_lemma latex
+	$f$ holomorph und $\abs{f}$ konstant $⇒ f = \const$
+	#+end_lemma
+	#+begin_thm latex
+	Sei $G$ ein beschränktes Gebiet. $f$ sei auf $\bar G$ stetig und auf $G$ holomorph. Dann nimmt $\abs{f}$ sein Maximum am Rand von $G$ an:
+	\[∀ z ∈ \bar G: \abs{f(z)} \leq \max \{\abs{f(w) | w ∈ \partial G}\}\]
+	#+end_thm
+	#+begin_proof latex
+	Wenn $f$ konstant ist, dann ist jedes $z ∈ \bar G$ ein lokales Maximum von $\abs{f}$ andernfalls kein lokales Maximum in $G$. $\bar G$ kompakt, $\abs{f}$ stetig $⇒ \abs{f}$ nimmt auf $\bar G$
+	sein Maximum an, $\bar G \setminus G = \partial G$
+	#+end_proof
+	#+ATTR_LATEX: :options [Minimumprinzip]
+	#+begin_thm latex
+	$G$	Gebiet, $f$ holomorph auf $G$. $∃ z_0 ∈ G$: $\abs f$ hat bei $z_0$ ein lokales Minimum $⇒ f(z_0) = 0$ oder $f$ ist konstant auf $G$
+	#+end_thm
+** Konvergenz holomorpher Funktionen
+   Eine natürlich Weise holomorphe Funktionen zu konstruieren, ist als Grenzfunktion von Folgen
+   (speziell: unendliche Reihen) holomorpher Funktionen. Die Darstellung als Potenzreihe ist ein
+   spezieller Fall davon - die Funktion wird als unendliche Reihe einfacher Polynome dargestellt.
+*** Erinnerung an elementare Konvergenzbegriffe
+	$X$ metrischer Raum, $(f_n)_{n ∈ ℕ}, f_n: X \to ℂ$. \\
+	$f_n \to f$ punktweise
+	\[:⇔ ∀ ε > 0 ∀ x ∈ X ∃ n_0 ∈ ℕ ∀ n \geq n_0 \abs{f_n(x) - f(x)} < ε\]
+	$f_n \to f$ gleichmäßig auf $X$
+	\[:⇔ ∀ ε_0 ∃ N_0 ∈ ℕ ∀ x ∈ X ∀ n \geq N_0 \abs{f_n(x) - f(x)} < ε\]
+	#+begin_lemma latex
+	$(f_n)_{n ∈ ℕ}$ Folge stetiger Funktionen, gleichmäßig konvergent gegen $f ⇒ f$ ist stetig.
+	#+end_lemma
+*** Einfache Beispiele
+	#+begin_ex latex
+	\begin{align*}
+	f_n(x) &= \tanh(n x) \\
+	\lim_{n \to ∞}  f_n(x) &= \begin{cases} 1 & x > 0 \\ 0 & x = 0 \\ -1 & x < 0\end{cases} \quad\text{unstetig} \\
+	φ_n(t) &= \sqrt{t^2 + \frac{1}{n}} \\
+	φ_n(t) &\xrightarrow{n \to ∞} \abs{t} \\
+	0 &\leq \sqrt{t^2 + \frac{1}{n}} - \sqrt{t^2} = \frac{t^2 + \frac{1}{n} - t^2}{\sqrt{t^2 + \frac{1}{n}} + t^2} \\
+	&= \frac{1}{n} \frac{1}{sqrt{t^2 + \frac{1}{n} + t^2}} \leq \frac{1}{n} \frac{1}{\sqrt{\frac{1}{n}}} = \frac{1}{\sqrt{n}}
+	\end{align*}
+	$⇒$ gleichmäßig konvergent.
+	#+end_ex
+*** Der Weierstrass'sche Konvergenzsatz
+	#+ATTR_LATEX: :options [Konvergenzsatz von Weierstrass]
+	#+begin_thm latex
+	$Ω ⊂ ℂ$ offen, $f_n: Ω \to ℂ$ Folge holomorpher Funktionen. Wenn $(f_n)_{n ∈ ℕ}$ auf kompakten Teilmengen von $Ω$ gleichmäßig konvergiert, dann ist die
+	Grenzfunktion
+	\[z ↦ f(z) = \lim_{n \to ∞} f_n(z)\]
+	ebenfalls holomorph auf $Ω$ und es gibt $∀ k ∈ ℕ_0$:
+	\[f_n^{(k)}(z) \xrightarrow{n \to ∞} f^{(k)}(z)\]
+	gleichmäßig auf kompakten Teilmengen von $Ω$.
+	#+end_thm
+	#+begin_proof latex
+	$(f_n)_{n ∈ ℕ}, f_n: Ω \to ℂ$. $f_n \to f$ gleichmäßig $⇒ f$ stetig auf $Ω$. $⇒$ für jedes Dreieck $Δ ⊂ Ω$ existiert das Linienintegral von $f$ über $\partial Δ$.
+	$f_n$ holomorph für alle $n$
+	\[⇒ ∫_{\partial Δ} f(z) \d z = ∫_{\partial Δ}(f(z) - f_n(z))\]
+	Sei $L$ die Länge von $\partial Δ$ ($L < ∞$, da $\partial Δ$ kompakt). $f_n$ konvergiert gleichmäßig auf $\partial ∇$ gegen $f$. Sei $ε > 0 ⇒ ∃ N_0 ∈ ℕ ∀ n \geq N_0 ∀ z ∈ \partial ∇$
+	\[\abs{f_N(z) - f(z)} < \frac{ε}{L}\]
+	$n = N_0$:
+	\begin{align*}
+	\abs{∫_{\partial Δ}(f(z) - f_n(z)) \d z} &\leq L \sup_{z ∈ \partial Δ} \abs{f_n(z) - f(z)} < L \frac{ε}{L} = ε \\
+	∀ ε > 0: \abs{∫_{\partial Δ} f(z) \d z} &\leq ε \\
+	⇒ ∫_{\partial Δ} f(z) \d z &= 0
+	\end{align*}
+	Satz von Moerra $⇒$ $f$ holomorph. Sei $K ⊂ G$ kompakt
+	\[∃ ρ > 0: ∞ = \{w ∈ ℂ: ∃ z ∈ K: \abs{w - z} < 2ρ\} ⊂ G\]
+	$\tilde K = \{w ∈ ℂ: ∃ z ∈ K: \abs{w - z} \leq ρ\}$ $⇒$ $\tilde K$ ist kompakt. Nach Vorraussetzung konvergiert $f_n$ gleichmäßig gegen $f$ auf $\tilde K$
+	\begin{align*}
+	f^{(k)}(z) - f_n^{(k)}(z) &= \frac{k!}{2πi} ∫ \frac{f(w) - f_n(w)}{(w - z)^{k + 1}} \d w \\
+	\abs{f_n^{(k)}(z) - f^{(k)}(z)} &\leq \frac{k!}{ρ^k} \sup \{\abs{f_n(w) - f(w)} \mid \abs{w - z} = ρ\} \\
+	&\leq \frac{k!}{ρ^k} \sup_{w ∈ \tilde K} \underbrace{\abs{f_n(w) - f(w)}}_{\text{unabhängig von $z$, $\xrightarrow{n \to ∞} 0$}}
+	\end{align*}
+	#+end_proof
+** Residuensatz und Residuenkalkül
+   Isolierte Singulatritäten und Laurentreihen
+   #+ATTR_LATEX: :options [Singulatritäten]
+   #+begin_defn latex
+   $U ⊂ ℂ$ offen, $z_0 ∈ U$ $f: U \setminus \{z_0\} \to ℂ$ holomorph. Dann nennt man $z_0$ eine isolierte Singularität von $f$.
+   1. $z_0$ heißt habbare Singularität, wenn durch geeignete Definition von $f(z_0)$ die Funktion $f: U \to ℂ$ definiert werden kann und holomorph ist.
+   2. $z_0$ heißt Pol \(m\)-ter Ordnung $(m ∈ ℕ)$, wenn $z_0$ nicht hebbar ist, aber $z ↦ (z - z_0)^m f(z)$ bei $z_0$ eine hebbare Singularität hat. (kleinst mögliches $m$)
+   3. ansonsten heißt $z_0$ wesentliche Singularität von $f$.
+   #+end_defn
+   #+ATTR_LATEX: :options [meromorph]
+   #+begin_defn latex
+   Wenn $f$ bis auf eine diskrete Menge ($∃ r > 0 ∀ z, z' ∈ S: z \neq z' ⇒ \abs{z - z'} < r$) $S$ von Polen holomorph ist, nennt man $f$ *meromorph*.
+   #+end_defn
+
+   Wenn $f,g: U \to ℂ$ holomorph sind und $g \neq 0$ (das heißt $∃ z ∈ U: g(z) \neq 0$) dann ist $f/g$ meromorph auf $U$. Aus dem Identitätssatz folgt, dass eine holomorphe Funktion $g \neq 0$
+   keine Häufungspunkte von Nullstellen haben kann
+   \[S = \{w ∈ U \mid g(w) = 0\}\]
+   ist diskret.	$f/g: U \setminus S \to ℂ$ holomorph. Identitätssatz: alle Nullstellen von $g$ sind endlicher Ordnung, das heißt
+   \[z ∈ S: g(w) = (w - z)^l h(w) \qquad l ∈ ℕ, h(z) \neq 0\]
+   Spezialfall $f, g$ Polynome, $f/g$ rationale Funktion. wesentliche Singularität: $z = 0$ für $z ↦ e^{1/z}$
+
+   #+begin_defn latex
+   $0 \leq ρ_1 < ρ_2: \mathcal{K}_{ρ_1, ρ_2}(z_0) = \{z ∈ ℂ: ρ_1 < \abs{z - z_0} < ρ_2\}$. $ρ_1 = 0$: "Punktierte Kreisscheibe" $\mathcal{K}_{0,p}(z_0) = B_ρ(z_0) \setminus \{z_0\}$.
+   #+end_defn
+   #+ATTR_LATEX: :options [Laurentreihe]
+   #+begin_thm latex
+   $f: \mathcal{K}_{ρ_1, ρ_2}(z_0) \to ℂ$ holomorph. Für $r ∈ (ρ_1, ρ_2)$ ist
+   \[c_n = \frac{1}{2πi} ∫_{\abs{w} = r} \frac{f(w)}{w^{n + 1}} \d w\]
+   unabhängig von $r ∀ n ∈ ℤ$, und die Laurentreihe von $f$
+   \[\sum_{n = -∞}^{∞} c_n z^n\]
+   konvergiert in $\mathcal{K}_{ρ_1, ρ_2}(0)$ absolut und kompakt und
+   \[f(k) = \sum_{n - ∞}^{∞} c_n z^n\]
+   Der *Hauptteil* der Laurentreihe
+   \[\sum_{n = -∞}^{-1} c_n z^n = \frac{c_{-1}}{z} + \frac{c_{-2}}{z^2} + \dots\]
+   konvergiert für alle $z ∈ ℂ$ mit $\abs{z} > ρ_1$. Der *Nebenteil* der Laurentreihe
+   \[\sum_{n = 0}^{∞} c_n z^n = c_0 + c_1 z + c_2 z^2 + \dots\]
+   konvergiert für alle $z$ mit $\abs{z} < ρ_2$.
+   #+end_thm
+   #+begin_proof latex
+   Wähle $r_1$ und $r_2$ so, dass $ρ_1 < r_1 < r_2 < ρ_2$. $R = \mathcal{K}_{r_1, r_2}(0)$. $R$ ist einfach zerlegbar. $\partial R = \partial B_{r_2}(0) - \partial B_{r_1}(0)$.
+   $\bar R$ ist Teilmenge des Holomorphiegebiets von $f$. Cauchy'sche Integralformel $⇒$ für $z ∈ R$ ist
+   \begin{align*}
+   f(z) &= \frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{f(w)}{w - z} \d w - \frac{1}{2πi} ∫_{\abs{v} = r_1} \frac{f(v)}{v - z} \d v \\
+   &= \frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{\d w}{w} \frac{f(w)}{1 - \frac{z}{w}} + \frac{1}{2πi} ∫_{\abs{v} = r_1} \frac{\d v}{z} \frac{f(v)}{1 - \frac{v}{z}} \\
+   \intertext{$\abs{z} < r_2 ⇒ \abs{z/w} < 1$, $\abs(z) > r_1 ⇒ \abs{v/z} < 1$ $⇒$ Entwicklung durch geometrische Reihe}
+   &= \sum_{n = 0}^{∞} z^n \underbrace{\frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{f(w)}{w^{n + 1}} \d w}_{= c_n} + \sum_{n = 0}^{∞} z^{-n-1} \frac{1}{2πi} ∫_{\abs{v} = r_1} v^n f(v) \d v \\
+   f(z) &= \sum_{n = 0}^{∞} c_n z^n + \sum_{k = -∞}^{-1} z^k \underbrace{\frac{1}{2πi} ∫ \frac{f(v)}{v^{k + 1}} \d v}_{= c_k} \\
+   &= \sum_{n = -∞}^{-1} c_n z^n + \sum_{n = 0}^{∞} c_n z^n \\
+   &= H(z) + N(z)
+   \end{align*}
+   #+end_proof
+   #+ATTR_LATEX: :options [Hebbarkeitssatz von Riemann]
+   #+begin_thm latex
+   $f: \dot B_ρ(0) \to ℂ$. Es gebe $M > 0$
+   \[∀ z ∈ \dot B_ρ(0): \abs{f(z)} < M\]
+   Dann existiert der Grenzwert
+   \[c_0 := \lim_{z \to 0} f(z)\]
+   und die (eindeutig bestimmte) stetige Fortsetzung von $f$ auf $B_ρ(0)$ (gegeben durch $f(0) := c_0$) ist holomorph.
+   #+end_thm
+   #+begin_proof latex
+   $n \geq 1, 1 < r < ρ$.
+   \begin{align*}
+   c_{-n} &= \frac{1}{2πi} ∫_{\abs{w} = r} f(w) w^{n - 1} \d w = \frac{1}{2πi} ∫ f(r e^{iθ}) e^{i(n - 1) θ} r^{n - 1} i r e^{iθ} \d θ\\
+   ⇒ \abs{c_n} &\leq \frac{r^n}{2π} ∫_0^{2π} \d θ \abs{f(r e^{iθ})} \leq r^n M \xrightarrow{r \to 0} 0 \\
+   ⇒ ∀ n \geq 1: c_{-n} &= 0
+   \end{align*}
+   $⇒$ Hauptteil der Laurentreihe $= 0$.
+   \begin{align*}
+   f(z) &= \sum_{n = 0}^{∞} c_n z^n \qquad ∀ z ∈ \dot B_ρ(0) \\
+   f(0) &:= c_0
+   \end{align*}
+   #+end_proof
+   Endlich viele isolierte Singularitäten
+   $z_1, \dots, z_n ∈ ℂ, z_i \neq z_j ∀ i \neq j$. $f: ℂ \setminus \{z_1, \dots, z_n\} \to ℂ$ sei holomorph. \\
+   $∀ j ∈ \{1, \dots, n\} ∃ r_j > 0$, sodass die Laurentreihe um $z_j$ auf $\dot B_{rj}(z)$ konvergiert. Die $r_j$ können so klein gewählt werden, dass
+   \[B_{r_i} (z_i) ∩ B_{r_k}(z_k) = \emptyset ∀i \neq k\]
+   \begin{align*}
+   L_j(z) &= H_j(z) + N_j(z) \\
+   H_j(z) &= \sum_{n = -∞}^{-1} c_n^{(j)}(z - z_j)^n \\
+   N_j(z) &= \sum_{n = 0}^{∞} c_n^{(j)}(z - z_j)^n \\
+   φ(z) &= f(z) - \sum_{j = 1}^{n} H_j(z)
+   \end{align*}
+   $⇒ φ(z)$ ist ganze Funktion. (auf $\dot B_{r_j}(z_j)$ ist
+   \[f(z) = N_j(z) - \sum_{\substack{k = 1 \\ k \neq j}}^{n} H_k(z)\]
+   holomorph, also auf $\dot{B_{r_j / 2}(z_j)}$ beschränkt $⇒$ die Singulatriät $z_j$ von $φ$ ist hebbar) \\
+   Wichtiger Spezialfall: rationale Funktionen
+   \[f(z) = \frac{P(z)}{Q(z)}\]
+   $Q$ nicht identisch Null, $P, Q$ Polynome. $f: ℂ \setminus \{z_1, \dots, z_n\} \to ℂ$ holomorph, wenn $z_1, \dots, z_n$ die Nullstellen von $Q$ sind.
+   \[\frac{P(z)}{Q(z)} = \sum_{j = 1}^{n} \sum_{n= 1}^{m_j} \frac{c_{-n}^{(j)}}{(z - z_j)^n} + \underarrow[ϕ(z)]{ganz}\]
+   Wenn $\deg P < \deg Q$, dann gilt $ϕ(z) \xrightarrow{\abs{z} \to ∞} 0$. $⇒ ϕ$ ist beschränkt $\xRightarrow{\text{Satz von Liouville}} ϕ = \const ⇒ ϕ = 0$.
+   #+ATTR_LATEX: :options [Partialbruchzerlegung]
+   #+begin_thm latex
+   Jede rationale Funktion $P / Q$ mit $\deg P < \deg Q$ hat eine die Partialbruchzeilegung
+   \[\frac{P(z)}{Q(z)} = \sum_{j = 1}^{n} \sum_{n = 1}^{m_j} \frac{c_{-n}^{(j)}}{(z - z_j)^n}\]
+   Ohne die Annahme $\deg P < \deg Q$ folgt $ϕ$ ist ein Polynom.
+   #+end_thm
+   #+ATTR_LATEX: :options [Residuum]
+   #+begin_defn latex
+   $f: U \setminus \{z_0\} \to ℂ$ holomorph. Laurentreihe
+   \[f(z) = \sum_{n ∈ ℤ} c_n (z - z_0)^n\]
+   Das Residuum von $f$ bei $z_0$ ist
+   \begin{align*}
+   \Res_{z_0} f &:= \Res_{z = z_0} f(z) := c_{-1} \\
+   \intertext{für $r > 0$ klein genug:}
+   \Res_{z_0} f &= \frac{1}{2πi} ∫_{\abs{z - z_0} = r} f(z) \d z
+   \end{align*}
+   #+end_defn
+   #+ATTR_LATEX: :options [Residuensatz]
+   #+begin_thm latex
+   $U ⊂ ℂ$ offen, $S$ sei eine diskrete Teilmenge von $U$. Die Funktion $f$ sei auf $U$ bis auf isolierte Singularitäten in $S$ holomorph, das heißt $f: U \setminus S \to ℂ$ holomorph.
+   Wenn $A$ endlich zerlegbar ist, $\bar A ⊂ U$ und $\partial A ∩ S = \emptyset$, dann ist
+   \[∫_{\partial A} f(z) \d z = 2πi \sum_{z ∈ S ∩ A} \Res_z f\]
+   #+end_thm
+   #+begin_proof latex
+   Linke Seite ist wohldefiniert, da $S ∩ \partial A = \emptyset$, $\partial A$ kompakt $⇒$ Integral über stetige Funktionen auf Kompaktum. Rechte Seite ist wohldefiniert, da $\bar A$ kompakt, also $S ∩ A$
+   endlich. $S ∩ A = \{z_1, \dots, z_n\}$.
+   \[∀ j ∃ ρ_j > 0: \bar B_j := \bar{B_{ρ_j}(z_j)} ⊂ A \quad\text{und}\quad \bar B_j ∩ S = \{z_j\}\]
+   ($ρ_j$ so klein, dass die Laurentreihe auf $f$ um $z_j$ konvergiert.)
+   \[R = A \setminus \bigcup_{j = 1}^n \bar B_j\]
+   endlich zerlegbar ($R$ ist offen, $\bar R$ ist kompakt). $R ⊂ U \setminus S$ (Holomorphiegebiet von $f$).
+   \begin{align*}
+   ⇒ ∫_{\partial R} f(z) \d z = 0 \\
+   \partial R &= \partial A - \sum_{j = 1}^{n} \partial \bar B_j \\
+   ⇒ ∫_{\partial A} f(z) \d z &= \sum_{j = 1}^{n} ∫_{\partial \bar B_j} f(z) \d z \\
+   &= 2 π i \sum_{j = 1}^{n} \Res_{z_j}(z)
+   \end{align*}
+   #+end_proof
+   Residuenkalkül: Berechnen von Integralen mit Hilfe des Residuensatzes (Trickkiste)
+   Beispiele:
+   \begin{align*}
+   ∫_{-∞}^{∞} \frac{\d x}{x^2 + 2x + 2} &= \lim_{a \to -∞} \lim_{b \to ∞} ∫_a^b \frac{\d x}{x^2 + 2x + 2} \\
+   x^2 + 2x + 2 &= (x + 1)^2 + 1 \geq 1 ∀ x ∈ ℝ \\
+   \intertext{$⇒$ kein Pol am Integrationsweg. Weil Integrand $\sim 1/x^2$ für $\abs{x} \to ∞$:}
+   b > 0: \quad ∫_{b}^{c} \frac{\d x}{(x + 1)^2 + 1} &\leq ∫_{b}^c \frac{\d x}{(x + 1)^2} \leq \frac{1}{b + 1}
+   \intertext{$⇒$ Integral konvergiert und}
+   I &= \lim_{L \to ∞}  ∫_{-L}^{L} \frac{\d x}{x^2 + 2x + 2} \\
+   f(z) &= \frac{1}{(z + 1)^2 + 1} \\
+   \string(z + 1\string)^2 + 1 = 0 \\
+   z = -1 \pm i \\
+   \end{align*}
+   $f: ℂ \setminus \{-i - i, -i + 1\} \to ℂ$ \text{holomorph}. $γ_L:$ Halbkreis mit Radius $L$ um Null, $ι_L$: Intervall $[-L, L]$
+   \begin{align*}
+   ∫_{γ_L + ι_L} f(z) \d z &= 2π i \Res_{-i + 1} f \\
+   ∫_{ι_L} f(z) \d z &\xrightarrow{L \to ∞} I \\
+   \intertext{Behauptung:}
+   ∫_{γ_L} f(z) \d z &\xrightarrow{L \to ∞} 0 \\
+   ⇒ I = 2πi \Res_{-1 + i} f
+   \end{align*}
+   $γ_L$ parametrisiert durch $z(θ) = L e^{iθ}$, $0 \leq θ \leq π$ \\
+   \begin{align*}
+   ∫_{γ} f(z) \d z &= ∫_{0}^{∞} \d θ f(L e^{iθ}) i L e^{iθ} \\
+   \abs{∫_γ f(z) \d z} &\leq L ∫_0^{π} \abs{f(L e^{iθ})} \d θ \leq L π \sup_{0 \leq θ \leq π} \abs{f(L e^{iθ})} \\
+   \abs{(L e^{iθ} + 1)^2 + 1} &\geq L^2 u \quad u > 0, L > 10 (\text{ was?}) \\
+   ⇒ \sup_{0 \leq θ \leq ∞} \abs{f(L e^{iθ})} &\leq \frac{1}{u} \frac{1}{L^2} \\
+   \abs{∫_γ f(z) \d z} &\leq \frac{π}{u} \frac{L}{L^2} = \frac{π}{uL} \xrightarrow{L \to ∞} 0 \\
+   f(z) &= \frac{1}{(z + 1 - i)(z + 1 + i)} = \frac{1}{(z - z_{+})(z - z_{-})} \qquad z_{\pm} = - 1 \pm i \\
+   &= \frac{1}{(z - z_{+})(z_i - z_{-} + z - z_{+})} = \frac{1}{2i} \frac{1}{z - z_{+}} \sum_{k = 0}^{∞} \frac{(z - z_{+})^k}{(2i)^k} \\
+   \Res_{-1 + i} f &= \frac{1}{2i} \\
+   I &= 2πi \frac{1}{2i} = π
+   \end{align*}
+   Beispiel 2:
+   \[∫_{-∞}^{∞} \frac{e^{iωt}}{ω - Ω + i Γ} \d ω \qquad t, Ω, Γ ∈ ℝ\]
+   Betrachte
+   \[w ↦ \frac{1}{ω - Ω - iΓ} = \frac{1}{ω - ω_0} \qquad ω_0 = Ω - iΓ\]
+   Pol bei $ω_0$: wollen, dass $ω_0 \not ∈ ℝ$, das heißt $Γ \neq 0$. $ω ∈ ℝ$
+   \[\abs{\frac{1}{ω - Ω ξ iΓ}} = \frac{1}{\sqrt{(ω - Ω)^2 + Γ^2}} = \begin{cases} \frac{1}{\abs{ω - Ω}} & Γ = 0 \\ \frac{1}{\abs{Γ}} & Γ \neq 0\end{cases}\]
+   wenn $\abs{ω} \to ∞$, ist
+   \[\frac{1}{ω - Ω - i Γ} \sim \frac{1}{ω}\]
+   Betrachte also das Integral
+   \begin{align*}
+   ∫_1^∞ \frac{\d ω}{ω} &= ∞ \\
+   ∫_0^b \frac{\d ω}{ω} &= \ln b \xrightarrow{b \to ∞} ∞
+   \end{align*}
+   ist also nicht konvergent, das heißt der Integrand ist nicht im $L^1$ (auch für $Γ \neq 0$).
+   Definiere
+   \[J_{ab} = ∫_a^b \frac{e^{iωt}}{ω - Ω - iΓ} \d ω\]
+   und
+   \begin{align*}
+   J &= \lim_{a \to ∞} \lim_{b \to ∞}  J_{ab} \\
+   \end{align*}
+   $t = 0$:
+   \[∫_{-2 \abs{ω_0}}^{2 \abs{ω_0}} \frac{1}{ω - ω_0} \d ω\]
+   ist endlich ($ω_0 \not ∈ ℝ$, da $Γ \neq 0$). $b > 2 \abs{ω_0}$:
+   \begin{align*}
+   ∫_{2\abs{ω_0}}^b \frac{\d ω}{ω - ω_0} &= ∫_{2 \abs{ω_0}}^b \frac{\d ω}{ω}(\frac{1}{1 - \frac{ω_0}{ω}} - 1 + 1) \\
+   &= ∫_{2 \abs{ω_0}}^b \frac{\d ω}{ω} + ω_0 ∫_{2\abs{ω_0}}^b \frac{\d ω}{ω(ω - ω_0)}
+   &= \ln \frac{b}{2 \abs{ω_0}} + \mathcal{O}{1}
+   \end{align*}
+   Nun betrachte
+   \begin{align*}
+   ∫_a^{-2 \abs{ω_0}} \frac{\d ω}{ω - ω_0} = \ln \frac{2 \abs{ω_0}}{\abs{a}} + \mathcal{O}(1) \\
+   \end{align*}
+   $b = 0$:
+   \[J_{ab} - \ln \frac{b}{\abs{a}} = \mathcal{O}(1)\]
+   Fazit: für $t = 0$ existiert $J$ nicht(nur der "Hauptwert" $\lim_{b \to ∞} J_{-b,b}$). Behauptung: $∀ t \neq 0, Γ \neq 0$ existiert der Limes für $J$.
+   Heilmittel: partielle Integration
+   \begin{align*}
+   e^{iωt} &= \frac{1}{it} \dd{}{ω} e^{iωt} \\
+   ⇒ J_{ab} &= \frac{1}{it} ∫_a^{b} \frac{1}{ω - ω_0} \dd{}{ω} e^{iωt} \\
+   &= \underbrace{\frac{1}{it} \frac{e^{iωt}}{ω - ω_0}}_{\xrightarrow{a,b \to ∞} 0} \Bigg|_a^b - \underbrace{\frac{1}{it} ∫_a^b e^{iωt} \frac{1}{(ω - ω_0)^2} \d ω}_{\sim 1/ω^2 ⇒ \text{ absolut konvergent}} \\
+   &= \lim_{l \to ∞} ∫_{-l}^{l} \frac{e^{iωt}}{ω - Ω - i Γ} \tag{$t \neq 0$} \\
+   \end{align*}
+   $ω = u + iv$:
+   \[t > 0: e^{iωt} = e^{iωt} e^{-vt}\]
+   $v > 0$ "oben schließen" \\
+   \[t < 0: e^{iωt} = e^{iωt} e^{v \abs{t}}\]
+   $⇒ v < 0$ "unten schließen"
+   betrachte also wieder einen Halbkreis, $γ_L^{+}$ sei der positive ($v > 0$) und $γ_L^{-}$ endsprechend der negative ($v < 0$), mit vorheriger Notation für $t > 0$:
+   \begin{align*}
+   \intertext{$ω_j$ Pol von $(ω - ω^0)^{-1}$ im Inneren von $ι_L + γ_L^{(+)}$}
+   ∫_{ι_L + γ_L^{+}} \frac{e^{iωt}}{ω - ω_0} \d ω &= 2πi \sum_{ω_j \text{ Pol}} \Res_{ω_j} \frac{1}{ω - ω_0} \\
+   &= \begin{cases} 0 & \Im ω_0 = Γ < 0 \\ 2 π i \Res_{ω + iΓ} \frac{i ω t}{ω - ω_0} & Γ > 0\end{cases} \\
+   &= 2πi e^{iω_0 t} = 2πi e^{iΩt} e^{-Γt}
+   \end{align*}
+   für $t < 0$ erhält man
+   \begin{align*}
+   ∫_{ι_L + γ_L^{-}} \frac{e^{iωt}}{ω - ω_0} \d ω = -2πi \begin{cases} 0 & Γ > 0 \\ e^{iΩ t} e^{-iΓt} & Γ < 0\end{cases}
+   \end{align*}
+   Warum verschwindet der Beitrag von $γ_L^{(+)}$, wenn das Vorzeichen von $t$ "stimmt"?
+   #+ATTR_LATEX: :options [Lemma von Jordan]
+   #+begin_lemma latex
+   $Q$ sei meromorph in $\bar{\mathbb{H}}$ und habe höchstens endlich viele Pole, die alle in $\mathbb{H}$ liegen
+   \begin{align*}
+   \mathbb{H} &= \{z ∈ ℂ \mid \Im z > 0\} \\
+   \bar{\mathbb{H}} &= \{z ∈ ℂ \mid \Im z \geq 0\} \\
+   \end{align*}
+   Es gelte
+   \[\lim_{\abs{z} \to ∞} Q(z) = 0 \]
+   in $\mathbb{H}$ gleichmäßig in $φ = \arg z$.
+   \[Γ_ρ: [0, π] \to ℂ, φ ↦ ρ e^{iφ}\]
+   Es sei $m > 0$. Dann gilt
+   \begin{align*}
+   I &= \lim_{ρ \to ∞} I_ρ = 0 \\
+   \text{wobei } I_ρ &= ∫_{Γ_ρ} Q(z) e^{im z} \d z
+   \end{align*}
+   #+end_lemma
+   #+begin_proof latex
+   Nach Vorraussetzung $∃ ρ_0 > 0$, sodass $Q$ auf $\{z ∈ ℂ \mid \abs{z} > \frac{ρ_0}{2}\}$
+   holomorph ist. $\to$ $I_ρ$ existiert für alle $ρ \geq ρ_0$
+   \[\lim_{ρ \to ∞}  Q(ρ e^{iθ}) = 0\]
+   gleichmäßig in $θ ∈ [0, π]$
+   \[z(θ) = ρ e^{iθ} e^{i m z(θ)} = e^{im ρ \cos θ} e^{-mρ \sin θ}\]
+   $0 ∈ [0, 1] ⇒ \sin θ \geq 0$.
+   \begin{align*}
+   I_ρ &= i ρ ∫_0^π Q(ρ e^{iθ}) e^{i(θ + m ρ \cos θ)} e^{-m ρ \sin θ} \d θ \\
+   \abs{I_ρ} &\leq ρ ∫_0^π \abs{Q(ρ e^{iθ})} e^{-mρ \sin θ} \d θ \\
+   \end{align*}
+   $∀ ε > 0 ∃ ρ_1 > ρ_0 ∀ ρ \geq ρ_1 ∀ θ ∈ [0, π]: \abs{Q(ρ e^{iθ})} < ε$
+   \begin{align*}
+   ⇒ ∀ ρ > ρ_1: \abs{I_ρ} < ε ρ ∫_0^∞ e^{-mρ \sin θ} \d θ
+   \end{align*}
+   $∀ θ ∈ [0, π/2]: \sin θ \leq θ 2/π$
+   \begin{align*}
+   \abs{I_ρ} &< 2ε ρ ∫_0^{π/2} e^{-mρ \frac{2}{π}θ} \d θ = 2 ε ρ \frac{π}{2 m ρ} e^{-m ρ \frac{2}{π} θ} \Big|_{π/2}^{0} \leq \frac{π}{m} ε
+   \end{align*}
+   #+end_proof

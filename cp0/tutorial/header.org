@@ -1,0 +1,360 @@
+#+OPTIONS: H:6
+#+OPTIONS: ^:nil
+#+OPTIONS: ':t
+#+OPTIONS: toc:nil
+#+LANGUAGE: en
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [a4paper,DIV=14]
+#+LATEX_COMPILER: xelatex
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \usepackage{mathspec}
+#+LATEX_HEADER: \usepackage[newfloat]{minted}
+#+LATEX_HEADER: \SetupFloatingEnvironment{listing}{placement=htp}
+#+LATEX_HEADER: \usepackage{polyglossia}
+#+LATEX_HEADER: \setdefaultlanguage{english}
+#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket, bbm, caption}
+#+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
+#+LATEX_HEADER: \usepackage{crimson}
+#+LATEX_HEADER: \usepackage{textcase}
+#+LATEX_HEADER: \usepackage{scrpage2}
+#+LATEX_HEADER: \usepackage{soul}
+#+LATEX_HEADER: \usepackage[tikz,blur]{bclogo}
+#+LATEX_HEADER: \usepackage[backend=bibtex]{biblatex}
+#+LATEX_HEADER: \usepackage{tocloft}
+#+LATEX_HEADER: \pagestyle{scrheadings}
+#+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
+#+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
+#+LATEX_HEADER: \DeclareSIUnit{\torr}{torr}
+#+LATEX_HEADER: \DeclareSIUnit{\atm}{atm}
+#+LATEX_HEADER: \DeclareSIUnit{\calories}{cal}
+#+LATEX_HEADER: \DeclareSIUnit{\year}{a}
+#+LATEX_HEADER: \DeclareSIUnit{\erg}{erg}
+#+LATEX_HEADER: \DeclareSIUnit{\esu}{esu}
+#+LATEX_HEADER:	\usepackage{newunicodechar}
+#+LATEX_HEADER:	\sisetup{math-micro=\text{µ},text-micro=µ}
+#+LATEX_HEADER: \newunicodechar{α}{\alpha}
+#+LATEX_HEADER: \newunicodechar{β}{\beta}
+#+LATEX_HEADER: \newunicodechar{γ}{\gamma}
+#+LATEX_HEADER: \newunicodechar{δ}{\delta}
+#+LATEX_HEADER: \newunicodechar{ε}{\varepsilon}
+#+LATEX_HEADER: \newunicodechar{ζ}{\zeta}
+#+LATEX_HEADER: \newunicodechar{η}{\eta}
+#+LATEX_HEADER: \newunicodechar{θ}{\theta}
+#+LATEX_HEADER: \newunicodechar{ι}{\iota}
+#+LATEX_HEADER: \newunicodechar{κ}{\kappa}
+#+LATEX_HEADER: \newunicodechar{λ}{\lambda}
+#+LATEX_HEADER: \newunicodechar{μ}{\mu}
+#+LATEX_HEADER: \newunicodechar{ν}{\nu}
+#+LATEX_HEADER: \newunicodechar{ξ}{\xi}
+#+LATEX_HEADER: \newunicodechar{ο}{\omicron}
+#+LATEX_HEADER: \newunicodechar{π}{\pi}
+#+LATEX_HEADER: \newunicodechar{ρ}{\rho}
+#+LATEX_HEADER: \newunicodechar{σ}{\sigma}
+#+LATEX_HEADER: \newunicodechar{τ}{\tau}
+#+LATEX_HEADER: \newunicodechar{υ}{\upsilon}
+#+LATEX_HEADER: \newunicodechar{φ}{\varphi}
+#+LATEX_HEADER: \newunicodechar{χ}{\chi}
+#+LATEX_HEADER: \newunicodechar{ψ}{\psi}
+#+LATEX_HEADER: \newunicodechar{ω}{\omega}
+#+LATEX_HEADER: \newunicodechar{∀}{\forall}
+#+LATEX_HEADER: \newunicodechar{×}{\times}
+#+LATEX_HEADER: \newunicodechar{Γ}{\Gamma}
+#+LATEX_HEADER: \newunicodechar{Δ}{\Delta}
+#+LATEX_HEADER: \newunicodechar{∃}{\exists}
+#+LATEX_HEADER: \newunicodechar{ℤ}{\mathbb{Z}}
+#+LATEX_HEADER: \newunicodechar{∧}{\wedge}
+#+LATEX_HEADER: \newunicodechar{Θ}{\Theta}
+#+LATEX_HEADER: \newunicodechar{⇒}{\implies}
+#+LATEX_HEADER: \newunicodechar{∩}{\cap}
+#+LATEX_HEADER: \newunicodechar{Λ}{\Lambda}
+#+LATEX_HEADER: \newunicodechar{∫}{\int}
+#+LATEX_HEADER: \newunicodechar{ℕ}{\mathbb{N}}
+#+LATEX_HEADER: \newunicodechar{Ξ}{\Xi}
+#+LATEX_HEADER: \newunicodechar{∇}{\nabla}
+#+LATEX_HEADER: \newunicodechar{Π}{\Pi}
+#+LATEX_HEADER: \newunicodechar{ℝ}{\mathbb{R}}
+#+LATEX_HEADER: \newunicodechar{Σ}{\Sigma}
+#+LATEX_HEADER: \newunicodechar{⇔}{\iff}
+#+LATEX_HEADER: \newunicodechar{Υ}{\Upsilon}
+#+LATEX_HEADER: \newunicodechar{Φ}{\Phi}
+#+LATEX_HEADER: \newunicodechar{ℂ}{\mathbb{C}}
+#+LATEX_HEADER: \newunicodechar{Ψ}{\Psi}
+#+LATEX_HEADER: \newunicodechar{Ω}{\Omega}
+#+LATEX_HEADER: \newunicodechar{ϑ}{\vartheta}
+#+LATEX_HEADER: \newunicodechar{∞}{\infty}
+#+LATEX_HEADER: \newunicodechar{∈}{\in}
+#+LATEX_HEADER: \newunicodechar{⊂}{\subset}
+#+LATEX_HEADER: \newunicodechar{ϰ}{\varkappa}
+#+LATEX_HEADER: \newunicodechar{ϕ}{\phi}
+#+LATEX_HEADER: \newunicodechar{∨}{\vee}
+#+LATEX_HEADER: \newunicodechar{∮}{\oint}
+#+LATEX_HEADER: \newunicodechar{↦}{\mapsto}
+#+LATEX_HEADER: \newunicodechar{ℚ}{\mathbb{Q}}
+#+LATEX_HEADER: \newunicodechar{⊆}{\subseteq}
+#+LATEX_HEADER: \newunicodechar{⊊}{\subsetneq}
+#+LATEX_HEADER: \newunicodechar{∪}{\cup}
+#+LATEX_HEADER: \newunicodechar{·}{\cdot}
+#+LATEX_HEADER:	\newcommand*\circled[2][black]{\tikz[baseline=(char.base)]{
+#+LATEX_HEADER:	            \node[shape=circle,draw,inner sep=2pt,#1] (char) {#2};}}
+#+LATEX_HEADER: \renewcommand{\sectionmark}[1]{\markright{\thesection~#1}}
+# #+LATEX_HEADER: \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}
+# #+LATEX_HEADER: \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
+# #+LATEX_HEADER: \definecolor{halfgray}{gray}{0.55}
+# #+LATEX_HEADER: \renewcommand{\sectionmark}[1]{\markright{\textsc% {\MakeTextLowercase{\thesection}} \spacedlowsmallcaps{#1}}}
+# #+LATEX_HEADER: \lehead{\mbox{\llap{\small\thepage\kern1em%
+# #+LATEX_HEADER: \vline}%
+# #+LATEX_HEADER: \hspace{0.5em}\headmark\hfil}}
+#+LATEX_HEADER: \lohead{\mbox{\hfil{\headmark}}}
+#+LATEX_HEADER: \rohead{\thepage}
+#+LATEX_HEADER: \cehead{}
+#+LATEX_HEADER: \cohead{\rule[-2.5pt]{\linewidth}{.8pt}}
+#+LATEX_HEADER: \cefoot{}
+#+LATEX_HEADER: \cofoot{}
+#+LATEX_HEADER: \renewcommand{\headfont}{\normalfont\sffamily}
+#+LATEX_HEADER: \renewcommand{\pnumfont}{\small\sffamily}
+#+LATEX_HEADER: \newcommand{\eye}[4]% size, x, y, rotation
+#+LATEX_HEADER: {   \draw[rotate around={#4:(#2,#3)}] (#2,#3) -- ++(-.5*55:#1) (#2,#3) -- ++(.5*55:#1);
+#+LATEX_HEADER:     \draw (#2,#3) ++(#4+55:.75*#1) arc (#4+55:#4-55:.75*#1);
+#+LATEX_HEADER:     % IRIS
+#+LATEX_HEADER:     \draw[fill=gray] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+180-55:#4+180+55:.28*#1);
+#+LATEX_HEADER:     %PUPIL, a filled arc
+#+LATEX_HEADER:     \draw[fill=black] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+55/3:#4-55/3:.75*#1);
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \tikzset{
+#+LATEX_HEADER:     partial ellipse/.style args={#1:#2:#3}{
+#+LATEX_HEADER:         insert path={+ (#1:#3) arc (#1:#2:#3)}
+#+LATEX_HEADER:     }
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \DeclarePairedDelimiter\angl{\langle}{\rangle}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+#+LATEX_HEADER: \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+#+LATEX_HEADER: \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+#+LATEX_HEADER: \DeclareMathOperator{\Exists}{\exists}
+#+LATEX_HEADER: \DeclareMathOperator{\Res}{Res}
+#+LATEX_HEADER: \DeclareMathOperator{\Forall}{\forall}
+#+LATEX_HEADER: \DeclareMathOperator{\grad}{grad}
+#+LATEX_HEADER: \DeclareMathOperator{\erf}{erf}
+#+LATEX_HEADER: \DeclareMathOperator{\Lös}{\textnormal{Lös}}
+#+LATEX_HEADER: \DeclareMathOperator{\rot}{rot}
+#+LATEX_HEADER: \DeclareMathOperator{\cha}{char}
+#+LATEX_HEADER: \DeclareMathOperator{\Abb}{Abb}
+#+LATEX_HEADER: \DeclareMathOperator{\Lin}{Lin}
+#+LATEX_HEADER: \DeclareMathOperator{\Span}{span}
+#+LATEX_HEADER: \DeclareMathOperator{\ZR}{ZR}
+#+LATEX_HEADER: \DeclareMathOperator{\SR}{SR}
+#+LATEX_HEADER: \DeclareMathOperator{\Hom}{Hom}
+#+LATEX_HEADER: \DeclareMathOperator{\End}{End}
+#+LATEX_HEADER: \DeclareMathOperator{\Iso}{Iso}
+#+LATEX_HEADER: \DeclareMathOperator{\Sp}{sp}
+#+LATEX_HEADER: \DeclareMathOperator{\Aut}{Aut}
+#+LATEX_HEADER: \DeclareMathOperator{\im}{im}
+#+LATEX_HEADER: \DeclareMathOperator{\sinc}{sinc}
+#+LATEX_HEADER: \DeclareMathOperator{\id}{id}
+#+LATEX_HEADER: \DeclareMathOperator{\Rang}{Rang}
+#+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
+#+LATEX_HEADER: \DeclareMathOperator{\RS}{RS}
+#+LATEX_HEADER: \DeclareMathOperator{\GL}{GL}
+#+LATEX_HEADER: \DeclareMathOperator{\Eig}{Eig}
+#+LATEX_HEADER: \DeclareMathOperator{\rd}{rd}
+#+LATEX_HEADER: \DeclareMathOperator{\Div}{div}
+#+LATEX_HEADER: \DeclareMathOperator{\tr}{tr}
+#+LATEX_HEADER: \DeclareMathOperator{\Bil}{Bil}
+#+LATEX_HEADER: \DeclareMathOperator{\SymBil}{SymBil}
+#+LATEX_HEADER: \DeclareMathOperator{\Signatur}{Signatur}
+#+LATEX_HEADER: \DeclareMathOperator{\Quad}{Quad}
+#+LATEX_HEADER: \DeclareMathOperator{\Graph}{Graph}
+#+LATEX_HEADER: \DeclareMathOperator{\Leg}{Leg}
+#+LATEX_HEADER: \DeclareMathOperator{\Sesq}{Sesq}
+#+LATEX_HEADER: \DeclareMathOperator{\Lie}{Lie}
+#+LATEX_HEADER: \DeclareMathOperator{\cond}{cond}
+#+LATEX_HEADER: \DeclareMathOperator{\GGT}{GGT}
+#+LATEX_HEADER: \DeclareMathOperator{\ggT}{ggT}
+#+LATEX_HEADER: \DeclareMathOperator{\diag}{diag}
+#+LATEX_HEADER: \DeclareMathOperator{\Fit}{Fit}
+#+LATEX_HEADER: \DeclareMathOperator{\spr}{spr}
+#+LATEX_HEADER: \DeclareMathOperator{\kgV}{kgV}
+#+LATEX_HEADER: \DeclareMathOperator{\coker}{coker}
+#+LATEX_HEADER: \DeclareMathOperator{\argmax}{argmax}
+#+LATEX_HEADER: \DeclareMathOperator{\cc}{c.c.}
+#+LATEX_HEADER: \DeclareMathOperator{\VAR}{VAR}
+#+LATEX_HEADER: \DeclareMathOperator{\dist}{dist}
+#+LATEX_HEADER: \DeclareMathOperator{\supp}{supp}
+#+LATEX_HEADER: \DeclareMathOperator{\vol}{vol}
+#+LATEX_HEADER: \DeclareMathOperator{\Alt}{Alt}
+
+
+#+LATEX_HEADER:	\setcounter{MaxMatrixCols}{20}
+
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \let\oldabs\abs
+#+LATEX_HEADER: \def\abs{\@ifstar{\oldabs}{\oldabs*}}
+#+LATEX_HEADER: \let\oldnorm\norm
+#+LATEX_HEADER: \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+#+LATEX_HEADER: \makeatother
+
+#+LATEX_HEADER: \newcommand{\code}{\texttt}%
+#+LATEX_HEADER: \newcommand{\I}{\ensuremath{\imath}}%
+#+LATEX_HEADER: \newcommand{\const}{\ensuremath{\text{const.}}}%
+#+LATEX_HEADER: \newcommand{\eps}{\ensuremath{\varepsilon}}%
+#+LATEX_HEADER: \newcommand{\euler}{e}
+#+LATEX_HEADER: \newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
+#+LATEX_HEADER: \newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+#+LATEX_HEADER: \newcommand\ubar[1]{\stackunder[1.2pt]{$#1$}{\rule{.8ex}{.075ex}}}
+# #+LATEX_HEADER: \newcommand{\ubar}[1]{\text{\b{$#1$}}}
+#+LATEX_HEADER: \newcommand{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}
+#+LATEX_HEADER: \newcommand{\f}[2]{{\frac{#1}{#2}}}
+# #+LATEX_HEADER: \renewcommand{\v}[1]{\mathrlap{\vec{\mkern-2mu\phantom{#1}}}#1}
+#+LATEX_HEADER: \renewcommand{\v}[1]{\vec{\mkern2mu\phantom{#1}}\mathllap{#1}}
+# #+LATEX_HEADER: \renewcommand{\v}[1]{\vec{#1}}
+#+LATEX_HEADER: \renewcommand{\d}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand\reallywidetilde[1]{\ThisStyle{%
+#+LATEX_HEADER:   \setbox0=\hbox{$\SavedStyle#1$}%
+#+LATEX_HEADER:   \stackengine{-.1\LMpt}{$\SavedStyle#1$}{%
+#+LATEX_HEADER:     \stretchto{\scaleto{\SavedStyle\mkern.2mu\AC}{.5150\wd0}}{.6\ht0}%
+#+LATEX_HEADER:   }{O}{c}{F}{T}{S}%
+#+LATEX_HEADER: }}
+
+#+LATEX_HEADER: \def\cvec#1{\begin{pmatrix}\cvecA#1;;\end{pmatrix}}
+#+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\\ \expandafter \cvecA \fi}
+# #+LATEX_HEADER: \def\cvec#1{\left(\vcenter{\halign{\hfil$##$\hfil\cr \cvecA#1;;}}\right)}
+# #+LATEX_HEADER: \def\cvecA#1;{\if;#1;\else #1\cr \expandafter \cvecA \fi}
+#+LATEX_HEADER: \NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+#+LATEX_HEADER:  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}#3\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+#+LATEX_HEADER:  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
+#+LATEX_HEADER: \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
+#+LATEX_HEADER: \def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+#+LATEX_HEADER:     { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+#+LATEX_HEADER: \def\iddots{\mathinner{\mkern1mu\raise\p@
+#+LATEX_HEADER: \vbox{\kern7\p@\hbox{.}}\mkern2mu
+#+LATEX_HEADER: \raise4\p@\hbox{.}\mkern2mu\raise7\p@\hbox{.}\mkern1mu}}
+#+LATEX_HEADER: \makeatother
+#+LATEX_HEADER: \newcommand\dangersign[1][5ex]{%
+#+LATEX_HEADER:   \renewcommand\stacktype{L}%
+#+LATEX_HEADER:   \scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\tiny !}}{#1}%
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \theoremstyle{plain}
+#+LATEX_HEADER: \theorembodyfont{\normalfont}
+#+LATEX_HEADER: \newtheorem{defn}{Definition}[section]
+#+LATEX_HEADER: \renewtheorem*{defn*}{Definition}
+#+LATEX_HEADER: \newtheorem{thm}[defn]{Satz}
+#+LATEX_HEADER: \newtheorem{lemma}[defn]{Lemma}
+#+LATEX_HEADER: \newtheorem{remark}[defn]{Bemerkung}
+#+LATEX_HEADER: \newtheorem{note}[defn]{Anmerkung}
+#+LATEX_HEADER: \newtheorem{conc}[defn]{Folgerung}
+#+LATEX_HEADER: \newtheorem{algrthm}[defn]{Algorithmus}
+#+LATEX_HEADER: \newtheorem{ex}[defn]{Beispiel}
+#+LATEX_HEADER: \newtheorem{korollar}[defn]{Korollar}
+#+LATEX_HEADER: \newtheorem{proposition}{Proposition}
+#+LATEX_HEADER: \theoremstyle{nonumberplain}
+#+LATEX_HEADER:	\theoremsymbol{\ensuremath\square}
+#+LATEX_HEADER:	\qedsymbol{\ensuremath\square}
+#+LATEX_HEADER: \newtheorem{proof}{Beweis}
+# #+LATEX_HEADER: \patchcmd{\thmhead}{(#3)}{#3}{}{}
+# #+LATEX_HEADER: \renewcommand*{\proofname}{Beweis}
+#+LATEX_HEADER: \newenvironment{attention}{\begin{bclogo}[logo=\dangersign, couleurBarre=orange, noborder=true, couleur=white]{\hspace{.2cm}Achtung}}{\end{bclogo}}
+#+LATEX_HEADER: \newenvironment{important}{\begin{bclogo}[logo=\bcinfo, couleurBarre=green, noborder=true, couleur=white]{\hspace{.2cm}Wichtig}}{\end{bclogo}}
+#+LATEX_HEADER: \newenvironment{ibox}[1]
+#+LATEX_HEADER:   {\mdfsetup{
+#+LATEX_HEADER:     frametitle={\colorbox{white}{\space#1\space}},
+#+LATEX_HEADER:     innertopmargin=10pt,
+#+LATEX_HEADER:     frametitleaboveskip=-\ht\strutbox,
+#+LATEX_HEADER:     frametitlealignment=\center
+#+LATEX_HEADER:     }
+#+LATEX_HEADER:   \begin{mdframed}%
+#+LATEX_HEADER:   }
+#+LATEX_HEADER:   {\end{mdframed}}
+# #+LATEX_HEADER: \newenvironment{box}{}
+#+LATEX_HEADER: \usetikzlibrary{math, arrows, automata, calc,patterns,decorations.pathmorphing,decorations.markings, matrix, babel,external,arrows.meta}
+
+# #+LATEX_HEADER: \makeatletter
+# #+LATEX_HEADER: \def\resetMathstrut@{%
+# #+LATEX_HEADER:   \setbox\z@\hbox{%
+# #+LATEX_HEADER:     \mathchardef\@tempa\mathcode`\[\relax
+# #+LATEX_HEADER:     \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+# #+LATEX_HEADER:     \expandafter\@tempb\meaning\@tempa \relax
+# #+LATEX_HEADER:   }%
+# #+LATEX_HEADER:   \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+# #+LATEX_HEADER: \makeatother
+#+LATEX_HEADER: \catcode`(=\active
+#+LATEX_HEADER: \catcode`)=\active
+#+LATEX_HEADER: \newcommand{(}{\ifmmode\mathopen{}\mathclose\bgroup\left\string(\else\string(\fi}
+#+LATEX_HEADER: \newcommand{)}{\ifmmode\aftergroup\egroup\right\string)\else\string)\fi}
+# #+LATEX_HEADER: \AtBeginDocument{\mathcode`(="8000 }
+# #+LATEX_HEADER: \AtBeginDocument{\mathcode`)="8000 }
+
+
+# #+LATEX_HEADER: \usemintedstyle{tango}
+#+LATEX_HEADER: \usemintedstyle{friendly}
+#+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines,mathescape=true,autogobble}
+#+LATEX_HEADER: \renewenvironment{listing}{\captionsetup{type=listing}}{}
+#+LATEX_HEADER:	\addbibresource{../bib.bib}
+# #+LATEX_HEADER: \newcommand*\Laplace{\mathop{{}\triangle}\nolimits}
+#+LATEX_HEADER: \newcommand*\Laplace{\mathop{}\!\mathbin\triangle}
+#+LATEX_HEADER: \newcommand*\dalem{\mathop{}\!\mathbin\square}
+#+LATEX_HEADER: \newcommand*\DAlambert{\mathop{{}\Box}\nolimits}
+#+LATEX_HEADER: \newcommand*\dcup{\mathbin{\dot\cup}}
+#+LATEX_HEADER: \newcommand*\dcap{\mathbin{\dot\cap}}
+#+LATEX_HEADER: \newcommand*\bigdcup{\mathop{\dot\bigcup}}
+#+LATEX_HEADER: \newcommand*\bigdcap{\mathop{\dot\bigcap}}
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \pretocmd\start@align{%
+#+LATEX_HEADER:   \if@minipage\kern-\topskip\kern-\abovedisplayskip\fi
+#+LATEX_HEADER: }{}{}
+#+LATEX_HEADER: \makeatother
+#+LATEX_HEADER: \tikzset{every picture/.style={>=latex}}
+#+LATEX_HEADER: \catcode`(=12
+#+LATEX_HEADER: \catcode`)=12
+#+LATEX_HEADER: \tikzmath{
+#+LATEX_HEADER:   function sinc(\x) {
+#+LATEX_HEADER:     if  abs(\x) < .001 then { % (|x| < .001) ~ (x = 0)
+#+LATEX_HEADER:       return 1;
+#+LATEX_HEADER:     } else {
+#+LATEX_HEADER:       return sin(\x r)/\x;
+#+LATEX_HEADER:     };
+#+LATEX_HEADER:   };
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \tikzset{
+#+LATEX_HEADER:     mark position/.style args={#1(#2)}{
+#+LATEX_HEADER:         postaction={
+#+LATEX_HEADER:             decorate,
+#+LATEX_HEADER:             decoration={
+#+LATEX_HEADER:                 markings,
+#+LATEX_HEADER:                 mark=at position #1 with \coordinate (#2);
+#+LATEX_HEADER:             }
+#+LATEX_HEADER:         }
+#+LATEX_HEADER:     }
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \newcommand{\wigglecircle}[5]{
+#+LATEX_HEADER:   \draw[shift={(#4,#5)}] plot[smooth cycle,samples=#3,domain=0:360] ({#1*cos(\x)+#2*rnd},{#1*sin(\x) + #2*rnd});
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \catcode`(=\active
+#+LATEX_HEADER: \catcode`)=\active
+#+LATEX_HEADER:	\let\mathbb\mathbbm
+#+LATEX_HEADER:	\makeatletter
+#+LATEX_HEADER:	\newcommand{\vast}{\bBigg@{4}}
+#+LATEX_HEADER:	\newcommand{\Vast}{\bBigg@{5}}
+#+LATEX_HEADER:	\newcommand{\vastl}{\mathopen\vast}
+#+LATEX_HEADER:	\newcommand{\vastm}{\mathrel\vast}
+#+LATEX_HEADER:	\newcommand{\vastr}{\mathclose\vast}
+#+LATEX_HEADER:	\newcommand{\Vastl}{\mathopen\Vast}
+#+LATEX_HEADER:	\newcommand{\Vastm}{\mathrel\Vast}
+#+LATEX_HEADER:	\newcommand{\Vastr}{\mathclose\Vast}
+#+LATEX_HEADER:	\makeatother
+#+LATEX_HEADER:	\setcounter{topnumber}{2}
+#+LATEX_HEADER:	\setcounter{bottomnumber}{2}
+#+LATEX_HEADER:	\setcounter{totalnumber}{4}
+#+LATEX_HEADER:	\renewcommand{\topfraction}{0.95}
+#+LATEX_HEADER:	\renewcommand{\bottomfraction}{0.95}
+#+LATEX_HEADER:	\renewcommand{\textfraction}{0.05}
+#+LATEX_HEADER:	\renewcommand{\floatpagefraction}{1.0}
+#+LATEX_HEADER:	\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+#+LATEX_HEADER:	\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+#+LATEX_HEADER:	\setlength{\intextsep}{5pt plus 2pt minus 2pt}

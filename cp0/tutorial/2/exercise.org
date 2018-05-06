@@ -1,0 +1,440 @@
+#+INCLUDE: ../header.org
+#+TITLE: Exercise sheet 2
+#+AUTHOR: by Robin Heinemann (group 4), Paul Rosendahl (group 2) and Andreas Rall (group 1)
+#+LATEX_HEADER: \newcommand{\rust}{\textit{rust}\xspace}
+
+* Numerical	simulation of the two-body-problem
+  Let $\v r$ denote the seperation of two point masses with mass $M_1$ and $M_2$. Using	Newton's equations
+  \[\ddot{\v r} = -\frac{G(M_1 + M_2)}{r^3} \frac{\v r}{r}\]
+  is obtained. This differential equation can be solved using the Euler integration scheme.	$\v r, \dot{\v r} = \v v$ and $t$ are transformed to characteristic scales $\v s, \v ω$ and $τ$ by
+  \begin{align*}
+  \v s &= \frac{\v r}{R_0} \\
+  \v ω &= \v v (\frac{R_0}{GM})^{1/2} \\
+  τ &= t (\frac{GM}{R_0^3})^{1/2}
+  \end{align*}
+  with $R_0$ being the initial seperation of the two masses. The forward Euler scheme then can be written as
+  \begin{align*}
+  \v s_{i} &= \v s_{i - 1} + \v ω_{i - 1} h \\
+  \v ω_{i} &= \v ω_{i - 1} - \frac{\v s_{i - 1}}{s^3_{i - 1}} h \\
+  \end{align*}
+  where $\v s_{i}$ and $\v ω_{i}$ denotes the characteristic seperation and characteristic velocity at time $τ_i$ and $h := τ_{i} - τ_{i - 1}$.
+  The velocity $\v 0$ for with orbit is circular can be determined from the Laplace-Runge-Lenz vector $\v e$ which is related to eccentricity $e$ by $\abs{\v e} = e$.
+  A circular orbit means $e = 0 ⇒ \v e = 0$. In addition to that the velocity must be perpendicular to $\v r$.
+  \begin{align*}
+  \v e &= \frac{\v v × \v j}{GM} - \frac{\v r}{r} \overset{!}{=} 0 \\
+  &= \frac{\v v × (\v r × \v v)}{GM} - \frac{\v r}{r} \\
+  &= \frac{(\v v · \v v) \v r - (\v v · \v r) \v v}{GM} - \frac{\v r}{r} \\
+  \intertext{the term $(\v r · \v r)$ must be zero because $\v r \perp \v v$}
+  &= \frac{v^2 \v r}{GM} - \frac{\v r}{r} = 0 \\
+  ⇒ v &= \sqrt{\frac{GM}{r}}
+  \end{align*}
+  Because $\abs{\v r} = r$ must be constant for a circular orbit, finally
+  \[v = \sqrt{\frac{GM}{R_0}}\]
+  is obtained.
+
+  #+caption: forward euler integration of the two body problem
+  #+ATTR_LATEX: :placement [Hp]
+  #+begin_src rust :tangle "euler_two_body.rs" :results raw output :exports code :colnames yes :long-listing
+  // cargo-deps: rulinalg
+  #[macro_use]
+  extern crate rulinalg;
+
+  use std::fs::File;
+  use std::path::Path;
+  use std::io::Write;
+  use rulinalg::vector::Vector;
+  use rulinalg::norm::Euclidean;
+
+  const G: f64 = 1.0;
+
+
+  fn forward_euler(s: &Vector<f64>, w: &Vector<f64>, dt: f64) -> (Vector<f64>, Vector<f64>) {
+  	let sn = s + w * dt;
+  	let sa = s.norm(Euclidean);
+  	let wn = w - s * dt / (sa * sa * sa);
+
+  	(sn, wn)
+  }
+
+  fn normalize(M: f64, r: Vector<f64>, v: Vector<f64>, h: f64, R0: f64) -> (Vector<f64>, Vector<f64>, f64) {
+  	let s = r / R0;
+  	let V0 =  ((G * M) / R0).sqrt();
+  	let w = v / V0;
+  	let dt = h * V0 / R0;
+
+  	(s, w, dt)
+  }
+
+  fn cross(a: &Vector<f64>, b: &Vector<f64>) -> Vector<f64> {
+  	let mut c = vector![0.0, 0.0, 0.0];
+  	c[0] = a[1] * b[2] - a[2] * b[1];
+  	c[1] = a[2] * b[0] - a[0] * b[2];
+  	c[2] = a[0] * b[1] - a[1] * b[0];
+  	c
+  }
+
+  fn euler(dt_0: f64, v0: f64, file: &str,  interval: Option<u64>) {
+  	let M1: f64 = 1.0;
+  	let M2: f64 = 1.0;
+  	let R0: f64 = 1.0;
+  	let r = vector![1.0, 0.0, 0.0];
+  	let v = vector![0.0, v0, 0.0];
+  	let te: f64 = 100.0;
+  	let h: f64 = 0.01;
+  	let mut t = 0.0;
+  	let interval =
+  	    match interval {
+  	        Some(i) => i,
+  		    None => 1
+  	    };
+
+  	let (mut s, mut w, mut dt) = normalize(M1 + M2, r, v, h, R0);
+  	dt = dt_0;
+
+  	let path = Path::new(file);
+  	let mut file = File::create(&path).unwrap();
+
+  	let mut i = 0;
+
+  	while t < te {
+  		t += dt;
+  		let (sn, wn) = forward_euler(&s, &w, dt);
+
+  		s = sn; w = wn;
+
+  		let e = (cross(&w,&cross(&s, &w)) - &s).norm(Euclidean);
+
+  		if i % interval == 0 {
+  		    file.write_all(format!("{}, {}, {}, {}, {}\n", t, s[0], s[1], s[2], e).as_bytes()).unwrap();
+  		}
+
+  		i += 1;
+  	}
+
+  }
+
+  fn main() {
+  	euler(0.01, (2.0_f64).sqrt(), "forward_euler_1", None);
+  	euler(0.01, (1.0_f64).sqrt(), "forward_euler_2", None);
+  	euler(0.01, (2.0_f64).sqrt() * 2.0, "forward_euler_3", None);
+  	euler(0.01, (2.0_f64).sqrt() / 3.0, "forward_euler_4_1", None);
+  	euler(0.0001, (2.0_f64).sqrt() / 3.0, "forward_euler_4_2", Some(10));
+  	euler(0.000001, (2.0_f64).sqrt() / 3.0, "forward_euler_4_3", Some(1000));
+  }
+  #+end_src
+
+  #+RESULTS:
+
+  #+caption: gnuplot code for plotting the orbit
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_1.eps
+  reset
+  plot "forward_euler_1" using 2:3 with lines title "forward euler with v_0"
+  #+end_src
+
+  #+caption: plot of $x$ and $y$ component of $\vec{s}$ with $v_0$
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  #+caption: gnuplot code for plotting the orbit
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_2.eps
+  reset
+  plot "forward_euler_2" using 2:3 with lines title "forward euler with v_0 / \sqrt{2}"
+  #+end_src
+
+  #+caption: plot of $x$ and $y$ component of $\vec{s}$ with $v_0 / \sqrt{2}$
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  #+caption: gnuplot code for plotting the eccentricity
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_e.eps
+  reset
+  plot "forward_euler_1" using 1:5 with lines title "eccentricity of case v_0"
+  #+end_src
+
+  #+caption: plot eccentricity  with $v_0$
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  #+caption: gnuplot code for plotting the orbit
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_3.eps
+  reset
+  plot "forward_euler_3" using 2:3 with lines title "forward euler with 2 * v_0"
+  #+end_src
+
+  #+caption: plot of $x$ and $y$ component of $\vec{s}$ with $2 v_0$
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  #+caption: gnuplot code for plotting the orbit
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_4_1.eps
+  reset
+  plot "forward_euler_4_1" using 2:3 with lines title "forward euler with v_0 / 3 and dt = 0.01"
+  #+end_src
+
+  #+caption: plot of $x$ and $y$ component of $\vec{s}$ with $v_0 / 3$ and $dt = 0.01$
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  #+caption: gnuplot code for plotting the orbit
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_4_2.eps
+  reset
+  plot "forward_euler_4_2" using 2:3 with lines title "forward euler with v_0 / 3 and dt = 0.0001"
+  #+end_src
+
+  #+caption: plot of $x$ and $y$ component of $\vec{s}$ with $v_0 / 3$ and $dt = 0.0001$
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  #+caption: gnuplot code for plotting the orbit
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_4_3.eps
+  reset
+  plot "forward_euler_4_3" using 2:3 with lines title "forward euler with v_0 / 3 and dt = 0.000001"
+  #+end_src
+
+  #+caption: plot of $x$ and $y$ component of $\vec{s}$ with $v_0 / 3$ and $dt = 0.000001$
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  Choosing a initial velocity greater than $\sqrt{2} v_0$ means the initial velocity is greater than the escape velocity and the orbit is a hyperbola.
+  Choosing $v_0 / 3$ as initial velocity means the orbit is very elliptical thus the masses get really close and the acceleration is gets very big.
+  This increases the error through the discrete timesteps. But even choosing much smaller timesteps does not result in a stable system, because of
+  the limited precision of floatingpoint representation and the error inherent from the euler scheme.
+* Error analysis of euler scheme
+  As initial velocities $v = v_0$, $v = 1.5 · v_0$ and $v_0 / 2$ are choosen. For each of the initial velocities stepsizes $dt_n$ are used:
+  \[dt_n = 10^{-n / 4 - 1} \quad\text{where}\quad n ∈ \{0, \dots, 20\}\]
+  The relative error of the energy $ε$ is calculated after one orbit $τ = 2π$.
+  \begin{align*}
+  ε &= \frac{\abs{E_{t = τ} - E_{t = 0}}}{\abs{E_{t = 0}}} \\
+  E_{t} &= \frac{ω_t^2}{2} - \frac{1}{s}
+  \end{align*}
+  This is done for the forward euler integration scheme, the velocity verlet scheme and the leapfrog scheme. The relative error is then plotted against the
+  different stepsizes.
+
+  #+caption: forward euler integration of the two body problem
+  #+ATTR_LATEX: :placement [Hp]
+  #+begin_src rust :tangle "error_analysis.rs" :results raw output :exports code :colnames yes :long-listing
+  // cargo-deps: rulinalg
+  #[macro_use]
+  extern crate rulinalg;
+
+  use std::fs::File;
+  use std::path::Path;
+  use std::io::Write;
+  use rulinalg::vector::Vector;
+  use rulinalg::norm::Euclidean;
+
+  const G: f64 = 1.0;
+
+
+  fn forward_euler(s: &Vector<f64>, w: &Vector<f64>, dt: f64, _: bool, _: bool) -> (Vector<f64>, Vector<f64>) {
+  	  let sn = s + w * dt;
+	  let wn = w + acceleration(s) * dt;
+
+  	  (sn, wn)
+  }
+
+  fn velocity_verlet(s: &Vector<f64>, w: &Vector<f64>, dt: f64, _: bool, _: bool) -> (Vector<f64>, Vector<f64>) {
+      let a = acceleration(s);
+      let sn = s + w * dt + a.clone() * dt * dt * 0.5;
+      let an = acceleration(&sn);
+	  let wn = w + (a + an) * dt * 0.5;
+
+  	  (sn, wn)
+  }
+
+  fn leapfrog(s: &Vector<f64>, w: &Vector<f64>, dt: f64, first: bool, last: bool) -> (Vector<f64>, Vector<f64>) {
+      if first {
+	      let (_, wn) = forward_euler(s, w, dt / 2.0, first, last);
+		  return (s.clone(), wn);
+	  } else if last {
+	      let (sn, _n) = forward_euler(s, w, dt / 2.0, first, last);
+		  return (sn, w.clone());
+	  }
+
+      let sn = s + w * dt;
+	  let wn = w + acceleration(&sn) * dt;
+
+  	  (sn, wn)
+  }
+
+
+  fn normalize(M: f64, r: Vector<f64>, v: Vector<f64>, h: f64, R0: f64) -> (Vector<f64>, Vector<f64>, f64) {
+  	let s = r / R0;
+  	let V0 =  ((G * M) / R0).sqrt();
+  	let w = v / V0;
+  	let dt = h * V0 / R0;
+
+  	(s, w, dt)
+  }
+
+  fn cross(a: &Vector<f64>, b: &Vector<f64>) -> Vector<f64> {
+  	let mut c = vector![0.0, 0.0, 0.0];
+  	c[0] = a[1] * b[2] - a[2] * b[1];
+  	c[1] = a[2] * b[0] - a[0] * b[2];
+  	c[2] = a[0] * b[1] - a[1] * b[0];
+  	c
+  }
+
+  type Integrator =	&'static Fn(&Vector<f64>, &Vector<f64>, f64, bool, bool) -> (Vector<f64>, Vector<f64>);
+
+  fn error_analysis(integrator: Integrator, file: &str) {
+      let v0 = (2.0_f64).sqrt();
+      let v0s = &[v0, 1.5 * v0, v0 / 2.0];
+	  let dts = (0..21).map(|e| 10.0_f64.powf(-(e as f64) / 4.0 - 1.0));
+
+  	  let path = Path::new(file);
+  	  let mut file = File::create(&path).unwrap();
+
+	  for dt in dts {
+	      let mut line = format!("{}", dt).to_string();
+		  for v in v0s {
+		      let error = single_run(integrator, dt, *v);
+			  line = format!("{}, {}", line, error);
+		  }
+
+  		  file.write_all((line.to_owned() + "\n").as_bytes()).unwrap();
+	  }
+  }
+
+  fn energy(s: &Vector<f64>, w: &Vector<f64>) -> f64 {
+  	  let w_norm = w.norm(Euclidean);
+  	  let s_norm = s.norm(Euclidean);
+
+      w_norm * w_norm / 2.0 - 1.0 / s_norm
+  }
+
+  fn single_run(integrator: Integrator, dt_0: f64, v0: f64) -> f64 {
+  	let M1: f64 = 1.0;
+  	let M2: f64 = 1.0;
+  	let R0: f64 = 1.0;
+  	let r = vector![1.0, 0.0, 0.0];
+  	let v = vector![0.0, v0, 0.0];
+  	let te: f64 = 2.0 * std::f64::consts::PI;
+  	let h: f64 = 0.01;
+  	let mut t = 0.0;
+
+  	let (mut s, mut w, mut dt) = normalize(M1 + M2, r, v, h, R0);
+  	dt = dt_0;
+
+	let e0 = energy(&s, &w);
+
+	let (sn, wn) = integrator(&s, &w, dt, true, false);
+  	s = sn; w = wn;
+  	t += dt;
+
+  	while t < te - dt {
+  		t += dt;
+
+  		let (sn, wn) = integrator(&s, &w, dt, false, false);
+
+  		s = sn; w = wn;
+  	}
+
+	let (sn, wn) = integrator(&s, &w, dt, false, true);
+  	s = sn; w = wn;
+
+
+	let ee = energy(&s, &w);
+	(ee - e0).abs() / e0.abs()
+  }
+
+  fn acceleration(s: &Vector<f64>) -> Vector<f64> {
+  	  let sa = s.norm(Euclidean);
+  	  -s / (sa * sa * sa)
+  }
+
+  fn main() {
+    error_analysis(&forward_euler, "euler");
+    error_analysis(&velocity_verlet, "velocity_verlet");
+    error_analysis(&leapfrog, "leapfrog");
+  }
+  #+end_src
+
+  #+RESULTS:
+
+  #+caption: Gnuplot code for plotting the relativ energy error of forward euler integration
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file euler_error.eps
+  reset
+  set log x
+  set log y
+  set xrange [.11:0.000009] reverse
+  plot "euler" using 1:2 with lines title "v_0", "euler" using 1:3 with lines title "1.5 * v_0", "euler" using 1:4 with lines title "v_0 / 2"
+  #+end_src
+
+  #+caption: Plot of the relative error of euler integration against different stepsizes for three different initial velocities
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+
+  For the euler integration the error says quite big, even with very small timesteps. This
+  could be observed in the previous task very well, even a circular orbit deteriorated
+  after a short time. Using a even small initial velocity means both particles get
+  closer to each other and this means the accelerations increases very fast as the particles get close. This means
+  that the error introduced by discrete timesteps is quite big. This can also be seen in
+  the relative error of the energy, it is a lot bigger for $v_0 / 2$ than for $v_0$.
+
+  #+caption: Gnuplot code for plotting the relativ energy error of velocity verlet integration
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file vverlet_error.eps
+  reset
+  set log x
+  set log y
+  set xrange [.11:0.000009] reverse
+  plot "velocity_verlet" using 1:2 with lines title "v_0", "velocity_verlet" using 1:3 with lines title "1.5 * v_0", "velocity_verlet" using 1:4 with lines title "v_0 / 2"
+  #+end_src
+
+  #+caption: Plot of the relative error of velocity verlet integration against different stepsizes for three different initial velocities
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+
+  The relative error of the energy is a lot smaller using the velocity verlet scheme than it
+  was using the euler scheme. For a circular orbit it seems to reach the error
+  introduced by machine precision. This could explain, why the error does not continuously shrink
+  with decreasing timesteps. The difference in error between other initial velocities is also
+  smaller than when using euler integration. The improved errors are of course expected, because
+  the velocity verlet scheme is of second order, inlike the euler scheme which is only of first order.
+
+  #+caption: Gnuplot code for plotting the relativ energy error of forward leapfrog integration
+  #+ATTR_LATEX: :placement [H]
+  #+begin_src gnuplot :exports both :file leapfrog_error.eps
+  reset
+  set log x
+  set log y
+  set xrange [.11:0.000009] reverse
+  plot "leapfrog" using 1:2 with lines title "v_0", "leapfrog" using 1:3 with lines title "1.5 * v_0", "leapfrog" using 1:4 with lines title "v_0 / 2"
+  #+end_src
+
+  #+caption: Plot of the relative error of leapfrog integration against different stepsizes for three different initial velocities
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  [[file:euler_1.eps]]
+
+  The leapfrog scheme and the velocity verlet scheme produce quite similar errors. This is
+  also expected, because of the similarity of both schemes. The velocity calculation of the velocity verlet scheme
+  can also be written as a half stepsize step. The only major difference in relative error
+  between the two is seen when the orbit is circular. This could be caused by the
+  euler steps needed at the start and end of the leapfrog scheme, as these are not needed for the velocity
+  verlet scheme.
+* Additional notes
+  All programs written are written using the programming language \rust. Extra dependencies (\rust \textit{crates}) will be listed in a comment in the first line.
+  To get the source files of each program just unzip this \textit{pdf} file. You will find directories for every
+  program in this file. To execute one of the programs run \texttt{cargo run} in it's directory. All plots are made with \textit{gnuplot}.
+  This document was written in \textit{org-mode} and converted to \textit{pdf}. The corresponding \textit{org-mode} sources can also be found by unzipping this \textit{pdf} file.

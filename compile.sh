@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=$(find . -type f -name '*.org')
+files=$(find . -maxdepth 3 -type f -name '*.org')
 
 configfile=$(realpath emacs_config.el)
 
