@@ -1,11 +1,12 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Theoretische Physik 4 - Quantenmechanik (Hebecker)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 
 # Webseite -> Übungsgruppen
 # Aufgabe heute 14:00
 # Zu zweit, abchseln aufschreiben 60%, 1× Vorrechnen
+# Klausur: Montag, 23. Juli, 15:00 - 17:15 Uhr
 
 # Literature - Messiah
 
@@ -430,3 +431,593 @@
    \[\hat U^{\dagger} = \hat U^{-1}\]
    Entscheidende Eigenschaft des unitären Operators: *Kompatibilität mit Skalarprodukt*: betrachte unitären Operator $\hat O$
    \[\braket{\hat O ψ | \hat O χ} = \braket{ψ | \hat O^{\dagger} \hat O | χ} = \braket{ψ | χ}\]
+   Zum Abschluss: Basiswechsel (siehe oben) jetzt in abstrakter Operatorsprache. Dazu: Berechene die \(k\)-te Komponente von $\ket{λ_i}$
+   \begin{align*}
+   \string(\ket{λ_i}\string)_{k} &= \braket{k | λ_i} = U_{ki} = U_{kl} δ_{li} = U_{kl}(\ket{i})_l \\
+   ⇒ \ket{λ_i} &= \hat U \ket{i}
+   \end{align*}
+   Operator $\hat U$ überführt alte in neue Basis. In der neuen Basis ist $\hat H$ diagonal
+   \[\braket{λ_i | \hat H| λ_j} = λ_i δ_{ij}\]
+   *Jetzt klar*: Die oben diskutierte einfache Dynamik "Rotation der Phasen der Energie-Eigenvektoren" ist völlig allgemein!
+   Das (diese Diagonalisierung) geht natürlich für *jede* Observable (da hermitesch). Insbesondere sei $\hat O$ eine Observable.
+   Sei $\ket{ψ}$ beliebiger Zustand. Schreibe $\ket{ψ} = ψ_i \ket{o_i}$ (mit $\hat O \ket{o_i} = o_i \ket{o_i}$).
+   Erwartungswert:
+   \[\braket{ψ | \hat O | ψ} = \sum_{ij} ψ_i^{\ast} \braket{o_i | \hat O | o_j} ψ_j = \sum_{ij} \abs{ψ_i}^2 o_i\]
+   Die Operation der Messung entspricht der Wirkung des Projektors $\hat P_i = \ket{o_i} \bra{o_i}$ falls $o_i$ gemessen wurde. \\
+   Spezialfall: degenerierte Eigenwerte. Beispiel:
+   \[A = \begin{pmatrix}a_1 & 0 & 0 \\ 0 & a_2 & 0 \\ 0 & 0 & a_2\end{pmatrix}\]
+   $A$ wirkt auf den Unterraum "$2-3$" als $a_2 \mathbb{1}$. Der Projektor auf den "$2-3$" Unterraum ist
+   \[\begin{pmatrix}0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\]
+   Er entspricht der Messung von $a_2 = a_3$. \\
+   Wichtige: Eigenvetoren hermitescher Eigenverten sind orthogonal:
+   \begin{align*}
+   0 &= \braket{o_1 | O | o_2} - \braket{o_1 | O | o_2} = \braket{o_1 | O^{\dagger} | o_2} - \braket{o_1 | O | o_2} \\
+   &= o_1^{\ast} \braket{o_1 | o_2} - \braket{o_1 | o_2} o_2 = (o_1 - o_2) \braket{o_1 | o_2}
+   \end{align*}
+   Falls $o_1 \neq o_2 ⇒$ orthogonal.
+** Zeitentwicklung mit konstantem $\hat H$
+   \[i \hbar \dd{}{t} \ket{ψ(t)} = \hat H \ket{ψ(t)}\]
+   Lösung des Anfangswertproblems ist Hauptaufgabe der Physik! \\
+   Wir wissen schon:
+   \[\ket{ψ(t)} = ψ_i(t) \ket{i} = ψ_i(0) e^{-i\frac{E}{\hbar}t}\]
+   Wegen der Wichtigkeit, nochmal in anderen Worten: Gegeben: zeitabhängige Schrödinger-Gleichung. Produktansatz:
+   \[\ket{ψ} = f(t) \ket{χ}\]
+   mit $\ket{χ}$ zeitunabhängig. Einsetzen liefert:
+   \[i \hbar \dot f(t) \ket{χ} = f(t) H \ket{χ}\]
+   Falls $\ket{χ}$ ein Eigenvektor zu $H$ ist:
+   \begin{align*}
+   i \hbar \dot f(t) \ket{χ} &= f(t) E \ket{χ} \\
+   ⇒ i \hbar \dot f &=  E f \\
+   f(t) &= f(0) e^{-i \frac{E}{\hbar}t}
+   \end{align*}
+   Obige allgemeine Lösung ist Superposition von Lösungen vom Typ $f(t) \ket{χ}$.
+   Zeil: Beschreibe die uns schon bekannte allgemeine Lösung mittels Zeitentwicklungsoperator: $U(t)$. Dazu: fasse $\ket{ψ}$ als Spaltenvektor auf:
+   \[ψ(t) \equiv (ψ_1(t), ψ_2(t), \dots, )^T\]
+   Es gilt:
+   \[ψ(t) = U(t) ψ(0) \quad\text{mit}\quad U(t) = \diag(e^{-i \frac{E_1}{\hbar}t}, e^{-i \frac{E_2}{\hbar}t}, \dots)\]
+   Sprich: In Eigenwertbasis ist $U$ schlicht eine Diagonalmatrix aus den Phasenfaktoren. Es gilt weiterhin:
+   \[U(t) = e^{-i \frac{H}{t} \hbar} \quad\text{wobei}\text H = \diag(E_1, E_2, \dots)\]
+   Exponentialfunktion von Matrix ist über Taylorreihe definiert. (Richtigkeit der Aussage $U = \exp(-i H t / \hbar)$ folgt durch Nachrechnen.)
+   Die Aussage
+   \[U(t) = e^{-i \frac{H}{\hbar}t}\]
+   ist damit in Eigenwert-Basis gezeigt. Gehe zurück zu abstrakten Operatoren:
+   \[\hat U(t) = e^{-i \frac{\hat H}{\hbar} t}\]
+   (abstrakt und auch in jeder anderen Basis). \\
+   *Wichtig*: $\hat U(t)^{\dagger} = \hat U(t)^{-1}$, Zeitentwicklung ist unitär! (siehe Diagonalform). \\
+   $⇒$ Wahrscheinlichkeitssumme $=1$ erhalten.
+** Zeitentwicklung allgemein
+   $H = H(t)$. Jetzt: $U = U(t, t_0)$ (jetzt sind beide Argumente wichtig, da Wahl von $t_0 = 0$ nicht immer möglich). Ansatz:
+   \[\ket{ψ(t)} = U(t, t_0) \ket{ψ(t_0)}\]
+   Setze ein in Schrödinger-Gleichung:
+   \begin{align*}
+   i \hbar \dd{}{t} U(t, t_0) \ket{ψ(t_0)} &= H(t) U(t, t_0) \ket{ψ(t_0)} \\
+   ⇒ i \hbar \dd{}{t} U(t, t_0) &= H(t) U(t, t_0)
+   \end{align*}
+   Wir sehen: Falls $H$ doch zeitunabhängig:
+   \[U(t, t_0) = e^{-i \frac{H}{\hbar}(t - t_0)}\]
+   Entscheidend: es kommt nur *eine* Matrix $H$ vor (die mit sich selbst vertauscht), also rechnen wie mit Zahlen. Das
+   geht schief, falls $H = H(t)$! Dazu zerlege Zeitinteral in viele kleine Schritte: (in jedem Schritt sei $H \approx \const$). Ab jetzt $\hbar = 1$
+   \[⇒ U(t, t_0) \approx e^{-iH(t - Δ)Δ} · \dots · e^{-i H(t_0 + 2Δ)Δ} · e^{-iH(t_0 + Δ)Δ} · e^{-iH(t_0) Δ}\]
+   Falls die verschiedenen \(H\)'s vertauschen würden (zum Beispiel $H(t')$ mit $H(t'')$) könnten wir rechnen, wie mit Zahlen. Dann
+   wäre
+   \[U(t, t_0) \approx \exp(-i H(t - Δ)Δ + \dots - i H(t_0 + Δ) Δ - i H(t_0) Δ) \approx \exp(-i ∫_{t_0}^{t} \d t' H(t'))\]
+   Dies ist aber im Allgemeinen falsch. Lässt sich jedoch leicht korrigieren:
+   \[U(t, t_0) = T \exp(-i ∫_{t_0}^{t} \d t' H(t'))\]
+   mit $T \equiv$ "Zeitordnungsoperator": Alles, was rechts von	"$T$" steht wird so	angeordnet, dass
+   höhere Zeiten weiter links stehen: zum Beispiel
+   \[T H(t_0) H(t_0 + Δ) = H(t_0 + Δ) H(t_0)\]
+   $U(t, t_0)$ entspricht jetzt genau der obigen "Interval"-Formel. \\
+   Jetzt genauer: Definition
+   \[U(t, t_0) = \mathbb{1} + \sum_{n = 1}^{∞} U_n \quad U_n = \frac{(-i)^n}{n!} \underbrace{∫_{t_0}^{t} \d t_1 ∫_{t_0}^t \d t_2 \dots ∫_{t_0}^{t} \d t_n}_{\mathclap{\text{Integration über \(n\)-dimensionalen Würfel (Kante: $(t_0, t)$)}}} T H(t_1) H(t_2) · \dots · H(t_n)\]
+   In diesem Würfel gibt es einen Unterraum, wo $t_1 > t_2 > \dots > t_n$ ist. Es gibt auch Unterräume mit $t_2 > t_1 > t_3 > \dots > t_n$ und so weiter
+   $\to$ insgesamt $n!$.
+
+
+
+  Nachtrag zur Heisenberg-Algebra: $d > 1$
+  \[[\hat x_i, \hat p_i] = i \hbar δ_{ij}; \quad [\hat x_i, \hat x_j] = [\hat p_i, \hat p_j] = 0\]
+  Dieses Postulat $=$ "kanonische Quantisierung"
+** Der Potentialtopf
+   \[(-\frac{\hbar^2}{2m} \frac{\d^2}{\d x^2} + V(x)) ψ(x) = E ψ(x)\]
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- ++(15,0) node[below] {$x$};
+  \draw[->] (-1,.5) -- ++(0,3) node[left] {$V$};
+  \draw[red] (0,4) -- ++(4, 0) node[midway,below] {$V = V_0$} node[below right] {$V = 0$} -- ++(0,-4) -- ++(7,0) -- ++(0,4) -- ++(4,0) node[midway,below] {$V = V_0$};
+  \node[below] at (2,0) {Bereich I};
+  \node[below] at (7.5,0) {Bereich II};
+  \node[below] at (13,0) {Bereich III};
+  \draw (4,0) -- ++(0,-.2) node[below] {$x = -a$};
+  \draw (11,0) -- ++(0,-.2) node[below] {$x = a$};
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Fokus: $0 < E < V_0$
+   Bereich I,III:
+   \begin{align*}
+   ψ'' &= -(\frac{2m}{\hbar})(E - V_0) ψ \\
+   ψ'' &= κ^2 h \\
+   κ &= \frac{1}{\hbar} \sqrt{2m(V_0 - E)}
+   \end{align*}
+   Bereich II:
+   \begin{align*}
+   ψ'' &= - k^2 ψ \\
+   k &= \frac{1}{\hbar} \sqrt{2m E}
+   \end{align*}
+   $⇒$ Lösungen:
+   \begin{align*}
+   ψ_{\text{I}} &= A_{\text{I}} e^{κ x} + B_{\text{I}} e^{-κ x} \\
+   ψ_{\text{II}} &= A_{\text{II}} \sin(k x) + B_{\text{II}} \cos(k x) \\
+   ψ_{\text{III}} &= A_{\text{III}} e^{κ x} + B_{\text{III}} e^{-κ x} \\
+   \end{align*}
+   Schnittstellen? \\
+   Dazu: betrachte einfachen allgemeinen Fall der Differentialgleichung
+   \[\boxed{ψ'' = α(x) ψ}\]
+   Annahme: $α(x)$ springt bei $x = 0$. Integriere die Differentialgleichung
+   \begin{align*}
+   ∫_{-ε}^{ε} \d x ψ''(x) &= ∫_{-ε}^{ε} \d x α(x) ψ(x) \\
+   \intertext{Unter der Annahme $α$ und $ψ$ haben wohldefinierte linke und rechte Grenzwerte erhält man}
+   ⇒ ψ'(ε) - ψ'(-ε) &\approx α(0_{+}) ψ(0_{+}) ε + α(0_{-}) ψ(0_{-}) ε \sim ε \quad\text{(bei $ε \to 0$)}
+   \intertext{$⇒$ erhalte im Limes $ε \to 0$:}
+   ψ'(0_{+}) - ψ'(0_{-}) &= 0
+   \end{align*}
+   $⇒$ $ψ'$ ist stetig. $⇒$ können die 6 Koeffizienten $A$ und $B$ bestimmen.
+   1. Betrachte ohne Beschränkung der Allgemeinheit nur reelle Lösungen (können, weil Gleichung reell aus komplexer Lösung durch Linearkombination immer Imaginärteil und Realteil bauen, was auch Lösungen sind)
+   2. $B_{\text{I}} = A_{\text{III}} = 0$ (kann diese Divergenzen bei $x \to \pm ∞$ nicht interpretieren.)
+   Wir haben also $4$ zu bestimmende Koeffizienten und $2 + 2 = 4$ Anschlussbedingungen:
+   \begin{align*}
+   ψ_{\text{I}}(-a) &= ψ_{II}(-a) \\
+   ψ'_{\text{I}}(-a) &= ψ'_{II}(-a) \\
+   ψ_{\text{II}}(a) &= ψ_{III}(a) \\
+   ψ'_{\text{II}}(-a) &= ψ_{III}(a) \\
+   \end{align*}
+   Das sind naiv vier Gleichungen für vier Unbekannte, aber wege der Homogenität der Anschlussbedingungen fällt die Normierung (globaler konstanter Faktor) heraus.
+   $⇒$ Nur noch drei Unbekannte und vier Gleichungen $⇒$ Lösung nur bei	diskreten Werten von $E$.
+   (siehe Übungen, Idee: Betrachte gerade und ungerade Lösungen unter $x \to - x$ getrennt.). Hier: Nur Grenzfall $V_0 \to ∞$, also $κ \to ∞$
+   \begin{align*}
+   \frac{ψ'_{\text{I}}(-a - 0)}{ψ_{\text{I}}(- a - 0)} &\sim \frac{κ e^{- κ a}}{e^{- κ a}} \sim κ \to ∞ \\
+   ⇒ ψ_{\text{I}}(-a) &= 0 \\
+   \intertext{Wegen Stetigkeit}
+   ⇒ ψ_{\text{II}}(-a) &= 0 \\
+   \intertext{Analoges Argument mit $a$ anstatt $-a$}
+   ⇒ ψ_{\text{II}}(a) &= 0
+   \end{align*}
+   Physikalisch einleuchtend: $ψ_{\text{I}} = ψ_{III} = 0$ weil $V_0 = ∞$ das Teilchen am Eindringen hindert.
+   Lösung mit
+   \[ψ_{\text{II}} = A_{\text{II}} \cos(k x) + B_{\text{II}} \sin(k x)\]
+   Betrachte gerade und ungerade Lösungen getrennt: schreibe
+   \[ψ(x) = \frac{1}{2}(\underbrace{(ψ(x) + ψ(-x))}_{\text{gerade}} + \underbrace{(ψ(x) - ψ(- x))}_{\text{ungerade}})\]
+   Suche also $\sin$ und $\cos$ Funkitonen mit $ψ(a) = ψ(-a) = 0$. Diese sind
+   \begin{align*}
+   ψ_{\text{II},n}^{c} &= \frac{1}{\sqrt{a}} \cos((2n + 1) π x / 2a), \quad n = 0, 1, \dots \\
+   ψ_{\text{II},n}^{s} &= \frac{1}{\sqrt{a}} \sin(n π x / a), \quad n = 1, 2, \dots
+   \end{align*}
+   Eigentlich $\sin(k x)$, mit
+   \[k = \frac{1}{\hbar} \sqrt{2 m E}\]
+   \(k\)-Werte für beide Lösungstypen zusammen:
+   \[k_j = j π / (2a), j = 1, 2, 3, \dots ⇒ E_j = k^2_j \hbar^2 / 2m = j^2 π^2 \hbar^2 / (8 m a^2)\]
+
+   Tunneln \\
+   völlig analog:
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- ++(15,0) node[below] {$x$};
+  \draw[->] (-1,.5) -- ++(0,3) node[left] {$V$};
+  \draw[red] (0,0) -- ++(4, 0) node[midway,above] {$V = 0$} node[above right] {$V = V_0$} -- ++(0,+4) -- ++(7,0) -- ++(0,-4) -- ++(4,0) node[midway,above] {$V = 0$};
+  \node[below] at (2,0) {Bereich I};
+  \node[below] at (7.5,0) {Bereich II};
+  \node[below] at (13,0) {Bereich III};
+  \draw (4,0) -- ++(0,-.2) node[below] {$x = -a$};
+  \draw (11,0) -- ++(0,-.2) node[below] {$x = a$};
+\end{tikzpicture}
+\end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   Annahme: $0 < E < V_0$ $\to$ Bereich: I, III:
+   \[ψ'' = -k^2 ψ, \quad k = \frac{1}{\hbar} \sqrt{2m E}\]
+   Bereich: II:
+   \[ψ'' = κ^2 ψ, \quad κ = \frac{1}{\hbar} \sqrt{2m (V_0 - E)}\]
+   Lösungen:
+   \begin{align*}
+   ψ_{\text{I}} &= A_{\text{I}} e^{i k x} + B_{\text{I}} e^{-i k x} \\
+   ψ_{\text{II}} &= A_{\text{II}} e^{~ x} + B_{\text{II}} e^{-k x} \\
+   ψ_{\text{III}} &= A_{\text{III}} e^{i k x} + B_{\text{III}} e^{-i k x} \\
+   \end{align*}
+   Auch bei	kleinen $E$: Immer nicht normierbar bei $x \to \pm ∞$. Wichtig: Stelle "die richtige" physikalische Frage:
+   Diese lautet: Was ist der Transmissionskoeffizient? \\
+   In diesem Fall: einlaufende und reflektierte Welle in "I" $⇒$ $A_{\text{I}}, B_{\text{I}} \neq 0$, aber nur durchlaufende
+   (transmittierte) Welle in III: $A_{\text{III}} \neq 0$, $B_{\text{III}} = 0$. (Beachte $\hat p = - i \hbar \partial_x$ $⇒$ $\exp(\pm i kx)$ entspricht $p$ positiv / negativ). \\
+   Vorgehen: Wähle $E$ ($0 < E < V_0$) beliebig, Wähle $A_{\text{III}}$ beliebig. Nutze Anschlussbedingungen ($ψ$, $ψ'$ stetig) bei $x = a$ und bestimme $A_{\text{II}}, B_{\text{II}}$,
+   Anschlussbedingungen bei $x = - a \to$ $A_{\text{I}}, B_{\text{II}}$.
+
+   Bereits gelernt: Wahrscheinlichkeitsstromdichte ebener Wellen
+   \[j= (p / m) \abs{ψ}^2\]
+   Wir haben demnach:
+   - nach rechts laufenden Strom in Bereich III $\sim$ $\abs{ψ_{\text{III}}}^2 \sim \abs{A_{\text{III}}}^2$
+   - nach rechts laufender Strom in Bereich $I$ $\sim$ $\abs{A_{\text{I}}}^2$
+   - nach links laufender Strom in Bereich $I$ $\sim$ $\abs{B_{\text{I}}}^2$
+   Transmission:
+   \[T / \frac{\abs{A_{\text{III}}}^2}{\abs{I_{\text{I}}}^2}\]
+   Reflexion:
+   \[R = 1 - T = \frac{\abs{B_{\text{I}}}^2}{\abs{A_{\text{I}}}^2}\]
+   Abschätzung:
+   Amplitdue viel größer als rechts, weil $\exp(- κ x)$ nach links hin wächst. Es folgt:
+   \[T \sim (e^{-k(2 a)})^2 \sim e^{- 4 κ a}\]
+   Noch allgemeiner: betrachte variables Pontential (nicht konstant im Tunnelbereich)
+   $\to$ zerlege in viele kleine Kästen, zu überwindende Schwelle der Breite $Δ x$ gibt Unterdrückung
+   \[e^{-κ Δ x}\]
+   (in Amplitude) Kombination vieler solcher Schwellen $⇒$ Multiplikation dieser Faktoren. Zusammenbauen in $T$:
+   \[T \sim \exp(- 2 ∫_{\text{Schwalle}} \frac{\d x}{\hbar}\sqrt{2m(V(x) - E)})\]
+   Rechenschritte:
+   \[e^{-Δ_1} e^{-Δ_2} = κ = \frac{1}{\hbar} \sqrt{2m((V - E))}\]
+* Drehimpuls
+** Motivation aufgrund des Zentralpotentials
+  Wollen betrachten:
+  \[H = \frac{\v p^2}{2m} + V(r)\]
+  $\v p = - i \hbar ∇ _r$
+  \[r = \abs{\v x} = sqrt{x_1^2 + x_2^2 + x_3^2}\]
+  wegen Wasserstoffatom und Streuung an Zentralpotential beziehungsweise Streuuzentrum. \\
+  Erwarte: grohe Bedeutung von Symmetrie \\
+  Haben gesehen: freie Teichen:	$\v p$ - 3 Erhaltungsgrößen und $e^{i \hat{\v p} ε}$ generiert Translationen. Jetzt: neue Symmetrie - $SO(3)$ - Erhaltungsgröße :
+  \[\v L = \v x × \v x\]
+  Erwarte, dass Epxonentieren von $\v L$ Drehungen erzeugt. Ideal: $\v L$ diagonalisieren$\to$ Welenfunktion die
+  Rotationssymmetrie Zustände beschreiben. Wichtig: Die Differentialoperatoren $\v L$  erzeugen Drehungn auf $L_2(ℝ^3)$
+** Beziehung zum Laplace-Operator
+   Beziehungs des *skalaren* Operators $\v L^2$ zum	Laplace-Operator
+   \[\Laplace = \v ∇ · \v ∇ = - \v p^2 / \hbar^2 \]
+   Eine solche Beziehung währe auch starke Motivation (für Studium von $\v L$). Diese Beziehungs leiten wir jetzt ab:
+   \begin{align*}
+   \v L &= \v x × \v p \\
+   L_i &= -i \hbar ε_{ijk} x_j \pp{}{x_k}
+   \end{align*}
+   Prüfe $\v L$ hermitesch
+   \begin{align*}
+   \string(ε_{ijk} x_j p_k\string)^{\dagger} &= ε_{ijk} P_k x_j = ε_{ijk} (x_j p_k - [x_j,p_k]) \\
+   &= ε_{ijk} x_j p_k - ε_{ijk} i \hbar δ_{jk} = ε_{ijk} x_j p_k \checkmark
+   \end{align*}
+   Jetzt: $\v L^2$
+   \begin{align*}
+   \v L^2 &= ε_{ijk} ε_{ilm} x_j p_k x_l p_m \\
+   &= x_i p_j x_i p_j - x_i p_j x_j p_i = x_i(x_i p_j - i \hbar δ_{ij}) p_j - (p_j x_i + i \hbar δ_{ij}) x_j p_i \\
+   &= \v x^2 \v p^2 - 2 i\hbar (\v x · \v p) - p_j x_j (\v x · \v p) \\
+   &= \v x^2 \v p^2 - 2 i \hbar + (x_j p_j - i \hbar δ_{jj}) \v x \v p \\
+   &= r^2 \v p^2 - (\v x \v p)^2 + i \hbar \v x · \v p
+   \end{align*}
+   Erinnerung: In Kugelkoordinaten gilt
+   \[\v ∇ = \v e_r \pp{}{r} + \v e_{θ} = \frac{1}{r} \pp{}{θ} + \v e_{φ} \frac{1}{r \sin φ} \pp{}{φ}\]
+   Brauchen hier nur, dass Projektion von $\v ∇$ auf \(x\)-Richtung gerade $\partial_r$ ist.
+   \[⇒ \v x \v p = -i \hbar \v x · \v ∇ = - i \hbar r \pp{}{r}\]
+   also
+   \[\v L^2 = r^2 \v p^2 + \hbar^2 ((r \pp{}{r})^2 + r \pp{}{r})\]
+   $⇒$ da $\v p^2 \sim \Laplace$, ist dei Laplace $\sim$ $L^2$ minus einen Termt mit radialen Ableitungen. Wir nutzen dies und gehen gleich zu $H$ über:
+   \[H = \frac{\v p^2}{2m} + V(r) = \frac{1}{2m}(p_r^2 + \frac{1}{r^2} \v L^2) + V(r)\]
+   mit
+   \[p_r \equiv -i \hbar (\pp{}{r} + \frac{1}{r})\]
+   Operator $p_r$ ist zu $r$ in Kugelkoordinaten "kanonisch konjugiert", das heißt $[r, p_r] = i \hbar$ und hermitesch.
+   Wichtiges Resultat: Die Winkelabhängigkeit der Eigenfunkitone von $H$ wird aus der Kenntnis der Eigenfunktionen von $\v L^2$ folgen
+** Drehimpulsalgebra
+   Diagonalisiere $\v L^2$! \\
+   Erinnerung: beim Oszillator mit $H = \hbar ω(a^{\dagger} a + 1/2)$ war der allgemeine Zugang $a, a^{\dagger}$ sehr effizient! \\
+   Hier: Abstrakte Algebra von $\mathbb{1}, L_i, i = 1, 2, 3$, alle Produkte. Mit Äquivalenz definiert durch gewisse Kommutatorelationen. Diese sind
+   \[[L_x, L_y] = i \hbar L_z\]
+   (und zyklische Vertauschungen)
+   \[\to [L_i, L_j] = i \hbar ε_{ijk} L_k\]
+   Wir erkennen: Lie-Algebra-Relationen der Drehgruppe $SO(3)$. Trotzdem: Müssen dies formal prüfen. Sei $\hbar = 1$
+
+   Zunächst: Kommutator von $\v L$ mit $\v x$:
+   \[[L_i, x_j] = [ε_{ijk} x_k p_l, x_j] = - ε_{ijk} [x_j, x_k p_l]\]
+   Erinnerung: Distributivität:
+   \[[A, B C] = [A, B] C + B [A, C]\]
+
+
+Abstrakte Drehimpulsalgebra:
+\begin{align*}
+[L_z, L^2] &= 0 \\
+L_{\pm} \ket{l, m} = \hbar \sqrt{l(l + 1) - m(m \pm 1)} \ket{l, m \pm 1} \\
+L^2 \ket{l, m} &= l(l + 1) \hbar \ket{l, m} \\
+L_z \ket{l, m} &= m \hbar \ket{l, m}
+\end{align*}
+** Darstellung durch Funktionen auf der Sphäre
+   Wir wollen sehen ob und wie die allgemein konstruierte Darststellung $\ket{l, m}$ in der uns interessierenden Gesamtdarstellung $L_2(ℝ^3)$ vorkommt.
+   Gleiche Methoden (niedrigsten Zustnad finden, Aufsteigeoperatoren). Wie beim	harmonischen Oszillator	führen diese zu Kugelflächenfunktionen. \\
+   $SO(3)$ Symmetrie favorisieren Kugelkoordinaten (Separation des radialen Anteils)
+   Spezialfall krummlieniger Koordinaten $ξ_i$ definiert durch $x_i = x_i(ξ_1, ξ_2, ξ_3)$ $\to$
+   \[\v x = \cvec{r \sin θ \cos φ; r \sin θ \sin φ; r \cos θ}\]
+   mit $x_i = \{x, y, z\}$, $ξ_i = \{r, θ, φ\}$
+   \begin{align*}
+   ⇒ \pp{\v x}{r} &= (\sin θ \cos φ, \sin θ \sin φ, \cos θ) \\
+   \pp{\v x}{θ} &= r(\cos θ \cos φ, \cos θ \sin φ, - \sin θ) \\
+   \pp{\v x}{φ} &= r(-\sin θ \sin φ, \sin θ \cos φ, 0)
+   \end{align*}
+   mit Beträgen:
+   \begin{align*}
+   \abs{\pp{\v x}{r}} &= 1 \\
+   \abs{\pp{\v x}{θ}} &= r \\
+   \abs{\pp{\v x}{φ}} &= r \sin θ
+   \end{align*}
+   $\to$ neue Einheitsvektoren in karthesischer Basis:
+   \begin{align*}
+   \v e_r &= \pp{\v x}{r} / \abs{\pp{\v x}{r}} = (\sin θ \cos φ, \sin θ \sin φ, \cos θ) \\
+   \v e_θ &= (\cos θ \cos φ, \cos θ \sin φ, -\sin θ) \\
+   \v e_φ &= (-\sin φ, \cos φ, 0)
+   \end{align*}
+   Weiter interessiert der Gradient $\v ∇$ in dieser Basis
+   \begin{align*}
+   \v e_{ξ_i} \v ∇ &= (\v e_{ξ_i})_{j} ∇_j = \pp{\v x_j}{ξ_i} \abs{\pp{\v x}{ξ_i}}^{-1} \pp{}{x_j} = \abs{\pp{\v x}{ξ_i}}^{-1} \pp{}{ξ_i} \\
+   ⇒ \v ∇ &= (\pp{}{r}, \frac{1}{r} \pp{}{θ}, \frac{1}{r \sin θ} \pp{}{φ})
+   \end{align*}
+   Im Folgenden zur Einfachheit wieder $\hbar = 1$
+   \begin{align*}
+   \v L &= -i \v x × \v ∇ = -i r \v e_r × (\v e_r \pp{}{r} + \v e_θ \frac{1}{r} \pp{}{θ} + \v e_φ \frac{1}{r \sin θ} \pp{}{φ}) \\
+   \intertext{$\v e_r, \v e_θ, \v e_φ$ bilden ein Rechtssystem: $\v e_i × \v e_j = ε_{ijk} \v e_k$}
+   &= -i(\v e_φ \pp{}{θ} - \v e_θ \frac{1}{\sin θ} \pp{}{φ})
+   \end{align*}
+   Bemerkung: Die Dorrdinate $r$ ist wie erwartet (da $\v L$ Drehungen generiert) völlig verschwunden. Zurück in kartesicshen Koordinaten:
+   \begin{align*}
+   L_x &= i(\sin φ \pp{}{θ} + \cot θ \cos φ \pp{}{φ}) \\
+   L_y &= i(-\cos φ \pp{}{θ} + \cot θ \sin φ \pp{}{φ}) \\
+   L_z &= i(-\pp{}{φ})
+   \end{align*}
+   Einfachheit von $L_z$ istder Grund die algebraische Analyse mit $L_z$ aufzubauen und Auf-und Absteigeoperatoren mit $L_{x/y}$ zu bilden.
+   \begin{align*}
+   L_{\pm} &= L_x \pm i L_y = i((\sin φ \mp i \cos φ) \pp{}{θ} + \cot θ(\cos φ \pm i \sin φ) \pp{}{φ}) \\
+   &= e^{\pm iφ}(\pm \pp{}{θ} + i \cot θ \dd{}{φ})
+   \end{align*}
+   Ansatz für explizite Wellenfunktionen $\ket{l, m}$:
+   \[ψ_{lm}(\v x) = \braket{\v x | l, m} = R(r) Y_{lm}(θ, φ)\]
+   wobei wir den Radialanteil $R(r)$ gleich ignorieren können. Suchen die Funktion $Y_{lm}(θ, φ)$ auf der Einheitssphäre.
+   Für $θ$ fix haben wir es mit \(2π\)-periodischen Funktionen in $φ$ zu tun, die sich mittels Fourier-Reihe dartsellen lassen, also
+   als Summe von $e^{i k φ}$ mit $k ∈ ℤ$. Die gesuchte Basis $(L^2, L_z)$ ist Eigenwertbasis zu $L_z = -i \partial_φ$ mit Eigenwerten $k = m$, also
+   \[Y_{lm}(θ, φ) = Θ_{lm}(θ) e^{imφ}\]
+   Wir haben in der abstrakten Algebra gesehen, ass für jedes $l$ ein niedrigster \(m\)-Eigenwert existiert mit $m = -l$
+   \begin{align*}
+   L_{-} Y_{lm}(θ, φ) &= e^{-iφ}(-\pp{}{θ} + i \cot θ \pp{}{φ}) Θ_{lm}(θ) e^{imφ} = 0 \\
+   \intertext{oder beziehungsweise}
+   \string(-\pp{}{θ} + l \cot θ\string) Θ_{l,-l}(θ) &= 0 \\
+   \intertext{mit}
+   \pp{}{θ} &= \frac{\sin θ}{θ} \pp{}{\sin θ} = \cos θ \pp{}{\sin θ} \\
+   \intertext{folgt}
+   \string(-\cos θ \pp{}{\sin θ} + l \cot θ\string) Θ_{l,-l}(θ) &= 0 \\
+   \string(-\sin θ \pp{}{\sin θ} + l\string) θ_{l,-l}(θ) &= 0
+   \end{align*}
+   Wir sehen $Θ_{l,-l}$ homogen und vom Grad $l$, also $$
+   \[Θ_{l,-l}(θ) = c_l \sin^l(θ)\]
+   Bestimmung der Normierungskonsanten $c_l$ mit der Bedingung
+   \[∫_{S^2} \d Ω Y_{lm}^{\ast}(θ, φ) Y_{l'm'}(θ, φ) = δ_{ll'}δ_{mm'}\]
+   sowie mit parnieller Integration einer Rekursionsformel für Integrale vom beliebigen Potenzen $s m^l$ in den Übungen
+   \[c_l = \frac{1}{2^l l!} \sqrt{\frac{(2l + 1)!}{4π}}\]
+   Die Eigenfunktionen zu gleichen $l$ aber höherem $m$ ergeben sich durch Anwendung von $L_{+}$
+** Kugelflächenfunktionen
+   Explizite Konstruktion der \(l,m\)-Basis: $m = 1$:
+   \begin{align*}
+   L_{+} Y_{l, -l}(θ, φ) &= e^{iφ}(\pp{}{θ} + i \cot θ \pp{}{φ}) Θ_{l,-l}(θ) e^{-ilφ} \\
+   &= e^{iφ} (\pp{}{θ} + l \cot θ) Θ_{l,-l}(θ) e^{-ilφ} \\
+   \intertext{Wir benutzen}
+   \string(\pp{}{θ} + l \cot θ\string) &= \frac{1}{\sin^l θ} \pp{}{θ} \sin^l(θ) \\
+   \frac{1}{\sin θ} \pp{}{θ} &= - \pp{}{\cos θ} \\
+   ⇒ L_{+} Y_{l,-l}(θ, φ) &= -e^{i(-l + 1) φ} \frac{1}{\sin^{l - 1}(θ)} \pp{}{\cos θ} (\sin^l θ Θ_{l,-l}(θ)) \\
+   \end{align*}
+   für $m = 2$:
+   \begin{align*}
+   L_{+}^2 Y_{l,-l}(θ, φ) &= e^{iφ}(\pp{}{θ} + i \cot θ \pp{}{φ}) e^{i(-l + 1) φ} \frac{-1}{\sin^{l - 1}(θ)} \pp{}{\cos θ} (\sin^l θ Θ_{l,-l}(θ)) \\
+   &= e^{iφ} \frac{1}{\sin^{l - 1}(θ)} \pp{}{θ} \sin^{l - 1}(θ) e^{i^{-l + 1} φ} \frac{-1}{\sin^{l - 1} θ} \pp{}{\cos θ} (\sin^l θ Θ_{l,-l}(θ)) \\
+   &= e^{i(-l + 2)φ} \frac{1}{\sin^{l - 2}θ} \frac{\partial^2}{\partial \cos θ^2}(\sin^l θ Θ_{l,-l}(θ)) \\
+   ⇒ L_{+}^{n} Y_{l,-l}(θ, φ) &= (-1)^n e^{i(-l + n) φ} \frac{1}{\sin^{l - n} θ} \frac{\partial^n}{\partial \cos θ^n}(\sin^l θ Θ_{l,-l}(θ))
+   \end{align*}
+   Die Eigenfunktionen $\ket{l,m}$ ergeben sich für $n = l + m$ und
+   \[Θ_{l,-l}(θ) = c_l \sin^l(θ)\]
+   zu
+   \begin{align*}
+   L_{+}^{l + m} Y_{l,-l}(θ, φ) &= \frac{1}{2^l l!} \sqrt{\frac{(2 l + 1)!}{4π}}(-1)^{l + m} e^{imφ} \sin^m θ \frac{\partial^{l + m}}{\partial \cos θ^{l + m}}(1 - \cos^2 θ)^l
+   \end{align*}
+   Diese Eigenfunktionen sind bereits normiert und Orthogonalität folgt aus Unterschiedlichkeit der Eigenwerte zu den hermiteschen Operatoren $L^2, L_z$
+   $⇒$ Orthonormalsystem $Y_{lm} \sim L_{+}^{l + m} Y_{l,-l}$, die Kugelflächenfunktionen. Zusammenhang mit Legendre-Polynomen (Rodrigues-Gleichung)
+   \[P_l(z) = \frac{1}{2^l l!} \frac{\partial^l}{\partial z^l}(z^2 - 1)^l\]
+   und assoziierte Legendre Polynome
+   \[P_l^m(z) = (-1)^m (1 - z^2)^{m/2} \frac{\partial^m}{\partial z^m} P_l(z)\]
+   Diese entsprechen Lösungen von Differentialgleichungen die in der analytischen Lösung des Winkelanteils auftreten
+   \[P_l^m(z) = \frac{(-1)^m}{2^l l!} (1 - z^2)^{m/2} \frac{\partial^{l + m}}{\partial z^{l + m}} (z^2 - 1)^l\]
+   mit $-l \leq m \leq m$. Es gilt für $P_{l}^m$ mit entgegensetzten $m$:
+   \[P_{l}^{-m}(z) = (-1)^m \frac{(l - m)!}{(l + m)!} P_l^{m}(z)\]
+   Bemerkung: Man erhält dies durch	Koeffizientenvergleich in
+   \[\frac{\partial^{l - m}}{\partial z^{l - m}}(z^2 - 1)^l = c_{lm} (1 - z^2)^m \frac{\partial^{l + m}}{\partial z^{l - m}}(z^2 - 1)^l ⇒ c_{lm} = (-1)^m \frac{(l - m)!}{(l + m)!}\]
+   Damit sind die Basisfunkitonen $Y_{l,m}(θ,φ)$ geschrieben mittls Legendre-Polynomen
+   \[L_{+}^{l + m} Y_{l,-l}(θ,φ) = \sqrt{\frac{(2l + 1)!}{4π}} e^{imφ} P_l^m(\cos θ)\]
+   wobei die richtige Normierung mittls
+   \[L_{\pm} \ket{l, m} = \sqrt{l(l + 1) - m(m \pm 1)} \ket{l, m \pm 1} = \sqrt{(l \mp m)(l \pm m + 1)}\ket{l, m \pm 1}\]
+   und Iteration (siehe Übungen) hergeleitet werden kann
+   \[\ket{l,m} = \frac{(l - m)!}{(2l)!(l + m)!} L_{+}^{l + m} \ket{l, -l}\]
+   Von $R(r)$ abgesehen ist dies eine Basis der normierten Funktionen auf der Sphäre
+   \[Y_{lm}(θ, φ) = \sqrt{\frac{(l - m)!}{(2l)!(l + m)!}} L_{+}^{l + m} Y_{l,-l}(θ, φ) = \sqrt{\frac{(2l + 1)!}{4π} \frac{(l - m)!}{(l + m)!}} e^{imφ} P_l^m(\cos θ)\]
+
+
+   Erinnerung:
+   \[\ket{lm} \sim Y_{lm}(θ, φ) \sim e^{imφ} P_l^m(\cos θ)\]
+   $-l \leq m \leq l$
+   \[P_l^m(z) \sim (1 - z^2)^{m/2} \frac{\d^{l + m}}{\d z^{l + m}} (z^2 - 1)^l\]
+
+** Parität und Laplace-Operation auf der Sphäre
+   Spiegelungen $⊂ O(3)$, $\not ⊂ SO(3)$ (sie sind *nicht* kontinuierlich mit $\mathbb{1} ∈ SO(3)$ verbunden, können nicht als $\exp(\text{Generator})$ geschrieben werden.) \\
+   Aber: um von $SO(3)$ zu $O(3)$ zu gelangen, reicht es zum Beispiel "Inversion am Ursprung" und alle Produkte mit Drehungen hinzuzunehmen. \\
+   Fokus auf *Inversion*: $\v x \to - \v x$, Inversion $\equiv -\mathbb{1}_{(3×3)}$. Inversion auf allgemeinen Hilbertraum (Darstellung von $-\mathbb{1} ∈ O(3)$ ist im Allgemeinen nicht $\mathbb{1}_{\mathcal{H}}$)
+   Wir wissen $(\text{Inv.})^2 = \mathbb{1}$, muss auch in Darstellung gelten.
+   #+begin_defn latex
+   Eigenwerte könen nur $\pm 1$ sein. Parität eines Eigenzustandes ist genau dieser Eigenwert.
+   #+end_defn
+   (Notation: "Inv.$" = $\hat P$, $\hat P$ Operator auf $\mathcal{H}$) \\
+   Explizit:
+   \begin{align*}
+   \{r, θ, φ\} &\to \{r, π - θ, φ + π\} \\
+   e^{imφ} &\to e^{im(φ + π)} = (-1)^m e^{imφ} \\
+   P_l^m(\cos(θ)) &\to P_l^m(\cos(π - θ)) = P_l^m(-\cos(θ)) = (-1)^{l + m} P_l^m(\cos θ)
+   \end{align*}
+   weil $P$ nur $z^2$ und Ableitungen enthält und
+   \[\dd{}{z} \to - \dd{}{z}\]
+   Also
+   \[Y_{lm}(π - θ, φ + π) = (-1)^l Y_{lm}(θ, φ)\]
+   Laplace auf Sphäre \\
+   Fasse $ℝ^3$ als Menge von Zwiebelschalen auf $ℝ^3 = S^2 × ℝ^{+}$. Schränke $\Laplace$ auf $S^2$ ein (zum Beispiel lasse ihn auf Funktionen wirken die nicht von $r$ abhängen)
+   \[⇒ \Laplace(S^2) \sim L^2\]
+   $L^2$ ist der einzige quadratische Operator aus Elementen von $\Lie(SO(3))$, der mit $\Lie(SO(3))$. "Quadratischer Casimir". Der Laplace ist auch
+   zentral für jdeen Raum (zum Beispiel die $S^2 \leftarrow$ "differenzierbare Mannigfaltigkeit") "an sich" (ohne Einbettung in $ℝ^k$) \\
+   Allgemein auf "jedem" Raum:
+   \[Δ = δ \d + \d δ\]
+   $d:$ äußere Ableitung ("Differential"): $\d: Ω^p(M) \to Ω^{p + 1}(M)$, $M$ Mannigfaltigkeit, \(p\)-Form $\to$ \(p + 1\)-Form, $[f \to \d f]$ \\
+   \(δ\): "Co-Differential": $δ: Ω^p(M) \to Ω^{p - 1}(M)$ definiert durch
+   \[δ = (-1)^p (\ast)^{-1} \d \ast\]
+   \(\ast\): "Hodge-Operator": Wandelt \(p\)-Form in \(d - p\)-Form um ($d$: Dimension des Raums)
+   \[(\ast ω)_{μ_1μ_2 \dots μ_{d - p}} = (\sqrt{\det g} / p!) ω^{ν_1 \dots ν_p} ε_{ν_1 \dots ν_p ν_{p + 1} \dots ν_{d - p}}\]
+   $\det g$: Determinante der Metrik, Metrik: erlaubt Abstände zu messen:
+   \[x∪ x + Δ x \xrightarrow{\text{Abstand}} (Δs)^2 = g_{μν}(Δx)^μ (Δx)^ν\]
+* Das Wasserstoffatom
+** Zusammengesetzte Systeme
+   Zur Einfachheit: Endlichdimensionale zusammengesetzte Systeme. Start: Zwei Hilberträume:
+   \begin{align*}
+   \mathcal{H}_1 \ni \ket{ψ} &= ψ_i \ket{i} \\
+   \mathcal{H}_2 \ni \ket{χ} &= ψ_α \ket{α} \\
+   \end{align*}
+   Zur Interpretation: $\abs{ψ_i}^2, \abs{χ_α}^2 \to$ Wahrscheinlichkeiten. Möchte Wahrscheinlichkeiten (und Amplituden) für vorliegen von $\ket{i}$ in
+   System 1 und $\ket{α}$ im Sysetm 2 (gleichzeitig) angeben können. $⇒$ Brauche komplexe Zahlen $ϕ_{iα}$ (und $\abs{ϕ_{iα}}^2$). Die Angabe solche Zahlen entspricht Zuständen in
+   \[\mathcal{H} \equiv \mathcal{H}_1 \otimes \mathcal{H}_2 \ni ϕ_{iα}\ket{i} \otimes \ket{α}\]
+   (Phyisker-Definition: $\mathcal{H}_1 \otimes \mathcal{H}_2$ wird aufgespannt von Basis $\ket{i} \otimes \ket{α} ∀ i, α$) \\
+   positiv definites Skalarprodukt auf $\mathcal{H}_1$ und $\mathcal{H}_2$ $⇒$ positiv definites Skalarprodukt auf $\mathcal{H}$. Einfacher: Gib die entsprechende Abbildung $\mathcal{H} \to \mathcal{H}^{\ast}$ an:
+   \[\ket{i} \otimes \ket{α} \to \bra{i} \otimes \bra{α} \quad\text{($\equiv$ duale Basis)}\]
+   Skalarprodukt:
+   \begin{align*}
+   \string(ϕ_{iα} \ket{i} \otimes \ket{α}, ψ_{jβ} \ket{j} \otimes \ket{β}\string) &\equiv ϕ_{iα}^{\ast} ψ_{jβ} \braket{i | j} \braket{α | β} \\
+   &= ϕ_{iα}^{\ast} ψ_{jβ} δ_{ij} δ_{αβ} = ϕ_{iα}^{\ast} ψ_{iα}
+   \end{align*}
+   Operatoren sind durch Tensorprodukte von Operatoren auf $\mathcal{H}_1$ und $\mathcal{H}_2$ beziehungsweise Summen davon gegeben.
+   \begin{align*}
+   O_1 \otimes O_2: \ket{i} \otimes \ket{α} ↦ (O_1 \ket{i}) \otimes (O_2 \ket{α}) &= ((O_1)_{ij} \ket{j}) \otimes ((O_2)_{αβ} \ket{β}) \\
+   &\equiv (O_1)_{ij} (O_2)_{αβ} \ket{j} \otimes \ket{β}
+   \end{align*}
+   $\ket{j} \otimes \ket{β}$ ist dabei bereits bekanntes Basiselement. \\
+   Dynamik: zunächste unabhängige Entwicklung von Produktzuständen:
+   \[\ket{ψ(t)} \otimes \ket{χ(t)} = (e^{-i H_1 t / \hbar}) \otimes (e^{-i H_2 t / \hbar} \ket{χ})\]
+   Hamilton-Operator auf $\mathcal{H}$ folgt druch Anwendung von $i \hbar \partial_t$
+   \begin{align*}
+   i \hbar \pp{}{t} \ket{ψ(t)} \otimes \ket{χ(t)} &= (H_1 e^{-i H_1 t / \hbar} \ket{ψ}) \otimes (e^{-i H_2 t / \hbar} \ket{χ}) + (e^{-i H_1 t / \hbar} \ket{ψ}) \otimes (H_2 e^{-i H_2 t / \hbar} \ket{χ}) \\
+   &= (H_1 \otimes \mathbb{1} + \mathbb{1} \otimes H_2)((e^{-i H_1 t / \hbar} \ket{ψ}) \otimes (e^{-i H_2 t / \hbar}\ket{χ})) \\
+   \intertext{Physiker schreiben das "schludrig":}
+   &= \underbrace{(H_1 + H_2)}_{\mathclap{\text{"nichtwechselwirkender" Gesamt-Halimton}}}(\ket{ψ(t)} \otimes \ket{χ(t)})
+   \end{align*}
+   Mehrfaches Tensorieren - analog:
+   \[\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \mathcal{H}_2 \ni ϕ_{iαk} \ket{i} \otimes \ket{α} \otimes \ket{k}\]
+** Zwei (unterscheidbare) Teilchen und Zweikörperproblem
+   Falls wir nicht unterscheidebare	Teilchen haben: symmetrisieren oder antisymmetrisieren ($\to$ später). Brauchen Verallgemeinerung auf unendlich viele Dimensionen:
+   \[ψ_i \to ψ(\v x), χ_α \to χ(\v y), ϕ_{iα} \to ϕ(\v x, \v y)\]
+   Sei \(\v x\) Position des Elektrons, $\v y$ Position des Protons: (im gemeinsamen $ℝ^3$) Unser Hilbertraum:
+   \[\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 = L_2(ℝ^3) \otimes L_2(ℝ^3) = L^2(ℝ^3 × ℝ^3) = L_2(ℝ^6)\]
+   Hamiltonoperator: zunächst ohne Wechselwirkung
+   \[H = \frac{\v p_e^2}{2m_e} + V_e(\v x) + \frac{\v p_p^2}{2m_p} + V_p(\v x) = - \frac{\hbar^2}{2m_e} \Laplace_e + V_e(\v x) - \frac{\hbar^2}{2 m_p} \Laplace_p V_p(\v y)\]
+   wirkend auf $ϕ(\v x, \v y)$ und beachte $V_e(\v x) \to V_e(\v x) \otimes \mathbb{1}$
+
+   \begin{align*}
+   \mathcal{H} &= \mathcal{H}_1 \otimes \mathcal{H}_2 \\
+   H &= -\frac{\hbar}{2m_e} \Laplace_x + V_e(\v x) - \frac{\hbar^2}{2m_p} \Laplace_ y + V_p(\v y)
+   \end{align*}
+   Setze $V_p = V_e = 0$, aber neu: $V(\v x, \v y) = V(\abs{\v x - \v y})$
+   \[⇒ H = - \frac{\hbar^2}{2m_e} \Laplace_x - \frac{\hbar^2}{2m_p} \Laplace_y + V(\abs{\v x - \v y})\]
+   Nutze Schwerpunkts- und Relativkoordinaten:
+   \[\v R \equiv (m_e \v x + m_p \v y) / M, \quad \v r = \v x - \v y\]
+   $M = m_e + m_p$. Effizient: Drücke Gradienten $\v ∇_x, \v ∇_y$ durch $\v ∇_R, \v ∇_r$ aus
+   \[⇒ H = - \frac{\hbar^2}{2M} \Laplace_R - \frac{\hbar^2}{2m} \Laplace_r + V(r)\]
+   Schreib um: $ϕ(\v x, \v y) = ψ(\v R, \v r)$. Wir haben wieder eine Tensorproduktsstruktur mit entsprechent unabhängiger Dynamik auf beiden Faktoren:
+   \[\mathcal{H} = \mathcal{H}_1' \otimes \mathcal{H}_2', \quad H = H_1' + H_2'\]
+   $\mathcal{H}_1'$ sind dabei Funktionen von $\v R$ und $\mathcal{H}_2'$ Funktionen von $\v r$. Weniger abstrakt: Produktansatz $\v Ψ(\v r, \v R) = ψ(\v r) χ(\v R)$ führt zum Ziel:
+   \begin{align*}
+   - \frac{\hbar^2}{2M} \Laplace χ(\v R) &= E_R(χ(\v R)) \\
+   \string(-\frac{\hbar^2}{2m} \Laplace + V(r)\string)ψ(r) = E ψ(r) \tag{Zentralraftproblem}
+   \end{align*}
+** Das Quantenmechanische Zentralkrafproblem
+   \begin{align*}
+   \frac{\v p^2}{2m} &= \frac{1}{2m}(p_r^2 + \frac{1}{r^2}\v L^2) \\
+   p_r &\equiv -i \hbar (\pp{}{r} + \frac{1}{r})
+   \end{align*}
+   bis auf Faktor $1/r^2$ wieder "fast"	Faktorisierung bezüglich $r$ und $(θ,φ)$ $\to$ Produktansatz:
+   \begin{align*}
+   ψ(\v r) &= f(r) Y_{l\tilde m}(θ, φ) \\
+   \string(\frac{1}{2m}(p_r^2 + \frac{1}{r^2} \v L^2) + V(r)\string) f(r) Y_{l\tilde m}(θ, φ) &= E f(r) Y_{l\tilde m}(θ, φ) \\
+   \v L^2 Y_{l\tilde m}(θ, φ) &= \hbar^2 l(l + 1) Y_{l\tilde m}(θ, φ) \\
+   ⇒ (\frac{1}{2m} p_r^2 + \frac{\hbar^2(l (l + 1))}{2m r^2} + V(r))f(r) &= E f(r) \\
+   \intertext{Beachte:}
+   \string(\pp{}{r} + \frac{1}{r}\string) \frac{1}{r} &= \frac{1}{r} \pp{}{r} \\
+   \intertext{$⇒$ guter Ansatz: $f(r) U(r) / r$}
+   ⇒ (-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial r^2} + \frac{\hbar^2 l(l + 1)}{2mr^2} + V(r)) U(r) &= E U(r)
+   \end{align*}
+   $⇒$ eindimensionale Schrödingerproblem, Potential: Summe aus $V(r) \sim -1/r$ und "Zentrifugalbarriere"
+** \(H\)-Spektrum
+   konkret:
+   \begin{align*}
+   V(r) &= - \frac{e_0^2}{2π ε_0 r} \\
+   ⇒(- \frac{\hbar^2}{2m} \frac{\partial^2}{\partial r^2} + \frac{\hbar^2 l(l + 1)}{2 m r^2} - \frac{e_0^2}{4 π ε_0} \frac{1}{r}) U(r) &= E U(r)
+   \end{align*}
+   Erinnerung: Teilchen mit Energie $E$ $\to$ Compton-Wellenlänge $\to$ Wellenzahl:
+   \begin{align*}
+   k &= p / \hbar = \sqrt{2m \abs{E} / \hbar} \\
+   - (\frac{1}{k^2} \frac{\partial^2}{\partial r^2} + \frac{l(l + 1)}{k^2 r^2} - \frac{e_0^2}{4π ε_0 \abs{E}} \frac{1}{r}) U(r) &= - U(r)
+   \end{align*}
+   Nutze $ρ = k r$
+   \begin{align*}
+   \string(\frac{\partial^2}{\partial ρ^2} - \frac{l(l + 1)}{ρ^2} + \frac{e_0^2 k}{4π ε_0 \abs{E}} \frac{1}{ρ} - 1\string)U(r) &=	0 \\
+   \intertext{ersetze im letzten Term $E$ durch $k$ und definiere $ρ_0$}
+   ρ_0 &\equiv \frac{2 m e_0^2}{4π ε_0 \hbar^2 k} \\
+   ⇒ (\frac{\partial^2}{\partial ρ^2} - \frac{l(l + 1)}{ρ^2} + \frac{ρ_0}{ρ} - 1)U(r) &= 0
+   \end{align*}
+   Betrachte ein nicht zu grohes $l ⇒$ keine parametrisch großen oder kleinen Zahlen $⇒$ erwarte diskrete \(\mathcal{O}(1)\)-Werte für $ρ_0$, also
+   \[k = \frac{2m e_0^2}{4π ε_0 \hbar^2 ρ_0} \sim \frac{2 m e_0^2}{4π e_0 \hbar^2}\]
+   Dies entspricht dem Bohrschen Atomramius:
+   \[a_B \equiv \frac{4π ε_0 \hbar^2}{m_e e_0^2} ⇒ k = \frac{2}{a_B ρ_0}\]
+   (vernachlässige Differenz von $m$ und $m_e$)
+   \[⇒ -E = \frac{k^2 \hbar^2}{2m} = \frac{2 \hbar^2}{m a_B^2 ρ_0^2} = \frac{4 E_R}{ρ_0^2}\]
+   mit $E_R \approx \SI{13.6}{\electronvolt}$. Wir sind auf die präsize Quantisierung von $ρ_0$ fertig. Dazu: betrachte $ρ_0 \to ∞$
+   \[⇒ (\frac{\partial^2}{\partial ρ^2} - 1) U(r) = 0 ⇒ U \sim e^{-ρ}\]
+   $ρ \to 0$:
+   \[(\frac{\partial^2}{\partial ρ^2} - \frac{l(l + 1)}{ρ^2}) U(ρ) = 0\]
+   Ansatz $U(ρ) = ρ^α$
+   \begin{align*}
+   ⇒ α(α - 1) &= l(l + 1) ⇒ α = l + 1, α = -l \\
+   ⇒ U(ρ) &= A ρ^{l + 1} + B ρ^{-l}
+   \end{align*}
+   $B = 0$ wegen Verhalten bei $r \to 0$. Gesamtansatz:
+   \[U(ρ) = ρ^{l + 1} e^{-ρ} v(ρ)\]
+   Einsetzen in ursprüngliche Differentialgleichung $⇒$ Differentialgleichung für $v(ρ)$
+   \[ρ \frac{\partial^2}{\partial ρ^2} 2(l + 1 - ρ) \frac{\partial}{\partial ρ} + (ρ_0 - 2(l + 1))v(ρ) = 0\]
+   Ansatz:
+   \[v(ρ) = \sum_{j= 0}^{∞} a_j ρ^j\]
+   Einsetzen in Differentialgleichung $⇒$ Rekursionsrelation für Koeffizienten:
+   \[⇒ a_{j + 1} = a_j \frac{2(j + l + 1) - ρ_0}{(j + 1)(j + 2l + 2)}\]
+   $j\to ∞:$
+   \[a_{j + 1} \sim a_j \frac{2}{j} ⇒ a_j \sim \frac{2^j}{j!} ⇒ v(ρ) \sim e^{2ρ}\]
+   wächst schneller als der $e^{-ρ}$ Faktor in $U(ρ)$ fällt. $⇒$ müssen den Abbruch der Reihe fordern: bei gegebenen $l$ muss $ρ_0 = 2n, n ∈ Z, n \geq l + 1$. Etwas andere Parametrisierung: wähle
+   $n \geq 1$ beliebig, erlaube dann alle $l$ mit $l+ 1 \leq n$ und $\tilde m$ mit $\abs{\tilde m} \leq l$ $⇒$ Haben vollständigen Satz von Lösungen $\ket{nlm}$ und
+   Energieeigenwerte
+   \begin{align*}
+   E_n &= - E_R / n^2 \\
+   \ket{nlm} &\sim (k r)^l e^{-kr} v_n(k r) Y_{l \tilde m}(θ, φ) \\
+   k &= \frac{2}{a_B ρ_0} = \frac{1}{n a_B}
+   \end{align*}
+   Zur Vollständigkeit:
+   \[v_n(ρ) \sim L_{n - l - 1}^{2l + 1}(2ρ)\]
+   $L_p^q(x) \equiv$ zugeordnete Laguerre Polynome, Lösungen zu
+   \[x y''(x) + (q + 1 - x)y'(x) + p y(x) = 0\]
+   Explizit:
+   \[L_p^q(x) = \frac{e^x x^{-q}}{p!} \frac{\d^p}{\d x^p}(e^{-x} x^{q + p})\]
+   Normieren:
+   \[\ket{nlm} = ψ_{nlm}(r,θ,φ) = \sqrt{(\frac{2}{n a_B})^3 \frac{(n - l - 1)!}{2n((n + l)!)^3}} e^{-kr} (p k r)^l L_{n - l - 1}^{2l + 1}(2 k r) Y_{l, \tilde m}(θ,φ)\]
+   Kommentare:
+   1. Algebraische Lösung mit Runge-Lenz-Vektor
+   2. $E > 0$ Lösungen $⇒$ an entsprechender Stelle tritt
+	  \[(\frac{\d^2}{\d ρ^2} + 1)U(ρ)\]
+	  auf $⇒$ ein / auslaufende sphärische Wellen $⇒$ kontinuierlicher Teil des Spektrums
+** Unendlichdimensionale Hilberträume

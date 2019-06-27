@@ -1,7 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Einführung in die Numerik (Potschka)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 #+LATEX_HEADER:	\setcounter{section}{-1}
 
 # #+BEGIN_SRC	python

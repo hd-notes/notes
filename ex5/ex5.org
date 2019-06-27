@@ -1,0 +1,1454 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: Experimentalphysik 5 -	Molekül- und Festkörperphysik
+
+#+INCLUDE: "../header_de.org" :minlevel 1
+
+# Übungen: 3 Aufgaben; Ankreuzen, welche bearbeitet worden; 60%; übungsblätter dienstags
+# erste woche keine Übungen
+# Klausur: irgendwann im Februar
+
+# Inhalt der Vorlesung
+# Molekülbindung
+#  H2+, H2-Molekül
+#  Kovalente Bindung
+#  Hybridisierung
+# Molekülanregungen
+#  Elektroscihe Zustände
+#  Rotation und Schwingungen
+#  Infrarot- und Raman- Spektroskopie
+# Bindungskräfte
+#  Van der Walls-Bindung
+#  Ionenbindung
+#  Kovalente Bindung
+#  Metallische Bindung
+#  Wasserstoffbrückenbindung
+# Struktur und Strukturbestimmung
+#  Ordnung und Unordnung
+#  Kristalle
+#  Nichkristalline Fenstkörper
+#  Reziprokes Gitter
+#  Einfache Theorie der Streuung
+#  Experimentelle Methoden
+# Gitterdynamik und thermische Eigenschaften
+#  Akustische und opitsche Gitterschwingungen
+#  Experimentelle Bestimmung von Dispersionskurven
+#  Zustandsdichte
+#  Quantisierung der Gitterschwingungen: Phononen
+#  Spezifische Wärmekapazität und Wärmeleitfähigkeit
+# Leitungselektornen
+#  Einfache Metalle: Freies Elektronengas
+#  Sommerfeld-Pauli-Modell
+#  Spezifische Wärme
+# Halbleiter
+# Supraleitung
+# Magnetische Eigenschaften
+# Dieelektrische und optische Eigenschaften
+
+# Literatur
+#  W. Demtrüder Experimentalphysik: Band 3
+#  H. Hänsel, W. Neumann Moleküle und Festkörper
+#  H. Haken, H.-C. Wolf Molekülphysik und Quantenchemie
+#  P. Atkins und R. Friedmann Molecular Quantum Mechanics
+#  S. Hunklinger Festkörperphysik
+#  R. Gross, A. Marx Festkörperphysik
+#  Ch. Kittel Einführung in die Festkörperphysik
+#  H. Ibach, H. Lüth Festkörperphysik
+#  N. W. Ashcroft, N. D. Mermin
+
+# Werk- und Experimentierraum, Fr 14-18
+
+# lol: \hbar = c = i = π = 1
+# fermi = femtometer
+# \hbar c = 197 eV · nm
+
+
+Problem: Sehr viel ($\sim \num{10e23}$) (quantenmechanische) Partikel
+Ziele:
+- Grundlegendes Verständnis aller Materialien
+- Quantenmechanik von Vielteilchensystemen
+  - wichtig: atomare Eigenschaften, räumliche Anordnungen, Bindungsmechanismus
+- übergreifende Konzepte
+- mikroskopische Modelle und phänomenologische
+- kollektive Anregung
+- makroskopische Quantenzustände
+
+* Molekülbindung
+  Betrachte \(\ce{Na}\), \(\ce{Cl}\)-Atome:
+  \begin{equation}
+  \begin{array}{lc}
+  \ce{Na} & \ce{1s^2 2s^2 2p^6 3^1} \\
+  \ce{Cl} & \ce{1s^2 2s^2 2 p^6 3s^2 3 p^5}
+  \end{array}
+  \end{equation}
+  Ein Elektron wird von $\ce{Na}$ auf $\ce{Cl}$ übertragen
+  - Coulomb-Wechselwirkung
+  - zwei abgeschlossene Schalen
+  - Gesamtenergie des Systems ist geringer als bei isolierten Atomen
+  -	polare, ionische Bindung
+** Kovalente Bindung
+   Was passiert bei Bindung zwischen zwei gleichen Atomen?
+   #+begin_ex latex
+   Wasserstoff Atom $\to$ Wasserstoffmolekül $\ce{H_2}$, außerdem $\ce{Cl_2}$, $\ce{N_2}$, $\ce{O_2}$
+   #+end_ex
+   $\to$ Elektronenpaare "gehören" den Bindungspartnern gemeinsam
+   #+ATTR_LATEX: :options [$\ce{H_2^{+}}$ Molekülkern]
+   \\
+   #+begin_ex latex
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \begin{tikzpicture}
+   \draw[-] (0, 0) node[circle, black, fill=black, minimum size=5pt, inner sep=0pt] {} node[below] {$a$} node[left] {$+$} -- (2, 0) node[circle, black, fill=black, minimum size=5pt, inner sep=0pt] {} node[midway, below] {$r_{ab}$} node[below] {$b$} node[right] {$+$}
+   			-- (1, 1) node[circle, black, fill=black, minimum size=5pt, inner sep=0pt] {} node[midway, above, xshift=2] {$r_b$} node[above] {$-$} -- (0, 0) node[midway, above, xshift=-2] {$r_a$};
+   \end{tikzpicture}
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+
+   Annahme:	Kerne bewegen sich "langsam", $r_{ab} = \const$ (Born-Oppenheimer-Näherung / adiabatische Näherung).
+   Hamilton-Operator:
+   \[H = - \frac{-\hbar^2}{2m} \Laplace - \underbrace{\frac{e^2}{4 π ε_0}}_{=: F} (\frac{1}{r_a} + \frac{1}{r_b} - \frac{1}{r_{ab}})\]
+   Der \(1 / r_{ab}\) Anteil wird zunächst weggelassen, da die Coulomb-Abstoßung der beiden Kerne nur eine Verschiebung der	Energiepunkte zur Folge hat.
+   Schrödinger:
+   \[(-\frac{\hbar^2}{2m} \Laplace - F (\frac{1}{r_a} + \frac{1}{r_b})) ψ = E ψ\]
+   Ansatz: $ψ = α ψ_a + β ψ_b$ (LCAO, linear combination of atomic orbits)
+   \begin{align*}
+   ψ_a &= ψ_b = \sqrt{\frac{1}{π a_0^2}} \exp(\frac{-r}{a_{\text{Bohr}}}) \\
+   H_{aa} &= ∫ ψ_a^{\ast} H ψ_a \d V \\
+   S &= ∫ ψ_a^{\ast} ψ_b \d V \\
+   H_{bb} &= ∫ ψ_b^{\ast} H ψ_b \\
+   H_{ab} &= ∫ ψ_a^{\ast} H ψ_b \d V = H_{ba} \quad \longleftarrow \text{ Austauschintegral} \\
+   \intertext{Die Austauschenergie $H_{ab}$ ist negatisch, das heißt anziehend und beruht darauf, dass sich das Elektron "teils" im Zustand $ψ_a$ und "teils" im Zustand $ψ_b$ befindet. Man erhält}
+   E = \frac{∫ ψ^{\ast} H ψ \d V}{∫ ψ^{\ast} ψ} \d V = \frac{α^2 H_{aa} + β^2 H_{bb} + 2 α β H_{ab}}{α^2 + β^2 + 2 αβ S}
+   \end{align*}
+   Variationsprinzip: $E' < E$
+   \begin{align*}
+   \begin{cases}
+   \pp{E}{α} &= 0 \\
+   \pp{E}{β} &= 0
+   \end{cases} \\
+   \intertext{also}
+   \begin{cases}
+   α(H_{aa} - E) + β (H_{ab} - ES) &= 0 \\
+   α(H_{ab} - ES) + β (H_{bb} - E) &= 0 \\
+   \end{cases} \\
+   ⇒ (H_{ab}  E)(H_{bb} - E) - (H_{ab} - ES)^2 &= 0
+   \end{align*}
+   Aus Symmetriegründen: $H_{aa} = H_{bb}$, außerdem $S = 0$
+   \begin{align*}
+   E_{n, g} &= \frac{H_{aa} \pm H_{ab}}{1 \pm S} + \frac{e^2}{4π ε_0 r_{ab}} \\
+   \to E_{g} = H_{aa} + H_{ab} + \frac{e^2}{4π ε_0 r_{ab}} \leftarrow α = β, ψ_g = c(ψ_a + ψ_b) \\
+   E_n = H_{aa} - H_{ab} + \frac{e^2}{4π ε_0 r_{ab}} \leftarrow α = β, ψ_n = c(ψ_a ψ_b)
+   \end{align*}
+   Bindungsenergie: $E_B^{\text{exp}} \approx \SI{-2.6}{\electronvolt}$. \\
+   $Δx Δ p \gtrsim \hbar, E_{\text{kin}} = (Δp)^2 / 2m$
+   #+end_ex
+*** $\ce{H_2}$ Molekül
+    #+BEGIN_EXPORT latex
+    \catcode`(=12
+    \catcode`)=12
+    \begin{center}
+    \begin{tikzpicture}
+    \draw[-] (0, 0) node[circle, black, fill=black, minimum size=5pt, inner sep=0pt] {} node[below] {$a$} node[left] {$+$} -- (2, 0) node[circle, black, fill=black, minimum size=5pt, inner sep=0pt] {} node[midway, below] {$r_{ab}$} node[below] {$b$} node[right] {$+$}
+    			-- (1, 1) node[circle, black, fill=black, minimum size=5pt, inner sep=0pt] {} node[midway, above, xshift=2] {$r_b$} node[above] {$-$} -- (0, 0) node[midway, above, xshift=-2] {$r_a$};
+    \end{tikzpicture}
+    \end{center}
+    \catcode`(=\active
+    \catcode`)=\active
+    #+END_EXPORT
+	Hamiltonoperator
+	\begin{align*}
+	H = - \frac{h^2}{2m} \Laplace_1 - F(\frac{1}{r_{a1}} + \frac{1}{r_{bi}}) - \frac{h^2}{2m} \Laplace_2 - F(\frac{1}{r_{a2}} + \frac{1}{r_{b2}}) + F(\frac{1}{r_{ab}} + \frac{1}{12})
+	\end{align*}
+	Dies ist nicht analytisch lösbar. $E_{B}^{\text{exp}} \approx \SI{4.5}{\electronvolt}$.	Nutze Pauliprinzip, dafür $ψ(\v r, \v σ) = φ(\v r) σ(\v σ)$.
+	Die Gesamtwellenfunktion hat also die Form $ψ(\v r_1, \v σ_1, \v r_2, \v σ_2)$. Methoden:
+	1. Heitler, London (1927) $\to$ Ausganspunkt: \(\ce{H}\)-Atome und Spinfunktionen, keine Terme höherer Ordnung
+	2. Hund, Mulliken (1927), Bloch (1928): $\ce{H_2^{+}}$ und Spinfunktionen $\to$ Molekülorbitalmethode (MO)
+
+	Hier werden wir die erste Methode näher betrachten. Ansatz: $ψ(\v r_1, \v r_2) = ψ_a(\v r_1) ψ_b(\v r_2)$. Hier soll $α$ $\sim$ spin up und $β$ $\sim$ spin down. Für Spin $1$ erhält man dann:
+	\begin{align*}
+	ψ(\v r_1, \v σ_1, \v r_2, \v σ_2) &\sim φ_a(\v r_1) σ(1) φ_b(\v r_2) σ(2) - φ_a(\v r_2) α(2) φ_b(\v r_1) α(1) \\
+	&\sim α(1) α(2) \underbrace{(φ_a(1) φ_b(2) - φ_a(2) φ_b(1))}_{=: ψ_u} \\
+	\intertext{Weitere Möglichkeiten sind}
+	ψ_{-}^{(1)} &\sim α(1) α(2) ψ_u \\
+	ψ_{-}^{(2)} &\sim β(1) β(2) ψ_u \\
+	ψ_{-}^{(3)} &\sim 1 / \sqrt{2} (α(1) β(2) + α(2) β(1)) ψ_u \\
+	\intertext{Man erhält ein Triplett. Analog erhält man für Spin $0$ ein Singulett}
+	ψ_g &\sim φ_a(1) φ_b(2) + φ_a(2) φ_b(1) \\
+	ψ_{+}^{(1)} &\sim 1/\sqrt{2}(α(1) β(2) - α(2) β(1)) ψ_g \\
+	\end{align*}
+	In Kurzform also $S = 0: \{\uparrow \downarrow - \downarrow \uparrow\}$ und $S = 1: \{\uparrow \uparrow, \downarrow \downarrow, \uparrow \downarrow + \downarrow \uparrow\}$.
+	$\to$ Haken, Wolf:
+	\begin{align*}
+	E_g &= K + \uparrow[A]{Austausch Wechselwirkung (negatiuv)} \\
+	E_u &= K - A
+	\end{align*}
+** Hybridisierung
+   Optimierung der Bindungsenergie kann Verlust durch Bildung von Hybridorbitalen übersteigen.
+   #+ATTR_LATEX: :options [$\ce{CH_4}$]
+   #+begin_ex latex
+   $\ce{C}$: $\ce{1s^2 2p^6}$: $\ce{1s^2 2s^2 2p_x^1 2p_y^1}$ $\to$ $\ce{1s^2 2s^1 2p_x^1 2 p_y^1 2 p_z^1}$ \\
+   \begin{align*}
+   ψ_1 &= \frac{1}{2}(\ket{s} + \ket{p_x} + \ket{p_y} + \ket{p_z}) \\
+   ψ_2 &= \frac{1}{2}(\ket{s} + \ket{p_x} - \ket{p_y} - \ket{p_z}) \\
+   ψ_3 &= \frac{1}{2}(\ket{s} - \ket{p_x} + \ket{p_y} - \ket{p_z}) \\
+   ψ_4 &= \frac{1}{2}(\ket{s} - \ket{p_x} - \ket{p_y} - \ket{p_z}) \\
+   \end{align*}
+   $\to$ 3 Richtungen $x$, $y$, $z$ \\
+   \(sp^3\)-Hybridisierung
+   #+end_ex
+   #+ATTR_LATEX: :options [$\ce{N H_3}$]
+   #+begin_ex latex
+   $\ce{N}$: $\ce{1s^2 2s^2 2p_x^1 2p_y^1 2 p_z^1}$
+   Wieder 4 $\ce{sp^3}$ Hybridorbitale, davion 1 voll besetzt.
+   #+end_ex
+   #+ATTR_LATEX: :options [$\ce{H_2 0}$]
+   #+begin_ex latex
+   $\ce{O}$: $\ce{1 s^2 2s^2 2 p_x^2 2p_y^1 2 p_z^1}$
+   #+end_ex
+   #+ATTR_LATEX: :options [\(\ce{sp^2}\)-Hybridisierung]
+   #+begin_ex latex
+   $\ce{C}$: $\ce{1 s^2 2 s^2 2p_x^1 2p_y^1}$
+   \begin{align*}
+   ψ_1 &= \frac{1}{\sqrt{3}}(\ket{s} + \sqrt{2} \ket{p_x}) \\
+   ψ_2 &= \frac{1}{\sqrt{3}}(\ket{s} - \frac{1}{\sqrt{2}} \ket{p_x}	+ \sqrt{\frac{3}{2}} \ket{p_y}) \\
+   ψ_3 &= \frac{1}{\sqrt{3}}(\ket{s} - \frac{1}{\sqrt{2}} \ket{p_x} - \sqrt{\frac{3}{2}} \ket{p_y})
+   \end{align*}
+   #+end_ex
+   Benzol: $\ce{C_6 H_6}$: 3 $\ce{s p^3}$, 1 $\ce{p_z}$ \\
+   Bindungstypen:
+   #+ATTR_LATEX: :options [\(σ\)-Bindungen]
+   #+begin_defn latex
+   Rotationssymmetrisch um Bindungsachse). $L = 0$ in Richtung Bindungsachse.
+   #+end_defn
+   #+ATTR_LATEX: :options [\(π\)-Bindungen]
+   #+begin_defn latex
+   \(\ce{p}\)-Orbital senkrecht auf	Bindungsrichtung, $L = 1$.
+   #+end_defn
+* Molekülanregungen / Molekülspektroskopie
+  \[E_{\text{ges}} = E_{\text{el}} + E_{\text{vib}} + E_{\text{rot}}\]
+  $\SI{300}{\kelvin} \simeq \SI{25}{\milli\electronvolt}$
+  1. Vibration $\sim \SI{0.1}{\electronvolt}$
+  2. Rotationen $\sim \si{\milli\electronvolt}$
+  3. Elektron Anregung $\sim \si{\electronvolt}$
+** Rotationsspektren
+   \(2\)-atomiges Molekül: ($\ce{N O}$, $\ce{C O}$, $\ce{H Cl}$): starrer Rotator. Trägheitsmoment: $I_x = I_y; I_z$.
+   Betrachte das Molekül als zwei Massenpunkte $m_1$, $m_2$ die sich zunächst senkrecht zur Molekülachse um den Schwerpunkt drehen. (Abstand von $m_i$ zum Schwerpunkt $= r_i$)
+   \begin{align*}
+   E_{\text{rot}} &= \frac{1}{2} I ω^2 = \frac{L^2}{2I} \\
+   \abs{L} &= I ω \\
+   I &= \underbrace{\frac{m_1 m_2}{m_1 + m_2}}_{μ}\underbrace{(r_1 + r_2)}_{R}^2 \\
+   L &= \sqrt{J(J + 1)} \hbar \\
+   \intertext{$J = 0, 1, 2, \dots$}
+   E_{\text{rot}} &= \frac{L^2}{2I} = \frac{J(J + 1)\hbar^2}{2I}
+   \end{align*}
+   #+ATTR_LATEX: :options [$\ce{^{12}C ^{16}O}$]
+   #+begin_ex latex
+   \begin{align*}
+   R &= \SI{0.113}{\nano\meter} = \SI{1.13e-10}{\meter} \\
+   m_{\ce{^{12}C}} &= \SI{1.99e-26}{\kilo\gram}	\\
+   m_{\ce{^{16}O}} &= \SI{2.66e-26}{\kilo\gram} \\
+   μ &= \SI{1.14e-26}{\kilo\gram} \\
+   I &= \SI{1.46e-46}{\kilo\gram\meter\squared} \\
+   E_{\text{rot}}(J = 1) &= \frac{\hbar^2}{I} = \SI{7.61e-23}{\joule} = \SI{0.48}{\milli\electronvolt} \\
+   ω &= \sqrt{\frac{2 E_{J = 1}}{I}} = \SI{3.2e11}{\hertz} \approx \SI{300}{\giga\hertz}
+   \end{align*}
+   #+end_ex
+   \[I \sim δ(ΔE - \hbar ω) \abs{\braket{f| M | i}}^2\]
+   Gunn diode $\to$ Gas (zum Beispiel $\ce{^{12} C ^{16} O}$), geringer Druck $\to$ Detektor \\
+   Moleküle mit Dipolmoment erlauben optische Spektroskopie an elektromagnetischen Übergängen zwischen Rotationsniveaus. Auswahlregeln: $ΔJ = \pm 1$
+   \begin{align*}
+   ω_{J \to J + 1} &= \frac{E_{J + 1} - E_{J}}{\hbar} = \frac{1}{\hbar} \frac{\hbar^2}{2I}((J + 1)(J + 2) - (J + 1) J) \\
+   &= \frac{1}{\hbar} \underbrace{\frac{\hbar^2}{I}(J + 1)}_{δE}
+   \end{align*}
+   Intensität:
+   1. Entartung: $m_J = -J, \dots, J$ $\to$ $2 J + 1$
+   2. thermische Besetzung
+	  \[\frac{N_J}{N_0} \sim e^{-\frac{E_j}{k_B T}}\]
+** Vibrationsanregungen
+   Ansatz: behandel Vibration wie Harmonischen Oszillator $\to$
+   \begin{align*}
+   E_v &= \hbar ω (v + \frac{1}{2}) \\
+   ω &= \sqrt{\frac{k}{μ}} \\
+   k &\sim \text{ Kraftkonstante}
+   \end{align*}
+   Experimentell:
+   1. $\ce{H_2}$ (einfach Bindung) $k \sim \SI{5e2}{\newton\per\meter}$
+   2. $\ce{O_2}$ (doppelte Bindung) $k \sim \SI{12e2}{\newton\per\meter}$
+   3. $\ce{N_2}$ (dreifache Bindung) $k \sim \SI{20e2}{\newton\per\meter}$
+
+   $Δv = \pm 1$ ($\pm 2$, $\pm 3$ weniger wahrscheinlich). \\
+   in der Regel: Änderung des Schwingungszustandes $\leftrightarrow$ Änderung des Rotationszustanden, $Δv = \pm 1 ∧ Δ J = 1$ verboten.
+   Ausnahme: Drehimpuls parallel zur Molekülachse. \\
+   Rotations-Vibrations Anregung: Rotationsschwingungsspektren:
+   \[E_{\text{ges}} = \hbar ω(v + \frac{1}{2}) + \frac{\hbar^2}{2I} J(J + 1)\]
+   Fall $v = 0 \to v = 1$ $\to$ drei Möglichkeiten:
+   1. $ΔJ = -1$: P-Zweig
+	  \begin{align*}
+	  ω_p = \frac{E_{1,J - 1} - E_{0, J}}{\hbar}= ω_0 + (J(J - 1) - J(J + 1))\frac{\hbar}{2I} \\
+	  &= ω_0 - \frac{J \hbar}{I}
+      \end{align*}
+   2. $ΔJ = +1$: R-Zweig
+	  \begin{align*}
+	  ω_p = \frac{E_{1, J} - E_{0, J - 1}}{\hbar}= ω_0 + (J(J + 1) - J(J - 1))\frac{\hbar}{2I} \\
+	  &= ω_0 + J \frac{\hbar}{I}
+      \end{align*}
+   3. $ΔJ = 0$: Q-Zweig (verboten)
+
+
+   $\ce{O_2}$ mittlere Schwingungsamplitude: $\SI{0.038}{\angstrom}$
+
+   Biegeschwingung: $ΔJ = \pm 1, 0$ \\
+   Streckschwingung: $ΔJ = \pm 1$
+*** Raman Streuung
+    Inelastische Streuung von Licht an Molekülen. $ω = ω_0 \pm ω_r$ \\
+    *Rayleigh-Streuung* \\
+    \begin{align*}
+    E &= E_0 \cos (ω_0 t) \\
+    \intertext{mit der Polarisierbarkeit $α$}
+    P(t) &\underarrow[=]{α E} α E_0 \cos(ω_0 t)
+    \end{align*}
+    *Raman-Prozess* \\
+    Wenn das Molekül bereits schwingt (Eigenmode) dann ändert sich Polarisierbarkeit periodisch $α = α(t)$ \\
+    *Schwingungs-Raman-Effekt* \\
+    \begin{align*}
+    α(R) &= α(R_0) + \dd{α}{R}(R - R_0) + \dots \\
+    R(t) &= R_0 + q \cos(ω_{\text{vib}} t) \\
+    ⇒ P(t) &= α E = (α(R_0) + \dd{α}{R} q \cos(ω_{\text{vib}} t))E_0 \cos(ω_0 t) \\
+    \cos α \cos β &= \frac{1}{2}(\cos(α + β) + \cos(α - β)) \\
+    ⇒ P(t) &= α(R_0) E_0 \cos(ω_0 t) + \frac{1}{2} \dd{α}{R} E_0 q(\cos(ω_0 + ω_{\text{vib}})t + \cos(ω_0 - ω_{\text{vib}}) t) \\
+    \to ω_0 &\pm ω_{\text{vib}} \\
+    \intertext{wenn man höhere Terme der Taylorentwicklung noch beachtet hätte wären außerdem größere Vielfache möglich}
+    ω_0 &\pm 2 ω_{\text{vib}}
+    \end{align*}
+    Bedingung: $\dd{α}{R} \neq 0$ (also zum Beispiel nicht möglich bei linearen zweiatomigen Molekülen)
+    Stokes: Anregung einer Vibration, $ω_0 - ω_{\text{vib}}$; Anti-Stokes: Vernichtung einer Vibration, $ω_0 + ω_{\text{vib}}$
+    \[\frac{I_{\text{AS}}}{I_{\text{S}}} = \frac{n(v = 0)}{n(v = 0)} = \exp(-\frac{\hbar ω_v}{k_B T})\]
+    *Rotations-Raman-Spektren* \\
+    Rotation $\to$ $α_{\parallel} \leftrightarrow α_{\perp}$ $\to$ $Anisotropie $⇒ α = α(t)$ bei Rotation. \\
+    Frequenzmodulation: $\pm 2 ω_{\text{rot}}$. \\
+    Stokes Linie: $Δ V = +1$ \\
+    S-Zweig: $ω_{R} = ω_0 - (ω_{\text{vib}} + ω_{\text{rot}})$, $ΔJ =  2$ \\
+    Q-Zweig: $ω_{R} = ω_0 - ω_{\text{vib}}$, $ΔJ = 0$ \\
+    O-Zweig: $ω_{R} = ω_0 + (ω_{\text{vib}} - ω_{\text{rot}})$, $ΔJ = -2$ \\
+
+    | IR                         | Raman               |
+    |----------------------------+---------------------|
+    | $P = P(t)$                 | $\dd{α}{t} \neq 0$ |
+    | Oszillierendes Dipolmoment | $P = \const$        |
+    | $α = \const$               |                     |
+** Elektronische Anregungen
+   Drehimpuls Quantenzahl: keine gute Quantenzahl. $l_z = m_l \hbar, m_l = -l, \dots, l$.
+   $⇒$ neue Quantenzahlen $λ = \abs{m_l} = l, l - 1, \dots, 0$, $s, p, d, f, \dots \to σ, π, δ, φ, \dots$ \\
+   Elektronische Anregungen haben in der Regel Auswirkungen auf	in Atomabstände in Molekülen. \\
+   \begin{ibox}{Franck-Condon Prinzip}
+   Elektronenübergänge erfolgen senkrecht ($\to$ warum? Born / Oppenheimer) unter Erhaltung des Kernabstandes $R$ und mit größter Wahrscheinlcihkeit zwischen den Bereichen der Wellenfunktion in denen der Überlapp der Amplituden am größten ist.
+   \end{ibox}
+* Bindungen im Festkörper
+  Warum arangieren Atome zu Festkörpern? \\
+  Wie hängen Festkörper Eigenschaften mit den Bindungen zusammen? \\
+  Bindungstypen:
+  1. Van der Waals
+  2. ionisch
+  3. metallisch
+  4. kovalent
+
+  Warum fallen Atome nicht zusammen: $r \to 0$: Pauli-Prinzip
+  \[\d F = \d E - T \d S\]
+
+  \[E_{\text{Bindung}} = (\text{Gesamtenergie des Festkörpers} - (Summe der Energien der Einzelatome beziehungsweise -moleküle))\]
+** Edelgaskristalle - Van-der-Waals-Bindung
+   - Relevant für neutrale Atome (aber immer vorhanden)
+   - $\sim \SI{0.1}{\electronvolt}$ pro Binduncg
+   - Edelgas, $\ce{O_2}$, $\ce{N_2}$
+   - Wechselwirkung zwischen temporären Dipolen (neutrale Edelgasatome: Kugelsymmetrisch: kein permanentes Dipolmoment)
+   Dipolmoment:
+   \begin{align*}
+   \v p_A &= e \v r \\
+   \braket{\v p_A} &= 0 \\
+   \text{Dipolfeld: } E_A &\sim \frac{p_A}{r^3} \xrightarrow{induziert} p_B \sim E_A \sim \frac{p_A}{r^3} \\
+   \intertext{Wechselwirkungspotential}
+   E_{\text{pot}}{r} &\sim \frac{p_A p_B}{r^3} \sim \frac{1}{r^6} \\
+   \intertext{$\to$ Lennard-Jones-Potential}
+   V(r) &= 4 ε((\frac{σ}{r})^{12} - (\frac{σ}{r})^6)
+   \end{align*}
+   Gleichgewichtabstand (2 Atome) $r_0 = \num{1.12} σ$ \\
+   Bindungsenergie:
+   \begin{align*}
+   U_B &= \frac{N}{2} \sum_{i \neq j} 4 ε ((\frac{σ}{r_{ij}})^{12} - (\frac{σ}{r_{ij}})^6) \\
+   \intertext{mit $R$ = Abstand zwischen nächsten Nachbarn (n.N)}
+   r_{ij} &:= α_{ij} R \\
+   A_{12} &:= \sum_{i \neq j} \frac{1}{α_{ij}^{12}} \\
+   A_{6} &:= \sum_{i \neq j} \frac{1}{α_{ij}^{6}} \\
+   U_B &= 2 N ε (A_{12} (\frac{σ}{R})^{12} - A_{6} (\frac{σ}{r})^6)
+   \end{align*}
+   Gleichgewicht:
+   \[\left.\pp{U}{R}\right|_{R = R_0} \overset{!}{=} 0 \to  R = \num{1.09} σ \text{(für face centerd cubic Gitter)}\]
+   $U_B(R_0) = \num{-8.61} N ε$ \\
+   $E_B \sim \SIrange{0.02}{0.2}{\electronvolt} / \text{Bindung}$
+   (Ionisationsenergie: $\sim \SIrange{10}{20}{\electronvolt}$)
+** Ionische Bindung
+   Elektrostatische Wechselwirkung zwischen Ionen mit abgeschlossenen Schalen
+   \[U_B = - \frac{e^2}{4π ε_0 R}\]
+   - unidirektional
+   - $E_B \sim \SIrange{5}{10}{\electronvolt}$
+   - $\tilde E_B \sim \SIrange{3}{4}{\electronvolt}$ (Paar)
+   - Madelungenergie:
+	 \[U_B = \frac{N}{2} \sum_{i \neq j} (\underbrace{\frac{\pm q_i q_j}{4π ε_0 r_{ij}}}_{Madelungenergie} + \underbrace{A e^{-r_{ij} / ρ}}_{Born-Meyer-Potential})\]
+	 Annahme: $\abs{q_i} = \abs{q_j}; r_{ij} = α_{ij} R$
+	 \[U_B^{\text{Madelung}} = -\frac{N}{2} \frac{q^2}{4π ε_0 R} \underbrace{\sum_{i \neq j} \frac{\pm 1}{α_{ij}}}_{=: α \text{Madelungkonstante}}\]
+
+   Lineare Kette:
+   \begin{align*}
+   α = \sum_{i \neq j} \frac{\pm 1}{α_{ij}} = 2(1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots) = 2 \ln 2
+   \end{align*}
+
+   $\ce{NaCl}$: $\ce{Na^{+}}$ als Start:
+   \[\begin{array}{cc} R & 6 \ce{Cl^{-}} \\ \sqrt{2} R & 12 \ce{Na^{+}} \\ \sqrt{3} R & 8 \ce{Cl^{-}} \\ \vdots & \vdots\end{array}\]
+   \[α = 6 - \frac{12}{\sqrt{2}} + \frac{8}{\sqrt{3}} - \frac{6}{\sqrt{4}} = 1.748\]
+   $\to$ komplex + aufwendig. \\
+   $\to$ Evjen-Zelle: $α = A_1 + A_2 + A_3 + \dots$
+   \begin{tabular}{ccc}
+   $\#$ & fraction & $α_{ij}$ \\
+   $6$ & $+ 1/2$ & 1 \\
+   $12$ & $-1/4$ & $\sqrt{2}$ \\
+   $8$ & $+1/8$ & $\sqrt{3}$ \\
+   \end{tabular}
+   \[\to A_1 = \frac{6 \frac{1}{2}}{1} - \frac{12 \frac{1}{4}}{\sqrt{3}} + \frac{8 \frac{1}{8}}{\sqrt{3}} = 1.456 = A_1\]
+** kovalente Bindung
+   teilweise gefüllte Schalen, Austauschwechselwirkung, $E_B \sim \SIrange{3}{10}{\electronvolt}$, gerichtet, kurzreichweitig
+** metallische Bindung
+   $Δ x Δ p \gnsim \hbar$ $⇒$ $(Δp)^2 / 2m$ ändert sich mit $Δx$. Ionenrümpfe und delokalisierte Valenz Elektronen
+   - unidirektional
+   - $E_B \approx \SIrange{1}{5}{\electronvolt}$ / Atom
+   - kovalente Bindungsanteile oft wichtig (besonders $\ce{3d}$, $\ce{4d}$)
+   Natrium: $\ce{1s^2 2s^2 2p^6 3s^1}$
+   
+   Betrachte Potentialtopf
+   $U_0$ = mittlere kinetische Energie der Leitungselektronen $= 3/5 E_F$
+	 
+   \begin{align*}
+   \frac{U_B}{N} &= E_0 + U_0 - E_{3S}  \\
+   &= -\SI{8.11}{\electronvolt\per\atom} + \SI{1.9}{\electronvolt\per\atom} - (-\SI{5.14}{\electronvolt\per\atom}) \\
+   &= \SI{1.07}{\electronvolt\per\atom}
+   \end{align*}
+** Wasserstoffbrückenbindung   
+   
+* Kristallstrukturen
+  Chemische Bindung $\to$ Regeln für Anordnung von Atomen.
+  3D: Periodische Anordnung $\to$ Festkörper. \\
+  Kristalle: wohldefinierte Anordnung auf ganzen (GG ?) Positionen.
+  Amorphe Festkörper: keine Fernordnung, aber: lokale Ordnung.
+** Grundbegriffe:
+   #+ATTR_LATEX: :options [(idealer) Kristall]
+   #+begin_defn latex
+   unendlische Anordnung identischer Atomgruppen nach einheitlicher Regel.
+   #+end_defn
+   Ein Kristall wird aus der Minkowski Summe der Basis (den Bausteine) und einem Punktgitter (auch: Gitter: Bravaisgitter, rämliche Anordnung der Basis) gebildet. \\
+   Punktgitter: alle Gitterpunkte die durch sogenannte "fundamentale" oder "primitive" Gittervektoren aufgespannt werden $(\v a_1, \v a_2, \v a_2)$, $\v R = n_1 \v a_1 + n_2 \v a_2 + n_3 \v a_3$ ($n ∈ ℤ_0$) \\
+   Translationssymmetrie: Das Punktgitter ist invariant gegen Translationen 
+   \[U(\v r) = U(\v r + \v R)\]
+   für alle Gitterverschiebungen $\v R$. Einheitszelle EZ: Raumelement, das den gesamten Raum ohne Löcher überdeckt, indem man sie durch Translationsvektoren parallelverschiebt. Allgemein: mehr als
+   1 Gitterpunkt. \\
+   Primitive Einheitszelle: Einheitszelle mit genau einem Gitterpunkt. $V_C = (\v a_1 × \v a_2) · \v a_3$ \\
+
+   Wigner-Seitz Zelle:
+   - primitive Einheitszelle, die immer konstruiert werden kann
+	
+   Konstruktion:
+   1. Wähle einen Gitterpunkt
+   2. Halbiere Abtsände zu nächsten Nachbarn
+   3. Wähle kleinste Umschlossene Volumen
+   Vorteil: bestizt Symmetrie des Punktgitters
+
+   Symmetrien: Operation die das Gitter invariant lässt.
+   Punktsymmetrien: alle Symmetrieoperationen, die mindestens enine Gitterpunkt unverändert lassen (Drehung, Spiegelung, mögliche Kombinationen: Gruppe!)
+
+   Punktsymmetrien: bilden eine Gruppe, aber: Translationsgeometrie $\to$ Einschränkungen.
+   Drehungen:
+   \[\frac{2π}{1}, \frac{2π}{2}, \frac{2π}{3}, \frac{2π}{4}, \frac{2π}{6}\]
+   sonst *nix*, $\to 2π / n, n = 1, 2, 3, 4, 6$ (andere Gitter können nicht flächendeckend sei, $n = 3$: Dreiecke, $n = 4$: Quadrate, $n = 5$: Pentagon, kann nicht flächendeckend sein, $\dots$) \\
+   Aber: Quasikristalle $⇔$ Penrose-Muster:
+   - Überdeckung mit verschiedenen (erlaubten) Elementen kann den Raum vollständig ausfüllen
+   - keine lang-rechtweitige Ordnung
+   - aber quasi-periodisch
+
+   Lässt man Quasikristalle außen vor: $⇒$ 32 Möglichkeiten für Punktgruppen $=$ 32 Kristallklassen $⇒$ 7 Kristallsysteme
+
+   | Kristallsystem | Gitterkonstanten  | Winkel            | Zähligkeit |
+   |----------------+-------------------+-------------------+------------|
+   | triklin        | $a \neq b \neq c$ | $α \neq β \neq γ$ |          1 |
+   |                |                   |                   |            |
+
+   Mit Translationsinvarianz: 14 Bravaisgitter. \\
+
+   $n$ zählige Rotation $⇒$ nach $n$-facher Anwendung ist man wieder bei Ausgangszustand \\
+   simple cubic (sc): $a = b = c, α = β = γ = \ang{90}$, 4 zählige Rotation ($3×$), 3 zählige Rotation $4×$ \\
+   body centerd cubic (bcc): $a = b = c, α = β = γ = \ang{90}$, 4 zählige Rotation ($3×$), 3 zählige Rotation $4×$ \\
+
+   Kristallographische Punktgruppen \\
+   Alle Symmetrieoperationen, welche die Basis invariant lassen $\to$ 32 (ohne Translation)  \\
+   7 Punktgitter mit sphäricsher Basis $\to$ 32 kristallographische Punktgruppen \\
+   Raumgruppen: 32 kristallographische Punktgitter + Translation $⇒$ 230 Raumgruppen
+** Kristallstrukuren-Beispiel
+   Bindungen $\to$ "Regeln" zur Strukturbildunga
+   - Bindungsabstände: Gitterparameter
+   - # Nachbarn (nächste, übernächste, $\dots$)
+   - Packungsdichte: Wie dicht sind Atome gepackt?
+   Annahme: Atome sind feste Kugeln, die sich berühren $\to$ Packungsdichte $P$:
+   \[P = \frac{\text{(\# Atome in Einheitszelle)} V_{\text{Kugel}}}{V_{\text{Einheitszelle}}}\]
+   1. Einfach kubisch:
+      \[P = \frac{1 \frac{4 π}{3} R^3}{(2R)^3} \simeq \num{0.52}\]
+      $\to$ sehr klein $\to$ in Natur unrealistisch
+	  - 6 nächste Nachbarn in Abstand $a / \sqrt{2}$, 12 übernächste Nachbarn in Abstand $\sqrt{2} a$
+   2. kubisch raumzentriert
+	  - 8 nächste Nachbarn in Abstand $\sqrt{3} a / 2$, 6 übernächste Nachbarn in Abstand $a$
+	  - $P \simeq \num{0.68}$
+   3. flächenzentriert
+	  - 12 nächste Nachbarn in Abstand $a / \sqrt{2}$, 6 übernächste Nachbarn in Abstand $a$
+	  -	$P \simeq \num{0.74}$ (optimal)
+
+
+   Kristallzüchtung:
+   - Liquid
+	 - Solution growth
+	 - Flux growth
+   - Czochralski ($\to$ Siliziumeinkristall)
+** Strukturbestimmung
+   Konzept: Streuung an	regelmäßig angeordneten Atomen. \\
+   Wellenlänge Strahl $\leftrightarrow$ Gitterabstände.
+
+   Röntgenstrahlung: Entdeckung 1895 durch Röntgen; 1. Nobelpreis Physik 1901 \\
+   Kristall: $σ \sim \SI{1}{\angstrom} \to E \sim \SI{12}{\kilo\electronvolt}$
+   \[λ(\si{\angstrom}) = \frac{12345}{E(\si{\electronvolt})}\]
+   \begin{align*}
+   \ce{e^{-}} & λ(\si{\angstrom}) \sim \frac{\sqrt{150}}{E(\si{\electronvolt})} \sim \SI{150}{\electronvolt} \\
+   \ce{n} & λ(\si{\angstrom}) \sim \frac{0.28}{E(\si{\electronvolt})} \sim \SI{80}{\milli\electronvolt} \\
+   \ce{He} & λ(\si{\angstrom}) \sim \frac{0.28}{E(\si{\electronvolt})} \sim \SI{20}{\milli\electronvolt}
+   \end{align*}
+*** Bragg-Theorie
+   Nobelpreis 1915 \\
+*** Reziprokes Gitter und Diffraktion
+	$ψ(\v r) = ψ_0 e^{i\v k\v r}$
+	Bravaisgitter: $\v R = n_1 \v a_1 + n_2 \v a_2 + n_3 \v a_3$
+	Welche ebenen Wellen haben die Periodizität des Gitters?
+	\begin{align*}
+	ψ_k(\v r) &\overset{!}{=} ψ_k (\v r + \v R) \\
+	ψ_0 e^{i\v k\v r} &= ψ_0 (e^{i \v k \v r} e^{i \v k \v R}) \\
+	⇒ e^{i \v k \v R} &= 1 \tag{\ast}
+	\end{align*}
+	Für $\v k$ für die ($\ast$) gilt hat $ψ_k$ die Periodizität des Gitters. \\
+	#+ATTR_LATEX: :options [reziprokes Gitter]
+	#+begin_defn latex
+	Alle Vektoren $\v G$ mit $\exp(i \v G \v R) = 1$ bilden das zum durch $\v R$ aufgespannten Bravaisgitter reziprokes Gitter
+	#+end_defn
+	Satz von Wellenvektoren $\v k$ die ebene Welle mit der Periode des Bravaisgitter ergeben.
+
+	Streuung an einer periodischen Struktur:
+	\[ρ(\v r) = ρ(\v r + \v R)\]
+	Fourier-Zerlegung
+	\begin{align*}
+	ρ(\v r) &= \sum_{\v k} ρ_k e^{i\v k \v r} \\
+	ρ_k &= \frac{1}{V_k} ∫_{V_k} ρ(\v r) e^{-i \v k \v r} \d^3 r \\
+	ρ(\v r) &= \sum_{\v k} ρ_k e^{i \v k \v r} \overset{!}{=} ρ(\v r + \v R) \\
+	&= \sum_{\v k} ρ_k e^{i \v k \v r} e^{i \v k \v R} \\
+	⇒ e^{i \v k \v G} &\overset{!}{=} 1
+	\end{align*}
+	In der Fourierzerlegung des Gitters treten also nur Vektoren des reziproken Gitters auf
+	\begin{align*}
+	\v G &= h \v b_1 + k \v b 2 + l \v b_3 \\
+	e^{i \v G \v R} &= 1 \\
+	⇒ \v G \v R &= 2π n \quad (n ∈ ℤ) \\
+	⇒ \string(h \v b_1 + k \v b_2 + l \v b_3\string)\string(n_1 \v a_1 + n_2 \v a_2 + n_3 \v a_3\string) &= 2πn \\
+	\intertext{Annahme: $n_2 = n_3 = 0$}
+	⇒ \v b_1 \v a_1 &= 2π \\
+	\v b_2 \v a_1 &= \v b_3 \v a_1 = 0 \\
+	⇒ \v a_i \v b_j &= 2π δ_{ij} \\
+	⇒ \v b_1 &= \frac{2π}{V_c}(\v a_2 × \v a_3) \\
+	⇒ \v b_2 &= \frac{2π}{V_c}(\v a_3 × \v a_1) \\
+	⇒ \v b_3 &= \frac{2π}{V_c}(\v a_1 × \v a_2) \\
+	\end{align*}
+	simpel cubic: $\v b_1 = 2π \v a_1$ \\
+	Eigenschaften des reziproken Gitters:
+	- reziprokes Gitter eines Bravaisgitter
+	- reziprokes Gitter des reziproken Gitters ist das reguläre Gitter
+	- Länge der reziproken Gittervektoren $\sim 1 / \text{Länge des regulären Gittervektors}$
+
+	Matrixnotation:
+	\begin{align*}
+	A &= a \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} \\
+	A^{T} B &= \mathbb{1} 2π \\
+	B &= 2π(A^{T})^{-1} &= \frac{2π}{a} \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}
+	\end{align*}
+	#+ATTR_LATEX: :options [fcc-Gitter]
+	#+begin_ex latex
+	\begin{align*}
+	A &= \frac{a}{2} \begin{pmatrix}0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0\end{pmatrix} \\
+	⇒ A^{-1} &= \frac{1}{2} \frac{2}{a} \begin{pmatrix}-1 & 1 & 1 \\ 1 & -1 & 1 \\ 1 & 1 & -1\end{pmatrix} \\
+	⇒ B = \frac{2π}{a} \begin{pmatrix}-1 & 1 & 1 \\ 1 & -1 & 1 \\ 1 & 1 & -1\end{pmatrix} \\
+	\end{align*}
+	#+end_ex
+
+
+	*Die 1. Brillouin-Zone* $=$ Wigner-Seitz-Zelle des reziproken Gitters, 2. Brillouin-Zone: ignoriere Punkte der ersten Wigner-Seitz-Zelle und bilde neue Wigner-Seitz-Zelle, 3. Brillouin-Zone: $\dots$.
+	Alle Brillouin-Zonen haben gleichen Flächeninhalt
+*** Gitterebenen und Miller-Indizes
+	Hetrachte 3 Punkte (nicht auf einer Geraden) "Netzebene"
+	1. Bestimme Schnittpunkte mit Kristallachsen in Einheiten der Gitterparameter 1, 2, 3
+	2. Bilde Inverse: $1, 1/2, 1/3$
+	3. "Clear the fraction" / "Glattstellen der Verhältnisse" $\to$ $(6, 3, 2)$ = $(h, k, l)$ Millersche Indizes
+
+	Bemerkungen:
+	- Miller Indizes hängen von Wahl der Einheitszelle ab
+	- parallele Gitterebenen haben gleiche $hkl$
+
+    Miller-Indizes sind so konstruiert dass sie Vektoren beschreiben die senkrecht auf der jeweiligen Ebene stehen.
+	\[\v G_{hkl} \perp (h k l)\]
+	$(h k l)$ bezeichnet dabei die Ebene die zu den Millerindices $h, k, l$ gehören, $\v G_{hkl}$ ist ein Vektor des reziproken Gitters $\v G_{hkl} = h \v b_1 + k \v b_2 + l \v b_3$
+	\[\abs{\v G_{hkl}} = \frac{2π}{d_{hkl}}\]
+	$d_{hkl}$: Abstand zweier benachbarter Ebenen $(h k l)$
+*** Streuung: Laue-Bedingung
+	Ewald-Konstruktion: \\
+	beantwortet, welche $\v k_0$ die Laue-Bedingung erfüllen
+	1. Zeichne das reziproke Gitter
+	2. Zeiche $\v k_0$, sodass $\v k_0$ an einem beliebeigem Gitterpunkt endet
+	3. Zeichne Kreis (in 3D: Kugel) um Anfang von $\v k_0$ mit Radius $\abs{k} = 2π / λ$
+
+	Laue: $Δ \v k = \v G$
+	Bragg: $n λ = 2d \sin θ$
+
+
+	2 Möglichkeiten:
+	1. Variation von $λ$ ($\abs{\v k_0}$)
+	2. Variation der Richtung
+
+
+    Experimentelle Methoden
+	1. Laue Methode
+	   - kontinuierliches Röntgenspekturm ("weiß") $\to$ $λ$ variabel
+	   - feste Probe ($\to$ $θ$ fest)
+	   Anwendung: zum Beispiel Orientieerung von Kristallen
+	2. Drehkristallmethode (Methode de Broglie)
+	   $λ$ fest, $θ$ variabel
+	3. Debye-Scherrer Methode: $λ$ fest, $θ$ variabel: Pulverdiffraktion (Kristallitgröße $\gg$ Wellenlänge $λ$)
+	   $\to$ alle Kristallorientierungen sind vorhanden
+	4. Dreiachsenspektrometer
+
+
+*** Erzeugung von Röntegnstrahlung
+	\[λ[\si{\angstrom}] = \frac{12345}{E[\si{\electronvolt}]} \to \SIrange{1}{100}{\kilo\electronvolt}\]
+	$\SI{1}{\percent}$ Strahlung, $\SI{99}{\percent}$ Wärme.
+
+	Detektoren
+	1. Photofilm $\ce{Ag Br}$ $\hbar ω + \ce{Br^{-} \to Br^0 + e^{-}}$, $e^{-} + \ce{Ag^{+}} \to \ce{Ag^0}$
+	2. Proportionalitätszählröhre
+
+
+	Imageplatte, Halbleiter mit Störstellen: $\ce{Ba F B}: EN^{2+}$
+	CCD(charge-coupled device)
+	Szintillatoren
+* Gitterdynamik
+  1. harmonisches Potential
+  2. adiabatische Näherung
+
+  $\to$ Atome in Gitter mit Federn verbunden
+** Lineare Kette
+   Zunächst: einatomige Basis.
+   Annahmen:
+   - Nur Kräfte	zwischen nächsten Nachbarn.
+   - longitudinale Schwingung
+   - harmonische Näherung: lineares Kraftgesetz
+
+
+   \begin{align*}
+   F &= m \frac{\partial^2 u_s}{\partial t^2} &= C(u_{s + 1} - u_s) + C(u_{s - 1} - u_s) \\
+   &= c(u_{s + 1} + u_{s - 1} - 2 u_s)
+   \end{align*}
+   $\to$ Hooksches Gesetz. Ansatz: Ebene Welle
+   \begin{align*}
+   u_{s \pm 1} &= u_0 \exp(i(q(s\pm 1) a - ω t)) \\
+   &= u_0 \exp(-iωt) \exp(iq(s \pm 1)a) \\
+   &= \tilde u_0 \exp(iq(s \pm 1) a) \\
+   ⇒ -m ω^2 \tilde u_0 \exp(i q s a) = c \tilde u_0 (\exp(i(s + 1) q a) + \exp(i(s - 1)q a) - 2 \exp(i q s a)) \\
+   ⇒ - m^2 &= c(\exp(i q a) + \exp(-i q a) - 2) \\
+   ⇒ ω^2 &= \frac{2C}{m}(1 - \cos(q a)) \\
+   ⇒ ω &= 2 \sqrt{\frac{C}{m}} \abs{\sin{\frac{qa}{2}}}
+   \end{align*}
+   ($q$: eindimensionaler Wellenvektor). $\to$ Dispersionsrelation der 1D Kette (Energie $\leftrightarrow$ Wellenvektor)
+   $ω(q)$ periodisch, $ω(q) = ω(-q)$ \\
+   Phase zwischen Nachbaratomen.
+   \[\frac{u_{s + 1}}{u_s} = \frac{\tilde u_0 \exp(iq(s + 1)a)}{\tilde u_0 \exp(iq s a)} = \exp(iqa)\]
+   kann maximal $\pm π$ betragen $⇒$ $-p \leq qa \leq π$. $-π/a \leq q \leq π/a$. Annahme: $\tilde q > π/a$
+   $\to$ $\tilde q = q + 2π a n / a$, $2π n / a$ ist ein reziprozer Gittervektor. $ω(q) = ω(q + 2πn/a)$. \\
+   Gruppengeschwindigkeit:
+   \[v_{\text{Gruppe}} = \pp{ω}{q}\]
+   Phasengeschwindigkeit:
+   \[v_{\text{Phase}} = \frac{ω}{q}\]
+
+
+   Akustische Moden: Schwerpunkt der Basis oszilliert. \\
+   Optische Moden: Schwerpunkt fest, Basisatome schwingen gegeneinander.
+
+
+   Phasenordnung: $\frac{u_{s + 1}}{u_s} = \exp(iqa) \overset{q \to 0}{\approx} 1$
+   Nachbaratome schwingen "fest" in Phase.
+
+
+   Grenzfälle:
+   1. $q \to \pm π/a$ ($λ\to 2a$) $\to v_g = 0$, Phase: $u_{s + 1} / u_s = e^{iπ} = -1$
+   2. $q \ll π/a$ ($λ \gg a$) $\sin(qa / 2) \ll qa / 2$
+	  \[ω = \underbrace{\sqrt{\frac{C a^2}{m}}}_{v_g} q\]
+	  Phase:
+	  \[\frac{u_{s + 1}}{u_s} = e^{iqa} \to 1\]
+
+
+   Jetzt: zweiatomige Basis:
+   \begin{align*}
+   m_1 \frac{\partial^2 u_s}{\partial t^2} &= c_2 v_{s - 1} + c_1 v_s - (c_1 + c_2) u_s
+   m_2 \frac{\partial^2 v_s}{\partial t^2} &= c_2 u_{s - 1} + c_1 u_s - (c_1 + c_2) v_s
+   \end{align*}
+   Ansatz:
+   \begin{align*}
+   u_s &= u_0 \exp(-i(ω t - s q a))
+   v_s &= v_0 \exp(-i(ω t - s q a))
+   \end{align*}
+
+   \begin{align*}
+   ⇒ ω^2 m_1 u &= c_2 v \exp(-iqa) + c_1 v - (c_1 + c_2)u \\
+   ω^2 m_2 v &= c_2 u \exp(iqa) + c_2 u - (c_1 + c_2) v \\
+   \string((c_1 + c_2) - ω^2 m_1\string) u - (c_1 + c_2 \exp(-iqa)) v &= 0 \\
+   -(c_1 + c_2 \exp(iqa))u + ((c_1 + c_2) - ω^2 m_2) v &= 0 \\
+   \det \begin{pmatrix}a & b \\ c & d\end{pmatrix} &= 0 \\
+   ω_{1,2}^2 &= \frac{c_1 + c_2}{2}(\frac{1}{m_1} + \frac{1}{m_2}) \pm \frac{c_1 + c_2}{2} \sqrt{(\frac{1}{m_1} + \frac{1}{m_2})^2 - \frac{8 c_1 c_2}{m_1 m_2(c_1 + c_2)} \sin^2(\frac{qa}{2})} \\
+   \intertext{$1/μ = 1/m_1 + 1/m_2, c_1 = c_2 = C$}
+   ⇒ ω_{1,2}^2 &= \frac{C}{μ} \pm C \sqrt{\frac{1}{μ^2} - \frac{2}{m_1 m_2} \sin^2(\frac{qa}{2})}
+   \end{align*}
+
+   Grenzfälle: $q \to 0$ ($λ \to ∞$), $\sin x \approx x, \sqrt{1 - x} \approx 1 - x/2$
+   \begin{align*}
+   ⇒ ω_{1,2}^2 &= ω_{a,o}^2 = \frac{C}{μ} \pm \frac{C}{μ} \mp \frac{C q^2 a^2}{m_1 m_2} \\
+   ω_a^2 &\approx \frac{C a^2}{2} \frac{1}{m_1 + m_2} q^2 \\
+   ⇒ ω_a &\sim q
+   ω_o^2 &\approx \frac{2C}{μ} \approx \const \\
+   ω_a(q \to 0) &= 0
+   \end{align*}
+
+   Hunklinger Seite 183:
+   \begin{align*}
+   \frac{u}{v} &\approx \frac{2C}{2C - ω^2 m_1} \\
+   \overset{opt}{\approx} - \frac{m_2}{m_1} \\
+   \overset{ak}{\approx} 1
+   \end{align*}
+
+
+
+   - 1 Atom pro Einheitszelle $\to$ 3 akustische
+   - 2 Atom pro Einheitszelle $\to$ 3 akustische + 3 optische
+   - 3 Atom pro Einheitszelle $\to$ 3 akustische + 6 optische
+   - n Atom pro Einheitszelle $\to$ 3 akustische + (3n - 3) optische
+
+
+
+   $q \to \pm π/a$ ($λ$ klein)
+   Sei $m_1 > m_2$. akustisch:
+   \[ω_a = \frac{2C}{m_1} ⇒ \frac{u}{v} = 0\]
+   nur schwere Atome schwingen \\
+   optische:
+   \[ω_o = \frac{2C}{m_2} ⇒ \frac{v}{u} = 0\]
+   nur leichte Atome schwingen
+
+
+
+   $a = \SI{3}{\angstrom} \to π/a \approx \SI{e10}{\per\meter}$
+   $c_s \approx \SI{5000}{\meter\per\second}$
+   $c_s π/a \approx \SI{5e13}{\hertz} = \SI{50}{\tera\hertz}$ bei $π/a$
+
+
+   jetzt: 3D Kristallgitter
+   - Normalemoden propagation parallet zu $[100], [010], [001]$. Auslenkung $\perp, \parallel$ $\v q$
+   - $s$ Atome pro Einheitszelle $\to$ $3N s$ Bewegungsgleichungen
+   - Stauchen ist schwerer als Biegen, $ω_{\text{longitunal}} > ω_{\text{transversal}}$
+   - $ω(q)$ besitzt Gristallgeometrie
+
+
+   *Quantisierung von Gitterschwingungen: Phononen* \\
+   Kristall $\estimates$ System gekoppelter harmonischer Ozillatoren mit Eigenfrequenzen $ω_r(q)$ ($r$ ist dabei der Zweig) \\
+   $3N$ Atome $⇒$ 3N harmonische Oszillatoren mit $3N$ Eigenfrequenzfen. \\
+   Amplituden der Gitterschwingung sind quantisiert. Schwingungquant $\estimates$ "Phonon"
+   \[E_{q,r} = (η_r + \frac{1}{2})\hbar ω_r(q)\]
+   *Quasiteilchen* \\
+   Genereller Ansatz für Vielteilchensysteme. Grundzustand: kompliziert, wird ignoriert. Dynamische Eigenschaften: Kenntnis von Anregungen ausreichend. \\
+   *Phononen*
+   1. Quasiteilchen $E = \hbar ω$
+   2. Ist ein Boson
+   3. Besitzt quasi-Impuls $\v p = \hbar \v q(\pm \v G)$
+   4. Alle Atome sind in ein Phonon involviert
+   5. \[\braket{n} = \frac{1}{\exp{\frac{\hbar ω}{k_B T}} - 1}; \quad μ = 0\]
+   6. Quasi-Impulserhaltung: $\hbar \v q \pm \hbar \v G$
+
+
+   Kollektive Anregungen \\
+   Quantisierte Energie und definierte Wellenzahl über $ω(q)$ \\
+   Experimentelle Bestimmung von $ω(q)$ \\
+   Streuung an dynamischen Gittern. \\
+   Inelastische Streuung: Neutronen, Röntgenstrahlung \\
+   Elastisch: $\hbar ω' = \hbar ω_0, Δ\v k = \v k' - \v k_0 = \v G$ \\
+   Inelastisch (nur 1-Phonon-Prozesse): $\hbar ω' - \hbar ω_0 = \pm \hbar ω_r(\v q), Δ \v k = \v k' - \v k_0 = \pm q + \v G$
+
+   Experimentell: $\hbar ω_q \approx \SI{e-2}{\electronvolt}$
+
+
+   $γ \to \frac{δ_E}{E_{γ}} \approx \frac{\SI{e-2}{\electronvolt}}{\SI{e4}{\electronvolt}} \approx \num{e-6}$, Notwendige Auflösung: $\num{e-8}$ \\
+   $n \to \frac{δE}{E_n} \approx \frac{\num{e-2}}{0.025} \sim 0.5$, Notwendige Auflösung: $\num{e-3}$ \\
+   *Kinetische Energie thermischer Neutronen:* \\
+   $λ = h / p \to p = h / λ$
+   \begin{align*}
+   E &= \frac{p^2}{2m} &= \frac{h^2}{2m_0 λ^2(T = \SI{300}{\kelvin})} \\
+   &\approx \SI{0.025}{\electronvolt}
+   \end{align*}
+
+   Ionen-Kristall: Optische Anregungen haben verschiedene Energien.
+** Zustandsdichte
+   Bisher: alle $\v q$ erlaubt. *ABER*: Endliche Systemgröße $3 s N$ gekoppelte Differentialgleichungen (*nicht* $∞$!)
+
+   lineare Kette, $N + 1$ Atome, $L = N a$
+
+   1. feste	Randbedingungen: $u_0(0) = u_0(L) = 0$
+	  Ansatz: Ebene Welle, $U_n = A \exp(i(q n a - ω t)) + B \exp(-i(qna + ωt))$, $u_n(0) = u_n(L) = 0 ⇒ A = - B$
+	  \[⇒ u_N = 2 i A \sin(qna) \exp(-iωt)\]
+	  Bei $n = N$: $u_N(L) = 0 \sin(qN a) = 0 ⇒ q N a = p π, p ∈ ℕ_0 ⇒ q = \frac{π}{L}p, p ∈ [0, N]$
+   2. periodische Randbedingung: $u_N \overset{!}{=} u_{n + N} ⇒ \exp(iq N a) \overset{!}{=} 1 ⇒ q = \frac{2π}{L} p (-\frac{N}{2} \leq p \leq \frac{N}{2})$	\\
+
+
+   Wieviele Wellenvektoren pro Volumen sind im Impulsraum erlaubt? \\
+   Zustandsdichte
+   \[D(q) = \frac{\text{Anzahl Zustände}}{\text{zugehöriges \(q\)-Raumvolumen}} = \frac{N}{2π/a} = \frac{Na}{2π} = \frac{L}{2π}\]
+   3D: $V_q = (\frac{2π}{L})^3$. $D(q) \d q =$ Anzahl der Zustnde im Intervall $[q, q + \d q]$. \\
+   Alle Zustände mit $\tilde q \leq q$:
+   \[N(q) = \frac{4π}{3} q^3 \text{Anzahldichte $=V / (2π)^3$}\]
+   \[N(q) = \frac{V}{6π^2} q^3\]
+
+
+   In 3 Dimensionen
+   \[V_q = (\frac{2π}{L})^3\]
+   beziehungsweise
+   \[D(q) = (\frac{L}{2π})^3\]
+   Berechne Anzahl aller Zustände mit Wellenvektoren $\leq q$
+
+   periodische Randbedingung:
+   \begin{align*}
+   N(q) &= (\text{Volumen im \(q\)-Raum})(\text{Zustandsdichte im \(q\)-Raum}) \\
+   &= \frac{4}{3}π q^3 \frac{V}{(2π)^3} = \frac{V}{6π^2} q^3
+   \end{align*}
+   feste Randbedingung: nur positive $q$
+   \[D(q) = (\frac{L}{π})^3\]
+   relevantes Volumen im \(q\)-Raum, positiver Anteil:
+   \[V \sim \frac{4}{3}π q^3 \frac{1}{8}\]
+   \[N(q) = \frac{1}{8} \frac{4}{3}π q^3 \frac{V}{(2π)^3} = \frac{V}{48π^2} q^3\]
+   $D(q) = \dd{N}{q}$
+
+
+   Zustandsdichte im Frequenzraum DOS \\
+   \[D(ω) = \pp{N}{q} \pp{q}{ω} \pp{N}{ω}\]
+   $\pp{q}{ω}$: Inverse Steigung der Dispersionsrelation \\
+   Debye-Näherung $ω = v q; ∃ ω_{\text{maximal}}$
+   $q = ω / v$
+
+   Debey'sche Zustandsdicthe
+   \[D(ω) = \frac{V}{2π^2} \frac{ω^2}{v^3} \sim ω^2\]
+
+   Warum braucht man $D(ω)$?
+
+   Observable $A$
+   \[A = \sum_{q} A(q) f(E(q))\]
+   $f(E(q))$: Besetzungswahrscheinlichkeit. Kontinuumsnäherung $\sum \to ∫$
+
+   \[A = V ∫_q \dd{\v q}{8 π^2} A(\v q) f(E(\v q)) = ∫ \frac{V}{2 π^2} q^3 \d q A(q) f(E(q))\]
+   beziehungsweise im Frequenzraum
+   \[A = ∫_0^∞ \d ω A(ω) D(ω) f(ω)\]
+   das $D(ω)$ beinhaltet wichte Eigenschaften des Systems \\
+   $f(ω)$: Besetzung, bekannt. \\
+   Beispiel: Anzahl der Zustände
+   \[N = ∫_0^∞ D(ω) 1 \d ω \overarrow[=]{Debeye-Modell} ∫_0^{ω_B} \frac{V}{2π^2} \frac{ω^2}{v_D} \d ω = \frac{V}{2 π^2} \frac{ω_D^3}{v_D^3} \frac{1}{3}\]
+   Nur ein Zweig beachtet, aber 3D $\to$ um Faktor 3 mehr. Debeye-Frequenz:
+   \begin{align*}
+   \to ω_D = v_D \sqrt[3]{\frac{6 π^2 N}{V}} = \frac{v_D}{a} \sqrt[3]{6 π^2}
+   \end{align*}
+
+
+   Bemerkung: Bei nicht monotonen Dispersionsrelation: van Hove-Singularitäten. $ω_g \to 0 \overset{?}{\to} D(ω) \to ∞$. 3D nicht problematisch (meist) hebbare Singularität. \\
+   1D: Problematisch $\to$ interessant $D(ω) \to ∞$
+
+
+   Thermische EIgenschaften des Kristallgitters: Spezifische Wärmekapazität
+   \[c_V = \left.\pp{U}{T} \right|_V\]
+   $U$: innere Energie
+   \[c_V = \lim_{Δ T \to 0} \left.\frac{δQ}{Δ T}\right|_{V = \const}\]
+   Experiment bei konstantem Druck: $c_p$
+
+   \[c_p - c_V = TV \frac{α^2}{ϰ_T}\]
+   $α$: Adiabatenkoeffizient, $ϰ_T$: isoterme Kompressibilität, $c_p - c_V = 0$ in harmonischer Näherung $α 0$
+
+   1. klassische Näherung (hohe Temperatur). Kristall besteht aus $s N$ Atomen $\to$ 3 kinetische + 3 potentielle Freiheitsgrade
+	  \begin{align*}
+	  U &= 6 N s \frac{1}{2} k_B T \\
+	  \pp{U}{T} &= 3 s N k_B = 3 s R = \const
+      \end{align*}
+	  Dulong-Petit
+   2. Quantenmechanisch $s = 1$
+	  \begin{align*}
+	  U &= ∫_0^∞ \hbar ω D(ω) (n(ω, T) + \frac{1}{2}) \d ω
+      \end{align*}
+
+
+
+   \begin{align*}
+   D(q) &= \frac{\text{Anzahl Zustände}}{\text{WAS STEHT Da??}} = \dd{U(q)}{q} \\
+   c_V &= \left.\pp{U}{T}\right|_T = \lim_{ΔT \to 0} \frac{δQ}{ΔT} \\
+   c_V &= c_P = TV \frac{α^2}{k_B T}
+   D(ω) &= \pp{U(ω)}{q} \pp{q}{ω} \\
+   A &= ∫ D(ω) A(ω) f(ω) \d ω
+   \end{align*}
+   Zum Beispiel
+   \begin{align*}
+   N &= ∫_0^∞ D(ω) 1 f(ω) \d ω \\
+   U &= ∫ \hbar ω D(ω) (n(ω, q) + \frac{1}{2}) \d ω \\
+   U &= ∫ \hbar ω D(ω) (\frac{1}{\exp(\frac{\hbar ω_E}{k_B T}) - 1} + \frac{1}{2}) \d ω
+   \end{align*}
+
+   1. Einsteinmodell $D(ω) = δ(ω - ω_E) 4N$
+	  \[⇒ U = 4N \hbar ω_E (\frac{1}{\exp{β \hbar ω_E} - 1} + \frac{1}{2})\]
+   2. Debye Näherung
+	  \begin{align*}
+	  D(ω) &= \frac{3V}{2π^2} \frac{ω^2}{ν_D^3} \\
+	  ω_D &= \frac{ν_D}{a} \sqrt{6π^2} \\
+	  x &:= \frac{\hbar ω}{k_B T} \\
+	  k_B O_D &:= \hbar ω_D \\
+	  k_D &:= \frac{\hbar ω_D}{k_B T} \frac{O_D}{T} \\
+	  ⇒	c_V &= \left. \pp{U}{T}\right|_V = 9 N k_B (\frac{T}{O})^2 ∫_0^{k_D} \frac{x^4 e^x}{(e^x - 1)^2} \d x
+      \end{align*}
+	  $T \to ∞: x \to 0, e^x \approx 1 + x, x^4 e^x \approx x^4$
+	  $T \to 0, λ_D \to ∞$
+
+
+   Zahl der	angeregten Phonononen (im Debye-Modell)
+
+   \[∫_0^∞ \frac{x^4 e^x}{(e^x - 1)^2} \d x \approx \frac{4π^4}{T S}\]
+
+   \[c_V = \frac{12π^4}{5} N k_S (\frac{T}{O})^3 \sim T^3\]
+
+
+   Wärmeleitfährigkeit (dielektrischer Kristalle) (des Kristallgitters)
+   \[\v j = - k \v ∇ T\]
+   mittlerer Phononenfluss: $\frac{1}{2}{n} u_x$
+   Transportierte Wärme	$Δ Q = \tilde c_V Δ T$
+   \[Δ T = \dd{T}{x} l = \dd{T}{x} v τ\]
+   Wärmefluss = Phononenfluss $·$ transportierte Wärmemenge $/$	Phononen
+   \[j_q = - n u_x u_x \tilde c_V τ \dd{T}{x} = - \frac{1}{3} n \tilde c_V v τ v \dd{T}{x} \to k = \frac{1}{3} c_V v l\]
+   mit $l$: mittlere freie Weglänge, $v$: mittlere Phononengeschwigdigkeit
+
+   Phonon-Phonon Streuung
+   2 Phononen $\hbar ω_1 \pm \hbar ω_2 = \hbar ω_3, h \v q_1 \pm \hbar \v q_2 = \hbar \v q_3 + \hbar \v G$
+
+   \begin{align*}
+   \v Q_{\text{tot}} = \sum_{q,r} n_{\v q, r} \v q
+   \end{align*}
+   1. Normal-Prozesse: $\v G = 0$ $⇒$ $Q_{\text{tot}}$ unverändert $⇒$ kein Einfluss auf Wärmekapazität
+   2. Umklapp-Prozesse $\v G \leq 0$ \\
+	  $\v q_1 + \v q_2 = \v q_3 + \v G$
+
+
+
+   Vor und Nachteile von verschienener Strahlung zur Strukturbestimmung
+   - Elektronen
+	 - kommen nur einige Ebenen weit (-> brauche sehr dünnen Kristall) -> gut für Oberflächen / dünne Schichten
+   - Neutronon
+     - Röntgen hauptsächlich an Elektronenhülle, Neutronen werden hauptsächlich an Protonen gestreuut -> gut für leichte Elemente, außerdem hat Neutron magnetisches Quadrupolmoment -> magnetische Struktur kann untersucht werden
+   - Röntgen
+     - große Bereiche vom Kristall werden durchleuchtet (-> Regelmäßigkeit, Kristallfehler etc gut erkennbar)
+
+
+
+
+
+   Brillouin Zone: definiert aus reziprokem gitter
+
+
+* freies Elektronengas
+  \begin{align*}
+  D_{1D} &= \frac{L}{2π} (\frac{2m_e}{\hbar^2})^{1/2} \frac{1}{\sqrt{E}} \\
+  D_{2D} &= \frac{L^2}{2π} (\frac{2m_e}{\hbar^2}) = \const \\
+  D_{3D} &= \frac{L}{2π^2} (\frac{2m_e}{\hbar^2})^{3/2} \sqrt{E} \sim \sqrt{E} \\
+  N &= ∫_0^∞ \d E D(E) 1 f(E, T) \\
+  f(E, T) &= \frac{1}{\exp(\frac{E - μ}{k_B T}) + 1}
+  \end{align*}
+  dabei ist $μ$ das chemische Potential
+  \[μ = \left. \pp{F}{N} \right|_{T, V}\]
+  Anmerkung: bei $T = 0$ sind alle Zustände bis zu einem maximalen \(k\)-Vektor besetzt
+
+
+  \begin{align*}
+  N &= ∫_0^∞ \d E (\frac{2m_e}{\hbar^2})^{3/2} \frac{V}{2π^2} \sqrt{E} \frac{1}{\exp(\frac{E - μ}{k_B T}) + 1} \\
+  \intertext{$T = 0, μ = E_F$}
+  &= ∫_0^{E_F} \d E (\frac{2 m_e}{\hbar^2})^{3/2} \frac{V}{2 π^2} \sqrt{E} \\
+  N(k_F) &= \frac{V}{3 π^2} k_F^3 \\
+  \to k_F &= (3 π^2 n)^{1/3} \\
+  E_F &= \frac{\hbar^2 k_F^2}{2m_e} = \frac{\hbar^2}{2m_e} (3 π^2 n)^{2/3}
+  \end{align*}
+  dabei $n= N / V$
+
+  Metalle:
+  - $n \sim \SIrange{e22}{e25}{\per\centi\meter\cubed}$
+  - $E_F \sim \SIrange{1.5}{15}{\electronvolt}$
+  - $T_F = E_F / k_B \sim \SIrange{2}{10}{e4\kelvin}$
+  - $k_F \sim \SI{1}{\per\angstrom}$
+  - $D(E_F) = \frac{3}{2} \frac{n}{E_F}$
+  -	$T \ll T_F$	Tieftemperaturnäherung angebracht
+
+  Nur wenige Elektronen tragen zu den thermischen Eigenschaften bei.
+
+
+  Statt
+  \begin{align*}
+  N &= ∫_0^∞ D(E) f(E) \d E \\
+  \intertext{betrachte}
+  ∫_0^∞ D(E) [f(E, T) - f(E, T \neq 0)] \d E
+  \end{align*}
+  Entwickle $D(E)$ um $μ$ $\to$ Sommerfeld Entwicklung. Allgemein:
+  \begin{align*}
+  ∫_0^∞ F(E) f(E) \d E &= ∫_0^∞ F(E) \d E + \frac{π^2}{6}(k_B T)^2 F^2(μ) + \mathcal{O}(T^4) \\
+  \intertext{chemisches Potential}
+  μ(T) &= E_F(1 - \frac{π^2}{12} (\frac{T}{T_F})^2) \mathcal{o}((\frac{T}{T_F})^4)
+  \end{align*}
+
+  Wärmekapazität des freien Elektronengases
+  \begin{align*}
+  U &= ∫_0^∞ \d E D(E) E f(E, T) \\
+  \intertext{mit Sommerfeldnäherung}
+  &= ∫_0^∞ \d E D(E) E + \frac{π^2}{6}(k_B T)^2 (D(μ) + μ D^2(μ)) \\
+  &\simeq \frac{3}{5} N E_F + \frac{π^2}{6} \underbrace{D(E_F)}_{3 N / (2 E_F)} (k_B T)^2
+  \end{align*}
+
+  \begin{align*}
+  c_V^{el} &= \left.\pp{U}{T}\right|_{N} &= \frac{π^2}{3} k_B^2 D(E_F) T
+  \end{align*}
+  1. linear in $T$!
+  2. um $T/T_F$ kleiner als	klassisch ($D(E_F) \sim 1/T_F$)
+  3. $C \sim D(E_F)$
+
+
+  Spezifische Wärmekapazität von Metallen
+  \[C_V = γ T + \text{ Phononen}\]
+  $γ$: Sommerfeldkonstante, der Phononenanteil ist konstant $3R$ für $T > Θ$ und $β T^3$ für $T \ll θ$, $θ$ ist dabei die Debyetemperatur. $\SI{300}{\kelvin}$: Phononen dominieren (alle Freiheitsgrade werden angeregt), $T \to \SI{0}{\kelvin}$ $T^3$ verschwindet schneller als linear.
+  $γ = \SI{2.08}{\milli\joule\per\mol\kelvin\squared} \overset{!}{=}\frac{π^2}{3} k_B^2 D(E_F) ⇒ D(E_F) = \SI{3.3e42}{\per\joule\per\mol} = \SI{4.5e23}{\per\mol\per\electronvolt}$
+
+* Elektronen im periodischen Potenzial
+  Statt $V_0 = 0$ nun $V(\v r) = V(\v r + \v R) \neq 0$ Berücksichtige Translationssymmetrie des Gitters. Felix Bloch, Doktorarbeit 1928, NP 1952 \\
+  Bloch-Elektron \\
+  Wellenfunktion eines Elektrons im periodischen Potenzial
+  \begin{align*}
+  \string(-\frac{\hbar^2}{2m} \Laplace + V(\v r + \v R)\string)ψ(\v r) &= E ψ(\v r) \\
+  \intertext{Fourierentwicklung:}
+  V(\v r) &= \sum_{\v G} V_{\v G} \exp(i \v G \v r) \\
+  [\hat H, \hat T(\v R) &= 0] \\
+  \intertext{$T$: Translationsoperator}
+  \hat T(\v R) ψ(\v r) &= ψ(\v r + \v R) \\
+  \hat T(\v R) \exp(i \v k \v r) &= \exp(i \v k (\v r + \v R)) = \exp(i\v k \v r) \underbrace{\exp(i \v k \v R)}_{\mathclap{\text{Eigenwert}}} \\
+  \text{zudem } \hat T(\v R) (H ψ) &= \hat T(\v R) E ψ
+  \end{align*}
+  Ebenso wie die Eigenfunktionen von $\hat T(\v R)$ können die Wellenzahlen $\v k$ benutzt werden um die Eigenfunktionen $\hat H$ zu klassifizieren. \\
+  Ansatz
+  \begin{align*}
+  ψ(\v r) &= \sum_{\v k} c_{\v k} \exp(i \v k \v r)
+  \end{align*}
+  Wir suchen hier die $c_{\v k}$. Ähnlich wie bei Phononen, aber jetzt kann $\v k$ ausserhalb der 1. Brillouin-Zonen liegen. Die elektronische Wellenfunktion ist auch zwischen den Atomrümpfen definiert.
+  Elektronenwellenlänge kann kleiner sein al die Gitterkonstante. Einsetzen in die Schrödingergleichung:
+  \begin{align*}
+  \sum_{\v k} \frac{\hbar^2 k^2}{2m} c_{\v k} c_{\v k} \exp(i \v k \v r) + \sum_{\v k', \v G} c_{\v k'} V_{\v G} \exp(i(\v k' + \v G) \v r) &= E \sum_{c_{\v k}} c_{\v k} \exp(i \v k \v r) \\
+  \intertext{in der zweiten Summe wird über alle $\v k$ und $\v G$ summiert; $\v k = \v k' + \v G$}
+  ⇒ \sum_{\v k} \exp(i \v k \v r) ((\frac{\hbar^2 k^2}{2m} - E) c_{\v k} + \sum_{\v G} V_{\v G} c_{\v k - \v G}) &= 0
+  \end{align*}
+  Der Term in der Klammer muss also $0$ sein, unabhängig von $\v r$. Somit
+  \begin{align*}
+  \string(\frac{\hbar^2 k^2}{2m} - E\string) c_{\v k} + \sum_{\v G} V_{\v G} c_{\v k - \v G} &= 0
+  \end{align*}
+  Schrödingergleichung im reziproken Raum beschreibt Elektron im \(k\)-Raum, das sich in einem periodischen Potential bewegt. Wichtige Konsequenzen
+  - für jedes $\v k$ liefer obige Gleichung eineine Gleichung und eine Wellenfunktion $ψ_{\v k}$ mit Energiewert $E_{\v k}$
+  - Bestimmung der $c_{\v k}$ scheinbar kompliziert, *aber* kleine Anzahls von $c_{\v k}$ betrachten genügt und zwei solche bei denen sich $\v k$ um \(\v G\)'s unterschiedet $c_{\v k}, c_{\v k - \v G}, c_{\v k - \v G'}, \dots$
+  - aus obiger Gleichung werden $N$	Gleichungssysteme bei $N$ Elementarzellen
+  - $N$ Lösungen in der 1. Brillouin-Zonen, 2. Brillouin-Zonen, $E_n(\v k) = E(\v k + \v G_n)$, $E_1(\v k) \leq E_2(\v k) \leq E_3(\v k)$.
+
+  Jedes Gleichungssystem liefert
+  \begin{align*}
+  ψ_{\v k}(\v r) &= \sum_{\v G} c_{\v k - \v G} \exp(i(\v k - \v G) \v r)
+  &= \sum_{\v G} c_{\v k - \v G} \exp(-i \v G \v r) \exp(i \v k \v r)
+  \end{align*}
+  Das ist die Fourierentwicklung einer gitterperiodischen Funktion. $\to$ Bloch-Welle
+  \begin{align*}
+  ψ(\v r) &= U_{nv k}(\v r) \exp(i \v k \v r) \\
+  U_{\v k}(\v r) &= U_{\v k}(\v r + \v R)
+  \end{align*}
+  Die Eigenfunkionen der Schrödingergleichung sind ebene Wellen multipliziert mit einer gitterperiodischen Funktion. Jede Lösung kann anhand des Wellenvektors $\v k$ klassifiziert werden
+  1. $ψ_{\v k}(\v r) = ψ_{\v k + \v G}(\v r)$ Blochwelle die sich um einen reziproken Gittervektor unterscheiden sind gleich
+  2. $E_{\v k} = E_{\v k + \v G}$ Eigenwerte perodisch im reziproken Raum
+
+  Aus 1. + 2. Beschränkung auf die 1. Brillouin-Zone genügt $\to$ reduziertes Zonenschema.
+
+  Fast freie Elektronen \\
+  Näherung des leeren Gitters, $V = 0$, aber die Elektronen "spüren" die Periodizität.
+  \[E_{\v k} = E_{\v k + \v G} = \frac{\hbar^2 (\v k + \v G)^2}{2m}\]
+  Dispersionsrelation: Parabeln im \(k\)-Raum, möglicherweise um $\v G$ verschoben, kleinser reziproker Gittervektor (1d): $2π/a$ \\
+  3D-Gitter:
+  \[E_{\v k + \v G} = \frac{\hbar^2}{2m} \sum_{i = 1}^{3} (\v k_i + \v G_i)^2\]
+  schwaches periodisches Potenzial
+  \[\abs{V_{\v G}} \ll \frac{\hbar^2 k^2}{2m}\]
+  kleine Störung, keine grohen Auswirkungen in weiten Bereichen der Brillouin-Zone. Was passiert am Rand der Brillouin-Zone? \\
+  Schrödingergleichung:
+  \begin{align*}
+  \string(\frac{\hbar^2}{2m} \abs{\v k - \v G}^2 - E\string) c_{\v k - \v G} + \sum_{\v G'} V_{\v G'} c_{\v k - \v G - \v G'} &= 0
+  c_{\v k - \v G} &= \frac{\sum_{\v G'} V_{\v G'} c_{\v k - \v G - \v G'}}{E - \frac{\hbar^2 \abs{\v k - \v G}^2}{2m}} \\
+  &= \frac{\sum_{\v G'} V_{\v G'} c_{\v k - \v G - \v G'}}{\frac{\hbar^2}{2m}(k^2 \abs{\v k - \v G}^2)} \\
+  \end{align*}
+  Nullstellen, das heißt größte Koeffizienten $⇔$ $k^2 = \abs{\v k - \v G}^2$ $⇔$ Laue Bedingung \\
+  Am Rand der 1. Brillouin-Zone (1d) $k = π/a$. Betrachte $\v G = 0, \v G' = \v g$ ($\v g$ ist der kürzeste reziproke Gittervektor $\neq 0$) \\
+  Laue
+  \begin{align*}
+  \v k - \v k' &\overset{!}{=} \v G \\
+  \string(k'\string)^2 &= (\v k - \v G)^2 = \v k^2 \\
+  \v G^2 &= 2 \v k \v G
+  \end{align*}
+  Wellen, deren $\v k$ diese Bedingung erfüllen erfahren große Änderungen bei kleinen Stößen
+
+  \begin{align*}
+  \v G &= 0 \to (\frac{π}{a})^2 = (\frac{π}{a} - 0)^2 \checkmark \\
+  \v G &= g = \frac{2π}{a} \to (\frac{π}{a} - \frac{2π}{a})^2 \checkmark \\
+  \end{align*}
+  Die Gleichung ist am Rand der Brillouin-Zone erfüllt bei $k= π/a$ tragen 2 Koeffizienten wesentlich bei $c_{\v k}, c_{\v k - \v G}$
+
+
+  periodisches Pol.
+
+  \begin{align*}
+  ψ_{n, \v k}(\v r) &= u_{n, \v k} \exp(i \v k \v r)
+  \end{align*}
+  schwaches Pol. $\abs{V_g} \ll \hbar^2 k^2 / (2m)$
+  Schrödingergleichung
+  \[⇒ c_{\v k - \v G} = \frac{\sum_{\v G'} V_g c_{\v k - \v G - \v G'}}{E - \frac{\hbar^2 \abs{\v k - \v G}^2}{2m}}\]
+  Freies Elektronengas: Beiträge: Rand der Brillouin-Zone ($k = \pm π/a$). Für $V_g \neq 0, V_g \ll E_{\text{kin}}$ werden diese Koeffizienten ebenfalls dominieren. \\
+  relevante Komp: $\pm π/a$
+
+  \begin{align*}
+  ψ_1(x) &\sim \exp(+i α π / a) \\
+  ψ_2(x) &\sim \exp(-i α π / a) \\
+  \end{align*}
+  entartet!
+  \begin{align*}
+  \abs{ψ_{12}}^2 \sim \exp(i k α) \exp(-i k r)
+  \end{align*}
+  \begin{align*}
+  ψ_{\pm} &\sim \frac{1}{\sqrt{2}}(ψ_{1} \pm ψ_2) \\
+  ψ_{+} &\sim \cos π x/a
+  ψ_{-} &\sim \sin π x/a \\
+  \intertext{Wahrscheinlichkeitsdichte}
+  \abs{ψ_{+}}^2 &\sim \cos^2 π x / a \\
+  \abs{ψ_{-}}^2 &\sim \sin^2 π x / a \\
+  \end{align*}
+
+  Photoelektronenspektroskopie (Photoeffekt)
+
+
+  Alkalimetalle: $\ce{Na}$, $\ce{K}$, $\ce{Rb}$, $\dots$: monovalent
+
+  Volumen Fermikugel < 1 Brillouin-Zone \\
+  bcc-Gitter, 2 Atome pro Einheitszelle, $n = 2/a^3$ \\
+  $k_F = (3π^2 n)^{1/3} = \num{1.24} π/a$ \\
+  bcc: kürzester Abstand zum Rand der Brillouin-Zone: $\num{1.41} π/a$
+
+
+* 6.3 dynamik von Kristallelektronen
+  Band-Elektron $\to$ Bloch-elektron mit ausgedehntem Welleneffekt. $h \v k$ ist *nicht* der kanonische Impuls des Blochelekrons
+  \begin{align*}
+  \frac{\hbar}{i} \v ∇ ψ_{n, \v k}(\v r) &= \frac{\hbar}{i} \v ∇ v_{n, \v k}(\v r) \exp(i \v k \v r) &= \exp(i \v k \v r) \frac{\hbar}{i} \v ∇ u_{n, \v k} + h \v k ψ_{nk}(\v r) \\eq \const ψ_{n, \v k}(\v r)
+  \end{align*}
+  Wellenpakete:
+  \begin{align*}
+  ψ_{n, \v k}(\v r, t) &= \sum_{\v k'} g(\v k') ψ_{n \v k}(\v r) \exp(- E_n(k) t / \hbar)
+  \end{align*}
+
+  $a \ll δ x < λ$ ($a$: Gitterkonstante, $δx$: Ausdehnung des Wellenpakets, $λ$: Wellenlänge der Störung)
+
+  $λ > δx$: Äußere Störung ändert sich am "Ort" des Elektrons wenig. \\
+  $δx \gg a$ Wellenvektor muss "scharf genug" sein $⇒$ Unschärfe kleiter als 1. Brillouin-Zone.
+  Gruppengeschwindigkeit
+  \begin{align*}
+  \dot{\v r} = v_n(\v k) = \frac{1}{\hbar} ∇_{\v k} E_n(\v k)
+  \end{align*}
+  das heißt $\v v \perp$ auf der $E(k) = \const$ Fläche \\
+  \begin{align*}
+  E &= \frac{\hbar k^2}{2m} \to v(k) = \frac{\hbar k}{m} \checkmark
+  \end{align*}
+  Externe Kraft: $δE = F v δ t = \pp{E}{k} δ k$
+  \begin{align*}
+  δE &= \dd{E}{k} δ h = \hbar v δ k \\
+  ⇒ \v F &= \hbar \dot{\v k}
+  \end{align*}
+
+
+  Beschleunigungtheorem
+
+  \begin{align*}
+  \pp{\v v}{t} &= \pp{}{t}(\frac{1}{h} \pp{E}{k}) = \frac{1}{h} \frac{\partial^2 E}{\partial t \partial k} \\
+  &= \frac{1}{\hbar} (\frac{\partial^2 E}{\partial k^2}) \pp{\v k}{t} \\
+  ⇒ \pp{\v v}{t} &= \frac{1}{\hbar^2} \frac{\partial^2 E}{\partial k^2} \v F \\
+  \intertext{effektive masse:}
+  \frac{1}{m^{\ast}} &= \frac{1}{\hbar^2} \frac{\partial^2 E(\v k)}{\partial \v k^2}
+  \end{align*}
+  - Kraft = effektive Masse $·$ Beuschleunigung
+  - effektive Masse: Krümmung der Energiedispersionskurve
+  - Beschreibt Bewegung von Elektronen in periodischem Potential
+  - Effekt des Pol steckt in $m^{\ast}$
+  - Beschleunigung nicht immer $\parallel$ zur Kraft, $m^{\ast}$ ist richtungsabhängig
+  -	Freie Elektronen: $m^{\ast} = \const$
+
+  Bewegung von Elektronen im Kristall \\
+  zuerst: gefülltes Band
+  \begin{align*}
+  j_n &= \frac{1}{V} \sum_{\v k ∈ \text{BZ}} -e v_n(\v k) = - \frac{2e}{2π^2 \hbar} ∫_{∧\text{BZ}} ∇_{\v k} E_n(\v k) \d^3 k = 0 \\
+  \end{align*}
+  weil: $(E(k) = E(-k) ⇒ v(\v k) = - v(- \v k))$
+  teilweise gefülltes Band:
+  \begin{align*}
+  j &= - \frac{e}{4π^2 \hbar} ∫_{\text{besetzte Zustände}} ∇_k E(\v k) \d^3 \v k = \frac{e}{4 π^2 \hbar} (\underbrace{∫_{1. \text{BZ}} \dots}_{= 0} - ∫_{\text{unbesetze Zustände}} \dots) \\
+  &= \frac{e}{4 π^2 \hbar} ∫_{\text{unbesetze Zustände}} ∇_{\v k} E(\v k) \d^3 \v k
+  \end{align*}
+  das heiht $\abs{\text{Lochstrom}} = \abs{\text{Elektronenstrom}}$
+  $v_{\text{Loch}} = v_{\text{Elektron}}; m^{\ast}_{\text{Loch}} = - m^{\ast}_{\text{Elektron}}$
+  verschiedene Bänder: Lochstrom + Elektronenstrom addiert sich. \\
+
+  *Bewegung im \(E\)-Feld.*
+  \begin{align*}
+  \hbar \dot k = -e \v E = \const \\
+  \intertext{alle Elektronen ändern $\v k$ in gleicher Weise}
+  ⇒ \v k(t) &= \v k(0) + \frac{eE}{\hbar}t \\
+  \v v &= \v v(nv k) &= v(\v k(0) + \frac{eE}{\hbar}t) \quad\text{oszilliert in $t$} \\
+  \end{align*}
+  - $m^{\ast} > 0$: Energie wird aus Feld entnommen
+  -	$m^{\ast} < 0$: Energie wird an Kristall übertragen
+
+  *Bloch-Oszillationen:*
+  Konstantes äußeres Feld $⇒$ Wechselstrom. Sofern die freie Weglänge der Elektronen die Bewegung durch die gesamte Brillouin-Zone erlaubt
+
+  $a$: Gitterkonstante
+  \begin{align*}
+  ω_E &= \frac{eE a}{\hbar} \approx \si{\giga\hertz}
+  \end{align*}
+  $a = \SI{2}{\angstrom}; E \approx \SI{1}{\volt\per\centi\meter}; v_F = \SI{e6}{\meter\per\second}  ⇒ ω_E= \SI{31}{\giga\hertz}; δx = \frac{1}{2} \frac{2π}{ω_E} v_F \approx \SI{5}{\centi\meter}$
+
+** 6.4 Elektrische Leitfähigkeit in Metallen
+   Ohmsches Gesetz $\v j = δ \v E ⇔ \v E = ρ \v j$ \\
+   Drude: Elektron bewegt sich analog wie ein Molekül in kinetischer Gastheorie.
+
+   \begin{align*}
+   \v j &= - n e \v v_{\text{Drift}} \\
+   \v v_{\text{Drift}} = \v v_0 - \frac{e \v E}{m} t \\
+   \braket{\v v_{\text{Drift}}} &= - \frac{eE}{m} τ
+   \end{align*}
+   $τ$: Streuzeit:
+   \begin{align*}
+   j &= n \frac{n e^2 τ}{m} \v E \\
+   σ &= \frac{n e^2 τ}{m} = n e μ
+   \end{align*}
+   Elektronen sind Fermionen: können Ort und Impuls gut genug definiert werden, um Elektronentrajektorien sinnvoll zu diskutieren? \\
+   Es muss gelten:
+   \begin{align*}
+   Δ p &\ll \hbar k_F \\
+   ⇒ Δ x \approx \frac{\hbar}{Δ p} \gg \frac{1}{k_F} \sim \SI{1}{\angstrom}
+   \end{align*}
+   gilt in einfachen Metallen! \\
+   Sommerfeld für Elektronengas.
+   \begin{align*}
+   \v F &= \hbar \dot{\v k} = -e \v E
+   ⇒ k(t) &= k(0) - \frac{eE}{\hbar δt} = k(0) - δk \\
+   \braket{\dot{\v k}} &= - \frac{eE}{\hbar} + \braket{\dot{\v k_{\text{Stöße}}}} \overset{!}{=} 0 \\
+   &= -\frac{eE}{\hbar} - \frac{δk}{τ} \\
+   ⇒ δk &= - \frac{eE τ}{\hbar}
+   \end{align*}
+   $⇒$ konstante verschiebung der Fermi-Kugel, konstante Änderung von $v_{\text{Drift}}$
+   \begin{align*}
+   j &= n e v_D = \frac{n e^2 τ}{\hbar} E \\
+   σ &= \frac{n e^2 τ(E_F)}{m^{\ast}}
+   \end{align*}
+
+   Streuprozesse:
+   - Defekte $\checkmark$
+   - Phononen $\checkmark$
+   - Elektronen *kann nicht auftreten, da Blochelektronen Eigenfunktionen*
+
+   Kupfer:
+   - $τ(\SI{300}{\kelvin}) = \SI{8e-9}, l = v_F τ \approx \SI{3e-6}{\centi\meter}$
+   - $τ(\SI{4}{\kelvin}) = \SI{2e-9}, l = v_F τ \approx \SI{0.3}{\centi\meter}$
+
+
+   Streuprozesse: $τ_1, τ_2, τ_2, \dots \to τ_{\text{ges}}^{-1} = τ^{-1}_1 + τ_2^{-1} \to ρ_{ges} = ρ_1 + ρ_2 + \dots$
+   - Tiefe Temperatur $\to$ wenige Phononen $\to$ keine Streuung an Phononen, Widerstand $\sim \const$
+   - Bei Temperaturerhöhung: thermische Aktivierung von Phononen; Widerstand $\sim T^5$
+   - Weitere Erhöhung: alle Phononen aktivietr, Dulong Petit $\to$ Widerstand $\sim T$
+
+
+   \begin{align*}
+   \v F &= \hbar \dot{\v k} = -e \v E \\
+   k(t) &= k_0 - \frac{e E}{\hbar}t (+ \text{ Stöße}) \\
+   σ &= \frac{n e^2 τ(ε_F)}{m^{\ast}}
+   \end{align*}
+
+   Matthiesschen Regel
+   \begin{align*}
+   τ_{\text{ges}}^{-1} &= τ_1^{-1} + τ_2^{-1} + \dots \\
+   ρ_{\text{ges}} &= ρ_1 + ρ_2 + \dots
+   \end{align*}
+
+   Streuprozesse:
+   - Elektron-Elektron (klein)
+   - Elektron-Phonon
+   - Elektron-Defekt
+
+   - Defekte: Annahme: konstante Anzahl \\
+	 \begin{align*}
+	 ρ_D &= ρ_0 = \const
+     \end{align*}
+   - Elektron-Phonon-Streuung
+	 \begin{align*}
+	 E - E' &= \hbar ω_q \\
+	 \v k - \v k' &= \pm \v q + \v G \\
+	 ω_D &\ll \frac{E_F}{\hbar} \\
+	 ⇒ E &\approx E'
+     \end{align*}
+	 1. Normalprozesse: $\v G = 0$
+		\begin{align*}
+		\v k - \v k' &= \pm \v q
+      	\end{align*}
+     2. Umklappprozesse: $\v G \neq 0$
+		\begin{align*}
+		\v k - \v k' &= \pm q + \v G \quad (\v G \neq 0)
+      	\end{align*}
+
+		$T > θ_D$: Phononenanzahl $\sim T$
+		\begin{align*}
+		l^{-1} &\sim \frac{n_{\text{Phononen}}}{\sim T} \frac{\text{Streuuquerschnitt} \text{ Debeye Phononen}}{}
+      	\end{align*}
+
+
+
+Wärmeleitfähigkeit (in einfachen Metallen)
+
+\begin{align*}
+K^2 &= \frac{1}{3} c^2 v^2 l^2 \approx c v^2 τ \\
+\end{align*}
+Quantenmechanik:
+\begin{align*}
+c^2 &= \frac{π^2}{2} n k_B \frac{T}{T_F} \\
+v_F^2 &= \frac{2 E_F}{m} \\
+⇒ K^2 &= \frac{π^2}{3} \frac{n k_B^2}{m} T τ
+\end{align*}
+Metalle: überwiegend elektrischer Beitrag zu $K$.
+
+\begin{align*}
+K^2 &= \frac{π^2}{3} n \frac{k_B^2 T}{m} τ \\
+σ &= \frac{n e^2 τ}{m} \\
+\intertext{$⇒$ Wiedermann-Franz Gesetz}
+\frac{K}{σ} &= \frac{π^2}{3} (\frac{k_B}{e})^2 T
+\intertext{Loschmidt-Zahl (eigentlich Lorenz Zahl?)}
+L &= \frac{K}{σT} &= \SI{2.44e-8}{\watt\ohm\per\kelvin^2}
+\end{align*}
+
+* 7 Supraleitung
+  1. $R \to 0$
+  2. Perfekter Diamagnetismus (für $B < B_c$)
+
+  Perfekter Diamagnetismus \\
+  Meißner-Ochsenfeld Effekt
+  \begin{align*}
+  B_{nt} &= μ_0 (H^{\text{ext}} + M) = 0 \\
+  ⇒ M &= - H \\
+  ⇒ ϰ_{SI} &= \pp{M}{H} &= -1 \\
+  B_{nt} &= H^{\text{ext}} + 4πM &= 0 \\
+  ⇒ ϰ_{cgs} &= - \frac{1}{4π}
+  \end{align*}
+*  Supraleitung 1. und 2. Art
+  Supraleitung wird im Magnetfeld zerstört, wenn die magnetische Energie der thermischen Energie am Phasenübergang entspricht
+  1. Supraleitung 1. Art: Perfekter Diamagnetismus für $B < B_C$
+	 Empirisch:
+	 \begin{align*}
+  	 B_c(T) &= B_c(T = 0)(1 - (\frac{T}{T_C})^2)
+   	 \end{align*}
+
+
+Exzitonen
+
+\begin{align*}
+E &= - \frac{\SI{13.6}{\electronvolt} μ / m_e}{(\frac{ε}{ε_0})^2 n^2} \\
+E_{\text{kin}} &\approx \SIrange{1}{200}{\milli\electronvolt} \\
+E_{yp} &\approx \si{\electronvolt} \\
+α_{B} &= α_{B}^{\text{H-Atom}} \frac{ε}{ε_0} \frac{m_e}{μ} \sim 1 - \dots
+\end{align*}
+
+Dotierte Halbleiter
+- Wenige Ladungen bei $\SI{300}{\kelvin}$
+- $R$ stark \(T\)-abhängig
+
+Wasserstoff-Modell
+\begin{align*}
+E_{ν} &= - \frac{1}{2} \frac{m^{\ast} e^4}{(4π ε_0 ε_r \hbar)^2} \frac{1}{ν^2} &= \SI{-13.6}{\electronvolt} \frac{m^{\ast}}{m_e} \frac{1}{ε_r^2} \frac{1}{ν^2}
+\end{align*}
+$ν = 1$: Grundzustand, Ionisationsenergie der Störstelle \\
+$ν = ∞$: vollständige Ionisation.
+Effektiver Bohrradius:
+\[r_ν = \frac{4π ε_0 ε_r \hbar^2}{m^{\ast} e^2} ν^2\]
+
+Experimentell: $ε_r \approx \SIrange{10}{15}, m^{\ast}_e \approx \num{0.07} m_e, E_1 = \SI{5}{\milli\electronvolt}$
+
+pn Übergang:
+Diffusionsspannung
+\begin{align*}
+e V_D &= μ_n - μ_e \\
+&= E_g - k_B \ln (\frac{N_L N_A}{n_D n_A}) \approx E_g
+\end{align*}
+
+weit weg vom übergang
+\begin{align*}
+n_n &\approx n_D^{+} \approx n_D \\
+p_D &\approx n_A^{-} \approx n_A
+\end{align*}
+
+MWG:
+\begin{align*}
+n_p p_p = n_n p_n = n p \\
+\end{align*}
+
+Schottkey-Modell
+\[ρ(x) = \begin{cases} - e n_A & d_p < x < 0 \\ e n_D & 0 < x < d_n \\ 0 & \text{sonst}\end{cases}\]
+
+Ladungsneutralität:
+\[n_D d_n = n_A n_p\]
+
+
+poisson-gleichung:
+\begin{align*}
+\frac{\partial^2 \tilde V}{\partial x^2} &= - \frac{1}{ε_0 ε} ρ(x) = - \frac{e n_D}{e ε_0} (0 < x < d_n) \\
+E_x &= - \pp{\tilde V}{x} &= - \frac{e n_D}{ε_0 ε} (d_n - x) \\
+\tilde V(x) &= V_n(∞) - \frac{e n_D}{ε ε_0}(d_n - x)^2
+\end{align*}
+ pn Übergang mit externer Spannung $U$: $U= 0$:	Diffusionsstrom + Driftstrom $=$ 0 (im Gleichgewicht) \\
+Diffusionstrom: \\
+$\to$ Majoritätsladungsträger: Diffusion gegen $e V_D$ $\to$ Rekombinatin im gegenüberliegenden Regime $j_{\text{diff}} \approx a \exp(- e V_D / (k_B T))$
+Driftstrom: \\
+Minoritätsladungsträger (themrisch angeregt) driften von im \(E\)-Feld in Richtung Majoritätsregime $\to$ unabhängig von $V_D$
+
+\begin{align*}
+j_{\text{diff}}(U) &= j_{\text{diff}}(U = 0) \exp(e U / (k_B T)) \\
+j &= j_{\text{diff} } j_{\text{drift}} = j_{\text{drift}}(\exp(eU / (k_B T)) - 1)
+\end{align*}
+
+$\tilde V_n(∞) - \tilde V_p (-∞) = V_D - U$

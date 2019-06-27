@@ -1,0 +1,112 @@
+#+INCLUDE: ../header.org
+#+TITLE: Exercise sheet 5
+#+AUTHOR: by Robin Heinemann (group 4), Paul Rosendahl (group 4)
+#+LATEX_HEADER: \newcommand{\rust}{\textit{rust}\xspace}
+
+* Tridiagonal matrices
+  Consider the following linear system
+  \begin{equation*}
+  \begin{pmatrix}b_1 & c_1 & 0 & 0 & \dots & 0 & 0 & 0 & 0 \\ a_2 & b_2 & c_2 & 0 & \dots & 0 & 0 & 0 & 0 \\ 0 & a_3 & b_3 & c_3 & \dots & 0 & 0 & 0 & 0 \\ \vdots & \vdots & \vdots & \vdots &  & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & 0 & \dots & a_{n - 2} & b_{n - 2} & c_{n - 2} & 0 \\ 0 & 0 & 0 & 0 & \dots & 0 & a_{n - 1} & b_{n - 1} & c_{n - 1} \\ 0 & 0 & 0 & 0 & \dots & 0 & 0 & a_n & b_n\end{pmatrix} \cvec{x_1; x_2; x_3 \vdots; x_{n - 2}; x_{n - 1}; x_n} = \cvec{y_1; y_2; y_3 \vdots; y_{n - 2}; y_{n - 1}; y_n}
+  \end{equation*}
+  where $n ∈ ℕ$. This can be solved using Gaussian elimination. To transform the matrix to a upper triangular matrix the following algorithm can be used
+  \begin{align*}
+  \tilde b_1 &= b_1 \\
+  \tilde y_1 &= y_1 \\
+  \tilde b_{i + 1} &= b_{i + 1} - \frac{a_{i + 1}}{\tilde b_i} c_i \\
+  \tilde y_{i + 1} &= y_{i + 1} - \frac{a_{i + 1}}{\tilde b_i} \tilde y_i \\
+  \end{align*}
+  This results in the following linear system with the same solution as the original system
+  \begin{equation*}
+  \begin{pmatrix}\tilde b_1 & c_1 & 0 & 0 \\ 0 & \ddots & \ddots & 0 \\ 0 & \ddots & \ddots & c_{n - 1} \\ 0 & 0 & 0 & \tilde b_n\end{pmatrix} \cvec{x_1; \vdots; \vdots; x_n} = \cvec{\tilde y_1; \vdots; \vdots; \tilde y_n}
+  \end{equation*}
+  This can be solved using a simple backward substitution
+  \begin{align*}
+  x_n &= \frac{\tilde y_n}{\tilde b_n} \\
+  x_{i - 1} &= \frac{1}{\tilde b_{i - 1}}(\tilde y_{i - 1} - c_{n - 1} x_{i})
+  \end{align*}
+  This algorithm is used to solve the linear system where $a_i = \num{-1}, b_i = \num{2}, c_i = \num{-1}, y_i = \num{0.1} ∀ i ∈ \{1, \dots, n\}$. The solution is the used to calculate the right-hand-side, which should be
+  $\num{0.1}$ for every entry. The calculated values comes quite close to the expected $\num{0.1}$, with the biggest relative error being $\num{3.1e-15} \approx 30 · \text{eps}$. This means the error is still quite close to
+  the minimal possible error. For most applications a error this small will probably be irrelevant.
+  #+caption: rust implementation of	gauss elimination for a tridiagonal matrix
+  #+ATTR_LATEX: :placement [Hp]
+  #+begin_src rust :tangle "gauss_tridiag.rs" :results raw output :exports both :colnames yes :long-listing
+  use std::ops::{Div, Mul, SubAssign, AddAssign, Sub, DivAssign};
+
+  type Vector<T> = Vec<T>;
+
+  fn tridiag<T>(a: &Vector<T>, b: &mut Vector<T>, c: &mut Vector<T>, y: &mut Vector<T>) -> Vector<T>
+      where T: Div<Output = T> + SubAssign + Mul<Output = T> + Sub<Output = T> + Copy
+  {
+      let n = y.len();
+
+      for i in 0..(n - 1) {
+          let f = a[i] / b[i];
+
+          b[i + 1] -= f * c[i];
+          y[i + 1] -= f * y[i];
+      }
+
+      let mut x = y.clone();
+
+      x[n - 1] = y[n - 1] / b[n - 1];
+
+      for i in 1..n {
+          let ii = n - i - 1;
+
+          x[ii] = (y[ii] - c[ii] * x[ii + 1]) / b[ii];
+      }
+
+      x
+  }
+
+  fn main() {
+      let n = 10;
+      let mut a = vec![-1.0; n - 1];
+      let mut b = vec![2.0; n];
+      let mut c = vec![-1.0; n - 1];
+      let mut y = vec![0.1; n];
+
+      let x = tridiag(&a, &mut b, &mut c, &mut y);
+
+      let a = vec![-1.0; n - 1];
+      let b = vec![2.0; n];
+      let c = vec![-1.0; n - 1];
+      let mut yy = vec![0.0; n];
+
+      yy[0] = b[0] * x[0] + c[0] * x[1];
+      yy[n - 1] = a[n - 2] * x[n - 2] + b[n - 1] * x[n - 1];
+      for i in 1..(n - 1) {
+          yy[i] = a[i - 1] * x[i - 1] + b[i] * x[i] + c[i] * x[i + 1];
+      }
+
+	  println!("|$x_n$|$y'_n$");
+	  println!("|-");
+
+	  for i in 0..n {
+          println!("| {} | {}", x[i], yy[i]);
+	  }
+  }
+  #+end_src
+
+  #+caption: solution of the linear system and right-hand-side calculated from the solution
+  #+attr_latex: :booktabs
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  |              $x_n$ |              $y'_n$ |
+  |--------------------+---------------------|
+  |                0.5 | 0.09999999999999998 |
+  |                0.9 | 0.09999999999999987 |
+  | 1.2000000000000002 | 0.09999999999999987 |
+  | 1.4000000000000006 | 0.10000000000000031 |
+  | 1.5000000000000007 | 0.10000000000000009 |
+  | 1.5000000000000007 | 0.10000000000000031 |
+  | 1.4000000000000004 | 0.09999999999999987 |
+  | 1.2000000000000002 | 0.10000000000000009 |
+  | 0.8999999999999999 | 0.09999999999999976 |
+  | 0.4999999999999999 | 0.09999999999999987 |
+
+* Additional notes
+  All programs written are written using the programming language \rust. Extra dependencies (\rust \textit{crates}) will be listed in a comment in the first line.
+  To get the source files of each program just unzip this \textit{pdf} file. You will find directories for every
+  program in this file. To execute one of the programs run \texttt{cargo run} in it's directory. All plots are made with \textit{gnuplot}.
+  This document was written in \textit{org-mode} and converted to \textit{pdf}. The corresponding \textit{org-mode} sources can also be found by unzipping this \textit{pdf} file.

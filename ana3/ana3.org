@@ -1,7 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Analysis III (Marciniak-Czochra)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 #+LATEX_HEADER:	\theoremsymbol{}
 #+LATEX_HEADER: \theoremstyle{nonumberplain}
 #+LATEX_HEADER: \renewtheorem{remark}{Bemerkung}
@@ -634,7 +634,7 @@
    #+begin_remark latex
    Im Allgemeinen können wir keine Gleichheit erwarten. Zum Beispiel ist für $f_x := χ_{(k,k + 1)}, k ∈ ℕ$ einerseits $f_k(x) \to 0$ punktweise,
    andererseits
-   \[∫_ℝ f_k \d x = 1, f_k = k χ_{(0,\frac{1}{k})} \text{ und } f_k = \frac{1}{k} χ_{(0,k)}\]
+   \[∫_{ℝ} f_k \d x = 1, f_k = k χ_{(0,\frac{1}{k})} \text{ und } f_k = \frac{1}{k} χ_{(0,k)}\]
    #+end_remark
    #+begin_defn latex
    Sei $(X, Σ, μ)$ ein Maßraum, $A ∈ Σ$ und $f:(X, Σ) \to (ℝ, \mathcal{B})$ messbar. Ist
@@ -1024,7 +1024,7 @@
   \begin{align*}
   \norm{χ_{ℚ}}_{L^∞(ℝ, λ)} &= 0 \\
   \norm{χ_{ℚ}}_{L^∞(ℝ, δ_0)} &= 1 \\
-  δ_0(\{x ∈ ℝ \mid χ_ℚ(x) \geq s\}) &= 1
+  δ_0(\{x ∈ ℝ \mid χ_{ℚ}(x) \geq s\}) &= 1
   \end{align*}
   #+end_ex
   #+begin_defn latex
@@ -1322,7 +1322,7 @@
 * Fourier-Transformation
   #+begin_defn latex
   Für $f ∈ L^1(ℝ^n)$ definieren wir
-  \[\hat f(p) = \frac{1}{(2π)^{n/2}} ∫_ℝ e^{-i\braket{p,x}} f(x) \d λ^n(x) \qquad p ∈ ℝ^n\]
+  \[\hat f(p) = \frac{1}{(2π)^{n/2}} ∫_{ℝ} e^{-i\braket{p,x}} f(x) \d λ^n(x) \qquad p ∈ ℝ^n\]
   mit $\braket{·,·}$: Skalarprodukt. \\
   $\mathcal{F}: f \to \hat f$ heißt Fourier-Transformation. $\mathcal{F}$ ist eine lineare Abbildung die beschränkt ist.
   Eine lineare Abbildung \(A: X \to Y, X, Y\)-normierte Räume, heißt beschränkt falls $∃ C > 0, \text{ sodass } \norm{A x}_Y \leq C \norm{x}_X$

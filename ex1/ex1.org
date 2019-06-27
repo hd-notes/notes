@@ -1,6 +1,6 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Experimentalphysik I (Schulz-Coulon)
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 
 #+begin_export latex
 \catcode`(=12

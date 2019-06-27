@@ -1,0 +1,191 @@
+#+INCLUDE: ../header.org
+#+TITLE: Exercise sheet 8
+#+AUTHOR: by Robin Heinemann (group 4), Paul Rosendahl (group 4)
+#+LATEX_HEADER: \newcommand{\rust}{\textit{rust}\xspace}
+#+LATEX_HEADER: \newcommand{\mathematica}{\textit{Mathematica}\xspace}
+
+* Many Species Population Dynamics
+  We study 6 populations, 3 predator- $(P_i)$ and 3 prey-species $(N_i)$. Their dynamic is given by
+  \begin{align*}
+  \dd{N_i}{t} &= N_i (a_i - N_i - \sum_{j} b_{ij} P_j) \\
+  \dd{P_i}{t} &= P_i (\sum_{j} c_{ij} N_j - d_i) \\
+  \end{align*}
+  Where
+  \begin{align*}
+  a_i &= (56, 12, 35)_i \\
+  d_i &= (85, 9, 35)_i \\
+  b_{ij} &= \begin{pmatrix}20 & 30 & 5 \\ 1 & 3 & 7 \\ 4 & 10 & 20\end{pmatrix} \\
+  c_{ij} &= \begin{pmatrix}20 & 30 & 35 \\ 3 & 3 & 3 \\ 7 & 8 & 20\end{pmatrix}
+  \end{align*}
+  We are searching for the fixed points of the system, so
+  \begin{align*}
+  \dd{N_i}{t} &= 0 \\
+  \dd{P_i}{t} &= 0 \\
+  \end{align*}
+  The latter equation only depends on one set of the populations and can be solved easily
+  \begin{align*}
+  P_i (\sum_{j} c_{ij} N_j - d_i) = 0 ⇒ P_i = 0 ∨ \sum_{j} c_{ij} N_j - d_i = 0
+  \end{align*}
+  Let us first solve the system for $P_i \neq 0 ⇒$. The resulting set of equations can be written
+  as matrix equation
+  \begin{align*}
+  \begin{pmatrix}20 & 30 & 35 \\ 3 & 3 & 3 \\ 7 & 8 & 20\end{pmatrix} \cvec{N_1; N_2; N_3} = \cvec{85; 9; 35}
+  \end{align*}
+  This can be solved using gauss elimination but the solution can also be quite easily be seen directy from the equation:
+  \[(N_1, N_2, N_3) = (1, 1, 1)\]
+  This can be substituted back in the first set of equations
+  \begin{align*}
+  N_i (a_i - N_i - \sum_{j} b_{ij} P_j) &= 0 \\
+  \to \cvec{56; 12; 35} - \cvec{1; 1; 1} - \begin{pmatrix}20 & 30 & 5 \\ 1 & 3 & 7 \\ 4 & 10 & 20\end{pmatrix} \cvec{P_1; P_2; P_3} &= \cvec{0; 0; 0}
+  \end{align*}
+  the solution of this equation can also be easily guessed:
+  \[(P_1, P_2, P_3) = (1, 1, 1)\]
+  We obtain the fixed point
+  \[(N_1, N_2, N_3, P_1, P_2, P_3) = (1, 1, 1, 1, 1, 1)\]
+  Now let us study the equation for $P_i = 0$. Substituting this back into the first equation leads to
+  \begin{align*}
+  N_i(a_i - N_i) &= 0
+  \end{align*}
+  The solution for this	is
+  \begin{align*}
+  N_1 = 0 ∨ N_1 = 56 \\
+  N_2 = 0 ∨ N_2 = 12 \\
+  N_3 = 0 ∨ N_3 = 35 \\
+  \end{align*}
+  The $N_i$ are independent from each other so every combination of the	solution each $N_i$ is a fixed point. We obtain
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{align*}
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (0, 0,   0, 0, 0, 0) \\
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (0, 0,  35, 0, 0, 0) \\
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (0, 12,  0, 0, 0, 0) \\
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (0, 12, 35, 0, 0, 0) \\
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (56, 0,   0, 0, 0, 0) \\
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (56, 0,  35, 0, 0, 0) \\
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (56, 12,  0, 0, 0, 0) \\
+  (N_1, N_2, N_3, P_1, P_2, P_3) &= (56, 12, 35, 0, 0, 0)
+  \end{align*}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  Together with the first fixed point found ($N_i = P_i = 1$) these are all possible fixed points.
+  We can combine the two sets of equations into one, doing this we get
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{align*}
+  \v v &= (N_1, N_2, N_3, P_1, P_2, P_3) \\
+  \dd{\v v}{t} &= \v f(\v v) \\
+  \v f(\v v) &=
+  \cvec{(N_1 (56 - N_1 - 20 P_1 - 30 P_2 -  5 P_3));(N_2 (12 - N_2 -  1 P_1 -  3 P_2 -  7 P_3));(N_3 (35 - N_3 -  4 P_1 - 10 P_2 - 20 P_3));(P_1 (20 N_1 + 30 N_2 + 35 N_3 - 85));(P_2 ( 3 N_1 +  3 N_2 +  3 N_3 -  9));(P_3 ( 7 N_1 +  8 N_2 + 20 N_3 - 35))}
+  \end{align*}
+  We then can calculate the Jacobi matrix of $\v f$:
+  \begin{align*}
+  Df = \left(\begin{array}{ccc}
+  56 - 2 N_1 - 20 P_1 - 30 P_2 - 5 P_3 & 0 & 0 \\
+  0 & 12 - 2 N_2 - 1 P_1 -  3 P_2 -  7 P_3 & 0 \\
+  0 & 0 & 35 - 3 N_3 - 4 P_1 - 10 P_2 - 20 P_3 \\
+  20 P_1 & 30 P_1 & 35 P_1 \\
+  3 P_2 &  3 P_2 &  3 P_2 \\
+  7 P_3 &  8 P_3 & 20 P_3 \\
+  \end{array}\right. \\
+  \left.
+  \begin{array}{ccc}
+   -20 N_1 & -30 N_1 &  -5 N_1 \\
+   -1 N_2 &  -3 N_2 &  -7 N_2 \\
+   -4 N_3 & -10 N_3 & -20 N_3 \\
+  (20 N_1 + 30 N_2 + 35 N_3 - 85) & 0 & 0 \\
+  0 & ( 3 N_1 +  3 N_2 +  3 N_3 -  9) & 0 \\
+  0 & 0 & ( 7 N_1 +  8 N_2 + 20 N_3 - 35) \\
+  \end{array} \right)
+  \end{align*}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  Setting $N_i = P_i = 1$ we obtain $A$
+  \begin{align*}
+  \begin{pmatrix}
+  -1 & 0 &  0 & -20 & -30 & -5 \\
+   0 & -1 &  0 &  -1 &  -3 &  -7 \\
+   0 &  0 & -1 &  -4 & -10 & -20 \\
+  20 & 30 &  35 & 0 & 0 & 0 \\
+   3 &  3 &  3 & 0 & 0 & 0 \\
+   7 &  8 & 20 & 0 & 0 & 0 \\
+  \end{pmatrix}
+  \end{align*}
+  The eigenvalues and eigenvectors can be determined using \mathematica:
+  #+BEGIN_EXPORT latex
+ \catcode`(=12
+ \catcode`)=12
+  \begin{gather*}
+  \cvec{λ_1;λ_2;λ_3;λ_4;λ_5;λ_6} = \left(\begin{array}{c}
+ -0.5+33.6256 i \\
+ -0.5-33.6256 i \\
+ -0.5+7.67949 i \\
+ -0.5-7.67949 i \\
+ -1.13602 \\
+ 0.136024 \\
+ \end{array}\right) \\
+ \cvec{\v v_1;\v v_2;\v v_3;\v v_4;\v v_5;\v v_6} =
+  \left(
+ \begin{array}{ccc}
+ -0.0260729+1.75344 i & -0.00446549+0.300309 i & -0.0140883+0.947453 i \\
+ -0.0260729-1.75344 i & -0.00446549-0.300309 i & -0.0140883-0.947453 i \\
+ 0.234576\, -3.60286 i & -0.037271+0.572445 i & -0.0921933+1.416 i \\
+ 0.234576\, +3.60286 i & -0.037271-0.572445 i & -0.0921933-1.416 i \\
+ 5.85892 & -3.21185 & -0.822684 \\
+ -0.701528 & 0.384576 & 0.0985054 \\
+ \end{array}
+ \right. \\
+ \left.
+ \begin{array}{ccc}
+ 2.29703\, +0. i  & 0.26776\, +\text{3.774436480993636$\grave{ }$*${}^{\wedge}$-16} i & 1. \\
+ 2.29703\, +0. i   & 0.26776\, -\text{3.774436480993636$\grave{ }$*${}^{\wedge}$-16} i & 1. \\
+ -0.693262-\text{9.43609120248409$\grave{ }$*${}^{\wedge}$-17} i &  -0.630672+\text{1.1795114003105113$\grave{ }$*${}^{\wedge}$-17} i & 1. \\
+   -0.693262+\text{9.43609120248409$\grave{ }$*${}^{\wedge}$-17} i &    -0.630672-\text{1.1795114003105113$\grave{ }$*${}^{\wedge}$-17} i & 1. \\
+ 7.01658 & -4.81782 & 1. \\
+ 7.01658 & -4.81782 & 1. \\
+ \end{array}
+ \right)
+  \end{gather*}
+ \catcode`(=\active
+ \catcode`)=\active
+  #+END_EXPORT
+  We can then obtain the time evolution of the populations using
+  #+caption: Plot of the time evolution of the populations
+  #+ATTR_LATEX: :placement [H]
+  [[./plot.pdf]]
+
+  All populations are decreasing exponentially in the beginning, but are oscillating. Over time the oscillation decreases and the populations are also increasing again. For $t \to ∞$ they
+  all increase exponentially.
+  #+caption: mathematica code for calculating the eigenvalues / eigenvectors and the time evolution
+  #+ATTR_LATEX: :placement [Hp]
+  #+begin_src mathematica :exports code :colnames yes :long-listing
+  a = {56, 12, 35};
+d = {85, 9, 35};
+b = {{20, 30, 5}, {1, 3, 7}, {4, 10, 20}};
+c = {{20, 30, 35}, {3, 3, 3}, {7, 8, 20}};
+P = {P1, P2, P3};
+Ns = {N1, N2, N3};
+v = Join[Ns, P ];
+dn = Ns*(a - Ns - b.P);
+dp = P*(c.Ns - d);
+dv = Join[dn, dp];
+dv // MatrixForm
+J = D[dv, {v}] ;
+J // MatrixForm
+A = J /. {N1 -> 1, N2 -> 1, N3 -> 1, P1 -> 1, P2 -> 1, P3 -> 1} ;
+A // MatrixForm
+ews = A // Eigenvalues;
+evs = A // Eigenvectors;
+ews // N // MatrixForm // TeXForm
+evs // N // MatrixForm
+cs = {3, 3, 1, 1, -5, .1};
+p = Show[Plot[
+   Evaluate[Table[Total[Exp[ews*t]*cs*evs][[i]], {i, 6}]], {t, 0, 10},
+   PlotRange -> Full,
+   PlotLegends -> {"N_1", "N_2", "N_3", "P_1", "P_2", "P_3"},
+   ImageSize -> 1000]]
+   Export["plot.pdf", p];
+  #+end_src

@@ -1,0 +1,2 @@
+#+INCLUDE: "header_common.org" :minlevel 1
+#+LATEX_HEADER: \setdefaultlanguage{english}

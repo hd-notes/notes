@@ -1,0 +1,218 @@
+#+INCLUDE: ../header.org
+#+TITLE: Exercise sheet 6
+#+AUTHOR: by Robin Heinemann (group 4), Paul Rosendahl (group 4)
+#+LATEX_HEADER: \newcommand{\rust}{\textit{rust}\xspace}
+
+* Perturbed quantum mechanical oscillator
+  The Hamiltonian is given by
+  \begin{align*}
+  h &= \frac{H}{\hbar \omega} = (\frac{1}{2} Π^2 + \frac{1}{2}Q^2 + λ Q^4) \\
+  \string(h\string)_{nm} &= (h_0)_{nm} + λ (Q^4)_{nm} \\
+  \string(h_0\string)_{nm} &= (n + \frac{1}{2}) δ_{nm}
+  \end{align*}
+  $Q_{nm}$ is given by
+  \[Q_{nm}= \frac{1}{\sqrt{2}}(\sqrt{n + 1} δ_{n,m - 1} + \sqrt{n} δ_{n, m + 1})\]
+  For $Q^2$	we can find
+  #+begin_export latex
+  \catcode`(=12
+  \catcode`)=12
+  \begin{align*}
+  (Q^2)_{ik} &= \frac{1}{2}(\sqrt{i + 1} δ_{i, j - 1} + \sqrt{i} δ_{i, j + 1})(\sqrt{j + 1} δ_{j, k - 1} + \sqrt{j} δ_{j, k + 1}) \\
+  &= \frac{1}{2}(\sqrt{i + 1} \sqrt{j + 1} δ_{i, j - 1} δ_{j, k - 1} + \sqrt{i + 1} \sqrt{j} δ_{i, j - 1} δ_{j, k + 1} +
+     \sqrt{i} \sqrt{j + 1} δ_{i, j + 1} δ_{j, k - 1} + \sqrt{i} \sqrt{j} δ_{i, j + 1} δ_{j, k + 1}
+  	 ) \\
+  &= \frac{1}{2}(\sqrt{(i + 1)(i + 2)} δ_{i, k - 2} + (2i + 1) δ_{ik} + \sqrt{i(i - 1)} δ_{i, k + 2}) \\
+  \string(Q^4\string)_{ik} &= \frac{1}{4}
+  (\sqrt{(i + 1)(i + 2)} δ_{i, j - 2} + (2i + 1) δ_{ij} + \sqrt{i(i - 1)} δ_{i, j + 2}) \\
+  &\hphantom{{}= \frac{1}{4}}(\sqrt{(j + 1)(j + 2)} δ_{j, k - 2} + (2j + 1) δ_{jk} + \sqrt{j(j - 1)} δ_{j, k + 2}) \\
+  &=
+  \frac{1}{4}\string(
+  \sqrt{(j + 1)(j + 2)} \sqrt{(i + 1)(i + 2)} δ_{i, j - 2} δ_{j, k - 2} + (2j + 1) \sqrt{(i + 1)(i + 2)} δ_{i, j - 2} δ_{jk} \\
+  &\hphantom{{}=\frac{1}{4}(}+\sqrt{j(j - 1)} \sqrt{(i + 1)(i + 2)} δ_{i, j - 2} δ_{j, k + 2} + \sqrt{(j + 1)(j + 2)} (2i + 1) δ_{ij} δ_{j, k - 2}
+  &\hphantom{{}=\frac{1}{4}(}+(2j + 1) (2i + 1) δ_{i,j} δ_{j,k} + \sqrt{j(j - 1)} (2i + 1) δ_{ij} δ_{j, k + 2} \\
+  &\hphantom{{}=\frac{1}{4}(}+\sqrt{(j + 1)(j + 2)} \sqrt{i(i - 1)} δ_{i, j + 1} δ_{j, k - 2} + (2j + 1) \sqrt{i(i - 1)} δ_{i, j + 2} δ_{jk} \\
+  &\hphantom{{}=\frac{1}{4}(}+\sqrt{j(j - 1)} \sqrt{i(i - 1)} δ_{i, j + 2} δ_{j, k + 2}\string) \\
+  &= \frac{1}{4}(
+  \sqrt{(i + 1)(i + 2)(i + 3)(i + 4)} δ_{i, k - 4} + (2i + 5) \sqrt{(i + 1)(i + 2)} δ_{i, k - 2} \\
+  &\hphantom{{}=\frac{1}{4}(}+(i + 1)(i + 2) δ_{i, k} + \sqrt{(i + 1)(i + 2)} (2i + 1) δ_{i,k - 2} \\
+  &\hphantom{{}=\frac{1}{4}(}+(2i + 1)^2 δ_{i,k} + \sqrt{i(i - 1)} (2i + 1) δ_{i,k + 2} \\
+  &\hphantom{{}=\frac{1}{4}(}+i(i - 1) δ_{i, j} + (2i + 5) \sqrt{i(i - 1)} δ_{i, k + 2}  \\
+  &\hphantom{{}=\frac{1}{4}(}+\sqrt{i(i - 1)(i - 2)(i - 3)} δ_{i, k + 4}) \\
+  \intertext{If the matrix is of size $n$ there are boundary terms for the diagonals, because of the finite size, which results in}
+  &= \frac{1}{4}(
+  \sqrt{(i + 1)(i + 2)(i + 3)(i + 4)} δ_{i, k - 4} + (2i + 5) \sqrt{(i + 1)(i + 2)} δ_{i, k - 2} \\
+  &\hphantom{{}=\frac{1}{4}(}+(i + 1)(i + 2) δ_{i, k} + \sqrt{(i + 1)(i + 2)} (2i + 1) δ_{i,k - 2} \\
+  &\hphantom{{}=\frac{1}{4}(}+(2i + 1)^2 δ_{i,k} + \sqrt{i(i - 1)} (2i + 1) δ_{i,k + 2} \\
+  &\hphantom{{}=\frac{1}{4}(}+i(i - 1) δ_{i, j} + (2i + 5) \sqrt{i(i - 1)} δ_{i, k + 2}  \\
+  &\hphantom{{}=\frac{1}{4}(}+\sqrt{i(i - 1)(i - 2)(i - 3)} δ_{i, k + 4} \\
+  &\hphantom{{}=\frac{1}{4}(}(i + 1)(i + 2)(δ_{i,0}δ_{k,0} + δ_{i,1},δ_{k, 1}) - i(i - 1)(δ_{i,n - 1} δ_{j,n - 1} + δ_{i,n} δ_{j,n})) \\
+  \end{align*}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+end_export
+  #+caption: rust implementation of	gauss elimination for a tridiagonal matrix
+  #+ATTR_LATEX: :placement [Hp]
+  #+begin_src C :tangle "harmonic.c" :results raw output :exports both :colnames yes :long-listing :flags "-lm"
+  #include <tred2.c>
+  #include <tqli.c>
+  #include <nrutil.c>
+  #include <stdio.h>
+  #include <math.h>
+
+  double pythag(double a, double b) {
+      return sqrt(a * a + b * b);
+  }
+
+  void matmul(double ** a, double ** b, double ** c, int n) {
+      for(int i = 1; i <= n; i++) {
+          for(int j = 1; j <= n; j++) {
+              c[i][j] = 0.0;
+              for(int k = 1; k <= n; k++) {
+                  c[i][j] += a[i][k] * b[k][j];
+              }
+          }
+      }
+  }
+
+  void p(double ** m, int n) {
+      for(int i = 1; i <= n; i++) {
+          for(int j = 1; j <= n; j++) {
+              printf("%2.5lf  ", m[i][j]);
+          }
+          printf("\n");
+      }
+  }
+
+  void perturbed_oscillator(int n, double l) {
+      double ** m = dmatrix(1, n + 4, 1, n + 4);
+      double ** m2 = dmatrix(1, n + 4, 1, n + 4);
+      double ** m3 = dmatrix(1, n + 4, 1, n + 4);
+
+      double sqrt2 = sqrt(2.0);
+
+      for(int i = 1; i < n; i++) {
+          m[i + 1][i] = sqrt(i) / sqrt2;
+          m[i][i + 1] = sqrt(i) / sqrt2;
+      }
+
+      matmul(m, m, m2, n);
+      matmul(m2, m2, m, n);
+
+      for(int i = 1; i <= n; i++) {
+          m[i][i] += (i - 1 + .5) / l;
+
+          for(int j = 1; j <= n; j++) {
+              m[i][j] *= l;
+
+              m2[i][j] = m[i][j];
+          }
+      }
+
+      double * d = malloc(sizeof(double) * (n + 1));
+      double * e = malloc(sizeof(double) * (n + 1));
+      d = d - 1;
+      e = e - 1;
+
+      tred2(m, n, d, e);
+      tqli(d, e, n, m);
+
+      matmul(m2, m, m3, n);
+
+      double * eps = malloc(sizeof(double) * n);
+
+      int * idx = malloc(sizeof(int) * n);
+
+      for(int i = 1; i <= n; i++) {
+          idx[i - 1] = i;
+      }
+
+      for (int i = 1; i < n; i++) {
+          int key = idx[i];
+          int j = i - 1;
+
+          while(j >= 0 && d[idx[j]] > d[key]) {
+              idx[j + 1] = idx[j];
+              j = j - 1;
+          }
+          idx[j + 1] = key;
+      }
+
+      printf("|-\n");
+      printf("| n = %d\n", n);
+      for(int i = 1; i <= 10; i++) {
+          int ix = idx[i - 1];
+          double eps = 0.0;
+
+          for(int j = 1; j <= n; j++) {
+              eps += fabs(m[j][ix] - m3[j][ix] / d[ix]);
+          }
+
+          printf("| %.15lf | %.15lf \n", d[ix], eps);
+      }
+  }
+
+  int main() {
+      printf("| $\\lambda_i$ | $\\eps$ $\n");
+      for(int i = 15; i <= 30; i += 5) {
+          perturbed_oscillator(i, .1);
+      }
+  }
+  #+end_src
+
+  #+caption: the lowest ten eigenvalues $λ_i$ and the 1-norm of $h v - λ v$ where $v$ is the eigenvector with eigenvalue $λ$
+  #+attr_latex: :booktabs
+  #+ATTR_LATEX: :placement [H]
+  #+RESULTS:
+  |        $\lambda_i$ |          $\eps$ $ |
+  |--------------------+-------------------|
+  |             n = 15 |                   |
+  |  0.559146331717481 | 0.000000000000056 |
+  |  1.769503154752390 | 0.000000000000001 |
+  |  3.138630351927867 | 0.000000000000002 |
+  |  4.628832924839890 | 0.000000000000002 |
+  |  6.219589268571163 | 0.000000000000004 |
+  |  7.900514741235316 | 0.000000000000003 |
+  |  9.684402683933815 | 0.000000000000003 |
+  | 11.394960405389993 | 0.000000000000003 |
+  | 13.144176458068515 | 0.000000000000002 |
+  | 16.606417302164019 | 0.000000000000004 |
+  |--------------------+-------------------|
+  |             n = 20 |                   |
+  |  0.559146327396061 | 0.000000000000017 |
+  |  1.769502650598558 | 0.000000000000023 |
+  |  3.138624310963206 | 0.000000000000003 |
+  |  4.628881549200992 | 0.000000000000009 |
+  |  6.220291663918584 | 0.000000000000004 |
+  |  7.899835172646707 | 0.000000000000007 |
+  |  9.658345956233044 | 0.000000000000002 |
+  | 11.484717894488245 | 0.000000000000006 |
+  | 13.364075642272910 | 0.000000000000005 |
+  | 15.422401778971913 | 0.000000000000003 |
+  |--------------------+-------------------|
+  |             n = 25 |                   |
+  |  0.559146327187369 | 0.000000000000233 |
+  |  1.769502644004068 | 0.000000000000003 |
+  |  3.138624307573727 | 0.000000000000028 |
+  |  4.628882782968839 | 0.000000000000006 |
+  |  6.220300826989985 | 0.000000000000010 |
+  |  7.899769051837731 | 0.000000000000004 |
+  |  9.657851696340218 | 0.000000000000009 |
+  | 11.487225950553698 | 0.000000000000006 |
+  | 13.381940814696728 | 0.000000000000008 |
+  | 15.340927001633565 | 0.000000000000006 |
+  |--------------------+-------------------|
+  |             n = 30 |                   |
+  |  0.559146327183577 | 0.000000000000052 |
+  |  1.769502643949268 | 0.000000000000066 |
+  |  3.138624308466358 | 0.000000000000001 |
+  |  4.628882808395193 | 0.000000000000038 |
+  |  6.220300899870113 | 0.000000000000004 |
+  |  7.899767283848700 | 0.000000000000025 |
+  |  9.657840218111822 | 0.000000000000005 |
+  | 11.487312780939364 | 0.000000000000024 |
+  | 13.382455649955588 | 0.000000000000004 |
+  | 15.338741261872123 | 0.000000000000011 |
+
+
+  Comparing the eigenvalues for different $n$ it is clear that the lowest one is by far the most accurate. For $n = 20$ $λ_0$ is accurate to about nine digits. Also
+  $\eps$ is really small for all of the values, which shows that these values are actually eigenvalues.

@@ -8,13 +8,13 @@
 #+LATEX_COMPILER: xelatex
 #+LATEX_HEADER: \usepackage{amsmath}
 #+LATEX_HEADER: \usepackage{mathtools}
-#+LATEX_HEADER: \usepackage{mathspec}
-#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage[newfloat]{minted}
 #+LATEX_HEADER: \usepackage{polyglossia}
 #+LATEX_HEADER: \setdefaultlanguage{english}
-#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket, bbm}
+#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, etoolbox, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket, bbm, caption}
 #+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
+#+LATEX_HEADER: \usepackage{newtxmath}
 #+LATEX_HEADER: \usepackage{textcase}
 #+LATEX_HEADER: \usepackage{scrpage2}
 #+LATEX_HEADER: \usepackage{soul}
@@ -292,7 +292,9 @@
 
 # #+LATEX_HEADER: \usemintedstyle{tango}
 #+LATEX_HEADER: \usemintedstyle{friendly}
-#+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines,mathescape=true}
+#+LATEX_HEADER: \setminted[]{breaklines=true,linenos,frame=lines,mathescape=true,autogobble}
+#+LATEX_HEADER: \renewenvironment{listing}[1][]{\captionsetup{type=listing}}{}
+#+LATEX_HEADER: \SetupFloatingEnvironment{listing}{placement=}
 #+LATEX_HEADER:	\addbibresource{../bib.bib}
 # #+LATEX_HEADER: \newcommand*\Laplace{\mathop{{}\triangle}\nolimits}
 #+LATEX_HEADER: \newcommand*\Laplace{\mathop{}\!\mathbin\triangle}

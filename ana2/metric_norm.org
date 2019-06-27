@@ -18,7 +18,7 @@
 	  \[d_∞(x, y) = \max_{i - 1, \dots, n} \abs{x_i - y_i}\]
    4. $X = ℝ$ mit Metrik
 	  \[d(x, y) = \frac{\abs{x - y}}{1 + \abs{x - y}}\]
-   5. Der Raum der Folgen $a: ℕ \to ℝ$ (beziehungsweise $ℝ^ℕ$) kann mit der Metrik
+   5. Der Raum der Folgen $a: ℕ \to ℝ$ (beziehungsweise $ℝ^{ℕ}$) kann mit der Metrik
 	  \[d(x, y) = \sum_{k = 0}^{∞} 2^{-k} \frac{\abs{x_k - y_k}}{1 + \abs{x_k - y_k}}\]
    #+end_ex
    #+begin_defn latex

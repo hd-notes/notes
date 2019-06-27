@@ -10,4 +10,4 @@ do
     emacs $file --batch -l $configfile -f org-latex-export-to-latex --kill
 done
 
-make
+make -j5

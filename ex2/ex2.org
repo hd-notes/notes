@@ -1,6 +1,6 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Experimentalphysik II (Schulz-Coulon)
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 #+LATEX_HEADER:	\setcounter{section}{10}
 
 # 60% Punkte aus Übungaufgaben

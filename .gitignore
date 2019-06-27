@@ -46,3 +46,8 @@ pdf_key
 *.mp4
 
 !*/cheatsheet/*.tex
+
+# lectures with no content
+vlsi
+astro1
+astro2

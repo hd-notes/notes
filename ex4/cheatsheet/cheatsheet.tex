@@ -1,0 +1,524 @@
+\documentclass[9pt, landscape,a4paper]{extarticle}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+\usepackage{braket}
+\usepackage{microtype}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{mhchem}
+%\usepackage{mathspec}
+\usepackage[ngerman]{babel}
+\usepackage{nath}
+%\usepackage{unicode-math}
+\usepackage{stmaryrd}
+\usepackage{stackengine}
+%\usepackage{polyglossia}
+\usepackage{newunicodechar}
+\newunicodechar{α}{\alpha}
+\newunicodechar{Α}{\alpha}
+\newunicodechar{β}{\beta}
+\newunicodechar{Β}{\beta}
+\newunicodechar{γ}{\gamma}
+\newunicodechar{δ}{\delta}
+\newunicodechar{ε}{\varepsilon}
+\newunicodechar{Ε}{\varepsilon}
+\newunicodechar{ζ}{\zeta}
+\newunicodechar{η}{\eta}
+\newunicodechar{θ}{\theta}
+\newunicodechar{ι}{\iota}
+\newunicodechar{κ}{\kappa}
+\newunicodechar{λ}{\lambda}
+\newunicodechar{μ}{\mu}
+\newunicodechar{Μ}{M}
+\newunicodechar{ν}{\nu}
+\newunicodechar{Ν}{N}
+\newunicodechar{ξ}{\xi}
+\newunicodechar{ο}{\omicron}
+\newunicodechar{π}{\pi}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ρ}{\rho}
+\newunicodechar{Ρ}{P}
+\newunicodechar{σ}{\sigma}
+\newunicodechar{τ}{\tau}
+\newunicodechar{Τ}{\Tau}
+\newunicodechar{υ}{\upsilon}
+\newunicodechar{φ}{\varphi}
+\newunicodechar{χ}{\chi}
+\newunicodechar{ψ}{\psi}
+\newunicodechar{ω}{\omega}
+\newunicodechar{∀}{\forall}
+\newunicodechar{×}{\times}
+\newunicodechar{Γ}{\Gamma}
+\newunicodechar{Δ}{\Delta}
+\newunicodechar{∃}{\exists}
+\newunicodechar{ℤ}{\mathbb{Z}}
+\newunicodechar{∧}{\wedge}
+\newunicodechar{Θ}{\Theta}
+\newunicodechar{⇒}{\implies}
+\newunicodechar{∩}{\cap}
+\newunicodechar{Λ}{\Lambda}
+\newunicodechar{∫}{\int}
+\newunicodechar{ℕ}{\mathbb{N}}
+\newunicodechar{Ξ}{\Xi}
+\newunicodechar{∇}{\nabla}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ℝ}{\mathbb{R}}
+\newunicodechar{Σ}{\Sigma}
+\newunicodechar{⇔}{\iff}
+\newunicodechar{Υ}{\Upsilon}
+\newunicodechar{Φ}{\Phi}
+\newunicodechar{ℂ}{\mathbb{C}}
+\newunicodechar{Ψ}{\Psi}
+\newunicodechar{Ω}{\Omega}
+\newunicodechar{ϑ}{\vartheta}
+\newunicodechar{∞}{\infty}
+\newunicodechar{∈}{\in}
+\newunicodechar{⊂}{\subset}
+\newunicodechar{ϰ}{\varkappa}
+\newunicodechar{ϕ}{\phi}
+\newunicodechar{∨}{\vee}
+\newunicodechar{∮}{\oint}
+\newunicodechar{↦}{\mapsto}
+\newunicodechar{ℚ}{\mathbb{Q}}
+\newunicodechar{⊆}{\subseteq}
+\newunicodechar{⊊}{\subsetneq}
+\newunicodechar{∪}{\cup}
+\newunicodechar{·}{\cdot}
+%\setdefaultlanguage[spelling=new, babelshorthands=true]{german}
+\makeatletter
+\let\mathop\o@mathop
+\makeatother
+
+%\definecolor{myblue}{cmyk}{1,.72,0,.38}
+\definecolor{myblue}{cmyk}{1,1,1, 1}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\everymath\expandafter{\the\everymath \color{myblue}}
+\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+\setlength{\mathindent}{0pt}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+
+
+
+\def\multi@column@out{%
+   \ifnum\outputpenalty <-\@M
+   \speci@ls \else
+   \ifvoid\colbreak@box\else
+     \mult@info\@ne{Re-adding forced
+               break(s) for splitting}%
+     \setbox\@cclv\vbox{%
+        \unvbox\colbreak@box
+        \penalty-\@Mv\unvbox\@cclv}%
+   \fi
+   \splittopskip\topskip
+   \splitmaxdepth\maxdepth
+   \dimen@\@colroom
+   \divide\skip\footins\col@number
+   \ifvoid\footins \else
+      \leave@mult@footins
+   \fi
+   \let\ifshr@kingsaved\ifshr@king
+   \ifvbox \@kludgeins
+     \advance \dimen@ -\ht\@kludgeins
+     \ifdim \wd\@kludgeins>\z@
+        \shr@nkingtrue
+     \fi
+   \fi
+   \process@cols\mult@gfirstbox{%
+%%%%% START CHANGE
+\ifnum\count@=\numexpr\mult@rightbox+2\relax
+          \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+% \setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\else
+      \setbox\count@\vsplit\@cclv to \dimen@
+\fi
+%%%%% END CHANGE
+            \set@keptmarks
+            \setbox\count@
+                 \vbox to\dimen@
+                  {\unvbox\count@
+                   \remove@discardable@items
+                   \ifshr@nking\vfill\fi}%
+           }%
+   \setbox\mult@rightbox
+       \vsplit\@cclv to\dimen@
+   \set@keptmarks
+   \setbox\mult@rightbox\vbox to\dimen@
+          {\unvbox\mult@rightbox
+           \remove@discardable@items
+           \ifshr@nking\vfill\fi}%
+   \let\ifshr@king\ifshr@kingsaved
+   \ifvoid\@cclv \else
+       \unvbox\@cclv
+       \ifnum\outputpenalty=\@M
+       \else
+          \penalty\outputpenalty
+       \fi
+       \ifvoid\footins\else
+         \PackageWarning{multicol}%
+          {I moved some lines to
+           the next page.\MessageBreak
+           Footnotes on page
+           \thepage\space might be wrong}%
+       \fi
+       \ifnum \c@tracingmulticols>\thr@@
+                    \hrule\allowbreak \fi
+   \fi
+   \ifx\@empty\kept@firstmark
+      \let\firstmark\kept@topmark
+      \let\botmark\kept@topmark
+   \else
+      \let\firstmark\kept@firstmark
+      \let\botmark\kept@botmark
+   \fi
+   \let\topmark\kept@topmark
+   \mult@info\tw@
+        {Use kept top mark:\MessageBreak
+          \meaning\kept@topmark
+         \MessageBreak
+         Use kept first mark:\MessageBreak
+          \meaning\kept@firstmark
+        \MessageBreak
+         Use kept bot mark:\MessageBreak
+          \meaning\kept@botmark
+        \MessageBreak
+         Produce first mark:\MessageBreak
+          \meaning\firstmark
+        \MessageBreak
+        Produce bot mark:\MessageBreak
+          \meaning\botmark
+         \@gobbletwo}%
+   \setbox\@cclv\vbox{\unvbox\partial@page
+                      \page@sofar}%
+   \@makecol\@outputpage
+     \global\let\kept@topmark\botmark
+     \global\let\kept@firstmark\@empty
+     \global\let\kept@botmark\@empty
+     \mult@info\tw@
+        {(Re)Init top mark:\MessageBreak
+         \meaning\kept@topmark
+         \@gobbletwo}%
+   \global\@colroom\@colht
+   \global \@mparbottom \z@
+   \process@deferreds
+   \@whilesw\if@fcolmade\fi{\@outputpage
+      \global\@colroom\@colht
+      \process@deferreds}%
+   \mult@info\@ne
+     {Colroom:\MessageBreak
+      \the\@colht\space
+              after float space removed
+              = \the\@colroom \@gobble}%
+    \set@mult@vsize \global
+  \fi}
+
+\setlength{\parindent}{0pt}
+\newcommand\ubar[1]{\stackunder[1.2pt]{\(#1\)}{\rule{1.25ex}{.08ex}}}
+
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{-100pt}
+    \setlength\belowdisplayskip{-100pt}
+    \setlength\abovedisplayshortskip{-100pt}
+    \setlength\belowdisplayshortskip{-100pt}
+%    \setlength\beloweqnsskip{-100pt}
+%    \setlength\displaybaselineskip{-100pt}
+%    \setlength\displaylineskip{-100pt}
+}
+
+\renewcommand\v[1]{\vec{#1}}
+\renewcommand\d{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand*\abs[1]{\lvert#1\rvert}
+\newcommand*\Laplace{\mathop{}\!\mathbin\triangle}
+\newcommand\VAR{\mathrm{VAR}}
+\newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\const}{\ensuremath{\text{ const.}}}%
+%\newcommand*{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+
+\raggedbottom
+\begin{document}
+\small
+\begin{multicols*}{3}
+\raggedcolumns
+Konstanten: \\
+$α = 1/137$, $\hbar c \approx \SI{197}{\electronvolt\nano\meter}$, $\SI{1}{\barn} = \SI{e24}{\centi\meter\squared}$, $N_A = \SI{6e23}{\per\mol}$ \\
+$\hbar = \SI{6.58212e-16}{\electronvolt\second}$, $e = \SI{1.602e-19}{\coulomb}, c = \SI{2.998e8}{\meter\per\second}$
+
+Wasserstoff: $E_n = -Ry Z^2 / n^2$ \\
+Bohr'scher Atomradius: $a_0 = \frac{4π ε_0 \hbar^2}{m_e e^2}$ \\
+Ionisations-Energie: $E_n = \frac{μ Z^2 e^2}{8ε_0^2 h^2 n^2}$ \\
+Mehrelektronensystem: Wechselwirkung zwischen $e^{-}$ + Kopplung, Abschirmung. \\
+Auswahlregeln: $ΔL = \pm 1, Δ m_L = 0, \pm 1, ΔS = 0, ΔJ = 0, \pm 1, J = 0 \not \to J = 0$ \\
+Helium: $S = 0$: Para-Helium, $S = 1$: Ortho-Helium \\
+Spektroskopische Notation: $\ce{^{2S+1} L_J}$, $L$: $s = 0, p = 1, d = 2, f = 3, \dots$ \\
+Näherungsverfahren: Einteilchenlösung + effektives Potential (iterativ) \\
+\textbf{Drehimpulskopplung}:
+$L-S$-Kopplung: falls Kopplungsenergie zwischen Bahndrehimpulsen und zwischen Spin groß ($Z$ < 10). \\
+$\abs{l_1 - l_2} \leq L \leq l_1 + l_2$, $\abs{s_1 - s_2} \leq S \leq s_1 + s_2$, $\abs{S - L} \leq J \leq S + L$ \\
+$c \v L \v S = c(J(J + 1) - L(L + 1) - S(S + 1))$ \\
+$JJ$-Kopplung: $j_i = l_i + s_i, J = Σ j_i$ ($Z > 50$) \\
+Reihenfolge der Energiezustände: \\
+$1s, 2s, 2p, 3s, 3p, [4s, 3d], 4p, [5s, 4d], 5p, [6s, 5d 4f], 6p, [7s, 6d, 5f]$ \\
+Schale $n$: $K = 1$, $L = 2$, $M = 3$, $\dots$ \\
+\textbf{Hundsche Regeln}: \\
+1. Nach	energetischer Reihenfolge alle möglichen Unterschalen komplett befüllen ($L = 0, S = 0, J = 0$) \\
+2. In offener Schale Spin maximieren (symmetrische Spinwellenfunktion $\to$ maximaler Abstand $\to$ minimale Coulombenergie) \\
+3. $L$ maximieren \\
+4. offene Schale weniger als halb gefüllt? $J = \abs{L - S}$, mehr als halb gefüllt: $J = L + S$ \\
+
+Pauli: Fermionen sind ununterscheidbar $\to$ keine gleichen Sets von Quantenzahlen. \\
+$\to$ Gesamtwellenfunktion antisymmetrisch, Spin $1$: symmetrisch, Spin $0$: antisymmetrisch \\
+Symmetrie der Ortswellenfunktion: $(-1)^L$ \\
+
+Zerfall angeregter Zustände: $N(t) = N_0 \exp(-t/τ)$ \\
+\textbf{Linienbreite}: $Δω = 1/τ, ΔE τ \geq \hbar$ \\
+$P(ω) = P_0 \frac{γ/(2π)}{(ω - ω_0)^2 + (γ/2)^2}, γ = 1/τ_i + 1/τ_k$ \\
+Dipolstrahlung: $ΔE = E_k - E_i = (Z - Σ)^2 Ry h c (1/n^2_k - 1/n^2_i)$	\\
+\textbf{Röntgenstrahlung}: \\
+Streuung + Absorption: $I(d) = I_0 e^{-μd}$ \\
+Absorptionskante: Energie um gerade Elektronen aun $K, L, M$ Schale zu ionisieren. \\
+
+$\ce{^{A}_Z X_N}$: $A$ Massenzahl, $Z$ Kernladungszahl, $N$ Neutronenzahl \\
+% Kernradius: $R_K^3 \sim A, R_k \approx \SI{1.22}{\femto\meter} A^{1/3}$ \\
+Wechselwirkungen: Starke $\sim 1$, elektromagnetische $\sim 10^{-2}$, schache $\sim 10^{-7}$, Gravitation $\sim 10^{-39}$. \\
+Stärke der Wechselwirkung $⇔$ Dominanz bei Zerfällen. \\
+
+Energieimpulsbeziehung: $E^2 = p^2 c^2 + m^2 c^4, E = γ m c^2, γ = \sqrt{1 - (\frac{v}{c})^2}^{-1}$ \\
+$pβc = 2 E_{\text{kin}}$, $βγ = p/m \sim p$, $E / (m c^2) = γ$, $p c / E = β^{-1}$ \\
+4er-Impuls: $p = (E / c, \v p)$, invariante Masse: $p^2$ \\
+Energie eines Teilchens, dass an einem Teilchen mit Masse $M$ unter Winkel $θ$ streut: \\
+$\displayed{E' = E \frac{1}{1 + \frac{E}{M c^2}(1 - \cos θ)}}$ \\
+
+Feynman-Diagram: innere Linien $⇔$ virtuelle Teilchen, Verletzung der Energie-Impulsbeziehung, äußere Linien $⇔$ reelle	Teilchen, Einhaltung der Energie-Impulsbeziehung. \\
+raumartig: $q^2 > 0$, zeitartig: $q^2 < 0$ \\
+Propagator Elektromagnetischer Wechselwirkung: $A \sim e^2 / q^2 \sim α/q^2$ \\
+Vakuumpolarisation $⇒$ Running $α$ \\
+
+\textbf{Wirkungquerschnitt} \\
+Teilchenfluss $ϕ = \dot N_i / A = n_i v_i$ \\
+$\dot N_i$: Teilchenrate, $n_i$: Teilchendichte, $v_i$: Teilchengeschwindigkeit \\
+$\d \dot N_s \sim ϕ N_t \d Q$ \\
+Proportionalitätskostante: differentieller Wirkungsquerschnitt: \\
+$σ_{diff} = \dd{σ}{Ω} = \frac{\d \dot N_s}{ϕ N_t \d Ω}$ \\
+Totaler Wirkungsquerschnitt: $σ_{tot} = \dot N_s / (ϕ N_t)$ \\
+$n_t = ρ N_A / M_{mol}$, mittlere freie Weglänge $λ = 1/(n_t σ)$ \\
+$ϕ(x) = ϕ_0 e^{-x/λ}$ \\
+Luminosität $\dot N_s = Lσ, ϕ N_t = L$, Fixed-target: $L= \dot N_i n_t d$, Speicherring: $L = f N_1 N_2 / A$ \\
+$N_1, N_2$ = Zahl der Teilchen pro Strahl, $f$ Umlauffrequenz, $A$ = Strahlquerschnitt. \\
+Linienbreite $Γ = \hbar / τ = ΔE$ \\
+Breit-Wigner Form:
+$\displayed{\tilde P(E) = \frac{1}{2π} \frac{Γ}{(E - mc^2)^2 + Γ^4 / 4}}$ \\
+Lebensdauer $ω = 1/τ$, $ω = \frac{\dot N_s}{N_i N_t} = v_i σ / V$ \\
+
+Fermi's goldene Regel: $ω_{fi} = \frac{2π}{\hbar} \abs{A_{fi}}^2 ρ(E_f)$ \\
+\textbf{Wirkungsquerschnitt} $σ = ω_{fi} / v_i$ \\
+klassisch: Teilchenzustand beschrieben durch Ort und Impuls \\
+QM: Unschärfe $⇒$ Phasenraumvolumen, $L d p_x \approx h$ \\
+1-Teilchen-Zustandsdichte:
+$\displayed{\dd{N_1^{3D}}{E_1} = \frac{V}{(2π\hbar)^3} \frac{E_1 p_1}{c^2}∫ \d Ω_1}$ \\
+2-Teilchen-Zustandsdichte:
+$\displayed{\dd{N_2^{3D}}{E_1} = \frac{V}{(2π\hbar)^3} \frac{E_1  E_2 p_1}{c^2 (E_1 + E_2)}∫ \d Ω_1}$ \\
+n-Teilchen-Zustandsdichte:
+$\displayed{\dd{N_n^{3D}}{E_1} = \frac{V^{n - 1}}{(2π\hbar)^{3(n - 1)}} \dd{}{E} ∫ \d^3 p_2 \dots \d^3 p_{n - 1}}$ \\
+2-Teilchenreaktion $a + b \to 1 + 2$ \\
+$\displayed{ω_{fi} = ∫ \frac{2π}{\hbar} \abs{A_{fi}}^2 \frac{1}{(2π\hbar)^3} \frac{1}{c^2} \frac{E_1 E_2}{E_1 + E_2} p_1 \d Ω_1}$ \\
+$\displayed{⇒ \d σ = \frac{1}{(2π)^2} \frac{1}{\hbar^4 c^4} \frac{p_1^2 c^2}{β_i β_f} \abs{A_{fi}}^2 \d Ω_1}$ \\
+$Γ = \hbar / τ, \d Γ = \hbar \d ω_{fi}$ \\
+
+$f\bar f$ Anihilation: $A_{fi} \sim e_i e_f / q^2 \sim 4π α Q_f \hbar^3 c / q^2$ \\
+Spin Anteil: Photon hat Spin $1 ⇒$ nur $\ket{\uparrow \uparrow} \sim A_1 (1 + \cos θ_f) / 2$ oder $\ket{\downarrow\downarrow} \sim A_2 (1 - \cos θ_f)$ erlaubt. \\
+Vertauschung von $f \bar f$ zu $\bar f f ⇒ A_3 = A_2, A_4 = A_1$ \\
+$\abs{A_{fi}}^2 = \sum \abs{A_i}^2 / 4  = (1 + \cos^2 θ_f) \frac{(4 π α)^2}{4 E_{\text{CMS}^2}} (\hbar c)^3$ \\
+$\displayed{\dd{σ}{Ω} = \frac{α^2}{4 E_{CMS}^2}(1 + \cos^2 θ_f) (\hbar c)^2}$ \\
+$\displayed{σ_{tot} = \frac{4πα^2}{3} Q_f^2 \frac{1}{E_{CMS}^2} (\hbar c)^2}$ % = Q_f^2 \frac{\SI{87}{\nano\barn}}{E_{CMS}^2[\SI{}{\giga\electronvolt}]}}$ \\
+\textbf{Ionisation}: Bethe-Bloch-Formel: \\
+$\displayed{-\dd{E}{x} = (ρ N_A \frac{Z}{A}) \frac{4π^2 z^2 e^4}{m_e c^2 β^2}(\ln \frac{2m_e c^2 β^2 γ^2}{I} - β^2)}$ \\
+$I \approx Z \SI{10}{\electronvolt}$ (mittleres Ionisationspotential der Elektronen) \\
+$\displayed{-\frac{1}{ρ} \dd{E}{x} = K \frac{Z}{A} z^2 \frac{1}{β^2}(\ln \frac{2 m_e c^2 β^2 γ^2}{I} - β^2)}$, $K = \SI{0.307}{\mega\electronvolt\per\gram\per\centi\meter\cubed}$ \\
+In der Nähe des	Minimums ($βγ \approx 3, \dots, 4$): $\displayed{-\frac{1}{ρ}\dd{E}{x} \approx \SI{2}{\mega\electronvolt\per\centi\meter\cubed\per\gram}}$ \\
+kleines $βγ: -\dd{E}{x} \sim 1/β^2$ \\
+
+$\displayed{r_e^2 = (\frac{e^2}{4πε_0} \frac{1}{m_e c^2})^2}$ \\
+\textbf{Bremsstrahlung}: $\displayed{-(\dd{E}{x}) = ρ 4α N_A \frac{Z^2}{A^2} r_e^2 \ln(\frac{193}{Z^{1/3}}) E = E / X_0}$ \\
+$1 / X_0 \sim 1/m_e^2 \sim Z^2 \sim ρ N_A / A$, $E(x) = E_0 e^{-X / X_0}$ \\
+mit Strahlungslänge $X_0$ \\
+
+\textbf{Cherenkov-Strahlung} bei Medium mit Brechungsindex $n$: nur kleiner Energieverlust, Öffnungswinkel: $\cos θ_c = 1/(β n)$ \\
+
+\textbf{Photonenabsorption}: $I(x) = I_0 \exp(-μ x)$, Absorptionskoeffizient $μ$ \\
+$μ$ = Photoeffekt $μ_{ph}$ + Comptoneffekt $μ_c$ + Paarbildung $μ_{paar}$ \\
+(existiert auch inverser Comptoneffekt) \\
+
+\textbf{Paarbildung}: $E_γ > \SI{2.04}{\mega\electronvolt}$ \\
+Wirkungsquerschnitt: $σ_{paar} = \frac{7}{9} \frac{A}{N_A} \frac{1}{X_0}$ \\
+
+Elektromagnetischer Schauer: im Mittel nach $X_0$ Bremsstrahlung / Paarbildung $⇒$ Halbierung der Energie, Verdopplung der Teilchen. Hört auf, wenn Ionisation einsetzt.
+Maximale Eindringtiefe: \\
+$\displayed{X_{max} = \frac{\ln(E_0 / E_c)}{\ln 2} X_0, E_c \approx \SI{2}{\mega\electronvolt}}$
+
+\textbf{Hadronen in Materie}: starke Wechselwirkung, Wechselwirkunglänge für Hadronen: $λ_{WW} = \frac{1}{n σ_{WW}} = \frac{A}{N_A ρ} \frac{1}{σ_{WW}}$ \\
+Es gilt $λ_{WW} > X_0$ \\
+
+\textbf{Detektorsysteme}: \\
+- Rekonstruktion der Trajektorien von geladenen Teilchen (Spure) (Spurdetektoren) \\
+- Impulsmessung geladerner Teilchen (Spektrometer) \\
+- Energiemessung elektromagnetischer und hadronischer Schauer (E-Kalorimeter, H-Kalorimeter) \\
+- Teilchenidentifikation \\
+
+Spurdetektoren: \\
+- Gasdetektoren: Ionisation von Gas, Elektronen werden an Anode nachgewiesen \\
+- Halbleiterdtektoren: Teilchen erzeugen Elektron-Lochpaare ($\sim$ Energieverlust), die nachgewiesen werden \\
+
+Impulsmessung: \\
+- Ablenkung innerhalb eines Magnetfelds: $p = q B R$ (transversal zum Magnefeld) ($p[\si{\giga\electronvolt\per\clight}] = 0.3 B [\si{\tesla}] R [\si{\meter}]$) \\
+
+Kalorimeter \\
+- elektromagnetische Schauer $\to$ großes $Z$, homogene Kalorimeter (Absorber = Nachweismedium), Sampling-Kalorimeter (Absorber \& Nachweismedium verschieden) \\
+- hadronische Schauer $\to$ kleineres $Z$, nur Sampling-Kalorimeter \\
+
+Teilchenidentifikation: \\
+- Energieverlust bei bekanntem Impuls \\
+- Flugzeitmessung bei bekanntem Impuls \\
+- Messung des Cherenkov-Winkels bei bekanntem Impuls \\
+
+Sonderfall: Myonen: einziges ionisierendes Teilchen, das einen dicken Absorber durchquert. \\
+
+- kontinuierliche Symmetrie Transformation $\to$ additive Erhaltungsgrößen \\
+- diskrete Symmetrie Transformationen $\to$ multiplikative Erhaltungsgrößen \\
+
+Observable $\hat O$ ist Erhaltungsgröße, wenn $[\hat O, \hat H] = 0$ \\
+
+
+Kopplung von Spins: $j_1, m_1 + j_2, m_2 \to j, m$, $m = m_1 + m_2$, $\abs{j_1 - j_2} \leq j \leq \abs{j_1 + j_2}$ \\
+
+Translation: Impulsoperator $\hat h$ ist Generator, $\hat p$ ist Erhaltungsgröße \\
+Rotation: Drehimpuls, $\hat L$ Erhaltungsgröße \\
+globale Phase: Ladung \\
+Ladungsgrößen: Elektrische Ladung, Leptonenzahl $L = L_e + L_μ + L_τ$ (auch einzeln, außer Neutrino-Mixing), \\
+Neutrinos: Dirac-Teilchen $\leftrightarrow$ Majorana-Teilchen (Teilchen = eigenes Anti-Teilchen) $\to$ Doppelbeta-Zerfall \\
+Baryonenzahlerhaltung: Baryonenzahl: $\tilde B = (n_q - n_{\bar q})/3$. \\
+starker Isospin: Erhalten in starker Wechselwirkung, $\ket{p} = \ket{1/2, 1/2}, \ket{n} = \ket{1/2, -1/2}$ \\
+$\ket{π^+} = \ket{1, 1}, \ket{π^{-}} = \ket{1, -1}, \ket{π^0} = \ket{1, 0}$, $\ket{η} = \ket{0, 0}$ \\
+$\frac{Q}{e} = I_3 + \frac{\tilde B}{2} + \frac{S}{2} = I_3 + \frac{Y}{2}$, $S$ Strangeness, $Y = \tilde B + S$ Hyperladung \\
+Auch hier: Wellenfunktion muss antisymmetrisch sein! \\
+Deuteron: $d = \ket{pn}$ mit $J = 1, l = 0$, $l = 0 ⇒$ Raumwellenfunktion ist symmetrisch \\
+$J = 1 ⇒$ Spin ist symmetrisch $⇒$ Isospin muss antisymmetrisch sein. \\
+$\ket{d} = \ket{I = 0, I_3 = 0} = (\ket{p}\ket{n} - \ket{n}\ket{p})/\sqrt{2}$ \\
+Atomkern: $I_3 = (Z - N)/2$, $Z$: Anzahl Protonen, $N$: Anzahl Neutronen, $\abs{Z - N} / 2 \leq I \leq \abs{Z + N} / 2$	\\
+Strangeness erhalten in starker Wechselwirkung, $S = n_{\bar s} - n_{s}$ \\
+Quarkflauvorzahlen ($U, D, S, C, B$) anstatt Isospin heutzutage, auch in starker Wechselwirkung erhalten. \\
+
+\textbf{Diskrete Transformationen}: $\hat U_D^2 = 1$ \\
+Parität: $\v x \to - \v x, \v p \to - \v p$ \\
+Kernzustände + Elementarteilchen sind Eigenzustände des	Paritätsoperators. \\
+$J^P$: $J ⇔$ Spin, $P ⇔$ Parität, Parität erhalten in elektromagnetischer und starker Wechselwirkung. \\
+Ladungskonjugation: $C \ket{\text{Teilchen}} = η_c \ket{\text{Antiteilchen}}$ \\
+C-Parität ist erhalten in starker und e.m. Wechselwirkung, $C\ket{γ} = - \ket{γ}, C\ket{π^0} = +1 \ket{π^0}$ \\
+Zeitumkehr $T$ (nicht unitär, keine Erhaltungsgröße, aber anti-unitär), $t \to -t, \v x \to \v x$, elektromagnetische + starker Wechselwirkung erhalten $T$ \\
+
+Spin entgegen Impuls $⇔$ linkshändig (LH) \\
+Spin parallel zu Impuls $⇔$ rechtshändig (RH) \\
+$W^{\pm}$-Bosonen koppeln nur zu linkshändige Teilchen und rechtshändige Antiteilchen. \\
+
+C, P-Verletzung: Beta-Zerfall hat unter eingefrorenem Spin für $\uparrow$ und $\downarrow$ underschiedliche Winkelverteilungen. \\
+CP, T-Verletzung: $K^0 \to π^+ π^-$ (Quarkmischung) \\
+CPT Theorem: CPT-Invarianz (Eigenschaft lorentzinvarianter, lokaler und kausaler Feldtheoreme) \\
+
+leichtes, spinloses, geladenes Teilchen $z e$ an schwerem spinlosen Streuzentrum $Z e$: \\
+$\displayed{A_{fi} = \frac{z e Z e}{q^2} \frac{(\hbar c)^3}{c^2}}$ (keine Spins) $\to$ Rutherford: $\displayed{\dd{σ}{Ω} \frac{z^2 Z^2 α^2}{16 E_{\text{kin}}^2 \sin^4 θ/2} (\hbar c)^2}$ \\
+Auflösungsvermögen von Streuuexperimenten: $λ = \hbar / \abs{\v q}$ \\
+Einfluss des Spin des leichten Teilchens: Helizität ist Erhaltungsgröße (im Limit hochrelativistischer Teilchen, $β \to 1$) ($H = \v s · \v p / \hbar$), unterdrückt Rückwärtsstreuung. \\
+$\displayed{(\dd{σ}{Ω})_{\text{Mott}} = (\dd{σ}{W})_{\text{Rutherford}}(1 - β^2 \sin^2 \frac{θ}{2})}$ \\
+Born'sche Näherung: Ein- und Auslaufende Teilchen werden durch Wellenfunktion des freien Teilchens beschrieben. \\
+$\to A_{fi} \sim ∫ V(r) \exp(i \v q · \v r / \hbar)$ \\
+$A_{fi}$ ist Fouriertransformation von $V(r)$ im Impulsraum \\
+Ausgedehnte Ladungsverteilung: $V(\v r) = e/(4π) ∫ ρ(\v r) / \abs{\v r - \v r'} \d \v r'$ \\
+$\to A_{fi} = e^2 \hbar^2 F(\v q) / \v q^2$ \\
+mit \textbf{Formfaktor}: \\
+$F(\v q) = ∫ f(\v r) e^{i/\hbar \v q \v r} \d \v r, ρ(\v r) = e f(\v r), f(\v r) \to f(r) \Rightarrow F(\v q) \to F(\v q^2)$ \\
+$\displayed{(\dd{σ}{Ω}) = (\dd{σ}{W})_{\text{Punktförmig}} \abs{F(\v q^2)}^2}$ \\
+Messung von Formfaktor: praktische nicht möglich: Phase wird benötigt, extrem großer $\v q^2$ Bereich benötigt, stattdessen: Modellansätze + Anpassung an die Daten. \\
+
+\textbf{Fermi-Verteilung}: $\displayed{ρ(r) = \frac{ρ_0}{1 + e^{(r - c)/a}}}$ \\
+$c$ = Halbdichte Radius $\approx 1.07 A^{1/3} \si{\femto\meter}$, $a \approx \SI{0.545}{\femto\meter}$, $A$ groß: Mittlerer quadratischer Radius: $\sqrt{\braket{r^2}} \approx \SI{0.94}{\femto\meter} A^{1/3}$ \\
+Proton + Neutron haben Spin $1/2$ $⇒$ magnetisches Moment: $\v μ_N = g_N μ_N \v s / \hbar \approx \SI{3.15e-14}{\mega\electronvolt\per\tesla}$, $m_s = \pm 1/2$ \\
+$μ_p \approx \pm 2.79 μ_N$, $μ_n \approx \mp 1.91 μ_N$ \\
+Elektronstreuung an punktförmigen Spin 1/2 Protonen: \\
+$\displayed{(\dd{σ}{Ω})_{\text{Dirac}} = (\dd{σ}{Ω})_{\text{Rutherford}}(\cos^2 \frac{θ}{2} + \frac{θ^2}{2 M_p^2 c^2} \sin^2 \frac{θ}{2})}, Q^2 = -q^2$ \\
+Rückstoß: Energie des Elektron: $\displayed{E \to E', (\dd{σ}{Ω})_{\text{Rückstoß}} = (\dd{σ}{Ω}) \frac{E'}{E}}$ \\
+Elektron-Proton-Streung: 2 Formfaktoren $G_E(Q^2), G_M(Q^2)$: elektrische- und magnetische Verteilung: Rosenbluth-Formel: \\
+$\displayed{\dd{σ}{Ω} = (\dd{σ}{Ω})_{\text{Mott}}(G_E^2(Q^2 + 2 τ G_M^2(Q^2) \tan^2 \frac{Q}{2}))}$ \\
+$τ = Q^2 / (4 M^2_p c^2)$ \\
+Formfaktoren skalieren: $G_E^P(Q^2) = G_M^P(Q^2) / μ_p = G_M^n(Q^2) / μ_n$ \\
+% $\displayed{G_E(Q^2) = (1 + \frac{Q^2}{(\SI{0.71}{\giga\electronvolt})^2})^{-2} \Leftrightarrow f(r) = f_0 e^{-ar}, \sqrt{\braket{r^2}}\approx \SI{0.88}{\femto\meter}}$ \\
+
+Höher Energieübertrag: Anregung innerer Freiheitsgrade des Protons,	Nukleon-Resonanzen, noch größerer Energieübetrag ($ν = E - E' > M$) Kontinuum, tief inelastisch. \\
+$x = Q^2 / (2 M ν)$, $0 < x < 1$ ($x = 1 ⇔$ elastisch), $x$ Scaling-Variable \\
+Strukturfunktionen: $W_1(Q^2, ν), W_2(Q^2, ν)$ \\
+$\displayed{\to \frac{\d^2 σ}{\d Ω' \d E'} = (\dd{σ}{Ω})_{\text{Mott}}\frac{1}{ν}(F_2(Q^2, x) + F_1(Q^2, x) \frac{Q^2}{x M^2 c^2} \tan^2 \frac{θ}{2})}$ \\
+$ν W_2 = F_2, M c W_1 = F_1$, für $Q^2 \gg M^2 c^2: F_{1,2}(Q^2, x) \approx F_{1,2}(x)$ $\to$ Bjorken-Scaling: Strukturfunktionen sind unabhängig von Skalentransformationen, bei denen $x$ unverändert bleibt. \\
+
+Parton-Modell:
+Nukleon besteht aus punktförmigen, quasifreien Partonen $q_j$ mit Spin $1/2$, jedes	Parton trägt einen Anteil $z$ an Protonimppuls.
+Elektronen streuen elastische an Partonen, dies ist nur möglich bei	Impulsanteil $z = Q^2 / (2mν)$, gestreutes Parton verlässt Proton und bildet Hadronen.
+$f_{q_i}(x):$ Wahrscheinlichkeit Parton $q_i$ mit $x ∈ [x, x + \d x]$ zu finden. \\
+$\to F_2(x) = x \sum_{q_i} e^2_{q_i} f_{q_i}(x), \to 2x F_1(x) = x \sum_{q_i} e^2_{q_i} f_{q_i}(x)$ \\
+$2 x F_1(x) = F_2(x)$. Gluonenaustausch $⇒$ nicht nur 3 Quarks, sondern Wechselwirkung + Seequarks + Antiquarks \\
+Seequarks tragen sehr kleines $x$, Valenzquarks-Verteilung hat maximum bei $x \approx \SI{0.15}{} \dots \SI{0.2}{}$, Impulsanteil der geladenen Quarks $\approx \SI{50}{\percent}$ \\
+
+\textbf{Starke Wechselwirkung}: Austausch von Farbladung $r, g, b, \bar r, \bar g, \bar b$ \\
+$\to$ Gluonen tragen Farbladunge: $9$ Gluonen $r \bar g, r \bar b, g \bar b, g \bar r, b \bar r, b \bar g, (r \bar r - b \bar b)/\sqrt{2}, (r \bar r + g \bar g - 2 b \bar b/\sqrt{3}), (r \bar r + g \bar g + b \bar b) / \sqrt{3}$, nur die farbigen (ersten $8$) relevant. \\
+
+Wirkungsquerschnitt $e^{+} e^{-} \to$ Hadronen: $σ(e^{ +} e^{-} \to μ^{ +} μ^{-}) \sum_{q_i} Q^2_{q_i} N_f$ \\
+$q_i$: kinematisch mögliche Flavour. $N_f = 3$ ($r,g,b$) \\
+3-Jet-Ereignisse: Quark strahlt reelle Gluonen ab, die auch hadronisieren. \\
+Quark-Antiquarkpotential: $V_{q \bar q}(r) = - \frac{4}{3}(\hbar c) \frac{α_s(r)}{r} + k r$ (großer Abstand: Feldlinien verlaufen "schlauchartig") $\to$ Confinment. \\
+$α_s(Q^2) \to ∞: α_s(Q^2) \to 0$ $\to$ Quarks sind bei großen $Q^2$-Werten quasi-frei. Für $Q^2 \to 0: α_s \to ∞$, pertubative Behandlung nicht mehr ausreichend $\to$ Gittertheorien.
+Hadronisierung: Farbschlauch wird gespannt $\to$ ab gewisser Spannung: Bildung neuer $q \bar q$-Paar in Mitte des Schlauchs. \\
+
+\textbf{Schwache Wechselwirkung}: \\
+Propagator: $(q^2 - M_W^2 c^2)^{-1} \to$ für $q^2 \ll M_W^2 c^2$ unabhängig von $q^2$ \\
+$W^{\pm}$-Bosonen koppeln nur an (RH) LH (Anti)teilchen, $Z$-Bosonen koppeln an	LH und RH aber mit unterschiedlicher Stärke.
+$W$-Bosonen transportieren Ladung und schwachen Isospin.
+Für Leptonen "wechseln" $W$-Bosonen zwischen Neutrino und Teilchen, Kopplung $\sim g_W$.
+Quarks werden in Generation gemischt, aber immer Wechsel der Ladung. Beschrieben durch Matrix $V_{CKM}$, Kopplungsstärke $g_W' = (V_{CKM})_{ij} g_W$, $\abs{A_{fi}}^2 \sim g_W^{\prime 2} \abs{V_{q q'}}^2$ \\
+3-Teilchen-Phasenraumdichte: \\
+$\displayed{ρ_3(E_f) = \frac{V^2}{(2π\hbar)^6} \dd{}{E_0} ∫ p e^2 \d p_e \d Ω_e p_ν^2 \d p_ν \d Ω_ν}$. \\
+$E_ν = p_ν c ⇒$ $\displayed{\d ρ_3 = \frac{\d Ω_e Ω_ν}{(2π\hbar)^6 c} p_e^2 p_ν^2 \d p_e}$ \\
+$p_ν^2 = (E_0 - E_e)^2 / c^2$ (Rückstoß $\approx 0$) \\
+Coulomb-Potential des $β$-Teilchen und Kerns: Coulomb-Korrektur $F(\pm, Z, E_e)$.
+$f(Z, E_0) τ = \frac{2π^3}{\abs{A_{fi}}^2} \frac{\hbar^8}{m_e^5 c^4}$
+kleine $Z$, große Energien $\to τ \sim E_0^{-5}$
+
+Auswahlregel für Kern-$β$-Zerfall: $l = 0$ von Neutrino + Elektron $⇒ ΔP = 0$ (Parität), $l = 1$ ("verboten") $ΔP = 1$ \\
+- Fermi-Übergang: Spin von des Quarks bleibt erhalten. Spinänderung des Kerns: $ΔJ = 0$ \\
+- Gamov-Feller-Übergang: Spin des Quarks und des Nukleons werden geflippt $\to$ Spinänderung des Kerns $ΔJ = 0, \pm 1$ \\
+
+"Super erlaubte" $β$-Zerfälle: Ursprungskern und entstehender Kern gehören zum gleichen starken Isospin Multiplett.
+
+$B(A, Z) = a_v A - a_0 A^{2/3} - a_c Z^2 A^{-1/3} - a_{sym} (N - Z)^2 / A + δ A^{-1/2}$ \\
+$a_v A$: Volumenbeitrag, $a_0 A^{2/3}: $Oberflächeneffekt, $-a_c Z^2 A^{-1/3}$: Coulomb-Abstoßung, Asymmetrie-Term: $-a_{sym} (N - Z)^2 / A$, Paarungs-Term $δ A^{-1/2}$, $δ \pm \SI{11.2}{\mega\electronvolt}$ $Z, N$ gerade / ungerade, 0 für $Z$ oder $N$ gerade
+\end{multicols*}
+\end{document}

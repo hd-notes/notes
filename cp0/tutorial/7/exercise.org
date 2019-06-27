@@ -1,0 +1,54 @@
+#+INCLUDE: ../header.org
+#+TITLE: Exercise sheet 7
+#+AUTHOR: by Robin Heinemann (group 4), Paul Rosendahl (group 4)
+#+LATEX_HEADER: \newcommand{\rust}{\textit{rust}\xspace}
+#+LATEX_HEADER: \newcommand{\mathematica}{\textit{Mathematica}\xspace}
+
+* Population dynamics
+  We study the system
+  \[\dd{N}{t} = r N(1 - N / K) - \frac{B N^2}{A^2 + N^2}\]
+  where $r, K, A, B$ are real positive constants. First we transform the system
+  into a dimensionless system. It is obvious that $[A] = [N]$, we choose $n = N/A$ as
+  dimensionless version of $N$. Let $τ = t / t_c$ be the dimensionless version of $t$.
+  Substituting $N = n A$ and $t = τ t_c$ into the equation we obtain
+  \begin{align*}
+  \frac{A}{t_c} \dd{n}{τ} &= r A n(1 - A n / K) - \frac{B n^2 A^2}{A^2 + n^2 A} \\
+  \dd{n}{τ} &= r t_c n(1 - A n/K) - t_c \frac{B}{A} \frac{n^2}{1 + n^2} \\
+  \intertext{We choose $t_c = A / B ⇒ τ = t B / A$ to remove the factor befor the $n^2$ term}
+  \dd{n}{τ} &= r \frac{A}{B} n(1 - \frac{A}{K}n) - \frac{n^2}{1 + n^2}
+  \intertext{This leaves two dimensionless factors, we define two dimensionless	constants}
+  ρ &= r \frac{A}{B} \\
+  κ &= \frac{A}{K} \\
+  ⇒ \dd{n}{τ} &= ρ n(1 - κn) - \frac{n^2}{1 + n^2}
+  \end{align*}
+  $n$ is stationary, when $\partial_{τ} n$ is zero
+  \begin{align*}
+  ⇒ ρ n (1 - κ n) - \frac{n^2}{1 + n^2} &= 0 \\
+  ρ n (1 + n^2)(1 - κ n) - n^2 &= 0 \\
+  n(ρ(1 + n^2)(1 - κ n) - n) &= 0
+  \end{align*}
+  \[⇒ n = 0 ∨ ρ(1 + n^2)(1 - κ n) - n = 0\]
+  The solutions of the second equation can be calculated using by \mathematica.
+  #+caption: mathematica code for calculating the solution of the second equation
+  #+ATTR_LATEX: :placement [Hp]
+  #+begin_src mathematica :exports code :colnames yes :long-listing
+  Manipulate[Solve[x*(r*(x^2 + 1) (x/8 - 1) - x) == 0, x], {r, 0, 2, 0.01}]
+  #+end_src
+  Changing $ρ$ shows that when $ρ$ is $\leq \num{0.44}$ there are three, or rather four stationary points.
+  And for $ρ \geq \num{0.45}$ there	is only one (two when counting $n = 0$) stationary point.
+  Plotting the equation makes it easy to determine whether the stationary point is stable or unstable.
+  If the derivative	increases when $n$ gets bigger by a small value, $n$ will further increase and
+  the stationary point is unstable.	The same happens, if the derivative decreases when $n$ gets
+  smaller by a small value, then $n$ will decrease further. The equation can be plotted easily using
+  \mathematica.
+  #+caption: mathematica code for calculating the solution of the second equation
+  #+ATTR_LATEX: :placement [Hp]
+  #+begin_src mathematica :exports code :colnames yes :long-listing
+  Manipulate[Plot[x*(r*(x^2 + 1) (x/8 - 1) - x), {x, -20, 20}], {r, 0, 2, 0.01}]
+  #+end_src
+  Using this we can	determine
+  - the smallest stationary point is stable (derivative decreases if $n$ increases / increases if $n$ decreases)
+  - the second smallest stationary point is unstable (derivative increases if $n$ increases)
+  - the stationary point at $n = 0$ is stable (derivative decreases if $n$ increases / increases if $n$ decreases)
+  - the	biggest stationary point is unstable (derivative increases if $n$ increases)
+  (if $r \geq \num{0.45}$ the smallest two stationary points are not real anymore, but the stability of the other two does not change)

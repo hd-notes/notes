@@ -1,7 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Analysis I (Marciniak-Czochra)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 
 #+INCLUDE: "introduction.org" :minlevel 1
 #+INCLUDE: "sets.org" :minlevel 1

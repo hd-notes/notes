@@ -5,7 +5,7 @@
 # - Website: www.thphys.uni-heidelberg.de/hebecker/TP1/tp1.html
 # - Bartelman Skripte
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 
 #+INCLUDE: "overview.org" :minlevel 1
 #+INCLUDE: "mass_points.org" :minlevel 1

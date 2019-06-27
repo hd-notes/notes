@@ -1,0 +1,480 @@
+\documentclass[9pt, landscape,a4paper]{extarticle}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+\usepackage{braket}
+\usepackage{microtype}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+%\usepackage{mathspec}
+\usepackage{nath}
+%\usepackage{unicode-math}
+\usepackage{stmaryrd}
+\usepackage{stackengine}
+%\usepackage{polyglossia}
+%\setdefaultlanguage[spelling=new, babelshorthands=true]{german}
+\usepackage{newunicodechar}
+\newunicodechar{α}{\alpha}
+\newunicodechar{Α}{\alpha}
+\newunicodechar{β}{\beta}
+\newunicodechar{Β}{\beta}
+\newunicodechar{γ}{\gamma}
+\newunicodechar{δ}{\delta}
+\newunicodechar{ε}{\varepsilon}
+\newunicodechar{Ε}{\varepsilon}
+\newunicodechar{ζ}{\zeta}
+\newunicodechar{η}{\eta}
+\newunicodechar{θ}{\theta}
+\newunicodechar{ι}{\iota}
+\newunicodechar{κ}{\kappa}
+\newunicodechar{λ}{\lambda}
+\newunicodechar{μ}{\mu}
+\newunicodechar{Μ}{M}
+\newunicodechar{ν}{\nu}
+\newunicodechar{ξ}{\xi}
+\newunicodechar{ο}{\omicron}
+\newunicodechar{π}{\pi}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ρ}{\rho}
+\newunicodechar{Ρ}{P}
+\newunicodechar{σ}{\sigma}
+\newunicodechar{τ}{\tau}
+\newunicodechar{Τ}{T}
+\newunicodechar{υ}{\upsilon}
+\newunicodechar{φ}{\varphi}
+\newunicodechar{χ}{\chi}
+\newunicodechar{ψ}{\psi}
+\newunicodechar{ω}{\omega}
+\newunicodechar{∀}{\forall}
+\newunicodechar{×}{\times}
+\newunicodechar{Γ}{\Gamma}
+\newunicodechar{Δ}{\Delta}
+\newunicodechar{∃}{\exists}
+\newunicodechar{ℤ}{\mathbb{Z}}
+\newunicodechar{∧}{\wedge}
+\newunicodechar{Θ}{\Theta}
+\newunicodechar{⇒}{\implies}
+\newunicodechar{∩}{\cap}
+\newunicodechar{Λ}{\Lambda}
+\newunicodechar{∫}{\int}
+\newunicodechar{ℕ}{\mathbb{N}}
+\newunicodechar{Ξ}{\Xi}
+\newunicodechar{∇}{\nabla}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ℝ}{\mathbb{R}}
+\newunicodechar{Σ}{\Sigma}
+\newunicodechar{⇔}{\iff}
+\newunicodechar{Υ}{\Upsilon}
+\newunicodechar{Φ}{\Phi}
+\newunicodechar{ℂ}{\mathbb{C}}
+\newunicodechar{Ψ}{\Psi}
+\newunicodechar{Ω}{\Omega}
+\newunicodechar{ϑ}{\vartheta}
+\newunicodechar{∞}{\infty}
+\newunicodechar{∈}{\in}
+\newunicodechar{⊂}{\subset}
+\newunicodechar{ϰ}{\varkappa}
+\newunicodechar{ϕ}{\phi}
+\newunicodechar{∨}{\vee}
+\newunicodechar{∮}{\oint}
+\newunicodechar{↦}{\mapsto}
+\newunicodechar{ℚ}{\mathbb{Q}}
+\newunicodechar{⊆}{\subseteq}
+\newunicodechar{⊊}{\subsetneq}
+\newunicodechar{∪}{\cup}
+\newunicodechar{·}{\cdot}
+%\setdefaultlanguage[spelling=new, babelshorthands=true]{german}
+\makeatletter
+\let\mathop\o@mathop
+\makeatother
+
+%\definecolor{myblue}{cmyk}{1,.72,0,.38}
+\definecolor{myblue}{cmyk}{1,1,1, 1}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\everymath\expandafter{\the\everymath \color{myblue}}
+\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+\setlength{\mathindent}{0pt}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+
+
+
+\def\multi@column@out{%
+   \ifnum\outputpenalty <-\@M
+   \speci@ls \else
+   \ifvoid\colbreak@box\else
+     \mult@info\@ne{Re-adding forced
+               break(s) for splitting}%
+     \setbox\@cclv\vbox{%
+        \unvbox\colbreak@box
+        \penalty-\@Mv\unvbox\@cclv}%
+   \fi
+   \splittopskip\topskip
+   \splitmaxdepth\maxdepth
+   \dimen@\@colroom
+   \divide\skip\footins\col@number
+   \ifvoid\footins \else
+      \leave@mult@footins
+   \fi
+   \let\ifshr@kingsaved\ifshr@king
+   \ifvbox \@kludgeins
+     \advance \dimen@ -\ht\@kludgeins
+     \ifdim \wd\@kludgeins>\z@
+        \shr@nkingtrue
+     \fi
+   \fi
+   \process@cols\mult@gfirstbox{%
+%%%%% START CHANGE
+\ifnum\count@=\numexpr\mult@rightbox+2\relax
+          \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+% \setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\else
+      \setbox\count@\vsplit\@cclv to \dimen@
+\fi
+%%%%% END CHANGE
+            \set@keptmarks
+            \setbox\count@
+                 \vbox to\dimen@
+                  {\unvbox\count@
+                   \remove@discardable@items
+                   \ifshr@nking\vfill\fi}%
+           }%
+   \setbox\mult@rightbox
+       \vsplit\@cclv to\dimen@
+   \set@keptmarks
+   \setbox\mult@rightbox\vbox to\dimen@
+          {\unvbox\mult@rightbox
+           \remove@discardable@items
+           \ifshr@nking\vfill\fi}%
+   \let\ifshr@king\ifshr@kingsaved
+   \ifvoid\@cclv \else
+       \unvbox\@cclv
+       \ifnum\outputpenalty=\@M
+       \else
+          \penalty\outputpenalty
+       \fi
+       \ifvoid\footins\else
+         \PackageWarning{multicol}%
+          {I moved some lines to
+           the next page.\MessageBreak
+           Footnotes on page
+           \thepage\space might be wrong}%
+       \fi
+       \ifnum \c@tracingmulticols>\thr@@
+                    \hrule\allowbreak \fi
+   \fi
+   \ifx\@empty\kept@firstmark
+      \let\firstmark\kept@topmark
+      \let\botmark\kept@topmark
+   \else
+      \let\firstmark\kept@firstmark
+      \let\botmark\kept@botmark
+   \fi
+   \let\topmark\kept@topmark
+   \mult@info\tw@
+        {Use kept top mark:\MessageBreak
+          \meaning\kept@topmark
+         \MessageBreak
+         Use kept first mark:\MessageBreak
+          \meaning\kept@firstmark
+        \MessageBreak
+         Use kept bot mark:\MessageBreak
+          \meaning\kept@botmark
+        \MessageBreak
+         Produce first mark:\MessageBreak
+          \meaning\firstmark
+        \MessageBreak
+        Produce bot mark:\MessageBreak
+          \meaning\botmark
+         \@gobbletwo}%
+   \setbox\@cclv\vbox{\unvbox\partial@page
+                      \page@sofar}%
+   \@makecol\@outputpage
+     \global\let\kept@topmark\botmark
+     \global\let\kept@firstmark\@empty
+     \global\let\kept@botmark\@empty
+     \mult@info\tw@
+        {(Re)Init top mark:\MessageBreak
+         \meaning\kept@topmark
+         \@gobbletwo}%
+   \global\@colroom\@colht
+   \global \@mparbottom \z@
+   \process@deferreds
+   \@whilesw\if@fcolmade\fi{\@outputpage
+      \global\@colroom\@colht
+      \process@deferreds}%
+   \mult@info\@ne
+     {Colroom:\MessageBreak
+      \the\@colht\space
+              after float space removed
+              = \the\@colroom \@gobble}%
+    \set@mult@vsize \global
+  \fi}
+
+\setlength{\parindent}{0pt}
+\newcommand\ubar[1]{\stackunder[1.2pt]{\(#1\)}{\rule{1.25ex}{.08ex}}}
+
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{-100pt}
+    \setlength\belowdisplayskip{-100pt}
+    \setlength\abovedisplayshortskip{-100pt}
+    \setlength\belowdisplayshortskip{-100pt}
+%    \setlength\beloweqnsskip{-100pt}
+%    \setlength\displaybaselineskip{-100pt}
+%    \setlength\displaylineskip{-100pt}
+}
+
+\renewcommand\v[1]{\vec{#1}}
+\renewcommand\d{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand*\abs[1]{\lvert#1\rvert}
+\newcommand*\Laplace{\mathop{}\!\mathbin\triangle}
+\newcommand\VAR{\mathrm{VAR}}
+\newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\const}{\ensuremath{\text{ const.}}}%
+%\newcommand*{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+
+\raggedbottom
+\begin{document}
+\small
+\begin{multicols*}{3}
+\raggedcolumns
+\section{Vorspann}
+Detektionswahrscheinlichkeit: \\
+Teilchen: $I_{12} = \frac{1}{2}(P_1 + P_2)$ \\
+Materiewelle: $I = \abs{ψ}^2$ \\
+Wellen: $I_{12} = \abs{ψ_1 + ψ_2}^2 = I_1 + I_2 + 2\sqrt{I_1 I_2} \cos(ϕ)$ \\
+$ϕ = \v k \v r_{12}$ \\
+Welle muss normierbar sein: $∫ ψ(x) \d x < ∞$
+\section{Materiewellen} 
+$E = m_0 c^2 = h ν_0 ⇒ ν_0 = \frac{m_0 c^2}{h}, λ = \frac{h}{p}$ \\
+Bewegtes Bezugssystem $S', v_x = v$: \\
+$\displayed{t' = \frac{t - \frac{v}{c^2} x}{\sqrt{1 - (\frac{v}{c})^2}}}$ \\
+nichtrelativistischer Limes $v \ll c ⇒$ \\
+$\displayed{ω_{dB} = \frac{m_0 c^2}{\hbar} + \frac{m_0 \v v^2}{2\hbar} = \frac{\hbar k^2}{2m} = \frac{E_{\text{ges}}}{\hbar}}$ \\
+$\displayed{\v k_{dB} = \frac{m_0 \v v}{\hbar}, k_{dB} = \frac{2π}{λ_{dB}}}$ \\
+$ψ(x, t) = \exp(-i(ω_{dB} t - \v k_{dB} \v x))$ \\
+$p = m v, λ_{dB} = \frac{h}{p}$ \\
+Phasengeschwindigkeit: $v_{ph} = \frac{ω}{k}$ \\
+Gruppengeschwindigkeit: $v_{gr} = \pp{ω}{k}$ \\
+Wellenpaket: \\
+$\displayed{ψ(x, t) = ∫_{-∞}^{+∞} ψ(k) e^{-i(\v k \v x - ω(k) t)} \d k}$ \\
+kanonisches Wellenpaket: $\displayed{ψ(x, t = 0) = (\frac{2}{π a^2})^{\frac{1}{4}} \exp(-\frac{x^2}{a^2})}$ \\
+Heisenberg Unschärfe: $Δ x Δ p = \hbar Δ x Δ k = \frac{\hbar}{2}$ \\
+$Δ x = \sqrt{\braket{x^2} - \braket{x}^2}$ \\
+Allgemeine Dispersionsrelation: Näherung durch Taylor Reihe: \\
+$\displayed{ω(k) = ω(k)|_{k_0} + \pp{ω}{k}\Big|_{k_0} (k - k_0) + \frac{\partial^2 ω}{\partial k^2}\Big|_{k_0} \frac{(k - k_0)^2}{2} + \dots}$ \\
+$κ = k - k_0 ⇒ k = κ + k_0$ \\
+$\displayed{ψ(x, t) = e^{i(k_0 x - ω_0 t)} ∫_{-∞}^{+∞} \tilde ψ(κ + k_0) e^{-i(ω_0' t - x)κ + \frac{ω_0''}{2} κ^2 t}}$ \\
+Effektive Masse: $\displayed{\frac{ω_0''}{2} \kappa^2 := \frac{\hbar \kappa^2}{2m^{*}}}$ \\
+%$\displayed{:= \frac{\hbar \kappa^2}{2m^{*}}}$ \\
+Beugung an Gitter, Gitterabstand $B$, Gitterperiode: $d$, Beugungswinkel $α$: \\
+$\displayed{g_n = \frac{1}{n π} \sin{n \frac{π B}{d}}}$ \\
+$\displayed{ψ(x, z = 0) = N \sum_{n = -∞}^∞ g_n \exp(\frac{i2πn x}{d})}$ \\
+$\displayed{ψ(x, z, t) = N \sum_{n = -∞}^∞ g_n \exp(\frac{i2πn x}{d}) e^{i(k_z' z - ω t)}}$ \\
+$n^2 G^2 + k_z^{\prime 2} = k_z^2, \frac{2π}{d k} \ll 1 ⇒ α = \frac{λ_{dB}}{d}$ \\
+\textbf{3 Gitter Aufbau, Gitterperiode $d$:} \\
+$ψ = ψ_1 + ψ_2 = η^2 (1 + e^{i k(l_2 - l_1)})$ \\
+Verschiebung des Gitters im $Δ x$: \\
+$\displayed{⇒ \abs{ψ}^2 \propto 1 + \cos(\frac{2π}{d} Δ x)}$ \\
+Potential $V$ über Länge $L$: \\
+$\displayed{k' = k\sqrt{1 - \frac{2m}{\hbar^2 k^2}V} = k \sqrt{1 - \frac{V}{E_{ges}}} = k n \approx k(1 - \frac{V}{2 E_{\text{ges}}})}$ \\
+$Δ ϕ = (k' - k) L = - \frac{V}{2E} k_{dB} L$ \\
+Minimal detektierbares Potential: $\displayed{\frac{\hbar^2 k_{dB}}{m} \frac{π}{L}}$
+\section{Allgemeine Quantenmechanik}
+ket: $\ket{ψ}$, bra: $\bra{ψ} = \ket{ψ}^{\ast}$. \\
+Skalarprodukt: $\braket{φ | ψ} \displayed{= ∫ φ^{\ast}(\v x) ψ(\v x) \d^3 x}$ \\
+Wellenpaket: $\ket{k} \to$ de-Broglie Welle mit Impuls $\hbar k$. \\
+$\ket{\text{Wellenpaket}} = \ket{ψ_{WP}} = ∫\tilde ψ(k) \ket{k} \d k$ \\
+Observable $f$ $\to$ Operator $\hat f$: \\
+Mittelwert: $\braket{ψ | f | ψ} = \braket{f}$ \\
+Varianz: $\VAR(f) = \braket{\hat f^2} - \braket{\hat f}^2$ \\
+Eigenzustand $⇒ \hat f \ket{ψ} = k \ket{ψ}, k ∈ ℂ$ \\
+Varianz $= 0$ für Eigenzustände. \\
+$\hat A$ und $\hat B$ gleichzeitig messbar, wenn: \\
+$[\hat A, \hat B] = \hat A \hat B - \hat B \hat A = 0$ \\
+$[A, B] = i \const ⇒ \VAR(A) \VAR(B) \geq \frac{\const}{2}$ \\
+Ort: $\hat x \ket{x} = x \ket{x}, \hat x \ket{k} = i \pp{}{k} \ket{k}$ \\
+Impuls: $\hat p \ket{k} = \hbar k \ket{k}, \hat p \ket{x} = -i \hbar \pp{}{x} \ket{k}$ \\
+Energie: $\hat H \ket{k} = \frac{1}{2m} \hat p \hat p \ket{k} = \frac{\hbar^2 k^2}{2m} \ket{k}$ \\
+$\hat H \ket{x} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} \ket{x}$ \\
+de-Broglie Wellen: $\hat E = i \hbar \pp{}{t}$ \\
+Energieeigenzustand: $\displayed{ψ(t) = ψ(0) \exp(-i \frac{E}{\hbar} t)}$ \\
+Gesamtenergie: $E = E_{\text{kin}} + E_{\text{pot}}$ \\
+Allgemein: $H$ Hamiltonfunktion: \\
+$\displayed{H = \frac{\v p^2}{2m} + V(\v x) ↦ \hat H = \frac{\hat{\v p}^2}{2m} + V(\hat{\v x})}$ \\
+Operatorgleichung: $i \hbar \pp{}{t} \ket{ψ} = \hat H \ket{ψ}$ \\
+Schrödingergleichung: \\
+$\displayed{i \hbar \pp{}{t} ψ(\v x, t) = - \frac{\hbar^2}{2m} \Laplace ψ(\v x, t) + V(\v x) ψ(\v x, t)}$ \\
+Randbedingung: $\displayed{∫ \abs{ψ}^2 \d V = 1}$ \\
+Separationsansatz: $ψ(x, t) = \exp(-i \frac{E}{\hbar} t) ϕ(x)$ \\
+$Eϕ(x) = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} ϕ(x) + V(x) ϕ(x)$ \\
+\textbf{Potentialstufe} mit $V_0 < E$: \\
+$\displayed{ψ_{I}(x, t) = A e^{i(k x - ω_{dB} t)} + B e^{i(-kx - ω_{dB} t)}}$ \\
+$\displayed{ϕ_{II}(x) = C e^{-α x}, α^2 = \frac{2m}{\hbar^2}(V_0 - E)}$ \\
+$\displayed{B = A \frac{i k + α}{i k - α}, C = A \frac{2 i k}{i k - α}}$ \\
+\textbf{Potentialbarriere, Transmissionswahrscheinlichkeit} \\
+$\displayed{T = \frac{\abs{ψ_{II}(d)}^2}{\abs{ψ_{II}(0)}^2} \propto e^{-2 α d}}$ \\
+\textbf{Potentialtopf} mit $V_0 \to ∞$, Breite $d$: \\
+$\displayed{ϕ_n(x) = \sqrt{2}{d} \sin(\frac{n π}{d} x), E_n = \frac{\hbar^2 π^2}{2md^2} n^2}$ \\
+$n ⇒ n - 1$ Nullstellen. \\
+diskrete Energien $⇒$ Revival. Kastenpotential: \\
+$\displayed{\frac{E_n - E_n'}{\hbar} t = 2 π}$ \\
+\textbf{Harmonischer Oszillator}\\
+$\displayed{ϕ_n(x) = \sqrt{\frac{1}{\sqrt{π} a_{ho}}} \frac{1}{\sqrt{2^n n!}} H_n(\frac{x}{a_{ho}})e^{-\frac{1}{2}(\frac{x}{a_{ho}})^2}}$ \\
+$\displayed{E_n = \hbar ω (n + \frac{1}{2}), a_{ho} = \sqrt{\frac{\hbar}{m ω}}}$ \\
+$n ⇒ n$ Nullstellen, $n - 1$ Knoten. \\
+Grundzustand ist ein Zustand minimaler Heisenberg-Unschärfe.
+\section{Wasserstoff}
+$\displayed{\hat H = \frac{\hat p_2^2}{2 m_k} + \frac{\hat p_1^2}{2 m_e} - \frac{Z e^2}{2πε_0 \abs{\v r_{12}}}}$ \\
+$\displayed{E_{\text{ges}} ψ(\v r_1, \v r_2) = - \frac{\hbar^2}{2m_k} \Laplace_2 ψ(\v r_1, \v r_2) - \frac{\hbar^2}{2m_e} \Laplace_1 ψ(\v r_1, \v r_2) - \frac{Z e^2}{4π ε_0 \abs{\v r_{12}}} ψ(\v r_1, \v r_2)}$ \\
+$\displayed{E_{\text{ges}} ψ(\v r_s, \v r) = - \frac{\hbar^2}{2M} \Laplace_s ψ(\v r_s, \v r) + (-\frac{\hbar^2}{2μ} \Laplace_r - \frac{Z e^2}{4π ε_0 \abs{\v r}})ψ(\v r_s, \v r)}$ \\
+mit $\displayed{μ = \frac{m_k m_e}{m_k + m_e}}, M = M_k + m_e$ \\
+externe Dynamik: $\displayed{-\frac{\hbar^2}{2M} \Laplace_s ψ_s(\v r_s) = E_s ψ_s(\v r_s)}$ \\
+Lösung: de-Broglie Welle mit $\displayed{λ_s = \frac{h}{\sqrt{2M E_s}}}$ \\
+interne Dynamik: $ψ_{nlm}(r,θ,φ) = R_{nl}(r) P_l^m(\cos θ) e^{imφ}$ \\
+$l = 0,\dots, n -1, m = -l,\dots, +l$ \\
+$(n - 1) - l$ radiale Knoten, $l$ Winkelabhängige Knoten. \\
+$\displayed{E_n = - \frac{μ e^4}{8 h^2 ε_0^2} \frac{Z^2}{n^2} = -R_y^{\ast} \frac{Z^2}{n^2}}$ \\
+$R_y^{\ast} \approx \SI{13.6}{\electronvolt}$ \\
+$\displayed{ρ = 2Z\frac{r}{n a_B'}, a_B' = \frac{4π ε_0 \hbar^2}{μ e^2}}$ \\
+$\displayed{R_{nl}(r) = \sqrt{(\frac{Z}{n a_B'})^3 \frac{(n - l - 1)!}{2n(n + l)!}} e^{-\frac{ρ}{2}} ρ^l L_{n - l - 1}^{2l + 1}(ρ)}$ \\
+radiale Wahrscheinlichkeit: $\abs{R_{nl}(r)}^2 r^2$ \\
+$\displayed{\langle r \rangle = \frac{a_B'}{Z} n^2(1 + \frac{1}{2}(1 - \frac{l(l + 1)}{n^2}))}$ \\
+$(n - 1) - l$ Knoten \\
+Schale mit höchster Wahrscheinlichkeit: \\
+$l_{\text{max}} = n - 1 ⇒ r_{\text{max}} = n^2 \frac{a_B'}{Z}$ \\
+$\hat L_z = -i\hbar \pp{}{φ} = -i\hbar(x \partial_y - y \partial_x)$ \\
+$\hat L_z \ket{n,l,m} = m \hbar \ket{n,l,m}$ \\
+$\hat{\v L}^2 \ket{n,l,m} = \hbar^2 l(l + 1) \ket{n,l,m}$ \\
+$l = 0,1,2,3 \leftrightarrow s,p,d,f$ \\
+\textbf{Optische Übergänge} \\
+Dipol-Auswahl Regel: $\abs{l - l'} = Δ l = 1, Δs = 0$ \\
+QM: Dipolmoment $\hat d = q \hat{\v r} \to \hat d_z = e \hat z$ \\
+$\braket{n,l,m | \hat d | n,l,m} = 0 ∀ n,l,m$ \\
+Dipolmoment nur nicht null für Superposition von zwei Zuständen mit $Δ l \neq 0$. \\
+Wasserstoffserie: $\displayed{\frac{1}{λ} = \tilde R_H(\frac{1}{m^2} - \frac{1}{n^2})}$ \\
+Lyman, Balmer, Paschen: $m = 1, 2, 3$ \\
+Superposition zerfällt exponentiell: \\
+$E(t) = \Re(E e^{-\frac{t}{τ}} e^{i ω_0 t})$ \\
+$\displayed{E(ω) = \frac{E_0}{2\sqrt{2π}}(\frac{1}{\frac{1}{τ} - i(ω_0 - ω)} + \frac{1}{\frac{1}{τ} + i (ω_0 + ω)})}$ \\
+$\displayed{I(ω) \propto \frac{1}{1 + (τ(ω_0 - ω))^2}}$ \\
+Jeder Sender ist auch ein Empfänder, Absorption von Licht ist auch nur für bestimmte Frequenzen groß. \\
+\textbf{Zeeman Effekt} \\
+$\displayed{\hat H = \frac{1}{2 m_e}(\hat{\v p}^2 + e(\hat{\v p} · \hat{\v A} + \hat{\v A} · \hat{\v p}) + e^2 \hat{\v A}^2) + V(\hat{\v x})}$ \\
+$\v B = \v ∇ × \v A, \v A$: Vektorpotential \\
+$\v B = \hat e_z B_z ⇒ \hat{\v A} = \frac{B_z}{2}(-y, x, 0)$ \\
+$\displayed{\hat H = \frac{1}{2m_e} \Laplace + V(\v x) + \frac{e}{2m_e} B_z \frac{\hbar}{i}(x \partial_y - y \partial_x) + \frac{e^2}{2m_e}\frac{B_z^2}{4}(x^2 + y^2)}$ \\
+$\displayed{\hat H = \hat H_0 + \frac{e}{2m_e} B_z \hat L_z}$ \\
+$\displayed{⇒ E_{n,m} = E_n + μ_B m B_z, μ_B = \frac{e \hbar}{2 m_e}}$ \\
+Term-Symbol: $n^{(2s + 1)} L_{l + s}$, $(2s + 1)$: Multiplizität, $n$: Schale / Energieniveau, $L$: Bahndrehimpuls, $0,1,2,3,4,5,6,7 \leftrightarrow$ S,P,D,F,G,H,I,K \\
+$Δm = -1,0,1 \leftrightarrow σ_{-}, π, σ_{+}$. $σ_{-}, σ_{+}$: zirkulär Polarisiert, $π$: linear Polarisiert.
+\section{Spin} 
+$E_{\text{pot}} = -\v p_m · \v B$ \\
+$\displayed{\v F = - ∇ · E_{\text{pot}} ⇒ F_z = - \pp{}{z} E_{\text{pot}}}$ \\
+Elektronen: $s = \frac{1}{2}, m_s = -\frac{1}{2},\frac{1}{2}$ \\
+Spin ist Drehimpuls $\to$ Eigenzustände von $\hat{\v S}, S_z$ \\
+$μ_s = -g_{el} μ_B m_s, g_{el}$: gyromagnetischer- / Landé-Faktor $\approx 2$ für Elektron \\
+$\displayed{⇒ E_{\text{pot}} = -\v B_{\text{kern}} · \v μ_s = g_{EL} \frac{μ_B}{\hbar} B_z \hat S_z}$ \\
+$[\hat S_x, \hat S_y] = i\hbar \hat S_z, [\hat S_i, \hat S_j] = i\hbar ε_{ijk} \hat S_k$ \\
+Spinordarstellung: \\
+$\ket{\uparrow} = (1,0), \ket{\downarrow} = (0,1)$ \\
+$\displayed{⇒ \hat S_z = \frac{\hbar}{2}(\begin{matrix} 1 & 0 \\ 0 & -1 \end{matrix}), \hat S_y = \frac{\hbar}{2}(\begin{matrix} 0 & -i \\ i & 0 \end{matrix}), \hat S_x = \frac{\hbar}{2}(\begin{matrix} 0 & 1 \\ 1 & 0 \end{matrix}),\hat S_i = \frac{\hbar}{2} σ_i}$ \\
+Darstellung auf Bloch-Kugel: \\
+$\ket{ψ} = \cos \frac{θ}{2} \ket{\uparrow} + \sin \frac{θ}{2} e^{iϕ} \ket{\downarrow}$ \\
+Feinstruktur: \\
+$\displayed{\hat H = \hat H_{NR} - \frac{\hat p^4}{8 m_e^3 c^2} + \frac{1}{2 m_e^2 c^2} \frac{1}{\hat r} \dd{V}{r} \hat{\v L} · \hat{\v S} + \frac{π \hbar^2}{2 m_e^2 c^2}\frac{Z e^2}{4π ε_0} δ(\v r)}$ \\
+Gesamtdrehimpuls: $\hat{\v J} = \hat{\v L} + \hat{\v S}$. \\
+Eigenzustände: $\ket{J, m_j}, J = l - s, \dots, l + s, m_j = -J, \dots, J$ \\
+$\hat{\v L} · \hat{\v S} = \frac{1}{2}(\hat{\v J}^2 - \hat{\v L}^2 - \hat{\v S}^2)$ \\
+$\displayed{\hat H_{ls} = \frac{Z e^2 μ_0}{8π m_e^2 r^2} \hat{\v L} · \hat{\v S}}$ \\
+Feinstrukturkonstante: $\displayed{α = \frac{e^2}{4π ε_0 \hbar c}}$ \\
+$\displayed{E_{nj} = E_n(1 + \frac{Z^2 α^2}{n^2}(\frac{n}{J + \frac{1}{2}} - \frac{3}{4}))}$
+\section{Helium} 
+zusätzliche Elektron-Elektron-Wechselwirkung. \\
+$\displayed{H = -\frac{\hbar}{2μ}(\Laplace_1 + \Laplace_2) - \frac{Z e^2}{4π ε_0 \abs{\v r_1}} - \frac{Z e^2}{4π ε_0 \abs{\v r_2}} + \frac{e^2}{4π ε_0 \abs{\v r_{12}}}}$ \\
+Separationsansatz: $ψ(\v r_1, \v r_2) = ψ_1(\v r_1) ψ_2(\v r_2)$, $ψ_1, ψ_2$ Lösungen des Wasserstoff für $Z = 2$ \\
+Grundzustand: $\displayed{ψ(\v r_1, \v r_2) = \frac{Z^3}{a_B}\exp(\frac{-Z}{a_B} \abs{\v r_1 + \v r_2})}$ \\
+Spin-Spin Kopplung: $\v S = \v S_1 + \v S_2$ analog zu $\v J$, $m_s = m_1 + m_2, -S \leq m_s \leq S$
+Eigenzustände: \\
+Singlett: $\ket{S = 0}: \frac{1}{\sqrt{2}}(\ket{\uparrow \downarrow} - \ket{\downarrow \uparrow}) ⇒ m_s = 0$ \\
+$\ket{S = 1} ⇒$ Triplett: \\
+$m_s = 0: \frac{1}{\sqrt{2}}(\ket{\uparrow \downarrow} + \ket{\downarrow \uparrow})$ \\
+$m_s = 1: \ket{\uparrow \uparrow}$ \\
+$m_s = -1: \ket{\downarrow \downarrow}$ \\
+$S = 0$: antisymmetrisch $⇒ \ket{a b} = -\ket{b a}$ \\
+$S = 1$: symmetrisch $⇒ \ket{a b} = \ket{b a}$ \\
+\textbf{Pauli Prinzip:} 2 Fermionen können nicht den gleichen Zustand besetzen. $⇔$ Gesamtwellenfunktion muss bezüglich Austausch von 2 Elektronen antisymmetrisch sein. \\
+Grundzustand ist symmetrisch bezüglich Austausch der beiden Elektronen $⇒$ Spin-Freiheitsgrad muss antisymmetrisch sein $⇒ S = 0$. \\
+Singulett: Angeregete Zustände müssen symmetrisch bezüglich Austausch sein $⇒$ \\
+$\displayed{{}^1S_0: ψ(\v r_1, \v r_2) = \frac{1}{\sqrt{2}}(ψ_{10}(\v r_1) ψ_{20}(\v  r_2) + ψ_{10}(\v r_2) ψ_{20}(\v r_1))}$ \\
+$\displayed{{}^1P_1: ψ(\v r_1, \v r_2) = \frac{1}{\sqrt{2}}(ψ_{10}(\v r_1) ψ_{21}(\v  r_2) + ψ_{10}(\v r_2) ψ_{21}(\v r_1))}$ \\
+Triplett: $S = 1$, Spin-Freiheitsgrad symmetrisch bezüglisch Austausch $⇒$ räumilcher Freiheitsgrad antisymmetrisch. \\
+$\displayed{{}^3 S_1: ψ(\v r_1, \v r_2) = \frac{1}{\sqrt{2}}(ψ_{10}(\v r_1) ψ_{20}(\v r_2) - ψ_{10}(\v r_2) ψ_{20}(\v r_1))}$
+\section{Mathematische Zusammenhänge}
+Fourierreihe: $f(x + d) = f(x) ⇒$ \\
+$\displayed{f(x) = \sum_{n = -∞}^{∞} g_n \exp(\frac{i2π n x}{d})}$ \\
+$\displayed{g_n = \frac{1}{d} ∫_x^{x + d} f(x) \exp(\frac{-i2π n x}{d}) \d x}$ \\
+Fouriertransformation: \\
+$\displayed{f(x) = \frac{1}{\sqrt{2π}} ∫_{-∞}^{+∞} g(k) \exp(i k x) \d k}$ \\
+$\displayed{g(x) = \frac{1}{\sqrt{2π}} ∫_{-∞}^{+∞} f(k) \exp(-i k x) \d x}$ \\
+$ε << 1 ⇒ (1 + ε)^n \approx 1 + n ε$ \\
+Hermitesche Polynome: \\
+$H_0(x) = 1, H_1(x) = 2x, H_{n + 1}(x) = 2x H_n(x) - 2n H_{n - 1}(x)$ \\
+Laguerre Polynome: \\
+$\displayed{L_n(x) = \frac{e^x}{n!} \frac{\d^n}{\d x^n}(x^n e^{-x})}$ \\
+$\displayed{L_n^k(x) = (-1)^k \frac{\d^k}{\d x^k} L_{n + k}(x)}$ \\
+$(n + 1)L_{n + 1}(x) = (2n + 1 - x) L_n(x) - n L_{n - 1}(x)$ \\
+erfüllen: $x y''(x) + (k + 1 - x) y'(x) + n y(x) = 0$ \\
+Legendre Polynome: \\
+$\displayed{P_l(x) = \frac{1}{2^l l!} \frac{\d^l}{\d x^l}(x^2 - 1)^l}$ \\
+$\displayed{P_l^m(x) = (-1)^m (1 - x^2)^{\frac{m}{2}} \frac{\d^m}{\d x^m} P_l(x)}$ \\
+$(n + 1) P_{n + 1}(x) = (2n + 1) x P_n(x) - n P_{n - 1}(x)$ \\
+$\displayed{(x^1 - 1) \dd{}{x} P_n(x) = n x P_n(x) - n P_{n - 1}(x)}$ \\
+Laplace in Kugelkoordinaten: \\
+$\displayed{\Laplace = \frac{1}{r^2}\pp{}{r}(r^2 \pp{}{r}) + \frac{1}{\sin θ} \pp{}{θ}(\sin θ \pp{}{θ}) + \frac{1}{\sin^2 θ} \frac{\partial^2}{\partial φ^2}}$
+\section{Extras}
+Matrixoptik $r + t = 1$: \\
+Strahlteiler: $\displayed{(\begin{matrix} \sqrt{r} & \sqrt{t} \\ \sqrt{t} & \sqrt{r} e^{iπ}\end{matrix})}$ \\
+Phasenshift: $\displayed{(\begin{matrix} 1 & 0 \\ 0 & e^{iθ} \end{matrix})}$ \\
+ideales Gas: $\displayed{\frac{f}{2} k_B T = \frac{1}{2} m \langle v^2 \rangle}$ \\
+Welle: $c = λ ν$ \\
+$\hbar = \frac{h}{2π}$ \\
+$h = \SI{6.62609934(89)e-34}{\joule\second}$ \\
+Potentialbarriere mit Matrix-Rechnung:
+$\displayed{k_n = k \sqrt{1 - \frac{V_n}{E_{\text{ges}}}}}$ \\
+$\displayed{ϕ_n(x) = (\begin{matrix} a_n e^{i k_n x} \\ b_n e^{-i k_n x} \end{matrix})}$ \\
+Propagationsmatrix: $\displayed{ϕ_n(x_n) = D(d_n, k_n) ϕ_n(x_n + d_n)}$ \\
+$\displayed{D(d_n, k_n) = (\begin{matrix} e^{-ik_n d_n} & 0 \\ 0 & e^{i k_n d_n}\end{matrix})}$ \\
+Transfermatrix (Potentialgrenze): $\displayed{T(k_n,k_m) = \frac{1}{2k_n} (\begin{matrix} k_n + k_m & k_n - k_m \\ k_n - k_m & k_n + k_m \end{matrix})}$ \\
+Wahrscheinlichkeitsstromdichten: $j = \Re \frac{ϕ^{\ast} \hat p ϕ}{m}$ \\
+Transmissions- Reflektionswahrscheinlichkeit: $P_T, P_R, P_T + P_R = 1$ \\
+Kugelflächenfunktionen: \\
+Additionstheorem: $\cos γ = \cos θ \cos θ' + \sin θ \sin θ' \cos(φ - φ')$ \\
+$\displayed{P_l(\cos γ) = \frac{4π}{2l + 1} \sum_{m = -l}^l Y_{lm}(θ, φ) Y_{lm}^{\ast}(θ', φ')}$ \\
+Für $θ = θ', φ = φ'$ verschwindet die Winkelabhängigikeit: \\
+$\displayed{P_l(1) = \frac{4π}{2l + 1} \sum_{m = -l}^l \abs{Y_{lm}(θ, φ)}^2}$ \\
+Abstrahlungsrichtungen bei Zeeman: Richtung Magnetfeld: nur $σ_{-}$ und $σ_{+}$, diese sind zirkulär polarisiert (Dipol strahl nicht in Schwingungrichtung ab). Senkrecht zum Magnetfeld sieht man $π$ linear polarisiert in Richtung des Magnetfelds und $σ_{-}$ und $σ_{+}$ in senkrecht auf Magnetfeld. \\
+\end{multicols*}
+\end{document}

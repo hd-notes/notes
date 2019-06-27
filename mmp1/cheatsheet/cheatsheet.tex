@@ -1,0 +1,596 @@
+\documentclass[8pt, landscape,a4paper]{extarticle}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{scrextend}
+\changefontsizes{7pt}
+\usepackage[top=1cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+\usepackage{braket}
+\usepackage{microtype}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage[ngerman]{babel}
+%\usepackage{polyglossia}
+%\setdefaultlanguage[spelling=new, babelshorthands=true]{german}
+\usepackage{nath}
+\usepackage{stmaryrd}
+\usepackage{stackengine}
+\usepackage{newunicodechar}
+\newunicodechar{α}{\alpha}
+\newunicodechar{Α}{\alpha}
+\newunicodechar{β}{\beta}
+\newunicodechar{Β}{\beta}
+\newunicodechar{γ}{\gamma}
+\newunicodechar{δ}{\delta}
+\newunicodechar{ε}{\varepsilon}
+\newunicodechar{Ε}{\varepsilon}
+\newunicodechar{ζ}{\zeta}
+\newunicodechar{η}{\eta}
+\newunicodechar{θ}{\theta}
+\newunicodechar{ι}{\iota}
+\newunicodechar{κ}{\kappa}
+\newunicodechar{λ}{\lambda}
+\newunicodechar{μ}{\mu}
+\newunicodechar{Μ}{\Mu}
+\newunicodechar{ν}{\nu}
+\newunicodechar{ξ}{\xi}
+\newunicodechar{ο}{\omicron}
+\newunicodechar{π}{\pi}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ρ}{\rho}
+\newunicodechar{Ρ}{\Rho}
+\newunicodechar{σ}{\sigma}
+\newunicodechar{τ}{\tau}
+\newunicodechar{Τ}{\Tau}
+\newunicodechar{υ}{\upsilon}
+\newunicodechar{φ}{\varphi}
+\newunicodechar{χ}{\chi}
+\newunicodechar{ψ}{\psi}
+\newunicodechar{ω}{\omega}
+\newunicodechar{∀}{\forall}
+\newunicodechar{×}{\times}
+\newunicodechar{Γ}{\Gamma}
+\newunicodechar{Δ}{\Delta}
+\newunicodechar{∃}{\exists}
+\newunicodechar{ℤ}{\mathbb{Z}}
+\newunicodechar{∧}{\wedge}
+\newunicodechar{Θ}{\Theta}
+\newunicodechar{⇒}{\implies}
+\newunicodechar{∩}{\cap}
+\newunicodechar{Λ}{\Lambda}
+\newunicodechar{∫}{\int}
+\newunicodechar{ℕ}{\mathbb{N}}
+\newunicodechar{Ξ}{\Xi}
+\newunicodechar{∇}{\nabla}
+\newunicodechar{Π}{\Pi}
+\newunicodechar{ℝ}{\mathbb{R}}
+\newunicodechar{Σ}{\Sigma}
+\newunicodechar{⇔}{\iff}
+\newunicodechar{Υ}{\Upsilon}
+\newunicodechar{Φ}{\Phi}
+\newunicodechar{ℂ}{\mathbb{C}}
+\newunicodechar{Ψ}{\Psi}
+\newunicodechar{Ω}{\Omega}
+\newunicodechar{ϑ}{\vartheta}
+\newunicodechar{∞}{\infty}
+\newunicodechar{∈}{\in}
+\newunicodechar{⊂}{\subset}
+\newunicodechar{ϰ}{\varkappa}
+\newunicodechar{ϕ}{\phi}
+\newunicodechar{∨}{\vee}
+\newunicodechar{∮}{\oint}
+\newunicodechar{↦}{\mapsto}
+\newunicodechar{ℚ}{\mathbb{Q}}
+\newunicodechar{⊆}{\subseteq}
+\newunicodechar{⊊}{\subsetneq}
+\newunicodechar{∪}{\cup}
+\newunicodechar{·}{\cdot}
+\makeatletter
+\let\mathop\o@mathop
+\makeatother
+
+\definecolor{myblue}{cmyk}{1,1,1, 1}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\everymath\expandafter{\the\everymath \color{myblue}}
+\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+%\setlength{\mathindent}{0pt}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0mm}%
+                                {.2ex}%
+                                {.2ex}%x
+                                {\sffamily\small\bfseries}}
+
+
+
+\def\multi@column@out{%
+   \ifnum\outputpenalty <-\@M
+   \speci@ls \else
+   \ifvoid\colbreak@box\else
+     \mult@info\@ne{Re-adding forced
+               break(s) for splitting}%
+     \setbox\@cclv\vbox{%
+        \unvbox\colbreak@box
+        \penalty-\@Mv\unvbox\@cclv}%
+   \fi
+   \splittopskip\topskip
+   \splitmaxdepth\maxdepth
+   \dimen@\@colroom
+   \divide\skip\footins\col@number
+   \ifvoid\footins \else
+      \leave@mult@footins
+   \fi
+   \let\ifshr@kingsaved\ifshr@king
+   \ifvbox \@kludgeins
+     \advance \dimen@ -\ht\@kludgeins
+     \ifdim \wd\@kludgeins>\z@
+        \shr@nkingtrue
+     \fi
+   \fi
+   \process@cols\mult@gfirstbox{%
+%%%%% START CHANGE
+\ifnum\count@=\numexpr\mult@rightbox+2\relax
+          \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+% \setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\else
+      \setbox\count@\vsplit\@cclv to \dimen@
+\fi
+%%%%% END CHANGE
+            \set@keptmarks
+            \setbox\count@
+                 \vbox to\dimen@
+                  {\unvbox\count@
+                   \remove@discardable@items
+                   \ifshr@nking\vfill\fi}%
+           }%
+   \setbox\mult@rightbox
+       \vsplit\@cclv to\dimen@
+   \set@keptmarks
+   \setbox\mult@rightbox\vbox to\dimen@
+          {\unvbox\mult@rightbox
+           \remove@discardable@items
+           \ifshr@nking\vfill\fi}%
+   \let\ifshr@king\ifshr@kingsaved
+   \ifvoid\@cclv \else
+       \unvbox\@cclv
+       \ifnum\outputpenalty=\@M
+       \else
+          \penalty\outputpenalty
+       \fi
+       \ifvoid\footins\else
+         \PackageWarning{multicol}%
+          {I moved some lines to
+           the next page.\MessageBreak
+           Footnotes on page
+           \thepage\space might be wrong}%
+       \fi
+       \ifnum \c@tracingmulticols>\thr@@
+                    \hrule\allowbreak \fi
+   \fi
+   \ifx\@empty\kept@firstmark
+      \let\firstmark\kept@topmark
+      \let\botmark\kept@topmark
+   \else
+      \let\firstmark\kept@firstmark
+      \let\botmark\kept@botmark
+   \fi
+   \let\topmark\kept@topmark
+   \mult@info\tw@
+        {Use kept top mark:\MessageBreak
+          \meaning\kept@topmark
+         \MessageBreak
+         Use kept first mark:\MessageBreak
+          \meaning\kept@firstmark
+        \MessageBreak
+         Use kept bot mark:\MessageBreak
+          \meaning\kept@botmark
+        \MessageBreak
+         Produce first mark:\MessageBreak
+          \meaning\firstmark
+        \MessageBreak
+        Produce bot mark:\MessageBreak
+          \meaning\botmark
+         \@gobbletwo}%
+   \setbox\@cclv\vbox{\unvbox\partial@page
+                      \page@sofar}%
+   \@makecol\@outputpage
+     \global\let\kept@topmark\botmark
+     \global\let\kept@firstmark\@empty
+     \global\let\kept@botmark\@empty
+     \mult@info\tw@
+        {(Re)Init top mark:\MessageBreak
+         \meaning\kept@topmark
+         \@gobbletwo}%
+   \global\@colroom\@colht
+   \global \@mparbottom \z@
+   \process@deferreds
+   \@whilesw\if@fcolmade\fi{\@outputpage
+      \global\@colroom\@colht
+      \process@deferreds}%
+   \mult@info\@ne
+     {Colroom:\MessageBreak
+      \the\@colht\space
+              after float space removed
+              = \the\@colroom \@gobble}%
+    \set@mult@vsize \global
+  \fi}
+
+\setlength{\parindent}{0pt}
+\newcommand\ubar[1]{\stackunder[1.2pt]{\(#1\)}{\rule{1.25ex}{.08ex}}}
+
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{-100pt}
+    \setlength\belowdisplayskip{-100pt}
+    \setlength\abovedisplayshortskip{-100pt}
+    \setlength\belowdisplayshortskip{-100pt}
+%    \setlength\beloweqnsskip{-100pt}
+%    \setlength\displaybaselineskip{-100pt}
+%    \setlength\displaylineskip{-100pt}
+}
+
+\renewcommand\v[1]{\vec{#1}}
+\renewcommand\d{\mathrm{d}}
+\newcommand\cof{\mathrm{cof}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand*\abs[1]{\lvert#1\rvert}
+\newcommand*\norm[1]{\lVert#1\rVert}
+\newcommand*\Laplace{\mathop{}\!\mathbin\triangle}
+\newcommand\VAR{\mathrm{VAR}}
+\newcommand\Res{\mathrm{Res}}
+\newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\const}{\ensuremath{\text{ const.}}}%
+%\newcommand*{\estimates}{\overset{\scriptscriptstyle\wedge}{=}}%
+\raggedbottom
+\begin{document}
+\small
+\begin{multicols*}{3}
+\raggedcolumns
+Kurve: $γ:[t_a, t_b] \to ℝ^d, t_a < t_b$, stetig \\
+\(C^1\)-Kurve: $γ\Big_{(t_a, t_b)} ∈ C^1$ und stetig auf $[t_a, t_b]$ fortsetztbar \\
+geschlossen: $t_a = t_b$ \\
+Bild kompakter Menge einer stetigen Funktion kompakt $⇒$ beschränkt und abgeschlossen. \\
+$f: X \to Y$ Homöomorphismus: $f ∈ C^0, f^{-1} ∈ C^0$ (also bijektiv) \\
+$f: X \to Y$ Diffeomorphismus: $f ∈ C^1, f^{-1} ∈ C^1$ (also bijektiv) \\
+Reparametrisierung: $φ: [θ_a, θ_b] \to [t_a, t_b]$ Homöomorphismus und auf $(θ_a, θ_b)$ Diffeomorphismus
+$\to γ' = γ \circ φ$ \\
+Äquivalenzklasse bezüglich Reparametrisierung: Orientierung \\
+Orientierungserhaltend: $\dd{φ}{θ} > 0 ∀ θ ∈ (θ_a, θb)$ \\
+Linienintegral: $F: Ω ⊂ ℝ^d \to ℝ^d$ \\
+$\displayed{I_γ(F) := ∫_{t_a}^{t_b} F(γ(t)) · \dot γ(t) \d t}$
+$I_γ$ ist reparametrisierungsinvariant \\
+Endlich zerlegbare Menge: $A ⊂ ℝ^2$ durch Schnitte längs Geradenstücken in endlich viele
+``verbogene Dreiecke'' zerlegbar. \\
+Greensche-Formel:
+$\displayed{∫_{A} \d x_1 \d x_2 (\pp{F_2}{x_1} - \pp{F_1}{x_2}) = ∫_{\partial A} F · \d x}$ \\
+Komplexe Zahlen: Punktweise Addition und $(a, b) · (c, d) = (ac - bd, ad + bc)$ \\
+$(a, b)^{-1} = (a^2 + b^2)^{-1} (a, -b)$ \\
+$1 := (1, 0), i := (0,1), (a, b) = a + ib$ \\
+Alternativ: $\displayed{a (\begin{matrix} 1 & 0 \\ 0 & 1\end{matrix}) + b (\begin{matrix} 0 & -1 \\ 1 & 0\end{matrix})}$ \\
+Konjugation $\bar z = \bar{x + i y} = x - iy$ \\
+Betrag: $\abs{z} = \abs{a + ib} = \sqrt{a^2 + b^2}$ \\
+\(ℝ\)-linear: $L$ additiv, $∀ l ∈ ℝ: L(λ z) = λ L(z)$ \\
+\(ℂ\)-linear: $L$ additiv, $∀ l ∈ ℂ: L(λ z) = λ L(z)$ \\
+$L$ $ℝ$ linear $⇒ ∃ w, \tilde w ∈ ℂ: L(z) = w z + \tilde w \bar z$ \\
+$\displayed{\exp(z) = \sum_{k = 0}^{∞} \frac{z^k}{k!}}$ \\
+$\displayed{\exp(i z) = \cos θ + i \sin θ}$ \\
+$\displayed{∀ z ∈ ℂ ∃ r, φ ∈ ℝ, z = r e^{iφ}, φ = \arg z ∈ [-π, π)}$ \\
+$\displayed{\cos z = 1/2 (e^{iz} + e^{-i z}), \sin z = 1/(2i)(e^{iz} - e^{-iz})}$ \\
+$\displayed{\cosh z = 1/2 (e^{z} + e^{-z}), \sinh = 1/2(e^{z} - e^{-z})}$ \\
+reell differenzierbar: $∃$ $L$, \(ℝ\)-linear, sodass $δ \to 0 ⇒ f(z_0 + δ) - f(z_0) = L(δ) + o(\abs{δ})$ \\
+$⇔$ mit $f(x, y) = r(x, y) + i s(x, y)$: $ℝ^2$ Differenzierbarkeit von $\displayed{g(x, y) \to (\begin{matrix} r(x, y) \\ s(x, y) \end{matrix})}$ \\
+
+Komplex Differenzierbar: $∃ w ∈ ℂ$ für $δ \to 0$: $f(z_0 + δ) - f(z_0) = w δ + o(\abs{δ})$ \\
+Holomorph: komplex differenzierbar und die Ableitung ist stetig \\
+Cauchy-Riemannsche Differentialgleichungen: $f = r + is$ komplex differenzierbar $⇔$ \\
+$\displayed{\pp{r}{x}(x_0, y_0) = \pp{s}{y}(x_0, y_0), \pp{r}{y}(x_0, y_0) = -\pp{s}{x}(x_0, y_0)}$ \\
+Summe + Produkt + Komposition wieder holomorph, Produkt + Kettenregel, $1/f$ für $f \neq 0$ \\
+Komplexe Kurve: $γ:[t_a, t_b] \to ℂ, f = r + i s ⇒$ \\
+$\displayed{∫_{γ} f(z) \d z = ∫_{t_a}^{t_b} f(γ(t)) \dot γ(t) \d t = ∫_γ (r, -s) · \d x + i ∫_γ (s, r) · \d x}$ \\
+$f$ holomorph $A$ endlich zerlegbar $⇒$ $∫_{\partial A} f(z) \d z = 0$ \\
+$∫_γ f(z) \d z = F(γ(t_b)) - F(γ(t_a)) = F(z_1) - F(z_0)$ \\
+für $0 ∈ A$: $\displayed{∫_{\partial A}  = \begin{cases} 2πi & n = 1 \\ 0 & n\geq 2 \end{cases}}$ \\
+$Ω ⊂ Ω$ offen, $f: Ω \to ℂ$, $A$ endlich zerlegbar, $\bar A ⊂ Ω ⇒$ \\
+$\displayed{f(z_0) = \frac{1}{2πi} ∫_{\partial A} \frac{f(z)}{z - z_0}}$ \\
+Reihe: $(a_n)_{n ∈ N_0}$ Folge in $ℂ$ \\
+Partialsumme: $\displayed{S_N = \sum_{n = 0}^N a_n, A_N = \sum_{n = 0}^{N} \abs{a_n}}$ \\
+Reihe konvergent: $(S_N)_{N ∈ ℕ}$ konvergiert, absolut konvergent: $(A_N)_{N ∈ ℕ}$ konvergiert \\
+Geometrische Reihen: $\displayed{\sum_{n = 0}^∞ q^n = \frac{1}{1 - q}}$ \\
+Potentzreihe: $\sum_{n = 0}^∞ a_n z^n$ \\
+Potenzreihe konvergiert für $z_0 ⇒$ konvergiert $∀ z ∈ \{z ∈ ℂ \mid \abs{z} < \abs{z_0}\}$ \\
+Die durch die Potenzreihe auf $\{z ∈ ℂ \mid \abs{z} < \abs{z_0}\}$ definierte Funktion von $z$ ist
+bel. oft stetig diff'bar. \\
+Kovergenzradius: Größter Wert $r$, sodass die Reihe $∀ z : \abs{z} < r$ konvergiert. \\
+Analytische Funktion: $f: Ω \to ℂ, ∀ z_0 ∈ Ω ∃ r_0 > 0: ∀ z ∈ Ω, \abs{z - z_0} < r_0:$ \\
+$\displayed{f(z) = \sum_{n = 0}^∞ a_n (z - z_0)^n}$ \\
+$f$ holomorph $⇒$ $f$ analytisch mit \\
+$\displayed{a_n = \frac{1}{2πi} ∫_{\abs{w - z_0} = r} \frac{w}{(w - z_0)^{n + 1}} \d w}$ \\
+Jede konvergente Potenzreihe definiert eine auf ihrem Konvergenzradius analytische Funktion. \\
+$f$ ist ganz analytisch $⇔ f: ℂ \to ℂ$ ist holomorph. \\
+Satz von Liouville: $f$ ganz: $f$ beschränkt $⇔$ $f$ konstant. \\
+Satz von Morera: $Ω ⊂ ℂ$ offen, $f: Ω \to ℂ$ stetig: \\
+$\displayed{∫_{Δ} f(z) \d z = 0}$
+für alle abgeschlossenen Dreiecke $Δ ⊂ Ω ⇔ f$ ist holomorph. \\
+Wenn $f$ holomorph auf der oberen Halbebene und reell auf der reellen Achse ist, ist \\
+%$\displayed{\tilde{f}(z) = \begin{cases} f(z) & \Im z > 0 \\ \bar f(z) & \Im z < 0 \end{cases}}$ \\
+$\displayed{\tilde{f}(z) = \{\begin{matrix} f(z) & \Im z > 0 \\ \bar{f}(z) & \Im z < 0 \end{matrix}\}}$ \\
+holomorph auf der oberen und underen Halbebene. \\
+Gebiet: $G ⊂ ℂ$ offen und zusammenhängend. \\
+Identitätssatz: $G$ Gebiet, $f: G \to ℂ$ und $g : G \to ℂ$ holomorph, dann sind äquivalent \\
+\begin{enumerate}
+  \item $f = g$
+  \item $\{w ∈ G \mid f(w) = g(w)\}$ hat Häufungspunkt in $G$
+  \item $∃ z_0 ∈ G: f^{(k)(z_0) = g^{(k)}(z_0) ∀ k ∈ ℕ_0}$
+\end{enumerate}
+$f$ holomorph, $z_0 ∈ Ω$ mit $f'(z_0) \neq 0$, $U_r = f(B_r(z_0))$, dann gilt \\
+\begin{enumerate}
+  \item $∃ r > 0$, $g: U_r \to Ω, w ↦ g(w):$ \\
+  $\displayed{∀ w ∈ U_r: f(g(w)) = w, ∀ z ∈ B_r(z_0): g(f(z)) = z}$ \\
+  \item $U_r$ ist offen
+\end{enumerate}
+$f: X \to Y$  offen $:=$ Bilder offener Mengen sind offen. \\
+$f: Ω \to ℂ$ holomorph, $z_0 ∈ Ω, k ∈ ℕ$, sodass
+$∀ l \leq k: f^{(l)}(z_0) = 0, f^{(k)}(z_0) \neq 0$ \\
+$⇒ ∃ r > 0, u: B_r(z_0) \to ℂ: u(z_0) = 1, ∀ z ∈ B_r(z_0): u(z) \neq 0, f(z) - f(z_0) = \frac{f^{(k)}(z_0)}{k!}(z - z_0)^k u(z)$ \\
+$f$ holomorph in Umgebung von $z_0$ und eine \(k\)-fache Nullstelle hat $⇒ ∃ r > 0$ und eine holomorphe
+Funktion $g: B_r(z_0) \to C$, sodass $g'(z_0) \neq 0$ und $∀ z ∈ B_r(z_0): f(z) = g(z)^k$ \\
+Nichtkonstante holomorphe Funktionen sind offene Abbildungen. \\
+$G$ Gebiet, $f$ nichtkonstant und holomorph $⇒ f(G)$ ist ein Gebiet \\
+Maximumsprinzip I: $G$ Gebiet, $f$ holomorph auf $G$ $∃ z_0 ∈ G: \abs{f}$ hat bei $z_0$ lokales
+Maximum $⇒ f$ konstant. \\
+Maximumsprinzip II: $G$ beschränktes Gebiet, $f$ auf $G$ stetig und holomorph $⇒$ $\abs{f}$ nimmt
+sein Maximum am Rand von $G$ an \\
+Minimumsprinzip: $f$ holomorph in $G$, $∃ z_0 ∈ G: \abs{f}$ hat lokales Minimum bei $z_0 ⇒ f(z_0) = 0$ oder $f$ ist konstant auf $G$ \\
+$(f_n)_{n ∈ ℕ}$ konvergiert punktweise gegen $f$, wenn \\
+$\displayed{∀ ε > 0 ∀ x ∈ X ∃ n_0 ∈ ℕ ∀ n \geq n_0: \abs{f_n(x) - f(x)} < ε}$
+konvergiert gleichmäßig, wenn
+$\displayed{∀ ε > 0 ∃ n_0 ∈ ℕ ∀ x ∈ X ∀ n \geq n_0: \abs{f_n(x) - f(x)} < ε}$
+$f_n$ stetig, konvergiert gleichmäßig gegen $f$ $⇒$ $f$ stetig \\
+$f_n: Ω \to ℂ, f_n$ holomorph. $f_n$ konvergieren kompakt also auf kompakten Teilmengen von $Ω$ gleichmäßig, dann ist auch $f$ holomorph und $f_n^{(k)} \to f^{(k)}$. \\
+$z_0 ∈ Ω, f: Ω \setminus \{z_0\} \to C$ holomorph $⇒ z_$ ist eine isolierte Singularität von $f$ \\
+hebbare Singularität, wenn $∃ y ∈ C$, sodass mit $f(z_0) := y$ $f$ holormoph auf $Ω$ \\
+Pol \(m\)-ter Ordnung, wenn $z_0$ nicht hebbar, aber $z ↦ (z - z_0)^m f(z)$ bei $z_0$ eine hebbare Singularität hat \\
+wesentliche Singularität, wenn $z_0$ nicht hebbare und kein Pol \\
+Laurentreihe:
+$\displayed{f(z) = \sum_{n = -∞}^{∞} c_n z^n}$ \\
+$\displayed{c_n = \frac{1}{2πi} ∫_{\abs{w} = r} \frac{f(w)}{w^{n + 1}} \d w}$ \\
+konvergiert (absolut und kompakt) für $r ∈ (ρ_1, ρ_2)$, sodass $f$ holomorph auf $B_{ρ_2}(0) \setminus B_{ρ_1}(0)$ in dieser Menge \\
+$n < 0$: Hauptteil, konvergiert für $\abs{z} > ρ_1$, $\abs{z} > ρ_1$, $n > 0$: Nebenteil konvergiert für $\abs{z} < ρ_2$ \\
+für isolierte Singularitäten $z_j:$
+$\displayed{f(z) = \sum_{n = -∞}^{∞} c_n (z - z_j)^n}$ \\
+$\displayed{c_n = \frac{1}{2πi} ∫_{\abs{w} = r} \frac{f(w)}{(w - z_j)^{n + 1}} \d w}$ \\
+$f: Ω \setminus \{z_j\} \to ℂ$ holomorph, $∃ M > 0$, sodass $∀ z ∈ Ω \setminus \{z_j\}: \abs{f(z)} \leq M$ \\
+Dann existiert $c_0 := \lim_{z \to z_j} f(z)$ und $f$ ist stetig fortsetzbar. \\
+$f$ meromorph $⇔$ $f$ bis auf diskrete Menge von Polen holomorph \\
+$P(z) / Q(z)$ ist meromorph für $P(z), Q(z)$ Polynome \\
+Residuum: $\displayed{f(z) = \sum_{n = -∞}^{∞} c_n (z - z_0)^n ⇒ \Res_{z_0} f = c_{-1}}$ \\
+$\displayed{\Res_{z_0} f = \frac{1}{2πi} ∫_{\abs{z_0 - z} = r} f(z) \d z}$ \\
+Residuumsatz: Sei $S$ die diskrete Menge der Singularitäten, $f$ auf $Ω \setminus S$ holomorph,
+$A$ endlich zerlegbar mit $\bar A ⊂ U, \partial A ∩ S = \emptyset ⇒$ \\
+$\displayed{∫_{\partial A} f(z) \d z = 2πi \sum_{z_0 ∈ S ∩ A} \Res_{z_0} f}$ \\
+$a_1, \dots, a_m$ Pole von $f$ in $A$ (Pol \(k\)-ter Ordnung kommt $k$ mal vor) und $b_1, \dots, b_n$ Nullstellen von $f$ in $A$ (Nullstelle \(k\)-ter Ordnung kommt $k$ mal vor), dann ist für $ϕ: U \to ℂ$ holomorph: \\
+$\displayed{\frac{1}{2πi} ∫_{\partial A} ϕ(z) \frac{f'(z)}{f(z)} \d z = \sum_{j = 1}^n ϕ(b_j) - \sum_{i = 1}^{m} ϕ(a_i)}$ \\
+Für $Q(z) = \frac{g(z)}{(z - z_0)^n}$ ist mit $z$ Pol \(k\)-ter Ordnung, dann ist
+$\displayed{\Res_{z_0} Q= \frac{1}{(n - 1)!} \frac{\d^{n - 1} g}{\d z^{n - 1}}(z_0)}$ \\
+$Q$ stetig auf $\bar{\mathbb{H}} \setminus \{z_1, \dots z_n\}$, holomorph auf $\mathbb{H} \setminus \{z_1, \dots z_n\}$,
+$\abs{z Q(z)} \to^{\abs{z} \rightarrow ∞} 0$ gleichmäßig in $0 \leq \arg z \leq π$,
+für $x ∈ ℝ$ ist $Q(x) ∈ ℝ$ und die Grenzwerte
+$\displayed{\lim_{B \to ∞} ∫_0^B Q(x) \d x, \lim_{A \to -∞} ∫_A^0 Q(x) \d x}$
+existieren. Dann gilt
+$\displayed{∫_{-∞}^{∞} Q(x) \d x = 2πi \sum_{k = 1}^n \Res_{z_k} Q}$ \\
+$Q$ in $\bar{\mathbb{H}}$ meromorph und $\lim_{\abs{z} \to ∞} Q(z) = 0$ gleichmäßig in $\arg z$. Dann gilt für $Γ_ρ:[0,π] \to ℂ, θ ↦ ρ e^{iθ}$ und $m > 0$: \\
+$\displayed{\lim_{ρ \to ∞} ∫_{Γ_ρ} Q(z) e^{im z} \d z = 0}$ \\
+Wenn $∫_0^∞ Q(x) e^{imx} \d x$ existiert, $Q(z) = Q(-z)$, dann ist \\
+$\displayed{∫_0^∞ Q(x) \cos(m x) \d x = iπ \sum_{\text{Pol von $Q$}} \Res_z Q(z) e^{imz}}$ \\
+$\bar ℂ = ℂ ∪ \{∞\}$, $O ⊂ \bar ℂ$ ist offen, wenn $O ⊂ ℂ$ und $O$ offen in $ℂ$ oder $∞ ∈ O, O ∩ ℂ$ offen und $∃ R > 0:$ \\
+$\displayed{\{z ∈ ℂ \mid \abs{z} > R\} ∪ \{∞\} ⊂ O}$ \\
+Dies ist eine Topologie, $\bar ℂ$ ist in dieser hausdorff'sch und kompakt. \\
+Stereographische Projektion: \\
+$S = \{x ∈ ℝ^3\mid x_1^2 + x_2^2 + (x_3 - 1/2)^2 = 1/4\}$ \\
+$(r, ϕ) ↦ (\frac{r \cos θ}{1 + r^2}, \frac{r \sin θ}{1 + r^2}, \frac{r^2}{1 + r^2})$ \\
+$z ↦ (\frac{\Re z}{1 + z \bar z}, \frac{\Re z}{1 + z \bar z}, \frac{z \bar z}{1 + z \bar z})$ \\
+$M ⊂ \bar ℂ$ ist kompakt genau dann, wenn $M$ abgeschlossen, Jede unendliche Menge in $\bar C$ hat einen Häufungspunkt,
+$M ⊂ C$ habe unendlich viele Elemente, aber keinen Häufungspunkt in $ℂ$, dann ist die Menge abzählbar und lässt sich also Folge $(z_n)_{n ∈ ℕ}$ schreiben
+mit $z_n \to ∞$ \\
+Kausalität: $f(t) = 0 ∀ t < 0$ \\
+$f ∈ L^1(ℝ), f(t) = 0 ∀ t < 0$, dann ist $\hat f$ auf $\mathbb{H}$ holomorph und auf $\bar{\mathbb{H}}$ stetig, außerdem $\lim_{\abs{z} \to ∞} \hat f(z) = 0$ \\
+mit $\hat f(ω) = r(ω) + i s(ω)$: \\
+$\displayed{r(ω) = \frac{1}{π} PV ∫_{-∞}^∞ \frac{s(w)}{w - ω} \d w}$ \\
+$f$ Herglotz-Funktion $⇔$ $f: \mathbb{H} \to \mathbb{H}$ holomorph \\
+$V$ endlichdimensionaler Vektorraum, $f : Ω \to V$ ist holomorph $⇔$ $z ↦ f_i(z)$ ist holomorph \\
+inneres Produkt: positiv definite hermitesche Sesquilinearform \\
+$\braket{e_i | M e_j} = m_{ij}$ mit $\{e_1,\dots, e_n\}$ Orthonormalbasis \\
+$(m^{-1})_{ij} = \frac{1}{\det M} \cof_{ij}(m)$. $L(V)$: Raum aller linearen Abbildungen von $V \to V$. \\
+Resolvente von $M ∈ L(V)$: $R(z) = (z - M)^{-1} = (z · \mathbb{1} - M)^{-1}$ \\
+Resolventenmenge $ρ = \{z ∈ ℂ: z - M \text{ ist invertierbar}\}= ℂ \setminus σ(M)$, $σ(M)$: Spektrum von $M$:
+$σ(M) = \{λ ∈ ℂ\mid λ\text{ Eigenwert von M}\}$. \\
+die Resolvente ist auf der Resolventenmenge eine analytische Funktion \\
+Halbnorm: $p: X \to [0,∞)$ mit $p(λ x) = \abs{λ} p(x) ∀ λ ∈ \mathbb{K}, x ∈ X$ und $p(x + y) \leq p(x) + p(y) ∀ x, y ∈ \mathbb{K}$ \\
+$p(x) = 0 ⇒$ $p$ ist Norm, induzierte Metrik: $d(x,y) = p(x - y)$ \\
+$(x_n)_{n ∈ ℕ}$ Cauchyfolge: $∀ ε > 0 ∃ N ∈ ℕ:  ∀ m,n \geq N: d(x_m, x_n) < ε$ \\
+Banachraum: $(X, \norm{·})$ normierter Raum, jede Cauchyfolge konvergiert in $X$ \\
+$X$ Banachraum $⇒$ $U ⊆ X$ UVR, $U$ abgeschlossen $⇒$ $U$ Banachraum. \\
+normkonvergent: $\sum_{n = 1}^{∞} \norm{x_n}$ konvergiert \\
+normierter Raum ist vollständig, wenn jede normkonvergente unendliche Reihe in $X$ konvergiert. \\
+Jeder metrische Raum $(X, d)$ hat Vervollständigung, Jeder normierter Raum kann zu einem Banachraum vervollständigt werden. \\
+$l^∞ = \{(t_n)_{n ∈ ℕ}\mid t_n ∈ \mathbb{K}, (t_n)_{n ∈ ℕ} \text{ beschränkt}\} = l^∞(N)$ \\
+$\displayed{l^p(ℕ) = \{(t_n)_{n ∈ ℕ} \mid t_n ∈ \mathbb{K}, \sum_{n = 1}^∞ \abs{t_n}^p < ∞\}}$ \\
+Für $x =(t_n)_{n ∈ ℕ} ∈ l^2$: $\displayed{\norm{x}_p = (\sum_{n = 1}^{∞} \abs{t_n}^p)^{1/p}}$
+$(l^p, \norm{·}_p)$ ist $∀ p ∈ [1, ∞)$ ein Banachraum. \\
+Hölder'sche Ungleichung: $x ∈ l^1, y ∈ l^∞ ⇒ x y ∈ l^1$, \\
+$\displayed{\norm{x y}_1 \leq \norm{x}_1 \norm{y}_∞}$ \\
+Für $1/p + 1/q = 1$, $x ∈ l^p, y ∈ l^q ⇒ x y ∈ l^1$ \\
+$\displayed{\norm{x y}_1 \leq \norm{x}_p \norm{y}_q}$ \\
+Minkowski Ungleichung: $x, y ∈ l^p ⇒ \norm{x + y}_p \leq \norm{x}_p + \norm{y}_p$ \\
+Operator $⇔$ lineare Abbildung \\
+$L(X, Y) := \{T: X \to Y \mid T\text{ linear und stetig}\}$ \\
+$X, Y$ normierte Räume, $T: X \to Y$ linear, dann sind äquivalent: \\
+%\begin{itemize}
+1.  $T$ ist stetig \\
+2.  $T$ ist stetig bei $0$ \\
+3.  $∃ M > 0: ∀ x ∈ X \norm{T x} \leq M \norm{x}$ \\
+4.  $T$ ist gleichmäßig stetig \\
+%\end{itemize}
+Operatornorm: $\norm{T} := \inf\{M \geq 0: ∀ x ∈ X: \norm{T x} \leq M \norm{x}\}$ \\
+$\norm{T x} \leq \norm{T} \norm{x}$ \\
+$\displayed{\norm{T} = \sup_{x \neq 0} \frac{\norm{T x}}{\norm{x}} = \sup_{\norm{x} = 1} \norm{T x} = \sup_{\norm{x} \leq 1} \norm{T x}}$ \\
+$T ∈ L(X, Y), S ∈ L(Y, Z) ⇒ \norm{ST} \leq \norm{S} \norm{T}$ \\
+$X, Y$ normierte Räume, dann: $L(X, Y)$ ist mit punktweiser Definition der Operationen ein $\mathbb{K}$ Vektorraum,
+die Operatornorm $\norm{T} = \sup_{\norm{x} = 1} \norm{T x}$ ist eine Norm auf $L(X, Y)$ und $Y$ vollständig $⇒ L(X, Y)$ vollständig. \\
+$X$ normierter Raum, $Y$ Banachraum, $D$ dicht in $X$ liegender Unterraum, Für jedes $T ∈ L(D, Y)$ gibt es genau ein
+$\tilde T ∈ L(X, Y)$ mit $\tilde T\Big|_D = T$ und $\norm{\tilde T} = \norm{T}$ \\
+$T$ stetiges lineares Funktional auf $X ⇔ T ∈ L(X, \mathbb{K})$ \\
+Dualraum: $X' = L(X, ℂ)$ jedes normierten Raums $X$ ist Banachraum. \\
+$1/p + 1/q = 1 ⇒ (l^p)' = l^q$ \\
+$X$ normiert, $(x_n)_{n ∈ ℕ}$ konvergiert schwach gegen $x ∈ X ⇔ ∀ λ ∈ X': λ(x_n) \to λ(x)$ \\
+$(x_n)_{n ∈ ℕ}$ konvergiert in Norm $⇒$ konvergiert schwach, Umkehrung gilt nur für $\dim X < ∞$ \\
+Schwache Topologie $σ(X, X')$, $σ(X, M)$ ist die Topologie, für die jedes $(f:X \to Y) ∈ M$ stetig $⇒ O ⊂ X$ offen $⇔$
+$O$ ist endliche Vereinigung von Mengen der Form $f^{-1}(U)$ mit $U$ offen in $Y, f ∈ M$. \\
+die Schwache Topologie ist hausdorff'sch $⇒$ zwei Punkte haben disjunkte offene Umgebungen, schwach konvergente Folgen
+haben eindeutigen Grenzwert. \\
+Reihe über $x_n$ konvergiert $⇔ (x_n)_{n ∈ ℕ}$ ist Nullfolge. \\
+Die unendliche Reihe $\sum_{n = 1}^∞$ konvergiert für \\
+$\displayed{q = \limsup_{n ∈ ℕ} \norm{x_n}^{1/n} < 1}$ \\
+divergiert für $q > 1$ \\
+$X$ Banachraum, $A ∈ L(X) ⇒ (\norm{A_n}^{1/n})_{n ∈ ℕ}$ konvergiert: \\
+$\displayed{\lim_{n \to ∞} \norm{A^n}^{1/n} = \inf_{n ∈ ℕ} \norm{A^n}^{1/n} \leq \norm{A}}$ \\
+Spektralradius: $\displayed{r(A) = \lim_{n \to ∞} \norm{A^n}^{1/n}}$ \\
+$T ∈ L(X)$: Neumannsche Reihe \\
+$\displayed{(\mathbb{1} - T)^{-1} = \sum_{n = 0}^∞ T^n}$ \\
+wenn die Reihe konvergiert. \\
+$r(T) < 1 ⇒$ Neumannsche Reihe konvergiert \\
+$\norm{T} < 1 ⇒$ Neumannsche Reihe konvergiert und $\norm{(\mathbb{1 - T}^{-1}) \leq \frac{1}{1 - \norm{T}}}$ \\
+$\{A ∈ L(x) \mid A^{-1} ∈ L(X) \text{ und existiert}\}$ ist offen. \\
+$X, Y$ normierte Räume, $M ∈ L(X, Y) ⇒ ∀ x ∈ X, r > 0: \sup_{x' ∈ B_r(x)} \norm{M x} \leq r \norm{M}$ \\
+$T ∈ L(X, Y) ⇒$ ``beschränkter Operator'' \\
+$M ⊂ L(X, Y)$ Menge beschränkter Operatoren, dann $∀ x ∈ X: \sup_{T ∈ M} \norm{M x} < ∞ ⇒ \sup_{T ∈ M} \norm{M} < ∞$ \\
+$Ω ⊂ ℂ$ offen, $X$ Banachraum, $f: Ω \to X$ ist stark holomorph: \\
+$\displayed{∀ a ∈ Ω ∃ f'(a) ∈ X: \norm{\frac{f(z) - f(a)}{z - a}  - f'(a)} \to^{z \rightarrow a} 0}$ und $f'(z)$ stetig \\
+schwach holomorph: $∀ λ ∈ X': ϕ_λ: Ω \to ℂ, z ↦ λ(f(z))$ ist holomorph. \\
+$f$ stark holomorph $⇔$ $f$ schwach holomorph \\
+$f$ holomorph $⇒$ $f$ stetig + auf kompakten Teilmengen beschränkt \\
+Cauchy-Integralformel \\
+Analytisch (bezüglich der Norm) \\
+Laurentreihe konvergiert \\
+Menge der holomorphen Funktionen ist mit punktweise Operationen Vektorraum \\
+$(f_n)_{n ∈ ℕ}$ konvergiert gleichmäßig gegen $f$ und $f_n$ holomorph $⇒$ $f$ ist holomorph \\
+inneres Produkt $\braket{·|·} ⇒$ Norm $\norm{x} = \sqrt{\braket{x|x}}$ \\
+$\norm{·}$ ist durch inneres Produkt induziert $⇔ \norm{x + y}^2 + \norm{x - y} = 2 \norm{x}^2 + 2 \norm{y}^2$ \\
+$x, y ∈ V$ orthogonal $⇔$ $\braket{x | y} = 0$ \\
+$A ⊂ X$: Orthonormalsystem $∀ x,y ∈ A: \braket{x | x} = 1, x \neq y ⇒ \braket{x | y} = 0$ \\
+Orthogonales Komplement von Untervektorraum $A ⊂ V$: $A^{\perp} = \{y ∈ V \mid ∀ x ∈ A: \braket{x | y} = 0\}$
+Pythagoras: $V$ RIP, $\{x_n \mid n ∈ \mathbb{I} ⊂ ℕ\} ⊂ V$ Orthonormalsystem \\
+$⇒ \norm{x}^2 = \sum_{n = 1}^N \abs{\braket{x_n | x}}^2 + \norm{x - \sum_{n = 1}^N x_n \braket{x_n | x}}$ \\
+Bessel: $\norm{x}^2 \geq \sum_{n = 1}^∞ \abs{\braket{x_n | x}}^2$ \\
+Cauchy-Schwarz: $\abs{\braket{x | y}} \leq \norm{x} \norm{y}$ \\
+$V$ RIP, $\norm{x} = \sup \{\abs{\braket{y | x} \mid y ∈ V, \norm{y} = 1}$ \\
+Hilbertraum: $V$ ist mit der von $\braket{·|·}$ induzierten Norm vollständig. \\
+$U$ Unitär: $\braket{U x | U y} = \braket{x | y}$ \\
+Jeder RIP hat eine Vervollständigung. \\
+$A ⊂ V ⇒ A^{\perp}$ ist UVR und abgeschlossen. \\
+$M ⊂ V$ konvex: $∀ x, y ∈ M, α ∈ [0, 1]: α x + (1 - α) y ∈ M$ \\
+Jeder Untervektorraum ist konvex. \\
+$V$ RIP, $M ⊂ V$ konvex und vollständig $⇒$ $∀ x ∈ V ∃ z ∈ M: \norm{x - z} = d(x, M) = \inf \{\norm{x - m} \mid m ∈ M\}$ \\
+Projektionssatz: $H$ RIP, $M ⊂ H$ UVR $⇒ ∀ x ∈ H ∃! z ∈ M, w ∈ M^{\perp}: x = z + w$ \\
+$H$ Hilbertraum $⇒ ∀ x' ∈ H' ∃ x ∈ M: ∀ y ∈ H x'(y) = \braket{x | y}$ \\
+$H'' \cong H$ \\
+$H$ Hilbertraum, $S$ Orthonormalsystem, $S$ Orthonormalbasis $⇔ S ⊂ T ⇒ S = T$ wenn $T$ ein beliebiges Orthonormalsystem ist \\
+Gram Schmidt $e_1 ⇒ x_1 / \norm{x_1}, f_k = x_{k} - \sum_{i = 1}^{k - 1} \braket{e_i | x_{k}} e_i, e_{k} = f_k / \norm{f_k}$ \\
+$X$ separabel $⇔ ∃$ abzählbare Menge, die in $X$ dicht liegt \\
+Jeder Hilbertraum $H$ hat eine ONB \\
+Alle ONB sind gleichmäßtig \\
+$S$ Orthonormalbasis $⇔ H \cong l^2(S)$ \\
+$S$ Orthonormalbasis $⇒ \{e ∈ S \mid \braket{e | x} \neq 0\}$ ist abzählbar \\
+$S$ Orthonormalbasis $⇒ x = \sum_{e ∈ S} \braket{e | x} e$ \\
+$\braket{x | y} = \sum_{e ∈ S} \braket{x | e} \braket{e | y}$ \\
+$\norm{x}^2 = \sum_{e ∈ S} \abs{\braket{e | x}}^2$ \\
+Resolventenmenge: $ρ(T) = \{z ∈ ℂ \mid (z - T)^{-1} ∈ L(x) \text{ und existiert}\}$ \\
+Spektrum $σ(T) = ℂ \setminus ρ(T)$ \\
+$X$ Banachraum, $T ∈ L(X) ⇒ ρ(T)$ offen mit $ρ(T) \supset \{z ∈ ℂ \mid \abs{z} > \norm{T}\}$,
+Resolventenabbildung $R_T: ρ(T) \to L(x), z ↦ (z - T)^{-1}$ ist holomorph auf $ρ(T)$ und es gilt
+$∀ z, z' ∈ ρ(T) : R_T(z') - R_T(z) = (z - z') R_T(z) R_T(z')$, $R_T(z)$ kommutiert mit $R_T(z')$ und $σ(T) \neq \emptyset$ \\
+zweite Resolventengleichung: $A, B ∈ L(X) ⇒ ∀ z ∈ ρ(A) ∩ ρ(B): R_B(z) - R_A(z) = R_A(z)(B - A) R_B(z)$ \\
+Spektraltypen: \\
+1. Punktspektrum $∃ x ∈ X \setminus \{0\}, λ ∈ ℂ: T x = λ x$ \\
+2. Stetiges Spektrum $λ - T$ ist injektiv, aber nicht surjektiv, der Bildraum $\{(λ - T) x \mid x ∈ X\}$ von $λ - T$ liegt in $X$ dicht. $(λ - T)^{-1}$ existiert und ist unbeschränkt \\
+3. Restspekturm: $λ - T$ ist injekiv, aber $\{(λ - T) x \mid x ∈ X\}$ liegt nicht dicht in $X$ \\
+Adjungierter Operator $A^{\dagger}$: $∀x, y ∈ H: \braket{x | A y} = \braket{A^{\dagger} | y}$ ist eindeutig und wohldefiniert. \\
+Selbstadjungiert $A^{\dagger} = A$ \\
+$A$ selbstadjungiert $⇒$ $σ(A) ⊂ ℝ$, Eigenvektoren zu verschiedenen Eigenwerten von $A$ sind orthogonal, Restspektrum ist leer \\
+$A$ selbstadjungiert $⇒ r(A) = \norm{A}$ \\
+$V$ endlichdimensional $⇒$ $M ⊂ V$ kompakt $⇔$ $M$ beschränkt und abgeschlossen. \\
+$H$ unendlichdimensionaler Hilbertraum $⇒ \{x ∈ H \mid \norm{x} \leq 1\}$ ist nichkompakt. \\
+$H$ separabler Hilbertraum $(x_n)_{n ∈ ℕ}$ Folge, $\norm{x_n} = 1 ⇒ ∃ x ∈ H, (x_{n_k})_{k ∈ ℕ}$ sodass $∀ y ∈ H: \braket{y | x_{n_k} - x} \to^{k \rightarrow ∞} 0$ \\
+In einem Hilbertraum ist der Limes einer schwach konvergenten Folge eindeutig und jede schwach konvergente Folge ist beschränkt. \\
+$F$ Operator vom endlichem Rang $⇔ \{F x \mid x ∈ H\}$ ist endlichdimensional. \\
+$F$ Operator vom endlichem Rang $⇒ ∃ f_1, \dots, f_n ∈ H: \sum_{k = 1}^n \ket{f_k} \bra{e_k}$ für ein Orthonormalsystem $\{e_k\}$ \\
+$∀ A ∈ L(H)$ sind $A F$ und $F A$ von endlichem Rang \\
+$F$ bildet beschränkte Menge auf präkompakte Mengen ab. \\
+Menge der Operatoren von endlichem Rang: $\mathcal{F}(H)$ \\
+Menge der kompakten Operatoren $\mathcal{K}(H)$: Abschluss von $\mathcal{F}(H)$ \\
+$H$ separabler Hilbertraum, $G ⊂ ℂ$ Gebiet, $K: G \to L(H), ∀ z ∈ G: K(z)$ kompakt, dann
+$\mathbb{1} - K(z)$ für kein $z ∈ G$ invertierbar. \\
+oder $z ↦ (\mathbb{1} - K(z))^{-1}$ ist meromorph auf $G$. \\
+$A$ kompakter Operator auf Hilbertraum $⇒ A x = x$ hat eine Lösung $x \neq 0$ oder $(1 - A)^{-1}$ existiert. \\
+$A$ kompakt $⇒$ $z ↦ (z - A)^{-1}$ ist meromorph auf $ℂ \setminus \{0\}, σ(A) \setminus \{0\}$ ist diskret und
+jedes $λ ∈ σ(A) \setminus \{0\}$ ist ein Eigenwert endlicher Vielfachheit. \\
+$A$ kompakt und selbstadjungiert auf separablen Hilbertraum $H$ $⇒$ $H$ hat Orthonormalbasis aus Eigenwerten von $H$ und
+die Eigenwerte von $A$ bilden Nullfolge. \\
+$A$ kompakt auf separablem Hilbertraum $⇒$ $∃$ ONS $\{e_n\}$ und $\{f_n\}$ und Folge $s_n > 0$ mit
+$A = \sum_n s_n \ket{f_n} \bra{e_n}$ \\
+singuläre Werte von $A$: $s_n^2$, die Eigenwerte von $A^{\dagger} A$ \\
+$C(X, V) := \{f: X \to V \mid f \text{ stetig und beschränkt}\}$ \\
+$\norm{f}_∞ = \sup_{x ∈ ℕ} \{\norm{f(x)}\}$ \\
+$C^k(Ω, V) := \{f: Ω \to V \mid D^α f \text{ existiert und ist stetig } ∀ α ∈ ℕ_0^α, \abs{α} \leq k\}$
+Schwartzraum $\mathscr{S} = \mathscr{ℝ^d} = \{f ∈ C^∞(ℝ^d, ℂ) \mid ∀ N ∈ ℕ_0 ∀ α ∈ ℕ_0^d ∃ K_{N, α} > 0: ∀ x ∈ ℝ^d: \abs{D^α f(x)} \leq \frac{K_{N,α}}{(1 + x^2)^{N/2}}\}$ \\
+$\Re λ > 0 ⇒ e^{-λx^2} ∈ \mathscr{S}$ \\
+$p,q ∈ ℕ_0^α ⇒ \abs{f}_{p,q} = \sup_{x ∈ ℝ} \{\abs{x^p D^q f(x)}\}$ \\
+ist eine Norm. \\
+$f_n \to^{n \rightarrow ∞} f$ in $\mathscr{S} :⇔ ∀ p, q ∈ ℕ_0^d \abs{f_n - f}_{p,q} \to^{n \rightarrow ∞} 0$ \\
+$f, g ∈ \mathscr{S} ⇒ \braket{f | g} = ∫_{ℝ^d} \overline{f (x)} g(x) \d^d x$ \\
+konvergiert $\to$ $\norm{f}_2 = \sqrt{\braket{f | f}}$ \\
+$\norm(f)_p = (∫_{ℝ^d} \abs{f(x)}^p \d^d x)^{1/p}$ \\
+$L^p(ℝ^d, ℂ)$ ist die Vervollständigung von $\mathscr{S}$ in $\norm{·}_p$ \\
+$L^2$ ist Hilbertraum, $L^p, p \neq 2$ ist Banachraum \\
+$1 / p + 1/q = 1$:
+Hölder: $f ∈ L^p, g ∈ L^q ⇒ \norm{f g}_1 \leq \norm{f}_p \norm{g}_q$ \\
+$\norm{f}_p = \sup \{\braket{g | f} \mid g ∈ \mathscr{S}, \norm{g}_q \leq 1\}$ \\
+Fouriertransformation: $\hat φ(k) = (\mathcal{F} φ)(k) = ∫_{ℝ^d} φ(x) e^{-ikx} \d^d x$ \\
+$φ ∈ \mathscr{S} ⇒ \hat φ ∈ C^∞ (ℝ^d)$ \\
+$\mathcal{F}((-i D)^p φ)(k) = k^p \hat φ(k)$ \\
+$D^p \hat φ = \mathcal{F}(x ↦ (-ix)^p φ(x))$ \\
+Fouriertransformation ist linear, stetig, bijektiv von $\mathscr{S} \to \mathscr{S}$ \\
+$φ(x) = 1/(2π)^d ∫ (\mathcal{F} φ)(k) e^{ikx} \d^d k$ \\
+$χ, ψ ∈ \mathscr{S} ⇒ (2π)^{-d} \braket{\mathcal{F} χ | \mathcal{F} ψ} = \braket{χ | ψ}$ \\
+$∃$ eindeutige Fortsetzung nach $L^2(ℝ^d)$ \\
+$(\mathcal{F} f)(k) = \lim_{R \to ∞} ∫_{\abs{x} \leq R} f(x) e^{-ikx} \d^d x$ \\
+$L^2(ℝ^d)$ ist separabel $⇔$ hat abzählbar Orthonormalbasis \\
+Schrödingergleichung: $i\hbar \frac{ψ}{t}(t, x) = - \frac{\hbar^2}{2m} \Laplace ψ(t, x) + V(x) ψ(t, x)$ \\
+Ortsoperator: $(\hat x f)(x) = x f(x)$ \\
+Impulsoperator $(\hat p f)(x) = -i \hbar ∇ f(x)$ \\
+$(\hat x_j \hat p_k - \hat p_k \hat x_j) f = i \hbar δ_{ij} f$ \\
+$\hat x, \hat p$ sind hermitesch \\
+Sovolevräume:
+$\braket{f | g}_{H^n} ↦ \braket{f | (1 + \hat p^2)^n g} = (2π)^{-d} ∫ \overline{\hat f(k)} (1 + \abs{k}^2)^n \hat g(k) \d^d k$ \\
+ist ein inneres Produkt auf $\mathscr{S}$ \\
+Sobolevraum $H^n(ℝ^d)$ ist Vervollständigung von $\mathscr{S}$ in Norm $\norm{·}_{H^n}$ \\
+$ϕ ∈ H^2(ℝ^3)$ hat einen stetigen und beschränkten Repräsentanten $φ$ mit $φ(x) \to^{\abs{x} \rightarrow ∞} 0, \norm{φ}_∞ \leq 2 π^2 \norm{φ}_{H^2}$ \\
+$V = V_1 + V_2, V_1 ∈ L^2(ℝ^3), V_2 ∈ L^∞(ℝ^3) ⇒ ∀ ψ: V ψ ∈ L^2(ℝ^3)$
+\end{multicols*}
+\end{document}

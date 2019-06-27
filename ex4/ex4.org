@@ -1,11 +1,11 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Experimentalphysik 4 - Kern- und Teilchenphysik (Uwer)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 
 # Übungen: Donnerstag und Freitags, beginn diese Woche
 # Übungsblätter	Mittwochs
-# Keine Korrektur der Einzellösungen, muss in Übuncgen vobrrechnen können -> Anwesenheitspflicht
+# Keine Korrektur der Einzellösungen, muss in Übungen vobrrechnen können -> Anwesenheitspflicht
 # 60% der Übungsblätter
 
 # Inhalt der Vorlesung
@@ -20,54 +20,60 @@
 # 9  Kerne, Kernzerfälle und Kernmodelle
 # 10 Elementsynthese
 
+# Mittwoch, den 25.07.18 in der Zeit von 9.00 - 13.00
+
 # lol: \hbar = c = i = π = 1
-# fermi = femptometer
+# fermi = femtometer
 # \hbar c = 197 eV · nm
 
 * Mehrelektronensysteme
 ** Wasserstoff - kurze Wiederholung
-   Stationäre 3d Schrödinger-Gleichung für kugelsymmetrisches Potential
+   Ausgangspunkt für die Lösung des Wasserstoffproblems ist die stationäre 3d Schrödinger-Gleichung für kugelsymmetrisches Potential
    \begin{align*}
    - \frac{\hbar^2}{2m}∇^2 ψ(\v r) + V(\v r) ψ(\v r) &= E ψ(\v r) \\
    V(\v r) &= - \frac{Z e^2}{4π ε_0} \frac{1}{\abs{\v r}}
    \end{align*}
-   $\v r =$ Relativkoordinate. Lösung: $ψ_{nlm}(\v r)$ mit Radialanteil $R(r)$ und Winkelanteil $Y_{lm}(φ, θ)$. Lösungen werden durch die 3 Quantenzahlen $\{n,l,m\}$ vollständig bestimmt.
-   $ψ_k$ mit $k = \{n,l,m\}, \ket{ψ_k}$ oder $\ket{k}$. Energieeigenwerte $E_n$ hängen nur von $n$ ab. ($\to$ Entartung: $n^2$ Niveaus)
-   \[E_n = - \frac{1}{n^2} μ \frac{Z^2 e^2}{8 ε_0^2 h^2} = - R_y^{\ast} · \frac{Z^2}{n^2}\]
-   $μ =$ reduzierte Masse, mit
-   \begin{align*}
-   R_y^{\ast} &= \frac{μ e^4}{8 ε_0^2 h^2} = R_y h c = R_{y∞} \frac{μ}{m_e} h c \\
-   R_y^{\ast} &= \SI{13.605698}{\electronvolt}
-   R_{y∞}^{\ast} &= \SI{1097373.15}{\clight\per\meter} \\
-   E_n &= - \frac{1}{n^2} \frac{m_e c^2}{2} α^2
-   \end{align*}
-   Spektrallinien für Übergang $ψ_m \to μ_n$ ($m,n$ Hauptquantenzahlen)
-   \[\frac{1}{λφ} = R_y (\frac{1}{n^2} - \frac{1}{m^2})\]
-   Auswahlregel für elektronischen Dipolübergang: $Δl = \pm 1$ \\
-   Elektronenspin: $s = 1/2, s_z = \pm 1 / 2$ $\to$ Gesamtwellenfunktion:
-   \[ψ_{nlm m_s} = ψ_{nlm} χ_{m_s}\]
-   Feinstrukturaufspaltung: Magnetischer Moment des Spins koppelt mit magnetischem Moment des Bahndrehimpulses $\sim \v l, \v s$, Ersatzdrehimpuls $\v J = \v l + \v l$
-   Für Einelektronensystem $(s = 1/2) ⇒$ $j = l + 1/2$ oder $j = l - 1/2$ \\
-   Berücksichtigung der relativistischen Massenzunahme \\
-   $\to$ Energieniveaus hängen nur noch von $n$ und $j$ ab $(E_{nj})$ \\
-   $\to$ sind in $l$ entartet: \\
-   $2s \frac{1}{2} (n = 2, l = 0, j = \frac{1}{2})$ \\
-   $2p \frac{1}{2} (n = 2, l = 1, j = \frac{1}{2})$ \\
-   Lamb-Shift
-   QED-Korrekturen = Austaush Photon / Elektronen. \\
-   Die Korrekturen sind	umso stärker, ja näher die Elektronen am Kern sind, das heißt sie hängen von $n$ und $l$ ab $⇒$	Aufhebung der \(l\)-Entartung. \\
-   Hyperfeinstrukutur
-   Kopplung der Mangnetische Momnete des Elektrons $\v j (= \v l  + \v s)$
-   und des magnetischen Moments desKernts/Protons $\v I$
-   $\to$ energiaufspaltung $\sim \v j I$
+   $\v r =$ Relativkoordinate.
+   - Lösung: $ψ_{nlm}(\v r)$ mit Radialanteil $R(r)$ und Winkelanteil $Y_{lm}(φ, θ)$. Lösungen werden durch die 3 Quantenzahlen $\{n,l,m\}$ vollständig bestimmt.
+     $ψ_k$ mit $k = \{n,l,m\}, \ket{ψ_k}$ oder $\ket{k}$.
+   - Energieeigenwerte $E_n$ hängen nur von $n$ ab. ($\to$ Entartung: $n^2$ Niveaus)
+     \[E_n = - \frac{1}{n^2} μ \frac{Z^2 e^2}{8 ε_0^2 h^2} = - Ry^{\ast} · \frac{Z^2}{n^2}\]
+     $μ =$ reduzierte Masse, mit
+     \begin{align*}
+	 \mu &= \frac{m_e m_p}{m_e + m_p} \\
+     Ry^{\ast} &= \frac{μ e^4}{8 ε_0^2 h^2} = Ry h c = R_{y∞} \frac{μ}{m_e} h c \\
+     Ry^{\ast} &= \SI{13.605698}{\electronvolt} \\
+     R_{y∞}^{\ast} &= \SI{1097373.15}{\clight\per\meter} \\
+     E_n &= - \frac{1}{n^2} \frac{m_e c^2}{2} α^2 \\
+	 \intertext{Es gilt in SI, Heaviside-Lorentz ($ε_0 = μ_0 = 1$) und Heaviside-Lorentz + natürlichen Einheiten ($\hbar = c= 1$)}
+	 α &= \frac{e^2}{4π ε_0 \hbar c} \approx \frac{1}{137}
+     \end{align*}
+   - Spektrallinien für Übergang $ψ_m \to μ_n$ ($m,n$ Hauptquantenzahlen)
+     \[\frac{1}{λφ} = Ry (\frac{1}{n^2} - \frac{1}{m^2})\]
+     Auswahlregel für elektronischen Dipolübergang: $Δl = \pm 1$
+   - Elektronenspin: $s = 1/2, s_z = \pm 1 / 2$ $\to$ Gesamtwellenfunktion:
+     \[ψ_{nlm m_s} = ψ_{nlm} χ_{m_s}\]
+   - Feinstrukturaufspaltung: Magnetischer Moment des Spins $\v s$ koppelt mit magnetischem Moment des Bahndrehimpulses $\v l$ zu einer Feinstrukturaufspaltung $\sim \v l \v s$ des Spektrums
+     $\to$ Ersatzdrehimpuls $\v j = \v s + \v l$. Für Einelektronensystem $(s = 1/2) ⇒$ $j = l + 1/2$ oder $j = l - 1/2$
+	 (gilt für alle \(H\)-ähnliche Atome: \ce{He+}, \ce{Li++}) \\
+     Berücksichtigung der relativistischen Massenzunahme $\to$ Energieniveaus hängen nur noch von $n$ und $j$ ab $(E_{nj})$ \\
+     $\to$ sind in $l$ entartet, Für Wasserstoff bedeutet das, dass \\
+     $2s \frac{1}{2} (n = 2, l = 0, j = \frac{1}{2})$ \\
+     $2p \frac{1}{2} (n = 2, l = 1, j = \frac{1}{2})$ \\
+	 entartet sind
+   - Lamb-Shift: QED-Korrekturen = Austausch virtueller Teilchen in der Wechselwirkung zwischen Elektron und elektrischem Feld aufgrund	des Photons.
+     Die Korrekturen sind umso stärker, je näher die Elektronen am Kern sind, das heißt sie hängen von $n$ und $l$ ab $⇒$ Aufhebung der \(nj\)-Entartung bei verschiedenen \(l\)-Werten. \\
+   - Hyperfeinstrukutur: Kopplung der Mangnetische Momnete des Elektrons $\v j (= \v l  + \v s)$ und des magnetischen Moments des Kerns / Protons $\v I$
+     $\to$ Energiaufspaltung abhängig von $\sim \v j \v I$ und vom Abstand des Elektrons von Kern (abhängig zu $l$)	$⇒$ \(E_{nj}\)-Entartung für verschiedene $l$ wird ebenfalls aufgehoen und $\v j$ und $\v I$ Kopplung
+	 führt zu Gesamtspin $\v F = \v I + \v j$
    Kopplung der Drehimpulse zur Ortskomponente
-** Heliumatom "in a nutshell"
+** Heliumatom "in a nutshell" (2-Elektronensystem)
    $\to$ Komplikationen gegenüber $H$:
    1. Elektronen-Coulomb-Abstoßung
    2. Ununterscheidbarkeit der $e^{-}$
 *** Wechselwirkung der Elektronen
 	$=$ gegenseitige Abstohung der beiden Elektronen $⇒$ Hamilton-Operator
-	\[\hat H = \sum_{i = i}^{2}(\frac{\v p^2}{2m} - \frac{Ze}{4π ε_0 r_i}) + \sum_{\substack{i,j\\i < j}} \frac{e^2}{4π ε_0 \abs{\v r_i - \v r_j}} + \hat{\mathcal{O}}(\v l_1, \v l_2, \v s_1 \v s_2, \hat I)\]
+	\[\hat H = \sum_{i = i}^{2}(\frac{\v p^2}{2m} - \frac{Ze}{4π ε_0 r_i}) + \sum_{\substack{i,j\\i < j}} \frac{e^2}{4π ε_0 \abs{\v r_i - \v r_j}} + \underbrace{\hat{\mathcal{O}}(\v l_1, \v l_2, \v s_1 \v s_2, \hat I)}_{\mathclap{\text{Kopplung der Spins wird erstmal vernchlässigt}}}\]
 	Näherungen: Zentralfeldnäherung. Elektron $i$ sieht ein effektives Zentralpotential
 	\[V_{\text{eff}}(r_i)\]
 	Produktansatz:
@@ -81,25 +87,33 @@
 	\[E_{He} = - Z^2 \SI{13.6}{\electronvolt} - (Z - Σ)^2 \SI{13.6}{\electronvolt}\]
 	$⇒$ Abschirmungsparameter $Σ = 0.655$. \\
 	Einteilchen-Lösung: $ψ_{nlm}(\v r_i)$ werden wie beim Wasserstoff klassifiziert. Effektives Potential ist zwar Kugelsymmetrisch aber kein \(1/r\)-Potential $\to$ Aufhebung der \(l\)-Entartung
-	(größere $l \to$ schächer gebunden)
+	(größere $l \to$ schächer gebunden, kleine $l$ $⇒$ Abschirmungsparameter $Σ \to 0$)
 *** Ununterscheidbarkeit der Elektronen
 	Elektronen $=$ Spin $\frac{1}{2}$ - Fermion. Sind ununterscheidbar: Ich weiß nicht, welches Elektron im Zustand $a \{n_1, l_1, m_1\}$ oder im Zustand $b = \{n2, l_2, m_2\}$ ist!
 	\begin{align*}
 	ψ_{ab}^{\text{I}}(\v r_1, \v r_2) &= ψ_a(\v r_1) ψ_B(\v r_2) \\
-	ψ_{ab}^{\text{I}}(\v r_1, \v r_2) &= ψ_a(\v r_2) ψ_B(\v r_1)
+	ψ_{ab}^{\text{II}}(\v r_1, \v r_2) &= ψ_a(\v r_2) ψ_B(\v r_1)
 	\end{align*}
 	$\to$ für ununterscheidbare Teilchen sin Zustände äquivalent und müssen die gleiche Aufentaltswahrscheinlichkeit ergeben.
-	\[\abs{ψ_{ab}^{\text{I}}}^2 = \abs{ψ_{ab}^{\text{II}}}^2 ⇒ ψ_{ab}^{\text{I}} = \pm ψ_{ab}^{\text{II}}\]
+	\begin{align*}
+	\abs{ψ_{ab}^{\text{I}}}^2 &= \abs{ψ_{ab}^{\text{II}}}^2 \\
+	⇒ ψ_{ab}^{\text{I}} = e^{iφ} ψ_{ab}^{\text{II}} \\
+	\intertext{Erneute Vertauschung:}
+	⇒ ψ_{ab}^{\text{I}} = e^{2iφ} ψ_{ab}^{\text{I}} \\
+	\intertext{$⇒$ $φ ∈ \{0, p\}$}
+	⇒ ψ_{ab}^{\text{I}} = \pm ψ_{ab}^{\text{II}} \\
+	\end{align*}
 	\begin{ibox}{Verallgemeinertes Pauli-Prinzip}
 	Gesamtwellenfunkion eines Systems aus mehreren Fermionen ist antisymmetrisch gegenüber der Vertauschung zweier Fermionen.
-	$⇒$ In einem System können deshalb keine zwei Fermionen die gleiche Quantenzahl haben.
+	$⇒$ In einem System können deshalb keine zwei Fermionen die gleiche Quantenzahlen $\{n,l,m,m_s\}$ haben.
 	\end{ibox}
+	$\to$ Konsequenzen: Austausch-Wechselwirkung, Spin-Drehimpuls Ordnung in Atomen (Hund'sche Regel), Fermi-Gas: Neutronensterne, Kerne. \\
 	Bei Anwendung auf Helium muss berücksichtigt werdes, dass Gesamtwellenfuktion Ortsanteil $ψ_{nlm}$ und einen Spinanteil $χ_{m_s}$ hat.
 	$\to$ Elektronenspins im Helium können zu zwei verschiedenen Gesamtspins $S$ koppeln.
-	1. Symmetrisches Triplett $(S = 1, s_s = 0, \pm 1)$
+	1. Symmetrisches Triplett $(S = 1, s_z = 0, \pm 1)$
 	   \begin{align*}
 	   χ_S^{-1} &= χ_1(\downarrow) χ_2(\downarrow) \\
-	   χ_S^0 &= \{χ_2(\uparrow) χ_2(\downarrow) + χ_1(\downarrow) χ_2(\uparrow)\} \frac{1}{\sqrt{2}}
+	   χ_S^0 &= (χ_2(\uparrow) χ_2(\downarrow) + χ_1(\downarrow) χ_2(\uparrow)) \frac{1}{\sqrt{2}} \\
 	   χ_S^{1} &= χ_1(\uparrow) χ_2(\uparrow) \\
 	   \end{align*}
 	2. Antisymmetirsches Singlett $(S = 0, m_s = 0)$
@@ -109,6 +123,8 @@
     Befinden sich die beiden Elektronen in einem symmetrischen (antisymmetischen) Spinzustand, so muss die Ortswellenfunktion entsprechend antisymmetrisch (symmetrisch) sein. \\
 	Antisymmetrisierung von $ψ(\v r_1, \dots, \v r_n) = ψ_1(\v r_1) · \dots · ψ_n(\v r_n)$. Für Mehrelektronensysteme erhält man die antisymmetrische Wellenfunktion mittels der Slater-Determinante
 	\[ψ(\v r_1, \dots, \v r_n) = \frac{1}{\sqrt{n!}} \begin{vmatrix} ψ_{k_1}(\v r_1) & \dots & ψ_{k_1}(\v r_n) \\ \vdots & & \vdots \\ ψ_{k_n}(\v r_1) & & ψ_{k_n}(\v r_n)\end{vmatrix}\]
+	(kann man sehr leicht aus den Determinanten-Eigenschaften sehen) \\
+	Auswahlregeln: $ΔL = \pm 1, Δ m_L = 0, \pm 1, ΔS = 0, ΔJ = 0, \pm 1, J = 0 \not\to J = 0$
 *** Term-Schema von Helium
 	Im Grundzustand des Helium sind beide Elektronen im tiefstmöglischenZustand: $n_1 = n_2 = 1, l_1 = l_2 = 0$ (symmetrisch). Die Spins *müssen* dann antiparallel beziehungsweise im antisymmetrischen Singlett Zustand sein.
 	Für angeregtes Helium existieren dann zwei Term-Systeme:
@@ -119,17 +135,18 @@
 	\[\prescript{2\text{S} + 1}{}{\text{L}}_{\text{J}}\]
 ** Mehreektronensysteme $(Z > 2)$
 *** Numerische Näherungsverfahren
-   nicht Kugelsymmetrische Wechselwirkung zwischen Elektronen $\to$ keine analytsiche Lösung $⇒$ iterativep Näherungsverfahren. \\
+   nicht Kugelsymmetrische Wechselwirkung zwischen Elektronen $\to$ keine analytsiche Lösung $⇒$ iterative Näherungsverfahren. \\
    *Modell unabhängiger Elektronen*: \\
-   Kernladung $Z_e$ und die zeitlich gemittelte Verteilung der anderen $(Z - 1)$ Elektronen resultieren für ein Elektron $i$ in ein effektives kugelsymmetrisches Potential $V_{\text{eff}}(r_i)$
+   Kernladung $Z e$ und die zeitlich gemittelte Verteilung der anderen $(Z - 1)$ Elektronen resultieren für ein Elektron $i$ in ein effektives kugelsymmetrisches Potential $V_{\text{eff}}(r_i)$
    Einteilchenproblem mit Energiezuständen $E_i(n_i, l_i, m_i)$ und mit Einteilchenlösungen $ψ_{n_i l_i m_i}$. Da $V_{\text{eff}}(r_i)$ zwar kugelsymmetrisch aber kein
    \(1/r\)-Potential $\to$ Aufhebung der \((n,l)\)-Entartung. $⇒$ nach Pauli-Prinzip werden $E_{n,l}$ sukzessive besetzt. Gesamtwellenfunktion $=$ Produkt der Einteilchenlösungen
    \[ψ(\v r_1, \dots, \v r_Z) = ψ_1(\v r_1) ψ_2(\v r_2) \dots ψ_Z(\v r_Z)\]
-   $\to$ Antisymmetrisierung mittels Slater-Determinante. Mit dieser gesamtwellenfunktion kann das zeitliche gemittelte effektive Potential $V_{eff}$ neu berechnet werden:
-   \[V_{eff}(r_i) \sim - e^2(\frac{Z}{r_i} - \sum_{i \neq j} ∫ \frac{1}{\abs{\v r_i - \v r_j}} \abs{ψ_i(r_i)}^2 d^3 r_j)\]
-   Mit diesem verbesserten Potential startet die nächste Iteration zur Berechnung der Einteilchenzustände $E_i(n_i, l_i, m_i)$
-   Hartree-Verfahren.
-
+   $\to$ Antisymmetrisierung mittels Slater-Determinante. Mit dieser Gesamtwellenfunktion kann das zeitliche gemittelte effektive Potential $V_{\text{eff}}$ neu berechnet werden:
+   \[V_{\text{eff}}(r_i) \sim - e^2(\frac{Z}{r_i} - \sum_{i \neq j} ∫ \frac{1}{\abs{\v r_i - \v r_j}} \abs{ψ_i(r_i)}^2 d^3 r_j)\]
+   Mit diesem verbesserten Potential startet die nächste Iteration zur Berechnung der Einteilchenzustände $E_i(n_i, l_i, m_i)$, dies bezeichnet man als Hartree-Verfahren.
+   (Startwert für $V_{\text{eff}}(\v r_i)$: Schätzwerte) \\
+   Verbesserte Version:	Zusätzlich zu $V_{\text{eff}}$ noch Austauschterm, der die Coulomb-Abstoßung im Falle von Elektronen im gleichen beziehungsweise unterschiedlichen Spinzustand berücksichtigt. \\
+   Heute wird zur Berechnung der Elektronenverteilung in Atomen, Molekülen und Festköruer häutig die Dichtefunktionalmethode eingesetzt. (geht zurückauf Walter Kohn, Nobelpreis für Chemie 1998)
    #+begin_remark latex
    Neben der Coulomb Wechselwirkung müssen auch die magnetische Wechselwirkung zwischen den magnetischen Momenten der Elektronen (Bahndrehimpuls + Spin) berücksichtigt werden $\to$ "Feinstruktur".
    Relativ zu Wasserstoff sind komplexere Drehimpulskopplungen möglich.
@@ -143,26 +160,28 @@
     1. \(L\)-\(S\)-Kopplung (Russel-Sanders-Kopplung) \\
 	   falls Kopplungsenergie zwischen Bahdrehimpulsen und zwischen Spins groh
 	   \begin{align*}
-	   \v L &= \sum_{i} \v l_i \qquad \abs{\v L} = \sqrt{L(L + 1)} \\
-	   \v S &= \sum_{i} \v s_i \qquad \abs{\v S} = \sqrt{S(S + 1)} \\
-	   \v J &= \sum_{i} \v j_i \qquad \abs{\v J} = \sqrt{J(J + 1)} \\
+	   \v L &= \sum_{i} \v l_i \qquad \abs*{\v L} = \sqrt{L(L + 1)} \\
+	   \v S &= \sum_{i} \v s_i \qquad \abs*{\v S} = \sqrt{S(S + 1)} \\
+	   \downarrow & \\
+	   \v J &= \v L + \v S \qquad \abs*{\v J} = \sqrt{J(J + 1)} \\
 	   \end{align*}
+	   Diese Art der Kopplung liegt vor wenn die Spin-Bahn Wechselwirkung kleiner als die Coulomb-Abstoßung der Elektronen ist. $\to$ Feinstrukturaufspaltung ist klein gegenüber dem Energieunterschied
+	   von Zuständen mit verschiedenen $L$ und \(S\)-Werten
 	   #+begin_ex latex
 	   Kopplung zweiter \(p\)-Elektronen $(p^2)$ ($l_1 = l_2 = 1, s_1 = s_2 = 1/2$) \\
 	   L: $\abs{l_1 - l_2} \leq L \leq l_1 + l_2 ⇒ L = 0, 1, 2$ \\
 	   S: $\abs{s_1 - s_2} \leq S \leq s_1 + s_2 ⇒ S = 0, 1$
 	   #+end_ex
 	   $⇒$ bereits 10 verschiedene Drehimpulskopplungen $\abs{S - L} \leq J \leq S + L$ mit $J = 0, 1, 2, 3$
-	2. \(JJ\)-Kopplung \\
+	2. \(J\)-\(J\)-Kopplung \\
 	   Falls Energiegewinn der Kopplung der einzelnen Spins beziehungsweise Bahndrehimpulse klein gegenüber der Kopplung von $l_i$ und $s_i$ ist ($\sim \v l_i \v s_i$ groß gegenüber der Coulomb):
 	   \[\v j_i = \v l_i + \v s_i \to \v J = \sum_{i} \v j_i\]
-	   JJ tritt vor allem bei schweren Atomen auf. Im Folgenden nur Diskussion von LS-Kopplung.
+	   JJ tritt vor allem bei schweren Atomen auf. Im Folgenden nur Diskussion von LS-Kopplung. Da bei JJ-Kopplung die Quantenzahlen $L$ und $S$ keine "guten Quantenzahlen" mehr sind, ist das Spektrum bei vorliegen von JJ-Kopplung komplex.
 	3. Termschemata $(LS)$ \\
 	   Elektronekonfiguration mit Gesamtdrehimpuls $\v L$ und Gesamtspin $\v S$ führen je nach Kopplung von $\v L$ und $\v S$ zu verschiedenen Feinstrukturkompensationen mit verschiedenen
 	   $\v J$:
 	   \[\abs{L - S} \leq J \leq L + S\]
 	   Multiplizität: $2S + 1$ für $S < L$, $2L + 1$ für $L \leq S$
-	   #+ATTR_LATEX: :options []
 	   #+begin_ex latex
 	   Mögliche Feistruktur für \(p^2\)-Konfiguration. Aufspaltung von $\prescript{3}{}{P}$ aufgrund der Feinstruktur durch $\v L \v S: \sim c \v L \sim S$
 	   \begin{align*}
@@ -175,6 +194,7 @@
 	\[k = \sum_{l = 0}^{n - 1} (2l + 1) = n^2\]
 	Zustände die mit insgesamt $2 n^2$ Elektronen besetzt werden können. Die energetische Reihenfolge der Energiezustände $E_{nl}$:
 	\[1s, 2s, 2p, 3s, 3p, [4s, 3d], 4p, [5s, 4d], 5p, [6s, 5d, 4f], 6p, [7s, 6d, 5f]\]
+	Summe aller $2 n^2$ Elektronen einer Hauptquantenzahl $n$ bilden eine Kugelsymmetrische Ladungsverteilung (Summe über alle Kugelflächenfunktionen $Y_l^m$ bei festem $n$ $⇒$ kugelsymmetrische Verteilung)
 	Elektron / Ladungsdichte (sehr kurz)
 	\[ρ_n \sim \sum_{e} r^2 \abs{R_{nl}(r)}^2 2 n^2 e\]
 	Dar Hauptteil der Ladungsverteilung bei gegebener Hauptquatenzahl $n$ ist in einer Kugelschale konzentriert.
@@ -190,10 +210,10 @@
 	nicht völlig besetzten Unterschalen?
 *** Grundzustand des Mehrelektronensystem und Hund'sche Regel
 	Aus Beispiel der verschiedenen Drehimpulskopplung für die $p^2$ Elektronenkonfiguration wurde gezeigt, das für eine feste Elektronenkonfiguration eine Vielzahl von	Termen gibt. Eine dieser Zustände sollte
-	das energetisch tiefste Zustand sein, den das Atom im Grundzustnad einnimmt. Aus spektroskopischen Daten vieler Atome wurden von F. Hund die folgenden empirischen Regeln aufgestellt.
+	das energetisch tiefste Zustand sein, den das Atom im Grundzustand einnimmt. Aus spektroskopischen Daten vieler Atome wurden von F. Hund die folgenden empirischen Regeln aufgestellt.
 	1. Für alle abgeschlossenen Schalen und Unterschalen gilt $L = 0, S = 0 \to J = 0$. Die Überlagerung der Wellenfunktionen abgeschlossener Schalen führt auf eine kugelsymmetrische Ladungsverteilung.
 	   Spektroskopische Notation: $(\prescript{2\text{S} + 1}{}{L}_J): \prescript{1}{}{S}_0$ (Singlett ohne Feinstruktur). $⇒$ Es genügt, für die spektroskopischen Eigenschaften sich auf die Elektronen außerhalb
-	   der abgeschlossenen Schalen zu beschränken. Beispiel: Natrium (Z = 11): $1s^2 2s^2 2p^6 3s^1$, Neon: $3s^1$
+	   der abgeschlossenen Schalen zu beschränken. Beispiel: Natrium (Z = 11): $1s^2 2s^2 2p^6 3s^1$ $⇒$ $[\ce{Ne}] 3s^1$
 	2. In einer nicht-abgeschlossenen $s, p, d, f$ Unterschale liegen die Zustände mit maximalen Spin energetisch am tiefsten. (symmetrische Spinwellenfunktion $\to$ maximaler Abstand $\to$ minimale Coulombenergie.)
 	3. Für Terme mit maximalem Spin liegen die Terme mit maximalem $L$ am tiefsten. Die zu einer Unterschale gehörenden \(m\)-Zustände werden so gefüllt, dass die Spin $\uparrow$ erst $m = l, m = l - 1, \dots$ Orbitale besezten.
 	   Beispiel: $C(Z = 6)[1 s^2 2s^2] 2 p^2; p = \{m = 1: \uparrow, m = 0:\uparrow\} ⇒ L = 1, S = 1$
@@ -208,19 +228,19 @@
 	Durch sukzessives Aufüllen der Schalen und Unterschalen erhält man die Elektronen-Konfiguration der Elemente für $Z > 2$. Nach $Z = 18$ wird mit dem nächsten Element nicht die \(3d\)-Unterschale
 	gefüllt (siehe Merkregel, Abbildung), sondern es wird erst die $4s$ Unterschale gefüllt. Da die $3d$ Unterschale innerhalb der $4s$ Unterschale liegt werden die chemischen Eigenschaften dieser Elemente vor allem durch
 	die $4s$ Elektronen bestimmt ("Übergangselemente"). Die nächste Unregelmäßigkeit findet nach Krypton $(Z = 36)$ statt. Mit Rubidium ($Z = 37$) wird erst die $5s$ Schale gefüllt.
-	Die $4d$ Unterschale wir zwischen $Z = 39$ (Yttrium) und $Z = 48$ (Cadmium) gefüllt. Nach Xeon $(Z = 54)$: $4f$-Unterschale, $5d$ Unterschale und nach Radon ($Z = 86$) $5f$ Unterschale, $6d$ Unterschale.
+	Die $4d$ Unterschale wir zwischen $Z = 39$ (Yttrium) und $Z = 48$ (Cadmium) gefüllt. Nach Xeon $(Z = 54)$: \(4f\)-Unterschale, $5d$ Unterschale und nach Radon ($Z = 86$) $5f$ Unterschale, $6d$ Unterschale.
 	Da der Radius der Unterschalen mit $n$ anwächst, wird mit dem Einbau in die $d,f$ Unterschalen Z besetzt, die einen geringeren mittleren Abstand zum Kern aufweisen, als die bereits besetztne, $s, p$ Orbitale bei
 	größeren $n$ ("innere Schalen") $3d, 4d, 5d, 4f, 5f$
 *** Ionisationsenergie und Atomradien
 	Gemessenen Atomradien belegen die Schalenstruktur. Radien weisen eine Periodizität auf: Immer wen ein Elektron in neue Schale eingebaut wird $(n \to n + 1)$
 	Steigt der Radius stark an. Gleiche Periodizität auch bei Ionsiierungsenergie $=$ Energie um das am schwächsten gebundene Elektron mit mittlerem Radius $\braket{r} = r_n$ ins Unendliche zu bringen:
-	\[E_{\text{ION}} = ∫_{r_n}^{∞} \frac{Z_{eff} e^2}{4π ε_0 r^2} \d r = \frac{Z_{eff} e^2}{4π ε_0 r_n} = R_y^{\ast} \frac{Z_{eff}^2}{n^2}\]
-	$Z_{eff}$: effektive Kernladung für das äußerste Elektron.
+	\[E_{\text{ION}} = ∫_{r_n}^{∞} \frac{Z_{\text{eff}} e^2}{4π ε_0 r^2} \d r = \frac{Z_{\text{eff}} e^2}{4π ε_0 r_n} = Ry^{\ast} \frac{Z_{\text{eff}}^2}{n^2}\]
+	$Z_{\text{eff}}$: effektive Kernladung für das äußerste Elektron.
 	- Edelgase besitzen die kleinsten Werte von $r_n$ und sehen damit die größte effektive Ladung $\to$ maximale Ionisationsenergie.
 	- Alkali-Atome besitzen die kleinste Ionsiationsenergie (das einzelne Elektron befindet sich weit außen)
 *** Periodensystem
 	Die Elemente werden nach steigendem $Z$ geordnet (ursprünglich Masse) geordnet und in eine Tabelle mit $7$ Zeilen (Perioden) und $18$ (ursprünglich 8) Spalten $=$ $8$ Hauptgruppen $+$ $10$ Nebengruppen
-	eingetragen, wobei die Ordnung in Spalten aus den chemischen Eigenschaften rührt. Schwerstes bekannte Element: $\prescript{294}{118}{Og}$ (Oganesson). Chemische Eigenschaften werden
+	eingetragen, wobei die Ordnung in Spalten aus den chemischen Eigenschaften rührt. Schwerstes bekannte Element: $\ce{^{294}_118 Og}$ (Oganesson). Chemische Eigenschaften werden
 	durch die äußeren Elektronen in nicht-vollständig besetzten Schalen bestimmt: Valenz-Elektronen
 	1. Gruppe: Alkali-Metalle - einzelnes Elektron, leicht ionisierbar
 	2. Gruppe: Erdalkali-Metalle - $s^2$ Elektronen
@@ -240,26 +260,28 @@
 	$N(t)$ $=$ Zahl der noch angeregten Atome, $N_0$ $=$ der ursprünglich $t = 0$ angeregten Atome. Für einen spezifischen Übergang $\ket{i}$ und $\ket{k}$ mit Energien
 	$E_i$ und $E_k$ bestimmt das Übergangsmatrixelement $M_{ki}$ beziehungsweise dessen Betragsquadrat $\abs{M_{ki}}^2$ der Wahrscheinlichkeit / Stärke des Übergangs:
 	\begin{align*}
-	\abs{M_{ki}}^2 &= \abs{\braket{k | \underarrow[\hat H_{WW}]{Wechselwirkung mit elektromagnetischem Potential} | i}}^2 \overarrow[\approx]{elektrische Dipolnäherung} e^2 \abs{∫ ψ_k^{\ast} \hat r ψ_i \d V}^2
+	\abs{M_{ki}}^2 &= \abs*{\braket{k | \underarrow[\hat H_{WW}]{Wechselwirkung mit elektromagnetischem Potential} | i}}^2 \overarrow[\approx]{elektrische Dipolnäherung} e^2 \abs{∫ ψ_k^{\ast} \hat r ψ_i \d V}^2
 	\end{align*}
 	Aus den Bedingungen, dass das Integral nicht verschwindet ergeben sich die Auswahlregeln für Mehrelektronensysteme bezüglich elektrischer Dipol Strahlung.
-	Auswahlregeln: $Δ l = \pm 1, Δ m_L = 0, \pm 1, Δ S = 0, Δ J = 0, \pm 1$ ($\leftarrow Δ J = 0$ möglich für $Δ L = \pm 1$ und $Δ m_l = \mp 1$ aber kein $J = 0 \to J = 0$!!)
+	Auswahlregeln: $Δ L = \pm 1, Δ m_L = 0, \pm 1, Δ S = 0, Δ J = 0, \pm 1$ ($\leftarrow Δ J = 0$ möglich für $Δ L = \pm 1$ und $Δ m_l = \mp 1$ aber kein $J = 0 \to J = 0$!!)
 	#+begin_remark latex
-	- emmitiertes Photon besitzt Drehimpuls $\pm \hbar$
+	- emmitiertes Photon besitzt Drehimpuls $\pm \hbar$ $⇒$ Drehimpuls muss sich um $ΔL = \pm 1$ ändern
 	- zum gleichen Schluss kommt man mit anderer Überlegung
-    *Parität* - Verhalten eines Zustandes unter Operation $\v r \to - \v r$
-	Man unterschiedet Zustände mit gerader und ungerader Partät
-	\[ψ(\v r) ⇒ ψ(- \v r) = \pm ψ(\v r)\]
-	- $+ =$ gerade Parität
-	- $- =$ ungerade Parität
-	für Wasserstoff-Lösung $\mathbb{P}(ψ) = (-1)^l$
-	1. Damit der Integrand für $M_{ki}$ nicht verschwindet muss Integrand insgemat symmetrisch in $\v r$ sein, das heißt positive Parität besitzen
-	2. Da $\v r$ eine ungerade Funktion ist, muss Produkt aus $ψ_i$ und $ψ_k^{\ast}$ ebenfalls ungerade sein. Das ist aber nur der Fall für	"ungerade-gerade" Produktkombinationen, und
-	   zusammen mit $P(ψ_j) = (-1)^{l_j}$ folgt, dass der Drehimpuls $ΔL$ sich um $\pm 1$ ändert. Betrachßtet man den Ausgangszustand $ψ_i$ und dem Endzustand
-	   $(ψ_k + γ)$, dann muss (Paritätserhaltung): $P(ψ_i) = P(ψ_k) P(γ) ⇒ P(γ) = -1$
+      *Parität* - Verhalten eines Zustandes unter Operation $\v r \to - \v r$
+	  Man unterschiedet Zustände mit gerader und ungerader Partät
+	  \[ψ(\v r) ⇒ ψ(- \v r) = \pm ψ(\v r)\]
+	 - $+ =$ gerade Parität
+	 - $- =$ ungerade Parität
+	 für Wasserstoff-Lösung $\mathbb{P}(ψ) = (-1)^l$
+	 1. Damit der Integrand für $M_{ki}$ nicht verschwindet muss Integrand insgesamt symmetrisch in $\v r$ sein, das heißt positive Parität besitzen
+	 2. Da $\v r$ eine ungerade Funktion ist, muss Produkt aus $ψ_i$ und $ψ_k^{\ast}$ ebenfalls ungerade sein. Das ist aber nur der Fall für	"ungerade-gerade" Produktkombinationen, und
+	    zusammen mit $P(ψ_j) = (-1)^{l_j}$ folgt, dass der Drehimpuls $ΔL$ sich um $\pm 1$ ändert. Betrachßtet man den Ausgangszustand $ψ_i$ und dem Endzustand
+	    $(ψ_k + γ)$, dann muss (Paritätserhaltung): $P(ψ_i) = P(ψ_k) P(γ) ⇒ P(γ) = -1$
 	#+end_remark
-	Typische Lebensdauren für elektrische Dipolübergänge:
-	\[\mathcal{O}(\SI{1e-9}{\second}) \qquad H(2\prescript{2}{}{P}_{1/2}): τ = \SI{1.5e-9}{\second}\]
+	Typische Lebensdauren für elektrische Dipolübergänge: $\mathcal{O}(\SI{1e-9}{\second})$
+	\[\ce{H}(2\prescript{2}{}{P}_{1/2}): τ = \SI{1.5e-9}{\second}, \quad \ce{He}(2\prescript{1}{}{P}_{1}): τ = \SI{0.5e-9}{\second}, \quad \ce{Na}(3\prescript{2}{}{P}_{1/2}): τ = \SI{16e-9}{\second}\]
+	Für metastabile Zustände (keine elekrischen Dipolübergänge möglich):
+	\[\ce{H}(2\prescript{2}{}{S}_{1/2}): \SI{8}{\second}, \quad \ce{He}(2\prescript{3}{}{S}_{1}): \SI{7870}{\second}, \quad \ce{He}(2\prescript{1}{}{S}_{}): \SI{19.6}{\milli\second}\]
 *** Natürliche Linienbreite
 	Mit endlicher Lebensdauer $τ$ ist eine natürlich Energiebreite der Zustände verbungen: $Δ E · τ \geq \hbar$. Damit verbunden ist eine endliche Frequenzbreite
 	\[Δ ω = \frac{1}{τ}\]
@@ -274,14 +296,14 @@
 	#+ATTR_LATEX: :options [Natrium]
 	#+begin_ex latex
 	Aufhebung der \(l\)-Entartung bewirkt, dass die Energiedifferenz $ΔE$ für zwei benachbarte $n$ in der gleichen Größenordnungwie das \(l\)-splitting ist.
-	Abei Alkali-Atomen mit einzelnem Valenzelektron  ($S = 1/2$) findet man Dupletts: $J = L \pm 1/2, \prescript{2}{}{P}_{1/2}, \prescript{2}{}{P}_{3/2}, \prescript{2}{}{D}_{3/2}, \prescript{2}{}{D}_{5/2}$.
+	Aber Alkali-Atomen mit einzelnem Valenzelektron  ($S = 1/2$) findet man Dupletts: $J = L \pm 1/2, \prescript{2}{}{P}_{1/2}, \prescript{2}{}{P}_{3/2}, \prescript{2}{}{D}_{3/2}, \prescript{2}{}{D}_{5/2}$.
 	Übergang von $3P$ (Duplett) nach $3S$ (Singlett) $\to$ Doppellinie.
 	#+end_ex
 *** Innerschalen Anregung und Auger-Elekrtonen
 	Anregung eines "inneren" Elektrons dbedarf hoher Energie (Effektive Kernladung $Z_{\text{eff}} e$ groß) $\to$ Anregung nur mittels Röntgenstrahl
-	(UV-LIcht) oder durch direkt Elektronen Stöße möglich. In das entsprechende Loch kann ein äußeres Elektron nachfallen $\to$ Photon $\hbar ν$ typischer Weise im $\si{\kilo\electronvolt}$ Bereich.
+	(UV-LIcht) oder durch direkt Elektronen Stöße möglich. In das entsprechende Loch kann ein äußeres Elektron nachfallen $\to$ Photon $\hbar ν$ typischer Weise im $\si{\kilo\electronvolt}$ Bereich. Zwei	mögliche Resultate
 	- charakteristisches Röntgen-Photon
-	- Energie kann auf äußeres Elektron übertragen werden
+	- Energie kann auf anderes Elektron übertragen werden $\to$ Autoionisation = Auger-Effekt
 ** Röntgenstrahlung
    Prinzip einer Röntgenröhre: Elektronen werde durch einen Heizwedel auf eine Annode geschossen. Kinetische Energie $E_{\text{kin}} = e U_B$.
    Beim Auftreffen auf Anode verlieren die Elekrtonen einen Teil ihrer Energie durch Abstrahlung.
@@ -289,13 +311,14 @@
    1. Abbremsen der Elektronen im Feld des Kerne der Anoden-Atome
 	  $\to$ Bremsstrahllung (aufgrund der Beschleunigung): kontinuierliches Spektrum mit $E_{\text{max}} = e U_B$
    2. Ionisation beziehungsweise Stoßanregung von Elektronen der inneren Schalen $k$ hinterlassen freie Plätze die von äußeren Elektronen $i$ besetzt werden.
-	  \[Δ E = E_k - E_i = h ν_{ki} = (Z - Σ)^2 R_y h c (\frac{1}{n_k^2} - \frac{1}{n_i^2})\]
+	  \[Δ E = E_k - E_i = h ν_{ki} = (Z - Σ)^2 Ry h c (\frac{1}{n_k^2} - \frac{1}{n_i^2})\]
 	  $⇒$ $i,k$ sind diskrete Übergänge $\to$ charakteristisches Spektrum.
    Bei den beiden Strahlungsanteilen handelt es sich tatsächlich um elektromagnetische Strahlung (Messung der Polarisation, Beugungs + Interferenzeffekte (Laue, W. H + W.L Bragg)). \\
+   Minimale Wellenlänge = maximale Energie der Photonen = maximale kinetische Energie = $e U_B$:
    \begin{align*}
    E_{\text{max}} &= e U_B \\
-   h ν_G &= e U_B ⇔ λ \geq λ_G = \frac{hc}{e U_B} \\
-   λ_G &= \frac{\SI{1234.5}{\nano\meter}}{U[\si{\volt}]}
+   h ν_G &\leq e U_B ⇔ λ \geq λ_G = \frac{hc}{e U_B} \\
+   λ_G &= \frac{\SI{1234.5}{\nano\meter}}{U[\si{\volt}]} \\
    \to λ_G &= \SI{0.12}{\nano\meter}[\SI{10}{\kilo\volt}]
    \end{align*}
    Absorption:
@@ -305,6 +328,973 @@
    $μ$ $=$ Absorptionskoeffizient
    \[μ = μ_s + α\]
    $μ_s$: Streuung, $α$: Absorption. Für Röntgenstrahlen ist die Absorption bestimmt durch das Anregungs- und Ionisationsspekturm des Absorbermaterial.
-   Absorptionskanten entspricht gerade der Energie um Elektron aus $K, L, M$ Schale zu ionisiren.
-   \[U(K-\text{Kante}) = R_y h c (Z - Σ)^2 (\frac{1}{1^2} - \frac{1}{∞^2})\]
+   Absorptionskanten entspricht gerade der Energie um Elektron aus $K, L, M$ Schale zu ionisiren. Moseley hat die K-Absorptionskante benutzt um die Kernladung von Elementen
+   zu studieren:
+   \[ν(K-\text{Kante}) = Ry h c (Z - Σ)^2 (\frac{1}{1^2} - \frac{1}{∞^2})\]
    Absorptionskante $ν_{k,l,m} \sim (Z - Σ)^2$
+* Fundamentale Materiebausteine und ihre Wechselwirkung
+** Struktur der Materie
+   *Atome*: $\sim \SI{1e-10}{\meter}$, typische Bindungsenergie der Elektronen: $\si{\electronvolt} \dots \si{\kilo\electronvolt}$. \\
+   "elektromagnetische Wechselwirkung" \\
+   *Kern*: $\sim \SI{1e-14}{\meter}$, typische Bindungsenergie $\si{\mega\electronvolt}$, "starkte Wechselwirkung",
+   \[\prescript{A}{Z}{X}_N \begin{cases} A & \text{Massenzahl} \\ Z & \text{Kernladungszahl} \\ N & \text{Neutronenzahl}\end{cases}\]
+   Kernradius $R_K^3 \sim V_K \sim A \to R_K \sim A^{1/3} \to R_K = \SI{1.22}{\femto\meter} · A^{1/3}$ \\
+   *Nukleon*: Proton oder Neutron, typische Bindungsenergie $\mathcal{O}(\SI{1}{\giga\electronvolt})$, "starke Kraft" \\
+   Proton: \(uud\)-Quarks $m_p = \SI{938.3}{\mega\electronvolt\per\clight\squared}$ \\
+   Neutron: \(udd\)-Quarks $m_n = \SI{939.6}{\mega\electronvolt\per\clight\squared}$ \\
+   *\(u,d\)-Quarks, Elektron*: Fundamentale Bausteine: Leptonen + Quarks $\to$ strukturlos bis $\SI{1e-18}{\meter}$ ("punktförmig") \\
+   *Atommassen*
+   \[\SI{1}{\atomicmassunit} = \frac{1}{12}(\prescript{12}{6}{C}\text{-Atom})\]
+   (berücksichtigt Bindungsenergie der Nukleonen sowie die Masse der Elektronen)
+   \begin{align*}
+   m_p &= \SI{1.00728}{\atomicmassunit} \\
+   m_n &= \SI{1.00867}{\atomicmassunit}
+   \end{align*}
+   #+begin_remark latex
+   - "strukturlos": Nach Stand des Wissens weisen die Teilchen bis $\SI{e-18}{\meter}$ keine Substruktur (Ausdehnung) auf. Limitiert durch die verfügbare Energie / Impuls der Testteilchen:
+	 $Δ p_x Δ x \approx \hbar$, mit $\hbar c \approx \SI{197}{\mega\electronvolt\femto\meter}$ $⇒$ $E(\text{Testteilchen}) \approx \hbar c / Δ x \approx \mathcal{O}(\SI{200}{\giga\electronvolt})$
+   - Im radioaktiven \(β\)-Zerfall entsteht eine weitere Sorte fundamentaler Teilchen: Neutrino $n \to p e^{-} \bar ν_e$
+   #+end_remark
+
+** Fundamentale Materiebausteine
+   $(ν_e, e^{-})$ sowie $(u, d)$ bilden die erste Generation "fundamentaler Bausteine". Insgesamt werden genau 3 Generationen beobachtet. Wir wissen heute (sit $\sim$ 2012, das es nur genau diese 3 Generationen gibt) \\
+   $\to$ strukturlos, Spin \(1/2\)-Fermionen \\
+   |          | I                                                        | II                                                       | III                                                       | $Q_{el}$ |
+   | Leptonen | $ν_e$                                                    | $ν_μ$                                                    | $ν_τ$                                                     |          |
+   |          | $e \sim \SI{511}{\kilo\electronvolt\per\clight\squared}$ | $μ \sim \SI{106}{\mega\electronvolt\per\clight\squared}$ | $τ \sim \SI{1.78}{\mega\electronvolt\per\clight\squared}$ | $-1$     |
+   | Quarks   | $u \sim \SI{2.3}{\mega\electronvolt\per\clight\squared}$ | $c \sim \SI{1.3}{\giga\electronvolt\per\clight\squared}$ | $t \sim \SI{172}{\giga\electronvolt\per\clight\squared}$  | $+2/3$   |
+   |          | $d \sim \SI{4.8}{\mega\electronvolt\per\clight\squared}$ | $s \sim \SI{95}{\mega\electronvolt\per\clight\squared}$  | $b \sim \SI{4.2}{\giga\electronvolt\per\clight\squared}$  | $-1/3$   |
+   Masse der Neutrinos: $< \SI{2}{\electronvolt\per\clight\squared}$
+   - Nur Quarks und Leptonen der ersten Generation sind stabil (bis auf $ν$)
+   - Massenspektrum: Teilchen werden in jeder Generation schwerer, auch wenn es möglicherweise einen tieferen Grund für das Massenspektrum gibt, verstehen wir es bis heute	nicht
+   Für Quarks existiert neben der elektrischen Ladung nach die sogenannte Farbladung $=$ Ladung der starken Wechselwirkung $\to$ 3 Farbladungen: $r,g,b$.
+   Quarks existieren in Natur nicht frei, sondern nur in "stark" gebundenen Zuständen: Hadronen (zum Beispiel $p,n$). Hadronen sind *farbneutral*. \\
+   Zu allen fundamentalen Bausteinen existieren Antiteilchen, mit gleicher Masse aber umgekehrte Ladungen.
+   $e^{-} \to e^{+}, ν_e \to \bar ν_e, u \to \bar u, d \to \bar d$.
+** Fundamentale Wechselwirkungen
+   - elektromagnetische Kraft zwischen allen Teilchen mit elektrischer Ladung
+   - starke Kraft zwischen Quarks mit Farbladung
+   - schwache Wechselwirkung verantwortlich für radioaktiven \(β\)-Zerfall
+   - Gravitation
+   *Klassische Behandlung*: Kraft resultiert aus Potential ist wenig befriedigend. Beispiel: Elektronstreuung an elektrischen Potential eines Protons: Es kommt zu einem Impulsaustausch, ohne dass dies mit einem Teilchenaustausch verbunden wäre. Es handelt sich um eine Art "Fern-Wirkung" deren Ursprung man nicht wirklich versteht. \\
+   *Quantenfeldtheorie*: \\
+   Kräfte und Wechselwirkung werden als quantisierte Felder beschrieben, Wechselwirkung entsprechend dann dem Austausch dieser Feldquanten.
+   #+begin_ex latex
+   Elektromagnetische Streuung zweier Elektronen: Austausch eines Photons ("Feynmann-Diagram")
+   #+BEGIN_EXPORT latex
+   \catcode`(=12
+   \catcode`)=12
+   \begin{center}
+   \feynmandiagram [vertical=b to a] {
+   i1 [particle=\(e^{-}\)] -- [fermion] a -- [fermion] i2 [particle=\(e^{-}\)],
+   a -- [photon, edge label=\(\gamma\)] b,
+   f1 [particle=\(e^{-}\)] -- [fermion] b -- [fermion] f2 [particle=\(e^{-}\)],
+   };
+   \end{center}
+   \catcode`(=\active
+   \catcode`)=\active
+   #+END_EXPORT
+   #+end_ex
+   Das Standardmodell (QFT) beschreibt die elektromagnetische, schwache und starke Wechselwirkung zwischen fundamentalen Fermionen als Austausch entsprechender Austauschteilchen: Photon, $W^{\pm}$, \(Z\)-Bosonen,
+   Gluonen.
+   | Wechselwirkung    | relative Stärke    | Austauschboson         | Spin |                                                                                            Masse | Reichweite                     |
+   |-------------------+--------------------+------------------------+------+--------------------------------------------------------------------------------------------------+--------------------------------|
+   | stark             | 1                  | 8 Gluonen              |    1 |                                                                                                0 | $<\SI{1}{\femto\meter}$        |
+   | elektromagetische | $\sim \num{1e-2}$  | Photon                 |    1 |                                                                                                0 | $∞$                            |
+   | schwache          | $\sim \num{1e-7}$  | \(W^{\pm}, Z\)-Bosonen |    1 | $\SI{80}{\giga\electronvolt\per\clight\squared}, \SI{91}{\giga\electronvolt\per\clight\squared}$ | $\sim \SI{1e-3}{\femto\meter}$ |
+   |-------------------+--------------------+------------------------+------+--------------------------------------------------------------------------------------------------+--------------------------------|
+   | Gravitation       | $\sim \num{1e-39}$ | Gravitonen             |    2 |                                                                                                0 | $∞$                            |
+   Bemerkung zu Gravitation:
+   - spielt auf großen Skalen eine wichtige Rolle, kann aber bei Behandlung von Elementarteilchen für Energien unterhalb der Planck-Skala ($\SI{e19}{\giga\electronvolt}$), das
+	 heißt bis zu einem Abstand von $\SI{e-35}{\meter}$ vernachlässigt werden.
+   - Es ist bis heute nicht gelungen die Gravitation im Rahmen einer Quantenfeldtheorie zu behandeln (Problem sind nicht lineare Effekte: attraktives Potential zweier Massen $\to$ Beschleunigung $\to$ $m = γ m_0$)
+   Wechselwirkung zwischen den fundamentalen Teilchen:
+   1. elektromagnetische Wechselwirkung	wirkt zwischen allen elektrisch geladenen Teilchen
+   2. starke Wechselwirkung wirkt zwischen Teilchen mit Farbladung ($=$ Quark).
+	  $\to$ entfernt man 2 Quarks voneinander wirken große Kräfte und es wird Energie in das Feld zwischen ihnen gepumpt $\to$ unmöglich die Quarks voneinander zu entfernen. Confinement der Quarks in
+      farbneutrale Hadronen. \\
+      Typen von Hadronen:
+      - 3 Quark-Systeme: Baryonen ($n, p$): $r + g + b =$ farbneutral
+      - Quark-Antiquark-Systeme: Farbe $+$ Antifarbe $=$ farbneutral $=$ Mesonen:
+	 \[π^{+} = \ket{u \bar d}, π^{-} = \ket{d \bar u}, κ^{+} = \ket{u \bar s}, κ^{-1} = \ket{\bar u s}\]
+     - Es gibt experimentielle Anzeichen für die Existenz von $(q \bar q q \bar q) =$ Tetraquarks und $(qqqq\bar q)=$ Pentaquarkzustände.
+   3. schwache Wechselwirkung koppelt an alle Quarks und alle Leptonen. \(β\)-Zerfall $n \to p e^{-} \bar ν_e$
+
+   | Teilchen | starke | elektromagnetische | schwache |
+   |----------+--------+--------------------+----------|
+   | $ν$      | o      | o                  | x        |
+   | $e^{-}$  | o      | x                  | x        |
+   | Quarks   | x      | x                  | x        |
+   Neben den Austauschbosonen der drei Wechselwirkungen gibt es ein
+   weiteres Boson (Spin $0$) das zwar an alle massive Permionen und massiven Austauschbosonen koppelt und den Teilchend durch diese Kopplung Masse verleiht, (Higgs-Boson) vermittelt aber keine Wechselwirkung!
+   Higgs wurde 2012 am LHC nachgewiesen, damit war es das letzte Standardmodell-Teilchen und das erste fundamentale Spin-\(0\)-Teilchen
+** Streuexperimente zur Strukturuntersuchung
+   Streuexperiment liefern über die Reaktionsraten, die Impuls- und Winkelverteilung der Reaktionsprodukte Information über die Dynamik der Wechselwirkung und über
+   die Struktur der beteiligten Teilchen
+   1. elastische Streuung: $a + A \to a + A$. Um Strukturen in $A$ aufzulösen muss die de Broglie Wellenlänge $λ = h / \abs{\v p}$ in der Größenordnung der Struktur $Δ x$ sein
+	  (Optik: $\lambdabar < Δ x, \lambdabar = λ / (2π)$)
+	  Auflösungsvermögen $Δx \approx \hbar / Δp_x$. Zur Abschätzung $\hbar c \approx \SI{197}{\mega\electronvolt\femto\meter}$
+      | $p$                          | $Δ x (θ = \SI{45}{\degree})$ |
+      | \SI{1}{\giga\electronvolt}   | $\SI{0.3e-15}{\meter}$       |
+      | \SI{100}{\giga\electronvolt} | $\SI{3e-18}{\meter}$         |
+      | \SI{200}{\giga\electronvolt} | $\SI{1.5e-18}{\meter}$       |
+   2. inelastische Streuexperimente \\
+	  $a + b \to a + b^{\ast}$ Anregung \\
+	  $a + b \to c + d$ Erzeugung neuer Teilchen \\
+	  zum Beispiel $e^{+}e^{-} \to μ^{+}μ{-}$
+** Relativistische Kinematik
+   In Teilchenphysik sind Teilchen in der Regel hochrelativisitsch: $E \gg m c^2$.
+   $\to$ relativistische Energie-Impuls-Beziehung:
+   \[E^2 = p^2 c^2 + m^2 c^4\]
+   4er-Vektoren: \\
+   (Zeit, Ort) $x = (ct, \v x) = x^μ$ \\
+   (Energie, Impuls) $p = (E/c, \v p) = p^μ$ \\
+   allgemein $a = (a_0, \v a) = a^μ$ \\
+   Skalarprodukt:
+   \[a · b = a_0 b_0 - \v a · \v b = \sum_{μ,ν = 0}^{3} g_{μν} a^μ b^ν \qquad g_{μν} = \diag(1, -1, -1, -1)\]
+   Das so definierte Skalarprodukt ist lorentzinvariant $\to$ das heißt unabhängig vom Bezugssystem.
+   #+begin_ex latex
+   $p = (E / c, \v p)$, $p · p$ ist unabhängig vom Bezugssystemen. \\
+   Labor: $p·p = (E/c, \v p) · (E/c, \v p) = p^2 / c^2 - \v p^2 = m c^2$ \\
+   Center Mass System: $p · p = (mc, 0)(mc, 0) = m^2 c^2$ \\
+   $m^2 c^2$: "invariante Masse\({}^2\)", in allen Systemen gleich.
+   #+end_ex
+   #+ATTR_LATEX: :options [Kollision zweier Teilchen]
+   #+begin_ex latex
+   \begin{align*}
+   p_1 &= (E_1 / c, \v p_1) \rightarrow \leftarrow p_2 = (E_2/ c, \v p_2) \\
+   c^2(p_1 + p_2)^2 &= s = (\text{Schwerpunktsenergie})^2
+   \end{align*}
+   1. hochrelativistisches Teilchen 1,2: $m_i c^2 \ll E_i \to E_i \approx p_i c$ und $\v p_1 = - \v p^2$
+	  \[S = c^2 ((p_1, \v p_1) + (p_1, - \v p_1))^2 = c^2 (2 p_1, 0)^2 = 4 p_1^2 c^2 = 4 E_1^2\]
+	  das heißt $\sqrt{s} =$ Schwerpunktsenergie $E_{\text{CMS}} = 2 E_1$
+   2. Fixed-Target-Kollision: $\v p_2 = 0$
+	  \begin{align*}
+	  S &= c^2 ((E_1 / 2 + M c)^2 - \v p_1^2) = E_1^2 + 2 c^2 ME + M^2 c^4 - \v p_1^2 c^2 \\
+	  &\approx 2 c^2 M E_1 \quad\text{für}\quad m c, M c \ll \abs{\v p_1} \\
+	  \sqrt{s} &= E_{\text{CMS}} = \sqrt{2 c^2 M E_1} < E_1
+      \end{align*}
+   #+end_ex
+* Beschreibung von Streuprozessen
+** Feynmn-Diagrame
+   Systematische Einführung ist erst in Quantenfeldtheorie möglich. $\to$ Feynman-Diagrame sind Rechenregeln zur Berechnung von Übergangsamplituden.
+   Feynman-Diagrame vermittlen aber bereits ohne ausgerechnet zu werden ein Verständnis der Dynamik des Wechselwirkungs-Prozesses. \\
+   *Typisches Problem*:
+   Vorhersage der Wechselwirkungs-Wahrscheinlichkeiten beziehungsweise der Wechselwirkungsrate eines Streuprozesses. (zum Beispiel: $e^{+} e^{-} \to μ^{+}μ^{-}$).
+   Übergangsamplituden sind bereits aus Atomphysik bekannt: Hamilton-Operator:
+   \[\hat H = \hat H_0 + \hat H_{WW} = \frac{\hat p^2}{2m} + V(\hat x)\]
+   Störungstheorie für $\hat H_{WW} < \hat H_0$ (klein). $ψ_i, ψ_f$ sind Eigenfunktionen zu $\hat H_0$ (freies Teilchen):
+   \[ψ_i = N \exp(i \v k \v x - i ω t)\]
+   $N =$ Normierung, $k = \v p / \hbar$ und $ω = E / \hbar$. Übergangsamplitude:
+   \[A(i \to f) = ∫_{t = -∞}^{t + ∞} ∫ ψ_f \hat H_{WW} ψ_i \d V \d t\]
+   Übergangsrate $\sim$ $P(\text{Wahrscheinlichkeit}) \sim$ $\abs{A(i \to f)}^2$. Hier:
+   1. Teilchen bleibt erhalten
+   2. nicht relativistisch $E = \v p^2 / (2m)$
+   In Teilchenphysik ist die Situation weitaus komplizierter
+   1. Teilchen vernichten sich, neue Teilchen entstehen
+   2. Teilchen hochrelativistisch
+   zu 1.: korrekte Behandlung mit Quantenfeldtheorie: $ψ(\v k)$ nicht mehr eine skalare Funktion, sondern Operatoren, die Teilchen + Antiteilchen mit Impuls $\v k$ erzeugen und vernichten können. \\
+   zu 2.: Relativistische Energieimpulsberechnung: $E^2 = p^2 c^2 + m^2 c^4$ $\to$ $2$ Energiewerte:
+   \begin{align*}
+   E_{+} &= +\sqrt{p^2 c^2 + m^2 c^4} \to ω_{+} = \frac{+\sqrt{p^2 c^2 + m^2 c^4}}{\hbar} = ω \\
+   E_{-} &= -\sqrt{p^2 c^2 + m^2 c^4} \to ω_{-} = \frac{-\sqrt{p^2 c^2 + m^2 c^4}}{\hbar} = -ω
+   \end{align*}
+   $\to$ zugehörige Eigenfunktionen:
+   \begin{align*}
+   E_{+} > 0: ψ_{+} &= N \exp(i \v k \v x - i ω t) \\
+   E_{-} > 0: ψ_{-} &= N \exp(i \v k \v x + i ω t) \\
+   \end{align*}
+   Interpretation der "negativen Energielösung" (folgt zwanglos in Quantenfeldtheorie): \\
+   Teilchen bewegt sich in "-t" Richtung mit negativer Energie $\estimates$ Antiteilchen in "$+t$" Richtung mit positiver Energie und umgekehrten Impuls $- \v p$ \\
+*** Feynman-Diagramme in Quantenelektrodynamik
+	$\to$ Berechnung von Übergangsamplituden von elektromagetischen Prozessen. \\
+	Hier die oben motivierte Konvention, dass Antiteilchen durch $- \v p$ = "\leftarrow" beschrieben werden, häufig zu finden "Antiteilchen laufen rückwärts in der  Zeit" - nicht wirklich richtig. \\
+	*Feynman-Regeln* und ihre Bedeutung \\
+	1. Fermion (im Limit frei): Pfeile in positve Zeitrichtung, Antifermion: Pfeile in negativer Zeitrichtung
+	2. Austauschboson = Photon: Welle
+	3. In Quantenelektrodynamik nur eine Art von Vertex:
+	   #+BEGIN_EXPORT latex
+	   \catcode`(=12
+	   \catcode`)=12
+	   \begin{center}
+       \feynmandiagram [vertical=a to b] {
+       a  -- [photon] b,
+       f1 -- [fermion] b -- [fermion] f2,
+       };
+	   \end{center}
+	   \catcode`(=\active
+	   \catcode`)=\active
+	   #+END_EXPORT
+	   Stärke der Photon-Fermion Kopplung: $\sim$ elektrische Ladung $e$ $\sim \sqrt{α} \sim 1/\sqrt{137}$
+	4. An jedem Vertex gilt 4er Impulserhaltung und Leptonzahlerhaltung ($L_e(e^{-}) = +1, L_e(e^{+}) = -1$)
+	5. Innere Linien, zum Beispiel "Photonlinien" (-Propagator) sind virtuell und erfüllen in der Regel nicht die Energieimpulsbeziehung freier Teilchen, insbesondere $q^2 + m_γ^2 c^2 = 0$ / 4er Impuls\({}^2\) $\neq$ invariante Masse\({}^2\)
+	6. Äußere Teilchen (Linien) sind reelle Teilchen und erfüllen die Energieimpuls Beziehung $E^2 = p^2 c^2 + m^2 c^4$
+
+	#+ATTR_LATEX: :options
+	#+begin_ex latex
+	$e^{+} e^{-} \to μ^{+} μ^{-}$ \\
+	4er Impuls $q$ des Photons:
+	\begin{align*}
+	q &= (e_e / c, \v p_e) + (e_e / c, - \v p) = 2 E_e / c \\
+	q^2 &= 4	E_e^2 / c^2 \neq m_γ^2 c^2 = 0
+	\end{align*}
+	Die Energie-Impuls-Beziehung ist also für das virtuelle Photon verletzt. DiesIst aufgrund der Heisenberg'schen Unschärfe $ΔE Δ t \approx \hbar$ für eine
+	kurze Zeit möglich $\to$ erlaubt interessante kurzzeitige Quantenfluktuationen.
+	#+end_ex
+    #+ATTR_LATEX: :options [zu $q^2$ ausgetauschter Photonen]
+    #+begin_remark latex
+    Je nach Vorzeichen des $q^2 = (\text{4er-Impuls})^2$ des virtuellen Photons / Teilchen spricht man von raumartigen $(q^2 > 0)$ oder zeitartigen $(q^2 < 0)$ Photonen
+    #+end_remark
+    *Übergangsamplitude aus Feynman-Graphen* \\
+    Struktur von $A$:
+	\begin{align*}
+    A &\sim \underbrace{\braket{c | WW | a}}_{WW \sim e} · \underbrace{\text{ Propagator }}_{1/q^2} · \underbrace{\braket{d | WW | b}}_{WW \sim e} \\
+	⇒ A(e^{-} μ^{-} \to e^{-} μ^{-}) &\sim e \frac{1}{q^2} e \sim \frac{α}{q^2}
+	\end{align*}
+	In ähnlicher Weise können auch andere Prozesse beschrieben werden. Ein physikalischer Prozess (zum Beispiel $e^{+} e^{-} \to e^{+} e^{-}$)
+	wird durch die Summe aller möglichen Amplituden (= Feynman-Größen) die zum gleichen Endzustand führen beschrieben.
+	Die Einzelamplituden werden auf Amplitudenlevel also kohärent zur Gesamtamplitude addiert.
+	Observablen ergeben sich dann als Funktion des Betragsquadraten. $\to$ Man erwartet Beiträge von Interferenzen ($\to$ interessante Effekte) \\
+    *Feynman-Graphen höherer Ordnung* \\
+	Idee:
+	\[A(\ket{i} \to \ket{f}) \approx \braket{i | WW | f} + \sum_{j} \braket{f|WW|j} \braket{j|WW|i}\]
+	$\to$ Störungreihe. $⇒$ Störungsentwickung in Quantenelektrodynamik: leader order (LO) $A_{\text{LO}} \sim e^2 \sim α$, next-to-leading	order (NLO) $A_{\text{NLO}} \sim e^4 \sim a^2$, next-to-next-to-leading oder (NNLO) $A_{\text{NNL}} \sim e^6 \sim α^3$.
+	Da $α = 1/137 \ll 1$ spielen in der Störungsreihenentwicklung die Terme höherer Ordnung eine immer weniger wichtige Rolle.\\
+    *Messbare Effekti der Quantenkorrekturen*
+    1. Lamb-Shift ($\to$ Atomphysik)
+    2. Anormales magnetische Moment des Elektrons
+	   \[\v μ = g \frac{e \hbar}{2 mc} \frac{\v s}{\hbar} \qquad (g - 2) \approx \frac{α}{π} - 0.66 \frac{α^2}{π^2} + \dots\]
+	   $g = 2$ in Dirac-Theorie
+    3. "Running" Kopplungskonstanten $α = α(q^2)$, "Vakuumpolarisation" führt zu teilweisen	Abschirmung der Ladung und damit zu einer "laufenden" Kopplungskonstanten $α = α(q^2)$. \\
+	   Feinstruktur $α = 1/137$ ist im Limit $q^2 \to 0$ gemessen. Bemerkung: Die hier diskutierten Quanteneffekte spielen auch für die anderen Wechselwirkungen eine Rolle
+*** Feynman-Graphen für schwache Wechselwirkung
+	Austaschboson: masselose Photonen (Quantenelektrodynamik) $\to$ massive $W^{\pm}$, \(Z\)-Bosonen in schwacher Wechselwirkung. \\
+	\(β\)-Zerfall: $μ^{-} \to e^{-} ν_μ \bar ν_e, n \to p e^{-} \bar ν_e$
+	- Wie in Quantenelektrodynamik gilt Leptonzahlerhaltung an jedem Vertex
+	- Quark-Typ bleibt nicht erhalten: \(u\)-Typ $\leftrightarrow$ \(d\)-Typ Quark (bei \(W^{\pm}\)!)
+	- Massive \(W^{\pm}\)-Bosonen ($\SI{80}{\giga\electronvolt\per\clight\squared}$) führt zu Modifikation des Propagator
+	Quantenelektrodynamik: $1/q^2 \to$ schwache Wechselwirkung: Kopplungstärke $\sim \sqrt{α_W} \sim g_W$
+	\[\frac{1}{q^2 - M^2_W c^2} \qquad A\sim g_W \frac{1}{q^2 - M_W^2 c^2} g_W\]
+	Für kleine \(q^2\)-Werte:
+	\[A \sim \frac{g_W^2}{q^2 - M_W^2} \sim \frac{g_W^2}{M_W^2 c^2}\]
+	\(Z\)-Austausch:
+	- Quark-Typ bleibt erhalten!
+	- Leptonzahl bleibl erhalten
+	wegen $A \sim 1/(q^2 - M_Z^2 c^2)$ "Pol" $q^2 \approx M_Z^2 c^2$ $⇒$ Anstiege der Wechselwirkungsrate!
+*** Feynman-Graphen für starke Wechselwirkung
+	Austausch-Bosonen: masselose Gluonen. Propagator $\sim 1/q^2$. Fundamentale Vertices:
+	#+BEGIN_EXPORT latex
+	\catcode`(=12
+	\catcode`)=12
+	\begin{center}
+       \feynmandiagram [vertical=b to a] {
+       a  -- [gluon] b,
+       f1 [particle=\(q\) (Farbe)] -- [fermion] b -- [fermion] f2 [particle=\(q\) (Farbe)],
+       };
+	\end{center}
+	\catcode`(=\active
+	\catcode`)=\active
+	#+END_EXPORT
+	Kopplungsstärke: $\sqrt{α_s}$. Aber Gluonen tragen selbst Farbe (später). Zusätzliche Vertices $⇒$ Gluon-Gluon Kopplung:
+	#+BEGIN_EXPORT latex
+	\catcode`(=12
+	\catcode`)=12
+	\begin{center}
+       \feynmandiagram [vertical=b to a] {
+       a  -- [gluon] b,
+       f1  -- [gluon] b -- [gluon] f2,
+       };
+	\end{center}
+	\begin{center}
+       \feynmandiagram [horizontal=i1 to i2] {
+       {i1, i2}  -- [gluon] a -- [gluon] {f1, f2},
+       };
+	\end{center}
+	\catcode`(=\active
+	\catcode`)=\active
+	#+END_EXPORT
+	#+begin_remark latex
+	Aufgrund der Quantenkorrekturen findet man auch hier eine "laufende Kopplungskonstante".
+	#+end_remark
+	#+begin_remark latex
+	Die Quark-Level Beschreibung von starken Hadronzerfällen ist sinnvoll um den Quarkinhalt zu verstehen. Störungstheoretische aber machen diese Feynman-Graphen keinen Sinn (wegen $α_s \to 0$ keine Störungstheorie + Entwicklung sinnvoll)
+	#+end_remark
+	"Harte" ($q^2$ groß) Streuungen aber gut beschreibar - Quantenchromodynamik gut getestet.
+** Wirkungsquerschnitt
+   Wirkungsquerschnitt und Winkelverteilung von Streuprozessen liefern Information über Wechselwirkung zwischen Projektil und Target. Wirkungsquerschnitt ist
+   ein Maß für die Wahrscheinlichkeit einer Reaktion zwischen zwei Streupartnern. \\
+   Betrachte die Streuung eines mono-energetischen Teilchenstrahls an einem Target mit $N_t$ Streuzentren.
+   Einfallender Teilchenfluss
+   \[ϕ = \frac{\dot N_i}{A} = n_i v_i\]
+   mit: \\
+   $\dot N_i =$ Rate der einfallenden Teilchen. \\
+   $n_i =$ Teilchendichte im Strahl. \\
+   $v_i =$ Teilchen-Geschwindigkeit im Strahl. \\
+   $A$ die Querschnittsfläche des Strahls
+   $\d \dot N_s =$ Rate ner nach $\d Ω(φ, θ)$ gestreuuten Teilchen \\
+   \[\d \dot N_s(φ, θ) \sim ϕ N_t \d Ω(φ, θ)\]
+   Proportionalitätskonstante bezeichnet man als differentiellen Wirkungsquerschnitt $σ_{\text{diff}}(φ, θ) = \dd{σ}{Ω}$
+   \[σ_{\text{diff}}(φ, θ) = \dd{σ}{Ω} = \frac{\d \dot N_s(φ, θ)}{ϕ N_t \d Ω}\]
+   Totalen Wirkungsquerschnitt erhält man aus der Gesamtrate $\dot N_s$ gestreuter Teilchen
+   \[σ_{\text{tot}} = \frac{\dot N_s}{ϕ N_t} =: σ = ∫_{4π} σ_{\text{diff}} \d Ω\]
+   Dimension des Wirkungsquerschnitt:
+   \[= \frac{\text{Rate}}{\text{Rate} / \text{Fläche}} = \text{Fläche}\]
+   Einheit von $σ$:
+   \[\SI{1}{\barn} = 1 \text{barn} = \SI{1e-28}{\meter\squared} = \SI{1e24}{\centi\meter\squared}\]
+   Veranschulichung: Geometrischer Streuquerschnitt
+   1. Punktförmiges Teilchen trifft auf sehr düssen Target ($\to$ kein Überlapp der Streuer), nur Kontakt-Wechselwirkung. \\
+	  Gesamtrate der gestreuten Teilchen
+	  \begin{align*}
+	  \dot N_s &= ϕ N_t A_t
+      \end{align*}
+	  wobei $A_t =$ Querschnittsfläche der Streuer $= π R_t^2$ ($R_t =$ Radius)
+	  \[σ = \frac{\dot N_s}{ϕ N_t} = A_t = π R_t^2\]
+	  das heißt der totale Wirkungsquerschnitt entspricht dem geometrischen Querschnitt eines Streuzentrums (Streuers)
+   2. Abschätzen des Wirkungsquerschnitt für Proton-Proton Streuung $p \rightarrow \leftarrow p$.
+	  Stoßparameter $b_{\text{max}} = 2 R_p = 2 \SI{0.8}{\femto\meter} = \SI{1.6}{\femto\meter}$. \\
+	  Starke Wechselwirkung $⇒$ kurzreichweitig $⇒$ geometrischer Querschnitt dient als Abschätzung
+	  \[σ_{\text{tot}}(pp) = π b_{\text{max}}^2 = π(\SI{1.6}{\femto\meter})^2 = \SI{80}{\milli\barn}\]
+	  Experimentelle Werte für totalen Wirkungsquerschnitt:
+	  \begin{align*}
+	  σ_{pp}(\sqrt{s} = \SI{10}{\giga\electronvolt}) &\approx \SI{40}{\milli\barn} \\
+	  σ_{pp}(\sqrt{s} = \SI{1}{\tera\electronvolt}) &\approx \SI{80}{\milli\barn} \\
+      \end{align*}
+	  $⇒$ geometrische Abschätzung für $pp$ Wechselwirkung bestätigt die Annahme der kurzen Reichweite der Wechselwirkung.
+
+** Freie Weglänge
+   betrachte "dickes" Target. Zahl der Streuzentren $N_t = n_t A d$ mit der Targetdichte
+   \[n_t = \frac{ρ}{M_{\text{mol}}} N_A\]
+   $ρ =$ Dichte in $\si{\gram\per\centi\meter\cubed}$, $N_A =$ Avogadro Zahl $= \SI{6.022e23}{\per\mol}$, $M_{\text{mol}} =$ Molmasse $= \si{\gram\per\mol}$. Streurate:
+   \begin{align*}
+   \dot N_s &= ϕ N_t σ = \frac{\dot N_i}{A} A d σ = \dot N_i n_t d σ
+   \end{align*}
+   Streuwahrscheinlichkeit für dickes Target: Wahrscheinlichkeit für eine Reaktion nach Stecke $x$:
+   \begin{align*}
+   \d W(x) &= \frac{\dot N_s(x)}{\dot N_i(x)} = n_t σ \d x
+   \end{align*}
+   Abnahme des Teilchenflusses:
+   \begin{align*}
+   -\d ϕ &= ϕ(x) (n_t σ \d x) \\
+   ⇒ ϕ(x) &= ϕ_0 e^{-i x n_t σ} = ϕ_0 e^{-x/λ}
+   \end{align*}
+   mit der mittleren freien Weglänge der Projektile im Target
+   \[λ = \frac{1}{n_t σ}\]
+** Luminosität
+   Reaktionsrate: $\dot N_s = ϕ N_t σ$, $ϕ N_t =: L =$ Luminosität $[L] = \si{\per\centi\meter\squared\per\second}$
+   Häufig verwendet man auch den Begriff "integrierte Luminosität"
+   \[L_{\text{int}} = ∫ L \d t\]
+   $\to$ Zahl der "Streuereignisse" $N_s = L_{\text{int}} σ$
+   #+ATTR_LATEX: :options [Fixed-Target-Konfiguartion]
+   #+begin_ex latex
+   Target-Dichte:
+   \[n_t = N_A \frac{ρ}{M_{\text{mol}}} \approx \SI{1e24}{\per\centi\meter\cubed} \qquad M_{\text{mol}} = \text{Molmasse}\]
+   Zahl der	Targets:
+   \[N_t = N_A \frac{ρ}{M_{\text{mol}}} A d\]
+   Luminosität:
+   \[L = ϕ N_t = \frac{\dot N_i}{A} N_A \frac{ρ}{M_{\text{Mol}}} A d = \dot N_i n_t d\]
+   #+end_ex
+   #+ATTR_LATEX: :options [Speicherring]
+   #+begin_ex latex
+   Luminosität:
+   \[L = f \frac{N_1 N_2}{A}\]
+   $N_1, N_2 =$ Zahl der Teilchen pro Strahl \\
+   $f =$ Umlauffrequenz \\
+   $A =$ Strahlquerschnitt \\
+   Häufig: $n$ Strahlpakete mit jeweils $N_1, N_2$ Teilchen
+   \[L = n f \frac{N_1 N_2}{A}\]
+   LHC: \\
+   $N_i = \num{1e11}$ Protonen pro Paket \\
+   $f = \SI{11.25}{\kilo\hertz}$ \\
+   $n = 2800$ \\
+   $⇒ L \approx \SI{1e34}{\per\centi\meter\squared\per\second}$ \\
+   $σ_{pp} = \SI{80}{\milli\barn}$
+   $⇒ N_{WW} = σ_{pp} L = \SI{800}{\mega\hertz}$
+   #+end_ex
+** Lebensdauern und Zerfallsbreiten
+*** Lebensdauernund Massenbreiten instabiler Teilchen
+	Radioaktives Zerfallsgesetz: $A \to 1 + 2$
+	\[N(t) = N_0 e^{-t/τ}\]
+	mit Lebendauer $τ$ des Teilchens (des Resonanzzustandes)
+	\[τ = \frac{t_{1/2}}{\ln 2}\]
+	mit Halbwertszeit $t_{1/2}$ \\
+	*Beschreibung des Teilchens im Zeit und Energieraum*\\
+	Wellenfunktion für stabiles Teilchen (im Ruhesystem $E = m c^2$)
+	\begin{align*}
+	ψ(t) &= ψ_0 e^{-i \frac{E}{\hbar}t} \\
+	&= ψ_0 e^{-i \frac{m c^2}{\hbar} t}
+	\end{align*}
+	Wahrscheinlichkeit für instabiles Teilchen:
+	\begin{align*}
+	\mathcal{P}(t) &= \abs{ψ(t)}^2 \sim e^{-t/τ} \\
+	⇒ ψ(t) &= ψ_0 e^{-i \frac{m c^2}{\hbar} t - \frac{t}{2τ}} \\
+	⇒ E &:= m c^2 - i \frac{Γ}{2} \quad\text{mit}\quad Γ = \frac{\hbar}{τ}
+	\end{align*}
+	Wie sieht Energieverteilung des instabilen Teilchens aus? \\
+	$\to$ Verteilung im Energieraum durch Fourier-Transformation der zeitlichen Wellenfunktion
+	\begin{align*}
+	\tilde ψ(E) &= \frac{1}{\sqrt{2π}} ∫ ψ(t) e^{-i \frac{E}{\hbar}t} \d t = \frac{ψ_0}{\sqrt{2π}} \frac{i \hbar}{(E - m c^2) + i \frac{Γ}{2}} \\
+	\tilde{\mathcal{P}}(E) &\sim \abs{\tilde ψ(E)}^2 = \tilde c \frac{\hbar^2}{(E - mc^2)^2 + \frac{Γ^2}{4}} \frac{\abs{ψ_0}^2}{2π} \\
+	\intertext{Normierung:}
+	∫_0^∞ \tilde{\mathcal{P}}(E) \d E &= 1 \\
+	⇒ \tilde c &= \frac{Γ}{\hbar^2 \abs{ψ_0}^2} \\
+	\intertext{$\to$ Lorentz-Kurve oder Breit-Wigner Form:}
+	\tilde{\mathcal{P}}(E) &= \frac{1}{2π} \frac{Γ}{(E - mc^2)^2 + \frac{Γ^2}{4}}
+	\end{align*}
+	$\to$ Aufgrund seiner endlichen Lebensdauer besitzt das Teilchen eine "Energiebreite" ($\estimates$ natürliche Linienbreite): $Δ E = Γ$ mit $Γ τ = \hbar$.
+	Misst man für einen Teilchenzerfall $A \to 1 + 2$ die invariante Masse $m_{\text{inv}}(A) = m_{\text{inv}}(1 + 2)$ so erhält man eine endliche Breite, die umso größer ist, desto kleiner die Lebensdauer.
+*** Potentialbreiten
+	Falls Teilchen mehrere Zerfallskanäle besitzt kann man mit der Verzweigungsverhältnisse sogenannte Partialbreiten definieren: $Γ_i = B_i · Γ$. Wirkungsquerschnitt und Partialbreiten lassen sich berechnen!
+** Übergangswahrscheinlichkeit und Fermi's "goldene Regel"
+   Übergangswahrscheinlichkeit / Zeit $ω$ bestimmt die Lebensdauer eines Teilchenzustands beziehungsweise den Wirkungsquerschnitt eines Streuprozesses. Lebensdauer:
+   \[ω = \frac{1}{τ}\]
+   Wirkungsquerschnitt:
+   \[ω = \frac{\dot N_s}{N_i N_t} = \frac{(n_i v_i N_t) σ}{n_i V N_t} \frac{v_i σ}{V}\]
+   $v_i =$ Geschwindigkeit von $i$, $V =$ Normierungsvolumen $= 1$ (fällt aus Rechnung raus)
+   Übergangswahrscheinlichkeit / Zeit $ω$ ergibt sich mittls Fermi's "goldener Regel"
+   \[ω_{fi} = \frac{2π}{\hbar} \abs{\mathcal{A}_{fi}}^2 ρ(E_f)\]
+   $\mathcal{A}_{fi} = \braket{f | H_{WW} | i}$ $\to$ Feynman-Regeln, $ρ(E_f) =$ Zustandsdichte $\partial_E N(E_f) =$ Zahl der Zustände in $[E_f, E_f + \d E]$
+*** Phasenraum und Zustandsdichte
+	Um Teilchenzustand zu beschreiben muss Ort und Impuls angegeben werden. Im "1-dimensionalen" Impuls-Ortsraum = 1-dimensionaler Phasenraum. \\
+	klassische Mechanik: Teilchenzustand $\estimates$ Punkt im Phasenraum \\
+	Quantenmechanik: $L \d p_x \estimates h =$ Volumen der Phasenraumzelle: Zustände werden durch Phasenraumzelle mit Volumen beschrieben. \\
+	Wieviele Zustände passen in ein Phasenraumvolumen $L Δ p_x$? \\
+	1-dimensional:
+	\[\d N^{1D} = \frac{L Δp_x}{h} \to N^{1D} = \frac{L ∫ \d p}{h}\]
+	3-dimensional:
+	\[\d N^{3D} = \frac{V \d^3 p}{h^3} \to N^{3D} = \frac{V ∫ \d^3 p}{h^3} = \frac{V ∫ \d^3 p}{(2π\hbar)^3}\]
+	Benötigt wird aber die Zustandsichte $ρ = \dd{N^{3D}}{E}$ \\
+	1-Teilchen-Zustandsdichte (3D):
+	\begin{align*}
+	N_1^{3D} &= \frac{V ∫ \d^3 p_1}{(2π \hbar)^3} \\
+	\to ρ_1 &= \dd{N_1^{3D}}{E_1} = \frac{V}{(2π \hbar)^3} \dd{}{E_1} ∫ \d^3 p_1 \\
+	&= \frac{V}{(2π\hbar)^3} \dd{}{E_1} ∫ p_1^2 \d p_1 \d Ω_1 \\
+	E_1^2 &= p_1^2 c^2 + m^2 c^4
+	\dd{}{E_1} &= \frac{E_1}{p_1 c^2} \dd{}{p_1} \\
+	\to ρ_1 &= \frac{V}{(2π\hbar)^3} \frac{E_1 ρ_1}{c^2} ∫ \d Ω_1
+	\end{align*}
+	2-Teilchen-Zustandsdichte: \\
+	Viererimpulserhaltung $\to$ im Central mass system $\estimates$ 1-Teilchenzustandsdichte mit $E = E_1 + E_2$
+	\[ρ_2 = \frac{V}{(2π\hbar)^2} \dd{}{E} ∫ \d^3 p_2 = \frac{V}{(2π \hbar)^3} \frac{1}{c^2} \frac{E_1 E_2}{E_1 + E_1} p_2 ∫ \d Ω_1\]
+	\(n\)-Teilchen-Zustandsdichte
+	\[ρ_n = \frac{V^{n - 1}}{(2π \hbar)^{3(n - 1)}} \dd{}{E}(∫ \d^3 ρ_1 \dots \d^3 ρ_{n - 1}) \qquad E = \sum_{i} E_i\]
+	\(n - 1\)-Teilchen sind "frei", \(n\)-tes Teilchen festgelegt.
+	Bemerkung: Angegebene Zustandsdichten sind nicht lorentzinvariant. ($\to$ Lorentzinvariante Formulierung in Abschnitt 6)
+* Wirkungsquerschnitt für \(2\)-Teilchenreaktion
+  Widerholung 1:
+  Übergangswahrscheinlichkeit pro Zeit: $\displaystyle{ω_{fi}}$ ($\ket{i} \to \ket{f}$) \\
+  Lebensdauer instabilers Teilchen $\displaystyle{\frac{1}{τ} = ω_{fi}}$ \\
+  Wirkungsquerschnitt für Reaktion $\displaystyle{\frac{σ v_i}{V} = ω_{fi}}$ \\
+  Übergangswahrscheinlichkeit pro Zeit aus Fermis's goldener Regelt
+  \[ω_{fi} = \frac{2π}{\hbar} \abs{A_{fi}}w2 ρ(E_f)\]
+  mit Übergangsamplitude $A_{fi}$ und Zustandsdichte $ρ(E_f)$. Zustandsdichte berücksichtigt, dass für eine gegebene Endzustandsenergie nicht unendlich viele Zustände möglich sind: \\
+  2-Teilchen-Zustandsdichte
+  \[ρ_2 = \frac{V}{(2π \hbar)^3} \dd{}{E_f} (∫ \d^3 p_1) = \frac{V}{(2π\hbar)^3} \frac{1}{c^2} \frac{E_1 E_2}{E_1 + E_2} p_1 ∫ \d Ω\]
+  \(n\)-Teilchen-Zustandsdichte
+  \[ρ_n = \frac{V^{n - 1}}{(2π\hbar)^{3(n - 1)}} \dd{}{E_f} (∫ \d^3 p_1 \dots \d^3 p_{n - 1})\]
+
+
+  $a + b \to 1 + 2$. Wirkungsquerschnitt:
+  \[σ = \frac{ω_{fi}}{v_i}\]
+  (ignoriere $V$). $v_i =$ relativ Geschwindigkeit von $a$ und $b$.
+  \[ω_{fi} = ∫\frac{2π}{\hbar} \abs{A_{fi}}^2 \underbrace{\frac{1}{(2π \hbar)^3} \frac{1}{c^2} \frac{E_1 E_2}{E_1 + E_2} p_1}_{\text{2-Teilchenzustandsdichte}} \d Ω_1\]
+  1. hochrelativistisch, $v_1 \approx c \to β_i = \frac{v_i}{c} \approx 1$
+  2. vernachlässige Massen auch im Endzustand, $m_{1,2} \ll E_{1,2} / c^2 \to β_f \approx 1$
+  3. Central-Mass-System: $\v p_1 = - \v p_2, E_1 + E_2 = 2 p_1 c$, $E_1 E_2 = p_1^2 c^2$
+  4. Flussfaktor relativ zur Fixed-Target-Konfiguration (Korrektur $× 2$)
+
+  \[\d σ = \frac{1}{(2π)^2} \frac{1}{\hbar^4 c^4} (p_1^2 c^2) \abs{A_{fi}}^2 \d Ω_1\]
+  beziehungsweise
+  \[\d σ = \frac{1}{(2π)^2} \frac{1}{\hbar^4 c^4} \frac{p_1^2 c_2}{β_i β_f} \abs{A_{fi}}^2 \d Ω_1\]
+  falls $β_i, β_f \not\approx 1$
+** Zerfallsbreite (Lebensdauer) eines 2-Teilchenzerfalls
+   $A \to 1 + 2$, Masse von	$A$ = $M$
+   \begin{align*}
+   Γ &= \frac{\hbar}{τ}
+   \d Γ &= \hbar ω_{fi} = \hbar \frac{2π}{\hbar} \abs{A_{fi}}^2 \frac{1}{(2π \hbar)^3} \frac{1}{c^2} \frac{E_1 E_2}{E_1 + E_2} p_1 \d Ω_1 \\
+   \intertext{mit $E_1 + E_2 = M c^2$}
+   &= \frac{\abs{A_{fi}}^2}{(2π)^2 \hbar^3 c^3} \frac{1}{c} \frac{E_1 E_2}{M} p_1 \d Ω_1 \\
+   \intertext{für $1$ = $2$:}
+   &\sim \frac{(M c^2 / 2)^2}{M} p_1 \d Ω_1
+   \end{align*}
+   das heißt $\d Γ \sim p_1$
+* \(e^{+} e^{-}\)-Annihilation (als Beispiel)
+  $e^{+} e^{-} \to f \bar f = (e^{+}, e^{-}), (μ^{+}, μ^{-}), (τ^{+}, τ^{-}), (q \bar q)$.
+  \begin{align*}
+  Q_f &= 1 \text{ für } e, μ, τ \\
+  &= 1 \text{ für } u, c, t \\
+  &= 1 \text{ für } d, s, b \\
+  \end{align*}
+  \[A_{fi} \sim e \frac{1}{q^2} e_f \sim \frac{4π α}{q^2} Q_f (\frac{(\hbar c)^3}{c^2})\]
+  Die angegebene Amplitude ignoriert völlig die	Spins der Ferminonenund des ausgetauschten Photons. Wenn man aber berücksichtigt, dass Photon-Spin gleich $1$ ist,
+  koppeln wegen Drehimpulserhaltung nur noch bestimmte Spinkombinationen
+  \[A_1 \sim \frac{1}{2}(1 + \cos θ_F)\]
+  Drehfunktion $d_{1,1}^1$
+  \[A_2 \sim \frac{1}{2}(1 - \cos θ_F)\]
+  Addition der einzelnen Spinamplituden und über die Anfangskonfiguration mitteln:
+  \begin{align*}
+  \abs{A_{fi}}^2 &= \frac{1}{4} \sum_i \abs{A_i}^2 = \frac{1}{4}(1 + \cos^2 θ_f) \frac{(4π α)^2}{q^4} (\frac{(\hbar c^3)}{c^2})^2 \\
+  &= \frac{1}{4}(1 - \cos^2 θ_f) \frac{(4π α)^2}{E_{\text{CMS}}^4} (\hbar c)^3 \\
+  ⇒ \dd{σ}{Ω} &= \frac{α^2}{4} \frac{1}{E_{\text{CMS}}^2}(1 + \cos^2 θ_f) (\hbar c)^2 \\
+  \intertext{Integration über $θ_f$:}
+  σ_{\text{tot}} &= \frac{4π α^2}{3} \frac{1}{E_{CMS}^2} (\hbar c)^2 = \frac{\SI{87}{\nano\barn}}{E_CMS^2 [\si{\giga\electronvolt\squared}]}
+  \end{align*}
+  Quark-Antiquark Produktion: $Q_f^2$ berücksichtigen ($q \bar q (r \bar r, g \bar g, b \bar g)$ \to $×3$)
+* Wechselwirkung von Teilchen mit Materie
+** Energieverlust geladener Teilchen durch Ionisation
+   Bei Durchgang durch Medium ionisieren geladene Teilchen die Atome und verlieren selbst Energie. E-Feld der bewegten Ladung übt Kraft auf die gebundenen Elektronen aus und ionisiert	aufgrund des
+   Impulsübertrags. (Integration unter Berücksichtigung quantenmechanischer Effekte).
+   Mittlerer Energieverlust $-\d E$ pro Strecke $\d x$ wird durch die Bethe-Bloch-Formel beschrieben
+   \[-\dd{E}{x} = (ρ N_A \frac{Z}{A}) \frac{4π^2 z^2 e^4}{m_e c^2 β^2}(\ln \frac{2 m_e c^2 β^2 γ^2}{I} - β^2)\]
+   $I =$ mittlere Ionisationsponential der Elektronen. Häufig wird statt $-\partial_x E$ die Größe
+   \[- \frac{1}{ρ} \dd{E}{x}\]
+   angegeben, die eine geringere Materialabhängigkeit hat
+   \[- \frac{1}{ρ} \dd{E}{x} = K \frac{Z}{A} z^2 \frac{1}{β^2}(\ln \frac{2 m_e c^2 β^2 γ^2}{I} - β^2)\]
+
+   Diskussion der \(βγ\)-Abhängigkeit
+   1. kleines $β:$ $-\partial_x E \sim 1/β^2$
+   2. Minimum für $βγ = 3,\dots,5$ bei $1,\dots,2 \si{\mega\electronvolt\per\gram\centi\meter\squared}$
+   3. Relativistischer Anstieg, aufgrund des Lorentz-Boost nimmt transversale E-Feld Komponente
+
+
+   Abstoppen von Teilchen: Bragg-Peak \\
+   Aufgrund der starken Impulsabhängigkeit von $\dd{E}{x}$ kommt es beim Abbremsen zu einem immer stärkeren Energieverlust ($\sim 1 / β^2$) als Funktion der Eindringtiefe $x$:
+
+** Energieverlust von Elektronen
+   Neben Energieverlust durch Ionisation existiert der Energievelrust durch Bremsstrahlung, der bei höheren Teilchenenergien dominant ist:
+   \[-\dd{E}{x} = (-\dd{E}{x})_{\text{Ionisation}} - (\dd{E}{x})_{\text{Bremstrahlung}}\]
+   kritische Energie $E_c$:
+   \[(\dd{E}{x})_{\text{Ionsiation}} = (\dd{E}{x})_{\text{Bremsstrahlung}}\]
+   $E_c \approx \SI{560}{\mega\electronvolt} / Z$ \\
+   Energieverlust durch Bremsstrahlung: \\
+   für große Elektronenenergie $E$ findet man (Bethe-Heitler)
+   \[-(\dd{E}{x})_{\text{Bremsstrahlung}} = ρ^4 α N_A \frac{Z^2}{A} r_e^2 \ln (\frac{183}{Z^{1/3}}) E\]
+   mit $r_e =$ klassischer Elektronenradius
+   \[r_e = \frac{e^2}{4π ε_0} \frac{1}{m_e c^2}\]
+   Definier $x_0$ so, dass
+   \[-(\dd{E}{x}) = \frac{1}{x_0} E\]
+   $x_0$ ist eine materialabhängige Konstante und wird als Strahlungslänge bezeichnet. Lösung der Differentialgleichung
+   \[E(x) = E_0 e^{-x/x_0}\]
+   nach einer Strahlungslänge $x_0$ ist Enegrie auf $1/e$ ($\SI{37}{\percent}$) abgefallen.
+** Cherenkov-Strahlung für geladene Teilchen
+   Cherenkov-Strahlung entsteht beim Durchgang geladener Teilchen durch Materie falls
+   \[v_{\text{Teilchen}} > \frac{c}{n} = \text{ Lichtgeschwindigkeit im Medium}\]
+   $n =$ Brechungsindex. Anschaulich: zeitlich veränderlicher elektrischer Dipol $\to$ elektromagnetische Strahlung. \\
+   Energieverlust durch Cherenkov- effekt sehr klein und ist bereits in Bethe-Bloch berücksichtigt. \\
+   Eigenschaften der Cherenkov-Strahlung kann zur Teilchenidentifikation benutzt werden. \\
+   Cherenkov-Strahlung bildet Kegel, mit Öffnungswinkel $θ_c$ (halber Öffnungswinkel des Kegels)
+   \[\cos θ_c = \frac{c/n}{β c} = \frac{1}{β n}\]
+   Bei bekanntem Impuls ergibt die Messung von $θ_c$ die Teilchengeschwindigkeit $\to$ Masse.
+
+   Strahlungslänge $X_0$
+   | Material | $x_0 [\si{\centi\meter}]$ | $x_0 [\si{\gram\per\centi\meter\squared}]$ |
+   |----------+---------------------------+---------------------------------------------|
+   | $H_2$    |                           |                                             |
+** Wechselwirkung von Photonen mit Materie
+   Wechsewirkung führt zur Absorption der Photonen und damit zur Abschwächung der Intensität der einfallenden Photonen:
+   \[I(x) = I_0 e^{-μ x}\]
+   $μ =$ Abschwächungskoeffizient. Neben dem Photoeffekt existiert Compton-Effekt und die Möglichkeit der Paarbildung:
+   \[μ = μ_{\text{photo}} + μ_{\text{compton}} + μ_{\text{paar}}, \quad μ \sim σ n_t\]
+   Für verschiedene Energiebereiche	(Photon) sind unterschiedliche Effekte dominant.j
+*** Photo-Effekt
+	Photon wird absorbiert und übertägt Energie "vollständig" an Elektron und Rückstroßpartikel. Effekt am größten für die am
+	stärksten gebundene Elektronen ($\sim Z^5$). Typische Absorptionskanten ($K, L, M$ Schale)
+*** Compton-Effekt
+	Photonstreuung an quasifreien Elektronen. Kinematik
+	\[E_γ' = E_γ \frac{1}{1 + \frac{E_γ}{m_e c^2}(1 - \cos θ_γ)}\]
+	$\to$ Compton-Kante für $θ_γ = \SI{180}{\degree}$
+	\begin{align*}
+	\intertext{mit}
+	ε &= \frac{E_γ}{m_e c^2} \\
+	E_γ' \Big|_{\text{min}} &= \frac{E_γ}{1 + 2ε} \\
+	\intertext{Rückstoßenergie des Elektrons}
+	E_{\text{kin}}^{e} \Big|_{\text{max}} &= E_γ - E_γ' = E_γ \frac{2ε}{1 + 2ε}
+	\end{align*}
+	Inverser Compton-Effekt: Photon trifft auf hochenergetisches Elektron $\to$ Elektron Enegie $\to$ Photon
+*** Paarbildung an einem Stoßpartner
+	Konversion eines freien Photons in \(e^+ e^-\)-Paar aufgrund von 4er-Impulserhaltung nicht möglich $\to$ Stoßpartner.
+	Kinematische Schwelle:
+	\[E_γ > 2 m_e c^2 + \text{ Rückstoß}\]
+	Rückstoß am Kern:
+	\[\frac{2 m_e c^2}{M_k c^2} \to E_γ > 2 m_e c^2\]
+	Rückstoß am Elektron:
+	\[2 m_e c^2 \to E_γ > 4 m_e c^2\]
+	Wirkungsquerschnitt wächst für Energie $E_γ \gg 2 m_e c^2$ bis zu einem Sättigungswert an:
+	\begin{align*}
+	σ_{\text{Paar}} &= \frac{7}{9}(4 π α r_e^2 Z^2 \ln(\frac{183}{Z^{1/3}})) \\
+	&= \frac{7}{9} \frac{A}{N_A} \frac{1}{x_0}
+	\end{align*}
+	$\to$ mittlere freie Weglänge eines Photons für Paarbildung
+	\[λ_{\text{Paar}} = \frac{1}{n σ_{\text{Paar}}} = \frac{9}{7} x_0\]
+	$x_0 =$ Strahlungslänge für Bremstrahlung.
+
+	Bemerkung: Feynman-Graphen für Paarbildung und Bremsstrahulng:
+
+
+    Intensitäts- beziehungsweise Energieverlust des Photon beziehungsweise Elektrons:
+	Paarbildung:
+	\[I(x) = I_0 e^{-x / x_0'}\]
+	Bremsstrahlung
+	\[E(x) = E_0 e^{- x / x_0}\]
+	mit $x_0' = (9/7) x_0$, $x_0 =$ Strahlungslänge
+** Elektromagnetische Schauer
+   Durch Kombination von Bremsstrahlung und Paarbildung komt es bei Wechselwirkung von Elektronen und Photonen zur Ausbildung von
+   elektromatgetischen Schauerkaskaden.
+   Im Mittel kommt es nach $1 x_0$ zur Aussendung von Bremsstrahlung beziehungsweise Paarbildung.
+   - In jedem Schritt verdoppelt sich Zahl der Teilchung
+   - Energie der Teilchen halbiert sich
+   - Abbrich des Schauers für $E_n \approx E_c$
+   $\to$ Tiefe des Schauers:
+   \[x_{\text{max}} \sim \ln (E_0 / E_c) x_0\]
+   Schauermaximum $\sim$ $\ln(E_0)$. Mit zunehmener Energie muss ein Kalorimeter entsprechend tiefer werden!
+** Hadronische Wechselwirkung und hadrominsche Schauer
+   Hochenergetische Hadronen ($> \SI{1}{\giga\electronvolt}$) wechselwirken "stark" mit den
+   Nukleonen der Materie: $n, p, π^{\pm}, π^0, K^0, K^{\pm} + A \to \text{ sekundäre Hadronen, hochenergetische Nukleonen, Kernfragmente}$.
+   Wenn Sekundärteilchen selbst wieder hochenergetisch sind $\to$ Ausbildung eines hadronischen Schauers. Schauerskala $=$ Wechselwirkungslänge für Hadronen mit der Materie $λ_{WW}$
+   \[λ_{WW} = \frac{1}{n σ_{WW} = \frac{A}{N_A ρ} \frac{1}{σ_{WW}}}\]
+   Typische $λ_{WW}$:
+   | FE | $\SI{16.8}{\centi\meter}$ |
+   | Pb | $\SI{17.6}{\centi\meter}$ |
+   | C  | $\SI{39}{\centi\meter}$   |
+** Detektorsysteme
+   Detektoren in Teilchenphysik bestehen aus Komponenten mit unterschiedlichen Funktionen:
+   1. Spursysteme: Rekonsruktion von Trajektoren der gladenen Teilchen, Rekonstruktion von Primär und Sekundärvertices
+   2. Sektrometer (magetische): Impulsmessung aus Spukrümmung im B-Feld
+   3. Kalorimeter Energiemessung (elektromagentische Kalorimeter, hadronische Kalorimeter)
+   4. Teilchenidentifikation
+
+* Symmetrien und Erhaltungssätze
+  *Noether Theorem* (1918 Emmy Noether) \\
+  "Zu jeder Symmetrie-Transformation existiert eine Erhaltungsgröße"
+
+  Baryonenzahlerhaltung: ($\tilde B$), $\tilde B$ = $(n_q - n_{\bar q}) / 3$, $n_q, n_{\bar q} =$ Anzahl des (Anti-)quarks. $p, n, Λ, Δ \to \tilde B = 1$, Antibareyonen:
+  $\bar p, \bar n, \bar Λ \to \tilde B = - 1$
+  #+begin_ex latex
+  $p + p \to p + \bar p + n + p + π^{+}$ \\
+  $1 + 1 \to 1 - 1 + 1 + 1 + 0$
+  #+end_ex
+  Es gibt keinen zwingenden theoretischen Grund: Obwohls in GUT (Grand Unified Theory) Baryonenzahl Verletzung, läßt das Standardmodell keine Baryonenzahlverletzung zu. Experimenteller Test
+  der Suche nach Protonenzerfall: $p \to e^{+} + π^0$. Bisheriges Limit (Proton-Lebensdauer) $> \SI{1e32}{\year}$, Alter des Unversum: $\SI{13.82}{\giga\year}$
+
+*** Phasentransformation in 2 Dimensionen
+	(Konzept der Isospinsymmetrie)
+	1. Spin für zwei nichtrelativistische Elektronen, 2-dimensionaler Spinor: $ψ_e = \cvec{a; b} ψ_0$. Ohne äußeres Magnetfeld ist der Spin nicht beobachtbar und das System ist invariant unter
+	   2-dimensionaler Transformation im Spinraum:
+	   \[ψ_e \to 4e' = \hat U ψ_e = \hat U \cvec{a; b} ψ_0\]
+	   mit dem Operator $\hat U$ ($2×2$ Matrix)
+	   \[\hat U = \exp(-i \v α · \v σ), \v σ = (σ_x, σ_y, σ_z)\]
+	   (man kann also den Spin beliebig änden)
+	2. Kopplung von Spins
+       Kopplung von Spins, Spin für zusammengesetzte Systeme am Beispiel von Positronium $e^{+} e^{-}$. 1-Teilchen Spinzustände
+       \[\ket{\uparrow} = \ket{\frac{1}{2}; \frac{1}{2}} \quad \ket{\downarrow} = \ket{\frac{1}{2}; -\frac{1}{2}}\]
+       2-Teilchen Spinzustände
+       \begin{align*}
+       J = 1 &=
+         \begin{cases}
+           J_Z = 1 & \ket{\uparrow}\ket{\uparrow} \\
+           J_Z = 0 & \frac{1}{\sqrt{2}}(\ket{\uparrow} \ket{\downarrow} + \ket{\downarrow}\ket{\uparrow}) \\
+           J_Z = -1 & \ket{\downarrow} \ket{\downarrow}
+         \end{cases}
+       \\
+       J = 0 &= J_Z = 0; \frac{1}{\sqrt{2}}(\ket{\uparrow} \ket{\downarrow} - \ket{\downarrow} \ket{\uparrow})
+       \end{align*}
+       Bemerkung: Allgemein kann man 2 Teilchen mit Spin $(j_1, m_1)$ und $(j_2, m_2)$ zu einem Gesamtdrehimpuls $(J, M)$ koppeln:
+	   \begin{align*}
+	   \ket{J, M, j_1, j_2} &= \sum_{\substack{m_1, m_2 \\ m_1 + m_2 = M}} \ket{j_1, m_1} \ket{j_2 m_2} · \underbrace{\bra{j_1, m_2} \bra{j_2 m_2} \ket{J, M, j_1, j_2}}_{Glebsch-Dordan-Koeffizienten}
+	   \end{align*}
+	3. Verallgemeinerung: Spin-Isospin (hier: starker Isospin). Starker Isospin ist ein	historisches Konzept (heute durch die Quarkflavour-Quantenzahl ersetzt), das 1932 von Heisenberg vorgeschlagen wurde:
+	   Proton und Neutron erscheinen in der starken Wechselwirkung als gleiche Teilchen (Nukleon) mit 2 verschiedenen Zuständen, zwischen denen die starke Wechselwirkung nicht unterscheidet.
+	   Konzept: vernachlässige elektromagnetische Wechselwirkung, nehme gleiche Massen an $(m_p - m_n) / m_p  \sim \num{1e-8}$
+	   Starke Wechselwirkung ist invariant unter Transformaiton im 2-dimensionalen Isospin
+	   \[\cvec{p; n} \to \hat U \cvec{p; n}\]
+	   mit $\ket{p} = 1I = \ket{I = \frac{1}{2}, I_3 = 1/2}, \ket{n} = 1I = \ket{I = \frac{1}{2}, I_3 = -1/2}$. (Invariant heigßt, dass die starke Wechselwirkung den Isospin erhält) (additiv).
+	   Ähnlich zu $(p, n)$ kann man die 3 Pionen $(π^{\pm}, π^0)$ als Zustände eines Isospin Tripletts $I = 1$ auffassen
+	   \[π: I = 1 \begin{cases}π^{+} & \ket{I = 1, I_3 = 1} \\ π^0 & \ket{I = 1, I_3 = 0} \\ π^{-} & \ket{I = 1, I_3 = - 1}\end{cases}\]
+	   $\to$ Gibt es auch ein $I = 0$ Signulett?
+	   \[η: I = 0, \ket{I = 0, I_3 = 0}\]
+	   Zwischen Ladung, Isospin ($I_3$) und Baryonenzahl $\tilde B$ existiert die foldene Beziehung
+	   \[Q/e = I_3 + \tilde B / 2\]
+	   Unter Berücksichtigung von Strangeness $s: Q/e = I_3 + \tilde B/2 + s/2 = I_3 + Y/2$ mit Hyperladung $Y = \tilde B + S$
+    4. Isospin für zusammensetzte Systeme: Totale Wellenfunktion eines 2-Nukleonensystems (Fermionen)
+	   \[ψ_{\text{tot}} = ϕ_{\text{Raum}} α_{\text{Spin}} χ_{\text{Isospin}}\]
+	   muss antisymmetrisch sein unter Austausch $1 \leftrightarrow 2$. \\
+	   Beispiel: $d = \ket{p n}$ mit $J = 1$, relativer Drehimpuls: $l = 0$ (Grundzustand), $ϕ_{\text{Raum}}$: symmetrisch, $α_{\text{Spin}}$: symmetrisch wegen $J = 1$
+	   $\to χ_{\text{iso}}$ anti-symmetrisch $⇒ d = \ket{I = 0, I_3 = 0}$ Zustand!
+	5. Isospinerhaltung in der starken Wechselwirkung
+	   1. $p + p \to d + π^{+}$
+		  \begin{align*}
+		  I &= \frac{1}{2} + \frac{1}{2} \to 0 + 1 \\
+		  I_3 &= \frac{1}{2} + \frac{1}{2} \to 0 + 1
+	      \end{align*}
+	   2. $p + n \to d + π^0$
+		  \begin{align*}
+		  I &= \frac{1}{2} + \frac{1}{2} \to 0 + 1 \\
+		  I_3 &= \frac{1}{2} - \frac{1}{2} \to 0 + 0
+	      \end{align*}
+		  Im Falle der \((pn)\)-Streuung kann man das System im Zustand $I = 0, I_3 = 0$ oder $I = 1, I_3 = 0$ auffassen. Wegen Isospinerhaltung in der starken Wechselwirkung trägt in
+		  der zweiten Reaktion nur die Komponente $I = 1, I_3$ bei. $⇒$ $σ_2 / σ_1 = 1/2$. $I_3= Z/2 - N/2 = Z - 1/2 A ⇒ I : \frac{1}{2}\abs{Z - N} \leq I \leq \frac{1}{2} \abs{Z + N}$
+    6. Strangeness und Erhaltung in der Starken Wechselwirkung: wurde eingeführt als zusätzliche Quantenzahl nachdem man Teilchen entdeckt hat min lange Lebensdauern und einem charakteristischen
+	   Zerfall. $Λ^0 \to p + π^{-} \to$ \(V^0\)-Signatur, $K^0 \to π^{+} + π^{-}$, $K^0, K^{+}, K^{-}, Λ, \bar Λ ⇒$ \(s\)-Quarts in Hadronen
+
+
+    Strangeness ist wie Isospin in starker Wechselwirkung erhalten:
+	#+begin_ex latex
+	Assoziirte Strangeness-Produktion
+	\begin{align*}
+	π^{-} + p \to Λ + K^{+} \\
+	0 + 0 \to -1 + 1
+	\end{align*}
+	#+end_ex
+	Sowohl Isospin als auch Strangeness sind in schwacher Wechselwirkung nicht erhalten
+
+
+	*Diskrete Transformationen und multiplikative Quantenzahlen* \\
+	Diskrete Transformation $\hat U_D: \hat U_D^2 = \mathbb{1}$. Multiplikative Erhaltungssatz - Produkt von Quantenzahlen ist
+	erhalten: \\
+	1-Teilchen:
+	\[\hat U_D \ket{ψ_a} = u_a \ket{ψ_a}\]
+	2-Teilchen:
+	\[\hat U_D \ket{ψ_a ψ_b} = \ket{\hat U_D ψ_a \hat U_D ψ_b} = u_a u_a \ket{ψ_a ψ_b}\]
+	*Paritätsoperator* \\
+	Paritätsoperator $P$ ändert Vorzeichen von räumlichen Vektoren
+	\[\v x \xrightarrow{P} - \v x, \quad \v p \xrightarrow{P} - \v p\]
+	und lässt Axialvektoren invariant. Drehimpuls:
+	\[\v L = \v r × \v p \xrightarrow{P} -\v r × - \v p = \v L\]
+	Parität	angewendet auf Wellenfunktion: $ψ(\v r) = P ψ(\v r) = ψ(- \v r)$ für Eigenzustände von $P$: $P ψ(\v r) = η_P ψ(\v r)$.
+	Mit $\v P = 1 \to η_P = \pm 1$
+	\[\begin{cases} η_P = 1 & \text{gerade Parität} \\ η_P = -1 & \text{ungerade Parität} \end{cases}\]
+	Genau wie Wellenfunktion in Atomphysik und Kernphysik Eigenfunktionen zu $P$ sind auch
+	die Zustände der Elementartleichen Eigenfunktionen zu $P$. $⇒$ ParitätEines Elementarteilchens = inverse Parität. Betrachte
+	Teilchenzerfall	$T \to 1 + 2$
+	\[η_P(T) = η_P(1) η_P(2) (-1)^l\]
+	$\to$ erlaubt die Bestimmung der inverses Parität von Elementarteilchen. Zuordnung ist nicht eindeutig, verlangt Definition von Parität für einen
+	Satz von Elementarteilchen:
+	\[P(p) = P(n) = P(1) = P(1_c) = P(1_p) = +1\]
+	Spin und Eigenparität von Teilchen werden zusammen angegeben:
+	\[J^P(π^{\pm}) = O^{-} \quad J^P(π^{0}) = 0^{-} \quad J^{P}(p) = {\frac{1}{2}}^{+} = J^P(n)\]
+	Parität ist in elektromagnetischer und starker Wechselwirkung erhalten, Parität ist in schawer Wechsewirkung (maximal) verletzt.
+	*\(C\)-Parität oder Ladungskonjuation*
+	\(C\)-Parität kehrt das Vorzeichen aller "generalisierten" Ladungen ($L_e$, $L_μ, \tilde B, S, N_{el}$) um:
+	\[\to C \ket{\text{Teilchen}} = η_c \ket{\text{Anti-Teilchen}}\]
+	$η_c$: beliebig. $\to$ nur Teilchen, die ihr eigenes Antiteilchen sind sind Eigenzustände zu \(C\)-Operator, mit
+	$η_C^2 = + 1$, das heißt $η_C = \pm 1$ (wegen $C^2 = 1$)
+	#+begin_ex latex
+	\[C \ket{γ} = -\ket{γ}\]
+	#+end_ex
+	$η_C(γ) = 1$ weil sich unter $C$ die $\v E$ und \(\v B\)-Felder umdrehen
+	\begin{align*}
+	C \ket{π^0} \to C \ket{γγ} &= (-1)(-1) \ket{γγ} = + 1 \ket{γγ} \\
+	π^0 \to γγ \quad C \ket{π^{0}} &= +1 \ket{π^{0}}
+	\end{align*}
+	$⇒ η_c(π^0) = +1$, starke und elektromagnetische Wechselwirkung erhält $C$!, Schwache Wechselwirkung verletzt \(C\)-Parität,
+	*Zeitumkehr $T$* \\
+	Formale Definition von $T$: $t \xrightarrow{T} -t, \v x \xrightarrow{T} \v x$ \\
+	Impuls + Drehimpuls wechsels Vorzeichen: $\v p \xrightarrow{T} - \v p, \v L \xrightarrow{T} - \v L$ \\
+	Zeitumkehrtransformation in	Quantenmechanik:
+	\begin{align*}
+	T ψ(\v r, t) &= ψ^{\ast}(\v r, -t) \\
+	ψ(\v r, t) &= e^{i(\v p \v r - E t)/ \hbar} \\
+	\to T ψ &= ψ^{\ast}(\v r, t) = e^{i(-\v p \v r - E t)}
+	\end{align*}
+	$\to$ Wellenfunktion für Teilchen mit Impuls $\v p$. $T$ ist ein anti-untiärer Operator, elektromagnetische und starke Wechselwirkung sind invariant unter $T$. Die schwache
+	Wechselwirkung ist $T$ verletzend.
+
+	|     | em | schwach | stark |
+	| C   | j  | n       | j     |
+	| P   | j  | n       | j     |
+	| T   | j  | n       | j     |
+	| CP  | j  | n       | j     |
+	| CPT | j  | j       | j     |
+* Kern und Nukleonstruktur
+** "Rutherford-Streuung" an punktförmigen Ladungsverteilungen
+   1. Radioaktives Radium (Alpha-Strahler)
+   2. Bleimantel zur Abschirmung
+   3. Alpha-Teilchendstrahl
+   4. Leuchtschirm beziehungsweise Fotoschirm
+   5. Goldfolie
+   6. Punkt, adn dem die Strahlen auf die Folie treffen
+   \[\dd{σ}{Ω} = \frac{z^2 Z^2 α^2}{16 E_{\text{kin}}^2 \sin^4(θ/2)}(\hbar c)^2\]
+*** Theoretische Behandlung
+	Elastische Streuung eines "leichten" spinlosen Teilchens $(m)$ an schwarem ruhendem spinlosen
+	Streuzentrum $(M)$. Übergangsamplitude:
+	\[A_{fi} = \frac{z e Z e}{q^2} \frac{(\hbar c)^3}{c^2}\]
+	Wirkungsquerschnitt:
+	\[\dd{σ}{Ω_f} = \frac{1}{(2π)^2} \frac{1}{(\hbar c)^4} \frac{\abs{\v p_f}^2 c^2}{β_i β_f}(\frac{z Z α^2}{q^4} (4π)^2 \frac{(\hbar c)^6}{c^4})\]
+	Kinematik: $q^2$ für elastische Streuung \\
+	für $M \gg m$: $E_i = E_f, \abs{\v p_i} = \abs{\v p_f}^2, β_i = β_f$
+	\begin{align*}
+	q^2 &= (p_i - p_f)^2 = (E_i - E_f)^2 - (\v p_i - \v p_f)^2 \\
+	&= -(\v p_i - \v p_f)^2 = - \v q^2 < 0 \\
+	&= -4 \abs{\v p_f}^2 \sin^2 (θ/2) \\
+	\abs{\v q} &= 2 \abs{\v p_f} \sin^2 θ/2
+	\end{align*}
+	Mit $β_i = β_f$	folgt
+	\begin{align*}
+	\dd{σ}{Ω} &\sim \frac{1}{q^4} \sim \frac{1}{\sin^4 θ/2} \\
+	\intertext{mit $E_{\text{kin}} = 1/2 pv = 1/2 p β c$} \\
+	\dd{σ}{Ω} &= \frac{z^2 Z^2 α^2}{16 E_{\text{kin}}^2 \sin^4 θ/2}
+	\end{align*}
+	1. endliche Wahrscheinlichkeit für Rückwartsstreuung
+	2. für kleine Streuwinkel $θ \to 0$ oder $q^2 \to 0: dσ / dΩ$ steigt an. In Realtität existiert
+	   maximaler Stoßparameter $\to$ mindest $q^2$ Wert $⇒ dσ / dΩ$	bleibt endlich
+	3. Stohparamter	erscheint punktförming solange Photon $λ = \hbar / \abs{q} > R_{\text{Struktur}}$
+*** Streuung von Spin $1/2$ Teilchen = Mott-Streuung
+	Im Limit hochrelativistischer Teilchen ($β \to 1$) ist Helizität (Projketion des Spins auf die Impulsrichtig, $H = (\v s / \hbar) \hat p$)
+	eine Erhaltungsgröße. Zusammen mit der Drehimpluserhaltung führt das zur Unterdrückung der
+	Rückwartsstreuung.
+	\[(\dd{σ}{Ω})_{\text{Spin}} = (\dd{σ}{Ω})_{\text{Rutherford}} \cos^2 θ/2\]
+	Für den Fall $β < 1$ ist die Spinausrichtung (Helizität) keine erhaltene Obersvable. Man erhält
+	deshalb für den Wirkungsquerschnitt:
+	\[(\dd{σ}{Ω})_{\text{Mott}} = (\dd{σ}{Ω})_{\text{Rutherford}} (1 - β^2 \sin^2 \frac{θ}{2})\]
+	Mott-Streuformel beschreibt Streuung von punktförmigen Spin-\(1/2\)-Teilchen an punktförmigen spinlosen
+	Target.
+*** Nachtrag: Feynman-Propagator $1/q^2$ und Wechselwirkungspotential
+	\begin{ibox}{}
+	Propagator $1/q^2$ ist die Fourier-Transformation des \(1/r\)-Potentials.
+	\end{ibox}
+	Streuung an stationärem kugelsymmetrischen Potential: $V(\v r) = V(r)$, $\ket{i} \to \ket{f}$ \\
+	Born'sche Näherung: $\ket{i}, \ket{f}$ werden durch Wellenfunktion des freien Teilchens beschrieben.
+	\[ψ_{i,f} = \frac{1}{\sqrt{V}} \exp(\frac{i}{\hbar}(\v p_{i,f} \v r - E_{i,f} t))\]
+	Übergangsamplitude:
+	\[A_{fi} = \braket{f | V(r) | i} = ∫∫ ψ_f^{\ast} V(r) ψ_i \d \v r \d t\]
+	Integration über $t \to δ(E_i - E_f) \to$ Energieerhaltung \\
+	\begin{align*}
+	A_{fi} &\sim ∫ V(r) \exp(\frac{i}{\hbar}(\v p_i - \v p_f) · \v r) \d \v r \\
+	&\sim ∫ V(r) \exp(\frac{i}{\hbar} \v q · \v r) \d \v r
+	\end{align*}
+	das heißt $A_{fi}$ ist die Fourier-Transformierte von $V(\v r)$ im \(\v q\)-Raum. Für
+	$V(r) = c / r$ findet man $A_{fi} \sim c/\abs{\v q}^2 \sim$ Propagator
+** Streuung an ausgedehnter Ladungsverteilung und Kern Struktur
+*** Ausgedehnte Ladungsverteilung
+	$ρ(\v r) = e f(\v r)$
+	\begin{align*}
+ 	V(\v r) &= \frac{e}{4π} ∫ \frac{ρ(\v r')}{\abs{\v r - \v r'}} \d \v r' \\
+ 	A_{fi} &= ∫ V(\v r) e^{i \v r \v r} \d \v r = \dots = \frac{e \hbar^2}{q^2} ∫ ρ(\v r) e^{i/\hbar \v r \v r} \d \v r = \frac{e^2 \hbar^2}{\v q^2} ∫ f(\v r) e^{i/\hbar \v q \v r} \d \v r \\
+ 	&= \frac{e^2 \hbar^2}{\v q^2} F(\v q)
+	\end{align*}
+	$F(\v q):$ Fourier-Transformation der Ladungsverteilung $=$ Formfaktor. Für
+	Kugelsymmetrische Ladungsverteilungen ist Formfaktor $F(\v q)$ tatsächlich Funktion von
+	$\v q^2$ als $F(\v q^2)$. Wirkungsquerschnitt für Streuung an ausgedehnter Ladungsverteilung
+	(kugelsymmetrisch)
+	\[(\dd{σ}{Ω}) = (\dd{σ}{Ω})_{\text{Mott}} \abs{F(\v q^2)}^2\]
+	1. $\abs{F(\v q^2)}^2 \leq 1$ das heißt Wirkungsquerschnitt für ausgedehnte Ladungsverteilung kleiner als
+	   für punktförmige
+	2. $\abs{F(\v q^2)}^2 \to 1$ für $\v q^2 \to 0$ (Photonenwellenlänge wird groß $\to$ Kern )
+*** Elektron-Kern-Streuung
+	Hofstadter 1957, SLAC
+	\[(\dd{σ}{Ω})_{\text{exp}} = (\dd{σ}{Ω})_{\text{Mott}} · \abs{F(\v q^2)}^2\]
+	Aus differentiellem Wirkungsquerschnitt ergibt sich $\abs{F(\v q^2)}^2:$ Rücktransformation nicht
+	möglich, weil
+	1. nicht über gesamten \(q^2\)-Bereichn gemessen wird
+	2. Man braucht Phaseninformation
+    Stattdessen benutzt man Modellansätze zur Beschreibung von $ρ(r)$. Die
+	Fourier-Transformation des Modells wird dann an die Daten angepasst.
+	Beispiele: \\
+	\begin{align*}
+	δ(r) / 4π &\to F(\v q^2) = \const \\
+	\string(\frac{a^3}{8π}\string) \exp(-ar) &\to F(\v q^2) &= (1 + \frac{\v q^2}{2 a^2 \hbar^2})^{-2} \\
+	\end{align*}
+*** Ladungsverteilung von Kernen
+	Experimentelle Schwierigkeiten: Je größer Ausdehnung, desto	stärker fällt $\abs{F(\v q^2)}^2$ für
+	große $\v q$ ab. \\
+	Ladungsverteilung von Kernen: Fermi-Verteilung $=$ Radiale Ladungsverteilung
+	\[ρ(r) = \frac{ρ_0}{1 + e^{(r - c)/a}}\]
+	$c$: Halbdichte-Radius $\approx \SI{1.07}{\femto\meter} A^{1/3}$, $t$: Oberflächendicke ($\SI{10}{\percent} - \SI{90}{\percent} \approx \num{4.4} a$) \\
+	Für mittlere und große $A$ findet man näherungsweise für die Ladungsverteilung
+	\[\sqrt{\braket{r^2}} \approx \num{0.94} A^{1/3} \si{\femto\meter}\]
+	Oft werden Kerne auch näherungsweise als "harte" Kugeln betrachtet
+	\[\braket{r^2}_{\text{hart}} = 4π ∫_0^R \v r^2 ρ(r) \d \v r = 4π \frac{3}{4π R^3} ∫_0^R r^4 \d r = \frac{3}{5} R^2\]
+	für
+	\[\braket{r^2}_{\text{hart}} \overset{!}{=} (\num{0.94} A^{1/3} \si{\femto\meter})^2 ⇒ R = \sqrt{\frac{5}{3}} \num{0.94} A^{1/3} \si{\femto\meter} = \num{1.2} A^{1/3} \si{\femto\meter}\]
+** Struktur der	Nukleonen (Protonen und Neutronen)
+   $\to$ nur elastische Streuung
+*** Nukleon-Spin und magnetisches Moment
+	$p$ und $n$ haben Spin $1/2$ und anomale magnetische Momente die vom magnetischen Moment eines punktförmigen Spin $1/2$ Teilchens $(= g = 2 + \text{ QED})$ abweichen
+	$\to$ "Struktur" der Nukleonen. Magnetisches Moment von	Nukleon $N$:
+	\[\v ψ_N = g_N · μ_N · \frac{\v s}{\hbar}\]
+	mit $m_s = \pm 1/2$. $μ_N$ wird als Nukleon- oder Kernmagneton bezeichnet
+	\[μ_N = \frac{e \hbar}{2M_N} \approx \SI{3.15e-15}{\mega\electronvolt\per\tesla}\]
+	Bohr-Magneton:
+	\[μ_B = \frac{e \hbar}{2m_e} \approx \SI{5.19e-11}{\mega\electronvolt\per\tesla}\]
+	\begin{align*}
+	μ_p &= g_p μ_N m_s = \pm \frac{g_p}{2} μ_N = \pm \num{2.79} μ_N \\
+	μ_n &= g_n μ_N m_s = \pm \frac{g_n}{2} μ_N = \mp \num{1.91} μ_N
+	\end{align*}
+*** Elektronenstreuung an "punktförmigen" Spin $1/2$ Proton
+	Neben der elektrischen Wechselwirkung und des Effektes der Unterdrückung des Rückwärtsstreuungg durch Spin auch noch Spin-Spin Wechselwirkung aufgrund der magnetischen Momente. Für hochrelativistische Elektronen $(β \approx 1)$
+	\[(\dd{σ}{Ω}) = (\dd{σ}{Ω})_{\text{Rutherford}} (\cos^2 \frac{θ}{2} + \frac{Q^2}{2 M_p^2 c^2} \sin^2 \frac{θ}{2})\]
+	1. Für Streuung its $q^2 = (p_e - p_e')^2 < 0 \to$ $Q^2 = -q^2$
+	2. Spin-Spin-Wechselwirkung: $\sim 1/M^2$ wegen $σ \sim \abs{A_{fi}}^2 \sim μ_{mg}^2 \sim 1/M^2$, $\sim Q^2$
+	   1. Spin-Spin-Wechselwirkung fällt mit Abstand ab
+	   2. kleiner Stoßparameter $\to$ hohes $Q^2$
+    Mit Mott-Wirkungsquerschnitt:
+	\[(\dd{σ}{Ω})_{\text{Dirac}} = (\dd{σ}{Ω})_{\text{Mott}}(1 + 2 τ \tan^2 \frac{θ}{2}), \quad τ = \frac{Q^2}{4 M_p^2 c^2}\]
+	1. Dirac Wirkungsquerschnitt ist größer als Mott-Wirkungsquerschnitt
+	2. Bisher ist Rückstoß nicht berücksichtig worden, Für Elektron-Proton Streuung spiel Rückstoß aber wichtige Rolle: Mit Rückstoß
+	   \[(\dd{σ}{Ω})_{\text{Rückstoß}} = (\dd{σ}{Ω})_{\text{Mott}} (\frac{E'}{E}) (1 + 2τ \tan^2 \frac{θ}{2})\]
+*** Elektron-Proton Streuung für ausgedehnte Protonen:
+	$\to$ 2 Formfaktoren $G_1(Q^2)$ und $G_2(Q^2)$ beziehungsweise $G_E(Q^2)$ und $G_M^2(Q^2)$ die die elektrische und magnetische Verteilung beschreiben:
+	Rosenbluth-Formel für Elektron-Proton-Wirkungsquerschnitt:
+	\begin{align*}
+	\dd{σ}{Ω} = (\dd{σ}{Ω})_{\text{Mott}} (G_1^2(Q^2) + 2τ G_2^2(Q^2) \tan^2 \frac{θ}{2}) \\
+	&= (\dd{σ}{Ω})_\text{Mott}(\frac{G_E^2(Q^2) + τ G_M^2(Q^2)}{1 + τ} + 2 τ G_M^2(Q^2) \tan^2 \frac{Q}{2})
+	\end{align*}
+	Zur Interpretation von $G_E(Q^2)$ und $G_M(Q^2)$ btrachtet man Verhalten für $Q^2 \to 0$: Elektron-Proton-Streuung:
+	\begin{align*}
+	G_E^p(Q^2 = 0) &= 0 \\
+	G_M^P(Q^2 = 0) &= \num{2.79} = g_p / 2
+	\end{align*}
+	Elektron-Neutron-Streuung
+	\begin{align*}
+	G_E^N(Q^2 = 0) &= 0 \\
+	G_M^N(Q^2 = 0) &= \num{-1.91} = g_n / 2
+	\end{align*}
+	(die Werte sind in Einheiten des Nukleon-magneton $μ_N$)
+	$\estimates$ punktförmiges Proton mit $g_p = \num{5.58}$
+	Um G_E(Q^2) und G_M(Q^2) separat zu bestimmen, wird der Wirkungsquerschnitt für feste Werte von $Q^2$ bei verschiedenen Streuwinkel gemessen. (möglich durch Wahl verschiedener Elektronen-Energien) \\
+	\begin{align*}
+	R &= \frac{(\dd{σ}{Ω})_{\text{edp}}}{(\dd{σ}{Ω})_{\text{Mott}}} = \frac{G_E^2(Q^2) + τ G_M^2(Q^2)}{1 + τ} + 2 τ G_M^2(Q^2) \tan^2 \frac{Q}{2}
+	\end{align*}
+	$\to$ Rosenbluth-Drigram. Messungen wurden erstmalig von Hofstadter und McAllister 1956 in Stanford mit $\SI{180}{\mega\electronvolt}$ durchgeführt.
+
+
+
+
+* Starke Wechselwirkung (QCD)
+** Farbladung und Gluonen
+   Starke Wechselwirkung wikrt zwischen farbgeladenen Teilchen unter Austausch von Gluonen. Quarks und Antiquarks kommen in
+   3 "Farben" beziehungsweise "Anti-Farben" vor: $q: r, g, b; \bar q: bar v, \bar g, \bar b$. Im Gesensatz zu Photonen tragen Gluonen selbst auch Farbladung und zwar jeweils eine Farbe und
+   eine Anti-Farbe: $3 \otimes \bar 3 ⇒$ bei starker Wechselwirkung wird Farbe ausgetauscht. Wechselwirkung ist unabhängig von Quarkflavor ($\to$ Isospin beziehungsweise Strangeness Symmetrie der starken Wechselwirkung)
+   Beispiel: $q_r + q_b \to q_b + q_r ⇒$ das Gluon hat Ladung $r \bar b$. \\
+   $3 \otimes \bar 3$ Farbkombinationen führen zu: $r, \bar g, r \bar  b, g \bar b, g \bar r, b \bar r, b \bar g, (r \bar r - b \bar b) / \sqrt{2}, (r \bar r + g \bar g - 2 b \bar b) / \sqrt{6}$ (farb geladene Zustände "Color-Oktett")
+   und einen farbneutralen "Color-Singlett": $(r \bar r + b \bar b + g \bar g) / \sqrt{3}$. Nur die 8 Oktettzustände bilden die 8 Gluonen der starken Wechselwirkung.
+*** Evidenz für Farbladung als eine zusätzliche Quantenzahl der Quarks
+   1. Fermion-Statisik für Spin $3/2$ Baryon: $Δ^{++} = (u \uparrow u\uparrow u\uparrow)$. Gesamtwellenfunktion	muss anti-symmetrisch gegen Vertauschung der Quarks sein.
+	  \[ψ_{Δ^{++}} = \ket{u \uparrow u \uparrow u \uparrow} = ψ_{\text{Raum}}(\v r_1, \v r_2, \v r_3) \underbrace{φ_{\text{Flavor}}(u u u)}_{symmetrisch} \underbrace{χ_{\text{Spin}}(\uparrow \uparrow \uparrow)}_{\text{symmetrisch}}\]
+	  Für Raumwellenfunktion: Parität ist durch $(-1)^l$ gegeben und relativer Bahndrehimpuls im Grundzustand ist $0$ $\to$ auch symmetrisch. Unter Berücksichtigung der bisher bekannten
+	  Quantenzahlen ist $ψ_{Δ^{++}}$ symmetrisch $\to$ das heißt es muss eine weitere Quantenzahl in der sich die 3 Quarks unterscheiden geben. $\to$ Farbladung:
+	  Farbladung ist antisymetrisch:
+	  \[ξ_{\text{Farbe}} = \frac{1}{\sqrt{6}} \sum_{i,j,k = r, g, b} ε_{ijk} u_i u_j u_k\]
+	  Mit dieser Wahl ist die Gesamtwellenfunktion anti-symmetrisch: $ψ_{Δ^{++}} = ψ_{\text{Raum}} φ_{\text{Flavor}} χ_{\text{Spin}} ξ_{\text{Farb}}$.
+   2. Wirkungsquerschnitt für \(e^{+} e^{-}\)-Annihilation in Hadronen:
+      $e^{+}e^{-} \to \text{ Hadronen}$. $q \bar q$ nur als Hadronen nachweisbar.
+      \[σ_{\text{tot}}(e^{+} e^{-} \to \text{ Hadronen}) = σ(e^{+} e^{-} \to μ^{+} μ^{-}) N_F \sum_{q_i} Q_{q_i}^2\]
+	  $N_F$: Zahl der Farbladungen, $q_i$: Summe über die Quarktypen.
+	  \[R_{had} = \frac{σ(e^{+} e^{-} \to \text{ Hadronen})}{σ(e^{+} e^{-} \to μ^{+} μ^{-})} = N_F \sum_{q_i} Q_{q_i}^2\]
+	  Vorhersage für $R_{had}$: $E_{\text{CMS}} < \SI{3}{\giga\electronvolt}: u, d, s ⇒ R_{\text{had}} = 3(\frac{1}{9} + \frac{4}{9} + \frac{1}{9}) = 2$. $\SI{3}{\giga\electronvolt} \leq E_{\text{CMS}} \leq 2 m_b c^2: u, d, s, c ⇒ R_{\text{had}} = 3(\frac{1}{9} + \frac{4}{9} + \frac{1}{9} + \frac{9}{9}) = \frac{10}{3}$.
+*** Evidenz für Gluonen
+   Analog zu Bremsstrahlung in Quantenelektrodynamik erwartet man auch in Quantenchromodynamik Abstrahlung von Bremsstrahlungs Gluonen.
+** Quark-Antiquark-Potential, Confinment, Running of $α_s$
+   Gluonen tragen selbst Farbladung $\to$ Gluon-Gluon Wechselwirkung. Zusätzliche Gluon-Vertices: (Sei $G$ das Gluon) $G \to G + G, G + G \to G + G$.
+   ($\to$ kommen in Quantenelektrodynamik nicht vor). Zusätzliche Gluon-Gluon-Vertices:
+   - Kopplungskonstante $α_s$
+*** Quark-Antiquark-Potential + Confinment
+	Für kleine Abstände ($\estimates$ grohes $Q^2$) nimmt Potential ab und die Quarks sind quasifrei: asymptotische Freihet. Für große Abstände steigt Potential linear an.
+	Phänomenologisch:
+	\[V_{q \bar q} = -\frac{4}{3}(\hbar c) \frac{α_s(r)}{r}  + k r\]
+	Für große Abstände zwischen $q$ und $\bar q$ sind die Feld/Kraftlinien zu einem Bündel $=$ Farbschlauch zusammengepresst.
+	Dass die Feldlinien schlauchartig verlaufen ist Folge der Gluon-Gluon-Wechselwirkung.
+	Versucht man die Quakrs weiter auseinander zu ziehen, wächst das Potential lienar
+	an und man braucht unendlich viel Energie um die Quarks zu trennen. Quark / Antiquark sind
+	in Farbpotential "eingesperrt": *Confinment*
+*** Laufende Kopplungskonstante $α_s$ und asymptotische Freihet
+	Laufende Kopplungskonstanten resultieren aus Vakuumpolarisation.

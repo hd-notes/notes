@@ -1,13 +1,28 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Methoden der mathematischen Physik I (Salmhofer)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 
 # "Beipackzettel"
 # Anwendung mehr im Vordergrund, aber Präzise
 # Mittwoch 2.5 Vorlesung - findet im "Neuen Hörsaal" statt
 
 # Übungszettel Abgabe + Ausgabe Mittwoch 9:15, 2er-Teams
+
+# Klausur
+# 20.6.2018 9:15 - 10:45, gHS
+# cheatsheet - din A4 (doppelseitig)
+# Fragen zum Stoff, Rechenaufgaben,	kurze Beweise (ie orthogonales Komplement einer Menge ist abgeschlossen)
+# Insbesondere die Themengebiete:
+#   Residuenkalkül
+#   Resolvente
+#   Operatoren
+#   Orthogonalität (Fouriertransformation?)
+#    .
+#    .
+#    .
+# Altklausur online...
+# 12.6 - morgen Übungszettel abgegben
 
 * Komplexe Analysis
 ** Kurven und Wegintegrale in der Ebene
@@ -90,6 +105,7 @@
 	\end{align*}
 	Rechteck kann man in zwei Dreiecke zerlegn,	einen Kreis in vier Viertelkreise. Ein beliebiges Kreissegment in ein Dreieck und eine Viertelellipse.
 	#+end_ex
+*** Endlich zerlegbare Mengen
 	#+ATTR_LATEX: :options ["Endlich zerlegbare Menge"]
 	#+begin_defn latex
 	$A ⊂ ℝ^2$, $A$ endlich zerlegbar $:⇔$ $A$ ist offen und $\bar A$ ist kompakt, $\bar A$ kann durch Schnitte längs Geraden in endlich viele Menge der Art wie $Δ$ zerlegt werden.
@@ -97,6 +113,7 @@
 *** Satz von Green und Stoken
 	$A ⊂ ℝ^2$ zergelbar, $F$ ein \(C^1\)-Vektorfeld, das auf einer offenen Umgebung von $A$ definiert ist
 	\[⇒ \iint_{A} \d x_1 \d x_2 (\pp{F_2}{x_1} - \pp{F_1}{x_2}) = ∫_{\partial A} F · \d x\]
+** Komplexe Zahlen und Funktionen
 *** Komplexe Zahlen
 	Körper auf $ℝ^2$ definiert durch
 	\begin{align*}
@@ -763,258 +780,2194 @@
 	\end{align*}
 	#+end_proof
 ** Residuensatz und Residuenkalkül
-   Isolierte Singulatritäten und Laurentreihen
-   #+ATTR_LATEX: :options [Singulatritäten]
-   #+begin_defn latex
-   $U ⊂ ℂ$ offen, $z_0 ∈ U$ $f: U \setminus \{z_0\} \to ℂ$ holomorph. Dann nennt man $z_0$ eine isolierte Singularität von $f$.
-   1. $z_0$ heißt habbare Singularität, wenn durch geeignete Definition von $f(z_0)$ die Funktion $f: U \to ℂ$ definiert werden kann und holomorph ist.
-   2. $z_0$ heißt Pol \(m\)-ter Ordnung $(m ∈ ℕ)$, wenn $z_0$ nicht hebbar ist, aber $z ↦ (z - z_0)^m f(z)$ bei $z_0$ eine hebbare Singularität hat. (kleinst mögliches $m$)
-   3. ansonsten heißt $z_0$ wesentliche Singularität von $f$.
-   #+end_defn
-   #+ATTR_LATEX: :options [meromorph]
-   #+begin_defn latex
-   Wenn $f$ bis auf eine diskrete Menge ($∃ r > 0 ∀ z, z' ∈ S: z \neq z' ⇒ \abs{z - z'} < r$) $S$ von Polen holomorph ist, nennt man $f$ *meromorph*.
-   #+end_defn
+*** Isolierte Singularitäten und Laurentreihen
+    Isolierte Singulatritäten und Laurentreihen
+    #+ATTR_LATEX: :options [Singulatritäten]
+    #+begin_defn latex
+    $U ⊂ ℂ$ offen, $z_0 ∈ U$ $f: U \setminus \{z_0\} \to ℂ$ holomorph. Dann nennt man $z_0$ eine isolierte Singularität von $f$.
+    1. $z_0$ heißt habbare Singularität, wenn durch geeignete Definition von $f(z_0)$ die Funktion $f: U \to ℂ$ definiert werden kann und holomorph ist.
+    2. $z_0$ heißt Pol \(m\)-ter Ordnung $(m ∈ ℕ)$, wenn $z_0$ nicht hebbar ist, aber $z ↦ (z - z_0)^m f(z)$ bei $z_0$ eine hebbare Singularität hat. (kleinst mögliches $m$)
+    3. ansonsten heißt $z_0$ wesentliche Singularität von $f$.
+    #+end_defn
+    #+ATTR_LATEX: :options [meromorph]
+    #+begin_defn latex
+    Wenn $f$ bis auf eine diskrete Menge ($∃ r > 0 ∀ z, z' ∈ S: z \neq z' ⇒ \abs{z - z'} < r$) $S$ von Polen holomorph ist, nennt man $f$ *meromorph*.
+    #+end_defn
 
-   Wenn $f,g: U \to ℂ$ holomorph sind und $g \neq 0$ (das heißt $∃ z ∈ U: g(z) \neq 0$) dann ist $f/g$ meromorph auf $U$. Aus dem Identitätssatz folgt, dass eine holomorphe Funktion $g \neq 0$
-   keine Häufungspunkte von Nullstellen haben kann
-   \[S = \{w ∈ U \mid g(w) = 0\}\]
-   ist diskret.	$f/g: U \setminus S \to ℂ$ holomorph. Identitätssatz: alle Nullstellen von $g$ sind endlicher Ordnung, das heißt
-   \[z ∈ S: g(w) = (w - z)^l h(w) \qquad l ∈ ℕ, h(z) \neq 0\]
-   Spezialfall $f, g$ Polynome, $f/g$ rationale Funktion. wesentliche Singularität: $z = 0$ für $z ↦ e^{1/z}$
+    Wenn $f,g: U \to ℂ$ holomorph sind und $g \neq 0$ (das heißt $∃ z ∈ U: g(z) \neq 0$) dann ist $f/g$ meromorph auf $U$. Aus dem Identitätssatz folgt, dass eine holomorphe Funktion $g \neq 0$
+    keine Häufungspunkte von Nullstellen haben kann
+    \[S = \{w ∈ U \mid g(w) = 0\}\]
+    ist diskret.	$f/g: U \setminus S \to ℂ$ holomorph. Identitätssatz: alle Nullstellen von $g$ sind endlicher Ordnung, das heißt
+    \[z ∈ S: g(w) = (w - z)^l h(w) \qquad l ∈ ℕ, h(z) \neq 0\]
+    Spezialfall $f, g$ Polynome, $f/g$ rationale Funktion. wesentliche Singularität: $z = 0$ für $z ↦ e^{1/z}$
 
+    #+begin_defn latex
+    $0 \leq ρ_1 < ρ_2: \mathcal{K}_{ρ_1, ρ_2}(z_0) = \{z ∈ ℂ: ρ_1 < \abs{z - z_0} < ρ_2\}$. $ρ_1 = 0$: "Punktierte Kreisscheibe" $\mathcal{K}_{0,p}(z_0) = B_ρ(z_0) \setminus \{z_0\}$.
+    #+end_defn
+    #+ATTR_LATEX: :options [Laurentreihe]
+    #+begin_thm latex
+    $f: \mathcal{K}_{ρ_1, ρ_2}(z_0) \to ℂ$ holomorph. Für $r ∈ (ρ_1, ρ_2)$ ist
+    \[c_n = \frac{1}{2πi} ∫_{\abs{w} = r} \frac{f(w)}{w^{n + 1}} \d w\]
+    unabhängig von $r ∀ n ∈ ℤ$, und die Laurentreihe von $f$
+    \[\sum_{n = -∞}^{∞} c_n z^n\]
+    konvergiert in $\mathcal{K}_{ρ_1, ρ_2}(0)$ absolut und kompakt und
+    \[f(k) = \sum_{n - ∞}^{∞} c_n z^n\]
+    Der *Hauptteil* der Laurentreihe
+    \[\sum_{n = -∞}^{-1} c_n z^n = \frac{c_{-1}}{z} + \frac{c_{-2}}{z^2} + \dots\]
+    konvergiert für alle $z ∈ ℂ$ mit $\abs{z} > ρ_1$. Der *Nebenteil* der Laurentreihe
+    \[\sum_{n = 0}^{∞} c_n z^n = c_0 + c_1 z + c_2 z^2 + \dots\]
+    konvergiert für alle $z$ mit $\abs{z} < ρ_2$.
+    #+end_thm
+    #+begin_proof latex
+    Wähle $r_1$ und $r_2$ so, dass $ρ_1 < r_1 < r_2 < ρ_2$. $R = \mathcal{K}_{r_1, r_2}(0)$. $R$ ist einfach zerlegbar. $\partial R = \partial B_{r_2}(0) - \partial B_{r_1}(0)$.
+    $\bar R$ ist Teilmenge des Holomorphiegebiets von $f$. Cauchy'sche Integralformel $⇒$ für $z ∈ R$ ist
+    \begin{align*}
+    f(z) &= \frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{f(w)}{w - z} \d w - \frac{1}{2πi} ∫_{\abs{v} = r_1} \frac{f(v)}{v - z} \d v \\
+    &= \frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{\d w}{w} \frac{f(w)}{1 - \frac{z}{w}} + \frac{1}{2πi} ∫_{\abs{v} = r_1} \frac{\d v}{z} \frac{f(v)}{1 - \frac{v}{z}} \\
+    \intertext{$\abs{z} < r_2 ⇒ \abs{z/w} < 1$, $\abs(z) > r_1 ⇒ \abs{v/z} < 1$ $⇒$ Entwicklung durch geometrische Reihe}
+    &= \sum_{n = 0}^{∞} z^n \underbrace{\frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{f(w)}{w^{n + 1}} \d w}_{= c_n} + \sum_{n = 0}^{∞} z^{-n-1} \frac{1}{2πi} ∫_{\abs{v} = r_1} v^n f(v) \d v \\
+    f(z) &= \sum_{n = 0}^{∞} c_n z^n + \sum_{k = -∞}^{-1} z^k \underbrace{\frac{1}{2πi} ∫ \frac{f(v)}{v^{k + 1}} \d v}_{= c_k} \\
+    &= \sum_{n = -∞}^{-1} c_n z^n + \sum_{n = 0}^{∞} c_n z^n \\
+    &= H(z) + N(z)
+    \end{align*}
+    #+end_proof
+*** Hebbarkeitssatz von Riemann
+    #+ATTR_LATEX: :options [Hebbarkeitssatz von Riemann]
+    #+begin_thm latex
+    $f: \dot B_ρ(0) \to ℂ$. Es gebe $M > 0$
+    \[∀ z ∈ \dot B_ρ(0): \abs{f(z)} < M\]
+    Dann existiert der Grenzwert
+    \[c_0 := \lim_{z \to 0} f(z)\]
+    und die (eindeutig bestimmte) stetige Fortsetzung von $f$ auf $B_ρ(0)$ (gegeben durch $f(0) := c_0$) ist holomorph.
+    #+end_thm
+    #+begin_proof latex
+    $n \geq 1, 1 < r < ρ$.
+    \begin{align*}
+    c_{-n} &= \frac{1}{2πi} ∫_{\abs{w} = r} f(w) w^{n - 1} \d w = \frac{1}{2πi} ∫ f(r e^{iθ}) e^{i(n - 1) θ} r^{n - 1} i r e^{iθ} \d θ\\
+    ⇒ \abs{c_n} &\leq \frac{r^n}{2π} ∫_0^{2π} \d θ \abs{f(r e^{iθ})} \leq r^n M \xrightarrow{r \to 0} 0 \\
+    ⇒ ∀ n \geq 1: c_{-n} &= 0
+    \end{align*}
+    $⇒$ Hauptteil der Laurentreihe $= 0$.
+    \begin{align*}
+    f(z) &= \sum_{n = 0}^{∞} c_n z^n \qquad ∀ z ∈ \dot B_ρ(0) \\
+    f(0) &:= c_0
+    \end{align*}
+    #+end_proof
+
+*** Der Fall endlich vieler isoliereter Singularitäten
+    $z_1, \dots, z_n ∈ ℂ, z_i \neq z_j ∀ i \neq j$ $f: ℂ \setminus \{z_1, \dots, z_n\} \to ℂ$ sei holomorph mit isolierten Singularitäten bei $z_1, \dots, z_n$.
+    $∀ j ∈ \{1, \dots, n\} ∃ r_j > 0$, sodass die Laurentreihe um $z_j$ auf $\dot B_{rj}(z)$ konvergiert. Die $r_j$ können so klein gewählt werden, dass
+    \[B_{r_i} (z_i) ∩ B_{r_k}(z_k) = \emptyset ∀i \neq k\]
+    \begin{align*}
+    L_j(z) &= H_j(z) + N_j(z) \\
+    H_j(z) &= \sum_{n = -∞}^{-1} c_n^{(j)}(z - z_j)^n \\
+    N_j(z) &= \sum_{n = 0}^{∞} c_n^{(j)}(z - z_j)^n \\
+    φ(z) &:= f(z) - \sum_{j = 1}^{n} H_j(z)
+    \end{align*}
+    $⇒ φ(z)$ ist ganze Funktion. (auf $\dot B_{r_j}(z_j)$ ist
+    \[f(z) = N_j(z) - \sum_{\substack{k = 1 \\ k \neq j}}^{n} H_k(z)\]
+    holomorph, also auf $\dot{B_{r_j / 2}(z_j)}$ beschränkt $⇒$ die Singulatriät $z_j$ von $φ$ ist hebbar) \\
+    Wichtiger Spezialfall: rationale Funktionen
+    \[f(z) = \frac{P(z)}{Q(z)}\]
+    $Q$ nicht identisch Null, $P, Q$ Polynome. $f: ℂ \setminus \{z_1, \dots, z_n\} \to ℂ$ holomorph, wenn $z_1, \dots, z_n$ die Nullstellen von $Q$ sind.
+    \[\frac{P(z)}{Q(z)} = \sum_{j = 1}^{n} \sum_{n= 1}^{m_j} \frac{c_{-n}^{(j)}}{(z - z_j)^n} + \underarrow[ϕ(z)]{ganz}\]
+    Wenn $\deg P < \deg Q$, dann gilt $ϕ(z) \xrightarrow{\abs{z} \to ∞} 0$. $⇒ ϕ$ ist beschränkt $\xRightarrow{\text{Satz von Liouville}} ϕ = \const ⇒ ϕ = 0$.
+    #+ATTR_LATEX: :options [Partialbruchzerlegung]
+    #+begin_thm latex
+    Jede rationale Funktion $P / Q$ mit $\deg P < \deg Q$ hat eine die Partialbruchzeilegung
+    \[\frac{P(z)}{Q(z)} = \sum_{j = 1}^{n} \sum_{n = 1}^{m_j} \frac{c_{-n}^{(j)}}{(z - z_j)^n}\]
+    Ohne die Annahme $\deg P < \deg Q$ folgt $ϕ$ ist ein Polynom.
+    #+end_thm
+*** Residuensatz
+    #+ATTR_LATEX: :options [Residuum]
+    #+begin_defn latex
+    $f: U \setminus \{z_0\} \to ℂ$ holomorph. Laurentreihe
+    \[f(z) = \sum_{n ∈ ℤ} c_n (z - z_0)^n\]
+    Das Residuum von $f$ bei $z_0$ ist
+    \begin{align*}
+    \Res_{z_0} f &:= \Res_{z = z_0} f(z) := c_{-1} \\
+    \intertext{für $r > 0$ klein genug:}
+    \Res_{z_0} f &= \frac{1}{2πi} ∫_{\abs{z - z_0} = r} f(z) \d z
+    \end{align*}
+    #+end_defn
+    #+ATTR_LATEX: :options [Residuensatz]
+    #+begin_thm latex
+    $U ⊂ ℂ$ offen, $S$ sei eine diskrete Teilmenge von $U$. Die Funktion $f$ sei auf $U$ bis auf isolierte Singularitäten in $S$ holomorph, das heißt $f: U \setminus S \to ℂ$ holomorph.
+    Wenn $A$ endlich zerlegbar ist, $\bar A ⊂ U$ und $\partial A ∩ S = \emptyset$, dann ist
+    \[∫_{\partial A} f(z) \d z = 2πi \sum_{z ∈ S ∩ A} \Res_z f\]
+    #+end_thm
+    #+begin_proof latex
+    Linke Seite ist wohldefiniert, da $S ∩ \partial A = \emptyset$, $\partial A$ kompakt $⇒$ Integral über stetige Funktionen auf Kompaktum. Rechte Seite ist wohldefiniert, da $\bar A$ kompakt, also $S ∩ A$
+    endlich. $S ∩ A = \{z_1, \dots, z_n\}$.
+    \[∀ j ∃ ρ_j > 0: \bar B_j := \bar{B_{ρ_j}(z_j)} ⊂ A \quad\text{und}\quad \bar B_j ∩ S = \{z_j\}\]
+    ($ρ_j$ so klein, dass die Laurentreihe auf $f$ um $z_j$ konvergiert.)
+    \[R = A \setminus \bigcup_{j = 1}^n \bar B_j\]
+    endlich zerlegbar ($R$ ist offen, $\bar R$ ist kompakt). $R ⊂ U \setminus S$ (Holomorphiegebiet von $f$).
+    \begin{align*}
+    ⇒ ∫_{\partial R} f(z) \d z = 0 \\
+    \partial R &= \partial A - \sum_{j = 1}^{n} \partial \bar B_j \\
+    ⇒ ∫_{\partial A} f(z) \d z &= \sum_{j = 1}^{n} ∫_{\partial \bar B_j} f(z) \d z \\
+    &= 2 π i \sum_{j = 1}^{n} \Res_{z_j}(z)
+    \end{align*}
+    #+end_proof
+
+	#+ATTR_LATEX: :options [Verallgemeinertes Argumentprinzip]
+	#+begin_thm latex
+	Vorraussetzungen wie im Residuensatz und $ϕ: U \to ℂ$ sei holomorph. $f: U \to ℂ$ meromorph und habe keine wesentlichen Singulatritäten un $U$. Es seien $a_1, \dots, a_m$
+	die Pole von $f$ in $A$, wobei ein Pol \(k\)-ter Ordnung genau $k$ mal vorkommt. Außerdem seien $b_1, \dots, b_n$ die Nullstellen von $f$ in $A$, wobei eine Nullstelle \(k\)-ter Ordnung genau $k$ mal vorkommt.
+	Dann ist
+	Für den	Spezialfall $ϕ = 1$ ist
+	\[\frac{1}{2πi} ∫_{\partial A} z \frac{f'(z)}{f(z)} \d z = \sum_{j = 1}^{n} b_j - \sum_{i = 1}^{m} a_i\]
+	#+end_thm
+	#+begin_proof latex
+	Übungen
+	#+end_proof
+*** Beispiele zum Residuenkalkül
+    Residuenkalkül: Berechnen von Integralen mit Hilfe des Residuensatzes (Trickkiste)
+    Beispiele:
+    \begin{align*}
+    ∫_{-∞}^{∞} \frac{\d x}{x^2 + 2x + 2} &= \lim_{a \to -∞} \lim_{b \to ∞} ∫_a^b \frac{\d x}{x^2 + 2x + 2} \\
+    x^2 + 2x + 2 &= (x + 1)^2 + 1 \geq 1 ∀ x ∈ ℝ \\
+    \intertext{$⇒$ kein Pol am Integrationsweg. Weil Integrand $\sim 1/x^2$ für $\abs{x} \to ∞$:}
+    b > 0: \quad ∫_{b}^{c} \frac{\d x}{(x + 1)^2 + 1} &\leq ∫_{b}^c \frac{\d x}{(x + 1)^2} \leq \frac{1}{b + 1}
+    \intertext{$⇒$ Integral konvergiert und}
+    I &= \lim_{L \to ∞}  ∫_{-L}^{L} \frac{\d x}{x^2 + 2x + 2} \\
+    f(z) &= \frac{1}{(z + 1)^2 + 1} \\
+    \string(z + 1\string)^2 + 1 = 0 \\
+    z = -1 \pm i \\
+    \end{align*}
+    $f: ℂ \setminus \{-i - i, -i + 1\} \to ℂ$ \text{holomorph}. $γ_L:$ Halbkreis mit Radius $L$ um Null, $ι_L$: Intervall $[-L, L]$
+    \begin{align*}
+    ∫_{γ_L + ι_L} f(z) \d z &= 2π i \Res_{-i + 1} f \\
+    ∫_{ι_L} f(z) \d z &\xrightarrow{L \to ∞} I \\
+    \intertext{Behauptung:}
+    ∫_{γ_L} f(z) \d z &\xrightarrow{L \to ∞} 0 \\
+    ⇒ I = 2πi \Res_{-1 + i} f
+    \end{align*}
+    $γ_L$ parametrisiert durch $z(θ) = L e^{iθ}$, $0 \leq θ \leq π$ \\
+    \begin{align*}
+    ∫_{γ} f(z) \d z &= ∫_{0}^{∞} \d θ f(L e^{iθ}) i L e^{iθ} \\
+    \abs{∫_γ f(z) \d z} &\leq L ∫_0^{π} \abs{f(L e^{iθ})} \d θ \leq L π \sup_{0 \leq θ \leq π} \abs{f(L e^{iθ})} \\
+    \abs{(L e^{iθ} + 1)^2 + 1} &\geq L^2 u \quad u > 0, L > 10 (\text{ was?}) \\
+    ⇒ \sup_{0 \leq θ \leq ∞} \abs{f(L e^{iθ})} &\leq \frac{1}{u} \frac{1}{L^2} \\
+    \abs{∫_γ f(z) \d z} &\leq \frac{π}{u} \frac{L}{L^2} = \frac{π}{uL} \xrightarrow{L \to ∞} 0 \\
+    f(z) &= \frac{1}{(z + 1 - i)(z + 1 + i)} = \frac{1}{(z - z_{+})(z - z_{-})} \qquad z_{\pm} = - 1 \pm i \\
+    &= \frac{1}{(z - z_{+})(z_i - z_{-} + z - z_{+})} = \frac{1}{2i} \frac{1}{z - z_{+}} \sum_{k = 0}^{∞} \frac{(z - z_{+})^k}{(2i)^k} \\
+    \Res_{-1 + i} f &= \frac{1}{2i} \\
+    I &= 2πi \frac{1}{2i} = π
+    \end{align*}
+    Beispiel 2:
+    \[∫_{-∞}^{∞} \frac{e^{iωt}}{ω - Ω + i Γ} \d ω \qquad t, Ω, Γ ∈ ℝ\]
+    Betrachte
+    \[w ↦ \frac{1}{ω - Ω - iΓ} = \frac{1}{ω - ω_0} \qquad ω_0 = Ω - iΓ\]
+    Pol bei $ω_0$: wollen, dass $ω_0 \not ∈ ℝ$, das heißt $Γ \neq 0$. $ω ∈ ℝ$
+    \[\abs{\frac{1}{ω - Ω ξ iΓ}} = \frac{1}{\sqrt{(ω - Ω)^2 + Γ^2}} = \begin{cases} \frac{1}{\abs{ω - Ω}} & Γ = 0 \\ \frac{1}{\abs{Γ}} & Γ \neq 0\end{cases}\]
+    wenn $\abs{ω} \to ∞$, ist
+    \[\frac{1}{ω - Ω - i Γ} \sim \frac{1}{ω}\]
+    Betrachte also das Integral
+    \begin{align*}
+    ∫_1^∞ \frac{\d ω}{ω} &= ∞ \\
+    ∫_0^b \frac{\d ω}{ω} &= \ln b \xrightarrow{b \to ∞} ∞
+    \end{align*}
+    ist also nicht konvergent, das heißt der Integrand ist nicht im $L^1$ (auch für $Γ \neq 0$).
+    Definiere
+    \[J_{ab} = ∫_a^b \frac{e^{iωt}}{ω - Ω - iΓ} \d ω\]
+    und
+    \begin{align*}
+    J &= \lim_{a \to ∞} \lim_{b \to ∞}  J_{ab} \\
+    \end{align*}
+    $t = 0$:
+    \[∫_{-2 \abs{ω_0}}^{2 \abs{ω_0}} \frac{1}{ω - ω_0} \d ω\]
+    ist endlich ($ω_0 \not ∈ ℝ$, da $Γ \neq 0$). $b > 2 \abs{ω_0}$:
+    \begin{align*}
+    ∫_{2\abs{ω_0}}^b \frac{\d ω}{ω - ω_0} &= ∫_{2 \abs{ω_0}}^b \frac{\d ω}{ω}(\frac{1}{1 - \frac{ω_0}{ω}} - 1 + 1) \\
+    &= ∫_{2 \abs{ω_0}}^b \frac{\d ω}{ω} + ω_0 ∫_{2\abs{ω_0}}^b \frac{\d ω}{ω(ω - ω_0)}
+    &= \ln \frac{b}{2 \abs{ω_0}} + \mathcal{O}{1}
+    \end{align*}
+    Nun betrachte
+    \begin{align*}
+    ∫_a^{-2 \abs{ω_0}} \frac{\d ω}{ω - ω_0} = \ln \frac{2 \abs{ω_0}}{\abs{a}} + \mathcal{O}(1) \\
+    \end{align*}
+    $b = 0$:
+    \[J_{ab} - \ln \frac{b}{\abs{a}} = \mathcal{O}(1)\]
+    Fazit: für $t = 0$ existiert $J$ nicht(nur der "Hauptwert" $\lim_{b \to ∞} J_{-b,b}$). Behauptung: $∀ t \neq 0, Γ \neq 0$ existiert der Limes für $J$.
+    Heilmittel: partielle Integration
+    \begin{align*}
+    e^{iωt} &= \frac{1}{it} \dd{}{ω} e^{iωt} \\
+    ⇒ J_{ab} &= \frac{1}{it} ∫_a^{b} \frac{1}{ω - ω_0} \dd{}{ω} e^{iωt} \\
+    &= \underbrace{\frac{1}{it} \frac{e^{iωt}}{ω - ω_0}}_{\xrightarrow{a,b \to ∞} 0} \Bigg|_a^b - \underbrace{\frac{1}{it} ∫_a^b e^{iωt} \frac{1}{(ω - ω_0)^2} \d ω}_{\sim 1/ω^2 ⇒ \text{ absolut konvergent}} \\
+    &= \lim_{l \to ∞} ∫_{-l}^{l} \frac{e^{iωt}}{ω - Ω - i Γ} \tag{$t \neq 0$} \\
+    \end{align*}
+    $ω = u + iv$:
+    \[t > 0: e^{iωt} = e^{iωt} e^{-vt}\]
+    $v > 0$ "oben schließen" \\
+    \[t < 0: e^{iωt} = e^{iωt} e^{v \abs{t}}\]
+    $⇒ v < 0$ "unten schließen"
+    betrachte also wieder einen Halbkreis, $γ_L^{+}$ sei der positive ($v > 0$) und $γ_L^{-}$ endsprechend der negative ($v < 0$), mit vorheriger Notation für $t > 0$:
+    \begin{align*}
+    \intertext{$ω_j$ Pol von $(ω - ω^0)^{-1}$ im Inneren von $ι_L + γ_L^{(+)}$}
+    ∫_{ι_L + γ_L^{+}} \frac{e^{iωt}}{ω - ω_0} \d ω &= 2πi \sum_{ω_j \text{ Pol}} \Res_{ω_j} \frac{1}{ω - ω_0} \\
+    &= \begin{cases} 0 & \Im ω_0 = Γ < 0 \\ 2 π i \Res_{ω + iΓ} \frac{i ω t}{ω - ω_0} & Γ > 0\end{cases} \\
+    &= 2πi e^{iω_0 t} = 2πi e^{iΩt} e^{-Γt}
+    \end{align*}
+    für $t < 0$ erhält man
+    \begin{align*}
+    ∫_{ι_L + γ_L^{-}} \frac{e^{iωt}}{ω - ω_0} \d ω = -2πi \begin{cases} 0 & Γ > 0 \\ e^{iΩ t} e^{-iΓt} & Γ < 0\end{cases}
+    \end{align*}
+*** Residuen an Polstellen
+	Zur Berechnung von Residuen gibt es in Spezialfällen einfache Regeln, die wir hier zeigen. Die Funktion $Q$ habe einen Pol \(n\)-ter Ordnung bei $z = z_0$. Dann lässt sich $Q$ für $0 < \abs{z - z_0} < r$
+	schreiben als
+	\[Q(z) = \sum_{m = -n}^{∞} c_m (z - z_0)^m\]
+	Das Residuum an der	Stelle $z = z_0$ ist durch den Koeffizienten $c_{-1}$ der Laurentreihe gegeben, das heißt
+	\[\Res_{z_0} Q = c_{-1}\]
+	Wenn $Q$ geschrieben werden kann als
+	\[Q(z) = \frac{g(z)}{(z - z_0)^n}\]
+	wobei $g(z)$ gegeben ist durch
+	\[g(z) = \sum_{k = 0}^{∞} c_{-n + k} (z - z_0)^k =: \sum_{k = 0}^{∞} g_k (z - z_0)^k\]
+	wobei
+	\[g_k = \frac{1}{k!} \frac{\d^k g}{\d z^k}\]
+	damit ist
+	\[\Res_{z_0} Q = \frac{1}{(n - 1)!} \frac{\d^{n - 1} g}{\d z^{n - 1}} (z_0)\]
+    $n= 1$: Pol erster Ordnung:
+    \begin{align*}
+    Q(z) &= \frac{g(z)}{z - z_0} \\
+    \Res_{z_0} Q &= g(z_0) \\
+    \Res_{z = ib} \frac{e^{iaz}}{z - ib} = e^{ia · ib} = e^{-ab}
+    \end{align*}
+    $n = 2$: Pol zweiter Ordnung
+    \begin{align*}
+    Q(z) &= \frac{h(z)}{(z - z_0)^2} \\
+    \Res_{z_0} Q &= h'(z_0) = \dd{h}{z}(z_0)
+    \Res_{z = ib} \frac{e^{iaz}}{(z - ib)^2} &= \dd{}{z} e^{iaz} \Bigg|_{z = ib} = i a e^{i a i b} = i a e^{-ab}
+    \end{align*}
+*** Satz zur Berechnung von Integralen mit Residuen
+	Wir geben hier einen Satz, der das Resultat des ersten Beispiels auf eine Klasse von Funktionen verallgemeinert.
+	Im Folgenden ist $\mathbb{H} = \{z ∈ ℂ \mid \Im z > 0\}$ die obere Halbebene und $\bar{\mathbb{H}} = \{z ∈ ℂ \mid \Im z \geq 0\}$ ihr Abschluss. Wir verwenden auch die Notation $\arg z$ für den
+	Winkel in der Polardarstellung, das heißt $z = \abs{z} e^{i\arg z}$
+    #+begin_thm latex
+    Es gelte
+    1. $z_1, \dots, z_n ∈ \mathbb{H} = \{z = ℂ \mid \Im z > 0\}$
+    	  $Q: \bar{\mathbb{H}} \setminus \{z_1, \dots, z_n\} \to ℂ$ sei stetig und auf $Q \Big|_{\mathbb{H} \setminus \{z_1, \dots, z_n\}}$ holomorph
+    2. $\abs{z Q(z)} \xrightarrow{\abs{z} \to ∞} 0$ gleichmäßig in $\arg z ∈ [0, π]$
+    3. (Für $x ∈ ℝ$ ist $Q(z) ∈ ℝ$ und) $\leftarrow$ brauchen wir nicht???? Die Grenzwerte
+    	  \[\lim_{B \to ∞} ∫_0^B Q(z) \d x \quad\text{und}\quad \lim_{A \to -∞} ∫_A^0 Q(z) \d x\]
+    	  mögen existieren
+    Dann folgt:
+    \[∫_{-∞}^{∞} Q(x) \d x\]
+    existiert als uneigentliches Riemann'sches Integral und
+    \[∫_{-∞}^{∞} Q(x) \d x = 2 π i \sum_{j = 1}^{n} \Res_{z_j} Q\]
+    #+end_thm
+    Beweisidee:
+    \[∫_{-∞}^{∞} Q(x) \d x = \lim_{A \to -∞} \lim_{B \to ∞} ∫_A^B Q(x) \d x = \lim_{A \to -∞} ∫_A^0 Q(x) \d x + \lim_{B \to ∞} ∫_0^B Q(x) \d x = \lim_{L \to ∞} ∫_{-L}^L Q(x) \d x\]
+	Eeine analoge  aussage gilt natürlich auch wenn $Q$ in der unteren Halbebene holomorph bisauf endlcih viel isolierte Singularitäten ist. In diesem Fall wird der Integrations weg unter geschlossen
+	und die Summe der Residuen erhält ein negatives Vorzeichen, da der Rand des Halbkreises dann negativ orientiert ist.
+*** Das Lemma von Jordan
+    #+ATTR_LATEX: :options [Lemma von Jordan]
+    #+begin_lemma latex
+    $Q$ sei meromorph in $\bar{\mathbb{H}}$ und habe höchstens endlich viele Pole, die alle in $\mathbb{H}$ liegen
+    \begin{align*}
+    \mathbb{H} &= \{z ∈ ℂ \mid \Im z > 0\} \\
+    \bar{\mathbb{H}} &= \{z ∈ ℂ \mid \Im z \geq 0\} \\
+    \end{align*}
+    Es gelte
+    \[\lim_{\abs{z} \to ∞} Q(z) = 0 \]
+    in $\mathbb{H}$ gleichmäßig in $φ = \arg z$.
+    \[Γ_ρ: [0, π] \to ℂ, φ ↦ ρ e^{iφ}\]
+    Es sei $m > 0$. Dann gilt
+    \begin{align*}
+    I &= \lim_{ρ \to ∞} I_ρ = 0 \\
+    \text{wobei } I_ρ &= ∫_{Γ_ρ} Q(z) e^{im z} \d z
+    \end{align*}
+    #+end_lemma
+    #+begin_proof latex
+    Nach Vorraussetzung $∃ ρ_0 > 0$, sodass $Q$ auf $\{z ∈ ℂ \mid \abs{z} > \frac{ρ_0}{2}\}$
+    holomorph ist. $\to$ $I_ρ$ existiert für alle $ρ \geq ρ_0$
+    \[\lim_{ρ \to ∞}  Q(ρ e^{iθ}) = 0\]
+    gleichmäßig in $θ ∈ [0, π]$
+    \[z(θ) = ρ e^{iθ} e^{i m z(θ)} = e^{im ρ \cos θ} e^{-mρ \sin θ}\]
+    $0 ∈ [0, 1] ⇒ \sin θ \geq 0$.
+    \begin{align*}
+    I_ρ &= i ρ ∫_0^π Q(ρ e^{iθ}) e^{i(θ + m ρ \cos θ)} e^{-m ρ \sin θ} \d θ \\
+    \abs{I_ρ} &\leq ρ ∫_0^π \abs{Q(ρ e^{iθ})} e^{-mρ \sin θ} \d θ \\
+    \end{align*}
+    $∀ ε > 0 ∃ ρ_1 > ρ_0 ∀ ρ \geq ρ_1 ∀ θ ∈ [0, π]: \abs{Q(ρ e^{iθ})} < ε$
+    \begin{align*}
+    ⇒ ∀ ρ > ρ_1: \abs{I_ρ} < ε ρ ∫_0^∞ e^{-mρ \sin θ} \d θ
+    \end{align*}
+    $∀ θ ∈ [0, π/2]: \sin θ \leq θ 2/π$
+    \begin{align*}
+    \abs{I_ρ} &< 2ε ρ ∫_0^{π/2} e^{-mρ \frac{2}{π}θ} \d θ = 2 ε ρ \frac{π}{2 m ρ} e^{-m ρ \frac{2}{π} θ} \Big|_{π/2}^{0} \leq \frac{π}{m} ε
+    \end{align*}
+    #+end_proof
+    #+begin_thm latex
+    $Q$ meromorph in $\bar{\mathbb{H}}$, höchstens endlich viele Pole, alle in $\mathbb{H}$
+    \[\lim_{\abs{z} \to ∞} Q(z) = 0\]
+    gleichmäßig in $0 \leq \arg z \leq ∞$
+    \begin{gather*}
+    ∀ x ∈ ℝ: Q(-x) = Q(x)
+    m > 0, ∫_0^∞ Q(x) e^{imx} \d x < ∞ \\
+    ⇒ ∫_0^∞ Q(x) \cos(m x) \d x = π i \sum_{\substack{z ∈ \mathbb{H} \\ \text{$z$ Pol von $Q$}}} \Res Q(z) e^{imz}
+    \end{gather*}
+    #+end_thm
+    $f$ holomorph und $f(z_0) = 0, f'(z_0) \neq 0$
+    \[f(z) = f(z) - f(z_0) = (z - z_0) g(z)\]
+    $g$ holomorph und
+    \begin{align*}
+    g(z) &= \frac{f(z) - f(z_0)}{z - z_0} \\
+    g(z_0) &= f'(z_0) \\
+    \Res_{z_0} \frac{1}{f} &= \Res_{z_0} \frac{1}{(z - z_0)} \frac{1}{g(z)} = \frac{1}{g(z_0)}
+    \end{align*}
+    Wenn $g(z_0) \neq 0$ dann ist $1/g$ in Umgebung von $z_0$ holomorph.
+    $f'(z_0) = 0, f^{(n)}(z_0) \neq 0$: $f(z) = (z - z_0)^n h(z)$, $h(z_0) \neq 0$, $h$ holomorph
+    \[\Res_{z_0} \frac{1}{f} = \Res_{z_0} \frac{1}{(z - z_0)^n} \frac{1}{h(z)} = \frac{1}{(n - 1)!} (\dd{}{z})^{n - 1} \frac{1}{h(z)} \Bigg|_{z = z_0}\]
+** Geometrische und arithmetishce Aspekte
+*** Die Riemann'sche Zahlenkugel
+    Die Riemann'sche Zahlenkugel (RZK). Riemannsche Zahlenkugel $\bar ℂ =$ Ein-Punkt-Kompaktifizierung.
+    #+begin_defn latex
+    $\bar ℂ := ℂ ∪ \{∞\}$ wobei $∞ \not ∈ ℂ$. $O ∈ \bar ℂ$ $:⇔$ eine der folgenden Bedingungen gilt
+    1. $O ⊂ ℂ$ und $O$ ist offen in $ℂ$
+    2. $∞ ∈ O$: $O ∩ ℂ$ offen und  $∃ R > 0: \{z ∈ ℂ \mid \abs{z} > R\} ∪ \{∞\} ⊂ O$
+    #+end_defn
+    #+begin_thm latex
+    Die so definierte Familie von Teilmengen von $\bar ℂ$ ist eine Topologie. Sie stimmt auf $ℂ$ mit der von $\abs{·}$ induzierten Topologie überein. $\bar ℂ$ ist in dieser Topologie hausdorff'sch und kompakt.
+    #+end_thm
+	#+begin_proof latex
+	Der Beweise dieses Satzes ist elementar, wird hier aber nicht gegeben, da die nachfolgende Betrachtung der stereographischen Projektion	sowohl die Definition motivieren wird als auch den Beweis auf einen Bekannten
+	zurückführt.
+	#+end_proof
+    *Die stereographische Projektion* Es sei
+    \[S = \{x . ℝ^3 \mid x_1^2 + x_2^2 + (x_3 - \frac{1}{2})^2 = \frac{1}{4}\}\]
+    $=$ Spähre mit Mittelpunkt $(0, 0, 1/2)$ und Radius $1/2$.
+    \[E = ℝ^2 × \{0\} ⊂ ℝ^3\]
+    "\(x\)-\(y\)-Ebene"
+    $N = (0, 0, 1)$ Nordpol $∈ S$. Die stereographische Projektion bildet $\dot S = S \setminus \{N\}$ auf die Ebene $E$ ab. Sei $e_ϕ = (\cos ϕ, \sin ϕ)$. Der Schnittpunkt der Geraden
+	\[g = \{(r t eϕ, 1 - t), t ∈ [0, 1]\}\]
+	mit $S$ ist gegeben durch
+	\[(rt)^2 + (1 - t - \frac{1}{})^2 = \frac{1}{4}\]
+	Die Lösungen sind $t = 0$ (Nordpol $N$) oder
+	\[t = \frac{1}{1 + r^2}\]
+	so erhält man die Abbildung $σ: E \to S$ der Ebene auf die Kugeloberfläche $S$
+    \begin{gather*}
+    \string(r, ϕ\string) ↦ (\frac{r \cos ϕ}{1 + r^2}, \frac{r \sin ϕ}{1 + r^2}, \frac{r^2}{1 + r^2})
+    \end{gather*}
+	Mit Hilfe der stereographischen Projektion kann man die Ebene $ℂ$ mit $\dot S$ identifizieren: für $z = x + i y, r^2 = \abs{z}^3 = z \bar z$ erhalten wir also die Abbildung
+	\[σ: ℂ \to S \setminus \{N\}, z ↦ (\frac{\Re z}{1 + z \bar z}, \frac{\Im z}{1 + z \bar z}, \frac{z \bar z}{1 + z \bar z})\]
+	Wir erweitern diese Abbildung auf $\bar ℂ$, indem wir definieren
+	\[σ(∞) := N\]
+    #+begin_thm latex
+    $σ$ ist ein Homöomorphismus
+    #+end_thm
+	Diese Aussage wird als Satz formuliert, da wir oben die Topologie auf $\bar ℂ$ definiert hatten. Wie dort schon angedeutet, ist allerdings die Motivation der Definition, dass
+	offene Mengen von $S$ (definiert im üblichen metrischen Sinne) mit den in obiger Definition gegebenen offenen Mengen von $\bar ℂ$ bijektiv in Beziehung stehen, nämlich über Abbildung $σ^{-1}$. Wir lassen
+	deshabl auch hier den (einfachen) Beweis weg. \\
+    #+begin_thm latex
+    1. $M ⊂ \bar ℂ$ kompakt $⇔$ $M$ abgeschlossen
+    2. Jede unendliche Menge in $\bar ℂ$ hat einen Häufungspunkt
+    3. $M ⊂ ℂ$ unendlich, aber keinen Häufungspunkt in $ℂ$ hat $I M$ abzählbar und $M$ kann als Folge $(z_n)_{n ∈ ℕ}$ geschrieben werden dass in $\bar ℂ$ gilt
+  	   \[\lim_{n \to ∞} z_n = ∞\]
+    #+end_thm
+    Möbiustransformationen
+    \[z ↦ \frac{α z + β}{γ z + δ} \qquad α δ - β γ \neq 0\]
+** Kausalität und Analytizität
+*** Kausalität
+	In Experimenten wird oft die Reaktion eines physikalschen Systems auf ein eigegebenes Signal untersucht. Unter Kausalität verstehen wir dabei das Prinzip, dass diese Antwort nicht früher als das auslösende
+	Signal vorhanden sein kann. In der einfachsten Situation beschreiben wir die Antwort mit einer Funktion der Zeit $t ↦ f(t)$. Wir legen den Zeitnullpunkt $t = 0$ als den Zeitpunkt fest, an dem das Signal
+	beginnt. Kausalität bedeutet dann einfach $f(t) = 0$ für $t < 0$. \\
+	Wir machen als weitere Annahme, dass die Funktion $f$ absolut integrierbar ist:
+	\[∫_{-∞}^{∞} \abs{f(t)} \d t = ∫_0^{∞} \abs{f(t)} \d t = \norm{f}_1 < ∞\]
+	Dies wird sicherlich nur dann der Fall sein, wenn auch die Stärke des auslösenden Signals mit der Zeit abfällt oder die Anregung sogar nach einer endlichen Zeit aufhört.
+	Wenn man sich vorstellt, dass das Signal unr in einem endlichen Zeitintervall wirkt und das System danach im Laufe der Zeit in seine ursprünglichen Zustand zurückgeht, ist es plausibel, dass
+	$f(t)$ für große Zeiten abfällt (dies in konkreten Modellen zu zeigen ist allerdings im Allgemeinen nicht einfach). Der Abfall einer Funkiton für $t \to ∞$ ist allerdings weder notwendig noch
+	hinreichend für ihre Integrabilität. Die Annahme der Integrabilität ist einfach und erlaubt uns, die im folgende entwickelte Theorie mathematisch durchzuführen. Über die Annahmen $f(t) = 0$ für $t < 0$ und
+	die Integrabilität hinaus werden hier keine Annahmen gemacht, insbesondere braucht $f$ nicht stetig oder sogar differenzierbar zu sein. \\
+	Für das Frequenzspekturm der Antwortfunktion $f$ ist die Fouriertransformierte $\hat f$ von $f$	wesentlich. Wir definieren für $ω ∈ ℝ$
+	\[\hat f(ω) = ∫_{-∞}^{∞} f(t) e^{iωt} \d t = ∫_0^{∞} f(t) e^{iωt} \d t\]
+	wobei die zweite Gleichung aus der Kausalitätsbedingung folgt. Die Fouriertransforierte its für jedes $ω ∈ ℝ$ endlich, weil das Integral aufgrund der Integrabilitätbedingung absolut konvergent ist:
+	\[\abs{\hat f(ω)} \leq ∫_{-∞}^{∞} \abs{f(t)} \d t = \norm{f}_1 < ∞\]
+	Die wesentliche Folgerung aus der Kausalitätsbedingung ist, dass $\hat f$ auf die gesamte obere Halbebene ausgedehnt werden kann. Um dies zu sehen setzen wir $z = ω + i v$ mit $v \geq 0$. Es ist dann
+	\[e^{i z t} = e^{i ω t} e^{-vt}\]
+	und daher
+	\[\hat f(z) = ∫_{-∞}^{∞} f(t) e^{izt} \d t = ∫_{-∞}^{∞} f(t) e^{iωt} e^{-vt}\]
+	Wenn $f$ auch für negative Zeiten $\neq 0$ wäre könnte das Wachstum von $e^{-vt}$ für negative $t$ für die Konvergenz des Integrals gefährlich werden, aber wegen der Kausalitätsbedingung verbessert der Faktor
+	$e^{-vt}$ den Abfall des Integranden sogar, wenn $v = \Im z > 0$ ist.
+*** Analytizität in der oberen Halbebene
+    #+ATTR_LATEX: :options [Lebesgue'scher Konvergenzsatz (Satz von dominierter Konvergenz)]
+    #+begin_thm latex
+    $(f_n)_{n ∈ ℕ}$ sei eine Folge messbarer Funktionen und $f_n \xrightarrow{n \to ∞} f$ fast überall.
+    \[∃ g ∈ L^1: ∀ n ∈ ℕ: \abs{f_n(x)} \leq g(x)\]
+    Dann ist $f ∈ L^1$ und
+    \[∫ \abs{f(x) - f_n(x)} \d x \xrightarrow{n \to ∞} 0\]
+    (das heißt $\norm{f - f_n}_1 \xrightarrow{n \to ∞} 0$). Daraus folgt
+    \[\lim_{n \to ∞} ∫ f_n(x) \d x = ∫ \lim_{n \to ∞} f_n(x) \d x = ∫ f(x) \d x\]
+    #+end_thm
+	#+begin_thm latex
+	Es sei $f ∈ L^1(ℝ), f(t) = 0$ für $t < 0$ (das heißt $f$ erfüllt die Kausalitätsbedingung und die Integrabilitätsbedingung). Dann ist $\hat f$ eine auf $\mathbb{H} = \{z ∈ ℂ \mid \Im z > 0\}$
+	holomorphe Funktion und stetig auf $\bar{\mathbb{H}}$. Außerdem gilt
+	\[\lim_{\abs{z} \to ∞} \hat f(z) = 0\]
+	gleichmäßig in $\arg z$ für $0 \leq \arg z \leq π$. Für $z ∈ ℝ$ nennt man die Aussage $f ∈ L^1 ⇒ \hat f$ stetig und $\hat f(ω) \to 0$ für $\abs{ω} \to ∞$ das Riemann-Lebesgue-Lemma. Es gilt ohne die
+	Kausalitätsbedingung.
+	#+end_thm
+	#+begin_proof latex
+	Für $ω ∈ ℝ$ und $\Im h \geq 0$ ist
+	\[\hat f(ω + h) - \hat f(ω) = ∫_0^∞ φ(ω, h , t) \d t\]
+	mit $φ(ω, h, t) = f(t) e^{iωt}(e^{iht} - 1)$. Da für alle $t$ gilt, dass $e^{ih t} - 1 \to 0$ für $h \to 0$ und weil $\abs{φ(t)} \leq 2 \abs{f(t)}$ und $f ∈ L^1$ ist sind nach dem
+	Satz von der dominierten Konvergenz Integral und Limes $h \to 0$ vertauschbar, also
+	\[\lim_{h \to 0} (\hat f(ω + h) - \hat f(ω)) = 0\]
+	$\hat f$ ist also stetig auf $\partial \mathbb{H} = ℝ$ und der Grenzwert $ε \to 0$ von $\hat f(ω + ε e^{iθ})$ existert allgemeiner für jedes $θ ∈ (0, π)$ und gibt $\hat f(ω)$.
+	Für $z = ω + i v$ mit $v \geq 0, h ∈ ℂ \setminus \{0\}$ und $\abs{h}$ so, dass $z + h ∈ \mathbb{H}$, gilt
+	\[\frac{1}{h}(\hat f(z + h) - \hat f(z)) = ∫_0^∞ ψ(z, h, t) \d t\]
+	mit $ψ(z, h, t)= f(t) e^{iωt} e^{-vt} (e^{i h t} - 1) / h$. Wegen
+	\[\abs{e^{i h t} - 1} \leq t \abs{h} e^{t \abs{h}}\]
+	gilt
+	\[\abs{ψ(t)} \abs{f(t)} e^{-vt} e^{t \abs{h}}\]
+	Für $v > 0$ und $\abs{h} < \frac{v}{2}$ ist also
+	\[\abs{ψ(t)} \leq \abs{f(t)} e^{-(v -\abs{h})t} t \leq \frac{\abs{f(t)}}{v - \abs{h}} \sup_{x \geq 0} x e^{-x} \leq \frac{2}{v} \abs{f(t)}\]
+	da $\sup_{x \geq 0} x e^{-x} \leq 1$. Es folgt, wieder mit dem Satz von der dominierten Konvergenz, dass
+	\[\frac{1}{h}(\hat f(z + h) - \hat f(z)) \xrightarrow{h \to 0} ∫_0^∞ f(t) e^{i z t} i t \d t = \hat f'(t)\]
+	existiern, wenn $v = \Im z > 0$. Ebenso zeigt man, dass die Abbildung für $v > 0$ stetig ist. $\hat f$ ist also holomorph auf $\mathbb{H}$.
+	Es bleibt zu zeigen, dass $\hat f(R e^{iθ})$ gegen Null geht, wenn $R \to ∞$, gleichmäßig in $θ ∈ [0, π]$. Es sei also $z ∈ \bar{\mathbb{H}}$, das heißt $v = \Im z \geq 0$. Dann gilt
+	#+end_proof
+
+    #+ATTR_LATEX: :options [Lemma von Schwartz]
+    #+begin_lemma latex
+    Sei $D := B_1(0) = \{z ∈ ℂ \mid \abs{z} < 1\}$. Wenn $f: D \to D$ holomorph ist und $f(0) = 0$, dann gilt
+    \[\abs{f(z)} \leq \abs{z} \quad\text{und}\quad \abs{f'(0)} \leq 1\]
+    Wenn es ein $z \neq 0$ gibt, sodass $\abs{f(z)} = \abs{z}$ ist, oder wenn $\abs{f'(0)} = 1$ ist, dann ist $f$ eine Rotation, das heißt
+    \[∃ θ ∈ ℝ ∀ z ∈ D: f(z) = e^{iθ}z\]
+    #+end_lemma
+    #+begin_proof latex
+    \[g(z) := \begin{cases} \frac{f(z)}{z} & z \neq 0 \\ f'(0) & z = 0\end{cases}\]
+    offensichtlich ist $g$ holomorph auf $D \setminus \{0\}$
+    Riemann'scher Hebbarkeitssatz $⇒$ $g$ holomorph auf $D$. Maximumprinzip für $g$ auf $B_{1 - ε}(0)$ ($ε > 0$)
+    \[∀ z ∈ B_{1 - z}(0) \mid \abs{g(z)} \leq \frac{1}{1 - ε}\]
+    da $\abs{f(z)} < 1$. $ε \to 0 ⇒ ∀ z ∈ D \mid \abs{g(z)} \leq 1$. Wenn $\abs{f(z_0)} = \abs{z_0}$ für ein $z_0 . D$, dann ist $\abs{g(z_0)} = 1 \xRightarrow{\text{Maximum Prinzip}} g = \const$
+    1. $f(t) = χ_{[a, b]}$ ($0 \leq a < b < ∞$)
+    	  \begin{align*}
+    	  \hat f(z) &= ∫_a^b e^{izt} \d t = \frac{1}{iz}(e^{izb} - e^{iza}) = \frac{1}{iz}(e^{iωb} e^{-vb} - e^{-iωa} e^{-va}) \\
+    	  \abs{\hat f(z)} &\leq \frac{2}{\abs{z}} = \frac{2}{R} \xrightarrow{R \to ∞} 0 \quad\text{gleichmäßig in $θ$}
+    	  \end{align*}
+    2. $f$ Treppenfunktion
+    	  \[f(t) = \sum_{n = 0}^{N - 1} f_n χ_{[a_n , a_{n + 1}\string)}(t)\]
+    	  mit $0 < a_0 < a_1 < \dots < a_n < ∞$
+    	  \begin{align*}
+    	  \hat f &= \sum_{n = 0}^{N - 1} f_n \hat χ_{[a_n, a_{n + 1}\string)} \\
+    	  \abs{\hat f(z)} &\leq \sum_{n = 0}^{N - 1} \abs{f_n} \abs{\hat χ_{[a_n, a_{n + 1}\string)]}} \leq \sum_{n = 0}^{N - 1} \abs{f_n} \frac{2}{\abs{z}} =: K_N(/)
+       \end{align*}
+    3. $f ∈ L^1$ Zeige: zu $ε > 0$ gibt es $r_0(ε) ∀ z$ mit $\abs{z} > r_0(ε) : \abs{\hat f(z)} < ε$. $ε > 0$ gegeben, $f ∈ L^1 ⇒ ∃ R > 0$
+    	  \[∫_R^∞ \abs{f(t)} \d t < \frac{ε}{3}\]
+    	  Es gibt eine Treppenfunktion $f_N$ mit Träger in $[0, R]$, sodass
+    	  \[\norm{f - f_N}_1 < \frac{ε}{3}\]
+    	  $N = N(ε)$ hängt von $ε$ ab.
+    4. $∃ r_0(N(ε)): ∀ z, \abs{z} > r_0: \abs{\hat f_N(z)} < ε/3$
+    	  \begin{align*}
+    	  \abs{\hat f(z)} &= \abs{\hat f(z) - \hat f_N(z) + \hat f_N(z)} \\
+    	  &\leq \abs{\hat f(z) - \hat f_N(z)} + \abs{\hat f_N(z)} \\
+    	  &\leq \norm{f - f_N}_1 + ∫_R^∞ \abs{f(t)} \d t + \abs{\hat f_N(z)} \\
+    	  < \frac{ε}{3} + \frac{ε}{3} + \frac{ε}{3} = ε
+       \end{align*}
+    #+end_proof
+*** Dispersionsrelationen (Kramers-Kronig-Relation)
+	Da $\hat f$ holomorph in $\mathbb{H}$ ist und auf $\bar{\mathbb{H}}$ stetig, gilt für alle $z ∈ \mathbb{H}$ und $R > \abs{z}$
+    \begin{align*}
+    \hat f(z) &= \frac{1}{2πi} ∫_{γ_R} \frac{f(w)}{w - z} \d w
+    \end{align*}
+	Die Kurve $γ_R$ besteht aus dem Intervall $[-R, R] ⊂ ℝ$ und dem Halbkreis $\{w ∈ \bar{\mathbb{H}} \mid \abs{w} = R\}$, parametrisiert als $w = R e^{iθ}, θ ∈ [0, π]$. Die Gleichung folgt aus dem Cauchy'schen Integralsatz,
+	mit einem zunächst um $i η, 0 < η < \Im z$ nach oben verschobenen Integrationsweg in $\mathbb{H}$. Da $f$ auf $\bar{\mathbb{H}}$ stetig ist, kann $η \to 0$ angenommen werden, das heißt das Integral darf auf der reellen Achse genommen werden.
+	Aus
+	\[\hat f(z) = \frac{1}{2πi} ∫_{γ_R} \frac{\hat f(w)}{w - z} \d w\]
+	können wir nun Aussagen über $\hat f(ω)$ für $ω ∈ ℝ$ zurückgewinnen, indem wir $z = ω + iε$ mit $\abs{ω} < R$ und $ε > 0$ setzen und $ε \to 0$ nehmen. Da $\hat f$ auf $\mathbb{H}$ stetig ist, existiert
+	dieser Grenzwert, obwohl die Nullstelle des Nenners zur reellen Achse hinwandert.
+    \[w = R e e^{iθ}\qquad σ(R) = \sum_{θ ∈ [0, π]} \abs{f(R e^{iθ})} \xrightarrow{R \to ∞} 0\]
+	Für den Beitrag des Halbkreises gilt
+    \begin{align*}
+    h_R &= \frac{1}{2π} ∫_0^π f(R e^{iθ}) \frac{R e^{iθ}}{R e^{iθ} - z} \d θ ⇒ \abs{h_R} \leq \frac{1}{2} \frac{R}{R - \abs{z}} σ(R) \xrightarrow{R \to ∞} 0 \\
+    ⇒ \hat f(z) &= \lim_{R \to ∞} \frac{1}{2πi} ∫_{-R}^{R} \frac{\hat f(w)}{w - z} \d w = \frac{1}{2πi} ∫_{-∞}^{∞} \frac{\hat f(w)}{w - z} \d w
+    \end{align*}
+	das heißt insbesondere, der Limes $R \to ∞$ existiert. $R < ∞$ im Folgenden, $R \to ∞$ erst am Schluss. Möchte $z ∈ ℝ$ nehmen, $z = ω$ (kann nicht so im Integral eingesetzt werden - Pol!).
+    Können $z = ω + i ε, ε > 0$ $ε \to 0$ da $f$ auf $\bar{\mathbb{H}}$ stetig ist.
+    $w - z = w - ω - iε \quad w ∈ [-R, R] ⊂ ℝ$. Zerlegen in Real- und Imaginärteil gibt
+    \begin{align*}
+    \frac{1}{w - ω - iε} &= \frac{w - ω + iε}{(w - ω)^2 + ε^2} \\
+	⇒ \frac{1}{2πi} ∫_{-R}^{R} \frac{\hat f(w)}{w - ω - iε} \d w &= \frac{1}{2π} ∫_{-R}^{R} \frac{ε}{ε^2 + (w - ω)^2} \hat f(w) \d w + \frac{1}{2πi} ∫_{-R}^{R} \frac{w - ω}{ε^2 + (w - ω)^2} \hat f(w) \d w
+    \intertext{mit $s = (w - ω) / ε$}
+    \frac{1}{2π} ∫_{-R}^{R} \frac{ε}{(w - ω)^2 + ε^2} \hat f(w) \d w &= \frac{1}{2π} ∫_{- \frac{R + ω}{ε}}^{\frac{R - ω}{ε}} \frac{1}{1 + s^2} \hat f(ω + ε s) \d s \\
+    \intertext{$\hat f$ stetig und $\hat f(ω) \xrightarrow{\abs{ω} \to ∞} 0 ⇒$ $\hat f$ ist beschränkt}
+    &= \frac{1}{2π} ∫_{-∞}^{∞} \frac{\hat f(ω + ε s)}{1 + s^2} χ_{[- \frac{R + ω}{ε}, \frac{R - ω}{ε}]} \d s \\
+    \abs{\frac{\hat f(ω + ε s)}{1 + s^2} χ_{[- \frac{R + ω}{ε}, \frac{R - ω}{ε}]}} &\leq \frac{\norm{\hat f}_∞}{1 + s^2} &= i g(s)
+    \intertext{Satz von Lebesque $⇒$ $\xrightarrow{ε \to 0} \hat f(ω) / 2$, jetzt 2. Term:}
+    \lim_{ε \to 0} \frac{1}{2πi} ∫_{-R}^{R} \frac{w - ω}{(w - ω)^2 + ε^2} \hat f(w) \d w &= \frac{1}{2πi} PV ∫_{-R}^{R} \frac{\hat f(w)}{w - ∞} \d w \\
+	\intertext{insgesamt gilt also:}
+    ε \to 0 \quad \hat f(ω) &= \frac{1}{2π i} PV ∫_{-R}^{R} \frac{\hat f(w)}{w - ω} \d w + \frac{1}{2} \hat f(ω) + h_R \\
+    R \to ∞ \quad \hat f(ω) &= \frac{1}{iπ} PV ∫_{-∞}^{∞} \frac{\hat f(w)}{w - ω} \d w \\
+    \hat f(ω) &= r(ω) + i s(ω) \\
+    r(ω) &= \frac{1}{π} PV ∫_{-∞}^{∞} \frac{s(w)}{w - ω} \d w
+    \end{align*}
+	Die Kramers-Kronig-Relation gibt also eine Beziehung zischen Real- und Imaginärteil der Fouriertransformierten der Antwortfunktion.
+*** Herglotzfunktionen
+	#+ATTR_LATEX: :options [Herglotz-Funktion]
+	#+begin_defn latex
+    $f: \mathbb{H} \to \mathbb{H}$ holomorph $⇔:$ "$f$ Herglotzfunktion". Zum Beispiel für $ρ$ positives Maß auf $ℝ$ und $∫ \d ρ = 1$
+	#+end_defn
+	#+begin_ex latex
+	Ist $ρ$ ein positives Maß auf $ℝ$ mit $∫ \d ρ(λ) = 1$, dann ist
+    \[Γ(z) = ∫ \frac{1}{λ - z} \d ρ(λ)\]
+	für alle $z ∈ \mathbb{H}$ definiert und $Γ$ ist holomorph. Außerdem ist $Γ(\mathbb{H}) ⊂ \mathbb{H}$, also ist $Γ$ eine Herglotz-Funktion. In der Quantenfeldtheorie ist zum Beispiel
+	$ρ$ das Spektralmaß gegeben und $Γ$ eine Zweipunktfunkiton bei komplexer Frequenz $z$.
+	#+end_ex
+** Holomorphie vektorwertiger Funktionen
+   Viele der obigen Sätze, nämlich diejenigen, in deren Beweis nicht verwendet wir, dass am Bildraum ein Produkt definiert ist, haben natürlich Verallgemeinerungen auf Funktionen $Ω \to V$, wobei
+   $Ω ⊂ ℂ$ offen ist und $V$ ein endlichdimensionaler \(ℂ\)-Vektorraum ist. Die Verallgemeinerung ist in diesem Fall sehr einfach, da man die Vektoren komponentenweise betrachten kann.
+   (Der Fall unendlichdimensionaler Bildräume ist vieler Hinsich analog, aber technisch komplizierter und wird später behandelt.) Als Anwendung leiten wir die Spektraltheorie von linearen Operatoren auf
+   endlichdimensionalen Räumen mit Methoden der	Funktionentheorie her.
+*** Grundlegendes
+	Erinnerung: Ist $V$ ein Vektorraum über $ℂ$ mit $n := \dim V < ∞$, so ist $V \cong ℂ^n$. Denn wir können mit einer Basis $\{\v e_1, \dots, \v e_n\} ∈ V$ jeden Vektor $v ∈ V$ mit komplexen
+	Koeffizienten $v_1, \dots, v_n ∈ ℂ$ als Linearkombination dieser Basis schreiben
+	\[v = \sum_{i = 1}^{n} v_i \v e_i\]
+	Die Abbildung $v ↦ (v_1, \dots, v_n) ∈ ℂ^n$ ist dann ein Vektorraumisomorphismus.
+	#+begin_defn latex
+	Es sei $Ω ⊂ ℂ$ offen und $f: Ω \to V$. Die Funktion $f$ ist genau dann holomorph, wenn für alle $i ∈ \{1, \dots, n\}$ die Abbildung $z ↦ f_i(z)$ holomorph ist.
+	#+end_defn
+	Da bei einem Basiswechsel die Komponenten von Vektoren mit einer invertierbaren und \(z\)-unabhängigen Matrix transformiert werden, kommt es nicht darauf an, welche Basis man wählt, das heißt
+	wenn eine Funktion im Sinne der obigen definition holomorph bezüglich einer Basis ist, ist sie es bezüglich aller Basen. Wenn $\braket{·|·}$ ein inneres Produkt auf $V$ ist, kann man äquivalent
+	formulieren: die Funktion $f$ ist genau dann holomorph, wenn für alle $v ∈ V$ die Abbildung $h: Ω \to ℂ, z ↦ \braket{v | f(z)}$ holomorph ist. \\
+	Wesentlich ist, dass wir mit dieser Definition den überwiegenden Teil der bisher entwickelten Theorie direkt auf Funktionen, die in einen endlichdimensionalen Vektorraum abbilden,	verallgemeinern können
+	und es ist eine gute Übung, sich diese Verallgemeinernug Satz für Satz zu überlegen. Wir gehen nicht auf alles ein, sondern formulieren nur kurz: Die Cauchy'sche Integralformel in der Form
+	\[f(z) = \frac{1}{2πi} ∫_γ \frac{f(w)}{w - z}\d w\]
+	gilt nun für jede Komponente $j ∈ \{1, \dots, n\}$ von $f$
+	\[f_j(z) = \frac{1}{2πi} ∫_γ \frac{f_j(w)}{w - z} \d w\]
+	Analog wie vorher folgt aus der Holomorphie die Analytizität, es gilt der Identitätssatz und vektorwertige Funktionen lassen sich ebenso wie komplexwertige um isolierte Singularitäten in konvergente
+	Laurentreihen entwickeln. Der Residuensatz gilt in entsprechender Verallegmeinerung. Im Folgenden wenden wir diese Theorie auf den Fall an, das der Bildraum der Vektorraum der linearen Abbildungen auf einem
+	endlichdimensionalen Raum ist und leiten mit den Methoden der Funktionentheorie in einfacher Weise die Spektralzerlegung für lineare Abbildungen auf endlichdimensionale Räumen ab.
+*** Lineare Abbildungen
+	$M : V \to V$ sei linear. Da $\dim V < ∞$, ist $M$ automatische stetig. $\braket{·|·}$ sei inneres Produkt auf $V$ und $\{\v e_1, \dots, \v e_n\}$ eine Orthonormalbasis. Die Matrixdarstellung
+	von $M$ bezüglich $\{\v e_1, \dots, \v e_n\}$ ist
+	\[\braket{\v e_i | M \v e_j} = m_{ij}\]
+	und
+	\[\braket{\v e_i | M v} = \sum_{j = 1}^{n} m_{ij} v_j \qquad v_j = \braket{\v e_j | v}\]
+	Wenn $M^{-1}$ existiert, ist die inverse Matrix gegeben durch
+	\[(m^{-1})_{ij} = \frac{1}{\det M} \cof_{ij} m\]
+	mit den üblichen Unterdeterminanten (Kofaktoren) $\cof_{ij}$ von $m$. Wir bezeichnen den Raum aller linearen Abbildungen von $V$ in sich selbst mit $\mathcal{L}(V) = \{M : V \to V \mid M \text{ linear}\}$.
+	$\mathcal{L}(V)$ ist ein \(ℂ\)-Vektorraum der Dimension $n^2$. $\mathcal{L}(V) \cong M_n(ℂ)$ vermöge der Abbildung von $M$ auf $m$. Im Folgenden bezeichnet $\mathbb{1}$ die Identität in $\mathcal{L}(V)$.
+	#+ATTR_LATEX: :options [Resolvente]
+	#+begin_defn latex
+	Es sei $M ∈ \mathcal{L}(V)$ und $z ∈ ℂ$. Dann definieren wir die Resolvente von $M$ als
+	\[R(z) = R_M(z) = (z - M)^{-1} \equiv (z · \mathbb{1} - M)^{-1}\]
+	In Matrixdarstellung gilt
+	\[R_{ij}(z) = (z · \v 1_n - m)_{ij}^{-1}\]
+	Die Resolvente ist definiert auf der Resolventenmenge $ρ = ρ_M$, welche gegeben ist durch
+	\begin{align*}
+	ρ_M &= \{z ∈ ℂ \mid z - M \text{ ist invertierbar}\} \\
+	&= \{z ∈ ℂ \mid \det (z · \v 1_n - m) \neq 0\} = ℂ \setminus σ(M)
+	\end{align*}
+	Dabei ist $σ(M)$ das Spektrum von $M$.
+	\[σ(M) = \{λ ∈ ℂ \mid λ \text{ Eigenwert von $M$}\}\]
+	#+end_defn
+	#+begin_thm latex
+	$R_M: ℂ \setminus σ(M) \to \mathcal{L}(V)$ ist eine analytische Funktion.
+	#+end_thm
+	#+begin_proof latex
+	Übungen.
+	#+end_proof
+** Topologische Begriffe
+   Eine *Topologie* auf einer Menge $X \neq \emptyset$ ist eine Familie $\mathcal{T}$ von Teilmengen ("offene Mengen") mit den Eigenschaften
+   1. $\emptyset ∈ \mathcal{T}$
+   2. $X ∈ \mathcal{T}$
+   3. $A, B ∈ \mathcal{T} ⇒ A ∩ B ∈ \mathcal{T}$
+   4. $(A_λ)_{λ ∈ I} ∈ \mathcal{T} ⇒ \bigcup_{λ ∈ I} A_λ ∈ \mathcal{T}$ für eine beliebige Indexmenge $I$.
+   Wenn $(X, \mathcal{T})$ ein topologischer Raum ist und $\emptyset \neq Y ⊂ X$, dann ist $\mathcal{T}' = \{Y ∩ T \mid T ∈ \mathcal{T}\}$ eine Topologie auf $Y$ (Relativtopologie). \\
+   Sei $(X, d)$ ein metrischer Raum. Die Definition $A ∈ \mathcal{T}$ genauer dann, wenn $A = \emptyset$ oder für alle $x ∈ A$ gibt es ein $r > 0$, sodass $\{y ∈ X \mid d(x, y) < r\} ⊂ A$
+   definiert eine Topologie auf $X$, die von der Metrik $d$ induzierte Topologie auf $X$. Wenn $(X, \norm{·})$ normiert ist, dann ist $d(x, y) = \norm{x - y}$ eine Metrik auf $X$.
+   Die von dieser Metrik induzierte Topologie auf $X$ heißt Normtopologie auf $X$. \\
+   Eine Umgebung $U$ eines Punktes $x$ in einem toplogischen Raum ist eine Menge, die zusammen mit $x$ noch eine offene Menge $V$ enthält $x ∈ V ⊂ U$. \\
+   Ein topologische Raum heißt *Hausdorff'sch*, wenn es zu je zwei verschiedenen Punkten disjunkte Umgebungen gibt: $z_1 \neq z_2 ⇒ ∃ U_1$ Umgebung von $z_1$ und $U_2$ Umgebung von $z_2$ mit
+   $U_1 ∩ U_2 = \emptyset$. \\
+   Eine Funktion $f: X \to Y$ von topologischen Raum $(X, \mathcal{T})$ in einen topologischen Raum $(Y, \mathcal{T}')$ heißt stetig, wenn die Urbilder offener Mengen offen sind:
+   \[∀ V ∈ \mathcal{T}' : f^{-1}(V) ∈ \mathcal{T}\]
+   $f$ ist ein Homöomorphismus, wenn $f$ bijektiv ist und sowohl $f$ als auch die Umkherfunktion $f^{-1}$ stetig sind. \\
+   Ein topologischer Raum $M$ heißt zusammenhängen, wenn er keine Zerlegung in disjunkte offene Mengen zulässt, das heißt $\not ∃ \mathcal{O}_1, \mathcal{O}_2 ⊂ M$ offen, sodass
+   $M = \mathcal{O}_1 ∪ \mathcal{O}_2$ und $\mathcal{O}_1 ∩ \mathcal{O}_2 = \emptyset$. Daraus folgt unmittelbar der Satz
+   #+begin_thm latex
+   Wenn $\emptyset \neq A ⊂ M$ offen und abgeschlossen in $M$ ist, dann	ist $A = M$.
+   #+end_thm
+   In einem metrischen Raum ist der Zusammenhang dasselbe wie Wegzusammenhang. ($M$ heißt wegzusammenhängen, wenn es für alle $x_1, x_2 ∈ M$ eine stetige Funktion $γ: [0, 1] \to M$ gibt, sodass $γ(0) = x_1$ und $γ(1) = x_2$)
+* Analysis auf Banach- und Hilberträumen
+** Grundbegriffe
+   Sei $V$ ein Vektorraum über dem Körper $\mathbb{K}$. $W \leq V$, wenn $W$ ein Untervektorraum von $V$ ist. Für $A ⊂ V$ bezeichnen mir mit $\Span A$ die Menge aller endlichen Linearkombinationen von Vekotoren in
+   $A$:
+   \[\Span A = \{\sum_{j = 1}^{n} λ_j a_j \mid n ∈ ℕ, λ_1, \dots, λ_n ∈ \mathbb{K}, a_1, \dots, a_n ∈ A\}\]
+   ("der von $A$ aufgespannte Unterraum"). Es sei $\mathbb{K} = ℝ$ oder $\mathbb{K} = ℂ$ und $X$ ein \(\mathbb{K}\)-Vektorruam. $p: X \to \string[0, ∞\string)$ ist eine Halbnorm auf $X$ (und $(X, p)$ ein halbnormierter Raum), wenn
+   1. $p(λ x) = \abs{λ} p(x) ∀ λ ∈ \mathbb{K}$ und alle $x ∈ X$
+   2. $p(x + y) \leq p(x) + p(y) ∀ x, y ∈ \mathbb{K}$
+   Wenn außerdem aus $p(x) = 0$ folgt, dass $x = 0$ ist, dann nennt man $p$ eine Norm auf $X$ und $(X, p)$ einen normierten Raum. Schreibweise: $p(x) = \norm{x}$. Wenn
+   $(X, \norm{·})$ normiert ist, dann ist $d(x, y) = \norm{x - y}$ eine Metrik auf $X$, die von der Norm induzierte Metrik. Die zughörige Topologie heißt die *Normtopologie* auf $X$. \\
+   Eine Folge $(x_n)_{n ∈ ℕ}$ in einem metrischen Raum $X$ heißt Cauchyfolge, wenn es für alle $ε > 0$ ein $N ∈ ℕ$ gibt, sodass für alle $m, n \geq N$ gilt $d(x_m , x_n) < ε$. Die Folge heißt in
+   $X$ konvergent, wenn es ein $x ∈ X$ gibt,	sodass für alle $ε > 0$ ein $N ∈ ℕ$ existiert, sodass für alle $n \geq N$ gilt $d(x_n, x) < ε$.
+   #+ATTR_LATEX: :options [Banachraum]
    #+begin_defn latex
-   $0 \leq ρ_1 < ρ_2: \mathcal{K}_{ρ_1, ρ_2}(z_0) = \{z ∈ ℂ: ρ_1 < \abs{z - z_0} < ρ_2\}$. $ρ_1 = 0$: "Punktierte Kreisscheibe" $\mathcal{K}_{0,p}(z_0) = B_ρ(z_0) \setminus \{z_0\}$.
+   Ein normierter Raum $(X, \norm{·})$ heißt Banachraum, wenn $X$ in der Normtopologie vollständig ist, das heißt wenn für jede Cauchyfolge $(x_n)_{n ∈ ℕ}$ in $X$ gilt: es gibt ein $x ∈ X$ sodass
+   \[\norm{x_n - x} \xrightarrow{n \to ∞} 0\]
    #+end_defn
-   #+ATTR_LATEX: :options [Laurentreihe]
-   #+begin_thm latex
-   $f: \mathcal{K}_{ρ_1, ρ_2}(z_0) \to ℂ$ holomorph. Für $r ∈ (ρ_1, ρ_2)$ ist
-   \[c_n = \frac{1}{2πi} ∫_{\abs{w} = r} \frac{f(w)}{w^{n + 1}} \d w\]
-   unabhängig von $r ∀ n ∈ ℤ$, und die Laurentreihe von $f$
-   \[\sum_{n = -∞}^{∞} c_n z^n\]
-   konvergiert in $\mathcal{K}_{ρ_1, ρ_2}(0)$ absolut und kompakt und
-   \[f(k) = \sum_{n - ∞}^{∞} c_n z^n\]
-   Der *Hauptteil* der Laurentreihe
-   \[\sum_{n = -∞}^{-1} c_n z^n = \frac{c_{-1}}{z} + \frac{c_{-2}}{z^2} + \dots\]
-   konvergiert für alle $z ∈ ℂ$ mit $\abs{z} > ρ_1$. Der *Nebenteil* der Laurentreihe
-   \[\sum_{n = 0}^{∞} c_n z^n = c_0 + c_1 z + c_2 z^2 + \dots\]
-   konvergiert für alle $z$ mit $\abs{z} < ρ_2$.
-   #+end_thm
-   #+begin_proof latex
-   Wähle $r_1$ und $r_2$ so, dass $ρ_1 < r_1 < r_2 < ρ_2$. $R = \mathcal{K}_{r_1, r_2}(0)$. $R$ ist einfach zerlegbar. $\partial R = \partial B_{r_2}(0) - \partial B_{r_1}(0)$.
-   $\bar R$ ist Teilmenge des Holomorphiegebiets von $f$. Cauchy'sche Integralformel $⇒$ für $z ∈ R$ ist
-   \begin{align*}
-   f(z) &= \frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{f(w)}{w - z} \d w - \frac{1}{2πi} ∫_{\abs{v} = r_1} \frac{f(v)}{v - z} \d v \\
-   &= \frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{\d w}{w} \frac{f(w)}{1 - \frac{z}{w}} + \frac{1}{2πi} ∫_{\abs{v} = r_1} \frac{\d v}{z} \frac{f(v)}{1 - \frac{v}{z}} \\
-   \intertext{$\abs{z} < r_2 ⇒ \abs{z/w} < 1$, $\abs(z) > r_1 ⇒ \abs{v/z} < 1$ $⇒$ Entwicklung durch geometrische Reihe}
-   &= \sum_{n = 0}^{∞} z^n \underbrace{\frac{1}{2πi} ∫_{\abs{w} = r_2} \frac{f(w)}{w^{n + 1}} \d w}_{= c_n} + \sum_{n = 0}^{∞} z^{-n-1} \frac{1}{2πi} ∫_{\abs{v} = r_1} v^n f(v) \d v \\
-   f(z) &= \sum_{n = 0}^{∞} c_n z^n + \sum_{k = -∞}^{-1} z^k \underbrace{\frac{1}{2πi} ∫ \frac{f(v)}{v^{k + 1}} \d v}_{= c_k} \\
-   &= \sum_{n = -∞}^{-1} c_n z^n + \sum_{n = 0}^{∞} c_n z^n \\
-   &= H(z) + N(z)
-   \end{align*}
-   #+end_proof
-   #+ATTR_LATEX: :options [Hebbarkeitssatz von Riemann]
-   #+begin_thm latex
-   $f: \dot B_ρ(0) \to ℂ$. Es gebe $M > 0$
-   \[∀ z ∈ \dot B_ρ(0): \abs{f(z)} < M\]
-   Dann existiert der Grenzwert
-   \[c_0 := \lim_{z \to 0} f(z)\]
-   und die (eindeutig bestimmte) stetige Fortsetzung von $f$ auf $B_ρ(0)$ (gegeben durch $f(0) := c_0$) ist holomorph.
-   #+end_thm
-   #+begin_proof latex
-   $n \geq 1, 1 < r < ρ$.
-   \begin{align*}
-   c_{-n} &= \frac{1}{2πi} ∫_{\abs{w} = r} f(w) w^{n - 1} \d w = \frac{1}{2πi} ∫ f(r e^{iθ}) e^{i(n - 1) θ} r^{n - 1} i r e^{iθ} \d θ\\
-   ⇒ \abs{c_n} &\leq \frac{r^n}{2π} ∫_0^{2π} \d θ \abs{f(r e^{iθ})} \leq r^n M \xrightarrow{r \to 0} 0 \\
-   ⇒ ∀ n \geq 1: c_{-n} &= 0
-   \end{align*}
-   $⇒$ Hauptteil der Laurentreihe $= 0$.
-   \begin{align*}
-   f(z) &= \sum_{n = 0}^{∞} c_n z^n \qquad ∀ z ∈ \dot B_ρ(0) \\
-   f(0) &:= c_0
-   \end{align*}
-   #+end_proof
-   Endlich viele isolierte Singularitäten
-   $z_1, \dots, z_n ∈ ℂ, z_i \neq z_j ∀ i \neq j$. $f: ℂ \setminus \{z_1, \dots, z_n\} \to ℂ$ sei holomorph. \\
-   $∀ j ∈ \{1, \dots, n\} ∃ r_j > 0$, sodass die Laurentreihe um $z_j$ auf $\dot B_{rj}(z)$ konvergiert. Die $r_j$ können so klein gewählt werden, dass
-   \[B_{r_i} (z_i) ∩ B_{r_k}(z_k) = \emptyset ∀i \neq k\]
-   \begin{align*}
-   L_j(z) &= H_j(z) + N_j(z) \\
-   H_j(z) &= \sum_{n = -∞}^{-1} c_n^{(j)}(z - z_j)^n \\
-   N_j(z) &= \sum_{n = 0}^{∞} c_n^{(j)}(z - z_j)^n \\
-   φ(z) &= f(z) - \sum_{j = 1}^{n} H_j(z)
-   \end{align*}
-   $⇒ φ(z)$ ist ganze Funktion. (auf $\dot B_{r_j}(z_j)$ ist
-   \[f(z) = N_j(z) - \sum_{\substack{k = 1 \\ k \neq j}}^{n} H_k(z)\]
-   holomorph, also auf $\dot{B_{r_j / 2}(z_j)}$ beschränkt $⇒$ die Singulatriät $z_j$ von $φ$ ist hebbar) \\
-   Wichtiger Spezialfall: rationale Funktionen
-   \[f(z) = \frac{P(z)}{Q(z)}\]
-   $Q$ nicht identisch Null, $P, Q$ Polynome. $f: ℂ \setminus \{z_1, \dots, z_n\} \to ℂ$ holomorph, wenn $z_1, \dots, z_n$ die Nullstellen von $Q$ sind.
-   \[\frac{P(z)}{Q(z)} = \sum_{j = 1}^{n} \sum_{n= 1}^{m_j} \frac{c_{-n}^{(j)}}{(z - z_j)^n} + \underarrow[ϕ(z)]{ganz}\]
-   Wenn $\deg P < \deg Q$, dann gilt $ϕ(z) \xrightarrow{\abs{z} \to ∞} 0$. $⇒ ϕ$ ist beschränkt $\xRightarrow{\text{Satz von Liouville}} ϕ = \const ⇒ ϕ = 0$.
-   #+ATTR_LATEX: :options [Partialbruchzerlegung]
-   #+begin_thm latex
-   Jede rationale Funktion $P / Q$ mit $\deg P < \deg Q$ hat eine die Partialbruchzeilegung
-   \[\frac{P(z)}{Q(z)} = \sum_{j = 1}^{n} \sum_{n = 1}^{m_j} \frac{c_{-n}^{(j)}}{(z - z_j)^n}\]
-   Ohne die Annahme $\deg P < \deg Q$ folgt $ϕ$ ist ein Polynom.
-   #+end_thm
-   #+ATTR_LATEX: :options [Residuum]
-   #+begin_defn latex
-   $f: U \setminus \{z_0\} \to ℂ$ holomorph. Laurentreihe
-   \[f(z) = \sum_{n ∈ ℤ} c_n (z - z_0)^n\]
-   Das Residuum von $f$ bei $z_0$ ist
-   \begin{align*}
-   \Res_{z_0} f &:= \Res_{z = z_0} f(z) := c_{-1} \\
-   \intertext{für $r > 0$ klein genug:}
-   \Res_{z_0} f &= \frac{1}{2πi} ∫_{\abs{z - z_0} = r} f(z) \d z
-   \end{align*}
-   #+end_defn
-   #+ATTR_LATEX: :options [Residuensatz]
-   #+begin_thm latex
-   $U ⊂ ℂ$ offen, $S$ sei eine diskrete Teilmenge von $U$. Die Funktion $f$ sei auf $U$ bis auf isolierte Singularitäten in $S$ holomorph, das heißt $f: U \setminus S \to ℂ$ holomorph.
-   Wenn $A$ endlich zerlegbar ist, $\bar A ⊂ U$ und $\partial A ∩ S = \emptyset$, dann ist
-   \[∫_{\partial A} f(z) \d z = 2πi \sum_{z ∈ S ∩ A} \Res_z f\]
-   #+end_thm
-   #+begin_proof latex
-   Linke Seite ist wohldefiniert, da $S ∩ \partial A = \emptyset$, $\partial A$ kompakt $⇒$ Integral über stetige Funktionen auf Kompaktum. Rechte Seite ist wohldefiniert, da $\bar A$ kompakt, also $S ∩ A$
-   endlich. $S ∩ A = \{z_1, \dots, z_n\}$.
-   \[∀ j ∃ ρ_j > 0: \bar B_j := \bar{B_{ρ_j}(z_j)} ⊂ A \quad\text{und}\quad \bar B_j ∩ S = \{z_j\}\]
-   ($ρ_j$ so klein, dass die Laurentreihe auf $f$ um $z_j$ konvergiert.)
-   \[R = A \setminus \bigcup_{j = 1}^n \bar B_j\]
-   endlich zerlegbar ($R$ ist offen, $\bar R$ ist kompakt). $R ⊂ U \setminus S$ (Holomorphiegebiet von $f$).
-   \begin{align*}
-   ⇒ ∫_{\partial R} f(z) \d z = 0 \\
-   \partial R &= \partial A - \sum_{j = 1}^{n} \partial \bar B_j \\
-   ⇒ ∫_{\partial A} f(z) \d z &= \sum_{j = 1}^{n} ∫_{\partial \bar B_j} f(z) \d z \\
-   &= 2 π i \sum_{j = 1}^{n} \Res_{z_j}(z)
-   \end{align*}
-   #+end_proof
-   Residuenkalkül: Berechnen von Integralen mit Hilfe des Residuensatzes (Trickkiste)
-   Beispiele:
-   \begin{align*}
-   ∫_{-∞}^{∞} \frac{\d x}{x^2 + 2x + 2} &= \lim_{a \to -∞} \lim_{b \to ∞} ∫_a^b \frac{\d x}{x^2 + 2x + 2} \\
-   x^2 + 2x + 2 &= (x + 1)^2 + 1 \geq 1 ∀ x ∈ ℝ \\
-   \intertext{$⇒$ kein Pol am Integrationsweg. Weil Integrand $\sim 1/x^2$ für $\abs{x} \to ∞$:}
-   b > 0: \quad ∫_{b}^{c} \frac{\d x}{(x + 1)^2 + 1} &\leq ∫_{b}^c \frac{\d x}{(x + 1)^2} \leq \frac{1}{b + 1}
-   \intertext{$⇒$ Integral konvergiert und}
-   I &= \lim_{L \to ∞}  ∫_{-L}^{L} \frac{\d x}{x^2 + 2x + 2} \\
-   f(z) &= \frac{1}{(z + 1)^2 + 1} \\
-   \string(z + 1\string)^2 + 1 = 0 \\
-   z = -1 \pm i \\
-   \end{align*}
-   $f: ℂ \setminus \{-i - i, -i + 1\} \to ℂ$ \text{holomorph}. $γ_L:$ Halbkreis mit Radius $L$ um Null, $ι_L$: Intervall $[-L, L]$
-   \begin{align*}
-   ∫_{γ_L + ι_L} f(z) \d z &= 2π i \Res_{-i + 1} f \\
-   ∫_{ι_L} f(z) \d z &\xrightarrow{L \to ∞} I \\
-   \intertext{Behauptung:}
-   ∫_{γ_L} f(z) \d z &\xrightarrow{L \to ∞} 0 \\
-   ⇒ I = 2πi \Res_{-1 + i} f
-   \end{align*}
-   $γ_L$ parametrisiert durch $z(θ) = L e^{iθ}$, $0 \leq θ \leq π$ \\
-   \begin{align*}
-   ∫_{γ} f(z) \d z &= ∫_{0}^{∞} \d θ f(L e^{iθ}) i L e^{iθ} \\
-   \abs{∫_γ f(z) \d z} &\leq L ∫_0^{π} \abs{f(L e^{iθ})} \d θ \leq L π \sup_{0 \leq θ \leq π} \abs{f(L e^{iθ})} \\
-   \abs{(L e^{iθ} + 1)^2 + 1} &\geq L^2 u \quad u > 0, L > 10 (\text{ was?}) \\
-   ⇒ \sup_{0 \leq θ \leq ∞} \abs{f(L e^{iθ})} &\leq \frac{1}{u} \frac{1}{L^2} \\
-   \abs{∫_γ f(z) \d z} &\leq \frac{π}{u} \frac{L}{L^2} = \frac{π}{uL} \xrightarrow{L \to ∞} 0 \\
-   f(z) &= \frac{1}{(z + 1 - i)(z + 1 + i)} = \frac{1}{(z - z_{+})(z - z_{-})} \qquad z_{\pm} = - 1 \pm i \\
-   &= \frac{1}{(z - z_{+})(z_i - z_{-} + z - z_{+})} = \frac{1}{2i} \frac{1}{z - z_{+}} \sum_{k = 0}^{∞} \frac{(z - z_{+})^k}{(2i)^k} \\
-   \Res_{-1 + i} f &= \frac{1}{2i} \\
-   I &= 2πi \frac{1}{2i} = π
-   \end{align*}
-   Beispiel 2:
-   \[∫_{-∞}^{∞} \frac{e^{iωt}}{ω - Ω + i Γ} \d ω \qquad t, Ω, Γ ∈ ℝ\]
-   Betrachte
-   \[w ↦ \frac{1}{ω - Ω - iΓ} = \frac{1}{ω - ω_0} \qquad ω_0 = Ω - iΓ\]
-   Pol bei $ω_0$: wollen, dass $ω_0 \not ∈ ℝ$, das heißt $Γ \neq 0$. $ω ∈ ℝ$
-   \[\abs{\frac{1}{ω - Ω ξ iΓ}} = \frac{1}{\sqrt{(ω - Ω)^2 + Γ^2}} = \begin{cases} \frac{1}{\abs{ω - Ω}} & Γ = 0 \\ \frac{1}{\abs{Γ}} & Γ \neq 0\end{cases}\]
-   wenn $\abs{ω} \to ∞$, ist
-   \[\frac{1}{ω - Ω - i Γ} \sim \frac{1}{ω}\]
-   Betrachte also das Integral
-   \begin{align*}
-   ∫_1^∞ \frac{\d ω}{ω} &= ∞ \\
-   ∫_0^b \frac{\d ω}{ω} &= \ln b \xrightarrow{b \to ∞} ∞
-   \end{align*}
-   ist also nicht konvergent, das heißt der Integrand ist nicht im $L^1$ (auch für $Γ \neq 0$).
-   Definiere
-   \[J_{ab} = ∫_a^b \frac{e^{iωt}}{ω - Ω - iΓ} \d ω\]
-   und
-   \begin{align*}
-   J &= \lim_{a \to ∞} \lim_{b \to ∞}  J_{ab} \\
-   \end{align*}
-   $t = 0$:
-   \[∫_{-2 \abs{ω_0}}^{2 \abs{ω_0}} \frac{1}{ω - ω_0} \d ω\]
-   ist endlich ($ω_0 \not ∈ ℝ$, da $Γ \neq 0$). $b > 2 \abs{ω_0}$:
-   \begin{align*}
-   ∫_{2\abs{ω_0}}^b \frac{\d ω}{ω - ω_0} &= ∫_{2 \abs{ω_0}}^b \frac{\d ω}{ω}(\frac{1}{1 - \frac{ω_0}{ω}} - 1 + 1) \\
-   &= ∫_{2 \abs{ω_0}}^b \frac{\d ω}{ω} + ω_0 ∫_{2\abs{ω_0}}^b \frac{\d ω}{ω(ω - ω_0)}
-   &= \ln \frac{b}{2 \abs{ω_0}} + \mathcal{O}{1}
-   \end{align*}
-   Nun betrachte
-   \begin{align*}
-   ∫_a^{-2 \abs{ω_0}} \frac{\d ω}{ω - ω_0} = \ln \frac{2 \abs{ω_0}}{\abs{a}} + \mathcal{O}(1) \\
-   \end{align*}
-   $b = 0$:
-   \[J_{ab} - \ln \frac{b}{\abs{a}} = \mathcal{O}(1)\]
-   Fazit: für $t = 0$ existiert $J$ nicht(nur der "Hauptwert" $\lim_{b \to ∞} J_{-b,b}$). Behauptung: $∀ t \neq 0, Γ \neq 0$ existiert der Limes für $J$.
-   Heilmittel: partielle Integration
-   \begin{align*}
-   e^{iωt} &= \frac{1}{it} \dd{}{ω} e^{iωt} \\
-   ⇒ J_{ab} &= \frac{1}{it} ∫_a^{b} \frac{1}{ω - ω_0} \dd{}{ω} e^{iωt} \\
-   &= \underbrace{\frac{1}{it} \frac{e^{iωt}}{ω - ω_0}}_{\xrightarrow{a,b \to ∞} 0} \Bigg|_a^b - \underbrace{\frac{1}{it} ∫_a^b e^{iωt} \frac{1}{(ω - ω_0)^2} \d ω}_{\sim 1/ω^2 ⇒ \text{ absolut konvergent}} \\
-   &= \lim_{l \to ∞} ∫_{-l}^{l} \frac{e^{iωt}}{ω - Ω - i Γ} \tag{$t \neq 0$} \\
-   \end{align*}
-   $ω = u + iv$:
-   \[t > 0: e^{iωt} = e^{iωt} e^{-vt}\]
-   $v > 0$ "oben schließen" \\
-   \[t < 0: e^{iωt} = e^{iωt} e^{v \abs{t}}\]
-   $⇒ v < 0$ "unten schließen"
-   betrachte also wieder einen Halbkreis, $γ_L^{+}$ sei der positive ($v > 0$) und $γ_L^{-}$ endsprechend der negative ($v < 0$), mit vorheriger Notation für $t > 0$:
-   \begin{align*}
-   \intertext{$ω_j$ Pol von $(ω - ω^0)^{-1}$ im Inneren von $ι_L + γ_L^{(+)}$}
-   ∫_{ι_L + γ_L^{+}} \frac{e^{iωt}}{ω - ω_0} \d ω &= 2πi \sum_{ω_j \text{ Pol}} \Res_{ω_j} \frac{1}{ω - ω_0} \\
-   &= \begin{cases} 0 & \Im ω_0 = Γ < 0 \\ 2 π i \Res_{ω + iΓ} \frac{i ω t}{ω - ω_0} & Γ > 0\end{cases} \\
-   &= 2πi e^{iω_0 t} = 2πi e^{iΩt} e^{-Γt}
-   \end{align*}
-   für $t < 0$ erhält man
-   \begin{align*}
-   ∫_{ι_L + γ_L^{-}} \frac{e^{iωt}}{ω - ω_0} \d ω = -2πi \begin{cases} 0 & Γ > 0 \\ e^{iΩ t} e^{-iΓt} & Γ < 0\end{cases}
-   \end{align*}
-   Warum verschwindet der Beitrag von $γ_L^{(+)}$, wenn das Vorzeichen von $t$ "stimmt"?
-   #+ATTR_LATEX: :options [Lemma von Jordan]
    #+begin_lemma latex
-   $Q$ sei meromorph in $\bar{\mathbb{H}}$ und habe höchstens endlich viele Pole, die alle in $\mathbb{H}$ liegen
-   \begin{align*}
-   \mathbb{H} &= \{z ∈ ℂ \mid \Im z > 0\} \\
-   \bar{\mathbb{H}} &= \{z ∈ ℂ \mid \Im z \geq 0\} \\
-   \end{align*}
-   Es gelte
-   \[\lim_{\abs{z} \to ∞} Q(z) = 0 \]
-   in $\mathbb{H}$ gleichmäßig in $φ = \arg z$.
-   \[Γ_ρ: [0, π] \to ℂ, φ ↦ ρ e^{iφ}\]
-   Es sei $m > 0$. Dann gilt
-   \begin{align*}
-   I &= \lim_{ρ \to ∞} I_ρ = 0 \\
-   \text{wobei } I_ρ &= ∫_{Γ_ρ} Q(z) e^{im z} \d z
-   \end{align*}
+   Wenn $X$ ein Banachraum und $U \leq X$ abgeschlossen ist, dann ist $U$ ebenfalls ein Banachraum. Wenn $X$ normiert ist und $U \leq X$ vollständig, dann ist $U$ abgeschlossen.
+   #+end_lemma
+   $X$ normiert. Die unendliche Reihe
+   \[\sum_{n = 1}^{∞} x_n\]
+   ist konvergenz, wenn die Folge $(s_n)_{n ∈ ℕ}$ der Partialsummen
+   \[s_n = \sum_{k = 1}^{n} x_k\]
+   in der Norm konvergiert, das heißt $∃ s ∈ X : \norm{s_n - s} \xrightarrow{N \to ∞} 0$, normkonvergent, wenn die Reihe
+   \[\sum_{n = 1}^{∞} \norm{x_n}\]
+   konvergiert.
+   #+begin_lemma latex
+   Ein normierter Raum $(X, \norm{·})$ ist genau dann vollständig, wenn jede normkonvergente unendliche Reihe in $X$ konvergiert.
+   #+end_lemma
+** Vervollständigung
+   Die Vollständigkeit von Räumen ist zentral, wenn man	Lösungen von Gleichnugen durch Iteration oder unendilche Reihe finden will - in unvollständigen Räumen kann es passiere, dass der Grenzwert nicht exisitert
+   (bekanntlich kann man auf den rationalen Zahlen nicht einmal die Wurzelfunktion, und schon garnicht die elementar-transzendenten Funktionen definiern). Wir zeigen hier einen allgemeinen Satz über Vervollständigung,
+   da wir sehr oft Räume als Vervollständigung "einfacherer", aber unvollständiger Räume konstruieren werden.
+   #+begin_thm latex
+   Jeder metrische Raum $(X, d)$ hat eine Vervollständigung, das heißt es gibt einen vollständigen metrischen Raum $(\tilde X, \tilde d)$ und eine Isometrie
+   \[i: X \to \tilde X\]
+   sodass $i(X)$ in $\tilde X$ dicht liegt. Die	Vervollständigung ist bis auf Isometrie eindeutig. Jeder normierte Raum kann zu einem Banachraum vervollständigt werden. Die Vervollständigung ist bis
+   auf isometrische Isomorphie eindeutig.
+   1. Der Raum $\tilde X$ als Menge. Es SEi $Γ$ der Raum aller Cauchyfolge in $X$. Die Relation
+	  \[(x_n)_{n ∈ ℕ} \sim (x_n')_{n ∈ ℕ} \quad\text{wenn}\quad d(x_n, x_n') \xrightarrow{n \to ∞} 0\]
+	  ist reflexiv, symmetrisch und transitiv, also eine Äquivalenzrelation auf $Γ$. Bezeichne die Äquivalenzklasse mit $\tilde x = [(x_n)_{n ∈ N}]$. $\tilde X$ ist der Raum aller dieser Äquivalenzklassen:
+	  \[\tilde X = \{[(x_n)_{n ∈ ℕ}] \mid (x_n)_{n ∈ ℕ} ∈ Γ\}\]
+	  Man zeigt leicht, dass im Fall, dass $X$ ein normierter Raum ist $λ \tilde + \tilde y := [(λ x_n + y_n)]$ unabhängig vom Representanten ist, und dass mit dieser Definition $\tilde X$ zum Vektorraum wird.
+   2. Die Metrik auf $\tilde X$. Es seien $(x_n)_{n ∈ ℕ}$ und $(y_n)_{n ∈ ℕ}$ in $G$. Dann folgt aus der umgekherten Dreicksgleichung
+	  \begin{align*}
+	  \abs{d(a, b) - d(a, c)} &\leq d(b, c) \\
+	  ⇒ \abs{d(x_m, y_m) - d(x_n, y_n)} &\leq \abs{d(x_m, y_m) - d(x_n, y_m)} + \abs{d(x_n, y_m) - d(x_n, y_n)} \\
+	  &\leq d(x_m, x_n) + d(y_m, y_n) \xrightarrow{m, n \to ∞} 0
+      \end{align*}
+	  also existierte der Limes
+	  \[\lim_{n \to ∞} d(x_n, y_n)\]
+	  Nun seien $(x_n)_{n ∈ ℕ} \sim (x_n')_{n ∈ ℕ}$ und $(y_n)_{n ∈ ℕ} \sim (y_n')_{n ∈ ℕ}$, also
+	  \[\lim_{n \to ∞} d(x_n, x_n') = 0 \quad\text{und}\quad \lim_{n \to ∞} d(y_n, y_n')\]
+	  Wieder folgt aus der umgekehrten Dreickesgleichung
+	  \[\abs{d(x_n, y_n) - d(x_n', y_n')} \leq d(x_n, x_n') + d(y_n, y_n')\]
+	  und somit
+	  \[\lim_{n \to ∞} d(x_n, y_n) = \lim_{n \to ∞} d(x_n', y_n')\]
+	  Die Funktion $\tilde d: \tilde X × \tilde X \to R_0^+$ gegeben durch
+	  \[\tilde d(\tilde x, \tilde y) = \lim_{n \to ∞} d(x_n, y_n)\]
+	  ist also wohldefiniert, das heißt unabhängigi von der Wahl der Repräsentanten $(x_n)_{n ∈ ℕ}$ und $(y_n)_{n ∈ ℕ}$ von $\tilde x = [(x_n)_{n ∈ N}]$ und
+	  $\tilde y = [(y_n)_{n ∈ ℕ}]$. Aus der Tatsache, dass $d$ eine Metrik its, sowie Sätzen über Grenzwerte in $ℝ$ folgt: $\tilde d$ ist einen Metrik. Insbesondere gilt: wenn
+	  $\tilde d(\tilde x, \tilde y) = 0$ ist also
+	  \[d(x_n, y_n) \xrightarrow{n \to ∞} 0\]
+	  dann ist $(x_n)_{n ∈ ℕ} \sim (y_n)_{n ∈ ℕ}$ und daher $[(x_n)_{n ∈ ℕ}] = [(y_n)_{n ∈ ℕ}]$, also $\tilde x = \tilde y$. Dies motiviert, warum $\tilde X$ als Raum von Äquivalenzklassen eingeführt wurde und
+	  nicht	einfach als der Raum $Γ$: $\tilde d$ wäre ansonsten nur eine Pseudometrik. Im speziellen Fall eines normierten Raum $X$ setzt man
+	  \[\norm{\tilde x} = \lim_{n \to ∞} \norm{x_n}\]
+	  Der Limes existiert wieder wegen der Ungleichung
+	  \[\abs{\norm{x_m} - \norm{x_n}} \leq \norm{x_m - x_n}\]
+	  Man verifiziert mit Hilfe der Eigenschaften der Norm auf $X$ und Grenzwertsätzen, dass dies wirklich eine Norm auf $\tilde X$ definiert.
+   3. Einbettung von $X$ in $\tilde X$. Elemente von $X$ werden mit Äquivalenzklassen konstanter Folgen identifiziert, wie folgt. Für $x ∈ X$ setze $\underline{x} = (x, x, x, \dots) ∈ \tilde X$,
+	  das heißt $\underline{x}_n = x$ für alle $n$ und $i(x) = [\underline{x}]$. Dann gilt für alle $x, z ∈ X$
+	  \[\tilde d(i(x), i(z)) = \lim_{n \to ∞} d(\underline{x}_n, \underline{z}_n) = d(x, z)\]
+	  Somit ist die Abbildung $i: X \to \tilde X$ isometrisch und daher injektiv. Wir können also $X$ mit $i(X) ⊂ \tilde X$ identifizieren.
+   4. $X$ ist dicht in $\tilde X$. Sei $\tilde x = [(x_n)_{n ∈ ℕ}] ∈ \tilde X$ und $ε > 0$. $(x_n)_{n ∈ ℕ}$ ist eine Cauchyfolge, also gibt es ein $N ∈ ℕ$, sodass für alle $m, n \geq N: d(x_m, x_n) < ε/2$.
+	  Setze $ξ = x_N$. Dann gilt $i(ξ) ∈ i(X)$ und
+	  \[\tilde d(\tilde x, i(ξ)) = \lim_{n \to ∞} d(x_n, x_N) \leq \frac{ε}{2} < ε\]
+   5. $\tilde X$ ist vollständig. Die Idee der Vervollständigung mit dieser Konstruktion ist einfach: wenn $(x_n)_{n ∈ ℕ}$ eine Cauchyfolge in $X$ ist, dann
+	  ist die zugehörige Äquivalenzklasse $[(x_n)_{n ∈ N}] ∈ \tilde X$ ihr Grenzwert in $\tilde X$. Natürlich muss man, um die Vollständigkeit von $\tilde X$ zu zeigen, beweisen, dass jede
+	  Cauchyfolge in $\tilde X$ einen Grenzwert in $\tilde X$ hat. Tatsächlich genügt es aber Cauchyfolgen in $X$ zu betrachten, wie das folgende Lemma zeigt.
+   #+end_thm
+   #+begin_lemma latex
+   Es sei $(X, d)$ ein metrischer Raum und $A ⊂ X$ sei dich in $X$. Wenn jede Cauchyfolge in $A$ in $X$ konvergiert, dann ist $X$ vollständig.
    #+end_lemma
    #+begin_proof latex
-   Nach Vorraussetzung $∃ ρ_0 > 0$, sodass $Q$ auf $\{z ∈ ℂ \mid \abs{z} > \frac{ρ_0}{2}\}$
-   holomorph ist. $\to$ $I_ρ$ existiert für alle $ρ \geq ρ_0$
-   \[\lim_{ρ \to ∞}  Q(ρ e^{iθ}) = 0\]
-   gleichmäßig in $θ ∈ [0, π]$
-   \[z(θ) = ρ e^{iθ} e^{i m z(θ)} = e^{im ρ \cos θ} e^{-mρ \sin θ}\]
-   $0 ∈ [0, 1] ⇒ \sin θ \geq 0$.
+   Sei $(x_n)_{n ∈ ℕ}$ eine Cauchyfolge in $X$. Nach Vorraussetzung gibt es für alle $n ∈ ℕ$ ein $y_n ∈ A$, sodass
+   \[d(y_n, x_n) < \frac{1}{n}\]
+   Wir zeigen, dass $(y_n)_{n ∈ ℕ}$ eine Cauchyfolge its. Sei $ε > 0$. Es gibt ein $M ∈ ℕ$, sodass für alle $m, n \geq M$
+   \[d(x_m, x_n) < \frac{ε}{3}\]
+   Sei $N ∈ ℕ$ mit $N \geq \max \{M, \frac{3}{ε}\}$. Wenn $m, n \geq N$ sind, gilt also $d(x_m, x_n) < ε/3$ und außerdem
+   \[d(y_m, x_m) < \frac{1}{m} \leq \frac{ε}{3} \quad\text{und}\quad d(y_n, x_n) < \frac{1}{n} \leq \frac{ε}{3}\]
+   Insgesamt folgt für $m, n \geq N$
+   \[d(y_m, y_n) \leq d(y_m, x_m) + d(x_m, x_n) + d(x_n, y_n) < ε\]
+   $(y_n)_{n ∈ ℕ}$ ist also eine Cauchyfolge in $A$. Nach Voraussetzung ist $(y_n)_{n ∈ ℕ}$ konvergenz in $X$, das heißt es gibt $y := \lim_{n ∈ ℕ} y_n ∈ X$.
+   Wir zeigen nun, dass auch $x_n \xrightarrow{n \to ∞} y$. Sei $ε > 0$. Es gibt ein $K ∈ ℕ$, sodass für alle $k \geq K$
+   \[d(y_k, y) < \frac{ε}{2}\]
+   Für $k ∈ ℕ, k > \max\{K, \frac{2}{ε}\}$ gilt dann
+   \[d(x_k, y) \leq d(x_k, y_k) + d(y_k, y) < \frac{1}{k} + \frac{ε}{2} < \frac{ε}{2} + \frac{ε}{2} = ε\]
+   also konvergiert $(x_n)_{n ∈ ℕ}$ ebenfalls gegen $y$
+   #+end_proof
+   Um die Vollständigkeit von $\tilde X$ zu zeigen, genügt es also zu verifizieren, dass  jede Cauchyfolge in $i(X)$ in $X$ konvergent ist. Sei $(\tilde x_k)_{k ∈ ℕ}$ eine Cauchyfolge in
+   $i(X)$. Dann gibt es für alle $k$ ein $x_k ∈ X$, sodass $\tilde x_k = i(x_k) = [(x_k, \dots, x_k)]$, und $\tilde d(\tilde x_k, \tilde x_l) = d(x_k, x_l)$. Folglich ist $(x_k)_{k ∈ ℕ}$ eine Cauchyfolge in
+   $X$. Sei $\bar x := [(x_k)_{k ∈ ℕ}] ∈ \tilde X$. Zeige nun
+   \[\lim_{k \to ∞} \tilde d(\tilde x_k, \bar x) = 0\]
+   Für $ε > 0$ gibt es ein $K ∈ ℕ$, sodass für alle $k, l \geq K$
+   \[d(x_k, x_l) < \frac{ε}{2}\]
+   Also gilt für $k \geq K$
+   \[\tilde d(\tilde x_k, \bar x) = \lim_{l \to ∞} d(x_k, x_l) \leq \frac{ε}{2} < ε\]
+   somit ist $\bar x ∈ \tilde X$ Grenzwert der Cauchyfolge $(\tilde x_k)_{k ∈ ℕ}$, also $\tilde X$ vollständig. Damit ist der Satz bewiesen.
+** Beispiele von Banachräumen
+   Endlichdimensionale Räume: \\
+   Jeder endlichdimensionaler Vektorraum über $\mathbb{K}$ ist isomorph zu $\mathbb{K}^n$. Gängige Normen auf $\mathbb{K}^n$ sind
    \begin{align*}
-   I_ρ &= i ρ ∫_0^π Q(ρ e^{iθ}) e^{i(θ + m ρ \cos θ)} e^{-m ρ \sin θ} \d θ \\
-   \abs{I_ρ} &\leq ρ ∫_0^π \abs{Q(ρ e^{iθ})} e^{-mρ \sin θ} \d θ \\
+   \norm{x}_∞ &= \max \{\abs{x_1}, \dots, \abs{x_n}\} \\
+   \norm{x}_1 &= \sum_{i = 1}^{n} \abs{x_i} \\
+   \norm{x}_2 &= (\sum_{i = 1}^{n} \abs{x_i}^2)^{1/2} \\
+   \norm{x}_p &= (\sum_{i = 1}^{n} \abs{x_i}^p)^{1/p}
    \end{align*}
-   $∀ ε > 0 ∃ ρ_1 > ρ_0 ∀ ρ \geq ρ_1 ∀ θ ∈ [0, π]: \abs{Q(ρ e^{iθ})} < ε$
+   Alle diese Normen sind äquivalent, das heißt eine Menge ist offen bezüglich einer dieser Normen, genau dann wenn sie es bezüglich einer anderen ist (auf endlichdimensionalen Räumen sind alle Normen äquivalent).
+   $\mathbb{K}^n$ ist mit jeder dieser normen ein Banachraum. \\
+   Folgenräume mit Supremumsnorm: \\
    \begin{align*}
-   ⇒ ∀ ρ > ρ_1: \abs{I_ρ} < ε ρ ∫_0^∞ e^{-mρ \sin θ} \d θ
+   d &= \{(t_n)_{n ∈ ℕ} \mid t_n ∈ \mathbb{K}, t_n \neq 0 \text{ für höchstens endlich viele } n\} \\
+   c_0 &= \{(t_n)_{n ∈ ℕ} \mid t_n ∈ \mathbb{K}, \lim_{n \to ∞} t_0 = 0\} \\
+   c &= \{(t_n)_{n ∈ ℕ} \mid t_n ∈ \mathbb{K}, \text{ konvergent}\} \\
+   l^{∞} &= \{(t_n)_{n ∈ ℕ} \mid t_n ∈ \mathbb{K}, (t_n)_{n ∈ ℕ} \text{ beschränkt}\} = l^∞(ℕ)
    \end{align*}
-   $∀ θ ∈ [0, π/2]: \sin θ \leq θ 2/π$
+   Es gilt $d \leq c_0 \leq c \leq l^∞$. Auch $d$ ist nicht endlichdimensional, denn die $e^{(n)} = (δ_{k,n})_{k ∈ ℕ}$ bilden für $n ∈ ℕ$ eine Basis von $d$, aber nicht wenn man $n$ auf irgendeine
+   endliche Menge Menge von $n$ einschränkt. Die Supremumsnorm
+   \[\norm{(t_n)_{n ∈ ℕ}} = \sup \{\abs{t_n} \mid n ∈ ℕ\}\]
+   ist eine Norm auf $l^∞$, also auch auf $d, c_0$ und $c$. Die Räume $c_0, c$ und $l^∞$ sind Banachräume, aber $d$ ist nicht vollständig (Beweis als Übung). \\
+   Die Folgenräume $l^p$ für $1 \leq p < ∞$
+   \[l^p = l^p(ℕ) = \{(t_n)_{n ∈ ℕ} \mid t_n ∈ \mathbb{K}, \sum_{n = 1}^{∞} \abs{t_n}^p < ∞\}\]
+   für $x = (t_n)_{n ∈ ℕ} ∈ l^p$ setze
+   \[\norm{x}_p = (\sum_{n = 1}^{∞} \abs{t_n}^p)^{1/p}\]
+   Wenn statt der Indexmenge $ℕ$ eine andere abzählbare Menge $M$ zur Nummerierung der Folgen verwendet wird, notiert man den Raum als $l^p(M)$ (zum Beispiel $l^p(ℤ)$ oder $l^p(ℚ)$).
+   Durch eine Abzählung der Menge $M$ kann jeder dieser Räume auf $l^p(ℕ)$ abgebildet werden, denn die Konvergenz von Reihen mit nichtnegativen Gliedern ist unabhängig von der Summationsreihenfolge.
+   #+begin_thm latex
+   $(l^p, \norm{·}_p)$ ist für alle $p ∈ [1, ∞\string)$ ein Banachraum.
+   #+end_thm
+   #+begin_proof latex
+   1. $l^p$ ist ein Vektorraum. Es sei $x, y ∈ l^p$ und $λ ∈ \mathbb{K}$. Zeige $λ x + y ∈ l^p$. Setze
+	  $x = (s_n)_{n ∈ ℕ}$ und $y = (t_n)_{n ∈ ℕ}$, sodass $λ x + y = (λ s_n + t_n)_{n ∈ ℕ}$. Es ist
+	  demnach zu zeigen, dass
+	  \[\sum_{n = 1}^{∞} \abs{λ s_n + t_n}^p < ∞\]
+	  Schätze die Summanden folgendermaßen ab
+	  \begin{align*}
+	  \abs{λ s_n + t_n}^p &\leq (\abs{λ s_n} + \abs{t_n})^p \\
+	  &\leq (2 \max\{\abs{λ s_n}, \abs{t_n}\})^2 \\
+	  &= 2^p \max \{\abs{λ s_n}^p, \abs{t_n}^p\} \\
+	  &\leq 2^p (\abs{λ}^p \abs{s_n}^p + \abs{t_n}^p)
+      \end{align*}
+	  Damit gilt für jedes $N ∈ ℕ$
+	  \begin{align*}
+	  \sum_{n = 1}^{N} \abs{λ s_n + t_n}^p &\leq 2^p (\abs{λ}^p \sum_{n = 1}^{N} \abs{s_n}^p + \sum_{n = 1}^{N} \abs{t_n}^p) \\
+	  &\leq 2^p (\abs{λ}^p \sum_{n = 1}^{∞} \abs{s_n}^p + \sum_{n = 1}^{∞} \abs{t_n}^p)
+      \end{align*}
+	  Die Schranke auf der erchten Seite ist endlich, da $x$ und $y$ in $l^p$ sind und unabhängig von $N$.
+	  Mit $N \to ∞$ folgt die Konvergenz der Reihe
+	  \[\sum_{n = 0}^{∞} \abs{λ s_n + t_n}^p\]
+	  und
+	  \[\norm{λ x + y}_p^p \leq 2^p (\abs{λ}^p \norm{x}_p^p + \norm{y}_p^p)\]
+   2. $\norm{·}_p$ ist eine Norm. Es gilt die Homogenität
+	  \[\norm{λ x}_p = (\sum_{n = u}^{∞} \abs{λ s_n}^p)^{1/p} = (\abs{λ}^p \sum_{n = 1}^{∞} \abs{s_n}^p)^{1/p} = \abs{λ} \norm{x}_p\]
+	  (weil die Definition der Norm den Exponenten $1/p$ enthält) und die Definitheit
+	  \[\norm{x}_p = 0 ⇒ (\sum_{n = 1}^{∞} \abs{s_n}^p)^{1/p} = 0 ⇒ s_n = 0 a n ∈ N ⇒ x = 0\]
+	  (weil eine Summe nichtnegativer Terme nur dann Null sein kann, wenn alle Terme verschwinden).
+	  Es bleibt die Dreiecksungleichung zu zeigen. Sie folgt aus der Hölder'schen Ungleichung, die
+	  wiederum eine einfache Konsequenz der arithmetisch-geomertrischen Ungleichung ist.
+   #+end_proof
+   #+ATTR_LATEX: :options [Arithmetrisch-geometrische Ungleichung]
+   #+begin_lemma latex
+   Für alle $a, b \geq 0$ und $r ∈ (0, 1)$ gilt
+   \[a^r b^{1 - r} \leq r a + (1 - r)b\]
+   mit Gleichheit genau dann wenn $a = b$ ist.
+   #+end_lemma
+   #+begin_proof latex
+   Die Gleichung ist für $a = 0$ oder $b = 0$ offensichtlich. Sei also $a > 0$ und $b > 0$.
+   Wir betrachten die linke Seite als Funktion von $r ∈ [0, 1]$ und schreiben sie als
+   \[ϕ(r) = a^r b^{1 - r} = b e^{λ r}\]
+   mit $λ = \ln a/b$. Offensichtlich gilt $ϕ(r) > 0$ und $ϕ''(r) = λ^2 ϕ(r) \geq 0$, das heißt $ϕ$ ist
+   konvex. Somit liegt der Graph der Funktion immer unter der Sekante. Für $r = 0$ ist $ϕ(0) = b$ und für
+   $r = 1$ ist $ϕ(1) = a$. Somit folgt $ϕ(r) \leq (1 - r) ϕ(0) + r ϕ(1)$, also
+   \[a^r b^{1 - r} \leq r a + (1 - r) b\]
+   Wenn $a \neq b$, ist $λ^2 > 0$ und somit $ϕ''(r)$ immer strikt positiv und dann ist die Ungleichung für jedes $r ∈ (0, 1)$ ebenfalls strikt.
+   #+end_proof
+   #+ATTR_LATEX: :options [Höldersche Ungleichung für Folgen]
+   #+begin_thm latex
+   1. $x ∈ l^1, y ∈ l^∞ \to x y ∈ l^1$ und
+      \[\norm{x y}_1 \leq \norm{y}_∞ \norm{x}_1\]
+   2. $1 < p < ∞, q = p / (p - 1)$, das heißt
+      \[1/p + 1/q = 1\]
+      Dann gilt $x ∈ l^p, y ∈ l^q ⇒ x y ∈ l^1$ und
+	  \[\norm{x y}_1 \leq \norm{x}_p \norm{y}_q\]
+   #+end_thm
+   #+begin_proof latex
+   1. Übungen
+   2. $r = 1/p \to 1/q = 1 - r, r ∈ (0, 1)$
+	  \begin{align*}
+	  S &= \norm{x}_p^p = \sum_{n = 1}^{∞} \abs{s_n}^p < ∞ \\
+	  T &= \norm{y}_q^q = \sum_{n = 1}^{∞} \abs{t_n}^q < ∞ \\
+	  a &= \frac{\abs{s_n}^p}{S} \\
+	  b &= \frac{\abs{t_n}^p}{T} \\
+	  \frac{\abs{s_n}}{S^{1/p}} \frac{\abs{t_n}}{T^{1/q}} &= \frac{\abs{s_n} \abs{t_n}}{\norm{x}_p \norm{y}_q} \\
+	  \intertext{mit $a^{r} b^{1 - r} \leq r a + (1 - r) b$}
+	  &\leq \frac{1}{p} \frac{\abs{s_n}^p}{S} + \frac{1}{q} \frac{\abs{t_n}^q}{T} \\
+	  \intertext{$∀ N ∈ ℕ$:}
+	  \frac{1}{S^{1/p} T^{1/q}} \sum_{n = 1}^{N} \abs{s_n t_n} &\leq \frac{1}{p} \frac{1}{S} \sum_{n = 1}^{N} \abs{s_n}^p + \frac{1}{q} \frac{1}{T} \sum_{n = 1}^{N} \abs{t_n}^q \\
+	  &\leq \frac{1}{p} \frac{1}{S} S + \frac{1}{q} \frac{1}{T} T \\
+	  &= \frac{1}{p} + \frac{1}{q} \\
+	  &= 1
+      \end{align*}
+	  hängt nicht von $N$ ab $⇒ \lim_{N \to ∞}$ existiert, $(s_n t_n)_{n ∈ ℕ}$ ist im $l^1$ und
+      \[\norm{x y}_1 \leq \norm{x}_p \norm{y}_q\]
+   #+end_proof
+   #+ATTR_LATEX: :options [Minkowski'sche Ungleichung]
+   #+begin_thm latex
+   Für $x, y ∈ l^1$ gilt $\norm{x + y}_p \leq \norm{x}_p + \norm{y}_p$
+   #+end_thm
+   #+begin_proof latex
+   $p = 1 \checkmark \to p > 1$
    \begin{align*}
-   \abs{I_ρ} &< 2ε ρ ∫_0^{π/2} e^{-mρ \frac{2}{π}θ} \d θ = 2 ε ρ \frac{π}{2 m ρ} e^{-m ρ \frac{2}{π} θ} \Big|_{π/2}^{0} \leq \frac{π}{m} ε
+   \abs{s_n + t_n}^p &= \abs{s_n + t_n} \abs{s_n + t_n}^{p - 1} \leq (\abs{s_n} + \abs{t_n}) \underbrace{\abs{s_n + t_n}^{p - 1}}_{=: u_n} \\
+   \norm{x + y}_p^p &\leq \norm{x u}_1 + \norm{y u}_1 \tag{\(\ast\)} \\
+   q &= \frac{p}{p - 1} \\
+   \Bigg{\string(}\sum_{n = 1}^{∞} \abs{u_n}^q\Bigg{\string)}^{1/q} &= \sum_{n = 1}^{N} \abs{s_n + t_n}^{(p - 1) \frac{p}{p - 1}} = \sum_{n = 1}^{N} \abs{s_n + t_n}^p \\
+   &\leq \sum_{n = 1}^{∞} \abs{s_n + t_n}^p = (\norm{x + y}_p^p)^{1/p} < ∞ \\
+   ⇒ u &= (u_n)_{n ∈ ℕ} ∈ l^q \\
+   \intertext{$(\ast)$ und Hölder}
+   ⇒ \norm{x + y}_p^p &\leq (\norm{x}_p + \norm{y}_p) \norm{u}_q \\
+   ⇒ \norm{x + y}_p^{1 + p - 1} &\leq (\norm{x}_p + \norm{y}_p) \norm{x + y}^{p - 1} \\
+   ⇒ \norm{x + y}_p &\leq \norm{x}_p + \norm{y}_p
    \end{align*}
    #+end_proof
+   Nun 3. $(l^p, \norm{·}_p)$ ist vollständig. Sei $(x^{(n)})_{n ∈ ℕ}$ Cauchyfolge in $l^p$
+   \begin{equation*}
+   \begin{matrix}
+   x^{(1)} & x^{(2)} & \dots & x^{(n)} & \dots x^{(n')} & \dots & & \\
+   t^{(1)}_1 & t^{(2)}_1 & \dots & t^{(n)}_1 & \dots t^{(n')}_1 & & \to & t_1 \\
+   t^{(1)}_2 & t^{(2)}_2 & \dots & t^{(n)}_2 & \dots t^{(n')}_2 & & \to & t_2 \\
+   \vdots & \vdots & & \vdots & & \vdots & & & \vdots \\
+   t^{(1)}_{m_0} & t^{(2)}_{m_0} & \dots & t^{(n)}_{m_0} & \dots t^{(n')}_{m_0} & & \to & t_{m_0}\\
+   \vdots & \vdots & & \vdots & & \vdots & \\
+   \end{matrix}
+   \end{equation*}
+   \begin{align*}
+   \abs{t_{m_0}^{(n)}}^p &\leq \norm{x^{(n)} - x^{(n')}}_p^p = \sum_{m = 1}^{∞} \abs{t_m^{(n)} - t_m^{(n')}}^p < ε^p \text{ wenn $n, n' > N(ε)$}
+   \end{align*}
+   $⇒$ jede einzelne Folge $(t_k^{(n)})_{n ∈ ℕ}$ ist auch eine Cauchyfolge $\to$ konvergiert, weil $ℂ$ Banachraum.
+** Beschränkte Operatoren
+   "Operator" $\leftrightarrow$ lineare Abbildung, Notation: $T(x) = T x$, wenn $T$ linear.
+   #+begin_defn latex
+   $X, Y$ normiert, $T: X \to Y$ linear
+   \begin{align*}
+   L(X, Y) &:= \{T: X \to Y | T \text{ linear und stetig}\} \\
+   L(x) &:= L(X, X)
+   \end{align*}
+   #+end_defn
+   #+begin_thm latex
+   Es sind äquivalent (für $T: X \to Y$ linear)
+   1. $T$ ist stetig
+   2. $T$ ist stetig bei 0
+   3. $T$ ist beschränkt, das heißt
+	  \[∃ M > 0 ∀ x ∈ X : \norm{T x} < M \norm{x}\]
+   4. $T$ ist gleichmäßig stetig
+   #+end_thm
+   #+begin_proof latex
+   1. $⇒$ 2. $\checkmark$, 4. $⇒$ 1. $\checkmark$
+   2. $⇒$ 3.: Zeige \(\neg\)3. $⇒$ \(\neg\)2.. Wenn 3. nicht gilt, dann $∀ n ∈ ℕ ∃ x_n ∈ X, x_n \neq 0: \norm{T x_n} \geq n \norm{x_n}$
+	  \begin{align*}
+	  y_n &:= \frac{x_n}{n \norm{x_n}} \\
+      ⇒ \norm{y_n} &= \frac{1}{n} \xrightarrow{n \to ∞} 0 ⇒ y_n \xrightarrow{n \to ∞} 0 \\
+	  \norm{T y_n} &= \norm{T(\frac{x_n}{n \norm{x_n}})} \\
+      &= \norm{\frac{1}{n \norm{x_n}} T x_n} = \frac{1}{n \norm{x_n}} \norm{T x_n} \geq 1
+      \end{align*}
+	  also kann die Folge $(T x_n)_{n ∈ ℕ}$ nicht gegen $0$ konvergieren. Da $T$ linear its, ist aber
+	  $T(0) = 0$ $y_n \to 0$ aber $\norm{T y_n} \geq 1 ∀ n$
+	  \[⇒ T y_n \centernot{\xrightarrow{n \to ∞}} 0\]
+	  $⇒$ $T$ unstetig bei $0$, also gilt 2. nicht
+   3. $⇒$ 4. $x, x' ∈ X$
+	  \[\norm{T x - T x'} = \norm{T(x - x')} \leq M \norm{x - x'}\]
+	  $⇒$ $x ↦ T x$ ist Lipschitz-stetig mit Lipschitz-Konstante $M$, also gleichmäßig stetig (zu $ε > 0$ wähle $δ = ε/M$, \dots).
+   #+end_proof
+   #+begin_defn latex
+   \[\norm{T} := \inf \{M > 0 \mid ∀ x ∈ X: \norm{T x} \leq M \norm{x}\}\]
+   #+end_defn
+   #+begin_thm latex
+   $T \to \norm{T}$ ist eine Norm auf $L(X, Y)$.
+   \begin{gather*}
+   ∀ x ∈ X: \norm{T x} \leq \norm{T} \norm{x} \\
+   \norm{T} = \sup_{\substack{x ∈ X \\ x \neq 0}} \frac{\norm{T x}}{\norm{x}} = \sup_{\norm{x} = 1} \norm{T x} = \sup_{\norm{x} \leq 1} \norm{T x}
+   \end{gather*}
+   #+end_thm
+   #+begin_proof latex
+   Sei
+   \[σ_T := \sup_{\substack{x ∈ X \\ x \neq 0}} \frac{\norm{T x}}{\norm{x}}\]
+   Sei $x \neq 0$
+   \begin{align*}
+   \frac{\norm{T x}}{\norm{x}} &\leq \norm{T} \\
+   ⇒ σ_T &\leq \norm{T}
+   \end{align*}
+   nach	Definition von $σ_T$ gilt $∀ x ∈ X: \norm{T x} \leq σ_T \norm{x}$ \\
+   nach Definition von $\norm{T}$ folgt $\norm{T} \leq σ_T ⇒ \norm{T} = σ_T$
+   \[\sup \frac{1}{\norm{x}} \norm{T x} = \sup \norm{\frac{1}{\norm{x}} T x} = \sup \norm{T(\frac{1}{\norm{x}} x)}\]
+   für $x \neq 0:$ gilt aber
+   \[\norm{\frac{x}{\norm{x}}} = 1\]
+   da $T(0) = 0$ ist, ist
+   \[\sup_{\norm{x} \leq 1} \norm{T x} = \sup_{\substack{\norm{x} \leq 1\\ x \neq 0}} \norm{T x}\]
+   $0 < \norm{x} \leq 1$. $\hat x = x / \norm{x} ⇒ \norm{\hat x} = 1$
+   \begin{align*}
+   \norm{T x} &= \norm{T(\norm{x} \hat x)} = \norm{x} \norm{T \hat x} \leq \norm{T \hat x} \\
+   ⇒ \sup_{\norm{x} \leq 1} \norm{T x} &\leq \sup_{\norm{\hat x} = 1} \norm{T \hat x} \\
+   \end{align*}
+   Umgekehrte Richtung ist offensichtlich
+   #+end_proof
+   Daraus folgt auch: $\norm{·}$ ist Norm auf $L(X, Y)$ "Operatornorm"
+   #+ATTR_LATEX: :options [Produktungleichung für die Operatornorm]
+   #+begin_thm latex
+   Für alle $T ∈ L(X, Y)$ und $S ∈ L(Y, Z)$ ist $S T ∈ L(X, Z)$ und
+   \[\norm{S T} \leq \norm{S} \norm{T}\]
+   #+end_thm
+   #+begin_proof latex
+   $x ∈ X, S T x = S(T x)$
+   \begin{align*}
+   \norm{S T x} &= \norm{S(T x)} \leq \norm{S} \norm{T x} \leq \norm{S} \norm{T} \norm{x} \\
+   ⇒ \norm{S T} &\leq \norm{S} \norm{T}
+   \end{align*}
+   #+end_proof
+   #+begin_thm latex
+   $X, Y$ normiert.	Dann gilt:
+   1. $L(X, Y)$ ist mit punktweiser Definition der Operationen ein \(\mathbb{K}\)-Vektorraum
+   2. Die Operatornorm $\norm{T} = \sup_{\norm{x} \leq 1} \norm{T x}$ ist eine Norm	auf $L(X, Y)$
+   3. $Y$ vollständig $⇒ L(X, Y)$ vollständig
+   #+end_thm
+   #+begin_proof latex
+   1. Die punktweise Definition der Linearkombination von linearen Abbildungen bedeutet $(λ S + T)(x) = λ S x + T x$. Das
+	  $L(X, Y)$ mit dieser Definition ein Vektorraum wird ist leicht zu verifizieren.
+   2. folgt durch direktes Nachprüfen der Normaxiome
+	  \begin{align*}
+	  \norm{λ T} &= \abs{λ} \norm{T} \\
+	  \string(λ T\string) x &= λ T x
+      \end{align*}
+	  Aus $\norm{T} = 0$ folgt $T = 0$ aus
+	  \[\norm{T} = \sup_{\norm{x} = 1} \norm{T x}\], da die Aussage für alle $x$, also auch $x \neq 0$ gilt. Für $x ∈ X$ ist
+	  \begin{align*}
+	  \sup_{\norm{x} = 1} \norm{(S + T) x} &= \sup_{\norm{x} = 1} \norm{S x + T x} \\
+	  &\leq \sup_{\norm{x} = 1} \norm{S x} + \sup_{\norm{x} = 1} \norm{T x} \\
+	  &\leq \norm{S} \norm{x} + \norm{T} \norm{x} \\
+	  &= (\norm{S} + \norm{T}) \norm{x}
+      \end{align*}
+   3. Sei $(T_n)_{n ∈ ℕ}$ eine Cauchyfolge in $L(X, Y)$. Für $x ∈ X$ ist $(T_n x)_{n ∈ ℕ}$ eine
+	  Cauchyfolge in $Y$, denn
+	  \[\norm{T_n x - T_n x} \leq \norm{T_n - T_m} \norm{x} \xrightarrow{n, m \to ∞} 0\]
+	  Da $Y$ vollständig ist, existiert
+	  \[y_x := \lim_{n \to ∞} T_n x\]
+	  für alle $x ∈ X$. Da der Limes einer konvergente Folge in einem normierten Raum eindeutig ist, wird
+	  durch $T(x) = y_x$ eine Abbildung definiert. Wegen
+	  \[T(λ x + y) = \lim_{n \to ∞} T_n (λ x + y) = \lim_{n \to ∞} (λ T_n x + T_n y) = λ T(x) + T(y)\]
+	  ist $T$ linear (und wir schreiben also $T(x) = T x$). Es ist noch zu zeigen, dass
+	  $T_n$ für $n \to ∞$ auch in der Operatornorm gegen $T$ konvergiert und dass $T ∈ L(X, Y)$ ist.
+	  Für $ε > 0$ gibt es ein $N_0 ∈ ℕ$, sodass für alle $m, n \geq N_0$ $\norm{T_n - T_M} \leq ε/2$.
+	  Sei $x ∈ X$ mit $\norm{x} \leq 1$. Nach Konstruktion von $T$ gibt es ein $m_0 = m_0(ε, x)$, sodass
+	  für alle $m \geq m_0$ gilt $\norm{(T_m - T) x} < ε / 2$. Ohne Einschränkung darf $m_0 \geq N_0$ gewählt werden. Dann gilt
+	  für $n \geq N_0$
+	  \begin{align*}
+	  \norm{T_n x - T x} &\leq \norm{(T_n - T_{m_0}) x} + \norm{T_{n} - T_{m_0} x} + \norm{(T_{m_0} - T) x} \\
+	  &< \norm{T - T_{m_0}} \norm{x} + \frac{ε}{2} \\
+	  &< \frac{ε}{2} + \frac{ε}{2} = ε
+      \end{align*}
+	  Man beachte, dass die resultierende Ungleichung $\norm{(T_n - T) x} \leq e$ für alle
+	  $n \geq N_0$ gleichmäßig in $x$ ist und auch die Bedingung an $n$ nicht von $x$ abhängt. Also
+	  kann dasSupremum über alle $x$ mit $\norm{x} \leq 1$ genommen werden und wir
+	  erhalten $\norm{T_n - T} \leq e$ für $n \geq N_0$. Wenn $n \geq N_0$ ist und
+	  $\norm{x} \leq 1$ gilt außerdem
+	  \[\norm{T x} = \norm{(T - T_n + T_n) x} \leq \norm{(T - T_n) x} + \norm{T_n x} \leq \norm{T - T_n} + \norm{T_n}\]
+	  also ist $T$ beschränkt und $\norm{T} \leq \norm{T_n} + ε$. Es ist also $T ∈ L(X, Y)$ und
+	  $\norm{T_n - T} \xrightarrow{n \to ∞} 0$. Damit ist gezeight, dass $L(X, Y)$ in
+	  der Operatornorm vollständig ist.
+   #+end_proof
+   Der folgende Satz besagt, dass man jeden stetigen Operator, der auf einem dichten
+   Unterraum von $X$ definiert ist, eindeutig zu einem stetigen Operator auf ganz
+   $X$ fortsetzen kann.
+   #+begin_thm latex
+   $X$ sei ein normierter Raum und $Y$ ein Banachraum. $D \leq X$ sei ein Unterraum, der dicht in
+   $X$ lieght. Für jedes $T ∈ L(D, Y)$ gibt es genau ein $\tilde T ∈ L(X, Y)$ mit $\tilde T \big|_D = T$ und $\norm{\tilde T} = \norm{T}$
+   #+end_thm
+** Dualraum und schache Topologien
+*** Der Dualraum eines normierten Raums
+	#+begin_defn latex
+	Wir nennen $T$ ein stetiges linearesFunktional auf $X$ genau dann wenn $T ∈ L(X, \mathbb{K})$.
+	Der Raum $X' = L(X, \mathbb{K})$ heißt Dualraum zu $X$.
+	#+end_defn
+	#+begin_thm latex
+	Der Dualraum $X' = L(X, ℂ)$ jedes normierten Raums $X$ ist ein Banachraum.
+	#+end_thm
+	#+begin_proof latex
+	Für jeden normierten Raum $X$ über $\mathbb{K} = ℝ$ oder $ℂ$ ist $X' = L(X, \mathbb{K})$ ein Banachraum. Definiere Dualraum von $X$.
+	#+end_proof
+	Der Beweis, dass der Dualraum $X'$ eines beliebigen normierten Raums $X$ nicht gleich dem
+	Nullraum $\{0\}$ ist, erfordert den den Fortsetzungssatz von Hahn und Banach, den wir hier nicht
+	ausführen. Der Beweis ist nicht kompliziert, beruht aber auf dem Zorn'schen Lemma. (Für separable Räume kann die Anwendung des Zorn'schen Lemmas vermieden werden.)
+	Man erhält dann unter anderem die genauere Aussage, dass für alle $x ∈ X$ gilt
+	\[\norm{x}_X = \sup \{\abs{λ(x)} \mid λ ∈ X', \norm{λ}_{X'} = 1\}\]
+	und dieses Supremum wird als Maximum angenommen. \\
+	Man kann immer weiter 'dualiseren', das heißt die Folge von Banachräumen $X'' = (X')' = L(X', \mathbb{K}), X''' = (X'')'$, etc. betrachten.
+	Man kann (vermögen einer Isometrie) den Raum $X$ selbst als einenn Unterraum von $X''$ identifizieren,
+	wie folgt: für jedes $x ∈ X$ definiert die Auswertung bei $x$ ein lineares stetiges Funktion
+	$A_x$ auf $X'$, explizit: für $λ ∈ X'$ ist
+	\[A_x(λ) = λ(x)\]
+	Die Linearität von $A_x$ in $λ$ wird direkt nachgerechnet und aus der Stetigkeit von $λ$
+	\[\abs{A_x(λ)} = \abs{λ(x)} \leq \norm{λ} \norm{x} = \norm{x} \norm{λ}\]
+	folgt die Beschränktheit von $A_x$ mit $\norm{A_x}_{X''} \leq \norm{x}_X$.
+	Es gilt
+	\[\norm{A_x}_{X''} = \norm{x}_X\]
+	Die Abbildung $A: X \to X'', x ↦ A_x$ ist eine Isometrie. Wenn man $X$ mit
+	$A(X)$ identifiziert, kann man $X$ als Teilmenge von $X''$ auffassen. \\
+	Dies ist in mehrfacher Hinsicht interessant, es gibt eine weitere Konstruktion der Vervollständigung von
+	Vekorräumen und charakterisiert die Vervollständigung als eine Teilmenge eines Raums lineare Funktionale.
+	Der	früßer gezeigte Satz zur Vervollständigung its aber allgemeiner, da keine lineare Struktur auf $X$
+	vorrausgesetzt wird. Im Allgemeinen ist $X'' \subsetneq X$. Man nennt einen Banachraum $X$ reflexiv,
+	wenn $X'' = X$ ist.	Beispiele von Dualräumen:
+	1. Für $1 \leq p < ∞$ und $1/p + 1/q = 1$ ist
+	   \[(l^p)' = L(l^p, ℂ) = l^q\]
+	   was insbesondere für $p = 2$ und $q = 2$ bedeutet, dass
+	   \[(l^2)' \cong l^2\]
+	   Es sei für $x, y ∈ l^p$
+	   \[x = (s_n)_{n ∈ ℕ} \qquad y = (t_n)_{n ∈ ℕ}\]
+	   dann ist die Reihe
+	   \[y(x) = \sum_{n = 1}^{∞} t_n s_n\]
+	   absolut konvergent aufgrund der Hölder'schen Ungleichung. Daher ist
+	   \[l^q ⊂ (l^p)'\]
+	   Umgekehrt zeigt man für $λ ∈ (l^p)'$ und
+	   \[y_n = λ(0, \dots, 0, \overarrow[1]{n'te Stelle}, 0, \dots, 0)\]
+	   folgt, dass $(y_n)_{n ∈ ℕ} ∈ l^q$ ist, woraus Gleichheit folgt. Es gilt also: \\
+	   $l^p$ ist für $1 < p < ∞$
+	   ein reflexiver Banachraum
+    2. $c_0' = l^1, (l^1)' = l^∞, (l^∞)' \supsetneq l^1$
+*** Schache Bemerkungen über schwache Topologien
+
+
+
+
+   Holomorphie banachraumwertiger Funktionen. \\
+   Sei $Ω ⊂ ℂ$ offen, $X$ ein Banachraum und $f: Ω \to X, z ↦ f(z)$ eine Funktion
+   1. $f$ ist in $Ω$ stark holomorph, wenn es zu jedem $a ∈ Ω$ ein $f'(a) ∈ X$ gibt, sodass
+	  \[\norm{\frac{f(z) - f(a)}{z - a} - f'(a)} \xrightarrow{z \to a} 0\]
+	  und wenn $a ↦ f'(a)$ stetig in $Ω$ ist
+   2. $f$ ist in $Ω$ schwach holomorph, wenn für jedes $λ ∈ X'$ die Funktion $ϕ_λ: Ω \to ℂ, z ↦ ϕ_λ(z) = λ(f(z))$ holomorph ist
+
+   Die Definition der schwachen Holomorphie bezieht sich nur auf die komplexwertige Funktionen $ϕ_λ$: für jedes $a ∈ Ω$ existiert $ϕ'_λ$
+
+   A priori erscheint die starke Holomorphie eine stärkere Bedingung als die schwache, weil die schwache Konvergenz im allgemeinen nicht äquivalent zur starken Konvergenz ist.
+   Es gilt aber der Satz \\
+   #+begin_thm latex
+   $f$ ist stark holomorph $⇔$ $f$ ist schwach holomorph \\
+   #+end_thm
+   #+begin_proof latex
+
+   #+end_proof
+   Funktionentheorie für banachraumwertige Funktionen \\
+   #+begin_thm latex
+   Sei $Ω ⊂ ℂ$ offen, $X$ Banachraum und $f: Ω \to X$ eine Funktion
+   1. Wenn $f$ auf $Ω$ holomorph ist, ist $/$ dort auch stetig und auf kompakten Teilmengen von $Ω$ beschränkt
+   2. Sei $A$ endlich zerlegbar und $\bar A ⊂ Ω$. Wenn $f$ auf $Ω$ holomorph ist, dann konvergieren die Riemann'schen Summen für das das komplexe Linienintegral von $f$ in der Norm auf $X$ und
+	  für alle $z ∈ A$ ist
+	  \[f(z) = \frac{1}{2πi} ∫_{\partial A} \frac{f(ζ)}{ζ - z} \d ζ\]
+   #+end_thm
+   Räume mit innerem Produkt und Hilberträume
+
+
+   Satz von Pythagoras
+
+   Projektionsoperatoren \\
+   Erinnerung: Projektionssatz, $H$ Raum mit innerem Produkt, $M \leq H$ vollständig. Dann
+   gibt es für alle $x ∈ H$ genau ein $z ∈ M$ und genau ein $w ∈ M^{\perp}$, sodass
+   \[x = z + w\]
+   Aufgrund der Eindeutigkeit der Zerlegung können wir die *orthogonale Projektion von $x$ auf $M$*
+   als $P x = z$ definieren.
+   #+begin_thm latex
+   $P: H \to M$ ist eine lineare Abbildung. Es gilt $P^2 = P$ und
+   \[∀ x, y ∈ H: \braket{x | P y} = \braket{P x| y}\]
+   $Q = 1 - P$ ist die orthogonale Projektion auf $M^{\perp}$.
+   #+end_thm
+   #+begin_proof latex
+   Für $x, y ∈ H$ gibt es eindeutig bestimmte Vektoren $ξ, η ∈ M^{\perp}$, sodass
+   \[x = P x + ξ \qquad q = P y + η\]
+   Wegen der Eindeutigkeit der Zerlegung und $ξ ∈ M^{\perp}$ gilt $P ξ = P η = 0$, also
+   \[P^2 x = P(P(x)) = P(x - ξ) = P x\]
+   Außerdem ist wegen $\braket{ξ | P y} = 0$
+   \[\braket{x | P y} = \braket{P x + ξ | P y} = \braket{P x | P y}\]
+   und wegen $\braket{η | P x} = 0$
+   \[\braket{P x | y} = \braket{P x | P y + η} = \braket{P x | P y}\]
+   #+end_proof
+   Umgekehrt gilt
+   #+begin_thm latex
+   $H$ Hilbertraum, $P$ sei ein Projektionsoperator, das heißt
+   \[P ∈ L(H),\quad P^2 = P,\quad ∀ x, y ∈ H: \braket{x | P y} = \braket{x | P y} = \braket{P x | y}\]
+   Dann ist $V = P(H)$ ein abgeschlossener Unterraum von $H$ und $P$ ist die orthogonale Projektion auf $V$.
+   Die orthogonale Zerlegung eines $x . H$ ist
+   \[x = P x + (1 - P)x\]
+   $Q = 1 - P$ ist ebenfalls Projektionsoperator und $Q(H) = V^{\perp}$
+   #+end_thm
+   *Orthonormalbasen* \\
+   #+ATTR_LATEX: :options [Orthogonalbasis]
+   #+begin_defn latex
+   Sei $H$ ein Hilbertraum und $S ⊂ H$ ein Orthogonalsystem. $S$ ist eine *Orthogonalbasis*,
+   wenn aus $S ⊂ T$ für beliebiges Orthogonalsystem $T ⊂ V$ folgt, dass $S = T$.
+   #+end_defn
+   Wichtige begriffliche Unterscheidung: \\
+   Vektorraumbasis $B =$ Menge linear unabhängiger Vektoren mit $\Span B = V$, das heißt alle
+   Vektoren in $V$ lasen sich als *endliche Linearkombinationen* von Elementen aus $B$ bilden. \\
+   Orthonormalbasis $S =$ Menge orthonormaler Vektoren mit $\overline{\Span S} = H$, das heißt jeder
+   Vektor in $V$ kann als *unendliche, konvergente Reihe* von Vektoren in $S$ dargestellt werden. \\
+   In unendlichdimensionalen Räumen ist dies im allgemeinen wirklich eine
+   unendliche Reihe, das heißt eine Orthonormalbassi ist *keine* Vektorraumbasis.
+   #+begin_thm latex
+   Sei $H$ ein Hilbertraum unendlicher Dimension. Für jede Teilmenge von
+   linear unabhänigigen Vektoren $\{x_n\}, n ∈  ℕ$ gibt es ein abzählbares Orthonormalsystem $S$, sodass
+   \[\Span S = \Span \{x_n \mid n ∈ ℕ\}\]
+   gilt (und somit auch $\overline{\Span S} = \overline{\Span \{x_n \mid n ∈ ℕ\}}$)
+   #+end_thm
+   #+begin_proof latex
+   Benutze das *Gram-Schmidt-Verfahren* mit dessen Hilfe rekursiv ein Orthonormalsystem $\{e_n \mid n ∈ ℕ\}$ konstruiert wird, sodass
+   \[∀ N ∈ ℕ: \Span \{x_1, \dots, x_N\} = \Span \{e_1, \dots, e_N\}\]
+   gilt. Da die Menge der $x_n$ linear unabhängig its gilt insbesondere: für alle $n$ ist $x_n \neq 0$ und
+   $x_{n + 1}$ nicht als Linearkombination von $x_1, \dots, x_n$ darstellbar. Setze
+   \[e_1 = \frac{x_1}{\norm{x_1}}\]
+   Dann ist $\{e_1\}$ ein Orthonormalsystem und $\Span \{x_1\} = \Span \{e_1\}$. Der Vektor
+   $f_2 = x_2 - \braket{e_1 | x_2} e_1$ erfüllt $f_2 \neq 0$ und $f_2 \perp e_1$. Mit
+   \[e_2 = \frac{f_2}{\norm{f_2}}\]
+   erhält man ein Orthonormalsystem $\{e_1, e_2\}$ mit $\Span \{x_1, x_2\} = \Span \{e_1, e_2\}$.
+   Im k'ten Schritt setzt man
+   \[f_{k + 1} = x_{k + 1} - \sum_{i = 1}^{k} \braket{e_i | x_{k + 1}} e_i \qquad e_{k + 1} = \frac{f_{k + 1}}{\norm{f_{k + 1}}}\]
+   und es folgt $\Span \{x_1, \dots, x_n\} = \Span \{e_1, \dots, e_n\}$. $S = \{e_n \mid n ∈ ℕ\}$ erfüllt somit die Aussage des Satzes.
+   #+end_proof
+   Allgemein gilt
+   1. Jeder Hilbertraum hat eine Orthonormalbasis
+   2. Alle Orthonormalbasen eines Hilbertraums haben die gleiche Mächtigkeit
+   3. Wenn $S$ eine Orthonormalbasis von $H$ ist, dann ist $H$ unitär isomorph zu $l^2(S)$.
+	  Insbesonere ist jeder separable Hilbertraum $H$ unitär isomorph zum $l^2(ℕ)$. Ein metrischer Raum
+	  $X$ heißt dabei *separabel* genau dann, wenn es eine abzählbare Menge gibt, die in $X$ dicht liegt.
+   4. Wenn $S$ eine Orthonormalbasis von $H$ ist, dann ist für jedes $x ∈ H$ die Menge $\{e ∈ S \mid \braket{e | x} \neq 0\}$ abzählbar.
+   5. Wenn $S$ eine Orthonormalbasis von $H$ ist, dann gilt für alle $x ∈ H$
+	  \[x = \sum_{e ∈ S} \braket{e | x} e\]
+	  (die Summe läuft da natürlich nur über diejenigen $e ∈ S$, für die $\braket{e | x} \neq 0$) ist.
+	  Die unendilche Reihe konvergiert in der Norm auf $H$ und ist deshalb unabhängig von der Reihefolge der Summation.
+   6. Für alle $x, y ∈ H$ ist
+	  \begin{equation*}
+	  \braket{x | y} = \sum_{e ∈ S} \braket{x | e} \braket{e | y} \tag{$\ast$}
+	  \end{equation*}
+	  Insbesondere gilt die *Parseval'sche Gleichung*
+	  \[\norm{x}^2 = \sum_{e ∈ S} \abs{\braket{e | x}}^2\]
+   Gleichung $(\ast)$ wird üblicherweise als *Vollständigkeitsrelation bezeichnet und für
+   abzählbare Orthonormalbasen $\{e_n \mid n ∈ ℕ\}$ eines separablen Hilbertraum auch in der Form
+   \[\mathbb{1} = \sum_{n ∈ N} \ket{e_n} \bra{e_n}\]
+   geschrieben. Dabei bezeichnet $\mathbb{1}$ die Identität auf $H$, also $\mathbb{1} x = x$
+   für alle $x ∈ H$ und $P_n = \ket{e_n} \bra{e_n}$ ist der orthogonale Projektor auf den eindimensionalen
+   Raum $\Span \{e_n\}$, das heißt $P_n x = \braket{e_n | x} e_n$.
+   *Dirac-Notation* \\
+   Der Satz von Riesz-Frechet rechtfertigt auch die *Dirac-Notation*: da jedes lineare Funktional
+   $λ$ auf $H$ eine Darstellung durch einen Vektor $v ∈ H$ hat, $λ(x) = \braket{v | x}$ für alle
+   $x ∈ H$, kann man es auch  als $λ = \ket{v}$ notieren. Damit bekommt man zum Beispiel für die
+   lineare Abbildung $x ↦ T x = \braket{e | x} y$, die $x ∈ H$ auf ein Vielfaches von $y$ abbildet, den
+   Ausdurch
+   \[T = \ket{y} \bra{e}\]
+   für den Projektor auf den von einem Einheitsvektor $e$ aufgespannten Unterraum also
+   \[P = \ket{e} \bra{e}\]
+   Oft notiert man dann die Vektoren auch in dieser Weise, das heißt statt $x$ schreibet man $\ket{x}$.
+   *Resolventenmenge und Spektrum* \\
+   Sei $X$ ein Banachraum und $T ∈ L(X)$. Die *Resolventenmenge* von $T$ ist
+   \[ρ(T) = \{z ∈ ℂ \mid (z - T)^{-1} \text{ existiert und } (z - T)^{-1} ∈ L(X)\}\]
+   Das *Spektrum* von $T$ ist
+   \[σ(T) = ℂ \setminus ρ(T)\]
+   #+begin_thm latex
+   Sei $X$ ein Banachraum und $T ∈ L(X)$. Dann ist $ρ(T)$ offen und es gilt
+   \[ρ(T) \supset \{z ∈ ℂ \mid \abs{z} > \norm{T}\}\]
+   Die Resolventenabbildung
+   \[R_T: ρ(T) \to R(X), z ↦ R_T(z) = (z - T)^{-1}\]
+   ist holomorph auf $ρ(T)$. Es gilt die *erste Resolventengleichung*
+   \[∀ z, z' ∈ ρ(T): R_T(z') - R_T(z) = (z - z') R_T(z) R_T(z')\]
+   somit kommutieeren $R_T(z)$ und $R_T(z')$ für alle $z, z' ∈ ρ(T)$. Das Spektrum von
+   $T$ ist nicht leer: $σ(T) \neq \emptyset$
+   #+end_thm
+   #+begin_proof latex
+   Sei $z_0 ∈ ρ(T)$ und $z ∈ ℂ$. Dann ist
+   \[z - T = z_0 - T - (z_0 - z) = (z_0 - T)(1 - R_T(z_0)(z_0 - z))\]
+   Die Neumann'sche Reihe für $(1 - R_T(z_0)(z - z_0))^{-1}$ konvergiert für
+   \[\abs{z - z_0} < \frac{1}{\norm{R_T(z_0)}}\]
+   Also
+   \[z_0 ∈ ρ(T) ⇒ \{z ∈ ℂ \mid \abs{z - z_0} < \frac{1}{\norm{R_T(z_0)}}\} ⊂ ρ(T)\]
+   somit ist $ρ(T)$ offen. \\
+   Die Neumann'sche Reihe definiert eine analytische Funktion, also ist $R_T$ auf $ρ(T)$ analytische und somit holomorph.
+   Die Neumann'sche Reihe $(1 - T/z)^{-1}$ konvergiert für $\abs{z} > \norm{T}$ und definiert dort eine analytische Funktion
+   von $1/z$. Da $z \to 1/z$ dort holomorph ist, ist
+   \[(z - T)^{-1} = \frac{1}{z}(1 - \frac{1}{z} T)^{-1}\]
+   holomorph als Komposition holomorpher Abbildungen. \\
+   Seien $z, z' ∈ ρ(T)$. Dann folgt aus $z - T - (z' - T) = z - z'$ durch Multiplikation von
+   links mit $R_T(z)$ und von rechts mit $R_T(z')$ die erste Resolventengleichung. \\
+   Für $\abs{z} > 2 \norm{T}$ ist $\norm{R_T(z)} < 2 / \abs{z}$ und $R_T(z) \neq 0$. \\
+   Annahme: $ρ(T) = ℂ ⇒ R_T$ ist ganze beschränkte Funktion von $z$, also konstant, also Null
+   (Satz von Liouville und Abfall) - Widerspruch!
+   #+end_proof
+   Da die Neumann'sche Reihe für alle $z$ mit $\abs{z} > r(T)$ konvergiert, wobei $r(T)$ der
+   *Spektralradius* von $T$ ist, gilt
+   \[ρ(T) \supset \{z ∈ ℂ \mid \abs{z} > r(T)\}\]
+   Dies erklärt auch die Begriffbildung: Das Spekturm von $T ∈ L(X)$ ist in der abgeschlossenen Kreisscheibe
+   $\{z ∈ ℂ \mid \abs{z} \leq r(T)\}$ enthalten.
+   *Spektraltypen* \\
+   Sei $X$ ein Banachraum und $T ∈ L(X)$. \\
+   *Punktspektrum*. Es gibt ein $x ∈ X \setminus \{0\}$ und ein $λ ∈ ℂ$ mit $T x = λ x$ ($x$ ist Eigenvektor von $T$ zum Eigenwert $λ$).
+   In diesem Fall hat $(λ - T) y = 0$ eine nichttriviale Lösung $y = x \neq 0$, also ist $λ - T$ nicht injektiv, hat also
+   keine Inverse, somit ist $λ ∈ σ(T)$. \\
+   *Stetiges Spekturm*. $λ - T$ ist injektiv, aber nicht surjektiv, der Bildraum $\{(λ - T) x \mid x ∈ X\}$ von $λ - T$ liegt in $X$ dicht.
+   (Die Inverse von $λ - T$ existiert dann, ist aber unbeschränkt.) \\
+   *Restspektrum*. $λ - T$ ist injektiv, aber der Bildraum $\{(λ - T) x \mid x ∈ X\}$ von
+   $λ - T$ liegt in $X$ nicht dicht.
+   *Die Adjungierte eines Operators* \\
+   #+begin_thm latex
+   Es sei $H$ ein Hilbertraum und $A ∈ L(H)$. Der *adjungierte Operator* $A^{\dagger}$ ist durch
+   \[∀ x, y ∈ H: \braket{x | A y} = \braket{A^{\dagger} x | y}\]
+   wohldefiniert und eindeutig bestimmt, $A^{\dagger} ∈ L(H)$ und $\norm{A^{\dagger}} = \norm{A}$.
+   Es gilt dann natürlich auch
+   \[∀ x, y ∈ H: \braket{x | A^{\dagger} y} = \braket{A x | y}\]
+   #+end_thm
+   #+begin_proof latex
+   Fixiere $x ∈ H$. Die Abbildung $y ↦ λ_A(y) = \braket{x | A y}$ ist linear und stetig in $y$.
+   Nach Satz von Riesz-Frechet gibt es genau einen Vektor $z_A ∈ H$, sodass für alle $y ∈ H$ gilt
+   \[λ_A(y) = \braket{z_A | y}\]
+   Setze $A^{\dagger} x = z_A$. Seien $x, x' ∈ H$ und $α ∈ ℂ$. Dann ist für $y ∈ H$
+   \begin{align*}
+   \braket{α x + x' | A y} &= \bar α \braket{x | A y} + \braket{x' | A y} \\
+   &= \bar α \braket{A^{\dagger} x | y} + \braket{A^{\dagger} x' | y} \\
+   &= \braket{α A^{\dagger} x + A^{\dagger} x' | y}
+   \end{align*}
+   also ist $A^{\dagger}$ linear. Außerdem ist
+   \[\norm{A^{\dagger} x} = \sup_{\norm{y} = 1} \abs{\braket{y | A^{\dagger} x}} = \sup_{\norm{y} = 1} \abs{\braket{A y | x}} \leq \norm{A} \norm{x}\]
+   also ist $\norm{A^{\dagger}} \leq \norm{A}$. Mit demselben Argument, nur mit vertauschten Rollen von
+   $A^{\dagger}$ und $A$, folgt auch $\norm{A^{\dagger}} \geq \norm{A}$.
+   #+end_proof
+   Sei $H$ ein Hilbertraum und $A ∈ L(H)$. $A$ ist *selbstadjungiert* $⇔$ $A^{\dagger} = A$
+   #+begin_thm latex
+   $H$ Hilbertraum, $A ∈ L(H)$ und $A^{\dagger} A$. Dann gilt:
+   1. $A$ hat reelles Spektrum: $σ(A) ⊂ ℝ$.
+   2. Eigenvektoren zu verschiedenen Eigenwerten von $A$ sind orthogonal
+   3. Das Restspektrum von $A$ ist leer.
+   4. Der Spektralradius von $A$ ist gleich der Norm von $A$
+	  \[r(A) = \norm{A}\]
+   #+end_thm
+   #+begin_proof latex
+   Seien $r, s ∈ ℝ$ und $λ = r + i s$. Da $A^{\dagger} = A$ ist gilt
+   \[\norm{(A - (r + i s))x}^2 = \norm{(A - R)x}^2 + s^2 \norm{x}^2\]
+   also folgt
+   \[\norm{(A - (r - i s)) x} \geq \abs{s} \norm{x}\]
+   Für $s \neq 0$ ist also $A - (r + i s)$ injektiv, insbesondere gibt es keine Eigenwerte $λ$,
+   deren Imaginärteil $s \neq 0$ ist. Der Bildraum $R$ von $A - (r + is)$ ist abgeschlossen, weil $A$ stetig ist.
+   Würe $R \neq H ⇒ ∃ z ∈ R^{\perp}$ mit $z \neq 0$ und
+   \[∀ x ∈ H: 0 = \braket{z | (A - (r + i s))x} = \braket{(A - (r - is))z | x}\]
+   also wäre $z$ ein Eigenvektor $\to$ Widerspruch. Also ist für $s \neq 0$ der Operator $A - (r + is)$ bijektiv, das heißt
+   $(A - (r + is))^{-1} y$ existiert für jedes $y ∈ H$. Sei $y ∈ H$ und setze $x = (A - (r + is))^{-1} y$.
+   Dann folgt
+   \[\norm{y} \geq \abs{s} \norm{(A - (r + is))^{-1} y}\]
+   Es folgt $(A - (r + is))^{-1} ∈ L(X)$ und $\norm{(A - (r + is))^{-1}} \leq \abs{s}^{-1}$, somit
+   $\Im λ \neq 0 ⇒ λ ∈ ρ(A)$. Also ist $σ(A) ⊂ ℝ$. Wenn $A v = λ v$ und $A w = μ w$ mit
+   $v, w \neq 0$, dann sind $λ$ und $μ$ reell und
+   \[(λ - μ) \braket{v | w} = \braket{λ v | w} - \braket{v | μ w} = \braket{A v | w} - \braket{v | A w} = 0\]
+   Wenn $λ \neq μ$ ist, muss also $\braket{v | w} = 0$ sein. \\
+   Gäbe es ein $λ ∈ ℝ$ im Restspektrum vom $A$, sodass $λ - A$ injektiv wärde aber der Bildraum von
+   $λ - A$ nicht dicht in $H$, dann wärde der Abschluss dieses Raums nicht gleich $H$ und somit
+   gäbe es nach dem Projektivonsatz ein $y ∈ H$ mit $y \neq 0$ und
+   \[∀ x ∈ H: \braket{y | (λ - A) x} = 0\]
+   Da $A = A^{\dagger}$ folgt $\braket{(λ - A) y | x} = 0$ für alle $x ∈ H$, also $(λ - A)y = 0$,
+   also wärde $λ$ ein Eigenwert, im Widersprum zur Annahme, dass $λ$ im Restspektrum ist. \\
+   Für $T ∈ L(H)$ und $x ∈ H$ gilt
+   \[0 \geq \norm{T x}^2 = \braket{T x | T x} = \braket{x | T^{\dagger} T x} \leq \norm{T^{\dagger} T} \norm{x}^2\]
+   Mit einem Supremum über alle $x ∈ H$ mit $\norm{x} = 1$ folgt
+   \[\norm{T^{\dagger} T} \geq \sup_{\norm{x} = 1} \norm{T x}^2 = (\sup_{\norm{x} = 1} \norm{T x})^2 = \norm{T}^2\]
+   Da $A = A^{\dagger}$ ist, folgt also $\norm{A^2} = \norm{A}^2$ und allgemeiner
+   $\norm{A^{k_n}} = \norm{A}^{k_n}$, wobei $k_n = 2^n$ für alle $n ∈ ℕ$. Der Grenzwert $k \to ∞$ in
+   der Definition von $r$ kann mit der Folge $k_n$ genommen werden, also gilt $r(A) = \norm{A}$.
+   #+end_proof
+   *Kompaktheit* \\
+   #+ATTR_LATEX: :options [Satz von Heine-Borel]
+   #+begin_thm latex
+   Sei $H$ ein Hilbertraum und $\dim H = n < ∞$. Dann gilt:
+   $M ⊂ H$ ist kompakt $⇔$ $M$ ist beschränkt und abgeschlossen.
+   #+end_thm
+   #+begin_thm latex
+   $H$ sei ein unendlichdimensionaler Hilbertraum. Dann ist die abgeschlossene Einheitskugel
+   $B = \{x ∈ H \mid \norm{x} \leq 1\}$
+   in der Normtopologie nichtkompakt.
+   #+end_thm
+   Eine entsprechende Aussage gilt allgemeiner für unendlichdimensionale Banachräume.
+   #+begin_proof latex
+   $H$ ist mit der durch das Skalarprodukt induzierte Norm ein metrischer Raum. Eine
+   Teilmenge $M$ von $H$ ist also kompakt, wenn jede unendliche Folge in $M$ eine Häufungspunkt in
+   $M$ hat. \\
+   $\dim H = ∞ ⇒$ es gibt ein unendliches Orthonormalsystem $\{e_n \mid n ∈ ℕ\}$ in $H$. Da
+   die Vektoren normiert sind, sind alle in $B$. Wegen der Orthonormiertheit gilt für alle $m \neq n$
+   \[\norm{e_m - e_n}^2 = \braket{e_m | e_m} - \braket{e_m | e_n} - \braket{e_n | e_m} + \braket{e_n | e_n} = 2\]
+   Die Folge $(e_n)_{n ∈ ℕ}$ in $B$ erfüllt also $\norm{e_m - e_n} = \sqrt{2}$ für alle
+   $m \neq n$. Sie kann deshalb keinen Häufungspunkt haben. Also ist $B$ nicht kompakt.
+   #+end_proof
+   *Schwache Topologie und Kompaktheit* \\
+   Der *Satz von Banach Alaoglu* besagt aber, dass die Einheitskugel in jedem Banachraum *schwach-\(\ast\)-kompakt* ist, das heißt, dass
+   jede beschränkte Folge in einem geeigneten schwachen Sinn konvergente Teilfolgen einhält. \\
+   Speziell für separable Hilberträume $H$:
+   #+begin_thm latex
+   $(x_n)_{n ∈ ℕ}$ sei einen Folge in $H$ mit $\norm{x_n} = 1$ für alle $n$. Dann existiert $x ∈ H$
+   un eine Teilfolge $(x_{n_k})_{k ∈ N}$, sodass $x_{n_k}$ für $k \to ∞$ schwach gegen x konvergiert, das heißt
+   \[∀ y ∈ H: \braket{y | x_{n_k} - x} \xrightarrow{k \to ∞} 0\]
+   #+end_thm
+   Im Allgemeinen kann es viele Teilfolgen geben, die schwach gegen verschiedene Elemente konvergieren.
+   Für eine fix gegebene Teilfolge ist der schwache Limes aber eindeutig.
+   #+begin_lemma latex
+   In einem Hilbertraum $H$ ist der Limes einer schwach konvergenten Folge eindeutig und jede schwach
+   konvergente Folge ist beschränkt
+   #+end_lemma
+   #+begin_proof latex
+   Übung. Der zweite Teil verwendet den Satz von der gleichmäßigen Beschränktheit.
+   #+end_proof
+   *Kompakte Operatoren* \\
+   Sei $H$ ein separabler Hilbertraum, das heißt ein Hilbertraum mit einer abzählbaren Orthonormalbassi. \\
+   Wir nenn $F$ einen *Operator von endlichem Rang*, wenn
+   der Bildraum $\ran F = \{F x \mid x ∈ H\}$ endlichdimensional ist. Wenn
+   $\dim \ran F = n$ sagen wir $F$ hat Rang $n$. Jeder Operator der Form
+   \[F = \sum_{n = 1}^{N} \ket{f_n} \bra{e_n}\]
+   mit $f_1, \dots, f_N ∈ H$ und $e_1, \dots, e_N ∈ H$ ist von endlichem Rang.
+   #+begin_lemma latex
+   Sei $F ∈ L(H)$ ein Operator von endlichem Rang.
+   1. Es gibt linear unabhängige Vektoren $f_1, \dots, f_N ∈ H$ und ein Orthonormalsystem $\{e_1, \dots, e_N ⊂ H\}$,
+	  sodass
+	  \[F = \sum_{n = 1}^{N} \ket{f_n} \bra{e_n}\]
+	  gilt. Es gilt außerdem $\ker F = (\Span \{e_1, \dots, e_N\})^{\perp}$ und der Rang
+	  von $F$ ist gleich der Dimension von $\Span \{f_1, \dots, f_N\}$
+   2. Für jedes $A ∈ L(H)$ sind $A F$ und $F A$ Operatoren von endlichem Rang.
+   3. $F$ bildet beschränkte Mengen auf präkompakte Mengen ab.
+   #+end_lemma
+   Die Menge der Operatoren von endlichem Rang $\mathscr{F}(H)$ ist ein Untervektorraum
+   von $L(H)$, somit mit der Operatornorm ein normierter Raum. \\
+   $\mathscr{F}(H)$ ist aber *nicht* abgeschlossen in $L(H)$
+   #+begin_defn latex
+   Sei $H$ ein separabler Hilbertraum. Die Menge der kompakte Operatoren $\mathscr{K}(H)$
+   ist der Abschluss von $\mathscr{F}(H)$ in der Operatornorm.
+   #+end_defn
+   Was wir hier als Definition formuliert haben, ist, im Rahmen einer allgemeineren Definition dessen,
+   was ein kompakter Operator auf einem Banachraum ist, ein Satz. \\
+   Nach dieser Definition kann jeder kompakte Operator in der Operatornorm beliebig genau durch
+   einen Operator von endlichem Rang angenähert werden. Die Operatornorm ist nicht die einzige Norm,
+   die man auf $\mathscr{F}(H)$ einführen kann. Weitere interessante Normen basieren auf
+   dem Begriff der Spur eines Opeartors, die für Operatoren von endlichem Rang immer existieren.
+   Durch Vervollständigung in einer dieser Normen bekommt man für $p \geq 1$ die Sogenannte Spurideale
+   $\mathscr{s}_p$. $\mathscr{p}$ ist für jedes $p \geq 1$ ein Unterraum von $\mathscr{K}(H)$.
+   *Analytische Familien kompakter Operatoren* \\
+   #+begin_thm latex
+   Sei $H$ ein separabler Hilbertraum, $G ⊂ ℂ$ ein Gebiet und $K: G \to L(H)$.
+   Die Abbildung $z ↦ K(z)$ sei holomorph auf $G$ und für alle $z ∈ G$ sei $K(z)$ kompakt.
+   Dann gilt: \\
+   \begin{center}
+   Entweder ist $\mathbb{1} - K(z)$ für kein $z ∈ G$ invertierbar \\
+   oder die f unktion $z ↦ (\mathbb{1} - K(z))^{-1}$ ist meromorph auf $G$. \\
+   \end{center}
+   Wenn die zweite Alternative eintritt und $a ∈ G$ ein Pol von $(\mathbb{1} - K)^{-1}$ ist,
+   dann ist das Residuum bei $a$ ein Operator von endlichem Rang und die Gleichung $K(a) v = v$
+   hat eine nichttriviale Lösung $v ∈ H$.
+   #+end_thm
+   #+begin_proof latex
+   Grundidee: nähere $K(z)$ in einer kleinen Umgebung eines Punktes $a ∈ G$ durch einen Operator
+   $F$ von endlichem Rang der $K(a)$ approximiert, an. \\
+   $F$ hat endlichdimensionalen Bidraum. Die \(z\)-Abhängigkeit in diesem Raum ist aus
+   der Spektraltheorie für Matrizen bekannt. \\
+   Die Differenz, die bei der Approximation entsteht, wird mit Hilfe von konvergenten Neumann'schen Reihen behandelt. \\
+   SEi also $a ∈ G$ und $r > 0$ so klein, dass $B_r(a) ⊂ G$ und $\norm{K(z) - K(a)} < 1/2$ für
+   alle $z ∈ B_r(a)$. Da $K(a)$ ein kompkater Operator ist, gibt es einen Operator $E$ von
+   endlichem Rang, sodass $\norm{K(a) - E} < 1/2$ ist, also $\norm{K(z) - E} < 1$.
+   Somit existiert für alle $z ∈ B_r(a)$
+   \[R_0(z) = (\mathbb{1} - (K(z) - E))^{-1} ∈ L(H)\]
+   (Neumann'sche Reihe!)
+   \[R_0(z) = \sum_{n = 0}^{∞}(K(z) - E)^n\]
+   $z ↦ R_0(z)$ ist holomorph auf $B_r(a)$ (da gegeben durch eine konvergente Neumann'sche Reihe, die
+   eine holomorphe Funktion definiert und da die Zusammensetzung holomorpher Funktionen wieder holomorph ist). Wir schreiben
+   \[\mathbb{1} - K(z) = \mathbb{1} - K(z) + E - E = (\mathbb{1} - E R_0(z))(1 - K(z) + E)\]
+   Definiere $F(z) := E R_0(z)$. Der Bildraum ist gleich dem von $E$, also endlichdimensional und unabhängig von $z$ $\to$ $F: B_r(a) \to \mathscr{F}(H)$ und $F$ ist holomorph auf $B_r(a)$.
+   \begin{align*}
+   \mathbb{1} - K(z) &= (\mathbb{1} - F(z)) (\mathbb{1} - K(z) + E) \\
+   \mathbb{1} - F(z) &= (\mathbb{1} - K(z)) R_0(z) \\
+   \end{align*}
+   $⇒ (\mathbb{1} - K(z))^{-1} \text{ existiert } ⇔ (\mathbb{1} - F(z))^{-1} \text{ existiert}$.
+   Außerdem
+   \[∃ v \neq 0: F(z) v = v ⇔ ∃ v \neq 0: K(z) w = w\]
+   (man nehme $w = R_0^{-1} v$). Für die weiteren Überlegungen bezeichenen wir den Projektionsoperator
+   auf den Bildraum $\mathcal{E}$ von $E$ mit $P$ und den dazu orthogonalen Projektor $\mathbb{1} - P$ auf
+   $\mathcal{E}^{\perp}$ mit $Q$. Es gilt also $P + Q = \mathbb{1}, P Q = Q P = 0$ und
+   \[∀ z ∈ B_r(a): P F(z) = F(z) \quad\text{und}\quad Q F(z) = 0\]
+   Sei $Γ(z): \mathcal{E} \to \mathcal{E}$ die Einschränkung des Operators $1 - F(z)$ auf
+   den endlichdimensioneln Raum $P H = \mathcal{E}$, sodass
+   \[(1 - F(z)) P = Γ(z) P\]
+   $⇒$ $Γ(z): \mathcal{E} \to \mathcal{E}$
+   #+end_proof
+   #+begin_lemma latex
+   $1 - F(z)$ ist genau dann invertierbar, wenn $Γ(z)$ invertierbar ist und in diesem Fall
+   ist das Inverse gegeben durch
+   \[(1 - F(z))^{-1} = Γ(z)^{-1} P(1 + F(z) Q) + Q\]
+   #+end_lemma
+   #+begin_proof latex
+   Sei $x, y ∈ H$. Weil $P$ und $Q$ auf orthogonale Unterräume projezieren, folgt mit dem Projkektionssatz
+   \[(\mathbb{1} - F)x = y ⇔ P(\mathbb{1} - F)x = P y,\quad Q x = Q y\]
+   Einsetzen von $x = (P + Q) x$ (da die Zerlegung orthogonal ist, ist umgekehrt $x$ eindeutig durch Angabe von $P x$ und $Q x$ bestimmt) ergibt weiter
+   \begin{align*}
+   &\string(\mathbb{1} F\string) x = y \\
+   ⇔ &P(1 - F) x = P y, \quad Q x = Q y
+   ⇔ &P(1 - F) P x + P(1 - F) Q x = P y, \quad Q x = Q y \\
+   ⇔ &\string(\mathbb{1} - F\string) P x = P(1 + F Q) y, \quad Q x = Q y \\
+   ⇔ &Γ(z) P x = P(1 + F Q) y, \quad Q x = Q y
+   \end{align*}
+   $Γ = Γ(z)$ invertierbar $⇒ x = Γ^{-1} P(1 + F Q) y + Q y$ $⇒$ $(1 - F) x = y$ hat für alle $y ∈ H$
+   eine Lösung. Umgekhert: $(1 - F)x = y$ hat für alle $y$ eine eindeutige Lösung $x$. Wähle
+   $y ∈ \mathcal{E} ⇒ Q y = 0, P y = y$,
+   \begin{align*}
+   Γ(z) P x &= y \\
+   Q x &= 0
+   \end{align*}
+   #+end_proof
+   #+begin_proof latex
+   (Fortsetzung des Beweises des Satzes). Insgesamt folgt $∀ z ∈ B_r(a)$:
+   \[(\mathbb{1} - K(z))^{-1} \quad\text{existiert}\quad ⇔ Γ(z)^{-1} \quad\text{existiert}\]
+   und
+   \[∃ v ∈ H \setminus \{0\}: K(z) v = v ⇔ ∃ \tilde x ∈ \mathcal{E} \setminus \{0\}: Γ(z) \tilde x = 0\]
+   Für $z ∈ B_r(a)$ ist also die Untersuchung von $1 - K(z)$ auf $Γ(z)$ zurückgeführt. Da
+   $Γ(z)$ den endlichdimensionalen Raum $\mathcal{E}$ auf sich selbst abbildet, ist das im wesentlichen
+   ein Matrixproblem. Es sei $\{e_1, \dots, e_N\}$ eine Orthonormalbasas des Bildraums $\mathcal{E}$ von
+   $E$. Als Vektor in $\mathcal{E}$ hat $\tilde x$ die Darstellung
+   \[\tilde x = \sum_{n = 1}^{N} ξ_n e_n\]
+   und $Γ(z)$ hat die Matrixdarstellung
+   \[C(z)_{m,n} = \braket{e_m | (\mathbb{1}_{\mathcal{E}} - F(z))e_n} = δ_{m,n} - \braket{e_m | F(z) e_n}\]
+   $C(z)$ ist eine holomorphe Funktion von $z$ auf $B_r(a)$. Setze
+   \[D(z) = \det C(z)\]
+   Wenn $D(z) \neq 0$ ist, dann existiert $Γ(z)^{-1}$. Wenn $D(z) = 0$ ist, dann hat die Gleichung $F(z) \tilde x = \tilde x$ eine
+   Lösung $\tilde x \neq 0$. Die Determinante $D(z)$ ist eine holomorphe Funktion von
+   $z$ auf $B_r(a)$. Sie ist entwender identisch Null oder sie hat nur isolierte Nullstellen
+   (Identitätssatz!). Wenn also $C$ bei irgendeinem $z ∈ B_r(a)$ invertierbar ist, dann auch
+   bei allen $z' ∈ B_r(a)$ minus der diskreten Menge der Nullstellen von $D$. Daraus ergibt sich die
+   Alternative des Satzes, wobei $G$ durch $B_r(a)$ ersetzt	ist. \\
+   $Γ(z)^{-1}$ ist ein Inverse auf einem endlichdimensionalen Raum, also automatisch ein beschränkter Operator,
+   wenn sie existiert. Das Inverse von $C(z)$ ist gegeben durch $D(z)^{-1}$ multipliziert mit
+   einer Matrix von Kofaktoren von $C(z)$ also ist
+   \[Γ(z)^{-1} = \frac{1}{D(z)} Δ(z)\]
+   mit einer holomorphen Funktion $z ↦ Δ(z) ∈ L(\mathcal{E})$. Also ist auch $(1 - F(z))^{-1} ∈ L(H)$ und
+   damit auch
+   \[(1 - K(z))^{-1} = \frac{1}{D(z)} R_0(z) Δ(z) P(1 + F(z) Q) + R_0(z) Q ∈ L(H)\]
+   Da $R_0$	und $F$ holomorph in $z$ sind, folgt, dass $´ ↦ (1 - K(z))^{-1}$ meromorph auf $B_r(a)$ ist.
+   Sei schließlich $a$ ein Pol von $(1 - K)^{-1}$, also eine Nullstelle von $D$ und $z ∈ B_r(a)$ mit
+   $z \neq a$. Dann ist $D(z) \neq 0$, also $1 - K(z)$ invertierbar und das Residuum bei $z = a$
+   kan abgelesen werden: Der Summand $R_0(z) Q$ ist bei $z = a$ analytisch und tregt deshalb nichts zum
+   Residuum bei. Wenn $D$ bei $a$ einen Pol \(m\)-ter Ordnnug hat, ist das
+   Residuum des ersten Summanden proportional zur \(m - 1\)-ten Ableitung der operatorwertigen holomorphen Funktion
+   \[z ↦ R_0(z) Δ (z) P(1 + F(z) Q)\]
+   nach $z$ ausgewertet bei $z = a$. Jeder der Terme, die in dieser Ableitung auftreten, ist
+   von endlichem Rang, da jeder solche Term den Projketinosoperator $P$ enthält, der von endlichem Rang ist. \\
+   Bis jetzt haben wir nur einen Kreisscheibe $B_r(a)$ um einen einzelnen Pnukt $a ∈ G$ betrachtet. Die
+   Kreisscheiben $B_r(a)$ überdecken ganz $G$. In jeder dieser Kreissscheiben ist
+   $(1 - K(z))^{-1}$ meromorph. Die Pole können sich nicht an einem Punkt $b ∈ G$, der am Rand
+   einer Kreisscheibe liegt häufen, weil $b$ im Inneren einer weiteren Kreisscheibe der Überdeckung
+   liegt. Also hat $(1 - K(z))^{-1}$ in $G$ keine Häufungspunkte von Polstellen.
+   Da $G$ und $G \setminus S$ jür jede diskrete Menge zusammenhängend sind, ist die Menge auf
+   der $(1 - K(z))^{-1}$ holomorph ist ein Gebiet und der Identitätssatz ist anwendbar und hat zur
+   Folge, dass $(1 - K(z))^{-1}$ wohldefiniert ist. Aus demselben Grund kann es nicht passieren, dass eine
+   der Alternativen in einer Kreisscheibe eintritt und ihr Gegenteil in der Anderen.
+   #+end_proof
+   #+ATTR_LATEX: :options [Fredholm'sche Alternative]
+   #+begin_conc latex
+   Sei $A$ ein kompakter Operator auf einem Hilbertraum $H$. Entweder hat $A x = x$ eine Lösung
+   $x \neq 0$ oder $(1 - A)^{-1}$ existiert.
+   #+end_conc
+   #+begin_proof latex
+   Betrachte $K(z) = z A$ bei $z = 1$ und wende den Satz an.
+   #+end_proof
+   *Spektraltheorie kompakter Operatoren*
+   #+ATTR_LATEX: :options [Satz von Riesz-Schauder]
+   #+begin_thm latex
+   $H$ Hilbertraum, $A ∈ L(H)$ kompakt. Dann gilt
+   \[z ↦ (z - A)^{-1}\]
+   ist meromorph auf $ℂ \setminus \{0\}$, $σ(A) \setminus \{0\}$ ist diskret,
+   jedes $λ ∈ σ(A) \setminus \{0\}$
+   ist ein Eigenwert endlicher Vielfachheit.
+   #+end_thm
+   #+ATTR_LATEX: :options [Satz von Hilbert-Schmidt]
+   #+begin_thm latex
+   $H$ separabler, unendlichdimensionaler Hilbertraum, $A ∈ L(H)$ kompakt und $A^{\dagger} = A$.
+   Dann hat $H$ eine Orthonormalbasis aus Eigenvektoren von $A$ und die Eigenwerte von $A$ bilden
+   eine Nullfolge.
+   #+end_thm
+
+   *Funktionenräume*
+   *Räume stetiger und differenzierbarer Funktionen* \\
+   #+begin_defn latex
+   Es sei $(X, d)$ ein metrischer Raum soweie $V$ ein normierter Vektorraum. Definiere
+   \[C(X, V) := \{f: X \to V \mid f \text{ stetig und beschränkt}\}\]
+   als den Raum der stetigen, beschränkten Funktionen $f: X \to V$ und die Supremumsnorm
+   \[\norm{f}_∞ = \sup \{\norm{f(x)} \mid x ∈ X\}\]
+   Wenn $V$ ein Banachraum ist, dann ist auch $C(X, V)$ ein Banachraum.
+   #+end_defn
+   #+begin_defn latex
+   Ein \(d\)-Tupel $α ∈ ℕ_0^d$ heißt Multiindex. Für $α = \{α_1, \dots, α_d\}$ mit $α_i ∈ ℕ_0$
+   für alle $i ∈ \{1, \dots, d\}$ setze
+   \[\abs{α} = \sum_{i = 1}^{d} α_i, \qquad α! = \prod_{i = 1}^d α_i!\]
+   Für $x ∈ ℝ$ setze
+   \[x^α = \prod_{i = 1}^d x_i^{α_i}\]
+   wobei hier als Konvention $x_i^0 = 1$ gesetzt wird, auch für $x_i = 0$. Analog bezeichnet
+   \[D^{α} = (\pp{}{x_1})^{α_1} (\pp{}{x_2})^{α_2} \dots (\pp{}{x_d})^{α_d}\]
+   #+end_defn
+   #+begin_defn latex
+   Für eine offene Menge $Ω ⊂ ℝ^d$ definieren wir den Raum der \(k\)-mal stetig differenziebaren Funktionen
+   auf $Ω$ als
+   \[C^k(Ω, V) := \{f: Ω \to V \mid D^α f \text{ existiert und ist stetig für alle $α ∈ ℕ_0^d$ mit $\abs{α} = k$}\}\]
+   Für jedes $α ∈ ℕ_0^d$ ist $f ↦ \norm{D^α f}_∞$ eine Halbnorm auf $C^k(Ω, V)$. Wir bezeichnen im
+   Folgenden mit
+   \[C^∞(Ω, V) := \bigcap_{k = 0}^∞ C^k(Ω, V)\]
+   den Raum der glatten Funktionen auf $Ω$.
+   #+end_defn
+   #+begin_defn latex
+   Der *Schwartzraum* $\mathscr{S} = \mathscr{S}(ℝ^d)$ ist die Menge der glatten Funktionen
+   am $ℝ^d$, welche stärker als jede Potenz von $1 / \abs{x}$ abfallen.
+   \[\mathscr{ℝ^d} = \{f ∈ C^∞(ℝ^d, ℂ) \mid ∀ N ∈ ℕ_0 ∀ α ∈ ℕ_0^d ∃ K_{N, α} > 0: ∀ x ∈ ℝ^d: \abs{D^α f(x)} \leq \frac{K_{N_α}}{(1 + x^2)^{N / 2}}\}\]
+   #+end_defn
+   #+begin_ex latex
+   $f(x) = e^{-λ x^2} ∈ \mathscr{S}(ℝ^d)$ für alle $λ ∈ ℂ$ mit $\Re λ > 0$.
+   #+end_ex
+   Für alle $p, q ∈ ℕ_0^α$ ist durch
+   \[\norm{f}_{p,q} = \sup_{x ∈ ℝ} \{\abs{x^p D^q f(x)}\}\]
+   eine Norm auf $\mathscr{S}$ gegeben. Jede dieser Normen definiert eine andere
+   Topologie auf $\mathscr{S}$ und $\mathscr{S}$ ist in der ducrh
+   $\norm{·}_{p,q}$ für ein einzelnes $p, q$ definierten Topologie nicht vollständig. Als Illustration
+   betrachten wir die Folge $f_n ∈ \mathscr{S}$
+   \[t ↦ \sqrt{t^2 + 1/n} e^{-t^2}\]
+   Diese Folge konvergiert in der Supremumsnorm. Die Grenzfunktion $φ(t) = \abs{t} e^{-t^2}$
+   ist zwar stetig, aber nicht einmal in $C^1$.
+   *Konvergenz in $\mathscr{S}$. \\
+   \[f_n \xrightarrow{n \to ∞} f \text{ in } \mathscr{S} :⇔ ∀ p, q ∈ ℕ_0^d: \abs{f_n - f}_{p,q} \xrightarrow{n \to ∞} 0\]
+   Mit diesem Konvergenzbegriff ist $\mathscr{S}$ vollständig. Da allerdings auf unendlich viele
+   Normen Bezug genommen wird und nicht nur auf eine fällt der Schwartzraum mit diesem Konvergenzbegirff
+   nicht in den begrifflichen Rahmen von Banachräumen, sondern in den allgemeineren von
+   *lokalkonvexen* Räumen.
+   Das folgende Lemma zeigt, dass $\mathscr{S}$ mit einer Definition offener Mengen, in der,
+   analog zur eben definierten Konvergenz alle \((p, q)\)-Normen vorkommen, ein metrischer Raum ist.
+   Es reicht also trotzdem aus, Konvergenz mit Folgen zu charakterisieren.
+   #+begin_lemma latex
+   Es sei $X$ ein Vektorraum
+   1. Sei $\norm{·}_k$ mit $k ∈ \{1, \dots, K\}$ eine endliche Familie von Halbnormen auf $X$
+	  mit der Eigenschaft, dass für alle $x ∈ X \setminus \{0\}$ ein $k$ existiert, sodass
+	  $\norm{x}_k \neq 0$, also
+	  \[∀ x ∈ X \setminus \{0\} ∃ k : \norm{x}_k \neq 0\]
+	  Dann ist
+	  \[\norm{x} = \sum_{k = 1}^{K} \norm{x}_k\]
+	  eine Norm auf $X$
+   2. Sei $(\norm{·}_k)_{k ∈ ℕ}$ eine Familie von Halbnormen auf $X$. Dann ist
+	  \[d(x, y) = \sum_{k = 0}^{∞} 2^{-k} \frac{\norm{x - y}_k}{1 + \norm{x - y}_k}\]
+   #+end_lemma
+   #+begin_proof latex
+   Übung.
+   #+end_proof
+   *\(L^p\)-Räume* \\
+   Für $f, g ∈ \mathscr{S}$ konvergiert das Integral
+   \[\braket{f | g} = ∫_{ℝ^d} \overline{f(x)} g(x) \d^d x\]
+   absolut, denn der Integrand ist stetig und fällt für $\abs{x} \to ∞$ schneller als jede Potenz ab.
+   $(f, g) ↦ \braket{f | g}$ definiert ein inneres Produkt auf $\mathscr{S}$ mit
+   der zugehörigen Norm
+   \[\norm{f}_2 = \sqrt{\braket{f | f}}\]
+   Allgemeiner gilt: wenn $p ∈ ℝ \leq p < ∞$, dann konvergiert für jedes $f ∈ \mathscr{S}$ das
+   Integral
+   \[\norm{f}_p = (∫_{ℝ^d} \abs{f(x)}^p \d^d x)^{1/p}\]
+   und $f ↦ \norm{f}_p$ ist eine Norm auf $\mathscr{S}$.
+   #+begin_defn latex
+   $L^p(ℝ^d, ℂ) = L^p(ℝ^d)$ ist die Vervollständigung von $\mathscr{S}$ in $\norm{·}_p$.
+   #+end_defn
+   #+begin_thm latex
+   Für $p = 2$ ist $L^2$ ein Hilbertraum, für $p \neq 2$ ist $L^p$ Banachraum.
+   #+end_thm
+   Obwohl $L^p$ oft kurz als ein 'Funktionenraum' bezeichnet wird, ist aus
+   der Konstruktion der Vervollständigung klar, dass es sich nicht einfach um einen
+   Funktionenraum, sondern um einen Raum von Äquivalenzklassen handet. Zur
+   Einordnung einige kurze Bemerkungen: in der üblichen auf
+   Maßtheorie basierende Konstruktion der \(L^p\)-Räume sind Elemente der $L^p$ Äquivalenzklassen
+   von Funktionen, die sich nur auf Mengen vom Maß Null unterscheiden. Die gesamte Theorie baut nicht
+   auf dem Begriff differenzierbarer Funktionen auf - Integrierbarkeit setzt Differenzierbarkeit nicht
+   voraus. Natürliche "einfache" Funktionen sind dabei Treppenfunktionen, sie sind
+   insofern viel einfacher als Schwartzfunktionen, als in die Definition
+   von Schwartzfunktionen abzählbar viele Bedingungen eingehen. In der hier gemachten Vervollständigung sind
+   wir von glatten Funktionen ausgegangen und wir haben bis jetzt auch nicht gezeigt,
+   dass das innere Produkt am $L^2$ beziehungsweise die Norm am $L^p$ für allgemeine Elemente des $L^p$ überhaupt als
+   Integrale gegeben sind! (Dies ist allerdings der Fall.) Es ist andererseits in dieser Konstruktion klar,
+   dass jedes Element des $L^p$ beliebig genau durch eine Schwartzfunktion angenäßert werden kann,
+   für die die Norm tatsächlich durch ein Integral gegeben ist. (Insbesondere kann man
+   auch jede Treppenfunktion biliebig genau durch eine Schwartzfunktion annähßern.) Abgesehen von
+   der Kürze der Darstellung passt dies auch dazu, dass in der Quantenmechanik Differentialoperatoren studiert
+   werden, deren Wirkung auf allegmeine \(L^2\)-Elemente nicht definiert its. Die
+   Definition der Unterräume, auf denen sie sinnvoll definiert sind ist mithilfe von $\mathscr{S}$
+   sehr leicht zu geben. Wir werden im Folgenden an einigen Stellen den üblichen abgekürzten Sprachgebrauch
+   verwenden, dass eine Funktion $f$ "im $L^p$ ist" und $f ∈ L^p$ schreiben, wenn
+   \[∫ \abs{f(x)}^p \d^d x < ∞\]
+   ist. Gemeint ist dabei immer, dass sie ein Repräsentant eines \(L^p\)-Elements ist.
+   *Hölder'sche Ungleichung* \\
+   Sei $1 < p < ∞$ Und $1/p + 1/q = 1$. Es gilt:
+   1. Für $f, g ∈ \mathscr{S}$
+	  \[\norm{f g}_1 \leq \norm{f}_p \norm{g}_q\]
+   2. Falls für $f, g ∈ \mathscr{S}$ außerdem $f \geq 0$ und $g \geq 0$
+	  \[∫ f^{1 - α} g^α \leq (∫ f)^{1 - α} (∫ g)^α\]
+	  für alle $α ∈ (0, 1)$
+   3. Für $f ∈ L^p$ und $g ∈  L^q: f g ∈ L^1$ und
+	  \[\norm{f g}_1 \leq \norm{f}_p \norm{g}_q\]
+	  wobei Gleichheit gilt, wenn $\abs{g} = \abs{f}^p / \bar f$ fast überall.
+   4. Es gilt
+	  \[\norm{f}_p = \sup_{\substack{g ∈ \mathscr{S} \\ \norm{g}_q \leq 1}} \braket{g | f}\]
+   #+begin_proof latex
+   1. Für Schwarzfunktionen ist das Integral ein Grenzwert Riemann'scher Summen. Für jede dieser Summen
+	  gilt die Hölder'sche Ungleichung für Summen. Für Gleichheit folgt dann $f = g$
+   2. $p = 1/(1 - α)$ und $q = 1/α$
+   3. Dichtheit von $\mathscr{S}$ in $L^p$
+   4. (Skizze) Für
+	  \[\braket{f | g} = ∫ \overline{f(x)} g(x) \d^d x\]
+	  gilt
+	  \[\abs{\braket{f | g}} \leq \norm{f}_p \norm{g}_q \leq \norm{f}_p\]
+	  für alle $g$ mit $\norm{g}_q \leq 1$. Also gilt $\geq$. Umgekhert:
+	  setze
+	  \[\tilde g = \frac{\abs{f}^p}{\bar f}\]
+	  dann ist $\tilde g ∈ L^q$. Normiere $\tilde g$ in $\norm{·}_{q'}$, wobei $\norm{\tilde g}_{q'} = \norm{f}_p^{p/q} = \norm{f}_p^{p - 1}$ und definiere
+	  \[g := \frac{\tilde g}{\norm{f}_p^{p - 1}}\]
+	  Dann gilt
+	  \[\braket{g | f} = \frac{1}{\norm{f}_p^{p - 1}} ∫ \frac{\abs{f}^p}{f} f = \norm{f}_p\]
+   #+end_proof
+   Entsprechende Aussagen gelten auch für $f ∈ L^1, g ∈ L^∞$ (allerdings ist $L^∞$) nicht
+   einfach die Vervollständigung von $\mathscr{S}$ in der Supremumsnorm.
+   *Die Fouriertransformation auf $\mathscr{S}$ und $L^2$* \\
+   Für $k ∈ ℝ^d$ und $φ ∈ \mathscr{S}$ setze
+   \[\hat f(k) = (\mathcal{F} φ)(k) = ∫_{ℝ^d} φ(x) e^{-i k x} \d^d x\]
+   $\hat φ$ ist für jedes $φ ∈ \mathscr{S}$ wohldefiniert, da $\abs{e^{-ikx}} = 1$ und
+   deshalb das Integral absolut konvergiert. $φ ↦ \hat φ$ definiert also
+   eine Abbildung $\mathscr{F}$ auf $\mathscr{S}$, die aufgrund der	Eigenschaften des Integrals linear ist
+   Die Abbildung $\mathcal{F}$ ist außerdem stetig auf $\mathscr{S}$, aus folgendem Grund.
+   Sei $Q$ das Polynom
+   \[Q(x) = C_d(1 + x^2)^d\]
+   und $C_d > 0$ so gewählt, dass
+   \[∫_{ℝ^d} \frac{1}{Q(x)} \d^d x = 1\]
+   $Q(x) > 0$ für alle $x$ und $Q(x) \sim \abs{x}^{2d}$ für $\abs{x} \to ∞$, also existiert das
+   Integral. Für $φ_n ∈ \mathscr{S}$, $(φ_n)_{n ∈ ℕ}$ konvergent gegen null, ist $Q φ_n$ beschränkt, da
+   \[\norm{x^q D^p φ_n}_∞ \leq C_{p,q} \quad ∀ n ∈ ℕ\]
+   und daher
+   \begin{align*}
+   \abs{(\mathcal{F} φ_n)} &\leq ∫_{ℝ^d} \abs{φ_n(x)} \d^d x \\
+   &= ∫_{ℝ^d} \abs{φ_n(x) Q(x)} \frac{1}{Q(x)} \d^d x \\
+   &\leq \norm{φ_n Q}_∞ ∫_{ℝ^d} \frac{1}{Q(x)} \d^d x \\
+   &= \norm{φ_n Q}_∞ \\
+   &\leq \abs{φ_n}_{2d,0}
+   \end{align*}
+   Wenn also $φ_n \to 0$ für $n \to ∞$ in $\mathscr{S}$, dann gilt $\hat φ_n = \mathcal{F} φ_n \to 0$
+   für $n \to ∞$ in $\norm{·}_∞$. Somit haben wir die Stetigkeit der Fouriertransformation als
+   Funktion von $\mathscr{S}$ in den Raum der stetigen Funkitonen gezeigt. \\
+   Ebenso können wir für $ψ_n(x) = D^{-ix^p} φ_n(x)$ mit $φ_n \to 0$ für $n \to ∞$ in
+   $\mathscr{S}$ folgern, dass $ψ_0 \to 0$ für $n \to ∞$ in $\mathscr{S}$, da
+   eine Schwartzfunktion mit beliebigen Potenzen und Ableitungen multipliziert werden kann und
+   man dabei in $\mathscr{S}$ bleibt. Dann gilt außerdem
+   \[\norm{k ↦ (i k)^q (D^p \hat φ_n)(k)}_∞ = \norm{\mathcal{F} ψ_n}_∞ \leq \norm{Q ψ_n}_∞ \xrightarrow{n \to ∞} 0\]
+   Damit konvergietr also die Folge der $\hat φ_n$ in $\mathscr{S}$ und es gilt
+   \[\hat φ_n \xrightarrow{n \to ∞} 0\]
+   #+begin_lemma latex
+   Für $φ ∈ \mathscr{S}$ existiert $\hat φ = \mathcal{F} φ, \hat φ ∈ C^∞(ℝ^d)$ für alle $k ∈ ℝ^d$ und
+   $p ∈ ℕ_0^d$
+   1. $\mathcal{F}((-i D)^p φ)(k) = k^p \hat φ(k) = k_1^{p_1} k_2^{p_2} \dots \hat φ(k)$
+   2. $D^p \hat φ = \mathcal{F}(x ↦ (-i x)^p φ(x))$
+   Für alle $p, q ∈ ℕ_0^d$ gibt es ein $M_{p,q}(φ) > 0$, sodass für alle $k ∈ ℝ^d$ gilt
+   \[\abs{(k^p D^q \hat φ)(k)} \leq M_{p,q}(φ)\]
+   #+end_lemma
+   #+begin_proof latex
+   1. Für jede Komponente $k_j$ mit $j ∈ \{0, 1, \dots, d\}$ gilt
+      \begin{align*}
+      k_j \hat φ(k) &= ∫_R φ(x) k_j e^{-i k x} \d^d x \\
+      &= ∫_R φ(x) (i \pp{}{x_j} e^{- i k x}) \d^d x \\
+      &= ∫_R (-i \pp{}{x_j} φ)(x) e^{-i k x} \d^d x
+      \end{align*}
+      wobei im letzte Scrhitt partielle Integration verwendet wurde. Dies lässt sich
+      für höhere Potenzen beziehungswarse gemischte Produkte fortsetzet, da
+      $-i \partial_{x_j} φ$ wieder eine Testfunktion ist. Der Randterm trägt wegen des schnellen Abfalls von
+      $φ$ und allen seinen Ableitungen nichts bei.
+   2. Analog gilt für jede Ableitung nach einer Komponente $k_j$
+	  \begin{align*}
+	  \pp{}{k_j} \hat φ(k) &= \pp{}{k_j} ∫ φ(x) e^{-i k x} \d^d x \\
+	  &= ∫ φ(x) \pp{}{k_j} e^{-i k x} \d^d x \\
+	  &= ∫ φ(x) (-i x_j) e^{-i k x} \d^d x
+      \end{align*}
+	  Die lässt sich analog für höhere Ableitungen wiederholen, da $(-i x_j)φ(x)$ wieder eine Testfunktion ist.
+   Es sei nun $p, q ∈ ℕ_0^d$ gegeben. Dann definieren wir
+   \[ψ_q(x) = (-i x)^q φ(x) \]
+   und es ist $ψ_q ∈ \mathscr{S}$ für $φ ∈ \mathscr{S}$. Es folgt
+   \begin{align*}
+   \abs{k^p (D^q \hat φ)(k)} &\leq \abs{\mathcal{F}(D^p ψ_q)(k)} \\
+   &\leq \norm{Q D^p ψ_q}_∞
+   \end{align*}
+   #+end_proof
+   #+begin_thm latex
+   Die Fouriertransformation $\mathcal{F}$ bildet $\mathscr{S}$ linear, stetig und bijektiv auf $\mathscr{S}$ ab. Die Umkherung ist gegeben durch
+   \[φ(x) = \frac{1}{(2π)^d} ∫ (\mathcal{F} φ)(k) e^{i k x} \d^d k\]
+   #+end_thm
+   #+begin_proof latex
+   Es bleibt die Bijektivität und die Umkehrformel zu zeigen. Für letztere könnte man naiv ansetzen
+   \begin{align*}
+   ∫ \hat φ(k) e^{i k x} \d^d x &= ∫(∫φ(y) e^{-i k y} \d^d y) \d^d k \\
+   &= ∫ φ(y) (∫ e^{i k(x - y)} \d^d k) \d^d  y
+   &= (2π)^d φ(x)
+   \end{align*}
+   Dies ist aber nur formal richtig, denn im zweiten Schritt wurde der Satz von Fubini verwendet, ohwohl
+   nicht der nötige Abfall in $k$ vorliegt. \\
+   Daher müssen wir dies auf eine andere Weise zeigen. \\
+   Es sei also $φ ∈ \mathcal{S}, \hat φ := \mathcal{F} φ$ und $\hat α ∈ \mathcal{S}$, sodass
+   \begin{align*}
+   J(x) &= ∫ \hat φ(k) \hat α(k) e^{i k x} \d^d k \\
+   &= ∫ (∫φ(y) e^{-i k y} \d^d y) \hat α(k) e^{i k x} \d^d k
+   \end{align*}
+   Das Integral its absolut konvergent über $y$ und $k$, denn
+   \[\abs{\hat{k} e^{i k x} φ(y) e^{- i k y}} \leq \abs{\hat α(k) φ(y)}\]
+   Man darf also die Reihenfolge der Integration nach Fubini vertauschen. Man erhält
+   \begin{align*}
+   J(x) &= ∫ φ(y) (∫ \hat α(k) e^{i k x - y} \d^d k) \d^d y \\
+   &= ∫ φ(y) (\mathcal{F} \hat α)(y - x) \d^d y \\
+   \intertext{mit $(P g)(x) := g(-x)$:}
+   &= ∫ φ(x)(P \mathcal{F} \hat α)(x - y) \d^d y \\
+   &= (φ \ast P \mathcal{F} \hat α)(x)
+   \end{align*}
+   Mit der Faltung:
+   \[(φ \ast ψ)(x) := ∫ φ(y) ψ(x - y) \d^d y\]
+   Wähle nun $\hat α = \hat β(ε k), ε > 0$ und $\hat β ∈ \mathcal{S}$, sodass
+   \begin{align*}
+   \string(\mathcal{F \hat α}\string)(x) &= ∫ e^{- i k x} \hat α(k) \d^d k \\
+   &= ∫ e^{- i k x} \hat β(ε k) \d^d k \\
+   \intertext{Setze $ε k =: p$, dann ist $ε^d \d^d k = \d^d p$}
+   &= ε^{-d} ∫ e^{-i p \frac{x}{ε}} \hat β(p) \d^p p
+   &= ε^{-d} (\mathcal{F} \hat β)(\frac{x}{ε})
+   \end{align*}
+   Es gilt
+   \begin{align*}
+   J(x) &= ∫ φ(y) ε^{-d} (\mathcal{F} \hat β)(\frac{y - x}{ε}) \d^d y \\
+   &= ∫ φ(x + ε z) (\mathcal{F} \hat β)(z) \d^d z \\
+   \intertext{mit dominierter Konvergenz folgt}
+   \lim_{ε \to 0} J(x) &= ∫ φ(x) (\mathcal{F} \hat β)(z) \d^d z \\
+   &= φ(x) ∫ (\mathcal{F} \hat β)(z) \d^d z
+   \end{align*}
+   Wähle nun $\hat β = \exp(- k^2 / 2)$, sodass
+   \begin{align*}
+   \string(\mathcal{F} \hat β\string)(ξ) &= ∫ e^{-i k ξ - k^2 / 2} \d^d k \\
+   &= (2π)^{d/2} e^{-i ξ^2 / 2}
+   \end{align*}
+   und
+   \[∫ (\mathcal{F} \hat β)(z) \d^d z = (2 π)^{d/2} ∫ e^{-z^2 / 2} \d^2 z = (2π)^d\]
+   Damit folgt
+   \[\lim_{ε \to 0} J(x) = (2 π)^d φ(x)\]
+   #+end_proof
+   Betrachte nun $J(x) = ∫ \hat φ(k) \hat α(k) e^{i k x} \d^d k$. Für $x = 0$ gilt
+   \begin{align*}
+   J(0) &= ∫ \hat φ(k) \hat α(k) \d^d k = ∫ φ(y) (\mathcal{F} \hat α)(y) \d^d y \\
+   &= (2 π)^d ∫ φ(y) \hat α(- y) \d^d y \\
+   \intertext{Mit $φ(y) = \overline{χ(y)}$ gilt}
+   \hat φ(k) &= (\mathcal{F} \bar χ)(k) = ∫ \overline{χ(y)} e^{- i k y} \d^d y = \overline{∫ χ(y) e^{i k y} \d^d y} = \overline{\hat χ(- k)} \\
+   \intertext{Setze $α(-y) = ψ(g)$, dann folgt}
+   \frac{1}{(2π)^d} ∫ \overline{\hat χ(k)} ψ(k) \d^d k = ∫ \overline{χ(x)} ψ(x) \d^d x
+   \end{align*}
+   #+begin_lemma latex
+   Für alle $χ, ψ ∈ \mathcal{S}$ gilt die Parseval'sche Gleichung in der Form
+   \[\frac{1}{(2π)^d} \braket{\mathcal{F} χ | \mathcal{F} ψ} = \braket{χ | ψ}\]
+   #+end_lemma
+   Definiere
+   \[(\tilde{\mathcal{F}})(k) = \frac{1}{(2π)^{d/2}} \mathcal{F} φ(k) = \frac{1}{(2π)^{d/2}} ∫_{ℝ^d} φ(x) e^{- i k x} \d^d x\]
+   Dann lässt sich die Parseval'sche Gleichung schreiben als
+   \[\braket{\tilde{\mathcal{F}} χ| \tilde{\mathcal{F}} ψ} = \braket{χ | ψ}\]
+   Insbesondere gilt
+   \[\norm{\tilde F ψ}_2 = \norm{ψ}_2\]
+   Das heißt $\tilde F$ ist isometrisch (also insbesondere stetig mit Lipschitz-Konstante $1$) auf $(\mathcal{S}, \norm{·}_2)$.
+   $L^2(ℝ^d)$ ist die Vervollständigung von $\mathcal{S}$ in $\norm{·}_2$. Da $\tilde F$ stetig
+   ist existiert eine eindeutig bestimmte, stetige Fortsetzung $\tilde F: L^2(ℝ^d) \to L^2(ℝ^d)$ mit
+   \[\braket{\tilde{\mathcal{F}} φ | \tilde{\mathcal{F}} ψ} = \braket{φ | ψ}\]
+   für alle $φ, ψ ∈ L^2(ℝ^d)$, das heißt, die Fouriertransformation kann in eindeutiger Weise auf $L^2$ fortgesetzt werden und
+   bildet $L^2$ unitär auf sich selbst ab.
+   #+begin_thm latex
+   Für $f ∈ L^2$ gilt
+   \[(\tilde{\mathcal{F}})(k) = \lim_{R \to ∞} \frac{1}{(2 π)^{d/2}} ∫_{\abs{x} \leq R} f(x) e^{i k x} \d^d x\]
+   wobei die rechte Seite in $\norm{·}_2$ konvergiert (aber nicht punktweise in $k$).
+   #+end_thm
+   *$L^2(ℝ^d)$ ist separabel* \\
+   #+begin_thm latex
+   Für jedes $d ∈ ℕ$ hat $L^2(ℝ^d)$ eine abzählbare Orthonormalbasis: $L^2(ℝ^d)$ ist separabel.
+   #+end_thm
+   Der Rest dieses Abschnitts enthält den Beweis dieses Satzes: wir geben hier eine Orthonormalbasis des $L^2(ℝ^d)$ an. Für $d = 1$
+   sind es die Eigenfunktionen $ϕ_n$ des harmonischen Oszillators der Quantenmechanik. Diese Funktionen sind auch insofern
+   mathematisch von Bedeutung, als sie eine Menge analytischer Vektoren für den Orts- und Impulsoperator bilden.
+   Für $d \geq 2$ ist eine Orthonormalbasis dann durch $\{ψ_n \mid n ∈ ℕ_0^d\}$ gegeben, wobei
+   die $ψ_n$ für $n = (n_1, \dots, n_d) ∈ ℕ_0^d$ durch Produkte
+   \[ψ_{n_1, \dots, n_d} (x_1, \dots, x_d) = ϕ_{n_1}(x_1) \dots ϕ_{n_d}(x_d)\]
+   von Oszillatoreigenfunktionen gegeben sind. \\
+   Im Folgenden wählen wir also $d = 1$. Definiere die Operatoren $A_{\pm} : \mathcal{S} \to \mathcal{S}$ durch
+   \[(A_{\pm} f)(x) = \frac{1}{\sqrt{x}}(x \mp \dd{}{x}) f(x)\]
+   für alle $f ∈ \mathcal{S}$. In der Quantenmechanik werden diese Operatoren üblicherweise als
+   Erzeugungsoperator $A_+ = a^{\dagger}$ und Vernichtungsoperator $A_{-} = a$ bezeichnet.
+   Für alle $f ∈ \mathcal{S}$ gilt
+   \begin{align*}
+   \string(A_{-} A_{+} f\string)(x) &= \frac{1}{2}(x + \dd{}{x})(x - \dd{}{x})f(x) \\
+   &= \frac{1}{2}(x^2 f(x) + \dd{}{x}(x f(x)) - x \dd{}{x} f(x) - \frac{\d^2 f}{\d x^2}(x)) \\
+   &= \frac{1}{2}(x^2 f(x) + f(x) + x \dd{f}{x} - x \dd{}{x} f(x) - \frac{\d^2 f}{\d x^2}(x)) \\
+   &= \frac{1}{2}(x^2 f(x) + f(x) - \frac{\d^2 f}{\d x^2}(x)) \\
+   \string(A_{+} A_{-} f\string)(x) &= \frac{1}{2}(x^2 f(x) - f(x) - \frac{\d^2 f}{\d x^2}) \\
+   ⇒ (A_{-} A_{+} - A_{+} A_{-}) f &= f
+   \end{align*}
+   Wir definieren $\mathcal{N} := A_{+} A_{-}$. Die "Grundzustandsfunktion" $ϕ_0 ∈ \mathcal{S}$
+   \[ϕ_0(x) = π^{-1/4} e^{- x^2 / 2}\]
+   erfüllt die Gleichung
+   \[A_{-} ϕ_0(x) = \frac{1}{\sqrt{2}}(x + \dd{}{x}) ϕ_0(x) = 0\]
+   und ist somit ein Eigenvektor zu $A_{-}$ mit	Eigenwert $0$, somit auch zu
+   $\mathcal{N}$ mit Eigenwert $0$. Weitere Eigenfunktionen von $\mathcal{N}$ sind für
+   $n \geq 1$ gegeben durch
+   \[ϕ_0 = \frac{1}{n!} A_{+}^n ϕ_0\]
+   Dann gilt
+   \[\mathcal{N} ϕ_n = n ϕ_n\]
+   sowie
+   \[\norm{ϕ_n} = 1\]
+   Außerdem ist
+   \begin{align*}
+   A_{+} ϕ_n &= \frac{1}{n!} A_{+}^{n + 1} ϕ_0 \frac{sqrt{n + 1}}{\sqrt{n + 1}} = sqrt{n + 1} ϕ_{n + 1} \\
+   A_{-} ϕ_n &= \frac{1}{n!} A_{-} A_{+}^n ϕ_0 = \frac{n}{\sqrt{n!}} A_{+}^{n - 1} ϕ_0 = \sqrt{n} ϕ_{n - 1}
+   \end{align*}
+   Für alle $(s_1, \dots, s_n) ∈ \{-1, 1\}^n$ gilt
+   \[\norm{A_{s_1} A_{s_2} \dots A_{s_n} ϕ_k} \leq \sqrt{k + 1} \sqrt{k + 2} \dots \sqrt{k + n} \leq \sqrt{(n + k)!}\]
+   wobei Gleichheit in der ersten Ungleichung gilt, wenn alle
+   $s_1$ gleich $+1$ sind. Die $\{ϕ_n \mid n ∈ ℕ_0\}$ bilden eine Orthonormalbasis in $\mathcal{S}$, da
+   \[\braket{ϕ_n | ϕ_m} δ_{n, m}\]
+   Es bleibt also zu zeigen, dass die $ϕ_n$ eine abzählbare Orthonormalbasis bilden.
+   Dazu betrachten wir kohärente Zustände, das heißt für $α ∈ ℂ$ Zustände der Form
+   \[ν_α = e^{α A_{+}} ϕ_0 = \sum_{n = 0}^{∞} \frac{α^n}{n!} A_{+}^n ϕ_0\]
+   Wegen
+   \[\norm{\frac{α^n}{n!} A_{+}^n ϕ_0} = \frac{\abs{α}^n}{\sqrt{n!}} \norm{\frac{1}{\sqrt{n!}} A_{+}^n ϕ_0} = \frac{\abs{α}^n}{\sqrt{n!}}\]
+   ist die Reihe für $ν_α$ in der Norm konvergent und definiert eine ganze, analytische Funktion von $α$.
+   Es ist
+   \[\braket{ϕ_l | ν_α} = \frac{α^l}{\sqrt{l!}}\]
+   sowie
+   \[\braket{ν_α | ν_{α'}} = \sum_{n = 0}^{∞} \frac{\overline{α^n}}{\sqrt{n!}} \frac{α^{\prime n}}{\sqrt{n!}} = \exp(\bar a α')\]
+   mit
+   \[\norm{ν_α} = e^{\abs{α}^2 / 2}\]
+   lassen sich normierte Zustände $κ_α = ν_α / \norm{ν_α}$
+   definieren. Für alle $f ∈ \mathcal{S}$ ist
+   \[A_{+} f = \frac{1}{\sqrt{2}}(x - \dd{}{x}) f = \frac{1}{\sqrt{2}} e^{x^2 / 2} (-\dd{}{x}) (e^{-x^2 / 2} f)\]
+   und somit
+   \begin{align*}
+   A_{+}^n ϕ_0 &= 2^{- n / 2} e^{x^2 / 2} (-\dd{}{x})^n (e^{- x^2 / 2} ϕ_0)(x) \\
+   &= π^{-1/4} 2^{-n/2} e^{x^2 / 2} (-\dd{}{x})^n e^{- x^2}
+   &= ϕ_0(x) H_n(x)
+   \end{align*}
+   wobei in der letzte Zeile die Hermitepolynome
+   \[H_n(x) := -2^{n/2} e^{x^2} (-\dd{}{x})^n e^{- x^2}\]
+   eingeführt wurden. Wir können kohärente Zustände also schreibenAls
+   \[ν_α = ϕ_0(x) e^{x^2} \sum_{n = 0}^{∞} \frac{2^{-n/2} α^n}{n!} (-\dd{}{x})^n e^{- x^2}\]
+   demnach als eine Taylorreihe in $x$ von $e^{- x^2}$ verschoben um $-α/\sqrt{2}$. Diese ist
+   für alle $α ∈ ℂ$ konvergent,Also gilt
+   \begin{align*}
+   ν_α &= ϕ_0(x) e^{x^2} e^{-(x - α/\sqrt{2})^2} = π^{-1/4} e^{-(x - \sqrt{2} α)^2 / 2} e^{α^2 / 2} \\
+   &= ϕ_0(x - \sqrt{2}α) e^{α^2 / 2}
+   \end{align*}
+   Wir wollen nun die Maximalität von $\{ϕ_n \mid n ∈ ℕ_0\}$ zeigen. Wir haben gesehen, dass die
+   $ν_α$ ganze Funktionen in $α$ sind$ und alle $ϕ_n$. Es sei $f ∈ L^2$ mit $\braket{f | ϕ_n} = 0$
+   für alle $n ∈ ℕ_0$. Zu zeigen ist $/ = 0$. Setze
+   \[I_f(α) = \braket{f | ν_α} = ∫_{ℝ} \overline{f(x)} ϕ_0(x - \sqrt{2} α) e^{α^2 / 2} \d x\]
+   die Abbildung $I_f: ℂ \to ℂ, α ↦ \braket{f | ν_α}$ ist analytische für alle
+   $α ∈ ℂ$. Schreibe nun
+   \[I_f(α) = ∫_{ℝ} \overline{f(x)} ϕ_0(x) e^{\sqrt{2}α x - α^2 / 2} \d x\]
+   Dann gilt
+   \[\frac{\d^n}{\d α^n} I_f(α) = \sqrt{n!} \braket{f | ϕ_n} = 0\]
+   für alle $n ∈ ℕ_0$. Demnach muss auch $I_f(α) = 0$ für alle $α ∈ ℂ$ sein.
+   Setze $α = i k / \sqrt{2}$ mit $k ∈ ℝ$. Dann gilt
+   \[0 = e^{k^2 / 2} ∫_0^∞ \overline{f(x)} ϕ_0(x) e^{i k x} \d x\]
+   für alle $u ∈ ℝ$. Die Fouriertransformierte von $\overline{f(x)} ϕ_0$ verschwindet also
+   für alle $k ∈ ℝ$. Da $\mathcal{F}$ bijektiv am $L^2$ ist, folgt
+   \[\bar f ϕ_0 = 0\]
+   im $L^2$. Da $ϕ_0(x) > 0$ für alle $x$ ist, folgt $f = 0$ im $L^2$. Also
+   ist $\{ϕ_n \mid n ∈ ℕ_0\}$ eine Orthonormalbasis.
+* Matschematische Grundlagen der Quantenmechanik
+
+
+  \begin{align*}
+  ν_α &= e^{α A_{+}} ϕ_0 = \sum_{n = 0}^{∞} \frac{α^n}{\sqrt{n!}} ϕ_n \\
+  \string(\dd{}{α}\string)^n ν_α \Big|_{α = 0} &= \sqrt{n!} ϕ_n
+  \end{align*}
+  Folge	$(a_n)_{n ∈ ℕ_0}$, erzeugende Funktion
+  \[A(z) = \sum_{n = 0}^{∞} a_n z^n\]
+  für die Folge der $a_n$, exponentiell erzeugte Funktion:
+  \[E(z) = \sum_{n = 0}^{∞} \frac{a_n}{n!} z^n\]
+  \begin{align*}
+  \frac{1}{2} z^{n + 2} a_{n + 2} &= (λ a_{n + 1} - a_n) z^{n + 1} \\
+  \frac{1}{2} \sum_{n = 0}^{∞} a_{n + 2} z^{n + 2} &= λ \sum_{n = 0}^{∞} a_{n + 1} z^{n + 1} - λ z \sum_{n = 0}^{∞} a_n z^n \\
+  &= \frac{1}{2}(A(z) - α_0 - a_1 z) &= λ(A(z) - a_0) - λ z A(z)
+  \end{align*}
+
+  Erinnerung
+  \[i \hbar \pp{ψ}{t}(t, x) = - \frac{\hbar^2}{2m} \Laplace ψ(t, x) + V(x) ψ(t, x)\]
+  klassisch: $F(x) = - ∇ V(x), m \ddot{x} = F(x)$. \\
+  $x ∈ ℝ^d$, $ψ(0, x) = ψ_0(x)$ gegeben, was ist $ψ(t, x) \geq 0$?
+
+  Born:
+  \begin{align*}
+  ∫_Ω \abs{ψ(t, x)}^2 \d^d x &= \text{Wahrscheinlichkeit, das Teilchen zur Zeit $t$ im Gebiet $Ω$ zu finden} \\
+  ∫ \abs{ψ(t, x)}^2 \d^d x &= ∫ \abs{ψ_0(x)}^2 \d^d x = 1 \\
+  \braket{ψ_t | ϕ} &= ∫_{ℝ^d} \overline{ψ(t, x)} ϕ(x) \d^d x \\
+  \end{align*}
+  Hamiltonoperator:
+  \begin{align*}
+  H &= - \frac{\hbar^2}{2m} \Laplace + V(x) \\
+  i \hbar \dot ψ &= H ψ
+  \end{align*}
+  Formal gilt
+  \[\braket{ψ | H ϕ} = \braket{H ψ | ϕ}\]
+  (zum Beispiel für $ψ, ϕ ∈ \mathcal{S}$)
+  \[ψ(t) = e^{- \frac{i}{\hbar}t H} ψ_0\]
+  Wenn statt $L^2(ℝ^d, ℂ)$ ein endlichdimensionaler Raum $\mathcal{H}$ genommen wird, endtspricht $H$ einer Matirx $H = H^{\dagger}$,
+  aber für $\dim \mathcal{H} = ∞$ gilt im Allgemeinen:
+  - $H$ ist linear, aber nicht stetig
+  - $H$ hat nicht nur Eigenwerte, sondern auch konstantes Spektrum
+  - die Eigenfunktionne sind nicht glatt
+  - zum Beispiel Ortsoperator hat keine Eigenfunktionen in $\mathcal{H}$
+  -	$ψ ∈ L^2 \not \leftrightarrow$ Differenzierbarkeit
+  Fragen:
+  1. Welchen Status haben $H, X, P, \dots$
+  2. Existieren die Lösungen der Schrödingergleichung?
+  3. Sind Atome stabit, das heißt existiert endliche Grundzustandsenergie?
+  4. Wie formuliert man die Streutheorie?
+
+  Orts- und Impulsoperator: \\
+  Sei $f ∈ \mathcal{S}$
+  \begin{align*}
+  \string(X_j f\string)(x) = x_j f(x) \qquad j = 1, \dots, d \\
+  \string(V(X) f\string)(x) &= V(x) f(x) \\
+  \string(P_j f\string)(x) &= \frac{\hbar}{i}(∇_j f)(x)
+  \end{align*}
+  $X$ und $P$ bilden $\mathcal{S}$ linear auf sich selbst ab
+  \begin{align*}
+  \string(X_j P_k - P_k X_j\string) f &= i \hbar δ_{kj} f
+  \end{align*}
+  Für alle $f, g ∈ \mathcal{S}$ gilt außerdem
+  \begin{align*}
+  \braket{f | X g} &= \braket{X f | g} \\
+  \braket{f | P g} &= \braket{P f | g} \\
+  ∫ \overline{f(x)} x_j g(x) \d^d x &= ∫ \overline{x_j f(x)} g(x) \d^d x \qquad\text{,da $x_j ∈ ℝ$} \\
+  ∫ \overline{f(x)} \frac{\hbar}{i} \pp{g}{x_j} \d^d x &= - ∫ g(x) \frac{\hbar}{i} \pp{}{x_j} \overline{f(x)} \d^d x + \underbrace{∫ \prod_{k \neq j} \d x_k \overline{f(x)} g(x)\Bigg|_{x_j \to - ∞}^{x_j \to +∞}}_{= 0, \text{ da } f, g ∈ \mathcal{S}} \\
+  &= ∫ g(x) \overline{\frac{\hbar}{i} \pp{f}{x_j}(x)} \d^d x
+  \end{align*}
+  $d = 1$ $f_n ∈ \mathcal{S}$ mit
+  \begin{align*}
+  f_n(x) &\geq 0 ∀ x ∈ ℝ \\
+  \norm{f_n}_2 &= 1 \\
+  \supp f_n &⊂ [n, n + 1] \\
+  \string(X f_n\string)(x) &= x f_n(x) \geq x f_n(x) \\
+  \norm{X f_n}^2 &= ∫_{ℝ} \abs{X f_n(x)}^2 \d x = ∫ x^2 \abs{f_n(x)}^2 \d x \geq n^2 ∫ \abs{f_n(x)}^2 \d x \\
+  ⇒ \norm{X f_n} &\geq n \norm{f_n} = n \\
+  \norm{X} &= \sup_{\norm{ϕ} = 1} \norm{X ϕ} &= ∞
+  \end{align*}
+  Sobolevräume $\mathcal{S} × \mathcal{S} \to ℂ$, $n ∈ ℕ$
+  \[(f, g) ↦ \braket{f | (1 + P^2)^n g} = (2π)^{-d} ∫_{ℝ^d} \overline{\hat f(k)} (1 + k^2)^n \hat g(k) \d^d k\]
+  für $n = 0$:
+  \[=: \braket{f | g}_{H^n}\]
+  ist für alle $n ∈ ℕ_0$ ein inneres Produkt auf $\mathcal{S}$. Zum Beispiel: $n = 1$
+  \[\braket{f | f}_{H^1} = \norm{f}_{L^2}^2 + \norm{∇ f}_{L^2}^2\]
+  #+ATTR_LATEX: :options [Sobolevraum]
+  #+begin_defn latex
+  Der Sobolevraum $H^n(ℝ^d)$ ist die Vervollständigung von $\mathcal{S}$ in $\norm{·}_{H^d}$, definiert durch
+  \[\norm{f}_{H^n} = \sqrt{\braket{f | f}_{H^n}}\]
+  $f ⊂ H^n ⊂ L^2$
+  #+end_defn
+  Ableitung im verallgemeinerten Sinn:
+  \[(∇ f)(x) := \mathcal{F}^{-1}(k ↦ i k \hat f(k))\]
+  für $f ∈ H^1$. Der freie Hamiltonoperator, $- \Laplace$ hat als natürlichen Definitionsbereich $H^2$
+  \begin{gather*}
+  - \Laplace f \overset{!}{∈} L^2 \qquad k ↦ k^2 \hat f(k) ∈ L^2 \\
+  f ∈ L^2 \qquad \hat f ∈ L^2 \\
+  ∫ \abs{k^2 \hat f(k)}^2 \d^d k < ∞ \\
+  ∫ \abs{hat f(k)}^2 \d^d k < ∞ \\
+  ⇒ ∫ \abs{\hat f(k)}^2 (1 + k^2)^2 \d^d k < ∞
+  \end{gather*}
+  Regularität: Jedes $ϕ ∈ H^2(ℝ^3)$ hat einen stetigen, beschränkten Repräsentanten $φ$ und $φ(x) \xrightarrow{\abs{x} \to ∞} 0$
+  \[\norm{φ}_∞ \leq 2 π^2 \norm{φ}_{H^2}\]
+  #+begin_proof latex
+  \begin{align*}
+  ∫ (1 + k^2)^2 \abs{\hat φ(k)}^2 \d^3 k &< ∞ \\
+  \hat g(k) &= \frac{1}{1 + k^2} \\
+  ⇒ ∫ \abs{g^2(k)}^2 \d^2 k &= ∫ \frac{\d^3 k}{(1 + k^2)^2} \\
+  &= 4π ∫_0^∞ \frac{r^2 \d r}{(1 + r^2)^2} &\leq \frac{\d r}{1 + r^2} < ∞
+  ⇒ \hat g ∈ L^2(ℝ^3) \\
+  \norm{\hat φ}_1 &= ∫ \abs{\hat φ(k)} \d^3 k \\
+  \end{align*}
+  weil $φ ∈ H^2(ℝ^3)$:
+  \begin{align*}
+  k ↦ \abs{\frac{1}{\hat g(k)} \hat φ(k)} = (1 + k^2) \abs{\hat φ(k)} \quad ∈ L^2(ℝ^3) \\
+  ⇒ \norm{\hat φ}_1 &\leq \norm{\hat g}_2 \norm{\frac{\hat φ}{\hat g}}_2 = \norm{\hat g}_2 \norm{φ}_{H^2} \\
+  \end{align*}
+  $⇒ \hat φ ∈ L^2(ℝ^3)$. Riemann-Lebesque-Lemma $⇒$ $φ$ stetig, beschränkt und $\xrightarrow{\abs{x \to ∞}} 0$
+  #+end_proof
+  Wasserstoff-Atom
+  \[ψ_0(x) = c e^{-\abs{x} / a_0}\]
+
+
+
+  #+begin_lemma latex
+  $d = 3$ $V(x) = V_1(x) + V_2(x)$, $V_1 ∈ L^2(ℝ^3), V_2 ∈ L^∞(ℝ^3)$ ($⇒ V_2$ beschränkt). Dann gilt $∀ ψ ∈ \mathscr{D}_{\Laplace} : V ∈ L^2$, das heißt
+  $H = - \Laplace + V$ ist auf $\mathscr{D}_{\Laplace}$ definiert. $\mathscr{D}_{\Laplace}$ bezeichnet dabei den Definitionsberech von $\Laplace$.
+  #+end_lemma
+  #+begin_proof latex
+  Übung (gute Übung)
+  #+end_proof
+  Beispiel:
+  \begin{align*}
+  V(x) &= - \frac{Z e^2}{\abs{x}} \\
+  \abs{V(x)}^2 &\sim \frac{1}{\abs{x}^2} \\
+  ∫_{\abs{x} \geq 1} \frac{\d^3 x}{\abs{x}^2} &= 4π ∫_{1}^{∞} \frac{r^2 \d r}{r^2} &= ∞ \\
+  ∫_{\abs{x} \leq 1} \frac{\d^3}{\abs{x}^2} &= 4π ∫_0^1 \frac{r^2 \d r}{r^2} &= 4π \\
+  \frac{1}{\abs{x}} &= \underbrace{\frac{1}{\abs{x}} 1_{\abs{x} \leq 1}}_{L^2} + \underbrace{\frac{1}{\abs{x}} 1_{\abs{x} > 1}}_{L^∞}
+  \end{align*}
+
+  \begin{align*}
+  i \dot ψ &= H ψ \\
+  ψ(0) &= ψ_0 \\
+  ψ(t) &= e^{-i H t} ψ_0
+  H ∈ L(\mathcal{H}) ⇒ e^{-i t H} &= \sum_{n = 0}^{∞} \frac{(-it)^n}{n!} H^n
+  \end{align*}
+
+  *Analytische Vektoren* \\
+  #+begin_defn latex
+  $\mathcal{H}$ Hilbertraum, $\mathscr{D}_A \leq \mathcal{H}$, $A: \mathscr{D}_A \to \mathcal{H}$ linear, $ψ ∈ \mathscr{D}_A$ \(C^∞\)-Vektor von $A$
+  \[:⇔ ∀ n ∈ ℕ: A^n ψ ∈ \mathcal{H}\]
+  $ψ ∈ \mathscr{A}_A$ analytischer Vektor von $A$
+  \[:⇔ ∃ t > 0: \sum_{n = 0}^{∞} \frac{t^n}{n!} \norm{A^n ψ} < ∞\]
+  #+end_defn
+  #+ATTR_LATEX: :options [Nelson]
+  #+begin_thm latex
+  $\mathcal{H}$ Hilbetraum, $A: \mathscr{D}_A \to \mathcal{H}$ linear, $A$ hermitesch ($∀ φ, ψ ∈ \mathscr{D}_A: \braket{φ| A ψ} = \braket{A φ | ψ}$).
+  Wenn $\mathscr{D}_A$ eine in $\mathcal{H}$ dichte Menge analytischer Vektoren enthält, dann hat $A$ reelles Spektrum und $e^{it A}$ existiert für alle $t ∈ ℝ$ und ist unitär.
+  #+end_thm
+  $(X ψ)(x) = x ψ(x), (P ψ)(x) = (-i ∇ ψ)(x)$
+  #+begin_thm latex
+  Die Oszillatoreigenfunktionen sind analytische Vektoren für $X$ und $P$.
+  #+end_thm
+  #+begin_proof latex
+  \begin{align*}
+  \string(X f\string)(x) = x f(x) &= \frac{1}{\sqrt{2}}(A_{+} + A_{-}) f(x) \quad ∀ f ∈ \mathscr{S} \\
+  \string(X^k f(x)\string)(x) &= \frac{1}{2^{k/2}}(A_{+} + A_{-})^k f(x)
+  \end{align*}
+  $ϕ_n$ sei die \(n\)-te Oszillatoreigenfunktion
+  \begin{align*}
+  \norm{X^k ϕ_n} &= \frac{1}{2^{k/2}} \norm{(A_{+} + A_{-})^k ϕ_n} \\
+  &= \frac{1}{2^{k/2}}\norm{\sum_{s_1, \dots, s_k = \pm 1} \prod_{l = 1}^k A_{s_l} ϕ_n} \\
+  &\leq \frac{1}{2^{k/2}} \sum_{s_1, \dots, s_k = \pm 1} \underbrace{\norm{\prod_{l = 1}^k A_{s_l} ϕ_n}}_{\leq \sqrt{(n + k)!}} \\
+  &\leq \frac{1}{2^{k/2}} 2^k \sqrt{(n + k)!} \\
+  \norm{\frac{ξ^k}{k!} X^k ϕ_n} &\leq \frac{2^{k/2}}{k!}\sqrt{(n + k)!} \abs{ξ}^k \\
+  ⇒ \sum_{k = 0}^{∞} \norm{\frac{ξ^k}{k!} X^k ϕ_n} &< ∞ \quad ∀ ξ ∈ ℂ
+  P &= \frac{1}{\sqrt{2}}(A_{-} - A_{+}) \checkmark
+  \end{align*}
+  #+end_proof
+  Die Lösung des Anfangswertproblems
+  \[i \pp{ψ}{t} = - \Laplace ψ + V ψ =: H ψ \qquad ψ(x) = ψ_0 ∈ \mathscr{S}\]
+  analytischer Vektor $ϕ$
+  \begin{align*}
+  e^{-i t H} ϕ &= ϕ - i t H ϕ + \frac{i^2}{2} t^2 H^2 ϕ + \dots \\
+  &= ψ - i t(- \Laplace + V) ϕ - \frac{t}{2}(-\Laplace + V)^2 ϕ + \dots \\
+  \end{align*}
+  $V = 0, \hat ψ = \mathcal{F} ψ$:
+  \begin{align*}
+  i \pp{ψ}{t}(t, x) &= (-\Laplace ψ)(t, x) \\
+  i \pp{\hat ψ}{t}(t, k) &= k^2 \hat ψ(t, k) \\
+  \hat ψ(t, k) &= e^{-i t k^2} \hat ψ(0, k) \\
+  ψ(t, x) &= \frac{1}{(2π)^d} ∫ \hat ψ_0(k) e^{-i k x - i t k^2} \d^d k
+  &= \frac{1}{(4πit)^{d/2}} ∫_{ℝ^d} e^{\frac{(x - y)^2}{4it}} ψ_0(y) \d^d y
+  \end{align*}
+  $ψ(t) = U_0(t) ψ_0$ ist definiert durch die letze gleichung. $U_0(t)$ ist für jedes $t ∈ ℝ$ unitär, $U_0(0) = 1$, $U_0(-t) = U_0(t)^{\dagger}$. Schreibe
+  \[U_0(t) = e^{it \Laplace} = e^{-it(-\Laplace)}\]
+  $V \neq 0$: $ψ(t) = U_0(t) φ(t)$
+
+
+  $A: \mathscr{D}_A \to \mathcal{H}$ linear, $\mathscr{D}_A \leq \mathcal{H}$
+  $B: \mathscr{D}_B \to \mathcal{H}$ linear, $\mathscr{D}_B \leq \mathcal{H}$
+  $A$ hermitesch $⇔$ $∀ φ, ψ ∈ \mathscr{D}_A$
+  \[\braket{φ, A ψ} = \braket{A φ | ψ}\]
+  $A$ selbstadjungiert $⇔$ $A$ hermitesch und $\mathscr{D}_A$ ist dicht.
+
+  \begin{align*}
+  A &= \sum_{α} α \ket{α} \bra{α} \\
+  A &= ∫ α \d E_a \\
+  1 &= \sum_{α} \ket{α} \bra{α} \\
+  1 &= ∫ \d E_α \\
+  f(A) &= \sum f(α) \ket{α} \bra{α}
+  \end{align*}
+
+  Nelson's Theorem: $A$ hat reelles Spektrum und $e^{it A}$ existiert für alle $t ∈ ℝ$ und ist unitär $⇔$ $A$ hermitesch und $A$ hat dichte Menge analytischer Vektoren
+
+  \begin{align*}
+  i \pp{ψ}{t} &= (-\Laplace + V) ψ \\
+  ψ(0) &= ψ_0 ∈ \mathscr{S}
+  \end{align*}
+  $V = 0$:
+  \begin{align*}
+  i \pp{ψ}{t}(t, x) &= (-\Laplace ψ)(t, x) \\
+  \mathcal{F}(\pp{ψ}{t}) &= \mathcal{F}(\lim_{δ \to 0} \frac{ψ(t + δ) - ψ(t)}{δ}) = \lim_{δ \to 0} \mathcal{F}(\frac{ψ(t + δ) - ψ(t)}{δ}) \\
+  &= \lim_{δ \to 0} \frac{1}{δ}(\mathcal{F}ψ(t + δ) - \mathcal{F}(ψ(t))) \\
+  &= \lim_{δ \to 0} \frac{1}{δ} (\hat ψ(t + δ) - \hat ψ(t)) = \pp{\hat ψ}{t} \\
+  i \pp{\hat ψ}{t}(t, k) &= k^2 \hat ψ(t, k) \\
+  \hat ψ(t, k) &= e^{-i t k^2} \hat ψ_0(k) \\
+  ψ(t, x) &= \frac{1}{(2π)^d} ∫ e^{-i t k^2} e^{i k x} \hat ψ_0(k) \d^d k \\
+  ψ(t, x) &= \frac{1}{(4π i t)^{d/2}} ∫ e^{i\frac{(x - y)^2}{4t}} ψ_0(y) \d^d y
+  \end{align*}
+  Dazu: Faltungssatz für Fouriertransformation: $f, g ∈ L^1(ℝ^d)$
+  \begin{align*}
+  \string(f \ast g\string)(x) &= ∫ \d^d y f(x - y) g(y) \\
+  ⇒ (\mathcal{F}(f \ast g))(x) &= (\hat f · \hat g)(x)
+  \end{align*}
+  Also
+  \begin{align*}
+  ψ(t, x) &= \lim_{ε \searrow 0} \frac{1}{(2π)^d} ∫ e^{-i(t - iε) k^2} \hat ψ_0(k) e^{i k x} \d^d k
+  &= \lim_{ε \to 0} ∫ \d^d y Φ_t^{(ε)}(x - y) ψ_0(y) \\
+  Φ_t^{(ε)}(z) &= \frac{1}{(2π)^d} ∫ e^{-i(k - i ε) k^2 + i k x} \d^d k
+  \end{align*}
+  Gauss'sches Integral: $\Re a > 0 ⇒$
+  \[∫_{-∞}^∞ e^{-a u^2 + i b u \d u} = \sqrt{\frac{π}{a}} e^{-\frac{b^2}{4a}}\]
+  Damit
+  \begin{align*}
+  Φ_t^{(ε)}(z) &= (2π)^{-d} (\frac{π}{ε + i t})^{d/2} e^{- \frac{z^2}{4(ε + i t)}} \\
+  &= \frac{1}{(4π(ε + it))^{d/2}} e^{- \frac{z^2}{4(ε + it)}}
+  \end{align*}
+  $ε \to 0$ im Integranden (dominierte Konvergenz) $\checkmark$
+  \[Φ_t^{(0)}(x - y) =: K_0(t, x - y) = \frac{1}{(4π i t)^{d/2}} e^{i \frac{(x - y)^2}{4t}}\]
+  "Integralkern" für die freie Zeitentwicklung
+
+  \begin{align*}
+  \hat ψ(t + s, k) &= e^{-i t k^2} \hat ψ(s, k) \\
+  &= e^{-i t k^2} e^{-isk^2} \hat ψ_0(k) \\
+  ψ(t, x) &= \frac{1}{(4π i t)^{d/2}} ∫ e^{i\frac{(x - y)^2}{4t}} ψ_0(y) \d^d y = U_0(t) ψ_0 \\
+  U_0(t) &= e^{it Δ} \\
+  U_0(t + s) &= U_0(t) U_0(s) \\
+  e^{it (\frac{x - u}{t})^2} &\to e^{\frac{i}{\hbar}t \frac{m}{2} (\frac{x - y}{t})^2} = e^{\frac{i}{\hbar} S_{cl}(t, x - y)}
+  \end{align*}
+  $V \neq 0$:
+  \begin{align*}
+  ψ(t) &= U_0(t) φ(t) \\
+  \dot ψ &= \dot U_0 φ + U_0 \dot φ \\
+  &= i \Laplace U_0 φ + U_0 \dot φ \\
+  i \dot ψ &= -\Laplace ψ + i U_0 \dot φ \overset{!}{=} -\Laplace ψ + V H \\
+  ⇒ \dot φ(t) &= -i U_0(t)^{-1} V U_0(t) φ(t) \\
+  ψ(0) &= \underbrace{U_0(0)}_{I} φ(0) \\
+  φ(0) &= ψ_0 \\
+  φ(t) - φ(0) &= ∫_0^t \dot φ(s) \d s \\
+  φ(t) &= φ(0) - i ∫_{0_t}^t U_0(s)^{-1} V ψ(s) \d s \\
+  ψ(t) &= U_0(t) φ(t) &= U_0(t) φ_0 - i ∫_0^t U_0(t) U_0(s)^{-1} V ψ(s) \d s \\
+  i \pp{ψ}{t} &= \string(-\Laplace + V\string)ψ \\
+  \dot ψ(0) &= ψ_0 ∈ \mathscr{S} \\
+  ψ(t) &= U_0(t) ψ_0 - i ∫_0^t \d s U_0(t - s) V ψ(s) \\
+  ψ(s) &= U_0(s) ψ_0 - i ∫_0^s \d s' U_0(s - s') V ψ(s') \\
+  &= U_0(t) ψ_0 - i ∫_0^t \d s U_0(t - s) V U_0(s) ψ_0 - (-i)^2 ∫_0^t \d s ∫_0^s \d s' U_0(t - s) V U_0(s - s') V ψ(s')
+  \end{align*}
+  #+begin_thm latex
+  Wenn $ψ_0 ∈ L^2$ und $V$ beschränkt ist, dann hat
+  \[φ(t) = φ(0) - i ∫_0^t U_0(s)^{-1} V ψ(s) \d s\]
+  eine eindeutige Lösung für alle $t ∈ ℝ$.
+  #+end_thm
+  #+begin_proof latex
+  $T > 0$, $X = C([0, T], L^2(ℝ^3))$
+  \[\norm{f} = \sup \{\norm{f(t, ·)}_2 \mid t . [0, T]\}\]
+  Wir definiern
+  \[(Kf)(t) = ∫_0^t U_0(s)^{-1} U_0(s) f(s) \d s\]
+  Es gilt mit $K: X \to X$, linear.
+  Für die Norm gilt
+  \begin{align*}
+  \norm{K f(t)}_2 &\leq ∫_0^t \d s \norm{U_0(s)^{-1} V U_0(s) f(s)}_2 \\
+  &\leq \norm{V}_{∞} ∫_0^t \d s \norm{U_0(s) f(s)}_2 \\
+  &\leq \norm{V}_{∞} t \sup_{0 \leq s \leq t} \norm{f(s)}_2 \\
+  \norm{K(f)}_X &\leq T \norm{V}_∞ \norm{f}_X
+  \end{align*}
+  Wenn $T \norm{V}_∞ < 1$ ist $\norm{K}_{L(X)} < 1$.
+  \begin{align*}
+  L &= (1 - iK) \\
+  L φ - L\tilde φ &= i K(φ - \tilde φ) \\
+  \norm{L φ - L \tilde φ}_X &\leq \norm{K} \norm{φ - \tilde φ}_X < \norm{φ - \tilde φ}_X
+  \end{align*}
+  #+end_proof

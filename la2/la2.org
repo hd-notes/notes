@@ -1,7 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Lineare Algebra II (Vogel)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 #+LATEX_HEADER:	\setcounter{section}{17}
 #+LATEX_HEADER:	\theoremsymbol{}
 #+LATEX_HEADER: \theoremstyle{plain}

@@ -1,7 +1,7 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Analysis II (Marciniak-Czochra)
 
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 #+LATEX_HEADER:	\theoremsymbol{}
 #+LATEX_HEADER: \theoremstyle{nonumberplain}
 #+LATEX_HEADER: \renewtheorem{remark}{Bemerkung}

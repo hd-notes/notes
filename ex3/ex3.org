@@ -1,6 +1,6 @@
 #+AUTHOR: Robin Heinemann
 #+TITLE: Experimentalphysik III (Oberthaler)
-#+INCLUDE: "../header.org" :minlevel 1
+#+INCLUDE: "../header_de.org" :minlevel 1
 
 # 60% Punkte aus Übungaufgaben
 # Übungsblatt: jeden Dientstag ab 14:00 Uhr

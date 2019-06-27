@@ -1,0 +1,1957 @@
+#+AUTHOR: Robin Heinemann
+#+TITLE: statistical physics (Schäfer)
+
+#+INCLUDE: "../header_en.org" :minlevel 1
+
+#+LATEX_HEADER: \setdefaultlanguage{english}
+#+LATEX_HEADER:	\renewcommand\raggedpart\centering
+#+LATEX_HEADER:	\renewcommand\raggedpart\centering
+#+LATEX_HEADER:	\renewcommand\thepart{\Alph{part}}
+#+LATEX_HEADER:	\renewcommand\thesection{\thepart.\arabic{section}}
+#+LATEX_HEADER:
+#+LATEX_HEADER:	\renewcommand*{\partheadstartvskip}{%
+#+LATEX_HEADER:	\pagebreak\thispagestyle{empty}\vspace*{\fill}\begin{center}
+#+LATEX_HEADER:	}
+#+LATEX_HEADER:	\renewcommand*{\partheadmidvskip}{%
+#+LATEX_HEADER:	\par\nobreak
+#+LATEX_HEADER:	}
+#+LATEX_HEADER:	\renewcommand*{\partheadendvskip}{%
+#+LATEX_HEADER:	\end{center}\vfill\newpage
+#+LATEX_HEADER:	}
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER:	\let\oldpart\part
+#+LATEX_HEADER: \renewcommand{\part}{\setcounter{section}{0}\oldpart}
+#+LATEX_HEADER: \makeatother
+#+LATEX_HEADER:	\setlength{\cftsecnumwidth}{2em}
+
+# elearning2.uni-heidelberg.de, password: "superhero"
+# exercise sheets on thursdays, no excersise groups first week
+# exam: week of 4.2.2019
+# no lecture on 30.10.2018
+
+purpose of this lecture
+- concepts of thermodynamics, temperature and other state variables
+- thermodynamic potentials
+- thermal equilibrium
+- microscopic picture + macroscopic behaviour
+- carnot-engines
+- phenomena of statistical system: magtism, Bose-Einstein-condensation
+- dynamics of statistical systems: Langeriu-Equation, Fokker-Planck-Equation
+- thermodynamics: paradoxa
+
+#+BEGIN_EXPORT latex
+\begin{figure}[H]
+\begin{center}
+\catcode`(=12
+\catcode`)=12
+\begin{tikzpicture}
+  \node at (-5, -0.0) {$k_B$};
+  \node at (0, -0.0) {statistics and thermodynamics};
+  \draw[->] (-0.5, -0.2) --++(0, -2) node[midway, left] {equilibrium};
+  \draw[<-] ( 0.5, -0.2) --++(0, -2) node[midway, right] {partitions sums};
+
+  \node at (-5, -2.4) {$\hbar$};
+  \node at (0, -2.4) {matter and fields};
+  \draw[->] (-0.5, -2.6) --++(0, -2) node[midway, left] {convection $Γ_{μν}^α$ and metric $g_{μν}$};
+  \draw[<-] ( 0.5, -2.6) --++(0, -2) node[midway, right] {partitions sums};
+
+  \node at (-5, -4.8) {$G, Λ$};
+  \node at (0, -4.8) {gravity and geometry};
+  \draw[->] (-0.5, -5.0) --++(0, -2) node[midway, left] {light cones and causality};
+  \draw[<-] ( 0.5, -5.0) --++(0, -2) node[midway, right] {geodesics};
+
+  \node at (-5, -7.2) {$c$};
+  \node at (0, -7.2) {spacetime and causal structure};
+\end{tikzpicture}
+\catcode`(=\active
+\catcode`)=\active
+\end{center}
+\caption{structure of modern physics}
+\end{figure}
+#+END_EXPORT
+
+boltmann-constant $k_B$: thermal fluctuations in energy $\epsilon$ of size $\epsilon \sim k_B T$ $k_B = \SI{1.3806503e-23}{\joule\per\kelvin}$ tiny! we never see fluctuations in the macroscopic world.
+
+Mindset of statistical physics $\to$ different way of thinking. Example:
+
+barometric formula: $ρ \sim \exp(-h)$
+1. classical mechanics: solve equations of motion inside gravitational potential. Euler-equation:
+   \[\partial_t \v v + (\v v ∇) \v v = - \frac{∇ρ}{ρ} - ∇ϕ\]
+   static + stationary: $\partial_t (\dots) = 0$, $\v v = 0$, hydrostatic equilibirum. Equation of state: $p \sim ρ \leftrightarrow p V = N k_B T$
+   \[\frac{∇p}{ρ} \sim \frac{∇ρ}{ρ} = ∇ \ln ρ = - ∇ ϕ \to ρ \sim \exp(-ϕ)\]
+   homogeneous gravitational field: $ϕ \sim g h \to ρ \sim \exp(-h)$
+2. statistical physics: probability of thermal fluctuations
+   Thermal fluctuations $\sim$ energy $ε$ "borrowed" from the hea bath at temperature $T$. Boltzmann-probability:
+   \[p(\epsilon) \sim \exp(\frac{-\epsilon}{k_B T})\]
+   energy $\epsilon$ is invested in risiung up in the gravitational field up to height $h$: $\epsilon = g h$
+   \[ρ \sim \text{probability} \sim \exp(\frac{-\epsilon}{k_B T}) \sim \exp(-h)\]
+   no calculations, but intuition; not super clear.
+
+\part{thermodynamics}
+- continuum theory $\to$ no assumptions about the microscopic dynamics or the structure of the system
+- minimal assumptions about the physical system
+- thermal equilibrium
+- characterisation by means of state variables
+  \begin{center}
+  \begin{tabular}{cl|cl}
+  \multicolumn{4}{c}{energy $E$} \\
+  volume & $V$ & pressure & $p$ \\
+  entropy & $S$ & temperature & $T$ \\
+  particle number & $N$ & chemical potential & $μ$ \\
+  $\vdots$ & & $\vdots$ & \\
+  extensive quantities & &  intensive quantities \\
+  proportional to amount of matter & & not proportional to amount of matter
+  \end{tabular}
+  \end{center}
+- relationship between state variables: equations of state. For ideal gas:
+  \begin{center}
+  \begin{tabular}{lll}
+  1. Boyle-Mariotte & $p V = \const$ & at fixed $T$ \\
+  2. Gay-Lussac & $V / T = \const$ & at fixed $p$ \\
+  3. Amontons & $p / T = \const$ & at fixed $V$
+  \end{tabular}
+  \end{center}
+  \[⇒ p V \sim T \text{ or } p V / T = \const = k_b N\]
+  constant of proportionality $k_B$, but it is much more fundamental and not specific to ideal gases. Ideal gas:
+  \[\frac{pV}{T} = k_B N \equiv R n = \SI{8.31451}{\joule\per\kelvin\per\mol}\]
+  $R$: universal gas constant $\to$ no assumptions about 'particles' ore molecules. \\
+  Real gases: "van der Waals"-equation
+  \[\bigg{\string(}p + \underarrow[a(\frac{N}{V})^2]{attractive interation between particels "surface tension"}\bigg{\string)}\string(V - \overarrow[N b]{nonzero proper volume of the molekules}\string) = N k_B T\]
+  phenomenological tempeerature: gas thermometer.
+  \[\frac{T}{V} = \const \text{ at fixed p} \to V³ \sim T\]
+  Celsius scale: boiling point of water $T = \SI{373.15}{\kelvin} = \SI{100}{\celsius}$, freezing point of water $T = \SI{273.15}{\kelvin} = \SI{0}{\celsius}$, absolute zero $V = 0$ is reached at $T = \SI{0}{\kelvin}$. \\
+  funny idea: would temperatures change under Lorentz- or Galilei-transforms? Would it be possible to measure temperatures without a *specific* physical system $\to$ carnot engines.
+* exact and inexact	differentials
+  Say pressure is dependent of temperature and volume $\to p = p(T, V)$. This yields the total differential
+  \[\d p = \left. \pp{p}{T}\right|_V \d T + \left. \pp{p}{V}\right|_T \d V\]
+  $\sim$ independent from the way in which the change in done?
+  \begin{align*}
+  F(x, y) \to \d F &= F(x + \d x, y + \d y) - F(x, y) \\
+  &= \pp{F}{x} \d x + \pp{F}{y} \d y \\
+  &= A(x, y) \d x + B(x, y) \d y \\
+  \frac{\partial^2 F}{\partial x \partial y} &= \pp{A}{y} =	\pp{B}{x} \\
+  \to \pp{A}{y} - \pp{B}{x} &= 0 \tag{integrability condition}
+  \end{align*}
+  integrability condition $\to$ $\d F$ is an exact differential. \\
+  $\displaystyle{F = ∫_1^2 \d F}$ should be	independent from the chosen intergation path
+  \begin{align*}
+  ∫_{a(1, 2)} \d F &= ∫_{a(1, 2)} (A \d x + B \d y) = ∫_{b(1, 2)} (A \d x + B \d y) = ∫_{b(1, 2)} \d F \\
+  ∮ \d F &= ∮(A \d x + B \d y) = 0 = ∫ \d x \d y (\pp{B}{x} - \pp{A}{y}) \downarrow[=]{integrability condition} 0
+  \end{align*}
+  general case: change in state depends on how it is done $\sim$ path dependence
+  #+ATTR_LATEX: :options [inexact differential]
+  #+begin_defn latex
+  \[δG = C(x, y) \d x + D(x, y) \d y\]
+  - no integrability applies
+  - any loop integral gives $\neq 0$
+  -	integration depends on path
+  #+end_defn
+* laws of thermodynamics
+  #+ATTR_LATEX: :options [0th law of thermodynamics: temperature and equilibrium]
+  #+begin_thm latex
+  \mbox{} equal	temperatures of two systems $\leftrightarrow$ thermal equilibrium
+  - in equilibrium, there is no heat flux anymore
+  - temperature (and all thermodynamic state variable!) are only defined in equilibrium
+  change in heat content $δQ$
+  \[δQ = \underarrow[C]{heat capacity} \d T, C = \overarrow[c]{specific heat} m\]
+  $δQ$ is extensive, $\d T$ is intensive
+  #+end_thm
+  #+ATTR_LATEX: :options [1st law of thermodynamics]
+  #+begin_thm latex
+  idea: heat and 'mechanical' energy both contribute to the internal energy of a system and there is a total energy conservation
+  \[\d U = δ W + δ Q\]
+  $U$: internal energy \\
+  $W$: mechanical energy \\
+  $Q$: heat \\
+  $\d U$: exact $\sim$ there must be a conservation of total energy, but heat and mechanical energy can be transformen into each other. One cannot construct a perpetuum mobile of the first kind: a machine that
+  delivers mechanical work without being changed. It does *not* matter whether the change of state is reversible (proceeding through a sequence of equlibria) or irrevirsible
+  \[\d U = δW_{\text{rev}} + δQ_{\text{rev}} = δW_{\text{irr}} + δQ_{\text{irr}}\]
+  #+end_thm
+  #+ATTR_LATEX: :options [ideal gas]
+  #+begin_ex latex
+  state variables are $T$ and $V$, such that
+  \[U = U(V, T) \to \d U = \left.\pp{U}{T}\right|_V \d T + \left.\pp{U}{V}\right|_T \d V\]
+  if $\d V = 0$ (isochoric) $\to δW = -p \d V = 0, \d U = δ Q$ \\
+  if $\displaystyle{δ Q = \left. \pp{U}{T} \right|_V \d T}$ then $\displaystyle{\left.\pp{U}{T}\right|_T = C_V}$ specific heat at constant volume \\
+  include pressure now $\sim$ channge in volume performs work against pressure
+  \begin{align*}
+  \d U &= \underbracket{δW}_{\mathclap{=-p \d V}} + δ Q \\
+  δ Q &= \d U + p \d V = \left. \pp{U}{T} \right|_V \d T + (\left.\pp{U}{V}\right|_T + p) \d V
+  \end{align*}
+  addin heat to the system changes temperature and performs work by changing the volume against pressure.
+  Special case: adiabatic change of state $δQ = 0$ $\to$ no loss of heat, perfectly isolated system
+  \begin{gather*}
+  δQ = o \to C_V \d T + (\left.\pp{U}{V}\right|_T + p) \d V = 0 \\
+  \left.\dd{T}{V}\right|_{\text{ad}} = - \frac{\left.\pp{U}{V}\right|_T + p}{C_V} \overset{(\ast)}{=} - \frac{C_p - C_V}{C_V} \left.\pp{T}{V}\right|_p \\
+  \intertext{because for an ideal gas: $p V = n k_B T$ $\to$ $\displaystyle{\left.\pp{T}{V}\right|_p = \frac{T}{V}}$}
+  \end{gather*}
+  adiabatic index $ϰ = C_p / C_V$
+  \begin{align*}
+  \left.\dd{T}{V}\right|_{\text{ad}} &= -(ϰ - 1) \frac{T}{V} \\
+  \d \ln T &= -(ϰ - 1) \d \ln V \\
+  \to T &\sim V^{-(ϰ - 1)} \\
+  \to p &\sim V^ϰ \\
+  \end{align*}
+  $(\ast)$: change of volume at constant pressure:
+  \begin{align*}
+  V = V(T, P) \to \d V &= \left.\pp{V}{T}\right|_p \d T + \left.\pp{V}{p}\right|_T \overarrow[\d p]{$= 0$ if pressure constant, "isobaric"} \\
+  δ Q &= C_V \d T + (\left.\pp{U}{V}\right|_T + p) \d V \\
+  \to C_p &= (\frac{δQ}{\d T})_p = C_V + (\left.\pp{U}{V}\right|_T + p) \left.\pp{V}{T}\right|_p \\
+  \left.\pp{U}{V}\right|_T + p &= (C_p - C_V) \left.\pp{T}{V}\right|_p
+  \end{align*}
+  towards entropy (for the ideal gas!)
+  \begin{align*}
+  δQ &= \d U + p \d V \\
+  \intertext{with $\d U = c_V \d T$ and $pV = n k_B T$}
+  \to \frac{δQ}{T} &= \underbrace{C_V \frac{\d T}{T} + n k_B \frac{\d V}{V}}_{\mathclap{\text{integrability: $n k_B$ does not depent on $T$, $C_V$ does only depend on T}}} = \d S \\
+  \to \d S &= \frac{δQ}{T} \text{ is an exact differenial} \\
+  ∮\d S &= 0
+  \end{align*}
+  $S$ $\sim$ entropy. \\
+  $C_V = C_V(T)$ is a function of temperature alone: Boyle's experiment \\
+  #+BEGIN_EXPORT latex
+  \catcode`(=12
+  \catcode`)=12
+\begin{center}
+\begin{tikzpicture}
+  \draw[pattern=north east lines, pattern color=black] (0, 0) rectangle (2, 2);
+  \draw (0, 0) rectangle (3, 2);
+  \draw (7, 1) node {$\displaystyle{U(T, V) = \const, T = \const, \left.\pp{U}{V}\right|_T = 0}$};
+  \draw[<-] (2, 0) --++(0.5,-0.5) node[below right] {removable wall, gas expands from $V_1$ at high $p_1$ to $V_1$ at low $p_2$, temperature is fixed!};
+\end{tikzpicture}
+\end{center}
+  \catcode`(=\active
+  \catcode`)=\active
+  #+END_EXPORT
+  \[U = U(T, V) \to \d U = \underbrace{\left.\pp{U}{T}\right|_V}_{C_V} \d T + \underbrace{\left.\pp{U}{V}\right|_T}_{\mathclap{\text{must be zero}}} \d V = 0\]
+  $C_V$ only depends on $T$!
+  #+end_ex
+  #+ATTR_LATEX: :options [second law of thermodynamics]
+  #+begin_thm latex
+  $\to$ very subtle: an engine cannot perform work by colling down a reservoir.
+  - no assumption about the type of engine
+  - engine needs to work periodically
+  -	makes sense intuitively $\sim$ it's problematic to change unordered into ordered motion
+  #+end_thm
+* carnot engine
+  One can not gain mechanical work out of thermal equilibrium, but an engine can could use the temperature difference between two resovoirs and transform the heat flux to mechanical work. \\
+  $\to$ measure temperature differences mechanically
+  - transformation of $T$ in changing the frame of reference
+  - $T$ in gravitational fields
+  -	no relying on a particular constrution
+  *one* possible realisation: adiabatic / isothermal steam engine;
+  A $\to$ B: isothermal expansion, $T = \const, \d T = 0$ $\to$ suck up $Q_1$ \\
+  B $\to$ C: adiabatic, $δQ = 0$ \\
+  C $\to$ D: isothermal compression, $T = \const, \d T = 0$ $\to$ squeeze out $Q_2$ \\
+  D $\to$ A: adiabatic,	$δQ = 0$ \\
+
+  first law: $W = Q_1 - Q_2$, $∮ δQ / T = 0 = ∮ \d S, \d S = δQ / T$
+  \[∮ \frac{δQ}{T} = 0 \to \frac{Q_1}{T_1} = \frac{Q_2}{T_2}\]
+  mechanical work:
+  \[W = Q_1 - Q_2 = Q_1 \frac{T_1 - T_2}{T_1} = Q_1(1 - \frac{T_2}{T_1}) = η Q_1\]
+  energy is conserved $(Q_1 = W + Q_2)$ and heat transformed into mechanical work at an efficiency $η < 1$.
+  In thermal equilibrium $T_1 = T_2 \to η = 0 \to W = 0$; it is not possible to generate mechanical work out of thermal equilibrium.
+
+  All carnot engines run at the same efficiency: combine two carnot engines that work against each other: if the efficiency is different, they will coll down a reservoir and perform work in the contradiction to the second law.
+
+  an unusual carnot engine: ratchet and pawl. reversible engine (no resistance to temperature changes) $\to$ equal probabilities:
+  boltzmann probabilities for the energy:
+  \begin{align*}
+  \exp(-\frac{ε + δ}{T_1}) &= \exp(-\frac{δ}{T_2}) \\
+  \text{efficiency } η &= \frac{ε}{δ} = 1 - \frac{T_2}{T_1}
+  \end{align*}
+
+  carnot-efficiency *without* specifiying how the machine works: Two connected carnot engines $T_1$ $\to$ carnot $\to$ $T_2$ $\to$ carnot $\to$ T_3.
+  First carnot engine does mechanical work $W = Q_1(1 - f(T_1, T_2))$, second carnot engine does mechanical work $W' = Q_1 f(T_1, T_2)(1 - f(T_2, T_3))$.
+  everything in one step: $W + W'$
+  \begin{align*}
+  W + W' &= Q_1(1 - f(T_1, T_3)) \\
+  f(T_1, T_2) f(T_2, T_3) &= f(T_1, T_3) \\
+  \ln f(T_1, T_2) + \ln f(T_2, T_3) &= \ln f(T_1, T_3) \\
+  \pp{}{T_1} \ln f(T_1, T_2) &= \pp{}{T_1} f(T_1, T_3) \\
+  \ln f(T_1, T_2) &= A(T_1) + B(T_2) \\
+  f(T_1, T_2) &= A(T_1) B(T_2) \\
+  A(T_1) B(T_2) A(T_2) B(T_3) &= A(T_1) B(T_3) \\\
+  \to A(T_2) &= \frac{1}{B(T_2)} \\
+  \end{align*}
+  entroy increase in closed systems
+  \begin{align*}
+  \d U &= T \d S \\
+  \to \d S &= \frac{\d U}{T} \\
+  \intertext{$C$ $\sim$ specific heat}
+  \d U &= C \d T \\
+  \d S &= \frac{\d U}{T} = C \frac{\d T}{T} = C \d \ln T \\
+  \to S &= C \ln T + S_0 \\
+  \text{before } S_i &= C(\ln T_1 + \ln T_2) \\
+  \text{after } S_f &= 2 C \ln(\frac{T_1 + T_2}{2}) \\
+  \to ΔS &= S_f - S_i = C(2 \ln(\frac{T_1 + T_2}{2}) - (\ln T_1 + \ln T_2))
+  \end{align*}
+* concave functions
+  #+ATTR_LATEX: :options [concave function]
+  #+begin_defn latex
+  \[f(θx + (1 - θ) y) \geq f(x)^θ f(y)^{1 - θ}\]
+  #+end_defn
+  \begin{align*}
+  f(θx + (1 - θ) y) &\geq f(x)^θ f(y)^{1 - θ} \\
+  \ln f(θx + (1 - θ) y) &\geq θ \ln f(x) + (1 - θ) \ln f(y) \\
+  \intertext{set $θ = 1/2$, $f(x) = x$}
+  \to 2 \ln(\frac{x + y}{2}) &\geq (\ln x + \ln y)
+  \end{align*}
+
+  \[\d U = T \d S \to \pp{S}{U} = \frac{1}{T}\]
+
+
+
+* 3. probability + statistics
+   *Kolmogorov* \\
+   axiomatic approach to probability
+   1. random experiment: random	selectron from a *finite* non-empty set of events $Ω$ consisting of individual outcomes $ω$
+   2. powerset: $\mathcal{P}(Ω)$ $\sim$ set of all subsets of $Ω$ $\#(Ω) = n ⇒ \# (\mathcal{P}(Ω)) = 2^n$
+   3. probability measure: $p: \mathcal{P}(Ω) \to [0, 1]$
+   4. Kolmogorov-axioms: $p$ is a probability, if
+	  - $p(Ω) = 1$
+	  - $p(A) \geq 0 ∀ a ⊂ Ω$
+	  - $p(A ∪ B) = p(A) + p(B)$ provided that $A ∩ B = \{\}$
+   $\mathcal{C}(A)$ is the complement of $A$ \\
+   conclusions:
+   \begin{align*}
+   p(A) + p(\mathcal{C}(A)) &= 1 \\
+   A ⊂ B &\to p(A) \leq p(B) \\
+   p(A ∪ B) + p(A ∩ B) &= p(A) + p(B) \\
+   p(A \setminus B) &= p(A) - p(A ∩ B)
+   \end{align*}
+   *Laplace probability* \\
+   look at the individual events $ω ∈ Ω$
+   \[p(A) = p(\bigcup_i A_i) \underarrow[=]{\(i \neq j ⇒ A_i ∩ A_j = \emptyset\)} \sum_{i} p(A_i) = \sum_{i} p(ω_i)\]
+   $ω \to p(ω)$ probability	function, assigns a probability to each $ω$. If $ω$ are all equally likely:
+   \[p(ω) = \frac{1}{\# Ω}, \quad p(A) = \frac{\# A}{\# Ω}\]
+   *conditional probabilities* \\
+   subset $A ⊂ Ω$ is selected, $ω ∈ \mathcal{C}(A)$ have probability $= 0$. conditional random process: select event $ω ∈ B$ under the condition $A$.
+   \begin{align*}
+   p(B | A) &= \frac{\#(A ∩ B)}{\#(A)}, \quad p(A) = \frac{\#(A)}{\#(Ω)} \\
+   &= \frac{\#(A ∩ B)}{\# Ω} \frac{\#(Ω)}{\#(A)} = \frac{p(A ∩ B)}{p(A)} \\
+   p(A ∩ B) &= p(B ∩ A) \to p(B|A) p(A) = p(A|B) p(B) \tag{Bayes-Law}
+   \end{align*}
+   *random variables* \\
+   assign a value to individual events: $X = X(ω)$. Random distribution:
+   \[\to p(x) = p(ω ∈ Ω \mid X(ω) = x)\]
+   #+ATTR_LATEX: :options [expectation value]
+   #+begin_defn latex
+   \[\braket{x} = \sum_{ω ∈ Ω} p(ω) X(ω) = \sum_{i} x_i p(x_i) = ∫ \d x p(x) x\]
+   #+end_defn
+   #+ATTR_LATEX: :options [variance]
+   #+begin_defn latex
+   \[\braket{x^2} = \sum_{ω ∈ Ω} p(ω) X^2(ω) = \sum_{i} x_i^2 p(x_i) = ∫ \d x p(x) x^2\]
+   #+end_defn
+   #+ATTR_LATEX: :options [\(n\)th moment]
+   #+begin_defn latex
+   \[\braket{x^n} = \sum_{ω ∈ Ω} p(ω) X^n(ω) = \sum_{i} x_i^n p(x_i) = ∫ \d x p(x) x^n\]
+   #+end_defn
+   *changing variables* \\
+   $x \to y(x)$
+   \begin{align*}
+   1 &= ∫ \d x p_x(x) \underarrow[=]{substitution} ∫ \d y \abs{\frac{\d x}{\d y}} p_x(x | y) \\
+   \text{with } p_y(y) = \abs{\frac{\d x(y)}{y}} p_x(x | y) \\
+   &= ∫ \d y p_y(y)
+   \end{align*}
+   *adding random numbers* \\
+   $x$ from $p_x$, $y$ from $p_y$ $\to z = x + y$
+   \begin{align*}
+   p_z(z) &= p_z(x + y) = ∫ \d x p_x(x) ∫ \d y p_y(y) δ_D(z - (x + y)) \\
+   \intertext{convolution!}
+   &= ∫ \d x p_x(x) p_y(z - x)  \\
+   &= ∫ \d y p_x(z - y) p_y(y)
+   \end{align*}
+   convolution between distributions: Fourier-transform
+   #+ATTR_LATEX: :options [characteristic function:]
+   #+begin_defn latex
+   \begin{align*}
+   φ(t) &= ∫ \d x p(x) \exp(-ixt) \leftrightarrows p(x) = ∫ \frac{\d t}{2π} φ(t) \exp(+itx) \\
+   &= \braket{\exp(-itx)} \
+   \end{align*}
+   #+end_defn
+   \begin{align*}
+   φ(x) &= ∫ \d x p(x) \sum_{n} \frac{(-itx)^n}{n!} = \sum_{n} \frac{(-it)^n}{n!} \braket{x^n} \\
+   &= 1 - it \braket{x} + \frac{i^2 t^2}{2!} \braket{x^2} + \dots \\
+   \braket{x^n} &= \left.\frac{1}{(-i)^n} \frac{\d^n}{\d t^n} φ(t) \right|_{t = 0} \\
+   z = x + y: φ_{x + y}(t) &= φ_x(t) φ_y(t) \text{ convolution theorem} \\
+   \braket{\exp(-it(x + y))} &= \braket{\exp(-itx)} \braket{\exp(-ity)}
+   \end{align*}
+   *cumulant of a distribution* \\
+   Taylor-expand $\ln φ(t)$
+   \begin{align*}
+   \ln φ(t) &= \sum_{n} ϰ_n \frac{t^2}{n!}
+   \end{align*}
+   please watch out: $\braket{x^n} \neq ϰ_n$ in general! example:
+   \begin{align*}
+   p(x) &= \frac{1}{\sqrt{2π σ^2}} \exp(-\frac{1}{2}(\frac{x - μ}{σ})^2) \\
+   \to φ(t) &= \exp(-itμ - \frac{σ^2 t^2}{2}) \\
+   \ln φ(t) &= -itμ - \frac{σ^2 t^2}{2}
+   \end{align*}
+   if $φ_{x + y}(t) = φ_x(t) φ_y(t)$
+   \begin{align*}
+   \to \ln φ_{x + y}(t) &= \ln φ_x(t) + \ln φ_y(t) \\
+   ϰ_n(x + y) &= ϰ_n(x) + ϰ_n(y) \\
+   \ln φ(t) &= \ln \braket{\exp(-it x)}
+   \end{align*}
+
+   #+ATTR_LATEX: :options [information entropy (Shannon)]
+   #+begin_defn latex
+   \[S = -\sum_{i} p_i \ln p_i = - ∫ \d x p(x) \ln p(x)\]
+   #+end_defn
+   1. $S \geq 0$ for $0 < p_i \leq 1$
+   2. $S = 0$ for $p_i = 1$ (certain outcome)
+   3. $p_i = 1 / (\# Ω)$ for equally probable:
+	  \[S = - \sum_{i} p_i \ln p_i = \sum_{i} \frac{1}{\# Ω} \ln \frac{1}{\# Ω} = \ln \# Ω\]
+      $\to$ entropy increases with number of possible outcomes
+
+   entropy is additive for independent subsystmes: $p_{ij} = p_i^1 · p_j^2$ $\sim$ statistical independent
+   \begin{align*}
+   ⇒ S &= - \sum_{ij} p_{ij} \ln p_{ij} = - \sum_{ij} p_i^1 p_j^2 (\ln p_i^1 + \ln p_j^2) \\
+   &= - \sum_{ij} p_i^1 p_j^2 \ln p_i^1 + p_i^1 p_j^2 \ln p_j^2 \\
+   &= - \sum_{i} \underbrace{(\sum_{j} p_j^2)}_{= 1} p_i^1 \ln p_i^1 + \sum_{j} \underbrace{(\sum_{i} p_i^1)}_{= 1} p_j^2 \ln p_j^2 \\
+   &= - \sum_{i} p_i^1 \ln p_i^1 - \sum_{j} p_j^2 \ln p_j^2 = S^1 + S^2
+   \end{align*}
+   entropy is maximal for the uniform (cost) distribution $\to$ microcanonical ensemble
+   \begin{align*}
+   ΔS &= S - S_n = - \sum_{i} p_i \ln p_i - \ln \# Ω \\
+   &= -(\sum_{i} p_i \ln p_i + \ln \# Ω) \\
+   &= -(\sum_{i} p_i \ln p_i + p_i \ln \# Ω) = - \frac{1}{\# Ω}(\sum_{i} \underbrace{(p_i \# Ω)}_{=: q_i} \ln (p_i \# W)) \\
+   \intertext{constraint:}
+   \sum_{i} p_i \# Ω &= \# Ω \sum_{i} p_i = \# Ω \\
+   ΔS &= S - S_n = - \frac{1}{\# Ω} \sum_{i} q_i \ln q_i + \underbrace{\sum_{i} 1 - q_i}_{= 0 (\text{see constraint})} \\
+   Δ S = - \frac{1}{\# Ω} \sum_{i} q_i \ln q_i + 1 - q_i
+   \end{align*}
+   minimum at $q_i = 1: ΔS = 0, S = S_N, p_i = 1 / \# Ω$ from
+   \begin{align*}
+   \dd{}{q} ΔS = 0 = \ln q + 1 - 1
+   \end{align*}
+   maximise entropy with an additional constraint $\sum p_i E_i = U = \braket{E}$ \\
+   \[δS = -\sum_{i} (\ln p_i + 1) δ p_i\]
+   maximum conditions:
+   \begin{align*}
+   \sum_{i} p_i = 1 &\to δ \sum_{i} p_i = \sum_{i} δ p_i = 0 \tag{\ast} \\
+   \sum_{i} p_i E_i = U &\to δ \sum_{i} p_i E_i = \sum_{i} E_i δ p_i = 0 \tag{\ast \ast}
+   \end{align*}
+   incorporate conditions with lagrange mulipliers:
+   \begin{align*}
+   δ S + \underbrace{λ \sum_{i} δ p_i}_{= 0} + μ \sum_{i} E_i δ p_i &= 0 \\
+   \to - \sum (\ln p_i + 1 + λ + μ E_i) δ p_i &= 0
+   \to p_i &= \exp(-[1 + λ + μ E_i])
+   \end{align*}
+   substitute into $(\ast)$:
+   \begin{align*}
+   \sum_{i} p_i &= \sum_{i} \exp(-[1 + λ + μ E_i]) = 1 \\
+   \to \exp(-(1 + λ)) &= \frac{1}{\sum_{i} \exp(μ E_i)} = \frac{1}{Z}
+   \end{align*}
+   and then substitute into $(\ast \ast)$:
+   \begin{align*}
+   \frac{\sum_{i} E_i \exp(-μ E_i)}{\sum_{i} \exp(- μ E_i)} &= U = \frac{1}{Z} E_i \exp(- μ E_i)
+   \end{align*}
+   $\to$ looks a bit similar to Boltzmann distribution: $p_i \sim \exp(- E_i / (k T))$ perhaps $μ = 1 / (KT)$?
+\part{microcanonical ensebmle}
+- Any system tens towards	thermal equilibrium $\to$ temperature $T$.
+- state variables ($p$, $V$, $T$, $\dots$) canCharacterise the system
+- change state while maintaining thermal equilibrium $\to$ reversible process
+- macroscopic equilibrium does not mean that the microscopic constituents are static
+- many possible configurations (microstates) are compatible with a given macrostate
+
+ergodic principle $\sim$ average over all configurations or average of a single constituent over time is equivalent
+
+link states + energies to probabilities + entropy $\to$ classical Hamiltonian systems \\
+
+Lagrange-function $\sim$ defines action $S = ∫_{t_i}^{t_f} \d t \mathcal{L}(x, \dot x)$
+in reality: $\d s^2 = c \d t^2 - \d x^2 = c^2 \d τ^2$ $\to$
+\begin{align*}
+\d τ &= \sqrt{1 - \underbrace{\frac{1}{c}(\frac{\d x}{\d t})^2}_{= β^2}} \d t \\
+\to \d τ &= \frac{1}{γ} \d t \\
+\to S &= ∫ \d τ = ∫ \frac{1}{γ} \d t \to \mathcal{L} = \frac{1}{γ}
+\end{align*}
+Hamilton principle
+\[δS = 0 = ∫_{t_i}^{t_f} \d t (\pp{\mathcal{L}}{x} δ x + \pp{\mathcal{L}}{\dot x} \overarrow[δ \dot x]{$= \dd{}{t} δ x$}) = ∫_{t_i}^{t_f} \d t (\pp{\mathcal{L}}{x} - \dd{}{t} \pp{\mathcal{L}}{\dot x}) δ x\]
+canonical momentum: $p = \pp{\mathcal{L}}{\dot x}$.
+Hamilton-function: $H(x, p) = p \dot x - \mathcal{L}(x, \dot x(p))$
+
+
+classical lagrange function:
+\[\mathcal{L} = \frac{m}{2}  \dot x^2 - ϕ(x)\]
+lagrange function for LC-circuit:
+\begin{align*}
+\mathcal{L} &= \frac{L}{2} \dot Q^2 - \frac{1}{2C} Q^2 \\
+\to \ddot Q + \frac{1}{LC} Q &= 0
+\end{align*}
+
+Euler-Lagrange equation:
+\begin{align*}
+S = ∫ \d t \mathcal{L} \to δ S = 0 = ∫ \d t (\pp{\mathcal{L}}{q} - \dd{}{t} \pp{\mathcal{L}}{\dot q}) δq = 0
+\end{align*}
+canonical momenta
+\[p = \pp{\mathcal{L}}{\dot q} \to \dd{}{t} \pp{\mathcal{L}}{\dot q} = \dd{}{t} p = 0 \text{ if } \mathcal{L} \neq \mathcal{L}(q) \]
+$q$ $\sim$ cyclic, $p$ is conserved \\
+virial theorem
+\begin{align*}
+\dd{}{t} \pp{\mathcal{L}}{\dot q} - \pp{\mathcal{L}}{q} &= 0 \\
+q \dd{}{t} \pp{\mathcal{L}}{\dot q} - q \pp{\mathcal{L}}{q} &= \dd{}{t}(q \pp{\mathcal{L}}{\dot q} - \dot q \pp{\mathcal{L}}{\dot q} - q \pp{\mathcal{L}}{q} = 0)
+\end{align*}
+1. $\mathcal{L}$ is homogeneaus of degree 2 in $\dot q$
+2. $\mathcal{L}$ is homogeneuos of degree $k$ in $q$ if $ϕ \sim q^k$ $\to$ $\mathcal{L}_{\text{pot}} = -q^k, q \pp{\mathcal{L_{\text{pot}}}}{q} = -k ϕ$
+3. time average
+   \begin{align*}
+   \frac{1}{Δt} ∫_0^{Δt} \dd{}{t} (q \pp{\mathcal{L}}{\dot q}) = \left.\frac{1}{Δt}(q \pp{\mathcal{L}}{\dot q})\right|_{\text{boundary}} \leq \frac{1}{Δ t}(q_{\text{max}} p_{\text{max}})
+   \end{align*}
+   take limit $Δ t \to ∞$
+   \[\braket{\dd{}{t}(q \pp{\mathcal{L}}{\dot q})} \to 0\]
+   $\to$ $2 \braket{T} = k \braket{ϕ}$ \\
+
+energy conservation:
+\begin{align*}
+\dd{}{t} \pp{\mathcal{L}}{\dot q} - \pp{\mathcal{L}}{q} &= 0 \\
+\dot q \dd{}{t} \underbrace{\pp{\mathcal{L}}{\dot q}}_{\mathclap{= m \dot q \leftarrow \mathcal{L}_{\text{kin}} = m \dot q^2 / 2}} - \dot q \overbrace{\pp{\mathcal{L}}{q}}^{\mathclap{\mathcal{L}_{\text{pot}} = -ϕ(q)}} &= m \dot q \ddot q + \dot q \dd{ϕ}{q} \\
+&= \frac{m}{2} \dd{}{t} \dot q^2 + \dd{}{t} ϕ(q) = \dd{}{t}\underbrace{(\frac{m}{2} \dot q^2 + ϕ(q))}_{\mathclap{=\mathcal{H}, \text{conserved}}} = 0
+\end{align*}
+Legendre Transform: $\mathcal{H} = p \dot q - \mathcal{L}$
+\begin{align*}
+\dd{\mathcal{H}}{t} &= \dot p \dot q + p \ddot q - \dot q \pp{\mathcal{L}}{q} - \ddot q \pp{\mathcal{L}}{\dot q} \\
+\intertext{with euler lagrange equation ($\partial_t \partial_{\dot q} \mathcal{L} = \partial_q \mathcal{L}$) and $\partial_{\dot q} \mathcal{L} = p$}
+&= \pp{\mathcal{L}}{q} \dot q - \dot q \pp{\mathcal{L}}{q} = 0
+\end{align*}
+in quantum mechanics:
+\begin{align*}
+i \hbar \partial_t ψ &= H ψ \\
+-i \hbar \partial_t ψ^{\ast} &= H^{\ast} ψ^{\ast} = H ψ^{\ast} = i \hbar \partial_{-t} ψ^{\ast} = H ψ^{\ast} \\
+\end{align*}
+
+\begin{align*}
+\mathcal{L}(p, q) &= p \dot q - \mathcal{H}(p, q) \\
+\dd{}{t}\pp{\mathcal{L}}{\dot p} - \pp{\mathcal{L}}{p} &= 0 = -\dot q + \pp{\mathcal{H}}{p} \\
+\dd{}{t} \pp{\mathcal{L}}{\dot q} - \pp{\mathcal{L}}{q} &= 0 = \dot p + \pp{\mathcal{H}}{q}
+\end{align*}
+
+
+phasespace density
+\begin{align*}
+\partial_t ρ + \div(ρ \v v) &= 0 = ∇ ρ \v v + ρ \div \v v \\
+\div \v v &= \sum_{i} \pp{\dot q_i}{q_i} + \pp{\dot p_i}{p_i} =	\sum_{i} \pp{}{q_i} \pp{\mathcal{H}}{p_i} - \pp{}{p_i} \pp{\mathcal{H}}{q_i} = 0
+\end{align*}
+\begin{align*}
+\dd{}{t}ρ &= \partial_t ρ + \v v ∇ ρ = 0
+\end{align*}
+\begin{align*}
+∇ ρ \v v &= \sum_{i} \pp{ρ}{p_i} \dot p_i + \pp{ρ}{q_i} \dot q_i = \sum_{i} \pp{ρ}{q_i} \pp{\mathcal{H}}{p_i} - \pp{ρ}{p_i} \pp{\mathcal{H}}{q_i} \overarrow[=]{Poissonbracket} -[ρ, \mathcal{H}] \\
+&\underarrow[=]{$ρ = ρ(\mathcal{H})$} \pp{ρ}{\mathcal{H}} \sum_{i} \pp{\mathcal{H}}{q_i} \pp{\mathcal{H}}{p_i} - \pp{\mathcal{H}}{p_i} \pp{\mathcal{H}}{q_i} = \pp{ρ}{\mathcal{H}}[\mathcal{H}, \mathcal{H}] = 0
+\end{align*}
+$\to \partial_t = 0$
+
+* microcanonical ensemble
+  phase space volume:
+  \[ϕ^{\ast}(E) = ∫_{\mathcal{H} < E} \prod_i \d^3 q_i \d^3 p_i\]
+  volume of phase space bounden by $E$ \\
+  rate of change of volume:
+  \[ω^{\ast}(E) = \dd{}{E} ϕ^{\ast}(E)\]
+  microcanonical ensemble
+  \begin{align*}
+  ρ(E) &= 1 \text{ if } E \leq \mathcal{H} \leq E + δ E \\
+  ρ(E) &= 0 \text{ elsewhere}
+  \end{align*}
+  alternative new
+  \begin{align*}
+  ω^{\ast}(E) \d E &= δr δO \to \overbrace{δr δO}^{\mathclap{\text{number of systems}}} = \frac{\d E \d O}{\abs{∇\mathcal{H}}} \\
+  \to ω^{\ast}(E) &= ∫_{\mathcal{H} = E} \frac{\d O}{\abs{∇ \mathcal{H}}} \\
+  \abs{∇ \mathcal{H}}^2 &= \abs{\v v}^2 = \sum_{i} \dot p_i^2 + \dot q_i^2
+  \end{align*}
+  equipartition theorem $\leftarrow$ microcanonical ensemble
+  \begin{align*}
+  \braket{g} &= \frac{∫_{E \leq \mathcal{H} \leq E + δ E} \prod_i \d^3 p_i \d^3 q_i g(p_i, q_i, t)}{∫_{E \leq \mathcal{H} \leq E + δ E} \prod_i \d^3 p_i \d^3 q_i} \\
+  &\underarrow[=]{ergodic systems} \lim_{Δt \to ∞} \frac{1}{Δt} ∫_0^{Δt} \d t g(p_i(t), q_i(t))
+  \end{align*}
+  equivalent to:
+  \begin{align*}
+  \braket{g} &= \frac{\dd{}{E} ∫_0^E \prod_i \d^3 p_i \d^3 q_i g(p_i, p_i, t)}{\underbrace{\dd{}{E} ∫_0^E \prod_i \d^3 p_i \d^3 q_i}_{= ω^{\ast}(E)}}
+  \end{align*}
+  choice for $g: g = p_1 \partial_{p_1} \mathcal{H}$
+  \begin{align*}
+  ∫ \d^3 p_1 p_1 \pp{\mathcal{H}}{p_1} = \underbrace{∫ \d^3 p_1 \pp{}{p_1}(p_1 \mathcal{H})}_{\mathclap{E · (p_{1,\text{max}} - p_{1, \text{min}}), \text{just boundary}}} - ∫ \d^3 p_1 \mathcal{H}
+  \end{align*}
+  \begin{align*}
+  ∫_0^E \prod_i \d^3 q_i \d^3 p_i p_1 \pp{\mathcal{H}}{p_1} &= E · (p_{1,\text{max}}, p_{1, \text{min}}) ∫_0^E \prod_{i = 2} \d^3 p_i \d^3 q_i - ∫_0^E \prod_i \d^3 p_i \d^3 q_i \mathcal{H}
+  \end{align*}
+  differentiate with regards to $E$:
+  \begin{align*}
+  \dd{}{E}∫_0^E \prod_i \d^3 p_i \d^3 q_i \mathcal{H} &= \frac{1}{δE} ∫_E^{E + δ E} \prod_i	\d^3 p_i \d^3 q_i \mathcal{H} = E \frac{1}{δE} ∫_E^{E + δE} \prod_i \d^3 p_i \d^3 q_i = E ω^{\ast}(E) \\
+  \dd{}{E}∫_0^E \prod_i \d^3 p_i \d^3 q_i p_1 \pp{\mathcal{H}}{p_1} &= ϕ^{\ast}(E) \\
+  \to \braket{p_i \pp{\mathcal{H}}{p_i}} &= \frac{ϕ^{\ast}}{ω^{\ast}} = \frac{1}{\dd{\ln ϕ^{\ast}}{E}}
+  \end{align*}
+  (replaced $1$ by $i$ in the last term, because it is independent of the particle chosen) \\
+  if
+  \[\dd{\ln ϕ^{\ast}}{E} = \frac{1}{k_B T} \to \braket{p_i \pp{\mathcal{H}}{p_i} \underarrow[=]{$\mathcal{H} \sim p^2 / 2$}} 2 \braket{\mathcal{H}} \sim k_B T\]
+  entropy: parameter in the	\(\mathcal{H}\)-function $\mathcal{H} = \mathcal{H}(p_i, q_i, a)$
+  \[\dd{\mathcal{H}}{t} = \dot A \dd{\mathcal{H}}{a} \to \d \mathcal{H} = \pp{\mathcal{H}}{a} \d a\]
+  $\to$ energy gain:
+  \begin{align*}
+  \d E &= ∫_t^{t + δt} \d t (\pp{\mathcal{H}}{a} \dot a) \\
+  \braket{\pp{\mathcal{H}}{a}} &= \frac{1}{Δt} ∫_t^{t + Δ t} \d t \pp{\mathcal{H}}{a} \quad\text{for ergodic systems}
+  \end{align*}
+  example $a = v$:
+  \[\braket{\pp{\mathcal{H}}{v}} = - p \d V\]
+  looks a bit like $\d U = -p \d V$! \\
+  adiabatic invariance of $ϕ^{\ast} = ϕ^{\ast}(\mathcal{H}, a)$
+  \begin{align*}
+  ϕ^{\ast} &= ∫_{\mathcal{H} \leq E} \prod_i \d^3 p_i \d^3 q_i \\
+  \to ω^{\ast} &= \dd{}{E} ϕ^{\ast}(E, a) \\
+  \d ϕ^{\ast} &= \pp{ϕ^{\ast}}{a} \d a \sim ϕ^{\ast}(E, a + δ_a) - ϕ(E, a) \\
+  \intertext{$\sim$ volume between $\mathcal{H}(p, q, a) = E$ and $\mathcal{p, q,  + δa} = E$}
+  \to \mathcal{H}(p, q, a + δ a) &= \pp{\mathcal{H}}{a} δ a
+  \end{align*}
+  \begin{align*}
+  \pp{ϕ^{\ast}}{a} δa &= ∫ δs \d O \\
+  \abs{∇ \mathcal{H}} δ s &= - \pp{\mathcal{H}}{a} δ a  \\
+  \to \pp{ϕ^{\ast}}{a}\d a = -	∫ \pp{\mathcal{H}}{a} \frac{\d O}{\abs{∇ \mathcal{H}}} δ a \\
+  \braket{\pp{\mathcal{H}}{a}} &= \frac{1}{ω^{\ast}(E)} \underbrace{∫ \pp{\mathcal{H}}{a} \frac{\d O}{\abs{∇ \mathcal{H}}}}_{= - \dd{ϕ^{\ast}}{a}} \\
+  \to \pp{ϕ^{\ast}}{a} &= - ω^{\ast}(E) \braket{\pp{\mathcal{H}}{a}}
+  \end{align*}
+  for an arbitrary change
+  \[\d ϕ^{\ast} = ω^{\ast}(\d E - \braket{\pp{\mathcal{H}}{a}} \d a)\]
+  \begin{align*}
+  \d E &t \frac{1}{ω^{\ast}} \d ϕ^{\ast} + \braket{\pp{\mathcal{H}}{a}} \d a \\
+  \d U &= δQ + δW \quad\text{by analogy}
+  \end{align*}
+
+
+  \begin{align*}
+  k_B \d \ln ϕ^{\ast} &= \dd{\ln ϕ^{\ast}}{E}(\d E - \braket{\pp{\mathcal{H}}{a}}\d A) \\
+  \d S &= \frac{1}{T}(\d E - δW) \quad\text{again, by analogy}
+  \to \d S &= k_B \d \ln ϕ^{\ast} \\
+  \frac{1}{k_B T} &= \pp{\ln ϕ^{\ast}}{E}
+  \end{align*}
+  adiabatic invariance of $ϕ^{\ast}$: change the controlparamter $a$ such that the phase space volume is consvered: $\d A \neq 0$, but $\d \ln ϕ^{\ast} = 0, \d S =, δ Q = 0$ \\
+  mechanical sysetm: pedulum on a string, length $l (=a)$, string reeled in
+  \[\mathcal{L} = \frac{m}{2} l^2 \dot φ^2 + m g l \underbrace{\cos φ}_{\simeq 1 - \frac{φ^2}{2}, \text{ for small angles}}\]
+  canonical momentum:
+  \[p_φ = \pp{\mathcal{L}}{\dot φ} = m l^2 \dot φ = L\]
+  \begin{align*}
+  \mathcal{H}(φ, L, l) &= \frac{L^2}{2m l^2} + \frac{mgl}{2} φ^2 - m g l = E
+  \end{align*}
+  phase space volume $ϕ^{\ast} = ∫_{\mathcal{H} \leq E} \d φ \d L$ $\sim$ ellipse with semi axes $φ^2 = l^2 2m(E + m g l), b^2 = (2E - m g l) / (m g l)$
+  \begin{align*}
+  ϕ^{\ast}(E, l) &= 2π \sqrt{\frac{l}{g}}(E + m g l) \\
+  \to \d ϕ^{\ast}(E, l) &= 2π \sqrt{\frac{l}{g}} (\d E + \frac{E + 2 m g l}{2l} \d l), \quad\text{with \(E(l)\)-relationship}
+  \end{align*}
+  now: change $l$ very slowly
+  \[F = - \pp{\mathcal{H}}{l} = \frac{L^2}{m l^3} - \frac{m g φ^2}{2} + m g\]
+  virial theorem: $\braket{T} = \braket{ϕ}$, if $k = 2$ $\sim$ harmonic oscillator
+  \begin{align*}
+  \frac{\braket{L^2}}{2m l^2} &= \frac{mgl}{2} \braket{φ^2} = \frac{1}{2}(E + m g l) \\
+  \to \braket{F} &= - \braket{\pp{\mathcal{H}}{l}} = - \frac{1}{2l}(E + 2 m g l) \\
+  \to \d \braket{E} &= - \braket{F} \d l = - \frac{E + 2mL}{2ml} \d l
+  \end{align*}
+  implies $\d ϕ^{\ast} = 0$, if the virial theorem is always fulfilled \\
+  $\to$ change of $l$ needs to take place on a timescale $τ \gg \sqrt{l / g}$ "adiabatic change" \\
+  $\to$ $\d S = k_B \d \ln ϕ^{\ast} = 0$ $\sim$ entropy is conserved in adiabatic changes. \\
+
+  proper definiton of phase space volume $\to$ look at ideal gas
+  \[\mathcal{H} = \sum_{i} \frac{\v p_i^2}{2m} \sim \text{kinetic energy}\]
+  \[\to ϕ^{\ast} = ∫_{\mathcal{H} \leq E} \prod_i \d^3 p_i \d^3 q_i\]
+  $ϕ^{\ast}$: phase space volume bounded by $E$
+  \begin{align*}
+  ∫ \prod_i \d^3 q_i &= ∫ \d^3 q_1 · \dots · ∫ \d^3 q_N = \prod_i ∫\d^3 q_i = \prod_i V = V^N \\
+  ∫_{\mathcal{H} \leq E} \prod_i \d^3 p_i &\to \sum_{i} \frac{\v p_i^2}{2m} \leq E, \sum_{i} \v p_i^2 \leq 2m E
+  \end{align*}
+  corresponds to a \(3n\)-dimensional sphere in momentum radius $\sim \sqrt{2mE}$
+  \[\to ϕ^{\ast} = C(2N)(2m E)^{3N / 2} V^N\]
+  \[S = k_B \ln ϕ^{\ast} = \frac{3N}{2} k_B \ln E + k_B N \ln V + \frac{3N}{2} k_B \ln(2m) + k_B \ln C(2N)\]
+  if $S = k_B \ln ϕ^{\ast}$
+  \[\to \pp{S}{E} = \frac{1}{T} = \frac{\frac{3}{2}N k_B}{E}\]
+  $\sim$ recover equipatition: $E \cong N k_B T$
+  \[\pp{S}{V} = \frac{ρ}{T} = \frac{N k_B}{V}\]
+  $\sim$ recover ideal gas equation: $p V = N k_B T$
+
+  something is not quite right: scaling with $N$: $N \ln N$
+  \[S = \frac{3}{2} N k_B \ln T + N k_B \ln V - N k_B \ln N + S_0\]
+  that would be much better! enropy should be additive: $S = S_1 + S_2$
+  $N$ particles, volumes $V$ $\to$ entropy $S$ \\
+  seperate $\to$ $N = N_1 + N_2$ particles, volumes $V_1 + V_2 = V$ \\
+  seperating the volume does noch change $E$, does nothing in heat $\to$ entropy is conserved
+  \begin{align*}
+  S_1 &= \frac{3}{2} N_1 k_B \ln T + N_1 k_B \ln \frac{V_1}{N_1} + N_1 σ_0 \\
+  S_2 &= \frac{3}{2} N_2 k_B \ln T + N_2 k_B \ln \frac{V_2}{N_2} + N_2 σ_0 \\
+  \end{align*}
+  1. term: $3/2 N_1 k_B \ln T + 3/2 N_2 k_B \ln T = 3_2(N_1 N_2) k_B \ln T$
+  3. [@3]: same
+  4. [@2]:
+	 \begin{align*}
+	 N_1 k_B \ln \frac{V_1}{N_1} + N_2 \ln \frac{V_2}{N_2} &= k_B \ln(\frac{V_1}{N_1})^N + k_B \ln(\frac{V_2}{N_2})^{N_2} \\
+	 &= k_B \ln((\frac{V_1}{N_1})^{N_1} (\frac{V_2}{N_2})^{N_2}) = k_B \ln((\frac{V}{N})^{N_1 + N_2}) = N k_B \ln \frac{V}{N}
+   	 \end{align*}
+	 \begin{align*}
+	 S &= k_B \ln \frac{ϕ^{\ast}}{N!} \\
+	 \intertext{Stirling-formula}
+	 \ln N! &\simeq N \ln N \\
+   	 \end{align*}
+	 generate $N \ln N$
+
+
+  \[\frac{N!}{N_1! N_2!} \sim \frac{ϕ^{\ast}}{ϕ_1^{\ast} ϕ_2^{\ast}}\]
+
+  \[ϕ^{\ast} = ∫_{\mathcal{H} \leq E} ∫ \prod_i \d^3 p_i \d^3 q_i \]
+
+  units of coordinate $x$ canonical momentum
+
+  \[q \pp{\mathcal{L}}{\dot q} \sim \abs{\mathcal{L}} · \text{time}, ∫ \d t \mathcal{L} S\]
+  \[\to ϕ = ∫_{\mathcal{H} \leq E} \prod_i \d^3 p_i \d^3 q_i \frac{1}{N! h^{3N}}\]
+
+  ideal gas:
+  \[ϕ = \frac{1}{h^{3N}} (\frac{4π}{3} \frac{m E}{N})^{3N/2} (\frac{V}{N})^N e^{3N/2}\]
+
+  thermal wave length
+  \[E = \frac{p^2}{2m} = \frac{1}{2m}(\frac{h}{λ})^2 = k_B T \to λ_{th} = \frac{h}{\sqrt{2π m k_B T}}\]
+
+
+  adiabatic invariance of $ϕ \to S = k_B \ln ϕ$
+
+
+  statistical system:
+  fundamental postaulate $\to$ Boltzmann's formula for entropy
+  \begin{align*}
+  \braket{g} &= ∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} g(p_i, q_i) ρ(p_i, q_i) \\
+  \intertext{$ρ(p_i, q_i) = 1 / ω(E) = \const$}
+  \braket{g} &= \frac{∫_{E \leq \mathcal{H} \leq E + δE} \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} g(p_i, q_i) ρ(p_i, q_i)}{∫_{E \leq  \mathcal{H} \leq E + δE} \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}}} \\
+  &= \frac{\dd{}{E} ∫_0^E \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} g(p_i q_i)}{\dd{}{E} ∫_0^E \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}}}
+  \end{align*}
+
+  \begin{align*}
+  ω(E) &= \dd{}{E} ϕ(E) \\
+  ⇔	\frac{1}{ρ(p_i, q_i)} \dd{}{E} ∫_0^E \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}}
+  \end{align*}
+  but also $S = k_B \ln ϕ$ $\sim$ logarithmic phase space volume.
+
+  \begin{align*}
+  S &= ∫_{E \leq \mathcal{H} \leq E + δE} \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} ρ · (-k_B \ln ρ) \\
+  &= ∫_{E \leq \mathcal{H} \leq E + δE} \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} \underbrace{\frac{1}{ω(E) δE} · (-k_B \ln(\frac{1}{ω(E) δE}))}_{\text{= $\const$ and defined within $E \leq \mathcal{H} \leq E + δE$}} \\
+  &= k_B \ln(ω δE) \underarrow[=]{generic result for highly dimensional cases ($N \cong \num{e23}$, most volume ist contained just below the surface)} k_B \ln ϕ \\
+  \to S &= - k_B \braket{\ln ρ} \quad\text{entropy is the phase space average of $-\ln{ρ}$}
+  \end{align*}
+
+\part{canonical ensemble}
+$2$ microcanonical ensembles in (thermal) contact $\to$ exchange heat, joint Hamiltonfunction
+\begin{align*}
+	\mathcal{H} &= \underbrace{\mathcal{H}(p_i, q_i)}_{\mathclap{\text{$f$ degrees}}} + \underbrace{\mathcal{H}(P_j, Q_j)}_{\mathclap{\text{$F$ degrees}}} + h(p_i, q_i, P_j, Q_j)
+\end{align*}
+$h$ Term: interaction, $h(\dots) = 0$ if systems are isolated. $h \ll \mathcal{H}(p_i, q_i), \mathcal{H}(P_j, Q_j)$ \\
+marginalisation: for a given coordinate $(p_i, q_i)$ of system $1$ with energy $\mathcal{H}_1$ system $2$ can be in *any* configuration $(P_j, Q_i)$ with energies $E - \mathcal{H}_1 \leq \mathcal{H}_2 \leq E + δ_E - \mathcal{H}_1$
+probability of finding system $1$ at $(p_i, q_i)$ needs to take all states $(P_j, Q_j)$ into account, which are compatible with energie $\mathcal{H}_1 + \mathcal{H}_2 = E$
+
+\[W(p_i, q_i) \prod_i \d^3 p_i \d^3 q_i \sim \prod_i \d^3 p_i \d^3 q_i ∫_{E - \mathcal{H}_1 \leq \mathcal{H}_2 \leq E - \mathcal{H}_1 + δ E}\]
+integrate over phase space $(p_i, q_i)$ with $E_1 \leq \mathcal{H}_1 \leq E_1 + δE_1$; $ω_2(E_2)$
+\[\to W(E_1) δE_1 = W_1(E_1) W_2(E - E_1) δE_1\]
+$\sim$ maximum at a certain $\tilde E_1$. example: Bernoulli-inspired
+\[ω(_1) = E_1^{n_1} (E - E_1)^{n_2}\]
+$n_1, n_2$ are of the order $\num{e23}$.
+\begin{align*}
+\to \ln ω(E_1) &= n_1 \ln E_1 + n_2 \ln(E - E_1) \\
+\dd{\ln ω}{E_1} &= 0 \\
+⇒ \tilde E_1 &= E \frac{n_1}{n_1 + n_2} \\
+\tilde E_2 &= E - \tilde E_1 = E \frac{n_2}{n_1 + n_2} \\
+\ln ω(\tilde E_1 + ε) &= n_1 \ln \tilde E_1 + n_2 \ln \tilde E_2 + n_1 \ln(1 - \frac{ε}{\tilde E_1}) + n_2 \ln(1 - \frac{ε}{\tilde E_2}) \\
+\to \ln ω(\tilde E_1 + ε) &= \const - \frac{ε^2}{2} \frac{n_1 + n_2}{\tilde E_1 \tilde E_2} \\
+\to ω(\tilde E_1 + ε) &\sim \exp(-\frac{ε^2}{2} \frac{n_1 + n_2}{\tilde E_1 \tilde E_2})
+\end{align*}
+inverse variance $σ^2 \sim 1/(n_1 + n_2)$, makes distribution narrow with large $n$.
+\begin{align*}
+\pp{}{E}(ω_1(E_1) ω_2(E - E_2)) &= 0 \\
+\to \left.\pp{}{E_1} \ln ω_1(E_1)\right|_{E = \tilde E_1} &= \left.\pp{}{E_2} \ln ω_2(E_2)\right|_{\tilde E_2 = E - \tilde E_1}
+\end{align*}
+wild guess: $\partial_E k_B \ln ω = 1/T$, motivated by $\partial_E k_B \ln ϕ = 1/T$
+ideal gas: $ϕ \leq C E^{3N/2}$
+\[\to \pp{}{E} k_B \ln ϕ = \frac{\frac{3}{2} N k_B}{E} = \frac{1}{T}\]
+$ω = \frac{3N}{2} C E^{\frac{3N}{2} - 1} = \frac{3N}{2} \frac{ϕ}{E}$
+\[\to \pp{}{E} k_B \ln ω = \frac{(\frac{3N}{2} - 1)k_B}{E} = \frac{1}{T}\]
+
+canonical ensemble \\
+typically: $ω(E - \mathcal{H}_1) = (E - \mathcal{H}_1)^N$
+\begin{align*}
+\ln(E - \mathcal{H}_1)^N &= \ln(E(1 - \frac{\mathcal{H_1}}{E}))^N = \ln E^N + n \ln(1 - \frac{\mathcal{H_1}}{E}) \\
+\ln(E - \mathcal{H}_1)^N &\simeq \ln E^N - n(\underbrace{\frac{\mathcal{H_1}}{E}}_{\mathclap{\text{small}}} + \underbrace{\frac{1}{2}(\frac{\mathcal{H_1}}{E})^2}_{\mathclap{\text{even smaller if $\mathcal{H_1} \ll E$}}} + \dots)
+\end{align*}
+
+
+\[\ln ω_2(E - \mathcal{H}_1) = \left.\ln ω_2 (E)\right|_{E = E_2} - \left.\pp{}{E} \ln ω(E)\right|_{E = E_2} \mathcal{H}_1(p_i, q_i)\]
+
+but at the same time
+\[\pp{}{E} \underbrace{\ln ω_2}_{\sim S} = \frac{1}{k_B T}\]
+\begin{align*}
+W(p_i, q_i) \prod_i \d^3 p_i \d^3 q_i &= \const \prod \d^3 p_i \d^3 q_i ω_2(E \mathcal{H}_1) \d E \\
+&= \const \prod_i \d^3 p_i \d^3 q_i \exp(-\frac{\mathcal{H}_1(p_i, q_i)}{k_B T}) \\
+W(E_1) \d E_1 &= C W_1(E_1) \exp(-\frac{E_1}{k_B T}) \d E_1 \text{by integration over $\mathcal{H}_1 \equiv E_1$ surface}
+\end{align*}
+canonical ensemble: average of a phase space function $g(p_i, q_i)$ over the entire phase space, weighted by the Boltzmann-factor
+
+
+\[\braket{g(p_i, q_i)} = \frac{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} g(p_i, q_i) \exp(-\frac{\mathcal{H}_1 (p_i, q_i)}{k_B T})}{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{2N}} \exp(-\frac{\mathcal{H}_1(p_i, q_i)}{k_B T})}\]
+
+
+microcanocial:
+\begin{align*}
+S &\sim k_B \ln ϕ \\
+ϕ &\sim ∫_0^E \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}}
+\end{align*}
+
+
+examples:
+\[\braket{E_1} = \frac{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} E_1 \exp(-\frac{\mathcal{H}_1 (p_i, q_i)}{k_B T})}{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{2N}} \exp(-\frac{\mathcal{H}_1(p_i, q_i)}{k_B T})}\]
+\[\braket{p} = \frac{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} \pp{\mathcal{H}}{V} \exp(-\frac{\mathcal{H}_1 (p_i, q_i)}{k_B T})}{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{2N}} \exp(-\frac{\mathcal{H}_1(p_i, q_i)}{k_B T})}\]
+(with $p = -\pp{\mathcal{H}}{V}$)
+$p_i \pp{\mathcal{H}}{p_1} = k_B T = 2 \braket{T}$
+canonical partition function (Zustandssumme)
+
+Partitionfunction:
+\[Z = ∫\prod_i \frac{\d^3 p_i \d^3 q_i}{N! h^{3N}} \exp(- \frac{\mathcal{H}(p_i, q_i)}{k_B T})\]
+
+\begin{align*}
+\braket{E} &= k_B T^2 \pp{\ln Z}{T} = k_B T^2 \frac{1}{Z} \pp{Z}{T}	\\
+\braket{p} &= k_B T \pp{\ln Z}{V} = k_B T \frac{1}{Z} \pp{Z}{V}
+\end{align*}
+look for a suitable thermodynamic potential: Helmholtz free energy: $-F / (k_B T)$. $F = E - T S$, with differential $\d F = \d E - T \d S - S \d T$. Euler's relation: $\d E = T \d S - p \d V \to \d F = - S \d T - p \d V$
+
+
+\begin{align*}
+\d(-\frac{F}{k_B T}) &= \frac{F}{k_B T} \d T - \frac{1}{k_B T} \d F = \frac{F}{k_B T^2} \d T + \frac{S}{k_B T} \d T + \frac{p}{k_B T} \d V \\
+&= \frac{F + T S}{k_B T^2} \d T + \frac{p}{k_B T} \d V = \pp{\ln Z}{T} \d T + \pp{\ln Z}{V} \d V \\
+⇒ F(T, V) &= -k k_B T \ln Z
+\end{align*}
+similar to $S(E, V) = k_B \ln ϕ$. alternatively
+\begin{align*}
+Z &= ∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} \exp(-\frac{\mathcal{H}(p_i, q_i)}{k_B T}) = ∫_0^∞ \d E \underbrace{∫_{E \leq \mathcal{H} \leq E + \d E} \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}}}_{= ω(E)} \exp(-\frac{\mathcal{H}(p_i, q_i)}{k_B T}) \\
+\to Z &= ∫_0^E \d E ω(E) \exp(-\frac{\mathcal{H(E)}}{k_B T}) = ∫_0^E \d E \dd{}{E} ∫_0^E \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} \exp(-\frac{\mathcal{H}(p_i, q_i)}{k_B T})
+\end{align*}
+
+variant of $F(T, V, N) \to$ thermostat fixes $T$ $\to$ is it possible to fix $p$ instead of $V$ (think chemistry!) $\to$ enthalpy $G(T, p, N)$
+
+
+two systems, $E_1, V_1$ and $E_2, V_2$ connected $\to$ pressure equilibrium. $E = E_1 + E_2, V = V_1 + V_2$, system 2 $\gg$ system 1, controls pressure
+
+
+\begin{align*}
+W(E_1, V_1) \d E_1 \} V_1 &\sim ω_1(E_1, V_1) ω_2(E - E_1, V - V_1) \d E_1 \d V_1 \\
+\ln ω_2(E - E_1, V - V_1) &= \ln ω_2(E, V) - \underbrace{\pp{\ln ω_2}{\d E}}_{= 1 / (k_B T)} E_1 - \underbrace{\pp{\ln ω_2}{V}}_{= p / (k_B T)} V_1 + \dots \\
+&= \ln ω_2(E, V) - \frac{1}{k_B T}(E_1 + p V_1) \\
+\to W(E_1, V_1) &\sim W_1(E_1, V_1) \exp(-\frac{E_1 + p V_1}{k_B T}) \quad\text{by exponentiation}
+\end{align*}
+canonical average
+\begin{align*}
+\braket{E + p V} = \frac{∫ \d E \d V (E + p V) \exp(-\frac{E + p V}{k_B T})}{∫ \d E \d V \exp(-\frac{E + p V}{k_B T})} = k_B T^2 \pp{}{T} \ln ∫ \d E \d V ω(E, V) \exp(-\frac{E + p V}{k_B T}) \\
+\braket{V} &= - k_B T \pp{}{p} \ln ∫ \d E \d V ω(E, V) \exp(-\frac{E + p V}{k_B T})
+\end{align*}
+suggests defnition of enthalpy
+\[G(T, p, N) = - k_B T \ln ∫ \d E \} V ω(E, V) \exp(-\frac{E + p V}{k_B T})\]
+
+
+\[E + p V = k_B T^2 \pp{}{T} (\frac{-G}{k_B T}), V = \pp{G}{p}\]
+
+
+\begin{align*}
+G &= E - TS + pV \to  \d G = - S \d T + V \d p + μ \d N \\
+d(\frac{-G}{k_B T}) &= \frac{G}{k_B T^2} \d T - \frac{1}{k_B T} \d G = \frac{E pV}{k_B T^2} \d T - \frac{V}{k_B T} \d p - \frac{μ}{k_B T} \d N \\
+G(T, p, N) &= - k_B T ∫ \d V Z(T, V, N) \exp(-\frac{p V}{k_B T})
+\end{align*}
+
+
+\part{E. marcocanonical ensemble (ka grand canonical ensemble)}
+
+starting point: $E(S, V, N) \to$ all extensive variables can get replaced by intensive ones. \\
+please keep in mind:
+- Eulers' relation $E = T S - p V + μ N \to \d E = T \d S - p \d V + μ \d N$
+- choice of 3 state variables from 3 extensive and 3 intensive ones: $2^3 = 8$ possibilities. Only 5 are practically important and have a name:
+  - $E(S, V, N)$ energy $\d E = T \d S - p \d V + μ \d N$
+  - $F(T, V, N)$ Helmholtz-energy $\d F = - S \d T - p \d V + μ \d N$
+  - $G(T, p, N)$ free enthalphy $\d G = - S \d T + V \d p + μ \d N$
+  - $H(S, p, N)$ enthalphy $\d H = T \d S + V \d p + μ \d N$
+  - $J(T, V, μ)$ macrocanonical	potential $\d J = - S \d T - p \d V - N \d μ$
+
+
+Gibbs-Duhem-relation $\to$ intensive state variables
+\begin{align*}
+E &= TS - p V + μ N (\text{Euler}) \\
+\intertext{Gibbs Duhem relation}
+\d E &= \underbrace{T \d S - p\d V + μ \d N}_{= \d E} + \underbrace{S \d T - V \d p + N \d μ}_{= 0}
+\end{align*}
+implies that only *two* of the three intensive state variables are independent. \\
+Euler-relation: from the extensivity of $S, V, N$
+
+\begin{align*}
+\dd{}{l} (E(λ S, λ V, λ N) = λ E(S, V, N)) \quad\text{extensive $\sim$ homogeneous of order $1$} \\
+\to E(S, V, N) &= \underbrace{\pp{λS}{λ}}_{=S} \pp{E}{λ S} + \underbrace{\pp{λV}{λ}}_{=V} \pp{E}{λ V} +	\underbrace{\pp{λN}{λ}}_{=N} \pp{E}{λ N} \\
+λ = 1 \to E(S, V, N) &= S \underbrace{\pp{E}{S}}_{= T} + V \underbrace{\pp{E}{V}}_{-p} + N \underbrace{\pp{E}{N}}_{-μ}
+\end{align*}
+differential Euler-relation
+\begin{align*}
+\d E &= T \d S - p \d V + μ \d N \rightarrow differential \d E(S, V, N) \\
+\intertext{from the first and second law of thermodynamics:}
+\d E &= δ Q + δ W \\
+δ Q &= T \d S\quad \text{for reversible processes} \\
+δW &= -p \d V + μ \d N
+\end{align*}
+but you can dream up any number of state variables
+
+$\d E = T \d S$ entropy $\to$ heat \\
+$- p\d V$ work against pressure \\
+$+ μ \} N$ adding particles \\
+$+ \v B \d \v M$ interaction with magnetic field $\v B$ \\
+$+ ϕ \d q$ interaction with potential $ϕ$
+
+macrocanonical ensemble $\to$ adding particles to the system. Control $μ$ instead of $N$, resevoir of particles, chemical potential $μ$
+
+
+\begin{align*}
+ω^{\ast} δE &= ∫_{E \leq \mathcal{H} \leq E + δ E} \prod_i \d^3 p_i \d^3 q_i \\
+&= ∫_{0 \leq E_1 \leq E} \} E_1 ω^{\ast}(E_1, N_1) ω_2^{\ast}(E - E_1, N - N_1) δ E
+\end{align*}
+open the barrier between first and second system:
+\[\frac{N!}{N_1!(N - N_1)!} = \binom{N}{N_1}\]
+possibilities to select $N_1$ particles from $N$ total to be in the first system.
+\begin{align*}
+ω^{\ast}(E, N) δ E &= ∫ \d E_1 \sum_{N_1} \binom{N}{N_1} ω^{\ast}(E_1, N_1), ω_2^{\ast}(E - E_1, N - N_1) δE \\
+\frac{ω^{\ast}(E, N)}{N! h^{3N}} δ E = ∫ \d E_1 \sum_{N_1} \frac{\frac{ω_1^{\ast}(E_1, N_1)}{N_1! h^{3N_1}}}{ω_2(E - E_1, N - N_1)} \underbrace{\frac{ω_1^{\ast}(E - E_1, N - N_1)}{(N - N_1)! h^{3(N - N-1)}}}_{= ω_2(E - E_1, N - N_1)} δ E
+\end{align*}
+$\to$ Gibbs' factor appears naturally!
+
+\begin{align*}
+\ln ω_2(E - E_1, N - N_1) &= \ln ω_2(E, N) - \underbrace{\pp{\ln ω_2}{E}}_{= \frac{1}{k_B T} = β} E_1 - \underbrace{\pp{\ln ω_2}{N}}_{= \frac{μ}{k_B T} = α = ζ \text{ fugacity}} N_1
+\end{align*}
+from $S = k_B \ln ω \to \pp{S}{E} = \frac{1}{T}, \pp{S}{N} = \frac{μ}{T}$ \\
+
+\begin{align*}
+W(E_1, N_1) \sim ω_1(E_1, N_1) ω_2(E - E_1, N - N_1) \d E_1 \\
+W(E_1, N_1) \sim ω(E_1, N_1) \exp(-\frac{E_1 - μ N_1}{k_B T}) \d E
+\end{align*}
+generates replacement $N \leftrightharpoons μ$ \\
+\begin{align*}
+J(T, V, μ) &= - k_B T \ln \sum_{N} ∫ \d E ω(E, V, N) \exp(-\frac{E - μ N}{k_B T}) \\
+&= - k_B T \ln Ξ \\
+\intertext{alternative definiton}
+ψ(β, V, μ) &= -\frac{J(T, V, μ)}{k_B T} = - β J(T, V, μ)
+\end{align*}
+
+example for a canonical discrete system \\
+control of $T, σ, N$, $σ$ $\sim$ "$p$" $\sim$ enthalphy G(T, σ, N)
+
+\[Z_G = \sum_{i} \binom{N}{i} \exp(-\frac{σ l(i)}{k_B T})\]
+length of chain
+\[l(i) = i a + (N - i) b\]
+\[⇒ Z_G = \sum_{i} \binom{N}{i} \exp(-\frac{σ}{k_B T}(i(a - b) + N b)) = \exp(\frac{σN b}{k_B T}) \sum_{i} \binom{N}{i} \exp(-\frac{σ}{k_B T} i(a - b)) · \underbrace{1^{N - i}}_{= 1}\]
+\[⇒ Z_G = (\exp(-\frac{a σ}{k_B T}) + \exp(\frac{-b σ}{k_B T}))^N\]
+$G= - k_B T \ln Z_G = σl - T S; \d G = - S \d T + l \d σ$
+
+
+string model for polymers:
+
+
+$l(i) = i a + (N - i) b$
+\begin{align*}
+Z &= \sum_{i} \binom{N}{i} \exp(-\frac{σ l(i)}{k_B T}) \\
+\to Z &= (\exp(-\frac{aσ}{k_B T}) + \exp(-\frac{bσ}{k_B T}))^N \overarrow[=]{factorising partition} Z(T, l, N - 1)^N \\
+G(T, σ) &= - k_B T \ln Z = σ l - T S \\
+\d G &= - S \d T + l \d σ \\
+l &= \pp{G}{σ} = N \frac{a \exp(-\frac{aσ}{k_B T}) + b \exp(-\frac{b σ}{k_B T})}{\exp(-\frac{aσ}{k_B T}) + \exp(-\frac{b σ}{k_B T})} = l(σ, T)
+\end{align*}
+in analogy:
+\[S = - \pp{G}{T}\]
+next step: introduce chemical potential $μ$. idea $\to$ there are monomers in a solution around the chain, new monomer links can be built into the chain, provide $μ$
+
+
+\begin{align*}
+Ξ(T, σ, μ) &= \sum_{j} \frac{1}{j!}\underbrace{(\sum_{i}^{j} \binom{j}{i} \exp(- \frac{σ l(i)}{k_B T}))}_{\text{canonical $Z(T, σ, j)$}} \overbrace{\exp(\frac{μ j}{k_B T})}^{\text{weighting with fugacity}} \\
+\end{align*}
+$\to J(T, σ, μ)$ macrocanonical potential
+\begin{align*}
+\pp{J}{T} &= - S, \pp{J}{l} &= - σ, \pp{J}{μ} = -N
+\end{align*}
+
+\begin{align*}
+Ξ(T, σ, μ) &= \sum_{j} \frac{1}{j!} Z(T, σ, 1)^j \exp( - \frac{μ}{k_B T})^j = \exp(\exp(\frac{μ}{k_B T}) Z(T, σ, 1))
+\end{align*}
+the double exponential is a very typical structure for macrocanonical partitions!
+funny effect: providing high $μ$ and pulling on the string makes $l$ large $\to$ self-assembly. \\
+recover: the canonical partition from the macrocanonical on:
+
+\begin{align*}
+Ξ(T, V, μ) &= \sum_{N} \underbrace{\exp(\frac{μ}{k_B T})^N}_{= z = \exp(μN / (k_B T))} \overbrace{Z(T, V, N)}^{Z(T, V, N) = Z(T, V, 1) / N!} \\
+Ξ(T, V, μ) &= \sum_{N} Z(T, V, N) z^N
+\end{align*}
+$\sim$ Laurent series
+- macrocanonical partition is a power series
+- analytic continuation from $z ∈ ℝ$ to $z ∈ ℂ$
+
+\begin{align*}
+Z(T, V, N) &= \left. \frac{1}{N!}\frac{\d^N}{\d z^N} Ξ(T, V, μ)\right|_{z = 0} = \frac{1}{2πi} ∮ \d z \frac{Ξ(T, V, μ)}{z^{N + 1}}  \quad\text{Cauchy-theorem}
+\end{align*}
+Monte Carlo Markov chains
+
+
+\begin{align*}
+\braket{A} &= \frac{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} A(p_i, q_i) \exp(-\frac{E}{k_B T})}{∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} \exp(-\frac{E}{k_B T})} \\
+&= \frac{\sum_{n} A_n \exp(-\frac{E_n}{k_B T})}{\sum_n \exp(- \frac{E_n}{k_B T})} \\
+&= ∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} A \underbrace{(\frac{1}{Z} \exp(-\frac{E}{k_B T}))}_{= \mathcal{P}(E)} \\
+&= \sum_{n} A_n (\frac{1}{Z} \exp(-\frac{E_n}{k_B T}))
+\end{align*}
+normalisations
+\[∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} \mathcal{P}(E) = \sum_{n} \mathcal{P}(E_N) = 1\]
+
+first idea: draw microstates at random, compute $A, E$ and $\exp(-E/(k_B T))$ o
+\[\to \braket{A} = \sum_{s} A_s \mathcal{P}(s)\]
+$\to$ horrible inefficient. \\
+second idea: direct integration $∫ \prod_i \d^3 p_i \d^3 q_i$ $\to$ forget it \\
+third idea: Metropolis + Hasting (1953)
+\begin{align*}
+\braket{A} &= \sum_{s} A_s \mathcal{P}(E_s) \\
+\mathcal{P}(E_s) = \frac{\exp(-\frac{E_s}{k_B T})}{\sum_{s} \exp(- \frac{E_s}{k_B T})}
+\end{align*}
+draw samples that appear at the right $\mathcal{P}$
+
+algorithm:
+1. guess an initial state $(p_i, q_i)$ or n
+2. jump to a new microstate $Δ E$. decide: if
+   - $Δ E \leq 0$ accept new microstate, replace first one
+   - $Δ E > 0$ accept new state at probability $\sim \exp(ΔE / (k_B T))$
+
+
+Maxwell-Boltzman distribution $p(v) \sim v^2 \exp(-v^2 / T)$
+
+
+\begin{align*}
+Z &= ∫ \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} \exp(- \frac{\v p^2}{2m k_B T}) = \dots = \frac{1}{N!}(\frac{V}{h^{3}} ∫ \d^3 p \exp(-\frac{\sum_{i} p_i^2}{2m k_B T}))^N \\
+  &= \frac{1}{N!} Z(T, V, 1)^N \\
+F &= - k_B T \ln Z \\
+\to \pp{F}{T} &= S, \dots
+\end{align*}
+
+for $d$ dimensions
+\begin{align*}
+P(p) \d p = p^{d - 1} \exp(-\frac{p^2}{2m k_B T})
+\end{align*}
+\begin{align*}
+E &= \frac{\v p^2}{2m} \\
+\to Z &= ∫ \frac{\prod_i \d^d p_i \d^d q_i}{N! h^{dN}} \exp(- \frac{\v p^2}{2 m k_B T}) \\
+\intertext{$\v p^2 = p_i p^i$}
+&= \frac{V^N}{N! h^{dN}} ∫ \prod \d^d p \exp(- \frac{1}{2 m k_B T} \sum_{i = 1}^{d} p_i^2) \\
+&= \frac{1}{N!}(\frac{V}{h^d} ∫\d^d p \exp(-\frac{1}{2 m k_B T} \sum_{i = 1}^{d} p_i^2))^N \\
+&= \frac{1}{N!} Z(T, V, 1)^N \\
+⇒ F(T, V, N) &= - k_B T \ln Z \\
+⇒ \pp{F}{T} &= -S \\
+⇒ \pp{F}{V} &= -p
+\end{align*}
+
+
+\part{quantum statistics}
+fundamental problem: definition of a microstate. $(p_i, q_i)$ is not possible
+1. $p_i$ and $q_i$ are not simultanously defined
+2. distinguishability of particles not give
+3. (usually discrete energy states)
+
+\[\braket{A} = ∫_{E \leq \mathcal{H}(p_i, q_i) \leq E + \d E} \frac{\prod_i \d^3 p_i \d^3 q_i}{N! h^{3N}} A(p_i, q_i)\]
+$\to$ generalise!
+\begin{align*}
+\to \braket{A} &= \sum ρ_i \braket{ψ^{(i)} | A | ψ^{(i)}} \\
+\text{with } \braket{ψ^{(i)} | A | ψ^{(i)}} &= ∫ \prod_i \d^3 p_i ψ^{\ast (i)}(q_i) A(p_i, q_i) ψ^{(i)}(q_i)
+\end{align*}
+but is this the most general expression? $\to$ no there are $\braket{ψ^{(i)} | A | ψ^{(j)}} \neq 0$
+
+\[\to \braket{A} = \sum_{ij} ρ_{ij} \braket{ψ^{(i)} | A | ψ^{(j)}}\]
+$ρ_{ij}$: density matrix: probability of $\braket{ψ^{(i)} | A | ψ^{(j)}}$ contributing to $\braket{A}$.
+change of basis $ψ \to ϕ, ψ^{(i)} = \sum_{k} a_k^{(i)} ϕ_k$
+
+\begin{align*}
+\braket{A} &= \sum_{i} ρ_i \sum_{k, k'} a_k^{(i) \ast} a^{(j)}_{k'} \braket{ϕ_k | A | ϕ_{k'}} \\
+		   &= \sum_{k, k'}(\sum_{i} ρ_i a^{(i) \ast} a_{k'}^{(j)}) \braket{ϕ_k | A | ϕ_{k'}} \\
+		   &= ρ_{k, k'} \\
+ρ_{kk'}	   &= \braket{ϕ_{k'} | ρ | ϕ_{k}} \\
+\to \braket{A} &= \sum_{k, k'} \braket{ϕ_{k'} | ρ | ϕ_k} \braket{ϕ_k | A | ϕ_{k'}} = \sum_{k} \braket{ϕ_{k'} | ρ A | ϕ_k} = \tr(ρ A) \\
+\to \braket{A} &= \tr(ρ A)
+\end{align*}
+- trace relationships are invariant under basis transforms
+- traces are cyclic $\tr(A B C) = \tr(B C A) = \tr(C A B)$
+- in particular
+  \begin{align*}
+  \tr(A B) &= \tr(B A) \to [x, p] = i\hbar \\
+  \tr x p - \tr p x &= i \hbar
+  \end{align*}
+
+pure state:	one a single state in the system: $ρ_{ii} = 1$ for a single $\ket{ψ^{(i)}}$
+
+\begin{align*}
+ρ^{\text{pure}}_{lm} &= (\ket{ψ^{(i)}}\bra{ψ^{(i)}})_{lm} = δ_{li} δ{mi} = P_{\ket{ψ^{(i)}}}
+\end{align*}
+$ρ$ and $P_{\ket{ψ^{(i)}}}$ are identical for pure states.
+
+\[P_{\ket{ψ^{(i)}}}^2 = (\ket{ψ^{(i)}}\bra{ψ^{(i)}})^2 = \ket{ψ^{(i)}}\bra{ψ^{(i)}} \ket{ψ^{(i)}}\bra{ψ^{(i)}} = \ket{ψ^{(i)}}\bra{ψ^{(i)}} = P_{\ket{ψ^{(i)}}}\]
+idempotency $\to$ holds for $ρ$ aswell, if $ρ = ρ^{\text{pure}}$
+mixed states: $ρ_{ii} \neq 0$ for multiple states. $sum_i ρ_{ii} = \tr ρ = 1$ otherwise they would not be probabilities $\to 0 \leq ρ_{ii} \leq 1$. \\
+density matrix known in the eigenbasis of $A$
+\[A \ket{ϕ_A} = a \ket{ϕ_A}\]
+$a \sim eigenvalue$.
+\[\abs{\braket{ψ^{(i)} | ϕ_A}}^2 \sim \text{ probability, overlap between $\ket{ψ^{(i)}}$ and $\ket{ϕ_A}$}\]
+$ρ^{\text{pure}} = \ket{ψ^{(i)}} \bra{ψ^{(i)}}$ density matrix, projection $P_{\ket{ϕ_A}} = \ket{ϕ_A} \bra{ϕ_A}$ \\
+pure state:
+\begin{align*}
+\tr(ρ P_{\ket{ϕ_A}}) &= \sum_{A'} \braket{ϕ_{A'} | (ρ^{\text{pure}} P_{\ket{ϕ_A}}) | ϕ_{A'}} \\
+&= \sum_{A'} \braket{ϕ_{A'} | ψ^{(i)}} \braket{ψ^{(i)} | ϕ_A} \braket{ϕ_A | ϕ_{A'}} \\
+&= \braket{ϕ_A | ψ^{(i)}} \braket{ψ^{(i)} | ϕ_A} = \abs{ϕ_A | ψ^{(i)}}^2
+\end{align*}
+mixed state
+\begin{align*}
+\tr(ρ P_{\ket{ϕ_A}}) &= \sum_{A'} \sum_{i} \braket{ϕ_{A'} | ψ^{(i)}} ρ_{ii} \braket{ψ^{(i)} | ϕ_A} \braket{ϕ_A | ϕ_{A'}} \\
+&= \sum_{i} ρ_{ii} \abs{\braket{ϕ_A | ψ^{(i)}}}^2 \\
+\braket{A} &= \tr{ρ A} = \sum_{k} \sum_{i} \braket{ϕ_k | ψ^{(i)}} ρ_{ii} \braket{ψ^{(i)} | A | ϕ_k} \\
+\intertext{insertion of a basis set $\ket{ϕ_{k'}}$}
+&= \sum_{i} \sum_{k, k'} \braket{ϕ_k | ψ^{(i)}} ρ_{ii} \braket{ψ^{(i)} | ϕ_{k'}} \braket{ϕ_{k'} | A | ϕ_k} \\
+&= \sum_{i} ρ_{ii} \sum_{k, k'} \braket{ϕ_k | ψ^{(i)}} \braket{ϕ_{k'} | ψ^{(i)}}^{\ast} \braket{ϕ_{k'} | A | ϕ_{k'}}
+\end{align*}
+
+
+wave function overlap $\to$ indistiguishability \\
+$\to$ need a many particle wave function $ψ(\v r_1, \dots, \v r_n)$ (for $n$ particles) \\
+$\to$ behaviour of $ψ$ under particle exchange $P(i \leftrightharpoons j) ψ(\v r_1, \dots \v r_i, \dots \v r_j, \dots \v r_n) = ψ(\v r_1, \dots \v r_j, \dots \v r_i, \dots \v r_n)$ \\
+particels are identical (same properties) $\to$ $[H, P(i \leftrightharpoons j)] = 0$ \\
+$P(i \leftrightharpoons j)^2 = \id$ \\
+let $ψ$ be a eigenstate of $P(i \leftrightharpoons j)$ $\to$
+\begin{align*}
+P(i \leftrightharpoons j) ψ &= λ ψ \\
+P(i \leftrightharpoons j)^2 ψ &= λ^2 ψ \overset{!}{=} \id ψ = ψ \\
+⇒λ^2 &= 1, λ = \pm 1
+\end{align*}
+generalisation of particle exchange: permutation
+\[P ψ(\v r_1, \v r_2, \dots, \v r_n) = ψ(\v r_{P_1}, \v r_{P_2}, \dots, \v r_{P_n})\]
+symmetric:
+\[ψ_{+}(\v r_1, \dots, \v r_n) \sim \sum_{\mathcal{P}} \mathcal{P} ψ(\v r_1, \dots, \v r_n)\]
+antisymmetric:
+\[ψ_{-}(\v r_1, \dots, \v r_n) \sim \sum_{\mathcal{P}} (-1)^{\mathcal{P}} \mathcal{P} ψ(\v r_1, \dots, \v r_n)\]
+\[(-1)^{\mathcal{P}} = \begin{cases} +1 & \text{if $\#$ of pair swaps is even} \\ -1 & \text{if $\#$ of pair swaps is odd} \end{cases}\]
+spin-statistics theorem (Pauli) \\
+integer spin $\to$ "bosons" $\to$ symmetric wave functions
+half-integer spin $\to$ "fermions" $\to$ antisymmetric wave functions \\
+non-interacting systems
+\[H = \sum_{i}^{n} H(p_i, q_i)\]
+$\to$ product wavefunctions
+\[H(p_i, r_1) ψ_k(r_i) = E_k ψ_k(r_i), ψ_{k_1, \dots, k_n}(\v r_1, \dots, \v r_n) = \prod_i^n ψ_{ki}(\v p_i, \v r_i)\]
+fermions:
+\[\ket{k_1, \dots, k_n}^{-} = \overarrow[\frac{1}{\sqrt{N!}}]{$n$ particles, $n$ permutations} \sum_{\mathcal{P}} (-1)^{\mathcal{P}} \underbrace{\mathcal{P} \ket{k_1, \dots, k_n}}_{\ket{k_{\mathcal{P_1}}, \dots, k_{\mathcal{P}_n}}}\]
+bosons (symmetric)
+\[\ket{k_1, \dots, k_n}^{+} = \frac{1}{\sqrt{N!}S} \sum_{\mathcal{P}}  \mathcal{P} \ket{k_1, \dots, k_n}\]
+$S$: fudge factor: 2 (or more) states ca be identical for bosons, for fermions $\ket{k_1, \dots, k_n}^{-}$ if $∃ i,j, i \neq j: \ket{k_i} = \ket{k_j}$
+Slater determinant:
+\begin{align*}
+\ket{k_1, \dots, k_n}^{-} &= \frac{1}{\sqrt{N!}} \det \begin{pmatrix}ϕ_{k_1}(\v r_1) & \dots & ϕ_{k_n}(\v r_n) \\ \vdots & \ddots & \vdots \\ ϕ_{k_1}(\v r_1) & \dots & ϕ_{k_n}(\v r_n)\end{pmatrix}
+\end{align*}
+(macro)canonical description of ideal (aka non-interacting)	quantum	systems
+\[Z(T, V, N) = \tr \exp(-βH) = \frac{1}{n!} \sum_{k_1, \dots, k_n} \prescript{\pm}{}{\braket{k_1, \dots, k_n | \exp(-β H) | k_1, \dots, k_n}}^{\pm}\]
+choice of representation does not matter: in fact energy is usually very useful. \\
+partition separates:
+\[\prescript{\pm}{}{\braket{k_1, \dots, k_n | \exp(-β H) | k_1, \dots, k_n}}^{\pm} = \braket{k_1, \dots, k_n | \underbrace{\prod_k \exp(-β ε_k)}_{=\exp{-β \sum_{k} ε_k} = \exp(-βE)} | k_1, \dots, k_n}\]
+\begin{align*}
+Z(T, V, N) &= \frac{1}{n!} \prod_i^n \sum_{k_i} \braket{k_i | \exp(-βH_i) | k_i} \\
+	   	   &= \frac{1}{n!} (\sum_{k_i} \braket{k_i | \exp{-β H_i} | k_i})^n = \frac{1}{n!} Z(T, V, 1)^N = Z(T, V, N)
+\end{align*}
+states can be occupied by $0 \dots n$ bosons or bi $0, 1$ fermions
+\[\to \sum_{k} n_k = n, \sum_{k} n_k ε_k = E\]
+out of expectation values of $H$ and $N$. Each state is characterised by an set $\{n_k\}$ of occupation numbers: $\ket{n_1, \dots, n_n}^{\pm}$
+\begin{align*}
+H \ket{n_1, n_2, \dots} &= E \ket{n_1, n_2, \dots} \quad\text{with}\quad E = \sum_{k} n_k ε_k
+N \ket{n_1, n_2, \dots} &= n \ket{n_1, n_2, \dots} \quad\text{with}\quad n = \sum_{k} n_k
+\end{align*}
+characterisation of a system
+1. states
+2. occupation
+3. symmetry $\to$ bosons $⇔$ fermions (pauli-exclusion, spin-statistics-theorem)
+
+occupation number represenation: $\ket{n_1, n_2, \dots}^{\pm}$ \\
+density matrix in occupation number	representation, canonical ensemble
+\begin{align*}
+\prescript{\pm}{}{\braket{k_1, \dots, k_n | ρ  | k_1, \dots, k_n}}^{\pm} &=	\frac{1}{Z(T, V, N)} \prescript{\pm}{}{\braket{k_1, \dots, k_n | \exp(-βH) | k_1, \dots, k_n}}^{\pm} \\
+\intertext{canonical partition:}
+Z(T, V, N) &= \sideset{}{'}\sum_{\{n k\}} \exp(-β \sum_{k} n_k ε_k)
+\end{align*}
+$\sum^{'}$ is the sum over all occupation sets with $\sum n_k = N$ \\
+macrocanonical partition
+\begin{align*}
+\prescript{\pm}{}{\braket{k_1, \dots, k_n | ρ  | k_1, \dots, k_n}}^{\pm} &= \frac{1}{Ξ(T, V, μ)} \prescript{\pm}{}{\braket{k_1, \dots, k_n | \exp(-β(H - μ N)) | k_1, \dots, k_n}}^{\pm} \\
+&= \frac{1}{Ξ(T, V, μ)}	\prescript{\pm}{}{\braket{k_1, \dots, k_n | \exp(-β \sum_{k} n_k (ε_k - μ)) | k_1, \dots, k_n}}^{\pm} \\
+Ξ(T, V, μ) &= \sum_{\{n_k\}} \exp(-β \sum_{k} n_k (ε_k - μ))
+\intertext{no restrition $\sum n_k = N$ $\to$ $N$ is not fixed!}
+&= \sum_N \sideset{}{'}\sum_{\{n_k\}} \exp(-β \sum_{k} n_k (ε_k - μ)) \\
+&= \sum_N \sideset{}{'}\sum_{\{n_k\}} \exp(-β \sum_{k} n_k ε_k) \underbrace{\exp(β μ \sum_{k} n_k)}_{\mathclap{=\exp(βμN) = \exp{βμ}^N = Z^N}} \\
+&= \sum_{N} Z^N \sideset{}{'}\sum_{\{n_k\}} \exp(-β \sum_{k} n_k ε_k) &= \sum_{N} Z^N Z(T, V, N)
+\end{align*}
+for bosons:
+\begin{align*}
+Ξ(T, V, μ) = \sum_{n_1, n_2, \dots}^{∞} \exp(-β(ε_1 - μ))^{n_1} \exp(-β(ε_2 - μ))^{n_2} \\
+&= \prod_k \sum_{n_k = 0}^{∞} \exp(-β(ε_k - μ))^{n_k} = \prod_k \frac{1}{1 - \exp{-β(ε_k - μ)}} \\
+Z &:= \exp(βμ) = \exp(α) \\
+\to Ξ(T, V, μ) &= \prod_k \frac{1}{1 - Z \exp(-βε_k)}
+\end{align*}
+for fermions:
+\begin{align*}
+Ξ(T, V, μ) &= \prod_k \sum_{n_k = 0}^1 \exp(-β(ε_k - μ))^{n_k} = \prod_k 1 + \exp(-β(ε_k - μ)) \\
+\to Ξ(T, V, μ) &= \prod_k 1 + Z \exp(-β ε_r)
+\end{align*}
+macrocanonical potential $J(T, V, μ) = -k_B T \ln Ξ(T, V, μ)$
+bosons:
+\[J(T, V, μ) = k_B T \sum_{k} \ln(1 - Z \exp(-β ε_k))\]
+fermions:
+\[J(T, V, μ) = -k_B T \sum_{k} \ln(1 + Z \exp(-β ε_k))\]
+
+particle number and energy
+for bosons:
+\begin{align*}
+N(T, V, μ) &= k_B T \pp{}{μ} \ln Ξ(T, V, μ) &= \sum_{k} \underbrace{\frac{1}{\frac{1}{2} \exp(βε_k) - 1}}_{= n_k} = \sum_{k} n_k = N
+\end{align*}
+for fermions:
+\begin{align*}
+N(T, V, μ) &= k_B T \pp{}{μ} \ln Ξ(T, V, μ) &= \sum_{k} \underbrace{\frac{1}{\frac{1}{2} \exp(βε_k) + 1}}_{= n_k} = \sum_{k} n_k = N
+\end{align*}
+for bosons:
+\begin{align*}
+E(T, V, μ) &= -\pp{}{β} \ln Ξ(T, V, μ) &= \sum_{k} \frac{ε_k}{\frac{1}{2} \exp(β ε_k) - 1}
+\end{align*}
+for fermions:
+\begin{align*}
+E(T, V, μ) &= -\pp{}{β} \ln Ξ(T, V, μ) &= \sum_{k} \frac{ε_k}{\frac{1}{2} \exp(β ε_k) + 1}
+\end{align*}
+
+ultrarelativistic Bose gas $\to$ photons at fixed temperature. dispersion $ε = c \abs{\v p} = \hbar c \abs{\v k}$ continuum:
+\[\sum_k \to \frac{1}{h^3} ∫ \d^3 p ∫ \d^3 x = 4 π V ∫ k^2 \d k = \frac{4πV}{(hc)^3} ∫_0^∞ ε^2 \d e\]
+photons are	bosons $\to$ Bose-Einstein-statistics \\
+thermal equilibrium $\to$ by interaction with matter \\
+chemical potenlia $ψ = 0$, for massless particles
+
+\begin{align*}
+\ln Ξ(T, V, μ) &= -\frac{4 π V}{(hc)^3} ∫_0^∞ ε^2 \d ε \ln(1 - \exp(βε)) \\
+\intertext{by partial integration:}
+&= \frac{4 π V}{(hc)^3} \frac{β}{3} ∫_0^∞ \d ε \frac{ε^3}{\exp(β ε) - 1}
+\end{align*}
+integration by parts, boundaries $= 0$ for $ε \to 0$ for $ε \to ∞$
+at high $ε$:
+\[∫_0^∞ \d ε ε^3 \exp(-βε) \sim T^4\]
+around bosons, one always encounters this type of integrals
+\begin{align*}
+∫_0^∞ \d x \frac{x^{n - 1}}{\exp(x) - 1} &= ξ(n) Γ(n) = ξ(n) (n - 1)! \\
+∫_0^∞ \d x \frac{x^{n - 1}}{\exp(x) - 1} &= ∫_0^∞ \d x x^{n - 1} \frac{\exp(-x)}{1 - \exp(-x)} \\
+\intertext{$\exp(-x) / (1 - \exp(-x))$: geometric series with $q = \exp(-x) \leq 1, 1 / (1 - q) = \sum_m q^m$}
+∫_0^∞ x^{n - 1} \sum_{m} \exp(-mx) &= \sum_{m} ∫_0^∞ \d x x^{n - 1} \exp(-mx) \\
+\intertext{substitution: $y = mx, \d y = m \d x$}
+&= \sum_{m} \frac{1}{m^n} ∫ \d y y^{n - 1} \exp(-y) \\
+\ln Ξ(T, V, μ) &= \frac{4πV}{(hc)^3} \frac{β}{3} ∫_0^∞ \d ε \frac{ε^3}{\exp(β ε) - 1} = \frac{4πV}{3 (hc)^3} \frac{1}{β^3} ∫_0^∞ \d x x^3 \frac{1}{\exp(x) - 1}	\\
+&= \frac{4π V}{3 (hc)^3} \frac{1}{β^3} ξ(4) 3! = \frac{4π V}{3 (hc)^3} \frac{1}{β^3} \frac{π^4}{90} 3! \\
+\intertext{closed expression for the macrocanonical partition}
+J(T, V, μ = 0) &= - k_B T \ln Ξ = - \frac{8 π^5 V}{90 (hc)^3} (k_B T)^3
+\end{align*}
+build derivatives:
+\begin{align*}
+\text{entropy}\quad S(T, V, μ) &= - \pp{J}{T} = \frac{32 π^5 V}{90 (hc)^3} (k_B T)^3 k_B \\
+\text{radiation pressure}\quad p(T, V, μ) &= - \pp{J}{V} = \frac{8π^5}{90 (hc)^3} (k_B T)^4 \\
+\text{Euler-relation}\quad E &= TS - p V =	\frac{24 π^5 V}{90 (hc)^3} (k_B T)^4 \\
+\text{Gibbs enthalpy}\quad G &= E + pV - T S = 0 = μ N
+\end{align*}
+let's repeate this by intuition. Use accupation numbers
+\begin{align*}
+E &= \sum_{k} \frac{ε_k}{\exp(β ε_k) - 1} \\
+\to E &= \frac{4πV}{(hc)^3} ∫_0^∞ \d ε \frac{ε^3}{\exp(β ε) - 1} = \frac{24 π V}{(hc)^3} (k_B T)^4 ξ(4) \\
+N &= \sum_{k} \frac{1}{\exp(β ε_k) - 1}	\\
+\to N &= \frac{4πV}{(hc)^3} ∫_0^∞ \d ε \frac{ε^2}{\exp(β ε) - 1} = \frac{8πV}{(hc)^3} (k_B T)^3 ξ(3)
+\end{align*}
+$N$ is proportional to entropy $S$ $\to$ $S / N \sim$ entropy per particle $= \const$, energy scales $\sim T^4 \to E / N \sim T$ \\
+energy scales $\sim T^4$ $\to E / N \sim T$. adiabatic change in state: reversiable and no influx of heat $\to$ entropy $= \const$. $S \sim T^3$, in general $V T^{1/(ϰ - 1)} = \const$, compatible with each other
+if $ϰ = 4/3$
+
+Planck-spectrum:
+spectral energy density:
+\begin{align*}
+S(ω) &= S_0 \frac{ω^3}{\exp(\frac{\hbar ω}{k_B T}) - 1} \\
+\intertext{$\hbar ω \gg k_B T$ $\to$ Wien's radiation law}
+S(ω) &= S_0 ω^3 \exp(- \frac{\hbar ω}{k_B T}) \\
+\intertext{$\hbar ω \ll k_B T$ $\to$ Rayleigh-Tears radiation law}
+S(ω) &= S_0 \frac{ω^2 k_B T}{\hbar}
+\end{align*}
+displacement law
+\begin{align*}
+\dd{S}{ω} &= 0 = \frac{ω^2}{\exp(\frac{\hbar ω}{k_b T} - 1)}(3 - \frac{\hbar ω}{k_B T} - \frac{\exp(\frac{\hbar ω}{k_B T})}{\exp(\frac{\hbar ω}{k_B T}) - 1}) \\
+\intertext{solve numerically:}
+\hbar ω &\cong \num{2.821} k_B T  \\
+\intertext{from Wien's law}
+\hbar ω &= 3 k_B T \\
+\end{align*}
+
+thermal wave length (for relativistic particles!)
+\begin{align*}
+ε &= c p = c \hbar k = ch / λ = k_B T \\
+\to λ &= \frac{ch}{k_B T} \\
+\text{or}\quad \frac{\hbar ω}{k_B T} &= 0
+\end{align*}
+joins relativity ($c$), quantum mechanics ($h$) and thermodynamics ($k_B$) \\
+induced emission:
+two energy levels $ε_1, ε_2$ with occupation numbesr $n_1, n_2$, $ε_2 > ε_1$
+\begin{align*}
+\intertext{spontaneaus and induced}
+\dot n_1 &= A_{21} n_2 + B_{21} n_2 u \\
+\intertext{absorption}
+\dot n_2 &= B_{12} n_1 u
+\end{align*}
+in equilibrium: $\dot n_1 = \dot n_2 = 0$ (detailed balance) $\to$
+\begin{align*}
+\string(A_{21} + B_{21} u\string) n_2 = B_{12} u n_1 \\
+\frac{n_2}{n_1} &= \exp(- \frac{\hbar ω}{k_B T}) - B_{21} u = 0 \\
+\intertext{with $\hbar ω = Δt = ε_2 - ε_1$}
+u &= \frac{A_{21}}{B_{12} \exp(\frac{\hbar ω}{k_B T}) - B_{21}}
+\end{align*}
+
+thermal wave length: transition classical $\to$ quantum mechanics
+\[E = cp = \frac{ch}{λ} = \hbar ω = k_B T \to λ_{th} = \frac{ch}{k_B T}\]
+compare $λ_{th}$ with typical particle separation $d$
+- $λ_{th} \gg d \to$ quantum mechanics
+- $λ_{th} \ll d$ classical
+
+\[\frac{N_{Δε}}{N} = \frac{∫_{Δε} \frac{ε^2}{\exp(\frac{ε}{k_B T}) - 1}}{∫_0^∞ \frac{ε^2}{\exp(\frac{ε}{k_B T}) - 1}}\]
+doesn't depend on $T$ \\
+fluctuation in the Bose-Einstein (BE), Fermi-Dirac (FD)  and Maxwell-Boltzmann (MB) ensembles
+
+\begin{align*}
+J_{MB}(T, V, μ) &= - k_B T \sum_{k} \exp(-β(ε_k - μ)) \\
+J_{BE}(T, V, μ) &= + k_B T \sum_{k} \ln(1 - \exp(-β(ε_k - μ))) \\
+J_{FD}(T, V, μ) &= - k_B T \sum_{k} \ln(1 + \exp(-β(ε_k - μ))) \\
+\end{align*}
+summarise
+\begin{align*}
+J(T, V, μ) &= \frac{1}{a} \sum_{k} \ln(1 - a\exp(-βε_k - μ)) \quad\text{with}\quad a = \begin{cases} -1 & FD \\ 0 & MB \\ 1 BE \end{cases}
+\end{align*}
+Maxwell-Boltzmann statistics in the limit $a \to 0$
+\begin{align*}
+\lim_{a \to 0} \frac{1}{a} \ln(1 + a Q) &= \lim_{a \to} \frac{1}{a}(a Q - \frac{(aQ)^2}{2} \pm \dots) \to Q \\
+\lim_{a \to 0} \frac{1}{a} \ln(1 + a Q) &= lim_{a \to 0} \frac{1}{a} \ln(1 + a Q) - \frac{1}{a} \ln(1 + 0 Q) = \lim_{a \to 0} \frac{\ln(1 + a Q) - \_n(1 + 0 Q)}{a} = \left.\dd{}{a} \ln(1 + a Q) \right|_{a = 0} = \left.\frac{Q}{1 + a Q}\right|_{a = 0} = Q \\
+\end{align*}
+(or just use l'Hospital)
+
+particle number:
+\begin{align*}
+N = \pp{}{μ} k_B T \ln Ξ(T, V, μ) = - \pp{}{μ} J(T, V, μ) \\
+\braket{N} &= \tr(ρN) = \frac{1}{Ξ} \tr \exp(-β(H - μ N)) N	= \frac{1}{Ξ} \sum_{\{n_k\}} \exp(-β \sum_{k}n_k(ε_k - μ)) \braket{n_1, \dots | N | n_1 \dots} \\
+&= \frac{1}{Ξ} \frac{1}{β} \pp{}{μ} \sum_{k} \exp(-β \sum_{n_k} n_k(ε_k - μ)) = \frac{1}{Ξ} (k_B T) \pp{}{μ} Ξ = k_B T \pp{}{μ} \ln Ξ = \sum_{k} \braket{n_k} = N
+\end{align*}
+apply to Bose-Einstein, Fermi-Dirac, Maxwell-Boltzmann
+\[\braket{n_k} = \frac{1}{\exp(β(ε_k - μ)) - a}\]
+
+isolate a singel occupation number:	differentiate by $ε_k$!
+
+\begin{align*}
+\braket{n_k} &= \frac{1}{Ξ} \sum_{\{n_k\}} \exp(-β \sum_{k} n_k(ε_k - μ)) n_k \\
+			 &= \dots = \frac{1}{Ξ} (-\frac{1}{β}) \pp{}{ε_k} Ξ = - \frac{1}{β} \pp{}{ε_k} \ln Ξ \\
+σ_k^2 &= \braket{n_k^2} - \braket{n_k}^2 = \frac{1}{Ξ}(-\frac{1}{β} \pp{}{ε_k})^2 Ξ - (\frac{1}{Ξ}(-\frac{1}{β}) Ξ)^2 \\
+\intertext{try out:}
+\frac{\partial^2}{\partial ε_k^2} \ln Ξ &= \pp{}{ε_k}(\frac{1}{Ξ} \pp{}{ε_k} Ξ) = \frac{1}{Ξ} \frac{\partial^2}{\partial ε_k^2} Ξ - \frac{1}{Ξ^2}(\pp{Ξ}{ε_k})^2 = \frac{1}{Ξ} \frac{\partial^2}{\partial ε_k^2} Ξ - (\frac{1}{Ξ} \pp{Ξ}{ε_k})^2 \\
+σ_k^2 &= (-\frac{1}{β} \pp{}{ε_k})^2 \ln Ξ = - \frac{1}{β} \pp{}{ε_k}(- \frac{1}{β} \pp{}{ε_k} \ln Ξ) = - \frac{1}{β} \pp{}{ε_k} \braket{n_k} \\
+\to σ_k^2 &= \frac{\exp(β(ε_k - μ))}{\exp(β(ε_k - μ) - a)^2} = \exp(β(ε_k - μ)) \braket{n_k}^2 \\
+\braket{n_k} &= \frac{1}{\exp(β(ε_k - μ)) - a} \to \exp(β(ε_k - μ)) = \frac{1}{\braket{n_k}} + a \\
+\to σ_k^2 &= \braket{n_k}^2 (\frac{1}{\braket{n_k}} + a) = \begin{cases} \braket{n_k} & \text{ for } MB(a = 0) \\ \braket{n_k} + a \braket{n_k}^2 & BE \text{ and } FD \end{cases}
+\end{align*}
+
+third law of thermodynamics: $S \to 0$ as $T \to 0$
+phonots: $S= - \pp{J}{T}  \sim T^3$
+
+look at classical in the canonical ensemble
+\begin{align*}
+Z(T, V, N) &= \frac{V^N}{N!} (\frac{2π m k_B T}{h^2})^{3N / 2}\\
+E &= \frac{p^2}{2m} = \frac{1}{2m} (\frac{h}{λ})^2 = k_B T \\
+F(T, V, N) &= - k_B T \ln Z(T, V, N) \to S(T, V, N) = - \pp{F}{T} = N k_B(\frac{5}{2} + \ln(\frac{V}{N} (\frac{π}{λ^2})^{3/2})) \\
+S &= - k_B \braket{\ln ρ} = - k_B \tr(ρ \ln ρ) \\
+&= \dots = - k_B \frac{1}{\sum_{N} \exp(-β En)} \sum_{n} \exp(-β En) (\ln \exp(-β E n) - \ln \sum_{m} \exp(-β Em)) \\
+&= - k_B \frac{1}{\sum_{n} \exp(-β E n)} \sum_{n}(\exp(-β E n)(-β E n - \ln \sum_{m} \exp(-β E m)))
+\end{align*}
+
+statistical physics: ideal (non-interacting) fermions
+fermions are half-integer spin particels $\to$ Fermi-Dirac-statistics
+
+\begin{align*}
+z &= \exp(\frac{μ}{k_B T}) = \exp(β μ)
+q(T, V, μ) &= \ln Ξ(T, V, μ) = \sum_{k} \ln [1 + z \exp(-β ε_k)]
+\end{align*}
+fugacity $z$ (or chemical potential μ) is in general a function of particle number $\to$ adding a new particle to the system has to be in accordance to Pauli's exclusion principle
+\begin{align*}
+N(T, V, μ) &= \sum_{k} \braket{n_k} = \sum_{k} \frac{1}{z^{-1} \exp(β ε_k) + 1}
+\end{align*}
+continuum limit:
+\[\sum_{k} \to V ∫ \frac{\d^3 p}{h^3} = ∫ g(ε) \d ε\]
+$g(ε)$: density of states. Density of statec for non-relativistic fermions:
+\begin{align*}
+∫ \d^3 x ∫ \d^3 p &= V 4 π ∫ p^2 \d p
+\end{align*}
+dispersion:
+\begin{align*}
+ε &= p^2 / 2m \\
+\dd{ε}{p} &= p / m
+\end{align*}
+with this one gets:
+\begin{align*}
+∫ \d^3 x ∫ \d^3 p &= V 4π ∫ 2m ε \frac{m}{p} \d ε = V 2π (2m)^{3/2} ∫ \sqrt{ε} \d ε \\
+⇒ g(ε) &= \frac{2πV}{h^3} (2m)^{3/2} \sqrt{ε} \\
+q(T, V, μ) &= \frac{2π V}{h^3} (2m)^{3/2} ∫_0^∞ \d ε \sqrt{ε} \ln(1 + 2 \exp(-βε)) \\
+&= \frac{2π V}{h^3} (2m)^{3/2} \frac{2}{3} β ∫_0^∞ \d ε \frac{ε^{3/2}}{z^{-1} \exp(βε) + 1}
+\end{align*}
+generic type of integral in	fermionic systems: $x = β ε \to$
+\[f_n(z) = \frac{1}{Γ(n)} ∫_0^∞ \d x \frac{x^{n - 1}}{z^{-1} \exp(x) + 1}\]
+definition of thermal wavelength:
+\begin{align*}
+1/λ &= \sqrt{\frac{2π m k_B T}{h^2}} \\
+\intertext{from}
+k_B T &= \frac{p^2}{2m}; p = h / λ
+\end{align*}
+\begin{align*}
+\to q(T, V, μ) &= \frac{V}{λ^3} f_{5/2}(2) \\
+N(T, V, μ) &= \frac{V}{λ^3} f_{3/2}(2) \\
+\frac{1}{z^{-1} \exp(x) + 1} &= z \exp(-x) \frac{1}{1 + z \exp(-x)} = z \exp(-x) \sum_{k = 0}^{∞}(-z \exp(-x))^k \\
+&= \sum_{k = 1}^{∞} (-1)^{k - 1} z^k \exp(-k x) \\
+\intertext{substitution $y = k x, \d y = k \d x$}
+f_n(z) &= \frac{1}{Γ(n)} \sum_{k = 1}^{∞} (-1)^{k - 1} \frac{z^k}{k^n} ∫_0^∞ \d y y^{n - 1} \exp(-y) = \sum_{k = 1} (-1)^{k - 1} \frac{z^k}{k^n} \\
+f_0(z) &= \sum_{k = 1}^{∞} (-1)^{k - 1} z^k = -1 + 1 - \sum_{k = 1}^{∞} (-1)^k z^k = 1 - \sum_{k = 0}^{∞} (-z)^k = 1 - \frac{1}{1 + z} \\
+	   &= \frac{1 + z - 1}{1 + z} = \frac{z}{1 + z} \sum z \quad\text{for small $z, z \ll 1$}
+\end{align*}
+actually frue for all values of $n$, $f_n(z) \sim z$ for $z \ll 1$. It can be shown that
+\[f_n(z) \sim \frac{(\ln z)^n}{n!}\]
+for $z \gg 1$ (super technical!)
+
+\begin{align*}
+E &= - \pp{}{β} \ln Ξ(T, V, μ) = k_B T^2 \pp{}{T} \ln Ξ(T, V, μ) = \frac{3}{2} k_B T \frac{V}{λ^3} f_{5/2}(z) \\
+\to E &= \frac{3}{2} N k_B T \frac{f_{5/2}(z)}{f_{3/2}(z)}
+\end{align*}
+ratio $\to z / z = 1$ for $z \ll 1$. energy per particle $\sim$ recovers classical result. Pressure:
+\begin{align*}
+p &= k_B T \pp{}{V} \ln Ξ(T, V, μ) &= \frac{1}{λ^3} k_B T f_{5/2}(z) \\
+p &= \frac{2}{3} \frac{E}{V}
+\end{align*}
+$p = 2/3 E/V$ is typical for non-relativistic systems, for relativistic sytems: $p = 1/3 E/V$. \\
+degenerate Fermi-gas: $T \to 0$
+\begin{align*}
+E &= ∫_0^μ \d ε \frac{2πV}{h^3} (2m)^{3/2} ε^{3/2} = V (\frac{2 π m}{h^2})^{3/2} \frac{4}{5} \frac{μ^{5/2}}{\sqrt{π}} \\
+N &= ∫_0^∞ \d ε	\frac{2πV}{h^3} (2m)^{3/2} ε^{1/2} = V (\frac{2 π m}{h^2})^{3/2} \frac{4}{3} \frac{μ^{3/2}}{\sqrt{π}} \\
+\to \frac{E}{N} &= \frac{3}{5} μ \sim \text{Fermi-energy}
+\end{align*}
+
+ideal (non-interacting) classical (non-relativistic) Bose gas
+
+\begin{align*}
+q(T, V, μ(N)) &= \ln Ξ(T, V, μ) = - \sum_{k} \ln(1 - z \exp(-β ε_k)) \\
+N(T, V, μ) &= \sum_{k} \braket{n_k} = \sum_{k} \frac{1}{z^{-1} \exp(β ε_k) - 1}
+\end{align*}
+range of values of $\braket{n_k}: 0 \leq \braket{n_k} \leq N$
+\[z^{-1} \exp{β ε_k} = \exp(β (ε_k - μ)) > 1\]
+$\to$ implies $ε_k > μ$ for all \(k\)-states. lowest possible energy $ε = 0 \to μ \leq 0, 0 \leq z \leq 1$ \\
+$\to$ adding more bosons is attractive to the system. \\
+continuum limit:
+\begin{align*}
+\intertext{with $ε = p^2 / (2m)$}
+\sum_{k} \to \frac{∫ \d^3 x ∫ \d^p p}{h^3} &= \frac{2πV}{h^3} (2m)^{3/2} ∫ \d ε \sqrt{ε} \\
+\intertext{density of states:}
+g(ε) &= \frac{2πV}{h^3} (2m)^{3/2} \sqrt{ε}
+\end{align*}
+what about the ground state? $ε = 0$ implies $g(ε) = 0$, ground state not taken care of!
+
+(problem only relevant for bosons, there can be only 1 fermion (of $\num{e23}$) in the ground state $\to$ mistake by $1$)
+
+\begin{align*}
+\left.\frac{1}{z^{-1} \exp(βε) - 1}\right|_{ε = 0} &= \frac{1}{z^{-1} - 1} = \frac{1}{\frac{1}{z} - 1} = \frac{z}{1 - z} \\
+\left.\ln(1 - z \exp(-βε))\right|_{ε = 0} = \ln(1 - z)
+\end{align*}
+'enhance' the expressions for $\ln Ξ$ and $N$ by these terms for accomandating the ground state
+
+\begin{align*}
+q(T, V, μ) &= -	\frac{2πV}{h^3} (2m)^{3/2} ∫_0^∞ \d ε \sqrt{ε} \ln(1 - z \exp(-βε)) - \ln(1 - z) \\
+	 	   &= \frac{2πV}{h^3} (2m)^{3/2} \frac{2}{3} β ∫_0^∞ \d ε \frac{ε^{3/2}}{z^{-1} \exp(β ε) - 1} - \ln(1 - z) \quad\text{by integration by parts} \\
+N(T, V, μ) &= \frac{2πV}{h^3} (2m)^{3/2} ∫_0^∞ \d ε \frac{ε^{1/2}}{z^{-1} \exp(βε) - 1} + \frac{z}{1 - z} \quad\text{for the $ε = 0$ state}
+\end{align*}
+similarly to the fermions, a function appears
+\begin{align*}
+g_n(z) &= \frac{1}{Γ(n)} ∫_0^∞ \d x \frac{x^{n - 1}}{z^{-1} \exp(x) - 1}
+\end{align*}
+thermal wave length:
+\begin{align*}
+\frac{1}{λ} &= \sqrt{\frac{2π m k_B T}{h^2}} \\
+q(T, V, μ) &= \frac{V}{λ^3} g_{\frac{5}{2}}(z) - \ln(1 - z) \\
+N(T, V, μ) &= \frac{V}{λ^3} g_{\frac{3}{2}}(z) + \frac{z}{1 - z} \\
+\frac{1}{z^{-1} \exp(x) - 1} &= z \exp(-x) \frac{1}{1 - z \exp(-x)} \\
+\intertext{using geometric series}
+&= z \exp(-x) \sum_{k = 0}^{∞} (z \exp(-x))^k \\
+&= \sum_{k = 1}^{∞} (z \exp(-x))^k = \sum_{k = 1}^{∞} z^k \exp(-kx) \\
+g_n(z) &= \frac{1}{Γ(n)} \sum_{k = 1}^{∞} z^k ∫ \d x x^{n - 1} \exp(-k x) = \frac{1}{Γ(n)} \sum_{k = 1}^{∞} \frac{z^k}{k^n} ∫ \d y y^{n - 1} \exp(-y) \\
+\to g_n(z) &= \sum_{k = 1}^{∞} \frac{z^k}{k^n}
+\end{align*}
+for the case $z = 1$ ($μ = 0$)
+\begin{align*}
+g_n(1) &= \sum_{k = 1}^{∞} \frac{1}{k^n} = ξ(n) \quad\text{Riemann-\(ξ\)}
+\end{align*}
+
+\begin{align*}
+N = \underbrace{\frac{V}{λ^3} g_{\frac{3}{2}}(z)}_{N_ε} + \underbrace{\frac{z}{1 - z}}_{N_0}
+\end{align*}
+$N_ε$: number of particles in excited states, $N_0$: number of particles in the ground state
+
+
+range of values of $g_{\frac{3}{2}}: 0 \leq g_{\frac{3}{2}} \leq ξ(\frac{3}{2}) \simeq \num{2.612}$ numerically
+\begin{align*}
+N_{ε}^{\text{max}} &= \frac{V}{λ^3} ξ(\frac{3}{2}) = V (\frac{2πm k_B T}{h^2})^{3/2} ξ(\frac{3}{2}) \sim V T^{3/2}
+\end{align*}
+
+Bose-Einstein-condensation: $N - N_{ε}^{\text{max}}$ particles need to be in the gronud state $\sim$ can be basically all particles if $T$ and $V$ small
+
+\begin{align*}
+N_0 &= \frac{z}{1 - z} = \sum_{k = 1}^{∞} z^k
+\end{align*}
+$\to$ small for small $z$, $z = N / (N + 1) \to 1$, accomodates all	particles, thermodynamic limit: $N \to ∞, V \to ∞, N / V = \const$
+
+\begin{align*}
+\frac{N_ε}{N} + \frac{N_0}{N} &= 1 \\
+N_ε &= \frac{V}{λ^3} g_{\frac{3}{2}}(z) \\
+N_0 &= \frac{z}{1 - z}
+\end{align*}
+
+$z = 1$: Bose-Einstein condensation
+\[\frac{N_ε^{\text{max}}}{N} + \frac{N_0}{N} = 1\]
+$z < 1$: dilute gas
+\[\frac{N_ε^{\text{max}}}{N} = 1; \quad \frac{N_0}{N} = f0\]
+- dilute gases:
+  \[N < N_ε^{\text{max}} = \frac{V}{λ^3}  ξ(\frac{3}{2}) \to \frac{N λ^3}{V} < ξ(\frac{3}{2})\]
+  particle separation: $N \frac{4π}{3} r^3 = V, N / V \sim 1 r^3$ \\
+  $λ < ξ(\frac{3}{2})^{1/3} r$: particel separation larger then thermal wave length
+- bose-einstein condensation $N > N_ε^{\text{max}} = V/λ^3  ξ(\frac{3}{2})$ \\
+  $λ > ξ(\frac{3}{2})^{1/3} r$ particle separation smaller than thermal wave length $\to$ quantummechanical effects
+
+
+boundary for bose-einstein condensation:
+\begin{align*}
+λ &= ξ(\frac{3}{2}) \frac{1}{3} r \\
+\frac{N λ^3}{V} &= ξ(\frac{3}{2})
+\end{align*}
+
+\part{phase transitions}
+interacting	systems with many degress of freedom show 'collective' behaviour if	the state variables are dependend
+- condensation of real (van der waals) gasses
+- ferromagnetism at low temperatures
+- quarks + gluons condense into nucleons (QCD phase transition)
+
+real gases: van der waals equation hat 2 additional effects: interaction and finite volume
+\begin{align*}
+\intertext{ideal gas:}
+H(p_i, q_i) &= \sum_{i} \frac{\v p_i^2}{2m} \\
+\intertext{canonical partition:}
+Z(T, V, N) &= \frac{1}{N!} (\frac{1}{h^3} ∫ \d^3 p \exp(-\frac{β \v p^2}{2m}))^N (∫ \d^3 q)^N \\
+&= \frac{1}{N!} \frac{V}{λ^3}^N \\
+\intertext{with thermal wave length}
+λ &= \frac{h}{\sqrt{2π m k_B T}} \\
+\intertext{free energy}
+F(T, V, N) &= - k_B T \ln Z(T, V, N) \\
+p &= - \pp{F}{V} &= N \frac{m k_B T}{V} = ρ k_B T \quad\text{with stirling approximation}
+\end{align*}
+$\to$ ideal gas equation of state \\
+interactions through a potential changes the $∫ \d^3 q$ integral and the Hamilton-function does not separate
+\[H(\{p_i\}, \{q_i\}) = \sum_{i}^{N} \frac{\v p_i^2}{2m} + \sum_{i < j}^{N} V(\abs{\v q_i - \v q_j})\]
+typical shape of the interaciton potential: lennard-jones
+\[V(r) = 4 ε ((\frac{r_0}{r})^12 - (\frac{r_0}{r})^6)\]
+repulsive at small scales ("hard core") and attractive on large scales, given by van-der-waals forces and polarisability. Minimum at
+\begin{align*}
+\dd{V}{r} &= 4 ε (-12 (\frac{r_0}{r})^11 + \frac{r_0}{r^2} + 6 (\frac{r_0}{r})^5 \frac{r_0}{r^2}) \overset{!}{=} 0 \\
+\to (\frac{r_0}{r})^6 &= \frac{1}{2} \\
+r \simeq \num{1.12} r_0
+\end{align*}
+with $q_{ij} = \abs{\v q_i - \v q_j}$
+\begin{align*}
+Z(T, V, N) &= \frac{1}{N!} (\frac{1}{h^3} ∫ \d^3 p \exp(-\frac{β p^2}{2m}))^N ∫ \prod_i \d^3 q_i \exp(-β \sum_{i < j} V(q_{ij})) \\
+&= Z_{id}(T, V, N) \underbrace{\frac{1}{V^N} ∫ \prod_i \d^3 q_i \exp(-β \sum_{i < j} V(q_{ij}))}_{\text{$\sim Z_{int}(T, V, N)$, not factorisable}}
+\end{align*}
+computing the equation of state through $F = - k_B \ln (Z_{id} Z_{int})$ and
+\[p = -\pp{F}{V} = p_{id} + p_{int} = ρ k_B T (1 + B ρ + \dots)\]
+lowest order correction scales like the	number of particle pairs and therefore with $ρ$. \\
+calculation of \(B\)-correction: "virial"-expansion \\
+(make the problem simpler by making it more complicated) $\to$ grand canonical partition, $B$ should somehow derive from $V$
+\begin{align*}
+Ξ(T, V, μ) &= \sum_{N} Z(T, V, N) Z^N \\
+Z &= \exp(β μ) \quad\text{fugacity}
+\end{align*}
+limit of high $T \to β \ll 1, z \ll 1$ $\to$ series expansion in $N$, $z$ small
+\begin{align*}
+Ξ(T, V, μ) &= Z_0 + z Z_1 + z^2 Z_2 + \dots = \sum_{k} z^k Z_k(T, V, N) \\
+Z_0 &= 1 \\
+Z_1 &= \frac{V}{λ^3} \quad\text{ideal gas} \\
+Z_2 &= \frac{1}{2! λ^6} ∫ \d^3 q_1 ∫ \d^3 q_2 \exp(-β V q_{12}) \\
+\intertext{by introducing $\v q_2 = \v q_1 + \v r$ relative coordinates}
+&= \frac{4π}{2} \frac{V}{λ^6} ∫ r^2 \d r \exp(-β V(r))
+\end{align*}
+grand canonical potential $J = - k_B T \ln Ξ = - pV$
+\begin{align*}
+\to \frac{pV}{k_B T} &= \ln Ξ \simeq \ln (Z_0 + (z Z_1 + z^2 Z_2) + \dots)
+\end{align*}
+with $(z Z_1 + z^2 Z_2) = x, \ln(1 + x \approx x - x^2 / 2 + \dots)$
+starts getting in the classical structure!
+\begin{align*}
+\intertext{at order $z^2$:}
+\to \frac{pV}{k_B T} &\approx z Z_1 + z^2 Z_2 - \frac{z^2}{2} Z_1^2 + \dots \\
+\frac{pV}{k_B T} &\approx V(ρ + B ρ^2 + \dots)
+\end{align*}
+comparison of the coefficient (bit technical)
+\begin{align*}
+z &= \exp(βμ) \to μ = \frac{1}{β} \ln z, \pp{}{μ} β z \pp{}{z} \\
+N &= \frac{1}{β} \pp{}{μ} \ln Ξ = z \pp{}{z} \ln Ξ = \pp{\ln Ξ}{\ln z} \approx z Z_1 + z^2(2 z_2 + z_1)
+\end{align*}
+at lowest order: $z \simeq N / Z_1 = ρ λ^3$ $\to$ ideal gas! \\
+next order: $\sim$ implicit
+\begin{align*}
+\frac{N}{Z_1} &= z + (\frac{2 Z_2 - Z_1^2}{Z_1}) z^2
+\end{align*}
+quadratic equation yields
+\begin{align*}
+z &= \frac{N}{Z_1} (1 - \frac{N}{Z_1} \frac{2 Z_2 - Z_1^2}{z_1})
+\end{align*}
+with the approximation $\sqrt{1 + x} \sim 1 + x/2 - x^2 / 8$
+\begin{align*}
+\frac{pV}{k_B T} &= \ln Ξ = Z_1 \frac{N}{Z_1} (1 - \frac{N}{Z_1}(\frac{2 Z_2 - Z_1^2}{Z_1})) + \frac{N^1}{Z_1}(z_2 - \frac{Z_1^2}{2}) \\
+&= \dots = N(1 - (Z_2 - \frac{Z_1^2}{2}) \frac{N}{Z_1^2})
+\end{align*}
+$N \sim V$ both extensive $\to$ with identification of $Z_1, Z_2$ implies $ρ V = N$
+\begin{align*}
+B(T) &= \frac{-V}{Z_1^2} \frac{Z_2 - Z_1^2}{2} = - \frac{1}{2} ∫ \d^3 (\exp(-β V(r)) - 1) \\
+&= - 2π ∫ r^2 \d r (\exp(-β V(r)) - 1)
+\end{align*}
+approximation to the potential:
+\begin{align*}
+B(T) &= - 2π ∫_0^d r^2 \d r(-1) - ∫_d^{d + δ} r^2 \d r (\exp(β ε) - 1) + 0 \\
+&\approx \frac{2π}{3} d^3 - 2π d^2 ξ β ε \\
+\to \frac{pV}{N} &= k_B T (1 + B(T) \frac{N}{V})
+\end{align*}
+
+
+ising-model: interacting spin states, possibly with external field at finite temperature with classical (Boson) statistics
+\begin{align*}
+H &= - J \sum_{(ij)} s_i s_j - B μ \sum_{i} s_i
+\end{align*}
+$\displaystyle{\sum_{(ij)}}$: near neighbor summation, finite range of interaction, typically $\sum_{(ij)} = \sum_i \sum_{i - n \leq j \leq i + n}$ with fixed $n$, for example $n = 1$
+\[β H = - K \sum_{(ij)} s_i s_j - Q \sum_{i} s_i\]
+non-dimensional: $K = β J, Q = β μ B$. Idea: spin states on	a grid, $++$ and $--$ are energeticaly favoured, $+-$ and $-+$ are disfavoured. \\
+construction of a partition sum running over all lattice sites $\to$
+\[Z(K, Q, N) = \sum_{s_1 = \pm 1} \sum_{s_2 = \pm 1} \dots \sum_{s_N = \pm 1} \exp(-β H)\]
+(possibly using periodic boundary conditions to avoid edge effects)
+if $J > 0$: parallel alignment is favoured "ferromagnetic"
+\begin{align*}
+M(K, Q) &= μ \braket{\sum_{i}^{N} s_i} \quad\text{"magnetisation", $B > 0 \to M > 0$}
+\end{align*}
+the system shows a phase transition in $2d$ (but not in $1d$) $\sim$ spontaneous magnetisation below a critical temperature "curie-temperature"
+\begin{align*}
+Z &= \sum_{s_1 = \pm 1} \dots \sum_{s_N = \pm 1} \exp(K(s_1 s_2 + s_2 s_3 + \dots + s_{N - 1} s_N)) \\
+&= \sum_{s_1 = \pm 1} \dots \sum_{s_{N - 1} = \pm 1} \exp(k(s_1 s_2 + \dots s_{N - 2} s_{N - 1})) \underbrace{\sum_{s_N = \pm 1} \exp(K(s_{N - 1} s_N))}_{= \exp(K) + \exp(-K) = 2 \cosh(K)} \\
+&= (2 \cosh(K))^{N - 1} Z_1
+\end{align*}
+$\to$ $(2 \cosh K)^N$ by induction. free energy
+\begin{align*}
+F &= - k_B T N \ln(2 \cosh \frac{J}{k_B T})
+\end{align*}
+very similar to paramagnetism, but would the spins be correlated over large distance? $\to$ no \\
+Ising-model	inn 2d: transfer matrix method and boudary condition $s_{N + 1} = s_1$
+\begin{align*}
+\text{Hamilton function:} β H &= - K \sum_{(ij)} s_i s_j - Q \sum_{i} s_i \\
+\text{transfer function:} T(i, i + 1) = \exp(K s_i s_{i + 1} + \frac{1}{2} Q(s_i + s_{i + 1})) \\
+\to \exp(-βH) &= T(1, 2) T(2, 3) \dots T(N, 1)
+\end{align*}
+there are only 4 possible values
+\begin{align*}
+T = \begin{pmatrix}\exp(K + Q) & \exp(- K) \\ \exp(-K) & \exp(K - Q)\end{pmatrix}
+\end{align*}
+quantum-mechanical like notation $\ket{s_i = \pm 1} = \cvec{1; 0}; \ket{s_i = - 1} = \cvec{0; 1}$
+\begin{align*}
+\to T(i, i + 1) &= \braket{s_i | T | s_{i + 1}} \quad\text{transfer matrix} \\
+Z &= \sum_{\{s_i\}} \exp(-β H) = \sum_{\{s_i\}} \braket{s_1 | T | s_2} \braket{s_2 | T | s_3} \dots \braket{s_N | T | s_1} \\
+&= \sum_{s_1 = \pm 1} \braket{s_1 | T^N | s_1} &= (T^N)_{11} + (T^N)_{22} = \tr(T^N) \\
+&= λ_1^N + λ_2^N
+\end{align*}
+$\to$ one needs to determine the eigenvalues
+\begin{align*}
+\det \begin{pmatrix}\exp(K + Q) - λ & \exp(-K) \\ \exp(-K) & \exp(K - Q) - λ\end{pmatrix} \overset{!}{=} 0 \\
+\to (\exp(K + Q) - λ)(\exp(K - Q) - λ) - \exp(-2K) &= λ^2 - 2 \exp(K) \cosh Q λ + \exp(2K) - \exp(-2K) = 0 \\
+λ_{\pm} &= \exp(K) (\cosh Q \pm \sqrt{\cosh^2 Q - 2 \exp(- 2 K) \sinh 2K}) \\
+Z &= λ_{+}^N + λ_{-}^N &= λ_{+}^N(1 - \underbrace{(\frac{λ_{-}}{λ_{+}})^N}_{\text{$\to 0$ for large $N$}}) = λ_{+}^N
+\end{align*}
+if $Q = 0$: $λ_{+} = \exp(K) + \exp(-K) = 2 \cosh K$ as before!	Magnetisation:
+\begin{align*}
+M(T, B) &= \frac{1}{Z} \sum_{\{s_i\}} (μ \sum_{i} s_i) \exp(-β H) \\
+&= μ \partial_Q \ln Z_N = \frac{μ N}{λ_{+}} \partial Q λ_{+} \\
+\to M(T, B) &= \frac{μ N \sinh Q}{\sqrt{\cosh^2 Q - 2 \exp(-2k) \sinh 2k}}
+\end{align*}
+for $T \neq 0, B = 0$: $M(T, B) = 0$, no spontaneous magnetisation \\
+strong fields $B$ $M(T, B) = μ N$ all spins aligned \\
+entropy for $B = 0$: $F(T, v , N) = - N k_B T \ln(2 \cosh K)$
+\begin{align*}
+\to S &= - \pp{F}{T} = N k_B (\ln (2 \cosh K) - K \tanh K)
+\end{align*}
+with the limits $s = N k_B \ln 2$ for high $T$ and $S = 0$ for low $T$ \\
+isothermal susceptibility
+\begin{align*}
+χ &= \frac{1}{N} \pp{M}{B} &= \frac{β μ}{N} \partial_Q M = \frac{β μ^2}{N} \partial_Q^2 \ln Z_N = β μ^2 \partial_Q^2 \ln λ_{+}
+\end{align*}
+for small $B, B \to 0$
+\begin{align*}
+χ &= \frac{β μ^2}{1 - \tanh K} \sim \frac{1}{T} \quad\text{for large $T$, "curie-law"}
+\end{align*}
+\begin{align*}
+χ &= \frac{1}{N} \pp{M}{B} = \frac{β μ}{N} \partial_Q (\frac{1}{Z} \sum_{\{s_i\}} (μ \sum_{i} s_i) \exp(K \sum_{(ij)} s_i s_j + Q \sum_{i} s_i)) \\
+&= \frac{β μ^2}{N} \frac{1}{Z} \sum_{\{s_i\}} (\sum_{i,j} s_i s_j) \exp(-β H) \\
+&= \frac{β μ^2}{N} (\sum_{ij} \braket{s_i s_j})
+\end{align*}
+thermal susceptibility $\sim$ spin correlation
+
+\part{stochastic differential equations}
+$\to$ mechanical systems under thermal fluctuations \\
+$\to$ evolutions of constributions
+
+degress of freedom $φ$ $\to$ distribution $p(φ) \d φ$ \\
+compute entropy $S(φ)$
+1. go from $φ = 0$ to $φ$ mechanical work $δW = \frac{1}{2} D φ^2$
+2. supply this potential energy as heat (adiabatically) $δQ = - S T$
+
+\begin{align*}
+\d E &= δW + δ Q \\
+\to S(φ) &= - \frac{1}{2} D φ^2 / T
+\end{align*}
+no change in $E$, $\d E = 0$
+\begin{align*}
+S(φ) &\sim k_B \ln p(φ) \\
+\to p(φ) \d φ = \frac{\exp(\frac{S(φ)}{k_B})}{∫ \d φ \exp(\frac{S(φ)}{k_B})} \d φ \sim \exp(- \frac{D}{2 k_B T φ^2})
+\end{align*}
+measurement: small mirror on a quartz string (1931, 1939)
+\begin{align*}
+D &= \SI{e-8}{\gram\centi\meter\squared\per\second} \\
+T &= \SI{287}{\kelvin} \\
+Δ t &= \SI{100}{} \\
+\braket{φ^2} &= \SI{4e-6}{\radian}
+\end{align*}
+$\to \%$ precision on $k_B$. \\
+Browinan motion: macroscopi object in a fluid
+- random motion due to collisions
+- frictional force
+
+equation of motion
+\[m \ddot{x} = - D \dot x\]
+$- D \dot x$: fricitonal force $\dot x(t) = \dot x(0) \exp(-t/τ)$ with $τ = m / D$ \\
+Langevin-equation $\to$ fluctuating random force
+\begin{align*}
+m \ddot x(t) &= - D \dot x(t) + σ η(t)
+\braket{η(t)} &= 0 \\
+\braket{η(t) η(t')} = 2 δ_D(t - t') \\
+\dot x(t) &= \exp(-\frac{t}{τ}) (\dot x(0) + ∫_0^t \d t \exp(\frac{t}{τ}) \frac{σ}{m} η(t)) \\
+\braket{\dot x(t)} &= \dot x(0) \exp(-\frac{t}{τ}) \\
+\braket{\dot x(t) \dot x(t')} &= \dot x(0)^2 \exp(- \frac{t + t'}{τ}) + (\frac{σ}{m})^2 \exp(-\frac{t + t'}{τ}) ∫_0^t \d t ∫_0^{t'} \d t' \exp(\frac{t + t'}{τ}) 2 δ_D(t - t') \\
+&= \underbrace{\exp(- \frac{t + t'}{τ}) (\dot x(0)^2 - \frac{σ}{D m})}_{\to 0 \text{ as } t, t' \gg τ} + \frac{σ^2}{D m} \exp(- \frac{t - t'}{τ}) \\
+\braket{\dot x(t)^2} = \frac{σ^2}{D m}
+\end{align*}
+with equipartition: $m/2 \braket{\dot x^2} = \frac{1}{2} k_B T$: \\
+fluctuation dissipation theorem: \\
+$σ^2 = D k_B T$ \\
+random walk behaviour \\
+$\ddot x \sim 1/τ^2$, exponentials become small, object slows down for $t \gg τ$ \\
+\begin{align*}
+D \dot x(t) &= σ η(t) \\
+\intertext{solve by}
+x(t) &= x_0 + ∫_0^t \d t \frac{σ}{D} η(t) \\
+\braket{x(t)} &= 0 \\
+\braket{x^2(t)} &= \frac{σ^2}{D^2} ∫_0^t \d t ∫_0^{t'} \d t' 2 δ_D(t - t') = 2 (\frac{σ}{D})^2 t \\
+\sqrt{\braket{x(t)^2}} &= σ_x \sim \sqrt{t}
+\end{align*}
+diffusion costant:
+\begin{align*}
+Q &= (\frac{σ}{D})^2 = \frac{k_B T}{D} \quad\text{Einstein relation}
+\end{align*}
+Stokes-type
+\[D = 6 π (r ρ) r \to Q = \frac{k_B T}{6 π(rρ) r} \quad\text{Stokes-Einstein relation}\]
+$(r ρ)$: vispocity
+
+evolution of a distribution of particles, if every particle follows the Langevin-equation of motion $\to$ Fokker-Planck equation
+\begin{align*}
+\ddot x &= - D \dot x + σ η(t)
+\dot x &= v \\
+\to \dot v &= - D v + σ η(t)
+\end{align*}
+$φ(v, w)$: probability for a velocity change from $v \to v + w$, in time $τ$ \\
+convolution relation (Green-function propagator)
+\[p(v, t + τ) = ∫_{-∞}^{+∞} \d w p(v - w, t) φ(v - w, w)\]
+$τ$ is chosen very small: small changes in velocity, Taylor-expand
+\[\to p(v, t + τ) = ∫ \d w(p(v, t) - \pp{p}{v}w + \frac{\partial^2 p}{\partial v^2} \frac{w^2}{2})(φ(v, w) - \pp{φ}{v} w + \frac{\partial^2 φ}{\partial v^2} \frac{w^2}{2})\]
+multiply this out, keep only terms up to order $w^2$
+\begin{align*}
+p(v, t + τ) &= ∫ \d w p(v, t) φ(v, w) - p w \pp{φ}{v} + p \frac{w^2}{2} \frac{\partial^2 φ}{\partial v^2} - \pp{p}{v} w φ + \pp{p}{v} \pp{φ}{v} w^2 + \frac{\partial^2 p}{\partial v^2} φ \frac{w^2}{2} \\
+&= p(v, t) (1 - \pp{}{v} \braket{w} + \frac{\partial^2}{\partial v^2} \braket{w^2}) - \pp{p}{v}(\braket{w} - \pp{}{v} \braket{w^2}) + \frac{\partial^2 p}{\partial v^2} \braket{w^2}
+\end{align*}
+from the langevin equation
+\begin{align*}
+\braket{w} &= - v D τ \\
+\dot v &\sim \frac{v(t + τ) - v(t)}{τ} = \frac{w(t)}{τ} = -D v \\
+\to \pp{}{v} \braket{w} &= - D τ
+\end{align*}
+variance
+\begin{align*}
+\braket{w}^2 &= 2 k_B T \frac{D}{m} τ \\
+\pp{}{v} \braket{w^2} &= 0 \\
+\frac{p(v, t + τ) - p(v, t)}{τ} &= D p + D v \pp{p}{v} + k_B T \frac{D}{m} \frac{\partial^2 p}{\partial v^2} \\
+\to \pp{}{t} p(v, t) &= D \pp{}{v}((p v) + \frac{k_B T}{m} \pp{p}{v}) \quad\text{Fokker-Planck-equation}
+\end{align*}
+stationary solutions
+\begin{align*}
+p &\sim \exp(- \frac{mv^2}{2 k_B T}) \quad \text{Maxwell-Boltzmann-distribution} \\
+\pp{}{t} p &= 0
+\end{align*}
+
+Fokker-Planck-equation
+\begin{align*}
+\pp{}{t} p &= D \pp{}{v}((pv) + \frac{k_B T}{m} \pp{p}{v})
+\end{align*}
+
+stationary distributions
+\begin{align*}
+\pp{}{t} p = 0 \to p \sim \exp(-\frac{m v^2}{2k_B T}) \text{Maxwell-Boltzmann-distribution}
+\end{align*}
+rewrite the Fokker-Planck equation as a diffusion equation. Change of variables: $v = ρ \exp(-D t) \leftrightharpoons ρ = v \exp(+ D t), p(v, t) \to p(ρ \exp(-D t), t) = Y(ρ, t)$
+
+\begin{align*}
+\pp{p}{v} &= \pp{ρ}{v} \pp{Y}{ρ} = \exp(D t) \pp{Y}{ρ} \\
+\frac{\partial^2 p}{\partial v^2} &= (\frac{ρ}{v})^2 \frac{\partial^2 Y}{\partial ρ^2} = \exp(2 D t) \frac{\partial^2 Y}{\partial ρ^2} \\
+\pp{p}{t} &= \pp{Y}{t} + \pp{ρ}{t} \pp{Y}{ρ} = \pp{Y}{t} + D ρ \pp{Y}{ρ} \\
+\pp{Y}{t} &= D Y + \frac{D}{m} k_B T \exp(2 D t) \frac{\partial^2 Y}{\partial ρ^2} \quad\text{$\pp{Y}{ρ}$ gets absorbed}
+\end{align*}
+ansatz for $Y$:
+\begin{align*}
+Y &= χ \exp(D t) \\
+\to \pp{Y}{t} &= \pp{χ}{t} \exp(D t) + D Y \\
+\pp{χ}{θ} &= \frac{D}{m} k_B T \frac{\partial^2 χ}{\partial ρ^2} \quad\text{diffusion equation, with $\dd{θ}{t} = \exp(-D t)$} \\
+\intertext{solved by}
+χ(ρ, θ) &= \sqrt{\frac{m}{4π D k_B T θ}} \exp(-\frac{m}{4D k_B T} \frac{(ρ - ρ_0)^2}{θ}) \\
+A
+\intertext{transform back to original variables}
+p(v, t) &= \sqrt{\frac{m}{2 π k_B T(1 - \exp(- 2 D t))}} \exp(- \frac{1}{2} \frac{m(v - v_0 \exp(-D t))^2}{k_B T (1 - \exp(- 2 D t))})
+\end{align*}
+asymptotic $\to ∞$ one recovers the maxwell-boltzmann-distribution!
+inclusion af an external force $F(x) = - \dd{}{x} ϕ(x)$ into the Fokker-Planck-equation $\to$ need to modify the transition probability $φ(x, v, y, w)$ for $(x, v)$ $\to$ $(x + y), v + w$
+\begin{align*}
+\intertext{again: Green-function / propagator}
+p(x, v, t + τ) &= ∫ \d y ∫ \d w p(x - y, v - w, t) φ(x - y, v - w, y, w) \\
+\intertext{analogous expansion of $p$ and $φ$}
+p(x - y, v - w, t) &= p(x, v, t) - \pp{p}{x} y + \frac{\partial^2 p}{\partial x^2} \frac{y}{2} - \pp{p}{v} w + \frac{\partial^2 p}{v^2} \frac{w^2}{2} + \dots \\
+φ(x - y, v - w, t) &= φ(x, v, t) - \pp{φ}{x} y + \frac{\partial^2 φ}{\partial x^2} \frac{y}{2} - \pp{φ}{v} w + \frac{\partial^2 p}{v^2} \frac{w^2}{2} + \dots \\
+\end{align*}
+compute all moments from the langevin-equation with external force
+\begin{align*}
+\ddot x(t) &= - D \dot x(t) + \frac{F}{m} + σ η(t) \\
+\dot v(t) &= - D v + \frac{F}{m} + σ η(t) \quad\text{with $v = \dot x$} \\
+w &= v(t + τ) - v(t) = \dot v(t) τ \\
+y &= x(t + τ) - x(t) = v(t) τ \\
+\braket{w} &= (-D V + \frac{F}{m}) τ \\
+\pp{}{v} \braket{w} &= - D τ \\
+\braket{w^2} &= 2 k_B T \frac{D}{m} τ \\
+\braket{y} &= v τ \\
+\pp{}{v} \braket{v} &= τ \\
+p(x, v, t + τ) - p(x, v, t) &= - \pp{p}{x} \braket{y} - \pp{p}{v} \braket{w} + \frac{\partial^2 p}{\partial v^2} \frac{\braket{w^2}}{2} - p \pp{}{v} \braket{w}
+\end{align*}
+limit of $τ \to 0$:	Fokker-Planck equation
+\begin{align*}
+\pp{p}{t} &= D \pp{}{v} (p v + \frac{k_B T}{m} \pp{p}{v}) - v \pp{p}{x} - \frac{F}{m} \pp{p}{v}
+\end{align*}
+for $p(x v, t)$:
+\begin{align*}
+\dd{p}{t} &= \pp{p}{t} + v \pp{p}{x} + \dot v \pp{p}{v} \\
+\dot v &= \frac{F}{m} \\
+\intertext{$\to$ substitute equation of motion}
+\dd{p}{t} &= D \pp{}{v} (p v + \frac{k_B T}{m} \pp{p}{v})
+\end{align*}
+stationary distribution $\pp{p}{t} = 0$
+\begin{align*}
+\to p \sim \exp(- \frac{}{k_B T} (\frac{m}{2} v^2 + ϕ(x)))
+\end{align*}
+spectral decomposition of the random force $σ η(t)$
+\begin{align*}
+η(t) &= \frac{1}{2π} ∫ \d ω c(ω) \exp(+ iω t) \\
+\intertext{with Fourier-decomposition:}
+c(ω) = ∫ \d t η(t) \exp(-iωt)
+\end{align*}
+$\to$ generalises $η(t)$ to correlation in time
+\begin{align*}
+\intertext{Wiener-Khinchin-theorem:}
+\braket{η(t)^2} &= ∫ \d t η(t)^2 = ∫ \frac{\d ω}{2π} \abs{c(ω)}^2 \\
+\braket{η(t) η(t + τ)} &= ∫ \d t η(t) η(t + τ) = \frac{1}{(2π)^2} ∫ \d t ∫ \d ω ∫ ω' c(ω) c^{\ast}(ω') \exp(i(ω - ω')t) \exp(-iω'τ) \\
+&= ∫ \d ω \abs{c(ω)}^2 \exp(-iωτ)
+\end{align*}
+$\abs{c(ω)}^2$ is called the spectrum of $η(t)$
+
+langevin equation: $\dot v + D v = σ η(t)$ \\
+solve differential equation in fourier space
+\begin{align*}
+v(t) &= ∫ \frac{\d ω}{2π} v(ω) \exp(iω t)  \\
+\to \pp{}{t} v(t) &= ∫ \frac{\d ω}{2π} i ω v(ω) \exp(i ω t) \\
+\to (iω + D) v(ω) &= σ C(ω) \\
+v(t) &= ∫ \frac{\d ω}{2π} \frac{σ C(ω)}{i ω + D} \exp(i ω t) \\
+\braket{v^2(t)} &= ∫ \d t v^2(t) = ∫ \frac{\d ω}{2π} \frac{σ^2 \abs{C(ω)}^2}{D^2 + ω^2} \underarrow[=]{equipartition} \frac{k_B T}{m}
+\end{align*}
+
+\begin{align*}
+m \frac{\d^2}{\d t^2} x^i = - \partial^i ϕ \\
+\frac{\d^2}{\d τ^2} x^μ = - Γ_{αβ}^μ \dd{x^α}{τ} \dd{x^β}{τ} \\
+\partial_μ F^{μν} = \frac{4π}{c} j^ν \\
+\frac{\d^2}{\d τ^2} x^μ &= \frac{q}{m} F^{μ ν} \dd{x}{τ}
+\end{align*}
+
+
+theoretical physics
+\begin{align*}
+\partial_t v^i + (v^t \partial_j) v^i = - \partial^i p / ρ - \partial^i ϕ + ψ_i \partial_j \partial^i v_i
+\end{align*}
+time reversability: $t \to -u, \partial_t \to -	\partial_t, v^i \to - v^i$
+irreversiable changes of state take place spontaneausly by entropy generation
+\begin{align*}
+\pp{S}{t} = \pp{a}{t} \pp{S}{a}, \quad\text{with $S(a)$}
+\end{align*}
+in equilibrum: $\pp{S}{a} = 0$, expectation:
+\begin{align*}
+\dot a = C \pp{S}{a} = \left.C \frac{\partial^2 S}{\partial a^2}\right|_{a_0} (a - a_0) \quad\text{$a_0 \sim$ equilibrium}
+\end{align*}
+look at mechanical system $m \ddot x = m \dot v = - \pp{}{x} ϕ(x)$
+if the system is strongly damped: $m \dot v + β v = - \pp{}{x} ϕ(x)$
+example A: spring: $ϕ = k/2 x^2$
+\begin{align*}
+\to β v = β \dot x = - \pp{}{x} ϕ(x) \quad\text{non-reversible}
+\end{align*}
+Energy: $E = E_0 - ϕ(x), \abs{ϕ} \ll E_0$ $\to$ entropy $S(x) = S(E_0 - ϕ(x), V, N)$
+Taylor:
+\begin{align*}
+S(x) &= S_0 - \pp{S}{E_0} ϕ(x) + \dots = S_0 - \frac{1}{T} ϕ(x) + \dots \\
+\intertext{entroyp gradient:}
+\pp{S}{x} &= - \frac{1}{T} \pp{ϕ}{x} = - \frac{k}{T} x \to \dot x = C \pp{S}{x} = - C \frac{k}{T} x
+\end{align*}
+solved by $x(t) = x(0) \exp(- c k / T t)$, non-reversible process
+example B: 2 bodies in thermal contact:
+$E = E_1 + E_2$, pertubation $ε$:
+\begin{align*}
+\string(E_1 + ε\string) + (E_2 - ε) &= E \\
+\text{entropy: } S(ε) &= S_1 (E_1 + ε) + S_2(E_2 - ε) \\
+\text{Taylor: } S(ε) &= S_1(E_1) + ε \underbrace{\pp{S_1}{E_1}}_{\mathclap{=1/T_0 \text{ in equilibrium}}} + \frac{ε^2}{2} \frac{\partial^2 S}{\partial E_1^2} + S_2(E_2) - ε \underbrace{\pp{S_2}{E_2}}_{\mathclap{=1/T_0 \text{ in equilibrium}}} + \frac{e^2}{2} \frac{\partial^2 S_2}{\partial E_2^2} \\
+\pp{S}{t} = ε \dot ε (\frac{\partial^2 S_1}{\partial E_1^2} + \frac{\partial^2 S_2}{\partial E_2^2})
+\end{align*}
+if there is no equilibrium:
+\begin{align*}
+\frac{1}{T_1} &= \pp{S_1}{E_1}(E_1 + ε) &= \frac{1}{T_0} + \frac{\partial^2 S_1}{\partial E_1^2} \\
+\frac{1}{T_2} &= \pp{S_2}{E_2}(E_2 - ε) &= \frac{1}{T_0} - \frac{\partial^2 S_2}{\partial E_2^2} \\
+\to \frac{S}{t} &= \dot ε (\frac{1}{T_1} - \frac{1}{T_2})
+\end{align*}
+
+irreversibility + reversibilitiy in classical mechanics:
+\begin{align*}
+\mathcal{H} &= \frac{p^2}{2m} \to \pp{\mathcal{H}}{p} = \dot x, \pp{\mathcal{H}}{x} = - \dot p
+\end{align*}
+invariant if $t \to -t, p \to -p$
+classical momentum: $p = \pp{\mathcal{H}}{\dot x} \to - p$ because $\dot x \to - \dot x$
+equipartition:
+\begin{align*}
+\frac{k}{2} \braket{x^2} = \frac{1}{2} k_B T \\
+σ_x &= \sqrt{\braket{x}} = \sqrt{\frac{k_B T}{k}} \\
+S(x) &= k_B \ln p(x) \\
+\to p(x) \d x &= \frac{\exp(\frac{S}{k_B})}{∫ \d x \exp(\frac{S}{k_B})} = \sqrt{\frac{k}{2π k_B T}} \exp(-\frac{k}{k_B T} \frac{x^2}{2})
+\end{align*}
+$\abs{x} \gg \sqrt{k_B T / k}$ is very, very, very, really unlikely.
+$k_B T \sim \SI{e-21}{\joule}$ at room temperature $\to$ $\SI{1}{\joule}$ of thermal energy required by a fluctuation at a probability of $\exp{\num{-e21}}$
