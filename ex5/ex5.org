@@ -1314,30 +1314,30 @@ Ziele:
    - Elektron-Phonon
    - Elektron-Defekt
 
-   - Defekte: Annahme: konstante Anzahl \\
-	 \begin{align*}
-	 ρ_D &= ρ_0 = \const
+   - Defekte: Annahme: konstante Anzahl
+     \begin{align*}
+     ρ_D &= ρ_0 = \const
      \end{align*}
    - Elektron-Phonon-Streuung
-	 \begin{align*}
-	 E - E' &= \hbar ω_q \\
-	 \v k - \v k' &= \pm \v q + \v G \\
-	 ω_D &\ll \frac{E_F}{\hbar} \\
-	 ⇒ E &\approx E'
+     \begin{align*}
+     E - E' &= \hbar ω_q \\
+     \v k - \v k' &= \pm \v q + \v G \\
+     ω_D &\ll \frac{E_F}{\hbar} \\
+     ⇒ E &\approx E'
      \end{align*}
-	 1. Normalprozesse: $\v G = 0$
-		\begin{align*}
-		\v k - \v k' &= \pm \v q
-      	\end{align*}
+     1. Normalprozesse: $\v G = 0$
+        \begin{align*}
+        \v k - \v k' &= \pm \v q
+        \end{align*}
      2. Umklappprozesse: $\v G \neq 0$
-		\begin{align*}
-		\v k - \v k' &= \pm q + \v G \quad (\v G \neq 0)
-      	\end{align*}
+        \begin{align*}
+        \v k - \v k' &= \pm q + \v G \quad (\v G \neq 0)
+        \end{align*}
 
-		$T > θ_D$: Phononenanzahl $\sim T$
-		\begin{align*}
-		l^{-1} &\sim \frac{n_{\text{Phononen}}}{\sim T} \frac{\text{Streuuquerschnitt} \text{ Debeye Phononen}}{}
-      	\end{align*}
+        $T > θ_D$: Phononenanzahl $\sim T$
+        \begin{align*}
+        l^{-1} &\sim \frac{n_{\text{Phononen}}}{\sim T} \frac{\text{Streuuquerschnitt} \text{ Debeye Phononen}}{}
+        \end{align*}
 
 
 

@@ -3261,9 +3261,11 @@ Allgemein: $l = n - 1$
    Wie sehen die Eigenzustände zu $S = 0$ und $S = 1$ aus? \\
    Wähle Basis $\ket{\uparrow \downarrow}$ Teilchen $1$ und $\ket{\uparrow}$, Teilchen 2 ind $\ket{\downarrow}$, $\ket{\downarrow,\uparrow}, \ket{\downarrow, \downarrow}, \ket{\uparrow, \uparrow}$
    \[\hat{\v S}^2 \ket{ψ} = (\hat{\v S_1} + \hat{\v S_2})^2 \ket{ψ} = \hat{\v S_1}^2 + \hat{\v S_2}^2 + 2 \hat{\v S_1} \hat{\v S_2} \ket{ψ} = \hbar^2 s(s + 1) \ket{ψ}\]
+   #+begin_export latex
    \begin{alignat*}{3}
    S^x \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} && S^y \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} && S^z \ket{\uparrow} = \frac{\hbar}{2} \ket{\downarrow} \\
    S^x \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} && S^y \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} && S^z \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow} \\
    \ket{ψ} &= \ket{\uparrow \downarrow}
    \end{alignat*}{3}
+   #+end_export
 \printbibliography

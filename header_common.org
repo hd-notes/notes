@@ -13,8 +13,7 @@
 #+LATEX_HEADER: \usepackage{minted}
 #+LATEX_HEADER: \usepackage{polyglossia}
 # #+LATEX_HEADER: \usepackage[german]{translator}
-#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket, bbm, mathrsfs}
-## , tikz-feynman}
+#+LATEX_HEADER: \usepackage{algorithm2e, siunitx, stmaryrd, wasysym, xparse, stackengine, tikz, xcolor, pgfplots, makecell, tikz-qtree, enumitem, microtype, scalerel, tikz-uml, faktor, braket, bbm, mathrsfs, tikz-feynman}
 #+LATEX_HEADER: \usepackage[thmmarks, amsmath]{ntheorem}
 #+LATEX_HEADER: \usepackage{crimson}
 #+LATEX_HEADER: \usepackage{newtxmath}

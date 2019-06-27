@@ -114,7 +114,7 @@
   2. $K = \mathbb{R}, V = \mathbb{R}$ \\
 	 Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 - 2 x_2 = 1\}$ \\
 	 Es ist $(0,0) ( = 0_V) \not\in U \implies U$ ist kein UVR von $V = \mathbb{R}^2$
-  3. $K = \mathbb{R}, V = \mathbb{R^2}$ \\
+  3. $K = \mathbb{R}, V = \mathbb{R}^2$ \\
 	 Es sei $U = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 \geq 0 \wedge x_2 \geq 0\}$ \\
 	 $U$ ist kein UVR von $V$, denn: $(5,2) \in U$, aber $(-1)\cdot (5,2) = (-5, -2) \not\in U$
   4. $V = K[t]$ \\

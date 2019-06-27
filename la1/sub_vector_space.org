@@ -76,7 +76,7 @@
 	zum Beispiel:
 	\[K = \mathbb{R}, V = \mathbb{R}^2, U_1 = \Lin((e_1)), U_2 = \Lin((e_2)), U_3 = \Lin((1,1))\]
 	Dann ist $V = U_1 + U_2 + U_3$ und $U_i \cap U_j = \{0\} \Forall i\neq j$, aber
-	\[U_1 \cap (\underbrace{U_2 + U_3}_{= \mathbb{R^2}}) = U_1 \neq \{0\}\]
+	\[U_1 \cap (\underbrace{U_2 + U_3}_{= \mathbb{R}^2}) = U_1 \neq \{0\}\]
 	das heißt die Summe ist nicht direkt.
   #+end_note
   #+ATTR_LATEX: :options [11.6]

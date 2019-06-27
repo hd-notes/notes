@@ -425,5 +425,5 @@
 	Folgt aus \ref{remark:cha_prim} und \ref{remark:integ_neutral}
 	\end{proof}
 	\begin{ex}
-	$p$ Primzahl, dann ist $\cha(\mathbb{F_p}) = p$
+	$p$ Primzahl, dann ist $\cha(\mathbb{F}_p) = p$
 	\end{ex}
