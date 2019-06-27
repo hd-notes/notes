@@ -5,7 +5,7 @@
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [a4paper,DIV=14]
 #+LATEX_COMPILER: xelatex
-#+LATEX_HEADER: \usepackage{mhchem}
+#+LATEX_HEADER: \usepackage[version=4]{mhchem}
 #+LATEX_HEADER: \usepackage{amsmath}
 #+LATEX_HEADER: \usepackage{mathtools}
 #+LATEX_HEADER: \usepackage{centernot}
@@ -22,8 +22,9 @@
 #+LATEX_HEADER: \usepackage{scrpage2}
 #+LATEX_HEADER: \usepackage{soul}
 #+LATEX_HEADER: \usepackage[tikz,blur]{bclogo}
-#+LATEX_HEADER: \usepackage[backend=bibtex]{biblatex}
+#+LATEX_HEADER: \usepackage[backend=biber]{biblatex}
 #+LATEX_HEADER: \usepackage{tocloft}
+#+LATEX_HEADER: \usepackage{anyfontsize,csquotes}
 #+LATEX_HEADER: \pagestyle{scrheadings}
 #+LATEX_HEADER: \addtokomafont{disposition}{\rmfamily}
 #+LATEX_HEADER: \sisetup{load-configurations = abbrevations}
