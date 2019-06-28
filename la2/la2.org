@@ -14,8 +14,8 @@
 #+LATEX_HEADER: \renewtheorem{ex}[defn]{Beispiel}
 
 #+LATEX_HEADER: \DeclareFontEncoding{LS1}{}{}
-#+LATEX_HEADER: \DeclareFontSubstitution{LS1}{stix}{m}{n}
-#+LATEX_HEADER: \DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+#+LATEX_HEADER: \DeclareFontSubstitution{LS1}{stix2}{m}{n}
+#+LATEX_HEADER: \DeclareSymbolFont{symbols2}{LS1}{stix2frak} {m} {n}
 #+LATEX_HEADER: \DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
 
 #+INCLUDE: "eigen_values.org" :minlevel 1
